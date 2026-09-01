@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68806",
-  "extractedAt": "2026-07-07T09:12:43.958Z",
+  "extractedAt": "2026-08-31T19:08:42.707Z",
   "sourceHash": "66b85f1d16b629d7",
-  "segmentCount": 99,
+  "segmentCount": 102,
   "segmentIds": [
     "m68806:title:auto-1",
     "m68806:abstract:auto-2",
@@ -28,6 +28,7 @@
     "m68806:para-title:fs-idm156700000-title",
     "m68806:para:fs-idm156700000",
     "m68806:para:fs-idp43419152",
+    "m68806:alt:fs-idm4192576-alt",
     "m68806:note-title:fs-idm54595904-title",
     "m68806:para:fs-idp43419152",
     "m68806:title:fs-idm135179984-title",
@@ -79,11 +80,13 @@
     "m68806:para:fs-idm137552288",
     "m68806:para:fs-idp8711664",
     "m68806:caption:CNX_Chem_14_04_hydronium-caption",
+    "m68806:alt:fs-idp82299440-alt",
     "m68806:para:fs-idm167123728",
     "m68806:example-title:fs-idm171178400-title",
     "m68806:para:fs-idm122608832",
     "m68806:para-title:fs-idp112354272-title",
     "m68806:para:fs-idp112354272",
+    "m68806:alt:fs-idm136267808-alt",
     "m68806:para-title:fs-idm175924752-title",
     "m68806:para:fs-idm175924752",
     "m68806:para:fs-idp86512272",
@@ -186,7 +189,7 @@
     "note": 4,
     "equation": 29,
     "list": 0,
-    "media": 0,
+    "media": 1,
     "glossary": 0
   },
   "elementIds": {

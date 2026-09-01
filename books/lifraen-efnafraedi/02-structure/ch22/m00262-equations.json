@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C═C−</m:mtext><m:msup><m:mtext>O</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{C═C−}{\\text{O}}^{-}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow/><m:mo>−</m:mo></m:msup><m:mtext>C−C═O</m:mtext></m:mrow></m:math>",
+    "latex": "{^{-}\\text{C−C═O}}"
+  }
+}

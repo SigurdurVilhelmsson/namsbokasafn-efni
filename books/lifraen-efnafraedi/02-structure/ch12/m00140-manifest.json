@@ -1,15 +1,17 @@
 {
   "version": 1,
   "moduleId": "m00140",
-  "extractedAt": "2026-08-12T16:05:00.673Z",
+  "extractedAt": "2026-08-31T19:08:48.224Z",
   "sourceHash": "7235d4d7dd4c7102",
-  "segmentCount": 7,
+  "segmentCount": 9,
   "segmentIds": [
     "m00140:title:auto-1",
     "m00140:para:para-00001",
     "m00140:para:para-00002",
     "m00140:caption:fig-00001-caption",
+    "m00140:alt:fig-00001-alt",
     "m00140:para:para-00003",
+    "m00140:alt:fig-00002-alt",
     "m00140:para:para-00004",
     "m00140:para:para-00005"
   ],

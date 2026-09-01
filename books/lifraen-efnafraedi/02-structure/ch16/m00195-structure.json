@@ -1,0 +1,125 @@
+{
+  "moduleId": "m00195",
+  "title": {
+    "segmentId": "m00195:title:auto-1",
+    "text": "Benzyne"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "47a50b36-c66b-4de2-a1a4-2a449cec05a9"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00195:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00195:alt:fig-00001-alt",
+          "text": "At high temperature and pressure, chlorobenzene reacts in water with sodium hydroxide, to form phenol."
+        },
+        "src": "../../media/OChem_16_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00195:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00195:alt:fig-00002-alt",
+          "text": "Bromobenzene reacts with potassium amide in the presence of ammonia to form two aniline compounds. C 1 of both reactants and products are labeled with an asterisk."
+        },
+        "src": "../../media/OChem_16_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00195:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00195:alt:fig-00003-alt",
+          "text": "On reaction with hydroxide ion, hydrigen chloride is eliminated from chlorobenzene to generate benzyne which on reaction with water to form phenol.."
+        },
+        "src": "../../media/OChem_16_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00195:alt:fig-00005-alt",
+          "text": "Bromobenzene reacts with N H 2 minus ion to form benzyne, which reacts with ammonia to form a 50 50 mix of two aniline carbocations"
+        },
+        "src": "../../media/OChem_16_07_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00195:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00195:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00195:alt:fig-00004-alt",
+          "text": "The figure shows the orbital representation and ball-and-stick model in the electrostatic potential map of benzyne. Black and gray spheres represent carbon and hydrogen, respectively."
+        },
+        "src": "../../media/OChem_16_07_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00195:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

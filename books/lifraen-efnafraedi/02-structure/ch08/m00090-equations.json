@@ -1,0 +1,6 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mstyle mathvariant=\"bold\" mathsize=\"normal\"><m:mi>R</m:mi></m:mstyle><m:mstyle mathvariant=\"bold\" mathsize=\"normal\"><m:mn>2</m:mn></m:mstyle></m:msub><m:mstyle mathvariant=\"bold\" mathsize=\"normal\"><m:mi>B</m:mi><m:msup><m:mi>r</m:mi><m:mo>+</m:mo></m:msup></m:mstyle></m:mrow></m:math>",
+    "latex": "{{R}_{2}B{r}^{+}}"
+  }
+}

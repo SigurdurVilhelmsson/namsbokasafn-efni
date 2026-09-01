@@ -115,97 +115,103 @@ Answer:
 <!-- SEG:m68791:para:fs-idp73329760 -->
 The plot of ln[[[i:A]]][[sub:[[i:t]]]] vs. [[i:t]] is not linear, indicating the reaction is not first order:[[BR]]
 
-<!-- SEG:m68791:entry:auto-40 -->
-Time (h)
+<!-- SEG:m68791:alt:fs-idm135178736-alt -->
+A graph, labeled above as “l n [ A ] vs. Time” is shown. The x-axis is labeled, “Time ( s )” and the y-axis is labeled, “l n [ A ].” The x-axis shows markings at 5, 10, 15, 20, and 25 hours. The y-axis shows markings at negative 3, negative 2, negative 1, and 0. A slight curve is drawn connecting five points at coordinates of approximately (4, negative 1.5), (8, negative 2), (12, negative 2.2), (16, negative 2.4), and (20, negative 2.6).
 
 <!-- SEG:m68791:entry:auto-41 -->
-[H[[sub:2]]O[[sub:2]]] ([[i:M]])
+Time (h)
 
 <!-- SEG:m68791:entry:auto-42 -->
-ln[H[[sub:2]]O[[sub:2]]]
+[H[[sub:2]]O[[sub:2]]] ([[i:M]])
 
 <!-- SEG:m68791:entry:auto-43 -->
-0.00
+ln[H[[sub:2]]O[[sub:2]]]
 
 <!-- SEG:m68791:entry:auto-44 -->
-1.000
+0.00
 
 <!-- SEG:m68791:entry:auto-45 -->
-0.000
+1.000
 
 <!-- SEG:m68791:entry:auto-46 -->
-6.00
+0.000
 
 <!-- SEG:m68791:entry:auto-47 -->
-0.500
+6.00
 
 <!-- SEG:m68791:entry:auto-48 -->
-−0.693
+0.500
 
 <!-- SEG:m68791:entry:auto-49 -->
-12.00
+−0.693
 
 <!-- SEG:m68791:entry:auto-50 -->
-0.250
+12.00
 
 <!-- SEG:m68791:entry:auto-51 -->
-−1.386
+0.250
 
 <!-- SEG:m68791:entry:auto-52 -->
-18.00
+−1.386
 
 <!-- SEG:m68791:entry:auto-53 -->
-0.125
+18.00
 
 <!-- SEG:m68791:entry:auto-54 -->
-−2.079
+0.125
 
 <!-- SEG:m68791:entry:auto-55 -->
-24.00
+−2.079
 
 <!-- SEG:m68791:entry:auto-56 -->
-0.0625
+24.00
 
 <!-- SEG:m68791:entry:auto-57 -->
+0.0625
+
+<!-- SEG:m68791:entry:auto-58 -->
 −2.772
 
 <!-- SEG:m68791:caption:CNX_Chem_12_04_FrstOKin-caption -->
 A linear relationship between ln[H[[sub:2]]O[[sub:2]]] and time suggests the decomposition of hydrogen peroxide is a first-order reaction.
 
-<!-- SEG:m68791:entry:auto-59 -->
-Time (s)
-
-<!-- SEG:m68791:entry:auto-60 -->
-[[[i:A]]]
+<!-- SEG:m68791:alt:fs-idm90898176-alt -->
+A graph is shown with the label “Time ( h )” on the x-axis and “l n [ H subscript 2 O subscript 2 ]” on the y-axis. The x-axis shows markings at 6, 12, 18, and 24 hours. The vertical axis shows markings at negative 3, negative 2, negative 1, and 0. A decreasing linear trend line is drawn through five points represented at the coordinates (0, 0), (6, negative 0.693), (12, negative 1.386), (18, negative 2.079), and (24, negative 2.772).
 
 <!-- SEG:m68791:entry:auto-61 -->
-4.0
+Time (s)
 
 <!-- SEG:m68791:entry:auto-62 -->
-0.220
+[[[i:A]]]
 
 <!-- SEG:m68791:entry:auto-63 -->
-8.0
+4.0
 
 <!-- SEG:m68791:entry:auto-64 -->
-0.144
+0.220
 
 <!-- SEG:m68791:entry:auto-65 -->
-12.0
+8.0
 
 <!-- SEG:m68791:entry:auto-66 -->
-0.110
+0.144
 
 <!-- SEG:m68791:entry:auto-67 -->
-16.0
+12.0
 
 <!-- SEG:m68791:entry:auto-68 -->
-0.088
+0.110
 
 <!-- SEG:m68791:entry:auto-69 -->
-20.0
+16.0
 
 <!-- SEG:m68791:entry:auto-70 -->
+0.088
+
+<!-- SEG:m68791:entry:auto-71 -->
+20.0
+
+<!-- SEG:m68791:entry:auto-72 -->
 0.074
 
 <!-- SEG:m68791:title:fs-idm162181696-title -->
@@ -298,103 +304,109 @@ Answer:
 <!-- SEG:m68791:para:fs-idp122966448 -->
 Yes. The plot of [[MATH:16]] vs. [[i:t]] is linear:
 
-<!-- SEG:m68791:entry:auto-101 -->
-Time (s)
-
-<!-- SEG:m68791:entry:auto-102 -->
-[[MATH:17]]
-
-<!-- SEG:m68791:entry:auto-103 -->
-ln[C[[sub:4]]H[[sub:6]]]
+<!-- SEG:m68791:alt:fs-idm144508704-alt -->
+A graph, with the title “1 divided by [ A ] vs. Time” is shown, with the label, “Time ( s ),” on the x-axis. The label “1 divided by [ A ]” appears left of the y-axis. The x-axis shows markings beginning at zero and continuing at intervals of 10 up to and including 40. The y-axis on the left shows markings beginning at 0 and increasing by intervals of 1 up to and including 5. A line with an increasing trend is drawn through six points at approximately (4, 1), (10, 1.5), (15, 2.2), (20, 2.8), (26, 3.4), and (36, 4.4).
 
 <!-- SEG:m68791:entry:auto-104 -->
-0
+Time (s)
 
 <!-- SEG:m68791:entry:auto-105 -->
-100
+[[MATH:17]]
 
 <!-- SEG:m68791:entry:auto-106 -->
-−4.605
+ln[C[[sub:4]]H[[sub:6]]]
 
 <!-- SEG:m68791:entry:auto-107 -->
-1600
+0
 
 <!-- SEG:m68791:entry:auto-108 -->
-198
+100
 
 <!-- SEG:m68791:entry:auto-109 -->
-−5.289
+−4.605
 
 <!-- SEG:m68791:entry:auto-110 -->
-3200
+1600
 
 <!-- SEG:m68791:entry:auto-111 -->
-296
+198
 
 <!-- SEG:m68791:entry:auto-112 -->
-−5.692
+−5.289
 
 <!-- SEG:m68791:entry:auto-113 -->
-4800
+3200
 
 <!-- SEG:m68791:entry:auto-114 -->
-395
+296
 
 <!-- SEG:m68791:entry:auto-115 -->
-−5.978
+−5.692
 
 <!-- SEG:m68791:entry:auto-116 -->
-6200
+4800
 
 <!-- SEG:m68791:entry:auto-117 -->
-481
+395
 
 <!-- SEG:m68791:entry:auto-118 -->
+−5.978
+
+<!-- SEG:m68791:entry:auto-119 -->
+6200
+
+<!-- SEG:m68791:entry:auto-120 -->
+481
+
+<!-- SEG:m68791:entry:auto-121 -->
 −6.175
 
 <!-- SEG:m68791:caption:CNX_Chem_12_04_2OrdKin-caption -->
 These two graphs show first- and second-order plots for the dimerization of C[[sub:4]]H[[sub:6]]. The linear trend in the second-order plot (right) indicates that the reaction follows second-order kinetics.
 
-<!-- SEG:m68791:entry:auto-120 -->
-Time (s)
-
-<!-- SEG:m68791:entry:auto-121 -->
-[[[i:A]]] ([[i:M]])
-
-<!-- SEG:m68791:entry:auto-122 -->
-5
-
-<!-- SEG:m68791:entry:auto-123 -->
-0.952
+<!-- SEG:m68791:alt:fs-idp16234496-alt -->
+Two graphs are shown, each with the label “Time ( s )” on the x-axis. The graph on the left is labeled, “l n [ C subscript 4 H subscript 6 ],” on the y-axis. The graph on the right is labeled “1 divided by [ C subscript 4 H subscript 6 ],” on the y-axis. The x-axes for both graphs show markings at 3000 and 6000. The y-axis for the graph on the left shows markings at negative 6, negative 5, and negative 4. A decreasing slightly concave up curve is drawn through five points at coordinates that are (0, negative 4.605), (1600, negative 5.289), (3200, negative 5.692), (4800, negative 5.978), and (6200, negative 6.175). The y-axis for the graph on the right shows markings at 100, 300, and 500. An approximately linear increasing curve is drawn through five points at coordinates that are (0, 100), (1600, 198), (3200, 296), and (4800, 395), and (6200, 481).
 
 <!-- SEG:m68791:entry:auto-124 -->
-10
+Time (s)
 
 <!-- SEG:m68791:entry:auto-125 -->
-0.625
+[[[i:A]]] ([[i:M]])
 
 <!-- SEG:m68791:entry:auto-126 -->
-15
+5
 
 <!-- SEG:m68791:entry:auto-127 -->
-0.465
+0.952
 
 <!-- SEG:m68791:entry:auto-128 -->
-20
+10
 
 <!-- SEG:m68791:entry:auto-129 -->
-0.370
+0.625
 
 <!-- SEG:m68791:entry:auto-130 -->
-25
+15
 
 <!-- SEG:m68791:entry:auto-131 -->
-0.308
+0.465
 
 <!-- SEG:m68791:entry:auto-132 -->
-35
+20
 
 <!-- SEG:m68791:entry:auto-133 -->
+0.370
+
+<!-- SEG:m68791:entry:auto-134 -->
+25
+
+<!-- SEG:m68791:entry:auto-135 -->
+0.308
+
+<!-- SEG:m68791:entry:auto-136 -->
+35
+
+<!-- SEG:m68791:entry:auto-137 -->
 0.230
 
 <!-- SEG:m68791:title:fs-idm152558640-title -->
@@ -441,6 +453,9 @@ Answer:
 
 <!-- SEG:m68791:caption:CNX_Chem_12_04_AmDecomK-caption -->
 The decomposition of NH[[sub:3]] on a tungsten (W) surface is a zero-order reaction, whereas on a quartz (SiO[[sub:2]]) surface, the reaction is first order.
+
+<!-- SEG:m68791:alt:fs-idp157593168-alt -->
+A graph is shown with the label, “Time ( s ),” on the x-axis and, “[ N H subscript 3 ] M,” on the y-axis. The x-axis shows a single value of 1000 marked near the right end of the axis. The vertical axis shows markings at 1.0 times 10 superscript negative 3, 2.0 times 10 superscript negative 3, and 3.0 times 10 superscript negative 3. A decreasing linear trend line is drawn through six points at the approximate coordinates: (0, 2.8 times 10 superscript negative 3), (200, 2.6 times 10 superscript negative 3), (400, 2.3 times 10 superscript negative 3), (600, 2.0 times 10 superscript negative 3), (800, 1.8 times 10 superscript negative 3), and (1000, 1.6 times 10 superscript negative 3). This line is labeled “Decomposition on W.” A decreasing slightly concave up curve is similarly drawn through eight points at the approximate coordinates: (0, 2.8 times 10 superscript negative 3), (100, 2.5 times 10 superscript negative 3), (200, 2.1 times 10 superscript negative 3), (300, 1.9 times 10 superscript negative 3), (400, 1.6 times 10 superscript negative 3), (500, 1.4 times 10 superscript negative 3), and (750, 1.1 times 10 superscript negative 3), ending at about (1000, 0.7 times 10 superscript negative 3). This curve is labeled “Decomposition on S i O subscript 2.”
 
 <!-- SEG:m68791:title:fs-idp6500464-title -->
 The Half-Life of a Reaction
@@ -490,6 +505,9 @@ Answer:
 <!-- SEG:m68791:caption:CNX_Chem_12_04_HPerDcmp-caption -->
 The decomposition of H[[sub:2]]O[[sub:2]] [[MATH:22]] at 40 °C is illustrated. The intensity of the color symbolizes the concentration of H[[sub:2]]O[[sub:2]] at the indicated times; H[[sub:2]]O[[sub:2]] is actually colorless.
 
+<!-- SEG:m68791:alt:fs-idm83598000-alt -->
+A diagram of 5 beakers is shown, each approximately half-filled with colored substances. Beneath each beaker are three rows of text. The first beaker contains a bright green substance and is labeled below as, “1.000 M, 0 s, and ( 0 h ).” The second beaker contains a slightly lighter green substance and is labeled below as, “0.500 M, 2.16 times 10 superscript 4 s, and ( 6 h ).” The third beaker contains an even lighter green substance and is labeled below as, “0.250 M, 4.32 times 10 superscript 4 s, and ( 12 h ).” The fourth beaker contains a green tinted substance and is labeled below as, “0.125 M, 6.48 times 10 superscript 4 s, and ( 18 h ).” The fifth beaker contains a colorless substance and is labeled below as, “0.0625 M, 8.64 times 10 superscript 4 s, and ( 24 h ).”
+
 <!-- SEG:m68791:title:fs-idm87302368-title -->
 Second-Order Reactions
 
@@ -526,88 +544,88 @@ As for all reaction orders, the half-life for a zero-order reaction is inversely
 <!-- SEG:m68791:para:fs-idm22269120 -->
 Equations for both differential and integrated rate laws and the corresponding half-lives for zero-, first-, and second-order reactions are summarized in [[xref:fs-idm117482272]].
 
-<!-- SEG:m68791:entry:auto-177 -->
+<!-- SEG:m68791:entry:auto-183 -->
 Summary of Rate Laws for Zero-, First-, and Second-Order Reactions
 
-<!-- SEG:m68791:entry:auto-178 -->
+<!-- SEG:m68791:entry:auto-184 -->
 [[SPACE]]Zero-Order[[SPACE]]
 
-<!-- SEG:m68791:entry:auto-179 -->
+<!-- SEG:m68791:entry:auto-185 -->
 [[SPACE]]First-Order[[SPACE]]
 
-<!-- SEG:m68791:entry:auto-180 -->
+<!-- SEG:m68791:entry:auto-186 -->
 Second-Order
 
-<!-- SEG:m68791:entry:auto-181 -->
+<!-- SEG:m68791:entry:auto-187 -->
 rate law
 
-<!-- SEG:m68791:entry:auto-182 -->
+<!-- SEG:m68791:entry:auto-188 -->
 rate = [[i:k]]
 
-<!-- SEG:m68791:entry:auto-183 -->
+<!-- SEG:m68791:entry:auto-189 -->
 rate = [[i:k]][[[i:A]]]
 
-<!-- SEG:m68791:entry:auto-184 -->
+<!-- SEG:m68791:entry:auto-190 -->
 rate = [[i:k]][[[i:A]]][[sup:2]]
 
-<!-- SEG:m68791:entry:auto-185 -->
+<!-- SEG:m68791:entry:auto-191 -->
 units of rate constant
 
-<!-- SEG:m68791:entry:auto-186 -->
+<!-- SEG:m68791:entry:auto-192 -->
 [[i:M]] s[[sup:−1]]
 
-<!-- SEG:m68791:entry:auto-187 -->
+<!-- SEG:m68791:entry:auto-193 -->
 s[[sup:−1]]
 
-<!-- SEG:m68791:entry:auto-188 -->
+<!-- SEG:m68791:entry:auto-194 -->
 [[i:M]][[sup:−1]] s[[sup:−1]]
 
-<!-- SEG:m68791:entry:auto-189 -->
+<!-- SEG:m68791:entry:auto-195 -->
 integrated rate law
 
-<!-- SEG:m68791:entry:auto-190 -->
+<!-- SEG:m68791:entry:auto-196 -->
 [[MATH:26]]
 
-<!-- SEG:m68791:entry:auto-191 -->
+<!-- SEG:m68791:entry:auto-197 -->
 [[MATH:27]]
 
-<!-- SEG:m68791:entry:auto-192 -->
+<!-- SEG:m68791:entry:auto-198 -->
 [[MATH:28]]
 
-<!-- SEG:m68791:entry:auto-193 -->
+<!-- SEG:m68791:entry:auto-199 -->
 plot needed for linear fit of rate data
 
-<!-- SEG:m68791:entry:auto-194 -->
+<!-- SEG:m68791:entry:auto-200 -->
 [[[i:A]]] vs. [[i:t]]
 
-<!-- SEG:m68791:entry:auto-195 -->
+<!-- SEG:m68791:entry:auto-201 -->
 ln[[[i:A]]] vs. [[i:t]]
 
-<!-- SEG:m68791:entry:auto-196 -->
+<!-- SEG:m68791:entry:auto-202 -->
 [[MATH:29]] vs. [[i:t]]
 
-<!-- SEG:m68791:entry:auto-197 -->
+<!-- SEG:m68791:entry:auto-203 -->
 relationship between slope of linear plot and rate constant
 
-<!-- SEG:m68791:entry:auto-198 -->
+<!-- SEG:m68791:entry:auto-204 -->
 [[i:k]] = −slope
 
-<!-- SEG:m68791:entry:auto-199 -->
+<!-- SEG:m68791:entry:auto-205 -->
 [[i:k]] = −slope
 
-<!-- SEG:m68791:entry:auto-200 -->
+<!-- SEG:m68791:entry:auto-206 -->
 [[i:k]] = slope
 
-<!-- SEG:m68791:entry:auto-201 -->
+<!-- SEG:m68791:entry:auto-207 -->
 half-life
 
-<!-- SEG:m68791:entry:auto-202 -->
+<!-- SEG:m68791:entry:auto-208 -->
 [[MATH:30]]
 
-<!-- SEG:m68791:entry:auto-203 -->
+<!-- SEG:m68791:entry:auto-209 -->
 [[MATH:31]]
 
-<!-- SEG:m68791:entry:auto-204 -->
+<!-- SEG:m68791:entry:auto-210 -->
 [[MATH:32]]
 
 <!-- SEG:m68791:example-title:fs-idm494886672-title -->
@@ -652,22 +670,22 @@ The half-life of a reaction is the time required to decrease the amount of a giv
 <!-- SEG:m68791:title:fs-idm150818384-title -->
 Key Equations
 
-<!-- SEG:m68791:entry:auto-219 -->
+<!-- SEG:m68791:entry:auto-225 -->
 integrated rate law for zero-order reactions: [[MATH:33]]
 
-<!-- SEG:m68791:entry:auto-220 -->
+<!-- SEG:m68791:entry:auto-226 -->
 half-life for a zero-order reaction [[MATH:34]]
 
-<!-- SEG:m68791:entry:auto-221 -->
+<!-- SEG:m68791:entry:auto-227 -->
 integrated rate law for first-order reactions: [[MATH:35]]
 
-<!-- SEG:m68791:entry:auto-222 -->
+<!-- SEG:m68791:entry:auto-228 -->
 half-life for a first-order reaction [[MATH:36]]
 
-<!-- SEG:m68791:entry:auto-223 -->
+<!-- SEG:m68791:entry:auto-229 -->
 integrated rate law for second-order reactions: [[MATH:37]]
 
-<!-- SEG:m68791:entry:auto-224 -->
+<!-- SEG:m68791:entry:auto-230 -->
 half-life for a second-order reaction [[MATH:38]]
 
 <!-- SEG:m68791:title:fs-idm92366464-title -->
@@ -682,58 +700,61 @@ Use the data provided to graphically determine the order and rate constant of th
 <!-- SEG:m68791:solution:fs-idp6601344 -->
 Plotting a graph of ln[SO[[sub:2]]Cl[[sub:2]]] versus [[i:t]] reveals a linear trend; therefore we know this is a first-order reaction:[[BR]] [[MEDIA:1]][[BR]] [[i:k]] = 2.20 [[MATH:40]] 10[[sup:–5]] s[[sup:−1]]
 
-<!-- SEG:m68791:entry:auto-229 -->
-Time (s)
-
-<!-- SEG:m68791:entry:auto-230 -->
-0
-
-<!-- SEG:m68791:entry:auto-231 -->
-5.00 [[MATH:41]] 10[[sup:3]]
-
-<!-- SEG:m68791:entry:auto-232 -->
-1.00 [[MATH:42]] 10[[sup:4]]
-
-<!-- SEG:m68791:entry:auto-233 -->
-1.50 [[MATH:43]] 10[[sup:4]]
-
-<!-- SEG:m68791:entry:auto-234 -->
-[SO[[sub:2]]Cl[[sub:2]]] ([[i:M]])
-
-<!-- SEG:m68791:entry:auto-235 -->
-0.100
+<!-- SEG:m68791:alt:fs-idm141495696-alt -->
+A graph is shown with the label “Time ( s )” on the x-axis and “l n [ S O subscript 2 C l subscript 2 ] M” on the y-axis. The x-axis begins at 0 and extends to 4.00 times 10 superscript 4 with markings every 1.00 times 10 superscript 4. The y-axis shows markings extending from negative 3.5 to negative 2.5. A decreasing linear trend line is drawn through seven points at the approximate coordinates: (0, negative 2.3), (0.5 times 10 superscript 4, negative 2.4), (1.0 times 10 superscript 4, negative 2.5), (1.5 times 10 superscript 4, negative 2.6), (2.0 times 10 superscript 4, negative 2.9), (2.5 times 10 superscript 4, negative 3.0), and (3.0 times 10 superscript 4, negative 3.2).
 
 <!-- SEG:m68791:entry:auto-236 -->
-0.0896
-
-<!-- SEG:m68791:entry:auto-237 -->
-0.0802
-
-<!-- SEG:m68791:entry:auto-238 -->
-0.0719
-
-<!-- SEG:m68791:entry:auto-239 -->
 Time (s)
 
+<!-- SEG:m68791:entry:auto-237 -->
+0
+
+<!-- SEG:m68791:entry:auto-238 -->
+5.00 [[MATH:41]] 10[[sup:3]]
+
+<!-- SEG:m68791:entry:auto-239 -->
+1.00 [[MATH:42]] 10[[sup:4]]
+
 <!-- SEG:m68791:entry:auto-240 -->
-2.50 [[MATH:44]] 10[[sup:4]]
+1.50 [[MATH:43]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-241 -->
-3.00 [[MATH:45]] 10[[sup:4]]
-
-<!-- SEG:m68791:entry:auto-242 -->
-4.00 [[MATH:46]] 10[[sup:4]]
-
-<!-- SEG:m68791:entry:auto-243 -->
 [SO[[sub:2]]Cl[[sub:2]]] ([[i:M]])
 
+<!-- SEG:m68791:entry:auto-242 -->
+0.100
+
+<!-- SEG:m68791:entry:auto-243 -->
+0.0896
+
 <!-- SEG:m68791:entry:auto-244 -->
-0.0577
+0.0802
 
 <!-- SEG:m68791:entry:auto-245 -->
-0.0517
+0.0719
 
 <!-- SEG:m68791:entry:auto-246 -->
+Time (s)
+
+<!-- SEG:m68791:entry:auto-247 -->
+2.50 [[MATH:44]] 10[[sup:4]]
+
+<!-- SEG:m68791:entry:auto-248 -->
+3.00 [[MATH:45]] 10[[sup:4]]
+
+<!-- SEG:m68791:entry:auto-249 -->
+4.00 [[MATH:46]] 10[[sup:4]]
+
+<!-- SEG:m68791:entry:auto-250 -->
+[SO[[sub:2]]Cl[[sub:2]]] ([[i:M]])
+
+<!-- SEG:m68791:entry:auto-251 -->
+0.0577
+
+<!-- SEG:m68791:entry:auto-252 -->
+0.0517
+
+<!-- SEG:m68791:entry:auto-253 -->
 0.0415
 
 <!-- SEG:m68791:problem:fs-idp79344992 -->
@@ -741,6 +762,9 @@ Pure ozone decomposes slowly to oxygen, [[MATH:47]] Use the data provided in a g
 
 <!-- SEG:m68791:solution:fs-idm228482928 -->
 [[MEDIA:2]][[BR]] The plot is nicely linear, so the reaction is second order. [[i:k]] = 50.1 L mol[[sup:−1]] h[[sup:−1]]
+
+<!-- SEG:m68791:alt:fs-idm95556784-alt -->
+A graph is shown with the label, “t ( h ,)” on the x-axis and, “1 divided by [ O subscript 3 ] M,” on the y-axis. The x-axis shows markings at 0, 2 times 10 superscript 3, 6 times 10 superscript 3, 10 time 10 superscript 3, 14 times 10 superscript 3, and 18 times 10 superscript 3. The y-axis shows markings beginning at 0, increasing by 1 up to and including 9. An increasing linear trend line is drawn through seven points at the coordinates: (0, 1.00), (2.0 times 10 superscript 3, 2.01), (7.6 times 10 superscript 3, 4.83), (1.00 times 10 superscript 4, 6.02), (1.23 times 10 superscript 4 , 6.02), (1.43 times 10 superscript 4, 8.20) and (1.70 times 10 superscript 4, 9.52). A horizontal line segment is drawn through the first point and a vertical line segment is similarly drawn through the last point to make a right triangle on the graph. The horizontal leg of the triangle is labeled “ capital delta t.” The vertical leg is labeled “capital delta 1 divided by [ O subscript 3 ].”
 
 <!-- SEG:m68791:problem:fs-idp122307472 -->
 From the given data, use a graphical method to determine the order and rate constant of the following reaction:[[BR]] [[MATH:61]][[BR]] [[TABLE:fs-idm133654768]]
@@ -784,6 +808,9 @@ Both technetium-99 and thallium-201 are used to image heart muscle in patients w
 <!-- SEG:m68791:problem:fs-idm84405120 -->
 There are two molecules with the formula C[[sub:3]]H[[sub:6]]. Propene, [[MATH:78]] is the monomer of the polymer polypropylene, which is used for indoor-outdoor carpets. Cyclopropane is used as an anesthetic:[[BR]] [[MEDIA:3]]
 
+<!-- SEG:m68791:alt:fs-idm21764176-alt -->
+A structural formula for cyclopropane is shown. Three C H subscript 2 groups are positioned as vertices of an equilateral triangle connected with single bonds represented by line segments.
+
 <!-- SEG:m68791:problem:fs-idm21762608 -->
 When heated to 499 °C, cyclopropane rearranges (isomerizes) and forms propene with a rate constant of[[BR]]5.95 [[MATH:79]] 10[[sup:−4]] s[[sup:−1]]. What is the half-life of this reaction? What fraction of the cyclopropane remains after 0.75 h at 499 °C?
 
@@ -820,6 +847,9 @@ Nitroglycerine is an extremely sensitive explosive. In a series of carefully con
 <!-- SEG:m68791:problem:fs-idm43018368 -->
 For the past 10 years, the unsaturated hydrocarbon 1,3-butadiene [[MATH:83]] has ranked 38th among the top 50 industrial chemicals. It is used primarily for the manufacture of synthetic rubber. An isomer exists also as cyclobutene:[[BR]] [[MEDIA:4]]
 
+<!-- SEG:m68791:alt:fs-idp18440944-alt -->
+A structural formula for cyclobutene is shown. The figure has two C H subscript 2 groups as the upper two vertices of a square structure. These groups are connected by a single, short line segment. Line segments extend below each of these C H subscript 2 groups to C H groups positioned at the lower two vertices of the square structure. The C H groups are connected with a double line segment indicating a double bond.
+
 <!-- SEG:m68791:problem:fs-idp18442736 -->
 The isomerization of cyclobutene to butadiene is first-order and the rate constant has been measured as 2.0 [[MATH:84]] 10[[sup:−4]] s[[sup:−1]] at 150 °C in a 0.53-L flask. Determine the partial pressure of cyclobutene and its concentration after 30.0 minutes if an isomerization reaction is carried out at 150 °C with an initial pressure of 55 torr.
 
@@ -835,305 +865,305 @@ integrated rate law
 <!-- SEG:m68791:glossary-def:fs-idm46847680-def -->
 equation that relates the concentration of a reactant to elapsed time of reaction
 
-<!-- SEG:m68791:entry:auto-280 -->
+<!-- SEG:m68791:entry:auto-290 -->
 Time (s)
 
-<!-- SEG:m68791:entry:auto-281 -->
+<!-- SEG:m68791:entry:auto-291 -->
 [C[[sub:4]]H[[sub:6]]] ([[i:M]])
 
-<!-- SEG:m68791:entry:auto-282 -->
-0
-
-<!-- SEG:m68791:entry:auto-283 -->
-1.00 [[MATH:7]] 10[[sup:−2]]
-
-<!-- SEG:m68791:entry:auto-284 -->
-1600
-
-<!-- SEG:m68791:entry:auto-285 -->
-5.04 [[MATH:8]] 10[[sup:−3]]
-
-<!-- SEG:m68791:entry:auto-286 -->
-3200
-
-<!-- SEG:m68791:entry:auto-287 -->
-3.37 [[MATH:9]] 10[[sup:−3]]
-
-<!-- SEG:m68791:entry:auto-288 -->
-4800
-
-<!-- SEG:m68791:entry:auto-289 -->
-2.53 [[MATH:10]] 10[[sup:−3]]
-
-<!-- SEG:m68791:entry:auto-290 -->
-6200
-
-<!-- SEG:m68791:entry:auto-291 -->
-2.08 [[MATH:11]] 10[[sup:−3]]
-
 <!-- SEG:m68791:entry:auto-292 -->
-Time (h)
+0
 
 <!-- SEG:m68791:entry:auto-293 -->
-0
+1.00 [[MATH:7]] 10[[sup:−2]]
 
 <!-- SEG:m68791:entry:auto-294 -->
-2.0 [[MATH:48]] 10[[sup:3]]
+1600
 
 <!-- SEG:m68791:entry:auto-295 -->
-7.6 [[MATH:49]] 10[[sup:3]]
+5.04 [[MATH:8]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-296 -->
-1.00 [[MATH:50]] 10[[sup:4]]
+3200
 
 <!-- SEG:m68791:entry:auto-297 -->
-[O[[sub:3]]] ([[i:M]])
+3.37 [[MATH:9]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-298 -->
-1.00 [[MATH:51]] 10[[sup:−5]]
+4800
 
 <!-- SEG:m68791:entry:auto-299 -->
-4.98 [[MATH:52]] 10[[sup:−6]]
+2.53 [[MATH:10]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-300 -->
-2.07 [[MATH:53]] 10[[sup:−6]]
+6200
 
 <!-- SEG:m68791:entry:auto-301 -->
-1.66 [[MATH:54]] 10[[sup:−6]]
+2.08 [[MATH:11]] 10[[sup:−3]]
 
 <!-- SEG:m68791:entry:auto-302 -->
 Time (h)
 
 <!-- SEG:m68791:entry:auto-303 -->
-1.23 [[MATH:55]] 10[[sup:4]]
+0
 
 <!-- SEG:m68791:entry:auto-304 -->
-1.43 [[MATH:56]] 10[[sup:4]]
+2.0 [[MATH:48]] 10[[sup:3]]
 
 <!-- SEG:m68791:entry:auto-305 -->
-1.70 [[MATH:57]] 10[[sup:4]]
+7.6 [[MATH:49]] 10[[sup:3]]
 
 <!-- SEG:m68791:entry:auto-306 -->
-[O[[sub:3]]] ([[i:M]])
+1.00 [[MATH:50]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-307 -->
-1.39 [[MATH:58]] 10[[sup:−6]]
+[O[[sub:3]]] ([[i:M]])
 
 <!-- SEG:m68791:entry:auto-308 -->
-1.22 [[MATH:59]] 10[[sup:−6]]
+1.00 [[MATH:51]] 10[[sup:−5]]
 
 <!-- SEG:m68791:entry:auto-309 -->
-1.05 [[MATH:60]] 10[[sup:−6]]
+4.98 [[MATH:52]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-310 -->
-Time (s)
+2.07 [[MATH:53]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-311 -->
-5.0
+1.66 [[MATH:54]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-312 -->
-10.0
+Time (h)
 
 <!-- SEG:m68791:entry:auto-313 -->
-15.0
+1.23 [[MATH:55]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-314 -->
-20.0
+1.43 [[MATH:56]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-315 -->
-25.0
+1.70 [[MATH:57]] 10[[sup:4]]
 
 <!-- SEG:m68791:entry:auto-316 -->
-30.0
+[O[[sub:3]]] ([[i:M]])
 
 <!-- SEG:m68791:entry:auto-317 -->
-35.0
+1.39 [[MATH:58]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-318 -->
-40.0
+1.22 [[MATH:59]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-319 -->
-[[[i:X]]] ([[i:M]])
+1.05 [[MATH:60]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-320 -->
-0.0990
+Time (s)
 
 <!-- SEG:m68791:entry:auto-321 -->
-0.0497
+5.0
 
 <!-- SEG:m68791:entry:auto-322 -->
-0.0332
+10.0
 
 <!-- SEG:m68791:entry:auto-323 -->
-0.0249
+15.0
 
 <!-- SEG:m68791:entry:auto-324 -->
-0.0200
+20.0
 
 <!-- SEG:m68791:entry:auto-325 -->
-0.0166
+25.0
 
 <!-- SEG:m68791:entry:auto-326 -->
-0.0143
+30.0
 
 <!-- SEG:m68791:entry:auto-327 -->
-0.0125
+35.0
 
 <!-- SEG:m68791:entry:auto-328 -->
-[Penicillin] ([[i:M]])
+40.0
 
 <!-- SEG:m68791:entry:auto-329 -->
-Rate (mol L[[sup:−1]] min[[sup:−1]])
+[[[i:X]]] ([[i:M]])
 
 <!-- SEG:m68791:entry:auto-330 -->
-2.0 [[MATH:71]] 10[[sup:−6]]
+0.0990
 
 <!-- SEG:m68791:entry:auto-331 -->
-1.0 [[MATH:72]] 10[[sup:−10]]
+0.0497
 
 <!-- SEG:m68791:entry:auto-332 -->
-3.0 [[MATH:73]] 10[[sup:−6]]
+0.0332
 
 <!-- SEG:m68791:entry:auto-333 -->
-1.5 [[MATH:74]] 10[[sup:−10]]
+0.0249
 
 <!-- SEG:m68791:entry:auto-334 -->
-4.0 [[MATH:75]] 10[[sup:−6]]
+0.0200
 
 <!-- SEG:m68791:entry:auto-335 -->
-2.0 [[MATH:76]] 10[[sup:−10]]
+0.0166
 
 <!-- SEG:m68791:entry:auto-336 -->
-Initial [C[[sub:3]]H[[sub:5]]N[[sub:3]]O[[sub:9]]] ([[i:M]])
+0.0143
 
 <!-- SEG:m68791:entry:auto-337 -->
-4.88
+0.0125
 
 <!-- SEG:m68791:entry:auto-338 -->
-3.52
+[Penicillin] ([[i:M]])
 
 <!-- SEG:m68791:entry:auto-339 -->
-2.29
+Rate (mol L[[sup:−1]] min[[sup:−1]])
 
 <!-- SEG:m68791:entry:auto-340 -->
-1.81
+2.0 [[MATH:71]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-341 -->
-5.33
+1.0 [[MATH:72]] 10[[sup:−10]]
 
 <!-- SEG:m68791:entry:auto-342 -->
-4.05
+3.0 [[MATH:73]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-343 -->
-2.95
+1.5 [[MATH:74]] 10[[sup:−10]]
 
 <!-- SEG:m68791:entry:auto-344 -->
-1.72
+4.0 [[MATH:75]] 10[[sup:−6]]
 
 <!-- SEG:m68791:entry:auto-345 -->
-[[i:t]] (s)
+2.0 [[MATH:76]] 10[[sup:−10]]
 
 <!-- SEG:m68791:entry:auto-346 -->
-300
+Initial [C[[sub:3]]H[[sub:5]]N[[sub:3]]O[[sub:9]]] ([[i:M]])
 
 <!-- SEG:m68791:entry:auto-347 -->
-300
-
-<!-- SEG:m68791:entry:auto-348 -->
-300
-
-<!-- SEG:m68791:entry:auto-349 -->
-300
-
-<!-- SEG:m68791:entry:auto-350 -->
-180
-
-<!-- SEG:m68791:entry:auto-351 -->
-180
-
-<!-- SEG:m68791:entry:auto-352 -->
-180
-
-<!-- SEG:m68791:entry:auto-353 -->
-180
-
-<!-- SEG:m68791:entry:auto-354 -->
-% Decomposed
-
-<!-- SEG:m68791:entry:auto-355 -->
-52.0
-
-<!-- SEG:m68791:entry:auto-356 -->
-52.9
-
-<!-- SEG:m68791:entry:auto-357 -->
-53.2
-
-<!-- SEG:m68791:entry:auto-358 -->
-53.9
-
-<!-- SEG:m68791:entry:auto-359 -->
-34.6
-
-<!-- SEG:m68791:entry:auto-360 -->
-35.9
-
-<!-- SEG:m68791:entry:auto-361 -->
-36.0
-
-<!-- SEG:m68791:entry:auto-362 -->
-35.4
-
-<!-- SEG:m68791:entry:auto-363 -->
-[[[i:A]]][[sub:0]] ([[i:M]])
-
-<!-- SEG:m68791:entry:auto-364 -->
-[[i:k]] [[MATH:82]] 10[[sup:3]] (s[[sup:−1]])
-
-<!-- SEG:m68791:entry:auto-365 -->
 4.88
 
-<!-- SEG:m68791:entry:auto-366 -->
-2.45
-
-<!-- SEG:m68791:entry:auto-367 -->
+<!-- SEG:m68791:entry:auto-348 -->
 3.52
 
-<!-- SEG:m68791:entry:auto-368 -->
-2.51
-
-<!-- SEG:m68791:entry:auto-369 -->
+<!-- SEG:m68791:entry:auto-349 -->
 2.29
 
-<!-- SEG:m68791:entry:auto-370 -->
-2.53
-
-<!-- SEG:m68791:entry:auto-371 -->
+<!-- SEG:m68791:entry:auto-350 -->
 1.81
 
-<!-- SEG:m68791:entry:auto-372 -->
-2.58
-
-<!-- SEG:m68791:entry:auto-373 -->
+<!-- SEG:m68791:entry:auto-351 -->
 5.33
 
-<!-- SEG:m68791:entry:auto-374 -->
-2.36
-
-<!-- SEG:m68791:entry:auto-375 -->
+<!-- SEG:m68791:entry:auto-352 -->
 4.05
 
-<!-- SEG:m68791:entry:auto-376 -->
-2.47
-
-<!-- SEG:m68791:entry:auto-377 -->
+<!-- SEG:m68791:entry:auto-353 -->
 2.95
 
-<!-- SEG:m68791:entry:auto-378 -->
-2.48
-
-<!-- SEG:m68791:entry:auto-379 -->
+<!-- SEG:m68791:entry:auto-354 -->
 1.72
 
+<!-- SEG:m68791:entry:auto-355 -->
+[[i:t]] (s)
+
+<!-- SEG:m68791:entry:auto-356 -->
+300
+
+<!-- SEG:m68791:entry:auto-357 -->
+300
+
+<!-- SEG:m68791:entry:auto-358 -->
+300
+
+<!-- SEG:m68791:entry:auto-359 -->
+300
+
+<!-- SEG:m68791:entry:auto-360 -->
+180
+
+<!-- SEG:m68791:entry:auto-361 -->
+180
+
+<!-- SEG:m68791:entry:auto-362 -->
+180
+
+<!-- SEG:m68791:entry:auto-363 -->
+180
+
+<!-- SEG:m68791:entry:auto-364 -->
+% Decomposed
+
+<!-- SEG:m68791:entry:auto-365 -->
+52.0
+
+<!-- SEG:m68791:entry:auto-366 -->
+52.9
+
+<!-- SEG:m68791:entry:auto-367 -->
+53.2
+
+<!-- SEG:m68791:entry:auto-368 -->
+53.9
+
+<!-- SEG:m68791:entry:auto-369 -->
+34.6
+
+<!-- SEG:m68791:entry:auto-370 -->
+35.9
+
+<!-- SEG:m68791:entry:auto-371 -->
+36.0
+
+<!-- SEG:m68791:entry:auto-372 -->
+35.4
+
+<!-- SEG:m68791:entry:auto-373 -->
+[[[i:A]]][[sub:0]] ([[i:M]])
+
+<!-- SEG:m68791:entry:auto-374 -->
+[[i:k]] [[MATH:82]] 10[[sup:3]] (s[[sup:−1]])
+
+<!-- SEG:m68791:entry:auto-375 -->
+4.88
+
+<!-- SEG:m68791:entry:auto-376 -->
+2.45
+
+<!-- SEG:m68791:entry:auto-377 -->
+3.52
+
+<!-- SEG:m68791:entry:auto-378 -->
+2.51
+
+<!-- SEG:m68791:entry:auto-379 -->
+2.29
+
 <!-- SEG:m68791:entry:auto-380 -->
+2.53
+
+<!-- SEG:m68791:entry:auto-381 -->
+1.81
+
+<!-- SEG:m68791:entry:auto-382 -->
+2.58
+
+<!-- SEG:m68791:entry:auto-383 -->
+5.33
+
+<!-- SEG:m68791:entry:auto-384 -->
+2.36
+
+<!-- SEG:m68791:entry:auto-385 -->
+4.05
+
+<!-- SEG:m68791:entry:auto-386 -->
+2.47
+
+<!-- SEG:m68791:entry:auto-387 -->
+2.95
+
+<!-- SEG:m68791:entry:auto-388 -->
+2.48
+
+<!-- SEG:m68791:entry:auto-389 -->
+1.72
+
+<!-- SEG:m68791:entry:auto-390 -->
 2.43

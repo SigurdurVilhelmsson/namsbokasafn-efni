@@ -43,6 +43,9 @@ Although there are many different possible orientations the two molecules can ha
 <!-- SEG:m68793:caption:CNX_Chem_12_05_COandO2-caption -->
 Illustrated are two collisions that might take place between carbon monoxide and oxygen molecules. The orientation of the colliding molecules partially determines whether a reaction between the two molecules will occur.
 
+<!-- SEG:m68793:alt:fs-idm101946976-alt -->
+A diagram is shown that illustrates two possible collisions between C O and O subscript 2. In the diagram, oxygen atoms are represented as red spheres and carbon atoms are represented as black spheres. The diagram is divided into upper and lower halves by a horizontal dashed line. At the top left, a C O molecule is shown striking an O subscript 2 molecule such that the O atom from the C O molecule is at the point of collision. Surrounding this collision are a mix of molecules of C O, and O subscript 2 of varying sizes. At the top middle region of the figure, two separated O atoms are shown as red spheres with the label, “Oxygen to oxygen,” beneath them. To the upper right, “No reaction” is written. Similarly in the lower left of the diagram, a C O molecule is shown striking an O subscript 2 molecule such that the C atom from the C O molecule is at the point of collision. Surrounding this collision are a mix of molecules of C O, and O subscript 2 of varying sizes. At the lower middle region of the figure, a black sphere and a red spheres are shown with the label, “Carbon to oxygen,” beneath them. To the lower right, “More C O subscript 2 formation” is written and three models of C O subscript 2 composed each of a single central black sphere and two red spheres in a linear arrangement are shown.
+
 <!-- SEG:m68793:para:fs-idm58992896 -->
 If the collision does take place with the correct orientation, there is still no guarantee that the reaction will proceed to form carbon dioxide. In addition to a proper orientation, the collision must also occur with sufficient energy to result in product formation. When reactant species collide with both proper orientation and adequate energy, they combine to form an unstable species called an [[term:activated complex|term-00002]] or a [[term:transition state|term-00003]]. These species are very short lived and usually undetectable by most analytical instruments. In some cases, sophisticated spectral measurements have been used to observe transition states.
 
@@ -64,6 +67,9 @@ These [[term:reaction diagrams|term-00005]] are widely used in chemical kinetics
 <!-- SEG:m68793:caption:CNX_Chem_12_05_RCooDgm-caption -->
 Reaction diagram for the exothermic reaction [[MATH:3]]
 
+<!-- SEG:m68793:alt:fs-idp10189104-alt -->
+A graph is shown with the label, “Extent of reaction,” bon the x-axis and the label, “Energy,” on the y-axis. Above the x-axis, a portion of a curve is labeled “A plus B.” From the right end of this region, the concave down curve continues upward to reach a maximum near the height of the y-axis. The peak of this curve is labeled, “Transition state.” A double sided arrow extends from a dashed red horizontal line that originates at the y-axis at a common endpoint with the curve to the peak of the curve. This arrow is labeled “E subscript a.” A second horizontal red dashed line segment is drawn from the right end of the black curve left to the vertical axis at a level significantly lower than the initial “A plus B” labeled end of the curve. The end of the curve that is shared with this segment is labeled, “C plus D.” The curve, which was initially dashed, continues as a solid curve from the maximum to its endpoint at the right side of the diagram. A second double sided arrow is shown. This arrow extends between the two dashed horizontal lines and is labeled, “capital delta H.”
+
 <!-- SEG:m68793:para:fs-idm93458160 -->
 The [[term:Arrhenius equation|term-00006]] relates the activation energy and the rate constant, [[i:k]], for many chemical reactions:
 
@@ -81,6 +87,9 @@ The exponential term also describes the effect of temperature on reaction rate. 
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_SuccessR-caption -->
 Molecular energy distributions showing numbers of molecules with energies exceeding (a) two different activation energies at a given temperature, and (b) a given activation energy at two different temperatures.
+
+<!-- SEG:m68793:alt:fs-idm214984320-alt -->
+Two graphs are shown each with an x-axis label of “Kinetic energy” and a y-axis label of “Fraction of molecules.” Each contains a positively skewed curve indicated in red that begins at the origin and approaches the x-axis at the right side of the graph. In a, a small area under the far right end of the curve is shaded orange. An arrow points down from above the curve to the left end of this region where the shading begins. This arrow is labeled, “Higher activation energy, E subscript a.” In b, the same red curve appears, and a second curve is drawn in black. It is also positively skewed, but reaches a lower maximum value and takes on a broadened appearance as compared to the curve in red. In this graph, the red curve is labeled, “T subscript 1” and the black curve is labeled, “T subscript 2.” In the open space at the upper right on the graph is the label, “T subscript 1 less than T subscript 2.” As with the first graph, the region under the curves at the far right is shaded orange and a downward arrow labeled “E subscript a” points to the left end of this shaded region.
 
 <!-- SEG:m68793:para:fs-idm217118448 -->
 A convenient approach for determining [[i:E]][[sub:a]] for a reaction involves the measurement of [[i:k]] at two or more different temperatures and using an alternate version of the Arrhenius equation that takes the form of a linear equation
@@ -136,80 +145,83 @@ Answer:
 <!-- SEG:m68793:para:fs-idm147992368 -->
 1.1 [[MATH:10]] 10[[sup:5]] J mol[[sup:−1]] or 110 kJ mol[[sup:−1]]
 
-<!-- SEG:m68793:entry:auto-47 -->
+<!-- SEG:m68793:entry:auto-50 -->
 [[i:T]] (K)
 
-<!-- SEG:m68793:entry:auto-48 -->
+<!-- SEG:m68793:entry:auto-51 -->
 [[i:k]] (L/mol/s)
 
-<!-- SEG:m68793:entry:auto-49 -->
+<!-- SEG:m68793:entry:auto-52 -->
 555
 
-<!-- SEG:m68793:entry:auto-50 -->
+<!-- SEG:m68793:entry:auto-53 -->
 3.52 [[MATH:11]] 10[[sup:−7]]
 
-<!-- SEG:m68793:entry:auto-51 -->
+<!-- SEG:m68793:entry:auto-54 -->
 575
 
-<!-- SEG:m68793:entry:auto-52 -->
+<!-- SEG:m68793:entry:auto-55 -->
 1.22 [[MATH:12]] 10[[sup:−6]]
 
-<!-- SEG:m68793:entry:auto-53 -->
+<!-- SEG:m68793:entry:auto-56 -->
 645
 
-<!-- SEG:m68793:entry:auto-54 -->
+<!-- SEG:m68793:entry:auto-57 -->
 8.59 [[MATH:13]] 10[[sup:−5]]
 
-<!-- SEG:m68793:entry:auto-55 -->
+<!-- SEG:m68793:entry:auto-58 -->
 700
 
-<!-- SEG:m68793:entry:auto-56 -->
+<!-- SEG:m68793:entry:auto-59 -->
 1.16 [[MATH:14]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-57 -->
+<!-- SEG:m68793:entry:auto-60 -->
 781
 
-<!-- SEG:m68793:entry:auto-58 -->
+<!-- SEG:m68793:entry:auto-61 -->
 3.95 [[MATH:15]] 10[[sup:−2]]
 
-<!-- SEG:m68793:entry:auto-59 -->
+<!-- SEG:m68793:entry:auto-62 -->
 [[MATH:16]]
 
-<!-- SEG:m68793:entry:auto-60 -->
+<!-- SEG:m68793:entry:auto-63 -->
 ln [[i:k]]
 
-<!-- SEG:m68793:entry:auto-61 -->
+<!-- SEG:m68793:entry:auto-64 -->
 1.80 [[MATH:17]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-62 -->
+<!-- SEG:m68793:entry:auto-65 -->
 −14.860
 
-<!-- SEG:m68793:entry:auto-63 -->
+<!-- SEG:m68793:entry:auto-66 -->
 1.74 [[MATH:18]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-64 -->
+<!-- SEG:m68793:entry:auto-67 -->
 −13.617
 
-<!-- SEG:m68793:entry:auto-65 -->
+<!-- SEG:m68793:entry:auto-68 -->
 1.55 [[MATH:19]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-66 -->
+<!-- SEG:m68793:entry:auto-69 -->
 −9.362
 
-<!-- SEG:m68793:entry:auto-67 -->
+<!-- SEG:m68793:entry:auto-70 -->
 1.43 [[MATH:20]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-68 -->
+<!-- SEG:m68793:entry:auto-71 -->
 −6.759
 
-<!-- SEG:m68793:entry:auto-69 -->
+<!-- SEG:m68793:entry:auto-72 -->
 1.28 [[MATH:21]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-70 -->
+<!-- SEG:m68793:entry:auto-73 -->
 −3.231
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_ArrhPlot-caption -->
 This graph shows the linear relationship between ln [[i:k]] and [[MATH:22]] for the reaction [[MATH:23]] according to the Arrhenius equation.
+
+<!-- SEG:m68793:alt:fs-idp9885216-alt -->
+A graph is shown with the label “1 divided by T ( K superscript negative 1 )” on the x-axis and “l n k” on the y-axis. The horizontal axis has markings at 1.4 times 10 superscript negative 3, 1.6 times 10 superscript negative 3, and 1.8 times 10 superscript negative 3. The y-axis shows markings at intervals of 2 from negative 14 through negative 2. A decreasing linear trend line is drawn through five points at the coordinates: (1.28 times 10 superscript negative 3, negative 3.231), (1.43 times 10 superscript negative 3, negative 6.759), (1.55 times 10 superscript negative 3, negative 9.362), (1.74 times 10 superscript negative 3, negative 13.617), and (1.80 times 10 superscript negative 3, negative 14.860). A vertical dashed line is drawn from a point just left of the data point nearest the y-axis. Similarly, a horizontal dashed line is draw from a point just above the data point closest to the x-axis. These dashed lines intersect to form a right triangle with a vertical leg label of “capital delta l n k” and a horizontal leg label of “capital delta 1 divided by T.”
 
 <!-- SEG:m68793:title:fs-idm92128240-title -->
 Key Concepts and Summary
@@ -220,13 +232,13 @@ Chemical reactions typically require collisions between reactant species. These 
 <!-- SEG:m68793:title:fs-idp2946768-title -->
 Key Equations
 
-<!-- SEG:m68793:entry:auto-75 -->
+<!-- SEG:m68793:entry:auto-79 -->
 [[MATH:24]]
 
-<!-- SEG:m68793:entry:auto-76 -->
+<!-- SEG:m68793:entry:auto-80 -->
 [[MATH:25]]
 
-<!-- SEG:m68793:entry:auto-77 -->
+<!-- SEG:m68793:entry:auto-81 -->
 [[MATH:26]]
 
 <!-- SEG:m68793:title:fs-idm193786736-title -->
@@ -379,50 +391,50 @@ reaction diagram
 <!-- SEG:m68793:glossary-def:fs-idm355773584-def -->
 used in chemical kinetics to illustrate various properties of a reaction
 
-<!-- SEG:m68793:entry:auto-128 -->
+<!-- SEG:m68793:entry:auto-132 -->
 Temperature (K)
 
-<!-- SEG:m68793:entry:auto-129 -->
+<!-- SEG:m68793:entry:auto-133 -->
 [[i:k]] (L mol[[sup:−1]] s[[sup:−1]])
 
-<!-- SEG:m68793:entry:auto-130 -->
+<!-- SEG:m68793:entry:auto-134 -->
 555
 
-<!-- SEG:m68793:entry:auto-131 -->
+<!-- SEG:m68793:entry:auto-135 -->
 6.23 [[MATH:33]] 10[[sup:−7]]
 
-<!-- SEG:m68793:entry:auto-132 -->
+<!-- SEG:m68793:entry:auto-136 -->
 575
 
-<!-- SEG:m68793:entry:auto-133 -->
+<!-- SEG:m68793:entry:auto-137 -->
 2.42 [[MATH:34]] 10[[sup:−6]]
 
-<!-- SEG:m68793:entry:auto-134 -->
+<!-- SEG:m68793:entry:auto-138 -->
 645
 
-<!-- SEG:m68793:entry:auto-135 -->
+<!-- SEG:m68793:entry:auto-139 -->
 1.44 [[MATH:35]] 10[[sup:−4]]
 
-<!-- SEG:m68793:entry:auto-136 -->
+<!-- SEG:m68793:entry:auto-140 -->
 700
 
-<!-- SEG:m68793:entry:auto-137 -->
+<!-- SEG:m68793:entry:auto-141 -->
 2.01 [[MATH:36]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-138 -->
+<!-- SEG:m68793:entry:auto-142 -->
 [[i:T]] (K)
 
-<!-- SEG:m68793:entry:auto-139 -->
+<!-- SEG:m68793:entry:auto-143 -->
 [[i:k]] (s[[sup:−1]])
 
-<!-- SEG:m68793:entry:auto-140 -->
+<!-- SEG:m68793:entry:auto-144 -->
 293
 
-<!-- SEG:m68793:entry:auto-141 -->
+<!-- SEG:m68793:entry:auto-145 -->
 0.054
 
-<!-- SEG:m68793:entry:auto-142 -->
+<!-- SEG:m68793:entry:auto-146 -->
 298
 
-<!-- SEG:m68793:entry:auto-143 -->
+<!-- SEG:m68793:entry:auto-147 -->
 0.100

@@ -1,0 +1,170 @@
+{
+  "moduleId": "m00286",
+  "title": {
+    "segmentId": "m00286:title:auto-1",
+    "text": "Carbonyl Condensations with Enamines: The Stork Enamine Reaction"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c99795ce-76b9-492c-b1ad-8f75de9343b5"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00286:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00286:alt:fig-00001-alt",
+          "text": "The reaction shows cyclohexanone and pyrrolidine, yielding 1-pyrrolidinocyclohexene (eighty-seven percent) and water. The cyclohexene ring is connected to the pyrrolidine nitrogen atom through a single bond, in the structure."
+        },
+        "src": "../../media/OChem_23_11_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00286:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00286:alt:fig-00002-alt",
+          "text": "Resonance structures with arrow-pushing for enolate ion and enamine. In both, electrons are pushed from O or N toward C, and from carbon-carbon double bond toward furthest carbon."
+        },
+        "src": "../../media/OChem_23_11_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00286:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00286:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00286:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00286:alt:fig-00003-alt",
+          "text": "The reaction shows cyclohexanone with pyrrolidine to form enamine in step one. The enamine reacts with 3-buten-2-one (step two), giving intermediates which, on hydrolysis, produce 1,5-diketone (seventy-one percent) and pyrrolidine."
+        },
+        "src": "../../media/OChem_23_11_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00286:para:para-00005"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00286:example-title:exam-00001-title",
+        "text": "Using the Stork Enamine Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00286:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00286:para:para-00007",
+          "title": {
+            "segmentId": "m00286:para-title:para-00007-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "title": {
+            "segmentId": "m00286:para-title:para-00008-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00286:alt:fig-00004-alt",
+          "text": "Structure of benzene ring fused to cyclohexanone at cyclohexanone C 2 and C 3. Cyclohexanone C 6 is attached to the fourth carbon of pentan-2-one."
+        },
+        "src": "../../media/OChem_23_11_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00286:alt:fig-00005-alt",
+          "text": "The reaction of ketone with pyrrolidine forms an intermediate that undergoes Michael addition with pent-3-en-2one followed by hydronium to give a product with an extended side chain."
+        },
+        "src": "../../media/OChem_23_11_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00286:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 11
+}

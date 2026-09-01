@@ -16,6 +16,9 @@ During the seventeenth and especially eighteenth centuries, driven both by a des
 <!-- SEG:m68751:caption:CNX_Chem_09_02_Ballooning-caption -->
 In 1783, the first (a) hydrogen-filled balloon flight, (b) manned hot air balloon flight, and (c) manned hydrogen-filled balloon flight occurred. When the hydrogen-filled balloon depicted in (a) landed, the frightened villagers of Gonesse reportedly destroyed it with pitchforks and knives. The launch of the latter was reportedly viewed by 400,000 people in Paris.
 
+<!-- SEG:m68751:alt:fs-idm140387808-alt -->
+This figure includes three images. Image a is a black and white image of a hydrogen balloon apparently being deflated by a mob of people. In image b, a blue, gold, and red balloon is being held to the ground with ropes while positioned above a platform from which smoke is rising beneath the balloon. In c, an image is shown in grey on a peach-colored background of an inflated balloon with vertical striping in the air. It appears to have a basket attached to its lower side. A large stately building appears in the background.
+
 <!-- SEG:m68751:title:fs-idm39174352-title -->
 Pressure and Temperature: Amontons’s Law
 
@@ -25,20 +28,26 @@ Imagine filling a rigid container attached to a pressure gauge with gas and then
 <!-- SEG:m68751:caption:CNX_Chem_09_01_Amontons1-caption -->
 The effect of temperature on gas pressure: When the hot plate is off, the pressure of the gas in the sphere is relatively low. As the gas is heated, the pressure of the gas in the sphere increases.
 
+<!-- SEG:m68751:alt:fs-idp8042736-alt -->
+This figure includes three similar diagrams. In the first diagram to the left, a rigid spherical container of a gas to which a pressure gauge is attached at the top is placed in a large beaker of water, indicated in light blue, atop a hot plate. The needle on the pressure gauge points to the far left on the gauge. The diagram is labeled “low P” above and “hot plate off” below. The second similar diagram also has the rigid spherical container of gas placed in a large beaker from which light blue wavy line segments extend from the top of the liquid in the beaker. The beaker is situated on top of a slightly reddened circular area. The needle on the pressure gauge points straight up, or to the middle on the gauge. The diagram is labeled “medium P” above and “hot plate on medium” below. The third diagram also has the rigid spherical container of gas placed in a large beaker in which bubbles appear near the liquid surface and several wavy light blue line segments extend from the surface out of the beaker. The beaker is situated on top of a bright red circular area. The needle on the pressure gauge points to the far right on the gauge. The diagram is labeled “high P” above and “hot plate on high” below.
+
 <!-- SEG:m68751:para:fs-idm111816736 -->
 This relationship between temperature and pressure is observed for any sample of gas confined to a constant volume. An example of experimental pressure-temperature data is shown for a sample of air under these conditions in [[xref:CNX_Chem_09_02_Amontons2]]. We find that temperature and pressure are linearly related, and if the temperature is on the kelvin scale, then [[i:P]] and [[i:T]] are directly proportional (again, when [[i:volume and moles of gas are held constant]]); if the temperature on the kelvin scale increases by a certain factor, the gas pressure increases by the same factor.
 
 <!-- SEG:m68751:caption:CNX_Chem_09_02_Amontons2-caption -->
 For a constant volume and amount of air, the pressure and temperature are directly proportional, provided the temperature is in kelvin. (Measurements cannot be made at lower temperatures because of the condensation of the gas.) When this line is extrapolated to lower pressures, it reaches a pressure of 0 at –273 °C, which is 0 on the kelvin scale and the lowest possible temperature, called absolute zero.
 
+<!-- SEG:m68751:alt:fs-idm113341280-alt -->
+This figure includes a table and a graph. The table has 3 columns and 7 rows. The first row is a header, which labels the columns “Temperature, degrees C,” “Temperature, K,” and “Pressure, kPa.” The first column contains the following values from top to bottom: negative 100, negative 50, 0, 50, 100, and 150. The second column contains the values, from top to bottom, 173, 223, 273, 323, 373, and 423. The third column contains the values 36.0, 46.4, 56.7, 67.1, 77.5, and 88.0. A graph appears to the right of the table. The horizontal axis is labeled “Temperature ( K ).” with markings and labels provided for multiples of 100 beginning at 0 and ending at 500. The vertical axis is labeled “Pressure ( kPa )” with markings and labels provided for multiples of 10, beginning at 0 and ending at 100. Six data points from the table are plotted on the graph with black dots. These dots are connected with a solid black line. A dashed line extends from the data point furthest to the left to the origin. The graph shows a positive linear trend.
+
 <!-- SEG:m68751:para:fs-idm33029376 -->
-Guillaume Amontons was the first to empirically establish the relationship between the pressure and the temperature of a gas (~1700), and Joseph Louis Gay-Lussac determined the relationship more precisely (~1800). Because of this, the [[i:P]]-[[i:T]] relationship for gases is known as either {{term}}Amontons’s law{{/term}} or {{term}}Gay-Lussac’s law{{/term}}. Under either name, it states that [[i:the pressure of a given amount of gas is directly proportional to its temperature on the kelvin scale when the volume is held constant]]. Mathematically, this can be written:
+Guillaume Amontons was the first to empirically establish the relationship between the pressure and the temperature of a gas (~1700), and Joseph Louis Gay-Lussac determined the relationship more precisely (~1800). Because of this, the [[i:P]]-[[i:T]] relationship for gases is known as either [[term:Amontons’s law|term-00001]] or [[term:Gay-Lussac’s law|term-00002]]. Under either name, it states that [[i:the pressure of a given amount of gas is directly proportional to its temperature on the kelvin scale when the volume is held constant]]. Mathematically, this can be written:
 
 <!-- SEG:m68751:para:fs-idp12374848 -->
 where ∝ means “is proportional to,” and [[i:k]] is a proportionality constant that depends on the identity, amount, and volume of the gas.
 
 <!-- SEG:m68751:para:fs-idm100617456 -->
-For a confined, constant volume of gas, the ratio [[MATH:1]] is therefore constant (i.e., [[MATH:2]]). If the gas is initially in “Condition 1” (with [[i:P]] = [[i:P]][[sub:1]] and [[i:T]] = [[i:T]][[sub:1]]), and then changes to “Condition 2” (with [[i:P]] = [[i:P]][[sub:2]] and [[i:T]] = [[i:T]][[sub:2]]), we have that [[MATH:3]] and [[MATH:4]] which reduces to [[MATH:5]] This equation is useful for pressure-temperature calculations for a confined gas at constant volume. Note that temperatures must be on the kelvin scale for any gas law calculations (0 on the kelvin scale and the lowest possible temperature is called {{term}}absolute zero{{/term}}). (Also note that there are at least three ways we can describe how the pressure of a gas changes as its temperature changes: We can use a table of values, a graph, or a mathematical equation.)
+For a confined, constant volume of gas, the ratio [[MATH:1]] is therefore constant (i.e., [[MATH:2]]). If the gas is initially in “Condition 1” (with [[i:P]] = [[i:P]][[sub:1]] and [[i:T]] = [[i:T]][[sub:1]]), and then changes to “Condition 2” (with [[i:P]] = [[i:P]][[sub:2]] and [[i:T]] = [[i:T]][[sub:2]]), we have that [[MATH:3]] and [[MATH:4]] which reduces to [[MATH:5]] This equation is useful for pressure-temperature calculations for a confined gas at constant volume. Note that temperatures must be on the kelvin scale for any gas law calculations (0 on the kelvin scale and the lowest possible temperature is called [[term:absolute zero|term-00003]]). (Also note that there are at least three ways we can describe how the pressure of a gas changes as its temperature changes: We can use a table of values, a graph, or a mathematical equation.)
 
 <!-- SEG:m68751:example-title:fs-idm66260928-title -->
 Predicting Change in Pressure with Temperature
@@ -94,8 +103,11 @@ These examples of the effect of temperature on the volume of a given amount of a
 <!-- SEG:m68751:caption:CNX_Chem_09_02_Charles2-caption -->
 The volume and temperature are linearly related for 1 mole of methane gas at a constant pressure of 1 atm. If the temperature is in kelvin, volume and temperature are directly proportional. The line stops at 111 K because methane liquefies at this temperature; when extrapolated, it intersects the graph’s origin, representing a temperature of absolute zero.
 
+<!-- SEG:m68751:alt:fs-idm62135472-alt -->
+This figure includes a table and a graph. The table has 3 columns and 6 rows. The first row is a header, which labels the columns “Temperature, degrees C,” “Temperature, K,” and “Pressure, k P a.” The first column contains the values from top to bottom negative 100, negative 50, 0, 100, and 200. The second column contains the values from top to bottom 173, 223, 273, 373, and 473. The third column contains the values 14.10, 18.26, 22.40, 30.65, and 38.88. A graph appears to the right of the table. The horizontal axis is labeled “Temperature ( K ).” with markings and labels provided for multiples of 100 beginning at 0 and ending at 300. The vertical axis is labeled “Volume ( L )” with marking and labels provided for multiples of 10, beginning at 0 and ending at 30. Five data points from the table are plotted on the graph with black dots. These dots are connected with a solid black line. The graph shows a positive linear trend.
+
 <!-- SEG:m68751:para:fs-idp38621856 -->
-The relationship between the volume and temperature of a given amount of gas at constant pressure is known as Charles’s law in recognition of the French scientist and balloon flight pioneer Jacques Alexandre César Charles. {{term}}Charles’s law{{/term}} states that [[i:the volume of a given amount of gas is directly proportional to its temperature on the kelvin scale when the pressure is held constant]].
+The relationship between the volume and temperature of a given amount of gas at constant pressure is known as Charles’s law in recognition of the French scientist and balloon flight pioneer Jacques Alexandre César Charles. [[term:Charles’s law|term-00004]] states that [[i:the volume of a given amount of gas is directly proportional to its temperature on the kelvin scale when the pressure is held constant]].
 
 <!-- SEG:m68751:para:fs-idp174747472 -->
 Mathematically, this can be written as:
@@ -181,6 +193,9 @@ If we partially fill an airtight syringe with air, the syringe contains a specif
 <!-- SEG:m68751:caption:CNX_Chem_09_03_BoylesLaw1-caption -->
 When a gas occupies a smaller volume, it exerts a higher pressure; when it occupies a larger volume, it exerts a lower pressure (assuming the amount of gas and the temperature do not change). Since [[i:P]] and [[i:V]] are inversely proportional, a graph of [[MATH:11]] vs. [[i:V]] is linear.
 
+<!-- SEG:m68751:alt:fs-idm8799376-alt -->
+This figure contains a diagram and two graphs. The diagram shows a syringe labeled with a scale in m l or c c with multiples of 5 labeled beginning at 5 and ending at 30. The markings halfway between these measurements are also provided. Attached at the top of the syringe is a pressure gauge with a scale marked by fives from 40 on the left to 5 on the right. The gauge needle rests between 10 and 15, slightly closer to 15. The syringe plunger position indicates a volume measurement about halfway between 10 and 15 m l or c c. The first graph is labeled “V ( m L )” on the horizontal axis and “P ( p s i )” on the vertical axis. Points are labeled at 5, 10, 15, 20, and 25 m L with corresponding values of 39.0, 19.5, 13.0, 9.8, and 6.5 p s i. The points are connected with a smooth curve that is declining at a decreasing rate of change. The second graph is labeled “V ( m L )” on the horizontal axis and “1 divided by P ( p s i )” on the vertical axis. The horizontal axis is labeled at multiples of 5, beginning at zero and extending up to 35 m L. The vertical axis is labeled by multiples of 0.02, beginning at 0 and extending up to 0.18. Six points indicated by black dots on this graph are connected with a black line segment showing a positive linear trend.
+
 <!-- SEG:m68751:para:fs-idm298625584 -->
 Unlike the [[i:P]]-[[i:T]] and [[i:V]]-[[i:T]] relationships, pressure and volume are not directly proportional to each other. Instead, [[i:P]] and [[i:V]] exhibit inverse proportionality: Increasing the pressure results in a decrease of the volume of the gas. Mathematically this can be written:
 
@@ -190,8 +205,11 @@ with [[i:k]] being a constant. Graphically, this relationship is shown by the st
 <!-- SEG:m68751:caption:CNX_Chem_09_02_Boyleslaw2-caption -->
 The relationship between pressure and volume is inversely proportional. (a) The graph of [[i:P]] vs. [[i:V]] is a hyperbola, whereas (b) the graph of [[MATH:14]] vs. [[i:V]] is linear.
 
+<!-- SEG:m68751:alt:fs-idm137483904-alt -->
+This diagram shows two graphs. In a, a graph is shown with volume on the horizontal axis and pressure on the vertical axis. A curved line is shown on the graph showing a decreasing trend with a decreasing rate of change. In b, a graph is shown with volume on the horizontal axis and one divided by pressure on the vertical axis. A line segment, beginning at the origin of the graph, shows a positive, linear trend.
+
 <!-- SEG:m68751:para:fs-idm207692112 -->
-The relationship between the volume and pressure of a given amount of gas at constant temperature was first published by the English natural philosopher Robert Boyle over 300 years ago. It is summarized in the statement now known as {{term}}Boyle’s law{{/term}}: [[i:The volume of a given amount of gas held at constant temperature is inversely proportional to the pressure under which it is measured.]]
+The relationship between the volume and pressure of a given amount of gas at constant temperature was first published by the English natural philosopher Robert Boyle over 300 years ago. It is summarized in the statement now known as [[term:Boyle’s law|term-00005]]: [[i:The volume of a given amount of gas held at constant temperature is inversely proportional to the pressure under which it is measured.]]
 
 <!-- SEG:m68751:example-title:fs-idp10418864-title -->
 Volume of a Gas Sample
@@ -268,11 +286,14 @@ What do you do about 20 times per minute for your whole life, without break, and
 <!-- SEG:m68751:caption:CNX_Chem_09_02_BoylesLaw4-caption -->
 Breathing occurs because expanding and contracting lung volume creates small pressure differences between your lungs and your surroundings, causing air to be drawn into and forced out of your lungs.
 
+<!-- SEG:m68751:alt:fs-idm198513808-alt -->
+This figure contains two diagrams of a cross section of the human head and torso. The first diagram on the left is labeled “Inspiration.” It shows curved arrows in gray proceeding through the nasal passages and mouth to the lungs. An arrow points downward from the diaphragm, which is relatively flat, just beneath the lungs. This arrow is labeled “Diaphragm contracts.” At the entrance to the mouth and nasal passages, a label of P subscript lungs equals 1 dash 3 torr lower” is provided. The second, similar diagram, which is labeled “Expiration,” reverses the direction of both arrows. Arrows extend from the lungs out through the nasal passages and mouth. Similarly, an arrow points up to the diaphragm, showing a curved diaphragm and lungs reduced in size from the previous image. This arrow is labeled “Diaphragm relaxes.” At the entrance to the mouth and nasal passages, a label of P subscript lungs equals 1 dash 3 torr higher” is provided.
+
 <!-- SEG:m68751:title:fs-idp47884080-title -->
 Moles of Gas and Volume: Avogadro’s Law
 
 <!-- SEG:m68751:para:fs-idm52917120 -->
-The Italian scientist Amedeo Avogadro advanced a hypothesis in 1811 to account for the behavior of gases, stating that equal volumes of all gases, measured under the same conditions of temperature and pressure, contain the same number of molecules. Over time, this relationship was supported by many experimental observations as expressed by {{term}}Avogadro’s law{{/term}}: [[i:For a confined gas, the volume (V) and number of moles (n) are directly proportional if the pressure and temperature both remain constant]].
+The Italian scientist Amedeo Avogadro advanced a hypothesis in 1811 to account for the behavior of gases, stating that equal volumes of all gases, measured under the same conditions of temperature and pressure, contain the same number of molecules. Over time, this relationship was supported by many experimental observations as expressed by [[term:Avogadro’s law|term-00006]]: [[i:For a confined gas, the volume (V) and number of moles (n) are directly proportional if the pressure and temperature both remain constant]].
 
 <!-- SEG:m68751:para:fs-idp65662512 -->
 In equation form, this is written as:
@@ -302,13 +323,13 @@ Charles’s law: [[MATH:19]] = constant at constant [[i:P]] and [[i:n]]
 Avogadro’s law: [[MATH:20]] = constant at constant [[i:P]] and [[i:T]]
 
 <!-- SEG:m68751:para:fs-idp47645536 -->
-Combining these four laws yields the {{term}}ideal gas law{{/term}}, a relation between the pressure, volume, temperature, and number of moles of a gas:
+Combining these four laws yields the [[term:ideal gas law|term-00007]], a relation between the pressure, volume, temperature, and number of moles of a gas:
 
 <!-- SEG:m68751:para:fs-idp83793536 -->
-where [[i:P]] is the pressure of a gas, [[i:V]] is its volume, [[i:n]] is the number of moles of the gas, [[i:T]] is its temperature on the kelvin scale, and [[i:R]] is a constant called the {{term}}ideal gas constant{{/term}} or the universal gas constant. The units used to express pressure, volume, and temperature will determine the proper form of the gas constant as required by dimensional analysis, the most commonly encountered values being 0.08206 L atm mol[[sup:–1]] K[[sup:–1]] and 8.314 kPa L mol[[sup:–1]] K[[sup:–1]].
+where [[i:P]] is the pressure of a gas, [[i:V]] is its volume, [[i:n]] is the number of moles of the gas, [[i:T]] is its temperature on the kelvin scale, and [[i:R]] is a constant called the [[term:ideal gas constant|term-00008]] or the universal gas constant. The units used to express pressure, volume, and temperature will determine the proper form of the gas constant as required by dimensional analysis, the most commonly encountered values being 0.08206 L atm mol[[sup:–1]] K[[sup:–1]] and 8.314 kPa L mol[[sup:–1]] K[[sup:–1]].
 
 <!-- SEG:m68751:para:fs-idp100115520 -->
-Gases whose properties of [[i:P]], [[i:V]], and [[i:T]] are accurately described by the ideal gas law (or the other gas laws) are said to exhibit [[i:ideal behavior]] or to approximate the traits of an {{term}}ideal gas{{/term}}. An ideal gas is a hypothetical construct that may be used along with [[i:kinetic molecular theory]] to effectively explain the gas laws as will be described in a later module of this chapter. Although all the calculations presented in this module assume ideal behavior, this assumption is only reasonable for gases under conditions of relatively low pressure and high temperature. In the final module of this chapter, a modified gas law will be introduced that accounts for the [[i:non-ideal]] behavior observed for many gases at relatively high pressures and low temperatures.
+Gases whose properties of [[i:P]], [[i:V]], and [[i:T]] are accurately described by the ideal gas law (or the other gas laws) are said to exhibit [[i:ideal behavior]] or to approximate the traits of an [[term:ideal gas|term-00009]]. An ideal gas is a hypothetical construct that may be used along with [[i:kinetic molecular theory]] to effectively explain the gas laws as will be described in a later module of this chapter. Although all the calculations presented in this module assume ideal behavior, this assumption is only reasonable for gases under conditions of relatively low pressure and high temperature. In the final module of this chapter, a modified gas law will be introduced that accounts for the [[i:non-ideal]] behavior observed for many gases at relatively high pressures and low temperatures.
 
 <!-- SEG:m68751:para:fs-idp9263600 -->
 The ideal gas equation contains five terms, the gas constant [[i:R]] and the variable properties [[i:P]], [[i:V]], [[i:n]], and [[i:T]]. Specifying any four of these terms will permit use of the ideal gas law to calculate the fifth term as demonstrated in the following example exercises.
@@ -388,6 +409,9 @@ Answer:
 <!-- SEG:m68751:caption:CNX_Chem_09_02_Scuba-caption -->
 Scuba divers use compressed air to breathe while underwater. (credit: modification of work by Mark Goodchild)
 
+<!-- SEG:m68751:alt:fs-idm23330944-alt -->
+This photograph shows a scuba diver underwater with a tank on his or her back and bubbles ascending from the breathing apparatus.
+
 <!-- SEG:m68751:note-title:fs-idp8804032-title -->
 The Interdependence between Ocean Depth and Pressure in Scuba Diving
 
@@ -400,14 +424,20 @@ Pressure increases with ocean depth, and the pressure changes most rapidly as di
 <!-- SEG:m68751:caption:CNX_Chem_09_02_GreatBarri-caption -->
 Scuba divers, whether at the Great Barrier Reef or in the Caribbean, must be aware of buoyancy, pressure equalization, and the amount of time they spend underwater, to avoid the risks associated with pressurized gases in the body. (credit: Kyle Taylor)
 
+<!-- SEG:m68751:alt:fs-idm71283872-alt -->
+This picture shows colorful underwater corals and anemones in hues of yellow, orange, green, and brown, surrounded by water that appears blue in color.
+
 <!-- SEG:m68751:title:fs-idp117090992-title -->
 Standard Conditions of Temperature and Pressure
 
 <!-- SEG:m68751:para:fs-idp92943776 -->
-We have seen that the volume of a given quantity of gas and the number of molecules (moles) in a given volume of gas vary with changes in pressure and temperature. Chemists sometimes make comparisons against a {{term}}standard temperature and pressure (STP){{/term}} for reporting properties of gases: 273.15 K and 1 atm (101.325 kPa). {{fn}}The IUPAC definition of standard pressure was changed from 1 atm to 1 bar (100 kPa) in 1982, but the prior definition remains in use by many literature resources and will be used in this text.{{/fn}} At STP, one mole of an ideal gas has a volume of about 22.4 L—this is referred to as the {{term}}standard molar volume{{/term}} ([[xref:CNX_Chem_09_02_HENH3O2]]).
+We have seen that the volume of a given quantity of gas and the number of molecules (moles) in a given volume of gas vary with changes in pressure and temperature. Chemists sometimes make comparisons against a [[term:standard temperature and pressure (STP)|term-00010]] for reporting properties of gases: 273.15 K and 1 atm (101.325 kPa). [[fn:The IUPAC definition of standard pressure was changed from 1 atm to 1 bar (100 kPa) in 1982, but the prior definition remains in use by many literature resources and will be used in this text.|fs-idm320555200]] At STP, one mole of an ideal gas has a volume of about 22.4 L—this is referred to as the [[term:standard molar volume|term-00011]] ([[xref:CNX_Chem_09_02_HENH3O2]]).
 
 <!-- SEG:m68751:caption:CNX_Chem_09_02_HENH3O2-caption -->
 Regardless of its chemical identity, one mole of gas behaving ideally occupies a volume of ~22.4 L at STP.
+
+<!-- SEG:m68751:alt:fs-idp59520544-alt -->
+This figure shows three balloons each filled with He, NH subscript 2, and O subscript 2, respectively. Beneath the first balloon is the label “4 g of He” Beneath the second balloon is the label, “17 g of NH subscript 2.” Beneath the third balloon is the label “32 g of O subscript 2.” Each balloon contains the same number of molecules of their respective gases.
 
 <!-- SEG:m68751:title:fs-idp68486960-title -->
 Key Concepts and Summary
@@ -421,7 +451,7 @@ The equations describing these laws are special cases of the ideal gas law, [[i:
 <!-- SEG:m68751:title:fs-idm157803264-title -->
 Key Equations
 
-<!-- SEG:m68751:entry:auto-142 -->
+<!-- SEG:m68751:entry:auto-152 -->
 [[i:PV]] = [[i:nRT]]
 
 <!-- SEG:m68751:title:fs-idm132049520-title -->
@@ -493,6 +523,9 @@ A balloon inflated with three breaths of air has a volume of 1.7 L. At the same 
 <!-- SEG:m68751:problem:fs-idp28199904 -->
 A weather balloon contains 8.80 moles of helium at a pressure of 0.992 atm and a temperature of 25 °C at ground level. What is the volume of the balloon under these conditions?
 
+<!-- SEG:m68751:alt:fs-idm227684464-alt -->
+This image shows a white balloon that appears to have an attached white card. The balloon is being held by a person in an outdoor setting.
+
 <!-- SEG:m68751:solution:fs-idm244311136 -->
 217 L
 
@@ -561,6 +594,9 @@ For a given amount of gas showing ideal behavior, draw labeled graphs of:
 
 <!-- SEG:m68751:solution:fs-idm121529056 -->
 For a gas exhibiting ideal behavior:[[BR]] [[MEDIA:1]]
+
+<!-- SEG:m68751:alt:fs-idm159072736-alt -->
+Four graphs are shown. In a, Volume is on the horizontal axis and Pressure is on the vertical axis. A downward trend with a decreasing rate of change is shown by a curved line. The label n, P cons is shown on the graph. In b, Temperature is on the horizontal axis and Volume is on the vertical axis. An increasing linear trend is shown by a straight line segment. The label n, P cons is shown on the graph. In c, Temperature is on the horizontal axis and Pressure is on the vertical axis. An increasing linear trend is shown by a straight line segment. The label n, P cons is shown on the graph. In d, Volume is on the horizontal axis and 1 divided by Pressure is on the vertical axis. An increasing linear trend is shown by a straight line segment on the graph. The label n, P cons is shown on the graph.
 
 <!-- SEG:m68751:problem:fs-idm158397552 -->
 A liter of methane gas, CH[[sub:4]], at STP contains more atoms of hydrogen than does a liter of pure hydrogen gas, H[[sub:2]], at STP. Using Avogadro’s law as a starting point, explain why.

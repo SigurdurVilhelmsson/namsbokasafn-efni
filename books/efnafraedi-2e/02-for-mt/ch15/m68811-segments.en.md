@@ -25,6 +25,9 @@ In this solution, an excess of solid AgCl dissolves and dissociates to produce a
 <!-- SEG:m68811:caption:CNX_Chem_15_01_AgCl-caption -->
 Silver chloride is a sparingly soluble ionic solid. When it is added to water, it dissolves slightly and produces a mixture consisting of a very dilute solution of Ag[[sup:+]] and Cl[[sup:–]] ions in equilibrium with undissolved silver chloride.
 
+<!-- SEG:m68811:alt:fs-idp15452416-alt -->
+Two beakers are shown with a bidirectional arrow between them. Both beakers are just over half filled with a clear, colorless liquid. The beaker on the left shows a cubic structure composed of alternating green and slightly larger grey spheres. Evenly distributed in the region outside, 11 space filling models are shown. These are each composed of a central red sphere with two smaller white spheres attached in a bent arrangement. In the beaker on the right, the green and grey spheres are no longer connected in a cubic structure. Nine green spheres, 10 grey spheres, and 11 red and white molecules are evenly mixed and distributed throughout the liquid in the beaker.
+
 <!-- SEG:m68811:para:fs-idp15439888 -->
 The equilibrium constant for solubility equilibria such as this one is called the [[b:solubility product constant, [[i:K]][[sub:sp]]]], in this case
 
@@ -157,6 +160,9 @@ The [[i:K]][[sub:sp]] of AgI is 1.5 [[MATH:10]] 10[[sup:–16]]. Calculate the m
 <!-- SEG:m68811:para:fs-idp646032 -->
 1.2 [[MATH:11]] 10[[sup:–8]] [[i:M]]
 
+<!-- SEG:m68811:alt:fs-idp596176-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), and Equilibrium concentration ( M ). The second column has the header of, “C u B r equilibrium arrow C u superscript positive sign plus B r superscript negative sign.” Under the second column is a subgroup of three rows and three columns. The first column is blank. The second column has the following: 0, positive x, x. The third column has the following 0, positive x, x.
+
 <!-- SEG:m68811:note-title:fs-idp645648-title -->
 Answer:
 
@@ -192,6 +198,9 @@ The [[i:K]][[sub:sp]] of PbI[[sub:2]] is 1.4 [[MATH:15]] 10[[sup:–8]]. Calcula
 
 <!-- SEG:m68811:para:fs-idp833488 -->
 1.5 [[MATH:16]] 10[[sup:–3]] [[i:M]]
+
+<!-- SEG:m68811:alt:fs-idp15423072-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), and Equilibrium concentration ( M ). The second column has the header of, “C a ( O H ) subscript 2 equilibrium arrow C a superscript 2 positive sign plus 2 O H superscript negative sign.” Under the second column is a subgroup of three rows and three columns. The first column is blank. The second column has the following: 0, positive x, x. The third column has the following 0, positive 2 x, 2 x.
 
 <!-- SEG:m68811:note-title:fs-idp833104-title -->
 Answer:
@@ -238,6 +247,9 @@ Answer:
 <!-- SEG:m68811:caption:CNX_Chem_15_01_OilPaints-caption -->
 Oil paints contain pigments that are very slightly soluble in water. In addition to chrome yellow (PbCrO[[sub:4]]), examples include Prussian blue (Fe[[sub:7]](CN)[[sub:18]]), the reddish-orange color vermilion (HgS), and green color veridian (Cr[[sub:2]]O[[sub:3]]). (credit: Sonny Abesamis)
 
+<!-- SEG:m68811:alt:fs-idp840928-alt -->
+A photograph is shown of a portion of an oil painting which reveals colors of orange, brown, yellow, green, blue, and purple colors in its strokes. A few water droplets rest on the surface.
+
 <!-- SEG:m68811:example-title:fs-idp91888-title -->
 Calculating the Solubility of Hg[[sub:2]]Cl[[sub:2]]
 
@@ -271,6 +283,9 @@ Determine the molar solubility of MgF[[sub:2]] from its solubility product: [[i:
 <!-- SEG:m68811:para:fs-idp754304 -->
 1.2 [[MATH:31]] 10[[sup:–3]] [[i:M]]
 
+<!-- SEG:m68811:alt:fs-idp15533712-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of, “H g subscript 2 C l subscript 2 equilibrium arrow H g subscript 2 superscript 2 positive sign plus 2 C l superscript negative sign.” Under the second column is a subgroup of three rows and three columns. The first column is blank. The second column has the following: 0, positive x, x. The third column has the following: 0, positive 2 x, 2 x.
+
 <!-- SEG:m68811:note-title:fs-idp753920-title -->
 Answer:
 
@@ -291,6 +306,9 @@ Visit this [[link:website|http://openstax.org/l/16barium]] for more information 
 
 <!-- SEG:m68811:caption:CNX_Chem_15_01_BariumXray-caption -->
 A suspension of barium sulfate coats the intestinal tract, permitting greater visual detail than a traditional X-ray. (credit modification of work by “glitzy queen00”/Wikimedia Commons)
+
+<!-- SEG:m68811:alt:fs-idp770240-alt -->
+This figure contains one image. A black and white abdominal x-ray image is shown in which the intestinal tract of a person is clearly visible in white.
 
 <!-- SEG:m68811:title:fs-idp775600-title -->
 Predicting Precipitation
@@ -424,6 +442,9 @@ Answer:
 <!-- SEG:m68811:caption:CNX_Chem_15_01_Blood-caption -->
 Anticoagulants can be added to blood that will combine with the Ca[[sup:2+]] ions in blood serum and prevent the blood from clotting. (credit: modification of work by Neeta Lind)
 
+<!-- SEG:m68811:alt:fs-idp500240-alt -->
+A photograph is shown of 6 vials of blood resting on and near a black and white document. Two of the vials have purple caps, three have tan caps, and one has a red cap. Each has a label and the vials with tan caps have a small amount of an off-white material present in a layer at the base of the vial.
+
 <!-- SEG:m68811:example-title:fs-idp392704-title -->
 Concentrations Following Precipitation
 
@@ -467,7 +488,7 @@ Answer:
 10.97
 
 <!-- SEG:m68811:para:fs-idp1200896 -->
-In solutions containing two or more ions that may form insoluble compounds with the same counter ion, an experimental strategy called {{term}}selective precipitation{{/term}} may be used to remove individual ions from solution. By increasing the counter ion concentration in a controlled manner, ions in solution may be precipitated individually, assuming their compound solubilities are adequately different. In solutions with equal concentrations of target ions, the ion forming the least soluble compound will precipitate first (at the lowest concentration of counter ion), with the other ions subsequently precipitating as their compound’s solubilities are reached. As an illustration of this technique, the next example exercise describes separation of a two halide ions via precipitation of one as a silver salt.
+In solutions containing two or more ions that may form insoluble compounds with the same counter ion, an experimental strategy called [[term:selective precipitation|term-00001]] may be used to remove individual ions from solution. By increasing the counter ion concentration in a controlled manner, ions in solution may be precipitated individually, assuming their compound solubilities are adequately different. In solutions with equal concentrations of target ions, the ion forming the least soluble compound will precipitate first (at the lowest concentration of counter ion), with the other ions subsequently precipitating as their compound’s solubilities are reached. As an illustration of this technique, the next example exercise describes separation of a two halide ions via precipitation of one as a silver salt.
 
 <!-- SEG:m68811:note-title:fs-idp1215552-title -->
 The Role of Precipitation in Wastewater Treatment
@@ -486,6 +507,9 @@ View this [[link:site|http://openstax.org/l/16Wastewater]] for more information 
 
 <!-- SEG:m68811:caption:CNX_Chem_15_01_Wastewater-caption -->
 Wastewater treatment facilities, such as this one, remove contaminants from wastewater before the water is released back into the natural environment. (credit: “eutrophication&amp;hypoxia”/Wikimedia Commons)
+
+<!-- SEG:m68811:alt:fs-idp1220944-alt -->
+A color photograph is shown of a high volume wastewater treatment facility. Nineteen large circular pools of water undergoing treatment are visible across the center of the photograph. A building and parking lot are visible in the foreground.
 
 <!-- SEG:m68811:example-title:fs-idp1242128-title -->
 Precipitation of Silver Halides
@@ -643,6 +667,9 @@ Calculate the molar solubility of aluminum hydroxide, Al(OH)[[sub:3]], in a 0.01
 <!-- SEG:m68811:para:fs-idp13495488 -->
 4 [[MATH:73]] 10[[sup:–11]] [[i:M]]
 
+<!-- SEG:m68811:alt:fs-idp15331040-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), and Equilibrium concentration ( M ). The second column has the header, “C d S equilibrium arrow C d to the second power plus S to the second power superscript negative sign.” Under the second column is a subgroup of three rows and three columns. The first column is blank. The second column has the following: 0.010, positive x, 0.010 plus x. The third column has the following: 0, positive x, x.
+
 <!-- SEG:m68811:note-title:fs-idp13495104-title -->
 Answer:
 
@@ -667,7 +694,7 @@ A slightly soluble electrolyte begins to precipitate when the magnitude of the r
 <!-- SEG:m68811:title:fs-idp13519952-title -->
 Key Equations
 
-<!-- SEG:m68811:entry:auto-224 -->
+<!-- SEG:m68811:entry:auto-233 -->
 [[MATH:75]]
 
 <!-- SEG:m68811:title:fs-idp13535408-title -->

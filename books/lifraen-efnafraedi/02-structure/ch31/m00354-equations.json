@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>O</m:mtext><m:mtext>═</m:mtext><m:mtext>C</m:mtext><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mtext>OR</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{O}\\text{═}\\text{C}{{(\\text{OR})}}_{2}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>R</m:mtext><m:mtext>─</m:mtext><m:mtext>N</m:mtext><m:mtext>═</m:mtext><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{R}\\text{─}\\text{N}\\text{═}\\text{C}\\text{═}\\text{O}}"
+  }
+}

@@ -35,7 +35,10 @@
       },
       "media": {
         "id": "fs-idm7287312",
-        "alt": "This diagram shows three separate beakers. Each has a wire plugged into a wall outlet. In each case, the wire leads from the wall to the beaker and is split resulting in two ends. One end leads to a light bulb and continues on to a rectangle labeled with a plus sign. The other end leads to a rectangle labeled with a minus sign. The rectangles are in a solution. In the first beaker, labeled “Ethanol No Conductivity,” four pairs of linked small green spheres suspended in the solution between the rectangles. In the second beaker, labeled “K C l Strong Conductivity,” six individual green spheres, three labeled plus and three labeled minus are suspended in the solution. Each of the six spheres has an arrow extending from it pointing to the rectangle labeled with the opposite sign. In the third beaker, labeled “Acetic acid solution Weak conductivity,” two pairs of joined green spheres and two individual spheres, one labeled plus and one labeled minus are shown suspended between the two rectangles. The plus labeled sphere has an arrow pointing to the rectangle labeled minus and the minus labeled sphere has an arrow pointing to the rectangle labeled plus.",
+        "alt": {
+          "segmentId": "m68781:alt:fs-idm7287312-alt",
+          "text": "This diagram shows three separate beakers. Each has a wire plugged into a wall outlet. In each case, the wire leads from the wall to the beaker and is split resulting in two ends. One end leads to a light bulb and continues on to a rectangle labeled with a plus sign. The other end leads to a rectangle labeled with a minus sign. The rectangles are in a solution. In the first beaker, labeled “Ethanol No Conductivity,” four pairs of linked small green spheres suspended in the solution between the rectangles. In the second beaker, labeled “K C l Strong Conductivity,” six individual green spheres, three labeled plus and three labeled minus are suspended in the solution. Each of the six spheres has an arrow extending from it pointing to the rectangle labeled with the opposite sign. In the third beaker, labeled “Acetic acid solution Weak conductivity,” two pairs of joined green spheres and two individual spheres, one labeled plus and one labeled minus are shown suspended between the two rectangles. The plus labeled sphere has an arrow pointing to the rectangle labeled minus and the minus labeled sphere has an arrow pointing to the rectangle labeled plus."
+        },
         "src": "../../media/CNX_Chem_11_02_electrolyt.jpg",
         "mimeType": "image/jpeg"
       }
@@ -63,7 +66,10 @@
           },
           "media": {
             "id": "fs-idm117781392",
-            "alt": "The diagram shows eight purple spheres labeled K superscript plus and eight green spheres labeled C l superscript minus mixed and touching near the center of the diagram. Outside of this cluster of spheres are seventeen clusters of three spheres, which include one red and two white spheres. A red sphere in one of these clusters is labeled O. A white sphere is labeled H. Two of the green C l superscript minus spheres are surrounded by three of the red and white clusters, with the red spheres closer to the green spheres than the white spheres. One of the K superscript plus purple spheres is surrounded by four of the red and white clusters. The white spheres of these clusters are closest to the purple spheres.",
+            "alt": {
+              "segmentId": "m68781:alt:fs-idm117781392-alt",
+              "text": "The diagram shows eight purple spheres labeled K superscript plus and eight green spheres labeled C l superscript minus mixed and touching near the center of the diagram. Outside of this cluster of spheres are seventeen clusters of three spheres, which include one red and two white spheres. A red sphere in one of these clusters is labeled O. A white sphere is labeled H. Two of the green C l superscript minus spheres are surrounded by three of the red and white clusters, with the red spheres closer to the green spheres than the white spheres. One of the K superscript plus purple spheres is surrounded by four of the red and white clusters. The white spheres of these clusters are closest to the purple spheres."
+            },
             "src": "../../media/CNX_Chem_11_02_waterions.jpg",
             "mimeType": "image/jpeg"
           }
@@ -113,7 +119,10 @@
           "type": "media",
           "id": "fs-idp29456368",
           "class": "scaled-down",
-          "alt": "A chemical equation is shown. To the left, two hydrogen atoms are linked, each with a single dash to a central oxygen atom to the left and below the oxygen symbol, which has two pairs of dots, above and to the right of the atom. A plus sign is shown to the right, then a hydrogen atom linked to the left side of chlorine atom by a single dash with three pairs of dots, above, to the right, and below the element symbol. An arrow points to the products which are three hydrogen atoms linked by single dashes to a central oxygen atom shown in brackets with superscript plus. The oxygen atom has a single pair of dots above the element symbol. This is followed by a plus and C l superscript minus. This symbol is surrounded by four pairs of dots, above and below and to the left and right of the element symbol.",
+          "alt": {
+            "segmentId": "m68781:alt:fs-idp29456368-alt",
+            "text": "A chemical equation is shown. To the left, two hydrogen atoms are linked, each with a single dash to a central oxygen atom to the left and below the oxygen symbol, which has two pairs of dots, above and to the right of the atom. A plus sign is shown to the right, then a hydrogen atom linked to the left side of chlorine atom by a single dash with three pairs of dots, above, to the right, and below the element symbol. An arrow points to the products which are three hydrogen atoms linked by single dashes to a central oxygen atom shown in brackets with superscript plus. The oxygen atom has a single pair of dots above the element symbol. This is followed by a plus and C l superscript minus. This symbol is surrounded by four pairs of dots, above and below and to the left and right of the element symbol."
+          },
           "src": "../../media/CNX_Chem_11_02_H3O_CL_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -201,6 +210,14 @@
                 "type": "para",
                 "id": "fs-idm78750672",
                 "segmentId": "m68781:problem:fs-idm78750672"
+              },
+              {
+                "type": "media",
+                "id": "fs-idm58752",
+                "alt": {
+                  "segmentId": "m68781:alt:fs-idm58752-alt",
+                  "text": "In this figure, three beakers labeled x, y, and z are shown containing various arrangements of blue and red spheres suspended in solution. In beaker x, three small red spheres surround a single central blue sphere in small clusters which in turn are grouped in threes around a single red sphere, forming four larger clusters. In beaker y, the four large clusters are present without the central red spheres. Four individual red spheres are now present. In beaker z, the large clusters are not present. Twelve of the small clusters of three red and one blue sphere are present along with four single red spheres."
+                }
               },
               {
                 "type": "para",

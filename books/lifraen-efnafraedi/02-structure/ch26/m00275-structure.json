@@ -1,0 +1,78 @@
+{
+  "moduleId": "m00275",
+  "title": {
+    "segmentId": "m00275:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "88db5291-b89e-44ec-a72e-dff4d2468a10"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00275:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00275:alt:fig-00001-alt",
+          "text": "A close-up photograph of the face and upper arm of a marble statue depicting a man with a beard."
+        },
+        "src": "../../media/OChem_26_00_Proteus.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00275:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00275:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00275:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00275:alt:fig-00002-alt",
+          "text": "The structure and ball-and-stick model of L-alanine. It is a carbon linked to an amine, carboxylic acid, dashed hydrogen and wedged methyl group."
+        },
+        "src": "../../media/OChem_26_00_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00275:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00275:alt:fig-00003-alt",
+          "text": "Many amino acids link to generate the structure of protein. Arrows are used to represent the amide bonds in the structure. Wavy bonds denote bond extension."
+        },
+        "src": "../../media/OChem_26_00_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 0
+}

@@ -81,7 +81,10 @@
           },
           "media": {
             "id": "fs-idm27167568",
-            "alt": "Four images are shown and are labeled “a,” “b,” “c,” and “d.” Images a and b show atoms that are single bonded together arranged in a zigzag pattern in layers. Image c shows atoms that are single bonded together into hexagons that form sheets. These sheets are shown layered one above the other. Image d shows atoms that are single bonded together in twisting chains.",
+            "alt": {
+              "segmentId": "m68831:alt:fs-idm27167568-alt",
+              "text": "Four images are shown and are labeled “a,” “b,” “c,” and “d.” Images a and b show atoms that are single bonded together arranged in a zigzag pattern in layers. Image c shows atoms that are single bonded together into hexagons that form sheets. These sheets are shown layered one above the other. Image d shows atoms that are single bonded together in twisting chains."
+            },
             "src": "../../media/CNX_Chem_18_03_Structures.jpg",
             "mimeType": "image/jpeg"
           }
@@ -100,7 +103,10 @@
           },
           "media": {
             "id": "fs-idp340430608",
-            "alt": "An image shows a group of atoms, each labeled, “B,” connected together with single bonds into a symmetrical, twenty-sided shape.",
+            "alt": {
+              "segmentId": "m68831:alt:fs-idp340430608-alt",
+              "text": "An image shows a group of atoms, each labeled, “B,” connected together with single bonds into a symmetrical, twenty-sided shape."
+            },
             "src": "../../media/CNX_Chem_18_03_BIcosahed.jpg",
             "mimeType": "image/jpeg"
           }
@@ -180,7 +186,10 @@
           },
           "media": {
             "id": "fs-idp87854400",
-            "alt": "A diagram of a long, vertical tube is shown. The side is cut away to show a glass tube inside. At the top of the glass tube is a darker section labeled, “Impure silicon,” while toward the middle of the tube is a lighter section labeled, “Molten silicon,” and the bottom of the tube contains a white substance labeled, “Pure silicon.” A downward-facing arrow is drawn on the bottom of the tube.",
+            "alt": {
+              "segmentId": "m68831:alt:fs-idp87854400-alt",
+              "text": "A diagram of a long, vertical tube is shown. The side is cut away to show a glass tube inside. At the top of the glass tube is a darker section labeled, “Impure silicon,” while toward the middle of the tube is a lighter section labeled, “Molten silicon,” and the bottom of the tube contains a white substance labeled, “Pure silicon.” A downward-facing arrow is drawn on the bottom of the tube."
+            },
             "src": "../../media/CNX_Chem_18_03_SiPurif.jpg",
             "mimeType": "image/jpeg"
           }
@@ -263,7 +272,10 @@
               "type": "media",
               "id": "fs-idp60354928",
               "class": null,
-              "alt": "Two Lewis structures are drawn and connected by a right-facing arrow. The left structure shows a boron atom surrounded by four fluorine atoms, each with four lone pairs of electrons. The left fluorine atom has a positive and negative symbol drawn next to it. The second image is the same as the first except the positive and negative signs are missing and the entire structure is surrounded by brackets. There is a negative sign outside and superscript to the brackets.",
+              "alt": {
+                "segmentId": "m68831:alt:fs-idp60354928-alt",
+                "text": "Two Lewis structures are drawn and connected by a right-facing arrow. The left structure shows a boron atom surrounded by four fluorine atoms, each with four lone pairs of electrons. The left fluorine atom has a positive and negative symbol drawn next to it. The second image is the same as the first except the positive and negative signs are missing and the entire structure is surrounded by brackets. There is a negative sign outside and superscript to the brackets."
+              },
               "src": "../../media/CNX_Chem_18_03_BLewisAcid_img.jpg",
               "embedSrc": "",
               "width": "",
@@ -334,7 +346,10 @@
               },
               "media": {
                 "id": "fs-idp236200768",
-                "alt": "A photo of beakers, flasks, and graduated cylinders is shown. Each piece of glassware holds a different color liquid.",
+                "alt": {
+                  "segmentId": "m68831:alt:fs-idp236200768-alt",
+                  "text": "A photo of beakers, flasks, and graduated cylinders is shown. Each piece of glassware holds a different color liquid."
+                },
                 "src": "../../media/CNX_Chem_18_02_Glass.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -357,7 +372,10 @@
               },
               "media": {
                 "id": "fs-idp80715904",
-                "alt": "A Lewis structure shows a boron atom single bonded to three oxygen atoms, each of which is single bonded to a hydrogen atom. The oxygen atoms are arranged at equal angles around the boron atom and each angle is labeled,“120 degrees.”",
+                "alt": {
+                  "segmentId": "m68831:alt:fs-idp80715904-alt",
+                  "text": "A Lewis structure shows a boron atom single bonded to three oxygen atoms, each of which is single bonded to a hydrogen atom. The oxygen atoms are arranged at equal angles around the boron atom and each angle is labeled,“120 degrees.”"
+                },
                 "src": "../../media/CNX_Chem_18_02_Boricacid_img.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -380,7 +398,10 @@
               },
               "media": {
                 "id": "fs-idp89373536",
-                "alt": "Three Lewis structures are shown and labeled, “a,” “b,” and “c.” Structure a shows a boron atom single bonded to two oxygen atoms. One oxygen atom has a negative charge, and the other is single bonded to a second boron atom. This boron atom is single bonded to oxygen atoms, just like the first, to create a repeating chain of these units. The first two boron atoms and their attached oxygen atoms are surrounded by a dotted-line box and labeled, “B subscript 2 O subscript 4 superscript 2 negative sign unit.” Structure b shows two hexagonal ring structures, attached together in the center by a boron atom. Each ring is made up of alternating boron and oxygen atoms, with four hydroxyl groups located at the outer upper and lower corners of the whole structure. Brackets and a superscripted negative sign surround the structure. Structure c shows an eight-sided ring structure made up of alternating boron and oxygen atoms. Each boron atom is attached to a hydroxyl group and an oxygen atom is single bonded to the first and third boron atoms. This oxygen atom is located in the center of the ring. The whole structure is surrounded by brackets and has a superscripted 2 negative sign.",
+                "alt": {
+                  "segmentId": "m68831:alt:fs-idp89373536-alt",
+                  "text": "Three Lewis structures are shown and labeled, “a,” “b,” and “c.” Structure a shows a boron atom single bonded to two oxygen atoms. One oxygen atom has a negative charge, and the other is single bonded to a second boron atom. This boron atom is single bonded to oxygen atoms, just like the first, to create a repeating chain of these units. The first two boron atoms and their attached oxygen atoms are surrounded by a dotted-line box and labeled, “B subscript 2 O subscript 4 superscript 2 negative sign unit.” Structure b shows two hexagonal ring structures, attached together in the center by a boron atom. Each ring is made up of alternating boron and oxygen atoms, with four hydroxyl groups located at the outer upper and lower corners of the whole structure. Brackets and a superscripted negative sign surround the structure. Structure c shows an eight-sided ring structure made up of alternating boron and oxygen atoms. Each boron atom is attached to a hydroxyl group and an oxygen atom is single bonded to the first and third boron atoms. This oxygen atom is located in the center of the ring. The whole structure is surrounded by brackets and has a superscripted 2 negative sign."
+                },
                 "src": "../../media/CNX_Chem_18_03_BorateAnio.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -404,7 +425,10 @@
               },
               "media": {
                 "id": "fs-idp119649632",
-                "alt": "Two images and two photos are shown and labeled, “a,” and “b.” Image a shows a ball-and-stick model of a carbon atom single bonded to two oxygen atoms. The ball-and-stick model is labeled, “C O subscript 2.” Above this model is a photo of dry ice in a mason jar of a clear liquid. The dry ice is sublimating. The photo is labeled, “dry ice.” Image b shows four connected ring structures made up of alternating silicon and oxygen atoms that are single bonded to one another. The model is labeled, “S i O subscript 2.” Above the model is a photo labeled, “quartz.” It shows a solid crystal.",
+                "alt": {
+                  "segmentId": "m68831:alt:fs-idp119649632-alt",
+                  "text": "Two images and two photos are shown and labeled, “a,” and “b.” Image a shows a ball-and-stick model of a carbon atom single bonded to two oxygen atoms. The ball-and-stick model is labeled, “C O subscript 2.” Above this model is a photo of dry ice in a mason jar of a clear liquid. The dry ice is sublimating. The photo is labeled, “dry ice.” Image b shows four connected ring structures made up of alternating silicon and oxygen atoms that are single bonded to one another. The model is labeled, “S i O subscript 2.” Above the model is a photo labeled, “quartz.” It shows a solid crystal."
+                },
                 "src": "../../media/CNX_Chem_18_03_CO2vsSiO2.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -1047,56 +1071,71 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idm25603392",
       "class": null,
-      "alt": "This Lewis structure is composed of a boron atom single bonded to a phosphorus atom. Each of these atoms is single bonded to three hydrogen atoms.",
       "src": "../../media/CNX_Chem_18_03_Exercise2a_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68831:alt:fs-idm25603392-alt",
+        "text": "This Lewis structure is composed of a boron atom single bonded to a phosphorus atom. Each of these atoms is single bonded to three hydrogen atoms."
+      }
     },
     {
       "placeholder": "[[MEDIA:2]]",
       "id": "fs-idp28628720",
       "class": null,
-      "alt": "This Lewis structure is composed of a boron atom single bonded to four fluorine atoms, each of which has three lone pairs of electrons. The structure is surrounded by brackets, and a negative sign appears as a superscript outside the brackets.",
       "src": "../../media/CNX_Chem_18_03_Exercise2b_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68831:alt:fs-idp28628720-alt",
+        "text": "This Lewis structure is composed of a boron atom single bonded to four fluorine atoms, each of which has three lone pairs of electrons. The structure is surrounded by brackets, and a negative sign appears as a superscript outside the brackets."
+      }
     },
     {
       "placeholder": "[[MEDIA:3]]",
       "id": "fs-idp121981728",
       "class": null,
-      "alt": "This Lewis structure is composed of a boron atom single bonded to three bromine atoms, each of which has three lone pairs of electrons.",
       "src": "../../media/CNX_Chem_18_03_Exercise2c_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68831:alt:fs-idp121981728-alt",
+        "text": "This Lewis structure is composed of a boron atom single bonded to three bromine atoms, each of which has three lone pairs of electrons."
+      }
     },
     {
       "placeholder": "[[MEDIA:4]]",
       "id": "fs-idm25910080",
       "class": null,
-      "alt": "This Lewis structure is composed of a boron atom that is single bonded to three carbon atoms, each of which is single bonded to three hydrogen atoms.",
       "src": "../../media/CNX_Chem_18_03_Exercise2d_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68831:alt:fs-idm25910080-alt",
+        "text": "This Lewis structure is composed of a boron atom that is single bonded to three carbon atoms, each of which is single bonded to three hydrogen atoms."
+      }
     },
     {
       "placeholder": "[[MEDIA:5]]",
       "id": "fs-idp252097136",
       "class": null,
-      "alt": "This Lewis structure is composed of a boron atom that is single bonded to three oxygen atoms, each of which has two lone pairs of electrons. Each oxygen atom is single bonded to a hydrogen atom.",
       "src": "../../media/CNX_Chem_18_03_Exercise2e_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68831:alt:fs-idp252097136-alt",
+        "text": "This Lewis structure is composed of a boron atom that is single bonded to three oxygen atoms, each of which has two lone pairs of electrons. Each oxygen atom is single bonded to a hydrogen atom."
+      }
     }
   ],
   "sectionOrder": 3

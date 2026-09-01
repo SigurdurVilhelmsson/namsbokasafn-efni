@@ -1,0 +1,33 @@
+{
+  "moduleId": "m00108",
+  "title": {
+    "segmentId": "m00108:title:auto-1",
+    "text": "Oxidative Cleavage of Alkynes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "9a927fcc-5588-41b4-be89-f59e6ce333ca"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00108:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00108:alt:fig-00001-alt",
+          "text": "The first reaction is an internal alkyne producing two carboxylic acids. Second reaction is a terminal alkyne producing carboxylic acid and carbon dioxide. Potassium permanganate or ozone is the reagent."
+        },
+        "src": "../../media/OChem_09_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 6
+}

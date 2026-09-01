@@ -40,11 +40,17 @@ Explore a [[link:cubic diamond|http://openstax.org/l/16crystal]] crystal structu
 <!-- SEG:m68831:caption:CNX_Chem_18_03_Structures-caption -->
 (a) Arsenic and (b) antimony have a layered structure similar to that of (c) graphite, except that the layers are puckered rather than planar. (d) Elemental tellurium forms spiral chains.
 
+<!-- SEG:m68831:alt:fs-idm27167568-alt -->
+Four images are shown and are labeled “a,” “b,” “c,” and “d.” Images a and b show atoms that are single bonded together arranged in a zigzag pattern in layers. Image c shows atoms that are single bonded together into hexagons that form sheets. These sheets are shown layered one above the other. Image d shows atoms that are single bonded together in twisting chains.
+
 <!-- SEG:m68831:para:fs-idp12608576 -->
 Pure crystalline boron is transparent. The crystals consist of icosahedra, as shown in [[xref:CNX_Chem_18_03_BIcosahed]], with a boron atom at each corner. In the most common form of boron, the icosahedra pack together in a manner similar to the cubic closest packing of spheres. All boron-boron bonds within each icosahedron are identical and are approximately 176 pm in length. In the different forms of boron, there are different arrangements and connections between the icosahedra.
 
 <!-- SEG:m68831:caption:CNX_Chem_18_03_BIcosahed-caption -->
 An icosahedron is a symmetrical, solid shape with 20 faces, each of which is an equilateral triangle. The faces meet at 12 corners.
+
+<!-- SEG:m68831:alt:fs-idp340430608-alt -->
+An image shows a group of atoms, each labeled, “B,” connected together with single bonds into a symmetrical, twenty-sided shape.
 
 <!-- SEG:m68831:para:fs-idp125392768 -->
 The name silicon is derived from the Latin word for flint, [[i:silex]]. The metalloid silicon readily forms compounds containing Si-O-Si bonds, which are of prime importance in the mineral world. This bonding capability is in contrast to the nonmetal carbon, whose ability to form carbon-carbon bonds gives it prime importance in the plant and animal worlds.
@@ -66,6 +72,9 @@ Boron trifluoride reacts with hydrofluoric acid, to yield a solution of fluorobo
 
 <!-- SEG:m68831:para:fs-idm52704 -->
 In this reaction, the BF[[sub:3]] molecule acts as the Lewis acid (electron pair acceptor) and accepts a pair of electrons from a fluoride ion:
+
+<!-- SEG:m68831:alt:fs-idp60354928-alt -->
+Two Lewis structures are drawn and connected by a right-facing arrow. The left structure shows a boron atom surrounded by four fluorine atoms, each with four lone pairs of electrons. The left fluorine atom has a positive and negative symbol drawn next to it. The second image is the same as the first except the positive and negative signs are missing and the entire structure is surrounded by brackets. There is a negative sign outside and superscript to the brackets.
 
 <!-- SEG:m68831:para:fs-idp124888224 -->
 All the tetrahalides of silicon, SiX[[sub:4]], have been prepared. Silicon tetrachloride can be prepared by direct chlorination at elevated temperatures or by heating silicon dioxide with chlorine and carbon:
@@ -91,23 +100,32 @@ Boron burns at 700 °C in oxygen, forming boric oxide, B[[sub:2]]O[[sub:3]]. Bor
 <!-- SEG:m68831:caption:CNX_Chem_18_02_Glass-caption -->
 Laboratory glassware, such as Pyrex and Kimax, is made of borosilicate glass because it does not break when heated. The inclusion of borates in the glass helps to mediate the effects of thermal expansion and contraction. This reduces the likelihood of thermal shock, which causes silicate glass to crack upon rapid heating or cooling. (credit: “Tweenk”/Wikimedia Commons)
 
+<!-- SEG:m68831:alt:fs-idp236200768-alt -->
+A photo of beakers, flasks, and graduated cylinders is shown. Each piece of glassware holds a different color liquid.
+
 <!-- SEG:m68831:para:fs-idp122478912 -->
 The boron atom in B(OH)[[sub:3]] is [[i:sp]][[sup:2]] hybridized and is located at the center of an equilateral triangle with oxygen atoms at the corners. In solid B(OH)[[sub:3]], hydrogen bonding holds these triangular units together. Boric acid, shown in [[xref:CNX_Chem_18_02_Boricacid_img]], is a very weak acid that does not act as a proton donor but rather as a Lewis acid, accepting an unshared pair of electrons from the Lewis base OH[[sup:−]]:
 
 <!-- SEG:m68831:caption:CNX_Chem_18_02_Boricacid_img-caption -->
 Boric acid has a planar structure with three –OH groups spread out equally at 120° angles from each other.
 
+<!-- SEG:m68831:alt:fs-idp80715904-alt -->
+A Lewis structure shows a boron atom single bonded to three oxygen atoms, each of which is single bonded to a hydrogen atom. The oxygen atoms are arranged at equal angles around the boron atom and each angle is labeled,“120 degrees.”
+
 <!-- SEG:m68831:para:fs-idm19131184 -->
 Heating boric acid to 100 °C causes molecules of water to split out between pairs of adjacent –OH groups to form metaboric acid, HBO[[sub:2]]. At about 150 °C, additional B-O-B linkages form, connecting the BO[[sub:3]] groups together with shared oxygen atoms to form tetraboric acid, H[[sub:2]]B[[sub:4]]O[[sub:7]]. Complete water loss, at still higher temperatures, results in boric oxide.
 
 <!-- SEG:m68831:para:fs-idp204424928 -->
-{{term}}Borates{{/term}} are salts of the oxyacids of boron. Borates result from the reactions of a base with an oxyacid or from the fusion of boric acid or boric oxide with a metal oxide or hydroxide. Borate anions range from the simple trigonal planar [[MATH:1]] ion to complex species containing chains and rings of three- and four-coordinated boron atoms. The structures of the anions found in CaB[[sub:2]]O[[sub:4]], K[B[[sub:5]]O[[sub:6]](OH)[[sub:4]]]⋅2H[[sub:2]]O (commonly written KB[[sub:5]]O[[sub:8]]⋅4H[[sub:2]]O) and Na[[sub:2]][B[[sub:4]]O[[sub:5]](OH)[[sub:4]]]⋅8H[[sub:2]]O (commonly written Na[[sub:2]]B[[sub:4]]O[[sub:7]]⋅10H[[sub:2]]O) are shown in [[xref:CNX_Chem_18_03_BorateAnio]]. Commercially, the most important borate is borax, Na[[sub:2]][B[[sub:4]]O[[sub:5]](OH)[[sub:4]]]⋅8H[[sub:2]]O, which is an important component of some laundry detergents. Most of the supply of borax comes directly from dry lakes, such as Searles Lake in California, or is prepared from kernite, Na[[sub:2]]B[[sub:4]]O[[sub:7]]⋅4H[[sub:2]]O.
+[[term:Borates|term-00002]] are salts of the oxyacids of boron. Borates result from the reactions of a base with an oxyacid or from the fusion of boric acid or boric oxide with a metal oxide or hydroxide. Borate anions range from the simple trigonal planar [[MATH:1]] ion to complex species containing chains and rings of three- and four-coordinated boron atoms. The structures of the anions found in CaB[[sub:2]]O[[sub:4]], K[B[[sub:5]]O[[sub:6]](OH)[[sub:4]]]⋅2H[[sub:2]]O (commonly written KB[[sub:5]]O[[sub:8]]⋅4H[[sub:2]]O) and Na[[sub:2]][B[[sub:4]]O[[sub:5]](OH)[[sub:4]]]⋅8H[[sub:2]]O (commonly written Na[[sub:2]]B[[sub:4]]O[[sub:7]]⋅10H[[sub:2]]O) are shown in [[xref:CNX_Chem_18_03_BorateAnio]]. Commercially, the most important borate is borax, Na[[sub:2]][B[[sub:4]]O[[sub:5]](OH)[[sub:4]]]⋅8H[[sub:2]]O, which is an important component of some laundry detergents. Most of the supply of borax comes directly from dry lakes, such as Searles Lake in California, or is prepared from kernite, Na[[sub:2]]B[[sub:4]]O[[sub:7]]⋅4H[[sub:2]]O.
 
 <!-- SEG:m68831:caption:CNX_Chem_18_03_BorateAnio-caption -->
 The borate anions are (a) CaB[[sub:2]]O[[sub:4]], (b) KB[[sub:5]]O[[sub:8]]⋅4H[[sub:2]]O, and (c) Na[[sub:2]]B[[sub:4]]O[[sub:7]]⋅10H[[sub:2]]O. The anion in CaB[[sub:2]]O[[sub:4]] is an “infinite” chain.
 
+<!-- SEG:m68831:alt:fs-idp89373536-alt -->
+Three Lewis structures are shown and labeled, “a,” “b,” and “c.” Structure a shows a boron atom single bonded to two oxygen atoms. One oxygen atom has a negative charge, and the other is single bonded to a second boron atom. This boron atom is single bonded to oxygen atoms, just like the first, to create a repeating chain of these units. The first two boron atoms and their attached oxygen atoms are surrounded by a dotted-line box and labeled, “B subscript 2 O subscript 4 superscript 2 negative sign unit.” Structure b shows two hexagonal ring structures, attached together in the center by a boron atom. Each ring is made up of alternating boron and oxygen atoms, with four hydroxyl groups located at the outer upper and lower corners of the whole structure. Brackets and a superscripted negative sign surround the structure. Structure c shows an eight-sided ring structure made up of alternating boron and oxygen atoms. Each boron atom is attached to a hydroxyl group and an oxygen atom is single bonded to the first and third boron atoms. This oxygen atom is located in the center of the ring. The whole structure is surrounded by brackets and has a superscripted 2 negative sign.
+
 <!-- SEG:m68831:para:fs-idp209528992 -->
-Silicon dioxide, silica, occurs in both crystalline and amorphous forms. The usual crystalline form of silicon dioxide is quartz, a hard, brittle, clear, colorless solid. It is useful in many ways—for architectural decorations, semiprecious jewels, and frequency control in radio transmitters. Silica takes many crystalline forms, or {{term}}polymorphs{{/term}}, in nature. Trace amounts of Fe[[sup:3+]] in quartz give amethyst its characteristic purple color. The term [[i:quartz]] is also used for articles such as tubing and lenses that are manufactured from amorphous silica. Opal is a naturally occurring form of amorphous silica.
+Silicon dioxide, silica, occurs in both crystalline and amorphous forms. The usual crystalline form of silicon dioxide is quartz, a hard, brittle, clear, colorless solid. It is useful in many ways—for architectural decorations, semiprecious jewels, and frequency control in radio transmitters. Silica takes many crystalline forms, or [[term:polymorphs|term-00003]], in nature. Trace amounts of Fe[[sup:3+]] in quartz give amethyst its characteristic purple color. The term [[i:quartz]] is also used for articles such as tubing and lenses that are manufactured from amorphous silica. Opal is a naturally occurring form of amorphous silica.
 
 <!-- SEG:m68831:para:fs-idp71398624 -->
 The contrast in structure and physical properties between silicon dioxide and carbon dioxide is interesting, as illustrated in [[xref:CNX_Chem_18_03_CO2vsSiO2]]. Solid carbon dioxide (dry ice) contains single CO[[sub:2]] molecules with each of the two oxygen atoms attached to the carbon atom by double bonds. Very weak intermolecular forces hold the molecules together in the crystal. The volatility of dry ice reflect these weak forces between molecules. In contrast, silicon dioxide is a covalent network solid. In silicon dioxide, each silicon atom links to four oxygen atoms by single bonds directed toward the corners of a regular tetrahedron, and SiO[[sub:4]] tetrahedra share oxygen atoms. This arrangement gives a three dimensional, continuous, silicon-oxygen network. A quartz crystal is a macromolecule of silicon dioxide. The difference between these two compounds is the ability of the group 14 elements to form strong π bonds. Second-period elements, such as carbon, form very strong π bonds, which is why carbon dioxide forms small molecules with strong double bonds. Elements below the second period, such as silicon, do not form π bonds as readily as second-period elements, and when they do form, the π bonds are weaker than those formed by second-period elements. For this reason, silicon dioxide does not contain π bonds but only σ bonds.
@@ -115,11 +133,14 @@ The contrast in structure and physical properties between silicon dioxide and ca
 <!-- SEG:m68831:caption:CNX_Chem_18_03_CO2vsSiO2-caption -->
 Because carbon tends to form double and triple bonds and silicon does not, (a) carbon dioxide is a discrete molecule with two C=O double bonds and (b) silicon dioxide is an infinite network of oxygen atoms bridging between silicon atoms with each silicon atom possessing four Si-O single bonds. (credit a photo: modification of work by Erica Gerdes; credit b photo: modification of work by Didier Descouens)
 
+<!-- SEG:m68831:alt:fs-idp119649632-alt -->
+Two images and two photos are shown and labeled, “a,” and “b.” Image a shows a ball-and-stick model of a carbon atom single bonded to two oxygen atoms. The ball-and-stick model is labeled, “C O subscript 2.” Above this model is a photo of dry ice in a mason jar of a clear liquid. The dry ice is sublimating. The photo is labeled, “dry ice.” Image b shows four connected ring structures made up of alternating silicon and oxygen atoms that are single bonded to one another. The model is labeled, “S i O subscript 2.” Above the model is a photo labeled, “quartz.” It shows a solid crystal.
+
 <!-- SEG:m68831:para:fs-idm309152 -->
 At 1600 °C, quartz melts to yield a viscous liquid. When the liquid cools, it does not crystallize readily but usually supercools and forms a glass, also called silica. The SiO[[sub:4]] tetrahedra in glassy silica have a random arrangement characteristic of supercooled liquids, and the glass has some very useful properties. Silica is highly transparent to both visible and ultraviolet light. For this reason, it is important in the manufacture of lamps that give radiation rich in ultraviolet light and in certain optical instruments that operate with ultraviolet light. The coefficient of expansion of silica glass is very low; therefore, rapid temperature changes do not cause it to fracture. CorningWare and other ceramic cookware contain amorphous silica.
 
 <!-- SEG:m68831:para:fs-idp13738608 -->
-{{term}}Silicates{{/term}} are salts containing anions composed of silicon and oxygen. In nearly all silicates, [[i:sp]][[sup:3]]-hybridized silicon atoms occur at the centers of tetrahedra with oxygen at the corners. There is a variation in the silicon-to-oxygen ratio that occurs because silicon-oxygen tetrahedra may exist as discrete, independent units or may share oxygen atoms at corners in a variety of ways. In addition, the presence of a variety of cations gives rise to the large number of silicate minerals.
+[[term:Silicates|term-00004]] are salts containing anions composed of silicon and oxygen. In nearly all silicates, [[i:sp]][[sup:3]]-hybridized silicon atoms occur at the centers of tetrahedra with oxygen at the corners. There is a variation in the silicon-to-oxygen ratio that occurs because silicon-oxygen tetrahedra may exist as discrete, independent units or may share oxygen atoms at corners in a variety of ways. In addition, the presence of a variety of cations gives rise to the large number of silicate minerals.
 
 <!-- SEG:m68831:para:fs-idp23643168 -->
 Many ceramics are composed of silicates. By including small amounts of other compounds, it is possible to modify the physical properties of the silicate materials to produce ceramics with useful characteristics.
@@ -134,7 +155,7 @@ Elemental boron is chemically inert at room temperature, reacting with only fluo
 Reduction of boric oxide with magnesium powder forms boron (95–98.5% pure) as a brown, amorphous powder:
 
 <!-- SEG:m68831:para:fs-idp204527824 -->
-An {{term}}amorphous{{/term}} substance is a material that appears to be a solid, but does not have a long-range order like a true solid. Treatment with hydrochloric acid removes the magnesium oxide. Further purification of the boron begins with conversion of the impure boron into boron trichloride. The next step is to heat a mixture of boron trichloride and hydrogen:
+An [[term:amorphous|term-00001]] substance is a material that appears to be a solid, but does not have a long-range order like a true solid. Treatment with hydrochloric acid removes the magnesium oxide. Further purification of the boron begins with conversion of the impure boron into boron trichloride. The next step is to heat a mixture of boron trichloride and hydrogen:
 
 <!-- SEG:m68831:para:fs-idp112457184 -->
 Silicon makes up nearly one-fourth of the mass of the earth’s crust—second in abundance only to oxygen. The crust is composed almost entirely of minerals in which the silicon atoms are at the center of the silicon-oxygen tetrahedron, which connect in a variety of ways to produce, among other things, chains, layers, and three-dimensional frameworks. These minerals constitute the bulk of most common rocks, soil, and clays. In addition, materials such as bricks, ceramics, and glasses contain silicon compounds.
@@ -147,6 +168,9 @@ Extremely pure silicon is necessary for the manufacture of semiconductor electro
 
 <!-- SEG:m68831:caption:CNX_Chem_18_03_SiPurif-caption -->
 A zone-refining apparatus used to purify silicon.
+
+<!-- SEG:m68831:alt:fs-idp87854400-alt -->
+A diagram of a long, vertical tube is shown. The side is cut away to show a glass tube inside. At the top of the glass tube is a darker section labeled, “Impure silicon,” while toward the middle of the tube is a lighter section labeled, “Molten silicon,” and the bottom of the tube contains a white substance labeled, “Pure silicon.” A downward-facing arrow is drawn on the bottom of the tube.
 
 <!-- SEG:m68831:para:fs-idm29187152 -->
 This highly purified silicon, containing no more than one part impurity per million parts of silicon, is the most important element in the computer industry. Pure silicon is necessary in semiconductor electronic devices such as transistors, computer chips, and solar cells.
@@ -222,6 +246,21 @@ Write a Lewis structure for each of the following molecules or ions. You may wis
 
 <!-- SEG:m68831:solution:fs-idm26929120 -->
 (a) H[[sub:3]]BPH[[sub:3]]:[[BR]] [[MEDIA:1]][[BR]] (b) [[MATH:5]][[BR]] [[MEDIA:2]][[BR]] (c) BBr[[sub:3]]:[[BR]] [[MEDIA:3]][[BR]] (d) B(CH[[sub:3]])[[sub:3]]:[[BR]] [[MEDIA:4]][[BR]] (e) B(OH)[[sub:3]]:[[BR]] [[MEDIA:5]]
+
+<!-- SEG:m68831:alt:fs-idm25603392-alt -->
+This Lewis structure is composed of a boron atom single bonded to a phosphorus atom. Each of these atoms is single bonded to three hydrogen atoms.
+
+<!-- SEG:m68831:alt:fs-idp28628720-alt -->
+This Lewis structure is composed of a boron atom single bonded to four fluorine atoms, each of which has three lone pairs of electrons. The structure is surrounded by brackets, and a negative sign appears as a superscript outside the brackets.
+
+<!-- SEG:m68831:alt:fs-idp121981728-alt -->
+This Lewis structure is composed of a boron atom single bonded to three bromine atoms, each of which has three lone pairs of electrons.
+
+<!-- SEG:m68831:alt:fs-idm25910080-alt -->
+This Lewis structure is composed of a boron atom that is single bonded to three carbon atoms, each of which is single bonded to three hydrogen atoms.
+
+<!-- SEG:m68831:alt:fs-idp252097136-alt -->
+This Lewis structure is composed of a boron atom that is single bonded to three oxygen atoms, each of which has two lone pairs of electrons. Each oxygen atom is single bonded to a hydrogen atom.
 
 <!-- SEG:m68831:problem:fs-idp194645376 -->
 Describe the hybridization of boron and the molecular structure about the boron in each of the following:

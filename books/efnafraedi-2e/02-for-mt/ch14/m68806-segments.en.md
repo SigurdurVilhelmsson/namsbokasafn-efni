@@ -67,6 +67,9 @@ What is the hydronium ion concentration in a 0.100-[[i:M]] solution of ammonium 
 <!-- SEG:m68806:para:fs-idp43419152 -->
 [H[[sub:3]]O[[sup:+]]] = 7.5 [[MATH:7]] 10[[sup:−6]] [[i:M]]; [[MATH:8]] is the stronger acid.
 
+<!-- SEG:m68806:alt:fs-idm4192576-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium ( M ). The second column has the header of “C subscript 6 H subscript 5 N H subscript 3 superscript positive sign plus sign H subscript 2 O equilibrium sign C subscript 6 H subscript 5 N H subscript 2 plus sign H subscript 3 O superscript positive sign.” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.233, negative x, 0.233 minus x. The second column is blank for all three rows. The third column has the following: 0, positive x, x. The fourth column has the following: approximately 0, positive x, x.
+
 <!-- SEG:m68806:note-title:fs-idm54595904-title -->
 Answer:
 
@@ -220,6 +223,9 @@ This is an example of a polyprotic acid, the topic of discussion in a later sect
 <!-- SEG:m68806:caption:CNX_Chem_14_04_hydronium-caption -->
 When an aluminum ion reacts with water, the hydrated aluminum ion becomes a weak acid.
 
+<!-- SEG:m68806:alt:fs-idp82299440-alt -->
+A reaction is shown using ball and stick models. On the left, inside brackets with a superscript of 3 plus outside to the right is structure labeled “[ A l ( H subscript 2 O ) subscript 6 ] superscript 3 plus.” Inside the brackets is s central grey atom to which 6 red atoms are bonded in an arrangement that distributes them evenly about the central grey atom. Each red atom has two smaller white atoms attached in a forked or bent arrangement. Outside the brackets to the right is a space-filling model that includes a red central sphere with two smaller white spheres attached in a bent arrangement. Beneath this structure is the label “H subscript 2 O.” A double sided arrow follows. Another set of brackets follows to the right of the arrows which have a superscript of two plus outside to the right. The structure inside the brackets is similar to that on the left, except a white atom is removed from the structure. The label below is also changed to “[ A l ( H subscript 2 O ) subscript 5 O H ] superscript 2 plus.” To the right of this structure and outside the brackets is a space filling model with a central red sphere to which 3 smaller white spheres are attached. This structure is labeled “H subscript 3 O superscript plus.”
+
 <!-- SEG:m68806:para:fs-idm167123728 -->
 Aside from the alkali metals (group 1) and some alkaline earth metals (group 2), most other metal ions will undergo acid ionization to some extent when dissolved in water. The acid strength of these complex ions typically increases with increasing charge and decreasing size of the metal ions. The first-step acid ionization equations for a few other acidic metal ions are shown below:
 
@@ -234,6 +240,9 @@ Solution
 
 <!-- SEG:m68806:para:fs-idp112354272 -->
 The equation for the reaction and [[i:K]][[sub:a]] are:[[BR]] [[MATH:30]][[BR]] An ICE table with the provided information is[[BR]] [[MEDIA:1]][[BR]] Substituting the expressions for the equilibrium concentrations into the equation for the ionization constant yields:[[BR]] [[MATH:31]][[BR]] [[MATH:32]][[BR]] Assuming [[i:x]] &lt;&lt; 0.10 and solving the simplified equation gives:[[BR]] [[MATH:33]][[BR]] The ICE table defined [[i:x]] as equal to the hydronium ion concentration, and so the pH is calculated to be[[BR]] [[MATH:34]][[BR]] [[MATH:35]]
+
+<!-- SEG:m68806:alt:fs-idm136267808-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “A l ( H subscript 2 O ) subscript 6 superscript 3 positive sign plus H subscript 2 O equilibrium arrow H subscript 3 O superscript positive sign plus A l ( H subscript 2 O ) subscript 5 ( O H ) superscript 2 positive sign.” Under the second column is a subgroup of three columns and three rows. The first column has the following: 0.10, negative x, 0.10 minus x. The second column has the following: approximately 0, positive x, x. The third column has the following: 0, positive x, x.
 
 <!-- SEG:m68806:para-title:fs-idm175924752-title -->
 Check Your Learning

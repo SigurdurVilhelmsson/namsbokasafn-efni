@@ -1,0 +1,153 @@
+{
+  "moduleId": "m00259",
+  "title": {
+    "segmentId": "m00259:title:auto-1",
+    "text": "Alpha Halogenation of Aldehydes and Ketones"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c0b2123c-0cc3-4890-aeea-5e13fc3dd8a1"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00259:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00259:alt:fig-00001-alt",
+          "text": "Acetophenone reacts with bromine in acetic acid to form alpha-bromoacetophenone in 72 percent yield."
+        },
+        "src": "../../media/OChem_22_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00259:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00259:alt:fig-00002-alt",
+          "text": "The figure shows three structures, dibromo acetaldehyde, bromoacetone, and 1,1,1 tribromoacetone. These are labeled as from the Hawaiian alga Asparagopsis taxiformis."
+        },
+        "src": "../../media/OChem_22_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00259:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00259:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00259:alt:fig-00003-alt",
+          "text": "Four-step reaction mechanism for formation of bromoacetone from acetone and bromine with acid catalyst: protonation of carbonyl, abstraction of alpha proton to enol, addition of bromine on alpha carbon, deprotonation."
+        },
+        "src": "../../media/OChem_22_03_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00259:para:para-00004"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00259:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00259:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00259:alt:fig-00004-alt",
+          "text": "Ketone or aldehyde reacts slowly with hydronium ions to form enol intermediate, which reacts fast with trideuteriooxidanium ion and X 2 to form the product with D and X, respectively."
+        },
+        "src": "../../media/OChem_22_03_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00259:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00259:alt:fig-00005-alt",
+          "text": "2-methyl cyclohexanone reacts with bromine in acetic acid to form 2-bromo-2-methyl-cyclohexanone, which when heated reacts with pyridine to form 2-methyl-2-cyclohexenone in 63 percent yield."
+        },
+        "src": "../../media/OChem_22_03_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00259:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

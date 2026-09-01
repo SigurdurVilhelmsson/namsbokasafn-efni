@@ -32,7 +32,10 @@
       },
       "media": {
         "id": "fs-idp82597824",
-        "alt": "A diagram is shown which has a white sphere followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres. The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a pair of smaller spheres which are collections of the same white and green spheres. A starburst pattern lies between these two spheres and has three right-facing arrows leading from it to two white spheres and a circle full of ten smaller, peach-colored circles with purple dots in their centers. An arrow leads downward from this circle to a box that contains a helical shape with a starburst near its top left side and is labeled “D N A damage.” A right-facing arrow leads from this circle to a second circle, with nine smaller, peach-colored circles with purple dots in their centers and one fully purple small circle labeled “Cancer cell.” A right-facing arrow leads to a final circle, this time full of the purple cells, that is labeled “Tumor.”",
+        "alt": {
+          "segmentId": "m68858:alt:fs-idp82597824-alt",
+          "text": "A diagram is shown which has a white sphere followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres. The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a pair of smaller spheres which are collections of the same white and green spheres. A starburst pattern lies between these two spheres and has three right-facing arrows leading from it to two white spheres and a circle full of ten smaller, peach-colored circles with purple dots in their centers. An arrow leads downward from this circle to a box that contains a helical shape with a starburst near its top left side and is labeled “D N A damage.” A right-facing arrow leads from this circle to a second circle, with nine smaller, peach-colored circles with purple dots in their centers and one fully purple small circle labeled “Cancer cell.” A right-facing arrow leads to a final circle, this time full of the purple cells, that is labeled “Tumor.”"
+        },
         "src": "../../media/CNX_Chem_21_06_Damage1.jpg",
         "mimeType": "image/jpeg"
       }
@@ -59,7 +62,10 @@
           },
           "media": {
             "id": "fs-idp63337488",
-            "alt": "A diagram has two vertical sections. The upper section has two right-facing, horizontal arrows labeled “Increasing energy, E” and “Increasing frequency, rho symbol,” respectively. A left-facing, horizontal arrow lies below the first two and is labeled “Increasing wavelength, lambda symbol.” Beginning on the left side of the diagram, a horizontal, sinusoidal line begins and moves across the diagram to the far right, becoming increasingly more compact. The lower section of the diagram has a double ended, horizontal arrow along its top, with the left end drawn in red and labeled “Non-ionizing” and the right end drawn in green and labeled “Ionizing.” Below this is a set of terms, read from left to right as “Broadcast and wireless radio,” “Microwave,” “Terahertz,” “Infrared,” “Visible light,” “Ultraviolet,” “X dash ray,” and “Gamma.” Four columns lie below this row of terms. The first contains the phrases “Non-thermal” and “Induces low currents” while the second reads “Thermal” and “Induces high currents, Heating.” The third contains the phrases “Optical” and “Excites electrons, Photo, dash, chemical effects” while the fourth reads “Broken bonds” and “Damages D N A.” A series of terms lie below these columns are read, from left to right, “Static field,” “Power line,” “A M radio,” “F M radio,” “Microwave oven,” “Heat lamp,” “Tanning booth” and “Medical x, dash rays.”",
+            "alt": {
+              "segmentId": "m68858:alt:fs-idp63337488-alt",
+              "text": "A diagram has two vertical sections. The upper section has two right-facing, horizontal arrows labeled “Increasing energy, E” and “Increasing frequency, rho symbol,” respectively. A left-facing, horizontal arrow lies below the first two and is labeled “Increasing wavelength, lambda symbol.” Beginning on the left side of the diagram, a horizontal, sinusoidal line begins and moves across the diagram to the far right, becoming increasingly more compact. The lower section of the diagram has a double ended, horizontal arrow along its top, with the left end drawn in red and labeled “Non-ionizing” and the right end drawn in green and labeled “Ionizing.” Below this is a set of terms, read from left to right as “Broadcast and wireless radio,” “Microwave,” “Terahertz,” “Infrared,” “Visible light,” “Ultraviolet,” “X dash ray,” and “Gamma.” Four columns lie below this row of terms. The first contains the phrases “Non-thermal” and “Induces low currents” while the second reads “Thermal” and “Induces high currents, Heating.” The third contains the phrases “Optical” and “Excites electrons, Photo, dash, chemical effects” while the fourth reads “Broken bonds” and “Damages D N A.” A series of terms lie below these columns are read, from left to right, “Static field,” “Power line,” “A M radio,” “F M radio,” “Microwave oven,” “Heat lamp,” “Tanning booth” and “Medical x, dash rays.”"
+            },
             "src": "../../media/CNX_Chem_21_06_IonRadSpec.jpg",
             "mimeType": "image/jpeg"
           }
@@ -73,7 +79,10 @@
           "type": "media",
           "id": "fs-idp161523696",
           "class": null,
-          "alt": "This image shows a reaction. It starts with H subscript 2 O plus radiation. There is a right-facing arrow which points to H subscript 2 O superscript positive sign plus H subscript 2 O. From the arrow, there is another arrow that curves upward and points to an e superscript negative sign. After the second H subscript 2 O there is another right-facing arrow which points to H subscript 3 O superscript positive sign plus O H superscript negative sign.",
+          "alt": {
+            "segmentId": "m68858:alt:fs-idp161523696-alt",
+            "text": "This image shows a reaction. It starts with H subscript 2 O plus radiation. There is a right-facing arrow which points to H subscript 2 O superscript positive sign plus H subscript 2 O. From the arrow, there is another arrow that curves upward and points to an e superscript negative sign. After the second H subscript 2 O there is another right-facing arrow which points to H subscript 3 O superscript positive sign plus O H superscript negative sign."
+          },
           "src": "../../media/CNX_Chem_21_06_Hydroxyrad_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -93,7 +102,10 @@
           },
           "media": {
             "id": "fs-idp22664256",
-            "alt": "Two pairs of images are shown and labeled “a” and “b.” In the first pair, a helical structure on the left with a starburst on it middle right side is connected by a right-facing arrow to a sphere composed of smaller green and white spheres. A squiggly arrow points toward the sphere from the upper left and a downward-facing arrow leads away from the sphere to a small circle with a negative sign. In the second pair of images, a squiggly arrow lead to a water molecule while a downward-facing arrow leads away from it to a small circle with a negative charge written on it. A helical shape with a starburst on it middle right side is drawn to the far right and an upward-facing arrow leads to it from the following equation “H, subscript 2, O, plus sign, radiation, yield arrow, H, subscript 2, O, superscript plus sign, plus sign, e, superscript negative sign, down-facing arrow, H, subscript 2, O, superscript plus sign, plus sign, H, subscript 2, O, right-facing arrow, H, subscript 3, O, superscript plus sign, plus sign, O H, superscript negative sign. Below this equation is the phrase “Indirect effect.”",
+            "alt": {
+              "segmentId": "m68858:alt:fs-idp22664256-alt",
+              "text": "Two pairs of images are shown and labeled “a” and “b.” In the first pair, a helical structure on the left with a starburst on it middle right side is connected by a right-facing arrow to a sphere composed of smaller green and white spheres. A squiggly arrow points toward the sphere from the upper left and a downward-facing arrow leads away from the sphere to a small circle with a negative sign. In the second pair of images, a squiggly arrow lead to a water molecule while a downward-facing arrow leads away from it to a small circle with a negative charge written on it. A helical shape with a starburst on it middle right side is drawn to the far right and an upward-facing arrow leads to it from the following equation “H, subscript 2, O, plus sign, radiation, yield arrow, H, subscript 2, O, superscript plus sign, plus sign, e, superscript negative sign, down-facing arrow, H, subscript 2, O, superscript plus sign, plus sign, H, subscript 2, O, right-facing arrow, H, subscript 3, O, superscript plus sign, plus sign, O H, superscript negative sign. Below this equation is the phrase “Indirect effect.”"
+            },
             "src": "../../media/CNX_Chem_21_06_Damage2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -125,7 +137,10 @@
               },
               "media": {
                 "id": "fs-idp234671216",
-                "alt": "A diagram shows four particles in a vertical column on the left, followed by an upright sheet of paper, a person’s hand, an upright sheet of metal, a glass of water, a thick block of concrete and an upright, thick piece of lead. The top particle listed is made up of two white spheres and two green spheres that are labeled with positive signs and is labeled “Alpha.” A right-facing arrow leads from this to the paper. The second particle is a red sphere labeled “Beta” and is followed by a right-facing arrow that passes through the paper and stops at the hand. The third particle is a white sphere labeled “Neutron” and is followed by a right-facing arrow that passes through the paper, hand and metal but is stopped at the glass of water. The fourth particle is shown by a squiggly arrow and it passes through all of the substances but stops at the lead. Terms at the bottom read, from left to right, “Paper,” “Metal,” “Water,” “Concrete” and “Lead.”",
+                "alt": {
+                  "segmentId": "m68858:alt:fs-idp234671216-alt",
+                  "text": "A diagram shows four particles in a vertical column on the left, followed by an upright sheet of paper, a person’s hand, an upright sheet of metal, a glass of water, a thick block of concrete and an upright, thick piece of lead. The top particle listed is made up of two white spheres and two green spheres that are labeled with positive signs and is labeled “Alpha.” A right-facing arrow leads from this to the paper. The second particle is a red sphere labeled “Beta” and is followed by a right-facing arrow that passes through the paper and stops at the hand. The third particle is a white sphere labeled “Neutron” and is followed by a right-facing arrow that passes through the paper, hand and metal but is stopped at the glass of water. The fourth particle is shown by a squiggly arrow and it passes through all of the substances but stops at the lead. Terms at the bottom read, from left to right, “Paper,” “Metal,” “Water,” “Concrete” and “Lead.”"
+                },
                 "src": "../../media/CNX_Chem_21_06_Penetrate.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -159,7 +174,10 @@
               },
               "media": {
                 "id": "fs-idp54692192",
-                "alt": "A cut-away image of the side of a house and four layers of the ground it rests on is shown, as well as a second cut-away image of a person’s head and chest cavity. The house is shown with a restroom on the second floor and a basement with a water heater as the first floor. Green arrows lead from the lowest ground layer, labeled “radon in ground water,” from the third ground layer, labeled “Bedrock” and “Fractured bedrock,” from the second layer, labeled “radon in well water,” and from the top layer, labeled “radon in soil to the inside of the basement area. In the smaller image of the torso, a green arrow is shown to enter the person’s nasal passage and travel to the lungs. This is labeled “Inhalation of radon decay products.” A small coiled, helical structure next to the torso is labeled “alpha particle” on one section where it has a starburst pattern and “Radiation damage to D N A” on another segment.",
+                "alt": {
+                  "segmentId": "m68858:alt:fs-idp54692192-alt",
+                  "text": "A cut-away image of the side of a house and four layers of the ground it rests on is shown, as well as a second cut-away image of a person’s head and chest cavity. The house is shown with a restroom on the second floor and a basement with a water heater as the first floor. Green arrows lead from the lowest ground layer, labeled “radon in ground water,” from the third ground layer, labeled “Bedrock” and “Fractured bedrock,” from the second layer, labeled “radon in well water,” and from the top layer, labeled “radon in soil to the inside of the basement area. In the smaller image of the torso, a green arrow is shown to enter the person’s nasal passage and travel to the lungs. This is labeled “Inhalation of radon decay products.” A small coiled, helical structure next to the torso is labeled “alpha particle” on one section where it has a starburst pattern and “Radiation damage to D N A” on another segment."
+                },
                 "src": "../../media/CNX_Chem_21_06_RadonExpos.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -191,7 +209,10 @@
           },
           "media": {
             "id": "fs-idp202105696",
-            "alt": "Three photographs are shown and labeled “a,” “b” and “c.” Photo a shows a Geiger counter sitting on a table. It is made up of a metal box with a read-out screen and a wire leading away from the box connected to a sensor wand. Photograph b shows a collection of tall and short vertical tubes arranged in a grouping while photograph c shows a person’s hand holding a small machine with a digital readout while standing on the edge of a roadway.",
+            "alt": {
+              "segmentId": "m68858:alt:fs-idp202105696-alt",
+              "text": "Three photographs are shown and labeled “a,” “b” and “c.” Photo a shows a Geiger counter sitting on a table. It is made up of a metal box with a read-out screen and a wire leading away from the box connected to a sensor wand. Photograph b shows a collection of tall and short vertical tubes arranged in a grouping while photograph c shows a person’s hand holding a small machine with a digital readout while standing on the edge of a roadway."
+            },
             "src": "../../media/CNX_Chem_21_06_Monitors.jpg",
             "mimeType": "image/jpeg"
           }
@@ -219,7 +240,10 @@
           },
           "media": {
             "id": "fs-idp239786256",
-            "alt": "Two images are shown. The first, labeled “Rate of radioactive decay measured in becquerels or curies,” shows a red sphere with ten red squiggly arrows facing away from it in a 360 degree circle. The second image shows the head and torso of a woman wearing medical scrubs with a badge on her chest. The caption to the badge reads “Film badge or dosimeter measures tissue damage exposure in rems or sieverts” while a phrase under this image states “Absorbed dose measured in grays or rads.”",
+            "alt": {
+              "segmentId": "m68858:alt:fs-idp239786256-alt",
+              "text": "Two images are shown. The first, labeled “Rate of radioactive decay measured in becquerels or curies,” shows a red sphere with ten red squiggly arrows facing away from it in a 360 degree circle. The second image shows the head and torso of a woman wearing medical scrubs with a badge on her chest. The caption to the badge reads “Film badge or dosimeter measures tissue damage exposure in rems or sieverts” while a phrase under this image states “Absorbed dose measured in grays or rads.”"
+            },
             "src": "../../media/CNX_Chem_21_06_Exposure1.jpg",
             "mimeType": "image/jpeg"
           }
@@ -243,11 +267,12 @@
               "id": "fs-idp3417984",
               "class": "top-titled",
               "summary": "This table contains four columns and four rows. The first row is a header row, and it labels each column: “Measurement Purpose,” “Unit,” “Quantity Measure,” and “Description.” Under the “Measurement Purpose” column are the following: activity of source, absorbed dose, and biologically effective dose. Under the “Unit” column are the following: bequerel ( b q) and curie ( c i ); gray ( g y ) and radiation absorbed dose ( rad ); sievert (s v) and roentgen equivalent for humans ( rem ). Under the “Quantity Measured” column are the following: radioactive decays or emissions; energy absorbed per k g of tissue; tissue damage. Under the “Description” column are the following: amount of sample that undergoes 1 decay / second and amount of sample that undergoes 3.7 times ten superscript 10 decays / second; 1 g y equals 1 J / k g tissue and 1 rad equals 0.01 J / k g tissue; S v equals R B E times G y and Rem equals R B E times rad.",
+              "title": null,
               "rows": [
                 {
                   "cells": [
                     {
-                      "segmentId": "m68858:entry:auto-26",
+                      "segmentId": "m68858:entry:auto-32",
                       "attributes": {
                         "namest": "c1",
                         "nameend": "c4",
@@ -259,51 +284,9 @@
                 {
                   "cells": [
                     {
-                      "segmentId": "m68858:entry:auto-27",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68858:entry:auto-28",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68858:entry:auto-29",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68858:entry:auto-30",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68858:entry:auto-31",
-                      "attributes": {
-                        "align": "left",
-                        "morerows": "1"
-                      }
-                    },
-                    {
-                      "segmentId": "m68858:entry:auto-32",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
                       "segmentId": "m68858:entry:auto-33",
                       "attributes": {
-                        "align": "left",
-                        "morerows": "1"
+                        "align": "left"
                       }
                     },
                     {
@@ -311,11 +294,7 @@
                       "attributes": {
                         "align": "left"
                       }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
+                    },
                     {
                       "segmentId": "m68858:entry:auto-35",
                       "attributes": {
@@ -416,6 +395,52 @@
                     },
                     {
                       "segmentId": "m68858:entry:auto-48",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68858:entry:auto-49",
+                      "attributes": {
+                        "align": "left",
+                        "morerows": "1"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-50",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-51",
+                      "attributes": {
+                        "align": "left",
+                        "morerows": "1"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-52",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68858:entry:auto-53",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68858:entry:auto-54",
                       "attributes": {
                         "align": "left"
                       }
@@ -545,7 +570,10 @@
           },
           "media": {
             "id": "fs-idp12331776",
-            "alt": "A bar graph titled “Radiation Doses and Regulatory Limits, open parenthesis, in Millirems, close parenthesis” is shown. The y-axis is labeled “Doses in Millirems” and has values from 0 to 5000 with a break between 1000 and 5000 to indicate a different scale to the top of the graph. The y-axis is labeled corresponding to each bar. The first bar, measured to 5000 on the y-axis, is drawn in red and is labeled “Annual Nuclear Worker Doses Limit, open parenthesis, N R C, close parenthesis.” The second bar, measured to 1000 on the y-axis, is drawn in blue and is labeled “Whole Body C T” while the third bar, measured to 620 on the y-axis, is drawn in blue and is labeled “Average U period S period Annual Dose.” The fourth bar, measured to 310 on the y-axis, is drawn in blue and is labeled “U period S period Natural Background Dose” while the fifth bar, measured to 100 on the y-axis and drawn in red reads “Annual Public Dose Limit, open parenthesis, N R C, close parenthesis.” The sixth bar, measured to 40 on the y-axis, is drawn in blue and is labeled “From Your Body” while the seventh bar, measured to 30 on the y-axis and drawn in blue reads “Cosmic rays.” The eighth bar, measured to 4 on the y-axis, is drawn in blue and is labeled “Safe Drinking Water Limit, open parenthesis, E P A, close parenthesis” while the ninth bar, measured to 2.5 on the y-axis and drawn in red reads “Trans Atlantic Flight.” A legend on the graph shows that red means “Dose Limit From N R C dash licensed activity” while blue means “Radiation Doses.”",
+            "alt": {
+              "segmentId": "m68858:alt:fs-idp12331776-alt",
+              "text": "A bar graph titled “Radiation Doses and Regulatory Limits, open parenthesis, in Millirems, close parenthesis” is shown. The y-axis is labeled “Doses in Millirems” and has values from 0 to 5000 with a break between 1000 and 5000 to indicate a different scale to the top of the graph. The y-axis is labeled corresponding to each bar. The first bar, measured to 5000 on the y-axis, is drawn in red and is labeled “Annual Nuclear Worker Doses Limit, open parenthesis, N R C, close parenthesis.” The second bar, measured to 1000 on the y-axis, is drawn in blue and is labeled “Whole Body C T” while the third bar, measured to 620 on the y-axis, is drawn in blue and is labeled “Average U period S period Annual Dose.” The fourth bar, measured to 310 on the y-axis, is drawn in blue and is labeled “U period S period Natural Background Dose” while the fifth bar, measured to 100 on the y-axis and drawn in red reads “Annual Public Dose Limit, open parenthesis, N R C, close parenthesis.” The sixth bar, measured to 40 on the y-axis, is drawn in blue and is labeled “From Your Body” while the seventh bar, measured to 30 on the y-axis and drawn in blue reads “Cosmic rays.” The eighth bar, measured to 4 on the y-axis, is drawn in blue and is labeled “Safe Drinking Water Limit, open parenthesis, E P A, close parenthesis” while the ninth bar, measured to 2.5 on the y-axis and drawn in red reads “Trans Atlantic Flight.” A legend on the graph shows that red means “Dose Limit From N R C dash licensed activity” while blue means “Radiation Doses.”"
+            },
             "src": "../../media/CNX_Chem_21_06_Exposure2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -560,81 +588,16 @@
           "id": "fs-idp167827232",
           "class": "top-titled",
           "summary": "This table contains three columns and fifteen rows. The first row is a header row, and it labels each column: “Exposure ( rem ),” “Health Effect,” and “Time to Onset ( without treatment ).” Under the “Exposure ( rem )” column are the following: 5 – 10, 50, 55, 70, 75, 90, 100, 400, 1000, two blank cells, 2000, and two more blank cells. Under the “Health Effect” column are the following: changes in blood chemistry, nausea, fatigue, vomiting, hair loss, diarrhea, hemorrhage, possible death, destruction of intestinal lining, internal bleeding, death, damage to central nervous system, loss of consciousness, and death. Under the “Time to Onset ( without treatment” column are the following: a blank cell, hours, two blank cells, 2 – 3 weeks, two blank cells, within 2 months, two blank cells, 1 – 2 weeks, one blank cell, minutes, and hours to days.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68858:entry:auto-72",
+                  "segmentId": "m68858:entry:auto-81",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c3",
                     "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68858:entry:auto-73",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68858:entry:auto-74",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68858:entry:auto-75",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68858:entry:auto-76",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68858:entry:auto-77",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68858:entry:auto-78",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68858:entry:auto-79",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68858:entry:auto-80",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68858:entry:auto-81",
-                  "attributes": {
-                    "align": "left"
                   }
                 }
               ]
@@ -776,9 +739,7 @@
                 {
                   "segmentId": "m68858:entry:auto-100",
                   "attributes": {
-                    "valign": "middle",
-                    "align": "left",
-                    "morerows": "2"
+                    "align": "left"
                   }
                 },
                 {
@@ -808,33 +769,27 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68858:entry:auto-105",
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68858:entry:auto-106",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
                 {
+                  "segmentId": "m68858:entry:auto-106",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
                   "segmentId": "m68858:entry:auto-107",
                   "attributes": {
-                    "valign": "middle",
-                    "align": "left",
-                    "morerows": "3"
+                    "align": "left"
                   }
                 },
                 {
@@ -842,17 +797,19 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68858:entry:auto-109",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-109",
+                  "attributes": {
+                    "valign": "middle",
+                    "align": "left",
+                    "morerows": "2"
+                  }
+                },
                 {
                   "segmentId": "m68858:entry:auto-110",
                   "attributes": {
@@ -877,6 +834,78 @@
                 },
                 {
                   "segmentId": "m68858:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-116",
+                  "attributes": {
+                    "valign": "middle",
+                    "align": "left",
+                    "morerows": "3"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-120",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68858:entry:auto-121",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68858:entry:auto-122",
                   "attributes": {
                     "align": "left"
                   }
@@ -927,11 +956,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68858:entry:auto-119",
+                  "segmentId": "m68858:entry:auto-128",
                   "attributes": {}
                 }
               ]
@@ -939,7 +969,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68858:entry:auto-120",
+                  "segmentId": "m68858:entry:auto-129",
                   "attributes": {}
                 }
               ]

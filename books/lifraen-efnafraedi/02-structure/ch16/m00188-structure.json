@@ -1,0 +1,78 @@
+{
+  "moduleId": "m00188",
+  "title": {
+    "segmentId": "m00188:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "37f430d3-ff57-42ba-8db6-e505d6840e36"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00188:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00188:alt:fig-00001-alt",
+          "text": "The photo shows a painting in which a barber is shaving the beard of a man in the salon while other customers are waiting."
+        },
+        "src": "../../media/OChem_16_00_Aftershave.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00188:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00188:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00188:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00188:alt:fig-00002-alt",
+          "text": "Benzene reacts with E plus to form benzene with E at C 1 with the release of H plus."
+        },
+        "src": "../../media/OChem_16_00_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00188:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00188:alt:fig-00003-alt",
+          "text": "Aromatic ring undergoes acylation, alkylation, hydroxylation, sulfonation, nitration, and halogenation reactions to form respective products."
+        },
+        "src": "../../media/OChem_16_00_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 0
+}

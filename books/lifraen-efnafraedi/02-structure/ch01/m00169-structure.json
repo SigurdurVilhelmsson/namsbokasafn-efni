@@ -1,0 +1,1118 @@
+{
+  "moduleId": "m00169",
+  "title": {
+    "segmentId": "m00169:title:auto-1",
+    "text": "Drawing Chemical Structures"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "bae84be6-2f44-4cce-83b7-c06c340a68b7"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00169:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00169:alt:fig-00001-alt",
+          "text": "The conversion of chemical structure of 2-methylbutane to two different condensed structures."
+        },
+        "src": "../../media/OChem_01_12_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00169:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00169:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00169:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00169:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00169:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00169:para:para-00007"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "A table titled “Kekule and Skeletal Structures for Some Compounds” is shown here. The column headings are labeled “Compound ” “Kekule structure” and “Skeletal structure.” The first compound is “Isopropene C subscript 5 Hydrogen subscript 8.” The corresponding second column for this shows a molecular structure where 4 carbon atoms are positioned in a zig zag manner. The first carbon atom is double bonded to the second carbon atom which in turn is single bonded to another carbon atom. The third carbon atom is double-bonded to a fourth carbon atom. The first carbon atom is single bonded to 2 hydrogen atoms. The second carbon atom shares a single bond with another carbon atom which in turn is single bonded to 3 hydrogen atoms. The third carbon atom is single bonded to a hydrogen atom while the fourth carbon atom is single bonded to two hydrogen atoms. The second compound is “Methylcyclohexane C subscript 7 H subscript 14.” The second column shows a hexagonal arrangement of carbon atoms with a 2 hydrogen atoms single-bonded to each of the four carbon atoms. The fifth carbon atom is single bonded to a hydrogen atom and another carbon atom which in turn is single bonded to 3 hydrogen atoms. The sixth carbon atom is single bonded with 2 hydrogen atoms. Single bond exists throughout the molecular structure. The third compound is “Phenol C subscript H subscript O.” The corresponding Kekule structure for this shows a hexagonal arrangement of 6 carbon atoms with alternating single and double bonds between them. Five of these carbon atoms are single bonded to one hydrogen atom each while the sixth carbon atom is single bonded to a hydroxyl group.",
+      "title": {
+        "segmentId": "m00169:table-title:table-00001-title",
+        "text": "Line-bond and Skeletal Structures for Some Compounds"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00169:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00169:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00169:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00169:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00169:alt:OChem_01_12_003a_jpg-alt",
+                "text": "The line-bond structure of isoprene.",
+                "mediaId": null,
+                "src": "../../media/OChem_01_12_003a.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00169:alt:OChem_01_12_003d_jpg-alt",
+                "text": "The skeletal structure of isoprene.",
+                "mediaId": null,
+                "src": "../../media/OChem_01_12_003d.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00169:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00169:alt:OChem_01_12_003b_jpg-alt",
+                "text": "The line-bond structure of methylcyclohexane.",
+                "mediaId": null,
+                "src": "../../media/OChem_01_12_003b.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00169:alt:OChem_01_12_003e_jpg-alt",
+                "text": "The skeletal structure of methylcyclohexane.",
+                "mediaId": null,
+                "src": "../../media/OChem_01_12_003e.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00169:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00169:alt:OChem_01_12_003c_jpg-alt",
+                "text": "The line-bond structure of phenol.",
+                "mediaId": null,
+                "src": "../../media/OChem_01_12_003c.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00169:alt:OChem_01_12_003f_jpg-alt",
+                "text": "The skeletal structure of phenol.",
+                "mediaId": null,
+                "src": "../../media/OChem_01_12_003f.jpg"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00169:example-title:exam-00001-title",
+        "text": "Interpreting a Line-Bond Structure"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00169:para:para-00008"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00169:para:para-00009",
+          "title": {
+            "segmentId": "m00169:para-title:para-00009-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "title": {
+            "segmentId": "m00169:para-title:para-00010-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00169:alt:fig-00002-alt",
+          "text": "The skeletal structure of carvone."
+        },
+        "src": "../../media/OChem_01_12_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00169:alt:fig-00003-alt",
+          "text": "The skeletal structure of carvone. Numbers (0 H, 1 H, 2 H, and 3 H) are used to represent the number of hydrogens on each carbon."
+        },
+        "src": "../../media/OChem_01_12_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00169:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00169:title:sect-00002-title",
+        "text": "Organic Foods: Risk versus Benefit"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00169:para:para-00014"
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00169:para:para-00015"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00169:caption:fig-00004-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00169:alt:fig-00004-alt",
+              "text": "A photograph shows agricultural pest control operations as a plane releases pesticides over a cultivated farmland"
+            },
+            "src": "../../media/OChem_01_98_CropDuster.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00169:para:para-00016"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00169:alt:fig-00005-alt",
+              "text": "The line-bond structure of atrazine featuring one lone pair on each nitrogen."
+            },
+            "src": "../../media/OChem_01_12_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00169:para:para-00017"
+        },
+        {
+          "type": "para",
+          "id": "para-00018",
+          "segmentId": "m00169:para:para-00018"
+        },
+        {
+          "type": "table",
+          "id": "table-00002",
+          "summary": "",
+          "title": {
+            "segmentId": "m00169:table-title:table-00002-title",
+            "text": "Some LD[[sub:50]] Values"
+          },
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m00169:entry:auto-41",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-42",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-43",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-44",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00169:entry:auto-45",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-46",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-47",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-48",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00169:entry:auto-49",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-50",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-51",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-52",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00169:entry:auto-53",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-54",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-55",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-56",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00169:entry:auto-57",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-58",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-59",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00169:entry:auto-60",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "para-00019",
+          "segmentId": "m00169:para:para-00019"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-10"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-11"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-12"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-13"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-14"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-15"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-16"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-17"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-18"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-19"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-20"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-21"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-22"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-23"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-24"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-25"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-26"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-27"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-28"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-29"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-30"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-31"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-32"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-33"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-34"
+            },
+            {
+              "id": null,
+              "segmentId": "m00169:item:list-00001-item-35"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00169:title:sect-00004-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00020",
+          "segmentId": "m00169:para:para-00020"
+        },
+        {
+          "type": "para",
+          "id": "para-00021",
+          "segmentId": "m00169:para:para-00021"
+        },
+        {
+          "type": "para",
+          "id": "para-00022",
+          "segmentId": "m00169:para:para-00022"
+        },
+        {
+          "type": "para",
+          "id": "para-00023",
+          "segmentId": "m00169:para:para-00023"
+        },
+        {
+          "type": "para",
+          "id": "para-00024",
+          "segmentId": "m00169:para:para-00024"
+        },
+        {
+          "type": "note",
+          "id": "note-00001",
+          "title": {
+            "segmentId": "m00169:note-title:note-00001-title",
+            "text": "Why You Should Work Problems"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00025",
+              "segmentId": "m00169:para:para-00025"
+            },
+            {
+              "type": "para",
+              "id": "para-00026",
+              "segmentId": "m00169:para:para-00026"
+            },
+            {
+              "type": "para",
+              "id": "para-00027",
+              "segmentId": "m00169:para:para-00027"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00169:title:sect-00005-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00028",
+          "segmentId": "m00169:para:para-00028"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00033",
+          "segmentId": "m00169:para:para-00033"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00036",
+          "segmentId": "m00169:para:para-00036"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00047",
+          "segmentId": "m00169:para:para-00047"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00055",
+          "segmentId": "m00169:para:para-00055"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00060",
+          "segmentId": "m00169:para:para-00060"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00041",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00042",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 12
+}

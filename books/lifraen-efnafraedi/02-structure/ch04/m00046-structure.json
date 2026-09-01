@@ -1,0 +1,457 @@
+{
+  "moduleId": "m00046",
+  "title": {
+    "segmentId": "m00046:title:auto-1",
+    "text": "Conformations of Monosubstituted Cyclohexanes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "beac5455-f4ba-4a95-a3bc-9a1628f0d66b"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00046:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00046:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00046:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00046:alt:fig-00001-alt",
+          "text": "A graph of percent against energy difference in kilojoules per mole plots an increasing curve for more stable isomer and decreasing curve for less stable isomer."
+        },
+        "src": "../../media/OChem_04_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00046:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "caption": {
+        "segmentId": "m00046:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00046:alt:fig-00002-alt",
+          "text": "The chair conformation, ball and stick, and space-filling models of axial methylcyclohexane with steric interference undergoes ring-flip to form equatorial conformation, ball and stick model, and space-filling model."
+        },
+        "src": "../../media/OChem_04_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00046:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "caption": {
+        "segmentId": "m00046:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00046:alt:fig-00003-alt",
+          "text": "The structures and ball and stick models of gauche butane (3.8 kilojoules per mole strain) and axial methylcyclohexane (7.6 kilojoules per mole strain)."
+        },
+        "src": "../../media/OChem_04_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00046:para:para-00005"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": " ",
+      "title": {
+        "segmentId": "m00046:table-title:table-00001-title",
+        "text": "Steric Strain in Monosubstituted Cyclohexanes"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "rowsep": "0"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c2",
+                "nameend": "c3"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "morerows": "1"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00046:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00046:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "morerows": "9"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00046:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00046:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00046:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00046:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-31",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-32",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00046:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-34",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-35",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00046:entry:auto-36",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-37",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-38",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00046:entry:auto-39",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-40",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-41",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00046:entry:auto-42",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-43",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-44",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00046:entry:auto-45",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-46",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00046:entry:auto-47",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00046:alt:fig-00004-alt",
+          "text": "In the chain conformation of cyclohexane, C1 is bonded to axial Y. C3 is bonded to axial hydrogen. Both H and Y have a double-headed arrow in-between."
+        },
+        "src": "../../media/OChem_04_07_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00046:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

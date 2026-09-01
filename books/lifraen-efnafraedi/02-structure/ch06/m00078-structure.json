@@ -1,0 +1,107 @@
+{
+  "moduleId": "m00078",
+  "title": {
+    "segmentId": "m00078:title:auto-1",
+    "text": "How Organic Reactions Occur: Mechanisms"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d7610168-18ca-4ab6-9727-68b83591f279"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00078:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00078:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00078:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00078:alt:fig-00001-alt",
+          "text": "Two reactions of A B with a shared pair of electrons show unsymmetrical bond-breaking (full arrow) and symmetrical bond-breaking (fish hook arrows), respectively."
+        },
+        "src": "../../media/OChem_06_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00078:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00078:alt:fig-00002-alt",
+          "text": "Two reactions for the formation of A B with a shared pair of electrons show unsymmetrical bond-making (full arrow) and symmetrical bond-making (fish hook arrows), respectively."
+        },
+        "src": "../../media/OChem_06_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00078:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00078:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00078:para:para-00007"
+    }
+  ],
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": null,
+      "class": null,
+      "src": "../../media/OChem_06_02_002.jpg",
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": "",
+      "alt": {
+        "segmentId": "m00078:alt:media-1-alt",
+        "text": "A full-headed curved arrow originating from left to right."
+      }
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": null,
+      "class": null,
+      "src": "../../media/OChem_06_02_001.jpg",
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": "",
+      "alt": {
+        "segmentId": "m00078:alt:media-2-alt",
+        "text": "A fish hook (single-headed curved) arrow that denotes the movement of one electron."
+      }
+    }
+  ],
+  "sectionOrder": 2
+}

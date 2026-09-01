@@ -11,13 +11,16 @@ Distinguish between spontaneous and nonspontaneous processes
 Describe the dispersal of matter and energy that accompanies certain spontaneous processes
 
 <!-- SEG:m68816:para:fs-idp116177632 -->
-Processes have a natural tendency to occur in one direction under a given set of conditions. Water will naturally flow downhill, but uphill flow requires outside intervention such as the use of a pump. Iron exposed to the earth’s atmosphere will corrode, but rust is not converted to iron without intentional chemical treatment. A {{term}}spontaneous process{{/term}} is one that occurs naturally under certain conditions. A {{term}}nonspontaneous process{{/term}}, on the other hand, will not take place unless it is “driven” by the continual input of energy from an external source. A process that is spontaneous in one direction under a particular set of conditions is nonspontaneous in the reverse direction. At room temperature and typical atmospheric pressure, for example, ice will spontaneously melt, but water will not spontaneously freeze.
+Processes have a natural tendency to occur in one direction under a given set of conditions. Water will naturally flow downhill, but uphill flow requires outside intervention such as the use of a pump. Iron exposed to the earth’s atmosphere will corrode, but rust is not converted to iron without intentional chemical treatment. A [[term:spontaneous process|term-00001]] is one that occurs naturally under certain conditions. A [[term:nonspontaneous process|term-00002]], on the other hand, will not take place unless it is “driven” by the continual input of energy from an external source. A process that is spontaneous in one direction under a particular set of conditions is nonspontaneous in the reverse direction. At room temperature and typical atmospheric pressure, for example, ice will spontaneously melt, but water will not spontaneously freeze.
 
 <!-- SEG:m68816:para:fs-idp3956976 -->
 The spontaneity of a process is [[i:not]] correlated to the speed of the process. A spontaneous change may be so rapid that it is essentially instantaneous or so slow that it cannot be observed over any practical period of time. To illustrate this concept, consider the decay of radioactive isotopes, a topic more thoroughly treated in the chapter on nuclear chemistry. Radioactive decay is by definition a spontaneous process in which the nuclei of unstable isotopes emit radiation as they are converted to more stable nuclei. All the decay processes occur spontaneously, but the rates at which different isotopes decay vary widely. Technetium-99m is a popular radioisotope for medical imaging studies that undergoes relatively rapid decay and exhibits a half-life of about six hours. Uranium-238 is the most abundant isotope of uranium, and its decay occurs much more slowly, exhibiting a half-life of more than four billion years ([[xref:CNX_Chem_16_01_decayrates]]).
 
 <!-- SEG:m68816:caption:CNX_Chem_16_01_decayrates-caption -->
 Both U-238 and Tc-99m undergo spontaneous radioactive decay, but at drastically different rates. Over the course of one week, essentially all of a Tc-99m sample and none of a U-238 sample will have decayed.
+
+<!-- SEG:m68816:alt:fs-idp34729504-alt -->
+A graph of two lines is shown where the y-axis is labeled, “amount of isotope remaining ( percent sign ),” and has values zero through one hundred, in increments of ten, written along the axis. The x-axis is labeled, “time ( hours )” and has values zero through seven, in increments of one, written along the axis. The first graph, drawn with a blue line, begins at the top left value of one hundred on the y-axis and zero on the x-axis and falls steeply over the first three minutes, then the graphed line becomes almost horizontal until it reaches seven minutes on the x-axis. The second graph, drawn in red, begins at the same point as the first, but remains perfectly horizontal with no change along the y-axis. A legend labels the red line as, 'U dash 238,' and the blue line as, 'T c dash 99 m'.
 
 <!-- SEG:m68816:para:fs-idm7164864 -->
 As another example, consider the conversion of diamond into graphite ([[xref:CNX_Chem_16_01_carbon]]).
@@ -27,6 +30,9 @@ The phase diagram for carbon indicates that graphite is the stable form of this 
 
 <!-- SEG:m68816:caption:CNX_Chem_16_01_carbon-caption -->
 The conversion of carbon from the diamond allotrope to the graphite allotrope is spontaneous at ambient pressure, but its rate is immeasurably slow at low to moderate temperatures. This process is known as [[i:graphitization]], and its rate can be increased to easily measurable values at temperatures in the 1000–2000 K range. (credit "diamond" photo: modification of work by "Fancy Diamonds"/Flickr; credit "graphite" photo: modification of work by images-of-elements.com/carbon.php)
+
+<!-- SEG:m68816:alt:fs-idp24588688-alt -->
+Two pairs of images are shown. The left pair, labeled, “C, ( diamond ),” has a picture of a diamond held by a pair of plyers and a diagram of the molecular arrangement. The second pair, labeled, “C ( graphite ),” has a picture of a large, black, slightly shiny rock and a diagram of four sheets composed of many atoms arranged in large squares in a stacked arrangement with space between each.
 
 <!-- SEG:m68816:title:fs-idp11303728-title -->
 Dispersal of Matter and Energy
@@ -43,6 +49,9 @@ The spontaneity of this process is therefore not a consequence of any change in 
 <!-- SEG:m68816:caption:CNX_Chem_16_02_Gas-caption -->
 An isolated system consists of an ideal gas in one flask that is connected by a closed valve to a second flask containing a vacuum. Once the valve is opened, the gas spontaneously becomes evenly distributed between the flasks.
 
+<!-- SEG:m68816:alt:fs-idp117381408-alt -->
+A diagram shows two two-sided flasks connected by a right-facing arrow labeled “Spontaneous” and a left-facing arrow labeled “Nonspontaneous.” Each pair of flasks are connected to one another by a tube with a stopcock. In the left pair of flasks, the left flask contains thirty particles evenly dispersed while the right flask contains nothing and the stopcock is closed. The right pair of flasks has an open stopcock and equal numbers of particles in both flasks.
+
 <!-- SEG:m68816:para:fs-idp202853936 -->
 Now consider two objects at different temperatures: object X at temperature [[i:T]][[sub:X]] and object Y at temperature [[i:T]][[sub:Y]], with [[i:T]][[sub:X]] > [[i:T]][[sub:Y]] ([[xref:CNX_Chem_16_02_Temperature]]). When these objects come into contact, heat spontaneously flows from the hotter object (X) to the colder one (Y). This corresponds to a loss of thermal energy by X and a gain of thermal energy by Y.
 
@@ -51,6 +60,9 @@ From the perspective of this two-object system, there was no net gain or loss of
 
 <!-- SEG:m68816:caption:CNX_Chem_16_02_Temperature-caption -->
 When two objects at different temperatures come in contact, heat spontaneously flows from the hotter to the colder object.
+
+<!-- SEG:m68816:alt:fs-idp106848832-alt -->
+Two diagrams are shown. The left diagram is comprised of two separated squares; the left is red and labeled “X” and the right is blue and labeled “Y.” Below this diagram is the label “T subscript X, a greater than sign, T subscript Y.” The right diagram shows the boxes next to one another, shaded red on the left, blue on the right, and blended red and blue together in the middle. The left box is red and labeled “X,” the right is blue and labeled “Y” and a right-facing arrow labeled “Heat” is written above them. Below this diagram is the label “X and Y in contact.
 
 <!-- SEG:m68816:para:fs-idp55398608 -->
 As illustrated by the two processes described, an important factor in determining the spontaneity of a process is the extent to which it changes the dispersal or distribution of matter and/or energy. In each case, a spontaneous process took place that resulted in a more uniform distribution of matter or energy.
@@ -99,6 +111,9 @@ Heat will spontaneously flow from the hotter object (coffee) to the colder objec
 
 <!-- SEG:m68816:caption:CNX_Chem_16_02_Process-caption -->
 (credit a: modification of work by Jenny Downing; credit b: modification of work by “Fuzzy Gerdes”/Flickr; credit c: modification of work by Paul A. Flowers)
+
+<!-- SEG:m68816:alt:fs-idp205626528-alt -->
+This figure has three photos labeled, “a,” “b,” and “c.” Photo a shows a glass with a solid in water. There is steam or smoke coming from the top of the glass. Photo b shows the bottom half of a glass with water sticking to its outside surface. Photo c shows three images of the same container. The first shows a clear liquid in the container. The second shows a red liquid mixing with the clear liquid in the container. The third shows a red liquid.
 
 <!-- SEG:m68816:title:fs-idp205751344-title -->
 Key Concepts and Summary

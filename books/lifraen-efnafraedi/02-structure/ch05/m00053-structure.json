@@ -1,0 +1,50 @@
+{
+  "moduleId": "m00053",
+  "title": {
+    "segmentId": "m00053:title:auto-1",
+    "text": "Pasteur’s Discovery of Enantiomers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "0080c8be-a6f9-44fe-b4e9-702a0038867c"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00053:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00053:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00053:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00053:alt:fig-00001-alt",
+          "text": "The figure shows the drawing of two sodium ammonium tartrate crystals (dextrorotatory and  levorotatory) and the structure of sodium ammonium tartrate."
+        },
+        "src": "../../media/OChem_05_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00053:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00053:para:para-00004"
+    }
+  ],
+  "sectionOrder": 4
+}

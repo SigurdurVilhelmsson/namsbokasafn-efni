@@ -1,0 +1,392 @@
+{
+  "moduleId": "m00247",
+  "title": {
+    "segmentId": "m00247:title:auto-1",
+    "text": "Polyamides and Polyesters: Step-Growth Polymers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "863e9090-cc24-4439-9e14-f4d7d04e5a03"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00247:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00247:alt:fig-00001-alt",
+          "text": "The first reaction shows a diamine reacting with a diacid chloride to form a polyamide (nylon). The second reaction shows a diol reacting with a diacid to form a polyester and water."
+        },
+        "src": "../../media/OChem_21_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00247:para:para-00002"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "An illustration (table) shows the structures of monomers the polymers made and their uses. Adipic acid reacts with Hexamethylenediamine to yield Nylon 66 used in Fibers clothing tire cord. The structure of adipic acid shows a green hydroxyl group bonded to a carbonyl group that is bonded to 4 methylene groups and then a carbonyl group bonded to green hydroxyl group. Hexamethylenediamine shows a blue amino group bonded to a chain of 6 methylene groups and then a blue amino group. Dimethyl terephthalate reacts with Ethylene glycol to yield Dacron Mylar and Terylene used in Fibers clothing films tire cord. The structure of Dimethyl terephthalate shows a benzene bonded to a carbonyl group at C1 and C4. Each carbonyl group is bonded to a green methoxide group. Ethylene glycol shows a blue hydroxyl group bonded to a chain of two methylene groups and then a blue hydroxyl group. Caprolactam yields Nylon 6 and Perlon used in Fibers castings. Caprolactam shows a cycloheptane ring with a blue nitrogen monohydride; the ring is double bonded to a pink oxygen. Diphenyl carbonate reacts with Bisphenol A to yield Lexan and polycarbonate used in Equipment housing molded articles. Diphenyl carbonate shows a carbonyl group bonded to two green oxygen atoms on both sides. Each green oxygen is bonded to a benzene ring. Bisphenol A shows a carbon bonded to two methyl groups and two phenols in which the hydroxyl groups are blue. Toluene-2 6-diisocyanate reacts with Poly(2-butene-1 4-diol) to yield Polyurethane and Spandex used in Fibers coatings foams. Toluene-2 6-diisocyanate shows a carbonyl group double bonded to a nitrogen bonded to a benzene that is bonded to a methyl group and a nitrogen that is double bonded to a carbonyl group. Poly(2-butene-1 4-diol) shows a blue hydroxyl group bonded to a methylene group bonded to a methine group double bonded to a methine group bonded to a methylene group bonded to a blue hydroxyl group. The structure except the hydroxyl groups is shown inside parentheses with subscript n.",
+      "title": {
+        "segmentId": "m00247:table-title:table-00001-title",
+        "text": "Some Common Step-Growth Polymers and Their Uses"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00247:entry:auto-6",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-7",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-8",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-9",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00247:alt:OChem_21_09_003_T-nylon66_jpg-alt",
+                "text": "The structure of adipic acid is a six carbon chain, C1 and C 6 of which are carboxylic acids The structure of hexamethylenediamine is a six carbon chain with amine groups on C1 and C 6.",
+                "mediaId": null,
+                "src": "../../media/OChem_21_09_003_T-nylon66.jpg"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00247:alt:OChem_21_09_003_T-dacronmylar_jpg-alt",
+                "text": "The structure of dimethyl terephthalate is a benzene ring with methyl ester groups para to one another. Ethylene glycol is a two-carbon chain with hydroxyl groups on each carbon.",
+                "mediaId": null,
+                "src": "../../media/OChem_21_09_003_T-dacronmylar.jpg"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00247:alt:OChem_21_09_003_T-nylon6perlon_jpg-alt",
+                "text": "The caprolactam structure is a seven-membered cyclic cycloheptanone ring in which a nitrogen atom replaces the carbon adjacent to the carbonyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_21_09_003_T-nylon6perlon.jpg"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00247:alt:OChem_21_09_003_T-lexan_jpg-alt",
+                "text": "The structure of diphenyl carbonate comprises of a central carbonyl group attached to two oxygen atom. Each of the oxygen atoms is also attached to a benzene ring. The structure of bisphenol A comprises of a central carbon atom attached to two methyl groups and two benzene rings bearing hydroxyl groups in the 4 position.",
+                "mediaId": null,
+                "src": "../../media/OChem_21_09_003_T-lexan.jpg"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00247:alt:OChem_21_09_003_T-polyurethane_jpg-alt",
+                "text": "Toluene-2,6-diisocyanate comprises of a benzene ring with a methyl group and with isocyanate groups on either side of the methyl group. Poly(but-2-ene) is a four-carbon chain alkene enclosed in brackets with subscript n, with two hydroxyl groups on terminal carbons.",
+                "mediaId": null,
+                "src": "../../media/OChem_21_09_003_T-polyurethane.jpg"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00247:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00247:title:sect-00001-title",
+        "text": "Polyamides (Nylons)"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00247:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00247:alt:fig-00002-alt",
+              "text": "The reaction shows the formation of Nylon 6 6 polymer from adipic acid and hexamethylenediamine by heating. The product has a twelve-carbon repeating chain enclosed in parentheses with subscript n."
+            },
+            "src": "../../media/OChem_21_09_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00247:para:para-00004"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00247:title:sect-00002-title",
+        "text": "Polyesters"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00247:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00247:alt:fig-00003-alt",
+              "text": "The reaction shows dimethyl terephthalate and ethylene glycol heated at two-hundred degrees Celsius forming polyester Dacron or Mylar."
+            },
+            "src": "../../media/OChem_21_09_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00247:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00247:alt:fig-00004-alt",
+              "text": "The reaction shows diphenyl catbonate and Bisphenol A heated at three-hundred degrees Celsius forming polyester Lexan."
+            },
+            "src": "../../media/OChem_21_09_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00247:title:sect-00003-title",
+        "text": "Sutures and Biodegradable Polymers"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00247:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00247:alt:fig-00005-alt",
+              "text": "The first reaction shows the polymerization of glycolic acid to form poly(glycolic) acid. The second shows polymerization of lactic acid to form poly(lactic) acid, and the third the polymerization of 2-hydroxybutyric acid to form poly(hydroxybutyrate). All three polymerizations require heat."
+            },
+            "src": "../../media/OChem_21_09_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00247:para:para-00008"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00247:title:sect-00004-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

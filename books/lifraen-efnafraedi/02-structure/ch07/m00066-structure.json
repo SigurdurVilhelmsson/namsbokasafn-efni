@@ -1,0 +1,126 @@
+{
+  "moduleId": "m00066",
+  "title": {
+    "segmentId": "m00066:title:auto-1",
+    "text": "Cis–Trans Isomerism in Alkenes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f25430cd-49ff-471f-9bb7-f4fc5671d855"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00066:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00066:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00066:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00066:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00066:alt:fig-00001-alt",
+          "text": "An orbital diagram with two parallel p orbitals before rotation. After rotation the p orbitals are perpendicular, which breaks the double bond."
+        },
+        "src": "../../media/OChem_07_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00066:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00066:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "caption": {
+        "segmentId": "m00066:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00066:alt:fig-00002-alt",
+          "text": "The structures and ball-and-stick models of cis-2-butene (methyl groups pointed in the same direction) and trans-2-butene (methyl groups pointed in opposite directions)."
+        },
+        "src": "../../media/OChem_07_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00066:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00066:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00066:alt:fig-00003-alt",
+          "text": "A figure shows the structures of two identical compounds that are not cis-trans isomers and two not identical compounds that are cis-trans isomers."
+        },
+        "src": "../../media/OChem_07_04_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00066:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

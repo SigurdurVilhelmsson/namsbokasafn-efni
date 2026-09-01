@@ -17,7 +17,7 @@ Calculate reaction rates from experimental data
 A [[i:rate]] is a measure of how some property varies with time. Speed is a familiar rate that expresses the distance traveled by an object in a given amount of time. Wage is a rate that represents the amount of money earned by a person working for a given amount of time. Likewise, the rate of a chemical reaction is a measure of how much reactant is consumed, or how much product is produced, by the reaction in a given amount of time.
 
 <!-- SEG:m68786:para:fs-idp11492384 -->
-The {{term}}rate of reaction{{/term}} is the change in the amount of a reactant or product per unit time. Reaction rates are therefore determined by measuring the time dependence of some property that can be related to reactant or product amounts. Rates of reactions that consume or produce gaseous substances, for example, are conveniently determined by measuring changes in volume or pressure. For reactions involving one or more colored substances, rates may be monitored via measurements of light absorption. For reactions involving aqueous electrolytes, rates may be measured via changes in a solution’s conductivity.
+The [[term:rate of reaction|term-00001]] is the change in the amount of a reactant or product per unit time. Reaction rates are therefore determined by measuring the time dependence of some property that can be related to reactant or product amounts. Rates of reactions that consume or produce gaseous substances, for example, are conveniently determined by measuring changes in volume or pressure. For reactions involving one or more colored substances, rates may be monitored via measurements of light absorption. For reactions involving aqueous electrolytes, rates may be measured via changes in a solution’s conductivity.
 
 <!-- SEG:m68786:para:fs-idm49411904 -->
 For reactants and products in solution, their relative amounts (concentrations) are conveniently used for purposes of expressing reaction rates. For example, the concentration of hydrogen peroxide, H[[sub:2]]O[[sub:2]], in an aqueous solution changes slowly over time as it decomposes according to the equation:
@@ -26,10 +26,13 @@ For reactants and products in solution, their relative amounts (concentrations) 
 The rate at which the hydrogen peroxide decomposes can be expressed in terms of the rate of change of its concentration, as shown here:
 
 <!-- SEG:m68786:para:fs-idp37715584 -->
-This mathematical representation of the change in species concentration over time is the {{term}}rate expression{{/term}} for the reaction. The brackets indicate molar concentrations, and the symbol delta (Δ) indicates “change in.” Thus, [[MATH:1]] represents the molar concentration of hydrogen peroxide at some time [[i:t]][[sub:1]]; likewise,[[MATH:2]] represents the molar concentration of hydrogen peroxide at a later time [[i:t]][[sub:2]]; and Δ[H[[sub:2]]O[[sub:2]]] represents the change in molar concentration of hydrogen peroxide during the time interval Δ[[i:t]] (that is, [[i:t]][[sub:2]] − [[i:t]][[sub:1]]). Since the reactant concentration decreases as the reaction proceeds, Δ[H[[sub:2]]O[[sub:2]]] is a negative quantity. Reaction rates are, by convention, positive quantities, and so this negative change in concentration is multiplied by −1. [[xref:CNX_Chem_12_01_KDataH2O2]] provides an example of data collected during the decomposition of H[[sub:2]]O[[sub:2]].
+This mathematical representation of the change in species concentration over time is the [[term:rate expression|term-00002]] for the reaction. The brackets indicate molar concentrations, and the symbol delta (Δ) indicates “change in.” Thus, [[MATH:1]] represents the molar concentration of hydrogen peroxide at some time [[i:t]][[sub:1]]; likewise,[[MATH:2]] represents the molar concentration of hydrogen peroxide at a later time [[i:t]][[sub:2]]; and Δ[H[[sub:2]]O[[sub:2]]] represents the change in molar concentration of hydrogen peroxide during the time interval Δ[[i:t]] (that is, [[i:t]][[sub:2]] − [[i:t]][[sub:1]]). Since the reactant concentration decreases as the reaction proceeds, Δ[H[[sub:2]]O[[sub:2]]] is a negative quantity. Reaction rates are, by convention, positive quantities, and so this negative change in concentration is multiplied by −1. [[xref:CNX_Chem_12_01_KDataH2O2]] provides an example of data collected during the decomposition of H[[sub:2]]O[[sub:2]].
 
 <!-- SEG:m68786:caption:CNX_Chem_12_01_KDataH2O2-caption -->
 The rate of decomposition of H[[sub:2]]O[[sub:2]] in an aqueous solution decreases as the concentration of H[[sub:2]]O[[sub:2]] decreases.
+
+<!-- SEG:m68786:alt:fs-idp13735104-alt -->
+A table with five columns is shown. The first column is labeled, “Time, h.” Beneath it the numbers 0.00, 6.00, 12.00, 18.00, and 24.00 are listed. The second column is labeled, “[ H subscript 2 O subscript 2 ], mol / L.” Below, the numbers 1.000, 0.500, 0.250, 0.125, and 0.0625 are double spaced. To the right, a third column is labeled, “capital delta [ H subscript 2 O subscript 2 ], mol / L.” Below, the numbers negative 0.500, negative 0.250, negative 0.125, and negative 0.062 are listed such that they are double spaced and offset, beginning one line below the first number listed in the column labeled, “[ H subscript 2 O subscript 2 ], mol / L.” The first two numbers in the second column have line segments extending from their right side to the left side of the first number in the third row. The second and third numbers in the second column have line segments extending from their right side to the left side of the second number in the third row. The third and fourth numbers in the second column have line segments extending from their right side to the left side of the third number in the third row. The fourth and fifth numbers in the second column have line segments extending from their right side to the left side of the fourth number in the third row. The fourth column in labeled, “capital delta t, h.” Below the title, the value 6.00 is listed four times, each single-spaced. The fifth and final column is labeled “Rate of Decomposition, mol / L superscript negative 1 / h superscript negative 1.” Below, the following values are listed single-spaced: negative 0.0833, negative 0.0417, negative 0.0208, and negative 0.010.
 
 <!-- SEG:m68786:para:fs-idm29280704 -->
 To obtain the tabulated results for this decomposition, the concentration of hydrogen peroxide was measured every 6 hours over the course of a day at a constant temperature of 40 °C. Reaction rates were computed for each time interval by dividing the change in concentration by the corresponding time increment, as shown here for the first 6-hour period:
@@ -38,13 +41,16 @@ To obtain the tabulated results for this decomposition, the concentration of hyd
 Notice that the reaction rates vary with time, decreasing as the reaction proceeds. Results for the last 6-hour period yield a reaction rate of:
 
 <!-- SEG:m68786:para:fs-idp101513872 -->
-This behavior indicates the reaction continually slows with time. Using the concentrations at the beginning and end of a time period over which the reaction rate is changing results in the calculation of an {{term}}average rate{{/term}} for the reaction over this time interval. At any specific time, the rate at which a reaction is proceeding is known as its {{term}}instantaneous rate{{/term}}. The instantaneous rate of a reaction at “time zero,” when the reaction commences, is its {{term}}initial rate{{/term}}. Consider the analogy of a car slowing down as it approaches a stop sign. The vehicle’s initial rate—analogous to the beginning of a chemical reaction—would be the speedometer reading at the moment the driver begins pressing the brakes ([[i:t]][[sub:0]]). A few moments later, the instantaneous rate at a specific moment—call it [[i:t]][[sub:1]]—would be somewhat slower, as indicated by the speedometer reading at that point in time. As time passes, the instantaneous rate will continue to fall until it reaches zero, when the car (or reaction) stops. Unlike instantaneous speed, the car’s average speed is not indicated by the speedometer; but it can be calculated as the ratio of the distance traveled to the time required to bring the vehicle to a complete stop (Δ[[i:t]]). Like the decelerating car, the average rate of a chemical reaction will fall somewhere between its initial and final rates.
+This behavior indicates the reaction continually slows with time. Using the concentrations at the beginning and end of a time period over which the reaction rate is changing results in the calculation of an [[term:average rate|term-00003]] for the reaction over this time interval. At any specific time, the rate at which a reaction is proceeding is known as its [[term:instantaneous rate|term-00004]]. The instantaneous rate of a reaction at “time zero,” when the reaction commences, is its [[term:initial rate|term-00005]]. Consider the analogy of a car slowing down as it approaches a stop sign. The vehicle’s initial rate—analogous to the beginning of a chemical reaction—would be the speedometer reading at the moment the driver begins pressing the brakes ([[i:t]][[sub:0]]). A few moments later, the instantaneous rate at a specific moment—call it [[i:t]][[sub:1]]—would be somewhat slower, as indicated by the speedometer reading at that point in time. As time passes, the instantaneous rate will continue to fall until it reaches zero, when the car (or reaction) stops. Unlike instantaneous speed, the car’s average speed is not indicated by the speedometer; but it can be calculated as the ratio of the distance traveled to the time required to bring the vehicle to a complete stop (Δ[[i:t]]). Like the decelerating car, the average rate of a chemical reaction will fall somewhere between its initial and final rates.
 
 <!-- SEG:m68786:para:fs-idm65553280 -->
 The instantaneous rate of a reaction may be determined one of two ways. If experimental conditions permit the measurement of concentration changes over very short time intervals, then average rates computed as described earlier provide reasonably good approximations of instantaneous rates. Alternatively, a graphical procedure may be used that, in effect, yields the results that would be obtained if short time interval measurements were possible. In a plot of the concentration of hydrogen peroxide against time, the instantaneous rate of decomposition of H[[sub:2]]O[[sub:2]] at any time [[i:t]] is given by the slope of a straight line that is tangent to the curve at that time ([[xref:CNX_Chem_12_01_RRateIll]]). These tangent line slopes may be evaluated using calculus, but the procedure for doing so is beyond the scope of this chapter.
 
 <!-- SEG:m68786:caption:CNX_Chem_12_01_RRateIll-caption -->
 This graph shows a plot of concentration versus time for a 1.000 [[i:M]] solution of H[[sub:2]]O[[sub:2]]. The rate at any time is equal to the negative of the slope of a line tangent to the curve at that time. Tangents are shown at [[i:t]] = 0 h (“initial rate”) and at [[i:t]] = 12 h (“instantaneous rate” at 12 h).
+
+<!-- SEG:m68786:alt:fs-idp329500576-alt -->
+A graph is shown with the label, “Time ( h ),” appearing on the x-axis and “[ H subscript 2 O subscript 2 ] ( mol per L)” on the y-axis. The x-axis markings begin at 0.00 and end at 24.00. The markings are labeled at intervals of 6.00. The y-axis begins at 0.000 and includes markings every 0.200, up to 1.000. A decreasing, concave up, non-linear curve is shown, which begins at 1.000 on the y-axis and nearly reaches a value of 0 at the far right of the graph around 24.00 on the x-axis. A red tangent line segment is drawn on the graph at the point where the graph intersects the y-axis at 1.000. The slope is labeled as “slope equals negative capital delta [H subscript 2 O subscript 2 ] over capital delta t subscript 0 equals initial rate”. A vertical dashed line segment extends from the left endpoint of the line segment downward to intersect with a similar horizontal line segment drawn from the right endpoint of the line segment, forming a right triangle beneath the curve. The vertical leg of the triangle is labeled “capital delta [ H subscript 2 O subscript 2 ]” and the horizontal leg is labeled, “capital delta t.” The slope is labeled as “slope equals negative capital delta [H subscript 2 O subscript 2 ] over capital delta t subscript 12 equals instantaneous rate at 12 h.” A second red tangent line segment is drawn near the middle of the curve at 12.00 on the x-axis. A vertical dashed line segment extends from the left endpoint of the line segment downward to intersect with a similar horizontal line segment drawn from the right endpoint of the line segment, forming a right triangle beneath the curve. The vertical leg of the triangle is labeled “capital delta [ H subscript 2 O subscript 2 ]” and the horizontal leg is labeled, “capital delta t.”
 
 <!-- SEG:m68786:note-title:fs-idm69729856-title -->
 Reaction Rates in Analysis: Test Strips for Urinalysis
@@ -63,6 +69,9 @@ The two test reactions shown above are inherently very slow, but their rates are
 
 <!-- SEG:m68786:caption:CNX_Chem_12_01_Urinestrip-caption -->
 Test strips are commonly used to detect the presence of specific substances in a person’s urine. Many test strips have several pads containing various reagents to permit the detection of multiple substances on a single strip. (credit: Iqbal Osman)
+
+<!-- SEG:m68786:alt:fs-idp35718480-alt -->
+A photograph shows 8 test strips laid on paper toweling. Each strip contains 11 small sections of various colors, including yellow, tan, black, red, orange, blue, white, and green.
 
 <!-- SEG:m68786:title:fs-idm24537456-title -->
 Relative Rates of Reaction
@@ -93,6 +102,9 @@ Similarly, the rate of formation of H[[sub:2]] is three times the rate of format
 
 <!-- SEG:m68786:caption:CNX_Chem_12_01_NH3Decomp-caption -->
 Changes in concentrations of the reactant and products for the reaction [[MATH:3]] The rates of change of the three concentrations are related by the reaction stoichiometry, as shown by the different slopes of the tangents at [[i:t]] = 500 s.
+
+<!-- SEG:m68786:alt:fs-idm83425632-alt -->
+A graph is shown with the label, “Time ( s ),” appearing on the x-axis and, “Concentration ( M ),” on the y-axis. The x-axis markings begin at 0 and end at 2000. The markings are labeled at intervals of 500. The y-axis begins at 0 and includes markings every 1.0 times 10 superscript negative 3, up to 4.0 times 10 superscript negative 3. A decreasing, concave up, non-linear curve is shown, which begins at about 2.8 times 10 superscript negative 3 on the y-axis and nearly reaches a value of 0 at the far right of the graph at the 2000 marking on the x-axis. This curve is labeled, “[ N H subscript 3].” Two additional curves that are increasing and concave down are shown, both beginning at the origin. The lower of these two curves is labeled, “[ N subscript 2 ].” It reaches a value of approximately 1.25 times 10 superscript negative 3 at 2000 seconds. The final curve is labeled, “[ H subscript 2 ].” It reaches a value of about 3.9 times 10 superscript negative 3 at 2000 seconds. A red tangent line segment is drawn to each of the curves on the graph at 500 seconds. At 500 seconds on the x-axis, a vertical dashed line is shown. Next to the [ N H subscript 3] graph appears the equation “negative capital delta [ N H subscript 3 ] over capital delta t = negative slope = 1.94 times 10 superscript negative 6 M / s.” Next to the [ N subscript 2] graph appears the equation “negative capital delta [ N subscript 2 ] over capital delta t = negative slope = 9.70 times 10 superscript negative 7 M / s.” Next to the [ H subscript 2 ] graph appears the equation “negative capital delta [ H subscript 2 ] over capital delta t = negative slope = 2.91 times 10 superscript negative 6 M / s.”
 
 <!-- SEG:m68786:example-title:fs-idp40614224-title -->
 Expressions for Relative Reaction Rates
@@ -178,7 +190,7 @@ The rate of a reaction can be expressed either in terms of the decrease in the a
 <!-- SEG:m68786:title:fs-idp13917664-title -->
 Key Equations
 
-<!-- SEG:m68786:entry:auto-61 -->
+<!-- SEG:m68786:entry:auto-65 -->
 [[MATH:13]]
 
 <!-- SEG:m68786:title:fs-idm87178096-title -->
@@ -211,40 +223,40 @@ A study of the rate of dimerization of C[[sub:4]]H[[sub:6]] gave the data shown 
 <!-- SEG:m68786:problem:fs-idp17436544 -->
 (c) Determine the average rate of formation of C[[sub:8]]H[[sub:12]] at 1600 s and the instantaneous rate of formation at 3200 s from the rates found in parts (a) and (b).
 
-<!-- SEG:m68786:entry:auto-72 -->
+<!-- SEG:m68786:entry:auto-76 -->
 Time (s)
 
-<!-- SEG:m68786:entry:auto-73 -->
+<!-- SEG:m68786:entry:auto-77 -->
 0
 
-<!-- SEG:m68786:entry:auto-74 -->
+<!-- SEG:m68786:entry:auto-78 -->
 1600
 
-<!-- SEG:m68786:entry:auto-75 -->
+<!-- SEG:m68786:entry:auto-79 -->
 3200
 
-<!-- SEG:m68786:entry:auto-76 -->
+<!-- SEG:m68786:entry:auto-80 -->
 4800
 
-<!-- SEG:m68786:entry:auto-77 -->
+<!-- SEG:m68786:entry:auto-81 -->
 6200
 
-<!-- SEG:m68786:entry:auto-78 -->
+<!-- SEG:m68786:entry:auto-82 -->
 [C[[sub:4]]H[[sub:6]]] ([[i:M]])
 
-<!-- SEG:m68786:entry:auto-79 -->
+<!-- SEG:m68786:entry:auto-83 -->
 1.00 [[MATH:18]] 10[[sup:−2]]
 
-<!-- SEG:m68786:entry:auto-80 -->
+<!-- SEG:m68786:entry:auto-84 -->
 5.04 [[MATH:19]] 10[[sup:−3]]
 
-<!-- SEG:m68786:entry:auto-81 -->
+<!-- SEG:m68786:entry:auto-85 -->
 3.37 [[MATH:20]] 10[[sup:−3]]
 
-<!-- SEG:m68786:entry:auto-82 -->
+<!-- SEG:m68786:entry:auto-86 -->
 2.53 [[MATH:21]] 10[[sup:−3]]
 
-<!-- SEG:m68786:entry:auto-83 -->
+<!-- SEG:m68786:entry:auto-87 -->
 2.08 [[MATH:22]] 10[[sup:−3]]
 
 <!-- SEG:m68786:problem:fs-idp79128192 -->
@@ -262,52 +274,52 @@ A study of the rate of the reaction represented as [[MATH:23]] gave the followin
 <!-- SEG:m68786:solution:fs-idm15349328 -->
 (a) average rate, 0 − 10 s = 0.0375 mol L[[sup:−1]] s[[sup:−1]]; average rate, 10 − 20 s = 0.0265 mol L[[sup:−1]] s[[sup:−1]]; (b) instantaneous rate, 15 s = 0.023 mol L[[sup:−1]] s[[sup:−1]]; (c) average rate for B formation = 0.0188 mol L[[sup:−1]] s[[sup:−1]]; instantaneous rate for B formation = 0.012 mol L[[sup:−1]] s[[sup:−1]]
 
-<!-- SEG:m68786:entry:auto-89 -->
+<!-- SEG:m68786:entry:auto-93 -->
 Time (s)
 
-<!-- SEG:m68786:entry:auto-90 -->
+<!-- SEG:m68786:entry:auto-94 -->
 0.0
 
-<!-- SEG:m68786:entry:auto-91 -->
+<!-- SEG:m68786:entry:auto-95 -->
 5.0
 
-<!-- SEG:m68786:entry:auto-92 -->
+<!-- SEG:m68786:entry:auto-96 -->
 10.0
 
-<!-- SEG:m68786:entry:auto-93 -->
+<!-- SEG:m68786:entry:auto-97 -->
 15.0
 
-<!-- SEG:m68786:entry:auto-94 -->
+<!-- SEG:m68786:entry:auto-98 -->
 20.0
 
-<!-- SEG:m68786:entry:auto-95 -->
+<!-- SEG:m68786:entry:auto-99 -->
 25.0
 
-<!-- SEG:m68786:entry:auto-96 -->
+<!-- SEG:m68786:entry:auto-100 -->
 35.0
 
-<!-- SEG:m68786:entry:auto-97 -->
+<!-- SEG:m68786:entry:auto-101 -->
 [[[i:A]]] ([[i:M]])
 
-<!-- SEG:m68786:entry:auto-98 -->
+<!-- SEG:m68786:entry:auto-102 -->
 1.00
 
-<!-- SEG:m68786:entry:auto-99 -->
+<!-- SEG:m68786:entry:auto-103 -->
 0.775
 
-<!-- SEG:m68786:entry:auto-100 -->
+<!-- SEG:m68786:entry:auto-104 -->
 0.625
 
-<!-- SEG:m68786:entry:auto-101 -->
+<!-- SEG:m68786:entry:auto-105 -->
 0.465
 
-<!-- SEG:m68786:entry:auto-102 -->
+<!-- SEG:m68786:entry:auto-106 -->
 0.360
 
-<!-- SEG:m68786:entry:auto-103 -->
+<!-- SEG:m68786:entry:auto-107 -->
 0.285
 
-<!-- SEG:m68786:entry:auto-104 -->
+<!-- SEG:m68786:entry:auto-108 -->
 0.230
 
 <!-- SEG:m68786:problem:fs-idm31731440 -->

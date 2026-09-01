@@ -1,0 +1,201 @@
+{
+  "moduleId": "m00289",
+  "title": {
+    "segmentId": "m00289:title:auto-1",
+    "text": "Naming Amines"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "791e44dd-7a70-4db5-b07d-84447678697d"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00289:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00289:alt:fig-00001-alt",
+          "text": "Three structures show tertiary-butyl alcohol (a tertiary alcohol), trimethylamine (a tertiary amine) and tertiary butyl amine (a primary amine)."
+        },
+        "src": "../../media/OChem_24_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00289:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00289:alt:fig-00002-alt",
+          "text": "The structure of a quaternary ammonium salt, which is a nitrogen positive linked to four R groups and an X negative ion."
+        },
+        "src": "../../media/OChem_24_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00289:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00289:alt:fig-00003-alt",
+          "text": "The structures of tertiary-butyl amine, cyclohexylamine, and aniline. Aniline is enclosed in square parentheses."
+        },
+        "src": "../../media/OChem_24_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00289:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00289:alt:fig-00004-alt",
+          "text": "The structures of 4,4-dimethylcyclohexanamine and 1,4-butanediamine. 4,4-dimethylcyclohexanamine has cyclohexane ring with two methyl groups on C4 and amine on C1. 1,4-butanediamine is four-carbon chain with amines on C1 and C4."
+        },
+        "src": "../../media/OChem_24_01_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00289:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00289:alt:fig-00005-alt",
+          "text": "The structures of 2-aminobutanoic acid, 2,4-diaminobenzoic acid and 4-amino-2-butanone. The carbon atoms of 2-aminobutanoic acid and 4-amino-2-butanone are numbered explicitly."
+        },
+        "src": "../../media/OChem_24_01_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00289:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00289:alt:fig-00006-alt",
+          "text": "The structures of diphenylamine and triethylamine. Diphenylamine has two benzene rings linked to an N H group. Triethylamine has a nitrogen atom linked to three ethyl groups."
+        },
+        "src": "../../media/OChem_24_01_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00289:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00289:alt:fig-00007-alt",
+          "text": "N,N-dimethylpropylamine has a nitrogen linked to two methyl and a propyl group. N-ethyl-N-methylcyclohexylamine has cyclohexane linked to a nitrogen. This is connected to methyl and ethyl group."
+        },
+        "src": "../../media/OChem_24_01_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00289:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00008",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00289:alt:fig-00008-alt",
+          "text": "The structures of pyridine, pyrrole, quinoline, imidazole, indole, pyrimidine, pyrrolidine, and piperidine. The compounds are numbered from the nitrogen atom."
+        },
+        "src": "../../media/OChem_24_01_008.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00289:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

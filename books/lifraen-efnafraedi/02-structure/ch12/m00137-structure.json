@@ -36,7 +36,10 @@
             "segmentId": "m00137:caption:fig-00001-caption"
           },
           "media": {
-            "alt": "The mass spectrum of 2-pentanol with a base peak at m / z 45 and a molecular ion at m / z 88.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00001-alt",
+              "text": "The mass spectrum of 2-pentanol with a base peak at m / z 45 and a molecular ion at m / z 88."
+            },
             "src": "../../media/OChem_12_03_001.jpg",
             "mimeType": "image/jpeg"
           }
@@ -47,7 +50,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "The alpha cleavage of an alkyl group from an aliphatic alcohol radical cation yields an alkyl radical and an aliphatic alcohol cation with resonance.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00002-alt",
+              "text": "The alpha cleavage of an alkyl group from an aliphatic alcohol radical cation yields an alkyl radical and an aliphatic alcohol cation with resonance."
+            },
             "src": "../../media/OChem_12_03_002.jpg",
             "mimeType": "image/jpeg"
           }
@@ -63,7 +69,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "The dehydration of an aliphatic alcohol radical cation yields water and an alkene radical cation.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00003-alt",
+              "text": "The dehydration of an aliphatic alcohol radical cation yields water and an alkene radical cation."
+            },
             "src": "../../media/OChem_12_03_003.jpg",
             "mimeType": "image/jpeg"
           }
@@ -95,7 +104,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "The alpha cleavage of an alkyl group from an aliphatic amine radical cation yields an alkyl radical and an aliphatic amine cation with resonance.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00004-alt",
+              "text": "The alpha cleavage of an alkyl group from an aliphatic amine radical cation yields an alkyl radical and an aliphatic amine cation with resonance."
+            },
             "src": "../../media/OChem_12_03_004.jpg",
             "mimeType": "image/jpeg"
           }
@@ -113,7 +125,10 @@
             "segmentId": "m00137:caption:fig-00005-caption"
           },
           "media": {
-            "alt": "The mass spectrum of  triethylamine with a base peak at m / z 86 and a molecular ion at m / z 101.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00005-alt",
+              "text": "The mass spectrum of  triethylamine with a base peak at m / z 86 and a molecular ion at m / z 101."
+            },
             "src": "../../media/OChem_12_03_005.jpg",
             "mimeType": "image/jpeg"
           }
@@ -142,7 +157,10 @@
             "segmentId": "m00137:caption:fig-00006-caption"
           },
           "media": {
-            "alt": "The mass spectrum of chloroethane with two peaks at m / z 64 and 66, labeled M and M + 2, on a 3 to 1 height ratio.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00006-alt",
+              "text": "The mass spectrum of chloroethane with two peaks at m / z 64 and 66, labeled M and M + 2, on a 3 to 1 height ratio."
+            },
             "src": "../../media/OChem_12_03_006.jpg",
             "mimeType": "image/jpeg"
           }
@@ -160,7 +178,10 @@
             "segmentId": "m00137:caption:fig-00007-caption"
           },
           "media": {
-            "alt": "The mass spectrum of 1-bromohexane, with two peaks at m / z 164 and 166, labeled M and M + 2, on a 1 to 1 height ratio.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00007-alt",
+              "text": "The mass spectrum of 1-bromohexane, with two peaks at m / z 164 and 166, labeled M and M + 2, on a 1 to 1 height ratio."
+            },
             "src": "../../media/OChem_12_03_007.jpg",
             "mimeType": "image/jpeg"
           }
@@ -187,7 +208,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "The mechanism of a Mclafferty rearrangement of a ketone or aldehyde radical cation to produce an alkene and a vinyl alcohol radical cation.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00008-alt",
+              "text": "The mechanism of a Mclafferty rearrangement of a ketone or aldehyde radical cation to produce an alkene and a vinyl alcohol radical cation."
+            },
             "src": "../../media/OChem_12_03_008.jpg",
             "mimeType": "image/jpeg"
           }
@@ -203,7 +227,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "An R R' ketone radical cation undergoes alpha cleavage to produce an R radical and an R' acyl cation, which has resonance.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00009-alt",
+              "text": "An R R' ketone radical cation undergoes alpha cleavage to produce an R radical and an R' acyl cation, which has resonance."
+            },
             "src": "../../media/OChem_12_03_009.jpg",
             "mimeType": "image/jpeg"
           }
@@ -219,7 +246,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "The carbon directly adjacent to a carbonyl carbon is marked alpha; subsequent carbons are marked beta, gamma, and delta.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00010-alt",
+              "text": "The carbon directly adjacent to a carbonyl carbon is marked alpha; subsequent carbons are marked beta, gamma, and delta."
+            },
             "src": "../../media/OSX_OrgChem_12_03_GreekLets_img.jpg",
             "mimeType": "image/jpeg"
           }
@@ -237,7 +267,10 @@
             "segmentId": "m00137:caption:fig-00011-caption"
           },
           "media": {
-            "alt": "The mass spectrum of  butyrophenone with a base peak at m / z 105 and a molecular ion at m / z 148.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00011-alt",
+              "text": "The mass spectrum of  butyrophenone with a base peak at m / z 105 and a molecular ion at m / z 148."
+            },
             "src": "../../media/OChem_12_03_010.jpg",
             "mimeType": "image/jpeg"
           }
@@ -247,7 +280,7 @@
           "id": "exam-00001",
           "title": {
             "segmentId": "m00137:example-title:exam-00001-title",
-            "text": "Strategy"
+            "text": "Identifying Fragmentation Patterns in a Mass Spectrum"
           },
           "content": [
             {
@@ -258,7 +291,11 @@
             {
               "type": "para",
               "id": "para-00014",
-              "segmentId": "m00137:para:para-00014"
+              "segmentId": "m00137:para:para-00014",
+              "title": {
+                "segmentId": "m00137:para-title:para-00014-title",
+                "text": "Strategy"
+              }
             },
             {
               "type": "para",
@@ -279,7 +316,10 @@
             "segmentId": "m00137:caption:fig-00012-caption"
           },
           "media": {
-            "alt": "The mass spectrum of  2-methyl-3-pentanol with a base peak at m / z 59 and another approximately 40% abundance peak at m / z 73.",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00012-alt",
+              "text": "The mass spectrum of  2-methyl-3-pentanol with a base peak at m / z 59 and another approximately 40% abundance peak at m / z 73."
+            },
             "src": "../../media/OChem_12_03_011.jpg",
             "mimeType": "image/jpeg"
           }
@@ -290,7 +330,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "2-methyl-3-pentanol (m plus 102) undergoes alpha cleavage in two ways, losing propyl cation (m plus 43, giving peak at 59) or ethyl cation (m plus 29, giving peak at 73).",
+            "alt": {
+              "segmentId": "m00137:alt:fig-00013-alt",
+              "text": "2-methyl-3-pentanol (m plus 102) undergoes alpha cleavage in two ways, losing propyl cation (m plus 43, giving peak at 59) or ethyl cation (m plus 29, giving peak at 73)."
+            },
             "src": "../../media/OChem_12_03_012.jpg",
             "mimeType": "image/jpeg"
           }

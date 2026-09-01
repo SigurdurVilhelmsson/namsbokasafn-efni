@@ -1,0 +1,26 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>R</m:mtext><m:mtext>–</m:mtext><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{R}\\text{–}\\text{C=O}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext mathvariant=\"bold\">C=Nu</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=Nu}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=N</m:mtext><m:mtext>u</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=N}\\text{u}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C=NR</m:mtext><m:mo>′</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{R}}_{2}\\text{C=NR}′}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mtext>&#x2550;</m:mtext><m:mtext>Nu</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}\\text{&#x2550;}\\text{Nu}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext mathvariant=\"bold\">C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  }
+}

@@ -11,7 +11,7 @@ Describe the formation of covalent bonds
 Define electronegativity and assess the polarity of covalent bonds
 
 <!-- SEG:m68738:para:fs-idp18344448 -->
-Ionic bonding results from the electrostatic attraction of oppositely charged ions that are typically produced by the transfer of electrons between metallic and nonmetallic atoms. A different type of bonding results from the mutual attraction of atoms for a “shared” pair of electrons. Such bonds are called {{term}}covalent bonds{{/term}}. Covalent bonds are formed between two atoms when both have similar tendencies to attract electrons to themselves (i.e., when both atoms have identical or fairly similar ionization energies and electron affinities). For example, two hydrogen atoms bond covalently to form an H[[sub:2]] molecule; each hydrogen atom in the H[[sub:2]] molecule has two electrons stabilizing it, giving each atom the same number of valence electrons as the noble gas He.
+Ionic bonding results from the electrostatic attraction of oppositely charged ions that are typically produced by the transfer of electrons between metallic and nonmetallic atoms. A different type of bonding results from the mutual attraction of atoms for a “shared” pair of electrons. Such bonds are called [[term:covalent bonds|term-00001]]. Covalent bonds are formed between two atoms when both have similar tendencies to attract electrons to themselves (i.e., when both atoms have identical or fairly similar ionization energies and electron affinities). For example, two hydrogen atoms bond covalently to form an H[[sub:2]] molecule; each hydrogen atom in the H[[sub:2]] molecule has two electrons stabilizing it, giving each atom the same number of valence electrons as the noble gas He.
 
 <!-- SEG:m68738:para:fs-idm46739904 -->
 Compounds that contain covalent bonds exhibit different physical properties than ionic compounds. Because the attraction between molecules, which are electrically neutral, is weaker than that between electrically charged ions, covalent compounds generally have much lower melting and boiling points than ionic compounds. In fact, many covalent compounds are liquids or gases at room temperature, and, in their solid states, they are typically much softer than ionic solids. Furthermore, whereas ionic compounds are good conductors of electricity when dissolved in water, most covalent compounds are insoluble in water; since they are electrically neutral, they are poor conductors of electricity in any state.
@@ -20,10 +20,13 @@ Compounds that contain covalent bonds exhibit different physical properties than
 Formation of Covalent Bonds
 
 <!-- SEG:m68738:para:fs-idp19293424 -->
-Nonmetal atoms frequently form covalent bonds with other nonmetal atoms. For example, the hydrogen molecule, H[[sub:2]], contains a covalent bond between its two hydrogen atoms. [[xref:CNX_Chem_07_02_Morse]] illustrates why this bond is formed. Starting on the far right, we have two separate hydrogen atoms with a particular potential energy, indicated by the red line. Along the [[i:x]]-axis is the distance between the two atoms. As the two atoms approach each other (moving left along the [[i:x]]-axis), their valence orbitals (1[[i:s]]) begin to overlap. The single electrons on each hydrogen atom then interact with both atomic nuclei, occupying the space around both atoms. The strong attraction of each shared electron to both nuclei stabilizes the system, and the potential energy decreases as the bond distance decreases. If the atoms continue to approach each other, the positive charges in the two nuclei begin to repel each other, and the potential energy increases. The {{term}}bond length{{/term}} is determined by the distance at which the lowest potential energy is achieved.
+Nonmetal atoms frequently form covalent bonds with other nonmetal atoms. For example, the hydrogen molecule, H[[sub:2]], contains a covalent bond between its two hydrogen atoms. [[xref:CNX_Chem_07_02_Morse]] illustrates why this bond is formed. Starting on the far right, we have two separate hydrogen atoms with a particular potential energy, indicated by the red line. Along the [[i:x]]-axis is the distance between the two atoms. As the two atoms approach each other (moving left along the [[i:x]]-axis), their valence orbitals (1[[i:s]]) begin to overlap. The single electrons on each hydrogen atom then interact with both atomic nuclei, occupying the space around both atoms. The strong attraction of each shared electron to both nuclei stabilizes the system, and the potential energy decreases as the bond distance decreases. If the atoms continue to approach each other, the positive charges in the two nuclei begin to repel each other, and the potential energy increases. The [[term:bond length|term-00002]] is determined by the distance at which the lowest potential energy is achieved.
 
 <!-- SEG:m68738:caption:CNX_Chem_07_02_Morse-caption -->
 The potential energy of two separate hydrogen atoms (right) decreases as they approach each other, and the single electrons on each atom are shared to form a covalent bond. The bond length is the internuclear distance at which the lowest potential energy is achieved.
+
+<!-- SEG:m68738:alt:fs-idp205967824-alt -->
+A graph is shown with the x-axis labeled, “Internuclear distance ( p m )” while the y-axis is labeled, “Energy ( J ).” One value, “0,” is labeled midway up the y-axis and two values: “0” at the far left and “0.74” to the left, are labeled on the x-axis. The point “74” is labeled, “H bond H distance.” A line is graphed that begins near the top of the y-axis and to the far left on the x-axis and drops steeply to a point labeled, “negative 7.24 times 10 superscript negative 19 J” on the y-axis and 74 on the x-axis. This low point on the graph corresponds to a drawing of two spheres that overlap considerably. The line then rises to zero on the y-axis and levels out. The point where it almost reaches zero corresponds to two spheres that overlap slightly. The line at zero on the y-axis corresponds to two spheres that are far from one another.
 
 <!-- SEG:m68738:para:fs-idm53665712 -->
 It is essential to remember that energy must be added to break chemical bonds (an endothermic process), whereas forming chemical bonds releases energy (an exothermic process). In the case of H[[sub:2]], the covalent bond is very strong; a large amount of energy, 436 kJ, must be added to break the bonds in one mole of hydrogen molecules and cause the atoms to separate:
@@ -35,7 +38,7 @@ Conversely, the same amount of energy is released when one mole of H[[sub:2]] mo
 Pure vs. Polar Covalent Bonds
 
 <!-- SEG:m68738:para:fs-idp9596128 -->
-If the atoms that form a covalent bond are identical, as in H[[sub:2]], Cl[[sub:2]], and other diatomic molecules, then the electrons in the bond must be shared equally. We refer to this as a {{term}}pure covalent bond{{/term}}. Electrons shared in pure covalent bonds have an equal probability of being near each nucleus.
+If the atoms that form a covalent bond are identical, as in H[[sub:2]], Cl[[sub:2]], and other diatomic molecules, then the electrons in the bond must be shared equally. We refer to this as a [[term:pure covalent bond|term-00003]]. Electrons shared in pure covalent bonds have an equal probability of being near each nucleus.
 
 <!-- SEG:m68738:para:fs-idp173661472 -->
 In the case of Cl[[sub:2]], each atom starts off with seven valence electrons, and each Cl shares one electron with the other, forming one covalent bond:
@@ -44,13 +47,16 @@ In the case of Cl[[sub:2]], each atom starts off with seven valence electrons, a
 The total number of electrons around each individual atom consists of six nonbonding electrons and two shared (i.e., bonding) electrons for eight total electrons, matching the number of valence electrons in the noble gas argon. Since the bonding atoms are identical, Cl[[sub:2]] also features a pure covalent bond.
 
 <!-- SEG:m68738:para:fs-idp26845616 -->
-When the atoms linked by a covalent bond are different, the bonding electrons are shared, but no longer equally. Instead, the bonding electrons are more attracted to one atom than the other, giving rise to a shift of electron density toward that atom. This unequal distribution of electrons is known as a {{term}}polar covalent bond{{/term}}, characterized by a partial positive charge on one atom and a partial negative charge on the other. The atom that attracts the electrons more strongly acquires the partial negative charge and vice versa. For example, the electrons in the H–Cl bond of a hydrogen chloride molecule spend more time near the chlorine atom than near the hydrogen atom. Thus, in an HCl molecule, the chlorine atom carries a partial negative charge and the hydrogen atom has a partial positive charge. [[xref:CNX_Chem_07_02_HClBond]] shows the distribution of electrons in the H–Cl bond. Note that the shaded area around Cl is much larger than it is around H. Compare this to [[xref:CNX_Chem_07_02_Morse]], which shows the even distribution of electrons in the H[[sub:2]] nonpolar bond.
+When the atoms linked by a covalent bond are different, the bonding electrons are shared, but no longer equally. Instead, the bonding electrons are more attracted to one atom than the other, giving rise to a shift of electron density toward that atom. This unequal distribution of electrons is known as a [[term:polar covalent bond|term-00004]], characterized by a partial positive charge on one atom and a partial negative charge on the other. The atom that attracts the electrons more strongly acquires the partial negative charge and vice versa. For example, the electrons in the H–Cl bond of a hydrogen chloride molecule spend more time near the chlorine atom than near the hydrogen atom. Thus, in an HCl molecule, the chlorine atom carries a partial negative charge and the hydrogen atom has a partial positive charge. [[xref:CNX_Chem_07_02_HClBond]] shows the distribution of electrons in the H–Cl bond. Note that the shaded area around Cl is much larger than it is around H. Compare this to [[xref:CNX_Chem_07_02_Morse]], which shows the even distribution of electrons in the H[[sub:2]] nonpolar bond.
 
 <!-- SEG:m68738:para:fs-idp24320096 -->
 We sometimes designate the positive and negative atoms in a polar covalent bond using a lowercase Greek letter “delta,” δ, with a plus sign or minus sign to indicate whether the atom has a partial positive charge (δ+) or a partial negative charge (δ–). This symbolism is shown for the H–Cl molecule in [[xref:CNX_Chem_07_02_HClBond]].
 
 <!-- SEG:m68738:caption:CNX_Chem_07_02_HClBond-caption -->
 (a) The distribution of electron density in the HCl molecule is uneven. The electron density is greater around the chlorine nucleus. The small, black dots indicate the location of the hydrogen and chlorine nuclei in the molecule. (b) Symbols δ+ and δ– indicate the polarity of the H–Cl bond.
+
+<!-- SEG:m68738:alt:fs-idp17725376-alt -->
+Two diagrams are shown and labeled “a” and “b.” Diagram a shows a small sphere labeled, “H” and a larger sphere labeled, “C l” that overlap slightly. Both spheres have a small dot in the center. Diagram b shows an H bonded to a C l with a single bond. A dipole and a positive sign are written above the H and a dipole and negative sign are written above the C l. An arrow points toward the C l with a plus sign on the end furthest from the arrow’s head near the H.
 
 <!-- SEG:m68738:title:fs-idp14008096-title -->
 Electronegativity
@@ -65,13 +71,16 @@ We must be careful not to confuse electronegativity and electron affinity. The e
 Linus Pauling
 
 <!-- SEG:m68738:para:fs-idp175623792 -->
-Linus {{term}}Pauling{{/term}}, shown in [[xref:CNX_Chem_07_02_Pauling]], is the only person to have received two unshared (individual) Nobel Prizes: one for chemistry in 1954 for his work on the nature of chemical bonds and one for peace in 1962 for his opposition to weapons of mass destruction. He developed many of the theories and concepts that are foundational to our current understanding of chemistry, including electronegativity and resonance structures.
+Linus [[term:Pauling|term-00006]], shown in [[xref:CNX_Chem_07_02_Pauling]], is the only person to have received two unshared (individual) Nobel Prizes: one for chemistry in 1954 for his work on the nature of chemical bonds and one for peace in 1962 for his opposition to weapons of mass destruction. He developed many of the theories and concepts that are foundational to our current understanding of chemistry, including electronegativity and resonance structures.
 
 <!-- SEG:m68738:para:fs-idp80917280 -->
 Pauling also contributed to many other fields besides chemistry. His research on sickle cell anemia revealed the cause of the disease—the presence of a genetically inherited abnormal protein in the blood—and paved the way for the field of molecular genetics. His work was also pivotal in curbing the testing of nuclear weapons; he proved that radioactive fallout from nuclear testing posed a public health risk.
 
 <!-- SEG:m68738:caption:CNX_Chem_07_02_Pauling-caption -->
 Linus Pauling (1901–1994) made many important contributions to the field of chemistry. He was also a prominent activist, publicizing issues related to health and nuclear weapons.
+
+<!-- SEG:m68738:alt:fs-idp80404176-alt -->
+A photograph of Linus Pauling is shown.
 
 <!-- SEG:m68738:title:fs-idp9576080-title -->
 Electronegativity and Bond Type
@@ -81,6 +90,9 @@ The absolute value of the difference in electronegativity (ΔEN) of two bonded a
 
 <!-- SEG:m68738:caption:CNX_Chem_07_02_DeltaEN-caption -->
 As the electronegativity difference increases between two atoms, the bond becomes more ionic.
+
+<!-- SEG:m68738:alt:fs-idm74573296-alt -->
+Two flow charts and table are shown. The first flow chart is labeled, “Electronegativity difference between bonding atoms.” Below this label are three rounded text bubbles, connected by a downward-facing arrow, labeled, “Zero,” “Intermediate,” and “Large,” respectively. The second flow chart is labeled, “Bond type.” Below this label are three rounded text bubbles, connected by a downward-facing arrow, labeled, “Pure covalent,” “Polar covalent,” and “Ionic,” respectively. A double ended arrow is written vertically to the right of the flow charts and labeled, “Covalent character decreases; ionic character increases.” The table is made up of two columns and four rows. The header line is labeled “Bond type” and “Electronegativity difference.” The left column contains the phrases “Pure covalent,” “Polar covalent,” and “Ionic,” while the right column contains the values “less than 0.4,” “between 0.4 and 1.8,” and “greater than 1.8.”
 
 <!-- SEG:m68738:para:fs-idm32214656 -->
 A rough approximation of the electronegativity differences associated with covalent, polar covalent, and ionic bonds is shown in [[xref:CNX_Chem_07_02_DeltaEN]]. This table is just a general guide, however, with many exceptions. For example, the H and F atoms in HF have an electronegativity difference of 1.9, and the N and H atoms in NH[[sub:3]] a difference of 0.9, yet both of these compounds form bonds that are considered polar covalent. Likewise, the Na and Cl atoms in NaCl have an electronegativity difference of 2.1, and the Mn and I atoms in MnI[[sub:2]] have a difference of 1.0, yet both of these substances form ionic compounds.
@@ -115,125 +127,128 @@ Silicones are polymeric compounds containing, among others, the following types 
 <!-- SEG:m68738:note-title:fs-idp56083008-title -->
 Answer:
 
-<!-- SEG:m68738:entry:auto-40 -->
+<!-- SEG:m68738:entry:auto-44 -->
 Bond Polarity and Electronegativity Difference
 
-<!-- SEG:m68738:entry:auto-41 -->
-Bond
-
-<!-- SEG:m68738:entry:auto-42 -->
-ΔEN
-
-<!-- SEG:m68738:entry:auto-43 -->
-Polarity
-
-<!-- SEG:m68738:entry:auto-44 -->
-C–H
-
 <!-- SEG:m68738:entry:auto-45 -->
-0.4
+Bond
 
 <!-- SEG:m68738:entry:auto-46 -->
-[[MATH:6]]
+ΔEN
 
 <!-- SEG:m68738:entry:auto-47 -->
-S–H
-
-<!-- SEG:m68738:entry:auto-48 -->
-0.4
-
-<!-- SEG:m68738:entry:auto-49 -->
-[[MATH:7]]
-
-<!-- SEG:m68738:entry:auto-50 -->
-C–N
-
-<!-- SEG:m68738:entry:auto-51 -->
-0.5
-
-<!-- SEG:m68738:entry:auto-52 -->
-[[MATH:8]]
-
-<!-- SEG:m68738:entry:auto-53 -->
-N–H
-
-<!-- SEG:m68738:entry:auto-54 -->
-0.9
-
-<!-- SEG:m68738:entry:auto-55 -->
-[[MATH:9]]
-
-<!-- SEG:m68738:entry:auto-56 -->
-C–O
-
-<!-- SEG:m68738:entry:auto-57 -->
-1.0
-
-<!-- SEG:m68738:entry:auto-58 -->
-[[MATH:10]]
-
-<!-- SEG:m68738:entry:auto-59 -->
-O–H
-
-<!-- SEG:m68738:entry:auto-60 -->
-1.4
-
-<!-- SEG:m68738:entry:auto-61 -->
-[[MATH:11]]
-
-<!-- SEG:m68738:entry:auto-62 -->
-Bond
-
-<!-- SEG:m68738:entry:auto-63 -->
-Electronegativity Difference
-
-<!-- SEG:m68738:entry:auto-64 -->
 Polarity
 
-<!-- SEG:m68738:entry:auto-65 -->
-C–C
-
-<!-- SEG:m68738:entry:auto-66 -->
-0.0
-
-<!-- SEG:m68738:entry:auto-67 -->
-nonpolar
-
-<!-- SEG:m68738:entry:auto-68 -->
+<!-- SEG:m68738:entry:auto-48 -->
 C–H
 
-<!-- SEG:m68738:entry:auto-69 -->
+<!-- SEG:m68738:entry:auto-49 -->
 0.4
 
+<!-- SEG:m68738:entry:auto-50 -->
+[[MATH:6]]
+
+<!-- SEG:m68738:entry:auto-51 -->
+S–H
+
+<!-- SEG:m68738:entry:auto-52 -->
+0.4
+
+<!-- SEG:m68738:entry:auto-53 -->
+[[MATH:7]]
+
+<!-- SEG:m68738:entry:auto-54 -->
+C–N
+
+<!-- SEG:m68738:entry:auto-55 -->
+0.5
+
+<!-- SEG:m68738:entry:auto-56 -->
+[[MATH:8]]
+
+<!-- SEG:m68738:entry:auto-57 -->
+N–H
+
+<!-- SEG:m68738:entry:auto-58 -->
+0.9
+
+<!-- SEG:m68738:entry:auto-59 -->
+[[MATH:9]]
+
+<!-- SEG:m68738:entry:auto-60 -->
+C–O
+
+<!-- SEG:m68738:entry:auto-61 -->
+1.0
+
+<!-- SEG:m68738:entry:auto-62 -->
+[[MATH:10]]
+
+<!-- SEG:m68738:entry:auto-63 -->
+O–H
+
+<!-- SEG:m68738:entry:auto-64 -->
+1.4
+
+<!-- SEG:m68738:entry:auto-65 -->
+[[MATH:11]]
+
+<!-- SEG:m68738:entry:auto-66 -->
+Bond
+
+<!-- SEG:m68738:entry:auto-67 -->
+Electronegativity Difference
+
+<!-- SEG:m68738:entry:auto-68 -->
+Polarity
+
+<!-- SEG:m68738:entry:auto-69 -->
+C–C
+
 <!-- SEG:m68738:entry:auto-70 -->
-[[MATH:12]]
+0.0
 
 <!-- SEG:m68738:entry:auto-71 -->
-Si–C
+nonpolar
 
 <!-- SEG:m68738:entry:auto-72 -->
-0.7
+C–H
 
 <!-- SEG:m68738:entry:auto-73 -->
-[[MATH:13]]
+0.4
 
 <!-- SEG:m68738:entry:auto-74 -->
-Si–O
+[[MATH:12]]
 
 <!-- SEG:m68738:entry:auto-75 -->
-1.7
+Si–C
 
 <!-- SEG:m68738:entry:auto-76 -->
+0.7
+
+<!-- SEG:m68738:entry:auto-77 -->
+[[MATH:13]]
+
+<!-- SEG:m68738:entry:auto-78 -->
+Si–O
+
+<!-- SEG:m68738:entry:auto-79 -->
+1.7
+
+<!-- SEG:m68738:entry:auto-80 -->
 [[MATH:14]]
 
 <!-- SEG:m68738:para:fs-idm42504736 -->
-Whether a bond is nonpolar or polar covalent is determined by a property of the bonding atoms called {{term}}electronegativity{{/term}}. Electronegativity is a measure of the tendency of an atom to attract electrons (or electron density) towards itself. It determines how the shared electrons are distributed between the two atoms in a bond. The more strongly an atom attracts the electrons in its bonds, the larger its electronegativity. Electrons in a polar covalent bond are shifted toward the more electronegative atom; thus, the more electronegative atom is the one with the partial negative charge. The greater the difference in electronegativity, the more polarized the electron distribution and the larger the partial charges of the atoms.
+Whether a bond is nonpolar or polar covalent is determined by a property of the bonding atoms called [[term:electronegativity|term-00005]]. Electronegativity is a measure of the tendency of an atom to attract electrons (or electron density) towards itself. It determines how the shared electrons are distributed between the two atoms in a bond. The more strongly an atom attracts the electrons in its bonds, the larger its electronegativity. Electrons in a polar covalent bond are shifted toward the more electronegative atom; thus, the more electronegative atom is the one with the partial negative charge. The greater the difference in electronegativity, the more polarized the electron distribution and the larger the partial charges of the atoms.
 
 <!-- SEG:m68738:para:fs-idm49461456 -->
 [[xref:CNX_Chem_07_02_ENTable]] shows the electronegativity values of the elements as proposed by one of the most famous chemists of the twentieth century: Linus Pauling ([[xref:CNX_Chem_07_02_Pauling]]). In general, electronegativity increases from left to right across a period in the periodic table and decreases down a group. Thus, the nonmetals, which lie in the upper right, tend to have the highest electronegativities, with fluorine the most electronegative element of all (EN = 4.0). Metals tend to be less electronegative elements, and the group 1 metals have the lowest electronegativities. Note that noble gases are excluded from this figure because these atoms usually do not share electrons with others atoms since they have a full valence shell. (While noble gas compounds such as XeO[[sub:2]] do exist, they can only be formed under extreme conditions, and thus they do not fit neatly into the general model of electronegativity.)
 
 <!-- SEG:m68738:caption:CNX_Chem_07_02_ENTable-caption -->
 The electronegativity values derived by Pauling follow predictable periodic trends, with the higher electronegativities toward the upper right of the periodic table.
+
+<!-- SEG:m68738:alt:fs-idp15011408-alt -->
+Part of the periodic table is shown. A downward-facing arrow is drawn to the left of the table and labeled, “Decreasing electronegativity,” while a right-facing arrow is drawn above the table and labeled “Increasing electronegativity.” The electronegativity for almost all the elements is given.
 
 <!-- SEG:m68738:title:fs-idm4705056-title -->
 Key Concepts and Summary

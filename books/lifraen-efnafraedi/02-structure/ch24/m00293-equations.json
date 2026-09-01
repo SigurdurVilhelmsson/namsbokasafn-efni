@@ -1,0 +1,17 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math><m:mrow><m:mtext>pH = p</m:mtext><m:mi>K</m:mi><m:mtext>a + log</m:mtext><m:mfrac><m:mrow><m:msup><m:mrow><m:mtext>[A</m:mtext></m:mrow><m:mtext>–</m:mtext></m:msup><m:mtext>]</m:mtext></m:mrow><m:mrow><m:mtext>[HA]</m:mtext></m:mrow></m:mfrac><m:mtext> </m:mtext><m:mtext>so</m:mtext><m:mtext> </m:mtext><m:mtext>log</m:mtext><m:mfrac><m:mrow><m:msup><m:mrow><m:mtext>[A</m:mtext></m:mrow><m:mtext>–</m:mtext></m:msup><m:mtext>]</m:mtext></m:mrow><m:mrow><m:mtext>[HA]</m:mtext></m:mrow></m:mfrac><m:mtext> = pH – p</m:mtext><m:mi>K</m:mi><m:mtext>a</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{pH = p}K\\text{a + log}\\frac{{{{\\text{[A}}}^{\\text{–}}\\text{]}}}{{\\text{[HA]}}}\\text\\text{so}\\text\\text{log}\\frac{{{{\\text{[A}}}^{\\text{–}}\\text{]}}}{{\\text{[HA]}}}\\text{= pH – p}K\\text{a}}",
+    "isBlock": true
+  },
+  "eq-00002": {
+    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr><m:mtd><m:mi mathvariant=\"normal\">l</m:mi><m:mtext>og</m:mtext><m:mfrac><m:mrow><m:msub><m:mrow><m:mtext>[RNH</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mtext>]</m:mtext></m:mrow><m:mrow><m:msub><m:mrow><m:mtext>[RNH</m:mtext></m:mrow><m:mtext>3</m:mtext></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mtext>]</m:mtext></m:mrow></m:mfrac><m:mtext> = pH – p</m:mtext><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mtext> = 7</m:mtext><m:mtext>.3 – 10</m:mtext><m:mtext>.64 = –3</m:mtext><m:mtext>.34</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mfrac><m:mrow><m:msub><m:mrow><m:mtext>[RNH</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mtext>]</m:mtext></m:mrow><m:mrow><m:msub><m:mrow><m:mtext>[RNH</m:mtext></m:mrow><m:mtext>3</m:mtext></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mtext>]</m:mtext></m:mrow></m:mfrac><m:mtext> = antilog(–3</m:mtext><m:mtext>.34) = 4</m:mtext><m:mtext>.6 </m:mtext><m:mo>×</m:mo><m:msup><m:mtext> 10</m:mtext><m:mrow><m:mtext>–4</m:mtext></m:mrow></m:msup><m:mtext> </m:mtext><m:mtext>so</m:mtext><m:mtext> </m:mtext><m:msub><m:mtext>[RNH</m:mtext><m:mtext>2</m:mtext></m:msub><m:mtext>] = (4</m:mtext><m:mtext>.6 </m:mtext><m:mo>×</m:mo><m:msup><m:mtext> 10</m:mtext><m:mrow><m:mtext>–4</m:mtext></m:mrow></m:msup><m:msub><m:mtext>)[RNH</m:mtext><m:mtext>3</m:mtext></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mtext>]</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} \\mathrm{l}\\text{og}\\frac{{{{\\text{[RNH}}}_{\\text{2}}\\text{]}}}{{{{\\text{[RNH}}}_{\\text{3}}^{\\text{+}}\\text{]}}}\\text{= pH – p}{K}_{\\text{a}}\\text{= 7}\\text{.3 – 10}\\text{.64 = –3}\\text{.34} \\\\ \\frac{{{{\\text{[RNH}}}_{\\text{2}}\\text{]}}}{{{{\\text{[RNH}}}_{\\text{3}}^{\\text{+}}\\text{]}}}\\text{= antilog(–3}\\text{.34) = 4}\\text{.6}\\times {\\text{10}}^{{\\text{–4}}}\\text\\text{so}\\text{\\text{[RNH}}_{\\text{2}}\\text{] = (4}\\text{.6}\\times {\\text{10}}^{{\\text{–4}}}{\\text{)[RNH}}_{\\text{3}}^{\\text{+}}\\text{]} \\end{aligned}",
+    "isBlock": true
+  },
+  "eq-00003": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>[RNH</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:msub><m:mrow><m:mtext>] + [RNH</m:mtext></m:mrow><m:mtext>3</m:mtext></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mtext>] = 0</m:mtext><m:mtext>.0010 M</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{[RNH}}}_{\\text{2}}{{\\text{] + [RNH}}}_{\\text{3}}^{\\text{+}}\\text{] = 0}\\text{.0010 M}}",
+    "isBlock": true
+  }
+}

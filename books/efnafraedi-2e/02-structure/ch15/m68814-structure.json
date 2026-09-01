@@ -80,7 +80,10 @@
       },
       "media": {
         "id": "fs-idp11078816",
-        "alt": "This figure contains two photographs of coral reefs. In a, a colorful reef that includes hues of purple and pink corals is shown in blue green water with fish swimming in the background. In b, grey-green mossy looking coral is shown in a blue aquatic environment. This photo does not have the colorful appearance or fish that were shown in figure a.",
+        "alt": {
+          "segmentId": "m68814:alt:fs-idp11078816-alt",
+          "text": "This figure contains two photographs of coral reefs. In a, a colorful reef that includes hues of purple and pink corals is shown in blue green water with fish swimming in the background. In b, grey-green mossy looking coral is shown in a blue aquatic environment. This photo does not have the colorful appearance or fish that were shown in figure a."
+        },
         "src": "../../media/CNX_Chem_15_03_CoralReef.jpg",
         "mimeType": "image/jpeg"
       }
@@ -122,7 +125,10 @@
       },
       "media": {
         "id": "fs-idp482016",
-        "alt": "This figure includes an image of two large light blue apatite crystals in a mineral conglomerate that includes white, grey, and tan crystals. The blue apatite crystals have a dull, dusty, or powdered appearance.",
+        "alt": {
+          "segmentId": "m68814:alt:fs-idp482016-alt",
+          "text": "This figure includes an image of two large light blue apatite crystals in a mineral conglomerate that includes white, grey, and tan crystals. The blue apatite crystals have a dull, dusty, or powdered appearance."
+        },
         "src": "../../media/CNX_Chem_15_03_Apatite.jpg",
         "mimeType": "image/jpeg"
       }
@@ -202,7 +208,10 @@
       },
       "media": {
         "id": "fs-idm726352",
-        "alt": "Replace with updated art; figure in “99” art folder is current and correct",
+        "alt": {
+          "segmentId": "m68814:alt:fs-idm726352-alt",
+          "text": "Replace with updated art; figure in “99” art folder is current and correct"
+        },
         "src": "../../media/CNX_Chem_15_03_Toothpaste.jpg",
         "mimeType": "image/jpeg"
       }
@@ -216,7 +225,10 @@
       "type": "media",
       "id": "fs-idp137004736",
       "class": "scaled-down",
-      "alt": "An H atom is bonded to an O atom. The O atom has 2 dots above it and 2 dots below it. The O atom is bonded to an A l atom, which has three additional O atoms bonded to it as well. Each of these additional O atoms has 4 dots arranged around it, and is bonded to an H atom. This entire molecule is contained in brackets, to the right of which is a superscripted negative sign.",
+      "alt": {
+        "segmentId": "m68814:alt:fs-idp137004736-alt",
+        "text": "An H atom is bonded to an O atom. The O atom has 2 dots above it and 2 dots below it. The O atom is bonded to an A l atom, which has three additional O atoms bonded to it as well. Each of these additional O atoms has 4 dots arranged around it, and is bonded to an H atom. This entire molecule is contained in brackets, to the right of which is a superscripted negative sign."
+      },
       "src": "../../media/CNX_Chem_15_02_AlOH4_img.jpg",
       "embedSrc": "",
       "width": "",
@@ -410,6 +422,14 @@
           "title": {
             "segmentId": "m68814:para-title:fs-idm58241696-title",
             "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "media",
+          "id": "fs-idp120368",
+          "alt": {
+            "segmentId": "m68814:alt:fs-idp120368-alt",
+            "text": "A chemical reaction is shown using structural formulas. On the left, A g superscript plus is followed by a plus sign, the number 2, and a structure in brackets. The structure is composed of a central S atom which has O atoms single bonded above, right, and below. A second S atom is single bonded to the left. Each of these bonded atoms has 6 dots around it. Outside the brackets is a superscript 2 negative. Following a bidirectional arrow is a structure in brackets with a central A g atom. To the left and right, S atoms are single bonded to the A g atom. Each of these S atoms has four dots around it, and an S atom connected with a single bond moving out from the central A g atom, forming the ends of the structure. Each of these atoms has three O atoms attached with single bonds above, below, and at the end of the structure. Each O atom has six dots around it. Outside the brackets is a superscript 3 negative."
           }
         },
         {

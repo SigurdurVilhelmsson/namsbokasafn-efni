@@ -22,23 +22,29 @@ Chemical changes and their accompanying changes in energy are important parts of
 <!-- SEG:m68724:caption:CNX_Chem_05_01_Thermochem-caption -->
 The energy involved in chemical changes is important to our daily lives: (a) A cheeseburger for lunch provides the energy you need to get through the rest of the day; (b) the combustion of gasoline provides the energy that moves your car (and you) between home, work, and school; and (c) coke, a processed form of coal, provides the energy needed to convert iron ore into iron, which is essential for making many of the products we use daily. (credit a: modification of work by “Pink Sherbet Photography”/Flickr; credit b: modification of work by Jeffery Turner)
 
+<!-- SEG:m68724:alt:fs-idp12477984-alt -->
+Three pictures are shown and labeled a, b, and c. Picture a is a cheeseburger. Picture b depicts a highway that is full of traffic. Picture c is a view into an industrial metal furnace. The view into the furnace shows a hot fire burning inside.
+
 <!-- SEG:m68724:para:fs-idm67046496 -->
 Over 90% of the energy we use comes originally from the sun. Every day, the sun provides the earth with almost 10,000 times the amount of energy necessary to meet all of the world’s energy needs for that day. Our challenge is to find ways to convert and store incoming solar energy so that it can be used in reactions or chemical processes that are both convenient and nonpolluting. Plants and many bacteria capture solar energy through photosynthesis. We release the energy stored in plants when we burn wood or plant products such as ethanol. We also use this energy to fuel our bodies by eating food that comes directly from plants or from animals that got their energy by eating plants. Burning coal and petroleum also releases stored solar energy: These fuels are fossilized plant and animal matter.
 
 <!-- SEG:m68724:para:fs-idm26174720 -->
-This chapter will introduce the basic ideas of an important area of science concerned with the amount of heat absorbed or released during chemical and physical changes—an area called {{term}}thermochemistry{{/term}}. The concepts introduced in this chapter are widely used in almost all scientific and technical fields. Food scientists use them to determine the energy content of foods. Biologists study the energetics of living organisms, such as the metabolic combustion of sugar into carbon dioxide and water. The oil, gas, and transportation industries, renewable energy providers, and many others endeavor to find better methods to produce energy for our commercial and personal needs. Engineers strive to improve energy efficiency, find better ways to heat and cool our homes, refrigerate our food and drinks, and meet the energy and cooling needs of computers and electronics, among other applications. Understanding thermochemical principles is essential for chemists, physicists, biologists, geologists, every type of engineer, and just about anyone who studies or does any kind of science.
+This chapter will introduce the basic ideas of an important area of science concerned with the amount of heat absorbed or released during chemical and physical changes—an area called [[term:thermochemistry|term-00001]]. The concepts introduced in this chapter are widely used in almost all scientific and technical fields. Food scientists use them to determine the energy content of foods. Biologists study the energetics of living organisms, such as the metabolic combustion of sugar into carbon dioxide and water. The oil, gas, and transportation industries, renewable energy providers, and many others endeavor to find better methods to produce energy for our commercial and personal needs. Engineers strive to improve energy efficiency, find better ways to heat and cool our homes, refrigerate our food and drinks, and meet the energy and cooling needs of computers and electronics, among other applications. Understanding thermochemical principles is essential for chemists, physicists, biologists, geologists, every type of engineer, and just about anyone who studies or does any kind of science.
 
 <!-- SEG:m68724:title:fs-idp13589600-title -->
 Energy
 
 <!-- SEG:m68724:para:fs-idp38067952 -->
-{{term}}Energy{{/term}} can be defined as the capacity to supply heat or do work. One type of {{term}}work ([[i:w]]){{/term}} is the process of causing matter to move against an opposing force. For example, we do work when we inflate a bicycle tire—we move matter (the air in the pump) against the opposing force of the air already in the tire.
+[[term:Energy|term-00002]] can be defined as the capacity to supply heat or do work. One type of [[term:work ([[i:w]])|term-00003]] is the process of causing matter to move against an opposing force. For example, we do work when we inflate a bicycle tire—we move matter (the air in the pump) against the opposing force of the air already in the tire.
 
 <!-- SEG:m68724:para:fs-idp11831328 -->
-Like matter, energy comes in different types. One scheme classifies energy into two types: {{term}}potential energy{{/term}}, the energy an object has because of its relative position, composition, or condition, and {{term}}kinetic energy{{/term}}, the energy that an object possesses because of its motion. Water at the top of a waterfall or dam has potential energy because of its position; when it flows downward through generators, it has kinetic energy that can be used to do work and produce electricity in a hydroelectric plant ([[xref:CNX_Chem_05_01_Waterfall]]). A battery has potential energy because the chemicals within it can produce electricity that can do work.
+Like matter, energy comes in different types. One scheme classifies energy into two types: [[term:potential energy|term-00004]], the energy an object has because of its relative position, composition, or condition, and [[term:kinetic energy|term-00005]], the energy that an object possesses because of its motion. Water at the top of a waterfall or dam has potential energy because of its position; when it flows downward through generators, it has kinetic energy that can be used to do work and produce electricity in a hydroelectric plant ([[xref:CNX_Chem_05_01_Waterfall]]). A battery has potential energy because the chemicals within it can produce electricity that can do work.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_Waterfall-caption -->
 (a) Water at a higher elevation, for example, at the top of Victoria Falls, has a higher potential energy than water at a lower elevation. As the water falls, some of its potential energy is converted into kinetic energy. (b) If the water flows through generators at the bottom of a dam, such as the Hoover Dam shown here, its kinetic energy is converted into electrical energy. (credit a: modification of work by Steve Jurvetson; credit b: modification of work by “curimedia”/Wikimedia commons)
+
+<!-- SEG:m68724:alt:fs-idp14208336-alt -->
+Two pictures are shown and labeled a and b. Picture a shows a large waterfall with water falling from a high elevation at the top of the falls to a lower elevation. The second picture is a view looking down into the Hoover Dam. Water is shown behind the high wall of the dam on one side and at the base of the dam on the other.
 
 <!-- SEG:m68724:para:fs-idp13649040 -->
 Energy can be converted from one form into another, but all of the energy present before a change occurs always exists in some form after the change is completed. This observation is expressed in the law of conservation of energy: during a chemical or physical change, energy can be neither created nor destroyed, although it can be changed in form. (This is also one version of the first law of thermodynamics, as you will learn later.)
@@ -53,10 +59,13 @@ According to the law of conservation of matter (seen in an earlier chapter), the
 Thermal Energy, Temperature, and Heat
 
 <!-- SEG:m68724:para:fs-idp24322848 -->
-{{term}}Thermal energy{{/term}} is kinetic energy associated with the random motion of atoms and molecules. {{term}}Temperature{{/term}} is a quantitative measure of “hot” or “cold.” When the atoms and molecules in an object are moving or vibrating quickly, they have a higher average kinetic energy (KE), and we say that the object is “hot.” When the atoms and molecules are moving slowly, they have lower average KE, and we say that the object is “cold” ([[xref:CNX_Chem_05_01_HotCold]]). Assuming that no chemical reaction or phase change (such as melting or vaporizing) occurs, increasing the amount of thermal energy in a sample of matter will cause its temperature to increase. And, assuming that no chemical reaction or phase change (such as condensation or freezing) occurs, decreasing the amount of thermal energy in a sample of matter will cause its temperature to decrease.
+[[term:Thermal energy|term-00006]] is kinetic energy associated with the random motion of atoms and molecules. [[term:Temperature|term-00007]] is a quantitative measure of “hot” or “cold.” When the atoms and molecules in an object are moving or vibrating quickly, they have a higher average kinetic energy (KE), and we say that the object is “hot.” When the atoms and molecules are moving slowly, they have lower average KE, and we say that the object is “cold” ([[xref:CNX_Chem_05_01_HotCold]]). Assuming that no chemical reaction or phase change (such as melting or vaporizing) occurs, increasing the amount of thermal energy in a sample of matter will cause its temperature to increase. And, assuming that no chemical reaction or phase change (such as condensation or freezing) occurs, decreasing the amount of thermal energy in a sample of matter will cause its temperature to decrease.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_HotCold-caption -->
 (a) The molecules in a sample of hot water move more rapidly than (b) those in a sample of cold water.
+
+<!-- SEG:m68724:alt:fs-idm1349856-alt -->
+Two molecular drawings are shown and labeled a and b. Drawing a is a box containing fourteen red spheres that are surrounded by lines indicating that the particles are moving rapidly. This drawing has a label that reads “Hot liquid.” Drawing b depicts another box of equal size that also contains fourteen spheres, but these are blue. They are all surrounded by smaller lines that depict some particle motion, but not as much as in drawing a. This drawing has a label that reads “Cold liquid.”
 
 <!-- SEG:m68724:para:fs-idp13698432 -->
 Click on this [[link:interactive simulation|http://openstax.org/l/16PHETtempFX]] to view the effects of temperature on molecular motion.
@@ -67,29 +76,38 @@ Most substances expand as their temperature increases and contract as their temp
 <!-- SEG:m68724:caption:CNX_Chem_05_01_Thermom-caption -->
 (a) In an alcohol or mercury thermometer, the liquid (dyed red for visibility) expands when heated and contracts when cooled, much more so than the glass tube that contains the liquid. (b) In a bimetallic thermometer, two different metals (such as brass and steel) form a two-layered strip. When heated or cooled, one of the metals (brass) expands or contracts more than the other metal (steel), causing the strip to coil or uncoil. Both types of thermometers have a calibrated scale that indicates the temperature. (credit a: modification of work by “dwstucke”/Flickr)
 
+<!-- SEG:m68724:alt:fs-idp22234128-alt -->
+A picture labeled a is shown as well as a pair of drawings labeled b. Picture a shows the lower portion of an alcohol thermometer. The thermometer has a printed scale to the left of the tube in the center that reads from negative forty degrees at the bottom to forty degrees at the top. It also has a scale printed to the right of the tube that reads from negative thirty degrees at the bottom to thirty five degrees at the top. On both scales, the volume of the alcohol in the tube reads between nine and ten degrees. The two images labeled b both depict a metal strip coiled into a spiral and composed of brass and steel. The left coil, which is loosely coiled, is labeled along its upper edge with the 30 degrees C and 10 degrees C. The end of the coil is near the 30 degrees C label. The right hand coil is much more tightly wound and the end is near the 10 degree C label.
+
 <!-- SEG:m68724:para:fs-idp46355168 -->
 The following [[link:demonstration|http://openstax.org/l/16Bimetallic]] allows one to view the effects of heating and cooling a coiled bimetallic strip.
 
 <!-- SEG:m68724:para:fs-idp26888640 -->
-{{term}}Heat ([[i:q]]){{/term}} is the transfer of thermal energy between two bodies at different temperatures. Heat flow (a redundant term, but one commonly used) increases the thermal energy of one body and decreases the thermal energy of the other. Suppose we initially have a high temperature (and high thermal energy) substance (H) and a low temperature (and low thermal energy) substance (L). The atoms and molecules in H have a higher average KE than those in L. If we place substance H in contact with substance L, the thermal energy will flow spontaneously from substance H to substance L. The temperature of substance H will decrease, as will the average KE of its molecules; the temperature of substance L will increase, along with the average KE of its molecules. Heat flow will continue until the two substances are at the same temperature ([[xref:CNX_Chem_05_01_HeatTrans1]]).
+[[term:Heat ([[i:q]])|term-00008]] is the transfer of thermal energy between two bodies at different temperatures. Heat flow (a redundant term, but one commonly used) increases the thermal energy of one body and decreases the thermal energy of the other. Suppose we initially have a high temperature (and high thermal energy) substance (H) and a low temperature (and low thermal energy) substance (L). The atoms and molecules in H have a higher average KE than those in L. If we place substance H in contact with substance L, the thermal energy will flow spontaneously from substance H to substance L. The temperature of substance H will decrease, as will the average KE of its molecules; the temperature of substance L will increase, along with the average KE of its molecules. Heat flow will continue until the two substances are at the same temperature ([[xref:CNX_Chem_05_01_HeatTrans1]]).
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_HeatTrans1-caption -->
 (a) Substances H and L are initially at different temperatures, and their atoms have different average kinetic energies. (b) When they contact each other, collisions between the molecules result in the transfer of kinetic (thermal) energy from the hotter to the cooler matter. (c) The two objects reach “thermal equilibrium” when both substances are at the same temperature and their molecules have the same average kinetic energy.
+
+<!-- SEG:m68724:alt:fs-idm7390640-alt -->
+Three drawings are shown and labeled a, b, and c, respectively. The first drawing labeled a depicts two boxes, with a space in between and the pair is captioned “Different temperatures.” The left hand box is labeled H and holds fourteen well-spaced red spheres with lines drawn around them to indicate rapid motion. The right hand box is labeled L and depicts fourteen blue spheres that are closer together than the red spheres and have smaller lines around them showing less particle motion. The second drawing labeled b depicts two boxes that are touching one another. The left box is labeled H and contains fourteen maroon spheres that are spaced evenly apart. There are tiny lines around each sphere depicting particle movement. The right box is labeled L and holds fourteen purple spheres that are slightly closer together than the maroon spheres. There are also tiny lines around each sphere depicting particle movement. A black arrow points from the left box to the right box and the pair of diagrams is captioned “Contact.” The third drawing labeled c, is labeled “Thermal equilibrium.” There are two boxes shown in contact with one another. Both boxes contain fourteen purple spheres with small lines around them depicting moderate movement. The left box is labeled H and the right box is labeled L.
 
 <!-- SEG:m68724:para:fs-idm61530880 -->
 Click on the [[link:PhET simulation|http://openstax.org/l/16PHETenergy]] to explore energy forms and changes. Visit the Energy Systems tab to create combinations of energy sources, transformation methods, and outputs. Click on Energy Symbols to visualize the transfer of energy.
 
 <!-- SEG:m68724:para:fs-idm61604880 -->
-Matter undergoing chemical reactions and physical changes can release or absorb heat. A change that releases heat is called an {{term}}exothermic process{{/term}}. For example, the combustion reaction that occurs when using an oxyacetylene torch is an exothermic process—this process also releases energy in the form of light as evidenced by the torch’s flame ([[xref:CNX_Chem_05_01_OxyacTorch]]). A reaction or change that absorbs heat is an {{term}}endothermic process{{/term}}. A cold pack used to treat muscle strains provides an example of an endothermic process. When the substances in the cold pack (water and a salt like ammonium nitrate) are brought together, the resulting process absorbs heat, leading to the sensation of cold.
+Matter undergoing chemical reactions and physical changes can release or absorb heat. A change that releases heat is called an [[term:exothermic process|term-00009]]. For example, the combustion reaction that occurs when using an oxyacetylene torch is an exothermic process—this process also releases energy in the form of light as evidenced by the torch’s flame ([[xref:CNX_Chem_05_01_OxyacTorch]]). A reaction or change that absorbs heat is an [[term:endothermic process|term-00010]]. A cold pack used to treat muscle strains provides an example of an endothermic process. When the substances in the cold pack (water and a salt like ammonium nitrate) are brought together, the resulting process absorbs heat, leading to the sensation of cold.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_OxyacTorch-caption -->
 (a) An oxyacetylene torch produces heat by the combustion of acetylene in oxygen. The energy released by this exothermic reaction heats and then melts the metal being cut. The sparks are tiny bits of the molten metal flying away. (b) A cold pack uses an endothermic process to create the sensation of cold. (credit a: modification of work by “Skatebiker”/Wikimedia commons)
 
+<!-- SEG:m68724:alt:fs-idp21196832-alt -->
+Two pictures are shown and labeled a and b. Picture a shows a metal railroad tie being cut with the flame of an acetylene torch. Picture b shows a chemical cold pack containing ammonium nitrate.
+
 <!-- SEG:m68724:para:fs-idp24669072 -->
-Historically, energy was measured in units of {{term}}calories (cal){{/term}}. A calorie is the amount of energy required to raise one gram of water by 1 degree C (1 kelvin). However, this quantity depends on the atmospheric pressure and the starting temperature of the water. The ease of measurement of energy changes in calories has meant that the calorie is still frequently used. The Calorie (with a capital C), or large calorie, commonly used in quantifying food energy content, is a kilocalorie. The SI unit of heat, work, and energy is the joule. A {{term}}joule (J){{/term}} is defined as the amount of energy used when a force of 1 newton moves an object 1 meter. It is named in honor of the English physicist James Prescott Joule. One joule is equivalent to 1 kg m[[sup:2]]/s[[sup:2]], which is also called 1 newton–meter. A kilojoule (kJ) is 1000 joules. To standardize its definition, 1 calorie has been set to equal 4.184 joules.
+Historically, energy was measured in units of [[term:calories (cal)|term-00011]]. A calorie is the amount of energy required to raise one gram of water by 1 degree C (1 kelvin). However, this quantity depends on the atmospheric pressure and the starting temperature of the water. The ease of measurement of energy changes in calories has meant that the calorie is still frequently used. The Calorie (with a capital C), or large calorie, commonly used in quantifying food energy content, is a kilocalorie. The SI unit of heat, work, and energy is the joule. A [[term:joule (J)|term-00012]] is defined as the amount of energy used when a force of 1 newton moves an object 1 meter. It is named in honor of the English physicist James Prescott Joule. One joule is equivalent to 1 kg m[[sup:2]]/s[[sup:2]], which is also called 1 newton–meter. A kilojoule (kJ) is 1000 joules. To standardize its definition, 1 calorie has been set to equal 4.184 joules.
 
 <!-- SEG:m68724:para:fs-idp36291104 -->
-We now introduce two concepts useful in describing heat flow and temperature change. The {{term}}heat capacity ([[i:C]]){{/term}} of a body of matter is the quantity of heat ([[i:q]]) it absorbs or releases when it experiences a temperature change (Δ[[i:T]]) of 1 degree Celsius (or equivalently, 1 kelvin):
+We now introduce two concepts useful in describing heat flow and temperature change. The [[term:heat capacity ([[i:C]])|term-00013]] of a body of matter is the quantity of heat ([[i:q]]) it absorbs or releases when it experiences a temperature change (Δ[[i:T]]) of 1 degree Celsius (or equivalently, 1 kelvin):
 
 <!-- SEG:m68724:para:fs-idp13796736 -->
 Heat capacity is determined by both the type and amount of substance that absorbs or releases heat. It is therefore an extensive property—its value is proportional to the amount of the substance.
@@ -101,7 +119,7 @@ For example, consider the heat capacities of two cast iron frying pans. The heat
 The larger cast iron frying pan, while made of the same substance, requires 90,700 J of energy to raise its temperature by 50.0 °C. The larger pan has a (proportionally) larger heat capacity because the larger amount of material requires a (proportionally) larger amount of energy to yield the same temperature change:
 
 <!-- SEG:m68724:para:fs-idp11756944 -->
-The {{term}}specific heat capacity ([[i:c]]){{/term}} of a substance, commonly called its “specific heat,” is the quantity of heat required to raise the temperature of 1 gram of a substance by 1 degree Celsius (or 1 kelvin):
+The [[term:specific heat capacity ([[i:c]])|term-00014]] of a substance, commonly called its “specific heat,” is the quantity of heat required to raise the temperature of 1 gram of a substance by 1 degree Celsius (or 1 kelvin):
 
 <!-- SEG:m68724:para:fs-idp37497744 -->
 Specific heat capacity depends only on the kind of substance absorbing or releasing heat. It is an intensive property—the type, but not the amount, of the substance is all that matters. For example, the small cast iron frying pan has a mass of 808 g. The specific heat of iron (the material used to make the pan) is therefore:
@@ -115,160 +133,163 @@ Although the large pan is more massive than the small pan, since both are made o
 <!-- SEG:m68724:caption:CNX_Chem_05_01_HeatCapacity-caption -->
 Because of its larger mass, a large frying pan has a larger heat capacity than a small frying pan. Because they are made of the same material, both frying pans have the same specific heat. (credit: Mark Blaser)
 
+<!-- SEG:m68724:alt:fs-idm67222368-alt -->
+The picture shows two black metal frying pans sitting on a flat surface. The left pan is about half the size of the right pan.
+
 <!-- SEG:m68724:para:fs-idm50153600 -->
 Water has a relatively high specific heat (about 4.2 J/g °C for the liquid and 2.09 J/g °C for the solid); most metals have much lower specific heats (usually less than 1 J/g °C). The specific heat of a substance varies somewhat with temperature. However, this variation is usually small enough that we will treat specific heat as constant over the range of temperatures that will be considered in this chapter. Specific heats of some common substances are listed in [[xref:fs-idm68801008]].
 
-<!-- SEG:m68724:entry:auto-41 -->
+<!-- SEG:m68724:entry:auto-48 -->
 Specific Heats of Common Substances at 25 °C and 1 bar
 
-<!-- SEG:m68724:entry:auto-42 -->
+<!-- SEG:m68724:entry:auto-49 -->
 Substance
 
-<!-- SEG:m68724:entry:auto-43 -->
+<!-- SEG:m68724:entry:auto-50 -->
 Symbol ([[i:state]])
 
-<!-- SEG:m68724:entry:auto-44 -->
+<!-- SEG:m68724:entry:auto-51 -->
 Specific Heat (J/g °C)
 
-<!-- SEG:m68724:entry:auto-45 -->
+<!-- SEG:m68724:entry:auto-52 -->
 helium
 
-<!-- SEG:m68724:entry:auto-46 -->
+<!-- SEG:m68724:entry:auto-53 -->
 He([[i:g]])
 
-<!-- SEG:m68724:entry:auto-47 -->
+<!-- SEG:m68724:entry:auto-54 -->
 5.193
 
-<!-- SEG:m68724:entry:auto-48 -->
+<!-- SEG:m68724:entry:auto-55 -->
 water
 
-<!-- SEG:m68724:entry:auto-49 -->
+<!-- SEG:m68724:entry:auto-56 -->
 H[[sub:2]]O([[i:l]])
 
-<!-- SEG:m68724:entry:auto-50 -->
+<!-- SEG:m68724:entry:auto-57 -->
 4.184
 
-<!-- SEG:m68724:entry:auto-51 -->
+<!-- SEG:m68724:entry:auto-58 -->
 ethanol
 
-<!-- SEG:m68724:entry:auto-52 -->
+<!-- SEG:m68724:entry:auto-59 -->
 C[[sub:2]]H[[sub:6]]O([[i:l]])
 
-<!-- SEG:m68724:entry:auto-53 -->
+<!-- SEG:m68724:entry:auto-60 -->
 2.376
 
-<!-- SEG:m68724:entry:auto-54 -->
+<!-- SEG:m68724:entry:auto-61 -->
 ice
 
-<!-- SEG:m68724:entry:auto-55 -->
+<!-- SEG:m68724:entry:auto-62 -->
 H[[sub:2]]O([[i:s]])
 
-<!-- SEG:m68724:entry:auto-56 -->
+<!-- SEG:m68724:entry:auto-63 -->
 2.093 (at −10 °C)
 
-<!-- SEG:m68724:entry:auto-57 -->
+<!-- SEG:m68724:entry:auto-64 -->
 water vapor
 
-<!-- SEG:m68724:entry:auto-58 -->
+<!-- SEG:m68724:entry:auto-65 -->
 H[[sub:2]]O([[i:g]])
 
-<!-- SEG:m68724:entry:auto-59 -->
+<!-- SEG:m68724:entry:auto-66 -->
 1.864
 
-<!-- SEG:m68724:entry:auto-60 -->
+<!-- SEG:m68724:entry:auto-67 -->
 nitrogen
 
-<!-- SEG:m68724:entry:auto-61 -->
+<!-- SEG:m68724:entry:auto-68 -->
 N[[sub:2]]([[i:g]])
 
-<!-- SEG:m68724:entry:auto-62 -->
+<!-- SEG:m68724:entry:auto-69 -->
 1.040
 
-<!-- SEG:m68724:entry:auto-63 -->
+<!-- SEG:m68724:entry:auto-70 -->
 air
 
-<!-- SEG:m68724:entry:auto-64 -->
+<!-- SEG:m68724:entry:auto-71 -->
 1.007
 
-<!-- SEG:m68724:entry:auto-65 -->
+<!-- SEG:m68724:entry:auto-72 -->
 oxygen
 
-<!-- SEG:m68724:entry:auto-66 -->
+<!-- SEG:m68724:entry:auto-73 -->
 O[[sub:2]]([[i:g]])
 
-<!-- SEG:m68724:entry:auto-67 -->
+<!-- SEG:m68724:entry:auto-74 -->
 0.918
 
-<!-- SEG:m68724:entry:auto-68 -->
+<!-- SEG:m68724:entry:auto-75 -->
 aluminum
 
-<!-- SEG:m68724:entry:auto-69 -->
+<!-- SEG:m68724:entry:auto-76 -->
 Al([[i:s]])
 
-<!-- SEG:m68724:entry:auto-70 -->
+<!-- SEG:m68724:entry:auto-77 -->
 0.897
 
-<!-- SEG:m68724:entry:auto-71 -->
+<!-- SEG:m68724:entry:auto-78 -->
 carbon dioxide
 
-<!-- SEG:m68724:entry:auto-72 -->
+<!-- SEG:m68724:entry:auto-79 -->
 CO[[sub:2]]([[i:g]])
 
-<!-- SEG:m68724:entry:auto-73 -->
+<!-- SEG:m68724:entry:auto-80 -->
 0.853
 
-<!-- SEG:m68724:entry:auto-74 -->
+<!-- SEG:m68724:entry:auto-81 -->
 argon
 
-<!-- SEG:m68724:entry:auto-75 -->
+<!-- SEG:m68724:entry:auto-82 -->
 Ar([[i:g]])
 
-<!-- SEG:m68724:entry:auto-76 -->
+<!-- SEG:m68724:entry:auto-83 -->
 0.522
 
-<!-- SEG:m68724:entry:auto-77 -->
+<!-- SEG:m68724:entry:auto-84 -->
 iron
 
-<!-- SEG:m68724:entry:auto-78 -->
+<!-- SEG:m68724:entry:auto-85 -->
 Fe([[i:s]])
 
-<!-- SEG:m68724:entry:auto-79 -->
+<!-- SEG:m68724:entry:auto-86 -->
 0.449
 
-<!-- SEG:m68724:entry:auto-80 -->
+<!-- SEG:m68724:entry:auto-87 -->
 copper
 
-<!-- SEG:m68724:entry:auto-81 -->
+<!-- SEG:m68724:entry:auto-88 -->
 Cu([[i:s]])
 
-<!-- SEG:m68724:entry:auto-82 -->
+<!-- SEG:m68724:entry:auto-89 -->
 0.385
 
-<!-- SEG:m68724:entry:auto-83 -->
+<!-- SEG:m68724:entry:auto-90 -->
 lead
 
-<!-- SEG:m68724:entry:auto-84 -->
+<!-- SEG:m68724:entry:auto-91 -->
 Pb([[i:s]])
 
-<!-- SEG:m68724:entry:auto-85 -->
+<!-- SEG:m68724:entry:auto-92 -->
 0.130
 
-<!-- SEG:m68724:entry:auto-86 -->
+<!-- SEG:m68724:entry:auto-93 -->
 gold
 
-<!-- SEG:m68724:entry:auto-87 -->
+<!-- SEG:m68724:entry:auto-94 -->
 Au([[i:s]])
 
-<!-- SEG:m68724:entry:auto-88 -->
+<!-- SEG:m68724:entry:auto-95 -->
 0.129
 
-<!-- SEG:m68724:entry:auto-89 -->
+<!-- SEG:m68724:entry:auto-96 -->
 silicon
 
-<!-- SEG:m68724:entry:auto-90 -->
+<!-- SEG:m68724:entry:auto-97 -->
 Si([[i:s]])
 
-<!-- SEG:m68724:entry:auto-91 -->
+<!-- SEG:m68724:entry:auto-98 -->
 0.712
 
 <!-- SEG:m68724:para:fs-idp1279024 -->
@@ -376,8 +397,14 @@ The 377-megawatt Ivanpah Solar Generating System, located in the Mojave Desert i
 <!-- SEG:m68724:caption:CNX_Chem_05_01_SolTherm1-caption -->
 This solar thermal plant uses parabolic trough mirrors to concentrate sunlight. (credit a: modification of work by Bureau of Land Management)
 
+<!-- SEG:m68724:alt:fs-idm14724048-alt -->
+This figure has two parts labeled a and b. Part a shows rows and rows of trough mirrors. Part b shows how a solar thermal plant works. Heat transfer fluid enters a tank via pipes. The tank contains water which is heated. As the heat is exchanged from the pipes to the water, the water becomes steam. The steam travels to a steam turbine. The steam turbine begins to turn which powers a generator. Exhaust steam exits the steam turbine and enters a cooling tower.
+
 <!-- SEG:m68724:caption:CNX_Chem_05_01_SolTherm2-caption -->
 (a) The Ivanpah solar thermal plant uses 170,000 mirrors to concentrate sunlight on water-filled towers. (b) It covers 4000 acres of public land near the Mojave Desert and the California-Nevada border. (credit a: modification of work by Craig Dietrich; credit b: modification of work by “USFWS Pacific Southwest Region”/Flickr)
+
+<!-- SEG:m68724:alt:fs-idp14304832-alt -->
+Two pictures are shown and labeled a and b. Picture a shows a thermal plant with three tall metal towers. Picture b is an arial picture of the mirrors used at the plant. They are arranged in rows.
 
 <!-- SEG:m68724:title:fs-idm333536464-title -->
 Key Concepts and Summary
@@ -394,7 +421,7 @@ Specific heat and heat capacity are measures of the energy needed to change the 
 <!-- SEG:m68724:title:fs-idm20711744-title -->
 Key Equations
 
-<!-- SEG:m68724:entry:auto-133 -->
+<!-- SEG:m68724:entry:auto-142 -->
 [[MATH:4]]
 
 <!-- SEG:m68724:title:fs-idm41088208-title -->

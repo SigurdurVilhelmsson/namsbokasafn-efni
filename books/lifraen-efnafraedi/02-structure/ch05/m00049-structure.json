@@ -1,0 +1,59 @@
+{
+  "moduleId": "m00049",
+  "title": {
+    "segmentId": "m00049:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "61735a5f-df96-41d9-9f89-79079bd4eb8d"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00049:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00049:alt:fig-00001-alt",
+          "text": "The photo shows mountains and their mirror-image reflection in a lake."
+        },
+        "src": "../../media/OChem_05_00_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00049:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00049:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00049:alt:fig-00002-alt",
+          "text": "The figure shows a left hand and its reflection in a mirror on the right side, displaying a right hand."
+        },
+        "src": "../../media/OChem_05_00_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00049:para:para-00003"
+    }
+  ],
+  "sectionOrder": 0
+}

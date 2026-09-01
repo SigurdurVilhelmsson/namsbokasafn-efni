@@ -1,0 +1,111 @@
+{
+  "moduleId": "m00352",
+  "title": {
+    "segmentId": "m00352:title:auto-1",
+    "text": "Stereochemistry of Polymerization: Ziegler–Natta Catalysts"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "dd7c16f6-5941-482b-996c-10d24e001a15"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00352:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00352:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00352:alt:fig-00001-alt",
+          "text": "The figures shows three structures of isotactic, syndiotactic and atactic polymers of polypropylene. The methyl groups are on the same side for isotactic, alternating for syndiotactic and random for atactic."
+        },
+        "src": "../../media/OChem_31_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00352:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00352:para:para-00003"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00352:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00352:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00352:alt:fig-00002-alt",
+          "text": "A titanium reactant with a vacant coordination site reacts with alkene to form an intermediate. This further forms a product where two methylene groups get connected to the reactant molecule."
+        },
+        "src": "../../media/OChem_31_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00352:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00352:para:para-00007"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00352:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

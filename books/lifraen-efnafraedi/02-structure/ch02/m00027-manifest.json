@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "moduleId": "m00027",
+  "extractedAt": "2026-08-31T19:08:46.701Z",
+  "sourceHash": "7f3620e19fb2fe05",
+  "segmentCount": 19,
+  "segmentIds": [
+    "m00027:title:auto-1",
+    "m00027:para:para-00001",
+    "m00027:title:sect-00001-title",
+    "m00027:para:para-00002",
+    "m00027:alt:fig-00002-alt",
+    "m00027:para:para-00003",
+    "m00027:alt:fig-00003-alt",
+    "m00027:para:para-00004",
+    "m00027:alt:fig-00004-alt",
+    "m00027:para:para-00005",
+    "m00027:caption:fig-00001-caption",
+    "m00027:alt:fig-00001-alt",
+    "m00027:para:para-00006",
+    "m00027:alt:fig-00005-alt",
+    "m00027:title:sect-00002-title",
+    "m00027:para:para-00007",
+    "m00027:alt:fig-00006-alt",
+    "m00027:para:para-00008",
+    "m00027:alt:fig-00007-alt"
+  ],
+  "equationCount": 3,
+  "equationIds": [
+    "math-1",
+    "math-2",
+    "math-3"
+  ],
+  "elementCounts": {
+    "para": 8,
+    "section": 2,
+    "figure": 7,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00002",
+      "fig-00003",
+      "fig-00004",
+      "fig-00001",
+      "fig-00005",
+      "fig-00006",
+      "fig-00007"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": [
+      "sect-00001",
+      "sect-00002"
+    ]
+  }
+}

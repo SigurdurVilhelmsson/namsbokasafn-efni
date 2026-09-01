@@ -1,0 +1,304 @@
+{
+  "moduleId": "m00047",
+  "title": {
+    "segmentId": "m00047:title:auto-1",
+    "text": "Conformations of Disubstituted Cyclohexanes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "693298de-4573-4777-8da9-e68ad1b13727"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00047:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00047:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "caption": {
+        "segmentId": "m00047:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00047:alt:fig-00001-alt",
+          "text": "The structure and ball and stick model of cis-1,2-dimethylcyclohexane undergo ring-flip to form products featuring one gauche and two methyl-hydrogen diaxial interactions with total strain of 11.4 kilojoules per mole."
+        },
+        "src": "../../media/OChem_04_08_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00047:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00047:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "caption": {
+        "segmentId": "m00047:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00047:alt:fig-00002-alt",
+          "text": "Trans-1,2-dimethylcyclohexane structure and ball and stick model with one gauche interaction undergoes ring-flip to form alternative structure and model with four methyl-hydrogen diaxial interactions."
+        },
+        "src": "../../media/OChem_04_08_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00047:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00047:alt:fig-00003-alt",
+          "text": "The ball and stick models and Haworth projections of glucose and mannose. In glucose and mannose, the hydroxyl group at C2 is bonded at bottom and at top, respectively."
+        },
+        "src": "../../media/OChem_04_08_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00047:para:para-00006"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00047:table-title:table-00001-title",
+        "text": "Axial and Equatorial Relationships in Cis- and Trans-Disubstituted Cyclohexanes"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00047:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00047:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00047:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00047:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00047:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00047:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00047:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00047:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00047:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00047:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00047:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00047:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00047:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00047:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00047:example-title:exam-00001-title",
+        "text": "Drawing the Most Stable Conformation of a Substituted Cyclohexane"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00047:para:para-00007"
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00047:para:para-00008",
+          "title": {
+            "segmentId": "m00047:para-title:para-00008-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00047:para:para-00009",
+          "title": {
+            "segmentId": "m00047:para-title:para-00009-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00047:alt:fig-00004-alt",
+          "text": "Two reversible chair conformations of 1,4 substituted cyclohexane arising from a ring-flip. The first and second conformations have 2.0 and 22.8 kilojoules per mol of steric strain, respectively."
+        },
+        "src": "../../media/OChem_04_08_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00047:para:para-00010"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00047:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

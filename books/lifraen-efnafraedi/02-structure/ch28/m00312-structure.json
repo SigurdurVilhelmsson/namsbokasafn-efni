@@ -1,0 +1,64 @@
+{
+  "moduleId": "m00312",
+  "title": {
+    "segmentId": "m00312:title:auto-1",
+    "text": "Replication of DNA"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "5d0a8a3b-4336-4fca-a066-9a0b0cb5682b"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00312:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00312:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00312:alt:fig-00001-alt",
+          "text": "In the replication of D N A, the nitrogenous bases associate - A with T and G with C - forming two new strands identical to the original strand."
+        },
+        "src": "../../media/OChem_28_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00312:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00312:alt:fig-00002-alt",
+          "text": "Addition of nucleotides occurs by a base at the 3-prime end of the template strand interacting with its base pair counterpart at the 5-prime end of the new strand."
+        },
+        "src": "../../media/OChem_28_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00312:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00312:para:para-00004"
+    }
+  ],
+  "sectionOrder": 3
+}

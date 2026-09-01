@@ -1,0 +1,90 @@
+{
+  "moduleId": "m00287",
+  "title": {
+    "segmentId": "m00287:title:auto-1",
+    "text": "The Robinson Annulation Reaction"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "9b0c0e00-e9ea-4ef3-b029-91ccb7e34ce8"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00287:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00287:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00287:alt:fig-00001-alt",
+          "text": "The Michael addition of 3-buten-2-one and ethyl acetoacetate in the presence of sodium ethoxide forming Michael product (intermediate). Further aldol reaction, in presence of sodium ethoxide, yields ethyl-2-methyl-4-oxocyclohex-2-enecarboxylate (annulation product)."
+        },
+        "src": "../../media/OChem_23_12_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00287:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "caption": {
+        "segmentId": "m00287:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00287:alt:fig-00002-alt",
+          "text": "The Michael addition of alpha-beta unsaturated ketone (acceptor) with beta-diketone (donor) in base gives intermediate (Michael product). Subsequent reactions give Robinson annulation product, which undergoes multiple reactions to form estrone."
+        },
+        "src": "../../media/OChem_23_12_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00287:para:para-00004"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00287:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 12
+}

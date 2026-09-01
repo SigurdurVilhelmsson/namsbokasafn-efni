@@ -1,0 +1,64 @@
+{
+  "moduleId": "m00148",
+  "title": {
+    "segmentId": "m00148:title:auto-1",
+    "text": "Problems"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "72390ccd-449e-479c-aa8d-73c89523cbc7"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00148:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00148:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00148:alt:fig-00001-alt",
+          "text": "The 1 H N M R spectrum of methyl 2,2-dimethylpropanoate shows peaks at 0 (T M S), 1.2, and 3.7 parts per million."
+        },
+        "src": "../../media/OChem_13_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00148:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00148:para:para-00003"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00148:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

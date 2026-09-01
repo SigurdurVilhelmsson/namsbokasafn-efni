@@ -1,0 +1,144 @@
+{
+  "moduleId": "m00344",
+  "title": {
+    "segmentId": "m00344:title:auto-1",
+    "text": "Photochemical Electrocyclic Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "df47d10c-6de3-470e-b623-784d5aba6207"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00344:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "caption": {
+        "segmentId": "m00344:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00344:alt:fig-00001-alt",
+          "text": "Conjugated dienes and trienes undergoing photochemical cyclization. (2E,4E)-2,4-hexadiene reacts with light through disrotation to form cis-3,4-dimethylcyclobutene. (2E,4Z,6E)-2,4,6-octatriene reacts with light through conrotation to form trans-5,6-dimethyl-1,3-cyclohexadiene."
+        },
+        "src": "../../media/OChem_30_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00344:para:para-00002"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00344:table-title:table-00001-title",
+        "text": "Stereochemical Rules for Electrocyclic Reactions"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00344:entry:auto-7",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00344:entry:auto-8",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00344:entry:auto-9",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00344:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00344:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00344:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00344:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00344:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00344:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00344:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

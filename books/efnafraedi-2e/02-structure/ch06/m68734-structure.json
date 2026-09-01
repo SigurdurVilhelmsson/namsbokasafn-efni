@@ -44,7 +44,10 @@
           },
           "media": {
             "id": "fs-idp15990608",
-            "alt": "A table entitled, “Subshell electron capacity,” is shown. Along the left side of the table, an upward pointing arrow labeled, “E,” is drawn. The table includes three columns. The first column is narrow and is labeled, “2.” The second is slightly wider and is labeled, “6.” The third is slightly wider yet and is labeled, “10.” The fourth is the widest and is labeled, “14.” The first column begins at the very bottom with a horizontal line segment labeled “1 s.” Evenly spaced line segments continue up to 7 s near the top of the column. In the second column, a horizontal dashed line segment labeled, “2 p,” appears at a level between the 2 s and 3 s levels. Similarly 3 p appears at a level between 3 s and 4 s, 4 p appears just below 5 s, 5 p appears just below 6 s, and 6 p appears just below 7 s. In the third column, a dashed line labeled, “3 d,” appears just below the level of 4 p. Similarly, 4 d appears just below 5 p and 5 d appears just below 6 p. Six d however appears above the levels of both 6 p and 7 s. The far right column entries begin with a dashed line labeled, “4 f,” positioned at a level just below 5 d. Similarly, a second dashed line segment appears just below the level of 6 d, which is labeled, “5 f.”",
+            "alt": {
+              "segmentId": "m68734:alt:fs-idp15990608-alt",
+              "text": "A table entitled, “Subshell electron capacity,” is shown. Along the left side of the table, an upward pointing arrow labeled, “E,” is drawn. The table includes three columns. The first column is narrow and is labeled, “2.” The second is slightly wider and is labeled, “6.” The third is slightly wider yet and is labeled, “10.” The fourth is the widest and is labeled, “14.” The first column begins at the very bottom with a horizontal line segment labeled “1 s.” Evenly spaced line segments continue up to 7 s near the top of the column. In the second column, a horizontal dashed line segment labeled, “2 p,” appears at a level between the 2 s and 3 s levels. Similarly 3 p appears at a level between 3 s and 4 s, 4 p appears just below 5 s, 5 p appears just below 6 s, and 6 p appears just below 7 s. In the third column, a dashed line labeled, “3 d,” appears just below the level of 4 p. Similarly, 4 d appears just below 5 p and 5 d appears just below 6 p. Six d however appears above the levels of both 6 p and 7 s. The far right column entries begin with a dashed line labeled, “4 f,” positioned at a level just below 5 d. Similarly, a second dashed line segment appears just below the level of 6 d, which is labeled, “5 f.”"
+            },
             "src": "../../media/CNX_Chem_06_04_eLeveldiag.jpg",
             "mimeType": "image/jpeg"
           }
@@ -94,7 +97,10 @@
           },
           "media": {
             "id": "fs-idp160912656",
-            "alt": "A light blue hemisphere is labeled H. At a location about midway between the center and outer edge of the hemisphere, a small yellow-orange sphere is shown that is labeled with a negative sign. To the right of this diagram is the electron configuration 1 s superscript 1. The superscript is shown in a small yellow-orange circle. This superscript is labeled, “Number of electrons in subshell,” and the s is labeled, “Subshell.”",
+            "alt": {
+              "segmentId": "m68734:alt:fs-idp160912656-alt",
+              "text": "A light blue hemisphere is labeled H. At a location about midway between the center and outer edge of the hemisphere, a small yellow-orange sphere is shown that is labeled with a negative sign. To the right of this diagram is the electron configuration 1 s superscript 1. The superscript is shown in a small yellow-orange circle. This superscript is labeled, “Number of electrons in subshell,” and the s is labeled, “Subshell.”"
+            },
             "src": "../../media/CNX_Chem_06_04_Econfig.jpg",
             "mimeType": "image/jpeg"
           }
@@ -124,7 +130,10 @@
           },
           "media": {
             "id": "fs-idp114572608",
-            "alt": "This figure includes a chart used to order the filling of electrons into atoms. At the top is a blue circle labeled “1 s.” In a row beneath this circle are 6 additional blue circles labeled “2 s” through “7 s.” A column to the right begins just right of 2 s and contains pink circles labeled 2 p through 7 p. A column to the right begins just right of 3 p and contains yellow circles labeled 3 d through 6 d. No circles are placed to the right of the 7 s and 7 p circles. A final column on the right begins right of 4 d. It includes grey circles labeled, “4 f” and, “5 f.” No circles are placed right of 6 d. Through these circles, arrows are included in the figure pointing down and to the left. The first arrow begins in the upper right and passes through 1 s. The second arrow begins just below and passes through 2 s. The third arrow passes through 2 p and 3 s. The fourth arrow passes through 3 p and 4 s. This pattern of parallel arrows pointing downward to the left continues through all circles completing the pattern 1 s 2 s 2 p 3 s 3 p 4 s 3 d 4 p 5 s 4 d 5 p 6 s 4 f 5 d 6 p 7 s 5 f 6 d 7 p.",
+            "alt": {
+              "segmentId": "m68734:alt:fs-idp114572608-alt",
+              "text": "This figure includes a chart used to order the filling of electrons into atoms. At the top is a blue circle labeled “1 s.” In a row beneath this circle are 6 additional blue circles labeled “2 s” through “7 s.” A column to the right begins just right of 2 s and contains pink circles labeled 2 p through 7 p. A column to the right begins just right of 3 p and contains yellow circles labeled 3 d through 6 d. No circles are placed to the right of the 7 s and 7 p circles. A final column on the right begins right of 4 d. It includes grey circles labeled, “4 f” and, “5 f.” No circles are placed right of 6 d. Through these circles, arrows are included in the figure pointing down and to the left. The first arrow begins in the upper right and passes through 1 s. The second arrow begins just below and passes through 2 s. The third arrow passes through 2 p and 3 s. The fourth arrow passes through 3 p and 4 s. This pattern of parallel arrows pointing downward to the left continues through all circles completing the pattern 1 s 2 s 2 p 3 s 3 p 4 s 3 d 4 p 5 s 4 d 5 p 6 s 4 f 5 d 6 p 7 s 5 f 6 d 7 p."
+            },
             "src": "../../media/CNX_Chem_06_04_Efillorder.jpg",
             "mimeType": "image/jpeg"
           }
@@ -137,7 +146,10 @@
           },
           "media": {
             "id": "fs-idp160965360",
-            "alt": "In this figure, a periodic table is shown that is entitled, “Electron Configuration Table.” Beneath the table, a square for the element hydrogen is shown enlarged to provide detail. The element symbol, H, is placed in the upper left corner. In the upper right is the number of electrons, 1. The lower central portion of the element square contains the subshell, 1s. Helium and elements in groups 1 and 2 are shaded blue. In this region, the rows are labeled 1s through 7s moving down the table. Groups 3 through 12 are shaded orange, and the rows are labeled 3d through 6d moving down the table. Groups 13 through 18, except helium, are shaded pink and are labeled 2p through 6p moving down the table.",
+            "alt": {
+              "segmentId": "m68734:alt:fs-idp160965360-alt",
+              "text": "In this figure, a periodic table is shown that is entitled, “Electron Configuration Table.” Beneath the table, a square for the element hydrogen is shown enlarged to provide detail. The element symbol, H, is placed in the upper left corner. In the upper right is the number of electrons, 1. The lower central portion of the element square contains the subshell, 1s. Helium and elements in groups 1 and 2 are shaded blue. In this region, the rows are labeled 1s through 7s moving down the table. Groups 3 through 12 are shaded orange, and the rows are labeled 3d through 6d moving down the table. Groups 13 through 18, except helium, are shaded pink and are labeled 2p through 6p moving down the table."
+            },
             "src": "../../media/CNX_Chem_06_04_Econtable.jpg",
             "mimeType": "image/jpeg"
           }
@@ -151,7 +163,10 @@
           "type": "media",
           "id": "CNX_Chem_06_04_Hydrog1_img",
           "class": null,
-          "alt": "In this figure, the element symbol H is followed by the electron configuration is 1 s superscript 1. An orbital diagram is provided that consists of a single square. The square is labeled below as, “1 s.” It contains a single upward pointing half arrow.",
+          "alt": {
+            "segmentId": "m68734:alt:CNX_Chem_06_04_Hydrog1_img-alt",
+            "text": "In this figure, the element symbol H is followed by the electron configuration is 1 s superscript 1. An orbital diagram is provided that consists of a single square. The square is labeled below as, “1 s.” It contains a single upward pointing half arrow."
+          },
           "src": "../../media/CNX_Chem_06_04_Hydrog1_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -166,7 +181,10 @@
           "type": "media",
           "id": "CNX_Chem_06_04_Helium1_img",
           "class": null,
-          "alt": "In this figure, the element symbol H e is followed by the electron configuration, “1 s superscript 2.” An orbital diagram is provided that consists of a single square. The square is labeled below as “1 s.” It contains a pair of half arrows: one pointing up and the other down.",
+          "alt": {
+            "segmentId": "m68734:alt:CNX_Chem_06_04_Helium1_img-alt",
+            "text": "In this figure, the element symbol H e is followed by the electron configuration, “1 s superscript 2.” An orbital diagram is provided that consists of a single square. The square is labeled below as “1 s.” It contains a pair of half arrows: one pointing up and the other down."
+          },
           "src": "../../media/CNX_Chem_06_04_Helium1_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -186,7 +204,10 @@
           "type": "media",
           "id": "CNX_Chem_06_04_Lithium12_img",
           "class": null,
-          "alt": "In this figure, the element symbol L i is followed by the electron configuration, “1 s superscript 2 2 s superscript 1.” An orbital diagram is provided that consists of two individual squares. The first square is labeled below as, “1 s.” The second square is similarly labeled, “2 s.” The first square contains a pair of half arrows: one pointing up and the other down. The second square contains a single upward pointing arrow.",
+          "alt": {
+            "segmentId": "m68734:alt:CNX_Chem_06_04_Lithium12_img-alt",
+            "text": "In this figure, the element symbol L i is followed by the electron configuration, “1 s superscript 2 2 s superscript 1.” An orbital diagram is provided that consists of two individual squares. The first square is labeled below as, “1 s.” The second square is similarly labeled, “2 s.” The first square contains a pair of half arrows: one pointing up and the other down. The second square contains a single upward pointing arrow."
+          },
           "src": "../../media/CNX_Chem_06_04_Lithium12_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -201,7 +222,10 @@
           "type": "media",
           "id": "CNX_Chem_06_04_Beryll12_img",
           "class": null,
-          "alt": "In this figure, the element symbol B e is followed by the electron configuration, “1 s superscript 2 2 s superscript 2.” An orbital diagram is provided that consists of two individual squares. The first square is labeled below as, “1 s.” The second square is similarly labeled, “2 s.” Both squares contain a pair of half arrows: one pointing up and the other down.",
+          "alt": {
+            "segmentId": "m68734:alt:CNX_Chem_06_04_Beryll12_img-alt",
+            "text": "In this figure, the element symbol B e is followed by the electron configuration, “1 s superscript 2 2 s superscript 2.” An orbital diagram is provided that consists of two individual squares. The first square is labeled below as, “1 s.” The second square is similarly labeled, “2 s.” Both squares contain a pair of half arrows: one pointing up and the other down."
+          },
           "src": "../../media/CNX_Chem_06_04_Beryll12_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -216,7 +240,10 @@
           "type": "media",
           "id": "CNX_Chem_06_04_Boron122_img",
           "class": null,
-          "alt": "In this figure, the element symbol B is followed by the electron configuration, “1 s superscript 2 2 s superscript 2 2 p superscript 1.” The orbital diagram consists of two individual squares followed by 3 connected squares in a single row. The first square is labeled below as, “1 s.” The second is similarly labeled, “2 s.” The connected squares are labeled below as, “2 p.” All squares not connected contain a pair of half arrows: one pointing up and the other down. The first square in the group of 3 contains a single upward pointing arrow.",
+          "alt": {
+            "segmentId": "m68734:alt:CNX_Chem_06_04_Boron122_img-alt",
+            "text": "In this figure, the element symbol B is followed by the electron configuration, “1 s superscript 2 2 s superscript 2 2 p superscript 1.” The orbital diagram consists of two individual squares followed by 3 connected squares in a single row. The first square is labeled below as, “1 s.” The second is similarly labeled, “2 s.” The connected squares are labeled below as, “2 p.” All squares not connected contain a pair of half arrows: one pointing up and the other down. The first square in the group of 3 contains a single upward pointing arrow."
+          },
           "src": "../../media/CNX_Chem_06_04_Boron122_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -231,7 +258,10 @@
           "type": "media",
           "id": "CNX_Chem_06_04_Carbon122_img",
           "class": null,
-          "alt": "In this figure, the element symbol C is followed by the electron configuration, “1 s superscript 2 2 s superscript 2 2 p superscript 2.” The orbital diagram consists of two individual squares followed by 3 connected squares in a single row. The first blue square is labeled below as, “1 s.” The second is similarly labeled, “2 s.” The connected squares are labeled below as, “2 p.” All squares not connected to each other contain a pair of half arrows: one pointing up and the other down. The first two squares in the group of 3 each contain a single upward pointing arrow.",
+          "alt": {
+            "segmentId": "m68734:alt:CNX_Chem_06_04_Carbon122_img-alt",
+            "text": "In this figure, the element symbol C is followed by the electron configuration, “1 s superscript 2 2 s superscript 2 2 p superscript 2.” The orbital diagram consists of two individual squares followed by 3 connected squares in a single row. The first blue square is labeled below as, “1 s.” The second is similarly labeled, “2 s.” The connected squares are labeled below as, “2 p.” All squares not connected to each other contain a pair of half arrows: one pointing up and the other down. The first two squares in the group of 3 each contain a single upward pointing arrow."
+          },
           "src": "../../media/CNX_Chem_06_04_Carbon122_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -246,7 +276,10 @@
           "type": "media",
           "id": "CNX_Chem_06_04_NOFNe_img",
           "class": null,
-          "alt": "This figure includes electron configurations and orbital diagrams for four elements, N, O, F, and N e. Each diagram consists of two individual squares followed by 3 connected squares in a single row. The first square is labeled below as, “1 s.” The second is similarly labeled, “2 s.” The connected squares are labeled below as, “2 p.” All squares not connected to each other contain a pair of half arrows: one pointing up and the other down. For the element N, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 3. Each of the squares in the group of 3 contains a single upward pointing arrow for this element. For the element O, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 4. The first square in the group of 3 contains a pair of arrows and the last two squares contain single upward pointing arrows. For the element F, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 5. The first two squares in the group of 3 each contain a pair of arrows and the last square contains a single upward pointing arrow. For the element N e, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 6. The squares in the group of 3 each contains a pair of arrows.",
+          "alt": {
+            "segmentId": "m68734:alt:CNX_Chem_06_04_NOFNe_img-alt",
+            "text": "This figure includes electron configurations and orbital diagrams for four elements, N, O, F, and N e. Each diagram consists of two individual squares followed by 3 connected squares in a single row. The first square is labeled below as, “1 s.” The second is similarly labeled, “2 s.” The connected squares are labeled below as, “2 p.” All squares not connected to each other contain a pair of half arrows: one pointing up and the other down. For the element N, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 3. Each of the squares in the group of 3 contains a single upward pointing arrow for this element. For the element O, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 4. The first square in the group of 3 contains a pair of arrows and the last two squares contain single upward pointing arrows. For the element F, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 5. The first two squares in the group of 3 each contain a pair of arrows and the last square contains a single upward pointing arrow. For the element N e, the electron configuration is 1 s superscript 2 2 s superscript 2 2 p superscript 6. The squares in the group of 3 each contains a pair of arrows."
+          },
           "src": "../../media/CNX_Chem_06_04_NOFNe_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -265,7 +298,10 @@
           },
           "media": {
             "id": "fs-idp108836512",
-            "alt": "This figure includes the element symbol N a, followed by the electron configuration for the element. The first part of the electron configuration, 1 s superscript 2 2 s superscript 2 2 p superscript 6, is shaded in purple and is labeled, “core electrons.” The last portion, 3 s superscript 1, is shaded orange and is labeled, “valence electron.” To the right of this configuration is the word “Abbreviation” followed by [ N e ] 3 s superscript 1.",
+            "alt": {
+              "segmentId": "m68734:alt:fs-idp108836512-alt",
+              "text": "This figure includes the element symbol N a, followed by the electron configuration for the element. The first part of the electron configuration, 1 s superscript 2 2 s superscript 2 2 p superscript 6, is shaded in purple and is labeled, “core electrons.” The last portion, 3 s superscript 1, is shaded orange and is labeled, “valence electron.” To the right of this configuration is the word “Abbreviation” followed by [ N e ] 3 s superscript 1."
+            },
             "src": "../../media/CNX_Chem_06_04_Valence.jpg",
             "mimeType": "image/jpeg"
           }
@@ -298,7 +334,10 @@
           },
           "media": {
             "id": "fs-idp104721920",
-            "alt": "A periodic table, entitled, “Electron Configuration Table” is shown. The table includes the outer electron configuration information, atomic numbers, and element symbols for all elements. A square for the element hydrogen is pulled out beneath the table to provide detail. The blue shaded square includes the atomic number in the upper left corner, which is 1; the element symbol, H, in the upper right corner; and the outer electron configuration in the lower, central portion of the square. For H, this is 1s superscript 1.",
+            "alt": {
+              "segmentId": "m68734:alt:fs-idp104721920-alt",
+              "text": "A periodic table, entitled, “Electron Configuration Table” is shown. The table includes the outer electron configuration information, atomic numbers, and element symbols for all elements. A square for the element hydrogen is pulled out beneath the table to provide detail. The blue shaded square includes the atomic number in the upper left corner, which is 1; the element symbol, H, in the upper right corner; and the outer electron configuration in the lower, central portion of the square. For H, this is 1s superscript 1."
+            },
             "src": "../../media/CNX_Chem_06_04_Ptableconf.jpg",
             "mimeType": "image/jpeg"
           }
@@ -363,6 +402,14 @@
               "type": "para",
               "id": "fs-idp62872432",
               "segmentId": "m68734:para:fs-idp62872432"
+            },
+            {
+              "type": "media",
+              "id": "CNX_Chem_06_04_PhosphOrb_img",
+              "alt": {
+                "segmentId": "m68734:alt:CNX_Chem_06_04_PhosphOrb_img-alt",
+                "text": "This figure provides the electron configuration 1 s superscript 2 2 s superscript 2 2 p superscript 6 3 s superscript 2 3 p superscript 3. It includes a diagram with two individual squares followed by 3 connected squares, a single square, and another connected group of 3 squares all in a single row. The first square is labeled below as, “1 s.” The second is similarly labeled, “2 s.” The first group of connected squares is labeled below as, “2 p.” The square that follows is labeled, “3 s,” and the final group of three squares is labeled, “3 p.” All squares except the last group of three squares has a pair of half arrows: one pointing up and the other down. Each of the squares in the last group of 3 contains a single upward pointing arrow."
+              }
             },
             {
               "type": "note",
@@ -1241,56 +1288,71 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "CNX_Chem_06_04_OrbDiaSh2a_img",
       "class": "scaled-down-30",
-      "alt": "This figure includes a square followed by 3 squares all connected in a single row. The first square is labeled below as, “2 s.” The connected squares are labeled below as, “2 p.” The first square has a pair of half arrows: one pointing up, and the other down. Each of the remaining squares contains a single upward pointing arrow.",
       "src": "../../media/CNX_Chem_06_04_OrbDiaSh2a_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68734:alt:CNX_Chem_06_04_OrbDiaSh2a_img-alt",
+        "text": "This figure includes a square followed by 3 squares all connected in a single row. The first square is labeled below as, “2 s.” The connected squares are labeled below as, “2 p.” The first square has a pair of half arrows: one pointing up, and the other down. Each of the remaining squares contains a single upward pointing arrow."
+      }
     },
     {
       "placeholder": "[[MEDIA:2]]",
       "id": "CNX_Chem_06_04_OrbDiaSh2b_img",
       "class": "scaled-down-30",
-      "alt": "This figure includes a square followed by 3 squares all connected in a single row. The first square is labeled below as, “2 s.” The connected squares are labeled below as, “2 p.” The first square has a pair of half arrows: one pointing up and the other down. The first two squares in the row of connected squares contain a single upward pointing arrow. The third square is empty.",
       "src": "../../media/CNX_Chem_06_04_OrbDiaSh2b_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68734:alt:CNX_Chem_06_04_OrbDiaSh2b_img-alt",
+        "text": "This figure includes a square followed by 3 squares all connected in a single row. The first square is labeled below as, “2 s.” The connected squares are labeled below as, “2 p.” The first square has a pair of half arrows: one pointing up and the other down. The first two squares in the row of connected squares contain a single upward pointing arrow. The third square is empty."
+      }
     },
     {
       "placeholder": "[[MEDIA:3]]",
       "id": "CNX_Chem_06_04_OrbDiaSh2c_img",
       "class": "scaled-down-30",
-      "alt": "This figure includes a square followed by 5 squares all connected in a single row. The first square is labeled below as, “4 s.” The connected squares are labeled below as, “3 d.” The first square and the left-most square in the row of connected squares each has a pair of half arrows: one pointing up and the other down. Each of the remaining squares contains a single upward pointing arrow.",
       "src": "../../media/CNX_Chem_06_04_OrbDiaSh2c_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68734:alt:CNX_Chem_06_04_OrbDiaSh2c_img-alt",
+        "text": "This figure includes a square followed by 5 squares all connected in a single row. The first square is labeled below as, “4 s.” The connected squares are labeled below as, “3 d.” The first square and the left-most square in the row of connected squares each has a pair of half arrows: one pointing up and the other down. Each of the remaining squares contains a single upward pointing arrow."
+      }
     },
     {
       "placeholder": "[[MEDIA:4]]",
       "id": "CNX_Chem_06_04_OrbDiaSh2d_img",
       "class": "scaled-down-30",
-      "alt": "This figure includes a square followed by 3 squares all connected in a single row. The first square is labeled below as, “5 s superscript 2.” The connected squares are labeled below as, “5 p. superscript 4.” The first square and the left-most square in the row of connect squares each has a pair of half arrows: one pointing up and the other down. Each of the remaining squares contains a single upward pointing arrow.",
       "src": "../../media/CNX_Chem_06_04_OrbDiaSh2d_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68734:alt:CNX_Chem_06_04_OrbDiaSh2d_img-alt",
+        "text": "This figure includes a square followed by 3 squares all connected in a single row. The first square is labeled below as, “5 s superscript 2.” The connected squares are labeled below as, “5 p. superscript 4.” The first square and the left-most square in the row of connect squares each has a pair of half arrows: one pointing up and the other down. Each of the remaining squares contains a single upward pointing arrow."
+      }
     },
     {
       "placeholder": "[[MEDIA:5]]",
       "id": "CNX_Chem_06_04_OrbDiaSh2e_img",
       "class": "scaled-down-30",
-      "alt": "This figure includes a square followed by 5 squares all connected in a single row. The first square is labeled below as, “5 s.” The connected squares are labeled below as, “4 d superscript 5.” Each of the squares contains a single upward pointing arrow.",
       "src": "../../media/CNX_Chem_06_04_OrbDiaSh2e_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68734:alt:CNX_Chem_06_04_OrbDiaSh2e_img-alt",
+        "text": "This figure includes a square followed by 5 squares all connected in a single row. The first square is labeled below as, “5 s.” The connected squares are labeled below as, “4 d superscript 5.” Each of the squares contains a single upward pointing arrow."
+      }
     }
   ],
   "sectionOrder": 4

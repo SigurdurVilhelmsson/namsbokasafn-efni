@@ -1,0 +1,161 @@
+{
+  "moduleId": "m00215",
+  "title": {
+    "segmentId": "m00215:title:auto-1",
+    "text": "Nucleophilic Addition Reactions of Aldehydes and Ketones"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e8c9bc5c-cce7-46f0-9c4a-72d43847f08e"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00215:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00215:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00215:alt:fig-00001-alt",
+          "text": "Three-step reaction in which a nucleophile attacks the carbonyl carbon of aldehyde or ketone and forms an alkoxide ion. It further reacts with hydronium ions to form alcohol and water."
+        },
+        "src": "../../media/OChem_19_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00215:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00215:alt:fig-00002-alt",
+          "text": "The structure and names of some negatively charged and neutral nucleophiles. Negatively charged nucleophiles include hydroxide, hydride, carbanion, alkoxide, and cyanide ions. Neutral nucleophiles include water, alcohol, ammonia, and amine."
+        },
+        "src": "../../media/OChem_19_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00215:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00215:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00215:alt:fig-00003-alt",
+          "text": "Nucleophilic addition to aldehydes or ketones. With negative nucleophile, attack forms alkoxide, then alcohol after protonation. With neutral nucleophile with two hydrogens, water leaves after attack, double bond to nucleophile."
+        },
+        "src": "../../media/OChem_19_04_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00215:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00215:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00215:alt:fig-00004-alt",
+          "text": "Ball-and-stick models of ethanal and acetone. It shows the nucleophilic attack on carbonyl and bond shifts in linear arrangements. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively."
+        },
+        "src": "../../media/OChem_19_04_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00215:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00215:alt:fig-00005-alt",
+          "text": "The structures of primary carbocation, secondary carbocation, aldehyde, and ketone. Primary carbocation is less stable but more reactive than secondary carbocation whereas aldehyde is more reactive than ketone."
+        },
+        "src": "../../media/OChem_19_04_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00215:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00215:alt:fig-00006-alt",
+          "text": "The four resonance structures of benzaldehyde. The ball-and-stick model in electrostatic potential maps of formaldehyde and benzaldehyde in which an arrow points towards the carbonyl carbon in both structures."
+        },
+        "src": "../../media/OChem_19_04_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00215:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

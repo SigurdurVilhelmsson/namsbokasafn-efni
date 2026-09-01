@@ -1,0 +1,1878 @@
+{
+  "moduleId": "m00255",
+  "title": {
+    "segmentId": "m00255:title:auto-1",
+    "text": "Spectroscopy of Ethers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c622a4cf-8921-47ff-979f-3c15ab771427"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00255:title:sect-00001-title",
+        "text": "Infrared Spectroscopy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00255:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00255:caption:fig-00001-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00001-alt",
+              "text": "An infrared spectrum with peaks around around 3000 centimeters inverse, and around 1200-1100 centimeters inverse, labeled C-O stretch."
+            },
+            "src": "../../media/OChem_18_09_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00255:caption:fig-00002-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00002-alt",
+              "text": "An infrared spectrum with peaks (in wavenumbers) above and below 3000, labeled s p 2 and s p 3 C H respectively, peaks around 1500-1600 labeled aromatic C C."
+            },
+            "src": "../../media/OChem_18_09_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00255:title:sect-00002-title",
+        "text": "Nuclear Magnetic Resonance Spectroscopy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00255:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00255:caption:fig-00003-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00003-alt",
+              "text": "Proton N M R with shifts at 0 (TMS), 0.92 (triplet), 1.58 (sextet), and 3.36 (triplet). Relative areas are 1.50, 1.00, and 1.00 respectively."
+            },
+            "src": "../../media/OChem_18_09_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00255:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00255:caption:fig-00004-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00004-alt",
+              "text": "Proton N M R with shifts at 0 (TMS), 1.32 (doublet), 2.42 (doublet), 2.75 (doublet), and 2.97 (multiplet). Relative areas are 3.00, 1.00, 1.00, and 1.00 respectively."
+            },
+            "src": "../../media/OChem_18_09_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00255:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00005-alt",
+              "text": "The structures of methyl propyl ether and anisole, with each carbon atom labeled by their respective chemical shifts, showcasing their arrangements."
+            },
+            "src": "../../media/OChem_18_09_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00255:title:sect-00003-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00255:title:sect-00004-title",
+        "text": "Epoxy Resins and Adhesives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00255:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00255:para:para-00007"
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00255:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00255:caption:fig-00006-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00006-alt",
+              "text": "A kayaker wearing a helmet is riding through whitewater."
+            },
+            "src": "../../media/OChem_18_98_Kayak.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00007-alt",
+              "text": "Bisphenol A reacts with epichlorohydrin to produce a prepolymer. A part of bisphenol A structure in the product is in parentheses with subscript n."
+            },
+            "src": "../../media/OChem_18_09_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00255:para:para-00009"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00008-alt",
+              "text": "Middle of chain 1 in prepolymer combining with the end of chain 2 using curing agent, forming cross-linked chains via oxygen bonding with free bonds."
+            },
+            "src": "../../media/OChem_18_09_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-10"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-11"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00001-item-12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00255:title:sect-00006-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00255:para:para-00010"
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00255:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00255:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00255:para:para-00013"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00007",
+      "class": "summary-reactions",
+      "title": {
+        "segmentId": "m00255:title:sect-00007-title",
+        "text": "Summary of Reactions"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00002",
+          "listType": "enumerated",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00002-item-1",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00003",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00255:item:list-00003-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00255:item:list-00003-item-2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00002-item-2",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00004",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00255:item:list-00004-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00255:item:list-00004-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00255:item:list-00004-item-3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00002-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00002-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00002-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00255:item:list-00002-item-6"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00009-alt",
+              "text": "An alkoxide ion reacts with an alkyl halide (R dash C H 2 X) to yield an ether (R O C H 2 R dash) and a halide ion."
+            },
+            "src": "../../media/OChem_18_EC_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00010-alt",
+              "text": "Tetramethylethylene reacts with alcohol and mercury(2) acetate, then sodium borohydride in an oxymercuration-demercuration reaction, forming an ether product."
+            },
+            "src": "../../media/OChem_18_EC_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00011-alt",
+              "text": "The reaction of R O R' with H X and H 2 O produces R X and R dash O H."
+            },
+            "src": "../../media/OChem_18_EC_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00013",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00013-alt",
+              "text": "Ethylene oxide reacts with hydronium ion to forms ethylene glycol, also known as 1,2-ethanediol. The reaction is called an acid-catalyzed epoxide opening reaction."
+            },
+            "src": "../../media/OChem_18_EC_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00014",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00014-alt",
+              "text": "Ethylene oxide in the presence of hydrogen bromide yields 2-bromoethanol via the opening of the epoxide ring."
+            },
+            "src": "../../media/OChem_18_EC_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00015",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00015-alt",
+              "text": "Ethylene oxide reacts with a strong base (R O minus) and an alcohol (R O H), to form an ether compound. Stereochemistry is specified."
+            },
+            "src": "../../media/OChem_18_EC_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00016",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00016-alt",
+              "text": "A Grignard reagent (R M g X) reacts with ethylene oxide in ether, then with hydronium ion to produce alcohol. R C H 2 C H 2 O H."
+            },
+            "src": "../../media/OChem_18_EC_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00017",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00017-alt",
+              "text": "R C H 2 B r reacts with dithiooxamide in the first step and water and sodium hydroxide in the second step to yield R C H 2 S H."
+            },
+            "src": "../../media/OChem_18_EC_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00018",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00018-alt",
+              "text": "Two thiols react with iodine and water to yield a disulfide compound (R S - S R)."
+            },
+            "src": "../../media/OChem_18_EC_011.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00019",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00019-alt",
+              "text": "A thiolate anion reacts with an alkyl bromide to yield an alkyl thioether compound along with bromide ion."
+            },
+            "src": "../../media/OChem_18_EC_012.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00020",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00020-alt",
+              "text": "Sulfide reacts with hydrogen peroxide to form a product in which sulfur is double-bonded to an oxygen atom and singly bonded with R and R dash groups."
+            },
+            "src": "../../media/OChem_18_EC_013.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00021",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00021-alt",
+              "text": "Sulfoxide reacts with R C O 3 H to form a product in which sulfur is double-bonded with two oxygen atoms and singly bonded with R and R dash groups."
+            },
+            "src": "../../media/OChem_18_EC_014.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00008",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00255:title:sect-00008-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00255:para:para-00014"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00019",
+          "segmentId": "m00255:para:para-00019"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00035",
+          "segmentId": "m00255:para:para-00035"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00038",
+          "segmentId": "m00255:para:para-00038"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00043",
+          "segmentId": "m00255:para:para-00043"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00053",
+          "segmentId": "m00255:para:para-00053"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00057",
+          "segmentId": "m00255:para:para-00057"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00041",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00042",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00043",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00044",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00045",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00046",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00047",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00048",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00049",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00050",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00051",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00009",
+      "class": "preview-carbonylchemistry",
+      "title": {
+        "segmentId": "m00255:title:sect-00009-title",
+        "text": "Preview of Carbonyl Chemistry"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00071",
+          "segmentId": "m00255:para:para-00071"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00022",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00255:alt:fig-00022-alt",
+              "text": "The structures of three compounds. Citric acid has a carboxylic acid functional group, acetaminophen has an amide functional group, and dacron which is polyester."
+            },
+            "src": "../../media/OChem_18_PCC_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00072",
+          "segmentId": "m00255:para:para-00072"
+        },
+        {
+          "type": "section",
+          "id": "sect-00010",
+          "class": null,
+          "title": {
+            "segmentId": "m00255:title:sect-00010-title",
+            "text": "I Kinds of Carbonyl Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00073",
+              "segmentId": "m00255:para:para-00073"
+            },
+            {
+              "type": "table",
+              "id": "table-00001",
+              "summary": "Alt Text Placeholder",
+              "title": {
+                "segmentId": "m00255:table-title:table-00001-title",
+                "text": "Some Types of Carbonyl Compounds"
+              },
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-80",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-81",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-82",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-83",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      },
+                      "alt": {
+                        "segmentId": "m00255:alt:OChem_18_PCC_002a_jpg-alt",
+                        "text": "The structure of aldehyde in which the central carbon atom bonded to a hydrogen, R group and double bonded to oxygen.",
+                        "mediaId": null,
+                        "src": "../../media/OChem_18_PCC_002a.jpg"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-85",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-86",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      },
+                      "alt": {
+                        "segmentId": "m00255:alt:OChem_18_PCC_002b_jpg-alt",
+                        "text": "The structure of ketone in which the central carbon atom bonded to an R prime, R group and double bonded to oxygen.",
+                        "mediaId": null,
+                        "src": "../../media/OChem_18_PCC_002b.jpg"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-88",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-89",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      },
+                      "alt": {
+                        "segmentId": "m00255:alt:OChem_18_PCC_002c_jpg-alt",
+                        "text": "The structure of carboxylic acid in which the R group is bonded to the carbon of C O O H.",
+                        "mediaId": null,
+                        "src": "../../media/OChem_18_PCC_002c.jpg"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-91",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-92",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      },
+                      "alt": {
+                        "segmentId": "m00255:alt:OChem_18_PCC_002d_jpg-alt",
+                        "text": "The structure of acid halide in which the carbonyl group is attached to R and X on the left and right sides, respectively.",
+                        "mediaId": null,
+                        "src": "../../media/OChem_18_PCC_002d.jpg"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-94",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-95",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      },
+                      "alt": {
+                        "segmentId": "m00255:alt:OChem_18_PCC_002e_jpg-alt",
+                        "text": "The structure of acid anhydride in which two acyl groups are attached to an oxygen atom.",
+                        "mediaId": null,
+                        "src": "../../media/OChem_18_PCC_002e.jpg"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-97",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-98",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      },
+                      "alt": {
+                        "segmentId": "m00255:alt:OChem_18_PCC_002f_jpg-alt",
+                        "text": "The structure of acyl phosphate in which a phosphate group is linked to an acyl group.",
+                        "mediaId": null,
+                        "src": "../../media/OChem_18_PCC_002f.jpg"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-100",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-101",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      },
+                      "alt": {
+                        "segmentId": "m00255:alt:OChem_18_PCC_002g_jpg-alt",
+                        "text": "The structure of ester in which an R group and an O R prime group are bonded to the carbonyl group on the left and right sides, respectively.",
+                        "mediaId": null,
+                        "src": "../../media/OChem_18_PCC_002g.jpg"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-103",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-104",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      },
+                      "alt": {
+                        "segmentId": "m00255:alt:OChem_18_PCC_002h_jpg-alt",
+                        "text": "The structure of lactone, a cyclic ester, in which the alkyl group from one side of the carbonyl is bonded through a cyclic structure to the oxygen on the other side.",
+                        "mediaId": null,
+                        "src": "../../media/OChem_18_PCC_002h.jpg"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-106",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-107",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      },
+                      "alt": {
+                        "segmentId": "m00255:alt:OChem_18_PCC_002i_jpg-alt",
+                        "text": "The structure of thioester in which an R group and an S R prime group are bonded to the carbonyl group on the left and right sides, respectively.",
+                        "mediaId": null,
+                        "src": "../../media/OChem_18_PCC_002i.jpg"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-109",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-110",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      },
+                      "alt": {
+                        "segmentId": "m00255:alt:OChem_18_PCC_002j_jpg-alt",
+                        "text": "The structure of amide, a carbonyl with one R group and one nitrogen with two open bonds.",
+                        "mediaId": null,
+                        "src": "../../media/OChem_18_PCC_002j.jpg"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-112",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m00255:entry:auto-113",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      },
+                      "alt": {
+                        "segmentId": "m00255:alt:OChem_18_PCC_002k_jpg-alt",
+                        "text": "The structure of lactam, a cyclic amide, in which the alkyl group from one side of the carbonyl is bonded through a cyclic structure to the nitrogen on the other side.",
+                        "mediaId": null,
+                        "src": "../../media/OChem_18_PCC_002k.jpg"
+                      }
+                    },
+                    {
+                      "segmentId": "m00255:entry:auto-115",
+                      "attributes": {
+                        "valign": "top",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "para-00074",
+              "segmentId": "m00255:para:para-00074"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00023",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00255:alt:fig-00023-alt",
+                  "text": "Aldehydes and ketones lack appropriate leaving groups for nucleophilic substitution, whereas compounds like carboxylic acids, acid halides, esters, thioesters, amides, acid anhydrides, and acyl phosphates have suitable leaving groups."
+                },
+                "src": "../../media/OChem_18_PCC_003.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00011",
+          "class": null,
+          "title": {
+            "segmentId": "m00255:title:sect-00011-title",
+            "text": "II Nature of the Carbonyl Group"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00075",
+              "segmentId": "m00255:para:para-00075"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00024",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00255:alt:fig-00024-alt",
+                  "text": "The orbital representation of carbonyl group and alkene. The electrostatic potential map demonstrates the likeness between the carbonyl group's double bonds and highlights nonbonding electron pairs on the oxygen atom."
+                },
+                "src": "../../media/OChem_18_PCC_004.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00076",
+              "segmentId": "m00255:para:para-00076"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00025",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m00255:caption:fig-00025-caption"
+              },
+              "media": {
+                "alt": {
+                  "segmentId": "m00255:alt:fig-00025-alt",
+                  "text": "The structure and ball-and-stick model in the electrostatic potential map of acetaldehyde. Values of bond lengths and bond angles are mentioned. Electron-rich and electron-poor atoms in the model are labeled."
+                },
+                "src": "../../media/OChem_18_PCC_005.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00077",
+              "segmentId": "m00255:para:para-00077"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00012",
+          "class": null,
+          "title": {
+            "segmentId": "m00255:title:sect-00012-title",
+            "text": "III General Reactions of Carbonyl Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00078",
+              "segmentId": "m00255:para:para-00078"
+            },
+            {
+              "type": "section",
+              "id": "sect-00013",
+              "class": null,
+              "title": {
+                "segmentId": "m00255:title:sect-00013-title",
+                "text": "Nucleophilic Addition Reactions of Aldehydes and Ketones (Chapter 19)"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "para-00079",
+                  "segmentId": "m00255:para:para-00079"
+                },
+                {
+                  "type": "figure",
+                  "id": "fig-00026",
+                  "class": "unnumbered scaled-down",
+                  "caption": null,
+                  "media": {
+                    "alt": {
+                      "segmentId": "m00255:alt:fig-00026-alt",
+                      "text": "The reversible reactions show the formation of a tetrahedral intermediate (s p 3 hybridized) formed from the attack of a nucleophile on the carbonyl compound (s p 2 hybridized)."
+                    },
+                    "src": "../../media/OChem_18_PCC_006.jpg",
+                    "mimeType": "image/jpeg"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "para-00080",
+                  "segmentId": "m00255:para:para-00080"
+                },
+                {
+                  "type": "figure",
+                  "id": "fig-00027",
+                  "caption": {
+                    "segmentId": "m00255:caption:fig-00027-caption"
+                  },
+                  "media": {
+                    "alt": {
+                      "segmentId": "m00255:alt:fig-00027-alt",
+                      "text": "Aldehyde or ketone addition to nucleophile yields either an alcohol or a C double bonded to N u product, based on the nucleophile."
+                    },
+                    "src": "../../media/OChem_18_PCC_007.jpg",
+                    "mimeType": "image/jpeg"
+                  }
+                },
+                {
+                  "type": "section",
+                  "id": "sect-00014",
+                  "class": null,
+                  "title": {
+                    "segmentId": "m00255:title:sect-00014-title",
+                    "text": "FORMATION OF AN ALCOHOL"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "para-00081",
+                      "segmentId": "m00255:para:para-00081"
+                    },
+                    {
+                      "type": "figure",
+                      "id": "fig-00028",
+                      "class": "unnumbered scaled-down",
+                      "caption": null,
+                      "media": {
+                        "alt": {
+                          "segmentId": "m00255:alt:fig-00028-alt",
+                          "text": "Reduction reaction involves ketones or aldehydes converting to alcohols. The Grignard reaction involves the conversion of ketones or aldehydes to alcohols. Both reactions progress via a tetrahedral intermediate."
+                        },
+                        "src": "../../media/OChem_18_PCC_008.jpg",
+                        "mimeType": "image/jpeg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "id": "sect-00015",
+                  "class": null,
+                  "title": {
+                    "segmentId": "m00255:title:sect-00015-title",
+                    "text": "FORMATION OF [[MATH:2]]"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "para-00082",
+                      "segmentId": "m00255:para:para-00082"
+                    },
+                    {
+                      "type": "figure",
+                      "id": "fig-00029",
+                      "class": "mechanism-figure scaled-down",
+                      "caption": {
+                        "segmentId": "m00255:caption:fig-00029-caption"
+                      },
+                      "media": {
+                        "alt": {
+                          "segmentId": "m00255:alt:fig-00029-alt",
+                          "text": "Mechanism of reaction of an amine with aldehyde or ketone; attack produces tetrahedral structure, protonation of oxygen follows, loss of O H minus gives neutral imine."
+                        },
+                        "src": "../../media/OChem_18_PCC_009.jpg",
+                        "mimeType": "image/jpeg"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "id": "sect-00016",
+              "class": null,
+              "title": {
+                "segmentId": "m00255:title:sect-00016-title",
+                "text": "Nucleophilic Acyl Substitution Reactions of Carboxylic Acid Derivatives (Chapter 21)"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "para-00083",
+                  "segmentId": "m00255:para:para-00083"
+                },
+                {
+                  "type": "figure",
+                  "id": "fig-00030",
+                  "class": "unnumbered scaled-down",
+                  "caption": null,
+                  "media": {
+                    "alt": {
+                      "segmentId": "m00255:alt:fig-00030-alt",
+                      "text": "A carboxylic acid derivative reaction involving nucleophile addition that leads to a tetrahedral intermediate, which then eliminates the leaving group to form a new carbonyl compound."
+                    },
+                    "src": "../../media/OChem_18_PCC_010.jpg",
+                    "mimeType": "image/jpeg"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "para-00084",
+                  "segmentId": "m00255:para:para-00084"
+                },
+                {
+                  "type": "figure",
+                  "id": "fig-00031",
+                  "class": "mechanism-figure scaled-down",
+                  "caption": {
+                    "segmentId": "m00255:caption:fig-00031-caption"
+                  },
+                  "media": {
+                    "alt": {
+                      "segmentId": "m00255:alt:fig-00031-alt",
+                      "text": "An alkoxide ion adds to an acid chloride, forming a tetrahedral intermediate, which then leads to the substitution of a chloride ion with oxygen, resulting in an ester product."
+                    },
+                    "src": "../../media/OChem_18_PCC_011.jpg",
+                    "mimeType": "image/jpeg"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "id": "sect-00017",
+              "class": null,
+              "title": {
+                "segmentId": "m00255:title:sect-00017-title",
+                "text": "Alpha-Substitution Reactions (Chapter 22)"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "para-00085",
+                  "segmentId": "m00255:para:para-00085"
+                },
+                {
+                  "type": "figure",
+                  "id": "fig-00032",
+                  "class": "unnumbered scaled-down",
+                  "caption": null,
+                  "media": {
+                    "alt": {
+                      "segmentId": "m00255:alt:fig-00032-alt",
+                      "text": "A carbonyl with an alpha hydrogen is shown in equilibrium with enol or enolate; either of these can then react with an electrophile to produce an alpha-substituted carbonyl."
+                    },
+                    "src": "../../media/OChem_18_PCC_012.jpg",
+                    "mimeType": "image/jpeg"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "para-00086",
+                  "segmentId": "m00255:para:para-00086"
+                },
+                {
+                  "type": "figure",
+                  "id": "fig-00033",
+                  "class": "unnumbered scaled-down",
+                  "caption": null,
+                  "media": {
+                    "alt": {
+                      "segmentId": "m00255:alt:fig-00033-alt",
+                      "text": "Base abstracts the alpha proton on a carbonyl to produce a carbanion, which is resonance-stabilized by formation of enolate."
+                    },
+                    "src": "../../media/OChem_18_PCC_013.jpg",
+                    "mimeType": "image/jpeg"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "para-00087",
+                  "segmentId": "m00255:para:para-00087"
+                },
+                {
+                  "type": "figure",
+                  "id": "fig-00034",
+                  "class": "unnumbered scaled-down",
+                  "caption": null,
+                  "media": {
+                    "alt": {
+                      "segmentId": "m00255:alt:fig-00034-alt",
+                      "text": "Base abstracts alpha proton of carbonyl to produce carbanion, shown in resonance with enolate. Enolate attacks R C H 2 X via S N 2 to produce alpha substituted carbonyl."
+                    },
+                    "src": "../../media/OChem_18_PCC_014.jpg",
+                    "mimeType": "image/jpeg"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "para-00088",
+                  "segmentId": "m00255:para:para-00088"
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "id": "sect-00018",
+              "class": null,
+              "title": {
+                "segmentId": "m00255:title:sect-00018-title",
+                "text": "Carbonyl Condensation Reactions (Chapter 23)"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "para-00089",
+                  "segmentId": "m00255:para:para-00089"
+                },
+                {
+                  "type": "figure",
+                  "id": "fig-00035",
+                  "class": "unnumbered scaled-down",
+                  "caption": null,
+                  "media": {
+                    "alt": {
+                      "segmentId": "m00255:alt:fig-00035-alt",
+                      "text": "Two equivalents of acetaldehyde in sodium hydroxide produce 3-hydroxybutanal, an aldol."
+                    },
+                    "src": "../../media/OChem_18_PCC_015.jpg",
+                    "mimeType": "image/jpeg"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "para-00090",
+                  "segmentId": "m00255:para:para-00090"
+                },
+                {
+                  "type": "figure",
+                  "id": "fig-00036",
+                  "class": "mechanism-figure scaled-down",
+                  "caption": {
+                    "segmentId": "m00255:caption:fig-00036-caption"
+                  },
+                  "media": {
+                    "alt": {
+                      "segmentId": "m00255:alt:fig-00036-alt",
+                      "text": "Mechanism of enolate formation: hydroxide abstracts alpha proton from acetaldehyde, carbanion attacks carbonyl of another acetaldehyde, protonation generates neutral 3-hydroxybutanal product."
+                    },
+                    "src": "../../media/OChem_18_PCC_016.jpg",
+                    "mimeType": "image/jpeg"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00019",
+          "class": null,
+          "title": {
+            "segmentId": "m00255:title:sect-00019-title",
+            "text": "IV Summary"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00091",
+              "segmentId": "m00255:para:para-00091"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00020",
+          "class": null,
+          "title": null,
+          "content": [
+            {
+              "type": "exercise",
+              "id": "exer-00052",
+              "problem": {
+                "content": []
+              },
+              "solution": null
+            },
+            {
+              "type": "exercise",
+              "id": "exer-00053",
+              "problem": {
+                "content": []
+              },
+              "solution": null
+            },
+            {
+              "type": "exercise",
+              "id": "exer-00054",
+              "problem": {
+                "content": []
+              },
+              "solution": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

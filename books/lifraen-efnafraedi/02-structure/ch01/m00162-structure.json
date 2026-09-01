@@ -1,0 +1,101 @@
+{
+  "moduleId": "m00162",
+  "title": {
+    "segmentId": "m00162:title:auto-1",
+    "text": "Describing Chemical Bonds: Valence Bond Theory"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "87230a3d-48c1-44bf-9698-a62e7c2979f6"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00162:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00162:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00162:alt:fig-00001-alt",
+          "text": "The formation of H 2 molecule by overlapping of two 1s orbitals represented as spheres."
+        },
+        "src": "../../media/OChem_01_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00162:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00162:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00162:alt:fig-00002-alt",
+          "text": "The cylindrical symmetry of H 2 molecule featuring a circular cross-section having two electrons."
+        },
+        "src": "../../media/OChem_01_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00162:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00162:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00162:alt:fig-00003-alt",
+          "text": "The energy level and electron orientation of H 2 molecule and two hydrogen atoms are shown. The difference in their energy level is 436 kilojoules per mole."
+        },
+        "src": "../../media/OChem_01_05_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00162:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00162:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00162:alt:fig-00004-alt",
+          "text": "A graph of energy versus internuclear distance. A horizontal line separates the positive and negative energy and a curve with a single trough at 74 ppm is shown."
+        },
+        "src": "../../media/OChem_01_05_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 5
+}

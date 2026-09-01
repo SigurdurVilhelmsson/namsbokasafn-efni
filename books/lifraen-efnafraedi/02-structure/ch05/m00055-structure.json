@@ -1,0 +1,239 @@
+{
+  "moduleId": "m00055",
+  "title": {
+    "segmentId": "m00055:title:auto-1",
+    "text": "Diastereomers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "71706e02-8e75-4ca9-9206-aab14449c784"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00055:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "caption": {
+        "segmentId": "m00055:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00055:alt:fig-00001-alt",
+          "text": "The figure shows the wedge-dash structures and ball-and-stick models of enantiomer pairs of 2-amino-3-hydroxybutanoic acid. 2R, 3R mirror image is 2S, 3S. 2R, 3S mirror image is 2S, 3R."
+        },
+        "src": "../../media/OChem_05_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00055:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00055:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00055:para:para-00004"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00055:table-title:table-00001-title",
+        "text": "Relationships among the Four Stereoisomers of Threonine"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00055:entry:auto-9",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00055:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00055:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00055:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00055:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00055:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00055:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00055:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00055:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00055:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00055:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00055:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00055:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00055:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00055:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00055:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00055:alt:fig-00002-alt",
+          "text": "The wedge-dash structures of cholestanol and coprostanol are labeled epimers. C5 of cholestanol and coprostanol are labeled S and R, respectively."
+        },
+        "src": "../../media/OChem_05_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00055:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 6
+}

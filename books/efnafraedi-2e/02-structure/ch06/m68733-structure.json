@@ -50,7 +50,10 @@
           },
           "media": {
             "id": "fs-idm91841872",
-            "alt": "A photograph is shown of ripples in water. The ripples display an interference pattern with each other.",
+            "alt": {
+              "segmentId": "m68733:alt:fs-idm91841872-alt",
+              "text": "A photograph is shown of ripples in water. The ripples display an interference pattern with each other."
+            },
             "src": "../../media/CNX_Chem_06_03_waterw.jpg",
             "mimeType": "image/jpeg"
           }
@@ -84,7 +87,10 @@
           },
           "media": {
             "id": "fs-idm68754864",
-            "alt": "This figure includes a circle formed from a dashed line. A sinusoidal wave pattern indicated with a solid red line is wrapped around the circle, centered about the edge of the circle. Line segments extend outward from the circle extending through 2 wave crests along the circle. A double ended arrow is drawn between these segments and is labeled, “wavelength, lambda.” A dashed double headed arrow is drawn from the center to the edge of the circle and is labeled, “radius r.”",
+            "alt": {
+              "segmentId": "m68733:alt:fs-idm68754864-alt",
+              "text": "This figure includes a circle formed from a dashed line. A sinusoidal wave pattern indicated with a solid red line is wrapped around the circle, centered about the edge of the circle. Line segments extend outward from the circle extending through 2 wave crests along the circle. A double ended arrow is drawn between these segments and is labeled, “wavelength, lambda.” A dashed double headed arrow is drawn from the center to the edge of the circle and is labeled, “radius r.”"
+            },
             "src": "../../media/CNX_Chem_06_03_elecw.jpg",
             "mimeType": "image/jpeg"
           }
@@ -112,7 +118,10 @@
           },
           "media": {
             "id": "fs-idm29319408",
-            "alt": "This figure has two parts. Part a shows a diagram of an electron source emitting waves that pass through two narrow slits in a barrier. A wave interference pattern results on the opposite side of the barrier that result in evenly spaced, relatively wide horizontal grey lines on a black surface. The black surface is placed at a distance beyond the barrier. Part b shows an electron source at the far left. Two gold arrows point toward two narrow horizontal slits in a barrier. Around these arrows are many small golden dots. On the right side of the barrier, the gold dots are more widely dispersed. A black surface a distance beyond the barrier shows evenly, yet widely dispersed gold dots. An arrow is present below this black surface and is labeled, “Time.” A second black surface is shown to the right that has many more golden dots that appear to be organizing into a pattern of evenly spaced horizontal line segments. A third black surface is shown even further to the right in which many more gold dots are shown in a very clearly established, evenly spaced pattern of horizontal line segments.",
+            "alt": {
+              "segmentId": "m68733:alt:fs-idm29319408-alt",
+              "text": "This figure has two parts. Part a shows a diagram of an electron source emitting waves that pass through two narrow slits in a barrier. A wave interference pattern results on the opposite side of the barrier that result in evenly spaced, relatively wide horizontal grey lines on a black surface. The black surface is placed at a distance beyond the barrier. Part b shows an electron source at the far left. Two gold arrows point toward two narrow horizontal slits in a barrier. Around these arrows are many small golden dots. On the right side of the barrier, the gold dots are more widely dispersed. A black surface a distance beyond the barrier shows evenly, yet widely dispersed gold dots. An arrow is present below this black surface and is labeled, “Time.” A second black surface is shown to the right that has many more golden dots that appear to be organizing into a pattern of evenly spaced horizontal line segments. A third black surface is shown even further to the right in which many more gold dots are shown in a very clearly established, evenly spaced pattern of horizontal line segments."
+            },
             "src": "../../media/CNX_Chem_06_03_Electrnin.jpg",
             "mimeType": "image/jpeg"
           }
@@ -333,7 +342,10 @@
           },
           "media": {
             "id": "fs-idp33771488",
-            "alt": "This figure contains a central green sphere labeled “nucleus.” There is a plus sign in the middle of the sphere. This sphere is encircled by 3 concentric, evenly spaced rings. The first and closest to the center is labeled, “n equals 1.” The second ring is labeled, “n equals 2,” and the third ring is labeled, “n equals 3.” An arrow is drawn from the edge of the central sphere to the right extending out of the concentric rings. It is labeled, “increasing energy.”",
+            "alt": {
+              "segmentId": "m68733:alt:fs-idp33771488-alt",
+              "text": "This figure contains a central green sphere labeled “nucleus.” There is a plus sign in the middle of the sphere. This sphere is encircled by 3 concentric, evenly spaced rings. The first and closest to the center is labeled, “n equals 1.” The second ring is labeled, “n equals 2,” and the third ring is labeled, “n equals 3.” An arrow is drawn from the edge of the central sphere to the right extending out of the concentric rings. It is labeled, “increasing energy.”"
+            },
             "src": "../../media/CNX_Chem_06_03_Qnumbers.jpg",
             "mimeType": "image/jpeg"
           }
@@ -381,7 +393,10 @@
           },
           "media": {
             "id": "fs-idm165672208",
-            "alt": "This figure provides images and graphs to illustrate the probability of finding an electron in 1 s, 2 s, and 3 s orbitals as a function of the distance from the nucleus. The 1 s orbital is shown as a sphere with a chunk missing. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a maximum height and rapidly declines. The label, “1 s” appears below the graph. The 2 s orbital is shown as a red sphere with a blue middle. A chunk is missing from the sphere. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a relative maximum height, a significantly higher absolute maximum height, and then rapidly declines. The label “2s” appears below it. The 3 s orbital is a blue sphere with a red sphere and another blue sphere at its core. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a relative maximum height, a second relative maximum height, a significantly higher absolute maximum, and then declines more gradually than illustrated in the previous 2 graphs. The label, “3 s,” appears below the graph.",
+            "alt": {
+              "segmentId": "m68733:alt:fs-idm165672208-alt",
+              "text": "This figure provides images and graphs to illustrate the probability of finding an electron in 1 s, 2 s, and 3 s orbitals as a function of the distance from the nucleus. The 1 s orbital is shown as a sphere with a chunk missing. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a maximum height and rapidly declines. The label, “1 s” appears below the graph. The 2 s orbital is shown as a red sphere with a blue middle. A chunk is missing from the sphere. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a relative maximum height, a significantly higher absolute maximum height, and then rapidly declines. The label “2s” appears below it. The 3 s orbital is a blue sphere with a red sphere and another blue sphere at its core. The graph below it has x axis labeled “distance from nucleus” and y axis labeled “probability density”. The related curve quickly reaches a relative maximum height, a second relative maximum height, a significantly higher absolute maximum, and then declines more gradually than illustrated in the previous 2 graphs. The label, “3 s,” appears below the graph."
+            },
             "src": "../../media/CNX_Chem_06_03_sorbit.jpg",
             "mimeType": "image/jpeg"
           }
@@ -404,7 +419,10 @@
           },
           "media": {
             "id": "fs-idm313200",
-            "alt": "This diagram illustrates the shapes and quantities of all s, p, d, and f orbitals. The s sublevel is composed of a single spherical orbital. The p sublevel is composed of 3 dumbbell shaped orbitals oriented along the x, y, and z axes. The five d sublevels and seven f sublevels are considerably more complex.",
+            "alt": {
+              "segmentId": "m68733:alt:fs-idm313200-alt",
+              "text": "This diagram illustrates the shapes and quantities of all s, p, d, and f orbitals. The s sublevel is composed of a single spherical orbital. The p sublevel is composed of 3 dumbbell shaped orbitals oriented along the x, y, and z axes. The five d sublevels and seven f sublevels are considerably more complex."
+            },
             "src": "../../media/CNX_Chem_06_03_Oshapes.jpg",
             "mimeType": "image/jpeg"
           }
@@ -422,7 +440,10 @@
           },
           "media": {
             "id": "fs-idm149251120",
-            "alt": "This diagram shown has an upward pointing arrow at the left which is labeled “E.” To the right of this arrow near the bottom of the image is a single line which is labeled, “1 s.” Above and just to the right is another black line that is labeled, “2 s.” Slightly up and to the right is a grouping of three black lines labeled, “2 p.” Above and to the right is a single black line labeled, “3 s.” Slightly up and to the right is a grouping of three black lines that are labeled, “3 p.” Just above and to the right is a grouping of 5 black lines labeled, “3 d.” Slightly below and to the right is a single black line which is labeled, “4 s.” Just above and to the right, at a level slightly higher than the previous black lines, is a grouping of three black lines all labeled, “4 p.”",
+            "alt": {
+              "segmentId": "m68733:alt:fs-idm149251120-alt",
+              "text": "This diagram shown has an upward pointing arrow at the left which is labeled “E.” To the right of this arrow near the bottom of the image is a single line which is labeled, “1 s.” Above and just to the right is another black line that is labeled, “2 s.” Slightly up and to the right is a grouping of three black lines labeled, “2 p.” Above and to the right is a single black line labeled, “3 s.” Slightly up and to the right is a grouping of three black lines that are labeled, “3 p.” Just above and to the right is a grouping of 5 black lines labeled, “3 d.” Slightly below and to the right is a single black line which is labeled, “4 s.” Just above and to the right, at a level slightly higher than the previous black lines, is a grouping of three black lines all labeled, “4 p.”"
+            },
             "src": "../../media/CNX_Chem_06_03_subshells.jpg",
             "mimeType": "image/jpeg"
           }
@@ -456,7 +477,10 @@
           },
           "media": {
             "id": "fs-idm7831072",
-            "alt": "This diagram has an upward pointing arrow at the left which is labeled, “B subscript 0.” To the right, two spheres are shown. The first has a gray square at the top labeled, “N,” and a second gray square at the bottom labeled, “S.” A curved arrow is pointing right across the surface of the sphere and a gray arrow points upward through the center of the sphere. This sphere is labeled, “Spin plus one-half, spin-up.” The sphere just to the right has a gray square above it labeled, “S,” and a gray square below it labeled, “N.” This sphere has a curved arrow on its surface that is directed to the left and a gray arrow through the center of the sphere that points downward. This sphere is labeled, “Spin negative one-half spin-down.”",
+            "alt": {
+              "segmentId": "m68733:alt:fs-idm7831072-alt",
+              "text": "This diagram has an upward pointing arrow at the left which is labeled, “B subscript 0.” To the right, two spheres are shown. The first has a gray square at the top labeled, “N,” and a second gray square at the bottom labeled, “S.” A curved arrow is pointing right across the surface of the sphere and a gray arrow points upward through the center of the sphere. This sphere is labeled, “Spin plus one-half, spin-up.” The sphere just to the right has a gray square above it labeled, “S,” and a gray square below it labeled, “N.” This sphere has a curved arrow on its surface that is directed to the left and a gray arrow through the center of the sphere that points downward. This sphere is labeled, “Spin negative one-half spin-down.”"
+            },
             "src": "../../media/CNX_Chem_06_03_spin.jpg",
             "mimeType": "image/jpeg"
           }
@@ -491,71 +515,16 @@
           "type": "table",
           "id": "fs-idm21167392",
           "summary": "This table has four columns and five rows. The first row is a header row, and it labels each column: “Name,” “Symbol,” “Allowed values,” and “Physical meaning.” Under the “name” column are the following phrases: “Principle quantum number,” “Angular moment or azimuthal quantum number,” “Magnetic quantum number,” and “Spin quantum number.” Under the “symbol” column are the following: “n,” “l,” “m subscript l,” and “m subscript s.” Under the “allowed values” column are the following: “1, 2, 3, 4, ….,” “0 is less than or equal to l which is less than or equal to n minus 1,” “negative l is less than or equal to m subscript l which is less than or equal to l,” and “one half, negative sign.” Under the “physical meaning” column are the following: “Shell, the general region for the value of energy for an electron on the orbital,” “Subshell, the shape of the orbital,” “Orientation of the orbital,” “Direction of the intrinsic quantum ‘spinning’ of the electron.”",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68733:entry:auto-68",
+                  "segmentId": "m68733:entry:auto-76",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c4",
                     "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68733:entry:auto-69",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-70",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-71",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-72",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68733:entry:auto-73",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-74",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-75",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-76",
-                  "attributes": {
-                    "align": "left"
                   }
                 }
               ]
@@ -638,6 +607,62 @@
                 },
                 {
                   "segmentId": "m68733:entry:auto-88",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-89",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-90",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-91",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-92",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-93",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-94",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-95",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-96",
                   "attributes": {
                     "align": "left"
                   }
@@ -850,125 +875,12 @@
           "id": "fs-idm179835952",
           "class": "unnumbered",
           "summary": "This table has five columns and five rows. The first row is a header row, and it labels each column: “orbital,” “n,” “l,” “m subscript l degeneracy,” and “number radial nodes.” Under the “orbital” column are: “4 f,” two blank cells, and “5 d.” Under the “n” column is a blank cell, 4, 7, and another blank cell. Under the “l” column is a blank cell, 1, and two more blank cells. Under the “m subscript l degeneracy” column are two blank cells, 7, and then one more blank cell. Under the “number radial nodes” column are two blank cells, 3, and then one more blank cell.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68733:entry:auto-122",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-123",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-124",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-125",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-126",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68733:entry:auto-127",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-128",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-129",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68733:entry:auto-130",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
                   "attributes": {
                     "align": "left"
                   }
@@ -984,13 +896,127 @@
                   "attributes": {
                     "align": "left"
                   }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-133",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-134",
+                  "attributes": {
+                    "align": "left"
+                  }
                 }
               ]
             },
             {
               "cells": [
                 {
-                  "segmentId": "m68733:entry:auto-133",
+                  "segmentId": "m68733:entry:auto-135",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-136",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-137",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-138",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-139",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-140",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-141",
                   "attributes": {
                     "align": "left"
                   }
@@ -1028,61 +1054,10 @@
           "id": "fs-idm91407168",
           "class": "unnumbered",
           "summary": "This table has five columns and five rows. The first row is a header row, and it labels each column: “orbital,” “n,” “l,” “m subscript l degeneracy,” and “number radial nodes.” Under the “orbital” column are: “4 f,” “4 p,” “7 f,” and “5 d.” Under the “n” column are: 4, 4, 7, and 5. Under the “l” column are: 3, 1, 3, and 2. Under the “m subscript l degeneracy” column are: 7, 3, 7, and 5. Under the “number radial nodes” column are: 0, 2, 3, and 2.",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68733:entry:auto-134",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-135",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-136",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-137",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-138",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68733:entry:auto-139",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-140",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-141",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68733:entry:auto-142",
                   "attributes": {
@@ -1094,11 +1069,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68733:entry:auto-144",
                   "attributes": {
@@ -1116,7 +1087,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68733:entry:auto-147",
                   "attributes": {
@@ -1128,11 +1103,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68733:entry:auto-149",
                   "attributes": {
@@ -1150,7 +1121,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68733:entry:auto-152",
                   "attributes": {
@@ -1162,11 +1137,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68733:entry:auto-154",
                   "attributes": {
@@ -1184,7 +1155,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68733:entry:auto-157",
                   "attributes": {
@@ -1193,6 +1168,58 @@
                 },
                 {
                   "segmentId": "m68733:entry:auto-158",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-159",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-160",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-161",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-162",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-163",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-164",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-165",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-166",
                   "attributes": {
                     "align": "left"
                   }
@@ -1430,7 +1457,16 @@
             ]
           },
           "solution": {
-            "content": []
+            "content": [
+              {
+                "type": "media",
+                "id": "fs-idm73762336",
+                "alt": {
+                  "segmentId": "m68733:alt:fs-idm73762336-alt",
+                  "text": "This figure contains two diagrams. The first is of a 2 p subscript y orbital. The second is of a d subscript x squared minus y squared orbital. The first diagram has two spherical shapes joined at the origin when oriented along the y axis on an x y and z coordinate plane. The second diagram shows four ellipsoid lobes with ends centered around the origin. Two of these ellipsoid lobes are oriented along the x axis and two are oriented along the y axis on the x y and z coordinate plane."
+                }
+              }
+            ]
           }
         },
         {
@@ -1456,6 +1492,14 @@
                 "type": "para",
                 "id": "fs-idm139601840",
                 "segmentId": "m68733:problem:fs-idm139601840"
+              },
+              {
+                "type": "media",
+                "id": "fs-idm55642896",
+                "alt": {
+                  "segmentId": "m68733:alt:fs-idm55642896-alt",
+                  "text": "This figure contains three diagrams. In x, a circle is drawn with a dot at the center. In y, two nearly ellipsoid shapes are oriented horizontally with a dot between them. In z, four shapes like those in y are oriented in an x shape with a dot at the center."
+                }
               },
               {
                 "type": "para",
@@ -1590,77 +1634,10 @@
           "id": "fs-idm2123072",
           "class": "unnumbered",
           "summary": "This table has four columns and seven rows. The first row is a header row, and it labels each column: “n,” “l,” “m subscript l,” and “s.” Under the “n” column are the following numbers: 4, 4, 4, 4, 4, and 4. Under the “l” column are the following numbers: 0, 0, 1, 1, 1, and 1. Under the “m subscript l” column are the following numbers: 0, 0, negative 1, 0, positive 1, and negative 1. Under the “s” column are the following numbers: positive one half, negative one half, positive one half, positive one half, positive one half, and negative one half.",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68733:entry:auto-202",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-203",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-204",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-205",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68733:entry:auto-206",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-207",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-208",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-209",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68733:entry:auto-210",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68733:entry:auto-211",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68733:entry:auto-212",
                   "attributes": {
@@ -1672,11 +1649,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68733:entry:auto-214",
                   "attributes": {
@@ -1688,7 +1661,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68733:entry:auto-216",
                   "attributes": {
@@ -1700,11 +1677,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68733:entry:auto-218",
                   "attributes": {
@@ -1716,7 +1689,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68733:entry:auto-220",
                   "attributes": {
@@ -1728,11 +1705,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68733:entry:auto-222",
                   "attributes": {
@@ -1744,7 +1717,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68733:entry:auto-224",
                   "attributes": {
@@ -1756,11 +1733,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68733:entry:auto-226",
                   "attributes": {
@@ -1772,7 +1745,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68733:entry:auto-228",
                   "attributes": {
@@ -1781,6 +1758,74 @@
                 },
                 {
                   "segmentId": "m68733:entry:auto-229",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-230",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-231",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-232",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-233",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-234",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-235",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68733:entry:auto-236",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-237",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-238",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68733:entry:auto-239",
                   "attributes": {
                     "align": "left"
                   }
@@ -1898,5 +1943,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 3
 }

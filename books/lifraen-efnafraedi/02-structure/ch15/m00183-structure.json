@@ -1,0 +1,185 @@
+{
+  "moduleId": "m00183",
+  "title": {
+    "segmentId": "m00183:title:auto-1",
+    "text": "Problems"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "70992970-73b8-4d1f-afcf-8ed31900ade0"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00183:para:para-00001"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00183:item:list-00001-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00183:item:list-00001-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m00183:item:list-00001-item-3"
+        },
+        {
+          "id": null,
+          "segmentId": "m00183:item:list-00001-item-4"
+        },
+        {
+          "id": null,
+          "segmentId": "m00183:item:list-00001-item-5"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00183:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00183:para:para-00003"
+    },
+    {
+      "type": "list",
+      "id": "list-00002",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00183:item:list-00002-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00183:item:list-00002-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m00183:item:list-00002-item-3"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00183:alt:fig-00001-alt",
+          "text": "The structure of cyclobutadiene is a four-membered carbon ring with  two double bonds and four pi electrons. To the right, the electrostatic potential map of cyclobutadiene shows its ball-and-stick model inside."
+        },
+        "src": "../../media/OChem_15_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00183:alt:fig-00002-alt",
+          "text": "At minus 78 degrees Celsius, the Diels-Alder reaction of two cyclobutadiene molecules generates a cyclobutane ring fused to two cyclobutene rings."
+        },
+        "src": "../../media/OChem_15_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00183:alt:fig-00003-alt",
+          "text": "Benzene has three double bonds and six pi electrons."
+        },
+        "src": "../../media/OChem_15_03_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00183:alt:fig-00004-alt",
+          "text": "Cyclooctatetraene has four double bonds and eight pi electrons. To the right, electrostatic potential map of cyclooctatetraene has its ball-and-stick model inside."
+        },
+        "src": "../../media/OChem_15_03_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00183:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00183:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00183:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00183:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00183:alt:fig-00005-alt",
+          "text": "Six p atomic orbitals each with an unpaired electron become three bonding molecular orbitals, each having two electrons, and three antibonding molecular orbitals which are empty."
+        },
+        "src": "../../media/OChem_15_03_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00183:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

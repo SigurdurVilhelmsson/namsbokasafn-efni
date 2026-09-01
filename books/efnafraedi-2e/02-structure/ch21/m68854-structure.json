@@ -38,7 +38,10 @@
       },
       "media": {
         "id": "fs-idp2414480",
-        "alt": "A diagram shows two spheres composed of many smaller white and green spheres connected by a right-facing arrow with another, down-facing arrow coming off of it. The left sphere, labeled “Parent nucleus uranium dash 238” has two white and two green spheres that are near one another and are outlined in red. These two green and two white spheres are shown near the tip of the down-facing arrow and labeled “alpha particle.” The right sphere, labeled “Daughter nucleus radon dash 234,” looks the same as the left, but has a space for four smaller spheres outlined with a red dotted line.",
+        "alt": {
+          "segmentId": "m68854:alt:fs-idp2414480-alt",
+          "text": "A diagram shows two spheres composed of many smaller white and green spheres connected by a right-facing arrow with another, down-facing arrow coming off of it. The left sphere, labeled “Parent nucleus uranium dash 238” has two white and two green spheres that are near one another and are outlined in red. These two green and two white spheres are shown near the tip of the down-facing arrow and labeled “alpha particle.” The right sphere, labeled “Daughter nucleus radon dash 234,” looks the same as the left, but has a space for four smaller spheres outlined with a red dotted line."
+        },
         "src": "../../media/CNX_Chem_21_03_Reaction1.jpg",
         "mimeType": "image/jpeg"
       }
@@ -79,7 +82,10 @@
           },
           "media": {
             "id": "fs-idp137790304",
-            "alt": "A diagram is shown. A gray box on the left side of the diagram labeled “Lead block” has a chamber hollowed out in the center in which a sample labeled “Radioactive substance” is placed. A blue beam is coming from the sample, out of the block, and passing through two horizontally placed plates that are labeled “Electrically charged plates.” The top plate is labeled with a positive sign while the bottom plate is labeled with a negative sign. The beam is shown to break into three beams as it passes in between the plates; in order from top to bottom, they are red, labeled “beta rays,” purple labeled “gamma rays” and green labeled “alpha rays.” The beams are shown to hit a vertical plate labeled “Photographic plate” on the far right side of the diagram.",
+            "alt": {
+              "segmentId": "m68854:alt:fs-idp137790304-alt",
+              "text": "A diagram is shown. A gray box on the left side of the diagram labeled “Lead block” has a chamber hollowed out in the center in which a sample labeled “Radioactive substance” is placed. A blue beam is coming from the sample, out of the block, and passing through two horizontally placed plates that are labeled “Electrically charged plates.” The top plate is labeled with a positive sign while the bottom plate is labeled with a negative sign. The beam is shown to break into three beams as it passes in between the plates; in order from top to bottom, they are red, labeled “beta rays,” purple labeled “gamma rays” and green labeled “alpha rays.” The beams are shown to hit a vertical plate labeled “Photographic plate” on the far right side of the diagram."
+            },
             "src": "../../media/CNX_Chem_21_03_Radiation.jpg",
             "mimeType": "image/jpeg"
           }
@@ -172,7 +178,10 @@
           },
           "media": {
             "id": "fs-idp47033488",
-            "alt": "This table has four columns and six rows. The first row is a header row and it labels each column: “Type,” “Nuclear equation,” “Representation,” and “Change in mass / atomic numbers.” Under the “Type” column are the following: “Alpha decay,” “Beta decay,” “Gamma decay,” “Positron emission,” and “Electron capture.” Under the “Nuclear equation” column are several equations. Each begins with superscript A stacked over subscript Z X. There is a large gap of space and then the following equations: “superscript 4 stacked over subscript 2 He plus superscript A minus 4 stacked over subscript Z minus 2 Y,” “superscript 0 stacked over subscript negative 1 e plus superscript A stacked over subscript Z plus 1 Y,” “superscript 0 stacked over subscript 0 lowercase gamma plus superscript A stacked over subscript Z Y,” “superscript 0 stacked over subscript positive 1 e plus superscript A stacked over subscript Y minus 1 Y,” and “superscript 0 stacked over subscript negative 1 e plus superscript A stacked over subscript Y minus 1 Y.” Under the “Representation” column are the five diagrams. The first shows a cluster of green and white spheres. A section of the cluster containing two white and two green spheres is outlined. There is a right-facing arrow pointing to a similar cluster as previously described, but the outlined section is missing. From the arrow another arrow branches off and points downward. The small cluster to two white spheres and two green spheres appear at the end of the arrow. The next diagram shows the same cluster of white and green spheres. One white sphere is outlined. There is a right-facing arrow to a similar cluster, but the white sphere is missing. Another arrow branches off the main arrow and a red sphere with a negative sign appears at the end. The next diagram shows the same cluster of white and green spheres. The whole sphere is outlined and labeled, “excited nuclear state.” There is a right-facing arrow that points to the same cluster. No spheres are missing. Off the main arrow is another arrow which points to a purple squiggle arrow which in turn points to a lowercase gamma. The next diagram shows the same cluster of white and green spheres. One green sphere is outlined. There is a right-facing arrow to a similar cluster, but the green sphere is missing. Another arrow branches off the main arrow and a red sphere with a positive sign appears at the end. The next diagram shows the same cluster of white and green spheres. One green sphere is outlined. There is a right-facing arrow to a similar cluster, but the green sphere is missing. Two other arrows branch off the main arrow. The first shows a gold sphere with a negative sign joining with the right-facing arrow. The secon points to a blue squiggle arrow labeled, “X-ray.” Under the “Change in mass / atomic numbers” column are the following: “A: decrease by 4, Z: decrease by 2,” “A: unchanged, Z: increased by 1,” “A: unchanged, Z: unchanged,” “A: unchanged, Z: unchanged,” “A: unchanged, Z: decrease by 1,” and “A: unchanged, Z: decrease by 1.”",
+            "alt": {
+              "segmentId": "m68854:alt:fs-idp47033488-alt",
+              "text": "This table has four columns and six rows. The first row is a header row and it labels each column: “Type,” “Nuclear equation,” “Representation,” and “Change in mass / atomic numbers.” Under the “Type” column are the following: “Alpha decay,” “Beta decay,” “Gamma decay,” “Positron emission,” and “Electron capture.” Under the “Nuclear equation” column are several equations. Each begins with superscript A stacked over subscript Z X. There is a large gap of space and then the following equations: “superscript 4 stacked over subscript 2 He plus superscript A minus 4 stacked over subscript Z minus 2 Y,” “superscript 0 stacked over subscript negative 1 e plus superscript A stacked over subscript Z plus 1 Y,” “superscript 0 stacked over subscript 0 lowercase gamma plus superscript A stacked over subscript Z Y,” “superscript 0 stacked over subscript positive 1 e plus superscript A stacked over subscript Y minus 1 Y,” and “superscript 0 stacked over subscript negative 1 e plus superscript A stacked over subscript Y minus 1 Y.” Under the “Representation” column are the five diagrams. The first shows a cluster of green and white spheres. A section of the cluster containing two white and two green spheres is outlined. There is a right-facing arrow pointing to a similar cluster as previously described, but the outlined section is missing. From the arrow another arrow branches off and points downward. The small cluster to two white spheres and two green spheres appear at the end of the arrow. The next diagram shows the same cluster of white and green spheres. One white sphere is outlined. There is a right-facing arrow to a similar cluster, but the white sphere is missing. Another arrow branches off the main arrow and a red sphere with a negative sign appears at the end. The next diagram shows the same cluster of white and green spheres. The whole sphere is outlined and labeled, “excited nuclear state.” There is a right-facing arrow that points to the same cluster. No spheres are missing. Off the main arrow is another arrow which points to a purple squiggle arrow which in turn points to a lowercase gamma. The next diagram shows the same cluster of white and green spheres. One green sphere is outlined. There is a right-facing arrow to a similar cluster, but the green sphere is missing. Another arrow branches off the main arrow and a red sphere with a positive sign appears at the end. The next diagram shows the same cluster of white and green spheres. One green sphere is outlined. There is a right-facing arrow to a similar cluster, but the green sphere is missing. Two other arrows branch off the main arrow. The first shows a gold sphere with a negative sign joining with the right-facing arrow. The secon points to a blue squiggle arrow labeled, “X-ray.” Under the “Change in mass / atomic numbers” column are the following: “A: decrease by 4, Z: decrease by 2,” “A: unchanged, Z: increased by 1,” “A: unchanged, Z: unchanged,” “A: unchanged, Z: unchanged,” “A: unchanged, Z: decrease by 1,” and “A: unchanged, Z: decrease by 1.”"
+            },
             "src": "../../media/CNX_Chem_21_03_RadioDecay-e619.jpg",
             "mimeType": "image/jpeg"
           }
@@ -207,7 +216,10 @@
           },
           "media": {
             "id": "fs-idp142995312",
-            "alt": "Three pictures are shown and labeled “a,” “b” and “c.” Picture a shows a machine with a round opening connected to an examination table. Picture b is a medical scan of the top of a person’s head and shows large patches of yellow and red and smaller patches of blue, green and purple highlighting. Picture c also shows a medical scan of the top of a person’s head, but this image is mostly colored in blue and purple with very small patches of red and yellow.",
+            "alt": {
+              "segmentId": "m68854:alt:fs-idp142995312-alt",
+              "text": "Three pictures are shown and labeled “a,” “b” and “c.” Picture a shows a machine with a round opening connected to an examination table. Picture b is a medical scan of the top of a person’s head and shows large patches of yellow and red and smaller patches of blue, green and purple highlighting. Picture c also shows a medical scan of the top of a person’s head, but this image is mostly colored in blue and purple with very small patches of red and yellow."
+            },
             "src": "../../media/CNX_Chem_21_03_PETScan.jpg",
             "mimeType": "image/jpeg"
           }
@@ -236,7 +248,10 @@
           },
           "media": {
             "id": "fs-idm36645216",
-            "alt": "A graph is shown where the x-axis is labeled “Number of neutrons, open parenthesis, n, close parenthesis” and has values of 122 to 148 in increments of 2. The y-axis is labeled “Atomic number” and has values of 80 to 92 in increments of 1. Two types of arrows are used in this graph to connect the points. Green arrows are labeled as “alpha decay” while red arrows are labeled “beta decay.” Beginning at the point “92, 146” that is labeled “superscript 238, U,” a green arrow connects this point to the second point “90, 144” which is labeled “superscript 234, T h.” A red arrow connect this to the third point “91, 143” which is labeled “superscript 234, P a” which is connected to the fourth point “92, 142” by a red arrow and which is labeled “superscript 234, U.” A green arrow leads to the next point, “90, 140” which is labeled “superscript 230, T h” and is connected by a green arrow to the sixth point, “88, 138” which is labeled “superscript 226, R a” that is in turn connected by a green arrow to the seventh point “86, 136” which is labeled “superscript 222, Ra.” The eighth point, at “84, 134” is labeled “superscript 218, P o” and has green arrows leading to it and away from it to the ninth point “82, 132” which is labeled “superscript 214, Pb” which is connected by a red arrow to the tenth point, “83, 131” which is labeled “superscript 214, B i.” A red arrow leads to the eleventh point “84, 130” which is labeled “superscript 214, P o” and a green arrow leads to the twelvth point “82, 128” which is labeled “superscript 210, P b.” A red arrow leads to the thirteenth point “83, 127” which is labeled “superscript 210, B i” and a red arrow leads to the fourteenth point “84, 126” which is labeled “superscript 210, P o.” The final point is labeled “82, 124” and “superscript 206, P b.”",
+            "alt": {
+              "segmentId": "m68854:alt:fs-idm36645216-alt",
+              "text": "A graph is shown where the x-axis is labeled “Number of neutrons, open parenthesis, n, close parenthesis” and has values of 122 to 148 in increments of 2. The y-axis is labeled “Atomic number” and has values of 80 to 92 in increments of 1. Two types of arrows are used in this graph to connect the points. Green arrows are labeled as “alpha decay” while red arrows are labeled “beta decay.” Beginning at the point “92, 146” that is labeled “superscript 238, U,” a green arrow connects this point to the second point “90, 144” which is labeled “superscript 234, T h.” A red arrow connect this to the third point “91, 143” which is labeled “superscript 234, P a” which is connected to the fourth point “92, 142” by a red arrow and which is labeled “superscript 234, U.” A green arrow leads to the next point, “90, 140” which is labeled “superscript 230, T h” and is connected by a green arrow to the sixth point, “88, 138” which is labeled “superscript 226, R a” that is in turn connected by a green arrow to the seventh point “86, 136” which is labeled “superscript 222, Ra.” The eighth point, at “84, 134” is labeled “superscript 218, P o” and has green arrows leading to it and away from it to the ninth point “82, 132” which is labeled “superscript 214, Pb” which is connected by a red arrow to the tenth point, “83, 131” which is labeled “superscript 214, B i.” A red arrow leads to the eleventh point “84, 130” which is labeled “superscript 214, P o” and a green arrow leads to the twelvth point “82, 128” which is labeled “superscript 210, P b.” A red arrow leads to the thirteenth point “83, 127” which is labeled “superscript 210, B i” and a red arrow leads to the fourteenth point “84, 126” which is labeled “superscript 210, P o.” The final point is labeled “82, 124” and “superscript 206, P b.”"
+            },
             "src": "../../media/CNX_Chem_21_03_DecayS.jpg",
             "mimeType": "image/jpeg"
           }
@@ -270,7 +285,10 @@
           },
           "media": {
             "id": "fs-idm8344304",
-            "alt": "A graph, titled “C o dash 60 Decay,” is shown where the x-axis is labeled “C o dash 60 remaining, open parenthesis, percent sign, close parenthesis” and has values of 0 to 100 in increments of 25. The y-axis is labeled “Number of half dash lives” and has values of 0 to 5 in increments of 1. The first point, at “0, 100” has a circle filled with tiny dots drawn near it labeled “10 g.” The second point, at “1, 50” has a smaller circle filled with tiny dots drawn near it labeled “5 g.” The third point, at “2, 25” has a small circle filled with tiny dots drawn near it labeled “2.5 g.” The fourth point, at “3, 12.5” has a very small circle filled with tiny dots drawn near it labeled “1.25 g.” The last point, at “4, 6.35” has a tiny circle filled with tiny dots drawn near it labeled.”625 g.”",
+            "alt": {
+              "segmentId": "m68854:alt:fs-idm8344304-alt",
+              "text": "A graph, titled “C o dash 60 Decay,” is shown where the x-axis is labeled “C o dash 60 remaining, open parenthesis, percent sign, close parenthesis” and has values of 0 to 100 in increments of 25. The y-axis is labeled “Number of half dash lives” and has values of 0 to 5 in increments of 1. The first point, at “0, 100” has a circle filled with tiny dots drawn near it labeled “10 g.” The second point, at “1, 50” has a smaller circle filled with tiny dots drawn near it labeled “5 g.” The third point, at “2, 25” has a small circle filled with tiny dots drawn near it labeled “2.5 g.” The fourth point, at “3, 12.5” has a very small circle filled with tiny dots drawn near it labeled “1.25 g.” The last point, at “4, 6.35” has a tiny circle filled with tiny dots drawn near it labeled.”625 g.”"
+            },
             "src": "../../media/CNX_Chem_21_03_HalfLife.jpg",
             "mimeType": "image/jpeg"
           }
@@ -415,11 +433,12 @@
           "id": "fs-idp14399952",
           "class": "top-titled",
           "summary": "This table has four columns and six rows. The first row is a header row, and it labels each column: “Type,” “Decay Mode,” “Half-life,” and “Uses.” Under the “Type” column are the following: “F - 18,” “C o - 60,” “T c - 99 m,” “I – 131,” and “T l - 201.” Under the “Decay Mode” column are the following: “lowercase beta superscript positive sign decay,” “lowercase beta decay, lowercase gamma decay,” “lowercase gamma decay,” “lowercase beta decay,” and “electron capture.” Under the “Half-life” column are the following: 110. Minutes, 5.27 years, 8.01 hours, 8.02 days, and 73 hours. Under the “Uses” column are the following: PET scans; concern treatment; scans of brain, lung heart bone, etc.; thyroid scans and treatment; heart and arteries scans and cardiac stress tests.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68854:entry:auto-59",
+                  "segmentId": "m68854:entry:auto-65",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c4",
@@ -431,46 +450,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68854:entry:auto-60",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68854:entry:auto-61",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68854:entry:auto-62",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68854:entry:auto-63",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68854:entry:auto-64",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68854:entry:auto-65",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68854:entry:auto-66",
                   "attributes": {
                     "align": "left"
@@ -481,11 +460,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68854:entry:auto-68",
                   "attributes": {
@@ -497,7 +472,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68854:entry:auto-70",
                   "attributes": {
@@ -509,11 +488,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68854:entry:auto-72",
                   "attributes": {
@@ -525,7 +500,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68854:entry:auto-74",
                   "attributes": {
@@ -537,11 +516,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68854:entry:auto-76",
                   "attributes": {
@@ -553,7 +528,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68854:entry:auto-78",
                   "attributes": {
@@ -565,11 +544,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68854:entry:auto-80",
                   "attributes": {
@@ -581,7 +556,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68854:entry:auto-82",
                   "attributes": {
@@ -590,6 +569,46 @@
                 },
                 {
                   "segmentId": "m68854:entry:auto-83",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-84",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-85",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68854:entry:auto-86",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-87",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-88",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68854:entry:auto-89",
                   "attributes": {
                     "align": "left"
                   }
@@ -661,7 +680,10 @@
               },
               "media": {
                 "id": "fs-idp78510352",
-                "alt": "A diagram shows a cow standing on the ground next to a tree. In the upper left of the diagram, where the sky is represented, a single white sphere is shown and is connected by a downward-facing arrow to a larger sphere composed of green and white spheres that is labeled “superscript 14, subscript 7, N.” This structure is connected to three other structures by a right-facing arrow. Each of the three it points to are composed of green and white spheres and all have arrows pointing from them to the ground. The first of these is labeled “Trace, superscript 14, subscript 6, C,” the second is labeled “1 percent, superscript 13, subscript 6, C” and the last is labeled “99 percent, superscript 12, subscript 6, C.” Two downward-facing arrows that merge into one arrow lead from the cow and tree to the ground and are labeled “organism dies” and “superscript 14, subscript 6, C, decay begins.” A right-facing arrow labeled on top as “Decay” and on bottom as “Time” leads from this to a label of “superscript 14, subscript 6, C, backslash, superscript 12, subscript 6, C, ratio decreased.” Near the top of the tree is a downward facing arrow with the label “superscript 14, subscript 6, C, backslash, superscript 12, subscript 6, C, ratio is constant in living organisms” that leads to the last of the lower statements.",
+                "alt": {
+                  "segmentId": "m68854:alt:fs-idp78510352-alt",
+                  "text": "A diagram shows a cow standing on the ground next to a tree. In the upper left of the diagram, where the sky is represented, a single white sphere is shown and is connected by a downward-facing arrow to a larger sphere composed of green and white spheres that is labeled “superscript 14, subscript 7, N.” This structure is connected to three other structures by a right-facing arrow. Each of the three it points to are composed of green and white spheres and all have arrows pointing from them to the ground. The first of these is labeled “Trace, superscript 14, subscript 6, C,” the second is labeled “1 percent, superscript 13, subscript 6, C” and the last is labeled “99 percent, superscript 12, subscript 6, C.” Two downward-facing arrows that merge into one arrow lead from the cow and tree to the ground and are labeled “organism dies” and “superscript 14, subscript 6, C, decay begins.” A right-facing arrow labeled on top as “Decay” and on bottom as “Time” leads from this to a label of “superscript 14, subscript 6, C, backslash, superscript 12, subscript 6, C, ratio decreased.” Near the top of the tree is a downward facing arrow with the label “superscript 14, subscript 6, C, backslash, superscript 12, subscript 6, C, ratio is constant in living organisms” that leads to the last of the lower statements."
+                },
                 "src": "../../media/CNX_Chem_21_03_CarbonDate.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -778,7 +800,10 @@
               },
               "media": {
                 "id": "fs-idm64119536",
-                "alt": "A photograph of six pages of ragged-edged paper covered in writing are shown.",
+                "alt": {
+                  "segmentId": "m68854:alt:fs-idm64119536-alt",
+                  "text": "A photograph of six pages of ragged-edged paper covered in writing are shown."
+                },
                 "src": "../../media/CNX_Chem_21_03_DSScrolls.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -955,11 +980,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68854:entry:auto-131",
+                  "segmentId": "m68854:entry:auto-139",
                   "attributes": {}
                 }
               ]
@@ -967,7 +993,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68854:entry:auto-132",
+                  "segmentId": "m68854:entry:auto-140",
                   "attributes": {}
                 }
               ]

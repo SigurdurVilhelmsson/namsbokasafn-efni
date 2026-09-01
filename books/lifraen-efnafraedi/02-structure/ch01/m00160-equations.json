@@ -1,0 +1,6 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mn>1</m:mn><m:mi>s</m:mi><m:mo>→</m:mo><m:mn>2</m:mn><m:mi>s</m:mi><m:mo>→</m:mo><m:mn>2</m:mn><m:mi>p</m:mi><m:mo>→</m:mo><m:mn>3</m:mn><m:mi>s</m:mi><m:mo>→</m:mo><m:mn>3</m:mn><m:mi>p</m:mi><m:mo>→</m:mo><m:mn>4</m:mn><m:mi>s</m:mi><m:mo>→</m:mo><m:mn>3</m:mn><m:mi>d</m:mi></m:mrow></m:math>",
+    "latex": "{1s\\rightarrow 2s\\rightarrow 2p\\rightarrow 3s\\rightarrow 3p\\rightarrow 4s\\rightarrow 3d}"
+  }
+}

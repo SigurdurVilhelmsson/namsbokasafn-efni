@@ -1,0 +1,90 @@
+{
+  "moduleId": "m00157",
+  "title": {
+    "segmentId": "m00157:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "2fb14cfd-dcc0-481f-95aa-d130b8ef850d"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00157:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00157:alt:fig-00001-alt",
+          "text": "The ribbon model of the enzyme HMG-CoA reductase showcasing pink, green, brown, and purple ribbons coiled."
+        },
+        "src": "../../media/OSX_OrgChem_A01_00_80485-CO-01_Ribbon.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00157:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00157:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00157:alt:fig-00002-alt",
+          "text": "The wedge-dash structures of three different organic compounds."
+        },
+        "src": "../../media/OChem_01_00_001a.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00157:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00157:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00157:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00157:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00157:alt:fig-00003-alt",
+          "text": "The periodic table showcases the systematic arrangement of elements with labeled groups. Hydrogen, carbon, nitrogen, oxygen, fluorine, phosphorus, sulfur, chlorine, bromine, and iodine are shaded in different colors."
+        },
+        "src": "../../media/OChem_01_00_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00157:para:para-00006"
+    }
+  ],
+  "sectionOrder": 0
+}

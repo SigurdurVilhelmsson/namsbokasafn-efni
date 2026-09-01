@@ -1,0 +1,110 @@
+{
+  "moduleId": "m00266",
+  "title": {
+    "segmentId": "m00266:title:auto-1",
+    "text": "Soap"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e51f9c8d-da91-42f1-bec3-4c1955cf6b24"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00266:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00266:alt:fig-00001-alt",
+          "text": "A fat with an R group equal to eleven to nineteen aliphatic chains reacts with sodium hydroxide and water to produce three moles of sodium salt (soap) and glycerol."
+        },
+        "src": "../../media/OChem_27_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00266:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00266:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00266:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00266:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00266:alt:fig-00002-alt",
+          "text": "The ball-and-stick model in the electrostatic potential map of fatty acid carboxylate. The figure shows soap molecule with an ionic head and hydrocarbon tail followed by the structure of micelles."
+        },
+        "src": "../../media/OChem_27_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00266:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00266:alt:fig-00003-alt",
+          "text": "A synthetic detergent with R equals various carbon 12 chains. Benzene ring with a sulfur double bonded to two oxygens and single bonded to one oxygen negative and R group."
+        },
+        "src": "../../media/OChem_27_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00266:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

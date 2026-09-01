@@ -1,0 +1,57 @@
+{
+  "moduleId": "m00104",
+  "title": {
+    "segmentId": "m00104:title:auto-1",
+    "text": "Preparation of Alkynes: Elimination Reactions of Dihalides"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "21b5f0f8-5ed6-4135-b35b-2c9433556b2b"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00104:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00104:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00104:alt:fig-00001-alt",
+          "text": "Trans-1,2-diphenylethylene reacts with bromine in chloromethane to give 1,2-dibromo-1,2-diphenylethane. It reacts with KOH in ethanol to give diphenylacetylene (85%), water, and KBr."
+        },
+        "src": "../../media/OChem_09_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00104:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00104:alt:fig-00002-alt",
+          "text": "The figure shows (Z)-3-chloro-2-buten-1-ol reacts with two moles of sodium amide and hydronium ion to form 2-butyn-1-ol."
+        },
+        "src": "../../media/OChem_09_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 2
+}

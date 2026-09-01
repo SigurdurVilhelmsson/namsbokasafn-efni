@@ -34,7 +34,10 @@
       },
       "media": {
         "id": "fs-idp77290704",
-        "alt": "In this figure, three pairs of gas filled spheres or vessels are shown connected with a stopcock between them. In a, the figure is labeled, “Stopcock closed.” Above, the left sphere is labeled, “H subscript 2.” It contains approximately 30 small, white, evenly distributed circles. The sphere to its right is labeled, “O subscript 2.” It contains approximately 30 small red evenly distributed circles. In b, the figure is labeled, “Stopcock open.” The stopcock valve handle is now parallel to the tube connecting the two spheres. On the left, approximately 9 small, white circles and 4 small, red circles are present, with the red spheres appearing slightly closer to the stopcock. On the right side, approximately 25 small, red spheres and 21 small, white spheres are present, with the concentration of white spheres slightly greater near the stopcock. In c, the figure is labeled “Some time after Stopcock open.” In this situation, the red and white spheres appear evenly mixed and uniformly distributed throughout both spheres.",
+        "alt": {
+          "segmentId": "m68754:alt:fs-idp77290704-alt",
+          "text": "In this figure, three pairs of gas filled spheres or vessels are shown connected with a stopcock between them. In a, the figure is labeled, “Stopcock closed.” Above, the left sphere is labeled, “H subscript 2.” It contains approximately 30 small, white, evenly distributed circles. The sphere to its right is labeled, “O subscript 2.” It contains approximately 30 small red evenly distributed circles. In b, the figure is labeled, “Stopcock open.” The stopcock valve handle is now parallel to the tube connecting the two spheres. On the left, approximately 9 small, white circles and 4 small, red circles are present, with the red spheres appearing slightly closer to the stopcock. On the right side, approximately 25 small, red spheres and 21 small, white spheres are present, with the concentration of white spheres slightly greater near the stopcock. In c, the figure is labeled “Some time after Stopcock open.” In this situation, the red and white spheres appear evenly mixed and uniformly distributed throughout both spheres."
+        },
         "src": "../../media/CNX_Chem_09_04_Diffusion.jpg",
         "mimeType": "image/jpeg"
       }
@@ -67,7 +70,10 @@
       },
       "media": {
         "id": "fs-idp10109888",
-        "alt": "This figure contains two cylindrical containers which are oriented horizontally. The first is labeled “Diffusion.” In this container, approximately 25 purple and 25 green circles are shown, evenly distributed throughout the container. “Trails” behind some of the circles indicate motion. In the second container, which is labeled “Effusion,” a boundary layer is evident across the center of the cylindrical container, dividing the cylinder into two halves. A black arrow is drawn pointing through this boundary from left to right. To the left of the boundary, approximately 16 green circles and 20 purple circles are shown again with motion indicated by “trails” behind some of the circles. To the right of the boundary, only 4 purple and 16 green circles are shown.",
+        "alt": {
+          "segmentId": "m68754:alt:fs-idp10109888-alt",
+          "text": "This figure contains two cylindrical containers which are oriented horizontally. The first is labeled “Diffusion.” In this container, approximately 25 purple and 25 green circles are shown, evenly distributed throughout the container. “Trails” behind some of the circles indicate motion. In the second container, which is labeled “Effusion,” a boundary layer is evident across the center of the cylindrical container, dividing the cylinder into two halves. A black arrow is drawn pointing through this boundary from left to right. To the left of the boundary, approximately 16 green circles and 20 purple circles are shown again with motion indicated by “trails” behind some of the circles. To the right of the boundary, only 4 purple and 16 green circles are shown."
+        },
         "src": "../../media/CNX_Chem_09_04_DiffEff.jpg",
         "mimeType": "image/jpeg"
       }
@@ -101,7 +107,10 @@
       },
       "media": {
         "id": "fs-idp1374224",
-        "alt": "This figure shows two photos. The first photo shows an inflated orange balloon and an inflated blue balloon. Both balloons are about the same size. The second photo shows the same two balloons, but the orange one is now smaller than the blue one.",
+        "alt": {
+          "segmentId": "m68754:alt:fs-idp1374224-alt",
+          "text": "This figure shows two photos. The first photo shows an inflated orange balloon and an inflated blue balloon. Both balloons are about the same size. The second photo shows the same two balloons, but the orange one is now smaller than the blue one."
+        },
         "src": "../../media/CNX_Chem_09_04_Effusion2.jpg",
         "mimeType": "image/jpeg"
       }
@@ -389,7 +398,10 @@
       },
       "media": {
         "id": "fs-idp101769760",
-        "alt": "This figure shows a large cylindrical container oriented horizontally. A narrow tube or pipe which is labeled “porous barrier” runs horizontally through the center of the tube and extends a short distance out from the left and right ends of the cylinder. At the far left, an arrow points right into the tube. This arrow is labele, “Uranium hexafluoride ( U F subscript 6 ).” A line segment connects the label, “High pressure feed tube,” to the tube where it enters the cylinder. In the short region of tube outside the cylinder, 5 small, purple circles and 4 small, green circles are present. Inside the cylinder, an arrow points right through the tube which contains many evenly distributed, purple circles and a handful of green circles which decrease in quantity moving left to right through the cylinder. Curved arrows extend from the inner area of the tube into the outer region of the cylinder. Three of these arrows point into the area above the tube and three point into the area below. Two line segments extend from the label, “Higher speed superscript 235 U F subscript 6 diffuses through barrier faster than superscript 238 U F subscript 6,” to two green circles in the space above the tube. In the short section of tubing just outside the cylinder, 8 small, purple circles are present. An arrow labeled, “Depleted superscript 238 U F subscript 6,” points right extending from the end of this tube. The larger space outside the tube contains approximately 100 evenly distributed small green circles and only 5 purple circles. Eight of the purple circles appear at the left end of the cylinder. A tube exits the lower right end of the cylinder. It has 5 green circles followed by a right pointing arrow and the label, “Enriched superscript 235 U F subscript 6.”",
+        "alt": {
+          "segmentId": "m68754:alt:fs-idp101769760-alt",
+          "text": "This figure shows a large cylindrical container oriented horizontally. A narrow tube or pipe which is labeled “porous barrier” runs horizontally through the center of the tube and extends a short distance out from the left and right ends of the cylinder. At the far left, an arrow points right into the tube. This arrow is labele, “Uranium hexafluoride ( U F subscript 6 ).” A line segment connects the label, “High pressure feed tube,” to the tube where it enters the cylinder. In the short region of tube outside the cylinder, 5 small, purple circles and 4 small, green circles are present. Inside the cylinder, an arrow points right through the tube which contains many evenly distributed, purple circles and a handful of green circles which decrease in quantity moving left to right through the cylinder. Curved arrows extend from the inner area of the tube into the outer region of the cylinder. Three of these arrows point into the area above the tube and three point into the area below. Two line segments extend from the label, “Higher speed superscript 235 U F subscript 6 diffuses through barrier faster than superscript 238 U F subscript 6,” to two green circles in the space above the tube. In the short section of tubing just outside the cylinder, 8 small, purple circles are present. An arrow labeled, “Depleted superscript 238 U F subscript 6,” points right extending from the end of this tube. The larger space outside the tube contains approximately 100 evenly distributed small green circles and only 5 purple circles. Eight of the purple circles appear at the left end of the cylinder. A tube exits the lower right end of the cylinder. It has 5 green circles followed by a right pointing arrow and the label, “Enriched superscript 235 U F subscript 6.”"
+        },
         "src": "../../media/CNX_Chem_09_04_GasDiff.jpg",
         "mimeType": "image/jpeg"
       }
@@ -424,11 +436,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68754:entry:auto-60",
+                  "segmentId": "m68754:entry:auto-64",
                   "attributes": {}
                 }
               ]
@@ -436,7 +449,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68754:entry:auto-61",
+                  "segmentId": "m68754:entry:auto-65",
                   "attributes": {}
                 }
               ]

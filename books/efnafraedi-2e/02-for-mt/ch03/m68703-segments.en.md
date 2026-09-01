@@ -19,6 +19,9 @@ Preceding sections of this chapter focused on the composition of substances: sam
 <!-- SEG:m68703:caption:CNX_Chem_03_03_espresso-caption -->
 Sugar is one of many components in the complex mixture known as coffee. The amount of sugar in a given amount of coffee is an important determinant of the beverage’s sweetness. (credit: Jane Whitney)
 
+<!-- SEG:m68703:alt:fs-idm63360640-alt -->
+A picture is shown of sugar being poured from a spoon into a cup.
+
 <!-- SEG:m68703:title:fs-idm10227280-title -->
 Solutions
 
@@ -26,13 +29,13 @@ Solutions
 Solutions have previously been defined as homogeneous mixtures, meaning that the composition of the mixture (and therefore its properties) is uniform throughout its entire volume. Solutions occur frequently in nature and have also been implemented in many forms of manmade technology. A more thorough treatment of solution properties is provided in the chapter on solutions and colloids, but provided here is an introduction to some of the basic properties of solutions.
 
 <!-- SEG:m68703:para:fs-idm635664 -->
-The relative amount of a given solution component is known as its {{term}}concentration{{/term}}. Often, though not always, a solution contains one component with a concentration that is significantly greater than that of all other components. This component is called the {{term}}solvent{{/term}} and may be viewed as the medium in which the other components are dispersed, or {{term}}dissolved{{/term}}. Solutions in which water is the solvent are, of course, very common on our planet. A solution in which water is the solvent is called an {{term}}aqueous solution{{/term}}.
+The relative amount of a given solution component is known as its [[term:concentration|term-00001]]. Often, though not always, a solution contains one component with a concentration that is significantly greater than that of all other components. This component is called the [[term:solvent|term-00002]] and may be viewed as the medium in which the other components are dispersed, or [[term:dissolved|term-00003]]. Solutions in which water is the solvent are, of course, very common on our planet. A solution in which water is the solvent is called an [[term:aqueous solution|term-00004]].
 
 <!-- SEG:m68703:para:fs-idm64279024 -->
-A {{term}}solute{{/term}} is a component of a solution that is typically present at a much lower concentration than the solvent. Solute concentrations are often described with qualitative terms such as {{term}}dilute{{/term}} (of relatively low concentration) and {{term}}concentrated{{/term}} (of relatively high concentration).
+A [[term:solute|term-00005]] is a component of a solution that is typically present at a much lower concentration than the solvent. Solute concentrations are often described with qualitative terms such as [[term:dilute|term-00006]] (of relatively low concentration) and [[term:concentrated|term-00007]] (of relatively high concentration).
 
 <!-- SEG:m68703:para:fs-idm62212352 -->
-Concentrations may be quantitatively assessed using a wide variety of measurement units, each convenient for particular applications. {{term}}Molarity ([[i:M]]){{/term}} is a useful concentration unit for many applications in chemistry. Molarity is defined as the number of moles of solute in exactly 1 liter (1 L) of the solution:
+Concentrations may be quantitatively assessed using a wide variety of measurement units, each convenient for particular applications. [[term:Molarity ([[i:M]])|term-00008]] is a useful concentration unit for many applications in chemistry. Molarity is defined as the number of moles of solute in exactly 1 liter (1 L) of the solution:
 
 <!-- SEG:m68703:example-title:fs-idm98982768-title -->
 Calculating Molar Concentrations
@@ -118,6 +121,9 @@ Answer:
 <!-- SEG:m68703:caption:CNX_Chem_03_04_vinegar-caption -->
 Distilled white vinegar is a solution of acetic acid in water.
 
+<!-- SEG:m68703:alt:fs-idm69003664-alt -->
+A label on a container is shown. The label has a picture of a salad with the words “Distilled White Vinegar,” and, “Reduced with water to 5% acidity,” written above it.
+
 <!-- SEG:m68703:example-title:fs-idm104693104-title -->
 Determining the Mass of Solute in a Given Volume of Solution
 
@@ -191,10 +197,13 @@ Answer:
 Dilution of Solutions
 
 <!-- SEG:m68703:para:fs-idm134700400 -->
-{{term}}Dilution{{/term}} is the process whereby the concentration of a solution is lessened by the addition of solvent. For example, a glass of iced tea becomes increasingly diluted as the ice melts. The water from the melting ice increases the volume of the solvent (water) and the overall volume of the solution (iced tea), thereby reducing the relative concentrations of the solutes that give the beverage its taste ([[xref:CNX_Chem_03_04_dilution]]).
+[[term:Dilution|term-00009]] is the process whereby the concentration of a solution is lessened by the addition of solvent. For example, a glass of iced tea becomes increasingly diluted as the ice melts. The water from the melting ice increases the volume of the solvent (water) and the overall volume of the solution (iced tea), thereby reducing the relative concentrations of the solutes that give the beverage its taste ([[xref:CNX_Chem_03_04_dilution]]).
 
 <!-- SEG:m68703:caption:CNX_Chem_03_04_dilution-caption -->
 Both solutions contain the same mass of copper nitrate. The solution on the right is more dilute because the copper nitrate is dissolved in more solvent. (credit: Mark Ott)
+
+<!-- SEG:m68703:alt:fs-idp133169776-alt -->
+This figure shows two graduated cylinders side-by-side. The first has about half as much blue liquid as the second. The blue liquid is darker in the first cylinder than in the second.
 
 <!-- SEG:m68703:para:fs-idm77995840 -->
 Dilution is also a common means of preparing solutions of a desired concentration. By adding solvent to a measured portion of a more concentrated [[i:stock solution]], a solution of lesser concentration may be prepared. For example, commercial pesticides are typically sold as solutions in which the active ingredients are far more concentrated than is appropriate for their application. Before they can be used on crops, the pesticides must be diluted. This is also a very common practice for the preparation of a number of common laboratory reagents.
@@ -559,10 +568,10 @@ The US Environmental Protection Agency (EPA) places limits on the quantities of 
 <!-- SEG:m68703:title:fs-idm26459312-title -->
 Key Equations
 
-<!-- SEG:m68703:entry:auto-188 -->
+<!-- SEG:m68703:entry:auto-191 -->
 [[MATH:15]]
 
-<!-- SEG:m68703:entry:auto-189 -->
+<!-- SEG:m68703:entry:auto-192 -->
 [[i:C]][[sub:1]][[i:V]][[sub:1]] = [[i:C]][[sub:2]][[i:V]][[sub:2]]
 
 <!-- SEG:m68703:glossary-term:fs-idm26450752-term -->

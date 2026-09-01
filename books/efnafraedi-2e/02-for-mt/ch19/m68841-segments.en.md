@@ -13,6 +13,9 @@ Spectroscopic and Magnetic Properties of Coordination Compounds
 <!-- SEG:m68841:caption:CNX_Chem_19_00_CuOre-caption -->
 Transition metals often form vibrantly colored complexes. The minerals malachite (green), azurite (blue), and proustite (red) are some examples. (credit left: modification of work by James St. John; credit middle: modification of work by Stephanie Clifford; credit right: modification of work by Terry Wallace)
 
+<!-- SEG:m68841:alt:fs-idm106313312-alt -->
+This figure contains three photos. The first is of a jade green mineral chunk with a darkened regions and a matte surface. The second is of a crystalline mineral chunk composed primarily of bright royal blue shiny crystals and some lighter blue crystalline regions. The third is of long red crystals.
+
 <!-- SEG:m68841:para:fs-idm115162288 -->
 We have daily contact with many transition metals. Iron occurs everywhere—from the rings in your spiral notebook and the cutlery in your kitchen to automobiles, ships, buildings, and in the hemoglobin in your blood. Titanium is useful in the manufacture of lightweight, durable products such as bicycle frames, artificial hips, and jewelry. Chromium is useful as a protective plating on plumbing fixtures and automotive detailing.
 

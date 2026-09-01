@@ -7,250 +7,253 @@ The complete interpretation of an IR spectrum is difficult because most organic 
 <!-- SEG:m00141:para:para-00002 -->
 Fortunately, we don’t need to interpret an IR spectrum fully to get useful structural information. Most functional groups have characteristic IR absorption bands that don’t change much from one compound to another. The C=O absorption of a ketone is almost always in the range 1680 to 1750 cm[[sup:–1]]; the O–H absorption of an alcohol is almost always in the range 3400 to 3650 cm[[sup:–1]]; the C=C absorption of an alkene is almost always in the range 1640 to 1680 cm[[sup:–1]]; and so forth. By learning where characteristic functional-group absorptions occur, it’s possible to get structural information from IR spectra. [[xref:table-00001]] lists the characteristic IR bands of some common functional groups.
 
-<!-- SEG:m00141:entry:auto-4 -->
-Functional Group
+<!-- SEG:m00141:table-title:table-00001-title -->
+Characteristic IR Absorptions of Some Functional Groups
 
 <!-- SEG:m00141:entry:auto-5 -->
-Absorption (cm[[sup:–1]])
+Functional Group
 
 <!-- SEG:m00141:entry:auto-6 -->
-Intensity
+Absorption (cm[[sup:–1]])
 
 <!-- SEG:m00141:entry:auto-7 -->
-Alkane
+Intensity
 
 <!-- SEG:m00141:entry:auto-8 -->
-C–H
+Alkane
 
 <!-- SEG:m00141:entry:auto-9 -->
-2850–2960
-
-<!-- SEG:m00141:entry:auto-10 -->
-Medium
-
-<!-- SEG:m00141:entry:auto-11 -->
-Alkene
-
-<!-- SEG:m00141:entry:auto-12 -->
-=C–H
-
-<!-- SEG:m00141:entry:auto-13 -->
-3020–3100
-
-<!-- SEG:m00141:entry:auto-14 -->
-Medium
-
-<!-- SEG:m00141:entry:auto-15 -->
-C=C
-
-<!-- SEG:m00141:entry:auto-16 -->
-1640–1680
-
-<!-- SEG:m00141:entry:auto-17 -->
-Medium
-
-<!-- SEG:m00141:entry:auto-18 -->
-Alkyne
-
-<!-- SEG:m00141:entry:auto-19 -->
-[[MATH:1]]
-
-<!-- SEG:m00141:entry:auto-20 -->
-3300
-
-<!-- SEG:m00141:entry:auto-21 -->
-Strong
-
-<!-- SEG:m00141:entry:auto-22 -->
-[[MATH:2]]
-
-<!-- SEG:m00141:entry:auto-23 -->
-2100–2260
-
-<!-- SEG:m00141:entry:auto-24 -->
-Medium
-
-<!-- SEG:m00141:entry:auto-25 -->
-Alkyl halide
-
-<!-- SEG:m00141:entry:auto-26 -->
-C–Cl
-
-<!-- SEG:m00141:entry:auto-27 -->
-600–800
-
-<!-- SEG:m00141:entry:auto-28 -->
-Strong
-
-<!-- SEG:m00141:entry:auto-29 -->
-C–Br
-
-<!-- SEG:m00141:entry:auto-30 -->
-500–600
-
-<!-- SEG:m00141:entry:auto-31 -->
-Strong
-
-<!-- SEG:m00141:entry:auto-32 -->
-Alcohol
-
-<!-- SEG:m00141:entry:auto-33 -->
-O–H
-
-<!-- SEG:m00141:entry:auto-34 -->
-3400–3650
-
-<!-- SEG:m00141:entry:auto-35 -->
-Strong, broad
-
-<!-- SEG:m00141:entry:auto-36 -->
-C–O
-
-<!-- SEG:m00141:entry:auto-37 -->
-1050–1150
-
-<!-- SEG:m00141:entry:auto-38 -->
-Strong
-
-<!-- SEG:m00141:entry:auto-39 -->
-Arene
-
-<!-- SEG:m00141:entry:auto-40 -->
 C–H
 
-<!-- SEG:m00141:entry:auto-41 -->
-3030
+<!-- SEG:m00141:entry:auto-10 -->
+2850–2960
 
-<!-- SEG:m00141:entry:auto-42 -->
-Weak
-
-<!-- SEG:m00141:entry:auto-43 -->
-Aromatic ring
-
-<!-- SEG:m00141:entry:auto-44 -->
-1660–2000
-
-<!-- SEG:m00141:entry:auto-45 -->
-Weak
-
-<!-- SEG:m00141:entry:auto-46 -->
-1450–1600
-
-<!-- SEG:m00141:entry:auto-47 -->
+<!-- SEG:m00141:entry:auto-11 -->
 Medium
 
-<!-- SEG:m00141:entry:auto-48 -->
-Amine
+<!-- SEG:m00141:entry:auto-12 -->
+Alkene
 
-<!-- SEG:m00141:entry:auto-49 -->
-N–H
+<!-- SEG:m00141:entry:auto-13 -->
+=C–H
 
-<!-- SEG:m00141:entry:auto-50 -->
-3300–3500
+<!-- SEG:m00141:entry:auto-14 -->
+3020–3100
 
-<!-- SEG:m00141:entry:auto-51 -->
+<!-- SEG:m00141:entry:auto-15 -->
 Medium
 
-<!-- SEG:m00141:entry:auto-52 -->
-C–N
+<!-- SEG:m00141:entry:auto-16 -->
+C=C
 
-<!-- SEG:m00141:entry:auto-53 -->
-1030–1230
+<!-- SEG:m00141:entry:auto-17 -->
+1640–1680
 
-<!-- SEG:m00141:entry:auto-54 -->
+<!-- SEG:m00141:entry:auto-18 -->
 Medium
 
-<!-- SEG:m00141:entry:auto-55 -->
-Carbonyl compound
+<!-- SEG:m00141:entry:auto-19 -->
+Alkyne
 
-<!-- SEG:m00141:entry:auto-56 -->
-[[MATH:3]]
+<!-- SEG:m00141:entry:auto-20 -->
+[[MATH:1]]
 
-<!-- SEG:m00141:entry:auto-57 -->
-1670–1780
+<!-- SEG:m00141:entry:auto-21 -->
+3300
 
-<!-- SEG:m00141:entry:auto-58 -->
+<!-- SEG:m00141:entry:auto-22 -->
 Strong
 
-<!-- SEG:m00141:entry:auto-59 -->
-Aldehyde
+<!-- SEG:m00141:entry:auto-23 -->
+[[MATH:2]]
 
-<!-- SEG:m00141:entry:auto-60 -->
-1730
+<!-- SEG:m00141:entry:auto-24 -->
+2100–2260
 
-<!-- SEG:m00141:entry:auto-61 -->
+<!-- SEG:m00141:entry:auto-25 -->
+Medium
+
+<!-- SEG:m00141:entry:auto-26 -->
+Alkyl halide
+
+<!-- SEG:m00141:entry:auto-27 -->
+C–Cl
+
+<!-- SEG:m00141:entry:auto-28 -->
+600–800
+
+<!-- SEG:m00141:entry:auto-29 -->
 Strong
 
-<!-- SEG:m00141:entry:auto-62 -->
-Ketone
+<!-- SEG:m00141:entry:auto-30 -->
+C–Br
 
-<!-- SEG:m00141:entry:auto-63 -->
-1715
+<!-- SEG:m00141:entry:auto-31 -->
+500–600
 
-<!-- SEG:m00141:entry:auto-64 -->
+<!-- SEG:m00141:entry:auto-32 -->
 Strong
 
-<!-- SEG:m00141:entry:auto-65 -->
-Ester
+<!-- SEG:m00141:entry:auto-33 -->
+Alcohol
 
-<!-- SEG:m00141:entry:auto-66 -->
-1735
-
-<!-- SEG:m00141:entry:auto-67 -->
-Strong
-
-<!-- SEG:m00141:entry:auto-68 -->
-Amide
-
-<!-- SEG:m00141:entry:auto-69 -->
-1690
-
-<!-- SEG:m00141:entry:auto-70 -->
-Strong
-
-<!-- SEG:m00141:entry:auto-71 -->
-Carboxylic acid
-
-<!-- SEG:m00141:entry:auto-72 -->
-1710
-
-<!-- SEG:m00141:entry:auto-73 -->
-Strong
-
-<!-- SEG:m00141:entry:auto-74 -->
-Carboxylic acid
-
-<!-- SEG:m00141:entry:auto-75 -->
+<!-- SEG:m00141:entry:auto-34 -->
 O–H
 
-<!-- SEG:m00141:entry:auto-76 -->
-2500–3100
+<!-- SEG:m00141:entry:auto-35 -->
+3400–3650
 
-<!-- SEG:m00141:entry:auto-77 -->
+<!-- SEG:m00141:entry:auto-36 -->
 Strong, broad
 
-<!-- SEG:m00141:entry:auto-78 -->
-Nitrile
+<!-- SEG:m00141:entry:auto-37 -->
+C–O
 
-<!-- SEG:m00141:entry:auto-79 -->
-[[MATH:4]]
+<!-- SEG:m00141:entry:auto-38 -->
+1050–1150
 
-<!-- SEG:m00141:entry:auto-80 -->
-2210–2260
+<!-- SEG:m00141:entry:auto-39 -->
+Strong
 
-<!-- SEG:m00141:entry:auto-81 -->
+<!-- SEG:m00141:entry:auto-40 -->
+Arene
+
+<!-- SEG:m00141:entry:auto-41 -->
+C–H
+
+<!-- SEG:m00141:entry:auto-42 -->
+3030
+
+<!-- SEG:m00141:entry:auto-43 -->
+Weak
+
+<!-- SEG:m00141:entry:auto-44 -->
+Aromatic ring
+
+<!-- SEG:m00141:entry:auto-45 -->
+1660–2000
+
+<!-- SEG:m00141:entry:auto-46 -->
+Weak
+
+<!-- SEG:m00141:entry:auto-47 -->
+1450–1600
+
+<!-- SEG:m00141:entry:auto-48 -->
 Medium
 
+<!-- SEG:m00141:entry:auto-49 -->
+Amine
+
+<!-- SEG:m00141:entry:auto-50 -->
+N–H
+
+<!-- SEG:m00141:entry:auto-51 -->
+3300–3500
+
+<!-- SEG:m00141:entry:auto-52 -->
+Medium
+
+<!-- SEG:m00141:entry:auto-53 -->
+C–N
+
+<!-- SEG:m00141:entry:auto-54 -->
+1030–1230
+
+<!-- SEG:m00141:entry:auto-55 -->
+Medium
+
+<!-- SEG:m00141:entry:auto-56 -->
+Carbonyl compound
+
+<!-- SEG:m00141:entry:auto-57 -->
+[[MATH:3]]
+
+<!-- SEG:m00141:entry:auto-58 -->
+1670–1780
+
+<!-- SEG:m00141:entry:auto-59 -->
+Strong
+
+<!-- SEG:m00141:entry:auto-60 -->
+Aldehyde
+
+<!-- SEG:m00141:entry:auto-61 -->
+1730
+
+<!-- SEG:m00141:entry:auto-62 -->
+Strong
+
+<!-- SEG:m00141:entry:auto-63 -->
+Ketone
+
+<!-- SEG:m00141:entry:auto-64 -->
+1715
+
+<!-- SEG:m00141:entry:auto-65 -->
+Strong
+
+<!-- SEG:m00141:entry:auto-66 -->
+Ester
+
+<!-- SEG:m00141:entry:auto-67 -->
+1735
+
+<!-- SEG:m00141:entry:auto-68 -->
+Strong
+
+<!-- SEG:m00141:entry:auto-69 -->
+Amide
+
+<!-- SEG:m00141:entry:auto-70 -->
+1690
+
+<!-- SEG:m00141:entry:auto-71 -->
+Strong
+
+<!-- SEG:m00141:entry:auto-72 -->
+Carboxylic acid
+
+<!-- SEG:m00141:entry:auto-73 -->
+1710
+
+<!-- SEG:m00141:entry:auto-74 -->
+Strong
+
+<!-- SEG:m00141:entry:auto-75 -->
+Carboxylic acid
+
+<!-- SEG:m00141:entry:auto-76 -->
+O–H
+
+<!-- SEG:m00141:entry:auto-77 -->
+2500–3100
+
+<!-- SEG:m00141:entry:auto-78 -->
+Strong, broad
+
+<!-- SEG:m00141:entry:auto-79 -->
+Nitrile
+
+<!-- SEG:m00141:entry:auto-80 -->
+[[MATH:4]]
+
+<!-- SEG:m00141:entry:auto-81 -->
+2210–2260
+
 <!-- SEG:m00141:entry:auto-82 -->
-Nitro
+Medium
 
 <!-- SEG:m00141:entry:auto-83 -->
-NO[[sub:2]]
+Nitro
 
 <!-- SEG:m00141:entry:auto-84 -->
-1540
+NO[[sub:2]]
 
 <!-- SEG:m00141:entry:auto-85 -->
+1540
+
+<!-- SEG:m00141:entry:auto-86 -->
 Strong
 
 <!-- SEG:m00141:para:para-00003 -->
@@ -259,11 +262,17 @@ Look at the IR spectra of hexane, 1-hexene, and 1-hexyne in [[xref:fig-00001]] t
 <!-- SEG:m00141:caption:fig-00001-caption -->
 [[b:IR spectra of (a) hexane, (b) 1-hexene, and (c) 1-hexyne.]] Spectra like these are easily obtained from sub-milligram amounts of material in a few minutes using commercially available instruments.
 
+<!-- SEG:m00141:alt:fig-00001-alt -->
+Three infrared spectrums with characteristic absorption areas. Hexane has strong bands just below 3000; 1-hexene has strong bands at 3100 and 1650; 1-hexyne has strong bands at 3300 and 2150.
+
 <!-- SEG:m00141:para:para-00004 -->
 It helps in remembering the position of specific IR absorptions to divide the IR region from 4000 cm[[sup:–1]] to 400 cm[[sup:–1]] into four parts, as shown in [[xref:fig-00002]].
 
 <!-- SEG:m00141:caption:fig-00002-caption -->
 [[b:The four regions of the infrared spectrum: single bonds to hydrogen, triple bonds, double bonds, and fingerprint.]]
+
+<!-- SEG:m00141:alt:fig-00002-alt -->
+Four regions of an IR spectrum, depicting the wavenumber regions in which particular bond types and orders appear.
 
 <!-- SEG:m00141:item:list-00001-item-1 -->
 The region from 4000 to 2500 cm[[sup:–1]] corresponds to absorptions caused by N–H, C–H, and O–H single-bond stretching motions. N–H and O–H bonds absorb in the 3300 to 3600 cm[[sup:–1]] range; C–H bond stretching occurs near 3000 cm[[sup:–1]].
@@ -281,10 +290,13 @@ The region below 1500 cm[[sup:–1]] is the fingerprint portion of the IR spectr
 Why do different functional groups absorb where they do? As noted previously, a good analogy is that of two weights (atoms) connected by a spring (a bond). Short, strong bonds vibrate at a higher energy and higher frequency than do long, weak bonds, just as a short, strong spring vibrates faster than a long, weak spring. Thus, triple bonds absorb at a higher frequency than double bonds, which in turn absorb at a higher frequency than single bonds. In addition, C–H, O–H, and N–H bonds vibrate at a higher frequency than bonds between heavier C, O, and N atoms.
 
 <!-- SEG:m00141:example-title:exam-00001-title -->
-Strategy
+Distinguishing Isomeric Compounds by IR Spectroscopy
 
 <!-- SEG:m00141:para:para-00010 -->
 Acetone (CH[[sub:3]]COCH[[sub:3]]) and 2-propen-1-ol ([[MATH:15]]) are isomers. How could you distinguish them by IR spectroscopy?
+
+<!-- SEG:m00141:para-title:para-00011-title -->
+Strategy
 
 <!-- SEG:m00141:para:para-00011 -->
 Identify the functional groups in each molecule, and refer to [[xref:table-00001]].

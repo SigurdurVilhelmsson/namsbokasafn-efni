@@ -1,0 +1,162 @@
+{
+  "moduleId": "m00182",
+  "title": {
+    "segmentId": "m00182:title:auto-1",
+    "text": "Structure and Stability of Benzene"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "68f32278-b1c0-4375-83e3-4554367c5bbe"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00182:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00182:alt:fig-00001-alt",
+          "text": "Benzene reacts with bromine in the presence of iron catalyst to yield bromobenzene (substitution product) and hydrogen bromide. Addition product is not formed."
+        },
+        "src": "../../media/OChem_15_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00182:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00182:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00182:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00182:alt:fig-00002-alt",
+          "text": "The difference of heat of hydrogenation of cyclohexene, 1,3-cyclohexadiene, and benzene from that of cyclohexane."
+        },
+        "src": "../../media/OChem_15_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00182:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00182:alt:fig-00003-alt",
+          "text": "The structural formulas of two resonance structures of benzene each with 1.5 bonds on average. To the right, electrostatic potential map of benzene shows its ball-and-stick model inside."
+        },
+        "src": "../../media/OChem_15_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00182:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "caption": {
+        "segmentId": "m00182:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00182:alt:fig-00004-alt",
+          "text": "Part A: Electrostatic potential map of benzene along with two resonance structures of benzene. Part B: The orbital representation of benzene shows each carbon with a dot in red lobe."
+        },
+        "src": "../../media/OChem_15_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00182:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00182:alt:fig-00005-alt",
+          "text": "A hexagonal ring with a circle inside. To the right, two resonance structures of benzene are enclosed in square brackets."
+        },
+        "src": "../../media/OChem_15_02_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00182:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00182:caption:fig-00006-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00182:alt:fig-00006-alt",
+          "text": "Six p atomic orbitals each with an unpaired electron become three bonding molecular orbitals, each having two electrons, and three antibonding molecular orbitals which are empty."
+        },
+        "src": "../../media/OChem_15_02_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00182:para:para-00008"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00182:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

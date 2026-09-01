@@ -1,0 +1,2176 @@
+{
+  "moduleId": "m00030",
+  "title": {
+    "segmentId": "m00030:title:auto-1",
+    "text": "Acidity Constants for Some Organic Compounds"
+  },
+  "documentClass": "appendix",
+  "metadata": {
+    "uuid": "4a689238-ec34-44bc-b34d-6c88fabb153f"
+  },
+  "content": [
+    {
+      "type": "table",
+      "id": "table-00001",
+      "class": "column-container",
+      "summary": "",
+      "title": null,
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-2",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-3",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-4",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-5",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-6",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-7",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_001_jpg-alt",
+                "text": "The structure has a phenol ring. C 2, C 4, and C 6 are each bonded to a nitro group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_001.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-9",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_002_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a carboxylic acid group. C 2 is bonded to a nitro group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_002.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-31",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-32",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-34",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-35",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-36",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-37",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-38",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-39",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-40",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-41",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-42",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-43",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_003_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a carboxylic acid group. C 2 is bonded to a chlorine atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_003.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-45",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_004_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a carboxylic acid group. C 2 is bonded to a hydroxyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_004.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-47",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-48",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-49",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-50",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-51",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_005_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a carboxylic acid group. C 4 is bonded to a nitro group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_005.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-53",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_006_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a carboxylic acid group. C 3 and C 4 are each bonded to a nitro group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_006.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-55",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-56",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-57",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-58",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-59",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-60",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-61",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-62",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-63",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-64",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-65",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-66",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-67",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_007_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a carboxylic acid group. C 3 is bonded to a chlorine atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_007.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-69",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_008_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a carboxylic acid group. C 4 is bonded to a chlorine atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_008.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-71",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-72",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-73",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_009_jpg-alt",
+                "text": "The structure has a phenol ring. C 2 and C 4 are each bonded to a nitro group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_009.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-75",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_010_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a carboxylic acid group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_010.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-77",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-78",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-79",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-80",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-81",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-82",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-83",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_011_jpg-alt",
+                "text": "The structure has a phenol ring. C 2 to C 6, each carbon is bonded to a chlorine atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_011.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-85",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-86",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-87",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-88",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-89",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-90",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-91",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-92",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-93",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-94",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-95",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_012_jpg-alt",
+                "text": "The structure has a cyclohexane ring. C 1 and C 3 are oxo groups.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_012.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-97",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-98",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-99",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_013_jpg-alt",
+                "text": "The structure has a cyclopentane ring. C 1 has an oxo group. C 2 is bonded to an aldehyde group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_013.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-101",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_014_jpg-alt",
+                "text": "The structure has a phenol ring. C 2, C 4, and C 6 are each bonded to a chlorine atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_014.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-103",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_015_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to an S H group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_015.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-105",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-106",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-107",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_016_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a hydroxyl group. C 2 is bonded to a nitro group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_016.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-109",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-110",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-111",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_017_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a hydroxyl group. C 2 and C 4 are each bonded to a chlorine atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_017.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-113",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-114",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-115",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_018_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a hydroxyl group. C 2 is bonded to a chlorine atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_018.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-117",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-118",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-119",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_019_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a hydroxyl group. C 4 is bonded to a trifluoromethyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_019.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-121",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-122",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-123",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_020_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 and C 3 are each bonded to a hydroxyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_020.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-125",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_021_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 and C 2 are each bonded to a hydroxyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_021.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-127",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_022_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a C H 2 S H group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_022.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-129",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_023_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 and C 4 are each bonded to a hydroxyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_023.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-131",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_024_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a hydroxyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_024.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-133",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-134",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-135",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_025_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a hydroxyl group. C 2 is bonded to a methyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_025.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-137",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-138",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-139",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-140",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-141",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-142",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-143",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-144",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-145",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-146",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-147",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-148",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-149",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-150",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-151",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-152",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-153",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-154",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-155",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-156",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-157",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-158",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-159",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-160",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-161",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-162",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-163",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_026_jpg-alt",
+                "text": "The structure has a cyclopentane ring. C 1 is double bonded to C 2. C 3 is double bonded to C 4.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_026.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-165",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_027_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a hydroxymethyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_027.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-167",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-168",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-169",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-170",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-171",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-172",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-173",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-174",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-175",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-176",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-177",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_028_jpg-alt",
+                "text": "The structure has a cyclohexane ring. C 1 is double bonded to an oxygen atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_028.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-179",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-180",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-181",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-182",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-183",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-184",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-185",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-186",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-187",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-188",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-189",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_029_jpg-alt",
+                "text": "The structure has a central cyclopentane ring fused to a benzene ring by C 1 and C 2, and to another benzene ring by C 3 and C 4.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_029.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-191",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-192",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-193",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-194",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-195",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-196",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-197",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-198",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-199",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-200",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-201",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-202",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-203",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-204",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-205",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-206",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-207",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-208",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-209",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-210",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-211",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_030_jpg-alt",
+                "text": "The structure has a benzene ring. C 1 is bonded to a methyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_030.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-213",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00030:alt:OChem_AppB_031_jpg-alt",
+                "text": "The structure of benzene: a six-membered ring with alternating single and double bonds.",
+                "mediaId": null,
+                "src": "../../media/OChem_AppB_031.jpg"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-215",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-216",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-217",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00030:entry:auto-218",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00030:entry:auto-219",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00030:para:para-00001"
+    }
+  ],
+  "sectionOrder": null
+}

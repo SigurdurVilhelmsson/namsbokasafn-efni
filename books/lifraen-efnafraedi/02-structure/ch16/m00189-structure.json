@@ -1,0 +1,134 @@
+{
+  "moduleId": "m00189",
+  "title": {
+    "segmentId": "m00189:title:auto-1",
+    "text": "Electrophilic Aromatic Substitution Reactions: Bromination"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f2f7d494-5969-4cf5-a1b3-d863950eb97f"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00189:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00189:alt:fig-00001-alt",
+          "text": "A reaction mechanism shows alkene reacting with hydrogen chloride to form a carbocation intermediate, which further forms an addition product."
+        },
+        "src": "../../media/OChem_16_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00189:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00189:alt:fig-00002-alt",
+          "text": "Benzene reacts with B r plus F e B r 4 minus (obtained from bromine and iron tribromide) to form three resonance structures of a cyclic carbocation."
+        },
+        "src": "../../media/OChem_16_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00189:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00189:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00189:alt:fig-00003-alt",
+          "text": "The energy diagram shows curves for the reactions of and electrophile with benzene and with an alkene. The carbocation intermediate formed with benzene is loweer in energy than that from the alkene."
+        },
+        "src": "../../media/OChem_16_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00189:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00189:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00189:alt:fig-00004-alt",
+          "text": "A two-step reaction mechanism shows the formation of bromobenzene, hydrogen bromide, and iron tribromide from benzene and B r plus F e B r 4 minus."
+        },
+        "src": "../../media/OChem_16_01_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00189:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00189:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00189:alt:fig-00005-alt",
+          "text": "Energy diagram shows curve exhibiting two peaks, with the first peak higher than second. A second curve originates from the trough of the first curve and ends higher in energy than the first curve."
+        },
+        "src": "../../media/OChem_16_01_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00189:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

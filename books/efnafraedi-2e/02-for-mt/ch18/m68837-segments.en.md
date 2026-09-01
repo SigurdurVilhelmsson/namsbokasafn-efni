@@ -32,19 +32,22 @@ Liquid oxygen is important to the space industry. It is an oxidizing agent in ro
 As we know, oxygen is very important to life. The energy required for the maintenance of normal body functions in human beings and in other organisms comes from the slow oxidation of chemical compounds. Oxygen is the final oxidizing agent in these reactions. In humans, oxygen passes from the lungs into the blood, where it combines with hemoglobin, producing oxyhemoglobin. In this form, blood transports the oxygen to tissues, where it is transferred to cells and used as a chemical oxidant, yielding as ultimate products carbon dioxide and water. The blood carries the carbon dioxide through the veins to the lungs, where the blood releases the carbon dioxide and collects another supply of oxygen. Digestion and assimilation of food regenerate the materials consumed by oxidation in the body; the energy liberated is the same as if the food burned outside the body.
 
 <!-- SEG:m68837:para:fs-idm4087072 -->
-Green plants continually replenish the oxygen in the atmosphere by a process called {{term}}photosynthesis{{/term}}. The products of photosynthesis may vary, but, in general, the process converts carbon dioxide and water into glucose (a sugar) and oxygen using the energy of light:
+Green plants continually replenish the oxygen in the atmosphere by a process called [[term:photosynthesis|term-00001]]. The products of photosynthesis may vary, but, in general, the process converts carbon dioxide and water into glucose (a sugar) and oxygen using the energy of light:
 
 <!-- SEG:m68837:para:fs-idp139331168 -->
 Thus, the oxygen that became carbon dioxide and water by the metabolic processes in plants and animals returns to the atmosphere by photosynthesis.
 
 <!-- SEG:m68837:para:fs-idm13883760 -->
-When dry oxygen is passed between two electrically charged plates, {{term}}ozone{{/term}} (O[[sub:3]], illustrated in [[xref:CNX_Chem_18_09_Ozone]]), an allotrope of oxygen possessing a distinctive odor, forms. The formation of ozone from oxygen is an endothermic reaction, in which the energy comes from an electrical discharge, heat, or ultraviolet light:
+When dry oxygen is passed between two electrically charged plates, [[term:ozone|term-00002]] (O[[sub:3]], illustrated in [[xref:CNX_Chem_18_09_Ozone]]), an allotrope of oxygen possessing a distinctive odor, forms. The formation of ozone from oxygen is an endothermic reaction, in which the energy comes from an electrical discharge, heat, or ultraviolet light:
 
 <!-- SEG:m68837:para:fs-idp152283536 -->
 The sharp odor associated with sparking electrical equipment is due, in part, to ozone.
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Ozone-caption -->
 The image shows the bent ozone (O[[sub:3]]) molecule and the resonance structures necessary to describe its bonding.
+
+<!-- SEG:m68837:alt:fs-idp48097808-alt -->
+A space filling model shows three atoms labeled, “O,” bonded to one another in a triangular shape. Two Lewis structures connected by a double ended arrow are shown as well. In the left image, an oxygen atom with one lone pair of electrons is double bonded to another oxygen with two lone pairs of electrons to the left and single bonded to an oxygen with three lone pairs of electrons to the right. The right image is a mirror image of the left.
 
 <!-- SEG:m68837:para:fs-idp113935824 -->
 Ozone forms naturally in the upper atmosphere by the action of ultraviolet light from the sun on the oxygen there. Most atmospheric ozone occurs in the stratosphere, a layer of the atmosphere extending from about 10 to 50 kilometers above the earth’s surface. This ozone acts as a barrier to harmful ultraviolet light from the sun by absorbing it via a chemical decomposition reaction:
@@ -109,6 +112,9 @@ The oxides of the alkali metals have little industrial utility, unlike magnesium
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Limelight-caption -->
 Calcium oxide has many industrial uses. When it is heated at high temperatures, it emits an intense white light.
 
+<!-- SEG:m68837:alt:fs-idp99950736-alt -->
+A diagram shows two tubes labeled, “Oxygen,” and, “Hydrogen,” that lead to a lit burner. The burner is aimed at a solid block labeled, “Calcium oxide,” which rests on a laboratory apparatus.
+
 <!-- SEG:m68837:para:fs-idm68622384 -->
 Calcium oxide and calcium hydroxide are inexpensive bases used extensively in chemical processing, although most of the useful products prepared from them do not contain calcium. Calcium oxide, CaO, is made by heating calcium carbonate, CaCO[[sub:3]], which is widely and inexpensively available as limestone or oyster shells:
 
@@ -126,6 +132,9 @@ Zinc oxide, ZnO, was a useful white paint pigment; however, pollutants tend to d
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Sunblock-caption -->
 Zinc oxide protects exposed skin from sunburn. (credit: modification of work by "osseous"/Flickr)
+
+<!-- SEG:m68837:alt:fs-idp37228448-alt -->
+A photograph shows a person’s hand as he or she applies a white cream to his or her leg.
 
 <!-- SEG:m68837:title:fs-idm58982368-title -->
 Peroxides and Superoxides
@@ -155,7 +164,7 @@ With the exception of beryllium and magnesium, the metals of groups 1 and 2 reac
 However, these reactions can be violent and dangerous; therefore, it is preferable to produce soluble metal hydroxides by the reaction of the respective oxide with water:
 
 <!-- SEG:m68837:para:fs-idm48473616 -->
-Most metal oxides are {{term}}base anhydrides{{/term}}. This is obvious for the soluble oxides because they form metal hydroxides. Most other metal oxides are insoluble and do not form hydroxides in water; however, they are still base anhydrides because they will react with acids.
+Most metal oxides are [[term:base anhydrides|term-00007]]. This is obvious for the soluble oxides because they form metal hydroxides. Most other metal oxides are insoluble and do not form hydroxides in water; however, they are still base anhydrides because they will react with acids.
 
 <!-- SEG:m68837:para:fs-idm50382768 -->
 It is possible to prepare the insoluble hydroxides of beryllium, magnesium, and other representative metals by the addition of sodium hydroxide to a solution of a salt of the respective metal. The net ionic equations for the reactions involving a magnesium salt, an aluminum salt, and a zinc salt are:
@@ -166,8 +175,11 @@ An excess of hydroxide must be avoided when preparing aluminum, gallium, zinc, a
 <!-- SEG:m68837:caption:CNX_Chem_18_09_ZnHydroxid-caption -->
 (a) Mixing solutions of NaOH and Zn(NO[[sub:3]])[[sub:2]] produces a white precipitate of Zn(OH)[[sub:2]]. (b) Addition of an excess of NaOH results in dissolution of the precipitate. (credit: modification of work by Mark Ott)
 
+<!-- SEG:m68837:alt:fs-idm5652064-alt -->
+This figure has two photos. The first photo shows a bottle labeled NaOH and a test tube containing a liquid. A white substance appears to be in the liquid. The second photo is set up similarly, but the test tube now contains only a clear liquid.
+
 <!-- SEG:m68837:para:fs-idp107250736 -->
-Industry uses large quantities of sodium hydroxide as a cheap, strong base. Sodium chloride is the starting material for the production of NaOH because NaCl is a less expensive starting material than the oxide. Sodium hydroxide is among the top 10 chemicals in production in the United States, and this production was almost entirely by electrolysis of solutions of sodium chloride. This process is the {{term}}chlor-alkali process{{/term}}, and it is the primary method for producing chlorine.
+Industry uses large quantities of sodium hydroxide as a cheap, strong base. Sodium chloride is the starting material for the production of NaOH because NaCl is a less expensive starting material than the oxide. Sodium hydroxide is among the top 10 chemicals in production in the United States, and this production was almost entirely by electrolysis of solutions of sodium chloride. This process is the [[term:chlor-alkali process|term-00008]], and it is the primary method for producing chlorine.
 
 <!-- SEG:m68837:para:fs-idp17934448 -->
 Sodium hydroxide is an ionic compound and melts without decomposition. It is very soluble in water, giving off a great deal of heat and forming very basic solutions: 40 grams of sodium hydroxide dissolves in only 60 grams of water at 25 °C. Sodium hydroxide is employed in the production of other sodium compounds and is used to neutralize acidic solutions during the production of other chemicals such as petrochemicals and polymers.
@@ -177,6 +189,9 @@ Many of the applications of hydroxides are for the neutralization of acids (such
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_CaOH2-caption -->
 Calcium carbonate, CaCO[[sub:3]], can be consumed in the form of an antacid to neutralize the effects of acid in your stomach. (credit: “Midnightcomm”/Wikimedia Commons)
+
+<!-- SEG:m68837:alt:fs-idm29289888-alt -->
+A photograph shows a bottle tipped on its side with the words, “Antacid Tablets,” written on the front. An array of colorful, solid disks spill out of the mouth of the bottle.
 
 <!-- SEG:m68837:note-title:fs-idp2234912-title -->
 The Chlor-Alkali Process
@@ -194,7 +209,7 @@ The electrons produced travel through the outside electrical circuit to the nega
 The overall result is the conversion of the aqueous solution of NaCl to an aqueous solution of NaOH, gaseous Cl[[sub:2]], and gaseous H[[sub:2]]:
 
 <!-- SEG:m68837:para:fs-idp94807728 -->
-Compounds of the representative metals with oxygen fall into three categories: (1) {{term}}oxides{{/term}}, containing oxide ions, O[[sup:2−]]; (2) {{term}}peroxides{{/term}}, containing peroxides ions, [[MATH:5]] with oxygen-oxygen covalent single bonds and a very limited number of {{term}}superoxides{{/term}}, containing superoxide ions, [[MATH:6]] with oxygen-oxygen covalent bonds that have a bond order of [[MATH:7]] In addition, there are (3) {{term}}hydroxides{{/term}}, containing hydroxide ions, OH[[sup:−]]. All representative metals form oxides. Some of the metals of group 2 also form peroxides, MO[[sub:2]], and the metals of group 1 also form peroxides, M[[sub:2]]O[[sub:2]], and superoxides, MO[[sub:2]].
+Compounds of the representative metals with oxygen fall into three categories: (1) [[term:oxides|term-00003]], containing oxide ions, O[[sup:2−]]; (2) [[term:peroxides|term-00004]], containing peroxides ions, [[MATH:5]] with oxygen-oxygen covalent single bonds and a very limited number of [[term:superoxides|term-00005]], containing superoxide ions, [[MATH:6]] with oxygen-oxygen covalent bonds that have a bond order of [[MATH:7]] In addition, there are (3) [[term:hydroxides|term-00006]], containing hydroxide ions, OH[[sup:−]]. All representative metals form oxides. Some of the metals of group 2 also form peroxides, MO[[sub:2]], and the metals of group 1 also form peroxides, M[[sub:2]]O[[sub:2]], and superoxides, MO[[sub:2]].
 
 <!-- SEG:m68837:title:fs-idp162832832-title -->
 Nonmetal Oxygen Compounds
@@ -208,6 +223,9 @@ The two common oxides of sulfur are sulfur dioxide, SO[[sub:2]], and sulfur trio
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Sulfrdiox-caption -->
 This image shows the molecular structure (left) and resonance forms (right) of sulfur dioxide.
 
+<!-- SEG:m68837:alt:fs-idp19907360-alt -->
+A ball-and-stick model shows a yellow atom labeled, “S,” bonded on either side to a red atom labeled, “O.” A pair of Lewis structures are shown connected by a double-headed arrow. The left Lewis structure shows a sulfur atom with one lone pair of electrons double bonded on the left to an oxygen atom with two lone pairs of electrons and single bonded on the right to an oxygen atom with three lone pairs of electrons. The right Lewis structure is a mirror image of the structure on the left.
+
 <!-- SEG:m68837:para:fs-idm30601216 -->
 Commercial production of sulfur dioxide is from either burning sulfur or roasting sulfide ores such as ZnS, FeS[[sub:2]], and Cu[[sub:2]]S in air. (Roasting, which forms the metal oxide, is the first step in the separation of many metals from their ores.) A convenient method for preparing sulfur dioxide in the laboratory is by the action of a strong acid on either sulfite salts containing the [[MATH:8]] ion or hydrogen sulfite salts containing [[MATH:9]] Sulfurous acid, H[[sub:2]]SO[[sub:3]], forms first, but quickly decomposes into sulfur dioxide and water. Sulfur dioxide also forms when many reducing agents react with hot, concentrated sulfuric acid. Sulfur trioxide forms slowly when heating sulfur dioxide and oxygen together, and the reaction is exothermic:
 
@@ -217,8 +235,11 @@ Sulfur dioxide is a gas at room temperature, and the SO[[sub:2]] molecule is ben
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Sulfrtriox-caption -->
 This image shows the structure (top) of sulfur trioxide in the gas phase and its resonance forms (bottom).
 
+<!-- SEG:m68837:alt:fs-idp55786576-alt -->
+A ball-and-stick model shows a yellow atom labeled, “S,” bonded to three red atoms labeled, “O.” Three Lewis structures are shown connected by double-headed arrows. The left Lewis structure shows a sulfur atom single bonded on the lower left and right to oxygen atoms with three lone pairs of electrons each. The sulfur atom is also double bonded above to an oxygen atom with two lone pairs of electrons. The middle and right Lewis structures are the same as the left, but show the double bonded oxygen in the lower left and lower right positions, respectively.
+
 <!-- SEG:m68837:para:fs-idm30148720 -->
-The sulfur oxides react as Lewis acids with many oxides and hydroxides in Lewis acid-base reactions, with the formation of {{term}}sulfites{{/term}} or {{term}}hydrogen sulfites{{/term}}, and {{term}}sulfates{{/term}} or {{term}}hydrogen sulfates{{/term}}, respectively.
+The sulfur oxides react as Lewis acids with many oxides and hydroxides in Lewis acid-base reactions, with the formation of [[term:sulfites|term-00009]] or [[term:hydrogen sulfites|term-00010]], and [[term:sulfates|term-00011]] or [[term:hydrogen sulfates|term-00012]], respectively.
 
 <!-- SEG:m68837:title:fs-idp152271648-title -->
 Halogen Oxygen Compounds
@@ -231,6 +252,9 @@ As a class, the oxides are extremely reactive and unstable, and their chemistry 
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Cl2OClO2-caption -->
 This image shows the structures of the (a) Cl[[sub:2]]O and (b) ClO[[sub:2]] molecules.
+
+<!-- SEG:m68837:alt:fs-idm47776480-alt -->
+Two space filling models are shown and labeled, “a,” and “b.” Model a shows a red atom labeled, “O,” bonded to two green atoms labeled, “C l,” in a v-shape. Model b shows a green atom labeled, “C l,” bonded to two red atoms labeled, “O,” in a v-shape.
 
 <!-- SEG:m68837:para:fs-idm14503248 -->
 Most nonmetals react with oxygen to form nonmetal oxides. Depending on the available oxidation states for the element, a variety of oxides might form. Fluorine will combine with oxygen to form fluorides such as OF[[sub:2]], where the oxygen has a 2+-oxidation state.
@@ -250,11 +274,14 @@ Nitrogen pentaoxide, N[[sub:2]]O[[sub:5]], and NO[[sub:2]] react with water to f
 <!-- SEG:m68837:caption:CNX_Chem_18_09_HNO3-caption -->
 This image shows the molecular structure (left) of nitric acid, HNO[[sub:3]] and its resonance forms (right).
 
+<!-- SEG:m68837:alt:fs-idp86575744-alt -->
+A space filling model shows a blue atom labeled, “N,” bonded on three sides to red atoms labeled, “O.” One of the red atoms is bonded to a white atom labeled, “H.” A pair of Lewis structures is shown connected by a double-headed arrow. The left Lewis structure shows an oxygen atom with two lone pairs of electrons single bonded on the left to a hydrogen atom and on the right to a nitrogen atom. The nitrogen atom is in turn single bonded to an oxygen atom with three lone pairs of electrons in an upward position and double bonded to an oxygen atom with two lone pairs of electrons in a downward position. The right Lewis structure is the same as the left, but the double bonded oxygen is in the upward position and the single bonded oxygen is in the lower position in relation to the nitrogen atom.
+
 <!-- SEG:m68837:para:fs-idp180830096 -->
 In the laboratory, it is possible to produce nitric acid by heating a nitrate salt (such as sodium or potassium nitrate) with concentrated sulfuric acid:
 
 <!-- SEG:m68837:para:fs-idp16395920 -->
-The {{term}}Ostwald process{{/term}} is the commercial method for producing nitric acid. This process involves the oxidation of ammonia to nitric oxide, NO; oxidation of nitric oxide to nitrogen dioxide, NO[[sub:2]]; and further oxidation and hydration of nitrogen dioxide to form nitric acid:
+The [[term:Ostwald process|term-00013]] is the commercial method for producing nitric acid. This process involves the oxidation of ammonia to nitric oxide, NO; oxidation of nitric oxide to nitrogen dioxide, NO[[sub:2]]; and further oxidation and hydration of nitrogen dioxide to form nitric acid:
 
 <!-- SEG:m68837:para:fs-idp27580736 -->
 Or
@@ -275,7 +302,7 @@ Nitric acid oxidizes many compounds; for example, concentrated nitric acid readi
 Although gold is generally unreactive, you can watch a [[link:video|http://openstax.org/l/16gold]] of the complex mixture of compounds present in [[i:aqua regia]] dissolving it into solution.
 
 <!-- SEG:m68837:para:fs-idm29734944 -->
-{{term}}Nitrates{{/term}}, salts of nitric acid, form when metals, oxides, hydroxides, or carbonates react with nitric acid. Most nitrates are soluble in water; indeed, one of the significant uses of nitric acid is to prepare soluble metal nitrates.
+[[term:Nitrates|term-00014]], salts of nitric acid, form when metals, oxides, hydroxides, or carbonates react with nitric acid. Most nitrates are soluble in water; indeed, one of the significant uses of nitric acid is to prepare soluble metal nitrates.
 
 <!-- SEG:m68837:para:fs-idp61633936 -->
 Nitric acid finds extensive use in the laboratory and in chemical industries as a strong acid and strong oxidizing agent. It is important in the manufacture of explosives, dyes, plastics, and drugs. Salts of nitric acid (nitrates) are valuable as fertilizers. Gunpowder is a mixture of potassium nitrate, sulfur, and charcoal.
@@ -288,6 +315,9 @@ Nitrous acid is very unstable and exists only in solution. It disproportionates 
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_NitrosAcid-caption -->
 This image shows the molecular structure of a molecule of nitrous acid, HNO[[sub:2]].
+
+<!-- SEG:m68837:alt:fs-idm53671040-alt -->
+A space filling model shows a blue atom labeled, “N,” bonded on two sides to red atoms labeled, “O.” One of the red atoms is bonded to a white atom labeled, “H.”
 
 <!-- SEG:m68837:para:fs-idp79466448 -->
 Sodium nitrite, NaNO[[sub:2]], is an additive to meats such as hot dogs and cold cuts. The nitrite ion has two functions. It limits the growth of bacteria that can cause food poisoning, and it prolongs the meat’s retention of its red color. The addition of sodium nitrite to meat products is controversial because nitrous acid reacts with certain organic compounds to form a class of compounds known as nitrosamines. Nitrosamines produce cancer in laboratory animals. This has prompted the FDA to limit the amount of NaNO[[sub:2]] in foods.
@@ -307,6 +337,9 @@ One commercial method of preparing orthophosphoric acid is to treat calcium phos
 <!-- SEG:m68837:caption:CNX_Chem_18_09_Phosphate-caption -->
 Orthophosphoric acid, H[[sub:3]]PO[[sub:4]], is colorless when pure and has this molecular (left) and Lewis structure (right).
 
+<!-- SEG:m68837:alt:fs-idp207514928-alt -->
+A space filling model shows an orange atom labeled, “P,” bonded on four sides to red atoms labeled, “O.” Three of the red atoms are bonded to white atoms labeled, “H.” A Lewis structure is also shown in which a phosphorus atom is single bonded to four oxygen atoms, three of which have two lone pairs of electrons, and one of which has three lone pairs of electrons. The oxygen atoms with two lone pairs of electrons are single bonded to hydrogen atoms.
+
 <!-- SEG:m68837:para:fs-idm60228576 -->
 Dilution of the products with water, followed by filtration to remove calcium sulfate, gives a dilute acid solution contaminated with calcium dihydrogen phosphate, Ca(H[[sub:2]]PO[[sub:4]])[[sub:2]], and other compounds associated with calcium phosphate rock. It is possible to prepare pure orthophosphoric acid by dissolving P[[sub:4]]O[[sub:10]] in water.
 
@@ -319,6 +352,9 @@ Heating the resulting solution expels the hydrogen chloride and leads to the eva
 <!-- SEG:m68837:caption:CNX_Chem_18_09_PhosphAcid-caption -->
 In a molecule of phosphorous acid, H[[sub:3]]PO[[sub:3]], only the two hydrogen atoms bonded to an oxygen atom are acidic.
 
+<!-- SEG:m68837:alt:fs-idp206877648-alt -->
+A space filling model shows an orange atom labeled, “P,” bonded on three sides to red atoms labeled, “O,” and on the other side to a white atom labeled, “H.” Two of the red atoms are bonded to white atoms labeled, “H.” A Lewis structure is also shown in which a phosphorus atom is single bonded to a hydrogen atom and three oxygen atoms, two of which have two lone pairs of electrons and single bonds to hydrogen atoms, and one of which has three lone pairs of electrons.
+
 <!-- SEG:m68837:para:fs-idm58353808 -->
 Phosphorous acid forms only two series of salts, which contain the dihydrogen phosphite ion, [[MATH:10]] or the hydrogen phosphate ion, [[MATH:11]] respectively. It is not possible to replace the third atom of hydrogen because it is not very acidic, as it is not easy to ionize the P-H bond.
 
@@ -330,6 +366,9 @@ The preparation of sulfuric acid, H[[sub:2]]SO[[sub:4]] (shown in [[xref:CNX_Che
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_SulfrAcid-caption -->
 Sulfuric acid has a tetrahedral molecular structure.
+
+<!-- SEG:m68837:alt:fs-idm10377520-alt -->
+A space filling model shows a yellow atom labeled, “S,” bonded on four sides to red atoms labeled, “O.” Two of the red atoms are bonded to white atoms labeled, “H.”
 
 <!-- SEG:m68837:para:fs-idp65301664 -->
 The strong affinity of concentrated sulfuric acid for water makes it a good dehydrating agent. It is possible to dry gases and immiscible liquids that do not react with the acid by passing them through the acid.
@@ -364,73 +403,73 @@ Halogen Oxyacids and Their Salts
 <!-- SEG:m68837:para:fs-idm47315952 -->
 The compounds HXO, HXO[[sub:2]], HXO[[sub:3]], and HXO[[sub:4]], where X represents Cl, Br, or I, are the hypohalous, halous, halic, and perhalic acids, respectively. The strengths of these acids increase from the hypohalous acids, which are very weak acids, to the perhalic acids, which are very strong. [[xref:fs-idp152462192]] lists the known acids, and, where known, their pK[[sub:a]] values are given in parentheses.
 
-<!-- SEG:m68837:entry:auto-123 -->
+<!-- SEG:m68837:entry:auto-136 -->
 Oxyacids of the Halogens
 
-<!-- SEG:m68837:entry:auto-124 -->
+<!-- SEG:m68837:entry:auto-137 -->
 Name
 
-<!-- SEG:m68837:entry:auto-125 -->
+<!-- SEG:m68837:entry:auto-138 -->
 Fluorine
 
-<!-- SEG:m68837:entry:auto-126 -->
+<!-- SEG:m68837:entry:auto-139 -->
 Chlorine
 
-<!-- SEG:m68837:entry:auto-127 -->
+<!-- SEG:m68837:entry:auto-140 -->
 Bromine
 
-<!-- SEG:m68837:entry:auto-128 -->
+<!-- SEG:m68837:entry:auto-141 -->
 Iodine
 
-<!-- SEG:m68837:entry:auto-129 -->
+<!-- SEG:m68837:entry:auto-142 -->
 hypohalous
 
-<!-- SEG:m68837:entry:auto-130 -->
+<!-- SEG:m68837:entry:auto-143 -->
 HOF
 
-<!-- SEG:m68837:entry:auto-131 -->
+<!-- SEG:m68837:entry:auto-144 -->
 HOCl (7.5)
 
-<!-- SEG:m68837:entry:auto-132 -->
+<!-- SEG:m68837:entry:auto-145 -->
 HOBr (8.7)
 
-<!-- SEG:m68837:entry:auto-133 -->
+<!-- SEG:m68837:entry:auto-146 -->
 HOI (11)
 
-<!-- SEG:m68837:entry:auto-134 -->
+<!-- SEG:m68837:entry:auto-147 -->
 halous
 
-<!-- SEG:m68837:entry:auto-135 -->
+<!-- SEG:m68837:entry:auto-148 -->
 HClO[[sub:2]] (2.0)
 
-<!-- SEG:m68837:entry:auto-136 -->
+<!-- SEG:m68837:entry:auto-149 -->
 halic
 
-<!-- SEG:m68837:entry:auto-137 -->
+<!-- SEG:m68837:entry:auto-150 -->
 HClO[[sub:3]]
 
-<!-- SEG:m68837:entry:auto-138 -->
+<!-- SEG:m68837:entry:auto-151 -->
 HBrO[[sub:3]]
 
-<!-- SEG:m68837:entry:auto-139 -->
+<!-- SEG:m68837:entry:auto-152 -->
 HIO[[sub:3]] (0.8)
 
-<!-- SEG:m68837:entry:auto-140 -->
+<!-- SEG:m68837:entry:auto-153 -->
 perhalic
 
-<!-- SEG:m68837:entry:auto-141 -->
+<!-- SEG:m68837:entry:auto-154 -->
 HClO[[sub:4]]
 
-<!-- SEG:m68837:entry:auto-142 -->
+<!-- SEG:m68837:entry:auto-155 -->
 HBrO[[sub:4]]
 
-<!-- SEG:m68837:entry:auto-143 -->
+<!-- SEG:m68837:entry:auto-156 -->
 HIO[[sub:4]] (1.6)
 
-<!-- SEG:m68837:entry:auto-144 -->
+<!-- SEG:m68837:entry:auto-157 -->
 paraperhalic
 
-<!-- SEG:m68837:entry:auto-145 -->
+<!-- SEG:m68837:entry:auto-158 -->
 H[[sub:5]]IO[[sub:6]] (1.6)
 
 <!-- SEG:m68837:para:fs-idm58677424 -->
@@ -457,6 +496,9 @@ Filtering the insoluble barium sulfate leaves a solution of HClO[[sub:2]]. Chlor
 <!-- SEG:m68837:caption:CNX_Chem_18_09_ChloritIon-caption -->
 Chlorite ions, [[MATH:22]] are produced when chlorous acid reacts with bases.
 
+<!-- SEG:m68837:alt:fs-idm33972736-alt -->
+Three models of molecules are shown, each surrounded by brackets and each with a superscript negative sign outside the brackets. The left molecule shows a chlorine atom with two orbitals occupied by lone pairs of electrons. The chlorine atom is single bonded to two oxygen atoms, all of which are located at 109.5 degree angles from one another. The center molecule shows a space-filling model with a green atom labeled, “C l,” bonded to two red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom with two lone pairs of electrons surrounded by two oxygen atoms on either side, each with four lone pairs of electrons.
+
 <!-- SEG:m68837:para:fs-idp60019552 -->
 Chloric acid, HClO[[sub:3]], and bromic acid, HBrO[[sub:3]], are stable only in solution. The reaction of iodine with concentrated nitric acid produces stable white iodic acid, HIO[[sub:3]]:
 
@@ -466,6 +508,9 @@ It is possible to obtain the lighter halic acids from their barium salts by reac
 <!-- SEG:m68837:caption:CNX_Chem_18_09_ClO3Ion-caption -->
 Chlorate ions, [[MATH:23]] are produced when halic acids react with bases.
 
+<!-- SEG:m68837:alt:fs-idp90696608-alt -->
+Three models of molecules are shown, each surrounded by brackets and each with a superscript negative sign outside the brackets. The left molecule shows a chlorine atom with one orbital occupied by a lone pair of electrons. The chlorine atom is single bonded to three oxygen atoms, all of which are located at 109.5 degree angles from one another. The center molecule shows a space-filling model with a green atom labeled, “C l,” bonded to three red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom with a lone pair of electrons surrounded by three oxygen atoms, each with four lone pairs of electrons.
+
 <!-- SEG:m68837:para:fs-idm25050720 -->
 Perchloric acid, HClO[[sub:4]], forms when treating a perchlorate, such as potassium perchlorate, with sulfuric acid under reduced pressure. The HClO[[sub:4]] can be distilled from the mixture:
 
@@ -474,6 +519,9 @@ Dilute aqueous solutions of perchloric acid are quite stable thermally, but conc
 
 <!-- SEG:m68837:caption:CNX_Chem_18_09_PerchloIon-caption -->
 Perchlorate ions, [[MATH:24]] can be produced when perchloric acid reacts with a base or by electrolysis of hot solutions of their chlorides.
+
+<!-- SEG:m68837:alt:fs-idm61257968-alt -->
+Two models of molecules are shown, both with a superscript negative sign. The left molecule shows a space-filling model with a green atom labeled, “C l,” bonded to four red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom surrounded by four oxygen atoms, each with four lone pairs of electrons. The Lewis structure is surrounded by brackets, and the superscript negative sign appears outside the brackets.
 
 <!-- SEG:m68837:para:fs-idp110410496 -->
 Perbromate salts are difficult to prepare, and the best syntheses currently involve the oxidation of bromates in basic solution with fluorine gas followed by acidification. There are few, if any, commercial uses of this acid or its salts.

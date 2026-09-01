@@ -20,7 +20,7 @@ Explore [[link:visualizations|http://openstax.org/l/16pertrends]] of the periodi
 Variation in Covalent Radius
 
 <!-- SEG:m68735:para:fs-idm81399712 -->
-The quantum mechanical picture makes it difficult to establish a definite size of an atom. However, there are several practical ways to define the radius of atoms and, thus, to determine their relative sizes that give roughly similar values. We will use the {{term}}covalent radius{{/term}} ([[xref:CNX_Chem_06_05_CovalradiT]]), which is defined as one-half the distance between the nuclei of two identical atoms when they are joined by a covalent bond (this measurement is possible because atoms within molecules still retain much of their atomic identity). We know that as we scan down a group, the principal quantum number, [[i:n]], increases by one for each element. Thus, the electrons are being added to a region of space that is increasingly distant from the nucleus. Consequently, the size of the atom (and its covalent radius) must increase as we increase the distance of the outermost electrons from the nucleus. This trend is illustrated for the covalent radii of the halogens in [[xref:fs-idp28766560]] and [[xref:CNX_Chem_06_05_CovalradiT]]. The trends for the entire periodic table can be seen in [[xref:CNX_Chem_06_05_CovalradiT]].
+The quantum mechanical picture makes it difficult to establish a definite size of an atom. However, there are several practical ways to define the radius of atoms and, thus, to determine their relative sizes that give roughly similar values. We will use the [[term:covalent radius|term-00001]] ([[xref:CNX_Chem_06_05_CovalradiT]]), which is defined as one-half the distance between the nuclei of two identical atoms when they are joined by a covalent bond (this measurement is possible because atoms within molecules still retain much of their atomic identity). We know that as we scan down a group, the principal quantum number, [[i:n]], increases by one for each element. Thus, the electrons are being added to a region of space that is increasingly distant from the nucleus. Consequently, the size of the atom (and its covalent radius) must increase as we increase the distance of the outermost electrons from the nucleus. This trend is illustrated for the covalent radii of the halogens in [[xref:fs-idp28766560]] and [[xref:CNX_Chem_06_05_CovalradiT]]. The trends for the entire periodic table can be seen in [[xref:CNX_Chem_06_05_CovalradiT]].
 
 <!-- SEG:m68735:entry:auto-9 -->
 Covalent Radii of the Halogen Group Elements
@@ -82,11 +82,17 @@ At
 <!-- SEG:m68735:caption:CNX_Chem_06_05_CovalradiT-caption -->
 (a) The radius of an atom is defined as one-half the distance between the nuclei in a molecule consisting of two identical atoms joined by a covalent bond. The atomic radius for the halogens increases down the group as [[i:n]] increases. (b) Covalent radii of the elements are shown to scale. The general trend is that radii increase down a group and decrease across a period.
 
+<!-- SEG:m68735:alt:fs-idm144132800-alt -->
+This figure has two parts: a and b. In figure a, four diatomic molecules are shown to illustrate the method of determining the atomic radius of an atom. The first model, in light green, is used to find the F atom radius. Two spheres are pushed very tightly together. The distance between the centers of the two atoms is indicated above the diagram with a double-headed arrow labeled “128 picometers (pm).” The end points of this arrow connect to line segments that extend to the atomic radii below. Beneath the molecule is the label, “F radius equals 128 pm divided by 2 equals 64 pm.” The next three models are similarly used to show the atomic radii of additional atoms. The second diatomic molecule is in a darker shade of green. The distance between the radii is 198 pm. Beneath the molecule is the label, “Cl radius equals 198 pm divided by 2 equals 99 pm.” The third diatomic molecule is in red. The distance between the radii is 228 pm. Beneath the molecule is the label, “Br radius equals 228 pm divided by 2 equals 114 pm.” The fourth diatomic molecule is in purple. The distance between the radii is 266 pm. Beneath the molecule is the label, “I radius equals 266 pm divided by 2 equals 133 pm.” In figure b, a periodic table layout is used to compare relative sizes of atoms, using green spheres. No spheres are provided for the noble or inert gas—group 18 elements. General trends noted are increasing circle size moving from top to bottom in a group, with a general tendency toward increasing atomic radii toward the lower left corner of the periodic table.
+
 <!-- SEG:m68735:caption:CNX_Chem_06_05_Radiigraph-caption -->
 Within each period, the trend in atomic radius decreases as [[i:Z]] increases; for example, from K to Kr. Within each group (e.g., the alkali metals shown in purple), the trend is that atomic radius increases as [[i:Z]] increases.
 
+<!-- SEG:m68735:alt:fs-idm164235920-alt -->
+This graph entitled, “Atomic Radii,” is labeled, “Atomic Number,” on the horizontal axis and, “Radius (p m),” on the vertical axis. Markings are provided every 10 units up to 60 on the horizontal axis beginning at zero. Vertical lines extend from the horizontal axis upward at each of these markings. The vertical axis begins at 0 and increases by 50’s up to 300. Horizontal lines are drawn across the graph at multiples of 50. A black jagged line connects the radii values for elements with atomic numbers 1 through 60 on the graph. Peaks are evident at the locations of the alkali metals: L i, N a, K, R b, and C s, at which points on the graph purple dots are placed and elements are labeled in purple. Similarly, minima exist at the locations of noble or inert gases: H e, N e, A r, K r, X e, and R n, at which points blue dots are placed and element symbols are provided in blue. The locations of period 4 and period 5 transition elements are provided with green dots. These points are clustered together in two locations on the graph which are circled in red and labeled accordingly. The green dots for the transition elements along with the line that connects them form a U shape on the graph within each of the red circles drawn. The atomic radii for the alkali metals in picometers are: L i 167, N a 190, K 243, R b 265, and C s 298. The atomic radii of the noble or inert gases included in the graph in picometers are: H e 31, N e 38, A r 71, K r 88, and X e 108.
+
 <!-- SEG:m68735:para:fs-idm121307184 -->
-As shown in [[xref:CNX_Chem_06_05_Radiigraph]], as we move across a period from left to right, we generally find that each element has a smaller covalent radius than the element preceding it. This might seem counterintuitive because it implies that atoms with more electrons have a smaller atomic radius. This can be explained with the concept of {{term}}effective nuclear charge, [[i:Z]][[sub:eff]]{{/term}}. This is the pull exerted on a specific electron by the nucleus, taking into account any electron–electron repulsions. For hydrogen, there is only one electron and so the nuclear charge ([[i:Z]]) and the effective nuclear charge ([[i:Z]][[sub:eff]]) are equal. For all other atoms, the inner electrons partially [[i:shield]] the outer electrons from the pull of the nucleus, and thus:
+As shown in [[xref:CNX_Chem_06_05_Radiigraph]], as we move across a period from left to right, we generally find that each element has a smaller covalent radius than the element preceding it. This might seem counterintuitive because it implies that atoms with more electrons have a smaller atomic radius. This can be explained with the concept of [[term:effective nuclear charge, [[i:Z]][[sub:eff]]|term-00002]]. This is the pull exerted on a specific electron by the nucleus, taking into account any electron–electron repulsions. For hydrogen, there is only one electron and so the nuclear charge ([[i:Z]]) and the effective nuclear charge ([[i:Z]][[sub:eff]]) are equal. For all other atoms, the inner electrons partially [[i:shield]] the outer electrons from the pull of the nucleus, and thus:
 
 <!-- SEG:m68735:para:fs-idm139062592 -->
 Shielding is determined by the probability of another electron being between the electron of interest and the nucleus, as well as by the electron–electron repulsions the electron of interest encounters. Core electrons are adept at shielding, while electrons in the same valence shell do not block the nuclear attraction experienced by each other as efficiently. Thus, each time we move from one element to the next across a period, [[i:Z]] increases by one, but the shielding increases only slightly. Thus, [[i:Z]][[sub:eff]] increases as we move from left to right across a period. The stronger pull (higher effective nuclear charge) experienced by electrons on the right side of the periodic table draws them closer to the nucleus, making the covalent radii smaller.
@@ -130,6 +136,9 @@ Ionic radius is the measure used to describe the size of an ion. A cation always
 <!-- SEG:m68735:caption:CNX_Chem_06_05_Ionradii-caption -->
 The radius for a cation is smaller than the parent atom (Al), due to the lost electrons; the radius for an anion is larger than the parent (S), due to the gained electrons.
 
+<!-- SEG:m68735:alt:fs-idm119556048-alt -->
+The figure includes spheres in green to represent the relative sizes of A l and S atoms. The relatively large A l sphere in the upper left is labeled 118. The significantly smaller S sphere in the upper right is labeled 104. Beneath each of these spheres is a red sphere. The red sphere in the lower left is very small in comparison to the other spheres and is labeled, “A l superscript 3 plus 68.” The red sphere in the lower right is significantly larger than the other spheres and is labeled, “S superscript 2 negative 170. “
+
 <!-- SEG:m68735:para:fs-idm65452096 -->
 Cations with larger charges are smaller than cations with smaller charges (e.g., V[[sup:2+]] has an ionic radius of 79 pm, while that of V[[sup:3+]] is 64 pm). Proceeding down the groups of the periodic table, we find that cations of successive elements with the same charge generally have larger radii, corresponding to an increase in the principal quantum number, [[i:n]].
 
@@ -137,13 +146,13 @@ Cations with larger charges are smaller than cations with smaller charges (e.g.,
 An anion (negative ion) is formed by the addition of one or more electrons to the valence shell of an atom. This results in a greater repulsion among the electrons and a decrease in [[i:Z]][[sub:eff]] per electron. Both effects (the increased number of electrons and the decreased [[i:Z]][[sub:eff]]) cause the radius of an anion to be larger than that of the parent atom ([[xref:CNX_Chem_06_05_Ionradii]]). For example, a sulfur atom ([Ne]3[[i:s]][[sup:2]]3[[i:p]][[sup:4]]) has a covalent radius of 104 pm, whereas the ionic radius of the sulfide anion ([Ne]3[[i:s]][[sup:2]]3[[i:p]][[sup:6]]) is 170 pm. For consecutive elements proceeding down any group, anions have larger principal quantum numbers and, thus, larger radii.
 
 <!-- SEG:m68735:para:fs-idm1670816 -->
-Atoms and ions that have the same electron configuration are said to be {{term}}isoelectronic{{/term}}. Examples of isoelectronic species are N[[sup:3–]], O[[sup:2–]], F[[sup:–]], Ne, Na[[sup:+]], Mg[[sup:2+]], and Al[[sup:3+]] (1[[i:s]][[sup:2]]2[[i:s]][[sup:2]]2[[i:p]][[sup:6]]). Another isoelectronic series is P[[sup:3–]], S[[sup:2–]], Cl[[sup:–]], Ar, K[[sup:+]], Ca[[sup:2+]], and Sc[[sup:3+]] ([Ne]3[[i:s]][[sup:2]]3[[i:p]][[sup:6]]). For atoms or ions that are isoelectronic, the number of protons determines the size. The greater the nuclear charge, the smaller the radius in a series of isoelectronic ions and atoms.
+Atoms and ions that have the same electron configuration are said to be [[term:isoelectronic|term-00003]]. Examples of isoelectronic species are N[[sup:3–]], O[[sup:2–]], F[[sup:–]], Ne, Na[[sup:+]], Mg[[sup:2+]], and Al[[sup:3+]] (1[[i:s]][[sup:2]]2[[i:s]][[sup:2]]2[[i:p]][[sup:6]]). Another isoelectronic series is P[[sup:3–]], S[[sup:2–]], Cl[[sup:–]], Ar, K[[sup:+]], Ca[[sup:2+]], and Sc[[sup:3+]] ([Ne]3[[i:s]][[sup:2]]3[[i:p]][[sup:6]]). For atoms or ions that are isoelectronic, the number of protons determines the size. The greater the nuclear charge, the smaller the radius in a series of isoelectronic ions and atoms.
 
 <!-- SEG:m68735:title:fs-idm122150768-title -->
 Variation in Ionization Energies
 
 <!-- SEG:m68735:para:fs-idm65502944 -->
-The amount of energy required to remove the most loosely bound electron from a gaseous atom in its ground state is called its first {{term}}ionization energy{{/term}} (IE[[sub:1]]). The first ionization energy for an element, X, is the energy required to form a cation with +1 charge:
+The amount of energy required to remove the most loosely bound electron from a gaseous atom in its ground state is called its first [[term:ionization energy|term-00004]] (IE[[sub:1]]). The first ionization energy for an element, X, is the energy required to form a cation with +1 charge:
 
 <!-- SEG:m68735:para:fs-idm139914704 -->
 The energy required to remove the second most loosely bound electron is called the second ionization energy (IE[[sub:2]]).
@@ -157,184 +166,193 @@ The energy required to remove the third electron is the third ionization energy,
 <!-- SEG:m68735:caption:CNX_Chem_06_05_Firstiongr-caption -->
 The first ionization energy of the elements in the first six periods are plotted against their atomic number.
 
+<!-- SEG:m68735:alt:fs-idm130209312-alt -->
+This figure includes a graph labeled, “Atomic Number,” on the horizontal axis and, “Ionization Energy (k J divided by mol),” on the vertical axis. Markings are provided on the horizontal axis at 10, 18, 36, 54, and 86. Vertical lines extend from the horizontal axis upward at each of these values. The vertical axis begins at 0 and increases by 500’s up to 2500. Horizontal lines are drawn across the graph at multiples of 500. A red jagged line connects the ionization energies for elements with atomic numbers 1 through 86 on the graph. Peaks are evident at the locations of the noble or inert gases: H e, N e, A r, K r, X e, and R n. Similarly, minima exist at the locations of the alkali metals: L i, N a, K, R b, and C s. Elements labeled on the graph and their associated ionization energies are as follows: H 1310, H e 2370, L i 520, B e 900, B 800, C 1090, N 1400, O 1310, F 1680, N e 2080, N a 490, M g 730, P 1060, A r 1520, K 420, Z n 910, A s 960, B r 1140, K r 1350, R b 400, C d 870, X e 1170, T l 590, and R n 1030.
+
 <!-- SEG:m68735:caption:CNX_Chem_06_05_Firstionen-caption -->
 This version of the periodic table shows the first ionization energy (IE[[sub:1]]), in kJ/mol, of selected elements.
+
+<!-- SEG:m68735:alt:fs-idp85824640-alt -->
+The figure includes a periodic table with the title, “First Ionization Energies of Some Elements (k J per mol).” The table identifies the row or period number at the left in purple, and group or column numbers in blue above each column. First ionization energies listed top to bottom for group 1 are: H 1310, L i 520, N a 490, K 420, R b 400, C s 380, and three dots are placed in the box for F r. In group 2 the values are: B e 900, M g 730, C a 590, S r 550, and B a 500. In group 3 the values are: S c 630, Y 620, and L a 540. In group 4, the values are: T i 660, Z r 660, H f 700. In group 5, the values are: V 650, N b 670, and T a 760. In group 6, the values are: C r 660, M o 680, and W 770. In group 7, the values are: M n 710, T c 700, and R e 760. In group 8, the values are: F e 760, R u 720, and O s 840. In group 9, the values are: C o 760, R h 720, and I r 890. In group 10, the values are: N i 730, P d 800, and P t 870. In group 11, the values are: C u 740, A g 730, and A u 890. In group 12, the values are: Z n 910, C d 870, and H g 1000. In group 13, the values are: B 800, A l 580, G a 580, I n 560, and T l 590. In group 14, the values are: C 1090, S i 780, G e 780, S n 700, and P b 710. In group 15, the values are: N 1400, P 1060, A s 960, S b 830, and B i 800. In group 16, the values are: O 1310, S 1000, S e 950, T e 870, and P o 810. In group 17, the values are: F 1680, C l 1250, B r 1140, I 1010, and A t has three dots. In group 18, the values listed are: B e 2370, N e 2080, A r 1520, K r 1350, X e 1170, and R n 1030.
 
 <!-- SEG:m68735:para:fs-idm146806928 -->
 Another deviation occurs as orbitals become more than one-half filled. The first ionization energy for oxygen is slightly less than that for nitrogen, despite the trend in increasing IE[[sub:1]] values across a period. Looking at the orbital diagram of oxygen, we can see that removing one electron will eliminate the electron–electron repulsion caused by pairing the electrons in the 2[[i:p]] orbital and will result in a half-filled orbital (which is energetically favorable). Analogous changes occur in succeeding periods (note the dip for sulfur after phosphorus in [[xref:CNX_Chem_06_05_Firstionen]]).
 
+<!-- SEG:m68735:alt:CNX_Chem_06_05_Oxygen122_img-alt -->
+This figure includes the element symbol O followed by the electron configuration 1 s superscript 2 2 s superscript 2 2 p superscript 4. An orbital diagram follows, which consists of two individual squares, labeled as, “1 s,” and, “2 s,” below followed by a grouping of three connected squares which are labeled, “2 p.” All boxes are oriented in a row. The two individual squares and the first square in the row of connected squares contain a pair of half arrows. One half arrow in each pair points up, and one points down. The downward pointing arrow in the first square in the row of connected squares is red. The remaining two squares each contain single upward pointing half arrows.
+
 <!-- SEG:m68735:para:fs-idm10621984 -->
 Removing an electron from a cation is more difficult than removing an electron from a neutral atom because of the greater electrostatic attraction to the cation. Likewise, removing an electron from a cation with a higher positive charge is more difficult than removing an electron from an ion with a lower charge. Thus, successive ionization energies for one element always increase. As seen in [[xref:fs-idp3693744]], there is a large increase in the ionization energies for each element. This jump corresponds to removal of the core electrons, which are harder to remove than the valence electrons. For example, Sc and Ga both have three valence electrons, so the rapid increase in ionization energy occurs after the third ionization.
 
-<!-- SEG:m68735:entry:auto-57 -->
+<!-- SEG:m68735:entry:auto-63 -->
 Successive Ionization Energies for Selected Elements (kJ/mol)
 
-<!-- SEG:m68735:entry:auto-58 -->
+<!-- SEG:m68735:entry:auto-64 -->
 [[b:Element]]
 
-<!-- SEG:m68735:entry:auto-59 -->
+<!-- SEG:m68735:entry:auto-65 -->
 [[b:IE[[sub:1]]]]
 
-<!-- SEG:m68735:entry:auto-60 -->
+<!-- SEG:m68735:entry:auto-66 -->
 [[b:IE[[sub:2]]]]
 
-<!-- SEG:m68735:entry:auto-61 -->
+<!-- SEG:m68735:entry:auto-67 -->
 [[b:IE[[sub:3]]]]
 
-<!-- SEG:m68735:entry:auto-62 -->
+<!-- SEG:m68735:entry:auto-68 -->
 [[b:IE[[sub:4]]]]
 
-<!-- SEG:m68735:entry:auto-63 -->
+<!-- SEG:m68735:entry:auto-69 -->
 [[b:IE[[sub:5]]]]
 
-<!-- SEG:m68735:entry:auto-64 -->
+<!-- SEG:m68735:entry:auto-70 -->
 [[b:IE[[sub:6]]]]
 
-<!-- SEG:m68735:entry:auto-65 -->
+<!-- SEG:m68735:entry:auto-71 -->
 [[b:IE[[sub:7]]]]
 
-<!-- SEG:m68735:entry:auto-66 -->
+<!-- SEG:m68735:entry:auto-72 -->
 K
 
-<!-- SEG:m68735:entry:auto-67 -->
+<!-- SEG:m68735:entry:auto-73 -->
 418.8
 
-<!-- SEG:m68735:entry:auto-68 -->
+<!-- SEG:m68735:entry:auto-74 -->
 3051.8
 
-<!-- SEG:m68735:entry:auto-69 -->
+<!-- SEG:m68735:entry:auto-75 -->
 4419.6
 
-<!-- SEG:m68735:entry:auto-70 -->
+<!-- SEG:m68735:entry:auto-76 -->
 5876.9
 
-<!-- SEG:m68735:entry:auto-71 -->
+<!-- SEG:m68735:entry:auto-77 -->
 7975.5
 
-<!-- SEG:m68735:entry:auto-72 -->
+<!-- SEG:m68735:entry:auto-78 -->
 9590.6
 
-<!-- SEG:m68735:entry:auto-73 -->
+<!-- SEG:m68735:entry:auto-79 -->
 11343
 
-<!-- SEG:m68735:entry:auto-74 -->
+<!-- SEG:m68735:entry:auto-80 -->
 Ca
 
-<!-- SEG:m68735:entry:auto-75 -->
+<!-- SEG:m68735:entry:auto-81 -->
 589.8
 
-<!-- SEG:m68735:entry:auto-76 -->
+<!-- SEG:m68735:entry:auto-82 -->
 1145.4
 
-<!-- SEG:m68735:entry:auto-77 -->
+<!-- SEG:m68735:entry:auto-83 -->
 4912.4
 
-<!-- SEG:m68735:entry:auto-78 -->
+<!-- SEG:m68735:entry:auto-84 -->
 6490.6
 
-<!-- SEG:m68735:entry:auto-79 -->
+<!-- SEG:m68735:entry:auto-85 -->
 8153.0
 
-<!-- SEG:m68735:entry:auto-80 -->
+<!-- SEG:m68735:entry:auto-86 -->
 10495.7
 
-<!-- SEG:m68735:entry:auto-81 -->
+<!-- SEG:m68735:entry:auto-87 -->
 12272.9
 
-<!-- SEG:m68735:entry:auto-82 -->
+<!-- SEG:m68735:entry:auto-88 -->
 Sc
 
-<!-- SEG:m68735:entry:auto-83 -->
+<!-- SEG:m68735:entry:auto-89 -->
 633.1
 
-<!-- SEG:m68735:entry:auto-84 -->
+<!-- SEG:m68735:entry:auto-90 -->
 1235.0
 
-<!-- SEG:m68735:entry:auto-85 -->
+<!-- SEG:m68735:entry:auto-91 -->
 2388.7
 
-<!-- SEG:m68735:entry:auto-86 -->
+<!-- SEG:m68735:entry:auto-92 -->
 7090.6
 
-<!-- SEG:m68735:entry:auto-87 -->
+<!-- SEG:m68735:entry:auto-93 -->
 8842.9
 
-<!-- SEG:m68735:entry:auto-88 -->
+<!-- SEG:m68735:entry:auto-94 -->
 10679.0
 
-<!-- SEG:m68735:entry:auto-89 -->
+<!-- SEG:m68735:entry:auto-95 -->
 13315.0
 
-<!-- SEG:m68735:entry:auto-90 -->
+<!-- SEG:m68735:entry:auto-96 -->
 Ga
 
-<!-- SEG:m68735:entry:auto-91 -->
+<!-- SEG:m68735:entry:auto-97 -->
 578.8
 
-<!-- SEG:m68735:entry:auto-92 -->
+<!-- SEG:m68735:entry:auto-98 -->
 1979.4
 
-<!-- SEG:m68735:entry:auto-93 -->
+<!-- SEG:m68735:entry:auto-99 -->
 2964.6
 
-<!-- SEG:m68735:entry:auto-94 -->
+<!-- SEG:m68735:entry:auto-100 -->
 6180
 
-<!-- SEG:m68735:entry:auto-95 -->
+<!-- SEG:m68735:entry:auto-101 -->
 8298.7
 
-<!-- SEG:m68735:entry:auto-96 -->
+<!-- SEG:m68735:entry:auto-102 -->
 10873.9
 
-<!-- SEG:m68735:entry:auto-97 -->
+<!-- SEG:m68735:entry:auto-103 -->
 13594.8
 
-<!-- SEG:m68735:entry:auto-98 -->
+<!-- SEG:m68735:entry:auto-104 -->
 Ge
 
-<!-- SEG:m68735:entry:auto-99 -->
+<!-- SEG:m68735:entry:auto-105 -->
 762.2
 
-<!-- SEG:m68735:entry:auto-100 -->
+<!-- SEG:m68735:entry:auto-106 -->
 1537.5
 
-<!-- SEG:m68735:entry:auto-101 -->
+<!-- SEG:m68735:entry:auto-107 -->
 3302.1
 
-<!-- SEG:m68735:entry:auto-102 -->
+<!-- SEG:m68735:entry:auto-108 -->
 4410.6
 
-<!-- SEG:m68735:entry:auto-103 -->
+<!-- SEG:m68735:entry:auto-109 -->
 9021.4
 
-<!-- SEG:m68735:entry:auto-104 -->
-Not available
-
-<!-- SEG:m68735:entry:auto-105 -->
-Not available
-
-<!-- SEG:m68735:entry:auto-106 -->
-As
-
-<!-- SEG:m68735:entry:auto-107 -->
-944.5
-
-<!-- SEG:m68735:entry:auto-108 -->
-1793.6
-
-<!-- SEG:m68735:entry:auto-109 -->
-2735.5
-
 <!-- SEG:m68735:entry:auto-110 -->
-4836.8
+Not available
 
 <!-- SEG:m68735:entry:auto-111 -->
-6042.9
+Not available
 
 <!-- SEG:m68735:entry:auto-112 -->
-12311.5
+As
 
 <!-- SEG:m68735:entry:auto-113 -->
+944.5
+
+<!-- SEG:m68735:entry:auto-114 -->
+1793.6
+
+<!-- SEG:m68735:entry:auto-115 -->
+2735.5
+
+<!-- SEG:m68735:entry:auto-116 -->
+4836.8
+
+<!-- SEG:m68735:entry:auto-117 -->
+6042.9
+
+<!-- SEG:m68735:entry:auto-118 -->
+12311.5
+
+<!-- SEG:m68735:entry:auto-119 -->
 Not available
 
 <!-- SEG:m68735:example-title:fs-idm65177120-title -->
@@ -368,7 +386,7 @@ Ba
 Variation in Electron Affinities
 
 <!-- SEG:m68735:para:fs-idm62970128 -->
-The {{term}}electron affinity{{/term}} (EA) is the energy change for the process of adding an electron to a gaseous atom to form an anion (negative ion).
+The [[term:electron affinity|term-00005]] (EA) is the energy change for the process of adding an electron to a gaseous atom to form an anion (negative ion).
 
 <!-- SEG:m68735:para:fs-idm33809440 -->
 This process can be either endothermic or exothermic, depending on the element. The EA of some of the elements is given in [[xref:CNX_Chem_06_05_Elaffin]]. You can see that many of these elements have negative values of EA, which means that energy is released when the gaseous atom accepts an electron. However, for some elements, energy is required for the atom to become negatively charged and the value of their EA is positive. Just as with ionization energy, subsequent EA values are associated with forming ions with more charge. The second EA is the energy associated with adding an electron to an anion to form a –2 ion, and so on.
@@ -381,6 +399,9 @@ We also might expect the atom at the top of each group to have the most negative
 
 <!-- SEG:m68735:caption:CNX_Chem_06_05_Elaffin-caption -->
 This version of the periodic table displays the electron affinity values (in kJ/mol) for selected elements.
+
+<!-- SEG:m68735:alt:fs-idm80294800-alt -->
+The figure includes a periodic table with the title, “Electron Affinity Values for Selected Elements (k J per mol).” The table identifies the row or period number at the left in purple, and group or column numbers in blue above each column. Electron affinity values for representative elements are indicated with values marked with asterisks identifying calculated values. The electron affinity values for group 1 (column 1) elements are provided with the element symbols in the table as follows: H negative 72, L i negative 60, N a negative 53, K negative 48, R b negative 46, and C s negative 45. In group 2, the values are: B e positive 240 asterisk, M g positive 230 asterisk, C a positive 150 asterisk, S r positive 160 asterisk, and B a positive 50 asterisk. In group 13, the values are: B negative 23, A l negative 44, G a negative 40 asterisk, I n negative 40 asterisk, and T l negative 50. In group 14, the values are: C negative 123, S i negative 120, G e negative 115, S n negative 121, and P b negative 101. In group 15 the values are: N 0, P negative 74, A s negative 7, S b negative 101, and B i negative 101. In group 16, the values are: O negative 141, S negative 20, S e negative 195, T e negative 190, and P o negative 170. In group 17, the values are: F negative 322, C l negative 348, B r negative 324, I negative 295, and A t negative 270 asterisk. In group 18, the values are: H e positive 20 asterisk, N e negative 30, A r positive 35 asterisk, K r positive 40 asterisk, X e positive 40 asterisk, and R n positive 40 asterisk.
 
 <!-- SEG:m68735:para:fs-idm144469568 -->
 The properties discussed in this section (size of atoms and ions, effective nuclear charge, ionization energies, and electron affinities) are central to understanding chemical reactivity. For example, because fluorine has an energetically favorable EA and a large energy barrier to ionization (IE), it is much easier to form fluorine anions than cations. Metallic properties including conductivity and malleability (the ability to be formed into sheets) depend on having electrons that can be removed easily. Thus, metallic character increases as we move down a group and decreases across a period in the same trend observed for atomic size because it is easier to remove an electron that is farther away from the nucleus.

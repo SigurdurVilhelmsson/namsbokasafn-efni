@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68802",
-  "extractedAt": "2026-07-07T09:12:43.013Z",
+  "extractedAt": "2026-08-31T19:08:41.968Z",
   "sourceHash": "740c7d660beec4e5",
-  "segmentCount": 10,
+  "segmentCount": 11,
   "segmentIds": [
     "m68802:title:auto-1",
     "m68802:abstract-item:abstract-item-1",
@@ -14,6 +14,7 @@
     "m68802:abstract-item:abstract-item-6",
     "m68802:abstract-item:abstract-item-7",
     "m68802:caption:CNX_Chem_14_00_Sinkhole-caption",
+    "m68802:alt:fs-idp47373024-alt",
     "m68802:para:fs-idp162964256"
   ],
   "equationCount": 0,

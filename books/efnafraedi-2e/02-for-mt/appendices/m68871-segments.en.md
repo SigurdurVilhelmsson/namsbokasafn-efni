@@ -8,19 +8,19 @@ Half-Lives for Several Radioactive Isotopes
 Isotope
 
 <!-- SEG:m68871:entry:auto-4 -->
-Half-Life {{fn}}y = years, d = days, h = hours, m = minutes, s = seconds{{/fn}}
+Half-Life [[fn:y = years, d = days, h = hours, m = minutes, s = seconds|fs-idp94055520]]
 
 <!-- SEG:m68871:entry:auto-5 -->
-Type of Emission {{fn}}[[i:E.C.]] = electron capture, [[i:S.F.]] = Spontaneous fission{{/fn}}
+Type of Emission [[fn:[[i:E.C.]] = electron capture, [[i:S.F.]] = Spontaneous fission|fs-idp208188688]]
 
 <!-- SEG:m68871:entry:auto-6 -->
 Isotope
 
 <!-- SEG:m68871:entry:auto-7 -->
-Half-Life {{fn}}y = years, d = days, h = hours, m = minutes, s = seconds{{/fn}}
+Half-Life [[fn:y = years, d = days, h = hours, m = minutes, s = seconds|fs-idp6707392]]
 
 <!-- SEG:m68871:entry:auto-8 -->
-Type of Emission {{fn}}[[i:E.C.]] = electron capture, [[i:S.F.]] = Spontaneous fission{{/fn}}
+Type of Emission [[fn:[[i:E.C.]] = electron capture, [[i:S.F.]] = Spontaneous fission|fs-idp119558320]]
 
 <!-- SEG:m68871:entry:auto-9 -->
 [[MATH:1]]

@@ -1,0 +1,149 @@
+{
+  "moduleId": "m00193",
+  "title": {
+    "segmentId": "m00193:title:auto-1",
+    "text": "Trisubstituted Benzenes: Additivity of Effects"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "389869af-7976-4b8f-8344-5b7e8e607fcb"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00193:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00193:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00193:alt:fig-00001-alt",
+          "text": "Para-nitrotoluene reacts with molecular bromine in the presence of iron tribromide to form 2-bromo-4-nitrotoluene. The directing effects of the methyl and nitro groups are labeled."
+        },
+        "src": "../../media/OChem_16_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00193:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00193:alt:fig-00002-alt",
+          "text": "Para-methylphenol reacts with molecular bromine in the presence of iron tribromide to yield 2-bromo-4-methylphenol. The directing effects of the methyl and nitro groups are labeled."
+        },
+        "src": "../../media/OChem_16_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00193:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00193:alt:fig-00003-alt",
+          "text": "Meta-chlorotoluene reacts with chlorine and iron trichloride to yield 3,4-dichlorotoluene and 2,5-dichlorotoluene. C 2 of reactant is too hindered for reaction to occur. Ortho-nitrotoluene reacts with chlorine and iron trichloride forming 2-chloro-6-nitrotoluene and 4-chloro-2-nitrotoluene."
+        },
+        "src": "../../media/OChem_16_05_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00193:example-title:exam-00001-title",
+        "text": "Predicting the Product of Substitution on a Disubstituted Benzene"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00193:para:para-00005"
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00193:para:para-00006",
+          "title": {
+            "segmentId": "m00193:para-title:para-00006-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "title": {
+            "segmentId": "m00193:para-title:para-00007-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00193:alt:fig-00004-alt",
+          "text": "Para-methylbenzoic acid reacts with molecular bromine in the presence of iron tribromide to yield 3-bromo-4-methylbenzoic acid."
+        },
+        "src": "../../media/OChem_16_05_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00193:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

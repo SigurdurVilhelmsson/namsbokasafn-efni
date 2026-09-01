@@ -1,0 +1,906 @@
+{
+  "moduleId": "m00328",
+  "title": {
+    "segmentId": "m00328:title:auto-1",
+    "text": "How Do Enzymes Work? Citrate Synthase"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "fbebf2f0-34be-466d-85c5-7c25d759bbc7"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00328:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00328:alt:fig-00001-alt",
+          "text": "Oxaloacetate reacts with acetyl Co A in the presence of citrate synthase to form citrate and H S Co A."
+        },
+        "src": "../../media/OChem_26_11_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00328:para:para-00002"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00328:table-title:table-00001-title",
+        "text": "Structures and Functions of Some Common Coenzymes"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00328:alt:OChem_26_11_002a_jpg-alt",
+                "text": "The structures of adenosine triphosphate (A T P), C o A, nicotinamide adenine dinucleotide (phosphate)  cation, and flavin adenine dinucleotide.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_11_002a.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00328:alt:OChem_26_11_002b_jpg-alt",
+                "text": "The structures of tetrahydrofolate (transfer of C 1 units), S-adenosylmethionine (methyl transfer), lipoic acid (acyl transfer), pyridoxal phosphate (amino acid metabolism), thiamin diphosphate (decarboxylation) and biotin (carboxylation).",
+                "mediaId": null,
+                "src": "../../media/OChem_26_11_002b.jpg"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00328:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00328:alt:fig-00002-alt",
+          "text": "Part (a) is the space-filling model of citrate synthase. Part (b) is the ribbon model. Part (c) is the active site where oxaloacetate and an unreactive coenzyme are bound."
+        },
+        "src": "../../media/OChem_26_11_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00328:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00328:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00328:alt:fig-00003-alt",
+          "text": "The mechanism of acetyl Co A reacting with oxaloacetate in the presence of (S)-acetyl Co  A to form citrate and H S Co A."
+        },
+        "src": "../../media/OChem_26_11_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00328:title:sect-00001-title",
+        "text": "The Protein Data Bank"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00328:para:para-00004"
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00328:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00328:caption:fig-00004-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00328:alt:fig-00004-alt",
+              "text": "The home page of the protein data bank (P D B) at www.rcsb.org"
+            },
+            "src": "../../media/OSX_OrgChem_26_98_DataBank.png",
+            "mimeType": "image/png"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00328:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00328:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00328:caption:fig-00005-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00328:alt:fig-00005-alt",
+              "text": "The coiled ribbon structure of citrate synthase. The structure has ribbons of green, blue, yellow, red, and orange colors."
+            },
+            "src": "../../media/OSX_OrgChem_26_98_CitrateImg.png",
+            "mimeType": "image/png"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-10"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-11"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-12"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-13"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-14"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-15"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-16"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-17"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-18"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-19"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-20"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-21"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-22"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-23"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00001-item-24"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00328:title:sect-00003-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00328:para:para-00008"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00328:para:para-00009"
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00328:para:para-00010"
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00328:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00328:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00328:para:para-00013"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "summary-reactions",
+      "title": {
+        "segmentId": "m00328:title:sect-00004-title",
+        "text": "Summary of Reactions"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00002",
+          "listType": "enumerated",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00002-item-1",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00003",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00328:item:list-00003-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00328:item:list-00003-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00328:item:list-00003-item-3"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00328:item:list-00003-item-4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00002-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00328:item:list-00002-item-3",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00004",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00328:item:list-00004-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00328:item:list-00004-item-2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00328:alt:fig-00006-alt",
+              "text": "A carboxylic acid reacts with bromine, phosphorus tribromide, and water to form a bromo-substituted acid that reacts with ammonia to form an amino acid."
+            },
+            "src": "../../media/OChem_26_EC_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00328:alt:fig-00007-alt",
+              "text": "Three-step reaction to form an R-substituted alpha amino acid via diethylacetamidomalonate reaction with sodium ethoxide, an alkyl halide (R X), and hydronium ion decarboxylation."
+            },
+            "src": "../../media/OChem_26_EC_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00328:alt:fig-00008-alt",
+              "text": "An alpha-keto acid undergoes reductive amination in the presence of ammonia and sodium borohydride to form an alpha-amino acid."
+            },
+            "src": "../../media/OChem_26_EC_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00328:alt:fig-00009-alt",
+              "text": "A (Z) enamido acid reacts with hydrogen, rhodium catalyst and boron tetrafluoride ion, sodium hydroxide, and water to form an (S)-amino acid."
+            },
+            "src": "../../media/OChem_26_EC_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00328:alt:fig-00010-alt",
+              "text": "An illustration shows a reaction wherein two reactants form two products. The first reactant shows a phenyl group bonded to nitrogen double bonded to carbon at the top which is double bonded to a green sulfur at the top. The second reactant shows a carbon bonded to another carbon at the top; the carbon at bottom is bonded to a blue amino group on the left wedge bonded to a hydrogen and dash bonded to R at the bottom right. The top carbon is double bonded to pink oxygen and single bonded to blue nitrogen monohydride bonded to an encircled peptide. The first product shows a cyclopentane with a nitrogen and blue nitrogen monohydride; the ring is double bonded to a pink oxygen and green sulfur; the nitrogen is bonded to a phenyl group; the bottom right position is wedge bonded to hydrogen and dash bonded to R. The second product shows a blue amino group bonded to an encircled peptide."
+            },
+            "src": "../../media/OChem_26_EC_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00328:alt:fig-00011-alt",
+              "text": "A zwitterionic amino acid reacts with  di-tert-butyl pyrocarbonate  in the presence of triethylamine to form a B o c-protected amino acid anion."
+            },
+            "src": "../../media/OChem_26_EC_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00012",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00328:alt:fig-00012-alt",
+              "text": "An amino acid reacts with methanol and hydrochloric acid to form a methyl ester. The same reactant reacts with benzyl alcoholand hydrochloric acid to form a benzyl ester."
+            },
+            "src": "../../media/OChem_26_EC_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00328:title:sect-00005-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00328:para:para-00014"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00020",
+          "segmentId": "m00328:para:para-00020"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00026",
+          "segmentId": "m00328:para:para-00026"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00034",
+          "segmentId": "m00328:para:para-00034"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00041",
+          "segmentId": "m00328:para:para-00041"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00050",
+          "segmentId": "m00328:para:para-00050"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00041",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00042",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00043",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00044",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 11
+}

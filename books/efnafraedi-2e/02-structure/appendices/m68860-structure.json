@@ -440,6 +440,7 @@
           "id": "fs-idm247181504",
           "class": "top-titled",
           "summary": "A table titled “Logarithms and Exponential Numbers” has three columns titled “Number,” “Number Expressed Exponentially,” and “Common Logarithm.” The number 1000 is expressed exponentially as 10 superscript 3 and has a common logarithm of 3. The number 10 is expressed exponentially as 10 superscript 1 and has a common logarithm of 1. The number 1 is expressed exponentially as 10 superscript 0 and has a common logarithm of 0. The number 0.1 is expressed exponentially as 10 superscript negative 1 and has a common logarithm of negative 1. The number 0.001 is expressed exponentially as 10 superscript negative 3 and has a common logarithm of negative 3.",
+          "title": null,
           "rows": [
             {
               "cells": [
@@ -768,6 +769,14 @@
               "type": "para",
               "id": "fs-idm176114816",
               "segmentId": "m68860:para:fs-idm176114816"
+            },
+            {
+              "type": "media",
+              "id": "fs-idm174022560",
+              "alt": {
+                "segmentId": "m68860:alt:fs-idm174022560-alt",
+                "text": "A graph is titled “Dependency of Y on X.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 16. Four points are plotted as a line graph; the points are 1 and 5, 2 and 10, 3 and 7, and 4 and 14."
+              }
             }
           ]
         },
@@ -776,65 +785,66 @@
           "id": "fs-idm165592384",
           "class": "unnumbered",
           "summary": "A table has two columns labeled x and y. In the first row, the value of x is 1, and the value of y is 5. In the second row, the value of x is 2, and the value of y is 10. In the third row, the value of x is 3, and the value of y is 7. In the fourth row, the value of x is 4, and the value of y is 14.",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68860:entry:auto-95",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68860:entry:auto-96",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68860:entry:auto-97",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68860:entry:auto-98",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68860:entry:auto-99",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68860:entry:auto-100",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68860:entry:auto-101",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68860:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-103",
                   "attributes": {
                     "align": "left"
                   }
@@ -844,13 +854,13 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68860:entry:auto-103",
+                  "segmentId": "m68860:entry:auto-104",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68860:entry:auto-104",
+                  "segmentId": "m68860:entry:auto-105",
                   "attributes": {
                     "align": "left"
                   }
@@ -876,6 +886,14 @@
               "type": "para",
               "id": "fs-idm144872640",
               "segmentId": "m68860:para:fs-idm144872640"
+            },
+            {
+              "type": "media",
+              "id": "fs-idp112843584",
+              "alt": {
+                "segmentId": "m68860:alt:fs-idp112843584-alt",
+                "text": "A graph is titled “Y equals x superscript 2 plus 2.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 20. Four points are plotted as a line graph; the points are 1 and 3, 2 and 6, 3 and 11, and 4 and 18."
+              }
             }
           ]
         },
@@ -884,23 +902,8 @@
           "id": "fs-idm70341712",
           "class": "unnumbered",
           "summary": "A table has two columns: the first is labeled x, and the second is labeled y equals x superscript 2 plus 2. In the first row, the value of x is 1, and the value of y equals x superscript 2 plus 2 is 3. In the second row, the value of x is 2, and the value of y equals x superscript 2 plus 2 is 6. In the third row, the value of x is 3, and the value of y equals x superscript 2 plus 2 is 11. In the fourth row, the value of x is 4, and the value of y equals x superscript 2 plus 2 is 18.",
+          "title": null,
           "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68860:entry:auto-108",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68860:entry:auto-109",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
             {
               "cells": [
                 {
@@ -959,6 +962,22 @@
                 },
                 {
                   "segmentId": "m68860:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-119",
                   "attributes": {
                     "align": "left"
                   }

@@ -20,10 +20,10 @@ Calculate enthalpy changes for various chemical reactions
 Explain Hess’s law and use it to compute reaction enthalpies
 
 <!-- SEG:m68727:para:fs-idp160276224 -->
-Thermochemistry is a branch of {{term}}chemical thermodynamics{{/term}}, the science that deals with the relationships between heat, work, and other forms of energy in the context of chemical and physical processes. As we concentrate on thermochemistry in this chapter, we need to consider some widely used concepts of thermodynamics.
+Thermochemistry is a branch of [[term:chemical thermodynamics|term-00001]], the science that deals with the relationships between heat, work, and other forms of energy in the context of chemical and physical processes. As we concentrate on thermochemistry in this chapter, we need to consider some widely used concepts of thermodynamics.
 
 <!-- SEG:m68727:para:fs-idp5509104 -->
-Substances act as reservoirs of energy, meaning that energy can be added to them or removed from them. Energy is stored in a substance when the kinetic energy of its atoms or molecules is raised. The greater kinetic energy may be in the form of increased translations (travel or straight-line motions), vibrations, or rotations of the atoms or molecules. When thermal energy is lost, the intensities of these motions decrease and the kinetic energy falls. The total of all possible kinds of energy present in a substance is called the {{term}}internal energy ([[i:U]]){{/term}}, sometimes symbolized as [[i:E]].
+Substances act as reservoirs of energy, meaning that energy can be added to them or removed from them. Energy is stored in a substance when the kinetic energy of its atoms or molecules is raised. The greater kinetic energy may be in the form of increased translations (travel or straight-line motions), vibrations, or rotations of the atoms or molecules. When thermal energy is lost, the intensities of these motions decrease and the kinetic energy falls. The total of all possible kinds of energy present in a substance is called the [[term:internal energy ([[i:U]])|term-00002]], sometimes symbolized as [[i:E]].
 
 <!-- SEG:m68727:para:fs-idm1690784 -->
 As a system undergoes a change, its internal energy can change, and energy can be transferred from the system to the surroundings, or from the surroundings to the system. Energy is transferred into a system when it absorbs heat ([[i:q]]) from the surroundings or when the surroundings do work ([[i:w]]) on the system. For example, energy is transferred into room-temperature metal wire if it is immersed in hot water (the wire absorbs heat from the water), or if you rapidly bend the wire back and forth (the wire becomes warmer because of the work done on it). Both processes increase the internal energy of the wire, which is reflected in an increase in the wire’s temperature. Conversely, energy is transferred out of a system when heat is lost from the system, or when the system does work on the surroundings.
@@ -32,28 +32,34 @@ As a system undergoes a change, its internal energy can change, and energy can b
 The relationship between internal energy, heat, and work can be represented by the equation:
 
 <!-- SEG:m68727:para:fs-idp146392048 -->
-as shown in [[xref:CNX_Chem_05_03_Systemqw]]. This is one version of the {{term}}first law of thermodynamics{{/term}}, and it shows that the internal energy of a system changes through heat flow into or out of the system (positive [[i:q]] is heat flow in; negative [[i:q]] is heat flow out) or work done on or by the system. The work, [[i:w]], is positive if it is done on the system and negative if it is done by the system.
+as shown in [[xref:CNX_Chem_05_03_Systemqw]]. This is one version of the [[term:first law of thermodynamics|term-00003]], and it shows that the internal energy of a system changes through heat flow into or out of the system (positive [[i:q]] is heat flow in; negative [[i:q]] is heat flow out) or work done on or by the system. The work, [[i:w]], is positive if it is done on the system and negative if it is done by the system.
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_Systemqw-caption -->
 The internal energy, [[i:U]], of a system can be changed by heat flow and work. If heat flows into the system, [[i:q]][[sub:in]], or work is done on the system, [[i:w]][[sub:on]], its internal energy increases, Δ[[i:U]] > 0. If heat flows out of the system, [[i:q]][[sub:out]], or work is done by the system, [[i:w]][[sub:by]], its internal energy decreases, Δ[[i:U]] &lt; 0.
 
+<!-- SEG:m68727:alt:fs-idp1427264-alt -->
+A rectangular diagram is shown. A green oval lies in the center of a tan field inside of a gray box. The tan field is labeled “Surroundings” and the equation “Δ U = q + w” is written at the bottom of the diagram. Two arrows face into the green oval and are labeled “q subscript in” and “w subscript on” while two more arrows face away from the oval and are labeled “q subscript out” and “w subscript by.” The center of the oval contains the terms “Δ U > 0”, “System,” and “Δ U &lt; 0.”
+
 <!-- SEG:m68727:para:fs-idp6896176 -->
-A type of work called {{term}}expansion work{{/term}} (or pressure-volume work) occurs when a system pushes back the surroundings against a restraining pressure, or when the surroundings compress the system. An example of this occurs during the operation of an internal combustion engine. The reaction of gasoline and oxygen is exothermic. Some of this energy is given off as heat, and some does work pushing the piston in the cylinder. The substances involved in the reaction are the system, and the engine and the rest of the universe are the surroundings. The system loses energy by both heating and doing work on the surroundings, and its internal energy decreases. (The engine is able to keep the car moving because this process is repeated many times per second while the engine is running.) We will consider how to determine the amount of work involved in a chemical or physical change in the chapter on thermodynamics.
+A type of work called [[term:expansion work|term-00004]] (or pressure-volume work) occurs when a system pushes back the surroundings against a restraining pressure, or when the surroundings compress the system. An example of this occurs during the operation of an internal combustion engine. The reaction of gasoline and oxygen is exothermic. Some of this energy is given off as heat, and some does work pushing the piston in the cylinder. The substances involved in the reaction are the system, and the engine and the rest of the universe are the surroundings. The system loses energy by both heating and doing work on the surroundings, and its internal energy decreases. (The engine is able to keep the car moving because this process is repeated many times per second while the engine is running.) We will consider how to determine the amount of work involved in a chemical or physical change in the chapter on thermodynamics.
 
 <!-- SEG:m68727:para:fs-idp13166816 -->
 This view of [[link:an internal combustion engine|http://openstax.org/l/16combustion]] illustrates the conversion of energy produced by the exothermic combustion reaction of a fuel such as gasoline into energy of motion.
 
 <!-- SEG:m68727:para:fs-idp120420048 -->
-As discussed, the relationship between internal energy, heat, and work can be represented as Δ[[i:U]] = [[i:q]] + [[i:w]]. Internal energy is an example of a {{term}}state function{{/term}} (or state variable), whereas heat and work are not state functions. The value of a state function depends only on the state that a system is in, and not on how that state is reached. If a quantity is not a state function, then its value [[i:does]] depend on how the state is reached. An example of a state function is altitude or elevation. If you stand on the summit of Mt. Kilimanjaro, you are at an altitude of 5895 m, and it does not matter whether you hiked there or parachuted there. The distance you traveled to the top of Kilimanjaro, however, is not a state function. You could climb to the summit by a direct route or by a more roundabout, circuitous path ([[xref:CNX_Chem_05_03_Summit]]). The distances traveled would differ (distance is not a state function) but the elevation reached would be the same (altitude is a state function).
+As discussed, the relationship between internal energy, heat, and work can be represented as Δ[[i:U]] = [[i:q]] + [[i:w]]. Internal energy is an example of a [[term:state function|term-00005]] (or state variable), whereas heat and work are not state functions. The value of a state function depends only on the state that a system is in, and not on how that state is reached. If a quantity is not a state function, then its value [[i:does]] depend on how the state is reached. An example of a state function is altitude or elevation. If you stand on the summit of Mt. Kilimanjaro, you are at an altitude of 5895 m, and it does not matter whether you hiked there or parachuted there. The distance you traveled to the top of Kilimanjaro, however, is not a state function. You could climb to the summit by a direct route or by a more roundabout, circuitous path ([[xref:CNX_Chem_05_03_Summit]]). The distances traveled would differ (distance is not a state function) but the elevation reached would be the same (altitude is a state function).
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_Summit-caption -->
 Paths X and Y represent two different routes to the summit of Mt. Kilimanjaro. Both have the same change in elevation (altitude or elevation on a mountain is a state function; it does not depend on path), but they have very different distances traveled (distance walked is not a state function; it depends on the path). (credit: modification of work by Paul Shaffner)
 
+<!-- SEG:m68727:alt:fs-idp164506448-alt -->
+An aerial photo depicts a view of Mount Kilimanjaro. A straight, green arrow labeled X is drawn from the term “base,” written at the bottom of the mountain, to the term “Summit,” written at the top of the mountain. Another arrow labeled Y is draw from the base to the summit alongside the green arrow, but this arrow is pink and has three large S-shaped curves along its length.
+
 <!-- SEG:m68727:para:fs-idp107461968 -->
-Chemists ordinarily use a property known as {{term}}enthalpy ([[i:H]]){{/term}} to describe the thermodynamics of chemical and physical processes. Enthalpy is defined as the sum of a system’s internal energy ([[i:U]]) and the mathematical product of its pressure ([[i:P]]) and volume ([[i:V]]):
+Chemists ordinarily use a property known as [[term:enthalpy ([[i:H]])|term-00006]] to describe the thermodynamics of chemical and physical processes. Enthalpy is defined as the sum of a system’s internal energy ([[i:U]]) and the mathematical product of its pressure ([[i:P]]) and volume ([[i:V]]):
 
 <!-- SEG:m68727:para:fs-idm20812336 -->
-Enthalpy is also a state function. Enthalpy values for specific substances cannot be measured directly; only enthalpy [[i:changes]] for chemical or physical processes can be determined. For processes that take place at constant pressure (a common condition for many chemical and physical changes), the {{term}}enthalpy change (Δ[[i:H]]){{/term}} is:
+Enthalpy is also a state function. Enthalpy values for specific substances cannot be measured directly; only enthalpy [[i:changes]] for chemical or physical processes can be determined. For processes that take place at constant pressure (a common condition for many chemical and physical changes), the [[term:enthalpy change (Δ[[i:H]])|term-00007]] is:
 
 <!-- SEG:m68727:para:fs-idm15694224 -->
 The mathematical product [[i:P]]Δ[[i:V]] represents work ([[i:w]]), namely, expansion or pressure-volume work as noted. By their definitions, the arithmetic signs of Δ[[i:V]] and [[i:w]] will always be opposite:
@@ -158,7 +164,7 @@ Answer:
 Δ[[i:H]] = −338 kJ
 
 <!-- SEG:m68727:para:fs-idm18196832 -->
-Enthalpy changes are typically tabulated for reactions in which both the reactants and products are at the same conditions. A {{term}}standard state{{/term}} is a commonly accepted set of conditions used as a reference point for the determination of properties under other different conditions. For chemists, the IUPAC standard state refers to materials under a pressure of 1 bar and solutions at 1 M, and does not specify a temperature. Many thermochemical tables list values with a standard state of 1 atm. Because the Δ[[i:H]] of a reaction changes very little with such small changes in pressure (1 bar = 0.987 atm), Δ[[i:H]] values (except for the most precisely measured values) are essentially the same under both sets of standard conditions. We will include a superscripted “o” in the enthalpy change symbol to designate standard state. Since the usual (but not technically standard) temperature is 298.15 K, this temperature will be assumed unless some other temperature is specified. Thus, the symbol [[MATH:6]] is used to indicate an enthalpy change for a process occurring under these conditions. (The symbol Δ[[i:H]] is used to indicate an enthalpy change for a reaction occurring under nonstandard conditions.)
+Enthalpy changes are typically tabulated for reactions in which both the reactants and products are at the same conditions. A [[term:standard state|term-00008]] is a commonly accepted set of conditions used as a reference point for the determination of properties under other different conditions. For chemists, the IUPAC standard state refers to materials under a pressure of 1 bar and solutions at 1 M, and does not specify a temperature. Many thermochemical tables list values with a standard state of 1 atm. Because the Δ[[i:H]] of a reaction changes very little with such small changes in pressure (1 bar = 0.987 atm), Δ[[i:H]] values (except for the most precisely measured values) are essentially the same under both sets of standard conditions. We will include a superscripted “o” in the enthalpy change symbol to designate standard state. Since the usual (but not technically standard) temperature is 298.15 K, this temperature will be assumed unless some other temperature is specified. Thus, the symbol [[MATH:6]] is used to indicate an enthalpy change for a process occurring under these conditions. (The symbol Δ[[i:H]] is used to indicate an enthalpy change for a reaction occurring under nonstandard conditions.)
 
 <!-- SEG:m68727:para:fs-idp148022240 -->
 The enthalpy changes for many types of chemical and physical processes are available in the reference literature, including those for combustion reactions, phase transitions, and formation reactions. As we discuss these quantities, it is important to pay attention to the [[i:extensive]] nature of enthalpy and enthalpy changes. Since the enthalpy change for a given reaction is proportional to the amounts of substances involved, it may be reported on that basis (i.e., as the Δ[[i:H]] for specific amounts of reactants). However, we often find it more useful to divide one extensive property (Δ[[i:H]]) by another (amount of substance), and report a per-amount [[i:intensive]] value of Δ[[i:H]], often “normalized” to a per-mole basis. (Note that this is similar to determining the intensive property specific heat from the extensive property heat capacity, as seen previously.)
@@ -167,111 +173,111 @@ The enthalpy changes for many types of chemical and physical processes are avail
 Standard Enthalpy of Combustion
 
 <!-- SEG:m68727:para:fs-idp8281184 -->
-{{term}}Standard enthalpy of combustion{{/term}} [[MATH:7]] is the enthalpy change when 1 mole of a substance burns (combines vigorously with oxygen) under standard state conditions; it is sometimes called “heat of combustion.” For example, the enthalpy of combustion of ethanol, −1366.8 kJ/mol, is the amount of heat produced when one mole of ethanol undergoes complete combustion at 25 °C and 1 atmosphere pressure, yielding products also at 25 °C and 1 atm.
+[[term:Standard enthalpy of combustion|term-00009]] [[MATH:7]] is the enthalpy change when 1 mole of a substance burns (combines vigorously with oxygen) under standard state conditions; it is sometimes called “heat of combustion.” For example, the enthalpy of combustion of ethanol, −1366.8 kJ/mol, is the amount of heat produced when one mole of ethanol undergoes complete combustion at 25 °C and 1 atmosphere pressure, yielding products also at 25 °C and 1 atm.
 
 <!-- SEG:m68727:para:fs-idm75327968 -->
-Enthalpies of combustion for many substances have been measured; a few of these are listed in [[xref:fs-idp98710048]]. Many readily available substances with large enthalpies of combustion are used as fuels, including hydrogen, carbon (as coal or charcoal), and {{term}}hydrocarbons{{/term}} (compounds containing only hydrogen and carbon), such as methane, propane, and the major components of gasoline.
-
-<!-- SEG:m68727:entry:auto-59 -->
-Standard Molar Enthalpies of Combustion
-
-<!-- SEG:m68727:entry:auto-60 -->
-Substance
+Enthalpies of combustion for many substances have been measured; a few of these are listed in [[xref:fs-idp98710048]]. Many readily available substances with large enthalpies of combustion are used as fuels, including hydrogen, carbon (as coal or charcoal), and [[term:hydrocarbons|term-00010]] (compounds containing only hydrogen and carbon), such as methane, propane, and the major components of gasoline.
 
 <!-- SEG:m68727:entry:auto-61 -->
-Combustion Reaction
+Standard Molar Enthalpies of Combustion
 
 <!-- SEG:m68727:entry:auto-62 -->
-Enthalpy of Combustion, [[MATH:8]][[MATH:9]]
+Substance
 
 <!-- SEG:m68727:entry:auto-63 -->
-carbon
+Combustion Reaction
 
 <!-- SEG:m68727:entry:auto-64 -->
-[[MATH:10]]
+Enthalpy of Combustion, [[MATH:8]][[MATH:9]]
 
 <!-- SEG:m68727:entry:auto-65 -->
-−393.5
+carbon
 
 <!-- SEG:m68727:entry:auto-66 -->
-hydrogen
+[[MATH:10]]
 
 <!-- SEG:m68727:entry:auto-67 -->
-[[MATH:11]]
+−393.5
 
 <!-- SEG:m68727:entry:auto-68 -->
-−285.8
+hydrogen
 
 <!-- SEG:m68727:entry:auto-69 -->
-magnesium
+[[MATH:11]]
 
 <!-- SEG:m68727:entry:auto-70 -->
-[[MATH:12]]
+−285.8
 
 <!-- SEG:m68727:entry:auto-71 -->
-−601.6
+magnesium
 
 <!-- SEG:m68727:entry:auto-72 -->
-sulfur
+[[MATH:12]]
 
 <!-- SEG:m68727:entry:auto-73 -->
-[[MATH:13]]
+−601.6
 
 <!-- SEG:m68727:entry:auto-74 -->
-−296.8
+sulfur
 
 <!-- SEG:m68727:entry:auto-75 -->
-carbon monoxide
+[[MATH:13]]
 
 <!-- SEG:m68727:entry:auto-76 -->
-[[MATH:14]]
+−296.8
 
 <!-- SEG:m68727:entry:auto-77 -->
-−283.0
+carbon monoxide
 
 <!-- SEG:m68727:entry:auto-78 -->
-methane
+[[MATH:14]]
 
 <!-- SEG:m68727:entry:auto-79 -->
-[[MATH:15]]
+−283.0
 
 <!-- SEG:m68727:entry:auto-80 -->
-−890.8
+methane
 
 <!-- SEG:m68727:entry:auto-81 -->
-acetylene
+[[MATH:15]]
 
 <!-- SEG:m68727:entry:auto-82 -->
-[[MATH:16]]
+−890.8
 
 <!-- SEG:m68727:entry:auto-83 -->
-−1301.1
+acetylene
 
 <!-- SEG:m68727:entry:auto-84 -->
-ethanol
+[[MATH:16]]
 
 <!-- SEG:m68727:entry:auto-85 -->
-[[MATH:17]]
+−1301.1
 
 <!-- SEG:m68727:entry:auto-86 -->
-−1366.8
+ethanol
 
 <!-- SEG:m68727:entry:auto-87 -->
-methanol
+[[MATH:17]]
 
 <!-- SEG:m68727:entry:auto-88 -->
-[[MATH:18]]
+−1366.8
 
 <!-- SEG:m68727:entry:auto-89 -->
-−726.1
+methanol
 
 <!-- SEG:m68727:entry:auto-90 -->
-isooctane
+[[MATH:18]]
 
 <!-- SEG:m68727:entry:auto-91 -->
-[[MATH:19]]
+−726.1
 
 <!-- SEG:m68727:entry:auto-92 -->
+isooctane
+
+<!-- SEG:m68727:entry:auto-93 -->
+[[MATH:19]]
+
+<!-- SEG:m68727:entry:auto-94 -->
 –5465.5
 
 <!-- SEG:m68727:example-title:fs-idp90124816-title -->
@@ -313,20 +319,29 @@ Answer:
 <!-- SEG:m68727:caption:CNX_Chem_05_03_GasBurning-caption -->
 The combustion of gasoline is very exothermic. (credit: modification of work by “AlexEagle”/Flickr)
 
+<!-- SEG:m68727:alt:fs-idm3605664-alt -->
+A picture shows a large ball of fire burning on a road. A fire truck and fireman are shown in the foreground.
+
 <!-- SEG:m68727:note-title:fs-idp90130208-title -->
 Emerging Algae-Based Energy Technologies (Biofuels)
 
 <!-- SEG:m68727:para:fs-idp90130976 -->
-As reserves of fossil fuels diminish and become more costly to extract, the search is ongoing for replacement fuel sources for the future. Among the most promising biofuels are those derived from algae ([[xref:CNX_Chem_05_03_AlgalFuel1]]). The species of algae used are nontoxic, biodegradable, and among the world’s fastest growing organisms. About 50% of algal weight is oil, which can be readily converted into fuel such as biodiesel. Algae can yield 26,000 gallons of {{term}}biofuel{{/term}} per hectare—much more energy per acre than other crops. Some strains of algae can flourish in brackish water that is not usable for growing other crops. Algae can produce biodiesel, biogasoline, ethanol, butanol, methane, and even jet fuel.
+As reserves of fossil fuels diminish and become more costly to extract, the search is ongoing for replacement fuel sources for the future. Among the most promising biofuels are those derived from algae ([[xref:CNX_Chem_05_03_AlgalFuel1]]). The species of algae used are nontoxic, biodegradable, and among the world’s fastest growing organisms. About 50% of algal weight is oil, which can be readily converted into fuel such as biodiesel. Algae can yield 26,000 gallons of [[term:biofuel|term-00011]] per hectare—much more energy per acre than other crops. Some strains of algae can flourish in brackish water that is not usable for growing other crops. Algae can produce biodiesel, biogasoline, ethanol, butanol, methane, and even jet fuel.
 
 <!-- SEG:m68727:para:fs-idp157750544 -->
-According to the US Department of Energy, only 39,000 square kilometers (about 0.4% of the land mass of the US or less than [[MATH:22]] of the area used to grow corn) can produce enough algal fuel to replace all the petroleum-based fuel used in the US. The cost of algal fuels is becoming more competitive—for instance, the US Air Force is producing jet fuel from algae at a total cost of under $5 per gallon. {{fn}}For more on algal fuel, see http://www.theguardian.com/environment/2010/feb/13/algae-solve-pentagon-fuel-problem.{{/fn}} The process used to produce algal fuel is as follows: grow the algae (which use sunlight as their energy source and CO[[sub:2]] as a raw material); harvest the algae; extract the fuel compounds (or precursor compounds); process as necessary (e.g., perform a transesterification reaction to make biodiesel); purify; and distribute ([[xref:CNX_Chem_05_03_AlgalFuel2]]).
+According to the US Department of Energy, only 39,000 square kilometers (about 0.4% of the land mass of the US or less than [[MATH:22]] of the area used to grow corn) can produce enough algal fuel to replace all the petroleum-based fuel used in the US. The cost of algal fuels is becoming more competitive—for instance, the US Air Force is producing jet fuel from algae at a total cost of under $5 per gallon. [[fn:For more on algal fuel, see http://www.theguardian.com/environment/2010/feb/13/algae-solve-pentagon-fuel-problem.|fs-idp167162288]] The process used to produce algal fuel is as follows: grow the algae (which use sunlight as their energy source and CO[[sub:2]] as a raw material); harvest the algae; extract the fuel compounds (or precursor compounds); process as necessary (e.g., perform a transesterification reaction to make biodiesel); purify; and distribute ([[xref:CNX_Chem_05_03_AlgalFuel2]]).
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_AlgalFuel1-caption -->
 (a) Tiny algal organisms can be (b) grown in large quantities and eventually (c) turned into a useful fuel such as biodiesel. (credit a: modification of work by Micah Sittig; credit b: modification of work by Robert Kerton; credit c: modification of work by John F. Williams)
 
+<!-- SEG:m68727:alt:fs-idp157749040-alt -->
+Three pictures are shown and labeled a, b, and c. Picture a shows a microscopic view of algal organisms. They are brown, multipart strands and net-like structures on a background of light violet. Picture b shows five large tubs full of a brown liquid containing these algal organisms. Picture c depicts a cylinder full of green liquid in the foreground and a poster in the background that has the title “From Field to Fleet.”
+
 <!-- SEG:m68727:caption:CNX_Chem_05_03_AlgalFuel2-caption -->
 Algae convert sunlight and carbon dioxide into oil that is harvested, extracted, purified, and transformed into a variety of renewable fuels.
+
+<!-- SEG:m68727:alt:fs-idp167165312-alt -->
+A flowchart is shown that contains pictures and words. Reading from left to right, the terms “Grow,” “Harvest,” “Extract,” “Process and purify,” and “Jet fuel gasoline diesel” are shown with right-facing arrows in between each. Above each term, respectively, are diagrams of three containers, three cylinders lying side-by-side, a pyramid-like container with liquid inside, a factory, and a fuel pump. In the space above all of the diagrams and to the left of the images is a diagram of the sun.
 
 <!-- SEG:m68727:para:fs-idp93921200 -->
 Click [[link:here|http://openstax.org/l/16biofuel]] to learn more about the process of creating algae biofuel.
@@ -335,7 +350,7 @@ Click [[link:here|http://openstax.org/l/16biofuel]] to learn more about the proc
 Standard Enthalpy of Formation
 
 <!-- SEG:m68727:para:fs-idp93922992 -->
-A {{term}}standard enthalpy of formation [[MATH:23]]{{/term}} is an enthalpy change for a reaction in which exactly 1 mole of a pure substance is formed from free elements in their most stable states under standard state conditions. These values are especially useful for computing or predicting enthalpy changes for chemical reactions that are impractical or dangerous to carry out, or for processes for which it is difficult to make measurements. If we have values for the appropriate standard enthalpies of formation, we can determine the enthalpy change for any reaction, which we will practice in the next section on Hess’s law.
+A [[term:standard enthalpy of formation [[MATH:23]]|term-00012]] is an enthalpy change for a reaction in which exactly 1 mole of a pure substance is formed from free elements in their most stable states under standard state conditions. These values are especially useful for computing or predicting enthalpy changes for chemical reactions that are impractical or dangerous to carry out, or for processes for which it is difficult to make measurements. If we have values for the appropriate standard enthalpies of formation, we can determine the enthalpy change for any reaction, which we will practice in the next section on Hess’s law.
 
 <!-- SEG:m68727:para:fs-idp185900096 -->
 The standard enthalpy of formation of CO[[sub:2]]([[i:g]]) is −393.5 kJ/mol. This is the enthalpy change for the exothermic reaction:
@@ -437,7 +452,7 @@ Hess’s Law
 There are two ways to determine the amount of heat involved in a chemical change: measure it experimentally, or calculate it from other experimentally determined enthalpy changes. Some reactions are difficult, if not impossible, to investigate and make accurate measurements for experimentally. And even when a reaction is not hard to perform or measure, it is convenient to be able to determine the heat involved in a reaction without having to perform an experiment.
 
 <!-- SEG:m68727:para:fs-idp177508528 -->
-This type of calculation usually involves the use of {{term}}Hess’s law{{/term}}, which states: [[i:If a process can be written as the sum of several stepwise processes, the enthalpy change of the total process equals the sum of the enthalpy changes of the various steps]]. Hess’s law is valid because enthalpy is a state function: Enthalpy changes depend only on where a chemical process starts and ends, but not on the path it takes from start to finish. For example, we can think of the reaction of carbon with oxygen to form carbon dioxide as occurring either directly or by a two-step process. The direct process is written:
+This type of calculation usually involves the use of [[term:Hess’s law|term-00013]], which states: [[i:If a process can be written as the sum of several stepwise processes, the enthalpy change of the total process equals the sum of the enthalpy changes of the various steps]]. Hess’s law is valid because enthalpy is a state function: Enthalpy changes depend only on where a chemical process starts and ends, but not on the path it takes from start to finish. For example, we can think of the reaction of carbon with oxygen to form carbon dioxide as occurring either directly or by a two-step process. The direct process is written:
 
 <!-- SEG:m68727:para:fs-idp51924752 -->
 In the two-step process, first carbon monoxide is formed:
@@ -459,6 +474,9 @@ The result is shown in [[xref:CNX_Chem_05_03_HessCO2]]. We see that Δ[[i:H]] of
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_HessCO2-caption -->
 The formation of CO[[sub:2]]([[i:g]]) from its elements can be thought of as occurring in two steps, which sum to the overall reaction, as described by Hess’s law. The horizontal blue lines represent enthalpies. For an exothermic process, the products are at lower enthalpy than are the reactants.
+
+<!-- SEG:m68727:alt:fs-idp167194048-alt -->
+A diagram is shown. A long arrow faces upward on the left with the phrase “H increasing.” A horizontal line at the bottom of the diagram is shown with the formula “C O subscript 2 (g)” below it. A horizontal line at the top of the diagram has the formulas “C (s) + O subscript 2 (g)” above it. The top and bottom lines are connected by a downward facing arrow with the value “Δ H = –394 k J” written beside it. Below and to the right of the top horizontal line is a second horizontal line with the equations “C O (g) + one half O subscript 2 (g)” above it. This line and the bottom line are connected by a downward facing arrow with the value “Δ H = –283 k J” written beside it. The same line and the top line are connected by a downward facing arrow with the value “Δ H = –111 k J” written beside it. There are three brackets to the right of the diagram. The first bracket runs from the top horizontal line to the second horizontal line. It is labeled, “Enthalpy of reactants.” The second bracket runs from the second horizontal line to the bottom horizontal line. It is labeled, “Enthalpy of products.” Both of these brackets are included in the third bracket which runs from the top to the bottom of the diagram. It is labeled, “Enthalpy change of exothermic reaction in 1 or 2 steps.”
 
 <!-- SEG:m68727:para:fs-idp167197264 -->
 Before we further practice using Hess’s law, let us recall two important features of Δ[[i:H]].
@@ -581,7 +599,7 @@ Answer:
 −1407 kJ
 
 <!-- SEG:m68727:para:fs-idp120713504 -->
-We also can use {{term}}Hess’s law{{/term}} to determine the enthalpy change of any reaction if the corresponding enthalpies of formation of the reactants and products are available. The stepwise reactions we consider are: (i) decompositions of the reactants into their component elements (for which the enthalpy changes are proportional to the negative of the enthalpies of formation of the reactants), followed by (ii) re-combinations of the elements to give the products (with the enthalpy changes proportional to the enthalpies of formation of the products). The standard enthalpy change of the overall reaction is therefore equal to: (ii) the sum of the standard enthalpies of formation of all the products plus (i) the sum of the negatives of the standard enthalpies of formation of the reactants. This is usually rearranged slightly to be written as follows, with ∑ representing “the sum of” and [[i:n]] standing for the stoichiometric coefficients:
+We also can use [[term:Hess’s law|term-00014]] to determine the enthalpy change of any reaction if the corresponding enthalpies of formation of the reactants and products are available. The stepwise reactions we consider are: (i) decompositions of the reactants into their component elements (for which the enthalpy changes are proportional to the negative of the enthalpies of formation of the reactants), followed by (ii) re-combinations of the elements to give the products (with the enthalpy changes proportional to the enthalpies of formation of the products). The standard enthalpy change of the overall reaction is therefore equal to: (ii) the sum of the standard enthalpies of formation of all the products plus (i) the sum of the negatives of the standard enthalpies of formation of the reactants. This is usually rearranged slightly to be written as follows, with ∑ representing “the sum of” and [[i:n]] standing for the stoichiometric coefficients:
 
 <!-- SEG:m68727:para:fs-idp120729664 -->
 The following example shows in detail why this equation is valid, and how to use it to calculate the enthalpy change for a reaction of interest.
@@ -640,10 +658,10 @@ If a chemical change is carried out at constant pressure and the only work done 
 <!-- SEG:m68727:title:fs-idp165577648-title -->
 Key Equations
 
-<!-- SEG:m68727:entry:auto-215 -->
+<!-- SEG:m68727:entry:auto-221 -->
 [[MATH:71]]
 
-<!-- SEG:m68727:entry:auto-216 -->
+<!-- SEG:m68727:entry:auto-222 -->
 [[MATH:72]]
 
 <!-- SEG:m68727:title:fs-idp167491136-title -->

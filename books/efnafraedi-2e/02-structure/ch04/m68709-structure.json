@@ -29,7 +29,10 @@
       },
       "media": {
         "id": "fs-idp26251152",
-        "alt": "This figure shows a balanced chemical equation followed below by a representation of the equation using space-filling models. The equation reads C H subscript 4 plus 2 O subscript 2 arrow C O subscript 2 plus 2 H subscript 2 O. Under the C H subscript 4, the molecule is shown with a central black sphere, representing a C atom, to which 4 smaller white spheres, representing H atoms, are distributed evenly around. All four H atoms are bonded to the central black C atom. This is followed by a plus sign. Under the 2 O subscript 2, two molecules are shown. The molecules are each composed of two red spheres bonded together. The red spheres represent O atoms. To the right of an arrow and under the C O subscript 2, appears a single molecule with a black central sphere with two red spheres bonded to the left and right. Following a plus sign and under the 2 H subscript 2 O, are two molecules, each with a central red sphere and two smaller white spheres attached to the lower right and lower left sides of the central red sphere. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms.",
+        "alt": {
+          "segmentId": "m68709:alt:fs-idp26251152-alt",
+          "text": "This figure shows a balanced chemical equation followed below by a representation of the equation using space-filling models. The equation reads C H subscript 4 plus 2 O subscript 2 arrow C O subscript 2 plus 2 H subscript 2 O. Under the C H subscript 4, the molecule is shown with a central black sphere, representing a C atom, to which 4 smaller white spheres, representing H atoms, are distributed evenly around. All four H atoms are bonded to the central black C atom. This is followed by a plus sign. Under the 2 O subscript 2, two molecules are shown. The molecules are each composed of two red spheres bonded together. The red spheres represent O atoms. To the right of an arrow and under the C O subscript 2, appears a single molecule with a black central sphere with two red spheres bonded to the left and right. Following a plus sign and under the 2 H subscript 2 O, are two molecules, each with a central red sphere and two smaller white spheres attached to the lower right and lower left sides of the central red sphere. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms."
+        },
         "src": "../../media/CNX_Chem_04_01_rxn2.jpg",
         "mimeType": "image/jpeg"
       }
@@ -98,7 +101,10 @@
       },
       "media": {
         "id": "fs-idp178489152",
-        "alt": "This image has a left side, labeled, “Mixture before reaction” separated by a vertical dashed line from right side labeled, “Mixture after reaction.” On the left side of the figure, two types of molecules are illustrated with space-filling models. Six of the molecules have only two red spheres bonded together. Three of the molecules have four small white spheres evenly distributed about and bonded to a central, larger black sphere. On the right side of the dashed vertical line, two types of molecules which are different from those on the left side are shown. Six of the molecules have a central red sphere to which smaller white spheres are bonded. The white spheres are not opposite each other on the red atoms, giving the molecule a bent shape or appearance. The second molecule type has a central black sphere to which two red spheres are attached on opposite sides, resulting in a linear shape or appearance. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms. On each side of the dashed line, twelve red, three black, and twelve white spheres are present.",
+        "alt": {
+          "segmentId": "m68709:alt:fs-idp178489152-alt",
+          "text": "This image has a left side, labeled, “Mixture before reaction” separated by a vertical dashed line from right side labeled, “Mixture after reaction.” On the left side of the figure, two types of molecules are illustrated with space-filling models. Six of the molecules have only two red spheres bonded together. Three of the molecules have four small white spheres evenly distributed about and bonded to a central, larger black sphere. On the right side of the dashed vertical line, two types of molecules which are different from those on the left side are shown. Six of the molecules have a central red sphere to which smaller white spheres are bonded. The white spheres are not opposite each other on the red atoms, giving the molecule a bent shape or appearance. The second molecule type has a central black sphere to which two red spheres are attached on opposite sides, resulting in a linear shape or appearance. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms. On each side of the dashed line, twelve red, three black, and twelve white spheres are present."
+        },
         "src": "../../media/CNX_Chem_04_01_rxn3.jpg",
         "mimeType": "image/jpeg"
       }
@@ -137,21 +143,10 @@
           "id": "fs-idp140513680",
           "class": "unnumbered",
           "summary": "This is a table with four columns and four rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters C, H, and O. Under the “Reactants” column are the equations “1 times 1 equals 1,” “4 times 1 equals 4,” and “2 times 2 equals 4.” Under the “Products” column are the equations, “1 times 1 equals 1,” “2 times 2 equals 4,” and “( 1 times 2 ) plus ( 2 times 1 ) equals 4.” Under the “Balanced?” column are, “1 equals 1, yes,” “4 equals 4, yes,” “4 equals 4, yes.”",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68709:entry:auto-20",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68709:entry:auto-21",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68709:entry:auto-22",
                   "attributes": {
@@ -163,11 +158,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-24",
                   "attributes": {
@@ -179,7 +170,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-26",
                   "attributes": {
@@ -191,11 +186,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-28",
                   "attributes": {
@@ -207,7 +198,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-30",
                   "attributes": {
@@ -219,11 +214,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-32",
                   "attributes": {
@@ -235,7 +226,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-34",
                   "attributes": {
@@ -244,6 +239,18 @@
                 },
                 {
                   "segmentId": "m68709:entry:auto-35",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-36",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-37",
                   "attributes": {
                     "align": "left"
                   }
@@ -272,21 +279,10 @@
           "id": "fs-idp104786160",
           "class": "unnumbered",
           "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “1 times 1 equals 1.” Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Balanced?” column are, “2 equals 2, yes,” and “1 does not equal 2, no.”",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68709:entry:auto-38",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68709:entry:auto-39",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68709:entry:auto-40",
                   "attributes": {
@@ -298,11 +294,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-42",
                   "attributes": {
@@ -314,7 +306,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-44",
                   "attributes": {
@@ -326,11 +322,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-46",
                   "attributes": {
@@ -342,7 +334,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-48",
                   "attributes": {
@@ -351,6 +347,18 @@
                 },
                 {
                   "segmentId": "m68709:entry:auto-49",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-50",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-51",
                   "attributes": {
                     "align": "left"
                   }
@@ -374,21 +382,10 @@
           "id": "fs-idm15543696",
           "class": "unnumbered",
           "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “2 times 1 equals 2.” The first 2 in the “2 times 2 equals 4” equation is bold. Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Balanced?” column are, “4 does not equal 2, no,” and “2 equals 2, yes.”",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68709:entry:auto-51",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68709:entry:auto-52",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68709:entry:auto-53",
                   "attributes": {
@@ -400,11 +397,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-55",
                   "attributes": {
@@ -416,7 +409,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-57",
                   "attributes": {
@@ -428,11 +425,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-59",
                   "attributes": {
@@ -444,7 +437,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-61",
                   "attributes": {
@@ -453,6 +450,18 @@
                 },
                 {
                   "segmentId": "m68709:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-64",
                   "attributes": {
                     "align": "left"
                   }
@@ -476,21 +485,10 @@
           "id": "fs-idp151419504",
           "class": "unnumbered",
           "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “2 times 1 equals 2.” Under the “Products” column are the equations, “2 times 2 equals 2,” and “1 times 2 equals 2.” The first 2 in the “2 times 2 equals 2” equation is bold. Under the “Balanced?” column are, “4 equals 4, yes,” and “2 equals 2, yes.”",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68709:entry:auto-64",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68709:entry:auto-65",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68709:entry:auto-66",
                   "attributes": {
@@ -502,11 +500,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-68",
                   "attributes": {
@@ -518,7 +512,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-70",
                   "attributes": {
@@ -530,11 +528,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-72",
                   "attributes": {
@@ -546,7 +540,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-74",
                   "attributes": {
@@ -555,6 +553,18 @@
                 },
                 {
                   "segmentId": "m68709:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-77",
                   "attributes": {
                     "align": "left"
                   }
@@ -652,21 +662,10 @@
           "id": "fs-idp107503280",
           "class": "unnumbered",
           "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 5 equals 5.” Under the “Balanced?” column are, “2 equals 2, yes,” and “2 does not equal 5, no.”",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68709:entry:auto-88",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68709:entry:auto-89",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68709:entry:auto-90",
                   "attributes": {
@@ -678,11 +677,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-92",
                   "attributes": {
@@ -694,7 +689,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-94",
                   "attributes": {
@@ -706,11 +705,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-96",
                   "attributes": {
@@ -722,7 +717,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-98",
                   "attributes": {
@@ -731,6 +730,18 @@
                 },
                 {
                   "segmentId": "m68709:entry:auto-99",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-100",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-101",
                   "attributes": {
                     "align": "left"
                   }
@@ -744,21 +755,10 @@
           "id": "fs-idp7305424",
           "class": "unnumbered",
           "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “5 times 2 equals 10.” The 5 in the second equation is bold. Under the “Products” column are the equations, “2 times 2 equals 4,” and “2 times 5 equals 10.” The initial 2 in each equation is bold. Under the “Balanced?” column are, “2 does not equal 4, no,” and “10 equals 10, yes.”",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68709:entry:auto-100",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68709:entry:auto-101",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68709:entry:auto-102",
                   "attributes": {
@@ -770,11 +770,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-104",
                   "attributes": {
@@ -786,7 +782,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-106",
                   "attributes": {
@@ -798,11 +798,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-108",
                   "attributes": {
@@ -814,7 +810,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-110",
                   "attributes": {
@@ -823,6 +823,18 @@
                 },
                 {
                   "segmentId": "m68709:entry:auto-111",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-113",
                   "attributes": {
                     "align": "left"
                   }
@@ -836,21 +848,10 @@
           "id": "fs-idm9607408",
           "class": "unnumbered",
           "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “5 times 2 equals 10.” The initial 2 in the first equation is bold. Under the “Products” column are the equations, “2 times 2 equals 4,” and “2 times 5 equals 10.” Under the “Balanced?” column are, “4 equals 4, yes,” and “10 equals 10, yes.”",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68709:entry:auto-112",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68709:entry:auto-113",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68709:entry:auto-114",
                   "attributes": {
@@ -862,11 +863,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-116",
                   "attributes": {
@@ -878,7 +875,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-118",
                   "attributes": {
@@ -890,11 +891,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68709:entry:auto-120",
                   "attributes": {
@@ -906,7 +903,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68709:entry:auto-122",
                   "attributes": {
@@ -915,6 +916,18 @@
                 },
                 {
                   "segmentId": "m68709:entry:auto-123",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-125",
                   "attributes": {
                     "align": "left"
                   }
@@ -1506,6 +1519,14 @@
                 "type": "para",
                 "id": "fs-idp109314144",
                 "segmentId": "m68709:problem:fs-idp109314144"
+              },
+              {
+                "type": "media",
+                "id": "fs-idp109314656",
+                "alt": {
+                  "segmentId": "m68709:alt:fs-idp109314656-alt",
+                  "text": "This figure shows a chemical reaction. On the left side of the reaction arrow, a structural formula for a molecule is shown on the far left. It has a C atom on the left to which H atoms are bonded above, below, and to the left. To the right, another C atom is bonded which has H atoms bonded above and below. To the right, another C atom is bonded, which has a double bonded O atom above and another O atom singly bonded to the right. To the right of the singly bonded O atom, an H atom is bonded. This is followed by a plus sign and N a O H. A reaction arrow appears to the right, which is followed by another structural formula. It has a C atom on the left to which H atoms are bonded above, below, and to the left. To the right, another C atom is bonded which has H atoms bonded above and below. To the right, another C atom is bonded, which has a double bonded O atom above and another O atom singly bonded to the right. The singly bonded O atom is followed by a superscript negative sign. This is followed to the right by a plus sign, N a superscript positive sign, another plus sign, and a horizontal line segment, indicating a space for an answer to be written."
+                }
               }
             ]
           },

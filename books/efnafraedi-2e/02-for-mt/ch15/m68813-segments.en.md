@@ -14,31 +14,49 @@ Write equations for the formation of adducts and complex ions
 Perform equilibrium calculations involving formation constants
 
 <!-- SEG:m68813:para:fs-idp51077712 -->
-In 1923, G. N. {{term}}Lewis{{/term}} proposed a generalized definition of acid-base behavior in which acids and bases are identified by their ability to accept or to donate a pair of electrons and form a coordinate covalent bond.
+In 1923, G. N. [[term:Lewis|term-00001]] proposed a generalized definition of acid-base behavior in which acids and bases are identified by their ability to accept or to donate a pair of electrons and form a coordinate covalent bond.
 
 <!-- SEG:m68813:para:fs-idp107912128 -->
-A {{term}}coordinate covalent bond{{/term}} (or dative bond) occurs when one of the atoms in the bond provides both bonding electrons. For example, a coordinate covalent bond occurs when a water molecule combines with a hydrogen ion to form a hydronium ion. A coordinate covalent bond also results when an ammonia molecule combines with a hydrogen ion to form an ammonium ion. Both of these equations are shown here.
+A [[term:coordinate covalent bond|term-00002]] (or dative bond) occurs when one of the atoms in the bond provides both bonding electrons. For example, a coordinate covalent bond occurs when a water molecule combines with a hydrogen ion to form a hydronium ion. A coordinate covalent bond also results when an ammonia molecule combines with a hydrogen ion to form an ammonium ion. Both of these equations are shown here.
+
+<!-- SEG:m68813:alt:fs-idm2583104-alt -->
+This figure shows two reactions represented with Lewis structures. The first shows an O atom bonded to two H atoms. The O atom has two lone pairs of electrons. There is a plus sign and then an H atom with a superscript positive sign followed by a right-facing arrow. The next Lewis structure is in brackets and shows an O atom bonded to three H atoms. There is one lone pair of electrons on the O atom. Outside of the brackets is a superscript positive sign. The second reaction shows an N atom bonded to three H atoms. The N atom has one lone pair of electrons. There is a plus sign and then an H superscript positive sign. After the H superscript positive sign is a right-facing arrow. The next Lewis structure is in brackets. It shows an N atom bonded to four H atoms. There is a superscript positive sign outside the brackets.
 
 <!-- SEG:m68813:para:fs-idp133241888 -->
-Reactions involving the formation of coordinate covalent bonds are classified as {{term}}Lewis acid-base chemistry{{/term}}. The species donating the electron pair that compose the bond is a {{term}}Lewis base{{/term}}, the species accepting the electron pair is a {{term}}Lewis acid{{/term}}, and the product of the reaction is a {{term}}Lewis acid-base adduct{{/term}}. As the two examples above illustrate, Brønsted-Lowry acid-base reactions represent a subcategory of Lewis acid reactions, specifically, those in which the acid species is H[[sup:+]]. A few examples involving other Lewis acids and bases are described below.
+Reactions involving the formation of coordinate covalent bonds are classified as [[term:Lewis acid-base chemistry|term-00003]]. The species donating the electron pair that compose the bond is a [[term:Lewis base|term-00004]], the species accepting the electron pair is a [[term:Lewis acid|term-00005]], and the product of the reaction is a [[term:Lewis acid-base adduct|term-00006]]. As the two examples above illustrate, Brønsted-Lowry acid-base reactions represent a subcategory of Lewis acid reactions, specifically, those in which the acid species is H[[sup:+]]. A few examples involving other Lewis acids and bases are described below.
 
 <!-- SEG:m68813:para:fs-idm91313680 -->
 The boron atom in boron trifluoride, BF[[sub:3]], has only six electrons in its valence shell. Being short of the preferred octet, BF[[sub:3]] is a very good Lewis acid and reacts with many Lewis bases; a fluoride ion is the Lewis base in this reaction, donating one of its lone pairs:
 
+<!-- SEG:m68813:alt:fs-idp160186064-alt -->
+This figure illustrates a chemical reaction using structural formulas. On the left, an F atom is surrounded by four electron dot pairs and has a superscript negative symbol. This structure is labeled below as “Lewis base.” Following a plus sign is another structure which has a B atom at the center and three F atoms single bonded above, right, and below. Each F atom has three pairs of electron dots. This structure is labeled below as “Lewis acid.” Following a right pointing arrow is a structure in brackets that has a central B atom to which 4 F atoms are connected with single bonds above, below, to the left, and to the right. Each F atom in this structure has three pairs of electron dots. Outside the brackets is a superscript negative symbol. This structure is labeled below as “Acid-base adduct.”
+
 <!-- SEG:m68813:para:fs-idp34388288 -->
 In the following reaction, each of two ammonia molecules, Lewis bases, donates a pair of electrons to a silver ion, the Lewis acid:
+
+<!-- SEG:m68813:alt:fs-idp134365040-alt -->
+This figure illustrates a chemical reaction using structural formulas. On the left side, a 2 preceeds an N atom which has H atoms single bonded above, to the left, and below. A single electron dot pair is on the right side of the N atom. This structure is labeled below as “Lewis base.” Following a plus sign is an A g atom which has a superscript plus symbol. Following a right pointing arrow is a structure in brackets that has a central A g atom to which N atoms are connected with single bonds to the left and to the right. Each of these N atoms has H atoms bonded above, below, and to the outside of the structure. Outside the brackets is a superscript plus symbol. This structure is labeled below as “Acid-base adduct.”
 
 <!-- SEG:m68813:para:fs-idm82519616 -->
 Nonmetal oxides act as Lewis acids and react with oxide ions, Lewis bases, to form oxyanions:
 
+<!-- SEG:m68813:alt:fs-idm21887312-alt -->
+This figure illustrates a chemical reaction using structural formulas. On the left, an O atom is surrounded by four electron dot pairs and has a superscript 2 negative. This structure is labeled below as “Lewis base.” Following a plus sign is another structure which has an S atom at the center. O atoms are single bonded above and below. These O atoms have three electron dot pairs each. To the right of the S atom is a double bonded O atom which has two pairs of electron dots. This structure is labeled below as “Lewis acid.” Following a right pointing arrow is a structure in brackets that has a central S atom to which 4 O atoms are connected with single bonds above, below, to the left, and to the right. Each of the O atoms has three pairs of electron dots. Outside the brackets is a superscript 2 negative. This structure is labeled below as “Acid-base adduct.”
+
 <!-- SEG:m68813:para:fs-idm48299344 -->
 Many Lewis acid-base reactions are displacement reactions in which one Lewis base displaces another Lewis base from an acid-base adduct, or in which one Lewis acid displaces another Lewis acid:
 
+<!-- SEG:m68813:alt:fs-idp125718384-alt -->
+Two chemical reactions in two rows using structural formulas. First row, to the left, in brackets is a structure with a central A g atom to which N atoms are connected with single bonds to the left and right. Each N atom has H atoms bonded above, below, and to the outside. Outside the brackets is a superscript plus symbol. This structure is labeled “Acid-base adduct.” Following a plus sign is a 2 and another structure in brackets that shows a C atom triple bonded to an N atom. The C atom has an unshared electron pair on its left side and the N atom has an unshared pair on its right side. Outside the brackets to the right is a superscript negative symbol. This structure is labeled “Base.” Following a right pointing arrow is a structure in brackets with a central A g atom to which 4 FC atoms are connected with single bonds to the left and right. At each of the two ends, N atoms are triple bonded to the C atoms. The N atoms each have an unshared electron pair at the end of the structure. Outside the brackets is a superscript negative symbol. This structure is labeled “New adduct.” Following a plus sign is an N atom with H atoms single bonded above, to the left, and below. A single electron dot pair is on the left side of the N atom. This structure is labeled “New base.” In the second row, on the left side in brackets is a structure with a central C atom. O atoms, each with three unshared electron pairs, are single bonded above and below and a third O atom, with two unshared electron pairs, is double bonded to the right. Outside the brackets is a superscript 2 negative. This structure is labeled “Acid-base adduct.” Following a plus sign is another structure with an S atom at the center. O atoms are single bonded above and below. These O atoms have three electron dot pairs each. To the right of the S atom is a double bonded O atom which has two pairs of electron dots. This structure is labeled “Acid.” Following a right pointing arrow is a structure in brackets with a central S atom to which 4 O atoms are connected with single bonds above, below, left, and right. Each of the O atoms has three pairs of electron dots. Outside the brackets is a superscript 2 negative. This structure is labeled “New adduct.” Following a plus sign is a structure with a central C atom that has two O atoms, each with two unshared electron pairs, double bonded to the left and right.
+
 <!-- SEG:m68813:para:fs-idm28146992 -->
-Another type of Lewis acid-base chemistry involves the formation of a complex ion (or a coordination complex) comprising a central atom, typically a transition metal cation, surrounded by ions or molecules called {{term}}ligands{{/term}}. These ligands can be neutral molecules like H[[sub:2]]O or NH[[sub:3]], or ions such as CN[[sup:–]] or OH[[sup:–]]. Often, the ligands act as Lewis bases, donating a pair of electrons to the central atom. These types of Lewis acid-base reactions are examples of a broad subdiscipline called [[i:coordination chemistry]]—the topic of another chapter in this text.
+Another type of Lewis acid-base chemistry involves the formation of a complex ion (or a coordination complex) comprising a central atom, typically a transition metal cation, surrounded by ions or molecules called [[term:ligands|term-00007]]. These ligands can be neutral molecules like H[[sub:2]]O or NH[[sub:3]], or ions such as CN[[sup:–]] or OH[[sup:–]]. Often, the ligands act as Lewis bases, donating a pair of electrons to the central atom. These types of Lewis acid-base reactions are examples of a broad subdiscipline called [[i:coordination chemistry]]—the topic of another chapter in this text.
 
 <!-- SEG:m68813:para:fs-idm50768752 -->
-The equilibrium constant for the reaction of a metal ion with one or more ligands to form a coordination complex is called a {{term}}formation constant ([[i:K]][[sub:f]]){{/term}} (sometimes called a stability constant). For example, the complex ion [[MATH:1]]
+The equilibrium constant for the reaction of a metal ion with one or more ligands to form a coordination complex is called a [[term:formation constant ([[i:K]][[sub:f]])|term-00008]] (sometimes called a stability constant). For example, the complex ion [[MATH:1]]
+
+<!-- SEG:m68813:alt:fs-idm22905296-alt -->
+A Cu atom is bonded to two C atoms. Each of these C atoms is triple bonded to an N atom. Each N atom has two dots on the side of it.
 
 <!-- SEG:m68813:para:fs-idm21686128 -->
 is produced by the reaction
@@ -47,7 +65,7 @@ is produced by the reaction
 The formation constant for this reaction is
 
 <!-- SEG:m68813:para:fs-idm80631152 -->
-Alternatively, the reverse reaction (decomposition of the complex ion) can be considered, in which case the equilibrium constant is a {{term}}dissociation constant ([[i:K]][[sub:d]]){{/term}}. Per the relation between equilibrium constants for reciprocal reactions described, the dissociation constant is the mathematical inverse of the formation constant, [[i:K[[sub:d]]]] = K[[sub:f]][[sup:–1]]. A tabulation of formation constants is provided in [[docref:Appendix K|m68869]].
+Alternatively, the reverse reaction (decomposition of the complex ion) can be considered, in which case the equilibrium constant is a [[term:dissociation constant ([[i:K]][[sub:d]])|term-00009]]. Per the relation between equilibrium constants for reciprocal reactions described, the dissociation constant is the mathematical inverse of the formation constant, [[i:K[[sub:d]]]] = K[[sub:f]][[sup:–1]]. A tabulation of formation constants is provided in [[docref:Appendix K|m68869]].
 
 <!-- SEG:m68813:para:fs-idp9510016 -->
 As an example of dissolution by complex ion formation, let us consider what happens when we add aqueous ammonia to a mixture of silver chloride and water. Silver chloride dissolves slightly in water, giving a small concentration of Ag[[sup:+]] ([Ag[[sup:+]]] = 1.3 [[MATH:2]] 10[[sup:–5]] [[i:M]]):
@@ -99,6 +117,9 @@ Calculate the silver ion concentration, [Ag[[sup:+]]], of a solution prepared by
 
 <!-- SEG:m68813:para:fs-idm70030480 -->
 2.9 [[MATH:7]] 10[[sup:–22]] [[i:M]]
+
+<!-- SEG:m68813:alt:fs-idm24529056-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), and Equilibrium concentration ( M ). The second column has the header, “A g superscript positive sign plus 2 N H subscript 3 equilibrium sign A g ( N H subscript 3 ) subscript 2 superscript positive sign.” Under the second column is a subgroup of three rows and three columns. The first column contains: 0, positive x, x. The second column contains: 0, positive 2 x, 2 x. The third column contains 0.10, negative x, and 0.10 minus x.
 
 <!-- SEG:m68813:note-title:fs-idp119941104-title -->
 Answer:
@@ -157,6 +178,9 @@ Using the dissociation constant, [[i:K]][[sub:d]] = 3.3 [[MATH:16]] 10[[sup:–1
 <!-- SEG:m68813:solution:fs-idm262777264 -->
 [[MEDIA:1]][[BR]] [Cd[[sup:2+]]] = 5.0 [[MATH:18]] 10[[sup:–5]] [[i:M]]; [CN[[sup:–]]] = 2.0 [[MATH:19]] 10[[sup:–4]] [[i:M]]
 
+<!-- SEG:m68813:alt:fs-idm100408784-alt -->
+This table has two main columns and three rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ) and Equilibrium ( M ). The second column has the header, “[ C d ( C N ) subscript 4 to the second power superscript negative sign ] [ C N superscript negative sign ] [ C d to the second power superscript positive sign ].” Under the second column is a subgroup of two rows and three columns. The first column contains the following: 0.250 and 0.250 minus x. The second column contains the following: 0 and 4 x. The third column contains the following: 0 and x.
+
 <!-- SEG:m68813:problem:fs-idp57024384 -->
 Using the dissociation constant, [[i:K]][[sub:d]] = 3.4 [[MATH:20]] 10[[sup:–15]], calculate the equilibrium concentrations of Zn[[sup:2+]] and OH[[sup:–]] in a 0.0465-[[i:M]] solution of [[MATH:21]]
 
@@ -208,6 +232,21 @@ Write the Lewis structures of the reactants and product of each of the following
 <!-- SEG:m68813:solution:fs-idm48324368 -->
 (a)[[BR]] [[MEDIA:2]][[BR]] (b)[[BR]] [[MEDIA:3]][[BR]] (c)[[BR]] [[MEDIA:4]][[BR]] (d)[[BR]] [[MEDIA:5]][[BR]] (e)[[BR]] [[MEDIA:6]]
 
+<!-- SEG:m68813:alt:fs-idp8394208-alt -->
+This figure shows a chemical reaction modeled with structural formulas. On the left side is a structure with a central C atom. O atoms, each with two unshared electron pairs, are double bonded to the left and right sides of the C atom. Following a plus sign is another structure in brackets which has an O atom with three unshared electron dot pairs single bonded to an H atom on the right. Outside the brackets is superscript negative sign. Following a right pointing arrow is a structure in brackets that has a central C atom to which 3 O atoms are bonded. Above and slightly to the right, one of the O atoms is connected with a double bond. This O atom has two unshared electron pairs. The second O atom is single bonded below and slightly to the right. This O atom has three unshared electron pairs. The third O atom is bonded to the left of the C atom. This O atom has two unshared electron pairs and an H atom single bonded to its left. Outside the brackets to the right is a superscript negative symbol.
+
+<!-- SEG:m68813:alt:fs-idm88262064-alt -->
+This figure shows a chemical reaction modeled with structural formulas. On the left side is a structure that has a central B atom to which 3 O atoms are bonded. The O atoms above and below slightly right of the B atom each have an H atom single bonded to the right. The third O atom is single bonded to the left side of the B atom. This O atom has an H atom single bonded to its left side. All O atoms in this structure have two unshared electron pairs. Following a plus sign is another structure which has an O atom single bonded to an H atom on its right. The O atom has three unshared electron pairs. The structure appears in brackets with a superscript negative sign. Following a right pointing arrow is a structure in brackets has a central B atom to which 4 O atoms are bonded. The O atoms above, below, and right of the B atom each hav an H atom single bonded to the right. The third O atom is single bonded to the left side of the B atom. This O atom has an H atom single bonded to its left side. All O atoms in this structure have two unshared electron pairs. Outside the brackets to the right is a superscript negative symbol.
+
+<!-- SEG:m68813:alt:fs-idp130807344-alt -->
+This figure illustrates a chemical reaction using structural formulas. On the left, two I atoms, each with 3 unshared electron pairs, are joined with a single bond. Following a plus sign is another structure which has an I atom with four pairs of electron dots and a superscript negative sign. Following a right pointing arrow is a structure in brackets that has three I atoms connected in a line with single bonds. The two end I atoms have three unshared electron dot pairs and the I atom at the center has two unshared electron pairs. Outside the brackets is a superscript negative sign.
+
+<!-- SEG:m68813:alt:fs-idm24823408-alt -->
+This figure illustrates a chemical reaction using structural formulas. On the left, an A l atom is positioned at the center of a structure and three Cl atoms are single bonded above, left, and below. Each C l atom has three pairs of electron dots. Following a plus sign is another structure which has an F atom is surrounded by four electron dot pairs and a superscript negative symbol. Following a right pointing arrow is a structure in brackets that has a central A l atom to which 4 C l atoms are connected with single bonds above, below, to the left, and to the right. Each C l atom in this structure has three pairs of electron dots. Outside the brackets is a superscript negative symbol.
+
+<!-- SEG:m68813:alt:fs-idm53758640-alt -->
+This figure illustrates a chemical reaction using structural formulas. On the left is a structure which has an S atom at the center. O atoms are single bonded above and below. These O atoms have three electron dot pairs each. To the right of the S atom is a double bonded O atom which has two pairs of electron dots. Following a plus sign is an O atom which is surrounded by four electron dot pairs and has a superscript 2 negative. Following a right pointing arrow is a structure in brackets that has a central S atom to which 4 O atoms are connected with single bonds above, below, to the left, and to the right. Each of the O atoms has three pairs of electron dots. Outside the brackets is a superscript 2 negative.
+
 <!-- SEG:m68813:problem:fs-idm77542368 -->
 Write the Lewis structures of the reactants and product of each of the following equations, and identify the Lewis acid and the Lewis base in each:
 
@@ -243,6 +282,18 @@ Using Lewis structures, write balanced equations for the following reactions:
 
 <!-- SEG:m68813:solution:fs-idm45427936 -->
 (a)[[BR]] [[MEDIA:7]][[BR]] (b) [[MATH:46]][[BR]] [[MEDIA:8]][[BR]] (c) [[MATH:47]][[BR]] [[MEDIA:9]][[BR]] (d) [[MATH:48]][[BR]] [[MEDIA:10]]
+
+<!-- SEG:m68813:alt:fs-idm45893936-alt -->
+This figure represents a chemical reaction in two rows. The top row shows the reaction using chemical formulas. The second row uses structural formulas to represent the reaction. The first row contains the equation H C l ( g ) plus P H subscript 3 ( g ) right pointing arrow left bracket P H subscript 4 right bracket superscript plus plus left bracket C l with 4 pairs of electron dots right bracket superscript negative sign. The second row begins on the left with H left bracket C l with four unshared electron pairs right bracket plus a structure in brackets with a central P atom with H atoms single bonded at the left, above, and to the right. A single unshared electron pair is on the central P atom. Outside the brackets to the right is a superscript plus sign. Following a right pointing arrow is a structure in brackets with a central P atom with H atoms single bonded at the left, above, below, and to the right. Outside the brackets is a superscript plus sign. This structure is followed by a plus and a C l atom in brackets with four unshared electron pairs and a superscript negative sign.
+
+<!-- SEG:m68813:alt:fs-idm2136944-alt -->
+This figure represents a chemical reaction using structural formulas. A structure is shown in brackets on the left which is composed of a central O atom with one unshared electron pair and three single bonded H atoms to the left, right, and above the atom. Outside the brackets to the right is a superscript plus sign. Following a plus sign, is another structure in brackets composed of a central C atom with one unshared electron pair and three single bonded H atoms to the left, right, and above the atom. Outside the brackets to the right is a superscript negative sign. Following a right pointing arrow is a structure with a central C atom with H atoms single bonded above, below, left and right. Following a plus sign is a structure with a central O atom with two unshared electron pairs and two H atoms connected with single bonds.
+
+<!-- SEG:m68813:alt:fs-idp64857056-alt -->
+This figure represents a chemical reaction using structural formulas. On the left, C a superscript 2 plus is just left of bracket O with four unshared electron pairs right bracket superscript 2 negative plus a structure with a central S atom to which two O atoms are single bonded at the left and right, and a single O atom is double bonded above. The two single bonded O atoms each have three unshared electron pairs and the double bonded O atom has two unshared electron pairs. Following a right pointing arrow is C a superscript 2 plus just left of a structure in brackets with a central S atom which has 4 O atoms single bonded at the left, above, below, and to the right. Each of the O atoms has three unshared electron pairs. Outside the brackets to the right is a superscript two negative.
+
+<!-- SEG:m68813:alt:fs-idp57321968-alt -->
+This figure represents a chemical reaction using structural formulas. A structure is shown in brackets on the left which is composed of a central N atom with four single bonded H atoms to the left, right, above, and below the atom. Outside the brackets to the right is a superscript plus sign. Following a plus sign, is another structure in brackets composed of a C atom with three single bonded H atoms above, below, and to the left. A second C atom is single bonded to the right. This C atom has H atoms single bonded above and below. To the right of the second C atom, an O atom is single bonded. This O atom has three unshared electron pairs. Outside the brackets to the right is a subperscript negative. Following a right pointing arrow is a structure composed of a C atom with three single bonded H atoms above, below, and to the left. A second C atom is single bonded to the right. This C atom has H atoms single bonded above and below. To the right of the second C atom, an O atom is single bonded. This O atom has two unshared electron pairs and an H atom single bonded to its right.
 
 <!-- SEG:m68813:problem:fs-idm2667904 -->
 Calculate [[MATH:49]] in a solution prepared by adding 0.0200 mol of NaCl to 0.250 L of a 0.100-[[i:M]] HgCl[[sub:2]] solution.

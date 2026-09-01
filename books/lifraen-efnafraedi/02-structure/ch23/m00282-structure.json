@@ -1,0 +1,132 @@
+{
+  "moduleId": "m00282",
+  "title": {
+    "segmentId": "m00282:title:auto-1",
+    "text": "The Claisen Condensation Reaction"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "65b56c6e-124f-4f53-8b63-40664ca578ca"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00282:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00282:alt:fig-00001-alt",
+          "text": "Two ethyl acetate molecules react with sodium ethoxide in ethanol followed by hydronium to produce ethyl acetoacetate, a beta-keto ester (seventy-five percent), and ethanol."
+        },
+        "src": "../../media/OChem_23_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00282:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00282:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00282:alt:fig-00002-alt",
+          "text": "Reversible mechanism of Claisen condensation of ethyl acetate with arrows showing electron flow: alpha proton abstraction, nucleophilic addition of enolate, ethoxide expelled, deprotonation between carbonyls, reprotonation to form ethyl acetoacetate."
+        },
+        "src": "../../media/OSX_OrgChem_23_07_MechTwo.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00282:para:para-00003"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00282:example-title:exam-00001-title",
+        "text": "Predicting the Product of a Claisen Condensation Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00282:para:para-00004"
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00282:para:para-00005",
+          "title": {
+            "segmentId": "m00282:para-title:para-00005-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "title": {
+            "segmentId": "m00282:para-title:para-00006-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00282:alt:fig-00003-alt",
+          "text": "The Claisen condensation of two equivalents of ethyl propanoate with sodium ethoxide followed by hydronium yields ethyl-2-methyl-3-oxopentanoate (a beta-keto ester), and ethanol."
+        },
+        "src": "../../media/OChem_23_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00282:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

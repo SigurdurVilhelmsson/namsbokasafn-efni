@@ -1,0 +1,196 @@
+{
+  "moduleId": "m00086",
+  "title": {
+    "segmentId": "m00086:title:auto-1",
+    "text": "Describing a Reaction: Intermediates"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "0d97aa95-c1f7-4454-b540-40a029a8bc6b"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00086:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00086:alt:fig-00001-alt",
+          "text": "A reaction mechanism shows ethene attacking hydrogen bromide to form a carbocation (labeled intermediate), which is attacked by a bromide ion to form ethyl bromide."
+        },
+        "src": "../../media/OChem_06_10_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00086:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00086:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00086:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00086:alt:fig-00002-alt",
+          "text": "Energy diagram for ethyl bromide formation shows two transition state peaks (first is higher), with net negative delta G naught."
+        },
+        "src": "../../media/OChem_06_10_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00086:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00086:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00086:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00086:alt:fig-00003-alt",
+          "text": "Two energy diagrams for the same reaction; catalyzed shows multiple transition states each with low activation barrier, uncatalyzed shows single transition state with high activation barrier."
+        },
+        "src": "../../media/OChem_06_10_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00086:example-title:exam-00001-title",
+        "text": "Drawing a Reaction Energy Diagram"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00086:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00086:para:para-00007",
+          "title": {
+            "segmentId": "m00086:para-title:para-00007-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "title": {
+            "segmentId": "m00086:para-title:para-00008-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00086:alt:fig-00004-alt",
+          "text": "Energy diagram with small activation barrier to transition state, large net negative delta G naught."
+        },
+        "src": "../../media/OChem_06_10_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00002",
+      "title": {
+        "segmentId": "m00086:example-title:exam-00002-title",
+        "text": "Drawing a Reaction Energy Diagram"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00086:para:para-00009"
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00086:para:para-00010",
+          "title": {
+            "segmentId": "m00086:para-title:para-00010-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "title": {
+            "segmentId": "m00086:para-title:para-00011-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00086:alt:fig-00005-alt",
+          "text": "Energy diagram shows large barrier to transition state, high energy intermediate, smaller barrier to second transition state (overall higher in energy than first), and small net negative delta G naught."
+        },
+        "src": "../../media/OChem_06_10_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00086:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 10
+}

@@ -26,7 +26,10 @@
       },
       "media": {
         "id": "fs-idm65754480",
-        "alt": "A match held in a person’s hand is ignited as it is scratched along the rough surface of a match box.",
+        "alt": {
+          "segmentId": "m68723:alt:fs-idm65754480-alt",
+          "text": "A match held in a person’s hand is ignited as it is scratched along the rough surface of a match box."
+        },
         "src": "../../media/CNX_Chem_05_00_Match.jpg",
         "mimeType": "image/jpeg"
       }

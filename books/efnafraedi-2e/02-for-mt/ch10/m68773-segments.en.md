@@ -26,28 +26,40 @@ We will begin our discussion of crystalline solids by considering elemental meta
 Unit Cells of Metals
 
 <!-- SEG:m68773:para:fs-idm2181616 -->
-The structure of a crystalline solid, whether a metal or not, is best described by considering its simplest repeating unit, which is referred to as its {{term}}unit cell{{/term}}. The unit cell consists of lattice points that represent the locations of atoms or ions. The entire structure then consists of this unit cell repeating in three dimensions, as illustrated in [[xref:CNX_Chem_10_06_UnitCell1]].
+The structure of a crystalline solid, whether a metal or not, is best described by considering its simplest repeating unit, which is referred to as its [[term:unit cell|term-00001]]. The unit cell consists of lattice points that represent the locations of atoms or ions. The entire structure then consists of this unit cell repeating in three dimensions, as illustrated in [[xref:CNX_Chem_10_06_UnitCell1]].
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_UnitCell1-caption -->
 A unit cell shows the locations of lattice points repeating in all directions.
 
+<!-- SEG:m68773:alt:fs-idp111181360-alt -->
+A diagram of two images is shown. In the first image, a cube with a sphere at each corner is shown. The cube is labeled “Unit cell” and the spheres at the corners are labeled “Lattice points.” The second image shows the same cube, but this time it is one cube amongst eight that make up a larger cube. The original cube is shaded a color while the other cubes are not.
+
 <!-- SEG:m68773:para:fs-idp68860560 -->
-Let us begin our investigation of crystal lattice structure and unit cells with the most straightforward structure and the most basic unit cell. To visualize this, imagine taking a large number of identical spheres, such as tennis balls, and arranging them uniformly in a container. The simplest way to do this would be to make layers in which the spheres in one layer are directly above those in the layer below, as illustrated in [[xref:CNX_Chem_10_06_SimpleCub1]]. This arrangement is called {{term}}simple cubic structure{{/term}}, and the unit cell is called the {{term}}simple cubic unit cell{{/term}} or primitive cubic unit cell.
+Let us begin our investigation of crystal lattice structure and unit cells with the most straightforward structure and the most basic unit cell. To visualize this, imagine taking a large number of identical spheres, such as tennis balls, and arranging them uniformly in a container. The simplest way to do this would be to make layers in which the spheres in one layer are directly above those in the layer below, as illustrated in [[xref:CNX_Chem_10_06_SimpleCub1]]. This arrangement is called [[term:simple cubic structure|term-00002]], and the unit cell is called the [[term:simple cubic unit cell|term-00003]] or primitive cubic unit cell.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_SimpleCub1-caption -->
 When metal atoms are arranged with spheres in one layer directly above or below spheres in another layer, the lattice structure is called simple cubic. Note that the spheres are in contact.
 
+<!-- SEG:m68773:alt:fs-idp75647456-alt -->
+A diagram of three images is shown. In the first image, a cube with a sphere at each corner is shown. The spheres at the corners are circled. The second image shows the same cube, but this time the spheres at the corners are larger and shaded in. In the third image, the cube is one cube amongst eight that make up a larger cube. The original cube is shaded a color while the other cubes are not.
+
 <!-- SEG:m68773:para:fs-idm2044016 -->
-In a simple cubic structure, the spheres are not packed as closely as they could be, and they only “fill” about 52% of the volume of the container. This is a relatively inefficient arrangement, and only one metal (polonium, Po) crystallizes in a simple cubic structure. As shown in [[xref:CNX_Chem_10_06_SimpleCub2]], a solid with this type of arrangement consists of planes (or layers) in which each atom contacts only the four nearest neighbors in its layer; one atom directly above it in the layer above; and one atom directly below it in the layer below. The number of other particles that each particle in a crystalline solid contacts is known as its {{term}}coordination number{{/term}}. For a polonium atom in a simple cubic array, the coordination number is, therefore, six.
+In a simple cubic structure, the spheres are not packed as closely as they could be, and they only “fill” about 52% of the volume of the container. This is a relatively inefficient arrangement, and only one metal (polonium, Po) crystallizes in a simple cubic structure. As shown in [[xref:CNX_Chem_10_06_SimpleCub2]], a solid with this type of arrangement consists of planes (or layers) in which each atom contacts only the four nearest neighbors in its layer; one atom directly above it in the layer above; and one atom directly below it in the layer below. The number of other particles that each particle in a crystalline solid contacts is known as its [[term:coordination number|term-00004]]. For a polonium atom in a simple cubic array, the coordination number is, therefore, six.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_SimpleCub2-caption -->
 An atom in a simple cubic lattice structure contacts six other atoms, so it has a coordination number of six.
+
+<!-- SEG:m68773:alt:fs-idp759920-alt -->
+A diagram of two images is shown. In the first image, eight stacked cubes that make up one large cube are shown. Three lines that run from top to bottom, front to back and sided to side in the middle of the structure are shaded darker than the rest of the lines. The second image shows the same set of cubes, but this time spheres at the end of each line are numbered; the horizontal line that goes left to right is labeled with a “2” and a “5,” the vertical line is labeled with a “1” and a “6” and the line that goes horizontally front to back is labeled with a “3” and a “4.”
 
 <!-- SEG:m68773:para:fs-idm15054992 -->
 In a simple cubic lattice, the unit cell that repeats in all directions is a cube defined by the centers of eight atoms, as shown in [[xref:CNX_Chem_10_06_SimpleCub3]]. Atoms at adjacent corners of this unit cell contact each other, so the edge length of this cell is equal to two atomic radii, or one atomic diameter. A cubic unit cell contains only the parts of these atoms that are within it. Since an atom at a corner of a simple cubic unit cell is contained by a total of eight unit cells, only one-eighth of that atom is within a specific unit cell. And since each simple cubic unit cell has one atom at each of its eight “corners,” there is [[MATH:1]] atom within one simple cubic unit cell.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_SimpleCub3-caption -->
 A simple cubic lattice unit cell contains one-eighth of an atom at each of its eight corners, so it contains one atom total.
+
+<!-- SEG:m68773:alt:fs-idm54718224-alt -->
+A diagram of two images is shown. In the first image, eight spheres are stacked together to form a cube and dots at the center of each sphere are connected to form a cube shape. The dots are labeled “Lattice points” while a label under the image reads “Simple cubic lattice cell.” The second image shows the portion of each sphere that lie inside the cube. The corners of the cube are shown with small circles labeled “Lattice points” and the phrase “8 corners” is written below the image.
 
 <!-- SEG:m68773:example-title:fs-idm39353008-title -->
 Calculation of Atomic Radius and Density for Metals, Part 1
@@ -94,6 +106,9 @@ The edge length of the unit cell for nickel is 0.3524 nm. The density of Ni is 8
 <!-- SEG:m68773:para:fs-idp76470512 -->
 No. If Ni was simple cubic, its density would be given by:[[BR]] [[MATH:5]][[BR]] [[MATH:6]][[BR]] Then the density of Ni would be [[MATH:7]][[BR]] Since the actual density of Ni is not close to this, Ni does not form a simple cubic structure.
 
+<!-- SEG:m68773:alt:fs-idp27312864-alt -->
+A diagram shows a cube with a one eighth portion of eight spheres inside the cube, one section in each corner. Along the bottom right side of the cube are two double ended arrows that each stretch along half of the total distance across the cube. Each arrow is labeled “r.”
+
 <!-- SEG:m68773:note-title:fs-idp113302880-title -->
 Answer:
 
@@ -101,37 +116,52 @@ Answer:
 No. If Ni was simple cubic, its density would be given by:[[BR]] [[MATH:8]][[BR]] [[MATH:9]][[BR]] Then the density of Ni would be [[MATH:10]][[BR]] Since the actual density of Ni is not close to this, Ni does not form a simple cubic structure.
 
 <!-- SEG:m68773:para:fs-idp589840 -->
-Most metal crystals are one of the four major types of unit cells. For now, we will focus on the three cubic unit cells: simple cubic (which we have already seen), {{term}}body-centered cubic unit cell{{/term}}, and {{term}}face-centered cubic unit cell{{/term}}—all of which are illustrated in [[xref:CNX_Chem_10_06_CubUntCll]]. (Note that there are actually seven different lattice systems, some of which have more than one type of lattice, for a total of 14 different types of unit cells. We leave the more complicated geometries for later in this module.)
+Most metal crystals are one of the four major types of unit cells. For now, we will focus on the three cubic unit cells: simple cubic (which we have already seen), [[term:body-centered cubic unit cell|term-00005]], and [[term:face-centered cubic unit cell|term-00006]]—all of which are illustrated in [[xref:CNX_Chem_10_06_CubUntCll]]. (Note that there are actually seven different lattice systems, some of which have more than one type of lattice, for a total of 14 different types of unit cells. We leave the more complicated geometries for later in this module.)
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_CubUntCll-caption -->
 Cubic unit cells of metals show (in the upper figures) the locations of lattice points and (in the lower figures) metal atoms located in the unit cell.
 
+<!-- SEG:m68773:alt:fs-idp131181888-alt -->
+Three pairs of images are shown. The first three images are in a row and are labeled “Lattice point locations” while the second three images are in a row labeled “Cubic unit cells.” The first image in the top row shows a cube with black dots at each corner while the first image in the second row is composed of eight spheres that are stacked together to form a cube and dots at the center of each sphere are connected to form a cube shape. The name under this image reads “Simple cubic.” The second image in the top row shows a cube with black dots at each corner and a red dot in the center while the second image in the second row is composed of eight spheres that are stacked together to form a cube with one sphere in the center of the cube and dots at the center of each corner sphere connected to form a cube shape. The name under this image reads “Body-centered cubic.” The third image in the top row shows a cube with black dots at each corner and red dots in the center of each face while the third image in the second row is composed of eight spheres that are stacked together to form a cube with six more spheres located in the center of each face of the cube. Dots at the center of each corner sphere are connected to form a cube shape. The name under this image reads “Face-centered cubic.”
+
 <!-- SEG:m68773:para:fs-idp78313376 -->
-Some metals crystallize in an arrangement that has a cubic unit cell with atoms at all of the corners and an atom in the center, as shown in [[xref:CNX_Chem_10_06_BdyCntrdCb]]. This is called a {{term}}body-centered cubic (BCC) solid{{/term}}. Atoms in the corners of a BCC unit cell do not contact each other but contact the atom in the center. A BCC unit cell contains two atoms: one-eighth of an atom at each of the eight corners [[MATH:11]] atom from the corners) plus one atom from the center. Any atom in this structure touches four atoms in the layer above it and four atoms in the layer below it. Thus, an atom in a BCC structure has a coordination number of eight.
+Some metals crystallize in an arrangement that has a cubic unit cell with atoms at all of the corners and an atom in the center, as shown in [[xref:CNX_Chem_10_06_BdyCntrdCb]]. This is called a [[term:body-centered cubic (BCC) solid|term-00007]]. Atoms in the corners of a BCC unit cell do not contact each other but contact the atom in the center. A BCC unit cell contains two atoms: one-eighth of an atom at each of the eight corners [[MATH:11]] atom from the corners) plus one atom from the center. Any atom in this structure touches four atoms in the layer above it and four atoms in the layer below it. Thus, an atom in a BCC structure has a coordination number of eight.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_BdyCntrdCb-caption -->
 In a body-centered cubic structure, atoms in a specific layer do not touch each other. Each atom touches four atoms in the layer above it and four atoms in the layer below it.
 
+<!-- SEG:m68773:alt:fs-idp131155392-alt -->
+Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center while the second image is composed of eight spheres that are stacked together to form a cube with one sphere in the center of the cube and dots at the center of each corner sphere connected to form a cube shape.  The name under this image reads “Body-centered cubic structure.” The third image is the same as the second, but only shows the portions of the spheres that lie inside the cube shape.
+
 <!-- SEG:m68773:para:fs-idm23808480 -->
-Atoms in BCC arrangements are much more efficiently packed than in a simple cubic structure, occupying about 68% of the total volume. Isomorphous metals with a BCC structure include K, Ba, Cr, Mo, W, and Fe at room temperature. (Elements or compounds that crystallize with the same structure are said to be {{term}}isomorphous{{/term}}.)
+Atoms in BCC arrangements are much more efficiently packed than in a simple cubic structure, occupying about 68% of the total volume. Isomorphous metals with a BCC structure include K, Ba, Cr, Mo, W, and Fe at room temperature. (Elements or compounds that crystallize with the same structure are said to be [[term:isomorphous|term-00008]].)
 
 <!-- SEG:m68773:para:fs-idp30613264 -->
-Many other metals, such as aluminum, copper, and lead, crystallize in an arrangement that has a cubic unit cell with atoms at all of the corners and at the centers of each face, as illustrated in [[xref:CNX_Chem_10_06_FcCntrdCbc]]. This arrangement is called a {{term}}face-centered cubic (FCC) solid{{/term}}. A FCC unit cell contains four atoms: one-eighth of an atom at each of the eight corners [[MATH:12]] atom from the corners) and one-half of an atom on each of the six faces [[MATH:13]] atoms from the faces). The atoms at the corners touch the atoms in the centers of the adjacent faces along the face diagonals of the cube. Because the atoms are on identical lattice points, they have identical environments.
+Many other metals, such as aluminum, copper, and lead, crystallize in an arrangement that has a cubic unit cell with atoms at all of the corners and at the centers of each face, as illustrated in [[xref:CNX_Chem_10_06_FcCntrdCbc]]. This arrangement is called a [[term:face-centered cubic (FCC) solid|term-00009]]. A FCC unit cell contains four atoms: one-eighth of an atom at each of the eight corners [[MATH:12]] atom from the corners) and one-half of an atom on each of the six faces [[MATH:13]] atoms from the faces). The atoms at the corners touch the atoms in the centers of the adjacent faces along the face diagonals of the cube. Because the atoms are on identical lattice points, they have identical environments.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_FcCntrdCbc-caption -->
 A face-centered cubic solid has atoms at the corners and, as the name implies, at the centers of the faces of its unit cells.
 
+<!-- SEG:m68773:alt:fs-idp64550784-alt -->
+Three images are shown. The first image shows a cube with black dots at each corner and red dots in the center of each face of the cube while the second image is composed of eight spheres that are stacked together to form a cube with six more spheres, one located on each face of the structure. Dots at the center of each corner sphere are connected to form a cube shape. The name under this image reads “Face-centered cubic structure.” The third image is the same as the second, but only shows the portions of the spheres that lie inside the cube shape.
+
 <!-- SEG:m68773:para:fs-idp4268832 -->
-Atoms in an FCC arrangement are packed as closely together as possible, with atoms occupying 74% of the volume. This structure is also called {{term}}cubic closest packing (CCP){{/term}}. In CCP, there are three repeating layers of hexagonally arranged atoms. Each atom contacts six atoms in its own layer, three in the layer above, and three in the layer below. In this arrangement, each atom touches 12 near neighbors, and therefore has a coordination number of 12. The fact that FCC and CCP arrangements are equivalent may not be immediately obvious, but why they are actually the same structure is illustrated in [[xref:CNX_Chem_10_06_CbcCltPckd]].
+Atoms in an FCC arrangement are packed as closely together as possible, with atoms occupying 74% of the volume. This structure is also called [[term:cubic closest packing (CCP)|term-00010]]. In CCP, there are three repeating layers of hexagonally arranged atoms. Each atom contacts six atoms in its own layer, three in the layer above, and three in the layer below. In this arrangement, each atom touches 12 near neighbors, and therefore has a coordination number of 12. The fact that FCC and CCP arrangements are equivalent may not be immediately obvious, but why they are actually the same structure is illustrated in [[xref:CNX_Chem_10_06_CbcCltPckd]].
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_CbcCltPckd-caption -->
 A CCP arrangement consists of three repeating layers (ABCABC…) of hexagonally arranged atoms. Atoms in a CCP structure have a coordination number of 12 because they contact six atoms in their layer, plus three atoms in the layer above and three atoms in the layer below. By rotating our perspective, we can see that a CCP structure has a unit cell with a face containing an atom from layer A at one corner, atoms from layer B across a diagonal (at two corners and in the middle of the face), and an atom from layer C at the remaining corner. This is the same as a face-centered cubic arrangement.
 
+<!-- SEG:m68773:alt:fs-idp31732224-alt -->
+Three images are shown. In the first image, a side view shows a layer of blue spheres, labeled “C” stacked on top of, and sitting in between the gaps in a second layer that is composed of green spheres, labeled “B,” which are sitting atop a purple layer of spheres labeled “A.” A label below this image reads “Side view.” The second image shows a top view of the same layers of spheres, where the top layer is “C,” the second layer is “B” and the lowest layer is “C.” This image is labeled “Top view” and written under this is the phrase “Cubic closest packed structure.” The third image shows an upper view of the side of a cube composed of two sets of the repeating layers shown in the other images. The layers are arranged “C, B, A, C, B, A, C” and the phrase written under this image reads “Rotated view.”
+
 <!-- SEG:m68773:para:fs-idp178963488 -->
-Because closer packing maximizes the overall attractions between atoms and minimizes the total intermolecular energy, the atoms in most metals pack in this manner. We find two types of closest packing in simple metallic crystalline structures: CCP, which we have already encountered, and {{term}}hexagonal closest packing (HCP){{/term}} shown in [[xref:CNX_Chem_10_06_ClstPckng2]]. Both consist of repeating layers of hexagonally arranged atoms. In both types, a second layer (B) is placed on the first layer (A) so that each atom in the second layer is in contact with three atoms in the first layer. The third layer is positioned in one of two ways. In HCP, atoms in the third layer are directly above atoms in the first layer (i.e., the third layer is also type A), and the stacking consists of alternating type A and type B close-packed layers (i.e., ABABAB⋯). In CCP, atoms in the third layer are not above atoms in either of the first two layers (i.e., the third layer is type C), and the stacking consists of alternating type A, type B, and type C close-packed layers (i.e., ABCABCABC⋯). About two–thirds of all metals crystallize in closest-packed arrays with coordination numbers of 12. Metals that crystallize in an HCP structure include Cd, Co, Li, Mg, Na, and Zn, and metals that crystallize in a CCP structure include Ag, Al, Ca, Cu, Ni, Pb, and Pt.
+Because closer packing maximizes the overall attractions between atoms and minimizes the total intermolecular energy, the atoms in most metals pack in this manner. We find two types of closest packing in simple metallic crystalline structures: CCP, which we have already encountered, and [[term:hexagonal closest packing (HCP)|term-00011]] shown in [[xref:CNX_Chem_10_06_ClstPckng2]]. Both consist of repeating layers of hexagonally arranged atoms. In both types, a second layer (B) is placed on the first layer (A) so that each atom in the second layer is in contact with three atoms in the first layer. The third layer is positioned in one of two ways. In HCP, atoms in the third layer are directly above atoms in the first layer (i.e., the third layer is also type A), and the stacking consists of alternating type A and type B close-packed layers (i.e., ABABAB⋯). In CCP, atoms in the third layer are not above atoms in either of the first two layers (i.e., the third layer is type C), and the stacking consists of alternating type A, type B, and type C close-packed layers (i.e., ABCABCABC⋯). About two–thirds of all metals crystallize in closest-packed arrays with coordination numbers of 12. Metals that crystallize in an HCP structure include Cd, Co, Li, Mg, Na, and Zn, and metals that crystallize in a CCP structure include Ag, Al, Ca, Cu, Ni, Pb, and Pt.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_ClstPckng2-caption -->
 In both types of closest packing, atoms are packed as compactly as possible. Hexagonal closest packing consists of two alternating layers (ABABAB…). Cubic closest packing consists of three alternating layers (ABCABCABC…).
+
+<!-- SEG:m68773:alt:fs-idp9696-alt -->
+Two images are shown. The first image, labeled “Hexagonal closest packed,” shows seven green spheres arranged in a circular sheet lying atop another sheet that is the same except the spheres are purple. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. Two more alternating green and purple layers of spheres lie below the first pair. The second image shows seven blue spheres, labeled “Layer C,” arranged in a circular sheet laying atop another sheet, labeled “Layer B” that is the same except the spheres are green. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. Two more alternating purple and then blue layers of spheres lie below the first pair. The purple layer is labeled “Layer A” and the phrase written below this image reads “Cubic closest packed.”
 
 <!-- SEG:m68773:example-title:fs-idp79703472-title -->
 Calculation of Atomic Radius and Density for Metals, Part 2
@@ -150,6 +180,9 @@ Solution
 
 <!-- SEG:m68773:para:fs-idm41533968 -->
 [[MEDIA:1]]
+
+<!-- SEG:m68773:alt:fs-idm35041920-alt -->
+An image of a cube is shown. A one-eighth section of a sphere is shown inside each corner of the cube and a full sphere is shown in the middle of the cube. A line stretched across the front face of the cube from the top left corner to the bottom right corner is labeled “4 r.” The left and bottom sides of the cube are labeled “a.”
 
 <!-- SEG:m68773:para:fs-idp82336960 -->
 (a) In an FCC structure, Ca atoms contact each other across the diagonal of the face, so the length of the diagonal is equal to four Ca atomic radii (d = 4[[i:r]]). Two adjacent edges and the diagonal of the face form a right triangle, with the length of each side equal to 558.8 pm and the length of the hypotenuse equal to four Ca atomic radii:
@@ -199,11 +232,17 @@ In general, a unit cell is defined by the lengths of three axes ([[i:a]], [[i:b]
 <!-- SEG:m68773:caption:CNX_Chem_10_06_GenUnitCll-caption -->
 A unit cell is defined by the lengths of its three axes ([[i:a]], [[i:b]], and [[i:c]]) and the angles ([[i:α]], [[i:β]], and [[i:γ]]) between the axes.
 
+<!-- SEG:m68773:alt:fs-idm117541936-alt -->
+A cube is shown where each corner has a black dot drawn on it. A circle in the bottom of the cube is composed of three double-ended arrows. The left top of this circle is labeled “alpha,” the top right is labeled “beta” and the bottom is labeled “gamma.” The bottom left corner of the cube is labeled “a” while the bottom of the back face is labeled “b” and the top, back, left corner is labeled “c.”
+
 <!-- SEG:m68773:para:fs-idm92224 -->
 There are seven different lattice systems, some of which have more than one type of lattice, for a total of fourteen different unit cells, which have the shapes shown in [[xref:CNX_Chem_10_06_CrystalSys]].
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_CrystalSys-caption -->
 There are seven different lattice systems and 14 different unit cells.
+
+<!-- SEG:m68773:alt:fs-idp25979984-alt -->
+A table is composed of two columns and eight rows. The header row reads “System / Axes / Angles” and “Unit Cells .” The first column reads “Cubic, a equals b equals c, alpha equals beta equals gamma equals 90 degrees,” “Tetragonal, a equals b does not equal c, alpha equals beta equals gamma equals 90 degrees,” “Orthorhombic, a does not equal b does not equal c, alpha equals beta equals gamma equals 90 degrees,” “Monoclinic, a does not equal b does not equal c, alpha equals gamma equals 90 degrees, beta does not equal 90 degrees,” “Triclinic, a does not equal b does not equal c, alpha does not equal beta does not equal gamma does not equal 90 degrees,” “Hexagonal, a equals b does not equal c, alpha equals beta equals 90 degrees, gamma equals 120 degrees,” “Rhombohedral, a equals b equals c, alpha equals beta equals gamma does not equal 90 degrees.” The second column is composed of diagrams. The first set of diagrams in the first cell show a cube with spheres at each corner labeled “Simple,” a cube with spheres in each corner and on each face labeled “Face-centered” and a cube with spheres in each corner and one in the center labeled “Body-centered.” The second set of diagrams in the second cell show a vertical rectangle with spheres at each corner labeled “Simple” and a vertical rectangle with spheres in each corner and one in the center labeled “Body-centered.” The third set of diagrams in the third cell show a vertical rectangle with spheres at each corner labeled “Simple,” a vertical rectangle with spheres in each corner and one in the center labeled “Body-centered,” a vertical rectangle with spheres in each corner and one on the top and bottom faces labeled “Base-centered,” and a vertical rectangle with spheres in each corner and one on each face labeled “Face-centered.” The fourth set of diagrams in the fourth cell show a vertical rectangle with spheres at each corner that is slanted to one side labeled “Simple” and a vertical rectangle with spheres in each corner that is slanted to one side and has two spheres in the center is labeled “Body-centered.” The fifth diagrams in the fifth cell show a cube that is slanted with spheres at each corner while the sixth diagram in the sixth cell shows a pair of hexagonal rings that are connected together to form a six-sided shape with spheres at each corner. The seventh diagram in the seventh cell shows a rectangle that is slanted with spheres at each corner.
 
 <!-- SEG:m68773:title:fs-idp29462288-title -->
 The Structures of Ionic Crystals
@@ -215,16 +254,22 @@ Ionic crystals consist of two or more different kinds of ions that usually have 
 Most monatomic ions behave as charged spheres, and their attraction for ions of opposite charge is the same in every direction. Consequently, stable structures for ionic compounds result (1) when ions of one charge are surrounded by as many ions as possible of the opposite charge and (2) when the cations and anions are in contact with each other. Structures are determined by two principal factors: the relative sizes of the ions and the ratio of the numbers of positive and negative ions in the compound.
 
 <!-- SEG:m68773:para:fs-idp1330336 -->
-In simple ionic structures, we usually find the anions, which are normally larger than the cations, arranged in a closest-packed array. (As seen previously, additional electrons attracted to the same nucleus make anions larger and fewer electrons attracted to the same nucleus make cations smaller when compared to the atoms from which they are formed.) The smaller cations commonly occupy one of two types of {{term}}holes{{/term}} (or interstices) remaining between the anions. The smaller of the holes is found between three anions in one plane and one anion in an adjacent plane. The four anions surrounding this hole are arranged at the corners of a tetrahedron, so the hole is called a {{term}}tetrahedral hole{{/term}}. The larger type of hole is found at the center of six anions (three in one layer and three in an adjacent layer) located at the corners of an octahedron; this is called an {{term}}octahedral hole{{/term}}. [[xref:CNX_Chem_10_06_TetOctHole]] illustrates both of these types of holes.
+In simple ionic structures, we usually find the anions, which are normally larger than the cations, arranged in a closest-packed array. (As seen previously, additional electrons attracted to the same nucleus make anions larger and fewer electrons attracted to the same nucleus make cations smaller when compared to the atoms from which they are formed.) The smaller cations commonly occupy one of two types of [[term:holes|term-00012]] (or interstices) remaining between the anions. The smaller of the holes is found between three anions in one plane and one anion in an adjacent plane. The four anions surrounding this hole are arranged at the corners of a tetrahedron, so the hole is called a [[term:tetrahedral hole|term-00013]]. The larger type of hole is found at the center of six anions (three in one layer and three in an adjacent layer) located at the corners of an octahedron; this is called an [[term:octahedral hole|term-00014]]. [[xref:CNX_Chem_10_06_TetOctHole]] illustrates both of these types of holes.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_TetOctHole-caption -->
 Cations may occupy two types of holes between anions: octahedral holes or tetrahedral holes.
+
+<!-- SEG:m68773:alt:fs-idp26945552-alt -->
+An image shows a top-view of a layer of blue spheres arranged in a sheet lying atop another sheet that is the same except the spheres are green. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. A third sheet composed of purple spheres lies at the bottom. The spaces created between the spheres in each layer are labeled “Octahedral holes” and “Tetrahedral holes.”
 
 <!-- SEG:m68773:para:fs-idp44872240 -->
 Depending on the relative sizes of the cations and anions, the cations of an ionic compound may occupy tetrahedral or octahedral holes, as illustrated in [[xref:CNX_Chem_10_06_IntIonst]]. Relatively small cations occupy tetrahedral holes, and larger cations occupy octahedral holes. If the cations are too large to fit into the octahedral holes, the anions may adopt a more open structure, such as a simple cubic array. The larger cations can then occupy the larger cubic holes made possible by the more open spacing.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_IntIonst-caption -->
 A cation’s size and the shape of the hole occupied by the compound are directly related.
+
+<!-- SEG:m68773:alt:fs-idp191262336-alt -->
+A diagram of three images is shown. In the first image, eight stacked cubes, with purple spheres at each corner, that make up one large cube are shown. The bottom left cube is different. It has green spheres at each corner and has four orange and six light purple spheres located on the faces of the cube. Labels below this structure read “Tetrahedral hole” and “Cation radius is about 22.5 to 41.4 percent of the anion radius. In the second image, eight stacked cubes, with alternating orange and green spheres at each corner, make up one large cube that is shown. The bottom left cube has darker lines that connect the spheres together. Labels below this structure read “Octahedral hole” and “Cation radius is about 41.4 to 73.2 percent of the anion radius. In the third image, eight stacked cubes, with purple spheres at each corner and light purple spheres on their interior faces, make up one large cube that is shown. Labels below this structure read “Cubic hole” and “Cation radius is about 73.2 to 100 percent of the anion radius.”
 
 <!-- SEG:m68773:para:fs-idp78541312 -->
 There are two tetrahedral holes for each anion in either an HCP or CCP array of anions. A compound that crystallizes in a closest-packed array of anions with cations in the tetrahedral holes can have a maximum cation:anion ratio of 2:1; all of the tetrahedral holes are filled at this ratio. Examples include Li[[sub:2]]O, Na[[sub:2]]O, Li[[sub:2]]S, and Na[[sub:2]]S. Compounds with a ratio of less than 2:1 may also crystallize in a closest-packed array of anions with cations in the tetrahedral holes, if the ionic sizes fit. In these compounds, however, some of the tetrahedral holes remain vacant.
@@ -304,6 +349,9 @@ When an ionic compound is composed of cations and anions of similar size in a 1:
 <!-- SEG:m68773:caption:CNX_Chem_10_07_CsClStrctr-caption -->
 Ionic compounds with similar-sized cations and anions, such as CsCl, usually form a simple cubic structure. They can be described by unit cells with either cations at the corners or anions at the corners.
 
+<!-- SEG:m68773:alt:fs-idm89247392-alt -->
+Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that are grouped together to form a cube with one smaller sphere in the center. The name under this image reads “simple cubic structure.” The third image shows five horizontal layers of purple spheres with layers of smaller green spheres in between.
+
 <!-- SEG:m68773:para:fs-idm48376560 -->
 We have said that the location of lattice points is arbitrary. This is illustrated by an alternate description of the CsCl structure in which the lattice points are located in the centers of the cesium ions. In this description, the cesium ions are located on the lattice points at the corners of the cell, and the chloride ion is located at the center of the cell. The two unit cells are different, but they describe identical structures.
 
@@ -313,17 +361,26 @@ When an ionic compound is composed of a 1:1 ratio of cations and anions that dif
 <!-- SEG:m68773:caption:CNX_Chem_10_07_NaClStrctr-caption -->
 Ionic compounds with anions that are much larger than cations, such as NaCl, usually form an FCC structure. They can be described by FCC unit cells with cations in the octahedral holes.
 
+<!-- SEG:m68773:alt:fs-idm94066176-alt -->
+Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that are grouped together to form a cube with one much larger sphere in the center. The name under this image reads “Body-centered simple cubic structure.” The third image shows seven horizontal layers of alternating purple and green spheres that are slightly offset with one another and form a large cube.
+
 <!-- SEG:m68773:para:fs-idm15393568 -->
 The cubic form of zinc sulfide, zinc blende, also crystallizes in an FCC unit cell, as illustrated in [[xref:CNX_Chem_10_06_ZnSStrctr]]. This structure contains sulfide ions on the lattice points of an FCC lattice. (The arrangement of sulfide ions is identical to the arrangement of chloride ions in sodium chloride.) The radius of a zinc ion is only about 40% of the radius of a sulfide ion, so these small Zn[[sup:2+]] ions are located in alternating tetrahedral holes, that is, in one half of the tetrahedral holes. There are four zinc ions and four sulfide ions in the unit cell, giving the empirical formula ZnS.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_ZnSStrctr-caption -->
 ZnS, zinc sulfide (or zinc blende) forms an FCC unit cell with sulfide ions at the lattice points and much smaller zinc ions occupying half of the tetrahedral holes in the structure.
 
+<!-- SEG:m68773:alt:fs-idp113309184-alt -->
+Two images are shown. The first image shows a cube with black dots at each corner and a red dot in the center of each face of the cube. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that form the corners of a cube with six other spheres located in the face of the cube. The spheres are connected to one another by lines. The name under this image reads “Z n S, face-centered unit cell.”
+
 <!-- SEG:m68773:para:fs-idm41755200 -->
-A calcium fluoride unit cell, like that shown in [[xref:CNX_Chem_10_07_CaF2Strctr]], is also an FCC unit cell, but in this case, the cations are located on the lattice points; equivalent calcium ions are located on the lattice points of an FCC lattice. All of the tetrahedral sites in the FCC array of calcium ions are occupied by fluoride ions. There are four calcium ions and eight fluoride ions in a unit cell, giving a calcium:fluorine ratio of 1:2, as required by the chemical formula, CaF[[sub:2]]. Close examination of [[xref:CNX_Chem_10_07_CaF2Strctr]] will reveal a simple cubic array of fluoride ions with calcium ions in one half of the cubic holes. The structure cannot be described in terms of a {{term}}space lattice{{/term}} of points on the fluoride ions because the fluoride ions do not all have identical environments. The orientation of the four calcium ions about the fluoride ions differs.
+A calcium fluoride unit cell, like that shown in [[xref:CNX_Chem_10_07_CaF2Strctr]], is also an FCC unit cell, but in this case, the cations are located on the lattice points; equivalent calcium ions are located on the lattice points of an FCC lattice. All of the tetrahedral sites in the FCC array of calcium ions are occupied by fluoride ions. There are four calcium ions and eight fluoride ions in a unit cell, giving a calcium:fluorine ratio of 1:2, as required by the chemical formula, CaF[[sub:2]]. Close examination of [[xref:CNX_Chem_10_07_CaF2Strctr]] will reveal a simple cubic array of fluoride ions with calcium ions in one half of the cubic holes. The structure cannot be described in terms of a [[term:space lattice|term-00015]] of points on the fluoride ions because the fluoride ions do not all have identical environments. The orientation of the four calcium ions about the fluoride ions differs.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_07_CaF2Strctr-caption -->
 Calcium fluoride, CaF[[sub:2]], forms an FCC unit cell with calcium ions (green) at the lattice points and fluoride ions (red) occupying all of the tetrahedral sites between them.
+
+<!-- SEG:m68773:alt:fs-idp104119168-alt -->
+Two images are shown. The first image shows a cube with black dots at each corner and a red dot in the center of each face of the cube. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight small green spheres that form the corners of a cube with six other small green spheres located in the faces of the cube. Eight larger green spheres are spaced inside the cube and all of the spheres are connect to one another by lines. The name under this image reads “C a F, subscript 2, face-centered unit cell.”
 
 <!-- SEG:m68773:title:fs-idp39715296-title -->
 Calculation of Ionic Radii
@@ -364,6 +421,9 @@ The edge length of the unit cell of KCl (NaCl-like structure, FCC) is 6.28 Å. A
 <!-- SEG:m68773:para:fs-idm6422368 -->
 The radius of the potassium ion is 1.33 Å.
 
+<!-- SEG:m68773:alt:fs-idp111782608-alt -->
+Three images are shown. The first shows a cube of alternating green and purple spheres. A smaller cube within that cube is outlined and a larger version of it appears next. This figure is a grey cube that appears to be made up of spheres. There are small spaces between each sphere. There is a right triangle outlined in this cube and a larger version of it appears next. This right triangle has two sides labeled “a,” and the hypotenuse, which spans two half-circles and one full one is labeled, “r, 2 r, and r.”
+
 <!-- SEG:m68773:note-title:fs-idp173458848-title -->
 Answer:
 
@@ -377,7 +437,7 @@ It is important to realize that values for ionic radii calculated from the edge 
 X-Ray Crystallography
 
 <!-- SEG:m68773:para:fs-idp81646992 -->
-The size of the unit cell and the arrangement of atoms in a crystal may be determined from measurements of the [[i:diffraction]] of X-rays by the crystal, termed {{term}}X-ray crystallography{{/term}}. {{term}}Diffraction{{/term}} is the change in the direction of travel experienced by an electromagnetic wave when it encounters a physical barrier whose dimensions are comparable to those of the wavelength of the light. X-rays are electromagnetic radiation with wavelengths about as long as the distance between neighboring atoms in crystals (on the order of a few Å).
+The size of the unit cell and the arrangement of atoms in a crystal may be determined from measurements of the [[i:diffraction]] of X-rays by the crystal, termed [[term:X-ray crystallography|term-00016]]. [[term:Diffraction|term-00017]] is the change in the direction of travel experienced by an electromagnetic wave when it encounters a physical barrier whose dimensions are comparable to those of the wavelength of the light. X-rays are electromagnetic radiation with wavelengths about as long as the distance between neighboring atoms in crystals (on the order of a few Å).
 
 <!-- SEG:m68773:para:fs-idp191124480 -->
 When a beam of monochromatic X-rays strikes a crystal, its rays are scattered in all directions by the atoms within the crystal. When scattered waves traveling in the same direction encounter one another, they undergo [[i:interference]], a process by which the waves combine to yield either an increase or a decrease in amplitude (intensity) depending upon the extent to which the combining waves’ maxima are separated (see [[xref:CNX_Chem_10_06_ConDec]]).
@@ -385,14 +445,20 @@ When a beam of monochromatic X-rays strikes a crystal, its rays are scattered in
 <!-- SEG:m68773:caption:CNX_Chem_10_06_ConDec-caption -->
 Light waves occupying the same space experience interference, combining to yield waves of greater (a) or lesser (b) intensity, depending upon the separation of their maxima and minima.
 
+<!-- SEG:m68773:alt:fs-idp39628848-alt -->
+A pair of images is shown that has four sections. In the first section, two sinusoidal waves are shown, one drawn above the other, and a section from the top of one curve to the top of the next curve is labeled “lambda.” The curves align with one another. The phrase below this reads “Constructive interference.” A right facing arrow leads from the first section to the second, which shows one larger sinusoidal curve that has higher and lower peaks and troughs. A section from the top of one curve to the top of the next curve is labeled “lambda” and the phrase below this reads “Maxima and minima reinforce.” In the second section, two sinusoidal waves are shown, one drawn above the other, and a section from the top of one curve to the top of the next curve is labeled “lambda.” The curves do not align with one another. The phrase below this reads “Destructive interference.” A right facing arrow leads from the first section to the second, which shows one flat line. The phrase below this reads “Maxima and minima cancel.”
+
 <!-- SEG:m68773:para:fs-idp19420096 -->
 When X-rays of a certain wavelength, [[i:λ]], are scattered by atoms in adjacent crystal planes separated by a distance, [[i:d]], they may undergo constructive interference when the difference between the distances traveled by the two waves prior to their combination is an integer factor, [[i:n]], of the wavelength. This condition is satisfied when the angle of the diffracted beam, [[i:θ]], is related to the wavelength and interatomic distance by the equation:
 
 <!-- SEG:m68773:para:fs-idp173470256 -->
-This relation is known as the {{term}}Bragg equation{{/term}} in honor of W. H. {{term}}Bragg{{/term}}, the English physicist who first explained this phenomenon. [[xref:CNX_Chem_10_06_XRyDiff1]] illustrates two examples of diffracted waves from the same two crystal planes. The figure on the top depicts waves diffracted at the Bragg angle, resulting in constructive interference, while that on the bottom shows diffraction and a different angle that does not satisfy the Bragg condition, resulting in destructive interference.
+This relation is known as the [[term:Bragg equation|term-00018]] in honor of W. H. [[term:Bragg|term-00019]], the English physicist who first explained this phenomenon. [[xref:CNX_Chem_10_06_XRyDiff1]] illustrates two examples of diffracted waves from the same two crystal planes. The figure on the top depicts waves diffracted at the Bragg angle, resulting in constructive interference, while that on the bottom shows diffraction and a different angle that does not satisfy the Bragg condition, resulting in destructive interference.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_XRyDiff1-caption -->
 The diffraction of X-rays scattered by the atoms within a crystal permits the determination of the distance between the atoms. The top image depicts constructive interference between two scattered waves and a resultant diffracted wave of high intensity. The bottom image depicts destructive interference and a low intensity diffracted wave.
+
+<!-- SEG:m68773:alt:fs-idm39196256-alt -->
+Two similar figures are shown. The first figure, labeled “Constructive Interference,” shows two horizontal rows of seven black dots with a line passing through them. The fourth dots of each row have a vertical line connecting them. The distance between these rows is labeled “d.” A beam labeled “Incident beam” descends at an angle labeled “theta” until it hits the line connecting the fourth dots, after which a diffracted beam ascends at the same angle “theta.” A dotted line is drawn across the diffracted beam. The second figure, labeled “Destructive interference,” is very similar, except that the angles “theta” are far more acute, making the slopes of the beams more shallow.
 
 <!-- SEG:m68773:para:fs-idp26359616 -->
 Visit this [[link:site|http://openstax.org/l/16bragg]] for more details on the Bragg equation and a simulator that allows you to explore the effect of each variable on the intensity of the diffracted wave.
@@ -402,6 +468,9 @@ An X-ray diffractometer, such as the one illustrated in [[xref:CNX_Chem_10_07_XR
 
 <!-- SEG:m68773:caption:CNX_Chem_10_07_XRyDiff2-caption -->
 (a) In a diffractometer, a beam of X-rays strikes a crystalline material, producing (b) an X-ray diffraction pattern that can be analyzed to determine the crystal structure.
+
+<!-- SEG:m68773:alt:fs-idp8694464-alt -->
+A diagram, labeled “a” shows a cube on the left with a channel bored into its right side labeled “X dash ray source.” A beam is leaving from this channel and traveling in a horizontal line toward an oval-shaped, short tube, labeled “Collimator to focus beam” and “X dash ray diffraction,” where it passes through a cube labeled “Crystalline material” and scatters onto a vertical sheet labeled “Imaging surface.” A second diagram, labeled “b,” shows a square sheet with a large dot in the center labeled “X dash ray beam,” that is surrounded by smaller dots arranged in rings and labeled “Diffracted X dash rays.”
 
 <!-- SEG:m68773:example-title:fs-idp19350688-title -->
 Using the Bragg Equation
@@ -437,10 +506,13 @@ Answer:
 X-ray Crystallographer Rosalind Franklin
 
 <!-- SEG:m68773:para:fs-idp1774112 -->
-The discovery of the structure of DNA in 1953 by Francis {{term}}Crick{{/term}} and James {{term}}Watson{{/term}} is one of the great achievements in the history of science. They were awarded the 1962 Nobel Prize in Physiology or Medicine, along with Maurice {{term}}Wilkins{{/term}}, who provided experimental proof of DNA’s structure. British chemist Rosalind {{term}}Franklin{{/term}} made invaluable contributions to this monumental achievement through her work in measuring X-ray diffraction images of DNA. Early in her career, Franklin’s research on the structure of coals proved helpful to the British war effort. After shifting her focus to biological systems in the early 1950s, Franklin and doctoral student Raymond Gosling discovered that DNA consists of two forms: a long, thin fiber formed when wet (type “B”) and a short, wide fiber formed when dried (type “A”). Her X-ray diffraction images of DNA ([[xref:CNX_Chem_10_06_RFranklin]]) provided the crucial information that allowed Watson and Crick to confirm that DNA forms a double helix, and to determine details of its size and structure. Franklin also conducted pioneering research on viruses and the RNA that contains their genetic information, uncovering new information that radically changed the body of knowledge in the field. After developing ovarian cancer, Franklin continued to work until her death in 1958 at age 37. Among many posthumous recognitions of her work, the Chicago Medical School of Finch University of Health Sciences changed its name to the Rosalind Franklin University of Medicine and Science in 2004, and adopted an image of her famous X-ray diffraction image of DNA as its official university logo.
+The discovery of the structure of DNA in 1953 by Francis [[term:Crick|term-00020]] and James [[term:Watson|term-00021]] is one of the great achievements in the history of science. They were awarded the 1962 Nobel Prize in Physiology or Medicine, along with Maurice [[term:Wilkins|term-00022]], who provided experimental proof of DNA’s structure. British chemist Rosalind [[term:Franklin|term-00023]] made invaluable contributions to this monumental achievement through her work in measuring X-ray diffraction images of DNA. Early in her career, Franklin’s research on the structure of coals proved helpful to the British war effort. After shifting her focus to biological systems in the early 1950s, Franklin and doctoral student Raymond Gosling discovered that DNA consists of two forms: a long, thin fiber formed when wet (type “B”) and a short, wide fiber formed when dried (type “A”). Her X-ray diffraction images of DNA ([[xref:CNX_Chem_10_06_RFranklin]]) provided the crucial information that allowed Watson and Crick to confirm that DNA forms a double helix, and to determine details of its size and structure. Franklin also conducted pioneering research on viruses and the RNA that contains their genetic information, uncovering new information that radically changed the body of knowledge in the field. After developing ovarian cancer, Franklin continued to work until her death in 1958 at age 37. Among many posthumous recognitions of her work, the Chicago Medical School of Finch University of Health Sciences changed its name to the Rosalind Franklin University of Medicine and Science in 2004, and adopted an image of her famous X-ray diffraction image of DNA as its official university logo.
 
 <!-- SEG:m68773:caption:CNX_Chem_10_06_RFranklin-caption -->
 This illustration shows an X-ray diffraction image similar to the one Franklin found in her research. (credit: National Institutes of Health)
+
+<!-- SEG:m68773:alt:fs-idp53384576-alt -->
+An image shows a circular illustration with rings of dots that are blurred together.
 
 <!-- SEG:m68773:title:fs-idp26936448-title -->
 Key Concepts and Summary
@@ -451,7 +523,7 @@ The structures of crystalline metals and simple ionic compounds can be described
 <!-- SEG:m68773:title:fs-idp29862416-title -->
 Key Equations
 
-<!-- SEG:m68773:entry:auto-152 -->
+<!-- SEG:m68773:entry:auto-176 -->
 [[MATH:23]]
 
 <!-- SEG:m68773:title:fs-idp81672976-title -->

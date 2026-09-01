@@ -83,7 +83,10 @@
               },
               "media": {
                 "id": "fs-idp98736208",
-                "alt": "A diagram is shown. At the center of the diagram is a T-shaped structure labeled, “Anode ( positive sign ),” that is on a mesh-like background labeled, “Iron screen.” The anode is connected to a box labeled, “Voltage source,” by a line, and the voltage source is connected to one of two L-shaped structures that surround the anode. They are labeled, “Cathode ( negative sign ).” Above the cathode on the right side of the diagram is a tube connected to a collection chamber labeled, “N a metal,” that has a lower outlet labeled, “N a outlet.” Surrounding all of these components is a blue background labeled, “Molten N a C l,” and a series of tubes that form a square outside the diagram. They have an opening in the upper right corner labeled, “Inlet for N a C l.” At the top of the diagram is a large tube with an upward-facing arrow drawn on it. The tube turns right, has a right-facing arrow on it, and is labeled, “C l subscript 2 outlet.”",
+                "alt": {
+                  "segmentId": "m68830:alt:fs-idp98736208-alt",
+                  "text": "A diagram is shown. At the center of the diagram is a T-shaped structure labeled, “Anode ( positive sign ),” that is on a mesh-like background labeled, “Iron screen.” The anode is connected to a box labeled, “Voltage source,” by a line, and the voltage source is connected to one of two L-shaped structures that surround the anode. They are labeled, “Cathode ( negative sign ).” Above the cathode on the right side of the diagram is a tube connected to a collection chamber labeled, “N a metal,” that has a lower outlet labeled, “N a outlet.” Surrounding all of these components is a blue background labeled, “Molten N a C l,” and a series of tubes that form a square outside the diagram. They have an opening in the upper right corner labeled, “Inlet for N a C l.” At the top of the diagram is a large tube with an upward-facing arrow drawn on it. The tube turns right, has a right-facing arrow on it, and is labeled, “C l subscript 2 outlet.”"
+                },
                 "src": "../../media/CNX_Chem_18_02_DownsCell.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -137,7 +140,10 @@
               },
               "media": {
                 "id": "fs-idp293911136",
-                "alt": "A diagram is shown. At the center of the diagram are two black squares, each labeled, “Carbon anode ( positive sign ),” and connected by forked tubes to a horizontal tube labeled with a positive sign. The carbon anodes are submerged in a green liquid labeled, “A l subscript 2 O subscript 3 dissolved in molten N a subscript 3 A l F subscript 6.” It is held in place by a three-sided, double layered container which is labeled, “Steel sheet,” on the outer layer and, “Ceramic,” on the inner layer. The carbon anodes are surrounded by bubbles labeled, “Bubbles of O subscript 2, C O, and C O subscript 2.” Below the green liquids lies a silver layer labeled, “Molten aluminum,” and a black layer labeled, “Carbon cathode ( negative sign ).” Above the diagram is an outlet tube labeled with an upward-facing arrow and the words, “H F and particulates exhaust to filter plant.”",
+                "alt": {
+                  "segmentId": "m68830:alt:fs-idp293911136-alt",
+                  "text": "A diagram is shown. At the center of the diagram are two black squares, each labeled, “Carbon anode ( positive sign ),” and connected by forked tubes to a horizontal tube labeled with a positive sign. The carbon anodes are submerged in a green liquid labeled, “A l subscript 2 O subscript 3 dissolved in molten N a subscript 3 A l F subscript 6.” It is held in place by a three-sided, double layered container which is labeled, “Steel sheet,” on the outer layer and, “Ceramic,” on the inner layer. The carbon anodes are surrounded by bubbles labeled, “Bubbles of O subscript 2, C O, and C O subscript 2.” Below the green liquids lies a silver layer labeled, “Molten aluminum,” and a black layer labeled, “Carbon cathode ( negative sign ).” Above the diagram is an outlet tube labeled with an upward-facing arrow and the words, “H F and particulates exhaust to filter plant.”"
+                },
                 "src": "../../media/CNX_Chem_18_02_HallHerCell.jpg",
                 "mimeType": "image/jpeg"
               }

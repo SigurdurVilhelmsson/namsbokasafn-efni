@@ -1,0 +1,384 @@
+{
+  "moduleId": "m00353",
+  "title": {
+    "segmentId": "m00353:title:auto-1",
+    "text": "Copolymers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "37e07147-e57d-4c2e-836c-8f113d8adac4"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00353:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00353:alt:fig-00001-alt",
+          "text": "Vinyl chloride reacts with vinylidene chloride to form the polymer named saran depicted in parentheses. m denotes the vinyl chloride unit and n denotes vinylidene chloride unit in the product."
+        },
+        "src": "../../media/OChem_31_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00353:para:para-00002"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00353:table-title:table-00001-title",
+        "text": "Some Common Copolymers and Their Uses"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00353:entry:auto-6",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-7",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-8",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-9",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00353:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00353:alt:OChem_31_03_002a_jpg-alt",
+                "text": "Structures of vinyl chloride and vinylidene chloride (C H 2 C Cl 2) separated by a plus sign.",
+                "mediaId": null,
+                "src": "../../media/OChem_31_03_002a.jpg"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00353:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00353:alt:OChem_31_03_002b_jpg-alt",
+                "text": "Structures of styrene (vinylbenzene) and 1,3-butadiene separated by a plus sign.",
+                "mediaId": null,
+                "src": "../../media/OChem_31_03_002b.jpg"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00353:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00353:alt:OChem_31_03_002c_jpg-alt",
+                "text": "Structures of hexafluoropropene and vinylidene fluoride (C H 2 C F 2) separated by a plus sign.",
+                "mediaId": null,
+                "src": "../../media/OChem_31_03_002c.jpg"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00353:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00353:alt:OChem_31_03_002d_jpg-alt",
+                "text": "Structures of acrylonitrile (cyanoethene) and 1,3-butadiene separated by a plus sign.",
+                "mediaId": null,
+                "src": "../../media/OChem_31_03_002d.jpg"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00353:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00353:alt:OChem_31_03_002e_jpg-alt",
+                "text": "Structures of isobutylene (2-methyl-1-propene) and isoprene (2-methyl-1,3-butadiene) separated by a plus sign.",
+                "mediaId": null,
+                "src": "../../media/OChem_31_03_002e.jpg"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00353:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00353:alt:OChem_31_03_002f_jpg-alt",
+                "text": "Structures of acrylonitrile (cyanoethene) and styrene (vinylbenzene) on the left separated from 1,3-butadiene on the right by a plus sign.",
+                "mediaId": null,
+                "src": "../../media/OChem_31_03_002f.jpg"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-32",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00353:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00353:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00353:alt:fig-00002-alt",
+          "text": "The structures of random copolymer and alternating copolymer. The random copolymer has monomer units A and B distributed randomly. An alternating copolymer has monomer units in an alternating manner."
+        },
+        "src": "../../media/OChem_31_03_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00353:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00353:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00353:alt:fig-00003-alt",
+          "text": "Two copolymer structures. Block: many units of monomer A are followed by many units of monomer B. Graft: chains of Bs branch off a stem of As."
+        },
+        "src": "../../media/OChem_31_03_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00353:para:para-00006"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00353:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

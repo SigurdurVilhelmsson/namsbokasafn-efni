@@ -1,0 +1,7 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:msup><m:mtext>A</m:mtext><m:mo>−</m:mo></m:msup><m:mo stretchy=\"false\">]</m:mo><m:mo stretchy=\"false\">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mo>+</m:mo></m:msup><m:mo stretchy=\"false\">]</m:mo></m:mrow><m:mrow><m:mo stretchy=\"false\">[</m:mo><m:mtext>HA</m:mtext><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:mfrac><m:mspace width=\"2em\"/><m:mtext>p</m:mtext><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mo>−</m:mo><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:msub><m:mi>K</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow></m:math>",
+    "latex": "{{K}_{\\text{a}}=\\frac{{[{\\text{A}}^{-}][{\\text{H}}_{3}{\\text{O}}^{+}]}}{{[\\text{HA}]}}\\, \\text{p}{K}_{\\text{a}}=-\\text{log}\\, {K}_{\\text{a}}}",
+    "isBlock": true
+  }
+}

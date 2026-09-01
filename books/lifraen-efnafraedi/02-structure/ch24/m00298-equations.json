@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>R–N=N–R</m:mtext><m:mo>′</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{R–N=N–R}′}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>O=C–N–C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{O=C–N–C=O}}"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "moduleId": "m00293",
+  "title": {
+    "segmentId": "m00293:title:auto-1",
+    "text": "Biological Amines and the Henderson–Hasselbalch Equation"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "aa43f748-2ec6-4dd3-b86f-321b480b8acd"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00293:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00293:para:para-00002"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00293:para:para-00003"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00002",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00293:para:para-00004"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00003",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00293:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00293:alt:fig-00001-alt",
+          "text": "The structure of alanine, an amino acid. The amino group is protonated at a pH equal to 7.3. The carboxylic acid group is dissociated at a pH equal to 7.3."
+        },
+        "src": "../../media/OChem_24_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00293:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

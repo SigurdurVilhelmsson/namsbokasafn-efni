@@ -8,7 +8,7 @@ By the end of this section, you will be able to:
 Derive names for common types of inorganic compounds using a systematic approach
 
 <!-- SEG:m68698:para:fs-idp268117168 -->
-{{term}}Nomenclature{{/term}}, a collection of rules for naming things, is important in science and in many other situations. This module describes an approach that is used to name simple ionic and molecular compounds, such as NaCl, CaCO[[sub:3]], and N[[sub:2]]O[[sub:4]]. The simplest of these are {{term}}binary compounds{{/term}}, those containing only two elements, but we will also consider how to name ionic compounds containing polyatomic ions, and one specific, very important class of compounds known as {{term}}acids{{/term}} (subsequent chapters in this text will focus on these compounds in great detail). We will limit our attention here to inorganic compounds, compounds that are composed principally of elements other than carbon, and will follow the nomenclature guidelines proposed by IUPAC. The rules for organic compounds, in which carbon is the principle element, will be treated in a later chapter on organic chemistry.
+[[term:Nomenclature|term-00001]], a collection of rules for naming things, is important in science and in many other situations. This module describes an approach that is used to name simple ionic and molecular compounds, such as NaCl, CaCO[[sub:3]], and N[[sub:2]]O[[sub:4]]. The simplest of these are [[term:binary compounds|term-00002]], those containing only two elements, but we will also consider how to name ionic compounds containing polyatomic ions, and one specific, very important class of compounds known as [[term:acids|term-00003]] (subsequent chapters in this text will focus on these compounds in great detail). We will limit our attention here to inorganic compounds, compounds that are composed principally of elements other than carbon, and will follow the nomenclature guidelines proposed by IUPAC. The rules for organic compounds, in which carbon is the principle element, will be treated in a later chapter on organic chemistry.
 
 <!-- SEG:m68698:title:fs-idp268266480-title -->
 Ionic Compounds
@@ -239,7 +239,7 @@ Out-of-date nomenclature used the suffixes –[[i:ic]] and –[[i:ous]] to desig
 Ionic Hydrates
 
 <!-- SEG:m68698:para:fs-idm244049904 -->
-Ionic compounds that contain water molecules as integral components of their crystals are called {{term}}hydrates{{/term}}. The name for an ionic hydrate is derived by adding a term to the name for the anhydrous (meaning “not hydrated”) compound that indicates the number of water molecules associated with each formula unit of the compound. The added word begins with a Greek prefix denoting the number of water molecules (see [[xref:fs-idp268400368]]) and ends with “hydrate.” For example, the anhydrous compound copper(II) sulfate also exists as a hydrate containing five water molecules and named copper(II) sulfate pentahydrate. Washing soda is the common name for a hydrate of sodium carbonate containing 10 water molecules; the systematic name is sodium carbonate decahydrate.
+Ionic compounds that contain water molecules as integral components of their crystals are called [[term:hydrates|term-00004]]. The name for an ionic hydrate is derived by adding a term to the name for the anhydrous (meaning “not hydrated”) compound that indicates the number of water molecules associated with each formula unit of the compound. The added word begins with a Greek prefix denoting the number of water molecules (see [[xref:fs-idp268400368]]) and ends with “hydrate.” For example, the anhydrous compound copper(II) sulfate also exists as a hydrate containing five water molecules and named copper(II) sulfate pentahydrate. Washing soda is the common name for a hydrate of sodium carbonate containing 10 water molecules; the systematic name is sodium carbonate decahydrate.
 
 <!-- SEG:m68698:para:fs-idm217856880 -->
 Formulas for ionic hydrates are written by appending a vertically centered dot, a coefficient representing the number of water molecules, and the formula for water. The two examples mentioned in the previous paragraph are represented by the formulas
@@ -406,6 +406,9 @@ Despite cleanup efforts, Cr(VI) groundwater contamination remains a problem in H
 <!-- SEG:m68698:caption:CNX_Chem_02_07_ErinBrocko-caption -->
 (a) Erin Brockovich found that Cr(VI), used by PG&amp;E, had contaminated the Hinckley, California, water supply. (b) The Cr(VI) ion is often present in water as the polyatomic ions chromate, [[MATH:2]] (left), and dichromate, [[MATH:3]] (right).
 
+<!-- SEG:m68698:alt:fs-idp282351072-alt -->
+Figure A shows a photo of Erin Brockovich. Figure B shows a 3-D ball-and-stick model of chromate. Chromate has a chromium atom at its center that forms bonds with four oxygen atoms each. Two of the oxygen atoms form single bonds with the chromium atom while the other two form double bonds each. The structure of dichromate consists of two chromate ions that are bonded and share one of their oxygen atoms to which each chromate atom has a single bond.
+
 <!-- SEG:m68698:title:fs-idp279151472-title -->
 Molecular (Covalent) Compounds
 
@@ -421,79 +424,79 @@ When two nonmetallic elements form a molecular compound, several combination rat
 <!-- SEG:m68698:para:fs-idm325632 -->
 When only one atom of the first element is present, the prefix [[i:mono]]- is usually deleted from that part. Thus, CO is named carbon monoxide, and CO[[sub:2]] is called carbon dioxide. When two vowels are adjacent, the ending vowel in the Greek prefix is sometimes omitted in common practice, though IUPAC guidelines only permit this for the duplicate letters o in [[i:monooxide]], which is correctly written as [[i:monoxide]]. For purposes of the nomenclature exercises in this text, students may choose to follow either approach. Some examples demonstrating this Some other examples are shown in [[xref:fs-idp269568176]].
 
-<!-- SEG:m68698:entry:auto-142 -->
+<!-- SEG:m68698:entry:auto-143 -->
 Names of Some Molecular Compounds Composed of Two Elements
 
-<!-- SEG:m68698:entry:auto-143 -->
-Compound
-
 <!-- SEG:m68698:entry:auto-144 -->
-Name
+Compound
 
 <!-- SEG:m68698:entry:auto-145 -->
-Compound
-
-<!-- SEG:m68698:entry:auto-146 -->
 Name
 
+<!-- SEG:m68698:entry:auto-146 -->
+Compound
+
 <!-- SEG:m68698:entry:auto-147 -->
-SO[[sub:2]]
+Name
 
 <!-- SEG:m68698:entry:auto-148 -->
-sulfur dioxide
+SO[[sub:2]]
 
 <!-- SEG:m68698:entry:auto-149 -->
-BCl[[sub:3]]
+sulfur dioxide
 
 <!-- SEG:m68698:entry:auto-150 -->
-boron trichloride
+BCl[[sub:3]]
 
 <!-- SEG:m68698:entry:auto-151 -->
-SO[[sub:3]]
+boron trichloride
 
 <!-- SEG:m68698:entry:auto-152 -->
-sulfur trioxide
+SO[[sub:3]]
 
 <!-- SEG:m68698:entry:auto-153 -->
-SF[[sub:6]]
+sulfur trioxide
 
 <!-- SEG:m68698:entry:auto-154 -->
-sulfur hexafluoride
+SF[[sub:6]]
 
 <!-- SEG:m68698:entry:auto-155 -->
-NO[[sub:2]]
+sulfur hexafluoride
 
 <!-- SEG:m68698:entry:auto-156 -->
-nitrogen dioxide
+NO[[sub:2]]
 
 <!-- SEG:m68698:entry:auto-157 -->
-PF[[sub:5]]
+nitrogen dioxide
 
 <!-- SEG:m68698:entry:auto-158 -->
-phosphorus pentafluoride
+PF[[sub:5]]
 
 <!-- SEG:m68698:entry:auto-159 -->
-N[[sub:2]]O[[sub:4]]
+phosphorus pentafluoride
 
 <!-- SEG:m68698:entry:auto-160 -->
-dinitrogen tetroxide
+N[[sub:2]]O[[sub:4]]
 
 <!-- SEG:m68698:entry:auto-161 -->
-P[[sub:4]]O[[sub:10]]
+dinitrogen tetroxide
 
 <!-- SEG:m68698:entry:auto-162 -->
-tetraphosphorus decaoxide
+P[[sub:4]]O[[sub:10]]
 
 <!-- SEG:m68698:entry:auto-163 -->
-N[[sub:2]]O[[sub:5]]
+tetraphosphorus decaoxide
 
 <!-- SEG:m68698:entry:auto-164 -->
-dinitrogen pentoxide
+N[[sub:2]]O[[sub:5]]
 
 <!-- SEG:m68698:entry:auto-165 -->
-IF[[sub:7]]
+dinitrogen pentoxide
 
 <!-- SEG:m68698:entry:auto-166 -->
+IF[[sub:7]]
+
+<!-- SEG:m68698:entry:auto-167 -->
 iodine heptafluoride
 
 <!-- SEG:m68698:para:fs-idm207744 -->
@@ -569,7 +572,7 @@ The following [[link:website|http://openstax.org/l/16chemcompname]] provides pra
 Binary Acids
 
 <!-- SEG:m68698:para:fs-idp282238096 -->
-Some compounds containing hydrogen are members of an important class of substances known as acids. The chemistry of these compounds is explored in more detail in later chapters of this text, but for now, it will suffice to note that many acids release hydrogen ions, H[[sup:+]], when dissolved in water. To denote this distinct chemical property, a mixture of water with an acid is given a name derived from the compound’s name. If the compound is a {{term}}binary acid{{/term}} (comprised of hydrogen and one other nonmetallic element):
+Some compounds containing hydrogen are members of an important class of substances known as acids. The chemistry of these compounds is explored in more detail in later chapters of this text, but for now, it will suffice to note that many acids release hydrogen ions, H[[sup:+]], when dissolved in water. To denote this distinct chemical property, a mixture of water with an acid is given a name derived from the compound’s name. If the compound is a [[term:binary acid|term-00005]] (comprised of hydrogen and one other nonmetallic element):
 
 <!-- SEG:m68698:item:fs-idp282239904-item-1 -->
 The word “hydrogen” is changed to the prefix [[i:hydro-]]
@@ -583,50 +586,50 @@ The word “acid” is added as a second word
 <!-- SEG:m68698:para:fs-idm109568 -->
 For example, when the gas HCl (hydrogen chloride) is dissolved in water, the solution is called [[i:hydrochloric acid]]. Several other examples of this nomenclature are shown in [[xref:fs-idp272649888]].
 
-<!-- SEG:m68698:entry:auto-196 -->
+<!-- SEG:m68698:entry:auto-197 -->
 Names of Some Simple Acids
 
-<!-- SEG:m68698:entry:auto-197 -->
+<!-- SEG:m68698:entry:auto-198 -->
 Name of Gas
 
-<!-- SEG:m68698:entry:auto-198 -->
+<!-- SEG:m68698:entry:auto-199 -->
 Name of Acid
 
-<!-- SEG:m68698:entry:auto-199 -->
+<!-- SEG:m68698:entry:auto-200 -->
 HF([[i:g]]), hydrogen fluoride
 
-<!-- SEG:m68698:entry:auto-200 -->
+<!-- SEG:m68698:entry:auto-201 -->
 HF([[i:aq]]), hydrofluoric acid
 
-<!-- SEG:m68698:entry:auto-201 -->
+<!-- SEG:m68698:entry:auto-202 -->
 HCl([[i:g]]), hydrogen chloride
 
-<!-- SEG:m68698:entry:auto-202 -->
+<!-- SEG:m68698:entry:auto-203 -->
 HCl([[i:aq]]), hydrochloric acid
 
-<!-- SEG:m68698:entry:auto-203 -->
+<!-- SEG:m68698:entry:auto-204 -->
 HBr([[i:g]]), hydrogen bromide
 
-<!-- SEG:m68698:entry:auto-204 -->
+<!-- SEG:m68698:entry:auto-205 -->
 HBr([[i:aq]]), hydrobromic acid
 
-<!-- SEG:m68698:entry:auto-205 -->
+<!-- SEG:m68698:entry:auto-206 -->
 HI([[i:g]]), hydrogen iodide
 
-<!-- SEG:m68698:entry:auto-206 -->
+<!-- SEG:m68698:entry:auto-207 -->
 HI([[i:aq]]), hydroiodic acid
 
-<!-- SEG:m68698:entry:auto-207 -->
+<!-- SEG:m68698:entry:auto-208 -->
 H[[sub:2]]S([[i:g]]), hydrogen sulfide
 
-<!-- SEG:m68698:entry:auto-208 -->
+<!-- SEG:m68698:entry:auto-209 -->
 H[[sub:2]]S([[i:aq]]), hydrosulfuric acid
 
 <!-- SEG:m68698:title:fs-idp268349296-title -->
 Oxyacids
 
 <!-- SEG:m68698:para:fs-idp279162704 -->
-Many compounds containing three or more elements (such as organic compounds or coordination compounds) are subject to specialized nomenclature rules that you will learn later. However, we will briefly discuss the important compounds known as {{term}}oxyacids{{/term}}, compounds that contain hydrogen, oxygen, and at least one other element, and are bonded in such a way as to impart acidic properties to the compound (you will learn the details of this in a later chapter). Typical oxyacids consist of hydrogen combined with a polyatomic, oxygen-containing ion. To name oxyacids:
+Many compounds containing three or more elements (such as organic compounds or coordination compounds) are subject to specialized nomenclature rules that you will learn later. However, we will briefly discuss the important compounds known as [[term:oxyacids|term-00006]], compounds that contain hydrogen, oxygen, and at least one other element, and are bonded in such a way as to impart acidic properties to the compound (you will learn the details of this in a later chapter). Typical oxyacids consist of hydrogen combined with a polyatomic, oxygen-containing ion. To name oxyacids:
 
 <!-- SEG:m68698:item:fs-idp279164064-item-1 -->
 Omit “hydrogen”
@@ -643,88 +646,88 @@ Add “acid”
 <!-- SEG:m68698:para:fs-idp282461232 -->
 For example, consider H[[sub:2]]CO[[sub:3]] (which you might be tempted to call “hydrogen carbonate”). To name this correctly, “hydrogen” is omitted; the –[[i:ate]] of carbonate is replace with –[[i:ic]]; and acid is added—so its name is carbonic acid. Other examples are given in [[xref:fs-idp268340336]]. There are some exceptions to the general naming method (e.g., H[[sub:2]]SO[[sub:4]] is called sulfuric acid, not sulfic acid, and H[[sub:2]]SO[[sub:3]] is sulfurous, not sulfous, acid).
 
-<!-- SEG:m68698:entry:auto-216 -->
+<!-- SEG:m68698:entry:auto-217 -->
 Names of Common Oxyacids
 
-<!-- SEG:m68698:entry:auto-217 -->
+<!-- SEG:m68698:entry:auto-218 -->
 Formula
 
-<!-- SEG:m68698:entry:auto-218 -->
+<!-- SEG:m68698:entry:auto-219 -->
 Anion Name
 
-<!-- SEG:m68698:entry:auto-219 -->
+<!-- SEG:m68698:entry:auto-220 -->
 Acid Name
 
-<!-- SEG:m68698:entry:auto-220 -->
+<!-- SEG:m68698:entry:auto-221 -->
 HC[[sub:2]]H[[sub:3]]O[[sub:2]]
 
-<!-- SEG:m68698:entry:auto-221 -->
+<!-- SEG:m68698:entry:auto-222 -->
 acetate
 
-<!-- SEG:m68698:entry:auto-222 -->
+<!-- SEG:m68698:entry:auto-223 -->
 acetic acid
 
-<!-- SEG:m68698:entry:auto-223 -->
+<!-- SEG:m68698:entry:auto-224 -->
 HNO[[sub:3]]
 
-<!-- SEG:m68698:entry:auto-224 -->
+<!-- SEG:m68698:entry:auto-225 -->
 nitrate
 
-<!-- SEG:m68698:entry:auto-225 -->
+<!-- SEG:m68698:entry:auto-226 -->
 nitric acid
 
-<!-- SEG:m68698:entry:auto-226 -->
+<!-- SEG:m68698:entry:auto-227 -->
 HNO[[sub:2]]
 
-<!-- SEG:m68698:entry:auto-227 -->
+<!-- SEG:m68698:entry:auto-228 -->
 nitrite
 
-<!-- SEG:m68698:entry:auto-228 -->
+<!-- SEG:m68698:entry:auto-229 -->
 nitrous acid
 
-<!-- SEG:m68698:entry:auto-229 -->
+<!-- SEG:m68698:entry:auto-230 -->
 HClO[[sub:4]]
 
-<!-- SEG:m68698:entry:auto-230 -->
+<!-- SEG:m68698:entry:auto-231 -->
 perchlorate
 
-<!-- SEG:m68698:entry:auto-231 -->
+<!-- SEG:m68698:entry:auto-232 -->
 perchloric acid
 
-<!-- SEG:m68698:entry:auto-232 -->
+<!-- SEG:m68698:entry:auto-233 -->
 H[[sub:2]]CO[[sub:3]]
 
-<!-- SEG:m68698:entry:auto-233 -->
+<!-- SEG:m68698:entry:auto-234 -->
 carbonate
 
-<!-- SEG:m68698:entry:auto-234 -->
+<!-- SEG:m68698:entry:auto-235 -->
 carbonic acid
 
-<!-- SEG:m68698:entry:auto-235 -->
+<!-- SEG:m68698:entry:auto-236 -->
 H[[sub:2]]SO[[sub:4]]
 
-<!-- SEG:m68698:entry:auto-236 -->
+<!-- SEG:m68698:entry:auto-237 -->
 sulfate
 
-<!-- SEG:m68698:entry:auto-237 -->
+<!-- SEG:m68698:entry:auto-238 -->
 sulfuric acid
 
-<!-- SEG:m68698:entry:auto-238 -->
+<!-- SEG:m68698:entry:auto-239 -->
 H[[sub:2]]SO[[sub:3]]
 
-<!-- SEG:m68698:entry:auto-239 -->
+<!-- SEG:m68698:entry:auto-240 -->
 sulfite
 
-<!-- SEG:m68698:entry:auto-240 -->
+<!-- SEG:m68698:entry:auto-241 -->
 sulfurous acid
 
-<!-- SEG:m68698:entry:auto-241 -->
+<!-- SEG:m68698:entry:auto-242 -->
 H[[sub:3]]PO[[sub:4]]
 
-<!-- SEG:m68698:entry:auto-242 -->
+<!-- SEG:m68698:entry:auto-243 -->
 phosphate
 
-<!-- SEG:m68698:entry:auto-243 -->
+<!-- SEG:m68698:entry:auto-244 -->
 phosphoric acid
 
 <!-- SEG:m68698:title:fs-idp282340144-title -->

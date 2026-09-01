@@ -14,13 +14,16 @@ Explain the relationship between entropy and the number of microstates
 Predict the sign of the entropy change for chemical and physical processes
 
 <!-- SEG:m68817:para:fs-idm1359840 -->
-In 1824, at the age of 28, Nicolas Léonard Sadi {{term}}Carnot{{/term}} ([[xref:CNX_Chem_16_03_Carnot]]) published the results of an extensive study regarding the efficiency of steam heat engines. A later review of Carnot’s findings by Rudolf {{term}}Clausius{{/term}} introduced a new thermodynamic property that relates the spontaneous heat flow accompanying a process to the temperature at which the process takes place. This new property was expressed as the ratio of the [[i:reversible]] heat ([[i:q]][[sub:rev]]) and the kelvin temperature ([[i:T]]). In thermodynamics, a {{term}}reversible process{{/term}} is one that takes place at such a slow rate that it is always at equilibrium and its direction can be changed (it can be “reversed”) by an infinitesimally small change in some condition. Note that the idea of a reversible process is a formalism required to support the development of various thermodynamic concepts; no real processes are truly reversible, rather they are classified as [[i:irreversible]].
+In 1824, at the age of 28, Nicolas Léonard Sadi [[term:Carnot|term-00001]] ([[xref:CNX_Chem_16_03_Carnot]]) published the results of an extensive study regarding the efficiency of steam heat engines. A later review of Carnot’s findings by Rudolf [[term:Clausius|term-00002]] introduced a new thermodynamic property that relates the spontaneous heat flow accompanying a process to the temperature at which the process takes place. This new property was expressed as the ratio of the [[i:reversible]] heat ([[i:q]][[sub:rev]]) and the kelvin temperature ([[i:T]]). In thermodynamics, a [[term:reversible process|term-00003]] is one that takes place at such a slow rate that it is always at equilibrium and its direction can be changed (it can be “reversed”) by an infinitesimally small change in some condition. Note that the idea of a reversible process is a formalism required to support the development of various thermodynamic concepts; no real processes are truly reversible, rather they are classified as [[i:irreversible]].
 
 <!-- SEG:m68817:caption:CNX_Chem_16_03_Carnot-caption -->
 (a) Nicholas Léonard Sadi Carnot’s research into steam-powered machinery and (b) Rudolf Clausius’s later study of those findings led to groundbreaking discoveries about spontaneous heat flow processes.
 
+<!-- SEG:m68817:alt:fs-idm106556080-alt -->
+A portrait of Rudolf Clasius is shown.
+
 <!-- SEG:m68817:para:fs-idm194920048 -->
-Similar to other thermodynamic properties, this new quantity is a state function, so its change depends only upon the initial and final states of a system. In 1865, Clausius named this property {{term}}entropy ([[i:S]]){{/term}} and defined its change for any process as the following:
+Similar to other thermodynamic properties, this new quantity is a state function, so its change depends only upon the initial and final states of a system. In 1865, Clausius named this property [[term:entropy ([[i:S]])|term-00004]] and defined its change for any process as the following:
 
 <!-- SEG:m68817:para:fs-idm100781680 -->
 The entropy change for a real, irreversible process is then equal to that for the theoretical reversible process that involves the same initial and final states.
@@ -29,7 +32,7 @@ The entropy change for a real, irreversible process is then equal to that for th
 Entropy and Microstates
 
 <!-- SEG:m68817:para:fs-idp173054032 -->
-Following the work of Carnot and Clausius, Ludwig {{term}}Boltzmann{{/term}} developed a molecular-scale statistical model that related the entropy of a system to the [[i:number of microstates]] ([[i:W]]) possible for the system. A {{term}}microstate{{/term}} is a specific configuration of all the locations and energies of the atoms or molecules that make up a system. The relation between a system’s entropy and the number of possible microstates is
+Following the work of Carnot and Clausius, Ludwig [[term:Boltzmann|term-00005]] developed a molecular-scale statistical model that related the entropy of a system to the [[i:number of microstates]] ([[i:W]]) possible for the system. A [[term:microstate|term-00006]] is a specific configuration of all the locations and energies of the atoms or molecules that make up a system. The relation between a system’s entropy and the number of possible microstates is
 
 <!-- SEG:m68817:para:fs-idm109445936 -->
 where [[i:k]] is the Boltzmann constant, 1.38 [[MATH:1]] 10[[sup:−23]] J/K.
@@ -45,6 +48,9 @@ Consider the general case of a system comprised of [[i:N]] particles distributed
 
 <!-- SEG:m68817:caption:CNX_Chem_16_02_Microstates-caption -->
 The sixteen microstates associated with placing four particles in two boxes are shown. The microstates are collected into five distributions—(a), (b), (c), (d), and (e)—based on the numbers of particles in each box.
+
+<!-- SEG:m68817:alt:fs-idm219643568-alt -->
+Five rows of diagrams that look like dominoes are shown and labeled a, b, c, d, and e. Row a has one “domino” that has four dots on the left side, red, green, blue and yellow in a clockwise pattern from the top left, and no dots on the right. Row b has four “dominos,” each with three dots on the left and one dot on the right. The first shows a “domino” with green, yellow and blue on the left and red on the right. The second “domino” has yellow, blue and red on the left and green on the right. The third “domino” has red, green and yellow on the left and blue on the right while the fourth has red, green and blue on the left and yellow on the right. Row c has six “dominos”, each with two dots on either side. The first has a red and green on the left and a blue and yellow on the right. The second has a red and blue on the left and a green and yellow on the right while the third has a yellow and red on the left and a green and blue on the right. The fourth has a green and blue on the left and a red and yellow on the right. The fifth has a green and yellow on the left and a red and blue on the right. The sixth has a blue and yellow on the left and a green and red on the right. Row d has four “dominos,” each with one dot on the left and three on the right. The first “domino” has red on the left and a blue, green and yellow on the right. The second has a green on the left and a red, yellow and blue on the right. The third has a blue on the left and a red, green and yellow on the right. The fourth has a yellow on the left and a red, green and blue on the right. Row e has 1 “domino” with no dots on the left and four dots on the right that are red, green, blue and yellow.
 
 <!-- SEG:m68817:para:fs-idm104062656 -->
 For this system, the most probable configuration is one of the six microstates associated with distribution (c) where the particles are evenly distributed between the boxes, that is, a configuration of two particles in each box. The probability of finding the system in this configuration is [[MATH:2]] or [[MATH:3]] The least probable configuration of the system is one in which all four particles are in one box, corresponding to distributions (a) and (e), each with a probability of [[MATH:4]] The probability of finding all particles in only one box (either the left box or right box) is then [[MATH:5]] or [[MATH:6]]
@@ -63,6 +69,9 @@ A similar approach may be used to describe the spontaneous flow of heat. Conside
 
 <!-- SEG:m68817:caption:CNX_Chem_16_03_Energy-caption -->
 This shows a microstate model describing the flow of heat from a hot object to a cold object. (a) Before the heat flow occurs, the object comprised of particles [[b:A]] and [[b:B]] contains both units of energy and as represented by a distribution of three microstates. (b) If the heat flow results in an even dispersal of energy (one energy unit transferred), a distribution of four microstates results. (c) If both energy units are transferred, the resulting distribution has three microstates.
+
+<!-- SEG:m68817:alt:fs-idm215022256-alt -->
+Three rows labeled a, b, and c are shown and each contains rectangles with two sides where the left side is labeled, “A,” and “B,” and the right is labeled, “C,” and “D.” Row a has three rectangles where the first has a dot above and below the letter A, the second has a dot above the A and B, and the third which has a dot above and below the letter B. Row b has four rectangles; the first has a dot above A and C, the second has a dot above A and D, the third has a dot above B and C and the fourth has a dot above B and D. Row c has three rectangles; the first has a dot above and below the letter C, the second has a dot above C and D and the third has a dot above and below the letter D.
 
 <!-- SEG:m68817:example-title:fs-idm141128112-title -->
 Determination of Δ[[i:S]]
@@ -88,6 +97,9 @@ Consider the system shown in [[xref:CNX_Chem_16_03_Energy]]. What is the change 
 <!-- SEG:m68817:para:fs-idm145487536 -->
 0 J/K
 
+<!-- SEG:m68817:alt:CNX_Chem_16_03_Matter_img-alt -->
+A diagram shows one rectangle with two sides that has four dots, red, green, yellow and blue written on the left side. A right-facing arrow leads to six more two-sided rectangles, each with two dots on the left and right sides. The first rectangle has a red and green dot on the left and a blue and yellow on the right, while the second shows a red and blue on the left and a green and yellow on the right. The third rectangle has a red and yellow dot on the left and a blue and green on the right, while the fourth shows a green and blue on the left and a red and yellow on the right. The fifth rectangle has a yellow and green dot on the left and a blue and red on the right, while the sixth shows a yellow and blue on the left and a green and red on the right.
+
 <!-- SEG:m68817:note-title:fs-idp48055552-title -->
 Answer:
 
@@ -103,6 +115,9 @@ The relationships between entropy, microstates, and matter/energy dispersal desc
 <!-- SEG:m68817:caption:CNX_Chem_16_03_Entropies-caption -->
 The entropy of a substance increases (Δ[[i:S]] > 0) as it transforms from a relatively ordered solid, to a less-ordered liquid, and then to a still less-ordered gas. The entropy decreases (Δ[[i:S]] &lt; 0) as the substance transforms from a gas to a liquid and then to a solid.
 
+<!-- SEG:m68817:alt:fs-idm187243744-alt -->
+Three stoppered flasks are shown with right and left-facing arrows in between each; the first is labeled above as, “delta S greater than 0,” and below as, “delta S less than 0,” while the second is labeled above as, “delta S greater than 0,” and below as, “delta S less than 0.” A long, right-facing arrow is drawn above all the flasks and labeled, “Increasing entropy.” The left flask contains twenty-seven particles arranged in a cube in the bottom of the flask and is labeled, “Crystalline solid,” below. The middle flask contains twenty-seven particles dispersed randomly in the bottom of the flask and is labeled, “Liquid,” below. The right flask contains twenty-seven particles dispersed inside of the flask and moving rapidly and is labeled, “Gas,” below.
+
 <!-- SEG:m68817:para:fs-idm123213200 -->
 Now consider the gaseous phase, in which a given number of atoms or molecules occupy a [[i:much]] greater volume than in the liquid phase. Each atom or molecule can be found in many more locations, corresponding to a much greater number of microstates. Consequently, for any substance, [[i:S]][[sub:gas]] > [[i:S]][[sub:liquid]] > [[i:S]][[sub:solid]], and the processes of vaporization and sublimation likewise involve increases in entropy, Δ[[i:S]] > 0. Likewise, the reciprocal phase transitions, condensation and deposition, involve decreases in entropy, Δ[[i:S]] &lt; 0.
 
@@ -111,6 +126,9 @@ According to kinetic-molecular theory, the temperature of a substance is proport
 
 <!-- SEG:m68817:caption:CNX_Chem_16_02_EntGraph-caption -->
 Entropy increases as the temperature of a substance is raised, which corresponds to the greater spread of kinetic energies. When a substance undergoes a phase transition, its entropy changes significantly.
+
+<!-- SEG:m68817:alt:fs-idm190770944-alt -->
+Two graphs are shown. The y-axis of the left graph is labeled, “Fraction of molecules,” while the x-axis is labeled, “Velocity, v ( m / s ),” and has values of 0 through 1,500 along the axis with increments of 500. Four lines are plotted on this graph. The first, labeled, “100 K,” peaks around 200 m / s while the second, labeled, “200 K,” peaks near 300 m / s and is slightly lower on the y-axis than the first. The third line, labeled, “500 K,” peaks around 550 m / s and is lower than the first two on the y-axis. The fourth line, labeled, “1000 K,” peaks around 750 m / s and is the lowest of the four on the y-axis. Each line get increasingly broad. The second graph has a y-axis labeled, “Entropy, S,” with an upward-facing arrow and an x-axis labeled, “Temperature ( K ),” and a right-facing arrow. The graph has three equally spaced columns in the background, labeled, “Solid,” “Liquid,” and, “Gas,” from left to right. A line extends slightly upward through the first column in a slight upward direction, then goes straight up in the transition between the first two columns. In then progresses in a slight upward direction through the second column, then goes up dramatically between the second and third columns, then continues in a slight upward direction once more. The first vertical region of this line is labeled, “Melting,” and the second is labeled, “Boiling.”
 
 <!-- SEG:m68817:para:fs-idm305735232 -->
 Use [[link:interactive simulator|http://openstax.org/l/16freemotion]] to visualize the dependence of particle location and freedom of motion on physical state and temperature for several different atoms and molecules.
@@ -196,13 +214,13 @@ For a given substance, entropy depends on phase with [[i:S]][[sub:solid]] &lt; [
 <!-- SEG:m68817:title:fs-idm145716272-title -->
 Key Equations
 
-<!-- SEG:m68817:entry:auto-67 -->
+<!-- SEG:m68817:entry:auto-73 -->
 [[MATH:17]]
 
-<!-- SEG:m68817:entry:auto-68 -->
+<!-- SEG:m68817:entry:auto-74 -->
 [[i:S]] = [[i:k]] ln [[i:W]]
 
-<!-- SEG:m68817:entry:auto-69 -->
+<!-- SEG:m68817:entry:auto-75 -->
 [[MATH:18]]
 
 <!-- SEG:m68817:title:fs-idm93579488-title -->

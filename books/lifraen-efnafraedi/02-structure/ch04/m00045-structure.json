@@ -1,0 +1,238 @@
+{
+  "moduleId": "m00045",
+  "title": {
+    "segmentId": "m00045:title:auto-1",
+    "text": "Axial and Equatorial Bonds in Cyclohexane"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "eed1237a-308b-49f4-abd6-91e8414d43cc"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00045:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00045:alt:fig-00001-alt",
+          "text": "The ball and stick model and chair conformation of cyclohexane and glucose. In models, black, gray, and red spheres represent carbon, hydrogen, and oxygen atoms, respectively."
+        },
+        "src": "../../media/OChem_04_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00045:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00045:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00045:alt:fig-00002-alt",
+          "text": "The ball and stick model and chemical structure of chair cyclohexane. Axial hydrogens (red) are parallel to the ring axis and equatorial hydrogens (blue) are in the ring equator."
+        },
+        "src": "../../media/OChem_04_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00045:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00045:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00045:alt:fig-00003-alt",
+          "text": "The space-filling model and ball and stick model of cyclohexane with alternate axial and equatorial positions, represented by red and blue spheres, respectively."
+        },
+        "src": "../../media/OChem_04_06_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00045:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00045:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "caption": {
+        "segmentId": "m00045:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00045:alt:fig-00004-alt",
+          "text": "One cyclohexane with six axial bonds (red)  and three cyclohexanes, each with two equatorial bonds (blue) form a completed cyclohexane that has both six axial and six equatorial bonds."
+        },
+        "src": "../../media/OChem_04_06_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00045:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00045:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00045:alt:fig-00005-alt",
+          "text": "The chair conformation and ball and stick model of substituted cyclohexane undergo ring-flip to form new conformation and model. The first chair conformation indicates that carbon moving clockwise."
+        },
+        "src": "../../media/OChem_04_06_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00045:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00045:alt:fig-00006-alt",
+          "text": "The chair conformation and ball and stick model of axial bromocyclohexane undergo ring-flip to form conformation and model of equatorial bromocyclohexane."
+        },
+        "src": "../../media/OChem_04_06_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00045:example-title:exam-00001-title",
+        "text": "Drawing the Chair Conformation of a Substituted Cyclohexane"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00045:para:para-00008"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00045:para:para-00009",
+          "title": {
+            "segmentId": "m00045:para-title:para-00009-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00045:para:para-00010",
+          "title": {
+            "segmentId": "m00045:para-title:para-00010-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00045:alt:media-1-alt",
+          "text": "In the chair conformation of cyclohexane, C1 is bonded to an axial methyl group and an equatorial methyl group."
+        },
+        "src": "../../media/OChem_04_06_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00045:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": null,
+      "class": null,
+      "src": "../../media/OChem_04_06_007.jpg",
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": "",
+      "alt": {
+        "segmentId": "m00045:alt:media-1-alt",
+        "text": "In the chair conformation of cyclohexane, C1 is bonded to an axial methyl group and an equatorial methyl group."
+      }
+    }
+  ],
+  "sectionOrder": 6
+}

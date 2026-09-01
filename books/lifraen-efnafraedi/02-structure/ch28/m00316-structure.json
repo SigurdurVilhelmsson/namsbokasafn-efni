@@ -1,0 +1,160 @@
+{
+  "moduleId": "m00316",
+  "title": {
+    "segmentId": "m00316:title:auto-1",
+    "text": "DNA Synthesis"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e015c82a-7bc0-4bad-8b8f-eb7e704af946"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00316:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00316:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00316:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00316:alt:fig-00001-alt",
+          "text": "The first step of D N A synthesis. A deoxynucleoside and silica support are reacted to form a product where -O-Ph is replaced by the silica support."
+        },
+        "src": "../../media/OChem_28_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00316:alt:fig-00002-alt",
+          "text": "The figure shows the structure of four bases named N-protected adenine, N-protected guanine, N-protected cytosine, and thymine. Wavy line denotes bond extension."
+        },
+        "src": "../../media/OChem_28_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00316:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00316:alt:fig-00003-alt",
+          "text": "The reaction of nucleoside with dichloroacetic acid in dichloromethane removes the D M T protecting group from the hydroxyl of the nucleoside attached to the silica surface in the product."
+        },
+        "src": "../../media/OChem_28_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00316:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00316:alt:fig-00004-alt",
+          "text": "The third step of D N A synthesis. The reaction of two nucleosides in presence of tetrazole forms a product where the phosphoramidite group is replaced by the phosphite group."
+        },
+        "src": "../../media/OChem_28_07_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00316:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00316:alt:fig-00005-alt",
+          "text": "The fourth step of D N A synthesis. It involves the oxidation of the phosphite product to phosphate by reaction with iodine along with 2,6 dimethylpyridine in aqueous tetrahydrofuran."
+        },
+        "src": "../../media/OChem_28_07_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00316:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00316:alt:fig-00006-alt",
+          "text": "The last step of D N A synthesis. Two deoxynucleosides of a polynucleotide chain react with aqueous ammonia. The product has no protected groups."
+        },
+        "src": "../../media/OChem_28_07_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00316:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

@@ -1,0 +1,139 @@
+{
+  "moduleId": "m00184",
+  "title": {
+    "segmentId": "m00184:title:auto-1",
+    "text": "Aromatic Ions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d4cf30a8-81c8-4757-87e1-a7b69e2f2a51"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00184:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00184:alt:fig-00001-alt",
+          "text": "Cyclopentadienyl anion and cycloheptatrienyl cation each have six pi electrons and are aromatic."
+        },
+        "src": "../../media/OChem_15_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00184:para:para-00002"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00184:item:list-00001-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00184:item:list-00001-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m00184:item:list-00001-item-3"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00184:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "caption": {
+        "segmentId": "m00184:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00184:alt:fig-00002-alt",
+          "text": "1,3-Cyclopentadiene yields different products if a hydrogen is removed and replaced with a negative charge, a radical, or a positive charge. The same is true in the case of 1,3,5-cycloheptatriene."
+        },
+        "src": "../../media/OChem_15_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00184:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00184:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "caption": {
+        "segmentId": "m00184:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00184:alt:fig-00003-alt",
+          "text": "A: Reaction of 1,3-cyclopentadiene with sodium hydroxide generates the cyclopentadienyl anion, the  orbital representation and electrostatic potential map of which are given. B: Reaction of 1,3,5-cycloheptatriene with bromine generates the cycloheptatrienyl cation, the orbital representation and electrostatic potential map of which are given.."
+        },
+        "src": "../../media/OChem_15_04_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00184:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

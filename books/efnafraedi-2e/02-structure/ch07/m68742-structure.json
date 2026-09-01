@@ -30,7 +30,10 @@
       },
       "media": {
         "id": "fs-idp55258784",
-        "alt": "A pair of images are shown. The left image shows a carbon atom with three atoms bonded in a triangular arrangement around it. There are two hydrogen atoms bonded on the left side of the carbon and the angle between them is labeled, “118 degrees” and, “Bond angle.” The carbon is also double bonded to an oxygen atom. The double bond is shaded and there is a bracket which labels the bond, “Bond length ( angstrom ), ( center to center ),” and, “1.21 angstrom.” The right image shows a ball-and-stick model of the same elements. The hydrogen atoms are white, the carbon atom is black, and the oxygen atom is red.",
+        "alt": {
+          "segmentId": "m68742:alt:fs-idp55258784-alt",
+          "text": "A pair of images are shown. The left image shows a carbon atom with three atoms bonded in a triangular arrangement around it. There are two hydrogen atoms bonded on the left side of the carbon and the angle between them is labeled, “118 degrees” and, “Bond angle.” The carbon is also double bonded to an oxygen atom. The double bond is shaded and there is a bracket which labels the bond, “Bond length ( angstrom ), ( center to center ),” and, “1.21 angstrom.” The right image shows a ball-and-stick model of the same elements. The hydrogen atoms are white, the carbon atom is black, and the oxygen atom is red."
+        },
         "src": "../../media/CNX_Chem_07_06_CH2O.jpg",
         "mimeType": "image/jpeg"
       }
@@ -67,7 +70,10 @@
           },
           "media": {
             "id": "fs-idp229524848",
-            "alt": "A Lewis structure is shown. A fluorine atom with three lone pairs of electrons is single bonded to a beryllium atom which is single bonded to a fluorine atom with three lone pairs of electrons. The angle of the bonds between the two fluorine atoms and the beryllium atom is labeled, “180 degrees.”",
+            "alt": {
+              "segmentId": "m68742:alt:fs-idp229524848-alt",
+              "text": "A Lewis structure is shown. A fluorine atom with three lone pairs of electrons is single bonded to a beryllium atom which is single bonded to a fluorine atom with three lone pairs of electrons. The angle of the bonds between the two fluorine atoms and the beryllium atom is labeled, “180 degrees.”"
+            },
             "src": "../../media/CNX_Chem_07_06_BeF2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -85,7 +91,10 @@
           },
           "media": {
             "id": "fs-idp73717728",
-            "alt": "A table with four rows and six columns is shown. The header column contains the phrases, “Number of regions,” “Spatial arrangement,” “Wedge/dash Notation,” and “Electron region Geometry.” The first row reads: “Two regions of high electron density ( bonds and/or unshared pairs )”, “Three regions of high electron density ( bonds and/or unshared pairs ),” “Four regions of high electron density ( bonds and/or unshared pairs ),” “Five regions of high electron density ( bonds and/or unshared pairs ),” and “Six regions of high electron density ( bonds and/or unshared pairs ).” The second row shows diagrams of orbitals. The first image shows two oval-shaped orbs with an arrow indicating an angle of 180 degrees. The second image shows three oval-shaped orbs with an arrow indicating an angle of 120 degrees. The third image shows four oval-shaped orbs with an arrow indicating an angle of 109.5 degrees. The fourth image shows five oval-shaped orbs with an arrow indicating an angle of 90 and 120 degrees. The fifth image shows six oval-shaped orbs with an arrow indicating an angle of 90 degrees. The third row contains Lewis structures. The first structure shows a beryllium atom single bonded to two hydrogen atoms. The second structure shows a boron atom single bonded to three hydrogen atoms. The third structure shows a carbon atom single bonded to four hydrogen atoms. The fourth structure shows a phosphorus atom single bonded to five fluorine atoms. The fifth structure shows a sulfur atom single bonded to six fluorine atoms. The fourth row contains the phrases “Linear; 180 degree angle,” Trigonal Planar; all angles 120 degrees,” “Tetrahedral; all angles 109.5 degrees,” “Trigonal bipyramidal; angles of 90 degrees and 120 degrees. An attached atom may be equatorial, ( in the plane of the triangle ), or axial, ( above the plane of the triangle ),” and “Octahedral; 90 degrees or 180 degrees.”",
+            "alt": {
+              "segmentId": "m68742:alt:fs-idp73717728-alt",
+              "text": "A table with four rows and six columns is shown. The header column contains the phrases, “Number of regions,” “Spatial arrangement,” “Wedge/dash Notation,” and “Electron region Geometry.” The first row reads: “Two regions of high electron density ( bonds and/or unshared pairs )”, “Three regions of high electron density ( bonds and/or unshared pairs ),” “Four regions of high electron density ( bonds and/or unshared pairs ),” “Five regions of high electron density ( bonds and/or unshared pairs ),” and “Six regions of high electron density ( bonds and/or unshared pairs ).” The second row shows diagrams of orbitals. The first image shows two oval-shaped orbs with an arrow indicating an angle of 180 degrees. The second image shows three oval-shaped orbs with an arrow indicating an angle of 120 degrees. The third image shows four oval-shaped orbs with an arrow indicating an angle of 109.5 degrees. The fourth image shows five oval-shaped orbs with an arrow indicating an angle of 90 and 120 degrees. The fifth image shows six oval-shaped orbs with an arrow indicating an angle of 90 degrees. The third row contains Lewis structures. The first structure shows a beryllium atom single bonded to two hydrogen atoms. The second structure shows a boron atom single bonded to three hydrogen atoms. The third structure shows a carbon atom single bonded to four hydrogen atoms. The fourth structure shows a phosphorus atom single bonded to five fluorine atoms. The fifth structure shows a sulfur atom single bonded to six fluorine atoms. The fourth row contains the phrases “Linear; 180 degree angle,” Trigonal Planar; all angles 120 degrees,” “Tetrahedral; all angles 109.5 degrees,” “Trigonal bipyramidal; angles of 90 degrees and 120 degrees. An attached atom may be equatorial, ( in the plane of the triangle ), or axial, ( above the plane of the triangle ),” and “Octahedral; 90 degrees or 180 degrees.”"
+            },
             "src": "../../media/CNX_Chem_07_06_Egeom.jpg",
             "mimeType": "image/jpeg"
           }
@@ -122,7 +131,10 @@
               },
               "media": {
                 "id": "fs-idp102024640",
-                "alt": "A Lewis structure shows a carbon atom single bonded to four hydrogen atoms. This structure uses wedges and dashes to give it a three dimensional appearance.",
+                "alt": {
+                  "segmentId": "m68742:alt:fs-idp102024640-alt",
+                  "text": "A Lewis structure shows a carbon atom single bonded to four hydrogen atoms. This structure uses wedges and dashes to give it a three dimensional appearance."
+                },
                 "src": "../../media/CNX_Chem_07_06_CH4.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -135,7 +147,10 @@
               },
               "media": {
                 "id": "fs-idp50682928",
-                "alt": "Three images are shown and labeled, “a,” “b,” and “c.” Image a shows a nitrogen atom single bonded to three hydrogen atoms. There are four oval-shaped orbs that surround each hydrogen and one facing away from the rest of the molecule. These orbs are located in a tetrahedral arrangement. Image b shows a ball-and-stick model of the nitrogen single bonded to the three hydrogen atoms. Image c is the same as image a, but there are four curved, double headed arrows that circle the molecule and are labeled, “106.8 degrees.”",
+                "alt": {
+                  "segmentId": "m68742:alt:fs-idp50682928-alt",
+                  "text": "Three images are shown and labeled, “a,” “b,” and “c.” Image a shows a nitrogen atom single bonded to three hydrogen atoms. There are four oval-shaped orbs that surround each hydrogen and one facing away from the rest of the molecule. These orbs are located in a tetrahedral arrangement. Image b shows a ball-and-stick model of the nitrogen single bonded to the three hydrogen atoms. Image c is the same as image a, but there are four curved, double headed arrows that circle the molecule and are labeled, “106.8 degrees.”"
+                },
                 "src": "../../media/CNX_Chem_07_06_NH3.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -178,7 +193,10 @@
               },
               "media": {
                 "id": "fs-idp63301888",
-                "alt": "A table is shown that is comprised of six rows and six columns. The header row reads: “Number of Electron Regions,” “Electron region geometries; 0 lone pair,” “1 lone pair,” “2 lone pairs,” “3 lone pairs,” and “4 lone pairs.” The first column contains the numbers 2, 3, 4, 5, and 6. The first space in the second column contains a structure in which the letter E is single bonded to the letter X on each side. The angle of the bonds is labeled with a curved, double headed arrow and the value, “180 degrees.” The structure is labeled, “Linear.” The second space in the second column contains a structure in which the letter E is single bonded to the letter X on three sides. The angle between the bonds is labeled with a curved, double headed arrow and the value, “120 degrees.” The structure is labeled, “Trigonal planar.” The third space in the second column contains a structure in which the letter E is single bonded to the letter X four times. The angle between the bonds is labeled with a curved, double headed arrow and the value, “109 degrees.” The structure is labeled, “Tetrahedral.” The fourth space in the second column contains a structure in which the letter E is single bonded to the letter X on five sides. The angle between the bonds is labeled with a curved, double headed arrow and the values “90 and 120 degrees.” The structure is labeled, “Trigonal bipyramid.” The fifth space in the second column contains a structure in which the letter E is single bonded to the letter X on six sides. The angle between the bonds is labeled with a curved, double headed arrow and the value, “90 degrees.” The structure is labeled, “Octahedral.” The first space in the third column is empty while the second contains a structure in which the letter E is single bonded to the letter X on each side and has a lone pair of electrons. The angle between the bonds is labeled with a curved, double headed arrow and the value, “less than 120 degrees.” The structure is labeled, “Bent or angular.” The third space in the third column contains a structure in which the letter E is single bonded to the letter X three times and to a lone pair of electrons. It is labeled with a curved, double headed arrow and the value, “less than 109 degrees.” The structure is labeled, “Trigonal pyramid.” The fourth space in the third column contains a structure in which the letter E is single bonded to the letter X on four sides and has a lone pair of electrons. The bond angle is labeled with a curved, double headed arrow and the values, “less than 90 and less than 120 degrees.” The structure is labeled, “Sawhorse or seesaw.” The fifth space in the third column contains a structure in which the letter E is single bonded to the letter X on five sides and has a lone pair of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “Square pyramidal.” The first and second spaces in the fourth column are empty while the third contains a structure in which the letter E is single bonded to the letter X on each side and has two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than less than 109 degrees.” The structure is labeled, “Bent or angular.” The fourth space in the fourth column contains a structure in which the letter E is single bonded to the letter X three times and to two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “T - shape.” The fifth space in the fourth column contains a structure in which the letter E is single bonded to the letter X on four sides and has two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value “90 degrees.” The structure is labeled, “Square planar.” The first, second and third spaces in the fifth column are empty while the fourth contains a structure in which the letter E is single bonded to the letter X on each side and has three lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “180 degrees.” The structure is labeled, “Linear.” The fifth space in the fifth column contains a structure in which the letter E is single bonded to the letter X three times and to three lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “T - shape.” The first, second, third, and fourth spaces in the sixth column are empty while the fifth contains a structure in which the letter E is single bonded to the letter X on each side and has four lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value “180 degrees.” The structure is labeled, “Linear.” All the structures use wedges and dashes to give them three dimensional appearances.",
+                "alt": {
+                  "segmentId": "m68742:alt:fs-idp63301888-alt",
+                  "text": "A table is shown that is comprised of six rows and six columns. The header row reads: “Number of Electron Regions,” “Electron region geometries; 0 lone pair,” “1 lone pair,” “2 lone pairs,” “3 lone pairs,” and “4 lone pairs.” The first column contains the numbers 2, 3, 4, 5, and 6. The first space in the second column contains a structure in which the letter E is single bonded to the letter X on each side. The angle of the bonds is labeled with a curved, double headed arrow and the value, “180 degrees.” The structure is labeled, “Linear.” The second space in the second column contains a structure in which the letter E is single bonded to the letter X on three sides. The angle between the bonds is labeled with a curved, double headed arrow and the value, “120 degrees.” The structure is labeled, “Trigonal planar.” The third space in the second column contains a structure in which the letter E is single bonded to the letter X four times. The angle between the bonds is labeled with a curved, double headed arrow and the value, “109 degrees.” The structure is labeled, “Tetrahedral.” The fourth space in the second column contains a structure in which the letter E is single bonded to the letter X on five sides. The angle between the bonds is labeled with a curved, double headed arrow and the values “90 and 120 degrees.” The structure is labeled, “Trigonal bipyramid.” The fifth space in the second column contains a structure in which the letter E is single bonded to the letter X on six sides. The angle between the bonds is labeled with a curved, double headed arrow and the value, “90 degrees.” The structure is labeled, “Octahedral.” The first space in the third column is empty while the second contains a structure in which the letter E is single bonded to the letter X on each side and has a lone pair of electrons. The angle between the bonds is labeled with a curved, double headed arrow and the value, “less than 120 degrees.” The structure is labeled, “Bent or angular.” The third space in the third column contains a structure in which the letter E is single bonded to the letter X three times and to a lone pair of electrons. It is labeled with a curved, double headed arrow and the value, “less than 109 degrees.” The structure is labeled, “Trigonal pyramid.” The fourth space in the third column contains a structure in which the letter E is single bonded to the letter X on four sides and has a lone pair of electrons. The bond angle is labeled with a curved, double headed arrow and the values, “less than 90 and less than 120 degrees.” The structure is labeled, “Sawhorse or seesaw.” The fifth space in the third column contains a structure in which the letter E is single bonded to the letter X on five sides and has a lone pair of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “Square pyramidal.” The first and second spaces in the fourth column are empty while the third contains a structure in which the letter E is single bonded to the letter X on each side and has two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than less than 109 degrees.” The structure is labeled, “Bent or angular.” The fourth space in the fourth column contains a structure in which the letter E is single bonded to the letter X three times and to two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “T - shape.” The fifth space in the fourth column contains a structure in which the letter E is single bonded to the letter X on four sides and has two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value “90 degrees.” The structure is labeled, “Square planar.” The first, second and third spaces in the fifth column are empty while the fourth contains a structure in which the letter E is single bonded to the letter X on each side and has three lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “180 degrees.” The structure is labeled, “Linear.” The fifth space in the fifth column contains a structure in which the letter E is single bonded to the letter X three times and to three lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “T - shape.” The first, second, third, and fourth spaces in the sixth column are empty while the fifth contains a structure in which the letter E is single bonded to the letter X on each side and has four lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value “180 degrees.” The structure is labeled, “Linear.” All the structures use wedges and dashes to give them three dimensional appearances."
+                },
                 "src": "../../media/CNX_Chem_07_06_molgeom.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -201,7 +219,10 @@
               },
               "media": {
                 "id": "fs-idp53854176",
-                "alt": "Four sets of images are shown and labeled, “a,” “b,” “c,” and “d.” Each image is separated by a dashed vertical line. Image a shows a six-faced, bi-pyramidal structure where the central vertical axis is labeled, “Axial,” and the horizontal plane is labeled, “Equatorial.” Image b shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center, two fluorine atoms on the upper and lower ends, and one fluorine in the left horizontal position. Image c shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center and three fluorine atoms in each horizontal position. Image d shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center, two fluorine atoms in the horizontal positions, and one in the axial bottom position.",
+                "alt": {
+                  "segmentId": "m68742:alt:fs-idp53854176-alt",
+                  "text": "Four sets of images are shown and labeled, “a,” “b,” “c,” and “d.” Each image is separated by a dashed vertical line. Image a shows a six-faced, bi-pyramidal structure where the central vertical axis is labeled, “Axial,” and the horizontal plane is labeled, “Equatorial.” Image b shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center, two fluorine atoms on the upper and lower ends, and one fluorine in the left horizontal position. Image c shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center and three fluorine atoms in each horizontal position. Image d shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center, two fluorine atoms in the horizontal positions, and one in the axial bottom position."
+                },
                 "src": "../../media/CNX_Chem_07_06_Axeq.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -324,6 +345,22 @@
                   "segmentId": "m68742:para:fs-idp55819408"
                 },
                 {
+                  "type": "media",
+                  "id": "fs-idp65356192",
+                  "alt": {
+                    "segmentId": "m68742:alt:fs-idp65356192-alt",
+                    "text": "A Lewis structure shows a carbon atom double bonded on both the left and right sides to oxygen atoms that each have two lone pairs of electrons."
+                  }
+                },
+                {
+                  "type": "media",
+                  "id": "fs-idp62627904",
+                  "alt": {
+                    "segmentId": "m68742:alt:fs-idp62627904-alt",
+                    "text": "A Lewis structure depicts a boron atom that is single bonded to three chlorine atoms, each of which has three lone pairs of electrons."
+                  }
+                },
+                {
                   "type": "note",
                   "id": "fs-idp125452800",
                   "title": {
@@ -346,7 +383,10 @@
               "caption": null,
               "media": {
                 "id": "fs-idp108737552",
-                "alt": "A Lewis structure depicts a boron atom that is single bonded to three chlorine atoms, each of which is oriented in the same flat plane. This figure uses dashes and wedges to give it a three-dimensional appearance.",
+                "alt": {
+                  "segmentId": "m68742:alt:fs-idp108737552-alt",
+                  "text": "A Lewis structure depicts a boron atom that is single bonded to three chlorine atoms, each of which is oriented in the same flat plane. This figure uses dashes and wedges to give it a three-dimensional appearance."
+                },
                 "src": "../../media/CNX_Chem_07_06_BCl3mol.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -393,6 +433,14 @@
                   "segmentId": "m68742:para:fs-idp18533456"
                 },
                 {
+                  "type": "media",
+                  "id": "fs-idp83671296",
+                  "alt": {
+                    "segmentId": "m68742:alt:fs-idp83671296-alt",
+                    "text": "A Lewis structure depicts a nitrogen atom that is single bonded to four hydrogen atoms. The structure is surrounded by brackets and has a superscripted positive sign."
+                  }
+                },
+                {
                   "type": "note",
                   "id": "fs-idp57227744",
                   "title": {
@@ -417,7 +465,10 @@
               },
               "media": {
                 "id": "fs-idp51778960",
-                "alt": "A Lewis structure depicts a nitrogen atom that is single bonded to four hydrogen atoms. The structure is surrounded by brackets and has a superscripted positive sign. This figure uses dashes and wedges to displays its three planes in a tetrahedral shape.",
+                "alt": {
+                  "segmentId": "m68742:alt:fs-idp51778960-alt",
+                  "text": "A Lewis structure depicts a nitrogen atom that is single bonded to four hydrogen atoms. The structure is surrounded by brackets and has a superscripted positive sign. This figure uses dashes and wedges to displays its three planes in a tetrahedral shape."
+                },
                 "src": "../../media/CNX_Chem_07_06_NH4mol.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -469,6 +520,14 @@
                   "segmentId": "m68742:para:fs-idp103296688"
                 },
                 {
+                  "type": "media",
+                  "id": "fs-idp166304416",
+                  "alt": {
+                    "segmentId": "m68742:alt:fs-idp166304416-alt",
+                    "text": "A Lewis structure depicts an oxygen atom with two lone pairs of electrons single bonded to two hydrogen atoms."
+                  }
+                },
+                {
                   "type": "note",
                   "id": "fs-idp47211728",
                   "title": {
@@ -493,7 +552,10 @@
               },
               "media": {
                 "id": "fs-idp67053904",
-                "alt": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows an oxygen atom in the center of a four-sided pyramid shape. Diagram b shows the same image as diagram a, but this time there are hydrogen atoms located at two corners of the pyramid shape.",
+                "alt": {
+                  "segmentId": "m68742:alt:fs-idp67053904-alt",
+                  "text": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows an oxygen atom in the center of a four-sided pyramid shape. Diagram b shows the same image as diagram a, but this time there are hydrogen atoms located at two corners of the pyramid shape."
+                },
                 "src": "../../media/CNX_Chem_07_06_H2Omol.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -540,6 +602,14 @@
                   "segmentId": "m68742:para:fs-idp90752208"
                 },
                 {
+                  "type": "media",
+                  "id": "fs-idp33968176",
+                  "alt": {
+                    "segmentId": "m68742:alt:fs-idp33968176-alt",
+                    "text": "A Lewis diagram depicts a sulfur atom with one lone pair of electrons single bonded to four fluorine atoms, each with three lone pairs of electrons."
+                  }
+                },
+                {
                   "type": "note",
                   "id": "fs-idp54082656",
                   "title": {
@@ -564,7 +634,10 @@
               },
               "media": {
                 "id": "fs-idp116937376",
-                "alt": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows a sulfur atom in the center of a six-sided bi-pyramidal shape. Diagram b shows the same image as diagram a, but this time there are fluorine atoms located at four corners of the pyramid shape and they are connected to the sulfur atom by single lines.",
+                "alt": {
+                  "segmentId": "m68742:alt:fs-idp116937376-alt",
+                  "text": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows a sulfur atom in the center of a six-sided bi-pyramidal shape. Diagram b shows the same image as diagram a, but this time there are fluorine atoms located at four corners of the pyramid shape and they are connected to the sulfur atom by single lines."
+                },
                 "src": "../../media/CNX_Chem_07_06_SF4mol.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -611,6 +684,14 @@
                   "segmentId": "m68742:para:fs-idp81639856"
                 },
                 {
+                  "type": "media",
+                  "id": "fs-idp19835824",
+                  "alt": {
+                    "segmentId": "m68742:alt:fs-idp19835824-alt",
+                    "text": "A Lewis structure depicts a xenon atom with two lone pairs of electrons that is single bonded to four fluorine atoms, each with three lone pairs of electrons."
+                  }
+                },
+                {
                   "type": "note",
                   "id": "fs-idm25808",
                   "title": {
@@ -635,7 +716,10 @@
               },
               "media": {
                 "id": "fs-idp88527200",
-                "alt": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows a xenon atom in the center of an eight-sided octahedral shape. Diagram b shows the same image as diagram a, but this time there are fluorine atoms located at the four corners of the shape in the horizontal plane. They are connected to the xenon by single lines.",
+                "alt": {
+                  "segmentId": "m68742:alt:fs-idp88527200-alt",
+                  "text": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows a xenon atom in the center of an eight-sided octahedral shape. Diagram b shows the same image as diagram a, but this time there are fluorine atoms located at the four corners of the shape in the horizontal plane. They are connected to the xenon by single lines."
+                },
                 "src": "../../media/CNX_Chem_07_06_XEF4mol.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -750,6 +834,30 @@
                       "segmentId": "m68742:item:fs-idp18275136-item-4"
                     }
                   ]
+                },
+                {
+                  "type": "media",
+                  "id": "fs-idp113615744",
+                  "alt": {
+                    "segmentId": "m68742:alt:fs-idp113615744-alt",
+                    "text": "A Lewis structure depicts a nitrogen atom with one lone pair of electrons that is single bonded to two hydrogen atoms and a carbon atom, which is, in turn, single bonded to two hydrogen atoms and another carbon atom. This carbon atom is double bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen that has two lone pairs of electrons and a single bond to a hydrogen atom."
+                  }
+                },
+                {
+                  "type": "media",
+                  "id": "fs-idp21522704",
+                  "alt": {
+                    "segmentId": "m68742:alt:fs-idp21522704-alt",
+                    "text": "A Lewis structure depicts a nitrogen atom with one lone pair of electrons that is single bonded to two hydrogen atoms and a carbon atom. The atoms described are drawn with bonds that indicate a three-dimensional, tetrahedral shape around the nitrogen atom. The carbon is, in turn, single bonded to two hydrogen atoms and another carbon atom, and again, a tetrahedral, three dimensional configuration is indicated by the types of bonds. This second carbon atom is double bonded to an oxygen atom and single bonded to an oxygen that has two lone pairs of electrons and a single bond to a hydrogen atom."
+                  }
+                },
+                {
+                  "type": "media",
+                  "id": "fs-idp248617216",
+                  "alt": {
+                    "segmentId": "m68742:alt:fs-idp248617216-alt",
+                    "text": "A Lewis structure depicts a nitrogen atom with two lone pairs of electrons that is single bonded to two hydrogen atoms and a carbon atom, which is, in turn, single bonded to a hydrogen atom, a methyl group and another carbon atom. This carbon atom is single bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen that has two lone pairs of electrons and a single bond to a hydrogen atom."
+                  }
                 },
                 {
                   "type": "note",
@@ -884,7 +992,10 @@
           },
           "media": {
             "id": "fs-idp53563840",
-            "alt": "Two images are shown and labeled, “a” and “b.” Image a shows a large sphere labeled, “C,” a left-facing arrow with a crossed end, and a smaller sphere labeled “H.” Image b shows a large sphere labeled, “B,” a right-facing arrow with a crossed end, and a smaller sphere labeled “F.”",
+            "alt": {
+              "segmentId": "m68742:alt:fs-idp53563840-alt",
+              "text": "Two images are shown and labeled, “a” and “b.” Image a shows a large sphere labeled, “C,” a left-facing arrow with a crossed end, and a smaller sphere labeled “H.” Image b shows a large sphere labeled, “B,” a right-facing arrow with a crossed end, and a smaller sphere labeled “F.”"
+            },
             "src": "../../media/CNX_Chem_07_06_BondVector.jpg",
             "mimeType": "image/jpeg"
           }
@@ -912,7 +1023,10 @@
           },
           "media": {
             "id": "fs-idp102085104",
-            "alt": "Two images are shown and labeled, “a” and “b.” Image a shows a carbon atom bonded to two oxygen atoms in a ball-and-stick representation. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. These arrows are labeled, “Bond moments,” and the image is labeled, “Overall dipole moment equals 0.” Image b shows an oxygen atom bonded to two hydrogen atoms in a downward-facing v-shaped arrangement. An upward-facing, vertical arrow is drawn below the molecule while two upward and inward facing arrows are drawn above the molecule. The upper arrows are labeled, “Bond moments,” while the image is labeled, “Overall dipole moment.”",
+            "alt": {
+              "segmentId": "m68742:alt:fs-idp102085104-alt",
+              "text": "Two images are shown and labeled, “a” and “b.” Image a shows a carbon atom bonded to two oxygen atoms in a ball-and-stick representation. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. These arrows are labeled, “Bond moments,” and the image is labeled, “Overall dipole moment equals 0.” Image b shows an oxygen atom bonded to two hydrogen atoms in a downward-facing v-shaped arrangement. An upward-facing, vertical arrow is drawn below the molecule while two upward and inward facing arrows are drawn above the molecule. The upper arrows are labeled, “Bond moments,” while the image is labeled, “Overall dipole moment.”"
+            },
             "src": "../../media/CNX_Chem_07_06_CO2H2Odip.jpg",
             "mimeType": "image/jpeg"
           }
@@ -926,7 +1040,10 @@
           "type": "media",
           "id": "fs-idp52090304",
           "class": "scaled-down",
-          "alt": "An image shows a carbon atom double bonded to a sulfur atom and an oxygen atom which are arranged in a horizontal plane. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. The left-facing arrow is larger than the right-facing arrow. These arrows are labeled, “Bond moments,” and a left-facing arrow below the molecule is labeled, “Overall dipole moment.”",
+          "alt": {
+            "segmentId": "m68742:alt:fs-idp52090304-alt",
+            "text": "An image shows a carbon atom double bonded to a sulfur atom and an oxygen atom which are arranged in a horizontal plane. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. The left-facing arrow is larger than the right-facing arrow. These arrows are labeled, “Bond moments,” and a left-facing arrow below the molecule is labeled, “Overall dipole moment.”"
+          },
           "src": "../../media/CNX_Chem_07_06_OSC_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -946,7 +1063,10 @@
           "type": "media",
           "id": "fs-idm3023712",
           "class": "scaled-down",
-          "alt": "An image shows a carbon atom single bonded to three hydrogen atoms and a chlorine atom. There are arrows with crossed ends pointing from the hydrogen to the carbon near each bond, and one pointing from the carbon to the chlorine along that bond. The carbon and chlorine arrow is longer. This image uses dashes and wedges to give it a three-dimensional appearance.",
+          "alt": {
+            "segmentId": "m68742:alt:fs-idm3023712-alt",
+            "text": "An image shows a carbon atom single bonded to three hydrogen atoms and a chlorine atom. There are arrows with crossed ends pointing from the hydrogen to the carbon near each bond, and one pointing from the carbon to the chlorine along that bond. The carbon and chlorine arrow is longer. This image uses dashes and wedges to give it a three-dimensional appearance."
+          },
           "src": "../../media/CNX_Chem_07_06_CHCl3_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -961,7 +1081,10 @@
           "type": "media",
           "id": "fs-idp35612832",
           "class": "scaled-down",
-          "alt": "Two Lewis structures are shown. The left structure shows a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. Near the sulfur is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign. The right structure shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. Near the nitrogen is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign.",
+          "alt": {
+            "segmentId": "m68742:alt:fs-idp35612832-alt",
+            "text": "Two Lewis structures are shown. The left structure shows a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. Near the sulfur is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign. The right structure shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. Near the nitrogen is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign."
+          },
           "src": "../../media/CNX_Chem_07_06_SH2NH3_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -1011,7 +1134,10 @@
               },
               "media": {
                 "id": "fs-idp19283840",
-                "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows two vertical, gray electrodes. There are five molecules in between. The molecules are separate from one another and are composed of a hydrogen atom bonded to a fluorine atom. The fluorine atom is labeled with a dipole symbol and a superscripted negative sign while the hydrogen atom is labeled with a dipole symbol and a superscripted positive sign. The molecules are randomly oriented in the space. The right diagram also shows two vertical gray electrodes, the left labeled as negative and the right labeled as positive. The space between is yellow. The same molecules are present, but this time they are all facing horizontally, with the hydrogen-end of each molecule facing toward the negative electrode.",
+                "alt": {
+                  "segmentId": "m68742:alt:fs-idp19283840-alt",
+                  "text": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows two vertical, gray electrodes. There are five molecules in between. The molecules are separate from one another and are composed of a hydrogen atom bonded to a fluorine atom. The fluorine atom is labeled with a dipole symbol and a superscripted negative sign while the hydrogen atom is labeled with a dipole symbol and a superscripted positive sign. The molecules are randomly oriented in the space. The right diagram also shows two vertical gray electrodes, the left labeled as negative and the right labeled as positive. The space between is yellow. The same molecules are present, but this time they are all facing horizontally, with the hydrogen-end of each molecule facing toward the negative electrode."
+                },
                 "src": "../../media/CNX_Chem_07_06_Dipolfield.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -2236,56 +2362,71 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idp35110688",
       "class": null,
-      "alt": "Three Lewis diagrams are shown. The first diagram shows the letter A single bonded to the left and right to the letter B. An example, “C O subscript 2,” and the term, “linear,” are written beside this diagram. The second diagram shows the letter A with two lone pairs of electrons, single bonded to the left and lower right to the letter B. An example, “H subscript 2 O,” and the term, “bent with an approximately 109 degree angle,” are written beside this diagram. The third diagram shows the letter A with one lone electron pair, single bonded to the left and lower right to the letter B. An example, “S O subscript 2,” and the term, “bent with an approximately 120 degree angle,” are written beside this diagram.",
       "src": "../../media/CNX_Chem_07_06_Ques23ans_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68742:alt:fs-idp35110688-alt",
+        "text": "Three Lewis diagrams are shown. The first diagram shows the letter A single bonded to the left and right to the letter B. An example, “C O subscript 2,” and the term, “linear,” are written beside this diagram. The second diagram shows the letter A with two lone pairs of electrons, single bonded to the left and lower right to the letter B. An example, “H subscript 2 O,” and the term, “bent with an approximately 109 degree angle,” are written beside this diagram. The third diagram shows the letter A with one lone electron pair, single bonded to the left and lower right to the letter B. An example, “S O subscript 2,” and the term, “bent with an approximately 120 degree angle,” are written beside this diagram."
+      }
     },
     {
       "placeholder": "[[MEDIA:2]]",
       "id": "fs-idp25564320",
       "class": null,
-      "alt": "The figure shows three Lewis structures that are each surrounded by brackets and have a superscripted 2 negative sign. They are written with a double-headed arrow in between each diagram. The first of this trio has a carbon atom single bonded to two sulfur atoms, each of which has thee lone pairs of electrons, and double bonded to a third sulfur atom with two lone pairs of electrons. The second and third diagrams have the same atoms present, but each time the double bond moves between a different carbon and sulfur pair. The lone electron pairs also shift to correspond with the bond changes.",
       "src": "../../media/CNX_Chem_07_06_CS3a_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68742:alt:fs-idp25564320-alt",
+        "text": "The figure shows three Lewis structures that are each surrounded by brackets and have a superscripted 2 negative sign. They are written with a double-headed arrow in between each diagram. The first of this trio has a carbon atom single bonded to two sulfur atoms, each of which has thee lone pairs of electrons, and double bonded to a third sulfur atom with two lone pairs of electrons. The second and third diagrams have the same atoms present, but each time the double bond moves between a different carbon and sulfur pair. The lone electron pairs also shift to correspond with the bond changes."
+      }
     },
     {
       "placeholder": "[[MEDIA:3]]",
       "id": "fs-idp164171792",
       "class": null,
-      "alt": "The Lewis structure shows a carbon atom double bonded to two sulfur atoms, each of which has two lone pairs of electrons.",
       "src": "../../media/CNX_Chem_07_06_CS3b_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68742:alt:fs-idp164171792-alt",
+        "text": "The Lewis structure shows a carbon atom double bonded to two sulfur atoms, each of which has two lone pairs of electrons."
+      }
     },
     {
       "placeholder": "[[MEDIA:4]]",
       "id": "fs-idp24461984",
       "class": null,
-      "alt": "This diagram shows a carbon with one lone electron pair triple bonded to a sulfur with one lone electron pair.",
       "src": "../../media/CNX_Chem_07_06_CS3c_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68742:alt:fs-idp24461984-alt",
+        "text": "This diagram shows a carbon with one lone electron pair triple bonded to a sulfur with one lone electron pair."
+      }
     },
     {
       "placeholder": "[[MEDIA:5]]",
       "id": "fs-idp93503152",
       "class": null,
-      "alt": "A Lewis structure is shown in which a carbon atom is single bonded to three hydrogen atoms and a second carbon atom. The second carbon is single bonded to a hydrogen atom and double bonded to a third carbon atom which is single bonded to two hydrogen atoms.",
       "src": "../../media/CNX_Chem_07_06_Ques28ans_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68742:alt:fs-idp93503152-alt",
+        "text": "A Lewis structure is shown in which a carbon atom is single bonded to three hydrogen atoms and a second carbon atom. The second carbon is single bonded to a hydrogen atom and double bonded to a third carbon atom which is single bonded to two hydrogen atoms."
+      }
     }
   ],
   "sectionOrder": 6

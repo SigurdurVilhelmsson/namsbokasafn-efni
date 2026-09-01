@@ -28,11 +28,17 @@ For covalent substances, the formula represents the numbers and types of atoms c
 <!-- SEG:m68700:caption:CNX_Chem_03_01_chloroform-caption -->
 The average mass of a chloroform molecule, CHCl[[sub:3]], is 119.37 amu, which is the sum of the average atomic masses of each of its constituent atoms. The model shows the molecular structure of chloroform.
 
+<!-- SEG:m68700:alt:fs-idp71460256-alt -->
+A table and diagram are shown. The table is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “C l” and a blank, merged cell that runs the width of the first five columns. The second column contains the numbers “1,” “1,” and “3” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “35.45” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “12.01,” “1.008,” “106.35,” and “119.37.” There is a thick black line below the number 106.35. The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule. Three green spheres are attached to a slightly smaller black sphere, which is also attached to a smaller white sphere. The green spheres lie beneath and to the sides of the black sphere while the white sphere is located straight up from the black sphere.
+
 <!-- SEG:m68700:para:fs-idp139124096 -->
 Likewise, the molecular mass of an aspirin molecule, C[[sub:9]]H[[sub:8]]O[[sub:4]], is the sum of the atomic masses of nine carbon atoms, eight hydrogen atoms, and four oxygen atoms, which amounts to 180.15 amu ([[xref:CNX_Chem_03_01_aspirin]]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_aspirin-caption -->
 The average mass of an aspirin molecule is 180.15 amu. The model shows the molecular structure of aspirin, C[[sub:9]]H[[sub:8]]O[[sub:4]].
+
+<!-- SEG:m68700:alt:fs-idp41603456-alt -->
+A table and diagram are shown. The table is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “O,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “9,” “8,” and “4” as well as the merged, cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “16.00” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values: “108.09,” “8.064,” “64.00,” and “180.15.” There is a thick black line below the number 64.00. The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule. Six black spheres are located in a six-sided ring and connected by alternating double and single black bonds. Attached to each of the four black spheres is one smaller white sphere. Attached to the farthest right black sphere is a red sphere, connected to two more black spheres, all in a row. Attached to the last black sphere of that row are two more white spheres. Attached to the first black sphere of that row is another red sphere. A black sphere, attached to two red spheres and a white sphere is attached to the black sphere on the top right of the six-sided ring.
 
 <!-- SEG:m68700:example-title:fs-idp17719968-title -->
 Computing Molecular Mass for a Covalent Compound
@@ -55,6 +61,9 @@ Acetaminophen, C[[sub:8]]H[[sub:9]]NO[[sub:2]], is a covalent compound and the a
 <!-- SEG:m68700:para:fs-idm8152064 -->
 151.16 amu
 
+<!-- SEG:m68700:alt:fs-idm9191936-alt -->
+A table is shown that is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “O,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “13,” “8,” and “2” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “16.00” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “156.13,” “18.114,” “32.00,” and “206.27.” There is a thick black line below the number 32.00. The merged cell under the first five columns reads “Molecular mass.” To the right is a ball-and-stick model of the structure. At the center, it shows six black spheres arranged in a six-sided ring with alternating double bonds. The two black spheres at the top and bottom of the six-sided ring are each bonded to one, smaller, white sphere. The black sphere on the left side of the six-sided ring is connect to another black sphere. This sphere is connected to two smaller, white spheres and another black sphere. This black sphere is connected to one, smaller white sphere, and two other black spheres. Each of these last two black spheres is connected to two smaller, white spheres. The black sphere on the right side of the six-sided ring is connected to another black sphere. This black sphere is connected to one smaller, white sphere and two other black spheres. The black sphere that is connected to it and is situated to the top right is connected to two smaller, white spheres. The black sphere connected towards the bottom right is connected to two red spheres. It forms a double bond with one of these red spheres and the other red sphere is connected to a smaller, white sphere.
+
 <!-- SEG:m68700:note-title:fs-idp13703888-title -->
 Answer:
 
@@ -72,6 +81,9 @@ As an example, consider sodium chloride, NaCl, the chemical name for common tabl
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_saltMass-caption -->
 Table salt, NaCl, contains an array of sodium and chloride ions combined in a 1:1 ratio. Its formula mass is 58.44 amu.
+
+<!-- SEG:m68700:alt:fs-idm4901808-alt -->
+A table and diagram are shown. The table is made up of six columns and four rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space and “Subtotal (a m u).” The first column contains the symbols “N a”, “C l,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “1” and “1” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “22.99” and “35.45” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “22.99,” “35.45,” and “58.44.” There is a thick black line below the number “35.45.” The merged cell under the first five columns reads “Formula mass.” To the left of the table is a diagram of a chemical structure. The diagram shows green and purple spheres placed in an alternating pattern, making up the corners of eight stacked cubes to form one larger cube. The green spheres are slightly smaller than the purple spheres.
 
 <!-- SEG:m68700:para:fs-idm31455504 -->
 Note that the average masses of neutral sodium and chlorine atoms were used in this computation, rather than the masses for sodium cations and chlorine anions. This approach is perfectly acceptable when computing the formula mass of an ionic compound. Even though a sodium cation has a slightly smaller mass than a sodium atom (since it is missing an electron), this difference will be offset by the fact that a chloride anion is slightly more massive than a chloride atom (due to the extra electron). Moreover, the mass of an electron is negligibly small with respect to the mass of a typical atom. Even when calculating the mass of an isolated ion, the missing or additional electrons can generally be ignored, since their contribution to the overall mass is negligible, reflected only in the nonsignificant digits that will be lost when the computed mass is properly rounded. The few exceptions to this guideline are very light ions derived from elements with precisely known atomic masses.
@@ -97,6 +109,9 @@ Calcium phosphate, Ca[[sub:3]](PO[[sub:4]])[[sub:2]], is an ionic compound and a
 <!-- SEG:m68700:para:fs-idm33165520 -->
 310.18 amu
 
+<!-- SEG:m68700:alt:fs-idm34238496-alt -->
+A table is shown that is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “A l,” “S,” “O,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “2,” “3,” and “12” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “26.98,” “32.06,” and “16.00” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “53.96,” “96.18,” “192.00,” and “342.14.” There is a thick black line under the number 192.00. The merged cell under the first five columns reads “Formula mass.” To the right of this table is a ball-and-stick structure. It shows yellow and grey sphere connected to red spheres in a complex pattern. The yellow and grey spheres are similar in size, but the red spheres appear to be smaller by comparison.
+
 <!-- SEG:m68700:note-title:fs-idm5833232-title -->
 Answer:
 
@@ -104,7 +119,7 @@ Answer:
 310.18 amu
 
 <!-- SEG:m68700:para:fs-idp76705136 -->
-An earlier chapter of this text described the development of the atomic mass unit, the concept of average atomic masses, and the use of chemical formulas to represent the elemental makeup of substances. These ideas can be extended to calculate the {{term}}formula mass{{/term}} of a substance by summing the average atomic masses of all the atoms represented in the substance’s formula.
+An earlier chapter of this text described the development of the atomic mass unit, the concept of average atomic masses, and the use of chemical formulas to represent the elemental makeup of substances. These ideas can be extended to calculate the [[term:formula mass|term-00001]] of a substance by summing the average atomic masses of all the atoms represented in the substance’s formula.
 
 <!-- SEG:m68700:title:fs-idp3385536-title -->
 The Mole
@@ -113,13 +128,16 @@ The Mole
 The identity of a substance is defined not only by the types of atoms or ions it contains, but by the quantity of each type of atom or ion. For example, water, H[[sub:2]]O, and hydrogen peroxide, H[[sub:2]]O[[sub:2]], are alike in that their respective molecules are composed of hydrogen and oxygen atoms. However, because a hydrogen peroxide molecule contains two oxygen atoms, as opposed to the water molecule, which has only one, the two substances exhibit very different properties. Today, sophisticated instruments allow the direct measurement of these defining microscopic traits; however, the same traits were originally derived from the measurement of macroscopic properties (the masses and volumes of bulk quantities of matter) using relatively simple tools (balances and volumetric glassware). This experimental approach required the introduction of a new unit for amount of substances, the [[i:mole]], which remains indispensable in modern chemical science.
 
 <!-- SEG:m68700:para:fs-idp4269776 -->
-The [[i:mole]] is an amount unit similar to familiar units like pair, dozen, gross, etc. It provides a specific measure of [[i:the number]] of atoms or molecules in a sample of matter. One Latin connotation for the word “mole” is “large mass” or “bulk,” which is consistent with its use as the name for this unit. The mole provides a link between an easily measured macroscopic property, bulk mass, and an extremely important fundamental property, number of atoms, molecules, and so forth. A {{term}}mole{{/term}} of substance is that amount in which there are 6.02214076 [[MATH:1]] 10[[sup:23]] discrete entities (atoms or molecules). This large number is a fundamental constant known as {{term}}Avogadro’s number ([[i:N[[sub:A]]]]){{/term}} or the Avogadro constant in honor of Italian scientist Amedeo Avogadro. This constant is properly reported with an explicit unit of “per mole,” a conveniently rounded version being 6.022 [[MATH:2]] 10[[sup:23]]/mol.
+The [[i:mole]] is an amount unit similar to familiar units like pair, dozen, gross, etc. It provides a specific measure of [[i:the number]] of atoms or molecules in a sample of matter. One Latin connotation for the word “mole” is “large mass” or “bulk,” which is consistent with its use as the name for this unit. The mole provides a link between an easily measured macroscopic property, bulk mass, and an extremely important fundamental property, number of atoms, molecules, and so forth. A [[term:mole|term-00002]] of substance is that amount in which there are 6.02214076 [[MATH:1]] 10[[sup:23]] discrete entities (atoms or molecules). This large number is a fundamental constant known as [[term:Avogadro’s number ([[i:N[[sub:A]]]])|term-00003]] or the Avogadro constant in honor of Italian scientist Amedeo Avogadro. This constant is properly reported with an explicit unit of “per mole,” a conveniently rounded version being 6.022 [[MATH:2]] 10[[sup:23]]/mol.
 
 <!-- SEG:m68700:para:fs-idm42768912 -->
-Consistent with its definition as an amount unit, 1 mole of any element contains the same number of atoms as 1 mole of any other element. The masses of 1 mole of different elements, however, are different, since the masses of the individual atoms are drastically different. The {{term}}molar mass{{/term}} of an element (or compound) is the mass in grams of 1 mole of that substance, a property expressed in units of grams per mole (g/mol) (see [[xref:CNX_Chem_03_02_moles]]).
+Consistent with its definition as an amount unit, 1 mole of any element contains the same number of atoms as 1 mole of any other element. The masses of 1 mole of different elements, however, are different, since the masses of the individual atoms are drastically different. The [[term:molar mass|term-00004]] of an element (or compound) is the mass in grams of 1 mole of that substance, a property expressed in units of grams per mole (g/mol) (see [[xref:CNX_Chem_03_02_moles]]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_moles-caption -->
 Each sample contains 6.022 [[MATH:3]] 10[[sup:23]] atoms —1.00 mol of atoms. From left to right (top row): 65.4 g zinc, 12.0 g carbon, 24.3 g magnesium, and 63.5 g copper. From left to right (bottom row): 32.1 g sulfur, 28.1 g silicon, 207 g lead, and 118.7 g tin. (credit: modification of work by Mark Ott)
+
+<!-- SEG:m68700:alt:fs-idm272620112-alt -->
+This figure contains eight different substances displayed on white circles. The amount of each substance is visibly different.
 
 <!-- SEG:m68700:para:fs-idm26436032 -->
 The molar mass of any substance is numerically equivalent to its atomic or formula weight in amu. Per the amu definition, a single [[sup:12]]C atom weighs 12 amu (its atomic mass is 12 amu). A mole of [[sup:12]]C weighs 12 g (its molar mass is 12 g/mol). This relationship holds for all elements, since their atomic masses are measured relative to that of the amu-reference substance, [[sup:12]]C. Extending this principle, the molar mass of a compound in grams is likewise numerically equivalent to its formula mass in amu ([[xref:CNX_Chem_03_02_compound]]).
@@ -127,76 +145,79 @@ The molar mass of any substance is numerically equivalent to its atomic or formu
 <!-- SEG:m68700:caption:CNX_Chem_03_02_compound-caption -->
 Each sample contains 6.02 [[MATH:4]] 10[[sup:23]] molecules or formula units—1.00 mol of the compound or element. Clock-wise from the upper left: 130.2 g of C[[sub:8]]H[[sub:17]]OH (1-octanol, formula mass 130.2 amu), 454.4 g of HgI[[sub:2]] (mercury(II) iodide, formula mass 454.4 amu), 32.0 g of CH[[sub:3]]OH (methanol, formula mass 32.0 amu) and 256.5 g of S[[sub:8]] (sulfur, formula mass 256.5 amu). (credit: Sahar Atwa)
 
-<!-- SEG:m68700:entry:auto-44 -->
-Element
-
-<!-- SEG:m68700:entry:auto-45 -->
-Average Atomic Mass (amu)
-
-<!-- SEG:m68700:entry:auto-46 -->
-Molar Mass (g/mol)
-
-<!-- SEG:m68700:entry:auto-47 -->
-Atoms/Mole
-
-<!-- SEG:m68700:entry:auto-48 -->
-C
-
-<!-- SEG:m68700:entry:auto-49 -->
-12.01
-
-<!-- SEG:m68700:entry:auto-50 -->
-12.01
+<!-- SEG:m68700:alt:fs-idm24308080-alt -->
+This photo shows two vials filled with a colorless liquid. It also shows two bowls: one filled with an off-white powder and one filled with a bright red powder.
 
 <!-- SEG:m68700:entry:auto-51 -->
-6.022 [[MATH:5]] 10[[sup:23]]
+Element
 
 <!-- SEG:m68700:entry:auto-52 -->
-H
+Average Atomic Mass (amu)
 
 <!-- SEG:m68700:entry:auto-53 -->
-1.008
+Molar Mass (g/mol)
 
 <!-- SEG:m68700:entry:auto-54 -->
-1.008
+Atoms/Mole
 
 <!-- SEG:m68700:entry:auto-55 -->
-6.022 [[MATH:6]] 10[[sup:23]]
+C
 
 <!-- SEG:m68700:entry:auto-56 -->
-O
+12.01
 
 <!-- SEG:m68700:entry:auto-57 -->
-16.00
+12.01
 
 <!-- SEG:m68700:entry:auto-58 -->
-16.00
+6.022 [[MATH:5]] 10[[sup:23]]
 
 <!-- SEG:m68700:entry:auto-59 -->
-6.022 [[MATH:7]] 10[[sup:23]]
+H
 
 <!-- SEG:m68700:entry:auto-60 -->
-Na
+1.008
 
 <!-- SEG:m68700:entry:auto-61 -->
-22.99
+1.008
 
 <!-- SEG:m68700:entry:auto-62 -->
-22.99
+6.022 [[MATH:6]] 10[[sup:23]]
 
 <!-- SEG:m68700:entry:auto-63 -->
-6.022 [[MATH:8]] 10[[sup:23]]
+O
 
 <!-- SEG:m68700:entry:auto-64 -->
-Cl
+16.00
 
 <!-- SEG:m68700:entry:auto-65 -->
-35.45
+16.00
 
 <!-- SEG:m68700:entry:auto-66 -->
-35.45
+6.022 [[MATH:7]] 10[[sup:23]]
 
 <!-- SEG:m68700:entry:auto-67 -->
+Na
+
+<!-- SEG:m68700:entry:auto-68 -->
+22.99
+
+<!-- SEG:m68700:entry:auto-69 -->
+22.99
+
+<!-- SEG:m68700:entry:auto-70 -->
+6.022 [[MATH:8]] 10[[sup:23]]
+
+<!-- SEG:m68700:entry:auto-71 -->
+Cl
+
+<!-- SEG:m68700:entry:auto-72 -->
+35.45
+
+<!-- SEG:m68700:entry:auto-73 -->
+35.45
+
+<!-- SEG:m68700:entry:auto-74 -->
 6.022 [[MATH:9]] 10[[sup:23]]
 
 <!-- SEG:m68700:para:fs-idp18068224 -->
@@ -204,6 +225,9 @@ While atomic mass and molar mass are numerically equivalent, keep in mind that t
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_water-caption -->
 The number of molecules in a single droplet of water is roughly 100 billion times greater than the number of people on earth. (credit: “tanakawho”/Wikimedia commons)
+
+<!-- SEG:m68700:alt:fs-idm47391008-alt -->
+A close-up photo of a water droplet on a leaf is shown. The water droplet is not perfectly spherical.
 
 <!-- SEG:m68700:para:fs-idp18455776 -->
 The mole is used in chemistry to represent 6.022 [[MATH:10]] 10[[sup:23]] of something, but it can be difficult to conceptualize such a large number. Watch this [[link:video|http://openstax.org/l/16molevideo]] and then complete the “Think” questions that follow. Explore more about the mole by reviewing the information under “Dig Deeper.”
@@ -241,6 +265,9 @@ Beryllium is a light metal used to fabricate transparent X-ray windows for medic
 <!-- SEG:m68700:para:fs-idm9505408 -->
 0.360 mol
 
+<!-- SEG:m68700:alt:fs-idm11797312-alt -->
+A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, “Mass of K atoms ( g )” while the one on the right contains the phrase, “Moles of K atoms ( mol ).” There is a phrase under the arrow that says, “Divide by molar mass (g / mol).”
+
 <!-- SEG:m68700:note-title:fs-idp73845104-title -->
 Answer:
 
@@ -273,6 +300,9 @@ What is the mass of 2.561 mol of gold?
 
 <!-- SEG:m68700:para:fs-idp11414864 -->
 504.5 g
+
+<!-- SEG:m68700:alt:fs-idp10919328-alt -->
+A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, “Moles of A r atoms ( mol )” while the one on the right contains the phrase, “Mass of A r atoms ( g ).” There is a phrase under the arrow that says “Multiply by molar mass ( g / mol ).”
 
 <!-- SEG:m68700:note-title:fs-idm64655584-title -->
 Answer:
@@ -307,6 +337,9 @@ A prospector panning for gold in a river collects 15.00 g of pure gold. How many
 <!-- SEG:m68700:para:fs-idm3056704 -->
 4.586 [[MATH:12]] 10[[sup:22]] Au atoms
 
+<!-- SEG:m68700:alt:fs-idm28023104-alt -->
+A diagram of three boxes connected by a right-facing arrow in between each is shown. The box on the left contains the phrase, “Mass of C u atoms ( g ),” the middle box reads, “Moles of C u atoms ( mol ),” while the one on the right contains the phrase, “Number of C u atoms.” There is a phrase under the left arrow that says “Divide by molar mass (g / mol),” and under the right arrow it states, “Multiply by Avogadro’s number ( mol superscript negative one ).”
+
 <!-- SEG:m68700:note-title:fs-idm4952320-title -->
 Answer:
 
@@ -315,6 +348,9 @@ Answer:
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_copper-caption -->
 Copper wire is composed of many, many atoms of Cu. (credit: Emilian Robert Vicol)
+
+<!-- SEG:m68700:alt:fs-idm20298688-alt -->
+A close-up photo of a spool of copper wire is shown.
 
 <!-- SEG:m68700:example-title:fs-idm1714048-title -->
 Deriving Moles from Grams for a Compound
@@ -345,6 +381,12 @@ How many moles of sucrose, C[[sub:12]]H[[sub:22]]O[[sub:11]], are in a 25-g samp
 
 <!-- SEG:m68700:para:fs-idm70604176 -->
 0.073 mol
+
+<!-- SEG:m68700:alt:fs-idm4806704-alt -->
+A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, “Mass of C subscript 2 H subscript 5 O subscript 2 N ( g )” while the box on the right contains the phrase, “Moles of C subscript 2 H subscript 5 O subscript 2 N ( mol ).” There is a phrase under the arrow that says “Divide by molar mass (g / mol).”
+
+<!-- SEG:m68700:alt:fs-idm4204416-alt -->
+A table is shown that is made up of six columns and six rows. The header row reads: “Element,” “Quantity (mol element / mol compound,” a blank space, “Molar mass (g / mol element),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “O,” “N,” and a merged cell. The merged cell runs the width of the first five columns. The second column contains the numbers “2,” “5,” “2,” and “1” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” “16.00,” and “14.007” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “24.02,” “5.040,” “32.00,” “14.007,” and “75.07.” There is a thick black line under the number 14.007. The merged cell under the first five columns reads “Molar mass (g / mol compound). There is a ball-and-stick drawing to the right of this table. It shows a black sphere that forms a double bond with a slightly smaller red sphere, a single bond with another red sphere, and a single bond with another black sphere. The red sphere that forms a single bond with the black sphere also forms a single bond with a smaller, white sphere. The second black sphere forms a single bond with a smaller, white sphere and a smaller blue sphere. The blue sphere forms a single bond with two smaller, white spheres each.
 
 <!-- SEG:m68700:note-title:fs-idm27877216-title -->
 Answer:
@@ -378,6 +420,9 @@ What is the mass of 0.443 mol of hydrazine, N[[sub:2]]H[[sub:4]]?
 
 <!-- SEG:m68700:para:fs-idm15513488 -->
 14.2 g
+
+<!-- SEG:m68700:alt:fs-idm20822880-alt -->
+A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, “Moles of vitamin C ( mol )” while the one the right contains the phrase, “Mass of vitamin C ( g )”. There is a phrase under the arrow that says “Multiply by molar mass (g / mol).”
 
 <!-- SEG:m68700:note-title:fs-idp75070976-title -->
 Answer:
@@ -415,6 +460,12 @@ How many C[[sub:4]]H[[sub:10]] molecules are contained in 9.213 g of this compou
 <!-- SEG:m68700:para:fs-idp14642528 -->
 9.545 [[MATH:15]] 10[[sup:22]] molecules C[[sub:4]] H[[sub:10]]; 9.545 [[MATH:16]] 10[[sup:23]] atoms H
 
+<!-- SEG:m68700:alt:fs-idp74120656-alt -->
+A diagram of a molecule is shown that is made up of two ring structures attached together. The left ring is hexagonal in shape with C atoms at each point of the ring and alternating single and double bonds. A double bond occurs between the C atom at the top vertex of the hexagon and the C atom down and to the left of it. The C atoms on the left, top, and bottom of the structure form a single bond to an H atom each. The two right C atoms make up one side of a pentagon and the other points of the pentagon are made up of a C atom, an N atom, and an S atom if read clockwise. The C atom forms a double bond with an O atom. The N atom forms a single bond with an H atom. The S atom forms two double bonds to two O atoms.
+
+<!-- SEG:m68700:alt:fs-idm1701808-alt -->
+A diagram of three boxes connected by a right-facing arrow in between each is shown. The box on the left contains the phrase, “Mass of C subscript seven H subscript five N O subscript three S ( g ),” the middle box reads, “Moles of C subscript seven H subscript five N O subscript three S ( mol ),” while the one on the right contains the phrase, “Number of C subscript seven H subscript five N O subscript three S molecules.” There is a phrase under the left arrow that says, “Divide by molar mass (g / mol),” and under the right arrow it states, “Multiply by Avogadro’s number ( mol superscript negative one).”
+
 <!-- SEG:m68700:note-title:fs-idp51031648-title -->
 Answer:
 
@@ -434,13 +485,19 @@ Specialized cells called neurons transmit information between different parts of
 One important aspect of the complex processes related to dopamine signaling is the number of neurotransmitter molecules released during exocytosis. Since this number is a central factor in determining neurological response (and subsequent human thought and action), it is important to know how this number changes with certain controlled stimulations, such as the administration of drugs. It is also important to understand the mechanism responsible for any changes in the number of neurotransmitter molecules released—for example, some dysfunction in exocytosis, a change in the number of vesicles in the neuron, or a change in the number of neurotransmitter molecules in each vesicle.
 
 <!-- SEG:m68700:para:fs-idm2962416 -->
-Significant progress has been made recently in directly measuring the number of dopamine molecules stored in individual vesicles and the amount actually released when the vesicle undergoes exocytosis. Using miniaturized probes that can selectively detect dopamine molecules in very small amounts, scientists have determined that the vesicles of a certain type of mouse brain neuron contain an average of 30,000 dopamine molecules per vesicle (about [[MATH:19]] mol or 50 zmol). Analysis of these neurons from mice subjected to various drug therapies shows significant changes in the average number of dopamine molecules contained in individual vesicles, increasing or decreasing by up to three-fold, depending on the specific drug used. These studies also indicate that not all of the dopamine in a given vesicle is released during exocytosis, suggesting that it may be possible to regulate the fraction released using pharmaceutical therapies. {{fn}}Omiatek, Donna M., Amanda J. Bressler, Ann-Sofie Cans, Anne M. Andrews, Michael L. Heien, and Andrew G. Ewing. “The Real Catecholamine Content of Secretory Vesicles in the CNS Revealed by Electrochemical Cytometry.” [[i:Scientific Report]] 3 (2013): 1447, accessed January 14, 2015, doi:10.1038/srep01447.{{/fn}}
+Significant progress has been made recently in directly measuring the number of dopamine molecules stored in individual vesicles and the amount actually released when the vesicle undergoes exocytosis. Using miniaturized probes that can selectively detect dopamine molecules in very small amounts, scientists have determined that the vesicles of a certain type of mouse brain neuron contain an average of 30,000 dopamine molecules per vesicle (about [[MATH:19]] mol or 50 zmol). Analysis of these neurons from mice subjected to various drug therapies shows significant changes in the average number of dopamine molecules contained in individual vesicles, increasing or decreasing by up to three-fold, depending on the specific drug used. These studies also indicate that not all of the dopamine in a given vesicle is released during exocytosis, suggesting that it may be possible to regulate the fraction released using pharmaceutical therapies. [[fn:Omiatek, Donna M., Amanda J. Bressler, Ann-Sofie Cans, Anne M. Andrews, Michael L. Heien, and Andrew G. Ewing. “The Real Catecholamine Content of Secretory Vesicles in the CNS Revealed by Electrochemical Cytometry.” [[i:Scientific Report]] 3 (2013): 1447, accessed January 14, 2015, doi:10.1038/srep01447.|fs-idp50539888]]
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_brain-caption -->
 (a) A typical human brain weighs about 1.5 kg and occupies a volume of roughly 1.1 L. (b) Information is transmitted in brain tissue and throughout the central nervous system by specialized cells called neurons (micrograph shows cells at 1600× magnification).
 
+<!-- SEG:m68700:alt:fs-idp71769904-alt -->
+Two pictures are shown. The left picture shows the human brain. The right picture is a microscopic image that depicts two large irregularly shaped masses in a field of threadlike material interspersed with smaller, relatively round masses. The two larger masses are labeled with arrows and the phrase “Neuron cells.”
+
 <!-- SEG:m68700:caption:CNX_Chem_03_01_exocytosis-caption -->
 (a) Chemical signals are transmitted from neurons to other cells by the release of neurotransmitter molecules into the small gaps (synapses) between the cells. (b) Dopamine, C[[sub:8]]H[[sub:11]]NO[[sub:2]], is a neurotransmitter involved in a number of neurological processes.
+
+<!-- SEG:m68700:alt:fs-idp18792480-alt -->
+Two diagrams are shown. In the upper left corner of the left diagram, an oval with a darkened center that has five short, branching appendages and one long tail-like appendage is shown and connected by an arrow to another image. This image depicts a close-up view of the oval section and its interaction with the tail-like portion of a similar structure. The close up view is composed of a narrow tube labeled “neuron” leading down to a bulbous base that holds thirteen circles filled with small dots. These circles are labeled “vesicles.” The base of the bulbous structure is next to a curved object labeled “neuron” and very small dots are emerging from the bulb’s base and flowing toward the curved structure. The gap in between the two structures is labeled “synapse,” and the small dots are labeled “neurotransmitters.” The diagram on the right depicts a molecule composed of six black spheres connected by alternating double and single bonds in a hexagonal ring with other spheres attached to it. Three of the black spheres are connected to one smaller, white sphere each. Two of the black balls are connected to a smaller red sphere each. Each red sphere is connected to a smaller, white sphere. One black sphere is connected to another black sphere. It is connected to two smaller, white spheres and another black sphere. This second black sphere is connected to two smaller white spheres, and a slightly smaller blue sphere. The blue sphere is connected to two smaller, white spheres.
 
 <!-- SEG:m68700:title:fs-idp1413072-title -->
 Key Concepts and Summary
@@ -511,14 +568,26 @@ Determine the molecular mass of the following compounds:
 <!-- SEG:m68700:problem:fs-idm10660032 -->
 (a)[[BR]] [[MEDIA:1]]
 
+<!-- SEG:m68700:alt:fs-idm8076928-alt -->
+A structure is shown. A C atom is bonded to two C l atoms and forms a double bond with one O atom.
+
 <!-- SEG:m68700:problem:fs-idp16510560 -->
 (b)[[BR]] [[MEDIA:2]]
+
+<!-- SEG:m68700:alt:fs-idp149776-alt -->
+A structure is shown. Two C atoms form a triple bond with each other. Each C atom also forms a single bond with on H atom.
 
 <!-- SEG:m68700:problem:fs-idp76406016 -->
 (c)[[BR]] [[MEDIA:3]]
 
+<!-- SEG:m68700:alt:fs-idm29301504-alt -->
+A structure is shown. Two C atoms form double bonds with each other. Each C atom also forms a single bond with an H atom and a B r atom.
+
 <!-- SEG:m68700:problem:fs-idp9023344 -->
 (d)[[BR]] [[MEDIA:4]]
+
+<!-- SEG:m68700:alt:fs-idm31327616-alt -->
+A structure is shown. An S atom forms double bonds with two O atoms. The S atom also forms a single bond with an O atom which forms a single bond with an H atom. The S atom also forms a single bond with another O atom which forms a single bond with another H atom.
 
 <!-- SEG:m68700:problem:fs-idp52450416 -->
 Determine the molecular mass of the following compounds:
@@ -526,14 +595,26 @@ Determine the molecular mass of the following compounds:
 <!-- SEG:m68700:problem:fs-idp12831088 -->
 (a)[[BR]] [[MEDIA:5]]
 
+<!-- SEG:m68700:alt:fs-idp13412608-alt -->
+A structure is shown. Two C atoms form double bonds with each other. The C atom on the left forms a single bond with two H atoms each. The C atom on the right forms a single bond with an H atom and with a C H subscript 2 C H subscript 3 group.
+
 <!-- SEG:m68700:problem:fs-idp76139456 -->
 (b)[[BR]] [[MEDIA:6]]
+
+<!-- SEG:m68700:alt:fs-idp47952992-alt -->
+A structure is shown. There is a C atom which forms single bonds with three H atoms each. This C atom is bonded to another C atom. This second C atom forms a triple bond with another C atom which forms a single bond with a fourth C atom. The fourth C atom forms single bonds with three H atoms each.
 
 <!-- SEG:m68700:problem:fs-idp55882592 -->
 (c)[[BR]] [[MEDIA:7]]
 
+<!-- SEG:m68700:alt:fs-idp49963664-alt -->
+A structure is shown. An S i atom forms a single bond with a C l atom, a single bond with a C l atom, a single bond with an H atom, and a single bond with another S i atom. The second S i atom froms a single bond with a C l atom, a single bond with a C l atom, and a single bond with an H atom.
+
 <!-- SEG:m68700:problem:fs-idp17404336 -->
 (d)[[BR]] [[MEDIA:8]]
+
+<!-- SEG:m68700:alt:fs-idp56968256-alt -->
+A structure is shown. A P atom forms a double bond with an O atom. It also forms a single bond with an O atom which forms a single bond with an H atom. It also forms a single bond with another O atom which forms a single bond with an H atom. It also forms a single bond with another O atom which forms a single bond with an H atom.
 
 <!-- SEG:m68700:solution:fs-idp18584256 -->
 (a) 56.107 amu; (b) 54.091 amu; (c) 199.9976 amu; (d) 97.9950 amu
@@ -544,11 +625,20 @@ Which molecule has a molecular mass of 28.05 amu?
 <!-- SEG:m68700:problem:fs-idp50214144 -->
 (a)[[BR]] [[MEDIA:9]]
 
+<!-- SEG:m68700:alt:fs-idp52022448-alt -->
+A structure is shown. A C atom forms a triple bond with another C atom. Each C atom also forms a single bond with an H atom.
+
 <!-- SEG:m68700:problem:fs-idp66877424 -->
 (b)[[BR]] [[MEDIA:10]]
 
+<!-- SEG:m68700:alt:fs-idp66877936-alt -->
+A structure is shown. Two C atoms form a double bond with each other. Each C atom also forms a single bond with two H atoms.
+
 <!-- SEG:m68700:problem:fs-idp49595584 -->
 (c)[[BR]] [[MEDIA:11]]
+
+<!-- SEG:m68700:alt:fs-idp49596096-alt -->
+A structure is shown. A C atom forms a single bond with three H atoms each and with another C atom. The second C atom also forms a single bond with three H atoms each.
 
 <!-- SEG:m68700:problem:fs-idp17738352 -->
 Write a sentence that describes how to determine the number of moles of a compound in a known mass of the compound using its molecular formula.

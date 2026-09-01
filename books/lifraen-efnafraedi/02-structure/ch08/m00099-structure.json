@@ -1,0 +1,59 @@
+{
+  "moduleId": "m00099",
+  "title": {
+    "segmentId": "m00099:title:auto-1",
+    "text": "Biological Additions of Radicals to Alkenes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "09b0b697-b323-4123-9553-460e72fcaad9"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00099:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00099:alt:fig-00001-alt",
+          "text": "Electrophilic addition reaction shows 2-carbon alkene reacting with E plus and then Nu minus. Radical addition reaction shows 2-carbon alkene reacting with radical (an unpaired electron)."
+        },
+        "src": "../../media/OChem_08_11_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00099:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00099:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00099:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00099:alt:fig-00002-alt",
+          "text": "A 6-step biosynthesis pathway shows the formation of prostaglandin H 2 from arachidonic acid."
+        },
+        "src": "../../media/OChem_08_12_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 11
+}

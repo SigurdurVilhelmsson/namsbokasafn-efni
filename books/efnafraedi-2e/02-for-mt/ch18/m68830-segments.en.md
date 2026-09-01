@@ -23,7 +23,7 @@ Electrolysis
 The Preparation of Sodium
 
 <!-- SEG:m68830:para:fs-idp77704912 -->
-The most important method for the production of sodium is the electrolysis of molten sodium chloride; the set-up is a {{term}}Downs cell{{/term}}, shown in [[xref:CNX_Chem_18_02_DownsCell]]. The reaction involved in this process is:
+The most important method for the production of sodium is the electrolysis of molten sodium chloride; the set-up is a [[term:Downs cell|term-00001]], shown in [[xref:CNX_Chem_18_02_DownsCell]]. The reaction involved in this process is:
 
 <!-- SEG:m68830:para:fs-idp72558800 -->
 The electrolysis cell contains molten sodium chloride (melting point 801 °C), to which calcium chloride has been added to lower the melting point to 600 °C (a colligative effect). The passage of a direct current through the cell causes the sodium ions to migrate to the negatively charged cathode and pick up electrons, reducing the ions to sodium metal. Chloride ions migrate to the positively charged anode, lose electrons, and undergo oxidation to chlorine gas. The overall cell reaction comes from adding the following reactions:
@@ -34,11 +34,14 @@ Separation of the molten sodium and chlorine prevents recombination. The liquid 
 <!-- SEG:m68830:caption:CNX_Chem_18_02_DownsCell-caption -->
 Pure sodium metal is isolated by electrolysis of molten sodium chloride using a Downs cell. It is not possible to isolate sodium by electrolysis of aqueous solutions of sodium salts because hydrogen ions are more easily reduced than are sodium ions; as a result, hydrogen gas forms at the cathode instead of the desired sodium metal. The high temperature required to melt NaCl means that liquid sodium metal forms.
 
+<!-- SEG:m68830:alt:fs-idp98736208-alt -->
+A diagram is shown. At the center of the diagram is a T-shaped structure labeled, “Anode ( positive sign ),” that is on a mesh-like background labeled, “Iron screen.” The anode is connected to a box labeled, “Voltage source,” by a line, and the voltage source is connected to one of two L-shaped structures that surround the anode. They are labeled, “Cathode ( negative sign ).” Above the cathode on the right side of the diagram is a tube connected to a collection chamber labeled, “N a metal,” that has a lower outlet labeled, “N a outlet.” Surrounding all of these components is a blue background labeled, “Molten N a C l,” and a series of tubes that form a square outside the diagram. They have an opening in the upper right corner labeled, “Inlet for N a C l.” At the top of the diagram is a large tube with an upward-facing arrow drawn on it. The tube turns right, has a right-facing arrow on it, and is labeled, “C l subscript 2 outlet.”
+
 <!-- SEG:m68830:title:fs-idp58959792-title -->
 The Preparation of Aluminum
 
 <!-- SEG:m68830:para:fs-idp122485616 -->
-The preparation of aluminum utilizes a process invented in 1886 by Charles M. {{term}}Hall{{/term}}, who began to work on the problem while a student at Oberlin College in Ohio. Paul L. T. {{term}}Héroult{{/term}} discovered the process independently a month or two later in France. In honor to the two inventors, this electrolysis cell is known as the {{term}}Hall–Héroult cell{{/term}}. The Hall–Héroult cell is an electrolysis cell for the production of aluminum. [[xref:CNX_Chem_18_02_HallHerCell]] illustrates the Hall–Héroult cell.
+The preparation of aluminum utilizes a process invented in 1886 by Charles M. [[term:Hall|term-00002]], who began to work on the problem while a student at Oberlin College in Ohio. Paul L. T. [[term:Héroult|term-00003]] discovered the process independently a month or two later in France. In honor to the two inventors, this electrolysis cell is known as the [[term:Hall–Héroult cell|term-00004]]. The Hall–Héroult cell is an electrolysis cell for the production of aluminum. [[xref:CNX_Chem_18_02_HallHerCell]] illustrates the Hall–Héroult cell.
 
 <!-- SEG:m68830:para:fs-idp233465360 -->
 The production of aluminum begins with the purification of bauxite, the most common source of aluminum. The reaction of bauxite, AlO(OH), with hot sodium hydroxide forms soluble sodium aluminate, while clay and other impurities remain undissolved:
@@ -51,6 +54,9 @@ The next step is to remove the precipitated aluminum hydroxide by filtration. He
 
 <!-- SEG:m68830:caption:CNX_Chem_18_02_HallHerCell-caption -->
 An electrolytic cell is used for the production of aluminum. The electrolysis of a solution of cryolite and calcium fluoride results in aluminum metal at the cathode, and oxygen, carbon monoxide, and carbon dioxide at the anode.
+
+<!-- SEG:m68830:alt:fs-idp293911136-alt -->
+A diagram is shown. At the center of the diagram are two black squares, each labeled, “Carbon anode ( positive sign ),” and connected by forked tubes to a horizontal tube labeled with a positive sign. The carbon anodes are submerged in a green liquid labeled, “A l subscript 2 O subscript 3 dissolved in molten N a subscript 3 A l F subscript 6.” It is held in place by a three-sided, double layered container which is labeled, “Steel sheet,” on the outer layer and, “Ceramic,” on the inner layer. The carbon anodes are surrounded by bubbles labeled, “Bubbles of O subscript 2, C O, and C O subscript 2.” Below the green liquids lies a silver layer labeled, “Molten aluminum,” and a black layer labeled, “Carbon cathode ( negative sign ).” Above the diagram is an outlet tube labeled with an upward-facing arrow and the words, “H F and particulates exhaust to filter plant.”
 
 <!-- SEG:m68830:title:fs-idp296516320-title -->
 The Preparation of Magnesium
@@ -71,7 +77,7 @@ Chemical Reduction
 The Preparation of Magnesium
 
 <!-- SEG:m68830:para:fs-idp232802512 -->
-The {{term}}Pidgeon process{{/term}} involves the reaction of magnesium oxide with elemental silicon at high temperatures to form pure magnesium:
+The [[term:Pidgeon process|term-00006]] involves the reaction of magnesium oxide with elemental silicon at high temperatures to form pure magnesium:
 
 <!-- SEG:m68830:para:fs-idp34921904 -->
 Although this reaction is unfavorable in terms of thermodynamics, the removal of the magnesium vapor produced takes advantage of Le Châtelier’s principle to continue the forward progress of the reaction. Over 75% of the world’s production of magnesium, primarily in China, comes from this process.
@@ -98,7 +104,7 @@ The ready reduction of tin(IV) oxide by the hot coals of a campfire accounts for
 The molten tin collects at the bottom of the furnace and is drawn off and cast into blocks.
 
 <!-- SEG:m68830:para:fs-idp79584928 -->
-It is possible to isolate many of the representative metals by {{term}}chemical reduction{{/term}} using other elements as reducing agents. In general, chemical reduction is much less expensive than electrolysis, and for this reason, chemical reduction is the method of choice for the isolation of these elements. For example, it is possible to produce potassium, rubidium, and cesium by chemical reduction, as it is possible to reduce the molten chlorides of these metals with sodium metal. This may be surprising given that these metals are more reactive than sodium; however, the metals formed are more volatile than sodium and can be distilled for collection. The removal of the metal vapor leads to a shift in the equilibrium to produce more metal (see how reactions can be driven in the discussions of Le Châtelier’s principle in the chapter on fundamental equilibrium concepts).
+It is possible to isolate many of the representative metals by [[term:chemical reduction|term-00005]] using other elements as reducing agents. In general, chemical reduction is much less expensive than electrolysis, and for this reason, chemical reduction is the method of choice for the isolation of these elements. For example, it is possible to produce potassium, rubidium, and cesium by chemical reduction, as it is possible to reduce the molten chlorides of these metals with sodium metal. This may be surprising given that these metals are more reactive than sodium; however, the metals formed are more volatile than sodium and can be distilled for collection. The removal of the metal vapor leads to a shift in the equilibrium to produce more metal (see how reactions can be driven in the discussions of Le Châtelier’s principle in the chapter on fundamental equilibrium concepts).
 
 <!-- SEG:m68830:para:fs-idp109004816 -->
 The production of magnesium, zinc, and tin provide additional examples of chemical reduction.

@@ -90,7 +90,10 @@
       },
       "media": {
         "id": "fs-idp48097808",
-        "alt": "A space filling model shows three atoms labeled, “O,” bonded to one another in a triangular shape. Two Lewis structures connected by a double ended arrow are shown as well. In the left image, an oxygen atom with one lone pair of electrons is double bonded to another oxygen with two lone pairs of electrons to the left and single bonded to an oxygen with three lone pairs of electrons to the right. The right image is a mirror image of the left.",
+        "alt": {
+          "segmentId": "m68837:alt:fs-idp48097808-alt",
+          "text": "A space filling model shows three atoms labeled, “O,” bonded to one another in a triangular shape. Two Lewis structures connected by a double ended arrow are shown as well. In the left image, an oxygen atom with one lone pair of electrons is double bonded to another oxygen with two lone pairs of electrons to the left and single bonded to an oxygen with three lone pairs of electrons to the right. The right image is a mirror image of the left."
+        },
         "src": "../../media/CNX_Chem_18_09_Ozone.jpg",
         "mimeType": "image/jpeg"
       }
@@ -305,7 +308,10 @@
               },
               "media": {
                 "id": "fs-idp99950736",
-                "alt": "A diagram shows two tubes labeled, “Oxygen,” and, “Hydrogen,” that lead to a lit burner. The burner is aimed at a solid block labeled, “Calcium oxide,” which rests on a laboratory apparatus.",
+                "alt": {
+                  "segmentId": "m68837:alt:fs-idp99950736-alt",
+                  "text": "A diagram shows two tubes labeled, “Oxygen,” and, “Hydrogen,” that lead to a lit burner. The burner is aimed at a solid block labeled, “Calcium oxide,” which rests on a laboratory apparatus."
+                },
                 "src": "../../media/CNX_Chem_18_09_Limelight.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -354,7 +360,10 @@
               },
               "media": {
                 "id": "fs-idp37228448",
-                "alt": "A photograph shows a person’s hand as he or she applies a white cream to his or her leg.",
+                "alt": {
+                  "segmentId": "m68837:alt:fs-idp37228448-alt",
+                  "text": "A photograph shows a person’s hand as he or she applies a white cream to his or her leg."
+                },
                 "src": "../../media/CNX_Chem_18_09_Sunblock.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -500,7 +509,10 @@
               },
               "media": {
                 "id": "fs-idm5652064",
-                "alt": "This figure has two photos. The first photo shows a bottle labeled NaOH and a test tube containing a liquid. A white substance appears to be in the liquid. The second photo is set up similarly, but the test tube now contains only a clear liquid.",
+                "alt": {
+                  "segmentId": "m68837:alt:fs-idm5652064-alt",
+                  "text": "This figure has two photos. The first photo shows a bottle labeled NaOH and a test tube containing a liquid. A white substance appears to be in the liquid. The second photo is set up similarly, but the test tube now contains only a clear liquid."
+                },
                 "src": "../../media/CNX_Chem_18_09_ZnHydroxid.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -529,7 +541,10 @@
               },
               "media": {
                 "id": "fs-idm29289888",
-                "alt": "A photograph shows a bottle tipped on its side with the words, “Antacid Tablets,” written on the front. An array of colorful, solid disks spill out of the mouth of the bottle.",
+                "alt": {
+                  "segmentId": "m68837:alt:fs-idm29289888-alt",
+                  "text": "A photograph shows a bottle tipped on its side with the words, “Antacid Tablets,” written on the front. An array of colorful, solid disks spill out of the mouth of the bottle."
+                },
                 "src": "../../media/CNX_Chem_18_09_CaOH2.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -606,7 +621,10 @@
               },
               "media": {
                 "id": "fs-idp19907360",
-                "alt": "A ball-and-stick model shows a yellow atom labeled, “S,” bonded on either side to a red atom labeled, “O.” A pair of Lewis structures are shown connected by a double-headed arrow. The left Lewis structure shows a sulfur atom with one lone pair of electrons double bonded on the left to an oxygen atom with two lone pairs of electrons and single bonded on the right to an oxygen atom with three lone pairs of electrons. The right Lewis structure is a mirror image of the structure on the left.",
+                "alt": {
+                  "segmentId": "m68837:alt:fs-idp19907360-alt",
+                  "text": "A ball-and-stick model shows a yellow atom labeled, “S,” bonded on either side to a red atom labeled, “O.” A pair of Lewis structures are shown connected by a double-headed arrow. The left Lewis structure shows a sulfur atom with one lone pair of electrons double bonded on the left to an oxygen atom with two lone pairs of electrons and single bonded on the right to an oxygen atom with three lone pairs of electrons. The right Lewis structure is a mirror image of the structure on the left."
+                },
                 "src": "../../media/CNX_Chem_18_09_Sulfrdiox.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -635,7 +653,10 @@
               },
               "media": {
                 "id": "fs-idp55786576",
-                "alt": "A ball-and-stick model shows a yellow atom labeled, “S,” bonded to three red atoms labeled, “O.” Three Lewis structures are shown connected by double-headed arrows. The left Lewis structure shows a sulfur atom single bonded on the lower left and right to oxygen atoms with three lone pairs of electrons each. The sulfur atom is also double bonded above to an oxygen atom with two lone pairs of electrons. The middle and right Lewis structures are the same as the left, but show the double bonded oxygen in the lower left and lower right positions, respectively.",
+                "alt": {
+                  "segmentId": "m68837:alt:fs-idp55786576-alt",
+                  "text": "A ball-and-stick model shows a yellow atom labeled, “S,” bonded to three red atoms labeled, “O.” Three Lewis structures are shown connected by double-headed arrows. The left Lewis structure shows a sulfur atom single bonded on the lower left and right to oxygen atoms with three lone pairs of electrons each. The sulfur atom is also double bonded above to an oxygen atom with two lone pairs of electrons. The middle and right Lewis structures are the same as the left, but show the double bonded oxygen in the lower left and lower right positions, respectively."
+                },
                 "src": "../../media/CNX_Chem_18_09_Sulfrtriox.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -675,7 +696,10 @@
               },
               "media": {
                 "id": "fs-idm47776480",
-                "alt": "Two space filling models are shown and labeled, “a,” and “b.” Model a shows a red atom labeled, “O,” bonded to two green atoms labeled, “C l,” in a v-shape. Model b shows a green atom labeled, “C l,” bonded to two red atoms labeled, “O,” in a v-shape.",
+                "alt": {
+                  "segmentId": "m68837:alt:fs-idm47776480-alt",
+                  "text": "Two space filling models are shown and labeled, “a,” and “b.” Model a shows a red atom labeled, “O,” bonded to two green atoms labeled, “C l,” in a v-shape. Model b shows a green atom labeled, “C l,” bonded to two red atoms labeled, “O,” in a v-shape."
+                },
                 "src": "../../media/CNX_Chem_18_09_Cl2OClO2.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -723,7 +747,10 @@
           },
           "media": {
             "id": "fs-idp86575744",
-            "alt": "A space filling model shows a blue atom labeled, “N,” bonded on three sides to red atoms labeled, “O.” One of the red atoms is bonded to a white atom labeled, “H.” A pair of Lewis structures is shown connected by a double-headed arrow. The left Lewis structure shows an oxygen atom with two lone pairs of electrons single bonded on the left to a hydrogen atom and on the right to a nitrogen atom. The nitrogen atom is in turn single bonded to an oxygen atom with three lone pairs of electrons in an upward position and double bonded to an oxygen atom with two lone pairs of electrons in a downward position. The right Lewis structure is the same as the left, but the double bonded oxygen is in the upward position and the single bonded oxygen is in the lower position in relation to the nitrogen atom.",
+            "alt": {
+              "segmentId": "m68837:alt:fs-idp86575744-alt",
+              "text": "A space filling model shows a blue atom labeled, “N,” bonded on three sides to red atoms labeled, “O.” One of the red atoms is bonded to a white atom labeled, “H.” A pair of Lewis structures is shown connected by a double-headed arrow. The left Lewis structure shows an oxygen atom with two lone pairs of electrons single bonded on the left to a hydrogen atom and on the right to a nitrogen atom. The nitrogen atom is in turn single bonded to an oxygen atom with three lone pairs of electrons in an upward position and double bonded to an oxygen atom with two lone pairs of electrons in a downward position. The right Lewis structure is the same as the left, but the double bonded oxygen is in the upward position and the single bonded oxygen is in the lower position in relation to the nitrogen atom."
+            },
             "src": "../../media/CNX_Chem_18_09_HNO3.jpg",
             "mimeType": "image/jpeg"
           }
@@ -850,7 +877,10 @@
           },
           "media": {
             "id": "fs-idm53671040",
-            "alt": "A space filling model shows a blue atom labeled, “N,” bonded on two sides to red atoms labeled, “O.” One of the red atoms is bonded to a white atom labeled, “H.”",
+            "alt": {
+              "segmentId": "m68837:alt:fs-idm53671040-alt",
+              "text": "A space filling model shows a blue atom labeled, “N,” bonded on two sides to red atoms labeled, “O.” One of the red atoms is bonded to a white atom labeled, “H.”"
+            },
             "src": "../../media/CNX_Chem_18_09_NitrosAcid.jpg",
             "mimeType": "image/jpeg"
           }
@@ -900,7 +930,10 @@
           },
           "media": {
             "id": "fs-idp207514928",
-            "alt": "A space filling model shows an orange atom labeled, “P,” bonded on four sides to red atoms labeled, “O.” Three of the red atoms are bonded to white atoms labeled, “H.” A Lewis structure is also shown in which a phosphorus atom is single bonded to four oxygen atoms, three of which have two lone pairs of electrons, and one of which has three lone pairs of electrons. The oxygen atoms with two lone pairs of electrons are single bonded to hydrogen atoms.",
+            "alt": {
+              "segmentId": "m68837:alt:fs-idp207514928-alt",
+              "text": "A space filling model shows an orange atom labeled, “P,” bonded on four sides to red atoms labeled, “O.” Three of the red atoms are bonded to white atoms labeled, “H.” A Lewis structure is also shown in which a phosphorus atom is single bonded to four oxygen atoms, three of which have two lone pairs of electrons, and one of which has three lone pairs of electrons. The oxygen atoms with two lone pairs of electrons are single bonded to hydrogen atoms."
+            },
             "src": "../../media/CNX_Chem_18_09_Phosphate.jpg",
             "mimeType": "image/jpeg"
           }
@@ -939,7 +972,10 @@
           },
           "media": {
             "id": "fs-idp206877648",
-            "alt": "A space filling model shows an orange atom labeled, “P,” bonded on three sides to red atoms labeled, “O,” and on the other side to a white atom labeled, “H.” Two of the red atoms are bonded to white atoms labeled, “H.” A Lewis structure is also shown in which a phosphorus atom is single bonded to a hydrogen atom and three oxygen atoms, two of which have two lone pairs of electrons and single bonds to hydrogen atoms, and one of which has three lone pairs of electrons.",
+            "alt": {
+              "segmentId": "m68837:alt:fs-idp206877648-alt",
+              "text": "A space filling model shows an orange atom labeled, “P,” bonded on three sides to red atoms labeled, “O,” and on the other side to a white atom labeled, “H.” Two of the red atoms are bonded to white atoms labeled, “H.” A Lewis structure is also shown in which a phosphorus atom is single bonded to a hydrogen atom and three oxygen atoms, two of which have two lone pairs of electrons and single bonds to hydrogen atoms, and one of which has three lone pairs of electrons."
+            },
             "src": "../../media/CNX_Chem_18_09_PhosphAcid.jpg",
             "mimeType": "image/jpeg"
           }
@@ -974,7 +1010,10 @@
           },
           "media": {
             "id": "fs-idm10377520",
-            "alt": "A space filling model shows a yellow atom labeled, “S,” bonded on four sides to red atoms labeled, “O.” Two of the red atoms are bonded to white atoms labeled, “H.”",
+            "alt": {
+              "segmentId": "m68837:alt:fs-idm10377520-alt",
+              "text": "A space filling model shows a yellow atom labeled, “S,” bonded on four sides to red atoms labeled, “O.” Two of the red atoms are bonded to white atoms labeled, “H.”"
+            },
             "src": "../../media/CNX_Chem_18_09_SulfrAcid.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1055,11 +1094,12 @@
           "id": "fs-idp152462192",
           "class": "top-titled",
           "summary": "This table has five columns and six rows. The first row is a header row, and it labels each column: “Name,” “Fluorine,” “Chlorine,” “Bromine,” and “Iodine.” Under the “Name” column are the following: hypohalous, halous, halic, perhalic, and paraperhalic. Under the “Fluorine” column is H O F and the rest of the rows are empty. Under the “Chlorine” column are: H O C l ( 7.5 ); H C l O subscript 2 ( 2.0 ); H C l O subscript 3; H C l O subscript 4; and the final row is empty. Under the “Bromine” column are: H O B r ( 8.7 ); a blank row; H B r O subscript 3; H B r O subscript 4; and another blank row. Under the “Iodine” column are: H O I ( 11 ); a blank row; H I O subscript 3 ( 0.8 ); H I O subscript 4 ( 1.6 ); and H subscript 5 I O subscript 6 ( 1.6 ).",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68837:entry:auto-123",
+                  "segmentId": "m68837:entry:auto-136",
                   "attributes": {
                     "align": "center",
                     "namest": "c1",
@@ -1070,120 +1110,6 @@
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68837:entry:auto-124",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68837:entry:auto-125",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68837:entry:auto-126",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68837:entry:auto-127",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68837:entry:auto-128",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68837:entry:auto-129",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68837:entry:auto-130",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68837:entry:auto-131",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68837:entry:auto-132",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68837:entry:auto-133",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68837:entry:auto-134",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68837:entry:auto-135",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68837:entry:auto-136",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68837:entry:auto-137",
                   "attributes": {
@@ -1201,19 +1127,9 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68837:entry:auto-140",
-                  "attributes": {
-                    "align": "left"
-                  }
                 },
                 {
-                  "segmentId": null,
+                  "segmentId": "m68837:entry:auto-140",
                   "attributes": {
                     "align": "left"
                   }
@@ -1223,7 +1139,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68837:entry:auto-142",
                   "attributes": {
@@ -1235,13 +1155,133 @@
                   "attributes": {
                     "align": "left"
                   }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-144",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-145",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-146",
+                  "attributes": {
+                    "align": "left"
+                  }
                 }
               ]
             },
             {
               "cells": [
                 {
-                  "segmentId": "m68837:entry:auto-144",
+                  "segmentId": "m68837:entry:auto-147",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-148",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68837:entry:auto-149",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-150",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-151",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-152",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68837:entry:auto-153",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-154",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-155",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68837:entry:auto-156",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68837:entry:auto-157",
                   "attributes": {
                     "align": "left"
                   }
@@ -1259,7 +1299,7 @@
                   "attributes": {}
                 },
                 {
-                  "segmentId": "m68837:entry:auto-145",
+                  "segmentId": "m68837:entry:auto-158",
                   "attributes": {
                     "align": "left"
                   }
@@ -1332,7 +1372,10 @@
           },
           "media": {
             "id": "fs-idm33972736",
-            "alt": "Three models of molecules are shown, each surrounded by brackets and each with a superscript negative sign outside the brackets. The left molecule shows a chlorine atom with two orbitals occupied by lone pairs of electrons. The chlorine atom is single bonded to two oxygen atoms, all of which are located at 109.5 degree angles from one another. The center molecule shows a space-filling model with a green atom labeled, “C l,” bonded to two red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom with two lone pairs of electrons surrounded by two oxygen atoms on either side, each with four lone pairs of electrons.",
+            "alt": {
+              "segmentId": "m68837:alt:fs-idm33972736-alt",
+              "text": "Three models of molecules are shown, each surrounded by brackets and each with a superscript negative sign outside the brackets. The left molecule shows a chlorine atom with two orbitals occupied by lone pairs of electrons. The chlorine atom is single bonded to two oxygen atoms, all of which are located at 109.5 degree angles from one another. The center molecule shows a space-filling model with a green atom labeled, “C l,” bonded to two red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom with two lone pairs of electrons surrounded by two oxygen atoms on either side, each with four lone pairs of electrons."
+            },
             "src": "../../media/CNX_Chem_18_09_ChloritIon.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1361,7 +1404,10 @@
           },
           "media": {
             "id": "fs-idp90696608",
-            "alt": "Three models of molecules are shown, each surrounded by brackets and each with a superscript negative sign outside the brackets. The left molecule shows a chlorine atom with one orbital occupied by a lone pair of electrons. The chlorine atom is single bonded to three oxygen atoms, all of which are located at 109.5 degree angles from one another. The center molecule shows a space-filling model with a green atom labeled, “C l,” bonded to three red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom with a lone pair of electrons surrounded by three oxygen atoms, each with four lone pairs of electrons.",
+            "alt": {
+              "segmentId": "m68837:alt:fs-idp90696608-alt",
+              "text": "Three models of molecules are shown, each surrounded by brackets and each with a superscript negative sign outside the brackets. The left molecule shows a chlorine atom with one orbital occupied by a lone pair of electrons. The chlorine atom is single bonded to three oxygen atoms, all of which are located at 109.5 degree angles from one another. The center molecule shows a space-filling model with a green atom labeled, “C l,” bonded to three red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom with a lone pair of electrons surrounded by three oxygen atoms, each with four lone pairs of electrons."
+            },
             "src": "../../media/CNX_Chem_18_09_ClO3Ion.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1390,7 +1436,10 @@
           },
           "media": {
             "id": "fs-idm61257968",
-            "alt": "Two models of molecules are shown, both with a superscript negative sign. The left molecule shows a space-filling model with a green atom labeled, “C l,” bonded to four red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom surrounded by four oxygen atoms, each with four lone pairs of electrons. The Lewis structure is surrounded by brackets, and the superscript negative sign appears outside the brackets.",
+            "alt": {
+              "segmentId": "m68837:alt:fs-idm61257968-alt",
+              "text": "Two models of molecules are shown, both with a superscript negative sign. The left molecule shows a space-filling model with a green atom labeled, “C l,” bonded to four red atoms labeled, “O.” The right molecule is a Lewis structure of a chlorine atom surrounded by four oxygen atoms, each with four lone pairs of electrons. The Lewis structure is surrounded by brackets, and the superscript negative sign appears outside the brackets."
+            },
             "src": "../../media/CNX_Chem_18_09_PerchloIon.jpg",
             "mimeType": "image/jpeg"
           }

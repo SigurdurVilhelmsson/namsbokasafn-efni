@@ -22,6 +22,9 @@ The earth’s atmosphere exerts a pressure, as does any other gas. Although we d
 <!-- SEG:m68750:caption:CNX_Chem_09_01_Pressure1-caption -->
 The atmosphere above us exerts a large pressure on objects at the surface of the earth, roughly equal to the weight of a bowling ball pressing on an area the size of a human thumbnail.
 
+<!-- SEG:m68750:alt:fs-idp16369520-alt -->
+The left side of this figure includes a graphic of the earth with an inverted rectangular prism extending from a point on it. Near the top of the image, the label, “square inch column of air molecules” is connected to the prism with a line segment. This label is also connected with a line segment to a downward pointing arrow at the right side of the figure. Beneath the arrow is a red circle labeled, “atmospheric pressure.” A narrow rectangle with a dashed line border extends from the bottom of the arrow vertically through the circle. Directly beneath this rectangle at the lower edge of the circle is a hand with a thumb appearing to be resting on a tabletop. The thumb is connected with a line segment to the label, “14.7 lbs of pressure on 1 square inch.” The red circle is sitting on top of the thumb.
+
 <!-- SEG:m68750:para:fs-idp139792368 -->
 A dramatic [[link:illustration|http://openstax.org/l/16atmospressur1]] of atmospheric pressure is provided in this brief video, which shows a railway tanker car imploding when its internal pressure is decreased.
 
@@ -32,7 +35,7 @@ A smaller scale [[link:demonstration|http://openstax.org/l/16atmospressur2]] of 
 Atmospheric pressure is caused by the weight of the column of air molecules in the atmosphere above an object, such as the tanker car. At sea level, this pressure is roughly the same as that exerted by a full-grown African elephant standing on a doormat, or a typical bowling ball resting on your thumbnail. These may seem like huge amounts, and they are, but life on earth has evolved under such atmospheric pressure. If you actually perch a bowling ball on your thumbnail, the pressure experienced is[[i: twice]] the usual pressure, and the sensation is unpleasant.
 
 <!-- SEG:m68750:para:fs-idp26888784 -->
-In general, {{term}}pressure{{/term}} is defined as the force exerted on a given area: [[MATH:1]] Note that pressure is directly proportional to force and inversely proportional to area. Thus, pressure can be increased either by increasing the amount of force or by decreasing the area over which it is applied; pressure can be decreased by decreasing the force or increasing the area.
+In general, [[term:pressure|term-00001]] is defined as the force exerted on a given area: [[MATH:1]] Note that pressure is directly proportional to force and inversely proportional to area. Thus, pressure can be increased either by increasing the amount of force or by decreasing the area over which it is applied; pressure can be decreased by decreasing the force or increasing the area.
 
 <!-- SEG:m68750:para:fs-idm32668544 -->
 Let’s apply this concept to determine which exerts a greater pressure in [[xref:CNX_Chem_09_01_Pressure2]]—the elephant or the figure skater? A large African elephant can weigh 7 tons, supported on four feet, each with a diameter of about 1.5 ft (footprint area of 250 in[[sup:2]]), so the pressure exerted by each foot is about 14 lb/in[[sup:2]]:
@@ -46,70 +49,73 @@ Even though the elephant is more than one hundred-times heavier than the skater,
 <!-- SEG:m68750:caption:CNX_Chem_09_01_Pressure2-caption -->
 Although (a) an elephant’s weight is large, creating a very large force on the ground, (b) the figure skater exerts a much higher pressure on the ice due to the small surface area of the skates. (credit a: modification of work by Guido da Rozze; credit b: modification of work by Ryosuke Yagi)
 
+<!-- SEG:m68750:alt:fs-idp170647376-alt -->
+This figure includes two photographs. Figure a is a photo of a large gray elephant on grassy, beige terrain. Figure b is a photo of a figure skater with her right skate on the ice, upper torso lowered, arms extended upward behind her chest, and left leg extended upward behind her.
+
 <!-- SEG:m68750:para:fs-idm10039728 -->
-The SI unit of pressure is the {{term}}pascal (Pa){{/term}}, with 1 Pa = 1 N/m[[sup:2]], where N is the newton, a unit of force defined as 1 kg m/s[[sup:2]]. One pascal is a small pressure; in many cases, it is more convenient to use units of kilopascal (1 kPa = 1000 Pa) or {{term}}bar{{/term}} (1 bar = 100,000 Pa). In the United States, pressure is often measured in pounds of force on an area of one square inch—{{term}}pounds per square inch (psi){{/term}}—for example, in car tires. Pressure can also be measured using the unit {{term}}atmosphere (atm){{/term}}, which originally represented the average sea level air pressure at the approximate latitude of Paris (45°). [[xref:fs-idp189967312]] provides some information on these and a few other common units for pressure measurements
-
-<!-- SEG:m68750:entry:auto-18 -->
-Pressure Units
-
-<!-- SEG:m68750:entry:auto-19 -->
-Unit Name and Abbreviation
+The SI unit of pressure is the [[term:pascal (Pa)|term-00002]], with 1 Pa = 1 N/m[[sup:2]], where N is the newton, a unit of force defined as 1 kg m/s[[sup:2]]. One pascal is a small pressure; in many cases, it is more convenient to use units of kilopascal (1 kPa = 1000 Pa) or [[term:bar|term-00003]] (1 bar = 100,000 Pa). In the United States, pressure is often measured in pounds of force on an area of one square inch—[[term:pounds per square inch (psi)|term-00004]]—for example, in car tires. Pressure can also be measured using the unit [[term:atmosphere (atm)|term-00005]], which originally represented the average sea level air pressure at the approximate latitude of Paris (45°). [[xref:fs-idp189967312]] provides some information on these and a few other common units for pressure measurements
 
 <!-- SEG:m68750:entry:auto-20 -->
-Definition or Relation to Other Unit
+Pressure Units
 
 <!-- SEG:m68750:entry:auto-21 -->
-pascal (Pa)
+Unit Name and Abbreviation
 
 <!-- SEG:m68750:entry:auto-22 -->
-1 Pa = 1 N/m[[sup:2]][[BR]]recommended IUPAC unit
+Definition or Relation to Other Unit
 
 <!-- SEG:m68750:entry:auto-23 -->
-kilopascal (kPa)
+pascal (Pa)
 
 <!-- SEG:m68750:entry:auto-24 -->
-1 kPa = 1000 Pa
+1 Pa = 1 N/m[[sup:2]][[BR]]recommended IUPAC unit
 
 <!-- SEG:m68750:entry:auto-25 -->
-pounds per square inch (psi)
+kilopascal (kPa)
 
 <!-- SEG:m68750:entry:auto-26 -->
-air pressure at sea level is ~14.7 psi
+1 kPa = 1000 Pa
 
 <!-- SEG:m68750:entry:auto-27 -->
-atmosphere (atm)
+pounds per square inch (psi)
 
 <!-- SEG:m68750:entry:auto-28 -->
-1 atm = 101,325 Pa = 760 torr[[BR]]air pressure at sea level is ~1 atm
+air pressure at sea level is ~14.7 psi
 
 <!-- SEG:m68750:entry:auto-29 -->
-bar (bar, or b)
+atmosphere (atm)
 
 <!-- SEG:m68750:entry:auto-30 -->
-1 bar = 100,000 Pa (exactly)[[BR]]commonly used in meteorology
+1 atm = 101,325 Pa = 760 torr[[BR]]air pressure at sea level is ~1 atm
 
 <!-- SEG:m68750:entry:auto-31 -->
-millibar (mbar, or mb)
+bar (bar, or b)
 
 <!-- SEG:m68750:entry:auto-32 -->
-1000 mbar = 1 bar
+1 bar = 100,000 Pa (exactly)[[BR]]commonly used in meteorology
 
 <!-- SEG:m68750:entry:auto-33 -->
-inches of mercury (in. Hg)
+millibar (mbar, or mb)
 
 <!-- SEG:m68750:entry:auto-34 -->
-1 in. Hg = 3386 Pa[[BR]]used by aviation industry, also some weather reports
+1000 mbar = 1 bar
 
 <!-- SEG:m68750:entry:auto-35 -->
-torr
+inches of mercury (in. Hg)
 
 <!-- SEG:m68750:entry:auto-36 -->
-[[MATH:2]][[BR]]named after Evangelista Torricelli, inventor of the barometer
+1 in. Hg = 3386 Pa[[BR]]used by aviation industry, also some weather reports
 
 <!-- SEG:m68750:entry:auto-37 -->
-millimeters of mercury (mm Hg)
+torr
 
 <!-- SEG:m68750:entry:auto-38 -->
+[[MATH:2]][[BR]]named after Evangelista Torricelli, inventor of the barometer
+
+<!-- SEG:m68750:entry:auto-39 -->
+millimeters of mercury (mm Hg)
+
+<!-- SEG:m68750:entry:auto-40 -->
 1 mm Hg ~1 torr
 
 <!-- SEG:m68750:example-title:fs-idp156787120-title -->
@@ -164,13 +170,16 @@ Answer:
 0.974 atm; 740 mm Hg; 98.7 kPa; 0.987 bar
 
 <!-- SEG:m68750:para:fs-idm69336128 -->
-We can measure atmospheric pressure, the force exerted by the atmosphere on the earth’s surface, with a {{term}}barometer{{/term}} ([[xref:CNX_Chem_09_01_Barometer]]). A barometer is a glass tube that is closed at one end, filled with a nonvolatile liquid such as mercury, and then inverted and immersed in a container of that liquid. The atmosphere exerts pressure on the liquid outside the tube, the column of liquid exerts pressure inside the tube, and the pressure at the liquid surface is the same inside and outside the tube. The height of the liquid in the tube is therefore proportional to the pressure exerted by the atmosphere.
+We can measure atmospheric pressure, the force exerted by the atmosphere on the earth’s surface, with a [[term:barometer|term-00006]] ([[xref:CNX_Chem_09_01_Barometer]]). A barometer is a glass tube that is closed at one end, filled with a nonvolatile liquid such as mercury, and then inverted and immersed in a container of that liquid. The atmosphere exerts pressure on the liquid outside the tube, the column of liquid exerts pressure inside the tube, and the pressure at the liquid surface is the same inside and outside the tube. The height of the liquid in the tube is therefore proportional to the pressure exerted by the atmosphere.
 
 <!-- SEG:m68750:caption:CNX_Chem_09_01_Barometer-caption -->
 In a barometer, the height, [[i:h]], of the column of liquid is used as a measurement of the air pressure. Using very dense liquid mercury (left) permits the construction of reasonably sized barometers, whereas using water (right) would require a barometer more than 30 feet tall.
 
+<!-- SEG:m68750:alt:fs-idm35593680-alt -->
+This figure shows two barometers. The barometer to the left contains a shallow reservoir, or open container, of mercury. A narrow tube extends upward from the reservoir above the reservoir. This tube is sealed at the top. To the right, a second similar setup is shown with a reservoir filled with water. Line segments connect the label “vacuum” to the tops of the two narrow tubes. The tube on the left shows the mercury in the reservoir extending in a column upward in the narrow tube. Similarly, the tube on the right shows the water in the reservoir extending upward into the related narrow tube. Double-headed arrows extend from the surface of each liquid in the reservoir to the top of the liquid in each tube. A narrow column or bar extends from the surface of the reservoir to the same height. This bar is labeled “atmospheric pressure.” The level of the water in its tube is significantly higher than the level of mercury in its tube.
+
 <!-- SEG:m68750:para:fs-idm79676464 -->
-If the liquid is water, normal atmospheric pressure will support a column of water over 10 meters high, which is rather inconvenient for making (and reading) a barometer. Because mercury (Hg) is about 13.6-times denser than water, a mercury barometer only needs to be [[MATH:7]] as tall as a water barometer—a more suitable size. Standard atmospheric pressure of 1 atm at sea level (101,325 Pa) corresponds to a column of mercury that is about 760 mm (29.92 in.) high. The {{term}}torr{{/term}} was originally intended to be a unit equal to one millimeter of mercury, but it no longer corresponds exactly. The pressure exerted by a fluid due to gravity is known as {{term}}hydrostatic pressure{{/term}}, [[i:p]]:
+If the liquid is water, normal atmospheric pressure will support a column of water over 10 meters high, which is rather inconvenient for making (and reading) a barometer. Because mercury (Hg) is about 13.6-times denser than water, a mercury barometer only needs to be [[MATH:7]] as tall as a water barometer—a more suitable size. Standard atmospheric pressure of 1 atm at sea level (101,325 Pa) corresponds to a column of mercury that is about 760 mm (29.92 in.) high. The [[term:torr|term-00007]] was originally intended to be a unit equal to one millimeter of mercury, but it no longer corresponds exactly. The pressure exerted by a fluid due to gravity is known as [[term:hydrostatic pressure|term-00008]], [[i:p]]:
 
 <!-- SEG:m68750:para:fs-idm61000288 -->
 where [[i:h]] is the height of the fluid, [[i:ρ]] (lowercase Greek letter rho) is the density of the fluid, and [[i:g]] is acceleration due to gravity.
@@ -203,10 +212,13 @@ Answer:
 10.3 m
 
 <!-- SEG:m68750:para:fs-idp189718992 -->
-A {{term}}manometer{{/term}} is a device similar to a barometer that can be used to measure the pressure of a gas trapped in a container. A closed-end manometer is a U-shaped tube with one closed arm, one arm that connects to the gas to be measured, and a nonvolatile liquid (usually mercury) in between. As with a barometer, the distance between the liquid levels in the two arms of the tube ([[i:h]] in the diagram) is proportional to the pressure of the gas in the container. An open-end manometer ([[xref:CNX_Chem_09_01_Manometer]]) is the same as a closed-end manometer, but one of its arms is open to the atmosphere. In this case, the distance between the liquid levels corresponds to the difference in pressure between the gas in the container and the atmosphere.
+A [[term:manometer|term-00009]] is a device similar to a barometer that can be used to measure the pressure of a gas trapped in a container. A closed-end manometer is a U-shaped tube with one closed arm, one arm that connects to the gas to be measured, and a nonvolatile liquid (usually mercury) in between. As with a barometer, the distance between the liquid levels in the two arms of the tube ([[i:h]] in the diagram) is proportional to the pressure of the gas in the container. An open-end manometer ([[xref:CNX_Chem_09_01_Manometer]]) is the same as a closed-end manometer, but one of its arms is open to the atmosphere. In this case, the distance between the liquid levels corresponds to the difference in pressure between the gas in the container and the atmosphere.
 
 <!-- SEG:m68750:caption:CNX_Chem_09_01_Manometer-caption -->
 A manometer can be used to measure the pressure of a gas. The (difference in) height between the liquid levels ([[i:h]]) is a measure of the pressure. Mercury is usually used because of its large density.
+
+<!-- SEG:m68750:alt:fs-idm5598960-alt -->
+Three diagrams of manometers are shown. Each manometer consists of a spherical pink container filled with gas on the left that is connected to a U-shaped, sealed tube by a valve on its right. The top of the U aligns with the gas-filled sphere and the U, which extends below, contains mercury. The first manometer has a sealed tube. The sealed end to the upper right in the diagram is labeled “closed end” and “vacuum.” The mercury level is higher in the right side of the tube than in the left. The difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign h rho g. The second manometer has an open-ended tube, which is labeled “open end.” At this opening in the upper right of the diagram is the label P subscript atm. The mercury level is higher in the left side of the tube than in the right. This difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign P subscript atm minus sign h rho g. The third manometer has an open-ended tube and is similar to the second manometer except that the mercury level is higher in the right side of the tube than in the left. This difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign P subscript a t m plus h rho g.
 
 <!-- SEG:m68750:example-title:fs-idm31201088-title -->
 Calculation of Pressure Using a Closed-End Manometer
@@ -255,6 +267,12 @@ The pressure of a sample of gas is measured with a closed-end manometer. The liq
 
 <!-- SEG:m68750:para:fs-idm8669760 -->
 (a) ~150 torr; (b) ~20,000 Pa; (c) ~0.20 bar
+
+<!-- SEG:m68750:alt:fs-idp141827632-alt -->
+A diagram of a closed-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “closed end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height between the left side and right side is 26.4 c m which is indicated with horizontal line segments and arrows.
+
+<!-- SEG:m68750:alt:fs-idp26163024-alt -->
+A diagram of a closed-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “closed end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 6.0 i n is indicated with horizontal line segments and arrows.
 
 <!-- SEG:m68750:note-title:fs-idm70430576-title -->
 Answer:
@@ -310,6 +328,12 @@ The pressure of a sample of gas is measured at sea level with an open-end Hg man
 <!-- SEG:m68750:para:fs-idp154771664 -->
 (a) 642 mm Hg; (b) 0.845 atm; (c) 85.6 kPa
 
+<!-- SEG:m68750:alt:fs-idp16540528-alt -->
+A diagram of an opne-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 13.7 c m is indicated with horizontal line segments and arrows.
+
+<!-- SEG:m68750:alt:fs-idm34584432-alt -->
+A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the left side than on the right. The difference in height of 4.63 i n is indicated with horizontal line segments and arrows.
+
 <!-- SEG:m68750:note-title:fs-idp173017200-title -->
 Answer:
 
@@ -324,6 +348,9 @@ Blood pressure is measured using a device called a sphygmomanometer (Greek [[i:s
 
 <!-- SEG:m68750:caption:CNX_Chem_09_01_Spygmo-caption -->
 (a) A medical technician prepares to measure a patient’s blood pressure with a sphygmomanometer. (b) A typical sphygmomanometer uses a valved rubber bulb to inflate the cuff and a diaphragm gauge to measure pressure. (credit a: modification of work by Master Sgt. Jeffrey Allen)
+
+<!-- SEG:m68750:alt:fs-idm50439776-alt -->
+This figure includes two photographs. The first photo shows a young adult male placing a blood pressure cuff on the upper arm of a young adult female. The second image shows a typical sphygmomanometer, which includes a black blood pressure cuff, tubing, pump, and pressure gauge.
 
 <!-- SEG:m68750:note-title:fs-idm96003696-title -->
 Meteorology, Climatology, and Atmospheric Science
@@ -343,8 +370,14 @@ Climatology is the study of the climate, averaged weather conditions over long t
 <!-- SEG:m68750:caption:CNX_Chem_09_01_WeatherMap-caption -->
 Meteorologists use weather maps to describe and predict weather. Regions of high (H) and low (L) pressure have large effects on weather conditions. The gray lines represent locations of constant pressure known as isobars. (credit: modification of work by National Oceanic and Atmospheric Administration)
 
+<!-- SEG:m68750:alt:fs-idm21149856-alt -->
+A weather map of the United States is shown which points out areas of high and low pressure with the letters H in blue and L in red. Curved lines in grey, orange, blue, and red are shown. The orange lines are segmented. The red and blue lines have small red or blue semi-circles and triangles attached along their lengths. In dashed white lines, latitude and longitude are indicated. Underlined three and four digit numbers also appear across the map.
+
 <!-- SEG:m68750:caption:CNX_Chem_09_01_Atmosphere-caption -->
 Earth’s atmosphere has five layers: the troposphere, the stratosphere, the mesosphere, the thermosphere, and the exosphere.
+
+<!-- SEG:m68750:alt:fs-idm76295840-alt -->
+This diagram shows half of a two dimensional view of the earth in blue and green. A narrow white layer, labeled “troposphere 0 dash 12 k m” covers this hemisphere. This layer is also labeled “layer where most weather events originate.” Next, a thicker light blue layer labeled “Stratosphere 12 dash 50 k m” is shown. This is followed by a slightly thinner layer also in light blue labeled “Mesosphere 50 dash 80 k m.” Following this layer is a relatively thick light blue layer labeled “Thermosphere 80 dash 700 k m.” A blue layer appears that covers the rightmost two thirds of the diagram. This region gradually darkens from a lighter blue at the left to a dark blue at the right. This region of the diagram is labeled “exosphere greater than 700 k m.”
 
 <!-- SEG:m68750:title:fs-idm62097440-title -->
 Key Concepts and Summary
@@ -355,10 +388,10 @@ Gases exert pressure, which is force per unit area. The pressure of a gas may be
 <!-- SEG:m68750:title:fs-idp68662112-title -->
 Key Equations
 
-<!-- SEG:m68750:entry:auto-120 -->
+<!-- SEG:m68750:entry:auto-131 -->
 [[MATH:13]]
 
-<!-- SEG:m68750:entry:auto-121 -->
+<!-- SEG:m68750:entry:auto-132 -->
 [[i:p]] = [[i:hρg]]
 
 <!-- SEG:m68750:title:fs-idm20163680-title -->
@@ -436,6 +469,9 @@ The pressure of a sample of gas is measured at sea level with a closed-end manom
 <!-- SEG:m68750:problem:fs-idm80328752 -->
 (c) bar
 
+<!-- SEG:m68750:alt:fs-idm92729728-alt -->
+A diagram of a closed-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “closed end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 26.4 c m is indicated with horizontal line segments and arrows.
+
 <!-- SEG:m68750:solution:fs-idm83006352 -->
 (a) 264 torr; (b) 35,200 Pa; (c) 0.352 bar
 
@@ -451,6 +487,9 @@ The pressure of a sample of gas is measured with an open-end manometer, partiall
 <!-- SEG:m68750:problem:fs-idm69293536 -->
 (c) bar
 
+<!-- SEG:m68750:alt:fs-idm26453536-alt -->
+A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the left side than on the right. The difference in height of 6.00 i n is indicated with horizontal line segments and arrows.
+
 <!-- SEG:m68750:problem:fs-idm86041584 -->
 The pressure of a sample of gas is measured at sea level with an open-end mercury manometer. Assuming atmospheric pressure is 760.0 mm Hg, determine the pressure of the gas in:
 
@@ -462,6 +501,9 @@ The pressure of a sample of gas is measured at sea level with an open-end mercur
 
 <!-- SEG:m68750:problem:fs-idp30379328 -->
 (c) kPa
+
+<!-- SEG:m68750:alt:fs-idm1196240-alt -->
+A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the left side than on the right. The difference in height of 13.7 c m is indicated with horizontal line segments and arrows.
 
 <!-- SEG:m68750:solution:fs-idm33920592 -->
 (a) 623 mm Hg; (b) 0.820 atm; (c) 83.1 kPa
@@ -477,6 +519,9 @@ The pressure of a sample of gas is measured at sea level with an open-end mercur
 
 <!-- SEG:m68750:problem:fs-idp189802448 -->
 (c) kPa
+
+<!-- SEG:m68750:alt:fs-idm82208512-alt -->
+A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 26.4 c m is indicated with horizontal line segments and arrows.
 
 <!-- SEG:m68750:problem:fs-idm79130144 -->
 How would the use of a volatile liquid affect the measurement of a gas using open-ended manometers vs. closed-end manometers?

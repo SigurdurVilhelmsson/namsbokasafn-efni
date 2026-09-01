@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68743",
-  "extractedAt": "2026-07-07T09:12:36.598Z",
+  "extractedAt": "2026-08-31T19:08:39.543Z",
   "sourceHash": "a73dfdb2e9e0214f",
-  "segmentCount": 8,
+  "segmentCount": 10,
   "segmentIds": [
     "m68743:title:auto-1",
     "m68743:abstract-item:abstract-item-1",
@@ -11,7 +11,9 @@
     "m68743:abstract-item:abstract-item-3",
     "m68743:abstract-item:abstract-item-4",
     "m68743:caption:CNX_Chem_08_00_LiqO2-caption",
+    "m68743:alt:fs-idp76967904-alt",
     "m68743:para:fs-idp262340496",
+    "m68743:alt:fs-idp82346208-alt",
     "m68743:para:fs-idm1216176"
   ],
   "equationCount": 0,

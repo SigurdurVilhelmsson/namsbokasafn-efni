@@ -1,16 +1,18 @@
 {
   "version": 1,
   "moduleId": "m00036",
-  "extractedAt": "2026-08-12T16:05:00.570Z",
+  "extractedAt": "2026-08-31T19:08:46.917Z",
   "sourceHash": "0efabb75ba09edf6",
-  "segmentCount": 7,
+  "segmentCount": 9,
   "segmentIds": [
     "m00036:title:auto-1",
     "m00036:para:para-00001",
     "m00036:para:para-00002",
     "m00036:para:para-00004",
+    "m00036:alt:fig-00001-alt",
     "m00036:para:para-00005",
     "m00036:caption:fig-00002-caption",
+    "m00036:alt:fig-00002-alt",
     "m00036:para:para-00006"
   ],
   "equationCount": 1,

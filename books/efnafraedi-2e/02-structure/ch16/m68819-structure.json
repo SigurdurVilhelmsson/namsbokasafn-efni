@@ -94,6 +94,7 @@
       "id": "fs-idm211518768",
       "class": "top-titled",
       "summary": "This table has three columns and three rows. The first column has the following: “capital delta S subscript univ is greater than 0,” “capital delta S subscript univ is less than 0,” and, “capital delta S subscript univ equals 0.” The second column contains the following: “capital delta G is less than 0,” “capital delta G is greater than 0,” and, “capital delta G equals 0.” The third column contains the following: “Spontaneous,” “nonspontaneous ( spontaneous in opposite direction ),” and, “reversible ( system is at equilibrium ).”",
+      "title": null,
       "rows": [
         {
           "cells": [
@@ -355,6 +356,7 @@
           "id": "fs-idm230329280",
           "class": "unnumbered",
           "summary": "This table has three columns and three rows. The first row is a header row and it labels each column: “Substance,” “capital delta H subscript f superscript degree symbol ( k J / mol),” and “S subscript 298 superscript degree symbol ( J / K dot mol ).” Under the “Substance” column are H subscript 2 O ( l ) and H subscript 2 O ( g ). Under the “capital delta H subscript f superscript degree symbol ( k J / mol)” column are the values negative 286.83 and negative 241.82. Under the “S subscript 298 superscript degree symbol ( J / K dot mol )” column are the values 70.0 and 188.8.",
+          "title": null,
           "rows": [
             {
               "cells": [
@@ -584,6 +586,7 @@
           "id": "fs-idm232730384",
           "class": "unnumbered",
           "summary": "This table has four columns and four rows. The first row is a header row, and it labels each column: “Compound,” “capital delta G subscript f superscript degree symbol ( k J / mol ),” “capital delta H subscript f superscript degree symbol ( k J / mol ),” and “S subscript 298 superscript degree symbol ( J / K dot mol ).” Under the “Compound” column are the following: “H g O ( s, yellow ),” “H g ( l ),” and “O subscript 2 ( g ).” Under the “capital delta G subscript f superscript degree symbol ( k J / mol )” column are the following values: negative 58.43, 0, and 0. Under the “capital delta H subscript f superscript degree symbol ( k J / mol )” column are the values: negative 90.46, 0, and 0. Under the “S subscript 298 superscript degree symbol ( J / K dot mol )” column are the values: 71.13, 75.9, and 205.2.",
+          "title": null,
           "rows": [
             {
               "cells": [
@@ -895,7 +898,10 @@
           },
           "media": {
             "id": "fs-idm123583264",
-            "alt": "A table with three columns and four rows is shown. The first column has the phrase, “Delta S greater than zero ( increase in entropy ),” in the third row and the phrase, “Delta S less than zero ( decrease in entropy),” in the fourth row. The second and third columns have the phrase, “Summary of the Four Scenarios for Enthalpy and Entropy Changes,” written above them. The second column has, “delta H greater than zero ( endothermic ),” in the second row, “delta G less than zero at high temperature, delta G greater than zero at low temperature, Process is spontaneous at high temperature,” in the third row, and “delta G greater than zero at any temperature, Process is nonspontaneous at any temperature,” in the fourth row. The third column has, “delta H less than zero ( exothermic ),” in the second row, “delta G less than zero at any temperature, Process is spontaneous at any temperature,” in the third row, and “delta G less than zero at low temperature, delta G greater than zero at high temperature, Process is spontaneous at low temperature.”",
+            "alt": {
+              "segmentId": "m68819:alt:fs-idm123583264-alt",
+              "text": "A table with three columns and four rows is shown. The first column has the phrase, “Delta S greater than zero ( increase in entropy ),” in the third row and the phrase, “Delta S less than zero ( decrease in entropy),” in the fourth row. The second and third columns have the phrase, “Summary of the Four Scenarios for Enthalpy and Entropy Changes,” written above them. The second column has, “delta H greater than zero ( endothermic ),” in the second row, “delta G less than zero at high temperature, delta G greater than zero at low temperature, Process is spontaneous at high temperature,” in the third row, and “delta G greater than zero at any temperature, Process is nonspontaneous at any temperature,” in the fourth row. The third column has, “delta H less than zero ( exothermic ),” in the second row, “delta G less than zero at any temperature, Process is spontaneous at any temperature,” in the third row, and “delta G less than zero at low temperature, delta G greater than zero at high temperature, Process is spontaneous at low temperature.”"
+            },
             "src": "../../media/CNX_Chem_16_04_Scenarios.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1015,7 +1021,10 @@
           },
           "media": {
             "id": "fs-idm275434144",
-            "alt": "A graph is shown where the y-axis is labeled, “Free energy,” and the x-axis is labeled, “Increasing temperature ( K ).” The value of zero is written midway up the y-axis with the label, “delta G greater than 0,” written above this line and, “delta G less than 0,” written below it. The bottom half of the graph is labeled on the right as, “Spontaneous,” and the top half is labeled on the right as, “Nonspontaneous.” A green line labeled, “delta H less than 0, delta S greater than 0,” extends from a quarter of the way up the y-axis to the bottom right of the graph. A yellow line labeled, “delta H less than 0, delta S less than 0,” extends from a quarter of the way up the y-axis to the middle right of the graph. A second yellow line labeled, “delta H greater than 0, delta S greater than 0,” extends from three quarters of the way up the y-axis to the middle right of the graph. A red line labeled, “delta H greater than 0, delta S less than 0,” extends from three quarters of the way up the y-axis to the top right of the graph.",
+            "alt": {
+              "segmentId": "m68819:alt:fs-idm275434144-alt",
+              "text": "A graph is shown where the y-axis is labeled, “Free energy,” and the x-axis is labeled, “Increasing temperature ( K ).” The value of zero is written midway up the y-axis with the label, “delta G greater than 0,” written above this line and, “delta G less than 0,” written below it. The bottom half of the graph is labeled on the right as, “Spontaneous,” and the top half is labeled on the right as, “Nonspontaneous.” A green line labeled, “delta H less than 0, delta S greater than 0,” extends from a quarter of the way up the y-axis to the bottom right of the graph. A yellow line labeled, “delta H less than 0, delta S less than 0,” extends from a quarter of the way up the y-axis to the middle right of the graph. A second yellow line labeled, “delta H greater than 0, delta S greater than 0,” extends from three quarters of the way up the y-axis to the middle right of the graph. A red line labeled, “delta H greater than 0, delta S less than 0,” extends from three quarters of the way up the y-axis to the top right of the graph."
+            },
             "src": "../../media/CNX_Chem_16_04_TempSpont-d7b9.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1240,11 +1249,12 @@
           "id": "fs-idm159425040",
           "class": "top-titled",
           "summary": "This table has three columns and four rows. The first row is a header row, and it labels each column, “K,” “capital delta G superscript degree symbol,” and “Comments.” Under the “K” column are the following: “greater than 1,” “less than 1,” and “equal to 1.” Under the “capital delta G superscript degree symbol” column are the following: “less than 0,” “greater than 0,” and “equal to 0.” Under the “Comments” column are the following: “Products are more abundant at equilibrium,” “Reactants are more abundant at equilibrium,” and “Reactants and products are equally abundant at equilibrium.”",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68819:entry:auto-161",
+                  "segmentId": "m68819:entry:auto-163",
                   "attributes": {
                     "align": "center",
                     "namest": "c1",
@@ -1256,27 +1266,11 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68819:entry:auto-162",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68819:entry:auto-163",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
                   "segmentId": "m68819:entry:auto-164",
                   "attributes": {
-                    "align": "left"
+                    "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68819:entry:auto-165",
                   "attributes": {
@@ -1286,12 +1280,6 @@
                 {
                   "segmentId": "m68819:entry:auto-166",
                   "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68819:entry:auto-167",
-                  "attributes": {
                     "align": "left"
                   }
                 }
@@ -1299,6 +1287,12 @@
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68819:entry:auto-167",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
                 {
                   "segmentId": "m68819:entry:auto-168",
                   "attributes": {
@@ -1308,12 +1302,6 @@
                 {
                   "segmentId": "m68819:entry:auto-169",
                   "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68819:entry:auto-170",
-                  "attributes": {
                     "align": "left"
                   }
                 }
@@ -1321,6 +1309,12 @@
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68819:entry:auto-170",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
                 {
                   "segmentId": "m68819:entry:auto-171",
                   "attributes": {
@@ -1330,11 +1324,27 @@
                 {
                   "segmentId": "m68819:entry:auto-172",
                   "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68819:entry:auto-173",
+                  "attributes": {
                     "align": "center"
                   }
                 },
                 {
-                  "segmentId": "m68819:entry:auto-173",
+                  "segmentId": "m68819:entry:auto-174",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68819:entry:auto-175",
                   "attributes": {
                     "align": "left"
                   }
@@ -1440,7 +1450,10 @@
           },
           "media": {
             "id": "fs-idm247894944",
-            "alt": "Three graphs, labeled, “a,” “b,” and “c” are shown where the y-axis is labeled, “Gibbs free energy ( G ),” and, “G superscript degree sign ( reactants ),” while the x-axis is labeled, “Reaction progress,” and “Reactants,” on the left and, “Products,” on the right. In graph a, a line begins at the upper left side and goes steadily down to a point about halfway up the y-axis and two thirds of the way on the x-axis, then rises again to a point labeled, “G superscript degree sign ( products ),” that is slightly higher than halfway up the y-axis. The distance between the beginning and ending points of the graph is labeled as, “delta G less than 0,” while the lowest point on the graph is labeled, “Q equals K greater than 1.” In graph b, a line begins at the middle left side and goes steadily down to a point about two fifths up the y-axis and one third of the way on the x-axis, then rises again to a point labeled, “G superscript degree sign ( products ),” that is near the top of the y-axis. The distance between the beginning and ending points of the graph is labeled as, “delta G greater than 0,” while the lowest point on the graph is labeled, “Q equals K less than 1.” In graph c, a line begins at the upper left side and goes steadily down to a point near the bottom of the y-axis and half way on the x-axis, then rises again to a point labeled, “G superscript degree sign ( products ),” that is equal to the starting point on the y-axis which is labeled, “G superscript degree sign ( reactants ).” The lowest point on the graph is labeled, “Q equals K equals 1.” At the top of the graph is the label, “Delta G superscript degree sign equals 0.”",
+            "alt": {
+              "segmentId": "m68819:alt:fs-idm247894944-alt",
+              "text": "Three graphs, labeled, “a,” “b,” and “c” are shown where the y-axis is labeled, “Gibbs free energy ( G ),” and, “G superscript degree sign ( reactants ),” while the x-axis is labeled, “Reaction progress,” and “Reactants,” on the left and, “Products,” on the right. In graph a, a line begins at the upper left side and goes steadily down to a point about halfway up the y-axis and two thirds of the way on the x-axis, then rises again to a point labeled, “G superscript degree sign ( products ),” that is slightly higher than halfway up the y-axis. The distance between the beginning and ending points of the graph is labeled as, “delta G less than 0,” while the lowest point on the graph is labeled, “Q equals K greater than 1.” In graph b, a line begins at the middle left side and goes steadily down to a point about two fifths up the y-axis and one third of the way on the x-axis, then rises again to a point labeled, “G superscript degree sign ( products ),” that is near the top of the y-axis. The distance between the beginning and ending points of the graph is labeled as, “delta G greater than 0,” while the lowest point on the graph is labeled, “Q equals K less than 1.” In graph c, a line begins at the upper left side and goes steadily down to a point near the bottom of the y-axis and half way on the x-axis, then rises again to a point labeled, “G superscript degree sign ( products ),” that is equal to the starting point on the y-axis which is labeled, “G superscript degree sign ( reactants ).” The lowest point on the graph is labeled, “Q equals K equals 1.” At the top of the graph is the label, “Delta G superscript degree sign equals 0.”"
+            },
             "src": "../../media/CNX_Chem_16_04_Gibbs-1aa8.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1477,11 +1490,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68819:entry:auto-191",
+                  "segmentId": "m68819:entry:auto-194",
                   "attributes": {}
                 }
               ]
@@ -2229,6 +2243,14 @@
                 "type": "para",
                 "id": "fs-idm191385552",
                 "segmentId": "m68819:problem:fs-idm191385552"
+              },
+              {
+                "type": "media",
+                "id": "fs-idm191384928",
+                "alt": {
+                  "segmentId": "m68819:alt:fs-idm191384928-alt",
+                  "text": "This Lewis structure shows a six-sided ring structure composed of a methyl group single bonded to a carbon, which is double bonded to an oxygen atom in an upward position and single bonded to an oxygen atom in a downward position. The lower oxygen is single bonded to a hydrogen, which is connected by a dotted line to an oxygen that is double bonded to a carbon in an upward position. This carbon is single bonded to a methyl group to its right and to an oxygen in the upward position that is single bonded to a hydrogen that is connected by a dotted line to the double bonded oxygen on the left."
+                }
               },
               {
                 "type": "para",

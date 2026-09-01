@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "moduleId": "m00065",
+  "extractedAt": "2026-08-31T19:08:47.569Z",
+  "sourceHash": "41a0874b71996b0c",
+  "segmentCount": 31,
+  "segmentIds": [
+    "m00065:title:auto-1",
+    "m00065:para:para-00001",
+    "m00065:para:para-00002",
+    "m00065:alt:fig-00001-alt",
+    "m00065:para:para-00003",
+    "m00065:alt:fig-00002-alt",
+    "m00065:para:para-00004",
+    "m00065:alt:fig-00003-alt",
+    "m00065:para:para-00005",
+    "m00065:alt:fig-00004-alt",
+    "m00065:para:para-00006",
+    "m00065:alt:fig-00005-alt",
+    "m00065:para:para-00007",
+    "m00065:alt:fig-00006-alt",
+    "m00065:table-title:table-00001-title",
+    "m00065:entry:auto-16",
+    "m00065:entry:auto-17",
+    "m00065:entry:auto-18",
+    "m00065:entry:auto-19",
+    "m00065:entry:auto-20",
+    "m00065:entry:auto-21",
+    "m00065:entry:auto-22",
+    "m00065:entry:auto-23",
+    "m00065:entry:auto-24",
+    "m00065:alt:OChem_07_03_007a_jpg-alt",
+    "m00065:entry:auto-26",
+    "m00065:entry:auto-27",
+    "m00065:alt:OChem_07_03_007b_jpg-alt",
+    "m00065:entry:auto-29",
+    "m00065:entry:auto-30",
+    "m00065:title:sect-00001-title"
+  ],
+  "equationCount": 4,
+  "equationIds": [
+    "math-1",
+    "math-2",
+    "math-3",
+    "math-4"
+  ],
+  "elementCounts": {
+    "para": 7,
+    "section": 1,
+    "figure": 6,
+    "table": 1,
+    "example": 0,
+    "exercise": 4,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002",
+      "fig-00003",
+      "fig-00004",
+      "fig-00005",
+      "fig-00006"
+    ],
+    "table": [
+      "table-00001"
+    ],
+    "example": [],
+    "exercise": [
+      "exer-00001",
+      "exer-00002",
+      "exer-00003",
+      "exer-00004"
+    ],
+    "note": [],
+    "equation": [],
+    "section": [
+      "sect-00001"
+    ]
+  }
+}

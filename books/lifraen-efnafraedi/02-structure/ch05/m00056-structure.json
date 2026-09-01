@@ -1,0 +1,327 @@
+{
+  "moduleId": "m00056",
+  "title": {
+    "segmentId": "m00056:title:auto-1",
+    "text": "Meso Compounds"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "b5091cc8-c1ed-4cfa-9cc9-c2ade0d4f53b"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00056:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00056:alt:fig-00001-alt",
+          "text": "The mirror image of 2 R, 3 R tartaric acid is 2 S, 3 S and mirror image of 2 R, 3 S tartaric acid is 2 S, 3 R."
+        },
+        "src": "../../media/OChem_05_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00056:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00056:alt:fig-00002-alt",
+          "text": "2 R, 3 S tartaric acid is rotated at 180 degrees to form 2 S, 3 R tartaric acid. Both structures are identical."
+        },
+        "src": "../../media/OChem_05_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00056:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00056:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00056:alt:fig-00003-alt",
+          "text": "The wedge-dash structure and ball-and-stick model of tartaric acid. C2 and C3 have a horizontal symmetry plane."
+        },
+        "src": "../../media/OChem_05_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00056:para:para-00004"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00056:table-title:table-00001-title",
+        "text": "Some Properties of the Stereoisomers of Tartaric Acid"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00056:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00056:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00056:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00056:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00056:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00056:example-title:exam-00001-title",
+        "text": "Distinguishing Chiral Compounds from Meso Compounds"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00056:para:para-00005"
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00056:para:para-00006",
+          "title": {
+            "segmentId": "m00056:para-title:para-00006-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00056:para:para-00007",
+          "title": {
+            "segmentId": "m00056:para-title:para-00007-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00056:alt:fig-00004-alt",
+          "text": "The structure of cis-1,2-dimethylcyclobutane. The bond between C1 and C2 has a vertical symmetry plane."
+        },
+        "src": "../../media/OChem_05_07_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00056:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

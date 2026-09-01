@@ -13,11 +13,17 @@ Describe the structure and properties of an amide
 <!-- SEG:m68849:para:fs-idp88512176 -->
 [[term:Amines|term-00001]] are molecules that contain carbon-nitrogen bonds. The nitrogen atom in an amine has a lone pair of electrons and three bonds to other atoms, either carbon or hydrogen. Various nomenclatures are used to derive names for amines, but all involve the class-identifying suffix [[i:–ine]] as illustrated here for a few simple examples:
 
+<!-- SEG:m68849:alt:fs-idp22598720-alt -->
+Three structures are shown, each with a red, central N atom which has a pair of electron dots indicated in red above the N atoms. The first structure is labeled methyl amine. To the left of the N, a C H subscript 3 group is bonded. H atoms are bonded to the right and bottom of the central N atom. The second structure is labeled dimethyl amine. This structure has C H subscript 3 groups bonded to the left and right of the N atom and a single H atom is bonded below. The third structure is labeled trimethyl amine, which has C H subscript 3 groups bonded to the left, right, and below the central N atom.
+
 <!-- SEG:m68849:para:fs-idp59347936 -->
 In some amines, the nitrogen atom replaces a carbon atom in an aromatic hydrocarbon. Pyridine ([[xref:CNX_Chem_20_04_pyridine_img]]) is one such heterocyclic amine. A heterocyclic compound contains atoms of two or more different elements in its ring structure.
 
 <!-- SEG:m68849:caption:CNX_Chem_20_04_pyridine_img-caption -->
 The illustration shows one of the resonance structures of pyridine.
+
+<!-- SEG:m68849:alt:fs-idm9726560-alt -->
+A molecular structure is shown. A ring of five C atoms and one N atom is shown with alternating double bonds. Single H atoms are bonded, appearing at the outside of the ring on each C atom. The N atom has an unshared electron pair shown on the N atom on the outer side of the ring. The N atom, electron dot pair, and bonds connected to it in the ring are shown in red.
 
 <!-- SEG:m68849:note-title:fs-idp125554320-title -->
 DNA in Forensics and Paternity
@@ -37,11 +43,17 @@ Using similarities in sequences, technicians can determine whether a man is the 
 <!-- SEG:m68849:caption:CNX_Chem_20_04_DNA-caption -->
 DNA is an organic molecule and the genetic material for all living organisms. (a) DNA is a double helix consisting of two single DNA strands hydrogen bonded together at each nitrogenous base. (b) This detail shows the hydrogen bonding (dotted lines) between nitrogenous bases on each DNA strand and the way in which each nucleotide is joined to the next, forming a backbone of sugars and phosphate groups along each strand. (c) This detail shows the structure of one of the four nucleotides that makes up the DNA polymer. Each nucleotide consists of a nitrogenous base (a double-ring molecule, in this case), a five-carbon sugar (deoxyribose), and a phosphate group.
 
+<!-- SEG:m68849:alt:fs-idp72293664-alt -->
+Diagram a shows DNA as a double helix composed of the nitrogenous bases adenine, thymine, guanine, and cytosine paired up along a sugar-phosphate backbone. The helix has labeled 3 prime and 5 prime directions or ends. In diagram b, the molecular level arrangement of the bases connected by hydrogen bonding within the sugar-phosphate backbone is shown. Adenine is shown with hydrogen bonding to thymine and similarly the linkage via hydrogen bonding between cytosine and guanine is shown. Again, 3 prime and 5 prime directional information is provided. In diagram c, the bonding between a nitrogenous base, sugar, and phosphate is shown.
+
 <!-- SEG:m68849:para:fs-idp61786688 -->
 Watch this [[link:video animation|http://openstax.org/l/16dnapackaging]] of how DNA is packaged for a visual lesson in its structure.
 
 <!-- SEG:m68849:para:fs-idm25350928 -->
 Like ammonia, amines are weak bases due to the lone pair of electrons on their nitrogen atoms:
+
+<!-- SEG:m68849:alt:fs-idp78463392-alt -->
+Two reactions are shown. In the first, ammonia reacts with H superscript plus. An unshared pair of electron dots sits above the N atom. To the left, right, and bottom, H atoms are bonded. This is followed by a plus symbol and an H atom with a superscript plus symbol. To the right of the reaction arrow, ammonium ion is shown in brackets with a superscript plus symbol outside. Inside the brackets, the N atom is shown with H atoms bonded on all four sides. In a very similar second reaction, methyl amine reacts with H superscript plus to yield methyl ammonium ion. The methyl amine structure is like ammonia except a C H subscript 3 group is attached in place of the left most H atom in the structure. Similarly, the resulting methyl ammonium ion is represented in brackets with a superscript plus symbol appearing outside. Inside, the structure is similar to that of methyl amine except that an H atom appears at the top of the N atom where the unshared electron pair was previously shown.
 
 <!-- SEG:m68849:para:fs-idp166587776 -->
 The basicity of an amine’s nitrogen atom plays an important role in much of the compound’s chemistry. Amine functional groups are found in a wide variety of compounds, including natural and synthetic dyes, polymers, vitamins, and medications such as penicillin and codeine. They are also found in many molecules essential to life, such as amino acids, hormones, neurotransmitters, and DNA.
@@ -61,14 +73,26 @@ The structures of many naturally occurring alkaloids have profound physiological
 <!-- SEG:m68849:para:fs-idp24284304 -->
 In these diagrams, as is common in representing structures of large organic compounds, carbon atoms in the rings and the hydrogen atoms bonded to them have been omitted for clarity. The solid wedges indicate bonds that extend out of the page. The dashed wedges indicate bonds that extend into the page. Notice that small changes to a part of the molecule change the properties of morphine, codeine, and heroin. Morphine, a strong narcotic used to relieve pain, contains two hydroxyl functional groups, located at the bottom of the molecule in this structural formula. Changing one of these hydroxyl groups to a methyl ether group forms codeine, a less potent drug used as a local anesthetic. If both hydroxyl groups are converted to esters of acetic acid, the powerfully addictive drug heroin results ([[xref:CNX_Chem_20_04_poppies]]).
 
+<!-- SEG:m68849:alt:fs-idp25168336-alt -->
+Molecular structures of nicotine, morphine, codeine, and heroin are shown. These large structures share some common features, including rings. In the complex structures of morphine, codeine, and heroin, bonds to some O atoms in the structures are indicated with dashed wedges and bonds to some H atoms and N atoms are shown as solid wedges.
+
 <!-- SEG:m68849:caption:CNX_Chem_20_04_poppies-caption -->
 Poppies can be used in the production of opium, a plant latex that contains morphine from which other opiates, such as heroin, can be synthesized. (credit: Karen Roe)
+
+<!-- SEG:m68849:alt:fs-idp43249008-alt -->
+This is a photo of a field of red-orange poppies.
 
 <!-- SEG:m68849:para:fs-idp60237616 -->
 [[term:Amides|term-00002]] are molecules that contain nitrogen atoms connected to the carbon atom of a carbonyl group. Like amines, various nomenclature rules may be used to name amides, but all include use of the class-specific suffix [[i:-amide]]:
 
+<!-- SEG:m68849:alt:fs-idp118957072-alt -->
+This figure shows three structures. Two examples are provided. The basic structure has an H atom or R group bonded to a C atom which is double bonded to an O atom. The O atom as two sets of electron dots. The C atom is bonded to an N atom which in turn is bonded to two R groups or two H atoms. The N atom as one set of electron dots. The next structure includes acetamide, which has C H subscript 3 bonded to a C atom with a doubly bonded O atom. The second C atom is also bonded to N H subscript 2. Hexanamide has a hydrocarbon chain of length 6 involving all single bonds. The condensed structure is shown here. To the sixth C atom at the right end of the chain, an O atom is double bonded and an N H subscript 2 group is single bonded.
+
 <!-- SEG:m68849:para:fs-idp95037440 -->
 Amides can be produced when carboxylic acids react with amines or ammonia in a process called amidation. A water molecule is eliminated from the reaction, and the amide is formed from the remaining pieces of the carboxylic acid and the amine (note the similarity to formation of an ester from a carboxylic acid and an alcohol discussed in the previous section):
+
+<!-- SEG:m68849:alt:fs-idp42793392-alt -->
+A chemical reaction is shown between a carboxylic acid and amine to form an amide and water. Structures are shown. The carboxylic acid is shown as a C H subscript 3 group bonded to a C H subscript 2 group bonded to a C atom with a double bonded O atom above and an O H group bonded to the right. There is a plus sign. The amine is shown as an N atom with two H atoms bonded to the bottom and left sides. A C H subscript 3 group is bonded to the right side of the N atom. To the right of an arrow, an amide is shown as a C H subscript 3 group bonded to a C H subscript 2 group bonded to a C atom which is double bonded to an O atom above and an N with an H atom bonded below. The N atom is bonded to a C H subscript 3 group. The final product indicated after a plus sign is water, H subscript 2 O.
 
 <!-- SEG:m68849:para:fs-idp108930272 -->
 The reaction between amines and carboxylic acids to form amides is biologically important. It is through this reaction that amino acids (molecules containing both amine and carboxylic acid substituents) link together in a polymer to form proteins.
@@ -88,8 +112,14 @@ Enzymes are large biological molecules, mostly composed of proteins, which are r
 <!-- SEG:m68849:caption:CNX_Chem_20_04_peptide-caption -->
 This condensation reaction forms a dipeptide from two amino acids and leads to the formation of water.
 
+<!-- SEG:m68849:alt:fs-idp100382944-alt -->
+This figure shows two amino acid molecules. These molecules have two singly bonded carbon atoms to which an amino group is bonded on the left and the C atom to the right is a component of a carboxyl group. The C atom at the center has an R group bonded below and an H atom bonded above. The amino acid at the top left has an amino group identified and enclosed in a green dashed rectangle. This group is comprised of an N atom with two bonded H atoms. The amino acid at the right has a carboxyl group identified in a green dashed rectangle. This group has a C atom to which an O H group and a doubly bonded O atom are bonded. The amino acid to the left has the O H group to the lower right in red. The amino acid on the right has an H atom that is bonded to the N atom in red. An arrow points downward and is labeled condensation reaction. A curved arrow extends down and to the right off of the downward arrow, pointing to H subscript 2 O, which is in red. A single, larger molecule appears beneath the downward arrow. At the locations of the red O H group and H atom, the amino acid molecules are bonded together. This bond is labeled as a peptide bond and the larger molecule formed is labeled as a polypeptide chain.
+
 <!-- SEG:m68849:caption:CNX_Chem_20_04_PhenylH_img-caption -->
 A computer rendering shows the three-dimensional structure of the enzyme phenylalanine hydroxylase. In the disease phenylketonuria, a defect in the shape of phenylalanine hydroxylase causes it to lose its function in breaking down phenylalanine.
+
+<!-- SEG:m68849:alt:fs-idp108037984-alt -->
+This figure includes a computer generated image of an enzyme molecule showing string and curled ribbon-like structural components in purple, green, and yellow hues.
 
 <!-- SEG:m68849:note-title:fs-idp38896336-title -->
 Kevlar
@@ -109,14 +139,26 @@ In addition to its better-known uses, Kevlar is also often used in cryogenics fo
 <!-- SEG:m68849:caption:CNX_Chem_20_04_kevlar1-caption -->
 This illustration shows the formula for polymeric Kevlar.
 
+<!-- SEG:m68849:alt:fs-idp112369440-alt -->
+A structural formula is shown for the polymer Kevlar. The structure appears inside brackets which have single dashes extending from them at the left and right ends. Outside the lower right corner of the brackets, an italicized n appears. The structure inside the brackets includes a C atom forming a double bond with an O atom and a bond with a benzene ring. The benzene ring forms a bond with another C atom which has a double bond with an O atom. The C atom is bonded to an N atom. The N atom is bonded to an H atom and a benzene ring. The benzene ring bonds with another N atom which is also bonded to an H atom.
+
 <!-- SEG:m68849:caption:CNX_Chem_20_04_kevpoly-caption -->
 The diagram shows the polymer structure of Kevlar, with hydrogen bonds between polymer chains represented by dotted lines.
+
+<!-- SEG:m68849:alt:fs-idp133237776-alt -->
+This diagram shows the repeating, interlinked units that exist in Kevlar, taking on a sheet-like appearance. Dashed line segments are indicated between units. Individual units are composed of nitrogen, hydrogen, oxygen and carbon atoms. The repeating structural units include benzene rings and double bonds.
 
 <!-- SEG:m68849:caption:CNX_Chem_20_04_kevlar2-caption -->
 (a) These soldiers are sorting through pieces of a Kevlar helmet that helped absorb a grenade blast. Kevlar is also used to make (b) canoes and (c) marine mooring lines. (credit a: modification of work by “Cla68”/Wikimedia Commons; credit b: modification of work by “OakleyOriginals”/Flickr; credit c: modification of work by Casey H. Kyhl)
 
+<!-- SEG:m68849:alt:fs-idp39498720-alt -->
+Three photos are shown. In the first, two male soldiers are shown sorting through green brown material on a table. In the second, two people are shown paddling a canoe. In the third, heavy white rope is being manipulated with a hand tool.
+
 <!-- SEG:m68849:para:fs-idp22360000 -->
 The table here summarizes the structures discussed in this chapter:
+
+<!-- SEG:m68849:alt:fs-idp88107120-alt -->
+This table provides compound names, structures with functional groups in red, and examples that include formulas, structural formulas, ball-and-stick models, and names. Compound names include alkene, alkyne, alcohol, ether, aldehyde, ketone, carboxylic acid, ester, amine, and amide. Alkenes have a double bond. A formula is C subscript 2 H subscript 4 which is named ethene. The ball-and-stick model shows two black balls forming a double bond and each is bonded to two white balls. Alkynes have a triple bond. A formula is C subscript 2 H subscript 2 which is named ethyne. The ball-and-stick model shows two black balls with a triple bond between them each bonded to one white ball. Alcohols have an O H group. The O has two pairs of electron dots. A formula is C H subscript 3 C H subscript 2 O H which is named ethanol. The ball-and-stick model shows two black balls and one red ball bonded to each other with a single bond. There are four white balls visible. Ethers have an O atom in the structure between two R groups. The O atom has two sets of electron dots. A formula is ( C subscript 2 H subscript 5 ) subscript 2 O which is named ethanal. The ball-and-stick model shows two black balls bonded to a red ball which is bonded to two more black balls. All bonds are single. There are five white balls visible. Aldehydes have a C atom to which a double bonded O and an H and an R are included in the structure. The O atom has two sets of electron dots. A formula is C H subscript 3 C H O which is named Ethanal. The ball-and-stick model shows two black bonds bonded to two red balls. The ball-and-stick model shows two black balls bonded with a single bond and the second black ball forms a double bond with a red ball. There are three white balls visible. Ketones show a C atom to which a double bonded O is attached. The left side of the C atom is bonded to R and the right side is bonded to R prime. The O atom as two sets of electron dots. The formula is C H subscript 3 C O C H subscript 2 C H subscript 3 and is named methyl ethyl ketone. The ball-and-stick models shows four black balls all forming single bonds with each other. The second black ball forms a double bond with a red ball. There are five white balls visible. Carboxylic acids have a C to which a double bonded O and an O H are included in the structure. Each O atom has two sets of electron dots. A formula is C H subscript 3 C O O H which is named ethanoic or acetic acid. The ball-and-stick model shows two black balls and one red ball forming single bonds with each other. The second black ball also forms a double bond with another red ball. Three white balls are visible. Esters have a C atom which forms a double bond with an O atom and single bond with another O atom which has an attached hydrocarbon group in the structure. Each O atom has two sets of electron dots. A formula is C H subscript 3 C O subscript 2 C H subscript 2 C H subscript 3 which is named ethyl acetate. The ball-and-stick model shows two black balls, a red ball, and two more black balls forming single bonds with each other. The second black ball forms a double bond with another red ball. There are five white balls visible. Amines have an N atom in the structure to which three hydrocarbon groups, two hydrocarbon groups and one H atom, or one hydrocarbon group and two H atoms may be bonded. Each n has a single set of electron dots. A formula is C subscript 2 H subscript 5 N H subscript 2 which is named ethylamine. The ball-and-stick model shows two black balls and one blue ball forming single bonds with each other. There are five white balls visible. Amides have a C to which a double bonded O and single N incorporated in a structure between two hydrocarbon groups. One hydrocarbon group is bonded to the C, the other to the N. Amides can also have a H atom bonded to the N. The O atom as two sets of electron dots, and the N atom has one set. A formula is C H subscript 3 C O N H subscript 2 which is named ethanamide or acetamide. The ball-and-stick model shows two black balls and one blue ball forming single bonds with each other. The second black ball forms a double bond with one red ball. There are four white balls visible.
 
 <!-- SEG:m68849:title:fs-idp61186848-title -->
 Key Concepts and Summary
@@ -142,6 +184,9 @@ Write the two resonance structures for the pyridinium ion, C[[sub:5]]H[[sub:5]]N
 <!-- SEG:m68849:problem:fs-idp62426272 -->
 Draw Lewis structures for pyridine and its conjugate acid, the pyridinium ion, C[[sub:5]]H[[sub:5]]NH[[sup:+]]. What are the hybridizations, electron domain geometries, and molecular geometries about the nitrogen atoms in pyridine and in the pyridinium ion?
 
+<!-- SEG:m68849:alt:fs-idp91766560-alt -->
+Two structures are shown, one for pyridine, which is trigonal planar and is labeled s p superscript 2. The second is for the pyridium ion, which is also trigonal planar and is labeled s p superscript 2. Both structures include a hexagonal ring composed of 5 C atoms and 1 N atom which is shown at the top of each structure. In both rings, double bonds alternate and single H atoms extend outward from each C atom. The only structural difference between the two structures involves the unshared electron pair on the N atom in pyridine. This is replaced by a bonded H atom in the pyridium ion which is represented in brackets with a superscript plus symbol outside the brackets.
+
 <!-- SEG:m68849:problem:fs-idm26577408 -->
 Write the Lewis structures of all isomers with the formula C[[sub:3]]H[[sub:7]]ON that contain an amide linkage.
 
@@ -153,6 +198,9 @@ Methyl amine is added to a solution of HCl.
 
 <!-- SEG:m68849:solution:fs-idp30234560 -->
 [[MATH:2]][[BR]] [[MEDIA:1]]
+
+<!-- SEG:m68849:alt:fs-idp93258288-alt -->
+A reaction is shown. The first structure shown on the left shows a C atom with H atoms bonded above, below, and to the left. To the right, an N atom is bonded which has an unshared pair of electrons above it and H atoms bonded to its right and below. This structure is followed by a plus sign. A structure follows in brackets which includes an O atom with H atoms bonded above, to the left, and below. A single unshared electron pair is shown on the O atom. Outside the brackets is a superscript plus sign. This is followed by a plus sign and C l surrounded by 4 pairs of electron dots and a superscript minus sign. Following a reaction arrow is another structure in brackets. This structure shows a C atom with H atoms bonded above, below, and to the left. To the right, an N atom is bonded which has H atoms bonded above, below, and to the right. Outside the brackets is a superscript plus sign. This is followed by C l surrounded by 4 pairs of electron dots and superscript minus. This is followed by another plus sign and an H atom which forms a single bond to an O atom to which a second H atom is bonded above. The O atom has two sets of electron dots.
 
 <!-- SEG:m68849:problem:fs-idp62635920 -->
 Write two complete, balanced equations for each of the following reactions, one using condensed formulas and one using Lewis structures.

@@ -1,0 +1,582 @@
+{
+  "moduleId": "m00147",
+  "title": {
+    "segmentId": "m00147:title:auto-1",
+    "text": "Problems"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "1df483c4-608f-4bbe-97c8-ab3bad9f9ed9"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00147:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00147:para:para-00002"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00147:table-title:table-00001-title",
+        "text": "Regions of the [[sup:1]]H NMR Spectrum"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00147:alt:OChem_13_04_001_jpg-alt",
+                "text": "H N M R shows shifts of hydrogens(from downfield to upfield): aromatic, vinylic, on carbon bonded to O, N, or halogen, allylic, and saturated.",
+                "mediaId": null,
+                "src": "../../media/OChem_13_04_001.jpg"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00147:para:para-00003"
+    },
+    {
+      "type": "table",
+      "id": "table-00002",
+      "summary": "An illustration (table) shows the type of hydrogen structures and chemical shifts (delta) of different groups. The reference is tetramethylsilane (Si bonded to three methyl groups) having pink hydrogen and chemical shift “0” delta. The types of hydrogen with corresponding molecules and their chemical shifts are as follows: alkyl (primary) shown as methyl group with pink hydrogen having absorption at 0.7-1.3 delta; alkyl (secondary) is shown as a methylene group with pink hydrogen having absorption at 1.2-1.6 delta; alkyl (tertiary) shown as a methine group with pink hydrogen and three open bonds having absorption at 1.4-1.8 delta; allylic shown as carbon double bonded to a carbon bonded to another carbon having a bond with pink hydrogen at top and two open bonds at the sides having absorption at 1.6-2.2 delta; methyl ketone is shown as a carbonyl group whose carbon is bonded to a methyl group having pink hydrogen having absorption at 2.0-2.4 delta; aromatic methyl is shown as “Ar” bonded to a methyl group with pink hydrogen having absorption at 2.4-2.7 delta; alkynyl is shown as a carbon with an open bond triple bonded to another carbon that is bonded to a pink hydrogen having absorption at 2.5-3.0 delta; alkyl halide is shown as a carbon having two open bonds sharing a bond with pink hydrogen at the top and a side bond to “Hal” having absorption at 2.5-4.0 delta; alcohol shown as a carbon having three open bonds further bonded to an oxygen attached to a pink hydrogen having absorption at 2.5-5.0 delta; alcohol ether shown as a carbon having two open bonds and a pink hydrogen bonded at the top the carbon is further bonded to an oxygen with an open bond having absorption at 3.3-4.5 delta; vinylic is shown as carbon double bonded to carbon the left carbon shows two open bonds and the right carbon shows a bond to pink hydrogen on top and an open bond at the side having absorption at 4.5-6.5 delta; aryl is shown as “Ar” bonded to a pink hydrogen having absorption at 6.5-8.0 delta; aldehyde is shown as a carbonyl group having an open bond to its left and a bond to a pink hydrogen to its right having absorption at 9.7-10.0 delta; carboxylic acid shown as a carbonyl group having an open bond on the left and to its right and bonded to an oxygen bonded to a hydrogen having absorption at 11.0-12.0 delta.",
+      "title": {
+        "segmentId": "m00147:table-title:table-00002-title",
+        "text": "Correlation of [[sup:1]]H Chemical Shifts with Environment"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-8",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-9",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00147:alt:OChem_13_04_002a_jpg-alt",
+                "text": "A C H group with three open single bonds. The hydrogen atom is highlighted.",
+                "mediaId": null,
+                "src": "../../media/OChem_13_04_002a.jpg"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00147:alt:OChem_13_04_002b_jpg-alt",
+                "text": "A 3-carbon chain with a double bond between C 1 and C 2. C 3 with two open single bonds is bonded to a highlighted hydrogen atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_13_04_002b.jpg"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00147:alt:OChem_13_04_002c_jpg-alt",
+                "text": "A carbonyl group with an open single bond is bonded to a methyl group, in which the hydrogen atoms are highlighted.",
+                "mediaId": null,
+                "src": "../../media/OChem_13_04_002c.jpg"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-31",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-32",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-34",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00147:alt:OChem_13_04_002d_jpg-alt",
+                "text": "A carbon with two open single bonds is bonded to a highlighted hydrogen and halogen.",
+                "mediaId": null,
+                "src": "../../media/OChem_13_04_002d.jpg"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-36",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-37",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00147:alt:OChem_13_04_002e_jpg-alt",
+                "text": "A carbon with three open single bonds is bonded to an oxygen atom, which is bonded to a highlighted hydrogen atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_13_04_002e.jpg"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-39",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-40",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00147:alt:OChem_13_04_002f_jpg-alt",
+                "text": "A carbon with two open single bonds is bonded to a highlighted hydrogen and oxygen atom that has an open single bond.",
+                "mediaId": null,
+                "src": "../../media/OChem_13_04_002f.jpg"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-42",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-43",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00147:alt:OChem_13_04_002g_jpg-alt",
+                "text": "A carbon with two open bonds is double bonded to another carbon that has an open single bond and is bonded to highlighted hydrogen.",
+                "mediaId": null,
+                "src": "../../media/OChem_13_04_002g.jpg"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-45",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-46",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-47",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-48",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-49",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00147:alt:OChem_13_04_002h_jpg-alt",
+                "text": "A carbonyl group with an open single bond is bonded to a highlighted hydrogen atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_13_04_002h.jpg"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-51",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00147:entry:auto-52",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00147:alt:OChem_13_04_002i_jpg-alt",
+                "text": "A carbonyl group with an open single bond is bonded to an oxygen atom, which is bonded to a highlighted hydrogen atom.",
+                "mediaId": null,
+                "src": "../../media/OChem_13_04_002i.jpg"
+              }
+            },
+            {
+              "segmentId": "m00147:entry:auto-54",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00147:example-title:exam-00001-title",
+        "text": "Predicting Chemical Shifts in [[sup:1]]H NMR Spectra"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00147:para:para-00004"
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00147:para:para-00005",
+          "title": {
+            "segmentId": "m00147:para-title:para-00005-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00147:para:para-00006",
+          "title": {
+            "segmentId": "m00147:para-title:para-00006-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00147:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

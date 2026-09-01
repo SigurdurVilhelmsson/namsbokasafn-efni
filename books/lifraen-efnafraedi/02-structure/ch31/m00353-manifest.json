@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "moduleId": "m00353",
+  "extractedAt": "2026-08-31T19:08:50.488Z",
+  "sourceHash": "5763471fd92cc972",
+  "segmentCount": 40,
+  "segmentIds": [
+    "m00353:title:auto-1",
+    "m00353:para:para-00001",
+    "m00353:alt:fig-00001-alt",
+    "m00353:para:para-00002",
+    "m00353:table-title:table-00001-title",
+    "m00353:entry:auto-6",
+    "m00353:entry:auto-7",
+    "m00353:entry:auto-8",
+    "m00353:entry:auto-9",
+    "m00353:entry:auto-10",
+    "m00353:alt:OChem_31_03_002a_jpg-alt",
+    "m00353:entry:auto-12",
+    "m00353:entry:auto-13",
+    "m00353:entry:auto-14",
+    "m00353:alt:OChem_31_03_002b_jpg-alt",
+    "m00353:entry:auto-16",
+    "m00353:entry:auto-17",
+    "m00353:entry:auto-18",
+    "m00353:alt:OChem_31_03_002c_jpg-alt",
+    "m00353:entry:auto-20",
+    "m00353:entry:auto-21",
+    "m00353:entry:auto-22",
+    "m00353:alt:OChem_31_03_002d_jpg-alt",
+    "m00353:entry:auto-24",
+    "m00353:entry:auto-25",
+    "m00353:entry:auto-26",
+    "m00353:alt:OChem_31_03_002e_jpg-alt",
+    "m00353:entry:auto-28",
+    "m00353:entry:auto-29",
+    "m00353:entry:auto-30",
+    "m00353:alt:OChem_31_03_002f_jpg-alt",
+    "m00353:entry:auto-32",
+    "m00353:entry:auto-33",
+    "m00353:para:para-00003",
+    "m00353:alt:fig-00002-alt",
+    "m00353:para:para-00004",
+    "m00353:para:para-00005",
+    "m00353:alt:fig-00003-alt",
+    "m00353:para:para-00006",
+    "m00353:title:sect-00001-title"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 6,
+    "section": 1,
+    "figure": 3,
+    "table": 1,
+    "example": 0,
+    "exercise": 2,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002",
+      "fig-00003"
+    ],
+    "table": [
+      "table-00001"
+    ],
+    "example": [],
+    "exercise": [
+      "exer-00001",
+      "exer-00002"
+    ],
+    "note": [],
+    "equation": [],
+    "section": [
+      "sect-00001"
+    ]
+  }
+}

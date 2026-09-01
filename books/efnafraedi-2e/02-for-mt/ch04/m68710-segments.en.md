@@ -26,10 +26,10 @@ Humans interact with one another in various and complex ways, and we classify th
 Precipitation Reactions and Solubility Rules
 
 <!-- SEG:m68710:para:fs-idp140132618169728 -->
-A {{term}}precipitation reaction{{/term}} is one in which dissolved substances react to form one (or more) solid products. Many reactions of this type involve the exchange of ions between ionic compounds in aqueous solution and are sometimes referred to as [[i:double displacement]], [[i:double replacement]], or [[i:metathesis]] reactions. These reactions are common in nature and are responsible for the formation of coral reefs in ocean waters and kidney stones in animals. They are used widely in industry for production of a number of commodity and specialty chemicals. Precipitation reactions also play a central role in many chemical analysis techniques, including spot tests used to identify metal ions and [[i:gravimetric methods]] for determining the composition of matter (see the last module of this chapter).
+A [[term:precipitation reaction|term-00001]] is one in which dissolved substances react to form one (or more) solid products. Many reactions of this type involve the exchange of ions between ionic compounds in aqueous solution and are sometimes referred to as [[i:double displacement]], [[i:double replacement]], or [[i:metathesis]] reactions. These reactions are common in nature and are responsible for the formation of coral reefs in ocean waters and kidney stones in animals. They are used widely in industry for production of a number of commodity and specialty chemicals. Precipitation reactions also play a central role in many chemical analysis techniques, including spot tests used to identify metal ions and [[i:gravimetric methods]] for determining the composition of matter (see the last module of this chapter).
 
 <!-- SEG:m68710:para:fs-idp140132617792992 -->
-The extent to which a substance may be dissolved in water, or any solvent, is quantitatively expressed as its {{term}}solubility{{/term}}, defined as the maximum concentration of a substance that can be achieved under specified conditions. Substances with relatively large solubilities are said to be {{term}}soluble{{/term}}. A substance will {{term}}precipitate{{/term}} when solution conditions are such that its concentration exceeds its solubility. Substances with relatively low solubilities are said to be {{term}}insoluble{{/term}}, and these are the substances that readily precipitate from solution. More information on these important concepts is provided in a later chapter on solutions. For purposes of predicting the identities of solids formed by precipitation reactions, one may simply refer to patterns of solubility that have been observed for many ionic compounds ([[xref:fs-idp140132617697568]]).
+The extent to which a substance may be dissolved in water, or any solvent, is quantitatively expressed as its [[term:solubility|term-00002]], defined as the maximum concentration of a substance that can be achieved under specified conditions. Substances with relatively large solubilities are said to be [[term:soluble|term-00003]]. A substance will [[term:precipitate|term-00004]] when solution conditions are such that its concentration exceeds its solubility. Substances with relatively low solubilities are said to be [[term:insoluble|term-00005]], and these are the substances that readily precipitate from solution. More information on these important concepts is provided in a later chapter on solutions. For purposes of predicting the identities of solids formed by precipitation reactions, one may simply refer to patterns of solubility that have been observed for many ionic compounds ([[xref:fs-idp140132617697568]]).
 
 <!-- SEG:m68710:entry:auto-12 -->
 [[b:Soluble Ionic Compounds]]
@@ -148,6 +148,9 @@ Lead iodide is a bright yellow solid that was formerly used as an artist’s pig
 <!-- SEG:m68710:caption:CNX_Chem_04_02_LeadIodide-caption -->
 A precipitate of PbI[[sub:2]] forms when solutions containing Pb[[sup:2+]] and I[[sup:−]] are mixed. (credit: Der Kreole/Wikimedia Commons)
 
+<!-- SEG:m68710:alt:fs-idp29197296-alt -->
+A photograph is shown of a yellow green opaque substance swirled through a clear, colorless liquid in a test tube.
+
 <!-- SEG:m68710:para:fs-idp157312304 -->
 The solubility guidelines in [[xref:fs-idp140132617697568]] may be used to predict whether a precipitation reaction will occur when solutions of soluble ionic compounds are mixed together. One merely needs to identify all the ions present in the solution and then consider if possible cation/anion pairing could result in an insoluble compound. For example, mixing solutions of silver nitrate and sodium chloride will yield a solution containing Ag[[sup:+]], [[MATH:1]] Na[[sup:+]], and Cl[[sup:−]] ions. Aside from the two ionic compounds originally present in the solutions, AgNO[[sub:3]] and NaCl, two additional ionic compounds may be derived from this collection of ions: NaNO[[sub:3]] and AgCl. The solubility guidelines indicate all nitrate salts are soluble but that AgCl is one of insoluble. A precipitation reaction, therefore, is predicted to occur, as described by the following equations:
 
@@ -197,10 +200,10 @@ sodium sulfate, BaSO[[sub:4]]
 Acid-Base Reactions
 
 <!-- SEG:m68710:para:fs-idm1255344 -->
-An {{term}}acid-base reaction{{/term}} is one in which a hydrogen ion, H[[sup:+]], is transferred from one chemical species to another. Such reactions are of central importance to numerous natural and technological processes, ranging from the chemical transformations that take place within cells and the lakes and oceans, to the industrial-scale production of fertilizers, pharmaceuticals, and other substances essential to society. The subject of acid-base chemistry, therefore, is worthy of thorough discussion, and a full chapter is devoted to this topic later in the text.
+An [[term:acid-base reaction|term-00006]] is one in which a hydrogen ion, H[[sup:+]], is transferred from one chemical species to another. Such reactions are of central importance to numerous natural and technological processes, ranging from the chemical transformations that take place within cells and the lakes and oceans, to the industrial-scale production of fertilizers, pharmaceuticals, and other substances essential to society. The subject of acid-base chemistry, therefore, is worthy of thorough discussion, and a full chapter is devoted to this topic later in the text.
 
 <!-- SEG:m68710:para:fs-idp89436016 -->
-For purposes of this brief introduction, we will consider only the more common types of acid-base reactions that take place in aqueous solutions. In this context, an {{term}}acid{{/term}} is a substance that will dissolve in water to yield hydronium ions, H[[sub:3]]O[[sup:+]]. As an example, consider the equation shown here:
+For purposes of this brief introduction, we will consider only the more common types of acid-base reactions that take place in aqueous solutions. In this context, an [[term:acid|term-00007]] is a substance that will dissolve in water to yield hydronium ions, H[[sub:3]]O[[sup:+]]. As an example, consider the equation shown here:
 
 <!-- SEG:m68710:para:fs-idm10390992 -->
 The process represented by this equation confirms that hydrogen chloride is an acid. When dissolved in water, H[[sub:3]]O[[sup:+]] ions are produced by a chemical reaction in which H[[sup:+]] ions are transferred from HCl molecules to H[[sub:2]]O molecules ([[xref:CNX_Chem_04_02_HClsoln]]).
@@ -208,8 +211,11 @@ The process represented by this equation confirms that hydrogen chloride is an a
 <!-- SEG:m68710:caption:CNX_Chem_04_02_HClsoln-caption -->
 When hydrogen chloride gas dissolves in water, (a) it reacts as an acid, transferring protons to water molecules to yield (b) hydronium ions (and solvated chloride ions).
 
+<!-- SEG:m68710:alt:fs-idp103294384-alt -->
+This figure shows two flasks, labeled a and b. The flasks are both sealed with stoppers and are nearly three-quarters full of a liquid. Flask a is labeled H C l followed by g in parentheses. In the liquid there are approximately twenty space-filling molecular models composed of one red sphere and two smaller attached white spheres. The label H subscript 2 O followed by a q in parentheses is connected with a line to one of these models. In the space above the liquid in the flask, four space filling molecular models composed of one larger green sphere to which a smaller white sphere is bonded are shown. To one of these models, the label H C l followed by g in parentheses is attached with a line segment. An arrow is drawn from the space above the liquid pointing down into the liquid below. Flask b is labeled H subscript 3 O superscript positive sign followed by a q in parentheses. This is followed by a plus sign and C l superscript negative sign which is also followed by a q in parentheses. In this flask, no molecules are shown in the open space above the liquid. A label, C l superscript negative sign followed by a q in parentheses, is connected with a line segment to a green sphere. This sphere is surrounded by four molecules composed each of one red sphere and two white smaller spheres. A few of these same molecules appear separate from the green spheres in the liquid. A line segment connects one of them to the label H subscript 2 O which is followed by l in parentheses. There are a few molecules formed from one central larger red sphere to which three smaller white spheres are bonded. A line segment is drawn from one of these to the label H subscript 3 O superscript positive sign, followed by a q in parentheses.
+
 <!-- SEG:m68710:para:fs-idm57695504 -->
-The nature of HCl is such that its reaction with water as just described is essentially 100% efficient: Virtually every HCl molecule that dissolves in water will undergo this reaction. Acids that completely react in this fashion are called {{term}}strong acids{{/term}}, and HCl is one among just a handful of common acid compounds that are classified as strong ([[xref:fs-idp55395904]]). A far greater number of compounds behave as {{term}}weak acids{{/term}} and only partially react with water, leaving a large majority of dissolved molecules in their original form and generating a relatively small amount of hydronium ions. Weak acids are commonly encountered in nature, being the substances partly responsible for the tangy taste of citrus fruits, the stinging sensation of insect bites, and the unpleasant smells associated with body odor. A familiar example of a weak acid is acetic acid, the main ingredient in food vinegars:
+The nature of HCl is such that its reaction with water as just described is essentially 100% efficient: Virtually every HCl molecule that dissolves in water will undergo this reaction. Acids that completely react in this fashion are called [[term:strong acids|term-00008]], and HCl is one among just a handful of common acid compounds that are classified as strong ([[xref:fs-idp55395904]]). A far greater number of compounds behave as [[term:weak acids|term-00009]] and only partially react with water, leaving a large majority of dissolved molecules in their original form and generating a relatively small amount of hydronium ions. Weak acids are commonly encountered in nature, being the substances partly responsible for the tangy taste of citrus fruits, the stinging sensation of insect bites, and the unpleasant smells associated with body odor. A familiar example of a weak acid is acetic acid, the main ingredient in food vinegars:
 
 <!-- SEG:m68710:para:fs-idm23363712 -->
 When dissolved in water under typical conditions, only about 1% of acetic acid molecules are present in the ionized form, [[MATH:2]] ([[xref:CNX_Chem_04_02_Citrus]]). (The use of a double-arrow in the equation above denotes the partial reaction aspect of this process, a concept addressed fully in the chapters on chemical equilibrium.)
@@ -217,53 +223,56 @@ When dissolved in water under typical conditions, only about 1% of acetic acid m
 <!-- SEG:m68710:caption:CNX_Chem_04_02_Citrus-caption -->
 (a) Fruits such as oranges, lemons, and grapefruit contain the weak acid citric acid. (b) Vinegars contain the weak acid acetic acid. (credit a: modification of work by Scott Bauer; credit b: modification of work by Brücke-Osteuropa/Wikimedia Commons)
 
-<!-- SEG:m68710:entry:auto-74 -->
-Common Strong Acids
-
-<!-- SEG:m68710:entry:auto-75 -->
-Compound Formula
-
-<!-- SEG:m68710:entry:auto-76 -->
-Name in Aqueous Solution
+<!-- SEG:m68710:alt:fs-idp185890880-alt -->
+This figure contains two images, each with an associated structural formula provided in the lower left corner of the image. The first image is a photograph of a variety of thinly sliced, circular cross sections of citrus fruits ranging in color for green to yellow, to orange and reddish-orange. The slices are closely packed on a white background. The structural formula with this picture shows a central chain of five C atoms. The leftmost C atom has an O atom double bonded above and to the left and a singly bonded O atom below and to the left. This single bonded O atom has an H atom indicated in red on its left side which is highlighted in pink. The second C atom moving to the right has H atoms bonded above and below. The third C atom has a single bonded O atom above which has an H atom on its right. This third C atom has a C atom bonded below it which has an O atom double bonded below and to the left and a singly bonded O atom below and to the right. An H atom appears in red and is highlighted in pink to the right of the singly bonded O atom. The fourth C atom has H atoms bonded above and below. The fifth C atom is at the right end of the structure. It has an O atom double bonded above and to the right and a singly bonded O atom below and to the right. This single bonded O atom has a red H atom on its right side which is highlighted in pink. The second image is a photograph of bottles of vinegar. The bottles are labeled, “Balsamic Vinegar,” and appear to be clear and colorless. The liquid in this bottle appears to be brown. The structural formula that appears with this image shows a chain of two C atoms. The leftmost C atom has H atoms bonded above, below, and to the left. The C atom on the right has a doubly bonded O atom above and to the right and a singly bonded O atom below and to the right. This O atom has an H atom bonded to its right which is highlighted in pink.
 
 <!-- SEG:m68710:entry:auto-77 -->
-HBr
+Common Strong Acids
 
 <!-- SEG:m68710:entry:auto-78 -->
-hydrobromic acid
+Compound Formula
 
 <!-- SEG:m68710:entry:auto-79 -->
-HCl
+Name in Aqueous Solution
 
 <!-- SEG:m68710:entry:auto-80 -->
-hydrochloric acid
+HBr
 
 <!-- SEG:m68710:entry:auto-81 -->
-HI
+hydrobromic acid
 
 <!-- SEG:m68710:entry:auto-82 -->
-hydroiodic acid
+HCl
 
 <!-- SEG:m68710:entry:auto-83 -->
-HNO[[sub:3]]
+hydrochloric acid
 
 <!-- SEG:m68710:entry:auto-84 -->
-nitric acid
+HI
 
 <!-- SEG:m68710:entry:auto-85 -->
-HClO[[sub:4]]
+hydroiodic acid
 
 <!-- SEG:m68710:entry:auto-86 -->
-perchloric acid
+HNO[[sub:3]]
 
 <!-- SEG:m68710:entry:auto-87 -->
-H[[sub:2]]SO[[sub:4]]
+nitric acid
 
 <!-- SEG:m68710:entry:auto-88 -->
+HClO[[sub:4]]
+
+<!-- SEG:m68710:entry:auto-89 -->
+perchloric acid
+
+<!-- SEG:m68710:entry:auto-90 -->
+H[[sub:2]]SO[[sub:4]]
+
+<!-- SEG:m68710:entry:auto-91 -->
 sulfuric acid
 
 <!-- SEG:m68710:para:fs-idp2912576 -->
-A {{term}}base{{/term}} is a substance that will dissolve in water to yield hydroxide ions, OH[[sup:−]]. The most common bases are ionic compounds composed of alkali or alkaline earth metal cations (groups 1 and 2) combined with the hydroxide ion—for example, NaOH and Ca(OH)[[sub:2]]. Unlike the acid compounds discussed previously, these compounds do not react chemically with water; instead they dissolve and dissociate, releasing hydroxide ions directly into the solution. For example, KOH and Ba(OH)[[sub:2]] dissolve in water and dissociate completely to produce cations (K[[sup:+]] and Ba[[sup:2+]], respectively) and hydroxide ions, OH[[sup:−]]. These bases, along with other hydroxides that completely dissociate in water, are considered {{term}}strong bases{{/term}}.
+A [[term:base|term-00010]] is a substance that will dissolve in water to yield hydroxide ions, OH[[sup:−]]. The most common bases are ionic compounds composed of alkali or alkaline earth metal cations (groups 1 and 2) combined with the hydroxide ion—for example, NaOH and Ca(OH)[[sub:2]]. Unlike the acid compounds discussed previously, these compounds do not react chemically with water; instead they dissolve and dissociate, releasing hydroxide ions directly into the solution. For example, KOH and Ba(OH)[[sub:2]] dissolve in water and dissociate completely to produce cations (K[[sup:+]] and Ba[[sup:2+]], respectively) and hydroxide ions, OH[[sup:−]]. These bases, along with other hydroxides that completely dissociate in water, are considered [[term:strong bases|term-00011]].
 
 <!-- SEG:m68710:para:fs-idp74282160 -->
 Consider as an example the dissolution of lye (sodium hydroxide) in water:
@@ -272,7 +281,7 @@ Consider as an example the dissolution of lye (sodium hydroxide) in water:
 This equation confirms that sodium hydroxide is a base. When dissolved in water, NaOH dissociates to yield Na[[sup:+]] and OH[[sup:−]] ions. This is also true for any other ionic compound containing hydroxide ions. Since the dissociation process is essentially complete when ionic compounds dissolve in water under typical conditions, NaOH and other ionic hydroxides are all classified as strong bases.
 
 <!-- SEG:m68710:para:fs-idm50199792 -->
-Unlike ionic hydroxides, some compounds produce hydroxide ions when dissolved by chemically reacting with water molecules. In all cases, these compounds react only partially and so are classified as {{term}}weak bases{{/term}}. These types of compounds are also abundant in nature and important commodities in various technologies. For example, global production of the weak base ammonia is typically well over 100 million metric tons annually, being widely used as an agricultural fertilizer, a raw material for chemical synthesis of other compounds, and an active ingredient in household cleaners ([[xref:CNX_Chem_04_02_ammonia]]). When dissolved in water, ammonia reacts partially to yield hydroxide ions, as shown here:
+Unlike ionic hydroxides, some compounds produce hydroxide ions when dissolved by chemically reacting with water molecules. In all cases, these compounds react only partially and so are classified as [[term:weak bases|term-00012]]. These types of compounds are also abundant in nature and important commodities in various technologies. For example, global production of the weak base ammonia is typically well over 100 million metric tons annually, being widely used as an agricultural fertilizer, a raw material for chemical synthesis of other compounds, and an active ingredient in household cleaners ([[xref:CNX_Chem_04_02_ammonia]]). When dissolved in water, ammonia reacts partially to yield hydroxide ions, as shown here:
 
 <!-- SEG:m68710:para:fs-idm73811808 -->
 This is, by definition, an acid-base reaction, in this case involving the transfer of H[[sup:+]] ions from water molecules to ammonia molecules. Under typical conditions, only about 1% of the dissolved ammonia is present as [[MATH:3]] ions.
@@ -280,8 +289,11 @@ This is, by definition, an acid-base reaction, in this case involving the transf
 <!-- SEG:m68710:caption:CNX_Chem_04_02_ammonia-caption -->
 Ammonia is a weak base used in a variety of applications. (a) Pure ammonia is commonly applied as an agricultural fertilizer. (b) Dilute solutions of ammonia are effective household cleansers. (credit a: modification of work by National Resources Conservation Service; credit b: modification of work by pat00139)
 
+<!-- SEG:m68710:alt:fs-idm1349584-alt -->
+This photograph shows a large agricultural tractor in a field pulling a field sprayer and a large, white cylindrical tank which is labeled “Caution Ammonia.”
+
 <!-- SEG:m68710:para:fs-idp101951952 -->
-A {{term}}neutralization reaction{{/term}} is a specific type of acid-base reaction in which the reactants are an acid and a base (but not water), and the products are often a {{term}}salt{{/term}} and water
+A [[term:neutralization reaction|term-00013]] is a specific type of acid-base reaction in which the reactants are an acid and a base (but not water), and the products are often a [[term:salt|term-00014]] and water
 
 <!-- SEG:m68710:para:fs-idm21828864 -->
 To illustrate a neutralization reaction, consider what happens when a typical antacid such as milk of magnesia (an aqueous suspension of solid Mg(OH)[[sub:2]]) is ingested to ease symptoms associated with excess stomach acid (HCl):
@@ -355,6 +367,9 @@ Pickling is a method used to preserve vegetables using a naturally produced acid
 <!-- SEG:m68710:caption:CNX_Chem_14_03_FishLemon-caption -->
 A neutralization reaction takes place between citric acid in lemons or acetic acid in vinegar, and the bases in the flesh of fish.
 
+<!-- SEG:m68710:alt:fs-idm122004144-alt -->
+An image is shown of two fish with heads removed and skin on with lemon slices placed in the body cavity. The first line of an equation below the image reads C H subscript 3 C O O H plus N H subscript 2 C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 2 N H subscript 2 arrow C H subscript 3 C O O superscript negative sign plus N H subscript 3 superscript positive sign C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 2 N H subscript 2. The second line of the equation reads Acetic acid plus sign Putrescine arrow Acetate ion plus sign Putrescinium ion.
+
 <!-- SEG:m68710:para:fs-idm40317104 -->
 Explore the microscopic [[link:view|http://openstax.org/l/16AcidsBases]] of strong and weak acids and bases.
 
@@ -401,7 +416,7 @@ On the side of the equation containing both H[[sup:+]] and OH[[sup:−]] ions, c
 Simplify the equation by removing any redundant water molecules.
 
 <!-- SEG:m68710:para:fs-idm268418480 -->
-9. Finally, check to see that both the number of atoms and the total charges {{fn}}The requirement of “charge balance” is just a specific type of “mass balance” in which the species in question are electrons. An equation must represent equal numbers of electrons on the reactant and product sides, and so both atoms and charges must be balanced.{{/fn}} are balanced.
+9. Finally, check to see that both the number of atoms and the total charges [[fn:The requirement of “charge balance” is just a specific type of “mass balance” in which the species in question are electrons. An equation must represent equal numbers of electrons on the reactant and product sides, and so both atoms and charges must be balanced.|fs-idm62282768]] are balanced.
 
 <!-- SEG:m68710:example-title:fs-idm53644080-title -->
 Balancing Redox Reactions in Acidic Solution
@@ -475,77 +490,77 @@ In basic solution, molecular chlorine, Cl[[sub:2]], reacts with hydroxide ions, 
 <!-- SEG:m68710:note-title:fs-idm39281984-title -->
 Answer:
 
-<!-- SEG:m68710:entry:auto-160 -->
+<!-- SEG:m68710:entry:auto-165 -->
 Reactants
 
-<!-- SEG:m68710:entry:auto-161 -->
+<!-- SEG:m68710:entry:auto-166 -->
 Products
 
-<!-- SEG:m68710:entry:auto-162 -->
+<!-- SEG:m68710:entry:auto-167 -->
 Fe
 
-<!-- SEG:m68710:entry:auto-163 -->
-6
-
-<!-- SEG:m68710:entry:auto-164 -->
-6
-
-<!-- SEG:m68710:entry:auto-165 -->
-Cr
-
-<!-- SEG:m68710:entry:auto-166 -->
-2
-
-<!-- SEG:m68710:entry:auto-167 -->
-2
-
 <!-- SEG:m68710:entry:auto-168 -->
-O
+6
 
 <!-- SEG:m68710:entry:auto-169 -->
-7
+6
 
 <!-- SEG:m68710:entry:auto-170 -->
-7
+Cr
 
 <!-- SEG:m68710:entry:auto-171 -->
-H
+2
 
 <!-- SEG:m68710:entry:auto-172 -->
-14
+2
 
 <!-- SEG:m68710:entry:auto-173 -->
-14
+O
 
 <!-- SEG:m68710:entry:auto-174 -->
-charge
+7
 
 <!-- SEG:m68710:entry:auto-175 -->
-24+
+7
 
 <!-- SEG:m68710:entry:auto-176 -->
+H
+
+<!-- SEG:m68710:entry:auto-177 -->
+14
+
+<!-- SEG:m68710:entry:auto-178 -->
+14
+
+<!-- SEG:m68710:entry:auto-179 -->
+charge
+
+<!-- SEG:m68710:entry:auto-180 -->
+24+
+
+<!-- SEG:m68710:entry:auto-181 -->
 24+
 
 <!-- SEG:m68710:para:fs-idp3801440 -->
-Earth’s atmosphere contains about 20% molecular oxygen, O[[sub:2]], a chemically reactive gas that plays an essential role in the metabolism of aerobic organisms and in many environmental processes that shape the world. The term {{term}}oxidation{{/term}} was originally used to describe chemical reactions involving O[[sub:2]], but its meaning has evolved to refer to a broad and important reaction class known as [[i:oxidation-reduction (redox) reactions]]. A few examples of such reactions will be used to develop a clear picture of this classification.
+Earth’s atmosphere contains about 20% molecular oxygen, O[[sub:2]], a chemically reactive gas that plays an essential role in the metabolism of aerobic organisms and in many environmental processes that shape the world. The term [[term:oxidation|term-00015]] was originally used to describe chemical reactions involving O[[sub:2]], but its meaning has evolved to refer to a broad and important reaction class known as [[i:oxidation-reduction (redox) reactions]]. A few examples of such reactions will be used to develop a clear picture of this classification.
 
 <!-- SEG:m68710:para:fs-idm49954608 -->
 Some redox reactions involve the transfer of electrons between reactant entities to yield ionic products, such as the reaction between sodium and chlorine to yield sodium chloride:
 
 <!-- SEG:m68710:para:fs-idm102441680 -->
-It is helpful to view the process with regard to each individual reactant, that is, to represent the fate of each reactant in the form of an equation called a {{term}}half-reaction{{/term}}:
+It is helpful to view the process with regard to each individual reactant, that is, to represent the fate of each reactant in the form of an equation called a [[term:half-reaction|term-00016]]:
 
 <!-- SEG:m68710:para:fs-idp97564400 -->
 These equations show that Na atoms [[i:lose electrons]] while Cl atoms (in the Cl[[sub:2]] molecule) [[i:gain electrons]], the “[[i:s]]” subscripts for the resulting ions signifying they are present in the form of a solid ionic compound. For redox reactions of this sort, the loss and gain of electrons define the complementary processes that occur:
 
 <!-- SEG:m68710:para:fs-idp6686448 -->
-In this reaction, then, sodium is [[i:oxidized]] and chlorine undergoes {{term}}reduction{{/term}}. Viewed from a more active perspective, sodium functions as a {{term}}reducing agent (reductant){{/term}}, since it provides electrons to (or reduces) chlorine. Likewise, chlorine functions as an {{term}}oxidizing agent (oxidant){{/term}}, as it effectively removes electrons from (oxidizes) sodium.
+In this reaction, then, sodium is [[i:oxidized]] and chlorine undergoes [[term:reduction|term-00017]]. Viewed from a more active perspective, sodium functions as a [[term:reducing agent (reductant)|term-00018]], since it provides electrons to (or reduces) chlorine. Likewise, chlorine functions as an [[term:oxidizing agent (oxidant)|term-00019]], as it effectively removes electrons from (oxidizes) sodium.
 
 <!-- SEG:m68710:para:fs-idp108466096 -->
 Some redox processes, however, do not involve the transfer of electrons. Consider, for example, a reaction similar to the one yielding NaCl:
 
 <!-- SEG:m68710:para:fs-idp168168224 -->
-The product of this reaction is a covalent compound, so transfer of electrons in the explicit sense is not involved. To clarify the similarity of this reaction to the previous one and permit an unambiguous definition of redox reactions, a property called [[i:oxidation number]] has been defined. The {{term}}oxidation number{{/term}} (or {{term}}oxidation state{{/term}}) of an element in a compound is the charge its atoms would possess [[i:if the compound were ionic]]. The following guidelines are used to assign oxidation numbers to each element in a molecule or ion.
+The product of this reaction is a covalent compound, so transfer of electrons in the explicit sense is not involved. To clarify the similarity of this reaction to the previous one and permit an unambiguous definition of redox reactions, a property called [[i:oxidation number]] has been defined. The [[term:oxidation number|term-00020]] (or [[term:oxidation state|term-00021]]) of an element in a compound is the charge its atoms would possess [[i:if the compound were ionic]]. The following guidelines are used to assign oxidation numbers to each element in a molecule or ion.
 
 <!-- SEG:m68710:item:fs-idp29396208-item-1 -->
 The oxidation number of an atom in an elemental substance is zero.
@@ -617,10 +632,10 @@ Check Your Learning
 Assign oxidation states to the elements whose atoms are underlined in each of the following compounds or ions:
 
 <!-- SEG:m68710:para:fs-idp34225952 -->
-(a) K++N++O[[sub:3]]
+(a) K[[u:N]]O[[sub:3]]
 
 <!-- SEG:m68710:para:fs-idp31054592 -->
-(b) ++Al++H[[sub:3]]
+(b) [[u:Al]]H[[sub:3]]
 
 <!-- SEG:m68710:para:fs-idm64889152 -->
 (c) [[MATH:43]]
@@ -638,19 +653,19 @@ Answer:
 (a) N, +5; (b) Al, +3; (c) N, −3; (d) P, +5
 
 <!-- SEG:m68710:para:fs-idp45838960 -->
-Using the oxidation number concept, an all-inclusive definition of redox reaction has been established. {{term}}Oxidation-reduction (redox) reactions{{/term}} are those in which one or more elements involved undergo a change in oxidation number. (While the vast majority of redox reactions involve changes in oxidation number for two or more elements, a few interesting exceptions to this rule do exist [[xref:fs-idp180799104]].) Definitions for the complementary processes of this reaction class are correspondingly revised as shown here:
+Using the oxidation number concept, an all-inclusive definition of redox reaction has been established. [[term:Oxidation-reduction (redox) reactions|term-00022]] are those in which one or more elements involved undergo a change in oxidation number. (While the vast majority of redox reactions involve changes in oxidation number for two or more elements, a few interesting exceptions to this rule do exist [[xref:fs-idp180799104]].) Definitions for the complementary processes of this reaction class are correspondingly revised as shown here:
 
 <!-- SEG:m68710:para:fs-idm1410784 -->
 Returning to the reactions used to introduce this topic, they may now both be identified as redox processes. In the reaction between sodium and chlorine to yield sodium chloride, sodium is oxidized (its oxidation number increases from 0 in Na to +1 in NaCl) and chlorine is reduced (its oxidation number decreases from 0 in Cl[[sub:2]] to −1 in NaCl). In the reaction between molecular hydrogen and chlorine, hydrogen is oxidized (its oxidation number increases from 0 in H[[sub:2]] to +1 in HCl) and chlorine is reduced (its oxidation number decreases from 0 in Cl[[sub:2]] to −1 in HCl).
 
 <!-- SEG:m68710:para:fs-idp112552240 -->
-Several subclasses of redox reactions are recognized, including {{term}}combustion reactions{{/term}} in which the reductant (also called a [[i:fuel]]) and oxidant (often, but not necessarily, molecular oxygen) react vigorously and produce significant amounts of heat, and often light, in the form of a flame. Solid rocket-fuel reactions such as the one depicted in [[docref:m68730#CNX_Chem_04_00_Rocket]] are combustion processes. A typical propellant reaction in which solid aluminum is oxidized by ammonium perchlorate is represented by this equation:
+Several subclasses of redox reactions are recognized, including [[term:combustion reactions|term-00023]] in which the reductant (also called a [[i:fuel]]) and oxidant (often, but not necessarily, molecular oxygen) react vigorously and produce significant amounts of heat, and often light, in the form of a flame. Solid rocket-fuel reactions such as the one depicted in [[docref:m68730#CNX_Chem_04_00_Rocket]] are combustion processes. A typical propellant reaction in which solid aluminum is oxidized by ammonium perchlorate is represented by this equation:
 
 <!-- SEG:m68710:para:fs-idm5712736 -->
 Watch a brief [[link:video|http://openstax.org/l/16hybridrocket]] showing the test firing of a small-scale, prototype, hybrid rocket engine planned for use in the new Space Launch System being developed by NASA. The first engines firing at[[BR]]3 s (green flame) use a liquid fuel/oxidant mixture, and the second, more powerful engines firing at 4 s (yellow flame) use a solid mixture.
 
 <!-- SEG:m68710:para:fs-idm580304 -->
-{{term}}Single-displacement (replacement) reactions{{/term}} are redox reactions in which an ion in solution is displaced (or replaced) via the oxidation of a metallic element. One common example of this type of reaction is the acid oxidation of certain metals:
+[[term:Single-displacement (replacement) reactions|term-00024]] are redox reactions in which an ion in solution is displaced (or replaced) via the oxidation of a metallic element. One common example of this type of reaction is the acid oxidation of certain metals:
 
 <!-- SEG:m68710:para:fs-idm50858768 -->
 Metallic elements may also be oxidized by solutions of other metal salts; for example:
@@ -660,6 +675,9 @@ This reaction may be observed by placing copper wire in a solution containing a 
 
 <!-- SEG:m68710:caption:CNX_Chem_04_02_CuAgNO3-caption -->
 (a) A copper wire is shown next to a solution containing silver(I) ions. (b) Displacement of dissolved silver ions by copper ions results in (c) accumulation of gray-colored silver metal on the wire and development of a blue color in the solution, due to dissolved copper ions. (credit: modification of work by Mark Ott)
+
+<!-- SEG:m68710:alt:fs-idm51046320-alt -->
+This figure contains three photographs. In a, a coiled copper wire is shown beside a test tube filled with a clear, colorless liquid. In b, the wire has been inserted into the test tube with the clear, colorless liquid. In c, the test tube contains a light blue liquid and the coiled wire appears to have a fuzzy silver gray coating.
 
 <!-- SEG:m68710:example-title:fs-idp180799104-title -->
 Describing Redox Reactions
@@ -713,13 +731,13 @@ This equation describes the production of tin(II) chloride:
 Is this a redox reaction? If so, provide a more specific name for the reaction if appropriate, and identify the oxidant and reductant.
 
 <!-- SEG:m68710:para:fs-idm50940704 -->
-Yes, a single-replacement reaction. Sn([[i:s]])[[i:is the reductant, HCl(g]]) is the oxidant.
+Yes, a single-replacement reaction. Sn([[i:s]])is the reductant, HCl([[i:g]]) is the oxidant.
 
 <!-- SEG:m68710:note-title:fs-idp105853680-title -->
 Answer:
 
 <!-- SEG:m68710:para:fs-idm50940704 -->
-Yes, a single-replacement reaction. Sn([[i:s]])[[i:is the reductant, HCl(g]]) is the oxidant.
+Yes, a single-replacement reaction. Sn([[i:s]])is the reductant, HCl([[i:g]]) is the oxidant.
 
 <!-- SEG:m68710:title:fs-idm51820592-title -->
 Key Concepts and Summary

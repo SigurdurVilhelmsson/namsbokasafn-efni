@@ -23,13 +23,13 @@ After the discovery of radioactivity, the field of nuclear chemistry was created
 Synthesis of Nuclides
 
 <!-- SEG:m68856:para:fs-idp8018320 -->
-{{term}}Nuclear transmutation{{/term}} is the conversion of one nuclide into another. It can occur by the radioactive decay of a nucleus, or the reaction of a nucleus with another particle. The first manmade nucleus was produced in Ernest Rutherford’s laboratory in 1919 by a {{term}}transmutation{{/term}} reaction, the bombardment of one type of nuclei with other nuclei or with neutrons. Rutherford bombarded nitrogen atoms with high-speed α particles from a natural radioactive isotope of radium and observed protons resulting from the reaction:
+[[term:Nuclear transmutation|term-00001]] is the conversion of one nuclide into another. It can occur by the radioactive decay of a nucleus, or the reaction of a nucleus with another particle. The first manmade nucleus was produced in Ernest Rutherford’s laboratory in 1919 by a [[term:transmutation|term-00002]] reaction, the bombardment of one type of nuclei with other nuclei or with neutrons. Rutherford bombarded nitrogen atoms with high-speed α particles from a natural radioactive isotope of radium and observed protons resulting from the reaction:
 
 <!-- SEG:m68856:para:fs-idm149290720 -->
 The [[MATH:1]] and [[MATH:2]] nuclei that are produced are stable, so no further (nuclear) changes occur.
 
 <!-- SEG:m68856:para:fs-idm208566640 -->
-To reach the kinetic energies necessary to produce transmutation reactions, devices called {{term}}particle accelerators{{/term}} are used. These devices use magnetic and electric fields to increase the speeds of nuclear particles. In all accelerators, the particles move in a vacuum to avoid collisions with gas molecules. When neutrons are required for transmutation reactions, they are usually obtained from radioactive decay reactions or from various nuclear reactions occurring in nuclear reactors. The Chemistry in Everyday Life feature that follows discusses a famous particle accelerator that made worldwide news.
+To reach the kinetic energies necessary to produce transmutation reactions, devices called [[term:particle accelerators|term-00003]] are used. These devices use magnetic and electric fields to increase the speeds of nuclear particles. In all accelerators, the particles move in a vacuum to avoid collisions with gas molecules. When neutrons are required for transmutation reactions, they are usually obtained from radioactive decay reactions or from various nuclear reactions occurring in nuclear reactors. The Chemistry in Everyday Life feature that follows discusses a famous particle accelerator that made worldwide news.
 
 <!-- SEG:m68856:note-title:fs-idp15502880-title -->
 CERN Particle Accelerator
@@ -42,6 +42,9 @@ In 2012, CERN announced that experiments at the LHC showed the first observation
 
 <!-- SEG:m68856:caption:CNX_Chem_21_04_CERN-caption -->
 A small section of the LHC is shown with workers traveling along it. (credit: Christophe Delaere)
+
+<!-- SEG:m68856:alt:fs-idm173874464-alt -->
+Two photos are shown and labeled “a” and “b.” Photo a shows an aerial view of the Large Hadron Collider. Photo b shows a tunnel of concrete with rails on the ground and tubes and wires running along the wall. Two people walk along the tunnel.
 
 <!-- SEG:m68856:para:fs-idm212810400 -->
 Famous physicist Brian Cox talks about his work on the Large Hadron Collider at CERN, providing an entertaining and engaging [[link:tour|http://openstax.org/l/16tedCERN]] of this massive project and the physics behind it.
@@ -62,129 +65,129 @@ Heavier isotopes of plutonium—Pu-240, Pu-241, and Pu-242—are also produced w
 Although they have not been prepared in the same quantity as plutonium, many other synthetic nuclei have been produced. Nuclear medicine has developed from the ability to convert atoms of one type into other types of atoms. Radioactive isotopes of several dozen elements are currently used for medical applications. The radiation produced by their decay is used to image or treat various organs or portions of the body, among other uses.
 
 <!-- SEG:m68856:para:fs-idm110032080 -->
-The elements beyond element 92 (uranium) are called {{term}}transuranium elements{{/term}}. As of this writing, 22 transuranium elements have been produced and officially recognized by IUPAC; several other elements have formation claims that are waiting for approval. Some of these elements are shown in [[xref:fs-idm128006320]].
-
-<!-- SEG:m68856:entry:auto-23 -->
-Preparation of Some of the Transuranium Elements
+The elements beyond element 92 (uranium) are called [[term:transuranium elements|term-00004]]. As of this writing, 22 transuranium elements have been produced and officially recognized by IUPAC; several other elements have formation claims that are waiting for approval. Some of these elements are shown in [[xref:fs-idm128006320]].
 
 <!-- SEG:m68856:entry:auto-24 -->
-Name
+Preparation of Some of the Transuranium Elements
 
 <!-- SEG:m68856:entry:auto-25 -->
-Symbol
+Name
 
 <!-- SEG:m68856:entry:auto-26 -->
-Atomic Number
+Symbol
 
 <!-- SEG:m68856:entry:auto-27 -->
-Reaction
+Atomic Number
 
 <!-- SEG:m68856:entry:auto-28 -->
-americium
+Reaction
 
 <!-- SEG:m68856:entry:auto-29 -->
-Am
+americium
 
 <!-- SEG:m68856:entry:auto-30 -->
-95
+Am
 
 <!-- SEG:m68856:entry:auto-31 -->
-[[MATH:3]]
+95
 
 <!-- SEG:m68856:entry:auto-32 -->
-curium
+[[MATH:3]]
 
 <!-- SEG:m68856:entry:auto-33 -->
-Cm
+curium
 
 <!-- SEG:m68856:entry:auto-34 -->
-96
+Cm
 
 <!-- SEG:m68856:entry:auto-35 -->
-[[MATH:4]]
+96
 
 <!-- SEG:m68856:entry:auto-36 -->
-californium
+[[MATH:4]]
 
 <!-- SEG:m68856:entry:auto-37 -->
-Cf
+californium
 
 <!-- SEG:m68856:entry:auto-38 -->
-98
+Cf
 
 <!-- SEG:m68856:entry:auto-39 -->
-[[MATH:5]]
+98
 
 <!-- SEG:m68856:entry:auto-40 -->
-einsteinium
+[[MATH:5]]
 
 <!-- SEG:m68856:entry:auto-41 -->
-Es
+einsteinium
 
 <!-- SEG:m68856:entry:auto-42 -->
-99
+Es
 
 <!-- SEG:m68856:entry:auto-43 -->
-[[MATH:6]]
+99
 
 <!-- SEG:m68856:entry:auto-44 -->
-mendelevium
+[[MATH:6]]
 
 <!-- SEG:m68856:entry:auto-45 -->
-Md
+mendelevium
 
 <!-- SEG:m68856:entry:auto-46 -->
-101
+Md
 
 <!-- SEG:m68856:entry:auto-47 -->
-[[MATH:7]]
+101
 
 <!-- SEG:m68856:entry:auto-48 -->
-nobelium
+[[MATH:7]]
 
 <!-- SEG:m68856:entry:auto-49 -->
-No
+nobelium
 
 <!-- SEG:m68856:entry:auto-50 -->
-102
+No
 
 <!-- SEG:m68856:entry:auto-51 -->
-[[MATH:8]]
+102
 
 <!-- SEG:m68856:entry:auto-52 -->
-rutherfordium
+[[MATH:8]]
 
 <!-- SEG:m68856:entry:auto-53 -->
-Rf
+rutherfordium
 
 <!-- SEG:m68856:entry:auto-54 -->
-104
+Rf
 
 <!-- SEG:m68856:entry:auto-55 -->
-[[MATH:9]]
+104
 
 <!-- SEG:m68856:entry:auto-56 -->
-seaborgium
+[[MATH:9]]
 
 <!-- SEG:m68856:entry:auto-57 -->
-Sg
+seaborgium
 
 <!-- SEG:m68856:entry:auto-58 -->
-106
+Sg
 
 <!-- SEG:m68856:entry:auto-59 -->
-[[MATH:10]]
+106
 
 <!-- SEG:m68856:entry:auto-60 -->
-meitnerium
+[[MATH:10]]
 
 <!-- SEG:m68856:entry:auto-61 -->
-Mt
+meitnerium
 
 <!-- SEG:m68856:entry:auto-62 -->
-107
+Mt
 
 <!-- SEG:m68856:entry:auto-63 -->
+107
+
+<!-- SEG:m68856:entry:auto-64 -->
 [[MATH:11]]
 
 <!-- SEG:m68856:title:fs-idm178123200-title -->
@@ -194,22 +197,31 @@ Nuclear Fission
 Fission Reactors
 
 <!-- SEG:m68856:para:fs-idm211204656 -->
-Chain reactions of fissionable materials can be controlled and sustained without an explosion in a {{term}}nuclear reactor{{/term}} ([[xref:CNX_Chem_21_04_NuclearPwr]]). Any nuclear reactor that produces power via the fission of uranium or plutonium by bombardment with neutrons must have at least five components: nuclear fuel consisting of fissionable material, a nuclear moderator, reactor coolant, control rods, and a shield and containment system. We will discuss these components in greater detail later in the section. The reactor works by separating the fissionable nuclear material such that a critical mass cannot be formed, controlling both the flux and absorption of neutrons to allow shutting down the fission reactions. In a nuclear reactor used for the production of electricity, the energy released by fission reactions is trapped as thermal energy and used to boil water and produce steam. The steam is used to turn a turbine, which powers a generator for the production of electricity.
+Chain reactions of fissionable materials can be controlled and sustained without an explosion in a [[term:nuclear reactor|term-00012]] ([[xref:CNX_Chem_21_04_NuclearPwr]]). Any nuclear reactor that produces power via the fission of uranium or plutonium by bombardment with neutrons must have at least five components: nuclear fuel consisting of fissionable material, a nuclear moderator, reactor coolant, control rods, and a shield and containment system. We will discuss these components in greater detail later in the section. The reactor works by separating the fissionable nuclear material such that a critical mass cannot be formed, controlling both the flux and absorption of neutrons to allow shutting down the fission reactions. In a nuclear reactor used for the production of electricity, the energy released by fission reactions is trapped as thermal energy and used to boil water and produce steam. The steam is used to turn a turbine, which powers a generator for the production of electricity.
 
 <!-- SEG:m68856:caption:CNX_Chem_21_04_NuclearPwr-caption -->
 (a) The Diablo Canyon Nuclear Power Plant near San Luis Obispo is the only nuclear power plant currently in operation in California. The domes are the containment structures for the nuclear reactors, and the brown building houses the turbine where electricity is generated. Ocean water is used for cooling. (b) The Diablo Canyon uses a pressurized water reactor, one of a few different fission reactor designs in use around the world, to produce electricity. Energy from the nuclear fission reactions in the core heats water in a closed, pressurized system. Heat from this system produces steam that drives a turbine, which in turn produces electricity. (credit a: modification of work by “Mike” Michael L. Baird; credit b: modification of work by the Nuclear Regulatory Commission)
 
+<!-- SEG:m68856:alt:fs-idm35246480-alt -->
+A photo labeled “a” and a diagram labeled “b” is shown. The photo is of a power plant with two large white domes and many buildings. The diagram shows a cylindrical container with thick walls labeled “Walls made of concrete and steel” and three main components inside. The first of these components is a pair of tall cylinders labeled “Steam generators” that sit to either side of a shorter cylinder labeled “Core.” Next to the core is a thin cylinder labeled “Pressurizer.” To the left of the outer walls is a set of pistons labeled “Turbines” that sit above a series of other equipment.
+
 <!-- SEG:m68856:para:fs-idm313917616 -->
-Many heavier elements with smaller binding energies per nucleon can decompose into more stable elements that have intermediate mass numbers and larger binding energies per nucleon—that is, mass numbers and binding energies per nucleon that are closer to the “peak” of the binding energy graph near 56 (see [[docref:m68851#CNX_Chem_21_01_BindEnergy]]). Sometimes neutrons are also produced. This decomposition is called {{term}}fission{{/term}}, the breaking of a large nucleus into smaller pieces. The breaking is rather random with the formation of a large number of different products. Fission usually does not occur naturally, but is induced by bombardment with neutrons. The first reported nuclear fission occurred in 1939 when three German scientists, Lise Meitner, Otto Hahn, and Fritz Strassman, bombarded uranium-235 atoms with slow-moving neutrons that split the U-238 nuclei into smaller fragments that consisted of several neutrons and elements near the middle of the periodic table. Since then, fission has been observed in many other isotopes, including most actinide isotopes that have an odd number of neutrons. A typical nuclear fission reaction is shown in [[xref:CNX_Chem_21_04_Fission1]].
+Many heavier elements with smaller binding energies per nucleon can decompose into more stable elements that have intermediate mass numbers and larger binding energies per nucleon—that is, mass numbers and binding energies per nucleon that are closer to the “peak” of the binding energy graph near 56 (see [[docref:m68851#CNX_Chem_21_01_BindEnergy]]). Sometimes neutrons are also produced. This decomposition is called [[term:fission|term-00005]], the breaking of a large nucleus into smaller pieces. The breaking is rather random with the formation of a large number of different products. Fission usually does not occur naturally, but is induced by bombardment with neutrons. The first reported nuclear fission occurred in 1939 when three German scientists, Lise Meitner, Otto Hahn, and Fritz Strassman, bombarded uranium-235 atoms with slow-moving neutrons that split the U-238 nuclei into smaller fragments that consisted of several neutrons and elements near the middle of the periodic table. Since then, fission has been observed in many other isotopes, including most actinide isotopes that have an odd number of neutrons. A typical nuclear fission reaction is shown in [[xref:CNX_Chem_21_04_Fission1]].
 
 <!-- SEG:m68856:caption:CNX_Chem_21_04_Fission1-caption -->
 When a slow neutron hits a fissionable U-235 nucleus, it is absorbed and forms an unstable U-236 nucleus. The U-236 nucleus then rapidly breaks apart into two smaller nuclei (in this case, Ba-141 and Kr-92) along with several neutrons (usually two or three), and releases a very large amount of energy.
+
+<!-- SEG:m68856:alt:fs-idm247309120-alt -->
+A diagram is shown which has a white sphere labeled “superscript, 1, subscript 0, n” followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres labeled “superscript, 235, subscript 92, U.” The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a vertical dumbbell shaped collection of the same white and green spheres labeled “superscript, 236, subscript 92, U, Unstable nucleus.” Two right-facing arrows lead from the top and bottom of this structure to two new spheres that are also composed of green and white spheres and are slightly smaller than the others. The top sphere is labeled “superscript, 92, subscript 36, K r” while the lower one is labeled “superscript, 141, subscript 56, B a.” A starburst pattern labeled “Energy” lies between these two spheres and has three right-facing arrows leading from it to three white spheres labeled “3, superscript, 1, subscript 0, n.” A balanced nuclear equation is written below the diagram and says “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 141, subscript 56, B a, plus sign, superscript, 92, subscript 36, K r, plus sign, 3, superscript, 1, subscript 0, n.”
 
 <!-- SEG:m68856:para:fs-idm70978352 -->
 Among the products of Meitner, Hahn, and Strassman’s fission reaction were barium, krypton, lanthanum, and cerium, all of which have nuclei that are more stable than uranium-235. Since then, hundreds of different isotopes have been observed among the products of fissionable substances. A few of the many reactions that occur for U-235, and a graph showing the distribution of its fission products and their yields, are shown in [[xref:CNX_Chem_21_04_Fission2]]. Similar fission reactions have been observed with other uranium isotopes, as well as with a variety of other isotopes such as those of plutonium.
 
 <!-- SEG:m68856:caption:CNX_Chem_21_04_Fission2-caption -->
 (a) Nuclear fission of U-235 produces a range of fission products. (b) The larger fission products of U-235 are typically one isotope with a mass number around 85–105, and another isotope with a mass number that is about 50% larger, that is, about 130–150.
+
+<!-- SEG:m68856:alt:fs-idm215700944-alt -->
+Five nuclear equations and a graph are shown. The first equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 90, subscript 38, S r, plus sign, superscript, 144, subscript 54, X e, plus sign, 2, superscript, 1, subscript 0, n.” The second equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 87, subscript 35, B r, plus sign, superscript, 146, subscript 57, L a, plus sign, 3, superscript, 1, subscript 0, n.” The third equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 97, subscript 37, R b, plus sign, superscript, 137, subscript 55, C s, plus sign, 3, superscript, 1, subscript 0, n.” The fourth equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 137, subscript 52, T e, plus sign, superscript, 97, subscript 40, Z r, plus sign, 2, superscript, 1, subscript 0, n.” The fifth equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 141, subscript 56, B a, plus sign, superscript, 92, subscript 36, K r, plus sign, 3, superscript, 1, subscript 0, n.” A graph is also shown where the y-axis is labeled “Fission yield, open parenthesis, percent sign, close parenthesis” and has values of 0 to 9 in increments of 1 while the x-axis is labeled “Mass number” and has values of 60 to 180 in increments of 20. The graph begins near point “65, 0” and rises rapidly to near “92, 6.6,” then drops just as rapidly to “107, 0” and remains there to point “127, 0.” The graph then rises again to near “132, 8,” then goes up and down a bit before falling to a point “153, 0,” and going horizontal.
 
 <!-- SEG:m68856:para:fs-idm227794880 -->
 View this [[link:link|http://openstax.org/l/16fission]] to see a simulation of nuclear fission.
@@ -218,16 +230,22 @@ View this [[link:link|http://openstax.org/l/16fission]] to see a simulation of n
 A tremendous amount of energy is produced by the fission of heavy elements. For instance, when one mole of U-235 undergoes fission, the products weigh about 0.2 grams less than the reactants; this “lost” mass is converted into a very large amount of energy, about 1.8 [[MATH:12]] 10[[sup:10]] kJ per mole of U-235. Nuclear fission reactions produce incredibly large amounts of energy compared to chemical reactions. The fission of 1 kilogram of uranium-235, for example, produces about 2.5 million times as much energy as is produced by burning 1 kilogram of coal.
 
 <!-- SEG:m68856:para:fs-idm187374960 -->
-As described earlier, when undergoing fission U-235 produces two “medium-sized” nuclei, and two or three neutrons. These neutrons may then cause the fission of other uranium-235 atoms, which in turn provide more neutrons that can cause fission of even more nuclei, and so on. If this occurs, we have a nuclear {{term}}chain reaction{{/term}} (see [[xref:CNX_Chem_21_04_ChnReact1]]). On the other hand, if too many neutrons escape the bulk material without interacting with a nucleus, then no chain reaction will occur.
+As described earlier, when undergoing fission U-235 produces two “medium-sized” nuclei, and two or three neutrons. These neutrons may then cause the fission of other uranium-235 atoms, which in turn provide more neutrons that can cause fission of even more nuclei, and so on. If this occurs, we have a nuclear [[term:chain reaction|term-00006]] (see [[xref:CNX_Chem_21_04_ChnReact1]]). On the other hand, if too many neutrons escape the bulk material without interacting with a nucleus, then no chain reaction will occur.
 
 <!-- SEG:m68856:caption:CNX_Chem_21_04_ChnReact1-caption -->
 The fission of a large nucleus, such as U-235, produces two or three neutrons, each of which is capable of causing fission of another nucleus by the reactions shown. If this process continues, a nuclear chain reaction occurs.
 
+<!-- SEG:m68856:alt:fs-idm32833520-alt -->
+A diagram is shown which has a white sphere labeled “superscript, 1, subscript 0, n” followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres labeled “superscript, 235, subscript 92, U.” The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a pair of smaller spheres which are collections of the same white and green spheres. The upper of these two images is labeled “superscript, 93, subscript 36, K r” while the lower of the two is labeled “superscript, 142, subscript 56, B a.” A starburst pattern labeled “Energy” lies between these two spheres and has three right-facing arrows leading from it to three white spheres labeled “ superscript, 1, subscript 0, n.”  An equation below this portion of the diagram reads ““superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 140, subscript 56, B a, plus sign, superscript 90, subscript 36, K r, plus sign, 3, superscript 1, subscript 0, n.”  A right-facing arrow leads from each of these white spheres to three larger spheres, each composed of many smaller green and white spheres and labeled, from top to bottom as “a, superscript,235, subscript 92, U,” “b, superscript,235, subscript 92, U” and “c, superscript,235, subscript 92, U.” Each of these spheres is followed by a right-facing arrow which points to a pair of smaller spheres composed of the same green and white spheres with starburst patterns in between each pair labeled “Energy.” The spheres of the top pair are labeled, from top to bottom, “superscript, 96, subscript 37, R b” and “superscript, 137, subscript 55, C s.” The spheres of the middle pair are labeled, from top to bottom, “superscript, 90, subscript 38, S r” and “superscript, 144, subscript 54, X e.” The spheres of the bottom pair are labeled, from top to bottom, “superscript, 87, subscript 35, B r” and “superscript, 146, subscript 57, L a.” Each pair of spheres is followed by three right-facing arrows leading to three white spheres labeled “superscript, 1, subscript 0, n.”  Below the diagram are three nuclear equations. Equation a reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 96, subscript 37, R b, plus sign, superscript 137, subscript 55, C s, plus sign, 3, superscript 1, subscript 0, n.” Equation b reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 90, subscript 38, S r, plus sign, superscript144, subscript 54, X e, plus sign, 2, superscript 1, subscript 0, n.” Equation c reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 87, subscript 35, B r, plus sign, superscript 146, subscript 57, L a, plus sign, 3, superscript 1, subscript 0, n”
+
 <!-- SEG:m68856:para:fs-idm210900592 -->
-Material that can sustain a nuclear fission chain reaction is said to be {{term}}fissile{{/term}} or {{term}}fissionable{{/term}}. (Technically, fissile material can undergo fission with neutrons of any energy, whereas fissionable material requires high-energy neutrons.) Nuclear fission becomes self-sustaining when the number of neutrons produced by fission equals or exceeds the number of neutrons absorbed by splitting nuclei plus the number that escape into the surroundings. The amount of a fissionable material that will support a self-sustaining chain reaction is a {{term}}critical mass{{/term}}. An amount of fissionable material that cannot sustain a chain reaction is a {{term}}subcritical mass{{/term}}. An amount of material in which there is an increasing rate of fission is known as a {{term}}supercritical mass{{/term}}. The critical mass depends on the type of material: its purity, the temperature, the shape of the sample, and how the neutron reactions are controlled ([[xref:CNX_Chem_21_04_CritMass]]).
+Material that can sustain a nuclear fission chain reaction is said to be [[term:fissile|term-00007]] or [[term:fissionable|term-00008]]. (Technically, fissile material can undergo fission with neutrons of any energy, whereas fissionable material requires high-energy neutrons.) Nuclear fission becomes self-sustaining when the number of neutrons produced by fission equals or exceeds the number of neutrons absorbed by splitting nuclei plus the number that escape into the surroundings. The amount of a fissionable material that will support a self-sustaining chain reaction is a [[term:critical mass|term-00009]]. An amount of fissionable material that cannot sustain a chain reaction is a [[term:subcritical mass|term-00010]]. An amount of material in which there is an increasing rate of fission is known as a [[term:supercritical mass|term-00011]]. The critical mass depends on the type of material: its purity, the temperature, the shape of the sample, and how the neutron reactions are controlled ([[xref:CNX_Chem_21_04_CritMass]]).
 
 <!-- SEG:m68856:caption:CNX_Chem_21_04_CritMass-caption -->
 (a) In a subcritical mass, the fissile material is too small and allows too many neutrons to escape the material, so a chain reaction does not occur. (b) In a critical mass, a large enough number of neutrons in the fissile material induce fission to create a chain reaction.
+
+<!-- SEG:m68856:alt:fs-idm205094672-alt -->
+The images are shown and labeled “a,” “b” and “c.” Image a, labeled “Sub-critical mass,” shows a blue circle background with a white sphere near the outer, top, left edge of the circle. A downward, right-facing arrow indicates that the white sphere enters the circle. Seven small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the circle, in seemingly random directions. Image b, labeled “Critical mass,” shows a blue circle background with a white sphere near the outer, top, left edge of the circle. A downward, right-facing arrow indicates that the white sphere enters the circle. Seventeen small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the circle, in seemingly random directions. Image c, labeled “Critical mass from neutron deflection,” shows a blue circle background, lying in a larger purple circle, with a white sphere near the outer, top, left edge of the purple circle. A downward, right-facing arrow indicates that the white sphere enters both of the circles. Thirteen small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the blue circle, and a couple outside of the purple circle, in seemingly random directions.
 
 <!-- SEG:m68856:para:fs-idm26833280 -->
 An atomic bomb ([[xref:CNX_Chem_21_04_FissnBomb]]) contains several pounds of fissionable material, [[MATH:13]] or [[MATH:14]] a source of neutrons, and an explosive device for compressing it quickly into a small volume. When fissionable material is in small pieces, the proportion of neutrons that escape through the relatively large surface area is great, and a chain reaction does not take place. When the small pieces of fissionable material are brought together quickly to form a body with a mass larger than the critical mass, the relative number of escaping neutrons decreases, and a chain reaction and explosion result.
@@ -235,11 +253,14 @@ An atomic bomb ([[xref:CNX_Chem_21_04_FissnBomb]]) contains several pounds of fi
 <!-- SEG:m68856:caption:CNX_Chem_21_04_FissnBomb-caption -->
 (a) The nuclear fission bomb that destroyed Hiroshima on August 6, 1945, consisted of two subcritical masses of U-235, where conventional explosives were used to fire one of the subcritical masses into the other, creating the critical mass for the nuclear explosion. (b) The plutonium bomb that destroyed Nagasaki on August 9, 1945, consisted of a hollow sphere of plutonium that was rapidly compressed by conventional explosives. This led to a concentration of plutonium in the center that was greater than the critical mass necessary for the nuclear explosion.
 
+<!-- SEG:m68856:alt:fs-idm218899984-alt -->
+Two diagrams are shown, each to the left of a photo, and labeled “a” and “b.” Diagram a shows the outer casing of a bomb that has a long, tubular shape with a squared-off tail. Components in the shell show a tube with a white disk labeled “Detonator” on the left, an orange disk with a bright yellow starburst drawn around it labeled “Conventional explosive” in the middle and a right-facing arrow leading to a blue disk in the nose of the bomb labeled “uranium 235.” A small blue cone next to the orange disk is shares the label of “uranium 235.” A black and white photo next to this diagram shows a far-off shot of a rising cloud over a landscape. Diagram b shows the outer casing of a bomb that has a short, rounded shape with a squared-off tail. Components in the shell show a large orange circle labeled “Conventional explosive” with a series of black dots around its edge, labeled “Detonators,” and a yellow starburst behind it. White arrows face from the outer edge of the orange circle to a blue circle in the center with a yellow core. The blue circle is labeled “plutonium 239” while the yellow core is labeled “beryllium, dash, polonium initiator.” A black and white photo next to this diagram shows a far-off shot of a giant rising cloud over a landscape.
+
 <!-- SEG:m68856:title:fs-idm141510160-title -->
 Nuclear Fuels
 
 <!-- SEG:m68856:para:fs-idm201280112 -->
-{{term}}Nuclear fuel{{/term}} consists of a fissionable isotope, such as uranium-235, which must be present in sufficient quantity to provide a self-sustaining chain reaction. In the United States, uranium ores contain from 0.05–0.3% of the uranium oxide U[[sub:3]]O[[sub:8]]; the uranium in the ore is about 99.3% nonfissionable U-238 with only 0.7% fissionable U-235. Nuclear reactors require a fuel with a higher concentration of U-235 than is found in nature; it is normally enriched to have about 5% of uranium mass as U-235. At this concentration, it is not possible to achieve the supercritical mass necessary for a nuclear explosion. Uranium can be enriched by gaseous diffusion (the only method currently used in the US), using a gas centrifuge, or by laser separation.
+[[term:Nuclear fuel|term-00013]] consists of a fissionable isotope, such as uranium-235, which must be present in sufficient quantity to provide a self-sustaining chain reaction. In the United States, uranium ores contain from 0.05–0.3% of the uranium oxide U[[sub:3]]O[[sub:8]]; the uranium in the ore is about 99.3% nonfissionable U-238 with only 0.7% fissionable U-235. Nuclear reactors require a fuel with a higher concentration of U-235 than is found in nature; it is normally enriched to have about 5% of uranium mass as U-235. At this concentration, it is not possible to achieve the supercritical mass necessary for a nuclear explosion. Uranium can be enriched by gaseous diffusion (the only method currently used in the US), using a gas centrifuge, or by laser separation.
 
 <!-- SEG:m68856:para:fs-idm198579952 -->
 In the gaseous diffusion enrichment plant where U-235 fuel is prepared, UF[[sub:6]] (uranium hexafluoride) gas at low pressure moves through barriers that have holes just barely large enough for UF[[sub:6]] to pass through. The slightly lighter [[sup:235]]UF[[sub:6]] molecules diffuse through the barrier slightly faster than the heavier [[sup:238]]UF[[sub:6]] molecules. This process is repeated through hundreds of barriers, gradually increasing the concentration of [[sup:235]]UF[[sub:6]] to the level needed by the nuclear reactor. The basis for this process, Graham’s law, is described in the chapter on gases. The enriched UF[[sub:6]] gas is collected, cooled until it solidifies, and then taken to a fabrication facility where it is made into fuel assemblies. Each fuel assembly consists of fuel rods that contain many thimble-sized, ceramic-encased, enriched uranium (usually UO[[sub:2]]) fuel pellets. Modern nuclear reactors may contain as many as 10 million fuel pellets. The amount of energy in each of these pellets is equal to that in almost a ton of coal or 150 gallons of oil.
@@ -248,19 +269,19 @@ In the gaseous diffusion enrichment plant where U-235 fuel is prepared, UF[[sub:
 Nuclear Moderators
 
 <!-- SEG:m68856:para:fs-idm227090448 -->
-Neutrons produced by nuclear reactions move too fast to cause fission (refer back to [[xref:CNX_Chem_21_04_CritMass]]). They must first be slowed to be absorbed by the fuel and produce additional nuclear reactions. A {{term}}nuclear moderator{{/term}} is a substance that slows the neutrons to a speed that is low enough to cause fission. Early reactors used high-purity graphite as a moderator. Modern reactors in the US exclusively use heavy water [[MATH:15]] or light water (ordinary H[[sub:2]]O), whereas some reactors in other countries use other materials, such as carbon dioxide, beryllium, or graphite.
+Neutrons produced by nuclear reactions move too fast to cause fission (refer back to [[xref:CNX_Chem_21_04_CritMass]]). They must first be slowed to be absorbed by the fuel and produce additional nuclear reactions. A [[term:nuclear moderator|term-00014]] is a substance that slows the neutrons to a speed that is low enough to cause fission. Early reactors used high-purity graphite as a moderator. Modern reactors in the US exclusively use heavy water [[MATH:15]] or light water (ordinary H[[sub:2]]O), whereas some reactors in other countries use other materials, such as carbon dioxide, beryllium, or graphite.
 
 <!-- SEG:m68856:title:fs-idm82082624-title -->
 Reactor Coolants
 
 <!-- SEG:m68856:para:fs-idm17481184 -->
-A nuclear {{term}}reactor coolant{{/term}} is used to carry the heat produced by the fission reaction to an external boiler and turbine, where it is transformed into electricity. Two overlapping coolant loops are often used; this counteracts the transfer of radioactivity from the reactor to the primary coolant loop. All nuclear power plants in the US use water as a coolant. Other coolants include molten sodium, lead, a lead-bismuth mixture, or molten salts.
+A nuclear [[term:reactor coolant|term-00015]] is used to carry the heat produced by the fission reaction to an external boiler and turbine, where it is transformed into electricity. Two overlapping coolant loops are often used; this counteracts the transfer of radioactivity from the reactor to the primary coolant loop. All nuclear power plants in the US use water as a coolant. Other coolants include molten sodium, lead, a lead-bismuth mixture, or molten salts.
 
 <!-- SEG:m68856:title:fs-idm24992032-title -->
 Control Rods
 
 <!-- SEG:m68856:para:fs-idm24991392 -->
-Nuclear reactors use {{term}}control rods{{/term}} ([[xref:CNX_Chem_21_04_ControlRod]]) to control the fission rate of the nuclear fuel by adjusting the number of slow neutrons present to keep the rate of the chain reaction at a safe level. Control rods are made of boron, cadmium, hafnium, or other elements that are able to absorb neutrons. Boron-10, for example, absorbs neutrons by a reaction that produces lithium-7 and alpha particles:
+Nuclear reactors use [[term:control rods|term-00016]] ([[xref:CNX_Chem_21_04_ControlRod]]) to control the fission rate of the nuclear fuel by adjusting the number of slow neutrons present to keep the rate of the chain reaction at a safe level. Control rods are made of boron, cadmium, hafnium, or other elements that are able to absorb neutrons. Boron-10, for example, absorbs neutrons by a reaction that produces lithium-7 and alpha particles:
 
 <!-- SEG:m68856:para:fs-idm103571680 -->
 When control rod assemblies are inserted into the fuel element in the reactor core, they absorb a larger fraction of the slow neutrons, thereby slowing the rate of the fission reaction and decreasing the power produced. Conversely, if the control rods are removed, fewer neutrons are absorbed, and the fission rate and energy production increase. In an emergency, the chain reaction can be shut down by fully inserting all of the control rods into the nuclear core between the fuel rods.
@@ -268,11 +289,14 @@ When control rod assemblies are inserted into the fuel element in the reactor co
 <!-- SEG:m68856:caption:CNX_Chem_21_04_ControlRod-caption -->
 The nuclear reactor core shown in (a) contains the fuel and control rod assembly shown in (b). (credit: modification of work by E. Generalic, http://glossary.periodni.com/glossary.php?en=control+rod)
 
+<!-- SEG:m68856:alt:fs-idm201459040-alt -->
+Two diagrams are shown and labeled “a” and “b.” Diagram a shows a cut-away view of a vertical tube with a flat, horizontal plate near the bottom that connects to a series of vertical pipes lined up next to one another and labeled “Fuel rods.” A second horizontal plate labeled “Grid” lies at the top of the pipes and a second set of thinner, vertical pipes, labeled “Control rods,” leads from this plate to the top of the container. The walls of the container are labeled “Steel pressure vessel.” A blue, right-facing arrow leads from an entry point in the left side of the container and is followed by a second, down-facing blue arrow and a curved, right-facing arrow that trace along the outer, bottom edge of the container. A blue and red arrow follows these and faces up the right side of the container to an exit near the right face where a red, right-facing arrow leads out. Diagram b is a cut-away image of a vertical, rectangular, three dimensional set of vertical pipes. The pipes are labeled “Fuel rods” and are inserted into an upper and lower horizontal plate labeled “Grid.” Four thin rods extend above the pipes and are labeled “Control rods.
+
 <!-- SEG:m68856:title:fs-idm70291520-title -->
 Shield and Containment System
 
 <!-- SEG:m68856:para:fs-idm145034464 -->
-During its operation, a nuclear reactor produces neutrons and other radiation. Even when shut down, the decay products are radioactive. In addition, an operating reactor is thermally very hot, and high pressures result from the circulation of water or another coolant through it. Thus, a reactor must withstand high temperatures and pressures, and must protect operating personnel from the radiation. Reactors are equipped with a {{term}}containment system{{/term}} (or shield) that consists of three parts:
+During its operation, a nuclear reactor produces neutrons and other radiation. Even when shut down, the decay products are radioactive. In addition, an operating reactor is thermally very hot, and high pressures result from the circulation of water or another coolant through it. Thus, a reactor must withstand high temperatures and pressures, and must protect operating personnel from the radiation. Reactors are equipped with a [[term:containment system|term-00017]] (or shield) that consists of three parts:
 
 <!-- SEG:m68856:item:fs-idm145807312-item-1 -->
 The reactor vessel, a steel shell that is 3–20-centimeters thick and, with the moderator, absorbs much of the radiation produced by the reactor
@@ -319,8 +343,14 @@ An evacuation zone around the damaged plant extended over 12.4 miles away, and a
 <!-- SEG:m68856:caption:CNX_Chem_21_04_3MileIslnd-caption -->
 (a) In this 2010 photo of Three Mile Island, the remaining structures from the damaged Unit 2 reactor are seen on the left, whereas the separate Unit 1 reactor, unaffected by the accident, continues generating power to this day (right). (b) President Jimmy Carter visited the Unit 2 control room a few days after the accident in 1979.
 
+<!-- SEG:m68856:alt:fs-idm210185648-alt -->
+Two photos, labeled “a” and “b” are shown. Photo a is an aerial view of a nuclear power plant. Photo b shows a small group of men walking through a room filled with electronics.
+
 <!-- SEG:m68856:caption:CNX_Chem_21_04_Fukushima-caption -->
 (a) After the accident, contaminated waste had to be removed, and (b) an evacuation zone was set up around the plant in areas that received heavy doses of radioactive fallout. (credit a: modification of work by “Live Action Hero”/Flickr)
+
+<!-- SEG:m68856:alt:fs-idm109901200-alt -->
+A photo and a map, labeled “a” and “b,” respectively, are shown. Photo a shows a man in a body-covering safety suit working near a series of blue, plastic coated containers. Map b shows a section of land with the ocean on each side. Near the upper right side of the land is a small red dot, labeled “greater than, 12.5, m R backslash, h r,” that is surrounded by a zone of orange that extends in the upper left direction labeled “2.17, dash, 12.5, m R backslash, h r.” The orange is surrounded by an outline of yellow labeled “1.19, dash, 2.17, m R backslash, h r” and a wider outline of green labeled “0.25, dash, 1.19, m R backslash, h r.” A large area of light blue, labeled “0.03, dash, 0.25, m R backslash, h r” surrounds the green area and extends to the lower middle of the map. A large section of the lower middle and left of the land is covered by dark blue, labeled “less than 0.03, m R backslash, h r.”
 
 <!-- SEG:m68856:para:fs-idp45909184 -->
 The energy produced by a reactor fueled with enriched uranium results from the fission of uranium as well as from the fission of plutonium produced as the reactor operates. As discussed previously, the plutonium forms from the combination of neutrons and the uranium in the fuel. In any nuclear reactor, only about 0.1% of the mass of the fuel is converted into energy. The other 99.9% remains in the fuel rods as fission products and unused fuel. All of the fission products absorb neutrons, and after a period of several months to a few years, depending on the reactor, the fission products must be removed by changing the fuel rods. Otherwise, the concentration of these fission products would increase and absorb more neutrons until the reactor could no longer operate.
@@ -335,7 +365,7 @@ Explore the information in this [[link:link|http://openstax.org/l/16wastemgmt]] 
 Nuclear Fusion and Fusion Reactors
 
 <!-- SEG:m68856:para:fs-idm69471456 -->
-The process of converting very light nuclei into heavier nuclei is also accompanied by the conversion of mass into large amounts of energy, a process called {{term}}fusion{{/term}}. The principal source of energy in the sun is a net fusion reaction in which four hydrogen nuclei fuse and produce one helium nucleus and two positrons. This is a net reaction of a more complicated series of events:
+The process of converting very light nuclei into heavier nuclei is also accompanied by the conversion of mass into large amounts of energy, a process called [[term:fusion|term-00018]]. The principal source of energy in the sun is a net fusion reaction in which four hydrogen nuclei fuse and produce one helium nucleus and two positrons. This is a net reaction of a more complicated series of events:
 
 <!-- SEG:m68856:para:fs-idm178516816 -->
 A helium nucleus has a mass that is 0.7% less than that of four hydrogen nuclei; this lost mass is converted into energy during the fusion. This reaction produces about 3.6 [[MATH:16]] 10[[sup:11]] kJ of energy per mole of [[MATH:17]] produced. This is somewhat larger than the energy produced by the nuclear fission of one mole of U-235 (1.8 [[MATH:18]] 10[[sup:10]] kJ), and over 3 million times larger than the energy produced by the (chemical) combustion of one mole of octane (5471 kJ).
@@ -350,10 +380,13 @@ This change proceeds with a mass loss of 0.0188 amu, corresponding to the releas
 Useful fusion reactions require very high temperatures for their initiation—about 15,000,000 K or more. At these temperatures, all molecules dissociate into atoms, and the atoms ionize, forming plasma. These conditions occur in an extremely large number of locations throughout the universe—stars are powered by fusion. Humans have already figured out how to create temperatures high enough to achieve fusion on a large scale in thermonuclear weapons. A thermonuclear weapon such as a hydrogen bomb contains a nuclear fission bomb that, when exploded, gives off enough energy to produce the extremely high temperatures necessary for fusion to occur.
 
 <!-- SEG:m68856:para:fs-idm26188048 -->
-Another much more beneficial way to create fusion reactions is in a {{term}}fusion reactor{{/term}}, a nuclear reactor in which fusion reactions of light nuclei are controlled. Because no solid materials are stable at such high temperatures, mechanical devices cannot contain the plasma in which fusion reactions occur. Two techniques to contain plasma at the density and temperature necessary for a fusion reaction are currently the focus of intensive research efforts: containment by a magnetic field and by the use of focused laser beams ([[xref:CNX_Chem_21_04_Fusion]]). A number of large projects are working to attain one of the biggest goals in science: getting hydrogen fuel to ignite and produce more energy than the amount supplied to achieve the extremely high temperatures and pressures that are required for fusion. At the time of this writing, there are no self-sustaining fusion reactors operating in the world, although small-scale controlled fusion reactions have been run for very brief periods.
+Another much more beneficial way to create fusion reactions is in a [[term:fusion reactor|term-00019]], a nuclear reactor in which fusion reactions of light nuclei are controlled. Because no solid materials are stable at such high temperatures, mechanical devices cannot contain the plasma in which fusion reactions occur. Two techniques to contain plasma at the density and temperature necessary for a fusion reaction are currently the focus of intensive research efforts: containment by a magnetic field and by the use of focused laser beams ([[xref:CNX_Chem_21_04_Fusion]]). A number of large projects are working to attain one of the biggest goals in science: getting hydrogen fuel to ignite and produce more energy than the amount supplied to achieve the extremely high temperatures and pressures that are required for fusion. At the time of this writing, there are no self-sustaining fusion reactors operating in the world, although small-scale controlled fusion reactions have been run for very brief periods.
 
 <!-- SEG:m68856:caption:CNX_Chem_21_04_Fusion-caption -->
 (a) This model is of the International Thermonuclear Experimental Reactor (ITER) reactor. Currently under construction in the south of France with an expected completion date of 2027, the ITER will be the world’s largest experimental Tokamak nuclear fusion reactor with a goal of achieving large-scale sustained energy production. (b) In 2012, the National Ignition Facility at Lawrence Livermore National Laboratory briefly produced over 500,000,000,000 watts (500 terawatts, or 500 TW) of peak power and delivered 1,850,000 joules (1.85 MJ) of energy, the largest laser energy ever produced and 1000 times the power usage of the entire United States in any given moment. Although lasting only a few billionths of a second, the 192 lasers attained the conditions needed for nuclear fusion ignition. This image shows the target prior to the laser shot. (credit a: modification of work by Stephan Mosel)
+
+<!-- SEG:m68856:alt:fs-idm26185504-alt -->
+Two photos are shown and labeled “a” and “b.” Photo a shows a model of the ITER reactor made up of colorful components. Photo b shows a close-up view of the end of a long, mechanical arm made up of many metal components.
 
 <!-- SEG:m68856:title:fs-idm189160608-title -->
 Key Concepts and Summary

@@ -1,12 +1,13 @@
 {
   "version": 1,
   "moduleId": "m68699",
-  "extractedAt": "2026-07-07T09:12:30.440Z",
+  "extractedAt": "2026-08-31T19:08:37.044Z",
   "sourceHash": "7be84bc79f21ea85",
-  "segmentCount": 3,
+  "segmentCount": 4,
   "segmentIds": [
     "m68699:title:auto-1",
     "m68699:caption:CNX_Chem_03_00_Pool-caption",
+    "m68699:alt:fs-idp99819248-alt",
     "m68699:para:fs-idp44036064"
   ],
   "equationCount": 0,

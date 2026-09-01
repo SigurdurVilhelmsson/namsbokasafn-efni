@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "moduleId": "m00052",
+  "extractedAt": "2026-08-31T19:08:47.248Z",
+  "sourceHash": "77a98a31e39fcd0e",
+  "segmentCount": 41,
+  "segmentIds": [
+    "m00052:title:auto-1",
+    "m00052:para:para-00001",
+    "m00052:para:para-00002",
+    "m00052:para:para-00003",
+    "m00052:caption:fig-00001-caption",
+    "m00052:alt:fig-00001-alt",
+    "m00052:para:para-00004",
+    "m00052:para:para-00005",
+    "m00052:para:para-00006",
+    "m00052:para:para-00008",
+    "m00052:table-title:table-00001-title",
+    "m00052:entry:auto-12",
+    "m00052:entry:auto-13",
+    "m00052:entry:auto-14",
+    "m00052:entry:auto-15",
+    "m00052:entry:auto-16",
+    "m00052:entry:auto-17",
+    "m00052:entry:auto-18",
+    "m00052:entry:auto-19",
+    "m00052:entry:auto-20",
+    "m00052:entry:auto-21",
+    "m00052:entry:auto-22",
+    "m00052:entry:auto-23",
+    "m00052:entry:auto-24",
+    "m00052:entry:auto-25",
+    "m00052:entry:auto-26",
+    "m00052:entry:auto-27",
+    "m00052:entry:auto-28",
+    "m00052:entry:auto-29",
+    "m00052:entry:auto-30",
+    "m00052:entry:auto-31",
+    "m00052:example-title:exam-00001-title",
+    "m00052:para:para-00009",
+    "m00052:para-title:para-00010-title",
+    "m00052:para:para-00010",
+    "m00052:para:para-00011",
+    "m00052:para:para-00012",
+    "m00052:para-title:para-00013-title",
+    "m00052:para:para-00013",
+    "m00052:alt:fig-00002-alt",
+    "m00052:title:sect-00001-title"
+  ],
+  "equationCount": 3,
+  "equationIds": [
+    "math-1",
+    "math-2",
+    "eq-00001"
+  ],
+  "elementCounts": {
+    "para": 12,
+    "section": 1,
+    "figure": 2,
+    "table": 1,
+    "example": 1,
+    "exercise": 2,
+    "note": 0,
+    "equation": 1,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002"
+    ],
+    "table": [
+      "table-00001"
+    ],
+    "example": [
+      "exam-00001"
+    ],
+    "exercise": [
+      "exer-00001",
+      "exer-00002"
+    ],
+    "note": [],
+    "equation": [
+      "eq-00001"
+    ],
+    "section": [
+      "sect-00001"
+    ]
+  }
+}

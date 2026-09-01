@@ -1,15 +1,16 @@
 {
   "version": 1,
   "moduleId": "m68810",
-  "extractedAt": "2026-07-07T09:12:44.612Z",
+  "extractedAt": "2026-08-31T19:08:43.510Z",
   "sourceHash": "b9ff24c17d727b64",
-  "segmentCount": 6,
+  "segmentCount": 7,
   "segmentIds": [
     "m68810:title:auto-1",
     "m68810:abstract-item:abstract-item-1",
     "m68810:abstract-item:abstract-item-2",
     "m68810:abstract-item:abstract-item-3",
     "m68810:caption:CNX_Chem_15_00_Fluorite-caption",
+    "m68810:alt:fs-idm215823840-alt",
     "m68810:para:fs-idm92459840"
   ],
   "equationCount": 0,

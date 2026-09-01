@@ -1,0 +1,182 @@
+{
+  "moduleId": "m00040",
+  "title": {
+    "segmentId": "m00040:title:auto-1",
+    "text": "Naming Cycloalkanes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "ed58bc92-5413-4bc4-bd30-d1a7865026cb"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00040:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00040:alt:fig-00001-alt",
+          "text": "The ball and stick models and bond-line structures of cyclopropane, cyclobutane, cyclopentane, and cyclohexane, positioned from left to right."
+        },
+        "src": "../../media/OChem_04_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00040:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00040:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00040:alt:fig-00002-alt",
+          "text": "The chemical structures of methylcyclopentane and 1-cyclopropylbutane. In 1-cyclopropylbutane, 3 carbons form a ring and 4 carbons form a straight chain."
+        },
+        "src": "../../media/OChem_04_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00040:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00040:alt:fig-00003-alt",
+          "text": "The correct and incorrect numbering of substituted cyclohexane. The name with correct numbering is 1,3-dimethylcyclohexane and with incorrect numbering is 1,5-dimethylcyclohexane because 1,3 is a lower locant than 1,5. 3 and 5 are labeled lower and higher, respectively."
+        },
+        "src": "../../media/OChem_04_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00040:alt:fig-00004-alt",
+          "text": "One correct and two incorrect numberings of a substituted cycloheptane. The name with the correct numbering is 2-ethyl-1,4-dimethylcycloheptane. The names with incorrect numberings are 1-ethyl-2,6-dimethylcycloheptane and 3-ethyl-1,4-dimethylcycloheptane."
+        },
+        "src": "../../media/OChem_04_01_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00040:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00040:alt:fig-00005-alt",
+          "text": "The correct and incorrect numbering of a substituted cyclopentane. The name with correct numbering is 1-ethyl-2-methylcyclopentane and the name with incorrect numbering is 2-ethyl-1-methylcyclopentane."
+        },
+        "src": "../../media/OChem_04_01_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00040:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00040:alt:fig-00006-alt",
+          "text": "The correct and incorrect numbering of a substituted cyclobutane. The name with correct numbering is 1-bromo-2-methylcyclobutane and the name with incorrect numbering is 2-bromo-1-methylcyclobutane."
+        },
+        "src": "../../media/OChem_04_01_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00040:para:para-00009"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00040:alt:fig-00007-alt",
+          "text": "The chemical structures of 1-bromo-3-ethyl-5-methyl-cyclohexane, (1-methylpropyl)cyclobutane or sec-butylcyclobutane, and 1-chloro-3-ethyl-2-methyl-cyclopentane, positioned from left to right."
+        },
+        "src": "../../media/OChem_04_01_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00040:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

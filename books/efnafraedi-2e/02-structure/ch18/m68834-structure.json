@@ -94,7 +94,10 @@
       },
       "media": {
         "id": "fs-idm72203456",
-        "alt": "Two photographs are shown and labeled, “a” and “b.” Photo a shows stalactites clinging to the ceiling of a cave while photo b shows a stalagmite growing from the floor of a cave.",
+        "alt": {
+          "segmentId": "m68834:alt:fs-idm72203456-alt",
+          "text": "Two photographs are shown and labeled, “a” and “b.” Photo a shows stalactites clinging to the ceiling of a cave while photo b shows a stalagmite growing from the floor of a cave."
+        },
         "src": "../../media/CNX_Chem_18_06_Cave.jpg",
         "mimeType": "image/jpeg"
       }
@@ -138,7 +141,10 @@
       },
       "media": {
         "id": "fs-idm92455936",
-        "alt": "A photograph of a watch glass full of a white solid is shown. A plastic pipette drips a colorless liquid into the solid, causing bubbles.",
+        "alt": {
+          "segmentId": "m68834:alt:fs-idm92455936-alt",
+          "text": "A photograph of a watch glass full of a white solid is shown. A plastic pipette drips a colorless liquid into the solid, causing bubbles."
+        },
         "src": "../../media/CNX_Chem_18_06_CarbonCO2.jpg",
         "mimeType": "image/jpeg"
       }

@@ -47,7 +47,10 @@
       },
       "media": {
         "id": "fs-idp194949440",
-        "alt": "A graph is shown. The horizontal axis is labeled, “P ( a t m ).” Its scale begins at zero with markings provided by multiples of 200 up to 1000. The vertical axis is labeled, “Z le( k P a ).” This scale begins at zero and includes multiples of 0.5 up to 2.0. Six curves are drawn of varying colors. One of these curves is a horizontal, light purple line extending right from 1.0 k P a on the vertical axis, which is labeled “Ideal gas.” The region of the graph beneath this line is shaded tan. The remaining curves also start at the same point on the vertical axis. An orange line extends to the upper right corner of the graph, reaching a value of approximately 1.7 k P a at 1000 a t m. This orange curve is labeled, “H subscript 2.” A blue curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 200 a t m. This curve reaches a value of nearly 2.0 k P a at about 800 a t m. This curve is labeled, “N subscript 2.” A red curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 400 a t m. This curve reaches a value of nearly 1.5 k P a at about 750 a t m. This curve is labeled, “O subscript 2.” A purple curve dips below the horizontal ideal gas line, dipping even lower than the O subscript 2 curve initially, then increases to cross the ideal gas line at about 400 a t m. This curve reaches a value of nearly 2.0 k P a at about 850 a t m. This curve is labeled, “C H subscript 4.” A yellow curve dips below the horizontal ideal gas line, dipping lower than the other curves to a minimum of about 0.4 k P a at about 0.75 a t m, then increases to cross the ideal gas line at about 500 a t m. This curve reaches a value of about 1.6 k P a at about 900 a t m. This curve is labeled, “C O subscript 2.”",
+        "alt": {
+          "segmentId": "m68759:alt:fs-idp194949440-alt",
+          "text": "A graph is shown. The horizontal axis is labeled, “P ( a t m ).” Its scale begins at zero with markings provided by multiples of 200 up to 1000. The vertical axis is labeled, “Z le( k P a ).” This scale begins at zero and includes multiples of 0.5 up to 2.0. Six curves are drawn of varying colors. One of these curves is a horizontal, light purple line extending right from 1.0 k P a on the vertical axis, which is labeled “Ideal gas.” The region of the graph beneath this line is shaded tan. The remaining curves also start at the same point on the vertical axis. An orange line extends to the upper right corner of the graph, reaching a value of approximately 1.7 k P a at 1000 a t m. This orange curve is labeled, “H subscript 2.” A blue curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 200 a t m. This curve reaches a value of nearly 2.0 k P a at about 800 a t m. This curve is labeled, “N subscript 2.” A red curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 400 a t m. This curve reaches a value of nearly 1.5 k P a at about 750 a t m. This curve is labeled, “O subscript 2.” A purple curve dips below the horizontal ideal gas line, dipping even lower than the O subscript 2 curve initially, then increases to cross the ideal gas line at about 400 a t m. This curve reaches a value of nearly 2.0 k P a at about 850 a t m. This curve is labeled, “C H subscript 4.” A yellow curve dips below the horizontal ideal gas line, dipping lower than the other curves to a minimum of about 0.4 k P a at about 0.75 a t m, then increases to cross the ideal gas line at about 500 a t m. This curve reaches a value of about 1.6 k P a at about 900 a t m. This curve is labeled, “C O subscript 2.”"
+        },
         "src": "../../media/CNX_Chem_09_06_ZvsPgraph.jpg",
         "mimeType": "image/jpeg"
       }
@@ -75,7 +78,10 @@
       },
       "media": {
         "id": "fs-idm161409328",
-        "alt": "This figure includes two diagrams. Each involves two lavender shaded boxes that contain 14 relatively evenly distributed, purple spheres. The first box in a on the left is labeled “ideal.” In the second slightly smaller box, on the right, a nearly centrally located purple sphere has 6 double-headed arrows extending outward from it to nearby spheres. This box is labeled “real.” In b, in the first box on the left, a single arrow points to a purple sphere at the right side that appears to be moving and impacting the right side of the box. There are no other spheres positioned near the right edge. This box is labeled “ideal.” The second box, on the right, shows the same image but has 5 double-headed arrows radiating out to the top, bottom, and left to other spheres. This box is labeled “real.”",
+        "alt": {
+          "segmentId": "m68759:alt:fs-idm161409328-alt",
+          "text": "This figure includes two diagrams. Each involves two lavender shaded boxes that contain 14 relatively evenly distributed, purple spheres. The first box in a on the left is labeled “ideal.” In the second slightly smaller box, on the right, a nearly centrally located purple sphere has 6 double-headed arrows extending outward from it to nearby spheres. This box is labeled “real.” In b, in the first box on the left, a single arrow points to a purple sphere at the right side that appears to be moving and impacting the right side of the box. There are no other spheres positioned near the right edge. This box is labeled “ideal.” The second box, on the right, shows the same image but has 5 double-headed arrows radiating out to the top, bottom, and left to other spheres. This box is labeled “real.”"
+        },
         "src": "../../media/CNX_Chem_09_06_RealGas2.jpg",
         "mimeType": "image/jpeg"
       }
@@ -89,7 +95,10 @@
       "type": "media",
       "id": "fs-idm139964416",
       "class": "scaled-down",
-      "alt": "This figure shows the equation P V equals n R T, with the P in blue text and the V in red text. This equation is followed by a right pointing arrow. Following this arrow, to the right in blue text appears the equation ( P minus a n superscript 2 divided by V squared ),” which is followed by the red text ( V minus n b ). This is followed in black text with equals n R T. Beneath the second equation appears the label, “Correction for molecular attraction” which is connected with a line segment to V squared. A second label, “Correction for volume of molecules,” is similarly connected to n b which appears in red.",
+      "alt": {
+        "segmentId": "m68759:alt:fs-idm139964416-alt",
+        "text": "This figure shows the equation P V equals n R T, with the P in blue text and the V in red text. This equation is followed by a right pointing arrow. Following this arrow, to the right in blue text appears the equation ( P minus a n superscript 2 divided by V squared ),” which is followed by the red text ( V minus n b ). This is followed in black text with equals n R T. Beneath the second equation appears the label, “Correction for molecular attraction” which is connected with a line segment to V squared. A second label, “Correction for volume of molecules,” is similarly connected to n b which appears in red."
+      },
       "src": "../../media/CNX_Chem_09_06_vanderWaals_img.jpg",
       "embedSrc": "",
       "width": "",
@@ -105,37 +114,16 @@
       "id": "fs-idm15100464",
       "class": "top-titled",
       "summary": "This table has three columns and seven rows. The first row is a header, and it labels each column, “Gas,” “a ( L to the second power a t m divided by m o l to the second power ),” “b ( L divided by m o l ).” Under “Gas” are the following: N subscript 2, O subscript 2, C O subscript 2, H subscript 2 O, H e, and C C l subscript 4. Under “a ( L to the second power a t m divided by m o l to the second power )” are the following: 1.39, 1.36, 3.59, 5.46, 0.0342, and 20.4. Under “b ( L divided by m o l )” are the following: 0.0391, 0.0318, 0.0427, 0.0305, 0.0237, and 0.1383.",
+      "title": null,
       "rows": [
         {
           "cells": [
             {
-              "segmentId": "m68759:entry:auto-17",
+              "segmentId": "m68759:entry:auto-20",
               "attributes": {
                 "namest": "c1",
                 "nameend": "c3",
                 "align": "center"
-              }
-            }
-          ]
-        },
-        {
-          "cells": [
-            {
-              "segmentId": "m68759:entry:auto-18",
-              "attributes": {
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m68759:entry:auto-19",
-              "attributes": {
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m68759:entry:auto-20",
-              "attributes": {
-                "align": "left"
               }
             }
           ]
@@ -266,6 +254,28 @@
             },
             {
               "segmentId": "m68759:entry:auto-38",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68759:entry:auto-39",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-40",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-41",
               "attributes": {
                 "align": "left"
               }
@@ -424,11 +434,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68759:entry:auto-62",
+                  "segmentId": "m68759:entry:auto-65",
                   "attributes": {}
                 }
               ]
@@ -436,7 +447,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68759:entry:auto-63",
+                  "segmentId": "m68759:entry:auto-66",
                   "attributes": {}
                 }
               ]
@@ -463,6 +474,14 @@
                 "type": "para",
                 "id": "fs-idm139673280",
                 "segmentId": "m68759:problem:fs-idm139673280"
+              },
+              {
+                "type": "media",
+                "id": "fs-idp4796912",
+                "alt": {
+                  "segmentId": "m68759:alt:fs-idp4796912-alt",
+                  "text": "This figure includes 6 graphs. The first, which is labeled, “Gas A,” has a horizontal axis labeled, “Temperature,” and a vertical axis labeled, “Volume.” A straight blue line segment extends from the lower left to the upper right of this graph. The open area in the lower right portion of the graph contains the label, “n, P constant.” The second, which is labeled, “Gas B,” has a horizontal axis labeled, “P,” and a vertical axis labeled, “P V.” A straight blue line segment extends horizontally across the center of this graph. The open area in the lower right portion of the graph contains the label, “n, T constant.” The third, which is labeled, “Gas C,” has a horizontal axis labeled,“P V divided by R T,” and a vertical axis labeled, “Moles.” A blue curve begins about halfway up the vertical axis, dips slightly, then increases steadily to the upper right region of the graph. The fourth, which is labeled, “Gas D,” has a horizontal axis labeled, “P V divided by R T,” and a vertical axis labeled, “Moles.” A straight blue line segment extends horizontally across the center of this graph. The open area in the lower right portion of the graph contains the label “n, P constant.” The fifth, which is labeled, “Gas E,” has a horizontal axis labeled, “Temperature,” and a vertical axis labeled, “Volume.” A blue curve extends from the lower left to the upper right of this graph. The open area in the lower right portion of the graph contains the label “n, P constant.” The sixth graph, which is labeled, “Gas F,” has a horizontal axis labeled, “Temperature,” and a vertical axis labeled, “Pressure.” A blue curve begins toward the lower left region of the graph, increases at a rapid rate, then continues to increase at a relatively slow rate moving left to right across the graph. The open area in the lower right portion of the graph contains the label, “n, V constant.”"
+                }
               }
             ]
           },
@@ -485,6 +504,14 @@
                 "type": "para",
                 "id": "fs-idp99769680",
                 "segmentId": "m68759:problem:fs-idp99769680"
+              },
+              {
+                "type": "media",
+                "id": "fs-idp12016592",
+                "alt": {
+                  "segmentId": "m68759:alt:fs-idp12016592-alt",
+                  "text": "A graph is shown. The horizontal axis is labeled, “P ( a t m ).” Its scale is marked at 0, 1, and 2. The vertical axis is labeled, “P V ( a t m L ).” This scale includes markings at 0, 22.4, 22.5, and 22.6. Two curves and two lines are drawn of varying colors. One line is a horizontal, blue line extending right from about 22.42 a t m L on the vertical axis, and is labeled, “Ideal gas.” The remaining two curves and one line start at the same point on the vertical axis. A green line extends up and to the right slightly on the graph, reaching a value of approximately 22.46 a t m L at 2 a t m. This green line is labeled, “H e.” An orange curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 1 a t m. This curve reaches a value of about 22.52 a t m L at 2 a t m. This curve is labeled, “C H subscript 4.” A purple curve dips below the horizontal ideal gas line initially, then increases to cross the line at about 0.8 a t m. This curve reaches a value of nearly 22.62 a t m L at nearly 1.2 a t m. This curve is labeled, “C O subscript 2.”"
+                }
               }
             ]
           },

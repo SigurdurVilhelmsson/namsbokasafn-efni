@@ -44,7 +44,10 @@
           },
           "media": {
             "id": "fs-idm103231072",
-            "alt": "Three images are shown and labeled “a,” “b,” and “c.” Each image shows a round bulb connected on the right to a tube that is horizontal, then is bent vertically, curves, and then is vertical again to make a u-shape. A valve is located in the horizontal portion of the tube. Image a depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid. The phrase, “Molecules escape surface and form vapor” is written below the bulb, and a gray liquid in the u-shaped portion of the tube is shown at equal heights on the right and left sides. Image b depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid to molecules drawn in the upper portion of the bulb. A gray liquid in the u-shaped portion of the tube is shown slightly higher on the right side than on the left side. Image c depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid to molecules drawn in the upper portion of the bulb. There are more molecules present in c than in b. The phrase “Equilibrium reached, vapor pressure determined,” is written below the bulb and a gray liquid in the u-shaped portion of the tube is shown higher on the right side. A horizontal line is drawn level with each of these liquid levels and the distance between the lines is labeled with a double-headed arrow. This section is labeled with the phrase, “Vapor pressure.”",
+            "alt": {
+              "segmentId": "m68768:alt:fs-idm103231072-alt",
+              "text": "Three images are shown and labeled “a,” “b,” and “c.” Each image shows a round bulb connected on the right to a tube that is horizontal, then is bent vertically, curves, and then is vertical again to make a u-shape. A valve is located in the horizontal portion of the tube. Image a depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid. The phrase, “Molecules escape surface and form vapor” is written below the bulb, and a gray liquid in the u-shaped portion of the tube is shown at equal heights on the right and left sides. Image b depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid to molecules drawn in the upper portion of the bulb. A gray liquid in the u-shaped portion of the tube is shown slightly higher on the right side than on the left side. Image c depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid to molecules drawn in the upper portion of the bulb. There are more molecules present in c than in b. The phrase “Equilibrium reached, vapor pressure determined,” is written below the bulb and a gray liquid in the u-shaped portion of the tube is shown higher on the right side. A horizontal line is drawn level with each of these liquid levels and the distance between the lines is labeled with a double-headed arrow. This section is labeled with the phrase, “Vapor pressure.”"
+            },
             "src": "../../media/CNX_Chem_10_03_VapPress1.jpg",
             "mimeType": "image/jpeg"
           }
@@ -91,6 +94,14 @@
               "segmentId": "m68768:para:fs-idm44101792"
             },
             {
+              "type": "media",
+              "id": "fs-idm178035424",
+              "alt": {
+                "segmentId": "m68768:alt:fs-idm178035424-alt",
+                "text": "Four Lewis structures are shown. The first structure, labeled “ethanol,” shows a carbon bonded to three hydrogen atoms that is single bonded to a second carbon that is bonded to two hydrogen atoms and a hydroxyl group. The second structure, labeled “ethylene glycol, shows two carbon atoms, single bonded to one another, single bonded each to two hydrogen atoms, and each single bonded to a hydroxyl group. The third image, labeled “diethyl ether,” shows an oxygen atom single bonded on both sides to a carbon that is bonded to two hydrogens, and a second carbon, that is itself bonded to three hydrogen atoms. The fourth image, labeled “water,” shows an oxygen atom that is single bonded on both sides to hydrogen atoms."
+              }
+            },
+            {
               "type": "note",
               "id": "fs-idm91362784",
               "title": {
@@ -112,21 +123,10 @@
           "id": "fs-idm60218336",
           "class": "column-header unnumbered",
           "summary": "This table has two rows and five columns. The first column is a header column, and it labels each row: “Compound,” and “Vapor Pressure at 25 degrees C.” To the right of the “Compound” column are the following: methanol, C H subscript 3 O H; ethanol, C subscript 2 H subscript 5 O H; propanol C subscript 3 H subscript 7 O H; and butanol C subscript 4 H subscript 9 O H. To the right of the “Vapor Pressure at 25 degrees C” column are the following: 11.9 k P a, 5.95 k P a, 2.67 k P a, and 0.56 k P a.",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68768:entry:auto-20",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68768:entry:auto-21",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68768:entry:auto-22",
                   "attributes": {
@@ -144,11 +144,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68768:entry:auto-25",
                   "attributes": {
@@ -160,7 +156,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68768:entry:auto-27",
                   "attributes": {
@@ -175,6 +175,18 @@
                 },
                 {
                   "segmentId": "m68768:entry:auto-29",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68768:entry:auto-30",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68768:entry:auto-31",
                   "attributes": {
                     "align": "left"
                   }
@@ -197,7 +209,10 @@
           },
           "media": {
             "id": "fs-idm211797072",
-            "alt": "A graph is shown where the y-axis is labeled “Number of molecules” and the x-axis is labeled “Kinetic Energy.” Two lines are graphed and a vertical dotted line, labeled “Minimum K E needed to escape,” is drawn halfway across the x-axis. The first line move sharply upward and has a high peak near the left side of the x-axis. It drops just as steeply and ends about 60 percent of the way across the x-axis. This line is labeled “Low T.” A second line, labeled “High T,” begins at the same point as the first, but does not go to such a high point, is wider, and ends slightly further to the right on the x-axis.",
+            "alt": {
+              "segmentId": "m68768:alt:fs-idm211797072-alt",
+              "text": "A graph is shown where the y-axis is labeled “Number of molecules” and the x-axis is labeled “Kinetic Energy.” Two lines are graphed and a vertical dotted line, labeled “Minimum K E needed to escape,” is drawn halfway across the x-axis. The first line move sharply upward and has a high peak near the left side of the x-axis. It drops just as steeply and ends about 60 percent of the way across the x-axis. This line is labeled “Low T.” A second line, labeled “High T,” begins at the same point as the first, but does not go to such a high point, is wider, and ends slightly further to the right on the x-axis."
+            },
             "src": "../../media/CNX_Chem_10_03_VapPress3.jpg",
             "mimeType": "image/jpeg"
           }
@@ -227,7 +242,10 @@
           },
           "media": {
             "id": "fs-idm188874672",
-            "alt": "A graph is shown where the x-axis is labeled “Temperature ( degree sign, C )” and has values of 200 to 1000 in increments of 200 and the y-axis is labeled “Pressure ( k P a )” and has values of 20 to 120 in increments of 20. A horizontal dotted line extends across the graph at point 780 on the y-axis while three vertical dotted lines extend from points 35, 78, and 100 to meet the horizontal dotted line. Four lines are graphed. The first line, labeled “ethyl ether,” begins at the point “0 , 200” and extends in a slight curve to point “45, 1000” while the second line, labeled “ethanol”, extends from point “0, 20” to point “88, 1000” in a more extreme curve. The third line, labeled “water,” begins at the point “0, 0” and extends in a curve to point “108, 1000” while the fourth line, labeled “ethylene glycol,” extends from point “80, 0” to point “140, 100” in a very shallow curve.",
+            "alt": {
+              "segmentId": "m68768:alt:fs-idm188874672-alt",
+              "text": "A graph is shown where the x-axis is labeled “Temperature ( degree sign, C )” and has values of 200 to 1000 in increments of 200 and the y-axis is labeled “Pressure ( k P a )” and has values of 20 to 120 in increments of 20. A horizontal dotted line extends across the graph at point 780 on the y-axis while three vertical dotted lines extend from points 35, 78, and 100 to meet the horizontal dotted line. Four lines are graphed. The first line, labeled “ethyl ether,” begins at the point “0 , 200” and extends in a slight curve to point “45, 1000” while the second line, labeled “ethanol”, extends from point “0, 20” to point “88, 1000” in a more extreme curve. The third line, labeled “water,” begins at the point “0, 0” and extends in a curve to point “108, 1000” while the fourth line, labeled “ethylene glycol,” extends from point “80, 0” to point “140, 100” in a very shallow curve."
+            },
             "src": "../../media/CNX_Chem_10_03_VapPress2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -574,7 +592,10 @@
           },
           "media": {
             "id": "fs-idm183436304",
-            "alt": "A person’s shoulder and neck are shown and their skin is covered in beads of liquid.",
+            "alt": {
+              "segmentId": "m68768:alt:fs-idm183436304-alt",
+              "text": "A person’s shoulder and neck are shown and their skin is covered in beads of liquid."
+            },
             "src": "../../media/CNX_Chem_10_03_Evap.jpg",
             "mimeType": "image/jpeg"
           }
@@ -603,7 +624,10 @@
           },
           "media": {
             "id": "fs-idm137978064",
-            "alt": "This figure shows four photos each labeled, “a,” “b,” “c,” and, “d.” Each photo shows a beaker with ice and a digital thermometer. The first photo shows ice cubes in the beaker, and the thermometer reads negative 12.0 degrees C. The second photo shows slightly melted ice, and the thermometer reads 0.0 degrees C. The third photo shows more water than ice in the beaker. The thermometer reads 0.0 degrees C. The fourth photo shows the ice completely melted, and the thermometer reads 22.2 degrees C.",
+            "alt": {
+              "segmentId": "m68768:alt:fs-idm137978064-alt",
+              "text": "This figure shows four photos each labeled, “a,” “b,” “c,” and, “d.” Each photo shows a beaker with ice and a digital thermometer. The first photo shows ice cubes in the beaker, and the thermometer reads negative 12.0 degrees C. The second photo shows slightly melted ice, and the thermometer reads 0.0 degrees C. The third photo shows more water than ice in the beaker. The thermometer reads 0.0 degrees C. The fourth photo shows the ice completely melted, and the thermometer reads 22.2 degrees C."
+            },
             "src": "../../media/CNX_Chem_10_03_MeltingIce.jpg",
             "mimeType": "image/jpeg"
           }
@@ -663,7 +687,10 @@
           },
           "media": {
             "id": "fs-idm195457584",
-            "alt": "This figure shows a test tube. In the bottom is a dark substance which breaks up into a purple gas at the top.",
+            "alt": {
+              "segmentId": "m68768:alt:fs-idm195457584-alt",
+              "text": "This figure shows a test tube. In the bottom is a dark substance which breaks up into a purple gas at the top."
+            },
             "src": "../../media/CNX_Chem_10_03_Sublimtn.jpg",
             "mimeType": "image/jpeg"
           }
@@ -707,7 +734,10 @@
           },
           "media": {
             "id": "fs-idm63916320",
-            "alt": "A diagram is shown with a vertical line drawn on the left side and labeled “Energy” and three horizontal lines drawn near the bottom, lower third and top of the diagram. These three lines are labeled, from bottom to top, “Solid,” “Liquid” and “Gas.” Near the middle of the diagram, a vertical, upward-facing arrow is drawn from the solid line to the gas line and labeled “Sublimation, delta sign, H, subscript sub.” To the right of this arrow is a second vertical, upward-facing arrow that is drawn from the solid line to the liquid line and labeled “Fusion, delta sign, H, subscript fus.” Above the second arrow is a third arrow drawn from the liquid line to the gas line and labeled, “Vaporization, delta sign, H, subscript vap.”",
+            "alt": {
+              "segmentId": "m68768:alt:fs-idm63916320-alt",
+              "text": "A diagram is shown with a vertical line drawn on the left side and labeled “Energy” and three horizontal lines drawn near the bottom, lower third and top of the diagram. These three lines are labeled, from bottom to top, “Solid,” “Liquid” and “Gas.” Near the middle of the diagram, a vertical, upward-facing arrow is drawn from the solid line to the gas line and labeled “Sublimation, delta sign, H, subscript sub.” To the right of this arrow is a second vertical, upward-facing arrow that is drawn from the solid line to the liquid line and labeled “Fusion, delta sign, H, subscript fus.” Above the second arrow is a third arrow drawn from the liquid line to the gas line and labeled, “Vaporization, delta sign, H, subscript vap.”"
+            },
             "src": "../../media/CNX_Chem_10_03_PhaseChng.jpg",
             "mimeType": "image/jpeg"
           }
@@ -751,7 +781,10 @@
           },
           "media": {
             "id": "fs-idm120231984",
-            "alt": "A graph is shown where the x-axis is labeled “Amount of heat added” and the y-axis is labeled “Temperature ( degree sign C )” and has values of negative 10 to 100 in increments of 20. A right-facing horizontal arrow extends from point “0, 0” to the right side of the graph. A line graph begins at the lower left of the graph and moves to point “0” on the y-axis. This segment of the line is labeled “H, subscript 2, O ( s ).” The line then flattens and travels horizontally for a small distance. This segment is labeled “Solid begins to melt” on its left side and “All solid melted” on its right side. The line then goes steeply upward in a linear fashion until it hits point “100” on the y-axis. This segment of the line is labeled “H, subscript 2, O,( l ).” The line then flattens and travels horizontally for a moderate distance. This segment is labeled “Liquid begins to boil” on its left side and “All liquid evaporated” on its right side. The line then rises to a point above “100” on the y-axis. This segment of the line is labeled “H, subscript 2, O ( g ).”",
+            "alt": {
+              "segmentId": "m68768:alt:fs-idm120231984-alt",
+              "text": "A graph is shown where the x-axis is labeled “Amount of heat added” and the y-axis is labeled “Temperature ( degree sign C )” and has values of negative 10 to 100 in increments of 20. A right-facing horizontal arrow extends from point “0, 0” to the right side of the graph. A line graph begins at the lower left of the graph and moves to point “0” on the y-axis. This segment of the line is labeled “H, subscript 2, O ( s ).” The line then flattens and travels horizontally for a small distance. This segment is labeled “Solid begins to melt” on its left side and “All solid melted” on its right side. The line then goes steeply upward in a linear fashion until it hits point “100” on the y-axis. This segment of the line is labeled “H, subscript 2, O,( l ).” The line then flattens and travels horizontally for a moderate distance. This segment is labeled “Liquid begins to boil” on its left side and “All liquid evaporated” on its right side. The line then rises to a point above “100” on the y-axis. This segment of the line is labeled “H, subscript 2, O ( g ).”"
+            },
             "src": "../../media/CNX_Chem_10_03_HeatCurve.jpg",
             "mimeType": "image/jpeg"
           }
@@ -902,11 +935,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68768:entry:auto-124",
+                  "segmentId": "m68768:entry:auto-133",
                   "attributes": {}
                 }
               ]
@@ -914,7 +948,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68768:entry:auto-125",
+                  "segmentId": "m68768:entry:auto-134",
                   "attributes": {}
                 }
               ]
@@ -922,7 +956,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68768:entry:auto-126",
+                  "segmentId": "m68768:entry:auto-135",
                   "attributes": {}
                 }
               ]

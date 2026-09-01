@@ -1,0 +1,114 @@
+{
+  "moduleId": "m00218",
+  "title": {
+    "segmentId": "m00218:title:auto-1",
+    "text": "Nucleophilic Addition of Hydride and Grignard Reagents: Alcohol Formation"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "bf41e88c-0d81-49bf-9b2d-fad44b381a5b"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00218:title:sect-00001-title",
+        "text": "Addition of Hydride Reagents: Reduction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00218:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00218:alt:fig-00001-alt",
+              "text": "First reaction: Carbonyl in aldehyde gets reduced to primary alcohol using sodium borohydride in ethanol. Second reaction: Carbonyl in ketone gets reduced to secondary alcohol using the same reagents."
+            },
+            "src": "../../media/OChem_19_07_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00218:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00218:alt:fig-00002-alt",
+              "text": "Hydride from sodium borohydride adds to the carbonyl of ketone forming an alkoxide intermediate where O carries a negative charge. Further hydrolysis of the intermediate gives secondary alcohol and water."
+            },
+            "src": "../../media/OChem_19_07_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "mechanism-figure scaled-down",
+          "caption": {
+            "segmentId": "m00218:caption:fig-00003-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00218:alt:fig-00003-alt",
+              "text": "Three-step formation of alcohol from carbonyl and Grignard. Lewis acid-base complex forms between the carbonyl oxygen and magnesium; R attacks carbonyl; tetrahedral intermediate undergoes hydrolysis to give alcohol."
+            },
+            "src": "../../media/OChem_19_07_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00218:title:sect-00002-title",
+        "text": "Addition of Grignard Reagents, RMgX"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00218:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00218:alt:fig-00004-alt",
+              "text": "The conversion of aldehyde to secondary alcohol happens using R double prime M g X and hydronium. Conversion of ketone to tertiary alcohol happens using the same reagents."
+            },
+            "src": "../../media/OChem_19_07_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00218:para:para-00004"
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

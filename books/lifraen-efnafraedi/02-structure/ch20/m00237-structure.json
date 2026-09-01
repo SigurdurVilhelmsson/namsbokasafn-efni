@@ -1,0 +1,997 @@
+{
+  "moduleId": "m00237",
+  "title": {
+    "segmentId": "m00237:title:auto-1",
+    "text": "Spectroscopy of Carboxylic Acids and Nitriles"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d7d6da70-d515-45ee-94b5-656bc16b04b5"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00237:title:sect-00001-title",
+        "text": "Infrared Spectroscopy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00237:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00001-alt",
+              "text": "Structures of free carboxylic acid (rare) and associated carboxylic acid (two molecules hydrogen-bonded together). I R peaks for free carboxyl group around 1760, associated carboxyl group at 1710 wavenumbers."
+            },
+            "src": "../../media/OChem_20_08_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00237:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00237:caption:fig-00002-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00002-alt",
+              "text": "I R spectrum of butanoic acid shows broad peak at 3000 (hydroxyl group), and strong carbonyl peak at 1710 wavenumbers."
+            },
+            "src": "../../media/OChem_20_08_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00237:para:para-00003"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00237:title:sect-00002-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00237:title:sect-00003-title",
+        "text": "Nuclear Magnetic Resonance Spectroscopy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00237:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00003-alt",
+              "text": "Various C 13 shifts: propionic acid (alpha carbon at 181); benzoic acid (carbonyl at 173, benzenes at 128 to 134), but-2-enoic acid (carbonyl at 172), and propionitrile (nitrile at 121)."
+            },
+            "src": "../../media/OChem_20_08_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00237:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00237:caption:fig-00004-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00004-alt",
+              "text": "The proton spectrum of phenylacetic acid shows peaks at 0 (T M S), 3.7 (singlet), 7.3 (multiplet), and 12.0 (singlet)."
+            },
+            "src": "../../media/OChem_20_08_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00237:title:sect-00004-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00237:title:sect-00005-title",
+        "text": "Vitamin C"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00237:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00237:caption:fig-00005-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00005-alt",
+              "text": "A black and white photograph of a shipwreck, with an old expedition-style sailing ship stuck in ice."
+            },
+            "src": "../../media/OSX_OrgChem_20_98_Ship.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00237:para:para-00009"
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00237:para:para-00010"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00006-alt",
+              "text": "The structure and ball-and-stick model of vitamin C (ascorbic acid). The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively."
+            },
+            "src": "../../media/OChem_20_08_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00237:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00237:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00237:para:para-00013"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "caption": {
+            "segmentId": "m00237:caption:fig-00007-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00007-alt",
+              "text": "A flowchart depicting the preparation of vitamin C from glucose. The five different steps include reduction using hydrogen, oxidation by acetobacter suboxydans, reaction with acetone, sodium hypochlorite, and hydrochloric acid."
+            },
+            "src": "../../media/OChem_20_08_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00237:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00237:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00237:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00237:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00237:item:list-00001-item-5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00007",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00237:title:sect-00007-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00237:para:para-00014"
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00237:para:para-00015"
+        },
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00237:para:para-00016"
+        },
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00237:para:para-00017"
+        },
+        {
+          "type": "para",
+          "id": "para-00018",
+          "segmentId": "m00237:para:para-00018"
+        },
+        {
+          "type": "para",
+          "id": "para-00019",
+          "segmentId": "m00237:para:para-00019"
+        },
+        {
+          "type": "para",
+          "id": "para-00020",
+          "segmentId": "m00237:para:para-00020"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00008",
+      "class": "summary-reactions",
+      "title": {
+        "segmentId": "m00237:title:sect-00008-title",
+        "text": "Summary of Reactions"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00002",
+          "listType": "enumerated",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00237:item:list-00002-item-1",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00003",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00237:item:list-00003-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00237:item:list-00003-item-2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00237:item:list-00002-item-2",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00004",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00237:item:list-00004-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00237:item:list-00004-item-2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00237:item:list-00002-item-3",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00005",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00237:item:list-00005-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00237:item:list-00005-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00237:item:list-00005-item-3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00008-alt",
+              "text": "Organomagnesium halide reacts with carbon dioxide followed by acid hydrolysis to produce a carboxylic acid. Carbon dioxide's carbon becomes the carboxyl."
+            },
+            "src": "../../media/OChem_20_EC_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00009-alt",
+              "text": "Nitrile reacts with hydronium or sodium hydroxide and water to produce carboxylic acid. Nitrile carbon becomes the carboxyl."
+            },
+            "src": "../../media/OChem_20_EC_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00010-alt",
+              "text": "Alkyl bromide reacts with sodium cyanide to produce a nitrile. Cyanide carbon becomes nitrile carbon."
+            },
+            "src": "../../media/OChem_20_EC_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00011-alt",
+              "text": "An amide reacts with thionyl chloride to form nitrile, sulfur dioxide, and two equivalents of hydrogen chloride. Carbonyl carbon becomes nitrile carbon."
+            },
+            "src": "../../media/OChem_20_EC_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00012",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00012-alt",
+              "text": "Nitrile reacts first with sodium hydroxide and water, then with hydronium to produce carboxylic acid and ammonia. Nitrile nitrogen becomes ammonia nitrogen."
+            },
+            "src": "../../media/OChem_20_EC_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00013",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00013-alt",
+              "text": "Nitrile reacts first with lithium aluminum hydride, then with water to produce a primary amine. Nitrile nitrogen becomes amine nitrogen."
+            },
+            "src": "../../media/OChem_20_EC_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00014",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00237:alt:fig-00014-alt",
+              "text": "Nitrile reacts first with organomagnesium bromide in ether, then with hydronium to produce a ketone and ammonia."
+            },
+            "src": "../../media/OChem_20_EC_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00009",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00237:title:sect-00009-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00021",
+          "segmentId": "m00237:para:para-00021"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00026",
+          "segmentId": "m00237:para:para-00026"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00037",
+          "segmentId": "m00237:para:para-00037"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00043",
+          "segmentId": "m00237:para:para-00043"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00051",
+          "segmentId": "m00237:para:para-00051"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00062",
+          "segmentId": "m00237:para:para-00062"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00041",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00042",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00067",
+          "segmentId": "m00237:para:para-00067"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00043",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00044",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00045",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00046",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00047",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00048",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00049",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00050",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00051",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00052",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00053",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00054",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00055",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00056",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

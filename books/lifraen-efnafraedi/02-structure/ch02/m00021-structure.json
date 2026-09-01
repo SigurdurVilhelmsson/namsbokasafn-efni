@@ -1,0 +1,81 @@
+{
+  "moduleId": "m00021",
+  "title": {
+    "segmentId": "m00021:title:auto-1",
+    "text": "Resonance"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "342f6331-6fec-4a96-a68a-933e07426de1"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00021:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00021:alt:fig-00001-alt",
+          "text": "Resonance structures of acetate showing that single bond and negative charge are on different oxygen atoms in the two structures. Text asks which oxygen should have double bond."
+        },
+        "src": "../../media/OChem_02_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00021:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00021:alt:fig-00002-alt",
+          "text": "Ball-and-stick model and electron potential map of acetate anion. Both resonance forms are also shown, where a different oxygen has a single bond and negative charge in each form."
+        },
+        "src": "../../media/OChem_02_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00021:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00021:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00021:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00021:alt:fig-00003-alt",
+          "text": "Ball-and-stick model and electron potential map of benzene. Both resonance forms are also shown, where alternating single and double bonds are in different places in different forms."
+        },
+        "src": "../../media/OChem_02_04_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 4
+}

@@ -1,0 +1,34 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡N}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mstyle mathvariant=\"bold\" mathsize=\"normal\"><m:mtext>RC≡N</m:mtext></m:mstyle></m:mrow></m:math>",
+    "latex": "{\\text{RC≡N}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡N}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  }
+}

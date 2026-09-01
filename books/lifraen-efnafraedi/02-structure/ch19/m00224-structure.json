@@ -1,0 +1,326 @@
+{
+  "moduleId": "m00224",
+  "title": {
+    "segmentId": "m00224:title:auto-1",
+    "text": "Conjugate Addition of Amines"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "ef872dd5-bdb0-484f-8ead-117a80ef8c90"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00224:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00224:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00224:alt:fig-00001-alt",
+          "text": "In direct (1,2) addition, nucleophile attacks carbonyl, forms alcohol after protonation. In conjugate (1,4) addition, nucleophile attacks beta carbon of alpha-beta unsaturated aldehyde or ketone to form saturated after protonation."
+        },
+        "src": "../../media/OChem_19_13_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00224:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00224:alt:fig-00002-alt",
+          "text": "The ball-and-stick model in electrostatic potential map of an alpha-beta-unsaturated aldehyde or ketone. Resonance structures with negative on oxygen and positive on carbonyl and beta carbon are shown."
+        },
+        "src": "../../media/OChem_19_13_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00224:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00224:alt:fig-00003-alt",
+          "text": "Double bond of alpha-beta unsaturated ketone or aldehyde is activated, susceptible to nucleophilic attack. Double bond with no adjacent carbonyl is unactivated, not susceptible to nucleophilic attack."
+        },
+        "src": "../../media/OChem_19_13_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00224:title:sect-00001-title",
+        "text": "Conjugate Addition of Amines"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00224:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00224:alt:fig-00004-alt",
+              "text": "2-Cyclohexenone undergoes reversible reactions with methylamine to form beta-amino ketone (sole product). A second pathway shows intermediate ion leading to an unsaturated imine that is not formed."
+            },
+            "src": "../../media/OChem_19_13_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00224:title:sect-00002-title",
+        "text": "Conjugate Addition of Water"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00224:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00224:alt:fig-00005-alt",
+              "text": "Cis-aconitate ([1Z]-prop-1-ene-1,2,3-tricarboxyate) reacts with water to form isocitrate ([1R,2S]-1-hydroxypropane-1,2,3-tricarboxylic acid)."
+            },
+            "src": "../../media/OChem_19_13_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00224:title:sect-00003-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": null,
+      "title": {
+        "segmentId": "m00224:title:sect-00004-title",
+        "text": "Conjugate Addition of Alkyl Groups: Organocopper Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00224:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00224:alt:fig-00006-alt",
+              "text": "An alpha beta-unsaturated ketone reacts first with R anion, then with hydronium, to produce a saturated product with R as a substituent on the beta carbon."
+            },
+            "src": "../../media/OChem_19_13_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00224:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00224:alt:fig-00007-alt",
+              "text": "R X reacts with two equivalents lithium in pentane to form R L i Two equivalents of this react with copper iodide in ether to form lithium diorganocopper (Gilman reagent)."
+            },
+            "src": "../../media/OChem_19_13_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00224:para:para-00009"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00224:alt:fig-00008-alt",
+              "text": "2-cyclohexenone reacts with methyl magnesium bromide or methyl lithium, then hydronium, to yield 1-methyl-2-cyclohexen-1-ol, or with Gilman reagent, then hydronium, to yield 3-methylcyclohexanone."
+            },
+            "src": "../../media/OChem_19_13_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00224:para:para-00010"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00224:alt:fig-00009-alt",
+              "text": "Alpha-beta unsaturated ketone reacts with lithium bonded R 2 C u compound to form copper-containing intermediate. This reacts with hydronium ion to form saturated carbonyl with R at beta carbon."
+            },
+            "src": "../../media/OChem_19_13_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "exam-00001",
+          "title": {
+            "segmentId": "m00224:example-title:exam-00001-title",
+            "text": "Using a Conjugate Addition Reaction"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00011",
+              "segmentId": "m00224:para:para-00011"
+            },
+            {
+              "type": "para",
+              "id": "para-00012",
+              "segmentId": "m00224:para:para-00012",
+              "title": {
+                "segmentId": "m00224:para-title:para-00012-title",
+                "text": "Strategy"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00013",
+              "title": {
+                "segmentId": "m00224:para-title:para-00013-title",
+                "text": "Solution"
+              }
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00224:alt:fig-00010-alt",
+              "text": "The structure of 2-methyl-3-propylcyclopentane. It is cyclopentanone with methyl on C 2 and propyl on C 3 position."
+            },
+            "src": "../../media/OChem_19_13_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00224:alt:fig-00011-alt",
+              "text": "2-methyl-2-cyclopentenone reacts with lithium dipropylcopper in ether, then hydronium ion to form 2-methyl-3-propylcylopentanone."
+            },
+            "src": "../../media/OChem_19_13_011.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00224:title:sect-00005-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 13
+}

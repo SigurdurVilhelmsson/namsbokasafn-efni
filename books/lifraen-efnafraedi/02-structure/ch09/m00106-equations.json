@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>RC≡CR&#8242;</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{RC≡CR&#8242;}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>RC≡CH</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{RC≡CH}}"
+  }
+}

@@ -22,8 +22,11 @@ The relative strength of an acid or base is the extent to which it ionizes when 
 <!-- SEG:m68805:caption:CNX_Chem_14_03_strong-caption -->
 Some of the common strong acids and bases are listed here.
 
+<!-- SEG:m68805:alt:fs-idp3283088-alt -->
+This table has seven rows and two columns. The first row is a header row, and it labels each column, “6 Strong Acids,” and, “6 Strong Bases.” Under the “6 Strong Acids” column are the following: H C l O subscript 4 perchloric acid; H C l hydrochloric acid; H B r hydrobromic acid; H I hydroiodic acid; H N O subscript 3 nitric acid; H subscript 2 S O subscript 4 sulfuric acid. Under the “6 Strong Bases” column are the following: L i O H lithium hydroxide; N a O H sodium hydroxide; K O H potassium hydroxide; C a ( O H ) subscript 2 calcium hydroxide; S r ( O H ) subscript 2 strontium hydroxide; B a ( O H ) subscript 2 barium hydroxide.
+
 <!-- SEG:m68805:para:fs-idp107824512 -->
-The relative strengths of acids may be quantified by measuring their equilibrium constants in aqueous solutions. In solutions of the same concentration, stronger acids ionize to a greater extent, and so yield higher concentrations of hydronium ions than do weaker acids. The equilibrium constant for an acid is called the {{term}}acid-ionization constant, [[i:K]][[sub:a]]{{/term}}. For the reaction of an acid HA:
+The relative strengths of acids may be quantified by measuring their equilibrium constants in aqueous solutions. In solutions of the same concentration, stronger acids ionize to a greater extent, and so yield higher concentrations of hydronium ions than do weaker acids. The equilibrium constant for an acid is called the [[term:acid-ionization constant, [[i:K]][[sub:a]]|term-00001]]. For the reaction of an acid HA:
 
 <!-- SEG:m68805:para:fs-idp44134944 -->
 the acid ionization constant is written
@@ -35,7 +38,7 @@ where the concentrations are those at equilibrium. Although water is a reactant 
 To illustrate this idea, three acid ionization equations and [[i:K]][[sub:a]] values are shown below. The ionization constants increase from first to last of the listed equations, indicating the relative acid strength increases in the order CH[[sub:3]]CO[[sub:2]]H &lt; HNO[[sub:2]] &lt; [[MATH:2]]
 
 <!-- SEG:m68805:para:fs-idm115717600 -->
-Another measure of the strength of an acid is its percent ionization. The {{term}}percent ionization{{/term}} of a weak acid is defined in terms of the composition of an equilibrium mixture:
+Another measure of the strength of an acid is its percent ionization. The [[term:percent ionization|term-00002]] of a weak acid is defined in terms of the composition of an equilibrium mixture:
 
 <!-- SEG:m68805:para:fs-idm163389088 -->
 where the numerator is equivalent to the concentration of the acid's conjugate base (per stoichiometry, [A[[sup:−]]] = [H[[sub:3]]O[[sup:+]]]). Unlike the [[i:K]][[sub:a]] value, the percent ionization of a weak acid varies with the initial concentration of acid, typically decreasing as concentration increases. Equilibrium calculations of the sort described later in this chapter can be used to confirm this behavior.
@@ -80,7 +83,7 @@ Answer:
 View the [[link:simulation|http://openstax.org/l/16AcidBase]] of strong and weak acids and bases at the molecular level.
 
 <!-- SEG:m68805:para:fs-idm98628800 -->
-Just as for acids, the relative strength of a base is reflected in the magnitude of its {{term}}base-ionization constant ([[i:K]][[sub:b]]){{/term}} in aqueous solutions. In solutions of the same concentration, stronger bases ionize to a greater extent, and so yield higher hydroxide ion concentrations than do weaker bases. A stronger base has a larger ionization constant than does a weaker base. For the reaction of a base, B:
+Just as for acids, the relative strength of a base is reflected in the magnitude of its [[term:base-ionization constant ([[i:K]][[sub:b]])|term-00003]] in aqueous solutions. In solutions of the same concentration, stronger bases ionize to a greater extent, and so yield higher hydroxide ion concentrations than do weaker bases. A stronger base has a larger ionization constant than does a weaker base. For the reaction of a base, B:
 
 <!-- SEG:m68805:para:fs-idp1182192 -->
 the ionization constant is written as
@@ -115,8 +118,14 @@ The inverse proportional relation between [[i:K]][[sub:a]] and [[i:K]][[sub:b]] 
 <!-- SEG:m68805:caption:CNX_Chem_14_03_strengths-caption -->
 Relative strengths of several conjugate acid-base pairs are shown.
 
+<!-- SEG:m68805:alt:fs-idm162584688-alt -->
+The diagram shows two horizontal bars. The first, labeled, “Relative acid strength,” at the top is red on the left and gradually changes to purple on the right. The red end at the left is labeled, “Stronger acids.” The purple end at the right is labeled, “Weaker acids.” Just outside the bar to the lower left is the label, “K subscript a.” The bar is marked off in increments with a specific acid listed above each increment. The first mark is at 1.0 with H subscript 3 O superscript positive sign. The second is ten raised to the negative two with H C l O subscript 2. The third is ten raised to the negative 4 with H F. The fourth is ten raised to the negative 6 with H subscript 2 C O subscript 3. The fifth is ten raised to a negative 8 with C H subscript 3 C O O H. The sixth is ten raised to the negative ten with N H subscript 4 superscript positive sign. The seventh is ten raised to a negative 12 with H P O subscript 4 superscript 2 negative sign. The eighth is ten raised to the negative 14 with H subscript 2 O. Similarly the second bar, which is labeled “Relative conjugate base strength,” is purple at the left end and gradually becomes blue at the right end. Outside the bar to the left is the label, “Weaker bases.” Outside the bar to the right is the label, “Stronger bases.” Below and to the left of the bar is the label, “K subscript b.” The bar is similarly marked at increments with bases listed above each increment. The first is at ten raised to the negative 14 with H subscript 2 O above it. The second is ten raised to the negative 12 C l O subscript 2 superscript negative sign. The third is ten raised to the negative ten with F superscript negative sign. The fourth is ten raised to a negative eight with H C O subscript 3 superscript negative sign. The fifth is ten raised to the negative 6 with C H subscript 3 C O O superscript negative sign. The sixth is ten raised to the negative 4 with N H subscript 3. The seventh is ten raised to the negative 2 with P O subscript 4 superscript three negative sign. The eighth is 1.0 with O H superscript negative sign.
+
 <!-- SEG:m68805:caption:CNX_Chem_14_03_Corresp-caption -->
 This figure shows strengths of conjugate acid-base pairs relative to the strength of water as the reference substance.
+
+<!-- SEG:m68805:alt:fs-idm44354768-alt -->
+This figure includes a table separated into a left half which is labeled “Acids” and a right half labeled “Bases.” A red arrow points up the left side, which is labeled “Increasing acid strength.” Similarly, a blue arrow points downward along the right side, which is labeled “Increasing base strength.” Names of acids and bases are listed next to each arrow toward the center of the table, followed by chemical formulas. Acids listed top to bottom are sulfuric acid, H subscript 2 S O subscript 4, hydrogen iodide, H I, hydrogen bromide, H B r, hydrogen chloride, H C l, nitric acid, H N O subscript 3, hydronium ion ( in pink text) H subscript 3 O superscript plus, hydrogen sulfate ion, H S O subscript 4 superscript negative, phosphoric acid, H subscript 3 P O subscript 4, hydrogen fluoride, H F, nitrous acid, H N O subscript 2, acetic acid, C H subscript 3 C O subscript 2 H, carbonic acid H subscript 2 C O subscript 3, hydrogen sulfide, H subscript 2 S, ammonium ion, N H subscript 4 superscript +, hydrogen cyanide, H C N, hydrogen carbonate ion, H C O subscript 3 superscript negative, water (shaded in beige) H subscript 2 O, hydrogen sulfide ion, H S superscript negative, ethanol, C subscript 2 H subscript 5 O H, ammonia, N H subscript 3, hydrogen, H subscript 2, methane, and C H subscript 4. The acids at the top of the listing from sulfuric acid through nitric acid are grouped with a bracket to the right labeled “Undergo complete acid ionization in water.” Similarly, the acids at the bottom from hydrogen sulfide ion through methane are grouped with a bracket and labeled, “Do not undergo acid ionization in water.” The right half of the figure lists bases and formulas. From top to bottom the bases listed are hydrogen sulfate ion, H S O subscript 4 superscript negative, iodide ion, I superscript negative, bromide ion, B r superscript negative, chloride ion, C l superscript negative, nitrate ion, N O subscript 3 superscript negative, water (shaded in beige), H subscript 2 O, sulfate ion, S O subscript 4 superscript 2 negative, dihydrogen phosphate ion, H subscript 2 P O subscript 4 superscript negative, fluoride ion, F superscript negative, nitrite ion, N O subscript 2 superscript negative, acetate ion, C H subscript 3 C O subscript 2 superscript negative, hydrogen carbonate ion, H C O subscript 3 superscript negative, hydrogen sulfide ion, H S superscript negative, ammonia, N H subscript 3, cyanide ion, C N superscript negative, carbonate ion, C O subscript 3 superscript 2 negative, hydroxide ion (in blue), O H superscript negative, sulfide ion, S superscript 2 negative, ethoxide ion, C subscript 2 H subscript 5 O superscript negative, amide ion N H subscript 2 superscript negative, hydride ion, H superscript negative, and methide ion C H subscript 3 superscript negative. The bases at the top, from perchlorate ion through nitrate ion are group with a bracket which is labeled “Do not undergo base ionization in water.” Similarly, the lower 5 in the listing, from sulfide ion through methide ion are grouped and labeled “Undergo complete base ionization in water.”
 
 <!-- SEG:m68805:para:fs-idm225187616 -->
 The listing of conjugate acid–base pairs shown in [[xref:CNX_Chem_14_03_Corresp]] is arranged to show the relative strength of each species as compared with water, whose entries are highlighted in each of the table’s columns. In the acid column, those species listed below water are weaker acids than water. These species do not undergo acid ionization in water; they are not Brønsted-Lowry acids. All the species listed above water are stronger acids, transferring protons to water to some extent when dissolved in an aqueous solution to generate hydronium ions. Species above water but below hydronium ion are [[i:weak acids]], undergoing partial acid ionization, wheres those above hydronium ion are [[i:strong acids]] that are completely ionized in aqueous solution.
@@ -172,6 +181,12 @@ Acid-Base Equilibrium Calculations
 <!-- SEG:m68805:para:fs-idm226989136 -->
 The chapter on chemical equilibria introduced several types of equilibrium calculations and the various mathematical strategies that are helpful in performing them. These strategies are generally useful for equilibrium systems regardless of chemical reaction class, and so they may be effectively applied to acid-base equilibrium problems. This section presents several example exercises involving equilibrium calculations for acid-base systems.
 
+<!-- SEG:m68805:alt:fs-idp23785056-alt -->
+This image shows two bottles containing clear colorless solutions. Each bottle contains a single p H indicator strip. The strip in the bottle on the left is red, and a similar red strip is placed on a filter paper circle in front of the bottle on surface on which the bottles are resting. Similarly, the second bottle on the right contains and orange strip and an orange strip is placed in front of it on a filter paper circle. Between the two bottles is a pack of p Hydrion papers with a p H color scale on its cover.
+
+<!-- SEG:m68805:alt:fs-idm134302736-alt -->
+This photo shows two glass containers filled with a transparent liquid. In between the containers is a p H strip indicator guide. There are p H strips placed in front of each glass container. The liquid in the container on the left appears to have a p H of 10 or 11. The liquid in the container on the right appears to have a p H of about 13 or 14.
+
 <!-- SEG:m68805:example-title:fs-idm223269056-title -->
 Determination of [[i:K]][[sub:a]] from Equilibrium Concentrations
 
@@ -204,6 +219,9 @@ Answer:
 
 <!-- SEG:m68805:caption:CNX_Chem_14_03_Vinegar-caption -->
 Vinegar contains acetic acid, a weak acid. (credit: modification of work by “HomeSpot HQ”/Flickr)
+
+<!-- SEG:m68805:alt:fs-idm137777920-alt -->
+An image shows the label of a bottle of distilled white vinegar. The label states that the contents have been reduced with water to 5 percent acidity.
 
 <!-- SEG:m68805:example-title:fs-idm154542240-title -->
 Determination of [[i:K]][[sub:b]] from Equilibrium Concentrations
@@ -265,6 +283,9 @@ The pH of a solution of household ammonia, a 0.950-[[i:M]] solution of NH[[sub:3
 <!-- SEG:m68805:para:fs-idm56489984 -->
 [[i:K]][[sub:b]] = 1.8 [[MATH:37]] 10[[sup:−5]]
 
+<!-- SEG:m68805:alt:fs-idm79844096-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “H N O subscript 2 plus sign H subscript 2 O equilibrium sign H subscript 3 O superscript positive sign plus sign N O subscript 2 superscript negative sign.” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.0516, negative 0.0046, 0.0470. The second column is blank in all three rows. The third column has the following: approximately 0, positive 0.0046, 0.0046. The fourth column has the following: 0, positive 0.0046, 0.0046.
+
 <!-- SEG:m68805:note-title:fs-idm56490624-title -->
 Answer:
 
@@ -310,6 +331,9 @@ Only a small fraction of a weak acid ionizes in aqueous solution. What is the pe
 <!-- SEG:m68805:para:fs-idp77192656 -->
 percent ionization = 1.3%
 
+<!-- SEG:m68805:alt:fs-idm3940608-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “H C O subscript 2 H plus sign H subscript 2 O equilibrium arrow H subscript 3 O superscript positive sign.” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.534, blank, 0.534 minus x. The second column is blank in all three rows. The third column has the following: approximately 0, positive x, x. The fourth column has the following: 0, positive x, x.
+
 <!-- SEG:m68805:note-title:fs-idp77192016-title -->
 Answer:
 
@@ -318,6 +342,9 @@ percent ionization = 1.3%
 
 <!-- SEG:m68805:caption:CNX_Chem_14_03_AntSting-caption -->
 The pain of some ant bites and stings is caused by formic acid. (credit: John Tann)
+
+<!-- SEG:m68805:alt:fs-idm94059808-alt -->
+A photograph is shown of a large black ant on the end of a human finger.
 
 <!-- SEG:m68805:example-title:fs-idp77193872-title -->
 Calculating Equilibrium Concentrations in a Weak Base Solution
@@ -330,6 +357,9 @@ Solution
 
 <!-- SEG:m68805:para:fs-idp38644736 -->
 The ICE table for this system is[[BR]] [[MEDIA:1]][[BR]] Substituting the equilibrium concentration terms into the [[i:K]][[sub:b]] expression gives[[BR]] [[MATH:45]][[BR]] Assuming [[i:x]] &lt;&lt; 0.25 and solving for [[i:x]] yields[[BR]] [[MATH:46]][[BR]] This value is less than 5% of the initial concentration (0.25), so the assumption is justified.[[BR]] As defined in the ICE table, [[i:x]] is equal to the equilibrium concentration of hydroxide ion:[[BR]] [[MATH:47]][[BR]] [[MATH:48]][[BR]] The pOH is calculated to be[[BR]] [[MATH:49]][[BR]] Using the relation introduced in the previous section of this chapter:[[BR]] [[MATH:50]][[BR]] permits the computation of pH:[[BR]] [[MATH:51]]
+
+<!-- SEG:m68805:alt:fs-idm115891984-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “( C H subscript 3 ) subscript 3 N plus sign H subscript 2 O equilibrium arrow ( C H subscript 3 ) subscript 3 N H superscript positive sign plus sign O H superscript positive sign.” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.25, negative x, 0.25 plus sign negative x. The second column is blank in all three rows. The third column has the following: 0, x, 0 plus x. The fourth column has the following: approximately 0, x, and approximately 0 plus x.
 
 <!-- SEG:m68805:para-title:fs-idm83886080-title -->
 Check Your Learning
@@ -361,6 +391,9 @@ Solution
 <!-- SEG:m68805:para:fs-idp42421216 -->
 The ICE table for this system is[[BR]] [[MEDIA:2]][[BR]] Substituting the equilibrium concentration terms into the [[i:K]][[sub:a]] expression gives[[BR]] [[MATH:57]][[BR]] If the assumption that [[i:x]] &lt;&lt; 0.5 is made, simplifying and solving the above equation yields[[BR]] [[MATH:58]][[BR]] This value of [[i:x]] is clearly not significantly less than 0.50 [[i:M]]; rather, it is approximately 15% of the initial concentration:[[BR]] When we check the assumption, we calculate:[[BR]] [[MATH:59]][[BR]] [[MATH:60]][[BR]] Because the simplifying assumption is not valid for this system, the equilibrium constant expression is solved as follows:[[BR]] [[MATH:61]][[BR]] Rearranging this equation yields[[BR]] [[MATH:62]][[BR]] Writing the equation in quadratic form gives[[BR]] [[MATH:63]][[BR]] Solving for the two roots of this quadratic equation results in a negative value that may be discarded as physically irrelevant and a positive value equal to [[i:x]]. As defined in the ICE table, [[i:x]] is equal to the hydronium concentration.[[BR]] [[MATH:64]]
 
+<!-- SEG:m68805:alt:fs-idm4774976-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium ( M ). The second column has the header of “H S O subscript 4 superscript negative sign plus sign H subscript 2 O equilibrium sign H subscript 3 O superscript positive sign plus sign S O subscript 4 superscript 2 superscript negative sign.” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.50, negative x, 0.50 minus x. The second column is blank for all three rows. The third column has the following: approximately 0, positive x, x. The fourth column has the following: 0, positive x, x.
+
 <!-- SEG:m68805:para-title:fs-idm108532480-title -->
 Check Your Learning
 
@@ -391,23 +424,32 @@ Across a row in the periodic table, the acid strength of binary hydrogen compoun
 <!-- SEG:m68805:caption:CNX_Chem_14_03_AcidpH-caption -->
 The figure shows trends in the strengths of binary acids and bases.
 
+<!-- SEG:m68805:alt:fs-idp81301760-alt -->
+This diagram has two rows and four columns. Red arrows point left across the bottom of the figure and down at the right side and are labeled “Increasing acid strength.” Blue arrows point left across the bottom and up at the right side of the figure and are labeled “Increasing base strength.” The first column is labeled 14 at the top and two white squares are beneath it. The first has the number 6 in the upper left corner and the formula C H subscript 4 in the center along with designation Neither acid nor base. The second square contains the number 14 in the upper left corner, the formula C H subscript 4 at the center and the designation Neither acid nor base. The second column is labeled 15 at the top and two blue squares are beneath it. The first has the number 7 in the upper left corner and the formula N H subscript 3 in the center along with the designation Weak base and K subscript b equals 1.8 times 10 superscript negative 5. The second square contains the number 15 in the upper left corner, the formula P H subscript 3 at the center and the designation Very weak base and K subscript b equals 4 times 10 superscript negative 28. The third column is labeled 16 at the top and two squares are beneath it. The first is shaded tan and has the number 8 in the upper left corner and the formula H subscript 2 O in the center along with the designation neutral. The second square is shaded pink, contains the number 16 in the upper left corner, the formula H subscript 2 S at the center and the designation Weak acid and K subscript a equals 9.5 times 10 superscript negative 8. The fourth column is labeled 17 at the top and two squares are beneath it. The first is shaded pink, has the number 9 in the upper left corner and the formula H F in the center along with the designation Weak acid and K subscript a equals 6.8 times 10 superscript negative 4. The second square is shaded a deeper pink, contains the number 17 in the upper left corner, the formula H C l at the center, and the designation Strong acid.
+
 <!-- SEG:m68805:title:fs-idm222426752-title -->
 Ternary Acids and Bases
 
 <!-- SEG:m68805:para:fs-idm107875680 -->
 Ternary compounds composed of hydrogen, oxygen, and some third element (“E”) may be structured as depicted in the image below. In these compounds, the central E atom is bonded to one or more O atoms, and at least one of the O atoms is also bonded to an H atom, corresponding to the general molecular formula O[[sub:m]]E(OH)[[sub:n]]. These compounds may be acidic, basic, or amphoteric depending on the properties of the central E atom. Examples of such compounds include sulfuric acid, O[[sub:2]]S(OH)[[sub:2]], sulfurous acid, OS(OH)[[sub:2]], nitric acid, O[[sub:2]]NOH, perchloric acid, O[[sub:3]]ClOH, aluminum hydroxide, Al(OH)[[sub:3]], calcium hydroxide, Ca(OH)[[sub:2]], and potassium hydroxide, KOH:
 
+<!-- SEG:m68805:alt:fs-idm107871568-alt -->
+A diagram is shown that includes a central atom designated with the letter E. Single bonds extend above, below, left, and right of the E. An O atom is bonded to the right of the E, and an arrow points to the bond labeling it, “Bond a.” An H atom is single bonded to the right of the O atom. An arrow pointing to this bond connects it to the label, “Bond b.”
+
 <!-- SEG:m68805:para:fs-idm107870208 -->
 If the central atom, E, has a low electronegativity, its attraction for electrons is low. Little tendency exists for the central atom to form a strong covalent bond with the oxygen atom, and bond [[i:a]] between the element and oxygen is more readily broken than bond [[i:b]] between oxygen and hydrogen. Hence bond [[i:a]] is ionic, hydroxide ions are released to the solution, and the material behaves as a base—this is the case with Ca(OH)[[sub:2]] and KOH. Lower electronegativity is characteristic of the more metallic elements; hence, the metallic elements form ionic hydroxides that are by definition basic compounds.
 
 <!-- SEG:m68805:para:fs-idm78964544 -->
-If, on the other hand, the atom E has a relatively high electronegativity, it strongly attracts the electrons it shares with the oxygen atom, making bond [[i:a]] relatively strongly covalent. The oxygen-hydrogen bond, bond [[i:b]], is thereby weakened because electrons are displaced toward E. Bond [[i:b]] is polar and readily releases hydrogen ions to the solution, so the material behaves as an acid. High electronegativities are characteristic of the more nonmetallic elements. Thus, nonmetallic elements form covalent compounds containing acidic −OH groups that are called {{term}}oxyacids{{/term}}.
+If, on the other hand, the atom E has a relatively high electronegativity, it strongly attracts the electrons it shares with the oxygen atom, making bond [[i:a]] relatively strongly covalent. The oxygen-hydrogen bond, bond [[i:b]], is thereby weakened because electrons are displaced toward E. Bond [[i:b]] is polar and readily releases hydrogen ions to the solution, so the material behaves as an acid. High electronegativities are characteristic of the more nonmetallic elements. Thus, nonmetallic elements form covalent compounds containing acidic −OH groups that are called [[term:oxyacids|term-00004]].
 
 <!-- SEG:m68805:para:fs-idm10523184 -->
 Increasing the oxidation number of the central atom E also increases the acidity of an oxyacid because this increases the attraction of E for the electrons it shares with oxygen and thereby weakens the O-H bond. Sulfuric acid, H[[sub:2]]SO[[sub:4]], or O[[sub:2]]S(OH)[[sub:2]] (with a sulfur oxidation number of +6), is more acidic than sulfurous acid, H[[sub:2]]SO[[sub:3]], or OS(OH)[[sub:2]] (with a sulfur oxidation number of +4). Likewise nitric acid, HNO[[sub:3]], or O[[sub:2]]NOH (N oxidation number = +5), is more acidic than nitrous acid, HNO[[sub:2]], or ONOH (N oxidation number = +3). In each of these pairs, the oxidation number of the central atom is larger for the stronger acid ([[xref:CNX_Chem_14_03_Oxyacid]]).
 
 <!-- SEG:m68805:caption:CNX_Chem_14_03_Oxyacid-caption -->
 As the oxidation number of the central atom E increases, the acidity also increases.
+
+<!-- SEG:m68805:alt:fs-idm10517728-alt -->
+A diagram is shown that includes four structural formulas for acids. A red, right pointing arrow is placed beneath the structures which is labeled “Increasing acid strength.” At the top left, the structure of Nitrous acid is provided. It includes an H atom to which an O atom with two unshared electron pairs is connected with a single bond to the right. A single bond extends to the right and slightly below to a N atom with one unshared electron pair. A double bond extends up and to the right from this N atom to an O atom which has two unshared electron pairs. To the upper right is a structure for Nitric acid. This structure differs from the previous structure in that the N atom is directly to the right of the first O atom and a second O atom with three unshared electron pairs is connected with a single bond below and to the right of the N atom which has no unshared electron pairs. At the lower left, an O atom with two unshared electron pairs is double bonded to its right to an S atom with a single unshared electron pair. An O atom with two unshared electron pairs is bonded above and an H atom is single bonded to this O atom. To the right of the S atom is a single bond to another O atom with two unshared electron pairs to which an H atom is single bonded. This structure is labeled “Sulfurous acid.” A similar structure which is labeled “Sulfuric acid” is placed in the lower right region of the figure. This structure differs in that an H atom is single bonded to the left of the first O atom, leaving it with two unshared electron pairs and a fourth O atom with two unshared electron pairs is double bonded beneath the S atom, leaving it with no unshared electron pairs.
 
 <!-- SEG:m68805:para:fs-idm173312 -->
 Hydroxy compounds of elements with intermediate electronegativities and relatively high oxidation numbers (for example, elements near the diagonal line separating the metals from the nonmetals in the periodic table) are usually amphoteric. This means that the hydroxy compounds act as acids when they react with strong bases and as bases when they react with strong acids. The amphoterism of aluminum hydroxide, which commonly exists as the hydrate Al(H[[sub:2]]O)[[sub:3]](OH)[[sub:3]], is reflected in its solubility in both strong acids and strong bases. In strong bases, the relatively insoluble hydrated aluminum hydroxide, Al(H[[sub:2]]O)[[sub:3]](OH)[[sub:3]], is converted into the soluble ion, [[MATH:65]] by reaction with hydroxide ion:
@@ -427,16 +469,16 @@ The relative strengths of acids and bases are reflected in the magnitudes of the
 <!-- SEG:m68805:title:fs-idp31338208-title -->
 Key Equations
 
-<!-- SEG:m68805:entry:auto-144 -->
+<!-- SEG:m68805:entry:auto-158 -->
 [[MATH:67]]
 
-<!-- SEG:m68805:entry:auto-145 -->
+<!-- SEG:m68805:entry:auto-159 -->
 [[MATH:68]]
 
-<!-- SEG:m68805:entry:auto-146 -->
+<!-- SEG:m68805:entry:auto-160 -->
 [[i:K]][[sub:a]] [[MATH:69]] [[i:K]][[sub:b]] = 1.0 [[MATH:70]] 10[[sup:−14]] = [[i:K]][[sub:w]]
 
-<!-- SEG:m68805:entry:auto-147 -->
+<!-- SEG:m68805:entry:auto-161 -->
 [[MATH:71]]
 
 <!-- SEG:m68805:title:fs-idm94405216-title -->

@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mtext>=</m:mtext><m:mtext>O</m:mtext><m:mo stretchy=\"false\">⟶</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{C}\\text{=}\\text{O}\\longrightarrow {{\\text{CH}}}_{2}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  }
+}

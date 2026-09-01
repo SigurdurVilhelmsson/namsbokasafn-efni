@@ -17,16 +17,16 @@ Explain the degrees of solubility possible for liquid-liquid solutions
 Imagine adding a small amount of sugar to a glass of water, stirring until all the sugar has dissolved, and then adding a bit more. You can repeat this process until the sugar concentration of the solution reaches its natural limit, a limit determined primarily by the relative strengths of the solute-solute, solute-solvent, and solvent-solvent attractive forces discussed in the previous two modules of this chapter. You can be certain that you have reached this limit because, no matter how long you stir the solution, undissolved sugar remains. The concentration of sugar in the solution at this point is known as its solubility.
 
 <!-- SEG:m68782:para:fs-idp110015984 -->
-The {{term}}solubility{{/term}} of a solute in a particular solvent is the maximum concentration that may be achieved under given conditions when the dissolution process is [[i:at equilibrium]].
+The [[term:solubility|term-00001]] of a solute in a particular solvent is the maximum concentration that may be achieved under given conditions when the dissolution process is [[i:at equilibrium]].
 
 <!-- SEG:m68782:para:fs-idp30743824 -->
-When a solute’s concentration is equal to its solubility, the solution is said to be {{term}}saturated{{/term}} with that solute. If the solute’s concentration is less than its solubility, the solution is said to be {{term}}unsaturated{{/term}}. A solution that contains a relatively low concentration of solute is called dilute, and one with a relatively high concentration is called concentrated.
+When a solute’s concentration is equal to its solubility, the solution is said to be [[term:saturated|term-00002]] with that solute. If the solute’s concentration is less than its solubility, the solution is said to be [[term:unsaturated|term-00003]]. A solution that contains a relatively low concentration of solute is called dilute, and one with a relatively high concentration is called concentrated.
 
 <!-- SEG:m68782:para:fs-idp75533376 -->
 Use this [[link:interactive simulation|http://openstax.org/l/16Phetsoluble]] to prepare various saturated solutions.
 
 <!-- SEG:m68782:para:fs-idp69648624 -->
-Solutions may be prepared in which a solute concentration [[i:exceeds]] its solubility. Such solutions are said to be {{term}}supersaturated{{/term}}, and they are interesting examples of [[i:nonequilibrium]] states (a detailed treatment of this important concept is provided in the text chapters on equilibrium). For example, the carbonated beverage in an open container that has not yet “gone flat” is supersaturated with carbon dioxide gas; given time, the CO[[sub:2]] concentration will decrease until it reaches its solubility.
+Solutions may be prepared in which a solute concentration [[i:exceeds]] its solubility. Such solutions are said to be [[term:supersaturated|term-00004]], and they are interesting examples of [[i:nonequilibrium]] states (a detailed treatment of this important concept is provided in the text chapters on equilibrium). For example, the carbonated beverage in an open container that has not yet “gone flat” is supersaturated with carbon dioxide gas; given time, the CO[[sub:2]] concentration will decrease until it reaches its solubility.
 
 <!-- SEG:m68782:para:fs-idp34793776 -->
 Watch this [[link:impressive video|http://openstax.org/l/16NaAcetate]] showing the precipitation of sodium acetate from a supersaturated solution.
@@ -43,11 +43,17 @@ Temperature is another factor affecting solubility, with gas solubility typicall
 <!-- SEG:m68782:caption:CNX_Chem_11_03_gasdissolv-caption -->
 The solubilities of these gases in water decrease as the temperature increases. All solubilities were measured with a constant pressure of 101.3 kPa (1 atm) of gas above the solutions.
 
+<!-- SEG:m68782:alt:fs-idp17757392-alt -->
+This graph shows solubilities of methane, oxygen, carbon monoxide, nitrogen, and helium in 10 superscript negative 3 mol L superscript negative 1 at temperatures ranging from 0 to 30 degrees Celsius. Solubilities as indicated on the graph in decreasing order are methane, oxygen, carbon monoxide, nitrogen, and helium. At ten degrees, solubilities in 10 superscript negative 3mol L superscript negative 1 are approximately as follows; methane 1.9, oxygen 1.8, carbon monoxide 1.2, nitrogen 0.7, and helium 0.4. At twenty degrees, solubilities in 10 superscript negative 3 mol L superscript negative 1 are approximately as follows; methane 1.2, oxygen 1.1, carbon monoxide 0.9, nitrogen 0.5, and helium 0.35.
+
 <!-- SEG:m68782:para:fs-idp14325648 -->
 When the temperature of a river, lake, or stream is raised, the solubility of oxygen in the water is decreased. Decreased levels of dissolved oxygen may have serious consequences for the health of the water’s ecosystems and, in severe cases, can result in large-scale fish kills ([[xref:CNX_Chem_11_03_O2dissolv]]).
 
 <!-- SEG:m68782:caption:CNX_Chem_11_03_O2dissolv-caption -->
 (a) The small bubbles of air in this glass of chilled water formed when the water warmed to room temperature and the solubility of its dissolved air decreased. (b) The decreased solubility of oxygen in natural waters subjected to thermal pollution can result in large-scale fish kills. (credit a: modification of work by Liz West; credit b: modification of work by U.S. Fish and Wildlife Service)
+
+<!-- SEG:m68782:alt:fs-idp18668432-alt -->
+Two photos are shown. The first shows the top portion of a transparent colorless glass of a clear colorless liquid with small bubbles near the interface of the liquid with the container. The second photo shows a portion of a partially frozen body of water with dead fish appearing on in the water and on an icy surface.
 
 <!-- SEG:m68782:para:fs-idp30867024 -->
 The solubility of a gaseous solute is also affected by the partial pressure of solute in the gas to which the solution is exposed. Gas solubility increases as the pressure of the gas increases. Carbonated beverages provide a nice illustration of this relationship. The carbonation process involves exposing the beverage to a relatively high pressure of carbon dioxide gas and then sealing the beverage container, thus saturating the beverage with CO[[sub:2]] at this pressure. When the beverage container is opened, a familiar hiss is heard as the carbon dioxide gas pressure is released, and some of the dissolved carbon dioxide is typically seen leaving solution in the form of small bubbles ([[xref:CNX_Chem_11_03_beverage]]). At this point, the beverage is [[i:supersaturated]] with carbon dioxide and, with time, the dissolved carbon dioxide concentration will decrease to its equilibrium value and the beverage will become “flat.”
@@ -55,11 +61,14 @@ The solubility of a gaseous solute is also affected by the partial pressure of s
 <!-- SEG:m68782:caption:CNX_Chem_11_03_beverage-caption -->
 Opening the bottle of carbonated beverage reduces the pressure of the [[i:gaseous]] carbon dioxide above the beverage. The solubility of CO[[sub:2]] is thus lowered, and some [[i:dissolved]] carbon dioxide may be seen leaving the solution as small gas bubbles. (credit: modification of work by Derrick Coetzee)
 
+<!-- SEG:m68782:alt:fs-idp66125536-alt -->
+A dark brown liquid is shown in a clear, colorless container. A thick layer of beige bubbles appear at the surface of the liquid. In the liquid, thirteen small clusters of single black spheres with two red spheres attached to the left and right are shown. Red spheres represent oxygen atoms and black represent carbon atoms. Seven white arrows point upward in the container from these clusters to the bubble layer at the top of the liquid.
+
 <!-- SEG:m68782:para:fs-idp86085408 -->
 For many gaseous solutes, the relation between solubility, [[i:C]][[sub:g]], and partial pressure, [[i:P]][[sub:g]], is a proportional one:
 
 <!-- SEG:m68782:para:fs-idp72770704 -->
-where [[i:k]] is a proportionality constant that depends on the identity of the gaseous solute, the identity of the solvent, and the solution temperature. This is a mathematical statement of {{term}}Henry’s law{{/term}}: [[i:The quantity of an ideal gas that dissolves in a definite volume of liquid is directly proportional to the pressure of the gas.]]
+where [[i:k]] is a proportionality constant that depends on the identity of the gaseous solute, the identity of the solvent, and the solution temperature. This is a mathematical statement of [[term:Henry’s law|term-00005]]: [[i:The quantity of an ideal gas that dissolves in a definite volume of liquid is directly proportional to the pressure of the gas.]]
 
 <!-- SEG:m68782:example-title:fs-idp3359488-title -->
 Application of Henry’s Law
@@ -142,8 +151,14 @@ As the diver ascends to the surface of the water, the ambient pressure decreases
 <!-- SEG:m68782:caption:CNX_Chem_11_03_recompress-caption -->
 (a) US Navy divers undergo training in a recompression chamber. (b) Divers receive hyperbaric oxygen therapy.
 
+<!-- SEG:m68782:alt:fs-idm21151808-alt -->
+Two photos are shown. The first shows two people seated in a steel chamber on benches that run length of the chamber on each side. The chamber has a couple of small circular windows and an open hatch-type door. One of the two people is giving a thumbs up gesture. The second image provides a view through a small, circular window. Inside the two people can be seen with masks over their mouths and noses. The people appear to be reading.
+
 <!-- SEG:m68782:para:fs-idm18427536 -->
-Deviations from {{term}}Henry’s law{{/term}} are observed when a chemical reaction takes place between the gaseous solute and the solvent. Thus, for example, the solubility of ammonia in water increases more rapidly with increasing pressure than predicted by the law because ammonia, being a base, reacts to some extent with water to form ammonium ions and hydroxide ions.
+Deviations from [[term:Henry’s law|term-00006]] are observed when a chemical reaction takes place between the gaseous solute and the solvent. Thus, for example, the solubility of ammonia in water increases more rapidly with increasing pressure than predicted by the law because ammonia, being a base, reacts to some extent with water to form ammonium ions and hydroxide ions.
+
+<!-- SEG:m68782:alt:fs-idp36245120-alt -->
+This reaction diagram shows three H atoms bonded to an N atom above, below, and two the left of the N. A single pair of dots is present on the right side of the N. This is followed by a plus, then two H atoms bonded to an O atom to the left and below the O. Two pairs of dots are present on the O, one above and the other to the right of the O. A double arrow, with a top arrow pointing right and a bottom arrow pointing left follows. To the right of the double arrow, four H atoms are shown bonded to a central N atom. These 5 atoms are enclosed in brackets with a superscript plus outside. A plus follows, then an O atom linked by a bond to an H atom on its right. The O atom has pairs of dots above, to the left, and below the atom. The linked O and H are enclosed in brackets with superscript minus outside.
 
 <!-- SEG:m68782:para:fs-idm48937408 -->
 Gases can form supersaturated solutions. If a solution of a gas in a liquid is prepared either at low temperature or under pressure (or both), then as the solution warms or as the gas pressure is reduced, the solution may become supersaturated. In 1986, more than 1700 people in Cameroon were killed when a cloud of gas, almost certainly carbon dioxide, bubbled from Lake Nyos ([[xref:CNX_Chem_11_03_LakeNyos]]), a deep lake in a volcanic crater. The water at the bottom of Lake Nyos is saturated with carbon dioxide by volcanic activity beneath the lake. It is believed that the lake underwent a turnover due to gradual heating from below the lake, and the warmer, less-dense water saturated with carbon dioxide reached the surface. Consequently, tremendous quantities of dissolved CO[[sub:2]] were released, and the colorless gas, which is denser than air, flowed down the valley below the lake and suffocated humans and animals living in the valley.
@@ -151,29 +166,41 @@ Gases can form supersaturated solutions. If a solution of a gas in a liquid is p
 <!-- SEG:m68782:caption:CNX_Chem_11_03_LakeNyos-caption -->
 (a) It is believed that the 1986 disaster that killed more than 1700 people near Lake Nyos in Cameroon resulted when a large volume of carbon dioxide gas was released from the lake. (b) A CO[[sub:2]] vent has since been installed to help outgas the lake in a slow, controlled fashion and prevent a similar catastrophe from happening in the future. (credit a: modification of work by Jack Lockwood; credit b: modification of work by Bill Evans)
 
+<!-- SEG:m68782:alt:fs-idp108534848-alt -->
+Two photos are shown. The first is an aerial view of a lake surrounded by green hills. The second shows a large body of water with a fountain sending liquid up into the air several yards or meters above the surface of the water.
+
 <!-- SEG:m68782:title:fs-idp64799168-title -->
 Solutions of Liquids in Liquids
 
 <!-- SEG:m68782:para:fs-idm22997312 -->
-Some liquids may be mixed in any proportions to yield solutions; in other words, they have infinite mutual solubility and are said to be {{term}}miscible{{/term}}. Ethanol, sulfuric acid, and ethylene glycol (popular for use as antifreeze, pictured in [[xref:CNX_Chem_11_03_antifreeze]]) are examples of liquids that are completely miscible with water. Two-cycle motor oil is miscible with gasoline, mixtures of which are used as lubricating fuels for various types of outdoor power equipment (chainsaws, leaf blowers, and so on).
+Some liquids may be mixed in any proportions to yield solutions; in other words, they have infinite mutual solubility and are said to be [[term:miscible|term-00007]]. Ethanol, sulfuric acid, and ethylene glycol (popular for use as antifreeze, pictured in [[xref:CNX_Chem_11_03_antifreeze]]) are examples of liquids that are completely miscible with water. Two-cycle motor oil is miscible with gasoline, mixtures of which are used as lubricating fuels for various types of outdoor power equipment (chainsaws, leaf blowers, and so on).
 
 <!-- SEG:m68782:caption:CNX_Chem_11_03_antifreeze-caption -->
 Water and antifreeze are miscible; mixtures of the two are homogeneous in all proportions. (credit: “dno1967”/Wikimedia commons)
+
+<!-- SEG:m68782:alt:fs-idp105848592-alt -->
+This is a photo of a 1 gallon yellow plastic jug of Preston 50/50 Prediluted Antifreeze/Coolant.
 
 <!-- SEG:m68782:para:fs-idp48405280 -->
 Miscible liquids are typically those with very similar polarities. Consider, for example, liquids that are polar or capable of hydrogen bonding. For such liquids, the dipole-dipole attractions (or hydrogen bonding) of the solute molecules with the solvent molecules are at least as strong as those between molecules in the pure solute or in the pure solvent. Hence, the two kinds of molecules mix easily. Likewise, nonpolar liquids are miscible with each other because there is no appreciable difference in the strengths of solute-solute, solvent-solvent, and solute-solvent intermolecular attractions. The solubility of polar molecules in polar solvents and of nonpolar molecules in nonpolar solvents is, again, an illustration of the chemical axiom “like dissolves like.”
 
 <!-- SEG:m68782:para:fs-idp37300448 -->
-Two liquids that do not mix to an appreciable extent are called {{term}}immiscible{{/term}}. Separate layers are formed when immiscible liquids are poured into the same container. Gasoline, oil ([[xref:CNX_Chem_11_03_oilwater2]]), benzene, carbon tetrachloride, some paints, and many other nonpolar liquids are immiscible with water. Relatively weak attractive forces between the polar water molecules and the nonpolar liquid molecules are not adequate to overcome much stronger hydrogen bonding between water molecules. The distinction between immiscibility and miscibility is really one of extent, so that miscible liquids are of infinite mutual solubility, while liquids said to be immiscible are of very low (though not zero) mutual solubility.
+Two liquids that do not mix to an appreciable extent are called [[term:immiscible|term-00008]]. Separate layers are formed when immiscible liquids are poured into the same container. Gasoline, oil ([[xref:CNX_Chem_11_03_oilwater2]]), benzene, carbon tetrachloride, some paints, and many other nonpolar liquids are immiscible with water. Relatively weak attractive forces between the polar water molecules and the nonpolar liquid molecules are not adequate to overcome much stronger hydrogen bonding between water molecules. The distinction between immiscibility and miscibility is really one of extent, so that miscible liquids are of infinite mutual solubility, while liquids said to be immiscible are of very low (though not zero) mutual solubility.
 
 <!-- SEG:m68782:caption:CNX_Chem_11_03_oilwater2-caption -->
 Water and oil are immiscible. Mixtures of these two substances will form two separate layers with the less dense oil floating on top of the water. (credit: “Yortw”/Flickr)
 
+<!-- SEG:m68782:alt:fs-idp48883952-alt -->
+This is a photo of a clear, colorless martini glass containing a golden colored liquid layer resting on top of a clear, colorless liquid.
+
 <!-- SEG:m68782:para:fs-idp49738352 -->
-Two liquids, such as bromine and water, that are of [[i:moderate]] mutual solubility are said to be {{term}}partially miscible{{/term}}. Two partially miscible liquids usually form two layers when mixed. In the case of the bromine and water mixture, the upper layer is water, saturated with bromine, and the lower layer is bromine saturated with water. Since bromine is nonpolar, and, thus, not very soluble in water, the water layer is only slightly discolored by the bright orange bromine dissolved in it. Since the solubility of water in bromine is very low, there is no noticeable effect on the dark color of the bromine layer ([[xref:CNX_Chem_11_03_bromine]]).
+Two liquids, such as bromine and water, that are of [[i:moderate]] mutual solubility are said to be [[term:partially miscible|term-00009]]. Two partially miscible liquids usually form two layers when mixed. In the case of the bromine and water mixture, the upper layer is water, saturated with bromine, and the lower layer is bromine saturated with water. Since bromine is nonpolar, and, thus, not very soluble in water, the water layer is only slightly discolored by the bright orange bromine dissolved in it. Since the solubility of water in bromine is very low, there is no noticeable effect on the dark color of the bromine layer ([[xref:CNX_Chem_11_03_bromine]]).
 
 <!-- SEG:m68782:caption:CNX_Chem_11_03_bromine-caption -->
 Bromine (the deep orange liquid on the left) and water (the clear liquid in the middle) are partially miscible. The top layer in the mixture on the right is a saturated solution of bromine in water; the bottom layer is a saturated solution of water in bromine. (credit: Paul Flowers)
+
+<!-- SEG:m68782:alt:fs-idp40449744-alt -->
+This figure shows three test tubes. The first test tube holds a dark orange-brown substance. The second test tube holds a clear substance. The amount of substance in both test tubes is the same. The third test tube holds a dark orange-brown substance on the bottom with a lighter orange substance on top. The amount of substance in the third test tube is almost double of the first two.
 
 <!-- SEG:m68782:title:fs-idp38976176-title -->
 Solutions of Solids in Liquids
@@ -184,11 +211,17 @@ The dependence of solubility on temperature for a number of solids in water is s
 <!-- SEG:m68782:caption:CNX_Chem_11_03_solubility-caption -->
 This graph shows how the solubility of several solids changes with temperature.
 
+<!-- SEG:m68782:alt:fs-idp19558160-alt -->
+This shows a graph of the solubility of sugar C subscript 12 H subscript 22 O subscript 11, K N O subscript 3, N a N O subscript 3, N a B r, K B r, N a subscript 2 S O subscript 4, K C l, and C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3 in g solute per 100 g H subscript 2 O at temperatures ranging from 0 degrees Celsius to 100 degrees Celsius. At 0 degrees Celsius, solubilities are approximately 180 for sugar C subscript 12 H subscript 22 O subscript 11, 115 for K N O subscript 3, 75 for N a N O subscript 3, 115 for N a B r, 55 for K B r, 7 for N a subscript 2 S O subscript 4, 25 for K C l, and 20 for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3. At 0 degrees Celsius, solubilities are approximately 180 for sugar C subscript 12 H subscript 22 O subscript 11, 115 for K N O subscript 3, 75 for N a N O subscript 3, 115 for N a B r, 55 for K B r, 7 for N a subscript 2 S O subscript 4, 25 for K C l, and 20 for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3. At 100 degrees Celsius, sugar C subscript 12 H subscript 22 O subscript 11 has exceeded the upper limit of solubility indicated on the graph, 240 for K N O subscript 3, 178 for N a N O subscript 3, 123 for N a B r, 105 for K B r, 52 for N a subscript 2 S O subscript 4, 58 for K C l, and the graph for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3 stops at about 92 degrees Celsius where the solubility is nearly zero. The graph for N a subscript 2 S O subscript 4 is shown in red. All others substances are shown in blue. The solubility of this substance increases until about 30 degrees Celsius and declines beyond that point with increasing temperature.
+
 <!-- SEG:m68782:para:fs-idp72000144 -->
 The temperature dependence of solubility can be exploited to prepare supersaturated solutions of certain compounds. A solution may be saturated with the compound at an elevated temperature (where the solute is more soluble) and subsequently cooled to a lower temperature without precipitating the solute. The resultant solution contains solute at a concentration greater than its equilibrium solubility at the lower temperature (i.e., it is supersaturated) and is relatively stable. Precipitation of the excess solute can be initiated by adding a seed crystal (see the video in the Link to Learning earlier in this module) or by mechanically agitating the solution. Some hand warmers, such as the one pictured in [[xref:CNX_Chem_11_03_handwarmer]], take advantage of this behavior.
 
 <!-- SEG:m68782:caption:CNX_Chem_11_03_handwarmer-caption -->
 This hand warmer produces heat when the sodium acetate in a supersaturated solution precipitates. Precipitation of the solute is initiated by a mechanical shockwave generated when the flexible metal disk within the solution is “clicked.” (credit: modification of work by “Velela”/Wikimedia Commons)
+
+<!-- SEG:m68782:alt:fs-idm20585264-alt -->
+Three photos of hand warmers are shown side by side with an arrow pointing from the first photo to the second, and another arrow pointing from the second photo to the third. The first packet contains a clear colorless liquid and a small metal disc can be seen. In the second packet, the disc can’t be seen and a dispersion of white liquid is beginning. In the third packet, all of the liquid is white.
 
 <!-- SEG:m68782:para:fs-idp19123632 -->
 This [[link:video|http://openstax.org/l/16handwarmer]] shows the crystallization process occurring in a hand warmer.
@@ -202,7 +235,7 @@ The extent to which one substance will dissolve in another is determined by seve
 <!-- SEG:m68782:title:fs-idp44827264-title -->
 Key Equations
 
-<!-- SEG:m68782:entry:auto-69 -->
+<!-- SEG:m68782:entry:auto-80 -->
 [[MATH:6]]
 
 <!-- SEG:m68782:title:fs-idm30288080-title -->

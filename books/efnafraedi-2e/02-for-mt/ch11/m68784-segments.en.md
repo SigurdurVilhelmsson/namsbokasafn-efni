@@ -11,132 +11,138 @@ Describe the composition and properties of colloidal dispersions
 List and explain several technological applications of colloids
 
 <!-- SEG:m68784:para:fs-idm25079776 -->
-As a child, you may have made suspensions such as mixtures of mud and water, flour and water, or a suspension of solid pigments in water, known as tempera paint. These {{term}}suspensions{{/term}} are heterogeneous mixtures composed of relatively large particles that are visible (or that can be seen with a magnifying glass). They are cloudy, and the suspended particles settle out after mixing. On the other hand, a solution is a homogeneous mixture in which no settling occurs and in which the dissolved species are molecules or ions. Solutions exhibit completely different behavior from suspensions. A solution may be colored, but it is transparent, the molecules or ions are invisible, and they do not settle out on standing. Another class of mixtures called {{term}}colloids{{/term}} (or {{term}}colloidal dispersions{{/term}}) exhibit properties intermediate between those of suspensions and solutions ([[xref:CNX_Chem_11_05_Colloid]]). The particles in a colloid are larger than most simple molecules; however, colloidal particles are small enough that they do not settle out upon standing.
+As a child, you may have made suspensions such as mixtures of mud and water, flour and water, or a suspension of solid pigments in water, known as tempera paint. These [[term:suspensions|term-00001]] are heterogeneous mixtures composed of relatively large particles that are visible (or that can be seen with a magnifying glass). They are cloudy, and the suspended particles settle out after mixing. On the other hand, a solution is a homogeneous mixture in which no settling occurs and in which the dissolved species are molecules or ions. Solutions exhibit completely different behavior from suspensions. A solution may be colored, but it is transparent, the molecules or ions are invisible, and they do not settle out on standing. Another class of mixtures called [[term:colloids|term-00002]] (or [[term:colloidal dispersions|term-00003]]) exhibit properties intermediate between those of suspensions and solutions ([[xref:CNX_Chem_11_05_Colloid]]). The particles in a colloid are larger than most simple molecules; however, colloidal particles are small enough that they do not settle out upon standing.
 
 <!-- SEG:m68784:caption:CNX_Chem_11_05_Colloid-caption -->
 (a) A solution is a homogeneous mixture that appears clear, such as the saltwater in this aquarium. (b) In a colloid, such as milk, the particles are much larger but remain dispersed and do not settle. (c) A suspension, such as mud, is a heterogeneous mixture of suspended particles that appears cloudy and in which the particles can settle. (credit a photo: modification of work by Adam Wimsatt; credit b photo: modification of work by Melissa Wiese; credit c photo: modification of work by Peter Burgess)
 
+<!-- SEG:m68784:alt:fs-idm111369104-alt -->
+This figure contains three photos and corresponding particle diagrams. In a, a photo of an aquarium containing fish is shown. The particle diagram beneath it shows 90 tiny red spheres. In b, a photo is shown of milk being poured into a cup. The corresponding particle diagram shows about 25 medium sized red spheres.In c, a photo is shown of two pairs of sandal clad feet in mud. The particle diagram below shows 10 fairly large red spheres.
+
 <!-- SEG:m68784:para:fs-idm77182288 -->
-The particles in a colloid are large enough to scatter light, a phenomenon called the {{term}}Tyndall effect{{/term}}. This can make colloidal mixtures appear cloudy or opaque, such as the searchlight beams shown in [[xref:CNX_Chem_11_05_srchlight]]. Clouds are colloidal mixtures. They are composed of water droplets that are much larger than molecules, but that are small enough that they do not settle out.
+The particles in a colloid are large enough to scatter light, a phenomenon called the [[term:Tyndall effect|term-00004]]. This can make colloidal mixtures appear cloudy or opaque, such as the searchlight beams shown in [[xref:CNX_Chem_11_05_srchlight]]. Clouds are colloidal mixtures. They are composed of water droplets that are much larger than molecules, but that are small enough that they do not settle out.
 
 <!-- SEG:m68784:caption:CNX_Chem_11_05_srchlight-caption -->
 The paths of searchlight beams are made visible when light is scattered by colloidal-size particles in the air (fog, smoke, etc.). (credit: “Bahman”/Wikimedia Commons)
+
+<!-- SEG:m68784:alt:fs-idp37353296-alt -->
+This is a photo of searchlight beams in the night sky of a city scene.
 
 <!-- SEG:m68784:para:fs-idm165583920 -->
 The term “colloid”—from the Greek words [[i:kolla]], meaning “glue,” and [[i:eidos]], meaning “like”—was first used in 1861 by Thomas Graham to classify mixtures such as starch in water and gelatin. Many colloidal particles are aggregates of hundreds or thousands of molecules, but others (such as proteins and polymer molecules) consist of a single extremely large molecule. The protein and synthetic polymer molecules that form colloids may have molecular masses ranging from a few thousand to many million atomic mass units.
 
 <!-- SEG:m68784:para:fs-idm31787584 -->
-Analogous to the identification of solution components as “solute” and “solvent,” the components of a colloid are likewise classified according to their relative amounts. The particulate component typically present in a relatively minor amount is called the {{term}}dispersed phase{{/term}} and the substance or solution throughout which the particulate is dispersed is called the {{term}}dispersion medium{{/term}}. Colloids may involve virtually any combination of physical states (gas in liquid, liquid in solid, solid in gas, etc.), as illustrated by the examples of colloidal systems given in [[xref:fs-idm28163488]].
-
-<!-- SEG:m68784:entry:auto-11 -->
-Examples of Colloidal Systems
-
-<!-- SEG:m68784:entry:auto-12 -->
-Dispersed Phase
+Analogous to the identification of solution components as “solute” and “solvent,” the components of a colloid are likewise classified according to their relative amounts. The particulate component typically present in a relatively minor amount is called the [[term:dispersed phase|term-00005]] and the substance or solution throughout which the particulate is dispersed is called the [[term:dispersion medium|term-00006]]. Colloids may involve virtually any combination of physical states (gas in liquid, liquid in solid, solid in gas, etc.), as illustrated by the examples of colloidal systems given in [[xref:fs-idm28163488]].
 
 <!-- SEG:m68784:entry:auto-13 -->
-Dispersion Medium
+Examples of Colloidal Systems
 
 <!-- SEG:m68784:entry:auto-14 -->
-Common Examples
+Dispersed Phase
 
 <!-- SEG:m68784:entry:auto-15 -->
-Name
+Dispersion Medium
 
 <!-- SEG:m68784:entry:auto-16 -->
-solid
+Common Examples
 
 <!-- SEG:m68784:entry:auto-17 -->
-gas
+Name
 
 <!-- SEG:m68784:entry:auto-18 -->
-smoke, dust
+solid
 
 <!-- SEG:m68784:entry:auto-19 -->
-—
+gas
 
 <!-- SEG:m68784:entry:auto-20 -->
-solid
+smoke, dust
 
 <!-- SEG:m68784:entry:auto-21 -->
-liquid
-
-<!-- SEG:m68784:entry:auto-22 -->
-starch in water, some inks, paints, milk of magnesia
-
-<!-- SEG:m68784:entry:auto-23 -->
-sol
-
-<!-- SEG:m68784:entry:auto-24 -->
-solid
-
-<!-- SEG:m68784:entry:auto-25 -->
-solid
-
-<!-- SEG:m68784:entry:auto-26 -->
-some colored gems, some alloys
-
-<!-- SEG:m68784:entry:auto-27 -->
 —
 
-<!-- SEG:m68784:entry:auto-28 -->
+<!-- SEG:m68784:entry:auto-22 -->
+solid
+
+<!-- SEG:m68784:entry:auto-23 -->
 liquid
+
+<!-- SEG:m68784:entry:auto-24 -->
+starch in water, some inks, paints, milk of magnesia
+
+<!-- SEG:m68784:entry:auto-25 -->
+sol
+
+<!-- SEG:m68784:entry:auto-26 -->
+solid
+
+<!-- SEG:m68784:entry:auto-27 -->
+solid
+
+<!-- SEG:m68784:entry:auto-28 -->
+some colored gems, some alloys
 
 <!-- SEG:m68784:entry:auto-29 -->
-gas
+—
 
 <!-- SEG:m68784:entry:auto-30 -->
-clouds, fogs, mists, sprays
+liquid
 
 <!-- SEG:m68784:entry:auto-31 -->
-aerosol
+gas
 
 <!-- SEG:m68784:entry:auto-32 -->
-liquid
+clouds, fogs, mists, sprays
 
 <!-- SEG:m68784:entry:auto-33 -->
-liquid
+aerosol
 
 <!-- SEG:m68784:entry:auto-34 -->
-milk, mayonnaise, butter
+liquid
 
 <!-- SEG:m68784:entry:auto-35 -->
-emulsion
+liquid
 
 <!-- SEG:m68784:entry:auto-36 -->
-liquid
+milk, mayonnaise, butter
 
 <!-- SEG:m68784:entry:auto-37 -->
-solid
+emulsion
 
 <!-- SEG:m68784:entry:auto-38 -->
-jellies, gels, pearl, opal (H[[sub:2]]O in SiO[[sub:2]])
-
-<!-- SEG:m68784:entry:auto-39 -->
-gel
-
-<!-- SEG:m68784:entry:auto-40 -->
-gas
-
-<!-- SEG:m68784:entry:auto-41 -->
 liquid
 
-<!-- SEG:m68784:entry:auto-42 -->
-foams, whipped cream, beaten egg whites
-
-<!-- SEG:m68784:entry:auto-43 -->
-foam
-
-<!-- SEG:m68784:entry:auto-44 -->
-gas
-
-<!-- SEG:m68784:entry:auto-45 -->
+<!-- SEG:m68784:entry:auto-39 -->
 solid
 
+<!-- SEG:m68784:entry:auto-40 -->
+jellies, gels, pearl, opal (H[[sub:2]]O in SiO[[sub:2]])
+
+<!-- SEG:m68784:entry:auto-41 -->
+gel
+
+<!-- SEG:m68784:entry:auto-42 -->
+gas
+
+<!-- SEG:m68784:entry:auto-43 -->
+liquid
+
+<!-- SEG:m68784:entry:auto-44 -->
+foams, whipped cream, beaten egg whites
+
+<!-- SEG:m68784:entry:auto-45 -->
+foam
+
 <!-- SEG:m68784:entry:auto-46 -->
-pumice, floating soaps
+gas
 
 <!-- SEG:m68784:entry:auto-47 -->
+solid
+
+<!-- SEG:m68784:entry:auto-48 -->
+pumice, floating soaps
+
+<!-- SEG:m68784:entry:auto-49 -->
 —
 
 <!-- SEG:m68784:title:fs-idm190422560-title -->
@@ -155,7 +161,7 @@ Condensation methods: growth from smaller units, such as molecules or ions. For 
 A few solid substances, when brought into contact with water, disperse spontaneously and form colloidal systems. Gelatin, glue, starch, and dehydrated milk powder behave in this manner. The particles are already of colloidal size; the water simply disperses them. Powdered milk particles of colloidal size are produced by dehydrating milk spray. Some atomizers produce colloidal dispersions of a liquid in air.
 
 <!-- SEG:m68784:para:fs-idm188463104 -->
-An {{term}}emulsion{{/term}} may be prepared by shaking together or blending two immiscible liquids. This breaks one liquid into droplets of colloidal size, which then disperse throughout the other liquid. Oil spills in the ocean may be difficult to clean up, partly because wave action can cause the oil and water to form an emulsion. In many emulsions, however, the dispersed phase tends to coalesce, form large drops, and separate. Therefore, emulsions are usually stabilized by an {{term}}emulsifying agent{{/term}}, a substance that inhibits the coalescence of the dispersed liquid. For example, a little soap will stabilize an emulsion of kerosene in water. Milk is an emulsion of butterfat in water, with the protein casein serving as the emulsifying agent. Mayonnaise is an emulsion of oil in vinegar, with egg yolk components as the emulsifying agents.
+An [[term:emulsion|term-00007]] may be prepared by shaking together or blending two immiscible liquids. This breaks one liquid into droplets of colloidal size, which then disperse throughout the other liquid. Oil spills in the ocean may be difficult to clean up, partly because wave action can cause the oil and water to form an emulsion. In many emulsions, however, the dispersed phase tends to coalesce, form large drops, and separate. Therefore, emulsions are usually stabilized by an [[term:emulsifying agent|term-00008]], a substance that inhibits the coalescence of the dispersed liquid. For example, a little soap will stabilize an emulsion of kerosene in water. Milk is an emulsion of butterfat in water, with the protein casein serving as the emulsifying agent. Mayonnaise is an emulsion of oil in vinegar, with egg yolk components as the emulsifying agents.
 
 <!-- SEG:m68784:para:fs-idp11304112 -->
 Condensation methods form colloidal particles by aggregation of molecules or ions. If the particles grow beyond the colloidal size range, drops or precipitates form, and no colloidal system results. Clouds form when water molecules aggregate and form colloid-sized particles. If these water particles coalesce to form adequately large water drops of liquid water or crystals of solid water, they settle from the sky as rain, sleet, or snow. Many condensation methods involve chemical reactions. A red colloidal suspension of iron(III) hydroxide may be prepared by mixing a concentrated solution of iron(III) chloride with hot water:
@@ -175,17 +181,26 @@ Pioneers made soap by boiling fats with a strongly basic solution made by leachi
 <!-- SEG:m68784:caption:CNX_Chem_11_05_soap-caption -->
 Soaps contain a nonpolar hydrocarbon end (blue) and an ionic end (red). The ionic end is a carboxylate group. The length of the hydrocarbon end can vary from soap to soap.
 
+<!-- SEG:m68784:alt:fs-idm247178464-alt -->
+This figure shows a structural formula for soap known as sodium stearate. A hydrocarbon chain composed of 18 carbon atoms and 35 hydrogen atoms is shown with an ionic end with 2 oxygen atoms and a negative charge. A positively charged N a superscript plus is also shown at the ionic end.
+
 <!-- SEG:m68784:para:fs-idm189696128 -->
 [[i:Detergents]] (soap substitutes) also contain nonpolar hydrocarbon chains, such as C[[sub:12]]H[[sub:25]]—, and an ionic group, such as a sulfate—[[MATH:2]] or a sulfonate—[[MATH:3]] ([[xref:CNX_Chem_11_05_detrg]]). Soaps form insoluble calcium and magnesium compounds in hard water; detergents form water-soluble products—a definite advantage for detergents.
 
 <!-- SEG:m68784:caption:CNX_Chem_11_05_detrg-caption -->
 Detergents contain a nonpolar hydrocarbon end (blue) and an ionic end (red). The ionic end can be either a sulfate or a sulfonate. The length of the hydrocarbon end can vary from detergent to detergent.
 
+<!-- SEG:m68784:alt:fs-idp40635280-alt -->
+This figure shows a structural formula for a detergent known as sodium lauryl sulfate. A hydrocarbon chain composed of 12 carbon atoms and 25 hydrogen atoms is shown with an ionic end involving a negatively charged sulfur and four oxygen atoms at the ionic end of the chain. A positively charged N a superscript plus is also shown at the ionic end.
+
 <!-- SEG:m68784:para:fs-idm191110112 -->
-The cleaning action of soaps and detergents can be explained in terms of the structures of the molecules involved. The hydrocarbon (nonpolar) end of a soap or detergent molecule dissolves in, or is attracted to, nonpolar substances such as oil, grease, or dirt particles. The ionic end is attracted by water (polar), illustrated in [[xref:CNX_Chem_11_05_emulsoil]]. As a result, the soap or detergent molecules become oriented at the interface between the dirt particles and the water so they act as a kind of bridge between two different kinds of matter, nonpolar and polar. Molecules such as this are termed {{term}}amphiphilic{{/term}} since they have both a hydrophobic (“water-fearing”) part and a hydrophilic (“water-loving”) part. As a consequence, dirt particles become suspended as colloidal particles and are readily washed away.
+The cleaning action of soaps and detergents can be explained in terms of the structures of the molecules involved. The hydrocarbon (nonpolar) end of a soap or detergent molecule dissolves in, or is attracted to, nonpolar substances such as oil, grease, or dirt particles. The ionic end is attracted by water (polar), illustrated in [[xref:CNX_Chem_11_05_emulsoil]]. As a result, the soap or detergent molecules become oriented at the interface between the dirt particles and the water so they act as a kind of bridge between two different kinds of matter, nonpolar and polar. Molecules such as this are termed [[term:amphiphilic|term-00009]] since they have both a hydrophobic (“water-fearing”) part and a hydrophilic (“water-loving”) part. As a consequence, dirt particles become suspended as colloidal particles and are readily washed away.
 
 <!-- SEG:m68784:caption:CNX_Chem_11_05_emulsoil-caption -->
 This diagrammatic cross section of an emulsified drop of oil in water shows how soap or detergent acts as an emulsifier.
+
+<!-- SEG:m68784:alt:fs-idm119986752-alt -->
+This figure shows a drop of oil in which approximately thirty hydrocarbon tails are oriented toward the center of the drop with ionic ends indicated as tiny red spheres on the surface of the oil drop. Solvated cations are indicated as purple spheres surrounded by clusters of H subscript 2 subscript O molecules shown as tiny clusters of red central oxygen spheres with two white hydrogen spheres attached.
 
 <!-- SEG:m68784:note-title:fs-idm107755280-title -->
 Deepwater Horizon Oil Spill
@@ -198,6 +213,9 @@ Crude oil is immiscible with and less dense than water, so the spilled oil rose 
 
 <!-- SEG:m68784:caption:CNX_Chem_11_05_oilspill-caption -->
 (a) This NASA satellite image shows the oil slick from the Deepwater Horizon spill. (b) A US Air Force plane sprays Corexit, a dispersant. (c) The molecular structure of 2-butoxyethanol is shown. (credit a: modification of work by “NASA, FT2, demis.nl”/Wikimedia Commons; credit b: modification of work by “NASA/MODIS Rapid Response Team”/Wikimedia Commons)
+
+<!-- SEG:m68784:alt:fs-idm61187488-alt -->
+In figure a, a satellite image is shown with an inset pointing out the Gulf Coast of the southern United States. In figure b, a photo of a plane is shown spraying over water contaminated with oil. In figure c, a molecule composed of 6 black carbon atoms, 2 red oxygen atoms, and 14 white hydrogen atoms is shown.
 
 <!-- SEG:m68784:title:fs-idm151327648-title -->
 Electrical Properties of Colloidal Particles
@@ -212,22 +230,31 @@ The charged nature of some colloidal particles may be exploited to remove them f
 Frederick Gardner Cottrell
 
 <!-- SEG:m68784:para:fs-idm168546112 -->
-Born in Oakland, CA, in 1877, Frederick {{term}}Cottrell{{/term}} devoured textbooks as if they were novels and graduated from high school at the age of 16. He then entered the University of California (UC), Berkeley, completing a Bachelor’s degree in three years. He saved money from his $1200 annual salary as a chemistry teacher at Oakland High School to fund his studies in chemistry in Berlin with Nobel prize winner Jacobus Henricus van’t Hoff, and in Leipzig with Wilhelm Ostwald, another Nobel awardee. After earning his PhD in physical chemistry, he returned to the United States to teach at UC Berkeley. He also consulted for the DuPont Company, where he developed the electrostatic precipitator, a device designed to curb air pollution by removing colloidal particles from air. Cottrell used the proceeds from his invention to fund a nonprofit research corporation to finance scientific research.
+Born in Oakland, CA, in 1877, Frederick [[term:Cottrell|term-00010]] devoured textbooks as if they were novels and graduated from high school at the age of 16. He then entered the University of California (UC), Berkeley, completing a Bachelor’s degree in three years. He saved money from his $1200 annual salary as a chemistry teacher at Oakland High School to fund his studies in chemistry in Berlin with Nobel prize winner Jacobus Henricus van’t Hoff, and in Leipzig with Wilhelm Ostwald, another Nobel awardee. After earning his PhD in physical chemistry, he returned to the United States to teach at UC Berkeley. He also consulted for the DuPont Company, where he developed the electrostatic precipitator, a device designed to curb air pollution by removing colloidal particles from air. Cottrell used the proceeds from his invention to fund a nonprofit research corporation to finance scientific research.
 
 <!-- SEG:m68784:caption:CNX_Chem_11_05_FredCottre-caption -->
 (a) Frederick Cottrell developed (b) the electrostatic precipitator, a device designed to curb air pollution by removing colloidal particles from air. (credit b: modification of work by “SpLot”/Wikimedia Commons)
 
+<!-- SEG:m68784:alt:fs-idm149015440-alt -->
+This is a photo of Frederick Cottrell.
+
 <!-- SEG:m68784:caption:CNX_Chem_11_05_Cottrellp-caption -->
 In a Cottrell precipitator, positively and negatively charged particles are attracted to highly charged electrodes, where they are neutralized and deposited as dust.
+
+<!-- SEG:m68784:alt:fs-idm32480224-alt -->
+This figure shows a diagram of a Cottrell precipitator. An arrow pointing into a cylindrical chamber shows the path of soot laden smoke. In the presence of high DC voltage and both point and plate electrodes, soot particles are removed at the bottom of the chamber and soot free air exits the top. A photo shows the honeycomb electrodes of a modern electrostatic precipitator.
 
 <!-- SEG:m68784:title:fs-idm165962688-title -->
 Gels
 
 <!-- SEG:m68784:para:fs-idm133384464 -->
-Gelatin desserts, such as Jell-O, are a type of colloid ([[xref:CNX_Chem_11_05_Gel]]). Gelatin sets on cooling because the hot aqueous mixture of gelatin coagulates as it cools, yielding an extremely viscous body known as a {{term}}gel{{/term}}. A gel is a colloidal dispersion of a liquid phase throughout a solid phase. It appears that the fibers of the dispersing medium form a complex three-dimensional network, the interstices being filled with the liquid medium or a dilute solution of the dispersing medium.
+Gelatin desserts, such as Jell-O, are a type of colloid ([[xref:CNX_Chem_11_05_Gel]]). Gelatin sets on cooling because the hot aqueous mixture of gelatin coagulates as it cools, yielding an extremely viscous body known as a [[term:gel|term-00011]]. A gel is a colloidal dispersion of a liquid phase throughout a solid phase. It appears that the fibers of the dispersing medium form a complex three-dimensional network, the interstices being filled with the liquid medium or a dilute solution of the dispersing medium.
 
 <!-- SEG:m68784:caption:CNX_Chem_11_05_Gel-caption -->
 Gelatin desserts are colloids in which an aqueous solution of sweeteners and flavors is dispersed throughout a medium of solid proteins. (credit photo: modification of work by Steven Depolo)
+
+<!-- SEG:m68784:alt:fs-idm200257152-alt -->
+In this figure, a large molecular model of gelatin is shown with black carbon atoms, red oxygen atoms, white hydrogen atoms, and blue nitrogen atoms. A photo is shown of gelatin dessert cut into colorful rectangles.
 
 <!-- SEG:m68784:para:fs-idm105104 -->
 Pectin, a carbohydrate from fruit juices, is a gel-forming substance important in jelly making. Silica gel, a colloidal dispersion of hydrated silicon dioxide, is formed when dilute hydrochloric acid is added to a dilute solution of sodium silicate. Canned Heat is a flammable gel made by mixing alcohol and a saturated aqueous solution of calcium acetate.
@@ -244,94 +271,94 @@ Chemistry End of Chapter Exercises
 <!-- SEG:m68784:problem:fs-idm156555296 -->
 Identify the dispersed phase and the dispersion medium in each of the following colloidal systems: starch dispersion, smoke, fog, pearl, whipped cream, floating soap, jelly, milk, and ruby.
 
-<!-- SEG:m68784:entry:auto-83 -->
+<!-- SEG:m68784:entry:auto-92 -->
 Colloidal System
 
-<!-- SEG:m68784:entry:auto-84 -->
+<!-- SEG:m68784:entry:auto-93 -->
 Dispersed Phase
 
-<!-- SEG:m68784:entry:auto-85 -->
+<!-- SEG:m68784:entry:auto-94 -->
 Dispersion Medium
 
-<!-- SEG:m68784:entry:auto-86 -->
+<!-- SEG:m68784:entry:auto-95 -->
 starch dispersion
 
-<!-- SEG:m68784:entry:auto-87 -->
+<!-- SEG:m68784:entry:auto-96 -->
 starch
 
-<!-- SEG:m68784:entry:auto-88 -->
-water
-
-<!-- SEG:m68784:entry:auto-89 -->
-smoke
-
-<!-- SEG:m68784:entry:auto-90 -->
-solid particles
-
-<!-- SEG:m68784:entry:auto-91 -->
-air
-
-<!-- SEG:m68784:entry:auto-92 -->
-fog
-
-<!-- SEG:m68784:entry:auto-93 -->
-water
-
-<!-- SEG:m68784:entry:auto-94 -->
-air
-
-<!-- SEG:m68784:entry:auto-95 -->
-pearl
-
-<!-- SEG:m68784:entry:auto-96 -->
-water
-
 <!-- SEG:m68784:entry:auto-97 -->
-calcium carbonate (CaCO[[sub:3]])
+water
 
 <!-- SEG:m68784:entry:auto-98 -->
-whipped cream
+smoke
 
 <!-- SEG:m68784:entry:auto-99 -->
-air
+solid particles
 
 <!-- SEG:m68784:entry:auto-100 -->
-cream
-
-<!-- SEG:m68784:entry:auto-101 -->
-floating soap
-
-<!-- SEG:m68784:entry:auto-102 -->
 air
 
-<!-- SEG:m68784:entry:auto-103 -->
-soap
+<!-- SEG:m68784:entry:auto-101 -->
+fog
 
-<!-- SEG:m68784:entry:auto-104 -->
-jelly
-
-<!-- SEG:m68784:entry:auto-105 -->
-fruit juice
-
-<!-- SEG:m68784:entry:auto-106 -->
-pectin gel
-
-<!-- SEG:m68784:entry:auto-107 -->
-milk
-
-<!-- SEG:m68784:entry:auto-108 -->
-butterfat
-
-<!-- SEG:m68784:entry:auto-109 -->
+<!-- SEG:m68784:entry:auto-102 -->
 water
 
+<!-- SEG:m68784:entry:auto-103 -->
+air
+
+<!-- SEG:m68784:entry:auto-104 -->
+pearl
+
+<!-- SEG:m68784:entry:auto-105 -->
+water
+
+<!-- SEG:m68784:entry:auto-106 -->
+calcium carbonate (CaCO[[sub:3]])
+
+<!-- SEG:m68784:entry:auto-107 -->
+whipped cream
+
+<!-- SEG:m68784:entry:auto-108 -->
+air
+
+<!-- SEG:m68784:entry:auto-109 -->
+cream
+
 <!-- SEG:m68784:entry:auto-110 -->
-ruby
+floating soap
 
 <!-- SEG:m68784:entry:auto-111 -->
-chromium(III) oxide (Cr[[sub:2]]O[[sub:3]])
+air
 
 <!-- SEG:m68784:entry:auto-112 -->
+soap
+
+<!-- SEG:m68784:entry:auto-113 -->
+jelly
+
+<!-- SEG:m68784:entry:auto-114 -->
+fruit juice
+
+<!-- SEG:m68784:entry:auto-115 -->
+pectin gel
+
+<!-- SEG:m68784:entry:auto-116 -->
+milk
+
+<!-- SEG:m68784:entry:auto-117 -->
+butterfat
+
+<!-- SEG:m68784:entry:auto-118 -->
+water
+
+<!-- SEG:m68784:entry:auto-119 -->
+ruby
+
+<!-- SEG:m68784:entry:auto-120 -->
+chromium(III) oxide (Cr[[sub:2]]O[[sub:3]])
+
+<!-- SEG:m68784:entry:auto-121 -->
 aluminum oxide (Al[[sub:2]]O[[sub:3]])
 
 <!-- SEG:m68784:problem:fs-idm118190336 -->

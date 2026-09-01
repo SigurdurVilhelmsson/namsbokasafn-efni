@@ -1,0 +1,197 @@
+{
+  "moduleId": "m00172",
+  "title": {
+    "segmentId": "m00172:title:auto-1",
+    "text": "Electrophilic Additions to Conjugated Dienes: Allylic Carbocations"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "9ebc3bdf-d157-4311-b829-5470694c9c73"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00172:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00172:alt:fig-00001-alt",
+          "text": "2-methylpropene reacts with hydrogen chloride in ether to yield a tertiary carbocation that further yields 2-chloro-2-methylpropane. 1,4-Pentadiene (nonconjugated) reacts with hydrogen chloride in ether to yield 2,4-dichloropentane."
+        },
+        "src": "../../media/OChem_14_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00172:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00172:alt:fig-00002-alt",
+          "text": "In a reaction, 1,3-butadiene reacts with hydrogen bromide to yield 3-bromo-1-butene (71 percent) through 1,2-addition and 1-bromo-2-butene (29 percent) through 1,4-addition."
+        },
+        "src": "../../media/OChem_14_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00172:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00172:alt:fig-00003-alt",
+          "text": "In a reaction, 1,3-butadiene reacts with bromine at 20 degrees Celsius to yield 3,4-dibromo-1-butene (55 percent) through 1,2-addition and 1,4-dibromo-2-butene (45 percent) through 1,4-addition."
+        },
+        "src": "../../media/OChem_14_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00172:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00172:alt:fig-00004-alt",
+          "text": "A reaction shows 1,3-butadiene reacting with hydrogen bromide to yield two resonance structures of secondary, allylic carbocations. Primary, nonallylic carbocation is not formed."
+        },
+        "src": "../../media/OChem_14_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00172:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00172:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00172:alt:fig-00005-alt",
+          "text": "Two resonance structures of allylic carbocations reacts with bromide ion form 1,4-addition (29 percent) and 1,2-addition (71 percent) products. The electrostatic potential map along with ball-and-stick model of carbocation is depicted."
+        },
+        "src": "../../media/OChem_14_02_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00172:example-title:exam-00001-title",
+        "text": "Predicting the Product of an Electrophilic Addition Reaction of a Conjugated Diene"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00172:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00172:para:para-00007",
+          "title": {
+            "segmentId": "m00172:para-title:para-00007-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00172:para:para-00008"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "title": {
+            "segmentId": "m00172:para-title:para-00009-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00172:alt:fig-00006-alt",
+          "text": "The reaction of 2-methyl-1,3-cyclohexadiene with hydrogen chloride gives three different products, 3-chloro-3-methylcyclohexene, 3-chloro-1-methylcyclohexene, and 6-chloro-1-methylcyclohexene via 1-2, 1-4, and 1-2 and 1-4 additions, respectively."
+        },
+        "src": "../../media/OChem_14_02_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00172:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

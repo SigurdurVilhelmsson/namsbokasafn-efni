@@ -10,6 +10,9 @@ Alkanes
 <!-- SEG:m00142:para:para-00002 -->
 The IR spectrum of an alkane is fairly uninformative because no functional groups are present and all absorptions are due to C–H and C–C bonds. Alkane C–H bonds show a strong absorption from 2850 to 2960 cm[[sup:–1]], and saturated C–C bonds show a number of bands in the 800 to 1300 cm[[sup:–1]] range. Since most organic compounds contain saturated alkane-like portions, most organic compounds have these characteristic IR absorptions. The C–H and C–C bands are clearly visible in the three spectra shown previously in [[docref:m00141#fig-00001]].
 
+<!-- SEG:m00142:alt:fig-00001-alt -->
+Characteristic alkane bonds and their absorption values. Alkane CH bonds absorb at 2850 to 2960 inverse centimeters and alkane CC bonds absorb at 800 to 1300 inverse centimeters.
+
 <!-- SEG:m00142:title:sect-00002-title -->
 Alkenes
 
@@ -19,8 +22,14 @@ Alkenes show several characteristic stretching absorptions. Vinylic =C–H bonds
 <!-- SEG:m00142:para:para-00004 -->
 Alkenes have characteristic =C–H out-of-plane bending absorptions in the 700 to 1000 cm[[sup:–1]] range, thereby allowing the substitution pattern on a double bond to be determined ([[xref:fig-00003]]). For example, monosubstituted alkenes such as 1-hexene show strong characteristic bands at 910 and 990 cm[[sup:–1]], and 1,1-disubstituted alkenes ([[MATH:2]]) have an intense band at 890 cm[[sup:–1]].
 
+<!-- SEG:m00142:alt:fig-00002-alt -->
+Characteristic alkene bonds and their absorption values. Various alkene CC and CH bond types absorb just below 3100, below 1680, below 990, and at 890 inverse centimeters.
+
 <!-- SEG:m00142:caption:fig-00003-caption -->
 [[b:C–H out-of-plane bending vibrations for substituted alkenes.]]
+
+<!-- SEG:m00142:alt:fig-00003-alt -->
+Characteristic alkene bonds and their absorption values, separated by level of substitution and cis or trans.
 
 <!-- SEG:m00142:title:sect-00003-title -->
 Alkynes
@@ -28,14 +37,23 @@ Alkynes
 <!-- SEG:m00142:para:para-00005 -->
 Alkynes show a [[MATH:3]] stretching absorption at 2100 to 2260 cm[[sup:–1]], an absorption that is much more intense for terminal alkynes than for internal alkynes. Terminal alkynes such as 1-hexyne also have a characteristic [[MATH:4]] stretching absorption at 3300 cm[[sup:–1]] ([[docref:m00141#fig-00001]]c). This band is diagnostic for terminal alkynes because it is fairly intense and quite sharp.
 
+<!-- SEG:m00142:alt:fig-00004-alt -->
+Characteristic alkyne bonds and their absorption values. Alkyne CC bonds absorb at 2100 to 2260 inverse centimeters and alkyne CH bonds absorb at 3300 inverse centimeters.
+
 <!-- SEG:m00142:title:sect-00004-title -->
 Aromatic Compounds
 
 <!-- SEG:m00142:para:para-00006 -->
 Aromatic compounds, such as benzene, have a weak C–H stretching absorption at 3030 cm[[sup:–1]], just to the left of a typical saturated C–H band. In addition, they have a series of weak absorptions in the 1660 to 2000 cm[[sup:–1]] range and a series of medium-intensity absorptions in the 1450 to 1600 cm[[sup:–1]] region. These latter absorptions are due to complex molecular motions of the entire ring. The C–H out-of-plane bending region for benzene derivatives, between 650 to 1000 cm[[sup:–1]], gives valuable information about the ring’s substitution pattern, as it does for the substitution pattern of alkenes ([[xref:fig-00006]]).
 
+<!-- SEG:m00142:alt:fig-00005-alt -->
+Characteristic aromatic bonds and their absorption values. Aromatic CH bonds absorb weakly at 3030 inverse centimeters and aromatic CC bonds absorb at in regions below 2000 and 1600 inverse centimeters.
+
 <!-- SEG:m00142:caption:fig-00006-caption -->
 [[b:C–H out-of-plane bending vibrations for substituted benzenes.]]
+
+<!-- SEG:m00142:alt:fig-00006-alt -->
+Characteristic aromatic bonds and their absorption values, separated by number of substituents and ortho, meta, or para.
 
 <!-- SEG:m00142:para:para-00007 -->
 The IR spectrum of phenylacetylene, shown in Figure 12.29 at the end of this section, gives an example, clearly showing the following absorbances: [[MATH:5]] stretch at 3300 cm[[sup:–1]], C–H stretches from the benzene ring at 3000 to 3100 cm[[sup:–1]], [[MATH:6]] stretches of the benzene ring between 1450 and 1600 cm[[sup:–1]], and out-of-plane bending of the ring’s C–H groups, indicating monosubstitution at 750 cm[[sup:–1]].
@@ -46,11 +64,17 @@ Alcohols
 <!-- SEG:m00142:para:para-00008 -->
 The O–H functional group of alcohols is easy to spot. Alcohols have a characteristic band in the range 3400 to 3650 cm[[sup:–1]] that is usually broad and intense. Hydrogen bonding between O–H groups is responsible for making the absorbance so broad. If an O–H stretch is present, it’s hard to miss this band or to confuse it with anything else.
 
+<!-- SEG:m00142:alt:fig-00007-alt -->
+A characteristic alcohol bond and its absorption value, indicated as a broad intense band at 3400 to 3650 inverse centimeters.
+
 <!-- SEG:m00142:para:para-00009 -->
 Cyclohexanol ([[xref:fig-00008]]) is a good example.
 
 <!-- SEG:m00142:caption:fig-00008-caption -->
 [[b:IR spectrum of cyclohexanol.]]
+
+<!-- SEG:m00142:alt:fig-00008-alt -->
+An infrared spectrum in which a wide absorption band near 3300 inverse centimeters is labeled O H, and a sharp band below 1100 is labeled C single bond O.
 
 <!-- SEG:m00142:title:sect-00006-title -->
 Amines
@@ -58,11 +82,17 @@ Amines
 <!-- SEG:m00142:para:para-00010 -->
 The N–H functional group of amines is also easy to spot in the IR, with a characteristic absorption in the 3300 to 3500 cm[[sup:–1]] range. Although alcohols absorb in the same range, an N–H absorption band is much sharper and less intense than an O–H band.
 
+<!-- SEG:m00142:alt:fig-00009-alt -->
+A characteristic amine bond and its absorption value, indicated as a sharp band at 3300 to 3500 inverse centimeters.
+
 <!-- SEG:m00142:para:para-00011 -->
 Primary amines (R–NH[[sub:2]]) have two absorbances—one for the symmetric stretching mode and one for the asymmetric mode ([[xref:fig-00010]]). Secondary amines (R[[sub:2]]N–H) only have one N–H stretching absorbance in this region.
 
 <!-- SEG:m00142:caption:fig-00010-caption -->
 [[b:IR spectrum of cyclohexylamine.]]
+
+<!-- SEG:m00142:alt:fig-00010-alt -->
+An infrared spectrum in which a sharp, two-pronged absorption band near 3300 inverse centimeters is labeled N H 2.
 
 <!-- SEG:m00142:title:sect-00007-title -->
 Carbonyl Compounds
@@ -73,11 +103,17 @@ ALDEHYDES
 <!-- SEG:m00142:para:para-00013 -->
 Saturated aldehydes absorb at 1730 cm[[sup:–1]]; aldehydes next to either a double bond or an aromatic ring absorb at 1705 cm[[sup:–1]].
 
+<!-- SEG:m00142:alt:fig-00011-alt -->
+Characteristic aldehyde C O bonds and their absorption values, indicated at 1730 and 1705 inverse centimeters for alkyl and allyl or benzyl aldehydes respectively.
+
 <!-- SEG:m00142:para:para-00014 -->
 The C–H group attached to the carbonyl is responsible for the characteristic IR absorbance for aldehydes at 2750 and 2850 cm[[sup:–1]] ([[xref:fig-00012]]). Although these are not very intense, the absorbance at 2750 cm[[sup:–1]] is helpful when trying to distinguish between an aldehyde and a ketone.
 
 <!-- SEG:m00142:caption:fig-00012-caption -->
 [[b:The IR spectrum of benzaldehyde.]]
+
+<!-- SEG:m00142:alt:fig-00012-alt -->
+An infrared spectrum in which a small absorption band near 2800 inverse centimeters is labeled aldehyde C H, and a strong band near 1700 is labeled aldehyde C O.
 
 <!-- SEG:m00142:title:sect-00009-title -->
 KETONES
@@ -85,17 +121,26 @@ KETONES
 <!-- SEG:m00142:para:para-00015 -->
 Saturated open-chain ketones and six-membered cyclic ketones absorb at 1715 cm[[sup:–1]]. Ring strain stiffens the [[MATH:7]] bond, making five-membered cyclic ketones absorb at 1750 cm[[sup:–1]] and four-membered cyclic ketones absorb at 1780 cm[[sup:–1]], about 20 to 30 cm[[sup:–1]] lower than the corresponding saturated ketone.
 
+<!-- SEG:m00142:alt:fig-00013-alt -->
+Characteristic ketone C O bonds and their absorption values, indicated at values just above 1700 inverse centimeters for alkyl ketones and values just below 1700 for allyl and benzyl ketones.
+
 <!-- SEG:m00142:title:sect-00010-title -->
 ESTERS
 
 <!-- SEG:m00142:para:para-00016 -->
 Saturated esters have a [[MATH:8]] absorbance at 1735 cm[[sup:–1]] and two strong absorbances in the 1300 to 1000 cm[[sup:–1]] range from the C–O portion of the functional group. Like other carbonyl functional groups, esters next to either an aromatic ring or a double bond absorb at 1715 cm[[sup:–1]], about 20 to 30 cm[[sup:–1]] lower than a saturated ester.
 
+<!-- SEG:m00142:alt:fig-00014-alt -->
+Characteristic ester C O bonds and their absorption values, indicated at 1735 inverse centimeters for alkyl esters and 1715 for allyl and benzyl esters.
+
 <!-- SEG:m00142:example-title:exam-00001-title -->
-Strategy
+Predicting IR Absorptions of Compounds
 
 <!-- SEG:m00142:para:para-00017 -->
 Where might the following compounds have IR absorptions?
+
+<!-- SEG:m00142:para-title:para-00018-title -->
+Strategy
 
 <!-- SEG:m00142:para:para-00018 -->
 Identify the functional groups in each molecule, and then check [[docref:m00141#table-00001]] to see where those groups absorb.
@@ -109,11 +154,20 @@ Solution
 <!-- SEG:m00142:para:para-00020 -->
 [[b:(b)]] [[i:Absorptions:]] 3300 cm[[sup:–1]] ([[MATH:10]]), 2100 to 2260 cm[[sup:–1]] ([[MATH:11]]), 1735 cm[[sup:–1]] ([[MATH:12]]). This molecule has a terminal alkyne triple bond and a saturated ester carbonyl group.
 
+<!-- SEG:m00142:alt:fig-00015-alt -->
+A chemical structure of 1-cyclohexen-1-ylmethanol
+
+<!-- SEG:m00142:alt:fig-00019-alt -->
+A chemical structure of a methyl ester with a five-carbon chain off the carbonyl. There is a terminal alkyne and a methyl on the beta C.
+
 <!-- SEG:m00142:example-title:exam-00002-title -->
-Strategy
+Identifying Functional Groups from an IR Spectrum
 
 <!-- SEG:m00142:para:para-00021 -->
 The IR spectrum of an unknown compound is shown in [[xref:fig-00016]]. What functional groups does the compound contain?
+
+<!-- SEG:m00142:para-title:para-00022-title -->
+Strategy
 
 <!-- SEG:m00142:para:para-00022 -->
 All IR spectra have many absorptions, but those useful for identifying specific functional groups are usually found in the region from 1500 cm[[sup:–1]] to 3300 cm[[sup:–1]]. Pay particular attention to the carbonyl region (1670 to 1780 cm[[sup:–1]]), the aromatic region (1660 to 2000 cm[[sup:–1]]), the triple-bond region (2000 to 2500 cm[[sup:–1]]), and the C–H region (2500 to 3500 cm[[sup:–1]]).
@@ -126,6 +180,12 @@ The spectrum shows an intense absorption at 1725 cm[[sup:–1]] due to a carbony
 
 <!-- SEG:m00142:caption:fig-00016-caption -->
 [[b:IR spectrum for [[xref:exam-00002]].]]
+
+<!-- SEG:m00142:alt:fig-00016-alt -->
+An infrared spectrum of an unknown compound. Significant absorption bands are at 700,1000 and 1700 centimeter inverse.
+
+<!-- SEG:m00142:alt:fig-00017-alt -->
+Chemical structure structure of phenylacetaldehyde.
 
 <!-- SEG:m00142:para:para-00012 -->
 Carbonyl functional groups are the easiest to identify of all IR absorptions because of their sharp, intense peak in the range 1670 to 1780 cm[[sup:–1]]. Most important, the exact position of absorption within this range can often be used to identify the exact kind of carbonyl functional group—aldehyde, ketone, ester, and so forth.
@@ -150,6 +210,9 @@ Once mounted in the diffractometer, the crystal is irradiated with X rays, usual
 
 <!-- SEG:m00142:caption:fig-00018-caption -->
 The structure of human muscle fructose-1,6-bisphosphate aldolase, as determined by X-ray crystallography. (credit: modification of work Protein Data Bank, 1ALD. PDB ID: 1ALD, Gamblin, S.J. Davies, G.J. Grimes, J.M. Jackson, R.M. Littlechild, J.A. Watson, H.C. (1991) J. Mol. Biol. 219: 573-576, CC BY 1.0.)
+
+<!-- SEG:m00142:alt:fig-00018-alt -->
+A ribbon diagram of a protein comprising multiple regions in various colors.
 
 <!-- SEG:m00142:para:para-00031 -->
 Manipulation of the diffraction pattern to extract three-dimensional molecular data is a complex process, but the final result is an electron-density map of the molecule. Because electrons are largely localized around atoms, any two centers of electron density located within bonding distance of each other are assumed to represent bonded atoms, leading to a recognizable chemical structure. So important is this structural information for biochemistry that an online database of approximately 145,000 biological substances has been created. Operated by Rutgers University and funded by the U.S. National Science Foundation, the Protein Data Bank (PDB) is a worldwide repository for processing and distributing three-dimensional structural data for biological macromolecules. We’ll see how to access the PDB in the Chapter 26 [[i:Chemistry Matters]].

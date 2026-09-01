@@ -29,7 +29,10 @@
       },
       "media": {
         "id": "fs-idm111369104",
-        "alt": "This figure contains three photos and corresponding particle diagrams. In a, a photo of an aquarium containing fish is shown. The particle diagram beneath it shows 90 tiny red spheres. In b, a photo is shown of milk being poured into a cup. The corresponding particle diagram shows about 25 medium sized red spheres.In c, a photo is shown of two pairs of sandal clad feet in mud. The particle diagram below shows 10 fairly large red spheres.",
+        "alt": {
+          "segmentId": "m68784:alt:fs-idm111369104-alt",
+          "text": "This figure contains three photos and corresponding particle diagrams. In a, a photo of an aquarium containing fish is shown. The particle diagram beneath it shows 90 tiny red spheres. In b, a photo is shown of milk being poured into a cup. The corresponding particle diagram shows about 25 medium sized red spheres.In c, a photo is shown of two pairs of sandal clad feet in mud. The particle diagram below shows 10 fairly large red spheres."
+        },
         "src": "../../media/CNX_Chem_11_05_Colloid.jpg",
         "mimeType": "image/jpeg"
       }
@@ -48,7 +51,10 @@
       },
       "media": {
         "id": "fs-idp37353296",
-        "alt": "This is a photo of searchlight beams in the night sky of a city scene.",
+        "alt": {
+          "segmentId": "m68784:alt:fs-idp37353296-alt",
+          "text": "This is a photo of searchlight beams in the night sky of a city scene."
+        },
         "src": "../../media/CNX_Chem_11_05_srchlight.jpg",
         "mimeType": "image/jpeg"
       }
@@ -68,11 +74,12 @@
       "id": "fs-idm28163488",
       "class": "top-titled",
       "summary": "This table provides examples of colloids. Examples of a solid dispersed in a gas are smoke and dust. Common examples of a solid dispersed in a liquid, also known as a sol, include starch in water, some inks, paints, and milk of magnesia. Examples of a solid dispersed in a solid include some colored gems and some alloys. Examples of a liquid dispersed in a gas, also called an aerosol, include clouds, fogs, mists, and sprays. Examples of a liquid dispersed in a liquid, also called emulsions, include milk, mayonnaise, and butter. Examples of a liquid that is dispersed in a solid, also called gels, include jellies, gels, pearl, and opal which is H subscript 2 O in S i O subscript 2. Examples of a gas dispersed in a liquid, also called a foam, include foams, whipped cream, and beaten egg whites. Examples of gas dispersed in solid include pumice and floating soaps.",
+      "title": null,
       "rows": [
         {
           "cells": [
             {
-              "segmentId": "m68784:entry:auto-11",
+              "segmentId": "m68784:entry:auto-13",
               "attributes": {
                 "namest": "c1",
                 "nameend": "c4",
@@ -84,18 +91,6 @@
         {
           "cells": [
             {
-              "segmentId": "m68784:entry:auto-12",
-              "attributes": {
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m68784:entry:auto-13",
-              "attributes": {
-                "align": "left"
-              }
-            },
-            {
               "segmentId": "m68784:entry:auto-14",
               "attributes": {
                 "align": "left"
@@ -106,11 +101,7 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68784:entry:auto-16",
               "attributes": {
@@ -122,7 +113,11 @@
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68784:entry:auto-18",
               "attributes": {
@@ -134,11 +129,7 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68784:entry:auto-20",
               "attributes": {
@@ -150,7 +141,11 @@
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68784:entry:auto-22",
               "attributes": {
@@ -162,11 +157,7 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68784:entry:auto-24",
               "attributes": {
@@ -178,7 +169,11 @@
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68784:entry:auto-26",
               "attributes": {
@@ -190,11 +185,7 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68784:entry:auto-28",
               "attributes": {
@@ -206,7 +197,11 @@
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68784:entry:auto-30",
               "attributes": {
@@ -218,11 +213,7 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68784:entry:auto-32",
               "attributes": {
@@ -234,7 +225,11 @@
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68784:entry:auto-34",
               "attributes": {
@@ -246,11 +241,7 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68784:entry:auto-36",
               "attributes": {
@@ -262,7 +253,11 @@
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68784:entry:auto-38",
               "attributes": {
@@ -274,11 +269,7 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68784:entry:auto-40",
               "attributes": {
@@ -290,7 +281,11 @@
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68784:entry:auto-42",
               "attributes": {
@@ -302,11 +297,7 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68784:entry:auto-44",
               "attributes": {
@@ -318,7 +309,11 @@
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68784:entry:auto-46",
               "attributes": {
@@ -327,6 +322,18 @@
             },
             {
               "segmentId": "m68784:entry:auto-47",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68784:entry:auto-48",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68784:entry:auto-49",
               "attributes": {
                 "align": "left"
               }
@@ -425,7 +432,10 @@
           },
           "media": {
             "id": "fs-idm247178464",
-            "alt": "This figure shows a structural formula for soap known as sodium stearate. A hydrocarbon chain composed of 18 carbon atoms and 35 hydrogen atoms is shown with an ionic end with 2 oxygen atoms and a negative charge. A positively charged N a superscript plus is also shown at the ionic end.",
+            "alt": {
+              "segmentId": "m68784:alt:fs-idm247178464-alt",
+              "text": "This figure shows a structural formula for soap known as sodium stearate. A hydrocarbon chain composed of 18 carbon atoms and 35 hydrogen atoms is shown with an ionic end with 2 oxygen atoms and a negative charge. A positively charged N a superscript plus is also shown at the ionic end."
+            },
             "src": "../../media/CNX_Chem_11_05_soap.jpg",
             "mimeType": "image/jpeg"
           }
@@ -443,7 +453,10 @@
           },
           "media": {
             "id": "fs-idp40635280",
-            "alt": "This figure shows a structural formula for a detergent known as sodium lauryl sulfate. A hydrocarbon chain composed of 12 carbon atoms and 25 hydrogen atoms is shown with an ionic end involving a negatively charged sulfur and four oxygen atoms at the ionic end of the chain. A positively charged N a superscript plus is also shown at the ionic end.",
+            "alt": {
+              "segmentId": "m68784:alt:fs-idp40635280-alt",
+              "text": "This figure shows a structural formula for a detergent known as sodium lauryl sulfate. A hydrocarbon chain composed of 12 carbon atoms and 25 hydrogen atoms is shown with an ionic end involving a negatively charged sulfur and four oxygen atoms at the ionic end of the chain. A positively charged N a superscript plus is also shown at the ionic end."
+            },
             "src": "../../media/CNX_Chem_11_05_detrg.jpg",
             "mimeType": "image/jpeg"
           }
@@ -462,7 +475,10 @@
           },
           "media": {
             "id": "fs-idm119986752",
-            "alt": "This figure shows a drop of oil in which approximately thirty hydrocarbon tails are oriented toward the center of the drop with ionic ends indicated as tiny red spheres on the surface of the oil drop. Solvated cations are indicated as purple spheres surrounded by clusters of H subscript 2 subscript O molecules shown as tiny clusters of red central oxygen spheres with two white hydrogen spheres attached.",
+            "alt": {
+              "segmentId": "m68784:alt:fs-idm119986752-alt",
+              "text": "This figure shows a drop of oil in which approximately thirty hydrocarbon tails are oriented toward the center of the drop with ionic ends indicated as tiny red spheres on the surface of the oil drop. Solvated cations are indicated as purple spheres surrounded by clusters of H subscript 2 subscript O molecules shown as tiny clusters of red central oxygen spheres with two white hydrogen spheres attached."
+            },
             "src": "../../media/CNX_Chem_11_05_emulsoil.jpg",
             "mimeType": "image/jpeg"
           }
@@ -496,7 +512,10 @@
           },
           "media": {
             "id": "fs-idm61187488",
-            "alt": "In figure a, a satellite image is shown with an inset pointing out the Gulf Coast of the southern United States. In figure b, a photo of a plane is shown spraying over water contaminated with oil. In figure c, a molecule composed of 6 black carbon atoms, 2 red oxygen atoms, and 14 white hydrogen atoms is shown.",
+            "alt": {
+              "segmentId": "m68784:alt:fs-idm61187488-alt",
+              "text": "In figure a, a satellite image is shown with an inset pointing out the Gulf Coast of the southern United States. In figure b, a photo of a plane is shown spraying over water contaminated with oil. In figure c, a molecule composed of 6 black carbon atoms, 2 red oxygen atoms, and 14 white hydrogen atoms is shown."
+            },
             "src": "../../media/CNX_Chem_11_05_oilspill.jpg",
             "mimeType": "image/jpeg"
           }
@@ -547,7 +566,10 @@
           },
           "media": {
             "id": "fs-idm149015440",
-            "alt": "This is a photo of Frederick Cottrell.",
+            "alt": {
+              "segmentId": "m68784:alt:fs-idm149015440-alt",
+              "text": "This is a photo of Frederick Cottrell."
+            },
             "src": "../../media/CNX_Chem_11_05_FredCottre.jpg",
             "mimeType": "image/jpeg"
           }
@@ -561,7 +583,10 @@
           },
           "media": {
             "id": "fs-idm32480224",
-            "alt": "This figure shows a diagram of a Cottrell precipitator. An arrow pointing into a cylindrical chamber shows the path of soot laden smoke. In the presence of high DC voltage and both point and plate electrodes, soot particles are removed at the bottom of the chamber and soot free air exits the top. A photo shows the honeycomb electrodes of a modern electrostatic precipitator.",
+            "alt": {
+              "segmentId": "m68784:alt:fs-idm32480224-alt",
+              "text": "This figure shows a diagram of a Cottrell precipitator. An arrow pointing into a cylindrical chamber shows the path of soot laden smoke. In the presence of high DC voltage and both point and plate electrodes, soot particles are removed at the bottom of the chamber and soot free air exits the top. A photo shows the honeycomb electrodes of a modern electrostatic precipitator."
+            },
             "src": "../../media/CNX_Chem_11_05_Cottrellp.jpg",
             "mimeType": "image/jpeg"
           }
@@ -590,7 +615,10 @@
           },
           "media": {
             "id": "fs-idm200257152",
-            "alt": "In this figure, a large molecular model of gelatin is shown with black carbon atoms, red oxygen atoms, white hydrogen atoms, and blue nitrogen atoms. A photo is shown of gelatin dessert cut into colorful rectangles.",
+            "alt": {
+              "segmentId": "m68784:alt:fs-idm200257152-alt",
+              "text": "In this figure, a large molecular model of gelatin is shown with black carbon atoms, red oxygen atoms, white hydrogen atoms, and blue nitrogen atoms. A photo is shown of gelatin dessert cut into colorful rectangles."
+            },
             "src": "../../media/CNX_Chem_11_05_Gel.jpg",
             "mimeType": "image/jpeg"
           }
@@ -648,73 +676,8 @@
           "id": "fs-idm34982368",
           "class": "unnumbered",
           "summary": "This table provides the dispersed phase and medium for a variety of colloidal systems. In starch dispersion, the dispersed phase is starch and the dispersion medium is water. In smoke, the dispersed phase is solid particles and the dispersion medium is air. In fog, the dispersed phase is water and the dispersion medium is air. In pearl, the dispersed phase is water and the dispersion medium is calcium carbonate, C a C O subscript 3. In whipped cream, the dispersed phase is air and the dispersion medium is cream. In floating soap, the dispersed phase is air and the dispersion medium is soap. In jelly, the dispersed phase is fruit juice and the dispersion medium is pectin gel. In milk, the dispersed phase is butterfat and the dispersion medium is water. In ruby, the dispersed phase is chromium three oxide C r subscript 2 O subscript 3, and the dispersion medium is aluminum oxide A l subscript 2 O subscript 3.",
+          "title": null,
           "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68784:entry:auto-83",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68784:entry:auto-84",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68784:entry:auto-85",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68784:entry:auto-86",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68784:entry:auto-87",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68784:entry:auto-88",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68784:entry:auto-89",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68784:entry:auto-90",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68784:entry:auto-91",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
             {
               "cells": [
                 {
@@ -863,6 +826,72 @@
                 },
                 {
                   "segmentId": "m68784:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68784:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68784:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68784:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68784:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68784:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68784:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68784:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68784:entry:auto-120",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68784:entry:auto-121",
                   "attributes": {
                     "align": "left"
                   }

@@ -1,0 +1,99 @@
+{
+  "moduleId": "m00290",
+  "title": {
+    "segmentId": "m00290:title:auto-1",
+    "text": "Structure and Properties of Amines"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "62883af6-1208-4bc7-8d55-56be395eed4b"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00290:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00290:alt:fig-00001-alt",
+          "text": "The structure and ball-and-stick model of triethylamine. Triethylamine has nitrogen linked to three methyl groups and a lone pair of electrons. Nitrogen is s p 3 hybridized."
+        },
+        "src": "../../media/OChem_24_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00290:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00290:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00290:alt:fig-00002-alt",
+          "text": "The pyramidal inversion of amine from s p 3 hybridized tetrahedral structure to s p 2 hybridized planar structure and s p 3 hybridized tetrahedral structure."
+        },
+        "src": "../../media/OChem_24_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00290:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00290:alt:fig-00003-alt",
+          "text": "A benzene ring with alcohol, amide, and epoxide functional groups reacts with an amine to form Labetalol."
+        },
+        "src": "../../media/OChem_24_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00290:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00290:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00290:alt:fig-00004-alt",
+          "text": "The electrostatic potential map and structure of an amine. The structures are linked via hydrogen bond. The structure shows nitrogen linked to R, R dash group and hydrogen atom."
+        },
+        "src": "../../media/OChem_24_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00290:para:para-00005"
+    }
+  ],
+  "sectionOrder": 2
+}

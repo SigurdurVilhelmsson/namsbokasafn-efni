@@ -82,7 +82,10 @@
           },
           "media": {
             "id": "fs-idm173874464",
-            "alt": "Two photos are shown and labeled “a” and “b.” Photo a shows an aerial view of the Large Hadron Collider. Photo b shows a tunnel of concrete with rails on the ground and tubes and wires running along the wall. Two people walk along the tunnel.",
+            "alt": {
+              "segmentId": "m68856:alt:fs-idm173874464-alt",
+              "text": "Two photos are shown and labeled “a” and “b.” Photo a shows an aerial view of the Large Hadron Collider. Photo b shows a tunnel of concrete with rails on the ground and tubes and wires running along the wall. Two people walk along the tunnel."
+            },
             "src": "../../media/CNX_Chem_21_04_CERN.jpg",
             "mimeType": "image/jpeg"
           }
@@ -145,11 +148,12 @@
           "id": "fs-idm128006320",
           "class": "top-titled",
           "summary": "This table has four columns and ten rows. The first row is a header row and it labels each column: “Name,” “Symbol,” “Atomic Number,” and “Reaction.” Under the “Name” column are the following: americium, curium, californium, einsteinium, mendelevium, nobelium, rutherfordium, seaborgium, and meitnerium. Under the “Symbol” column are the following: A m, C m, C f, E s, M d, N o, R f, S g, and M t. Under the “Atomic Number” column are the following: 95; 96; 98; 99; 101; 102; 104; 106; and 107. Under the “Reaction column are the following reactions: superscript 239 stacked over subscript 94 P u plus superscript 1 stacked over subscript 0 n yields superscript 240 stacked over subscript 95 A m plus superscript 0 stacked over negative 1 e; superscript 239 stacked over subscript 94 P u plus superscript 4 stacked over subscript 2 H e yields superscript 242 stacked over subscript 96 C m plus superscript 1 stacked over subscript 0 n; superscript 242 stacked over subscript 96 C m plus superscript 4 stacked over subscript 2 H e yields superscript 243 stacked over subscript 97 B k plus 2 superscript 1 stacked over subscript 0 n; superscript 238 stacked over subscript 92 U plus 15 superscript 1 stacked over subscript 0 n yields superscript 253 stacked over subscript 99 E s plus 7 superscript 0 stacked over negative 1 e; superscript 253 stacked over subscript 99 E s plus superscript 4 stacked over subscript 2 H e yields superscript 256 stacked over subscript 101 M d plus superscript 1 stacked over subscript 0 n; superscript 246 stacked over subscript 96 C m plus superscript 12 stacked over subscript 6 C yields superscript 257 stacked over subscript 104 R f plus 4 superscript 1 stacked over subscript 0 n; superscript 206 stacked over subscript 82 P b plus superscript 54 stacked over subscript 24 C r yields superscript 257 stacked over subscript 106 S g plus 3 superscript 1 stacked over subscript 0 n; in the same row as the previous equation: superscript 249 stacked over subscript 98 C f plus superscript 18 stacked over subscript 8 O yields superscript 263 stacked over subscript 106 S g plus 4 superscript 1 stacked over subscript 0 n; and superscript 209 stacked over subscript 83 B i plus superscript 58 stacked over subscript 26 F e yields superscript 266 stacked over subscript 109 M t plus superscript 1 stacked over subscript 0 n.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68856:entry:auto-23",
+                  "segmentId": "m68856:entry:auto-24",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c4",
@@ -160,12 +164,6 @@
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68856:entry:auto-24",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68856:entry:auto-25",
                   "attributes": {
@@ -183,17 +181,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68856:entry:auto-28",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68856:entry:auto-29",
                   "attributes": {
@@ -211,17 +209,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68856:entry:auto-32",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68856:entry:auto-33",
                   "attributes": {
@@ -239,17 +237,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68856:entry:auto-36",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68856:entry:auto-37",
                   "attributes": {
@@ -267,17 +265,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68856:entry:auto-40",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68856:entry:auto-41",
                   "attributes": {
@@ -295,17 +293,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68856:entry:auto-44",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68856:entry:auto-45",
                   "attributes": {
@@ -323,17 +321,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68856:entry:auto-48",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68856:entry:auto-49",
                   "attributes": {
@@ -351,17 +349,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68856:entry:auto-52",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68856:entry:auto-53",
                   "attributes": {
@@ -379,17 +377,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68856:entry:auto-56",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68856:entry:auto-57",
                   "attributes": {
@@ -407,17 +405,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68856:entry:auto-60",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68856:entry:auto-61",
                   "attributes": {
@@ -432,6 +430,12 @@
                 },
                 {
                   "segmentId": "m68856:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68856:entry:auto-64",
                   "attributes": {
                     "align": "left"
                   }
@@ -464,7 +468,10 @@
           },
           "media": {
             "id": "fs-idm247309120",
-            "alt": "A diagram is shown which has a white sphere labeled “superscript, 1, subscript 0, n” followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres labeled “superscript, 235, subscript 92, U.” The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a vertical dumbbell shaped collection of the same white and green spheres labeled “superscript, 236, subscript 92, U, Unstable nucleus.” Two right-facing arrows lead from the top and bottom of this structure to two new spheres that are also composed of green and white spheres and are slightly smaller than the others. The top sphere is labeled “superscript, 92, subscript 36, K r” while the lower one is labeled “superscript, 141, subscript 56, B a.” A starburst pattern labeled “Energy” lies between these two spheres and has three right-facing arrows leading from it to three white spheres labeled “3, superscript, 1, subscript 0, n.” A balanced nuclear equation is written below the diagram and says “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 141, subscript 56, B a, plus sign, superscript, 92, subscript 36, K r, plus sign, 3, superscript, 1, subscript 0, n.”",
+            "alt": {
+              "segmentId": "m68856:alt:fs-idm247309120-alt",
+              "text": "A diagram is shown which has a white sphere labeled “superscript, 1, subscript 0, n” followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres labeled “superscript, 235, subscript 92, U.” The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a vertical dumbbell shaped collection of the same white and green spheres labeled “superscript, 236, subscript 92, U, Unstable nucleus.” Two right-facing arrows lead from the top and bottom of this structure to two new spheres that are also composed of green and white spheres and are slightly smaller than the others. The top sphere is labeled “superscript, 92, subscript 36, K r” while the lower one is labeled “superscript, 141, subscript 56, B a.” A starburst pattern labeled “Energy” lies between these two spheres and has three right-facing arrows leading from it to three white spheres labeled “3, superscript, 1, subscript 0, n.” A balanced nuclear equation is written below the diagram and says “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 141, subscript 56, B a, plus sign, superscript, 92, subscript 36, K r, plus sign, 3, superscript, 1, subscript 0, n.”"
+            },
             "src": "../../media/CNX_Chem_21_04_Fission1.jpg",
             "mimeType": "image/jpeg"
           }
@@ -482,7 +489,10 @@
           },
           "media": {
             "id": "fs-idm215700944",
-            "alt": "Five nuclear equations and a graph are shown. The first equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 90, subscript 38, S r, plus sign, superscript, 144, subscript 54, X e, plus sign, 2, superscript, 1, subscript 0, n.” The second equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 87, subscript 35, B r, plus sign, superscript, 146, subscript 57, L a, plus sign, 3, superscript, 1, subscript 0, n.” The third equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 97, subscript 37, R b, plus sign, superscript, 137, subscript 55, C s, plus sign, 3, superscript, 1, subscript 0, n.” The fourth equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 137, subscript 52, T e, plus sign, superscript, 97, subscript 40, Z r, plus sign, 2, superscript, 1, subscript 0, n.” The fifth equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 141, subscript 56, B a, plus sign, superscript, 92, subscript 36, K r, plus sign, 3, superscript, 1, subscript 0, n.” A graph is also shown where the y-axis is labeled “Fission yield, open parenthesis, percent sign, close parenthesis” and has values of 0 to 9 in increments of 1 while the x-axis is labeled “Mass number” and has values of 60 to 180 in increments of 20. The graph begins near point “65, 0” and rises rapidly to near “92, 6.6,” then drops just as rapidly to “107, 0” and remains there to point “127, 0.” The graph then rises again to near “132, 8,” then goes up and down a bit before falling to a point “153, 0,” and going horizontal.",
+            "alt": {
+              "segmentId": "m68856:alt:fs-idm215700944-alt",
+              "text": "Five nuclear equations and a graph are shown. The first equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 90, subscript 38, S r, plus sign, superscript, 144, subscript 54, X e, plus sign, 2, superscript, 1, subscript 0, n.” The second equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 87, subscript 35, B r, plus sign, superscript, 146, subscript 57, L a, plus sign, 3, superscript, 1, subscript 0, n.” The third equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 97, subscript 37, R b, plus sign, superscript, 137, subscript 55, C s, plus sign, 3, superscript, 1, subscript 0, n.” The fourth equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 137, subscript 52, T e, plus sign, superscript, 97, subscript 40, Z r, plus sign, 2, superscript, 1, subscript 0, n.” The fifth equation is “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 236, subscript 92, U, yield arrow, superscript, 141, subscript 56, B a, plus sign, superscript, 92, subscript 36, K r, plus sign, 3, superscript, 1, subscript 0, n.” A graph is also shown where the y-axis is labeled “Fission yield, open parenthesis, percent sign, close parenthesis” and has values of 0 to 9 in increments of 1 while the x-axis is labeled “Mass number” and has values of 60 to 180 in increments of 20. The graph begins near point “65, 0” and rises rapidly to near “92, 6.6,” then drops just as rapidly to “107, 0” and remains there to point “127, 0.” The graph then rises again to near “132, 8,” then goes up and down a bit before falling to a point “153, 0,” and going horizontal."
+            },
             "src": "../../media/CNX_Chem_21_04_Fission2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -518,7 +528,10 @@
           },
           "media": {
             "id": "fs-idm32833520",
-            "alt": "A diagram is shown which has a white sphere labeled “superscript, 1, subscript 0, n” followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres labeled “superscript, 235, subscript 92, U.” The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a pair of smaller spheres which are collections of the same white and green spheres. The upper of these two images is labeled “superscript, 93, subscript 36, K r” while the lower of the two is labeled “superscript, 142, subscript 56, B a.” A starburst pattern labeled “Energy” lies between these two spheres and has three right-facing arrows leading from it to three white spheres labeled “ superscript, 1, subscript 0, n.”  An equation below this portion of the diagram reads ““superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 140, subscript 56, B a, plus sign, superscript 90, subscript 36, K r, plus sign, 3, superscript 1, subscript 0, n.”  A right-facing arrow leads from each of these white spheres to three larger spheres, each composed of many smaller green and white spheres and labeled, from top to bottom as “a, superscript,235, subscript 92, U,” “b, superscript,235, subscript 92, U” and “c, superscript,235, subscript 92, U.” Each of these spheres is followed by a right-facing arrow which points to a pair of smaller spheres composed of the same green and white spheres with starburst patterns in between each pair labeled “Energy.” The spheres of the top pair are labeled, from top to bottom, “superscript, 96, subscript 37, R b” and “superscript, 137, subscript 55, C s.” The spheres of the middle pair are labeled, from top to bottom, “superscript, 90, subscript 38, S r” and “superscript, 144, subscript 54, X e.” The spheres of the bottom pair are labeled, from top to bottom, “superscript, 87, subscript 35, B r” and “superscript, 146, subscript 57, L a.” Each pair of spheres is followed by three right-facing arrows leading to three white spheres labeled “superscript, 1, subscript 0, n.”  Below the diagram are three nuclear equations. Equation a reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 96, subscript 37, R b, plus sign, superscript 137, subscript 55, C s, plus sign, 3, superscript 1, subscript 0, n.” Equation b reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 90, subscript 38, S r, plus sign, superscript144, subscript 54, X e, plus sign, 2, superscript 1, subscript 0, n.” Equation c reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 87, subscript 35, B r, plus sign, superscript 146, subscript 57, L a, plus sign, 3, superscript 1, subscript 0, n”",
+            "alt": {
+              "segmentId": "m68856:alt:fs-idm32833520-alt",
+              "text": "A diagram is shown which has a white sphere labeled “superscript, 1, subscript 0, n” followed by a right-facing arrow and a large sphere composed of many smaller white and green spheres labeled “superscript, 235, subscript 92, U.” The single sphere has impacted the larger sphere. A right-facing arrow leads from the larger sphere to a pair of smaller spheres which are collections of the same white and green spheres. The upper of these two images is labeled “superscript, 93, subscript 36, K r” while the lower of the two is labeled “superscript, 142, subscript 56, B a.” A starburst pattern labeled “Energy” lies between these two spheres and has three right-facing arrows leading from it to three white spheres labeled “ superscript, 1, subscript 0, n.”  An equation below this portion of the diagram reads ““superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 140, subscript 56, B a, plus sign, superscript 90, subscript 36, K r, plus sign, 3, superscript 1, subscript 0, n.”  A right-facing arrow leads from each of these white spheres to three larger spheres, each composed of many smaller green and white spheres and labeled, from top to bottom as “a, superscript,235, subscript 92, U,” “b, superscript,235, subscript 92, U” and “c, superscript,235, subscript 92, U.” Each of these spheres is followed by a right-facing arrow which points to a pair of smaller spheres composed of the same green and white spheres with starburst patterns in between each pair labeled “Energy.” The spheres of the top pair are labeled, from top to bottom, “superscript, 96, subscript 37, R b” and “superscript, 137, subscript 55, C s.” The spheres of the middle pair are labeled, from top to bottom, “superscript, 90, subscript 38, S r” and “superscript, 144, subscript 54, X e.” The spheres of the bottom pair are labeled, from top to bottom, “superscript, 87, subscript 35, B r” and “superscript, 146, subscript 57, L a.” Each pair of spheres is followed by three right-facing arrows leading to three white spheres labeled “superscript, 1, subscript 0, n.”  Below the diagram are three nuclear equations. Equation a reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 96, subscript 37, R b, plus sign, superscript 137, subscript 55, C s, plus sign, 3, superscript 1, subscript 0, n.” Equation b reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 90, subscript 38, S r, plus sign, superscript144, subscript 54, X e, plus sign, 2, superscript 1, subscript 0, n.” Equation c reads “superscript, 235, subscript 92, U, plus sign, superscript, 1, subscript 0, n, yield arrow, superscript, 87, subscript 35, B r, plus sign, superscript 146, subscript 57, L a, plus sign, 3, superscript 1, subscript 0, n”"
+            },
             "src": "../../media/CNX_Chem_21_04_ChnReact1.jpg",
             "mimeType": "image/jpeg"
           }
@@ -537,7 +550,10 @@
           },
           "media": {
             "id": "fs-idm205094672",
-            "alt": "The images are shown and labeled “a,” “b” and “c.” Image a, labeled “Sub-critical mass,” shows a blue circle background with a white sphere near the outer, top, left edge of the circle. A downward, right-facing arrow indicates that the white sphere enters the circle. Seven small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the circle, in seemingly random directions. Image b, labeled “Critical mass,” shows a blue circle background with a white sphere near the outer, top, left edge of the circle. A downward, right-facing arrow indicates that the white sphere enters the circle. Seventeen small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the circle, in seemingly random directions. Image c, labeled “Critical mass from neutron deflection,” shows a blue circle background, lying in a larger purple circle, with a white sphere near the outer, top, left edge of the purple circle. A downward, right-facing arrow indicates that the white sphere enters both of the circles. Thirteen small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the blue circle, and a couple outside of the purple circle, in seemingly random directions.",
+            "alt": {
+              "segmentId": "m68856:alt:fs-idm205094672-alt",
+              "text": "The images are shown and labeled “a,” “b” and “c.” Image a, labeled “Sub-critical mass,” shows a blue circle background with a white sphere near the outer, top, left edge of the circle. A downward, right-facing arrow indicates that the white sphere enters the circle. Seven small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the circle, in seemingly random directions. Image b, labeled “Critical mass,” shows a blue circle background with a white sphere near the outer, top, left edge of the circle. A downward, right-facing arrow indicates that the white sphere enters the circle. Seventeen small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the circle, in seemingly random directions. Image c, labeled “Critical mass from neutron deflection,” shows a blue circle background, lying in a larger purple circle, with a white sphere near the outer, top, left edge of the purple circle. A downward, right-facing arrow indicates that the white sphere enters both of the circles. Thirteen small, yellow starbursts are drawn in the blue circle and each has an arrow facing from it to outside the blue circle, and a couple outside of the purple circle, in seemingly random directions."
+            },
             "src": "../../media/CNX_Chem_21_04_CritMass.jpg",
             "mimeType": "image/jpeg"
           }
@@ -555,7 +571,10 @@
           },
           "media": {
             "id": "fs-idm218899984",
-            "alt": "Two diagrams are shown, each to the left of a photo, and labeled “a” and “b.” Diagram a shows the outer casing of a bomb that has a long, tubular shape with a squared-off tail. Components in the shell show a tube with a white disk labeled “Detonator” on the left, an orange disk with a bright yellow starburst drawn around it labeled “Conventional explosive” in the middle and a right-facing arrow leading to a blue disk in the nose of the bomb labeled “uranium 235.” A small blue cone next to the orange disk is shares the label of “uranium 235.” A black and white photo next to this diagram shows a far-off shot of a rising cloud over a landscape. Diagram b shows the outer casing of a bomb that has a short, rounded shape with a squared-off tail. Components in the shell show a large orange circle labeled “Conventional explosive” with a series of black dots around its edge, labeled “Detonators,” and a yellow starburst behind it. White arrows face from the outer edge of the orange circle to a blue circle in the center with a yellow core. The blue circle is labeled “plutonium 239” while the yellow core is labeled “beryllium, dash, polonium initiator.” A black and white photo next to this diagram shows a far-off shot of a giant rising cloud over a landscape.",
+            "alt": {
+              "segmentId": "m68856:alt:fs-idm218899984-alt",
+              "text": "Two diagrams are shown, each to the left of a photo, and labeled “a” and “b.” Diagram a shows the outer casing of a bomb that has a long, tubular shape with a squared-off tail. Components in the shell show a tube with a white disk labeled “Detonator” on the left, an orange disk with a bright yellow starburst drawn around it labeled “Conventional explosive” in the middle and a right-facing arrow leading to a blue disk in the nose of the bomb labeled “uranium 235.” A small blue cone next to the orange disk is shares the label of “uranium 235.” A black and white photo next to this diagram shows a far-off shot of a rising cloud over a landscape. Diagram b shows the outer casing of a bomb that has a short, rounded shape with a squared-off tail. Components in the shell show a large orange circle labeled “Conventional explosive” with a series of black dots around its edge, labeled “Detonators,” and a yellow starburst behind it. White arrows face from the outer edge of the orange circle to a blue circle in the center with a yellow core. The blue circle is labeled “plutonium 239” while the yellow core is labeled “beryllium, dash, polonium initiator.” A black and white photo next to this diagram shows a far-off shot of a giant rising cloud over a landscape."
+            },
             "src": "../../media/CNX_Chem_21_04_FissnBomb.jpg",
             "mimeType": "image/jpeg"
           }
@@ -582,7 +601,10 @@
               },
               "media": {
                 "id": "fs-idm35246480",
-                "alt": "A photo labeled “a” and a diagram labeled “b” is shown. The photo is of a power plant with two large white domes and many buildings. The diagram shows a cylindrical container with thick walls labeled “Walls made of concrete and steel” and three main components inside. The first of these components is a pair of tall cylinders labeled “Steam generators” that sit to either side of a shorter cylinder labeled “Core.” Next to the core is a thin cylinder labeled “Pressurizer.” To the left of the outer walls is a set of pistons labeled “Turbines” that sit above a series of other equipment.",
+                "alt": {
+                  "segmentId": "m68856:alt:fs-idm35246480-alt",
+                  "text": "A photo labeled “a” and a diagram labeled “b” is shown. The photo is of a power plant with two large white domes and many buildings. The diagram shows a cylindrical container with thick walls labeled “Walls made of concrete and steel” and three main components inside. The first of these components is a pair of tall cylinders labeled “Steam generators” that sit to either side of a shorter cylinder labeled “Core.” Next to the core is a thin cylinder labeled “Pressurizer.” To the left of the outer walls is a set of pistons labeled “Turbines” that sit above a series of other equipment."
+                },
                 "src": "../../media/CNX_Chem_21_04_NuclearPwr.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -676,7 +698,10 @@
           },
           "media": {
             "id": "fs-idm201459040",
-            "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows a cut-away view of a vertical tube with a flat, horizontal plate near the bottom that connects to a series of vertical pipes lined up next to one another and labeled “Fuel rods.” A second horizontal plate labeled “Grid” lies at the top of the pipes and a second set of thinner, vertical pipes, labeled “Control rods,” leads from this plate to the top of the container. The walls of the container are labeled “Steel pressure vessel.” A blue, right-facing arrow leads from an entry point in the left side of the container and is followed by a second, down-facing blue arrow and a curved, right-facing arrow that trace along the outer, bottom edge of the container. A blue and red arrow follows these and faces up the right side of the container to an exit near the right face where a red, right-facing arrow leads out. Diagram b is a cut-away image of a vertical, rectangular, three dimensional set of vertical pipes. The pipes are labeled “Fuel rods” and are inserted into an upper and lower horizontal plate labeled “Grid.” Four thin rods extend above the pipes and are labeled “Control rods.",
+            "alt": {
+              "segmentId": "m68856:alt:fs-idm201459040-alt",
+              "text": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows a cut-away view of a vertical tube with a flat, horizontal plate near the bottom that connects to a series of vertical pipes lined up next to one another and labeled “Fuel rods.” A second horizontal plate labeled “Grid” lies at the top of the pipes and a second set of thinner, vertical pipes, labeled “Control rods,” leads from this plate to the top of the container. The walls of the container are labeled “Steel pressure vessel.” A blue, right-facing arrow leads from an entry point in the left side of the container and is followed by a second, down-facing blue arrow and a curved, right-facing arrow that trace along the outer, bottom edge of the container. A blue and red arrow follows these and faces up the right side of the container to an exit near the right face where a red, right-facing arrow leads out. Diagram b is a cut-away image of a vertical, rectangular, three dimensional set of vertical pipes. The pipes are labeled “Fuel rods” and are inserted into an upper and lower horizontal plate labeled “Grid.” Four thin rods extend above the pipes and are labeled “Control rods."
+            },
             "src": "../../media/CNX_Chem_21_04_ControlRod.jpg",
             "mimeType": "image/jpeg"
           }
@@ -796,7 +821,10 @@
           },
           "media": {
             "id": "fs-idm210185648",
-            "alt": "Two photos, labeled “a” and “b” are shown. Photo a is an aerial view of a nuclear power plant. Photo b shows a small group of men walking through a room filled with electronics.",
+            "alt": {
+              "segmentId": "m68856:alt:fs-idm210185648-alt",
+              "text": "Two photos, labeled “a” and “b” are shown. Photo a is an aerial view of a nuclear power plant. Photo b shows a small group of men walking through a room filled with electronics."
+            },
             "src": "../../media/CNX_Chem_21_04_3MileIslnd.jpg",
             "mimeType": "image/jpeg"
           }
@@ -809,7 +837,10 @@
           },
           "media": {
             "id": "fs-idm109901200",
-            "alt": "A photo and a map, labeled “a” and “b,” respectively, are shown. Photo a shows a man in a body-covering safety suit working near a series of blue, plastic coated containers. Map b shows a section of land with the ocean on each side. Near the upper right side of the land is a small red dot, labeled “greater than, 12.5, m R backslash, h r,” that is surrounded by a zone of orange that extends in the upper left direction labeled “2.17, dash, 12.5, m R backslash, h r.” The orange is surrounded by an outline of yellow labeled “1.19, dash, 2.17, m R backslash, h r” and a wider outline of green labeled “0.25, dash, 1.19, m R backslash, h r.” A large area of light blue, labeled “0.03, dash, 0.25, m R backslash, h r” surrounds the green area and extends to the lower middle of the map. A large section of the lower middle and left of the land is covered by dark blue, labeled “less than 0.03, m R backslash, h r.”",
+            "alt": {
+              "segmentId": "m68856:alt:fs-idm109901200-alt",
+              "text": "A photo and a map, labeled “a” and “b,” respectively, are shown. Photo a shows a man in a body-covering safety suit working near a series of blue, plastic coated containers. Map b shows a section of land with the ocean on each side. Near the upper right side of the land is a small red dot, labeled “greater than, 12.5, m R backslash, h r,” that is surrounded by a zone of orange that extends in the upper left direction labeled “2.17, dash, 12.5, m R backslash, h r.” The orange is surrounded by an outline of yellow labeled “1.19, dash, 2.17, m R backslash, h r” and a wider outline of green labeled “0.25, dash, 1.19, m R backslash, h r.” A large area of light blue, labeled “0.03, dash, 0.25, m R backslash, h r” surrounds the green area and extends to the lower middle of the map. A large section of the lower middle and left of the land is covered by dark blue, labeled “less than 0.03, m R backslash, h r.”"
+            },
             "src": "../../media/CNX_Chem_21_04_Fukushima.jpg",
             "mimeType": "image/jpeg"
           }
@@ -897,7 +928,10 @@
           },
           "media": {
             "id": "fs-idm26185504",
-            "alt": "Two photos are shown and labeled “a” and “b.” Photo a shows a model of the ITER reactor made up of colorful components. Photo b shows a close-up view of the end of a long, mechanical arm made up of many metal components.",
+            "alt": {
+              "segmentId": "m68856:alt:fs-idm26185504-alt",
+              "text": "Two photos are shown and labeled “a” and “b.” Photo a shows a model of the ITER reactor made up of colorful components. Photo b shows a close-up view of the end of a long, mechanical arm made up of many metal components."
+            },
             "src": "../../media/CNX_Chem_21_04_Fusion.jpg",
             "mimeType": "image/jpeg"
           }

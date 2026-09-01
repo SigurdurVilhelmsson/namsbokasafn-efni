@@ -1,0 +1,115 @@
+{
+  "moduleId": "m00313",
+  "title": {
+    "segmentId": "m00313:title:auto-1",
+    "text": "Transcription of DNA"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "6cbd2b82-adc5-4309-a672-40223b22d629"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00313:para:para-00001"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00313:item:list-00001-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00313:item:list-00001-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m00313:item:list-00001-item-3"
+        },
+        {
+          "id": null,
+          "segmentId": "m00313:item:list-00001-item-4"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00313:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00313:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00313:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00313:alt:fig-00001-alt",
+          "text": "Several turns of deoxyribonucleic acid double helix unwind exposing bases of the two strands. Ribonucleotides line up such that hydrogen bonds form in 5-prime to 3-prime direction."
+        },
+        "src": "../../media/OChem_28_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00313:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00313:para:para-00005"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00313:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

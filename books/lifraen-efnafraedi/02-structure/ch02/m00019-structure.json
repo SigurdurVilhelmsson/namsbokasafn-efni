@@ -1,0 +1,323 @@
+{
+  "moduleId": "m00019",
+  "title": {
+    "segmentId": "m00019:title:auto-1",
+    "text": "Polar Covalent Bonds and Dipole Moments"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "09960c00-bd1d-4a6f-a6d3-7571f232a8e8"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00019:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00019:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00019:para:para-00003"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00019:para:para-00005"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "Dipole Moments of Some Compounds",
+      "title": {
+        "segmentId": "m00019:table-title:table-00001-title",
+        "text": "Dipole Moments of Some Compounds"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00019:entry:auto-7",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-8",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-9",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-10",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00019:entry:auto-11",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-12",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-13",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-14",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00019:entry:auto-15",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-16",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-17",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-18",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00019:entry:auto-19",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-20",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-21",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-22",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00019:entry:auto-23",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-24",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-25",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-26",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00019:entry:auto-27",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-28",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-29",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-30",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00019:entry:auto-31",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-32",
+              "attributes": {}
+            },
+            {
+              "segmentId": null,
+              "attributes": {},
+              "alt": {
+                "segmentId": "m00019:alt:OChem_02_02_001_jpg-alt",
+                "text": "A line-bond structure of benzene, a six-carbon ring with alternating single and double bonds.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_02_001.jpg"
+              }
+            },
+            {
+              "segmentId": "m00019:entry:auto-34",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00019:entry:auto-35",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00019:entry:auto-36",
+              "attributes": {}
+            },
+            {
+              "segmentId": null,
+              "attributes": {}
+            },
+            {
+              "segmentId": null,
+              "attributes": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00019:alt:fig-00002-alt",
+          "text": "The chemical structure of water, methanol, and ammonia from left to right, with the direction and value of dipole moment for each compound."
+        },
+        "src": "../../media/OChem_02_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00019:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00019:alt:fig-00003-alt",
+          "text": "The chemical structures of carbon dioxide, methane, ethane, and benzene are arranged from left to right, with the value of the dipole moment equalling zero in each case."
+        },
+        "src": "../../media/OChem_02_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00019:example-title:exam-00001-title",
+        "text": "Predicting the Direction of a Dipole Moment"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00019:para:para-00007"
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00019:para:para-00008",
+          "title": {
+            "segmentId": "m00019:para-title:para-00008-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00019:para:para-00009",
+          "title": {
+            "segmentId": "m00019:para-title:para-00009-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00019:alt:fig-00004-alt",
+          "text": "The chemical structure of methylamine and its direction of dipole moment."
+        },
+        "src": "../../media/OChem_02_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00019:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

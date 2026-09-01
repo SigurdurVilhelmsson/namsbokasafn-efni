@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "moduleId": "m00092",
+  "extractedAt": "2026-08-31T19:08:47.723Z",
+  "sourceHash": "c3c4dc688e50bb0d",
+  "segmentCount": 15,
+  "segmentIds": [
+    "m00092:title:auto-1",
+    "m00092:para:para-00001",
+    "m00092:caption:fig-00001-caption",
+    "m00092:alt:fig-00001-alt",
+    "m00092:para:para-00002",
+    "m00092:alt:fig-00002-alt",
+    "m00092:para:para-00003",
+    "m00092:alt:fig-00003-alt",
+    "m00092:para:para-00004",
+    "m00092:para:para-00005",
+    "m00092:alt:fig-00004-alt",
+    "m00092:para:para-00006",
+    "m00092:caption:fig-00005-caption",
+    "m00092:alt:fig-00005-alt",
+    "m00092:title:sect-00001-title"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 6,
+    "section": 1,
+    "figure": 5,
+    "table": 0,
+    "example": 0,
+    "exercise": 2,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002",
+      "fig-00003",
+      "fig-00004",
+      "fig-00005"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [
+      "exer-00001",
+      "exer-00002"
+    ],
+    "note": [],
+    "equation": [],
+    "section": [
+      "sect-00001"
+    ]
+  }
+}

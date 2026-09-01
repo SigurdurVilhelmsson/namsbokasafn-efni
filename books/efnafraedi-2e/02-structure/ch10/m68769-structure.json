@@ -31,7 +31,10 @@
       },
       "media": {
         "id": "fs-idm57234192",
-        "alt": "A graph is shown where the x-axis is labeled “Temperature” and the y-axis is labeled “Pressure.” A line extends from the lower left bottom of the graph sharply upward to a point that is a third across the x-axis. A second line begins at the lower third of the first line at a point labeled “triple point” and extends to the upper right corner of the graph where it is labeled “critical point.” The two lines bisect the graph area to create three sections, labeled “solid” near the top left, “liquid” in the top middle and “gas” near the bottom right. A pair of horizontal arrows, one left-facing and labeled “deposition” and one right-facing and labeled” sublimation,” are drawn on top of the bottom section of the first line. A second pair of horizontal arrows, one left-facing and labeled “freezing” and one right-facing and labeled “melting”, are drawn on top of the upper section of the first line. A third pair of horizontal arrows, one left-facing and labeled “condensation” and one right-facing and labeled ”vaporization,” are drawn on top of the middle section of the second line.",
+        "alt": {
+          "segmentId": "m68769:alt:fs-idm57234192-alt",
+          "text": "A graph is shown where the x-axis is labeled “Temperature” and the y-axis is labeled “Pressure.” A line extends from the lower left bottom of the graph sharply upward to a point that is a third across the x-axis. A second line begins at the lower third of the first line at a point labeled “triple point” and extends to the upper right corner of the graph where it is labeled “critical point.” The two lines bisect the graph area to create three sections, labeled “solid” near the top left, “liquid” in the top middle and “gas” near the bottom right. A pair of horizontal arrows, one left-facing and labeled “deposition” and one right-facing and labeled” sublimation,” are drawn on top of the bottom section of the first line. A second pair of horizontal arrows, one left-facing and labeled “freezing” and one right-facing and labeled “melting”, are drawn on top of the upper section of the first line. A third pair of horizontal arrows, one left-facing and labeled “condensation” and one right-facing and labeled ”vaporization,” are drawn on top of the middle section of the second line."
+        },
         "src": "../../media/CNX_Chem_10_04_PhaseDi.jpg",
         "mimeType": "image/jpeg"
       }
@@ -50,7 +53,10 @@
       },
       "media": {
         "id": "fs-idp24684528",
-        "alt": "A graph is shown where the x-axis is labeled “Temperature in degrees Celsius” and the y-axis is labeled “Pressure ( k P a ).” A line extends from the origin of the graph which is labeled “A” sharply upward to a point in the bottom third of the diagram labeled “B” where it branches into a line that slants slightly backward until it hits the highest point on the y-axis labeled “D” and a second line that extends to the upper right corner of the graph labeled “C”. C is labeled “Critical point, with a dotted line extending downward to the x-axis labeled 374 degrees Celsius, and another dotted line extending to the y-axis labeled 22,089 k P a. The two lines bisect the graph area to create three sections, labeled “Ice (solid)” near the middle left, “Water (liquid)” in the top middle and “Water vapor (gas)” near the bottom middle. Point B is labeled “Triple point” and has a dotted line extending downward to the x-axis labeled 0.01, and another dotted line extending to the y-axis labeled 0.6. Halfway between points B and C a dotted line extends from the originally discussed line downward to the point 100 degrees Celsius on the x-axis, and another dotted line extends to the y-axis at 101 k P a. Another dotted line extends from this dotted line downward at 0 degrees Celsius.",
+        "alt": {
+          "segmentId": "m68769:alt:fs-idp24684528-alt",
+          "text": "A graph is shown where the x-axis is labeled “Temperature in degrees Celsius” and the y-axis is labeled “Pressure ( k P a ).” A line extends from the origin of the graph which is labeled “A” sharply upward to a point in the bottom third of the diagram labeled “B” where it branches into a line that slants slightly backward until it hits the highest point on the y-axis labeled “D” and a second line that extends to the upper right corner of the graph labeled “C”. C is labeled “Critical point, with a dotted line extending downward to the x-axis labeled 374 degrees Celsius, and another dotted line extending to the y-axis labeled 22,089 k P a. The two lines bisect the graph area to create three sections, labeled “Ice (solid)” near the middle left, “Water (liquid)” in the top middle and “Water vapor (gas)” near the bottom middle. Point B is labeled “Triple point” and has a dotted line extending downward to the x-axis labeled 0.01, and another dotted line extending to the y-axis labeled 0.6. Halfway between points B and C a dotted line extends from the originally discussed line downward to the point 100 degrees Celsius on the x-axis, and another dotted line extends to the y-axis at 101 k P a. Another dotted line extends from this dotted line downward at 0 degrees Celsius."
+        },
         "src": "../../media/CNX_Chem_10_04_H2OPhasDi2.jpg",
         "mimeType": "image/jpeg"
       }
@@ -79,7 +85,10 @@
       },
       "media": {
         "id": "fs-idm142599808",
-        "alt": "A photograph shows a package with a rocket being launched on the front and a block of pink, white and brown striped solid in a wrapper next to it.",
+        "alt": {
+          "segmentId": "m68769:alt:fs-idm142599808-alt",
+          "text": "A photograph shows a package with a rocket being launched on the front and a block of pink, white and brown striped solid in a wrapper next to it."
+        },
         "src": "../../media/CNX_Chem_10_04_FreezeDry.jpg",
         "mimeType": "image/jpeg"
       }
@@ -98,7 +107,10 @@
       },
       "media": {
         "id": "fs-idp19576624",
-        "alt": "A photograph shows an aerial view of a land mass. The white mass of a glacier is shown near the top left quadrant of the photo and leads to two branching blue rivers. The open land is shown in brown.",
+        "alt": {
+          "segmentId": "m68769:alt:fs-idp19576624-alt",
+          "text": "A photograph shows an aerial view of a land mass. The white mass of a glacier is shown near the top left quadrant of the photo and leads to two branching blue rivers. The open land is shown in brown."
+        },
         "src": "../../media/CNX_Chem_10_04_IceMelt.jpg",
         "mimeType": "image/jpeg"
       }
@@ -205,7 +217,10 @@
       },
       "media": {
         "id": "fs-idm185557312",
-        "alt": "A graph is shown where the x-axis is labeled “Temperature ( degree sign, C )” and has values of negative 100 to 100 in increments of 25 and the y-axis is labeled “Pressure ( k P a )” and has values of 10 to 1,000,000. A line extends from the lower left bottom of the graph upward to a point around“27, 9000,” where it ends. The space under this curve is labeled “Gas.” A second line extends in a curve from point around “-55, 500” to “27, 1,000,000.” The area to the left of this line and above the first line is labeled “Solid” while the area to the right is labeled “Liquid.” A section on the graph under the second line and past the point “28” on the x-axis is labeled “S C F.”",
+        "alt": {
+          "segmentId": "m68769:alt:fs-idm185557312-alt",
+          "text": "A graph is shown where the x-axis is labeled “Temperature ( degree sign, C )” and has values of negative 100 to 100 in increments of 25 and the y-axis is labeled “Pressure ( k P a )” and has values of 10 to 1,000,000. A line extends from the lower left bottom of the graph upward to a point around“27, 9000,” where it ends. The space under this curve is labeled “Gas.” A second line extends in a curve from point around “-55, 500” to “27, 1,000,000.” The area to the left of this line and above the first line is labeled “Solid” while the area to the right is labeled “Liquid.” A section on the graph under the second line and past the point “28” on the x-axis is labeled “S C F.”"
+        },
         "src": "../../media/CNX_Chem_10_04_CO2PhasDi.jpg",
         "mimeType": "image/jpeg"
       }
@@ -322,53 +337,16 @@
           "id": "fs-idm180459824",
           "class": "unnumbered",
           "summary": "This table contains eight rows and three columns. The first row is a header row, and it labels each column: “Substance,” “Critical Temperature ( K ),” and “Critical Pressure ( a t m ).” Under the “Substance” column are the following: hydrogen, nitrogen, oxygen, carbon dioxide, ammonia, sulfur dioxide, and water. Under the “Critical Temperature ( K )” column are the following: 33.2, 126.0, 154.3, 304.2, 405.5, 430.3, and 647.1. Under the “Critical Pressure ( a t m )” column are the following: 12.8, 33.5, 49.7, 73.0, 111.5, 77.7, and 217.7.",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68769:entry:auto-53",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68769:entry:auto-54",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68769:entry:auto-55",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68769:entry:auto-56",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68769:entry:auto-57",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68769:entry:auto-58",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68769:entry:auto-59",
                   "attributes": {
@@ -380,17 +358,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68769:entry:auto-61",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68769:entry:auto-62",
                   "attributes": {
@@ -402,17 +380,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68769:entry:auto-64",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68769:entry:auto-65",
                   "attributes": {
@@ -424,17 +402,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68769:entry:auto-67",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68769:entry:auto-68",
                   "attributes": {
@@ -446,17 +424,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68769:entry:auto-70",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68769:entry:auto-71",
                   "attributes": {
@@ -468,17 +446,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68769:entry:auto-73",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68769:entry:auto-74",
                   "attributes": {
@@ -490,9 +468,47 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68769:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-77",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-78",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68769:entry:auto-79",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-80",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68769:entry:auto-81",
                   "attributes": {
                     "align": "left"
                   }
@@ -509,7 +525,10 @@
           },
           "media": {
             "id": "fs-idm115619344",
-            "alt": "Four photographs are shown where each shows a circular container with a green and red float in each. In the left diagram, the container is half filled with a colorless liquid and the floats sit on the surface of the liquid. In the second photo, the green float is near the top and the red float lies near the bottom of the container. In the third photo, the fluid is darker and the green float sits halfway up the container while the red is sitting at the bottom. In the right photo, the liquid is colorless again and the two floats sit on the surface.",
+            "alt": {
+              "segmentId": "m68769:alt:fs-idm115619344-alt",
+              "text": "Four photographs are shown where each shows a circular container with a green and red float in each. In the left diagram, the container is half filled with a colorless liquid and the floats sit on the surface of the liquid. In the second photo, the green float is near the top and the red float lies near the bottom of the container. In the third photo, the fluid is darker and the green float sits halfway up the container while the red is sitting at the bottom. In the right photo, the liquid is colorless again and the two floats sit on the surface."
+            },
             "src": "../../media/CNX_Chem_10_04_CritFluid.jpg",
             "mimeType": "image/jpeg"
           }
@@ -619,7 +638,10 @@
           },
           "media": {
             "id": "fs-idm140720928",
-            "alt": "Two images are shown and labeled “a” and “b.” Image a shows a molecule composed of a five member ring composed of two blue spheres and three black spheres. One of the blue spheres is bonded to a black sphere bonded to three white spheres and one of the black spheres is bonded to a white sphere. The other two black spheres are double bonded together and make up one side of a six-membered ring that is also composed of two more black spheres and two blue spheres, both of which are bonded to a black sphere bonded to three white spheres. The black spheres are each double bonded to red spheres. Image b shows a diagram of two vertical tubes that lie next to one another. The left-hand tube is labeled “Extraction vessel.” A small tube labeled “Soaked beans” leads into the top of the tube and a label at the bottom of the tube reads “Decaffeinated beans.” The right tube is labeled “Absorption vessel.” A tube near the top of this tube is labeled “Water” and another tube leads from the right tube to the left. This tube is labeled with a left-facing arrow and the phrase “supercritical carbon dioxide.” There is a tube leading away from the bottom which is labeled, “Caffeine and water.” There is another tube that leads from the extraction vessel to the absorption vessel which is labeled, “supercritical C O subscript 2 plus caffeine.”",
+            "alt": {
+              "segmentId": "m68769:alt:fs-idm140720928-alt",
+              "text": "Two images are shown and labeled “a” and “b.” Image a shows a molecule composed of a five member ring composed of two blue spheres and three black spheres. One of the blue spheres is bonded to a black sphere bonded to three white spheres and one of the black spheres is bonded to a white sphere. The other two black spheres are double bonded together and make up one side of a six-membered ring that is also composed of two more black spheres and two blue spheres, both of which are bonded to a black sphere bonded to three white spheres. The black spheres are each double bonded to red spheres. Image b shows a diagram of two vertical tubes that lie next to one another. The left-hand tube is labeled “Extraction vessel.” A small tube labeled “Soaked beans” leads into the top of the tube and a label at the bottom of the tube reads “Decaffeinated beans.” The right tube is labeled “Absorption vessel.” A tube near the top of this tube is labeled “Water” and another tube leads from the right tube to the left. This tube is labeled with a left-facing arrow and the phrase “supercritical carbon dioxide.” There is a tube leading away from the bottom which is labeled, “Caffeine and water.” There is another tube that leads from the extraction vessel to the absorption vessel which is labeled, “supercritical C O subscript 2 plus caffeine.”"
+            },
             "src": "../../media/CNX_Chem_10_04_SupCritCof.jpg",
             "mimeType": "image/jpeg"
           }
@@ -880,6 +902,14 @@
                 "segmentId": "m68769:problem:fs-idm59313520"
               },
               {
+                "type": "media",
+                "id": "fs-idm159452496",
+                "alt": {
+                  "segmentId": "m68769:alt:fs-idm159452496-alt",
+                  "text": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right."
+                }
+              },
+              {
                 "type": "para",
                 "id": "fs-idm196192784",
                 "segmentId": "m68769:problem:fs-idm196192784"
@@ -970,56 +1000,71 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idm183173568",
       "class": null,
-      "alt": "An x-axis is labeled at the left as “Full” and at the right as “Empty.” A y-axis is labeled at the top as “P.” Beneath the x-axis is the label “Amount released.” A horizontal line that then slopes downward is drawn about halfway up the vertical line and labeled on the left as “65 a t m.” About two-thirds of the way across the x-axis, it slopes downward in a straight line to meet the “empty” label on the bottom right of the axis.",
       "src": "../../media/CNX_Chem_10_04_Ex06answer_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68769:alt:fs-idm183173568-alt",
+        "text": "An x-axis is labeled at the left as “Full” and at the right as “Empty.” A y-axis is labeled at the top as “P.” Beneath the x-axis is the label “Amount released.” A horizontal line that then slopes downward is drawn about halfway up the vertical line and labeled on the left as “65 a t m.” About two-thirds of the way across the x-axis, it slopes downward in a straight line to meet the “empty” label on the bottom right of the axis."
+      }
     },
     {
       "placeholder": "[[MEDIA:2]]",
       "id": "fs-idm121487888",
       "class": null,
-      "alt": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The two quadrants to the right are labeled, “Water ( liquid )” and “Water vapor ( gas ).”",
       "src": "../../media/CNX_Chem_10_04_Exercise10a_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68769:alt:fs-idm121487888-alt",
+        "text": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The two quadrants to the right are labeled, “Water ( liquid )” and “Water vapor ( gas ).”"
+      }
     },
     {
       "placeholder": "[[MEDIA:3]]",
       "id": "fs-idm69191024",
       "class": "scaled-down-30",
-      "alt": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The quadrant to the left is labeled, “Graphite.”",
       "src": "../../media/CNX_Chem_10_04_Exercise10b_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68769:alt:fs-idm69191024-alt",
+        "text": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The quadrant to the left is labeled, “Graphite.”"
+      }
     },
     {
       "placeholder": "[[MEDIA:4]]",
       "id": "fs-idm81439280",
       "class": "scaled-down-30",
-      "alt": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The top quadrant is labeled, “Diamond.”",
       "src": "../../media/CNX_Chem_10_04_Exercise10c_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68769:alt:fs-idm81439280-alt",
+        "text": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The top quadrant is labeled, “Diamond.”"
+      }
     },
     {
       "placeholder": "[[MEDIA:5]]",
       "id": "fs-idm209382816",
       "class": null,
-      "alt": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The four quadrants are labeled, “Diamond” at the top, “Graphite”, to the left, “water ( liquid )” to the top right, and “water vapor ( gas ),” to the bottom right. There is a red circle where the liquid, gas, and graphite lines intersect.",
       "src": "../../media/CNX_Chem_10_04_Exercise10d_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68769:alt:fs-idm209382816-alt",
+        "text": "This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The four quadrants are labeled, “Diamond” at the top, “Graphite”, to the left, “water ( liquid )” to the top right, and “water vapor ( gas ),” to the bottom right. There is a red circle where the liquid, gas, and graphite lines intersect."
+      }
     }
   ],
   "sectionOrder": 4

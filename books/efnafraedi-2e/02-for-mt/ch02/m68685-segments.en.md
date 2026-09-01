@@ -11,10 +11,10 @@ State the postulates of Dalton’s atomic theory
 Use postulates of Dalton’s atomic theory to explain the laws of definite and multiple proportions
 
 <!-- SEG:m68685:item:fs-idp28280144-item-1 -->
-Matter is composed of exceedingly small particles called atoms. An {{term}}atom{{/term}} is the smallest unit of an element that can participate in a chemical change.
+Matter is composed of exceedingly small particles called atoms. An [[term:atom|term-00002]] is the smallest unit of an element that can participate in a chemical change.
 
 <!-- SEG:m68685:item:fs-idp28280144-item-2 -->
-An {{term}}element{{/term}} consists of only one type of atom, which has a mass that is characteristic of the element and is the same for all atoms of that element ([[xref:CNX_Chem_02_01_Dalton1]]). A macroscopic sample of an element contains an incredibly large number of atoms, all of which have identical chemical properties.
+An [[term:element|term-00003]] consists of only one type of atom, which has a mass that is characteristic of the element and is the same for all atoms of that element ([[xref:CNX_Chem_02_01_Dalton1]]). A macroscopic sample of an element contains an incredibly large number of atoms, all of which have identical chemical properties.
 
 <!-- SEG:m68685:item:fs-idp28280144-item-3 -->
 Atoms of one element differ in properties from atoms of all other elements.
@@ -29,16 +29,25 @@ Atoms are neither created nor destroyed during a chemical change, but are instea
 The earliest recorded discussion of the basic structure of matter comes from ancient Greek philosophers, the scientists of their day. In the fifth century BC, Leucippus and Democritus argued that all matter was composed of small, finite particles that they called [[i:atomos]], a term derived from the Greek word for “indivisible.” They thought of atoms as moving particles that differed in shape and size, and which could join together. Later, Aristotle and others came to the conclusion that matter consisted of various combinations of the four “elements”—fire, earth, air, and water—and could be infinitely divided. Interestingly, these philosophers thought about atoms and “elements” as philosophical concepts, but apparently never considered performing experiments to test their ideas.
 
 <!-- SEG:m68685:para:fs-idp136823072 -->
-The Aristotelian view of the composition of matter held sway for over two thousand years, until English schoolteacher John Dalton helped to revolutionize chemistry with his hypothesis that the behavior of matter could be explained using an atomic theory. First published in 1807, many of Dalton’s hypotheses about the microscopic features of matter are still valid in modern atomic theory. Here are the postulates of {{term}}Dalton’s atomic theory{{/term}}.
+The Aristotelian view of the composition of matter held sway for over two thousand years, until English schoolteacher John Dalton helped to revolutionize chemistry with his hypothesis that the behavior of matter could be explained using an atomic theory. First published in 1807, many of Dalton’s hypotheses about the microscopic features of matter are still valid in modern atomic theory. Here are the postulates of [[term:Dalton’s atomic theory|term-00001]].
 
 <!-- SEG:m68685:caption:CNX_Chem_02_01_Dalton1-caption -->
 A pre-1982 copper penny (left) contains approximately 3 [[MATH:1]] 10[[sup:22]] copper atoms (several dozen are represented as brown spheres at the right), each of which has the same chemical properties. (credit: modification of work by “slgckgc”/Flickr)
 
+<!-- SEG:m68685:alt:fs-idm67856816-alt -->
+The left image shows a photograph of a stack of pennies. The right image calls out an area of one of the pennies, which is made up of many sphere-shaped copper atoms. The atoms are densely organized.
+
 <!-- SEG:m68685:caption:CNX_Chem_02_01_Dalton2-caption -->
 Copper(II) oxide, a powdery, black compound, results from the combination of two types of atoms—copper (brown spheres) and oxygen (red spheres)—in a 1:1 ratio. (credit: modification of work by “Chemicalinterest”/Wikimedia Commons)
 
+<!-- SEG:m68685:alt:fs-idp25149184-alt -->
+The left image shows a container with a black, powdery compound. The right image calls out the molecular structure of the powder which contains copper atoms that are clustered together with an equal number of oxygen atoms.
+
 <!-- SEG:m68685:caption:CNX_Chem_02_01_Dalton3-caption -->
 When the elements copper (a shiny, red-brown solid, shown here as brown spheres) and oxygen (a clear and colorless gas, shown here as red spheres) react, their atoms rearrange to form a compound containing copper and oxygen (a powdery, black solid). (credit copper: modification of work by http://images-of-elements.com/copper.php)
+
+<!-- SEG:m68685:alt:fs-idm75378992-alt -->
+The left stoppered bottle contains copper and oxygen. There is a callout which shows that copper is made up of many sphere-shaped atoms. The atoms are densely organized. The open space of the bottle contains oxygen gas, which is made up of bonded pairs of oxygen atoms that are evenly spaced. The right stoppered bottle shows the compound copper two oxide, which is a black, powdery substance. A callout from the powder shows a molecule of copper two oxide, which contains copper atoms that are clustered together with an equal number of oxygen atoms.
 
 <!-- SEG:m68685:para:fs-idp64032864 -->
 Dalton’s atomic theory provides a microscopic explanation of the many macroscopic properties of matter that you’ve learned about. For example, if an element such as copper consists of only one kind of atom, then it cannot be broken down into simpler substances, that is, into substances composed of fewer types of atoms. And if atoms are neither created nor destroyed during a chemical change, then the total mass of matter present when matter changes from one type to another will remain constant (the law of conservation of matter).
@@ -64,6 +73,12 @@ In the following drawing, the green spheres represent atoms of a certain element
 <!-- SEG:m68685:para:fs-idp136824288 -->
 The starting materials consist of four green spheres and two purple spheres. The products consist of four green spheres and two purple spheres. This does not violate any of Dalton’s postulates: Atoms are neither created nor destroyed, but are redistributed in small, whole-number ratios.
 
+<!-- SEG:m68685:alt:fs-idp71137024-alt -->
+This equation shows that the starting materials of the reaction are two bonded, green spheres, which are being combined with two smaller, bonded purple spheres. The product of the change is one purple sphere that is bonded to one green sphere.
+
+<!-- SEG:m68685:alt:fs-idp149298560-alt -->
+This equation shows that the starting materials of the reaction are two sets of bonded, green spheres which are each being combined with two smaller, bonded purple spheres. The products of the change are two molecules that each contain one purple sphere bonded between two green spheres.
+
 <!-- SEG:m68685:note-title:fs-idm55003792-title -->
 Answer:
 
@@ -71,64 +86,64 @@ Answer:
 The starting materials consist of four green spheres and two purple spheres. The products consist of four green spheres and two purple spheres. This does not violate any of Dalton’s postulates: Atoms are neither created nor destroyed, but are redistributed in small, whole-number ratios.
 
 <!-- SEG:m68685:para:fs-idp28034944 -->
-Dalton knew of the experiments of French chemist Joseph Proust, who demonstrated that [[i:all samples of a pure compound contain the same elements in the same proportion by mass]]. This statement is known as the {{term}}law of definite proportions{{/term}} or the {{term}}law of constant composition{{/term}}. The suggestion that the numbers of atoms of the elements in a given compound always exist in the same ratio is consistent with these observations. For example, when different samples of isooctane (a component of gasoline and one of the standards used in the octane rating system) are analyzed, they are found to have a carbon-to-hydrogen mass ratio of 5.33:1, as shown in [[xref:fs-idp114534448]].
-
-<!-- SEG:m68685:entry:auto-26 -->
-Constant Composition of Isooctane
-
-<!-- SEG:m68685:entry:auto-27 -->
-Sample
-
-<!-- SEG:m68685:entry:auto-28 -->
-Carbon
-
-<!-- SEG:m68685:entry:auto-29 -->
-Hydrogen
-
-<!-- SEG:m68685:entry:auto-30 -->
-Mass Ratio
+Dalton knew of the experiments of French chemist Joseph Proust, who demonstrated that [[i:all samples of a pure compound contain the same elements in the same proportion by mass]]. This statement is known as the [[term:law of definite proportions|term-00004]] or the [[term:law of constant composition|term-00005]]. The suggestion that the numbers of atoms of the elements in a given compound always exist in the same ratio is consistent with these observations. For example, when different samples of isooctane (a component of gasoline and one of the standards used in the octane rating system) are analyzed, they are found to have a carbon-to-hydrogen mass ratio of 5.33:1, as shown in [[xref:fs-idp114534448]].
 
 <!-- SEG:m68685:entry:auto-31 -->
-A
+Constant Composition of Isooctane
 
 <!-- SEG:m68685:entry:auto-32 -->
-14.82 g
+Sample
 
 <!-- SEG:m68685:entry:auto-33 -->
-2.78 g
+Carbon
 
 <!-- SEG:m68685:entry:auto-34 -->
-[[MATH:2]]
+Hydrogen
 
 <!-- SEG:m68685:entry:auto-35 -->
-B
+Mass Ratio
 
 <!-- SEG:m68685:entry:auto-36 -->
-22.33 g
+A
 
 <!-- SEG:m68685:entry:auto-37 -->
-4.19 g
+14.82 g
 
 <!-- SEG:m68685:entry:auto-38 -->
-[[MATH:3]]
+2.78 g
 
 <!-- SEG:m68685:entry:auto-39 -->
-C
+[[MATH:2]]
 
 <!-- SEG:m68685:entry:auto-40 -->
-19.40 g
+B
 
 <!-- SEG:m68685:entry:auto-41 -->
-3.64 g
+22.33 g
 
 <!-- SEG:m68685:entry:auto-42 -->
+4.19 g
+
+<!-- SEG:m68685:entry:auto-43 -->
+[[MATH:3]]
+
+<!-- SEG:m68685:entry:auto-44 -->
+C
+
+<!-- SEG:m68685:entry:auto-45 -->
+19.40 g
+
+<!-- SEG:m68685:entry:auto-46 -->
+3.64 g
+
+<!-- SEG:m68685:entry:auto-47 -->
 [[MATH:4]]
 
 <!-- SEG:m68685:para:fs-idp149501712 -->
 It is worth noting that although all samples of a particular compound have the same mass ratio, the converse is not true in general. That is, samples that have the same mass ratio are not necessarily the same substance. For example, there are many compounds other than isooctane that also have a carbon-to-hydrogen mass ratio of 5.33:1.00.
 
 <!-- SEG:m68685:para:fs-idp113358288 -->
-Dalton also used data from Proust, as well as results from his own experiments, to formulate another interesting law. The {{term}}law of multiple proportions{{/term}} states that [[i:when two elements react to form more than one compound, a fixed mass of one element will react with masses of the other element in a ratio of small, whole numbers]]. For example, copper and chlorine can form a green, crystalline solid with a mass ratio of 0.558 g chlorine to 1 g copper, as well as a brown crystalline solid with a mass ratio of 1.116 g chlorine to 1 g copper. These ratios by themselves may not seem particularly interesting or informative; however, if we take a ratio of these ratios, we obtain a useful and possibly surprising result: a small, whole-number ratio.
+Dalton also used data from Proust, as well as results from his own experiments, to formulate another interesting law. The [[term:law of multiple proportions|term-00006]] states that [[i:when two elements react to form more than one compound, a fixed mass of one element will react with masses of the other element in a ratio of small, whole numbers]]. For example, copper and chlorine can form a green, crystalline solid with a mass ratio of 0.558 g chlorine to 1 g copper, as well as a brown crystalline solid with a mass ratio of 1.116 g chlorine to 1 g copper. These ratios by themselves may not seem particularly interesting or informative; however, if we take a ratio of these ratios, we obtain a useful and possibly surprising result: a small, whole-number ratio.
 
 <!-- SEG:m68685:para:fs-idp35032848 -->
 This 2-to-1 ratio means that the brown compound has twice the amount of chlorine per amount of copper as the green compound.
@@ -138,6 +153,9 @@ This can be explained by atomic theory if the copper-to-chlorine ratio in the br
 
 <!-- SEG:m68685:caption:CNX_Chem_02_01_MultProp-caption -->
 Compared to the copper chlorine compound in (a), where copper is represented by brown spheres and chlorine by green spheres, the copper chlorine compound in (b) has twice as many chlorine atoms per copper atom. (credit a: modification of work by “Benjah-bmm27”/Wikimedia Commons; credit b: modification of work by “Walkerma”/Wikimedia Commons)
+
+<!-- SEG:m68685:alt:fs-idp111881472-alt -->
+Figure A shows a pile of green powder. A callout shows that the green powder is made up of a lattice of copper atoms interspersed with chlorine atoms. The atoms are color coded brown for copper and green for chlorine. The number of copper atoms is equal to the number of chlorine atoms in the molecule. Figure B shows a pile of brown powder. A callout shows that the brown powder is also made up of copper and chlorine atoms similar to the molecule shown in figure A. However there appears to be two chlorine atoms for every copper atom in this molecule. The copper atoms in figure B bond with both the chlorine atoms and the other copper atoms. The copper atoms in figure A only bond with the chlorine atoms.
 
 <!-- SEG:m68685:example-title:fs-idp28025040-title -->
 Laws of Definite and Multiple Proportions
@@ -187,6 +205,9 @@ Chemistry End of Chapter Exercises
 <!-- SEG:m68685:problem:fs-idm80213408 -->
 In the following drawing, the green spheres represent atoms of a certain element. The purple spheres represent atoms of another element. If the spheres of different elements touch, they are part of a single unit of a compound. The following chemical change represented by these spheres may violate one of the ideas of Dalton’s atomic theory. Which one?[[BR]]
 
+<!-- SEG:m68685:alt:fs-idp159684336-alt -->
+This equation contains the starting materials of a single, green sphere plus two smaller, purple spheres bonded together. When the starting materials are added together the products of the change are one purple sphere bonded with one green sphere plus one purple sphere bonded with one green sphere.
+
 <!-- SEG:m68685:solution:fs-idp159650544 -->
 The starting materials consist of one green sphere and two purple spheres. The products consist of two green spheres and two purple spheres. This violates Dalton’s postulate that that atoms are not created during a chemical change, but are merely redistributed.
 
@@ -205,52 +226,52 @@ Samples of compound X, Y, and Z are analyzed, with results shown here.
 <!-- SEG:m68685:problem:fs-idm32094368 -->
 Do these data provide example(s) of the law of definite proportions, the law of multiple proportions, neither, or both? What do these data tell you about compounds X, Y, and Z?
 
-<!-- SEG:m68685:entry:auto-70 -->
+<!-- SEG:m68685:entry:auto-77 -->
 Compound
 
-<!-- SEG:m68685:entry:auto-71 -->
+<!-- SEG:m68685:entry:auto-78 -->
 Description
 
-<!-- SEG:m68685:entry:auto-72 -->
+<!-- SEG:m68685:entry:auto-79 -->
 Mass of Carbon
 
-<!-- SEG:m68685:entry:auto-73 -->
+<!-- SEG:m68685:entry:auto-80 -->
 Mass of Hydrogen
 
-<!-- SEG:m68685:entry:auto-74 -->
+<!-- SEG:m68685:entry:auto-81 -->
 X
 
-<!-- SEG:m68685:entry:auto-75 -->
-clear, colorless, liquid with strong odor
-
-<!-- SEG:m68685:entry:auto-76 -->
-1.776 g
-
-<!-- SEG:m68685:entry:auto-77 -->
-0.148 g
-
-<!-- SEG:m68685:entry:auto-78 -->
-Y
-
-<!-- SEG:m68685:entry:auto-79 -->
-clear, colorless, liquid with strong odor
-
-<!-- SEG:m68685:entry:auto-80 -->
-1.974 g
-
-<!-- SEG:m68685:entry:auto-81 -->
-0.329 g
-
 <!-- SEG:m68685:entry:auto-82 -->
-Z
+clear, colorless, liquid with strong odor
 
 <!-- SEG:m68685:entry:auto-83 -->
-clear, colorless, liquid with strong odor
+1.776 g
 
 <!-- SEG:m68685:entry:auto-84 -->
-7.812 g
+0.148 g
 
 <!-- SEG:m68685:entry:auto-85 -->
+Y
+
+<!-- SEG:m68685:entry:auto-86 -->
+clear, colorless, liquid with strong odor
+
+<!-- SEG:m68685:entry:auto-87 -->
+1.974 g
+
+<!-- SEG:m68685:entry:auto-88 -->
+0.329 g
+
+<!-- SEG:m68685:entry:auto-89 -->
+Z
+
+<!-- SEG:m68685:entry:auto-90 -->
+clear, colorless, liquid with strong odor
+
+<!-- SEG:m68685:entry:auto-91 -->
+7.812 g
+
+<!-- SEG:m68685:entry:auto-92 -->
 0.651 g
 
 <!-- SEG:m68685:glossary-term:fs-idp110829184-term -->

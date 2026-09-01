@@ -1,0 +1,112 @@
+{
+  "moduleId": "m00343",
+  "title": {
+    "segmentId": "m00343:title:auto-1",
+    "text": "Stereochemistry of Thermal Electrocyclic Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "94af332c-d3ee-41a2-9c5a-8ca2fcaf8784"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00343:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00343:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00343:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00343:alt:fig-00001-alt",
+          "text": "Two thermocyclizations. (2E,4Z,6E)-2,4,6-octatriene undergoes disrotatory movement with heat to form cis-5,6-dimethyl-1,3-cyclohexadiene. (2E,4Z,6Z)-2,4,6-octatriene undergoes disrotatory movement with heat to form trans-5,6-dimethyl-1,3-cyclohexadiene."
+        },
+        "src": "../../media/OChem_30_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00343:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00343:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00343:alt:fig-00002-alt",
+          "text": "Two thermal ring opening reactions by conrotatory paths. Cis-3,4-dimethylcyclobutene reacts with heat to form (2E,4Z)-2,4-hexadiene. Trans-3,4-dimethylcyclobutene reacts with heat to form (2E,4E)-2,4-hexadiene."
+        },
+        "src": "../../media/OChem_30_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00343:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00343:alt:fig-00003-alt",
+          "text": "Orbital diagrams of diene and triene HOMO. Ends of diene HOMO are opposite sign. Ends of triene HOMO are same sign."
+        },
+        "src": "../../media/OChem_30_03_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00343:para:para-00005"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00343:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

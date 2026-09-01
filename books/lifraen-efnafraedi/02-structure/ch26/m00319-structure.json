@@ -1,0 +1,192 @@
+{
+  "moduleId": "m00319",
+  "title": {
+    "segmentId": "m00319:title:auto-1",
+    "text": "Amino Acids and the Henderson–Hasselbalch Equation: Isoelectric Points"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "ebaa18c8-2645-4612-87d9-48e8095bead9"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00319:para:para-00001"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00319:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00319:alt:fig-00001-alt",
+          "text": "A protonated alanine reacts with water reversibly to form a zwitterion and hydronium ion. The zwitterion further reacts with water reversibly to form an anion and hydronium ion."
+        },
+        "src": "../../media/OChem_26_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00319:para:para-00003"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00002",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00319:para:para-00004"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00003",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00319:para:para-00005"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00004",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00319:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00319:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00319:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00319:alt:fig-00002-alt",
+          "text": "The figure shows the titration curve for alanine. The x-axis represents equivalents of hydroxide ion and the y-axis represents the pH. It shows isoelectric point and two dissociation constant values."
+        },
+        "src": "../../media/OChem_26_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00319:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00319:alt:fig-00003-alt",
+          "text": "A low pH protonated amino acid reacts reversibly with hydronium ion to form a zwitterion that further reacts with hydroxide ion to form a high pH deprotonated amino acid."
+        },
+        "src": "../../media/OChem_26_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00319:para:para-00009"
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00319:para:para-00010"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00319:alt:fig-00004-alt",
+          "text": "The p K a and p I values of acidic amino acid, aspartic acid, neutral amino acid, alanine, and basic amino acid lysine."
+        },
+        "src": "../../media/OChem_26_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00011",
+      "segmentId": "m00319:para:para-00011"
+    },
+    {
+      "type": "para",
+      "id": "para-00012",
+      "segmentId": "m00319:para:para-00012"
+    },
+    {
+      "type": "para",
+      "id": "para-00013",
+      "segmentId": "m00319:para:para-00013"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00319:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00319:alt:fig-00005-alt",
+          "text": "A rectangular strip in which left part is basic pointing towards minus, right part is acidic pointing towards plus and center part is neutral having their respective p I values."
+        },
+        "src": "../../media/OChem_26_02_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00319:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

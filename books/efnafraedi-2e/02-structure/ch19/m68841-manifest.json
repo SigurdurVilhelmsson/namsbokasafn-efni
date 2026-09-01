@@ -1,15 +1,16 @@
 {
   "version": 1,
   "moduleId": "m68841",
-  "extractedAt": "2026-07-07T09:12:50.801Z",
+  "extractedAt": "2026-08-31T19:08:45.257Z",
   "sourceHash": "d72d61003acbc54c",
-  "segmentCount": 8,
+  "segmentCount": 9,
   "segmentIds": [
     "m68841:title:auto-1",
     "m68841:abstract-item:abstract-item-1",
     "m68841:abstract-item:abstract-item-2",
     "m68841:abstract-item:abstract-item-3",
     "m68841:caption:CNX_Chem_19_00_CuOre-caption",
+    "m68841:alt:fs-idm106313312-alt",
     "m68841:para:fs-idm115162288",
     "m68841:para:fs-idm19578416",
     "m68841:para:fs-idm99828800"

@@ -14,10 +14,13 @@ Explain the concepts of polar covalent bonds and molecular polarity
 Assess the polarity of a molecule based on its bonding and structure
 
 <!-- SEG:m68742:para:fs-idp51102864 -->
-Thus far, we have used two-dimensional Lewis structures to represent molecules. However, molecular structure is actually three-dimensional, and it is important to be able to describe molecular bonds in terms of their distances, angles, and relative arrangements in space ([[xref:CNX_Chem_07_06_CH2O]]). A {{term}}bond angle{{/term}} is the angle between any two bonds that include a common atom, usually measured in degrees. A {{term}}bond distance{{/term}} (or bond length) is the distance between the nuclei of two bonded atoms along the straight line joining the nuclei. Bond distances are measured in Ångstroms (1 Å = 10[[sup:–10]] m) or picometers (1 pm = 10[[sup:–12]] m, 100 pm = 1 Å).
+Thus far, we have used two-dimensional Lewis structures to represent molecules. However, molecular structure is actually three-dimensional, and it is important to be able to describe molecular bonds in terms of their distances, angles, and relative arrangements in space ([[xref:CNX_Chem_07_06_CH2O]]). A [[term:bond angle|term-00001]] is the angle between any two bonds that include a common atom, usually measured in degrees. A [[term:bond distance|term-00002]] (or bond length) is the distance between the nuclei of two bonded atoms along the straight line joining the nuclei. Bond distances are measured in Ångstroms (1 Å = 10[[sup:–10]] m) or picometers (1 pm = 10[[sup:–12]] m, 100 pm = 1 Å).
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_CH2O-caption -->
 Bond distances (lengths) and angles are shown for the formaldehyde molecule, H[[sub:2]]CO.
+
+<!-- SEG:m68742:alt:fs-idp55258784-alt -->
+A pair of images are shown. The left image shows a carbon atom with three atoms bonded in a triangular arrangement around it. There are two hydrogen atoms bonded on the left side of the carbon and the angle between them is labeled, “118 degrees” and, “Bond angle.” The carbon is also double bonded to an oxygen atom. The double bond is shaded and there is a bracket which labels the bond, “Bond length ( angstrom ), ( center to center ),” and, “1.21 angstrom.” The right image shows a ball-and-stick model of the same elements. The hydrogen atoms are white, the carbon atom is black, and the oxygen atom is red.
 
 <!-- SEG:m68742:title:fs-idp391168-title -->
 VSEPR Theory
@@ -29,7 +32,7 @@ Electron-pair Geometry versus Molecular Structure
 It is important to note that electron-pair geometry around a central atom is [[i:not]] the same thing as its molecular structure. The electron-pair geometries shown in [[xref:CNX_Chem_07_06_Egeom]] describe all regions where electrons are located, bonds as well as lone pairs. Molecular structure describes the location of the [[i:atoms]], not the electrons.
 
 <!-- SEG:m68742:para:fs-idm334496 -->
-We differentiate between these two situations by naming the geometry that includes [[i:all]] electron pairs the {{term}}electron-pair geometry{{/term}}. The structure that includes only the placement of the atoms in the molecule is called the {{term}}molecular structure{{/term}}. The electron-pair geometries will be the same as the molecular structures when there are no lone electron pairs around the central atom, but they will be different when there are lone pairs present on the central atom.
+We differentiate between these two situations by naming the geometry that includes [[i:all]] electron pairs the [[term:electron-pair geometry|term-00009]]. The structure that includes only the placement of the atoms in the molecule is called the [[term:molecular structure|term-00010]]. The electron-pair geometries will be the same as the molecular structures when there are no lone electron pairs around the central atom, but they will be different when there are lone pairs present on the central atom.
 
 <!-- SEG:m68742:para:fs-idp48943296 -->
 For example, the methane molecule, CH[[sub:4]], which is the major component of natural gas, has four bonding pairs of electrons around the central carbon atom; the electron-pair geometry is tetrahedral, as is the molecular structure ([[xref:CNX_Chem_07_06_CH4]]). On the other hand, the ammonia molecule, NH[[sub:3]], also has four electron pairs associated with the nitrogen atom, and thus has a tetrahedral electron-pair geometry. One of these regions, however, is a lone pair, which is not included in the molecular structure, and this lone pair influences the shape of the molecule ([[xref:CNX_Chem_07_06_NH3]]).
@@ -37,8 +40,14 @@ For example, the methane molecule, CH[[sub:4]], which is the major component of 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_CH4-caption -->
 The molecular structure of the methane molecule, CH[[sub:4]], is shown with a tetrahedral arrangement of the hydrogen atoms. VSEPR structures like this one are often drawn using the wedge and dash notation, in which solid lines represent bonds in the plane of the page, solid wedges represent bonds coming up out of the plane, and dashed lines represent bonds going down into the plane.
 
+<!-- SEG:m68742:alt:fs-idp102024640-alt -->
+A Lewis structure shows a carbon atom single bonded to four hydrogen atoms. This structure uses wedges and dashes to give it a three dimensional appearance.
+
 <!-- SEG:m68742:caption:CNX_Chem_07_06_NH3-caption -->
 (a) The electron-pair geometry for the ammonia molecule is tetrahedral with one lone pair and three single bonds. (b) The trigonal pyramidal molecular structure is determined from the electron-pair geometry. (c) The actual bond angles deviate slightly from the idealized angles because the lone pair takes up a larger region of space than do the single bonds, causing the HNH angle to be slightly smaller than 109.5°.
+
+<!-- SEG:m68742:alt:fs-idp50682928-alt -->
+Three images are shown and labeled, “a,” “b,” and “c.” Image a shows a nitrogen atom single bonded to three hydrogen atoms. There are four oval-shaped orbs that surround each hydrogen and one facing away from the rest of the molecule. These orbs are located in a tetrahedral arrangement. Image b shows a ball-and-stick model of the nitrogen single bonded to the three hydrogen atoms. Image c is the same as image a, but there are four curved, double headed arrows that circle the molecule and are labeled, “106.8 degrees.”
 
 <!-- SEG:m68742:para:fs-idp38238416 -->
 As seen in [[xref:CNX_Chem_07_06_NH3]], small distortions from the ideal angles in [[xref:CNX_Chem_07_06_Egeom]] can result from differences in repulsion between various regions of electron density. VSEPR theory predicts these distortions by establishing an order of repulsions and an order of the amount of space occupied by different kinds of electron pairs. The order of electron-pair repulsions from greatest to least repulsion is:
@@ -55,14 +64,20 @@ In the ammonia molecule, the three hydrogen atoms attached to the central nitrog
 <!-- SEG:m68742:caption:CNX_Chem_07_06_molgeom-caption -->
 The molecular structures are identical to the electron-pair geometries when there are no lone pairs present (first column). For a particular number of electron pairs (row), the molecular structures for one or more lone pairs are determined based on modifications of the corresponding electron-pair geometry.
 
+<!-- SEG:m68742:alt:fs-idp63301888-alt -->
+A table is shown that is comprised of six rows and six columns. The header row reads: “Number of Electron Regions,” “Electron region geometries; 0 lone pair,” “1 lone pair,” “2 lone pairs,” “3 lone pairs,” and “4 lone pairs.” The first column contains the numbers 2, 3, 4, 5, and 6. The first space in the second column contains a structure in which the letter E is single bonded to the letter X on each side. The angle of the bonds is labeled with a curved, double headed arrow and the value, “180 degrees.” The structure is labeled, “Linear.” The second space in the second column contains a structure in which the letter E is single bonded to the letter X on three sides. The angle between the bonds is labeled with a curved, double headed arrow and the value, “120 degrees.” The structure is labeled, “Trigonal planar.” The third space in the second column contains a structure in which the letter E is single bonded to the letter X four times. The angle between the bonds is labeled with a curved, double headed arrow and the value, “109 degrees.” The structure is labeled, “Tetrahedral.” The fourth space in the second column contains a structure in which the letter E is single bonded to the letter X on five sides. The angle between the bonds is labeled with a curved, double headed arrow and the values “90 and 120 degrees.” The structure is labeled, “Trigonal bipyramid.” The fifth space in the second column contains a structure in which the letter E is single bonded to the letter X on six sides. The angle between the bonds is labeled with a curved, double headed arrow and the value, “90 degrees.” The structure is labeled, “Octahedral.” The first space in the third column is empty while the second contains a structure in which the letter E is single bonded to the letter X on each side and has a lone pair of electrons. The angle between the bonds is labeled with a curved, double headed arrow and the value, “less than 120 degrees.” The structure is labeled, “Bent or angular.” The third space in the third column contains a structure in which the letter E is single bonded to the letter X three times and to a lone pair of electrons. It is labeled with a curved, double headed arrow and the value, “less than 109 degrees.” The structure is labeled, “Trigonal pyramid.” The fourth space in the third column contains a structure in which the letter E is single bonded to the letter X on four sides and has a lone pair of electrons. The bond angle is labeled with a curved, double headed arrow and the values, “less than 90 and less than 120 degrees.” The structure is labeled, “Sawhorse or seesaw.” The fifth space in the third column contains a structure in which the letter E is single bonded to the letter X on five sides and has a lone pair of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “Square pyramidal.” The first and second spaces in the fourth column are empty while the third contains a structure in which the letter E is single bonded to the letter X on each side and has two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than less than 109 degrees.” The structure is labeled, “Bent or angular.” The fourth space in the fourth column contains a structure in which the letter E is single bonded to the letter X three times and to two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “T - shape.” The fifth space in the fourth column contains a structure in which the letter E is single bonded to the letter X on four sides and has two lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value “90 degrees.” The structure is labeled, “Square planar.” The first, second and third spaces in the fifth column are empty while the fourth contains a structure in which the letter E is single bonded to the letter X on each side and has three lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “180 degrees.” The structure is labeled, “Linear.” The fifth space in the fifth column contains a structure in which the letter E is single bonded to the letter X three times and to three lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value, “less than 90 degrees.” The structure is labeled, “T - shape.” The first, second, third, and fourth spaces in the sixth column are empty while the fifth contains a structure in which the letter E is single bonded to the letter X on each side and has four lone pairs of electrons. The bond angle is labeled with a curved, double headed arrow and the value “180 degrees.” The structure is labeled, “Linear.” All the structures use wedges and dashes to give them three dimensional appearances.
+
 <!-- SEG:m68742:para:fs-idp3259504 -->
-According to VSEPR theory, the terminal atom locations (Xs in [[xref:CNX_Chem_07_06_molgeom]]) are equivalent within the linear, trigonal planar, and tetrahedral electron-pair geometries (the first three rows of the table). It does not matter which X is replaced with a lone pair because the molecules can be rotated to convert positions. For trigonal bipyramidal electron-pair geometries, however, there are two distinct X positions, as shown in [[xref:CNX_Chem_07_06_Axeq]]: an {{term}}axial position{{/term}} (if we hold a model of a trigonal bipyramid by the two axial positions, we have an axis around which we can rotate the model) and an {{term}}equatorial position{{/term}} (three positions form an equator around the middle of the molecule). As shown in [[xref:CNX_Chem_07_06_molgeom]], the axial position is surrounded by bond angles of 90°, whereas the equatorial position has more space available because of the 120° bond angles. In a trigonal bipyramidal electron-pair geometry, lone pairs always occupy equatorial positions because these more spacious positions can more easily accommodate the larger lone pairs.
+According to VSEPR theory, the terminal atom locations (Xs in [[xref:CNX_Chem_07_06_molgeom]]) are equivalent within the linear, trigonal planar, and tetrahedral electron-pair geometries (the first three rows of the table). It does not matter which X is replaced with a lone pair because the molecules can be rotated to convert positions. For trigonal bipyramidal electron-pair geometries, however, there are two distinct X positions, as shown in [[xref:CNX_Chem_07_06_Axeq]]: an [[term:axial position|term-00011]] (if we hold a model of a trigonal bipyramid by the two axial positions, we have an axis around which we can rotate the model) and an [[term:equatorial position|term-00012]] (three positions form an equator around the middle of the molecule). As shown in [[xref:CNX_Chem_07_06_molgeom]], the axial position is surrounded by bond angles of 90°, whereas the equatorial position has more space available because of the 120° bond angles. In a trigonal bipyramidal electron-pair geometry, lone pairs always occupy equatorial positions because these more spacious positions can more easily accommodate the larger lone pairs.
 
 <!-- SEG:m68742:para:fs-idm50931488 -->
 Theoretically, we can come up with three possible arrangements for the three bonds and two lone pairs for the ClF[[sub:3]] molecule ([[xref:CNX_Chem_07_06_Axeq]]). The stable structure is the one that puts the lone pairs in equatorial locations, giving a T-shaped molecular structure.
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_Axeq-caption -->
 (a) In a trigonal bipyramid, the two axial positions are located directly across from one another, whereas the three equatorial positions are located in a triangular arrangement. (b–d) The two lone pairs (red lines) in ClF[[sub:3]] have several possible arrangements, but the T-shaped molecular structure (b) is the one actually observed, consistent with the larger lone pairs both occupying equatorial positions.
+
+<!-- SEG:m68742:alt:fs-idp53854176-alt -->
+Four sets of images are shown and labeled, “a,” “b,” “c,” and “d.” Each image is separated by a dashed vertical line. Image a shows a six-faced, bi-pyramidal structure where the central vertical axis is labeled, “Axial,” and the horizontal plane is labeled, “Equatorial.” Image b shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center, two fluorine atoms on the upper and lower ends, and one fluorine in the left horizontal position. Image c shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center and three fluorine atoms in each horizontal position. Image d shows a pair of diagrams in the same shape as image a, but in these diagrams, the left has a chlorine atom in the center while the right has a chlorine atom in the center, two fluorine atoms in the horizontal positions, and one in the axial bottom position.
 
 <!-- SEG:m68742:para:fs-idp56476752 -->
 When a central atom has two lone electron pairs and four bonding regions, we have an octahedral electron-pair geometry. The two lone pairs are on opposite sides of the octahedron (180° apart), giving a square planar molecular structure that minimizes lone pair-lone pair repulsions ([[xref:CNX_Chem_07_06_molgeom]]).
@@ -127,11 +142,20 @@ Carbonate, [[MATH:1]] is a common polyatomic ion found in various materials from
 <!-- SEG:m68742:para:fs-idp55819408 -->
 The electron-pair geometry is trigonal planar and the molecular structure is trigonal planar. Due to resonance, all three C–O bonds are identical. Whether they are single, double, or an average of the two, each bond counts as one region of electron density.
 
+<!-- SEG:m68742:alt:fs-idp65356192-alt -->
+A Lewis structure shows a carbon atom double bonded on both the left and right sides to oxygen atoms that each have two lone pairs of electrons.
+
+<!-- SEG:m68742:alt:fs-idp62627904-alt -->
+A Lewis structure depicts a boron atom that is single bonded to three chlorine atoms, each of which has three lone pairs of electrons.
+
 <!-- SEG:m68742:note-title:fs-idp125452800-title -->
 Answer:
 
 <!-- SEG:m68742:para:fs-idp55819408 -->
 The electron-pair geometry is trigonal planar and the molecular structure is trigonal planar. Due to resonance, all three C–O bonds are identical. Whether they are single, double, or an average of the two, each bond counts as one region of electron density.
+
+<!-- SEG:m68742:alt:fs-idp108737552-alt -->
+A Lewis structure depicts a boron atom that is single bonded to three chlorine atoms, each of which is oriented in the same flat plane. This figure uses dashes and wedges to give it a three-dimensional appearance.
 
 <!-- SEG:m68742:example-title:fs-idp17356704-title -->
 Predicting Electron-pair Geometry and Molecular Structure: Ammonium
@@ -157,6 +181,9 @@ Identify a molecule with trigonal bipyramidal molecular structure.
 <!-- SEG:m68742:para:fs-idp18533456 -->
 Any molecule with five electron pairs around the central atoms including no lone pairs will be trigonal bipyramidal. PF[[sub:5]] is a common example.
 
+<!-- SEG:m68742:alt:fs-idp83671296-alt -->
+A Lewis structure depicts a nitrogen atom that is single bonded to four hydrogen atoms. The structure is surrounded by brackets and has a superscripted positive sign.
+
 <!-- SEG:m68742:note-title:fs-idp57227744-title -->
 Answer:
 
@@ -165,6 +192,9 @@ Any molecule with five electron pairs around the central atoms including no lone
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_NH4mol-caption -->
 The ammonium ion displays a tetrahedral electron-pair geometry as well as a tetrahedral molecular structure.
+
+<!-- SEG:m68742:alt:fs-idp51778960-alt -->
+A Lewis structure depicts a nitrogen atom that is single bonded to four hydrogen atoms. The structure is surrounded by brackets and has a superscripted positive sign. This figure uses dashes and wedges to displays its three planes in a tetrahedral shape.
 
 <!-- SEG:m68742:para:fs-idm16091952 -->
 The next several examples illustrate the effect of lone pairs of electrons on molecular structure.
@@ -193,6 +223,9 @@ The hydronium ion, H[[sub:3]]O[[sup:+]], forms when acids are dissolved in water
 <!-- SEG:m68742:para:fs-idp103296688 -->
 electron pair geometry: tetrahedral; molecular structure: trigonal pyramidal
 
+<!-- SEG:m68742:alt:fs-idp166304416-alt -->
+A Lewis structure depicts an oxygen atom with two lone pairs of electrons single bonded to two hydrogen atoms.
+
 <!-- SEG:m68742:note-title:fs-idp47211728-title -->
 Answer:
 
@@ -201,6 +234,9 @@ electron pair geometry: tetrahedral; molecular structure: trigonal pyramidal
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_H2Omol-caption -->
 (a) H[[sub:2]]O has four regions of electron density around the central atom, so it has a tetrahedral electron-pair geometry. (b) Two of the electron regions are lone pairs, so the molecular structure is bent.
+
+<!-- SEG:m68742:alt:fs-idp67053904-alt -->
+Two diagrams are shown and labeled, “a” and “b.” Diagram a shows an oxygen atom in the center of a four-sided pyramid shape. Diagram b shows the same image as diagram a, but this time there are hydrogen atoms located at two corners of the pyramid shape.
 
 <!-- SEG:m68742:example-title:fs-idp82124112-title -->
 Predicting Electron-pair Geometry and Molecular Structure: SF[[sub:4]]
@@ -226,6 +262,9 @@ Predict the electron pair geometry and molecular structure for molecules of XeF[
 <!-- SEG:m68742:para:fs-idp90752208 -->
 The electron-pair geometry is trigonal bipyramidal. The molecular structure is linear.
 
+<!-- SEG:m68742:alt:fs-idp33968176-alt -->
+A Lewis diagram depicts a sulfur atom with one lone pair of electrons single bonded to four fluorine atoms, each with three lone pairs of electrons.
+
 <!-- SEG:m68742:note-title:fs-idp54082656-title -->
 Answer:
 
@@ -234,6 +273,9 @@ The electron-pair geometry is trigonal bipyramidal. The molecular structure is l
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_SF4mol-caption -->
 (a) SF4 has a trigonal bipyramidal arrangement of the five regions of electron density. (b) One of the regions is a lone pair, which results in a seesaw-shaped molecular structure.
+
+<!-- SEG:m68742:alt:fs-idp116937376-alt -->
+Two diagrams are shown and labeled, “a” and “b.” Diagram a shows a sulfur atom in the center of a six-sided bi-pyramidal shape. Diagram b shows the same image as diagram a, but this time there are fluorine atoms located at four corners of the pyramid shape and they are connected to the sulfur atom by single lines.
 
 <!-- SEG:m68742:example-title:fs-idp47136656-title -->
 Predicting Electron-pair Geometry and Molecular Structure: XeF[[sub:4]]
@@ -259,6 +301,9 @@ In a certain molecule, the central atom has three lone pairs and two bonds. What
 <!-- SEG:m68742:para:fs-idp81639856 -->
 electron pair geometry: trigonal bipyramidal; molecular structure: linear
 
+<!-- SEG:m68742:alt:fs-idp19835824-alt -->
+A Lewis structure depicts a xenon atom with two lone pairs of electrons that is single bonded to four fluorine atoms, each with three lone pairs of electrons.
+
 <!-- SEG:m68742:note-title:fs-idm25808-title -->
 Answer:
 
@@ -267,6 +312,9 @@ electron pair geometry: trigonal bipyramidal; molecular structure: linear
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_XeF4mol-caption -->
 (a) XeF[[sub:4]] adopts an octahedral arrangement with two lone pairs (red lines) and four bonds in the electron-pair geometry. (b) The molecular structure is square planar with the lone pairs directly across from one another.
+
+<!-- SEG:m68742:alt:fs-idp88527200-alt -->
+Two diagrams are shown and labeled, “a” and “b.” Diagram a shows a xenon atom in the center of an eight-sided octahedral shape. Diagram b shows the same image as diagram a, but this time there are fluorine atoms located at the four corners of the shape in the horizontal plane. They are connected to the xenon by single lines.
 
 <!-- SEG:m68742:title:fs-idp54051968-title -->
 Molecular Structure for Multicenter Molecules
@@ -296,37 +344,46 @@ Check Your Learning
 Another amino acid is alanine, which has the Lewis structure shown here. Predict the electron-pair geometry and local structure of the nitrogen atom, the three carbon atoms, and the oxygen atom with hydrogen attached:
 
 <!-- SEG:m68742:para:fs-idp66198816 -->
-electron-pair geometries: nitrogen––tetrahedral; carbon (++C++H)—tetrahedral; carbon (++C++H[[sub:3]])—tetrahedral; carbon (++C++O[[sub:2]])—trigonal planar; oxygen (++O++H)—tetrahedral; local structures: nitrogen—trigonal pyramidal; carbon (++C++H)—tetrahedral; carbon (++C++H[[sub:3]])—tetrahedral; carbon (++C++O[[sub:2]])—trigonal planar; oxygen (++O++H)—bent (109°)
+electron-pair geometries: nitrogen––tetrahedral; carbon ([[u:C]]H)—tetrahedral; carbon ([[u:C]]H[[sub:3]])—tetrahedral; carbon ([[u:C]]O[[sub:2]])—trigonal planar; oxygen ([[u:O]]H)—tetrahedral; local structures: nitrogen—trigonal pyramidal; carbon ([[u:C]]H)—tetrahedral; carbon ([[u:C]]H[[sub:3]])—tetrahedral; carbon ([[u:C]]O[[sub:2]])—trigonal planar; oxygen ([[u:O]]H)—bent (109°)
 
 <!-- SEG:m68742:item:fs-idp8766640-item-1 -->
 nitrogen––four regions of electron density; tetrahedral
 
 <!-- SEG:m68742:item:fs-idp8766640-item-2 -->
-carbon (++C++H[[sub:2]])––four regions of electron density; tetrahedral
+carbon ([[u:C]]H[[sub:2]])––four regions of electron density; tetrahedral
 
 <!-- SEG:m68742:item:fs-idp8766640-item-3 -->
-carbon (++C++O[[sub:2]])—three regions of electron density; trigonal planar
+carbon ([[u:C]]O[[sub:2]])—three regions of electron density; trigonal planar
 
 <!-- SEG:m68742:item:fs-idp8766640-item-4 -->
-oxygen (++O++H)—four regions of electron density; tetrahedral
+oxygen ([[u:O]]H)—four regions of electron density; tetrahedral
 
 <!-- SEG:m68742:item:fs-idp18275136-item-1 -->
 nitrogen––three bonds, one lone pair; trigonal pyramidal
 
 <!-- SEG:m68742:item:fs-idp18275136-item-2 -->
-carbon (++C++H[[sub:2]])—four bonds, no lone pairs; tetrahedral
+carbon ([[u:C]]H[[sub:2]])—four bonds, no lone pairs; tetrahedral
 
 <!-- SEG:m68742:item:fs-idp18275136-item-3 -->
-carbon (++C++O[[sub:2]])—three bonds (double bond counts as one bond), no lone pairs; trigonal planar
+carbon ([[u:C]]O[[sub:2]])—three bonds (double bond counts as one bond), no lone pairs; trigonal planar
 
 <!-- SEG:m68742:item:fs-idp18275136-item-4 -->
-oxygen (++O++H)—two bonds, two lone pairs; bent (109°)
+oxygen ([[u:O]]H)—two bonds, two lone pairs; bent (109°)
+
+<!-- SEG:m68742:alt:fs-idp113615744-alt -->
+A Lewis structure depicts a nitrogen atom with one lone pair of electrons that is single bonded to two hydrogen atoms and a carbon atom, which is, in turn, single bonded to two hydrogen atoms and another carbon atom. This carbon atom is double bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen that has two lone pairs of electrons and a single bond to a hydrogen atom.
+
+<!-- SEG:m68742:alt:fs-idp21522704-alt -->
+A Lewis structure depicts a nitrogen atom with one lone pair of electrons that is single bonded to two hydrogen atoms and a carbon atom. The atoms described are drawn with bonds that indicate a three-dimensional, tetrahedral shape around the nitrogen atom. The carbon is, in turn, single bonded to two hydrogen atoms and another carbon atom, and again, a tetrahedral, three dimensional configuration is indicated by the types of bonds. This second carbon atom is double bonded to an oxygen atom and single bonded to an oxygen that has two lone pairs of electrons and a single bond to a hydrogen atom.
+
+<!-- SEG:m68742:alt:fs-idp248617216-alt -->
+A Lewis structure depicts a nitrogen atom with two lone pairs of electrons that is single bonded to two hydrogen atoms and a carbon atom, which is, in turn, single bonded to a hydrogen atom, a methyl group and another carbon atom. This carbon atom is single bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen that has two lone pairs of electrons and a single bond to a hydrogen atom.
 
 <!-- SEG:m68742:note-title:fs-idm44767872-title -->
 Answer:
 
 <!-- SEG:m68742:para:fs-idp66198816 -->
-electron-pair geometries: nitrogen––tetrahedral; carbon (++C++H)—tetrahedral; carbon (++C++H[[sub:3]])—tetrahedral; carbon (++C++O[[sub:2]])—trigonal planar; oxygen (++O++H)—tetrahedral; local structures: nitrogen—trigonal pyramidal; carbon (++C++H)—tetrahedral; carbon (++C++H[[sub:3]])—tetrahedral; carbon (++C++O[[sub:2]])—trigonal planar; oxygen (++O++H)—bent (109°)
+electron-pair geometries: nitrogen––tetrahedral; carbon ([[u:C]]H)—tetrahedral; carbon ([[u:C]]H[[sub:3]])—tetrahedral; carbon ([[u:C]]O[[sub:2]])—trigonal planar; oxygen ([[u:O]]H)—tetrahedral; local structures: nitrogen—trigonal pyramidal; carbon ([[u:C]]H)—tetrahedral; carbon ([[u:C]]H[[sub:3]])—tetrahedral; carbon ([[u:C]]O[[sub:2]])—trigonal planar; oxygen ([[u:O]]H)—bent (109°)
 
 <!-- SEG:m68742:para:fs-idp159959216 -->
 The [[link:molecular shape simulator|http://openstax.org/l/16MolecShape]] lets you build various molecules and practice naming their electron-pair geometries and molecular structures.
@@ -365,7 +422,7 @@ Answer:
 Answers will vary. For example, an atom with four single bonds, a double bond, and a lone pair has an octahedral electron-group geometry and a square pyramidal molecular structure. XeOF[[sub:4]] is a molecule that adopts this structure.
 
 <!-- SEG:m68742:para:fs-idp36050992 -->
-{{term}}Valence shell electron-pair repulsion theory (VSEPR theory){{/term}} enables us to predict the molecular structure, including approximate bond angles around a central atom, of a molecule from an examination of the number of bonds and lone electron pairs in its Lewis structure. The VSEPR model assumes that electron pairs in the valence shell of a central atom will adopt an arrangement that minimizes repulsions between these electron pairs by maximizing the distance between them. The electrons in the valence shell of a central atom form either bonding pairs of electrons, located primarily between bonded atoms, or lone pairs. The electrostatic repulsion of these electrons is reduced when the various regions of high electron density assume positions as far from each other as possible.
+[[term:Valence shell electron-pair repulsion theory (VSEPR theory)|term-00003]] enables us to predict the molecular structure, including approximate bond angles around a central atom, of a molecule from an examination of the number of bonds and lone electron pairs in its Lewis structure. The VSEPR model assumes that electron pairs in the valence shell of a central atom will adopt an arrangement that minimizes repulsions between these electron pairs by maximizing the distance between them. The electrons in the valence shell of a central atom form either bonding pairs of electrons, located primarily between bonded atoms, or lone pairs. The electrostatic repulsion of these electrons is reduced when the various regions of high electron density assume positions as far from each other as possible.
 
 <!-- SEG:m68742:para:fs-idp46353584 -->
 VSEPR theory predicts the arrangement of electron pairs around each central atom and, usually, the correct arrangement of atoms in a molecule. We should understand, however, that the theory only considers electron-pair repulsions. Other interactions, such as nuclear-nuclear repulsions and nuclear-electron attractions, are also involved in the final arrangement that atoms adopt in a particular molecular structure.
@@ -376,11 +433,17 @@ As a simple example of VSEPR theory, let us predict the structure of a gaseous B
 <!-- SEG:m68742:caption:CNX_Chem_07_06_BeF2-caption -->
 The BeF[[sub:2]] molecule adopts a linear structure in which the two bonds are as far apart as possible, on opposite sides of the Be atom.
 
+<!-- SEG:m68742:alt:fs-idp229524848-alt -->
+A Lewis structure is shown. A fluorine atom with three lone pairs of electrons is single bonded to a beryllium atom which is single bonded to a fluorine atom with three lone pairs of electrons. The angle of the bonds between the two fluorine atoms and the beryllium atom is labeled, “180 degrees.”
+
 <!-- SEG:m68742:para:fs-idp87297072 -->
-[[xref:CNX_Chem_07_06_Egeom]] illustrates this and other electron-pair geometries that minimize the repulsions among regions of high electron density (bonds and/or lone pairs). Two regions of electron density around a central atom in a molecule form a {{term}}linear{{/term}} geometry; three regions form a {{term}}trigonal planar{{/term}} geometry; four regions form a {{term}}tetrahedral{{/term}} geometry; five regions form a {{term}}trigonal bipyramidal{{/term}} geometry; and six regions form an {{term}}octahedral{{/term}} geometry.
+[[xref:CNX_Chem_07_06_Egeom]] illustrates this and other electron-pair geometries that minimize the repulsions among regions of high electron density (bonds and/or lone pairs). Two regions of electron density around a central atom in a molecule form a [[term:linear|term-00004]] geometry; three regions form a [[term:trigonal planar|term-00005]] geometry; four regions form a [[term:tetrahedral|term-00006]] geometry; five regions form a [[term:trigonal bipyramidal|term-00007]] geometry; and six regions form an [[term:octahedral|term-00008]] geometry.
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_Egeom-caption -->
 The basic electron-pair geometries predicted by VSEPR theory maximize the space around any region of electron density (bonds or lone pairs).
+
+<!-- SEG:m68742:alt:fs-idp73717728-alt -->
+A table with four rows and six columns is shown. The header column contains the phrases, “Number of regions,” “Spatial arrangement,” “Wedge/dash Notation,” and “Electron region Geometry.” The first row reads: “Two regions of high electron density ( bonds and/or unshared pairs )”, “Three regions of high electron density ( bonds and/or unshared pairs ),” “Four regions of high electron density ( bonds and/or unshared pairs ),” “Five regions of high electron density ( bonds and/or unshared pairs ),” and “Six regions of high electron density ( bonds and/or unshared pairs ).” The second row shows diagrams of orbitals. The first image shows two oval-shaped orbs with an arrow indicating an angle of 180 degrees. The second image shows three oval-shaped orbs with an arrow indicating an angle of 120 degrees. The third image shows four oval-shaped orbs with an arrow indicating an angle of 109.5 degrees. The fourth image shows five oval-shaped orbs with an arrow indicating an angle of 90 and 120 degrees. The fifth image shows six oval-shaped orbs with an arrow indicating an angle of 90 degrees. The third row contains Lewis structures. The first structure shows a beryllium atom single bonded to two hydrogen atoms. The second structure shows a boron atom single bonded to three hydrogen atoms. The third structure shows a carbon atom single bonded to four hydrogen atoms. The fourth structure shows a phosphorus atom single bonded to five fluorine atoms. The fifth structure shows a sulfur atom single bonded to six fluorine atoms. The fourth row contains the phrases “Linear; 180 degree angle,” Trigonal Planar; all angles 120 degrees,” “Tetrahedral; all angles 109.5 degrees,” “Trigonal bipyramidal; angles of 90 degrees and 120 degrees. An attached atom may be equatorial, ( in the plane of the triangle ), or axial, ( above the plane of the triangle ),” and “Octahedral; 90 degrees or 180 degrees.”
 
 <!-- SEG:m68742:title:fs-idp149289584-title -->
 Molecular Polarity and Dipole Moment
@@ -393,6 +456,9 @@ Polar molecules tend to align when placed in an electric field with the positive
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_Dipolfield-caption -->
 (a) Molecules are always randomly distributed in the liquid state in the absence of an electric field. (b) When an electric field is applied, polar molecules like HF will align to the dipoles with the field direction.
+
+<!-- SEG:m68742:alt:fs-idp19283840-alt -->
+Two diagrams are shown and labeled “a” and “b.” Diagram a shows two vertical, gray electrodes. There are five molecules in between. The molecules are separate from one another and are composed of a hydrogen atom bonded to a fluorine atom. The fluorine atom is labeled with a dipole symbol and a superscripted negative sign while the hydrogen atom is labeled with a dipole symbol and a superscripted positive sign. The molecules are randomly oriented in the space. The right diagram also shows two vertical gray electrodes, the left labeled as negative and the right labeled as positive. The space between is yellow. The same molecules are present, but this time they are all facing horizontally, with the hydrogen-end of each molecule facing toward the negative electrode.
 
 <!-- SEG:m68742:para:fs-idp103820464 -->
 The [[link:molecule polarity simulation|http://openstax.org/l/16MolecPolarity]] provides many ways to explore dipole moments of bonds and molecules.
@@ -437,16 +503,19 @@ Answer:
 The largest bond moments will occur with the largest partial charges. The two solutions above represent how unevenly the electrons are shared in the bond. The bond moments will be maximized when the electronegativity difference is greatest. The controls for A and C should be set to one extreme, and B should be set to the opposite extreme. Although the magnitude of the bond moment will not change based on whether B is the most electronegative or the least, the direction of the bond moment will.
 
 <!-- SEG:m68742:para:fs-idp30351200 -->
-As discussed previously, polar covalent bonds connect two atoms with differing electronegativities, leaving one atom with a partial positive charge (δ+) and the other atom with a partial negative charge (δ–), as the electrons are pulled toward the more electronegative atom. This separation of charge gives rise to a {{term}}bond dipole moment{{/term}}. The magnitude of a bond dipole moment is represented by the Greek letter mu ([[i:µ]]) and is given by the formula shown here, where Q is the magnitude of the partial charges (determined by the electronegativity difference) and r is the distance between the charges:
+As discussed previously, polar covalent bonds connect two atoms with differing electronegativities, leaving one atom with a partial positive charge (δ+) and the other atom with a partial negative charge (δ–), as the electrons are pulled toward the more electronegative atom. This separation of charge gives rise to a [[term:bond dipole moment|term-00013]]. The magnitude of a bond dipole moment is represented by the Greek letter mu ([[i:µ]]) and is given by the formula shown here, where Q is the magnitude of the partial charges (determined by the electronegativity difference) and r is the distance between the charges:
 
 <!-- SEG:m68742:para:fs-idp33849296 -->
-This bond moment can be represented as a {{term}}vector{{/term}}, a quantity having both direction and magnitude ([[xref:CNX_Chem_07_06_BondVector]]). Dipole vectors are shown as arrows pointing along the bond from the less electronegative atom toward the more electronegative atom. A small plus sign is drawn on the less electronegative end to indicate the partially positive end of the bond. The length of the arrow is proportional to the magnitude of the electronegativity difference between the two atoms.
+This bond moment can be represented as a [[term:vector|term-00014]], a quantity having both direction and magnitude ([[xref:CNX_Chem_07_06_BondVector]]). Dipole vectors are shown as arrows pointing along the bond from the less electronegative atom toward the more electronegative atom. A small plus sign is drawn on the less electronegative end to indicate the partially positive end of the bond. The length of the arrow is proportional to the magnitude of the electronegativity difference between the two atoms.
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_BondVector-caption -->
 (a) There is a small difference in electronegativity between C and H, represented as a short vector. (b) The electronegativity difference between B and F is much larger, so the vector representing the bond moment is much longer.
 
+<!-- SEG:m68742:alt:fs-idp53563840-alt -->
+Two images are shown and labeled, “a” and “b.” Image a shows a large sphere labeled, “C,” a left-facing arrow with a crossed end, and a smaller sphere labeled “H.” Image b shows a large sphere labeled, “B,” a right-facing arrow with a crossed end, and a smaller sphere labeled “F.”
+
 <!-- SEG:m68742:para:fs-idp52773168 -->
-A whole molecule may also have a separation of charge, depending on its molecular structure and the polarity of each of its bonds. If such a charge separation exists, the molecule is said to be a {{term}}polar molecule{{/term}} (or dipole); otherwise the molecule is said to be nonpolar. The {{term}}dipole moment{{/term}} measures the extent of net charge separation in the molecule as a whole. We determine the dipole moment by adding the bond moments in three-dimensional space, taking into account the molecular structure.
+A whole molecule may also have a separation of charge, depending on its molecular structure and the polarity of each of its bonds. If such a charge separation exists, the molecule is said to be a [[term:polar molecule|term-00015]] (or dipole); otherwise the molecule is said to be nonpolar. The [[term:dipole moment|term-00016]] measures the extent of net charge separation in the molecule as a whole. We determine the dipole moment by adding the bond moments in three-dimensional space, taking into account the molecular structure.
 
 <!-- SEG:m68742:para:fs-idm10056464 -->
 For diatomic molecules, there is only one bond, so its bond dipole moment determines the molecular polarity. Homonuclear diatomic molecules such as Br[[sub:2]] and N[[sub:2]] have no difference in electronegativity, so their dipole moment is zero. For heteronuclear molecules such as CO, there is a small dipole moment. For HF, there is a larger dipole moment because there is a larger difference in electronegativity.
@@ -457,8 +526,14 @@ When a molecule contains more than one bond, the geometry must be taken into acc
 <!-- SEG:m68742:caption:CNX_Chem_07_06_CO2H2Odip-caption -->
 The overall dipole moment of a molecule depends on the individual bond dipole moments and how they are arranged. (a) Each CO bond has a bond dipole moment, but they point in opposite directions so that the net CO[[sub:2]] molecule is nonpolar. (b) In contrast, water is polar because the OH bond moments do not cancel out.
 
+<!-- SEG:m68742:alt:fs-idp102085104-alt -->
+Two images are shown and labeled, “a” and “b.” Image a shows a carbon atom bonded to two oxygen atoms in a ball-and-stick representation. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. These arrows are labeled, “Bond moments,” and the image is labeled, “Overall dipole moment equals 0.” Image b shows an oxygen atom bonded to two hydrogen atoms in a downward-facing v-shaped arrangement. An upward-facing, vertical arrow is drawn below the molecule while two upward and inward facing arrows are drawn above the molecule. The upper arrows are labeled, “Bond moments,” while the image is labeled, “Overall dipole moment.”
+
 <!-- SEG:m68742:para:fs-idp54246320 -->
 The OCS molecule has a structure similar to CO[[sub:2]], but a sulfur atom has replaced one of the oxygen atoms. To determine if this molecule is polar, we draw the molecular structure. VSEPR theory predicts a linear molecule:
+
+<!-- SEG:m68742:alt:fs-idp52090304-alt -->
+An image shows a carbon atom double bonded to a sulfur atom and an oxygen atom which are arranged in a horizontal plane. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. The left-facing arrow is larger than the right-facing arrow. These arrows are labeled, “Bond moments,” and a left-facing arrow below the molecule is labeled, “Overall dipole moment.”
 
 <!-- SEG:m68742:para:fs-idp225382864 -->
 The C-O bond is considerably polar. Although C and S have very similar electronegativity values, S is slightly more electronegative than C, and so the C-S bond is just slightly polar. Because oxygen is more electronegative than sulfur, the oxygen end of the molecule is the negative end.
@@ -466,8 +541,14 @@ The C-O bond is considerably polar. Although C and S have very similar electrone
 <!-- SEG:m68742:para:fs-idp66532464 -->
 Chloromethane, CH[[sub:3]]Cl, is a tetrahedral molecule with three slightly polar C-H bonds and a more polar C-Cl bond. The relative electronegativities of the bonded atoms is H &lt; C &lt; Cl, and so the bond moments all point toward the Cl end of the molecule and sum to yield a considerable dipole moment (the molecules are relatively polar).
 
+<!-- SEG:m68742:alt:fs-idm3023712-alt -->
+An image shows a carbon atom single bonded to three hydrogen atoms and a chlorine atom. There are arrows with crossed ends pointing from the hydrogen to the carbon near each bond, and one pointing from the carbon to the chlorine along that bond. The carbon and chlorine arrow is longer. This image uses dashes and wedges to give it a three-dimensional appearance.
+
 <!-- SEG:m68742:para:fs-idp214036816 -->
 For molecules of high symmetry such as BF[[sub:3]] (trigonal planar), CH[[sub:4]] (tetrahedral), PF[[sub:5]] (trigonal bipyramidal), and SF[[sub:6]] (octahedral), all the bonds are of identical polarity (same bond moment) and they are oriented in geometries that yield nonpolar molecules (dipole moment is zero). Molecules of less geometric symmetry, however, may be polar even when all bond moments are identical. For these molecules, the directions of the equal bond moments are such that they sum to give a nonzero dipole moment and a polar molecule. Examples of such molecules include hydrogen sulfide, H[[sub:2]]S (nonlinear), and ammonia, NH[[sub:3]] (trigonal pyramidal).
+
+<!-- SEG:m68742:alt:fs-idp35612832-alt -->
+Two Lewis structures are shown. The left structure shows a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. Near the sulfur is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign. The right structure shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. Near the nitrogen is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign.
 
 <!-- SEG:m68742:para:fs-idp51111376 -->
 To summarize, to be polar, a molecule must:
@@ -788,7 +869,7 @@ Describe the molecular structure around the indicated atom or atoms:
 (i) each of the carbon atoms in allene, H[[sub:2]]CCCH[[sub:2]]
 
 <!-- SEG:m68742:solution:fs-idp164162368 -->
-(a) tetrahedral; (b) trigonal pyramidal; (c) bent (109°); (d) trigonal planar; (e) bent (&lt;120°); (f) bent (109°); (g) ++C++H[[sub:3]]CCH tetrahedral, CH[[sub:3]]++CC++H linear; (h) tetrahedral; (i) H[[sub:2]]C++C++CH[[sub:2]] linear; H[[sub:2]]++C++C++C++H[[sub:2]] trigonal planar
+(a) tetrahedral; (b) trigonal pyramidal; (c) bent (109°); (d) trigonal planar; (e) bent (&lt;120°); (f) bent (109°); (g) [[u:C]]H[[sub:3]]CCH tetrahedral, CH[[sub:3]][[u:CC]]H linear; (h) tetrahedral; (i) H[[sub:2]]C[[u:C]]CH[[sub:2]] linear; H[[sub:2]][[u:C]]C[[u:C]]H[[sub:2]] trigonal planar
 
 <!-- SEG:m68742:problem:fs-idp10303440 -->
 Draw the Lewis structures and predict the shape of each compound or ion:
@@ -811,6 +892,9 @@ A molecule with the formula AB[[sub:2]], in which A and B represent different at
 <!-- SEG:m68742:solution:fs-idm4023008 -->
 [[BR]] [[MEDIA:1]]
 
+<!-- SEG:m68742:alt:fs-idp35110688-alt -->
+Three Lewis diagrams are shown. The first diagram shows the letter A single bonded to the left and right to the letter B. An example, “C O subscript 2,” and the term, “linear,” are written beside this diagram. The second diagram shows the letter A with two lone pairs of electrons, single bonded to the left and lower right to the letter B. An example, “H subscript 2 O,” and the term, “bent with an approximately 109 degree angle,” are written beside this diagram. The third diagram shows the letter A with one lone electron pair, single bonded to the left and lower right to the letter B. An example, “S O subscript 2,” and the term, “bent with an approximately 120 degree angle,” are written beside this diagram.
+
 <!-- SEG:m68742:problem:fs-idm81567024 -->
 A molecule with the formula AB[[sub:3]], in which A and B represent different atoms, could have one of three different shapes. Sketch and name the three different shapes that this molecule might have. Give an example of a molecule or ion that has each shape.
 
@@ -832,6 +916,15 @@ Draw the Lewis electron dot structures for these molecules, including resonance 
 <!-- SEG:m68742:solution:fs-idp61624784 -->
 (a)[[BR]] [[MEDIA:2]][[BR]] (b)[[BR]] [[MEDIA:3]][[BR]] (c)[[BR]] [[MEDIA:4]][[BR]] (d) [[MATH:31]] includes three regions of electron density (all are bonds with no lone pairs); the shape is trigonal planar; CS[[sub:2]] has only two regions of electron density (all bonds with no lone pairs); the shape is linear
 
+<!-- SEG:m68742:alt:fs-idp25564320-alt -->
+The figure shows three Lewis structures that are each surrounded by brackets and have a superscripted 2 negative sign. They are written with a double-headed arrow in between each diagram. The first of this trio has a carbon atom single bonded to two sulfur atoms, each of which has thee lone pairs of electrons, and double bonded to a third sulfur atom with two lone pairs of electrons. The second and third diagrams have the same atoms present, but each time the double bond moves between a different carbon and sulfur pair. The lone electron pairs also shift to correspond with the bond changes.
+
+<!-- SEG:m68742:alt:fs-idp164171792-alt -->
+The Lewis structure shows a carbon atom double bonded to two sulfur atoms, each of which has two lone pairs of electrons.
+
+<!-- SEG:m68742:alt:fs-idp24461984-alt -->
+This diagram shows a carbon with one lone electron pair triple bonded to a sulfur with one lone electron pair.
+
 <!-- SEG:m68742:problem:fs-idp81563600 -->
 What is the molecular structure of the stable form of FNO[[sub:2]]? (N is the central atom.)
 
@@ -840,6 +933,9 @@ A compound with a molar mass of about 42 g/mol contains 85.7% carbon and 14.3% h
 
 <!-- SEG:m68742:solution:fs-idp130145648 -->
 The Lewis structure is made from three units, but the atoms must be rearranged:[[BR]] [[MEDIA:5]]
+
+<!-- SEG:m68742:alt:fs-idp93503152-alt -->
+A Lewis structure is shown in which a carbon atom is single bonded to three hydrogen atoms and a second carbon atom. The second carbon is single bonded to a hydrogen atom and double bonded to a third carbon atom which is single bonded to two hydrogen atoms.
 
 <!-- SEG:m68742:problem:fs-idp63767408 -->
 Use the [[link:simulation|http://openstax.org/l/16MolecPolarity]] to perform the following exercises for a two-atom molecule:

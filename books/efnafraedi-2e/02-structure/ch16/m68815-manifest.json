@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68815",
-  "extractedAt": "2026-07-07T09:12:45.453Z",
+  "extractedAt": "2026-08-31T19:08:43.921Z",
   "sourceHash": "d5fbb928b7cffc75",
-  "segmentCount": 7,
+  "segmentCount": 8,
   "segmentIds": [
     "m68815:title:auto-1",
     "m68815:abstract-item:abstract-item-1",
@@ -11,6 +11,7 @@
     "m68815:abstract-item:abstract-item-3",
     "m68815:abstract-item:abstract-item-4",
     "m68815:caption:CNX_Chem_16_00_Geyser-caption",
+    "m68815:alt:fs-idp257130400-alt",
     "m68815:para:fs-idp234888272"
   ],
   "equationCount": 0,

@@ -1,0 +1,479 @@
+{
+  "moduleId": "m00317",
+  "title": {
+    "segmentId": "m00317:title:auto-1",
+    "text": "The Polymerase Chain Reaction"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c7a3c8e4-097d-4f58-a862-3205a99cd937"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00317:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00317:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00317:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00317:alt:fig-00001-alt",
+          "text": "Polymerase chain reaction relies on thermostable Taq polymerase and D N A primers. Through a series of temperature changes, multiple instances of specific D N A region are made in vitro."
+        },
+        "src": "../../media/OChem_28_08_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00317:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00317:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00317:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00317:para:para-00006"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00317:title:sect-00001-title",
+        "text": "DNA Fingerprinting"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00317:para:para-00007"
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00317:para:para-00008"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00317:para:para-00009"
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00317:para:para-00010"
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00317:para:para-00011"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-10"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-11"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-12"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-13"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-14"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-15"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-16"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-17"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-18"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-19"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00001-item-20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00317:title:sect-00003-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00317:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00317:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00317:para:para-00014"
+        },
+        {
+          "type": "list",
+          "id": "list-00002",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00002-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00002-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00317:item:list-00002-item-3"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00317:para:para-00015"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00317:title:sect-00004-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00317:para:para-00016"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00020",
+          "segmentId": "m00317:para:para-00020"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00026",
+          "segmentId": "m00317:para:para-00026"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

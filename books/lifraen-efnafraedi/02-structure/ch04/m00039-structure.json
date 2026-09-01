@@ -1,0 +1,92 @@
+{
+  "moduleId": "m00039",
+  "title": {
+    "segmentId": "m00039:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "b5eb3520-aabf-4e0f-8929-1b25dd0d3442"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00039:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00039:alt:fig-00001-alt",
+          "text": "A photograph of a brownish-black Himalayan musk deer."
+        },
+        "src": "../../media/OSX_OrgChem_04_00_000.jpg",
+        "mimeType": "image/jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00039:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00039:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00039:alt:fig-00002-alt",
+          "text": "The wedge-dash structure of chrysanthemic acid."
+        },
+        "src": "../../media/OChem_04_00_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00039:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00039:alt:fig-00003-alt",
+          "text": "The wedge-dash structure of prostaglandin E 1."
+        },
+        "src": "../../media/OChem_04_00_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00039:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00039:alt:fig-00004-alt",
+          "text": "The wedge-dash structure of cortisone."
+        },
+        "src": "../../media/OChem_04_00_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 0
+}

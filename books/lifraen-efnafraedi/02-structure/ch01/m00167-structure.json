@@ -1,0 +1,119 @@
+{
+  "moduleId": "m00167",
+  "title": {
+    "segmentId": "m00167:title:auto-1",
+    "text": "Hybridization of Nitrogen, Oxygen, Phosphorus, and Sulfur"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "1be529b5-835d-43a7-a6ec-3e712813cd26"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00167:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00167:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00167:alt:fig-00001-alt",
+          "text": "The chemical structure and ball and stick model of methylamine where nitrogen has one lone pair. The hydrogen-hydrogen bond angle is 107.1 degrees and hydrogen-carbon is 110.3 degrees."
+        },
+        "src": "../../media/OChem_01_10_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00167:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00167:alt:fig-00002-alt",
+          "text": "The chemical structure and ball and stick model of methanol (methyl alcohol) where oxygen has two lone pairs. The hydrogen-carbon bond angle is 108.5 degrees."
+        },
+        "src": "../../media/OChem_01_10_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00167:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00167:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00167:alt:fig-00003-alt",
+          "text": "The chemical structure and ball and stick model of methyl phosphate (an organophosphate). The oxygen-oxygen bond angle is nearly 110 degrees."
+        },
+        "src": "../../media/OChem_01_10_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00167:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00167:alt:fig-00004-alt",
+          "text": "The chemical structures and ball and stick models of methanethiol and dimethyl sulfide (two lone pairs per sulfur). The bond angles around sulfur are 96.5 and 99.1 degrees respectively."
+        },
+        "src": "../../media/OChem_01_10_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00167:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 10
+}

@@ -1,0 +1,130 @@
+{
+  "moduleId": "m00355",
+  "title": {
+    "segmentId": "m00355:title:auto-1",
+    "text": "Olefin Metathesis Polymerization"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "94accb84-4219-42da-b1f7-6d349bcc14aa"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00355:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00355:alt:fig-00001-alt",
+          "text": "An alkene with two R groups reacts with an alkene with two R prime groups in presence of catalyst forming two alkene products each with R and R prime groups."
+        },
+        "src": "../../media/OChem_31_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00355:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00355:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00355:alt:fig-00002-alt",
+          "text": "Initiation involves two steps and propagation involves four steps. Olefin reacts with Grubbs catalyst forming metallacycle. It further gives another catalyst form, that reacts with olefin 2 to form product."
+        },
+        "src": "../../media/OChem_31_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00355:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00355:alt:fig-00003-alt",
+          "text": "Cyclopentene reacts with Grubbs catalyst to form the first intermediate which reacts to form second intermediate. This reacts with the catalyst to form a third intermediate leading to a polymer."
+        },
+        "src": "../../media/OChem_31_05_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00355:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00355:alt:fig-00004-alt",
+          "text": "Two molecules of 1,8-nonadiene react with a catalyst to create an intermediate and ethylene molecule. Further cycles generate a polymer of n units and n moles of ethylene molecule."
+        },
+        "src": "../../media/OChem_31_05_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00355:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00355:alt:fig-00005-alt",
+          "text": "The structures of Vestenamer and Norsorex are inside parentheses with subscript n. Vestenamer has ten carbon atoms and Norsorex has seven carbon atoms with two double bonds in each structure."
+        },
+        "src": "../../media/OChem_31_05_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00355:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

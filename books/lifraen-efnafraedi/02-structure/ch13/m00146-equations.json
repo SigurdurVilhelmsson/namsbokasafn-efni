@@ -1,0 +1,7 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math><m:mrow><m:mi>δ</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mtext>Observed chemical shift (number of Hz away from TMS)</m:mtext></m:mrow><m:mrow><m:mtext>Spectrometer frequency in MHz</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{δ=\\frac{{\\text{Observed chemical shift (number of Hz away from TMS)}}}{{\\text{Spectrometer frequency in MHz}}}}",
+    "isBlock": true
+  }
+}

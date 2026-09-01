@@ -1,0 +1,164 @@
+{
+  "moduleId": "m00173",
+  "title": {
+    "segmentId": "m00173:title:auto-1",
+    "text": "Kinetic versus Thermodynamic Control of Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "94e47e26-d5fe-4f9c-a019-879c46e2749d"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00173:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00173:alt:fig-00001-alt",
+          "text": "In a reaction, 1,3-butadiene reacts with hydrogen bromide to yield 1,2 adduct and 1,4 adduct. At 0 and 40 degrees Celsius, the ratio of the two adducts is different."
+        },
+        "src": "../../media/OChem_14_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00173:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00173:alt:fig-00002-alt",
+          "text": "The figure shows reactant A forms product B and product C."
+        },
+        "src": "../../media/OChem_14_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00173:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00173:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00173:alt:fig-00003-alt",
+          "text": "The energy diagram shows the thermodynamic control curve forming a higher peak than the kinetic control curve. The x and y axes denotes reaction progress and energy, respectively."
+        },
+        "src": "../../media/OChem_14_03_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00173:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00173:alt:fig-00004-alt",
+          "text": "Reactant A forms products B and C in faster and slower reactions, respectively. The text next to the reaction generating product B reads Kinetic control (Lower temperature; irreversible)."
+        },
+        "src": "../../media/OChem_14_03_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00173:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00173:alt:fig-00005-alt",
+          "text": "Reactant A yields two products, B and C in reversible reactions. The text next to the reaction generating product B readsThermodynamic control (Higher temperature; reversible)."
+        },
+        "src": "../../media/OChem_14_03_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00173:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00173:caption:fig-00006-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00173:alt:fig-00006-alt",
+          "text": "Energy diagram shows curve for 1,4-adduct formation has two maxima, the first being higher. The curve for 1,2 adduct initiates from trough of first curve and ends higher in energy than the first curve."
+        },
+        "src": "../../media/OChem_14_03_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00173:para:para-00007"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00173:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

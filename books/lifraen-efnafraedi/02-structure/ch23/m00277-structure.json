@@ -1,0 +1,57 @@
+{
+  "moduleId": "m00277",
+  "title": {
+    "segmentId": "m00277:title:auto-1",
+    "text": "Carbonyl Condensations versus Alpha Substitutions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "5b18c8ff-dfc3-4457-8991-df3833fe2b2a"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00277:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00277:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00277:alt:fig-00001-alt",
+          "text": "The reaction of cyclohexanone with one equivalent of L D A at minus seventy-eight degrees Celsius forms cyclohexanone enolate intermediate. The addition of methyl iodide gives 2-methylcyclohexanone."
+        },
+        "src": "../../media/OChem_23_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00277:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00277:alt:fig-00002-alt",
+          "text": "The reversible reaction of propanal with sodium methoxide in methanol shows two intermediates. The subsequent reaction of these intermediates produces 3-hydroxy-2-methylpentanal (aldol) and methoxide."
+        },
+        "src": "../../media/OChem_23_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 2
+}

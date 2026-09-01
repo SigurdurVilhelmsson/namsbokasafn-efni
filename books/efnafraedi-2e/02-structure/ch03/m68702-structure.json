@@ -314,7 +314,10 @@
           },
           "media": {
             "id": "fs-idm114759824",
-            "alt": "A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, “Mass of A atoms” and “Moles of A atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass,” written below it. The second two bottom boxes have the phrases, “Mass of X atoms” and “Moles of X atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass” written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase “Divide by lowest number of moles” written below it. The last two boxes have the phrases, “A to X mole ratio” and “Empirical formula” respectively, while the arrow that connects them has the phrase, “Convert ratio to lowest whole numbers” written below it.",
+            "alt": {
+              "segmentId": "m68702:alt:fs-idm114759824-alt",
+              "text": "A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, “Mass of A atoms” and “Moles of A atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass,” written below it. The second two bottom boxes have the phrases, “Mass of X atoms” and “Moles of X atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass” written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase “Divide by lowest number of moles” written below it. The last two boxes have the phrases, “A to X mole ratio” and “Empirical formula” respectively, while the arrow that connects them has the phrase, “Convert ratio to lowest whole numbers” written below it."
+            },
             "src": "../../media/CNX_Chem_03_03_empform.jpg",
             "mimeType": "image/jpeg"
           }
@@ -408,7 +411,10 @@
           },
           "media": {
             "id": "fs-idm156718064",
-            "alt": "Two rounded, smooth black stones are shown.",
+            "alt": {
+              "segmentId": "m68702:alt:fs-idm156718064-alt",
+              "text": "Two rounded, smooth black stones are shown."
+            },
             "src": "../../media/CNX_Chem_03_03_hematite.jpg",
             "mimeType": "image/jpeg"
           }
@@ -529,7 +535,10 @@
               },
               "media": {
                 "id": "fs-idm183208576",
-                "alt": "A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.",
+                "alt": {
+                  "segmentId": "m68702:alt:fs-idm183208576-alt",
+                  "text": "A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one."
+                },
                 "src": "../../media/CNX_Chem_03_03_BrewTank.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -1038,11 +1047,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68702:entry:auto-132",
+                  "segmentId": "m68702:entry:auto-135",
                   "attributes": {}
                 }
               ]
@@ -1050,7 +1060,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68702:entry:auto-133",
+                  "segmentId": "m68702:entry:auto-136",
                   "attributes": {}
                 }
               ]
@@ -1058,7 +1068,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68702:entry:auto-134",
+                  "segmentId": "m68702:entry:auto-137",
                   "attributes": {}
                 }
               ]

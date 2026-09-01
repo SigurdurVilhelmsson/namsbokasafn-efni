@@ -25,29 +25,44 @@ The hemoglobin in your blood, the chlorophyll in green plants, vitamin B-12, and
 <!-- SEG:m68843:caption:CNX_Chem_19_02_Colors-caption -->
 Metal ions that contain partially filled [[i:d]] subshell usually form colored complex ions; ions with empty [[i:d]] subshell ([[i:d]][[sup:0]]) or with filled [[i:d]] subshells ([[i:d]][[sup:10]]) usually form colorless complexes. This figure shows, from left to right, solutions containing [[[i:M]](H[[sub:2]]O)[[sub:6]]][[sup:n+]] ions with [[i:M]] = Sc[[sup:3+]]([[i:d]][[sup:0]]), Cr[[sup:3+]]([[i:d]][[sup:3]]), Co[[sup:2+]]([[i:d]][[sup:7]]), Ni[[sup:2+]]([[i:d]][[sup:8]]), Cu[[sup:2+]]([[i:d]][[sup:9]]), and Zn[[sup:2+]]([[i:d]][[sup:10]]). (credit: Sahar Atwa)
 
+<!-- SEG:m68843:alt:fs-idp7404384-alt -->
+This figure shows six containers. Each is filled with a different color liquid. The first appears to be clear; the second appears to be purple; the third appears to be red; the fourth appears to be teal; the fifth appears to be blue; and the sixth also appears to be clear.
+
 <!-- SEG:m68843:para:fs-idp92015616 -->
-Remember that in most main group element compounds, the valence electrons of the isolated atoms combine to form chemical bonds that satisfy the octet rule. For instance, the four valence electrons of carbon overlap with electrons from four hydrogen atoms to form CH[[sub:4]]. The one valence electron leaves sodium and adds to the seven valence electrons of chlorine to form the ionic formula unit NaCl ([[xref:CNX_Chem_19_02_BondType]]). Transition metals do not normally bond in this fashion. They primarily form coordinate covalent bonds, a form of the Lewis acid-base interaction in which both of the electrons in the bond are contributed by a donor (Lewis base) to an electron acceptor (Lewis acid). The Lewis acid in coordination complexes, often called a {{term}}central metal{{/term}} ion (or atom), is often a transition metal or inner transition metal, although main group elements can also form {{term}}coordination compounds{{/term}}. The Lewis base donors, called {{term}}ligands{{/term}}, can be a wide variety of chemicals—atoms, molecules, or ions. The only requirement is that they have one or more electron pairs, which can be donated to the central metal. Most often, this involves a {{term}}donor atom{{/term}} with a lone pair of electrons that can form a coordinate bond to the metal.
+Remember that in most main group element compounds, the valence electrons of the isolated atoms combine to form chemical bonds that satisfy the octet rule. For instance, the four valence electrons of carbon overlap with electrons from four hydrogen atoms to form CH[[sub:4]]. The one valence electron leaves sodium and adds to the seven valence electrons of chlorine to form the ionic formula unit NaCl ([[xref:CNX_Chem_19_02_BondType]]). Transition metals do not normally bond in this fashion. They primarily form coordinate covalent bonds, a form of the Lewis acid-base interaction in which both of the electrons in the bond are contributed by a donor (Lewis base) to an electron acceptor (Lewis acid). The Lewis acid in coordination complexes, often called a [[term:central metal|term-00001]] ion (or atom), is often a transition metal or inner transition metal, although main group elements can also form [[term:coordination compounds|term-00002]]. The Lewis base donors, called [[term:ligands|term-00003]], can be a wide variety of chemicals—atoms, molecules, or ions. The only requirement is that they have one or more electron pairs, which can be donated to the central metal. Most often, this involves a [[term:donor atom|term-00004]] with a lone pair of electrons that can form a coordinate bond to the metal.
 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_BondType-caption -->
 (a) Covalent bonds involve the sharing of electrons, and ionic bonds involve the transferring of electrons associated with each bonding atom, as indicated by the colored electrons. (b) However, coordinate covalent bonds involve electrons from a Lewis base being donated to a metal center. The lone pairs from six water molecules form bonds to the scandium ion to form an octahedral complex. (Only the donated pairs are shown.)
 
+<!-- SEG:m68843:alt:fs-idp231200048-alt -->
+Three electron dot models are shown. To the left, a central C atom is shown with H atoms bonded above, below, to the left, and to the right. Between the C atom and each H atom are two electron dots, one red, and one black, next to each other in pairs between the atoms. The second structure to the right shows N superscript plus sign followed by a C l atom in brackets. This C l atom has pairs of electron dots above, below, left, and right of the element symbol. A single electron dot on the left side of the symbol is shown in red. All others are black. Outside the brackets to the right, a negative sign appears as a superscript. The third structure on the far right has a central S c atom. This atom is surrounded by six pairs of evenly-spaced electron dots. These pairs of dots are positioned between the S c atom and each of the O atoms from six H subscript 2 O molecules. This entire structure is within brackets to the right of which is the superscript 3 plus.
+
 <!-- SEG:m68843:para:fs-idp151225552 -->
-The {{term}}coordination sphere{{/term}} consists of the central metal ion or atom plus its attached ligands. Brackets in a formula enclose the coordination sphere; species outside the brackets are not part of the coordination sphere. The {{term}}coordination number{{/term}} of the central metal ion or atom is the number of donor atoms bonded to it. The coordination number for the silver ion in [Ag(NH[[sub:3]])[[sub:2]]][[sup:+]] is two ([[xref:CNX_Chem_19_02_CN]]). For the copper(II) ion in [CuCl[[sub:4]]][[sup:2−]], the coordination number is four, whereas for the cobalt(II) ion in [Co(H[[sub:2]]O)[[sub:6]]][[sup:2+]] the coordination number is six. Each of these ligands is {{term}}monodentate{{/term}}, from the Greek for “one toothed,” meaning that they connect with the central metal through only one atom. In this case, the number of ligands and the coordination number are equal.
+The [[term:coordination sphere|term-00005]] consists of the central metal ion or atom plus its attached ligands. Brackets in a formula enclose the coordination sphere; species outside the brackets are not part of the coordination sphere. The [[term:coordination number|term-00006]] of the central metal ion or atom is the number of donor atoms bonded to it. The coordination number for the silver ion in [Ag(NH[[sub:3]])[[sub:2]]][[sup:+]] is two ([[xref:CNX_Chem_19_02_CN]]). For the copper(II) ion in [CuCl[[sub:4]]][[sup:2−]], the coordination number is four, whereas for the cobalt(II) ion in [Co(H[[sub:2]]O)[[sub:6]]][[sup:2+]] the coordination number is six. Each of these ligands is [[term:monodentate|term-00007]], from the Greek for “one toothed,” meaning that they connect with the central metal through only one atom. In this case, the number of ligands and the coordination number are equal.
 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_CN-caption -->
 The complexes (a) [Ag(NH[[sub:3]])[[sub:2]]][[sup:+]], (b) [Cu(Cl)[[sub:4]]][[sup:2−]], and (c) [Co(H[[sub:2]]O)[[sub:6]]][[sup:2+]] have coordination numbers of two, four, and six, respectively. The geometries of these complexes are the same as we have seen with VSEPR theory for main group elements: linear, tetrahedral, and octahedral.
 
+<!-- SEG:m68843:alt:fs-idp225513984-alt -->
+Three structures are shown. In a, a central A g atom has N atoms bonded to the left and right as indicated by line segments. Three H atoms are similarly bonded to each N atom extending out and up, out to the side, and out and below each N atom. The structure is enclosed in brackets with a superscript plus sign to the right of the brackets. In b, a C u atom is at the center of the structure. Line segments indicate bonds to two C l atoms, one above and the other below and to the left of the central atom. To the right, a dashed wedge, narrow toward the C u atom and widening toward a C l atom, is shown at the right side of the central C u atom. A solid wedge is similarly directed toward a C l atom below and slightly right of the central C u atom. This structure is enclosed in brackets with a superscript 2 negative sign present to the right of the brackets. In c, a structure is shown with a central C o atom. From the C o atom, line segments indicate bonds to H subscript 2 O molecules above and below the structure. Above and to both the right and left, dashed wedges indicate bonds to two H subscript 2 O molecules. Similarly, solid wedges below to both the right and left indicate bonds to two more H subscript 2 O molecules. Each bond in this structure is directed toward the O atom in each H subscript 2 O structure. This structure is enclosed in brackets. Outside the brackets to the right is a superscript 2 plus sign.
+
 <!-- SEG:m68843:para:fs-idp37282080 -->
-Many other ligands coordinate to the metal in more complex fashions. {{term}}Bidentate ligands{{/term}} are those in which two atoms coordinate to the metal center. For example, ethylenediamine (en, H[[sub:2]]NCH[[sub:2]]CH[[sub:2]]NH[[sub:2]]) contains two nitrogen atoms, each of which has a lone pair and can serve as a Lewis base ([[xref:CNX_Chem_19_02_en]]). Both of the atoms can coordinate to a single metal center. In the complex [Co(en)[[sub:3]]][[sup:3+]], there are three bidentate en ligands, and the coordination number of the cobalt(III) ion is six. The most common coordination numbers are two, four, and six, but examples of all coordination numbers from 1 to 15 are known.
+Many other ligands coordinate to the metal in more complex fashions. [[term:Bidentate ligands|term-00008]] are those in which two atoms coordinate to the metal center. For example, ethylenediamine (en, H[[sub:2]]NCH[[sub:2]]CH[[sub:2]]NH[[sub:2]]) contains two nitrogen atoms, each of which has a lone pair and can serve as a Lewis base ([[xref:CNX_Chem_19_02_en]]). Both of the atoms can coordinate to a single metal center. In the complex [Co(en)[[sub:3]]][[sup:3+]], there are three bidentate en ligands, and the coordination number of the cobalt(III) ion is six. The most common coordination numbers are two, four, and six, but examples of all coordination numbers from 1 to 15 are known.
 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_en-caption -->
 (a) The ethylenediamine (en) ligand contains two atoms with lone pairs that can coordinate to the metal center. (b) The cobalt(III) complex [[MATH:1]] contains three of these ligands, each forming two bonds to the cobalt ion.
 
+<!-- SEG:m68843:alt:fs-idp39737888-alt -->
+Two structures are shown. In a, H subscript 2 N appears at the left end of the structure. A short line segment extends up and to the right from the N atom to a C atom in a C H subscript 2 group. A short line segment extends down and to the right to another C atom in a C H subscript 2 group. A final short line segment extends from this C H subscript 2 group up and to the right to the N atom of an N H subscript 2 group. Each N atom in the structure has a pair of electron dots at its top. In b, a central C o atom has six N H subscript 2 groups attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. The bonds to these groups are all directed toward the N atoms. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming 3 rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript 3 plus sign.
+
 <!-- SEG:m68843:para:fs-idp32736688 -->
-Any ligand that bonds to a central metal ion by more than one donor atom is a {{term}}polydentate ligand{{/term}} (or “many teeth”) because it can bite into the metal center with more than one bond. The term {{term}}chelate{{/term}} (pronounced “KEY-late”) from the Greek for “claw” is also used to describe this type of interaction. Many polydentate ligands are {{term}}chelating ligands{{/term}}, and a complex consisting of one or more of these ligands and a central metal is a chelate. A chelating ligand is also known as a chelating agent. A chelating ligand holds the metal ion rather like a crab’s claw would hold a marble. [[xref:CNX_Chem_19_02_en]] showed one example of a chelate. The heme complex in hemoglobin is another important example ([[xref:CNX_Chem_19_02_heme]]). It contains a polydentate ligand with four donor atoms that coordinate to iron.
+Any ligand that bonds to a central metal ion by more than one donor atom is a [[term:polydentate ligand|term-00009]] (or “many teeth”) because it can bite into the metal center with more than one bond. The term [[term:chelate|term-00010]] (pronounced “KEY-late”) from the Greek for “claw” is also used to describe this type of interaction. Many polydentate ligands are [[term:chelating ligands|term-00011]], and a complex consisting of one or more of these ligands and a central metal is a chelate. A chelating ligand is also known as a chelating agent. A chelating ligand holds the metal ion rather like a crab’s claw would hold a marble. [[xref:CNX_Chem_19_02_en]] showed one example of a chelate. The heme complex in hemoglobin is another important example ([[xref:CNX_Chem_19_02_heme]]). It contains a polydentate ligand with four donor atoms that coordinate to iron.
 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_heme-caption -->
 The single ligand heme contains four nitrogen atoms that coordinate to iron in hemoglobin to form a chelate.
+
+<!-- SEG:m68843:alt:fs-idp57882256-alt -->
+A structure is shown for the single ligand heme. At the center of this structure is an F e atom. From this atom, four single bonds extend up and to the right and left and below and to the right and left to four N atoms which are shown in red. Each N atom is a component of a 5 member ring with four C atoms. Each of these rings has a double bond between the C atoms that are not bonded to the N atom. The C atoms that are bonded to N atoms are connected to C atoms that serve as links between the 5-member rings. The bond to the C atom clockwise from the 5-member ring in each case is a double bond. The bond to the C atom counterclockwise from the 5-member ring in each case is a single bond. To the left of the structure, two of the C atoms in the 5-member rings that are not bonded to N are bonded to C H subscript 3 groups. The other carbons in these rings that are not bonded to N atoms are bonded to groups above and below. Above is a C H group double bonded to a C H subscript 2 group. Below is a C H subscript 2 group bonded to another C H subscript 2 group, which is bonded to a C O subscript 2 H group. At the right side of the structure, the C atoms in the 5-member rings that are not bonded to N atoms are bonded to additional structures. The C atom at to the right in the 5-member ring at the upper right is bonded to a C H group which is in turn double bonded to a C H subscript 2 group. Similarly, the right most C atom from the 5-member ring in the lower right is bonded to a C H subscript 3 group. The C atom from the 5-member ring not bonded to an N atom in the upper right region of the structure is bonded to a C H subscript 3 group above. Similarly, the C atom on the 5-member ring not bonded to an N atom in the lower right region of the structure is bonded to a C H subscript 2 group that is bonded to another C H subscript 2 group, which is bonded to a C O subscript 2 H group below.
 
 <!-- SEG:m68843:para:fs-idp106041024 -->
 Polydentate ligands are sometimes identified with prefixes that indicate the number of donor atoms in the ligand. As we have seen, ligands with one donor atom, such as NH[[sub:3]], Cl[[sup:−]], and H[[sub:2]]O, are monodentate ligands. Ligands with two donor groups are bidentate ligands. Ethylenediamine, H[[sub:2]]NCH[[sub:2]]CH[[sub:2]]NH[[sub:2]], and the anion of the acid glycine, [[MATH:2]] ([[xref:CNX_Chem_19_02_Gly]]) are examples of bidentate ligands. Tridentate ligands, tetradentate ligands, pentadentate ligands, and hexadentate ligands contain three, four, five, and six donor atoms, respectively. The ligand in heme ([[xref:CNX_Chem_19_02_heme]]) is a tetradentate ligand.
@@ -55,8 +70,14 @@ Polydentate ligands are sometimes identified with prefixes that indicate the num
 <!-- SEG:m68843:caption:CNX_Chem_19_02_Gly-caption -->
 Each of the anionic ligands shown attaches in a bidentate fashion to platinum(II), with both a nitrogen and oxygen atom coordinating to the metal.
 
+<!-- SEG:m68843:alt:fs-idp157070928-alt -->
+A structure is shown. At the center of this structure is an P t atom. From this atom, two single bonds extend up and to the right and below and to the left to two O atoms which are shown in red. Similarly, two bonds extend up and to the left and down and to the right to N atoms in N H subscript 2 groups. The N atoms in these groups are in red. The N atoms are bonded to C H subscript 2 groups, which in turn are bonded to C atoms. These C atoms have doubly bonded O atoms bonded and oriented toward the outside of the structure. They are also singly bonded to the O atoms in the structure forming two rings connected by the central P t atom.
+
 <!-- SEG:m68843:caption:CNX_Chem_19_02_ChlorBlue-caption -->
 (a) Chlorophyll comes in several different forms, which all have the same basic structure around the magnesium center. (b) Copper phthalocyanine blue, a square planar copper complex, is present in some blue dyes.
+
+<!-- SEG:m68843:alt:fs-idp167959792-alt -->
+Structural formulas are shown for two complex molecules. The first has a central M g atom, to which N atoms are bonded above, below, left, and right. Each N atom is a component of a 5 member ring with four C atoms. Each of these rings has a double bond between the C atoms that are not bonded to the N atom. The C atoms that are bonded to N atoms are connected to C atoms that serve as links between the 5-member rings. The bond to the C atom clockwise from the 5-member ring in each case is a double bond. The bond to the C atom counterclockwise from the 5-member ring in each case is a single bond. To the left of the structure, two of the C atoms in the 5-member rings that are not bonded to N atoms are bonded to C H subscript 3 groups. The other carbons in these rings that are not bonded to N atoms are bonded to groups above and below. A variety of groups are attached outside this interconnected system of rings, including four C H subscript 3 groups, a C H subscript 2 C H subscript 2, C O O C subscript 20, H subscript 39 group, a C H C H subscript 2 group with a double bond between the C atoms, additional branching to form a five-member carbon ring to which an O atom is double bonded and a C O O C H subscript 3 group is attached. The second structure has a central C u atom to which four N atoms that participate in 5-member rings with C atoms are bonded. Unlike the first molecule, these 5-member rings are joined by N atoms between them, with a double bond on the counter clockwise side and a single bond on the clockwise side of each of the four N atoms that link the rings. On the side of each 5-member ring opposite its N atom, four additional carbon atoms are bonded, forming 6-member carbon rings with alternating double bonds. The double bonds are not present on the bonds that are shared with the 5-member rings.
 
 <!-- SEG:m68843:note-title:fs-idp34790896-title -->
 Transition Metal Catalysts
@@ -66,6 +87,9 @@ One of the most important applications of transition metals is as industrial cat
 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_Cat-caption -->
 (a) Detergents, (b) paints, and (c) fertilizers are all made using transition metal catalysts. (credit a: modification of work by “Mr. Brian”/Flickr; credit b: modification of work by Ewen Roberts; credit c: modification of work by “osseous”/Flickr)
+
+<!-- SEG:m68843:alt:fs-idp96122704-alt -->
+This figure includes three photographs. In a, a photo shows store shelving filled with a variety of brands of laundry detergent. In b, a photo shows a can of yellow paint being stirred. In c, a bag of fertilizer is shown.
 
 <!-- SEG:m68843:note-title:fs-idp5832384-title -->
 Deanna D’Alessandro
@@ -82,8 +106,14 @@ Watch this [[link:video|http://openstax.org/l/16DeannaD]] to learn more about th
 <!-- SEG:m68843:caption:CNX_Chem_19_02_CatConvert-caption -->
 Catalytic converters change carbon dioxide emissions from power plants into useful products, and, like the one shown here, are also found in cars.
 
+<!-- SEG:m68843:alt:fs-idp17428880-alt -->
+An image is shown of a catalytic converter. At the upper left, a blue arrow pointing into a pipe that enters a larger, widened chamber is labeled, “Dirty emissions.” A small black arrow that points to the lower right is positioned along the upper left side of the widened region. This arrow is labeled, “Additional oxygen from air pump.” The image shows the converter with the upper surface removed, exposing a red-brown interior. The portion of the converter closes to the dirty emissions inlet shows small, spherical components in an interior layer. This layer is labeled, “Three-way reduction catalyst.” The middle region shows closely packed small brown rods that are aligned parallel to the dirty emissions inlet pipe. The final nearly quarter of the interior of the catalytic converter again shows a layer of closely packed small, red-brown circles. Two large light grey arrows extend from this layer to the open region at the lower right of the image to the label, “Clean emissions.”
+
 <!-- SEG:m68843:caption:CNX_Chem_19_02_chmprofile-caption -->
 Dr. Deanna D’Alessandro is a functional materials researcher. Her work combines the inorganic and physical chemistry fields with engineering, working with transition metals to create new systems to power cars and convert energy (credit: image courtesy of Deanna D'Alessandro).
+
+<!-- SEG:m68843:alt:fs-idp274883520-alt -->
+This is a photo of doctor Deanna D’Alessandro.
 
 <!-- SEG:m68843:para:fs-idp54814592 -->
 Many other coordination complexes are also brightly colored. The square planar copper(II) complex phthalocyanine blue (from [[xref:CNX_Chem_19_02_ChlorBlue]]) is one of many complexes used as pigments or dyes. This complex is used in blue ink, blue jeans, and certain blue paints.
@@ -94,17 +124,26 @@ The structure of heme ([[xref:CNX_Chem_19_02_heme2]]), the iron-containing compl
 <!-- SEG:m68843:caption:CNX_Chem_19_02_heme2-caption -->
 Hemoglobin contains four protein subunits, each of which has an iron center attached to a heme ligand (shown in red), which is coordinated to a globin protein. Each subunit is shown in a different color.
 
+<!-- SEG:m68843:alt:fs-idp69296-alt -->
+A colorful model of a hemoglobin structure is shown. The molecule has four distinct quadrants that are filled with spiral, ribbon-like regions. The upper right quadrant is lavender, lower right is gold, lower left is light blue, and upper left is green. In each of these regions, clusters of approximately 25 red dots in nearly linear arrangements are present near the center.
+
 <!-- SEG:m68843:para:fs-idp85288896 -->
 Complexing agents often are used for water softening because they tie up such ions as Ca[[sup:2+]], Mg[[sup:2+]], and Fe[[sup:2+]], which make water hard. Many metal ions are also undesirable in food products because these ions can catalyze reactions that change the color of food. Coordination complexes are useful as preservatives. For example, the ligand EDTA, (HO[[sub:2]]CCH[[sub:2]])[[sub:2]]NCH[[sub:2]]CH[[sub:2]]N(CH[[sub:2]]CO[[sub:2]]H)[[sub:2]], coordinates to metal ions through six donor atoms and prevents the metals from reacting ([[xref:CNX_Chem_19_02_EDTA]]). This ligand also is used to sequester metal ions in paper production, textiles, and detergents, and has pharmaceutical uses.
 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_EDTA-caption -->
 The ligand EDTA binds tightly to a variety of metal ions by forming hexadentate complexes.
 
+<!-- SEG:m68843:alt:fs-idp39831312-alt -->
+This structure shows a metal atom, represented by M in red. Single bonds extending from the M are also shown in red. Bonds are indicated with O atoms by line segments extending above and below. Dashed wedges extend up and to the left to an N atom and up and to the right to an O atom, and solid wedges extend below and to the left to an N atom and below and to the right to an O atom. The O atoms bonded to the M atom each have a negative sign associated with them and they are each bonded to a C atom which is in turn double bonded to an O atom and single bonded to a C atom in a C H subscript 2 group. This last C atom in each case is single bonded to one of the N atoms, resulting in two five-member rings of which the M atom is a part. To the left of each N atom, are single bonds to the C in C H subscript 2 groups, which in turn are connected with a single bond, forming another five-member ring with the two N atoms and the M atom. Extending up and to the left of the upper N atom is a bond to the C atom of another C H subscript 2 group. This group is in turn bonded to a C atom which is double bonded to an O atom and single bonded to the O atom that is bonded to the M atom at the top of the structure, again forming a five-member ring. The same bonding structure repeats at the bottom of the structure extending from the N atom bonded at the lower left of the M atom. All single bonded O atoms in this structure have negative charges associated with them.
+
 <!-- SEG:m68843:para:fs-idp158915696 -->
 Complexing agents that tie up metal ions are also used as drugs. British Anti-Lewisite (BAL), HSCH[[sub:2]]CH(SH)CH[[sub:2]]OH, is a drug developed during World War I as an antidote for the arsenic-based war gas Lewisite. BAL is now used to treat poisoning by heavy metals, such as arsenic, mercury, thallium, and chromium. The drug is a ligand and functions by making a water-soluble chelate of the metal; the kidneys eliminate this metal chelate ([[xref:CNX_Chem_19_02_BalEnt]]). Another polydentate ligand, enterobactin, which is isolated from certain bacteria, is used to form complexes of iron and thereby to control the severe iron buildup found in patients suffering from blood diseases such as Cooley’s anemia, who require frequent transfusions. As the transfused blood breaks down, the usual metabolic processes that remove iron are overloaded, and excess iron can build up to fatal levels. Enterobactin forms a water-soluble complex with excess iron, and the body can safely eliminate this complex.
 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_BalEnt-caption -->
 Coordination complexes are used as drugs. (a) British Anti-Lewisite is used to treat heavy metal poisoning by coordinating metals (M), and enterobactin (b) allows excess iron in the blood to be removed.
+
+<!-- SEG:m68843:alt:fs-idp10272368-alt -->
+This figure includes two structures. In a, a five member ring is shown with an S atom at the top with additional atoms single bonded in the following order clockwise around the pentagonal ring; M atom, S atom, C atom of a C H subscript 2 group, followed by a C atom of a C H group. The final C atom is bonded to the original S atom completing the ring. The C in the C H group is at the upper left of the structure. This C has a C H subscript 2 group bonded above to which an O H group is bonded to the right. In b, a complex structure is shown. It has an open central region and multiple ring structures. A single F e atom is included, appearing to be bonded to six O atoms. Fifteen total O atoms are bonded into the structure along with three N atoms and multiple C atoms and H atoms. Nine O atoms are single bonded and are incorporated into rings and six are double bonded, extending outward from ring structures.
 
 <!-- SEG:m68843:example-title:fs-idp8695360-title -->
 Chelation Therapy
@@ -122,7 +161,7 @@ All of the oxygen and sulfur atoms have lone pairs of electrons that can be used
 Check Your Learning
 
 <!-- SEG:m68843:para:fs-idp59621280 -->
-Some alternative medicine practitioners recommend chelation treatments for ailments that are not clearly related to heavy metals, such as cancer and autism, although the practice is discouraged by many scientific organizations. {{fn}}National Council against Health Fraud, [[i:NCAHF Policy Statement on Chelation Therapy]], (Peabody, MA, 2002).{{/fn}} Identify at least two biologically important metals that could be disrupted by chelation therapy.
+Some alternative medicine practitioners recommend chelation treatments for ailments that are not clearly related to heavy metals, such as cancer and autism, although the practice is discouraged by many scientific organizations. [[fn:National Council against Health Fraud, [[i:NCAHF Policy Statement on Chelation Therapy]], (Peabody, MA, 2002).|fs-idp19722736]] Identify at least two biologically important metals that could be disrupted by chelation therapy.
 
 <!-- SEG:m68843:para:fs-idp13836096 -->
 Ca, Fe, Zn, and Cu
@@ -135,6 +174,9 @@ Ca, Fe, Zn, and Cu
 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_DMSA-caption -->
 Dimercaptosuccinic acid is used to treat heavy metal poisoning.
+
+<!-- SEG:m68843:alt:fs-idp97148096-alt -->
+A structure is shown that has an H atom on the far left which is single bonded to an O atom to its right. This atom is bonded to a C atom just below and to the right. This C atom has a double bonded O atom below and is bonded to the C atom of a C H group. Above this C atom, a solid wedge extends upward to the S atom of an S H group. A bond extends from this last C atom to another C atom of a second C H group below and to the right. A dashed wedge extends from this C atom to the S of an S H group below. A single bond extends up and to the right of the C atom to another C atom. This last C atom has a double bonded O atom above. A single bond extends to a second O atom below and to the right. To the right of this O atom, an H atom is connected with a single bond. All S and O atoms in the structure are shown with two unshared pairs of electron dots.
 
 <!-- SEG:m68843:para:fs-idp58173136 -->
 Ligands are also used in the electroplating industry. When metal ions are reduced to produce thin metal coatings, metals can clump together to form clusters and nanoparticles. When metal coordination complexes are used, the ligands keep the metal atoms isolated from each other. It has been found that many metals plate out as a smoother, more uniform, better-looking, and more adherent surface when plated from a bath containing the metal as a complex ion. Thus, complexes such as [Ag(CN)[[sub:2]]][[sup:−]] and [Au(CN)[[sub:2]]][[sup:−]] are used extensively in the electroplating industry.
@@ -157,139 +199,139 @@ If more than one ligand of a given type is present, the number is indicated by t
 <!-- SEG:m68843:para:fs-idp51192128 -->
 The nomenclature of the complexes is patterned after a system suggested by Alfred Werner, a Swiss chemist and Nobel laureate, whose outstanding work more than 100 years ago laid the foundation for a clearer understanding of these compounds. The following five rules are used for naming complexes:
 
-<!-- SEG:m68843:entry:auto-54 -->
+<!-- SEG:m68843:entry:auto-68 -->
 Examples of Anionic Ligands
 
-<!-- SEG:m68843:entry:auto-55 -->
+<!-- SEG:m68843:entry:auto-69 -->
 Anionic Ligand
 
-<!-- SEG:m68843:entry:auto-56 -->
+<!-- SEG:m68843:entry:auto-70 -->
 Name
 
-<!-- SEG:m68843:entry:auto-57 -->
+<!-- SEG:m68843:entry:auto-71 -->
 F[[sup:−]]
 
-<!-- SEG:m68843:entry:auto-58 -->
+<!-- SEG:m68843:entry:auto-72 -->
 fluoro
 
-<!-- SEG:m68843:entry:auto-59 -->
+<!-- SEG:m68843:entry:auto-73 -->
 Cl[[sup:−]]
 
-<!-- SEG:m68843:entry:auto-60 -->
+<!-- SEG:m68843:entry:auto-74 -->
 chloro
 
-<!-- SEG:m68843:entry:auto-61 -->
+<!-- SEG:m68843:entry:auto-75 -->
 Br[[sup:−]]
 
-<!-- SEG:m68843:entry:auto-62 -->
+<!-- SEG:m68843:entry:auto-76 -->
 bromo
 
-<!-- SEG:m68843:entry:auto-63 -->
+<!-- SEG:m68843:entry:auto-77 -->
 I[[sup:−]]
 
-<!-- SEG:m68843:entry:auto-64 -->
+<!-- SEG:m68843:entry:auto-78 -->
 iodo
 
-<!-- SEG:m68843:entry:auto-65 -->
+<!-- SEG:m68843:entry:auto-79 -->
 CN[[sup:−]]
 
-<!-- SEG:m68843:entry:auto-66 -->
+<!-- SEG:m68843:entry:auto-80 -->
 cyano
 
-<!-- SEG:m68843:entry:auto-67 -->
+<!-- SEG:m68843:entry:auto-81 -->
 [[MATH:3]]
 
-<!-- SEG:m68843:entry:auto-68 -->
+<!-- SEG:m68843:entry:auto-82 -->
 nitrato
 
-<!-- SEG:m68843:entry:auto-69 -->
+<!-- SEG:m68843:entry:auto-83 -->
 OH[[sup:−]]
 
-<!-- SEG:m68843:entry:auto-70 -->
+<!-- SEG:m68843:entry:auto-84 -->
 hydroxo
 
-<!-- SEG:m68843:entry:auto-71 -->
+<!-- SEG:m68843:entry:auto-85 -->
 O[[sup:2–]]
 
-<!-- SEG:m68843:entry:auto-72 -->
+<!-- SEG:m68843:entry:auto-86 -->
 oxo
 
-<!-- SEG:m68843:entry:auto-73 -->
+<!-- SEG:m68843:entry:auto-87 -->
 [[MATH:4]]
 
-<!-- SEG:m68843:entry:auto-74 -->
+<!-- SEG:m68843:entry:auto-88 -->
 oxalato
 
-<!-- SEG:m68843:entry:auto-75 -->
+<!-- SEG:m68843:entry:auto-89 -->
 [[MATH:5]]
 
-<!-- SEG:m68843:entry:auto-76 -->
+<!-- SEG:m68843:entry:auto-90 -->
 carbonato
 
 <!-- SEG:m68843:para:fs-idp261455600 -->
 When the complex is either a cation or a neutral molecule, the name of the central metal atom is spelled exactly like the name of the element and is followed by a Roman numeral in parentheses to indicate its oxidation state ([[xref:fs-idp99540896]] and [[xref:fs-idp97436016]]). When the complex is an anion, the suffix -ate is added to the stem of the name of the metal, followed by the Roman numeral designation of its oxidation state ([[xref:fs-idp240256816]]). Sometimes, the Latin name of the metal is used when the English name is clumsy. For example, [[i:ferrate]] is used instead of [[i:ironate]], [[i:plumbate]] instead [[i:leadate]], and [[i:stannate]] instead of [[i:tinate]]. The oxidation state of the metal is determined based on the charges of each ligand and the overall charge of the coordination compound. For example, in [Cr(H[[sub:2]]O)[[sub:4]]Cl[[sub:2]]]Br, the coordination sphere (in brackets) has a charge of 1+ to balance the bromide ion. The water ligands are neutral, and the chloride ligands are anionic with a charge of 1− each. To determine the oxidation state of the metal, we set the overall charge equal to the sum of the ligands and the metal: +1 = −2 + [[i:x]], so the oxidation state ([[i:x]]) is equal to 3+.
 
-<!-- SEG:m68843:entry:auto-78 -->
+<!-- SEG:m68843:entry:auto-92 -->
 Examples in Which the Complex Is a Cation
 
-<!-- SEG:m68843:entry:auto-79 -->
+<!-- SEG:m68843:entry:auto-93 -->
 [Co(NH[[sub:3]])[[sub:6]]]Cl[[sub:3]]
 
-<!-- SEG:m68843:entry:auto-80 -->
+<!-- SEG:m68843:entry:auto-94 -->
 hexaamminecobalt(III) chloride
 
-<!-- SEG:m68843:entry:auto-81 -->
+<!-- SEG:m68843:entry:auto-95 -->
 [Pt(NH[[sub:3]])[[sub:4]]Cl[[sub:2]]][[sup:2+]]
 
-<!-- SEG:m68843:entry:auto-82 -->
+<!-- SEG:m68843:entry:auto-96 -->
 tetraamminedichloroplatinum(IV) ion
 
-<!-- SEG:m68843:entry:auto-83 -->
+<!-- SEG:m68843:entry:auto-97 -->
 [Ag(NH[[sub:3]])[[sub:2]]][[sup:+]]
 
-<!-- SEG:m68843:entry:auto-84 -->
+<!-- SEG:m68843:entry:auto-98 -->
 diamminesilver(I) ion
 
-<!-- SEG:m68843:entry:auto-85 -->
+<!-- SEG:m68843:entry:auto-99 -->
 [Cr(H[[sub:2]]O)[[sub:4]]Cl[[sub:2]]]Cl
 
-<!-- SEG:m68843:entry:auto-86 -->
+<!-- SEG:m68843:entry:auto-100 -->
 tetraaquadichlorochromium(III) chloride
 
-<!-- SEG:m68843:entry:auto-87 -->
+<!-- SEG:m68843:entry:auto-101 -->
 [Co(H[[sub:2]]NCH[[sub:2]]CH[[sub:2]]NH[[sub:2]])[[sub:3]]][[sub:2]](SO[[sub:4]])[[sub:3]]
 
-<!-- SEG:m68843:entry:auto-88 -->
+<!-- SEG:m68843:entry:auto-102 -->
 tris(ethylenediamine)cobalt(III) sulfate
 
-<!-- SEG:m68843:entry:auto-89 -->
+<!-- SEG:m68843:entry:auto-103 -->
 Examples in Which the Complex Is Neutral
 
-<!-- SEG:m68843:entry:auto-90 -->
+<!-- SEG:m68843:entry:auto-104 -->
 [Pt(NH[[sub:3]])[[sub:2]]Cl[[sub:4]]]
 
-<!-- SEG:m68843:entry:auto-91 -->
+<!-- SEG:m68843:entry:auto-105 -->
 diamminetetrachloroplatinum(IV)
 
-<!-- SEG:m68843:entry:auto-92 -->
+<!-- SEG:m68843:entry:auto-106 -->
 [Ni(H[[sub:2]]NCH[[sub:2]]CH[[sub:2]]NH[[sub:2]])[[sub:2]]Cl[[sub:2]]]
 
-<!-- SEG:m68843:entry:auto-93 -->
+<!-- SEG:m68843:entry:auto-107 -->
 dichlorobis(ethylenediamine)nickel(II)
 
-<!-- SEG:m68843:entry:auto-94 -->
+<!-- SEG:m68843:entry:auto-108 -->
 Examples in Which the Complex Is an Anion
 
-<!-- SEG:m68843:entry:auto-95 -->
+<!-- SEG:m68843:entry:auto-109 -->
 [PtCl[[sub:6]]][[sup:2−]]
 
-<!-- SEG:m68843:entry:auto-96 -->
+<!-- SEG:m68843:entry:auto-110 -->
 hexachloroplatinate(IV) ion
 
-<!-- SEG:m68843:entry:auto-97 -->
+<!-- SEG:m68843:entry:auto-111 -->
 Na[[sub:2]][SnCl[[sub:6]]]
 
-<!-- SEG:m68843:entry:auto-98 -->
+<!-- SEG:m68843:entry:auto-112 -->
 sodium hexachlorostannate(IV)
 
 <!-- SEG:m68843:para:fs-idp115410176 -->
@@ -340,115 +382,118 @@ For transition metal complexes, the coordination number determines the geometry 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_structures-caption -->
 These are geometries of some complexes with coordination numbers of seven and eight.
 
-<!-- SEG:m68843:entry:auto-115 -->
-Coordination Numbers and Molecular Geometry
-
-<!-- SEG:m68843:entry:auto-116 -->
-Coordination Number
-
-<!-- SEG:m68843:entry:auto-117 -->
-Molecular Geometry
-
-<!-- SEG:m68843:entry:auto-118 -->
-Example
-
-<!-- SEG:m68843:entry:auto-119 -->
-2
-
-<!-- SEG:m68843:entry:auto-120 -->
-linear
-
-<!-- SEG:m68843:entry:auto-121 -->
-[Ag(NH[[sub:3]])[[sub:2]]][[sup:+]]
-
-<!-- SEG:m68843:entry:auto-122 -->
-3
-
-<!-- SEG:m68843:entry:auto-123 -->
-trigonal planar
-
-<!-- SEG:m68843:entry:auto-124 -->
-[Cu(CN)[[sub:3]]][[sup:2−]]
-
-<!-- SEG:m68843:entry:auto-125 -->
-4
-
-<!-- SEG:m68843:entry:auto-126 -->
-tetrahedral([[i:d]][[sup:0]] or [[i:d]][[sup:10]]), low oxidation states for M
-
-<!-- SEG:m68843:entry:auto-127 -->
-[Ni(CO)[[sub:4]]]
-
-<!-- SEG:m68843:entry:auto-128 -->
-4
-
-<!-- SEG:m68843:entry:auto-129 -->
-square planar ([[i:d]][[sup:8]])
+<!-- SEG:m68843:alt:fs-idp159515584-alt -->
+This figure contains three diagrams in black and white. The first is labeled, “Pentagonal Bipyramid.” It has 10 isosceles triangle faces, five at the top, joined at a vertex, making a point projecting upward at the top of the figure, and five below, joined at a vertex, making a point projecting downward, at the base of the figure. The second is labeled, “Square Antiprism.” It has flat upper and lower square surfaces and sides made up of 8 equilateral triangles. The sides alternate in orientation between pointing up and pointing down. The third diagram is labeled, “Dodecahedron.” It has twelve isosceles triangle faces.
 
 <!-- SEG:m68843:entry:auto-130 -->
-[Ni(CN)[[sub:4]]][[sup:2−]]
+Coordination Numbers and Molecular Geometry
 
 <!-- SEG:m68843:entry:auto-131 -->
-5
+Coordination Number
 
 <!-- SEG:m68843:entry:auto-132 -->
-trigonal bipyramidal
+Molecular Geometry
 
 <!-- SEG:m68843:entry:auto-133 -->
-[CoCl[[sub:5]]][[sup:2−]]
+Example
 
 <!-- SEG:m68843:entry:auto-134 -->
-5
+2
 
 <!-- SEG:m68843:entry:auto-135 -->
-square pyramidal
+linear
 
 <!-- SEG:m68843:entry:auto-136 -->
-[VO(CN)[[sub:4]]][[sup:2−]]
+[Ag(NH[[sub:3]])[[sub:2]]][[sup:+]]
 
 <!-- SEG:m68843:entry:auto-137 -->
-6
+3
 
 <!-- SEG:m68843:entry:auto-138 -->
-octahedral
+trigonal planar
 
 <!-- SEG:m68843:entry:auto-139 -->
-[CoCl[[sub:6]]][[sup:3−]]
+[Cu(CN)[[sub:3]]][[sup:2−]]
 
 <!-- SEG:m68843:entry:auto-140 -->
-7
+4
 
 <!-- SEG:m68843:entry:auto-141 -->
-pentagonal bipyramid
+tetrahedral([[i:d]][[sup:0]] or [[i:d]][[sup:10]]), low oxidation states for M
 
 <!-- SEG:m68843:entry:auto-142 -->
-[ZrF[[sub:7]]][[sup:3−]]
+[Ni(CO)[[sub:4]]]
 
 <!-- SEG:m68843:entry:auto-143 -->
-8
+4
 
 <!-- SEG:m68843:entry:auto-144 -->
-square antiprism
+square planar ([[i:d]][[sup:8]])
 
 <!-- SEG:m68843:entry:auto-145 -->
-[ReF[[sub:8]]][[sup:2−]]
+[Ni(CN)[[sub:4]]][[sup:2−]]
 
 <!-- SEG:m68843:entry:auto-146 -->
-8
+5
 
 <!-- SEG:m68843:entry:auto-147 -->
-dodecahedron
+trigonal bipyramidal
 
 <!-- SEG:m68843:entry:auto-148 -->
-[Mo(CN)[[sub:8]]][[sup:4−]]
+[CoCl[[sub:5]]][[sup:2−]]
 
 <!-- SEG:m68843:entry:auto-149 -->
-9 and above
+5
 
 <!-- SEG:m68843:entry:auto-150 -->
-more complicated structures
+square pyramidal
 
 <!-- SEG:m68843:entry:auto-151 -->
+[VO(CN)[[sub:4]]][[sup:2−]]
+
+<!-- SEG:m68843:entry:auto-152 -->
+6
+
+<!-- SEG:m68843:entry:auto-153 -->
+octahedral
+
+<!-- SEG:m68843:entry:auto-154 -->
+[CoCl[[sub:6]]][[sup:3−]]
+
+<!-- SEG:m68843:entry:auto-155 -->
+7
+
+<!-- SEG:m68843:entry:auto-156 -->
+pentagonal bipyramid
+
+<!-- SEG:m68843:entry:auto-157 -->
+[ZrF[[sub:7]]][[sup:3−]]
+
+<!-- SEG:m68843:entry:auto-158 -->
+8
+
+<!-- SEG:m68843:entry:auto-159 -->
+square antiprism
+
+<!-- SEG:m68843:entry:auto-160 -->
+[ReF[[sub:8]]][[sup:2−]]
+
+<!-- SEG:m68843:entry:auto-161 -->
+8
+
+<!-- SEG:m68843:entry:auto-162 -->
+dodecahedron
+
+<!-- SEG:m68843:entry:auto-163 -->
+[Mo(CN)[[sub:8]]][[sup:4−]]
+
+<!-- SEG:m68843:entry:auto-164 -->
+9 and above
+
+<!-- SEG:m68843:entry:auto-165 -->
+more complicated structures
+
+<!-- SEG:m68843:entry:auto-166 -->
 [ReH[[sub:9]]][[sup:2−]]
 
 <!-- SEG:m68843:para:fs-idp57061536 -->
@@ -457,20 +502,29 @@ Unlike main group atoms in which both the bonding and nonbonding electrons deter
 <!-- SEG:m68843:caption:CNX_Chem_19_02_oct-caption -->
 Many transition metal complexes adopt octahedral geometries, with six donor atoms forming bond angles of 90° about the central atom with adjacent ligands. Note that only ligands within the coordination sphere affect the geometry around the metal center.
 
+<!-- SEG:m68843:alt:fs-idp127345808-alt -->
+Three structures are shown. In a, a structure is shown with a central C o atom. From the C o atom, line segments indicate bonds to H subscript 2 O molecules above and below the structure. Above and to both the right and left, dashed wedges indicate bonds to two H subscript 2 O molecules. Similarly, solid wedges below to both the right and left indicate bonds to two more H subscript 2 O molecules. Each bond in this structure is directed toward the O atom in each H subscript 2 O structure. This structure is enclosed in brackets. Outside the brackets to the right is the superscript 2 plus. Following this to the right appears 2 C l superscript negative sign. In b, a central C r atom has six N H subscript 2 groups attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. The bonds to these groups are all directed toward the N atoms. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments. This entire structure is enclosed in brackets. Outside the brackets to the right is the superscript 3 plus. Following to the right is 3 N O subscript 3 superscript negative sign. In c, 2 K superscript plus is followed by a structure in brackets. Inside the brackets is a central P t atom. From the P t atom, line segments indicate bonds to C l atoms above and below the structure. Above and to both the right and left, dashed wedges indicate bonds to C l atoms. Similarly, solid wedges below to both the right and left indicate bonds to two more C l atoms. This structure is enclosed in brackets. Outside the brackets to the right is the superscript 2 negative sign.
+
 <!-- SEG:m68843:para:fs-idp217009760 -->
 For transition metals with a coordination number of four, two different geometries are possible: tetrahedral or square planar. Unlike main group elements, where these geometries can be predicted from VSEPR theory, a more detailed discussion of transition metal orbitals (discussed in the section on Crystal Field Theory) is required to predict which complexes will be tetrahedral and which will be square planar. In tetrahedral complexes such as [Zn(CN)[[sub:4]]][[sup:2−]] ([[xref:CNX_Chem_19_02_4geom]]), each of the ligand pairs forms an angle of 109.5°. In square planar complexes, such as [Pt(NH[[sub:3]])[[sub:2]]Cl[[sub:2]]], each ligand has two other ligands at 90° angles (called the [[i:cis]] positions) and one additional ligand at an 180° angle, in the [[i:trans]] position.
 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_4geom-caption -->
 Transition metals with a coordination number of four can adopt a tetrahedral geometry (a) as in K[[sub:2]][Zn(CN)[[sub:4]]] or a square planar geometry (b) as shown in [Pt(NH[[sub:3]])[[sub:2]]Cl[[sub:2]]].
 
+<!-- SEG:m68843:alt:fs-idp42483712-alt -->
+Two structures are shown. In a, inside of brackets, a central Z n atom is bonded to 4 C atoms in a tetrahedral spatial arrangement. Short line segments are used to represent a bond extending above and down and to the left of the Z n atom. A dashed wedge with the vertex at the Z n atom and wide end at the C atom is used to represent a bond down and to the right of the Z n atom. The final bond is indicated by a similar solid wedge again directed down and only slightly right of the center beneath the Z n atom. Four groups of three parallel short line segments are shown indicating triple bonds extending from each C atom opposite the bond with Z n to an associated N atom. Outside the brackets a superscript of 2 negative is shown. In b, at the center of this structure is a P t atom. From this atom, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to the N atom of an N H subscript 3 group. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a C l atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a C l atom.
+
 <!-- SEG:m68843:title:fs-idp85285584-title -->
 Isomerism in Complexes
 
 <!-- SEG:m68843:para:fs-idp68367824 -->
-Isomers are different chemical species that have the same chemical formula. Transition metal complexes often exist as [[b:geometric isomers]], in which the same atoms are connected through the same types of bonds but with differences in their orientation in space. Coordination complexes with two different ligands in the [[i:cis]] and [[i:trans]] positions from a ligand of interest form isomers. For example, the octahedral [Co(NH[[sub:3]])[[sub:4]]Cl[[sub:2]]][[sup:+]] ion has two isomers. In the {{term}}[[i:cis]] configuration{{/term}}, the two chloride ligands are adjacent to each other ([[xref:CNX_Chem_19_02_cistrans]]). The other isomer, the {{term}}[[i:trans]] configuration{{/term}}, has the two chloride ligands directly across from one another.
+Isomers are different chemical species that have the same chemical formula. Transition metal complexes often exist as [[b:geometric isomers]], in which the same atoms are connected through the same types of bonds but with differences in their orientation in space. Coordination complexes with two different ligands in the [[i:cis]] and [[i:trans]] positions from a ligand of interest form isomers. For example, the octahedral [Co(NH[[sub:3]])[[sub:4]]Cl[[sub:2]]][[sup:+]] ion has two isomers. In the [[term:[[i:cis]] configuration|term-00012]], the two chloride ligands are adjacent to each other ([[xref:CNX_Chem_19_02_cistrans]]). The other isomer, the [[term:[[i:trans]] configuration|term-00013]], has the two chloride ligands directly across from one another.
 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_cistrans-caption -->
 The [[i:cis]] and [[i:trans]] isomers of [Co(H[[sub:2]]O)[[sub:4]]Cl[[sub:2]]][[sup:+]] contain the same ligands attached to the same metal ion, but the spatial arrangement causes these two compounds to have very different properties.
+
+<!-- SEG:m68843:alt:fs-idp151577024-alt -->
+Two structures are shown. The first is labeled, “Violet, cis form.” Below this label inside brackets is a central C o atom. From the C o atom, line segments indicate bonds to a C l atom above and the O atom of an H subscript 2 O group below the structure. Above and to both the right and left, dashed wedges with their vertex at the C o atom widening as they move out from the atom indicate bonds with O atoms of H subscript 2 O groups. Similarly, solid wedges below to both the right and left indicate bonds to a C l atom on the right and the O atom of an H subscript 2 O group on the left. This structure is enclosed in brackets. Outside the brackets to the right is the superscript plus sign. The second is labeled, “Green, trans form.” Below this label inside brackets is a central C o atom. From the C o atom, line segments indicate bonds to C l atoms above and below the structure. Above and to both the right and left, dashed wedges indicate bonds with O atoms of H subscript 2 O groups. Similarly, solid wedges below to both the right and left indicate bonds to the O atoms of H subscript 2 O groups. This structure is also enclosed in brackets with a superscript plus sign outside the brackets to the right.
 
 <!-- SEG:m68843:para:fs-idm258352 -->
 Different geometric isomers of a substance are different chemical compounds. They exhibit different properties, even though they have the same formula. For example, the two isomers of [Co(NH[[sub:3]])[[sub:4]]Cl[[sub:2]]]NO[[sub:3]] differ in color; the [[i:cis]] form is violet, and the [[i:trans]] form is green. Furthermore, these isomers have different dipole moments, solubilities, and reactivities. As an example of how the arrangement in space can influence the molecular properties, consider the polarity of the two [Co(NH[[sub:3]])[[sub:4]]Cl[[sub:2]]]NO[[sub:3]] isomers. Remember that the polarity of a molecule or ion is determined by the bond dipoles (which are due to the difference in electronegativity of the bonding atoms) and their arrangement in space. In one isomer, [[i:cis]] chloride ligands cause more electron density on one side of the molecule than on the other, making it polar. For the [[i:trans]] isomer, each ligand is directly across from an identical ligand, so the bond dipoles cancel out, and the molecule is nonpolar.
@@ -496,14 +550,23 @@ Draw the ion [[i:trans]]-diaqua-[[i:trans]]-dibromo-[[i:trans]]-dichlorocobalt(I
 <!-- SEG:m68843:note-title:fs-idm14256976-title -->
 Answer:
 
+<!-- SEG:m68843:alt:fs-idp9187376-alt -->
+The structure in this figure shows a structure inside brackets. A central C o atom is shown with line segments indicating bonds to C l atoms above and below the structure. Above and to the left, a dashed wedge with its vertex at the C o atom widening as it moves out from the atom indicates a bond with the O atom of a H subscript 2 O group. A second dashed wedge indicates a bond with the central C o atom with a B r atom up and to the right. Similarly, a solid wedge below and to the left indicates a bond with a B r atom. A second solid wedge below and to the right indicates a bond with the O atom of an H subscript 2 O group. This structure is enclosed in brackets. Outside the brackets to the right is the superscript 2 negative sign.
+
 <!-- SEG:m68843:caption:CNX_Chem_19_02_transplatin-caption -->
 The [[i:trans]] isomer of [Pt(NH[[sub:3]])[[sub:2]]Cl[[sub:2]]] has each ligand directly across from an adjacent ligand.
 
+<!-- SEG:m68843:alt:fs-idp19204944-alt -->
+A structure is shown with a central P t atom. From this atom, a dashed wedge with its vertex at the P t extends up and to the left toward the C l atom, indicating a bond, and widening as it moves out. Another dashed wedge with its vertex at the P t extends up and to the right toward the N H 3 atom, indicating a bond, and widening as it moves out. Similarly, a solid wedge below and to the left indicates a bond with an H 3 N atom and another solid wedge below and to the right indicates a bond with a C l atom.
+
 <!-- SEG:m68843:para:fs-idp18845840 -->
-Another important type of isomers are {{term}}optical isomers{{/term}}, or {{term}}enantiomers{{/term}}, in which two objects are exact mirror images of each other but cannot be lined up so that all parts match. This means that optical isomers are nonsuperimposable mirror images. A classic example of this is a pair of hands, in which the right and left hand are mirror images of one another but cannot be superimposed. Optical isomers are very important in organic and biochemistry because living systems often incorporate one specific optical isomer and not the other. Unlike geometric isomers, pairs of optical isomers have identical properties (boiling point, polarity, solubility, etc.). Optical isomers differ only in the way they affect polarized light and how they react with other optical isomers. For coordination complexes, many coordination compounds such as [M(en)[[sub:3]]][[sup:n+]] [in which M[[sup:n+]] is a central metal ion such as iron(III) or cobalt(II)] form enantiomers, as shown in [[xref:CNX_Chem_19_02_enant]]. These two isomers will react differently with other optical isomers. For example, DNA helices are optical isomers, and the form that occurs in nature (right-handed DNA) will bind to only one isomer of [M(en)[[sub:3]]][[sup:n+]] and not the other.
+Another important type of isomers are [[term:optical isomers|term-00014]], or [[term:enantiomers|term-00015]], in which two objects are exact mirror images of each other but cannot be lined up so that all parts match. This means that optical isomers are nonsuperimposable mirror images. A classic example of this is a pair of hands, in which the right and left hand are mirror images of one another but cannot be superimposed. Optical isomers are very important in organic and biochemistry because living systems often incorporate one specific optical isomer and not the other. Unlike geometric isomers, pairs of optical isomers have identical properties (boiling point, polarity, solubility, etc.). Optical isomers differ only in the way they affect polarized light and how they react with other optical isomers. For coordination complexes, many coordination compounds such as [M(en)[[sub:3]]][[sup:n+]] [in which M[[sup:n+]] is a central metal ion such as iron(III) or cobalt(II)] form enantiomers, as shown in [[xref:CNX_Chem_19_02_enant]]. These two isomers will react differently with other optical isomers. For example, DNA helices are optical isomers, and the form that occurs in nature (right-handed DNA) will bind to only one isomer of [M(en)[[sub:3]]][[sup:n+]] and not the other.
 
 <!-- SEG:m68843:caption:CNX_Chem_19_02_enant-caption -->
 The complex [M(en)[[sub:3]]][[sup:n+]] (M[[sup:n+]] = a metal ion, en = ethylenediamine) has a nonsuperimposable mirror image.
+
+<!-- SEG:m68843:alt:fs-idp148990176-alt -->
+Two structures are shown with a vertical dashed line segment between them. The structure left of this line segment has a central M representing a metal atom. To this atom, six N H subscript 2 groups are attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. The bonds to these groups are all directed toward the N atoms. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central M atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments. This structure has the overall appearance of a flower with three petals, two of which are equidistant from the dashed line. A mirror image of this structure appears on the right side of the dashed line, again with two of the “petals” equidistant from the dashed line to its left.
 
 <!-- SEG:m68843:para:fs-idp30489296 -->
 The [Co(en)[[sub:2]]Cl[[sub:2]]][[sup:+]] ion exhibits geometric isomerism ([[i:cis]]/[[i:trans]]), and its [[i:cis]] isomer exists as a pair of optical isomers ([[xref:CNX_Chem_19_02_Coen2Cl2]]).
@@ -511,11 +574,14 @@ The [Co(en)[[sub:2]]Cl[[sub:2]]][[sup:+]] ion exhibits geometric isomerism ([[i:
 <!-- SEG:m68843:caption:CNX_Chem_19_02_Coen2Cl2-caption -->
 Three isomeric forms of [Co(en)[[sub:2]]Cl[[sub:2]]][[sup:+]] exist. The [[i:trans]] isomer, formed when the chlorines are positioned at a 180° angle, has very different properties from the [[i:cis]] isomers. The mirror images of the [[i:cis]] isomer form a pair of optical isomers, which have identical behavior except when reacting with other enantiomers.
 
+<!-- SEG:m68843:alt:fs-idm2902000-alt -->
+This figure includes three structures. The first two are labeled “cis form (optical isomers).” These structures are followed by a vertical dashed line segment to the right of which appears a third structure that is labeled “trans form.” The first structure includes a central C o atom that has four N H subscript 2 groups and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper left of the structure. The remaining four bonds extend from the central C o atom to the N atoms of N H subscript 2 groups. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is the superscript plus. The second structure, which appears to the be mirror image of the first structure, includes a central C o atom that has four N H subscript 2 groups and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper right of the structure. The remaining four bonds extend from the central C o atom to the N atoms of N H subscript 2 groups. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript plus sign. The third, trans structure includes a central C o atom that has four N H subscript 2 groups and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and bottom of the structure. The remaining four bonds extend from the central C o atom to the N atoms of N H subscript 2 groups. The N H subscript 2 groups are each connected to C atoms of C H subscript 2 groups extending outward from the central C o atom. These C H subscript 2 groups are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript plus sign. This final structure has rings of atoms on opposite sides of the structure.
+
 <!-- SEG:m68843:para:fs-idp79204432 -->
-{{term}}Linkage isomers{{/term}} occur when the coordination compound contains a ligand that can bind to the transition metal center through two different atoms. For example, the CN ligand can bind through the carbon atom (cyano) or through the nitrogen atom (isocyano). Similarly, SCN− can be bound through the sulfur or nitrogen atom, affording two distinct compounds ([Co(NH[[sub:3]])[[sub:5]]SCN][[sup:2+]] or [Co(NH[[sub:3]])[[sub:5]]NCS][[sup:2+]]).
+[[term:Linkage isomers|term-00016]] occur when the coordination compound contains a ligand that can bind to the transition metal center through two different atoms. For example, the CN ligand can bind through the carbon atom (cyano) or through the nitrogen atom (isocyano). Similarly, SCN− can be bound through the sulfur or nitrogen atom, affording two distinct compounds ([Co(NH[[sub:3]])[[sub:5]]SCN][[sup:2+]] or [Co(NH[[sub:3]])[[sub:5]]NCS][[sup:2+]]).
 
 <!-- SEG:m68843:para:fs-idp58946640 -->
-{{term}}Ionization isomers{{/term}} (or {{term}}coordination isomers{{/term}}) occur when one anionic ligand in the inner coordination sphere is replaced with the counter ion from the outer coordination sphere. A simple example of two ionization isomers are [CoCl[[sub:6]]][Br] and [CoCl[[sub:5]]Br][Cl].
+[[term:Ionization isomers|term-00017]] (or [[term:coordination isomers|term-00018]]) occur when one anionic ligand in the inner coordination sphere is replaced with the counter ion from the outer coordination sphere. A simple example of two ionization isomers are [CoCl[[sub:6]]][Br] and [CoCl[[sub:5]]Br][Cl].
 
 <!-- SEG:m68843:title:fs-idp33494848-title -->
 Coordination Complexes in Nature and Technology
@@ -631,6 +697,24 @@ Sketch the structures of the following complexes. Indicate any [[i:cis]], [[i:tr
 <!-- SEG:m68843:solution:fs-idp93813424 -->
 (a) [Pt(H[[sub:2]]O)[[sub:2]]Br[[sub:2]]]:[[BR]] [[MEDIA:1]][[BR]] (b) [Pt(NH[[sub:3]])(py)(Cl)(Br)]:[[BR]] [[MEDIA:2]][[BR]] (c) [Zn(NH[[sub:3]])[[sub:3]]Cl][[sup:+]] :[[BR]] [[MEDIA:3]][[BR]] (d) [Pt(NH[[sub:3]])[[sub:3]]Cl][[sup:+]] :[[BR]] [[MEDIA:4]][[BR]] (e) [Ni(H[[sub:2]]O)[[sub:4]]Cl[[sub:2]]]:[[BR]] [[MEDIA:5]][[BR]] (f) [Co(C[[sub:2]]O[[sub:4]])[[sub:2]]Cl[[sub:2]]][[sup:3−]]:[[BR]] [[MEDIA:6]]
 
+<!-- SEG:m68843:alt:fs-idp9574672-alt -->
+Two structures are shown. At the center of each is a P t atom. The structure on the left is labeled, “cis.” From this atom, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to a second B r atom. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to the O atom of an H subscript 2 O group. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a second O atom of an H subscript 2 O group. The structure on the right is labeled, “trans.” From the central P t atom, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the O atom of an H subscript 2 O group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to the O atom of a second H subscript 2 O group. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a second B r atom.;
+
+<!-- SEG:m68843:alt:fs-idp90764336-alt -->
+Three structures are shown. At the center of each is a P t atom. From this atom in the first structure on the left, a single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the right to a C l atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to p y. The middle structure shows a single bond represented by a dashed wedge extending from a vertex at the P t atom up and to the right to a B r atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to p y. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a to a C l atom. The third structure shows a single bond represented by a dashed wedge extending from a vertex at the P t atom up and to the right to p y. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the right to the N atom of an N H subscript 3 group. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a C l atom. Similarly, a single bond represented by a solid wedge extends from a vertex at the P t atom down and to the left to a B r atom.;
+
+<!-- SEG:m68843:alt:fs-idp126313472-alt -->
+Inside of brackets, a central Z n atom is bonded to a C l atom and three N atoms in N H subscript 3 groups in a tetrahedral spatial arrangement. Short line segments are used to represent a bond extending above to the C l atom and down and to the left to the N of the N H subscript 3 group from the Z n atom. A dashed wedge with the vertex at the Z n atom and wide end at the N atom of an N H subscript 3 group is used to represent a bond down and to the right of the Z n atom. The final bond is indicated by a similar solid wedge again directed down and only slightly right of center beneath the Z n atom to the N of an N H subscript 3 group. Outside the brackets a superscript plus sign is shown.;
+
+<!-- SEG:m68843:alt:fs-idp168038944-alt -->
+This structure shows a single bond represented by a dashed wedge extending from a vertex at the P t atom up and to the right to the N atom of an N H subscript 3 group. Similarly, two single bonds represented by solid wedges extend from vertices at the P t atom down and to the right and down and to the left to the N atoms of N H subscript 3 groups. Another single bond represented by a dashed wedge extends from a vertex at the P t atom up and to the left to a C l atom. This structure is enclosed in brackets with superscript plus sign appearing to the right of the brackets.;
+
+<!-- SEG:m68843:alt:fs-idp48279792-alt -->
+Two structures are shown. The first is labeled, “trans.” Below this label inside brackets is a central N i atom. From the N i atom, line segments indicate bonds to C l atoms above and below. Above and to both the right and left, dashed wedges with their vertex at the N i atom widening as they move out from the atom indicate bonds with O atoms of H subscript 2 O groups. Similarly, solid wedges below to both the right and left indicate bonds to the O atoms of H subscript 2 O groups. This structure is enclosed in brackets. The second structure is labeled, “cis.” Inside brackets is a central N i atom. From the N i atom, line segments indicate bonds to a C l atom above and the O atom of an H subscript 2 O group below. Above and to both the right and left, dashed wedges indicate bonds with O atoms of H subscript 2 O groups. Similarly, a solid wedge below to the right indicates a bond with a C l atom and a solid wedge to the lower left indicates a bond to the O atoms of an H subscript 2 O group. This structure is also enclosed in brackets.;
+
+<!-- SEG:m68843:alt:fs-idm29297584-alt -->
+This figure includes three structures. The first structure includes a central C o atom that has four O atoms and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper left of the structure. The remaining four bonds extend from the central C o atom to O atoms. The O atoms are each connected to C atoms which are each connected with double bonds to O atoms extending outward from the central C o atom. These C atoms are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is a superscript 3 negative sign. The second structure, which appears to the be mirror image of the first structure, includes a central C o atom that has four O atoms and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and at the upper right of the structure. The remaining four bonds extend from the central C o atom to O atoms. The O atoms are each connected to C atoms which are each connected with double bonds to O atoms extending outward from the central C o atom. These C atoms are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets to the right is the superscript 3 negative sign. The third structure includes a central C o atom that has four O atoms and two C l atoms attached with single bonds. These bonds are indicated with line segments extending above and below, dashed wedges extending up and to the left and right, and solid wedges extending below and to the left and right. C l atoms are bonded at the top and bottom of the structure. The remaining four bonds extend from the central C o atom to the O atoms. The O atoms are each connected to C atoms which are in turn each double bonded to O atoms extending outward from the central C o atom. These C atoms are connected in pairs with bonds indicated by short line segments, forming two rings in the structure. This entire structure is enclosed in brackets. Outside the brackets, to the right, is a superscript 3 negative sign. This final structure has rings of atoms on opposite sides of the structure.
+
 <!-- SEG:m68843:problem:fs-idm62688336 -->
 Draw diagrams for any [[i:cis]], [[i:trans]], and optical isomers that could exist for the following (en is ethylenediamine):
 
@@ -681,6 +765,9 @@ Draw the geometric, linkage, and ionization isomers for [CoCl[[sub:5]]CN][CN].
 
 <!-- SEG:m68843:solution:fs-idm35199712 -->
 [[MEDIA:7]]
+
+<!-- SEG:m68843:alt:fs-idp225955008-alt -->
+This figure shows eight structures, each inside brackets in three rows. The first row contains three structures, the second row contains three structures, and the third row contains two structures. These structures are described in increasing order moving left to right and top to bottom in the figure. Each includes a central C o atom with line segments indicating bonds above and below the central atom. Above and to both the left and right, dashed wedges with vertices at the C o atom widening as they move out from the atom indicates single bonds. Similarly, solid wedges below and to both the left and right indicate single bonds. Outside each structure in brackets, to the right, an element or group is identified in brackets as a superscript. In the first structure, the C atom of a C N group is bonded to the C o atom. All 5 remaining bonds are with C l atoms. C N appears in brackets as a superscript outside the structure. In the second structure, the N atom of a C N group is bonded to the C o atom. All 5 remaining bonds are with C l atoms. C N appears in brackets as a superscript outside the structure. In the third structure, the C atom of two C N groups are bonded to the C o atom at the top and bottom of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the fourth structure, the C atom of a C N groups is bonded to the C o atom at the top and the N atom of a C N group which is bonded at the bottom of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the fifth structure, the N atom of two C N groups are bonded to the C o atom at the top and bottom of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the sixth structure, the C atom of two C N groups are bonded to the C o atom at the top and upper right of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the seventh structure, the C atom of a C N group is bonded to the C o atom at the top of the structure and the N atom of a C N group is bonded at the upper right of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure. In the eighth structure, the N atom of two C N groups are bonded to the C o atom at the top and upper right of the structure. All 4 remaining bonds are with C l atoms. C l appears in brackets as a superscript outside the structure.
 
 <!-- SEG:m68843:glossary-term:fs-idp65460624-term -->
 bidentate ligand

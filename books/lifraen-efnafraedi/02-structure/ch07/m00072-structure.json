@@ -1,0 +1,151 @@
+{
+  "moduleId": "m00072",
+  "title": {
+    "segmentId": "m00072:title:auto-1",
+    "text": "The Hammond Postulate"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "6f413188-b053-4338-81cf-90ae83af733b"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00072:para:para-00001"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00072:item:list-00001-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00072:item:list-00001-item-2"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00072:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00072:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "caption": {
+        "segmentId": "m00072:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00072:alt:fig-00001-alt",
+          "text": "Energy diagram with two profiles; one has higher barrier, higher energy intermediate, is labeled slower. Another diagram with two profiles; one has higher barrier, lower energy intermediate, is labeled slower."
+        },
+        "src": "../../media/OChem_07_10_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00072:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "caption": {
+        "segmentId": "m00072:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00072:alt:fig-00002-alt",
+          "text": "Two energy diagrams for one-step reactions. The first has low energy reactant and high energy product, the second has high energy reactant and low energy product."
+        },
+        "src": "../../media/OChem_07_10_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00072:para:para-00007"
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00072:para:para-00008"
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00072:para:para-00010"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00072:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00072:alt:fig-00003-alt",
+          "text": "Energy diagram for reaction of 2-methyl-1-propene with two profiles; one has higher barrier, higher energy intermediate, is labeled slower, corresponds to primary carbocation. The other corresponds to tertiary carbocation."
+        },
+        "src": "../../media/OChem_07_10_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00011",
+      "segmentId": "m00072:para:para-00011"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "caption": {
+        "segmentId": "m00072:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00072:alt:fig-00004-alt",
+          "text": "The orbital representation of the reaction shows alkene reacting with hydrogen bromide to form a product-like transition state, which then forms carbocation."
+        },
+        "src": "../../media/OChem_07_10_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00072:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 10
+}

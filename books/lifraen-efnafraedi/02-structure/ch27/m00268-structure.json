@@ -1,0 +1,116 @@
+{
+  "moduleId": "m00268",
+  "title": {
+    "segmentId": "m00268:title:auto-1",
+    "text": "Prostaglandins and Other Eicosanoids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e5cbcc24-e100-4e99-a468-6ed10944d2cf"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00268:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00268:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00268:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00268:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00268:alt:fig-00001-alt",
+          "text": "The figure shows five structures. Arachidonic acid, Prostaglandin E 1 ( P G E 1), Prostaglandin I 2, Thromboxane E 2, and Leukotriene E 4."
+        },
+        "src": "../../media/OChem_27_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00268:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00268:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00268:alt:fig-00002-alt",
+          "text": "The structures of Prostaglandin, Thromboxane, and Leukotriene where carbon atoms are numbered. They are named P G, T X, or L T according to the ring system and substitution pattern."
+        },
+        "src": "../../media/OChem_27_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00268:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00268:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00268:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00268:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00268:alt:fig-00003-alt",
+          "text": "Arachidonic acid converts to P G H 2. This further converts to thioperoxy intermediate that converts to P G E 2. The release of R S negative ion."
+        },
+        "src": "../../media/OChem_27_04_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00268:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

@@ -1,0 +1,22 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>H&#x2013;C≡C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{H&#x2013;C≡C}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡C}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mstyle mathvariant=\"bold\"><m:mtext>H&#x2013;C≡C&#x2013;H</m:mtext></m:mstyle></m:mrow></m:math>",
+    "latex": "{\\text{H&#x2013;C≡C&#x2013;H}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mstyle mathvariant=\"bold\"><m:mtext>H&#x2013;C≡C</m:mtext></m:mstyle></m:mrow></m:math>",
+    "latex": "{\\text{H&#x2013;C≡C}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mstyle mathvariant=\"bold\"><m:mtext>C≡C</m:mtext></m:mstyle></m:mrow></m:math>",
+    "latex": "{\\text{C≡C}}"
+  }
+}

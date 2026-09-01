@@ -1,0 +1,216 @@
+{
+  "moduleId": "m00196",
+  "title": {
+    "segmentId": "m00196:title:auto-1",
+    "text": "Oxidation of Aromatic Compounds"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "fee3ec74-a1ea-412a-a25e-cb48696fc9a1"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00196:title:sect-00001-title",
+        "text": "Oxidation of Alkyl Side Chains"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00196:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00196:alt:fig-00001-alt",
+              "text": "Butylbenzene reacts with potassium permanganate in the presence of water to form benzoic acid in 85 percent yield."
+            },
+            "src": "../../media/OChem_16_08_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00196:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00196:alt:fig-00002-alt",
+              "text": "Para-xylene reacts with molecular oxygen in the presence of cobalt (3) to form terephthalic acid."
+            },
+            "src": "../../media/OChem_16_08_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00196:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00196:alt:fig-00003-alt",
+              "text": "Tertiary-butylbenzene does not react with potassium permanganate in water"
+            },
+            "src": "../../media/OChem_16_08_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00196:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00196:alt:fig-00004-alt",
+              "text": "A reaction shows dopamine forming norepinephrine through an intermediate."
+            },
+            "src": "../../media/OChem_16_08_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00196:title:sect-00002-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00196:title:sect-00003-title",
+        "text": "Bromination of Alkylbenzene Side Chains"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00196:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00196:alt:fig-00005-alt",
+              "text": "In C C l 4, propylbenzene reacts with N-bromosuccinimide in the presence of (P h C O 2) 2 to form (1-Bromopropyl)benzene in 97 percent yield and succinimide."
+            },
+            "src": "../../media/OChem_16_08_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00196:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00196:alt:fig-00006-alt",
+              "text": "Three-step reaction of a B r plus ion wih a benzene ring bearing a C H 2 R group, in the presence of N bromosuccinimide."
+            },
+            "src": "../../media/OChem_16_08_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00196:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "caption": {
+            "segmentId": "m00196:caption:fig-00007-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00196:alt:fig-00007-alt",
+              "text": "Four benzylic radicals with double-headed arrows in-between. To the right, the ball-and-stick model with the electrostatic potential map of benzylic radical is depicted."
+            },
+            "src": "../../media/OChem_16_08_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00196:title:sect-00004-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

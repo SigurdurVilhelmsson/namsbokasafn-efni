@@ -1,0 +1,134 @@
+{
+  "moduleId": "m00207",
+  "title": {
+    "segmentId": "m00207:title:auto-1",
+    "text": "Protection of Alcohols"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c6144e93-2e91-4217-9f8e-a13133b04c6e"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00207:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00207:alt:fig-00001-alt",
+          "text": "3-bromopropan-1-ol (hydroxy hydrogen labeled acidic) does not react with magnesium and ether to form (3-hydroxypropyl)magnesium bromide."
+        },
+        "src": "../../media/OChem_17_08_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00207:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00207:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00207:alt:fig-00002-alt",
+          "text": "An alcohol reacts with chlorotrimethylsilane to form trimethylsilyl ether. For example cyclohexanol reacts with chlorotrimethylsilane and triethylamine to form cyclohexyl trimethylsilyl ether with 94 percent yield."
+        },
+        "src": "../../media/OChem_17_08_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00207:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00207:alt:fig-00003-alt",
+          "text": "Ball-and-stick model of chlorotrimethylsilane and tertiary-butyl chloride. Carbon is more hindered for tertiary-butyl chloride and has shorter bonds. Silicon is less hindered for chlorotrimethylsilane and bonds are longer."
+        },
+        "src": "../../media/OChem_17_08_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00207:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00207:alt:fig-00004-alt",
+          "text": "Cyclohexyltrimethylsillyl ether reacts with hydronium ion to form cyclohexanol and trimethylsilanol."
+        },
+        "src": "../../media/OChem_17_08_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00207:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "caption": {
+        "segmentId": "m00207:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00207:alt:fig-00005-alt",
+          "text": "Different steps are involved in using a protecting group in Grignard reaction. The steps include protecting alcohol, forming Grignard reagent, performing Grignard reaction, and removing protecting group."
+        },
+        "src": "../../media/OChem_17_08_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00207:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

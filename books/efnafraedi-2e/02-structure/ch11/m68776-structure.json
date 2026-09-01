@@ -28,7 +28,10 @@
       },
       "media": {
         "id": "fs-idm147856368",
-        "alt": "This figure shows an underwater photo of a colorful coral reef.",
+        "alt": {
+          "segmentId": "m68776:alt:fs-idm147856368-alt",
+          "text": "This figure shows an underwater photo of a colorful coral reef."
+        },
         "src": "../../media/CNX_Chem_11_00_coralreef.jpg",
         "mimeType": "image/jpeg"
       }

@@ -1,0 +1,52 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math display=\"block\"><m:mrow><m:mi>a</m:mi><m:mtext>A</m:mtext><m:mo>+</m:mo><m:mi>b</m:mi><m:mtext>B</m:mtext><m:mo stretchy=\"true\" minsize=\"2em\">⇌</m:mo><m:mi>c</m:mi><m:mtext>C</m:mtext><m:mo>+</m:mo><m:mi>d</m:mi><m:mtext>D</m:mtext></m:mrow></m:math>",
+    "latex": "{a\\text{A}+b\\text{B}⇌c\\text{C}+d\\text{D}}",
+    "isBlock": true
+  },
+  "eq-00002": {
+    "mathml": "<m:math display=\"block\">\n     <m:mrow>\n      <m:msub>\n       <m:mi>K</m:mi>\n       <m:mrow>\n        <m:mtext>eq</m:mtext></m:mrow>\n      </m:msub>\n      <m:mo>=</m:mo><m:mfrac>\n       <m:mrow>\n        <m:msup>\n         <m:mrow>\n          <m:mo stretchy=\"false\">[</m:mo><m:mtext>C</m:mtext><m:mo stretchy=\"false\">]</m:mo></m:mrow>\n         <m:mi>c</m:mi>\n        </m:msup>\n        <m:msup>\n         <m:mrow>\n          <m:mo stretchy=\"false\">[</m:mo><m:mtext>D</m:mtext><m:mo stretchy=\"false\">]</m:mo></m:mrow>\n         <m:mi>d</m:mi>\n        </m:msup>\n        </m:mrow>\n       <m:mrow>\n        <m:msup>\n         <m:mrow>\n          <m:mo stretchy=\"false\">[</m:mo><m:mtext>A</m:mtext><m:mo stretchy=\"false\">]</m:mo></m:mrow>\n         <m:mi>a</m:mi>\n        </m:msup>\n        <m:msup>\n         <m:mrow>\n          <m:mo stretchy=\"false\">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy=\"false\">]</m:mo></m:mrow>\n         <m:mi>b</m:mi>\n        </m:msup>\n        </m:mrow>\n      </m:mfrac>\n      </m:mrow>\n    </m:math>",
+    "latex": "{{K}_{{\\text{eq}}} =\\frac{{{{[\\text{C}]}}^{c} {{[\\text{D}]}}^{d}}}{{{{[\\text{A}]}}^{a} {{[\\text{B}]}}^{b}}}}",
+    "isBlock": true
+  },
+  "eq-00003": {
+    "mathml": "<m:math display=\"block\">\n     <m:mrow>\n      <m:mtext>Δ</m:mtext><m:msup>\n       <m:mi>G</m:mi>\n       <m:mo>∘</m:mo>\n      </m:msup>\n      <m:mo>=</m:mo><m:mo>−</m:mo><m:mi>R</m:mi><m:mi>T</m:mi><m:mi>ln</m:mi><m:msub>\n       <m:mi>K</m:mi>\n       <m:mrow>\n        <m:mtext>eq</m:mtext></m:mrow>\n      </m:msub>\n      <m:mtext>   or   </m:mtext><m:msub>\n       <m:mi>K</m:mi>\n       <m:mrow>\n        <m:mtext>eq</m:mtext></m:mrow>\n      </m:msub>\n      <m:mo>=</m:mo><m:msup>\n       <m:mi>e</m:mi>\n       <m:mrow>\n        <m:mo>−</m:mo><m:mtext>Δ</m:mtext><m:msup>\n         <m:mi>G</m:mi>\n         <m:mo>∘</m:mo>\n        </m:msup>\n        <m:mo>/</m:mo><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow>\n      </m:msup>\n      </m:mrow>\n    </m:math>",
+    "latex": "{\\text{Δ}{G}^{∘} =-RTln{K}_{{\\text{eq}}} \\text{or}{K}_{{\\text{eq}}} ={e}^{{-\\text{Δ} G ∘} /RT}}",
+    "isBlock": true
+  },
+  "eq-00004": {
+    "mathml": "<m:math display=\"block\">\n          <m:mtable columnalign=\"left\">\n           <m:mtr>\n            <m:mtd>\n             <m:mtext>                 </m:mtext><m:mi>R</m:mi><m:mo>=</m:mo><m:mn>8.314</m:mn><m:mtext> J/(K</m:mtext><m:mo>⋅</m:mo><m:mtext>mol)</m:mtext><m:mo>=</m:mo><m:mtext>1</m:mtext><m:mtext>.987 cal/(K</m:mtext><m:mo>⋅</m:mo><m:mtext>mol)</m:mtext>\n            </m:mtd>\n           </m:mtr>\n           <m:mtr>\n            <m:mtd>\n             <m:mtext>                 </m:mtext><m:mi>T</m:mi><m:mo>=</m:mo><m:mtext>Kelvin temperature</m:mtext>\n            </m:mtd>\n           </m:mtr>\n           <m:mtr>\n            <m:mtd>\n             <m:mtext>                 </m:mtext><m:mi>e</m:mi><m:mo>=</m:mo><m:mn>2.718</m:mn>\n            </m:mtd>\n           </m:mtr>\n           <m:mtr>\n            <m:mtd>\n             <m:mtext>                 ln </m:mtext><m:msub>\n              <m:mi>K</m:mi>\n              <m:mrow>\n               <m:mtext>eq</m:mtext></m:mrow>\n             </m:msub>\n             <m:mo>=</m:mo><m:mtext>natural logarithm of </m:mtext><m:msub>\n              <m:mi>K</m:mi>\n              <m:mrow>\n               <m:mtext>eq</m:mtext></m:mrow>\n             </m:msub>\n             \n            </m:mtd>\n           </m:mtr>\n          </m:mtable>\n        </m:math>",
+    "latex": "\\begin{aligned} \\textR=8.314\\text{J/(K}⋅\\text{mol)}=\\text{1}\\text{.987 cal/(K}⋅\\text{mol)} \\\\ \\textT=\\text{Kelvin temperature} \\\\ \\texte=2.718 \\\\ \\text{ln}{K}_{{\\text{eq}}} =\\text{natural logarithm of}{K}_{{\\text{eq}}} \\end{aligned}",
+    "isBlock": true
+  },
+  "eq-00005": {
+    "mathml": "<m:math display=\"block\">\n      <m:mtable columnalign=\"left\">\n       <m:mtr>\n        <m:mtd>\n         <m:mtext>           </m:mtext><m:msub>\n          <m:mi>K</m:mi>\n          <m:mrow>\n           <m:mtext>eq</m:mtext></m:mrow>\n         </m:msub>\n         <m:mo>=</m:mo><m:mn>7.1</m:mn><m:mo>×</m:mo><m:msup>\n          <m:mn>10</m:mn>\n          <m:mn>7</m:mn>\n         </m:msup>\n         <m:mtext>   and    ln </m:mtext><m:msub>\n          <m:mi>K</m:mi>\n          <m:mrow>\n           <m:mtext>eq</m:mtext></m:mrow>\n         </m:msub>\n         <m:mo>=</m:mo><m:mn>18.08</m:mn>\n        </m:mtd>\n       </m:mtr>\n       <m:mtr>\n        <m:mtd>\n         <m:mtext>           </m:mtext><m:mi>Δ</m:mi><m:msup>\n          <m:mi>G</m:mi>\n          <m:mo>∘</m:mo>\n         </m:msup>\n         <m:mo>=</m:mo><m:mo>−</m:mo><m:mi>R</m:mi><m:mi>T</m:mi><m:mi>ln</m:mi><m:msub>\n          <m:mi>K</m:mi>\n          <m:mrow>\n           <m:mtext>eq</m:mtext></m:mrow>\n         </m:msub>\n         <m:mo>=</m:mo><m:mo>−</m:mo><m:mo stretchy=\"false\">[</m:mo><m:mn>8.314</m:mn><m:mtext> J/(K</m:mtext><m:mo>⋅</m:mo><m:mtext>mol)](298 K)(18</m:mtext><m:mtext>.08)</m:mtext>\n        </m:mtd>\n       </m:mtr>\n       <m:mtr>\n        <m:mtd>\n         <m:mtext>                   =</m:mtext><m:mo>−</m:mo><m:mtext>44,800 J/mol=</m:mtext><m:mo>−</m:mo><m:mn>44.8</m:mn><m:mtext> kJ/mol</m:mtext>\n        </m:mtd>\n       </m:mtr>\n      </m:mtable>\n     </m:math>",
+    "latex": "\\begin{aligned} \\text{K}_{{\\text{eq}}} =7.1\\times {10}^{7} \\text{and ln}{K}_{{\\text{eq}}} =18.08 \\\\ \\textΔ{G}^{∘} =-RTln{K}_{{\\text{eq}}} =-[8.314\\text{J/(K}⋅\\text{mol)](298 K)(18}\\text{.08)} \\\\ \\text{=}-\\text{44,800 J/mol=}-44.8\\text{kJ/mol} \\end{aligned}",
+    "isBlock": true
+  },
+  "eq-00006": {
+    "mathml": "<m:math display=\"block\">\n     <m:mrow>\n      <m:mtext>Δ</m:mtext><m:msup>\n       <m:mi>G</m:mi>\n       <m:mo>∘</m:mo>\n      </m:msup>\n      <m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:msup>\n       <m:mi>H</m:mi>\n       <m:mo>∘</m:mo>\n      </m:msup>\n      <m:mo>−</m:mo><m:mi>T</m:mi><m:mtext>Δ</m:mtext><m:msup>\n       <m:mi>S</m:mi>\n       <m:mo>∘</m:mo>\n      </m:msup>\n      </m:mrow>\n    </m:math>",
+    "latex": "{\\text{Δ}{G}^{∘} =\\text{Δ}{H}^{∘} -T\\text{Δ}{S}^{∘}}",
+    "isBlock": true
+  },
+  "eq-00007": {
+    "mathml": "<m:math display=\"block\"><m:mrow><m:mi mathvariant=\"bold\">A</m:mi><m:mo stretchy=\"false\">⟶</m:mo><m:mi mathvariant=\"bold\">B</m:mi><m:mo>+</m:mo><m:mi mathvariant=\"bold\">C</m:mi></m:mrow></m:math>",
+    "latex": "{A\\longrightarrow B+C}",
+    "isBlock": true
+  },
+  "eq-00008": {
+    "mathml": "<m:math display=\"block\"><m:mrow><m:mi mathvariant=\"bold\">A</m:mi><m:mo>+</m:mo><m:mi mathvariant=\"bold\">B</m:mi><m:mo stretchy=\"true\">⟶</m:mo><m:mi mathvariant=\"bold\">C</m:mi></m:mrow></m:math>",
+    "latex": "{A+B⟶C}",
+    "isBlock": true
+  },
+  "eq-00009": {
+    "mathml": "<m:math display=\"block\"><m:mtext>      </m:mtext><m:mstyle mathvariant=\"bold\"><m:mrow><m:mtext style=\"color: #E00087\">Rate</m:mtext><m:mo>→</m:mo><m:mtext>Is the reaction fast or slow?</m:mtext></m:mrow></m:mstyle></m:math>",
+    "latex": "\\text{\\text{Rate}\\rightarrow \\text{Is the reaction fast or slow?}}",
+    "isBlock": true
+  },
+  "eq-00010": {
+    "mathml": "<m:math display=\"block\"><m:mtext>      </m:mtext><m:mstyle mathvariant=\"bold\"><m:mrow><m:mtext style=\"color: #0078A3\">Equilibrium</m:mtext><m:mo>→</m:mo><m:mtext>In what direction does the reaction proceed?</m:mtext></m:mrow></m:mstyle></m:math>",
+    "latex": "\\text{\\text{Equilibrium}\\rightarrow \\text{In what direction does the reaction proceed?}}",
+    "isBlock": true
+  }
+}

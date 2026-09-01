@@ -59,7 +59,10 @@
           },
           "media": {
             "id": "fs-idm108837008",
-            "alt": "This figure shows two photos labeled (a) and (b). Photo (a) shows the bottom of a test tube. The test tube is filled with a dark gas, and there is a dark substance and bubbles in the bottom. Photo (b) shows a rod and bubbles in a test tube similar to photo (a), but the gas in the test tube is not as dark.",
+            "alt": {
+              "segmentId": "m68787:alt:fs-idm108837008-alt",
+              "text": "This figure shows two photos labeled (a) and (b). Photo (a) shows the bottom of a test tube. The test tube is filled with a dark gas, and there is a dark substance and bubbles in the bottom. Photo (b) shows a rod and bubbles in a test tube similar to photo (a), but the gas in the test tube is not as dark."
+            },
             "src": "../../media/CNX_Chem_12_02_AcidDissol.jpg",
             "mimeType": "image/jpeg"
           }
@@ -138,7 +141,10 @@
           },
           "media": {
             "id": "fs-idm66889568",
-            "alt": "A photograph is shown of an angel statue. While some details of the statue, including facial features, are present, effects of weathering appear to be diminishing these features.",
+            "alt": {
+              "segmentId": "m68787:alt:fs-idm66889568-alt",
+              "text": "A photograph is shown of an angel statue. While some details of the statue, including facial features, are present, effects of weathering appear to be diminishing these features."
+            },
             "src": "../../media/CNX_Chem_12_02_NYSStatue.jpg",
             "mimeType": "image/jpeg"
           }

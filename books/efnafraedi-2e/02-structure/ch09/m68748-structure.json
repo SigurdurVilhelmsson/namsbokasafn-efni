@@ -29,7 +29,10 @@
       },
       "media": {
         "id": "fs-idm132595392",
-        "alt": "A photograph shows about twenty colorful hot air balloons at varying stages of inflation. Some are deflated, while others are inflated. Three of the balloons are off the ground and are visible against a bright blue sky.",
+        "alt": {
+          "segmentId": "m68748:alt:fs-idm132595392-alt",
+          "text": "A photograph shows about twenty colorful hot air balloons at varying stages of inflation. Some are deflated, while others are inflated. Three of the balloons are off the ground and are visible against a bright blue sky."
+        },
         "src": "../../media/CNX_Chem_09_00_HotAirBall.jpg",
         "mimeType": "image/jpeg"
       }

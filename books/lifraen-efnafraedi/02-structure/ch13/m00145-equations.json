@@ -1,0 +1,7 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>B</m:mi><m:mrow><m:mtext>effective</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>B</m:mi><m:mrow><m:mtext>applied</m:mtext></m:mrow></m:msub><m:mo>-</m:mo><m:msub><m:mi>B</m:mi><m:mrow><m:mtext>local</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
+    "latex": "{{B}_{{\\text{effective}}}={B}_{{\\text{applied}}}-{B}_{{\\text{local}}}}",
+    "isBlock": true
+  }
+}

@@ -26,10 +26,13 @@ Particles in a solid are tightly packed together and often arranged in a regular
 Particles in a solid vibrate about fixed positions and do not generally move in relation to one another; in a liquid, they move past each other but remain in essentially constant contact; in a gas, they move independently of one another except when they collide.
 
 <!-- SEG:m68761:para:fs-idm53508384 -->
-The differences in the properties of a solid, liquid, or gas reflect the strengths of the attractive forces between the atoms, molecules, or ions that make up each phase. The phase in which a substance exists depends on the relative extents of its {{term}}intermolecular forces{{/term}} (IMFs) and the kinetic energies (KE) of its molecules. IMFs are the various forces of attraction that may exist between the atoms and molecules of a substance due to electrostatic phenomena, as will be detailed in this module. These forces serve to hold particles close together, whereas the particles’ KE provides the energy required to overcome the attractive forces and thus increase the distance between particles. [[xref:CNX_Chem_10_01_KMTPhases1]] illustrates how changes in physical state may be induced by changing the temperature, hence, the average KE, of a given substance.
+The differences in the properties of a solid, liquid, or gas reflect the strengths of the attractive forces between the atoms, molecules, or ions that make up each phase. The phase in which a substance exists depends on the relative extents of its [[term:intermolecular forces|term-00001]] (IMFs) and the kinetic energies (KE) of its molecules. IMFs are the various forces of attraction that may exist between the atoms and molecules of a substance due to electrostatic phenomena, as will be detailed in this module. These forces serve to hold particles close together, whereas the particles’ KE provides the energy required to overcome the attractive forces and thus increase the distance between particles. [[xref:CNX_Chem_10_01_KMTPhases1]] illustrates how changes in physical state may be induced by changing the temperature, hence, the average KE, of a given substance.
 
 <!-- SEG:m68761:caption:CNX_Chem_10_01_KMTPhases1-caption -->
 Transitions between solid, liquid, and gaseous states of a substance occur when conditions of temperature or pressure favor the associated changes in intermolecular forces. (Note: The space between particles in the gas phase is much greater than shown.)
+
+<!-- SEG:m68761:alt:fs-idp1251008-alt -->
+Three sealed flasks are labeled, “Crystalline solid,” “Liquid,” and “Gas,” from left to right. The first flask holds a cube composed of small spheres sitting on the bottom while the second flask shows a lot of small spheres in the bottom that are spaced a small distance apart from one another and have lines around them to indicate motion. The third flask shows a few spheres spread far from one another with larger lines to indicate motion. There is a right-facing arrow that spans the top of all three flasks. The arrow is labeled, “Increasing K E ( temperature ).” There is a left-facing arrow that spans the bottom of all three flasks. The arrow is labeled, “Increasing I M F.”
 
 <!-- SEG:m68761:para:fs-idm190830512 -->
 As an example of the processes depicted in this figure, consider a sample of water. When gaseous water is cooled sufficiently, the attractions between H[[sub:2]]O molecules will be capable of holding them together when they come into contact with each other; the gas condenses, forming liquid H[[sub:2]]O. For example, liquid water forms on the outside of a cold glass as the water vapor in the air is cooled by the cold glass, as seen in [[xref:CNX_Chem_10_01_WaterPhase]].
@@ -37,11 +40,17 @@ As an example of the processes depicted in this figure, consider a sample of wat
 <!-- SEG:m68761:caption:CNX_Chem_10_01_WaterPhase-caption -->
 Condensation forms when water vapor in the air is cooled enough to form liquid water, such as (a) on the outside of a cold beverage glass or (b) in the form of fog. (credit a: modification of work by Jenny Downing; credit b: modification of work by Cory Zanker)
 
+<!-- SEG:m68761:alt:fs-idp51997104-alt -->
+Image a shows a brown colored beverage in a glass with condensation on the outside. Image b shows a body of water with fog hovering above the surface of the water.
+
 <!-- SEG:m68761:para:fs-idm59044480 -->
 We can also liquefy many gases by compressing them, if the temperature is not too high. The increased pressure brings the molecules of a gas closer together, such that the attractions between the molecules become strong relative to their KE. Consequently, they form liquids. Butane, C[[sub:4]]H[[sub:10]], is the fuel used in disposable lighters and is a gas at standard temperature and pressure. Inside the lighter’s fuel compartment, the butane is compressed to a pressure that results in its condensation to the liquid state, as shown in [[xref:CNX_Chem_10_01_ButanePhase]].
 
 <!-- SEG:m68761:caption:CNX_Chem_10_01_ButanePhase-caption -->
 Gaseous butane is compressed within the storage compartment of a disposable lighter, resulting in its condensation to the liquid state. (credit: modification of work by “Sam-Cat”/Flickr)
+
+<!-- SEG:m68761:alt:fs-idp136258192-alt -->
+A butane lighter is shown.
 
 <!-- SEG:m68761:para:fs-idm68544288 -->
 Finally, if the temperature of a liquid becomes sufficiently low, or the pressure on the liquid becomes sufficiently high, the molecules of the liquid no longer have enough KE to overcome the IMF between them, and a solid forms. A more thorough discussion of these and other changes of state, or phase transitions, is provided in a later module of this chapter.
@@ -58,116 +67,122 @@ Under appropriate conditions, the attractions between all gas molecules will cau
 <!-- SEG:m68761:caption:CNX_Chem_10_01_IntravInter-caption -->
 [[i:Intra]]molecular forces keep a molecule intact. [[i:Inter]]molecular forces hold multiple molecules together and determine many of a substance’s properties.
 
+<!-- SEG:m68761:alt:fs-idm297424-alt -->
+An image is shown in which two molecules composed of a green sphere labeled “C l” connected on the right to a white sphere labeled “H” are near one another with a dotted line labeled “Intermolecular force ( weak )” drawn between them. A line connects the two spheres in each molecule and the line is labeled “Intramolecular force ( strong ).”
+
 <!-- SEG:m68761:para:fs-idm68677744 -->
-All of the attractive forces between neutral atoms and molecules are known as {{term}}van der Waals forces{{/term}}, although they are usually referred to more informally as intermolecular attraction. We will consider the various types of IMFs in the next three sections of this module.
+All of the attractive forces between neutral atoms and molecules are known as [[term:van der Waals forces|term-00002]], although they are usually referred to more informally as intermolecular attraction. We will consider the various types of IMFs in the next three sections of this module.
 
 <!-- SEG:m68761:title:fs-idm146733840-title -->
 Dispersion Forces
 
 <!-- SEG:m68761:para:fs-idp26129792 -->
-One of the three van der Waals forces is present in all condensed phases, regardless of the nature of the atoms or molecules composing the substance. This attractive force is called the {{term}}London dispersion force{{/term}} in honor of German-born American physicist Fritz {{term}}London{{/term}} who, in 1928, first explained it. This force is often referred to as simply the {{term}}dispersion force{{/term}}. Because the electrons of an atom or molecule are in constant motion (or, alternatively, the electron’s location is subject to quantum-mechanical variability), at any moment in time, an atom or molecule can develop a temporary, {{term}}instantaneous dipole{{/term}} if its electrons are distributed asymmetrically. The presence of this dipole can, in turn, distort the electrons of a neighboring atom or molecule, producing an {{term}}induced dipole{{/term}}. These two rapidly fluctuating, temporary dipoles thus result in a relatively weak electrostatic attraction between the species—a so-called dispersion force like that illustrated in [[xref:CNX_Chem_10_01_DispForces]].
+One of the three van der Waals forces is present in all condensed phases, regardless of the nature of the atoms or molecules composing the substance. This attractive force is called the [[term:London dispersion force|term-00003]] in honor of German-born American physicist Fritz [[term:London|term-00004]] who, in 1928, first explained it. This force is often referred to as simply the [[term:dispersion force|term-00005]]. Because the electrons of an atom or molecule are in constant motion (or, alternatively, the electron’s location is subject to quantum-mechanical variability), at any moment in time, an atom or molecule can develop a temporary, [[term:instantaneous dipole|term-00006]] if its electrons are distributed asymmetrically. The presence of this dipole can, in turn, distort the electrons of a neighboring atom or molecule, producing an [[term:induced dipole|term-00007]]. These two rapidly fluctuating, temporary dipoles thus result in a relatively weak electrostatic attraction between the species—a so-called dispersion force like that illustrated in [[xref:CNX_Chem_10_01_DispForces]].
 
 <!-- SEG:m68761:caption:CNX_Chem_10_01_DispForces-caption -->
 Dispersion forces result from the formation of temporary dipoles, as illustrated here for two nonpolar diatomic molecules.
 
+<!-- SEG:m68761:alt:fs-idp52348576-alt -->
+Two pairs of molecules are shown where each molecule has one larger blue side labeled “delta sign, negative sign” and a smaller red side labeled “delta sign, positive sign.” Toward the middle of the both molecules, but still on each distinct side, is a black dot. Between the two images is a dotted line labeled, “Attractive force.” In the first image, the red and blue sides are labeled, “Unequal distribution of electrons.” Below both images are brackets. The brackets are labeled, “Temporary dipoles.”
+
 <!-- SEG:m68761:para:fs-idm80968928 -->
 Dispersion forces that develop between atoms in different molecules can attract the two molecules to each other. The forces are relatively weak, however, and become significant only when the molecules are very close. Larger and heavier atoms and molecules exhibit stronger dispersion forces than do smaller and lighter atoms and molecules. F[[sub:2]] and Cl[[sub:2]] are gases at room temperature (reflecting weaker attractive forces); Br[[sub:2]] is a liquid, and I[[sub:2]] is a solid (reflecting stronger attractive forces). Trends in observed melting and boiling points for the halogens clearly demonstrate this effect, as seen in [[xref:fs-idp55860464]].
 
-<!-- SEG:m68761:entry:auto-26 -->
+<!-- SEG:m68761:entry:auto-31 -->
 Melting and Boiling Points of the Halogens
 
-<!-- SEG:m68761:entry:auto-27 -->
+<!-- SEG:m68761:entry:auto-32 -->
 Halogen
 
-<!-- SEG:m68761:entry:auto-28 -->
+<!-- SEG:m68761:entry:auto-33 -->
 Molar Mass
 
-<!-- SEG:m68761:entry:auto-29 -->
+<!-- SEG:m68761:entry:auto-34 -->
 Atomic Radius
 
-<!-- SEG:m68761:entry:auto-30 -->
+<!-- SEG:m68761:entry:auto-35 -->
 Melting Point
 
-<!-- SEG:m68761:entry:auto-31 -->
+<!-- SEG:m68761:entry:auto-36 -->
 Boiling Point
 
-<!-- SEG:m68761:entry:auto-32 -->
+<!-- SEG:m68761:entry:auto-37 -->
 fluorine, F[[sub:2]]
 
-<!-- SEG:m68761:entry:auto-33 -->
+<!-- SEG:m68761:entry:auto-38 -->
 38 g/mol
 
-<!-- SEG:m68761:entry:auto-34 -->
+<!-- SEG:m68761:entry:auto-39 -->
 72 pm
 
-<!-- SEG:m68761:entry:auto-35 -->
+<!-- SEG:m68761:entry:auto-40 -->
 53 K
 
-<!-- SEG:m68761:entry:auto-36 -->
+<!-- SEG:m68761:entry:auto-41 -->
 85 K
 
-<!-- SEG:m68761:entry:auto-37 -->
+<!-- SEG:m68761:entry:auto-42 -->
 chlorine, Cl[[sub:2]]
 
-<!-- SEG:m68761:entry:auto-38 -->
+<!-- SEG:m68761:entry:auto-43 -->
 71 g/mol
 
-<!-- SEG:m68761:entry:auto-39 -->
+<!-- SEG:m68761:entry:auto-44 -->
 99 pm
 
-<!-- SEG:m68761:entry:auto-40 -->
+<!-- SEG:m68761:entry:auto-45 -->
 172 K
 
-<!-- SEG:m68761:entry:auto-41 -->
+<!-- SEG:m68761:entry:auto-46 -->
 238 K
 
-<!-- SEG:m68761:entry:auto-42 -->
+<!-- SEG:m68761:entry:auto-47 -->
 bromine, Br[[sub:2]]
 
-<!-- SEG:m68761:entry:auto-43 -->
+<!-- SEG:m68761:entry:auto-48 -->
 160 g/mol
 
-<!-- SEG:m68761:entry:auto-44 -->
+<!-- SEG:m68761:entry:auto-49 -->
 114 pm
 
-<!-- SEG:m68761:entry:auto-45 -->
+<!-- SEG:m68761:entry:auto-50 -->
 266 K
 
-<!-- SEG:m68761:entry:auto-46 -->
+<!-- SEG:m68761:entry:auto-51 -->
 332 K
 
-<!-- SEG:m68761:entry:auto-47 -->
+<!-- SEG:m68761:entry:auto-52 -->
 iodine, I[[sub:2]]
 
-<!-- SEG:m68761:entry:auto-48 -->
+<!-- SEG:m68761:entry:auto-53 -->
 254 g/mol
 
-<!-- SEG:m68761:entry:auto-49 -->
+<!-- SEG:m68761:entry:auto-54 -->
 133 pm
 
-<!-- SEG:m68761:entry:auto-50 -->
+<!-- SEG:m68761:entry:auto-55 -->
 387 K
 
-<!-- SEG:m68761:entry:auto-51 -->
+<!-- SEG:m68761:entry:auto-56 -->
 457 K
 
-<!-- SEG:m68761:entry:auto-52 -->
+<!-- SEG:m68761:entry:auto-57 -->
 astatine, At[[sub:2]]
 
-<!-- SEG:m68761:entry:auto-53 -->
+<!-- SEG:m68761:entry:auto-58 -->
 420 g/mol
 
-<!-- SEG:m68761:entry:auto-54 -->
+<!-- SEG:m68761:entry:auto-59 -->
 150 pm
 
-<!-- SEG:m68761:entry:auto-55 -->
+<!-- SEG:m68761:entry:auto-60 -->
 575 K
 
-<!-- SEG:m68761:entry:auto-56 -->
+<!-- SEG:m68761:entry:auto-61 -->
 610 K
 
 <!-- SEG:m68761:para:fs-idm135149056 -->
-The increase in melting and boiling points with increasing atomic/molecular size may be rationalized by considering how the strength of dispersion forces is affected by the electronic structure of the atoms or molecules in the substance. In a larger atom, the valence electrons are, on average, farther from the nuclei than in a smaller atom. Thus, they are less tightly held and can more easily form the temporary dipoles that produce the attraction. The measure of how easy or difficult it is for another electrostatic charge (for example, a nearby ion or polar molecule) to distort a molecule’s charge distribution (its electron cloud) is known as {{term}}polarizability{{/term}}. A molecule that has a charge cloud that is easily distorted is said to be very polarizable and will have large dispersion forces; one with a charge cloud that is difficult to distort is not very polarizable and will have small dispersion forces.
+The increase in melting and boiling points with increasing atomic/molecular size may be rationalized by considering how the strength of dispersion forces is affected by the electronic structure of the atoms or molecules in the substance. In a larger atom, the valence electrons are, on average, farther from the nuclei than in a smaller atom. Thus, they are less tightly held and can more easily form the temporary dipoles that produce the attraction. The measure of how easy or difficult it is for another electrostatic charge (for example, a nearby ion or polar molecule) to distort a molecule’s charge distribution (its electron cloud) is known as [[term:polarizability|term-00008]]. A molecule that has a charge cloud that is easily distorted is said to be very polarizable and will have large dispersion forces; one with a charge cloud that is difficult to distort is not very polarizable and will have small dispersion forces.
 
 <!-- SEG:m68761:example-title:fs-idm100317728-title -->
 London Forces and Their Effects
@@ -193,6 +208,9 @@ Order the following hydrocarbons from lowest to highest boiling point: C[[sub:2]
 <!-- SEG:m68761:para:fs-idm93042944 -->
 C[[sub:2]]H[[sub:6]] &lt; C[[sub:3]]H[[sub:8]] &lt; C[[sub:4]]H[[sub:10]]. All of these compounds are nonpolar and only have London dispersion forces: the larger the molecule, the larger the dispersion forces and the higher the boiling point. The ordering from lowest to highest boiling point is therefore C[[sub:2]]H[[sub:6]] &lt; C[[sub:3]]H[[sub:8]] &lt; C[[sub:4]]H[[sub:10]].
 
+<!-- SEG:m68761:alt:fs-idp63841152-alt -->
+A line graph, titled “Carbon Family,” is shown where the y-axis is labeled “Temperature, ( degree sign C )” and has values of “negative 200” to “negative 40” from bottom to top in increments of 20. The x-axis is labeled “Period” and has values of “0” to “5” in increments of 1. The first point on the graph is labeled “C H subscript 4” and is at point “2, negative 160.” The second point on the graph is labeled “S i H subscript 4” and is at point “3, negative 120” while the third point on the graph is labeled “G e H subscript 4” and is at point “4, negative 100.” The fourth point on the graph is labeled “S n H subscript 4” and is at point “5, negative 60.”
+
 <!-- SEG:m68761:note-title:fs-idm119929280-title -->
 Answer:
 
@@ -205,6 +223,9 @@ The shapes of molecules also affect the magnitudes of the dispersion forces betw
 <!-- SEG:m68761:caption:CNX_Chem_10_01_PentIso-caption -->
 The strength of the dispersion forces increases with the contact area between molecules, as demonstrated by the boiling points of these pentane isomers.
 
+<!-- SEG:m68761:alt:fs-idm29590512-alt -->
+Three images of molecules are shown. The first shows a cluster of large, gray spheres each bonded together and to several smaller, white spheres. There is a gray, jagged line and then the mirror image of the first cluster of spheres is shown. Above these two clusters is the label, “Small contact area, weakest attraction,” and below is the label, “neopentane boiling point: 9.5 degrees C.” The second shows a chain of three gray spheres bonded by the middle sphere to a fourth gray sphere. Each gray sphere is bonded to several smaller, white spheres. There is a jagged, gray line and then the mirror image of the first chain appears. Above these two chains is the label, “Less surface area, less attraction,” and below is the label, “isopentane boiling point: 27 degrees C.” The third image shows a chain of five gray spheres bonded together and to several smaller, white spheres. There is a jagged gray line and then the mirror image of the first chain appears. Above these chains is the label, “Large contact area, strong attraction,” and below is the label, “n-pentane boiling point 36 degrees C.”
+
 <!-- SEG:m68761:note-title:fs-idp29280240-title -->
 Geckos and Intermolecular Forces
 
@@ -212,13 +233,16 @@ Geckos and Intermolecular Forces
 Geckos have an amazing ability to adhere to most surfaces. They can quickly run up smooth walls and across ceilings that have no toe-holds, and they do this without having suction cups or a sticky substance on their toes. And while a gecko can lift its feet easily as it walks along a surface, if you attempt to pick it up, it sticks to the surface. How are geckos (as well as spiders and some other insects) able to do this? Although this phenomenon has been investigated for hundreds of years, scientists only recently uncovered the details of the process that allows geckos’ feet to behave this way.
 
 <!-- SEG:m68761:para:fs-idp29466368 -->
-Geckos’ toes are covered with hundreds of thousands of tiny hairs known as [[i:setae]], with each seta, in turn, branching into hundreds of tiny, flat, triangular tips called [[i:spatulae]]. The huge numbers of spatulae on its setae provide a gecko, shown in [[xref:CNX_Chem_10_01_Geckos]], with a large total surface area for sticking to a surface. In 2000, Kellar {{term}}Autumn{{/term}}, who leads a multi-institutional gecko research team, found that geckos adhered equally well to both polar silicon dioxide and nonpolar gallium arsenide. This proved that geckos stick to surfaces because of dispersion forces—weak intermolecular attractions arising from temporary, synchronized charge distributions between adjacent molecules. Although dispersion forces are very weak, the total attraction over millions of spatulae is large enough to support many times the gecko’s weight.
+Geckos’ toes are covered with hundreds of thousands of tiny hairs known as [[i:setae]], with each seta, in turn, branching into hundreds of tiny, flat, triangular tips called [[i:spatulae]]. The huge numbers of spatulae on its setae provide a gecko, shown in [[xref:CNX_Chem_10_01_Geckos]], with a large total surface area for sticking to a surface. In 2000, Kellar [[term:Autumn|term-00009]], who leads a multi-institutional gecko research team, found that geckos adhered equally well to both polar silicon dioxide and nonpolar gallium arsenide. This proved that geckos stick to surfaces because of dispersion forces—weak intermolecular attractions arising from temporary, synchronized charge distributions between adjacent molecules. Although dispersion forces are very weak, the total attraction over millions of spatulae is large enough to support many times the gecko’s weight.
 
 <!-- SEG:m68761:para:fs-idm74321904 -->
-In 2014, two scientists developed a model to explain how geckos can rapidly transition from “sticky” to “non-sticky.” Alex {{term}}Greaney{{/term}} and Congcong {{term}}Hu{{/term}} at Oregon State University described how geckos can achieve this by changing the angle between their spatulae and the surface. Geckos’ feet, which are normally nonsticky, become sticky when a small shear force is applied. By curling and uncurling their toes, geckos can alternate between sticking and unsticking from a surface, and thus easily move across it. Later research led by Alyssa Stark at University of Akron showed that geckos can maintain their hold on hydrophobic surfaces (similar to the leaves in their habitats) equally well whether the surfaces were wet or dry. Stark's experiment used a ribbon to gently pull the geckos until they slipped, so that the researchers could determine the geckos' ability to hold various surfaces under wet and dry conditions. Further investigations may eventually lead to the development of better adhesives and other applications.
+In 2014, two scientists developed a model to explain how geckos can rapidly transition from “sticky” to “non-sticky.” Alex [[term:Greaney|term-00010]] and Congcong [[term:Hu|term-00011]] at Oregon State University described how geckos can achieve this by changing the angle between their spatulae and the surface. Geckos’ feet, which are normally nonsticky, become sticky when a small shear force is applied. By curling and uncurling their toes, geckos can alternate between sticking and unsticking from a surface, and thus easily move across it. Later research led by Alyssa Stark at University of Akron showed that geckos can maintain their hold on hydrophobic surfaces (similar to the leaves in their habitats) equally well whether the surfaces were wet or dry. Stark's experiment used a ribbon to gently pull the geckos until they slipped, so that the researchers could determine the geckos' ability to hold various surfaces under wet and dry conditions. Further investigations may eventually lead to the development of better adhesives and other applications.
 
 <!-- SEG:m68761:caption:CNX_Chem_10_01_Geckos-caption -->
 Geckos’ toes contain large numbers of tiny hairs (setae), which branch into many triangular tips (spatulae). Geckos adhere to surfaces because of van der Waals attractions between the surface and a gecko’s millions of spatulae. By changing how the spatulae contact the surface, geckos can turn their stickiness “on” and “off.” (credit photo: modification of work by “JC*+A!”/Flickr)
+
+<!-- SEG:m68761:alt:fs-idp79180464-alt -->
+Three figures are shown. The first is a photo of the bottom of a gecko’s foot. The second is bigger version which shows the setae. The third is a bigger version of the setae and shows the spatulae.
 
 <!-- SEG:m68761:para:fs-idm71587872 -->
 Watch this [[link:video|http://openstax.org/l/16kellaraut]] to learn more about Kellar Autumn’s research that determined that van der Waals forces are responsible for a gecko’s ability to cling and climb.
@@ -227,10 +251,13 @@ Watch this [[link:video|http://openstax.org/l/16kellaraut]] to learn more about 
 Dipole-Dipole Attractions
 
 <!-- SEG:m68761:para:fs-idm25328160 -->
-Recall from the chapter on chemical bonding and molecular geometry that [[i:polar]] molecules have a partial positive charge on one side and a partial negative charge on the other side of the molecule—a separation of charge called a [[i:dipole]]. Consider a polar molecule such as hydrogen chloride, HCl. In the HCl molecule, the more electronegative Cl atom bears the partial negative charge, whereas the less electronegative H atom bears the partial positive charge. An attractive force between HCl molecules results from the attraction between the positive end of one HCl molecule and the negative end of another. This attractive force is called a {{term}}dipole-dipole attraction{{/term}}—the electrostatic force between the partially positive end of one polar molecule and the partially negative end of another, as illustrated in [[xref:CNX_Chem_10_01_DipDip]].
+Recall from the chapter on chemical bonding and molecular geometry that [[i:polar]] molecules have a partial positive charge on one side and a partial negative charge on the other side of the molecule—a separation of charge called a [[i:dipole]]. Consider a polar molecule such as hydrogen chloride, HCl. In the HCl molecule, the more electronegative Cl atom bears the partial negative charge, whereas the less electronegative H atom bears the partial positive charge. An attractive force between HCl molecules results from the attraction between the positive end of one HCl molecule and the negative end of another. This attractive force is called a [[term:dipole-dipole attraction|term-00012]]—the electrostatic force between the partially positive end of one polar molecule and the partially negative end of another, as illustrated in [[xref:CNX_Chem_10_01_DipDip]].
 
 <!-- SEG:m68761:caption:CNX_Chem_10_01_DipDip-caption -->
 This image shows two arrangements of polar molecules, such as HCl, that allow an attraction between the partial negative end of one molecule and the partial positive end of another.
+
+<!-- SEG:m68761:alt:fs-idp12575856-alt -->
+Two pairs of molecules are shown where each molecule has one larger blue side labeled “delta sign, negative sign” and a smaller red side labeled “delta sign, positive sign. In the first pair, the red sides of the two molecules both face to the left and the blue side to the right. A horizontal dotted line lies in between the two. In the second pair, the molecules face up and down, with the red and blue ends aligning. A horizontal dotted line lies between the red and blue ends facing upward and another lies between the red and blue ends facing downward.
 
 <!-- SEG:m68761:para:fs-idp108426992 -->
 The effect of a dipole-dipole attraction is apparent when we compare the properties of HCl molecules to nonpolar F[[sub:2]] molecules. Both HCl and F[[sub:2]] consist of the same number of atoms and have approximately the same molecular mass. At a temperature of 150 K, molecules of both substances would have the same average KE. However, the dipole-dipole attractions between HCl molecules are sufficient to cause them to “stick together” to form a liquid, whereas the relatively weaker dispersion forces between nonpolar F[[sub:2]] molecules are not, and so this substance is gaseous at this temperature. The higher normal boiling point of HCl (188 K) compared to F[[sub:2]] (85 K) is a reflection of the greater strength of dipole-dipole attractions between HCl molecules, compared to the attractions between nonpolar F[[sub:2]] molecules. We will often use values such as boiling or freezing points, or enthalpies of vaporization or fusion, as indicators of the relative strengths of IMFs of attraction present within different substances.
@@ -266,10 +293,13 @@ ICl. ICl and Br[[sub:2]] have similar masses (~160 amu) and therefore experience
 Hydrogen Bonding
 
 <!-- SEG:m68761:para:fs-idp18167328 -->
-Nitrosyl fluoride (ONF, molecular mass 49 amu) is a gas at room temperature. Water (H[[sub:2]]O, molecular mass 18 amu) is a liquid, even though it has a lower molecular mass. We clearly cannot attribute this difference between the two compounds to dispersion forces. Both molecules have about the same shape and ONF is the heavier and larger molecule. It is, therefore, expected to experience more significant dispersion forces. Additionally, we cannot attribute this difference in boiling points to differences in the dipole moments of the molecules. Both molecules are polar and exhibit comparable dipole moments. The large difference between the boiling points is due to a particularly strong dipole-dipole attraction that may occur when a molecule contains a hydrogen atom bonded to a fluorine, oxygen, or nitrogen atom (the three most electronegative elements). The very large difference in electronegativity between the H atom (2.1) and the atom to which it is bonded (4.0 for an F atom, 3.5 for an O atom, or 3.0 for a N atom), combined with the very small size of a H atom and the relatively small sizes of F, O, or N atoms, leads to [[i:highly concentrated partial charges]] with these atoms. Molecules with F-H, O-H, or N-H moieties are very strongly attracted to similar moieties in nearby molecules, a particularly strong type of dipole-dipole attraction called {{term}}hydrogen bonding{{/term}}. Examples of hydrogen bonds include HF⋯HF, H[[sub:2]]O⋯HOH, and H[[sub:3]]N⋯HNH[[sub:2]], in which the hydrogen bonds are denoted by dots. [[xref:CNX_Chem_10_01_HBonding]] illustrates hydrogen bonding between water molecules.
+Nitrosyl fluoride (ONF, molecular mass 49 amu) is a gas at room temperature. Water (H[[sub:2]]O, molecular mass 18 amu) is a liquid, even though it has a lower molecular mass. We clearly cannot attribute this difference between the two compounds to dispersion forces. Both molecules have about the same shape and ONF is the heavier and larger molecule. It is, therefore, expected to experience more significant dispersion forces. Additionally, we cannot attribute this difference in boiling points to differences in the dipole moments of the molecules. Both molecules are polar and exhibit comparable dipole moments. The large difference between the boiling points is due to a particularly strong dipole-dipole attraction that may occur when a molecule contains a hydrogen atom bonded to a fluorine, oxygen, or nitrogen atom (the three most electronegative elements). The very large difference in electronegativity between the H atom (2.1) and the atom to which it is bonded (4.0 for an F atom, 3.5 for an O atom, or 3.0 for a N atom), combined with the very small size of a H atom and the relatively small sizes of F, O, or N atoms, leads to [[i:highly concentrated partial charges]] with these atoms. Molecules with F-H, O-H, or N-H moieties are very strongly attracted to similar moieties in nearby molecules, a particularly strong type of dipole-dipole attraction called [[term:hydrogen bonding|term-00013]]. Examples of hydrogen bonds include HF⋯HF, H[[sub:2]]O⋯HOH, and H[[sub:3]]N⋯HNH[[sub:2]], in which the hydrogen bonds are denoted by dots. [[xref:CNX_Chem_10_01_HBonding]] illustrates hydrogen bonding between water molecules.
 
 <!-- SEG:m68761:caption:CNX_Chem_10_01_HBonding-caption -->
 Water molecules participate in multiple hydrogen-bonding interactions with nearby water molecules.
+
+<!-- SEG:m68761:alt:fs-idp29073168-alt -->
+Five water molecules are shown near one another, but not touching. A dotted line lies between many of the hydrogen atoms on one molecule and the oxygen atom on another molecule.
 
 <!-- SEG:m68761:para:fs-idp128658848 -->
 Despite use of the word “bond,” keep in mind that hydrogen bonds are [[i:intermolecular]] attractive forces, not [[i:intramolecular]] attractive forces (covalent bonds). Hydrogen bonds are much weaker than covalent bonds, only about 5 to 10% as strong, but are generally much stronger than other dipole-dipole attractions and dispersion forces.
@@ -280,11 +310,17 @@ Hydrogen bonds have a pronounced effect on the properties of condensed phases (l
 <!-- SEG:m68761:caption:CNX_Chem_10_01_HydrideBP1-caption -->
 For the group 15, 16, and 17 hydrides, the boiling points for each class of compounds increase with increasing molecular mass for elements in periods 3, 4, and 5.
 
+<!-- SEG:m68761:alt:fs-idm21286928-alt -->
+A line graph is shown where the y-axis is labeled “Boiling point (, degree sign, C )” and has values of “ negative 150” to “150” from bottom to top in increments of 50. The x-axis is labeled “Period” and has values of “0” to “5” in increments of 1. Three lines are shown on the graph and are labeled in the legend. The red line is labeled as “halogen family,” the blue is “oxygen family” and the green is “nitrogen family.” The first point on the red line is labeled “question mark” and is at point “2, negative 120”. The second point on the line is labeled “H C l” and is at point “3, negative 80” while the third point on the line is labeled “H B r” and is at point “4, negative 60”. The fourth point on the line is labeled “H I” and is at point “5, negative 40.” The first point on the green line is labeled “question mark” and is at point “2, negative 125.” The second point on the line is labeled “P H, subscript 3” and is at point “3, negative 80” while the third point on the line is labeled “A s H, subscript 3” and is at point “4, negative 55.” The fourth point on the line is labeled “S b H, subscript 3” and is at point “5, negative 10.” The first point on the blue line is labeled “question mark” and is at point “2, negative 80.” The second point on the line is labeled “H, subscript 2, S” and is at point “3, negative 55” while the third point on the line is labeled “H, subscript 2, S e” and is at point “4, negative 45.” The fourth point on the line is labeled “H, subscript 2, T e” and is at point “5, negative 3.”
+
 <!-- SEG:m68761:para:fs-idp26510624 -->
 If we use this trend to predict the boiling points for the lightest hydride for each group, we would expect NH[[sub:3]] to boil at about −120 °C, H[[sub:2]]O to boil at about −80 °C, and HF to boil at about −110 °C. However, when we measure the boiling points for these compounds, we find that they are dramatically higher than the trends would predict, as shown in [[xref:CNX_Chem_10_01_HydrideBP2]]. The stark contrast between our naïve predictions and reality provides compelling evidence for the strength of hydrogen bonding.
 
 <!-- SEG:m68761:caption:CNX_Chem_10_01_HydrideBP2-caption -->
 In comparison to periods 3−5, the binary hydrides of period 2 elements in groups 17, 16 and 15 (F, O and N, respectively) exhibit anomalously high boiling points due to hydrogen bonding.
+
+<!-- SEG:m68761:alt:fs-idp79204320-alt -->
+A line graph is shown where the y-axis is labeled “Boiling point, ( degree sign, C )” and has values of “negative 150” to “150” from bottom to top in increments of 50. The x-axis is labeled “Period” and has values of “0” to “5” in increments of 1. Three lines are shown on the graph and are labeled in the legend. The red line is labeled as “halogen family,” the blue is “oxygen family” and the green is “nitrogen family.” The first point on the red line is labeled “H F” and is at point “2, 25.” The second point on the line is labeled “H C l” and is at point “3, negative 80” while the third point on the line is labeled “H B r” and is at point “4, negative 60.” The fourth point on the line is labeled “H I” and is at point “5, negative 40.” The first point on the green line is labeled “N H, subscript 3” and is at point “2, negative 40.” The second point on the line is labeled “P H, subscript 3” and is at point “3, negative 80” while the third point on the line is labeled “A s H, subscript 3” and is at point “4, negative 55.” The fourth point on the line is labeled “S b H, subscript 3” and is at point “5, negative 10.” The first point on the blue line is labeled “H, subscript 2, O” and is at point “2, 100.” The second point on the line is labeled “H, subscript 2, S” and is at point “3, negative 55” while the third point on the line is labeled “H, subscript 2, S e” and is at point “4, negative 45.” The fourth point on the line is labeled “H, subscript 2, T e” and is at point “5, negative 3.”
 
 <!-- SEG:m68761:example-title:fs-idm118983568-title -->
 Effect of Hydrogen Bonding on Boiling Points
@@ -328,8 +364,14 @@ The cumulative effect of millions of hydrogen bonds effectively holds the two st
 <!-- SEG:m68761:caption:CNX_Chem_10_01_DNA-caption -->
 Two separate DNA molecules form a double-stranded helix in which the molecules are held together via hydrogen bonding. (credit: modification of work by Jerome Walker, Dennis Myts)
 
+<!-- SEG:m68761:alt:fs-idm97606608-alt -->
+Two images are shown. The first lies on the left side of the page and shows a helical structure like a twisted ladder where the rungs of the ladder, labeled “Base pair” are red, yellow, green and blue paired bars. The red and yellow bars, which are always paired together, are labeled in the legend, which is titled “Nitrogenous bases” as “adenine” and “thymine,” respectively. The blue and green bars, which are always paired together, are labeled in the legend as “guanine” and “cytosine,” respectively. At the top of the helical structure, the left-hand side rail, or “Sugar, dash, phosphate backbone,” is labeled as “3, prime” while the right is labeled as “5, prime.” These labels are reversed at the bottom of the helix. To the right of the page is a large Lewis structure. The top left corner of this structure, labeled “5, prime,” shows a phosphorus atom single bonded to three oxygen atoms, one of which has a superscripted negative charge, and double bonded to a fourth oxygen atom. One of the single bonded oxygen atoms is single bonded to the left corner of a five-membered ring with an oxygen atom at its top point and which is single bonded to an oxygen atom on the bottom left. This oxygen atom is single bonded to a phosphorus atom that is single bonded to two other hydrogen atoms and double bonded to a fourth oxygen atom. The lower left of these oxygen atoms is single bonded to another oxygen atom that is single bonded to a five-membered ring with an oxygen in the upper bonding site. The bottom left of this ring has a hydroxyl group attached to it while the upper right carbon is single bonded to a nitrogen atom that is part of a five-membered ring bonded to a six-membered ring. Both of these rings have points of unsaturation and nitrogen atoms bonded into their structures. On the right side of the six-membered ring are two single bonded amine groups and a double bonded oxygen. Three separate dotted lines extend from these sites to corresponding sites on a second six-membered ring. This ring has points of unsaturation and a nitrogen atom in the bottom right bonding position that is single bonded to a five-membered ring on the right side of the image. This ring is single bonded to a carbon that is single bonded to an oxygen that is single bonded to a phosphorus. The phosphorus is single bonded to two other oxygen atoms and double bonded to a fourth oxygen atom. This group is labeled “5, prime.” The five-membered ring is also bonded on the top side to an oxygen that is bonded to a phosphorus single bonded to two other oxygen atoms and double bonded to a fourth oxygen atom. The upper left oxygen of this group is single bonded to a carbon that is single bonded to a five-membered ring with an oxygen in the bottom bonding position. This ring has a hydroxyl group on its upper right side that is labeled “3, prime” and is bonded on the left side to a nitrogen that is a member of a five-membered ring. This ring is bonded to a six-membered ring and both have points of unsaturation. This ring has a nitrogen on the left side, as well as an amine group, that have two dotted lines leading from them to an oxygen and amine group on a six membered ring. These dotted lines are labeled “Hydrogen bonds.” The six membered ring also has a double bonded oxygen on its lower side and a nitrogen atom on its left side that is single bonded to a five-membered ring. This ring connects to the two phosphate groups mentioned at the start of this to form a large circle. The name “guanine” is written below the lower left side of this image while the name “cytosine” is written on the lower right. The name “thymine” is written above the right side of the image and “adenine” is written on the top right. Three sections are indicated below the images where the left is labeled “Sugar, dash, phosphate backbone,” the middle is labeled “Bases” and the right is labeled “Sugar, dash, phosphate backbone.”
+
 <!-- SEG:m68761:caption:CNX_Chem_10_01_DNA2-caption -->
 The geometries of the base molecules result in maximum hydrogen bonding between adenine and thymine (AT) and between guanine and cytosine (GC), so-called “complementary base pairs.”
+
+<!-- SEG:m68761:alt:fs-idm64449536-alt -->
+A large Lewis structure is shown. The top left corner of this structure, labeled “5, prime,” shows a phosphorus atom single bonded to three oxygen atoms, one of which has a superscripted negative charge, and double bonded to a fourth oxygen atom. One of the single bonded oxygen atoms is single bonded to the left corner of a five-membered ring with an oxygen atom at its top point and which is single bonded to an oxygen atom on the bottom left. This oxygen atom is single bonded to a phosphorus atom that is single bonded to two other hydrogen atoms and double bonded to a fourth oxygen atom. The lower left of these oxygen atoms is single bonded to another oxygen atom that is single bonded to a five-membered ring with an oxygen in the upper bonding site. The bottom left of this ring has a hydroxyl group attached to it while the upper right carbon is single bonded to a nitrogen atom that is part of a five-membered ring bonded to a six-membered ring. Both of these rings have points of unsaturation and nitrogen atoms bonded into their structures. On the right side of the six-membered ring are two single bonded amine groups and a double bonded oxygen. Three separate dotted lines extend from these sites to corresponding sites on a second six-membered ring. This ring has points of unsaturation and a nitrogen atom in the bottom right bonding position that is single bonded to a five-membered ring on the right side of the image. This ring is single bonded to a carbon that is single bonded to an oxygen that is single bonded to a phosphorus. The phosphorus is single bonded to two other oxygen atoms and double bonded to a fourth oxygen atom. This group is labeled “5, prime.” The five-membered ring is also bonded on the top side to an oxygen that is bonded to a phosphorus single bonded to two other oxygen atoms and double bonded to a fourth oxygen atom. The upper left oxygen of this group is single bonded to a carbon that is single bonded to a five-membered ring with an oxygen in the bottom bonding position. This ring has a hydroxyl group on its upper right side that is labeled “3, prime” and is bonded on the left side to a nitrogen that is a member of a five-membered ring. This ring is bonded to a six-membered ring and both have points of unsaturation. This ring has a nitrogen on the left side, as well as an amine group, that have two dotted lines leading from them to an oxygen and amine group on a six membered ring. These dotted lines are labeled “Hydrogen bonds.” The six membered ring also has a double bonded oxygen on its lower side and a nitrogen atom on its left side that is single bonded to a five-membered ring. This ring connects to the two phosphate groups mentioned at the start of this to form a large circle. The name “guanine” is written below the lower left side of this image while the name “cytosine” is written on the lower right. The name “thymine” is written above the right side of the image and “adenine” is written on the top right. Three sections are indicated below the images where the left is labeled “Sugar, dash, phosphate backbone,” the middle is labeled “Bases” and the right is labeled “Sugar, dash, phosphate backbone.”
 
 <!-- SEG:m68761:title:fs-idm78986320-title -->
 Key Concepts and Summary
@@ -460,11 +502,17 @@ The hydrogen bond between two hydrogen fluoride molecules is stronger than that 
 <!-- SEG:m68761:problem:fs-idp136021104 -->
 Under certain conditions, molecules of acetic acid, CH[[sub:3]]COOH, form “dimers,” pairs of acetic acid molecules held together by strong intermolecular attractions:
 
+<!-- SEG:m68761:alt:fs-idp16845232-alt -->
+A Lewis structure shows a carbon atom single bonded to three hydrogen atoms and one other carbon atom, that is in turn double bonded to an oxygen atom and single bonded to another oxygen atom that is single bonded to a hydrogen atom. Dotted lines connect the terminal oxygen and hydrogen atoms to a reciprocal lewis structure to the right, rotated 180 degrees. Each dotted line is labeled “hydrogen bond.”
+
 <!-- SEG:m68761:problem:fs-idm44711088 -->
 Draw a dimer of acetic acid, showing how two CH[[sub:3]]COOH molecules are held together, and stating the type of IMF that is responsible.
 
 <!-- SEG:m68761:problem:fs-idm50037824 -->
 Proteins are chains of amino acids that can form in a variety of arrangements, one of which is a helix. What kind of IMF is responsible for holding the protein strand in this shape? On the protein image, show the locations of the IMFs that hold the protein together:
+
+<!-- SEG:m68761:alt:fs-idp27423728-alt -->
+Two turns of a helical structure are shown horizontally. Three Lewis structures are superimposed on the helix. The first shows horizontally stacked dashes next to an oxygen atom, with three dots connecting to a hydrogen atom, and a single dash connecting the hydrogen atom to a nitrogen atom. The second shows a carbon atom double bonded to an oxygen atom, then three dots connecting to a hydrogen atom which is bonded to a nitrogen atom. The third shows a carbon atom double bonded to an oxygen atom with three dots extending to the right of the oxygen atom.
 
 <!-- SEG:m68761:solution:fs-idp49715040 -->
 H-bonding is the principle IMF holding the protein strands together. The H-bonding is between the [[MATH:2]] and [[MATH:3]]

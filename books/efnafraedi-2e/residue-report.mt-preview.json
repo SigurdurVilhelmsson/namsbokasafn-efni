@@ -4,7 +4,7 @@
   "summary": {
     "modulesWithResidue": 1,
     "exactResidues": 76,
-    "ratioWarnings": 69,
+    "ratioWarnings": 63,
     "toleratedResidues": 4
   },
   "modules": {
@@ -15,7 +15,8 @@
           "segmentId": "m68710:problem:fs-idm6095856",
           "ratio": 0.71
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68662": {
       "exact": [
@@ -96,7 +97,8 @@
         "m68662:title:pref-sec-027-title",
         "m68662:title:pref-sub-028-title"
       ],
-      "warnings": []
+      "warnings": [],
+      "tolerated": []
     },
     "m68667": {
       "exact": [],
@@ -105,7 +107,8 @@
           "segmentId": "m68667:solution:fs-idm36674816",
           "ratio": 0.73
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68670": {
       "exact": [],
@@ -114,7 +117,8 @@
           "segmentId": "m68670:solution:fs-idp167334304",
           "ratio": 0.71
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68674": {
       "exact": [],
@@ -123,7 +127,8 @@
           "segmentId": "m68674:solution:fs-idp31066016",
           "ratio": 0.73
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68690": {
       "exact": [],
@@ -136,7 +141,8 @@
           "segmentId": "m68690:solution:fs-idp27840096",
           "ratio": 0.86
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68693": {
       "exact": [],
@@ -145,7 +151,8 @@
           "segmentId": "m68693:solution:fs-idm117784944",
           "ratio": 0.8
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68695": {
       "exact": [],
@@ -154,7 +161,8 @@
           "segmentId": "m68695:solution:fs-idm330207888",
           "ratio": 0.75
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68696": {
       "exact": [],
@@ -191,7 +199,8 @@
           "segmentId": "m68702:problem:fs-idm105706256",
           "ratio": 0.71
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68703": {
       "exact": [],
@@ -200,7 +209,8 @@
           "segmentId": "m68703:solution:fs-idm96721040",
           "ratio": 0.92
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68713": {
       "exact": [],
@@ -217,7 +227,8 @@
           "segmentId": "m68713:solution:fs-idp32310528",
           "ratio": 0.8
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68729": {
       "exact": [],
@@ -236,7 +247,8 @@
           "segmentId": "m68733:solution:fs-idm90450992",
           "ratio": 0.92
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68738": {
       "exact": [],
@@ -245,7 +257,8 @@
           "segmentId": "m68738:problem:fs-idp65680032",
           "ratio": 0.75
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68739": {
       "exact": [],
@@ -276,7 +289,8 @@
           "segmentId": "m68741:problem:fs-idp55110752",
           "ratio": 0.75
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68746": {
       "exact": [],
@@ -285,7 +299,8 @@
           "segmentId": "m68746:solution:fs-idp257551776",
           "ratio": 0.71
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68747": {
       "exact": [],
@@ -294,19 +309,12 @@
           "segmentId": "m68747:solution:fs-idp7180048",
           "ratio": 0.73
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68750": {
       "exact": [],
       "warnings": [
-        {
-          "segmentId": "m68750:entry:auto-22",
-          "ratio": 0.71
-        },
-        {
-          "segmentId": "m68750:entry:auto-31",
-          "ratio": 0.75
-        },
         {
           "segmentId": "m68750:solution:fs-idm21108080",
           "ratio": 0.8
@@ -330,19 +338,6 @@
           "segmentId": "m68751:para:fs-idm161358576",
           "ratio": 0.75
         }
-      ]
-    },
-    "m68752": {
-      "exact": [],
-      "warnings": [
-        {
-          "segmentId": "m68752:entry:auto-238",
-          "ratio": 0.75
-        },
-        {
-          "segmentId": "m68752:entry:auto-239",
-          "ratio": 0.8
-        }
       ],
       "tolerated": []
     },
@@ -353,7 +348,8 @@
           "segmentId": "m68759:glossary-term:fs-idm15517248-term",
           "ratio": 0.75
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68761": {
       "exact": [],
@@ -362,7 +358,8 @@
           "segmentId": "m68761:glossary-term:fs-idm134093104-term",
           "ratio": 0.75
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68769": {
       "exact": [],
@@ -375,16 +372,8 @@
           "segmentId": "m68769:solution:fs-idm300012672",
           "ratio": 0.88
         }
-      ]
-    },
-    "m68770": {
-      "exact": [],
-      "warnings": [
-        {
-          "segmentId": "m68770:entry:auto-45",
-          "ratio": 0.75
-        }
-      ]
+      ],
+      "tolerated": []
     },
     "m68783": {
       "exact": [],
@@ -397,7 +386,8 @@
           "segmentId": "m68783:glossary-term:fs-idp11034384-term",
           "ratio": 0.8
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68784": {
       "exact": [],
@@ -413,14 +403,11 @@
       "exact": [],
       "warnings": [
         {
-          "segmentId": "m68789:entry:auto-156",
-          "ratio": 0.71
-        },
-        {
           "segmentId": "m68789:solution:fs-idm220253504",
           "ratio": 0.71
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68794": {
       "exact": [],
@@ -429,7 +416,8 @@
           "segmentId": "m68794:solution:fs-idm1295248",
           "ratio": 0.91
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68798": {
       "exact": [],
@@ -448,7 +436,8 @@
           "segmentId": "m68799:solution:fs-idp82839488",
           "ratio": 0.71
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68803": {
       "exact": [],
@@ -457,7 +446,8 @@
           "segmentId": "m68803:solution:fs-idm40951952",
           "ratio": 0.75
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68805": {
       "exact": [],
@@ -478,7 +468,8 @@
           "segmentId": "m68805:problem:fs-idp33342784",
           "ratio": 0.75
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68808": {
       "exact": [],
@@ -487,7 +478,8 @@
           "segmentId": "m68808:note-title:fs-idp1420208-title",
           "ratio": 0.86
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68809": {
       "exact": [],
@@ -514,7 +506,8 @@
           "segmentId": "m68811:solution:fs-idp1969792",
           "ratio": 0.85
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68816": {
       "exact": [],
@@ -523,7 +516,8 @@
           "segmentId": "m68816:solution:fs-idm42437472",
           "ratio": 0.75
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68819": {
       "exact": [],
@@ -532,7 +526,8 @@
           "segmentId": "m68819:solution:fs-idm353662112",
           "ratio": 0.78
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68821": {
       "exact": [],
@@ -541,7 +536,8 @@
           "segmentId": "m68821:solution:fs-idp101562272",
           "ratio": 0.71
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68823": {
       "exact": [],
@@ -550,7 +546,8 @@
           "segmentId": "m68823:solution:fs-idm14160512",
           "ratio": 0.83
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68824": {
       "exact": [],
@@ -559,7 +556,8 @@
           "segmentId": "m68824:solution:fs-idp3297200",
           "ratio": 0.8
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68831": {
       "exact": [],
@@ -568,7 +566,8 @@
           "segmentId": "m68831:solution:fs-idp203974784",
           "ratio": 0.71
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68840": {
       "exact": [],
@@ -581,7 +580,8 @@
           "segmentId": "m68840:solution:fs-idm140034976",
           "ratio": 0.71
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68843": {
       "exact": [],
@@ -590,7 +590,8 @@
           "segmentId": "m68843:problem:fs-idp58068512",
           "ratio": 0.75
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68854": {
       "exact": [],
@@ -599,7 +600,8 @@
           "segmentId": "m68854:solution:fs-idm31409728",
           "ratio": 0.78
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68858": {
       "exact": [],
@@ -626,7 +628,8 @@
           "segmentId": "m68861:entry:auto-72",
           "ratio": 0.71
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68865": {
       "exact": [],

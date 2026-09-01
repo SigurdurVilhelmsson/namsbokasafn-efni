@@ -1,15 +1,16 @@
 {
   "version": 1,
   "moduleId": "m68723",
-  "extractedAt": "2026-07-07T09:12:32.912Z",
+  "extractedAt": "2026-08-31T19:08:38.172Z",
   "sourceHash": "05f1e1534b688f6b",
-  "segmentCount": 7,
+  "segmentCount": 8,
   "segmentIds": [
     "m68723:title:auto-1",
     "m68723:abstract-item:abstract-item-1",
     "m68723:abstract-item:abstract-item-2",
     "m68723:abstract-item:abstract-item-3",
     "m68723:caption:CNX_Chem_05_00_Match-caption",
+    "m68723:alt:fs-idm65754480-alt",
     "m68723:para:fs-idm19082352",
     "m68723:para:fs-idm15108400"
   ],

@@ -59,7 +59,10 @@
           },
           "media": {
             "id": "fs-idm21370256",
-            "alt": "The sides of two cylindrical containers are shown. Each container’s label is partially visible. The left container’s label reads “Bleach.” The right label contains more information about the product including the phrase, “Contains: Sodium hypochlorite 7.4 %.”",
+            "alt": {
+              "segmentId": "m68704:alt:fs-idm21370256-alt",
+              "text": "The sides of two cylindrical containers are shown. Each container’s label is partially visible. The left container’s label reads “Bleach.” The right label contains more information about the product including the phrase, “Contains: Sodium hypochlorite 7.4 %.”"
+            },
             "src": "../../media/CNX_Chem_03_05_bleach.jpg",
             "mimeType": "image/jpeg"
           }
@@ -176,6 +179,14 @@
               "type": "para",
               "id": "fs-idm33390192",
               "segmentId": "m68704:para:fs-idm33390192"
+            },
+            {
+              "type": "media",
+              "id": "fs-idm3435008",
+              "alt": {
+                "segmentId": "m68704:alt:fs-idm3435008-alt",
+                "text": "A diagram of three boxes connected by a right-facing arrow in between each is shown. The box on the left contains the phrase, “Volume of solution ( m L ),” the middle box reads, “Mass of solution ( g ),” while the one on the right contains the phrase, “Mass of H C l ( g ).” There is a phrase under the left arrow that says, “Multiply by density ( g / m L )” and under the right arrow it states, “Multiply by mass percent as ratio ( g H C l / g solution ).”"
+              }
             },
             {
               "type": "equation",
@@ -300,7 +311,10 @@
           },
           "media": {
             "id": "fs-idp12420736",
-            "alt": "Two pictures are shown labeled a and b. Picture a depicts a clear, colorless solution in a plastic bag being held in a person’s hand. Picture b shows a person’s hand holding a detection meter with a digital readout screen while another hand holds someone’s finger up to the end of the meter. The meter is pressed to the drop of blood that is at the end of the person’s finger.",
+            "alt": {
+              "segmentId": "m68704:alt:fs-idp12420736-alt",
+              "text": "Two pictures are shown labeled a and b. Picture a depicts a clear, colorless solution in a plastic bag being held in a person’s hand. Picture b shows a person’s hand holding a detection meter with a digital readout screen while another hand holds someone’s finger up to the end of the meter. The meter is pressed to the drop of blood that is at the end of the person’s finger."
+            },
             "src": "../../media/CNX_Chem_03_05_saline.jpg",
             "mimeType": "image/jpeg"
           }
@@ -344,7 +358,10 @@
           },
           "media": {
             "id": "fs-idm10006048",
-            "alt": "Two pictures are shown labeled a and b. Picture a is a close-up shot of water coming out of a faucet. Picture b shows a machine with the words, “Filtered Water Dispenser.” This machine appears to be inside a refrigerator.",
+            "alt": {
+              "segmentId": "m68704:alt:fs-idm10006048-alt",
+              "text": "Two pictures are shown labeled a and b. Picture a is a close-up shot of water coming out of a faucet. Picture b shows a machine with the words, “Filtered Water Dispenser.” This machine appears to be inside a refrigerator."
+            },
             "src": "../../media/CNX_Chem_03_05_faucet.jpg",
             "mimeType": "image/jpeg"
           }
@@ -690,11 +707,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68704:entry:auto-86",
+                  "segmentId": "m68704:entry:auto-90",
                   "attributes": {}
                 }
               ]
@@ -702,7 +720,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68704:entry:auto-87",
+                  "segmentId": "m68704:entry:auto-91",
                   "attributes": {}
                 }
               ]
@@ -710,7 +728,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68704:entry:auto-88",
+                  "segmentId": "m68704:entry:auto-92",
                   "attributes": {}
                 }
               ]

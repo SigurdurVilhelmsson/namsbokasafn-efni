@@ -19,6 +19,9 @@ In ordinary chemical reactions, the nucleus of each atom (and thus the identity 
 <!-- SEG:m68696:caption:CNX_Chem_02_06_NaCation-caption -->
 (a) A sodium atom (Na) has equal numbers of protons and electrons (11) and is uncharged. (b) A sodium cation (Na[[sup:+]]) has lost an electron, so it has one more proton (11) than electrons (10), giving it an overall positive charge, signified by a superscripted plus sign.
 
+<!-- SEG:m68696:alt:fs-idp93507216-alt -->
+Figure A shows a sodium atom, N a, which has a nucleus containing 11 protons and 12 neutrons. The atom’s surrounding electron cloud contains 11 electrons. Figure B shows a sodium ion, N a superscript plus sign. Its nucleus contains 11 protons and 12 neutrons. The ion’s electron cloud contains 10 electrons and is smaller than that of the sodium atom in figure A.
+
 <!-- SEG:m68696:para:fs-idp286908208 -->
 You can use the periodic table to predict whether an atom will form an anion or a cation, and you can often predict the charge of the resulting ion. Atoms of many main-group metals lose enough electrons to leave them with the same number of electrons as an atom of the preceding noble gas. To illustrate, an atom of an alkali metal (group 1) loses one electron and forms a cation with a 1+ charge; an alkaline earth metal (group 2) loses two electrons and forms a cation with a 2+ charge, and so on. For example, a neutral calcium atom, with 20 protons and 20 electrons, readily loses two electrons. This results in a cation with 20 protons, 18 electrons, and a 2+ charge. It has the same number of electrons as atoms of the preceding noble gas, argon, and is symbolized Ca[[sup:2+]]. The name of a metal ion is the same as the name of the metal atom from which it forms, so Ca[[sup:2+]] is called a calcium ion.
 
@@ -30,6 +33,9 @@ Note the usefulness of the periodic table in predicting likely ion formation and
 
 <!-- SEG:m68696:caption:CNX_Chem_02_06_IonCharges-caption -->
 Some elements exhibit a regular pattern of ionic charge when they form ions.
+
+<!-- SEG:m68696:alt:fs-idp341206448-alt -->
+Group one of the periodic table contains L i superscript plus sign in period 2, N a superscript plus sign in period 3, K superscript plus sign in period 4, R b superscript plus sign in period 5, C s superscript plus sign in period 6, and F r superscript plus sign in period 7. Group two contains B e superscript 2 plus sign in period 2, M g superscript 2 plus sign in period 3, C a superscript 2 plus sign in period 4, S r superscript 2 plus sign in period 5, B a superscript 2 plus sign in period 6, and R a superscript 2 plus sign in period 7. Group six contains C r superscript 3 plus sign and C r superscript 6 plus sign in period 4. Group seven contains M n superscript 2 plus sign in period 4. Group eight contains F e superscript 2 plus sign and F e superscript 3 plus sign in period 4. Group nine contains C o superscript 2 plus sign in period 4. Group ten contains N i superscript 2 plus sign in period 4, and P t superscript 2 plus sign in period 6. Group 11 contains C U superscript plus sign and C U superscript 2 plus sign in period 4, A g superscript plus sign in period 5, and A u superscript plus sign and A u superscript 3 plus sign in period 6. Group 12 contains Z n superscript 2 plus sign in period 4, C d superscript 2 plus sign in period 5, and H g subscript 2 superscript 2 plus sign and H g superscript 2 plus sign in period 6. Group 13 contains A l superscript 3 plus sign in period 3. Group 14 contains C superscript 4 negative sign in period 2. Group 15 contains N superscript 3 negative sign in period 2, P superscript 3 negative sign in period 3, and A s superscript 3 negative sign in period 4. Group 16 contains O superscript 2 negative sign in period 2, S superscript 2 negative sign in period 3, S e superscript 2 negative sign in period 4 and T e superscript 2 negative sign in period 5. Group 17 contains F superscript negative sign in period 2, C l superscript negative sign in period 3, B r superscript negative sign in period 4, I superscript negative sign in period 5, and A t superscript negative sign in period 6. Group 18 contains H e in period 1, N e in period 2, A r in period 3, K r in period 4, X e in period 5 and R n in period 6.
 
 <!-- SEG:m68696:example-title:fs-idm11079584-title -->
 Composition of Ions
@@ -89,274 +95,274 @@ Answer:
 Al will form a cation with a charge of 3+: Al[[sup:3+]], an aluminum ion. Carbon will form an anion with a charge of 4−: C[[sup:4−]], a carbide ion.
 
 <!-- SEG:m68696:para:fs-idp9416320 -->
-The ions that we have discussed so far are called {{term}}monatomic ions{{/term}}, that is, they are ions formed from only one atom. We also find many {{term}}polyatomic ions{{/term}}. These ions, which act as discrete units, are electrically charged molecules (a group of bonded atoms with an overall charge). Some of the more important polyatomic ions are listed in [[xref:fs-idp278664880]]. {{term}}Oxyanions{{/term}} are polyatomic ions that contain one or more oxygen atoms. At this point in your study of chemistry, you should memorize the names, formulas, and charges of the most common polyatomic ions. Because you will use them repeatedly, they will soon become familiar.
-
-<!-- SEG:m68696:entry:auto-32 -->
-Common Polyatomic Ions
-
-<!-- SEG:m68696:entry:auto-33 -->
-Name
+The ions that we have discussed so far are called [[term:monatomic ions|term-00001]], that is, they are ions formed from only one atom. We also find many [[term:polyatomic ions|term-00002]]. These ions, which act as discrete units, are electrically charged molecules (a group of bonded atoms with an overall charge). Some of the more important polyatomic ions are listed in [[xref:fs-idp278664880]]. [[term:Oxyanions|term-00003]] are polyatomic ions that contain one or more oxygen atoms. At this point in your study of chemistry, you should memorize the names, formulas, and charges of the most common polyatomic ions. Because you will use them repeatedly, they will soon become familiar.
 
 <!-- SEG:m68696:entry:auto-34 -->
-Formula
+Common Polyatomic Ions
 
 <!-- SEG:m68696:entry:auto-35 -->
-Related Acid
+Name
 
 <!-- SEG:m68696:entry:auto-36 -->
 Formula
 
 <!-- SEG:m68696:entry:auto-37 -->
-ammonium
+Related Acid
 
 <!-- SEG:m68696:entry:auto-38 -->
-[[MATH:1]]
+Formula
 
 <!-- SEG:m68696:entry:auto-39 -->
-hydronium
+ammonium
 
 <!-- SEG:m68696:entry:auto-40 -->
-[[MATH:2]]
+[[MATH:1]]
 
 <!-- SEG:m68696:entry:auto-41 -->
-peroxide
+hydronium
 
 <!-- SEG:m68696:entry:auto-42 -->
-[[MATH:3]]
+[[MATH:2]]
 
 <!-- SEG:m68696:entry:auto-43 -->
-hydroxide
+peroxide
 
 <!-- SEG:m68696:entry:auto-44 -->
-[[MATH:4]]
+[[MATH:3]]
 
 <!-- SEG:m68696:entry:auto-45 -->
-acetate
+hydroxide
 
 <!-- SEG:m68696:entry:auto-46 -->
-[[MATH:5]]
+[[MATH:4]]
 
 <!-- SEG:m68696:entry:auto-47 -->
-acetic acid
+acetate
 
 <!-- SEG:m68696:entry:auto-48 -->
-CH[[sub:3]]COOH
+[[MATH:5]]
 
 <!-- SEG:m68696:entry:auto-49 -->
-cyanide
+acetic acid
 
 <!-- SEG:m68696:entry:auto-50 -->
-CN[[sup:−]]
+CH[[sub:3]]COOH
 
 <!-- SEG:m68696:entry:auto-51 -->
-hydrocyanic acid
+cyanide
 
 <!-- SEG:m68696:entry:auto-52 -->
-HCN
+CN[[sup:−]]
 
 <!-- SEG:m68696:entry:auto-53 -->
-azide
+hydrocyanic acid
 
 <!-- SEG:m68696:entry:auto-54 -->
-[[MATH:6]]
+HCN
 
 <!-- SEG:m68696:entry:auto-55 -->
-hydrazoic acid
+azide
 
 <!-- SEG:m68696:entry:auto-56 -->
-HN[[sub:3]]
+[[MATH:6]]
 
 <!-- SEG:m68696:entry:auto-57 -->
-carbonate
+hydrazoic acid
 
 <!-- SEG:m68696:entry:auto-58 -->
-[[MATH:7]]
+HN[[sub:3]]
 
 <!-- SEG:m68696:entry:auto-59 -->
-carbonic acid
+carbonate
 
 <!-- SEG:m68696:entry:auto-60 -->
-H[[sub:2]]CO[[sub:3]]
+[[MATH:7]]
 
 <!-- SEG:m68696:entry:auto-61 -->
-bicarbonate
+carbonic acid
 
 <!-- SEG:m68696:entry:auto-62 -->
-[[MATH:8]]
+H[[sub:2]]CO[[sub:3]]
 
 <!-- SEG:m68696:entry:auto-63 -->
-nitrate
+bicarbonate
 
 <!-- SEG:m68696:entry:auto-64 -->
-[[MATH:9]]
+[[MATH:8]]
 
 <!-- SEG:m68696:entry:auto-65 -->
-nitric acid
+nitrate
 
 <!-- SEG:m68696:entry:auto-66 -->
-HNO[[sub:3]]
+[[MATH:9]]
 
 <!-- SEG:m68696:entry:auto-67 -->
-nitrite
+nitric acid
 
 <!-- SEG:m68696:entry:auto-68 -->
-[[MATH:10]]
+HNO[[sub:3]]
 
 <!-- SEG:m68696:entry:auto-69 -->
-nitrous acid
+nitrite
 
 <!-- SEG:m68696:entry:auto-70 -->
-HNO[[sub:2]]
+[[MATH:10]]
 
 <!-- SEG:m68696:entry:auto-71 -->
-sulfate
+nitrous acid
 
 <!-- SEG:m68696:entry:auto-72 -->
-[[MATH:11]]
+HNO[[sub:2]]
 
 <!-- SEG:m68696:entry:auto-73 -->
-sulfuric acid
+sulfate
 
 <!-- SEG:m68696:entry:auto-74 -->
-H[[sub:2]]SO[[sub:4]]
+[[MATH:11]]
 
 <!-- SEG:m68696:entry:auto-75 -->
-hydrogen sulfate
+sulfuric acid
 
 <!-- SEG:m68696:entry:auto-76 -->
-[[MATH:12]]
+H[[sub:2]]SO[[sub:4]]
 
 <!-- SEG:m68696:entry:auto-77 -->
-sulfite
+hydrogen sulfate
 
 <!-- SEG:m68696:entry:auto-78 -->
-[[MATH:13]]
+[[MATH:12]]
 
 <!-- SEG:m68696:entry:auto-79 -->
-sulfurous acid
+sulfite
 
 <!-- SEG:m68696:entry:auto-80 -->
-H[[sub:2]]SO[[sub:3]]
+[[MATH:13]]
 
 <!-- SEG:m68696:entry:auto-81 -->
-hydrogen sulfite
+sulfurous acid
 
 <!-- SEG:m68696:entry:auto-82 -->
-[[MATH:14]]
+H[[sub:2]]SO[[sub:3]]
 
 <!-- SEG:m68696:entry:auto-83 -->
-phosphate
+hydrogen sulfite
 
 <!-- SEG:m68696:entry:auto-84 -->
-[[MATH:15]]
+[[MATH:14]]
 
 <!-- SEG:m68696:entry:auto-85 -->
-phosphoric acid
+phosphate
 
 <!-- SEG:m68696:entry:auto-86 -->
-H[[sub:3]]PO[[sub:4]]
+[[MATH:15]]
 
 <!-- SEG:m68696:entry:auto-87 -->
-hydrogen phosphate
+phosphoric acid
 
 <!-- SEG:m68696:entry:auto-88 -->
-[[MATH:16]]
+H[[sub:3]]PO[[sub:4]]
 
 <!-- SEG:m68696:entry:auto-89 -->
-dihydrogen phosphate
+hydrogen phosphate
 
 <!-- SEG:m68696:entry:auto-90 -->
-[[MATH:17]]
+[[MATH:16]]
 
 <!-- SEG:m68696:entry:auto-91 -->
-perchlorate
+dihydrogen phosphate
 
 <!-- SEG:m68696:entry:auto-92 -->
-[[MATH:18]]
+[[MATH:17]]
 
 <!-- SEG:m68696:entry:auto-93 -->
-perchloric acid
+perchlorate
 
 <!-- SEG:m68696:entry:auto-94 -->
-HClO[[sub:4]]
+[[MATH:18]]
 
 <!-- SEG:m68696:entry:auto-95 -->
-chlorate
+perchloric acid
 
 <!-- SEG:m68696:entry:auto-96 -->
-[[MATH:19]]
+HClO[[sub:4]]
 
 <!-- SEG:m68696:entry:auto-97 -->
-chloric acid
+chlorate
 
 <!-- SEG:m68696:entry:auto-98 -->
-HClO[[sub:3]]
+[[MATH:19]]
 
 <!-- SEG:m68696:entry:auto-99 -->
-chlorite
+chloric acid
 
 <!-- SEG:m68696:entry:auto-100 -->
-[[MATH:20]]
+HClO[[sub:3]]
 
 <!-- SEG:m68696:entry:auto-101 -->
-chlorous acid
+chlorite
 
 <!-- SEG:m68696:entry:auto-102 -->
-HClO[[sub:2]]
+[[MATH:20]]
 
 <!-- SEG:m68696:entry:auto-103 -->
-hypochlorite
+chlorous acid
 
 <!-- SEG:m68696:entry:auto-104 -->
-ClO[[sup:−]]
+HClO[[sub:2]]
 
 <!-- SEG:m68696:entry:auto-105 -->
-hypochlorous acid
+hypochlorite
 
 <!-- SEG:m68696:entry:auto-106 -->
-HClO
+ClO[[sup:−]]
 
 <!-- SEG:m68696:entry:auto-107 -->
-chromate
+hypochlorous acid
 
 <!-- SEG:m68696:entry:auto-108 -->
-[[MATH:21]]
+HClO
 
 <!-- SEG:m68696:entry:auto-109 -->
-chromic acid
+chromate
 
 <!-- SEG:m68696:entry:auto-110 -->
-H[[sub:2]]CrO[[sub:4]]
+[[MATH:21]]
 
 <!-- SEG:m68696:entry:auto-111 -->
-dichromate
+chromic acid
 
 <!-- SEG:m68696:entry:auto-112 -->
-[[MATH:22]]
+H[[sub:2]]CrO[[sub:4]]
 
 <!-- SEG:m68696:entry:auto-113 -->
-dichromic acid
+dichromate
 
 <!-- SEG:m68696:entry:auto-114 -->
-H[[sub:2]]Cr[[sub:2]]O[[sub:7]]
+[[MATH:22]]
 
 <!-- SEG:m68696:entry:auto-115 -->
-permanganate
+dichromic acid
 
 <!-- SEG:m68696:entry:auto-116 -->
-[[MATH:23]]
+H[[sub:2]]Cr[[sub:2]]O[[sub:7]]
 
 <!-- SEG:m68696:entry:auto-117 -->
-permanganic acid
+permanganate
 
 <!-- SEG:m68696:entry:auto-118 -->
+[[MATH:23]]
+
+<!-- SEG:m68696:entry:auto-119 -->
+permanganic acid
+
+<!-- SEG:m68696:entry:auto-120 -->
 HMnO[[sub:4]]
 
 <!-- SEG:m68696:para:fs-idp210658336 -->
 Note that there is a system for naming some polyatomic ions; [[i:-ate]] and [[i:-ite]] are suffixes designating polyatomic ions containing more or fewer oxygen atoms. [[i:Per-]] (short for “hyper”) and [[i:hypo-]] (meaning “under”) are prefixes meaning more oxygen atoms than [[i:-ate]] and fewer oxygen atoms than [[i:-ite]], respectively. For example, perchlorate is [[MATH:24]] chlorate is [[MATH:25]] chlorite is [[MATH:26]] and hypochlorite is ClO[[sup:−]]. Unfortunately, the number of oxygen atoms corresponding to a given suffix or prefix is not consistent; for example, nitrate is [[MATH:27]] while sulfate is [[MATH:28]] This will be covered in more detail in the next module on nomenclature.
 
 <!-- SEG:m68696:para:fs-idm10305952 -->
-The nature of the attractive forces that hold atoms or ions together within a compound is the basis for classifying chemical bonding. When electrons are transferred and ions form, {{term}}ionic bonds{{/term}} result. Ionic bonds are electrostatic forces of attraction, that is, the attractive forces experienced between objects of opposite electrical charge (in this case, cations and anions). When electrons are “shared” and molecules form, {{term}}covalent bonds{{/term}} result. Covalent bonds are the attractive forces between the positively charged nuclei of the bonded atoms and one or more pairs of electrons that are located between the atoms. Compounds are classified as ionic or molecular (covalent) on the basis of the bonds present in them.
+The nature of the attractive forces that hold atoms or ions together within a compound is the basis for classifying chemical bonding. When electrons are transferred and ions form, [[term:ionic bonds|term-00004]] result. Ionic bonds are electrostatic forces of attraction, that is, the attractive forces experienced between objects of opposite electrical charge (in this case, cations and anions). When electrons are “shared” and molecules form, [[term:covalent bonds|term-00005]] result. Covalent bonds are the attractive forces between the positively charged nuclei of the bonded atoms and one or more pairs of electrons that are located between the atoms. Compounds are classified as ionic or molecular (covalent) on the basis of the bonds present in them.
 
 <!-- SEG:m68696:para:fs-idp196719024 -->
 Watch this [[link:video|http://openstax.org/l/16moltensalt]] to see a mixture of salts melt and conduct electricity.
@@ -393,6 +399,9 @@ Na[[sub:2]]S
 
 <!-- SEG:m68696:caption:CNX_Chem_02_06_Sapphire-caption -->
 Although pure aluminum oxide is colorless, trace amounts of iron and titanium give blue sapphire its characteristic color. (credit: modification of work by Stanislav Doronenko)
+
+<!-- SEG:m68696:alt:fs-idp108680656-alt -->
+This is a photograph of a ring with a sapphire set in it.
 
 <!-- SEG:m68696:para:fs-idp270413408 -->
 Many ionic compounds contain polyatomic ions ([[xref:fs-idp278664880]]) as the cation, the anion, or both. As with simple ionic compounds, these compounds must also be electrically neutral, so their formulas can be predicted by treating the polyatomic ions as discrete units. We use parentheses in a formula to indicate a group of atoms that behave as a unit. For example, the formula for calcium phosphate, one of the minerals in our bones, is Ca[[sub:3]](PO[[sub:4]])[[sub:2]]. This formula indicates that there are three calcium ions (Ca[[sup:2+]]) for every two phosphate [[MATH:29]] groups. The [[MATH:30]] groups are discrete units, each consisting of one phosphorus atom and four oxygen atoms, and having an overall charge of 3−. The compound is electrically neutral, and its formula shows a total count of three Ca, two P, and eight O atoms.
@@ -434,7 +443,7 @@ Ionic Compounds
 When an element composed of atoms that readily lose electrons (a metal) reacts with an element composed of atoms that readily gain electrons (a nonmetal), a transfer of electrons usually occurs, producing ions. The compound formed by this transfer is stabilized by the electrostatic attractions (ionic bonds) between the ions of opposite charge present in the compound. For example, when each sodium atom in a sample of sodium metal (group 1) gives up one electron to form a sodium cation, Na[[sup:+]], and each chlorine atom in a sample of chlorine gas (group 17) accepts one electron to form a chloride anion, Cl[[sup:−]], the resulting compound, NaCl, is composed of sodium ions and chloride ions in the ratio of one Na[[sup:+]] ion for each Cl[[sup:−]] ion. Similarly, each calcium atom (group 2) can give up two electrons and transfer one to each of two chlorine atoms to form CaCl[[sub:2]], which is composed of Ca[[sup:2+]] and Cl[[sup:−]] ions in the ratio of one Ca[[sup:2+]] ion to two Cl[[sup:−]] ions.
 
 <!-- SEG:m68696:para:fs-idp21794832 -->
-A compound that contains ions and is held together by ionic bonds is called an {{term}}ionic compound{{/term}}. The periodic table can help us recognize many of the compounds that are ionic: When a metal is combined with one or more nonmetals, the compound is usually ionic. This guideline works well for predicting ionic compound formation for most of the compounds typically encountered in an introductory chemistry course. However, it is not always true (for example, aluminum chloride, AlCl[[sub:3]], is not ionic).
+A compound that contains ions and is held together by ionic bonds is called an [[term:ionic compound|term-00006]]. The periodic table can help us recognize many of the compounds that are ionic: When a metal is combined with one or more nonmetals, the compound is usually ionic. This guideline works well for predicting ionic compound formation for most of the compounds typically encountered in an introductory chemistry course. However, it is not always true (for example, aluminum chloride, AlCl[[sub:3]], is not ionic).
 
 <!-- SEG:m68696:para:fs-idp56020048 -->
 You can often recognize ionic compounds because of their properties. Ionic compounds are solids that typically melt at high temperatures and boil at even higher temperatures. For example, sodium chloride melts at 801 °C and boils at 1413 °C. (As a comparison, the molecular compound water melts at 0 °C and boils at 100 °C.) In solid form, an ionic compound is not electrically conductive because its ions are unable to flow (“electricity” is the flow of charged particles). When molten, however, it can conduct electricity because its ions are able to move freely through the liquid ([[xref:CNX_Chem_02_06_NaClMolten]]).
@@ -442,11 +451,14 @@ You can often recognize ionic compounds because of their properties. Ionic compo
 <!-- SEG:m68696:caption:CNX_Chem_02_06_NaClMolten-caption -->
 Sodium chloride melts at 801 °C and conducts electricity when molten. (credit: modification of work by Mark Blaser and Matt Evans)
 
+<!-- SEG:m68696:alt:fs-idp140154533591136-alt -->
+This figure shows three photos connected by right-facing arrows. The first shows a light bulb as part of a complex lab equipment setup. The light bulb is not lit. The second photo shows a substances being heated or set on fire. The third shows the light bulb again which is lit.
+
 <!-- SEG:m68696:title:fs-idp9143792-title -->
 Molecular Compounds
 
 <!-- SEG:m68696:para:fs-idp264000688 -->
-Many compounds do not contain ions but instead consist solely of discrete, neutral molecules. These {{term}}molecular compounds{{/term}} (covalent compounds) result when atoms share, rather than transfer (gain or lose), electrons. Covalent bonding is an important and extensive concept in chemistry, and it will be treated in considerable detail in a later chapter of this text. We can often identify molecular compounds on the basis of their physical properties. Under normal conditions, molecular compounds often exist as gases, low-boiling liquids, and low-melting solids, although many important exceptions exist.
+Many compounds do not contain ions but instead consist solely of discrete, neutral molecules. These [[term:molecular compounds|term-00007]] (covalent compounds) result when atoms share, rather than transfer (gain or lose), electrons. Covalent bonding is an important and extensive concept in chemistry, and it will be treated in considerable detail in a later chapter of this text. We can often identify molecular compounds on the basis of their physical properties. Under normal conditions, molecular compounds often exist as gases, low-boiling liquids, and low-melting solids, although many important exceptions exist.
 
 <!-- SEG:m68696:para:fs-idp207026896 -->
 Whereas ionic compounds are usually formed when a metal and a nonmetal combine, covalent compounds are usually formed by a combination of nonmetals. Thus, the periodic table can help us recognize many of the compounds that are covalent. While we can use the positions of a compound’s elements in the periodic table to predict whether it is ionic or covalent at this point in our study of chemistry, you should be aware that this is a very simplistic approach that does not account for a number of interesting exceptions. Shades of gray exist between ionic and molecular compounds, and you’ll learn more about those later.

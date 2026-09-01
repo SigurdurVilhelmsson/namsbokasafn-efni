@@ -20,10 +20,10 @@ Explain how temperature affects the spontaneity of some processes
 Relate standard free energy changes to equilibrium constants
 
 <!-- SEG:m68819:para:fs-idm21370272 -->
-One of the challenges of using the second law of thermodynamics to determine if a process is spontaneous is that it requires measurements of the entropy change for the system [[i:and]] the entropy change for the surroundings. An alternative approach involving a new thermodynamic property defined in terms of system properties only was introduced in the late nineteenth century by American mathematician Josiah Willard {{term}}Gibbs{{/term}}. This new property is called the {{term}}Gibbs free energy ([[i:G]]){{/term}} (or simply the [[i:free energy]]), and it is defined in terms of a system’s enthalpy and entropy as the following:
+One of the challenges of using the second law of thermodynamics to determine if a process is spontaneous is that it requires measurements of the entropy change for the system [[i:and]] the entropy change for the surroundings. An alternative approach involving a new thermodynamic property defined in terms of system properties only was introduced in the late nineteenth century by American mathematician Josiah Willard [[term:Gibbs|term-00001]]. This new property is called the [[term:Gibbs free energy ([[i:G]])|term-00002]] (or simply the [[i:free energy]]), and it is defined in terms of a system’s enthalpy and entropy as the following:
 
 <!-- SEG:m68819:para:fs-idm247387040 -->
-Free energy is a state function, and at constant temperature and pressure, the {{term}}free energy change (Δ[[i:G]]){{/term}} may be expressed as the following:
+Free energy is a state function, and at constant temperature and pressure, the [[term:free energy change (Δ[[i:G]])|term-00003]] may be expressed as the following:
 
 <!-- SEG:m68819:para:fs-idm111872960 -->
 (For simplicity’s sake, the subscript “sys” will be omitted henceforth.)
@@ -95,7 +95,7 @@ However, as noted previously in this chapter, such conditions are not realistic.
 Calculating Free Energy Change
 
 <!-- SEG:m68819:para:fs-idm233417152 -->
-Free energy is a state function, so its value depends only on the conditions of the initial and final states of the system. A convenient and common approach to the calculation of free energy changes for physical and chemical reactions is by use of widely available compilations of standard state thermodynamic data. One method involves the use of standard enthalpies and entropies to compute {{term}}standard free energy changes, Δ[[i:G]]°{{/term}}, according to the following relation.
+Free energy is a state function, so its value depends only on the conditions of the initial and final states of the system. A convenient and common approach to the calculation of free energy changes for physical and chemical reactions is by use of widely available compilations of standard state thermodynamic data. One method involves the use of standard enthalpies and entropies to compute [[term:standard free energy changes, Δ[[i:G]]°|term-00004]], according to the following relation.
 
 <!-- SEG:m68819:example-title:fs-idm117444432-title -->
 Using Standard Enthalpy and Entropy Changes to Calculate Δ[[i:G]]°
@@ -167,7 +167,7 @@ H[[sub:2]]O([[i:g]])
 188.8
 
 <!-- SEG:m68819:para:fs-idm43672192 -->
-The standard free energy change for a reaction may also be calculated from {{term}}standard free energy of formation Δ[[i:G]][[sub:f]]°{{/term}} values of the reactants and products involved in the reaction. The standard free energy of formation is the free energy change that accompanies the formation of one mole of a substance from its elements in their standard states. Similar to the standard enthalpy of formation, [[MATH:7]] is by definition zero for elemental substances in their standard states. The approach used to calculate [[MATH:8]] for a reaction from [[MATH:9]] values is the same as that demonstrated previously for enthalpy and entropy changes. For the reaction
+The standard free energy change for a reaction may also be calculated from [[term:standard free energy of formation Δ[[i:G]][[sub:f]]°|term-00005]] values of the reactants and products involved in the reaction. The standard free energy of formation is the free energy change that accompanies the formation of one mole of a substance from its elements in their standard states. Similar to the standard enthalpy of formation, [[MATH:7]] is by definition zero for elemental substances in their standard states. The approach used to calculate [[MATH:8]] for a reaction from [[MATH:9]] values is the same as that demonstrated previously for enthalpy and entropy changes. For the reaction
 
 <!-- SEG:m68819:para:fs-idm124979680 -->
 the standard free energy change at room temperature may be calculated as
@@ -343,6 +343,9 @@ These four scenarios are summarized in [[xref:CNX_Chem_16_04_Scenarios]].
 <!-- SEG:m68819:caption:CNX_Chem_16_04_Scenarios-caption -->
 There are four possibilities regarding the signs of enthalpy and entropy changes.
 
+<!-- SEG:m68819:alt:fs-idm123583264-alt -->
+A table with three columns and four rows is shown. The first column has the phrase, “Delta S greater than zero ( increase in entropy ),” in the third row and the phrase, “Delta S less than zero ( decrease in entropy),” in the fourth row. The second and third columns have the phrase, “Summary of the Four Scenarios for Enthalpy and Entropy Changes,” written above them. The second column has, “delta H greater than zero ( endothermic ),” in the second row, “delta G less than zero at high temperature, delta G greater than zero at low temperature, Process is spontaneous at high temperature,” in the third row, and “delta G greater than zero at any temperature, Process is nonspontaneous at any temperature,” in the fourth row. The third column has, “delta H less than zero ( exothermic ),” in the second row, “delta G less than zero at any temperature, Process is spontaneous at any temperature,” in the third row, and “delta G less than zero at low temperature, delta G greater than zero at high temperature, Process is spontaneous at low temperature.”
+
 <!-- SEG:m68819:example-title:fs-idm299243200-title -->
 Predicting the Temperature Dependence of Spontaneity
 
@@ -387,6 +390,9 @@ So, saying a process is spontaneous at “high” or “low” temperatures mean
 
 <!-- SEG:m68819:caption:CNX_Chem_16_05_TempSpont-caption -->
 These plots show the variation in Δ[[i:G]] with temperature for the four possible combinations of arithmetic sign for Δ[[i:H]] and Δ[[i:S]].
+
+<!-- SEG:m68819:alt:fs-idm275434144-alt -->
+A graph is shown where the y-axis is labeled, “Free energy,” and the x-axis is labeled, “Increasing temperature ( K ).” The value of zero is written midway up the y-axis with the label, “delta G greater than 0,” written above this line and, “delta G less than 0,” written below it. The bottom half of the graph is labeled on the right as, “Spontaneous,” and the top half is labeled on the right as, “Nonspontaneous.” A green line labeled, “delta H less than 0, delta S greater than 0,” extends from a quarter of the way up the y-axis to the bottom right of the graph. A yellow line labeled, “delta H less than 0, delta S less than 0,” extends from a quarter of the way up the y-axis to the middle right of the graph. A second yellow line labeled, “delta H greater than 0, delta S greater than 0,” extends from three quarters of the way up the y-axis to the middle right of the graph. A red line labeled, “delta H greater than 0, delta S less than 0,” extends from three quarters of the way up the y-axis to the top right of the graph.
 
 <!-- SEG:m68819:example-title:fs-idm232248480-title -->
 Equilibrium Temperature for a Phase Transition
@@ -478,43 +484,43 @@ For a system at equilibrium, [[i:Q]] = [[i:K]] and Δ[[i:G]] = 0, and the previo
 <!-- SEG:m68819:para:fs-idm206226416 -->
 This form of the equation provides a useful link between these two essential thermodynamic properties, and it can be used to derive equilibrium constants from standard free energy changes and vice versa. The relations between standard free energy changes and equilibrium constants are summarized in [[xref:fs-idm159425040]].
 
-<!-- SEG:m68819:entry:auto-161 -->
+<!-- SEG:m68819:entry:auto-163 -->
 Relations between Standard Free Energy Changes and Equilibrium Constants
 
-<!-- SEG:m68819:entry:auto-162 -->
+<!-- SEG:m68819:entry:auto-164 -->
 [[i:K]]
 
-<!-- SEG:m68819:entry:auto-163 -->
+<!-- SEG:m68819:entry:auto-165 -->
 Δ[[i:G]]°
 
-<!-- SEG:m68819:entry:auto-164 -->
+<!-- SEG:m68819:entry:auto-166 -->
 Composition of an Equilibrium Mixture
 
-<!-- SEG:m68819:entry:auto-165 -->
+<!-- SEG:m68819:entry:auto-167 -->
 > 1
 
-<!-- SEG:m68819:entry:auto-166 -->
+<!-- SEG:m68819:entry:auto-168 -->
 &lt; 0
 
-<!-- SEG:m68819:entry:auto-167 -->
+<!-- SEG:m68819:entry:auto-169 -->
 Products are more abundant
 
-<!-- SEG:m68819:entry:auto-168 -->
+<!-- SEG:m68819:entry:auto-170 -->
 &lt; 1
 
-<!-- SEG:m68819:entry:auto-169 -->
+<!-- SEG:m68819:entry:auto-171 -->
 > 0
 
-<!-- SEG:m68819:entry:auto-170 -->
+<!-- SEG:m68819:entry:auto-172 -->
 Reactants are more abundant
 
-<!-- SEG:m68819:entry:auto-171 -->
+<!-- SEG:m68819:entry:auto-173 -->
 = 1
 
-<!-- SEG:m68819:entry:auto-172 -->
+<!-- SEG:m68819:entry:auto-174 -->
 = 0
 
-<!-- SEG:m68819:entry:auto-173 -->
+<!-- SEG:m68819:entry:auto-175 -->
 Reactants and products are comparably abundant
 
 <!-- SEG:m68819:example-title:fs-idm300346368-title -->
@@ -559,6 +565,9 @@ To further illustrate the relation between these two essential thermodynamic con
 <!-- SEG:m68819:caption:CNX_Chem_16_04_Gibbs-caption -->
 These plots show the free energy versus reaction progress for systems whose standard free energy changes are (a) negative, (b) positive, and (c) zero. Nonequilibrium systems will proceed spontaneously in whatever direction is necessary to minimize free energy and establish equilibrium.
 
+<!-- SEG:m68819:alt:fs-idm247894944-alt -->
+Three graphs, labeled, “a,” “b,” and “c” are shown where the y-axis is labeled, “Gibbs free energy ( G ),” and, “G superscript degree sign ( reactants ),” while the x-axis is labeled, “Reaction progress,” and “Reactants,” on the left and, “Products,” on the right. In graph a, a line begins at the upper left side and goes steadily down to a point about halfway up the y-axis and two thirds of the way on the x-axis, then rises again to a point labeled, “G superscript degree sign ( products ),” that is slightly higher than halfway up the y-axis. The distance between the beginning and ending points of the graph is labeled as, “delta G less than 0,” while the lowest point on the graph is labeled, “Q equals K greater than 1.” In graph b, a line begins at the middle left side and goes steadily down to a point about two fifths up the y-axis and one third of the way on the x-axis, then rises again to a point labeled, “G superscript degree sign ( products ),” that is near the top of the y-axis. The distance between the beginning and ending points of the graph is labeled as, “delta G greater than 0,” while the lowest point on the graph is labeled, “Q equals K less than 1.” In graph c, a line begins at the upper left side and goes steadily down to a point near the bottom of the y-axis and half way on the x-axis, then rises again to a point labeled, “G superscript degree sign ( products ),” that is equal to the starting point on the y-axis which is labeled, “G superscript degree sign ( reactants ).” The lowest point on the graph is labeled, “Q equals K equals 1.” At the top of the graph is the label, “Delta G superscript degree sign equals 0.”
+
 <!-- SEG:m68819:title:fs-idm220227936-title -->
 Key Concepts and Summary
 
@@ -568,7 +577,7 @@ Gibbs free energy ([[i:G]]) is a state function defined with regard to system qu
 <!-- SEG:m68819:title:fs-idm248576000-title -->
 Key Equations
 
-<!-- SEG:m68819:entry:auto-191 -->
+<!-- SEG:m68819:entry:auto-194 -->
 Δ[[i:G]] = Δ[[i:H]] − [[i:T]]Δ[[i:S]]
 
 <!-- SEG:m68819:title:fs-idm233991504-title -->
@@ -852,6 +861,9 @@ Acetic acid, CH[[sub:3]]CO[[sub:2]]H, can form a dimer, (CH[[sub:3]]CO[[sub:2]]H
 
 <!-- SEG:m68819:problem:fs-idm191385552 -->
 The dimer is held together by two hydrogen bonds with a total strength of 66.5 kJ per mole of dimer.
+
+<!-- SEG:m68819:alt:fs-idm191384928-alt -->
+This Lewis structure shows a six-sided ring structure composed of a methyl group single bonded to a carbon, which is double bonded to an oxygen atom in an upward position and single bonded to an oxygen atom in a downward position. The lower oxygen is single bonded to a hydrogen, which is connected by a dotted line to an oxygen that is double bonded to a carbon in an upward position. This carbon is single bonded to a methyl group to its right and to an oxygen in the upward position that is single bonded to a hydrogen that is connected by a dotted line to the double bonded oxygen on the left.
 
 <!-- SEG:m68819:problem:fs-idm191383440 -->
 At 25 °C, the equilibrium constant for the dimerization is 1.3 [[MATH:88]] 10[[sup:3]] (pressure in atm). What is Δ[[i:S]]° for the reaction?

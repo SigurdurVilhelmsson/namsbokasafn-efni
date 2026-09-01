@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>HC≡C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{HC≡C}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext style=\"color: #007A49\">H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{H}}"
+  }
+}

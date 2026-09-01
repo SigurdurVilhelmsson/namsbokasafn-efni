@@ -1,0 +1,186 @@
+{
+  "moduleId": "m00125",
+  "title": {
+    "segmentId": "m00125:title:auto-1",
+    "text": "MECHANISM"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "dc822acf-2dad-4b74-bcd1-07641d3313bd"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00125:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00125:alt:fig-00001-alt",
+          "text": "The figure shows a reaction between R-Br and water yields R-OH and hydrogen bromide. The reactivity of substrate in increasing order is: methyl, primary, secondary, and tertiary."
+        },
+        "src": "../../media/OChem_11_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00125:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00125:para:para-00003"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00125:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00125:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00125:alt:fig-00002-alt",
+          "text": "2-bromo-2-methylpropane undergoes a 3-step reaction to form neutral alcohol and hydronium by way of a carbocation. Step 1 forms carbocation, is rate-limiting; step 2 quenches carbocation, is fast."
+        },
+        "src": "../../media/OChem_11_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00125:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00125:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00125:alt:fig-00003-alt",
+          "text": "An energy diagram shows a large barrier to step 1 of S N 1 (forming carbocation) and small barrier to step 2 (quenching carbocation)."
+        },
+        "src": "../../media/OChem_11_04_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00125:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00125:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00125:alt:fig-00004-alt",
+          "text": "The reaction is represented using ball-and-stick model. Chiral substrate undergoes dissociation to form a planar, achiral carbocation intermediate, which reacts with nucleophile to produce 50% inversion or 50% retention of configurations."
+        },
+        "src": "../../media/OChem_11_04_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00125:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00125:alt:fig-00005-alt",
+          "text": "A reaction of (R)-6-chloro-2,6-dimethyloctane with water and ethanol, forms two products with 60% S (inversion) and 40% R (retention), respectively."
+        },
+        "src": "../../media/OChem_11_04_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00125:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00125:caption:fig-00006-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00125:alt:fig-00006-alt",
+          "text": "The reaction is represented using ball-and-stick model. Chiral substrate undergoes dissociation to form intermediates and yields two products by racemization (from free carbocation) and one product by inversion (from ion pair)."
+        },
+        "src": "../../media/OChem_11_04_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00125:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

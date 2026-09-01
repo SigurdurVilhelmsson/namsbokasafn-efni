@@ -1,0 +1,90 @@
+{
+  "moduleId": "m00341",
+  "title": {
+    "segmentId": "m00341:title:auto-1",
+    "text": "Molecular Orbitals of Conjugated Pi Systems"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f7c6bce2-b842-4bd4-9d98-49e5cae624ad"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00341:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00341:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00341:alt:fig-00001-alt",
+          "text": "The pi molecular orbitals of ethylene (one bonding and one antibonding) and 1,3-butadiene (two bonding and two antibonding)."
+        },
+        "src": "../../media/OChem_30_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00341:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00341:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00341:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00341:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00341:alt:fig-00002-alt",
+          "text": "The six pi molecular orbitals of 1,3,5-hexatriene. The three bonding  orbitals are filled in the ground state. In the excited state, one electron has moved from bonding to antibonding orbital."
+        },
+        "src": "../../media/OChem_30_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00341:para:para-00005"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00341:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

@@ -1,0 +1,167 @@
+{
+  "moduleId": "m00311",
+  "title": {
+    "segmentId": "m00311:title:auto-1",
+    "text": "Base Pairing in DNA"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d1bc9403-dd48-4af0-8117-0ffb0776e2a7"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00311:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00311:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00311:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00311:alt:fig-00001-alt",
+          "text": "The ball-and-stick model in electrostatic potential maps and structures of base pairs. In deoxyribonucleic acid, the G-C pair involves three hydrogen bonds and the A-T pair involves two hydrogen bonds."
+        },
+        "src": "../../media/OChem_28_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00311:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00311:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00311:alt:fig-00002-alt",
+          "text": "Deoxyribonucleic acid's space-filling and wire-frame model. Its height distance of one complete turn is thirty-four Angstrom. Major and minor grooves measure twelve and six Angstroms, respectively. Diameter is twenty Angstrom."
+        },
+        "src": "../../media/OChem_28_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00311:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00311:para:para-00005"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00311:item:list-00001-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00311:item:list-00001-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m00311:item:list-00001-item-3"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00311:alt:fig-00003-alt",
+          "text": "D N A undergoes replication to form its new copies. A gene from D N A is converted into R N A by transcription which is converted into proteins by translation."
+        },
+        "src": "../../media/OChem_28_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00311:example-title:exam-00001-title",
+        "text": "Predicting the Complementary Base Sequence in Double-Stranded DNA"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00311:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00311:para:para-00007",
+          "title": {
+            "segmentId": "m00311:para-title:para-00007-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "title": {
+            "segmentId": "m00311:para-title:para-00008-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00311:para:para-00009"
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00311:para:para-00010"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00311:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

@@ -1,0 +1,157 @@
+{
+  "moduleId": "m00186",
+  "title": {
+    "segmentId": "m00186:title:auto-1",
+    "text": "Polycyclic Aromatic Compounds"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d2e27e47-a32b-428b-bcfd-df05bbcb0b15"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00186:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00186:alt:fig-00001-alt",
+          "text": "The structures of naphthalene, anthracene, beno[a]pyrene, and coronene. Benzene rings in each structure have alternating double bonds."
+        },
+        "src": "../../media/OChem_15_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00186:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00186:alt:fig-00002-alt",
+          "text": "Three resonance structures of naphthalene, separated by double-headed arrows. Arrows depict the movement of electrons in the first and second structures."
+        },
+        "src": "../../media/OChem_15_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00186:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00186:alt:fig-00003-alt",
+          "text": "When heated, naphthalene reacts with bromine in the presence of iron to yield 1-bromonaphthalene (75 percent) and hydrogen bromide."
+        },
+        "src": "../../media/OChem_15_06_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00186:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00186:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00186:alt:fig-00004-alt",
+          "text": "The structure, orbital representation, and ball-and-stick model along with the electrostatic potential map of naphthalene."
+        },
+        "src": "../../media/OChem_15_06_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00186:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00186:alt:fig-00005-alt",
+          "text": "The structures of quinoline, isoquinoline, indole, and purine. All the atoms in the rings are numbered."
+        },
+        "src": "../../media/OChem_15_06_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00186:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00186:alt:fig-00006-alt",
+          "text": "The structures of tryptophan (an amino acid), adenine (in D N A and R N A), guanine (in D N A and R N A), and quinine (an antimalarial agent)."
+        },
+        "src": "../../media/OChem_15_06_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00186:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 6
+}

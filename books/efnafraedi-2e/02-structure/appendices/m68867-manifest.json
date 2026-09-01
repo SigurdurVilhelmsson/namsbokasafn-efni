@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68867",
-  "extractedAt": "2026-07-07T09:12:27.042Z",
+  "extractedAt": "2026-08-31T19:08:33.723Z",
   "sourceHash": "97cca1f2840fbb56",
-  "segmentCount": 15,
+  "segmentCount": 20,
   "segmentIds": [
     "m68867:title:auto-1",
     "m68867:entry:auto-2",
@@ -11,15 +11,20 @@
     "m68867:entry:auto-4",
     "m68867:entry:auto-5",
     "m68867:entry:auto-6",
-    "m68867:entry:auto-7",
+    "m68867:alt:fs-idp166511952-alt",
     "m68867:entry:auto-8",
     "m68867:entry:auto-9",
-    "m68867:entry:auto-10",
+    "m68867:alt:fs-idp219179584-alt",
     "m68867:entry:auto-11",
     "m68867:entry:auto-12",
-    "m68867:entry:auto-13",
+    "m68867:alt:fs-idp47327760-alt",
     "m68867:entry:auto-14",
-    "m68867:entry:auto-15"
+    "m68867:entry:auto-15",
+    "m68867:alt:fs-idp95503040-alt",
+    "m68867:entry:auto-17",
+    "m68867:entry:auto-18",
+    "m68867:alt:fs-idm31160096-alt",
+    "m68867:entry:auto-20"
   ],
   "equationCount": 5,
   "equationIds": [

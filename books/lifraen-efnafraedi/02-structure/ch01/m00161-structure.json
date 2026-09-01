@@ -1,0 +1,248 @@
+{
+  "moduleId": "m00161",
+  "title": {
+    "segmentId": "m00161:title:auto-1",
+    "text": "Development of Chemical Bonding Theory"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "bba72705-abcf-4238-8d40-5fccbbcc6ea1"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00161:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00161:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00161:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00161:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00161:alt:fig-00001-alt",
+          "text": "Two regular tetrahedrons (one with 3 D representation), the wedge-bond structure, and ball and stick model of a tetrahedral carbon atom."
+        },
+        "src": "../../media/OChem_01_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00161:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00161:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00161:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00161:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00161:alt:fig-00002-alt",
+          "text": "The Lewis and line-bond structures of methane, ammonia, water, and methanol featuring one lone pair on nitrogen and two on oxygen."
+        },
+        "src": "../../media/OChem_01_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00161:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00161:alt:fig-00003-alt",
+          "text": "The bond count of various elements. Hydrogen, fluorine, chlorine, bromine, and iodine have one bond but oxygen, nitrogen, and carbon have two, three, and four bonds, respectively."
+        },
+        "src": "../../media/OChem_01_04_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00161:para:para-00009"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00161:alt:fig-00004-alt",
+          "text": "Three different representations of N H 3. Central nitrogen shares a pair of electrons with each hydrogen, and has a lone pair that is implied in the third line-bond representation."
+        },
+        "src": "../../media/OChem_01_04_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00161:example-title:exam-00001-title",
+        "text": "Predicting the Number of Bonds Formed by Atoms in Molecules"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00161:para:para-00010"
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00161:para:para-00011",
+          "title": {
+            "segmentId": "m00161:para-title:para-00011-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00161:para:para-00012",
+          "title": {
+            "segmentId": "m00161:para-title:para-00012-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "exam-00002",
+      "title": {
+        "segmentId": "m00161:example-title:exam-00002-title",
+        "text": "Drawing Electron-Dot and Line-Bond Structures"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00161:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00161:para:para-00014",
+          "title": {
+            "segmentId": "m00161:para-title:para-00014-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00161:para:para-00015",
+          "title": {
+            "segmentId": "m00161:para-title:para-00015-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00161:alt:fig-00005-alt",
+          "text": "The Lewis structure and chemical structure of chloromethane."
+        },
+        "src": "../../media/OChem_01_04_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00161:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

@@ -1,0 +1,469 @@
+{
+  "moduleId": "m00285",
+  "title": {
+    "segmentId": "m00285:title:auto-1",
+    "text": "Conjugate Carbonyl Additions: The Michael Reaction"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "ba012575-9ff8-43ec-9a51-3ef702fe94f6"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00285:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00285:alt:fig-00001-alt",
+          "text": "The reversible reaction shows a conjugated carbonyl compound reacting with a nucleophile to form an intermediate with a carbanion. Further reaction of intermediate yields a conjugate addition product."
+        },
+        "src": "../../media/OChem_23_10_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00285:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00285:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00285:alt:fig-00002-alt",
+          "text": "The reaction of ethyl acetoacetate with 3-buten-2-one with sodium ethoxide in ethanol, then hydronium ion, forms a conjugate addition product with an extended carbon chain."
+        },
+        "src": "../../media/OChem_23_10_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00285:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00285:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00285:alt:fig-00003-alt",
+          "text": "An arrow-pushing mechanism of the Michael reaction of ethyl-3-oxobutanoate involving three steps. These are proton abstraction, formation of an enolate, and product formation."
+        },
+        "src": "../../media/OChem_23_10_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00285:para:para-00005"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "An illustration (table) shows some Michael acceptors and Michael donors along with their structures: The compounds under Michael acceptors are as follows: Propenal with the structure showing a methylene group double bonded in pink to a methine group bonded to a methine group double bonded to an oxygen atom; 3-Buten-2-one with the structure showing a methylene bond double bonded in pink to a methine group bonded to a carbonyl group bonded to a methyl group; Ethyl propenoate with the structure showing a methylene group double bonded in pink to a methine group bonded to an acetate group bonded to ethyl group; Propenenitrile with the structure showing a methylene group double bonded in pink to a methine group bonded to a cyanide group; Nitroethylene with the structure showing a methylene group double bonded in pink to a methine group bonded to a nitro group. The compounds under Michael donors are as follows: beta Diketone with the structure showing a radical bonded to a carbonyl group bonded to a blue methylene bonded to a carbonyl group bonded to R prime; beta Keto ester with the structure showing a radical group bonded to a carbonyl group bonded to a blue methylene group bonded to an acetate group bonded to an ethyl group; Diethyl malonate with the structure showing an ethyl group bonded to an acetate group bonded to a blue methylene group bonded to an acetate group bonded to an ethyl group; beta Keto nitrile with the structure showing a radical group bonded to a carbonyl group bonded to a blue methylene group bonded to a cyanide group; Nitro compound with the structure showing a radical group bonded to a blue methylene group bonded to a nitro group.",
+      "title": {
+        "segmentId": "m00285:table-title:table-00001-title",
+        "text": "Some Michael Acceptors and Michael Donors"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00285:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c3",
+                "nameend": "c4"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00285:alt:OChem_23_10_004a_jpg-alt",
+                "text": "The structure of the propenal shows a three-carbon chain. A double bond is shared between the second and third carbon. The first carbon is part of C H O group.",
+                "mediaId": null,
+                "src": "../../media/OChem_23_10_004a.jpg"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00285:alt:OChem_23_10_004g_jpg-alt",
+                "text": "The structure of beta-diketone, a Michael donor. Carbonyl with substituent R is bonded to C H 2, which is bonded to another carbonyl with substituent R prime.",
+                "mediaId": null,
+                "src": "../../media/OChem_23_10_004g.jpg"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00285:alt:OChem_23_10_004b_jpg-alt",
+                "text": "The structure of but-3-en-2-one (Michael acceptor) shows a four-carbon chain with a carbonyl at the second carbon. A double bond connects the third and fourth carbon.",
+                "mediaId": null,
+                "src": "../../media/OChem_23_10_004b.jpg"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00285:alt:OChem_23_10_004h_jpg-alt",
+                "text": "The beta-keto ester has a C H 2 group between two carbonyls. An ethoxy group is attached to one terminal carbonyl, and an R group is on the other terminus.",
+                "mediaId": null,
+                "src": "../../media/OChem_23_10_004h.jpg"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00285:alt:OChem_23_10_004c_jpg-alt",
+                "text": "The structure of ethyl propenoate (Michael acceptor) shows a three-carbon chain where the second and third carbon share double bond. An ethoxy group is attached to the first carbonyl carbon.",
+                "mediaId": null,
+                "src": "../../media/OChem_23_10_004c.jpg"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00285:alt:OChem_23_10_004i_jpg-alt",
+                "text": "The structure of diethyl malonate, a Michael donor. Carbonyl with ethoxy substituent is bonded to C H 2, which is bonded to another carbonyl with ethoxy substituent.",
+                "mediaId": null,
+                "src": "../../media/OChem_23_10_004i.jpg"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00285:alt:OChem_23_10_004d_jpg-alt",
+                "text": "The structure of propenamide (Michael acceptor) shows a three-carbon chain with N H 2 group attached to the carbonyl carbon. The second and third carbon atoms are double-bonded.",
+                "mediaId": null,
+                "src": "../../media/OChem_23_10_004d.jpg"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00285:alt:OChem_23_10_004j_jpg-alt",
+                "text": "The structure of beta-keto nitrile, Michael donor. R is bonded to the carbonyl group which is further bonded to methylene. Methylene is bonded with a cyanide group.",
+                "mediaId": null,
+                "src": "../../media/OChem_23_10_004j.jpg"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00285:alt:OChem_23_10_004e_jpg-alt",
+                "text": "The structure of propenenitrile (acrylonitrile) shows a three-carbon chain where the first carbon is triple-bonded to nitrogen. A double bond is shared between the second and third carbon atoms.",
+                "mediaId": null,
+                "src": "../../media/OChem_23_10_004e.jpg"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-31",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00285:alt:OChem_23_10_004k_jpg-alt",
+                "text": "The structure of a nitro compound, Michael-donor. R group is single-bonded to methylene which is further linked to the nitro group.",
+                "mediaId": null,
+                "src": "../../media/OChem_23_10_004k.jpg"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00285:alt:OChem_23_10_004f_jpg-alt",
+                "text": "The structure of nitroethylene (Michael acceptor) shows a two-carbon chain. N O 2 group is attached to the first carbon. The first and second carbon atoms are double-bonded.",
+                "mediaId": null,
+                "src": "../../media/OChem_23_10_004f.jpg"
+              }
+            },
+            {
+              "segmentId": "m00285:entry:auto-35",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00285:example-title:exam-00001-title",
+        "text": "Using the Michael Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00285:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00285:para:para-00007",
+          "title": {
+            "segmentId": "m00285:para-title:para-00007-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "title": {
+            "segmentId": "m00285:para-title:para-00008-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00285:alt:fig-00004-alt",
+          "text": "The structure shows a cyclohexanone ring connected to C O O E t and C H 2 C H 2 C O O E t groups at the first carbon."
+        },
+        "src": "../../media/OChem_23_10_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00285:alt:fig-00005-alt",
+          "text": "The reaction between ethyl-2-oxocyclohexanecarboxylate with alpha, beta-unsaturated ester (three-carbon) in the presence of sodium ethoxide in ethanol gives ethyl-1-(3-ethoxy-3-oxopropyl)-2-oxocyclohexanecarboxylate (1,5-dicarbonyl compound) with a new carbon-carbon bond between cyclohexane and ester."
+        },
+        "src": "../../media/OChem_23_10_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00285:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 10
+}

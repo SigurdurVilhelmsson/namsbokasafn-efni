@@ -28,11 +28,14 @@ Stoichiometric amounts of sandwich ingredients for this recipe are bread and che
 <!-- SEG:m68714:caption:CNX_Chem_04_04_sandwich-caption -->
 Sandwich making can illustrate the concepts of limiting and excess reactants.
 
+<!-- SEG:m68714:alt:fs-idm59912944-alt -->
+This figure has three rows showing the ingredients needed to make a sandwich. The first row reads, “1 sandwich = 2 slices of bread + 1 slice of cheese.” Two slices of bread and one slice of cheese are shown. The second row reads, “Provided with: 28 slices of bread + 11 slices of cheese.” There are 28 slices of bread and 11 slices of cheese shown. The third row reads, “We can make: 11 sandwiches + 6 slices of bread left over.” 11 sandwiches are shown with six extra slices of bread.
+
 <!-- SEG:m68714:para:fs-idm48112848 -->
 Consider this concept now with regard to a chemical process, the reaction of hydrogen with chlorine to yield hydrogen chloride:
 
 <!-- SEG:m68714:para:fs-idp157494624 -->
-The balanced equation shows the hydrogen and chlorine react in a 1:1 stoichiometric ratio. If these reactants are provided in any other amounts, one of the reactants will nearly always be entirely consumed, thus limiting the amount of product that may be generated. This substance is the {{term}}limiting reactant{{/term}}, and the other substance is the {{term}}excess reactant{{/term}}. Identifying the limiting and excess reactants for a given situation requires computing the molar amounts of each reactant provided and comparing them to the stoichiometric amounts represented in the balanced chemical equation. For example, imagine combining 3 moles of H[[sub:2]] and 2 moles of Cl[[sub:2]]. This represents a 3:2 (or 1.5:1) ratio of hydrogen to chlorine present for reaction, which is greater than the stoichiometric ratio of 1:1. Hydrogen, therefore, is present in excess, and chlorine is the limiting reactant. Reaction of all the provided chlorine (2 mol) will consume 2 mol of the 3 mol of hydrogen provided, leaving 1 mol of hydrogen unreacted.
+The balanced equation shows the hydrogen and chlorine react in a 1:1 stoichiometric ratio. If these reactants are provided in any other amounts, one of the reactants will nearly always be entirely consumed, thus limiting the amount of product that may be generated. This substance is the [[term:limiting reactant|term-00001]], and the other substance is the [[term:excess reactant|term-00002]]. Identifying the limiting and excess reactants for a given situation requires computing the molar amounts of each reactant provided and comparing them to the stoichiometric amounts represented in the balanced chemical equation. For example, imagine combining 3 moles of H[[sub:2]] and 2 moles of Cl[[sub:2]]. This represents a 3:2 (or 1.5:1) ratio of hydrogen to chlorine present for reaction, which is greater than the stoichiometric ratio of 1:1. Hydrogen, therefore, is present in excess, and chlorine is the limiting reactant. Reaction of all the provided chlorine (2 mol) will consume 2 mol of the 3 mol of hydrogen provided, leaving 1 mol of hydrogen unreacted.
 
 <!-- SEG:m68714:para:fs-idp22005824 -->
 An alternative approach to identifying the limiting reactant involves comparing the amount of product expected for the complete reaction of each reactant. Each reactant amount is used to separately calculate the amount of product that would be formed per the reaction’s stoichiometry. The reactant yielding the lesser amount of product is the limiting reactant. For the example in the previous paragraph, complete reaction of the hydrogen would yield
@@ -45,6 +48,9 @@ The chlorine will be completely consumed once 4 moles of HCl have been produced.
 
 <!-- SEG:m68714:caption:CNX_Chem_04_04_limiting-caption -->
 When H[[sub:2]] and Cl[[sub:2]] are combined in nonstoichiometric amounts, one of these reactants will limit the amount of HCl that can be produced. This illustration shows a reaction in which hydrogen is present in excess and chlorine is the limiting reactant.
+
+<!-- SEG:m68714:alt:fs-idp182564432-alt -->
+The figure shows a space-filling molecular models reacting. There is a reaction arrow pointing to the right in the middle. To the left of the reaction arrow there are three molecules each consisting of two green spheres bonded together. There are also five molecules each consisting of two smaller, white spheres bonded together. Above these molecules is the label, “Before reaction,” and below these molecules is the label, “6 H subscript 2 and 4 C l subscript 2.” To the right of the reaction arrow, there are eight molecules each consisting of one green sphere bonded to a smaller white sphere. There are also two molecules each consisting of two white spheres bonded together. Above these molecules is the label, “After reaction,” and below these molecules is the label, “8 H C l and 2 H subscript 2.”
 
 <!-- SEG:m68714:para:fs-idm52028528 -->
 View this interactive [[link:simulation|http://openstax.org/l/16reactantprod]] illustrating the concepts of limiting and excess reactants.
@@ -101,7 +107,7 @@ O[[sub:2]]
 Percent Yield
 
 <!-- SEG:m68714:para:fs-idm22072192 -->
-The amount of product that [[i:may be]] produced by a reaction under specified conditions, as calculated per the stoichiometry of an appropriate balanced chemical equation, is called the {{term}}theoretical yield{{/term}} of the reaction. In practice, the amount of product obtained is called the {{term}}actual yield{{/term}}, and it is often less than the theoretical yield for a number of reasons. Some reactions are inherently inefficient, being accompanied by [[i:side reactions]] that generate other products. Others are, by nature, incomplete (consider the partial reactions of weak acids and bases discussed earlier in this chapter). Some products are difficult to collect without some loss, and so less than perfect recovery will reduce the actual yield. The extent to which a reaction’s theoretical yield is achieved is commonly expressed as its {{term}}percent yield{{/term}}:
+The amount of product that [[i:may be]] produced by a reaction under specified conditions, as calculated per the stoichiometry of an appropriate balanced chemical equation, is called the [[term:theoretical yield|term-00003]] of the reaction. In practice, the amount of product obtained is called the [[term:actual yield|term-00004]], and it is often less than the theoretical yield for a number of reasons. Some reactions are inherently inefficient, being accompanied by [[i:side reactions]] that generate other products. Others are, by nature, incomplete (consider the partial reactions of weak acids and bases discussed earlier in this chapter). Some products are difficult to collect without some loss, and so less than perfect recovery will reduce the actual yield. The extent to which a reaction’s theoretical yield is achieved is commonly expressed as its [[term:percent yield|term-00005]]:
 
 <!-- SEG:m68714:para:fs-idm52282816 -->
 Actual and theoretical yields may be expressed as masses or molar amounts (or any other appropriate property; e.g., volume, if the product is a gas). As long as both yields are expressed using the same units, these units will cancel when percent yield is calculated.
@@ -154,6 +160,9 @@ The synthesis of the common nonprescription pain medication, ibuprofen, nicely i
 <!-- SEG:m68714:caption:CNX_Chem_04_04_GreenChem-caption -->
 (a) Ibuprofen is a popular nonprescription pain medication commonly sold as 200 mg tablets. (b) The BHC process for synthesizing ibuprofen requires only three steps and exhibits an impressive atom economy. (credit a: modification of work by Derrick Coetzee)
 
+<!-- SEG:m68714:alt:fs-idp994368-alt -->
+This figure is labeled, “a,” and, “b.” Part a shows an open bottle of ibuprofen and a small pile of ibuprofen tablets beside it. Part b shows a reaction along with line structures. The first line structure looks like a diagonal line pointing down and to the right, then up and to the right and then down and to the right. At this point it connects to a hexagon with alternating double bonds. At the first trough there is a line that points straight down. From this structure, there is an arrow pointing downward. The arrow is labeled, “H F,” on the left and “( C H subscript 3 C O ) subscript 2 O,” on the right. The next line structure looks exactly like the first line structure, but it has a line angled down and to the right from the lower right point of the hexagon. This line is connected to another line which points straight down. Where these two lines meet, there is a double bond to an O atom. There is another arrow pointing downward, and it is labeled, “H subscript 2, Raney N i.” The next structure looks very similar to the second, previous structure, except in place of the double bonded O, there is a singly bonded O H group. There is a final reaction arrow pointing downward, and it is labeled, “C O, [ P d ].” The final structure is similar to the third, previous structure except in place of the O H group, there is another line that points down and to the right to an O H group. At these two lines, there is a double bonded O.
+
 <!-- SEG:m68714:title:fs-idm64875168-title -->
 Key Concepts and Summary
 
@@ -163,7 +172,7 @@ When reactions are carried out using less-than-stoichiometric quantities of reac
 <!-- SEG:m68714:title:fs-idp36036608-title -->
 Key Equations
 
-<!-- SEG:m68714:entry:auto-56 -->
+<!-- SEG:m68714:entry:auto-59 -->
 [[MATH:1]]
 
 <!-- SEG:m68714:title:fs-idm49138160-title -->
@@ -276,6 +285,9 @@ How many molecules of C[[sub:2]]H[[sub:4]]Cl[[sub:2]] can be prepared from 15 C[
 
 <!-- SEG:m68714:problem:fs-idp16595856 -->
 How many molecules of the sweetener saccharin can be prepared from 30 C atoms, 25 H atoms, 12 O atoms, 8 S atoms, and 14 N atoms?
+
+<!-- SEG:m68714:alt:fs-idp36082896-alt -->
+A structural formula is shown. A hexagonal ring of 6 C atoms with alternating double bonds has single H atoms bonded to four consecutive C atoms on the left side of the ring. The two C atoms on the right side of the ring, which are joined by a double bond, are also included in a 5 atom ring to their right. The C atom of this pair that is nearest the top of the structure is singly bonded to a C atom at the top of the 5 atom ring which has an O atom double bonded above. An N atom is singly bonded to the lower right of this same C atom. The N atom has an H atom bonded to its right and to its lower left, it is bonded to an S atom. The S atom is connected to the second C atom that is shared in the two rings. The S atom is also double bonded to an O atom to its lower right and is double bonded to a second O atom directly below it.
 
 <!-- SEG:m68714:solution:fs-idp81228400 -->
 Only four molecules can be made.

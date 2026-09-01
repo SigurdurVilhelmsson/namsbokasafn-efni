@@ -39,7 +39,10 @@
       },
       "media": {
         "id": "fs-idp90678016",
-        "alt": "Three pictures are shown and labeled “a,” “b,” and “c,” from left to right. Image a shows a glass jar with a lid that is full of a clear, colorless liquid in which a silver solid is suspended. Image b depicts a glass bottle with a blue lid that is full of a yellow-green gas. Image c shows a black dish that is full of a white, crystalline solid.",
+        "alt": {
+          "segmentId": "m68737:alt:fs-idp90678016-alt",
+          "text": "Three pictures are shown and labeled “a,” “b,” and “c,” from left to right. Image a shows a glass jar with a lid that is full of a clear, colorless liquid in which a silver solid is suspended. Image b depicts a glass bottle with a blue lid that is full of a yellow-green gas. Image c shows a black dish that is full of a white, crystalline solid."
+        },
         "src": "../../media/CNX_Chem_07_01_NaClPhotos.jpg",
         "mimeType": "image/jpeg"
       }
@@ -77,7 +80,10 @@
           },
           "media": {
             "id": "fs-idm160477712",
-            "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows a cube made up of twenty-seven alternating purple and green spheres. The purple spheres are smaller than the green spheres. Diagram b shows the same spheres, but this time, they are spread out and connected in three dimensions by white rods. The purple spheres are labeled “N superscript postive sign” while the green are labeled “C l superscript negative sign.”",
+            "alt": {
+              "segmentId": "m68737:alt:fs-idm160477712-alt",
+              "text": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows a cube made up of twenty-seven alternating purple and green spheres. The purple spheres are smaller than the green spheres. Diagram b shows the same spheres, but this time, they are spread out and connected in three dimensions by white rods. The purple spheres are labeled “N superscript postive sign” while the green are labeled “C l superscript negative sign.”"
+            },
             "src": "../../media/CNX_Chem_07_01_NaClStruc-1938.jpg",
             "mimeType": "image/jpeg"
           }

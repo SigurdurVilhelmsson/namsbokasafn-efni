@@ -25,5 +25,8 @@ Acid-Base Titrations
 <!-- SEG:m68802:caption:CNX_Chem_14_00_Sinkhole-caption -->
 Sinkholes such as this are the result of reactions between acidic groundwaters and basic rock formations, like limestone. (credit: modification of work by Emil Kehnel)
 
+<!-- SEG:m68802:alt:fs-idp47373024-alt -->
+A photograph is shown of a pond formed in a sinkhole. Layers of limestone with trees and shrubs surround the murky green water of the pond.
+
 <!-- SEG:m68802:para:fs-idp162964256 -->
 Liquid water is essential to life on our planet, and chemistry involving the characteristic ions of water, H[[sup:+]] and OH[[sup:–]], is widely encountered in nature and society. As introduced in another chapter of this text, acid-base chemistry involves the transfer of hydrogen ions from donors (acids) to acceptors (bases). These H+ transfer reactions are reversible, and the equilibria established by acid-base systems are essential aspects of phenomena ranging from sinkhole formation ([[xref:CNX_Chem_14_00_Sinkhole]]) to oxygen transport in the human body. This chapter will further explore acid-base chemistry with an emphasis on the equilibrium aspects of this important reaction class.

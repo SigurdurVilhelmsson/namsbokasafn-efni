@@ -25,6 +25,9 @@ A chemical reaction between two or more substances requires intimate contact bet
 <!-- SEG:m68787:caption:CNX_Chem_12_02_AcidDissol-caption -->
 (a) Iron powder reacts rapidly with dilute hydrochloric acid and produces bubbles of hydrogen gas: Fe([[i:s]]) + HCl([[i:aq]]) [[MATH:1]] 2FeCl[[sub:2]]([[i:aq]]) + 3H[[sub:2]]([[i:g]]). (b) An iron nail reacts more slowly because the surface area exposed to the acid is much less.
 
+<!-- SEG:m68787:alt:fs-idm108837008-alt -->
+This figure shows two photos labeled (a) and (b). Photo (a) shows the bottom of a test tube. The test tube is filled with a dark gas, and there is a dark substance and bubbles in the bottom. Photo (b) shows a rod and bubbles in a test tube similar to photo (a), but the gas in the test tube is not as dark.
+
 <!-- SEG:m68787:para:fs-idm33181984 -->
 Watch [[link:this video|http://openstax.org/l/16cesium]] to see the reaction of cesium with water in slow motion and a discussion of how the state of reactants and particle size affect reaction rates.
 
@@ -49,6 +52,9 @@ In a polluted atmosphere where the concentration of sulfur dioxide is high, calc
 <!-- SEG:m68787:caption:CNX_Chem_12_02_NYSStatue-caption -->
 Statues made from carbonate compounds such as limestone and marble typically weather slowly over time due to the actions of water, and thermal expansion and contraction. However, pollutants like sulfur dioxide can accelerate weathering. As the concentration of air pollutants increases, deterioration of limestone occurs more rapidly. (credit: James P Fisher III)
 
+<!-- SEG:m68787:alt:fs-idm66889568-alt -->
+A photograph is shown of an angel statue. While some details of the statue, including facial features, are present, effects of weathering appear to be diminishing these features.
+
 <!-- SEG:m68787:para:fs-idm30692176 -->
 Phosphorus burns rapidly in air, but it will burn even more rapidly if the concentration of oxygen is higher. Watch this [[link:video|http://openstax.org/l/16phosphor]] to see an example.
 
@@ -59,7 +65,7 @@ The Presence of a Catalyst
 Relatively dilute aqueous solutions of hydrogen peroxide, H[[sub:2]]O[[sub:2]], are commonly used as topical antiseptics. Hydrogen peroxide decomposes to yield water and oxygen gas according to the equation:
 
 <!-- SEG:m68787:para:fs-idm237313312 -->
-Under typical conditions, this decomposition occurs very slowly. When dilute H[[sub:2]]O[[sub:2]](aq) is poured onto an open wound, however, the reaction occurs rapidly and the solution foams because of the vigorous production of oxygen gas. This dramatic difference is caused by the presence of substances within the wound’s exposed tissues that accelerate the decomposition process. Substances that function to increase the rate of a reaction are called {{term}}catalysts{{/term}}, a topic treated in greater detail later in this chapter.
+Under typical conditions, this decomposition occurs very slowly. When dilute H[[sub:2]]O[[sub:2]](aq) is poured onto an open wound, however, the reaction occurs rapidly and the solution foams because of the vigorous production of oxygen gas. This dramatic difference is caused by the presence of substances within the wound’s exposed tissues that accelerate the decomposition process. Substances that function to increase the rate of a reaction are called [[term:catalysts|term-00001]], a topic treated in greater detail later in this chapter.
 
 <!-- SEG:m68787:para:fs-idm89663808 -->
 Chemical reactions occur when molecules collide with each other and undergo a chemical transformation. Before physically performing a reaction in a laboratory, scientists can use molecular modeling simulations to predict how the parameters discussed earlier will influence the rate of a reaction. Use the [[link:PhET Reactions &amp; Rates interactive|http://openstax.org/l/16PHETreaction]] to explore how temperature, concentration, and the nature of the reactants affect reaction rates.

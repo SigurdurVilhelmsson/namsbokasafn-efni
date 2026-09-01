@@ -1,0 +1,243 @@
+{
+  "moduleId": "m00109",
+  "title": {
+    "segmentId": "m00109:title:auto-1",
+    "text": "Alkyne Acidity: Formation of Acetylide Anions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "0c23179b-4827-4ae0-b5cd-f13b8189fe43"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00109:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00109:alt:fig-00001-alt",
+          "text": "The figure shows the mechanism where alkyne reacts with sodium amide to form an acetylide anion and the byproduct is ammonia."
+        },
+        "src": "../../media/OChem_09_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00109:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00109:para:para-00003"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "An illustration shows a table depicting the acidity of simple hydrocarbons. The family of hydrocarbons include alkyne alkene and alkane; their examples along with Ka and pKa values are given. The acidity order is in the following increasing order: alkane alkene and alkyne. The values for hydrocarbons are as follows: Alkyne; example acetylene shown as a methine group triple bonded to another methine group; Ka = 10 to the power minus 25; pKa = 25. Alkene; example ethylene shown as a methylene group bonded to another methylene group; Ka = 10 to the power minus 44; pKa = 44. Alkane; example methane shown as CH4; Ka = 10 to the power minus 60; pKa = 60.",
+      "title": {
+        "segmentId": "m00109:table-title:table-00001-title",
+        "text": "Acidity of Simple Hydrocarbons"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00109:entry:auto-7",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-8",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-9",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00109:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "morerows": "2"
+              },
+              "alt": {
+                "segmentId": "m00109:alt:OChem_09_07_002_jpg-alt",
+                "text": "The figure shows a table with Ka and pKa values of simple hydrocarbons. The acidity order is shown by an arrow in increasing order from the bottom to the top.",
+                "mediaId": null,
+                "src": "../../media/OChem_09_07_002.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00109:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00109:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00109:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00109:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00109:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00109:alt:fig-00002-alt",
+          "text": "The figure shows the hybridization states of three anions, alkyl anion, vinylic anion, and acetylide anion along with their electrostatic potential maps. The anion's stability increases from left to right."
+        },
+        "src": "../../media/OChem_09_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00109:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

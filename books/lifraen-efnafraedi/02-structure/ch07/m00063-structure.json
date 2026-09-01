@@ -1,0 +1,78 @@
+{
+  "moduleId": "m00063",
+  "title": {
+    "segmentId": "m00063:title:auto-1",
+    "text": "Industrial Preparation and Use of Alkenes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "8583e724-fe5a-4162-8a9d-82a9a94e1af1"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00063:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00063:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00063:alt:fig-00001-alt",
+          "text": "Ethylene derivatives include ethanol, ethylene glycol, ethylene dichloride, acetaldehyde, acetic acid, ethylene oxide, vinyl acetate, polyethylene, and vinyl chloride. Propylene derivatives include isopropyl alcohol, propylene oxide, polypropylene, and cumene."
+        },
+        "src": "../../media/OChem_07_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00063:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00063:alt:fig-00002-alt",
+          "text": "An alkane consisting of 2 to 8 carbons undergoes steam cracking at 850-900 degrees Celsius to form hydrogen, ethene, propene, and butene."
+        },
+        "src": "../../media/OChem_07_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00063:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00063:alt:fig-00003-alt",
+          "text": "Butane at 900 degrees Celsius forms two ethyl radicals, which convert to two ethene molecules and hydrogen."
+        },
+        "src": "../../media/OChem_07_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00063:para:para-00004"
+    }
+  ],
+  "sectionOrder": 1
+}

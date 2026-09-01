@@ -1,0 +1,7 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math><m:mrow><m:mtext>E + S </m:mtext><m:mo>⇄</m:mo><m:mtext> E </m:mtext><m:mo>⋅</m:mo><m:mtext> S </m:mtext><m:mo>⇄</m:mo><m:mtext> E </m:mtext><m:mo>⋅</m:mo><m:mtext> P </m:mtext><m:mo>⇄</m:mo><m:mtext> E + P</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{E + S}⇄\\text{E}⋅\\text{S}⇄\\text{E}⋅\\text{P}⇄\\text{E + P}}",
+    "isBlock": true
+  }
+}

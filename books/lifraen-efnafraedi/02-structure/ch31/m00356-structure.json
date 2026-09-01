@@ -1,0 +1,33 @@
+{
+  "moduleId": "m00356",
+  "title": {
+    "segmentId": "m00356:title:auto-1",
+    "text": "Intramolecular Olefin Metathesis"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "5f6f4c52-624b-4fde-93dd-1294ea7a1ce8"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00356:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00356:alt:fig-00001-alt",
+          "text": "A large organic molecule with Ru II center and amine with two allyl and t-butyl ester substituents react in 0.05 mol percent Ru II neat to produce a cyclic amine."
+        },
+        "src": "../../media/OSX_OrgChem_31_06_OlefinMeta_img.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 6
+}

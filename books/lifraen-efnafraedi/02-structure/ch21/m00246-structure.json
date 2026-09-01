@@ -1,0 +1,97 @@
+{
+  "moduleId": "m00246",
+  "title": {
+    "segmentId": "m00246:title:auto-1",
+    "text": "Chemistry of Thioesters and Acyl Phosphates: Biological Carboxylic Acid Derivatives"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "18940275-4186-4790-b6de-ebb7d57838f8"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00246:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00246:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00246:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00246:alt:fig-00001-alt",
+          "text": "The reaction shows the conversion of coenzyme A to acetyl coenzyme A on reaction with acetyl adenylate. The product is a thioester with C O S linkage."
+        },
+        "src": "../../media/OChem_21_08_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00246:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00246:alt:fig-00002-alt",
+          "text": "The reaction shows the conversion of glucosamine (amine) to N-acetylglucosamine (amide) and a product with the structure H S C o A on reaction with methyl coenzyme A."
+        },
+        "src": "../../media/OChem_21_08_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00246:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00246:alt:fig-00003-alt",
+          "text": "Mechanism shows (3S)-3-hydroxy-3-methylglutaryl CoA reacting with NADPH. H S Co A leaves and R-mevaldehyde forms."
+        },
+        "src": "../../media/OChem_21_08_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00246:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

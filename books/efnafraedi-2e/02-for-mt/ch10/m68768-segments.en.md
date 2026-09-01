@@ -20,10 +20,13 @@ We witness and utilize changes of physical state, or phase transitions, in a gre
 Vaporization and Condensation
 
 <!-- SEG:m68768:para:fs-idm100542016 -->
-When a liquid vaporizes in a closed container, gas molecules cannot escape. As these gas phase molecules move randomly about, they will occasionally collide with the surface of the condensed phase, and in some cases, these collisions will result in the molecules re-entering the condensed phase. The change from the gas phase to the liquid is called {{term}}condensation{{/term}}. When the rate of condensation becomes equal to the rate of {{term}}vaporization{{/term}}, neither the amount of the liquid nor the amount of the vapor in the container changes. The vapor in the container is then said to be [[i:in equilibrium]] with the liquid. Keep in mind that this is not a static situation, as molecules are continually exchanged between the condensed and gaseous phases. Such is an example of a {{term}}dynamic equilibrium{{/term}}, the status of a system in which reciprocal processes (for example, vaporization and condensation) occur at equal rates. The pressure exerted by the vapor in equilibrium with a liquid in a closed container at a given temperature is called the liquid’s {{term}}vapor pressure{{/term}} (or equilibrium vapor pressure). The area of the surface of the liquid in contact with a vapor and the size of the vessel have no effect on the vapor pressure, although they do affect the time required for the equilibrium to be reached. We can measure the vapor pressure of a liquid by placing a sample in a closed container, like that illustrated in [[xref:CNX_Chem_10_03_VapPress1]], and using a manometer to measure the increase in pressure that is due to the vapor in equilibrium with the condensed phase.
+When a liquid vaporizes in a closed container, gas molecules cannot escape. As these gas phase molecules move randomly about, they will occasionally collide with the surface of the condensed phase, and in some cases, these collisions will result in the molecules re-entering the condensed phase. The change from the gas phase to the liquid is called [[term:condensation|term-00001]]. When the rate of condensation becomes equal to the rate of [[term:vaporization|term-00002]], neither the amount of the liquid nor the amount of the vapor in the container changes. The vapor in the container is then said to be [[i:in equilibrium]] with the liquid. Keep in mind that this is not a static situation, as molecules are continually exchanged between the condensed and gaseous phases. Such is an example of a [[term:dynamic equilibrium|term-00003]], the status of a system in which reciprocal processes (for example, vaporization and condensation) occur at equal rates. The pressure exerted by the vapor in equilibrium with a liquid in a closed container at a given temperature is called the liquid’s [[term:vapor pressure|term-00004]] (or equilibrium vapor pressure). The area of the surface of the liquid in contact with a vapor and the size of the vessel have no effect on the vapor pressure, although they do affect the time required for the equilibrium to be reached. We can measure the vapor pressure of a liquid by placing a sample in a closed container, like that illustrated in [[xref:CNX_Chem_10_03_VapPress1]], and using a manometer to measure the increase in pressure that is due to the vapor in equilibrium with the condensed phase.
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_VapPress1-caption -->
 In a closed container, dynamic equilibrium is reached when (a) the rate of molecules escaping from the liquid to become the gas (b) increases and eventually (c) equals the rate of gas molecules entering the liquid. When this equilibrium is reached, the vapor pressure of the gas is constant, although the vaporization and condensation processes continue.
+
+<!-- SEG:m68768:alt:fs-idm103231072-alt -->
+Three images are shown and labeled “a,” “b,” and “c.” Each image shows a round bulb connected on the right to a tube that is horizontal, then is bent vertically, curves, and then is vertical again to make a u-shape. A valve is located in the horizontal portion of the tube. Image a depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid. The phrase, “Molecules escape surface and form vapor” is written below the bulb, and a gray liquid in the u-shaped portion of the tube is shown at equal heights on the right and left sides. Image b depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid to molecules drawn in the upper portion of the bulb. A gray liquid in the u-shaped portion of the tube is shown slightly higher on the right side than on the left side. Image c depicts a liquid in the bulb, labeled, “Liquid,” and upward-facing arrows leading away from the surface of the liquid to molecules drawn in the upper portion of the bulb. There are more molecules present in c than in b. The phrase “Equilibrium reached, vapor pressure determined,” is written below the bulb and a gray liquid in the u-shaped portion of the tube is shown higher on the right side. A horizontal line is drawn level with each of these liquid levels and the distance between the lines is labeled with a double-headed arrow. This section is labeled with the phrase, “Vapor pressure.”
 
 <!-- SEG:m68768:para:fs-idm63266864 -->
 The chemical identities of the molecules in a liquid determine the types (and strengths) of intermolecular attractions possible; consequently, different substances will exhibit different equilibrium vapor pressures. Relatively strong intermolecular attractive forces will serve to impede vaporization as well as favoring “recapture” of gas-phase molecules when they collide with the liquid surface, resulting in a relatively low vapor pressure. Weak intermolecular attractions present less of a barrier to vaporization, and a reduced likelihood of gas recapture, yielding relatively high vapor pressures. The following example illustrates this dependence of vapor pressure on intermolecular attractive forces.
@@ -49,40 +52,43 @@ At 20 °C, the vapor pressures of several alcohols are given in this table. Expl
 <!-- SEG:m68768:para:fs-idm44101792 -->
 All these compounds exhibit hydrogen bonding; these strong IMFs are difficult for the molecules to overcome, so the vapor pressures are relatively low. As the size of molecule increases from methanol to butanol, dispersion forces increase, which means that the vapor pressures decrease as observed:[[BR]] P[[sub:methanol]] > P[[sub:ethanol]] > P[[sub:propanol]] > P[[sub:butanol]].
 
+<!-- SEG:m68768:alt:fs-idm178035424-alt -->
+Four Lewis structures are shown. The first structure, labeled “ethanol,” shows a carbon bonded to three hydrogen atoms that is single bonded to a second carbon that is bonded to two hydrogen atoms and a hydroxyl group. The second structure, labeled “ethylene glycol, shows two carbon atoms, single bonded to one another, single bonded each to two hydrogen atoms, and each single bonded to a hydroxyl group. The third image, labeled “diethyl ether,” shows an oxygen atom single bonded on both sides to a carbon that is bonded to two hydrogens, and a second carbon, that is itself bonded to three hydrogen atoms. The fourth image, labeled “water,” shows an oxygen atom that is single bonded on both sides to hydrogen atoms.
+
 <!-- SEG:m68768:note-title:fs-idm91362784-title -->
 Answer:
 
 <!-- SEG:m68768:para:fs-idm44101792 -->
 All these compounds exhibit hydrogen bonding; these strong IMFs are difficult for the molecules to overcome, so the vapor pressures are relatively low. As the size of molecule increases from methanol to butanol, dispersion forces increase, which means that the vapor pressures decrease as observed:[[BR]] P[[sub:methanol]] > P[[sub:ethanol]] > P[[sub:propanol]] > P[[sub:butanol]].
 
-<!-- SEG:m68768:entry:auto-20 -->
+<!-- SEG:m68768:entry:auto-22 -->
 Compound
 
-<!-- SEG:m68768:entry:auto-21 -->
+<!-- SEG:m68768:entry:auto-23 -->
 methanol CH[[sub:3]]OH
 
-<!-- SEG:m68768:entry:auto-22 -->
+<!-- SEG:m68768:entry:auto-24 -->
 ethanol C[[sub:2]]H[[sub:5]]OH
 
-<!-- SEG:m68768:entry:auto-23 -->
+<!-- SEG:m68768:entry:auto-25 -->
 propanol C[[sub:3]]H[[sub:7]]OH
 
-<!-- SEG:m68768:entry:auto-24 -->
+<!-- SEG:m68768:entry:auto-26 -->
 butanol C[[sub:4]]H[[sub:9]]OH
 
-<!-- SEG:m68768:entry:auto-25 -->
+<!-- SEG:m68768:entry:auto-27 -->
 Vapor Pressure at 20 °C
 
-<!-- SEG:m68768:entry:auto-26 -->
+<!-- SEG:m68768:entry:auto-28 -->
 11.9 kPa
 
-<!-- SEG:m68768:entry:auto-27 -->
+<!-- SEG:m68768:entry:auto-29 -->
 5.95 kPa
 
-<!-- SEG:m68768:entry:auto-28 -->
+<!-- SEG:m68768:entry:auto-30 -->
 2.67 kPa
 
-<!-- SEG:m68768:entry:auto-29 -->
+<!-- SEG:m68768:entry:auto-31 -->
 0.56 kPa
 
 <!-- SEG:m68768:para:fs-idm73489328 -->
@@ -91,14 +97,20 @@ As temperature increases, the vapor pressure of a liquid also increases due to t
 <!-- SEG:m68768:caption:CNX_Chem_10_03_VapPress3-caption -->
 Temperature affects the distribution of kinetic energies for the molecules in a liquid. At the higher temperature, more molecules have the necessary kinetic energy, KE, to escape from the liquid into the gas phase.
 
+<!-- SEG:m68768:alt:fs-idm211797072-alt -->
+A graph is shown where the y-axis is labeled “Number of molecules” and the x-axis is labeled “Kinetic Energy.” Two lines are graphed and a vertical dotted line, labeled “Minimum K E needed to escape,” is drawn halfway across the x-axis. The first line move sharply upward and has a high peak near the left side of the x-axis. It drops just as steeply and ends about 60 percent of the way across the x-axis. This line is labeled “Low T.” A second line, labeled “High T,” begins at the same point as the first, but does not go to such a high point, is wider, and ends slightly further to the right on the x-axis.
+
 <!-- SEG:m68768:title:fs-idm153006576-title -->
 Boiling Points
 
 <!-- SEG:m68768:para:fs-idm70709936 -->
-When the vapor pressure increases enough to equal the external atmospheric pressure, the liquid reaches its boiling point. The {{term}}boiling point{{/term}} of a liquid is the temperature at which its equilibrium vapor pressure is equal to the pressure exerted on the liquid by its gaseous surroundings. For liquids in open containers, this pressure is due to the earth’s atmosphere. The {{term}}normal boiling point{{/term}} of a liquid is defined as its boiling point when surrounding pressure is equal to 1 atm (101.3 kPa). [[xref:CNX_Chem_10_03_VapPress2]] shows the variation in vapor pressure with temperature for several different substances. Considering the definition of boiling point, these curves may be seen as depicting the dependence of a liquid’s boiling point on surrounding pressure.
+When the vapor pressure increases enough to equal the external atmospheric pressure, the liquid reaches its boiling point. The [[term:boiling point|term-00005]] of a liquid is the temperature at which its equilibrium vapor pressure is equal to the pressure exerted on the liquid by its gaseous surroundings. For liquids in open containers, this pressure is due to the earth’s atmosphere. The [[term:normal boiling point|term-00006]] of a liquid is defined as its boiling point when surrounding pressure is equal to 1 atm (101.3 kPa). [[xref:CNX_Chem_10_03_VapPress2]] shows the variation in vapor pressure with temperature for several different substances. Considering the definition of boiling point, these curves may be seen as depicting the dependence of a liquid’s boiling point on surrounding pressure.
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_VapPress2-caption -->
 The boiling points of liquids are the temperatures at which their equilibrium vapor pressures equal the pressure of the surrounding atmosphere. Normal boiling points are those corresponding to a pressure of 1 atm (101.3 kPa.)
+
+<!-- SEG:m68768:alt:fs-idm188874672-alt -->
+A graph is shown where the x-axis is labeled “Temperature ( degree sign, C )” and has values of 200 to 1000 in increments of 200 and the y-axis is labeled “Pressure ( k P a )” and has values of 20 to 120 in increments of 20. A horizontal dotted line extends across the graph at point 780 on the y-axis while three vertical dotted lines extend from points 35, 78, and 100 to meet the horizontal dotted line. Four lines are graphed. The first line, labeled “ethyl ether,” begins at the point “0 , 200” and extends in a slight curve to point “45, 1000” while the second line, labeled “ethanol”, extends from point “0, 20” to point “88, 1000” in a more extreme curve. The third line, labeled “water,” begins at the point “0, 0” and extends in a curve to point “108, 1000” while the fourth line, labeled “ethylene glycol,” extends from point “80, 0” to point “140, 100” in a very shallow curve.
 
 <!-- SEG:m68768:example-title:fs-idm272706256-title -->
 A Boiling Point at Reduced Pressure
@@ -128,7 +140,7 @@ Answer:
 Approximately 40 kPa (0.4 atm)
 
 <!-- SEG:m68768:para:fs-idm287754592 -->
-The quantitative relation between a substance’s vapor pressure and its temperature is described by the {{term}}Clausius-Clapeyron equation{{/term}}:
+The quantitative relation between a substance’s vapor pressure and its temperature is described by the [[term:Clausius-Clapeyron equation|term-00007]]:
 
 <!-- SEG:m68768:para:fs-idm95462576 -->
 where Δ[[i:H]][[sub:vap]] is the enthalpy of vaporization for the liquid, [[i:R]] is the gas constant, and [[i:A]] is a constant whose value depends on the chemical identity of the substance. Temperature T must be in Kelvin in this equation. This equation is often rearranged into logarithmic form to yield the linear equation:
@@ -247,17 +259,23 @@ Answer:
 <!-- SEG:m68768:caption:CNX_Chem_10_03_Evap-caption -->
 Evaporation of sweat helps cool the body. (credit: “Kullez”/Flickr)
 
+<!-- SEG:m68768:alt:fs-idm183436304-alt -->
+A person’s shoulder and neck are shown and their skin is covered in beads of liquid.
+
 <!-- SEG:m68768:title:fs-idm167698656-title -->
 Melting and Freezing
 
 <!-- SEG:m68768:para:fs-idp14081632 -->
-When we heat a crystalline solid, we increase the average energy of its atoms, molecules, or ions and the solid gets hotter. At some point, the added energy becomes large enough to partially overcome the forces holding the molecules or ions of the solid in their fixed positions, and the solid begins the process of transitioning to the liquid state, or {{term}}melting{{/term}}. At this point, the temperature of the solid stops rising, despite the continual input of heat, and it remains constant until all of the solid is melted. Only after all of the solid has melted will continued heating increase the temperature of the liquid ([[xref:CNX_Chem_10_03_MeltingIce]]).
+When we heat a crystalline solid, we increase the average energy of its atoms, molecules, or ions and the solid gets hotter. At some point, the added energy becomes large enough to partially overcome the forces holding the molecules or ions of the solid in their fixed positions, and the solid begins the process of transitioning to the liquid state, or [[term:melting|term-00008]]. At this point, the temperature of the solid stops rising, despite the continual input of heat, and it remains constant until all of the solid is melted. Only after all of the solid has melted will continued heating increase the temperature of the liquid ([[xref:CNX_Chem_10_03_MeltingIce]]).
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_MeltingIce-caption -->
 (a) This beaker of ice has a temperature of −12.0 °C. (b) After 10 minutes the ice has absorbed enough heat from the air to warm to 0 °C. A small amount has melted. (c) Thirty minutes later, the ice has absorbed more heat, but its temperature is still 0 °C. The ice melts without changing its temperature. (d) Only after all the ice has melted does the heat absorbed cause the temperature to increase to 22.2 °C. (credit: modification of work by Mark Ott)
 
+<!-- SEG:m68768:alt:fs-idm137978064-alt -->
+This figure shows four photos each labeled, “a,” “b,” “c,” and, “d.” Each photo shows a beaker with ice and a digital thermometer. The first photo shows ice cubes in the beaker, and the thermometer reads negative 12.0 degrees C. The second photo shows slightly melted ice, and the thermometer reads 0.0 degrees C. The third photo shows more water than ice in the beaker. The thermometer reads 0.0 degrees C. The fourth photo shows the ice completely melted, and the thermometer reads 22.2 degrees C.
+
 <!-- SEG:m68768:para:fs-idp12376064 -->
-If we stop heating during melting and place the mixture of solid and liquid in a perfectly insulated container so no heat can enter or escape, the solid and liquid phases remain in equilibrium. This is almost the situation with a mixture of ice and water in a very good thermos bottle; almost no heat gets in or out, and the mixture of solid ice and liquid water remains for hours. In a mixture of solid and liquid at equilibrium, the reciprocal processes of melting and {{term}}freezing{{/term}} occur at equal rates, and the quantities of solid and liquid therefore remain constant. The temperature at which the solid and liquid phases of a given substance are in equilibrium is called the {{term}}melting point{{/term}} of the solid or the {{term}}freezing point{{/term}} of the liquid. Use of one term or the other is normally dictated by the direction of the phase transition being considered, for example, solid to liquid (melting) or liquid to solid (freezing).
+If we stop heating during melting and place the mixture of solid and liquid in a perfectly insulated container so no heat can enter or escape, the solid and liquid phases remain in equilibrium. This is almost the situation with a mixture of ice and water in a very good thermos bottle; almost no heat gets in or out, and the mixture of solid ice and liquid water remains for hours. In a mixture of solid and liquid at equilibrium, the reciprocal processes of melting and [[term:freezing|term-00009]] occur at equal rates, and the quantities of solid and liquid therefore remain constant. The temperature at which the solid and liquid phases of a given substance are in equilibrium is called the [[term:melting point|term-00010]] of the solid or the [[term:freezing point|term-00011]] of the liquid. Use of one term or the other is normally dictated by the direction of the phase transition being considered, for example, solid to liquid (melting) or liquid to solid (freezing).
 
 <!-- SEG:m68768:para:fs-idm90105504 -->
 The enthalpy of fusion and the melting point of a crystalline solid depend on the strength of the attractive forces between the units present in the crystal. Molecules with weak attractive forces form crystals with low melting points. Crystals consisting of particles with stronger attractive forces melt at higher temperatures.
@@ -272,10 +290,13 @@ The reciprocal process, freezing, is an exothermic process whose enthalpy change
 Sublimation and Deposition
 
 <!-- SEG:m68768:para:fs-idm191153504 -->
-Some solids can transition directly into the gaseous state, bypassing the liquid state, via a process known as {{term}}sublimation{{/term}}. At room temperature and standard pressure, a piece of dry ice (solid CO[[sub:2]]) sublimes, appearing to gradually disappear without ever forming any liquid. Snow and ice sublime at temperatures below the melting point of water, a slow process that may be accelerated by winds and the reduced atmospheric pressures at high altitudes. When solid iodine is warmed, the solid sublimes and a vivid purple vapor forms ([[xref:CNX_Chem_10_03_Sublimtn]]). The reverse of sublimation is called {{term}}deposition{{/term}}, a process in which gaseous substances condense directly into the solid state, bypassing the liquid state. The formation of frost is an example of deposition.
+Some solids can transition directly into the gaseous state, bypassing the liquid state, via a process known as [[term:sublimation|term-00012]]. At room temperature and standard pressure, a piece of dry ice (solid CO[[sub:2]]) sublimes, appearing to gradually disappear without ever forming any liquid. Snow and ice sublime at temperatures below the melting point of water, a slow process that may be accelerated by winds and the reduced atmospheric pressures at high altitudes. When solid iodine is warmed, the solid sublimes and a vivid purple vapor forms ([[xref:CNX_Chem_10_03_Sublimtn]]). The reverse of sublimation is called [[term:deposition|term-00013]], a process in which gaseous substances condense directly into the solid state, bypassing the liquid state. The formation of frost is an example of deposition.
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_Sublimtn-caption -->
 Sublimation of solid iodine in the bottom of the tube produces a purple gas that subsequently deposits as solid iodine on the colder part of the tube above. (credit: modification of work by Mark Ott)
+
+<!-- SEG:m68768:alt:fs-idm195457584-alt -->
+This figure shows a test tube. In the bottom is a dark substance which breaks up into a purple gas at the top.
 
 <!-- SEG:m68768:para:fs-idm208982384 -->
 Like vaporization, the process of sublimation requires an input of energy to overcome intermolecular attractions. The enthalpy of sublimation, ΔH[[sub:sub]], is the energy required to convert one mole of a substance from the solid to the gaseous state. For example, the sublimation of carbon dioxide is represented by:
@@ -288,6 +309,9 @@ Consider the extent to which intermolecular attractions must be overcome to achi
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_PhaseChng-caption -->
 For a given substance, the sum of its enthalpy of fusion and enthalpy of vaporization is approximately equal to its enthalpy of sublimation.
+
+<!-- SEG:m68768:alt:fs-idm63916320-alt -->
+A diagram is shown with a vertical line drawn on the left side and labeled “Energy” and three horizontal lines drawn near the bottom, lower third and top of the diagram. These three lines are labeled, from bottom to top, “Solid,” “Liquid” and “Gas.” Near the middle of the diagram, a vertical, upward-facing arrow is drawn from the solid line to the gas line and labeled “Sublimation, delta sign, H, subscript sub.” To the right of this arrow is a second vertical, upward-facing arrow that is drawn from the solid line to the liquid line and labeled “Fusion, delta sign, H, subscript fus.” Above the second arrow is a third arrow drawn from the liquid line to the gas line and labeled, “Vaporization, delta sign, H, subscript vap.”
 
 <!-- SEG:m68768:title:fs-idm93930720-title -->
 Heating and Cooling Curves
@@ -303,6 +327,9 @@ Consider the example of heating a pot of water to boiling. A stove burner will s
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_HeatCurve-caption -->
 A typical heating curve for a substance depicts changes in temperature that result as the substance absorbs increasing amounts of heat. Plateaus in the curve (regions of constant temperature) are exhibited when the substance undergoes phase transitions.
+
+<!-- SEG:m68768:alt:fs-idm120231984-alt -->
+A graph is shown where the x-axis is labeled “Amount of heat added” and the y-axis is labeled “Temperature ( degree sign C )” and has values of negative 10 to 100 in increments of 20. A right-facing horizontal arrow extends from point “0, 0” to the right side of the graph. A line graph begins at the lower left of the graph and moves to point “0” on the y-axis. This segment of the line is labeled “H, subscript 2, O ( s ).” The line then flattens and travels horizontally for a small distance. This segment is labeled “Solid begins to melt” on its left side and “All solid melted” on its right side. The line then goes steeply upward in a linear fashion until it hits point “100” on the y-axis. This segment of the line is labeled “H, subscript 2, O,( l ).” The line then flattens and travels horizontally for a moderate distance. This segment is labeled “Liquid begins to boil” on its left side and “All liquid evaporated” on its right side. The line then rises to a point above “100” on the y-axis. This segment of the line is labeled “H, subscript 2, O ( g ).”
 
 <!-- SEG:m68768:example-title:fs-idm143749376-title -->
 Total Heat Needed to Change Temperature and Phase for a Substance
@@ -367,13 +394,13 @@ Phase transitions are processes that convert matter from one physical state into
 <!-- SEG:m68768:title:fs-idp14058304-title -->
 Key Equations
 
-<!-- SEG:m68768:entry:auto-124 -->
+<!-- SEG:m68768:entry:auto-133 -->
 [[MATH:4]]
 
-<!-- SEG:m68768:entry:auto-125 -->
+<!-- SEG:m68768:entry:auto-134 -->
 [[MATH:5]]
 
-<!-- SEG:m68768:entry:auto-126 -->
+<!-- SEG:m68768:entry:auto-135 -->
 [[MATH:6]]
 
 <!-- SEG:m68768:title:fs-idm73098240-title -->

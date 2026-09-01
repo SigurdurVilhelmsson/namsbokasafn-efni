@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "moduleId": "m00109",
+  "extractedAt": "2026-08-31T19:08:47.872Z",
+  "sourceHash": "76a9525a2d45b725",
+  "segmentCount": 27,
+  "segmentIds": [
+    "m00109:title:auto-1",
+    "m00109:para:para-00001",
+    "m00109:alt:fig-00001-alt",
+    "m00109:para:para-00002",
+    "m00109:para:para-00003",
+    "m00109:table-title:table-00001-title",
+    "m00109:entry:auto-7",
+    "m00109:entry:auto-8",
+    "m00109:entry:auto-9",
+    "m00109:entry:auto-10",
+    "m00109:entry:auto-11",
+    "m00109:entry:auto-12",
+    "m00109:entry:auto-13",
+    "m00109:entry:auto-14",
+    "m00109:alt:OChem_09_07_002_jpg-alt",
+    "m00109:entry:auto-16",
+    "m00109:entry:auto-17",
+    "m00109:entry:auto-18",
+    "m00109:entry:auto-19",
+    "m00109:entry:auto-20",
+    "m00109:entry:auto-21",
+    "m00109:entry:auto-22",
+    "m00109:entry:auto-23",
+    "m00109:para:para-00004",
+    "m00109:caption:fig-00002-caption",
+    "m00109:alt:fig-00002-alt",
+    "m00109:title:sect-00001-title"
+  ],
+  "equationCount": 2,
+  "equationIds": [
+    "math-1",
+    "math-2"
+  ],
+  "elementCounts": {
+    "para": 4,
+    "section": 1,
+    "figure": 2,
+    "table": 1,
+    "example": 0,
+    "exercise": 1,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002"
+    ],
+    "table": [
+      "table-00001"
+    ],
+    "example": [],
+    "exercise": [
+      "exer-00001"
+    ],
+    "note": [],
+    "equation": [],
+    "section": [
+      "sect-00001"
+    ]
+  }
+}

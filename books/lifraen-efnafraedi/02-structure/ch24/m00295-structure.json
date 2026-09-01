@@ -1,0 +1,218 @@
+{
+  "moduleId": "m00295",
+  "title": {
+    "segmentId": "m00295:title:auto-1",
+    "text": "Reactions of Amines"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "ac861730-2020-4c4d-bc4a-9b9549e0245c"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00295:title:sect-00001-title",
+        "text": "Alkylation and Acylation"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00295:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00295:alt:fig-00001-alt",
+              "text": "Three reactions where an acyl chloride reacts with ammonia, primary amine, and secondary amine in the presence of pyridine solvent to form a primary, secondary, and tertiary amide respectively."
+            },
+            "src": "../../media/OChem_24_07_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00295:title:sect-00002-title",
+        "text": "Hofmann Elimination Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00295:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00295:alt:fig-00002-alt",
+              "text": "1-Methylpentylamine reacts with excess methyl iodide to form (1-methylpentyl)trimethyl-ammonium iodide. This reacts with silver oxide and water to form 1-hexene with 60 percent yield and trimethylamine on heating."
+            },
+            "src": "../../media/OChem_24_07_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00295:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00295:alt:fig-00003-alt",
+              "text": "A quaternary ammonium salt reacts with hydroxide ion via an E 2 reaction to form an alkene, water and trimethylamine."
+            },
+            "src": "../../media/OChem_24_07_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00295:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00295:alt:fig-00004-alt",
+              "text": "(1-Methylbutyl)trimethylammonium hydroxide (ball and stick also shown) reacts to form 1-pentene and 2-pentene. The more hindered, less accessible (C 2) and less hindered, more accessible (C 1) hydrogens are labeled."
+            },
+            "src": "../../media/OChem_24_07_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00295:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00295:alt:fig-00005-alt",
+              "text": "A base reacts with adenylosuccinate to form fumarate and adenosine monophosphate. The mechanism is shown by arrows."
+            },
+            "src": "../../media/OChem_24_07_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "exam-00001",
+          "title": {
+            "segmentId": "m00295:example-title:exam-00001-title",
+            "text": "Predicting the Product of a Hofmann Elimination"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00006",
+              "segmentId": "m00295:para:para-00006"
+            },
+            {
+              "type": "para",
+              "id": "para-00007",
+              "segmentId": "m00295:para:para-00007",
+              "title": {
+                "segmentId": "m00295:para-title:para-00007-title",
+                "text": "Strategy"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00008",
+              "title": {
+                "segmentId": "m00295:para-title:para-00008-title",
+                "text": "Solution"
+              }
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00295:alt:fig-00006-alt",
+              "text": "Chemical structure of 1-cyclohexyl-N-ethyl-1-propanamine."
+            },
+            "src": "../../media/OChem_24_07_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00295:alt:fig-00007-alt",
+              "text": "1-Cyclohexyl-N-ethylpropan-1-amine reacts with excess methyl iodide, then silver oxide, water and heat to form 1-cyclohexyl-N,N-dimethylpropan-1-amine and ethene. Various hydrogens are labeled primary, secondary, and tertiary."
+            },
+            "src": "../../media/OChem_24_07_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00295:title:sect-00003-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mstyle mathvariant=\"bold\" mathsize=\"normal\"><m:mn>2</m:mn></m:mstyle></m:msub><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mstyle mathvariant=\"bold\" mathsize=\"normal\"><m:mn>2</m:mn></m:mstyle></m:msub><m:mtext>─</m:mtext><m:mtext>O</m:mtext><m:mtext>─</m:mtext><m:mtext>Ar</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C}\\text{═}{{\\text{CHCH}}}_{2}\\text{─}\\text{O}\\text{─}\\text{Ar}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mstyle mathvariant=\"bold\" mathsize=\"normal\"><m:mn>2</m:mn></m:mstyle></m:msub><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mstyle mathvariant=\"bold\" mathsize=\"normal\"><m:mn>2</m:mn></m:mstyle></m:msub><m:mtext>─</m:mtext><m:mtext>O</m:mtext><m:mtext>─</m:mtext><m:mtext>CH</m:mtext><m:mtext>═</m:mtext><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mstyle mathvariant=\"bold\" mathsize=\"normal\"><m:mn>2</m:mn></m:mstyle></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C}\\text{═}{{\\text{CHCH}}}_{2}\\text{─}\\text{O}\\text{─}\\text{CH}\\text{═}{{\\text{CH}}}_{2}}"
+  }
+}

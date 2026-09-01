@@ -32,7 +32,10 @@
         "segmentId": "m00136:caption:fig-00001-caption"
       },
       "media": {
-        "alt": "The mass spectrum of 2,2-dimethylpropane. The m / z ratios are 29, 41, and 57 for three tall peaks noted with arrows.",
+        "alt": {
+          "segmentId": "m00136:alt:fig-00001-alt",
+          "text": "The mass spectrum of 2,2-dimethylpropane. The m / z ratios are 29, 41, and 57 for three tall peaks noted with arrows."
+        },
         "src": "../../media/OChem_12_02_001.jpg",
         "mimeType": "image/jpeg"
       }
@@ -68,7 +71,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The 2,2-dimethylpropane cation reacts to produce a tertiary butyl cation with a m / z ratio of 57 and a methyl radical.",
+        "alt": {
+          "segmentId": "m00136:alt:fig-00002-alt",
+          "text": "The 2,2-dimethylpropane cation reacts to produce a tertiary butyl cation with a m / z ratio of 57 and a methyl radical."
+        },
         "src": "../../media/OChem_12_02_002.jpg",
         "mimeType": "image/jpeg"
       }
@@ -86,7 +92,10 @@
         "segmentId": "m00136:caption:fig-00003-caption"
       },
       "media": {
-        "alt": "The mass spectrum of hexane. The m / z ratios are 29, 43, and 57 for three tall peaks noted with arrows. The molecular ion peak is at 86.",
+        "alt": {
+          "segmentId": "m00136:alt:fig-00003-alt",
+          "text": "The mass spectrum of hexane. The m / z ratios are 29, 43, and 57 for three tall peaks noted with arrows. The molecular ion peak is at 86."
+        },
         "src": "../../media/OChem_12_02_003.jpg",
         "mimeType": "image/jpeg"
       }
@@ -104,7 +113,10 @@
         "segmentId": "m00136:caption:fig-00004-caption"
       },
       "media": {
-        "alt": "A flowchart of fragmentation of hexane. The base peak is a pentane cation at m / z 57. M / z ratios and relative abundances of other fragments are mentioned.",
+        "alt": {
+          "segmentId": "m00136:alt:fig-00004-alt",
+          "text": "A flowchart of fragmentation of hexane. The base peak is a pentane cation at m / z 57. M / z ratios and relative abundances of other fragments are mentioned."
+        },
         "src": "../../media/OChem_12_02_004.jpg",
         "mimeType": "image/jpeg"
       }
@@ -119,7 +131,7 @@
       "id": "exam-00001",
       "title": {
         "segmentId": "m00136:example-title:exam-00001-title",
-        "text": "Strategy"
+        "text": "Using Mass Spectra to Identify Compounds"
       },
       "content": [
         {
@@ -130,7 +142,11 @@
         {
           "type": "para",
           "id": "para-00013",
-          "segmentId": "m00136:para:para-00013"
+          "segmentId": "m00136:para:para-00013",
+          "title": {
+            "segmentId": "m00136:para-title:para-00013-title",
+            "text": "Strategy"
+          }
         },
         {
           "type": "para",
@@ -151,7 +167,10 @@
         "segmentId": "m00136:caption:fig-00005-caption"
       },
       "media": {
-        "alt": "The mass spectra of two unlabeled samples A and B.",
+        "alt": {
+          "segmentId": "m00136:alt:fig-00005-alt",
+          "text": "The mass spectra of two unlabeled samples A and B."
+        },
         "src": "../../media/OChem_12_02_005.jpg",
         "mimeType": "image/jpeg"
       }

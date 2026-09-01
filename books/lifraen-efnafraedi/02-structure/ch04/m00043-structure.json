@@ -1,0 +1,154 @@
+{
+  "moduleId": "m00043",
+  "title": {
+    "segmentId": "m00043:title:auto-1",
+    "text": "Conformations of Cycloalkanes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "5a69b8d8-af79-469d-8011-78d7227c82db"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00043:title:sect-00001-title",
+        "text": "Cyclopropane"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00043:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00043:caption:fig-00001-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00043:alt:fig-00001-alt",
+              "text": "The space-filling, ball and stick model of cyclopropane in part A, and Newman projection of cyclopropane in part B along the C-C bond. The hydrogen atoms on one side are labeled eclipsed."
+            },
+            "src": "../../media/OChem_04_04_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00043:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00043:alt:fig-00002-alt",
+              "text": "Orbital representations show typical alkane C-C bonds with 109 degrees angle and typical bent cyclopropane C-C bonds."
+            },
+            "src": "../../media/OChem_04_04_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00043:title:sect-00002-title",
+        "text": "Cyclobutane"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00043:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "caption": {
+            "segmentId": "m00043:caption:fig-00003-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00043:alt:fig-00003-alt",
+              "text": "The ball and stick model, chair conformation, and Newman projection of cyclobutane. In Newman, the hydrogen atoms are not eclipsed."
+            },
+            "src": "../../media/OChem_04_04_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00043:title:sect-00003-title",
+        "text": "Cyclopentane"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00043:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "caption": {
+            "segmentId": "m00043:caption:fig-00004-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00043:alt:fig-00004-alt",
+              "text": "The ball and stick model, chair conformation, and Newman projection of cyclopentane. The carbon atoms are numbered in chair conformation and Newman projection."
+            },
+            "src": "../../media/OChem_04_04_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00043:title:sect-00004-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

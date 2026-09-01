@@ -37,7 +37,10 @@
         "segmentId": "m00138:caption:fig-00001-caption"
       },
       "media": {
-        "alt": "A mass spectrum with considerably more detail and much larger values of m / z than in previous images.",
+        "alt": {
+          "segmentId": "m00138:alt:fig-00001-alt",
+          "text": "A mass spectrum with considerably more detail and much larger values of m / z than in previous images."
+        },
         "src": "../../media/OChem_12_04_001.jpg",
         "mimeType": "image/jpeg"
       }

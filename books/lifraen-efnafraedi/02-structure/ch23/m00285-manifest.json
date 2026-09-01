@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "moduleId": "m00285",
+  "extractedAt": "2026-08-31T19:08:49.631Z",
+  "sourceHash": "c71b773faed7a6d8",
+  "segmentCount": 43,
+  "segmentIds": [
+    "m00285:title:auto-1",
+    "m00285:para:para-00001",
+    "m00285:alt:fig-00001-alt",
+    "m00285:para:para-00002",
+    "m00285:para:para-00003",
+    "m00285:alt:fig-00002-alt",
+    "m00285:para:para-00004",
+    "m00285:caption:fig-00003-caption",
+    "m00285:alt:fig-00003-alt",
+    "m00285:para:para-00005",
+    "m00285:table-title:table-00001-title",
+    "m00285:entry:auto-12",
+    "m00285:entry:auto-13",
+    "m00285:alt:OChem_23_10_004a_jpg-alt",
+    "m00285:entry:auto-15",
+    "m00285:alt:OChem_23_10_004g_jpg-alt",
+    "m00285:entry:auto-17",
+    "m00285:alt:OChem_23_10_004b_jpg-alt",
+    "m00285:entry:auto-19",
+    "m00285:alt:OChem_23_10_004h_jpg-alt",
+    "m00285:entry:auto-21",
+    "m00285:alt:OChem_23_10_004c_jpg-alt",
+    "m00285:entry:auto-23",
+    "m00285:alt:OChem_23_10_004i_jpg-alt",
+    "m00285:entry:auto-25",
+    "m00285:alt:OChem_23_10_004d_jpg-alt",
+    "m00285:entry:auto-27",
+    "m00285:alt:OChem_23_10_004j_jpg-alt",
+    "m00285:entry:auto-29",
+    "m00285:alt:OChem_23_10_004e_jpg-alt",
+    "m00285:entry:auto-31",
+    "m00285:alt:OChem_23_10_004k_jpg-alt",
+    "m00285:entry:auto-33",
+    "m00285:alt:OChem_23_10_004f_jpg-alt",
+    "m00285:entry:auto-35",
+    "m00285:example-title:exam-00001-title",
+    "m00285:para:para-00006",
+    "m00285:para-title:para-00007-title",
+    "m00285:para:para-00007",
+    "m00285:para-title:para-00008-title",
+    "m00285:alt:fig-00004-alt",
+    "m00285:alt:fig-00005-alt",
+    "m00285:title:sect-00001-title"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 8,
+    "section": 1,
+    "figure": 5,
+    "table": 1,
+    "example": 1,
+    "exercise": 3,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002",
+      "fig-00003",
+      "fig-00004",
+      "fig-00005"
+    ],
+    "table": [
+      "table-00001"
+    ],
+    "example": [
+      "exam-00001"
+    ],
+    "exercise": [
+      "exer-00001",
+      "exer-00002",
+      "exer-00003"
+    ],
+    "note": [],
+    "equation": [],
+    "section": [
+      "sect-00001"
+    ]
+  }
+}

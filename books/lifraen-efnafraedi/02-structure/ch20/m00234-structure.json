@@ -1,0 +1,208 @@
+{
+  "moduleId": "m00234",
+  "title": {
+    "segmentId": "m00234:title:auto-1",
+    "text": "Preparing Carboxylic Acids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "69e2731b-132c-4c45-ada5-6622b57c107f"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00234:para:para-00001"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00234:item:list-00001-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00234:item:list-00001-item-2"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00234:alt:fig-00001-alt",
+          "text": "The oxidation reaction of p-nitrotoluene using potassium permanganate and water at 95 degrees Celcius to form p-nitrobenzoic acid (88 percent yield). Methyl group is oxidized to carboxylic acid."
+        },
+        "src": "../../media/OChem_20_05_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00234:alt:fig-00002-alt",
+          "text": "Oxidation reactions of 4-methyl-1-pentanol to 4-methylpentanoic acid via potassium permanganate, and hexanal to hexanoic acid via potassium permanganate with water and sodium hydroxide."
+        },
+        "src": "../../media/OChem_20_05_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00234:title:sect-00001-title",
+        "text": "Hydrolysis of Nitriles"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00234:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00234:alt:fig-00003-alt",
+              "text": "Two-step synthesis of Ibuprofen from 1-(1-chloroethyl)-4-isobutylbenzene. Sodium cyanide substitutes cyanide for chlorine in first step. Reaction with sodium hydroxide and water followed by hydronium workup step oxidizes nitrile to carboxyl."
+            },
+            "src": "../../media/OChem_20_05_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00234:title:sect-00002-title",
+        "text": "Carboxylation of Grignard Reagents"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00234:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00234:alt:fig-00004-alt",
+              "text": "The preparation of benzoic acid by the reaction between phenylmagnesium bromide and carbon dioxide. A bromomagnesium carboxylate intermediate is protonated using H 3 O plus to give benzoic acid."
+            },
+            "src": "../../media/OChem_20_05_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00234:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00234:alt:fig-00005-alt",
+              "text": "The formation of malonyl coenzyme-A from acetyl coenzyme-A involves proton abstraction by the base. Negative charge on O is stabilized by forming carbanion. This adds to carbon dioxide forming products."
+            },
+            "src": "../../media/OChem_20_05_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "exam-00001",
+          "title": {
+            "segmentId": "m00234:example-title:exam-00001-title",
+            "text": "Devising a Synthesis Route for a Carboxylic Acid"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00005",
+              "segmentId": "m00234:para:para-00005"
+            },
+            {
+              "type": "para",
+              "id": "para-00006",
+              "segmentId": "m00234:para:para-00006",
+              "title": {
+                "segmentId": "m00234:para-title:para-00006-title",
+                "text": "Strategy"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00007",
+              "title": {
+                "segmentId": "m00234:para-title:para-00007-title",
+                "text": "Solution"
+              }
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00234:alt:fig-00006-alt",
+              "text": "Preparation of phenylacetic acid from benzyl bromide using sodium cyanide substitution, followed by hydronium to convert nitrile to carboxyl, or via producing Grignard, reacting with carbon dioxide, then with hydronium."
+            },
+            "src": "../../media/OChem_20_05_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00234:title:sect-00003-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

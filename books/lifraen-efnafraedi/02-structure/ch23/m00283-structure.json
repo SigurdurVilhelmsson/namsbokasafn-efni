@@ -1,0 +1,117 @@
+{
+  "moduleId": "m00283",
+  "title": {
+    "segmentId": "m00283:title:auto-1",
+    "text": "Mixed Claisen Condensations"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "653d018e-5710-4821-bd78-60918e6353ab"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00283:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00283:alt:fig-00001-alt",
+          "text": "Ethyl benzoate (labeled acceptor) and ethyl acetate (labeled donor) react in the presence of sodium hydride in tetrahydrofuran, then hydronium , yielding ethyl benzoylacetate and ethanol."
+        },
+        "src": "../../media/OChem_23_08_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00283:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00283:alt:fig-00002-alt",
+          "text": "2, 2-dimethylcyclohexanone (donor) reacts with ethyl formate (acceptor) plus sodium ethoxide in ethanol, then hydronium, yielding cyclohexanone with C H O on C 2 and two methyls on C 5."
+        },
+        "src": "../../media/OChem_23_08_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00283:example-title:exam-00001-title",
+        "text": "Predicting the Product of a Mixed Claisen Condensation Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00283:para:para-00003"
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00283:para:para-00004",
+          "title": {
+            "segmentId": "m00283:para-title:para-00004-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "title": {
+            "segmentId": "m00283:para-title:para-00005-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00283:alt:fig-00003-alt",
+          "text": "Diethyloxalate and ethyl acetate (acidic alpha hydrogen) plus sodium ethoxide in ethanol form diethyl-2-oxosuccinate (four-carbon chain, ethyl ester at C 1 and C 4, oxo at C 2) and ethanol."
+        },
+        "src": "../../media/OChem_23_08_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00283:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

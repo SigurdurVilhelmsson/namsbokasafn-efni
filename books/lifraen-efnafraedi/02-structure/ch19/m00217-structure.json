@@ -1,0 +1,76 @@
+{
+  "moduleId": "m00217",
+  "title": {
+    "segmentId": "m00217:title:auto-1",
+    "text": "Nucleophilic Addition of HCN: Cyanohydrin Formation"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "fe52115d-0f49-4e62-95ce-129c3cd99683"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00217:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00217:alt:fig-00001-alt",
+          "text": "Benzaldehyde and cyanide form a tetrahedral intermediate, which in presence of hydrogen cyanide gives mandelonitrile (88 percent) where benzene is single-bonded to C single-bonded to hydrogen, nitrile, and hydroxyl groups."
+        },
+        "src": "../../media/OChem_19_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00217:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00217:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00217:alt:fig-00002-alt",
+          "text": "Hydrogen cyanide converts benzaldehyde to mandelonitrile. Mandelonitrile is reduced to 2-amino-1-phenylethanol using lithium aluminum hydride in tetrahydrofuran, then hydronium. It’s hydrolyzed to mandelic acid (90 percent) in hydronium with heat."
+        },
+        "src": "../../media/OChem_19_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00217:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 6
+}

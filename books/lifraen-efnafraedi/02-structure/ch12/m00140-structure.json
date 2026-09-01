@@ -31,7 +31,10 @@
         "segmentId": "m00140:caption:fig-00001-caption"
       },
       "media": {
-        "alt": "A partial electromagnetic spectrum extending from ultraviolet through visible light and infrared to microwave radiation, where ultraviolet is higher in energy and microwave is lower.",
+        "alt": {
+          "segmentId": "m00140:alt:fig-00001-alt",
+          "text": "A partial electromagnetic spectrum extending from ultraviolet through visible light and infrared to microwave radiation, where ultraviolet is higher in energy and microwave is lower."
+        },
         "src": "../../media/OChem_12_06_001.jpg",
         "mimeType": "image/jpeg"
       }
@@ -47,7 +50,10 @@
       "class": "unnumbered",
       "caption": null,
       "media": {
-        "alt": "A ball and stick model of four structures showing the bending (in-plane and out-of-plane) and stretching (symmetric and antisymmetric) of bonds. Gray and white spheres represent carbon and hydrogen, respectively.",
+        "alt": {
+          "segmentId": "m00140:alt:fig-00002-alt",
+          "text": "A ball and stick model of four structures showing the bending (in-plane and out-of-plane) and stretching (symmetric and antisymmetric) of bonds. Gray and white spheres represent carbon and hydrogen, respectively."
+        },
         "src": "../../media/OChem_12_06_002.jpg",
         "mimeType": "image/jpeg"
       }

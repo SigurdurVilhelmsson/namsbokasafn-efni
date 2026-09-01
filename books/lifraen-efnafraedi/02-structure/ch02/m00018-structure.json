@@ -1,0 +1,151 @@
+{
+  "moduleId": "m00018",
+  "title": {
+    "segmentId": "m00018:title:auto-1",
+    "text": "Polar Covalent Bonds and Electronegativity"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "2f4dab84-d1ad-4fd6-8446-f7a32e66c2cf"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00018:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00018:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00018:alt:fig-00001-alt",
+          "text": "A covalent bond, a polar covalent bond, and an ionic bond are arranged from left to right, to highlight the order of increasing ionic character from covalent to ionic bond."
+        },
+        "src": "../../media/OChem_02_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00018:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00018:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00018:alt:fig-00002-alt",
+          "text": "Green elements on the left side of the periodic table, such as Lithium, have low electronegativity. Red elements on the right side, such as Oxygen, have high electronegativity."
+        },
+        "src": "../../media/OChem_02_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00018:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00018:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00018:alt:fig-00003-alt",
+          "text": "The chemical structure and ball stick model of methanol and methyllithium, to show the calculation of finding the electronegativity difference in both structures."
+        },
+        "src": "../../media/OChem_02_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00018:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00018:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00018:para:para-00006"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00018:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": null,
+      "class": null,
+      "src": "../../media/OChem_02_01_004.jpg",
+      "mimeType": "image/jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": "",
+      "alt": {
+        "segmentId": "m00018:alt:media-1-alt",
+        "text": "An arrow is positioned horizontally, pointing from left to right, displaying the direction of the dipole moment. At the tail, a small vertical line intersects it."
+      }
+    }
+  ],
+  "sectionOrder": 1
+}

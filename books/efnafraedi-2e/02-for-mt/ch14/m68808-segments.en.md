@@ -11,10 +11,13 @@ Describe the composition and function of acid–base buffers
 Calculate the pH of a buffer before and after the addition of added acid or base
 
 <!-- SEG:m68808:para:fs-idm117447344 -->
-A solution containing appreciable amounts of a weak conjugate acid-base pair is called a buffer solution, or a {{term}}buffer{{/term}}. Buffer solutions resist a change in pH when small amounts of a strong acid or a strong base are added ([[xref:CNX_Chem_14_06_compare]]). A solution of acetic acid and sodium acetate (CH[[sub:3]]COOH + CH[[sub:3]]COONa) is an example of a buffer that consists of a weak acid and its salt. An example of a buffer that consists of a weak base and its salt is a solution of ammonia and ammonium chloride (NH[[sub:3]]([[i:aq]]) + NH[[sub:4]]Cl([[i:aq]])).
+A solution containing appreciable amounts of a weak conjugate acid-base pair is called a buffer solution, or a [[term:buffer|term-00001]]. Buffer solutions resist a change in pH when small amounts of a strong acid or a strong base are added ([[xref:CNX_Chem_14_06_compare]]). A solution of acetic acid and sodium acetate (CH[[sub:3]]COOH + CH[[sub:3]]COONa) is an example of a buffer that consists of a weak acid and its salt. An example of a buffer that consists of a weak base and its salt is a solution of ammonia and ammonium chloride (NH[[sub:3]]([[i:aq]]) + NH[[sub:4]]Cl([[i:aq]])).
 
 <!-- SEG:m68808:caption:CNX_Chem_14_06_compare-caption -->
 (a) The unbuffered solution on the left and the buffered solution on the right have the same pH (pH 8); they are basic, showing the yellow color of the indicator methyl orange at this pH. (b) After the addition of 1 mL of a 0.01-[[i:M]] HCl solution, the buffered solution has not detectably changed its pH but the unbuffered solution has become acidic, as indicated by the change in color of the methyl orange, which turns red at a pH of about 4. (credit: modification of work by Mark Ott)
+
+<!-- SEG:m68808:alt:fs-idm104574592-alt -->
+Two images are shown. Image a on the left shows two beakers that each contain yellow solutions. The beaker on the left is labeled “Unbuffered” and the beaker on the right is labeled “p H equals 8.0 buffer.” Image b similarly shows 2 beakers. The beaker on the left contains a bright orange solution and is labeled “Unbuffered.” The beaker on the right is labeled “p H equals 8.0 buffer.”
 
 <!-- SEG:m68808:title:fs-idm112960288-title -->
 How Buffers Work
@@ -27,6 +30,9 @@ Likewise, strong acid added to this buffer solution will shift the above ionizat
 
 <!-- SEG:m68808:caption:CNX_Chem_14_06_bufferchrt-caption -->
 Buffering action in a mixture of acetic acid and acetate salt.
+
+<!-- SEG:m68808:alt:fs-idp38705984-alt -->
+This figure begins with a chemical reaction at the top: C H subscript 3 C O O H ( a q ) plus H subscript 2 O ( l ) equilibrium arrow H subscript 3 O superscript positive sign ( a q ) plus C H subscript 3 C O O superscript negative sign ( a q ). Below the text is a figure that resembles a bar graph. In the middle are two bars of equal height. One is labeled, “C H subscript 3 C O O H,” and the other is labeled, “C H subscript 3 C O O superscript negative sign.” There is a dotted line at the same height of the bars which extends to the left and right. Above these two bars is the phrase, “Buffer solution equimolar in acid and base.” There is an arrow pointing to the right which is labeled, “Add O H superscript negative sign.” The arrow points to two bars again, but this time the C H subscript 3 C O O H bar is shorter than that C H subscript 3 C O O superscript negative sign bar. Above these two bars is the phrase, “Buffer solution after addition of strong base.” From the middle bars again, there is an arrow that points left. The arrow is labeled, “Add H subscript 3 O superscript positive sign.” This arrow points to two bars again, but this time the C H subscript 3 C O O H bar is taller than the C H subscript 3 C O O superscript negative sign bar. These two bars are labeled, “Buffer solution after addition of strong acid.”
 
 <!-- SEG:m68808:example-title:fs-idm144695456-title -->
 pH Changes in Buffered and Unbuffered Solutions
@@ -109,6 +115,9 @@ Show that adding 1.0 mL of 0.10 [[i:M]] HCl changes the pH of 100 mL of a 1.8 [[
 <!-- SEG:m68808:para:fs-idm119337184 -->
 Initial pH of 1.8 [[MATH:3]] 10[[sup:−5]] [[i:M]] HCl; pH = −log[H[[sub:3]]O[[sup:+]]] = −log[1.8 [[MATH:4]] 10[[sup:−5]]] = 4.74[[BR]] Moles of H[[sub:3]]O[[sup:+]] in 100 mL 1.8 [[MATH:5]] 10[[sup:−5]] [[i:M]] HCl; 1.8 [[MATH:6]] 10[[sup:−5]] moles/L [[MATH:7]] 0.100 L = 1.8 [[MATH:8]] 10[[sup:−6]][[BR]] Moles of H[[sub:3]]O[[sup:+]] added by addition of 1.0 mL of 0.10 [[i:M]] HCl: 0.10 moles/L [[MATH:9]] 0.0010 L = 1.0 [[MATH:10]] 10[[sup:−4]] moles; final pH after addition of 1.0 mL of 0.10 [[i:M]] HCl:[[BR]] [[MATH:2]]
 
+<!-- SEG:m68808:alt:fs-idm123715040-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “[ C H subscript 3 C O subscript 2 H ] [ H subscript 2 O ] equilibrium arrow H subscript 3 O superscript plus sign [ C H subscript 3 C O subscript 2 superscript negative sign ].” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.10, negative x, 0.10 minus sign x. The second column is blank. The third column has the following: approximately 0, positive x, x. The fourth column has the following: 0.10, positive x, 0.10 plus sign x.
+
 <!-- SEG:m68808:note-title:fs-idm145837936-title -->
 Answer:
 
@@ -124,8 +133,11 @@ Buffer solutions do not have an unlimited capacity to keep the pH relatively con
 <!-- SEG:m68808:caption:CNX_Chem_14_06_exhaust-caption -->
 The indicator color (methyl orange) shows that a small amount of acid added to a buffered solution of pH 8 (beaker on the left) has little affect on the buffered system (middle beaker). However, a large amount of acid exhausts the buffering capacity of the solution and the pH changes dramatically (beaker on the right). (credit: modification of work by Mark Ott)
 
+<!-- SEG:m68808:alt:fs-idm195031712-alt -->
+Three Vernier LabQuest devices measure pH: 8.00 (yellow solution), 7.66 (yellow solution), and 1.53 (red solution), demonstrating a range of pH values.
+
 <!-- SEG:m68808:para:fs-idm103629216 -->
-The {{term}}buffer capacity{{/term}} is the amount of acid or base that can be added to a given volume of a buffer solution before the pH changes significantly, usually by one unit. Buffer capacity depends on the amounts of the weak acid and its conjugate base that are in a buffer mixture. For example, 1 L of a solution that is 1.0 [[i:M]] in acetic acid and 1.0 [[i:M]] in sodium acetate has a greater buffer capacity than 1 L of a solution that is 0.10 [[i:M]] in acetic acid and 0.10 [[i:M]] in sodium acetate even though both solutions have the same pH. The first solution has more buffer capacity because it contains more acetic acid and acetate ion.
+The [[term:buffer capacity|term-00002]] is the amount of acid or base that can be added to a given volume of a buffer solution before the pH changes significantly, usually by one unit. Buffer capacity depends on the amounts of the weak acid and its conjugate base that are in a buffer mixture. For example, 1 L of a solution that is 1.0 [[i:M]] in acetic acid and 1.0 [[i:M]] in sodium acetate has a greater buffer capacity than 1 L of a solution that is 0.10 [[i:M]] in acetic acid and 0.10 [[i:M]] in sodium acetate even though both solutions have the same pH. The first solution has more buffer capacity because it contains more acetic acid and acetate ion.
 
 <!-- SEG:m68808:title:fs-idm124351376-title -->
 Selection of Suitable Buffer Mixtures
@@ -141,6 +153,9 @@ There are two useful rules of thumb for selecting buffer mixtures:
 
 <!-- SEG:m68808:caption:CNX_Chem_14_06_buffer-caption -->
 Change in pH as an increasing amount of a 0.10-[[i:M]] NaOH solution is added to 100 mL of a buffer solution in which, initially, [CH[[sub:3]]CO[[sub:2]]H] = 0.10 [[i:M]] and [[MATH:20]] Note the greatly diminished buffering action occurring after the buffer capacity has been reached, resulting in drastic rises in pH on adding more strong base.
+
+<!-- SEG:m68808:alt:fs-idm112112448-alt -->
+A graph is shown with a horizontal axis labeled “Added m L of 0.10 M N a O H” which has markings and vertical gridlines every 10 units from 0 to 110. The vertical axis is labeled “p H” and is marked every 1 unit beginning at 0 extending to 11. A break is shown in the vertical axis between 0 and 4. A red curve is drawn on the graph which increases gradually from the point (0, 4.8) up to about (100, 7) after which the graph has a vertical section up to about (100, 11). The curve is labeled [ C H subscript 3 C O subscript 2 H ] is 11 percent of [ C H subscript 3 CO subscript 2 superscript negative].
 
 <!-- SEG:m68808:para:fs-idm53419232 -->
 Blood is an important example of a buffered solution, with the principal acid and ion responsible for the buffering action being carbonic acid, H[[sub:2]]CO[[sub:3]], and the bicarbonate ion, [[MATH:21]] When a hydronium ion is introduced to the blood stream, it is removed primarily by the reaction:
@@ -167,16 +182,16 @@ Taking the negative logarithm of both sides of this equation gives
 which can be written as
 
 <!-- SEG:m68808:para:fs-idp97287200 -->
-where p[[i:K]][[sub:a]] is the negative of the logarithm of the ionization constant of the weak acid (p[[i:K]][[sub:a]] = −log [[i:K]][[sub:a]]). This equation relates the pH, the ionization constant of a weak acid, and the concentrations of the weak conjugate acid-base pair in a buffered solution. Scientists often use this expression, called the {{term}}Henderson-Hasselbalch equation{{/term}}, to calculate the pH of buffer solutions. It is important to note that the “[[i:x]] is small” assumption must be valid to use this equation.
+where p[[i:K]][[sub:a]] is the negative of the logarithm of the ionization constant of the weak acid (p[[i:K]][[sub:a]] = −log [[i:K]][[sub:a]]). This equation relates the pH, the ionization constant of a weak acid, and the concentrations of the weak conjugate acid-base pair in a buffered solution. Scientists often use this expression, called the [[term:Henderson-Hasselbalch equation|term-00003]], to calculate the pH of buffer solutions. It is important to note that the “[[i:x]] is small” assumption must be valid to use this equation.
 
 <!-- SEG:m68808:note-title:fs-idp1420208-title -->
 Lawrence Joseph Henderson and Karl Albert Hasselbalch
 
 <!-- SEG:m68808:para:fs-idm68026080 -->
-Lawrence Joseph {{term}}Henderson{{/term}} (1878–1942) was an American physician, biochemist and physiologist, to name only a few of his many pursuits. He obtained a medical degree from Harvard and then spent 2 years studying in Strasbourg, then a part of Germany, before returning to take a lecturer position at Harvard. He eventually became a professor at Harvard and worked there his entire life. He discovered that the acid-base balance in human blood is regulated by a buffer system formed by the dissolved carbon dioxide in blood. He wrote an equation in 1908 to describe the carbonic acid-carbonate buffer system in blood. Henderson was broadly knowledgeable; in addition to his important research on the physiology of blood, he also wrote on the adaptations of organisms and their fit with their environments, on sociology and on university education. He also founded the Fatigue Laboratory, at the Harvard Business School, which examined human physiology with specific focus on work in industry, exercise, and nutrition.
+Lawrence Joseph [[term:Henderson|term-00004]] (1878–1942) was an American physician, biochemist and physiologist, to name only a few of his many pursuits. He obtained a medical degree from Harvard and then spent 2 years studying in Strasbourg, then a part of Germany, before returning to take a lecturer position at Harvard. He eventually became a professor at Harvard and worked there his entire life. He discovered that the acid-base balance in human blood is regulated by a buffer system formed by the dissolved carbon dioxide in blood. He wrote an equation in 1908 to describe the carbonic acid-carbonate buffer system in blood. Henderson was broadly knowledgeable; in addition to his important research on the physiology of blood, he also wrote on the adaptations of organisms and their fit with their environments, on sociology and on university education. He also founded the Fatigue Laboratory, at the Harvard Business School, which examined human physiology with specific focus on work in industry, exercise, and nutrition.
 
 <!-- SEG:m68808:para:fs-idp6637456 -->
-In 1916, Karl Albert {{term}}Hasselbalch{{/term}} (1874–1962), a Danish physician and chemist, shared authorship in a paper with Christian Bohr in 1904 that described the Bohr effect, which showed that the ability of hemoglobin in the blood to bind with oxygen was inversely related to the acidity of the blood and the concentration of carbon dioxide. The pH scale was introduced in 1909 by another Dane, Sørensen, and in 1912, Hasselbalch published measurements of the pH of blood. In 1916, Hasselbalch expressed Henderson’s equation in logarithmic terms, consistent with the logarithmic scale of pH, and thus the Henderson-Hasselbalch equation was born.
+In 1916, Karl Albert [[term:Hasselbalch|term-00005]] (1874–1962), a Danish physician and chemist, shared authorship in a paper with Christian Bohr in 1904 that described the Bohr effect, which showed that the ability of hemoglobin in the blood to bind with oxygen was inversely related to the acidity of the blood and the concentration of carbon dioxide. The pH scale was introduced in 1909 by another Dane, Sørensen, and in 1912, Hasselbalch published measurements of the pH of blood. In 1916, Hasselbalch expressed Henderson’s equation in logarithmic terms, consistent with the logarithmic scale of pH, and thus the Henderson-Hasselbalch equation was born.
 
 <!-- SEG:m68808:note-title:fs-idm2834272-title -->
 Medicine: The Buffer System in Blood
@@ -205,13 +220,13 @@ Solutions that contain appreciable amounts of a weak conjugate acid-base pair ar
 <!-- SEG:m68808:title:fs-idm101899904-title -->
 Key Equations
 
-<!-- SEG:m68808:entry:auto-70 -->
+<!-- SEG:m68808:entry:auto-75 -->
 p[[i:K]][[sub:a]] = −log [[i:K]][[sub:a]]
 
-<!-- SEG:m68808:entry:auto-71 -->
+<!-- SEG:m68808:entry:auto-76 -->
 p[[i:K]][[sub:b]] = −log [[i:K]][[sub:b]]
 
-<!-- SEG:m68808:entry:auto-72 -->
+<!-- SEG:m68808:entry:auto-77 -->
 [[MATH:25]]
 
 <!-- SEG:m68808:problem:fs-idp15824512 -->

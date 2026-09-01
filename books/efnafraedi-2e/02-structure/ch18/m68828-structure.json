@@ -35,7 +35,10 @@
       },
       "media": {
         "id": "fs-idm340240",
-        "alt": "Three photos are shown. The first shows a scientific lab full of equipment in which two people in protective suits are working. The second image shows a man holding a round, reflective disc held inside of a protective, clear container. The third image shows a round disc covered in metallic chips which is behind a protective covering.",
+        "alt": {
+          "segmentId": "m68828:alt:fs-idm340240-alt",
+          "text": "Three photos are shown. The first shows a scientific lab full of equipment in which two people in protective suits are working. The second image shows a man holding a round, reflective disc held inside of a protective, clear container. The third image shows a round disc covered in metallic chips which is behind a protective covering."
+        },
         "src": "../../media/CNX_Chem_18_00_SilWafer.jpg",
         "mimeType": "image/jpeg"
       }

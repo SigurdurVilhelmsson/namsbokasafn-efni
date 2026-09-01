@@ -280,34 +280,37 @@ Graphing the Dependence of [[i:y]] on [[i:x]]
 <!-- SEG:m68860:para:fs-idm176114816 -->
 This table contains the following points: (1,5), (2,10), (3,7), and (4,14). Each of these points can be plotted on a graph and connected to produce a graphical representation of the dependence of [[i:y]] on [[i:x]].
 
-<!-- SEG:m68860:entry:auto-95 -->
-[[i:x]]
+<!-- SEG:m68860:alt:fs-idm174022560-alt -->
+A graph is titled “Dependency of Y on X.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 16. Four points are plotted as a line graph; the points are 1 and 5, 2 and 10, 3 and 7, and 4 and 14.
 
 <!-- SEG:m68860:entry:auto-96 -->
-[[i:y]]
+[[i:x]]
 
 <!-- SEG:m68860:entry:auto-97 -->
-1
+[[i:y]]
 
 <!-- SEG:m68860:entry:auto-98 -->
-5
+1
 
 <!-- SEG:m68860:entry:auto-99 -->
-2
+5
 
 <!-- SEG:m68860:entry:auto-100 -->
-10
+2
 
 <!-- SEG:m68860:entry:auto-101 -->
-3
+10
 
 <!-- SEG:m68860:entry:auto-102 -->
-7
+3
 
 <!-- SEG:m68860:entry:auto-103 -->
-4
+7
 
 <!-- SEG:m68860:entry:auto-104 -->
+4
+
+<!-- SEG:m68860:entry:auto-105 -->
 14
 
 <!-- SEG:m68860:para:fs-idm164107136 -->
@@ -319,32 +322,35 @@ Plotting Data Pairs
 <!-- SEG:m68860:para:fs-idm144872640 -->
 If we know that [[i:y]] = [[i:x]][[sup:2]] + 2, we can produce a table of a few ([[i:x]],[[i:y]]) values and then plot the line based on the data shown here.
 
-<!-- SEG:m68860:entry:auto-108 -->
-[[i:x]]
-
-<!-- SEG:m68860:entry:auto-109 -->
-[[i:y]] = [[i:x]][[sup:2]] + 2
+<!-- SEG:m68860:alt:fs-idp112843584-alt -->
+A graph is titled “Y equals x superscript 2 plus 2.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 20. Four points are plotted as a line graph; the points are 1 and 3, 2 and 6, 3 and 11, and 4 and 18.
 
 <!-- SEG:m68860:entry:auto-110 -->
-1
+[[i:x]]
 
 <!-- SEG:m68860:entry:auto-111 -->
-3
+[[i:y]] = [[i:x]][[sup:2]] + 2
 
 <!-- SEG:m68860:entry:auto-112 -->
-2
+1
 
 <!-- SEG:m68860:entry:auto-113 -->
-6
-
-<!-- SEG:m68860:entry:auto-114 -->
 3
 
+<!-- SEG:m68860:entry:auto-114 -->
+2
+
 <!-- SEG:m68860:entry:auto-115 -->
-11
+6
 
 <!-- SEG:m68860:entry:auto-116 -->
-4
+3
 
 <!-- SEG:m68860:entry:auto-117 -->
+11
+
+<!-- SEG:m68860:entry:auto-118 -->
+4
+
+<!-- SEG:m68860:entry:auto-119 -->
 18

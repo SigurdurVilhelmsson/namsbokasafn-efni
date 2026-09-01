@@ -30,7 +30,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The parts of a chemical name according to the I U P A C system of nomenclature are represented. The chemical name contains 4 parts, locant, prefix, parent, and suffix.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00001-alt",
+          "text": "The parts of a chemical name according to the I U P A C system of nomenclature are represented. The chemical name contains 4 parts, locant, prefix, parent, and suffix."
+        },
         "src": "../../media/OChem_03_04_001.jpg",
         "mimeType": "image/jpeg"
       }
@@ -61,7 +64,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structures of two substituted alkanes are represented. The first and second structures are substituted hexane and heptane, respectively.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00002-alt",
+          "text": "The molecular structures of two substituted alkanes are represented. The first and second structures are substituted hexane and heptane, respectively."
+        },
         "src": "../../media/OChem_03_04_002.jpg",
         "mimeType": "image/jpeg"
       }
@@ -77,7 +83,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The correct and incorrect naming of substituted hexane molecular structures are presented. ",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00003-alt",
+          "text": "The correct and incorrect naming of substituted hexane molecular structures are presented. "
+        },
         "src": "../../media/OChem_03_04_003.jpg",
         "mimeType": "image/jpeg"
       }
@@ -98,7 +107,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The correct and incorrect naming of a molecular structure is represented. The first structure is 3-tiered with carbon atoms labeled from 1 to 7. The second structure is incorrectly numbered. ",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00004-alt",
+          "text": "The correct and incorrect naming of a molecular structure is represented. The first structure is 3-tiered with carbon atoms labeled from 1 to 7. The second structure is incorrectly numbered. "
+        },
         "src": "../../media/OChem_03_04_004.jpg",
         "mimeType": "image/jpeg"
       }
@@ -119,7 +131,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The correct and incorrect naming of a molecular structure is represented. The numbering of first structure begins from methyl group on the right side. The second structure is incorrectly numbered.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00005-alt",
+          "text": "The correct and incorrect naming of a molecular structure is represented. The numbering of first structure begins from methyl group on the right side. The second structure is incorrectly numbered."
+        },
         "src": "../../media/OChem_03_04_005.jpg",
         "mimeType": "image/jpeg"
       }
@@ -140,7 +155,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structure of nonane that includes substituents on C3, C4, and C7 are 3-ethyl, 4-methyl, and 7-methyl, respectively.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00006-alt",
+          "text": "The molecular structure of nonane that includes substituents on C3, C4, and C7 are 3-ethyl, 4-methyl, and 7-methyl, respectively."
+        },
         "src": "../../media/OChem_03_04_006.jpg",
         "mimeType": "image/jpeg"
       }
@@ -156,7 +174,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structure of hexane that includes substituents on C2, C4, and C4 are 2-methyl, 4-methyl, and 4-ethyl, respectively.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00007-alt",
+          "text": "The molecular structure of hexane that includes substituents on C2, C4, and C4 are 2-methyl, 4-methyl, and 4-ethyl, respectively."
+        },
         "src": "../../media/OChem_03_04_007.jpg",
         "mimeType": "image/jpeg"
       }
@@ -177,7 +198,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structures of 3-methylhexane, 3-ethyl-4,7-dimethylnonane, and 3-ethyl-2-methylhexane are represented.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00008-alt",
+          "text": "The molecular structures of 3-methylhexane, 3-ethyl-4,7-dimethylnonane, and 3-ethyl-2-methylhexane are represented."
+        },
         "src": "../../media/OChem_03_04_008.jpg",
         "mimeType": "image/jpeg"
       }
@@ -188,7 +212,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structures of 4-ethyl-3-methylheptane and 4-ethyl-2, 4-dimethylhexane are represented.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00009-alt",
+          "text": "The molecular structures of 4-ethyl-3-methylheptane and 4-ethyl-2, 4-dimethylhexane are represented."
+        },
         "src": "../../media/OChem_03_04_009.jpg",
         "mimeType": "image/jpeg"
       }
@@ -209,7 +236,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structure of 2,3,6-trisubstituted decane. An inset in parenthesis is labeled, a 2-methylpropyl substituent.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00010-alt",
+          "text": "The molecular structure of 2,3,6-trisubstituted decane. An inset in parenthesis is labeled, a 2-methylpropyl substituent."
+        },
         "src": "../../media/OChem_03_04_010.jpg",
         "mimeType": "image/jpeg"
       }
@@ -225,7 +255,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structure of 2,3-dimethyl-6-(2-methylpropyl)decane featuring a 10-carbon chain.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00011-alt",
+          "text": "The molecular structure of 2,3-dimethyl-6-(2-methylpropyl)decane featuring a 10-carbon chain."
+        },
         "src": "../../media/OChem_03_04_011.jpg",
         "mimeType": "image/jpeg"
       }
@@ -241,7 +274,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structure of 5-(1,2-dimethylpropyl)-2-methylnonane. An inset in parenthesis is labeled, a 1,2-dimethylpropyl group.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00012-alt",
+          "text": "The molecular structure of 5-(1,2-dimethylpropyl)-2-methylnonane. An inset in parenthesis is labeled, a 1,2-dimethylpropyl group."
+        },
         "src": "../../media/OChem_03_04_012.jpg",
         "mimeType": "image/jpeg"
       }
@@ -257,7 +293,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "Three alkyl groups are labeled, 3-carbon alkyl group, 4-carbon alkyl groups, and 5-carbon alkyl groups, respectively. The first group contains 1 alkyl and each remaining group contains 3 alkyl groups.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00013-alt",
+          "text": "Three alkyl groups are labeled, 3-carbon alkyl group, 4-carbon alkyl groups, and 5-carbon alkyl groups, respectively. The first group contains 1 alkyl and each remaining group contains 3 alkyl groups."
+        },
         "src": "../../media/OChem_03_04_013.jpg",
         "mimeType": "image/jpeg"
       }
@@ -273,7 +312,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structure of 4-(1-Methylethyl)heptane or 4-Isopropylheptane is represented featuring a seven-carbon chain.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00014-alt",
+          "text": "The molecular structure of 4-(1-Methylethyl)heptane or 4-Isopropylheptane is represented featuring a seven-carbon chain."
+        },
         "src": "../../media/OChem_03_04_014.jpg",
         "mimeType": "image/jpeg"
       }
@@ -288,7 +330,7 @@
       "id": "exam-00001",
       "title": {
         "segmentId": "m00035:example-title:exam-00001-title",
-        "text": "Strategy"
+        "text": "Naming Alkanes"
       },
       "content": [
         {
@@ -299,7 +341,11 @@
         {
           "type": "para",
           "id": "para-00031",
-          "segmentId": "m00035:para:para-00031"
+          "segmentId": "m00035:para:para-00031",
+          "title": {
+            "segmentId": "m00035:para-title:para-00031-title",
+            "text": "Strategy"
+          }
         },
         {
           "type": "para",
@@ -318,7 +364,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structure of 2,6-dimethyloctane featuring a an eight-carbon chain.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00015-alt",
+          "text": "The molecular structure of 2,6-dimethyloctane featuring a an eight-carbon chain."
+        },
         "src": "../../media/OChem_03_04_015.jpg",
         "mimeType": "image/jpeg"
       }
@@ -329,7 +378,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structure of 2,6-dimethyloctane featuring an eight-carbon chain and is numbered from right to left.",
+        "alt": {
+          "segmentId": "m00035:alt:media-1-alt",
+          "text": "The molecular structure of 2,6-dimethyloctane featuring an eight-carbon chain and is numbered from right to left."
+        },
         "src": "../../media/OChem_03_04_016.jpg",
         "mimeType": "image/jpeg"
       }
@@ -339,7 +391,7 @@
       "id": "exam-00002",
       "title": {
         "segmentId": "m00035:example-title:exam-00002-title",
-        "text": "Strategy"
+        "text": "Converting a Chemical Name into a Structure"
       },
       "content": [
         {
@@ -350,7 +402,11 @@
         {
           "type": "para",
           "id": "para-00034",
-          "segmentId": "m00035:para:para-00034"
+          "segmentId": "m00035:para:para-00034",
+          "title": {
+            "segmentId": "m00035:para-title:para-00034-title",
+            "text": "Strategy"
+          }
         },
         {
           "type": "para",
@@ -384,7 +440,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The structure of a compound has 6-carbon chain and is numbered from left to right. An isopropyl group at C3 and a methyl group at C2 are shown.",
+        "alt": {
+          "segmentId": "m00035:alt:fig-00017-alt",
+          "text": "The structure of a compound has 6-carbon chain and is numbered from left to right. An isopropyl group at C3 and a methyl group at C2 are shown."
+        },
         "src": "../../media/OChem_03_04_017.jpg",
         "mimeType": "image/jpeg"
       }
@@ -395,7 +454,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structure of 3-isopropyl-2-methylhexane is represented. It presents a six-carbon chain.",
+        "alt": {
+          "segmentId": "m00035:alt:media-2-alt",
+          "text": "The molecular structure of 3-isopropyl-2-methylhexane is represented. It presents a six-carbon chain."
+        },
         "src": "../../media/OChem_03_04_018.jpg",
         "mimeType": "image/jpeg"
       }
@@ -449,23 +511,29 @@
       "placeholder": "[[MEDIA:1]]",
       "id": null,
       "class": null,
-      "alt": "The molecular structure of 2,6-dimethyloctane featuring an eight-carbon chain and is numbered from right to left.",
       "src": "../../media/OChem_03_04_016.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m00035:alt:media-1-alt",
+        "text": "The molecular structure of 2,6-dimethyloctane featuring an eight-carbon chain and is numbered from right to left."
+      }
     },
     {
       "placeholder": "[[MEDIA:2]]",
       "id": null,
       "class": null,
-      "alt": "The molecular structure of 3-isopropyl-2-methylhexane is represented. It presents a six-carbon chain.",
       "src": "../../media/OChem_03_04_018.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m00035:alt:media-2-alt",
+        "text": "The molecular structure of 3-isopropyl-2-methylhexane is represented. It presents a six-carbon chain."
+      }
     }
   ],
   "sectionOrder": 4

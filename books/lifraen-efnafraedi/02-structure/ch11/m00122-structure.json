@@ -1,0 +1,183 @@
+{
+  "moduleId": "m00122",
+  "title": {
+    "segmentId": "m00122:title:auto-1",
+    "text": "The Discovery of Nucleophilic Substitution Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d5bc7e70-d830-46d5-84b3-c050ae3e6753"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00122:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00122:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00122:alt:fig-00001-alt",
+          "text": "Minus and plus malic acid react with phosphorus pentachloride making plus and minus chlorosuccinic acid, which react with silver oxide and water making plus and minus malic acid respectively."
+        },
+        "src": "../../media/OChem_11_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00122:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00122:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00122:alt:fig-00002-alt",
+          "text": "A nucleophilic substitution reaction, where an alkyl halide reacts with a nucleophile. Nucleophile replaces X yielding product and X minus."
+        },
+        "src": "../../media/OChem_11_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00122:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00122:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00122:alt:fig-00003-alt",
+          "text": "A 3-step cyclic reaction. Phenyl-2-propanol (alpha D equals plus 33.0) reacts in the presence of 4-toluenesulfonyl chloride and pyridine to form 1-phenyl-2-propanol (alpha D equals minus 33.2). Asterisks denote chirality centers."
+        },
+        "src": "../../media/OChem_11_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00122:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00122:alt:fig-00004-alt",
+          "text": "Tosylated reactant reacts with acetate ion and undergoes inversion of configuration. Tosylate leaves, acetate replaces tosylate on the substrate."
+        },
+        "src": "../../media/OChem_11_01_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00122:para:para-00006"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00122:example-title:exam-00001-title",
+        "text": "Predicting the Stereochemistry of a Nucleophilic Substitution Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00122:para:para-00007"
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00122:para:para-00008",
+          "title": {
+            "segmentId": "m00122:para-title:para-00008-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "title": {
+            "segmentId": "m00122:para-title:para-00009-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00122:alt:fig-00005-alt",
+          "text": "An incomplete reaction of 1-bromo-1-phenylethane with sodium cyanide yields an unknown product, depicted by a question mark."
+        },
+        "src": "../../media/OChem_11_01_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00122:alt:fig-00006-alt",
+          "text": "The reaction of (R)-1-bromo-1-phenylethane with cyanide yields (S)-2-phenylpropanenitrile."
+        },
+        "src": "../../media/OChem_11_01_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00122:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

@@ -54,7 +54,10 @@
           },
           "media": {
             "id": "fs-idm59912944",
-            "alt": "This figure has three rows showing the ingredients needed to make a sandwich. The first row reads, “1 sandwich = 2 slices of bread + 1 slice of cheese.” Two slices of bread and one slice of cheese are shown. The second row reads, “Provided with: 28 slices of bread + 11 slices of cheese.” There are 28 slices of bread and 11 slices of cheese shown. The third row reads, “We can make: 11 sandwiches + 6 slices of bread left over.” 11 sandwiches are shown with six extra slices of bread.",
+            "alt": {
+              "segmentId": "m68714:alt:fs-idm59912944-alt",
+              "text": "This figure has three rows showing the ingredients needed to make a sandwich. The first row reads, “1 sandwich = 2 slices of bread + 1 slice of cheese.” Two slices of bread and one slice of cheese are shown. The second row reads, “Provided with: 28 slices of bread + 11 slices of cheese.” There are 28 slices of bread and 11 slices of cheese shown. The third row reads, “We can make: 11 sandwiches + 6 slices of bread left over.” 11 sandwiches are shown with six extra slices of bread."
+            },
             "src": "../../media/CNX_Chem_04_04_sandwich.jpg",
             "mimeType": "image/jpeg"
           }
@@ -107,7 +110,10 @@
           },
           "media": {
             "id": "fs-idp182564432",
-            "alt": "The figure shows a space-filling molecular models reacting. There is a reaction arrow pointing to the right in the middle. To the left of the reaction arrow there are three molecules each consisting of two green spheres bonded together. There are also five molecules each consisting of two smaller, white spheres bonded together. Above these molecules is the label, “Before reaction,” and below these molecules is the label, “6 H subscript 2 and 4 C l subscript 2.” To the right of the reaction arrow, there are eight molecules each consisting of one green sphere bonded to a smaller white sphere. There are also two molecules each consisting of two white spheres bonded together. Above these molecules is the label, “After reaction,” and below these molecules is the label, “8 H C l and 2 H subscript 2.”",
+            "alt": {
+              "segmentId": "m68714:alt:fs-idp182564432-alt",
+              "text": "The figure shows a space-filling molecular models reacting. There is a reaction arrow pointing to the right in the middle. To the left of the reaction arrow there are three molecules each consisting of two green spheres bonded together. There are also five molecules each consisting of two smaller, white spheres bonded together. Above these molecules is the label, “Before reaction,” and below these molecules is the label, “6 H subscript 2 and 4 C l subscript 2.” To the right of the reaction arrow, there are eight molecules each consisting of one green sphere bonded to a smaller white sphere. There are also two molecules each consisting of two white spheres bonded together. Above these molecules is the label, “After reaction,” and below these molecules is the label, “8 H C l and 2 H subscript 2.”"
+            },
             "src": "../../media/CNX_Chem_04_04_limiting.jpg",
             "mimeType": "image/jpeg"
           }
@@ -385,7 +391,10 @@
           },
           "media": {
             "id": "fs-idp994368",
-            "alt": "This figure is labeled, “a,” and, “b.” Part a shows an open bottle of ibuprofen and a small pile of ibuprofen tablets beside it. Part b shows a reaction along with line structures. The first line structure looks like a diagonal line pointing down and to the right, then up and to the right and then down and to the right. At this point it connects to a hexagon with alternating double bonds. At the first trough there is a line that points straight down. From this structure, there is an arrow pointing downward. The arrow is labeled, “H F,” on the left and “( C H subscript 3 C O ) subscript 2 O,” on the right. The next line structure looks exactly like the first line structure, but it has a line angled down and to the right from the lower right point of the hexagon. This line is connected to another line which points straight down. Where these two lines meet, there is a double bond to an O atom. There is another arrow pointing downward, and it is labeled, “H subscript 2, Raney N i.” The next structure looks very similar to the second, previous structure, except in place of the double bonded O, there is a singly bonded O H group. There is a final reaction arrow pointing downward, and it is labeled, “C O, [ P d ].” The final structure is similar to the third, previous structure except in place of the O H group, there is another line that points down and to the right to an O H group. At these two lines, there is a double bonded O.",
+            "alt": {
+              "segmentId": "m68714:alt:fs-idp994368-alt",
+              "text": "This figure is labeled, “a,” and, “b.” Part a shows an open bottle of ibuprofen and a small pile of ibuprofen tablets beside it. Part b shows a reaction along with line structures. The first line structure looks like a diagonal line pointing down and to the right, then up and to the right and then down and to the right. At this point it connects to a hexagon with alternating double bonds. At the first trough there is a line that points straight down. From this structure, there is an arrow pointing downward. The arrow is labeled, “H F,” on the left and “( C H subscript 3 C O ) subscript 2 O,” on the right. The next line structure looks exactly like the first line structure, but it has a line angled down and to the right from the lower right point of the hexagon. This line is connected to another line which points straight down. Where these two lines meet, there is a double bond to an O atom. There is another arrow pointing downward, and it is labeled, “H subscript 2, Raney N i.” The next structure looks very similar to the second, previous structure, except in place of the double bonded O, there is a singly bonded O H group. There is a final reaction arrow pointing downward, and it is labeled, “C O, [ P d ].” The final structure is similar to the third, previous structure except in place of the O H group, there is another line that points down and to the right to an O H group. At these two lines, there is a double bonded O."
+            },
             "src": "../../media/CNX_Chem_04_04_GreenChem.jpg",
             "mimeType": "image/jpeg"
           }
@@ -422,11 +431,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68714:entry:auto-56",
+                  "segmentId": "m68714:entry:auto-59",
                   "attributes": {}
                 }
               ]
@@ -784,6 +794,14 @@
                 "type": "para",
                 "id": "fs-idp16595856",
                 "segmentId": "m68714:problem:fs-idp16595856"
+              },
+              {
+                "type": "media",
+                "id": "fs-idp36082896",
+                "alt": {
+                  "segmentId": "m68714:alt:fs-idp36082896-alt",
+                  "text": "A structural formula is shown. A hexagonal ring of 6 C atoms with alternating double bonds has single H atoms bonded to four consecutive C atoms on the left side of the ring. The two C atoms on the right side of the ring, which are joined by a double bond, are also included in a 5 atom ring to their right. The C atom of this pair that is nearest the top of the structure is singly bonded to a C atom at the top of the 5 atom ring which has an O atom double bonded above. An N atom is singly bonded to the lower right of this same C atom. The N atom has an H atom bonded to its right and to its lower left, it is bonded to an S atom. The S atom is connected to the second C atom that is shared in the two rings. The S atom is also double bonded to an O atom to its lower right and is double bonded to a second O atom directly below it."
+                }
               }
             ]
           },

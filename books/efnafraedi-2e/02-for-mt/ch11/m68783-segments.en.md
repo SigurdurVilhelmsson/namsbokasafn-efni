@@ -20,7 +20,7 @@ Describe the process of distillation and its practical applications
 Explain the process of osmosis and describe how it is applied industrially and in nature
 
 <!-- SEG:m68783:para:fs-idp74224880 -->
-The properties of a solution are different from those of either the pure solute(s) or solvent. Many solution properties are dependent upon the chemical identity of the solute. Compared to pure water, a solution of hydrogen chloride is more acidic, a solution of ammonia is more basic, a solution of sodium chloride is more dense, and a solution of sucrose is more viscous. There are a few solution properties, however, that depend [[i:only]] upon the total concentration of solute species, regardless of their identities. These {{term}}colligative properties{{/term}} include vapor pressure lowering, boiling point elevation, freezing point depression, and osmotic pressure. This small set of properties is of central importance to many natural phenomena and technological applications, as will be described in this module.
+The properties of a solution are different from those of either the pure solute(s) or solvent. Many solution properties are dependent upon the chemical identity of the solute. Compared to pure water, a solution of hydrogen chloride is more acidic, a solution of ammonia is more basic, a solution of sodium chloride is more dense, and a solution of sucrose is more viscous. There are a few solution properties, however, that depend [[i:only]] upon the total concentration of solute species, regardless of their identities. These [[term:colligative properties|term-00001]] include vapor pressure lowering, boiling point elevation, freezing point depression, and osmotic pressure. This small set of properties is of central importance to many natural phenomena and technological applications, as will be described in this module.
 
 <!-- SEG:m68783:title:fs-idp94607584-title -->
 Mole Fraction and Molality
@@ -38,7 +38,7 @@ The mole fraction, [[i:X]], of a component is the ratio of its molar amount to t
 By this definition, the sum of mole fractions for all solution components (the solvent and all solutes) is equal to one.
 
 <!-- SEG:m68783:para:fs-idm64867536 -->
-{{term}}Molality{{/term}} is a concentration unit defined as the ratio of the numbers of moles of solute to the mass of the solvent in kilograms:
+[[term:Molality|term-00002]] is a concentration unit defined as the ratio of the numbers of moles of solute to the mass of the solvent in kilograms:
 
 <!-- SEG:m68783:para:fs-idm62416064 -->
 Since these units are computed using only masses and molar amounts, they do not vary with temperature and, thus, are better suited for applications requiring temperature-independent concentrations, including several colligative properties, as will be described in this chapter module.
@@ -175,8 +175,11 @@ Dissolving a nonvolatile substance in a volatile liquid results in a lowering of
 <!-- SEG:m68783:caption:CNX_Chem_11_04_RaoultLaw-caption -->
 The presence of nonvolatile solutes lowers the vapor pressure of a solution by impeding the evaporation of solvent molecules.
 
+<!-- SEG:m68783:alt:fs-idp97024192-alt -->
+This figure contains two images. Figure a is labeled “pure water.” It shows a beaker half-filled with liquid. In the liquid, eleven molecules are evenly dispersed in the liquid each consisting of one central red sphere and two slightly smaller white spheres are shown. Four molecules near the surface of the liquid have curved arrows drawn from them pointing to the space above the liquid in the beaker. Above the liquid, twelve molecules are shown, with arrows pointing from three of them into the liquid below. Figure b is labeled “Aqueous solution.” It is similar to figure a except that eleven blue spheres, slightly larger in size than the molecules, are dispersed evenly in the liquid. Only four curved arrows appear in this diagram with two from the molecules in the liquid pointing to the space above and two from molecules in the space above the liquid pointing into the liquid below.
+
 <!-- SEG:m68783:para:fs-idm44600736 -->
-The relationship between the vapor pressures of solution components and the concentrations of those components is described by {{term}}Raoult’s law{{/term}}: [[i:The partial pressure exerted by any component of an ideal solution is equal to the vapor pressure of the pure component multiplied by its mole fraction in the solution.]]
+The relationship between the vapor pressures of solution components and the concentrations of those components is described by [[term:Raoult’s law|term-00003]]: [[i:The partial pressure exerted by any component of an ideal solution is equal to the vapor pressure of the pure component multiplied by its mole fraction in the solution.]]
 
 <!-- SEG:m68783:para:fs-idm37530832 -->
 where [[i:P]][[sub:A]] is the partial pressure exerted by component A in the solution, [[MATH:5]] is the vapor pressure of pure A, and [[i:X]][[sub:A]] is the mole fraction of A in the solution.
@@ -232,115 +235,121 @@ Distillation is widely applied in both laboratory and industrial settings, being
 <!-- SEG:m68783:caption:CNX_Chem_11_04_LabDistill-caption -->
 A typical laboratory distillation unit is shown in (a) a photograph and (b) a schematic diagram of the components. (credit a: modification of work by “Rifleman82”/Wikimedia commons; credit b: modification of work by “Slashme”/Wikimedia Commons)
 
+<!-- SEG:m68783:alt:fs-idp129114224-alt -->
+Figure a contains a photograph of a common laboratory distillation unit. Figure b provides a diagram labeling typical components of a laboratory distillation unit, including a stirrer/heat plate with heat and stirrer speed control, a heating bath of oil or sand, stirring means such as boiling chips, a still pot, a still head, a thermometer for boiling point temperature reading, a condenser with a cool water inlet and outlet, a still receiver with a vacuum or gas inlet, a receiving flask for holding distillate, and a cooling bath.
+
 <!-- SEG:m68783:para:fs-idm44238960 -->
 Oil refineries use large-scale [[i:fractional distillation]] to separate the components of crude oil. The crude oil is heated to high temperatures at the base of a tall [[i:fractionating column]], vaporizing many of the components that rise within the column. As vaporized components reach adequately cool zones during their ascent, they condense and are collected. The collected liquids are simpler mixtures of hydrocarbons and other petroleum compounds that are of appropriate composition for various applications (e.g., diesel fuel, kerosene, gasoline), as depicted in [[xref:CNX_Chem_11_04_refinery]].
 
 <!-- SEG:m68783:caption:CNX_Chem_11_04_refinery-caption -->
 Crude oil is a complex mixture that is separated by large-scale fractional distillation to isolate various simpler mixtures.
 
+<!-- SEG:m68783:alt:fs-idm45846832-alt -->
+This figure contains a photo of a refinery, showing large columnar structures. A diagram of a fractional distillation column used in separating crude oil is also shown. Near the bottom of the column, an arrow pointing into the column shows a point of entry for heated crude oil. The column contains several layers at which different components are removed. At the very bottom, residue materials are removed as indicated by an arrow out of the column. At each successive level, different materials are removed proceeding from the bottom to the top of the column. The materials are fuel oil, followed by diesel oil, kerosene, naptha, gasoline, and refinery gas at the very top. To the right of the column diagram, a double sided arrow is shown that is blue at the top and gradually changes color to red moving downward. The blue top of the arrow is labeled, “small molecules: low boiling point, very volatile, flows easily, ignites easily.” The red bottom of the arrow is labeled, “large molecules: high boiling point, not very volatile, does not flow easily, does not ignite easily.”
+
 <!-- SEG:m68783:title:fs-idm80924336-title -->
 Boiling Point Elevation
 
 <!-- SEG:m68783:para:fs-idm11969360 -->
-As described in the chapter on liquids and solids, the [[i:boiling point]] of a liquid is the temperature at which its vapor pressure is equal to ambient atmospheric pressure. Since the vapor pressure of a solution is lowered due to the presence of nonvolatile solutes, it stands to reason that the solution’s boiling point will subsequently be increased. Vapor pressure increases with temperature, and so a solution will require a higher temperature than will pure solvent to achieve any given vapor pressure, including one equivalent to that of the surrounding atmosphere. The increase in boiling point observed when nonvolatile solute is dissolved in a solvent, Δ[[i:T]][[sub:b]], is called {{term}}boiling point elevation{{/term}} and is directly proportional to the molal concentration of solute species:
+As described in the chapter on liquids and solids, the [[i:boiling point]] of a liquid is the temperature at which its vapor pressure is equal to ambient atmospheric pressure. Since the vapor pressure of a solution is lowered due to the presence of nonvolatile solutes, it stands to reason that the solution’s boiling point will subsequently be increased. Vapor pressure increases with temperature, and so a solution will require a higher temperature than will pure solvent to achieve any given vapor pressure, including one equivalent to that of the surrounding atmosphere. The increase in boiling point observed when nonvolatile solute is dissolved in a solvent, Δ[[i:T]][[sub:b]], is called [[term:boiling point elevation|term-00004]] and is directly proportional to the molal concentration of solute species:
 
 <!-- SEG:m68783:para:fs-idm72955888 -->
-where [[i:K]][[sub:b]] is the {{term}}boiling point elevation constant{{/term}}, or the [[i:ebullioscopic constant]] and [[i:m]] is the molal concentration (molality) of all solute species.
+where [[i:K]][[sub:b]] is the [[term:boiling point elevation constant|term-00005]], or the [[i:ebullioscopic constant]] and [[i:m]] is the molal concentration (molality) of all solute species.
 
 <!-- SEG:m68783:para:fs-idp83055184 -->
 Boiling point elevation constants are characteristic properties that depend on the identity of the solvent. Values of [[i:K]][[sub:b]] for several solvents are listed in [[xref:fs-idm37127680]].
 
-<!-- SEG:m68783:entry:auto-85 -->
+<!-- SEG:m68783:entry:auto-88 -->
 Boiling Point Elevation and Freezing Point Depression Constants for Several Solvents
 
-<!-- SEG:m68783:entry:auto-86 -->
+<!-- SEG:m68783:entry:auto-89 -->
 Solvent
 
-<!-- SEG:m68783:entry:auto-87 -->
+<!-- SEG:m68783:entry:auto-90 -->
 Boiling Point (°C at 1 atm)
 
-<!-- SEG:m68783:entry:auto-88 -->
+<!-- SEG:m68783:entry:auto-91 -->
 [[i:K]][[sub:b]] (ºC[[i:m]][[sup:−1]])
 
-<!-- SEG:m68783:entry:auto-89 -->
+<!-- SEG:m68783:entry:auto-92 -->
 Freezing Point (°C at 1 atm)
 
-<!-- SEG:m68783:entry:auto-90 -->
+<!-- SEG:m68783:entry:auto-93 -->
 [[i:K]][[sub:f]] (ºC[[i:m]][[sup:−1]])
 
-<!-- SEG:m68783:entry:auto-91 -->
+<!-- SEG:m68783:entry:auto-94 -->
 water
 
-<!-- SEG:m68783:entry:auto-92 -->
+<!-- SEG:m68783:entry:auto-95 -->
 100.0
 
-<!-- SEG:m68783:entry:auto-93 -->
+<!-- SEG:m68783:entry:auto-96 -->
 0.512
 
-<!-- SEG:m68783:entry:auto-94 -->
+<!-- SEG:m68783:entry:auto-97 -->
 0.0
 
-<!-- SEG:m68783:entry:auto-95 -->
+<!-- SEG:m68783:entry:auto-98 -->
 1.86
 
-<!-- SEG:m68783:entry:auto-96 -->
+<!-- SEG:m68783:entry:auto-99 -->
 hydrogen acetate (glacial acetic acid)
 
-<!-- SEG:m68783:entry:auto-97 -->
+<!-- SEG:m68783:entry:auto-100 -->
 118.1
 
-<!-- SEG:m68783:entry:auto-98 -->
+<!-- SEG:m68783:entry:auto-101 -->
 3.07
 
-<!-- SEG:m68783:entry:auto-99 -->
+<!-- SEG:m68783:entry:auto-102 -->
 16.6
 
-<!-- SEG:m68783:entry:auto-100 -->
+<!-- SEG:m68783:entry:auto-103 -->
 3.9
 
-<!-- SEG:m68783:entry:auto-101 -->
+<!-- SEG:m68783:entry:auto-104 -->
 benzene
 
-<!-- SEG:m68783:entry:auto-102 -->
+<!-- SEG:m68783:entry:auto-105 -->
 80.1
 
-<!-- SEG:m68783:entry:auto-103 -->
+<!-- SEG:m68783:entry:auto-106 -->
 2.53
 
-<!-- SEG:m68783:entry:auto-104 -->
+<!-- SEG:m68783:entry:auto-107 -->
 5.5
 
-<!-- SEG:m68783:entry:auto-105 -->
+<!-- SEG:m68783:entry:auto-108 -->
 5.12
 
-<!-- SEG:m68783:entry:auto-106 -->
+<!-- SEG:m68783:entry:auto-109 -->
 chloroform
 
-<!-- SEG:m68783:entry:auto-107 -->
+<!-- SEG:m68783:entry:auto-110 -->
 61.26
 
-<!-- SEG:m68783:entry:auto-108 -->
+<!-- SEG:m68783:entry:auto-111 -->
 3.63
 
-<!-- SEG:m68783:entry:auto-109 -->
+<!-- SEG:m68783:entry:auto-112 -->
 −63.5
 
-<!-- SEG:m68783:entry:auto-110 -->
+<!-- SEG:m68783:entry:auto-113 -->
 4.68
 
-<!-- SEG:m68783:entry:auto-111 -->
+<!-- SEG:m68783:entry:auto-114 -->
 nitrobenzene
 
-<!-- SEG:m68783:entry:auto-112 -->
+<!-- SEG:m68783:entry:auto-115 -->
 210.9
 
-<!-- SEG:m68783:entry:auto-113 -->
+<!-- SEG:m68783:entry:auto-116 -->
 5.24
 
-<!-- SEG:m68783:entry:auto-114 -->
+<!-- SEG:m68783:entry:auto-117 -->
 5.67
 
-<!-- SEG:m68783:entry:auto-115 -->
+<!-- SEG:m68783:entry:auto-118 -->
 8.1
 
 <!-- SEG:m68783:para:fs-idp26191216 -->
@@ -372,6 +381,9 @@ Assuming ideal solution behavior, what is the boiling point of the antifreeze de
 
 <!-- SEG:m68783:item:fs-idp52617808-item-2 -->
 [[i:Add the boiling point elevation to the pure solvent’s boiling point.]][[BR]] [[MATH:7]]
+
+<!-- SEG:m68783:alt:fs-idp91950512-alt -->
+This is a diagram with three boxes connected with two arrows pointing to the right. The first box is labeled, “Molality of solution,” followed by an arrow labeled, “1,” pointing to a second box labeled, “Change in boiling point,” followed by an arrow labeled, “2,” pointing to a third box labeled, “New boiling point.”
 
 <!-- SEG:m68783:note-title:fs-idm69400592-title -->
 Answer:
@@ -412,6 +424,9 @@ What is the boiling point of a solution of 1.0 g of glycerin, C[[sub:3]]H[[sub:5
 <!-- SEG:m68783:item:fs-idm38965696-item-4 -->
 [[i:Determine the new boiling point from the boiling point of the pure solvent and the change.]][[BR]] Result: 62.91 °C[[BR]] Check each result as a self-assessment.
 
+<!-- SEG:m68783:alt:fs-idp95700448-alt -->
+This is a diagram with five boxes oriented horizontally and linked together with arrows numbered 1 to 4 pointing from each box in succession to the next one to the right. The first box is labeled, “Mass of iodine.” Arrow 1 points from this box to a second box labeled, “Moles of iodine.” Arrow 2 points from this box to to a third box labeled, “Molality of solution.” Arrow labeled 3 points from this box to a fourth box labeled, “Change in boiling point.” Arrow 4 points to a fifth box labeled, “New boiling point.”
+
 <!-- SEG:m68783:note-title:fs-idp191396352-title -->
 Answer:
 
@@ -427,11 +442,14 @@ Solutions freeze at lower temperatures than pure liquids. This phenomenon is exp
 <!-- SEG:m68783:caption:CNX_Chem_11_04_rocksalt-caption -->
 Rock salt (NaCl), calcium chloride (CaCl[[sub:2]]), or a mixture of the two are used to melt ice. (credit: modification of work by Eddie Welker)
 
+<!-- SEG:m68783:alt:fs-idm2229600-alt -->
+This is a photo of damp brick pavement on which a white crystalline material has been spread.
+
 <!-- SEG:m68783:para:fs-idm62944160 -->
-The decrease in freezing point of a dilute solution compared to that of the pure solvent, Δ[[i:T]][[sub:f]], is called the {{term}}freezing point depression{{/term}} and is directly proportional to the molal concentration of the solute
+The decrease in freezing point of a dilute solution compared to that of the pure solvent, Δ[[i:T]][[sub:f]], is called the [[term:freezing point depression|term-00006]] and is directly proportional to the molal concentration of the solute
 
 <!-- SEG:m68783:para:fs-idp15307136 -->
-where [[i:m]] is the molal concentration of the solute and [[i:K]][[sub:f]] is called the {{term}}freezing point depression constant{{/term}} (or [[i:cryoscopic constant]]). Just as for boiling point elevation constants, these are characteristic properties whose values depend on the chemical identity of the solvent. Values of [[i:K]][[sub:f]] for several solvents are listed in [[xref:fs-idm37127680]].
+where [[i:m]] is the molal concentration of the solute and [[i:K]][[sub:f]] is called the [[term:freezing point depression constant|term-00007]] (or [[i:cryoscopic constant]]). Just as for boiling point elevation constants, these are characteristic properties whose values depend on the chemical identity of the solvent. Values of [[i:K]][[sub:f]] for several solvents are listed in [[xref:fs-idm37127680]].
 
 <!-- SEG:m68783:example-title:fs-idp14106448-title -->
 Calculation of the Freezing Point of a Solution
@@ -460,6 +478,9 @@ Assuming ideal solution behavior, what is the freezing point of a 1.85 [[i:m]] s
 <!-- SEG:m68783:item:fs-idm70104016-item-2 -->
 [[i:Subtract the freezing point change observed from the pure solvent’s freezing point.]][[BR]] [[MATH:9]]
 
+<!-- SEG:m68783:alt:fs-idm98789600-alt -->
+This is a diagram with three boxes connected with two arrows pointing to the right. The first box is labeled, “Molality of solution,” followed by an arrow labeled, “1,” pointing to a second box labeled, “Change in freezing point,” followed by an arrow labeled, “2” pointing to a third box labeled, “New freezing point.”
+
 <!-- SEG:m68783:note-title:fs-idm48913776-title -->
 Answer:
 
@@ -478,6 +499,9 @@ Because these ionic compounds tend to hasten the corrosion of metal, they would 
 <!-- SEG:m68783:caption:CNX_Chem_11_04_deice-caption -->
 Freezing point depression is exploited to remove ice from (a) roadways and (b) the control surfaces of aircraft.
 
+<!-- SEG:m68783:alt:fs-idp133082032-alt -->
+This figure contains two photos. The first photo is a rear view of a large highway maintenance truck carrying a bright orange de-icer sign. A white material appears to be deposited at the rear of the truck onto the roadway. The second image is of an airplane being sprayed with a solution to remove ice prior to take off.
+
 <!-- SEG:m68783:title:fs-idp13633296-title -->
 Phase Diagram for a Solution
 
@@ -487,6 +511,9 @@ The colligative effects on vapor pressure, boiling point, and freezing point des
 <!-- SEG:m68783:caption:CNX_Chem_11_04_phasediag-caption -->
 Phase diagrams for a pure solvent (solid curves) and a solution formed by dissolving nonvolatile solute in the solvent (dashed curves).
 
+<!-- SEG:m68783:alt:fs-idp105222176-alt -->
+This phase diagram indicates the pressure in atmospheres of water and a solution at various temperatures. The graph shows the freezing point of water and the freezing point of the solution, with the difference between these two values identified as delta T subscript f. The graph shows the boiling point of water and the boiling point of the solution, with the difference between these two values identified as delta T subscript b. Similarly, the difference in the pressure of water and the solution at the boiling point of water is shown and identified as delta P. This difference in pressure is labeled vapor pressure lowering. The lower level of the vapor pressure curve for the solution as opposed to that of pure water shows vapor pressure lowering in the solution. Background colors on the diagram indicate the presence of water and the solution in the solid state to the left, liquid state in the central upper region, and gas to the right.
+
 <!-- SEG:m68783:para:fs-idp41257984 -->
 The liquid-vapor curve for the solution is located [[i:beneath]] the corresponding curve for the solvent, depicting the vapor pressure [[i:lowering]], Δ[[i:P]], that results from the dissolution of nonvolatile solute. Consequently, at any given pressure, the solution’s boiling point is observed at a higher temperature than that for the pure solvent, reflecting the boiling point elevation, Δ[[i:T]][[sub:b]], associated with the presence of nonvolatile solute. The solid-liquid curve for the solution is displaced left of that for the pure solvent, representing the freezing point depression, Δ[[i:T]][[sub:f]], that accompanies solution formation. Finally, notice that the solid-gas curves for the solvent and its solution are identical. This is the case for many solutions comprising liquid solvents and nonvolatile solutes. Just as for vaporization, when a solution of this sort is frozen, it is actually just the [[i:solvent]] molecules that undergo the liquid-to-solid transition, forming pure solid solvent that excludes solute species. The solid and gaseous phases, therefore, are composed of solvent only, and so transitions between these phases are not subject to colligative effects.
 
@@ -494,16 +521,19 @@ The liquid-vapor curve for the solution is located [[i:beneath]] the correspondi
 Osmosis and Osmotic Pressure of Solutions
 
 <!-- SEG:m68783:para:fs-idm50348928 -->
-A number of natural and synthetic materials exhibit [[i:selective permeation]], meaning that only molecules or ions of a certain size, shape, polarity, charge, and so forth, are capable of passing through (permeating) the material. Biological cell membranes provide elegant examples of selective permeation in nature, while dialysis tubing used to remove metabolic wastes from blood is a more simplistic technological example. Regardless of how they may be fabricated, these materials are generally referred to as {{term}}semipermeable membranes{{/term}}.
+A number of natural and synthetic materials exhibit [[i:selective permeation]], meaning that only molecules or ions of a certain size, shape, polarity, charge, and so forth, are capable of passing through (permeating) the material. Biological cell membranes provide elegant examples of selective permeation in nature, while dialysis tubing used to remove metabolic wastes from blood is a more simplistic technological example. Regardless of how they may be fabricated, these materials are generally referred to as [[term:semipermeable membranes|term-00008]].
 
 <!-- SEG:m68783:para:fs-idp858960 -->
-Consider the apparatus illustrated in [[xref:CNX_Chem_11_04_osmosis]], in which samples of pure solvent and a solution are separated by a membrane that only solvent molecules may permeate. Solvent molecules will diffuse across the membrane in both directions. Since the concentration of [[i:solvent]] is greater in the pure solvent than the solution, these molecules will diffuse from the solvent side of the membrane to the solution side at a faster rate than they will in the reverse direction. The result is a net transfer of solvent molecules from the pure solvent to the solution. Diffusion-driven transfer of solvent molecules through a semipermeable membrane is a process known as {{term}}osmosis{{/term}}.
+Consider the apparatus illustrated in [[xref:CNX_Chem_11_04_osmosis]], in which samples of pure solvent and a solution are separated by a membrane that only solvent molecules may permeate. Solvent molecules will diffuse across the membrane in both directions. Since the concentration of [[i:solvent]] is greater in the pure solvent than the solution, these molecules will diffuse from the solvent side of the membrane to the solution side at a faster rate than they will in the reverse direction. The result is a net transfer of solvent molecules from the pure solvent to the solution. Diffusion-driven transfer of solvent molecules through a semipermeable membrane is a process known as [[term:osmosis|term-00009]].
 
 <!-- SEG:m68783:caption:CNX_Chem_11_04_osmosis-caption -->
 (a) A solution and pure solvent are initially separated by an osmotic membrane. (b) Net transfer of solvent molecules to the solution occurs until its osmotic pressure yields equal rates of transfer in both directions.
 
+<!-- SEG:m68783:alt:fs-idm58360672-alt -->
+The figure shows two U shaped tubes with a semi permeable membrane placed at the base of the U. In figure a, pure solvent is present and indicated by small yellow spheres to the left of the membrane. To the right, a solution exists with larger blue spheres intermingled with some small yellow spheres. At the membrane, arrows pointing from three small yellow spheres on both sides of the membrane cross over the membrane. An arrow drawn from one of the large blue spheres does not cross the membrane, but rather is reflected back from the surface of the membrane. The levels of liquid in both sides of the U shaped tube are equal. In figure b, arrows again point from small yellow spheres across the semipermeable membrane from both sides. This diagram shows the level of liquid in the left, pure solvent, side to be significantly lower than the liquid level on the right. Dashed lines are drawn from these two liquid levels into the middle of the U-shaped tube and between them is a red, double-headed, vertical arrow next to the term osmotic pressure.
+
 <!-- SEG:m68783:para:fs-idp66789904 -->
-When osmosis is carried out in an apparatus like that shown in [[xref:CNX_Chem_11_04_osmosis]], the volume of the solution increases as it becomes diluted by accumulation of solvent. This causes the level of the solution to rise, increasing its hydrostatic pressure (due to the weight of the column of solution in the tube) and resulting in a faster transfer of solvent molecules back to the pure solvent side. When the pressure reaches a value that yields a reverse solvent transfer rate equal to the osmosis rate, bulk transfer of solvent ceases. This pressure is called the {{term}}osmotic pressure ([[i:Π]]){{/term}} of the solution. The osmotic pressure of a dilute solution is related to its solute molarity, [[i:M]], and absolute temperature, [[i:T]], according to the equation
+When osmosis is carried out in an apparatus like that shown in [[xref:CNX_Chem_11_04_osmosis]], the volume of the solution increases as it becomes diluted by accumulation of solvent. This causes the level of the solution to rise, increasing its hydrostatic pressure (due to the weight of the column of solution in the tube) and resulting in a faster transfer of solvent molecules back to the pure solvent side. When the pressure reaches a value that yields a reverse solvent transfer rate equal to the osmosis rate, bulk transfer of solvent ceases. This pressure is called the [[term:osmotic pressure ([[i:Π]])|term-00010]] of the solution. The osmotic pressure of a dilute solution is related to its solute molarity, [[i:M]], and absolute temperature, [[i:T]], according to the equation
 
 <!-- SEG:m68783:para:fs-idm58472592 -->
 where [[i:R]] is the universal gas constant.
@@ -541,6 +571,9 @@ If a solution is placed in an apparatus like the one shown in [[xref:CNX_Chem_11
 <!-- SEG:m68783:caption:CNX_Chem_11_04_rvosmosis-caption -->
 Applying a pressure greater than the osmotic pressure of a solution will reverse osmosis. Solvent molecules from the solution are pushed into the pure solvent.
 
+<!-- SEG:m68783:alt:fs-idm34643696-alt -->
+The figure shows a U shaped tube with a semi permeable membrane placed at the base of the U. Pure solvent is present and indicated by small yellow spheres to the left of the membrane. To the right, a solution exists with larger blue spheres intermingled with some small yellow spheres. At the membrane, arrows point from four small yellow spheres to the left of the membrane. On the right side of the U, there is a disk that is the same width of the tube and appears to block it. The disk is at the same level as the solution. An arrow points down from the top of the tube to the disk and is labeled, “Pressure greater than Π subscript solution.”
+
 <!-- SEG:m68783:note-title:fs-idm17300528-title -->
 Reverse Osmosis Water Purification
 
@@ -550,11 +583,17 @@ In the process of osmosis, diffusion serves to move water through a semipermeabl
 <!-- SEG:m68783:caption:CNX_Chem_11_04_waterpur-caption -->
 Reverse osmosis systems for purifying drinking water are shown here on (a) small and (b) large scales. (credit a: modification of work by Jerry Kirkhart; credit b: modification of work by Willard J. Lathrop)
 
+<!-- SEG:m68783:alt:fs-idp117713424-alt -->
+This figure shows two photos of reverse osmosis systems. The first is a small system that appears easily portable. The second is larger and situated outdoors.
+
 <!-- SEG:m68783:para:fs-idp53491872 -->
-Examples of osmosis are evident in many biological systems because cells are surrounded by semipermeable membranes. Carrots and celery that have become limp because they have lost water can be made crisp again by placing them in water. Water moves into the carrot or celery cells by osmosis. A cucumber placed in a concentrated salt solution loses water by osmosis and absorbs some salt to become a pickle. Osmosis can also affect animal cells. Solute concentrations are particularly important when solutions are injected into the body. Solutes in body cell fluids and blood serum give these solutions an osmotic pressure of approximately 7.7 atm. Solutions injected into the body must have the same osmotic pressure as blood serum; that is, they should be {{term}}isotonic{{/term}} with blood serum. If a less concentrated solution, a {{term}}hypotonic{{/term}} solution, is injected in sufficient quantity to dilute the blood serum, water from the diluted serum passes into the blood cells by osmosis, causing the cells to expand and rupture. This process is called {{term}}hemolysis{{/term}}. When a more concentrated solution, a {{term}}hypertonic{{/term}} solution, is injected, the cells lose water to the more concentrated solution, shrivel, and possibly die in a process called {{term}}crenation{{/term}}. These effects are illustrated in [[xref:CNX_Chem_11_04_bloodcell]].
+Examples of osmosis are evident in many biological systems because cells are surrounded by semipermeable membranes. Carrots and celery that have become limp because they have lost water can be made crisp again by placing them in water. Water moves into the carrot or celery cells by osmosis. A cucumber placed in a concentrated salt solution loses water by osmosis and absorbs some salt to become a pickle. Osmosis can also affect animal cells. Solute concentrations are particularly important when solutions are injected into the body. Solutes in body cell fluids and blood serum give these solutions an osmotic pressure of approximately 7.7 atm. Solutions injected into the body must have the same osmotic pressure as blood serum; that is, they should be [[term:isotonic|term-00011]] with blood serum. If a less concentrated solution, a [[term:hypotonic|term-00012]] solution, is injected in sufficient quantity to dilute the blood serum, water from the diluted serum passes into the blood cells by osmosis, causing the cells to expand and rupture. This process is called [[term:hemolysis|term-00013]]. When a more concentrated solution, a [[term:hypertonic|term-00014]] solution, is injected, the cells lose water to the more concentrated solution, shrivel, and possibly die in a process called [[term:crenation|term-00015]]. These effects are illustrated in [[xref:CNX_Chem_11_04_bloodcell]].
 
 <!-- SEG:m68783:caption:CNX_Chem_11_04_bloodcell-caption -->
 Red blood cell membranes are water permeable and will (a) swell and possibly rupture in a hypotonic solution; (b) maintain normal volume and shape in an isotonic solution; and (c) shrivel and possibly die in a hypertonic solution. (credit a/b/c: modifications of work by “LadyofHats”/Wikimedia commons)
+
+<!-- SEG:m68783:alt:fs-idp138335360-alt -->
+This figure shows three scenarios relating to red blood cell membranes. In a, H subscript 2 O has two arrows drawn from it pointing into a red disk. Beneath it in a circle are eleven similar disks with a bulging appearance, one of which appears to have burst with blue liquid erupting from it. In b, the image is similar except that rather than having two arrows pointing into the red disk, one points in and a second points out toward the H subscript 2 O. In the circle beneath, twelve of the red disks are present. In c, both arrows are drawn from a red shriveled disk toward the H subscript 2 O. In the circle below, twelve shriveled disks are shown.
 
 <!-- SEG:m68783:title:fs-idp128916512-title -->
 Determination of Molar Masses
@@ -595,6 +634,9 @@ A solution of 35.7 g of a nonelectrolyte in 220.0 g of chloroform has a boiling 
 <!-- SEG:m68783:item:fs-idm46223904-item-4 -->
 [[i:Determine the molar mass from the mass of the solute and the number of moles in that mass.]][[BR]] [[MATH:14]]
 
+<!-- SEG:m68783:alt:fs-idm56612480-alt -->
+This is diagram with five boxes oriented horizontally and linked together with arrows numbered 1 to 4 pointing from each box in succession to the next one to the right. The first box is labeled, “Freezing point of solution.” Arrow 1 points from this box to a second box labeled, “delta T subscript f.” Arrow 2 points from this box to to a third box labeled “Molal concentration of compound.” Arrow labeled 3 points from this box to a fourth box labeled, “Moles of compound in sample.” Arrow 4 points to a fifth box labeled, “Molar mass of compound.”
+
 <!-- SEG:m68783:note-title:fs-idp188055808-title -->
 Answer:
 
@@ -631,6 +673,9 @@ Assuming ideal solution behavior, what is the molar mass of a protein if a solut
 <!-- SEG:m68783:item:fs-idm4438560-item-3 -->
 [[i:Determine the molar mass from the mass of hemoglobin and the number of moles in that mass.]][[BR]] [[MATH:19]]
 
+<!-- SEG:m68783:alt:fs-idp37440656-alt -->
+This is a diagram with four boxes oriented horizontally and linked together with arrows numbered 1 to 3 pointing from each box in succession to the next one to the right. The first box is labeled, “Osmotic pressure.” Arrow 1 points from this box to a second box labeled, “Molar concentration.” Arrow 2 points from this box to to a third box labeled, “Moles of hemoglobin in sample.” Arrow labeled 3 points from this box to a fourth box labeled, “Molar mass of hemoglobin.”
+
 <!-- SEG:m68783:note-title:fs-idp128728480-title -->
 Answer:
 
@@ -650,124 +695,127 @@ Considering the first of these examples, and assuming complete dissociation, a 1
 When this solution is actually prepared and its freezing point depression measured, however, a value of 3.4 °C is obtained. Similar discrepancies are observed for other ionic compounds, and the differences between the measured and expected colligative property values typically become more significant as solute concentrations increase. These observations suggest that the ions of sodium chloride (and other strong electrolytes) are not completely dissociated in solution.
 
 <!-- SEG:m68783:para:fs-idp84456528 -->
-To account for this and avoid the errors accompanying the assumption of total dissociation, an experimentally measured parameter named in honor of Nobel Prize-winning German chemist Jacobus Henricus van’t Hoff is used. The {{term}}van’t Hoff factor ([[i:i]]){{/term}} is defined as the ratio of solute particles in solution to the number of formula units dissolved:
+To account for this and avoid the errors accompanying the assumption of total dissociation, an experimentally measured parameter named in honor of Nobel Prize-winning German chemist Jacobus Henricus van’t Hoff is used. The [[term:van’t Hoff factor ([[i:i]])|term-00016]] is defined as the ratio of solute particles in solution to the number of formula units dissolved:
 
 <!-- SEG:m68783:para:fs-idp100413216 -->
 Values for measured van’t Hoff factors for several solutes, along with predicted values assuming complete dissociation, are shown in [[xref:fs-idp191832160]].
 
-<!-- SEG:m68783:entry:auto-220 -->
+<!-- SEG:m68783:entry:auto-235 -->
 Predicated and Measured van’t Hoff Factors for Several 0.050 [[i:m]] Aqueous Solutions
 
-<!-- SEG:m68783:entry:auto-221 -->
+<!-- SEG:m68783:entry:auto-236 -->
 Formula unit
 
-<!-- SEG:m68783:entry:auto-222 -->
+<!-- SEG:m68783:entry:auto-237 -->
 Classification
 
-<!-- SEG:m68783:entry:auto-223 -->
+<!-- SEG:m68783:entry:auto-238 -->
 Dissolution products
 
-<!-- SEG:m68783:entry:auto-224 -->
+<!-- SEG:m68783:entry:auto-239 -->
 [[i:i]] (predicted)
 
-<!-- SEG:m68783:entry:auto-225 -->
+<!-- SEG:m68783:entry:auto-240 -->
 [[i:i]] (measured)
 
-<!-- SEG:m68783:entry:auto-226 -->
+<!-- SEG:m68783:entry:auto-241 -->
 C[[sub:12]]H[[sub:22]]O[[sub:11]] (sucrose)
 
-<!-- SEG:m68783:entry:auto-227 -->
+<!-- SEG:m68783:entry:auto-242 -->
 Nonelectrolyte
 
-<!-- SEG:m68783:entry:auto-228 -->
+<!-- SEG:m68783:entry:auto-243 -->
 C[[sub:12]]H[[sub:22]]O[[sub:11]]
 
-<!-- SEG:m68783:entry:auto-229 -->
+<!-- SEG:m68783:entry:auto-244 -->
 1
 
-<!-- SEG:m68783:entry:auto-230 -->
+<!-- SEG:m68783:entry:auto-245 -->
 1.0
 
-<!-- SEG:m68783:entry:auto-231 -->
-NaCl
-
-<!-- SEG:m68783:entry:auto-232 -->
-Strong electrolyte
-
-<!-- SEG:m68783:entry:auto-233 -->
-Na[[sup:+]], Cl[[sup:−]]
-
-<!-- SEG:m68783:entry:auto-234 -->
-2
-
-<!-- SEG:m68783:entry:auto-235 -->
-1.9
-
-<!-- SEG:m68783:entry:auto-236 -->
-HCl
-
-<!-- SEG:m68783:entry:auto-237 -->
-Strong electrolyte (acid)
-
-<!-- SEG:m68783:entry:auto-238 -->
-H[[sub:3]]O[[sup:+]], Cl[[sup:−]]
-
-<!-- SEG:m68783:entry:auto-239 -->
-2
-
-<!-- SEG:m68783:entry:auto-240 -->
-1.9
-
-<!-- SEG:m68783:entry:auto-241 -->
-MgSO[[sub:4]]
-
-<!-- SEG:m68783:entry:auto-242 -->
-Strong electrolyte
-
-<!-- SEG:m68783:entry:auto-243 -->
-Mg[[sup:2+]], SO[[sub:4]][[sup:2−]],
-
-<!-- SEG:m68783:entry:auto-244 -->
-2
-
-<!-- SEG:m68783:entry:auto-245 -->
-1.3
-
 <!-- SEG:m68783:entry:auto-246 -->
-MgCl[[sub:2]]
+NaCl
 
 <!-- SEG:m68783:entry:auto-247 -->
 Strong electrolyte
 
 <!-- SEG:m68783:entry:auto-248 -->
-Mg[[sup:2+]], 2Cl[[sup:−]]
+Na[[sup:+]], Cl[[sup:−]]
 
 <!-- SEG:m68783:entry:auto-249 -->
-3
+2
 
 <!-- SEG:m68783:entry:auto-250 -->
-2.7
+1.9
 
 <!-- SEG:m68783:entry:auto-251 -->
-FeCl[[sub:3]]
+HCl
 
 <!-- SEG:m68783:entry:auto-252 -->
-Strong electrolyte
+Strong electrolyte (acid)
 
 <!-- SEG:m68783:entry:auto-253 -->
-Fe[[sup:3+]], 3Cl[[sup:−]]
+H[[sub:3]]O[[sup:+]], Cl[[sup:−]]
 
 <!-- SEG:m68783:entry:auto-254 -->
-4
+2
 
 <!-- SEG:m68783:entry:auto-255 -->
+1.9
+
+<!-- SEG:m68783:entry:auto-256 -->
+MgSO[[sub:4]]
+
+<!-- SEG:m68783:entry:auto-257 -->
+Strong electrolyte
+
+<!-- SEG:m68783:entry:auto-258 -->
+Mg[[sup:2+]], SO[[sub:4]][[sup:2−]],
+
+<!-- SEG:m68783:entry:auto-259 -->
+2
+
+<!-- SEG:m68783:entry:auto-260 -->
+1.3
+
+<!-- SEG:m68783:entry:auto-261 -->
+MgCl[[sub:2]]
+
+<!-- SEG:m68783:entry:auto-262 -->
+Strong electrolyte
+
+<!-- SEG:m68783:entry:auto-263 -->
+Mg[[sup:2+]], 2Cl[[sup:−]]
+
+<!-- SEG:m68783:entry:auto-264 -->
+3
+
+<!-- SEG:m68783:entry:auto-265 -->
+2.7
+
+<!-- SEG:m68783:entry:auto-266 -->
+FeCl[[sub:3]]
+
+<!-- SEG:m68783:entry:auto-267 -->
+Strong electrolyte
+
+<!-- SEG:m68783:entry:auto-268 -->
+Fe[[sup:3+]], 3Cl[[sup:−]]
+
+<!-- SEG:m68783:entry:auto-269 -->
+4
+
+<!-- SEG:m68783:entry:auto-270 -->
 3.4
 
 <!-- SEG:m68783:para:fs-idp18385680 -->
-In 1923, the chemists Peter {{term}}Debye{{/term}} and Erich {{term}}Hückel{{/term}} proposed a theory to explain the apparent incomplete ionization of strong electrolytes. They suggested that although interionic attraction in an aqueous solution is very greatly reduced by solvation of the ions and the insulating action of the polar solvent, it is not completely nullified. The residual attractions prevent the ions from behaving as totally independent particles ([[xref:CNX_Chem_11_04_ionpair]]). In some cases, a positive and negative ion may actually touch, giving a solvated unit called an ion pair. Thus, the {{term}}activity{{/term}}, or the effective concentration, of any particular kind of ion is less than that indicated by the actual concentration. Ions become more and more widely separated the more dilute the solution, and the residual interionic attractions become less and less. Thus, in extremely dilute solutions, the effective concentrations of the ions (their activities) are essentially equal to the actual concentrations. Note that the van’t Hoff factors for the electrolytes in [[xref:fs-idp191832160]] are for 0.05 [[i:m]] solutions, at which concentration the value of [[i:i]] for NaCl is 1.9, as opposed to an ideal value of 2.
+In 1923, the chemists Peter [[term:Debye|term-00017]] and Erich [[term:Hückel|term-00018]] proposed a theory to explain the apparent incomplete ionization of strong electrolytes. They suggested that although interionic attraction in an aqueous solution is very greatly reduced by solvation of the ions and the insulating action of the polar solvent, it is not completely nullified. The residual attractions prevent the ions from behaving as totally independent particles ([[xref:CNX_Chem_11_04_ionpair]]). In some cases, a positive and negative ion may actually touch, giving a solvated unit called an ion pair. Thus, the [[term:activity|term-00019]], or the effective concentration, of any particular kind of ion is less than that indicated by the actual concentration. Ions become more and more widely separated the more dilute the solution, and the residual interionic attractions become less and less. Thus, in extremely dilute solutions, the effective concentrations of the ions (their activities) are essentially equal to the actual concentrations. Note that the van’t Hoff factors for the electrolytes in [[xref:fs-idp191832160]] are for 0.05 [[i:m]] solutions, at which concentration the value of [[i:i]] for NaCl is 1.9, as opposed to an ideal value of 2.
 
 <!-- SEG:m68783:caption:CNX_Chem_11_04_ionpair-caption -->
 Dissociation of ionic compounds in water is not always complete due to the formation of ion pairs.
+
+<!-- SEG:m68783:alt:fs-idp133147136-alt -->
+The diagram shows four purple spheres labeled K superscript plus and four green spheres labeled C l superscript minus dispersed in H subscript 2 O as shown by clusters of single red spheres with two white spheres attached. Red spheres represent oxygen and white represent hydrogen. In two locations, the purple and green spheres are touching. In these two locations, the diagram is labeled ion pair. All red and green spheres are surrounded by the white and red H subscript 2 O clusters. The white spheres are attracted to the purple spheres and the red spheres are attracted to the green spheres.
 
 <!-- SEG:m68783:example-title:fs-idp86700768-title -->
 The Freezing Point of a Solution of an Electrolyte
@@ -805,6 +853,9 @@ Assuming complete dissociation and ideal solution behavior, calculate the freezi
 <!-- SEG:m68783:item:fs-idp102978032-item-5 -->
 [[i:Determine the new freezing point from the freezing point of the pure solvent and the change.]][[BR]]Result: −2.1 °C[[BR]]Check each result as a self-assessment, taking care to avoid rounding errors by retaining guard digits in each step’s result for computing the next step’s result.
 
+<!-- SEG:m68783:alt:fs-idp102978912-alt -->
+This is a diagram with six boxes oriented horizontally and linked together with arrows numbered 1 to 5 pointing from each box in succession to the next one to the right. The first box is labeled, “Mass of N a C l.” Arrow 1 points from this box to a second box labeled, “Moles of N a C l.” Arrow 2 points from this box to to a third box labeled, Moles of ions.” Arrow labeled 3 points from this box to a fourth box labeled, “Molality of solution.” Arrow 4 points to a fifth box labeled, “Change in freezing point.” Arrow 5 points to a sixth box labeled, “New freezing point.”
+
 <!-- SEG:m68783:note-title:fs-idp139444144-title -->
 Answer:
 
@@ -820,22 +871,22 @@ Properties of a solution that depend only on the concentration of solute particl
 <!-- SEG:m68783:title:fs-idp102974528-title -->
 Key Equations
 
-<!-- SEG:m68783:entry:auto-275 -->
+<!-- SEG:m68783:entry:auto-292 -->
 [[MATH:21]]
 
-<!-- SEG:m68783:entry:auto-276 -->
+<!-- SEG:m68783:entry:auto-293 -->
 [[MATH:22]]
 
-<!-- SEG:m68783:entry:auto-277 -->
+<!-- SEG:m68783:entry:auto-294 -->
 [[MATH:23]]
 
-<!-- SEG:m68783:entry:auto-278 -->
+<!-- SEG:m68783:entry:auto-295 -->
 Δ[[i:T]][[sub:b]] = [[i:K]][[sub:b]][[i:m]]
 
-<!-- SEG:m68783:entry:auto-279 -->
+<!-- SEG:m68783:entry:auto-296 -->
 Δ[[i:T]][[sub:f]] = [[i:K]][[sub:f]][[i:m]]
 
-<!-- SEG:m68783:entry:auto-280 -->
+<!-- SEG:m68783:entry:auto-297 -->
 [[i:Π]] = [[i:MRT]]
 
 <!-- SEG:m68783:title:fs-idp169461824-title -->

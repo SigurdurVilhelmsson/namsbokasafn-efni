@@ -1,0 +1,401 @@
+{
+  "moduleId": "m00166",
+  "title": {
+    "segmentId": "m00166:title:auto-1",
+    "text": "Comparison of C−C and C−H Bonds in Methane, Ethane, Ethylene, and Acetylene"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e477ca09-252b-4f59-bc2d-e9353048ec64"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00166:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00166:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00166:alt:fig-00001-alt",
+          "text": "The orientation of two s p orbitals at 180 degrees on the x-axis. The p orbital in the second image is perpendicular to the y and z axis."
+        },
+        "src": "../../media/OChem_01_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00166:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00166:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00166:alt:fig-00002-alt",
+          "text": "The formation of carbon-carbon triple bond from two sp-hybridized carbon atoms. The space-filling model, chemical structure, and ball and stick model of acetylene are shown."
+        },
+        "src": "../../media/OChem_01_09_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00166:para:para-00003"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00166:table-title:table-00001-title",
+        "text": "Comparison of C−C and C−H Bonds in Methane, Ethane, Ethylene, and Acetylene"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00166:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "morerows": "1"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "morerows": "1"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c3",
+                "nameend": "c4"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "morerows": "1"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00166:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00166:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00166:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "morerows": "1"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00166:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00166:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "morerows": "1"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-31",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-32",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-34",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00166:entry:auto-35",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-36",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-37",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-38",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00166:entry:auto-39",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "morerows": "1"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-40",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-41",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-42",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-43",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00166:entry:auto-44",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-45",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-46",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00166:entry:auto-47",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00166:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

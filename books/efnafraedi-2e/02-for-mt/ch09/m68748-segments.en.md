@@ -22,6 +22,9 @@ Non-Ideal Gas Behavior
 <!-- SEG:m68748:caption:CNX_Chem_09_00_HotAirBall-caption -->
 The hot air inside these balloons is less dense than the surrounding cool air. This results in a buoyant force that causes the balloons to rise when their guy lines are untied. (credit: modification of work by Anthony Quintano)
 
+<!-- SEG:m68748:alt:fs-idm132595392-alt -->
+A photograph shows about twenty colorful hot air balloons at varying stages of inflation. Some are deflated, while others are inflated. Three of the balloons are off the ground and are visible against a bright blue sky.
+
 <!-- SEG:m68748:para:fs-idm58981280 -->
 We are surrounded by an ocean of gas—the atmosphere—and many of the properties of gases are familiar to us from our daily activities. Heated gases expand, which can make a hot air balloon rise ([[xref:CNX_Chem_09_00_HotAirBall]]) or cause a blowout in a bicycle tire left in the sun on a hot day.
 

@@ -1,0 +1,282 @@
+{
+  "moduleId": "m00254",
+  "title": {
+    "segmentId": "m00254:title:auto-1",
+    "text": "Thiols and Sulfides"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "6eec8c4b-60d3-430b-8ba0-768e31edf58f"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00254:title:sect-00001-title",
+        "text": "Thiols"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00254:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00254:alt:fig-00001-alt",
+              "text": "Chemical structures of ethanethiol (ethane with S H group), cyclohexanethiol (cyclohexane with S H group), and m-mercaptobenzoic acid (benzoic acid with S H group at meta position)."
+            },
+            "src": "../../media/OChem_18_08_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00254:para:para-00002"
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00254:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00254:alt:fig-00002-alt",
+              "text": "1-Bromooctane reacts with hydrosulfide anion to form 1-octanethiol (83 percent) and bromide ion. Bromine in the reactant is replaced by the S H group in the product."
+            },
+            "src": "../../media/OChem_18_08_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00254:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00254:alt:fig-00003-alt",
+              "text": "1-Bromooctane reacts with thiourea to form an intermediate, which in the presence of water and sodium hydroxide yields 1-octanethiol (83 percent) and urea."
+            },
+            "src": "../../media/OChem_18_08_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00254:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00254:alt:fig-00004-alt",
+              "text": "Two equivalents of thiol react with iodine to produce a disulfide and two equivalents of hydrogen iodide, with the reverse reaction catalyzed by zinc and hydrogen ions."
+            },
+            "src": "../../media/OChem_18_08_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00254:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00254:alt:fig-00005-alt",
+              "text": "Two molecules of glutathione react with hydrogen peroxide and flavin adenine dinucleotide to yield glutathione disulfide bonded through an S-S bond."
+            },
+            "src": "../../media/OChem_18_08_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00254:title:sect-00002-title",
+        "text": "Sulfides"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00254:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00254:alt:fig-00006-alt",
+              "text": "Structures of dimethyl sulfide (S with two methyl groups), methyl phenyl sulfide (S with methyl and phenyl group), and 3-(methylthio)cyclohexene (cyclohexene with S C H 3 at C 3)."
+            },
+            "src": "../../media/OChem_18_08_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00254:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00254:alt:fig-00007-alt",
+              "text": "Sodium benzenethiolate reacts with iodomethane to form methyl phenyl sulfide (96 percent yield) and sodium iodide via attack of S minus on methyl C. Iodide leaves."
+            },
+            "src": "../../media/OChem_18_08_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00254:para:para-00009"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00254:alt:fig-00008-alt",
+              "text": "Dimethyl sulfide reacts with iodomethane in the presence of tetrahydrofuran to form trimethylsulfonium iodide. Sulfur and iodide in the product carry positive and negative charges, respectively."
+            },
+            "src": "../../media/OChem_18_08_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00254:para:para-00010"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00254:alt:fig-00009-alt",
+              "text": "Methionine and adenosine triphosphate (A T P) undergo an S N 2 process, forming triphosphate ion and S-adenosylmethionine."
+            },
+            "src": "../../media/OChem_18_08_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00254:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00254:para:para-00012"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00254:alt:fig-00010-alt",
+              "text": "Methyl phenyl sulfide undergoes a reaction with hydrogen peroxide to form methyl phenyl sulfoxide. It further reacts with peracetic acid to form methyl phenyl sulfone."
+            },
+            "src": "../../media/OChem_18_08_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00254:para:para-00013"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00254:alt:fig-00011-alt",
+              "text": "The structure of dimethyl sulfoxide which is a polar aprotic solvent. It comprises a central sulfur atom with electron pairs, two methyl groups, and a double bond to oxygen."
+            },
+            "src": "../../media/OChem_18_08_011.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00254:title:sect-00003-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

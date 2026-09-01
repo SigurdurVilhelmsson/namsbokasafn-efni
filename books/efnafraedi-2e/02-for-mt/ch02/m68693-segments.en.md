@@ -11,13 +11,16 @@ Symbolize the composition of molecules using molecular formulas and empirical fo
 Represent the bonding arrangement of atoms within molecules using structural formulas
 
 <!-- SEG:m68693:para:fs-idm194401296 -->
-A {{term}}molecular formula{{/term}} is a representation of a molecule that uses chemical symbols to indicate the types of atoms followed by subscripts to show the number of atoms of each type in the molecule. (A subscript is used only when more than one atom of a given type is present.) Molecular formulas are also used as abbreviations for the names of compounds.
+A [[term:molecular formula|term-00001]] is a representation of a molecule that uses chemical symbols to indicate the types of atoms followed by subscripts to show the number of atoms of each type in the molecule. (A subscript is used only when more than one atom of a given type is present.) Molecular formulas are also used as abbreviations for the names of compounds.
 
 <!-- SEG:m68693:para:fs-idp69721696 -->
-The {{term}}structural formula{{/term}} for a compound gives the same information as its molecular formula (the types and numbers of atoms in the molecule) but also shows how the atoms are connected in the molecule. The structural formula for methane contains symbols for one C atom and four H atoms, indicating the number of atoms in the molecule ([[xref:CNX_Chem_02_04_MethaneRep]]). The lines represent bonds that hold the atoms together. (A chemical bond is an attraction between atoms or ions that holds them together in a molecule or a crystal.) We will discuss chemical bonds and see how to predict the arrangement of atoms in a molecule later. For now, simply know that the lines are an indication of how the atoms are connected in a molecule. A ball-and-stick model shows the geometric arrangement of the atoms with atomic sizes not to scale, and a space-filling model shows the relative sizes of the atoms.
+The [[term:structural formula|term-00002]] for a compound gives the same information as its molecular formula (the types and numbers of atoms in the molecule) but also shows how the atoms are connected in the molecule. The structural formula for methane contains symbols for one C atom and four H atoms, indicating the number of atoms in the molecule ([[xref:CNX_Chem_02_04_MethaneRep]]). The lines represent bonds that hold the atoms together. (A chemical bond is an attraction between atoms or ions that holds them together in a molecule or a crystal.) We will discuss chemical bonds and see how to predict the arrangement of atoms in a molecule later. For now, simply know that the lines are an indication of how the atoms are connected in a molecule. A ball-and-stick model shows the geometric arrangement of the atoms with atomic sizes not to scale, and a space-filling model shows the relative sizes of the atoms.
 
 <!-- SEG:m68693:caption:CNX_Chem_02_04_MethaneRep-caption -->
 A methane molecule can be represented as (a) a molecular formula, (b) a structural formula, (c) a ball-and-stick model, and (d) a space-filling model. Carbon and hydrogen atoms are represented by black and white spheres, respectively.
+
+<!-- SEG:m68693:alt:fs-idp49546352-alt -->
+Figure A shows C H subscript 4. Figure B shows a carbon atom that is bonded to four hydrogen atoms at right angles: one above, one to the left, one to the right, and one below. Figure C shows a 3-D, ball-and-stick model of the carbon atom bonded to four hydrogen atoms. Figure D shows a space-filling model of a carbon atom with hydrogen atoms partially embedded into the surface of the carbon atom.
 
 <!-- SEG:m68693:para:fs-idm155780176 -->
 Although many elements consist of discrete, individual atoms, some exist as molecules made up of two or more atoms of the element chemically bonded together. For example, most samples of the elements hydrogen, oxygen, and nitrogen are composed of molecules that contain two atoms each (called diatomic molecules) and thus have the molecular formulas H[[sub:2]], O[[sub:2]], and N[[sub:2]], respectively. Other elements commonly found as diatomic molecules are fluorine (F[[sub:2]]), chlorine (Cl[[sub:2]]), bromine (Br[[sub:2]]), and iodine (I[[sub:2]]). The most common form of the element sulfur is composed of molecules that consist of eight atoms of sulfur; its molecular formula is S[[sub:8]] ([[xref:CNX_Chem_02_04_Sulfur]]).
@@ -25,29 +28,44 @@ Although many elements consist of discrete, individual atoms, some exist as mole
 <!-- SEG:m68693:caption:CNX_Chem_02_04_Sulfur-caption -->
 A molecule of sulfur is composed of eight sulfur atoms and is therefore written as S[[sub:8]]. It can be represented as (a) a structural formula, (b) a ball-and-stick model, and (c) a space-filling model. Sulfur atoms are represented by yellow spheres.
 
+<!-- SEG:m68693:alt:fs-idm70420016-alt -->
+Figure A shows eight sulfur atoms, symbolized with the letter S, that are bonded to each other to form an octagon. Figure B shows a 3-D, ball-and-stick model of the arrangement of the sulfur atoms. The shape is clearly not octagonal as it is represented in the structural formula. Figure C is a space-filling model that shows each sulfur atom is partially embedded into the sulfur atom it bonds with.
+
 <!-- SEG:m68693:para:fs-idm43786912 -->
 It is important to note that a subscript following a symbol and a number in front of a symbol do not represent the same thing; for example, H[[sub:2]] and 2H represent distinctly different species. H[[sub:2]] is a molecular formula; it represents a diatomic molecule of hydrogen, consisting of two atoms of the element that are chemically bonded together. The expression 2H, on the other hand, indicates two separate hydrogen atoms that are not combined as a unit. The expression 2H[[sub:2]] represents two molecules of diatomic hydrogen ([[xref:CNX_Chem_02_04_Hydrogen]]).
 
 <!-- SEG:m68693:caption:CNX_Chem_02_04_Hydrogen-caption -->
 The symbols H, 2H, H[[sub:2]], and 2H[[sub:2]] represent very different entities.
 
+<!-- SEG:m68693:alt:fs-idm66435152-alt -->
+This figure shows four diagrams. The diagram for H shows a single, white sphere and is labeled one H atom. The diagram for 2 H shows two white spheres that are not bonded together. It is labeled 2 H atoms. The diagram for H subscript 2 shows two white spheres bonded together. It is labeled one H subscript 2 molecule. The diagram for 2 H subscript 2 shows two sets of bonded, white spheres. It is labeled 2 H subscript 2 molecules.
+
 <!-- SEG:m68693:para:fs-idp204410336 -->
-Compounds are formed when two or more elements chemically combine, resulting in the formation of bonds. For example, hydrogen and oxygen can react to form water, and sodium and chlorine can react to form table salt. We sometimes describe the composition of these compounds with an {{term}}empirical formula{{/term}}, which indicates the types of atoms present and [[i:the simplest whole-number ratio of the number of atoms (or ions) in the compound]]. For example, titanium dioxide (used as pigment in white paint and in the thick, white, blocking type of sunscreen) has an empirical formula of TiO[[sub:2]]. This identifies the elements titanium (Ti) and oxygen (O) as the constituents of titanium dioxide, and indicates the presence of twice as many atoms of the element oxygen as atoms of the element titanium ([[xref:CNX_Chem_02_04_TiO2]]).
+Compounds are formed when two or more elements chemically combine, resulting in the formation of bonds. For example, hydrogen and oxygen can react to form water, and sodium and chlorine can react to form table salt. We sometimes describe the composition of these compounds with an [[term:empirical formula|term-00003]], which indicates the types of atoms present and [[i:the simplest whole-number ratio of the number of atoms (or ions) in the compound]]. For example, titanium dioxide (used as pigment in white paint and in the thick, white, blocking type of sunscreen) has an empirical formula of TiO[[sub:2]]. This identifies the elements titanium (Ti) and oxygen (O) as the constituents of titanium dioxide, and indicates the presence of twice as many atoms of the element oxygen as atoms of the element titanium ([[xref:CNX_Chem_02_04_TiO2]]).
 
 <!-- SEG:m68693:caption:CNX_Chem_02_04_TiO2-caption -->
 (a) The white compound titanium dioxide provides effective protection from the sun. (b) A crystal of titanium dioxide, TiO[[sub:2]], contains titanium and oxygen in a ratio of 1 to 2. The titanium atoms are gray and the oxygen atoms are red. (credit a: modification of work by “osseous”/Flickr)
 
+<!-- SEG:m68693:alt:fs-idp59733696-alt -->
+Figure A shows a photo of a person applying suntan lotion to his or her lower leg. Figure B shows a 3-D ball-and-stick model of the molecule titanium dioxide, which involves a complicated interlocking of many titanium and oxygen atoms. The titanium atoms in the molecule are shown as silver spheres and the oxygen atoms are shown as red spheres. There are twice as many oxygen atoms as titanium atoms in the molecule.
+
 <!-- SEG:m68693:para:fs-idm68758768 -->
-As discussed previously, we can describe a compound with a molecular formula, in which the subscripts indicate the [[i:actual numbers of atoms]] of each element in a molecule of the compound. In many cases, the molecular formula of a substance is derived from experimental determination of both its empirical formula and its {{term}}molecular mass{{/term}} (the sum of atomic masses for all atoms composing the molecule). For example, it can be determined experimentally that benzene contains two elements, carbon (C) and hydrogen (H), and that for every carbon atom in benzene, there is one hydrogen atom. Thus, the empirical formula is CH. An experimental determination of the molecular mass reveals that a molecule of benzene contains six carbon atoms and six hydrogen atoms, so the molecular formula for benzene is C[[sub:6]]H[[sub:6]] ([[xref:CNX_Chem_02_04_Benzene]]).
+As discussed previously, we can describe a compound with a molecular formula, in which the subscripts indicate the [[i:actual numbers of atoms]] of each element in a molecule of the compound. In many cases, the molecular formula of a substance is derived from experimental determination of both its empirical formula and its [[term:molecular mass|term-00004]] (the sum of atomic masses for all atoms composing the molecule). For example, it can be determined experimentally that benzene contains two elements, carbon (C) and hydrogen (H), and that for every carbon atom in benzene, there is one hydrogen atom. Thus, the empirical formula is CH. An experimental determination of the molecular mass reveals that a molecule of benzene contains six carbon atoms and six hydrogen atoms, so the molecular formula for benzene is C[[sub:6]]H[[sub:6]] ([[xref:CNX_Chem_02_04_Benzene]]).
 
 <!-- SEG:m68693:caption:CNX_Chem_02_04_Benzene-caption -->
 Benzene, C[[sub:6]]H[[sub:6]], is produced during oil refining and has many industrial uses. A benzene molecule can be represented as (a) a structural formula, (b) a ball-and-stick model, and (c) a space-filling model. (d) Benzene is a clear liquid. (credit d: modification of work by Sahar Atwa)
+
+<!-- SEG:m68693:alt:fs-idp26487712-alt -->
+Figure A shows that benzene is composed of six carbons shaped like a hexagon. Every other bond between the carbon atoms is a double bond. Each carbon also has a single bonded hydrogen atom. Figure B shows a 3-D, ball-and-stick drawing of benzene. The six carbon atoms are black spheres while the six hydrogen atoms are smaller, white spheres. Figure C is a space-filling model of benzene which shows that most of the interior space is occupied by the carbon atoms. The hydrogen atoms are embedded in the outside surface of the carbon atoms. Figure d shows a small vial filled with benzene which appears to be clear.
 
 <!-- SEG:m68693:para:fs-idm49637696 -->
 If we know a compound’s formula, we can easily determine the empirical formula. (This is somewhat of an academic exercise; the reverse chronology is generally followed in actual practice.) For example, the molecular formula for acetic acid, the component that gives vinegar its sharp taste, is C[[sub:2]]H[[sub:4]]O[[sub:2]]. This formula indicates that a molecule of acetic acid ([[xref:CNX_Chem_02_04_AceticAcid]]) contains two carbon atoms, four hydrogen atoms, and two oxygen atoms. The ratio of atoms is 2:4:2. Dividing by the lowest common denominator (2) gives the simplest, whole-number ratio of atoms, 1:2:1, so the empirical formula is CH[[sub:2]]O. Note that a molecular formula is always a whole-number multiple of an empirical formula.
 
 <!-- SEG:m68693:caption:CNX_Chem_02_04_AceticAcid-caption -->
 (a) Vinegar contains acetic acid, C[[sub:2]]H[[sub:4]]O[[sub:2]], which has an empirical formula of CH[[sub:2]]O. It can be represented as (b) a structural formula and (c) as a ball-and-stick model. (credit a: modification of work by “HomeSpot HQ”/Flickr)
+
+<!-- SEG:m68693:alt:fs-idm44626048-alt -->
+Figure A shows a jug of distilled, white vinegar. Figure B shows a structural formula for acetic acid which contains two carbon atoms connected by a single bond. The left carbon atom forms single bonds with three hydrogen atoms. The right carbon atom forms a double bond with an oxygen atom. The right carbon atom also forms a single bond with an oxygen atom. This oxygen forms a single bond with a hydrogen atom. Figure C shows a 3-D ball-and-stick model of acetic acid.
 
 <!-- SEG:m68693:example-title:fs-idm100343920-title -->
 Empirical and Molecular Formulas
@@ -97,20 +115,29 @@ While Hammond’s research team is composed of established and leading experts s
 <!-- SEG:m68693:caption:CNX_Chem_02_04_PaulaHammond-caption -->
 Paula Hammond pioneered new techniques to precisely formulate chemical structures. Hammond’s work applies to cancer treatments, wound healing, cataract medicine, and fuel cells. Widely recognized as a leader in the field, she has won numerous awards and has been elected to various prestigious positions and fellowships by her peers and the U.S. government. She chairs the chemical engineering department at MIT, which is usually ranked as one of the best engineering and science institutions in the world. (credit: modification of work by The White House)
 
+<!-- SEG:m68693:alt:fs-idm119525728-alt -->
+A portrait of Paula Hammond.
+
 <!-- SEG:m68693:para:fs-idm101901088 -->
 It is important to be aware that it may be possible for the same atoms to be arranged in different ways: Compounds with the same molecular formula may have different atom-to-atom bonding and therefore different structures. For example, could there be another compound with the same formula as acetic acid, C[[sub:2]]H[[sub:4]]O[[sub:2]]? And if so, what would be the structure of its molecules?
 
 <!-- SEG:m68693:para:fs-idp29766960 -->
-If you predict that another compound with the formula C[[sub:2]]H[[sub:4]]O[[sub:2]] could exist, then you demonstrated good chemical insight and are correct. Two C atoms, four H atoms, and two O atoms can also be arranged to form a methyl formate, which is used in manufacturing, as an insecticide, and for quick-drying finishes. Methyl formate molecules have one of the oxygen atoms between the two carbon atoms, differing from the arrangement in acetic acid molecules. Acetic acid and methyl formate are examples of {{term}}isomers{{/term}}—compounds with the same chemical formula but different molecular structures ([[xref:CNX_Chem_02_04_Isomers]]). Note that this small difference in the arrangement of the atoms has a major effect on their respective chemical properties. You would certainly not want to use a solution of methyl formate as a substitute for a solution of acetic acid (vinegar) when you make salad dressing.
+If you predict that another compound with the formula C[[sub:2]]H[[sub:4]]O[[sub:2]] could exist, then you demonstrated good chemical insight and are correct. Two C atoms, four H atoms, and two O atoms can also be arranged to form a methyl formate, which is used in manufacturing, as an insecticide, and for quick-drying finishes. Methyl formate molecules have one of the oxygen atoms between the two carbon atoms, differing from the arrangement in acetic acid molecules. Acetic acid and methyl formate are examples of [[term:isomers|term-00006]]—compounds with the same chemical formula but different molecular structures ([[xref:CNX_Chem_02_04_Isomers]]). Note that this small difference in the arrangement of the atoms has a major effect on their respective chemical properties. You would certainly not want to use a solution of methyl formate as a substitute for a solution of acetic acid (vinegar) when you make salad dressing.
 
 <!-- SEG:m68693:caption:CNX_Chem_02_04_Isomers-caption -->
 Molecules of (a) acetic acid and methyl formate (b) are structural isomers; they have the same formula (C[[sub:2]]H[[sub:4]]O[[sub:2]]) but different structures (and therefore different chemical properties).
 
+<!-- SEG:m68693:alt:fs-idm44447680-alt -->
+Figure A shows a structural diagram of acetic acid, C subscript 2 H subscript 4 O subscript 2. Acetic acid contains two carbon atoms connected by a single bond. The left carbon atom forms single bonds with three hydrogen atoms. The carbon on the right forms a double bond with an oxygen atom. The right carbon atom also forms a single bond to an oxygen atom which forms a single bond with a hydrogen atom. Figure B shows a structural diagram of methyl formate, C subscript 2 H subscript 4 O subscript 2. This molecule contains a carbon atom which forms single bonds with three hydrogen atoms, and a single bond with an oxygen atom. The oxygen atom forms a single bond with another carbon atom which forms a double bond with another oxygen atom and a single bond with a hydrogen atom.
+
 <!-- SEG:m68693:para:fs-idm177313504 -->
-Many types of isomers exist ([[xref:CNX_Chem_02_04_Isomers2]]). Acetic acid and methyl formate are {{term}}structural isomers{{/term}}, compounds in which the molecules differ in how the atoms are connected to each other. There are also various types of {{term}}spatial isomers{{/term}}, in which the relative orientations of the atoms in space can be different. For example, the compound carvone (found in caraway seeds, spearmint, and mandarin orange peels) consists of two isomers that are mirror images of each other. [[i:S]]-(+)-carvone smells like caraway, and [[i:R]]-(−)-carvone smells like spearmint.
+Many types of isomers exist ([[xref:CNX_Chem_02_04_Isomers2]]). Acetic acid and methyl formate are [[term:structural isomers|term-00007]], compounds in which the molecules differ in how the atoms are connected to each other. There are also various types of [[term:spatial isomers|term-00008]], in which the relative orientations of the atoms in space can be different. For example, the compound carvone (found in caraway seeds, spearmint, and mandarin orange peels) consists of two isomers that are mirror images of each other. [[i:S]]-(+)-carvone smells like caraway, and [[i:R]]-(−)-carvone smells like spearmint.
 
 <!-- SEG:m68693:caption:CNX_Chem_02_04_Isomers2-caption -->
 Molecules of carvone are spatial isomers; they only differ in the relative orientations of the atoms in space. (credit bottom left: modification of work by “Miansari66”/Wikimedia Commons; credit bottom right: modification of work by Forest &amp; Kim Starr)
+
+<!-- SEG:m68693:alt:fs-idp204316880-alt -->
+The top left portion of this 2 row, 4 column figure shows a structural diagram of positive carvone, C subscript 10 H subscript 14 O. This molecule has a carbon atom which forms a double bond with a C H subscript 2 group and a C H subscript 3 group. The carbon atom also forms a single bond with another carbon atom which is part of a ring. This carbon atom, being part of the ring, forms single bonds with a hydrogen atom, a C H subscript 2 group, and a C H subscript 2 group. The first C H subscript two group forms a single bond with C H which forms a double bond with a carbon atom. This carbon atom forms a single bond with a C H subscript 3 group. The carbon atom forming part of the ring forms a single bond with a carbon atom which forms a double bond with an oxygen atom and a single bond with a C H subscript 2 group to complete the ring. Below the structural diagram of carvone is a photo of caraway seeds. Column 2 contains identical ball and stick representations of the structural diagram in the top left position. The top right portions of these images each contains the letter “S” and there is an arrow pointing downward from the top image to the bottom image. Columns 3 and 4 are representations of negative carvone. The top row in column three depicts a mirrored image of the ball and stick structure to its left, reflected across the y axis. There is a downward pointing arrow to the image below, which is the same structure rotated counter clockwise 180 degrees. Both images in column 3 have an “R” in the top right corner. The image in the first row of column 4 is the same as the lewis structure in the first row of column 1, reflected across the y axis. Below this negative carvone structural diagram is a photo of spearmint leaves.
 
 <!-- SEG:m68693:para:fs-idm89120384 -->
 Select this [[link:link|http://openstax.org/l/16isomers]] to view an explanation of isomers, spatial isomers, and why they have different smells (select the video titled “Mirror Molecule: Carvone”).
@@ -139,6 +166,18 @@ Write the molecular and empirical formulas of the following compounds:
 <!-- SEG:m68693:problem:fs-idm177730944 -->
 (a)[[BR]][[MEDIA:1]][[BR]] (b)[[BR]][[MEDIA:2]][[BR]] (c)[[BR]][[MEDIA:3]][[BR]] (d)[[BR]][[MEDIA:4]]
 
+<!-- SEG:m68693:alt:fs-idm94851696-alt -->
+Figure A shows a carbon atom that forms two, separate double bonds with two oxygen atoms.
+
+<!-- SEG:m68693:alt:fs-idm161278736-alt -->
+Figure B shows a hydrogen atom which forms a single bond with a carbon atom. The carbon atom forms a triple bond with another carbon atom. The second carbon atom forms a single bond with a hydrogen atom.
+
+<!-- SEG:m68693:alt:fs-idm189214544-alt -->
+Figure C shows a carbon atom forming a double bond with another carbon atom. Each carbon atom forms a single bond with two hydrogen atoms.
+
+<!-- SEG:m68693:alt:fs-idm166740960-alt -->
+Figure D shows a sulfur atom forming single bonds with four oxygen atoms. Two of the oxygen atoms form a single bond with a hydrogen atom.
+
 <!-- SEG:m68693:solution:fs-idm117784944 -->
 (a) molecular CO[[sub:2]], empirical CO[[sub:2]]; (b) molecular C[[sub:2]]H[[sub:2]], empirical CH; (c) molecular C[[sub:2]]H[[sub:4]], empirical CH[[sub:2]]; (d) molecular H[[sub:2]]SO[[sub:4]], empirical H[[sub:2]]SO[[sub:4]]
 
@@ -147,6 +186,18 @@ Write the molecular and empirical formulas of the following compounds:
 
 <!-- SEG:m68693:problem:fs-idm171785904 -->
 (a)[[BR]][[MEDIA:5]][[BR]] (b)[[BR]][[MEDIA:6]][[BR]] (c)[[BR]][[MEDIA:7]][[BR]] (d)[[BR]][[MEDIA:8]]
+
+<!-- SEG:m68693:alt:fs-idm173064208-alt -->
+Figure A shows a structural diagram of four carbon atoms bonded together into a chain. The two carbon atoms on the left form a double bond with each other. All of the remaining carbon atoms form single bonds with each other. The leftmost carbon also forms single bonds with two hydrogen. The second carbon in the chain forms a single bond with a hydrogen atom. The third carbon in the chain forms a single bond with two hydrogen atoms each. The rightmost carbon forms a single bond with three hydrogen atoms each.
+
+<!-- SEG:m68693:alt:fs-idm89506816-alt -->
+Figure B shows a structural diagram of a molecule that has a chain of four carbon atoms. The leftmost carbon atom forms a single bond with three hydrogen atoms each and single bond with the second carbon atom. The second carbon atom forms a triple bond with the third carbon atom. The third carbon atom forms a single bond to the fourth carbon atom. The fourth carbon atom forms a single bond to three hydrogen atoms each.
+
+<!-- SEG:m68693:alt:fs-idp205190960-alt -->
+Figure C shows a structural diagram of two silicon atoms are bonded together with a single bond. Each of the silicon atoms form single bonds to two chlorine atoms each and one hydrogen atom.
+
+<!-- SEG:m68693:alt:fs-idm1803056-alt -->
+Figure D shows a structural diagram of a phosphorus atom that forms a single bond to four oxygen atoms each. Three of the oxygen atoms each have a single bond to a hydrogen atom.
 
 <!-- SEG:m68693:problem:fs-idp221135936 -->
 Determine the empirical formulas for the following compounds:
@@ -193,6 +244,12 @@ Write the empirical formulas for the following compounds:
 <!-- SEG:m68693:problem:fs-idm121078656 -->
 (a)[[BR]][[MEDIA:9]][[BR]] (b)[[BR]][[MEDIA:10]]
 
+<!-- SEG:m68693:alt:fs-idm84746320-alt -->
+Figure A shows a structural diagram of two carbon atoms that form a single bond with each other. The left carbon atom forms single bonds with hydrogen atoms each. The right carbon forms a double bond to an oxygen atom. The right carbon also forms a single bonded to another oxygen atom. This oxygen atom also forms a single bond to a hydrogen atom.
+
+<!-- SEG:m68693:alt:fs-idm179141440-alt -->
+Figure B shows a structural diagram containing a leftmost carbon that forms single bonds to three hydrogen atoms each. This leftmost carbon also forms a single bond to a second carbon atom. The second carbon atom forms a double bond with an oxygen atom. The second carbon also forms a single bond to a second oxygen atom. This oxygen atom forms a single bond to a third carbon atom. This third carbon atom forms single bonds with two hydrogen atoms each as well as a single bond with another carbon atom. The rightmost carbon atom forms a single bond with three hydrogen atoms each.
+
 <!-- SEG:m68693:solution:fs-idm28441984 -->
 (a) CH[[sub:2]]O; (b) C[[sub:2]]H[[sub:4]]O
 
@@ -220,8 +277,14 @@ Use the [[link:Build a Molecule simulation|http://openstax.org/l/16molbuilding]]
 <!-- SEG:m68693:solution:fs-idp6356960 -->
 (a) ethanol
 
+<!-- SEG:m68693:alt:fs-idm139132560-alt -->
+A Lewis Structure is shown. An oxygen atom is bonded to a hydrogen atom and a carbon atom. The carbon atom is bonded to two hydrogen atoms and another carbon atom. That carbon atom is bonded to three more hydrogen atoms. There are a total of two carbon atoms, six hydrogen atoms, and one oxygen atoms.
+
 <!-- SEG:m68693:solution:fs-idm109666752 -->
 (b) methoxymethane, more commonly known as dimethyl ether
+
+<!-- SEG:m68693:alt:fs-idm155370112-alt -->
+A Lewis Structure is shown. An oxygen atom is bonded to two carbon atoms. Each carbon atom is bonded to three different hydrogen atoms. There are a total of two carbon atoms, six hydrogen atoms, and one oxygen atom.
 
 <!-- SEG:m68693:solution:fs-idm187478032 -->
 (c) These molecules have the same chemical composition (types and number of atoms) but different chemical structures. They are structural isomers.

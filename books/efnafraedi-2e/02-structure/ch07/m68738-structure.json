@@ -49,7 +49,10 @@
           },
           "media": {
             "id": "fs-idp205967824",
-            "alt": "A graph is shown with the x-axis labeled, “Internuclear distance ( p m )” while the y-axis is labeled, “Energy ( J ).” One value, “0,” is labeled midway up the y-axis and two values: “0” at the far left and “0.74” to the left, are labeled on the x-axis. The point “74” is labeled, “H bond H distance.” A line is graphed that begins near the top of the y-axis and to the far left on the x-axis and drops steeply to a point labeled, “negative 7.24 times 10 superscript negative 19 J” on the y-axis and 74 on the x-axis. This low point on the graph corresponds to a drawing of two spheres that overlap considerably. The line then rises to zero on the y-axis and levels out. The point where it almost reaches zero corresponds to two spheres that overlap slightly. The line at zero on the y-axis corresponds to two spheres that are far from one another.",
+            "alt": {
+              "segmentId": "m68738:alt:fs-idp205967824-alt",
+              "text": "A graph is shown with the x-axis labeled, “Internuclear distance ( p m )” while the y-axis is labeled, “Energy ( J ).” One value, “0,” is labeled midway up the y-axis and two values: “0” at the far left and “0.74” to the left, are labeled on the x-axis. The point “74” is labeled, “H bond H distance.” A line is graphed that begins near the top of the y-axis and to the far left on the x-axis and drops steeply to a point labeled, “negative 7.24 times 10 superscript negative 19 J” on the y-axis and 74 on the x-axis. This low point on the graph corresponds to a drawing of two spheres that overlap considerably. The line then rises to zero on the y-axis and levels out. The point where it almost reaches zero corresponds to two spheres that overlap slightly. The line at zero on the y-axis corresponds to two spheres that are far from one another."
+            },
             "src": "../../media/CNX_Chem_07_02_Morse.jpg",
             "mimeType": "image/jpeg"
           }
@@ -124,7 +127,10 @@
           },
           "media": {
             "id": "fs-idp17725376",
-            "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows a small sphere labeled, “H” and a larger sphere labeled, “C l” that overlap slightly. Both spheres have a small dot in the center. Diagram b shows an H bonded to a C l with a single bond. A dipole and a positive sign are written above the H and a dipole and negative sign are written above the C l. An arrow points toward the C l with a plus sign on the end furthest from the arrow’s head near the H.",
+            "alt": {
+              "segmentId": "m68738:alt:fs-idp17725376-alt",
+              "text": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows a small sphere labeled, “H” and a larger sphere labeled, “C l” that overlap slightly. Both spheres have a small dot in the center. Diagram b shows an H bonded to a C l with a single bond. A dipole and a positive sign are written above the H and a dipole and negative sign are written above the C l. An arrow points toward the C l with a plus sign on the end furthest from the arrow’s head near the H."
+            },
             "src": "../../media/CNX_Chem_07_02_HClBond.jpg",
             "mimeType": "image/jpeg"
           }
@@ -158,7 +164,10 @@
           },
           "media": {
             "id": "fs-idp15011408",
-            "alt": "Part of the periodic table is shown. A downward-facing arrow is drawn to the left of the table and labeled, “Decreasing electronegativity,” while a right-facing arrow is drawn above the table and labeled “Increasing electronegativity.” The electronegativity for almost all the elements is given.",
+            "alt": {
+              "segmentId": "m68738:alt:fs-idp15011408-alt",
+              "text": "Part of the periodic table is shown. A downward-facing arrow is drawn to the left of the table and labeled, “Decreasing electronegativity,” while a right-facing arrow is drawn above the table and labeled “Increasing electronegativity.” The electronegativity for almost all the elements is given."
+            },
             "src": "../../media/CNX_Chem_07_02_ENTable.jpg",
             "mimeType": "image/jpeg"
           }
@@ -207,7 +216,10 @@
               },
               "media": {
                 "id": "fs-idp80404176",
-                "alt": "A photograph of Linus Pauling is shown.",
+                "alt": {
+                  "segmentId": "m68738:alt:fs-idp80404176-alt",
+                  "text": "A photograph of Linus Pauling is shown."
+                },
                 "src": "../../media/CNX_Chem_07_02_Pauling.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -236,7 +248,10 @@
               },
               "media": {
                 "id": "fs-idm74573296",
-                "alt": "Two flow charts and table are shown. The first flow chart is labeled, “Electronegativity difference between bonding atoms.” Below this label are three rounded text bubbles, connected by a downward-facing arrow, labeled, “Zero,” “Intermediate,” and “Large,” respectively. The second flow chart is labeled, “Bond type.” Below this label are three rounded text bubbles, connected by a downward-facing arrow, labeled, “Pure covalent,” “Polar covalent,” and “Ionic,” respectively. A double ended arrow is written vertically to the right of the flow charts and labeled, “Covalent character decreases; ionic character increases.” The table is made up of two columns and four rows. The header line is labeled “Bond type” and “Electronegativity difference.” The left column contains the phrases “Pure covalent,” “Polar covalent,” and “Ionic,” while the right column contains the values “less than 0.4,” “between 0.4 and 1.8,” and “greater than 1.8.”",
+                "alt": {
+                  "segmentId": "m68738:alt:fs-idm74573296-alt",
+                  "text": "Two flow charts and table are shown. The first flow chart is labeled, “Electronegativity difference between bonding atoms.” Below this label are three rounded text bubbles, connected by a downward-facing arrow, labeled, “Zero,” “Intermediate,” and “Large,” respectively. The second flow chart is labeled, “Bond type.” Below this label are three rounded text bubbles, connected by a downward-facing arrow, labeled, “Pure covalent,” “Polar covalent,” and “Ionic,” respectively. A double ended arrow is written vertically to the right of the flow charts and labeled, “Covalent character decreases; ionic character increases.” The table is made up of two columns and four rows. The header line is labeled “Bond type” and “Electronegativity difference.” The left column contains the phrases “Pure covalent,” “Polar covalent,” and “Ionic,” while the right column contains the values “less than 0.4,” “between 0.4 and 1.8,” and “greater than 1.8.”"
+                },
                 "src": "../../media/CNX_Chem_07_02_DeltaEN.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -308,11 +323,12 @@
               "id": "fs-idm2614240",
               "class": "top-titled",
               "summary": "This table has three columns and seven rows. The first row is a header row and it labels each column. The first column header is, “Bond,” the second is, “capital delta E N,” and the third is, “Polarity.” Under the “Bond” column are the following: C bonds to H with a single bond; S bonds to H with a single bond; C bonds to N with a single bond; N bonds to H with a single bond; C bonds to O with a single bond; and O bonds to H with a single bond. Under the “capital delta E N” columna are the values: 0.4; 0.4; 0.5; 0.9; 1.0; and 1.4. Under the “Polarity” column are the follwoing: C bonds to H with a single bond, there is a lowercase delta negative sign above the C and a lowercase delta positive sign over H; S bonds to H with a single bond, there is a lowercase delta negative sign over the S and a lowercase delta positive sign over the H; C bonds to N with a single bond, there is a lowercase delta positive sign over the C and a lowercase delta negative sign over the N; N bonds to H with a single bond, there is a lowercase delta negative sign over the N and a lowercase delta positive sign over the H; C bonds to O with a single bond, there is a lowercase delta positive sign over C and a lowercase delta negative sign over the O; and O bonds to H with a single bond, there is a lowercase delta negative sign over the O and a lowercase delta positive sign over the H.",
+              "title": null,
               "rows": [
                 {
                   "cells": [
                     {
-                      "segmentId": "m68738:entry:auto-40",
+                      "segmentId": "m68738:entry:auto-44",
                       "attributes": {
                         "namest": "c1",
                         "nameend": "c3",
@@ -324,37 +340,9 @@
                 {
                   "cells": [
                     {
-                      "segmentId": "m68738:entry:auto-41",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68738:entry:auto-42",
-                      "attributes": {
-                        "align": "center"
-                      }
-                    },
-                    {
-                      "segmentId": "m68738:entry:auto-43",
-                      "attributes": {
-                        "align": "center"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68738:entry:auto-44",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
                       "segmentId": "m68738:entry:auto-45",
                       "attributes": {
-                        "align": "center"
+                        "align": "left"
                       }
                     },
                     {
@@ -362,21 +350,21 @@
                       "attributes": {
                         "align": "center"
                       }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-47",
+                      "attributes": {
+                        "align": "center"
+                      }
                     }
                   ]
                 },
                 {
                   "cells": [
                     {
-                      "segmentId": "m68738:entry:auto-47",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
                       "segmentId": "m68738:entry:auto-48",
                       "attributes": {
-                        "align": "center"
+                        "align": "left"
                       }
                     },
                     {
@@ -384,21 +372,21 @@
                       "attributes": {
                         "align": "center"
                       }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-50",
+                      "attributes": {
+                        "align": "center"
+                      }
                     }
                   ]
                 },
                 {
                   "cells": [
                     {
-                      "segmentId": "m68738:entry:auto-50",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
                       "segmentId": "m68738:entry:auto-51",
                       "attributes": {
-                        "align": "center"
+                        "align": "left"
                       }
                     },
                     {
@@ -406,21 +394,21 @@
                       "attributes": {
                         "align": "center"
                       }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-53",
+                      "attributes": {
+                        "align": "center"
+                      }
                     }
                   ]
                 },
                 {
                   "cells": [
                     {
-                      "segmentId": "m68738:entry:auto-53",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
                       "segmentId": "m68738:entry:auto-54",
                       "attributes": {
-                        "align": "center"
+                        "align": "left"
                       }
                     },
                     {
@@ -428,21 +416,21 @@
                       "attributes": {
                         "align": "center"
                       }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-56",
+                      "attributes": {
+                        "align": "center"
+                      }
                     }
                   ]
                 },
                 {
                   "cells": [
                     {
-                      "segmentId": "m68738:entry:auto-56",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
                       "segmentId": "m68738:entry:auto-57",
                       "attributes": {
-                        "align": "center"
+                        "align": "left"
                       }
                     },
                     {
@@ -450,25 +438,53 @@
                       "attributes": {
                         "align": "center"
                       }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-59",
+                      "attributes": {
+                        "align": "center"
+                      }
                     }
                   ]
                 },
                 {
                   "cells": [
                     {
-                      "segmentId": "m68738:entry:auto-59",
+                      "segmentId": "m68738:entry:auto-60",
                       "attributes": {
                         "align": "left"
                       }
                     },
                     {
-                      "segmentId": "m68738:entry:auto-60",
+                      "segmentId": "m68738:entry:auto-61",
                       "attributes": {
                         "align": "center"
                       }
                     },
                     {
-                      "segmentId": "m68738:entry:auto-61",
+                      "segmentId": "m68738:entry:auto-62",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-63",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-64",
+                      "attributes": {
+                        "align": "center"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-65",
                       "attributes": {
                         "align": "center"
                       }
@@ -482,37 +498,10 @@
               "id": "fs-idm25109184",
               "class": "unnumbered",
               "summary": "This table has three columns and five rows. The first row is a header row and it labels each column. The first column header is, “Bond,” the second column header is, “Electronegativity Difference,” and the third column header is, “Polarity.” Under the column “Bond” are the following: C bonds to C with a single bond; C bonds to H with a single bond; S i bonds to C with a single bond; and S i bonds to O with a single bond. Under the column “Electronegativity Difference” are the values: 0.0; 0.4; 0.7; and 1.7. Under the column “Polarity” are the following: nonpolar, C bonds to H with a single bond, there is a lowercase delta negative sign over C and a lowercase delta positive sign over H; S i bonds to C with a single bond, there is a lowercase delta positive sign over S i and a lowercase delta negative sign over C; and S i bonds to O with a single bond, there is a lowercase delta positive sign over S i and a lowercase delta negative sign over O.",
+              "title": null,
               "rows": [
                 {
                   "cells": [
-                    {
-                      "segmentId": "m68738:entry:auto-62",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68738:entry:auto-63",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68738:entry:auto-64",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68738:entry:auto-65",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
                     {
                       "segmentId": "m68738:entry:auto-66",
                       "attributes": {
@@ -524,17 +513,17 @@
                       "attributes": {
                         "align": "left"
                       }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
+                    },
                     {
                       "segmentId": "m68738:entry:auto-68",
                       "attributes": {
                         "align": "left"
                       }
-                    },
+                    }
+                  ]
+                },
+                {
+                  "cells": [
                     {
                       "segmentId": "m68738:entry:auto-69",
                       "attributes": {
@@ -546,17 +535,17 @@
                       "attributes": {
                         "align": "left"
                       }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
+                    },
                     {
                       "segmentId": "m68738:entry:auto-71",
                       "attributes": {
                         "align": "left"
                       }
-                    },
+                    }
+                  ]
+                },
+                {
+                  "cells": [
                     {
                       "segmentId": "m68738:entry:auto-72",
                       "attributes": {
@@ -568,17 +557,17 @@
                       "attributes": {
                         "align": "left"
                       }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
+                    },
                     {
                       "segmentId": "m68738:entry:auto-74",
                       "attributes": {
                         "align": "left"
                       }
-                    },
+                    }
+                  ]
+                },
+                {
+                  "cells": [
                     {
                       "segmentId": "m68738:entry:auto-75",
                       "attributes": {
@@ -587,6 +576,34 @@
                     },
                     {
                       "segmentId": "m68738:entry:auto-76",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-77",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68738:entry:auto-78",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-79",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68738:entry:auto-80",
                       "attributes": {
                         "align": "left"
                       }

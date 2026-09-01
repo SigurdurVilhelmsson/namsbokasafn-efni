@@ -1,0 +1,184 @@
+{
+  "moduleId": "m00095",
+  "title": {
+    "segmentId": "m00095:title:auto-1",
+    "text": "Oxidation of Alkenes: Epoxidation and Hydroxylation"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "9492bfa1-6558-4c1a-a0e6-4425f9feb1cc"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00095:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00095:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00095:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00095:alt:fig-00001-alt",
+          "text": "A reaction shows the epoxidation of cycloheptene with meta-chloroperoxybenzoic acid in dichloromethane to form epoxycycloheptane and meta-chlorobenzoic acid"
+        },
+        "src": "../../media/OChem_08_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00095:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00095:alt:fig-00002-alt",
+          "text": "A reaction mechanism shows alkene reacting with peroxyacid to form epoxide and acid."
+        },
+        "src": "../../media/OChem_08_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00095:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00095:alt:fig-00003-alt",
+          "text": "Cyclohexene reacts with chlorine in the presence of water to form trans-2-chloro-cyclohexanol, which reacts with aqueous sodium hydroxide to form 1,2-epoxycyclohexane (73 percent yield), water, and sodium chloride."
+        },
+        "src": "../../media/OChem_08_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00095:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00095:alt:fig-00004-alt",
+          "text": "An alkene undergoes epoxidation to form an epoxide, which reacts with hydronium ion to form a 1,2-diol product."
+        },
+        "src": "../../media/OChem_08_07_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00095:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00095:alt:fig-00005-alt",
+          "text": "A reaction mechanism shows 1,2-epoxycyclohexane reacting with hydronium ion and water to form trans-1,2-cyclohexanediol (86 percent yield). At the bottom, cyclohexene reacts with bromine to form trans-1,2-dibromocyclohexane."
+        },
+        "src": "../../media/OChem_08_07_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00095:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00095:alt:fig-00006-alt",
+          "text": "1,2-Dimethylcyclopentene reacts with osmium tetroxide in pyridine to form a cyclic osmate intermediate, which reacts with N a H S O 3 in water to form cis-1,2-dimethyl-1,2-cyclopentanediol (87 percent yield)."
+        },
+        "src": "../../media/OChem_08_07_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00095:para:para-00009"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00095:alt:fig-00007-alt",
+          "text": "1-Phenyl-cyclohexene reacts with catalytic osmium tetroxide in the presence of acetone and water, followed by  N-methylmorpholine N-oxide reduction to form cis-1-phenyl-1,2-cyclohexanediol (93 percent yield), osmium tetroxide, and N-methyl-morpholine."
+        },
+        "src": "../../media/OChem_08_07_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00095:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

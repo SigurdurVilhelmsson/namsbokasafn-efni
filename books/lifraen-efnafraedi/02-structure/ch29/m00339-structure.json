@@ -1,0 +1,582 @@
+{
+  "moduleId": "m00339",
+  "title": {
+    "segmentId": "m00339:title:auto-1",
+    "text": "Some Conclusions about Biological Chemistry"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "8847f520-4abc-4990-92bb-9ca484c1641f"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00339:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00339:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00339:alt:fig-00001-alt",
+          "text": "Succinyl coenzyme A reacts with glycine to form vitamin B 1 2-cyanocobalamin. Cobalt is linked to a porphyrin ring in the structure."
+        },
+        "src": "../../media/OChem_29_10_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00339:para:para-00003"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00339:title:sect-00001-title",
+        "text": "Statin Drugs"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00339:para:para-00004"
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00339:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00339:caption:fig-00002-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00339:alt:fig-00002-alt",
+              "text": "Cutaway diagram of a blood vessel showing a smooth interior, labeled normal artery. Another cutaway diagram in which vessel is partially obstructed with a yellowish substance, labeled narrowing of artery."
+            },
+            "src": "../../media/OSX_OrgChem_29_98_HeartDis.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00339:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00339:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00339:alt:fig-00003-alt",
+              "text": "The biosynthesis of mevalonate from 3-hydroxy-3-methylglutaryl coenzyme A (HMG-coenzyme A) is shown to be  the rate-limiting step in the biosynthesis of cholesterol."
+            },
+            "src": "../../media/OChem_29_10_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00339:para:para-00008"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00339:para:para-00009"
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00339:para:para-00010"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00339:alt:fig-00004-alt",
+              "text": "The X-ray crystal structure of the active site of the  H M G-coenzyme A reductase enzyme bound to atorvastatin (Lipitor) . The second figure shows the structure of Lipitor."
+            },
+            "src": "../../media/OChem_29_10_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00339:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00339:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00339:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00339:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00339:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00339:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00339:item:list-00001-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00339:item:list-00001-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00339:item:list-00001-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m00339:item:list-00001-item-10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00339:title:sect-00003-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00339:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00339:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00339:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00339:para:para-00014"
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00339:para:para-00015"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00339:title:sect-00004-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00339:para:para-00016"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00021",
+          "segmentId": "m00339:para:para-00021"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00033",
+          "segmentId": "m00339:para:para-00033"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00044",
+          "segmentId": "m00339:para:para-00044"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00054",
+          "segmentId": "m00339:para:para-00054"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 10
+}

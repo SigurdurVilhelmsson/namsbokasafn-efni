@@ -31,7 +31,10 @@
       },
       "media": {
         "id": "fs-idm106556080",
-        "alt": " A portrait of Rudolf Clasius is shown.",
+        "alt": {
+          "segmentId": "m68817:alt:fs-idm106556080-alt",
+          "text": " A portrait of Rudolf Clasius is shown."
+        },
         "src": "../../media/CNX_Chem_16_03_Carnot.jpg",
         "mimeType": "image/jpeg"
       }
@@ -103,7 +106,10 @@
           },
           "media": {
             "id": "fs-idm219643568",
-            "alt": "Five rows of diagrams that look like dominoes are shown and labeled a, b, c, d, and e. Row a has one “domino” that has four dots on the left side, red, green, blue and yellow in a clockwise pattern from the top left, and no dots on the right. Row b has four “dominos,” each with three dots on the left and one dot on the right. The first shows a “domino” with green, yellow and blue on the left and red on the right. The second “domino” has yellow, blue and red on the left and green on the right. The third “domino” has red, green and yellow on the left and blue on the right while the fourth has red, green and blue on the left and yellow on the right. Row c has six “dominos”, each with two dots on either side. The first has a red and green on the left and a blue and yellow on the right. The second has a red and blue on the left and a green and yellow on the right while the third has a yellow and red on the left and a green and blue on the right. The fourth has a green and blue on the left and a red and yellow on the right. The fifth has a green and yellow on the left and a red and blue on the right. The sixth has a blue and yellow on the left and a green and red on the right. Row d has four “dominos,” each with one dot on the left and three on the right. The first “domino” has red on the left and a blue, green and yellow on the right. The second has a green on the left and a red, yellow and blue on the right. The third has a blue on the left and a red, green and yellow on the right. The fourth has a yellow on the left and a red, green and blue on the right. Row e has 1 “domino” with no dots on the left and four dots on the right that are red, green, blue and yellow.",
+            "alt": {
+              "segmentId": "m68817:alt:fs-idm219643568-alt",
+              "text": "Five rows of diagrams that look like dominoes are shown and labeled a, b, c, d, and e. Row a has one “domino” that has four dots on the left side, red, green, blue and yellow in a clockwise pattern from the top left, and no dots on the right. Row b has four “dominos,” each with three dots on the left and one dot on the right. The first shows a “domino” with green, yellow and blue on the left and red on the right. The second “domino” has yellow, blue and red on the left and green on the right. The third “domino” has red, green and yellow on the left and blue on the right while the fourth has red, green and blue on the left and yellow on the right. Row c has six “dominos”, each with two dots on either side. The first has a red and green on the left and a blue and yellow on the right. The second has a red and blue on the left and a green and yellow on the right while the third has a yellow and red on the left and a green and blue on the right. The fourth has a green and blue on the left and a red and yellow on the right. The fifth has a green and yellow on the left and a red and blue on the right. The sixth has a blue and yellow on the left and a green and red on the right. Row d has four “dominos,” each with one dot on the left and three on the right. The first “domino” has red on the left and a blue, green and yellow on the right. The second has a green on the left and a red, yellow and blue on the right. The third has a blue on the left and a red, green and yellow on the right. The fourth has a yellow on the left and a red, green and blue on the right. Row e has 1 “domino” with no dots on the left and four dots on the right that are red, green, blue and yellow."
+            },
             "src": "../../media/CNX_Chem_16_02_Microstates.jpg",
             "mimeType": "image/jpeg"
           }
@@ -142,7 +148,10 @@
           },
           "media": {
             "id": "fs-idm215022256",
-            "alt": "Three rows labeled a, b, and c are shown and each contains rectangles with two sides where the left side is labeled, “A,” and “B,” and the right is labeled, “C,” and “D.” Row a has three rectangles where the first has a dot above and below the letter A, the second has a dot above the A and B, and the third which has a dot above and below the letter B. Row b has four rectangles; the first has a dot above A and C, the second has a dot above A and D, the third has a dot above B and C and the fourth has a dot above B and D. Row c has three rectangles; the first has a dot above and below the letter C, the second has a dot above C and D and the third has a dot above and below the letter D.",
+            "alt": {
+              "segmentId": "m68817:alt:fs-idm215022256-alt",
+              "text": "Three rows labeled a, b, and c are shown and each contains rectangles with two sides where the left side is labeled, “A,” and “B,” and the right is labeled, “C,” and “D.” Row a has three rectangles where the first has a dot above and below the letter A, the second has a dot above the A and B, and the third which has a dot above and below the letter B. Row b has four rectangles; the first has a dot above A and C, the second has a dot above A and D, the third has a dot above B and C and the fourth has a dot above B and D. Row c has three rectangles; the first has a dot above and below the letter C, the second has a dot above C and D and the third has a dot above and below the letter D."
+            },
             "src": "../../media/CNX_Chem_16_03_Energy.jpg",
             "mimeType": "image/jpeg"
           }
@@ -193,6 +202,14 @@
               "segmentId": "m68817:para:fs-idm145487536"
             },
             {
+              "type": "media",
+              "id": "CNX_Chem_16_03_Matter_img",
+              "alt": {
+                "segmentId": "m68817:alt:CNX_Chem_16_03_Matter_img-alt",
+                "text": "A diagram shows one rectangle with two sides that has four dots, red, green, yellow and blue written on the left side. A right-facing arrow leads to six more two-sided rectangles, each with two dots on the left and right sides. The first rectangle has a red and green dot on the left and a blue and yellow on the right, while the second shows a red and blue on the left and a green and yellow on the right. The third rectangle has a red and yellow dot on the left and a blue and green on the right, while the fourth shows a green and blue on the left and a red and yellow on the right. The fifth rectangle has a yellow and green dot on the left and a blue and red on the right, while the sixth shows a yellow and blue on the left and a green and red on the right."
+              }
+            },
+            {
               "type": "equation",
               "id": "fs-idm221426432"
             },
@@ -237,7 +254,10 @@
           },
           "media": {
             "id": "fs-idm187243744",
-            "alt": "Three stoppered flasks are shown with right and left-facing arrows in between each; the first is labeled above as, “delta S greater than 0,” and below as, “delta S less than 0,” while the second is labeled above as, “delta S greater than 0,” and below as, “delta S less than 0.” A long, right-facing arrow is drawn above all the flasks and labeled, “Increasing entropy.” The left flask contains twenty-seven particles arranged in a cube in the bottom of the flask and is labeled, “Crystalline solid,” below. The middle flask contains twenty-seven particles dispersed randomly in the bottom of the flask and is labeled, “Liquid,” below. The right flask contains twenty-seven particles dispersed inside of the flask and moving rapidly and is labeled, “Gas,” below.",
+            "alt": {
+              "segmentId": "m68817:alt:fs-idm187243744-alt",
+              "text": "Three stoppered flasks are shown with right and left-facing arrows in between each; the first is labeled above as, “delta S greater than 0,” and below as, “delta S less than 0,” while the second is labeled above as, “delta S greater than 0,” and below as, “delta S less than 0.” A long, right-facing arrow is drawn above all the flasks and labeled, “Increasing entropy.” The left flask contains twenty-seven particles arranged in a cube in the bottom of the flask and is labeled, “Crystalline solid,” below. The middle flask contains twenty-seven particles dispersed randomly in the bottom of the flask and is labeled, “Liquid,” below. The right flask contains twenty-seven particles dispersed inside of the flask and moving rapidly and is labeled, “Gas,” below."
+            },
             "src": "../../media/CNX_Chem_16_03_Entropies.jpg",
             "mimeType": "image/jpeg"
           }
@@ -260,7 +280,10 @@
           },
           "media": {
             "id": "fs-idm190770944",
-            "alt": "Two graphs are shown. The y-axis of the left graph is labeled, “Fraction of molecules,” while the x-axis is labeled, “Velocity, v ( m / s ),” and has values of 0 through 1,500 along the axis with increments of 500. Four lines are plotted on this graph. The first, labeled, “100 K,” peaks around 200 m / s while the second, labeled, “200 K,” peaks near 300 m / s and is slightly lower on the y-axis than the first. The third line, labeled, “500 K,” peaks around 550 m / s and is lower than the first two on the y-axis. The fourth line, labeled, “1000 K,” peaks around 750 m / s and is the lowest of the four on the y-axis. Each line get increasingly broad. The second graph has a y-axis labeled, “Entropy, S,” with an upward-facing arrow and an x-axis labeled, “Temperature ( K ),” and a right-facing arrow. The graph has three equally spaced columns in the background, labeled, “Solid,” “Liquid,” and, “Gas,” from left to right. A line extends slightly upward through the first column in a slight upward direction, then goes straight up in the transition between the first two columns. In then progresses in a slight upward direction through the second column, then goes up dramatically between the second and third columns, then continues in a slight upward direction once more. The first vertical region of this line is labeled, “Melting,” and the second is labeled, “Boiling.”",
+            "alt": {
+              "segmentId": "m68817:alt:fs-idm190770944-alt",
+              "text": "Two graphs are shown. The y-axis of the left graph is labeled, “Fraction of molecules,” while the x-axis is labeled, “Velocity, v ( m / s ),” and has values of 0 through 1,500 along the axis with increments of 500. Four lines are plotted on this graph. The first, labeled, “100 K,” peaks around 200 m / s while the second, labeled, “200 K,” peaks near 300 m / s and is slightly lower on the y-axis than the first. The third line, labeled, “500 K,” peaks around 550 m / s and is lower than the first two on the y-axis. The fourth line, labeled, “1000 K,” peaks around 750 m / s and is the lowest of the four on the y-axis. Each line get increasingly broad. The second graph has a y-axis labeled, “Entropy, S,” with an upward-facing arrow and an x-axis labeled, “Temperature ( K ),” and a right-facing arrow. The graph has three equally spaced columns in the background, labeled, “Solid,” “Liquid,” and, “Gas,” from left to right. A line extends slightly upward through the first column in a slight upward direction, then goes straight up in the transition between the first two columns. In then progresses in a slight upward direction through the second column, then goes up dramatically between the second and third columns, then continues in a slight upward direction once more. The first vertical region of this line is labeled, “Melting,” and the second is labeled, “Boiling.”"
+            },
             "src": "../../media/CNX_Chem_16_02_EntGraph.jpg",
             "mimeType": "image/jpeg"
           }
@@ -438,11 +461,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68817:entry:auto-67",
+                  "segmentId": "m68817:entry:auto-73",
                   "attributes": {}
                 }
               ]
@@ -450,7 +474,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68817:entry:auto-68",
+                  "segmentId": "m68817:entry:auto-74",
                   "attributes": {}
                 }
               ]
@@ -458,7 +482,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68817:entry:auto-69",
+                  "segmentId": "m68817:entry:auto-75",
                   "attributes": {}
                 }
               ]

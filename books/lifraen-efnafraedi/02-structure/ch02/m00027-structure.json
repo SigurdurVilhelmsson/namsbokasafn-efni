@@ -1,0 +1,176 @@
+{
+  "moduleId": "m00027",
+  "title": {
+    "segmentId": "m00027:title:auto-1",
+    "text": "Organic Acids and Organic Bases"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "ce541214-0961-4ba1-9d3c-7a4faac42e76"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00027:para:para-00001"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00027:title:sect-00001-title",
+        "text": "Organic Acids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00027:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00027:alt:fig-00002-alt",
+              "text": "Electrostatic potential maps and wedge-dash structures of methanol, acetic acid, and acetone along with their respective p K a values, 15.54, 4.76, and 19.3."
+            },
+            "src": "../../media/OChem_02_10_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00027:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00027:alt:fig-00003-alt",
+              "text": "Two reactions show the formation of methoxide ion from methanol and two resonance structures of an acetate ion from acetic acid. In both reactions, a hydrogen ion is eliminated."
+            },
+            "src": "../../media/OChem_02_10_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00027:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00027:alt:fig-00004-alt",
+              "text": "In a reaction, acetone loses a hydrogen ion to form two resonance structures of acetone enolate, separated by a double-headed arrow."
+            },
+            "src": "../../media/OChem_02_10_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00027:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00027:caption:fig-00001-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00027:alt:fig-00001-alt",
+              "text": "Electrostatic potential maps and condensed structural formulas of methoxide ion, acetate ion, and acetone enolate, showing high electron density around all oxygen atoms and the carbon atom involved in enolate resonance."
+            },
+            "src": "../../media/OChem_02_10_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00027:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00027:alt:fig-00005-alt",
+              "text": "The structural formulas of acetic acid, pyruvic acid, and citric acid."
+            },
+            "src": "../../media/OChem_02_10_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00027:title:sect-00002-title",
+        "text": "Organic Bases"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00027:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00027:alt:fig-00006-alt",
+              "text": "Electrostatic potential maps and molecular structures of methylamine, methanol, and acetone."
+            },
+            "src": "../../media/OChem_02_10_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00027:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00027:alt:fig-00007-alt",
+              "text": "In a reversible conversion, uncharged form of alanine converts to the more favored zwitterion form of alanine."
+            },
+            "src": "../../media/OChem_02_10_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 10
+}

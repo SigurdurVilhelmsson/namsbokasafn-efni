@@ -30,7 +30,10 @@
       },
       "media": {
         "id": "fs-idm5395072",
-        "alt": "A photograph shows the head and part of the body of a lizard on a rock in a well-lit area.",
+        "alt": {
+          "segmentId": "m68785:alt:fs-idm5395072-alt",
+          "text": "A photograph shows the head and part of the body of a lizard on a rock in a well-lit area."
+        },
         "src": "../../media/CNX_Chem_12_00_Ectotherm.jpg",
         "mimeType": "image/jpeg"
       }

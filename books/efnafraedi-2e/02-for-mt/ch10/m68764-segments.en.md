@@ -19,82 +19,85 @@ When you pour a glass of water, or fill a car with gasoline, you observe that wa
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Viscosity-caption -->
 (a) Honey and (b) motor oil are examples of liquids with high viscosities; they flow slowly. (credit a: modification of work by Scott Bauer; credit b: modification of work by David Nagy)
 
+<!-- SEG:m68764:alt:fs-idm87904672-alt -->
+Two photographs are shown and labeled “a” and “b.” Photo a shows a jar of honey with a dipper drizzling it onto a biscuit. More biscuits are shown in a basket in the background. Photo b shows the engine of a car and a person adding motor oil to the engine.
+
 <!-- SEG:m68764:para:fs-idm133174592 -->
 The IMFs between the molecules of a liquid, the size and shape of the molecules, and the temperature determine how easily a liquid flows. As [[xref:fs-idm123780960]] shows, the more structurally complex are the molecules in a liquid and the stronger the IMFs between them, the more difficult it is for them to move past each other and the greater is the viscosity of the liquid. As the temperature increases, the molecules move more rapidly and their kinetic energies are better able to overcome the forces that hold them together; thus, the viscosity of the liquid decreases.
 
-<!-- SEG:m68764:entry:auto-9 -->
+<!-- SEG:m68764:entry:auto-10 -->
 Viscosities of Common Substances at 25 °C
 
-<!-- SEG:m68764:entry:auto-10 -->
+<!-- SEG:m68764:entry:auto-11 -->
 Substance
 
-<!-- SEG:m68764:entry:auto-11 -->
+<!-- SEG:m68764:entry:auto-12 -->
 Formula
 
-<!-- SEG:m68764:entry:auto-12 -->
+<!-- SEG:m68764:entry:auto-13 -->
 Viscosity (mPa·s)
 
-<!-- SEG:m68764:entry:auto-13 -->
+<!-- SEG:m68764:entry:auto-14 -->
 water
 
-<!-- SEG:m68764:entry:auto-14 -->
+<!-- SEG:m68764:entry:auto-15 -->
 H[[sub:2]]O
 
-<!-- SEG:m68764:entry:auto-15 -->
+<!-- SEG:m68764:entry:auto-16 -->
 0.890
 
-<!-- SEG:m68764:entry:auto-16 -->
+<!-- SEG:m68764:entry:auto-17 -->
 mercury
 
-<!-- SEG:m68764:entry:auto-17 -->
+<!-- SEG:m68764:entry:auto-18 -->
 Hg
 
-<!-- SEG:m68764:entry:auto-18 -->
+<!-- SEG:m68764:entry:auto-19 -->
 1.526
 
-<!-- SEG:m68764:entry:auto-19 -->
+<!-- SEG:m68764:entry:auto-20 -->
 ethanol
 
-<!-- SEG:m68764:entry:auto-20 -->
+<!-- SEG:m68764:entry:auto-21 -->
 C[[sub:2]]H[[sub:5]]OH
 
-<!-- SEG:m68764:entry:auto-21 -->
+<!-- SEG:m68764:entry:auto-22 -->
 1.074
 
-<!-- SEG:m68764:entry:auto-22 -->
+<!-- SEG:m68764:entry:auto-23 -->
 octane
 
-<!-- SEG:m68764:entry:auto-23 -->
+<!-- SEG:m68764:entry:auto-24 -->
 C[[sub:8]]H[[sub:18]]
 
-<!-- SEG:m68764:entry:auto-24 -->
+<!-- SEG:m68764:entry:auto-25 -->
 0.508
 
-<!-- SEG:m68764:entry:auto-25 -->
+<!-- SEG:m68764:entry:auto-26 -->
 ethylene glycol
 
-<!-- SEG:m68764:entry:auto-26 -->
+<!-- SEG:m68764:entry:auto-27 -->
 CH[[sub:2]](OH)CH[[sub:2]](OH)
 
-<!-- SEG:m68764:entry:auto-27 -->
+<!-- SEG:m68764:entry:auto-28 -->
 16.1
 
-<!-- SEG:m68764:entry:auto-28 -->
+<!-- SEG:m68764:entry:auto-29 -->
 honey
 
-<!-- SEG:m68764:entry:auto-29 -->
-variable
-
 <!-- SEG:m68764:entry:auto-30 -->
-~2,000–10,000
+variable
 
 <!-- SEG:m68764:entry:auto-31 -->
-motor oil
+~2,000–10,000
 
 <!-- SEG:m68764:entry:auto-32 -->
-variable
+motor oil
 
 <!-- SEG:m68764:entry:auto-33 -->
+variable
+
+<!-- SEG:m68764:entry:auto-34 -->
 ~50–500
 
 <!-- SEG:m68764:para:fs-idm45103712 -->
@@ -103,68 +106,74 @@ The various IMFs between identical molecules of a substance are examples of [[te
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Droplet-caption -->
 Attractive forces result in a spherical water drop that minimizes surface area; cohesive forces hold the sphere together; adhesive forces keep the drop attached to the web. (credit photo: modification of work by “OliBac”/Flickr)
 
+<!-- SEG:m68764:alt:fs-idm162957840-alt -->
+A photo of a spider’s web with droplets of water attached to it is shown. Two images are shown the right of the photo and arrows lead from the photo to the images. The upper image shows twenty eight blue spheres stacked one atop the other in the bottom of a circular background. Five arrows are drawn pointing to the sides and downward from the sphere in the top middle of the drawing. The lower image shows another circular background of the same size as the first, but this time the blue spheres fill the image and are packed closely together. A sphere in the middle has six arrows pointing in all directions away from it.
+
 <!-- SEG:m68764:para:fs-idm78773504 -->
 [[term:Surface tension|term-00003]] is defined as the energy required to increase the surface area of a liquid, or the force required to increase the length of a liquid surface by a given amount. This property results from the cohesive forces between molecules at the surface of a liquid, and it causes the surface of a liquid to behave like a stretched rubber membrane. Surface tensions of several liquids are presented in [[xref:fs-idm139826368]]. Among common liquids, water exhibits a distinctly high surface tension due to strong hydrogen bonding between its molecules. As a result of this high surface tension, the surface of water represents a relatively “tough skin” that can withstand considerable force without breaking. A steel needle carefully placed on water will float. Some insects, like the one shown in [[xref:CNX_Chem_10_02_Strider]], even though they are denser than water, move on its surface because they are supported by the surface tension.
 
-<!-- SEG:m68764:entry:auto-37 -->
+<!-- SEG:m68764:entry:auto-39 -->
 Surface Tensions of Common Substances at 25 °C
 
-<!-- SEG:m68764:entry:auto-38 -->
+<!-- SEG:m68764:entry:auto-40 -->
 Substance
 
-<!-- SEG:m68764:entry:auto-39 -->
+<!-- SEG:m68764:entry:auto-41 -->
 Formula
 
-<!-- SEG:m68764:entry:auto-40 -->
+<!-- SEG:m68764:entry:auto-42 -->
 Surface Tension (mN/m)
 
-<!-- SEG:m68764:entry:auto-41 -->
+<!-- SEG:m68764:entry:auto-43 -->
 water
 
-<!-- SEG:m68764:entry:auto-42 -->
+<!-- SEG:m68764:entry:auto-44 -->
 H[[sub:2]]O
 
-<!-- SEG:m68764:entry:auto-43 -->
+<!-- SEG:m68764:entry:auto-45 -->
 71.99
 
-<!-- SEG:m68764:entry:auto-44 -->
+<!-- SEG:m68764:entry:auto-46 -->
 mercury
 
-<!-- SEG:m68764:entry:auto-45 -->
+<!-- SEG:m68764:entry:auto-47 -->
 Hg
 
-<!-- SEG:m68764:entry:auto-46 -->
+<!-- SEG:m68764:entry:auto-48 -->
 458.48
 
-<!-- SEG:m68764:entry:auto-47 -->
+<!-- SEG:m68764:entry:auto-49 -->
 ethanol
 
-<!-- SEG:m68764:entry:auto-48 -->
+<!-- SEG:m68764:entry:auto-50 -->
 C[[sub:2]]H[[sub:5]]OH
 
-<!-- SEG:m68764:entry:auto-49 -->
+<!-- SEG:m68764:entry:auto-51 -->
 21.97
 
-<!-- SEG:m68764:entry:auto-50 -->
+<!-- SEG:m68764:entry:auto-52 -->
 octane
 
-<!-- SEG:m68764:entry:auto-51 -->
+<!-- SEG:m68764:entry:auto-53 -->
 C[[sub:8]]H[[sub:18]]
 
-<!-- SEG:m68764:entry:auto-52 -->
+<!-- SEG:m68764:entry:auto-54 -->
 21.14
 
-<!-- SEG:m68764:entry:auto-53 -->
+<!-- SEG:m68764:entry:auto-55 -->
 ethylene glycol
 
-<!-- SEG:m68764:entry:auto-54 -->
+<!-- SEG:m68764:entry:auto-56 -->
 CH[[sub:2]](OH)CH[[sub:2]](OH)
 
-<!-- SEG:m68764:entry:auto-55 -->
+<!-- SEG:m68764:entry:auto-57 -->
 47.99
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Strider-caption -->
 Surface tension (right) prevents this insect, a “water strider,” from sinking into the water.
+
+<!-- SEG:m68764:alt:fs-idm60357712-alt -->
+A photo and a diagram as shown and a right-facing arrow leads from the photo to the image. The photo shows an insect standing on the surface of a sample of water. The image shows a square background that is two thirds covered in blue spheres that are closely packet together. A brown line starts at the upper left corner of the background and rests on top of the first row of spheres. The sphere directly under this low point of the line has four arrows drawn on it that face to both sides and downward. A sphere in the bottom center of the image has six arrows drawn on it that all face outward in different directions.
 
 <!-- SEG:m68764:para:eip-424 -->
 Surface tension is affected by a variety of variables, including the introduction of additional substances on the surface. In the late 1800s, Agnes Pockels, who was initially blocked from pursuing a scientific career but studied on her own, began investigating the impact and characteristics of soapy and greasy films in water. Using homemade materials, she developed an instrument known as a trough for measuring surface contaminants and their effects. With the support of renowned scientist Lord Rayleigh, her 1891 paper showed that surface contamination significantly reduces surface tension, and also that changing the characteristics of the surface (compressing or expanding it) also affects surface tension. Decades later, Irving Langmuir and Katharine Blodgett built on Pockels' work in their own trough and important advances in surface chemistry. Langmuir pioneered methods for producing single-molecule layers of film; Blodgett applied these to the development of non-reflective glass (critical for film-making and other applications), and also studied methods related to cleaning surfaces, which are important in semiconductor fabrication.
@@ -175,11 +184,17 @@ The IMFs of attraction between two [[i:different]] molecules are called [[term:a
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Meniscus-caption -->
 Differences in the relative strengths of cohesive and adhesive forces result in different meniscus shapes for mercury (left) and water (right) in glass tubes. (credit: Mark Ott)
 
+<!-- SEG:m68764:alt:fs-idm172871296-alt -->
+This figure shows two test tubes. The test tube on the left contains mercury with a meniscus that rounds up. The test tube on the right contains water with a meniscus that rounds down.
+
 <!-- SEG:m68764:para:fs-idp26089824 -->
 If you place one end of a paper towel in spilled wine, as shown in [[xref:CNX_Chem_10_02_Wicking]], the liquid wicks up the paper towel. A similar process occurs in a cloth towel when you use it to dry off after a shower. These are examples of [[term:capillary action|term-00005]]—when a liquid flows within a porous material due to the attraction of the liquid molecules to the surface of the material and to other liquid molecules. The adhesive forces between the liquid and the porous material, combined with the cohesive forces within the liquid, may be strong enough to move the liquid upward against gravity.
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Wicking-caption -->
 Wine wicks up a paper towel (left) because of the strong attractions of water (and ethanol) molecules to the −OH groups on the towel’s cellulose fibers and the strong attractions of water molecules to other water (and ethanol) molecules (right). (credit photo: modification of work by Mark Blaser)
+
+<!-- SEG:m68764:alt:fs-idp30571392-alt -->
+A photo and a diagram are shown. In the photo, a paper towel is dipped into a bowl full of a red liquid sitting on a countertop. The red liquid is traveling up the lower part of the paper towel, and this section of the photo has a square drawn around it. A right-facing arrow leads from this square to the image. The image is square and has a background of two types of molecules, mixed together. The first type of molecule is composed of two bonded black spheres, one of which is single bonded to three white spheres and one of which is single bonded to two white spheres and a red sphere that is itself bonded to a white sphere. The other type of molecule is composed of six black spheres bonded together in a row and bonded to other red and white spheres. Six upward-facing arrows are drawn on top of this background. They have positive signs on their lower ends and negative signs on their heads. Four upward-facing arrows are drawn with their signs reversed.
 
 <!-- SEG:m68764:para:fs-idm57496496 -->
 Towels soak up liquids like water because the fibers of a towel are made of molecules that are attracted to water molecules. Most cloth towels are made of cotton, and paper towels are generally made from paper pulp. Both consist of long molecules of cellulose that contain many −OH groups. Water molecules are attracted to these −OH groups and form hydrogen bonds with them, which draws the H[[sub:2]]O molecules up the cellulose molecules. The water molecules are also attracted to each other, so large amounts of water are drawn up the cellulose fibers.
@@ -189,6 +204,9 @@ Capillary action can also occur when one end of a small diameter tube is immerse
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_CapRise-caption -->
 Depending upon the relative strengths of adhesive and cohesive forces, a liquid may rise (such as water) or fall (such as mercury) in a glass capillary tube. The extent of the rise (or fall) is directly proportional to the surface tension of the liquid and inversely proportional to the density of the liquid and the radius of the tube.
+
+<!-- SEG:m68764:alt:fs-idm60323520-alt -->
+An image of two beakers and a tube is shown. The first beaker, drawn on the left and labeled “Water,” is drawn half-full of a blue liquid. Two open-ended capillary tubes are placed vertically in the beaker and inserted into the liquid. The liquid is shown higher in the tubes than in the beaker and is labeled “Capillary attraction.” The second beaker, drawn in the middle and labeled “Mercury,” is drawn half-full of a gray liquid. Two open-ended capillary tubes are placed vertically in the beaker and inserted into the liquid. The liquid is shown lower in the tubes than in the beaker and is labeled “Capillary repulsion.” Lines point to the vertical tubes and label them “Capillary tubes.” A separate drawing of one of the vertical tubes from the first beaker is shown on the right. A right-facing arrow leads from the liquid in the tube to a square call-out box that shows a close-up view of the liquid’s surface. The distance across the tube is labeled “2 r” in this image.
 
 <!-- SEG:m68764:para:fs-idm45302000 -->
 The height to which a liquid will rise in a capillary tube is determined by several factors as shown in the following equation:
@@ -238,6 +256,9 @@ Many medical tests require drawing a small amount of blood, for example to deter
 <!-- SEG:m68764:caption:CNX_Chem_10_02_BloodDraw-caption -->
 Blood is collected for medical analysis by capillary action, which draws blood into a small diameter glass tube. (credit: modification of work by Centers for Disease Control and Prevention)
 
+<!-- SEG:m68764:alt:fs-idm141860432-alt -->
+A photograph shows a person’s hand being held by a person wearing medical gloves. A thin glass tube is pressed against the persons finger and blood is moving up the tube.
+
 <!-- SEG:m68764:title:fs-idm72910144-title -->
 Key Concepts and Summary
 
@@ -247,7 +268,7 @@ The intermolecular forces between molecules in the liquid state vary depending u
 <!-- SEG:m68764:title:fs-idm31673664-title -->
 Key Equations
 
-<!-- SEG:m68764:entry:auto-84 -->
+<!-- SEG:m68764:entry:auto-91 -->
 [[MATH:2]]
 
 <!-- SEG:m68764:title:fs-idm81325184-title -->
@@ -259,8 +280,14 @@ The test tubes shown here contain equal amounts of the specified motor oils. Ide
 <!-- SEG:m68764:problem:fs-idm141902368 -->
 Rank the motor oils in order of increasing viscosity, and explain your reasoning:
 
+<!-- SEG:m68764:alt:fs-idp21803824-alt -->
+An image of four graduated cylinders sitting on a table labeled “Oil viscosity ( S A E )” is shown. The left-hand cylinder, labeled “20,” is mostly filled with light tan liquid and a metal ball is drawn in the lower fifth of the cylinder, but not on the bottom. The second cylinder, labeled “30,” is mostly filled with light brown liquid and a metal ball is drawn about three-fourths of the way down cylinder. The third cylinder, labeled “40,” is mostly filled with medium brown liquid and a metal ball is drawn halfway down the cylinder. The right-hand cylinder, labeled “50,” is mostly filled with brown liquid and a metal ball is drawn near the top of the liquid in the cylinder.
+
 <!-- SEG:m68764:problem:fs-idm164104512 -->
 Although steel is denser than water, a steel needle or paper clip placed carefully lengthwise on the surface of still water can be made to float. Explain at a molecular level how this is possible.[[BR]] [[MEDIA:1]] (credit: Cory Zanker)
+
+<!-- SEG:m68764:alt:fs-idm208311120-alt -->
+A photo shows a close-up, above-view, of a needle lying on the surface of a sample of water.
 
 <!-- SEG:m68764:solution:fs-idm152759136 -->
 The water molecules have strong intermolecular forces of hydrogen bonding. The water molecules are thus attracted strongly to one another and exhibit a relatively large surface tension, forming a type of “skin” at its surface. This skin can support a bug or paper clip if gently placed on the water.
@@ -270,6 +297,9 @@ The water molecules have strong intermolecular forces of hydrogen bonding. The w
 
 <!-- SEG:m68764:problem:fs-idm45257152 -->
 The surface tension and viscosity values for diethyl ether, acetone, ethanol, and ethylene glycol are shown here.[[BR]] [[MEDIA:2]]
+
+<!-- SEG:m68764:alt:fs-idm61393264-alt -->
+This table has four columns and five rows. The first row is a header row, and it labels each column: “Compound,” “Molecule,” “Surface Tension ( m N / m ),” and “Viscosity ( m P a dot s ).” Under the “compound” column are the following: diethyl ether C subscript 2 H subscript 5 O C subscript 2 H subscript 5; acetone C subscript 2 H subscript 5 O C subscript 2 H subscript 5; ethanol C subscript 2 H subscript 5 O H; ethylene glycol C H subscript 2 ( O H ) C H subscript 2 ( O H ). Under the “Molecule” column are ball-and-stick representations of each compound. The first shows two grey spheres bonded together. The first grey sphere is also bonded to three white spheres. The second grey sphere is bonded to two white spheres and a red sphere. The red sphere is bonded to another grey sphere. The grey sphere is bonded to two white spheres and another grey sphere. The last grey sphere is bonded to three white spheres. The second shows three grey spheres bonded tighter. The two grey spheres on the end are each bonded to three white spheres. The grey sphere in the middle is bonded to one red sphere. The third shows two grey spheres bonded together. The first grey sphere is bonded to three white spheres and the second grey sphere is bonded to two white spheres and a red sphere. The red sphere is bonded to a white sphere. The fourth shows two grey spheres bonded together. Each grey sphere is bonded to two white spheres and a red sphere. Each red sphere is also bonded to one white sphere. Under the “Surface Tension ( m N / m )” column are the following: 17, 23, 22 and 48. Under the “Viscosity ( m P a dot s )” column are the following: 0.22, 0.31, 1.07, and 16.1.
 
 <!-- SEG:m68764:problem:fs-idm59094592 -->
 (a) Explain their differences in viscosity in terms of the size and shape of their molecules and their IMFs.
@@ -337,47 +367,47 @@ viscosity
 <!-- SEG:m68764:glossary-def:fs-idm129199712-def -->
 measure of a liquid’s resistance to flow
 
-<!-- SEG:m68764:entry:auto-114 -->
+<!-- SEG:m68764:entry:auto-125 -->
 Water
 
-<!-- SEG:m68764:entry:auto-115 -->
+<!-- SEG:m68764:entry:auto-126 -->
 Surface Tension (mN/m)
 
-<!-- SEG:m68764:entry:auto-116 -->
+<!-- SEG:m68764:entry:auto-127 -->
 Viscosity (mPa s)
 
-<!-- SEG:m68764:entry:auto-117 -->
+<!-- SEG:m68764:entry:auto-128 -->
 0 °C
 
-<!-- SEG:m68764:entry:auto-118 -->
+<!-- SEG:m68764:entry:auto-129 -->
 75.6
 
-<!-- SEG:m68764:entry:auto-119 -->
+<!-- SEG:m68764:entry:auto-130 -->
 1.79
 
-<!-- SEG:m68764:entry:auto-120 -->
+<!-- SEG:m68764:entry:auto-131 -->
 20 °C
 
-<!-- SEG:m68764:entry:auto-121 -->
+<!-- SEG:m68764:entry:auto-132 -->
 72.8
 
-<!-- SEG:m68764:entry:auto-122 -->
+<!-- SEG:m68764:entry:auto-133 -->
 1.00
 
-<!-- SEG:m68764:entry:auto-123 -->
+<!-- SEG:m68764:entry:auto-134 -->
 60 °C
 
-<!-- SEG:m68764:entry:auto-124 -->
+<!-- SEG:m68764:entry:auto-135 -->
 66.2
 
-<!-- SEG:m68764:entry:auto-125 -->
+<!-- SEG:m68764:entry:auto-136 -->
 0.47
 
-<!-- SEG:m68764:entry:auto-126 -->
+<!-- SEG:m68764:entry:auto-137 -->
 100 °C
 
-<!-- SEG:m68764:entry:auto-127 -->
+<!-- SEG:m68764:entry:auto-138 -->
 58.9
 
-<!-- SEG:m68764:entry:auto-128 -->
+<!-- SEG:m68764:entry:auto-139 -->
 0.28

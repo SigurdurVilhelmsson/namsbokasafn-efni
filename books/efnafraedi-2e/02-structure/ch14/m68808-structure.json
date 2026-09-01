@@ -30,7 +30,10 @@
       },
       "media": {
         "id": "fs-idm104574592",
-        "alt": "Two images are shown. Image a on the left shows two beakers that each contain yellow solutions. The beaker on the left is labeled “Unbuffered” and the beaker on the right is labeled “p H equals 8.0 buffer.” Image b similarly shows 2 beakers. The beaker on the left contains a bright orange solution and is labeled “Unbuffered.” The beaker on the right is labeled “p H equals 8.0 buffer.”",
+        "alt": {
+          "segmentId": "m68808:alt:fs-idm104574592-alt",
+          "text": "Two images are shown. Image a on the left shows two beakers that each contain yellow solutions. The beaker on the left is labeled “Unbuffered” and the beaker on the right is labeled “p H equals 8.0 buffer.” Image b similarly shows 2 beakers. The beaker on the left contains a bright orange solution and is labeled “Unbuffered.” The beaker on the right is labeled “p H equals 8.0 buffer.”"
+        },
         "src": "../../media/CNX_Chem_14_06_compare.jpg",
         "mimeType": "image/jpeg"
       }
@@ -67,7 +70,10 @@
           },
           "media": {
             "id": "fs-idp38705984",
-            "alt": "This figure begins with a chemical reaction at the top: C H subscript 3 C O O H ( a q ) plus H subscript 2 O ( l ) equilibrium arrow H subscript 3 O superscript positive sign ( a q ) plus C H subscript 3 C O O superscript negative sign ( a q ). Below the text is a figure that resembles a bar graph. In the middle are two bars of equal height. One is labeled, “C H subscript 3 C O O H,” and the other is labeled, “C H subscript 3 C O O superscript negative sign.” There is a dotted line at the same height of the bars which extends to the left and right. Above these two bars is the phrase, “Buffer solution equimolar in acid and base.” There is an arrow pointing to the right which is labeled, “Add O H superscript negative sign.” The arrow points to two bars again, but this time the C H subscript 3 C O O H bar is shorter than that C H subscript 3 C O O superscript negative sign bar. Above these two bars is the phrase, “Buffer solution after addition of strong base.” From the middle bars again, there is an arrow that points left. The arrow is labeled, “Add H subscript 3 O superscript positive sign.” This arrow points to two bars again, but this time the C H subscript 3 C O O H bar is taller than the C H subscript 3 C O O superscript negative sign bar. These two bars are labeled, “Buffer solution after addition of strong acid.”",
+            "alt": {
+              "segmentId": "m68808:alt:fs-idp38705984-alt",
+              "text": "This figure begins with a chemical reaction at the top: C H subscript 3 C O O H ( a q ) plus H subscript 2 O ( l ) equilibrium arrow H subscript 3 O superscript positive sign ( a q ) plus C H subscript 3 C O O superscript negative sign ( a q ). Below the text is a figure that resembles a bar graph. In the middle are two bars of equal height. One is labeled, “C H subscript 3 C O O H,” and the other is labeled, “C H subscript 3 C O O superscript negative sign.” There is a dotted line at the same height of the bars which extends to the left and right. Above these two bars is the phrase, “Buffer solution equimolar in acid and base.” There is an arrow pointing to the right which is labeled, “Add O H superscript negative sign.” The arrow points to two bars again, but this time the C H subscript 3 C O O H bar is shorter than that C H subscript 3 C O O superscript negative sign bar. Above these two bars is the phrase, “Buffer solution after addition of strong base.” From the middle bars again, there is an arrow that points left. The arrow is labeled, “Add H subscript 3 O superscript positive sign.” This arrow points to two bars again, but this time the C H subscript 3 C O O H bar is taller than the C H subscript 3 C O O superscript negative sign bar. These two bars are labeled, “Buffer solution after addition of strong acid.”"
+            },
             "src": "../../media/CNX_Chem_14_06_bufferchrt.jpg",
             "mimeType": "image/jpeg"
           }
@@ -213,6 +219,14 @@
               "segmentId": "m68808:para:fs-idm119337184"
             },
             {
+              "type": "media",
+              "id": "fs-idm123715040",
+              "alt": {
+                "segmentId": "m68808:alt:fs-idm123715040-alt",
+                "text": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “[ C H subscript 3 C O subscript 2 H ] [ H subscript 2 O ] equilibrium arrow H subscript 3 O superscript plus sign [ C H subscript 3 C O subscript 2 superscript negative sign ].” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.10, negative x, 0.10 minus sign x. The second column is blank. The third column has the following: approximately 0, positive x, x. The fourth column has the following: 0.10, positive x, 0.10 plus sign x."
+              }
+            },
+            {
               "type": "equation",
               "id": "fs-idm7012176"
             },
@@ -326,7 +340,10 @@
           },
           "media": {
             "id": "fs-idm195031712",
-            "alt": "Three Vernier LabQuest devices measure pH: 8.00 (yellow solution), 7.66 (yellow solution), and 1.53 (red solution), demonstrating a range of pH values.",
+            "alt": {
+              "segmentId": "m68808:alt:fs-idm195031712-alt",
+              "text": "Three Vernier LabQuest devices measure pH: 8.00 (yellow solution), 7.66 (yellow solution), and 1.53 (red solution), demonstrating a range of pH values."
+            },
             "src": "../../media/CNX_Chem_14_06_exhaust.jpg",
             "mimeType": "image/jpeg"
           }
@@ -378,7 +395,10 @@
           },
           "media": {
             "id": "fs-idm112112448",
-            "alt": "A graph is shown with a horizontal axis labeled “Added m L of 0.10 M N a O H” which has markings and vertical gridlines every 10 units from 0 to 110. The vertical axis is labeled “p H” and is marked every 1 unit beginning at 0 extending to 11. A break is shown in the vertical axis between 0 and 4. A red curve is drawn on the graph which increases gradually from the point (0, 4.8) up to about (100, 7) after which the graph has a vertical section up to about (100, 11). The curve is labeled [ C H subscript 3 C O subscript 2 H ] is 11 percent of [ C H subscript 3 CO subscript 2 superscript negative].",
+            "alt": {
+              "segmentId": "m68808:alt:fs-idm112112448-alt",
+              "text": "A graph is shown with a horizontal axis labeled “Added m L of 0.10 M N a O H” which has markings and vertical gridlines every 10 units from 0 to 110. The vertical axis is labeled “p H” and is marked every 1 unit beginning at 0 extending to 11. A break is shown in the vertical axis between 0 and 4. A red curve is drawn on the graph which increases gradually from the point (0, 4.8) up to about (100, 7) after which the graph has a vertical section up to about (100, 11). The curve is labeled [ C H subscript 3 C O subscript 2 H ] is 11 percent of [ C H subscript 3 CO subscript 2 superscript negative]."
+            },
             "src": "../../media/CNX_Chem_14_06_buffer.jpg",
             "mimeType": "image/jpeg"
           }
@@ -561,11 +581,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68808:entry:auto-70",
+                  "segmentId": "m68808:entry:auto-75",
                   "attributes": {}
                 }
               ]
@@ -573,7 +594,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68808:entry:auto-71",
+                  "segmentId": "m68808:entry:auto-76",
                   "attributes": {}
                 }
               ]
@@ -581,7 +602,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68808:entry:auto-72",
+                  "segmentId": "m68808:entry:auto-77",
                   "attributes": {}
                 }
               ]

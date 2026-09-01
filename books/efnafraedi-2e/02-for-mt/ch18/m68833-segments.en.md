@@ -37,6 +37,9 @@ Hydrogen forms when direct current electricity passes through water containing a
 <!-- SEG:m68833:caption:CNX_Chem_18_05_Electrolys-caption -->
 The electrolysis of water produces hydrogen and oxygen. Because there are twice as many hydrogen atoms as oxygen atoms and both elements are diatomic, there is twice the volume of hydrogen produced at the cathode as there is oxygen produced at the anode.
 
+<!-- SEG:m68833:alt:fs-idp1458704-alt -->
+A diagram shows a beaker that contains a liquid, a battery submerged in the liquid, and two test tubes. The battery has the positive and negative terminals labeled. The liquid is connected by a right-facing arrow to an image of two molecules made up of one red atom and two white atoms. It is labeled, “Water,” and, “2 H subscript 2 O ( l ).” The left test tube above the negative sign is connected by a right-facing arrow to an image of two pairs of white atoms. The image is labeled, “Hydrogen,” and, “2 H subscript 2 ( g ).” The right test tube above the positive sign is connected by a right-facing arrow to an image of a pair of red atoms. The image is labeled, “Oxygen,” and, “O subscript 2 ( g ).”
+
 <!-- SEG:m68833:title:fs-idp598736-title -->
 Reaction of Metals with Acids
 
@@ -45,6 +48,9 @@ This is the most convenient laboratory method of producing hydrogen. Metals with
 
 <!-- SEG:m68833:caption:CNX_Chem_18_05_IronHCl-caption -->
 The reaction of iron with an acid produces hydrogen. Here, iron reacts with hydrochloric acid. (credit: Mark Ott)
+
+<!-- SEG:m68833:alt:fs-idp110348256-alt -->
+A photo shows a beaker that contains a clear, colorless liquid. It is labeled, “H C l ( a q ).” Beside the beaker is a watch glass with a dropper above it. The dropper is releasing liquid into a fizzing liquid. The fizzing liquid is releasing a white gas.
 
 <!-- SEG:m68833:title:fs-idp141812592-title -->
 Reaction of Ionic Metal Hydrides with Water
@@ -70,46 +76,46 @@ When heated, hydrogen reacts with the metals of group 1 and with Ca, Sr, and Ba 
 <!-- SEG:m68833:para:fs-idp263935152 -->
 The reactions of hydrogen with nonmetals generally produce [[i:acidic]] hydrogen compounds with hydrogen in the 1+ oxidation state. The reactions become more exothermic and vigorous as the electronegativity of the nonmetal increases. Hydrogen reacts with nitrogen and sulfur only when heated, but it reacts explosively with fluorine (forming HF) and, under some conditions, with chlorine (forming HCl). A mixture of hydrogen and oxygen explodes if ignited. Because of the explosive nature of the reaction, it is necessary to exercise caution when handling hydrogen (or any other combustible gas) to avoid the formation of an explosive mixture in a confined space. Although most hydrides of the nonmetals are acidic, ammonia and phosphine (PH[[sub:3]]) are very, very weak acids and generally function as bases. There is a summary of these reactions of hydrogen with the elements in [[xref:fs-idp87200896]].
 
-<!-- SEG:m68833:entry:auto-25 -->
+<!-- SEG:m68833:entry:auto-27 -->
 Chemical Reactions of Hydrogen with Other Elements
 
-<!-- SEG:m68833:entry:auto-26 -->
+<!-- SEG:m68833:entry:auto-28 -->
 General Equation
 
-<!-- SEG:m68833:entry:auto-27 -->
+<!-- SEG:m68833:entry:auto-29 -->
 Comments
 
-<!-- SEG:m68833:entry:auto-28 -->
+<!-- SEG:m68833:entry:auto-30 -->
 [[MATH:1]]
 
-<!-- SEG:m68833:entry:auto-29 -->
+<!-- SEG:m68833:entry:auto-31 -->
 ionic hydrides with group 1 and Ca, Sr, and Ba
 
-<!-- SEG:m68833:entry:auto-30 -->
+<!-- SEG:m68833:entry:auto-32 -->
 [[MATH:2]]
 
-<!-- SEG:m68833:entry:auto-31 -->
+<!-- SEG:m68833:entry:auto-33 -->
 [[MATH:3]]
 
-<!-- SEG:m68833:entry:auto-32 -->
+<!-- SEG:m68833:entry:auto-34 -->
 requires high pressure and temperature; low yield
 
-<!-- SEG:m68833:entry:auto-33 -->
+<!-- SEG:m68833:entry:auto-35 -->
 [[MATH:4]]
 
-<!-- SEG:m68833:entry:auto-34 -->
+<!-- SEG:m68833:entry:auto-36 -->
 exothermic and potentially explosive
 
-<!-- SEG:m68833:entry:auto-35 -->
+<!-- SEG:m68833:entry:auto-37 -->
 [[MATH:5]]
 
-<!-- SEG:m68833:entry:auto-36 -->
+<!-- SEG:m68833:entry:auto-38 -->
 requires heating; low yield
 
-<!-- SEG:m68833:entry:auto-37 -->
+<!-- SEG:m68833:entry:auto-39 -->
 [[MATH:6]]
 
-<!-- SEG:m68833:entry:auto-38 -->
+<!-- SEG:m68833:entry:auto-40 -->
 X = F, Cl, Br, and I; explosive with F[[sub:2]]; low yield with I[[sub:2]]
 
 <!-- SEG:m68833:title:fs-idp55019952-title -->
@@ -125,13 +131,16 @@ Hydrogen may also reduce the metal ions in some metal oxides to lower oxidation 
 Under normal conditions, hydrogen is relatively inactive chemically, but when heated, it enters into many chemical reactions.
 
 <!-- SEG:m68833:para:fs-idp151776640 -->
-Two thirds of the world’s hydrogen production is devoted to the manufacture of ammonia, which is a fertilizer and used in the manufacture of nitric acid. Large quantities of hydrogen are also important in the process of {{term}}hydrogenation{{/term}}, discussed in the chapter on organic chemistry.
+Two thirds of the world’s hydrogen production is devoted to the manufacture of ammonia, which is a fertilizer and used in the manufacture of nitric acid. Large quantities of hydrogen are also important in the process of [[term:hydrogenation|term-00001]], discussed in the chapter on organic chemistry.
 
 <!-- SEG:m68833:para:fs-idp268499792 -->
 It is possible to use hydrogen as a nonpolluting fuel. The reaction of hydrogen with oxygen is a very exothermic reaction, releasing 286 kJ of energy per mole of water formed. Hydrogen burns without explosion under controlled conditions. The oxygen-hydrogen torch, because of the high heat of combustion of hydrogen, can achieve temperatures up to 2800 °C. The hot flame of this torch is useful in cutting thick sheets of many metals. Liquid hydrogen is also an important rocket fuel ([[xref:CNX_Chem_18_05_LiqHliqO]]).
 
 <!-- SEG:m68833:caption:CNX_Chem_18_05_LiqHliqO-caption -->
 Before the fleet’s retirement in 2011, liquid hydrogen and liquid oxygen were used in the three main engines of a space shuttle. Two compartments in the large tank held these liquids until the shuttle was launched. (credit: “reynermedia”/Flickr)
+
+<!-- SEG:m68833:alt:fs-idp117124896-alt -->
+A rocket is shown taking off.
 
 <!-- SEG:m68833:para:fs-idp30011296 -->
 An uncombined hydrogen atom consists of a nucleus and one valence electron in the 1[[i:s]] orbital. The [[i:n]] = 1 valence shell has a capacity for two electrons, and hydrogen can rightfully occupy two locations in the periodic table. It is possible to consider hydrogen a group 1 element because hydrogen can lose an electron to form the cation, H[[sup:+]]. It is also possible to consider hydrogen to be a group 17 element because it needs only one electron to fill its valence orbital to form a hydride ion, H[[sup:−]], or it can share an electron to form a single, covalent bond. In reality, hydrogen is a unique element that almost deserves its own location in the periodic table.
@@ -146,10 +155,13 @@ Nitrogen Hydrogen Compounds
 Ammonia, NH[[sub:3]], forms naturally when any nitrogen-containing organic material decomposes in the absence of air. The laboratory preparation of ammonia is by the reaction of an ammonium salt with a strong base such as sodium hydroxide. The acid-base reaction with the weakly acidic ammonium ion gives ammonia, illustrated in [[xref:CNX_Chem_18_05_Ammonia]]. Ammonia also forms when ionic nitrides react with water. The nitride ion is a much stronger base than the hydroxide ion:
 
 <!-- SEG:m68833:para:fs-idp141680832 -->
-The commercial production of ammonia is by the direct combination of the elements in the {{term}}Haber process{{/term}}:
+The commercial production of ammonia is by the direct combination of the elements in the [[term:Haber process|term-00002]]:
 
 <!-- SEG:m68833:caption:CNX_Chem_18_05_Ammonia-caption -->
 The structure of ammonia is shown with a central nitrogen atom and three hydrogen atoms.
+
+<!-- SEG:m68833:alt:fs-idp100427680-alt -->
+A ball-and-stick model shows a nitrogen atom single bonded to three hydrogen atoms. There is a lone pair of electron dots that appears above the nitrogen atom.
 
 <!-- SEG:m68833:para:fs-idp99199120 -->
 Ammonia is a colorless gas with a sharp, pungent odor. Smelling salts utilize this powerful odor. Gaseous ammonia readily liquefies to give a colorless liquid that boils at −33 °C. Due to intermolecular hydrogen bonding, the enthalpy of vaporization of liquid ammonia is higher than that of any other liquid except water, so ammonia is useful as a refrigerant. Ammonia is quite soluble in water (658 L at STP dissolves in 1 L H[[sub:2]]O).
@@ -168,6 +180,9 @@ The nitrogen atom in ammonia has its lowest possible oxidation state (3−) and 
 
 <!-- SEG:m68833:item:fs-idp73406480-item-4 -->
 There are a number of compounds that we can consider derivatives of ammonia through the replacement of one or more hydrogen atoms with some other atom or group of atoms. Inorganic derivations include chloramine, NH[[sub:2]]Cl, and hydrazine, N[[sub:2]]H[[sub:4]]:
+
+<!-- SEG:m68833:alt:fs-idp81139952-alt -->
+Three Lewis structures are pictured and labeled, “a,” “b,” and “c.” Structure a shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. The structure is labeled “ammonia.” Structure b shows a nitrogen atom with one lone pair of electrons single bonded to two hydrogen atoms and a chlorine atom with three lone pairs of electrons. The structure is labeled “chloramine.” Structure c shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another and each single bonded to two hydrogen atoms. The structure is labeled “hydrazine.”
 
 <!-- SEG:m68833:para:fs-idp58524336 -->
 Chloramine, NH[[sub:2]]Cl, results from the reaction of sodium hypochlorite, NaOCl, with ammonia in basic solution. In the presence of a large excess of ammonia at low temperature, the chloramine reacts further to produce hydrazine, N[[sub:2]]H[[sub:4]]:
@@ -212,7 +227,7 @@ Hydrogen sulfide is a weak diprotic acid that dissolves in water to form hydrosu
 Halogen Hydrogen Compounds
 
 <!-- SEG:m68833:para:fs-idp30119280 -->
-Binary compounds containing only hydrogen and a halogen are {{term}}hydrogen halides{{/term}}. At room temperature, the pure hydrogen halides HF, HCl, HBr, and HI are gases.
+Binary compounds containing only hydrogen and a halogen are [[term:hydrogen halides|term-00003]]. At room temperature, the pure hydrogen halides HF, HCl, HBr, and HI are gases.
 
 <!-- SEG:m68833:para:fs-idp45585904 -->
 In general, it is possible to prepare the halides by the general techniques used to prepare other acids. Fluorine, chlorine, and bromine react directly with hydrogen to form the respective hydrogen halide. This is a commercially important reaction for preparing hydrogen chloride and hydrogen bromide.

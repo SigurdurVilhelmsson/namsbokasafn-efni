@@ -26,7 +26,10 @@
       },
       "media": {
         "id": "fs-idm106313312",
-        "alt": "This figure contains three photos. The first is of a jade green mineral chunk with a darkened regions and a matte surface. The second is of a crystalline mineral chunk composed primarily of bright royal blue shiny crystals and some lighter blue crystalline regions. The third is of long red crystals.",
+        "alt": {
+          "segmentId": "m68841:alt:fs-idm106313312-alt",
+          "text": "This figure contains three photos. The first is of a jade green mineral chunk with a darkened regions and a matte surface. The second is of a crystalline mineral chunk composed primarily of bright royal blue shiny crystals and some lighter blue crystalline regions. The third is of long red crystals."
+        },
         "src": "../../media/CNX_Chem_19_00_CuOre.jpg",
         "mimeType": "image/jpeg"
       }

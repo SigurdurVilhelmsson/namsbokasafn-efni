@@ -17,7 +17,10 @@
         "segmentId": "m00031:caption:fig-00001-caption"
       },
       "media": {
-        "alt": "A photograph of a bristlecone pine tree. The needles of its branches contain a mixture of organic compounds.",
+        "alt": {
+          "segmentId": "m00031:alt:fig-00001-alt",
+          "text": "A photograph of a bristlecone pine tree. The needles of its branches contain a mixture of organic compounds."
+        },
         "src": "../../media/OChem_03_00_001.jpg",
         "mimeType": "image/jpg"
       }

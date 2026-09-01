@@ -1,0 +1,210 @@
+{
+  "moduleId": "m00129",
+  "title": {
+    "segmentId": "m00129:title:auto-1",
+    "text": "The E2 Reaction and the Deuterium Isotope Effect"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f7b3c2e6-0cd8-4b3f-85bb-27b3a1640a9a"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00129:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00129:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00129:alt:fig-00001-alt",
+          "text": "An alkyl halide undergoes a 2-step reaction with a base to form a transition state, which reacts to produce a neutral alkene, B plus bonded to H and halide ion."
+        },
+        "src": "../../media/OChem_11_08_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00129:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00129:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00129:alt:fig-00002-alt",
+          "text": "2-bromoethylbenzene in base forms styrene. Deuterium substituted reactant display slower reaction."
+        },
+        "src": "../../media/OChem_11_08_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00129:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00129:alt:fig-00003-alt",
+          "text": "The antiperiplanar (staggered, lower energy) and syn-periplanar (eclipsed, higher energy) geometries of an alkyl halide. For both geometries, the structural formula, the Newman projection, and the ball-and-stick model are presented."
+        },
+        "src": "../../media/OChem_11_08_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00129:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "caption": {
+        "segmentId": "m00129:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00129:alt:fig-00004-alt",
+          "text": "Orbital representation of E 2 reaction. Anti periplanar reactant reacts with base and forms anti transition state which further forms alkene as the product."
+        },
+        "src": "../../media/OChem_11_08_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00129:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00129:alt:fig-00005-alt",
+          "text": "Orbital representation of S N 2 reaction (backside attack) and E 2 reaction (anti periplanar)."
+        },
+        "src": "../../media/OChem_11_08_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00129:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00129:alt:fig-00006-alt",
+          "text": "A reaction of meso-1,2-dibromo-1,2-diphenylethane with base in the presence of K O H and ethanol, forms (E)-1-bromo-1,2-diphenylethylene. The structural formula and Newman projection of the reactant and product are mentioned."
+        },
+        "src": "../../media/OChem_11_08_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00129:example-title:exam-00001-title",
+        "text": "Predicting the Double-Bond Stereochemistry of the Product in an E2 Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00129:para:para-00008"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00129:para:para-00009",
+          "title": {
+            "segmentId": "m00129:para-title:para-00009-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00129:para:para-00010",
+          "title": {
+            "segmentId": "m00129:para-title:para-00010-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00129:alt:fig-00007-alt",
+          "text": "A reaction mechanism of (1S, 2S)-1,2-dibromo-1,2-diphenylethane reacting with base to forms (Z)-1-bromo-1,2-diphenylethylene."
+        },
+        "src": "../../media/OChem_11_08_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00129:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

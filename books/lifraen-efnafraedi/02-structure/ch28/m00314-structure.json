@@ -1,0 +1,897 @@
+{
+  "moduleId": "m00314",
+  "title": {
+    "segmentId": "m00314:title:auto-1",
+    "text": "Translation of RNA: Protein Biosynthesis"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "7be8ad72-9bc7-44b7-bf9c-4ff0d5107002"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00314:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00314:para:para-00002"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00314:table-title:table-00001-title",
+        "text": "Codon Assignments of Base Triplets"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-5",
+              "attributes": {
+                "valign": "middle",
+                "align": "center",
+                "namest": "c3",
+                "nameend": "c6"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-6",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-7",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-8",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-9",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-10",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-11",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-12",
+              "attributes": {
+                "valign": "middle",
+                "align": "left",
+                "morerows": "3"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-13",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-14",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-15",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-16",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-17",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-18",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-19",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-20",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-21",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-22",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-23",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-24",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-25",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-26",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-27",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-28",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-29",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-30",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-31",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-32",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-33",
+              "attributes": {
+                "valign": "middle",
+                "align": "left",
+                "morerows": "3"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-34",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-35",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-36",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-37",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-38",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-39",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-40",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-41",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-42",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-43",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-44",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-45",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-46",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-47",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-48",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-49",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-50",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-51",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-52",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-53",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-54",
+              "attributes": {
+                "valign": "middle",
+                "align": "left",
+                "morerows": "3"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-55",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-56",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-57",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-58",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-59",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-60",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-61",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-62",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-63",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-64",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-65",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-66",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-67",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-68",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-69",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-70",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-71",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-72",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-73",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-74",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-75",
+              "attributes": {
+                "valign": "middle",
+                "align": "left",
+                "morerows": "3"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-76",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-77",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-78",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-79",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-80",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-81",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-82",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-83",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-84",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-85",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-86",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-87",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-88",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-89",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-90",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00314:entry:auto-91",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-92",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-93",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-94",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00314:entry:auto-95",
+              "attributes": {
+                "valign": "middle",
+                "align": "center"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00314:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00314:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00314:alt:fig-00001-alt",
+          "text": "Structure and space-filling model of t R N A. It is cloverleaf shaped containing an anticodon triplet on one leaf and an amino acid unit attached covalently at its 3-prime end."
+        },
+        "src": "../../media/OChem_28_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00314:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00314:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00314:alt:fig-00002-alt",
+          "text": "m R N A, codon on m R N A, anticodon on t R N A are presented horizontally, linked to bound amino acid residue. The final peptide is Ile-Asp-Gly-Tyr-Ala."
+        },
+        "src": "../../media/OChem_28_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00314:example-title:exam-00001-title",
+        "text": "Predicting the Amino Acid Sequence Transcribed from DNA"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00314:para:para-00005"
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00314:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00314:para:para-00007",
+          "title": {
+            "segmentId": "m00314:para-title:para-00007-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00314:para:para-00008"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00314:para:para-00009"
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00314:para:para-00010",
+          "title": {
+            "segmentId": "m00314:para-title:para-00010-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00314:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

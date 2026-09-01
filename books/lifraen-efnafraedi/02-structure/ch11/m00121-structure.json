@@ -1,0 +1,54 @@
+{
+  "moduleId": "m00121",
+  "title": {
+    "segmentId": "m00121:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "661e1d4e-41a1-49dd-9c7e-44f3ded97869"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00121:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00121:alt:fig-00001-alt",
+          "text": "A fight between two bull moose with antlers locked."
+        },
+        "src": "../../media/OChem_11_00_Moose.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00121:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00121:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00121:alt:fig-00002-alt",
+          "text": "Substitution and elimination reactions, which take place between bromoalkane and a hydroxyl group. Substitution forms an alcohol and bromide ion. Elimination forms an alkene, water, and bromide ion."
+        },
+        "src": "../../media/OChem_11_00_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 0
+}

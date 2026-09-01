@@ -64,7 +64,10 @@
           },
           "media": {
             "id": "fs-idp38472096",
-            "alt": "Two pictures are shown. In a, a person is shown pouring a liquid from a small beaker into a buret. The person is wearing goggles and gloves as she transfers the solution into the buret. In b, a close up view of the markings on the side of the buret is shown. The markings for 10, 15, and 20 are clearly shown with horizontal rings printed on the buret. Between each of these whole number markings, half markings are also clearly shown with horizontal line segment markings.",
+            "alt": {
+              "segmentId": "m68716:alt:fs-idp38472096-alt",
+              "text": "Two pictures are shown. In a, a person is shown pouring a liquid from a small beaker into a buret. The person is wearing goggles and gloves as she transfers the solution into the buret. In b, a close up view of the markings on the side of the buret is shown. The markings for 10, 15, and 20 are clearly shown with horizontal rings printed on the buret. Between each of these whole number markings, half markings are also clearly shown with horizontal line segment markings."
+            },
             "src": "../../media/CNX_Chem_04_05_titration.jpg",
             "mimeType": "image/jpeg"
           }
@@ -141,6 +144,14 @@
               "segmentId": "m68716:para:fs-idm9637984"
             },
             {
+              "type": "media",
+              "id": "fs-idm28534832",
+              "alt": {
+                "segmentId": "m68716:alt:fs-idm28534832-alt",
+                "text": "This figure shows four rectangles. The first is shaded lavender and is labeled, “Volume of N a O H.” This rectangle is followed by an arrow pointing right which is labeled, “Molar concentration,” to a second rectangle. This second rectangle is shaded pink and is labeled, “Moles of N a O H.” This rectangle is followed by an arrow pointing right which is labeled, “Stoichiometric factor,” to a third rectangle which is shaded pink and is labeled, “Moles of H C l.” This rectangle is followed by an arrow labeled, “Solution volume,” which points right to a fourth rectangle. This fourth rectangle is shaded lavender and is labeled, “Concentration of H C l.”"
+              }
+            },
+            {
               "type": "equation",
               "id": "fs-idp79702544"
             },
@@ -211,7 +222,10 @@
           },
           "media": {
             "id": "fs-idp79829856",
-            "alt": "A photo is shown of a flask and funnel used for filtration. The flask contains a slightly opaque liquid filtrate with a slight yellow tint. A funnel, which contains a bright yellow and orange material, sits atop the flask. The flask is held in place by a clamp and is connected to a vacuum line. The connection between the funnel and flask is sealed with a rubber bung or gasket.",
+            "alt": {
+              "segmentId": "m68716:alt:fs-idp79829856-alt",
+              "text": "A photo is shown of a flask and funnel used for filtration. The flask contains a slightly opaque liquid filtrate with a slight yellow tint. A funnel, which contains a bright yellow and orange material, sits atop the flask. The flask is held in place by a clamp and is connected to a vacuum line. The connection between the funnel and flask is sealed with a rubber bung or gasket."
+            },
             "src": "../../media/CNX_Chem_04_05_filter.jpg",
             "mimeType": "image/jpeg"
           }
@@ -268,6 +282,14 @@
               "segmentId": "m68716:para:fs-idm20241408"
             },
             {
+              "type": "media",
+              "id": "fs-idp125565328",
+              "alt": {
+                "segmentId": "m68716:alt:fs-idp125565328-alt",
+                "text": "This figure shows five rectangles. The first is shaded yellow and is labeled “Mass of B a S O subscript 4.” This rectangle is followed by an arrow pointing right to a second rectangle. The arrow is labeled, “Molar mass.” The second rectangle is shaded pink and is labeled, “Moles of B a S O subscript 4.” This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, “Stoichiometric factor.” This third rectangle is shaded pink and is labeled, “Moles of M g S O subscript 4.” This rectangle is followed by an arrow labeled, “Molar mass,” which points downward to a fourth rectangle. This fourth rectangle is shaded yellow and is labeled, “Mass of M g S O subscript 4.” This rectangle is followed by an arrow labeled, “Sample mass,” which points left to a fifth rectangle. This fifth rectangle is shaded lavender and is labeled, “Percent M g S O subscript 4."
+              }
+            },
+            {
               "type": "equation",
               "id": "fs-idm25559056"
             },
@@ -313,7 +335,10 @@
           },
           "media": {
             "id": "fs-idp46838688",
-            "alt": "This diagram shows an arrow pointing from O subscript 2 into a tube that leads into a vessel containing a red material, labeled “Sample.” This vessel is inside a blue container with a red inner lining which is labeled “Furnace.” An arrow points from the tube to the right into the vessel above the red sample material. An arrow leads out of this vessel through a tube into a second vessel outside the furnace. An line points from this tube to a label above the diagram that reads “C O subscript 2, H subscript 2 O, O subscript 2, and other gases.” Many small green spheres are visible in the second vessel which is labeled below, “H subscript 2 O absorber such as M g ( C l O subscript 4 ) subscript 2.” An arrow points to the right through the vessel, and another arrow points right heading out of the vessel through a tube into a third vessel. The third vessel contains many small blue spheres. It is labeled “C O subscript 2 absorber such as N a O H.” An arrow points right through this vessel, and a final arrow points out of a tube at the right end of the vessel. Outside the end of this tube at the end of the arrow is the label, “O subscript 2 and other gases.”",
+            "alt": {
+              "segmentId": "m68716:alt:fs-idp46838688-alt",
+              "text": "This diagram shows an arrow pointing from O subscript 2 into a tube that leads into a vessel containing a red material, labeled “Sample.” This vessel is inside a blue container with a red inner lining which is labeled “Furnace.” An arrow points from the tube to the right into the vessel above the red sample material. An arrow leads out of this vessel through a tube into a second vessel outside the furnace. An line points from this tube to a label above the diagram that reads “C O subscript 2, H subscript 2 O, O subscript 2, and other gases.” Many small green spheres are visible in the second vessel which is labeled below, “H subscript 2 O absorber such as M g ( C l O subscript 4 ) subscript 2.” An arrow points to the right through the vessel, and another arrow points right heading out of the vessel through a tube into a third vessel. The third vessel contains many small blue spheres. It is labeled “C O subscript 2 absorber such as N a O H.” An arrow points right through this vessel, and a final arrow points out of a tube at the right end of the vessel. Outside the end of this tube at the end of the arrow is the label, “O subscript 2 and other gases.”"
+            },
             "src": "../../media/CNX_Chem_04_05_combustion.jpg",
             "mimeType": "image/jpeg"
           }
@@ -373,6 +398,14 @@
               "type": "para",
               "id": "fs-idp1032432",
               "segmentId": "m68716:para:fs-idp1032432"
+            },
+            {
+              "type": "media",
+              "id": "fs-idp22371728",
+              "alt": {
+                "segmentId": "m68716:alt:fs-idp22371728-alt",
+                "text": "This figure shows two flowcharts. The first row is a single flow chart. In this row, a rectangle at the left is shaded yellow and is labeled, “Mass of C O subscript 2.” This rectangle is followed by an arrow pointing right to a second rectangle. The arrow is labeled, “Molar mass.” The second rectangle is shaded pink and is labeled, “Moles of C O subscript 2.” This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, “Stoichiometric factor.” The third rectangle is shaded pink and is labeled, “Moles of C.” This rectangle is followed by an arrow labeled “Molar mass” which points right to a fourth rectangle. The fourth rectangle is shaded yellow and is labeled “Mass of C.” Below, is a second flowchart. It begins with a yellow shaded rectangle on the left which is labeled, “Mass of H subscript 2 O.” This rectangle is followed by an arrow labeled, “Molar mass,” which points right to a second rectangle. The second rectangle is shaded pink and is labeled, “Moles of H subscript 2 O.” This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, “Stoichiometric factor.” The third rectangle is shaded pink and is labeled “Moles of H.” This rectangle is followed to the right by an arrow labeled, “Molar mass,” which points to a fourth rectangle. The fourth rectangle is shaded yellow and is labeled “Mass of H.” An arrow labeled, “Sample mass” points down beneath this rectangle to a green shaded rectangle. This rectangle is labeled, “Percent composition.” An arrow extends beneath the pink rectangle labeled, “Moles of H,” to a green shaded rectangle labeled, “C to H mole ratio.” Beneath this rectangle, an arrow extends to a second green shaded rectangle which is labeled, “Empirical formula.”"
+              }
             },
             {
               "type": "equation",
@@ -701,6 +734,14 @@
                 "type": "para",
                 "id": "fs-idp123399264",
                 "segmentId": "m68716:problem:fs-idp123399264"
+              },
+              {
+                "type": "media",
+                "id": "fs-idp179983520",
+                "alt": {
+                  "segmentId": "m68716:alt:fs-idp179983520-alt",
+                  "text": "A chemical reaction is shown. To the left, a structural formula is provided for a molecule with a 4 C atom horizontal chain involving all single bonds between the C atoms. The three C atoms to the left have H atoms bonded above and below and the left most C atom also has an H atom bonded to its left side. The fourth C atom, which is toward the right end of the structure, has a double bonded O atom above and a single bonded O atom to its right. An H atom is bonded to the right of the single bonded O atom. This structure is followed by a plus sign, then the formula C a ( O H ) subscript 2. This is followed by a reaction arrow. To the right of this arrow is a structural formula that begins C a, and in parentheses has a 4 C atom horizontal chain involving all single bonds between the C atoms. The three C atoms to the left have H atoms bonded above and below, and the left most C atom also has an H atom bonded to its left side. The fourth C atom, which is toward the right end of the structure, has a double bonded O atom above and a single bonded O atom to its right. Outside the parentheses is a subscript 2. This structure is followed by a plus sign and 2 H subscript 2 O."
+                }
               }
             ]
           },

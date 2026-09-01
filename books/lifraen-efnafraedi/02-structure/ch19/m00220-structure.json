@@ -1,0 +1,78 @@
+{
+  "moduleId": "m00220",
+  "title": {
+    "segmentId": "m00220:title:auto-1",
+    "text": "Nucleophilic Addition of Hydrazine: The Wolff–Kishner Reaction"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "2258e2fd-3735-46f7-804b-d748a9f30f70"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00220:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00220:alt:fig-00001-alt",
+          "text": "Propiophenone reacts with hydrazine and potassium hydroxide to yield propylbenzene, nitrogen, and water. Cyclopropanecarbaldehyde reacts with hydrazine and potassium hydroxide to produce methylcyclopropane, nitrogen and water."
+        },
+        "src": "../../media/OChem_19_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00220:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00220:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00220:alt:fig-00002-alt",
+          "text": "Reaction mechanism of ketone or aldehyde with hydrazine to yield an alkane through five steps: formation of hydrazone, deprotonation (and resonance), protonation, deprotonation and loss of nitrogen, protonation."
+        },
+        "src": "../../media/OChem_19_09_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00220:para:para-00003"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00220:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

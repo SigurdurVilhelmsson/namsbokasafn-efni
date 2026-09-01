@@ -1,0 +1,98 @@
+{
+  "moduleId": "m00127",
+  "title": {
+    "segmentId": "m00127:title:auto-1",
+    "text": "Biological Substitution Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "01c6ae66-8bd0-4dcc-ba89-d12fd4a154f7"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00127:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00127:alt:fig-00001-alt",
+          "text": "A reaction in parentheses shows alkyl chloride dissociating to R plus and Cl minus. Separately, an organodiphosphate dissociates to form R plus and diphosphate ion."
+        },
+        "src": "../../media/OChem_11_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00127:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00127:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00127:alt:fig-00002-alt",
+          "text": "The figure shows the biosynthesis reaction of geraniol. Multiple steps involving two S N 1 reactions produces geraniol from dimethylallyl diphosphate, where the diphosphate ion acts as a leaving group."
+        },
+        "src": "../../media/OChem_11_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00127:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00127:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "caption": {
+        "segmentId": "m00127:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00127:alt:fig-00003-alt",
+          "text": "The reaction mechanism of Norepinephrine with S-Adenosylmethionine undergoing S N 2 pathway. S-Adenosylhomocysteine and Epinephrine (adrenaline) are the products formed."
+        },
+        "src": "../../media/OChem_11_06_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00127:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 6
+}

@@ -28,6 +28,9 @@ The equilibrium constant for this net reaction is much greater than the [[i:K[[s
 <!-- SEG:m68814:caption:CNX_Chem_15_03_CoralReef-caption -->
 Healthy coral reefs (a) support a dense and diverse array of sea life across the ocean food chain. But when coral are unable to adequately build and maintain their calcium carbonate skeletons because of excess ocean acidification, the unhealthy reef (b) is only capable of hosting a small fraction of the species as before, and the local food chain starts to collapse. (credit a: modification of work by NOAA Photo Library; credit b: modification of work by “prilfish”/Flickr)
 
+<!-- SEG:m68814:alt:fs-idp11078816-alt -->
+This figure contains two photographs of coral reefs. In a, a colorful reef that includes hues of purple and pink corals is shown in blue green water with fish swimming in the background. In b, grey-green mossy looking coral is shown in a blue aquatic environment. This photo does not have the colorful appearance or fish that were shown in figure a.
+
 <!-- SEG:m68814:para:fs-idm278224 -->
 Learn more about ocean [[link:acidification|http://openstax.org/l/16acidicocean]] and how it affects other marine creatures.
 
@@ -39,6 +42,9 @@ The dramatic increase in solubility with increasing acidity described above for 
 
 <!-- SEG:m68814:caption:CNX_Chem_15_03_Apatite-caption -->
 Crystal of the mineral hydroxyapatite, Ca[[sub:5]](PO[[sub:4]])[[sub:3]]OH, is shown here. The pure compound is white, but like many other minerals, this sample is colored because of the presence of impurities.
+
+<!-- SEG:m68814:alt:fs-idp482016-alt -->
+This figure includes an image of two large light blue apatite crystals in a mineral conglomerate that includes white, grey, and tan crystals. The blue apatite crystals have a dull, dusty, or powdered appearance.
 
 <!-- SEG:m68814:para:fs-idp11125264 -->
 This compound dissolved to yield two different basic ions: triprotic phosphate ions
@@ -64,8 +70,14 @@ Unfortunately, excess fluoride can negate its advantages. Natural sources of dri
 <!-- SEG:m68814:caption:CNX_Chem_15_03_Toothpaste-caption -->
 Fluoride, found in many toothpastes, helps prevent tooth decay (credit: Kerry Ceszyk).
 
+<!-- SEG:m68814:alt:fs-idm726352-alt -->
+Replace with updated art; figure in “99” art folder is current and correct
+
 <!-- SEG:m68814:para:fs-idp19645632 -->
 The solubility of ionic compounds may also be increased when dissolution is coupled to the formation of a complex ion. For example, aluminum hydroxide dissolves in a solution of sodium hydroxide or another strong base because of the formation of the complex ion [[MATH:1]]
+
+<!-- SEG:m68814:alt:fs-idp137004736-alt -->
+An H atom is bonded to an O atom. The O atom has 2 dots above it and 2 dots below it. The O atom is bonded to an A l atom, which has three additional O atoms bonded to it as well. Each of these additional O atoms has 4 dots arranged around it, and is bonded to an H atom. This entire molecule is contained in brackets, to the right of which is a superscripted negative sign.
 
 <!-- SEG:m68814:para:fs-idm55619648 -->
 The equations for the dissolution of aluminum hydroxide, the formation of the complex ion, and the combined (net) equation are shown below. As indicated by the relatively large value of K for the net reaction, coupling complex formation with dissolution drastically increases the solubility of Al(OH)[[sub:3]].
@@ -162,6 +174,9 @@ Check Your Learning
 
 <!-- SEG:m68814:para:fs-idm58241696 -->
 AgCl([[i:s]]), silver chloride, has a very low solubility: [[MATH:16]] [[i:K]][[sub:sp]] = 1.6 [[MATH:17]] 10[[sup:–10]]. Adding ammonia significantly increases the solubility of AgCl because a complex ion is formed: [[MATH:18]] [[i:K]][[sub:f]] = 1.7 [[MATH:19]] 10[[sup:7]]. What mass of NH[[sub:3]] is required to prepare 1.00 L of solution that will dissolve 2.00 g of AgCl by formation of [[MATH:20]]
+
+<!-- SEG:m68814:alt:fs-idp120368-alt -->
+A chemical reaction is shown using structural formulas. On the left, A g superscript plus is followed by a plus sign, the number 2, and a structure in brackets. The structure is composed of a central S atom which has O atoms single bonded above, right, and below. A second S atom is single bonded to the left. Each of these bonded atoms has 6 dots around it. Outside the brackets is a superscript 2 negative. Following a bidirectional arrow is a structure in brackets with a central A g atom. To the left and right, S atoms are single bonded to the A g atom. Each of these S atoms has four dots around it, and an S atom connected with a single bond moving out from the central A g atom, forming the ends of the structure. Each of these atoms has three O atoms attached with single bonds above, below, and at the end of the structure. Each O atom has six dots around it. Outside the brackets is a superscript 3 negative.
 
 <!-- SEG:m68814:note-title:fs-idm81440704-title -->
 Answer:

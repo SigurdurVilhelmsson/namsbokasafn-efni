@@ -23,10 +23,13 @@ Describe common radiometric dating techniques
 Following the somewhat serendipitous discovery of radioactivity by Becquerel, many prominent scientists began to investigate this new, intriguing phenomenon. Among them were Marie Curie (the first woman to win a Nobel Prize, and the only person to win two Nobel Prizes in different sciences—chemistry and physics), who was the first to coin the term “radioactivity,” and Ernest Rutherford (of gold foil experiment fame), who investigated and named three of the most common types of radiation. During the beginning of the twentieth century, many radioactive substances were discovered, the properties of radiation were investigated and quantified, and a solid understanding of radiation and nuclear decay was developed.
 
 <!-- SEG:m68854:para:fs-idp202642016 -->
-The spontaneous change of an unstable nuclide into another is {{term}}radioactive decay{{/term}}. The unstable nuclide is called the {{term}}parent nuclide{{/term}}; the nuclide that results from the decay is known as the {{term}}daughter nuclide{{/term}}. The daughter nuclide may be stable, or it may decay itself. The radiation produced during radioactive decay is such that the daughter nuclide lies closer to the band of stability than the parent nuclide, so the location of a nuclide relative to the band of stability can serve as a guide to the kind of decay it will undergo ([[xref:CNX_Chem_21_03_Reaction1]]).
+The spontaneous change of an unstable nuclide into another is [[term:radioactive decay|term-00001]]. The unstable nuclide is called the [[term:parent nuclide|term-00002]]; the nuclide that results from the decay is known as the [[term:daughter nuclide|term-00003]]. The daughter nuclide may be stable, or it may decay itself. The radiation produced during radioactive decay is such that the daughter nuclide lies closer to the band of stability than the parent nuclide, so the location of a nuclide relative to the band of stability can serve as a guide to the kind of decay it will undergo ([[xref:CNX_Chem_21_03_Reaction1]]).
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_Reaction1-caption -->
 A nucleus of uranium-238 (the parent nuclide) undergoes α decay to form thorium-234 (the daughter nuclide). The alpha particle removes two protons (green) and two neutrons (gray) from the uranium-238 nucleus.
+
+<!-- SEG:m68854:alt:fs-idp2414480-alt -->
+A diagram shows two spheres composed of many smaller white and green spheres connected by a right-facing arrow with another, down-facing arrow coming off of it. The left sphere, labeled “Parent nucleus uranium dash 238” has two white and two green spheres that are near one another and are outlined in red. These two green and two white spheres are shown near the tip of the down-facing arrow and labeled “alpha particle.” The right sphere, labeled “Daughter nucleus radon dash 234,” looks the same as the left, but has a space for four smaller spheres outlined with a red dotted line.
 
 <!-- SEG:m68854:para:fs-idp131961680 -->
 Although the radioactive decay of a nucleus is too small to see with the naked eye, we can indirectly view radioactive decay in an environment called a cloud chamber. Click [[link:here|http://openstax.org/l/16cloudchamb]] to learn about cloud chambers and to view an interesting Cloud Chamber Demonstration from the Jefferson Lab.
@@ -40,32 +43,35 @@ Ernest Rutherford’s experiments involving the interaction of radiation with a 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_Radiation-caption -->
 Alpha particles, which are attracted to the negative plate and deflected by a relatively small amount, must be positively charged and relatively massive. Beta particles, which are attracted to the positive plate and deflected a relatively large amount, must be negatively charged and relatively light. Gamma rays, which are unaffected by the electric field, must be uncharged.
 
+<!-- SEG:m68854:alt:fs-idp137790304-alt -->
+A diagram is shown. A gray box on the left side of the diagram labeled “Lead block” has a chamber hollowed out in the center in which a sample labeled “Radioactive substance” is placed. A blue beam is coming from the sample, out of the block, and passing through two horizontally placed plates that are labeled “Electrically charged plates.” The top plate is labeled with a positive sign while the bottom plate is labeled with a negative sign. The beam is shown to break into three beams as it passes in between the plates; in order from top to bottom, they are red, labeled “beta rays,” purple labeled “gamma rays” and green labeled “alpha rays.” The beams are shown to hit a vertical plate labeled “Photographic plate” on the far right side of the diagram.
+
 <!-- SEG:m68854:para:fs-idm41800032 -->
-{{term}}Alpha (α) decay{{/term}} is the emission of an α particle from the nucleus. For example, polonium-210 undergoes α decay:
+[[term:Alpha (α) decay|term-00004]] is the emission of an α particle from the nucleus. For example, polonium-210 undergoes α decay:
 
 <!-- SEG:m68854:para:fs-idp202270256 -->
 Alpha decay occurs primarily in heavy nuclei (A > 200, Z > 83). Because the loss of an α particle gives a daughter nuclide with a mass number four units smaller and an atomic number two units smaller than those of the parent nuclide, the daughter nuclide has a larger n:p ratio than the parent nuclide. If the parent nuclide undergoing α decay lies below the band of stability (refer to [[docref:m68851#CNX_Chem_21_01_BandStable]]), the daughter nuclide will lie closer to the band.
 
 <!-- SEG:m68854:para:fs-idm2875904 -->
-{{term}}Beta (β) decay{{/term}} is the emission of an electron from a nucleus. Iodine-131 is an example of a nuclide that undergoes β decay:
+[[term:Beta (β) decay|term-00005]] is the emission of an electron from a nucleus. Iodine-131 is an example of a nuclide that undergoes β decay:
 
 <!-- SEG:m68854:para:fs-idp100287120 -->
 Beta decay, which can be thought of as the conversion of a neutron into a proton and a β particle, is observed in nuclides with a large n:p ratio. The beta particle (electron) emitted is from the atomic nucleus and is not one of the electrons surrounding the nucleus. Such nuclei lie above the band of stability. Emission of an electron does not change the mass number of the nuclide but does increase the number of its protons and decrease the number of its neutrons. Consequently, the n:p ratio is decreased, and the daughter nuclide lies closer to the band of stability than did the parent nuclide.
 
 <!-- SEG:m68854:para:fs-idp8043424 -->
-{{term}}Gamma emission (γ emission){{/term}} is observed when a nuclide is formed in an excited state and then decays to its ground state with the emission of a γ ray, a quantum of high-energy electromagnetic radiation. The presence of a nucleus in an excited state is often indicated by an asterisk (*). Cobalt-60 emits γ radiation and is used in many applications including cancer treatment:
+[[term:Gamma emission (γ emission)|term-00006]] is observed when a nuclide is formed in an excited state and then decays to its ground state with the emission of a γ ray, a quantum of high-energy electromagnetic radiation. The presence of a nucleus in an excited state is often indicated by an asterisk (*). Cobalt-60 emits γ radiation and is used in many applications including cancer treatment:
 
 <!-- SEG:m68854:para:fs-idp50313008 -->
 There is no change in mass number or atomic number during the emission of a γ ray unless the γ emission accompanies one of the other modes of decay.
 
 <!-- SEG:m68854:para:fs-idp18009856 -->
-{{term}}Positron emission (β[[sup:+]] decay{{/term}}) is the emission of a positron from the nucleus. Oxygen-15 is an example of a nuclide that undergoes positron emission:
+[[term:Positron emission (β[[sup:+]] decay|term-00007]]) is the emission of a positron from the nucleus. Oxygen-15 is an example of a nuclide that undergoes positron emission:
 
 <!-- SEG:m68854:para:fs-idp125268336 -->
 Positron emission is observed for nuclides in which the n:p ratio is low. These nuclides lie below the band of stability. Positron decay is the conversion of a proton into a neutron with the emission of a positron. The n:p ratio increases, and the daughter nuclide lies closer to the band of stability than did the parent nuclide.
 
 <!-- SEG:m68854:para:fs-idp123320528 -->
-{{term}}Electron capture{{/term}} occurs when one of the inner electrons in an atom is captured by the atom’s nucleus. For example, potassium-40 undergoes electron capture:
+[[term:Electron capture|term-00008]] occurs when one of the inner electrons in an atom is captured by the atom’s nucleus. For example, potassium-40 undergoes electron capture:
 
 <!-- SEG:m68854:para:fs-idm42894208 -->
 Electron capture occurs when an inner shell electron combines with a proton and is converted into a neutron. The loss of an inner shell electron leaves a vacancy that will be filled by one of the outer electrons. As the outer electron drops into the vacancy, it will emit energy. In most cases, the energy emitted will be in the form of an X-ray. Like positron emission, electron capture occurs for “proton-rich” nuclei that lie below the band of stability. Electron capture has the same effect on the nucleus as does positron emission: The atomic number is decreased by one and the mass number does not change. This increases the n:p ratio, and the daughter nuclide lies closer to the band of stability than did the parent nuclide. Whether electron capture or positron emission occurs is difficult to predict. The choice is primarily due to kinetic factors, with the one requiring the smaller activation energy being the one more likely to occur.
@@ -75,6 +81,9 @@ Electron capture occurs when an inner shell electron combines with a proton and 
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_RadioDecay-caption -->
 This table summarizes the type, nuclear equation, representation, and any changes in the mass or atomic numbers for various types of decay.
+
+<!-- SEG:m68854:alt:fs-idp47033488-alt -->
+This table has four columns and six rows. The first row is a header row and it labels each column: “Type,” “Nuclear equation,” “Representation,” and “Change in mass / atomic numbers.” Under the “Type” column are the following: “Alpha decay,” “Beta decay,” “Gamma decay,” “Positron emission,” and “Electron capture.” Under the “Nuclear equation” column are several equations. Each begins with superscript A stacked over subscript Z X. There is a large gap of space and then the following equations: “superscript 4 stacked over subscript 2 He plus superscript A minus 4 stacked over subscript Z minus 2 Y,” “superscript 0 stacked over subscript negative 1 e plus superscript A stacked over subscript Z plus 1 Y,” “superscript 0 stacked over subscript 0 lowercase gamma plus superscript A stacked over subscript Z Y,” “superscript 0 stacked over subscript positive 1 e plus superscript A stacked over subscript Y minus 1 Y,” and “superscript 0 stacked over subscript negative 1 e plus superscript A stacked over subscript Y minus 1 Y.” Under the “Representation” column are the five diagrams. The first shows a cluster of green and white spheres. A section of the cluster containing two white and two green spheres is outlined. There is a right-facing arrow pointing to a similar cluster as previously described, but the outlined section is missing. From the arrow another arrow branches off and points downward. The small cluster to two white spheres and two green spheres appear at the end of the arrow. The next diagram shows the same cluster of white and green spheres. One white sphere is outlined. There is a right-facing arrow to a similar cluster, but the white sphere is missing. Another arrow branches off the main arrow and a red sphere with a negative sign appears at the end. The next diagram shows the same cluster of white and green spheres. The whole sphere is outlined and labeled, “excited nuclear state.” There is a right-facing arrow that points to the same cluster. No spheres are missing. Off the main arrow is another arrow which points to a purple squiggle arrow which in turn points to a lowercase gamma. The next diagram shows the same cluster of white and green spheres. One green sphere is outlined. There is a right-facing arrow to a similar cluster, but the green sphere is missing. Another arrow branches off the main arrow and a red sphere with a positive sign appears at the end. The next diagram shows the same cluster of white and green spheres. One green sphere is outlined. There is a right-facing arrow to a similar cluster, but the green sphere is missing. Two other arrows branch off the main arrow. The first shows a gold sphere with a negative sign joining with the right-facing arrow. The secon points to a blue squiggle arrow labeled, “X-ray.” Under the “Change in mass / atomic numbers” column are the following: “A: decrease by 4, Z: decrease by 2,” “A: unchanged, Z: increased by 1,” “A: unchanged, Z: unchanged,” “A: unchanged, Z: unchanged,” “A: unchanged, Z: decrease by 1,” and “A: unchanged, Z: decrease by 1.”
 
 <!-- SEG:m68854:note-title:fs-idp54313680-title -->
 PET Scan
@@ -88,26 +97,35 @@ For example, F-18 is produced by proton bombardment of [[sup:18]]O [[MATH:1]] an
 <!-- SEG:m68854:caption:CNX_Chem_21_03_PETScan-caption -->
 A PET scanner (a) uses radiation to provide an image of how part of a patient’s body functions. The scans it produces can be used to image a healthy brain (b) or can be used for diagnosing medical conditions such as Alzheimer’s disease (c). (credit a: modification of work by Jens Maus)
 
+<!-- SEG:m68854:alt:fs-idp142995312-alt -->
+Three pictures are shown and labeled “a,” “b” and “c.” Picture a shows a machine with a round opening connected to an examination table. Picture b is a medical scan of the top of a person’s head and shows large patches of yellow and red and smaller patches of blue, green and purple highlighting. Picture c also shows a medical scan of the top of a person’s head, but this image is mostly colored in blue and purple with very small patches of red and yellow.
+
 <!-- SEG:m68854:title:fs-idp89067520-title -->
 Radioactive Decay Series
 
 <!-- SEG:m68854:para:fs-idp54304864 -->
-The naturally occurring radioactive isotopes of the heaviest elements fall into chains of successive disintegrations, or decays, and all the species in one chain constitute a radioactive family, or {{term}}radioactive decay series{{/term}}. Three of these series include most of the naturally radioactive elements of the periodic table. They are the uranium series, the actinide series, and the thorium series. The neptunium series is a fourth series, which is no longer significant on the earth because of the short half-lives of the species involved. Each series is characterized by a parent (first member) that has a long half-life and a series of daughter nuclides that ultimately lead to a stable end-product—that is, a nuclide on the band of stability ([[xref:CNX_Chem_21_03_DecayS]]). In all three series, the end-product is a stable isotope of lead. The neptunium series, previously thought to terminate with bismuth-209, terminates with thallium-205.
+The naturally occurring radioactive isotopes of the heaviest elements fall into chains of successive disintegrations, or decays, and all the species in one chain constitute a radioactive family, or [[term:radioactive decay series|term-00009]]. Three of these series include most of the naturally radioactive elements of the periodic table. They are the uranium series, the actinide series, and the thorium series. The neptunium series is a fourth series, which is no longer significant on the earth because of the short half-lives of the species involved. Each series is characterized by a parent (first member) that has a long half-life and a series of daughter nuclides that ultimately lead to a stable end-product—that is, a nuclide on the band of stability ([[xref:CNX_Chem_21_03_DecayS]]). In all three series, the end-product is a stable isotope of lead. The neptunium series, previously thought to terminate with bismuth-209, terminates with thallium-205.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_DecayS-caption -->
 Uranium-238 undergoes a radioactive decay series consisting of 14 separate steps before producing stable lead-206. This series consists of eight α decays and six β decays.
+
+<!-- SEG:m68854:alt:fs-idm36645216-alt -->
+A graph is shown where the x-axis is labeled “Number of neutrons, open parenthesis, n, close parenthesis” and has values of 122 to 148 in increments of 2. The y-axis is labeled “Atomic number” and has values of 80 to 92 in increments of 1. Two types of arrows are used in this graph to connect the points. Green arrows are labeled as “alpha decay” while red arrows are labeled “beta decay.” Beginning at the point “92, 146” that is labeled “superscript 238, U,” a green arrow connects this point to the second point “90, 144” which is labeled “superscript 234, T h.” A red arrow connect this to the third point “91, 143” which is labeled “superscript 234, P a” which is connected to the fourth point “92, 142” by a red arrow and which is labeled “superscript 234, U.” A green arrow leads to the next point, “90, 140” which is labeled “superscript 230, T h” and is connected by a green arrow to the sixth point, “88, 138” which is labeled “superscript 226, R a” that is in turn connected by a green arrow to the seventh point “86, 136” which is labeled “superscript 222, Ra.” The eighth point, at “84, 134” is labeled “superscript 218, P o” and has green arrows leading to it and away from it to the ninth point “82, 132” which is labeled “superscript 214, Pb” which is connected by a red arrow to the tenth point, “83, 131” which is labeled “superscript 214, B i.” A red arrow leads to the eleventh point “84, 130” which is labeled “superscript 214, P o” and a green arrow leads to the twelvth point “82, 128” which is labeled “superscript 210, P b.” A red arrow leads to the thirteenth point “83, 127” which is labeled “superscript 210, B i” and a red arrow leads to the fourteenth point “84, 126” which is labeled “superscript 210, P o.” The final point is labeled “82, 124” and “superscript 206, P b.”
 
 <!-- SEG:m68854:title:fs-idp38328768-title -->
 Radioactive Half-Lives
 
 <!-- SEG:m68854:para:fs-idp135905344 -->
-Radioactive decay follows first-order kinetics. Since first-order reactions have already been covered in detail in the kinetics chapter, we will now apply those concepts to nuclear decay reactions. Each radioactive nuclide has a characteristic, constant {{term}}half-life{{/term}} ([[i:t]][[sub:1/2]]), the time required for half of the atoms in a sample to decay. An isotope’s half-life allows us to determine how long a sample of a useful isotope will be available, and how long a sample of an undesirable or dangerous isotope must be stored before it decays to a low-enough radiation level that is no longer a problem.
+Radioactive decay follows first-order kinetics. Since first-order reactions have already been covered in detail in the kinetics chapter, we will now apply those concepts to nuclear decay reactions. Each radioactive nuclide has a characteristic, constant [[term:half-life|term-00010]] ([[i:t]][[sub:1/2]]), the time required for half of the atoms in a sample to decay. An isotope’s half-life allows us to determine how long a sample of a useful isotope will be available, and how long a sample of an undesirable or dangerous isotope must be stored before it decays to a low-enough radiation level that is no longer a problem.
 
 <!-- SEG:m68854:para:fs-idm89252176 -->
 For example, cobalt-60, an isotope that emits gamma rays used to treat cancer, has a half-life of 5.27 years ([[xref:CNX_Chem_21_03_HalfLife]]). In a given cobalt-60 source, since half of the [[MATH:2]] nuclei decay every 5.27 years, both the amount of material and the intensity of the radiation emitted is cut in half every 5.27 years. (Note that for a given substance, the intensity of radiation that it produces is directly proportional to the rate of decay of the substance and the amount of the substance.) This is as expected for a process following first-order kinetics. Thus, a cobalt-60 source that is used for cancer treatment must be replaced regularly to continue to be effective.
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_HalfLife-caption -->
 For cobalt-60, which has a half-life of 5.27 years, 50% remains after 5.27 years (one half-life), 25% remains after 10.54 years (two half-lives), 12.5% remains after 15.81 years (three half-lives), and so on.
+
+<!-- SEG:m68854:alt:fs-idm8344304-alt -->
+A graph, titled “C o dash 60 Decay,” is shown where the x-axis is labeled “C o dash 60 remaining, open parenthesis, percent sign, close parenthesis” and has values of 0 to 100 in increments of 25. The y-axis is labeled “Number of half dash lives” and has values of 0 to 5 in increments of 1. The first point, at “0, 100” has a circle filled with tiny dots drawn near it labeled “10 g.” The second point, at “1, 50” has a smaller circle filled with tiny dots drawn near it labeled “5 g.” The third point, at “2, 25” has a small circle filled with tiny dots drawn near it labeled “2.5 g.” The fourth point, at “3, 12.5” has a very small circle filled with tiny dots drawn near it labeled “1.25 g.” The last point, at “4, 6.35” has a tiny circle filled with tiny dots drawn near it labeled.”625 g.”
 
 <!-- SEG:m68854:para:fs-idm84262544 -->
 Since nuclear decay follows first-order kinetics, we can adapt the mathematical relationships used for first-order chemical reactions. We generally substitute the number of nuclei, [[i:N]], for the concentration. If the rate is stated in nuclear decays per second, we refer to it as the activity of the radioactive sample. The rate for radioactive decay is:
@@ -172,79 +190,79 @@ Answer:
 <!-- SEG:m68854:para:fs-idp76857680 -->
 Because each nuclide has a specific number of nucleons, a particular balance of repulsion and attraction, and its own degree of stability, the half-lives of radioactive nuclides vary widely. For example: the half-life of [[MATH:14]] is 1.9 [[MATH:15]] 10[[sup:19]] years; [[MATH:16]] is 24,000 years; [[MATH:17]] is 3.82 days; and element-111 (Rg for roentgenium) is 1.5 [[MATH:18]] 10[[sup:–3]] seconds. The half-lives of a number of radioactive isotopes important to medicine are shown in [[xref:fs-idp14399952]], and others are listed in [[docref:Appendix M|m68871]].
 
-<!-- SEG:m68854:entry:auto-59 -->
+<!-- SEG:m68854:entry:auto-65 -->
 Half-lives of Radioactive Isotopes Important to Medicine
 
-<!-- SEG:m68854:entry:auto-60 -->
-Type {{fn}}The “m” in Tc-99m stands for “metastable,” indicating that this is an unstable, high-energy state of Tc-99. Metastable isotopes emit γ radiation to rid themselves of excess energy and become (more) stable.{{/fn}}
-
-<!-- SEG:m68854:entry:auto-61 -->
-Decay Mode
-
-<!-- SEG:m68854:entry:auto-62 -->
-Half-Life
-
-<!-- SEG:m68854:entry:auto-63 -->
-Uses
-
-<!-- SEG:m68854:entry:auto-64 -->
-F-18
-
-<!-- SEG:m68854:entry:auto-65 -->
-β[[sup:+]] decay
-
 <!-- SEG:m68854:entry:auto-66 -->
-110. minutes
+Type [[fn:The “m” in Tc-99m stands for “metastable,” indicating that this is an unstable, high-energy state of Tc-99. Metastable isotopes emit γ radiation to rid themselves of excess energy and become (more) stable.|fs-idm12349168]]
 
 <!-- SEG:m68854:entry:auto-67 -->
-PET scans
+Decay Mode
 
 <!-- SEG:m68854:entry:auto-68 -->
-Co-60
+Half-Life
 
 <!-- SEG:m68854:entry:auto-69 -->
-β decay, γ decay
+Uses
 
 <!-- SEG:m68854:entry:auto-70 -->
-5.27 years
+F-18
 
 <!-- SEG:m68854:entry:auto-71 -->
-cancer treatment
+β[[sup:+]] decay
 
 <!-- SEG:m68854:entry:auto-72 -->
-Tc-99m
+110. minutes
 
 <!-- SEG:m68854:entry:auto-73 -->
-γ decay
+PET scans
 
 <!-- SEG:m68854:entry:auto-74 -->
-8.01 hours
+Co-60
 
 <!-- SEG:m68854:entry:auto-75 -->
-scans of brain, lung, heart, bone
+β decay, γ decay
 
 <!-- SEG:m68854:entry:auto-76 -->
-I-131
+5.27 years
 
 <!-- SEG:m68854:entry:auto-77 -->
-β decay
+cancer treatment
 
 <!-- SEG:m68854:entry:auto-78 -->
-8.02 days
+Tc-99m
 
 <!-- SEG:m68854:entry:auto-79 -->
-thyroid scans and treatment
+γ decay
 
 <!-- SEG:m68854:entry:auto-80 -->
-Tl-201
+8.01 hours
 
 <!-- SEG:m68854:entry:auto-81 -->
-electron capture
+scans of brain, lung, heart, bone
 
 <!-- SEG:m68854:entry:auto-82 -->
-73 hours
+I-131
 
 <!-- SEG:m68854:entry:auto-83 -->
+β decay
+
+<!-- SEG:m68854:entry:auto-84 -->
+8.02 days
+
+<!-- SEG:m68854:entry:auto-85 -->
+thyroid scans and treatment
+
+<!-- SEG:m68854:entry:auto-86 -->
+Tl-201
+
+<!-- SEG:m68854:entry:auto-87 -->
+electron capture
+
+<!-- SEG:m68854:entry:auto-88 -->
+73 hours
+
+<!-- SEG:m68854:entry:auto-89 -->
 heart and arteries scans; cardiac stress tests
 
 <!-- SEG:m68854:title:fs-idp25396560-title -->
@@ -254,7 +272,7 @@ Radiometric Dating
 Radioactive Dating Using Carbon-14
 
 <!-- SEG:m68854:para:fs-idm42065648 -->
-The radioactivity of carbon-14 provides a method for dating objects that were a part of a living organism. This method of radiometric dating, which is also called {{term}}radiocarbon dating{{/term}} or carbon-14 dating, is accurate for dating carbon-containing substances that are up to about 30,000 years old, and can provide reasonably accurate dates up to a maximum of about 50,000 years old.
+The radioactivity of carbon-14 provides a method for dating objects that were a part of a living organism. This method of radiometric dating, which is also called [[term:radiocarbon dating|term-00012]] or carbon-14 dating, is accurate for dating carbon-containing substances that are up to about 30,000 years old, and can provide reasonably accurate dates up to a maximum of about 50,000 years old.
 
 <!-- SEG:m68854:para:fs-idp34827216 -->
 Naturally occurring carbon consists of three isotopes: [[MATH:19]] which constitutes about 99% of the carbon on earth; [[MATH:20]] about 1% of the total; and trace amounts of [[MATH:21]] Carbon-14 forms in the upper atmosphere by the reaction of nitrogen atoms with neutrons from cosmic rays in space:
@@ -267,6 +285,9 @@ Thus, the [[MATH:32]] ratio gradually decreases after the plant dies. The decrea
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_CarbonDate-caption -->
 Along with stable carbon-12, radioactive carbon-14 is taken in by plants and animals, and remains at a constant level within them while they are alive. After death, the C-14 decays and the C-14:C-12 ratio in the remains decreases. Comparing this ratio to the C-14:C-12 ratio in living organisms allows us to determine how long ago the organism lived (and died).
+
+<!-- SEG:m68854:alt:fs-idp78510352-alt -->
+A diagram shows a cow standing on the ground next to a tree. In the upper left of the diagram, where the sky is represented, a single white sphere is shown and is connected by a downward-facing arrow to a larger sphere composed of green and white spheres that is labeled “superscript 14, subscript 7, N.” This structure is connected to three other structures by a right-facing arrow. Each of the three it points to are composed of green and white spheres and all have arrows pointing from them to the ground. The first of these is labeled “Trace, superscript 14, subscript 6, C,” the second is labeled “1 percent, superscript 13, subscript 6, C” and the last is labeled “99 percent, superscript 12, subscript 6, C.” Two downward-facing arrows that merge into one arrow lead from the cow and tree to the ground and are labeled “organism dies” and “superscript 14, subscript 6, C, decay begins.” A right-facing arrow labeled on top as “Decay” and on bottom as “Time” leads from this to a label of “superscript 14, subscript 6, C, backslash, superscript 12, subscript 6, C, ratio decreased.” Near the top of the tree is a downward facing arrow with the label “superscript 14, subscript 6, C, backslash, superscript 12, subscript 6, C, ratio is constant in living organisms” that leads to the last of the lower statements.
 
 <!-- SEG:m68854:para:fs-idm5880176 -->
 For example, with the half-life of [[MATH:33]] being 5730 years, if the [[MATH:34]] ratio in a wooden object found in an archaeological dig is half what it is in a living tree, this indicates that the wooden object is 5730 years old. Highly accurate determinations of [[MATH:35]] ratios can be obtained from very small samples (as little as a milligram) by the use of a mass spectrometer.
@@ -315,6 +336,9 @@ about 3350 years ago, or approximately 1340 BC
 
 <!-- SEG:m68854:caption:CNX_Chem_21_03_DSScrolls-caption -->
 Carbon-14 dating has shown that these pages from the Dead Sea Scrolls were written or copied on paper made from plants that died between 100 BC and AD 50.
+
+<!-- SEG:m68854:alt:fs-idm64119536-alt -->
+A photograph of six pages of ragged-edged paper covered in writing are shown.
 
 <!-- SEG:m68854:para:fs-idp143543968 -->
 There have been some significant, well-documented changes to the [[MATH:36]] ratio. The accuracy of a straightforward application of this technique depends on the [[MATH:37]] ratio in a living plant being the same now as it was in an earlier era, but this is not always valid. Due to the increasing accumulation of CO[[sub:2]] molecules (largely [[MATH:38]] in the atmosphere caused by combustion of fossil fuels (in which essentially all of the [[MATH:39]] has decayed), the ratio of [[MATH:40]] in the atmosphere may be changing. This manmade increase in [[MATH:41]] in the atmosphere causes the [[MATH:42]] ratio to decrease, and this in turn affects the ratio in currently living organisms on the earth. Fortunately, however, we can use other data, such as tree dating via examination of annual growth rings, to calculate correction factors. With these correction factors, accurate dates can be determined. In general, radioactive dating only works for about 10 half-lives; therefore, the limit for carbon-14 dating is about 57,000 years.
@@ -377,7 +401,7 @@ Answer:
 3.7 [[MATH:50]] 10[[sup:9]] y
 
 <!-- SEG:m68854:para:fs-idm40273488 -->
-Several radioisotopes have half-lives and other properties that make them useful for purposes of “dating” the origin of objects such as archaeological artifacts, formerly living organisms, or geological formations. This process is {{term}}radiometric dating{{/term}} and has been responsible for many breakthrough scientific discoveries about the geological history of the earth, the evolution of life, and the history of human civilization. We will explore some of the most common types of radioactive dating and how the particular isotopes work for each type.
+Several radioisotopes have half-lives and other properties that make them useful for purposes of “dating” the origin of objects such as archaeological artifacts, formerly living organisms, or geological formations. This process is [[term:radiometric dating|term-00011]] and has been responsible for many breakthrough scientific discoveries about the geological history of the earth, the evolution of life, and the history of human civilization. We will explore some of the most common types of radioactive dating and how the particular isotopes work for each type.
 
 <!-- SEG:m68854:title:fs-idm64039712-title -->
 Key Concepts and Summary
@@ -388,10 +412,10 @@ Nuclei that have unstable n:p ratios undergo spontaneous radioactive decay. The 
 <!-- SEG:m68854:title:fs-idm2719024-title -->
 Key Equations
 
-<!-- SEG:m68854:entry:auto-131 -->
+<!-- SEG:m68854:entry:auto-139 -->
 decay rate = [[i:λN]]
 
-<!-- SEG:m68854:entry:auto-132 -->
+<!-- SEG:m68854:entry:auto-140 -->
 [[MATH:51]]
 
 <!-- SEG:m68854:title:fs-idp25531728-title -->

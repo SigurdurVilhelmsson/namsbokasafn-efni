@@ -1,0 +1,137 @@
+{
+  "moduleId": "m00342",
+  "title": {
+    "segmentId": "m00342:title:auto-1",
+    "text": "Electrocyclic Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e2804803-c10d-4b3a-bdb9-43c2ff211b68"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00342:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00342:alt:fig-00001-alt",
+          "text": "Two chemical reactions occuring in the presence of heat. A conjugated triene forms 1,3-cyclohexadiene. A conjugated diene forms cyclobutene."
+        },
+        "src": "../../media/OChem_30_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00342:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00342:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00342:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00342:alt:fig-00002-alt",
+          "text": "(2E,4Z,6E)-2,4,6-octatriene reacts with heat to give cis-5,6-dimethyl-1,3-cyclohexadiene. (2E,4Z,6E)-2,4,6-octatriene reacts with light to give trans-5,6-dimethyl-1,3-cyclohexadiene. (2E,4Z,6Z)-2,4,6-octatriene reacts with heat to give trans-5,6-dimethyl-1,3-cyclohexadiene."
+        },
+        "src": "../../media/OChem_30_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00342:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00342:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00342:alt:fig-00003-alt",
+          "text": "Cis-3,4-dimethyl-cyclobutene reacts with heat to form (2E,4Z)-2,4-hexadiene. Cis-3,4-dimethyl-cyclobutene reacts with light to form (2E,4E)-2,4-hexadiene. Trans-3,4-dimethylcyclobutene reacts with heat to form (2E,4E)-2,4-hexadiene."
+        },
+        "src": "../../media/OChem_30_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00342:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00342:alt:fig-00004-alt",
+          "text": "Two orbital pictures in which one figure has like lobes on the same side. The other figure has like lobes on the opposite side. The figures are separated by or."
+        },
+        "src": "../../media/OChem_30_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00342:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00342:alt:fig-00005-alt",
+          "text": "An orbital diagram with arrows to show disrotatory (clockwise and counterclockwise) movement of two p-orbitals with same-sign lobes pointed upward. This allows same-sign lobes to merge."
+        },
+        "src": "../../media/OChem_30_02_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00342:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00342:alt:fig-00006-alt",
+          "text": "An orbital diagram with arrows to show conrotatory (clockwise and clockwise) movement of two p-orbitals with opposite-sign lobes pointed upward. This allows same-sign lobes to merge."
+        },
+        "src": "../../media/OChem_30_02_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 2
+}

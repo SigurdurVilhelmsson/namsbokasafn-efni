@@ -13,11 +13,17 @@ Sulfur exists in nature as elemental deposits as well as sulfides of iron, zinc,
 <!-- SEG:m68838:caption:CNX_Chem_18_10_Volcano-caption -->
 Volcanic gases contain hydrogen sulfide. (credit: Daniel Julie/Wikimedia Commons)
 
+<!-- SEG:m68838:alt:fs-idm247704592-alt -->
+A lake is shown surrounded by rocky, mountainous peaks. A white vapor rises from the ground near the lake.
+
 <!-- SEG:m68838:para:fs-idm89076784 -->
-The {{term}}Frasch process{{/term}}, illustrated in [[xref:CNX_Chem_18_10_FrachMine]], is important in the mining of free sulfur from enormous underground deposits in Texas and Louisiana. Superheated water (170 °C and 10 atm pressure) is forced down the outermost of three concentric pipes to the underground deposit. The hot water melts the sulfur. The innermost pipe conducts compressed air into the liquid sulfur. The air forces the liquid sulfur, mixed with air, to flow up through the outlet pipe. Transferring the mixture to large settling vats allows the solid sulfur to separate upon cooling. This sulfur is 99.5% to 99.9% pure and requires no purification for most uses.
+The [[term:Frasch process|term-00001]], illustrated in [[xref:CNX_Chem_18_10_FrachMine]], is important in the mining of free sulfur from enormous underground deposits in Texas and Louisiana. Superheated water (170 °C and 10 atm pressure) is forced down the outermost of three concentric pipes to the underground deposit. The hot water melts the sulfur. The innermost pipe conducts compressed air into the liquid sulfur. The air forces the liquid sulfur, mixed with air, to flow up through the outlet pipe. Transferring the mixture to large settling vats allows the solid sulfur to separate upon cooling. This sulfur is 99.5% to 99.9% pure and requires no purification for most uses.
 
 <!-- SEG:m68838:caption:CNX_Chem_18_10_FrachMine-caption -->
 The Frasch process is used to mine sulfur from underground deposits.
+
+<!-- SEG:m68838:alt:fs-idm119715872-alt -->
+A diagram is shown in which a vertical tube is embedded on the lower end into a multilayered solid. The upper layer is labeled, “Soil,” and the lower layer is labeled, “Solid sulfur deposit.” A thin tube, beginning at the top of the diagram, leads into the vertical tube to the bottom and is labeled, “Compressed air.” Left-facing and then down-facing arrows are drawn on this inner tube. These arrows then turn upward at the bottom of the tube and are drawn upward to indicate the flow of, “Liquid sulfur,” from the bottom of the diagram to the top outside the inner tube. These arrows lead to a chamber at the top right of the diagram with arrows facing to the left labeled, “Sulfur, water and air.” A horizontal tube in the center right of the diagram leads to the outer tube and arrows drawn downward lead back to the bottom of the diagram. This tube is labeled, “Superheated water.”
 
 <!-- SEG:m68838:para:fs-idm172180032 -->
 Larger amounts of sulfur also come from hydrogen sulfide recovered during the purification of natural gas.

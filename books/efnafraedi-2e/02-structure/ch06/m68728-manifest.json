@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68728",
-  "extractedAt": "2026-07-07T09:12:33.896Z",
+  "extractedAt": "2026-08-31T19:08:38.664Z",
   "sourceHash": "b81f07f203320d9c",
-  "segmentCount": 8,
+  "segmentCount": 9,
   "segmentIds": [
     "m68728:title:auto-1",
     "m68728:abstract-item:abstract-item-1",
@@ -12,6 +12,7 @@
     "m68728:abstract-item:abstract-item-4",
     "m68728:abstract-item:abstract-item-5",
     "m68728:caption:CNX_Chem_06_00_CrabNeb-caption",
+    "m68728:alt:fs-idp86676592-alt",
     "m68728:para:fs-idm12460464"
   ],
   "equationCount": 0,

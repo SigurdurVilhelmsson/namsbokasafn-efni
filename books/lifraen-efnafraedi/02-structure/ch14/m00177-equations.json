@@ -1,0 +1,22 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math display=\"block\"><m:mrow><m:mi>A</m:mi><m:mo>=</m:mo><m:mi>log</m:mi><m:mfrac><m:mrow><m:msub><m:mi>I</m:mi><m:mn>0</m:mn></m:msub></m:mrow><m:mi>I</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{A=log\\frac{{{I}_{0}}}{I}}",
+    "isBlock": true
+  },
+  "eq-00002": {
+    "mathml": "<m:math display=\"block\"><m:mrow><m:mi>ε</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>A</m:mi><m:mrow><m:mi>c</m:mi><m:mo>×</m:mo><m:mi>l</m:mi></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{ε=\\frac{A}{{c\\times l}}}",
+    "isBlock": true
+  },
+  "eq-00003": {
+    "mathml": "<m:math display=\"block\">\n     <m:mtable columnalign=\"left\">\n      <m:mtr>\n       <m:mtd>\n        <m:mspace width=\"2em\"/><m:mi>A</m:mi><m:mo>=</m:mo><m:mtext>Absorbance</m:mtext>\n       </m:mtd>\n      </m:mtr>\n      <m:mtr>\n       <m:mtd>\n        <m:mspace width=\"2em\"/><m:mi>c</m:mi><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>Concentration in mol/L</m:mtext>\n       </m:mtd>\n      </m:mtr>\n      <m:mtr>\n       <m:mtd>\n        <m:mspace width=\"2em\"/><m:mi>l</m:mi><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>Sample pathlength in cm</m:mtext>\n       </m:mtd>\n      </m:mtr>\n     </m:mtable>\n    </m:math>",
+    "latex": "\\begin{aligned} \\, A=\\text{Absorbance} \\\\ \\, c\\, =\\text{Concentration in mol/L} \\\\ \\, l\\, =\\text{Sample pathlength in cm} \\end{aligned}",
+    "isBlock": true
+  },
+  "eq-00004": {
+    "mathml": "<m:math display=\"block\">\n     <m:mtable columnalign=\"left\">\n      <m:mtr>\n       <m:mtd>\n        <m:mi>c</m:mi><m:mo>=</m:mo><m:mfrac>\n         <m:mi>A</m:mi>\n         <m:mrow>\n          <m:mi>ε</m:mi><m:mi>l</m:mi></m:mrow>\n        </m:mfrac>\n        <m:mo>=</m:mo><m:mfrac>\n         <m:mrow>\n          <m:mn>0.37</m:mn></m:mrow>\n         <m:mrow>\n          <m:mfenced>\n           <m:mrow>\n            <m:mn>1.38</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup>\n             \n              <m:mn>10</m:mn>\n             <m:mn>5</m:mn>\n            </m:msup>\n            <m:mfrac>\n             <m:mtext>L</m:mtext>\n             <m:mrow>\n              <m:mtext>mol</m:mtext><m:mo>⋅</m:mo><m:mtext>cm</m:mtext></m:mrow>\n            </m:mfrac>\n            </m:mrow>\n          </m:mfenced><m:mo stretchy=\"false\">(</m:mo><m:mn>1.00</m:mn><m:mtext> cm</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow>\n        </m:mfrac>\n        </m:mtd>\n      </m:mtr>\n      <m:mtr><m:mtd>\n        <m:mtext> </m:mtext><m:mo>=</m:mo><m:mn>2.7</m:mn><m:mo>×</m:mo><m:msup>\n         <m:mn>10</m:mn>\n         <m:mrow>\n          <m:mo>−</m:mo><m:mn>6</m:mn></m:mrow>\n        </m:msup>\n        <m:mtext>mol/L</m:mtext>\n       </m:mtd>\n      </m:mtr>\n     </m:mtable> \n    </m:math>",
+    "latex": "\\begin{aligned} c=\\frac{A}{{εl}} =\\frac{{0.37}}{{{1.38\\, \\times \\, {10}^{5} \\text{L} {\\text{mol}⋅\\text{cm}}}} (1.00\\text{cm})} \\\\ \\text=2.7\\times {10}^{{-6}} \\text{mol/L} \\end{aligned}",
+    "isBlock": true
+  }
+}

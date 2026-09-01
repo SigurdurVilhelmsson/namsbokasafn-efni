@@ -1,0 +1,64 @@
+{
+  "track": "mt-preview",
+  "generatedBy": "cnxml-inject.js",
+  "summary": {
+    "modulesWithResidue": 4,
+    "exactResidues": 8,
+    "ratioWarnings": 2,
+    "toleratedResidues": 0
+  },
+  "modules": {
+    "m00035": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m00035:para:para-00035",
+          "ratio": 0.8
+        }
+      ],
+      "tolerated": []
+    },
+    "m00037": {
+      "exact": [
+        "m00037:para:para-00003"
+      ],
+      "warnings": [],
+      "tolerated": []
+    },
+    "m00038": {
+      "exact": [
+        "m00038:item:list-00001-item-13",
+        "m00038:item:list-00001-item-36"
+      ],
+      "warnings": [],
+      "tolerated": []
+    },
+    "m00135": {
+      "exact": [
+        "m00135:para:para-00003",
+        "m00135:para:para-00005",
+        "m00135:para:para-00006"
+      ],
+      "warnings": [],
+      "tolerated": []
+    },
+    "m00139": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m00139:para:para-00006",
+          "ratio": 0.71
+        }
+      ],
+      "tolerated": []
+    },
+    "m00142": {
+      "exact": [
+        "m00142:item:list-00001-item-14",
+        "m00142:item:list-00001-item-15"
+      ],
+      "warnings": [],
+      "tolerated": []
+    }
+  }
+}

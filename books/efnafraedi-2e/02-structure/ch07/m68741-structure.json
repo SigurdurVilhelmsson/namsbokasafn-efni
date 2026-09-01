@@ -65,7 +65,10 @@
           "type": "media",
           "id": "fs-idp286503296",
           "class": "scaled-down",
-          "alt": "A reaction is shown with Lewis structures. The first structure shows a carbon atom single bonded to four hydrogen atoms with the symbol, “( g )” written next to it. A right-facing arrow points to the letter “C” and the symbol “( g ),” which is followed by a plus sign. Next is the number 4, the letter “H” and the symbol, “( g ).” To the right of this equation is another equation: capital delta H superscript degree symbol equals 1660 k J.",
+          "alt": {
+            "segmentId": "m68741:alt:fs-idp286503296-alt",
+            "text": "A reaction is shown with Lewis structures. The first structure shows a carbon atom single bonded to four hydrogen atoms with the symbol, “( g )” written next to it. A right-facing arrow points to the letter “C” and the symbol “( g ),” which is followed by a plus sign. Next is the number 4, the letter “H” and the symbol, “( g ).” To the right of this equation is another equation: capital delta H superscript degree symbol equals 1660 k J."
+          },
           "src": "../../media/CNX_Chem_07_05_CH4bond_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -85,11 +88,12 @@
           "type": "table",
           "id": "fs-idp13638832",
           "summary": "This table has six columns and twenty-four rows. The first row is a header row that labels the columns: “Bond,” “Bond Energy,” “Bond,” “Bond Energy,” “Bond,” and, “Bond Energy.” Under the first “Bond” column are the values: H bond to H with a single bond; H bonds to C with a single bond; H bonds to N with a single bond; H bonds to O with a single bond; H bonds to F with a single bond; H bonds to S i with a single bond; H bonds to P with a single bond; H bonds to S with a single bond; H bonds to C l with a single bond; H bonds to B r with a single bond; H bonds to I with a single bond; C bonds to C with a single bond; C bonds to C with a double bond; C bonds to C with a triple bond; C bonds to N with a single bond; C bonds to N with a double bond; C bonds to N with a triple bond; C bonds to O with a single bond; C bonds to O with a double bond; C bonds to O with a triple bond; C bonds to F with a single bond; C bonds to S i with a single bond; and C bonds to P with a single bond. Under the first “Bond Energy” column are the values: 436; 415; 390; 464; 569; 395; 320; 340; 432; 370; 295; 345; 611; 837; 290; 615; 891; 350; 741; 1080; 439; 360; and 265. Under the second “Bond” column are the values: C bonds to S with a single bond; C bonds to C l with a single bond; C bonds to B r with a single bond; C bonds to I with a single bond; N bonds to N with a single bond; N bonds to N with a double bond; N bonds to N with a triple bond; N bonds to O with a single bond; N bonds to F with a single bond; N bonds to P with a single bond; N bonds to C l with a single bond; N bonds to B r with a single bond; O bonds to O with a single bond; O bonds to O with a double bond; O bonds to F with a single bond; O bonds to S i with a single bond; O bonds to P with a single bond; O bonds to C l with a single bond; O bonds to I with a single bond; F bonds to F with a single bond; F bonds to S i with a single bond; F bonds to P with a single bond; and F bonds to S with a single bond. Under the second “Bond Energy” column are the values: 260; 330; 275; 240; 160; 418; 946; 200; 270; 210; 200; 245; 140; 498; 160; 370; 350; 205; 200; 160; 540; 489; and 285. Under the third “Bond” column are the values: F bonds to C l with a single bond; F bonds to B r with a single bond; S i bonds to S i with a single bond; S i bonds to P with a single bond; S i bonds to S with a single bond; S i bonds to C l with a single bond; S i bonds to B r with a single bond; S i bonds to I with a single bond; P bonds to P with a single bond; P bonds to S with a single bond; P bonds to C l with a single bond; P bonds to B r with a single bond; P bonds to I with a single bond; S bonds to S with a single bond; S bonds to C l with a single bond; S bonds to B r with a single bond; C l bonds to C l with a single bond; C l bonds to B r with a single bond; C l bonds to I with a single bond; B r bonds to B r with a single bond; B r bonds to I with a single bond; I bonds to I with a single bond; and the last cell in the column is empty. Under the third “Bond Energy” column are the values: 255; 235; 230; 215; 225; 359; 290; 215; 215; 230; 330; 270; 215; 215; 250; 215; 243; 220; 210; 190; 180; 150; and the last cell in the column is empty.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68741:entry:auto-14",
+                  "segmentId": "m68741:entry:auto-15",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c6",
@@ -100,12 +104,6 @@
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68741:entry:auto-15",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68741:entry:auto-16",
                   "attributes": {
@@ -135,17 +133,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-21",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-22",
                   "attributes": {
@@ -175,17 +173,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-27",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-28",
                   "attributes": {
@@ -215,17 +213,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-33",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-34",
                   "attributes": {
@@ -255,17 +253,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-39",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-40",
                   "attributes": {
@@ -295,17 +293,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-45",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-46",
                   "attributes": {
@@ -335,17 +333,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-51",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-52",
                   "attributes": {
@@ -375,17 +373,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-57",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-58",
                   "attributes": {
@@ -415,17 +413,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-63",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-64",
                   "attributes": {
@@ -455,17 +453,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-69",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-70",
                   "attributes": {
@@ -495,17 +493,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-75",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-76",
                   "attributes": {
@@ -535,17 +533,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-81",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-82",
                   "attributes": {
@@ -575,17 +573,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-87",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-88",
                   "attributes": {
@@ -615,17 +613,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-93",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-94",
                   "attributes": {
@@ -655,20 +653,20 @@
                   "attributes": {
                     "align": "left"
                   }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-99",
+                  "attributes": {
+                    "align": "left"
+                  }
                 }
               ]
             },
             {
               "cells": [
                 {
-                  "segmentId": "m68741:entry:auto-99",
-                  "attributes": {}
-                },
-                {
                   "segmentId": "m68741:entry:auto-100",
-                  "attributes": {
-                    "align": "left"
-                  }
+                  "attributes": {}
                 },
                 {
                   "segmentId": "m68741:entry:auto-101",
@@ -693,17 +691,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-105",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-106",
                   "attributes": {
@@ -733,17 +731,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-111",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-112",
                   "attributes": {
@@ -773,17 +771,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-117",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-118",
                   "attributes": {
@@ -813,17 +811,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-123",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-124",
                   "attributes": {
@@ -853,17 +851,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-129",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-130",
                   "attributes": {
@@ -893,17 +891,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-135",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-136",
                   "attributes": {
@@ -933,17 +931,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-141",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-142",
                   "attributes": {
@@ -973,17 +971,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-147",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-148",
                   "attributes": {
@@ -1013,17 +1011,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-153",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-154",
                   "attributes": {
@@ -1038,6 +1036,12 @@
                 },
                 {
                   "segmentId": "m68741:entry:auto-156",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-157",
                   "attributes": {
                     "align": "left"
                   }
@@ -1059,11 +1063,12 @@
           "id": "fs-idm44464336",
           "class": "top-titled",
           "summary": "This table has three columns and ten rows. The first row is a header row that labels the columns: “Bond,” “Bond Length in angstroms,” and, “Bond Energy in k J / mol.” Under the column “Bond” are the values: C bonds to C with a single bond; C bonds to C with a double bond; C bonds to C with a triple bond; C bonds to N with a single bond; C bonds to N with a double bond; C bonds to N with a triple bond; C bonds to O with a single bond; C bonds to O with a double bond; and C bonds to O with a triple bond. Under the column “Bond Length in angstroms” are the values: 1.54; 1.34; 1.20; 1.43; 1.38; 1.16; 1.43; 1.23; and 1.13. Under the column “Bond Energy in k J / mol” are the values: 345; 611; 837; 290; 615; 891; 350; 741; and 1080.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68741:entry:auto-157",
+                  "segmentId": "m68741:entry:auto-158",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c3",
@@ -1075,12 +1080,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68741:entry:auto-158",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68741:entry:auto-159",
                   "attributes": {
                     "align": "left"
@@ -1091,17 +1090,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-161",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-162",
                   "attributes": {
@@ -1113,17 +1112,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-164",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-165",
                   "attributes": {
@@ -1135,17 +1134,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-167",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-168",
                   "attributes": {
@@ -1157,17 +1156,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-170",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-171",
                   "attributes": {
@@ -1179,17 +1178,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-173",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-174",
                   "attributes": {
@@ -1201,17 +1200,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-176",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-177",
                   "attributes": {
@@ -1223,17 +1222,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-179",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-180",
                   "attributes": {
@@ -1245,17 +1244,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-182",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-183",
                   "attributes": {
@@ -1267,17 +1266,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-185",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-186",
                   "attributes": {
@@ -1286,6 +1285,12 @@
                 },
                 {
                   "segmentId": "m68741:entry:auto-187",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-188",
                   "attributes": {
                     "align": "left"
                   }
@@ -1409,6 +1414,22 @@
               "type": "para",
               "id": "fs-idp24314032",
               "segmentId": "m68741:para:fs-idp24314032"
+            },
+            {
+              "type": "media",
+              "id": "fs-idp525280",
+              "alt": {
+                "segmentId": "m68741:alt:fs-idp525280-alt",
+                "text": "A set of Lewis diagrams show a chemical reaction. The first structure shows a carbon atom with a lone pair of electrons triple bonded to an oxygen with a lone pair of electrons. To the right of this structure is a plus sign, then the number 2 followed by a hydrogen atom single bonded to a hydrogen atom. To the right of this structure is a right-facing arrow followed by a hydrogen atom single bonded to a carbon atom that is single bonded to two hydrogen atoms and an oxygen atom with two lone pairs of electrons. The oxygen atom is also single bonded to a hydrogen atom."
+              }
+            },
+            {
+              "type": "media",
+              "id": "fs-idp144672",
+              "alt": {
+                "segmentId": "m68741:alt:fs-idp144672-alt",
+                "text": "A set of Lewis structures show a chemical reaction. The first structure shows two carbon atoms that are double bonded together and are each single bonded to two hydrogen atoms. This structure is followed by a plus sign, then an oxygen atom with two lone pairs of electrons single bonded to two hydrogen atoms. A right-facing arrow leads to a carbon atom single bonded to three hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to two hydrogen atoms and an oxygen atom with two lone pairs of electrons. The oxygen atom is single bonded to a hydrogen atom as well."
+              }
             },
             {
               "type": "equation",
@@ -1604,7 +1625,10 @@
           },
           "media": {
             "id": "fs-idp9559440",
-            "alt": "A diagram is shown. An upward facing arrow is drawn to the far left of the chart and is labeled “H increasing.” A horizontal line is drawn at the bottom of the chart. A downward-facing, vertical arrow to the left side of this line is labeled, “Overall change.” Beside this arrow is another label, “capital delta H subscript f, equals negative 553.5 k J per mol, ( Enthalpy of formation ).” Three horizontal lines, one above the other, and all above the bottom line, are labeled, from bottom to top, as: “C s ( s ), plus sign, one half F subscript 2, ( g ),” “C s ( g ), plus sign, one half F subscript 2, ( g ),” and “C s, superscript positive sign, ( g ), plus sign, one half F subscript 2, ( g ).” Each of these lines is connected by an upward-facing vertical arrow. Each arrow is labeled, “capital delta H subscript 1, equals 76.5 k J per mol, ( Enthalpy of sublimation ),” “capital delta H subscript 2, equals 375.7 k J per mol, ( ionization energy ),” and “capital delta H subscript 3 equals 79.4 k J / mol ( one half dissociation energy ).” Another horizontal line is drawn in the center top portion of the diagram and is labeled “C s, superscript positive sign, ( g ), plus sign, F, ( g ).” There is one more horizontal line drawn to the right of the overall diagram and located halfway down the image. An arrow connects the top line to this line and is labeled, “capital delta H equals negative 328.2 k J / mol ( electron affinity ).” The line is labeled, “C s superscript positive sign ( g ) plus F superscript negative sign ( g ).” The arrow connecting this line to the bottom line is labeled, “negative capital delta H subscript lattice equals negative 756.9 k J / mol.” The arrow points to a label on the bottom line which reads, “C s F ( s ).”",
+            "alt": {
+              "segmentId": "m68741:alt:fs-idp9559440-alt",
+              "text": "A diagram is shown. An upward facing arrow is drawn to the far left of the chart and is labeled “H increasing.” A horizontal line is drawn at the bottom of the chart. A downward-facing, vertical arrow to the left side of this line is labeled, “Overall change.” Beside this arrow is another label, “capital delta H subscript f, equals negative 553.5 k J per mol, ( Enthalpy of formation ).” Three horizontal lines, one above the other, and all above the bottom line, are labeled, from bottom to top, as: “C s ( s ), plus sign, one half F subscript 2, ( g ),” “C s ( g ), plus sign, one half F subscript 2, ( g ),” and “C s, superscript positive sign, ( g ), plus sign, one half F subscript 2, ( g ).” Each of these lines is connected by an upward-facing vertical arrow. Each arrow is labeled, “capital delta H subscript 1, equals 76.5 k J per mol, ( Enthalpy of sublimation ),” “capital delta H subscript 2, equals 375.7 k J per mol, ( ionization energy ),” and “capital delta H subscript 3 equals 79.4 k J / mol ( one half dissociation energy ).” Another horizontal line is drawn in the center top portion of the diagram and is labeled “C s, superscript positive sign, ( g ), plus sign, F, ( g ).” There is one more horizontal line drawn to the right of the overall diagram and located halfway down the image. An arrow connects the top line to this line and is labeled, “capital delta H equals negative 328.2 k J / mol ( electron affinity ).” The line is labeled, “C s superscript positive sign ( g ) plus F superscript negative sign ( g ).” The arrow connecting this line to the bottom line is labeled, “negative capital delta H subscript lattice equals negative 756.9 k J / mol.” The arrow points to a label on the bottom line which reads, “C s F ( s ).”"
+            },
             "src": "../../media/CNX_Chem_07_05_BornHaber.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1624,37 +1648,10 @@
           "id": "fs-idm33829552",
           "class": "column-header",
           "summary": "This table has two columns and six rows. The first row is labeled, “Enthalpy of sublimation of C s ( s )” and the enthalpy reaction is C s ( s ) yields C s ( g ). Beside this equation is capital delta H which equals capital delta H subscript s superscript degree symbol which also equals 76.5 k J. The second row is labeled, “One-half of the bond energy of C l subscript 2.” The equation for this is one half C l subscript 2 ( g ) yields C l ( g ). Beside this equation is capital delta H equals one half D which also equals 122 k J. The third row is labeled, “Ionization Energy of N a ( g ).” The equation for the ionization energy of N a ( g ) is N a ( g ) yields N a superscript positive sign ( g ) plus lower case e superscript negative sign. Beside this equation is capital delta H equals I E which also equals 496 k J. The fourth row is labeled, “Negative of the electron affinity of C l.” The equation for this is C l ( g ) plus lowercase e superscript negative sign yields C l superscript negative sign ( g ). Beside this equation is capital delta H equals negative E A which also equals negative 368 k J. The fifth row is labeled “Negative of the lattice energy of N a C l ( s ).” The equation for this is N a superscript positive sign ( g ) plus C l superscript negative sign ( g ) yields N a C l ( s ). Beside this equation is capital delta H equals negative capital delta H subscript lattice which also equals unknown. The sixth and final row is labeled, “Enthalpy of formation of N a C l ( s ), add steps 1 - 5.” The equation for this is capital delta H equals capital delta H subscript f superscript degree symbol which also equals capital delta H subscript s superscript degree symbol plus one-half D plus I E plus negative E A plus negative capital delta H subscript lattice. Underneath that equation, is another which is N a ( s ) plus one-half C l subscript 2 ( g ) yields N a C l ( s ) which equals negative 411 k J.",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68741:entry:auto-236",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68741:entry:auto-237",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68741:entry:auto-238",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68741:entry:auto-239",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68741:entry:auto-240",
                   "attributes": {
@@ -1666,17 +1663,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-242",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-243",
                   "attributes": {
@@ -1688,17 +1685,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-245",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-246",
                   "attributes": {
@@ -1710,17 +1707,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-248",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-249",
                   "attributes": {
@@ -1732,17 +1729,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68741:entry:auto-251",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68741:entry:auto-252",
                   "attributes": {
@@ -1751,6 +1748,34 @@
                 },
                 {
                   "segmentId": "m68741:entry:auto-253",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-254",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-255",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-256",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-257",
                   "attributes": {
                     "align": "left"
                   }
@@ -1811,11 +1836,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68741:entry:auto-260",
+                  "segmentId": "m68741:entry:auto-264",
                   "attributes": {}
                 }
               ]
@@ -1823,7 +1849,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68741:entry:auto-261",
+                  "segmentId": "m68741:entry:auto-265",
                   "attributes": {}
                 }
               ]
@@ -1831,7 +1857,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68741:entry:auto-262",
+                  "segmentId": "m68741:entry:auto-266",
                   "attributes": {}
                 }
               ]
@@ -1839,7 +1865,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68741:entry:auto-263",
+                  "segmentId": "m68741:entry:auto-267",
                   "attributes": {}
                 }
               ]
@@ -1976,6 +2002,14 @@
                 "type": "para",
                 "id": "fs-idp220216256",
                 "segmentId": "m68741:problem:fs-idp220216256"
+              },
+              {
+                "type": "media",
+                "id": "fs-idm6604832",
+                "alt": {
+                  "segmentId": "m68741:alt:fs-idm6604832-alt",
+                  "text": "Two Lewis structures are shows with the word “or” written in between them. The left structure shows a nitrogen atom with one lone pair of electrons single bonded to two hydrogen atoms. It is also bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is bonded to a hydrogen atom. The right structure shows a nitrogen atom single bonded to three hydrogen atoms and an oxygen atom with three lone pairs of electrons."
+                }
               }
             ]
           },
@@ -2084,6 +2118,14 @@
                 "type": "para",
                 "id": "fs-idp16666592",
                 "segmentId": "m68741:problem:fs-idp16666592"
+              },
+              {
+                "type": "media",
+                "id": "fs-idp123644096",
+                "alt": {
+                  "segmentId": "m68741:alt:fs-idp123644096-alt",
+                  "text": "A Lewis structure is shown that is missing its bonds. It shows a horizontal row of six carbon atoms, equally spaced. Three hydrogen atoms are drawn around the first carbon, two around the second, one above the fifth, and two by the sixth."
+                }
               }
             ]
           },
@@ -2106,6 +2148,14 @@
                 "type": "para",
                 "id": "fs-idp78457664",
                 "segmentId": "m68741:problem:fs-idp78457664"
+              },
+              {
+                "type": "media",
+                "id": "fs-idp40889632",
+                "alt": {
+                  "segmentId": "m68741:alt:fs-idp40889632-alt",
+                  "text": "Two Lewis structures are shown with a right-facing arrow in between. The left structure shows a nitrogen atom double bonded to an oxygen atom with two lone pairs of electrons. It is also bonded to a fluorine atom and another oxygen atom, each with three lone pairs of electrons. The right structure shows an oxygen atom with two lone pairs of electrons double bonded to a nitrogen atom with one lone pair of electrons. This nitrogen atom is single bonded to an oxygen with two lone pairs of electrons. The oxygen atom is single bonded to a fluorine atom with three lone pairs of electrons."
+                }
               }
             ]
           },
@@ -2158,67 +2208,68 @@
           "id": "fs-idm30060832",
           "class": "unnumbered",
           "summary": "This table has three columns and three rows. The first row is a header row that labels the columns: “Element,” “First Ionization Energy in k J / mol,” and “Second Ionization Energy in k J / mol.” Under the column “Element” are the letters: K and C a. Under the column “First Ionization Energy in k J / mol” are the values: 419 and 590. Under the column “Second Ionization Energy in k J / mol” are the values: 3050 and 1140.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68741:entry:auto-299",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68741:entry:auto-300",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68741:entry:auto-301",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68741:entry:auto-302",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68741:entry:auto-303",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68741:entry:auto-304",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68741:entry:auto-305",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68741:entry:auto-306",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68741:entry:auto-307",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-308",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-309",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-310",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-311",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-312",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68741:entry:auto-313",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-314",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68741:entry:auto-315",
                   "attributes": {
                     "align": "left"
                   }
@@ -2579,12 +2630,15 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idp57448112",
       "class": null,
-      "alt": "A Lewis structure is shown. A carbon atom that is single bonded to three hydrogen atoms is bonded to a second carbon atom. The second carbon atom is single bonded to two hydrogen atoms. The second carbon atom is single bonded to a third carbon atom that is triple bonded to a fourth carbon atom and single bonded to a fifth carbon atom. The fifth carbon atom is single bonded to a hydrogen atom and double bonded to a sixth carbon atom that is single bonded to two hydrogen atoms.",
       "src": "../../media/CNX_Chem_07_05_C6H8ans_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68741:alt:fs-idp57448112-alt",
+        "text": "A Lewis structure is shown. A carbon atom that is single bonded to three hydrogen atoms is bonded to a second carbon atom. The second carbon atom is single bonded to two hydrogen atoms. The second carbon atom is single bonded to a third carbon atom that is triple bonded to a fourth carbon atom and single bonded to a fifth carbon atom. The fifth carbon atom is single bonded to a hydrogen atom and double bonded to a sixth carbon atom that is single bonded to two hydrogen atoms."
+      }
     }
   ],
   "sectionOrder": 5

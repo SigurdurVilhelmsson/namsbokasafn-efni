@@ -1,0 +1,258 @@
+{
+  "moduleId": "m00249",
+  "title": {
+    "segmentId": "m00249:title:auto-1",
+    "text": "Preparing Ethers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "99f1de15-b612-4c57-9e34-bba3194c7207"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00249:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00249:alt:fig-00001-alt",
+          "text": "Reaction mechanism for ethanol to diethyl ether in hydronium involving: protonation of oxygen; ethanol attack, loss of water via S N 2; deprotonation of oxygen to produce neutral product."
+        },
+        "src": "../../media/OChem_18_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00249:title:sect-00001-title",
+        "text": "The Williamson Ether Synthesis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00249:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00249:alt:fig-00002-alt",
+              "text": "Cyclopentanol reacts with sodium hydride in T H F to form cyclopentanoxide. This attacks methyl iodide to form cyclopentyl methyl ether product (74%)."
+            },
+            "src": "../../media/OChem_18_02_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00249:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00249:alt:fig-00003-alt",
+              "text": "Alpha-D-glucose reacts with methyl iodide in presence of silver oxide to form alpha-D-glucose pentamethyl ether (85%) and silver iodide. In product, all hydroxyl hydrogens replace by methyl groups."
+            },
+            "src": "../../media/OChem_18_02_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00249:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00249:alt:fig-00004-alt",
+              "text": "The first reaction generates tert-butyl methyl ether from tert-butoxide and iodomethane. The second reaction shows 2-chloro-2-methylpropane reacts with methoxy ion to form 2-methylpropene, methanol, and chloride ion."
+            },
+            "src": "../../media/OChem_18_02_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00249:title:sect-00002-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00249:title:sect-00003-title",
+        "text": "Alkoxymercuration of Alkenes"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00249:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00249:alt:fig-00005-alt",
+              "text": "Styrene reacts with mercuric trifluoroacetate and methanol, then sodium borohydride forming 1-methoxy-1-phenylethane (97 percent). Cyclohexene reacts with mercuric trifluoroacetate and ethanol, then sodium borohydride forming cyclohexyl ethyl ether (100 percent)."
+            },
+            "src": "../../media/OChem_18_02_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00249:para:para-00008"
+        },
+        {
+          "type": "example",
+          "id": "exam-00001",
+          "title": {
+            "segmentId": "m00249:example-title:exam-00001-title",
+            "text": "Synthesizing an Ether"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00009",
+              "segmentId": "m00249:para:para-00009"
+            },
+            {
+              "type": "para",
+              "id": "para-00010",
+              "segmentId": "m00249:para:para-00010",
+              "title": {
+                "segmentId": "m00249:para-title:para-00010-title",
+                "text": "Strategy"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00011",
+              "title": {
+                "segmentId": "m00249:para-title:para-00011-title",
+                "text": "Solution"
+              }
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00249:alt:fig-00006-alt",
+              "text": "The structure of ethyl phenyl ether where C H 2 is labeled primary carbon, compatible with Williamson method, and ethyl group is labeled alkene-derived, compatible with alkoxymercuration method."
+            },
+            "src": "../../media/OChem_18_02_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00249:alt:fig-00007-alt",
+              "text": "Phenol undergoes two reactions with different reagents. First with sodium hydroxide, then ethyl bromide; second with mercuric trifluoroacetate, then sodium borohydride. Both pathways form the same product ethyl phenyl ether."
+            },
+            "src": "../../media/OChem_18_02_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00249:title:sect-00004-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

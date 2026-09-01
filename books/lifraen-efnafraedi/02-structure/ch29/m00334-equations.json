@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>HO</m:mtext><m:mtext>─</m:mtext><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:mtext>C</m:mtext><m:mtext>─</m:mtext><m:mtext>OH</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{HO}\\text{─}\\text{C}\\text{═}\\text{C}\\text{─}\\text{OH}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}\\text{═}\\text{O}}"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mi>n</m:mi></m:msub><m:mo>+</m:mo><m:mn>3</m:mn><m:mi>n</m:mi><m:mtext>/</m:mtext><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">⟶</m:mo><m:mi>n</m:mi><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mi>n</m:mi><m:mspace width=\"0.2em\"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:mtext style=\"color: #E00087\">Heat (add)</m:mtext></m:mrow></m:math>",
+    "latex": "{{({\\text{CH}}2)}n+3n\\text{/}2\\, {{\\text{O}}}_{2}\\longrightarrow n\\, {{\\text{CO}}}_{2}+n\\, {\\text{H}}_{2}\\text{O}+\\text{Heat (add)}}",
+    "isBlock": true
+  }
+}

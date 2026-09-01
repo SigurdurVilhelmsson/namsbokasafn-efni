@@ -1,0 +1,1745 @@
+{
+  "moduleId": "m00318",
+  "title": {
+    "segmentId": "m00318:title:auto-1",
+    "text": "Structures of Amino Acids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "cc50acad-1df8-4380-8fed-dfa7130b3176"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00318:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00318:alt:fig-00001-alt",
+          "text": "A protonated alanine reacts with water reversibly to form a zwitterion and hydronium ion. The zwitterion further reacts with water reversibly to form an anion and hydronium ion."
+        },
+        "src": "../../media/OChem_26_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00318:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00318:alt:fig-00002-alt",
+          "text": "In acid solution, zwitter ions react with hydronium ion to form cation. In basic solution, zwitter ion reacts with a hydroxide ion to form an anion."
+        },
+        "src": "../../media/OChem_26_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00318:para:para-00003"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "An illustration shows a table containing 20 amino acids. The amino acids are classified into three types. The first type is “neutral amino acids” having 15 amino acids followed by acidic amino acids having two amino acids and third type is the basic amino acids having three types of acids. The details of amino acids are shown as follows: name abbreviations molecular weight structure pKa alpha-CO2H pKa alpha-NH3 cation pKa side chain and pI. Neutral amino acids: the first amino acid is Alanine; Ala A; 89; the structure shows a methyl group bonded to a carbon wedge bonded to a blue ammonium ion and dash bonded to a hydrogen; the carbon is bonded to a pink carbonyl group whose carbon is bonded to a pink oxygen anion; 2.34; 9.69; pKa side chain value is not shown; pI is 6.01. Second neutral amino acid is asparagine; Asn N; 132; the structure shows an amino group bonded to a carbonyl group whose carbon is bonded to a 3-carbon chain; C1 is bonded to a carbonyl group with oxygen at the bottom; C3 is wedge bonded to a blue ammonium ion and dash bonded to a hydrogen; C4 shows a pink hydroxyl group (pink oxygen) bonded to a pink oxygen anion; 2.02; 8.80; pKa side chain value is not shown; pI is 5.41. Third neutral amino acid is cysteine; Cys C; 121; the structure shows a pink SH group bonded to a 3-carbon chain; C2 is wedge bonded to a blue ammonium ion and dash bonded to hydrogen at the bottom; C3 shows a pink carbonyl group whose carbon is bonded to a pink oxygen anion; 1.96; 10.28; 8.18; 5.07. Fourth neutral amino acid is glutamine; Gln Q; 146; the structure shows an amino group bonded to a carbonyl group whose carbon is bonded to a 4-carbon chain having C3 wedge bonded to a blue ammonium ion and dash bonded to a hydrogen; C4 shows a pink carbonyl group whose carbon is bonded to a pink oxygen anion; 2.17; 9.13; pKa side chain value is not shown; pI is 5.65. Fifth neutral amino acid is Glycine; Gly G; 75; the structure shows a hydrogen bonded to a carbon wedge bonded to a blue ammonium ion and dash bonded to hydrogen at the bottom; the carbon is bonded to a pink carbonyl group whose carbon is bonded to a pink oxygen anion; 2.34; 9.60; pKa side chain value is not shown; pI is 5.97. Sixth neutral amino acid is isoleucine; Ile I; 131; the structure shows a methyl group bonded to a 4-carbon chain wherein C2 is wedge bonded to hydrogen and dash bonded to a methyl group; C3 is wedge bonded to a blue ammonium ion and dash bonded to hydrogen; C4 shows a pink carbonyl group bonded to a pink oxygen anion; 2.36; 9.60; pKa side chain value is not shown; pI is 6.02. Seventh neutral amino acid is Leucine; Leu L; 131; the structure shows a methyl group bonded to a 4-carbon chain wherein C1 is bonded to a methyl group at the bottom; C3 is wedge bonded to a blue ammonium ion and dash bonded to hydrogen; C4 shows a pink carbonyl group bonded to a pink oxygen anion; 2.36; 9.60; pKa side chain value is not shown; pI is 5.98. Eighth neutral amino acid is Methionine; Met M; 149; the structure shows a methyl group bonded to sulfur bonded to a 4-carbon chain having C3 wedge bonded to blue ammonium ion and dash bonded to hydrogen; C4 shows a pink carbonyl group bonded to a pink oxygen anion; 2.28; 9.21; pKa side chain value is not shown; pI is 5.74. Ninth neutral amino acid is phenylalanine; Phe F; 165; the structure shows a benzene bonded to a 3-carbon chain having C2 wedge bonded to a blue ammonium ion and dash bonded to hydrogen; C3 shows a pink carbonyl group whose carbon is bonded to a pink oxygen anion; 1.83; 9.13; pKa side chain value is not shown; pI is 5.48. Tenth neutral amino acid is proline; Pro P; 115; the structure shows a cyclopentane having a blue nitrogen cation embedded on the right which is bonded to two blue hydrogens; the tip of the ring is dash bonded to a hydrogen and bonded to a carbonyl group (pink oxygen) whose carbon is bonded to an oxygen anion; 1.99; 10.60; pKa side chain value is not shown; pI is 6.30. Eleventh neutral amino acid is serine; Ser S; 105; the structure shows a hydroxyl group bonded to a 3-carbon chain having C2 wedge bonded to a blue ammonium ion and dash bonded to hydrogen; C3 shows a pink carbonyl group whose carbon is bonded to an oxygen anion; 2.21; 9.15; pKa side chain value is not shown; pI is 5.68. Twelfth neutral amino acid is Threonine; Thr T; 119; the structure shows a methyl group bonded to a 3-carbon chain having C1 wedge bonded to a hydroxyl group and dash bonded to hydrogen at the top; C2 wedge bonded to a blue ammonium ion and dash bonded to hydrogen at the bottom; C3 shows a pink carbonyl group whose carbon is bonded to an oxygen anion; 2.09; 9.10; pKa side chain value is not shown; pI is 5.60. Thirteenth neutral amino acid is Tryptophan; Trp W; 204; the structure shows a benzene fused to a cyclopentene having a nitrogen embedded in it which is bonded to a hydrogen; the cyclopentene is bonded to a 3-carbon chain having C2 wedge bonded to a blue ammonium ion and dash bonded to hydrogen at the bottom; C3 shows a pink carbonyl group whose carbon is bonded to an oxygen anion; 2.83; 9.39; pKa side chain value is not shown; pI is 5.89. Fourteenth neutral amino acid is tyrosine; Tyr Y; 181; the structure shows benzene fused to a pink hydroxyl group on the left; the benzene is bonded to a 3-carbon chain having C2 wedge bonded to a blue ammonium ion and dash bonded to hydrogen at the bottom; C3 shows a pink carbonyl group whose carbon is bonded to an oxygen anion; 2.20; 9.11; pKa side chain value is 10.07; pI is 5.66. Fifteenth neutral amino acid is Valine; Val V; 117; the structure shows a methyl group bonded to a 3-carbon chain having C1 bonded to a methyl group at the top; C2 wedge bonded to a blue ammonium ion and dash bonded to hydrogen at the bottom; C3 shows a pink carbonyl group whose carbon is bonded to an oxygen anion; 2.32; 9.62; pKa side chain value is not shown; pI is 5.96. The first acidic amino acid is Aspartic acid; Asp D; 133; the structure shows a pink oxygen anion bonded to a pink carbonyl group bonded to a 3-carbon chain; C2 is wedge bonded to a blue ammonium ion and dash bonded to hydrogen at the bottom; C3 shows a pink carbonyl group whose carbon is bonded to an oxygen anion; 1.88; 9.60; 3.65; 2.77. Second acidic amino acid is Glutamic acid; Glu E; 147; the structure shows a pink oxygen anion bonded to a pink carbonyl group bonded to a 4-carbon chain; C3 is wedge bonded to a blue ammonium ion and dash bonded to hydrogen at the bottom; C4 shows a pink carbonyl group whose carbon is bonded to an oxygen anion; 2.19; 9.67; 4.25; 3.22. The first basic amino acid is Arginine; Arg R; 174; the structure shows an amino group bonded to a carbon double bonded to a blue amine cation; the carbon is bonded to a nitrogen attached to hydrogen at the bottom; the nitrogen is bonded to a 5-carbon chain having C4 wedge bonded to a blue ammonium cation and dash bonded to hydrogen; C5 shows a pink carbonyl group bonded to a pink oxygen anion; 2.17; 9.04; 12.48; 10.76. The second basic amino acid is Histidine; His H; 155; the structure shows cyclopentadiene having blue nitrogen embedded at top left and another nitrogen embedded at the bottom right which is bonded to a hydrogen; the upper right position of ring is bonded to a 3-carbon chain having C2 wedge bonded to a blue ammonium cation and dash bonded to hydrogen; C3 shows a pink carbonyl group bonded to a pink oxygen anion; 1.82; 9.17; 6.00; 7.59. Third basic amino acid is Lysine; Lys K; 146; the structure shows a blue ammonium ion bonded to a 6-carbon chain having C5 wedge bonded to a blue ammonium cation and dash bonded to hydrogen; C6 shows a pink carbonyl group bonded to a pink oxygen anion; 2.18; 8.95; 10.53; 9.74.",
+      "title": {
+        "segmentId": "m00318:table-title:table-00001-title",
+        "text": "The 20 Common Amino Acids in Proteins"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-8",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-9",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left",
+                "namest": "c2",
+                "nameend": "c3"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-10",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-11",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-12",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-13",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-14",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-15",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c9"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003a_jpg-alt",
+                "text": "The ball-and-stick model in electrostatic potential map and structures of uncharged and zwitterionic forms of L-alanine. The uncharged form undergoes a reversible reaction to form a zwitterion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003a.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003b_jpg-alt",
+                "text": "The structure of L-asparagine. It has a carbon linked to methylene connected to amide, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003b.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-31",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-32",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-34",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-35",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-36",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-37",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-38",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003c_jpg-alt",
+                "text": "The structure of L-cysteine. It has a carbon linked to methylene connected to thiol, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003c.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-40",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-41",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-42",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-43",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-44",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-45",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-46",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-47",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003d_jpg-alt",
+                "text": "The structure of L-glutamine. It has a carbon linked to two methylene connected to amide, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003d.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-49",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-50",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-51",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-52",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-53",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-54",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-55",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-56",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003e_jpg-alt",
+                "text": "The structure of glycine. It has a carbon linked to hydrogen, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003e.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-58",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-59",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-60",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-61",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-62",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-63",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-64",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-65",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003f_jpg-alt",
+                "text": "The structure of L-isoleucine. Carbon is linked to C-H bonded to dashed methyl, wedged hydrogen and methylene is linked to methyl group, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003f.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-67",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-68",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-69",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-70",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-71",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-72",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-73",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-74",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003g_jpg-alt",
+                "text": "The structure of L-leucine. It has a carbon linked to methylene linked to C-H bonded to two methyl groups, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003g.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-76",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-77",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-78",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-79",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-80",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-81",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-82",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-83",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003h_jpg-alt",
+                "text": "The structure of L-methionine. It has a carbon linked to two methylene groups linked to sulfur and methyl group, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003h.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-85",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-86",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-87",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-88",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-89",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-90",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-91",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-92",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003i_jpg-alt",
+                "text": "The structure of L-phenylalanine. It has a carbon linked to methylene linked to a benzene ring, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003i.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-94",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-95",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-96",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-97",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-98",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-99",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-100",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-101",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003j_jpg-alt",
+                "text": "The structure of L-proline. It has a carbon linked to cyclopentane with wedged bond linked to N H 2 positive, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003j.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-103",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-104",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-105",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-106",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-107",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-108",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-109",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-110",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003k_jpg-alt",
+                "text": "The structure of L-serine. It has a carbon linked to methylene connected to an alcohol, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003k.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-112",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-113",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-114",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-115",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-116",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-117",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-118",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-119",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003l_jpg-alt",
+                "text": "The structure of L-threonine. It has a carbon linked to C-H bonded to dashed hydrogen, wedged alcohol and methyl group, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003l.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-121",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-122",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-123",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-124",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-125",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-126",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-127",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-128",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003m_jpg-alt",
+                "text": "The structure of L-tryptophan. It has a carbon linked to methylene linked to cyclopentene with N-H fused to a benzene ring, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003m.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-130",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-131",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-132",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-133",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-134",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-135",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-136",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-137",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003n_jpg-alt",
+                "text": "The structure of L-tyrosine. It has a carbon linked to methylene linked to phenol, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003n.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-139",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-140",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-141",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-142",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-143",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-144",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-145",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-146",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003o_jpg-alt",
+                "text": "The structure of L-valine. It has a carbon linked to C-H linked to two methyl groups, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003o.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-148",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-149",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-150",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-151",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-152",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c9"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-153",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-154",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-155",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-156",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003p_jpg-alt",
+                "text": "The structure of L-aspartic acid. It has a carbon linked to methylene linked to carboxylate ion, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003p.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-158",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-159",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-160",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-161",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-162",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-163",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-164",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-165",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003q_jpg-alt",
+                "text": "The structure of L-glutamic acid. It has a carbon linked to two methylene groups linked to carboxylate ion, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003q.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-167",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-168",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-169",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-170",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-171",
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c9"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-172",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-173",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-174",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-175",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003r_jpg-alt",
+                "text": "The structure of L-arginine comprises carbon linked to three methylene to N-H, carbon linked to an amine, and an alkene bonded to amine cation, carboxylate, dashed hydrogen, and wedged ammonia.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003r.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-177",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-178",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-179",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-180",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-181",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-182",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-183",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-184",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003s_jpg-alt",
+                "text": "The structure of L-histidine. It has a carbon linked to methylene group linked to cyclopentadiene with nitrogen and N-H, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003s.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-186",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-187",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-188",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-189",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00318:entry:auto-190",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-191",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-192",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-193",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00318:alt:OChem_26_01_003t_jpg-alt",
+                "text": "The structure of lysine. It has a carbon linked to four methylene groups linked to ammonia cation, carboxylate ion, dashed hydrogen, and wedged ammonia ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_26_01_003t.jpg"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-195",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-196",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-197",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00318:entry:auto-198",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00318:alt:fig-00003-alt",
+          "text": "The structure of a generic primary alpha-amino acid, with an arrow pointing towards R, denoting the side chain  and L-proline, a secondary alpha-amino acid."
+        },
+        "src": "../../media/OChem_26_01_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00318:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00318:alt:fig-00004-alt",
+          "text": "The structure of five amino acids. Selenocysteine and pyrrolysine are at the top whereas gamma-aminobutyric acid, homocysteine, and thyroxine are at the bottom."
+        },
+        "src": "../../media/OChem_26_01_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00318:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00318:alt:fig-00005-alt",
+          "text": "The structure of four amino acids from left to right, L-Serine or (S)-Serine, L-Cysteine or (R)-Cysteine, L-Alanine or (S)-Alanine, and D-Alanine or (R)-Alanine. The last structure is enclosed inside parentheses."
+        },
+        "src": "../../media/OChem_26_01_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00318:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00318:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00318:alt:fig-00006-alt",
+          "text": "Ball-and-stick model with the electrostatic potential map and structure of histidine. Basic pyridine-like nitrogen, basic pyrrole-like nitrogen, and imidazole ring are labeled. Basic and nonbasic nitrogen are labeled in model."
+        },
+        "src": "../../media/OChem_26_01_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00318:para:para-00008"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00318:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

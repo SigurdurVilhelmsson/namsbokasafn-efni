@@ -59,7 +59,7 @@ Answer:
 69.9% Fe
 
 <!-- SEG:m68702:para:fs-idm144417840 -->
-The elemental makeup of a compound defines its chemical identity, and chemical formulas are the most succinct way of representing this elemental makeup. When a compound’s formula is unknown, measuring the mass of each of its constituent elements is often the first step in the process of determining the formula experimentally. The results of these measurements permit the calculation of the compound’s {{term}}percent composition{{/term}}, defined as the percentage by mass of each element in the compound. For example, consider a gaseous compound composed solely of carbon and hydrogen. The percent composition of this compound could be represented as follows:
+The elemental makeup of a compound defines its chemical identity, and chemical formulas are the most succinct way of representing this elemental makeup. When a compound’s formula is unknown, measuring the mass of each of its constituent elements is often the first step in the process of determining the formula experimentally. The results of these measurements permit the calculation of the compound’s [[term:percent composition|term-00001]], defined as the percentage by mass of each element in the compound. For example, consider a gaseous compound composed solely of carbon and hydrogen. The percent composition of this compound could be represented as follows:
 
 <!-- SEG:m68702:para:fs-idm144352192 -->
 If analysis of a 10.0-g sample of this gas showed it to contain 2.5 g H and 7.5 g C, the percent composition would be calculated to be 25% H and 75% C:
@@ -142,6 +142,9 @@ CH[[sub:2]]O
 <!-- SEG:m68702:caption:CNX_Chem_03_03_BrewTank-caption -->
 An oxide of carbon is removed from these fermentation tanks through the large copper pipes at the top. (credit: “Dual Freq”/Wikimedia Commons)
 
+<!-- SEG:m68702:alt:fs-idm183208576-alt -->
+A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.
+
 <!-- SEG:m68702:para:fs-idm181573632 -->
 As previously mentioned, the most common approach to determining a compound’s chemical formula is to first measure the masses of its constituent elements. However, keep in mind that chemical formulas represent the relative [[i:numbers]], not masses, of atoms in the substance. Therefore, any experimentally derived data involving mass must be used to derive the corresponding numbers of atoms in the compound. This is accomplished using molar masses to convert the mass of each element to a number of moles. These molar amounts are used to compute whole-number ratios that can be used to derive the empirical formula of the substance. Consider a sample of compound determined to contain 1.71 g C and 0.287 g H. The corresponding numbers of atoms (in moles) are:
 
@@ -177,6 +180,9 @@ Multiplying all coefficients by an integer, if necessary, to ensure that the sma
 
 <!-- SEG:m68702:caption:CNX_Chem_03_03_empform-caption -->
 The empirical formula of a compound can be derived from the masses of all elements in the sample.
+
+<!-- SEG:m68702:alt:fs-idm114759824-alt -->
+A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, “Mass of A atoms” and “Moles of A atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass,” written below it. The second two bottom boxes have the phrases, “Mass of X atoms” and “Moles of X atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass” written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase “Divide by lowest number of moles” written below it. The last two boxes have the phrases, “A to X mole ratio” and “Empirical formula” respectively, while the arrow that connects them has the phrase, “Convert ratio to lowest whole numbers” written below it.
 
 <!-- SEG:m68702:example-title:fs-idp70151968-title -->
 Determining a Compound’s Empirical Formula from the Masses of Its Elements
@@ -217,6 +223,9 @@ N[[sub:2]]O[[sub:5]]
 <!-- SEG:m68702:caption:CNX_Chem_03_03_hematite-caption -->
 Hematite is an iron oxide that is used in jewelry. (credit: Mauro Cateb)
 
+<!-- SEG:m68702:alt:fs-idm156718064-alt -->
+Two rounded, smooth black stones are shown.
+
 <!-- SEG:m68702:para:fs-idp89502368 -->
 For additional worked examples illustrating the derivation of empirical formulas, watch the brief [[link:video|http://openstax.org/l/16empforms]] clip.
 
@@ -227,7 +236,7 @@ Derivation of Molecular Formulas
 Recall that empirical formulas are symbols representing the [[i:relative]] numbers of a compound’s elements. Determining the [[i:absolute]] numbers of atoms that compose a single molecule of a covalent compound requires knowledge of both its empirical formula and its molecular mass or molar mass. These quantities may be determined experimentally by various measurement techniques. Molecular mass, for example, is often derived from the mass spectrum of the compound (see discussion of this technique in the previous chapter on atoms and molecules). Molar mass can be measured by a number of experimental methods, many of which will be introduced in later chapters of this text.
 
 <!-- SEG:m68702:para:fs-idm152826480 -->
-Molecular formulas are derived by comparing the compound’s molecular or molar mass to its {{term}}empirical formula mass{{/term}}. As the name suggests, an empirical formula mass is the sum of the average atomic masses of all the atoms represented in an empirical formula. If the molecular (or molar) mass of the substance is known, it may be divided by the empirical formula mass to yield the number of empirical formula units per molecule ([[i:n]]):
+Molecular formulas are derived by comparing the compound’s molecular or molar mass to its [[term:empirical formula mass|term-00002]]. As the name suggests, an empirical formula mass is the sum of the average atomic masses of all the atoms represented in an empirical formula. If the molecular (or molar) mass of the substance is known, it may be divided by the empirical formula mass to yield the number of empirical formula units per molecule ([[i:n]]):
 
 <!-- SEG:m68702:para:fs-idp7653408 -->
 The molecular formula is then obtained by multiplying each subscript in the empirical formula by [[i:n]], as shown by the generic empirical formula A[[sub:x]]B[[sub:y]]:
@@ -391,13 +400,13 @@ C[[sub:15]]H[[sub:15]]N[[sub:3]]
 <!-- SEG:m68702:title:fs-idp39993248-title -->
 Key Equations
 
-<!-- SEG:m68702:entry:auto-132 -->
+<!-- SEG:m68702:entry:auto-135 -->
 [[MATH:2]]
 
-<!-- SEG:m68702:entry:auto-133 -->
+<!-- SEG:m68702:entry:auto-136 -->
 [[MATH:3]]
 
-<!-- SEG:m68702:entry:auto-134 -->
+<!-- SEG:m68702:entry:auto-137 -->
 (A[[sub:x]]B[[sub:y]])[[sub:n]] = A[[sub:nx]]B[[sub:ny]]
 
 <!-- SEG:m68702:glossary-term:fs-idp78258880-term -->

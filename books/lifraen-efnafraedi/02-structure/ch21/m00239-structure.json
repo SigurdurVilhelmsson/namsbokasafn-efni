@@ -1,0 +1,517 @@
+{
+  "moduleId": "m00239",
+  "title": {
+    "segmentId": "m00239:title:auto-1",
+    "text": "Naming Carboxylic Acid Derivatives"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "74a8c579-2644-4192-b24c-3d2e238db719"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00239:title:sect-00001-title",
+        "text": "Acid Halides, RCOX"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00239:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00239:alt:fig-00001-alt",
+              "text": "The structures of three acid halides. The first is acetyl chloride, the second is benzoyl bromide, and the third is cyclohexanecarbonyl chloride."
+            },
+            "src": "../../media/OChem_21_01_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00239:title:sect-00002-title",
+        "text": "Acid Anhydrides, RCO[[sub:2]]COR[[i:′]]"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00239:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00239:alt:fig-00002-alt",
+              "text": "The structures of three acid anhydrides. The first is acetic anhydride, the second is benzoic anhydride, and the third is succinic anhydride."
+            },
+            "src": "../../media/OChem_21_01_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00239:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00239:alt:fig-00003-alt",
+              "text": "The structure of acetic benzoic anhydride which comprises of two carbonyl groups linked by an oxygen atom. A methyl group is attached to one of the carbonyls and a benzene ring to the other."
+            },
+            "src": "../../media/OChem_21_01_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00239:title:sect-00003-title",
+        "text": "Esters, RCO[[sub:2]]R[[i:′]]"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00239:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00239:alt:fig-00004-alt",
+              "text": "The structures of three esters. The first is ethyl acetate, the second is dimethyl malonate, and the third is tert-butyl cyclohexane carboxylate."
+            },
+            "src": "../../media/OChem_21_01_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": null,
+      "title": {
+        "segmentId": "m00239:title:sect-00004-title",
+        "text": "Amides, RCONH[[sub:2]]"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00239:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00239:alt:fig-00005-alt",
+              "text": "The structures of three amides. The first is acetamide, the second is hexanamide, and the third is cyclopentane carboxamide."
+            },
+            "src": "../../media/OChem_21_01_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00239:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00239:alt:fig-00006-alt",
+              "text": "The structures of a secondary and a tertiary amide. The first structure is N-methylpropanamide and the second is N, N-diethylcyclohexanecarboxamide."
+            },
+            "src": "../../media/OChem_21_01_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": null,
+      "title": {
+        "segmentId": "m00239:title:sect-00005-title",
+        "text": "Thioesters, RCOSR[[i:′]]"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00239:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00239:alt:fig-00007-alt",
+              "text": "The structures of three thioesters. The first is methyl thioacetate, the second is ethyl butanethioate, and the third is methyl cyclohexanecarbothioate."
+            },
+            "src": "../../media/OChem_21_01_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": null,
+      "title": {
+        "segmentId": "m00239:title:sect-00006-title",
+        "text": "Acyl Phosphates, RCO[[sub:2]]PO[[sub:3]][[sup:2–]] and RCO[[sub:2]]PO[[sub:3]]R[[i:′]][[sup:–]]"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00239:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00239:alt:fig-00008-alt",
+              "text": "The structures of two acyl phosphates. The first is benzoyl phosphate and the second structure is acetyl adenosyl phosphate."
+            },
+            "src": "../../media/OChem_21_01_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00239:para:para-00009"
+        },
+        {
+          "type": "table",
+          "id": "table-00001",
+          "summary": "An illustration shows the Functional group Structure and Name ending of 7 Carboxylic Acid Derivatives. Carboxylic acid: RCOOH -ic acid (-carboxylic acid); Acid halide: RCOX -oyl halide (-carbonyl halide); Acid anhydride: RCOOCOR’ anhydride; Amide: RCONH2 (NHR NR2) -amide (-carboxamide); Ester: RCOOR’ -oate (-carboxylate); Thioester: RCOSR’ -thioate (-carbothioate); Acyl phosphate: RCOPO4 2 minus (OR’) -oyl phosphate. The carbonyl oxygen atoms are highlighted in pink; the other oxygen atoms hydroxyl group X amino group NHR NR2 OR’ SR’ and phosphate groups are highlighted in green.",
+          "title": {
+            "segmentId": "m00239:table-title:table-00001-title",
+            "text": "Nomenclature of Carboxylic Acid Derivatives"
+          },
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m00239:entry:auto-26",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00239:entry:auto-27",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00239:entry:auto-28",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00239:entry:auto-29",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  },
+                  "alt": {
+                    "segmentId": "m00239:alt:OChem_21_01_009a_jpg-alt",
+                    "text": "The structure of a carboxylic acid where an R group is attached to a carbonyl group which in turn is attached to a hydroxyl group.",
+                    "mediaId": null,
+                    "src": "../../media/OChem_21_01_009a.jpg"
+                  }
+                },
+                {
+                  "segmentId": "m00239:entry:auto-31",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00239:entry:auto-32",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  },
+                  "alt": {
+                    "segmentId": "m00239:alt:OChem_21_01_009b_jpg-alt",
+                    "text": "The structure of an acid halide where an R group is attached to a carbonyl group which in turn is attached to an X group.",
+                    "mediaId": null,
+                    "src": "../../media/OChem_21_01_009b.jpg"
+                  }
+                },
+                {
+                  "segmentId": "m00239:entry:auto-34",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00239:entry:auto-35",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  },
+                  "alt": {
+                    "segmentId": "m00239:alt:OChem_21_01_009c_jpg-alt",
+                    "text": "The structure of an acid anhydride where two carbonyl groups are linked by an oxygen atom. An R group is attached to one of the carbonyls and an R dash group to the other.",
+                    "mediaId": null,
+                    "src": "../../media/OChem_21_01_009c.jpg"
+                  }
+                },
+                {
+                  "segmentId": "m00239:entry:auto-37",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00239:entry:auto-38",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  },
+                  "alt": {
+                    "segmentId": "m00239:alt:OChem_21_01_009d_jpg-alt",
+                    "text": "The structure of an amide where an R group and an amino groups are connected to a carbonyl carbon.",
+                    "mediaId": null,
+                    "src": "../../media/OChem_21_01_009d.jpg"
+                  }
+                },
+                {
+                  "segmentId": "m00239:entry:auto-40",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00239:entry:auto-41",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  },
+                  "alt": {
+                    "segmentId": "m00239:alt:OChem_21_01_009e_jpg-alt",
+                    "text": "The structure of an ester where an R group is attached to a carbonyl group which in turn is attached to an O R dash group.",
+                    "mediaId": null,
+                    "src": "../../media/OChem_21_01_009e.jpg"
+                  }
+                },
+                {
+                  "segmentId": "m00239:entry:auto-43",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00239:entry:auto-44",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  },
+                  "alt": {
+                    "segmentId": "m00239:alt:OChem_21_01_009f_jpg-alt",
+                    "text": "The structure of a thioester where an R group is attached to a carbonyl group which in turn is attached to an S R dash group.",
+                    "mediaId": null,
+                    "src": "../../media/OChem_21_01_009f.jpg"
+                  }
+                },
+                {
+                  "segmentId": "m00239:entry:auto-46",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00239:entry:auto-47",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  },
+                  "alt": {
+                    "segmentId": "m00239:alt:OChem_21_01_009g_jpg-alt",
+                    "text": "The structure of an acyl phosphate where an R group is attached to a carbonyl group which in turn is attached to an O P O 3 group.",
+                    "mediaId": null,
+                    "src": "../../media/OChem_21_01_009g.jpg"
+                  }
+                },
+                {
+                  "segmentId": "m00239:entry:auto-49",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00007",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00239:title:sect-00007-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

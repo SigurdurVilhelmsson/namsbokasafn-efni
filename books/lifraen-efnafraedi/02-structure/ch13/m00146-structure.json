@@ -1,0 +1,92 @@
+{
+  "moduleId": "m00146",
+  "title": {
+    "segmentId": "m00146:title:auto-1",
+    "text": "Chemical Shifts"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "655f230c-e363-4e43-ac65-67d99151b5fb"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00146:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00146:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00146:alt:fig-00001-alt",
+          "text": "H N M R with intensity on Y-axis. Field sweep direction is left to right. Left side is labeled downfield (deshielded), right is labeled upfield (shielded)."
+        },
+        "src": "../../media/OChem_13_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00146:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00146:para:para-00003"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00146:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00146:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00146:para:para-00006"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00146:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

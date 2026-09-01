@@ -1,0 +1,30 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy='false'>(</m:mo><m:mi>Z</m:mi><m:mo stretchy='false'>)</m:mo><m:msub><m:mrow><m:mtext>-CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mo stretchy='false'>(</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy='false'>)</m:mo></m:mrow><m:mn>5</m:mn></m:msub><m:mtext>CH&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CH(CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mo stretchy='false'>)</m:mo><m:mn>7</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{(Z){{\\text{-CH}}}_{3}{({\\text{CH}}2)}5\\text{CH&#x2550;}{{\\text{CH(CH}}}_{2}{)}_{7}{{\\text{CO}}}_{2}\\text{H}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy='false'>(</m:mo><m:mi>Z</m:mi><m:mo stretchy='false'>)</m:mo><m:msub><m:mrow><m:mtext>-CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mo stretchy='false'>(</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy='false'>)</m:mo></m:mrow><m:mn>7</m:mn></m:msub><m:mtext>CH&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CH(CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mo stretchy='false'>)</m:mo><m:mn>7</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{(Z){{\\text{-CH}}}_{3}{({\\text{CH}}2)}7\\text{CH&#x2550;}{{\\text{CH(CH}}}_{2}{)}_{7}{{\\text{CO}}}_{2}\\text{H}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy='false'>(</m:mo><m:mi>Z</m:mi><m:mo>,</m:mo><m:mi>Z</m:mi><m:mo stretchy='false'>)</m:mo><m:msub><m:mrow><m:mtext>-CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mo stretchy='false'>(</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy='false'>)</m:mo></m:mrow><m:mn>4</m:mn></m:msub><m:msub><m:mrow><m:mtext>(CH&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>)</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:msub><m:mrow><m:mtext>(CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy='false'>)</m:mo></m:mrow><m:mn>6</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{(Z,Z){{\\text{-CH}}}_{3}{({\\text{CH}}2)}4{\\text{(CH&#x2550;}{\\text{CHCH}}2\\text{)}}2{{\\text{(CH}}2)}6{{\\text{CO}}}_{2}\\text{H}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy='false'>(</m:mo><m:mtext>all&#x00A0;</m:mtext><m:mi>Z</m:mi><m:mo stretchy='false'>)</m:mo><m:msub><m:mrow><m:mtext>-CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>(CH&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>)</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:msub><m:mrow><m:mtext>(CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy='false'>)</m:mo></m:mrow><m:mn>6</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{(\\text{all&#x00A0;}Z){{\\text{-CH}}}_{3}{{\\text{CH}}}_{2}{\\text{(CH&#x2550;}{\\text{CHCH}}2\\text{)}}3{{\\text{(CH}}2)}6{{\\text{CO}}}_{2}\\text{H}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy='false'>(</m:mo><m:mtext>all&#x00A0;</m:mtext><m:mi>Z</m:mi><m:mo stretchy='false'>)</m:mo><m:msub><m:mrow><m:mtext>-CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:msub><m:mrow><m:mtext>(CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>)</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msub><m:mrow><m:mtext>(CH&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>)</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{(\\text{all&#x00A0;}Z){{\\text{-CH}}}_{3}{{\\text{(CH}}2\\text{)}}4{\\text{(CH&#x2550;}{\\text{CHCH}}2\\text{)}}4{{\\text{CH}}}_{2}{{\\text{CH}}}_{2}{{\\text{CO}}}_{2}\\text{H}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>═</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}═\\text{C}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mo>═</m:mo><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}═\\text{C}}"
+  }
+}

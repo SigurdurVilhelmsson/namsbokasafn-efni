@@ -43,7 +43,10 @@
       },
       "media": {
         "id": "fs-idp165773088",
-        "alt": "Six columns of information are shown. The first column has three pieces of data: “H,” “1 positive sign,” and “1 negative sign.” The second column has four pieces of data: “C,” “4 positive sign,” the word, “To,” and, “4 negative sign.” The third column has eight pieces of data: “N,” “5 positive sign,” the word, “To,” “3 negative sign,” “P, A s,” “5 positive sign,” “3 positive sign,” and “3 negative sign.” The fourth column has seven pieces of data: “O,” “1 negative sign,” “2 negative sign,” “S, S e,” “6 positive sign,” “4 positive sign,” and “2 negative sign.” The fifth column has eight pieces of data: “F,” “1 negative sign,” “C l, B r, I,” “7 positive sign,” “5 positive sign,” “3 positive sign,” “1 positive sign,” and “1 negative sign.” The sixth column has five pieces of data: “X e,” “8 positive sign,” “6 positive sign,” “4 positive sign,” and “2 positive sign.”",
+        "alt": {
+          "segmentId": "m68832:alt:fs-idp165773088-alt",
+          "text": "Six columns of information are shown. The first column has three pieces of data: “H,” “1 positive sign,” and “1 negative sign.” The second column has four pieces of data: “C,” “4 positive sign,” the word, “To,” and, “4 negative sign.” The third column has eight pieces of data: “N,” “5 positive sign,” the word, “To,” “3 negative sign,” “P, A s,” “5 positive sign,” “3 positive sign,” and “3 negative sign.” The fourth column has seven pieces of data: “O,” “1 negative sign,” “2 negative sign,” “S, S e,” “6 positive sign,” “4 positive sign,” and “2 negative sign.” The fifth column has eight pieces of data: “F,” “1 negative sign,” “C l, B r, I,” “7 positive sign,” “5 positive sign,” “3 positive sign,” “1 positive sign,” and “1 negative sign.” The sixth column has five pieces of data: “X e,” “8 positive sign,” “6 positive sign,” “4 positive sign,” and “2 positive sign.”"
+        },
         "src": "../../media/CNX_Chem_18_04_OxStNonmts.jpg",
         "mimeType": "image/jpeg"
       }
@@ -181,7 +184,10 @@
           },
           "media": {
             "id": "fs-idm142208784",
-            "alt": "Two photos and two images are shown and labeled, “a,” “b,” “c,” and “d.” Photo a is of a diamond held by tweezers. Photo b shows a black columnar solid. Image c shows layered sheets of interconnected hexagonal rings. Image d shows sheets of hexagonal rings.",
+            "alt": {
+              "segmentId": "m68832:alt:fs-idm142208784-alt",
+              "text": "Two photos and two images are shown and labeled, “a,” “b,” “c,” and “d.” Photo a is of a diamond held by tweezers. Photo b shows a black columnar solid. Image c shows layered sheets of interconnected hexagonal rings. Image d shows sheets of hexagonal rings."
+            },
             "src": "../../media/CNX_Chem_18_04_Carbonform.jpg",
             "mimeType": "image/jpeg"
           }
@@ -199,7 +205,10 @@
           },
           "media": {
             "id": "fs-idm54505824",
-            "alt": "Two images are shown and labeled, “a” and “b.” Image a shows two connected hexagonal rings, with figure-eight-shaped orbitals located at each point of the ring and in a perpendicular position. Image b shows a pair of diagrams, each of which has a series of connected hexagonal rings made up of carbon atoms that are connected by alternating single and double bonds. These two diagrams are connected by a double-headed arrow.",
+            "alt": {
+              "segmentId": "m68832:alt:fs-idm54505824-alt",
+              "text": "Two images are shown and labeled, “a” and “b.” Image a shows two connected hexagonal rings, with figure-eight-shaped orbitals located at each point of the ring and in a perpendicular position. Image b shows a pair of diagrams, each of which has a series of connected hexagonal rings made up of carbon atoms that are connected by alternating single and double bonds. These two diagrams are connected by a double-headed arrow."
+            },
             "src": "../../media/CNX_Chem_18_04_unhyporbC.jpg",
             "mimeType": "image/jpeg"
           }
@@ -228,7 +237,10 @@
           },
           "media": {
             "id": "fs-idm51418352",
-            "alt": "A spherical structure is made up of hexagonal rings, each of which is made up of atoms bonded together with alternating single and double bonds.",
+            "alt": {
+              "segmentId": "m68832:alt:fs-idm51418352-alt",
+              "text": "A spherical structure is made up of hexagonal rings, each of which is made up of atoms bonded together with alternating single and double bonds."
+            },
             "src": "../../media/CNX_Chem_18_04_Buckyball.jpg",
             "mimeType": "image/jpeg"
           }
@@ -292,7 +304,10 @@
           },
           "media": {
             "id": "fs-idp35290448",
-            "alt": "Two images are shown and labeled “a” and “b.” Image a shows a long sheet of interconnected hexagonal rings. Image b shows the same interconnected hexagonal rings forming a curled sheet to make a long tube.",
+            "alt": {
+              "segmentId": "m68832:alt:fs-idp35290448-alt",
+              "text": "Two images are shown and labeled “a” and “b.” Image a shows a long sheet of interconnected hexagonal rings. Image b shows the same interconnected hexagonal rings forming a curled sheet to make a long tube."
+            },
             "src": "../../media/CNX_Chem_18_04_Nanotube.jpg",
             "mimeType": "image/jpeg"
           }
@@ -326,7 +341,10 @@
           },
           "media": {
             "id": "fs-idm121503472",
-            "alt": "Two photos and two diagrams are shown and labeled “a,” “b,” “c,” and “d.” Photo a shows a test tube that contains a solid yellow compound. Diagram b shows a four-sided pyramid shape that has an atom at each corner. Photo c shows a dark black powder in a watch glass. Diagram d shows two four-sided pyramid shapes that have an atom at each corner and are connected together by a single bond.",
+            "alt": {
+              "segmentId": "m68832:alt:fs-idm121503472-alt",
+              "text": "Two photos and two diagrams are shown and labeled “a,” “b,” “c,” and “d.” Photo a shows a test tube that contains a solid yellow compound. Diagram b shows a four-sided pyramid shape that has an atom at each corner. Photo c shows a dark black powder in a watch glass. Diagram d shows two four-sided pyramid shapes that have an atom at each corner and are connected together by a single bond."
+            },
             "src": "../../media/CNX_Chem_18_04_Phosphorus.jpg",
             "mimeType": "image/jpeg"
           }
@@ -365,7 +383,10 @@
           },
           "media": {
             "id": "fs-idp5064384",
-            "alt": "Four diagrams are shown and labeled “a,” “b,” “c,” and “d.” Diagram a shows four ring structures that are each made up of eight single bonded atoms. Diagram b shows four chains of eight atoms. Diagram c shows three chains of atoms, one composed by nine atoms, one by twelve atoms and one by eleven atoms. Diagram d shows the same three chains, but this time they are much closer together and slightly intertwined.",
+            "alt": {
+              "segmentId": "m68832:alt:fs-idp5064384-alt",
+              "text": "Four diagrams are shown and labeled “a,” “b,” “c,” and “d.” Diagram a shows four ring structures that are each made up of eight single bonded atoms. Diagram b shows four chains of eight atoms. Diagram c shows three chains of atoms, one composed by nine atoms, one by twelve atoms and one by eleven atoms. Diagram d shows the same three chains, but this time they are much closer together and slightly intertwined."
+            },
             "src": "../../media/CNX_Chem_18_04_Sulfrchain.jpg",
             "mimeType": "image/jpeg"
           }

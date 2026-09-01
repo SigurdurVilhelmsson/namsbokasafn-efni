@@ -25,7 +25,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "A flowchart of the process of mass spectrometry. A sample moves from an ionization source to the mass analyzer, and then to the detector, after which results are displayed.",
+        "alt": {
+          "segmentId": "m00135:alt:fig-00001-alt",
+          "text": "A flowchart of the process of mass spectrometry. A sample moves from an ionization source to the mass analyzer, and then to the detector, after which results are displayed."
+        },
         "src": "../../media/OChem_12_01_001.jpg",
         "mimeType": "image/jpeg"
       }
@@ -41,7 +44,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "An organic molecule, RH loses an electron to generate a cation radical and an electron.",
+        "alt": {
+          "segmentId": "m00135:alt:fig-00002-alt",
+          "text": "An organic molecule, RH loses an electron to generate a cation radical and an electron."
+        },
         "src": "../../media/OChem_12_01_002.jpg",
         "mimeType": "image/jpeg"
       }
@@ -59,7 +65,10 @@
         "segmentId": "m00135:caption:fig-00003-caption"
       },
       "media": {
-        "alt": "A schematic showing the curved path of a sample through a mass spectrometer from the inlet (with ionization), past a magnet (with deflection), to a detection screen.",
+        "alt": {
+          "segmentId": "m00135:alt:fig-00003-alt",
+          "text": "A schematic showing the curved path of a sample through a mass spectrometer from the inlet (with ionization), past a magnet (with deflection), to a detection screen."
+        },
         "src": "../../media/OChem_12_01_003.jpg",
         "mimeType": "image/jpeg"
       }
@@ -77,7 +86,10 @@
         "segmentId": "m00135:caption:fig-00004-caption"
       },
       "media": {
-        "alt": "A schematic of the jagged path of an ion beam through a space surrounded by four tubes (two positive, two negative, arranged with like charges opposite one another).",
+        "alt": {
+          "segmentId": "m00135:alt:fig-00004-alt",
+          "text": "A schematic of the jagged path of an ion beam through a space surrounded by four tubes (two positive, two negative, arranged with like charges opposite one another)."
+        },
         "src": "../../media/OChem_12_01_004.jpg",
         "mimeType": "image/jpeg"
       }
@@ -95,7 +107,10 @@
         "segmentId": "m00135:caption:fig-00005-caption"
       },
       "media": {
-        "alt": "The mass spectrum of propane. The m / z ratios are 29 and 44 for two tall peaks noted with arrows. Other, less prevalent, peaks are also present.",
+        "alt": {
+          "segmentId": "m00135:alt:fig-00005-alt",
+          "text": "The mass spectrum of propane. The m / z ratios are 29 and 44 for two tall peaks noted with arrows. Other, less prevalent, peaks are also present."
+        },
         "src": "../../media/OChem_12_01_005.jpg",
         "mimeType": "image/jpeg"
       }

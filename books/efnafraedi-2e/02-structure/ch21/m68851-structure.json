@@ -303,7 +303,10 @@
           },
           "media": {
             "id": "fs-idm82801808",
-            "alt": "A graph is shown where the x-axis is labeled “Number of neutrons, open parenthesis, n, close parenthesis” and has values of 0 to 180 in increments of 10. The y-axis is labeled “Number of protons, open parenthesis, Z, close parenthesis” and has values of 0 to 120 in increments of 10. A green shaded band of varying width, labeled “Radioactive,” extends from point 0 on both axes to 178 on the y-axis and 118 on the x-axis in a linear manner. The width of this band varies from 8 to 18 units in width according to the x-axis measurements. A blue line in a roughly zig-zag pattern runs through the middle of the shaded band and stops at 128 on the y-axis and 82 on the x-axis. This line is labeled “Nonradioactive.” An unlabeled, black, solid line extends from point 0, 0 to 120, 120 in a linear manner.",
+            "alt": {
+              "segmentId": "m68851:alt:fs-idm82801808-alt",
+              "text": "A graph is shown where the x-axis is labeled “Number of neutrons, open parenthesis, n, close parenthesis” and has values of 0 to 180 in increments of 10. The y-axis is labeled “Number of protons, open parenthesis, Z, close parenthesis” and has values of 0 to 120 in increments of 10. A green shaded band of varying width, labeled “Radioactive,” extends from point 0 on both axes to 178 on the y-axis and 118 on the x-axis in a linear manner. The width of this band varies from 8 to 18 units in width according to the x-axis measurements. A blue line in a roughly zig-zag pattern runs through the middle of the shaded band and stops at 128 on the y-axis and 82 on the x-axis. This line is labeled “Nonradioactive.” An unlabeled, black, solid line extends from point 0, 0 to 120, 120 in a linear manner."
+            },
             "src": "../../media/CNX_Chem_21_01_BandStable.jpg",
             "mimeType": "image/jpeg"
           }
@@ -323,11 +326,12 @@
           "id": "fs-idp70040672",
           "class": "top-titled",
           "summary": "This table has three columns and five rows. The first row is a header row, and it labels each column: “Number of Stable Isotopes,” “Proton Number,” and “Neutron Number.” Under the “Number of Stable Isotopes” column are the following numbers: 157, 53, 50, and 5. Under the “Proton Number” column are the following: even, even, odd, odd. Under the “Neutron Number” column are the following: even, odd, even, odd.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68851:entry:auto-51",
+                  "segmentId": "m68851:entry:auto-52",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c3",
@@ -339,12 +343,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68851:entry:auto-52",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68851:entry:auto-53",
                   "attributes": {
                     "align": "left"
@@ -355,17 +353,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68851:entry:auto-55",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68851:entry:auto-56",
                   "attributes": {
@@ -377,17 +375,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68851:entry:auto-58",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68851:entry:auto-59",
                   "attributes": {
@@ -399,17 +397,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68851:entry:auto-61",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68851:entry:auto-62",
                   "attributes": {
@@ -421,17 +419,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68851:entry:auto-64",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68851:entry:auto-65",
                   "attributes": {
@@ -440,6 +438,12 @@
                 },
                 {
                   "segmentId": "m68851:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68851:entry:auto-67",
                   "attributes": {
                     "align": "left"
                   }
@@ -472,7 +476,10 @@
           },
           "media": {
             "id": "fs-idm93760",
-            "alt": "A graph is shown where the x-axis is labeled “binding energy per nucleon, open parenthesis, M e V, close parenthesis” and has values of 0 to 10 in increments of 1. The y-axis is labeled “Mass number” and has values of 0 to 260 in increments of 20. A line of best fit beginning at point 0, 0 is drawn through points “8, 5.5; 9, 7.3; 18, 7.1; 20, 7.5; 19, 7.9; 27, 7.8; 21, 8.1; 25, 8.4; 37, 8.6; 43, 8.8; 57, 8.6; 60, 8.9; 70, 9; 88, 8.8; 102, 8.9; 108, 8.5; 126, 8.7; 133, 8.8; 143, 8.2; 157, 8.1; 167, 8.2; 195, 7.9; 205, 7.9; 241, 7.3 and 255, 75. An upward-facing arrow near the bottom left of the graph is labeled “Fusion” while a left-facing arrow near the top right is labeled “Fission.”",
+            "alt": {
+              "segmentId": "m68851:alt:fs-idm93760-alt",
+              "text": "A graph is shown where the x-axis is labeled “binding energy per nucleon, open parenthesis, M e V, close parenthesis” and has values of 0 to 10 in increments of 1. The y-axis is labeled “Mass number” and has values of 0 to 260 in increments of 20. A line of best fit beginning at point 0, 0 is drawn through points “8, 5.5; 9, 7.3; 18, 7.1; 20, 7.5; 19, 7.9; 27, 7.8; 21, 8.1; 25, 8.4; 37, 8.6; 43, 8.8; 57, 8.6; 60, 8.9; 70, 9; 88, 8.8; 102, 8.9; 108, 8.5; 126, 8.7; 133, 8.8; 143, 8.2; 157, 8.1; 167, 8.2; 195, 7.9; 205, 7.9; 241, 7.3 and 255, 75. An upward-facing arrow near the bottom left of the graph is labeled “Fusion” while a left-facing arrow near the top right is labeled “Fission.”"
+            },
             "src": "../../media/CNX_Chem_21_01_BindEnergy.jpg",
             "mimeType": "image/jpeg"
           }
@@ -603,11 +610,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68851:entry:auto-87",
+                  "segmentId": "m68851:entry:auto-89",
                   "attributes": {}
                 }
               ]

@@ -1,0 +1,167 @@
+{
+  "moduleId": "m00114",
+  "title": {
+    "segmentId": "m00114:title:auto-1",
+    "text": "Preparing Alkyl Halides from Alkanes: Radical Halogenation"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "60759f94-493b-4a7e-a31c-1ea0805224ca"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00114:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00114:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00114:alt:fig-00001-alt",
+          "text": "The mechanism of radical chlorination of methane involving three steps: initiation, propagation (a repeating cycle), and termination. The overall reaction shows the formation of chloromethane and hydrogen chloride."
+        },
+        "src": "../../media/OChem_10_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00114:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00114:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00114:alt:fig-00002-alt",
+          "text": "The four steps of a chlorination reaction of methane in which each step replaces one more hydrogen with chlorine, finally forming C Cl 4."
+        },
+        "src": "../../media/OChem_10_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00114:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00114:alt:fig-00003-alt",
+          "text": "The reaction of butane and chlorine in the presence of light. 1-chlorobutane and 2-chlorobutane are formed in a 30:70 ratio and other products are dichloro-, trichloro-, tetrachloro-, and so on."
+        },
+        "src": "../../media/OChem_10_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00114:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00114:alt:fig-00004-alt",
+          "text": "The reaction of 2-methylpropane and chlorine in the presence of light.  2-chloro-2-methylpropane and 1-chloro-2-methylpropane are formed in a 35:65 ratio and other products are dichloro-, trichloro-, tetrachloro-, and so on."
+        },
+        "src": "../../media/OChem_10_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00114:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00114:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00114:alt:fig-00005-alt",
+          "text": "The structures and reactivity order of carbons in alkyl chains, where secondary and tertiary carbons are 3.5 and 5 times as reactive as primary carbons, respectively."
+        },
+        "src": "../../media/OChem_10_02_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00114:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00114:alt:fig-00006-alt",
+          "text": "The structures and stabilities of carbon radicals, where secondary radicals are more stable than primary, and tertiary radicals are the most stable."
+        },
+        "src": "../../media/OChem_10_02_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00114:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:mtext>Δ</m:mtext><m:msup><m:mi>G</m:mi><m:mo>‡</m:mo></m:msup><m:msub><m:mrow/><m:mtext>B</m:mtext></m:msub><m:mo>&lt;</m:mo><m:mtext>Δ</m:mtext><m:msup><m:mi>G</m:mi><m:mo>‡</m:mo></m:msup><m:msub><m:mrow/><m:mtext>C</m:mtext></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{Δ}{G}^{‡}_{\\text{B}}&lt;\\text{Δ}{G}^{‡}_{\\text{C}}}"
+  },
+  "math-2": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:mtext>Δ</m:mtext><m:msup><m:mi>G</m:mi><m:mo>∘</m:mo></m:msup><m:msub><m:mrow/><m:mtext>C</m:mtext></m:msub><m:mtext> </m:mtext><m:mo>></m:mo><m:mtext>Δ</m:mtext><m:msup><m:mi>G</m:mi><m:mo>∘</m:mo></m:msup><m:msub><m:mrow/><m:mtext>B</m:mtext></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{Δ}{G}^{∘}_{\\text{C}}\\text>\\text{Δ}{G}^{∘}_{\\text{B}}}"
+  }
+}

@@ -20,7 +20,7 @@ In the previous section, we discussed how to write Lewis structures for molecule
 Calculating Formal Charge
 
 <!-- SEG:m68740:para:fs-idm16217792 -->
-The {{term}}formal charge{{/term}} of an atom in a molecule is the [[i:hypothetical]] charge the atom would have if we could redistribute the electrons in the bonds evenly between the atoms. Another way of saying this is that formal charge results when we take the number of valence electrons of a neutral atom, subtract the nonbonding electrons, and then subtract the number of bonds connected to that atom in the Lewis structure.
+The [[term:formal charge|term-00001]] of an atom in a molecule is the [[i:hypothetical]] charge the atom would have if we could redistribute the electrons in the bonds evenly between the atoms. Another way of saying this is that formal charge results when we take the number of valence electrons of a neutral atom, subtract the nonbonding electrons, and then subtract the number of bonds connected to that atom in the Lewis structure.
 
 <!-- SEG:m68740:para:fs-idp126842624 -->
 Thus, we calculate formal charge as follows:
@@ -52,11 +52,17 @@ C −1, O +1
 <!-- SEG:m68740:item:fs-idm30182496-item-1 -->
 [[i:We divide the bonding electron pairs equally for all I–Cl bonds:]][[BR]] [[MEDIA:1]]
 
+<!-- SEG:m68740:alt:fs-idm8015440-alt -->
+A Lewis structure is shown. An iodine atom with two lone pairs of electrons is single bonded to four chlorine atoms, each of which has three lone pairs of electrons. Brackets surround the structure and there is a superscripted negative sign.
+
 <!-- SEG:m68740:item:fs-idm30182496-item-2 -->
 [[i:We assign lone pairs of electrons to their atoms]]. Each Cl atom now has seven electrons assigned to it, and the I atom has eight.
 
 <!-- SEG:m68740:item:fs-idm30182496-item-3 -->
 [[i:Subtract this number from the number of valence electrons for the neutral atom:]][[BR]] I: 7 – 8 = –1[[BR]] Cl: 7 – 7 = 0[[BR]] The sum of the formal charges of all the atoms equals –1, which is identical to the charge of the ion (–1).
+
+<!-- SEG:m68740:alt:fs-idp11533504-alt -->
+A Lewis structure is shown. A carbon atom with one lone pair of electrons is triple bonded to an oxygen with one lone pair of electrons.
 
 <!-- SEG:m68740:note-title:fs-idm19244912-title -->
 Answer:
@@ -85,6 +91,9 @@ N: 0; all three Cl atoms: 0
 <!-- SEG:m68740:item:fs-idp8784496-item-1 -->
 [[i:Assign one of the electrons in each Br–Cl bond to the Br atom and one to the Cl atom in that bond:]][[BR]] [[MEDIA:2]]
 
+<!-- SEG:m68740:alt:fs-idm34880288-alt -->
+A Lewis structure is shown. A bromine atom with two lone pairs of electrons is single bonded to three chlorine atoms, each of which has three lone pairs of electrons.
+
 <!-- SEG:m68740:item:fs-idp8784496-item-2 -->
 [[i:Assign the lone pairs to their atom.]] Now each Cl atom has seven electrons and the Br atom has seven electrons.
 
@@ -97,11 +106,14 @@ Answer:
 <!-- SEG:m68740:para:fs-idm22650544 -->
 N: 0; all three Cl atoms: 0
 
+<!-- SEG:m68740:alt:fs-idm2350000-alt -->
+A Lewis structure is shown. A nitrogen atom with one lone pair of electrons is single bonded to three chlorine atoms, each of which has three lone pairs of electrons.
+
 <!-- SEG:m68740:title:fs-idp27335568-title -->
 Using Formal Charge to Predict Molecular Structure
 
 <!-- SEG:m68740:para:fs-idp93581584 -->
-The arrangement of atoms in a molecule or ion is called its {{term}}molecular structure{{/term}}. In many cases, following the steps for writing Lewis structures may lead to more than one possible molecular structure—different multiple bond and lone-pair electron placements or different arrangements of atoms, for instance. A few guidelines involving formal charge can be helpful in deciding which of the possible structures is most likely for a particular molecule or ion:
+The arrangement of atoms in a molecule or ion is called its [[term:molecular structure|term-00002]]. In many cases, following the steps for writing Lewis structures may lead to more than one possible molecular structure—different multiple bond and lone-pair electron placements or different arrangements of atoms, for instance. A few guidelines involving formal charge can be helpful in deciding which of the possible structures is most likely for a particular molecule or ion:
 
 <!-- SEG:m68740:item:fs-idp69636800-item-1 -->
 A molecular structure in which all formal charges are zero is preferable to one in which some formal charges are not zero.
@@ -118,11 +130,17 @@ When we must choose among several Lewis structures with similar distributions of
 <!-- SEG:m68740:para:fs-idp52450560 -->
 To see how these guidelines apply, let us consider some possible structures for carbon dioxide, CO[[sub:2]]. We know from our previous discussion that the less electronegative atom typically occupies the central position, but formal charges allow us to understand [[i:why]] this occurs. We can draw three possibilities for the structure: carbon in the center and double bonds, carbon in the center with a single and triple bond, and oxygen in the center with double bonds:
 
+<!-- SEG:m68740:alt:fs-idp21768928-alt -->
+Three Lewis structures are shown. The left and right structures show a carbon atom double bonded to two oxygen atoms, each of which has two lone pairs of electrons. The center structure shows a carbon atom that is triple bonded to an oxygen atom with one lone pair of electrons and single bonded to an oxygen atom with three lone pairs of electrons. The third structure shows an oxygen atom double bonded to another oxygen atom with to lone pairs of electrons. The first oxygen atom is also double bonded to a carbon atom with two lone pairs of electrons.
+
 <!-- SEG:m68740:para:fs-idp58268848 -->
 Comparing the three formal charges, we can definitively identify the structure on the left as preferable because it has only formal charges of zero (Guideline 1).
 
 <!-- SEG:m68740:para:fs-idp198975168 -->
 As another example, the thiocyanate ion, an ion formed from a carbon atom, a nitrogen atom, and a sulfur atom, could have three different molecular structures: NCS[[sup:–]], CNS[[sup:–]], or CSN[[sup:–]]. The formal charges present in each of these molecular structures can help us pick the most likely arrangement of atoms. Possible Lewis structures and the formal charges for each of the three possible structures for the thiocyanate ion are shown here:
+
+<!-- SEG:m68740:alt:fs-idm21731296-alt -->
+Two rows of structures and numbers are shown. The top row is labeled, “Structure” and depicts three Lewis structures and the bottom row is labeled, “Formal charge.” The left structure shows a carbon atom double bonded to a nitrogen atom with two lone electron pairs on one side and double bonded to a sulfur atom with two lone electron pairs on the other. The structure is surrounded by brackets and has a superscripted negative sign. Below this structure are the numbers negative one, zero, and zero. The middle structure shows a carbon atom with two lone pairs of electrons double bonded to a nitrogen atom that is double bonded to a sulfur atom with two lone electron pairs. The structure is surrounded by brackets and has a superscripted negative sign. Below this structure are the numbers negative two, positive one, and zero. The right structure shows a carbon atom with two lone electron pairs double bonded to a sulfur atom that is double bonded to a nitrogen atom with two lone electron pairs. The structure is surrounded by brackets and has a superscripted negative sign. Below this structure are the numbers negative two, positive two, and one.
 
 <!-- SEG:m68740:para:fs-idp142093872 -->
 Note that the sum of the formal charges in each case is equal to the charge of the ion (–1). However, the first arrangement of atoms is preferred because it has the lowest number of atoms with nonzero formal charges (Guideline 2). Also, it places the least electronegative atom in the center, and the negative charge on the more electronegative element (Guideline 4).
@@ -154,6 +172,18 @@ Which is the most likely molecular structure for the nitrite [[MATH:2]] ion?
 <!-- SEG:m68740:para:fs-idm26159840 -->
 ONO[[sup:–]]
 
+<!-- SEG:m68740:alt:fs-idp27289968-alt -->
+Two Lewis structures are shown with the word “or” in between them. The left structure depicts a nitrogen atom with one lone pair of electrons triple bonded to a nitrogen that is single bonded to an oxygen with three lone pairs of electrons. The right structure shows a nitrogen atom with two lone pairs of electrons double bonded to an oxygen atom that is double bonded to a nitrogen atom with two lone pairs of electrons.
+
+<!-- SEG:m68740:alt:fs-idp30477296-alt -->
+Two Lewis structures are shown with the word “or” in between them. The left structure depicts a nitrogen atom with one lone pair of electrons triple bonded to a nitrogen atom that is single bonded to an oxygen atom with three lone pairs of electrons. The numbers zero, positive one, and negative one are written below this structure. The right structure shows a nitrogen atom with two lone pairs of electrons double bonded to an oxygen atom that is double bonded to a nitrogen atom with two lone pairs of electrons. The numbers negative one, positive two, and negative one are written below this structure.
+
+<!-- SEG:m68740:alt:fs-idp61736672-alt -->
+A Lewis structure is shown. A nitrogen atom with one lone pair of electrons is triple bonded to a nitrogen atom that is single bonded to an oxygen atom with three lone pairs of electrons.
+
+<!-- SEG:m68740:alt:fs-idp250861152-alt -->
+Two Lewis structures are shown with the word “or” written between them. The left structure shows a nitrogen atom with two lone pairs of electrons double bonded to an oxygen atom with one lone pair of electrons that is single bonded to an oxygen atom with three lone pairs of electrons. Brackets surround this structure and there is a superscripted negative sign. The right structure shows an oxygen atom with two lone pairs of electrons double bonded to a nitrogen atom with one lone pair of electrons that is single bonded to an oxygen with three lone pairs of electrons. Brackets surround this structure and there is a superscripted negative sign.
+
 <!-- SEG:m68740:note-title:fs-idp94183792-title -->
 Answer:
 
@@ -166,17 +196,26 @@ Resonance
 <!-- SEG:m68740:para:fs-idp81027344 -->
 Notice that the more likely structure for the nitrite anion in [[xref:fs-idp56478288]] may actually be drawn in two different ways, distinguished by the locations of the N-O and N=O bonds:
 
+<!-- SEG:m68740:alt:fs-idp25860608-alt -->
+Two Lewis structures are shown. The left structure shows an oxygen atom with three lone pairs of electrons single bonded to a nitrogen atom with one lone pair of electrons that is double bonded to an oxygen with two lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign. The right structure shows an oxygen atom with two lone pairs of electrons double bonded to a nitrogen atom with one lone pair of electrons that is single bonded to an oxygen atom with three lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign.
+
 <!-- SEG:m68740:para:fs-idm7645504 -->
 If nitrite ions do indeed contain a single and a double bond, we would expect for the two bond lengths to be different. A double bond between two atoms is shorter (and stronger) than a single bond between the same two atoms. Experiments show, however, that both N–O bonds in [[MATH:3]] have the same strength and length, and are identical in all other properties.
 
 <!-- SEG:m68740:para:fs-idp203952864 -->
-It is not possible to write a single Lewis structure for [[MATH:4]] in which nitrogen has an octet and both bonds are equivalent. Instead, we use the concept of {{term}}resonance{{/term}}: if two or more Lewis structures with the same arrangement of atoms can be written for a molecule or ion, the actual distribution of electrons is an [[i:average]] of that shown by the various Lewis structures. The actual distribution of electrons in each of the nitrogen-oxygen bonds in [[MATH:5]] is the average of a double bond and a single bond. We call the individual Lewis structures {{term}}resonance forms{{/term}}. The actual electronic structure of the molecule (the average of the resonance forms) is called a {{term}}resonance hybrid{{/term}} of the individual resonance forms. A double-headed arrow between Lewis structures indicates that they are resonance forms.
+It is not possible to write a single Lewis structure for [[MATH:4]] in which nitrogen has an octet and both bonds are equivalent. Instead, we use the concept of [[term:resonance|term-00003]]: if two or more Lewis structures with the same arrangement of atoms can be written for a molecule or ion, the actual distribution of electrons is an [[i:average]] of that shown by the various Lewis structures. The actual distribution of electrons in each of the nitrogen-oxygen bonds in [[MATH:5]] is the average of a double bond and a single bond. We call the individual Lewis structures [[term:resonance forms|term-00004]]. The actual electronic structure of the molecule (the average of the resonance forms) is called a [[term:resonance hybrid|term-00005]] of the individual resonance forms. A double-headed arrow between Lewis structures indicates that they are resonance forms.
+
+<!-- SEG:m68740:alt:fs-idp40211808-alt -->
+Two Lewis structures are shown with a double sided arrow between them. The left structure shows an oxygen atom with three lone pairs of electrons single bonded to a nitrogen atom with one lone pair of electrons that is double bonded to an oxygen with two lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign. The right structure shows an oxygen atom with two lone pairs of electrons double bonded to a nitrogen atom with one lone pair of electrons that is single bonded to an oxygen atom with three lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign.
 
 <!-- SEG:m68740:para:fs-idm12853328 -->
 We should remember that a molecule described as a resonance hybrid [[i:never]] possesses an electronic structure described by either resonance form. It does not fluctuate between resonance forms; rather, the actual electronic structure is [[i:always]] the average of that shown by all resonance forms. George Wheland, one of the pioneers of resonance theory, used a historical analogy to describe the relationship between resonance forms and resonance hybrids. A medieval traveler, having never before seen a rhinoceros, described it as a hybrid of a dragon and a unicorn because it had many properties in common with both. Just as a rhinoceros is neither a dragon sometimes nor a unicorn at other times, a resonance hybrid is neither of its resonance forms at any given time. Like a rhinoceros, it is a real entity that experimental evidence has shown to exist. It has some characteristics in common with its resonance forms, but the resonance forms themselves are convenient, imaginary images (like the unicorn and the dragon).
 
 <!-- SEG:m68740:para:fs-idp245720144 -->
 The carbonate anion, [[MATH:6]] provides a second example of resonance:
+
+<!-- SEG:m68740:alt:fs-idm34742304-alt -->
+Three Lewis structures are shown with double headed arrows in between. Each structure is surrounded by brackets, and each has a superscripted two negative sign. The left structure depicts a carbon atom bonded to three oxygen atoms. It is single bonded to two of these oxygen atoms, each of which has three lone pairs of electrons, and double bonded to the third, which has two lone pairs of electrons. The double bond is located between the lower left oxygen atom and the carbon atom. The central and right structures are the same as the first, but the position of the double bonded oxygen has moved to the lower right oxygen in the central structure and to the top oxygen in the right structure.
 
 <!-- SEG:m68740:para:fs-idp6151664 -->
 One oxygen atom must have a double bond to carbon to complete the octet on the central atom. All oxygen atoms, however, are equivalent, and the double bond could form from any one of the three atoms. This gives rise to three resonance forms of the carbonate ion. Because we can write three identical resonance structures, we know that the actual arrangement of electrons in the carbonate ion is the average of the three structures. Again, experiments show that all three C–O bonds are exactly the same.
@@ -193,7 +232,7 @@ In a Lewis structure, formal charges can be assigned to each atom by treating ea
 <!-- SEG:m68740:title:fs-idp77377632-title -->
 Key Equations
 
-<!-- SEG:m68740:entry:auto-66 -->
+<!-- SEG:m68740:entry:auto-79 -->
 [[MATH:7]]
 
 <!-- SEG:m68740:title:fs-idp27655616-title -->
@@ -214,8 +253,14 @@ Write resonance forms that describe the distribution of electrons in each of the
 <!-- SEG:m68740:problem:fs-idp77939504 -->
 (d) benzene, C[[sub:6]]H[[sub:6]]:
 
+<!-- SEG:m68740:alt:fs-idp6338064-alt -->
+A Lewis structure shows a hexagonal ring composed of six carbon atoms. They form single bonds to each another and single bonds to one hydrogen atom each.
+
 <!-- SEG:m68740:problem:fs-idp63312576 -->
 (e) the formate ion:
+
+<!-- SEG:m68740:alt:fs-idm22375248-alt -->
+A Lewis structure shows a carbon atom single bonded to two oxygen atoms and a hydrogen atom. The structure is surrounded by brackets and there is a superscripted negative sign.
 
 <!-- SEG:m68740:problem:fs-idm26550544 -->
 Write resonance forms that describe the distribution of electrons in each of these molecules or ions.
@@ -232,11 +277,32 @@ Write resonance forms that describe the distribution of electrons in each of the
 <!-- SEG:m68740:problem:fs-idp4938192 -->
 (d) pyridine:
 
+<!-- SEG:m68740:alt:fs-idp77072272-alt -->
+A Lewis structure depicts a hexagonal ring composed of five carbon atoms and one nitrogen atom. Each carbon atom is single bonded to a hydrogen atom.
+
 <!-- SEG:m68740:problem:fs-idp27230032 -->
 (e) the allyl ion:
 
+<!-- SEG:m68740:alt:fs-idp30893072-alt -->
+A Lewis structure shows a carbon atom single bonded to two hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to a hydrogen atom and a third carbon atom. The third carbon atom is single bonded to two hydrogen atoms. The whole structure is surrounded by brackets, and there is a superscripted negative sign.
+
 <!-- SEG:m68740:solution:fs-idp22600016 -->
 (a)[[BR]] [[MEDIA:3]][[BR]] (b)[[BR]] [[MEDIA:4]][[BR]] (c)[[BR]] [[MEDIA:5]][[BR]] (d)[[BR]] [[MEDIA:6]][[BR]] (e)[[BR]] [[MEDIA:7]]
+
+<!-- SEG:m68740:alt:fs-idp76917152-alt -->
+Two Lewis structures are shown with a double-headed arrow in between. The left structure shows a sulfur atom with a lone pair of electrons single bonded to the left to an oxygen atom with three lone pairs of electrons. The sulfur atom is also double bonded on the right to an oxygen atom with two lone pairs of electrons. The right structure depicts the same atoms, but this time the double bond is between the left oxygen and the sulfur atom. The lone pairs of electrons have also shifted to account for the change of bond types. The sulfur atom in the right structures, also has a third electron dot below it.
+
+<!-- SEG:m68740:alt:fs-idp21708272-alt -->
+Three Lewis structures are shown, with double-headed arrows in between, each surrounded by brackets and a superscripted two negative sign. The left structure depicts a carbon atom bonded to three oxygen atoms. It is single bonded to two of these oxygen atoms, each of which has three lone pairs of electrons, and double bonded to the third, which has two lone pairs of electrons. The double bond is located between the bottom oxygen and the carbon. The central and right structures are the same as the first, but the position of the double bonded oxygen has moved to the left oxygen in the right structure while the central structure only has single bonds. The lone pairs of electrons change to correspond with the bonds as well.
+
+<!-- SEG:m68740:alt:fs-idm57805984-alt -->
+Two Lewis structures are shown, with a double-headed arrow in between, each surrounded by brackets and a superscripted negative sign. The left structure depicts a carbon atom bonded to three oxygen atoms. It is single bonded to one of these oxygen atoms, which has three lone pairs of electrons, and double bonded to the other two, which have two lone pairs of electrons. One of the double bonded oxygen atoms also has a single bond to a hydrogen atom. The right structure is the same as the first, but there is only one double bonded oxygen. The oxygen with the single bonded hydrogen now has a single bond to the carbon atom. The lone pairs of electrons have also changed to correspond with the bonds.
+
+<!-- SEG:m68740:alt:fs-idp98647232-alt -->
+Two Lewis structures are shown with a double-headed arrow in between. The left structure depicts a hexagonal ring composed of five carbon atoms, each single bonded to a hydrogen atom, and one nitrogen atom that has a lone pair of electrons. The ring has alternating single and double bonds. The right structure is the same as the first, but each double bond has rotated to a new position.
+
+<!-- SEG:m68740:alt:fs-idp255926848-alt -->
+Two Lewis structures are shown with a double-headed arrow in between. The left structure shows a carbon atom single bonded to two hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to a hydrogen atom and double bonded to a third carbon atom. The third carbon atom is single bonded to two hydrogen atoms. The whole structure is surrounded by brackets and a superscripted negative sign. The right structure shows a carbon atom single bonded to two hydrogen atoms and double bonded to a second carbon atom. The second carbon atom is single bonded to a hydrogen atom and a third carbon atom. The third carbon atom is single bonded to two hydrogen atoms. The whole structure is surrounded by brackets and a superscripted negative sign.
 
 <!-- SEG:m68740:problem:fs-idm21450320 -->
 Write the resonance forms of ozone, O[[sub:3]], the component of the upper atmosphere that protects the Earth from ultraviolet radiation.
@@ -247,8 +313,14 @@ Sodium nitrite, which has been used to preserve bacon and other meats, is an ion
 <!-- SEG:m68740:solution:fs-idm77390448 -->
 [[BR]][[MEDIA:8]]
 
+<!-- SEG:m68740:alt:fs-idp4932640-alt -->
+A pair of Lewis structures are shown with a double-headed arrow in between the pair. The left structure of the first pair shows a nitrogen atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons. It is also double bonded to an oxygen with two lone pairs of electrons. The right image of this pair depicts the mirror image of the left. Both images are surrounded by brackets and a superscripted negative sign. They are labeled, “For N O subscript two superscript negative sign.”
+
 <!-- SEG:m68740:problem:fs-idp100357024 -->
 In terms of the bonds present, explain why acetic acid, CH[[sub:3]]CO[[sub:2]]H, contains two distinct types of carbon-oxygen bonds, whereas the acetate ion, formed by loss of a hydrogen ion from acetic acid, only contains one type of carbon-oxygen bond. The skeleton structures of these species are shown:
+
+<!-- SEG:m68740:alt:fs-idm19699600-alt -->
+Two Lewis structures are shown with a double headed arrow in between. The left structure shows a carbon atom single bonded to three hydrogen atoms and a second carbon atom. The second carbon is single bonded to two oxygen atoms. One of the oxygen atoms is single bonded to a hydrogen atom. The right structure, surrounded by brackets and with a superscripted negative sign, depicts a carbon atom single bonded to three hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to two oxygen atoms.
 
 <!-- SEG:m68740:problem:fs-idm25604816 -->
 Write the Lewis structures for the following, and include resonance structures where appropriate. Indicate which has the strongest carbon-oxygen bond.
@@ -261,6 +333,12 @@ Write the Lewis structures for the following, and include resonance structures w
 
 <!-- SEG:m68740:solution:fs-idp32184800 -->
 (a)[[BR]] [[MEDIA:9]][[BR]] (b)[[BR]] [[MEDIA:10]][[BR]] CO has the strongest carbon-oxygen bond because there is a triple bond joining C and O. CO[[sub:2]] has double bonds.
+
+<!-- SEG:m68740:alt:fs-idm35689072-alt -->
+This structure shows a carbon atom double bonded to two oxygen atoms, each of which has two lone pairs of electrons.
+
+<!-- SEG:m68740:alt:fs-idp52448512-alt -->
+The right structure of this pair shows a carbon atom with one lone pair of electrons triple bonded to an oxygen with one lone pair of electrons.
 
 <!-- SEG:m68740:problem:fs-idm15185536 -->
 Toothpastes containing sodium hydrogen carbonate (sodium bicarbonate) and hydrogen peroxide are widely used. Write Lewis structures for the hydrogen carbonate ion and hydrogen peroxide molecule, with resonance forms where appropriate.
@@ -352,6 +430,18 @@ Draw all possible resonance structures for each of these compounds. Determine th
 <!-- SEG:m68740:solution:fs-idp124490112 -->
 (a)[[BR]] [[MEDIA:11]][[BR]] (b)[[BR]] [[MEDIA:12]][[BR]] (c)[[BR]] [[MEDIA:13]][[BR]] (d)[[BR]] [[MEDIA:14]]
 
+<!-- SEG:m68740:alt:fs-idp9590704-alt -->
+Two Lewis structures are shown with a double-headed arrow in between. The left structure shows an oxygen atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons. It is also double bonded to an oxygen atom with two lone pairs of electrons. The symbols and numbers below this structure read, “( 0 ), ( positive 1 ), ( negative 1 ).” The phrase, “Formal charge,” and a right-facing arrow lie to the left of this structure. The right structure appears as a mirror image of the left and the symbols and numbers below this structure read, “( negative 1 ), ( positive 1 ), ( 0 ).”
+
+<!-- SEG:m68740:alt:fs-idm13086640-alt -->
+Two Lewis structures are shown, with a double-headed arrow in between. The left structure shows a sulfur atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons. The sulfur atom also double bonded to an oxygen atom with two lone pairs of electrons. The symbols and numbers below this structure read, “( negative 1 ), ( positive 1 ), ( 0 ).” The right structure appears as a mirror image of the left and the symbols and numbers below this structure read, “( 0 ), ( positive 1 ), ( negative 1 ).”
+
+<!-- SEG:m68740:alt:fs-idm26418288-alt -->
+[Two Lewis structures are shown, with brackets surrounding each with a superscripted negative sign and a double ended arrow in between. The left structure shows a nitrogen atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons and double bonded to an oxygen atom with two lone pairs of electrons. The symbols and numbers below this structure read “open parenthesis, 0, close parenthesis, open parenthesis, 0, close parenthesis, open parenthesis, negative 1, close parenthesis. The right structure appears as a mirror image of the left and the symbols and numbers below this structure read “open parenthesis, negative 1, close parenthesis, open parenthesis, 0, close parenthesis, open parenthesis, 0, close parenthesis.]
+
+<!-- SEG:m68740:alt:fs-idp61775696-alt -->
+[Three Lewis structures are shown, with brackets surrounding each with a superscripted negative sign and a double ended arrow in between. The left structure shows a nitrogen atom single bonded to two oxygen atoms, each with three lone pairs of electrons and double bonded to an oxygen atom with two lone pairs of electrons. The single bonded oxygen atoms are labeled, from the top of the structure and going clockwise, “open parenthesis, negative 1, close parenthesis, open parenthesis, positive 1, close parenthesis”. The symbols and numbers below this structure read “open parenthesis, 0, close parenthesis, open parenthesis, negative 1, close parenthesis. The middle structure shows a nitrogen atom single bonded to two oxygen atoms, each with three lone pairs of electrons, one of which is labeled “open parenthesis, positive 1, close parenthesis” and double bonded to an oxygen atom with two lone pairs of electrons labeled “open parenthesis, 0, close parenthesis”. The symbols and numbers below this structure read “open parenthesis, negative 1, close parenthesis, open parenthesis, negative 1, close parenthesis. The right structure shows a nitrogen atom single bonded to two oxygen atoms, each with three lone pairs of electrons and double bonded to an oxygen atom with two lone pairs of electrons. One of the single bonded oxygen atoms is labeled, “open parenthesis, negative 1, close parenthesis while the double bonded oxygen is labeled, “open parenthesis, positive 1, close parenthesis”. The symbols and numbers below this structure read “open parenthesis, negative 1, close parenthesis” and “open parenthesis, 0, close parenthesis”.]
+
 <!-- SEG:m68740:problem:fs-idp132239136 -->
 Based on formal charge considerations, which of the following would likely be the correct arrangement of atoms in nitrosyl chloride: ClNO or ClON?
 
@@ -369,6 +459,9 @@ Draw the structure of hydroxylamine, H[[sub:3]]NO, and assign formal charges; lo
 
 <!-- SEG:m68740:solution:fs-idp6445072 -->
 The structure that gives zero formal charges is consistent with the actual structure:[[BR]] [[MEDIA:15]]
+
+<!-- SEG:m68740:alt:fs-idp26230352-alt -->
+A Lewis structure shows a nitrogen atom with one lone pair of electrons single bonded to two hydrogen atoms and an oxygen atom which has two lone pairs of electrons. The oxygen atom is single bonded to a hydrogen atom.
 
 <!-- SEG:m68740:problem:fs-idm33460160 -->
 Iodine forms a series of fluorides (listed here). Write Lewis structures for each of the four compounds and determine the formal charge of the iodine atom in each molecule:
@@ -391,14 +484,23 @@ Write the Lewis structure and chemical formula of the compound with a molar mass
 <!-- SEG:m68740:solution:fs-idp35441312 -->
 NF[[sub:3]];[[BR]] [[MEDIA:16]]
 
+<!-- SEG:m68740:alt:fs-idp98852848-alt -->
+A Lewis structure shows a nitrogen atom with one lone pair of electrons single bonded to three fluorine atoms, each with three lone pairs of electrons.
+
 <!-- SEG:m68740:problem:fs-idp60472592 -->
 Which of the following structures would we expect for nitrous acid? Determine the formal charges:
+
+<!-- SEG:m68740:alt:fs-idp76630304-alt -->
+Two Lewis structures are shown, with the word “or” in between. The left structure shows a nitrogen atom single bonded to an oxygen atom with three lone pairs of electrons. It is also single bonded to a hydrogen atom and double bonded to an oxygen atom with two lone pairs of electrons. The right structure shows a hydrogen atom single bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is single bonded to a nitrogen atom which is double bonded to an oxygen atom with two lone pairs of electrons.
 
 <!-- SEG:m68740:problem:fs-idp101954928 -->
 Sulfuric acid is the industrial chemical produced in greatest quantity worldwide. About 90 billion pounds are produced each year in the United States alone. Write the Lewis structure for sulfuric acid, H[[sub:2]]SO[[sub:4]], which has two oxygen atoms and two OH groups bonded to the sulfur.
 
 <!-- SEG:m68740:solution:fs-idm118650128 -->
 [[BR]][[MEDIA:17]]
+
+<!-- SEG:m68740:alt:fs-idp5472672-alt -->
+A Lewis structure shows a hydrogen atom single bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is single bonded to a sulfur atom. The sulfur atom is double bonded to two oxygen atoms, each of which have three lone pairs of electrons, and single bonded to an oxygen atom with two lone pairs of electrons. This oxygen atom is single bonded to a hydrogen atom.
 
 <!-- SEG:m68740:glossary-term:fs-idp10384768-term -->
 formal charge

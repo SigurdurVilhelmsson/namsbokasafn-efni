@@ -1,0 +1,102 @@
+{
+  "moduleId": "m00223",
+  "title": {
+    "segmentId": "m00223:title:auto-1",
+    "text": "Biological Reductions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "24e715ad-5e4c-4762-b9e2-ceede8deda3d"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00223:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00223:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00223:alt:fig-00001-alt",
+          "text": "A nucleophilic addition reaction where a carboxylic acid derivative reacts with a nucleophile to form an intermediate. This further leads to carbonyl connected to R and nucleophile, and Y negative."
+        },
+        "src": "../../media/OChem_19_12_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00223:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00223:alt:fig-00002-alt",
+          "text": "Benzaldehyde carbonyl is attacked by hydroxyl group to form a tetrahedral intermediate, which reacts with benzaldehyde and then hydronium to produce benzoic acid (oxidized) and benzyl alcohol (reduced)."
+        },
+        "src": "../../media/OChem_19_12_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00223:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00223:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00223:alt:fig-00003-alt",
+          "text": "The reduction of pyruvate by N A D H to form (S)-lactate and N A D cation. It involves specific interactions between molecular components."
+        },
+        "src": "../../media/OChem_19_12_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00223:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 12
+}

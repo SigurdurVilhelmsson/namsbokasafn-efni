@@ -1,0 +1,78 @@
+{
+  "moduleId": "m00152",
+  "title": {
+    "segmentId": "m00152:title:auto-1",
+    "text": "Problems"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "81cc7941-4d2e-47cb-b1fc-27afc47ecf47"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00152:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00152:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00152:alt:fig-00001-alt",
+          "text": "Methylenecyclohexane reacts first with borane and tetrahydrofuran, then hydrogen peroxide and hydroxide to form cyclohexylmethanol or 1-methylcyclohexanol; question mark near structures indicates product is unknown, could be either."
+        },
+        "src": "../../media/OChem_13_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00152:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00152:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00152:alt:fig-00002-alt",
+          "text": "The 1 H N M R spectrum of cyclohexylmethanol (peaks at 0, 0.9, 1.2, 1.4, 1.7, 2.8. and 3.4) and 1-methylcyclohexanol (peaks at 0, 1.1, and 1.4)."
+        },
+        "src": "../../media/OChem_13_09_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00152:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

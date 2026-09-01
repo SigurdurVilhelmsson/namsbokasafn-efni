@@ -22,17 +22,23 @@ Relate these electron configurations to the molecules’ stabilities and magneti
 <!-- SEG:m68747:para:fs-idm108621792 -->
 For almost every covalent molecule that exists, we can now draw the Lewis structure, predict the electron-pair geometry, predict the molecular geometry, and come close to predicting bond angles. However, one of the most important molecules we know, the oxygen molecule O[[sub:2]], presents a problem with respect to its Lewis structure. We would write the following Lewis structure for O[[sub:2]]:
 
+<!-- SEG:m68747:alt:fs-idm39755904-alt -->
+A Lewis structure is shown. It is made up of two oxygen atoms, each with two lone pairs of electrons, bonded together with a double bond.
+
 <!-- SEG:m68747:para:fs-idm179265392 -->
-This electronic structure adheres to all the rules governing Lewis theory. There is an O=O double bond, and each oxygen atom has eight electrons around it. However, this picture is at odds with the magnetic behavior of oxygen. By itself, O[[sub:2]] is not magnetic, but it is attracted to magnetic fields. Thus, when we pour liquid oxygen past a strong magnet, it collects between the poles of the magnet and defies gravity, as in [[docref:m68743#CNX_Chem_08_00_LiqO2]]. Such attraction to a magnetic field is called {{term}}paramagnetism{{/term}}, and it arises in molecules that have unpaired electrons. And yet, the Lewis structure of O[[sub:2]] indicates that all electrons are paired. How do we account for this discrepancy?
+This electronic structure adheres to all the rules governing Lewis theory. There is an O=O double bond, and each oxygen atom has eight electrons around it. However, this picture is at odds with the magnetic behavior of oxygen. By itself, O[[sub:2]] is not magnetic, but it is attracted to magnetic fields. Thus, when we pour liquid oxygen past a strong magnet, it collects between the poles of the magnet and defies gravity, as in [[docref:m68743#CNX_Chem_08_00_LiqO2]]. Such attraction to a magnetic field is called [[term:paramagnetism|term-00001]], and it arises in molecules that have unpaired electrons. And yet, the Lewis structure of O[[sub:2]] indicates that all electrons are paired. How do we account for this discrepancy?
 
 <!-- SEG:m68747:para:fs-idm140344208 -->
 Magnetic susceptibility measures the force experienced by a substance in a magnetic field. When we compare the weight of a sample to the weight measured in a magnetic field ([[xref:CNX_Chem_08_04_Gouy]]), paramagnetic samples that are attracted to the magnet will appear heavier because of the force exerted by the magnetic field. We can calculate the number of unpaired electrons based on the increase in weight.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_Gouy-caption -->
-A {{term}}Gouy{{/term}} balance compares the mass of a sample in the presence of a magnetic field with the mass with the electromagnet turned off to determine the number of unpaired electrons in a sample.
+A [[term:Gouy|term-00002]] balance compares the mass of a sample in the presence of a magnetic field with the mass with the electromagnet turned off to determine the number of unpaired electrons in a sample.
+
+<!-- SEG:m68747:alt:fs-idm166075136-alt -->
+A diagram depicts a stand supporting two objects that are held in balance by a horizontal bar. On the right, the bar supports a dish that is holding two weights. On the left there is a line attached to a test tube labeled, “Sample tube.” The test tube has been lowered into the space labeled, “Magnetic field,” between two structures labeled, “Electromagnets.”
 
 <!-- SEG:m68747:para:fs-idm167869376 -->
-Experiments show that each O[[sub:2]] molecule has two unpaired electrons. The Lewis-structure model does not predict the presence of these two unpaired electrons. Unlike oxygen, the apparent weight of most molecules decreases slightly in the presence of an inhomogeneous magnetic field. Materials in which all of the electrons are paired are {{term}}diamagnetic{{/term}} and weakly repel a magnetic field. Paramagnetic and diamagnetic materials do not act as permanent magnets. Only in the presence of an applied magnetic field do they demonstrate attraction or repulsion.
+Experiments show that each O[[sub:2]] molecule has two unpaired electrons. The Lewis-structure model does not predict the presence of these two unpaired electrons. Unlike oxygen, the apparent weight of most molecules decreases slightly in the presence of an inhomogeneous magnetic field. Materials in which all of the electrons are paired are [[term:diamagnetic|term-00003]] and weakly repel a magnetic field. Paramagnetic and diamagnetic materials do not act as permanent magnets. Only in the presence of an applied magnetic field do they demonstrate attraction or repulsion.
 
 <!-- SEG:m68747:para:fs-idm182773888 -->
 View this [[link:brief video|http://openstax.org/l/16diamagnetic]] to see several demonstrations of paramagnetic and diamagnetic behavior.
@@ -40,59 +46,65 @@ View this [[link:brief video|http://openstax.org/l/16diamagnetic]] to see severa
 <!-- SEG:m68747:para:fs-idm112096224 -->
 Molecular orbital theory (MO theory) provides an explanation of chemical bonding that accounts for the paramagnetism of the oxygen molecule. It also explains the bonding in a number of other molecules, such as violations of the octet rule and more molecules with more complicated bonding (beyond the scope of this text) that are difficult to describe with Lewis structures. Additionally, it provides a model for describing the energies of electrons in a molecule and the probable location of these electrons. Unlike valence bond theory, which uses hybrid orbitals that are assigned to one specific atom, MO theory uses the combination of atomic orbitals to yield molecular orbitals that are [[i:delocalized]] over the entire molecule rather than being localized on its constituent atoms. MO theory also helps us understand why some substances are electrical conductors, others are semiconductors, and still others are insulators. [[xref:fs-idm162808816]] summarizes the main points of the two complementary bonding theories. Both theories provide different, useful ways of describing molecular structure.
 
-<!-- SEG:m68747:entry:auto-15 -->
+<!-- SEG:m68747:entry:auto-17 -->
 Comparison of Bonding Theories
 
-<!-- SEG:m68747:entry:auto-16 -->
+<!-- SEG:m68747:entry:auto-18 -->
 Valence Bond Theory
 
-<!-- SEG:m68747:entry:auto-17 -->
+<!-- SEG:m68747:entry:auto-19 -->
 Molecular Orbital Theory
 
-<!-- SEG:m68747:entry:auto-18 -->
+<!-- SEG:m68747:entry:auto-20 -->
 considers bonds as localized between one pair of atoms
 
-<!-- SEG:m68747:entry:auto-19 -->
+<!-- SEG:m68747:entry:auto-21 -->
 considers electrons delocalized throughout the entire molecule
 
-<!-- SEG:m68747:entry:auto-20 -->
+<!-- SEG:m68747:entry:auto-22 -->
 creates bonds from overlap of atomic orbitals ([[i:s, p, d]]…) and hybrid orbitals ([[i:sp, sp]][[sup:2]], [[i:sp]][[sup:3]]…)
 
-<!-- SEG:m68747:entry:auto-21 -->
+<!-- SEG:m68747:entry:auto-23 -->
 combines atomic orbitals to form molecular orbitals (σ, σ*, π, π*)
 
-<!-- SEG:m68747:entry:auto-22 -->
+<!-- SEG:m68747:entry:auto-24 -->
 forms σ or π bonds
 
-<!-- SEG:m68747:entry:auto-23 -->
+<!-- SEG:m68747:entry:auto-25 -->
 creates bonding and antibonding interactions based on which orbitals are filled
 
-<!-- SEG:m68747:entry:auto-24 -->
+<!-- SEG:m68747:entry:auto-26 -->
 predicts molecular shape based on the number of regions of electron density
 
-<!-- SEG:m68747:entry:auto-25 -->
+<!-- SEG:m68747:entry:auto-27 -->
 predicts the arrangement of electrons in molecules
 
-<!-- SEG:m68747:entry:auto-26 -->
+<!-- SEG:m68747:entry:auto-28 -->
 needs multiple structures to describe resonance
 
 <!-- SEG:m68747:para:fs-idm11457392 -->
-{{term}}Molecular orbital theory{{/term}} describes the distribution of electrons in molecules in much the same way that the distribution of electrons in atoms is described using atomic orbitals. Using quantum mechanics, the behavior of an electron in a molecule is still described by a wave function, [[i:Ψ]], analogous to the behavior in an atom. Just like electrons around isolated atoms, electrons around atoms in molecules are limited to discrete (quantized) energies. The region of space in which a valence electron in a molecule is likely to be found is called a {{term}}molecular orbital ([[i:Ψ]][[sup:2]]){{/term}}. Like an atomic orbital, a molecular orbital is full when it contains two electrons with opposite spin.
+[[term:Molecular orbital theory|term-00004]] describes the distribution of electrons in molecules in much the same way that the distribution of electrons in atoms is described using atomic orbitals. Using quantum mechanics, the behavior of an electron in a molecule is still described by a wave function, [[i:Ψ]], analogous to the behavior in an atom. Just like electrons around isolated atoms, electrons around atoms in molecules are limited to discrete (quantized) energies. The region of space in which a valence electron in a molecule is likely to be found is called a [[term:molecular orbital ([[i:Ψ]][[sup:2]])|term-00005]]. Like an atomic orbital, a molecular orbital is full when it contains two electrons with opposite spin.
 
 <!-- SEG:m68747:para:fs-idm112433808 -->
-We will consider the molecular orbitals in molecules composed of two identical atoms (H[[sub:2]] or Cl[[sub:2]], for example). Such molecules are called {{term}}homonuclear diatomic molecules{{/term}}. In these diatomic molecules, several types of molecular orbitals occur.
+We will consider the molecular orbitals in molecules composed of two identical atoms (H[[sub:2]] or Cl[[sub:2]], for example). Such molecules are called [[term:homonuclear diatomic molecules|term-00006]]. In these diatomic molecules, several types of molecular orbitals occur.
 
 <!-- SEG:m68747:para:fs-idm141141248 -->
-The mathematical process of combining atomic orbitals to generate molecular orbitals is called the {{term}}linear combination of atomic orbitals (LCAO){{/term}}. The wave function describes the wavelike properties of an electron. Molecular orbitals are combinations of atomic orbital wave functions. Combining waves can lead to constructive interference, in which peaks line up with peaks, or destructive interference, in which peaks line up with troughs ([[xref:CNX_Chem_08_04_waveadd]]). In orbitals, the waves are three dimensional, and they combine with in-phase waves producing regions with a higher probability of electron density and out-of-phase waves producing nodes, or regions of no electron density.
+The mathematical process of combining atomic orbitals to generate molecular orbitals is called the [[term:linear combination of atomic orbitals (LCAO)|term-00007]]. The wave function describes the wavelike properties of an electron. Molecular orbitals are combinations of atomic orbital wave functions. Combining waves can lead to constructive interference, in which peaks line up with peaks, or destructive interference, in which peaks line up with troughs ([[xref:CNX_Chem_08_04_waveadd]]). In orbitals, the waves are three dimensional, and they combine with in-phase waves producing regions with a higher probability of electron density and out-of-phase waves producing nodes, or regions of no electron density.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_waveadd-caption -->
 (a) When in-phase waves combine, constructive interference produces a wave with greater amplitude. (b) When out-of-phase waves combine, destructive interference produces a wave with less (or no) amplitude.
 
+<!-- SEG:m68747:alt:fs-idm181597760-alt -->
+A pair of diagrams are shown and labeled, “a” and “b.” Diagram a shows two identical waves with two crests and two troughs. They are drawn one above the other with a plus sign in between and an equal sign to the right. To the right of the equal sign is a much taller wave with a same number of troughs and crests. Diagram b shows two waves with two crests and two troughs, but they are mirror images of one another rotated over a horizontal axis. They are drawn one above the other with a plus sign in between and an equal sign to the right. To the right of the equal sign is a flat line.
+
 <!-- SEG:m68747:para:fs-idm153714976 -->
-There are two types of molecular orbitals that can form from the overlap of two atomic [[i:s]] orbitals on adjacent atoms. The two types are illustrated in [[xref:CNX_Chem_08_04_ssigma]]. The in-phase combination produces a lower energy {{term}}σ[[sub:[[i:s]]]] molecular orbital{{/term}} (read as "sigma-s") in which most of the electron density is directly between the nuclei. The out-of-phase addition (which can also be thought of as subtracting the wave functions) produces a higher energy {{term}}[[MATH:1]] molecular orbital{{/term}} (read as "sigma-s-star") molecular orbital in which there is a node between the nuclei. The asterisk signifies that the orbital is an antibonding orbital. Electrons in a σ[[i:[[sub:s]]]] orbital are attracted by both nuclei at the same time and are more stable (of lower energy) than they would be in the isolated atoms. Adding electrons to these orbitals creates a force that holds the two nuclei together, so we call these orbitals {{term}}bonding orbitals{{/term}}. Electrons in the [[MATH:2]] orbitals are located well away from the region between the two nuclei. The attractive force between the nuclei and these electrons pulls the two nuclei apart. Hence, these orbitals are called {{term}}antibonding orbitals{{/term}}. Electrons fill the lower-energy bonding orbital before the higher-energy antibonding orbital, just as they fill lower-energy atomic orbitals before they fill higher-energy atomic orbitals.
+There are two types of molecular orbitals that can form from the overlap of two atomic [[i:s]] orbitals on adjacent atoms. The two types are illustrated in [[xref:CNX_Chem_08_04_ssigma]]. The in-phase combination produces a lower energy [[term:σ[[sub:[[i:s]]]] molecular orbital|term-00008]] (read as "sigma-s") in which most of the electron density is directly between the nuclei. The out-of-phase addition (which can also be thought of as subtracting the wave functions) produces a higher energy [[term:[[MATH:1]] molecular orbital|term-00009]] (read as "sigma-s-star") molecular orbital in which there is a node between the nuclei. The asterisk signifies that the orbital is an antibonding orbital. Electrons in a σ[[i:[[sub:s]]]] orbital are attracted by both nuclei at the same time and are more stable (of lower energy) than they would be in the isolated atoms. Adding electrons to these orbitals creates a force that holds the two nuclei together, so we call these orbitals [[term:bonding orbitals|term-00010]]. Electrons in the [[MATH:2]] orbitals are located well away from the region between the two nuclei. The attractive force between the nuclei and these electrons pulls the two nuclei apart. Hence, these orbitals are called [[term:antibonding orbitals|term-00011]]. Electrons fill the lower-energy bonding orbital before the higher-energy antibonding orbital, just as they fill lower-energy atomic orbitals before they fill higher-energy atomic orbitals.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_ssigma-caption -->
 Sigma (σ) and sigma-star (σ*) molecular orbitals are formed by the combination of two [[i:s]] atomic orbitals. The dots (·) indicate the locations of nuclei.
+
+<!-- SEG:m68747:alt:fs-idm78961584-alt -->
+A diagram is shown that depicts a vertical upward-facing arrow that lies to the left of all the other portions of the diagram and is labeled, “E.” To the immediate right of the midpoint of the arrow are two circles each labeled with a positive sign, the letter S, and the phrase, “Atomic orbitals.” These are followed by a right-facing horizontal arrow that points to the same two circles labeled with plus signs, but they are now touching and are labeled, “Combine atomic orbitals.” Two right-facing arrows lead to the last portion of the diagram, one facing upward and one facing downward. The upper arrow is labeled, “Subtract,” and points to two oblong ovals labeled with plus signs, and the phrase, “Antibonding orbitals sigma subscript s superscript asterisk.” The lower arrow is labeled, “Add,” and points to an elongated oval with two plus signs that is labeled, “Bonding orbital sigma subscript s.” The heading over the last section of the diagram are the words, “Molecular orbitals.”
 
 <!-- SEG:m68747:para:fs-idm201921312 -->
 You can watch [[link:animations|http://openstax.org/l/16molecorbital]] visualizing the calculated atomic orbitals combining to form various molecular orbitals at the Orbitron website.
@@ -103,14 +115,20 @@ In [[i:p]] orbitals, the wave function gives rise to two lobes with opposite pha
 <!-- SEG:m68747:caption:CNX_Chem_08_04_pMOsigma-caption -->
 Combining wave functions of two [[i:p]] atomic orbitals along the internuclear axis creates two molecular orbitals, σ[[i:[[sub:p]]]] and [[MATH:4]]
 
+<!-- SEG:m68747:alt:fs-idm189517056-alt -->
+Two horizontal rows of diagrams are shown. The upper diagram shows two equally-sized peanut-shaped orbitals with a plus sign in between them connected to a merged orbital diagram by a right facing arrow. The merged diagram has a much larger oval at the center and much smaller ovular orbitals on the edge. It is labeled, “sigma subscript p x.” The lower diagram shows two equally-sized peanut-shaped orbitals with a plus sign in between them connected to a split orbital diagram by a right facing arrow. The split diagram has a much larger oval at the outer ends and much smaller ovular orbitals on the inner edges. It is labeled, “sigma subscript p x superscript asterisk”.
+
 <!-- SEG:m68747:para:fs-idm175046592 -->
-The side-by-side overlap of two [[i:p]] orbitals gives rise to a {{term}}pi (π) bonding molecular orbital{{/term}} and a {{term}}π* antibonding molecular orbital{{/term}}, as shown in [[xref:CNX_Chem_08_04_pMOpi]]. In valence bond theory, we describe π bonds as containing a nodal plane containing the internuclear axis and perpendicular to the lobes of the [[i:p]] orbitals, with electron density on either side of the node. In molecular orbital theory, we describe the π orbital by this same shape, and a π bond exists when this orbital contains electrons. Electrons in this orbital interact with both nuclei and help hold the two atoms together, making it a bonding orbital. For the out-of-phase combination, there are two nodal planes created, one along the internuclear axis and a perpendicular one between the nuclei.
+The side-by-side overlap of two [[i:p]] orbitals gives rise to a [[term:pi (π) bonding molecular orbital|term-00012]] and a [[term:π* antibonding molecular orbital|term-00013]], as shown in [[xref:CNX_Chem_08_04_pMOpi]]. In valence bond theory, we describe π bonds as containing a nodal plane containing the internuclear axis and perpendicular to the lobes of the [[i:p]] orbitals, with electron density on either side of the node. In molecular orbital theory, we describe the π orbital by this same shape, and a π bond exists when this orbital contains electrons. Electrons in this orbital interact with both nuclei and help hold the two atoms together, making it a bonding orbital. For the out-of-phase combination, there are two nodal planes created, one along the internuclear axis and a perpendicular one between the nuclei.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_pMOpi-caption -->
 Side-by-side overlap of each two [[i:p]] orbitals results in the formation of two π molecular orbitals. Combining the out-of-phase orbitals results in an antibonding molecular orbital with two nodes. One contains the internuclear axis, and one is perpendicular to the axis. Combining the in-phase orbitals results in a bonding orbital. There is a node (blue) containing the internuclear axis with the two lobes of the orbital located above and below this node.
 
+<!-- SEG:m68747:alt:fs-idm151833152-alt -->
+Two horizontal rows of diagrams are shown. The upper and lower diagrams both begin with two vertical peanut-shaped orbitals with a plus sign in between followed by a right-facing arrow. The upper diagram shows the same vertical peanut orbitals bending slightly away from one another and separated by a dotted line. It is labeled, “pi subscript p superscript asterisk.” The lower diagram shows the horizontal overlap of the two orbitals and is labeled, “pi subscript p.”
+
 <!-- SEG:m68747:para:fs-idm130124992 -->
-In the molecular orbitals of diatomic molecules, each atom also has two sets of [[i:p]] orbitals oriented side by side ([[i:p[[sub:y]]]] and [[i:p[[sub:z]]]]), so these four atomic orbitals combine pairwise to create two π orbitals and two π* orbitals. The π[[i:[[sub:py]]]] and [[MATH:5]] orbitals are oriented at right angles to the π[[i:[[sub:pz]]]] and [[MATH:6]] orbitals. Except for their orientation, the π[[i:[[sub:py]]]] and π[[i:[[sub:pz]]]] orbitals are identical and have the same energy; they are {{term}}degenerate orbitals{{/term}}. The [[MATH:7]] and [[MATH:8]] antibonding orbitals are also degenerate and identical except for their orientation. A total of six molecular orbitals results from the combination of the six atomic [[i:p]] orbitals in two atoms: σ[[i:[[sub:px]]]] and [[MATH:9]] π[[i:[[sub:py]]]] and [[MATH:10]] π[[i:[[sub:pz]]]] and [[MATH:11]]
+In the molecular orbitals of diatomic molecules, each atom also has two sets of [[i:p]] orbitals oriented side by side ([[i:p[[sub:y]]]] and [[i:p[[sub:z]]]]), so these four atomic orbitals combine pairwise to create two π orbitals and two π* orbitals. The π[[i:[[sub:py]]]] and [[MATH:5]] orbitals are oriented at right angles to the π[[i:[[sub:pz]]]] and [[MATH:6]] orbitals. Except for their orientation, the π[[i:[[sub:py]]]] and π[[i:[[sub:pz]]]] orbitals are identical and have the same energy; they are [[term:degenerate orbitals|term-00014]]. The [[MATH:7]] and [[MATH:8]] antibonding orbitals are also degenerate and identical except for their orientation. A total of six molecular orbitals results from the combination of the six atomic [[i:p]] orbitals in two atoms: σ[[i:[[sub:px]]]] and [[MATH:9]] π[[i:[[sub:py]]]] and [[MATH:10]] π[[i:[[sub:pz]]]] and [[MATH:11]]
 
 <!-- SEG:m68747:example-title:fs-idm91199824-title -->
 Molecular Orbitals
@@ -139,23 +157,35 @@ Label the molecular orbital shown as [[i:σ]] or π, bonding or antibonding and 
 <!-- SEG:m68747:para:fs-idm99049568 -->
 The orbital is located along the internuclear axis, so it is a σ orbital. There is a node bisecting the internuclear axis, so it is an antibonding orbital.[[BR]]
 
+<!-- SEG:m68747:alt:fs-idm110513152-alt -->
+Three diagrams are shown and labeled “a,” “b,” and “c.” Diagram a shows two horizontal peanut-shaped orbitals laying side-by-side. They are labeled, “3 p subscript x and 3 p subscript x.” Diagram b shows one vertical and one horizontal peanut-shaped orbital which are at right angles to one another. They are labeled, “3 p subscript x and 3 p subscript y.” Diagram c shows two vertical peanut-shaped orbitals laying side-by-side and labeled, “3 p subscript y and 3 p subscript y.”
+
+<!-- SEG:m68747:alt:fs-idm135406128-alt -->
+Two orbitals are shown lying end-to-end. Each has one enlarged and one small side. The small sides are facing one another
+
 <!-- SEG:m68747:note-title:fs-idm210552112-title -->
 Answer:
 
 <!-- SEG:m68747:para:fs-idm99049568 -->
 The orbital is located along the internuclear axis, so it is a σ orbital. There is a node bisecting the internuclear axis, so it is an antibonding orbital.[[BR]]
 
+<!-- SEG:m68747:alt:fs-idm152931472-alt -->
+Two orbitals are shown lying end-to-end. Each has one enlarged and one small side. The small sides are facing one another and are separated by a vertical dotted line.
+
 <!-- SEG:m68747:note-title:fs-idm43986688-title -->
 Walter Kohn: Nobel Laureate
 
 <!-- SEG:m68747:para:fs-idm150138816 -->
-Walter {{term}}Kohn{{/term}} ([[xref:CNX_Chem_08_04_Kohn]]) is a theoretical physicist who studies the electronic structure of solids. His work combines the principles of quantum mechanics with advanced mathematical techniques. This technique, called density functional theory, makes it possible to compute properties of molecular orbitals, including their shape and energies. Kohn and mathematician John Pople were awarded the Nobel Prize in Chemistry in 1998 for their contributions to our understanding of electronic structure. Kohn also made significant contributions to the physics of semiconductors.
+Walter [[term:Kohn|term-00015]] ([[xref:CNX_Chem_08_04_Kohn]]) is a theoretical physicist who studies the electronic structure of solids. His work combines the principles of quantum mechanics with advanced mathematical techniques. This technique, called density functional theory, makes it possible to compute properties of molecular orbitals, including their shape and energies. Kohn and mathematician John Pople were awarded the Nobel Prize in Chemistry in 1998 for their contributions to our understanding of electronic structure. Kohn also made significant contributions to the physics of semiconductors.
 
 <!-- SEG:m68747:para:fs-idm51386912 -->
 Kohn’s biography has been remarkable outside the realm of physical chemistry as well. He was born in Austria, and during World War II he was part of the Kindertransport program that rescued 10,000 children from the Nazi regime. His summer jobs included discovering gold deposits in Canada and helping Polaroid explain how its instant film worked. Dr. Kohn passed away in 2016 at the age of 93.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_Kohn-caption -->
 Walter Kohn developed methods to describe molecular orbitals. (credit: image courtesy of Walter Kohn)
+
+<!-- SEG:m68747:alt:fs-idm136311776-alt -->
+A photograph of Walter Kohn is shown.
 
 <!-- SEG:m68747:note-title:fs-idm152886256-title -->
 Computational Chemistry in Drug Design
@@ -166,11 +196,14 @@ While the descriptions of bonding described in this chapter involve many theoret
 <!-- SEG:m68747:caption:CNX_Chem_08_04_HIVProteas-caption -->
 The molecule shown, HIV-1 protease, is an important target for pharmaceutical research. By designing molecules that bind to this protein, scientists are able to drastically inhibit the progress of the disease.
 
+<!-- SEG:m68747:alt:fs-idm42063808-alt -->
+A diagram of a molecule is shown. The image shows a tangle of ribbon-like, intertwined, pink and green curling lines with a complex ball and stick model in the center.
+
 <!-- SEG:m68747:title:fs-idm108525232-title -->
 Molecular Orbital Energy Diagrams
 
 <!-- SEG:m68747:para:fs-idm109157200 -->
-The relative energy levels of atomic and molecular orbitals are typically shown in a {{term}}molecular orbital diagram{{/term}} ([[xref:CNX_Chem_08_04_FillMo]]). For a diatomic molecule, the atomic orbitals of one atom are shown on the left, and those of the other atom are shown on the right. Each horizontal line represents one orbital that can hold two electrons. The molecular orbitals formed by the combination of the atomic orbitals are shown in the center. Dashed lines show which of the atomic orbitals combine to form the molecular orbitals. For each pair of atomic orbitals that combine, one lower-energy (bonding) molecular orbital and one higher-energy (antibonding) orbital result. Thus we can see that combining the six 2[[i:p]] atomic orbitals results in three bonding orbitals (one σ and two π) and three antibonding orbitals (one σ* and two π*).
+The relative energy levels of atomic and molecular orbitals are typically shown in a [[term:molecular orbital diagram|term-00016]] ([[xref:CNX_Chem_08_04_FillMo]]). For a diatomic molecule, the atomic orbitals of one atom are shown on the left, and those of the other atom are shown on the right. Each horizontal line represents one orbital that can hold two electrons. The molecular orbitals formed by the combination of the atomic orbitals are shown in the center. Dashed lines show which of the atomic orbitals combine to form the molecular orbitals. For each pair of atomic orbitals that combine, one lower-energy (bonding) molecular orbital and one higher-energy (antibonding) orbital result. Thus we can see that combining the six 2[[i:p]] atomic orbitals results in three bonding orbitals (one σ and two π) and three antibonding orbitals (one σ* and two π*).
 
 <!-- SEG:m68747:para:fs-idm63353616 -->
 We predict the distribution of electrons in these molecular orbitals by filling the orbitals in the same way that we fill atomic orbitals, by the Aufbau principle. Lower-energy orbitals fill first, electrons spread out among degenerate orbitals before pairing, and each orbital can hold a maximum of two electrons with opposite spins ([[xref:CNX_Chem_08_04_FillMo]]). Just as we write electron configurations for atoms, we can write the molecular electronic configuration by listing the orbitals with superscripts indicating the number of electrons present. For clarity, we place parentheses around molecular orbitals with the same energy. In this case, each orbital is at a different energy, so parentheses separate each orbital. Thus we would expect a diatomic molecule or ion containing seven electrons (such as [[MATH:13]] would have the molecular electron configuration [[MATH:14]] It is common to omit the core electrons from molecular orbital diagrams and configurations and include only the valence electrons.
@@ -178,11 +211,14 @@ We predict the distribution of electrons in these molecular orbitals by filling 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_FillMo-caption -->
 This is the molecular orbital diagram for the homonuclear diatomic [[MATH:15]] showing the molecular orbitals of the valence shell only. The molecular orbitals are filled in the same manner as atomic orbitals, using the Aufbau principle and Hund’s rule.
 
+<!-- SEG:m68747:alt:fs-idm17917232-alt -->
+A diagram is shown that has an upward-facing vertical arrow running along the left side labeled, “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 2 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “2 s.” The line on the left has two vertical half arrows drawn on it, one facing up and one facing down while the line of the right has one half arrow facing up drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but further up from the first. It is labeled, “sigma subscript 2 s superscript asterisk.” This horizontal line has one upward-facing vertical half-arrow drawn on it. The left and right sides of the diagram have headers that read, ”Atomic orbitals,” while the center is header reads “Molecular orbitals”.
+
 <!-- SEG:m68747:title:fs-idm72263472-title -->
 Bond Order
 
 <!-- SEG:m68747:para:fs-idp47682464 -->
-The filled molecular orbital diagram shows the number of electrons in both bonding and antibonding molecular orbitals. The net contribution of the electrons to the bond strength of a molecule is identified by determining the {{term}}bond order{{/term}} that results from the filling of the molecular orbitals by electrons.
+The filled molecular orbital diagram shows the number of electrons in both bonding and antibonding molecular orbitals. The net contribution of the electrons to the bond strength of a molecule is identified by determining the [[term:bond order|term-00017]] that results from the filling of the molecular orbitals by electrons.
 
 <!-- SEG:m68747:para:fs-idm84042704 -->
 When using Lewis structures to describe the distribution of electrons in molecules, we define bond order as the number of bonding pairs of electrons between two atoms. Thus a single bond has a bond order of 1, a double bond has a bond order of 2, and a triple bond has a bond order of 3. We define bond order differently when we use the molecular orbital description of the distribution of electrons, but the resulting bond order is usually the same. The MO technique is more accurate and can handle cases when the Lewis structure method fails, but both methods describe the same phenomenon.
@@ -211,11 +247,17 @@ As we saw in valence bond theory, σ bonds are generally more stable than π bon
 <!-- SEG:m68747:caption:CNX_Chem_08_04_X2MOs-caption -->
 This shows the MO diagrams for each homonuclear diatomic molecule in the second period. The orbital energies decrease across the period as the effective nuclear charge increases and atomic radius decreases. Between N[[sub:2]] and O[[sub:2]], the order of the orbitals changes.
 
+<!-- SEG:m68747:alt:fs-idm110589568-alt -->
+A graph is shown in which the y-axis is labeled, “E,” and appears as a vertical, upward-facing arrow. Across the top, the graph reads, “L i subscript 2,” “B e subscript 2,” “B subscript 2,” “C subscript 2,” “N subscript 2,” “O subscript 2,” “F subscript 2,” and “Ne subscript 2.” Directly below each of these element terms is a single pink line, and all lines are connected to one another by a dashed line, to create an overall line that decreases in height as it moves from left to right across the graph. This line is labeled, “sigma subscript 2 p x superscript asterisk”. Directly below each of these lines is a set of two pink lines, and all lines are connected to one another by a dashed line, to create an overall line that decreases in height as it moves from left to right across the graph. It is consistently lower than the first line. This line is labeled, “pi subscript 2 p y superscript asterisk,” and, “pi subscript 2 p z superscript asterisk.” Directly below each of these double lines is a single pink line, and all lines are connected to one another by a dashed line, to create an overall line that decreases in height as it moves from left to right across the graph. It has a distinctive drop at the label, “O subscript 2.” This line is labeled, “sigma subscript 2 p x.” Directly below each of these lines is a set of two pink lines, and all lines are connected to one another by a dashed line to create an overall line that decreases very slightly in height as it moves from left to right across the graph. It is consistently lower than the third line until it reaches the point labeled, “O subscript 2.” This line is labeled, “pi subscript 2 p y,” and, “pi subscript 2 p z.” Directly below each of these lines is a single blue line, and all lines are connected to one another by a dashed line to create an overall line that decreases in height as it moves from left to right across the graph. This line is labeled, “sigma subscript 2 s superscript asterisk.” Finally, directly below each of these lines is a single blue line, and all lines are connected to one another by a dashed line to create an overall line that decreases in height as it moves from left to right across the graph. This line is labeled. “sigma subscript 2 s.”
+
 <!-- SEG:m68747:para:fs-idm170513216 -->
-This switch in orbital ordering occurs because of a phenomenon called {{term}}s-p mixing{{/term}}. s-p mixing does not create new orbitals; it merely influences the energies of the existing molecular orbitals. The σ[[sub:s]] wavefunction mathematically combines with the σ[[sub:p]] wavefunction, with the result that the σ[[sub:s]] orbital becomes more stable, and the σ[[sub:p]] orbital becomes less stable ([[xref:CNX_Chem_08_04_spmix]]). Similarly, the antibonding orbitals also undergo s-p mixing, with the σ[[sub:s*]] becoming more stable and the σ[[sub:p*]] becoming less stable.
+This switch in orbital ordering occurs because of a phenomenon called [[term:s-p mixing|term-00018]]. s-p mixing does not create new orbitals; it merely influences the energies of the existing molecular orbitals. The σ[[sub:s]] wavefunction mathematically combines with the σ[[sub:p]] wavefunction, with the result that the σ[[sub:s]] orbital becomes more stable, and the σ[[sub:p]] orbital becomes less stable ([[xref:CNX_Chem_08_04_spmix]]). Similarly, the antibonding orbitals also undergo s-p mixing, with the σ[[sub:s*]] becoming more stable and the σ[[sub:p*]] becoming less stable.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_spmix-caption -->
 Without mixing, the MO pattern occurs as expected, with the σ[[sub:p]] orbital lower in energy than the π[[sub:p]] orbitals. When s-p mixing occurs, the orbitals shift as shown, with the σ[[sub:p]] orbital higher in energy than the π[[sub:p]] orbitals.
+
+<!-- SEG:m68747:alt:fs-idm173324128-alt -->
+A diagram is shown. At the bottom left of the diagram is a horizontal line that is connected to the right and left by upward-facing, dotted lines to two more horizontal lines. Those two lines are connected by upward-facing dotted lines to another line in the center of the diagram but farther up from the first. Each of the bottom two central lines has a vertical downward-facing arrow. Above this structure is a horizontal line that is connected to the right and left by upward-facing, dotted lines to two sets of three horizontal lines and those two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but further up from the first. In between the horizontal lines of this structure are two pairs of horizontal lines that are above the first line but below the second and connected by dotted lines to the side horizontal lines. The bottom and top central lines each have an upward-facing vertical arrow. These two structures are redrawn on the right side of the diagram, but this time, the central lines of the bottom structure are moved downward in relation to the side lines. The upper portion of the structure has its central lines shifted upward in relation to the side lines. This structure also shows the bottom line appearing above the set of two lines.
 
 <!-- SEG:m68747:para:fs-idm134586720 -->
 s-p mixing occurs when the [[i:s]] and [[i:p]] orbitals have similar energies. The energy difference between 2[[i:s]] and 2[[i:p]] orbitals in O, F, and Ne is greater than that in Li, Be, B, C, and N. Because of this, O[[sub:2]], F[[sub:2]], and Ne[[sub:2]] exhibit negligible s-p mixing (not sufficient to change the energy ordering), and their MO diagrams follow the normal pattern, as shown in [[xref:CNX_Chem_08_04_X2MOs]]. All of the other period 2 diatomic molecules do have s-p mixing, which leads to the pattern where the σ[[sub:p]] orbital is raised above the π[[sub:p]] set.
@@ -223,88 +265,88 @@ s-p mixing occurs when the [[i:s]] and [[i:p]] orbitals have similar energies. T
 <!-- SEG:m68747:para:fs-idm113653568 -->
 Using the MO diagrams shown in [[xref:CNX_Chem_08_04_X2MOs]], we can add in the electrons and determine the molecular electron configuration and bond order for each of the diatomic molecules. As shown in [[xref:fs-idp20943328]], Be[[sub:2]] and Ne[[sub:2]] molecules would have a bond order of 0, and these molecules do not exist.
 
-<!-- SEG:m68747:entry:auto-76 -->
+<!-- SEG:m68747:entry:auto-90 -->
 Electron Configuration and Bond Order for Molecular Orbitals in Homonuclear Diatomic Molecules of Period Two Elements
 
-<!-- SEG:m68747:entry:auto-77 -->
+<!-- SEG:m68747:entry:auto-91 -->
 Molecule
 
-<!-- SEG:m68747:entry:auto-78 -->
+<!-- SEG:m68747:entry:auto-92 -->
 Electron Configuration
 
-<!-- SEG:m68747:entry:auto-79 -->
+<!-- SEG:m68747:entry:auto-93 -->
 Bond Order
 
-<!-- SEG:m68747:entry:auto-80 -->
+<!-- SEG:m68747:entry:auto-94 -->
 Li[[sub:2]]
 
-<!-- SEG:m68747:entry:auto-81 -->
+<!-- SEG:m68747:entry:auto-95 -->
 [[MATH:16]]
 
-<!-- SEG:m68747:entry:auto-82 -->
-1
-
-<!-- SEG:m68747:entry:auto-83 -->
-Be[[sub:2]] (unstable)
-
-<!-- SEG:m68747:entry:auto-84 -->
-[[MATH:17]]
-
-<!-- SEG:m68747:entry:auto-85 -->
-0
-
-<!-- SEG:m68747:entry:auto-86 -->
-B[[sub:2]]
-
-<!-- SEG:m68747:entry:auto-87 -->
-[[MATH:18]]
-
-<!-- SEG:m68747:entry:auto-88 -->
-1
-
-<!-- SEG:m68747:entry:auto-89 -->
-C[[sub:2]]
-
-<!-- SEG:m68747:entry:auto-90 -->
-[[MATH:19]]
-
-<!-- SEG:m68747:entry:auto-91 -->
-2
-
-<!-- SEG:m68747:entry:auto-92 -->
-N[[sub:2]]
-
-<!-- SEG:m68747:entry:auto-93 -->
-[[MATH:20]]
-
-<!-- SEG:m68747:entry:auto-94 -->
-3
-
-<!-- SEG:m68747:entry:auto-95 -->
-O[[sub:2]]
-
 <!-- SEG:m68747:entry:auto-96 -->
-[[MATH:21]]
+1
 
 <!-- SEG:m68747:entry:auto-97 -->
-2
+Be[[sub:2]] (unstable)
 
 <!-- SEG:m68747:entry:auto-98 -->
-F[[sub:2]]
+[[MATH:17]]
 
 <!-- SEG:m68747:entry:auto-99 -->
-[[MATH:22]]
+0
 
 <!-- SEG:m68747:entry:auto-100 -->
-1
+B[[sub:2]]
 
 <!-- SEG:m68747:entry:auto-101 -->
-Ne[[sub:2]] (unstable)
+[[MATH:18]]
 
 <!-- SEG:m68747:entry:auto-102 -->
-[[MATH:23]]
+1
 
 <!-- SEG:m68747:entry:auto-103 -->
+C[[sub:2]]
+
+<!-- SEG:m68747:entry:auto-104 -->
+[[MATH:19]]
+
+<!-- SEG:m68747:entry:auto-105 -->
+2
+
+<!-- SEG:m68747:entry:auto-106 -->
+N[[sub:2]]
+
+<!-- SEG:m68747:entry:auto-107 -->
+[[MATH:20]]
+
+<!-- SEG:m68747:entry:auto-108 -->
+3
+
+<!-- SEG:m68747:entry:auto-109 -->
+O[[sub:2]]
+
+<!-- SEG:m68747:entry:auto-110 -->
+[[MATH:21]]
+
+<!-- SEG:m68747:entry:auto-111 -->
+2
+
+<!-- SEG:m68747:entry:auto-112 -->
+F[[sub:2]]
+
+<!-- SEG:m68747:entry:auto-113 -->
+[[MATH:22]]
+
+<!-- SEG:m68747:entry:auto-114 -->
+1
+
+<!-- SEG:m68747:entry:auto-115 -->
+Ne[[sub:2]] (unstable)
+
+<!-- SEG:m68747:entry:auto-116 -->
+[[MATH:23]]
+
+<!-- SEG:m68747:entry:auto-117 -->
 0
 
 <!-- SEG:m68747:para:fs-idm113916160 -->
@@ -330,6 +372,9 @@ Semiconductors are used in devices such as computers, smartphones, and solar cel
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_Band-caption -->
 Molecular orbitals in solids are so closely spaced that they are described as bands. The valence band is lower in energy and the conduction band is higher in energy. The type of solid is determined by the size of the “band gap” between the valence and conduction bands. Only a very small amount of energy is required to move electrons from the valence band to the conduction band in a conductor, and so they conduct electricity well. In an insulator, the band gap is large, so that very few electrons move, and they are poor conductors of electricity. Semiconductors are in between: they conduct electricity better than insulators, but not as well as conductors.
+
+<!-- SEG:m68747:alt:fs-idp263742416-alt -->
+This figure shows three diagrams. The first is labeled, “Insulator,” and it consists of two boxes. The “conduction” box is above and the “valence” box is below. A large gap marked by 4 dashed lines contains a double-headed arrow. One head pointing towards the “conduction box” and the other towards the “valence” box. The arrow is labeled, “Band gap.” The second diagram is similar to the first, but the band gap is about half as large. This diagram is labeled, “Semiconductor.” The third diagram is similar to the other two, but the band gap is about a fifth that of the “Semiconductor” diagram. This diagram is labeled, “Conductor.”
 
 <!-- SEG:m68747:example-title:fs-idm85103616-title -->
 Molecular Orbital Diagrams, Bond Order, and Number of Unpaired Electrons
@@ -366,6 +411,9 @@ N[[sub:2]] has a bond order of 3 and is diamagnetic.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_O2MO-caption -->
 The molecular orbital energy diagram for O[[sub:2]] predicts two unpaired electrons.
+
+<!-- SEG:m68747:alt:fs-idm156437120-alt -->
+A diagram is shown that has an upward-facing vertical arrow running along the left side labeled, “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 2 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “2 s,” and with two vertical half arrows drawn on them, one facing up and one facing down. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first and labeled, “sigma subscript 2 s superscript asterisk.” This horizontal line has two vertical half-arrow drawn on it, one facing up and one facing down. Moving further up the center of the diagram is a horizontal line labeled, “sigma subscript 2 p subscript x,” which lies below two horizontal lines, lying side-by-side, and labeled “pi subscript 2 p subscript y,” and “pi subscript 2 p subscript z.” Both the bottom and top lines are connected to the right and left by upward-facing, dotted lines to three more horizontal lines, each labeled, “2 p,” on either side. These sets of lines each hold three upward-facing and one downward-facing half-arrow. They are connected by upward-facing dotted lines to another single line and then pair of double lines in the center of the diagram, but farther up from the lower lines. They are labeled, “sigma subscript 2 p subscript x superscript asterisk,” “pi subscript 2 p subscript y superscript asterisk,” and “pi subscript 2 p subscript z superscript asterisk,” respectively. The lower of these two central, horizontal lines each contain one upward-facing half-arrow. The left and right sides of the diagram have headers that read, ”Atomic orbitals,” while the center header reads, “Molecular orbitals.”
 
 <!-- SEG:m68747:example-title:fs-idm114393376-title -->
 Ion Predictions with MO Diagrams
@@ -406,6 +454,9 @@ A molecular orbital can hold two electrons, so both electrons in the H[[sub:2]] 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_H2MO-caption -->
 The molecular orbital energy diagram predicts that H[[sub:2]] will be a stable molecule with lower energy than the separated atoms.
 
+<!-- SEG:m68747:alt:fs-idm45698032-alt -->
+A diagram is shown that has an upward-facing vertical arrow running along the left side labeled “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 1 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “1 s,” and each with one vertical half-arrow facing up drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first, and labeled, “sigma subscript 1 s superscript asterisk.” The left and right sides of the diagram have headers that read, ”Atomic orbitals,” while the center header reads, “Molecular orbitals.” The bottom left and right are labeled “H” while the center is labeled “H subscript 2.”
+
 <!-- SEG:m68747:para:fs-idm43412080 -->
 A dihydrogen molecule contains two bonding electrons and no antibonding electrons so we have
 
@@ -421,6 +472,9 @@ A bond order of zero indicates that no bond is formed between two atoms.
 <!-- SEG:m68747:caption:CNX_Chem_08_04_He2MO-caption -->
 The molecular orbital energy diagram predicts that He[[sub:2]] will not be a stable molecule, since it has equal numbers of bonding and antibonding electrons.
 
+<!-- SEG:m68747:alt:fs-idm8319568-alt -->
+A diagram is shown that has an upward-facing vertical arrow running along the left side labeled, “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 1 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “1 s,” and each with one vertical half-arrow facing up and one facing down drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first, and labeled, “sigma subscript 1 s superscript asterisk.” This line has one upward-facing and one downward-facing vertical arrow drawn on it. The left and right sides of the diagram have headers that read, “Atomic orbitals,” while the center header reads, “Molecular orbitals.” The bottom left and right are labeled, “H e,” while the center is labeled, “H e subscript 2.”
+
 <!-- SEG:m68747:title:fs-idp114974944-title -->
 Key Concepts and Summary
 
@@ -433,7 +487,7 @@ We can describe the electronic structure of diatomic molecules by applying molec
 <!-- SEG:m68747:title:fs-idm136319184-title -->
 Key Equations
 
-<!-- SEG:m68747:entry:auto-146 -->
+<!-- SEG:m68747:entry:auto-164 -->
 [[MATH:32]]
 
 <!-- SEG:m68747:title:fs-idm158963280-title -->

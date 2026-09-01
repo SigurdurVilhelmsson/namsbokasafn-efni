@@ -1,0 +1,780 @@
+{
+  "moduleId": "m00061",
+  "title": {
+    "segmentId": "m00061:title:auto-1",
+    "text": "Chirality in Nature and Chiral Environments"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "78cbdb19-8c72-46c8-9821-177d28ee4b73"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00061:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00061:alt:fig-00001-alt",
+          "text": "The wedge-dash structure and ball-and-stick model of (S)-fluoxetine. Gray, black, green, blue, and red spheres represent hydrogen, carbon, fluorine, nitrogen, and oxygen, respectively. (S)-fluoxetine prevents migraine."
+        },
+        "src": "../../media/OChem_05_12_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00061:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00061:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00061:alt:fig-00002-alt",
+          "text": "A hand on left holds chiral molecule with a cube above the palm. Hand on right shows enantiomer with the cube on palm, labeled mismatch."
+        },
+        "src": "../../media/OChem_05_12_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00061:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00061:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00061:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00061:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00061:alt:fig-00004-alt",
+          "text": "Left hand holding molecule; red spheres pointing upward (pro-R) and toward wrist (pro-S), green toward thumb, white toward pinkie. Separately, a right hand holding a coffee mug by the handle."
+        },
+        "src": "../../media/OSX_OrgChem_05_12_OChem-05-12-004a_80485-05-16_HandMolecuCup.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "note-00001",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00061:title:note-00001-title",
+        "text": "Chiral Drugs"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00061:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00061:caption:fig-00005-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00061:alt:fig-00005-alt",
+              "text": "A photo shows an injured runner being carried off the track on a stretcher."
+            },
+            "src": "../../media/OChem_05_12_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00061:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00061:alt:fig-00006-alt",
+              "text": "The wedge-dash structure of penicillin V (2 S, 5 R, 6 R configuration). C6, C5, and C2 have configuration 6R, 5R, and 2S, respectively."
+            },
+            "src": "../../media/OChem_05_12_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00061:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00061:alt:fig-00007-alt",
+              "text": "The structure and ball-and-stick model of (S)-Ibuprofen (an active analgesic agent). Gray, black, and red spheres represent hydrogen, carbon, and oxygen, respectively."
+            },
+            "src": "../../media/OChem_05_12_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00061:para:para-00010"
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00061:para:para-00011"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-10"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-11"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-12"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-13"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-14"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-15"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-16"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-17"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-18"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-19"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-20"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-21"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-22"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-23"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-24"
+            },
+            {
+              "id": null,
+              "segmentId": "m00061:item:list-00001-item-25"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00061:title:sect-00002-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00061:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00061:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00061:para:para-00014"
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00061:para:para-00015"
+        },
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00061:para:para-00016"
+        },
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00061:para:para-00017"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00061:title:sect-00003-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00075",
+          "segmentId": "m00061:para:para-00075"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00023",
+          "segmentId": "m00061:para:para-00023"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00030",
+          "segmentId": "m00061:para:para-00030"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00045",
+          "segmentId": "m00061:para:para-00045"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00051",
+          "segmentId": "m00061:para:para-00051"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00058",
+          "segmentId": "m00061:para:para-00058"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00041",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00042",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00043",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00044",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00045",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00046",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00047",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00048",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00049",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00050",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00051",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00052",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 12
+}

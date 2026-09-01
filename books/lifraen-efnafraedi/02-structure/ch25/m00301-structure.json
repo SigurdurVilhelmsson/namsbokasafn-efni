@@ -1,0 +1,91 @@
+{
+  "moduleId": "m00301",
+  "title": {
+    "segmentId": "m00301:title:auto-1",
+    "text": "Problems"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "0272eb40-a2f8-4d51-ba9d-1839573fdc53"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00301:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00301:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00301:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00301:alt:fig-00001-alt",
+          "text": "The structures of D-glyceraldehyde, D-ribose, D-glucose, and D-fructose. C H O is positioned on top of the first three structures. C H 2 O H is on top of D-fructose."
+        },
+        "src": "../../media/OChem_25_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00301:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00301:alt:fig-00002-alt",
+          "text": "The structure of L-glyceraldehyde or (S)-(-)-glyceraldehyde. A mirror is placed after the structure of L-glucose. D-glucose is the mirror image of L-glucose (not naturally occurring)."
+        },
+        "src": "../../media/OChem_25_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00301:para:para-00004"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00301:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

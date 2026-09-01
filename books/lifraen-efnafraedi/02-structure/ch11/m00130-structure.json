@@ -1,0 +1,85 @@
+{
+  "moduleId": "m00130",
+  "title": {
+    "segmentId": "m00130:title:auto-1",
+    "text": "The E2 Reaction and Cyclohexane Conformation"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "57e63c53-f0d3-436d-9e3a-7ef7937462ac"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00130:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00130:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00130:alt:fig-00001-alt",
+          "text": "The reactant's Newman projection and chair conformation is depicted. In antiperiplanar conformation (Cl axial), the reaction forms cyclohexene and HCl. In non-antiperiplanar conformation (Cl equatorial), there is no reaction."
+        },
+        "src": "../../media/OChem_11_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00130:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00130:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00130:alt:fig-00002-alt",
+          "text": "Neomenthyl chloride undergoes a fast reaction in presence of sodium ethoxide and ethanol, forming 3-menthene. In second reaction, menthyl chloride undergoes ring-flip and fast reaction to yield 2-menthene."
+        },
+        "src": "../../media/OChem_11_09_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00130:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00130:para:para-00004"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00130:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

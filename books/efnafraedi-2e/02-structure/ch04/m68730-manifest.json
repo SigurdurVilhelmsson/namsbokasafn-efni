@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68730",
-  "extractedAt": "2026-07-07T09:12:32.725Z",
+  "extractedAt": "2026-08-31T19:08:37.919Z",
   "sourceHash": "3f378ee180a7d8fd",
-  "segmentCount": 8,
+  "segmentCount": 9,
   "segmentIds": [
     "m68730:title:auto-1",
     "m68730:abstract-item:abstract-item-1",
@@ -12,6 +12,7 @@
     "m68730:abstract-item:abstract-item-4",
     "m68730:abstract-item:abstract-item-5",
     "m68730:caption:CNX_Chem_04_00_Rocket-caption",
+    "m68730:alt:fs-idm139266960-alt",
     "m68730:para:fs-idm17418752"
   ],
   "equationCount": 0,

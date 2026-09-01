@@ -1,0 +1,54 @@
+{
+  "moduleId": "m00258",
+  "title": {
+    "segmentId": "m00258:title:auto-1",
+    "text": "MECHANISM"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "be3535ac-d0ac-4e4c-b84b-8fda0825b9d9"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00258:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00258:alt:fig-00001-alt",
+          "text": "Two resonance forms of an enol tautomer as well as the electrostatic potential map with the ball-and-stick model of the second tautomer."
+        },
+        "src": "../../media/OChem_22_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00258:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00258:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00258:alt:fig-00002-alt",
+          "text": "Acid-catalyzed mechanism of for alpha substitution of a carbonyl in three steps: enol  forms, this attacks electrophile from alpha carbon, and carbonyl oxygen is deprotonated to neutral product."
+        },
+        "src": "../../media/OChem_22_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 2
+}

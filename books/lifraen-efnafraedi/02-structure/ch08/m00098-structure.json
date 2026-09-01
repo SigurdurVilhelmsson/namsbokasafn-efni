@@ -1,0 +1,571 @@
+{
+  "moduleId": "m00098",
+  "title": {
+    "segmentId": "m00098:title:auto-1",
+    "text": "Radical Additions to Alkenes: Chain-Growth Polymers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "7200ce4d-9d45-40dc-ab51-1fed32a7b80a"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00098:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00098:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00098:alt:fig-00001-alt",
+          "text": "The figure shows glucose units combine together to form a long chain of cellulose."
+        },
+        "src": "../../media/OChem_08_10_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00008",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00098:alt:fig-00008-alt",
+          "text": "The figure shows amino acids link together to form a protein structure."
+        },
+        "src": "../../media/OChem_08_10_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00009",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00098:alt:fig-00009-alt",
+          "text": "The figure shows nucleotide units link together to form a nucleic acid."
+        },
+        "src": "../../media/OChem_08_10_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00098:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00098:alt:fig-00002-alt",
+          "text": "The figure shows a polymerization reaction of ethylene forming polyethylene."
+        },
+        "src": "../../media/OChem_08_10_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00098:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00098:para:para-00005"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00098:item:list-00001-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00098:item:list-00001-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m00098:item:list-00001-item-3"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00098:alt:fig-00003-alt",
+          "text": "Benzoyl peroxide on heating forms two benzoyloxy radicals, which decompose to phenyl radicals and carbon dioxide molecules. At the bottom, phenyl radical reacts with ethylene to form ethylbenzene radical."
+        },
+        "src": "../../media/OChem_08_10_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00098:alt:fig-00004-alt",
+          "text": "A reaction shows the ethylene polymerization of a  phenylethylene radical with ethylene to form a phenylbutyl radical that grows in length with multiple additions of ethylene."
+        },
+        "src": "../../media/OChem_08_10_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00098:para:para-00009"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00098:alt:fig-00005-alt",
+          "text": "Two reactions show the formation of polypropylene and polystyrene from propylene and styrene, respectively."
+        },
+        "src": "../../media/OChem_08_10_008.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00098:para:para-00010"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00098:alt:fig-00006-alt",
+          "text": "A polymerization reaction shows a phenyl radical reacting with propene to form a secondary radical. Primary radical is not formed."
+        },
+        "src": "../../media/OChem_08_10_009.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00011",
+      "segmentId": "m00098:para:para-00011"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00098:table-title:table-00001-title",
+        "text": "Some Alkene Polymers and Their Uses"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00098:entry:auto-22",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-23",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-24",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-25",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00098:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00098:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-31",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-32",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00098:entry:auto-34",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-35",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-36",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-37",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00098:entry:auto-38",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-39",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-40",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-41",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00098:entry:auto-42",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-43",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-44",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-45",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00098:entry:auto-46",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-47",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-48",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-49",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00098:entry:auto-50",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00098:alt:OChem_08_10_010_jpg-alt",
+                "text": "The condensed structural formula has a methylene group double bonded to a carbon atom, which is single bonded to a methyl group and C O 2 C H 3 group.",
+                "mediaId": null,
+                "src": "../../media/OChem_08_10_010.jpg"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-52",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-53",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00098:entry:auto-54",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-55",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-56",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00098:entry:auto-57",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00098:example-title:exam-00001-title",
+        "text": "Predicting the Structure of a Polymer"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00098:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00098:para:para-00013",
+          "title": {
+            "segmentId": "m00098:para-title:para-00013-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00098:para:para-00014",
+          "title": {
+            "segmentId": "m00098:para-title:para-00014-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00098:alt:fig-00007-alt",
+          "text": "The polymer enclosed in parentheses shows a chain of three C H 2 C H groups. The carbon of each C H group is bonded to a chlorine atom."
+        },
+        "src": "../../media/OChem_08_10_011.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00098:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 10
+}

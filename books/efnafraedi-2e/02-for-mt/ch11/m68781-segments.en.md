@@ -14,7 +14,7 @@ Distinguish between the physical and chemical changes that accompany dissolution
 Relate electrolyte strength to solute-solvent attractive forces
 
 <!-- SEG:m68781:para:fs-idp18381520 -->
-When some substances are dissolved in water, they undergo either a physical or a chemical change that yields ions in solution. These substances constitute an important class of compounds called {{term}}electrolytes{{/term}}. Substances that do not yield ions when dissolved are called {{term}}nonelectrolytes{{/term}}. If the physical or chemical process that generates the ions is essentially 100% efficient (all of the dissolved compound yields ions), then the substance is known as a {{term}}strong electrolyte{{/term}}. If only a relatively small fraction of the dissolved substance undergoes the ion-producing process, it is called a {{term}}weak electrolyte{{/term}}.
+When some substances are dissolved in water, they undergo either a physical or a chemical change that yields ions in solution. These substances constitute an important class of compounds called [[term:electrolytes|term-00001]]. Substances that do not yield ions when dissolved are called [[term:nonelectrolytes|term-00002]]. If the physical or chemical process that generates the ions is essentially 100% efficient (all of the dissolved compound yields ions), then the substance is known as a [[term:strong electrolyte|term-00003]]. If only a relatively small fraction of the dissolved substance undergoes the ion-producing process, it is called a [[term:weak electrolyte|term-00004]].
 
 <!-- SEG:m68781:para:fs-idm8509568 -->
 Substances may be identified as strong, weak, or nonelectrolytes by measuring the electrical conductance of an aqueous solution containing the substance. To conduct electricity, a substance must contain freely mobile, charged species. Most familiar is the conduction of electricity through metallic wires, in which case the mobile, charged entities are electrons. Solutions may also conduct electricity if they contain dissolved ions, with conductivity increasing as ion concentration increases. Applying a voltage to electrodes immersed in a solution permits assessment of the relative concentration of dissolved ions, either quantitatively, by measuring the electrical current flow, or qualitatively, by observing the brightness of a light bulb included in the circuit ([[xref:CNX_Chem_11_02_electrolyt]]).
@@ -22,17 +22,23 @@ Substances may be identified as strong, weak, or nonelectrolytes by measuring th
 <!-- SEG:m68781:caption:CNX_Chem_11_02_electrolyt-caption -->
 Solutions of nonelectrolytes such as ethanol do not contain dissolved ions and cannot conduct electricity. Solutions of electrolytes contain ions that permit the passage of electricity. The conductivity of an electrolyte solution is related to the strength of the electrolyte.
 
+<!-- SEG:m68781:alt:fs-idm7287312-alt -->
+This diagram shows three separate beakers. Each has a wire plugged into a wall outlet. In each case, the wire leads from the wall to the beaker and is split resulting in two ends. One end leads to a light bulb and continues on to a rectangle labeled with a plus sign. The other end leads to a rectangle labeled with a minus sign. The rectangles are in a solution. In the first beaker, labeled “Ethanol No Conductivity,” four pairs of linked small green spheres suspended in the solution between the rectangles. In the second beaker, labeled “K C l Strong Conductivity,” six individual green spheres, three labeled plus and three labeled minus are suspended in the solution. Each of the six spheres has an arrow extending from it pointing to the rectangle labeled with the opposite sign. In the third beaker, labeled “Acetic acid solution Weak conductivity,” two pairs of joined green spheres and two individual spheres, one labeled plus and one labeled minus are shown suspended between the two rectangles. The plus labeled sphere has an arrow pointing to the rectangle labeled minus and the minus labeled sphere has an arrow pointing to the rectangle labeled plus.
+
 <!-- SEG:m68781:title:fs-idm25275856-title -->
 Ionic Electrolytes
 
 <!-- SEG:m68781:para:fs-idp2501472 -->
-Water and other polar molecules are attracted to ions, as shown in [[xref:CNX_Chem_11_02_waterions]]. The electrostatic attraction between an ion and a molecule with a dipole is called an {{term}}ion-dipole attraction{{/term}}. These attractions play an important role in the dissolution of ionic compounds in water.
+Water and other polar molecules are attracted to ions, as shown in [[xref:CNX_Chem_11_02_waterions]]. The electrostatic attraction between an ion and a molecule with a dipole is called an [[term:ion-dipole attraction|term-00005]]. These attractions play an important role in the dissolution of ionic compounds in water.
 
 <!-- SEG:m68781:caption:CNX_Chem_11_02_waterions-caption -->
 As potassium chloride (KCl) dissolves in water, the ions are hydrated. The polar water molecules are attracted by the charges on the K[[sup:+]] and Cl[[sup:−]] ions. Water molecules in front of and behind the ions are not shown.
 
+<!-- SEG:m68781:alt:fs-idm117781392-alt -->
+The diagram shows eight purple spheres labeled K superscript plus and eight green spheres labeled C l superscript minus mixed and touching near the center of the diagram. Outside of this cluster of spheres are seventeen clusters of three spheres, which include one red and two white spheres. A red sphere in one of these clusters is labeled O. A white sphere is labeled H. Two of the green C l superscript minus spheres are surrounded by three of the red and white clusters, with the red spheres closer to the green spheres than the white spheres. One of the K superscript plus purple spheres is surrounded by four of the red and white clusters. The white spheres of these clusters are closest to the purple spheres.
+
 <!-- SEG:m68781:para:fs-idp43584496 -->
-When ionic compounds dissolve in water, the ions in the solid separate and disperse uniformly throughout the solution because water molecules surround and solvate the ions, reducing the strong electrostatic forces between them. This process represents a physical change known as {{term}}dissociation{{/term}}. Under most conditions, ionic compounds will dissociate nearly completely when dissolved, and so they are classified as strong electrolytes. Even sparingly, soluble ionic compounds are strong electrolytes, since the small amount that does dissolve will dissociate completely.
+When ionic compounds dissolve in water, the ions in the solid separate and disperse uniformly throughout the solution because water molecules surround and solvate the ions, reducing the strong electrostatic forces between them. This process represents a physical change known as [[term:dissociation|term-00006]]. Under most conditions, ionic compounds will dissociate nearly completely when dissolved, and so they are classified as strong electrolytes. Even sparingly, soluble ionic compounds are strong electrolytes, since the small amount that does dissolve will dissociate completely.
 
 <!-- SEG:m68781:para:fs-idp39918704 -->
 Consider what happens at the microscopic level when solid KCl is added to water. Ion-dipole forces attract the positive (hydrogen) end of the polar water molecules to the negative chloride ions at the surface of the solid, and they attract the negative (oxygen) ends to the positive potassium ions. The water molecules surround individual K[[sup:+]] and Cl[[sup:−]] ions, reducing the strong interionic forces that bind the ions together and letting them move off into solution as solvated ions, as [[xref:CNX_Chem_11_02_waterions]] shows. Overcoming the electrostatic attraction permits the independent motion of each hydrated ion in a dilute solution as the ions transition from fixed positions in the undissolved compound to widely dispersed, solvated ions in solution.
@@ -48,6 +54,9 @@ In some cases, solutions prepared from covalent compounds conduct electricity be
 
 <!-- SEG:m68781:para:fs-idm25981680 -->
 Because HCl is an [[i:acid]], its molecules react with water, transferring H[[sup:+]] ions to form hydronium ions (H[[sub:3]]O[[sup:+]]) and chloride ions (Cl[[sup:−]]):
+
+<!-- SEG:m68781:alt:fs-idp29456368-alt -->
+A chemical equation is shown. To the left, two hydrogen atoms are linked, each with a single dash to a central oxygen atom to the left and below the oxygen symbol, which has two pairs of dots, above and to the right of the atom. A plus sign is shown to the right, then a hydrogen atom linked to the left side of chlorine atom by a single dash with three pairs of dots, above, to the right, and below the element symbol. An arrow points to the products which are three hydrogen atoms linked by single dashes to a central oxygen atom shown in brackets with superscript plus. The oxygen atom has a single pair of dots above the element symbol. This is followed by a plus and C l superscript minus. This symbol is surrounded by four pairs of dots, above and below and to the left and right of the element symbol.
 
 <!-- SEG:m68781:para:fs-idm4855136 -->
 This reaction is essentially 100% complete for HCl (i.e., it is a [[i:strong acid]] and, consequently, a strong electrolyte). Likewise, weak acids and bases that only react partially generate relatively low concentrations of ions when dissolved in water and are classified as weak electrolytes. The reader may wish to review the discussion of strong and weak acids provided in the earlier chapter of this text on reaction classes and stoichiometry.
@@ -75,6 +84,9 @@ Consider the solutions presented:
 
 <!-- SEG:m68781:problem:fs-idm78750672 -->
 (a) Which of the following sketches best represents the ions in a solution of Fe(NO[[sub:3]])[[sub:3]]([[i:aq]])?
+
+<!-- SEG:m68781:alt:fs-idm58752-alt -->
+In this figure, three beakers labeled x, y, and z are shown containing various arrangements of blue and red spheres suspended in solution. In beaker x, three small red spheres surround a single central blue sphere in small clusters which in turn are grouped in threes around a single red sphere, forming four larger clusters. In beaker y, the four large clusters are present without the central red spheres. Four individual red spheres are now present. In beaker z, the large clusters are not present. Twelve of the small clusters of three red and one blue sphere are present along with four single red spheres.
 
 <!-- SEG:m68781:problem:fs-idm44321280 -->
 (b) Write a balanced chemical equation showing the products of the dissolution of Fe(NO[[sub:3]])[[sub:3]].

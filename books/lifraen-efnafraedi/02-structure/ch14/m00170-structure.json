@@ -1,0 +1,68 @@
+{
+  "moduleId": "m00170",
+  "title": {
+    "segmentId": "m00170:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "1b3c5c55-363e-4f5b-8450-72716189065c"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00170:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00170:alt:fig-00001-alt",
+          "text": "A photo shows saffron crocus flowers having purple petals and yellow stigmas."
+        },
+        "src": "../../media/OChem_14_00_Saffron.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00170:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00170:alt:fig-00002-alt",
+          "text": "The structures of lycopene, a conjugated polyene, progesterone, a conjugated enone, and benzene, a cyclic conjugated molecule."
+        },
+        "src": "../../media/OSX_OrgChem_14_00_Lycopene_img.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00170:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00170:alt:fig-00003-alt",
+          "text": "The structures of 1, 3-butadiene (conjugated, alternating double and single bonds) and 1,4-pentadiene (nonconjugated; nonalternating double and single bonds)."
+        },
+        "src": "../../media/OChem_14_00_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 0
+}

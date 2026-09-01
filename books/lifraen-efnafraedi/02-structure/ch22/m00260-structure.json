@@ -1,0 +1,71 @@
+{
+  "moduleId": "m00260",
+  "title": {
+    "segmentId": "m00260:title:auto-1",
+    "text": "Alpha Bromination of Carboxylic Acids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "33254cc2-69de-43e9-8753-19c9bdf7b5e2"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00260:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00260:alt:fig-00001-alt",
+          "text": "Heptanoic acid reacts with bromine, phosphorus tribromide, to form 2-bromoheptanoic acid in 90 percent yield"
+        },
+        "src": "../../media/OChem_22_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00260:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00260:alt:fig-00002-alt",
+          "text": "Carboxylic acid reacts with phosphorus tribromide to form two interconvertable acid bromide intermediates, which react with bromine to yield an alpha-bromo acid bromide, which further reacts with water to form an alpha-bromocarboxylic acid."
+        },
+        "src": "../../media/OChem_22_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00260:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}
