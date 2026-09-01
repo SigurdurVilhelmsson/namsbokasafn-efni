@@ -57,7 +57,7 @@ The pipeline preserves **most** CNXML structure with high fidelity. Structural e
 | `<note id="..." class="...">` | Content segmented | structure.json | Rebuilt | ✅ |
 | `<example>` | Content segmented | structure.json | Rebuilt | ✅ |
 | `<equation id="..." class="...">` | MathML stored | equations.json | Rebuilt | ⚠️ 3 wrappers lost in ch01 (Gap 6c) |
-| `<glossary>` / `<definition>` / `<meaning>` | Segmented | structure.json | Rebuilt | ✅ |
+| `<glossary>` / `<definition>` / `<meaning>` | Segmented | structure.json | Rebuilt | 🔴 **`<meaning>` id NOT preserved** — synthesised as `<definition-id>-meaning`, so all **763** chemistry meanings carry a different id than source (organic has 0 `<meaning>`). Measured 2026-09-01 by `tools/source-roundtrip-check.js`. **Not reader-visible** (0 of 736 link targets point at a meaning id) but it IS a remerge hazard, which is what this document is for. ⚠️ This row read ✅ until 2026-09-01: element totals, per-tag totals and attribute counts are all IDENTICAL, so every count-based check agrees with the ✅ — only a value comparison sees it. |
 | Document root attributes (`xmlns`, etc.) | — | regex from original | Copied verbatim | ✅ |
 | `<content>` structure | Recursive | structure.json | Rebuilt | ✅ |
 
