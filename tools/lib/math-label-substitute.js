@@ -1,7 +1,12 @@
 // tools/lib/math-label-substitute.js
 import fs from 'fs';
 import path from 'path';
-import { collectMathTokens, bucketToken, decodeEntities } from './math-label-inventory.js';
+import {
+  collectMathTokens,
+  bucketToken,
+  decodeEntities,
+  DEFAULT_STOPLIST,
+} from './math-label-inventory.js';
 import { findGlossaryCollisions } from './glossary-collisions.js';
 
 const FORBIDDEN_XML = /[<>&"']/;
@@ -54,9 +59,27 @@ export function resolveLabel(label, { overlay = {}, glossaryMap = new Map() } = 
     if (v === label || v === lower) return { value: label, source: 'overlay-self' };
     return { value: v, source: 'overlay-translated' };
   }
-  // glossary keys are lowercased in buildGlossaryMap; look up the lowercase form for words.
-  const g = glossaryMap.get(isWord ? lower : label);
-  if (typeof g === 'string' && g.trim()) return { value: g, source: 'glossary' };
+  // §C82 ③ — THE GLOSSARY IS A MAP OF WORDS, SO IT MAY NOT TRANSLATE A SYMBOL.
+  // A token of ≤2 chars (unit and element symbols, variables: ln kg nm lb ft oz ne)
+  // or one on DEFAULT_STOPLIST (math functions and units: log sin cos atm torr ppb)
+  // is a symbol, and rendering it as prose corrupts the equation — `S = k ln W`
+  // became `S = k náttúrlegur logri W` in committed CNXML before this guard.
+  //
+  // WHY HERE AND NOT AS A PER-BOOK MASK. These are exactly the tokens `bucketToken`
+  // routes to 'other', so `mergeSkeleton` never offers them to a human and they can
+  // never acquire a self-map in math-label-map.json the way `at`/`si`/`ppm` did.
+  // The stoplist declares them "confirmed to STAY unchanged in Icelandic"; until now
+  // nothing consulted that declaration at resolution time.
+  //
+  // The overlay is checked ABOVE and therefore still outranks this: a book that
+  // means to localise a symbol says so explicitly. That is also what keeps `mol` →
+  // `mól` working — 3 chars and deliberately off the stoplist, so it is a word here.
+  const isSymbol = [...label].length <= 2 || DEFAULT_STOPLIST.has(lower);
+  if (!isSymbol) {
+    // glossary keys are lowercased in buildGlossaryMap; look up the lowercase form for words.
+    const g = glossaryMap.get(isWord ? lower : label);
+    if (typeof g === 'string' && g.trim()) return { value: g, source: 'glossary' };
+  }
   return { value: label, source: 'english' };
 }
 
