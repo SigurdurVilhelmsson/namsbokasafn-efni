@@ -444,6 +444,17 @@ function extractInlineText(
     if (parsedAttrs.document && parsedAttrs['target-id']) {
       return `[[docref:${parsedAttrs.document}#${parsedAttrs['target-id']}]]`;
     }
+    // §C118: a whole-module reference with no target-id. This branch was MISSING
+    // while the with-content handler below had its exact counterpart ("Document
+    // link without target-id"), and the asymmetry silently deleted the link:
+    // falling through here sent `<link document="m00029"/>` to the self-closing
+    // cross-reference handler, which requires a target-id, so it matched nothing
+    // and was stripped — no marker, no warning, no residue to catch.
+    // Measured: 1,198 such links across 189 of 342 organic modules; chemistry has
+    // zero. Inject already understood `[[docref:doc]]`, so this is the only site.
+    if (parsedAttrs.document) {
+      return `[[docref:${parsedAttrs.document}]]`;
+    }
     return match; // Not a document link — leave for later regexes
   });
   // Document links with content.
