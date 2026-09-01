@@ -75,6 +75,39 @@ export function renderEnglishRoundTrip(src, bookSlug) {
     : { html: r.html, undispatched: r.undispatchedBlocks || [] };
 }
 
+/**
+ * The pattern that DELETES a `<para>` by id. Selection and mutation must derive from
+ * this one construction, or they can disagree — which is exactly how the control broke.
+ * The id is escaped: it comes from OpenStax's manifest, which is not under this repo's
+ * `[\w-]` segment-id slug rule, so a `.` in an id must match literally rather than as
+ * a wildcard.
+ */
+export function paraDeleteRegex(id) {
+  const safe = String(id).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`<para id="${safe}"[\\s\\S]*?</para>`);
+}
+
+/**
+ * Pick a control victim: an in-scope element that reaches the render AND that the
+ * mutation can actually delete. Returns null rather than guessing.
+ *
+ * 🔴 DO NOT REINTRODUCE AN ID-NAMING HEURISTIC HERE. This used to be
+ * `scope.find(i => rendered.has(i) && /^para-/.test(i))` with a fallback to any
+ * in-scope id — a book-specific guess. Organic mints `para-0000N`; chemistry carries
+ * OpenStax's `fs-id*` on the very same `<para>`. So on chemistry the prefix arm matched
+ * nothing, the fallback returned a `<media>` id, and the run printed `CONTROL VOID` —
+ * leaving HALF the two-book corpus with no positive control behind a passing T3.
+ * State the SHAPE, never the book (CLAUDE.md §C82 L144). Pinned by
+ * `tools/__tests__/render-oracle-control.test.js`.
+ */
+export function pickControlVictim(src, scope, renderedIds) {
+  for (const id of scope) {
+    if (!renderedIds.has(id)) continue;
+    if (paraDeleteRegex(id).test(src)) return id;
+  }
+  return null;
+}
+
 function loadManifest(book) {
   const p = path.join(REPO_ROOT, 'books', book, 'openstax-id-manifest.json');
   if (!fs.existsSync(p)) throw new Error(`No OpenStax id manifest for ${book}: ${p}`);
@@ -101,17 +134,38 @@ function main() {
   const srcDir = path.join(REPO_ROOT, 'books', book, '01-source', chapter);
 
   if (control) {
-    const mod = Object.keys(chap)[1] || Object.keys(chap)[0];
-    const src = fs.readFileSync(path.join(srcDir, `${mod}.cnxml`), 'utf8');
-    const scope = chap[mod].ids.filter((i) => idsOf(src).has(i));
-    const A = idsOf(renderEnglishRoundTrip(src, book).html);
-    const victim = scope.find((i) => A.has(i) && /^para-/.test(i)) || scope.find((i) => A.has(i));
-    const re = new RegExp(`<para id="${victim}"[\\s\\S]*?</para>`);
-    if (!re.test(src)) {
-      console.error(`CONTROL VOID — victim ${victim} is not a <para>; pick another module.`);
+    // Try every module in the chapter rather than a fixed one: "the chapter has SOME
+    // deletable in-scope <para>" is the real precondition, and hard-coding module [1]
+    // makes the control hostage to one module's shape.
+    let mod = null;
+    let src = null;
+    let scope = null;
+    let A = null;
+    let victim = null;
+    for (const candidate of Object.keys(chap)) {
+      const p = path.join(srcDir, `${candidate}.cnxml`);
+      if (!fs.existsSync(p)) continue;
+      const csrc = fs.readFileSync(p, 'utf8');
+      const cscope = chap[candidate].ids.filter((i) => idsOf(csrc).has(i));
+      const cA = idsOf(renderEnglishRoundTrip(csrc, book).html);
+      const cvictim = pickControlVictim(csrc, cscope, cA);
+      if (cvictim) {
+        mod = candidate;
+        src = csrc;
+        scope = cscope;
+        A = cA;
+        victim = cvictim;
+        break;
+      }
+    }
+    if (!victim) {
+      console.error(
+        `CONTROL VOID — no module in ${book}/${chapter} has an in-scope <para> that reaches the render.`
+      );
       process.exitCode = 1;
       return;
     }
+    const re = paraDeleteRegex(victim);
     const mutated = src.replace(re, '');
     if (mutated.length === src.length) {
       console.error('CONTROL VOID — the mutation did not apply.');
