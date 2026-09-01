@@ -314,6 +314,20 @@ export const BRACKET_MARKER_TYPES = [
   'docref',
   'term',
   'fn',
+  // `<span class="…">` — organic's red/cyan/magenta reaction colouring, emitted
+  // by cnxml-extract.js as `[[span:text|class]]` (§C118 ①). ⚠️ ITS ABSENCE HERE
+  // WAS THE FOURTH SITE OF THAT FIX, AND THE ONLY ONE ON THE LEG THAT COSTS
+  // MONEY: unwrapInventedMarkers read every real span marker as one the MT had
+  // invented around a glossary word and stripped it, writing the CLASS NAME into
+  // the Icelandic as prose — `([[span:X|magenta-text]]=F…)` became
+  // `(X|magenta-text=F…)`. Nothing was narrowed; the pipeline WIDENED underneath
+  // this list, which is the same failure and has no diff to notice. Membership
+  // here ALSO gives bracketMarkerDelta a column for span, without which the
+  // marker-conservation check was blind to the loss it was meant to catch.
+  // The corpus anchor in api-translate-span-marker.test.js is what now holds
+  // this closed: it checks the types the extractor ACTUALLY emits, rather than
+  // checking this list against another list beside it.
+  'span',
   // Opaque/escape markers from the os-embed exercise-field converter (item
   // 9/D3, tools/lib/exercise-html.js) — same bracket dialect, same delta
   // exposure (final review m6, widened).
