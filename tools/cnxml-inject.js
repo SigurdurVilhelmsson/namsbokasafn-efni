@@ -1775,7 +1775,22 @@ function reverseInlineMarkup(
   });
 
   // Now safely escape ALL remaining < and &
-  result = result.replace(/&(?!amp;|lt;|gt;|quot;|apos;)/g, '&amp;');
+  // §C118: the lookahead must also spare NUMERIC character references. It listed the
+  // five NAMED entities and nothing else, so `&#8201;` (thin space) had its `&`
+  // escaped and became `&amp;#8201;` — READER-VISIBLE, because the page then prints
+  // the text "&#8201;" instead of the space. Measured on organic m00038: rendering
+  // from source gives 28 thin spaces and 0 literal entities; via the pipeline, 0 and
+  // 28. Exposure 627 references across 89 of 342 organic modules, 12 in chemistry.
+  // ⚠️ Matched by FORM (`&#\d+;`, `&#x[0-9a-fA-F]+;`), never by code point — the bug
+  // was an enumeration and a longer enumeration is the same bug. The corpus already
+  // carries 221 hex references, and the next module may use any character at all.
+  // ⚠️ The escape itself is load-bearing: a bare `&` in translated prose must still
+  // become `&amp;` or the output is not well-formed. Hence a lookahead, not a deletion.
+  // NB: the sibling escapeXml() above escapes every `&` on purpose — it takes RAW,
+  // never-escaped values (an alt string), not mixed content. A related latent
+  // double-encode on the RENDER side (escapeAttr over entity-bearing attrs) is
+  // already logged separately and is not touched here.
+  result = result.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#\d+;|#x[0-9a-fA-F]+;)/g, '&amp;');
   result = result.replace(/</g, '&lt;');
 
   // Restore CNXML tags
