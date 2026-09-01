@@ -42,7 +42,7 @@ The pipeline preserves **most** CNXML structure with high fidelity. Structural e
 | `<link target-id="..."/>` | `[#ref-id]` | — | Reversed | ✅ |
 | `<link url="...">text</link>` | `[text](url)` | — | Reversed | ✅ |
 | `<link document="..." target-id="...">` | `[doc#target]` | — | Reversed | ✅ |
-| `<link document="...">` (no target-id) | Not extracted | — | Lost | ❌ 2 lost in ch01 (Gap 6d) |
+| `<link document="...">` (no target-id) | `[[docref:doc]]` | — | Reversed | ✅ **BOTH FORMS ROUND-TRIP as of 2026-09-01 (§C118).** The **self-closing** `<link document="m00029"/>` was genuinely lost — extract's self-closing handler covered only `document + target-id` while its with-content sibling covered `document` alone, so the element fell through every handler and vanished with no marker and no residue. Fixed; **1,198 such links across 189 of 342 ORGANIC modules**, chemistry has **0** of that shape. The **with-content** `<link document="m68860">text</link>` form (68 in chemistry, incl. the m68674/m68690 pair this row used to name as "2 lost in ch01") round-trips correctly — verified 16/16 and 6/6 links — though *when* that half started working was not established here, only that it works now. ⚠️ **This row read "Not extracted / Lost / ❌ 2 lost in ch01 (Gap 6d)" until 2026-09-01, and that scoping was misleading in both directions**: it named chemistry, where the surviving defect was organic-only, and it counted 2 where the class ran to 1,198. |
 | `<footnote id="...">` | `[footnote: text]` | inline-attrs.json | Reversed with id | ✅ |
 | `<newline/>` | `[[BR]]` | — | Reversed | ✅ |
 | `<space count="N"/>` | `[[SPACE:N]]` | — | Reversed | ✅ |
