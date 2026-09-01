@@ -836,6 +836,39 @@ Extraction uses API-safe `[[type:content]]` bracket markers (the legacy paired
 **The full marker table and the injection back-compat rules are in the `inline-markers`
 skill** (`.claude/skills/inline-markers/SKILL.md`), which loads on demand.
 
+🔴 **DURABLE — TEACHING THE PIPELINE A NEW MARKER TYPE IS NOT DONE AT EXTRACT AND INJECT. THE
+PAID MT LEG KEEPS ITS OWN ENUMERATION, AND A TYPE MISSING FROM IT IS *DELETED* — WITH THE
+MARKER'S ATTRIBUTE WRITTEN INTO THE ICELANDIC AS PROSE.** `api-translate.js`'s
+`unwrapInventedMarkers` exists to strip markers the **model invents** around glossary words
+(§C67 class 3), and it decides by membership in `KNOWN_BRACKET_TYPES`. A real marker whose
+type is absent is therefore indistinguishable from an invented one: measured 2026-09-01,
+`([[span:X|magenta-text]]=F, Cl, Br, I)` came back as **`(X|magenta-text=F, Cl, Br, I)`** —
+reader-visible, on the leg that costs money. ⚠️ **THIS IS TWO DEFECTS AND FIXING EITHER ALONE
+LEAVES THE OTHER OPEN:** absence from `KNOWN_BRACKET_TYPES` **destroys** the marker; absence
+from `BRACKET_MARKER_TYPES` leaves `bracketMarkerDelta` with **no column** for it, so the
+marker-conservation check reports clean while the marker vanishes.
+- 🔴 **SO `emitted → injected → RENDERED` IS NOT THE WHOLE CHAIN FOR ANYTHING THAT GOES ON THE
+  WIRE — THE PAID LEG IS A FOURTH COLUMN.** §C82 L149's three columns are still required; they
+  simply do not touch `api-translate.js`. The `<span>` fix verified reach 31=31=31 across those
+  three, shipped, and was still losing 31 of 31 at the MT. **Measure with an IDENTITY MT** (send
+  the segment file, return it unchanged, run the real post-processing) — free, needs no network,
+  and any loss is then provably ours rather than the model's.
+- 🔴 **DO NOT GUARD THIS WITH A LIST-VS-LIST TEST. ANCHOR IT ON THE CORPUS.** The guard that was
+  in place asserted `BRACKET_MARKER_TYPES ⊆ KNOWN_BRACKET_TYPES` — **two sides derived from one
+  token**, so a type missing from *both* satisfies it trivially and stays green. The replacement
+  asserts that **every bracket type the extractor actually emits into `02-for-mt` is in
+  `KNOWN_BRACKET_TYPES`** (`tools/__tests__/api-translate-span-marker.test.js`); it named the
+  offending type and file unprompted. **An enumeration wrong twice should become a checked
+  property.**
+- ⚠️ **AND THE ENUMERATIONS ARE PLURAL — do not trust this list, re-derive it.** Besides the two
+  in `api-translate.js`, marker/tag types are enumerated in `tools/lib/handled-tags.js`
+  (`HANDLED_INLINE`, which `cnxml-render.js` also derives seam sets from),
+  `tools/lib/bracket-body-check.js` (`BODY_SOURCE_ELEMENTS`, feeding a **BLOCKING** check whose
+  base rate a new type changes) and `server/public/js/marker-highlight.js` (editor, cosmetic).
+  **Their consequences differ — deletion, a moved gate threshold, a diagnostic false positive —
+  so they are separate decisions, not one sweep.** Which are currently out of date, and their
+  triggers, live in the active register, never here.
+
 **⚠️ DURABLE — MARKER-SURVIVAL EVIDENCE IS PER-ENDPOINT. Never generalise it to "the API".**
 This line claimed "100% Málstaður API survival" until 2026-08-06. Every check behind that
 result exercises **`/v1/translate`**. Measured on **`/v1/grammar`**, the same markers are
