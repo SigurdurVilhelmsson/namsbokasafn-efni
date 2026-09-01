@@ -38,9 +38,11 @@ describe('01-source overwrite path removed (PROV-1)', () => {
       'preintake-probe.js', // read-only: probes source dir at intake, no writes
       'remt-sweep.js', // read-only: walks 01-source to build the §C82 battery's measurement populations; VERIFIED — its only fs calls are existsSync/readFileSync/readdirSync, and a full --with-spawns run leaves books/ byte-clean. It spawns audit-render-output.js and the schema validator, both read-only and both already classified here / under experiments/.
       'remt-ctx.js', // read-only: reads 01-source/<chNN> CNXML to build §C82 check battery's Tier-0/1 ctx; only fs calls are existsSync/readFileSync/readdirSync/statSync; imports mt-lock.cjs but binds only isMtLocked (never writeMtLock); both child processes (check-glossary-payload.js + git log) read-only; 220-unit load leaves books/ byte-clean.
+      'render-oracle-check.js', // read-only: §C118 T0/T3 — reads 01-source CNXML and the committed openstax-id-manifest.json, renders in memory and compares; VERIFIED its ONLY fs calls are existsSync/readFileSync (no writeFileSync/mkdir/rename/unlink anywhere in the file), and it writes no file at all, not even a report.
       'repair-emphasis.js', // read-only: reads source CNXML only as a fidelity-guard baseline; writes land in 03-translated/
       'resolve-embeds.js', // read-only: scans source CNXML for iframe embeds; writes a book-root embed-mapping.json
       'resolve-os-embed.js', // writes: downloads exercise JSON + images into 01-source/exercises,media (not CNXML)
+      'source-roundtrip-check.js', // read-only: §C118 T2 — reads 01-source CNXML, runs the extract->inject(EN) round-trip in memory and diffs it against that same source; VERIFIED its ONLY fs calls are existsSync/readFileSync (a grep for write verbs matches once, on `norm(own)` — the substring `rm(` — and nothing else), and it writes no file at all.
       'translate-chapter-titles.js', // read-only: reads collection-order.json; writes server/data/<book>.json
       'validate-chapter.js', // read-only: existence/consistency checks only
       'verify-extraction-coverage.js', // read-only: reads source CNXML to check list-item coverage vs 02-for-mt seg-ids (campaign 6b); writes nothing

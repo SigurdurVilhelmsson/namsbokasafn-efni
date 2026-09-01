@@ -1290,7 +1290,7 @@ function reverseInlineMarkup(
   // API segments use {{i}}, {{b}}, {{term}}, {{fn}}, [[sub:]], [[sup:]] — so legacy
   // patterns (*text*, ~text~, ^text^) would be false positives from translated content.
   const hasApiMarkers =
-    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:/.test(
+    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:|\[\[span:/.test(
       text
     );
 
@@ -1403,6 +1403,23 @@ function reverseInlineMarkup(
       s = s.replace(
         /\[\[b:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
         '<emphasis effect="bold">$1</emphasis>'
+      );
+
+      // §C118: [[span:text|class]] belongs INSIDE this fixed-point loop, not in a
+      // pass of its own, because span and emphasis nest in BOTH directions on the
+      // real corpus:
+      //   <span class="magenta-text">1<emphasis effect="italics">s</emphasis></span>
+      //     -> [[span:1[[i:s]]|magenta-text]]      (span outside — emphasis must resolve first)
+      //   <emphasis effect="bold"><span class="red-text">STEP 1</span></emphasis>
+      //     -> [[b:[[span:STEP 1|red-text]]]]      (span inside — span must resolve first)
+      // A single ordered pass can satisfy one and not the other; the loop satisfies
+      // both by resolving whichever is leaf-level this round and re-testing. Placing
+      // it after the loop instead left `[[b:<span …>STEP 1</span>]]` unresolved on
+      // m00035/37/38 — caught by assertNoMarkerResidue, which is why it surfaced as a
+      // loud error rather than a silently mangled page.
+      s = s.replace(
+        /\[\[span:((?:(?!\[\[|\]\])[\s\S])+)\|([^\]|]+)\]\]/g,
+        '<span class="$2">$1</span>'
       );
 
       // Leaf-level sub/sup: [[sub:content]] and [[sup:content]] where content has no [[ or ]].
@@ -1730,7 +1747,17 @@ function reverseInlineMarkup(
   // This prevents user-typed HTML (e.g. <script>, <div>) from passing through unescaped.
   const cnxmlTags = [];
   result = result.replace(
-    /<(\/?)(term|emphasis|sup|sub|newline|space|footnote|link|equation|media|image|m:math|m:[a-z]+)([\s>\/])/g,
+    // §C118: `span` belongs on this allowlist because it IS a CNXML tag in this
+    // corpus — organic's 1,071 reaction-colouring spans, which OpenStax ships and
+    // CLAUDE.md's clean-CNXML ruling keeps. Without it the [[span:]] conversion
+    // above is undone right here: the rebuilt `<span class="magenta-text">` was
+    // escaped to `&lt;span class="magenta-text">`, so the marker resolved, the
+    // residue check passed, and the output was still wrong. That is the whole
+    // reason this is a THIRD site rather than the expected two.
+    // ⚠️ This list is a real boundary — it is what stops translated prose
+    // containing literal `<script>`/`<div>` from reaching the output unescaped.
+    // Add a tag only when the corpus genuinely carries it as CNXML.
+    /<(\/?)(term|emphasis|sup|sub|span|newline|space|footnote|link|equation|media|image|m:math|m:[a-z]+)([\s>\/])/g,
     (match) => {
       cnxmlTags.push(match);
       return `\x00CNXML:${cnxmlTags.length - 1}\x00`;
