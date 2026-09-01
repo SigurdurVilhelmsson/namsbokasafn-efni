@@ -2,9 +2,9 @@
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
   "summary": {
-    "modulesWithResidue": 4,
-    "exactResidues": 8,
-    "ratioWarnings": 2,
+    "modulesWithResidue": 3,
+    "exactResidues": 7,
+    "ratioWarnings": 5,
     "toleratedResidues": 0
   },
   "modules": {
@@ -16,13 +16,6 @@
           "ratio": 0.8
         }
       ],
-      "tolerated": []
-    },
-    "m00037": {
-      "exact": [
-        "m00037:para:para-00003"
-      ],
-      "warnings": [],
       "tolerated": []
     },
     "m00038": {
@@ -58,6 +51,24 @@
         "m00142:item:list-00001-item-15"
       ],
       "warnings": [],
+      "tolerated": []
+    },
+    "m00032": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m00032:entry:auto-42",
+          "ratio": 0.86
+        },
+        {
+          "segmentId": "m00032:entry:auto-46",
+          "ratio": 0.88
+        },
+        {
+          "segmentId": "m00032:entry:auto-50",
+          "ratio": 0.86
+        }
+      ],
       "tolerated": []
     }
   }

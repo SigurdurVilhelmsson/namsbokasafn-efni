@@ -1,118 +1,23 @@
 {
-  "generated": "2026-08-31T19:13:11.418Z",
+  "generated": "2026-09-01T19:35:18.683Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-08-31T19:13:11.418Z",
+      "generated": "2026-09-01T19:35:18.683Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 342,
         "totalChecked": 8,
         "skippedUntranslated": 334,
-        "perfect": 2,
-        "withDiscrepancies": 6,
-        "totalDiscrepancies": 41,
-        "unexplainedDiscrepancies": 41,
+        "perfect": 7,
+        "withDiscrepancies": 1,
+        "totalDiscrepancies": 8,
+        "unexplainedDiscrepancies": 8,
         "deferredLosses": 0,
         "benignArtifacts": 0,
         "green": false
       },
       "modules": [
-        {
-          "moduleId": "m00032",
-          "chapter": "ch03",
-          "discrepancies": [
-            {
-              "tag": "image",
-              "diff": -1,
-              "status": "unexplained"
-            },
-            {
-              "tag": "media",
-              "diff": -1,
-              "status": "unexplained"
-            },
-            {
-              "tag": "para",
-              "diff": -1,
-              "status": "unexplained"
-            },
-            {
-              "tag": "span",
-              "diff": -10,
-              "status": "unexplained"
-            }
-          ]
-        },
-        {
-          "moduleId": "m00033",
-          "chapter": "ch03",
-          "discrepancies": [
-            {
-              "tag": "link",
-              "diff": -2,
-              "status": "unexplained"
-            },
-            {
-              "tag": "span",
-              "diff": -2,
-              "status": "unexplained"
-            }
-          ]
-        },
-        {
-          "moduleId": "m00035",
-          "chapter": "ch03",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": -1,
-              "status": "unexplained"
-            },
-            {
-              "tag": "link",
-              "diff": -1,
-              "status": "unexplained"
-            },
-            {
-              "tag": "span",
-              "diff": -9,
-              "status": "unexplained"
-            }
-          ]
-        },
-        {
-          "moduleId": "m00036",
-          "chapter": "ch03",
-          "discrepancies": [
-            {
-              "tag": "link",
-              "diff": -1,
-              "status": "unexplained"
-            }
-          ]
-        },
-        {
-          "moduleId": "m00037",
-          "chapter": "ch03",
-          "discrepancies": [
-            {
-              "tag": "link",
-              "diff": -1,
-              "status": "unexplained"
-            },
-            {
-              "tag": "span",
-              "diff": -2,
-              "status": "unexplained"
-            },
-            {
-              "tag": "term",
-              "diff": -1,
-              "status": "unexplained"
-            }
-          ]
-        },
         {
           "moduleId": "m00038",
           "chapter": "ch03",

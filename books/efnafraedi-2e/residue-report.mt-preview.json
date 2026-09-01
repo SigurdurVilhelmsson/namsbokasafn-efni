@@ -4,7 +4,7 @@
   "summary": {
     "modulesWithResidue": 1,
     "exactResidues": 76,
-    "ratioWarnings": 63,
+    "ratioWarnings": 65,
     "toleratedResidues": 4
   },
   "modules": {
@@ -182,12 +182,20 @@
       "exact": [],
       "warnings": [
         {
+          "segmentId": "m68700:solution:fs-idp18584256",
+          "ratio": 0.8
+        },
+        {
           "segmentId": "m68700:solution:fs-idp27797488",
           "ratio": 0.86
         },
         {
           "segmentId": "m68700:solution:fs-idp56664624",
           "ratio": 0.86
+        },
+        {
+          "segmentId": "m68700:problem:fs-idp42717200",
+          "ratio": 0.7
         }
       ],
       "tolerated": []
@@ -207,7 +215,7 @@
       "warnings": [
         {
           "segmentId": "m68703:solution:fs-idm96721040",
-          "ratio": 0.92
+          "ratio": 0.83
         }
       ],
       "tolerated": []

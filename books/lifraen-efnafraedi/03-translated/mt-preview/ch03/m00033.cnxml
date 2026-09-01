@@ -1,34 +1,34 @@
 <document xmlns="http://cnx.rice.edu/cnxml">
-<title>Alkanar og hverfur alkana</title>
+<title>Alkanar og alkanhverfur</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
-    <md:title>Alkanar og hverfur alkana</md:title>
+    <md:title>Alkanar og alkanhverfur</md:title>
     <md:content-id>m00033</md:content-id>
     <md:uuid>508619d8-1c49-4dd7-96f6-92f45d0fd41d</md:uuid>
   </metadata>
 
 <content>
-<para id="para-00001">Áður en við hefjum kerfisbundna skoðun á mismunandi virknihópum skulum við fyrst líta á einföldustu sameindafjölskylduna til að þróa með okkur almennar hugmyndir sem eiga við um allar fjölskyldur. Við sáum að kolefnis-kolefnis eintengið í etani er afleiðing <emphasis effect="italics">σ</emphasis> (enda-) skörunar á <emphasis effect="italics">sp</emphasis><sup>3</sup> blendingssvigrúmum kolefnis. Ef við ímyndum okkur að tengja saman þrjár, fjórar, fimm eða jafnvel fleiri kolefnisfrumeindir með C–C eintengjum getum við búið til stóra fjölskyldu sameinda sem kallast <term id="term-00001">alkanar (e. alkanes)</term>.</para>
+<para id="para-00001">Áður en við hefjum kerfisbundna rannsókn á hinum ýmsu virknihópum skulum við fyrst skoða einföldustu ætt sameinda til að þróa með okkur almennar hugmyndir sem eiga við um allar ættir. Við sáum í <link document="m00164"/> að kolefnis-kolefnis eintengið í etani er afleiðing <emphasis effect="italics">σ</emphasis> (enda á enda) skörunar á <emphasis effect="italics">sp</emphasis><sup>3</sup> blendingssvigrúmum kolefnis. Ef við ímyndum okkur að þrjú, fjögur, fimm eða jafnvel fleiri kolefnisatóm tengist með C–C eintengjum getum við búið til stóru ættina af sameindum sem kallast <term id="term-00001">alkanar (e. alkanes)</term>.</para>
 <figure id="fig-00001" class="unnumbered scaled-down">
-<media alt="A series of chemical structures of methane, ethane, propane, and butane are shown.">
+<media alt="Sýnd er röð efnafræðilegra gerða metans, etans, própans og bútans.">
 <image mime-type="image/jpeg" src="../../media/OChem_03_02_001.jpg"/>
 </media>
 </figure>
-<para id="para-00002">Alkönum er oft lýst sem <emphasis effect="italics">mettuðum kolvetnum:</emphasis> <term id="term-00002">kolvetni (e. hydrocarbons)</term> vegna þess að þau innihalda aðeins kolefni og vetni; <term id="term-00003">mettuð (e. saturated)</term> vegna þess að þau hafa aðeins C–C og C–H eintengi og innihalda því hámarksfjölda vetnisfrumeinda á hverja kolefnisfrumeind. Þeir hafa almennu formúluna C<emphasis effect="italics"><sub>n</sub></emphasis>H<sub>2<emphasis effect="italics">n</emphasis>+2</sub>, þar sem <emphasis effect="italics">n</emphasis> er heiltala. Alkanar eru einnig stundum kallaðir <term id="term-00004">alifatísk (e. aliphatic)</term> efnasambönd, nafn sem er dregið af gríska orðinu <emphasis effect="italics">aleiphas,</emphasis> sem þýðir „fita“. Við munum sjá í <emphasis effect="bold">kafli 27.1</emphasis> að margar dýrafitur innihalda langar kolefniskeðjur svipaðar alkönum.</para>
+<para id="para-00002">Alkönunum er oft lýst sem <emphasis effect="italics">mettuðum kolvetnum:</emphasis> <term id="term-00002">kolvetni (e. hydrocarbons)</term> vegna þess að þeir innihalda aðeins kolefni og vetni; <term id="term-00003">mettaðir (e. saturated)</term> vegna þess að þeir hafa aðeins C–C og C–H eintengi og innihalda því hámarksfjölda vetnisatóma á hvert kolefnisatóm. Þeir hafa almennu formúluna C<emphasis effect="italics"><sub>n</sub></emphasis>H<sub>2<emphasis effect="italics">n</emphasis>+2</sub>, þar sem <emphasis effect="italics">n</emphasis> er heiltala. Alkanar eru einnig stundum kallaðir <term id="term-00004">alifatísk (e. aliphatic)</term> efnasambönd, nafn sem er dregið af gríska orðinu <emphasis effect="italics">aleiphas,</emphasis> sem þýðir „fita“. Við munum sjá í <emphasis effect="bold">kafla 27.1</emphasis> að margar dýrafitur innihalda langar kolefniskeðjur sem eru einslaga og alkanar.</para>
 <figure id="fig-00002" class="unnumbered scaled-down">
-<media alt="The chemical structure of typical animal fat featuring a three tier carbon chain.">
+<media alt="Efnafræðileg gerð dæmigerðrar dýrafitu með þriggja þrepa kolefniskeðju.">
 <image mime-type="image/jpeg" src="../../media/OChem_03_02_002.jpg"/>
 </media>
 </figure>
-<para id="para-00003">Hugleiddu hvernig kolefni og vetni gætu sameinast til að mynda alkana. Með einni kolefnisfrumeind og fjórum vetnisfrumeindum er aðeins ein bygging möguleg: metan, CH<sub>4</sub>. Á sama hátt er aðeins ein samsetning tveggja kolefnisfrumeinda með sex vetnisfrumeindum (etan, CH<sub>3</sub>CH<sub>3</sub>) og aðeins ein samsetning þriggja kolefnisfrumeinda með átta vetnisfrumeindum (própan, CH<sub>3</sub>CH<sub>2</sub>CH<sub>3</sub>). Þegar stærri fjöldi kolefnis- og vetnisfrumeinda sameinast er hins vegar fleiri en ein bygging möguleg. Til dæmis eru tvö efni með formúluna C<sub>4</sub>H<sub>10</sub>: kolefnisfrumeindirnar fjórar geta allar verið í röð (bútan), eða þær geta greinst (ísóbútan). Á sama hátt eru þrjár C<sub>5</sub>H<sub>12</sub> sameindir, og svo framvegis fyrir stærri alkana.</para>
+<para id="para-00003">Hugleiddu hvernig kolefni og vetni gætu sameinast til að mynda alkana. Með einu kolefni og fjórum vetnisatómum er aðeins ein gerð möguleg: metan, CH<sub>4</sub>. Á sama hátt er aðeins ein samantekt tveggja kolefnisatóma með sex vetnisatómum (etan, CH<sub>3</sub>CH<sub>3</sub>) og aðeins ein samantekt þriggja kolefnisatóma með átta vetnisatómum (própan, CH<sub>3</sub>CH<sub>2</sub>CH<sub>3</sub>). Þegar stærri fjöldi kolefnis- og vetnisatóma sameinast er hins vegar fleiri en ein gerð möguleg. Til dæmis eru tvö efni með formúluna C<sub>4</sub>H<sub>10</sub>: kolefnisatómin fjögur geta öll verið í línu (bútan), eða þau geta myndað grein (ísóbútan). Á sama hátt eru þrjár C<sub>5</sub>H<sub>12</sub> sameindir, og svo framvegis fyrir stærri alkana.</para>
 <figure id="fig-00003" class="unnumbered scaled-down">
-<media alt="Eight molecular structures and their corresponding ball and stick models of methane, ethane, propane, butane, isobutane, pentane, 2-methylbutane, and 2,2-dimethylpropane. The black and grey spheres represent carbon and hydrogen, respectively.">
+<media alt="Átta sameindagerðir og samsvarandi kúlu-og-prikalíkön af metani, etani, própani, bútani, ísóbútani, pentani, 2-metýlbútani og 2,2-dímetýlprópani. Svörtu og gráu kúlurnar tákna kolefni og vetni.">
 <image mime-type="image/jpeg" src="../../media/OChem_03_02_003.jpg"/>
 </media>
 </figure>
-<para id="para-00004">Efnasambönd eins og bútan og pentan, þar sem kolefnisfrumeindirnar eru allar tengdar í röð, eru kölluð <term id="term-00005">ógreinóttir alkanar (e. straight-chain alkanes)</term>, eða <emphasis effect="italics">venjulegir alkanar.</emphasis> Efnasambönd eins og 2-metýlprópan (ísóbútan), 2-metýlbútan og 2,2-dímetýlprópan, þar sem kolefniskeðjurnar greinast, eru kölluð <term id="term-00006">greinóttir alkanar (e. branched-chain alkanes)</term>.</para>
-<para id="para-00005">Efnasambönd eins og C<sub>4</sub>H<sub>10</sub> sameindirnar tvær og C<sub>5</sub>H<sub>12</sub> sameindirnar þrjár, sem hafa sömu formúlu en mismunandi byggingu, eru kölluð <term id="term-00007">hverfur (e. isomers)</term>, úr grísku <emphasis effect="italics">isos</emphasis> + <emphasis effect="italics">meros,</emphasis> sem þýðir „gerðar úr sömu hlutum“. Hverfur hafa sama fjölda og sömu tegundir frumeinda en eru ólíkar að því leyti hvernig frumeindunum er raðað. Efnasambönd eins og bútan og ísóbútan, þar sem frumeindirnar eru tengdar á mismunandi hátt, eru kallaðar <term id="term-00008">byggingarhverfur (e. constitutional isomers)</term>. Við munum sjá innan skamms að aðrar tegundir hverfa eru einnig mögulegar, jafnvel meðal efnasambanda þar sem frumeindirnar eru tengdar í sömu röð. Eins og <link target-id="table-00001"/> sýnir, eykst fjöldi mögulegra alkanahverfa verulega með fjölda kolefnisfrumeinda.</para>
+<para id="para-00004">Efnasambönd eins og bútan og pentan, þar sem kolefnisatómin eru öll samhangandi í línu, eru kölluð <term id="term-00005">ógreinóttir alkanar (e. straight-chain alkanes)</term>, eða <emphasis effect="italics">n-alkanar.</emphasis> Efnasambönd eins og 2-metýlprópan (ísóbútan), 2-metýlbútan og 2,2-dímetýlprópan, þar sem kolefniskeðjurnar mynda greinar, eru kölluð <term id="term-00006">greinóttir alkanar (e. branched-chain alkanes)</term>.</para>
+<para id="para-00005">Efnasambönd eins og C<sub>4</sub>H<sub>10</sub> sameindirnar tvær og C<sub>5</sub>H<sub>12</sub> sameindirnar þrjár, sem hafa sömu formúlu en mismunandi gerð, eru kölluð <term id="term-00007">hverfur (e. isomers)</term>, úr grísku <emphasis effect="italics">isos</emphasis> + <emphasis effect="italics">meros,</emphasis> sem þýðir „úr sömu hlutum“. Hverfur hafa sama fjölda og sömu tegundir atóma en eru mismunandi í því hvernig atómin raðast. Efnasambönd eins og bútan og ísóbútan, þar sem atómin eru tengd á mismunandi hátt, eru kölluð <term id="term-00008">byggingarhverfur (e. constitutional isomers)</term>. Við munum sjá innan skamms að aðrar tegundir hverfa eru einnig mögulegar, jafnvel meðal efnasambanda þar sem atómin eru tengd í sömu röð. Eins og <link target-id="table-00001"/> sýnir eykst fjöldi mögulegra alkanhverfa verulega með fjölda kolefnisatóma.</para>
 <table id="table-00001" summary=" ">
-    <title>Number of Alkane Isomers</title>
+    <title>Fjöldi alkanhverfa</title>
     <tgroup cols="4">
     <colspec colnum="1" colname="c1"/>
     <colspec colnum="2" colname="c2"/>
@@ -68,22 +68,22 @@
     </tbody>
     </tgroup>
     </table>
-<para id="para-00006">Byggingarhverfur eru ekki bundnar við alkana – þær koma víða fyrir í lífrænni efnafræði. Byggingarhverfur geta haft mismunandi kolefnisgrindur (eins og í ísóbútani og bútani), mismunandi virknihópa (eins og í etanóli og dímetýleter), eða mismunandi staðsetningu virknihóps meðfram keðjunni (eins og í ísóprópýlamíni og própýlamíni). Óháð ástæðu hverfunnar eru byggingarhverfur alltaf mismunandi efnasambönd með mismunandi eiginleika en með sömu formúlu.</para>
+<para id="para-00006">Byggingarhverfur eru ekki bundnar við alkana – þær koma víða fyrir í lífrænni efnafræði. Byggingarhverfur geta haft mismunandi kolefnisgrindur (eins og í ísóbútani og bútani), mismunandi virknihópa (eins og í etanóli og dímetýleter) eða mismunandi staðsetningu virknihóps meðfram keðjunni (eins og í ísóprópýlamíni og própýlamíni). Óháð ástæðunni fyrir hverfunni eru byggingarhverfur alltaf mismunandi efnasambönd með mismunandi eiginleika en með sömu formúlu.</para>
 <figure id="fig-00004" class="unnumbered scaled-down">
-<media alt="Three sets of molecular structures, where each set represents two isomers. The first, second, and third sets present different carbon skeletons, functional groups, and positions of functional groups, respectively.">
+<media alt="Þrjú mengi af sameindagerðum, þar sem hvert mengi sýnir tvær hverfur. Fyrsta, annað og þriðja mengið sýna mismunandi kolefnisgrindur, fellihópa og stellingar fellihópa.">
 <image mime-type="image/jpeg" src="../../media/OChem_03_02_004.jpg"/>
 </media>
 </figure>
-<para id="para-00007">Hægt er að teikna tiltekinn alkana á marga vegu. Til dæmis er hægt að tákna ógreinótta, fjögurra kolefnisfrumeinda alkanann sem kallast bútan með hvaða byggingu sem sýnd er á <link target-id="fig-00005"/>. Þessar byggingar gefa ekki til kynna neina sérstaka þrívíddarrúmfræði fyrir bútan; þær gefa aðeins til kynna tengslin milli frumeinda. Í reynd, eins og fram kom í , teikna efnafræðingar sjaldan öll efnatengin í sameind og vísa venjulega til bútans með þjappaðri byggingu, CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> eða CH<sub>3</sub>(CH<sub>2</sub>)<sub>2</sub>CH<sub>3</sub>. Enn einfaldar er hægt að tákna bútan sem <emphasis effect="italics">n</emphasis>-C<sub>4</sub>H<sub>10</sub>, þar sem <emphasis effect="italics">n</emphasis> táknar <emphasis effect="italics">normal</emphasis> (ógreinóttan) bútan.</para>
+<para id="para-00007">Hægt er að teikna tiltekinn alkan á marga vegu. Til dæmis er hægt að tákna beinkeðju-alkanann með fjórum kolefnisfrumeindum, sem kallast bútan, með hvaða gerð sem sýnd er á <link target-id="fig-00005"/>. Þessar gerðir gefa ekki til kynna neina sérstaka þrívíða rúmfræði fyrir bútan; þær gefa aðeins til kynna samböndin milli frumeinda. Í reynd, eins og fram kemur í <link document="m00169"/>, teikna efnafræðingar sjaldan öll tengi í sameind og vísa venjulega til bútans með þjappaðri gerð, CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> eða CH<sub>3</sub>(CH<sub>2</sub>)<sub>2</sub>CH<sub>3</sub>. Enn einfaldar er hægt að tákna bútan sem <emphasis effect="italics">n</emphasis>-C<sub>4</sub>H<sub>10</sub>, þar sem <emphasis effect="italics">n</emphasis> táknar <emphasis effect="italics">normal</emphasis> (beinkeðju) bútan.</para>
 <figure id="fig-00005" class="scaled-down">
-<media alt="Five different representations of the molecular structure of butane.">
+<media alt="Fimm mismunandi útsetningar á sameindagerð bútans.">
 <image mime-type="image/jpeg" src="../../media/OChem_03_02_005.jpg"/>
 </media>
-<caption><emphasis effect="bold">Nokkrar framsetningar á bútani, C<sub>4</sub>H<sub>10</sub>.</emphasis> Sameindin er sú sama óháð því hvernig hún er teiknuð. Þessar byggingar gefa aðeins til kynna að bútan hafi samfellda keðju fjögurra kolefnisfrumeinda; þær gefa ekki til kynna neina sérstaka rúmfræði.</caption>
+<caption><emphasis effect="bold">Nokkrar útsetningar á bútani, C<sub>4</sub>H<sub>10</sub>.</emphasis> Sameindin er sú sama óháð því hvernig hún er teiknuð. Þessar gerðir gefa aðeins til kynna að bútan hafi samfellda keðju af fjórum kolefnisfrumeindum; þær gefa ekki til kynna neina sértæka rúmfræði.</caption>
 </figure>
-<para id="para-00008">Ógreinóttir alkanar eru nefndir eftir fjölda kolefnisfrumeinda sem þeir innihalda, eins og sýnt er í <link target-id="table-00002"/>. Að undanskildum fyrstu fjórum efnasamböndunum – metani, etani, própani og bútani – sem eiga sér sögulegar rætur, eru alkanar nefndir eftir grískum tölum. Viðskeytinu -<emphasis effect="italics">an</emphasis> er bætt við enda hvers nafns til að gefa til kynna að sameindin sem um ræðir sé alkan. Þannig er <emphasis effect="italics">pent</emphasis>an fimm kolefna alkan, <emphasis effect="italics">hex</emphasis>an er sex kolefna alkan og svo framvegis. Við munum brátt sjá að þessi alkanaheiti mynda grunninn að nafngiftum allra annarra lífrænna efnasambanda, svo það ætti að leggja að minnsta kosti þau tíu fyrstu á minnið.</para>
+<para id="para-00008">Beinkeðju-alkanar eru nefndir eftir fjölda kolefnisfrumeinda sem þeir innihalda, eins og sýnt er í <link target-id="table-00002"/>. Að undanskildum fyrstu fjórum efnasamböndunum – metani, etani, própani og bútani – sem eiga sér sögulegar rætur, eru alkanarnir nefndir eftir grískum tölum. Viðskeytinu -<emphasis effect="italics">an</emphasis> er bætt við enda hvers nafns til að gefa til kynna að sameindin sem um ræðir sé alkan. Þannig er <emphasis effect="italics">pent</emphasis>an fimm kolefna alkaninn, <emphasis effect="italics">hex</emphasis>an er sex kolefna alkaninn og svo framvegis. Við munum brátt sjá að þessi alkanaheiti mynda grunninn að nafngjöf allra annarra lífrænna efnasambanda, svo það ætti að leggja að minnsta kosti þau tíu fyrstu á minnið.</para>
 <table id="table-00002" summary="Alt Text Placeholder">
-    <title>Names of Straight-Chain Alkanes</title>
+    <title>Heiti beinkeðju-alkana</title>
     <tgroup cols="6">
     <colspec colnum="1" colname="c1"/>
     <colspec colnum="2" colname="c2"/>
@@ -91,10 +91,10 @@
     <thead>
     <row valign="top">
     <entry valign="top" align="left">Fjöldi kolefna (<emphasis effect="italics">n</emphasis>)</entry>
-    <entry valign="top" align="left">Nafn</entry>
+    <entry valign="top" align="left">Heiti</entry>
     <entry valign="top" align="left">Formúla (C<emphasis effect="italics"><sub>n</sub></emphasis>H<sub>2<emphasis effect="italics">n</emphasis>+2</sub>)</entry>
         <entry valign="top" align="left">Fjöldi kolefna (<emphasis effect="italics">n</emphasis>)</entry>
-    <entry valign="top" align="left">Nafn</entry>
+    <entry valign="top" align="left">Heiti</entry>
     <entry valign="top" align="left">Formúla (C<emphasis effect="italics"><sub>n</sub></emphasis>H<sub>2<emphasis effect="italics">n</emphasis>+2</sub>)</entry>
     </row>
     </thead>
@@ -104,7 +104,7 @@
     <entry valign="top" align="left">Metan</entry>
     <entry valign="top" align="left">CH<sub>4</sub></entry>
         <entry valign="top" align="left">9</entry>
-    <entry valign="top" align="left">Nonan</entry>
+    <entry valign="top" align="left">Nónan</entry>
     <entry valign="top" align="left">C<sub>9</sub>H<sub>20</sub></entry>
     </row>
     <row valign="top">
@@ -165,11 +165,11 @@
     </tgroup>
     </table>
 <example id="exam-00001">
-    <title>Drawing the Structures of Isomers</title>
-    <para id="para-00009"><title>Aðferð</title>Leggið til byggingar fyrir tvær hverfur með formúluna C<sub>2</sub>H<sub>7</sub>N.</para>
-    <para id="para-00010">Við vitum að kolefni myndar fjögur efnatengi, nitur myndar þrjú og vetni myndar eitt. Skrifið fyrst niður kolefnisfrumeindirnar og notið síðan ítrekaðar tilraunir og innsæi til að púsla bitunum saman.</para>
-    <para id="para-00011"><title>Lausn</title>Það eru tvær hverfubyggingar. Önnur hefur tenginguna C–C–N og hin hefur tenginguna C–N–C.<figure class="unnumbered scaled-down" id="fig-00006">
-    <media alt="The formation of two isomers with the formula C2H7N from three individual components. The components used are 2 carbon, 7 hydrogen, and 1 nitrogen.">
+    <title>Að teikna gerðir hverfa</title>
+    <para id="para-00009">Leggið til gerðir fyrir tvær hverfur með formúluna C<sub>2</sub>H<sub>7</sub>N.</para>
+    <para id="para-00010"><title><span class="red-text">Aðferð</span></title>Við vitum að kolefni myndar fjögur tengi, nitur myndar þrjú og vetni myndar eitt. Skrifaðu fyrst niður kolefnisfrumeindirnar og notaðu síðan ítrekun og innsæi til að púsla bútunum saman.</para>
+    <para id="para-00011"><title><span class="cyan-text">Lausn</span></title>Það eru tvær hverfugerðir. Önnur hefur sambandið C–C–N og hin hefur sambandið C–N–C.<figure class="unnumbered scaled-down" id="fig-00006">
+    <media alt="Myndun tveggja hverfa með formúluna C2H7N úr þremur einstökum íhlutum. Íhlutirnir sem notaðir eru eru 2 kolefni, 7 vetni og 1 nitur.">
     <image mime-type="image/jpeg" src="../../media/OChem_03_02_006.jpg"/>
     </media>
     </figure></para>

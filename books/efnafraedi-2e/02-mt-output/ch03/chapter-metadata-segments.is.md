@@ -1,2 +1,2 @@
 <!-- SEG:chapter:title:ch03 -->
-Efnasamsetning og lausnir
+Samsetning efna og lausna
