@@ -77,7 +77,7 @@ The general structure of benzene.
 Halide
 
 <!-- SEG:m00032:entry:para-00004 -->
-(X=F, Cl, Br, I)
+([[span:X|magenta-text]]=F, Cl, Br, I)
 
 <!-- SEG:m00032:alt:OChem_03_01_003c_jpg-alt -->
 The general structure of halide where X represents any halogen element.
@@ -86,7 +86,7 @@ The general structure of halide where X represents any halogen element.
 None
 
 <!-- SEG:m00032:entry:auto-30 -->
-CH[[sub:3]]Cl [[BR]]Chloromethane
+CH[[sub:3]][[span:Cl|magenta-text]] [[BR]]Chloromethane
 
 <!-- SEG:m00032:entry:auto-31 -->
 Alcohol
@@ -98,7 +98,7 @@ The general structure of alcohol.
 -[[i:ol]]
 
 <!-- SEG:m00032:entry:auto-34 -->
-CH[[sub:3]]OH [[BR]]Methanol
+CH[[sub:3]][[span:OH|magenta-text]] [[BR]]Methanol
 
 <!-- SEG:m00032:entry:auto-35 -->
 Ether
@@ -110,7 +110,7 @@ The general structure of ether.
 [[i:ether]]
 
 <!-- SEG:m00032:entry:auto-38 -->
-CH[[sub:3]]OCH[[sub:3]] [[BR]]Dimethyl ether
+CH[[sub:3]][[span:O|magenta-text]]CH[[sub:3]] [[BR]]Dimethyl ether
 
 <!-- SEG:m00032:entry:auto-39 -->
 Monophosphate
@@ -122,7 +122,7 @@ The general structure of monophosphate.
 [[i:phosphate]]
 
 <!-- SEG:m00032:entry:auto-42 -->
-CH[[sub:3]]OPO[[sub:3]][[sup:2−]] [[BR]]Methyl phosphate
+CH[[sub:3]][[span:OPO[[sub:3]][[sup:2−]]|magenta-text]] [[BR]]Methyl phosphate
 
 <!-- SEG:m00032:entry:auto-43 -->
 Diphosphate
@@ -134,7 +134,7 @@ The general structure of diphosphate.
 [[i:diphosphate]]
 
 <!-- SEG:m00032:entry:auto-46 -->
-CH[[sub:3]]OP[[sub:2]]O[[sub:6]][[sup:3−]] [[BR]]Methyl diphosphate
+CH[[sub:3]][[span:OP[[sub:2]]O[[sub:6]][[sup:3−]]|magenta-text]] [[BR]]Methyl diphosphate
 
 <!-- SEG:m00032:entry:auto-47 -->
 Amine
@@ -146,7 +146,7 @@ The general structure of amine featuring a lone pair on nitrogen.
 -[[i:amine]]
 
 <!-- SEG:m00032:entry:auto-50 -->
-CH[[sub:3]]NH[[sub:2]] [[BR]]Methylamine
+CH[[sub:3]][[span:NH[[sub:2]]|magenta-text]] [[BR]]Methylamine
 
 <!-- SEG:m00032:entry:auto-51 -->
 Imine (Schiff base)
@@ -182,7 +182,7 @@ The general structure of thiol.
 -[[i:thiol]]
 
 <!-- SEG:m00032:entry:auto-62 -->
-CH[[sub:3]]SH [[BR]]Methanethiol
+CH[[sub:3]][[span:SH|magenta-text]] [[BR]]Methanethiol
 
 <!-- SEG:m00032:entry:auto-63 -->
 Sulfide
@@ -194,7 +194,7 @@ The general structure of sulfide.
 [[i:sulfide]]
 
 <!-- SEG:m00032:entry:auto-66 -->
-CH[[sub:3]]SCH[[sub:3]] [[BR]]Dimethyl sulfide
+CH[[sub:3]][[span:S|magenta-text]]CH[[sub:3]] [[BR]]Dimethyl sulfide
 
 <!-- SEG:m00032:entry:auto-67 -->
 Disulfide
@@ -206,7 +206,7 @@ The general structure of disulfide.
 [[i:disulfide]]
 
 <!-- SEG:m00032:entry:auto-70 -->
-CH[[sub:3]]SSCH[[sub:3]] [[BR]]Dimethyl disulfide
+CH[[sub:3]][[span:SS|magenta-text]]CH[[sub:3]] [[BR]]Dimethyl disulfide
 
 <!-- SEG:m00032:entry:auto-71 -->
 Sulfoxide

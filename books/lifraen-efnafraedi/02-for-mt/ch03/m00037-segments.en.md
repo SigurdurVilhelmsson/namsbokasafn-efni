@@ -5,7 +5,7 @@ Conformations of Ethane
 Up until now, we’ve viewed molecules primarily in a two-dimensional way and have given little thought to any consequences that might arise from the spatial arrangement of atoms in molecules. Now it’s time to add a third dimension to our study. [[term:Stereochemistry|term-00001]] is the branch of chemistry concerned with the three-dimensional aspects of molecules. We’ll see on many occasions in future chapters that the exact three-dimensional structure of a molecule is often crucial to determining its properties and biological behavior.
 
 <!-- SEG:m00037:para:para-00002 -->
-We know from that [[i:σ]] bonds are cylindrically symmetrical. In other words, the intersection of a plane cutting through a carbon–carbon single-bond orbital looks like a circle. Because of this cylindrical symmetry, rotation is possible around carbon–carbon bonds in open-chain molecules. In ethane, for instance, rotation around the C–C bond occurs freely, constantly changing the spatial relationships between the hydrogens on one carbon and those on the other ([[xref:fig-00001]]).
+We know from [[docref:m00162]] that [[i:σ]] bonds are cylindrically symmetrical. In other words, the intersection of a plane cutting through a carbon–carbon single-bond orbital looks like a circle. Because of this cylindrical symmetry, rotation is possible around carbon–carbon bonds in open-chain molecules. In ethane, for instance, rotation around the C–C bond occurs freely, constantly changing the spatial relationships between the hydrogens on one carbon and those on the other ([[xref:fig-00001]]).
 
 <!-- SEG:m00037:caption:fig-00001-caption -->
 [[b:Rotation occurs around the carbon–carbon single bond in ethane because of [[i:σ]] bond cylindrical symmetry.]]
@@ -20,7 +20,7 @@ The different arrangements of atoms that result from bond rotation are called [[
 Conformational isomers are represented in two ways, as shown in [[xref:fig-00002]]. A [[term:sawhorse representation|term-00005]] views the carbon–carbon bond from an oblique angle and indicates spatial orientation by showing all C–H bonds. A [[term:Newman projection|term-00006]] views the carbon–carbon bond directly end-on and represents the two carbon atoms by a circle. Bonds attached to the front carbon are represented by lines to the center of the circle, and bonds attached to the rear carbon are represented by lines to the edge of the circle.
 
 <!-- SEG:m00037:caption:fig-00002-caption -->
-[[b:A sawhorse representation and a Newman projection of ethane.]] The sawhorse representation views the molecule from an oblique angle, while the Newman projection views the molecule end-on. Note that the molecular model of the Newman projection appears at first to have six atoms attached to a single carbon. Actually, the front carbon, with three attached [[b:green atoms]], is directly in front of the rear carbon, with three attached [[b:red atoms]].
+[[b:A sawhorse representation and a Newman projection of ethane.]] The sawhorse representation views the molecule from an oblique angle, while the Newman projection views the molecule end-on. Note that the molecular model of the Newman projection appears at first to have six atoms attached to a single carbon. Actually, the front carbon, with three attached [[b:[[span:green atoms|green-text]]]], is directly in front of the rear carbon, with three attached [[b:[[span:red atoms|magenta-text]]]].
 
 <!-- SEG:m00037:alt:fig-00002-alt -->
 A sawhorse representation and a Newman projection of ethane are depicted.

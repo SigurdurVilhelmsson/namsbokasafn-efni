@@ -2,7 +2,7 @@
 Alkanes and Alkane Isomers
 
 <!-- SEG:m00033:para:para-00001 -->
-Before beginning a systematic study of the different functional groups, let’s look first at the simplest family of molecules to develop some general ideas that apply to all families. We saw in that the carbon–carbon single bond in ethane results from [[i:σ]] (head-on) overlap of carbon [[i:sp]][[sup:3]] hybrid orbitals. If we imagine joining three, four, five, or even more carbon atoms by C–C single bonds, we can generate the large family of molecules called [[term:alkanes|term-00001]].
+Before beginning a systematic study of the different functional groups, let’s look first at the simplest family of molecules to develop some general ideas that apply to all families. We saw in [[docref:m00164]] that the carbon–carbon single bond in ethane results from [[i:σ]] (head-on) overlap of carbon [[i:sp]][[sup:3]] hybrid orbitals. If we imagine joining three, four, five, or even more carbon atoms by C–C single bonds, we can generate the large family of molecules called [[term:alkanes|term-00001]].
 
 <!-- SEG:m00033:alt:fig-00001-alt -->
 A series of chemical structures of methane, ethane, propane, and butane are shown.
@@ -95,7 +95,7 @@ Constitutional isomerism is not limited to alkanes—it occurs widely throughout
 Three sets of molecular structures, where each set represents two isomers. The first, second, and third sets present different carbon skeletons, functional groups, and positions of functional groups, respectively.
 
 <!-- SEG:m00033:para:para-00007 -->
-A given alkane can be drawn in many ways. For example, the straight-chain, four-carbon alkane called butane can be represented by any of the structures shown in [[xref:fig-00005]]. These structures don’t imply any particular three-dimensional geometry for butane; they indicate only the connections among atoms. In practice, as noted in , chemists rarely draw all the bonds in a molecule and usually refer to butane by the condensed structure, CH[[sub:3]]CH[[sub:2]]CH[[sub:2]]CH[[sub:3]] or CH[[sub:3]](CH[[sub:2]])[[sub:2]]CH[[sub:3]]. Still more simply, butane can be represented as [[i:n]]-C[[sub:4]]H[[sub:10]], where [[i:n]] denotes [[i:normal]] (straight-chain) butane.
+A given alkane can be drawn in many ways. For example, the straight-chain, four-carbon alkane called butane can be represented by any of the structures shown in [[xref:fig-00005]]. These structures don’t imply any particular three-dimensional geometry for butane; they indicate only the connections among atoms. In practice, as noted in [[docref:m00169]], chemists rarely draw all the bonds in a molecule and usually refer to butane by the condensed structure, CH[[sub:3]]CH[[sub:2]]CH[[sub:2]]CH[[sub:3]] or CH[[sub:3]](CH[[sub:2]])[[sub:2]]CH[[sub:3]]. Still more simply, butane can be represented as [[i:n]]-C[[sub:4]]H[[sub:10]], where [[i:n]] denotes [[i:normal]] (straight-chain) butane.
 
 <!-- SEG:m00033:caption:fig-00005-caption -->
 [[b:Some representations of butane, C[[sub:4]]H[[sub:10]].]] The molecule is the same regardless of how it’s drawn. These structures imply only that butane has a continuous chain of four carbon atoms; they do not imply any specific geometry.
@@ -269,13 +269,13 @@ Drawing the Structures of Isomers
 Propose structures for two isomers with the formula C[[sub:2]]H[[sub:7]]N.
 
 <!-- SEG:m00033:para-title:para-00010-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00033:para:para-00010 -->
 We know that carbon forms four bonds, nitrogen forms three, and hydrogen forms one. Write down the carbon atoms first, and then use trial and error plus intuition to put the pieces together.
 
 <!-- SEG:m00033:para-title:para-00011-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00033:para:para-00011 -->
 There are two isomeric structures. One has the connection C–C–N, and the other has the connection C–N–C. [[MEDIA:1]]

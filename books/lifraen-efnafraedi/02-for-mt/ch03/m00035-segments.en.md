@@ -14,13 +14,13 @@ A chemical name typically has four parts in the IUPAC system: parent, prefix, lo
 The parts of a chemical name according to the I U P A C system of nomenclature are represented. The chemical name contains 4 parts, locant, prefix, parent, and suffix.
 
 <!-- SEG:m00035:para:para-00004 -->
-As we cover new functional groups in later chapters, the applicable IUPAC rules of nomenclature will be given. In addition, at the back of this book gives an overall view of organic nomenclature and shows how compounds that contain more than one functional group are named. (If preferred, you can study that appendix now.) For the present, let’s see how to name branched-chain alkanes and learn some general rules that are applicable to all compounds.
+As we cover new functional groups in later chapters, the applicable IUPAC rules of nomenclature will be given. In addition, [[docref:m00016]] at the back of this book gives an overall view of organic nomenclature and shows how compounds that contain more than one functional group are named. (If preferred, you can study that appendix now.) For the present, let’s see how to name branched-chain alkanes and learn some general rules that are applicable to all compounds.
 
 <!-- SEG:m00035:para:para-00005 -->
 All but the most complex branched-chain alkanes can be named by following four steps. For a very few compounds, a fifth step is needed.
 
 <!-- SEG:m00035:para:para-00006 -->
-[[b:STEP 1]] [[BR]][[b:Identify the parent hydrocarbon.]]
+[[b:[[span:STEP 1|red-text]]]] [[BR]][[b:Identify the parent hydrocarbon.]]
 
 <!-- SEG:m00035:para:para-00008 -->
 [[b:(a)]] Find the longest continuous chain of carbon atoms in the molecule, and use the name of that chain as the parent name. The longest chain may not always be apparent from the manner of writing; you may have to “turn corners.”
@@ -35,7 +35,7 @@ The molecular structures of two substituted alkanes are represented. The first a
 The correct and incorrect naming of substituted hexane molecular structures are presented.
 
 <!-- SEG:m00035:para:para-00010 -->
-[[b:STEP 2]] [[BR]][[b:Number the atoms in the longest chain.]]
+[[b:[[span:STEP 2|red-text]]]] [[BR]][[b:Number the atoms in the longest chain.]]
 
 <!-- SEG:m00035:para:para-00012 -->
 [[b:(a)]] Beginning at the end nearer the first branch point, number each carbon atom in the parent chain.
@@ -53,7 +53,7 @@ The first branch occurs at C3 in the proper system of numbering, not at C4.
 The correct and incorrect naming of a molecular structure is represented. The numbering of first structure begins from methyl group on the right side. The second structure is incorrectly numbered.
 
 <!-- SEG:m00035:para:para-00015 -->
-[[b:STEP 3]] [[BR]][[b:Identify and number the substituents.]]
+[[b:[[span:STEP 3|red-text]]]] [[BR]][[b:Identify and number the substituents.]]
 
 <!-- SEG:m00035:para:para-00017 -->
 [[b:(a)]] Assign a number to each substituent to locate its point of attachment to the parent chain.
@@ -68,7 +68,7 @@ The molecular structure of nonane that includes substituents on C3, C4, and C7 a
 The molecular structure of hexane that includes substituents on C2, C4, and C4 are 2-methyl, 4-methyl, and 4-ethyl, respectively.
 
 <!-- SEG:m00035:para:para-00019 -->
-[[b:STEP 4]] [[BR]][[b:Write the name as a single word.]]
+[[b:[[span:STEP 4|red-text]]]] [[BR]][[b:Write the name as a single word.]]
 
 <!-- SEG:m00035:para:para-00021 -->
 Use hyphens to separate the different prefixes, and use commas to separate numbers. If two or more different substituents are present, cite them in alphabetical order. If two or more identical substituents are present on the parent chain, use one of the multiplier prefixes [[i:di]]-, [[i:tri]]-, [[i:tetra]]-, and so forth, but don’t use these prefixes for alphabetizing. Full names for some of the examples we have been using are as follows:
@@ -80,7 +80,7 @@ The molecular structures of 3-methylhexane, 3-ethyl-4,7-dimethylnonane, and 3-et
 The molecular structures of 4-ethyl-3-methylheptane and 4-ethyl-2, 4-dimethylhexane are represented.
 
 <!-- SEG:m00035:para:para-00022 -->
-[[b:STEP 5]] [[BR]][[b:Name a branched substituent as though it were itself a compound.]]
+[[b:[[span:STEP 5|red-text]]]] [[BR]][[b:Name a branched substituent as though it were itself a compound.]]
 
 <!-- SEG:m00035:para:para-00024 -->
 In some particularly complex cases, a fifth step is necessary. It occasionally happens that a substituent on the main chain is itself branched. In the following case, for instance, the substituent at C6 is a three-carbon chain with a methyl group. To name the compound fully, the branched substituent must first be named.
@@ -122,13 +122,13 @@ Naming Alkanes
 What is the IUPAC name for the following alkane?
 
 <!-- SEG:m00035:para-title:para-00031-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00035:para:para-00031 -->
 Find the longest continuous carbon chain in the molecule, and use that as the parent name. This molecule has a chain of eight carbons—octane—with two methyl substituents. (You have to turn corners to see it.) Numbering from the end nearer the first methyl substituent indicates that the methyls are at C2 and C6.
 
 <!-- SEG:m00035:para-title:para-00032-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00035:para:para-00032 -->
 [[MEDIA:1]]
@@ -146,7 +146,7 @@ Converting a Chemical Name into a Structure
 Draw the structure of 3-isopropyl-2-methylhexane.
 
 <!-- SEG:m00035:para-title:para-00034-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00035:para:para-00034 -->
 This is the reverse of [[xref:exam-00001]] and uses a reverse strategy. Look at the parent name (hexane), and draw its carbon structure.
@@ -161,7 +161,7 @@ Next, find the substituents (3-isopropyl and 2-methyl), and place them on the pr
 Finally, add hydrogens to complete the structure.
 
 <!-- SEG:m00035:para-title:para-00038-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00035:para:para-00038 -->
 [[MEDIA:2]]

@@ -128,13 +128,13 @@ Newman Projections
 Sight along the C1–C2 bond of 1-chloropropane, and draw Newman projections of the most stable and least stable conformations.
 
 <!-- SEG:m00038:para-title:para-00011-title -->
-Strategy
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00038:para:para-00011 -->
 The most stable conformation of a substituted alkane is generally a staggered one in which large groups have an anti relationship. The least stable conformation is generally an eclipsed one in which large groups are as close as possible.
 
 <!-- SEG:m00038:para-title:para-00012-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00038:para:para-00012 -->
 [[MEDIA:1]]
@@ -311,19 +311,19 @@ Carbon–carbon single bonds in alkanes are formed by [[i:σ]] overlap of carbon
 Additional Problems
 
 <!-- SEG:m00038:para:para-00029 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00038:para:para-00068 -->
-[[b:Functional Groups]]
+[[b:[[span:Functional Groups|red-text]]]]
 
 <!-- SEG:m00038:para:para-00035 -->
-[[b:Isomers]]
+[[b:[[span:Isomers|red-text]]]]
 
 <!-- SEG:m00038:para:para-00042 -->
-[[b:Naming Compounds]]
+[[b:[[span:Naming Compounds|red-text]]]]
 
 <!-- SEG:m00038:para:para-00052 -->
-[[b:Conformations]]
+[[b:[[span:Conformations|red-text]]]]
 
 <!-- SEG:m00038:para:para-00059 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

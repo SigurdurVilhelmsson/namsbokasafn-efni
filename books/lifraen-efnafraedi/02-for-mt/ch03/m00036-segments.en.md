@@ -14,7 +14,7 @@ The reaction of an alkane with Cl[[sub:2]] occurs when a mixture of the two is i
 Four chemical reactions are represented. Methane reacts with chlorine in the presence of ultraviolet light to form methyl chloride and hydrogen chloride. Carbon tetrachloride and hydrogen chloride are formed.
 
 <!-- SEG:m00036:para:para-00005 -->
-Alkanes show regular increases in both boiling point and melting point as molecular weight increases ([[xref:fig-00002]]), an effect due to the presence of weak dispersion forces between molecules (). Only when sufficient energy is applied to overcome these forces does the solid melt or liquid boil. As you might expect, dispersion forces increase as molecular size increases, accounting for the higher melting and boiling points of larger alkanes.
+Alkanes show regular increases in both boiling point and melting point as molecular weight increases ([[xref:fig-00002]]), an effect due to the presence of weak dispersion forces between molecules ([[docref:m00029]]). Only when sufficient energy is applied to overcome these forces does the solid melt or liquid boil. As you might expect, dispersion forces increase as molecular size increases, accounting for the higher melting and boiling points of larger alkanes.
 
 <!-- SEG:m00036:caption:fig-00002-caption -->
 [[b:A plot of melting and boiling points versus number of carbon atoms for the C1–C14 straight-chain alkanes.]] There is a regular increase with molecular size.

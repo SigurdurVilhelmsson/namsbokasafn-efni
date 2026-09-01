@@ -344,7 +344,7 @@
           "segmentId": "m00035:para:para-00031",
           "title": {
             "segmentId": "m00035:para-title:para-00031-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -353,7 +353,7 @@
           "segmentId": "m00035:para:para-00032",
           "title": {
             "segmentId": "m00035:para-title:para-00032-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]
@@ -405,7 +405,7 @@
           "segmentId": "m00035:para:para-00034",
           "title": {
             "segmentId": "m00035:para-title:para-00034-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -429,7 +429,7 @@
           "segmentId": "m00035:para:para-00038",
           "title": {
             "segmentId": "m00035:para-title:para-00038-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]

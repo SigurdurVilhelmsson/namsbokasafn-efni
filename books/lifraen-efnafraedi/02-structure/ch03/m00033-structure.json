@@ -727,7 +727,7 @@
           "segmentId": "m00033:para:para-00010",
           "title": {
             "segmentId": "m00033:para-title:para-00010-title",
-            "text": "Strategy"
+            "text": "[[span:Strategy|red-text]]"
           }
         },
         {
@@ -736,7 +736,7 @@
           "segmentId": "m00033:para:para-00011",
           "title": {
             "segmentId": "m00033:para-title:para-00011-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]
