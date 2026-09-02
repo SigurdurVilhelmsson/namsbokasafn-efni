@@ -25,6 +25,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { createRequire } from 'module';
 import { renderMathML, resetMathJaxIds } from './lib/mathjax-render.js';
 import { HANDLED_INLINE } from './lib/handled-tags.js';
 import {
@@ -311,6 +312,27 @@ function normalizeImageSrc(src, bookSlug, chapterStr) {
       ? src.split('/').pop()
       : src;
   return `/content/${bookSlug}/chapters/${chapterStr}/images/media/${basename}`;
+}
+
+// The sidecar module is CommonJS (both tools/ and server/ consume it); this file is ESM.
+const { readSidecar, effectiveState, COMPOSER_VERSION } = createRequire(import.meta.url)(
+  './lib/figure-text-sidecar.cjs'
+);
+
+const EMITTED_REVIEW_STATES = new Set(['mt-preview', 'flagged']);
+
+/**
+ * Attribute marking a figure whose Icelandic text is not yet approved.
+ *
+ * Only the states a READER needs warning about are emitted. 'approved' emits
+ * nothing: a badge on finished work is noise, and an absent attribute is the
+ * correct default for the ~1,100 figures that have no sidecar at all.
+ *
+ * @param {string} state - from effectiveState()
+ * @returns {string} '' or ' data-figure-review="..."'
+ */
+function figureReviewAttr(state) {
+  return EMITTED_REVIEW_STATES.has(state) ? ` data-figure-review="${state}"` : '';
 }
 
 /**
@@ -1053,11 +1075,28 @@ function renderFigure(figure, context) {
       ? context.chapterFigureNumbers.get(compositeKey) || context.chapterFigureNumbers.get(id)
       : null;
 
+  // Figure review state for the badge. Read BEFORE the attrs array is built, because
+  // the <figure> open tag is pushed below and the image src is not parsed until later.
+  let reviewAttr = '';
+  const figImage = figure.content.match(new RegExp(`<image(${TAG_ATTR_SPAN})/?>`));
+  if (figImage) {
+    const figSrc = parseAttributes(figImage[1]).src || '';
+    if (figSrc) {
+      const figBasename = path.basename(figSrc, path.extname(figSrc));
+      // BOOKS_DIR is already `books/<slug>` — there is no books-root variable here.
+      const sidecar = readSidecar(BOOKS_DIR, figBasename);
+      reviewAttr = figureReviewAttr(
+        effectiveState(sidecar, (sidecar && sidecar.blocks) || {}, COMPOSER_VERSION)
+      );
+    }
+  }
+
   // Build attributes array (like exercise pattern)
   const attrs = [];
   if (id) attrs.push(`id="${escapeAttr(id)}"`);
   if (className) attrs.push(`class="${escapeAttr(className)}"`);
   if (figNum) attrs.push(`data-figure-number="${figNum}"`);
+  if (reviewAttr) attrs.push(reviewAttr.trim());
 
   lines.push(`<figure ${attrs.join(' ')}>`);
 
@@ -4337,4 +4376,5 @@ export {
   ITEM_INLINE_OK,
   escapeAttr, // §C81: exported to pin the two-path escaping asymmetry
   decodeEntities,
+  figureReviewAttr,
 };
