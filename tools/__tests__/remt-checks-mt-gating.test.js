@@ -110,8 +110,9 @@ describe('A3 — per-segment bracket-marker delta', () => {
    * in another has `total === {}` and TWO `bySegment` entries. A check keyed on `total`
    * returns PASS here; one keyed on `segmentsWithDelta` returns WARN.
    *
-   * ⚠️ MEASURED: on all 197 run-target pairs the two predicates agree EXACTLY
-   * (107 = 107, cancel-only modules = 0). So the natural corpus is structurally
+   * ⚠️ MEASURED 2026-08-26: on all 197 run-target pairs the two predicates agree EXACTLY
+   * (107 = 107, cancel-only modules = 0). The 107 is a dated vintage — the module rate is
+   * 129 today — but the AGREEMENT, not the count, is the claim. So the natural corpus is structurally
    * incapable of catching the wrong choice — this planted fixture is the only detector,
    * and the plan's acceptance trio is written in `total`-shaped notation (`m68791 → {}`),
    * which is exactly what a literal transcription would build against.
@@ -179,6 +180,9 @@ describe('A3 — per-segment bracket-marker delta', () => {
     // Measured 2026-08-26: 107/197 = 54.31% over the committed corpus, and 11/101 =
     // 10.89% over the pairs whose EN side does NOT postdate their IS side. Blocking is
     // refused on BOTH numbers, so the verdict does not turn on the split.
+    // ▶ RE-MEASURED 2026-09-02 after §C82 ③: 129/197 = 65.5%. The rate ROSE, so blocking is
+    // refused a fortiori — but note the rise is vintage mismatch, not new MT damage, so it
+    // is not evidence about the MT either way.
     expect(A3.blocking).toBe(false);
   });
 
@@ -194,7 +198,8 @@ describe('A3 — per-segment bracket-marker delta', () => {
   it('premise pin — the base rate that refuses blocking, split by finding kind', () => {
     // 🔴 THE THREE NUMBERS ARE PINNED SEPARATELY BECAUSE THEY ANSWER DIFFERENT QUESTIONS,
     // and a single "modules with findings" count silently conflates them. Folding
-    // `unpaired-segment` into A3 (see its docstring) moves the module rate 107 → 111; the
+    // `unpaired-segment` into A3 (see its docstring) moved the module rate 107 → 111 when
+    // measured on 2026-08-26; on the 2026-09-02 corpus the same fold is 129 → 155. The
     // decision to fold it in is a correctness one, and this is what it costs.
     let deltaMods = 0;
     let unpairedMods = 0;
@@ -212,9 +217,17 @@ describe('A3 — per-segment bracket-marker delta', () => {
       }
     }
     expect(pairs).toBe(197); // control: an empty walk cannot pass
-    expect(deltaMods).toBe(107); // 54.31% — the marker-destruction rate
-    expect(unpairedMods).toBe(4); //  2.03% — segments that went missing entirely
-    expect(anyMods).toBe(111); // 56.35% — what A3 would halt on, were it blocking
+    // 🔴 RE-BASELINED 2026-09-02 — AND THESE NO LONGER MEASURE WHAT THEIR OLD COMMENTS
+    // SAID. They used to be MT-side marker destruction. §C82 ③ re-extracted 159 of the 197
+    // EN files while the 2026-09-02 run re-translated only 16 in-population IS files, so
+    // what they now count is overwhelmingly the EN/IS VINTAGE MISMATCH. That is why
+    // `unpairedMods` moved 4 -> 145: not 141 modules that suddenly lost segments, but 141
+    // whose EN side gained segments their committed IS has never seen.
+    // ▶ THEY FALL AS CHAPTERS ARE BOUGHT and only regain the old meaning once the corpus is
+    // one vintage again. Do not quote them as a marker-destruction rate until then.
+    expect(deltaMods).toBe(129); //  65.5% of 197
+    expect(unpairedMods).toBe(145); //  73.6% — EN segments with no IS counterpart
+    expect(anyMods).toBe(155); //  78.7% — what A3 would halt on, were it blocking
     // Global Constraints rule 4 needs ≤ ~5%. Every one of these is an order of magnitude
     // over it, which is why `A3.blocking === false` above.
     expect(anyMods / pairs).toBeGreaterThan(0.05);
@@ -418,7 +431,9 @@ describe('A5 — untranslated-EN residue, two stages', () => {
     expect(skipped).toBe(31);
   });
 
-  it('premise pin — stage 2 finds 7 long residues in 3 run-target modules', () => {
+  // ⚠️ THIS PIN SHRINKS WITH EVERY CHAPTER BOUGHT, and at 0 it is vacuous — the planted
+  // fixtures in this file become stage 2's only evidence. Re-measure, do not delete.
+  it('premise pin — stage 2 finds 6 long residues in 2 run-target modules', () => {
     const hits = [];
     let pairs = 0;
     for (const b of BOOKS) {
@@ -438,8 +453,12 @@ describe('A5 — untranslated-EN residue, two stages', () => {
       }
     }
     expect(pairs).toBe(197); // control
-    expect(hits).toHaveLength(7);
-    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual(['m00037', 'm00135', 'm68662']);
+    expect(hits).toHaveLength(6);
+    // m00037 (organic ch03) left this set: eeac7731 re-translated it and its one long
+    // residue (m00037:para:para-00003, 267 alphabetic chars) is now Icelandic. Verified as
+    // content improved rather than population lost — the segment is still paired, m00037's
+    // IS side went 10 -> 14 segments. The remaining two modules were untouched by the run.
+    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual(['m00135', 'm68662']);
   });
 });
 
