@@ -45,13 +45,25 @@ export const HANDLED_INLINE = new Set([
   // MODULES A CHECK FIRES ON; the two differ by which containers the check walks.
   //
   // ⚠️ THIS ALSO WIDENS THE RENDERER'S LOUD_SEAM_IGNORE, WHICH IS DERIVED FROM THIS
-  // SET — i.e. it SUPPRESSES a drop-detector, the shape §C82 L149 warns about. That
-  // was measured, not assumed: a DOM census of all 1,071 class-bearing spans in
-  // organic 01-source finds every parent is an inline/text container (emphasis 559,
-  // title 264, entry 214, caption 13, item 10, para 9, term 2) and NONE is a direct
-  // child of a block container, so a <span> never reaches renderBlockChildrenInOrder's
-  // processBlock and the added suppression is inert on the real corpus. Re-run that
-  // census before trusting this on a new book.
+  // SET — i.e. it SUPPRESSES a drop-detector, the shape §C82 L149 warns about.
+  //
+  // ✅ INERTNESS IS MEASURED THROUGH THE REAL RENDERER, NOT INFERRED FROM A CENSUS.
+  // All 184 organic modules holding a class-bearing span were run through
+  // extract -> inject -> render (renderEnglishRoundTrip) with 'span' DELETED FROM
+  // LOUD_SEAM_IGNORE at runtime, so the detector could see it: 184 rendered, 0 render
+  // failures, and <span> reached processBlock **0 times**. The run carried its own
+  // positive control — the detector DID fire, once, on an undispatched <quote> in
+  // ch13/m00155 — so the zero is a result and not a dead code path.
+  //
+  // ⚠️ AN EARLIER VERSION OF THIS COMMENT ARGUED IT FROM A PARENT CENSUS AND SAID
+  // "NONE is a direct child of a block container". THAT SENTENCE WAS FALSE IN THIS
+  // VERY FILE: 510 of the 1,071 spans are parented by <title> (264), <entry> (214),
+  // <caption> (13), <item> (10) or <para> (9), and all five ARE in HANDLED_BLOCK
+  // below. The census is still useful context — parents are emphasis 559, title 264,
+  // entry 214, caption 13, item 10, para 9, term 2 — but the predicate that matters
+  // is NOT "is the parent a block tag"; it is "does the node sit where
+  // renderBlockChildrenInOrder iterates it", and only running the renderer answers
+  // that. Re-run the probe above before trusting this on a new book.
   'span',
 ]);
 
