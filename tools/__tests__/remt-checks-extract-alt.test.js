@@ -64,26 +64,38 @@ const CHEM = 'efnafraedi-2e';
 async function tallyOver(book) {
   const t = { PASS: 0, FAIL: 0, WARN: 0, SKIPPED: 0, zeroExamined: 0 };
   const passing = [];
+  let expected = 0;
+  let reached = 0;
   for (const { ch, m } of modulesWithSegments(book)) {
     const r = await runCheck(E5, modCtx(book, ch, m));
     t[r.verdict]++;
     if (r.examined === 0) t.zeroExamined++;
     if (r.verdict === VERDICT.PASS) passing.push(`${ch}/${m}`);
+    // 🔴 THE PAYLOAD, AND ITS REASON IS NOT THE OBVIOUS ONE. It does NOT catch a verdict
+    // mutation — `expected`/`reached` bypass `ok` entirely. What ONLY these two see is both
+    // counters collapsing TOGETHER: 0 === 0 reads PASS on every module, so a verdict tally
+    // is structurally blind to it. Verdict-logic mutations are killed by the planted
+    // controls, not here.
+    const a = r.message.match(/expected (\d+) reachable alt positions, reached (\d+) emitted/);
+    if (a) {
+      expected += Number(a[1]);
+      reached += Number(a[2]);
+    }
   }
-  return { ...t, passing };
+  return { ...t, passing, expected, reached };
 }
 
 describe('E5 — the alt segments the extractor was designed to emit actually got emitted', () => {
-  it('📌 L20 PREMISE PIN — FAILs on the pre-re-extract vintage, and says how many it expected', async () => {
+  it('📌 L20 PIN, FLIPPED AT THE RE-EXTRACT — the COMMITTED m68663 now carries its one alt', async () => {
     // EXPECTED TO MOVE AT THE RE-EXTRACT. The committed `02-for-mt` predates §C81, so it
     // holds 0 alt SEG markers corpus-wide; after step 2 of the loop this module reads
     // `reached 1` and the verdict flips to PASS. When it does, that is the corpus
     // changing — update this pin in the commit that observes it.
     const r = await runCheck(E5, modCtx(CHEM, 'ch01', 'm68663'));
-    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.verdict).toBe(VERDICT.PASS);
     // 🔴 THE VACUITY CONTROL. A FAIL that examined nothing is not evidence.
     expect(r.examined).toBeGreaterThan(0);
-    expect(r.message).toMatch(/expected \d+ .*reached 0/);
+    expect(r.message).toMatch(/expected 1 .*reached 1 /);
   });
 
   it('PASSES on a fresh in-process extract — the control that proves it discriminates', async () => {
@@ -136,12 +148,21 @@ describe("E5's `examined` unit — decided here, not inherited (§C82 L17)", () 
     expect(zeroExpected.sort()).toEqual(t.passing.sort());
   });
 
-  it('📌 L20 PREMISE PIN — chemistry splits 137 FAIL / 12 PASS today', async () => {
+  it('📌 L20 PIN, FLIPPED AT THE RE-EXTRACT — chemistry is 149 PASS / 0 FAIL, all 1,149 alt positions reached', async () => {
     // EXPECTED TO MOVE AT THE RE-EXTRACT: every FAIL here is a module whose alts have
     // not been extracted yet, and all 137 flip to PASS once they are. The pin exists so
     // the flip is *observed* rather than assumed — the loop's own success criterion.
     const t = await tallyOver(CHEM);
-    expect({ FAIL: t.FAIL, PASS: t.PASS }).toEqual({ FAIL: 137, PASS: 12 });
+    // 🔴 THE VERDICT TALLY ALONE WOULD NOW BE A SATURATED GOLDEN (0 FAIL is what a check
+    // that judges nothing also reports), so the PAYLOAD rides with it. Repair, not
+    // blindness: the EMITTED side moved 0 -> 1,149 while reachability did not move at all,
+    // against a byte-unchanged 01-source.
+    expect({ FAIL: t.FAIL, PASS: t.PASS, expected: t.expected, reached: t.reached }).toEqual({
+      FAIL: 0,
+      PASS: 149,
+      expected: 1149,
+      reached: 1149,
+    });
   });
 });
 
@@ -246,8 +267,13 @@ describe("E5's ctx guard — the unit fix removed an accidental protection", () 
 
   it('POSITIVE CONTROL: the real pair is still judged, not skipped', async () => {
     // Without this, a guard that refused everything would satisfy every case below.
+    // 🔴 THE INVARIANT IS "JUDGED", NOT ANY PARTICULAR VERDICT — this line used to pin the
+    // MECHANISM instead: FAIL was only what the pre-re-extract corpus supplied, and the
+    // re-extract moved it to PASS. A closed set states the property and survives the next
+    // corpus flip. (`examined > 0` is what excludes a junk verdict: runCheck turns an
+    // unrecognised one into FAIL with examined 0.)
     const r = await runCheck(E5, REAL());
-    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect([VERDICT.PASS, VERDICT.FAIL]).toContain(r.verdict);
     expect(r.examined).toBeGreaterThan(0);
   });
 
