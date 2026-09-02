@@ -1,15 +1,17 @@
 {
   "schemaVersion": 2,
   "tool": "api-translate",
-  "generatedAt": "2026-09-01T19:29:48.965Z",
+  "generatedAt": "2026-09-02T13:55:02.918Z",
   "run": {
     "runRecordVersion": 1,
     "chars": 18127,
-    "usage": 13645,
+    "usage": 13357,
     "estimatedIsk": 181.27,
     "markersNormalized": 0,
     "mismatchCount": 0,
-    "bracketDelta": {},
+    "bracketDelta": {
+      "b": 29
+    },
     "unwrappedCount": 0,
     "unwrappedByType": {},
     "glossary": {
