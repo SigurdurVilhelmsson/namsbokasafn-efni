@@ -38,10 +38,11 @@ import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { planMarkerRepair, sameVintage } from '../repair-invented-markers.js';
+import { planMarkerRepair, planMarkerRestore, sameVintage } from '../repair-invented-markers.js';
 
 const REPO_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const SEG = (id, body) => `<!-- SEG:${id} -->\n${body}\n`;
+const read = (p) => fs.readFileSync(path.join(REPO_ROOT, p), 'utf8');
 
 describe('planMarkerRepair — the precondition', () => {
   it('unwraps a surplus marker and keeps the real one', () => {
@@ -143,6 +144,141 @@ describe('planMarkerRepair — the precondition', () => {
   });
 });
 
+describe('planMarkerRestore — putting back a DROPPED marker', () => {
+  // 🔴 A DROP IS NOT THE MIRROR OF AN INVENTION, AND IT IS NOT MECHANICALLY
+  // DECIDABLE. Unwrapping a surplus needs only "which markers are not in the
+  // source"; restoring a drop needs "which WORD in the translation is the one
+  // that was emphasised" — a correspondence across a translation. Measured over
+  // all 61 same-vintage pairs: of 308 dropped markers only **4 (1.3%)** have
+  // their source payload sitting unambiguously in the output, so an automatic
+  // rule reaches essentially none of them. ch14's `[[i:enamine]]` is in the
+  // 98.7% — it became `enamíns`.
+  //
+  // ▶ SO THE JUDGEMENT IS THE OPERATOR'S AND THE MECHANICS ARE THE TOOL'S. The
+  // caller names the target text; the tool refuses unless that text occurs
+  // EXACTLY ONCE, is not already inside a marker, and the restore makes the
+  // segment's count match the source exactly.
+  it('restores a named target and brings the count back to the source', () => {
+    const en = SEG('s1', 'An [[i:enamine]] (alk[[i:ene]] + [[i:amine]]) is nucleophilic.');
+    const is = SEG('s1', 'Enamíns (alk[[i:en]] + [[i:amín]]) er kjarnsækið.');
+    const r = planMarkerRestore(en, is, { segId: 's1', type: 'i', target: 'Enamíns' });
+    expect(r.ok).toBe(true);
+    expect(r.text).toContain('[[i:Enamíns]]');
+    expect((r.text.match(/\[\[i:/g) || []).length).toBe(3); // matches the source
+  });
+
+  it('REFUSES when the segment has no drop — nothing to put back', () => {
+    const en = SEG('s2', 'An [[i:enamine]] here.');
+    const is = SEG('s2', 'Eitt [[i:enamín]] hér.');
+    const r = planMarkerRestore(en, is, { segId: 's2', type: 'i', target: 'hér' });
+    expect(r.ok).toBe(false);
+    expect(r.reason).toMatch(/no dropped/i);
+    expect(r.text).toBe(is);
+  });
+
+  it('REFUSES an ambiguous target — more than one occurrence', () => {
+    // ⚠️ Two occurrences in the SAME case. An earlier fixture used
+    // 'Basi og basi.' — the capitalised one does not match a lowercase target,
+    // so the count was 1 and the test failed for a fixture bug, not a code bug.
+    const en = SEG('s3', 'The [[i:base]] and the [[i:base]].');
+    const is = SEG('s3', 'Sýra: basi og basi.');
+    const r = planMarkerRestore(en, is, { segId: 's3', type: 'i', target: 'basi' });
+    expect(r.ok).toBe(false);
+    expect(r.reason).toMatch(/2 time|ambiguous|exactly once/i);
+    expect(r.text).toBe(is);
+  });
+
+  it('REFUSES a target that does not occur at all', () => {
+    const en = SEG('s4', 'The [[i:base]] here.');
+    const is = SEG('s4', 'Eitthvað annað hér.');
+    const r = planMarkerRestore(en, is, { segId: 's4', type: 'i', target: 'basi' });
+    expect(r.ok).toBe(false);
+    expect(r.reason).toMatch(/not found|0 time/i);
+  });
+
+  it('REFUSES a target already inside a marker — no nesting a marker in itself', () => {
+    const en = SEG('s5', 'The [[i:base]] and [[i:acid]].');
+    const is = SEG('s5', 'Sýra og [[i:basi]].');
+    const r = planMarkerRestore(en, is, { segId: 's5', type: 'i', target: 'basi' });
+    expect(r.ok).toBe(false);
+    expect(r.reason).toMatch(/already inside|within a marker/i);
+    expect(r.text).toBe(is);
+  });
+
+  it('reports the REMAINING gap when a segment lost more than one marker', () => {
+    // Real shape: orverufraedi m58781 drops two `[[b:]]` from one segment.
+    // Refusing would make such a segment permanently unrepairable; the operator
+    // needs to know one call did not finish the job. `remaining` is that signal,
+    // and it is 0 on a single-drop restore.
+    const en = SEG('s7', 'A [[i:one]], a [[i:two]] and a [[i:three]].');
+    const is = SEG('s7', 'Einn, tveir og [[i:þrír]].');
+    const r = planMarkerRestore(en, is, { segId: 's7', type: 'i', target: 'Einn' });
+    expect(r.ok).toBe(true);
+    expect(r.remaining).toBe(1); // still one short — say so rather than pretend
+    expect(r.text).toContain('[[i:Einn]]');
+    const single = planMarkerRestore(SEG('s8', 'A [[i:one]] here.'), SEG('s8', 'Einn hér.'), {
+      segId: 's8',
+      type: 'i',
+      target: 'Einn',
+    });
+    expect(single.remaining).toBe(0); // control: a complete restore reports 0
+  });
+
+  it('REFUSES an unknown segment id rather than silently doing nothing', () => {
+    const en = SEG('s6', 'The [[i:base]].');
+    const is = SEG('s6', 'Basi.');
+    const r = planMarkerRestore(en, is, { segId: 'nope', type: 'i', target: 'Basi' });
+    expect(r.ok).toBe(false);
+    expect(r.reason).toMatch(/segment/i);
+  });
+
+  // 🔴 PLANTED, FOR THE SECOND TIME THIS SESSION — and that repetition is the
+  // lesson. An anchor that reads live data and asserts the DEFECT is still there
+  // dies the moment the defect is repaired. It happened with ch23's surplus, was
+  // written down, and then happened again here with ch14's drop within the hour.
+  // ▶ WHEN A CHECK'S EVIDENCE IS THE THING YOU ARE ABOUT TO FIX, PLANT IT FIRST.
+  // These two lines are verbatim from
+  // `books/lifraen-efnafraedi/02-mt-output/ch14/exercises-segments.is.md` at
+  // commit 0c2bd270, before the ⑳ restore.
+  const CH14_SEG = '14-99-OC-AP41:stem:358557-b0';
+  const CH14_EN =
+    'The double bond of an [[i:enamine]] (alk[[i:ene]] + [[i:amine]]) is much more nucleophilic than a typical alkene double bond. Assuming that the nitrogen atom in an enamine is [[i:sp]][[sup:2]]-hybridized, draw an orbital picture of an enamine, and explain why the double bond is electron-rich.';
+  const CH14_IS_BEFORE =
+    'Tvítengi enamíns (alk[[i:en]] + [[i:amín]]) er mun kjarnsæknara en dæmigert tvítengi alkens. Gerðu ráð fyrir að niturfrumeindin í enamíni sé [[i:sp]][[sup:2]]-blendinguð, teiknaðu svigrúmsmynd af enamíni og útskýrðu hvers vegna tvítengið er rafeindaríkt.';
+
+  it('PLANTED: ch14 lost [[i:enamine]] and it restores onto the right word', () => {
+    // The defect: the source marks `enamine` where it is DEFINED; the model
+    // translated it to `enamíns` and dropped the marker. Note the two later
+    // `enamíni` forms — the source leaves those unmarked too, so the target is
+    // unambiguous only because the inflection differs.
+    expect((CH14_EN.match(/\[\[i:/g) || []).length).toBe(4);
+    expect((CH14_IS_BEFORE.match(/\[\[i:/g) || []).length).toBe(3); // one short
+    const r = planMarkerRestore(SEG(CH14_SEG, CH14_EN), SEG(CH14_SEG, CH14_IS_BEFORE), {
+      segId: CH14_SEG,
+      type: 'i',
+      target: 'enamíns',
+    });
+    expect(r.ok).toBe(true);
+    expect(r.remaining).toBe(0);
+    expect(r.text).toContain('Tvítengi [[i:enamíns]] (alk[[i:en]]');
+    expect((r.text.match(/\[\[i:/g) || []).length).toBe(4); // matches the source
+  });
+
+  it('ch14 exercises is now CLEAN, and a further restore is REFUSED', () => {
+    const en = read('books/lifraen-efnafraedi/02-for-mt/ch14/exercises-segments.en.md');
+    const is = read('books/lifraen-efnafraedi/02-mt-output/ch14/exercises-segments.is.md');
+    expect(is).toContain('Tvítengi [[i:enamíns]] (alk[[i:en]]'); // the repair, by value
+    const count = (s) => (s.match(/\[\[i:/g) || []).length;
+    expect(count(is)).toBe(count(en));
+    // Non-vacuity: the file must still carry italics, or the equality is trivial.
+    expect(count(is)).toBeGreaterThan(30);
+    // And the tool must now decline to add another — the segment is complete.
+    const again = planMarkerRestore(en, is, { segId: CH14_SEG, type: 'i', target: 'enamíni' });
+    expect(again.ok).toBe(false);
+    expect(again.reason).toMatch(/no dropped/i);
+  });
+});
+
 describe('sameVintage — a stale pair must never be compared', () => {
   // 68.2% of committed pairs are stale (the EN was re-extracted after the MT
   // ran), and there a "surplus" is just different source text. Kept pure over
@@ -161,8 +297,6 @@ describe('sameVintage — a stale pair must never be compared', () => {
 });
 
 describe('CORPUS ANCHOR — the two real files, and one of them must be REFUSED', () => {
-  const read = (p) => fs.readFileSync(path.join(REPO_ROOT, p), 'utf8');
-
   // 🔴 THE FIRE-EVIDENCE IS PLANTED, BECAUSE APPLYING THE REPAIR DESTROYED IT.
   // This anchor originally read the live ch23 file and asserted 33 removals.
   // Repairing that file took the surplus to 0 and the assertion went red — the

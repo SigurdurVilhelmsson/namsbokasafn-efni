@@ -459,7 +459,7 @@ Hvernig myndir þú framkvæma eftirfarandi nýmyndun (fleiri en eitt skref þar
 [[MEDIA:0]]
 
 <!-- SEG:14-99-OC-AP41:stem:358557-b0 -->
-Tvítengi enamíns (alk[[i:en]] + [[i:amín]]) er mun kjarnsæknara en dæmigert tvítengi alkens. Gerðu ráð fyrir að niturfrumeindin í enamíni sé [[i:sp]][[sup:2]]-blendinguð, teiknaðu svigrúmsmynd af enamíni og útskýrðu hvers vegna tvítengið er rafeindaríkt.
+Tvítengi [[i:enamíns]] (alk[[i:en]] + [[i:amín]]) er mun kjarnsæknara en dæmigert tvítengi alkens. Gerðu ráð fyrir að niturfrumeindin í enamíni sé [[i:sp]][[sup:2]]-blendinguð, teiknaðu svigrúmsmynd af enamíni og útskýrðu hvers vegna tvítengið er rafeindaríkt.
 
 <!-- SEG:14-99-OC-AP41:stem:358557-b1 -->
 [[MEDIA:0]]

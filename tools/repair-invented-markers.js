@@ -43,9 +43,22 @@
  * exists because a re-run costs money and may reproduce the defect, and because
  * the surplus here is provably separable without one.
  *
+ * ── AND THE MIRROR CASE, WHICH IS NOT SYMMETRIC. `--restore` puts back a marker
+ * the model DROPPED. That is NOT mechanically decidable: unwrapping a surplus
+ * needs only "which markers are absent from the source", while restoring a drop
+ * needs "which WORD in the translation was the emphasised one" — a
+ * correspondence ACROSS a translation. Measured over all 61 same-vintage pairs,
+ * of 308 dropped markers only **4 (1.3%)** have their source payload sitting
+ * unambiguously in the output. ▶ So the operator names the target and the tool
+ * only verifies: the segment must really be short a marker, the target must occur
+ * EXACTLY ONCE, and it must not already sit inside a marker. One segment per
+ * call, never part of the sweep.
+ *
  * Usage:
  *   node tools/repair-invented-markers.js --book <slug> --chapter <n> [--module <id>]
  *   node tools/repair-invented-markers.js --book <slug> --chapter 23 --module exercises --apply
+ *   node tools/repair-invented-markers.js --book <slug> --chapter 14 --module exercises \
+ *        --restore '<segId>|<type>|<target text>' --apply
  *
  * Options:
  *   --book <slug>     Book slug (required)
@@ -53,6 +66,9 @@
  *   --module <id>     Single unit: mNNNNN, `exercises`, `chapter-metadata`
  *   --types <list>    Comma-separated marker types (default: i,b,em,u)
  *   --apply           Actually write. Without it, nothing is modified.
+ *   --restore <spec>  Put back ONE dropped marker: "<segId>|<type>|<target>".
+ *                     Needs exactly one --module. The target is your judgement;
+ *                     the tool only verifies it is unambiguous.
  *   --force-vintage   Proceed even if the EN was re-extracted after the MT ran.
  *                     ⚠️ There a "surplus" is just different source text.
  *   -v, --verbose     List every removal
@@ -216,6 +232,81 @@ export function planMarkerRepair(enText, isText, { types = DEFAULT_TYPES } = {})
 }
 
 /**
+ * Put back a marker the model DROPPED, at a target the caller names.
+ *
+ * 🔴 A DROP IS NOT THE MIRROR OF AN INVENTION AND IS NOT MECHANICALLY DECIDABLE.
+ * Unwrapping a surplus needs only "which markers are absent from the source".
+ * Restoring a drop needs "which WORD in the translation is the one that was
+ * emphasised" — a correspondence ACROSS a translation. Measured over all 61
+ * same-vintage corpus pairs: of 308 dropped markers only **4 (1.3%)** have their
+ * source payload sitting unambiguously in the output. ch14's `[[i:enamine]]` is
+ * in the other 98.7% — it became `enamíns`.
+ *
+ * ▶ SO THE JUDGEMENT IS THE OPERATOR'S AND ONLY THE MECHANICS ARE THE TOOL'S.
+ * The caller names the target text; this refuses unless the segment really is
+ * missing a marker of that type, the target occurs EXACTLY ONCE, and the target
+ * is not already inside a marker. Deliberately NOT wired into the sweep: there
+ * is no rule here to run unattended.
+ *
+ * @param {string} enText
+ * @param {string} isText
+ * @param {{segId:string, type:string, target:string}} spec
+ * @returns {{ok:boolean, reason:string|null, text:string}}
+ */
+export function planMarkerRestore(enText, isText, { segId, type, target }) {
+  const refuse = (reason) => ({ ok: false, reason, text: isText });
+  const enSeg = splitSegments(enText).find((s) => s.segId === segId);
+  const isSegs = splitSegments(isText);
+  const idx = isSegs.findIndex((s) => s.segId === segId);
+  if (!enSeg || idx === -1) return refuse(`segment ${segId} not found in both files`);
+
+  const enCount = scanMarkers(enSeg.text, type).length;
+  const isMarkers = scanMarkers(isSegs[idx].text, type);
+  if (enCount <= isMarkers.length) {
+    return refuse(
+      `no dropped [[${type}:]] in ${segId} — source has ${enCount}, output has ${isMarkers.length}`
+    );
+  }
+
+  const body = isSegs[idx].text;
+  const occurrences = [];
+  for (let at = body.indexOf(target); at !== -1; at = body.indexOf(target, at + 1)) {
+    occurrences.push(at);
+  }
+  if (occurrences.length === 0) return refuse(`target "${target}" not found in ${segId}`);
+  if (occurrences.length > 1) {
+    return refuse(
+      `target "${target}" occurs ${occurrences.length} times in ${segId} — ambiguous, it must occur exactly once`
+    );
+  }
+
+  // Never nest a marker inside another marker's payload: the emphasis would be
+  // wrong and the depth-aware scanners would then disagree about the boundary.
+  const at = occurrences[0];
+  for (const t of new Set([...DEFAULT_TYPES, type, 'sub', 'sup', 'term', 'fn', 'link', 'docref'])) {
+    for (const m of scanMarkers(body, t)) {
+      if (at >= m.start && at < m.end) {
+        return refuse(`target "${target}" is already inside a [[${t}:]] marker in ${segId}`);
+      }
+    }
+  }
+
+  const restored = `${body.slice(0, at)}[[${type}:${target}]]${body.slice(at + target.length)}`;
+  const after = scanMarkers(restored, type).length;
+  // Defensive: unreachable today, since a marker is only added when there IS a
+  // gap, so the count can never pass the source's. Kept because a silent
+  // overshoot would be an emphasis the source never had.
+  if (after > enCount) return refuse(`restoring would overshoot: ${after} > ${enCount}`);
+  // ⚠️ A segment can be missing MORE than one marker — orverufraedi m58781
+  // drops two `[[b:]]` from a single segment. Reporting the gap beats refusing:
+  // refusing would make a multi-drop segment permanently unrepairable, and the
+  // operator needs to know one call did not finish the job.
+  const remaining = enCount - after;
+  const out = isSegs.map((s, i) => (i === idx ? restored : s.text)).join('');
+  return { ok: true, reason: null, text: out, remaining };
+}
+
+/**
  * Is the English source no newer than the MT output that was made from it?
  *
  * 68.2% of committed pairs are STALE — the EN was re-extracted after the MT ran —
@@ -280,6 +371,7 @@ function main() {
     MODULE_OPTION,
     { name: 'types', flags: ['--types'], type: 'string', default: DEFAULT_TYPES.join(',') },
     { name: 'apply', flags: ['--apply'], type: 'boolean', default: false },
+    { name: 'restore', flags: ['--restore'], type: 'string', default: null },
     { name: 'forceVintage', flags: ['--force-vintage'], type: 'boolean', default: false },
     { name: 'verbose', flags: ['--verbose', '-v'], type: 'boolean', default: false },
   ]);
@@ -313,6 +405,53 @@ function main() {
     args.apply ? '  MODE: APPLY (files will be written)' : '  MODE: dry run (nothing written)'
   );
   console.log('═'.repeat(66));
+
+  // ── RESTORE: put back a DROPPED marker at a target the operator names.
+  // Separate from the sweep on purpose — there is no rule here to run
+  // unattended (only 1.3% of dropped markers are mechanically locatable), so the
+  // target is always supplied by hand and this never touches more than one.
+  if (args.restore) {
+    const [segId, type, ...rest] = String(args.restore).split('|');
+    const target = rest.join('|');
+    if (!segId || !type || !target) {
+      console.error('Error: --restore takes "<segId>|<type>|<target text>"');
+      process.exitCode = 1;
+      return;
+    }
+    if (units.length !== 1) {
+      console.error(`Error: --restore needs exactly one --module (matched ${units.length})`);
+      process.exitCode = 1;
+      return;
+    }
+    const unit = units[0];
+    const enPath = path.join(enDir, `${unit}-segments.en.md`);
+    const isPath = path.join(isDir, `${unit}-segments.is.md`);
+    const r = planMarkerRestore(fs.readFileSync(enPath, 'utf8'), fs.readFileSync(isPath, 'utf8'), {
+      segId,
+      type,
+      target,
+    });
+    if (!r.ok) {
+      console.error(`  REFUSED — ${r.reason}`);
+      process.exitCode = 1;
+      return;
+    }
+    console.log(`  ${unit}: restored [[${type}:${target}]] in ${segId}`);
+    if (r.remaining > 0) {
+      console.log(
+        `  ⚠️  ${r.remaining} further [[${type}:]] marker(s) still missing from that segment`
+      );
+    }
+    if (args.apply) {
+      const stamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-');
+      fs.copyFileSync(isPath, `${isPath}.${stamp}.bak`);
+      fs.writeFileSync(isPath, r.text, 'utf8');
+      console.log(`      → written (backup: ${path.basename(isPath)}.${stamp}.bak)`);
+    } else {
+      console.log('  (dry run — re-run with --apply to write)');
+    }
+    return;
+  }
 
   let totalRemovals = 0;
   let repairedFiles = 0;
