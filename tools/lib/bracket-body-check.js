@@ -49,7 +49,11 @@ import { decodeEntities } from './math-label-inventory.js';
  *     against source. This is an acknowledged gap, not a delegation. Not
  *     closed here — adding them changes this check's measured base rate, which
  *     is Plan B's input, so it is a scope decision for the register, not this
- *     file. `lb`/`rb` are real too, despite not appearing in cnxml-extract.js/
+ *     file. ⚠️ `link`/`fn` ARE STILL OPEN. `span` belonged to this same group and
+ *     was CLOSED 2026-09-02 (§C118 ⑭) by the register making that call with a
+ *     re-derived base rate — see the measurement in the entry below. Do not read
+ *     span's resolution as covering link/fn; they remain unvalidated.
+ *     `lb`/`rb` are real too, despite not appearing in cnxml-extract.js/
  *     cnxml-inject.js — they're opaque escape markers from the os-embed
  *     exercise-field converter (item 9/D3, tools/lib/exercise-html.js; see
  *     tools/api-translate.js's BRACKET_MARKER_TYPES comment) and carry no
@@ -63,6 +67,26 @@ export const BODY_SOURCE_ELEMENTS = Object.freeze({
   sub: ['sub'],
   sup: ['sup'],
   term: ['term'],
+  // §C118 ⑭ — ADDED 2026-09-02, and the register (§C82/§C118) has now made the
+  // scope call the comment above defers to it. `[[span:body|class]]` carries real
+  // prose (organic's reaction colouring, which CLAUDE.md's clean-CNXML ruling
+  // keeps), extracted by the same lazy-regex shape as <emphasis> and equally
+  // exposed to a swallow — so it belongs here exactly like `i`/`b`.
+  //
+  // 🔴 THE BASE RATE WAS RE-DERIVED AGAINST A FULL RE-EXTRACT, NOT TODAY'S TREE.
+  // The committed 02-for-mt is MIXED VINTAGE: only ch03 was re-extracted after the
+  // span fix, so it holds 31 span markers in 5 modules while a full re-extract
+  // emits 1,071 across 184 — measuring against the tree would understate this
+  // change ~35x. Measured on segments regenerated in memory from 01-source
+  // (instrument controlled: 8 of 8 committed ch03 files reproduced byte-identical):
+  //   organic   examined 9,464 -> 10,434 (+970) · skipped 915 -> 1,016 (+101)
+  //             findings 0 -> 0 · module base rate 0.0% -> 0.0%
+  //   chemistry UNCHANGED (17,846 / 454 / 0) — it has zero <span>, the negative control.
+  // The +970/+101 split is not a coincidence: 970 of the 1,071 class-bearing spans
+  // wrap plain text and are comparable, while 101 wrap other markup so their body
+  // reads `1[[i:s]]` — the body class `[^\[\]|]*` refuses `[`, so they are counted
+  // as unmatchable rather than reported as swallows. E2 stays BLOCKING-eligible.
+  span: ['span'],
 });
 
 /** Collapse whitespace for comparison; leading/trailing space is preserved as a single space. */
