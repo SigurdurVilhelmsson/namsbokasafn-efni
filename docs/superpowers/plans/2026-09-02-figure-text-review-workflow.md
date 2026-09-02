@@ -56,9 +56,9 @@ Tasks 1–3 deliver working software with **no database and no editor**: a devel
 **Interfaces:**
 - Consumes: nothing.
 - Produces:
-  - `sidecarPath(booksDir, bookSlug, basename) -> string`
-  - `readSidecar(booksDir, bookSlug, basename) -> object|null`
-  - `writeSidecar(booksDir, bookSlug, basename, data) -> void`
+  - `sidecarPath(bookDir, basename) -> string`  (bookDir is `books/<slug>`)
+  - `readSidecar(bookDir, basename) -> object|null`
+  - `writeSidecar(bookDir, basename, data) -> void`
   - `computeRenderHash(blocks, composerVersion) -> string` (16 hex chars)
   - `effectiveState(sidecar, currentBlocks, composerVersion) -> 'mt-preview'|'approved'|'flagged'`
   - `SIDECAR_VERSION = 1`, `COMPOSER_VERSION = '1'`
@@ -96,15 +96,18 @@ const {
   computeRenderHash, effectiveState, SIDECAR_VERSION, COMPOSER_VERSION,
 } = require('../lib/figure-text-sidecar.cjs');
 
-let books;
-beforeEach(() => { books = fs.mkdtempSync(path.join(os.tmpdir(), 'figtext-')); });
-afterEach(() => fs.rmSync(books, { recursive: true, force: true }));
+let bookDir;
+beforeEach(() => {
+  bookDir = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'figtext-')), 'efnafraedi-2e');
+  fs.mkdirSync(bookDir, { recursive: true });
+});
+afterEach(() => fs.rmSync(path.dirname(bookDir), { recursive: true, force: true }));
 
 const BLOCKS = { 'Boiling|point|of water': 'Suðumark vatns', 'Celsius': 'Celsíus' };
 
 describe('sidecarPath', () => {
   it('is per-figure under the book, not under 01-source', () => {
-    const p = sidecarPath(books, 'efnafraedi-2e', 'CNX_Chem_01_06_TempScales');
+    const p = sidecarPath(bookDir, 'CNX_Chem_01_06_TempScales');
     expect(p).toContain(path.join('efnafraedi-2e', 'figure-text'));
     expect(p.endsWith('CNX_Chem_01_06_TempScales.is.json')).toBe(true);
     expect(p).not.toContain('01-source');
@@ -113,22 +116,22 @@ describe('sidecarPath', () => {
 
 describe('readSidecar', () => {
   it('returns null when the figure has none', () => {
-    expect(readSidecar(books, 'efnafraedi-2e', 'CNX_Nope')).toBeNull();
+    expect(readSidecar(bookDir, 'CNX_Nope')).toBeNull();
   });
   it('round-trips what writeSidecar wrote', () => {
-    writeSidecar(books, 'efnafraedi-2e', 'CNX_A', {
+    writeSidecar(bookDir, 'CNX_A', {
       version: SIDECAR_VERSION, basename: 'CNX_A', state: 'approved',
       renderHash: 'x', composerVersion: COMPOSER_VERSION, blocks: BLOCKS,
     });
-    const got = readSidecar(books, 'efnafraedi-2e', 'CNX_A');
+    const got = readSidecar(bookDir, 'CNX_A');
     expect(got.blocks).toEqual(BLOCKS);
     expect(got.state).toBe('approved');
   });
   it('returns null rather than throwing on malformed JSON', () => {
-    const p = sidecarPath(books, 'efnafraedi-2e', 'CNX_Bad');
+    const p = sidecarPath(bookDir, 'CNX_Bad');
     fs.mkdirSync(path.dirname(p), { recursive: true });
     fs.writeFileSync(p, '{ not json');
-    expect(readSidecar(books, 'efnafraedi-2e', 'CNX_Bad')).toBeNull();
+    expect(readSidecar(bookDir, 'CNX_Bad')).toBeNull();
   });
 });
 
@@ -203,13 +206,18 @@ const SIDECAR_VERSION = 1;
  */
 const COMPOSER_VERSION = '1';
 
-function sidecarPath(booksDir, bookSlug, basename) {
-  return path.join(booksDir, bookSlug, 'figure-text', `${basename}.is.json`);
+/**
+ * @param {string} bookDir  the BOOK directory, i.e. `books/<slug>` — NOT the books
+ *   root. cnxml-render.js's BOOKS_DIR is already `books/<slug>`, so a (root, slug)
+ *   signature made its only caller wrong by construction.
+ */
+function sidecarPath(bookDir, basename) {
+  return path.join(bookDir, 'figure-text', `${basename}.is.json`);
 }
 
-function readSidecar(booksDir, bookSlug, basename) {
+function readSidecar(bookDir, basename) {
   try {
-    const raw = fs.readFileSync(sidecarPath(booksDir, bookSlug, basename), 'utf-8');
+    const raw = fs.readFileSync(sidecarPath(bookDir, basename), 'utf-8');
     const obj = JSON.parse(raw);
     if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return null;
     return obj;
@@ -221,8 +229,8 @@ function readSidecar(booksDir, bookSlug, basename) {
   }
 }
 
-function writeSidecar(booksDir, bookSlug, basename, data) {
-  const p = sidecarPath(booksDir, bookSlug, basename);
+function writeSidecar(bookDir, basename, data) {
+  const p = sidecarPath(bookDir, basename);
   fs.mkdirSync(path.dirname(p), { recursive: true });
   const tmp = `${p}.tmp`;
   fs.writeFileSync(tmp, `${JSON.stringify(data, null, 1)}\n`, 'utf-8');
@@ -405,16 +413,22 @@ const EMITTED_REVIEW_STATES = new Set(['mt-preview', 'flagged']);
  * @param {string} state - from effectiveState()
  * @returns {string} '' or ' data-figure-review="..."'
  */
-export function figureReviewAttr(state) {
+function figureReviewAttr(state) {
   return EMITTED_REVIEW_STATES.has(state) ? ` data-figure-review="${state}"` : '';
 }
 ```
+
+⚠️ **`tools/cnxml-render.js` has NO inline `export` keywords — it uses ONE
+`export { … }` block near line 4242.** Add `figureReviewAttr,` to that block; do
+not write `export function`, which would be the file's only inline export.
 
 Then at the `<figure>` emit, derive the state from the sidecar and the figure's basename:
 
 ```js
   const figBasename = path.basename(src, path.extname(src));
-  const sidecar = readSidecar(BOOKS_DIR_ROOT, BOOK_SLUG, figBasename);
+  // BOOKS_DIR is already `books/<slug>` — there is no books-root variable in this
+  // file, and inventing one was a defect in an earlier draft of this plan.
+  const sidecar = readSidecar(BOOKS_DIR, figBasename);
   const reviewAttr = figureReviewAttr(
     effectiveState(sidecar, (sidecar && sidecar.blocks) || {}, COMPOSER_VERSION)
   );
@@ -623,7 +637,7 @@ git commit -m "feat(figure-text): migration 050 — figure review workflow state
   - `getFigure(db, bookId, basename) -> {state, renderHash, flagKind, note, blocks}|null`
   - `saveBlockEdit(db, {bookId, basename, blockKey, isText, editedBy}) -> void`
   - `setState(db, {bookId, basename, state, flagKind, note, reviewedBy, blocks}) -> void`
-  - `applyApprovedFigureEdits(db, {booksDir, bookSlug, bookId, basename, mtBlocks}) -> {written, path}`
+  - `applyApprovedFigureEdits(db, {bookDir, bookId, basename, mtBlocks}) -> {written, path}`
 
 - [ ] **Step 1: Write the failing test**
 
@@ -640,7 +654,7 @@ const svc = require('../services/figureReviewService');
 const { readSidecar, effectiveState, COMPOSER_VERSION } =
   require('../../tools/lib/figure-text-sidecar.cjs');
 
-let db, bookId, books;
+let db, bookId, bookDir;
 const MT = { Celsius: 'Selsíus', 'Boiling|point|of water': 'Suðumark vatns' };
 
 beforeEach(() => {
@@ -650,9 +664,10 @@ beforeEach(() => {
   ).get('efnafraedi-2e', 'Efnafræði', 't').id;
   db.prepare(`INSERT INTO figure_review (book_id, chapter, module_id, basename) VALUES (?,?,?,?)`)
     .run(bookId, 1, 'm68683', 'CNX_T');
-  books = fs.mkdtempSync(path.join(os.tmpdir(), 'figsvc-'));
+  bookDir = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'figsvc-')), 'efnafraedi-2e');
+  fs.mkdirSync(bookDir, { recursive: true });
 });
-afterEach(() => { db.close(); fs.rmSync(books, { recursive: true, force: true }); });
+afterEach(() => { db.close(); fs.rmSync(path.dirname(bookDir), { recursive: true, force: true }); });
 
 describe('saveBlockEdit', () => {
   it('overlays the editor text on the MT text', () => {
@@ -698,10 +713,10 @@ describe('applyApprovedFigureEdits', () => {
     svc.setState(db, { bookId, basename: 'CNX_T', state: 'approved',
                        reviewedBy: 'ed', blocks });
     const { written } = svc.applyApprovedFigureEdits(db, {
-      booksDir: books, bookSlug: 'efnafraedi-2e', bookId, basename: 'CNX_T', mtBlocks: MT,
+      bookDir, bookId, basename: 'CNX_T', mtBlocks: MT,
     });
     expect(written).toBe(true);
-    const side = readSidecar(books, 'efnafraedi-2e', 'CNX_T');
+    const side = readSidecar(bookDir, 'CNX_T');
     expect(side.blocks.Celsius).toBe('Celsíus');
     expect(effectiveState(side, side.blocks, COMPOSER_VERSION)).toBe('approved');
   });
@@ -726,7 +741,7 @@ Expected: FAIL — `Cannot find module '../services/figureReviewService'`
  */
 const path = require('path');
 const {
-  computeRenderHash, effectiveState, writeSidecar,
+  computeRenderHash, effectiveState, writeSidecar, sidecarPath,
   SIDECAR_VERSION, COMPOSER_VERSION,
 } = require(path.join(__dirname, '..', '..', 'tools', 'lib', 'figure-text-sidecar.cjs'));
 
@@ -784,7 +799,7 @@ function setState(db, { bookId, basename, state, flagKind, note, reviewedBy, blo
  * Write the committed sidecar. Mirrors applyApprovedEdits() -> 03-faithful-translation:
  * the DB holds workflow, the repo holds content.
  */
-function applyApprovedFigureEdits(db, { booksDir, bookSlug, bookId, basename, mtBlocks }) {
+function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
   const fig = getFigure(db, bookId, basename, mtBlocks);
   if (!fig) return { written: false, path: null };
   const data = {
@@ -795,8 +810,8 @@ function applyApprovedFigureEdits(db, { booksDir, bookSlug, bookId, basename, mt
     composerVersion: COMPOSER_VERSION,
     blocks: fig.blocks,
   };
-  writeSidecar(booksDir, bookSlug, basename, data);
-  return { written: true, path: `${bookSlug}/figure-text/${basename}.is.json` };
+  writeSidecar(bookDir, basename, data);
+  return { written: true, path: sidecarPath(bookDir, basename) };
 }
 
 module.exports = { getFigure, saveBlockEdit, setState, applyApprovedFigureEdits };
