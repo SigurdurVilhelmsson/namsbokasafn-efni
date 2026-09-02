@@ -2,8 +2,8 @@
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
   "summary": {
-    "modulesWithResidue": 3,
-    "exactResidues": 7,
+    "modulesWithResidue": 2,
+    "exactResidues": 5,
     "ratioWarnings": 5,
     "toleratedResidues": 0
   },
@@ -16,14 +16,6 @@
           "ratio": 0.8
         }
       ],
-      "tolerated": []
-    },
-    "m00038": {
-      "exact": [
-        "m00038:item:list-00001-item-13",
-        "m00038:item:list-00001-item-36"
-      ],
-      "warnings": [],
       "tolerated": []
     },
     "m00135": {
