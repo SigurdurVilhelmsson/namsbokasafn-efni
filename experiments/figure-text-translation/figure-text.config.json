@@ -1,0 +1,19 @@
+{
+  "_README": "Configuration for the figure-text translation pipeline. Status lives in REGISTER.md; how-to lives in README.md; this file holds only values the code reads.",
+
+  "locale": "is",
+
+  "_suffix": "NOT SET HERE ON PURPOSE. The translated-filename suffix is owned by tools/generate-image-mapping.js (DEFAULT_SUFFIX) and pinned by its test against the committed corpus. Restating it here would be a second source of truth.",
+
+  "renderDpi": 200,
+  "_renderDpi": "OpenStax rendered the published jpgs at exactly 200 dpi from these same PDFs (verified pixel-exact, 468x275.642pt -> 1300x766). Rendering at any other dpi breaks check.py's oracle comparison.",
+
+  "outputFormat": "svg",
+  "_outputFormat": "DECISION OPEN - see REGISTER.md item 5. The existing 691 chemistry files are SVG with real <text> plus a base64-embedded Liberation Sans subset; this pipeline currently emits raster. Do not treat this value as settled.",
+
+  "editionPrecedence": ["updates-2e", "first-edition"],
+  "_editionPrecedence": "The OpenStax delivery is TWO trees: all 1st-edition images, and a second tree holding ONLY images updated or added for the 2nd edition. A figure present in the updates tree MUST be sourced from there; the 1st-edition tree is the fallback. Getting this backwards silently translates a superseded illustration. Enforced by sources.py, not by this comment.",
+
+  "sourceTreesFile": "sources.local.json",
+  "_sourceTreesFile": "Local absolute paths live in a gitignored file because they are machine-specific. Copy sources.local.json.example and fill it in."
+}
