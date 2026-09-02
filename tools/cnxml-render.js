@@ -1085,9 +1085,17 @@ function renderFigure(figure, context) {
       const figBasename = path.basename(figSrc, path.extname(figSrc));
       // BOOKS_DIR is already `books/<slug>` — there is no books-root variable here.
       const sidecar = readSidecar(BOOKS_DIR, figBasename);
-      reviewAttr = figureReviewAttr(
-        effectiveState(sidecar, (sidecar && sidecar.blocks) || {}, COMPOSER_VERSION)
-      );
+      // A figure with NO sidecar has no translated version at all — it is the
+      // plain English OpenStax figure, and there is nothing to badge.
+      // effectiveState(null, ...) maps to 'mt-preview', which is the right
+      // answer for a figure that HAS a sidecar and no approval yet, but
+      // conflating "no sidecar" with "unapproved sidecar" here would badge
+      // every one of the ~1,500 untranslated figures in the corpus.
+      if (sidecar) {
+        reviewAttr = figureReviewAttr(
+          effectiveState(sidecar, sidecar.blocks || {}, COMPOSER_VERSION)
+        );
+      }
     }
   }
 
