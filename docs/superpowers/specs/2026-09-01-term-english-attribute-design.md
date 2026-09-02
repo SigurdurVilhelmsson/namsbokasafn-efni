@@ -95,10 +95,22 @@ carries `moduleId`. **Three call sites emit a `<dfn>` and all three change:**
 1. `renderTerm()` — `tools/lib/cnxml-elements.js:646`, the structured path.
 2. The id-bearing regex branch — `tools/lib/cnxml-elements.js:802`.
 3. The **id-less** regex branch — `tools/lib/cnxml-elements.js:805`. This one needs the
-   enclosing `<definition>`'s id passed down. `cnxml-render.js:2014` has an `id` in scope when
-   it writes the `<dt>`, which is *probably* that id — **unverified, and §8 carries it as an
-   open question.** If it is not, this site needs a new parameter and the edit is larger than
-   the other two combined. **Read it before planning, not while implementing.**
+   enclosing `<definition>`'s id passed down. ✅ **RESOLVED 2026-09-02 by reading
+   `renderGlossary`:** `cnxml-render.js:2001` binds `const id = def.id || null`, which **is**
+   the `<definition>` id, and it is in scope at the exact call that renders the term. So this
+   is a **scoped context clone, not a new parameter** — materially smaller than feared:
+
+   ```js
+   const termHtml = processInlineContent(termInner, { ...context, definitionId: id });
+   const meaning  = processInlineContent(meaningMatch[1], context);   // deliberately NOT cloned
+   ```
+
+   🔴 **The scoping is the correctness detail, not the plumbing.** `renderGlossary` calls
+   `processInlineContent` twice — once for the term, once for the meaning. Putting
+   `definitionId` on a definition-wide context would let a `<term>` nested inside a
+   **`<meaning>`** inherit the wrong English. Measured: **0 of 763** definitions do that today,
+   so nothing is broken now — and it is scoped anyway, because exposure here is set by the
+   corpus, not by the code.
 
 > 🔴 **Site 3 is 46% of the corpus and is the one a plan omits.** §C118 ① needed "three sites,
 > not the two that looked obvious" and a **fourth** was found on the paid-MT leg the same week.
@@ -204,9 +216,10 @@ m68700's current `--no-annotate-en` holding state simply the default.
 
 ## 8. Open questions for implementation
 
-- Does the glossary renderer's `<dt>` path reach `processInlineContent` with the definition id
-  available, or does it need a new parameter? §4.2 site 3 assumes the id is in scope at
-  `cnxml-render.js:2014`; confirm by reading before planning the edit.
+- ~~Does the glossary renderer's `<dt>` path reach `processInlineContent` with the definition
+  id available, or does it need a new parameter?~~ ✅ **ANSWERED 2026-09-02 — see §4.2 site 3.**
+  The id is in scope; a scoped context clone suffices, and the scoping (term yes, meaning no)
+  is the part that matters.
 - Should `showTermEnglish` default on for existing readers, or on only for new ones? The
   settings store persists, so an existing reader's stored object lacks the key — confirm the
   store's migration behaviour for an absent boolean.
