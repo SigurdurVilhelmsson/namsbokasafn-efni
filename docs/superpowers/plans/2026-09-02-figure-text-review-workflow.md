@@ -445,19 +445,54 @@ function figureReviewAttr(state) {
 `export { … }` block near line 4242.** Add `figureReviewAttr,` to that block; do
 not write `export function`, which would be the file's only inline export.
 
-Then at the `<figure>` emit, derive the state from the sidecar and the figure's basename:
+⚠️ **ORDERING — this is the part that is easy to get wrong.** `renderFigure` builds an
+`attrs` array and pushes `` `<figure ${attrs.join(' ')}>` `` at **line 1055**, but the image
+`src` — and therefore the basename — is not parsed until **~line 1083**, inside a nested
+branch. So the basename must be obtained BEFORE the attrs array is built. Push the attribute
+into `attrs` like the existing `id` / `class` / `data-figure-number` entries; do not
+string-concatenate onto the already-pushed line.
+
+🔴 **Use `TAG_ATTR_SPAN`, NOT `[^>]*`.** A bare `>` is legal inside an XML attribute value, so
+`<image[^>]*>` can truncate mid-attribute and silently yield an EMPTY src. `TAG_ATTR_SPAN` is
+already imported at line 36 of this file and the neighbouring `<media>` match at line 1063
+uses it — copy that shape. `path` is already imported at line 27.
+
+Insert immediately BEFORE `const attrs = [];` (~line 1050):
 
 ```js
-  const figBasename = path.basename(src, path.extname(src));
-  // BOOKS_DIR is already `books/<slug>` — there is no books-root variable in this
-  // file, and inventing one was a defect in an earlier draft of this plan.
-  const sidecar = readSidecar(BOOKS_DIR, figBasename);
-  const reviewAttr = figureReviewAttr(
-    effectiveState(sidecar, (sidecar && sidecar.blocks) || {}, COMPOSER_VERSION)
-  );
+  // Figure review state for the badge. Read BEFORE the attrs array is built, because
+  // the <figure> open tag is pushed below and the image src is not parsed until later.
+  let reviewAttr = '';
+  const figImage = figure.content.match(new RegExp(`<image(${TAG_ATTR_SPAN})/?>`));
+  if (figImage) {
+    const figSrc = parseAttributes(figImage[1]).src || '';
+    if (figSrc) {
+      const figBasename = path.basename(figSrc, path.extname(figSrc));
+      // BOOKS_DIR is already `books/<slug>` — there is no books-root variable here.
+      const sidecar = readSidecar(BOOKS_DIR, figBasename);
+      reviewAttr = figureReviewAttr(
+        effectiveState(sidecar, (sidecar && sidecar.blocks) || {}, COMPOSER_VERSION)
+      );
+    }
+  }
 ```
 
-and include `${reviewAttr}` in the opening `<figure` tag.
+then add it to the attrs array alongside the existing entries:
+
+```js
+  if (reviewAttr) attrs.push(reviewAttr.trim());
+```
+
+`figureReviewAttr` returns a leading-space form for direct interpolation elsewhere, so
+`.trim()` is what makes it a clean `attrs` entry. A figure with no sidecar yields `''` and
+pushes nothing — the correct default for the ~1,100 figures that have no sidecar at all.
+
+The module is CommonJS and this file is ESM, so import it with `createRequire`:
+
+```js
+const { readSidecar, effectiveState, COMPOSER_VERSION } =
+  createRequire(import.meta.url)('./lib/figure-text-sidecar.cjs');
+```
 
 - [ ] **Step 4: Run test to verify it passes**
 
