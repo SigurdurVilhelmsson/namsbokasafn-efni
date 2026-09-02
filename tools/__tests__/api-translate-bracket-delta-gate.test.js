@@ -134,29 +134,50 @@ describe('CORPUS ANCHOR — the real run that motivated this gate is held back',
   // organic ch03 supplies its own control population: all 8 modules were
   // re-extracted and re-MT'd on the same day, so they are same-vintage by
   // construction and a delta between them cannot be vintage drift.
-  const CH03 = path.join(path.dirname(API_TRANSLATE), '..', 'books/lifraen-efnafraedi');
-  const pair = (m) => ({
-    en: path.join(CH03, '02-for-mt/ch03', `${m}-segments.en.md`),
-    is: path.join(CH03, '02-mt-output/ch03', `${m}-segments.is.md`),
+  // 🔴 THE ANCHOR MOVED, BECAUSE I REPAIRED ITS SUBJECT — THIRD TIME TODAY.
+  // This originally pinned m00038 at `{b: 29}`. §C118 ⑲'s bare-wire fix took that
+  // to `{}`, and the assertion went red — the same shape as ch23's and ch14's
+  // anchors earlier the same afternoon, both of which had already been written up
+  // as a lesson. ▶ REPAIRING THE CORPUS STRIPS A CHECK OF ITS PROOF THAT IT WORKS,
+  // and noticing that twice does not stop it happening a third time. The fix is
+  // structural: pin the HISTORY as a planted fixture, and point the corpus half at
+  // a case that still fires.
+  //
+  // ⚠️ NATURAL MUST-TRIPS ARE NOW DOWN TO 4 — one e2e fixture plus three
+  // orverufraedi modules with dropped bolds (§C118 ⑳, a retired book, untouched).
+  // ch23, ch14 and m00038 were all repaired today. **If orverufraedi is ever
+  // repaired, this gate has NO natural must-trip left and the planted case below
+  // becomes its only proof.** Do not delete it then; that is exactly when it
+  // matters most.
+  const PLANTED_M00038 = { b: 29 }; // the real delta, two paid runs running (+29, +31)
+
+  it('PLANTED: the m00038 delta that motivated this gate is held back', () => {
+    const out = classifyModuleOutcome({ bracketDelta: PLANTED_M00038 });
+    expect(out.heldBack).toBe(true);
+    expect(out.reasons.join(' ')).toMatch(/bracket/i);
   });
 
-  it('m00038 is held back, and its seven same-vintage siblings are NOT', () => {
-    const p = pair('m00038');
-    expect(fs.existsSync(p.en) && fs.existsSync(p.is)).toBe(true); // no silent skip
-    const delta = bracketMarkerDelta(fs.readFileSync(p.en, 'utf8'), fs.readFileSync(p.is, 'utf8'));
-    expect(delta).toEqual({ b: 29 }); // the 29 invented bold markers, pinned by value
-    expect(classifyModuleOutcome({ bracketDelta: delta }).heldBack).toBe(true);
-
-    // The control, and it is the load-bearing half: without it, a gate that
-    // held back EVERY module would satisfy the assertion above.
-    const siblings = ['m00031', 'm00032', 'm00033', 'm00034', 'm00035', 'm00036', 'm00037'];
-    const clean = siblings.filter((m) => {
-      const q = pair(m);
-      if (!fs.existsSync(q.is)) return false;
-      const d = bracketMarkerDelta(fs.readFileSync(q.en, 'utf8'), fs.readFileSync(q.is, 'utf8'));
-      return !classifyModuleOutcome({ bracketDelta: d }).heldBack;
+  it('a delta-bearing module is held back and a clean sibling is NOT — on live corpus', () => {
+    // orverufraedi ch01 still carries dropped bolds; m00038 is now repaired.
+    // Both halves matter: the firing case proves the gate works, the clean case
+    // proves it is not simply holding everything back.
+    const BOOKS = path.join(path.dirname(API_TRANSLATE), '..', 'books');
+    const pair = (book, ch, unit) => ({
+      en: path.join(BOOKS, book, '02-for-mt', ch, `${unit}-segments.en.md`),
+      is: path.join(BOOKS, book, '02-mt-output', ch, `${unit}-segments.is.md`),
     });
-    expect(clean).toEqual(siblings); // all seven, none held back
+    const deltaOf = (p) => {
+      expect(fs.existsSync(p.en) && fs.existsSync(p.is)).toBe(true); // never skip silently
+      return bracketMarkerDelta(fs.readFileSync(p.en, 'utf8'), fs.readFileSync(p.is, 'utf8'));
+    };
+
+    const firing = deltaOf(pair('orverufraedi', 'ch01', 'm58781'));
+    expect(firing).toEqual({ b: -2 }); // by VALUE — a dropped bold, not a tally
+    expect(classifyModuleOutcome({ bracketDelta: firing }).heldBack).toBe(true);
+
+    const clean = deltaOf(pair('lifraen-efnafraedi', 'ch03', 'm00038'));
+    expect(clean).toEqual({}); // ⑲'s bare wire took this from {b:29} to {}
+    expect(classifyModuleOutcome({ bracketDelta: clean }).heldBack).toBe(false);
   });
 });
 
