@@ -1,0 +1,64 @@
+{
+ "figure": "CNX_Chem_01_06_TempScales",
+ "when": "2026-09-02T19:23:21.934Z",
+ "glossary": null,
+ "blocks": [
+  {
+   "key": "Fahrenheit",
+   "en": "Fahrenheit",
+   "is": "Fahrenheit",
+   "ms": 6251
+  },
+  {
+   "key": "Boiling|point|of water",
+   "en": "Boiling point of water",
+   "is": "Suðumark vatns",
+   "ms": 5955
+  },
+  {
+   "key": "Freezing|point|of water",
+   "en": "Freezing point of water",
+   "is": "Frostmark vatns",
+   "ms": 8528
+  },
+  {
+   "key": "180 Fahrenheit|degrees",
+   "en": "180 Fahrenheit degrees",
+   "is": "180 gráður á Fahrenheit",
+   "ms": 5989
+  },
+  {
+   "key": "Celsius",
+   "en": "Celsius",
+   "is": "Selsíus",
+   "ms": 12349
+  },
+  {
+   "key": "100 Celsius|degrees",
+   "en": "100 Celsius degrees",
+   "is": "100 Selsíusgráður",
+   "ms": 8527
+  },
+  {
+   "key": "Kelvin",
+   "en": "Kelvin",
+   "is": "Kelvin",
+   "ms": 5927
+  },
+  {
+   "key": "100 kelvins",
+   "en": "100 kelvins",
+   "is": "100 kelvin",
+   "ms": 5986
+  }
+ ],
+ "usage": {
+  "totalChars": 120,
+  "totalCost": 1.2000000000000002,
+  "requestCount": 8,
+  "failedCount": 0,
+  "startTime": 1788376942419,
+  "elapsedMs": 59515,
+  "estimatedISK": 1.2
+ }
+}

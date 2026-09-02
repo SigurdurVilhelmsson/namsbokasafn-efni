@@ -22,6 +22,26 @@ through Málstaður.
 
 ## Settled
 
+- **⑯ THE PIPELINE IS PROVEN ON REAL MT — one figure, end to end, 2026-09-02.**
+  `CNX_Chem_01_06_TempScales`, 8 prose blocks, 120 chars, **1.20 ISK**, 8/8 succeeded, 0 failed.
+  Sent **without a glossary** deliberately, per §C73: the unprompted rendering is the control.
+  Quality was good unprompted — `Boiling point of water` → **Suðumark vatns**,
+  `Freezing point of water` → **Frostmark vatns**, `180 Fahrenheit degrees` →
+  **180 gráður á Fahrenheit**, `Celsius` → **Selsíus**, `100 Celsius degrees` →
+  **100 Selsíusgráður**, `100 kelvins` → **100 kelvin**; `Fahrenheit` and `Kelvin` correctly
+  unchanged. Criteria were fixed before the run in `CRITERIA-run1.md`. Evidence:
+  [`evidence/11-first-real-malstadur-run.png`](evidence/11-first-real-malstadur-run.png),
+  [`evidence/api-run-tempscales.json`](evidence/api-run-tempscales.json).
+  ⚠️ **These are NOT approved translations and are not in `books/`** — human approval gates
+  content, and nothing here goes near the publication tree.
+- **⑥ AUTO-WRAP IS BUILT — and the real run is what forced it.** The MT returns ONE string per
+  block, so a 3-line English label came back as one long line and the only lever left was font
+  size: `180 gráður á Fahrenheit` fell to **5.75 pt** beside 9 pt neighbours. The composer now
+  **wraps to the block's width budget first and shrinks only as a fallback** for a single
+  unbreakable word. After: every block on that figure renders at the full 9 pt with **no shrink
+  at all**. ▶ **A placeholder translation could never have found this** — I had been feeding the
+  composer pre-split lines, which is exactly what the MT does not return.
+
 - **① Figure text is THREE classes, not two.** TRANSLATE (prose) · **LOCALIZE**
   (numbers — Icelandic uses a decimal **comma**) · VERBATIM (formulas, element symbols,
   unit symbols). The decimal-comma convention is not new: it is stated at
@@ -82,16 +102,27 @@ through Málstaður.
 
 ## Open
 
-- **⑥ Auto-wrap is not built.** Málstaður returns ONE string per block; the composer is
-  currently handed pre-split lines. Real text will not wrap itself.
+- **⑭ NUMBER LOCALIZATION IS NOT IMPLEMENTED — the LOCALIZE class passes through untouched.**
+  Demonstrated by the first real run: `373.15 K` / `273.15 K` / `233.15 K` are correctly held
+  off the MT wire and correctly kept verbatim, but Icelandic writes them `373,15 K`. Three of
+  nine verbatim blocks in one figure. ⚠️ **A blind `.` → `,` is wrong — the separators invert**
+  (`1,000` → `1.000`); `tools/lib/mathml-to-latex.js` already classifies `us`/`is`/`integer`
+  and should be reused rather than duplicated.
+- **⑮ Label-to-artwork anchoring is unsolved when the line count changes.** The composer now
+  preserves a block's vertical CENTRE (top-anchoring was clearly wrong — a 3-line English
+  label replaced by 1 Icelandic line floated above the thing it labelled). But TempScales
+  shows centring is not universally right either: `Boiling point of water` relates to its
+  rule via its LAST line, so a 3→2 line change still shifts it. **Nothing in the extracted
+  data says what a label points at**, so no anchoring rule can be universally correct — this
+  needs either a proximity heuristic against the artwork or an editor's eye.
+
+- **⑨ No real MT has been run.** Every Icelandic string produced so far is placeholder
+  probe text written by hand.
 - **⑦ Type0/CID fonts are unreadable by this parser.** 1 of 36 chapter-1 figures
   (`CNX_Chem_01_02_decomp`). `pdftotext` reads it fine, so the file is not the problem.
 - **⑧ Arc text is approximate.** The span is centred on `(angs[0]+angs[-1])/2`, but
   `angs[-1]` is the last glyph's *origin*, so the reconstructed span is short by about
   half a glyph. Visibly fine for new text; not registration-exact.
-- **⑨ No real MT has been run.** Every Icelandic string produced so far is placeholder
-  probe text written by hand.
-
 - **⑬ THE COMMITTED SVG CORPUS IS 92 % FONT PAYLOAD — ~97 MB of ~105.5 MB.** Measured over
   a 40-file random sample of the 691. The committed files embed a large TTF face per file;
   subsetting to the glyphs actually used and flavouring as woff2 cut one file's payload

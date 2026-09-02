@@ -16,6 +16,7 @@ survives re-extraction.
 import sys, json, math
 import _deps
 from _deps import HERE, OUT
+from pathlib import Path
 import cairo
 import figtext as FT
 
@@ -31,6 +32,8 @@ runs = json.loads((OUT / 'runs.json').read_text())
 blocks = FT.merge_blocks(FT.group(runs))
 
 tr_path = HERE / 'translations.json'
+if '--translations' in sys.argv:
+    tr_path = Path(sys.argv[sys.argv.index('--translations') + 1])
 _tr = json.loads(tr_path.read_text()) if tr_path.exists() else {}
 TR = _tr.get('blocks', _tr)
 
@@ -141,15 +144,45 @@ for b in blocks:
     anchor = {'left':   min(starts),
               'right':  max(s + w for s, w in zip(starts, widths)),
               'center': sum(s + w / 2 for s, w in zip(starts, widths)) / len(ls)}[align]
-    top = FT.proj(ls[0][0])
     # budget: a boxed label stays inside its box; any label may keep at least the
     # width its English original already occupied.
     maxw = max(BOXW if abs(rot) < 0.5 else 999, max(widths) + 1.0)
+    ref = ls[0][0]
+
+    # WRAP before shrinking. The MT returns ONE string per block; without this a
+    # 3-line English label comes back as one long line and the only lever left is
+    # font size — TempScales' "180 gradur a Fahrenheit" fell to 5.75pt beside 9pt
+    # neighbours. Shrinking is the fallback for a single unbreakable word, not the
+    # primary response to a longer translation.
+    def wrap(lines_in, size):
+        out = []
+        for para in lines_in:
+            words = para.split()
+            if not words:
+                out.append(''); continue
+            cur = words[0]
+            for w_ in words[1:]:
+                if measure(cur + ' ' + w_, ref, size) <= maxw:
+                    cur += ' ' + w_
+                else:
+                    out.append(cur); cur = w_
+            out.append(cur)
+        return out
+
     sz = sz0
-    while sz > 5 and max(measure(t, ls[min(j, len(ls) - 1)][0], sz)
-                         for j, t in enumerate(new)) > maxw:
+    wrapped = wrap(new, sz)
+    while sz > 5 and max((measure(t, ref, sz) for t in wrapped), default=0) > maxw:
         sz -= 0.25
+        wrapped = wrap(new, sz)
+    new = wrapped
+
+    # Anchor on the block's vertical CENTRE, not its first baseline. The line count
+    # changes with the language, and top-anchoring a 3-line block replaced by 1 line
+    # leaves the label floating above the thing it labels.
     lead = sz0 * 1.222
+    projs = [FT.proj(l[0]) for l in ls]
+    centre = (max(projs) + min(projs)) / 2
+    top = centre + (len(new) - 1) / 2.0 * lead
     for j, t in enumerate(new):
         fr = ls[min(j, len(ls) - 1)][0]     # font AND colour are per LINE
         w = measure(t, fr, sz)
