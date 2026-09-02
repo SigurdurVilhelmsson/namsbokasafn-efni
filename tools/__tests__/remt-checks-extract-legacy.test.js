@@ -174,9 +174,17 @@ describe('E1 — legacy inline-marker dialects on the EN side', () => {
     expect(control.findings[0]).toMatchObject({ dialect: '{{}}', occurrences: 2 });
   });
 
-  it('MUST-NOT-TRIP over organic — 0 of 17, the control that the 104 above means something', async () => {
+  it('MUST-NOT-TRIP over organic — 0 of 342, the whole book since §C82 re-extracted it', async () => {
     const mods = modulesWithSegments('lifraen-efnafraedi');
-    expect(mods.length).toBe(17); // 17 of organic's 342 carry a segment file today
+    // 🔴 RE-BASELINED 2026-09-02, 17 → 342. §C82's re-extract was organic's FIRST full run,
+    // so every one of its 342 `01-source` modules now carries a segment file and this
+    // MUST-NOT-TRIP covers the whole book. Derived, not copied: 342 is organic's `01-source`
+    // .cnxml count, and its `-segments.en.md` count equals it exactly.
+    // ⚠️ THE OLD TITLE'S ", the control that the 104 above means something" CLAUSE IS GONE ON
+    // PURPOSE: chemistry's mustache carriers went to 0 in the same re-extract, so the two
+    // books no longer form a discriminating pair. ALL of E1's fire-evidence is now the
+    // PLANTED controls above (:62, :72, :93) — do not trim one.
+    expect(mods.length).toBe(342); // organic's full 01-source module count
     for (const { ch, m } of mods) {
       const r = await runCheck(E1, modCtx('lifraen-efnafraedi', ch, m));
       expect(r.verdict, `${ch}/${m}`).toBe(VERDICT.PASS);
@@ -263,7 +271,7 @@ describe('E3 — raw XML residue in segments', () => {
         files++;
       }
     }
-    expect(files).toBe(166); // control: 149 chemistry + 17 organic modules with both sides
+    expect(files).toBe(491); // control: 149 chemistry + 342 organic modules with both sides
   });
 
   it('SKIPS on a missing segText and names the cause', async () => {
