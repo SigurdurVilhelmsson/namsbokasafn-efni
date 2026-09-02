@@ -1117,10 +1117,58 @@ export function mtRunDecision({ exists, force, locked }) {
  * @param {Set<string>} mismatchChapters
  * @returns {string[]}
  */
-export function computeCompleteChapters(succeededChapters, failedChapters, mismatchChapters) {
-  return [...succeededChapters].filter(
-    (ch) => !failedChapters.has(ch) && !mismatchChapters.has(ch)
-  );
+export function computeCompleteChapters(succeededChapters, ...heldBackSets) {
+  return [...succeededChapters].filter((ch) => !heldBackSets.some((set) => set && set.has(ch)));
+}
+
+/**
+ * Decide whether one module's result must hold its chapter back, and say why.
+ *
+ * 🔴 §C118 ⑲ — A DETECTOR THAT FIRES INTO A LOG IS NOT A GATE. `bracketMarkerDelta`
+ * has always computed the per-module delta and `formatBracketDelta` has always
+ * printed it, but nothing acted on it: the 2026-09-02 re-buy of organic ch03
+ * m00038 came back with 29 INVENTED `[[b:]]` markers, printed `b +29`, exited 0,
+ * and would have marked the chapter complete under `--update-status`. Inject
+ * renders those as `<emphasis effect="bold">` — a paragraph with half its nouns
+ * bold, worse than the untranslated English the run was bought to fix.
+ *
+ * Both conditions route through here so they cannot drift apart, and so the
+ * decision is unit-testable while `main()` is not.
+ *
+ * ⚠️ PER-MODULE, DELIBERATELY. `results.bracketLoss` accumulates across modules
+ * and prints only non-zero entries, so a module that invents 5 italics and one
+ * that drops 5 cancel to a clean summary — two real defects, invisible. A gate
+ * built on that tally would be blind to exactly the pair it most needs to see.
+ *
+ * ✅ Base rate measured before this was allowed to block: over SAME-VINTAGE
+ * committed pairs (EN committed at or before the MT's `generatedAt`) it is 7 of
+ * 61 = 11.5%, and every one of the 7 is a real defect — an invention of 33
+ * italics, and three modules with dropped bolds. The raw all-pairs figure of
+ * 49.4% is vintage contamination, not a rate: 68.2% of pairs whose EN was
+ * re-extracted after the MT ran are "dirty" only because the two sides are
+ * different source text, and the tell is huge NEGATIVE deltas.
+ *
+ * @param {{mismatches?: Array, bracketDelta?: Record<string, number>}} result
+ * @returns {{heldBack: boolean, reasons: string[]}}
+ */
+export function classifyModuleOutcome(result = {}) {
+  const reasons = [];
+  const mismatches = result.mismatches;
+  if (mismatches && mismatches.length > 0) {
+    reasons.push(`${mismatches.length} id-reattach mismatch(es)`);
+  }
+  const delta = result.bracketDelta;
+  if (delta && Object.keys(delta).length > 0) {
+    reasons.push(`bracket-marker delta ${formatDeltaParts(delta)}`);
+  }
+  return { heldBack: reasons.length > 0, reasons };
+}
+
+/** `{b: 29, i: -1}` → `b +29, i -1`. Shared by the note and the hold-back reason. */
+function formatDeltaParts(delta) {
+  return Object.entries(delta)
+    .map(([t, n]) => `${t} ${n > 0 ? '+' : ''}${n}`)
+    .join(', ');
 }
 
 // ─── CLI ────────────────────────────────────────────────────────────
@@ -1804,6 +1852,7 @@ async function main() {
     markersNormalized: 0,
     mismatches: 0,
     bracketLoss: {}, // B3: per-type accumulated output−input delta across modules
+    deltaModules: 0, // §C118 ⑲: modules whose PER-MODULE delta was non-empty
     errors: [],
   };
 
@@ -1815,6 +1864,7 @@ async function main() {
   const succeededChapters = new Set();
   const failedChapters = new Set();
   const mismatchChapters = new Set();
+  const deltaChapters = new Set();
 
   for (const mod of workList) {
     if (mod.action === 'locked-skip') {
@@ -1856,6 +1906,21 @@ async function main() {
           );
         }
         mismatchChapters.add(mod.chapterDir);
+      }
+      // §C118 ⑲: a per-module bracket-marker delta now HOLDS THE CHAPTER BACK
+      // instead of only printing a note. Per-module, never off the accumulated
+      // `bracketLoss` tally, which cancels an invention in one module against a
+      // drop in another and reports both as clean.
+      if (bracketDelta && Object.keys(bracketDelta).length > 0) {
+        results.deltaModules++;
+        deltaChapters.add(mod.chapterDir);
+      }
+      const outcome = classifyModuleOutcome({ mismatches, bracketDelta });
+      if (outcome.heldBack) {
+        console.error(
+          `  ⛔ ${mod.chapterDir}/${mod.moduleId} HELD BACK — ${outcome.reasons.join('; ')}. ` +
+            `Output IS written (the API call is paid for either way); review it before publishing.`
+        );
       }
       succeededChapters.add(mod.chapterDir);
     } catch (err) {
@@ -1913,23 +1978,27 @@ async function main() {
     const completeChapters = computeCompleteChapters(
       succeededChapters,
       failedChapters,
-      mismatchChapters
+      mismatchChapters,
+      deltaChapters
     );
     if (completeChapters.length > 0) {
       console.log('\nUpdating pipeline status...');
       await updatePipelineStatus(args.book, completeChapters);
     }
     const heldBack = [...succeededChapters].filter(
-      (ch) => failedChapters.has(ch) || mismatchChapters.has(ch)
+      (ch) => failedChapters.has(ch) || mismatchChapters.has(ch) || deltaChapters.has(ch)
     );
     if (heldBack.length > 0) {
       console.log(
-        `  Held back (failures or marker mismatches): ${heldBack.join(', ')} — fix and re-run to mark complete`
+        `  Held back (failures, id-reattach mismatches or bracket-marker deltas): ${heldBack.join(', ')} — fix and re-run to mark complete`
       );
     }
   }
 
-  if (results.failed > 0 || results.mismatches > 0) process.exit(1);
+  // §C118 ⑲: a bracket delta is a verdict, not a note — it must reach the exit
+  // code too, or the chapter is held back from --update-status while the run
+  // still reports success to whoever is watching.
+  if (results.failed > 0 || results.mismatches > 0 || results.deltaModules > 0) process.exit(1);
 }
 
 // Only run when executed directly
