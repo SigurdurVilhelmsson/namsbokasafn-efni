@@ -182,15 +182,35 @@ describe('the equality gate, and the findings a FAIL must carry', () => {
     });
   });
 
-  it('📌 L20 PREMISE PIN — the under-emission FAIL carries a finding with a negative delta', async () => {
-    // EXPECTED TO MOVE AT THE RE-EXTRACT, like every other `02-for-mt`-derived assertion
-    // here: this module reads `reached 1` afterwards and stops FAILing at all. The
-    // DURABLE half of the pair is the planted control above, which FAILs forever.
-    const r = await runCheck(E5, modCtx(CHEM, 'ch01', 'm68663'));
+  it('🔴 an under-emitted alt FAILs with a NEGATIVE delta — a planted control, because the base rate is 0', async () => {
+    // NO LONGER VINTAGE-BOUND. The pre-re-extract pin read this off chemistry ch01/m68663,
+    // whose committed `02-for-mt` carried 0 alt markers; the re-extract gave that module its
+    // one alt and it now PASSes. Measured 2026-09-02: 0 of 491 modules across both kept books
+    // produce an under-emission finding, so the direction is UNFALSIFIABLE from the corpus and
+    // needs a planted control — the mirror of the over-emission control above.
+    const cnxml = srcText(CHEM, 'ch04', 'm68710');
+    const fresh = formatSegmentsMarkdown(extractSegments(cnxml).segments);
+    // 🔴 THE BASELINE ARM IS THE CONTROL: if this fixture's alt count ever moves off 6, this
+    // names it instead of asserting a wrong delta against a shifted baseline.
+    const base = await runCheck(E5, { cnxml, segText: fresh });
+    expect(base.verdict).toBe(VERDICT.PASS);
+    expect(base.message).toMatch(/expected 6 .*reached 6 /);
+    expect(base.findings).toHaveLength(0);
+    const parts = fresh.split(/(?=<!--\s*SEG:)/);
+    const i = parts.findIndex((p) => /<!--\s*SEG:[^\s]*:alt:/.test(p));
+    expect(i).toBeGreaterThan(-1); // control: the fixture really carries alt markers
+    const r = await runCheck(E5, { cnxml, segText: parts.filter((_, k) => k !== i).join('') });
     expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.message).toMatch(/expected 6 .*reached 5 /);
+    // Signed, not clamped: the sign IS the direction. This is the repo's ONLY binding of
+    // `delta < 0`; without it a `Math.abs(reached - expected)` mutation escapes the suite.
     expect(r.findings).toHaveLength(1);
-    expect(r.findings[0]).toMatchObject({ kind: 'alt-coverage', reached: 0, delta: -1 });
-    expect(r.findings[0].expected).toBeGreaterThan(0);
+    expect(r.findings[0]).toMatchObject({
+      kind: 'alt-coverage',
+      expected: 6,
+      reached: 5,
+      delta: -1,
+    });
   });
 });
 /**

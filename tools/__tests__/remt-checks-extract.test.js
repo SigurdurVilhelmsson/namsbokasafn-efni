@@ -77,12 +77,12 @@ describe('countSegments — the shared examined unit', () => {
  * this block and it is the one that must never be deleted.
  */
 describe('E2 — bracket-marker bodies match 01-source', () => {
-  it('📌 L20 PREMISE PIN — SHOULD-TRIP on m68733 (a self-closing <emphasis/> swallow)', async () => {
-    // EXPECTED TO GO GREEN AT THE RE-EXTRACT: the fresh extractor does not reproduce this
-    // swallow. When it does, that is the corpus being fixed, not E2 breaking — delete or
-    // re-point this test in the commit that observes it, and keep the planted control.
+  it('📌 L20 REPAIR PIN — the m68733 self-closing <emphasis/> swallow is GONE from the corpus', async () => {
+    // 🔴 THE PREDICTED FLIP HAPPENED (§C82 ③ re-extract, 34f870ac). Measured 2026-09-02: the SAME
+    // E2 code returns FAIL/1 {segId 'm68733:solution:fs-idm21203088', body ' 3d;'} on the 5895a25b
+    // bytes and PASS/0 on today's — corpus repaired, not E2 blinded. Must-trip duty → line 127.
     const r = await runCheck(E2, mod('efnafraedi-2e', 'ch06', 'm68733'));
-    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.verdict).toBe(VERDICT.PASS);
   });
 
   it('📌 L20 PREMISE PIN — SHOULD-TRIP on m68710, and reports BOTH locations', async () => {
