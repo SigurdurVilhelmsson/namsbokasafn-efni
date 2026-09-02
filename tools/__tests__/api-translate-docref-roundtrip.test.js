@@ -61,7 +61,9 @@ const SEG = (id, body) => `<!-- SEG:${id} -->\n${body}\n`;
 
 describe('stripTermFnToPaired — docref (§C118 ⑯)', () => {
   it('rewrites an id-anchored docref to paired brackets and captures the id', () => {
-    const input = SEG('m00038:item:list-00001-item-1', '[[docref:alcohol|m00032#term-00006]]');
+    // ⚠️ INLINE fixture on purpose: since §C118 ⑲ a WHOLE-SEGMENT marker rides
+    // the wire bare, so a whole-segment fixture would exercise the other path.
+    const input = SEG('m1:p:a', 'See [[docref:alcohol|m00032#term-00006]] for details.');
     const { wireText, segments } = stripTermFnToPaired(input);
     expect(wireText).toContain('[[docref]]alcohol[[/docref]]');
     expect(wireText).not.toContain('[[docref:');
@@ -82,9 +84,11 @@ describe('stripTermFnToPaired — docref (§C118 ⑯)', () => {
   });
 
   it('rewrites a docref whose link text carries nested markers (depth-aware)', () => {
+    // ⚠️ INLINE fixture on purpose: since §C118 ⑲ a WHOLE-SEGMENT marker rides
+    // the wire bare, so a whole-segment fixture would exercise the other path.
     const input = SEG(
       'm1:item:x',
-      '[[docref:acetal, R[[sub:2]]C(OR′)[[sub:2]]|m00221#term-00001]]'
+      'An [[docref:acetal, R[[sub:2]]C(OR′)[[sub:2]]|m00221#term-00001]] group.'
     );
     const { wireText, segments } = stripTermFnToPaired(input);
     expect(wireText).toContain('[[docref]]acetal, R[[sub:2]]C(OR′)[[sub:2]][[/docref]]');
@@ -105,9 +109,9 @@ describe('stripTermFnToPaired — docref (§C118 ⑯)', () => {
 describe('reattachIds — docref (§C118 ⑯)', () => {
   it('restores on-disk form with the TRANSLATED link text', () => {
     const { segments } = stripTermFnToPaired(
-      SEG('m00038:item:list-00001-item-1', '[[docref:alcohol|m00032#term-00006]]')
+      SEG('m1:p:b', 'See [[docref:alcohol|m00032#term-00006]] for details.')
     );
-    const wireOut = SEG('m00038:item:list-00001-item-1', '[[docref]]alkóhól[[/docref]]');
+    const wireOut = SEG('m1:p:b', 'Sjá [[docref]]alkóhól[[/docref]] nánar.');
     const { text, mismatches } = reattachIds(wireOut, segments);
     expect(text).toContain('[[docref:alkóhól|m00032#term-00006]]');
     expect(mismatches).toEqual([]);
@@ -162,9 +166,12 @@ describe('reattachIds refuses a docref payload that would corrupt the document i
   // to {}, and the marker IS consumed at inject so the residue gate sees nothing.
   it('degrades when the model returns an EMPTY span', () => {
     const { segments } = stripTermFnToPaired(
-      SEG('m1:item:1', '[[docref:alcohol|m00032#term-00006]]')
+      SEG('m1:item:1', 'See [[docref:alcohol|m00032#term-00006]] here.')
     );
-    const { text, mismatches } = reattachIds(SEG('m1:item:1', '[[docref]][[/docref]]'), segments);
+    const { text, mismatches } = reattachIds(
+      SEG('m1:item:1', 'Sjá [[docref]][[/docref]] hér.'),
+      segments
+    );
     // Would otherwise have written `[[docref:|m00032#term-00006]]`, which inject
     // resolves to `<link document="|m00032" target-id="term-00006"/>`.
     expect(text).toContain('[[docref:alcohol|m00032#term-00006]]');
@@ -176,10 +183,10 @@ describe('reattachIds refuses a docref payload that would corrupt the document i
 
   it('degrades when the model puts a bare `|` inside the translated text', () => {
     const { segments } = stripTermFnToPaired(
-      SEG('m1:item:2', '[[docref:alcohol|m00032#term-00006]]')
+      SEG('m1:item:2', 'See [[docref:alcohol|m00032#term-00006]] here.')
     );
     const { text, mismatches } = reattachIds(
-      SEG('m1:item:2', '[[docref]]al|kóhól[[/docref]]'),
+      SEG('m1:item:2', 'Sjá [[docref]]al|kóhól[[/docref]] hér.'),
       segments
     );
     // Would otherwise have written `[[docref:al|kóhól|m00032#term-00006]]`, which
@@ -192,10 +199,10 @@ describe('reattachIds refuses a docref payload that would corrupt the document i
     // The control. Without it, "degrade on a bad payload" is satisfiable by
     // degrading everything, which would silently restore the original defect.
     const { segments } = stripTermFnToPaired(
-      SEG('m1:item:3', '[[docref:acetal, R[[sub:2]]C|m00221#term-00001]]')
+      SEG('m1:item:3', 'An [[docref:acetal, R[[sub:2]]C|m00221#term-00001]] group.')
     );
     const { text, mismatches } = reattachIds(
-      SEG('m1:item:3', '[[docref]]asetal, R[[sub:2]]C[[/docref]]'),
+      SEG('m1:item:3', 'Einn [[docref]]asetal, R[[sub:2]]C[[/docref]] hópur.'),
       segments
     );
     expect(text).toContain('[[docref:asetal, R[[sub:2]]C|m00221#term-00001]]');
@@ -225,7 +232,7 @@ describe('translateChunk sends docref prose to the API and returns it id-anchore
         };
       },
     };
-    const chunk = SEG('m00038:item:list-00001-item-1', '[[docref:alcohol|m00032#term-00006]]');
+    const chunk = SEG('m1:p:c', 'See [[docref:alcohol|m00032#term-00006]] for details.');
     const res = await translateChunk(fakeClient, chunk, null, false, 'm00038');
     expect(seen.text).toContain('[[docref]]alcohol[[/docref]]');
     expect(seen.text).not.toContain('m00032#term-00006'); // the id did NOT ride the wire
@@ -248,7 +255,12 @@ describe('translateModule refuses to write a wire-only [[docref]] (Finding A.2, 
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'c118-docref-leak-'));
     const inPath = path.join(dir, 'm68664-segments.en.md');
     const outPath = path.join(dir, 'm68664-segments.is.md');
-    fs.writeFileSync(inPath, SEG('m68664:item:1', '[[docref:alcohol|m00032#term-00006]]'));
+    // Inline: a whole-segment marker now rides bare, so it can never produce the
+    // colon-less wire token this guard exists to catch.
+    fs.writeFileSync(
+      inPath,
+      SEG('m68664:item:1', 'See [[docref:alcohol|m00032#term-00006]] here.')
+    );
     const fakeClient = {
       async translateAuto(text) {
         // Mangle the SEG id beyond repairSegTags' reach, so reattachIds' lookup
@@ -372,6 +384,7 @@ describe('CORPUS ANCHOR — no prose docref rides the wire opaque (§C118 ⑯)',
   it('every prose docref becomes a paired span AND every bare one survives, count for count', () => {
     const files = keptBookSegmentFiles();
     let paired = 0;
+    let wholeBare = 0;
     let bareOnDisk = 0;
     let bareOnWire = 0;
     const leaks = [];
@@ -379,7 +392,10 @@ describe('CORPUS ANCHOR — no prose docref rides the wire opaque (§C118 ⑯)',
       const text = fs.readFileSync(file, 'utf8');
       if (!text.includes('[[docref:')) continue;
       const { wireText, segments } = stripTermFnToPaired(text);
-      for (const s of segments) paired += s.docrefIds.length;
+      for (const s of segments) {
+        paired += s.docrefIds.length;
+        if (s.wholeSegment && s.wholeSegment.type === 'docref') wholeBare++;
+      }
       bareOnDisk += countBareDocrefs(text);
       bareOnWire += countBareDocrefs(wireText);
       for (const payload of leakedProseDocrefs(wireText)) {
@@ -388,8 +404,13 @@ describe('CORPUS ANCHOR — no prose docref rides the wire opaque (§C118 ⑯)',
     }
     // Non-vacuity for the whole sweep, computed over the corpus rather than
     // over the firing set, so neither guard can die with the thing it guards.
+    // ⚠️ The exact SPLIT, not a threshold: §C118 ⑲ moved 532 of the 704 prose
+    // docrefs from paired to bare, and a `> 500` floor silently accepted that
+    // shift when it happened. An equality states the whole population.
     expect(files.length).toBeGreaterThan(100);
-    expect(paired).toBeGreaterThan(500);
+    expect(paired).toBe(172); // inline — still paired on the wire
+    expect(wholeBare).toBe(532); // whole-segment — bare on the wire (⑲)
+    expect(paired + wholeBare).toBe(704); // every prose docref, accounted for
     expect(bareOnDisk).toBeGreaterThan(50);
 
     // `leaks` catches UNDER-rewriting: a prose docref still colon-form on the
@@ -482,5 +503,150 @@ describe('END TO END — m00038 through translateModule with an opaque-model stu
     // And nothing leaked to disk in wire form.
     expect(written).not.toContain('[[docref]]');
     expect(written).not.toContain('[[/docref]]');
+  });
+});
+
+// ─── §C118 ⑲ — a WHOLE-SEGMENT marker rides the wire as BARE TEXT ──────────
+
+/**
+ * 🔴 WHY THIS EXISTS: ⑯'s PAIRED FORM CAUSED A NEW READER-VISIBLE DEFECT.
+ * Two paid re-buys of organic ch03 m00038 came back with ~30 INVENTED `[[b:]]`
+ * markers across the same two summary paragraphs (`b +29`, then `b +31`), while
+ * the run before ⑯ shipped was clean at `b 21 = 21`. The English is
+ * BYTE-IDENTICAL across all three runs — the wire form is the only variable.
+ * The module is ONE chunk, so 36 consecutive `[[docref]]term[[/docref]]` index
+ * items ride in the same request as the prose, and the model copies the pattern.
+ *
+ * ▶ IT IS THE PAIRED SYNTAX, NOT THE WHOLE-SEGMENT SHAPE, AND TWO CONTROLS SAY SO:
+ *   · the clean run's wire ALSO carried 36 whole-segment docrefs and 6
+ *     whole-segment bolds — in colon form — and invented nothing;
+ *   · m00038's two whole-segment `[[span:Strategy|red-text]]` markers TRANSLATED
+ *     INSIDE THEMSELVES in that same clean run (`Aðferð`, `Lausn`).
+ * So a whole-segment marker is inert as a primer; the paired delimiters are not.
+ *
+ * ▶ THE FIX: when a segment's entire body is one marker of a paired type, send
+ * the PAYLOAD ALONE and re-wrap the whole body on return. Placement is
+ * unambiguous by construction — the segment IS the marker — and it removes
+ * marker syntax from the wire for 532 of the 704, leaving no pattern to copy.
+ * Evidence it still translates was already paid for: probe T1.22's control
+ * segment 4 was a bare one-word segment, `alcohol` -> `alkóhól`.
+ *
+ * ⚠️ STRUCTURAL, NOT `docref`-SPECIFIC. Any PAIRED_WIRE_TYPES marker that is the
+ * whole body goes bare. Today the corpus holds 532 docref and 0 term/fn; the
+ * rule must not need editing when that changes. And it CANNOT touch the 2,304
+ * whole-segment `[[MEDIA:]]`, 679 `[[MATH:]]` or 2 `[[TABLE:]]` — those are
+ * opaque placeholders, and they are safe only because they are not paired types.
+ */
+describe('whole-segment paired markers ride the wire BARE (§C118 ⑲)', () => {
+  it('sends the payload alone, captures no paired id, and re-wraps on return', () => {
+    const input = SEG('m00038:item:1', '[[docref:alcohol|m00032#term-00006]]');
+    const { wireText, segments } = stripTermFnToPaired(input);
+    expect(wireText).toContain('\nalcohol\n'); // bare — no marker syntax at all
+    expect(wireText).not.toContain('[[docref');
+    expect(segments[0].wholeSegment).toEqual({ type: 'docref', id: 'm00032#term-00006' });
+    expect(segments[0].docrefIds).toEqual([]); // no paired span for the count guard
+    const { text, mismatches } = reattachIds(SEG('m00038:item:1', 'alkóhól'), segments);
+    expect(text).toContain('[[docref:alkóhól|m00032#term-00006]]');
+    expect(mismatches).toEqual([]);
+  });
+
+  it('an identity wire round-trips byte-exact', () => {
+    const input =
+      SEG('m1:i:1', '[[docref:alcohol|m1#t1]]') + SEG('m1:p:2', 'A [[term:x|t2]] here.');
+    const { wireText, segments } = stripTermFnToPaired(input);
+    expect(reattachIds(wireText, segments).text).toBe(input);
+  });
+
+  it('a segment with TWO markers is NOT whole-segment — it stays paired', () => {
+    const input = SEG('m1:p:3', '[[docref:one|m1#a]] [[docref:two|m2#b]]');
+    const { wireText, segments } = stripTermFnToPaired(input);
+    expect(segments[0].wholeSegment).toBe(null);
+    expect(wireText).toContain('[[docref]]one[[/docref]]');
+    expect(segments[0].docrefIds).toEqual(['m1#a', 'm2#b']);
+  });
+
+  it('a BARE whole-segment docref stays opaque — it is a document id, not prose', () => {
+    const input = SEG('m1:p:4', '[[docref:m00164]]');
+    const { wireText, segments } = stripTermFnToPaired(input);
+    expect(wireText).toContain('[[docref:m00164]]');
+    expect(segments[0].wholeSegment).toBe(null);
+  });
+
+  it('leaves an opaque whole-segment placeholder completely alone', () => {
+    // The control that matters most: MEDIA/MATH/TABLE are 2,985 whole-segment
+    // markers corpus-wide and sending one bare would put a bare integer on the
+    // wire as prose. They are safe because they are not paired types — assert it.
+    const input = SEG('m1:p:5', '[[MEDIA:50]]') + SEG('m1:p:6', '[[MATH:75]]');
+    const { wireText, segments } = stripTermFnToPaired(input);
+    expect(wireText).toContain('[[MEDIA:50]]');
+    expect(wireText).toContain('[[MATH:75]]');
+    expect(segments.every((s) => s.wholeSegment === null)).toBe(true);
+  });
+
+  it('carries a nested payload through bare and back', () => {
+    const input = SEG('m1:p:7', '[[docref:acetal, R[[sub:2]]C|m00221#term-00001]]');
+    const { wireText, segments } = stripTermFnToPaired(input);
+    expect(wireText).toContain('\nacetal, R[[sub:2]]C\n');
+    const { text } = reattachIds(SEG('m1:p:7', 'asetal, R[[sub:2]]C'), segments);
+    expect(text).toContain('[[docref:asetal, R[[sub:2]]C|m00221#term-00001]]');
+  });
+
+  it('tolerates whitespace the model adds around the returned body', () => {
+    const { segments } = stripTermFnToPaired(SEG('m1:p:8', '[[docref:alcohol|m1#t1]]'));
+    const { text } = reattachIds('<!-- SEG:m1:p:8 -->\n   alkóhól  \n\n', segments);
+    expect(text).toContain('[[docref:alkóhól|m1#t1]]');
+    expect(text).not.toContain('[[docref:   alk');
+  });
+
+  it('DEGRADES when the model returns an empty body', () => {
+    const input = SEG('m1:p:9', '[[docref:alcohol|m1#t1]]');
+    const { segments } = stripTermFnToPaired(input);
+    const { text, mismatches } = reattachIds(SEG('m1:p:9', ''), segments);
+    expect(text).toContain('[[docref:alcohol|m1#t1]]'); // original restored
+    expect(mismatches.some((m) => m.type === 'docref-payload')).toBe(true);
+  });
+
+  it('DEGRADES when the returned body carries a bare `|` that would split the id', () => {
+    const input = SEG('m1:p:10', '[[docref:alcohol|m1#t1]]');
+    const { segments } = stripTermFnToPaired(input);
+    const { text, mismatches } = reattachIds(SEG('m1:p:10', 'al|kóhól'), segments);
+    expect(text).toContain('[[docref:alcohol|m1#t1]]');
+    expect(mismatches.some((m) => m.type === 'docref-payload')).toBe(true);
+  });
+
+  it('CORPUS ANCHOR — m00038 puts all 36 index labels on the wire as bare text', () => {
+    const p = path.join(REPO_ROOT, 'books/lifraen-efnafraedi/02-for-mt/ch03/m00038-segments.en.md');
+    expect(fs.existsSync(p)).toBe(true);
+    const en = fs.readFileSync(p, 'utf8');
+    const { wireText, segments } = stripTermFnToPaired(en);
+    const whole = segments.filter((s) => s.wholeSegment);
+    expect(whole).toHaveLength(36); // the exact population that primed the bolding
+    expect(wireText).not.toContain('[[docref]]'); // no paired spans left
+    expect(wireText).not.toContain('[[docref:'); // and no colon form either
+    // Controls: the module's other whole-segment markers must be UNTOUCHED, or
+    // this rule is stripping things it was never meant to reach.
+    expect(wireText).toContain('[[span:Strategy|red-text]]');
+    expect((wireText.match(/\[\[b:/g) || []).length).toBe((en.match(/\[\[b:/g) || []).length);
+    // And the whole file round-trips byte-exact through an identity wire.
+    expect(reattachIds(wireText, segments).text).toBe(en);
+  });
+
+  it('CORPUS ANCHOR — 532 whole-segment docrefs go bare, the inline ones stay paired', () => {
+    let whole = 0;
+    let paired = 0;
+    let damaged = 0;
+    for (const file of keptBookSegmentFiles()) {
+      const text = fs.readFileSync(file, 'utf8');
+      if (!text.includes('[[docref:')) continue;
+      const { wireText, segments } = stripTermFnToPaired(text);
+      for (const s of segments) {
+        if (s.wholeSegment) whole++;
+        paired += s.docrefIds.length;
+      }
+      if (reattachIds(wireText, segments).text !== text) damaged++;
+    }
+    expect(whole).toBe(532);
+    expect(paired).toBe(172); // 704 - 532, the inline ones still paired
+    expect(damaged).toBe(0); // identity round-trip is lossless corpus-wide
   });
 });

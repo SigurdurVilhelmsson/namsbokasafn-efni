@@ -771,6 +771,72 @@ const SEG_SPLIT_RE = /(?=<!-- SEG:)/;
 const SEG_ID_RE = /<!-- SEG:(\S+?) -->/;
 
 /**
+ * If a segment's ENTIRE body is one marker of a PAIRED_WIRE_TYPE that carries an
+ * id, describe it. Otherwise null.
+ *
+ * ⚠️ STRUCTURAL, NOT KEYED ON A TYPE NAME. Today the corpus holds 532 such
+ * docrefs and 0 term/fn; the rule must not need editing when that changes.
+ * ⚠️ AND IT MUST NOT REACH AN OPAQUE PLACEHOLDER — there are 2,304 whole-segment
+ * `[[MEDIA:]]`, 679 `[[MATH:]]` and 2 `[[TABLE:]]`, and sending one of those bare
+ * would put a bare integer on the wire as prose. They are safe here only because
+ * they are not paired types, which is why the gate is membership in
+ * PAIRED_WIRE_TYPES rather than "is a whole-segment marker".
+ * ⚠️ `PAIRED_REQUIRES_ID` types with no id stay opaque, exactly as inline: a bare
+ * `[[docref:m00164]]` is a document reference, not prose.
+ *
+ * @param {string} part - one whole SEG segment, marker line included
+ * @returns {{type:string, id:string|null, payload:string, start:number, end:number}|null}
+ */
+function wholeSegmentMarker(part) {
+  const headerEnd = part.indexOf('-->');
+  if (headerEnd === -1) return null;
+  const bodyStart = headerEnd + 3;
+  const body = part.slice(bodyStart);
+  const trimmed = body.trim();
+  if (!trimmed.startsWith('[[')) return null;
+  for (const type of PAIRED_WIRE_TYPES) {
+    const spans = collectColonMarkers(trimmed, type);
+    if (spans.length !== 1) continue;
+    if (spans[0].start !== 0 || spans[0].end !== trimmed.length) continue;
+    const { text: payload, id } = splitTopLevelId(spans[0].inner);
+    if (PAIRED_REQUIRES_ID.has(type) && id === null) return null;
+    const offset = bodyStart + body.indexOf(trimmed);
+    return { type, id, payload, start: offset, end: offset + trimmed.length };
+  }
+  return null;
+}
+
+/** Depth-aware `[[type:…]]` spans in `text`. Never a character class: real
+ *  payloads nest (`C[[i:[[sub:n]]]]H`), and `[^\]]*` truncates at the inner `]]`. */
+function collectColonMarkers(text, type) {
+  const open = `[[${type}:`;
+  const out = [];
+  let i = 0;
+  while (i < text.length) {
+    if (!text.startsWith(open, i)) {
+      i++;
+      continue;
+    }
+    let j = i + open.length;
+    let depth = 1;
+    while (j < text.length && depth > 0) {
+      if (text.startsWith('[[', j)) {
+        depth++;
+        j += 2;
+      } else if (text.startsWith(']]', j)) {
+        depth--;
+        if (depth === 0) break;
+        j += 2;
+      } else j++;
+    }
+    if (depth !== 0) break;
+    out.push({ start: i, end: j + 2, inner: text.slice(i + open.length, j) });
+    i = j + 2;
+  }
+  return out;
+}
+
+/**
  * Matches a wire-only (colon-less) paired token, e.g. `[[term]]`, `[[/term]]`,
  * `[[fn]]`, `[[/fn]]`, `[[docref]]`, `[[/docref]]`. On-disk form is always
  * id-anchored with a colon (`[[term:text|id]]`), so this can never false-match
@@ -810,8 +876,24 @@ export function stripTermFnToPaired(chunkText) {
       wireText += part;
       continue;
     } // leading non-SEG text (rare); pass through
+    const record = { segId: m[1], originalText: part, wholeSegment: null };
+
+    // §C118 ⑲: a segment whose ENTIRE body is one paired-type marker rides the
+    // wire as BARE TEXT. Placement on return is unambiguous by construction —
+    // the segment IS the marker — and it keeps marker syntax off the wire for
+    // 532 of the 704, which is what stops the model copying the pattern into
+    // neighbouring prose. Checked BEFORE the paired rewrite so those segments
+    // never acquire delimiters at all.
+    const whole = wholeSegmentMarker(part);
+    if (whole) {
+      record.wholeSegment = { type: whole.type, id: whole.id };
+      for (const type of PAIRED_WIRE_TYPES) record[PAIRED_ID_FIELD[type]] = [];
+      segments.push(record);
+      wireText += part.slice(0, whole.start) + whole.payload + part.slice(whole.end);
+      continue;
+    }
+
     let rewritten = part;
-    const record = { segId: m[1], originalText: part };
     for (const type of PAIRED_WIRE_TYPES) {
       const pass = rewriteToPaired(rewritten, type);
       rewritten = pass.text;
@@ -907,6 +989,31 @@ export function reattachIds(wireOutput, segments) {
       out += part;
       continue;
     } // unknown/leading segment → pass through
+
+    // §C118 ⑲: the bare-wire counterpart. The whole returned body IS the payload,
+    // so there is nothing to locate and no span to count — but the payload is
+    // still model-authored, so it gets the same guard the inline path uses: an
+    // empty body, or one carrying a top-level `|` that `cnxml-inject` would split
+    // the document id on, degrades to the original instead of writing a bogus
+    // cross-reference.
+    if (rec.wholeSegment) {
+      const { type, id } = rec.wholeSegment;
+      const headerEnd = part.indexOf('-->');
+      const body = headerEnd === -1 ? '' : part.slice(headerEnd + 3);
+      const payload = body.trim();
+      const bad =
+        payload === '' || (PAIRED_REQUIRES_ID.has(type) && splitTopLevelId(payload).id !== null);
+      if (bad) {
+        mismatches.push({ segId: rec.segId, type: `${type}-payload`, expected: 0, got: 1 });
+        out += rec.originalText;
+        continue;
+      }
+      const marker = id === null ? `[[${type}:${payload}]]` : `[[${type}:${payload}|${id}]]`;
+      const at = body.indexOf(payload);
+      out +=
+        part.slice(0, headerEnd + 3) + body.slice(0, at) + marker + body.slice(at + payload.length);
+      continue;
+    }
 
     const spansByType = new Map(PAIRED_WIRE_TYPES.map((t) => [t, collectPaired(part, t)]));
     // `|| []` so a record built before a type joined PAIRED_WIRE_TYPES degrades
