@@ -79,6 +79,24 @@ const KNOWN_GAPS = new Set([
   'key-terms-section', // organic key-terms page
   // Layout/misc:
   'centered-text', // organic
+  // ── §C118 ①/⑯/⑲ — reached published HTML for the FIRST TIME on 2026-09-02,
+  // when organic ch03 was re-rendered after its paid re-translation. Zero
+  // occurrences before that render; 31 after, all in ch03. These are OpenStax's
+  // own reaction-colouring spans — organic uses colour to mark which atom or
+  // group is reacting — and §C118 ① taught the pipeline to preserve them end to
+  // end rather than dropping them. So the pipeline is now CORRECT and the last
+  // mile is vefur's stylesheet. ⚠️ Reader impact is real but not breaking:
+  // coloured text falls back to the body colour, so a reaction site reads like
+  // ordinary prose. ⚠️ AND THE EXPOSURE SCALES: ch03 alone is 31, the book
+  // carries 1,071 such spans across 184 modules, so this grows with every
+  // organic chapter rendered. Handed to vefur 2026-09-02 (its memory
+  // `efni-organic-ch03-three-renames-2026-09-02`); remove each entry here when a
+  // rule lands, and the contract re-arms automatically.
+  'red-text', // organic reaction colouring — 15 in ch03
+  'magenta-text', // organic reaction colouring — 11 in ch03
+  'cyan-text', // organic reaction colouring — 4 in ch03
+  'green-text', // organic reaction colouring — 1 in ch03
+  'table-title', // organic table caption wrapper — 5 in ch03
 ]);
 
 /**
