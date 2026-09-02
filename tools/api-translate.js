@@ -677,10 +677,44 @@ function splitTopLevelId(inner) {
   return { text: inner.slice(0, idx), id: inner.slice(idx + 1) };
 }
 
+/**
+ * The marker types rewritten to paired `[[type]]…[[/type]]` wire form for the MT
+ * leg, in the order they are applied and re-attached.
+ *
+ * ⚠️ ORDER IS PINNED BY TESTS: mismatch records are pushed in this order, and
+ * two existing cases assert the whole mismatch array with an exact `toEqual`.
+ *
+ * `docref` joined in §C118 ⑯. A segment whose entire content was one
+ * `[[docref:text|doc#target]]` came back from the paid API VERBATIM — 36 of 36
+ * on the 2026-09-01 run, a saturated rate and therefore a category rather than a
+ * sample — putting reader-visible English key-term labels into an Icelandic
+ * chapter. `term` is the control that makes the cause causal rather than
+ * suspected: identical shape (prose `|` opaque-id), differing only in riding the
+ * wire paired, and it translates.
+ */
+const PAIRED_WIRE_TYPES = ['term', 'fn', 'docref'];
+
+/**
+ * Types rewritten ONLY when the marker carries a top-level `|`.
+ *
+ * This inverts term/fn's convention deliberately. For a term, a missing id still
+ * leaves translatable prose in the sole field. For a docref the sole field IS the
+ * document reference — `[[docref:m00164]]` — and sending it as prose would ask
+ * the model to translate a module id. 103 such bare docrefs are live in the two
+ * kept books, and their untranslated return is CORRECT behaviour.
+ */
+const PAIRED_REQUIRES_ID = new Set(['docref']);
+
+/** Per-type field name on a segment record. Kept as literal fields rather than a
+ *  map because `termIds`/`fnIds` are asserted by name in the committed tests. */
+const PAIRED_ID_FIELD = { term: 'termIds', fn: 'fnIds', docref: 'docrefIds' };
+
 /** Rewrite every `[[type:...]]` in `text` to paired `[[type]]...[[/type]]`,
- *  nesting-aware; returns { text, ids } with captured ids (null when absent). */
+ *  nesting-aware; returns { text, ids } with captured ids (null when absent).
+ *  A type in PAIRED_REQUIRES_ID skips markers that carry no top-level id. */
 function rewriteToPaired(text, type) {
   const openTok = `[[${type}:`;
+  const requireId = PAIRED_REQUIRES_ID.has(type);
   const ids = [];
   let out = '';
   let i = 0;
@@ -700,6 +734,18 @@ function rewriteToPaired(text, type) {
       }
       const inner = text.slice(i + openTok.length, j);
       const { text: termText, id } = splitTopLevelId(inner);
+      if (requireId && id === null) {
+        // Not a prose marker — emit the original bytes verbatim and capture no
+        // id, so this marker stays opaque on the wire and reattachIds never
+        // expects a paired span for it. splitTopLevelId is depth-aware, which is
+        // what keeps the 116 corpus docrefs whose link text contains a nested
+        // `[[sub:]]`/`[[i:]]` on the rewritten side of this branch; a `[^\]]*`
+        // predicate would misfile every one of them as bare while the marker
+        // COUNT matched perfectly.
+        out += text.slice(i, j + 2);
+        i = j + 2;
+        continue;
+      }
       ids.push(id);
       out += `[[${type}]]${termText}[[/${type}]]`;
       i = j + 2; // past closing ]]
@@ -715,21 +761,34 @@ const SEG_SPLIT_RE = /(?=<!-- SEG:)/;
 const SEG_ID_RE = /<!-- SEG:(\S+?) -->/;
 
 /**
- * Matches a wire-only (colon-less) paired term/fn token, e.g. `[[term]]`,
- * `[[/term]]`, `[[fn]]`, `[[/fn]]`. On-disk form is always id-anchored with a
- * colon (`[[term:text|id]]`), so this can never false-match that form, nor
- * nested inline markers like `[[i:]]`/`[[sub:]]` (Finding A.2 leak guard).
+ * Matches a wire-only (colon-less) paired token, e.g. `[[term]]`, `[[/term]]`,
+ * `[[fn]]`, `[[/fn]]`, `[[docref]]`, `[[/docref]]`. On-disk form is always
+ * id-anchored with a colon (`[[term:text|id]]`), so this can never false-match
+ * that form, nor nested inline markers like `[[i:]]`/`[[sub:]]` (Finding A.2
+ * leak guard).
+ *
+ * ⚠️ DERIVED FROM `PAIRED_WIRE_TYPES` ON PURPOSE, and that is NOT the
+ * one-token-anchor anti-pattern this repo warns about. The guard's job is to
+ * catch a token that only the paired rewrite can create, so its scope must be
+ * exactly the set of types that rewrite produces — a type absent from the list
+ * is never rewritten and therefore can never leak. Hand-maintaining a second
+ * list here is what WOULD go stale: §C118 ⑯ widened the rewrite to `docref`,
+ * and a hardcoded `term|fn` would have let a colon-less `[[docref]]` reach disk
+ * silently, where `cnxml-inject.js` recognises only the colon form.
  */
-const WIRE_ONLY_PAIRED_TOKEN_RE = /\[\[\/?(?:term|fn)\]\]/;
+const WIRE_ONLY_PAIRED_TOKEN_RE = new RegExp(`\\[\\[/?(?:${PAIRED_WIRE_TYPES.join('|')})\\]\\]`);
 
 /**
- * Rewrite id-anchored inline term/footnote markers to PAIRED bracket form for the
- * API leg (B4-D11: the API treats [[term:text|id]] as an opaque token and does not
+ * Rewrite id-anchored inline markers to PAIRED bracket form for the API leg
+ * (B4-D11: the API treats [[term:text|id]] as an opaque token and does not
  * translate inside it; text BETWEEN [[term]]…[[/term]] translates and both delimiters
  * survive). The id never rides the wire; it is re-attached after MT by reattachIds().
+ *
+ * Covers `PAIRED_WIRE_TYPES` — term, fn and, since §C118 ⑯, docref. The name is
+ * kept for its committed importers.
  * @param {string} chunkText - a segment-file chunk (one or more whole SEG segments)
  * @returns {{ wireText: string, segments: Array<{segId:string, originalText:string,
- *   termIds:(string|null)[], fnIds:(string|null)[]}> }}
+ *   termIds:(string|null)[], fnIds:(string|null)[], docrefIds:(string|null)[]}> }}
  */
 export function stripTermFnToPaired(chunkText) {
   const parts = chunkText.split(SEG_SPLIT_RE).filter((p) => p.length > 0);
@@ -741,10 +800,15 @@ export function stripTermFnToPaired(chunkText) {
       wireText += part;
       continue;
     } // leading non-SEG text (rare); pass through
-    const term = rewriteToPaired(part, 'term');
-    const fn = rewriteToPaired(term.text, 'fn');
-    segments.push({ segId: m[1], originalText: part, termIds: term.ids, fnIds: fn.ids });
-    wireText += fn.text;
+    let rewritten = part;
+    const record = { segId: m[1], originalText: part };
+    for (const type of PAIRED_WIRE_TYPES) {
+      const pass = rewriteToPaired(rewritten, type);
+      rewritten = pass.text;
+      record[PAIRED_ID_FIELD[type]] = pass.ids;
+    }
+    segments.push(record);
+    wireText += rewritten;
   }
   return { wireText, segments };
 }
@@ -782,17 +846,29 @@ function collectPaired(segText, type) {
  * the outer span's length). This check exists to catch that case upstream so
  * it can degrade + record instead (B4-D11 fix).
  *
- * @param {Array<{start:number, end:number}>} termSpans
- * @param {Array<{start:number, end:number}>} fnSpans
+ * ⚠️ PAIRWISE over every type pair since §C118 ⑯ added a third (`docref`).
+ * Live corpus exposure is 0 — measured over 40,405 segments in the two kept
+ * books, with a detector proven to fire on synthetic `[[term:]]`-inside-
+ * `[[docref:]]` and the reverse — so this guards a future corpus, not a present
+ * defect. It has to exist anyway: the splice corrupts SILENTLY when spans
+ * overlap, and each type's own count still matches, so no count-guard can see it.
+ *
+ * @param {Map<string, Array<{start:number, end:number}>>} spansByType
  * @returns {number} count of cross-type span pairs that nest
  */
-function countCrossTypeNesting(termSpans, fnSpans) {
+function countCrossTypeNesting(spansByType) {
+  const types = [...spansByType.keys()];
   let count = 0;
-  for (const t of termSpans) {
-    for (const f of fnSpans) {
-      const nested =
-        (f.start >= t.start && f.start < t.end) || (t.start >= f.start && t.start < f.end);
-      if (nested) count++;
+  for (let a = 0; a < types.length; a++) {
+    for (let b = a + 1; b < types.length; b++) {
+      for (const outer of spansByType.get(types[a])) {
+        for (const inner of spansByType.get(types[b])) {
+          const nested =
+            (inner.start >= outer.start && inner.start < outer.end) ||
+            (outer.start >= inner.start && outer.start < inner.end);
+          if (nested) count++;
+        }
+      }
     }
   }
   return count;
@@ -822,57 +898,54 @@ export function reattachIds(wireOutput, segments) {
       continue;
     } // unknown/leading segment → pass through
 
-    const termSpans = collectPaired(part, 'term');
-    const fnSpans = collectPaired(part, 'fn');
+    const spansByType = new Map(PAIRED_WIRE_TYPES.map((t) => [t, collectPaired(part, t)]));
+    // `|| []` so a record built before a type joined PAIRED_WIRE_TYPES degrades
+    // (0 captured vs N surviving -> mismatch) rather than throwing.
+    const idsFor = (type) => rec[PAIRED_ID_FIELD[type]] || [];
 
-    const nestedCount = countCrossTypeNesting(termSpans, fnSpans);
+    const nestedCount = countCrossTypeNesting(spansByType);
     if (nestedCount > 0) {
       mismatches.push({ segId: rec.segId, type: 'nested', expected: 0, got: nestedCount });
       out += rec.originalText;
       continue;
     } // safe degrade — never splice overlapping spans
 
-    const termOk = termSpans.length === rec.termIds.length;
-    const fnOk = fnSpans.length === rec.fnIds.length;
+    // Push in PAIRED_WIRE_TYPES order — two committed tests assert the whole
+    // mismatch array with an exact toEqual, so this order is a contract.
+    let allOk = true;
+    for (const type of PAIRED_WIRE_TYPES) {
+      const spans = spansByType.get(type);
+      const ids = idsFor(type);
+      if (spans.length !== ids.length) {
+        mismatches.push({
+          segId: rec.segId,
+          type,
+          expected: ids.length,
+          got: spans.length,
+        });
+        allOk = false;
+      }
+    }
 
-    if (!termOk)
-      mismatches.push({
-        segId: rec.segId,
-        type: 'term',
-        expected: rec.termIds.length,
-        got: termSpans.length,
-      });
-    if (!fnOk)
-      mismatches.push({
-        segId: rec.segId,
-        type: 'fn',
-        expected: rec.fnIds.length,
-        got: fnSpans.length,
-      });
-
-    if (!termOk || !fnOk) {
+    if (!allOk) {
       out += rec.originalText;
       continue;
     } // safe degrade
 
-    // Build replacement list (term + fn), splice right-to-left to keep offsets valid.
+    // Build the replacement list across every paired type, splicing
+    // right-to-left to keep offsets valid.
     const repls = [];
-    termSpans.forEach((s, k) => {
-      const id = rec.termIds[k];
-      repls.push({
-        start: s.start,
-        end: s.end,
-        text: id === null ? `[[term:${s.inner}]]` : `[[term:${s.inner}|${id}]]`,
+    for (const type of PAIRED_WIRE_TYPES) {
+      const ids = idsFor(type);
+      spansByType.get(type).forEach((s, k) => {
+        const id = ids[k];
+        repls.push({
+          start: s.start,
+          end: s.end,
+          text: id === null ? `[[${type}:${s.inner}]]` : `[[${type}:${s.inner}|${id}]]`,
+        });
       });
-    });
-    fnSpans.forEach((s, k) => {
-      const id = rec.fnIds[k];
-      repls.push({
-        start: s.start,
-        end: s.end,
-        text: id === null ? `[[fn:${s.inner}]]` : `[[fn:${s.inner}|${id}]]`,
-      });
-    });
+    }
     repls.sort((a, b) => b.start - a.start);
     let segOut = part;
     for (const r of repls) segOut = segOut.slice(0, r.start) + r.text + segOut.slice(r.end);
@@ -1399,8 +1472,10 @@ export async function translateModule(
   // silently lose the term/fn wrapper, class, and id downstream. Fail loud
   // instead of writing it.
   if (WIRE_ONLY_PAIRED_TOKEN_RE.test(output)) {
+    const leaked = output.match(WIRE_ONLY_PAIRED_TOKEN_RE)[0];
     throw new Error(
-      `${moduleId}: a wire-only paired marker ([[term]]/[[fn]]) survived to write in ` +
+      `${moduleId}: a wire-only paired marker (${leaked}; one of ` +
+        `${PAIRED_WIRE_TYPES.join('/')}) survived to write in ` +
         `${outputPath} — a SEG-id mangle that repairSegTags did not fix, or an ` +
         `otherwise-unresolved marker. Refusing to write corrupted output.`
     );
