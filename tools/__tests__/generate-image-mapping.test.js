@@ -1,10 +1,16 @@
 import { describe, it, expect } from 'vitest';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import {
   indexSourceImageBasenames,
   deriveOriginalBasename,
   buildMappingEntries,
   mergeMapping,
+  DEFAULT_SUFFIX,
 } from '../generate-image-mapping.js';
+
+const REPO_ROOT = path.join(fileURLToPath(new URL('../..', import.meta.url)));
 
 // ─── indexSourceImageBasenames ─────────────────────────────────────
 
@@ -71,5 +77,41 @@ describe('mergeMapping', () => {
     expect(mergeMapping(existing, fresh)).toEqual([
       { originalImage: 'A', outputName: 'A_IS.svg', extension: '.svg' },
     ]);
+  });
+});
+
+// ─── default locale suffix ─────────────────────────────────────────
+// Anchored on the COMMITTED corpus, not on a second copy of the literal.
+// The default was '_is' while every one of chemistry's ~700 translated files is
+// '_IS', and the match is case-SENSITIVE: a bare run matched 0 files and still
+// printed a success line, so a newly translated figure was silently never mapped.
+//
+// ⚠️ THIS TEST DELIBERATELY ANCHORS ON CHEMISTRY ONLY. liffraedi-2e's 36 files use
+// lowercase '_is' with the LEGACY docx mapping shape (docxImage + figureId) - they
+// are hand-translated leftovers from a previous job, awaiting replacement, and are
+// NOT a second convention to support. '_IS' is the right default for biology too
+// precisely because it matches 0 of them and changes nothing, whereas '_is' would
+// match all 36 and merge basename-keyed entries into a figureId-keyed mapping.
+// Do not "fix" this by widening the default or lowercasing the comparison.
+
+describe('DEFAULT_SUFFIX', () => {
+  it('is the suffix the committed translated figures actually use', () => {
+    const mapping = JSON.parse(
+      fs.readFileSync(path.join(REPO_ROOT, 'books/efnafraedi-2e/media/image-mapping.json'), 'utf-8')
+    );
+    expect(mapping.length).toBeGreaterThan(100); // non-vacuity: the corpus is there
+    const suffixes = new Set(
+      mapping.map((e) => {
+        const stem = e.outputName.replace(/\.[^.]+$/, '');
+        return stem.slice(stem.lastIndexOf('_'));
+      })
+    );
+    expect([...suffixes]).toEqual([DEFAULT_SUFFIX]);
+  });
+
+  it('is what generateImageMapping falls back to when no suffix is passed', () => {
+    expect(deriveOriginalBasename(`fig${DEFAULT_SUFFIX}.svg`, DEFAULT_SUFFIX)).toBe('fig');
+    // and the lower-case form must NOT be accepted as equivalent
+    expect(deriveOriginalBasename('fig_is.svg', DEFAULT_SUFFIX)).toBeNull();
   });
 });
