@@ -221,8 +221,19 @@ describe('checkBracketBodies — anchored to source, not to a byte pattern', () 
   it('span: a span nested INSIDE an emphasis is examined (the dominant corpus shape)', () => {
     // 559 of the 1,071 have an <emphasis> parent — the single commonest shape, and
     // it inverts the case above: the OUTER [[i: is the unmatchable one and the span
-    // is what gets compared. Extraction order makes this so (spans convert last), so
-    // this test also fails if that order is ever swapped.
+    // is what gets compared.
+    //
+    // ⚠️ WHAT THIS TEST DOES NOT COVER, STATED BECAUSE AN EARLIER DRAFT CLAIMED IT DID.
+    // This comment used to read "extraction order makes this so (spans convert last),
+    // so this test also fails if that order is ever swapped". BOTH HALVES ARE FALSE.
+    // The fixture below is a hand-written string pair fed straight to
+    // checkBracketBodies; this file never imports the extractor, so no change to
+    // cnxml-extract.js can move it by one byte — a guard that is never called is not
+    // a guard. And the premise is wrong anyway: measured on all three span fixtures in
+    // this file, running the emphasis and span replaces in EITHER order yields
+    // byte-identical output, because neither pass creates or destroys the other's
+    // anchors. What this test actually pins is the CHECK's behaviour on the nested
+    // shape — span examined, outer marker counted as unmatchable — and that is all.
     const src = doc(
       '<para id="p1"><emphasis effect="italics"><span class="red-text">Nu</span></emphasis></para>'
     );
