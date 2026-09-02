@@ -124,11 +124,12 @@ describe('§C81 Task 10 — zero duplicate alt segments across the in-scope corp
     expect(duplicates).toEqual([]);
   });
 
-  it('organic preview: no module emits two alt segments sharing the same segment id (17 in-scope modules)', () => {
+  it('organic: no module emits two alt segments sharing the same segment id (342 modules)', () => {
     const files = listOrganicPreviewModules();
-    // Control: the population must actually be the 17-module in-scope preview
-    // set Task 9 used, not an accidentally-empty or differently-scoped one.
-    expect(files.length).toBe(17);
+    // Control: the population must be the whole organic corpus, not an
+    // accidentally-empty or differently-scoped one. It was 17 while only a
+    // preview slice had been extracted; §C82 action ③ extracted all 342.
+    expect(files.length).toBe(342);
 
     const duplicates = [];
     for (const file of files) {
@@ -149,21 +150,48 @@ describe('§C81 Task 10 — zero duplicate alt segments across the in-scope corp
   // above is structurally blind to organic's version of the defect — see
   // test-results/c81-alt-extraction-2026-08-15.json). Check duplicate TEXT
   // instead, the same method Task 9 used to find the original 4.
-  it('organic preview: no module emits two alt segments with identical text (id-less media, 17 in-scope modules)', () => {
+  it('organic: no module emits two alt segments with identical text behind POSITIONAL ids (342 modules)', () => {
     const files = listOrganicPreviewModules();
-    expect(files.length).toBe(17);
+    expect(files.length).toBe(342);
+
+    // 🔴 THE PREDICATE IS NARROWED, AND THAT IS THE ORIGINAL INTENT — NOT A CONCESSION.
+    // A bare denominator bump leaves this RED, because the full corpus contains 2
+    // legitimate same-text groups: in m00020 the SOURCE itself carries one alt string
+    // on two different images (OChem_02_03_006b/006c), and m00171 likewise
+    // (OChem_14_01_004f/004i). Two distinct images sharing a description is not a
+    // double emission. §C88 Unit A re-keyed id-less <media> from a positional index to
+    // the image `src`, so those now get two properly-anchored ids.
+    // ▶ The defect this case exists for is the one that survives that re-keying:
+    // identical text where at least one side FELL BACK to a positional id.
+    const POSITIONAL = /:alt:(?:media|standalone)-\d+-alt$/;
 
     const duplicates = [];
+    let positionalSeen = 0;
     for (const file of files) {
       const cnxml = fs.readFileSync(file, 'utf-8');
       const alts = extractSegments(cnxml).segments.filter((s) => s.type === 'alt');
-      const counts = new Map();
-      for (const a of alts) counts.set(a.text, (counts.get(a.text) || 0) + 1);
-      for (const [text, count] of counts) {
-        if (count > 1)
-          duplicates.push({ file: path.basename(file), text: text.slice(0, 60), count });
+      const groups = new Map();
+      for (const a of alts) {
+        if (POSITIONAL.test(a.id)) positionalSeen++;
+        if (!groups.has(a.text)) groups.set(a.text, []);
+        groups.get(a.text).push(a);
+      }
+      for (const [text, group] of groups) {
+        if (group.length < 2) continue;
+        if (!group.some((g) => POSITIONAL.test(g.id))) continue;
+        duplicates.push({
+          file: path.basename(file),
+          text: text.slice(0, 60),
+          ids: group.map((g) => g.id),
+        });
       }
     }
+
+    // 🔴 NON-VACUITY: the narrowed predicate must be looking for something that still
+    // EXISTS, or its zero is an absence rather than a result. Measured: 17 of organic's
+    // 2,163 alt segments still fall back to a positional id. If this ever reaches 0, the
+    // check above stops being able to fire and must be retired rather than left green.
+    expect(positionalSeen).toBeGreaterThan(0);
     expect(duplicates).toEqual([]);
   });
 });

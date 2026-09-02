@@ -539,25 +539,31 @@ describe('I2 — every spawn/parse/read-sourced value is well-formed or null, ne
 });
 
 describe('I3 — the loader emits exactly the units the spender pays for', () => {
-  it('the emitted work-list is 220 units over the two kept books', () => {
+  it('the emitted work-list is 574 units over the two kept books', () => {
     // 🔴 ASSERTED, NOT IMPORTED FROM `api-translate.js` SO THE TWO AGREE BY CONSTRUCTION.
-    // Measured: that tool exports `discoverModules` (166) and `discoverExercisesFile` (31) but
-    // NOT `discoverChapters`, and assembles the work-list inline in `main()` — its exported
+    // Measured: that tool exports `discoverModules` and `discoverExercisesFile` but NOT
+    // `discoverChapters`, and assembles the work-list inline in `main()` — its exported
     // surface cannot enumerate the corpus, so importing it is unavailable, not merely lossy.
-    // ⚠️ 220 IS THE SPEND-UNIT DENOMINATOR. §C82 L106/L126 records five live counts of "the
-    // corpus" — 166 module pairs · 197 IS segment files · 220 exactly-paired basenames · 227 ·
-    // 112 chapter×track cells — none wrong and none interchangeable. Do not compare it to the
-    // other four.
-    expect(ALL_UNITS.length).toBe(220);
+    // ⚠️ 574 IS THE SPEND-UNIT DENOMINATOR, and it MOVED WITH THE RE-EXTRACTION (was 220).
+    // 🔴 SO DO NOT COMPARE IT TO §C82 L106/L126's FIVE LIVE COUNTS — 166 module pairs · 197 IS
+    // segment files · 220 exactly-paired basenames · 227 · 112 chapter×track cells. Those were
+    // all measured on the PRE-re-extract vintage; the list describes a corpus that no longer
+    // exists, and 220 appearing in both places is the same number twice, not the same fact.
+    // Re-derive any of them before citing it.
+    expect(ALL_UNITS.length).toBe(574);
   });
 
-  it('🔴 CONTROL — the 23 chapter-metadata units are PRESENT: they are what a naive import drops', () => {
+  it('🔴 CONTROL — the 52 chapter-metadata units are PRESENT: they are what a naive import drops', () => {
     // A source-driven walk (or `discoverModules` alone) silently loses the two kinds with no
-    // source module — 31 exercises + 23 chapter-metadata, a quarter of the work-list. The
-    // decomposition is asserted so that a count of 220 reached by the wrong mixture is red.
-    expect(ALL_UNITS.filter((u) => u.kind === 'chapter-metadata')).toHaveLength(23);
+    // source module — 31 exercises + 52 chapter-metadata. The decomposition is asserted so that
+    // a total of 574 reached by the wrong mixture is red.
+    // ⚠️ `exercises` is UNCHANGED at 31 across the re-extraction, and that is meaningful rather
+    // than incidental: exercises come from a different producer (`exercise-extract.js`), which
+    // the re-extract does not run. A number that did NOT move is evidence about which producer
+    // owns it.
+    expect(ALL_UNITS.filter((u) => u.kind === 'chapter-metadata')).toHaveLength(52);
     expect(ALL_UNITS.filter((u) => u.kind === 'exercises')).toHaveLength(31);
-    expect(ALL_UNITS.filter((u) => u.kind === 'module')).toHaveLength(166);
+    expect(ALL_UNITS.filter((u) => u.kind === 'module')).toHaveLength(491);
   });
 
   it('🔴 no unit is emitted twice — a duplicate is a module paid for twice', () => {
