@@ -170,7 +170,7 @@ Hreinsun jarðolíu hefst með hluteimingu hráolíu í þrjá meginhluta eftir 
 Tvær sameindagerðir af heptani og 2,2,4-trímetýlpentani eru sýndar. Fyrri og seinni gerðin hafa oktantölur sem eru 0 og 100.
 
 <!-- SEG:m00038:para:para-00021 -->
-Þar sem beinkeðju bensín brennur svo illa í varmavélum hafa efnafræðingar sem sérhæfa sig í jarðolíu þróað fjölmargar aðferðir til að framleiða hágæða eldsneyti. Ein þessara aðferða, [[i:hvatakljúfun]], felur í sér að taka háttsjóðandi steinolíubrot (C[[sub:11]]–C[[sub:14]]) og „kljúfa“ það í smærri greinóttar sameindir sem henta til notkunar í bensín. Annað ferli, sem kallast [[i:endurmótun]], er notað til að breyta C[[sub:6]]–C[[sub:8]] alkönum í arómatísk efnasambönd eins og bensen og tólúen, sem hafa mun hærri oktantölu en alkanar. Myndefnið sem fer á tankinn þinn hefur um það bil eftirfarandi samsetningu: 15% C[[sub:4]]–C[[sub:8]] beinkeðju alkanar, 25% til 40% C[[sub:4]]–C[[sub:10]] greinóttir alkanar, 10% hringalkanar, 10% beinkeðju og hringalkenar og 25% arenar (arómatísk efni).
+Þar sem beinkeðjubensín brennur svo illa í vélum hafa jarðolíufræðingar þróað fjölmargar aðferðir til að framleiða hágæða eldsneyti. Ein þessara aðferða, [[i:hvataefnakljúfur]], felur í sér að taka steinolíuhlutann með háu suðumarki (C[[sub:11]]–C[[sub:14]]) og „kljúfa“ hann í smærri greinóttar sameindir sem henta til notkunar í bensín. Annað ferli, sem kallast [[i:endurmótun]], er notað til að breyta C[[sub:6]]–C[[sub:8]] alkönum í arómatísk efnasambönd eins og bensen og tólúen, sem hafa mun hærri oktantölu en alkanar. Lokaafurðin sem fer á tankinn þinn hefur áætlaða samsetningu sem er 15% C[[sub:4]]–C[[sub:8]] beinkeðjualkanar, 25% til 40% C[[sub:4]]–C[[sub:10]] greinóttir alkanar, 10% hringalkanar, 10% beinkeðju- og hringalkenar og 25% arenar (arómatísk efni).
 
 <!-- SEG:m00038:item:list-00001-item-1 -->
 [[docref:alkóhól|m00032#term-00006]]
@@ -179,7 +179,7 @@ Tvær sameindagerðir af heptani og 2,2,4-trímetýlpentani eru sýndar. Fyrri o
 [[docref:aldehýð|m00032#term-00013]]
 
 <!-- SEG:m00038:item:list-00001-item-3 -->
-[[docref:alifatískur|m00033#term-00004]]
+[[docref:alífatískur|m00033#term-00004]]
 
 <!-- SEG:m00038:item:list-00001-item-4 -->
 [[docref:alkan|m00033#term-00001]]
@@ -203,7 +203,7 @@ alkýn
 [[docref:amín|m00032#term-00008]]
 
 <!-- SEG:m00038:item:list-00001-item-11 -->
-[[docref:and-afstaða|m00038#term-00001]]
+[[docref:and-stelling|m00038#term-00001]]
 
 <!-- SEG:m00038:item:list-00001-item-12 -->
 aren
@@ -218,19 +218,19 @@ aren
 [[docref:karboxýlsýra|m00032#term-00015]]
 
 <!-- SEG:m00038:item:list-00001-item-16 -->
-[[docref:afstaða|m00037#term-00002]]
+[[docref:stelling|m00037#term-00002]]
 
 <!-- SEG:m00038:item:list-00001-item-17 -->
-[[docref:afstöðuísómera|m00037#term-00003]]
+[[docref:stellingarhverfa|m00037#term-00003]]
 
 <!-- SEG:m00038:item:list-00001-item-18 -->
-[[docref:afstöðuísómera|m00037#term-00004]]
+[[docref:stellingarhverfa|m00037#term-00004]]
 
 <!-- SEG:m00038:item:list-00001-item-19 -->
-[[docref:byggingarísómera|m00033#term-00008]]
+[[docref:byggingarhverfa|m00033#term-00008]]
 
 <!-- SEG:m00038:item:list-00001-item-20 -->
-[[docref:skyggð afstaða|m00037#term-00008]]
+[[docref:skyggð stelling|m00037#term-00008]]
 
 <!-- SEG:m00038:item:list-00001-item-21 -->
 [[docref:ester|m00032#term-00016]]
@@ -242,19 +242,19 @@ aren
 [[docref:virknihópur|m00032#term-00001]]
 
 <!-- SEG:m00038:item:list-00001-item-24 -->
-[[docref:gauche-afstaða|m00038#term-00002]]
+[[docref:gagg-stelling|m00038#term-00002]]
 
 <!-- SEG:m00038:item:list-00001-item-25 -->
-[[docref:kolvetni|m00033#term-00002]]
+[[docref:kolvatnsefni|m00033#term-00002]]
 
 <!-- SEG:m00038:item:list-00001-item-26 -->
-[[docref:ísómera|m00033#term-00007]]
+[[docref:hverfa|m00033#term-00007]]
 
 <!-- SEG:m00038:item:list-00001-item-27 -->
 [[docref:ketón|m00032#term-00014]]
 
 <!-- SEG:m00038:item:list-00001-item-28 -->
-[[docref:Newman-vörpun|m00037#term-00006]]
+[[docref:Newman-frávarp|m00037#term-00006]]
 
 <!-- SEG:m00038:item:list-00001-item-29 -->
 nítríl
@@ -266,22 +266,22 @@ nítríl
 [[docref:mettaður|m00033#term-00003]]
 
 <!-- SEG:m00038:item:list-00001-item-32 -->
-[[docref:saghestaframsetning|m00037#term-00005]]
+[[docref:saghestaútsetning|m00037#term-00005]]
 
 <!-- SEG:m00038:item:list-00001-item-33 -->
-[[docref:glennt afstaða|m00037#term-00007]]
+[[docref:glennt stelling|m00037#term-00007]]
 
 <!-- SEG:m00038:item:list-00001-item-34 -->
-[[docref:staðefnafræði|m00037#term-00001]]
+[[docref:þrívíddarefnafræði|m00037#term-00001]]
 
 <!-- SEG:m00038:item:list-00001-item-35 -->
-[[docref:sterísk spenna|m00038#term-00003]]
+[[docref:rýmisálag|m00038#term-00003]]
 
 <!-- SEG:m00038:item:list-00001-item-36 -->
-[[docref:beinkeðju alkan|m00033#term-00005]]
+[[docref:beinkeðjualkan|m00033#term-00005]]
 
 <!-- SEG:m00038:item:list-00001-item-37 -->
-[[docref:hliðarhópur|m00035#term-00001]]
+[[docref:áskilinn hópur|m00035#term-00001]]
 
 <!-- SEG:m00038:item:list-00001-item-38 -->
 [[docref:súlfíð|m00032#term-00010]]
@@ -290,40 +290,40 @@ nítríl
 [[docref:þíól|m00032#term-00009]]
 
 <!-- SEG:m00038:item:list-00001-item-40 -->
-[[docref:snúningsspenna|m00037#term-00009]]
+[[docref:snúningsálag|m00037#term-00009]]
 
 <!-- SEG:m00038:title:sect-00003-title -->
 Útdráttur
 
 <!-- SEG:m00038:para:para-00022 -->
-Alkanar eru tiltölulega lítið hvarfgjarnir og taka sjaldan þátt í efnahvörfum, en þeir eru engu að síður gagnlegt burðarefni til að kynna nokkur mikilvæg almenn hugtök. Í þessum kafla höfum við notað alkana til að kynna grunnaðferðina við nafngiftir lífrænna efnasambanda og til að líta fyrst á nokkra þrívíða þætti sameinda.
+Alkanar eru tiltölulega óhvarfgjarnir og taka sjaldan þátt í efnahvörfum, en þeir eru engu að síður gagnlegur burðarefni til að kynna nokkrar mikilvægar almennar hugmyndir. Í þessum kafla höfum við notað alkana til að kynna grundvallaraðferðina við nafngiftir lífrænna efnasambanda og til að líta fyrst á nokkra þrívíða þætti sameinda.
 
 <!-- SEG:m00038:para:para-00023 -->
-[[b:Virknihópur]] er hópur frumeinda innan stærri sameindar sem hefur einkennandi hvarfgirni. Þar sem virknihópar hegða sér á nokkurn veginn sama hátt í öllum sameindum þar sem þeir koma fyrir, ráðast efnahvörf lífrænnar sameindar að mestu leyti af virknihópum hennar.
+[[b:Virknihópur]] er hópur atóma innan stærri sameindar sem hefur einkennandi efnahvarfgirni. Þar sem virknihópar hegða sér á nokkurn veginn sama hátt í öllum sameindum þar sem þeir koma fyrir, ráðast efnahvörf lífrænnar sameindar að mestu leyti af virknihópum hennar.
 
 <!-- SEG:m00038:para:para-00024 -->
-[[b:Alkanar]] eru [[b:flokkur]] [[b:mettaðra kolvatnsefna]] með almennu [[b:formúluna]] C[[i:[[sub:n]]]]H[[sub:2[[i:n]]+2]]. Þeir innihalda enga [[b:fellihópa]], eru tiltölulega óvirkir og geta verið annaðhvort [[b:ókeðjugreinaðir]] ([[i:normal]]) eða [[b:keðjugreinaðir]]. Alkanar eru nefndir samkvæmt [[b:röð]] IUPAC-reglna um [[b:nafnakerfi]]. [[b:Efnasambönd]] sem hafa sömu [[b:efnaformúlu]] en ólíka [[b:gerð]] eru kölluð [[b:hverfur]]. Nánar tiltekið eru [[b:efnasambönd]] eins og bútan og ísóbútan, sem eru ólík hvað varðar [[b:samband]] milli [[b:frumeinda]], kölluð [[b:byggingarhverfur]].
+[[b:Alkanar]] eru flokkur [[b:mettaðra kolvatnsefna]] með almennu formúluna C[[i:[[sub:n]]]]H[[sub:2[[i:n]]+2]]. Þeir innihalda enga virknihópa, eru tiltölulega óvirkir og geta verið annaðhvort [[b:beinkeðju-]] ([[i:venjulegir]]) eða [[b:greinóttir]]. Alkanar eru nefndir samkvæmt röð IUPAC-nafngiftareglna. Efnasambönd sem hafa sömu efnaformúlu en mismunandi byggingu kallast [[b:hverfur]]. Nánar tiltekið eru efnasambönd eins og bútan og ísóbútan, sem eru ólík í tengingum milli atóma, kölluð [[b:byggingarhverfur]].
 
 <!-- SEG:m00038:para:para-00025 -->
-[[b:Eintengi]] [[b:kolefnis]] og [[b:kolefnis]] í alkönum myndast við [[i:σ]]-[[b:skörun]] [[i:sp]][[sup:3]]-blendingssvigrúma [[b:kolefnis]]. [[b:Snúningur]] er mögulegur um [[i:σ]]-[[b:tengi]] vegna sívalningssamhverfu þeirra og því eru til margar [[b:stellingar]] alkana sem breytast hratt hver í aðra. [[b:Newman-frávarp]] gerir kleift að sjá fyrir sér [[b:rúmfræðilegar]] afleiðingar [[b:snúnings]] um [[b:tengi]] með því að horfa beint eftir [[b:tengis]]-ás [[b:kolefnis]] og [[b:kolefnis]]. Ekki eru allar [[b:stellingar]] alkana jafn [[b:stöðugar]]. [[b:Gagstæð stelling]] etans er 12 kJ/mól (2,9 kkals/mól) [[b:stöðugri]] en [[b:skyggð stelling]] vegna [[b:snúningsálags]]. Almennt er sérhver alkani [[b:stöðugastur]] þegar öll [[b:tengi]] hans eru gagstæð.
+Kolefnis-kolefnis eintengi í alkönum myndast við [[i:Δ]] skörun kolefnis [[i:sp]][[sup:3]] blendingssvigrúma. Snúningur er mögulegur um [[i:Δ]]-tengi vegna sívalningssamhverfu þeirra og alkanar eru því til í miklum fjölda [[b:stellinga]] sem breytast hratt hver í aðra. [[b:Newman-frávarp]] gerir það mögulegt að sjá fyrir sér rýmislegar afleiðingar tengisnúninga með því að horfa beint eftir kolefnis-kolefnis tengiás. Ekki eru allar stellingar alkana jafn stöðugar. [[b:Glennt stelling]] etans er 12 kJ/mól (2,9 kkal/mól) stöðugri en [[b:skyggð stelling]] vegna [[b:snúningsálags]]. Almennt er sérhver alkan stöðugastur þegar öll tengi hans eru glennt.
 
 <!-- SEG:m00038:title:sect-00004-title -->
-Aukadæmi
+Aukaverkefni
 
 <!-- SEG:m00038:para:para-00029 -->
 [[b:[[span:Sjónræn efnafræði|red-text]]]]
 
 <!-- SEG:m00038:para:para-00068 -->
-[[b:[[span:Fellihópar|red-text]]]]
+[[b:[[span:Virknihópar|red-text]]]]
 
 <!-- SEG:m00038:para:para-00035 -->
-[[b:[[span:Hverfur|red-text]]]]
+[[b:[[span:Ísómerur|red-text]]]]
 
 <!-- SEG:m00038:para:para-00042 -->
-[[b:[[span:Nafngift efnasambanda|red-text]]]]
+[[b:[[span:Nafngiftir efnasambanda|red-text]]]]
 
 <!-- SEG:m00038:para:para-00052 -->
-[[b:[[span:Stellingar|red-text]]]]
+[[b:[[span:Afstöður|red-text]]]]
 
 <!-- SEG:m00038:para:para-00059 -->
-[[b:[[span:Almenn dæmi|red-text]]]]
+[[b:[[span:Almenn verkefni|red-text]]]]
