@@ -619,8 +619,8 @@ prints no lines and **exits 1** — indistinguishable from "not present". Measur
 `grep -an` → `210: … terminologyService.proposeMinedTerm(`. **This is a new mechanism for an
 old failure class and it evades the usual heuristic: no filter was chosen — the file itself
 causes the blindness**, so "an absence you manufactured with a filter" does not catch it, and
-neither does re-running the same grep. It bites **docs too**, not just code: two campaign plan
-files under `docs/superpowers/plans/` hold NULs, so a `grep` over `docs/` skips them entirely.
+neither does re-running the same grep. It bites **docs too**, not just code: MULTIPLE plan
+files under `docs/` hold NULs, so a `grep` over `docs/` skips them entirely. *(This said "two campaign plan files under `docs/superpowers/plans/`" until 2026-09-02; a byte-scan then found **5** NUL-bearing `.md` files under `docs/`. The count is deliberately not restated — re-derive it with the command below.)*
 **Do not trust any enumeration here — re-derive it**, as with the MIT→AGPL edges above:
 ```bash
 grep -rlaUP '\x00' --include='*.js' --include='*.md' --include='*.json' \
@@ -630,6 +630,17 @@ grep -rlaUP '\x00' --include='*.js' --include='*.md' --include='*.json' \
 **empty string**, which matches *every* file and returns a clean, plausible, wholly wrong
 list. Verified 2026-08-10: the `-P` form agrees exactly with an independent byte-count census
 in Python; the `$'\0'` form named files that contain no NUL at all.
+🔴 **AND `-a` IS EQUALLY LOAD-BEARING — WITHOUT IT THE NUL DETECTOR IS DISABLED BY THE VERY
+BYTE IT LOOKS FOR, AND RETURNS A CLEAN, CONFIDENT, EMPTY LIST.** Measured 2026-09-02, after a
+sister session ran `git ls-files -z docs/ | xargs -0 grep -lUP '\x00'` and reported **ZERO**
+hits — concluding this rule's own enumeration was stale. It is not; the command is. On one
+known-NUL file: `grep -lUP '\x00' <file>` → **no match**, `grep -laUP '\x00' <file>` → the
+filename. Same file, same pattern, one flag apart. ▶ **This is the rule above applied to its
+own detector**: grep treats the NUL-bearing file as binary and suppresses the match, so the
+search FOR NUL bytes is silenced BY NUL bytes. `-l` does not rescue it and neither does `-P`.
+⚠️ **A null from any NUL census is worthless unless the command carried `-a`** — and pair it
+with an independent byte-scan (a 10-line Python read of `git ls-files -z`), which is what
+adjudicated here: two instruments, same answer, against one confident false negative.
 `books/` is excluded on purpose — thousands of images legitimately hold NULs and would bury
 the six that matter.
 Sources are legitimate (a NUL separator in a hash input is deliberate and load-bearing at
