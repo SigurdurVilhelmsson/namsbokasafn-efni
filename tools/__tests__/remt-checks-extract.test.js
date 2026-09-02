@@ -100,13 +100,14 @@ describe('E2 — bracket-marker bodies match 01-source', () => {
   });
 
   it('🔴 L9 — examines a module with ZERO comparable marker bodies rather than SKIPPING it', async () => {
-    // m68663 has 11 segments and 0 comparable marker bodies. Under the plan's unit
+    // m68663 has 12 segments and 0 comparable marker bodies. Under the plan's unit
     // (marker bodies) this reads examined 0 -> SKIPPED -> a BLOCKING failure -> exit 1,
-    // halting a paid run on a module that is clean. Measured: 12 of chemistry's 149.
+    // halting a paid run on a module that is clean. Measured: 11 of chemistry's 149.
     const r = await runCheck(E2, mod('efnafraedi-2e', 'ch01', 'm68663'));
     expect(r.verdict).toBe(VERDICT.PASS);
-    // 📌 L20 PREMISE PIN — 11 is the COMMITTED segment count; fresh emits 12 (measured).
-    expect(r.examined).toBe(11);
+    // 📌 L20 PREMISE PIN — 12 is the COMMITTED segment count after the §C82 ③ re-extract
+    // (34f870ac added SEG:m68663:alt:fs-idm52126432-alt); 34f870ac^ had 11.
+    expect(r.examined).toBe(12);
     expect(r.message).toMatch(/0 marker bodies compared/);
   });
 
@@ -196,14 +197,15 @@ describe('E4 — list coverage and REAL duplicate seg-ids', () => {
 
   it('🔴 L17 — examines a module with ZERO <list> elements rather than SKIPPING it', async () => {
     // The sharpest instance: `analyzeModule` is TWO checks, and the plan keys `examined`
-    // to one half's unit. 104 of chemistry's 149 modules (69.8%) and 14 of organic's 17
+    // to one half's unit. 104 of chemistry's 149 modules (69.8%) and 288 of organic's 342 (84.2%)
     // have no <list> at all — so as planned, E4 halts ~70% of a paid run while the dup
     // half has traversed the whole module and found it clean.
     const r = await runCheck(E4, mod('efnafraedi-2e', 'ch01', 'm68663'));
     expect(r.verdict).toBe(VERDICT.PASS);
-    // 📌 L20 PREMISE PIN — 11 is the COMMITTED segment count; a fresh extract of m68663
-    // emits 12 (measured). The DURABLE half of this test is `examined > 0` with 0 lists.
-    expect(r.examined).toBe(11);
+    // 📌 L20 PREMISE PIN — 12 is the COMMITTED segment count after the §C82 ③ re-extract
+    // (34f870ac added one figure-alt segment; 34f870ac^ had 11). The DURABLE half of this
+    // test is `examined > 0` with 0 lists.
+    expect(r.examined).toBe(12);
     expect(r.message).toMatch(/^0 list, /);
   });
 
@@ -271,7 +273,7 @@ describe('the examined-unit census that drove the decision', () => {
    * ⚠️ TWO PINS WITH DIFFERENT LIFETIMES, AND THE DIFFERENCE IS THE POINT.
    * The <list> count is derived from `01-source`, which cannot drift by project rule —
    * 104 is stable. The marker-body count is derived from `02-for-mt`, which the loop's
-   * own re-extract rewrites — 12 is a PREMISE PIN EXPECTED TO MOVE. When it moves, that
+   * own re-extract rewrites — 11 is a PREMISE PIN EXPECTED TO MOVE. When it moves, that
    * is the corpus changing, not a defect: update it in the same commit that observes it.
    */
   it('104 of 149 chemistry modules have NO <list> — the E4 false-halt population', async () => {
@@ -290,11 +292,15 @@ describe('the examined-unit census that drove the decision', () => {
     }
   });
 
-  it('12 of 149 have NO comparable marker body — the E2 population, and L9 said 10', async () => {
+  it('11 of 149 have NO comparable marker body — the E2 population, and L9 said 10', async () => {
     // 🔴 L9 counted modules with zero bracket markers of ANY kind and got 10. E2's unit
     // is `checkBracketBodies`'s own `examined`, which counts only BODY_SOURCE_ELEMENTS
-    // types — m68670 (5 xref) and m68748 (1 xref) carry markers and nothing comparable.
-    // Same shape, different population; 12/149 = 8.1%, still over the 5% blocking bar.
+    // types — m68748 (1 xref) and m68864 (3 fn) carry markers and nothing comparable.
+    // ⚠️ m68670 LEFT this set at the §C82 ③ re-extract: its markers migrated dialect and it
+    // now carries term x6, xref x5, u x6 and examines 12. The population is 12 -> 11 while
+    // m68663's OWN segment count went 11 -> 12 — two numbers moving opposite ways, which is
+    // why they are pinned separately rather than shared.
+    // Same shape, different population; 11/149 = 7.4%, still over the 5% blocking bar.
     const { checkBracketBodies } = await import('../lib/bracket-body-check.js');
     const mods = modulesWithSegments('efnafraedi-2e');
     expect(mods.length).toBe(149);
@@ -302,8 +308,16 @@ describe('the examined-unit census that drove the decision', () => {
       ({ ch, m }) =>
         checkBracketBodies(src('efnafraedi-2e', ch, m), seg('efnafraedi-2e', ch, m)).examined === 0
     );
-    expect(zero.length).toBe(12);
-    expect(zero.map((z) => z.m)).toContain('m68670'); // has 5 xref markers, 0 comparable
+    expect(zero.length).toBe(11);
+    // 🔴 THE DISCRIMINATOR, AND IT MUST NAME A MODULE THAT CARRIES MARKERS. Without it this
+    // set is indistinguishable from L9's ("zero markers of ANY kind", 10 modules). Measured
+    // 2026-09-02, EXACTLY TWO of the 11 carry markers with no comparable body — m68864
+    // {fn:3} and m68748 {xref:1} — so both are pinned rather than one. The old pin named
+    // m68670 (5 xref); it LEFT this set at the §C82 ③ re-extract when its markers migrated
+    // dialect, and it now examines 12.
+    const zeroIds = zero.map((z) => z.m);
+    expect(zeroIds).toContain('m68748'); // 1 xref marker, 0 comparable bodies
+    expect(zeroIds).toContain('m68864'); // 3 fn markers, 0 comparable bodies
     for (const { ch, m } of zero) {
       const r = await runCheck(E2, mod('efnafraedi-2e', ch, m));
       expect(r.examined).toBeGreaterThan(0);
@@ -359,7 +373,8 @@ describe('E7 — re-extract equivalence, advisory', () => {
     const s = seg('efnafraedi-2e', 'ch01', 'm68663');
     const r = await runCheck(E7, { committedExtract: snapshot(s), freshExtract: snapshot(s) });
     expect(r.verdict).toBe(VERDICT.PASS);
-    expect(r.examined).toBe(11);
+    // 12 = m68663's 12 committed seg-ids + 0 equation keys (§C82 ③; 34f870ac^ had 11).
+    expect(r.examined).toBe(12);
   });
 
   it('WARNs — never FAILs — when a seg-id disappears', async () => {
@@ -545,13 +560,13 @@ describe('the ctx guard — a gate must refuse the wrong module, not judge it', 
     }
   });
 
-  it('and the guard NEVER fires on a real module — 176 pairs, three books', async () => {
+  it('and the guard NEVER fires on a real module — 501 pairs, three books', async () => {
     // The false-halt control. A guard measured only against defects is indistinguishable
     // from one that refuses everything, and this file's own L17 is what that costs.
     let checked = 0;
     for (const [book, expected] of [
       ['efnafraedi-2e', 149],
-      ['lifraen-efnafraedi', 17],
+      ['lifraen-efnafraedi', 342],
       ['orverufraedi', 10],
     ]) {
       const mods = modulesWithSegments(book);
@@ -563,7 +578,7 @@ describe('the ctx guard — a gate must refuse the wrong module, not judge it', 
         }
       }
     }
-    expect(checked).toBe(352); // 176 pairs x 2 gates
+    expect(checked).toBe(1002); // 501 pairs x 2 gates (149 + 342 + 10; organic 17 -> 342 at §C82 ③)
   });
 });
 
