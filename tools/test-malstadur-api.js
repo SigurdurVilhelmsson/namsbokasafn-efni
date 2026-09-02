@@ -441,6 +441,89 @@ Throughout human history, people have tried to convert matter into more useful f
       },
     ],
   },
+  {
+    id: 'T1.22',
+    name: 'WHOLE-SEGMENT paired marker translates ([[docref]]word[[/docref]] alone in a segment) — §C118 ⑯',
+    // 🔴 THE ONE QUESTION §C118 ⑯ COULD NOT SETTLE FOR FREE, AND IT GATES A BUY.
+    // ⑯ makes a prose `[[docref:text|doc#id]]` ride the wire in paired form so
+    // its link text translates — 704 markers over the two kept books. That rests
+    // entirely on `term`'s precedent, and the precedent has a hole: EVERY
+    // observation behind it, T1.18 included, measures a paired marker EMBEDDED
+    // IN PROSE. The corpus holds ZERO whole-segment paired terms (max marker
+    // share of a term in its segment is 0.35), while 533 of the 704 docrefs ARE
+    // whole-segment. So the shape that is 76% of the target population has never
+    // been sent to this endpoint.
+    //
+    // ⚠️ AND THE FAILURE WOULD BE SILENT. A verbatim return re-attaches the
+    // captured id and reproduces the on-disk text BYTE-IDENTICALLY — measured
+    // over 43,014 segments — so `mismatches` is [], `bracketMarkerDelta` is {},
+    // and the run exits 0 over a chapter that was paid for and did not change.
+    // Marker-survival evidence is per-endpoint and per-model; this case is what
+    // makes the whole-payload shape evidence rather than extrapolation.
+    //
+    // The four controls ride in the SAME call on purpose: a control in a separate
+    // request cannot rule out the model behaving differently between calls.
+    //   seg 3 — inline paired term  : the KNOWN-GOOD shape (T1.18's, SEG-framed).
+    //                                 If this fails, the harness or the model
+    //                                 changed and the probe says nothing about ⑯.
+    //   seg 4 — bare one-word segment: does a one-word segment translate AT ALL,
+    //                                 independent of any marker?
+    //   seg 5 — the colon form      : must return VERBATIM, reproducing the
+    //                                 defect in the same call as its own fix.
+    input: [
+      '<!-- SEG:probe:item:1 -->',
+      '[[docref]]alcohol[[/docref]]',
+      '',
+      '<!-- SEG:probe:item:2 -->',
+      '[[docref]]branched-chain alkane[[/docref]]',
+      '',
+      '<!-- SEG:probe:para:3 -->',
+      'The [[term]]viscosity[[/term]] of a liquid is a measure of its resistance to flow.',
+      '',
+      '<!-- SEG:probe:item:4 -->',
+      'alcohol',
+      '',
+      '<!-- SEG:probe:item:5 -->',
+      '[[docref:alcohol|m00032#term-00006]]',
+      '',
+    ].join('\n'),
+    checks: [
+      {
+        name: 'SUBJECT 1: whole-segment [[docref]] delimiters survive',
+        test: (input, output) =>
+          (output.match(/\[\[docref\]\]/g) || []).length === 2 &&
+          (output.match(/\[\[\/docref\]\]/g) || []).length === 2,
+      },
+      {
+        name: 'SUBJECT 1: whole-segment "alcohol" TRANSLATED between the delimiters',
+        test: (input, output) => !/\[\[docref\]\]alcohol\[\[\/docref\]\]/.test(output),
+      },
+      {
+        name: 'SUBJECT 2: "branched-chain alkane" TRANSLATED (the label that blocks organic ch03)',
+        test: (input, output) =>
+          !/\[\[docref\]\]branched-chain alkane\[\[\/docref\]\]/.test(output),
+      },
+      {
+        name: 'CONTROL: inline paired term still translates (harness + model unchanged)',
+        test: (input, output) =>
+          output.includes('[[term]]') &&
+          output.includes('[[/term]]') &&
+          !/\[\[term\]\]viscosity\[\[\/term\]\]/.test(output),
+      },
+      {
+        name: 'CONTROL: a bare one-word segment translates at all',
+        test: (input, output) => !/<!-- SEG:probe:item:4 -->\s*\nalcohol\s*\n/.test(output),
+      },
+      {
+        name: 'CONTROL: the COLON form still returns verbatim (the defect, reproduced)',
+        test: (input, output) => output.includes('[[docref:alcohol|m00032#term-00006]]'),
+      },
+      {
+        name: 'all five SEG markers survive',
+        test: (input, output) => (output.match(/<!-- SEG:probe:/g) || []).length === 5,
+      },
+    ],
+  },
 ];
 
 // ─── Test Runner ────────────────────────────────────────────────────
