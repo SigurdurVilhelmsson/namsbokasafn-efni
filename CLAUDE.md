@@ -428,6 +428,8 @@ Legacy protect/unprotect steps (1b, 2b) are archived in `tools/archived/` — no
 
 **🔴 DURABLE — A COUNT CANNOT SEE A SUBSTITUTION THAT DID NOT HAPPEN. Prove a translation REACHED the output with a sentinel, never with a tally.** Measured 2026-08-16 (§C89): §C81's figure `alt` translations were extracted, sent to the paid MT and then **discarded at inject** — **627 of 951 chemistry alt segments (65.9%), across 130 of 149 modules**, on merged `main`. `buildFigure`'s id-bearing path returned the source figure block **verbatim**, English `alt` included, and `readAlt(…, getSeg)` sat only in a fallback branch. **Because the English alt is still PRESENT when a translation is dropped, the attribute COUNT never moves** — so the committed round-trip check, `cnxml-extract-alt-corpus` and E5's coverage check were all green corpus-wide the entire time. ▶ **Any check of the form "did X get replaced?" must compare VALUES.** The committed shape is `tools/__tests__/alt-writeback-corpus.test.js`: overwrite each segment's text with a token that cannot have come from the source, inject, count tokens — **with the positions that already worked asserted alongside as a built-in positive control**, so a harness that broke everything equally cannot read as a pass. ⚠️ **And make such a substitution BEST-EFFORT:** reading the value through a lookup that RECORDS A MISS (`getSeg`) turns a legitimately-absent translation into "incomplete injection" and makes inject refuse the module — fatal while §C82 keeps two extraction vintages live for weeks.
 
+🔴 **DURABLE — A TRANSLATED FIGURE IS A FILE IN `books/<slug>/media/`, NOT AN EDIT TO ANY CNXML OR HTML. THE MECHANISM ALREADY EXISTS — DO NOT BUILD A SECOND ONE.** Producer `tools/generate-image-mapping.js` → `books/<slug>/media/image-mapping.json`; `cnxml-inject.js` swaps the `<image src>` **and its mime-type**; `cnxml-render.js` publishes it. So `01-source/` is never touched and no `src` is hand-edited. ⚠️ **The filename suffix is an enforceable value — `DEFAULT_SUFFIX` in that tool, pinned against the committed corpus by its test. Read it there; never restate it.** **Status, defects, and the source-edition precedence that decides WHICH PICTURE you translate → `experiments/figure-text-translation/REGISTER.md`, which owns them.**
+
 **⚠️ DURABLE RULE — never decide inject behaviour by comparing two translated strings.** When you need to know whether a piece of segment text is duplicated, figure-derived, or already carried by an element, it is tempting to compare it against another segment (a para against a figure's caption, say). **Every segment is independently editable in the segment editor**, so an equality test silently stops matching the first time an editor revises one side — the bug returns with the whole suite still green, because no test can see a future edit. **Decide from the read-only `01-source` structure instead**: every builder already receives `originalCnxml`, and `books/*/01-source/` cannot drift by project rule. Adopted 2026-07-27 (register C13, where the string-equality version would have looked correct and rotted in production).
 
 
@@ -808,8 +810,16 @@ never the sister's. So when work crosses over:
    - ⚠️ **Read the sister's tree freely; never WRITE to it while its session is live.** Reading
      is how you re-measure. Writing is the two-agents-one-tree failure `[[engineering-lessons]]`
      records as having committed a mutant — hand it the text, let it land on its own branch.
+   - 🔴 **STOP WHEN IT STOPS PAYING — name the decision the next exchange could change, and if
+     you cannot, close the thread and say so.** [USER] ruling 2026-09-02, after two sessions
+     spent several exchanges forensically reconciling a **one-line** counting difference that
+     changed no decision, no code and no document. **Cross-session traffic is billed twice, once
+     per session**, and the user reads both halves. A thread that has stopped producing decisions
+     is pure cost, however interesting it is. ▶ **The same test governs any activity, not just
+     pairing**: re-measuring, censusing, reconciling and reviewing all earn their place by
+     changing something. Diminishing returns are the signal to stop, not to go deeper.
 
-These are heuristics you apply with judgment, not hard gates — **except the two 🔴 items under
+These are heuristics you apply with judgment, not hard gates — **except the three 🔴 items under
 (4), which are gates.**
 
 ## Documentation
