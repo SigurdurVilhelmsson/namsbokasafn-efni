@@ -47,7 +47,7 @@ import {
   sweep,
   formatReport,
 } from '../remt-sweep.js';
-import { REGISTRY } from '../lib/remt-battery.js';
+import { REGISTRY, VERDICT } from '../lib/remt-battery.js';
 import { modulesWithSegments, mtOutputSegmentFiles } from './helpers/remt-corpus.js';
 
 const CHEM = 'efnafraedi-2e';
@@ -358,10 +358,40 @@ describe('the sweep never gates', () => {
     // The tool MEASURES. Trips are its expected output — the acceptance criteria
     // demand several near-100% rows — so scoring them into an exit code would
     // make the honest result look like a failure and invite someone to "fix" it.
-    const report = await sweep({ books: [CHEM], tiers: [1], limit: 4 });
-    expect(report.rows.some((r) => r.tripped > 0)).toBe(true);
-    expect(report).not.toHaveProperty('exitCode');
-    expect(report).not.toHaveProperty('ok');
+    // 🔴 THE TRIP IS NOW PLANTED. It used to come free from the corpus (E1 62.7%,
+    // E5 92.8% of 166 module pairs). §C82 action ③'s re-extract repaired both BY
+    // DESIGN, so tier 1 trips nothing on 491 units and `some(tripped > 0)` read
+    // false — leaving the two assertions below satisfied by a sweep that never
+    // trips, i.e. VACUOUS. A planted check is flip-proof: no re-extract can repair
+    // it. (The live sweep does still trip in tier 0 and tier 3, but both are corpus
+    // properties this loop rewrites, which is how this test got here.)
+    const planted = {
+      id: 'ZZ1',
+      tier: 1,
+      blocking: false,
+      version: 1,
+      run: () => ({
+        verdict: VERDICT.FAIL,
+        examined: 1,
+        findings: [{ kind: 'planted-trip' }],
+        message: 'planted trip',
+      }),
+    };
+    REGISTRY.set('ZZ1', planted);
+    try {
+      const report = await sweep({ books: [CHEM], tiers: [1], limit: 4 });
+      const zz = report.rows.find((r) => r.id === 'ZZ1');
+      // Control: `sweep()` reads REGISTRY at CALL time, not at module load.
+      expect(zz, 'the planted check never reached the report').toBeTruthy();
+      expect(zz.tripped).toBe(zz.evaluable); // it tripped on every unit
+      expect(zz.tripped).toBe(4); // ...and `limit` really limited
+      expect(report.rows.some((r) => r.tripped > 0)).toBe(true);
+      expect(report).not.toHaveProperty('exitCode');
+      expect(report).not.toHaveProperty('ok');
+    } finally {
+      REGISTRY.delete('ZZ1');
+    }
+    expect(REGISTRY.has('ZZ1')).toBe(false); // restored
   });
 });
 
@@ -463,25 +493,51 @@ describe("the blocking-bar readout — the sweep's most decision-relevant output
   }, 30_000);
 
   it('a tier whose input the loop regenerates gets the VINTAGE reading instead', async () => {
+    // 🔴 THE OVER-BAR ROW IS NOW SYNTHESISED TOO, FOR THE SAME REASON AS THE TIER-0
+    // SIBLING ABOVE. This used to rely on E5 ~92.8% and E1 ~62.7% — properties of the
+    // PRE-RUN vintage, exactly as the comment it replaces said. §C82 action ③'s
+    // re-extract repaired both by design, so every tier-1 blocking row is 0.0% of 491,
+    // the over-bar section is ABSENT, and `not.toContain('DATA THE RUN WILL CONSUME')`
+    // below was passing because NEITHER branch ran. Pushing a real blocking row over
+    // the bar keeps the FORMATTING property pinned and cannot evaporate with the corpus.
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [1] });
-    const text = formatReport(report);
-    // E5 ~92.8% and E1 ~62.7% are properties of the committed vintage — the loop
-    // rewrites 02-for-mt before any of these checks runs for real.
-    expect(text).toContain('committed VINTAGE');
-    expect(text).not.toContain('DATA THE RUN WILL CONSUME');
     const e5 = report.rows.find((r) => r.id === 'E5');
-    expect(e5.blocking).toBe(true);
-    expect(e5.rate).toBeGreaterThan(BLOCKING_RATE_BAR);
+    expect(e5, 'E5 missing from a tier-1 sweep').toBeTruthy(); // control: the row exists
+    expect(e5.blocking, 'E5 is not blocking — this fixture assumes it is').toBe(true);
+    // ▶ AND E5's LIVENESS IS PINNED BY ITS POPULATION, NOT BY ITS RATE. `rate === 0` is
+    // saturated and reads identically whether E5 judged 491 units or none; these two go
+    // red if the tier-1 walk ever empties.
+    expect(e5.evaluable).toBe(491);
+    expect(e5.examinedTotal).toBeGreaterThan(0);
+    e5.rate = BLOCKING_RATE_BAR + 0.85; // over the bar by construction
+    const text = formatReport(report);
+    expect(text).toContain('BLOCKING CHECKS OVER');
+    expect(text).toMatch(/E5\s+tier 1/);
+    expect(text).toContain('committed VINTAGE');
+    expect(text).not.toContain('DATA THE RUN WILL CONSUME'); // tier 1 must not get tier 0's reading
   }, 60_000);
 
   it('CONTROL — a run with NO blocking check over the bar omits the section entirely', async () => {
     // Without this, the two assertions above pass against a formatter that prints
     // the heading unconditionally.
+    // ⚠️ BOTH ARMS ARE CONSTRUCTED NOW, AND THAT IS THE WHOLE POINT. Post-re-extract
+    // every tier-1 blocking row is 0.0% of 491, so the LIVE report already IS the
+    // clean arm: the two arms were identical and this CONTROL proved nothing —
+    // precisely the shape it exists to catch. Deriving both from one report object,
+    // differing in one field, makes the contrast attributable to the RATE alone.
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [1] });
+    const e5 = report.rows.find((r) => r.id === 'E5');
+    expect(e5, 'E5 missing from a tier-1 sweep').toBeTruthy();
+    expect(e5.blocking, 'E5 is not blocking — this fixture assumes it is').toBe(true);
     const clean = { ...report, rows: report.rows.map((r) => ({ ...r, rate: 0 })) };
+    const over = {
+      ...report,
+      rows: report.rows.map((r) => (r.id === 'E5' ? { ...r, rate: BLOCKING_RATE_BAR + 0.85 } : r)),
+    };
     expect(formatReport(clean)).not.toContain('BLOCKING CHECKS OVER');
-    // ...and the real one DOES, so the difference is the rate and not the shape.
-    expect(formatReport(report)).toContain('BLOCKING CHECKS OVER');
+    // ...and the over-bar one DOES, so the difference is the rate and not the shape.
+    expect(formatReport(over)).toContain('BLOCKING CHECKS OVER');
+    expect(formatReport(over)).toMatch(/E5\s+tier 1/); // attributed to E5, not to a drifting sibling
   }, 60_000);
 });
 

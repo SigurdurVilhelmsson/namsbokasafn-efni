@@ -29,7 +29,12 @@ import {
   checkNumbers,
   extractNumbers,
 } from '../lib/remt-checks-mt.js';
-import { mtOutputSegmentFiles, enCounterpart, REPO_ROOT } from './helpers/remt-corpus.js';
+import {
+  modulesWithSegments,
+  mtOutputSegmentFiles,
+  enCounterpart,
+  REPO_ROOT,
+} from './helpers/remt-corpus.js';
 import { loadResidueAllowlist, loadResidueAllowlistOrNull } from '../lib/residue-allowlist.js';
 import { detectResidue, normalizeForComparison } from '../lib/residue-check.js';
 
@@ -48,14 +53,18 @@ describe('population control — an empty walk must not pass anything below', ()
     expect(mtOutputSegmentFiles('lifraen-efnafraedi')).toHaveLength(48);
   });
 
-  it('🔴 pins that ORGANIC IS 5% EXTRACTED — every organic rate here is a sliver', () => {
+  it('🔴 pins that only 17 organic modules have BOTH sides — organic is 342/342 EXTRACTED', () => {
     // Raised as a lead question on 2026-08-26 ("have we downloaded the complete organic
-    // source?"). The answer is that the DOWNLOAD is complete and the EXTRACTION is not,
+    // source?"). The answer THEN was that the DOWNLOAD was complete and the EXTRACTION was not,
     // and the second is the more dangerous of the two because it is invisible: a
     // partial download shows up as absent files and a manifest mismatch, while a
     // 5%-extracted book yields 02-mt-output numbers that read as whole-book numbers.
-    // ▶ So this pin exists to make the denominator impossible to lose. Chemistry is
-    // 149/149; organic is 19/342, and every organic percentage in this file is over 17.
+    // ▶ So this pin exists to make the denominator impossible to lose.
+    // 🔴 CORRECTED 2026-09-02 (§C118 ③) — ORGANIC EXTRACTION IS NOW COMPLETE: 342/342
+    // modules, 404 live EN segment files (342 modules + 31 chapter-metadata + 31 exercises
+    // bundles — the 31 appears twice because the two sets are different files, not a typo).
+    // What is still a sliver is the MT: chemistry has both sides for 149/149, organic for
+    // 17 of 342, and every organic percentage in this file is over 17, not over 342.
     const srcCount = (b) =>
       fs
         .readdirSync(path.join(REPO_ROOT, 'books', b, '01-source'), { withFileTypes: true })
@@ -79,7 +88,15 @@ describe('population control — an empty walk must not pass anything below', ()
         (p2) => enCounterpart(p2) && path.basename(p2) !== 'exercises-segments.is.md'
       ).length;
     expect(enModules('efnafraedi-2e')).toBe(149); // 100% of source
-    expect(enModules('lifraen-efnafraedi')).toBe(17); // 5.0% of 342
+    expect(enModules('lifraen-efnafraedi')).toBe(17); // 17 of 342 modules have committed MT
+
+    // ▶ THE DENOMINATOR THE TITLE NAMES, ASSERTED RATHER THAN DESCRIBED. NOT a duplicate of
+    // srcCount above: srcCount walks `01-source`, modulesWithSegments walks `02-for-mt`, so
+    // their EQUALITY is the claim. Measured 17 here at 98f3a245 and 342 today; the helper can
+    // report far less (micro: 10 of 159), so this is a measurement, not a tautology.
+    const extracted = (b) => modulesWithSegments(b).length;
+    expect(extracted('lifraen-efnafraedi')).toBe(342);
+    expect(extracted('efnafraedi-2e')).toBe(149);
   });
 });
 
