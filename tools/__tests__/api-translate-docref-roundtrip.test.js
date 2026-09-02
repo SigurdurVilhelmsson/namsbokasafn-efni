@@ -321,8 +321,22 @@ function countBareDocrefs(text) {
  * and that is safe in the only direction that matters — a truncated capture can
  * only FAIL the bare-shape test, never pass it. So the check can report a false
  * red, never a false green.
+ *
+ * 🔴 THAT SAFETY PROPERTY IS ONLY TRUE BECAUSE `[` IS EXCLUDED, AND IT WAS NOT
+ * UNTIL AN ADVERSARIAL REVIEW MEASURED IT. The target-id class was `[^\]|]+`,
+ * which excludes `]` and `|` but ALLOWS `[` — so a prose docref whose link text
+ * happened to begin `m<digits>#` and carried a nested marker truncated to
+ * something that MATCHED, and the detector returned a false GREEN for a marker
+ * that never reached the model:
+ *     `[[docref:m00164#see [[i:this]] table|m00221#term-00001]]`
+ *          truncates to  `m00164#see [[i:this`  -> matched the old shape
+ * 0 corpus instances today, so this was latent — but the sentence above states
+ * the property ABSOLUTELY, and a future reader would rely on it once the corpus
+ * moved. ▶ A DOCSTRING ASSERTING A SAFETY PROPERTY IS A CLAIM, NOT A GUARANTEE;
+ * the exact counter-example is pinned as a test below, so the claim is now
+ * checked rather than asserted.
  */
-const BARE_DOCREF_PAYLOAD = /^m\d+(#[^\]|]+)?$/;
+const BARE_DOCREF_PAYLOAD = /^m\d+(#[^\]|[]+)?$/;
 
 function leakedProseDocrefs(wireText) {
   const bad = [];
@@ -341,6 +355,18 @@ describe('CORPUS ANCHOR — no prose docref rides the wire opaque (§C118 ⑯)',
     ]);
     expect(leakedProseDocrefs('x [[docref:acetal, R[[sub:2]]C|m1#t1]] y').length).toBe(1);
     expect(leakedProseDocrefs('x [[docref:m00164]] [[docref:m68674#fs-id1]] y')).toEqual([]);
+  });
+
+  it('a truncated capture cannot pass the bare-shape test — the false-GREEN case', () => {
+    // The docstring above claims the truncation is safe in one direction only.
+    // That was FALSE while the target-id class allowed `[`: this prose docref,
+    // truncated at the nested marker, matched the bare shape and the detector
+    // reported clean for a marker that never reached the model. 0 corpus
+    // instances, so it is the claim being pinned, not a live defect.
+    const leak = '[[docref:m00164#see [[i:this]] table|m00221#term-00001]]';
+    expect(leakedProseDocrefs(`x ${leak} y`).length).toBe(1);
+    // Control, same command: the shapes that MUST still read clean.
+    expect(leakedProseDocrefs('x [[docref:m00164#term-00006]] y')).toEqual([]);
   });
 
   it('every prose docref becomes a paired span AND every bare one survives, count for count', () => {
