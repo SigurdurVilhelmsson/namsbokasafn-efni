@@ -2,18 +2,22 @@
  * Tier 2, the run-record half — A2a, A4, A8.
  *
  * ── WHY EVERY POSITIVE FIXTURE IN THIS FILE COMES OUT OF `buildRunRecord()` ────────
- * 🔴 NO MODULE ON `main` CARRIES A RUN RECORD. Measured 2026-08-26 over both kept
- * books: 200 provenance sidecars, 200 carrying `"tool"` (the positive control), **0**
- * with `schemaVersion: 2` and **0** with a `run` key. Every existing pair predates
- * Plan A's writer.
+ * 🔴 ONLY THE 2026-09-01/02 PAID RUN'S 16 UNITS CARRY A RUN RECORD. Measured 2026-09-02
+ * over both kept books: 201 provenance sidecars, 201 carrying `"tool"` (the positive
+ * control), **16** with `schemaVersion: 2` and **16** with a `run` key (chemistry ch03
+ * 6, organic ch03 10). The other 185 are v1 and predate Plan A's writer.
  *
- * ▶ SO THE CORPUS CANNOT FALSIFY THESE THREE CHECKS. There is no real v2 sidecar to
- * read, which means check and fixture can agree with each other, both disagree with
- * the producer, and nothing goes red until the first real record lands MID-PAID-RUN.
- * That is not hypothetical: **the plan specifies A4 as reading `run.unwrapped[]`, and
- * `buildRunRecord()` has never written that key** — it writes `unwrappedCount` and
- * `unwrappedByType`. A literal transcription of the plan, tested against a literal
- * transcription of the plan's fixture, is green and reads nothing.
+ * ▶ SO THE CORPUS COULD NOT FALSIFY THESE THREE CHECKS UNTIL 2026-09-01, AND 16 SIDECARS
+ * IS A SNAPSHOT, NOT A RETIREMENT OF THE DISCIPLINE BELOW. For 185 of the 201 there is
+ * still no v2 sidecar to read, and the 16 that exist were all written by ONE producer
+ * (`api-translate`) on ONE day — so a check and a fixture can still agree with each
+ * other, both disagree with the producer, and stay green on everything the paid run did
+ * not happen to touch. That is not hypothetical: **the plan specifies A4 as reading
+ * `run.unwrapped[]`, and `buildRunRecord()` has never written that key** — it writes
+ * `unwrappedCount` and `unwrappedByType`. A literal transcription of the plan, tested
+ * against a literal transcription of the plan's fixture, is green and reads nothing.
+ * ⚠️ The 16 do NOT retire that risk; they narrow it. `docx-import` and
+ * `backfill-provenance` write v2 WITHOUT a run key and are still wholly unrepresented.
  *
  * ▶ THE STRUCTURAL ANSWER, AND IT IS THE POINT OF THIS FILE: every fixture that is
  * meant to be READ is built by CALLING `buildRunRecord()`. A producer-side rename then
@@ -69,11 +73,11 @@ function cleanRecord(over = {}) {
 
 const v2 = (run) => ({ provenance: { schemaVersion: 2, tool: 'api-translate', run } });
 
-describe('the premise: the committed corpus is v1 today', () => {
+describe('the premise: the corpus is v1 except the 16 units the paid run bought', () => {
   // ⚠️ A PREMISE PIN, NOT A REGRESSION PIN. It is EXPECTED to go red the moment the
   // clean-break run writes its first sidecar. When it does, that is the corpus moving
   // — update the numbers in the commit that observes it, do not delete the test.
-  it('200 sidecars across the two kept books, 200 with a tool, 0 with a run record', () => {
+  it('201 sidecars across the two kept books, 201 with a tool, 16 with a run record', () => {
     const found = [];
     const walk = (p) => {
       for (const e of fs.readdirSync(p, { withFileTypes: true })) {
@@ -89,28 +93,31 @@ describe('the premise: the committed corpus is v1 today', () => {
       byBook[b] = found.length - before;
     }
     // The SPLIT, not just the total: a glob that swept in a third book would otherwise
-    // still satisfy a bare `toBe(200)` by coincidence.
-    expect(byBook).toEqual({ 'efnafraedi-2e': 150, 'lifraen-efnafraedi': 50 });
-    expect(found).toHaveLength(200);
+    // still satisfy a bare `toBe(201)` by coincidence.
+    expect(byBook).toEqual({ 'efnafraedi-2e': 151, 'lifraen-efnafraedi': 50 });
+    expect(found).toHaveLength(201);
 
-    // 🔴 STATE THE POPULATION IN THE SAME BREATH AS THE NUMBER, because this file's 200
+    // 🔴 STATE THE POPULATION IN THE SAME BREATH AS THE NUMBER, because this file's 201
     // is NOT the population every other number in this suite family uses. The sibling
     // suite counts `*-segments.is.md` with `chapter-metadata-*` DELIBERATELY EXCLUDED
     // (chemistry 149, organic 48); this walk counts SIDECARS and excludes nothing, so it
-    // is 197 module sidecars PLUS 3 chapter-metadata ones. Both numbers are right and
-    // they reconcile exactly — but a reader comparing 200 against 207 without this note
+    // is 197 module sidecars PLUS 4 chapter-metadata ones. Both numbers are right and
+    // they reconcile exactly — but a reader comparing 201 against 207 without this note
     // is comparing populations, which is this repo's commonest error. Asserted rather
     // than merely commented, so the reconciliation stays checkable.
     const metadata = found.filter((f) => path.basename(f).startsWith('chapter-metadata'));
-    expect(metadata).toHaveLength(3);
+    expect(metadata).toHaveLength(4);
     expect(found.length - metadata.length).toBe(197); // 149 chemistry + 48 organic modules
 
     const parsed = found.map((f) => JSON.parse(fs.readFileSync(f, 'utf8')));
     // The positive control. Without it, "0 with a run record" is what a broken walk
     // returns — an absence you manufactured is not an answer.
-    expect(parsed.filter((p) => p.tool !== undefined)).toHaveLength(200);
-    expect(parsed.filter((p) => p.schemaVersion === 2)).toHaveLength(0);
-    expect(parsed.filter((p) => p.run !== undefined)).toHaveLength(0);
+    expect(parsed.filter((p) => p.tool !== undefined)).toHaveLength(201);
+    // ⚠️ 16 AND 16 COINCIDE BY CIRCUMSTANCE, NOT BY DESIGN — only `api-translate` has
+    // written v2 to the kept books; `docx-import` and `backfill-provenance` write v2
+    // WITHOUT a run (see the docstring below). Keep these as TWO assertions.
+    expect(parsed.filter((p) => p.schemaVersion === 2)).toHaveLength(16);
+    expect(parsed.filter((p) => p.run !== undefined)).toHaveLength(16);
   });
 });
 
