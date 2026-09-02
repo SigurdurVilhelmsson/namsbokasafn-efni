@@ -9,7 +9,7 @@
   "_renderDpi": "OpenStax rendered the published jpgs at exactly 200 dpi from these same PDFs (verified pixel-exact, 468x275.642pt -> 1300x766). Rendering at any other dpi breaks check.py's oracle comparison.",
 
   "outputFormat": "svg",
-  "_outputFormat": "DECISION OPEN - see REGISTER.md item 5. The existing 691 chemistry files are SVG with real <text> plus a base64-embedded Liberation Sans subset; this pipeline currently emits raster. Do not treat this value as settled.",
+  "_outputFormat": "SETTLED 2026-09-02 by measurement in a real browser inside <img> - see REGISTER.md item 5. SVG loses 0.27px on layout fidelity (invisible), ties at ZERO on selectable text (an <img>-loaded SVG contributes 0 chars to the DOM), and wins decisively on sharpness at 2x and on size (2.8x). The embedded subset font is load-bearing: stripping it changes 4.2% of pixels.",
 
   "editionPrecedence": ["updates-2e", "first-edition"],
   "_editionPrecedence": "The OpenStax delivery is TWO trees: all 1st-edition images, and a second tree holding ONLY images updated or added for the 2nd edition. A figure present in the updates tree MUST be sourced from there; the 1st-edition tree is the fallback. Getting this backwards silently translates a superseded illustration. Enforced by sources.py, not by this comment.",

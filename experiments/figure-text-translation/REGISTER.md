@@ -44,16 +44,44 @@ through Málstaður.
   corpus and mutation-verified. Was `_is` while all 691 files are `_IS`, and the match is
   case-sensitive, so a bare run matched **0** files and printed a success line.
 
+- **⑤ OUTPUT FORMAT IS SVG — confirmed by measurement, but NOT for the reason usually given.**
+  Resolved 2026-09-02 against the criteria fixed before measuring: fidelity in a real
+  browser, size, selectable text, and rendering without the reader's font. Evidence:
+  [`evidence/09-format-fidelity-overlay.png`](evidence/09-format-fidelity-overlay.png),
+  [`evidence/10-format-sharpness-at-2x.png`](evidence/10-format-sharpness-at-2x.png).
+  Both formats were rendered by **Chromium inside `<img>`** — how `cnxml-render.js`
+  actually publishes a figure, and the strictest case, since an SVG loaded that way is
+  sandboxed and can fetch no stylesheet and no webfont.
+
+  | criterion | raster | SVG | winner |
+  |---|---|---|---|
+  | layout fidelity vs the oracle (per-block ink centroid) | **1.545 px** mean | 1.815 px mean | raster, by 0.27 px ≈ 0.1 pt |
+  | whole-image pixel diff vs oracle | **2.70 %** | 3.32 % | raster — but confounded, see below |
+  | file size | 108 KB jpg / 138 KB png | **38 KB** | **SVG, 2.8×** |
+  | text selectable / Ctrl-F findable in `<img>` | no | **no** | **tie at ZERO** |
+  | sharp at 2× (retina, zoom, print) | blurry, colour-fringed | **crisp** | **SVG, decisively** |
+  | consistent with the 691 already shipped | no | **yes** | SVG |
+
+  🔴 **The argument usually made for SVG — selectable, searchable, accessible text — IS
+  FALSE HERE, and it was the reason to prefer SVG.** Measured: an SVG published through
+  `<img>` contributes **0 characters** to the page DOM and its document is unreachable
+  from script. It is an image. **SVG had to win on other grounds, and it did.**
+  ⚠️ It wins anyway because the 0.27 px fidelity loss is invisible (≈ 0.1 pt) while the
+  2× sharpness difference is obvious to any reader who zooms or prints.
+  - ⚠️ **The embedded font is load-bearing and this was verified, not assumed** — the face
+    is named `FigIS`, which no system carries, so a fallback cannot rescue it; stripping
+    the `@font-face` changes **4.20 %** of pixels.
+  - ⚠️ **A sharpness PROXY gave the opposite answer and was wrong.** Edge-energy scored the
+    blurry 2× raster *higher* (2.98 % vs 2.68 %) because a blocky upscale has hard steps
+    while a correct antialiased render has gradients. **Looking at the crop settled it.**
+    Another instance of this session's pattern: the metric measured something adjacent to
+    the claim.
+  - The residual 0.27 px is probably closable: cairo measures with hinted advances while
+    the browser uses the embedded font's unhinted metrics. Measuring with fontTools rather
+    than cairo would likely align them. Not done.
+
 ## Open
 
-- **⑤ OUTPUT FORMAT — decide before building further.** The existing 691 chemistry files
-  are **SVG with real `<text>` and a subsetted Liberation Sans embedded as a base64
-  `@font-face`** (~149 KB mean). That is a better artifact than the raster this
-  experiment currently emits: scalable, selectable, re-editable, and it renders correctly
-  without the reader having the font.
-  ▶ **Recommendation: adopt it — but per [USER] 2026-09-02, only after confirming it
-  works and beats anything else on offer.** Not yet confirmed. Measure: file size,
-  render fidelity against the published raster, and behaviour inside `<img>`.
 - **⑥ Auto-wrap is not built.** Málstaður returns ONE string per block; the composer is
   currently handed pre-split lines. Real text will not wrap itself.
 - **⑦ Type0/CID fonts are unreadable by this parser.** 1 of 36 chapter-1 figures
@@ -63,6 +91,14 @@ through Málstaður.
   half a glyph. Visibly fine for new text; not registration-exact.
 - **⑨ No real MT has been run.** Every Icelandic string produced so far is placeholder
   probe text written by hand.
+
+- **⑬ THE COMMITTED SVG CORPUS IS 92 % FONT PAYLOAD — ~97 MB of ~105.5 MB.** Measured over
+  a 40-file random sample of the 691. The committed files embed a large TTF face per file;
+  subsetting to the glyphs actually used and flavouring as woff2 cut one file's payload
+  **88 KB → 17 KB (5×)** and the whole file **101 KB → 38 KB**. Extrapolated, re-exporting
+  the corpus this way would reclaim on the order of 75–80 MB. Relevant because `.git` is
+  already 4.2 GB with a documented image-history concern. **Not attempted; this is an
+  opportunity, not a defect in the figures themselves.**
 
 ## Known defects in the EXISTING translated corpus (found while surveying; not caused here)
 

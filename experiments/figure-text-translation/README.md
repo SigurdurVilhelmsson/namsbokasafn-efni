@@ -98,6 +98,8 @@ published.jpg ──check.py─────────────────�
 | `compose.py` | stage 3 — lay text back; `--control` re-injects the English |
 | `check.py` | stage 4 — diff against the published raster, write an overlay |
 | `census.py` | survey a directory of figure PDFs: live text? substitutable font? prose vs verbatim? |
+| `svgout.py` | emit SVG: vector artwork + real `<text>` + a woff2 **subset** of the figure's own font |
+| `render-check.mjs` | rasterise a figure in Chromium **inside `<img>`** — the only rendering a reader ever sees |
 | `sources.py` | resolve a figure basename to its authoritative source across the two edition trees |
 | `test_sources.py` | tests that resolver, including a control that reverses the precedence |
 | `translations.json` | ⚠️ **placeholder probe text, NOT a translation** |
@@ -109,7 +111,7 @@ experiment. Install them wherever you like and point `FIGTEXT_PYLIBS` at it:
 
 ```bash
 cd experiments/figure-text-translation
-python3 -m pip install --target=./pylibs pikepdf pycairo pillow   # ~42 MB, gitignored
+python3 -m pip install --target=./pylibs pikepdf pycairo pillow fonttools brotli
 export FIGTEXT_PYLIBS=./pylibs
 PDF=~/dev/repos/CNX_Chem_01_01_SciMethod.pdf
 
@@ -118,6 +120,8 @@ python3 strip-text.py  "$PDF"
 python3 compose.py --control     # re-inject the English
 python3 check.py ../../books/efnafraedi-2e/01-source/media/CNX_Chem_01_01_SciMethod.jpg --control
 python3 compose.py               # then the Icelandic
+python3 compose.py --svg         # SVG output (the settled format - REGISTER.md item 5)
+node render-check.mjs out/control.svg out/browser.png   # render it as a reader would
 ```
 
 `pdftocairo` (poppler-utils) must be on `PATH`.

@@ -22,6 +22,8 @@ import figtext as FT
 DPI = 200.0
 S = DPI / 72.0
 CONTROL = '--control' in sys.argv
+SVG = '--svg' in sys.argv
+ITEMS = []   # one entry per drawn string: the SINGLE layout, rendered two ways
 
 meta = json.loads((OUT / 'meta.json').read_text())
 W_PT, H_PT = meta['page']
@@ -121,6 +123,9 @@ for b in blocks:
         for ch, w in zip(new, adv):
             th = a + side * (w / R) / 2
             px, py = dev(cx + R * math.cos(th), cy + R * math.sin(th))
+            rot_deg = math.degrees(th + side * math.pi / 2)
+            ITEMS.append(dict(text=ch, x=px / S, y=H_PT - py / S, rot=rot_deg,
+                              size=sz, bold=b[0]['font'] in BOLD, rgb=col, dx=-w / 2))
             ctx.save(); ctx.translate(px, py); ctx.rotate(-(th + side * math.pi / 2))
             ctx.set_source_rgb(*col); ctx.move_to(-w * S / 2, 0); ctx.show_text(ch)
             ctx.restore()
@@ -154,6 +159,8 @@ for b in blocks:
         y = a_ * math.sin(rad) + p_ * math.cos(rad)
         px, py = dev(x, y)
         setfont(fr, sz)
+        ITEMS.append(dict(text=t, x=px / S, y=H_PT - py / S, rot=rot,
+                          size=sz, bold=fr['font'] in BOLD, rgb=cmyk(fr['fill']), dx=0.0))
         ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
         ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
         ctx.restore()
@@ -161,6 +168,11 @@ for b in blocks:
 
 name = 'control.png' if CONTROL else 'translated.png'
 out.write_to_png(str(OUT / name))
+if SVG:
+    from svgout import write_svg
+    svg_name = ('control' if CONTROL else 'translated') + '.svg'
+    n = write_svg(OUT / 'artwork.svg', OUT / svg_name, ITEMS, H_PT)
+    print(f"wrote out/{svg_name}  ({n} bytes)")
 print(f"{len(blocks)} blocks")
 print('\n'.join(report))
 if missing:
