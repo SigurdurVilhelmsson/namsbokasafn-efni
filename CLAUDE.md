@@ -860,6 +860,19 @@ marker-conservation check reports clean while the marker vanishes.
   `KNOWN_BRACKET_TYPES`** (`tools/__tests__/api-translate-span-marker.test.js`); it named the
   offending type and file unprompted. **An enumeration wrong twice should become a checked
   property.**
+🔴 **DURABLE — A SEGMENT WHOSE ENTIRE CONTENT IS ONE BRACKET MARKER COMES BACK FROM THE PAID MT
+VERBATIM. YOU PAY FOR IT AND GET NOTHING.** Measured 2026-09-01 on the first fresh run: whole-segment
+`[[docref:…]]` returned untranslated **49 of 49 — a saturated rate, so it is a CATEGORY, not a
+sample.** These are key-term index labels, i.e. **reader-visible English inside an Icelandic
+chapter**. ⚠️ **The residue check sees a fraction of them** (2 of 36 in the worst module, an 18×
+understatement), so **its count is not the exposure** — census the shape yourself before believing a
+clean residue line. ▶ **The control that makes this a finding rather than a suspicion belongs in the
+same measurement:** in that module 36 docref-only items returned verbatim while **all 4 plain-text
+items translated**, and opaque placeholders behaved correctly (`MEDIA` 2285/2292 untranslated). ▶
+**Before buying a chapter, count its whole-segment prose markers** (`docref`, `link`, `b`, `i`, `em`,
+`term`, `fn` — never `MATH`/`MEDIA`/`TABLE`, which are *correctly* opaque). `stripTermFnToPaired` in
+`api-translate.js` is the existing shape for sending such a payload as translatable text. Instances
+and counts live in the active register, never here.
 - ⚠️ **AND THE ENUMERATIONS ARE PLURAL — do not trust this list, re-derive it.** Besides the two
   in `api-translate.js`, marker/tag types are enumerated in `tools/lib/handled-tags.js`
   (`HANDLED_INLINE`, which `cnxml-render.js` also derives seam sets from),
