@@ -106,7 +106,7 @@ for b in blocks:
             missing.append(key)
             new = key if arc else en_lines
         else:
-            new = TR[key]
+            new = FT.normalise_block_value(TR[key], arc)
 
     if arc:
         pts = [(r['x'], r['y']) for r in b]

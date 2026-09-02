@@ -85,3 +85,20 @@ def looks_verbatim(text):
     bought."""
     import re as _re
     return not _re.search(r'[A-Za-z\u00C0-\u017F]{3,}', text)
+
+
+def normalise_block_value(value, arc):
+    """A sidecar block value is ONE STRING; the composer wraps it itself.
+
+    Accepts a list for backward compatibility with the placeholder translation
+    files, but never requires one. Pre-split lines are exactly what let a wrap
+    defect hide during the placeholder era: the composer was always handed line
+    breaks somebody else had already decided, so the one thing the real MT does
+    differently was the one thing never exercised.
+
+    An ARC block is laid out glyph by glyph along a fitted circle, so it stays a
+    single string; a non-arc block becomes a list of lines.
+    """
+    if arc:
+        return value if isinstance(value, str) else ''.join(value)
+    return [value] if isinstance(value, str) else list(value)
