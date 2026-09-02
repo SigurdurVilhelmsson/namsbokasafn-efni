@@ -705,9 +705,19 @@ const PAIRED_WIRE_TYPES = ['term', 'fn', 'docref'];
  */
 const PAIRED_REQUIRES_ID = new Set(['docref']);
 
-/** Per-type field name on a segment record. Kept as literal fields rather than a
- *  map because `termIds`/`fnIds` are asserted by name in the committed tests. */
-const PAIRED_ID_FIELD = { term: 'termIds', fn: 'fnIds', docref: 'docrefIds' };
+/**
+ * Per-type field name on a segment record — `term` -> `termIds`, and so on.
+ *
+ * ⚠️ DERIVED, not hand-maintained, and the reason is a measured near-miss: with a
+ * literal table, a type added to `PAIRED_WIRE_TYPES` and forgotten here does not
+ * fail. `record[undefined]` coerces to the string key `'undefined'` and `idsFor`
+ * reads the same key back, so the omission is invisible to every test — until a
+ * SECOND type is added the same way, at which point both write `'undefined'`, the
+ * later overwrites the earlier, and every segment carrying either marker degrades
+ * to English across the corpus. A silent, self-consistent omission that only
+ * detonates on the next change is exactly the shape to design out.
+ */
+const PAIRED_ID_FIELD = Object.fromEntries(PAIRED_WIRE_TYPES.map((t) => [t, `${t}Ids`]));
 
 /** Rewrite every `[[type:...]]` in `text` to paired `[[type]]...[[/type]]`,
  *  nesting-aware; returns { text, ids } with captured ids (null when absent).
@@ -924,6 +934,34 @@ export function reattachIds(wireOutput, segments) {
           got: spans.length,
         });
         allOk = false;
+        continue;
+      }
+      // 🔴 THE COUNT GUARD IS NOT ENOUGH FOR A TYPE WHOSE `|` IS STRUCTURAL.
+      // For PAIRED_REQUIRES_ID types the pipe separates prose from an id that
+      // `cnxml-inject.js` splits on, so a model-authored payload can corrupt the
+      // id itself while every existing guard stays green — 1 span == 1 captured
+      // id, so the count matches; the on-disk marker is still one `[[docref:`,
+      // so bracketMarkerDelta cancels to {}; and the marker IS consumed at
+      // inject, so assertNoMarkerResidue sees nothing. Measured end to end:
+      //   `[[docref]][[/docref]]`      -> `<link document="|m00032" …/>`
+      //   `[[docref]]al|kóhól[[/docref]]` -> `<link document="kóhól|m00032" …>al</link>`
+      // — a bogus cross-reference and a truncated label, silently. `term`/`fn`
+      // are immune because inject's id class excludes `|`, so docref borrowed the
+      // wire mechanism without inheriting that backstop. Before this change no
+      // docref payload was ever model-authored; now 704 are.
+      if (PAIRED_REQUIRES_ID.has(type)) {
+        const bad = spans.filter(
+          (s) => s.inner === '' || splitTopLevelId(s.inner).id !== null
+        ).length;
+        if (bad > 0) {
+          mismatches.push({
+            segId: rec.segId,
+            type: `${type}-payload`,
+            expected: 0,
+            got: bad,
+          });
+          allOk = false;
+        }
       }
     }
 

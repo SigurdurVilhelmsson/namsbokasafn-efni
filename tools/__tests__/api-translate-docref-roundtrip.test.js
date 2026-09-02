@@ -149,6 +149,68 @@ describe('reattachIds — docref (§C118 ⑯)', () => {
   });
 });
 
+// ─── The payload guard: a model-authored inner must not corrupt the id ────
+
+describe('reattachIds refuses a docref payload that would corrupt the document id', () => {
+  // Before §C118 ⑯ no docref payload was ever model-authored — the marker rode
+  // the wire opaque and came back verbatim, 36 of 36. The paired rewrite makes
+  // 704 of them model output, and `docref`'s `|` is STRUCTURAL: `cnxml-inject.js`
+  // splits on it to build `document=`. `term`/`fn` are immune because inject's
+  // id character class excludes `|`, so docref inherited the wire mechanism
+  // without that backstop. Measured, both shapes reach a bogus cross-reference
+  // with every other guard green — count matches (1 span, 1 id), delta cancels
+  // to {}, and the marker IS consumed at inject so the residue gate sees nothing.
+  it('degrades when the model returns an EMPTY span', () => {
+    const { segments } = stripTermFnToPaired(
+      SEG('m1:item:1', '[[docref:alcohol|m00032#term-00006]]')
+    );
+    const { text, mismatches } = reattachIds(SEG('m1:item:1', '[[docref]][[/docref]]'), segments);
+    // Would otherwise have written `[[docref:|m00032#term-00006]]`, which inject
+    // resolves to `<link document="|m00032" target-id="term-00006"/>`.
+    expect(text).toContain('[[docref:alcohol|m00032#term-00006]]');
+    expect(text).not.toContain('[[docref:|');
+    expect(mismatches).toEqual([
+      { segId: 'm1:item:1', type: 'docref-payload', expected: 0, got: 1 },
+    ]);
+  });
+
+  it('degrades when the model puts a bare `|` inside the translated text', () => {
+    const { segments } = stripTermFnToPaired(
+      SEG('m1:item:2', '[[docref:alcohol|m00032#term-00006]]')
+    );
+    const { text, mismatches } = reattachIds(
+      SEG('m1:item:2', '[[docref]]al|kóhól[[/docref]]'),
+      segments
+    );
+    // Would otherwise have written `[[docref:al|kóhól|m00032#term-00006]]`, which
+    // inject splits at the FIRST pipe: `<link document="kóhól|m00032" …>al</link>`.
+    expect(text).toContain('[[docref:alcohol|m00032#term-00006]]');
+    expect(mismatches.some((m) => m.type === 'docref-payload')).toBe(true);
+  });
+
+  it('does NOT degrade an ordinary translation, nor a nested-marker payload', () => {
+    // The control. Without it, "degrade on a bad payload" is satisfiable by
+    // degrading everything, which would silently restore the original defect.
+    const { segments } = stripTermFnToPaired(
+      SEG('m1:item:3', '[[docref:acetal, R[[sub:2]]C|m00221#term-00001]]')
+    );
+    const { text, mismatches } = reattachIds(
+      SEG('m1:item:3', '[[docref]]asetal, R[[sub:2]]C[[/docref]]'),
+      segments
+    );
+    expect(text).toContain('[[docref:asetal, R[[sub:2]]C|m00221#term-00001]]');
+    expect(mismatches).toEqual([]);
+  });
+
+  it('leaves term/fn payloads unguarded — their pipe is not structural at inject', () => {
+    // Scoped to PAIRED_REQUIRES_ID on purpose: a term legitimately has no id,
+    // and inject's term id class excludes `|`, so the same payload is harmless.
+    const { segments } = stripTermFnToPaired(SEG('m1:para:4', 'A [[term:one|term-1]] B'));
+    const { mismatches } = reattachIds(SEG('m1:para:4', 'Á [[term]]ei|nn[[/term]] B'), segments);
+    expect(mismatches).toEqual([]);
+  });
+});
+
 // ─── The chunk round trip, with a stub wire ───────────────────────────────
 
 describe('translateChunk sends docref prose to the API and returns it id-anchored', () => {
@@ -205,12 +267,20 @@ describe('translateModule refuses to write a wire-only [[docref]] (Finding A.2, 
 
 // ─── The corpus anchor ────────────────────────────────────────────────────
 
-/** Every `*-segments.en.md` the tool actually reads, for the two kept books. */
+/**
+ * Every `*-segments.en.md` the tool actually reads, for the two kept books.
+ *
+ * ⚠️ THROWS on a missing book root rather than skipping it. A `continue` here
+ * was measured to let the whole of efnafraedi-2e drop out of the sweep with
+ * every non-vacuity guard still satisfied by lifraen-efnafraedi alone — a
+ * silently halved population reading as a full pass.
+ */
 function keptBookSegmentFiles() {
   const out = [];
   for (const book of KEPT_BOOKS) {
     const root = path.join(REPO_ROOT, 'books', book, '02-for-mt');
-    if (!fs.existsSync(root)) continue;
+    if (!fs.existsSync(root)) throw new Error(`corpus anchor: missing book root ${root}`);
+    const before = out.length;
     for (const chapter of fs.readdirSync(root)) {
       const dir = path.join(root, chapter);
       if (!fs.statSync(dir).isDirectory()) continue;
@@ -223,8 +293,21 @@ function keptBookSegmentFiles() {
         }
       }
     }
+    // Per-book floor: a book present but EMPTY is the same silent halving.
+    if (out.length - before < 100) {
+      throw new Error(`corpus anchor: ${book} contributed only ${out.length - before} files`);
+    }
   }
   return out;
+}
+
+/** Colon-form docrefs whose whole payload is a bare document reference. */
+function countBareDocrefs(text) {
+  let n = 0;
+  for (const m of text.matchAll(/\[\[docref:([^\n]*?)\]\]/g)) {
+    if (BARE_DOCREF_PAYLOAD.test(m[1])) n++;
+  }
+  return n;
 }
 
 /**
@@ -260,27 +343,36 @@ describe('CORPUS ANCHOR — no prose docref rides the wire opaque (§C118 ⑯)',
     expect(leakedProseDocrefs('x [[docref:m00164]] [[docref:m68674#fs-id1]] y')).toEqual([]);
   });
 
-  it('every prose docref in the kept books becomes a paired wire span', () => {
+  it('every prose docref becomes a paired span AND every bare one survives, count for count', () => {
     const files = keptBookSegmentFiles();
     let paired = 0;
-    let bare = 0;
+    let bareOnDisk = 0;
+    let bareOnWire = 0;
     const leaks = [];
     for (const file of files) {
       const text = fs.readFileSync(file, 'utf8');
       if (!text.includes('[[docref:')) continue;
       const { wireText, segments } = stripTermFnToPaired(text);
       for (const s of segments) paired += s.docrefIds.length;
-      bare += (wireText.match(/\[\[docref:/g) || []).length;
+      bareOnDisk += countBareDocrefs(text);
+      bareOnWire += countBareDocrefs(wireText);
       for (const payload of leakedProseDocrefs(wireText)) {
         leaks.push(`${path.relative(REPO_ROOT, file)}: [[docref:${payload}]]`);
       }
     }
-    // Non-vacuity, BOTH populations — computed over the whole corpus rather
-    // than over the firing set, so neither guard can die with the thing it
-    // guards. A repaired corpus must not read as a passing sweep.
+    // Non-vacuity for the whole sweep, computed over the corpus rather than
+    // over the firing set, so neither guard can die with the thing it guards.
     expect(files.length).toBeGreaterThan(100);
-    expect(paired).toBeGreaterThan(500); // the prose docrefs the fix exists for
-    expect(bare).toBeGreaterThan(50); // the bare ones it must NOT touch
+    expect(paired).toBeGreaterThan(500);
+    expect(bareOnDisk).toBeGreaterThan(50);
+
+    // `leaks` catches UNDER-rewriting: a prose docref still colon-form on the
+    // wire. It is structurally blind to OVER-rewriting, because a wrongly
+    // rewritten bare docref leaves the inspected set entirely — and the
+    // identity round-trip below cannot see it either, since a bare marker
+    // captured with a null id reattaches byte-identically. So the gate needs
+    // its own conservation law, in the other direction:
+    expect(bareOnWire).toBe(bareOnDisk);
     expect(leaks).toEqual([]);
   });
 
@@ -333,7 +425,11 @@ describe('END TO END — m00038 through translateModule with an opaque-model stu
       REPO_ROOT,
       'books/lifraen-efnafraedi/02-for-mt/ch03/m00038-segments.en.md'
     );
-    if (!fs.existsSync(inPath)) return; // corpus not present — nothing to assert
+    // A silent `return` here would turn the ONLY test that runs the real
+    // translateModule over real corpus into a green no-op — measured: with the
+    // fix reverted and this file merely RENAMED, the run went 12 red -> 11 red
+    // and this test reported PASS against fully defective code.
+    expect(fs.existsSync(inPath)).toBe(true);
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'c118-docref-e2e-'));
     const outPath = path.join(dir, 'm00038-segments.is.md');
 
