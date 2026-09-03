@@ -121,7 +121,7 @@ function sendView(res, filename) {
   const filePath = path.join(viewsDir, filename);
 
   if (fs.existsSync(filePath)) {
-    res.sendFile(filePath);
+    res.sendFile(filename, { root: viewsDir });
   } else {
     res.status(404).send('S\u00ED\u00F0a finnst ekki');
   }
