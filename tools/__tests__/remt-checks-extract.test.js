@@ -85,13 +85,33 @@ describe('E2 — bracket-marker bodies match 01-source', () => {
     expect(r.verdict).toBe(VERDICT.PASS);
   });
 
-  it('📌 L20 PREMISE PIN — SHOULD-TRIP on m68710, and reports BOTH locations', async () => {
-    // The spec's fixture note reads `m68710:716,722` — two locations for one swallow.
-    // Only raw (non-deduped) marker iteration reports both; asserting the count is what
-    // keeps `checkBracketBodies`'s raw-iteration choice from being "simplified" away.
+  it('📌 L20 REPAIR PIN — m68710 is CLEAN now, and E2 still compared its bodies', async () => {
+    // 🔴 RE-BASELINED 2026-09-02, FAIL -> PASS. This asserted `findings).toHaveLength(2)`:
+    // the spec's fixture note reads `m68710:716,722`, two locations for one swallow, and
+    // only raw (non-deduped) marker iteration reports both. The §C82 ③ re-extract REPAIRED
+    // the swallow, so E2 finds nothing here any more.
+    // ▶ REPAIR, NOT BLINDNESS, AND THE DIRECTION IS THE PROOF: measured on the pre-re-extract
+    // bytes `checkBracketBodies` gave examined 266 / findings 2; on today's bytes it gives
+    // examined 292 / findings 0. The comparable population GREW while the findings went to
+    // zero. A check that had gone blind would show `examined` FALLING.
     const r = await runCheck(E2, mod('efnafraedi-2e', 'ch04', 'm68710'));
-    expect(r.verdict).toBe(VERDICT.FAIL);
-    expect(r.findings).toHaveLength(2);
+    expect(r.verdict).toBe(VERDICT.PASS);
+    expect(r.findings).toHaveLength(0);
+    // 🔴 THE VACUITY CONTROL, AND IT IS THE WHOLE POINT OF KEEPING THIS TEST. A PASS that
+    // compared NOTHING is exactly what a broken extractor also produces — m68663 is the
+    // live proof that "0 marker bodies compared" is a reachable state on this corpus.
+    // Parsing the count (rather than a negative regex) makes a message-format change fail
+    // loudly here instead of silently disarming the control.
+    const compared = Number(r.message.match(/^(\d+) marker bodies compared/)[1]);
+    expect(compared).toBeGreaterThan(0);
+    // ⚠️ WHAT THIS TEST NO LONGER PINS, AND WHO DOES. The raw (non-deduped) marker-iteration
+    // choice was defended by the `toHaveLength(2)` above. It has TWO other live owners, and
+    // the first is STRONGER than what was retired because no re-extract can repair it:
+    //   · `bracket-body-corpus.test.js` re-plants the exact pre-C58 swallow on TODAY's bytes
+    //     behind a mutation-applied control, and asserts BOTH locations come back;
+    //   · `bracket-body-check.test.js:96` — `expect(r.examined).toBe(2); // one marker per
+    //     occurrence, not one total`.
+    // Do not trim either.
   });
 
   it('MUST-NOT-TRIP on a clean chemistry module', async () => {
