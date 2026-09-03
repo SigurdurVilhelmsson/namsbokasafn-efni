@@ -133,9 +133,24 @@ function saveBlockEdit(db, { bookId, basename, blockKey, isText, editedBy }) {
  * Every figure basename in a module, in document order, deduplicated.
  *
  * ⚠️ Figures nest arbitrarily (section > example > figure), so this walks the
- * whole structure tree rather than scanning one level. The basename idiom is
- * identical to cnxml-render.js:1079 — `path.basename(src, extname(src))` — so
+ * whole structure tree rather than scanning one level. The basename idiom is a
+ * plain `path.basename(src, extname(src))`, so
  * `../../media/CNX_Chem_01_01_ChemWeb.jpg` -> `CNX_Chem_01_01_ChemWeb`.
+ *
+ * 🔴 DO NOT "UNIFY" THIS WITH THE RENDERER'S DERIVATION. This comment used to
+ * say the idiom was identical to the renderer's, and that WAS true — which is
+ * precisely why the review badge fired on zero production figures. The two
+ * sides read different vintages of the same figure and must derive the key
+ * differently:
+ *   - HERE the input is 02-structure/, extracted from 01-source, so the src
+ *     basename already IS the English one and a plain basename is correct.
+ *   - the RENDERER's input is 03-translated/, cnxml-inject's OUTPUT, where a
+ *     mapped `<image src>` has been swapped to the translated variant; it must
+ *     invert books/<slug>/media/image-mapping.json first (see
+ *     sidecarBasenameForSrc in cnxml-render.js).
+ * Both then agree on the ENGLISH basename, which is the join key the sidecar
+ * and applyApprovedFigureEdits are written against. Copying either derivation
+ * onto the other side reintroduces the defect.
  *
  * Returns the caption/alt segment ids alongside, because the caller needs the
  * module's own prose as captionDivergence's reference text.
@@ -186,11 +201,11 @@ function listModuleFigures(bookSlug, chapter, moduleId) {
  * ⚠️ Two different "nothings" here and they mean opposite things:
  *  - NO SIDECAR -> returns null, and the caller must SKIP the figure. It is the
  *    plain English OpenStax figure; there are ~1,500 of them and listing them as
- *    pending review would bury the handful that are real work. Same decision the
- *    renderer makes at cnxml-render.js:1085.
+ *    pending review would bury the handful that are real work. Same decision
+ *    renderFigure makes in cnxml-render.js (the `if (sidecar)` guard).
  *  - NO figure_review ROW -> the NORMAL day-one state of a translated figure.
  *    getFigure() returns null for it, so fall back to the sidecar-derived state,
- *    which is the identical call the renderer makes at cnxml-render.js:1088.
+ *    which is the identical effectiveState() call renderFigure makes.
  *    Returning getFigure()'s null straight to the client would blank every
  *    never-reviewed figure.
  */
