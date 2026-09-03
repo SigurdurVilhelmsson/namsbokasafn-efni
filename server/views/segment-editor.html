@@ -261,6 +261,111 @@
       padding: var(--spacing-sm) 0;
     }
 
+    /* --- Figure-text review cards --- */
+    .figure-review {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .figure-review h3 {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin: 0 0 var(--spacing-sm);
+    }
+
+    .figure-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md, 6px);
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .figure-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .figure-state-badge {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 0.125rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .figure-state-badge.state-approved {
+      color: var(--success);
+      border-color: var(--success);
+    }
+
+    .figure-state-badge.state-flagged {
+      color: var(--warning);
+      border-color: var(--warning);
+    }
+
+    .figure-note {
+      margin: 0 0 var(--spacing-sm);
+      padding: var(--spacing-sm);
+      border-left: 3px solid var(--warning);
+      background: var(--bg-hover);
+      white-space: pre-wrap;
+    }
+
+    .figure-blocks {
+      list-style: none;
+      margin: 0 0 var(--spacing-sm);
+      padding: 0;
+    }
+
+    .figure-block {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      padding: 0.375rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .figure-block-key {
+      flex: 0 0 14rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      overflow-wrap: anywhere;
+    }
+
+    .figure-block-input {
+      flex: 1 1 16rem;
+      min-width: 10rem;
+    }
+
+    .figure-warning {
+      flex: 1 1 100%;
+      font-size: 0.75rem;
+      color: var(--warning);
+      font-style: normal;
+    }
+
+    .figure-card-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+    }
+
+    .figure-note-input {
+      flex: 1 1 14rem;
+      min-width: 8rem;
+    }
+
     /* --- Segment table --- */
     .segments-table {
       width: 100%;
@@ -1585,6 +1690,19 @@
             <span class="category-badge omission">Úrfelling — vantar efni</span>
           </div>
         </details>
+
+        <!--
+          Figure-text review. Sits beside the segment rows rather than among
+          them: the segments are <tr>s in a tbody the renderer replaces
+          wholesale, and the /figures payload carries no positional key, so a
+          card cannot be placed at a figure's document position without a
+          contract change. Cards keep the payload's own order, which IS
+          document order (listModuleFigures walks the structure tree).
+        -->
+        <div class="figure-review" id="figure-review-section" style="display: none;">
+          <h3>Myndatexti til yfirlestrar</h3>
+          <div id="figure-cards"></div>
+        </div>
 
         <div class="table-wrap">
           <table class="segments-table">

@@ -1,0 +1,8 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_01_ChemWeb",
+ "blocks": {
+  "Chemistry": "Efnafræði",
+  "Biochemistry and molecular biology": "Lífefnafræði og sameindalíffræði"
+ }
+}

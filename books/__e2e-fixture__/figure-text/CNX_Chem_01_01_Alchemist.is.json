@@ -1,0 +1,8 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_01_Alchemist",
+ "blocks": {
+  "Alchemist's workshop": "Verkstæði gullgerðarmanns",
+  "Furnace temperature 37.5 C": "Hiti ofns 37.5 C"
+ }
+}
