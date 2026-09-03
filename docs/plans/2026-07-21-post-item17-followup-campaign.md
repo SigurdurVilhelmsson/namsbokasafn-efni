@@ -4,6 +4,62 @@
 
 ## ⏩ RESUME — state as of 2026-09-03
 
+🔴 **THE `data-en` UNIT IS IN FLIGHT ON `feat/term-english-data-attribute`. TASKS 1–2 ARE DONE;
+TASKS 3–6 WERE MEASURED UNSAFE AS WRITTEN AND ARE BEING RE-DERIVED.** This supersedes the
+line-61 RESUME's *"THE NEXT ACTION IS THE TWO RULINGS ⑱ COULD NOT TAKE"* — **both rulings were
+already merged** (`5a01f2b7`, `58b0031e`, confirmed by `git merge-base --is-ancestor`), so that
+sentence had been stale since 2026-09-02. ⚠️ **This is the third time a "next action" line in
+this file has outlived the commits that discharged it.** The unit is §C118 ⑰'s designed
+successor: [spec](../superpowers/specs/2026-09-01-term-english-attribute-design.md) ·
+[plan](../superpowers/plans/2026-09-02-term-english-attribute.md), whose 🔴 AMENDMENTS block now
+owns the corrections and **must be read before any task**.
+- ✅ **SHIPPED:** `b0abe8d8` term-text primitives · `cd615b9c` the inject rewire · `92f1ab81`
+  `termEnglish` in the manifest + 13 regenerated ch03 manifests · `6e877f6d`/`44a2ffe5` the plan
+  amendments · `fb64e653` a CLAUDE.md durable rule that had inverted.
+- 🔴 **THE PLAN'S OWN TASK 1 WOULD HAVE CORRUPTED CHEMISTRY NOTATION, AND THE INVARIANT WAS
+  ALREADY WRITTEN IN THE CODE IT WAS EDITING.** `stripTermMarkersToText` folds case **before**
+  substituting MathML, so symbols escape the fold; the prescribed rewire substitutes first.
+  Measured with the real equations maps: **6 real inputs** — `ΔHf° → δhf°`, `ΔGf° → δgf°`,
+  `Eker° → eker°`. Both call sites **write** the value into output CNXML as `(e. …)`, and the
+  affected glosses are in **published HTML today**
+  (`05-publication/mt-preview/chapters/05/5-key-terms.html`, `.../17/17-key-terms.html`).
+  `stripTermMarkersToText`'s own docstring names it *"the m68852 invariant"* and spells out
+  *"ΔHf° must not become δhf°"*. ▶ **A COMMENT STATING A RULE IS NOT THE RULE.** Fixed by
+  splitting the lib into three primitives; verified **by value over 82,979 real call-site inputs,
+  0 divergences**, with a control that catches the prescribed version, and the guards proven
+  non-vacuous by mutation (4 red / 20 green — the 20 are the control).
+- ⚠️ **AND THE PLAN'S OWN SAFETY NET WOULD HAVE SHIPPED IT.** Its Step 6 acceptance is a red
+  COUNT; the whitespace half of the same change breaks three *committed* assertions, so the
+  suite goes red for the whitespace reason only, and Step 6's remedy text points the fixer at
+  whitespace. Repair that and Step 6 goes green with `δhf°` shipped — **no existing test covered
+  the case invariant, because its MathML fixture is the already-lowercase `x`.**
+- 🔴 **`60 failed / 18 files` WAS NEVER A TEST COUNT.** The plan's own cited source,
+  `test-results/c118-53-goldens-classification-2026-09-01.json`, reads
+  `totals: {files: 16, findings: 60}` — **60 counts agent FINDINGS over 16 files.** A transposed
+  counting unit, then used as a gate. The live floor is this file's own 19 assertions / 10 files
+  (+ `findTermsGolden` as an 11th red FILE with zero failing assertions).
+- 🔴 **TASKS 3–6 ARE BLOCKED ON A RE-DERIVATION, NOT A TWEAK — the consumer architecture is
+  wrong.** Confirmed by execution: `renderTerm` (`tools/lib/cnxml-elements.js`) has **zero
+  callers and zero tests** — patching it changes no rendered byte; a glossary definition's
+  `<term>` **never reaches the id-less `<dfn>` branch**, so Task 4 as written annotates **0 of
+  763**; there is a **fourth site the plan never names, `renderCompiledGlossary`**, which builds
+  the key-terms page; and Task 5's vintage guard compares **two hashes of the same immutable
+  file** (across 14 committed vintages of one manifest, `sourceHash` is byte-identical while
+  `segmentCount` moves 282 → 312).
+- ✅ **THE PATH-RESOLUTION QUESTION IS SETTLED, AND THE ANSWER IS AN EXISTING IDIOM: pass
+  `termEnglish` through `options`, never read it from a `BOOKS_DIR`-relative path inside
+  render.** `BOOKS_DIR` is a bare relative literal set only in `main()`, and
+  `renderService.renderModule` never calls `main()` — but the file **already solved this for
+  `embedMap`**, with a comment naming the server-preview case and *"future callers"*.
+  `renderService.js` resolves against an intrinsic `PROJECT_ROOT`. ⚠️ **Severity, measured with
+  the figure-text session: the in-process path is the editor PREVIEW, not the publisher** —
+  `renderModule` returns `{html}` and writes nothing — so published output is correct and this
+  is a UX gap, not a reader defect.
+- 🔎 **LATENT, LOGGED, NOT FIXED:** 8 of the 10 `render-golden` fixtures carry `<dfn>` (98
+  occurrences). No golden breaks today **by luck** — the only ch03 golden, `m68699`, has
+  `dfn=0` — but a full re-extract populates `termEnglish` for every chapter and turns all 8 red
+  at once. The plan has no step for it.
+
 ✅ **2026-09-03 ~15:52Z — THE CRONTAB HAS BEEN RE-PASTED ON PROD** ([USER] reports it done). Both DB
 cron lines should now carry `>> ${DEPLOY_PATH}/pipeline-output/<script>.log 2>&1`, so `backup-db.sh`
 failures stop going to cron's local mail, which nobody reads.
