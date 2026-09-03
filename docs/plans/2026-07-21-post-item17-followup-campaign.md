@@ -4,14 +4,23 @@
 
 ## ⏩ RESUME — state as of 2026-09-03
 
-🔴 **ONE OPEN ACTION NEEDS A HUMAN ON THE PROD BOX, AND NOTHING ELSE CAN DO IT: RE-PASTE THE CRONTAB.**
-`scripts/install-cron.sh` now emits a log redirect on both DB cron lines
-(`>> ${DEPLOY_PATH}/pipeline-output/backup-db.log 2>&1`, same for `verify-db-backup.sh`), but **that
-script only PRINTS recommended lines — it does not install them.** The live crontab still has the old
-redirect-less lines, so `backup-db.sh` failures still go to cron's local mail, which nobody reads.
-▶ **`crontab -e` on the box, paste the output of `./scripts/install-cron.sh`.** Until then the off-box
-backup remains loud-on-failure only via the heartbeat, which is the slow signal this change exists to
-supplement. ⚠️ **A deploy does NOT do this** — `deploy.sh` pulls code, and the crontab is not code.
+✅ **2026-09-03 ~15:52Z — THE CRONTAB HAS BEEN RE-PASTED ON PROD** ([USER] reports it done). Both DB
+cron lines should now carry `>> ${DEPLOY_PATH}/pipeline-output/<script>.log 2>&1`, so `backup-db.sh`
+failures stop going to cron's local mail, which nobody reads.
+🔴 **ONE PROOF IS DEFERRED AND CANNOT BE PULLED FORWARD — AND THE TWO CLAIMS ARE DIFFERENT.**
+`crontab -l` NOW proves the paste **landed**; only a run proves the redirect **works**. `backup-db.log`
+should exist and be non-empty after the **18:30Z** tick (`30 */6 * * *`). ⚠️ **`verify-db-backup.log`
+not until 1 Oct** (`0 4 1 * *`, monthly) — **its absence proves nothing before then**, so do not read
+that as a failed paste.
+⚠️ **The paste was safe to prescribe, and that was CHECKED rather than assumed:**
+`scripts/install-cron.sh:11` is an **unquoted** `cat <<EOF`, so `${DEPLOY_PATH}` and
+`${BACKUP_REMOTE:-secret:}` expand to literals before printing (verified by running it: full paths,
+`BACKUP_REMOTE=secret:` intact, matching prod's existing line). ▶ **A *quoted* heredoc would have
+emitted `${DEPLOY_PATH}` verbatim into the crontab** — a path that never resolves, failing every tick,
+with the redirect target equally broken so output returns to mail. **Re-check the quoting if that
+script is ever edited.**
+▶ **DURABLE, and it is why this sat open at all: `deploy.sh` pulls CODE, and a crontab is NOT code.**
+Nothing in the automated path can ever close a cron change → [[deploy-infrastructure]].
 
 ✅ **EVERYTHING ELSE FROM 2026-09-02/03 IS MERGED AND DEPLOYED.** `main` = `1a0145d1`; prod pulled it.
 - `7e42bf0c` (#431) §C118 full-corpus loop — [USER]-ruled to land RED · deployed, FAST-FORWARD, healthy
