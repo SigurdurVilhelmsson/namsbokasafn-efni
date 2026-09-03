@@ -85,9 +85,28 @@ the filename.
 
 ⚠️ **Agent stall vs fast agent — decide by comparison, not a stopwatch.** Task 4 produced its
 test in ~2 min; Task 5's implementer wrote nothing in 13 min and was killed and re-dispatched
-on a stronger model (finished in ~6). Before killing, run
-`find . -newermt '-N minutes' -type f` over the worktree AND the TMPDIR — killing without that
-discards half-finished work.
+on a stronger model (finished in ~6). Before killing, check for half-finished work over the
+worktree AND the TMPDIR — killing without that discards it.
+
+🔴 **THE COMMAND THIS FILE USED TO PRESCRIBE FOR THAT CHECK DOES NOT WORK ON THIS MACHINE, AND
+IT FAILS SILENTLY INTO A CONFIDENT EMPTY LIST.** It said to run
+`find . -newermt '-N minutes' -type f`. **`find` here is `bfs`**, which accepts only ISO-8601
+timestamps and rejects a relative one:
+`bfs: error: Invalid timestamp.` Paired with the `2>/dev/null` anyone adds to silence
+permission noise, the error vanishes and the command prints **nothing** — indistinguishable
+from "the agent has written nothing". Measured 2026-09-03: it reported an empty set for a
+window in which the controller itself had just written four files.
+▶ **Use an absolute timestamp, and pair every null with a positive control in the same
+command:**
+
+```bash
+find . /home/siggi/.cache/figtext-tmp -path ./node_modules -prune -o \
+     -newermt "$(date -d '30 minutes ago' '+%Y-%m-%dT%H:%M:%S')" -type f -print
+```
+
+The control is free here: your own ledger writes must appear in the output. **If they do not,
+you are reading a broken instrument, not an idle agent.** ⚠️ And do NOT redirect stderr on a
+detector whose whole job is to report an absence.
 
 ⚠️ **A stopped agent emits queued notifications describing a tree state that no longer exists.**
 Happened three times. Verify against `git`, never against the notification.
