@@ -148,6 +148,47 @@ the prose.
 
 ## Open
 
+### From the review-workflow branch (`feat/figure-text-review`) — 18 triaged findings
+
+A seven-lens adversarial whole-branch review plus eight task reviews produced 18 Minor findings
+that were deliberately NOT fixed (the SDD rule: Minors never enter a fix loop, because that is how
+loops stop converging). **They are recorded here because the branch's `deferred-minors.md` lives in
+a gitignored workspace and would otherwise die with it** — a correct record in an unreachable
+location is no record.
+
+**Two were flagged as worth acting on before merge:**
+- 🔴 **Unsaved edits in sibling blocks are silently discarded on every save.** Saving one block
+  re-fetches and rebuilds every card from the payload, so corrections typed into other blocks are
+  lost with no warning and no draft. The segment editor already carries draft machinery for
+  exactly this reason. **Silent loss of editorial input is the one thing this application exists
+  to prevent.**
+- **The `beforeAll` pristine gate fires on exactly the crashed-run state `beforeEach` exists to
+  repair**, so a hard-killed E2E run leaves the recovery path sequenced behind its own alarm.
+
+**The rest, by theme:**
+- *Untested surfaces* — the caption-warning render branch has zero coverage (fixtures deliberately
+  emit none, and it reads different fields from the decimal branch, so a misspelled field ships
+  green); migration 050's idempotency assertions pass by construction; the figure write routes'
+  `isText`/`note` guards are bound by no test; the APPROVED→no-badge render direction is never
+  rendered.
+- *Absences that look like success* — a failed `/figures` fetch renders identically to "no
+  reviewable figures", and empty **is** the ordinary case for ~1,500 untranslated figures; a
+  malformed sidecar is indistinguishable from an absent one and silently hides its figure.
+- *Not wired up* — `orphans` is computed at three points and consumed by nothing.
+- *Known-unguarded* — the two `sendFile` dot-segment fixes are untested in CI, because CI checks
+  out to a dot-free path and any naive test would pass with or without them; a real one must
+  construct a dot-bearing temp directory.
+- *Path hygiene* — `cnxml-render.js`'s `BOOKS_DIR` is a bare relative literal hardcoded to one
+  book, and the in-process preview never sets it, so **the editor preview shows no badge for any
+  book while the CLI publish path is correct**. Found independently three times. Latent hazard:
+  run the server from the repo root and a preview of one book would read another's sidecars.
+- *Smaller* — a duplicated `CONTROL:` test; `nearVariant`'s case-folding widens a pre-existing
+  false-positive surface; per-figure `readFileSync` on every render; two fixtures hardcode
+  `version: 1` instead of importing `SIDECAR_VERSION`; `referenceText` assembly sits in the router
+  against the plan's "thin router" constraint; the state transition is not atomic across DB and
+  sidecar.
+
+
 - **⑭ NUMBER LOCALIZATION IS NOT IMPLEMENTED — the LOCALIZE class passes through untouched.**
   Demonstrated by the first real run: `373.15 K` / `273.15 K` / `233.15 K` are correctly held
   off the MT wire and correctly kept verbatim, but Icelandic writes them `373,15 K`. Three of
