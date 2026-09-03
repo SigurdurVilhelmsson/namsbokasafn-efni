@@ -15,7 +15,24 @@ things lives in [README.md](README.md).
 Málstaður run** (⑯, 1.20 ISK, 8/8 blocks); and the output format settled as **SVG** by
 measurement (⑤).
 
-**In flight:** the *review* workflow that wires a translated figure into the editorial
+**✅ THE REVIEW WORKFLOW IS BUILT AND REVIEWED — branch `feat/figure-text-review`, 8 SDD tasks,
+awaiting a merge decision.** Unit suite matches `main`'s own red baseline exactly (19 failing
+assertions across 9 files + `findTermsGolden` as a 10th zero-assertion red — all inherited, none
+added); E2E 5/5. 🔴 **A seven-lens adversarial whole-branch review found a CRITICAL that eight
+task reviews had missed:** the renderer keyed the figure sidecar on the POST-inject `_IS`
+basename while every writer keys on the English one, so `data-figure-review` fired on **zero**
+production figures. Fixed by inverting `cnxml-inject`'s own image mapping — **no `_IS` literal in
+code**, since that suffix is an enforceable value owned by `generate-image-mapping.js`. ▶ **It
+survived every earlier gate because the committed render test's fixture used a PRE-INJECT `src`
+shape production never produces for a translated figure, so both its directions passed for the
+wrong reason.** ⚠️ **TWO KNOWN LIMITATIONS, both [LEAD] questions, neither a code defect:**
+(1) approving does not re-run the composer, so `approved` can describe text that is not in the
+published SVG — the spec's own flow is "approve, then run the composer CLI"; (2) flagging is the
+only path by which unapproved editor text reaches a committed sidecar, because the renderer's
+only channel IS the sidecar (it has no DB access, by the MIT→AGPL design). **18 Minor findings
+are triaged in the branch's `deferred-minors.md`.**
+
+**Formerly in flight:** the *review* workflow that wires a translated figure into the editorial
 pipeline — a committed sidecar for the Icelandic text, DB rows for review state, an
 `effectiveState` that is **derived** rather than stored, a render-side badge, advisory
 consistency checks, and an editor surface. Branch **`feat/figure-text-review`**, plan

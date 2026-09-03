@@ -1,9 +1,14 @@
-# RESUME — figure-text review workflow, SDD run
+# COMPLETION RECORD — figure-text review workflow, SDD run
 
-> **Written 2026-09-03 because the controlling session ran out of context.** This file is
-> COMMITTED on purpose: the SDD workspace it summarises (`.superpowers/`) is gitignored
-> (`.gitignore:104`), so the ledger, briefs and reports exist only on one disk and do not
-> travel with the branch. If they are gone, everything you need is here plus `git log`.
+> **This file began life as a RESUME doc**, written 2026-09-03 when the controlling session ran
+> out of context at 6 of 8 tasks. **The run is now COMPLETE (8 of 8, whole-branch reviewed, fix
+> wave applied and re-reviewed).** It is kept — retitled, not deleted — because the SDD workspace
+> it summarises (`.superpowers/`) is gitignored and does not travel with the branch, and because
+> its OPERATIONAL TRAPS below are the part with a life beyond this run.
+>
+> 🔴 **Everything above the traps is history. For figure-text STATUS, the one owner is
+> `experiments/figure-text-translation/REGISTER.md`** — per CLAUDE.md § One source of truth, do
+> not read a status verb out of this file.
 
 ## Where the work is
 
@@ -18,40 +23,20 @@
 
 **Working tree is clean. All code is committed. Nothing is in flight; every subagent was stopped.**
 
-## Status: 6 of 8 tasks complete
+## Status: COMPLETE — 8 of 8, plus a whole-branch review and one fix wave
 
-| # | task | commit | review |
-|---|---|---|---|
-| 1 | sidecar format (`tools/lib/figure-text-sidecar.cjs`) | `1b30bf57` | ✅ clean |
-| 2 | composer accepts string block values (`figtext.py`) | `e0377e42` | ✅ clean |
-| 3 | render emits `data-figure-review` (`cnxml-render.js`) | `54e87e31` | ✅ after 1 fix round (Critical) |
-| 4 | migration 050, two tables | `da8fa41b` | ✅ **zero findings** |
-| 5 | `figureReviewService` | `3c789e52` | ✅ after 1 fix round (2 Important) |
-| 6 | advisory consistency checks | `3f77d48f` | fix done; **scoped re-review was cut off** |
-| 7 | editor endpoints | — | briefed, not started |
-| 8 | editor figure card | — | briefed, not started |
+All eight tasks implemented, each task-reviewed; branch rebased onto `origin/main`; a seven-lens
+adversarial whole-branch review run; its four blocking findings fixed and the fix wave
+re-reviewed clean. **The unit suite matches `main`'s own baseline exactly and the E2E is 5/5.**
 
-## NEXT ACTIONS, in order
-
-1. **Re-run Task 6's scoped re-review** (it was dispatched and stopped mid-flight). Diff:
-   `review-dbeef93d..3f77d48f.diff`. The three questions worth asking are in the ledger; the
-   substance is: (a) is the new test a control or only a regression guard — the implementer's
-   own report says it already passed pre-fix, so it is the latter; (b) does any Icelandic
-   character lowercase to a *different length*, which would break `nearVariant`'s equal-length
-   precondition (German `ß`→`SS` is the class); (c) did lowercasing WIDEN what fires?
-2. **Task 7** — editor endpoints. Route research is done, use it verbatim:
-   - router mounts at `/api/segment-editor` (`server/index.js:248`)
-   - `GET '/:book/:chapter/:moduleId'` → `requireAuth, requireRole(ROLES.EDITOR), validateBookChapter` (line 259) — mirror for `.../figures`
-   - `POST '/:book/:chapter/:moduleId/edit'` → `requireAuth, validateBookChapter, requireBookAccess()` (line 333) — mirror for the two writes
-   - `buildFigurePayload` goes in **`figureReviewService`**, NOT the router: `segment-editor.js`
-     ends in `module.exports = router`, so exporting from there hangs a property off an Express
-     router and forces a unit test to load its auth middleware.
-3. **Task 8** — editor figure card. ⚠️ Unsettled: `server/e2e/playwright.config.js` has **no
-   `webServer` key**, so the e2e spec may need a server started separately. Settle that before
-   dispatching.
-4. **Rebase onto `main`** (ruling M) — at the task boundary AFTER Task 8, before the final
-   review, so the final review sees the merged state. `git merge-tree` was clean pre-merge.
-5. **Final whole-branch review** on the most capable model, per the SDD skill.
+🔴 **The whole-branch review found a CRITICAL that eight task reviews had missed, and the reason
+is worth carrying:** `cnxml-render.js` keyed the figure sidecar on the POST-inject `_IS` basename
+while every writer keys on the English one, so the review badge fired on **zero** production
+figures. Three independent review dimensions found it; each verified it by execution. It survived
+every earlier gate because the committed render test's fixture used a **pre-inject `src` shape
+that production never produces for a translated figure** — so both of its directions passed for
+the wrong reason. ▶ **A fixture in the wrong vintage is not a weak test; it is a test of a
+different system.**
 
 ## HOW TO READ THE FINAL FULL-SUITE RUN — this will mislead you otherwise
 
