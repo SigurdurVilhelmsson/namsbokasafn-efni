@@ -15,14 +15,28 @@ const {
   COMPOSER_VERSION,
 } = require(path.join(__dirname, '..', '..', 'tools', 'lib', 'figure-text-sidecar.cjs'));
 
-/** MT text overlaid with any editor corrections. Editor wins. */
+/**
+ * MT text overlaid with any editor corrections. Editor wins — but only for a
+ * block_key that still exists in mtBlocks. If the English changed, the
+ * content-addressed block_key changed with it, and an edit keyed on the old
+ * one is orphaned: it must not be merged into blocks (it would ride into the
+ * render hash and the committed sidecar as a phantom block), but the row
+ * stays in the database and is reported so it can be surfaced to an editor.
+ */
 function resolveBlocks(db, bookId, basename, mtBlocks) {
   const blocks = { ...mtBlocks };
   const rows = db
     .prepare(`SELECT block_key, is_text FROM figure_block_edit WHERE book_id=? AND basename=?`)
     .all(bookId, basename);
-  for (const r of rows) blocks[r.block_key] = r.is_text;
-  return blocks;
+  const orphans = [];
+  for (const r of rows) {
+    if (Object.prototype.hasOwnProperty.call(mtBlocks, r.block_key)) {
+      blocks[r.block_key] = r.is_text;
+    } else {
+      orphans.push(r.block_key);
+    }
+  }
+  return { blocks, orphans };
 }
 
 function getFigure(db, bookId, basename, mtBlocks = {}) {
@@ -33,7 +47,7 @@ function getFigure(db, bookId, basename, mtBlocks = {}) {
     )
     .get(bookId, basename);
   if (!row) return null;
-  const blocks = resolveBlocks(db, bookId, basename, mtBlocks);
+  const { blocks, orphans } = resolveBlocks(db, bookId, basename, mtBlocks);
   return {
     state: row.state,
     renderHash: row.render_hash,
@@ -42,6 +56,7 @@ function getFigure(db, bookId, basename, mtBlocks = {}) {
     reviewedBy: row.reviewed_by,
     reviewedAt: row.reviewed_at,
     blocks,
+    orphans,
     effectiveState: effectiveState(
       { state: row.state, renderHash: row.render_hash },
       blocks,
@@ -79,7 +94,11 @@ function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
   const data = {
     version: SIDECAR_VERSION,
     basename,
-    state: fig.state,
+    // effectiveState, never the raw fig.state: if the blocks changed since
+    // the last real approval, this must write 'mt-preview' — writing the raw
+    // DB column would stamp 'approved' over content nobody reviewed, with a
+    // self-consistent hash, and the renderer would show it unbadged.
+    state: fig.effectiveState,
     renderHash: computeRenderHash(fig.blocks, COMPOSER_VERSION),
     composerVersion: COMPOSER_VERSION,
     blocks: fig.blocks,
