@@ -108,7 +108,14 @@ router.get('/for-teachers', (req, res) => res.redirect(301, '/'));
 router.use((req, res) => {
   const filePath = path.join(viewsDir, '404.html');
   if (fs.existsSync(filePath)) {
-    res.status(404).sendFile(filePath);
+    // Same reason as sendView below: `send` defaults to dotfiles:'ignore' and
+    // applies it to the WHOLE absolute path, so an absolute filePath 404s
+    // wherever the checkout sits under a dot-directory (a git worktree under
+    // .worktrees/, say). Serving relative to `root` scopes the dotfile rule to
+    // the filename. Without it the custom Icelandic 404 page degrades to a
+    // generic JSON error body — the error handler answers, because
+    // fs.existsSync already passed and this branch's own fallback never runs.
+    res.status(404).sendFile('404.html', { root: viewsDir });
   } else {
     res.status(404).send('S\u00ED\u00F0a finnst ekki');
   }
