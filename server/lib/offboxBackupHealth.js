@@ -16,8 +16,25 @@
  */
 const { computeBackupHeartbeatHealth } = require('./backupHeartbeatHealth');
 
+/**
+ * Two missed cycles of the 6-hourly cron, plus margin — the same formula
+ * contentBackupHealth.js states for its 2-hourly cron (2 x 2 + 2 = 6).
+ *
+ * 🔴 WAS 26, INLINE AT THE CALL SITE, AND THAT WAS ~4 MISSED CYCLES. 26 = 24 + 2
+ * is a DAILY tolerance, which does not match a job that runs every 6 hours: four
+ * consecutive upload failures could pass before /api/health said anything.
+ * Measured 2026-09-03 while diagnosing an off-box backup that turned out to be
+ * healthy — the check was truthful but uninformative at that cadence.
+ *
+ * ⚠️ THE THRESHOLD IS DERIVED FROM THE CRON PERIOD, NOT CHOSEN. If
+ * `scripts/install-cron.sh`'s 6-hourly backup-db schedule changes, re-derive this; a
+ * threshold and a schedule that drift apart is how a silent backup failure hides.
+ * Override per-deployment with OFFBOX_BACKUP_STALE_HOURS.
+ */
+const DEFAULT_STALE_HOURS = 14;
+
 function computeOffboxBackupHealth(params) {
   return computeBackupHeartbeatHealth(params);
 }
 
-module.exports = { computeOffboxBackupHealth };
+module.exports = { computeOffboxBackupHealth, DEFAULT_STALE_HOURS };

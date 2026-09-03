@@ -307,7 +307,10 @@ app.get('/api/health', (req, res) => {
   // silently-stopped backup-db.sh cron instead of it being discovered in a
   // disaster. Missing heartbeat => stale (handled by the helper).
   try {
-    const { computeOffboxBackupHealth } = require('./lib/offboxBackupHealth');
+    const {
+      computeOffboxBackupHealth,
+      DEFAULT_STALE_HOURS: OFFBOX_DEFAULT_STALE_HOURS,
+    } = require('./lib/offboxBackupHealth');
     const fs = require('fs');
     let hbMtime = null;
     try {
@@ -319,7 +322,7 @@ app.get('/api/health', (req, res) => {
     const offbox = computeOffboxBackupHealth({
       heartbeatMtimeMs: hbMtime,
       nowMs: Date.now(),
-      staleHours: Number(process.env.OFFBOX_BACKUP_STALE_HOURS) || 26,
+      staleHours: Number(process.env.OFFBOX_BACKUP_STALE_HOURS) || OFFBOX_DEFAULT_STALE_HOURS,
     });
     // Spread {age_hours, stale} and add `ok` so this check gates `allOk` the
     // same way every other check here does — a stale/missing heartbeat must
