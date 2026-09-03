@@ -2528,7 +2528,21 @@ function renderCompiledGlossary(chapter, definitions, context) {
     for (const def of definitions) {
       const termHtml = processInlineContent(def.termContent || def.term, context);
       const meaning = processInlineContent(def.meaningContent, context);
-      lines.push(`    <dt${def.id ? ` id="${escapeAttr(def.id)}"` : ''}>${termHtml}</dt>`);
+      // data-en keyed on the DEFINITION's own module. glossaryContext is
+      // chapter-wide and carries no moduleId, but every def does (stamped by
+      // extractChapterGlossary), and definition ids are unique within a chapter,
+      // so this join is unambiguous.
+      // 🔴 The lookup lives HERE and not inside processInlineContent: this page
+      // emits <dt>, never <dfn>, so routing it through the inline path would emit
+      // ZERO data-en on the key-terms page while every module page looked correct
+      // — a partial success that reads as a success.
+      const defMap =
+        def.id && context && context.termEnglishByModule
+          ? context.termEnglishByModule.get(def.moduleId)
+          : null;
+      const defEn = defMap && typeof defMap[def.id] === 'string' ? defMap[def.id] : '';
+      const enAttr = defEn ? ` data-en="${escapeAttr(defEn)}"` : '';
+      lines.push(`    <dt${def.id ? ` id="${escapeAttr(def.id)}"` : ''}${enAttr}>${termHtml}</dt>`);
       lines.push(`    <dd>${meaning}</dd>`);
     }
 
@@ -3808,6 +3822,12 @@ ${anchors}
           terms: {},
           footnotes: [],
           equationTextDictionary,
+          // Chapter-wide Map<moduleId, {id: english}> — read ONLY by
+          // renderCompiledGlossary, which keys each <dt> on its own def.moduleId.
+          // Deliberately a DIFFERENT field and shape from context.termEnglish
+          // (a flat map for one module) so the two cannot be confused: a flat
+          // chapter merge would hit with another module's English.
+          termEnglishByModule: termEnglish.byModule,
         };
 
         const glossaryContentHtml = renderCompiledGlossary(
