@@ -16,7 +16,9 @@ module.exports = {
     );
   },
 
-  down(db) {
-    // SQLite doesn't support DROP COLUMN easily; recreate table if needed
+  down(_db) {
+    // SQLite doesn't support DROP COLUMN easily; recreate table if needed.
+    // `_db` is deliberately underscore-prefixed: the body is a comment, so the
+    // parameter is unused, and the eslint config allows unused args matching /^_/.
   },
 };

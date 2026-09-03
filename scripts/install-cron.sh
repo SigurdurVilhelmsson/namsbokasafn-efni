@@ -35,13 +35,22 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # already points at the bucket, so 'secret:' IS the bucket root; a subpath would
 # only nest an encrypted-name directory inside it for no reason.
 # See docs/technical/backup-and-restore.md.
-30 */6 * * * BACKUP_REMOTE=${BACKUP_REMOTE:-secret:} ${DEPLOY_PATH}/scripts/backup-db.sh
+30 */6 * * * BACKUP_REMOTE=${BACKUP_REMOTE:-secret:} ${DEPLOY_PATH}/scripts/backup-db.sh >> ${DEPLOY_PATH}/pipeline-output/backup-db.log 2>&1
 
 # Monthly restore-test: prove an off-box backup actually round-trips (RESTORE VERIFY: PASS).
 # A backup that uploads but cannot be restored is worth nothing; this is the check
 # that distinguishes the two.
-0 4 1 * * BACKUP_REMOTE=${BACKUP_REMOTE:-secret:} ${DEPLOY_PATH}/scripts/verify-db-backup.sh
+0 4 1 * * BACKUP_REMOTE=${BACKUP_REMOTE:-secret:} ${DEPLOY_PATH}/scripts/verify-db-backup.sh >> ${DEPLOY_PATH}/pipeline-output/verify-db-backup.log 2>&1
 
 # To install, run:  crontab -e  and paste the lines above.
-# All scripts log to ${DEPLOY_PATH}/pipeline-output/
+#
+# LOGGING — and this line used to say "All scripts log to pipeline-output/",
+# which is false for two of the three. Measured 2026-09-03:
+#   git-backup.sh        LOGS  -> pipeline-output/backup.log (its own LOG_FILE)
+#   backup-db.sh         does NOT log
+#   verify-db-backup.sh  does NOT log
+# So the two DB jobs carry an explicit redirect on their cron lines above.
+# Without it their output goes to cron's local mail, which nobody reads, and a
+# failing off-box upload is visible only as heartbeat staleness in /api/health
+# -- a slow, indirect signal for a job that can fail loudly and cheaply.
 EOF

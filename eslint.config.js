@@ -8,6 +8,14 @@ export default [
     ignores: [
       'node_modules/',
       'server/node_modules/',
+      // 🔴 THE PYTHON VIRTUALENV FOR greynir-sidecar, AND IT IS 8,262 OF THE 8,263
+      // ESLINT ERRORS UNDER server/. It is gitignored (.gitignore:6), 151 MB, and full
+      // of vendored third-party JavaScript shipped inside pip packages — 5,230 `no-var`
+      // alone, the fingerprint of old vendor code rather than of a tree every commit
+      // runs prettier over. Measured 2026-09-03: with this ignored, server/ has ONE
+      // eslint error in our own code. ⚠️ Without it, widening `lint` to cover server/
+      // turns the Lint job red on a directory that is not even in git.
+      'server/.venv/',
       'tools/archived/',
       '**/_archived/',
       '*.bak',
