@@ -8,15 +8,35 @@ things lives in [README.md](README.md).
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-02
+## ⏩ RESUME — state as of 2026-09-03
 
 **What exists:** a working extract → strip → compose → oracle-check pipeline, proven on
-`CNX_Chem_01_01_SciMethod.pdf` end to end, and a census of all 36 chapter-1 figures.
-**Nothing is wired into the publication pipeline and nothing has been bought from the MT.**
-All Icelandic produced so far is **placeholder probe text**, not a translation.
+`CNX_Chem_01_01_SciMethod.pdf` end to end; a census of all 36 chapter-1 figures; **one real
+Málstaður run** (⑯, 1.20 ISK, 8/8 blocks); and the output format settled as **SVG** by
+measurement (⑤).
 
-**Next action:** decide the output format (item ① below), then run one real figure's prose
-through Málstaður.
+**In flight:** the *review* workflow that wires a translated figure into the editorial
+pipeline — a committed sidecar for the Icelandic text, DB rows for review state, an
+`effectiveState` that is **derived** rather than stored, a render-side badge, advisory
+consistency checks, and an editor surface. Branch **`feat/figure-text-review`**, plan
+[`docs/superpowers/plans/2026-09-02-figure-text-review-workflow.md`](../../docs/superpowers/plans/2026-09-02-figure-text-review-workflow.md).
+▶ **Per-task state lives in that plan's SDD ledger and in `git log`, never here** — a task
+count written into prose is stale by the next commit.
+
+**Next action after that branch lands:** ⑭ (number localization — the LOCALIZE class still
+passes through untouched) is the largest open correctness gap, and it now has a consumer: the
+advisory decimal-separator check flags it for an editor, but nothing yet transforms it.
+
+🔴 **THIS BLOCK WAS WRONG UNTIL 2026-09-03 AND THE ERROR IS WORTH KEEPING.** It read
+*"Nothing is wired into the publication pipeline and nothing has been bought from the MT …
+All Icelandic produced so far is placeholder probe text"* and *"Next action: decide the output
+format (item ① below)"*. Both were already false when written down here: `efd97384` had added
+⑯ (a real, paid, evidenced MT run) and `3e446f6d` had settled the format as SVG — as item **⑤**,
+not ①, so even the cross-reference pointed at the wrong item. **The commit that falsified a
+claim did not delete the claim**, which is precisely CLAUDE.md's stale-premise rule: a premise
+does not acquire a date from the block that carries it. Verified by opening
+`evidence/api-run-tempscales.json` (8 blocks, `when` 2026-09-02T19:23:21Z), not by re-reading
+the prose.
 
 ---
 
@@ -34,6 +54,15 @@ through Málstaður.
   [`evidence/api-run-tempscales.json`](evidence/api-run-tempscales.json).
   ⚠️ **These are NOT approved translations and are not in `books/`** — human approval gates
   content, and nothing here goes near the publication tree.
+- **⑨ CORRECTED 2026-09-03 — this said "No real MT has been run" and sat under *Open* while
+  ⑯ sat under *Settled* recording one.** ⑯ is the measured claim: `efd97384` added it with
+  evidence on disk (`evidence/api-run-tempscales.json`, 8 blocks, `when`
+  2026-09-02T19:23:21Z) and left ⑨ standing. **Real MT text exists for exactly one figure**
+  (`CNX_Chem_01_06_TempScales`); everything else in this experiment is still placeholder probe
+  text, so the *scope* half of the old claim survives and the *existence* half does not.
+  ▶ The two halves are worth separating, because they license different things: placeholder
+  text is free to regenerate, and the one real run is the only evidence the wire behaves.
+
 - **⑥ AUTO-WRAP IS BUILT — and the real run is what forced it.** The MT returns ONE string per
   block, so a 3-line English label came back as one long line and the only lever left was font
   size: `180 gráður á Fahrenheit` fell to **5.75 pt** beside 9 pt neighbours. The composer now
@@ -116,8 +145,6 @@ through Málstaður.
   data says what a label points at**, so no anchoring rule can be universally correct — this
   needs either a proximity heuristic against the artwork or an editor's eye.
 
-- **⑨ No real MT has been run.** Every Icelandic string produced so far is placeholder
-  probe text written by hand.
 - **⑦ Type0/CID fonts are unreadable by this parser.** 1 of 36 chapter-1 figures
   (`CNX_Chem_01_02_decomp`). `pdftotext` reads it fine, so the file is not the problem.
 - **⑧ Arc text is approximate.** The span is centred on `(angs[0]+angs[-1])/2`, but
