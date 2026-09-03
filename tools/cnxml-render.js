@@ -3666,6 +3666,27 @@ async function main() {
             equationTextDictionary,
           });
           let html = renderResult.html;
+
+          // §4.3: a missing key degrades to no attribute, and a SILENT drop is this
+          // project's recurring failure — so the absence is counted and printed.
+          // 🔴 Denominator is `<dfn id>`, not `<dfn>`: an id-less <dfn> structurally
+          // CANNOT be keyed (2 such <term> exist in READ-ONLY chemistry source and no
+          // id join will ever reach them), so counting them would report a permanent
+          // shortfall as a defect.
+          // ⚠️ Never mix units here — this counts RENDERED ELEMENTS, not the <term>
+          // elements in CNXML. The two differ and the plan already shipped one bug
+          // from transposing them.
+          {
+            const dfnWithId = (html.match(/<dfn\s+id="/g) || []).length;
+            const dfnWithEn = (html.match(/<dfn[^>]*\sdata-en="/g) || []).length;
+            if (dfnWithId > 0) {
+              const stale =
+                termEnglish.state.get(moduleId) === 'key-absent'
+                  ? ` — manifest has no termEnglish (re-run: node tools/cnxml-extract.js --book ${BOOK_SLUG} --chapter ${args.chapter})`
+                  : '';
+              console.log(`  terms: ${dfnWithEn}/${dfnWithId} <dfn id> carry data-en${stale}`);
+            }
+          }
           const pageData = renderResult.pageData;
 
           // Special handling for Periodic Table appendix
@@ -3835,6 +3856,16 @@ ${anchors}
           chapterGlossary,
           glossaryContext
         );
+
+        // Same rule as the per-module line: count RENDERED ELEMENTS, denominator
+        // `<dt id>`. This page emits <dt>, never <dfn>.
+        {
+          const dtWithId = (glossaryContentHtml.match(/<dt\s+id="/g) || []).length;
+          const dtWithEn = (glossaryContentHtml.match(/<dt[^>]*\sdata-en="/g) || []).length;
+          if (dtWithId > 0) {
+            console.log(`  key-terms: ${dtWithEn}/${dtWithId} <dt id> carry data-en`);
+          }
+        }
 
         // Build terms map for pageData
         const termsMap = {};
