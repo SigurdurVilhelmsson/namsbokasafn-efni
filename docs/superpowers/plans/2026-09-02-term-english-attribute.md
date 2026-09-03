@@ -617,508 +617,1090 @@ Expected in `/tmp/t2.log`: **60 failed**, unchanged file set.
 
 ---
 
-## Task 3: Render emits `data-en` at the two id-bearing sites
+<!-- ===================================================================== -->
+
+## 🔴 TASKS 3–6 WERE REPLACED WHOLESALE ON 2026-09-03 — READ THIS FIRST
+
+The original Tasks 3–6 are **deleted**, not amended: their site enumeration was wrong in
+KIND, not in count. What follows was produced by a measurement pass and is **evidence-backed
+but not all personally re-derived** — so here is exactly which claims were, so you know which
+half to attack first.
+
+**Re-derived by hand, by execution, before this text was accepted:**
+- `renderTerm` has **zero callers and zero tests** — with a control proving the search finds
+  references (`renderGlossary` appears in `cnxml-render-glossary-dom.test.js`). ⚠️ The naive
+  grep returns 2 hits for `renderTerms` — **plural, an unrelated browser function in
+  `server/views/my-work.html`** — which reads as "it has callers".
+- **`term-0000N` RESTARTS IN EVERY MODULE.** `m68700`→`formula mass`, `m68702`→`percent
+  composition`, `m00033`→`alkanes`. A flat chapter merge collides **31 of 79 `(module,key)`
+  pairs in ch03 alone, all 31 carrying DIFFERENT English** (11 chemistry + 20 organic). That
+  is a populated slot holding the wrong text — §C82 L144 — and **no count can see it.**
+  ▶ Every map here is per-module. There is no flat chapter merge anywhere, by design.
+- **Site B is real**: `cnxml-elements.js` converts terms with
+  `/<term\s+id="([^"]*)"[^>]*>/`, so `id` must be the FIRST attribute. Executed:
+  `<term id=… class=…>` → `<dfn id=… class="term">`, `<term class=… id=…>` → `<dfn
+  class="term">`, **id silently discarded**. Census of READ-ONLY source: **81 class-first
+  `<term id>`** against 1,325 id-first. ⚠️ Note the `[^>]*` in that same pattern — §C115's
+  truncation idiom is sitting inside the very regex being fixed.
+- **The manifest must reach render through `options`, never a `BOOKS_DIR`-relative read.**
+  Not a new idea: `renderCnxmlToHtml` already does exactly this for `embedMap`, and its
+  comment names the server-preview case and *"future callers"*. `renderService.js` resolves
+  against an intrinsic `PROJECT_ROOT`. ⚠️ Severity, established jointly with the figure-text
+  session: the in-process path is the editor **PREVIEW**, not the publisher — `renderModule`
+  returns `{html}` and writes nothing — so published output is correct and the `BOOKS_DIR`
+  defect is a UX gap, not a reader defect.
+
+**NOT independently re-derived — treat as the strongest available claim, not as settled:**
+every per-site `<dfn>`/`<dt>` count, the 810/83 corpus split, the four manifest states, the
+`renderGlossary`-is-unreachable finding, and Task 6's acceptance numbers. **Each step below
+carries the command that re-derives its own number. Run it.**
+
+<!-- ===================================================================== -->
+
+Tree clean, `tools/` hashes identical to the audit's (`cnxml-render.js` = `29bc376e`, `cnxml-elements.js` = `9c456d0e`). Every number below I re-derived myself in this worktree.
+
+---
+
+# REPLACEMENT TEXT — Tasks 3, 4, 5, 6
+
+*Paste over the existing `## Task 3` … `## Task 6` block (plan lines 613–1114). Task 7 is unchanged; two pointers are added to it at the end.*
+
+---
+
+## Preamble to Tasks 3–6 — read once, applies to all four
+
+**Measured 2026-09-03 in this worktree at `6e877f6d`, `tools/` clean (`tools/cnxml-render.js` blob `29bc376e`, `tools/lib/cnxml-elements.js` blob `9c456d0e`). Re-derive every count below before trusting it; each step gives the command.**
+
+**What the audit settled, and what it deletes from the old text:**
+
+| Old plan said | Measured | Consequence |
+|---|---|---|
+| Three `<dfn>` call sites | **One live `<dfn>` emitter**: the id-bearing branch, `tools/lib/cnxml-elements.js:802-804` | Sites are renamed A–F below |
+| Site 1 = `renderTerm` (`cnxml-elements.js:646`) | **0 callers.** Not in `cnxml-render.js`'s import list (`:48-55`); no `import * as` of that module exists anywhere | **DELETED.** Old Task 3 Steps 1 (its tests) and 3 are gone |
+| Site 3 = the id-less `<dfn>` branch carries the glossary population | **0 glossary terms reach it.** `extractChapterGlossary` (`cnxml-render.js:2485`) matches `/<term>([\s\S]*?)<\/term>/` and passes `termMatch[1]` — the tag is stripped before `processInlineContent` | **DELETED.** Old Task 4's `definitionId` context clone is dead plumbing |
+| `renderGlossary` (`:2000`, called `:921`) needs a scoping fix | **Dead on this corpus.** `<glossary>` is a **sibling** of `<content>` in 111 of 111 module files that have one; `renderContent` matches against `doc.rawContent`, which is `<content>`'s inner | **DO NOTHING.** Not dead *code* — a synthetic nested `<glossary>` reaches it. Do not delete it, do not assume it stays unreachable |
+| — | **A fourth site the plan never named:** `renderCompiledGlossary` (`cnxml-render.js:2511`, `<dt>` written at `:2524`, called at `:3798`) builds the chapter key-terms page | **NEW Task 4** |
+| Render loads the manifest itself via `BOOKS_DIR` | `const DEFAULT_BOOKS_DIR = 'books/efnafraedi-2e'` (`:148`), `let BOOKS_DIR = …` (`:149`), reassigned only in `main()` (`:3324`). `server/services/renderService.js` calls `renderCnxmlToHtml` **in-process with `cwd=server/`**, and `options.bookSlug` is a measured no-op | **The caller loads and passes it**, exactly like `embedMap: loadEmbedMapping(book)` at `renderService.js:105` |
+| A `sourceHash` vintage guard | Both sides hash the **same immutable `01-source` file**. 8 committed vintages of `m68700-manifest.json` all carry `sourceHash 8b0d4d033c6a1cce` while `segmentCount` moves 282 → 312 | **DELETED.** Replaced by a `moduleId` identity guard *in the loader* (Task 3) |
+
+**🔴 The failure that actually corrupts a reader's page is a WRONG-MODULE map, not a stale one.** `term-0000N` is OpenStax's own id in READ-ONLY `01-source` and it **restarts in every module**. Verified here:
+
+```bash
+node -e "for (const m of ['m00032','m00033']) console.log(m, JSON.parse(require('fs').readFileSync('books/lifraen-efnafraedi/02-structure/ch03/'+m+'-manifest.json','utf8')).termEnglish['term-00001'])"
+```
+Expected: `m00032 functional group` / `m00033 alkanes`.
+
+A chapter-flat merge therefore gives **31 of the 79 `(moduleId, key)` pairs in the two ch03 chapters** plausible wrong English — a populated slot holding the wrong text, invisible to every count (§C82 L144). **Every map in this design is per-module. There is no flat chapter merge anywhere.** Two field names keep the shapes from being confused:
+
+- `context.termEnglish` — a flat `Record<id, en>` for **this one module** (Site A).
+- `context.termEnglishByModule` — `Map<moduleId, Record<id, en>>` (Site C only, because `glossaryContext` has no `moduleId`).
+
+### ⚠️ COORDINATION-REQUIRED — `tools/cnxml-render.js`
+
+A peer session is editing that file on `feat/figure-text-review`. Its **committed** footprint (uncommitted edits will not show; never read the worktree directory):
+
+```bash
+git diff main...feat/figure-text-review --stat -- tools/
+```
+Expected: 7 files, `tools/cnxml-render.js` +118 lines among them.
+
+**Every line number in Tasks 3–6 for `cnxml-render.js` may move. Re-anchor on the function names** — `renderCnxmlToHtml`, `renderCompiledGlossary`, `extractChapterGlossary`, `buildKeyTermsItems`, `main` — not on the digits. The loader (`tools/lib/term-english-map.js`) is an uncontested new file; land it and its test first.
+
+### The red baseline — method, not a number
+
+The "60 tests / 18 files" criterion is dead (60 counted agent *findings* over 16 files). Capture the failing-test-NAME set once, before Task 3, and assert set-equality in both directions after each task:
+
+```bash
+pgrep -x node | wc -l   # expect a small number; a peer vitest run turns a 3s file into 141s
+npm test > /tmp/te-base.log 2>&1
+grep -aoE '^\s*[×✕] .*' /tmp/te-base.log | sed -E 's/[0-9]+ms[[:space:]]*$//; s/[[:space:]]+$//' | sort -u > /tmp/te-base.set
+wc -l /tmp/te-base.set   # POSITIVE CONTROL: must be non-zero, or the extractor is wrong, not the suite
+```
+After each task, produce `/tmp/te-tN.set` the same way and run `diff /tmp/te-base.set /tmp/te-tN.set`. **Expected: no output.** A line only in the new set is yours; a line only in the base set may be a rename or a `beforeAll` timeout converting assertions to SKIPS — investigate both directions, never the count.
+
+### Writes into `books/`
+
+**Tasks 3, 4 and 5 write nothing into `books/`.** All reach verification renders in-process into the scratchpad. Every commit step below ends with `git status --porcelain books/ | wc -l` → **expected `0`**.
+
+🔴 **The one `books/` write is gated and is a decision, not a side effect.** `m68700` is in the `--no-annotate-en` holding state, so **any** chemistry ch03 re-render committed today ships **8 fewer reader-visible glosses** (4 `<dfn>` + 4 `<dt>`) than the published page — before `data-en` is considered, and with nothing rendering in their place until vefur ships. That is Task 6 Step 6, and it needs a [LEAD]/user decision.
+
+---
+
+## Task 3: The per-module loader, and Site A — the one live `<dfn>` emitter
+
+**Deleted from the old Task 3:** Step 1's `renderTerm` describe block, Step 3 (`renderTerm` patch), and Step 6's in-render `loadTermEnglish`. `renderTerm` has zero callers — tests importing it directly go green while asserting on unreachable code.
 
 **Files:**
-- Modify: `tools/cnxml-render.js` — manifest load + `context` at line ~668
-- Modify: `tools/lib/cnxml-elements.js` — `renderTerm` at line ~646, regex branch at line ~802
+- Create: `tools/lib/term-english-map.js`
+- Create: `tools/__tests__/term-english-map.test.js`
 - Create: `tools/__tests__/render-term-english.test.js`
+- Modify: `tools/lib/cnxml-elements.js` — the id-bearing branch at `:802-804`
+- Modify: `tools/cnxml-render.js` — context literal `~:668`, `main()` `~:3380` and `~:3622` — **COORDINATION-REQUIRED**
+- Modify: `server/services/renderService.js` — `~:99`
 
 **Interfaces:**
 - Consumes: `manifest.termEnglish` from Task 2.
-- Produces: `context.termEnglish` (`Record<string,string>`), read by Task 4.
+- Produces: `loadChapterTermEnglish()` and `classifyManifest()` from `tools/lib/term-english-map.js`; `context.termEnglish` (flat, this module), read by Site A.
 
-- [ ] **Step 1: Write the failing test**
+**Background you need.** `books/*/02-structure/**/*-manifest.json` is in **four states**, and a bare `catch { return {} }` collapses all of them. Re-derive:
+
+```bash
+node -e "
+const fs=require('fs'),path=require('path');let f=[];
+(function w(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name);
+ if(e.isDirectory())w(p);else if(e.name.endsWith('-manifest.json')&&p.includes('02-structure'))f.push(p);}})('books');
+let absent=0,empty=[],ok=[];for(const p of f){const m=JSON.parse(fs.readFileSync(p,'utf8'));
+ if(!('termEnglish' in m))absent++;else if(Object.keys(m.termEnglish||{}).length===0)empty.push(path.basename(p));else ok.push(path.basename(p));}
+console.log('total',f.length,'key-absent',absent,'empty',empty.length,empty,'ok',ok.length);"
+```
+Expected: `total 523 key-absent 510 empty 3 [ 'm68699-manifest.json', 'm00031-manifest.json', 'm00036-manifest.json' ] ok 10`.
+*(Counting unit: **manifest FILE** under `books/*/02-structure/`. The 10 `ok` are the five chemistry ch03 modules minus `m68699`, plus six of organic ch03's seven. **Only ch03 of the two live books has been re-extracted** — 510 of 523 predate Task 2, so rollout is per chapter and render must degrade **counted**, not silently.)*
+
+- [ ] **Step 1: Write the failing loader test**
+
+Create `tools/__tests__/term-english-map.test.js`:
+
+```js
+/**
+ * The join table render reads: books/<book>/02-structure/<chapterDir>/<mod>-manifest.json
+ * → one termEnglish map PER MODULE.
+ *
+ * 🔴 PER-MODULE IS THE CORRECTNESS PROPERTY, NOT AN IMPLEMENTATION DETAIL.
+ * `term-0000N` is OpenStax's own id and restarts in every module. A wrong-module
+ * map does not MISS — it HITS with wrong values (m68703's map over m68704: 5 of 5
+ * hits, 5 of 5 wrong English), which a hits/total counter cannot see.
+ */
+import { describe, it, expect, afterAll } from 'vitest';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { loadChapterTermEnglish, classifyManifest } from '../lib/term-english-map.js';
+
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+
+describe('classifyManifest — the four states a manifest can be in', () => {
+  it('ok: termEnglish present and non-empty, moduleId agrees', () => {
+    const r = classifyManifest('m68700', { moduleId: 'm68700', termEnglish: { 'term-00001': 'formula mass' } });
+    expect(r.state).toBe('ok');
+    expect(r.map['term-00001']).toBe('formula mass');
+  });
+
+  it('empty: the module legitimately has no terms — NOT the same as a stale manifest', () => {
+    expect(classifyManifest('m68699', { moduleId: 'm68699', termEnglish: {} }).state).toBe('empty');
+  });
+
+  it('key-absent: a pre-Task-2 vintage — 510 of 523 manifests today', () => {
+    const r = classifyManifest('m00130', { moduleId: 'm00130', segmentCount: 12 });
+    expect(r.state).toBe('key-absent');
+    expect(r.map).toBeNull();
+  });
+
+  it('🔴 moduleId-mismatch: the guard that stops a wrong-module map being joined', () => {
+    const r = classifyManifest('m68704', { moduleId: 'm68703', termEnglish: { 'term-00001': 'concentration' } });
+    expect(r.state).toBe('moduleId-mismatch');
+    expect(r.map).toBeNull();
+  });
+
+  it('unreadable: a non-object payload is "nothing" in a shape a gate can walk past (§C21)', () => {
+    expect(classifyManifest('m68700', null).state).toBe('unreadable');
+    expect(classifyManifest('m68700', []).state).toBe('unreadable');
+  });
+});
+
+describe('loadChapterTermEnglish — against the real corpus', () => {
+  it('loads a module map and keys it on the module', () => {
+    const { byModule } = loadChapterTermEnglish('efnafraedi-2e', 'ch03');
+    expect(Object.keys(byModule.get('m68700'))).toHaveLength(8);
+    expect(byModule.get('m68700')['term-00001']).toBe('formula mass');
+    expect(byModule.get('m68700')['fs-idp40901280']).toBe('Avogadro’s number (NA)');
+  });
+
+  it('🔴 the SAME key means different things in different modules — a flat merge is wrong', () => {
+    const { byModule } = loadChapterTermEnglish('lifraen-efnafraedi', 'ch03');
+    expect(byModule.get('m00032')['term-00001']).toBe('functional group');
+    expect(byModule.get('m00033')['term-00001']).toBe('alkanes');
+  });
+
+  it('reports key-absent for an un-re-extracted chapter, and offers no map for it', () => {
+    const { byModule, state } = loadChapterTermEnglish('lifraen-efnafraedi', 'ch11');
+    const states = [...state.values()];
+    expect(states.length).toBeGreaterThan(0);            // control: the chapter was found
+    expect(states.every((s) => s === 'key-absent')).toBe(true);
+    expect(byModule.size).toBe(0);
+  });
+
+  it('a chapter that does not exist yields empty maps, not a throw', () => {
+    const r = loadChapterTermEnglish('efnafraedi-2e', 'ch99');
+    expect(r.byModule.size).toBe(0);
+    expect(r.state.size).toBe(0);
+  });
+});
+
+describe('cwd independence — the server renders with cwd=server/', () => {
+  const originalCwd = process.cwd();
+  afterAll(() => process.chdir(originalCwd));
+
+  it('🔴 resolves against import.meta.url, not process.cwd()', () => {
+    process.chdir(path.join(REPO_ROOT, 'server'));
+    // PROVE THE CHDIR ACTUALLY MOVED. Without this the test is vacuous — it would
+    // pass identically from the repo root, where a cwd-relative path also works.
+    expect(fs.existsSync('books')).toBe(false);
+    const { byModule } = loadChapterTermEnglish('efnafraedi-2e', 'ch03');
+    expect(byModule.get('m68700')['term-00001']).toBe('formula mass');
+  });
+});
+```
+
+⚠️ `process.chdir` throws under vitest's **threads** pool. `pool`/`isolate` are unset in `vitest.config.js`, so the operative default here is a **forked, isolated child process per test file** and `chdir` works. If it throws `not supported in workers`, add `// @vitest-environment node` and re-run — do **not** delete the assertion; without it the whole test is vacuous.
+
+- [ ] **Step 2: Run the test to verify it fails**
+
+```bash
+npx vitest run tools/__tests__/term-english-map.test.js
+```
+Expected: FAIL — `Failed to resolve import "../lib/term-english-map.js"`. **This is the right reason:** the module does not exist yet. If it fails on an assertion instead, you created the file early.
+
+- [ ] **Step 3: Implement the loader**
+
+Create `tools/lib/term-english-map.js`:
+
+```js
+/**
+ * term-english-map.js
+ *
+ * Loads the per-module `termEnglish` maps cnxml-extract writes into
+ * books/<book>/02-structure/<chapterDir>/<moduleId>-manifest.json.
+ *
+ * 🔴 WHY RENDER DOES NOT LOAD THIS ITSELF. cnxml-render.js's BOOKS_DIR is a bare
+ * relative literal ('books/efnafraedi-2e') reassigned only inside main(), and
+ * server/services/renderService.js calls renderCnxmlToHtml IN-PROCESS with
+ * cwd=server/ — where 'books/…' resolves to server/books/… and misses for every
+ * book. options.bookSlug is a measured no-op. So the CALLER loads and passes,
+ * exactly as it already does for `embedMap: loadEmbedMapping(book)`.
+ *
+ * 🔴 WHY PER-MODULE. `term-0000N` is OpenStax's own id in READ-ONLY 01-source and
+ * it RESTARTS in every module: in lifraen-efnafraedi ch03 `term-00001` is
+ * "functional group" in m00032 and "alkanes" in m00033. A chapter-flat merge gives
+ * 31 of 79 (moduleId,key) pairs plausible WRONG English — a populated slot holding
+ * the wrong text, which no count can see (§C82 L144).
+ *
+ * 🔴 WHY THERE IS NO sourceHash GUARD. `sourceHash` hashes the immutable 01-source
+ * file, so both sides of such a comparison are always equal: measured byte-identical
+ * across 8 committed vintages of m68700-manifest.json while segmentCount moved
+ * 282 → 312. The real hazard is a WRONG-module map, and only keying on the
+ * manifest's own moduleId catches it.
+ */
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+
+/** @typedef {'ok'|'empty'|'key-absent'|'moduleId-mismatch'|'unreadable'} TermManifestState */
+
+/**
+ * Decide whether a parsed manifest may be joined to `moduleId`, and why not if not.
+ * Pure — the wrong-module case is unreachable on the committed corpus, so it is
+ * tested here rather than by planting a file.
+ *
+ * @param {string} moduleId - module id taken from the FILENAME
+ * @param {unknown} manifest - parsed manifest, or null when it would not parse
+ * @returns {{state: TermManifestState, map: Record<string,string>|null}}
+ */
+export function classifyManifest(moduleId, manifest) {
+  if (!manifest || typeof manifest !== 'object' || Array.isArray(manifest)) {
+    return { state: 'unreadable', map: null };
+  }
+  // ORDER MATTERS. A pre-Task-2 manifest is benign and must not be reported as a
+  // mismatch; only a manifest that actually CARRIES a map has to prove its identity.
+  if (!Object.prototype.hasOwnProperty.call(manifest, 'termEnglish')) {
+    return { state: 'key-absent', map: null };
+  }
+  if (manifest.moduleId !== moduleId) {
+    return { state: 'moduleId-mismatch', map: null };
+  }
+  const map = manifest.termEnglish && typeof manifest.termEnglish === 'object' ? manifest.termEnglish : {};
+  return { state: Object.keys(map).length > 0 ? 'ok' : 'empty', map };
+}
+
+/**
+ * @param {string} book - book slug
+ * @param {string} chapterDir - ALREADY formatted ('ch03' / 'appendices'). Taken as a
+ *   string on purpose: this file adds no fifth chapter-dir formatter (CLAUDE.md's
+ *   two-conventions rule), and both callers already hold one.
+ * @returns {{byModule: Map<string, Record<string,string>>, state: Map<string, TermManifestState>}}
+ */
+export function loadChapterTermEnglish(book, chapterDir) {
+  const byModule = new Map();
+  const state = new Map();
+  const dir = path.join(REPO_ROOT, 'books', book, '02-structure', chapterDir);
+
+  let files;
+  try {
+    files = fs.readdirSync(dir).filter((f) => f.endsWith('-manifest.json'));
+  } catch {
+    return { byModule, state };
+  }
+
+  for (const file of files.sort()) {
+    const moduleId = file.replace(/-manifest\.json$/, '');
+    let parsed = null;
+    try {
+      parsed = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf-8'));
+    } catch {
+      parsed = null;
+    }
+    const { state: s, map } = classifyManifest(moduleId, parsed);
+    state.set(moduleId, s);
+    if (map) byModule.set(moduleId, map);
+  }
+  return { byModule, state };
+}
+```
+
+- [ ] **Step 4: Run the loader test to verify it passes**
+
+```bash
+npx vitest run tools/__tests__/term-english-map.test.js
+```
+Expected: **PASS, 9 tests.**
+
+- [ ] **Step 5: Write the failing render test for Site A**
 
 Create `tools/__tests__/render-term-english.test.js`:
 
 ```js
 /**
- * `<dfn data-en="…">` — the attribute vefur's tier-1 term matching consumes.
+ * `<dfn data-en="…">` — the attribute vefur's term matching will consume.
  *
- * THREE call sites emit a <dfn> and all three must carry the attribute. Site 3
- * (the id-less glossary branch) is 46% of the corpus and is the one a plan
- * omits; it is covered in Task 4.
+ * SITE A is the ONLY live <dfn> emitter: the id-bearing branch of
+ * processInlineContent (tools/lib/cnxml-elements.js:802-804). `renderTerm` in the
+ * same file has ZERO callers and is deliberately not tested here — a test that
+ * imported it would pass while asserting on unreachable code.
+ *
+ * The chapter key-terms page emits <dt>, not <dfn>, and is Task 4.
  */
 import { describe, it, expect } from 'vitest';
-import { renderTerm, processInlineContent } from '../lib/cnxml-elements.js';
+import { processInlineContent } from '../lib/cnxml-elements.js';
 
 const ctx = (termEnglish) => ({ termEnglish, terms: {}, equations: [], figures: [] });
 
-describe('site 1 — renderTerm()', () => {
-  it('emits data-en when the id is in the map', () => {
-    const html = renderTerm('formúlumassa', { id: 'term-00001' }, ctx({ 'term-00001': 'formula mass' }));
-    expect(html).toContain('data-en="formula mass"');
-    expect(html).toContain('id="term-00001"');
+describe('site A — the id-bearing <term> branch', () => {
+  it('emits data-en when the id is in THIS module’s map', () => {
+    const html = processInlineContent('Eitt <term id="term-00002">mól</term> af efni', ctx({ 'term-00002': 'mole' }));
+    expect(html).toContain('<dfn id="term-00002" class="term" data-en="mole">');
   });
 
-  it('omits the attribute entirely when the id is absent — degrade, never corrupt', () => {
-    const html = renderTerm('formúlumassa', { id: 'term-99999' }, ctx({ 'term-00001': 'formula mass' }));
+  it('omits the attribute when the id is absent — degrade, never corrupt', () => {
+    const html = processInlineContent('<term id="term-00777">x</term>', ctx({ 'term-00002': 'mole' }));
     expect(html).not.toContain('data-en');
-    expect(html).toContain('<dfn');
+    expect(html).toContain('<dfn id="term-00777" class="term">');
   });
 
-  it('escapes a quote in the English rather than breaking the attribute', () => {
-    const html = renderTerm('x', { id: 't1' }, ctx({ t1: 'the "mole" concept' }));
+  it('omits it when the context carries no map at all — every pre-rollout chapter', () => {
+    const html = processInlineContent('<term id="term-00002">mól</term>', ctx(null));
+    expect(html).not.toContain('data-en');
+    expect(html).toContain('<dfn id="term-00002" class="term">');
+  });
+
+  it('escapes a quote rather than breaking out of the attribute', () => {
+    const html = processInlineContent('<term id="t1">x</term>', ctx({ t1: 'the "mole" concept' }));
     expect(html).not.toMatch(/data-en="the "mole"/);
     expect(html).toContain('&quot;');
   });
 
-  it('CONTROL — an empty map yields a well-formed <dfn> with no attribute', () => {
-    expect(renderTerm('x', { id: 't1' }, ctx({}))).toContain('<dfn');
-  });
-});
-
-describe('site 2 — the id-bearing regex branch in processInlineContent', () => {
-  it('emits data-en for an inline <term id>', () => {
-    const html = processInlineContent(
-      'Eitt <term id="term-00002">mól</term> af efni',
-      ctx({ 'term-00002': 'mole' })
-    );
-    expect(html).toContain('data-en="mole"');
+  it('🔴 the SAME id yields DIFFERENT English under different module maps', () => {
+    // m00032 term-00001 = "functional group"; m00033 term-00001 = "alkanes".
+    // This is what a chapter-flat merge would get wrong on 31 of 79 ch03 pairs.
+    const src = '<term id="term-00001">virknihópur</term>';
+    expect(processInlineContent(src, ctx({ 'term-00001': 'functional group' }))).toContain('data-en="functional group"');
+    expect(processInlineContent(src, ctx({ 'term-00001': 'alkanes' }))).toContain('data-en="alkanes"');
   });
 
-  it('omits it when unknown', () => {
-    const html = processInlineContent('<term id="term-777">x</term>', ctx({ 'term-00002': 'mole' }));
-    expect(html).not.toContain('data-en');
+  it('CONTROL — an empty map still yields a well-formed, id-bearing <dfn>', () => {
+    expect(processInlineContent('<term id="t1">x</term>', ctx({}))).toBe('<dfn id="t1" class="term">x</dfn>');
   });
 });
 ```
 
-- [ ] **Step 2: Run the test to verify it fails**
+- [ ] **Step 6: Run it to verify it fails**
 
-Run: `npx vitest run tools/__tests__/render-term-english.test.js`
-Expected: FAIL — `expected '<dfn id="term-00001" class="term">formúlumassa</dfn>' to contain 'data-en="formula mass"'`.
-
-- [ ] **Step 3: Emit the attribute at site 1**
-
-In `tools/lib/cnxml-elements.js`, replace `renderTerm` (line ~646) with:
-
-```js
-export function renderTerm(content, attrs, context) {
-  const id = attrs.id || null;
-  const processedContent = processInlineContent(content, context);
-  // data-en is vefur's tier-1 term key. Absent when unknown — degraded, never
-  // corrupt. See docs/superpowers/specs/2026-09-01-term-english-attribute-design.md
-  const en = id && context && context.termEnglish ? context.termEnglish[id] : undefined;
-  const dfnAttrs = { id, class: 'term' };
-  if (en) dfnAttrs['data-en'] = en;
-  return createElement('dfn', dfnAttrs, processedContent);
-}
+```bash
+npx vitest run tools/__tests__/render-term-english.test.js
 ```
+Expected: FAIL — `expected '<dfn id="term-00002" class="term">mól</dfn>' to contain '<dfn id="term-00002" class="term" data-en="mole">'`. The last test (CONTROL) must **PASS** already; if it fails, you changed the emission shape.
 
-- [ ] **Step 4: Emit the attribute at site 2**
+- [ ] **Step 7: Emit the attribute at Site A**
 
-In the same file, replace the id-bearing regex branch (line ~802) with:
+In `tools/lib/cnxml-elements.js`, replace the id-bearing branch at `:802-804`:
 
 ```js
   result = result.replace(/<term\s+id="([^"]*)"[^>]*>([\s\S]*?)<\/term>/g, (match, id, inner) => {
-    const en = context && context.termEnglish ? context.termEnglish[id] : undefined;
+    // data-en is vefur's term key. Read from THIS MODULE's map only: `term-0000N`
+    // is OpenStax's own id and restarts in every module, so a chapter-wide map
+    // emits plausible wrong English that no count can see (§C82 L144).
+    // Absent key ⇒ absent attribute. Degrade, never corrupt.
+    const map = (context && context.termEnglish) || null;
+    const en = map && typeof map[id] === 'string' ? map[id] : '';
     const enAttr = en ? ` data-en="${escapeAttr(en)}"` : '';
-    return `<dfn id="${escapeAttr(id)}" class="term"${enAttr}>${processInlineContent(inner, context)}</dfn>`;
+    // `id` is deliberately left UNESCAPED — this is the pre-existing emission, and
+    // keeping it byte-identical is what makes Task 6's "empty map ⇒ unchanged
+    // output" pin mean something.
+    return `<dfn id="${id}" class="term"${enAttr}>${processInlineContent(inner, context)}</dfn>`;
   });
 ```
 
-⚠️ Confirm `escapeAttr` is already imported in this file; if not, add it from wherever the sibling escapers come from (`grep -an "escapeAttr" tools/lib/cnxml-elements.js`).
+`escapeAttr` needs no import — it is defined and exported in this same file at `:419`. (The old plan's ⚠️ about importing it was wrong.)
 
-- [ ] **Step 5: Run the test to verify it passes**
-
-Run: `npx vitest run tools/__tests__/render-term-english.test.js`
-Expected: PASS, 6 tests.
-
-- [ ] **Step 6: Load the manifest into the render context**
-
-In `tools/cnxml-render.js`, add a loader near `loadEquationTextDictionary` (line ~352):
+Then in `tools/cnxml-render.js`, add one field to the context literal at `~:668`, beside the existing `moduleId` — **COORDINATION-REQUIRED**:
 
 ```js
-/**
- * Load a module's `termEnglish` map from its extraction manifest.
- * Resolved against import.meta.url, never process.cwd() — the server runs with
- * cwd=server/, and a cwd-relative path silently points at the wrong tree.
- * @returns {{map: Record<string,string>, sourceHash: string|null}}
- */
-function loadTermEnglish(bookSlug, chapterDir, moduleId) {
-  const p = path.join(BOOKS_DIR, bookSlug, '02-structure', chapterDir, `${moduleId}-manifest.json`);
-  try {
-    const m = JSON.parse(fs.readFileSync(p, 'utf-8'));
-    return { map: m.termEnglish || {}, sourceHash: m.sourceHash || null };
-  } catch {
-    return { map: {}, sourceHash: null };
+    termEnglish: options.termEnglish || null, // THIS module's id → English (tools/lib/term-english-map.js)
+```
+
+⚠️ **Do not add a third parameter to `processInlineContent`** — it has 39 non-test call sites. The context object is the seam.
+
+- [ ] **Step 8: Run it to verify it passes**
+
+```bash
+npx vitest run tools/__tests__/render-term-english.test.js
+```
+Expected: **PASS, 6 tests.**
+
+- [ ] **Step 9: Thread the map at both callers**
+
+**(a) CLI — `tools/cnxml-render.js` `main()`. COORDINATION-REQUIRED.** Beside the existing `buildModuleSections` call (`~:3380`), where `chapterDir` is already in scope:
+
+```js
+    // Per-module English term maps for data-en. Loaded once per chapter; the
+    // loader keys on each manifest's own moduleId, so a wrong-module map is
+    // refused rather than joined.
+    const termEnglish = loadChapterTermEnglish(BOOK_SLUG, chapterDir);
+```
+
+Import it at the top beside `buildModuleSections` (`:62`):
+
+```js
+import { loadChapterTermEnglish } from './lib/term-english-map.js';
+```
+
+Then in the per-module `renderCnxmlToHtml` options object (`~:3622`), add:
+
+```js
+            termEnglish: termEnglish.byModule.get(moduleId) || null,
+```
+
+**(b) Server preview — `server/services/renderService.js` `~:99`.** This is a `server/` file (CommonJS, dynamic `import()` of ESM tools — the idiom is already there at `:83`). Beside `embedMap: loadEmbedMapping(book)`:
+
+```js
+  const { loadChapterTermEnglish } = await import(
+    path.join(PROJECT_ROOT, 'tools', 'lib', 'term-english-map.js')
+  );
+  const termEnglishByModule = loadChapterTermEnglish(book, chapterStr).byModule;
+```
+…and in the options object:
+```js
+    termEnglish: termEnglishByModule.get(moduleId) || null,
+```
+
+⚠️ **Why touch the server at all, honestly:** `data-en` is invisible without vefur's CSS/JS, so this changes nothing an editor sees. It is here so the two render paths do not silently diverge — the preview path is exactly where `options.bookSlug` already rots unnoticed. **`server/` is not linted by CI** (root `lint` is `eslint tools/ scripts/`); `lint-staged`'s pre-commit hook does cover it, so run the commit normally rather than with `--no-verify`. This edge is `server/` → `tools/` (AGPL consuming MIT), the safe direction — root `LICENSE`'s MIT→AGPL enumeration does **not** need updating.
+
+- [ ] **Step 10: Prove reach at the RENDERED OUTPUT, in-process, without writing to `books/`**
+
+Create `<scratchpad>/reach.mjs`:
+
+```js
+import fs from 'fs';
+import path from 'path';
+import { renderCnxmlToHtml } from '/ABSOLUTE/PATH/TO/repo/tools/cnxml-render.js';
+import { loadChapterTermEnglish } from '/ABSOLUTE/PATH/TO/repo/tools/lib/term-english-map.js';
+const ROOT = '/ABSOLUTE/PATH/TO/repo';
+const c = (h, re) => (h.match(re) || []).length;
+for (const [book, ch] of [['efnafraedi-2e', 3], ['lifraen-efnafraedi', 3]]) {
+  const dir = path.join(ROOT, 'books', book, '03-translated/mt-preview/ch03');
+  const { byModule } = loadChapterTermEnglish(book, 'ch03');
+  let dfn = 0, withId = 0, withEn = 0;
+  for (const f of fs.readdirSync(dir).filter((f) => f.endsWith('.cnxml')).sort()) {
+    const moduleId = f.replace('.cnxml', '');
+    const html = renderCnxmlToHtml(fs.readFileSync(path.join(dir, f), 'utf8'),
+      { chapter: ch, moduleId, lang: 'is', termEnglish: byModule.get(moduleId) || null }).html;
+    dfn += c(html, /<dfn\b/g); withId += c(html, /<dfn\s+id="/g); withEn += c(html, /<dfn[^>]*\sdata-en="/g);
   }
+  console.log(book, 'dfn', dfn, 'withId', withId, 'withEn', withEn);
 }
 ```
 
-⚠️ `BOOKS_DIR` must already be an absolute constant in this file. Verify with `grep -an "const BOOKS_DIR" tools/cnxml-render.js`. If it is built from `process.cwd()`, fix it to derive from `import.meta.url` — that is a Global Constraint.
-
-Then in the `context` object at line ~668, add:
-
-```js
-    termEnglish: TERM_ENGLISH.map,
+```bash
+node <scratchpad>/reach.mjs 2>&1 | grep -a dfn
+git status --porcelain books/ | wc -l
 ```
+Expected exactly:
+```
+efnafraedi-2e dfn 20 withId 20 withEn 20
+lifraen-efnafraedi dfn 39 withId 39 withEn 39
+```
+and `0` from `git status`.
+*(Counting unit: **rendered `<dfn>` ELEMENT**, ch03, `mt-preview`, rendered fresh from `03-translated`. These are not the spec's "16 + 16" or "38" — those count `<term>` elements in CNXML that carry a gloss, a different unit. The in-process render is faithful for this element: its per-module counts are 0/4/2/9/5 chemistry and 16/8/2/1/9/3 organic, identical to the committed pages.)*
 
-…where `TERM_ENGLISH` is assigned from `loadTermEnglish(BOOK_SLUG, chapterDir, moduleId)` at the point the module's CNXML is read. Find that read (`grep -an "translatedCnxmlPath" tools/cnxml-render.js`) and place the call beside it so both use the same `moduleId`.
-
-- [ ] **Step 7: Verify end to end on a real module**
+- [ ] **Step 11: Failing-set check, then commit**
 
 ```bash
-node tools/cnxml-render.js --book efnafraedi-2e --chapter 3
-grep -aoh '<dfn[^>]*data-en="[^"]*"' books/efnafraedi-2e/05-publication/mt-preview/chapters/03/*.html | head -5
+npm test > /tmp/te-t3.log 2>&1
+grep -aoE '^\s*[×✕] .*' /tmp/te-t3.log | sed -E 's/[0-9]+ms[[:space:]]*$//; s/[[:space:]]+$//' | sort -u > /tmp/te-t3.set
+diff /tmp/te-base.set /tmp/te-t3.set
+git status --porcelain books/ | wc -l
+git add tools/lib/term-english-map.js tools/__tests__/term-english-map.test.js \
+        tools/__tests__/render-term-english.test.js tools/lib/cnxml-elements.js \
+        tools/cnxml-render.js server/services/renderService.js
+git commit -m "feat(render): per-module data-en on the one live <dfn> emitter"
 ```
-
-Expected: `<dfn id="term-00001" class="term" data-en="formula mass"` — with **capitalised** proper nouns where applicable.
-
-- [ ] **Step 8: Commit**
-
-```bash
-npm test > /tmp/t3.log 2>&1; grep -aE "Test Files|Tests  " /tmp/t3.log
-git add tools/cnxml-render.js tools/lib/cnxml-elements.js tools/__tests__/render-term-english.test.js books/*/05-publication
-git commit -m "feat(render): emit data-en on id-bearing <dfn> from the manifest term map"
-```
-
-Expected in `/tmp/t3.log`: **60 failed**, unchanged file set.
+Expected: `diff` prints nothing; `git status … books/` prints `0`.
 
 ---
 
-## Task 4: Site 3 — the id-less glossary branch
+## Task 4: Site C — the chapter key-terms page, which emits `<dt>` and not `<dfn>`
 
-**Why it is separate:** this site is **46% of the corpus** (765 of 1,656 injected `<term>` elements have no id) and needs the enclosing `<definition>` id, which lives one function away. It is also the site where a careless fix introduces a real bug — see Step 3.
+**This replaces the old "Site 3 — the id-less glossary branch" entirely.** That site annotates **0 of the 763** in-definition terms: `extractChapterGlossary` (`cnxml-render.js:2485`) strips the `<term>` tag before `processInlineContent` ever sees it. The glossary population's real destination is `renderCompiledGlossary` (`:2511`), which writes a bare `<dt id="<definition id>">` at `:2524`. Verify before you start:
+
+```bash
+grep -aoh '<dt[^>]*>' books/efnafraedi-2e/05-publication/mt-preview/chapters/03/3-key-terms.html | head -2
+grep -aoc '<dfn' books/efnafraedi-2e/05-publication/mt-preview/chapters/03/3-key-terms.html
+```
+Expected: `<dt id="fs-idp40901280">` / `<dt id="fs-idp40905984">`, then `0`.
+*(Counting unit: **rendered element** on one page. Corpus-wide: 905 `<dfn>` all on section pages, 851 `<dt>` all on `*-key-terms.html`, two disjoint non-empty populations.)*
+
+**🔴 CROSS-REPO DECISION — NAME IT, DO NOT SILENTLY PICK IT.** vefur's `src/lib/actions/glossaryTerms.ts:318` does `node.querySelectorAll('dfn.term')`. **A `<dt data-en>` is invisible to the consumer that already exists.** Emitting it here is additive and reader-invisible, so ship it — but it means **spec §4.7 (retire `annotateInlineTerms`) is BLOCKED** until one of these is chosen and built:
+
+- **(i)** vefur widens its walker to `dt[data-en]` (no efni change), or
+- **(ii)** the `<dt>` wraps its term in `<dfn class="term" data-en>` (an efni change that alters the key-terms DOM and is a `content.css` contract change to coordinate with vefur).
+
+Flipping `annotateEn` off before that strips `(e. …)` from **851 published `<dt>` elements across chemistry** with nothing rendering in its place. Record the choice in Task 7's handover doc; do not decide it in this task.
 
 **Files:**
-- Modify: `tools/cnxml-render.js` — `renderGlossary` at line ~1993
-- Modify: `tools/lib/cnxml-elements.js` — id-less regex branch at line ~805
+- Modify: `tools/cnxml-render.js` — `renderCompiledGlossary` `:2511-2524`, `glossaryContext` `~:3787` — **COORDINATION-REQUIRED**
 - Modify: `tools/__tests__/render-term-english.test.js`
 
 **Interfaces:**
-- Consumes: `context.termEnglish` from Task 3.
-- Produces: `context.definitionId` — a **scoped** string, set only while rendering a definition's `<term>`.
+- Consumes: `loadChapterTermEnglish().byModule` from Task 3.
+- Produces: `context.termEnglishByModule` — `Map<moduleId, Record<id,en>>`, **read only by `renderCompiledGlossary`**.
+
+**Why a different field and a different shape:** `glossaryContext` (`:3787`) is chapter-wide and carries **no `moduleId`**; the definitions do (`def.moduleId`, stamped by `extractChapterGlossary`). Both `def.id` and `def.moduleId` are loop locals on the exact line that writes the `<dt>`, so this is a **one-line attribute append — no context clone, no new parameter, and nothing routed through `processInlineContent`.** Any design that puts this lookup inside `processInlineContent` emits **zero** `data-en` on the key-terms page while every module page looks correct — a partial success that reads as a success.
 
 - [ ] **Step 1: Write the failing test**
 
 Append to `tools/__tests__/render-term-english.test.js`:
 
 ```js
-describe('site 3 — the id-less glossary branch', () => {
-  const ctx3 = (termEnglish, definitionId) => ({
-    termEnglish,
-    definitionId,
-    terms: {},
-    equations: [],
-    figures: [],
+import { renderCompiledGlossary } from '../cnxml-render.js';
+
+describe('site C — the chapter key-terms page (<dt>, not <dfn>)', () => {
+  const defs = [
+    { id: 'fs-idp40905984', term: 'formúlumassi', termContent: 'formúlumassi', meaningContent: 'skilgreining', moduleId: 'm68700' },
+  ];
+  const gctx = (byModule) => ({ termEnglishByModule: byModule, terms: {}, figures: {}, tables: {}, examples: {}, footnotes: [] });
+
+  it('emits data-en on the <dt>, keyed on (def.moduleId, def.id)', () => {
+    const byModule = new Map([['m68700', { 'fs-idp40905984': 'formula mass' }]]);
+    const html = renderCompiledGlossary(3, defs, gctx(byModule));
+    expect(html).toContain('<dt id="fs-idp40905984" data-en="formula mass">');
   });
 
-  it('emits data-en for an id-less <term> using the scoped definition id', () => {
-    const html = processInlineContent(
-      '<term>formúlumassa</term>',
-      ctx3({ 'fs-idp40905984': 'formula mass' }, 'fs-idp40905984')
-    );
-    expect(html).toContain('data-en="formula mass"');
-    expect(html).toContain('<dfn class="term"');
+  it('🔴 keys on the DEFINITION’S module, not on any chapter-flat merge', () => {
+    // Same definition id, two modules, two Englishes. A flat merge cannot tell
+    // them apart; this asserts the code reads def.moduleId.
+    const byModule = new Map([
+      ['m68700', { 'fs-idp40905984': 'formula mass' }],
+      ['m68703', { 'fs-idp40905984': 'WRONG — other module' }],
+    ]);
+    expect(renderCompiledGlossary(3, defs, gctx(byModule))).toContain('data-en="formula mass"');
   });
 
-  it('emits nothing when no definitionId is scoped — a bare inline <term> in prose', () => {
-    const html = processInlineContent(
-      '<term>formúlumassa</term>',
-      ctx3({ 'fs-idp40905984': 'formula mass' }, undefined)
-    );
+  it('omits the attribute when that module’s map lacks the id', () => {
+    const byModule = new Map([['m68700', { 'fs-idOTHER': 'x' }]]);
+    const html = renderCompiledGlossary(3, defs, gctx(byModule));
     expect(html).not.toContain('data-en');
+    expect(html).toContain('<dt id="fs-idp40905984">');
   });
 
-  it('🔴 a <term> nested inside a <meaning> must NOT inherit the definition English', () => {
-    // renderGlossary calls processInlineContent twice — once for the term, once
-    // for the meaning. Scoping definitionId to the term call is what stops the
-    // meaning's nested terms being mislabelled. 0 of 763 definitions do this
-    // today; it is guarded anyway, because the corpus sets the exposure.
-    const html = processInlineContent(
-      '<term>eitthvað annað</term>',
-      ctx3({ 'fs-idp40905984': 'formula mass' }, undefined)
-    );
-    expect(html).not.toContain('formula mass');
+  it('omits it when there is no map at all — every pre-rollout chapter', () => {
+    const html = renderCompiledGlossary(3, defs, gctx(undefined));
+    expect(html).not.toContain('data-en');
+    expect(html).toContain('<dt id="fs-idp40905984">');
+  });
+
+  it('🔴 CONTROL — this page emits NO <dfn>, so a future refactor routing it through the <dfn> path is caught here', () => {
+    const byModule = new Map([['m68700', { 'fs-idp40905984': 'formula mass' }]]);
+    const html = renderCompiledGlossary(3, defs, gctx(byModule));
+    expect(html).not.toContain('<dfn');
+    expect(html).toContain('<dl>');
   });
 });
 ```
 
-- [ ] **Step 2: Run the test to verify it fails**
-
-Run: `npx vitest run tools/__tests__/render-term-english.test.js -t "id-less"`
-Expected: FAIL on the first case — no `data-en` emitted.
-
-- [ ] **Step 3: Emit the attribute at site 3**
-
-In `tools/lib/cnxml-elements.js`, replace the id-less regex branch (line ~805) with:
-
-```js
-  result = result.replace(/<term[^>]*>([\s\S]*?)<\/term>/g, (match, inner) => {
-    // A glossary definition's <term> carries no id of its own; its English is
-    // keyed on the PARENT <definition> id, which renderGlossary scopes onto the
-    // context for this call only.
-    const defId = context && context.definitionId;
-    const en = defId && context.termEnglish ? context.termEnglish[defId] : undefined;
-    const enAttr = en ? ` data-en="${escapeAttr(en)}"` : '';
-    return `<dfn class="term"${enAttr}>${processInlineContent(inner, context)}</dfn>`;
-  });
-```
-
-- [ ] **Step 4: Scope `definitionId` in `renderGlossary`**
-
-In `tools/cnxml-render.js`, inside `renderGlossary`'s loop (line ~2010), change **only the term call**:
-
-```js
-      const termInner = termMatch[1].trim();
-      // Scoped clone: the definition id applies to the TERM, never to the
-      // MEANING. A definition-wide context would let a <term> nested inside a
-      // <meaning> inherit the wrong English.
-      const termHtml = processInlineContent(termInner, { ...context, definitionId: id });
-      const meaning = processInlineContent(meaningMatch[1], context);
-```
-
-⚠️ **Do not** add `definitionId` to the `meaning` call. That is the whole point of Step 1's third test.
-
-- [ ] **Step 5: Run the test to verify it passes**
-
-Run: `npx vitest run tools/__tests__/render-term-english.test.js`
-Expected: PASS, 9 tests.
-
-- [ ] **Step 6: Verify on the real corpus**
+- [ ] **Step 2: Run it to verify it fails**
 
 ```bash
-node tools/cnxml-render.js --book efnafraedi-2e --chapter 3
-grep -aoh '<dfn class="term" data-en="[^"]*"' books/efnafraedi-2e/05-publication/mt-preview/chapters/03/*.html | head -5
+npx vitest run tools/__tests__/render-term-english.test.js -t "site C"
+```
+Expected: FAIL on the first two — `expected '… <dt id="fs-idp40905984">formúlumassi</dt> …' to contain '<dt id="fs-idp40905984" data-en="formula mass">'`. The last three must already **PASS** (they assert today's behaviour, and are the controls that stop the fix from being written blindly).
+
+- [ ] **Step 3: Emit the attribute at Site C** — **COORDINATION-REQUIRED**
+
+In `tools/cnxml-render.js`, inside `renderCompiledGlossary`'s loop, replace the `<dt>` line (`:2524`):
+
+```js
+      // data-en keyed on the DEFINITION's own module. glossaryContext is
+      // chapter-wide and has no moduleId, but every def carries one — and
+      // definition ids are unique within a chapter (0 duplicates in all 21
+      // chemistry chapters), so this join is unambiguous.
+      const defMap =
+        def.id && context && context.termEnglishByModule
+          ? context.termEnglishByModule.get(def.moduleId)
+          : null;
+      const defEn = defMap && typeof defMap[def.id] === 'string' ? defMap[def.id] : '';
+      const enAttr = defEn ? ` data-en="${escapeAttr(defEn)}"` : '';
+      lines.push(`    <dt${def.id ? ` id="${escapeAttr(def.id)}"` : ''}${enAttr}>${termHtml}</dt>`);
 ```
 
-Expected: id-less glossary `<dfn>` elements now carry `data-en`.
+Then add one field to the `glossaryContext` literal at `~:3787`:
 
-- [ ] **Step 7: Commit**
+```js
+          termEnglishByModule: termEnglish.byModule,
+```
+(`termEnglish` is already in scope from Task 3 Step 9a.)
+
+⚠️ **Do NOT touch `renderGlossary` (`:2000`).** It is unreachable on this corpus — `<glossary>` is a sibling of `<content>` in 111 of 111 module files — but a synthetic nested `<glossary>` does reach it. Leave it, and do not assume it stays unreachable.
+
+- [ ] **Step 4: Run it to verify it passes**
 
 ```bash
-npm test > /tmp/t4.log 2>&1; grep -aE "Test Files|Tests  " /tmp/t4.log
-git add tools/cnxml-render.js tools/lib/cnxml-elements.js tools/__tests__/render-term-english.test.js books/*/05-publication
-git commit -m "feat(render): id-less glossary terms get data-en via a scoped definition id"
+npx vitest run tools/__tests__/render-term-english.test.js
 ```
+Expected: **PASS, 11 tests.**
 
-Expected: **60 failed**, unchanged.
+- [ ] **Step 5: Correct the frozen spec and the false test comment**
+
+Two documents assert the falsified enumeration and will send the next reader back down it.
+
+**(a)** `docs/superpowers/specs/2026-09-01-term-english-attribute-design.md` — add a banner-dated amendment under §4.2 and under §8. It is a **frozen design record**, so amend with a dated block; do not rewrite the original text:
+
+> 🔴 **AMENDED 2026-09-03, MEASURED.** §4.2's three-site enumeration and §8's "✅ ANSWERED" are wrong. `renderTerm` (site 1) has **0 callers**. A glossary definition's `<term>` never reaches site 3 — `extractChapterGlossary` (`cnxml-render.js:2485`) strips the tag first, so **0 of 763** in-definition terms are reachable there. `renderGlossary`, whose scoping §8 resolves, **never runs**: `<glossary>` is a sibling of `<content>` in 111 of 111 module files. The real second site is `renderCompiledGlossary` (`:2511`), and it emits **`<dt>`, not `<dfn>`** — outside the `dfn.term` contract §4.5 promises and outside what vefur's `glossaryTerms.ts` walks, which **blocks §4.7**. §4.4's vintage guard cannot fire (both sides hash the same immutable file); the real hazard is a wrong-**module** map. §4.4's premise that extract *mints* `term-0000N` is also false — they are OpenStax's own ids in `01-source`.
+
+**(b)** `tools/__tests__/cnxml-render-glossary-dom.test.js:16` carries the comment *"Glossary sits inside `<content>` in real CNXML files"*. Measured: **111 of 111** put it outside. Correct the comment in place and label the file as characterizing a corpus-unreachable path. Re-derive first:
+
+```bash
+node -e "
+const fs=require('fs'),path=require('path');let inside=0,outside=0,files=0;
+(function w(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name);
+ if(e.isDirectory())w(p); else if(e.name.endsWith('.cnxml')&&p.includes('03-translated')){
+  const s=fs.readFileSync(p,'utf8'); if(!/<glossary>/.test(s))return; files++;
+  const cm=s.match(/<content>([\s\S]*?)<\/content>/); (cm&&/<glossary>/.test(cm[1])?inside++:outside++);}}})('books/efnafraedi-2e');
+(function w(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name);
+ if(e.isDirectory())w(p); else if(e.name.endsWith('.cnxml')&&p.includes('03-translated')){
+  const s=fs.readFileSync(p,'utf8'); if(!/<glossary>/.test(s))return; files++;
+  const cm=s.match(/<content>([\s\S]*?)<\/content>/); (cm&&/<glossary>/.test(cm[1])?inside++:outside++);}}})('books/lifraen-efnafraedi');
+console.log('glossary-bearing files',files,'inside <content>',inside,'outside',outside);"
+```
+Expected: a **non-zero** file count with `inside 0` — the non-zero denominator is the control that makes the zero mean something.
+
+- [ ] **Step 6: Failing-set check, then commit**
+
+```bash
+npm test > /tmp/te-t4.log 2>&1
+grep -aoE '^\s*[×✕] .*' /tmp/te-t4.log | sed -E 's/[0-9]+ms[[:space:]]*$//; s/[[:space:]]+$//' | sort -u > /tmp/te-t4.set
+diff /tmp/te-base.set /tmp/te-t4.set
+git status --porcelain books/ | wc -l
+git add tools/cnxml-render.js tools/__tests__/render-term-english.test.js \
+        tools/__tests__/cnxml-render-glossary-dom.test.js \
+        docs/superpowers/specs/2026-09-01-term-english-attribute-design.md
+git commit -m "feat(render): data-en on the key-terms <dt>, keyed on the definition's own module"
+```
+Expected: `diff` silent, `0` from `git status`.
+
+### Site D — organic's key-terms `<li><a>`: DEFERRED, with its trigger
+
+`buildKeyTermsItems` (`cnxml-render.js:3288`) builds organic's key-terms page from `<link document target-id>` items — a **third markup shape**, 36 of them in ch03, all resolving in the manifests. It is **not built here**, for a measured reason:
+
+```bash
+grep -ac '(e\. ' books/lifraen-efnafraedi/05-publication/mt-preview/chapters/03/3-key-terms.html
+```
+Expected: **`0`.** That page carries **no gloss today**, so it is not a §4.7 regression risk, and vefur has no consumer for an `<a data-en>`. The `<dfn>` each link points at already gets `data-en` via Site A.
+
+▶ **Trigger to build it:** vefur asks for the English on the key-terms index, **or** that grep ever returns non-zero. Log it in the register's deferred-work ledger, not here.
 
 ---
 
-## Task 5: Vintage guard and a visible annotated/skipped count
+## Task 5: The visible coverage report, and the attribute-order fix that gives 81 `<dfn>` a key
 
-**Why:** extract **mints** `term-0000N` positionally (m68700 has 8 source `<term>`, only 4 with an id), so a manifest from a different extraction vintage shifts every inline term's English silently and plausibly. And a silently missing attribute is exactly this project's recurring failure mode — a number that moves is visible, an absence is not.
+**The old Task 5 is deleted.** Its guard compared `sourceHash` against `sourceHash` — both sides hash the same immutable `01-source` file, byte-identical across 8 committed vintages of `m68700-manifest.json` while `segmentCount` moved 282 → 312. Its stated rationale (extract *mints* `term-0000N`) is also false: they are OpenStax's own ids. **The identity guard that does work already shipped in Task 3's loader**, keyed on the manifest's own `moduleId`. What remains is the half that is genuinely valuable — making an absence *visible* — plus a producer/consumer defect the audit surfaced.
 
 **Files:**
-- Modify: `tools/cnxml-render.js`
+- Modify: `tools/cnxml-render.js` — per-module loop `~:3622`, compiled-glossary block `~:3798` — **COORDINATION-REQUIRED**
+- Modify: `tools/lib/cnxml-elements.js` — the two `<term>` branches at `:802-807`
 - Modify: `tools/__tests__/render-term-english.test.js`
 
-**Interfaces:**
-- Consumes: `loadTermEnglish` from Task 3 (now also returns `sourceHash`).
+### Part 1 — the report (one commit)
 
-- [ ] **Step 1: Write the failing test**
+- [ ] **Step 1: Add the per-module coverage line**
+
+In `tools/cnxml-render.js`, after each module's `renderResult.html` is available (`~:3630`):
+
+```js
+          // §4.3: a missing key degrades to no attribute, and a silent drop is this
+          // project's recurring failure. Denominator is <dfn id>, not <dfn>: an
+          // id-less <dfn> structurally CANNOT be keyed (2 such <term> exist in
+          // READ-ONLY chemistry source and no id join will ever reach them).
+          const dfnWithId = (html.match(/<dfn\s+id="/g) || []).length;
+          const dfnWithEn = (html.match(/<dfn[^>]*\sdata-en="/g) || []).length;
+          if (dfnWithId > 0) {
+            const stale = termEnglish.state.get(moduleId) === 'key-absent'
+              ? ` — manifest has no termEnglish (re-run: node tools/cnxml-extract.js --book ${BOOK_SLUG} --chapter ${args.chapter})`
+              : '';
+            console.log(`  terms: ${dfnWithEn}/${dfnWithId} <dfn id> carry data-en${stale}`);
+          }
+```
+
+Add the same two lines after `renderCompiledGlossary` returns (`~:3801`), counting `<dt\s+id="` and `<dt[^>]*\sdata-en="`, printed as `key-terms: N/M <dt id> carry data-en`.
+
+⚠️ **Never print "32/40".** That mixes units — 32 counts glossed `<term>` elements in CNXML, 40 counts `<term>` elements. The report counts **rendered elements**.
+
+- [ ] **Step 2: See the report on a real run — WITHOUT writing to `books/`**
+
+Extend `<scratchpad>/reach.mjs` to print `termEnglish.state` per module, or run the CLI against a throwaway copy. **Do not run `node tools/cnxml-render.js --book …` yet** — it writes `05-publication` and would ship the m68700 gloss loss ahead of the gated Task 6 Step 6.
+
+Expected values, per **rendered `<dfn id>` / `<dt id>` element**, ch03 `mt-preview`:
+```
+chemistry:  m68699 (no line) · m68700 4/4 · m68702 2/2 · m68703 9/9 · m68704 5/5 · key-terms 20/20
+organic:    m00032 16/16 · m00033 8/8 · m00034 2/2 · m00035 1/1 · m00037 9/9 · m00038 3/3 · no key-terms glossary (0 definitions collected)
+```
+
+- [ ] **Step 3: Commit part 1**
+
+```bash
+npm test > /tmp/te-t5a.log 2>&1
+grep -aoE '^\s*[×✕] .*' /tmp/te-t5a.log | sed -E 's/[0-9]+ms[[:space:]]*$//; s/[[:space:]]+$//' | sort -u > /tmp/te-t5a.set
+diff /tmp/te-base.set /tmp/te-t5a.set
+git add tools/cnxml-render.js && git commit -m "feat(render): report data-en coverage per module and name the stale-manifest remedy"
+```
+Expected: `diff` silent.
+
+### Part 2 — Site B: render discards an id that extract wrote (separate commit)
+
+**🔴 This is a §C89-shaped producer/consumer mismatch, and it is NOT part of the `data-en` diff.** `cnxml-extract.js:414` reads `<term>` attributes **order-independently** (`/<term([^>]*)>/` + `parseAttributes`) and writes `[[term:EN|term-000NN]]`. `cnxml-elements.js:802` requires `id` to be the **first attribute**, so it discards the very key extract wrote. Verify by execution:
+
+```bash
+node --input-type=module -e "
+import { processInlineContent } from './tools/lib/cnxml-elements.js';
+const ctx={terms:{},equations:[],figures:[]};
+console.log('id-first   :', processInlineContent('<term id=\"term-00043\" class=\"no-emphasis\">Thomson</term>', ctx));
+console.log('class-first:', processInlineContent('<term class=\"no-emphasis\" id=\"term-00042\">Thomson</term>', ctx));"
+```
+Expected today: `<dfn id="term-00043" class="term">Thomson</dfn>` and `<dfn class="term">Thomson</dfn>` — same element, same attributes, **order alone decides**.
+
+⚠️ **This is DOM-visible: 81 published chemistry `<dfn>` gain an `id=`.** Anchors, deep links and any vefur selector keyed on `dfn[id]` presence could shift. It is a correctness fix and should ship — but on its own commit, with its own before/after count.
+
+⚠️ **Its `data-en` reach stays 0 on those chapters until they are re-extracted** (510 of 523 manifests are `key-absent`). That is the degrade rule working, not a failure.
+
+- [ ] **Step 4: Measure the before/after, per `<dfn>` element**
+
+Create `<scratchpad>/siteb.mjs` — render every `03-translated/mt-preview` module of both books in-process and print `withId` / `idLess` totals, plus `m68685` alone as the named control:
+
+```bash
+node <scratchpad>/siteb.mjs
+```
+Expected **before**: `m68685 dfn 6 withId 4 idLess 2` (I measured this) and a corpus split the audit reports as **810 withId / 83 idLess** (conservation 893). **Write down the numbers you actually get**; the corpus may have moved and the conservation total is the check that your harness neither creates nor destroys a `<term>`.
+
+- [ ] **Step 5: Write the failing test**
 
 Append to `tools/__tests__/render-term-english.test.js`:
 
 ```js
-import { termEnglishVintageWarning } from '../cnxml-render.js';
-
-describe('vintage guard', () => {
-  it('warns when the manifest hash does not match the module being rendered', () => {
-    expect(termEnglishVintageWarning('aaaa', 'bbbb', 'm68700')).toMatch(/m68700/);
-    expect(termEnglishVintageWarning('aaaa', 'bbbb', 'm68700')).toMatch(/stale/i);
+describe('site B — the <term> id must be read order-independently (§C89 producer/consumer)', () => {
+  it('🔴 class-first <term> keeps its id — extract reads it, render used to discard it', () => {
+    const html = processInlineContent('<term class="no-emphasis" id="term-00042">Thomson</term>', ctx(null));
+    expect(html).toBe('<dfn id="term-00042" class="term">Thomson</dfn>');
   });
 
-  it('is silent when the hashes agree', () => {
-    expect(termEnglishVintageWarning('aaaa', 'aaaa', 'm68700')).toBeNull();
+  it('CONTROL — id-first is unchanged', () => {
+    const html = processInlineContent('<term id="term-00043" class="no-emphasis">Thomson</term>', ctx(null));
+    expect(html).toBe('<dfn id="term-00043" class="term">Thomson</dfn>');
   });
 
-  it('is silent when there is no manifest hash to compare — absence is not a mismatch', () => {
-    expect(termEnglishVintageWarning(null, 'bbbb', 'm68700')).toBeNull();
+  it('a genuinely bare <term> still emits an id-less <dfn> — 2 exist in READ-ONLY source', () => {
+    expect(processInlineContent('<term>efnajöfnu</term>', ctx(null))).toBe('<dfn class="term">efnajöfnu</dfn>');
+  });
+
+  it('a class-first <term> now joins the map too', () => {
+    const html = processInlineContent('<term class="no-emphasis" id="term-00042">Thomson</term>', ctx({ 'term-00042': 'Thomson' }));
+    expect(html).toContain('data-en="Thomson"');
+  });
+
+  it('🔴 §C115 — a raw ">" inside an attribute value must not truncate the open tag', () => {
+    const html = processInlineContent('<term alt="a > b" id="term-00050">x</term>', ctx({ 'term-00050': 'greater' }));
+    expect(html).toContain('id="term-00050"');
+    expect(html).toContain('data-en="greater"');
   });
 });
 ```
 
-- [ ] **Step 2: Run the test to verify it fails**
-
-Run: `npx vitest run tools/__tests__/render-term-english.test.js -t "vintage"`
-Expected: FAIL — `termEnglishVintageWarning is not a function`.
-
-- [ ] **Step 3: Implement the guard**
-
-In `tools/cnxml-render.js`, add beside `loadTermEnglish`:
-
-```js
-/**
- * Compare the manifest's extraction vintage against the module being rendered.
- * Returns a warning string, or null when there is nothing to warn about.
- *
- * Extract MINTS `term-0000N` ids positionally, so a stale manifest shifts every
- * inline term's English by one — silently, and plausibly. This is the
- * same-unit/same-vintage invariant (§C82 L136), made checkable at the point of
- * use rather than assumed.
- */
-export function termEnglishVintageWarning(manifestHash, moduleHash, moduleId) {
-  if (!manifestHash || !moduleHash) return null;
-  if (manifestHash === moduleHash) return null;
-  return `⚠️  ${moduleId}: term manifest is a STALE VINTAGE (manifest ${manifestHash} vs source ${moduleHash}) — data-en may be shifted; re-run cnxml-extract for this chapter`;
-}
-```
-
-Call it where the module is rendered, printing to `console.error` when non-null.
-
-⚠️ The `moduleHash` is the hash of the **`01-source` CNXML**, computed the same way `buildManifest` computes `sourceHash`. Find that function (`grep -an "sourceHash" tools/cnxml-extract.js`) and reuse the identical algorithm, or the comparison will always mismatch.
-
-- [ ] **Step 4: Add the annotated/skipped report**
-
-Where the module finishes rendering, count and print:
-
-```js
-  const dfnTotal = (html.match(/<dfn\b/g) || []).length;
-  const dfnWithEn = (html.match(/<dfn[^>]*\sdata-en=/g) || []).length;
-  if (dfnTotal > 0) {
-    console.log(`  terms: ${dfnWithEn}/${dfnTotal} carry data-en`);
-  }
-```
-
-- [ ] **Step 5: Run the test to verify it passes**
-
-Run: `npx vitest run tools/__tests__/render-term-english.test.js`
-Expected: PASS, 11 tests.
-
-- [ ] **Step 6: See the report on a real run**
+- [ ] **Step 6: Run it to verify it fails**
 
 ```bash
-node tools/cnxml-render.js --book efnafraedi-2e --chapter 3 2>&1 | grep -a "terms:"
+npx vitest run tools/__tests__/render-term-english.test.js -t "site B"
+```
+Expected: FAIL on tests 1, 4 and 5 — `expected '<dfn class="term">Thomson</dfn>' to be '<dfn id="term-00042" class="term">Thomson</dfn>'`. Tests 2 and 3 must **PASS** already; they are the controls proving the harness is aimed correctly.
+
+- [ ] **Step 7: Implement — one quote-aware handler, per §C115**
+
+In `tools/lib/cnxml-elements.js`, replace **both** branches (`:802-807`) with one. `TAG_ATTR_SPAN` and `parseAttributes` are already imported at `:16`. **Do not write a fresh `[^>]*`** — the trailing `[^>]*` at `:802` is itself a §C115 exposure, and the class is *"find the end of an open tag, however written"*.
+
+```js
+  // §C89/§C115: ONE order-independent, quote-aware read. Extract reads <term>
+  // attributes with parseAttributes and writes [[term:EN|id]]; requiring `id`
+  // FIRST here discarded that key on 81 chemistry <dfn> across 16 chapters —
+  // the producer emitted, the consumer dropped. TAG_ATTR_SPAN is the §C115
+  // drop-in for `[^>]*`: a bare `>` is legal inside an attribute value.
+  const TERM_OPEN = new RegExp(`<term(${TAG_ATTR_SPAN})>([\\s\\S]*?)<\\/term>`, 'g');
+  result = result.replace(TERM_OPEN, (match, attrString, inner) => {
+    const id = parseAttributes(attrString).id || null;
+    const body = processInlineContent(inner, context);
+    if (!id) return `<dfn class="term">${body}</dfn>`;
+    const map = (context && context.termEnglish) || null;
+    const en = map && typeof map[id] === 'string' ? map[id] : '';
+    const enAttr = en ? ` data-en="${escapeAttr(en)}"` : '';
+    return `<dfn id="${id}" class="term"${enAttr}>${body}</dfn>`;
+  });
 ```
 
-Expected: lines like `terms: 32/40 carry data-en`.
-
-- [ ] **Step 7: Commit**
+- [ ] **Step 8: Run it to verify it passes, then re-measure the corpus**
 
 ```bash
-npm test > /tmp/t5.log 2>&1; grep -aE "Test Files|Tests  " /tmp/t5.log
-git add tools/cnxml-render.js tools/__tests__/render-term-english.test.js
-git commit -m "feat(render): warn on a stale term manifest and report data-en coverage per module"
+npx vitest run tools/__tests__/render-term-english.test.js
+node <scratchpad>/siteb.mjs
 ```
+Expected: **PASS, 16 tests.** And `m68685 dfn 6 withId 6 idLess 0`, with the corpus moving to **891 withId / 2 idLess** and the conservation total unchanged at **893**. If the total moved, the regex change is not behaviour-identical elsewhere — stop and diff.
+
+- [ ] **Step 9: Prove the class-wide regex change is otherwise inert**
+
+A class-wide regex change without a byte-identity diff is unverified (CLAUDE.md §C115). Render every `03-translated/mt-preview` module of both books to two scratch trees — one at the parent commit, one at HEAD — and diff:
+
+```bash
+diff -rq <scratchpad>/render-before <scratchpad>/render-after | wc -l
+```
+Expected: a **small, enumerable** set of changed files, and every difference must be an added ` id="term-000NN"` on a `<dfn>`. Account for each one individually. Anything else is a regression.
+
+- [ ] **Step 10: Commit part 2 separately**
+
+```bash
+npm test > /tmp/te-t5b.log 2>&1
+grep -aoE '^\s*[×✕] .*' /tmp/te-t5b.log | sed -E 's/[0-9]+ms[[:space:]]*$//; s/[[:space:]]+$//' | sort -u > /tmp/te-t5b.set
+diff /tmp/te-base.set /tmp/te-t5b.set
+git status --porcelain books/ | wc -l
+git add tools/lib/cnxml-elements.js tools/__tests__/render-term-english.test.js
+git commit -m "fix(render): read the <term> id order-independently — extract wrote it, render discarded it"
+```
+Expected: `diff` silent, `0` from `git status`. **Note in the commit body that 81 published `<dfn>` will gain an `id=` at the next re-render**, so vefur can be told.
 
 ---
 
-## Task 6: Corpus acceptance — reach, measured at the rendered HTML
+## Task 6: Corpus acceptance — reach at the rendered output, rendered fresh
 
-**Why this task exists separately:** every previous task tested a function. This one tests the **composition**, which is where this pipeline's defects actually live: a marker can be emitted, resolved and residue-checked and the output still be wrong. It also pins the no-regression number, which is the only thing that proves site 3 was not missed.
+**Why this task exists separately:** every previous task tested a function. This tests the **composition** — where this pipeline's defects live. Two changes from the old text:
+
+- **It renders in-process from `03-translated`, not from `05-publication`.** That tree is a mixed vintage: chemistry ch03's published pages carry 4 more `<dfn>` glosses and 4 more `<dt>` glosses than a fresh render, because `m68700` is in the `--no-annotate-en` holding state. A test reading it would compare two vintages.
+- **All four of the old assertions are replaced.** `toBeGreaterThan(30)` is false (chemistry ch03 renders 20 `<dfn>`); `toBeGreaterThanOrEqual(32)` is unreachable (32 counts glossed `<term>` in CNXML); `idLess.length > 0` is unreachable in **both** books (0 id-less `<dfn>` in ch03, and after Task 5 Part 2 only 2 remain in the whole chemistry corpus).
 
 **Files:**
 - Create: `tools/__tests__/term-english-corpus.test.js`
+- Modify: `tools/cnxml-render.js` — one line in the export block (`~:4252`) — **COORDINATION-REQUIRED**
 
-- [ ] **Step 1: Capture the pre-change reach number**
+- [ ] **Step 1: Add the test seam for `extractChapterGlossary`**
 
-```bash
-git stash
-node -e "
-const fs=require('fs'),path=require('path'),d='books/efnafraedi-2e/03-translated/mt-preview/ch03';
-let g=0,t=0;for(const f of fs.readdirSync(d).filter(f=>f.endsWith('.cnxml'))){
- const s=fs.readFileSync(path.join(d,f),'utf8');
- for(const m of s.matchAll(/<term\b[^>]*>([\s\S]*?)<\/term>/g)){t++;if(/\(e\. /.test(m[1]))g++;}}
-console.log('chemistry ch03: '+g+' glossed of '+t);"
-git stash pop
+`renderCompiledGlossary` and `buildKeyTermsItems` are already exported; `extractChapterGlossary` is not, and the `<dt>` half of acceptance cannot reach the real path without it. Add to the export block:
+
+```js
+  extractChapterGlossary as _extractChapterGlossaryForTest,
 ```
 
-Expected: `chemistry ch03: 32 glossed of 40` (16 id-bearing + 16 id-less). **Write the number you actually get into the test below** — the corpus may have moved.
+Reproducing its regex in the test instead would test the test, not the renderer.
 
-- [ ] **Step 2: Write the failing test**
+- [ ] **Step 2: Write the acceptance test**
 
 Create `tools/__tests__/term-english-corpus.test.js`:
 
 ```js
 /**
- * Reach, measured at the RENDERED HTML — not at the manifest.
+ * Reach, measured at the RENDERED OUTPUT — not at the manifest, and not at the
+ * committed 05-publication tree.
  *
- * A manifest entry is not evidence the renderer used it. §C82 L149's rule is
- * that reach is measured emitted → injected → RENDERED, because a container fix
- * once reached the injected CNXML 102/102 and the HTML 0/102.
+ * A manifest entry is not evidence the renderer used it (§C82 L149: a container
+ * fix once reached the injected CNXML 102/102 and the HTML 0/102). And
+ * 05-publication is a MIXED VINTAGE — chemistry ch03's pages carry 4 <dfn> + 4
+ * <dt> glosses a fresh render no longer produces — so this renders in-process
+ * from 03-translated, which is the tree the next render will actually read.
+ *
+ * ⚠️ SLOW (~10-30s): MathJax initialises once, then ~12 module renders. Do not
+ * run it alongside a peer session's vitest — two full suites on this box turn a
+ * ~3s file into 141s and manufacture timeout-shaped reds.
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { renderCnxmlToHtml, renderCompiledGlossary, _extractChapterGlossaryForTest } from '../cnxml-render.js';
+import { loadChapterTermEnglish } from '../lib/term-english-map.js';
 
-const REPO_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
-const chapterDir = (book) =>
-  path.join(REPO_ROOT, 'books', book, '05-publication/mt-preview/chapters/03');
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+const count = (h, re) => (h.match(re) || []).length;
 
-function dfns(book) {
-  const d = chapterDir(book);
-  const out = [];
-  for (const f of fs.readdirSync(d).filter((f) => f.endsWith('.html'))) {
-    const html = fs.readFileSync(path.join(d, f), 'utf8');
-    for (const m of html.matchAll(/<dfn\b[^>]*>/g)) out.push(m[0]);
-  }
-  return out;
+function renderChapter(book, chapter = 3) {
+  const dir = path.join(REPO_ROOT, 'books', book, '03-translated/mt-preview', `ch0${chapter}`);
+  const { byModule } = loadChapterTermEnglish(book, `ch0${chapter}`);
+  const modules = fs.readdirSync(dir).filter((f) => f.endsWith('.cnxml')).sort().map((f) => f.replace('.cnxml', ''));
+  const pages = modules.map((moduleId) =>
+    renderCnxmlToHtml(fs.readFileSync(path.join(dir, `${moduleId}.cnxml`), 'utf8'), {
+      chapter, moduleId, lang: 'is', termEnglish: byModule.get(moduleId) || null,
+    }).html
+  );
+  const definitions = _extractChapterGlossaryForTest(chapter, modules, 'mt-preview');
+  const keyTerms = renderCompiledGlossary(chapter, definitions, {
+    termEnglishByModule: byModule, terms: {}, figures: {}, tables: {}, examples: {}, footnotes: [],
+  });
+  const all = pages.join('\n');
+  return {
+    definitions,
+    dfn: count(all, /<dfn\b/g),
+    dfnWithId: count(all, /<dfn\s+id="/g),
+    dfnWithEn: count(all, /<dfn[^>]*\sdata-en="/g),
+    dtWithId: count(keyTerms, /<dt\s+id="/g),
+    dtWithEn: count(keyTerms, /<dt[^>]*\sdata-en="/g),
+    html: all,
+    keyTerms,
+  };
 }
 
-describe('data-en reach over the rendered ch03 corpus', () => {
-  it('chemistry: the corpus is non-empty — otherwise every assertion below is vacuous', () => {
-    expect(dfns('efnafraedi-2e').length).toBeGreaterThan(30);
+describe('data-en reach, ch03, both live books', () => {
+  let chem, org;
+  beforeAll(() => { chem = renderChapter('efnafraedi-2e'); org = renderChapter('lifraen-efnafraedi'); }, 120000);
+
+  it('🔴 chemistry: EVERY id-bearing <dfn> carries data-en', () => {
+    expect(chem.dfnWithId).toBe(20);          // non-vacuity FIRST: an equality of two zeros proves nothing
+    expect(chem.dfnWithEn).toBe(chem.dfnWithId);
   });
 
-  it('🔴 chemistry: no regression — at least as many terms carry data-en as carried a gloss', () => {
-    const all = dfns('efnafraedi-2e');
-    const withEn = all.filter((d) => /\sdata-en=/.test(d));
-    // 32 of 40 carried "(e. …)" before this change. Update if Step 1 differed.
-    expect(withEn.length).toBeGreaterThanOrEqual(32);
+  it('🔴 organic: EVERY id-bearing <dfn> carries data-en', () => {
+    expect(org.dfnWithId).toBe(39);
+    expect(org.dfnWithEn).toBe(org.dfnWithId);
   });
 
-  it('🔴 chemistry: BOTH populations are covered — id-bearing and id-less', () => {
-    const all = dfns('efnafraedi-2e').filter((d) => /\sdata-en=/.test(d));
-    const idBearing = all.filter((d) => /\sid="/.test(d));
-    const idLess = all.filter((d) => !/\sid="/.test(d));
-    // Site 3 is 46% of the corpus. A plan that misses it shows up HERE as 0.
-    expect(idBearing.length).toBeGreaterThan(0);
-    expect(idLess.length).toBeGreaterThan(0);
+  it('🔴 chemistry key-terms page: every <dt id> carries data-en — the <dt>, not a <dfn>', () => {
+    expect(chem.dtWithId).toBe(20);
+    expect(chem.dtWithEn).toBe(chem.dtWithId);
+    expect(chem.keyTerms).not.toContain('<dfn');
   });
 
-  it('organic: covered too, and it has no id-less population — a different shape', () => {
-    const withEn = dfns('lifraen-efnafraedi').filter((d) => /\sdata-en=/.test(d));
-    expect(withEn.length).toBeGreaterThanOrEqual(38);
+  it('organic has no <dt> population — paired with the control that EXPLAINS the zero', () => {
+    expect(org.definitions.length).toBe(0);   // organic ch03 carries no <glossary> at all
+    expect(org.dtWithEn).toBe(0);
   });
 
-  it('🔴 case is preserved — proper nouns are not flattened', () => {
-    const all = [...dfns('efnafraedi-2e'), ...dfns('lifraen-efnafraedi')];
-    const values = all
-      .map((d) => /\sdata-en="([^"]*)"/.exec(d))
-      .filter(Boolean)
-      .map((m) => m[1]);
+  it('🔴 DEGRADE PIN — with no map, output is byte-identical apart from the missing attributes', () => {
+    const dir = path.join(REPO_ROOT, 'books/efnafraedi-2e/03-translated/mt-preview/ch03');
+    const src = fs.readFileSync(path.join(dir, 'm68700.cnxml'), 'utf8');
+    const { byModule } = loadChapterTermEnglish('efnafraedi-2e', 'ch03');
+    const withMap = renderCnxmlToHtml(src, { chapter: 3, moduleId: 'm68700', lang: 'is', termEnglish: byModule.get('m68700') }).html;
+    const without = renderCnxmlToHtml(src, { chapter: 3, moduleId: 'm68700', lang: 'is', termEnglish: null }).html;
+    expect(count(withMap, /\sdata-en="/g)).toBe(4);        // control: the arms really differ
+    expect(without).not.toContain('data-en');
+    expect(withMap.replace(/ data-en="[^"]*"/g, '')).toBe(without);
+  });
+
+  it('🔴 CASE IS PRESERVED — data-en is strictly higher fidelity than the inline gloss', () => {
+    const dt = /<dt id="fs-idp40901280"[^>]*>/.exec(chem.keyTerms)[0];
+    expect(dt).toContain('data-en="Avogadro’s number (NA)"');
+    // The published inline gloss on the SAME element is lowercased by the inject-side
+    // annotator: "(e. avogadro’s number (na))". Contrast is the control.
+    expect(dt).not.toContain('avogadro’s number (na)');
+  });
+
+  it('no data-en value contains raw marker syntax', () => {
+    const values = [...chem.html.matchAll(/\sdata-en="([^"]*)"/g), ...org.html.matchAll(/\sdata-en="([^"]*)"/g)].map((m) => m[1]);
     expect(values.length).toBeGreaterThan(0);
-    expect(values.some((v) => /^[A-Z]/.test(v))).toBe(true);
-  });
-
-  it('no attribute contains raw marker syntax', () => {
-    const all = [...dfns('efnafraedi-2e'), ...dfns('lifraen-efnafraedi')];
-    for (const d of all) expect(d).not.toMatch(/data-en="[^"]*\[\[/);
+    for (const v of values) expect(v).not.toMatch(/\[\[|\]\]/);
   });
 });
 ```
 
+**What would make each assertion fail — if you cannot name one, the assertion is worthless:**
+
+| Assertion | Fails when |
+|---|---|
+| chemistry 20/20, organic 39/39 `<dfn>` | Site A's emit is dropped, or `main()`/`renderService` stops passing `options.termEnglish`, or the loader's moduleId guard wrongly refuses a valid manifest |
+| chemistry 20/20 `<dt>`, and no `<dfn>` on that page | Site C's emit is dropped, keyed on the wrong module, or routed through `processInlineContent` (which would emit 0 while every module page still looked right) |
+| organic `definitions.length === 0` paired with `dtWithEn === 0` | `extractChapterGlossary` stops stamping `moduleId`, or the zero starts coming from a broken renderer instead of an empty input |
+| degrade pin (byte-identical modulo the attribute) | the attribute is emitted with an empty/undefined value, the `id` emission is changed (e.g. by adding `escapeAttr` to it), or any other byte moves alongside `data-en` |
+| case pin | a lowercase fold returns to the flatten path (Task 1's shipped defect), or the key-terms lookup starts reading the inject-side gloss instead of the manifest |
+| no marker syntax | `flattenMarkersToText` regresses to a `[^\]]*` scan and truncates a two-level nested payload |
+
 - [ ] **Step 3: Run it**
 
-Run: `npx vitest run tools/__tests__/term-english-corpus.test.js`
-Expected: PASS, 6 tests — the render runs in Tasks 3 and 4 already produced the output.
+```bash
+pgrep -x node | wc -l      # confirm no peer suite is running
+npx vitest run tools/__tests__/term-english-corpus.test.js
+```
+Expected: **PASS, 7 tests.** If `dfnWithId` is 20 but `dfnWithEn` is 0, Task 3 Step 9's caller wiring did not land — the unit tests would still be green, because they pass the option directly.
 
-If the id-less assertion fails, Task 4 Step 4 did not take effect; re-run the render.
-
-- [ ] **Step 4: Confirm the free QC tier still passes**
+- [ ] **Step 4: Confirm the free, source-anchored QC tier is untouched**
 
 ```bash
 node tools/source-roundtrip-check.js efnafraedi-2e ch03 --verbose | tail -3
 node tools/render-oracle-check.js efnafraedi-2e ch03 --control | tail -3
 node tools/render-oracle-check.js lifraen-efnafraedi ch03 --control | tail -3
 ```
+Expected: the round-trip shows the **same known differences as the pre-Task-3 baseline** (`meaning#` ids, plus organic's single `list-type`) and **both controls pass**. `data-en` is render-only, so the round-trip must be byte-unchanged — **if it moved, something wrote into the CNXML**, which §5 of the spec forbids. Capture the baseline output before Task 3 if you have not already; a clean result with no control is not evidence.
 
-Expected: the round-trip shows the same known differences as before (`meaning#` ids only, plus organic's single `list-type`), and **both controls pass**. `data-en` is render-only, so the round-trip must be untouched — if it moved, something wrote into the CNXML.
-
-- [ ] **Step 5: Commit**
+- [ ] **Step 5: Commit the acceptance test**
 
 ```bash
-git add tools/__tests__/term-english-corpus.test.js
-git commit -m "test(term-english): pin data-en reach at the rendered HTML for both populations"
+npm test > /tmp/te-t6.log 2>&1
+grep -aoE '^\s*[×✕] .*' /tmp/te-t6.log | sed -E 's/[0-9]+ms[[:space:]]*$//; s/[[:space:]]+$//' | sort -u > /tmp/te-t6.set
+diff /tmp/te-base.set /tmp/te-t6.set
+git status --porcelain books/ | wc -l
+git add tools/__tests__/term-english-corpus.test.js tools/cnxml-render.js
+git commit -m "test(term-english): pin data-en reach at the rendered output for both element shapes"
 ```
+Expected: `diff` silent, `0` from `git status`.
+
+- [ ] **Step 6: 🔴 GATED — the re-render that writes `05-publication`. STOP AND ASK FIRST.**
+
+**Do not run this on your own judgement.** `03-translated` is ahead of `05-publication`: `m68700` was re-injected under `--no-annotate-en` (the holding state for register ⑰), so **a chemistry ch03 re-render deletes 8 reader-visible glosses** — `m68700`'s 4 `<dfn>` and its 4 `<dt>` — with nothing rendering in their place until vefur consumes `data-en`. That is true before this work and is not caused by it, but this task is what would ship it.
+
+Surface it as a decision, with the options:
+1. **Hold.** Land Tasks 3–6 as tools-only commits; re-render when vefur's consumer is live. `data-en` reaches readers a cycle later; nothing is lost.
+2. **Re-render now**, accepting 8 fewer glosses on `3-1-formulumassi-og-molhugtakid.html` and `3-key-terms.html` for one cycle.
+3. **Re-annotate `m68700` first** (retire the `--no-annotate-en` holding state), which requires register ⑰'s nesting fix to be confirmed on that module.
+
+If and only if the user chooses (2) or (3):
+
+```bash
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 3 2>&1 | grep -a "terms:\|key-terms:"
+node tools/cnxml-render.js --book lifraen-efnafraedi --chapter 3 2>&1 | grep -a "terms:\|key-terms:"
+git status --porcelain books/ | grep -av '^ M books/[^/]*/05-publication/mt-preview/chapters/03/' | wc -l
+```
+Expected: the coverage lines from Task 5 Step 2; and **`0`** from the last command — proving *only* ch03 publication pages moved, nothing else under `books/`.
+
+Then, before committing, confirm the gloss delta is exactly the expected one:
+
+```bash
+git diff --numstat books/efnafraedi-2e/05-publication/mt-preview/chapters/03/
+grep -aoc 'data-en=' books/efnafraedi-2e/05-publication/mt-preview/chapters/03/3-key-terms.html
+```
+Expected: `20` from the second command, and the diff limited to `data-en` additions plus the 8 removed `(e. …)` glosses on `m68700`'s two pages.
+
+⚠️ **§C9 prune-on-rename:** if any page is superseded, hand vefur the `from`/`to`/`moduleId` rows from `books/<slug>/05-publication/mt-preview/slug-map.mt-preview.json` **before** the sync — a redirect entry is inert until its target is published, so landing it early is the only ordering with no 404 window.
 
 ---
+
 
 ## Task 7: The vefur handover contract
 
@@ -1205,6 +1787,17 @@ git commit -m "docs(handoff): the data-en contract for vefur, and the gate befor
 
 ---
 
+## Additions to Task 7 (the handover contract) — do not rewrite it, add these
+
+Task 7 already correctly refuses to flip `annotateEn` off. Add three facts it must carry, all measured:
+
+1. **efni emits `data-en` on TWO element shapes.** `<dfn id class="term" data-en>` on section pages (20 chemistry / 39 organic in ch03), and **`<dt id data-en>` on `*-key-terms.html`** (20 chemistry, 0 organic). vefur's `glossaryTerms.ts:318` walks `dfn.term` only, so **the `<dt>` half has no consumer today**. Name the choice — vefur widens to `dt[data-en]`, or efni wraps the `<dt>`'s term in a `<dfn class="term">` (a `content.css` contract change) — and record that **spec §4.7 is blocked on it**.
+2. **Dedupe must key on the marker, never on equality with `data-en`.** vefur's `stripEnglishSuffix()` searches for the literal `' (e. '`; the inline gloss is **lowercased** by the inject-side annotator while `data-en` is **case-preserving** — measured on the same element: `data-en="Avogadro’s number (NA)"` against a text reading `(e. avogadro’s number (na))`. A string comparison between the two will never match, and would render the gloss twice.
+3. **`EN === IS` must not render `"R (e. R)"`.** Organic ch03's `<dfn id="term-00002" class="term">R</dfn>` has manifest English `"R"`. Today's `annotateInlineTerms` skips it; vefur's presentation layer must skip it too.
+
+Also record the two structural limits, so a future reach test is not written against an impossible 100%:
+- **2 of 854** in-content chemistry `<term>` carry no id in READ-ONLY `01-source` (`ch04/m68709` *efnajöfnu*, `ch06/m68735` *samrafeinda*). Extract does not mint ids, so no id join will ever reach them. The ceiling is **852 of 854**.
+- **510 of 523** manifests have no `termEnglish` key. Rollout is **per chapter, on re-extraction**; until then those chapters render `0/N` and say so in the coverage line. That is the degrade rule working, not a code failure.
 ## Follow-ups, deliberately out of scope
 
 - **Retiring `annotateInlineTerms`** — gated on vefur shipping (Task 7). It is the cause of register ⑰.
