@@ -472,7 +472,13 @@ describe('A7 — number consistency, ported from the AGPL qaCheckService', () =>
   const require_ = createRequire(import.meta.url);
   const agpl = require_('../../server/services/qaCheckService.js');
 
-  it('🔴 agrees with the AGPL original — over a NON-EMPTY comparison', () => {
+  // 🔴 SPLIT INTO TWO `it()`s ON 2026-09-02, AND THE REASON IS THE POINT. These assertions
+  // used to share one block, with the stale-corpus premise pin FIRST. It throws, and a throw
+  // ends the block — so the message comparison below it, INCLUDING the ð check that caught a
+  // real shipped bug, silently stopped running. ▶ "Leave a REGRESSION red" is free only when
+  // the red assertion stands ALONE; first-in-block, it disables everything beneath it.
+  // ⚠️ Order within an `it()` is an undeclared dependency. Do not merge these back.
+  it('🔴 agrees with the AGPL original on a clean corpus pair — VACUOUS BY ITSELF, see below', () => {
     // ⚠️ THIS PIN WAS VACUOUS AND IT LET A REAL BUG SHIP. It compared `checkNumbers` on a
     // clean corpus pair, which returns [] on BOTH sides — `expect([]).toEqual([])` passes
     // whatever the port does to the finding it never produced. The port had DROPPED U+00F0
@@ -483,15 +489,30 @@ describe('A7 — number consistency, ported from the AGPL qaCheckService', () =>
     const { segText, isText } = pair('efnafraedi-2e', 'ch01', 'm68663');
     const clean = checkNumbers(segText, isText);
     expect(clean).toEqual(agpl.checkNumbers(segText, isText));
-    expect(clean).toHaveLength(0); // stated, so the vacuity is visible rather than hidden
+  });
 
+  it('📌 PREMISE PIN — the clean pair is EXPECTED to be clean, and is not while the MT is stale', () => {
+    // 🔴 THIS IS THE REGRESSION, DELIBERATELY LEFT RED AND DELIBERATELY ALONE. `clean` now
+    // carries one `number-mismatch` on the value 52126432 — the digits in
+    // `<!-- SEG:m68663:alt:fs-idm52126432-alt -->`, an EN-only alt segment the §C82 ③
+    // re-extract added and this module's committed IS side has never seen. It self-heals the
+    // moment m68663 is re-MT'd; there is no golden change that fixes it.
+    // ▶ It is stated rather than deleted so the vacuity of the sibling ABOVE stays visible.
+    const { segText, isText } = pair('efnafraedi-2e', 'ch01', 'm68663');
+    expect(checkNumbers(segText, isText)).toHaveLength(0);
+  });
+
+  it('🔴 agrees with the AGPL original — over a NON-EMPTY comparison, MESSAGE INCLUDED', () => {
     // The comparison that actually binds: a case where BOTH sides must produce findings.
+    // This is the half that the premise pin above used to switch off.
+    const { segText } = pair('efnafraedi-2e', 'ch01', 'm68663');
     const mine = checkNumbers(segText, 'engar tölur hér');
     const theirs = agpl.checkNumbers(segText, 'engar tölur hér');
-    // L37: the COUNT, not `> 0` — a one-finding comparison and an eleven-finding one are
+    // L37: the COUNT, not `> 0` — a one-finding comparison and a twelve-finding one are
     // both "non-empty", and only one of them exercises the dedup and the message path.
-    // A premise pin: it moves when m68663's numbers move.
-    expect(mine).toHaveLength(11);
+    // A premise pin: it moves when m68663's numbers move — and it MOVED, 11 -> 12, when the
+    // re-extract added the alt segment whose element id contributes 52126432.
+    expect(mine).toHaveLength(12);
     expect(mine).toEqual(theirs);
     // And the MESSAGE, character for character — the field the port actually corrupted.
     expect(mine[0].message).toBe(theirs[0].message);
