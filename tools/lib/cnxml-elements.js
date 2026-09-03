@@ -800,7 +800,19 @@ export function processInlineContent(content, context) {
 
   // Convert terms
   result = result.replace(/<term\s+id="([^"]*)"[^>]*>([\s\S]*?)<\/term>/g, (match, id, inner) => {
-    return `<dfn id="${id}" class="term">${processInlineContent(inner, context)}</dfn>`;
+    // data-en is vefur's term key. Read from THIS MODULE's map only: `term-0000N`
+    // is OpenStax's own id and RESTARTS in every module (m68700's term-00001 is
+    // "formula mass", m68702's is "percent composition"), so a chapter-wide map
+    // emits plausible wrong English that no count can see (§C82 L144). Measured:
+    // a flat ch03 merge would be wrong on 31 of 79 (module, key) pairs.
+    // Absent key ⇒ absent attribute. Degrade, never corrupt.
+    const map = (context && context.termEnglish) || null;
+    const en = map && typeof map[id] === 'string' ? map[id] : '';
+    const enAttr = en ? ` data-en="${escapeAttr(en)}"` : '';
+    // `id` is deliberately left UNESCAPED — this is the pre-existing emission, and
+    // keeping it byte-identical is what makes the "empty map ⇒ unchanged output"
+    // pin mean something.
+    return `<dfn id="${id}" class="term"${enAttr}>${processInlineContent(inner, context)}</dfn>`;
   });
   result = result.replace(/<term[^>]*>([\s\S]*?)<\/term>/g, (match, inner) => {
     return `<dfn class="term">${processInlineContent(inner, context)}</dfn>`;

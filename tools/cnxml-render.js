@@ -60,6 +60,7 @@ import {
 } from './lib/mathml-to-latex.js';
 import { decodeEntities } from './lib/math-label-inventory.js';
 import { buildModuleSections } from './lib/module-sections.js';
+import { loadChapterTermEnglish } from './lib/term-english-map.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 import {
   getBookRenderConfig,
@@ -670,6 +671,12 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     bookSlug: BOOK_SLUG,
     embedMap: EMBED_MAP,
     moduleId,
+    // THIS module's id → English map, for data-en on <dfn> (tools/lib/term-english-map.js).
+    // 🔴 Supplied by the CALLER, never loaded here: BOOKS_DIR is a bare relative
+    // literal set only in main(), and renderService.js calls this in-process with
+    // cwd=server/, where 'books/…' resolves to server/books/… and misses for every
+    // book. Same reason options.embedMap exists — see its comment above.
+    termEnglish: options.termEnglish || null,
     equations: [],
     terms: {},
     figures: [],
@@ -3379,6 +3386,12 @@ async function main() {
     // Build module sections map from structure + segment files
     const moduleSections = buildModuleSections(BOOK_SLUG, args.chapter);
 
+    // Per-module English term maps for data-en. Loaded once per chapter; the
+    // loader keys on each manifest's own moduleId, so a wrong-module map is
+    // REFUSED rather than joined — `term-0000N` restarts in every module, so a
+    // mis-keyed map hits with wrong English rather than missing (§C82 L144).
+    const termEnglish = loadChapterTermEnglish(BOOK_SLUG, formatChapterDir(args.chapter));
+
     // Appendix id → { letter, basename } lookup, so a chapter→appendix cross-ref
     // resolves to the appendix landing URL (A1). moduleLetters is built for every
     // chapter — the appendices pass itself consumes it for per-letter table
@@ -3624,6 +3637,8 @@ async function main() {
             lang: args.lang,
             chapter: args.chapter,
             moduleId,
+            // THIS module's map only — never the chapter-wide union.
+            termEnglish: termEnglish.byModule.get(moduleId) || null,
             moduleSections,
             chapterFigureNumbers,
             chapterTableNumbers,

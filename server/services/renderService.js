@@ -85,6 +85,17 @@ async function renderModule(book, chapter, moduleId, track = 'faithful') {
     path.join(PROJECT_ROOT, 'tools', 'lib', 'embed-mapping.js')
   );
 
+  // Per-module English term maps for data-en on <dfn>.
+  // 🔴 Loaded HERE, not inside the renderer: cnxml-render.js's BOOKS_DIR is a bare
+  // relative literal set only in its main(), which this path never calls — and the
+  // server runs with cwd=server/, where 'books/…' resolves to server/books/… and
+  // misses for every book. The loader itself resolves against import.meta.url.
+  // Same reason `embedMap` is passed in rather than looked up.
+  const { loadChapterTermEnglish } = await import(
+    path.join(PROJECT_ROOT, 'tools', 'lib', 'term-english-map.js')
+  );
+  const termEnglishByModule = loadChapterTermEnglish(book, chapterStr).byModule;
+
   // Load book config for note labels, section types, etc.
   // getBookRenderConfig throws if the book has no book-config.json — surface it
   // as a clean, book-scoped error rather than an unhandled throw.
@@ -103,6 +114,9 @@ async function renderModule(book, chapter, moduleId, track = 'faithful') {
     track,
     bookConfig,
     embedMap: loadEmbedMapping(book),
+    // THIS module's map only — never the chapter-wide union: `term-0000N` is
+    // OpenStax's own id and restarts in every module.
+    termEnglish: termEnglishByModule.get(moduleId) || null,
     // Chapter-wide numbering maps — empty for preview (shows "?" for cross-refs)
     chapterFigureNumbers: new Map(),
     chapterTableNumbers: new Map(),
