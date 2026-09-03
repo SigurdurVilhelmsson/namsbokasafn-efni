@@ -17,7 +17,23 @@ supplement. ⚠️ **A deploy does NOT do this** — `deploy.sh` pulls code, and
 - `7e42bf0c` (#431) §C118 full-corpus loop — [USER]-ruled to land RED · deployed, FAST-FORWARD, healthy
 - `4e2aed09` (#432) both moderate advisories closed inside ranges that already admitted the fix
 - `1a0145d1` (#433) off-box threshold **derived** from the cron (26→14), backup logging, **CI now lints `server/`**
-- vefur `31c22f54` (#222) three organic ch03 redirects, live and correctly INERT until the sync
+- vefur `31c22f54` (#222) three organic ch03 redirects — **MERGED TO vefur `main`, NOT DEPLOYED**
+🔴 **CORRECTED SAME DAY — I FIRST WROTE "live" HERE, AND vefur's CI CANNOT TELL YOU THAT.**
+vefur's CLAUDE.md § Deployment: **"CI does not deploy."** `ci.yml` went green on `main` at 13:16Z
+(run `33760133797`) and that is ALL it proves. `deploy.yml` has **no successful run since
+2026-06-17, which FAILED** — yet vefur's own notes record a deploy on 2026-08-19, so the real route
+is the **manual rsync fallback, which leaves NO RUN RECORD ANYWHERE**. ▶ **A green CI on vefur is
+not evidence of a deploy, and the absence of a deploy run is not evidence of no deploy.** Neither
+direction is decidable from the Actions tab; ask the operator or probe the live bytes.
+⚠️ **Probing cannot settle THIS one either, and that is a property of the design, not a gap:**
+`load` gates each entry on `exactSectionExists(to)`, so an undeployed table and a deployed-but-inert
+one are **byte-identical from outside** until the target publishes. **Pair the null with a control
+that CAN fire, or do not run the probe** — there is no active entry to serve as one (the physics
+block is dormant too).
+✅ **No action follows from this, and that is the point of recording it:** the vefur publish run
+(sync → build → deploy) carries the redirect code and the new pages in ONE upload, so the
+no-404-window ordering still holds. **The error would only have bitten if someone had concluded
+the redirects were already serving and skipped the vefur deploy.**
 🔴 **`main` IS RED BY DESIGN AT 19 ASSERTIONS / 10 FILES, AND THAT IS THE FLOOR** — 15 REGRESSION +
 2 BLOCKED + 2 QUIET, clearing only on re-MT. **Diff the SET by name, never the count**, strip vitest's
 per-run `NNms` first, and check BOTH directions: a `beforeAll` timeout converts a file's assertions to
