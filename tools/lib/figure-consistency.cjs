@@ -2,7 +2,7 @@
  * Advisory checks shown beside a figure in the editor. Neither blocks anything.
  */
 
-// A number with ONE decimal group: digits, a single '.', 1-3 digits, end of token.
+// A number with ONE decimal group: digits, a single '.', one or more digits, end of token.
 // Deliberately narrow. Icelandic INVERTS both separators, so 1,000 (one thousand)
 // becomes 1.000 — a blind '.' -> ',' swap silently changes numbers in a chemistry
 // textbook, which is the worst available failure.
@@ -23,9 +23,16 @@ function decimalSeparatorWarnings(blocks) {
   return out;
 }
 
-/** Words differing only in their first letter, e.g. Selsíus vs Celsíus. */
+/**
+ * Words differing only in their first letter once case is normalised, e.g.
+ * Selsíus vs Celsíus. Case-insensitive so a word appearing sentence-initial
+ * in the caption (capitalised) and lowercase in the figure — the ordinary
+ * case — is not reported as a divergence from itself.
+ */
 function nearVariant(a, b) {
-  return a.length === b.length && a.length > 3 && a.slice(1) === b.slice(1) && a[0] !== b[0];
+  const la = a.toLowerCase();
+  const lb = b.toLowerCase();
+  return la.length === lb.length && la.length > 3 && la.slice(1) === lb.slice(1) && la[0] !== lb[0];
 }
 
 function captionDivergence(blocks, referenceText) {
@@ -37,8 +44,7 @@ function captionDivergence(blocks, referenceText) {
     for (const w of text.split(/[^\p{L}]+/u).filter((x) => x.length > 3)) {
       const hit = refWords.find((r) => nearVariant(w, r));
       if (hit) {
-        out.push({ blockKey, figureText: w,
-                   note: `the module's caption/alt uses "${hit}"` });
+        out.push({ blockKey, figureText: w, note: `the module's caption/alt uses "${hit}"` });
       }
     }
   }

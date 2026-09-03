@@ -33,4 +33,12 @@ describe('captionDivergence', () => {
   it('is silent — not wrong — when there is no reference text at all', () => {
     expect(captionDivergence({ c: 'Selsíus' }, '')).toEqual([]);
   });
+  it('does not flag the same word differing only by sentence-initial capitalisation', () => {
+    expect(captionDivergence({ c: 'efni' }, 'Efni er notað í tilraun.')).toEqual([]);
+  });
+  it('CONTROL: still flags the real divergence once case is normalised', () => {
+    const d = captionDivergence({ c: 'Selsíus' }, caption);
+    expect(d).toHaveLength(1);
+    expect(d[0].note).toContain('Celsíus');
+  });
 });
