@@ -621,6 +621,21 @@ router.post(
     if (typeof isText !== 'string') {
       return res.status(400).json({ error: 'isText is required' });
     }
+    // An empty or whitespace-only value is SILENT LOSS OF PUBLISHED CONTENT,
+    // not a no-op: resolveBlocks merges it over the MT text,
+    // applyApprovedFigureEdits commits it to the sidecar, and compose.py's
+    // guard against exactly this ("a silent blank is far worse than an
+    // untranslated label") tests `key not in TR` — so it does NOT fire for a
+    // key that is PRESENT with an empty value, and the label is drawn as
+    // show_text(''). Refuse it at the boundary instead, before any IO.
+    // ⚠️ Distinct from the hasOwnProperty guard below, which is about a
+    // block's EXISTING value legitimately being ''. Clearing a label is not
+    // an edit this endpoint offers.
+    if (!isText.trim()) {
+      return res
+        .status(400)
+        .json({ error: 'isText cannot be empty — a blank would remove the label from the figure' });
+    }
     if (isText.length > 10000) {
       return res.status(400).json({ error: 'Content too long (max 10,000 characters)' });
     }

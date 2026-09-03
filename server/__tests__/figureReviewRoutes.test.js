@@ -352,6 +352,43 @@ describe('POST /figures/:basename/block', () => {
     expect(out.body.error).toContain('No such block');
     expect(svc.getDb().prepare('SELECT COUNT(*) c FROM figure_block_edit').get().c).toBe(0);
   });
+
+  /**
+   * 🔴 An empty value is SILENT LOSS OF PUBLISHED CONTENT, not a no-op.
+   * `typeof isText !== 'string'` admits '', resolveBlocks merges it over the MT
+   * text, applyApprovedFigureEdits commits it to the sidecar, and compose.py's
+   * guard against exactly this — "a silent blank is far worse than an
+   * untranslated label" — tests `key not in TR`, so it does NOT fire for a key
+   * that is PRESENT with an empty value. The label is then drawn as
+   * show_text(''), i.e. it vanishes from the published artwork.
+   *
+   * ⚠️ This is a different question from the hasOwnProperty guard above, which
+   * is about a block's EXISTING value legitimately being '' — accepting '' as
+   * an EDIT is what is refused here.
+   *
+   * Row count paired with the status for the same reason as the guard above: a
+   * status alone cannot tell this refusal from an incidental one, and what
+   * actually matters is that nothing was written.
+   */
+  it('rejects an empty isText — a blank would delete the label from the published artwork', async () => {
+    const out = await invoke(
+      postBlockH,
+      req({ params: { basename: TRANSLATED }, body: { blockKey: 'Celsius', isText: '' } })
+    );
+    expect(out.status).toBe(400);
+    expect(out.body.error).toContain('isText cannot be empty');
+    expect(svc.getDb().prepare('SELECT COUNT(*) c FROM figure_block_edit').get().c).toBe(0);
+  });
+
+  it('rejects a whitespace-only isText — it composes to the same blank label', async () => {
+    const out = await invoke(
+      postBlockH,
+      req({ params: { basename: TRANSLATED }, body: { blockKey: 'Celsius', isText: '  \n\t ' } })
+    );
+    expect(out.status).toBe(400);
+    expect(out.body.error).toContain('isText cannot be empty');
+    expect(svc.getDb().prepare('SELECT COUNT(*) c FROM figure_block_edit').get().c).toBe(0);
+  });
 });
 
 describe('POST /figures/:basename/state', () => {
