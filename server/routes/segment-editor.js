@@ -627,6 +627,18 @@ router.post(
     try {
       const ctx = resolveFigureRequest(req);
       if (ctx.error) return res.status(ctx.error.status).json(ctx.error.body);
+      // blockKey must name a block that currently exists in the figure's own
+      // sidecar (ctx.resolved.mtBlocks — see resolveBlocks' doc comment: block
+      // keys are content-addressed, so re-extraction changes them). Without
+      // this, an unknown key upserts into figure_block_edit unconditionally,
+      // is invisible to every later GET (resolveBlocks only merges a row whose
+      // key is still present in mtBlocks) and the client is told {ok: true} —
+      // the realistic trigger being a stale card open from before a
+      // re-extraction, not a malicious client. hasOwnProperty, not `in` or a
+      // truthiness test: a block's value can legitimately be ''.
+      if (!Object.prototype.hasOwnProperty.call(ctx.resolved.mtBlocks, blockKey)) {
+        return res.status(404).json({ error: `No such block in ${ctx.basename}: ${blockKey}` });
+      }
       figureReview.saveBlockEdit(ctx.db, {
         bookId: ctx.bookId,
         basename: ctx.basename,

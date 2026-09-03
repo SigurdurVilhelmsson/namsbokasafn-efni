@@ -334,6 +334,24 @@ describe('POST /figures/:basename/block', () => {
     );
     expect(out.status).toBe(400);
   });
+
+  it('rejects a blockKey that names no block of this figure', async () => {
+    // Realistic trigger: a stale card. Block keys are content-addressed, so
+    // re-extraction changes the key set out from under a page an editor still
+    // has open. A status-code-only assertion here would not distinguish this
+    // guard from some other refusal, so pair it with the row count: the write
+    // must never have happened, not just have been reported as refused.
+    const out = await invoke(
+      postBlockH,
+      req({
+        params: { basename: TRANSLATED },
+        body: { blockKey: 'NoSuchBlock', isText: 'x' },
+      })
+    );
+    expect(out.status).toBe(404);
+    expect(out.body.error).toContain('No such block');
+    expect(svc.getDb().prepare('SELECT COUNT(*) c FROM figure_block_edit').get().c).toBe(0);
+  });
 });
 
 describe('POST /figures/:basename/state', () => {
