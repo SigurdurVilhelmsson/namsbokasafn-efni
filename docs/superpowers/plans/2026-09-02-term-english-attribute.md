@@ -6,6 +6,13 @@
 
 ## 🔴 AMENDMENTS — 2026-09-03, MEASURED. READ BEFORE ANY TASK.
 
+⚠️ **ANCHOR ON FUNCTION NAMES, NOT ON `tools/cnxml-render.js` LINE NUMBERS — EVERY ONE BELOW
+IS ALREADY STALE BY ~+70.** A parallel session's figure-review work inserts ~117 lines above
+`renderGlossary` in that file (`renderGlossary` 2047 → 2117 once it merges), so any citation
+here or in the original task text drifts the moment this branch rebases. Line numbers are kept
+below only as a *hint about where to start looking*; the function name is the identifier.
+`tools/lib/cnxml-elements.js` is untouched by that work, so its numbers are stable.
+
 **Tasks 1 and 2 are DONE and shipped** (`b0abe8d8`, `cd615b9c`, `92f1ab81` on
 `feat/term-english-data-attribute`). **Tasks 3–6 are NOT SAFE TO EXECUTE AS WRITTEN** —
 each carries at least one premise that a 24-agent adversarial audit falsified against the
