@@ -6,14 +6,68 @@
  * keep in sync and nothing to remember to clear.
  */
 const path = require('path');
+const fs = require('fs');
+const Database = require('better-sqlite3');
+const resolveDbPath = require('../lib/dbPath');
+const segmentParser = require('./segmentParser');
 const {
   computeRenderHash,
   effectiveState,
+  readSidecar,
   writeSidecar,
   sidecarPath,
   SIDECAR_VERSION,
   COMPOSER_VERSION,
 } = require(path.join(__dirname, '..', '..', 'tools', 'lib', 'figure-text-sidecar.cjs'));
+// server/ (AGPL) -> tools/lib (MIT) is the PERMITTED import direction; the
+// reverse would not be. Same edge the sidecar require above already crosses.
+const { decimalSeparatorWarnings, captionDivergence } = require(
+  path.join(__dirname, '..', '..', 'tools', 'lib', 'figure-consistency.cjs')
+);
+
+/**
+ * Every function below takes `db` explicitly so a test can inject a temp
+ * database. Routes have no such handle, so one lazy shared connection lives
+ * here — the same shape segmentEditorService and routes/my-work use.
+ * resolveDbPath() is called lazily, not at module load, so requiring this
+ * service has no side effect and a test can still set SESSIONS_DB_PATH.
+ */
+let _db;
+function getDb() {
+  if (!_db) {
+    const dbPath = resolveDbPath();
+    fs.mkdirSync(path.dirname(dbPath), { recursive: true });
+    _db = new Database(dbPath);
+    _db.pragma('journal_mode = WAL');
+  }
+  return _db;
+}
+
+/**
+ * The two enums migration 050 declares as CHECK constraints. Kept beside the
+ * code that writes those columns so a route can answer 400 instead of letting
+ * SQLite throw a 500 — and pinned against the LIVE table definition by
+ * figureReviewRoutes.test.js, so this is a checked property rather than a
+ * second enumeration free to drift.
+ */
+const FIGURE_STATES = ['mt-preview', 'approved', 'flagged'];
+const FIGURE_FLAG_KINDS = ['text', 'terminology', 'layout', 'other'];
+
+/**
+ * `books/<slug>` — the shape sidecarPath() and applyApprovedFigureEdits() want.
+ * Read through segmentParser so a test's _setTestBooksDir() redirects this too,
+ * and so the root is resolved from __dirname rather than process.cwd() (the
+ * server runs with cwd=server/).
+ */
+function bookDirFor(bookSlug) {
+  return path.join(segmentParser.BOOKS_DIR, bookSlug);
+}
+
+/** The numeric id the figure tables key on. null when the book is unregistered. */
+function lookupBookId(db, bookSlug) {
+  const row = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
+  return row ? row.id : null;
+}
 
 /**
  * MT text overlaid with any editor corrections. Editor wins — but only for a
@@ -75,6 +129,117 @@ function saveBlockEdit(db, { bookId, basename, blockKey, isText, editedBy }) {
   ).run(bookId, basename, blockKey, isText, editedBy || null);
 }
 
+/**
+ * Every figure basename in a module, in document order, deduplicated.
+ *
+ * ⚠️ Figures nest arbitrarily (section > example > figure), so this walks the
+ * whole structure tree rather than scanning one level. The basename idiom is
+ * identical to cnxml-render.js:1079 — `path.basename(src, extname(src))` — so
+ * `../../media/CNX_Chem_01_01_ChemWeb.jpg` -> `CNX_Chem_01_01_ChemWeb`.
+ *
+ * Returns the caption/alt segment ids alongside, because the caller needs the
+ * module's own prose as captionDivergence's reference text.
+ *
+ * @returns {Array<{basename:string, captionSegmentId:string|null, altSegmentId:string|null}>}
+ *   Empty when the module has no structure file or no figures — never throws.
+ */
+function listModuleFigures(bookSlug, chapter, moduleId) {
+  const paths = segmentParser.getModulePaths(bookSlug, chapter, moduleId);
+  let structure;
+  try {
+    structure = JSON.parse(fs.readFileSync(paths.structure, 'utf-8'));
+  } catch {
+    return []; // absent or malformed: a module with no structure has no figures
+  }
+  const out = [];
+  const seen = new Set();
+  const visit = (node) => {
+    if (Array.isArray(node)) {
+      node.forEach(visit);
+      return;
+    }
+    if (!node || typeof node !== 'object') return;
+    if (node.type === 'figure') {
+      const src = node.media && node.media.src;
+      if (typeof src === 'string' && src) {
+        const basename = path.basename(src, path.extname(src));
+        if (basename && !seen.has(basename)) {
+          seen.add(basename);
+          out.push({
+            basename,
+            captionSegmentId: (node.caption && node.caption.segmentId) || null,
+            altSegmentId: (node.media.alt && node.media.alt.segmentId) || null,
+          });
+        }
+      }
+      // deliberately no early return: a figure may nest another figure
+    }
+    for (const v of Object.values(node)) visit(v);
+  };
+  visit(structure.content);
+  return out;
+}
+
+/**
+ * A figure's reviewable state, sidecar and DB row reconciled.
+ *
+ * ⚠️ Two different "nothings" here and they mean opposite things:
+ *  - NO SIDECAR -> returns null, and the caller must SKIP the figure. It is the
+ *    plain English OpenStax figure; there are ~1,500 of them and listing them as
+ *    pending review would bury the handful that are real work. Same decision the
+ *    renderer makes at cnxml-render.js:1085.
+ *  - NO figure_review ROW -> the NORMAL day-one state of a translated figure.
+ *    getFigure() returns null for it, so fall back to the sidecar-derived state,
+ *    which is the identical call the renderer makes at cnxml-render.js:1088.
+ *    Returning getFigure()'s null straight to the client would blank every
+ *    never-reviewed figure.
+ */
+function resolveFigure(db, bookId, bookSlug, basename) {
+  const sidecar = readSidecar(bookDirFor(bookSlug), basename);
+  if (!sidecar) return null;
+  const mtBlocks = sidecar.blocks || {};
+  let fig = getFigure(db, bookId, basename, mtBlocks);
+  if (!fig) {
+    // ⚠️ The editor's corrections still apply here. figure_block_edit is keyed
+    // on (book_id, basename) ALONE and needs no figure_review row, so an edit
+    // saved before anyone has ever approved the figure — the ordinary order of
+    // events — must overlay in this branch too. Handing back the raw sidecar
+    // blocks would store the edit correctly and never show it, and no count
+    // could see the difference: the block is present either way.
+    const { blocks, orphans } = resolveBlocks(db, bookId, basename, mtBlocks);
+    fig = {
+      effectiveState: effectiveState(sidecar, blocks, COMPOSER_VERSION),
+      blocks,
+      orphans,
+      note: null,
+    };
+  }
+  return { sidecar, mtBlocks, fig };
+}
+
+/**
+ * Mint the figure_review row if it is not there yet. setState() is an UPDATE and
+ * deliberately stays one: it cannot create the row, because chapter/module_id are
+ * NOT NULL on the table and the service is never told which module a basename
+ * belongs to. The ROUTE is, so the row is minted from the route's own params.
+ *
+ * ⚠️ ON CONFLICT DO NOTHING, never an upsert. chapter/module_id record where the
+ * figure was first reviewed, and idx_figure_review_module indexes them; a second
+ * module reusing the same image must not silently rewrite that provenance.
+ *
+ * ⚠️ book_id is a LIVE foreign key (better-sqlite3 is compiled with
+ * SQLITE_DEFAULT_FOREIGN_KEYS=1, so every REFERENCES in migration 050 is
+ * enforced) and ON CONFLICT does not suppress an FK violation. An unregistered
+ * book THROWS here — callers resolve the slug with lookupBookId() and 404 first.
+ */
+function ensureFigureRow(db, { bookId, chapter, moduleId, basename }) {
+  db.prepare(
+    `INSERT INTO figure_review (book_id, chapter, module_id, basename)
+     VALUES (?,?,?,?)
+     ON CONFLICT(book_id, basename) DO NOTHING`
+  ).run(bookId, chapter, moduleId, basename);
+}
+
 function setState(db, { bookId, basename, state, flagKind, note, reviewedBy, blocks }) {
   const hash = state === 'approved' ? computeRenderHash(blocks || {}, COMPOSER_VERSION) : null;
   db.prepare(
@@ -107,4 +272,44 @@ function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
   return { written: true, path: sidecarPath(bookDir, basename) };
 }
 
-module.exports = { getFigure, saveBlockEdit, setState, applyApprovedFigureEdits };
+/**
+ * The shape the client depends on. Exposes effectiveState ONLY — a client that
+ * could see the stored `state` would show "approved" on a figure whose text has
+ * since changed, which is exactly the staleness this design derives rather than
+ * stores.
+ *
+ * @param {string} basename e.g. 'CNX_Chem_01_01_ChemWeb'
+ * @param {{effectiveState:string, blocks:object, note?:string|null}} fig
+ * @param {string} referenceText the module's own caption/alt prose that
+ *   captionDivergence compares figure labels against. '' means "no reference
+ *   available", for which captionDivergence returns [] — designed silence, NOT
+ *   a false all-clear.
+ */
+function buildFigurePayload(basename, fig, referenceText) {
+  return {
+    basename,
+    effectiveState: fig.effectiveState,
+    blocks: fig.blocks,
+    note: fig.note || null,
+    warnings: {
+      decimal: decimalSeparatorWarnings(fig.blocks),
+      caption: captionDivergence(fig.blocks, referenceText || ''),
+    },
+  };
+}
+
+module.exports = {
+  FIGURE_STATES,
+  FIGURE_FLAG_KINDS,
+  getDb,
+  bookDirFor,
+  lookupBookId,
+  listModuleFigures,
+  resolveFigure,
+  getFigure,
+  ensureFigureRow,
+  saveBlockEdit,
+  setState,
+  applyApprovedFigureEdits,
+  buildFigurePayload,
+};
