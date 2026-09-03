@@ -924,8 +924,17 @@ operations (extract, translate, inject, render) are handled via CLI tools. The f
 derivable from `server/routes/` — read it there rather than trusting a copy here.
 
 Production health check: `GET /api/health` — DB, migrations, books, auth, and **three** staleness
-heartbeats: **off-box DB backup** (`OFFBOX_BACKUP_STALE_HOURS`, default 26), content backup
-(`CONTENT_BACKUP_STALE_HOURS`, default 6), glossary export. *(This line omitted the off-box one until
+heartbeats: **off-box DB backup** (`OFFBOX_BACKUP_STALE_HOURS`), content backup
+(`CONTENT_BACKUP_STALE_HOURS`), glossary export. 🔴 **THE DEFAULTS ARE DELIBERATELY NOT WRITTEN HERE ANY MORE,
+AND THE REASON IS THAT ONE OF THEM WAS WRONG IN THIS FILE WITHIN HOURS OF CHANGING.** This line said
+*"default 26"* for the off-box check; it became **14** on 2026-09-03 and the prose did not move.
+**Each default is an ENFORCEABLE VALUE and lives in the file the code reads plus its test** —
+`server/lib/offboxBackupHealth.js` and `server/lib/contentBackupHealth.js`, both exporting
+`DEFAULT_STALE_HOURS`. ▶ **AND NEITHER IS A CHOSEN NUMBER: both are DERIVED as "two missed cycles of
+their cron, plus margin"** — the 2-hourly content cron gives 2x2+2, the 6-hourly backup-db cron gives
+2x6+2. `server/__tests__/healthOffboxBackup.test.js` pins that arithmetic AND parses `install-cron.sh`
+to assert the cron period it is derived from, because **a threshold and a schedule that drift apart is
+how a silent backup failure hides.** Re-derive if either schedule changes; do not copy a digit here. *(This line omitted the off-box one until
 2026-08-04 — re-derive the list from the handler rather than trusting any prose copy, this one
 included.)* **Nothing polls it** — the routine surface is what `./scripts/deploy.sh` prints;
 otherwise `curl` it by hand. ⚠️ **A `degraded` verdict names which check failed — read it before
