@@ -140,3 +140,60 @@ describe('site C — the chapter key-terms page (<dt>, not <dfn>)', () => {
     expect(html).toContain('<dl>');
   });
 });
+
+/**
+ * SITE B — a §C89-shaped producer/consumer mismatch, found while redesigning and
+ * NOT part of the data-en change.
+ *
+ * cnxml-extract.js reads <term> attributes ORDER-INDEPENDENTLY (parseAttributes)
+ * and writes [[term:EN|term-000NN]]. cnxml-elements.js required `id` to be the
+ * FIRST attribute, so it discarded the very key extract had written. Measured in
+ * READ-ONLY source: 81 class-first `<term id>` against 1,325 id-first.
+ *
+ * ⚠️ DOM-visible: those <dfn> gain an `id=`. Anchors, deep links and any vefur
+ * selector keyed on `dfn[id]` presence shift. Gated behind a manual re-render and
+ * vefur sync, so nothing reaches readers from this commit alone.
+ */
+describe('site B — the <term> id must be read order-independently (§C89 producer/consumer)', () => {
+  it('🔴 class-first <term> keeps its id — extract reads it, render used to discard it', () => {
+    const html = processInlineContent(
+      '<term class="no-emphasis" id="term-00042">Thomson</term>',
+      ctx(null)
+    );
+    expect(html).toBe('<dfn id="term-00042" class="term">Thomson</dfn>');
+  });
+
+  it('CONTROL — id-first is unchanged', () => {
+    const html = processInlineContent(
+      '<term id="term-00043" class="no-emphasis">Thomson</term>',
+      ctx(null)
+    );
+    expect(html).toBe('<dfn id="term-00043" class="term">Thomson</dfn>');
+  });
+
+  it('a genuinely bare <term> still emits an id-less <dfn> — 2 exist in READ-ONLY source', () => {
+    expect(processInlineContent('<term>efnajöfnu</term>', ctx(null))).toBe(
+      '<dfn class="term">efnajöfnu</dfn>'
+    );
+  });
+
+  it('a class-first <term> now joins the map too', () => {
+    const html = processInlineContent(
+      '<term class="no-emphasis" id="term-00042">Thomson</term>',
+      ctx({ 'term-00042': 'Thomson' })
+    );
+    expect(html).toContain('data-en="Thomson"');
+  });
+
+  it('🔴 §C115 — a raw ">" inside an attribute value must not truncate the open tag', () => {
+    // CLAUDE.md: a bare ">" is LEGAL in an XML attribute value, so <tag[^>]*>
+    // truncates mid-attribute — silently, with an EMPTY capture, so the tool
+    // reports success and emits nothing. TAG_ATTR_SPAN is the quote-aware fix.
+    const html = processInlineContent(
+      '<term alt="a > b" id="term-00050">x</term>',
+      ctx({ 'term-00050': 'greater' })
+    );
+    expect(html).toContain('id="term-00050"');
+    expect(html).toContain('data-en="greater"');
+  });
+});
