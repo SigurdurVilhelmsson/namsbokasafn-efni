@@ -4,8 +4,32 @@
 
 ## ⏩ RESUME — state as of 2026-09-03
 
-🔴 **THE `data-en` UNIT IS IN FLIGHT ON `feat/term-english-data-attribute`. TASKS 1–2 ARE DONE;
-TASKS 3–6 WERE MEASURED UNSAFE AS WRITTEN AND ARE BEING RE-DERIVED.** This supersedes the
+✅ **THE GATE RAN CLEAN — `19 failed | 5,776 passed | 46 skipped (5,841)`, 10 failed FILES, at
+`6e877f6d`, `TMPDIR` on `/`. NOTHING NEWLY RED from the branch's seven code commits.** Verified
+by NAME, not by count: 9 files carry the 19 assertions and `findTermsGolden` is the 10th failed
+FILE with **zero** failing assertions (45 skipped — §C118 ㉑, pre-existing). None of the three
+new test files appears in the failing set.
+- 🔴 **AND THE BY-NAME DIFF THREW ONE FALSE POSITIVE THAT EVERY FUTURE SESSION WILL ALSO HIT:
+  `test-results/c118-53-goldens-classification-2026-09-01.json` CAN NO LONGER COVER THE LIVE
+  FAILING SET.** 18 of 19 names match it; the 19th —
+  *"📌 PREMISE PIN — the clean pair is EXPECTED to be clean…"* — was **minted by `58b0031e`
+  (⑱ ruling ②, the A7 `it()` split) on 2026-09-02, the day AFTER that JSON was frozen.** A
+  split renames, and **a rename reads as one-cleared-plus-one-new**. ▶ Settled the right way:
+  the name is on `origin/main` at `:494`, `git diff --stat origin/main..HEAD` for that file is
+  **empty**, and `git log -S` names the commit. **Do not diff a live failing set against a
+  frozen artefact without checking whether a rename landed in between.**
+- ⚠️ **A SECOND TRAP, AND IT IS THE `npm test | tail` LESSON IN A NEW SHAPE: the background job
+  reported "exit code 0" while `npm test` exited 1.** The script's status is its **last
+  command's** — here a `grep` — not the suite's. The real code survived only because the script
+  echoed `NPM TEST EXIT=$?` on the line after. **Capture the exit code on the line after the
+  command, or the harness will tell you a red suite was green.**
+- ⚠️ Duration **1,191 s** with the box otherwise quiet. `fileParallelism: false` means 375 files
+  run sequentially, forked one process per file. Budget ~20 min, and do not read a quiet log as
+  a hang — vitest writes its detail in the end-of-run summary.
+
+🔴 **THE `data-en` UNIT IS IN FLIGHT ON `feat/term-english-data-attribute`. TASKS 1–2 ARE DONE
+AND TASK 3'S LOADER HAS LANDED; TASKS 3–6 WERE MEASURED UNSAFE AS WRITTEN AND HAVE BEEN
+REPLACED WHOLESALE.** This supersedes the
 line-61 RESUME's *"THE NEXT ACTION IS THE TWO RULINGS ⑱ COULD NOT TAKE"* — **both rulings were
 already merged** (`5a01f2b7`, `58b0031e`, confirmed by `git merge-base --is-ancestor`), so that
 sentence had been stale since 2026-09-02. ⚠️ **This is the third time a "next action" line in
