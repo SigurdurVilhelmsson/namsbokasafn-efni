@@ -178,17 +178,37 @@ CI was billing-blocked 2026-07-17 → 2026-07-25. It works again.
   (prettier). **`npm test` ≠ the Tests job** — CI also runs Playwright E2E. Verify
   against the workflow files before claiming a branch is green; asserting from a
   subset is how a red `main` goes unnoticed.
-- **🔴 DURABLE — NOTHING UNDER `server/` IS LINTED BY CI.** Root `lint` is
-  **`eslint tools/ scripts/`** and `format:check` is **`prettier --check
-  'tools/**/*.js' 'scripts/**/*.js'`** — and the Lint workflow runs exactly those
-  two. `server/` is in neither, and **no other workflow lints it**. It is still
-  checked locally, because `lint-staged`'s pre-commit hook *does* cover
-  `server/**/*.js` — which is precisely why the gap is invisible: a server-only
-  lint break is caught on your machine and passes CI. **A green Lint job says
-  nothing about `server/`.** ⚠️ **Do not widen `lint` without measuring first** —
-  `server/` has never been linted in CI, so the first run may surface a large
-  backlog, and that is its own item. Found 2026-08-10, when §C36 B4b-0a moved a
-  script from `tools/` to `server/` and silently left the Lint job's scope.
+- **✅ CORRECTED 2026-09-03 — `server/` IS LINTED AND FORMAT-CHECKED BY CI NOW.
+  THIS BULLET ASSERTED THE OPPOSITE AS 🔴 DURABLE, IN AN ALWAYS-LOADED FILE, AND
+  IT INVERTED THE DAY `dfb962ba` (#433) MERGED.** 🔴 **The scope is an ENFORCEABLE
+  VALUE and is deliberately NOT restated here — its owner is `package.json`'s
+  `lint` / `format:check` scripts, and `.github/workflows/lint.yml`, which runs
+  exactly those two.** Read it there. **This bullet used to carry the globs
+  inline, and that is precisely how it went stale**, so re-deriving is the
+  practice, not a courtesy. ▶ **THE PROHIBITION IT CARRIED WAS FALSIFIED BY
+  MEASUREMENT, BY THREE ORDERS OF MAGNITUDE.** It said *"do not widen `lint`
+  without measuring first — the first run may surface a large backlog, and that is
+  its own item."* The backlog was **1 error** — an unused `down(db)` parameter in
+  `server/migrations/013-catalogue-subject.js`. The frightening **8,263** a naive
+  `eslint server/` prints is **8,262 phantom errors from `server/.venv/`, the
+  greynir-sidecar PYTHON VIRTUALENV** — 151 MB of vendored JS inside pip packages,
+  gitignored and not in the repo at all. ⚠️ **`node_modules/` and
+  `server/node_modules/` were ALREADY ignored; a Python venv under `server/` is the
+  one nobody thought of, and it is the whole of the wall.** The tell was the rule
+  mix — 5,230 `no-var`, the fingerprint of old third-party code, not of a tree
+  prettier formats on every commit. ▶ **Ordering was load-bearing: widening `lint`
+  BEFORE ignoring `.venv` turns the Lint job red on a directory that is not even in
+  git, and "8,263 problems" would have been true, useless, and fatal to a change
+  that cost one underscore.** **A prohibition justified by an unmeasured cost is an
+  invitation to measure it — and to ask what the scary number is COUNTING before
+  believing it.** ⚠️ **THE ORIGINAL LESSON SURVIVES AND IS WHY THE GAP LASTED
+  FOUR WEEKS: `lint-staged`'s pre-commit hook covers `server/**/*.js`, so a
+  server-only lint break is caught on your machine and CI never sees it.** A
+  failure caught locally is exactly the class CI is blind to — **that shape
+  outlives this particular fix, so look for it wherever a local hook and a CI job
+  have different scopes.** Found 2026-08-10 (§C36 B4b-0a moved a script from
+  `tools/` to `server/` and silently left the Lint job's scope); closed
+  2026-09-03.
 - **Duration is the diagnostic**: an infra/billing failure dies in ~3s *before*
   `Current runner version:` appears. Minutes elapsed = a real result.
   **⚠️ That rule assumes a run OBJECT EXISTS — check that first, because a
