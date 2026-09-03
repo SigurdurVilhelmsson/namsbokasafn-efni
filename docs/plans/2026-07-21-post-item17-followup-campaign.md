@@ -27,9 +27,50 @@ new test files appears in the failing set.
   run sequentially, forked one process per file. Budget ~20 min, and do not read a quiet log as
   a hang — vitest writes its detail in the end-of-run summary.
 
-🔴 **THE `data-en` UNIT IS IN FLIGHT ON `feat/term-english-data-attribute`. TASKS 1–2 ARE DONE
-AND TASK 3'S LOADER HAS LANDED; TASKS 3–6 WERE MEASURED UNSAFE AS WRITTEN AND HAVE BEEN
-REPLACED WHOLESALE.** This supersedes the
+✅ **TASKS 1–5 AND 7 OF THE `data-en` UNIT ARE DONE ON `feat/term-english-data-attribute`
+(19 commits, nothing pushed). ONLY TASK 6 REMAINS AND IT IS BLOCKED ON A [USER]/[LEAD]
+PUBLISHING DECISION, NOT ON ENGINEERING.**
+- **Gate, re-run after Tasks 4–5:** `19 failed | 5,802 passed | 46 skipped (5,867)`, 10 failed
+  FILES, `npm test` exit 1. **Failing set IDENTICAL to the branch baseline by NAME, both
+  directions — 0 newly red, 0 cleared — with a planted-row control proving the comparator
+  fires.**
+- ⚠️ **`books/` IS TOUCHED IN EXACTLY ONE PLACE: the 13 regenerated `02-structure/ch03`
+  manifests.** Nothing in `01-source` (licence-locked), nothing in `02-for-mt` (the tree the
+  paid MT reads), nothing in `05-publication`. Verified with
+  `git diff --name-only origin/main..HEAD -- books/`.
+- ✅ **Reach, measured at the RENDERED OUTPUT with a control:** ch03 `<dfn>` **20/20** chemistry
+  and **39/39** organic carry `data-en`; with no map supplied the same render gives **20 `<dfn>`
+  and 0 `data-en`**, so the 100% is map-driven rather than stamped.
+- 🔴 **A THIRD PRE-EXISTING DEFECT WAS FOUND AND FIXED ON ITS OWN COMMIT (`700b1800`), AND IT IS
+  DOM-VISIBLE: render required `id` to be a `<term>`'s FIRST attribute and silently discarded it
+  otherwise**, while extract reads attributes order-independently and writes that very key —
+  §C89's producer/consumer shape. Corpus census: **81 class-first `<term id>` against 1,325
+  id-first**. Before/after over both live books, counting unit = rendered `<dfn>` element:
+  **withId 810 → 891, idLess 83 → 2, conservation 893 UNCHANGED** — the fix MOVED elements
+  between buckets rather than creating any. Three byte-exact goldens regenerated; the diff was
+  verified programmatically (6 lines, all identical once `<dfn>` ids are stripped from BOTH
+  sides, 0 other changes). ▶ **81 published `<dfn>` gain an `id=`, so any vefur selector keyed on
+  `dfn[id]` presence shifts** — recorded in the handover doc.
+- 🔴 **TASK 6 STEP 6 IS THE ONLY `books/` WRITE LEFT AND IT IS A PUBLISHING DECISION.** Verified
+  rather than repeated: `m68700`'s committed CNXML carries **0** `(e. …)` glosses (the
+  `--no-annotate-en` holding state) while its ch03 siblings carry 4, 18 and 10, and its manifest
+  holds **8 keys (4 inline + 4 definition)**. ▶ **Re-rendering chemistry ch03 today trades 8
+  visible glosses for 8 `data-en` attributes that stay invisible until vefur ships its half.**
+- 📋 **The handover contract is written** →
+  [`docs/handoff/2026-09-02-vefur-term-english-contract.md`](../handoff/2026-09-02-vefur-term-english-contract.md).
+  🔴 **It names a cross-repo decision nobody has taken: efni emits `data-en` on TWO shapes —
+  `<dfn>` on section pages and `<dt>` on `*-key-terms.html` — and vefur's `glossaryTerms.ts`
+  walks `dfn.term` only, so the `<dt>` half has NO CONSUMER.** Retiring `annotateInlineTerms`
+  (spec §4.7, the cause of ⑰) is blocked until vefur widens its walker or efni wraps the `<dt>`'s
+  term in a `<dfn>`.
+- ⚠️ **The frozen spec is amended in place under §4.2 and §8** — its three-site enumeration was
+  wrong in KIND, and §8's "✅ ANSWERED" resolves scoping inside `renderGlossary`, which **never
+  runs**: `<glossary>` is a SIBLING of `<content>` in **109 of 109** modules that have one, 0
+  inside. Unexercised is not the same as dead — a synthetic nested glossary does reach it, so it
+  was left alone.
+
+*(historical framing follows)* 🔴 **THE `data-en` UNIT WAS IN FLIGHT: TASKS 3–6 WERE MEASURED
+UNSAFE AS WRITTEN AND WERE REPLACED WHOLESALE.** This supersedes the
 line-61 RESUME's *"THE NEXT ACTION IS THE TWO RULINGS ⑱ COULD NOT TAKE"* — **both rulings were
 already merged** (`5a01f2b7`, `58b0031e`, confirmed by `git merge-base --is-ancestor`), so that
 sentence had been stale since 2026-09-02. ⚠️ **This is the third time a "next action" line in
