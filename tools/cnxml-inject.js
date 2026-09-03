@@ -73,6 +73,7 @@ import {
 } from './lib/math-label-substitute.js';
 import { formatCollisionReport } from './lib/glossary-collisions.js';
 import { readAlt } from './lib/alt-segments.js';
+import { stripInlineMarkers, resolveMathPlaceholders } from './lib/term-text.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -847,27 +848,17 @@ function restoreMathBySeparators(isText, enText) {
  * @returns {string}
  */
 function stripTermMarkersToText(text, equations, { trim = false } = {}) {
-  let out = text
-    .replace(/\[\[sup:([^\]]+)\]\]/g, '$1')
-    .replace(/\[\[sub:([^\]]+)\]\]/g, '$1')
-    .replace(/\[\[i:([^\]]+)\]\]/g, '$1')
-    .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
-    .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
-    .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
-    // B4: unwrap id-anchored markers to their display text BEFORE the
-    // catch-all below deletes unknown [[type:…]] markers wholesale.
-    .replace(/\[\[(?:term|fn|em):([^\]|]*)\|[^\]]*\]\]/g, '$1')
-    .replace(/\[\[(?:term|fn|u):([^\]]*)\]\]/g, '$1')
-    .replace(/\[\[(?!MATH:)[A-Za-z][\w]*:[^\]]*\]\]/g, ''); // drop MEDIA/other, NOT MATH
+  // 🔴 THE ORDER IS LOAD-BEARING — DO NOT COLLAPSE THIS INTO flattenMarkersToText().
+  // Folding case BEFORE resolving MATH is what lets MathML-derived symbols escape
+  // the fold. Route this through the flattener instead — which resolves MATH first
+  // — and ΔHf° becomes δhf°, ΔGf° becomes δgf°, Ecell° becomes ecell°. Measured
+  // over the real corpus with real equations maps: 6 inputs, every one a chemistry
+  // symbol, and both call sites WRITE this value into output CNXML as "(e. …)", so
+  // it reaches readers. Δ and δ are different symbols.
+  // Pinned by tools/__tests__/term-text.test.js; proven non-vacuous by mutation.
+  let out = stripInlineMarkers(text);
   if (trim) out = out.trim();
-  return out.toLowerCase().replace(/\[\[math:(\d+)\]\]/g, (m, n) => {
-    const eq = equations[`math-${n}`];
-    if (!eq || !eq.mathml) return ''; // unresolved → drop (old behaviour, rare)
-    return eq.mathml
-      .replace(/<[^>]+>/g, '')
-      .replace(/\s+/g, ' ')
-      .trim();
-  });
+  return resolveMathPlaceholders(out.toLowerCase(), equations);
 }
 
 /**
