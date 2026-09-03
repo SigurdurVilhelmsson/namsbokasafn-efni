@@ -1,0 +1,295 @@
+{
+  "moduleId": "m00074",
+  "title": {
+    "segmentId": "m00074:title:auto-1",
+    "text": "Names and Properties of Ethers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3fc7319a-a34f-4b03-bd73-4f058c24d706"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00074:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00074:alt:fig-00001-alt",
+          "text": "The structure of isopropyl methyl ether and ethyl phenyl ether. Their oxygen bonds with organic groups are highlighted."
+        },
+        "src": "../../media/OChem_18_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00074:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00074:alt:fig-00002-alt",
+          "text": "The structures of p-dimethoxybenzene and 4-tert-butoxy-1-cyclohexene. The carbon atoms are numbered from the double bond position in 4-tert-butoxy-1-cyclohexene."
+        },
+        "src": "../../media/OChem_18_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00074:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00074:alt:fig-00003-alt",
+          "text": "The orbital picture, space-filling model, and ball-and-stick model in the electrostatic potential map of dimethyl ether. The bond angle between methyl-oxygen-methyl is 112 degrees."
+        },
+        "src": "../../media/OChem_18_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00074:para:para-00008"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00074:table-title:table-00001-title",
+        "text": "Comparison of Boiling Points of Ethers and Hydrocarbons"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00074:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00074:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00074:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00074:alt:OChem_18_01_004a_jpg-alt",
+                "text": "A five-membered ring, one atom of which is oxygen.",
+                "mediaId": null,
+                "src": "../../media/OChem_18_01_004a.jpg"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00074:alt:OChem_18_01_004c_jpg-alt",
+                "text": "The structure of cyclopentane which is a five-membered carbon ring.",
+                "mediaId": null,
+                "src": "../../media/OChem_18_01_004c.jpg"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00074:alt:OChem_18_01_004b_jpg-alt",
+                "text": "Structure of benzene with a methoxy (O C H 3) substituent.",
+                "mediaId": null,
+                "src": "../../media/OChem_18_01_004b.jpg"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00074:alt:OChem_18_01_004d_jpg-alt",
+                "text": "The structure of benzene with an ethyl (C H 2 C H 3) substituent.",
+                "mediaId": null,
+                "src": "../../media/OChem_18_01_004d.jpg"
+              }
+            },
+            {
+              "segmentId": "m00074:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00074:para:para-00009"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00074:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

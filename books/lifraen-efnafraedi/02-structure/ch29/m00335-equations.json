@@ -1,0 +1,14 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:msup><m:mtext>N</m:mtext><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{C}\\text{═}{\\text{N}}^{+}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}\\text{═}\\text{O}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>N</m:mtext><m:mtext>─</m:mtext><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{R}}_{2}\\text{N}\\text{─}\\text{C}\\text{═}\\text{C}}"
+  }
+}

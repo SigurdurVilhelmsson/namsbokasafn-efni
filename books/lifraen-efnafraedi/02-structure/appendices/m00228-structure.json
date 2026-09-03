@@ -1,0 +1,28 @@
+{
+  "moduleId": "m00228",
+  "title": {
+    "segmentId": "m00228:title:auto-1",
+    "text": "Periodic Table"
+  },
+  "documentClass": "appendix",
+  "metadata": {
+    "uuid": "dc1da441-76c8-439d-ac89-9294f38fe329"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00228:alt:fig-00001-alt",
+          "text": "Periodic table shows atomic numbers, symbols, names, and atomic masses of elements. Metals, semimetals, and nonmetals are highlighted in different colors. Lanthanides and actinides are placed horizontally at the bottom."
+        },
+        "src": "../../media/OChem_00_00_PeriodicTable.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": null
+}

@@ -1,0 +1,116 @@
+{
+  "moduleId": "m00208",
+  "title": {
+    "segmentId": "m00208:title:auto-1",
+    "text": "Phenols and Their Uses"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f530f892-bd3f-4ca7-b7f9-f580dcab2c2d"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00208:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00208:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00208:alt:fig-00001-alt",
+          "text": "Cumene (isopropyl benzene) reacts with oxygen and heat to form cumene hydroperoxide. This reacts with hydronium ion to form phenol and acetone."
+        },
+        "src": "../../media/OChem_17_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00208:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00208:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00208:alt:fig-00002-alt",
+          "text": "The five steps involved in the formation of phenol and acetone from cumene hydroperoxide by acid-catalyzed rearrangement."
+        },
+        "src": "../../media/OChem_17_09_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00208:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00208:alt:fig-00003-alt",
+          "text": "Three structures of pentachlorophenol (wood preservative), 2,4-dichlorophenoxyacetic acid, 2,4,-D (herbicide), and hexachlorophene (antiseptic)."
+        },
+        "src": "../../media/OChem_17_09_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00208:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00208:alt:fig-00004-alt",
+          "text": "The structures of butylated hydroxytoluene (B H T) and butylated hydroxyanisole (B H A)."
+        },
+        "src": "../../media/OChem_17_09_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00208:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

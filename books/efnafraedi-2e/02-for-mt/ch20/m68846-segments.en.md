@@ -34,11 +34,17 @@ The structures of alkanes and other organic molecules may also be represented in
 <!-- SEG:m68846:caption:CNX_Chem_20_01_alkanes-caption -->
 Pictured are the Lewis structures, ball-and-stick models, and space-filling models for molecules of methane, ethane, and pentane.
 
+<!-- SEG:m68846:alt:fs-idp49734128-alt -->
+The figure illustrates four ways to represent molecules for molecules of methane, ethane, and pentane. In the first row of the figure, Lewis structural formulas show element symbols and bonds between atoms. Methane has a central C atom with four H atoms bonded to it. Ethane has a C atom with three H atoms bonded to it. The C atom is also bonded to another C atom with three H atoms bonded to it. Pentane has a C atom with three H atoms bonded to it. The C atom is bonded to another C atom with two H atoms bonded to it. The C atom is bonded to another C atom with two H atoms bonded to it. The C atom is bonded to another C atom with two H atoms bonded to it. The C atom is bonded to another C atom with three H atoms bonded to it. In the second row, ball-and-stick models are shown. In these representations, bonds are represented with sticks, and elements are represented with balls. Carbon atoms are black and hydrogen atoms are white in this image. In the third row, space-filling models are shown. In these models, atoms are enlarged and pushed together, without sticks to represent bonds. The molecule names and structural formulas are provided in the fourth row. Methane is named and represented with a condensed structural formula as C H subscript 4. Ethane is named and represented with two structural formulas C H subscript 3 C H subscript 3 and C subscript 2 H subscript 6. Pentane is named and represented as both C H subscript 3 C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 3 and C subscript 5 H subscript 12.
+
 <!-- SEG:m68846:para:fs-idp81678112 -->
 A common method used by organic chemists to simplify the drawings of larger molecules is to use a [[term:skeletal structure|term-00004]] (also called a line-angle structure). In this type of structure, carbon atoms are not symbolized with a C, but represented by each end of a line or bend in a line. Hydrogen atoms are not drawn if they are attached to a carbon. Other atoms besides carbon and hydrogen are represented by their elemental symbols. [[xref:CNX_Chem_20_01_LineStruct1]] shows three different ways to draw the same structure.
 
 <!-- SEG:m68846:caption:CNX_Chem_20_01_LineStruct1-caption -->
 The same structure can be represented three different ways: an expanded formula, a condensed formula, and a skeletal structure.
+
+<!-- SEG:m68846:alt:fs-idp49277072-alt -->
+In this figure, a hydrocarbon molecule is shown in three ways. First, an expanded formula shows all individual carbon atoms, hydrogen atoms, and bonds in a branched hydrocarbon molecule. An initial C atom is bonded to three H atoms. The C atom is bonded to another C atom in the chain. This second C atom is bonded to one H atom and another C atom above the chain. The C atom bonded above the second C atom in the chain is bonded to three H atoms. The second C atom in the chain is bonded to a third C atom in the chain. This third C atom is bonded to on H atom and another C atom below the chain. This C atom is bonded to two H atoms and another C atom below the chain. This second C atom below the chain is bonded to three H atoms. The third C atom in the chain is bonded to a fourth C atom in the chain. The fourth C atom is bonded to two H atoms and a fifth C atom. The fifth C atom is bonded to two H atoms and a sixth C atom. The sixth C atom is bonded to three H atoms. Second, a condensed formula shows each carbon atom of the molecule in clusters with the hydrogen atoms bonded to it, leaving C H, C H subscript 2, and C H subscript 3 groups with bonds between them. The structure shows a C H subscript 3 group bonded to a C H group. The C H group is bonded above to a C H subscript 3 group. The C H group is also bonded to another C H group. This C H group is bonded to a C H subscript 2 group below and a C H subscript 3 group below that. This C H group is also bonded to a C H subscript 2 group which is bonded to another C H subscript 2 group. This C H subscript 2 group is bonded to a final C H subscript 2 group. The final structure in the figure is a skeletal structure which includes only line segments arranged to indicate the structure of the molecule.
 
 <!-- SEG:m68846:example-title:fs-idp10059824-title -->
 Drawing Skeletal Structures
@@ -58,8 +64,20 @@ Check Your Learning
 <!-- SEG:m68846:para:fs-idp56819120 -->
 Draw the skeletal structures for these two molecules:
 
+<!-- SEG:m68846:alt:fs-idp63318480-alt -->
+Figure a shows a branched molecule with C H subscript 3 bonded to C with C H subscript 3 groups bonded both above and below it. To the right of the central C, a C H is bonded which has a C H subscript 3 group bonded above and to the right and below and to the right. Figure b shows a straight chain molecule composed of C H subscript 3 C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 3.
+
+<!-- SEG:m68846:alt:fs-idp68332416-alt -->
+Figure a shows a branched skeleton structure that looks like a plus sign with line segments extending up and to the right and down and to the left of the rightmost point of the plus sign. Figure b appears in a zig zag pattern made with six line segments. The segments rise, fall, rise, fall, rise, and fall moving left to right across the figure.
+
+<!-- SEG:m68846:alt:fs-idp52862288-alt -->
+Figure a shows five C H subscript 2 groups and one C H group bonded in a hexagonal ring. A C H subscript 3 group appears above and to the right of the ring, bonded to the ring on the C H group appearing at the upper right portion of the ring. In b, a straight chain molecule composed of C H subscript 3 C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 3 is shown.
+
 <!-- SEG:m68846:note-title:fs-idp70789264-title -->
 Answer:
+
+<!-- SEG:m68846:alt:fs-idp37158144-alt -->
+In a, a hexagon with a vertex at the top is shown. The vertex just to the right has a line segment attached that extends up and to the right. In b, a zig zag pattern is shown in which line segments rise, fall, rise, fall, and rise moving left to right.
 
 <!-- SEG:m68846:example-title:fs-idp73321504-title -->
 Interpreting Skeletal Structures
@@ -85,6 +103,15 @@ Identify the chemical formula of the molecule represented here:
 <!-- SEG:m68846:para:fs-idp72233168 -->
 C[[sub:9]]H[[sub:20]]
 
+<!-- SEG:m68846:alt:fs-idp73780224-alt -->
+This figure shows a pentagon with a vertex pointing right, from which a line segment extends that has two line segments attached at its right end, one extending up and to the right, and the other extending down and to the right.
+
+<!-- SEG:m68846:alt:fs-idp77092912-alt -->
+In this figure a ring composed of four C H subscript 2 groups and one C H group in a pentagonal shape is shown. From the C H group, which is at the right side of the pentagon, a C H is bonded. From this C H, a C H subscript 3 group is bonded above and to the right and a second is bonded below and to the right.
+
+<!-- SEG:m68846:alt:fs-idp69279616-alt -->
+A skeleton model is shown with a zig zag pattern that rises, falls, rises, and falls again left to right through the center of the molecule. From the two risen points, line segments extend both up and down, creating four branches.
+
 <!-- SEG:m68846:note-title:fs-idp65065984-title -->
 Answer:
 
@@ -94,245 +121,248 @@ C[[sub:9]]H[[sub:20]]
 <!-- SEG:m68846:para:fs-idp72488416 -->
 All alkanes are composed of carbon and hydrogen atoms, and have similar bonds, structures, and formulas; noncyclic alkanes all have a formula of C[[sub:n]]H[[sub:2n+2]]. The number of carbon atoms present in an alkane has no limit. Greater numbers of atoms in the molecules will lead to stronger intermolecular attractions (dispersion forces) and correspondingly different physical properties of the molecules. Properties such as melting point and boiling point ([[xref:fs-idp53743808]]) usually change smoothly and predictably as the number of carbon and hydrogen atoms in the molecules change.
 
-<!-- SEG:m68846:entry:auto-33 -->
+<!-- SEG:m68846:entry:auto-42 -->
 Properties of Some Alkanes [[fn:Physical properties for C[[sub:4]]H[[sub:10]] and heavier molecules are those of the [[i:normal isomer]], [[i:n]]-butane, [[i:n]]-pentane, etc.|fs-idp41358128]]
 
-<!-- SEG:m68846:entry:auto-34 -->
+<!-- SEG:m68846:entry:auto-43 -->
 Alkane
 
-<!-- SEG:m68846:entry:auto-35 -->
+<!-- SEG:m68846:entry:auto-44 -->
 Molecular Formula
 
-<!-- SEG:m68846:entry:auto-36 -->
+<!-- SEG:m68846:entry:auto-45 -->
 Melting Point (°C)
 
-<!-- SEG:m68846:entry:auto-37 -->
+<!-- SEG:m68846:entry:auto-46 -->
 Boiling Point (°C)
 
-<!-- SEG:m68846:entry:auto-38 -->
+<!-- SEG:m68846:entry:auto-47 -->
 Phase at STP [[fn:STP indicates a temperature of 0 °C and a pressure of 1 atm.|fs-idp74205008]]
 
-<!-- SEG:m68846:entry:auto-39 -->
+<!-- SEG:m68846:entry:auto-48 -->
 Number of Structural Isomers
 
-<!-- SEG:m68846:entry:auto-40 -->
+<!-- SEG:m68846:entry:auto-49 -->
 methane
 
-<!-- SEG:m68846:entry:auto-41 -->
+<!-- SEG:m68846:entry:auto-50 -->
 CH[[sub:4]]
 
-<!-- SEG:m68846:entry:auto-42 -->
+<!-- SEG:m68846:entry:auto-51 -->
 –182.5
 
-<!-- SEG:m68846:entry:auto-43 -->
+<!-- SEG:m68846:entry:auto-52 -->
 –161.5
 
-<!-- SEG:m68846:entry:auto-44 -->
-gas
-
-<!-- SEG:m68846:entry:auto-45 -->
-1
-
-<!-- SEG:m68846:entry:auto-46 -->
-ethane
-
-<!-- SEG:m68846:entry:auto-47 -->
-C[[sub:2]]H[[sub:6]]
-
-<!-- SEG:m68846:entry:auto-48 -->
-–183.3
-
-<!-- SEG:m68846:entry:auto-49 -->
-–88.6
-
-<!-- SEG:m68846:entry:auto-50 -->
-gas
-
-<!-- SEG:m68846:entry:auto-51 -->
-1
-
-<!-- SEG:m68846:entry:auto-52 -->
-propane
-
 <!-- SEG:m68846:entry:auto-53 -->
-C[[sub:3]]H[[sub:8]]
+gas
 
 <!-- SEG:m68846:entry:auto-54 -->
-–187.7
-
-<!-- SEG:m68846:entry:auto-55 -->
-–42.1
-
-<!-- SEG:m68846:entry:auto-56 -->
-gas
-
-<!-- SEG:m68846:entry:auto-57 -->
 1
 
+<!-- SEG:m68846:entry:auto-55 -->
+ethane
+
+<!-- SEG:m68846:entry:auto-56 -->
+C[[sub:2]]H[[sub:6]]
+
+<!-- SEG:m68846:entry:auto-57 -->
+–183.3
+
 <!-- SEG:m68846:entry:auto-58 -->
-butane
+–88.6
 
 <!-- SEG:m68846:entry:auto-59 -->
-C[[sub:4]]H[[sub:10]]
-
-<!-- SEG:m68846:entry:auto-60 -->
-–138.3
-
-<!-- SEG:m68846:entry:auto-61 -->
-–0.5
-
-<!-- SEG:m68846:entry:auto-62 -->
 gas
 
+<!-- SEG:m68846:entry:auto-60 -->
+1
+
+<!-- SEG:m68846:entry:auto-61 -->
+propane
+
+<!-- SEG:m68846:entry:auto-62 -->
+C[[sub:3]]H[[sub:8]]
+
 <!-- SEG:m68846:entry:auto-63 -->
-2
+–187.7
 
 <!-- SEG:m68846:entry:auto-64 -->
-pentane
+–42.1
 
 <!-- SEG:m68846:entry:auto-65 -->
-C[[sub:5]]H[[sub:12]]
+gas
 
 <!-- SEG:m68846:entry:auto-66 -->
-–129.7
+1
 
 <!-- SEG:m68846:entry:auto-67 -->
-36.1
+butane
 
 <!-- SEG:m68846:entry:auto-68 -->
-liquid
+C[[sub:4]]H[[sub:10]]
 
 <!-- SEG:m68846:entry:auto-69 -->
-3
+–138.3
 
 <!-- SEG:m68846:entry:auto-70 -->
-hexane
+–0.5
 
 <!-- SEG:m68846:entry:auto-71 -->
-C[[sub:6]]H[[sub:14]]
+gas
 
 <!-- SEG:m68846:entry:auto-72 -->
-–95.3
+2
 
 <!-- SEG:m68846:entry:auto-73 -->
-68.7
+pentane
 
 <!-- SEG:m68846:entry:auto-74 -->
-liquid
+C[[sub:5]]H[[sub:12]]
 
 <!-- SEG:m68846:entry:auto-75 -->
-5
+–129.7
 
 <!-- SEG:m68846:entry:auto-76 -->
-heptane
+36.1
 
 <!-- SEG:m68846:entry:auto-77 -->
-C[[sub:7]]H[[sub:16]]
+liquid
 
 <!-- SEG:m68846:entry:auto-78 -->
-–90.6
+3
 
 <!-- SEG:m68846:entry:auto-79 -->
-98.4
+hexane
 
 <!-- SEG:m68846:entry:auto-80 -->
-liquid
+C[[sub:6]]H[[sub:14]]
 
 <!-- SEG:m68846:entry:auto-81 -->
-9
+–95.3
 
 <!-- SEG:m68846:entry:auto-82 -->
-octane
+68.7
 
 <!-- SEG:m68846:entry:auto-83 -->
-C[[sub:8]]H[[sub:18]]
+liquid
 
 <!-- SEG:m68846:entry:auto-84 -->
-–56.8
+5
 
 <!-- SEG:m68846:entry:auto-85 -->
-125.7
+heptane
 
 <!-- SEG:m68846:entry:auto-86 -->
-liquid
+C[[sub:7]]H[[sub:16]]
 
 <!-- SEG:m68846:entry:auto-87 -->
-18
+–90.6
 
 <!-- SEG:m68846:entry:auto-88 -->
-nonane
+98.4
 
 <!-- SEG:m68846:entry:auto-89 -->
-C[[sub:9]]H[[sub:20]]
+liquid
 
 <!-- SEG:m68846:entry:auto-90 -->
-–53.6
+9
 
 <!-- SEG:m68846:entry:auto-91 -->
-150.8
+octane
 
 <!-- SEG:m68846:entry:auto-92 -->
-liquid
+C[[sub:8]]H[[sub:18]]
 
 <!-- SEG:m68846:entry:auto-93 -->
-35
+–56.8
 
 <!-- SEG:m68846:entry:auto-94 -->
-decane
+125.7
 
 <!-- SEG:m68846:entry:auto-95 -->
-C[[sub:10]]H[[sub:22]]
-
-<!-- SEG:m68846:entry:auto-96 -->
-–29.7
-
-<!-- SEG:m68846:entry:auto-97 -->
-174.0
-
-<!-- SEG:m68846:entry:auto-98 -->
 liquid
 
+<!-- SEG:m68846:entry:auto-96 -->
+18
+
+<!-- SEG:m68846:entry:auto-97 -->
+nonane
+
+<!-- SEG:m68846:entry:auto-98 -->
+C[[sub:9]]H[[sub:20]]
+
 <!-- SEG:m68846:entry:auto-99 -->
-75
+–53.6
 
 <!-- SEG:m68846:entry:auto-100 -->
-tetradecane
+150.8
 
 <!-- SEG:m68846:entry:auto-101 -->
-C[[sub:14]]H[[sub:30]]
+liquid
 
 <!-- SEG:m68846:entry:auto-102 -->
-5.9
+35
 
 <!-- SEG:m68846:entry:auto-103 -->
-253.5
+decane
 
 <!-- SEG:m68846:entry:auto-104 -->
-solid
+C[[sub:10]]H[[sub:22]]
 
 <!-- SEG:m68846:entry:auto-105 -->
-1858
+–29.7
 
 <!-- SEG:m68846:entry:auto-106 -->
-octadecane
+174.0
 
 <!-- SEG:m68846:entry:auto-107 -->
-C[[sub:18]]H[[sub:38]]
+liquid
 
 <!-- SEG:m68846:entry:auto-108 -->
-28.2
+75
 
 <!-- SEG:m68846:entry:auto-109 -->
-316.1
+tetradecane
 
 <!-- SEG:m68846:entry:auto-110 -->
-solid
+C[[sub:14]]H[[sub:30]]
 
 <!-- SEG:m68846:entry:auto-111 -->
+5.9
+
+<!-- SEG:m68846:entry:auto-112 -->
+253.5
+
+<!-- SEG:m68846:entry:auto-113 -->
+solid
+
+<!-- SEG:m68846:entry:auto-114 -->
+1858
+
+<!-- SEG:m68846:entry:auto-115 -->
+octadecane
+
+<!-- SEG:m68846:entry:auto-116 -->
+C[[sub:18]]H[[sub:38]]
+
+<!-- SEG:m68846:entry:auto-117 -->
+28.2
+
+<!-- SEG:m68846:entry:auto-118 -->
+316.1
+
+<!-- SEG:m68846:entry:auto-119 -->
+solid
+
+<!-- SEG:m68846:entry:auto-120 -->
 60,523
 
 <!-- SEG:m68846:para:fs-idp14410464 -->
 Hydrocarbons with the same formula, including alkanes, can have different structures. For example, two alkanes have the formula C[[sub:4]]H[[sub:10]]: They are called [[i:n]]-butane and 2-methylpropane (or isobutane), and have the following Lewis structures:
+
+<!-- SEG:m68846:alt:fs-idp63810432-alt -->
+The figure illustrates three ways to represent molecules of n dash butane and 2 dash methlylpropane. In the first row of the figure, Lewis structural formulas show element symbols and bonds between atoms. The n dash butane molecule shows 4 carbon atoms represented by the letter C bonded in a straight horizontal chain with hydrogen atoms represented by the letter H bonded above and below all carbon atoms. H atoms are bonded at the ends to the left and right of the left-most and right-most C atoms. In the second row, ball-and-stick models are shown. In these representations, bonds are represented with sticks, and elements are represented with balls. Carbon atoms are black and hydrogen atoms are white in this image. In the third row, space-filling models are shown. In these models, atoms are enlarged and pushed together, without sticks to represent bonds. The molecule names are provided in the fourth row.
 
 <!-- SEG:m68846:para:fs-idp73202432 -->
 The compounds [[i:n]]-butane and 2-methylpropane are structural isomers (the term constitutional isomers is also commonly used). Constitutional isomers have the same molecular formula but different spatial arrangements of the atoms in their molecules. The [[i:n]]-butane molecule contains an [[i:unbranched chain]], meaning that no carbon atom is bonded to more than two other carbon atoms. We use the term [[i:normal]], or the prefix [[i:n]], to refer to a chain of carbon atoms without branching. The compound 2–methylpropane has a branched chain (the carbon atom in the center of the Lewis structure is bonded to three other carbon atoms)
@@ -342,6 +372,9 @@ Identifying isomers from Lewis structures is not as easy as it looks. Lewis stru
 
 <!-- SEG:m68846:caption:CNX_Chem_20_01_butane_img-caption -->
 These three representations of the structure of n-butane are not isomers because they all contain the same arrangement of atoms and bonds.
+
+<!-- SEG:m68846:alt:fs-idp66819072-alt -->
+The figure illustrates three ways to represent molecules of n dash butane. In the first row of the figure, Lewis structural formulas show carbon and hydrogen element symbols and bonds between the atoms. The first structure in this row shows three of the linked C atoms in a horizontal row with a single C atom bonded above the left-most carbon. The left-most C atom has two H atoms bonded to it. The C atom bonded above the left-most C atom has three H atoms bonded to it. The C atom bonded to the right of the left-most C atom has two H atoms bonded to it. The right-most C atom has three H atoms bonded to it. The C atoms and the bonds connecting all the C atoms are red. The second structure in the row similarly shows the row of three linked C atoms with a single C atom bonded below the C atom to the left. The left-most C atom has two H atoms bonded to it. The C atom bonded below the left-most C atom has three H atoms bonded to it. The C atom bonded to the right of the left-most C atom has two H atoms bonded to it. The right-most atom has three H atoms bonded to it. All the C atoms and the bonds between them are red. The third structure has two C atoms bonded in a row with a third C atom bonded above the left C atom and the fourth C atom bonded below the right C atom. The C atom bonded above the left C atom has three H atoms bonded to it. The left C atom has two H atoms bonded to it. The right C atom has two H atoms bonded to it. The C atom bonded below the right C atom has three H atoms bonded to it. All the C atoms and the bonds between them are red. In the second row, ball-and-stick models for the structures are shown. In these representations, bonds are represented with sticks, and elements are represented with balls. Carbon atoms are black and hydrogen atoms are white in this image. In the third row, space-filling models are shown. In these models, atoms are enlarged and pushed together, without sticks to represent bonds.
 
 <!-- SEG:m68846:title:fs-idp52681872-title -->
 The Basics of Organic Nomenclature: Naming Alkanes
@@ -354,6 +387,9 @@ To name an alkane, first identify the longest chain of carbon atoms in its struc
 
 <!-- SEG:m68846:item:fs-idp9620576-item-2 -->
 Add prefixes to the name of the longest chain to indicate the positions and names of [[term:substituents|term-00006]]. Substituents are branches or functional groups that replace hydrogen atoms on a chain. The position of a substituent or branch is identified by the number of the carbon atom it is bonded to in the chain. We number the carbon atoms in the chain by counting from the end of the chain nearest the substituents. Multiple substituents are named individually and placed in alphabetical order at the front of the name.
+
+<!-- SEG:m68846:alt:fs-idp15177792-alt -->
+This figure shows structural formulas for propane, 2 dash chloropropane, 2 dash methylpropane, 2 comma 4 dash difluorohexane, and 1 dash bromo dash 3 dash chlorohexane. In each of the structures, the carbon atoms are in a row with bonded halogen atoms and a methyl group bonded below the figures. Propane is listed as simply C H subscript 3 C H subscript 2 C H subscript 3, with the numbers 1, 2, and 3 appearing above the carbon atoms from left to right. 2 dash chloropropane similarly shows C H subscript 3 C H C H subscript 3, with the numbers 1, 2, and 3 appearing above the carbon atoms from left to right. A C l atom is bonded below carbon 2. The C l atom is red. 2 dash methylpropane similarly shows C H subscript 3 C H C H subscript 3, with the numbers 3, 2, and 1 appearing above the carbon atoms from left to right. A C H subscript 3 group is bonded beneath carbon 2 and is red. 2 comma 4 dash difluorohexane similarly shows C H subscript 3 C H subscript 2 C H C H subscript 2 C H C H subscript 3, with the numbers 6, 5, 4, 3, 2, and 1 appearing above the carbon atoms from left to right. F atoms are bonded to carbons 4 and 2 at the bottom of the structure and are red. 1 dash bromo dash 3 dash chlorohexane similarly shows C H subscript 2 C H subscript 2 C H C H subscript 2 C H subscript 2 C H subscript 3, with numbers 1, 2, 3, 4, 5, and 6 appearing above the carbon atoms from left to right. B r is bonded below carbon 1 and C l is bonded below carbon 3. Both B r and C l are red.
 
 <!-- SEG:m68846:para:fs-idp51843168 -->
 When more than one substituent is present, either on the same carbon atom or on different carbon atoms, the substituents are listed alphabetically. Because the carbon atom numbering begins at the end closest to a substituent, the longest chain of carbon atoms is numbered in such a way as to produce the lowest number for the substituents. The ending [[i:-o]] replaces [[i:-ide]] at the end of the name of an electronegative substituent (in ionic compounds, the negatively charged ion ends with [[i:-ide]] like chloride; in organic compounds, such atoms are treated as substituents and the [[i:-o]] ending is used). The number of substituents of the same type is indicated by the prefixes [[i:di-]] (two), [[i:tri-]] (three), [[i:tetra-]] (four), and so on (for example, [[i:difluoro-]] indicates two fluoride substituents).
@@ -379,6 +415,15 @@ Name the following molecule:
 <!-- SEG:m68846:para:fs-idp34528176 -->
 3,3-dibromo-2-iodopentane
 
+<!-- SEG:m68846:alt:fs-idp19146880-alt -->
+This structure shows a C atom bonded to the H atoms and another C atom. This second C atom is bonded to two H atoms and another C atom. This third C atom is bonded to a B r atom, an H atom, and another C atom. This fourth C atom is bonded to two H atoms and a C l atom.
+
+<!-- SEG:m68846:alt:fs-idp3065072-alt -->
+This structure shows a C atom bonded to the H atoms and another C atom. This second C atom is bonded to two H atoms and another C atom. This third C atom is bonded to an H atom, a B r atom, and another C atom. This fourth C atom is bonded to two H atoms and a C l atom. The C atoms are numbered 4, 3, 2, and 1 from left to right.
+
+<!-- SEG:m68846:alt:fs-idm66323184-alt -->
+This figure shows a C atom bonded to three H atoms and another C atom. This second C atom is bonded to two H atoms and a third C atom. The third C atom is bonded to two B r atoms and a fourth C atom. This C atom is bonded to an H atom, and I atom, and a fifth C atom. This last C atom is bonded to three H atoms.
+
 <!-- SEG:m68846:note-title:fs-idp13281248-title -->
 Answer:
 
@@ -387,6 +432,9 @@ Answer:
 
 <!-- SEG:m68846:para:fs-idp43562000 -->
 We call a substituent that contains one less hydrogen than the corresponding alkane an alkyl group. The name of an [[term:alkyl group|term-00007]] is obtained by dropping the suffix [[i:-ane]] of the alkane name and adding [[i:-yl]]:
+
+<!-- SEG:m68846:alt:fs-idp5811008-alt -->
+In this figure, methane is named and represented as C with four H atoms bonded above, below, to the left, and to the right of the C. The methyl group is shown, which appears like methane without the right most H. A dash remains at the location where the H was formerly bonded. Ethane is named and represented with two centrally bonded C atoms to which six H atoms are bonded; two above and below each of the two C atoms and to the left and right ends of the linked C atoms. The ethyl group appears as a similar structure with the right-most H atom removed. A dash remains at the location where the H atom was formerly bonded.
 
 <!-- SEG:m68846:para:fs-idp53101632 -->
 The open bonds in the methyl and ethyl groups indicate that these alkyl groups are bonded to another atom.
@@ -412,6 +460,12 @@ Name the following molecule:
 <!-- SEG:m68846:para:fs-idp20723808 -->
 4-propyloctane
 
+<!-- SEG:m68846:alt:fs-idp69579584-alt -->
+A chain of six carbon atoms, numbered 6, 5, 4, 3, 2, and 1 is shown. Bonded above carbon 3, a chain of two carbons is shown, numbered 1 and 2 moving upward. H atoms are present directly above, below, left and right of all carbon atoms in positions not already taken up in bonding to other carbon atoms.
+
+<!-- SEG:m68846:alt:fs-idp45701152-alt -->
+This figure shows a C atom bonded to three H atoms and another C atom. This C atom is bonded to two H atoms and third C atom. The third C atom is bonded to two H atoms and a fourth C atom. The fourth C atom is bonded to two H atoms and a fifth C atom. This C atom is bonded to an H atom, a sixth C atom in the chain, and another C atom which appears to branch off the chain. The C atom in the branch is bonded to two H atoms and another C atom. This C atom is bonded to two H atoms and another C atom. This third C atom appears to the left of the second and is bonded to three H atoms. The sixth C atom in the chain is bonded to two H atoms and a seventh C atom. The seventh C atom is bonded to two H atoms and an eighth C atom. The eighth C atom is bonded to three H atoms.
+
 <!-- SEG:m68846:note-title:fs-idp5918672-title -->
 Answer:
 
@@ -421,14 +475,23 @@ Answer:
 <!-- SEG:m68846:para:fs-idp69454848 -->
 Some hydrocarbons can form more than one type of alkyl group when the hydrogen atoms that would be removed have different “environments” in the molecule. This diversity of possible alkyl groups can be identified in the following way: The four hydrogen atoms in a methane molecule are equivalent; they all have the same environment. They are equivalent because each is bonded to a carbon atom (the same carbon atom) that is bonded to three hydrogen atoms. (It may be easier to see the equivalency in the ball and stick models in [[xref:CNX_Chem_20_01_alkanes]]. Removal of any one of the four hydrogen atoms from methane forms a methyl group. Likewise, the six hydrogen atoms in ethane are equivalent ([[xref:CNX_Chem_20_01_alkanes]]) and removing any one of these hydrogen atoms produces an ethyl group. Each of the six hydrogen atoms is bonded to a carbon atom that is bonded to two other hydrogen atoms and a carbon atom. However, in both propane and 2–methylpropane, there are hydrogen atoms in two different environments, distinguished by the adjacent atoms or groups of atoms:
 
+<!-- SEG:m68846:alt:fs-idp33535040-alt -->
+In this figure, propane is shown as a chain of three bonded C atoms. Eight H atoms are shown with three bonded to the first C atom, two to the middle C atom, and three to the third C atom. The H atoms bonded to the middle C atom are purple. 2 dash methylpropane is also shown, which similarly has a chain of three bonded C atoms. In this structure, A C atom is bonded beneath the middle C atom of the chain. Ten H atoms are shown with three bonded to the first C atom, one to the middle C atom, three to the third C atom, and three to the C atom also bonded to the middle C atom. The H atom bonded to the middle C atom is green.
+
 <!-- SEG:m68846:para:fs-idp49961376 -->
 Each of the six equivalent hydrogen atoms of the first type in propane and each of the nine equivalent hydrogen atoms of that type in 2-methylpropane (all shown in black) are bonded to a carbon atom that is bonded to only one other carbon atom. The two purple hydrogen atoms in propane are of a second type. They differ from the six hydrogen atoms of the first type in that they are bonded to a carbon atom bonded to two other carbon atoms. The green hydrogen atom in 2-methylpropane differs from the other nine hydrogen atoms in that molecule and from the purple hydrogen atoms in propane. The green hydrogen atom in 2-methylpropane is bonded to a carbon atom bonded to three other carbon atoms. Two different alkyl groups can be formed from each of these molecules, depending on which hydrogen atom is removed. The names and structures of these and several other alkyl groups are listed in [[xref:CNX_Chem_20_01_alkyls]].
 
 <!-- SEG:m68846:caption:CNX_Chem_20_01_alkyls-caption -->
 This listing gives the names and formulas for various alkyl groups formed by the removal of hydrogen atoms from different locations.
 
+<!-- SEG:m68846:alt:fs-idp69955360-alt -->
+This table provides a listing of alkyl groups and corresponding structures. Methyl is shown as C H subscript 3 followed by a dash. Ethyl is shown as C H subscript 3 C H subscript 2 followed by a dash. n dash propyl is shown as C H subscript 3 C H subscript 2 C H subscript 2 followed by a dash. Isopropyl is shown as C H subscript 3 C H C H subscript 3 with a dash extending upward from the middle C. n dash butyl is shown as C H subscript 3 C H subscript 2 C H subscript 2 C H subscript 2 followed by a dash. sec dash butyl is shown as C H subscript 3 C H subscript 2 C H C H subscript 3 with a dash extending upward from the third C counting left to right. Isobutyl is shown as C H subscript 3 C H C H subscript 2 with a dash extending to the right. There is a C H subscript 3 bonded to the middle C. tert dash butyl is shown as C H subscript 3 C C H subscript 3 with a C H subscript 3 group bonded below the middle C and a dash extending upward from the central C.
+
 <!-- SEG:m68846:para:fs-idp69552896 -->
 Note that alkyl groups do not exist as stable independent entities. They are always a part of some larger molecule. The location of an alkyl group on a hydrocarbon chain is indicated in the same way as any other substituent:
+
+<!-- SEG:m68846:alt:fs-idp13276960-alt -->
+This figure shows structures of 3 dash ethylheptane, 2 comma 2 comma 4 dash trimethylpentane, and 4 dash isopropylheptane. The 3 dash ethylheptane structure shows C H subscript 3 C H subscript 2 C H subscript 2 C H subscript 2 C H C H subscript 2 C H subscript 3. Under the C atom labeled 3, is a bond to C H subscript 2 C H subscript 3 which appears in red. The C atoms are labeled 7, 6, 5, 4, 3, 2, and 1 from left to right. The 2 comma 2 comma 4 dash trimethylpentane structure shows C H subscript 3 C bonded to C H subscript 2 C H C H subscript 3. The C atoms are labeled 1, 2, 3, 4, and 5 from left to right. The C atom labeled 2 has a C H subscript 3 bonded above it and below it. The C H subscript 3 groups both appear in red. The C atom labeled 4 has a bond above it to C H subscript 3. The C H subscript 3 group appears in red. The 4 dash isopropylheptane structure shows C H subscript 3 C H subscript 2 C H subscript 2 C H C H subscript 2 C H subscript 2 C H subscript 3. From the fourth C counting from left to right, there is a C H group bonded above. Bonded up and to the right and and up to the left of this C H group are C H subscript 3 groups.
 
 <!-- SEG:m68846:para:fs-idp73077696 -->
 Alkanes are relatively stable molecules, but heat or light will activate reactions that involve the breaking of C–H or C–C single bonds. Combustion is one such reaction:
@@ -439,8 +502,14 @@ Alkanes burn in the presence of oxygen, a highly exothermic oxidation-reduction 
 <!-- SEG:m68846:caption:CNX_Chem_20_01_FracDistil-caption -->
 In a column for the fractional distillation of crude oil, oil heated to about 425 °C in the furnace vaporizes when it enters the base of the tower. The vapors rise through bubble caps in a series of trays in the tower. As the vapors gradually cool, fractions of higher, then of lower, boiling points condense to liquids and are drawn off. (credit left: modification of work by Luigi Chiesa)
 
+<!-- SEG:m68846:alt:fs-idm28778688-alt -->
+This figure contains a photo of a refinery, showing large columnar structures. A diagram of a fractional distillation column is also shown. Near the bottom of the column, an arrow pointing into the column from the left shows a point of entry for heated crude oil. The column contains several layers at which different components are removed. At the very bottom, residue materials are removed through a pipe as indicated by an arrow out of the column. At each successive level, different materials are removed through pipes proceeding from the bottom to the top of the column. In order from bottom to top, these materials are fuel oil, followed by diesel oil, kerosene, naptha, gasoline, and refinery gas at the very top. To the right of the column diagram, a double sided arrow is shown that is blue at the top and gradually changes color to red moving downward. The blue top of the arrow is labeled, “Small molecules: low boiling point, very volatile, flows easily, ignites easily.” The red bottom of the arrow is labeled, “Large molecules: high boiling point, not very volatile, does not flow easily, does not ignite easily.”
+
 <!-- SEG:m68846:para:fs-idp66127008 -->
 In a [[term:substitution reaction|term-00008]], another typical reaction of alkanes, one or more of the alkane’s hydrogen atoms is replaced with a different atom or group of atoms. No carbon-carbon bonds are broken in these reactions, and the hybridization of the carbon atoms does not change. For example, the reaction between ethane and molecular chlorine depicted here is a substitution reaction:
+
+<!-- SEG:m68846:alt:fs-idp67937424-alt -->
+This diagram illustrates the reaction of ethane and C l subscript 2 to form chloroethane. In this reaction, the structural formula of ethane is shown with two C atoms bonded together and three H atoms bonded to each C atom. The H atom on the far right is red. Ethane is added to C l bonded to C l, followed by an arrow that points right. The arrow is labeled, “Heat or light.” To the right, the chloroethane molecule is shown with two C atoms bonded together. The left C atom has three H atoms bonded to it, but the right C atom has two H atoms bonded above and below it along with a C l atom. The C l atom appears in red with 3 pairs of electron dots at the right end of the molecule. This is followed by a plus sign, which in turn is followed in red by H bonded to C l. Three pairs of electron dots are present above, to the right, and below the C l.
 
 <!-- SEG:m68846:para:fs-idp5852528 -->
 The C–Cl portion of the chloroethane molecule is an example of a [[term:functional group|term-00009]], the part or moiety of a molecule that imparts a specific chemical reactivity. The types of functional groups present in an organic molecule are major determinants of its chemical properties and are used as a means of classifying organic compounds as detailed in the remaining sections of this chapter.
@@ -466,8 +535,14 @@ Carbon atoms are free to rotate around a single bond but not around a double bon
 <!-- SEG:m68846:caption:CNX_Chem_20_01_geoIsomers_img-caption -->
 These molecular models show the structural and geometric isomers of butene.
 
+<!-- SEG:m68846:alt:fs-idp52992128-alt -->
+The figure illustrates three ways to represent isomers of butene. In the first row of the figure, Lewis structural formulas show carbon and hydrogen element symbols and bonds between the atoms. The first structure in this row shows a C atom with a double bond to another C atom which is bonded down and to the right to C H subscript 2 which, in turn, is bonded to C H subscript 3. The first C atom, moving from left to right, has two H atoms bonded to it and the second C atom has one H atom bonded to it. The second structure in the row shows a C atom with a double bond to another C atom. The first C atom is bonded to an H atom up and to the left and C H subscript 3 down and to the left. The second C atom is bonded to an H atom up and to the right and C H subscript 3 down and to the right. Both C H subscript 3 structures appear in red. The third structure shows a C atom with a double bond to another C atom. The first C atom from the left is bonded up to a the left to C H subscript 3 which appears and red. It is also bonded down and to the left to an H atom. The second C atom is bonded up and to the right to an H atom and down and to the left to C H subscript 3 which appears in red. In the second row, ball-and-stick models for the structures are shown. In these representations, single bonds are represented with sticks, double bonds are represented with two parallel sticks, and elements are represented with balls. C atoms are black and H atoms are white in this image. In the third row, space-filling models are shown. In these models, atoms are enlarged and pushed together, without sticks to represent bonds. In the final row, names are provided. The molecule with the double bond between the first and second carbons is named 1 dash butene. The two molecules with the double bond between the second and third carbon atoms is called 2 dash butene. The first model, which has both C H subscript 3 groups beneath the double bond is called the cis isomer. The second which has the C H subscript 3 groups on opposite sides of the double bond is named the trans isomer.
+
 <!-- SEG:m68846:para:fs-idp51580832 -->
 Alkenes are much more reactive than alkanes because the [[MATH:2]] moiety is a reactive functional group. A π bond, being a weaker bond, is disrupted much more easily than a σ bond. Thus, alkenes undergo a characteristic reaction in which the π bond is broken and replaced by two σ bonds. This reaction is called an [[term:addition reaction|term-00011]]. The hybridization of the carbon atoms in the double bond in an alkene changes from [[i:sp]][[sup:2]] to [[i:sp]][[sup:3]] during an addition reaction. For example, halogens add to the double bond in an alkene instead of replacing hydrogen, as occurs in an alkane:
+
+<!-- SEG:m68846:alt:fs-idp71538720-alt -->
+This diagram illustrates the reaction of ethene and C l subscript 2 to form 1 comma 2 dash dichloroethane. In this reaction, the structural formula of ethane is shown. It has a double bond between the two C atoms with two H atoms bonded to each C atom plus C l bonded to C l. This is shown on to the left of an arrow. The two C atoms and the double bond between them are shown in red. To the right of the arrow, the 1 comma 2 dash dichloroethane molecule is shown. It has only single bonds and each C atom has a C l with three pairs of electron dots bonded beneath it. The C and C l atoms, single bond between them, and electron pairs are shown in red. Each C atom also has two H atoms bonded to it.
 
 <!-- SEG:m68846:example-title:fs-idp73227696-title -->
 Alkene Reactivity and Naming
@@ -493,6 +568,15 @@ Provide names for the reactant and product of the reaction shown:
 <!-- SEG:m68846:para:fs-idp53499344 -->
 reactant: cis-3-hexene product: 3,4-dichlorohexane
 
+<!-- SEG:m68846:alt:fs-idp31467664-alt -->
+The left side of a reaction and arrow are shown with an empty product side. On the left, C H subscript 3 is bonded down and to the right to C H which has a double bond to another C H. The second C H is bonded up and to the right to C H subscript 2 which is also bonded to C H subscript 3. A plus sign is shown with a C l atom bonded to a C l atom following it. This is also followed by a reaction arrow.
+
+<!-- SEG:m68846:alt:fs-idp19259184-alt -->
+C H subscript 3 is bonded down and to the right to C H which is bonded down and to the left to C l. C H is also bonded to another C H which is bonded down and to the right to C l and up and to the right to C H subscript 2. C H subscript 2 is also bonded to C H subscript 3.
+
+<!-- SEG:m68846:alt:fs-idp11889184-alt -->
+This shows a C atom bonded to three H atoms and another C atom. This second C atom is bonded to two H atoms and a third C atom. This third C atom is bonded to one H atom and also forms a double bond with a fourth C atom. This fourth C atom is bonded to one H atom and a fifth C atom. This fifth C atom is bonded to two H atoms and a sixth C atom. This sixth C atom is bonded to three H atoms. There is a plus sign followed by a C l atom bonded to another C l atom. There is a reaction arrow. no products are shown.
+
 <!-- SEG:m68846:note-title:fs-idp64218000-title -->
 Answer:
 
@@ -507,6 +591,9 @@ Ethene, C[[sub:2]]H[[sub:4]], is the simplest alkene. Each carbon atom in ethene
 
 <!-- SEG:m68846:caption:CNX_Chem_20_01_Propene1-caption -->
 Expanded structures, ball-and-stick structures, and space-filling models for the alkenes ethene, propene, and 1-butene are shown.
+
+<!-- SEG:m68846:alt:fs-idp28584192-alt -->
+Lewis structural formulas show carbon and hydrogen element symbols and bonds between the atoms. The first structure in this row shows two bonded C atoms with a double bond between them. Each C atom has two H atoms bonded to it as well. The second structure in the row shows three bonded C atoms with a double bond up and to the right between the first and second C atoms moving left to right across the chain, and a single bond down and to the right between the second and third C atom. The first C atom has two H atoms bonded to it, the second C atom has one H atom bonded to it, and the third C atom has three H atoms bonded to it. The third structure shows four bonded C atoms with one bonded up and to the right to a C atom, down and to the right to a C atom, and double bonded up and to the right to a C atom. The first C atom, moving from left to right, has three H atoms bonded to it. The second C atom has two H atoms bonded to it. The third C atom has one H atom bonded to it, and the fourth C atom has two H atoms bonded to it. In the second row, ball-and-stick models for the structures are shown. In these representations, single bonds are represented with sticks, double bonds are represented with two parallel sticks, and elements are represented with balls. Carbon atoms are black and hydrogen atoms are white in this image. In the third row, space-filling models are shown. In these models, atoms are enlarged and pushed together, without sticks to represent bonds. In the final row, names are provided. The molecule with the double bond between two C atoms is named ethene. The molecule with the double bond between the first and second C atoms in the chain of three is named propene. The molecule with the double bond between the carbon atoms in the chain of four is named 1 dash butene.
 
 <!-- SEG:m68846:para:fs-idp69169072 -->
 Ethylene (the common industrial name for ethene) is a basic raw material in the production of polyethylene and other important compounds. Over 135 million tons of ethylene were produced worldwide in 2010 for use in the polymer, petrochemical, and plastic industries. Ethylene is produced industrially in a process called cracking, in which the long hydrocarbon chains in a petroleum mixture are broken into smaller molecules.
@@ -529,11 +616,20 @@ Plastic recycling is the process of recovering waste, scrap, or used plastics, a
 <!-- SEG:m68846:caption:CNX_Chem_20_01_Monomer-caption -->
 The reaction for the polymerization of ethylene to polyethylene is shown.
 
+<!-- SEG:m68846:alt:fs-idp53238032-alt -->
+This diagram has three rows, showing ethylene reacting to form polyethylene. In the first row, Lewis structural formulas show three molecules of ethylene being added together, which are each composed of two doubly bonded C atoms, each with two bonded H atoms. Ellipses, or three dots, are present before and after the molecule structures, which in turn are followed by an arrow pointing right. On the right side of the arrow, the ellipses or dots again appear to the left of a dash that connects to a chain of 7 C atoms, each with H atoms connected above and below. A dash appears at the end of the chain, which in turn is followed by ellipses or dots. The reaction diagram is repeated in the second row using ball-and-stick models for the structures. In these representations, single bonds are represented with sticks, double bonds are represented with two parallel sticks, and elements are represented with balls. Carbon atoms are black and hydrogen atoms are white in this image. In the third row, space-filling models are shown. In these models, atoms are enlarged spheres which are pushed together, without sticks to represent bonds.
+
 <!-- SEG:m68846:caption:CNX_Chem_20_01_Recycle-caption -->
 Each type of recyclable plastic is imprinted with a code for easy identification.
 
+<!-- SEG:m68846:alt:fs-idp62611616-alt -->
+This table shows recycling symbols, names, and uses of various types of plastics. Symbols are shown with three arrows in a triangular shape surrounding a number. Number 1 is labeled P E T E. The related plastic, polyethylene terephthalate (P E T E), is used in soda bottles and oven-ready food trays. Number 2 is labeled H D P E. The related plastic is high-density polyethylene (H D P E), which is used in bottles for milk and dishwashing liquids. Number 3 is labeled V. The related plastic is polyvinyl chloride or (P V C). This plastic is used in food trays, plastic wrap, and bottles for mineral water and shampoo. Number 4 is labeled L D P E. This plastic is low density polyethylene (L D P E). It is used in shopping bags and garbage bags. Number 5 is labeled P P. The related plastic is polypropylene (P P). It is used in margarine tubs and microwaveable food trays. Number 6 is labeled P S. The related plastic is polystyrene (P S). It is used in yogurt tubs, foam meat trays, egg cartons, vending cups, plastic cutlery, and packaging for electronics and toys. Number 7 is labeled other for any other plastics. Items in this category include those plastic materials that do not fit any other category. Melamine used in plastic plates and cups is an example.
+
 <!-- SEG:m68846:para:fs-idp63319216 -->
 The name of an alkene is derived from the name of the alkane with the same number of carbon atoms. The presence of the double bond is signified by replacing the suffix [[i:-ane]] with the suffix [[i:-ene]]. The location of the double bond is identified by naming the smaller of the numbers of the carbon atoms participating in the double bond:
+
+<!-- SEG:m68846:alt:fs-idp9022464-alt -->
+Four structural formulas and names are shown. The first shows two red C atoms connected by a red double bond illustrated with two parallel line segments. H atoms are bonded above and below to the left of the left-most C atom. Two more H atoms are similarly bonded to the right of the C atom on the right. Beneath this structure the name ethene and alternate name ethylene are shown. The second shows three C atoms bonded together with a red double bond between the red first and second C atoms moving left to right across the three-carbon chain. H atoms are bonded above and below to the left of the C atom to the left. A single H is bonded above the middle C atom. Three more H atoms are bonded above, below, and to the right of the third C atom. Beneath this structure the name propene and alternate name propylene is shown. The third shows four C atoms bonded together, numbered one through four moving left to right with a red double bond between the red first and second carbon in the chain. H atoms are bonded above and below to the left of the C atom to the left. A single H is bonded above the second C atom. H atoms are bonded above and below the third C atom. Three more H atoms are bonded above, below, and to the right of the fourth C atom. Beneath this structure the name 1 dash butene is shown. The fourth shows four C atoms bonded together, numbered one through four moving left to right with a red double bond between the red second and third C atoms in the chain. H atoms are bonded above, below, and to the left of the left-most C atom. A single H atom is bonded above the second C atom. A single H atom is bonded above the third C atom. Three more H atoms are bonded above, below, and to the right of the fourth C atom. Beneath this structure the name 2 dash butene is shown.
 
 <!-- SEG:m68846:title:fs-idp20128928-title -->
 Alkynes
@@ -543,6 +639,9 @@ Hydrocarbon molecules with one or more triple bonds are called [[term:alkynes|te
 
 <!-- SEG:m68846:para:fs-idp40078048 -->
 The simplest member of the alkyne series is ethyne, C[[sub:2]]H[[sub:2]], commonly called acetylene. The Lewis structure for ethyne, a linear molecule, is:
+
+<!-- SEG:m68846:alt:fs-idp50929952-alt -->
+The structural formula and name for ethyne, also known as acetylene, are shown. In red, two C atoms are shown with a triple bond illustrated by three horizontal line segments between them. Shown in black at each end of the structure, a single H atom is bonded.
 
 <!-- SEG:m68846:para:fs-idp43136928 -->
 The IUPAC nomenclature for alkynes is similar to that for alkenes except that the suffix [[i:-yne]] is used to indicate a triple bond in the chain. For example, [[MATH:3]] is called 1-butyne.
@@ -568,6 +667,12 @@ Identify the hybridization and bond angles at the carbon atoms in the molecule s
 <!-- SEG:m68846:para:fs-idp81641696 -->
 carbon 1: [[i:sp]], 180°; carbon 2: [[i:sp]], 180°; carbon 3: [[i:sp]][[sup:2]], 120°; carbon 4: [[i:sp]][[sup:2]], 120°; carbon 5: [[i:sp]][[sup:3]], 109.5°
 
+<!-- SEG:m68846:alt:fs-idp49788512-alt -->
+A structural formula is shown with C H subscript 3 bonded to a C atom which is triple bonded to another C atom which is bonded to C H subscript 3. Each C atom is labeled 1, 2, 3, and 4 from left to right.
+
+<!-- SEG:m68846:alt:fs-idp81875424-alt -->
+A structural formula is shown with an H atom bonded to a C atom. The C atom has a triple bond with another C atom which is also bonded to C H. The C H has a double bond with another C H which is also bonded up and to the right to C H subscript 3. Each C atom is labeled 1, 2, 3, 4, or 5 from left to right.
+
 <!-- SEG:m68846:note-title:fs-idp11395248-title -->
 Answer:
 
@@ -576,6 +681,9 @@ carbon 1: [[i:sp]], 180°; carbon 2: [[i:sp]], 180°; carbon 3: [[i:sp]][[sup:2]
 
 <!-- SEG:m68846:para:fs-idp33513136 -->
 Chemically, the alkynes are similar to the alkenes. Since the [[MATH:4]] functional group has two π bonds, alkynes typically react even more readily, and react with twice as much reagent in addition reactions. The reaction of acetylene with bromine is a typical example:
+
+<!-- SEG:m68846:alt:fs-idp47048832-alt -->
+This diagram illustrates the reaction of ethyne and two molecules of B r subscript 2 to form 1 comma 1 comma 2 comma 2 dash tetrabromoethane. In this reaction, the structural formula of ethyne, an H atom bonded to a red C atom with a red triple bond to another red C atom bonded to a black H atom, plus B r bonded to B r plus B r bonded to B r is shown to the left of an arrow. On the right, the form 1 comma 1 comma 2 comma 2 dash tetrabromoethane molecule is shown. It has an H atom bonded to a C atom which is bonded to another C atom which is bonded to an H atom. Each C atom is bonded above and below to a B r atom. Each B r atom has three pairs of electron dots. The C and B r atoms, single bond between them, and electron pairs are shown in red.
 
 <!-- SEG:m68846:para:fs-idp51529936 -->
 Acetylene and the other alkynes also burn readily. An acetylene torch takes advantage of the high heat of combustion for acetylene.
@@ -586,14 +694,23 @@ Aromatic Hydrocarbons
 <!-- SEG:m68846:para:fs-idp68051312 -->
 Benzene, C[[sub:6]]H[[sub:6]], is the simplest member of a large family of hydrocarbons, called [[term:aromatic hydrocarbons|term-00013]]. These compounds contain ring structures and exhibit bonding that must be described using the resonance hybrid concept of valence bond theory or the delocalization concept of molecular orbital theory. (To review these concepts, refer to the earlier chapters on chemical bonding). The resonance structures for benzene, C[[sub:6]]H[[sub:6]], are:
 
+<!-- SEG:m68846:alt:fs-idp11273408-alt -->
+This structural formula shows a six carbon hydrocarbon ring. On the left side there are six C atoms. The C atom on top and to the left forms a single bond to the C atom on the top and to the right. The C atom has a double bond to another C atom which has a single bond to a C atom. That C atom has a double bond to another C atom which has a single bond to a C atom. That C atom forms a double bond with another C atom. Each C atom has a single bond to an H atom. There is a double sided arrow and the structure on the right is almost identical to the structure on the left. The structure on the right shows double bonds where the structure on the left showed single bonds. The structure on the right shows single bonds where the stucture on the left showed double bonds.
+
 <!-- SEG:m68846:para:fs-idp10659184 -->
 Valence bond theory describes the benzene molecule and other planar aromatic hydrocarbon molecules as hexagonal rings of [[i:sp]][[sup:2]]-hybridized carbon atoms with the unhybridized [[i:p]] orbital of each carbon atom perpendicular to the plane of the ring. Three valence electrons in the [[i:sp]][[sup:2]] hybrid orbitals of each carbon atom and the valence electron of each hydrogen atom form the framework of σ bonds in the benzene molecule. The fourth valence electron of each carbon atom is shared with an adjacent carbon atom in their unhybridized [[i:p]] orbitals to yield the π bonds. Benzene does not, however, exhibit the characteristics typical of an alkene. Each of the six bonds between its carbon atoms is equivalent and exhibits properties that are intermediate between those of a C–C single bond and a [[MATH:5]] double bond. To represent this unique bonding, structural formulas for benzene and its derivatives are typically drawn with single bonds between the carbon atoms and a circle within the ring as shown in [[xref:CNX_Chem_20_01_benzene]].
 
 <!-- SEG:m68846:caption:CNX_Chem_20_01_benzene-caption -->
 This condensed formula shows the unique bonding structure of benzene.
 
+<!-- SEG:m68846:alt:fs-idp40273312-alt -->
+A six carbon hydrocarbon ring structural formula is shown. Each C atom is bonded to only one H atom. A circle is at the center of the ring.
+
 <!-- SEG:m68846:para:fs-idp10607328 -->
 There are many derivatives of benzene. The hydrogen atoms can be replaced by many different substituents. Aromatic compounds more readily undergo substitution reactions than addition reactions; replacement of one of the hydrogen atoms with another substituent will leave the delocalized double bonds intact. The following are typical examples of substituted benzene derivatives:
+
+<!-- SEG:m68846:alt:fs-idp272608-alt -->
+Three structural formulas are shown. The first is labeled toluene. This molecule has a six carbon hydrocarbon ring in which five of the C atoms are each bonded to only one H atom. At the upper right of the ring, the C atom that does not have a bonded H atom has a red C H subscript 3 group attached. A circle is at the center of the ring. The second is labeled xylene. This molecule has a six carbon hydrocarbon ring in which four of the C atoms are each bonded to only one H atom. At the upper right and right of the ring, the two C atoms that do not have bonded H atoms have C H subscript 3 groups attached. These C H subscript 3 groups appear in red. A circle is at the center of the ring. The third is labeled styrene. This molecule has a six carbon hydrocarbon ring in which five of the carbon atoms are each bonded to only one H atom. At the upper right of the ring, the carbon that does not have a bonded H atom has a red C H double bond C H subscript 2 group attached. A circle is at the center of the ring.
 
 <!-- SEG:m68846:para:fs-idp73674736 -->
 Toluene and xylene are important solvents and raw materials in the chemical industry. Styrene is used to produce the polymer polystyrene.
@@ -616,8 +733,17 @@ Check Your Learning
 <!-- SEG:m68846:para:fs-idm26759488 -->
 Draw three isomers of a six-membered aromatic ring compound substituted with two bromines.
 
+<!-- SEG:m68846:alt:fs-idp34537552-alt -->
+Two structural formulas are shown. The first has a six carbon hydrocarbon ring in which four of the carbon atoms are each bonded to only one H atom. At the upper right of the ring, the carbon that does not have a bonded H atom has a C H subscript 3 group attached. The C to the lower right has a C l atom attached. A circle is at the center of the ring. The second molecule has a hexagon with a circle inside. From a vertex of the hexagon at the upper right a C H subscript 3 group is attached. From the vertex at the lower right, a C l atom is attached.
+
+<!-- SEG:m68846:alt:fs-idp41418224-alt -->
+Two pairs of structural formulas are shown. The first has a six carbon hydrocarbon ring in which four of the C atoms are each bonded to only one H atom. At the upper right of the ring, the C atom that does not have a bonded H atom has a C H subscript 3 group attached. The C atom to the right has a C l atom attached. A circle is at the center of the ring. The second molecule in the first pair has a hexagon with a circle inside. From a vertex of the hexagon at the upper right a C H subscript 3 group is attached. From the vertex at the right, a C l atom is attached. The second pair first shows a six carbon hydrocarbon ring in which four of the C atoms are each bonded to only one H atom. A C l atom is attached to the left-most C atom and a C H subscript 3 group is attached to the right-most C atom. A circle is at the center of the ring. The second molecule in the pair has a hexagon with a circle inside. A C H subscript 3 group is attached to a vertex on the right side of the hexagon and to a vertex on the left side, a C l atom is bonded.
+
 <!-- SEG:m68846:note-title:fs-idp72044400-title -->
 Answer:
+
+<!-- SEG:m68846:alt:fs-idp64316608-alt -->
+Three pairs of structural formulas are shown. The first has a six carbon hydrocarbon ring in which four of the C atoms are each bonded to only one H atom. At the upper right and right of the ring, the two C atoms that do not have bonded H atoms have one B r atom bonded each. A circle is at the center of the ring. Beneath this structure, a similar structure is shown which has a hexagon with a circle inside. From vertices of the hexagon at the upper right and right single B r atoms are attached. The second has a six carbon hydrocarbon ring in which four of the C atoms are each bonded to only one H atom. At the upper right and lower right of the ring, the two C atoms that do not have bonded H atoms have a single B r atom bonded each. A circle is at the center of the ring. Beneath this structure, a similar structure is shown which has a hexagon with a circle inside. From vertices of the hexagon at the upper right and lower right single B r atoms are attached. The third has a six carbon hydrocarbon ring in which four of the C atoms are each bonded to only one H atom. At the upper right and lower left of the ring, the two C atoms that do not have bonded H atoms have B r atoms bonded. A circle is at the center of the ring. Beneath this structure, a similar structure is shown which has a hexagon with a circle inside. From vertices of the hexagon at the upper right and lower left, single B r atoms are attached.
 
 <!-- SEG:m68846:title:fs-idm28708640-title -->
 Key Concepts and Summary
@@ -643,6 +769,15 @@ Write the chemical formula and Lewis structure of the following, each of which c
 <!-- SEG:m68846:solution:fs-idp68623920 -->
 There are several sets of answers; one is:[[BR]] (a) C[[sub:5]]H[[sub:12]][[BR]] [[MEDIA:1]][[BR]] (b) C[[sub:5]]H[[sub:10]][[BR]] [[MEDIA:2]][[BR]] (c) C[[sub:5]]H[[sub:8]][[BR]] [[MEDIA:3]]
 
+<!-- SEG:m68846:alt:fs-idp32194480-alt -->
+A chain of five C atoms with single bonds is shown. Each C atom has an H atom bonded above and below it. The C atoms on the end of the chain have a third H atom bonded to them each.
+
+<!-- SEG:m68846:alt:fs-idp46515712-alt -->
+A chain of five C atoms is shown. The first C atom (from left to right) forms a single bond with the second C atom. The second C atom forms a single bond with the third C atom. The third C atom forms a double bond with the fourth C atom. The fourth C atom forms a single bond to the fifth C atom. The first C atom (from left to right) as three H atoms bonded to it. The second C atom has two H atoms bonded to it. The third C atom has one H atom bonded to it. The fourth C atom has one H atom bonded to it. The fifth C atom as three H atoms bonded to it.
+
+<!-- SEG:m68846:alt:fs-idp10643296-alt -->
+A chain of five carbon atoms is shown. The first C atom (from left to right) forms a single bond with the second C atom. The second C atom forms a single bond with the third C atom. The third C atom forms a triple bond with the fourth C atom. The fourth C atom forms a single bond to the fifth C atom. The first C atom has three H atoms bonded to it. The second C atom has two H atoms bonded to it. The fifth C atom has three H atoms bonded to it.
+
 <!-- SEG:m68846:problem:fs-idp16628320 -->
 What is the difference between the hybridization of carbon atoms’ valence orbitals in saturated and unsaturated hydrocarbons?
 
@@ -664,8 +799,14 @@ Unbranched alkanes have free rotation about the C–C bonds, yielding all orient
 <!-- SEG:m68846:problem:fs-idp15291776 -->
 Explain why these two molecules are not isomers:[[BR]] [[MEDIA:4]]
 
+<!-- SEG:m68846:alt:fs-idp28942256-alt -->
+Two structural formulas are shown. In the first, a chain of six carbon atoms with a single double bond between carbons two and three counting right to left across the molecule is shown with twelve total H atoms bonded. H atoms are bonded at each end of the molecule as well as above. H atoms are also bonded below all C atoms except those involved in the double bond. In the second structure, a hydrocarbon chain of five C atoms connected by single bonds is shown. A single C with three attached H atoms is bonded beneath the second carbon counting right to left across the molecule.
+
 <!-- SEG:m68846:problem:fs-idp50199232 -->
 Explain why these two molecules are not isomers:[[BR]] [[MEDIA:5]]
+
+<!-- SEG:m68846:alt:fs-idp8953232-alt -->
+Two structural formulas are shown. In the first, a horizontal hydrocarbon chain consisting of six singly bonded C atoms is shown. Each C atom has an H atom bonded above and below it. The two C atoms on either end of the chain each have a third H atom bonded to them. In the second structure, a horizontal hydrocarbon chain composed of five C atoms connected by single bonds is shown with a sixth C atom singly bonded beneath the right-most C atom. The first C atom (from left to right) has three H atoms bonded to it. The second C atom has two H atoms bonded to it. The third C atom has two H atoms bonded to it. The fourth C atom has two H atoms bonded to it. The fifth C atom has two H atoms bonded to it. The C atom bonded below the fifth C atom has three H atoms bonded to it.
 
 <!-- SEG:m68846:solution:fs-idp36999856 -->
 They are the same compound because each is a saturated hydrocarbon containing an unbranched chain of six carbon atoms.
@@ -696,6 +837,24 @@ Write the Lewis structure and molecular formula for each of the following hydroc
 
 <!-- SEG:m68846:solution:fs-idp46339216 -->
 (a) C[[sub:6]]H[[sub:14]][[BR]] [[MEDIA:6]][[BR]] (b) C[[sub:6]]H[[sub:14]][[BR]] [[MEDIA:7]][[BR]] (c) C[[sub:6]]H[[sub:12]][[BR]] [[MEDIA:8]][[BR]] (d) C[[sub:6]]H[[sub:12]][[BR]] [[MEDIA:9]][[BR]] (e) C[[sub:6]]H[[sub:10]][[BR]] [[MEDIA:10]][[BR]] (f) C[[sub:6]]H[[sub:10]][[BR]] [[MEDIA:11]]
+
+<!-- SEG:m68846:alt:fs-idp34632176-alt -->
+This figure shows a horizontal hydrocarbon chain consisting of six singly bonded carbon atoms. Each C atom has an H atom bonded above and below it. The two C atoms on either end of the chain each of a third H atom bonded to it.
+
+<!-- SEG:m68846:alt:fs-idp49815392-alt -->
+This figure shows five C atoms bonded together with a sixth C atom bonded below the chain. The first C atom (from left to right) has three H atoms bonded to it and is also bonded to another C atom. The second C atom has two H atoms bonded above and below it and is also bonded to another C atom. The third C atom has an H atom bonded above it and a C atom bonded below it. The C atom bonded below the third C atom in the chain has three H atoms bonded to it. The third C atom is also bonded to another C atom. The fourth C atom in the chain has two H atoms bonded above and below it and is bonded to another C atom. The fifth C atom has three H atoms bonded to it.
+
+<!-- SEG:m68846:alt:fs-idp68094528-alt -->
+This figure shows a C atom with three H atoms bonded to it. This C atom is bonded to another C atom with two H atoms bonded above and below it. The second C atom is also bonded to another C atom down and to the right. This C atom is bonded to one H atom and has a double bond to a fourth C atom. The fourth C atom is also bonded to one H atom. The fourth C atom has a bond up and to the right to another C atom. This C atom has two H atoms bonded above and below it. This C atom also bonds to another C atom which is bonded to three H atoms.
+
+<!-- SEG:m68846:alt:fs-idm5221232-alt -->
+This figure shows a hydrocarbon chain with a length of five C atoms. The first C atom (from left to right) is bonded to two H atoms and also forms a double bond with the second C atom. The second C atom is bonded to one H atom above it and is also bonded to a third C atom. The third C atom is bonded to two H atoms and also bonded to a fourth C atom. The fourth C atom is bonded to one H atom above it and a C atom below it. The C atom bonded to the fourth C atom in the chain has three H atoms bonded to it. The fourth C atom is also bonded to a fifth C atom which is bonded to three H atoms.
+
+<!-- SEG:m68846:alt:fs-idp41386272-alt -->
+This figure shows a hydrocarbon chain with a length of six C atoms. The first C atom has three H atoms bonded to it, and it is also bonded to a second C atom. The second C atom has an H atom bonded above and below it. It is also bonded to a third C atom. The third C atom forms a triple bond to a fourth C atom. The fourth C atom forms a single bond with a fifth C atom which has two H atoms bonded above and below it. The sixth C atom has three H atoms bonded to it.
+
+<!-- SEG:m68846:alt:fs-idp64181072-alt -->
+This figure shows a hydrocarbon chain with a length of five C atoms. The first C atom (from left to right) has three H atoms bonded to it. It is also bonded to a second C atom. The second C atom forms a triple bond to a third C atom. The third C atom forms a single bond with a fourth C atom. The fourth C atom has an H atom bonded above it and a C atom bonded below it. The C atom bonded below the fourth C atom has three H atoms bonded to it. The fourth C atom is bonded to a fifth C atom. The fifth C atom has three H atoms bonded to it.
 
 <!-- SEG:m68846:problem:fs-idp50445856 -->
 Write the chemical formula, condensed formula, and Lewis structure for each of the following hydrocarbons:
@@ -730,14 +889,26 @@ Give the complete IUPAC name for each of the following compounds:
 <!-- SEG:m68846:problem:fs-idm4418272 -->
 (c)[[BR]][[MEDIA:12]]
 
+<!-- SEG:m68846:alt:fs-idp70528032-alt -->
+This structure shows a hydrocarbon chain composed of C H subscript 3 C H C H subscript 2 C H subscript 3 with a C H subscript 3 group attached beneath the second C atom counting left to right.
+
 <!-- SEG:m68846:problem:fs-idm139885280 -->
 (d) [[BR]][[MEDIA:13]]
+
+<!-- SEG:m68846:alt:fs-newsolutiond-alt -->
+This structure shows a hydrocarbon chain composed of C H subscript 3 C H C H subscript 2 C double bonded to C H .
 
 <!-- SEG:m68846:problem:fs-idp23116976 -->
 (e)[[BR]][[MEDIA:14]]
 
+<!-- SEG:m68846:alt:fs-idp51903872-alt -->
+This structure shows a horizontal chain composed of C H subscript 3 C F C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 3 with a C H subscript 2 C H triple bond C H group attached beneath the second C atom counting left to right.
+
 <!-- SEG:m68846:problem:fs-idm137375152 -->
 (f)[[BR]][[MEDIA:15]]
+
+<!-- SEG:m68846:alt:fs-idp62605952-alt -->
+This structure shows two double bounded C atoms with C l attached to the upper left, C H subscript 3 attached to the lower right, and H atoms attached to the upper right and lower left in the structure.
 
 <!-- SEG:m68846:problem:fs-idm72016624 -->
 (g) [[MATH:7]]
@@ -757,11 +928,17 @@ Give the complete IUPAC name for each of the following compounds:
 <!-- SEG:m68846:problem:fs-idp51736608 -->
 (c)[[BR]][[MEDIA:16]]
 
+<!-- SEG:m68846:alt:fs-idp12074768-alt -->
+This structure shows a hydrocarbon chain composed of C H subscript 3 C H C H subscript 3 with a C H subscript 2 C H subscript 3 group attached beneath the second C atom counting left to right.
+
 <!-- SEG:m68846:problem:fs-idp10831792 -->
 (d) [[MATH:8]]
 
 <!-- SEG:m68846:problem:fs-idp33438640 -->
 (e)[[BR]][[MEDIA:17]]
+
+<!-- SEG:m68846:alt:fs-idp67456960-alt -->
+This structure shows a hydrocarbon chain composed of C H subscript 3 C H subscript 2 C H subscript 2 C H B r C H subscript 2 C H subscript 3 with a C H subscript 2 C H double bond C H subscript 2 group attached beneath the second C atom counting left to right.
 
 <!-- SEG:m68846:problem:fs-idp37304912 -->
 (f) [[MATH:9]]
@@ -769,17 +946,26 @@ Give the complete IUPAC name for each of the following compounds:
 <!-- SEG:m68846:problem:fs-idp33299328 -->
 Butane is used as a fuel in disposable lighters. Write the Lewis structure for each isomer of butane.
 
+<!-- SEG:m68846:alt:fs-idp53900368-alt -->
+Two structures are shown. The first includes a chain of four singly bonded C atoms. Each C atom has two H atoms bonded above and below it. The two C atoms at either end of the chain each have a third H atom bonded to it. The molecule is named n dash butane. The second includes a chain of three singly bonded C atoms with a C atom bonded above the middle C atom in the chain. The first C atom (from left to right) has three H atoms bonded to it. The second C atom has one H atom bonded below it and a C atom bonded above it. The C atom bonded above the middle C atom has three H atoms bonded to it. The third C atom in the chain has three H atoms bonded to it. This molecule is named 2 dash methylpropane.
+
 <!-- SEG:m68846:problem:fs-idp7918672 -->
 Write Lewis structures and name the five structural isomers of hexane.
 
 <!-- SEG:m68846:problem:fs-idp46881904 -->
 Write Lewis structures for the [[i:cis–trans]] isomers of [[MATH:10]]
 
+<!-- SEG:m68846:alt:fs-idp51661648-alt -->
+This figure includes two structural formulas. The first structure shows two double bounded C atoms with C l bonded to the upper right, C H subscript 3 bonded to the upper left, and H atoms attached to the lower right and lower left in the structure. This structure is labeled cis dash. The second structure shows two double bounded carbon atoms with C l attached to the lower right, C H subscript 3 attached to the upper left, and H atoms attached to the upper right and lower left in the structure. This structure is labeled trans dash.
+
 <!-- SEG:m68846:problem:fs-idp67926592 -->
 Write structures for the three isomers of the aromatic hydrocarbon xylene, C[[sub:6]]H[[sub:4]](CH[[sub:3]])[[sub:2]].
 
 <!-- SEG:m68846:problem:fs-idp63151248 -->
 Isooctane is the common name of the isomer of C[[sub:8]]H[[sub:18]] used as the standard of 100 for the gasoline octane rating:[[BR]] [[MEDIA:18]]
+
+<!-- SEG:m68846:alt:fs-idp72048064-alt -->
+The hydrocarbon molecular structure shown includes C H subscript 3 C H C H subscript 2 C C H subscript 3. There is a C H subscript 3 group bonded to the second C atom in the chain (from left to right). There are two C H subscript 3 groups bonded above and below the fourth C atom in the chain.
 
 <!-- SEG:m68846:problem:fs-idp72971504 -->
 (a) What is the IUPAC name for the compound?
@@ -790,11 +976,17 @@ Isooctane is the common name of the isomer of C[[sub:8]]H[[sub:18]] used as the 
 <!-- SEG:m68846:solution:fs-idp49684160 -->
 (a) 2,2,4-trimethylpentane; (b) 2,2,3-trimethylpentane, 2,3,4-trimethylpentane, and 2,3,3-trimethylpentane:[[BR]] [[MEDIA:19]]
 
+<!-- SEG:m68846:alt:fs-idp34730560-alt -->
+Three hydrocarbon molecular structures are shown. The first has C H subscript 3 bonded up and to the right to a C atom. The C atom is bonded down and to the right to C H. C H is bonded up and to the right to C H subscript 2. C H subscript 2 is bonded down and to the right to C H subscript 3. The lone C atom is bonded to two C H subscript 3 groups. The C in the C H group is bonded to a C H subscript 3 group. The second structure shows C H subscript 3 bonded up and to the right to C H which is bonded down and to the right to C H. C H is bonded up and to the right to another C H which is bonded down and to the right to C H subscript 3. The initial C atom is bonded to a C H subscript 3 group. The second C atom is bonded to a C H subscript 3 group. The third C atom is bonded to a C H subscript 3 group. The third structure shows C H subscript 3 bonded up and to the right to C H which is bonded down and to the right to C. C is bonded up and to the right to C H subscript 2 which is bonded down and to the right to C H subscript 3. The second C atom is bonded to a C H subscript 3 group. The third C atom is bonded to two C H subscript 3 groups.
+
 <!-- SEG:m68846:problem:fs-idp15007040 -->
 Write Lewis structures and IUPAC names for the alkyne isomers of C[[sub:4]]H[[sub:6]].
 
 <!-- SEG:m68846:problem:fs-idp18569360 -->
 Write Lewis structures and IUPAC names for all isomers of C[[sub:4]]H[[sub:9]]Cl.
+
+<!-- SEG:m68846:alt:fs-idp78726288-alt -->
+Four structural formulas are provided. The first has a hydrocarbon chain with a length of four C atom. All bonds are single. Nine H atoms are attached and a single C l atom is attached at the far right end of the structure which is labeled 1 dash chlorobutane. The second has a hydrocarbon chain with a length four C atoms. All bonds are single. Nine H atoms are attached and a single C l atom is attached above the second carbon counting left to right. This structure is labeled 2 dash chlorobutane. The third has a hydrocarbon chain with a length of three C atoms. All bonds are single. A single C l atom is bonded beneath the middle C atom and a C H subscript 3 group is also bonded above the middle C atom. Six H atoms are attached, and the structure is labeled 2 dash chloro dash 2 dash methylpropane. The fourth structure has a hydrocarbon chain with a length of three C atoms. All bonds are single. A single C l atom is bonded beneath the first C atom (from left to right) and a C H subscript 3 group is bonded above the middle C atom. Six H atoms are attached, and the structure is labeled 1 dash chloro dash 2 dash methylpropane.
 
 <!-- SEG:m68846:problem:fs-idp63883280 -->
 Name and write the structures of all isomers of the propyl and butyl alkyl groups.
@@ -804,6 +996,9 @@ Write the structures for all the isomers of the –C[[sub:5]]H[[sub:11]] alkyl g
 
 <!-- SEG:m68846:solution:fs-idp51737984 -->
 In the following, the carbon backbone and the appropriate number of hydrogen atoms are shown in condensed form:[[BR]] [[MEDIA:20]]
+
+<!-- SEG:m68846:alt:fs-idp48071648-alt -->
+Eight structures are shown. The first includes C H subscript 3 bonded to C H subscript 2 bonded to C H subscript 2 bonded to C H subscript 2 bonded to C H subscript 2 with a bond. The second shows C H subscript 3 bonded to C H subscript 2 bonded to C H subscript 2 bonded to C H bonded to C H subscript 3. There is a bond above the fourth C atom (from left to right). The third shows C H subscript 3 bonded to C H subscript 2 bonded to C H bonded to C H subscript 2 bonded to C H subscript 3. There is a bond above the third C atom (from left to right). The five remaining examples involve branching. The fourth structure shows C H subscript 3 bonded to C bonded to C. The second C atom (from left to right) has a bond above it and a bond to an H atom below it. The third C is bonded to two C H subscript 3 groups as well as an H atom. The fifth shows a bond leading to a C H subscript 2 group which is bonded to a C atom. This C atom is bonded to three C H subscript 3 groups. The sixth shows a bond and then C H subscript 2 bonded to C H subscript 2 bonded to C H. The C H is bonded to two C H subscript 3 groups. The seventh shows C H subscript 3 bonded to C H subscript 2 bonded to C with a bond. The C is also bonded to two C H subscript 3 groups. The final structure shows C H subscript 3 bonded to C H subscript 2 bonded to C H. The C H is bonded to a C H subscript 2 group with a bond and a C H subscript 3 group.
 
 <!-- SEG:m68846:problem:fs-idp51004560 -->
 Write Lewis structures and describe the molecular geometry at each carbon atom in the following compounds:
@@ -826,6 +1021,9 @@ Benzene is one of the compounds used as an octane enhancer in unleaded gasoline.
 <!-- SEG:m68846:problem:fs-idm41563024 -->
 Draw Lewis structures for these compounds, with resonance structures as appropriate, and determine the hybridization of the carbon atoms in each.
 
+<!-- SEG:m68846:alt:fs-idp81625744-alt -->
+Two structural formulas are shown. The first shows two C atoms with a triple bond between them. At each end of the structure, a single H atom is bonded. The second structure involves a hydrocarbon ring of 6 C atoms with a circle at the center. There are alternating double bonds between C atoms. Each C atom is bonded to a single H atom.
+
 <!-- SEG:m68846:solution:fs-idp77702704 -->
 In acetylene, the bonding uses [[i:sp]] hybrids on carbon atoms and [[i:s]] orbitals on hydrogen atoms. In benzene, the carbon atoms are [[i:sp]][[sup:2]] hybridized.
 
@@ -843,6 +1041,12 @@ Write two complete, balanced equations for each of the following reactions, one 
 
 <!-- SEG:m68846:solution:fs-idp49083760 -->
 (a) [[MATH:12]][[BR]] [[MEDIA:21]][[BR]] (b) [[MATH:13]][[BR]] [[MEDIA:22]]
+
+<!-- SEG:m68846:alt:fs-idp19128832-alt -->
+A reaction is shown. On the left, a four carbon hydrocarbon chain is shown with a triple bond between C atoms 1 and 2 moving left to right across the molecule. The first C is bonded to one H atom. The second C atom bonds with the third C atom. The third C atom is bonded to two H atoms and a fourth C atom. The fourth C atom is bonded to three H atoms. A plus sign is shown followed by 2 I dash I, which is followed by a reaction arrow, then a four C atom hydrocarbon chain with I atoms bonded above and below C atoms 1 and 2 from left to right. The first C atom is bonded to one H. The third C atom is bonded to two H atoms. The fourth C atom is bonded to three H atoms.
+
+<!-- SEG:m68846:alt:fs-idp68295520-alt -->
+A reaction is shown. On the left, a five C atom hydrocarbon chain is shown with all single bonds between C atoms. Each C atom is bonded to an H atom above and below it. The two C atoms at either end of the chain each have a third H atom bonded to them. A plus sign is shown followed by 8 O double bond O. To the right of the reaction arrow appears 5 followed by O double bond C double bond O plus 6 O bonded to two H atoms.
 
 <!-- SEG:m68846:problem:fs-idp69398432 -->
 Write two complete, balanced equations for each of the following reactions, one using condensed formulas and one using Lewis structures.

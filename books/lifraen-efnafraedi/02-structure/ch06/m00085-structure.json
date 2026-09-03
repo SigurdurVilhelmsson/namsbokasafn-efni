@@ -1,0 +1,145 @@
+{
+  "moduleId": "m00085",
+  "title": {
+    "segmentId": "m00085:title:auto-1",
+    "text": "Describing a Reaction: Energy Diagrams and Transition States"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "5356e5a3-45c5-49a9-9011-f78222291932"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00085:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00085:alt:fig-00001-alt",
+          "text": "A reaction mechanism shows ethene attacking hydrogen bromide to form a carbocation, which is attacked by a bromide ion to form ethyl bromide."
+        },
+        "src": "../../media/OChem_06_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00085:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00085:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00085:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00085:alt:fig-00002-alt",
+          "text": "Energy diagram for the formation of a carbocation product shows large activation barrier to transition state, with net positive delta G naught."
+        },
+        "src": "../../media/OChem_06_09_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00085:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00085:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00085:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00085:alt:fig-00003-alt",
+          "text": "The figure shows the orbital representation of ethylene reacting with hydrogen bromide."
+        },
+        "src": "../../media/OChem_06_09_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00085:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00085:para:para-00007"
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00085:para:para-00008"
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00085:para:para-00009"
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00085:para:para-00010"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00085:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00085:alt:fig-00004-alt",
+          "text": "Four energy diagrams for different reactions with different values of delta G naught show different magnitudes of activation barrier."
+        },
+        "src": "../../media/OChem_06_09_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00085:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

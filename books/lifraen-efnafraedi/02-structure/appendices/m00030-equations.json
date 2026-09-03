@@ -1,0 +1,42 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>HO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>CC</m:mtext><m:mtext>&#x2261;</m:mtext><m:msub><m:mrow><m:mtext>CCO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{HO}}}_{2}\\text{CC}\\text{&#x2261;}{{\\text{CCO}}}_{2}\\text{H}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>HC</m:mtext><m:mtext>&#x2261;</m:mtext><m:msub><m:mrow><m:mtext>CCO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{HC}\\text{&#x2261;}{{\\text{CCO}}}_{2}\\text{H}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>HO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>CCH</m:mtext><m:mo>&#x2550;</m:mo><m:msub><m:mrow><m:mtext>CHCO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{HO}}}_{2}\\text{CCH}&#x2550;{{\\text{CHCO}}}_{2}\\text{H}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>C</m:mtext><m:mtext>&#x2261;</m:mtext><m:msub><m:mrow><m:mtext>CCO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{3}\\text{C}\\text{&#x2261;}{{\\text{CCO}}}_{2}\\text{H}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mtext>&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C}\\text{&#x2550;}{{\\text{CHCO}}}_{2}\\text{H}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mtext>&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>C(CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>)CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C}\\text{&#x2550;}{{\\text{C(CH}}}_{3}{{\\text{)CO}}}_{2}\\text{H}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:msub><m:mrow><m:mtext>(CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>)</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mtext>&#x2550;</m:mtext><m:mtext>NOH</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{(CH}}3\\text{)}}2\\text{C}\\text{&#x2550;}\\text{NOH}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mtext>&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>OH</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C}\\text{&#x2550;}{{\\text{CHCH}}}_{2}\\text{OH}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mtext>HC</m:mtext><m:mtext>&#x2261;</m:mtext><m:mtext>CH</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{HC}\\text{&#x2261;}\\text{CH}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mtext>&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C}\\text{&#x2550;}{{\\text{CH}}}_{2}}"
+  }
+}

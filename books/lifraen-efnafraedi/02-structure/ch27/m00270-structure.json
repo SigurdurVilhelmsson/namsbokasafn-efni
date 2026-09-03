@@ -1,0 +1,244 @@
+{
+  "moduleId": "m00270",
+  "title": {
+    "segmentId": "m00270:title:auto-1",
+    "text": "Steroids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "740f36ee-c5c3-4825-a0df-85e2f80713b1"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00270:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00270:alt:fig-00001-alt",
+          "text": "The structure and ball-and-stick model of steroid in which R equals various side chains. It comprises three cyclohexane labeled A, B, and C fused together to another cyclopentane labeled D."
+        },
+        "src": "../../media/OChem_27_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00270:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00270:alt:fig-00002-alt",
+          "text": "The structure and ball-and-stick model of cis-decalin and trans-decalin. Hydrogen atoms represented as pink spheres are on the same side for cis-decalin and the opposite side for trans-decalin."
+        },
+        "src": "../../media/OChem_27_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00270:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00270:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00270:alt:fig-00003-alt",
+          "text": "The structure and chair conformation of an A-B trans steroid and A-B cis steroid."
+        },
+        "src": "../../media/OChem_27_06_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00270:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00270:alt:fig-00004-alt",
+          "text": "The structure and ball-and-stick model of cholesterol. An arrow points towards the alcohol at an equatorial position in the structure."
+        },
+        "src": "../../media/OChem_27_06_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00270:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00270:title:sect-00002-title",
+        "text": "Steroid Hormones"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00270:para:para-00007"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00270:title:sect-00003-title",
+        "text": "Sex Hormones"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00270:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00270:alt:fig-00005-alt",
+              "text": "The three structures of hormones or androgens named testosterone, androsterone, and androstenedione."
+            },
+            "src": "../../media/OChem_27_06_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00270:para:para-00009"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00270:alt:fig-00006-alt",
+              "text": "The three structures of estrogen named estrone, estradiol, and progesterone (a progestin)."
+            },
+            "src": "../../media/OChem_27_06_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "section",
+          "id": "sect-00004",
+          "class": null,
+          "title": {
+            "segmentId": "m00270:title:sect-00004-title",
+            "text": "Adrenocortical Hormones"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00010",
+              "segmentId": "m00270:para:para-00010"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00007",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00270:alt:fig-00007-alt",
+                  "text": "Two structures which include aldosterone (a mineralocorticoid) and hydrocortisone(a glucocorticoid)."
+                },
+                "src": "../../media/OChem_27_06_009.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00005",
+          "class": null,
+          "title": {
+            "segmentId": "m00270:title:sect-00005-title",
+            "text": "Synthetic Steroids"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00011",
+              "segmentId": "m00270:para:para-00011"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00008",
+              "class": "unnumbered",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00270:alt:fig-00008-alt",
+                  "text": "The structure of synthetic steroids named ethynylestradiol (a synthetic estrogen), norethindrone (a synthetic progestin), and methandrostenolone (Dianabol)."
+                },
+                "src": "../../media/OChem_27_06_010.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 6
+}

@@ -1,0 +1,558 @@
+{
+  "moduleId": "m00080",
+  "title": {
+    "segmentId": "m00080:title:auto-1",
+    "text": "Polar Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "1b6136f1-c028-4a4a-9e5c-927f2139eeed"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00080:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00080:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00080:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00080:alt:fig-00001-alt",
+          "text": "Electrostatic potential maps and wedge-and-dash structures of chloromethane and methyllithium."
+        },
+        "src": "../../media/OChem_06_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00080:para:para-00004"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "An illustration shows a table with “compound type” and their “functional group structure” alongside. Alcohol shown as a blue carbon labeled “delta plus” having three open bonds and the carbon is bonded to a pink oxygen labeled as “delta minus” attached to a hydrogen. Alkene is shown as two carbons sharing a blue double bond wherein each carbon is having two open bonds labeled as “symmetrical nonpolar.” Alkyl halide is shown as a blue carbon labeled as “delta plus” bonded to a pink “X” labeled as “delta minus.” Amine is shown as a blue carbon labeled as “delta plus” having three open bonds and further bonded to a pink nitrogen labeled as “delta minus” attached to a hydrogen. Ether is shown as a centrally located pink oxygen labeled as pink “delta minus” attached to blue carbons on both the sides that are labeled as blue “delta plus.” Thiol is shown as a blue carbon (delta plus) having three open bonds at the left side and to a pink sulfur (delta minus) attached to hydrogen on the right side. Nitrile is shown as a blue carbon (delta plus) having a triple bond with the pink nitrogen (delta minus). Grignard reagent is shown as a pink carbon (delta minus) having three open bonds on the left side and a blue magnesium (delta plus) bonded to bromine. Alkyllithium is shown as a pink carbon (delta minus) having three open bonds at the left side and a blue lithium (delta plus) at the right side. Carbonyl is shown as a blue carbon (delta plus) having two open bonds at the left side and sharing a double bond with pink oxygen (delta minus) at the right side. Carboxylic acid is shown as a blue carbon having an open bond at the left side and an angled upward double bond with an oxygen (delta minus) and an angled downward bond to a pink oxygen (delta minus) bonded to a hydrogen. Carboxylic acid chloride shows a blue carbon (delta plus) having an open bond at its left and an angled upward double bond with a pink oxygen (delta minus) and an angled downward bond to pink chlorine (delta minus). Thioester shows a blue carbon (delta plus) having an open bond at its left and an angled upward double bond with a pink oxygen (delta minus) and an angled downward bond to a pink sulfur (delta minus) attached to carbon. Aldehyde shows a blue carbon (delta plus) having an open bond at its left and an angled upward double bond with a pink oxygen (delta minus) and an angled downward bond to a hydrogen. Ester shows a blue carbon (delta plus) having an open bond at its left and an angled upward double bond with a pink oxygen (delta minus) and an angled downward bond to a pink oxygen (delta minus) bonded to a carbon. Ketone shows a blue carbon (delta plus) having an open bond at its left and an angled upward double bond with a pink oxygen (delta minus) and an angled downward bond to a carbon.",
+      "title": {
+        "segmentId": "m00080:table-title:table-00001-title",
+        "text": "Polarity Patterns in Some Common Functional Groups"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00080:entry:auto-8",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00080:entry:auto-9",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003a_jpg-alt",
+                "text": "Alcohol has a carbon with three open single bonds and a partial positive charge bonded to a hydroxyl group with a partial negative charge on oxygen.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003a.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003b_jpg-alt",
+                "text": "Alkene has two carbons double bonded to each other. Each carbon has two open single bonds. Text reads, symmetrical, nonpolar.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003b.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003c_jpg-alt",
+                "text": "Alkyl halide has a carbon with three open single bonds and a partial positive charge bonded to a halogen with a partial negative charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003c.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003d_jpg-alt",
+                "text": "Amine has a carbon with three open single bonds and a partial positive charge bonded to an amine group with a partial negative charge on nitrogen.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003d.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003e_jpg-alt",
+                "text": "Ether has a central oxygen atom with a partial negative charge bonded to two carbon atoms each with a partial positive charge and three open single bonds.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003e.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003f_jpg-alt",
+                "text": "Thiol has a carbon with three open single bonds and a partial positive charge bonded to a thiol group with a partial negative charge on sulfur.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003f.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003g_jpg-alt",
+                "text": "Nitrile has a carbon with an open single bond and a partial positive charge triple bonded to a nitrogen with a partial negative charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003g.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003h_jpg-alt",
+                "text": "Grignard reagent has a carbon with three open single bonds and a partial negative charge bonded to M g B r with a partial positive charge on magnesium.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003h.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003i_jpg-alt",
+                "text": "Alkyllithium has a carbon with three open single bonds and a partial negative charge bonded to lithium with a partial positive charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003i.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003j_jpg-alt",
+                "text": "Carbonyl has a carbon with two open single bonds and a partial positive charge double bonded to an oxygen with a partial negative charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003j.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003k_jpg-alt",
+                "text": "Carboxylic acid has a carbon with an open single bond and a partial positive charge double bonded to oxygen and single bonded to hydroxyl each with a partial negative charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003k.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003l_jpg-alt",
+                "text": "Carboxylic acid chloride has a carbon with an open single bond and a partial positive charge double bonded to oxygen and single bonded to chlorine each with partial negative charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003l.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003m_jpg-alt",
+                "text": "Thioester has carbon with open single bond and partial positive charge double bonded to oxygen and single bonded to sulfur with partial negative charges. Sulfur is bonded to another carbon.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003m.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003n_jpg-alt",
+                "text": "Aldehyde has a carbon with an open single bond and a partial positive charge single bonded to hydrogen and double bonded to oxygen with a partial negative charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003n.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003o_jpg-alt",
+                "text": "Ester has carbon with open bond and partial positive charge double bonded to oxygen and single bonded to another oxygen with partial negative charges. Oxygen is bonded to another carbon.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003o.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left",
+                "namest": "c1",
+                "nameend": "c2"
+              },
+              "alt": {
+                "segmentId": "m00080:alt:OChem_06_04_003p_jpg-alt",
+                "text": "Ketone has carbon with an open single bond and a partial positive charge bonded to another carbon and double bonded to oxygen with a partial negative charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_06_04_003p.jpg"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00080:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00080:alt:fig-00002-alt",
+          "text": "A reaction shows methanol (weakly electron-poor carbon) reacting with H A to form protonated methanol (strongly electron-poor carbon). The electrostatic potential maps of both species are also depicted."
+        },
+        "src": "../../media/OChem_06_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00080:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00080:alt:fig-00003-alt",
+          "text": "First structure shows carbon (partial positive charge) bonded to sulfur (partial negative charge), which bonds to hydrogen. Second structure shows carbon (partial positive charge) bonded to iodine (partial negative charge)."
+        },
+        "src": "../../media/OChem_06_04_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00080:para:para-00007"
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00080:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00080:alt:fig-00004-alt",
+          "text": "Full arrow points from lone pair on nucleophile species B (negative, electron-rich) to electrophile species A (positive, electron-poor) to form species A B with single bond."
+        },
+        "src": "../../media/OChem_06_04_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00080:para:para-00009"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00080:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00080:alt:fig-00005-alt",
+          "text": "Electrostatic potential maps of nucleophiles ammonia, water, hydroxide ion, and chloride ion, and electrophiles hydronium ion, methyl bromide, and a carbonyl group."
+        },
+        "src": "../../media/OChem_06_04_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00080:para:para-00010"
+    },
+    {
+      "type": "para",
+      "id": "para-00011",
+      "segmentId": "m00080:para:para-00011"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00080:example-title:exam-00001-title",
+        "text": "Identifying Electrophiles and Nucleophiles"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00080:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00080:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00080:para:para-00014",
+          "title": {
+            "segmentId": "m00080:para-title:para-00014-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "title": {
+            "segmentId": "m00080:para-title:para-00015-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00080:para:para-00016"
+        },
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00080:para:para-00017"
+        },
+        {
+          "type": "para",
+          "id": "para-00018",
+          "segmentId": "m00080:para:para-00018"
+        },
+        {
+          "type": "para",
+          "id": "para-00019",
+          "segmentId": "m00080:para:para-00019"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00080:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

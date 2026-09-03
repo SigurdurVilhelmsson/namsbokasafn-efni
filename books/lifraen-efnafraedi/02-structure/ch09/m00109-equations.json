@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>HC&#x2261;CH</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{HC&#x2261;CH}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C&#x2550;}{{\\text{CH}}}_{2}}"
+  }
+}

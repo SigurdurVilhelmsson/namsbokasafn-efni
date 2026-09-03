@@ -314,6 +314,20 @@ export const BRACKET_MARKER_TYPES = [
   'docref',
   'term',
   'fn',
+  // `<span class="…">` — organic's red/cyan/magenta reaction colouring, emitted
+  // by cnxml-extract.js as `[[span:text|class]]` (§C118 ①). ⚠️ ITS ABSENCE HERE
+  // WAS THE FOURTH SITE OF THAT FIX, AND THE ONLY ONE ON THE LEG THAT COSTS
+  // MONEY: unwrapInventedMarkers read every real span marker as one the MT had
+  // invented around a glossary word and stripped it, writing the CLASS NAME into
+  // the Icelandic as prose — `([[span:X|magenta-text]]=F…)` became
+  // `(X|magenta-text=F…)`. Nothing was narrowed; the pipeline WIDENED underneath
+  // this list, which is the same failure and has no diff to notice. Membership
+  // here ALSO gives bracketMarkerDelta a column for span, without which the
+  // marker-conservation check was blind to the loss it was meant to catch.
+  // The corpus anchor in api-translate-span-marker.test.js is what now holds
+  // this closed: it checks the types the extractor ACTUALLY emits, rather than
+  // checking this list against another list beside it.
+  'span',
   // Opaque/escape markers from the os-embed exercise-field converter (item
   // 9/D3, tools/lib/exercise-html.js) — same bracket dialect, same delta
   // exposure (final review m6, widened).
@@ -663,10 +677,54 @@ function splitTopLevelId(inner) {
   return { text: inner.slice(0, idx), id: inner.slice(idx + 1) };
 }
 
+/**
+ * The marker types rewritten to paired `[[type]]…[[/type]]` wire form for the MT
+ * leg, in the order they are applied and re-attached.
+ *
+ * ⚠️ ORDER IS PINNED BY TESTS: mismatch records are pushed in this order, and
+ * two existing cases assert the whole mismatch array with an exact `toEqual`.
+ *
+ * `docref` joined in §C118 ⑯. A segment whose entire content was one
+ * `[[docref:text|doc#target]]` came back from the paid API VERBATIM — 36 of 36
+ * on the 2026-09-01 run, a saturated rate and therefore a category rather than a
+ * sample — putting reader-visible English key-term labels into an Icelandic
+ * chapter. `term` is the control that makes the cause causal rather than
+ * suspected: identical shape (prose `|` opaque-id), differing only in riding the
+ * wire paired, and it translates.
+ */
+const PAIRED_WIRE_TYPES = ['term', 'fn', 'docref'];
+
+/**
+ * Types rewritten ONLY when the marker carries a top-level `|`.
+ *
+ * This inverts term/fn's convention deliberately. For a term, a missing id still
+ * leaves translatable prose in the sole field. For a docref the sole field IS the
+ * document reference — `[[docref:m00164]]` — and sending it as prose would ask
+ * the model to translate a module id. 103 such bare docrefs are live in the two
+ * kept books, and their untranslated return is CORRECT behaviour.
+ */
+const PAIRED_REQUIRES_ID = new Set(['docref']);
+
+/**
+ * Per-type field name on a segment record — `term` -> `termIds`, and so on.
+ *
+ * ⚠️ DERIVED, not hand-maintained, and the reason is a measured near-miss: with a
+ * literal table, a type added to `PAIRED_WIRE_TYPES` and forgotten here does not
+ * fail. `record[undefined]` coerces to the string key `'undefined'` and `idsFor`
+ * reads the same key back, so the omission is invisible to every test — until a
+ * SECOND type is added the same way, at which point both write `'undefined'`, the
+ * later overwrites the earlier, and every segment carrying either marker degrades
+ * to English across the corpus. A silent, self-consistent omission that only
+ * detonates on the next change is exactly the shape to design out.
+ */
+const PAIRED_ID_FIELD = Object.fromEntries(PAIRED_WIRE_TYPES.map((t) => [t, `${t}Ids`]));
+
 /** Rewrite every `[[type:...]]` in `text` to paired `[[type]]...[[/type]]`,
- *  nesting-aware; returns { text, ids } with captured ids (null when absent). */
+ *  nesting-aware; returns { text, ids } with captured ids (null when absent).
+ *  A type in PAIRED_REQUIRES_ID skips markers that carry no top-level id. */
 function rewriteToPaired(text, type) {
   const openTok = `[[${type}:`;
+  const requireId = PAIRED_REQUIRES_ID.has(type);
   const ids = [];
   let out = '';
   let i = 0;
@@ -686,6 +744,18 @@ function rewriteToPaired(text, type) {
       }
       const inner = text.slice(i + openTok.length, j);
       const { text: termText, id } = splitTopLevelId(inner);
+      if (requireId && id === null) {
+        // Not a prose marker — emit the original bytes verbatim and capture no
+        // id, so this marker stays opaque on the wire and reattachIds never
+        // expects a paired span for it. splitTopLevelId is depth-aware, which is
+        // what keeps the 116 corpus docrefs whose link text contains a nested
+        // `[[sub:]]`/`[[i:]]` on the rewritten side of this branch; a `[^\]]*`
+        // predicate would misfile every one of them as bare while the marker
+        // COUNT matched perfectly.
+        out += text.slice(i, j + 2);
+        i = j + 2;
+        continue;
+      }
       ids.push(id);
       out += `[[${type}]]${termText}[[/${type}]]`;
       i = j + 2; // past closing ]]
@@ -701,21 +771,100 @@ const SEG_SPLIT_RE = /(?=<!-- SEG:)/;
 const SEG_ID_RE = /<!-- SEG:(\S+?) -->/;
 
 /**
- * Matches a wire-only (colon-less) paired term/fn token, e.g. `[[term]]`,
- * `[[/term]]`, `[[fn]]`, `[[/fn]]`. On-disk form is always id-anchored with a
- * colon (`[[term:text|id]]`), so this can never false-match that form, nor
- * nested inline markers like `[[i:]]`/`[[sub:]]` (Finding A.2 leak guard).
+ * If a segment's ENTIRE body is one marker of a PAIRED_WIRE_TYPE that carries an
+ * id, describe it. Otherwise null.
+ *
+ * ⚠️ STRUCTURAL, NOT KEYED ON A TYPE NAME. Today the corpus holds 532 such
+ * docrefs and 0 term/fn; the rule must not need editing when that changes.
+ * ⚠️ AND IT MUST NOT REACH AN OPAQUE PLACEHOLDER — there are 2,304 whole-segment
+ * `[[MEDIA:]]`, 679 `[[MATH:]]` and 2 `[[TABLE:]]`, and sending one of those bare
+ * would put a bare integer on the wire as prose. They are safe here only because
+ * they are not paired types, which is why the gate is membership in
+ * PAIRED_WIRE_TYPES rather than "is a whole-segment marker".
+ * ⚠️ `PAIRED_REQUIRES_ID` types with no id stay opaque, exactly as inline: a bare
+ * `[[docref:m00164]]` is a document reference, not prose.
+ *
+ * @param {string} part - one whole SEG segment, marker line included
+ * @returns {{type:string, id:string|null, payload:string, start:number, end:number}|null}
  */
-const WIRE_ONLY_PAIRED_TOKEN_RE = /\[\[\/?(?:term|fn)\]\]/;
+function wholeSegmentMarker(part) {
+  const headerEnd = part.indexOf('-->');
+  if (headerEnd === -1) return null;
+  const bodyStart = headerEnd + 3;
+  const body = part.slice(bodyStart);
+  const trimmed = body.trim();
+  if (!trimmed.startsWith('[[')) return null;
+  for (const type of PAIRED_WIRE_TYPES) {
+    const spans = collectColonMarkers(trimmed, type);
+    if (spans.length !== 1) continue;
+    if (spans[0].start !== 0 || spans[0].end !== trimmed.length) continue;
+    const { text: payload, id } = splitTopLevelId(spans[0].inner);
+    if (PAIRED_REQUIRES_ID.has(type) && id === null) return null;
+    const offset = bodyStart + body.indexOf(trimmed);
+    return { type, id, payload, start: offset, end: offset + trimmed.length };
+  }
+  return null;
+}
+
+/** Depth-aware `[[type:…]]` spans in `text`. Never a character class: real
+ *  payloads nest (`C[[i:[[sub:n]]]]H`), and `[^\]]*` truncates at the inner `]]`. */
+function collectColonMarkers(text, type) {
+  const open = `[[${type}:`;
+  const out = [];
+  let i = 0;
+  while (i < text.length) {
+    if (!text.startsWith(open, i)) {
+      i++;
+      continue;
+    }
+    let j = i + open.length;
+    let depth = 1;
+    while (j < text.length && depth > 0) {
+      if (text.startsWith('[[', j)) {
+        depth++;
+        j += 2;
+      } else if (text.startsWith(']]', j)) {
+        depth--;
+        if (depth === 0) break;
+        j += 2;
+      } else j++;
+    }
+    if (depth !== 0) break;
+    out.push({ start: i, end: j + 2, inner: text.slice(i + open.length, j) });
+    i = j + 2;
+  }
+  return out;
+}
 
 /**
- * Rewrite id-anchored inline term/footnote markers to PAIRED bracket form for the
- * API leg (B4-D11: the API treats [[term:text|id]] as an opaque token and does not
+ * Matches a wire-only (colon-less) paired token, e.g. `[[term]]`, `[[/term]]`,
+ * `[[fn]]`, `[[/fn]]`, `[[docref]]`, `[[/docref]]`. On-disk form is always
+ * id-anchored with a colon (`[[term:text|id]]`), so this can never false-match
+ * that form, nor nested inline markers like `[[i:]]`/`[[sub:]]` (Finding A.2
+ * leak guard).
+ *
+ * ⚠️ DERIVED FROM `PAIRED_WIRE_TYPES` ON PURPOSE, and that is NOT the
+ * one-token-anchor anti-pattern this repo warns about. The guard's job is to
+ * catch a token that only the paired rewrite can create, so its scope must be
+ * exactly the set of types that rewrite produces — a type absent from the list
+ * is never rewritten and therefore can never leak. Hand-maintaining a second
+ * list here is what WOULD go stale: §C118 ⑯ widened the rewrite to `docref`,
+ * and a hardcoded `term|fn` would have let a colon-less `[[docref]]` reach disk
+ * silently, where `cnxml-inject.js` recognises only the colon form.
+ */
+const WIRE_ONLY_PAIRED_TOKEN_RE = new RegExp(`\\[\\[/?(?:${PAIRED_WIRE_TYPES.join('|')})\\]\\]`);
+
+/**
+ * Rewrite id-anchored inline markers to PAIRED bracket form for the API leg
+ * (B4-D11: the API treats [[term:text|id]] as an opaque token and does not
  * translate inside it; text BETWEEN [[term]]…[[/term]] translates and both delimiters
  * survive). The id never rides the wire; it is re-attached after MT by reattachIds().
+ *
+ * Covers `PAIRED_WIRE_TYPES` — term, fn and, since §C118 ⑯, docref. The name is
+ * kept for its committed importers.
  * @param {string} chunkText - a segment-file chunk (one or more whole SEG segments)
  * @returns {{ wireText: string, segments: Array<{segId:string, originalText:string,
- *   termIds:(string|null)[], fnIds:(string|null)[]}> }}
+ *   termIds:(string|null)[], fnIds:(string|null)[], docrefIds:(string|null)[]}> }}
  */
 export function stripTermFnToPaired(chunkText) {
   const parts = chunkText.split(SEG_SPLIT_RE).filter((p) => p.length > 0);
@@ -727,10 +876,31 @@ export function stripTermFnToPaired(chunkText) {
       wireText += part;
       continue;
     } // leading non-SEG text (rare); pass through
-    const term = rewriteToPaired(part, 'term');
-    const fn = rewriteToPaired(term.text, 'fn');
-    segments.push({ segId: m[1], originalText: part, termIds: term.ids, fnIds: fn.ids });
-    wireText += fn.text;
+    const record = { segId: m[1], originalText: part, wholeSegment: null };
+
+    // §C118 ⑲: a segment whose ENTIRE body is one paired-type marker rides the
+    // wire as BARE TEXT. Placement on return is unambiguous by construction —
+    // the segment IS the marker — and it keeps marker syntax off the wire for
+    // 532 of the 704, which is what stops the model copying the pattern into
+    // neighbouring prose. Checked BEFORE the paired rewrite so those segments
+    // never acquire delimiters at all.
+    const whole = wholeSegmentMarker(part);
+    if (whole) {
+      record.wholeSegment = { type: whole.type, id: whole.id };
+      for (const type of PAIRED_WIRE_TYPES) record[PAIRED_ID_FIELD[type]] = [];
+      segments.push(record);
+      wireText += part.slice(0, whole.start) + whole.payload + part.slice(whole.end);
+      continue;
+    }
+
+    let rewritten = part;
+    for (const type of PAIRED_WIRE_TYPES) {
+      const pass = rewriteToPaired(rewritten, type);
+      rewritten = pass.text;
+      record[PAIRED_ID_FIELD[type]] = pass.ids;
+    }
+    segments.push(record);
+    wireText += rewritten;
   }
   return { wireText, segments };
 }
@@ -768,17 +938,29 @@ function collectPaired(segText, type) {
  * the outer span's length). This check exists to catch that case upstream so
  * it can degrade + record instead (B4-D11 fix).
  *
- * @param {Array<{start:number, end:number}>} termSpans
- * @param {Array<{start:number, end:number}>} fnSpans
+ * ⚠️ PAIRWISE over every type pair since §C118 ⑯ added a third (`docref`).
+ * Live corpus exposure is 0 — measured over 40,405 segments in the two kept
+ * books, with a detector proven to fire on synthetic `[[term:]]`-inside-
+ * `[[docref:]]` and the reverse — so this guards a future corpus, not a present
+ * defect. It has to exist anyway: the splice corrupts SILENTLY when spans
+ * overlap, and each type's own count still matches, so no count-guard can see it.
+ *
+ * @param {Map<string, Array<{start:number, end:number}>>} spansByType
  * @returns {number} count of cross-type span pairs that nest
  */
-function countCrossTypeNesting(termSpans, fnSpans) {
+function countCrossTypeNesting(spansByType) {
+  const types = [...spansByType.keys()];
   let count = 0;
-  for (const t of termSpans) {
-    for (const f of fnSpans) {
-      const nested =
-        (f.start >= t.start && f.start < t.end) || (t.start >= f.start && t.start < f.end);
-      if (nested) count++;
+  for (let a = 0; a < types.length; a++) {
+    for (let b = a + 1; b < types.length; b++) {
+      for (const outer of spansByType.get(types[a])) {
+        for (const inner of spansByType.get(types[b])) {
+          const nested =
+            (inner.start >= outer.start && inner.start < outer.end) ||
+            (outer.start >= inner.start && outer.start < inner.end);
+          if (nested) count++;
+        }
+      }
     }
   }
   return count;
@@ -808,57 +990,107 @@ export function reattachIds(wireOutput, segments) {
       continue;
     } // unknown/leading segment → pass through
 
-    const termSpans = collectPaired(part, 'term');
-    const fnSpans = collectPaired(part, 'fn');
+    // §C118 ⑲: the bare-wire counterpart. The whole returned body IS the payload,
+    // so there is nothing to locate and no span to count — but the payload is
+    // still model-authored, so it gets the same guard the inline path uses: an
+    // empty body, or one carrying a top-level `|` that `cnxml-inject` would split
+    // the document id on, degrades to the original instead of writing a bogus
+    // cross-reference.
+    if (rec.wholeSegment) {
+      const { type, id } = rec.wholeSegment;
+      const headerEnd = part.indexOf('-->');
+      const body = headerEnd === -1 ? '' : part.slice(headerEnd + 3);
+      const payload = body.trim();
+      const bad =
+        payload === '' || (PAIRED_REQUIRES_ID.has(type) && splitTopLevelId(payload).id !== null);
+      if (bad) {
+        mismatches.push({ segId: rec.segId, type: `${type}-payload`, expected: 0, got: 1 });
+        out += rec.originalText;
+        continue;
+      }
+      const marker = id === null ? `[[${type}:${payload}]]` : `[[${type}:${payload}|${id}]]`;
+      const at = body.indexOf(payload);
+      out +=
+        part.slice(0, headerEnd + 3) + body.slice(0, at) + marker + body.slice(at + payload.length);
+      continue;
+    }
 
-    const nestedCount = countCrossTypeNesting(termSpans, fnSpans);
+    const spansByType = new Map(PAIRED_WIRE_TYPES.map((t) => [t, collectPaired(part, t)]));
+    // `|| []` so a record built before a type joined PAIRED_WIRE_TYPES degrades
+    // (0 captured vs N surviving -> mismatch) rather than throwing.
+    const idsFor = (type) => rec[PAIRED_ID_FIELD[type]] || [];
+
+    const nestedCount = countCrossTypeNesting(spansByType);
     if (nestedCount > 0) {
       mismatches.push({ segId: rec.segId, type: 'nested', expected: 0, got: nestedCount });
       out += rec.originalText;
       continue;
     } // safe degrade — never splice overlapping spans
 
-    const termOk = termSpans.length === rec.termIds.length;
-    const fnOk = fnSpans.length === rec.fnIds.length;
+    // Push in PAIRED_WIRE_TYPES order — two committed tests assert the whole
+    // mismatch array with an exact toEqual, so this order is a contract.
+    let allOk = true;
+    for (const type of PAIRED_WIRE_TYPES) {
+      const spans = spansByType.get(type);
+      const ids = idsFor(type);
+      if (spans.length !== ids.length) {
+        mismatches.push({
+          segId: rec.segId,
+          type,
+          expected: ids.length,
+          got: spans.length,
+        });
+        allOk = false;
+        continue;
+      }
+      // 🔴 THE COUNT GUARD IS NOT ENOUGH FOR A TYPE WHOSE `|` IS STRUCTURAL.
+      // For PAIRED_REQUIRES_ID types the pipe separates prose from an id that
+      // `cnxml-inject.js` splits on, so a model-authored payload can corrupt the
+      // id itself while every existing guard stays green — 1 span == 1 captured
+      // id, so the count matches; the on-disk marker is still one `[[docref:`,
+      // so bracketMarkerDelta cancels to {}; and the marker IS consumed at
+      // inject, so assertNoMarkerResidue sees nothing. Measured end to end:
+      //   `[[docref]][[/docref]]`      -> `<link document="|m00032" …/>`
+      //   `[[docref]]al|kóhól[[/docref]]` -> `<link document="kóhól|m00032" …>al</link>`
+      // — a bogus cross-reference and a truncated label, silently. `term`/`fn`
+      // are immune because inject's id class excludes `|`, so docref borrowed the
+      // wire mechanism without inheriting that backstop. Before this change no
+      // docref payload was ever model-authored; now 704 are.
+      if (PAIRED_REQUIRES_ID.has(type)) {
+        const bad = spans.filter(
+          (s) => s.inner === '' || splitTopLevelId(s.inner).id !== null
+        ).length;
+        if (bad > 0) {
+          mismatches.push({
+            segId: rec.segId,
+            type: `${type}-payload`,
+            expected: 0,
+            got: bad,
+          });
+          allOk = false;
+        }
+      }
+    }
 
-    if (!termOk)
-      mismatches.push({
-        segId: rec.segId,
-        type: 'term',
-        expected: rec.termIds.length,
-        got: termSpans.length,
-      });
-    if (!fnOk)
-      mismatches.push({
-        segId: rec.segId,
-        type: 'fn',
-        expected: rec.fnIds.length,
-        got: fnSpans.length,
-      });
-
-    if (!termOk || !fnOk) {
+    if (!allOk) {
       out += rec.originalText;
       continue;
     } // safe degrade
 
-    // Build replacement list (term + fn), splice right-to-left to keep offsets valid.
+    // Build the replacement list across every paired type, splicing
+    // right-to-left to keep offsets valid.
     const repls = [];
-    termSpans.forEach((s, k) => {
-      const id = rec.termIds[k];
-      repls.push({
-        start: s.start,
-        end: s.end,
-        text: id === null ? `[[term:${s.inner}]]` : `[[term:${s.inner}|${id}]]`,
+    for (const type of PAIRED_WIRE_TYPES) {
+      const ids = idsFor(type);
+      spansByType.get(type).forEach((s, k) => {
+        const id = ids[k];
+        repls.push({
+          start: s.start,
+          end: s.end,
+          text: id === null ? `[[${type}:${s.inner}]]` : `[[${type}:${s.inner}|${id}]]`,
+        });
       });
-    });
-    fnSpans.forEach((s, k) => {
-      const id = rec.fnIds[k];
-      repls.push({
-        start: s.start,
-        end: s.end,
-        text: id === null ? `[[fn:${s.inner}]]` : `[[fn:${s.inner}|${id}]]`,
-      });
-    });
+    }
     repls.sort((a, b) => b.start - a.start);
     let segOut = part;
     for (const r of repls) segOut = segOut.slice(0, r.start) + r.text + segOut.slice(r.end);
@@ -992,10 +1224,58 @@ export function mtRunDecision({ exists, force, locked }) {
  * @param {Set<string>} mismatchChapters
  * @returns {string[]}
  */
-export function computeCompleteChapters(succeededChapters, failedChapters, mismatchChapters) {
-  return [...succeededChapters].filter(
-    (ch) => !failedChapters.has(ch) && !mismatchChapters.has(ch)
-  );
+export function computeCompleteChapters(succeededChapters, ...heldBackSets) {
+  return [...succeededChapters].filter((ch) => !heldBackSets.some((set) => set && set.has(ch)));
+}
+
+/**
+ * Decide whether one module's result must hold its chapter back, and say why.
+ *
+ * 🔴 §C118 ⑲ — A DETECTOR THAT FIRES INTO A LOG IS NOT A GATE. `bracketMarkerDelta`
+ * has always computed the per-module delta and `formatBracketDelta` has always
+ * printed it, but nothing acted on it: the 2026-09-02 re-buy of organic ch03
+ * m00038 came back with 29 INVENTED `[[b:]]` markers, printed `b +29`, exited 0,
+ * and would have marked the chapter complete under `--update-status`. Inject
+ * renders those as `<emphasis effect="bold">` — a paragraph with half its nouns
+ * bold, worse than the untranslated English the run was bought to fix.
+ *
+ * Both conditions route through here so they cannot drift apart, and so the
+ * decision is unit-testable while `main()` is not.
+ *
+ * ⚠️ PER-MODULE, DELIBERATELY. `results.bracketLoss` accumulates across modules
+ * and prints only non-zero entries, so a module that invents 5 italics and one
+ * that drops 5 cancel to a clean summary — two real defects, invisible. A gate
+ * built on that tally would be blind to exactly the pair it most needs to see.
+ *
+ * ✅ Base rate measured before this was allowed to block: over SAME-VINTAGE
+ * committed pairs (EN committed at or before the MT's `generatedAt`) it is 7 of
+ * 61 = 11.5%, and every one of the 7 is a real defect — an invention of 33
+ * italics, and three modules with dropped bolds. The raw all-pairs figure of
+ * 49.4% is vintage contamination, not a rate: 68.2% of pairs whose EN was
+ * re-extracted after the MT ran are "dirty" only because the two sides are
+ * different source text, and the tell is huge NEGATIVE deltas.
+ *
+ * @param {{mismatches?: Array, bracketDelta?: Record<string, number>}} result
+ * @returns {{heldBack: boolean, reasons: string[]}}
+ */
+export function classifyModuleOutcome(result = {}) {
+  const reasons = [];
+  const mismatches = result.mismatches;
+  if (mismatches && mismatches.length > 0) {
+    reasons.push(`${mismatches.length} id-reattach mismatch(es)`);
+  }
+  const delta = result.bracketDelta;
+  if (delta && Object.keys(delta).length > 0) {
+    reasons.push(`bracket-marker delta ${formatDeltaParts(delta)}`);
+  }
+  return { heldBack: reasons.length > 0, reasons };
+}
+
+/** `{b: 29, i: -1}` → `b +29, i -1`. Shared by the note and the hold-back reason. */
+function formatDeltaParts(delta) {
+  return Object.entries(delta)
+    .map(([t, n]) => `${t} ${n > 0 ? '+' : ''}${n}`)
+    .join(', ');
 }
 
 // ─── CLI ────────────────────────────────────────────────────────────
@@ -1385,8 +1665,10 @@ export async function translateModule(
   // silently lose the term/fn wrapper, class, and id downstream. Fail loud
   // instead of writing it.
   if (WIRE_ONLY_PAIRED_TOKEN_RE.test(output)) {
+    const leaked = output.match(WIRE_ONLY_PAIRED_TOKEN_RE)[0];
     throw new Error(
-      `${moduleId}: a wire-only paired marker ([[term]]/[[fn]]) survived to write in ` +
+      `${moduleId}: a wire-only paired marker (${leaked}; one of ` +
+        `${PAIRED_WIRE_TYPES.join('/')}) survived to write in ` +
         `${outputPath} — a SEG-id mangle that repairSegTags did not fix, or an ` +
         `otherwise-unresolved marker. Refusing to write corrupted output.`
     );
@@ -1677,6 +1959,7 @@ async function main() {
     markersNormalized: 0,
     mismatches: 0,
     bracketLoss: {}, // B3: per-type accumulated output−input delta across modules
+    deltaModules: 0, // §C118 ⑲: modules whose PER-MODULE delta was non-empty
     errors: [],
   };
 
@@ -1688,6 +1971,7 @@ async function main() {
   const succeededChapters = new Set();
   const failedChapters = new Set();
   const mismatchChapters = new Set();
+  const deltaChapters = new Set();
 
   for (const mod of workList) {
     if (mod.action === 'locked-skip') {
@@ -1729,6 +2013,21 @@ async function main() {
           );
         }
         mismatchChapters.add(mod.chapterDir);
+      }
+      // §C118 ⑲: a per-module bracket-marker delta now HOLDS THE CHAPTER BACK
+      // instead of only printing a note. Per-module, never off the accumulated
+      // `bracketLoss` tally, which cancels an invention in one module against a
+      // drop in another and reports both as clean.
+      if (bracketDelta && Object.keys(bracketDelta).length > 0) {
+        results.deltaModules++;
+        deltaChapters.add(mod.chapterDir);
+      }
+      const outcome = classifyModuleOutcome({ mismatches, bracketDelta });
+      if (outcome.heldBack) {
+        console.error(
+          `  ⛔ ${mod.chapterDir}/${mod.moduleId} HELD BACK — ${outcome.reasons.join('; ')}. ` +
+            `Output IS written (the API call is paid for either way); review it before publishing.`
+        );
       }
       succeededChapters.add(mod.chapterDir);
     } catch (err) {
@@ -1786,23 +2085,27 @@ async function main() {
     const completeChapters = computeCompleteChapters(
       succeededChapters,
       failedChapters,
-      mismatchChapters
+      mismatchChapters,
+      deltaChapters
     );
     if (completeChapters.length > 0) {
       console.log('\nUpdating pipeline status...');
       await updatePipelineStatus(args.book, completeChapters);
     }
     const heldBack = [...succeededChapters].filter(
-      (ch) => failedChapters.has(ch) || mismatchChapters.has(ch)
+      (ch) => failedChapters.has(ch) || mismatchChapters.has(ch) || deltaChapters.has(ch)
     );
     if (heldBack.length > 0) {
       console.log(
-        `  Held back (failures or marker mismatches): ${heldBack.join(', ')} — fix and re-run to mark complete`
+        `  Held back (failures, id-reattach mismatches or bracket-marker deltas): ${heldBack.join(', ')} — fix and re-run to mark complete`
       );
     }
   }
 
-  if (results.failed > 0 || results.mismatches > 0) process.exit(1);
+  // §C118 ⑲: a bracket delta is a verdict, not a note — it must reach the exit
+  // code too, or the chapter is held back from --update-status while the run
+  // still reports success to whoever is watching.
+  if (results.failed > 0 || results.mismatches > 0 || results.deltaModules > 0) process.exit(1);
 }
 
 // Only run when executed directly

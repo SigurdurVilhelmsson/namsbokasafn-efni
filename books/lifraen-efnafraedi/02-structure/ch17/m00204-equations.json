@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mrow><m:mtext>C</m:mtext></m:mrow><m:mrow><m:mtext>=O</m:mtext></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{H}}}_{2}{\\text{C}}{\\text{=O}}}"
+  }
+}

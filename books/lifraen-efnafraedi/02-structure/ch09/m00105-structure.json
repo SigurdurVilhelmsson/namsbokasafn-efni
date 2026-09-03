@@ -1,0 +1,145 @@
+{
+  "moduleId": "m00105",
+  "title": {
+    "segmentId": "m00105:title:auto-1",
+    "text": "Problems"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f15fb999-eb65-48b2-a782-742d33f80728"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00105:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00105:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00105:alt:fig-00001-alt",
+          "text": "The electrostatic potential map and the ball and stick model of acetylene. Black and gray spheres represent carbon and hydrogen, respectively. The C-C bond is labeled as pi bond."
+        },
+        "src": "../../media/OChem_09_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00105:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00105:alt:fig-00002-alt",
+          "text": "1-hexyne reacts with hydrogen bromide in acetic acid to give 2-bromo-1-hexene. This further reacts with hydrogen bromide and acetic acid to give 2,2-dibromohexane."
+        },
+        "src": "../../media/OChem_09_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00105:alt:fig-00003-alt",
+          "text": "3-hexyne reacts with hydrogen chloride in acetic acid to form (Z)-3-chloro-3-hexene. This further reacts with hydrogen chloride in acetic acid to form 3,3-dichlorohexane."
+        },
+        "src": "../../media/OChem_09_03_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00105:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00105:alt:fig-00004-alt",
+          "text": "1-butyne reacts with bromine in chloromethane to give (E)-1,2-dibromo-1-butene. This further reacts with bromine in chloromethane to form 1,1,2,2-tetrabromobutane."
+        },
+        "src": "../../media/OChem_09_03_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00105:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00105:alt:fig-00005-alt",
+          "text": "The figure shows two mechanisms. First reaction is an alkene reacting with hydrogen bromide to form alkyl bromide. The second is an alkyne reacting with hydrogen bromide to form vinylic bromide."
+        },
+        "src": "../../media/OChem_09_03_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00105:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "caption": {
+        "segmentId": "m00105:caption:fig-00006-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00105:alt:fig-00006-alt",
+          "text": "The first structure is an electrostatic potential map of vinylic carbocation. The second and third structures are secondary vinylic carbocation and secondary alkyl carbocation, respectively. Vacant p orbitals are labeled."
+        },
+        "src": "../../media/OChem_09_03_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00105:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

@@ -1,0 +1,46 @@
+{
+  "math-1": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:mtext>Δ</m:mtext><m:msup><m:mi>H</m:mi><m:mo>∘</m:mo></m:msup><m:msub><m:mrow/><m:mrow><m:mtext>hydrog</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{Δ}{H}^{∘}_{{\\text{hydrog}}}}"
+  },
+  "math-2": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:mtext>Δ</m:mtext><m:msup><m:mi>H</m:mi><m:mo>∘</m:mo></m:msup><m:msub><m:mrow/><m:mrow><m:mtext>hydrog</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{Δ}{H}^{∘}_{{\\text{hydrog}}}}"
+  },
+  "math-3": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:mtext>Δ</m:mtext><m:msup><m:mi>H</m:mi><m:mo>∘</m:mo></m:msup><m:msub><m:mrow/><m:mrow><m:mtext>hydrog</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{Δ}{H}^{∘}_{{\\text{hydrog}}}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:msup><m:mi>H</m:mi><m:mo>∘</m:mo></m:msup><m:msub><m:mrow/><m:mrow><m:mtext>hydrog</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{Δ}{H}^{∘}_{{\\text{hydrog}}}}"
+  },
+  "math-5": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:mtext>Δ</m:mtext><m:msup><m:mi>H</m:mi><m:mo>∘</m:mo></m:msup><m:msub><m:mrow/><m:mrow><m:mtext>hydrog</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mo>−</m:mo><m:mn>253</m:mn><m:mtext> kJ/mol</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{Δ}{H}^{∘}_{{\\text{hydrog}}}=-253\\text{kJ/mol}}"
+  },
+  "math-6": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:mtext>Δ</m:mtext><m:msup><m:mi>H</m:mi><m:mo>∘</m:mo></m:msup><m:msub><m:mrow/><m:mrow><m:mtext>hydrog</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mo>−</m:mo><m:mn>236</m:mn><m:mtext> kJ/mol</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{Δ}{H}^{∘}_{{\\text{hydrog}}}=-236\\text{kJ/mol}}"
+  },
+  "math-7": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:msub><m:mi>ψ</m:mi><m:mn>2</m:mn></m:msub><m:mo>*</m:mo></m:mrow></m:math>",
+    "latex": "{{ψ}_{2}*}"
+  },
+  "math-8": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:msub><m:mi>ψ</m:mi><m:mn>3</m:mn></m:msub><m:mo>*</m:mo></m:mrow></m:math>",
+    "latex": "{{ψ}_{3}*}"
+  },
+  "math-9": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:msub><m:mi>ψ</m:mi><m:mn>4</m:mn></m:msub><m:mo>*</m:mo></m:mrow></m:math>",
+    "latex": "{{ψ}_{4}*}"
+  },
+  "math-10": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:msub><m:mi>ψ</m:mi><m:mn>3</m:mn></m:msub><m:mo>*</m:mo></m:mrow></m:math>",
+    "latex": "{{ψ}_{3}*}"
+  },
+  "math-11": {
+    "mathml": "<m:math display=\"inline\"><m:mrow><m:msub><m:mi>ψ</m:mi><m:mn>4</m:mn></m:msub><m:mo>*</m:mo></m:mrow></m:math>",
+    "latex": "{{ψ}_{4}*}"
+  }
+}

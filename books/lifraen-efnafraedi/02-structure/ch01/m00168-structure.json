@@ -1,0 +1,71 @@
+{
+  "moduleId": "m00168",
+  "title": {
+    "segmentId": "m00168:title:auto-1",
+    "text": "Describing Chemical Bonds: Molecular Orbital Theory"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d3ad189e-3cda-4738-9785-b4ced41c84a1"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00168:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00168:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00168:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00168:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00168:alt:fig-00001-alt",
+          "text": "The formation of antibonding (with node) and bonding molecular orbitals from two 1s orbitals. The antibonding M O is unfilled and the bonding M O has a pair of electrons."
+        },
+        "src": "../../media/OChem_01_11_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00168:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00168:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00168:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00168:alt:fig-00002-alt",
+          "text": "The formation of antibonding (with node) and bonding molecular orbitals from two p orbitals. The antibonding M O is unfilled and the bonding M O has a pair of electrons."
+        },
+        "src": "../../media/OChem_01_11_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 11
+}

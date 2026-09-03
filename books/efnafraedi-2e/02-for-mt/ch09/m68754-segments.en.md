@@ -11,34 +11,43 @@ Define and explain effusion and diffusion
 State Graham’s law and use it to compute relevant gas properties
 
 <!-- SEG:m68754:para:fs-idp171160640 -->
-If you have ever been in a room when a piping hot pizza was delivered, you have been made aware of the fact that gaseous molecules can quickly spread throughout a room, as evidenced by the pleasant aroma that soon reaches your nose. Although gaseous molecules travel at tremendous speeds (hundreds of meters per second), they collide with other gaseous molecules and travel in many different directions before reaching the desired target. At room temperature, a gaseous molecule will experience billions of collisions per second. The {{term}}mean free path{{/term}} is the average distance a molecule travels between collisions. The mean free path increases with decreasing pressure; in general, the mean free path for a gaseous molecule will be hundreds of times the diameter of the molecule
+If you have ever been in a room when a piping hot pizza was delivered, you have been made aware of the fact that gaseous molecules can quickly spread throughout a room, as evidenced by the pleasant aroma that soon reaches your nose. Although gaseous molecules travel at tremendous speeds (hundreds of meters per second), they collide with other gaseous molecules and travel in many different directions before reaching the desired target. At room temperature, a gaseous molecule will experience billions of collisions per second. The [[term:mean free path|term-00001]] is the average distance a molecule travels between collisions. The mean free path increases with decreasing pressure; in general, the mean free path for a gaseous molecule will be hundreds of times the diameter of the molecule
 
 <!-- SEG:m68754:para:fs-idp34604992 -->
-In general, we know that when a sample of gas is introduced to one part of a closed container, its molecules very quickly disperse throughout the container; this process by which molecules disperse in space in response to differences in concentration is called {{term}}diffusion{{/term}} (shown in [[xref:CNX_Chem_09_04_Diffusion]]). The gaseous atoms or molecules are, of course, unaware of any concentration gradient, they simply move randomly—regions of higher concentration have more particles than regions of lower concentrations, and so a net movement of species from high to low concentration areas takes place. In a closed environment, diffusion will ultimately result in equal concentrations of gas throughout, as depicted in [[xref:CNX_Chem_09_04_Diffusion]]. The gaseous atoms and molecules continue to move, but since their concentrations are the same in both bulbs, the rates of transfer between the bulbs are equal (no [[i:net]] transfer of molecules occurs).
+In general, we know that when a sample of gas is introduced to one part of a closed container, its molecules very quickly disperse throughout the container; this process by which molecules disperse in space in response to differences in concentration is called [[term:diffusion|term-00002]] (shown in [[xref:CNX_Chem_09_04_Diffusion]]). The gaseous atoms or molecules are, of course, unaware of any concentration gradient, they simply move randomly—regions of higher concentration have more particles than regions of lower concentrations, and so a net movement of species from high to low concentration areas takes place. In a closed environment, diffusion will ultimately result in equal concentrations of gas throughout, as depicted in [[xref:CNX_Chem_09_04_Diffusion]]. The gaseous atoms and molecules continue to move, but since their concentrations are the same in both bulbs, the rates of transfer between the bulbs are equal (no [[i:net]] transfer of molecules occurs).
 
 <!-- SEG:m68754:caption:CNX_Chem_09_04_Diffusion-caption -->
 (a) Two gases, H[[sub:2]] and O[[sub:2]], are initially separated. (b) When the stopcock is opened, they mix together. The lighter gas, H[[sub:2]], passes through the opening faster than O[[sub:2]], so just after the stopcock is opened, more H[[sub:2]] molecules move to the O[[sub:2]] side than O[[sub:2]] molecules move to the H[[sub:2]] side. (c) After a short time, both the slower-moving O[[sub:2]] molecules and the faster-moving H[[sub:2]] molecules have distributed themselves evenly on both sides of the vessel.
 
+<!-- SEG:m68754:alt:fs-idp77290704-alt -->
+In this figure, three pairs of gas filled spheres or vessels are shown connected with a stopcock between them. In a, the figure is labeled, “Stopcock closed.” Above, the left sphere is labeled, “H subscript 2.” It contains approximately 30 small, white, evenly distributed circles. The sphere to its right is labeled, “O subscript 2.” It contains approximately 30 small red evenly distributed circles. In b, the figure is labeled, “Stopcock open.” The stopcock valve handle is now parallel to the tube connecting the two spheres. On the left, approximately 9 small, white circles and 4 small, red circles are present, with the red spheres appearing slightly closer to the stopcock. On the right side, approximately 25 small, red spheres and 21 small, white spheres are present, with the concentration of white spheres slightly greater near the stopcock. In c, the figure is labeled “Some time after Stopcock open.” In this situation, the red and white spheres appear evenly mixed and uniformly distributed throughout both spheres.
+
 <!-- SEG:m68754:para:fs-idp67962064 -->
-We are often interested in the {{term}}rate of diffusion{{/term}}, the amount of gas passing through some area per unit time:
+We are often interested in the [[term:rate of diffusion|term-00003]], the amount of gas passing through some area per unit time:
 
 <!-- SEG:m68754:para:fs-idp14262464 -->
 The diffusion rate depends on several factors: temperature; the mass of the atoms or molecules; the concentration gradient (the increase or decrease in concentration from one point to another); the amount of surface area available for diffusion; and the distance the gas particles must travel. Note also that the time required for diffusion to occur is inversely proportional to the rate of diffusion, as shown in the rate of diffusion equation.
 
 <!-- SEG:m68754:para:fs-idm29004912 -->
-A process involving movement of gaseous species similar to diffusion is {{term}}effusion{{/term}}, the escape of gas molecules through a tiny hole such as a pinhole in a balloon into a vacuum ([[xref:CNX_Chem_09_04_DiffEff]]). Although diffusion and effusion rates both depend on the molar mass of the gas involved, their rates are not equal; however, the ratios of their rates are the same.
+A process involving movement of gaseous species similar to diffusion is [[term:effusion|term-00004]], the escape of gas molecules through a tiny hole such as a pinhole in a balloon into a vacuum ([[xref:CNX_Chem_09_04_DiffEff]]). Although diffusion and effusion rates both depend on the molar mass of the gas involved, their rates are not equal; however, the ratios of their rates are the same.
 
 <!-- SEG:m68754:caption:CNX_Chem_09_04_DiffEff-caption -->
 Diffusion involves the unrestricted dispersal of molecules throughout space due to their random motion. When this process is restricted to passage of molecules through very small openings in a physical barrier, the process is called effusion.
 
+<!-- SEG:m68754:alt:fs-idp10109888-alt -->
+This figure contains two cylindrical containers which are oriented horizontally. The first is labeled “Diffusion.” In this container, approximately 25 purple and 25 green circles are shown, evenly distributed throughout the container. “Trails” behind some of the circles indicate motion. In the second container, which is labeled “Effusion,” a boundary layer is evident across the center of the cylindrical container, dividing the cylinder into two halves. A black arrow is drawn pointing through this boundary from left to right. To the left of the boundary, approximately 16 green circles and 20 purple circles are shown again with motion indicated by “trails” behind some of the circles. To the right of the boundary, only 4 purple and 16 green circles are shown.
+
 <!-- SEG:m68754:para:fs-idp161500496 -->
-If a mixture of gases is placed in a container with porous walls, the gases effuse through the small openings in the walls. The lighter gases pass through the small openings more rapidly (at a higher rate) than the heavier ones ([[xref:CNX_Chem_09_04_Effusion2]]). In 1832, Thomas Graham studied the rates of effusion of different gases and formulated {{term}}Graham’s law of effusion{{/term}}: [[i:The rate of effusion of a gas is inversely proportional to the square root of its molar mass]]:
+If a mixture of gases is placed in a container with porous walls, the gases effuse through the small openings in the walls. The lighter gases pass through the small openings more rapidly (at a higher rate) than the heavier ones ([[xref:CNX_Chem_09_04_Effusion2]]). In 1832, Thomas Graham studied the rates of effusion of different gases and formulated [[term:Graham’s law of effusion|term-00005]]: [[i:The rate of effusion of a gas is inversely proportional to the square root of its molar mass]]:
 
 <!-- SEG:m68754:para:fs-idp194507952 -->
 This means that if two gases A and B are at the same temperature and pressure, the ratio of their effusion rates is inversely proportional to the ratio of the square roots of their molar masses:
 
 <!-- SEG:m68754:caption:CNX_Chem_09_04_Effusion2-caption -->
 The left photograph shows two balloons inflated with different gases, helium (orange) and argon (blue).The right-side photograph shows the balloons approximately 12 hours after being filled, at which time the helium balloon has become noticeably more deflated than the argon balloon, due to the greater effusion rate of the lighter helium gas. (credit: modification of work by Paul Flowers)
+
+<!-- SEG:m68754:alt:fs-idp1374224-alt -->
+This figure shows two photos. The first photo shows an inflated orange balloon and an inflated blue balloon. Both balloons are about the same size. The second photo shows the same two balloons, but the orange one is now smaller than the blue one.
 
 <!-- SEG:m68754:example-title:fs-idp118691776-title -->
 Applying Graham’s Law to Rates of Effusion
@@ -166,6 +175,9 @@ Because gaseous diffusion plants require very large amounts of energy (to compre
 <!-- SEG:m68754:caption:CNX_Chem_09_04_GasDiff-caption -->
 In a diffuser, gaseous UF[[sub:6]] is pumped through a porous barrier, which partially separates [[sup:235]]UF[[sub:6]] from [[sup:238]]UF[[sub:6]] The UF[[sub:6]] must pass through many large diffuser units to achieve sufficient enrichment in [[sup:235]]U.
 
+<!-- SEG:m68754:alt:fs-idp101769760-alt -->
+This figure shows a large cylindrical container oriented horizontally. A narrow tube or pipe which is labeled “porous barrier” runs horizontally through the center of the tube and extends a short distance out from the left and right ends of the cylinder. At the far left, an arrow points right into the tube. This arrow is labele, “Uranium hexafluoride ( U F subscript 6 ).” A line segment connects the label, “High pressure feed tube,” to the tube where it enters the cylinder. In the short region of tube outside the cylinder, 5 small, purple circles and 4 small, green circles are present. Inside the cylinder, an arrow points right through the tube which contains many evenly distributed, purple circles and a handful of green circles which decrease in quantity moving left to right through the cylinder. Curved arrows extend from the inner area of the tube into the outer region of the cylinder. Three of these arrows point into the area above the tube and three point into the area below. Two line segments extend from the label, “Higher speed superscript 235 U F subscript 6 diffuses through barrier faster than superscript 238 U F subscript 6,” to two green circles in the space above the tube. In the short section of tubing just outside the cylinder, 8 small, purple circles are present. An arrow labeled, “Depleted superscript 238 U F subscript 6,” points right extending from the end of this tube. The larger space outside the tube contains approximately 100 evenly distributed small green circles and only 5 purple circles. Eight of the purple circles appear at the left end of the cylinder. A tube exits the lower right end of the cylinder. It has 5 green circles followed by a right pointing arrow and the label, “Enriched superscript 235 U F subscript 6.”
+
 <!-- SEG:m68754:title:fs-idp58337632-title -->
 Key Concepts and Summary
 
@@ -175,10 +187,10 @@ Gaseous atoms and molecules move freely and randomly through space. Diffusion is
 <!-- SEG:m68754:title:fs-idp166246928-title -->
 Key Equations
 
-<!-- SEG:m68754:entry:auto-60 -->
+<!-- SEG:m68754:entry:auto-64 -->
 [[MATH:5]]
 
-<!-- SEG:m68754:entry:auto-61 -->
+<!-- SEG:m68754:entry:auto-65 -->
 [[MATH:6]]
 
 <!-- SEG:m68754:title:fs-idm54662752-title -->

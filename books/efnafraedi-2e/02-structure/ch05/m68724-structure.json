@@ -31,7 +31,10 @@
       },
       "media": {
         "id": "fs-idp12477984",
-        "alt": "Three pictures are shown and labeled a, b, and c. Picture a is a cheeseburger. Picture b depicts a highway that is full of traffic. Picture c is a view into an industrial metal furnace. The view into the furnace shows a hot fire burning inside.",
+        "alt": {
+          "segmentId": "m68724:alt:fs-idp12477984-alt",
+          "text": "Three pictures are shown and labeled a, b, and c. Picture a is a cheeseburger. Picture b depicts a highway that is full of traffic. Picture c is a view into an industrial metal furnace. The view into the furnace shows a hot fire burning inside."
+        },
         "src": "../../media/CNX_Chem_05_01_Thermochem.jpg",
         "mimeType": "image/jpeg"
       }
@@ -74,7 +77,10 @@
           },
           "media": {
             "id": "fs-idp14208336",
-            "alt": "Two pictures are shown and labeled a and b. Picture a shows a large waterfall with water falling from a high elevation at the top of the falls to a lower elevation. The second picture is a view looking down into the Hoover Dam. Water is shown behind the high wall of the dam on one side and at the base of the dam on the other.",
+            "alt": {
+              "segmentId": "m68724:alt:fs-idp14208336-alt",
+              "text": "Two pictures are shown and labeled a and b. Picture a shows a large waterfall with water falling from a high elevation at the top of the falls to a lower elevation. The second picture is a view looking down into the Hoover Dam. Water is shown behind the high wall of the dam on one side and at the base of the dam on the other."
+            },
             "src": "../../media/CNX_Chem_05_01_Waterfall.jpg",
             "mimeType": "image/jpeg"
           }
@@ -119,7 +125,10 @@
           },
           "media": {
             "id": "fs-idm1349856",
-            "alt": "Two molecular drawings are shown and labeled a and b. Drawing a is a box containing fourteen red spheres that are surrounded by lines indicating that the particles are moving rapidly. This drawing has a label that reads “Hot liquid.” Drawing b depicts another box of equal size that also contains fourteen spheres, but these are blue. They are all surrounded by smaller lines that depict some particle motion, but not as much as in drawing a. This drawing has a label that reads “Cold liquid.”",
+            "alt": {
+              "segmentId": "m68724:alt:fs-idm1349856-alt",
+              "text": "Two molecular drawings are shown and labeled a and b. Drawing a is a box containing fourteen red spheres that are surrounded by lines indicating that the particles are moving rapidly. This drawing has a label that reads “Hot liquid.” Drawing b depicts another box of equal size that also contains fourteen spheres, but these are blue. They are all surrounded by smaller lines that depict some particle motion, but not as much as in drawing a. This drawing has a label that reads “Cold liquid.”"
+            },
             "src": "../../media/CNX_Chem_05_01_HotCold.jpg",
             "mimeType": "image/jpeg"
           }
@@ -150,7 +159,10 @@
           },
           "media": {
             "id": "fs-idp22234128",
-            "alt": "A picture labeled a is shown as well as a pair of drawings labeled b. Picture a shows the lower portion of an alcohol thermometer. The thermometer has a printed scale to the left of the tube in the center that reads from negative forty degrees at the bottom to forty degrees at the top. It also has a scale printed to the right of the tube that reads from negative thirty degrees at the bottom to thirty five degrees at the top. On both scales, the volume of the alcohol in the tube reads between nine and ten degrees. The two images labeled b both depict a metal strip coiled into a spiral and composed of brass and steel. The left coil, which is loosely coiled, is labeled along its upper edge with the 30 degrees C and 10 degrees C. The end of the coil is near the 30 degrees C label. The right hand coil is much more tightly wound and the end is near the 10 degree C label.",
+            "alt": {
+              "segmentId": "m68724:alt:fs-idp22234128-alt",
+              "text": "A picture labeled a is shown as well as a pair of drawings labeled b. Picture a shows the lower portion of an alcohol thermometer. The thermometer has a printed scale to the left of the tube in the center that reads from negative forty degrees at the bottom to forty degrees at the top. It also has a scale printed to the right of the tube that reads from negative thirty degrees at the bottom to thirty five degrees at the top. On both scales, the volume of the alcohol in the tube reads between nine and ten degrees. The two images labeled b both depict a metal strip coiled into a spiral and composed of brass and steel. The left coil, which is loosely coiled, is labeled along its upper edge with the 30 degrees C and 10 degrees C. The end of the coil is near the 30 degrees C label. The right hand coil is much more tightly wound and the end is near the 10 degree C label."
+            },
             "src": "../../media/CNX_Chem_05_01_Thermom.jpg",
             "mimeType": "image/jpeg"
           }
@@ -181,7 +193,10 @@
           },
           "media": {
             "id": "fs-idm7390640",
-            "alt": "Three drawings are shown and labeled a, b, and c, respectively. The first drawing labeled a depicts two boxes, with a space in between and the pair is captioned “Different temperatures.” The left hand box is labeled H and holds fourteen well-spaced red spheres with lines drawn around them to indicate rapid motion. The right hand box is labeled L and depicts fourteen blue spheres that are closer together than the red spheres and have smaller lines around them showing less particle motion. The second drawing labeled b depicts two boxes that are touching one another. The left box is labeled H and contains fourteen maroon spheres that are spaced evenly apart. There are tiny lines around each sphere depicting particle movement. The right box is labeled L and holds fourteen purple spheres that are slightly closer together than the maroon spheres. There are also tiny lines around each sphere depicting particle movement. A black arrow points from the left box to the right box and the pair of diagrams is captioned “Contact.” The third drawing labeled c, is labeled “Thermal equilibrium.” There are two boxes shown in contact with one another. Both boxes contain fourteen purple spheres with small lines around them depicting moderate movement. The left box is labeled H and the right box is labeled L.",
+            "alt": {
+              "segmentId": "m68724:alt:fs-idm7390640-alt",
+              "text": "Three drawings are shown and labeled a, b, and c, respectively. The first drawing labeled a depicts two boxes, with a space in between and the pair is captioned “Different temperatures.” The left hand box is labeled H and holds fourteen well-spaced red spheres with lines drawn around them to indicate rapid motion. The right hand box is labeled L and depicts fourteen blue spheres that are closer together than the red spheres and have smaller lines around them showing less particle motion. The second drawing labeled b depicts two boxes that are touching one another. The left box is labeled H and contains fourteen maroon spheres that are spaced evenly apart. There are tiny lines around each sphere depicting particle movement. The right box is labeled L and holds fourteen purple spheres that are slightly closer together than the maroon spheres. There are also tiny lines around each sphere depicting particle movement. A black arrow points from the left box to the right box and the pair of diagrams is captioned “Contact.” The third drawing labeled c, is labeled “Thermal equilibrium.” There are two boxes shown in contact with one another. Both boxes contain fourteen purple spheres with small lines around them depicting moderate movement. The left box is labeled H and the right box is labeled L."
+            },
             "src": "../../media/CNX_Chem_05_01_HeatTrans1.jpg",
             "mimeType": "image/jpeg"
           }
@@ -212,7 +227,10 @@
           },
           "media": {
             "id": "fs-idp21196832",
-            "alt": "Two pictures are shown and labeled a and b. Picture a shows a metal railroad tie being cut with the flame of an acetylene torch. Picture b shows a chemical cold pack containing ammonium nitrate.",
+            "alt": {
+              "segmentId": "m68724:alt:fs-idp21196832-alt",
+              "text": "Two pictures are shown and labeled a and b. Picture a shows a metal railroad tie being cut with the flame of an acetylene torch. Picture b shows a chemical cold pack containing ammonium nitrate."
+            },
             "src": "../../media/CNX_Chem_05_01_OxyacTorch.jpg",
             "mimeType": "image/jpeg"
           }
@@ -301,7 +319,10 @@
           },
           "media": {
             "id": "fs-idm67222368",
-            "alt": "The picture shows two black metal frying pans sitting on a flat surface. The left pan is about half the size of the right pan.",
+            "alt": {
+              "segmentId": "m68724:alt:fs-idm67222368-alt",
+              "text": "The picture shows two black metal frying pans sitting on a flat surface. The left pan is about half the size of the right pan."
+            },
             "src": "../../media/CNX_Chem_05_01_HeatCapacity.jpg",
             "mimeType": "image/jpeg"
           }
@@ -316,11 +337,12 @@
           "id": "fs-idm68801008",
           "class": "top-titled",
           "summary": "A table with three columns and seventeen rows is shown. The top row is the header row and contains the headers “Substance,” “State and Symbol,” and “Specific Heat (J / g ° C)”. Under the first heading are the terms “helium,” “water,” “ethanol,” “ice,” “water vapor,” “nitrogen,” “air,” “oxygen,” “aluminum,” “carbon dioxide,” “argon,” “iron,” “copper,” “lead,” “gold” and “silicon.” The second column contains the symbols and signs: “H e (g),” “H subscript 2 O (l),” “C subscript 2 H subscript 6 O (l),” “H subscript 2 O (s),” “H subscript 2 O (g),” “N subscript 2 (g),” a blank entry for air, “O subscript 2 (g),” “A l (s),” “C O subscript 2 (g),” “A r (g),” “F e (s),” “C u (s),” “P b (s),” “A u (s),” and “S I (s).” The last column contains the values “5.193,” “4.184,” “2.376,” “2.093 (at –10 °C), ” “1.864,” “1.040,” “1.007,” “0.918.” “0.897,” “0.853,” “0.522,” “0.449,” “0.385,” “0.130,” “0.129,” and “0.712.”",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68724:entry:auto-41",
+                  "segmentId": "m68724:entry:auto-48",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c3",
@@ -332,56 +354,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68724:entry:auto-42",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-43",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-44",
-                  "attributes": {
-                    "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68724:entry:auto-45",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-46",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-47",
-                  "attributes": {
-                    "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68724:entry:auto-48",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
                   "segmentId": "m68724:entry:auto-49",
                   "attributes": {
                     "align": "center"
@@ -392,17 +364,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-51",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-52",
                   "attributes": {
@@ -414,17 +386,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-54",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-55",
                   "attributes": {
@@ -436,17 +408,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-57",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-58",
                   "attributes": {
@@ -458,17 +430,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-60",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-61",
                   "attributes": {
@@ -480,33 +452,23 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-63",
                   "attributes": {
                     "align": "center"
                   }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-64",
-                  "attributes": {
-                    "align": "center"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68724:entry:auto-64",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
                 {
                   "segmentId": "m68724:entry:auto-65",
                   "attributes": {
@@ -518,17 +480,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-67",
-                  "attributes": {
-                    "align": "center"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68724:entry:auto-67",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
                 {
                   "segmentId": "m68724:entry:auto-68",
                   "attributes": {
@@ -540,9 +502,25 @@
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-70",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-71",
                   "attributes": {
                     "align": "center"
                   }
@@ -551,12 +529,6 @@
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68724:entry:auto-71",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
                 {
                   "segmentId": "m68724:entry:auto-72",
                   "attributes": {
@@ -568,17 +540,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-74",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-75",
                   "attributes": {
@@ -590,17 +562,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-77",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-78",
                   "attributes": {
@@ -612,17 +584,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-80",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-81",
                   "attributes": {
@@ -634,17 +606,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-83",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-84",
                   "attributes": {
@@ -656,17 +628,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-86",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-87",
                   "attributes": {
@@ -678,17 +650,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-89",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-90",
                   "attributes": {
@@ -697,6 +669,56 @@
                 },
                 {
                   "segmentId": "m68724:entry:auto-91",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-92",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68724:entry:auto-93",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-94",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-95",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68724:entry:auto-96",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-97",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-98",
                   "attributes": {
                     "align": "center"
                   }
@@ -936,7 +958,10 @@
           },
           "media": {
             "id": "fs-idm14724048",
-            "alt": "This figure has two parts labeled a and b. Part a shows rows and rows of trough mirrors. Part b shows how a solar thermal plant works. Heat transfer fluid enters a tank via pipes. The tank contains water which is heated. As the heat is exchanged from the pipes to the water, the water becomes steam. The steam travels to a steam turbine. The steam turbine begins to turn which powers a generator. Exhaust steam exits the steam turbine and enters a cooling tower.",
+            "alt": {
+              "segmentId": "m68724:alt:fs-idm14724048-alt",
+              "text": "This figure has two parts labeled a and b. Part a shows rows and rows of trough mirrors. Part b shows how a solar thermal plant works. Heat transfer fluid enters a tank via pipes. The tank contains water which is heated. As the heat is exchanged from the pipes to the water, the water becomes steam. The steam travels to a steam turbine. The steam turbine begins to turn which powers a generator. Exhaust steam exits the steam turbine and enters a cooling tower."
+            },
             "src": "../../media/CNX_Chem_05_01_SolTherm1.jpg",
             "mimeType": "image/jpeg"
           }
@@ -949,7 +974,10 @@
           },
           "media": {
             "id": "fs-idp14304832",
-            "alt": "Two pictures are shown and labeled a and b. Picture a shows a thermal plant with three tall metal towers. Picture b is an arial picture of the mirrors used at the plant. They are arranged in rows.",
+            "alt": {
+              "segmentId": "m68724:alt:fs-idp14304832-alt",
+              "text": "Two pictures are shown and labeled a and b. Picture a shows a thermal plant with three tall metal towers. Picture b is an arial picture of the mirrors used at the plant. They are arranged in rows."
+            },
             "src": "../../media/CNX_Chem_05_01_SolTherm2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -996,11 +1024,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68724:entry:auto-133",
+                  "segmentId": "m68724:entry:auto-142",
                   "attributes": {}
                 }
               ]

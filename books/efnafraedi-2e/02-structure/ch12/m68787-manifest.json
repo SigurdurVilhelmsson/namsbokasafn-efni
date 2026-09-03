@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68787",
-  "extractedAt": "2026-07-07T09:12:41.385Z",
+  "extractedAt": "2026-08-31T19:08:40.971Z",
   "sourceHash": "fb05e9fe7788bf44",
-  "segmentCount": 39,
+  "segmentCount": 41,
   "segmentIds": [
     "m68787:title:auto-1",
     "m68787:abstract:auto-2",
@@ -14,6 +14,7 @@
     "m68787:title:fs-idm83714000-title",
     "m68787:para:fs-idm89852336",
     "m68787:caption:CNX_Chem_12_02_AcidDissol-caption",
+    "m68787:alt:fs-idm108837008-alt",
     "m68787:para:fs-idm33181984",
     "m68787:title:fs-idm100022464-title",
     "m68787:para:fs-idp8529552",
@@ -22,6 +23,7 @@
     "m68787:para:fs-idp125234816",
     "m68787:para:fs-idm233971872",
     "m68787:caption:CNX_Chem_12_02_NYSStatue-caption",
+    "m68787:alt:fs-idm66889568-alt",
     "m68787:para:fs-idm30692176",
     "m68787:title:fs-idm33945488-title",
     "m68787:para:fs-idm99481872",

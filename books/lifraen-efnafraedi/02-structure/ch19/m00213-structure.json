@@ -1,0 +1,169 @@
+{
+  "moduleId": "m00213",
+  "title": {
+    "segmentId": "m00213:title:auto-1",
+    "text": "Preparing Aldehydes and Ketones"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "59ab0644-afa6-4b4e-bef7-b00481a7a2ab"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00213:title:sect-00001-title",
+        "text": "Preparing Aldehydes"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00213:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00213:alt:fig-00001-alt",
+              "text": "E-3,7-dimethyloxta-2,6-dien-1-ol (geraniol) reacts with Dess-Martin periodinane reagent in the presence of dichloromethane to produce E-3,7-dimethyloxta-2,6-dienal (geranial), 84%."
+            },
+            "src": "../../media/OChem_19_02_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00213:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00213:alt:fig-00002-alt",
+              "text": "Methyl dodecanoate reacts with diisobutylaluminum hydride in toluene at minus 78 degree Celsius and then with hydronium ion to yield Dodecanal (88 percent). The structure of diisobutylaluminum hydride is mentioned."
+            },
+            "src": "../../media/OChem_19_02_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00213:title:sect-00002-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00213:title:sect-00003-title",
+        "text": "Preparing Ketones"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00213:para:para-00004"
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00213:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00213:alt:fig-00004-alt",
+              "text": "2-methyl-1-propene with C 3 attached to C 2 of cyclohexanone reacts with ozone, then zinc and hydronium, to product with oxo where double bond C H 2 was, plus formaldehyde."
+            },
+            "src": "../../media/OChem_19_02_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00213:alt:fig-00005-alt",
+              "text": "A benzene reacts with acetyl chloride in the presence of aluminum chloride and heat to produce acetophenone (95 percent yield)."
+            },
+            "src": "../../media/OChem_19_02_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00213:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00213:alt:fig-00006-alt",
+              "text": "Hexanoyl chloride reacts with (C H 3) 2 C u anion and lithium cation in the presence of ether to form 2-heptanone (81 percent yield)."
+            },
+            "src": "../../media/OChem_19_02_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00213:title:sect-00004-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

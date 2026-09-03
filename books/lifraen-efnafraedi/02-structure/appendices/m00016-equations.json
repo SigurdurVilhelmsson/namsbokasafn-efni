@@ -1,0 +1,14 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C}\\text{═}\\text{C}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C}\\text{═}{{\\text{CHCH}}}_{2}{{\\text{CO}}}_{2}\\text{H}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>HC</m:mtext><m:mtext>&#x2261;</m:mtext><m:msub><m:mrow><m:mtext>CCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>OH</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{HC}\\text{&#x2261;}{{\\text{CCH}}}_{2}{{\\text{CH}}}_{2}{{\\text{CH}}}_{2}\\text{OH}}"
+  }
+}

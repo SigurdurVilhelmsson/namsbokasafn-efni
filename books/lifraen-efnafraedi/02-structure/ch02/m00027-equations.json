@@ -1,0 +1,14 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>O=C–C–H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{O=C–C–H}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  }
+}

@@ -128,6 +128,14 @@
               "segmentId": "m68806:para:fs-idp43419152"
             },
             {
+              "type": "media",
+              "id": "fs-idm4192576",
+              "alt": {
+                "segmentId": "m68806:alt:fs-idm4192576-alt",
+                "text": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium ( M ). The second column has the header of “C subscript 6 H subscript 5 N H subscript 3 superscript positive sign plus sign H subscript 2 O equilibrium sign C subscript 6 H subscript 5 N H subscript 2 plus sign H subscript 3 O superscript positive sign.” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.233, negative x, 0.233 minus x. The second column is blank for all three rows. The third column has the following: 0, positive x, x. The fourth column has the following: approximately 0, positive x, x."
+              }
+            },
+            {
               "type": "equation",
               "id": "fs-idm149245808"
             },
@@ -503,7 +511,10 @@
           },
           "media": {
             "id": "fs-idp82299440",
-            "alt": "A reaction is shown using ball and stick models. On the left, inside brackets with a superscript of 3 plus outside to the right is structure labeled “[ A l ( H subscript 2 O ) subscript 6 ] superscript 3 plus.” Inside the brackets is s central grey atom to which 6 red atoms are bonded in an arrangement that distributes them evenly about the central grey atom. Each red atom has two smaller white atoms attached in a forked or bent arrangement. Outside the brackets to the right is a space-filling model that includes a red central sphere with two smaller white spheres attached in a bent arrangement. Beneath this structure is the label “H subscript 2 O.” A double sided arrow follows. Another set of brackets follows to the right of the arrows which have a superscript of two plus outside to the right. The structure inside the brackets is similar to that on the left, except a white atom is removed from the structure. The label below is also changed to “[ A l ( H subscript 2 O ) subscript 5 O H ] superscript 2 plus.” To the right of this structure and outside the brackets is a space filling model with a central red sphere to which 3 smaller white spheres are attached. This structure is labeled “H subscript 3 O superscript plus.”",
+            "alt": {
+              "segmentId": "m68806:alt:fs-idp82299440-alt",
+              "text": "A reaction is shown using ball and stick models. On the left, inside brackets with a superscript of 3 plus outside to the right is structure labeled “[ A l ( H subscript 2 O ) subscript 6 ] superscript 3 plus.” Inside the brackets is s central grey atom to which 6 red atoms are bonded in an arrangement that distributes them evenly about the central grey atom. Each red atom has two smaller white atoms attached in a forked or bent arrangement. Outside the brackets to the right is a space-filling model that includes a red central sphere with two smaller white spheres attached in a bent arrangement. Beneath this structure is the label “H subscript 2 O.” A double sided arrow follows. Another set of brackets follows to the right of the arrows which have a superscript of two plus outside to the right. The structure inside the brackets is similar to that on the left, except a white atom is removed from the structure. The label below is also changed to “[ A l ( H subscript 2 O ) subscript 5 O H ] superscript 2 plus.” To the right of this structure and outside the brackets is a space filling model with a central red sphere to which 3 smaller white spheres are attached. This structure is labeled “H subscript 3 O superscript plus.”"
+            },
             "src": "../../media/CNX_Chem_14_04_hydronium.jpg",
             "mimeType": "image/jpeg"
           }
@@ -746,12 +757,15 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idm136267808",
       "class": null,
-      "alt": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “A l ( H subscript 2 O ) subscript 6 superscript 3 positive sign plus H subscript 2 O equilibrium arrow H subscript 3 O superscript positive sign plus A l ( H subscript 2 O ) subscript 5 ( O H ) superscript 2 positive sign.” Under the second column is a subgroup of three columns and three rows. The first column has the following: 0.10, negative x, 0.10 minus x. The second column has the following: approximately 0, positive x, x. The third column has the following: 0, positive x, x.",
       "src": "../../media/CNX_Chem_14_04_ICETable13_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68806:alt:fs-idm136267808-alt",
+        "text": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “A l ( H subscript 2 O ) subscript 6 superscript 3 positive sign plus H subscript 2 O equilibrium arrow H subscript 3 O superscript positive sign plus A l ( H subscript 2 O ) subscript 5 ( O H ) superscript 2 positive sign.” Under the second column is a subgroup of three columns and three rows. The first column has the following: 0.10, negative x, 0.10 minus x. The second column has the following: approximately 0, positive x, x. The third column has the following: 0, positive x, x."
+      }
     }
   ],
   "sectionOrder": 4

@@ -1,0 +1,22 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=C}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  }
+}

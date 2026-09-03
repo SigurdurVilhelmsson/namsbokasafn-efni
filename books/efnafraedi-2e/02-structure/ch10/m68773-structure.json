@@ -61,7 +61,10 @@
           },
           "media": {
             "id": "fs-idp111181360",
-            "alt": "A diagram of two images is shown. In the first image, a cube with a sphere at each corner is shown. The cube is labeled “Unit cell” and the spheres at the corners are labeled “Lattice points.” The second image shows the same cube, but this time it is one cube amongst eight that make up a larger cube. The original cube is shaded a color while the other cubes are not.",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp111181360-alt",
+              "text": "A diagram of two images is shown. In the first image, a cube with a sphere at each corner is shown. The cube is labeled “Unit cell” and the spheres at the corners are labeled “Lattice points.” The second image shows the same cube, but this time it is one cube amongst eight that make up a larger cube. The original cube is shaded a color while the other cubes are not."
+            },
             "src": "../../media/CNX_Chem_10_06_UnitCell1.jpg",
             "mimeType": "image/jpeg"
           }
@@ -80,7 +83,10 @@
           },
           "media": {
             "id": "fs-idp75647456",
-            "alt": "A diagram of three images is shown. In the first image, a cube with a sphere at each corner is shown. The spheres at the corners are circled. The second image shows the same cube, but this time the spheres at the corners are larger and shaded in. In the third image, the cube is one cube amongst eight that make up a larger cube. The original cube is shaded a color while the other cubes are not.",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp75647456-alt",
+              "text": "A diagram of three images is shown. In the first image, a cube with a sphere at each corner is shown. The spheres at the corners are circled. The second image shows the same cube, but this time the spheres at the corners are larger and shaded in. In the third image, the cube is one cube amongst eight that make up a larger cube. The original cube is shaded a color while the other cubes are not."
+            },
             "src": "../../media/CNX_Chem_10_06_SimpleCub1.jpg",
             "mimeType": "image/jpeg"
           }
@@ -99,7 +105,10 @@
           },
           "media": {
             "id": "fs-idp759920",
-            "alt": "A diagram of two images is shown. In the first image, eight stacked cubes that make up one large cube are shown. Three lines that run from top to bottom, front to back and sided to side in the middle of the structure are shaded darker than the rest of the lines. The second image shows the same set of cubes, but this time spheres at the end of each line are numbered; the horizontal line that goes left to right is labeled with a “2” and a “5,” the vertical line is labeled with a “1” and a “6” and the line that goes horizontally front to back is labeled with a “3” and a “4.”",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp759920-alt",
+              "text": "A diagram of two images is shown. In the first image, eight stacked cubes that make up one large cube are shown. Three lines that run from top to bottom, front to back and sided to side in the middle of the structure are shaded darker than the rest of the lines. The second image shows the same set of cubes, but this time spheres at the end of each line are numbered; the horizontal line that goes left to right is labeled with a “2” and a “5,” the vertical line is labeled with a “1” and a “6” and the line that goes horizontally front to back is labeled with a “3” and a “4.”"
+            },
             "src": "../../media/CNX_Chem_10_06_SimpleCub2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -118,7 +127,10 @@
           },
           "media": {
             "id": "fs-idm54718224",
-            "alt": "A diagram of two images is shown. In the first image, eight spheres are stacked together to form a cube and dots at the center of each sphere are connected to form a cube shape. The dots are labeled “Lattice points” while a label under the image reads “Simple cubic lattice cell.” The second image shows the portion of each sphere that lie inside the cube. The corners of the cube are shown with small circles labeled “Lattice points” and the phrase “8 corners” is written below the image.",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idm54718224-alt",
+              "text": "A diagram of two images is shown. In the first image, eight spheres are stacked together to form a cube and dots at the center of each sphere are connected to form a cube shape. The dots are labeled “Lattice points” while a label under the image reads “Simple cubic lattice cell.” The second image shows the portion of each sphere that lie inside the cube. The corners of the cube are shown with small circles labeled “Lattice points” and the phrase “8 corners” is written below the image."
+            },
             "src": "../../media/CNX_Chem_10_06_SimpleCub3.jpg",
             "mimeType": "image/jpeg"
           }
@@ -200,6 +212,14 @@
               "segmentId": "m68773:para:fs-idp76470512"
             },
             {
+              "type": "media",
+              "id": "fs-idp27312864",
+              "alt": {
+                "segmentId": "m68773:alt:fs-idp27312864-alt",
+                "text": "A diagram shows a cube with a one eighth portion of eight spheres inside the cube, one section in each corner. Along the bottom right side of the cube are two double ended arrows that each stretch along half of the total distance across the cube. Each arrow is labeled “r.”"
+              }
+            },
+            {
               "type": "equation",
               "id": "fs-idm6438944"
             },
@@ -238,7 +258,10 @@
           },
           "media": {
             "id": "fs-idp131181888",
-            "alt": "Three pairs of images are shown. The first three images are in a row and are labeled “Lattice point locations” while the second three images are in a row labeled “Cubic unit cells.” The first image in the top row shows a cube with black dots at each corner while the first image in the second row is composed of eight spheres that are stacked together to form a cube and dots at the center of each sphere are connected to form a cube shape. The name under this image reads “Simple cubic.” The second image in the top row shows a cube with black dots at each corner and a red dot in the center while the second image in the second row is composed of eight spheres that are stacked together to form a cube with one sphere in the center of the cube and dots at the center of each corner sphere connected to form a cube shape. The name under this image reads “Body-centered cubic.” The third image in the top row shows a cube with black dots at each corner and red dots in the center of each face while the third image in the second row is composed of eight spheres that are stacked together to form a cube with six more spheres located in the center of each face of the cube. Dots at the center of each corner sphere are connected to form a cube shape. The name under this image reads “Face-centered cubic.”",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp131181888-alt",
+              "text": "Three pairs of images are shown. The first three images are in a row and are labeled “Lattice point locations” while the second three images are in a row labeled “Cubic unit cells.” The first image in the top row shows a cube with black dots at each corner while the first image in the second row is composed of eight spheres that are stacked together to form a cube and dots at the center of each sphere are connected to form a cube shape. The name under this image reads “Simple cubic.” The second image in the top row shows a cube with black dots at each corner and a red dot in the center while the second image in the second row is composed of eight spheres that are stacked together to form a cube with one sphere in the center of the cube and dots at the center of each corner sphere connected to form a cube shape. The name under this image reads “Body-centered cubic.” The third image in the top row shows a cube with black dots at each corner and red dots in the center of each face while the third image in the second row is composed of eight spheres that are stacked together to form a cube with six more spheres located in the center of each face of the cube. Dots at the center of each corner sphere are connected to form a cube shape. The name under this image reads “Face-centered cubic.”"
+            },
             "src": "../../media/CNX_Chem_10_06_CubUntCll.jpg",
             "mimeType": "image/jpeg"
           }
@@ -257,7 +280,10 @@
           },
           "media": {
             "id": "fs-idp131155392",
-            "alt": "Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center while the second image is composed of eight spheres that are stacked together to form a cube with one sphere in the center of the cube and dots at the center of each corner sphere connected to form a cube shape.  The name under this image reads “Body-centered cubic structure.” The third image is the same as the second, but only shows the portions of the spheres that lie inside the cube shape.",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp131155392-alt",
+              "text": "Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center while the second image is composed of eight spheres that are stacked together to form a cube with one sphere in the center of the cube and dots at the center of each corner sphere connected to form a cube shape.  The name under this image reads “Body-centered cubic structure.” The third image is the same as the second, but only shows the portions of the spheres that lie inside the cube shape."
+            },
             "src": "../../media/CNX_Chem_10_06_BdyCntrdCb.jpg",
             "mimeType": "image/jpeg"
           }
@@ -281,7 +307,10 @@
           },
           "media": {
             "id": "fs-idp64550784",
-            "alt": "Three images are shown. The first image shows a cube with black dots at each corner and red dots in the center of each face of the cube while the second image is composed of eight spheres that are stacked together to form a cube with six more spheres, one located on each face of the structure. Dots at the center of each corner sphere are connected to form a cube shape. The name under this image reads “Face-centered cubic structure.” The third image is the same as the second, but only shows the portions of the spheres that lie inside the cube shape.",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp64550784-alt",
+              "text": "Three images are shown. The first image shows a cube with black dots at each corner and red dots in the center of each face of the cube while the second image is composed of eight spheres that are stacked together to form a cube with six more spheres, one located on each face of the structure. Dots at the center of each corner sphere are connected to form a cube shape. The name under this image reads “Face-centered cubic structure.” The third image is the same as the second, but only shows the portions of the spheres that lie inside the cube shape."
+            },
             "src": "../../media/CNX_Chem_10_06_FcCntrdCbc.jpg",
             "mimeType": "image/jpeg"
           }
@@ -300,7 +329,10 @@
           },
           "media": {
             "id": "fs-idp31732224",
-            "alt": "Three images are shown. In the first image, a side view shows a layer of blue spheres, labeled “C” stacked on top of, and sitting in between the gaps in a second layer that is composed of green spheres, labeled “B,” which are sitting atop a purple layer of spheres labeled “A.” A label below this image reads “Side view.” The second image shows a top view of the same layers of spheres, where the top layer is “C,” the second layer is “B” and the lowest layer is “C.” This image is labeled “Top view” and written under this is the phrase “Cubic closest packed structure.” The third image shows an upper view of the side of a cube composed of two sets of the repeating layers shown in the other images. The layers are arranged “C, B, A, C, B, A, C” and the phrase written under this image reads “Rotated view.”",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp31732224-alt",
+              "text": "Three images are shown. In the first image, a side view shows a layer of blue spheres, labeled “C” stacked on top of, and sitting in between the gaps in a second layer that is composed of green spheres, labeled “B,” which are sitting atop a purple layer of spheres labeled “A.” A label below this image reads “Side view.” The second image shows a top view of the same layers of spheres, where the top layer is “C,” the second layer is “B” and the lowest layer is “C.” This image is labeled “Top view” and written under this is the phrase “Cubic closest packed structure.” The third image shows an upper view of the side of a cube composed of two sets of the repeating layers shown in the other images. The layers are arranged “C, B, A, C, B, A, C” and the phrase written under this image reads “Rotated view.”"
+            },
             "src": "../../media/CNX_Chem_10_06_CbcCltPckd.jpg",
             "mimeType": "image/jpeg"
           }
@@ -319,7 +351,10 @@
           },
           "media": {
             "id": "fs-idp9696",
-            "alt": "Two images are shown. The first image, labeled “Hexagonal closest packed,” shows seven green spheres arranged in a circular sheet lying atop another sheet that is the same except the spheres are purple. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. Two more alternating green and purple layers of spheres lie below the first pair. The second image shows seven blue spheres, labeled “Layer C,” arranged in a circular sheet laying atop another sheet, labeled “Layer B” that is the same except the spheres are green. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. Two more alternating purple and then blue layers of spheres lie below the first pair. The purple layer is labeled “Layer A” and the phrase written below this image reads “Cubic closest packed.”",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp9696-alt",
+              "text": "Two images are shown. The first image, labeled “Hexagonal closest packed,” shows seven green spheres arranged in a circular sheet lying atop another sheet that is the same except the spheres are purple. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. Two more alternating green and purple layers of spheres lie below the first pair. The second image shows seven blue spheres, labeled “Layer C,” arranged in a circular sheet laying atop another sheet, labeled “Layer B” that is the same except the spheres are green. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. Two more alternating purple and then blue layers of spheres lie below the first pair. The purple layer is labeled “Layer A” and the phrase written below this image reads “Cubic closest packed.”"
+            },
             "src": "../../media/CNX_Chem_10_06_ClstPckng2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -458,7 +493,10 @@
           },
           "media": {
             "id": "fs-idm117541936",
-            "alt": "A cube is shown where each corner has a black dot drawn on it. A circle in the bottom of the cube is composed of three double-ended arrows. The left top of this circle is labeled “alpha,” the top right is labeled “beta” and the bottom is labeled “gamma.” The bottom left corner of the cube is labeled “a” while the bottom of the back face is labeled “b” and the top, back, left corner is labeled “c.”",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idm117541936-alt",
+              "text": "A cube is shown where each corner has a black dot drawn on it. A circle in the bottom of the cube is composed of three double-ended arrows. The left top of this circle is labeled “alpha,” the top right is labeled “beta” and the bottom is labeled “gamma.” The bottom left corner of the cube is labeled “a” while the bottom of the back face is labeled “b” and the top, back, left corner is labeled “c.”"
+            },
             "src": "../../media/CNX_Chem_10_06_GenUnitCll.jpg",
             "mimeType": "image/jpeg"
           }
@@ -476,7 +514,10 @@
           },
           "media": {
             "id": "fs-idp25979984",
-            "alt": "A table is composed of two columns and eight rows. The header row reads “System / Axes / Angles” and “Unit Cells .” The first column reads “Cubic, a equals b equals c, alpha equals beta equals gamma equals 90 degrees,” “Tetragonal, a equals b does not equal c, alpha equals beta equals gamma equals 90 degrees,” “Orthorhombic, a does not equal b does not equal c, alpha equals beta equals gamma equals 90 degrees,” “Monoclinic, a does not equal b does not equal c, alpha equals gamma equals 90 degrees, beta does not equal 90 degrees,” “Triclinic, a does not equal b does not equal c, alpha does not equal beta does not equal gamma does not equal 90 degrees,” “Hexagonal, a equals b does not equal c, alpha equals beta equals 90 degrees, gamma equals 120 degrees,” “Rhombohedral, a equals b equals c, alpha equals beta equals gamma does not equal 90 degrees.” The second column is composed of diagrams. The first set of diagrams in the first cell show a cube with spheres at each corner labeled “Simple,” a cube with spheres in each corner and on each face labeled “Face-centered” and a cube with spheres in each corner and one in the center labeled “Body-centered.” The second set of diagrams in the second cell show a vertical rectangle with spheres at each corner labeled “Simple” and a vertical rectangle with spheres in each corner and one in the center labeled “Body-centered.” The third set of diagrams in the third cell show a vertical rectangle with spheres at each corner labeled “Simple,” a vertical rectangle with spheres in each corner and one in the center labeled “Body-centered,” a vertical rectangle with spheres in each corner and one on the top and bottom faces labeled “Base-centered,” and a vertical rectangle with spheres in each corner and one on each face labeled “Face-centered.” The fourth set of diagrams in the fourth cell show a vertical rectangle with spheres at each corner that is slanted to one side labeled “Simple” and a vertical rectangle with spheres in each corner that is slanted to one side and has two spheres in the center is labeled “Body-centered.” The fifth diagrams in the fifth cell show a cube that is slanted with spheres at each corner while the sixth diagram in the sixth cell shows a pair of hexagonal rings that are connected together to form a six-sided shape with spheres at each corner. The seventh diagram in the seventh cell shows a rectangle that is slanted with spheres at each corner.",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp25979984-alt",
+              "text": "A table is composed of two columns and eight rows. The header row reads “System / Axes / Angles” and “Unit Cells .” The first column reads “Cubic, a equals b equals c, alpha equals beta equals gamma equals 90 degrees,” “Tetragonal, a equals b does not equal c, alpha equals beta equals gamma equals 90 degrees,” “Orthorhombic, a does not equal b does not equal c, alpha equals beta equals gamma equals 90 degrees,” “Monoclinic, a does not equal b does not equal c, alpha equals gamma equals 90 degrees, beta does not equal 90 degrees,” “Triclinic, a does not equal b does not equal c, alpha does not equal beta does not equal gamma does not equal 90 degrees,” “Hexagonal, a equals b does not equal c, alpha equals beta equals 90 degrees, gamma equals 120 degrees,” “Rhombohedral, a equals b equals c, alpha equals beta equals gamma does not equal 90 degrees.” The second column is composed of diagrams. The first set of diagrams in the first cell show a cube with spheres at each corner labeled “Simple,” a cube with spheres in each corner and on each face labeled “Face-centered” and a cube with spheres in each corner and one in the center labeled “Body-centered.” The second set of diagrams in the second cell show a vertical rectangle with spheres at each corner labeled “Simple” and a vertical rectangle with spheres in each corner and one in the center labeled “Body-centered.” The third set of diagrams in the third cell show a vertical rectangle with spheres at each corner labeled “Simple,” a vertical rectangle with spheres in each corner and one in the center labeled “Body-centered,” a vertical rectangle with spheres in each corner and one on the top and bottom faces labeled “Base-centered,” and a vertical rectangle with spheres in each corner and one on each face labeled “Face-centered.” The fourth set of diagrams in the fourth cell show a vertical rectangle with spheres at each corner that is slanted to one side labeled “Simple” and a vertical rectangle with spheres in each corner that is slanted to one side and has two spheres in the center is labeled “Body-centered.” The fifth diagrams in the fifth cell show a cube that is slanted with spheres at each corner while the sixth diagram in the sixth cell shows a pair of hexagonal rings that are connected together to form a six-sided shape with spheres at each corner. The seventh diagram in the seventh cell shows a rectangle that is slanted with spheres at each corner."
+            },
             "src": "../../media/CNX_Chem_10_06_CrystalSys.jpg",
             "mimeType": "image/jpeg"
           }
@@ -516,7 +557,10 @@
           },
           "media": {
             "id": "fs-idp26945552",
-            "alt": "An image shows a top-view of a layer of blue spheres arranged in a sheet lying atop another sheet that is the same except the spheres are green. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. A third sheet composed of purple spheres lies at the bottom. The spaces created between the spheres in each layer are labeled “Octahedral holes” and “Tetrahedral holes.”",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp26945552-alt",
+              "text": "An image shows a top-view of a layer of blue spheres arranged in a sheet lying atop another sheet that is the same except the spheres are green. The second sheet is offset just a bit so that the spheres of the top sheet lie in the grooves of the second sheet. A third sheet composed of purple spheres lies at the bottom. The spaces created between the spheres in each layer are labeled “Octahedral holes” and “Tetrahedral holes.”"
+            },
             "src": "../../media/CNX_Chem_10_06_TetOctHole.jpg",
             "mimeType": "image/jpeg"
           }
@@ -534,7 +578,10 @@
           },
           "media": {
             "id": "fs-idp191262336",
-            "alt": "A diagram of three images is shown. In the first image, eight stacked cubes, with purple spheres at each corner, that make up one large cube are shown. The bottom left cube is different. It has green spheres at each corner and has four orange and six light purple spheres located on the faces of the cube. Labels below this structure read “Tetrahedral hole” and “Cation radius is about 22.5 to 41.4 percent of the anion radius. In the second image, eight stacked cubes, with alternating orange and green spheres at each corner, make up one large cube that is shown. The bottom left cube has darker lines that connect the spheres together. Labels below this structure read “Octahedral hole” and “Cation radius is about 41.4 to 73.2 percent of the anion radius. In the third image, eight stacked cubes, with purple spheres at each corner and light purple spheres on their interior faces, make up one large cube that is shown. Labels below this structure read “Cubic hole” and “Cation radius is about 73.2 to 100 percent of the anion radius.”",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp191262336-alt",
+              "text": "A diagram of three images is shown. In the first image, eight stacked cubes, with purple spheres at each corner, that make up one large cube are shown. The bottom left cube is different. It has green spheres at each corner and has four orange and six light purple spheres located on the faces of the cube. Labels below this structure read “Tetrahedral hole” and “Cation radius is about 22.5 to 41.4 percent of the anion radius. In the second image, eight stacked cubes, with alternating orange and green spheres at each corner, make up one large cube that is shown. The bottom left cube has darker lines that connect the spheres together. Labels below this structure read “Octahedral hole” and “Cation radius is about 41.4 to 73.2 percent of the anion radius. In the third image, eight stacked cubes, with purple spheres at each corner and light purple spheres on their interior faces, make up one large cube that is shown. Labels below this structure read “Cubic hole” and “Cation radius is about 73.2 to 100 percent of the anion radius.”"
+            },
             "src": "../../media/CNX_Chem_10_06_IntIonst.jpg",
             "mimeType": "image/jpeg"
           }
@@ -695,7 +742,10 @@
           },
           "media": {
             "id": "fs-idm89247392",
-            "alt": "Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that are grouped together to form a cube with one smaller sphere in the center. The name under this image reads “simple cubic structure.” The third image shows five horizontal layers of purple spheres with layers of smaller green spheres in between.",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idm89247392-alt",
+              "text": "Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that are grouped together to form a cube with one smaller sphere in the center. The name under this image reads “simple cubic structure.” The third image shows five horizontal layers of purple spheres with layers of smaller green spheres in between."
+            },
             "src": "../../media/CNX_Chem_10_07_CsClStrctr.jpg",
             "mimeType": "image/jpeg"
           }
@@ -719,7 +769,10 @@
           },
           "media": {
             "id": "fs-idm94066176",
-            "alt": "Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that are grouped together to form a cube with one much larger sphere in the center. The name under this image reads “Body-centered simple cubic structure.” The third image shows seven horizontal layers of alternating purple and green spheres that are slightly offset with one another and form a large cube.",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idm94066176-alt",
+              "text": "Three images are shown. The first image shows a cube with black dots at each corner and a red dot in the center. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that are grouped together to form a cube with one much larger sphere in the center. The name under this image reads “Body-centered simple cubic structure.” The third image shows seven horizontal layers of alternating purple and green spheres that are slightly offset with one another and form a large cube."
+            },
             "src": "../../media/CNX_Chem_10_07_NaClStrctr.jpg",
             "mimeType": "image/jpeg"
           }
@@ -738,7 +791,10 @@
           },
           "media": {
             "id": "fs-idp113309184",
-            "alt": "Two images are shown. The first image shows a cube with black dots at each corner and a red dot in the center of each face of the cube. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that form the corners of a cube with six other spheres located in the face of the cube. The spheres are connected to one another by lines. The name under this image reads “Z n S, face-centered unit cell.”",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp113309184-alt",
+              "text": "Two images are shown. The first image shows a cube with black dots at each corner and a red dot in the center of each face of the cube. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight spheres that form the corners of a cube with six other spheres located in the face of the cube. The spheres are connected to one another by lines. The name under this image reads “Z n S, face-centered unit cell.”"
+            },
             "src": "../../media/CNX_Chem_10_06_ZnSStrctr.jpg",
             "mimeType": "image/jpeg"
           }
@@ -757,7 +813,10 @@
           },
           "media": {
             "id": "fs-idp104119168",
-            "alt": "Two images are shown. The first image shows a cube with black dots at each corner and a red dot in the center of each face of the cube. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight small green spheres that form the corners of a cube with six other small green spheres located in the faces of the cube. Eight larger green spheres are spaced inside the cube and all of the spheres are connect to one another by lines. The name under this image reads “C a F, subscript 2, face-centered unit cell.”",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp104119168-alt",
+              "text": "Two images are shown. The first image shows a cube with black dots at each corner and a red dot in the center of each face of the cube. This cube is stacked with seven others that are not colored to form a larger cube. The second image is composed of eight small green spheres that form the corners of a cube with six other small green spheres located in the faces of the cube. Eight larger green spheres are spaced inside the cube and all of the spheres are connect to one another by lines. The name under this image reads “C a F, subscript 2, face-centered unit cell.”"
+            },
             "src": "../../media/CNX_Chem_10_07_CaF2Strctr.jpg",
             "mimeType": "image/jpeg"
           }
@@ -835,6 +894,14 @@
               "segmentId": "m68773:para:fs-idm6422368"
             },
             {
+              "type": "media",
+              "id": "fs-idp111782608",
+              "alt": {
+                "segmentId": "m68773:alt:fs-idp111782608-alt",
+                "text": "Three images are shown. The first shows a cube of alternating green and purple spheres. A smaller cube within that cube is outlined and a larger version of it appears next. This figure is a grey cube that appears to be made up of spheres. There are small spaces between each sphere. There is a right triangle outlined in this cube and a larger version of it appears next. This right triangle has two sides labeled “a,” and the hypotenuse, which spans two half-circles and one full one is labeled, “r, 2 r, and r.”"
+              }
+            },
+            {
               "type": "equation",
               "id": "fs-idm1060368"
             },
@@ -898,7 +965,10 @@
           },
           "media": {
             "id": "fs-idp39628848",
-            "alt": "A pair of images is shown that has four sections. In the first section, two sinusoidal waves are shown, one drawn above the other, and a section from the top of one curve to the top of the next curve is labeled “lambda.” The curves align with one another. The phrase below this reads “Constructive interference.” A right facing arrow leads from the first section to the second, which shows one larger sinusoidal curve that has higher and lower peaks and troughs. A section from the top of one curve to the top of the next curve is labeled “lambda” and the phrase below this reads “Maxima and minima reinforce.” In the second section, two sinusoidal waves are shown, one drawn above the other, and a section from the top of one curve to the top of the next curve is labeled “lambda.” The curves do not align with one another. The phrase below this reads “Destructive interference.” A right facing arrow leads from the first section to the second, which shows one flat line. The phrase below this reads “Maxima and minima cancel.”",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp39628848-alt",
+              "text": "A pair of images is shown that has four sections. In the first section, two sinusoidal waves are shown, one drawn above the other, and a section from the top of one curve to the top of the next curve is labeled “lambda.” The curves align with one another. The phrase below this reads “Constructive interference.” A right facing arrow leads from the first section to the second, which shows one larger sinusoidal curve that has higher and lower peaks and troughs. A section from the top of one curve to the top of the next curve is labeled “lambda” and the phrase below this reads “Maxima and minima reinforce.” In the second section, two sinusoidal waves are shown, one drawn above the other, and a section from the top of one curve to the top of the next curve is labeled “lambda.” The curves do not align with one another. The phrase below this reads “Destructive interference.” A right facing arrow leads from the first section to the second, which shows one flat line. The phrase below this reads “Maxima and minima cancel.”"
+            },
             "src": "../../media/CNX_Chem_10_06_ConDec.jpg",
             "mimeType": "image/jpeg"
           }
@@ -927,7 +997,10 @@
           },
           "media": {
             "id": "fs-idm39196256",
-            "alt": "Two similar figures are shown. The first figure, labeled “Constructive Interference,” shows two horizontal rows of seven black dots with a line passing through them. The fourth dots of each row have a vertical line connecting them. The distance between these rows is labeled “d.” A beam labeled “Incident beam” descends at an angle labeled “theta” until it hits the line connecting the fourth dots, after which a diffracted beam ascends at the same angle “theta.” A dotted line is drawn across the diffracted beam. The second figure, labeled “Destructive interference,” is very similar, except that the angles “theta” are far more acute, making the slopes of the beams more shallow.",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idm39196256-alt",
+              "text": "Two similar figures are shown. The first figure, labeled “Constructive Interference,” shows two horizontal rows of seven black dots with a line passing through them. The fourth dots of each row have a vertical line connecting them. The distance between these rows is labeled “d.” A beam labeled “Incident beam” descends at an angle labeled “theta” until it hits the line connecting the fourth dots, after which a diffracted beam ascends at the same angle “theta.” A dotted line is drawn across the diffracted beam. The second figure, labeled “Destructive interference,” is very similar, except that the angles “theta” are far more acute, making the slopes of the beams more shallow."
+            },
             "src": "../../media/CNX_Chem_10_06_XRyDiff1.jpg",
             "mimeType": "image/jpeg"
           }
@@ -959,7 +1032,10 @@
           },
           "media": {
             "id": "fs-idp8694464",
-            "alt": "A diagram, labeled “a” shows a cube on the left with a channel bored into its right side labeled “X dash ray source.” A beam is leaving from this channel and traveling in a horizontal line toward an oval-shaped, short tube, labeled “Collimator to focus beam” and “X dash ray diffraction,” where it passes through a cube labeled “Crystalline material” and scatters onto a vertical sheet labeled “Imaging surface.” A second diagram, labeled “b,” shows a square sheet with a large dot in the center labeled “X dash ray beam,” that is surrounded by smaller dots arranged in rings and labeled “Diffracted X dash rays.”",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp8694464-alt",
+              "text": "A diagram, labeled “a” shows a cube on the left with a channel bored into its right side labeled “X dash ray source.” A beam is leaving from this channel and traveling in a horizontal line toward an oval-shaped, short tube, labeled “Collimator to focus beam” and “X dash ray diffraction,” where it passes through a cube labeled “Crystalline material” and scatters onto a vertical sheet labeled “Imaging surface.” A second diagram, labeled “b,” shows a square sheet with a large dot in the center labeled “X dash ray beam,” that is surrounded by smaller dots arranged in rings and labeled “Diffracted X dash rays.”"
+            },
             "src": "../../media/CNX_Chem_10_07_XRyDiff2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1047,7 +1123,10 @@
           },
           "media": {
             "id": "fs-idp53384576",
-            "alt": "An image shows a circular illustration with rings of dots that are blurred together.",
+            "alt": {
+              "segmentId": "m68773:alt:fs-idp53384576-alt",
+              "text": "An image shows a circular illustration with rings of dots that are blurred together."
+            },
             "src": "../../media/CNX_Chem_10_06_RFranklin.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1084,11 +1163,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68773:entry:auto-152",
+                  "segmentId": "m68773:entry:auto-176",
                   "attributes": {}
                 }
               ]
@@ -1837,12 +1917,15 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idm35041920",
       "class": "scaled-down",
-      "alt": "An image of a cube is shown. A one-eighth section of a sphere is shown inside each corner of the cube and a full sphere is shown in the middle of the cube. A line stretched across the front face of the cube from the top left corner to the bottom right corner is labeled “4 r.” The left and bottom sides of the cube are labeled “a.”",
       "src": "../../media/CNX_Chem_10_06_Ex100602_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68773:alt:fs-idm35041920-alt",
+        "text": "An image of a cube is shown. A one-eighth section of a sphere is shown inside each corner of the cube and a full sphere is shown in the middle of the cube. A line stretched across the front face of the cube from the top left corner to the bottom right corner is labeled “4 r.” The left and bottom sides of the cube are labeled “a.”"
+      }
     }
   ],
   "sectionOrder": 6

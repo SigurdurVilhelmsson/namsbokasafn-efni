@@ -1,0 +1,202 @@
+{
+  "moduleId": "m00307",
+  "title": {
+    "segmentId": "m00307:title:auto-1",
+    "text": "Polysaccharides and Their Synthesis"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "7784a53f-f8d6-4fef-9066-b5e78f24b309"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00307:para:para-00001"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00307:title:sect-00001-title",
+        "text": "Cellulose"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00307:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00307:alt:fig-00001-alt",
+              "text": "The structure of cellulose, which is a beta-1,4-D-glucopyranoside polymer."
+            },
+            "src": "../../media/OChem_25_09_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00307:para:para-00003"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00307:title:sect-00002-title",
+        "text": "Starch and Glycogen"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00307:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00307:alt:fig-00002-alt",
+              "text": "The structure of amylose which is an alpha-1,4-D-glucopyranoside polymer."
+            },
+            "src": "../../media/OChem_25_09_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00307:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00307:alt:fig-00003-alt",
+              "text": "The structure of amylopectin, in which alpha-1,4 links with alpha-1,6 branches."
+            },
+            "src": "../../media/OChem_25_09_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00307:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00307:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00307:caption:fig-00004-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00307:alt:fig-00004-alt",
+              "text": "Structural representation of glycogen which is a polysaccharide. The structure is highly branched and has numerous glucose units."
+            },
+            "src": "../../media/OChem_25_09_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00307:title:sect-00003-title",
+        "text": "Polysaccharide Synthesis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00307:para:para-00008"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00307:para:para-00009"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00307:alt:fig-00005-alt",
+              "text": "Primary alcohol of glycal is protected by forming silyl ether. Two adjacent secondary alcohols are protected by forming cyclic carbonate ester. Double bond of protected glycal is converted into epoxide."
+            },
+            "src": "../../media/OChem_25_09_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00307:para:para-00010"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00307:alt:fig-00006-alt",
+              "text": "Glycal epoxide when reacts with a second glycal having a free hydroxyl group with zinc chloride as a catalyst yields a disaccharide glycal."
+            },
+            "src": "../../media/OChem_25_09_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00307:para:para-00011"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00307:alt:fig-00007-alt",
+              "text": "The Haworth projection of Lewis Y hexasaccharide is depicted. Alpha-Fucose bonded to beta-galactose bonded to beta-N-acetylglucosamine in turn bonded to alpha-fucose is shown."
+            },
+            "src": "../../media/OChem_25_09_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

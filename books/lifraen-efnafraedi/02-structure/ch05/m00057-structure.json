@@ -1,0 +1,169 @@
+{
+  "moduleId": "m00057",
+  "title": {
+    "segmentId": "m00057:title:auto-1",
+    "text": "Racemic Mixtures and the Resolution of Enantiomers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "6a8189cf-0d2c-4c03-9a96-2de3945b712c"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00057:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00057:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00057:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00057:alt:fig-00001-alt",
+          "text": "The figure shows a reaction in which carboxylic acid reacts with an amine base to form ammonium salt."
+        },
+        "src": "../../media/OChem_05_08_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00057:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00057:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00057:alt:fig-00002-alt",
+          "text": "Racemic lactic acid (50 percent R, 50 percent S) reacts with methylamine to form R salt. Its mirror image shows S salt. Both R and S salts are labeled enantiomers."
+        },
+        "src": "../../media/OChem_05_08_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00057:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00057:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00057:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00057:alt:fig-00003-alt",
+          "text": "Racemic lactic acid reacts with R-1-phenylethylamine to form an R, R salt and an S, R salt. Both salts are labeled diastereomers."
+        },
+        "src": "../../media/OChem_05_08_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00057:example-title:exam-00001-title",
+        "text": "Predicting the Chirality of a Reaction Product"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00057:para:para-00007"
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00057:para:para-00008",
+          "title": {
+            "segmentId": "m00057:para-title:para-00008-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00057:alt:fig-00004-alt",
+          "text": "In a reaction, lactic acid reacts with methanol in the presence of acid catalyst to form methyl lactate and water."
+        },
+        "src": "../../media/OChem_05_08_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00057:alt:fig-00005-alt",
+          "text": "(S)-lactic acid reacts with (R)-lactic acid in the presence of methanol, acid catalyst to form methyl (S)-lactate and methyl (R)-lactate."
+        },
+        "src": "../../media/OChem_05_08_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00057:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

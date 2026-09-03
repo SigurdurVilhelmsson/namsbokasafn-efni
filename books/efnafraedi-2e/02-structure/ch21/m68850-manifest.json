@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68850",
-  "extractedAt": "2026-07-07T09:12:52.125Z",
+  "extractedAt": "2026-08-31T19:08:45.845Z",
   "sourceHash": "150a49e946127312",
-  "segmentCount": 10,
+  "segmentCount": 11,
   "segmentIds": [
     "m68850:title:auto-1",
     "m68850:abstract-item:abstract-item-1",
@@ -13,6 +13,7 @@
     "m68850:abstract-item:abstract-item-5",
     "m68850:abstract-item:abstract-item-6",
     "m68850:caption:CNX_Chem_21_00_NuclearMed-caption",
+    "m68850:alt:fs-idm8172160-alt",
     "m68850:para:fs-idp145142544",
     "m68850:para:fs-idp209834320"
   ],

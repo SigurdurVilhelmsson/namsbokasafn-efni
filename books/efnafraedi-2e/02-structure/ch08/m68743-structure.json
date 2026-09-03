@@ -27,7 +27,10 @@
       },
       "media": {
         "id": "fs-idp76967904",
-        "alt": "A pitcher is shown pouring liquid oxygen through the gap between two magnets, where it has formed a solid disk. A call out box near the stream of liquid oxygen shows an image of six pairs of spheres, spread apart from one another. Another call out box near the solid disk shows ten pairs of spheres much closer together.",
+        "alt": {
+          "segmentId": "m68743:alt:fs-idp76967904-alt",
+          "text": "A pitcher is shown pouring liquid oxygen through the gap between two magnets, where it has formed a solid disk. A call out box near the stream of liquid oxygen shows an image of six pairs of spheres, spread apart from one another. Another call out box near the solid disk shows ten pairs of spheres much closer together."
+        },
         "src": "../../media/CNX_Chem_08_00_LiqO2.jpg",
         "mimeType": "image/jpeg"
       }
@@ -41,7 +44,10 @@
       "type": "media",
       "id": "fs-idp82346208",
       "class": "scaled-down",
-      "alt": "Two Lewis diagrams are shown. The diagram on the left shows two nitrogen atoms, represented by the letter N connected by three lines and with a lone pair of electrons on each end of the structure. The diagram on the right shows two oxygen atoms, depicted by the letter O, connected by two lines. Two pairs of electrons surround each oxygen to the top and ends of the structure.",
+      "alt": {
+        "segmentId": "m68743:alt:fs-idp82346208-alt",
+        "text": "Two Lewis diagrams are shown. The diagram on the left shows two nitrogen atoms, represented by the letter N connected by three lines and with a lone pair of electrons on each end of the structure. The diagram on the right shows two oxygen atoms, depicted by the letter O, connected by two lines. Two pairs of electrons surround each oxygen to the top and ends of the structure."
+      },
       "src": "../../media/CNX_Chem_08_00_N2O2Lewis_img.jpg",
       "embedSrc": "",
       "width": "",

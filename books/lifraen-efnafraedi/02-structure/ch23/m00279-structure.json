@@ -1,0 +1,87 @@
+{
+  "moduleId": "m00279",
+  "title": {
+    "segmentId": "m00279:title:auto-1",
+    "text": "Using Aldol Reactions in Synthesis"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f506279f-9d60-44b5-9b11-ce421b031ec4"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00279:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00279:alt:fig-00001-alt",
+          "text": "The figure shows two aldol reactants giving two aldol products. The products are a beta-hydroxy carbonyl compound and a conjugated enone."
+        },
+        "src": "../../media/OChem_23_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00279:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00279:alt:fig-00002-alt",
+          "text": "The conversion of butanal to 2-ethyl-1-hexanol uses potassium hydroxide in ethanol, forming 2-ethyl-2-hexenal. The second step forms 2-ethylhexanal using hydrogen in platinum. The final step uses nascent hydrogen."
+        },
+        "src": "../../media/OChem_23_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00279:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

@@ -14,7 +14,7 @@ Perform stoichiometric calculations involving gaseous substances
 State Dalton’s law of partial pressures and use it in calculations involving gaseous mixtures
 
 <!-- SEG:m68752:para:fs-idp201619456 -->
-The study of the chemical behavior of gases was part of the basis of perhaps the most fundamental chemical revolution in history. French nobleman Antoine {{term}}Lavoisier{{/term}}, widely regarded as the “father of modern chemistry,” changed chemistry from a qualitative to a quantitative science through his work with gases. He discovered the law of conservation of matter, discovered the role of oxygen in combustion reactions, determined the composition of air, explained respiration in terms of chemical reactions, and more. He was a casualty of the French Revolution, guillotined in 1794. Of his death, mathematician and astronomer Joseph-Louis Lagrange said, “It took the mob only a moment to remove his head; a century will not suffice to reproduce it.” {{fn}}“Quotations by Joseph-Louis Lagrange,” last modified February 2006, accessed February 10, 2015, http://www-history.mcs.st-andrews.ac.uk/Quotations/Lagrange.html{{/fn}} Much of the knowledge we do have about Lavoisier's contributions is due to his wife, Marie-Anne Paulze Lavoisier, who worked with him in his lab. A trained artist fluent in several languages, she created detailed illustrations of the equipment in his lab, and translated texts from foreign scientists to complement his knowledge. After his execution, she was instrumental in publishing Lavoisier's major treatise, which unified many concepts of chemistry and laid the groundwork for significant further study.
+The study of the chemical behavior of gases was part of the basis of perhaps the most fundamental chemical revolution in history. French nobleman Antoine [[term:Lavoisier|term-00001]], widely regarded as the “father of modern chemistry,” changed chemistry from a qualitative to a quantitative science through his work with gases. He discovered the law of conservation of matter, discovered the role of oxygen in combustion reactions, determined the composition of air, explained respiration in terms of chemical reactions, and more. He was a casualty of the French Revolution, guillotined in 1794. Of his death, mathematician and astronomer Joseph-Louis Lagrange said, “It took the mob only a moment to remove his head; a century will not suffice to reproduce it.” [[fn:“Quotations by Joseph-Louis Lagrange,” last modified February 2006, accessed February 10, 2015, http://www-history.mcs.st-andrews.ac.uk/Quotations/Lagrange.html|fs-idp208659264]] Much of the knowledge we do have about Lavoisier's contributions is due to his wife, Marie-Anne Paulze Lavoisier, who worked with him in his lab. A trained artist fluent in several languages, she created detailed illustrations of the equipment in his lab, and translated texts from foreign scientists to complement his knowledge. After his execution, she was instrumental in publishing Lavoisier's major treatise, which unified many concepts of chemistry and laid the groundwork for significant further study.
 
 <!-- SEG:m68752:para:fs-idm31863392 -->
 As described in an earlier chapter of this text, we can turn to chemical stoichiometry for answers to many of the questions that ask “How much?” The essential property involved in such use of stoichiometry is the amount of substance, typically measured in moles ([[i:n]]). For gases, molar amount can be derived from convenient experimental measurements of pressure, temperature, and volume. Therefore, these measurements are useful in assessing the stoichiometry of pure gases, gas mixtures, and chemical reactions involving gases. This section will not introduce any new material or ideas, but will provide examples of applications and ways to integrate concepts already discussed.
@@ -163,11 +163,14 @@ Answer:
 <!-- SEG:m68752:caption:CNX_Chem_09_03_liquidgas-caption -->
 When the volatile liquid in the flask is heated past its boiling point, it becomes gas and drives air out of the flask. At [[MATH:5]] the flask is filled with volatile liquid gas at the same pressure as the atmosphere. If the flask is then cooled to room temperature, the gas condenses and the mass of the gas that filled the flask, and is now liquid, can be measured. (credit: modification of work by Mark Ott)
 
+<!-- SEG:m68752:alt:fs-idm73431936-alt -->
+This figure shows four photos each connected by a right-facing arrow. The first photo shows a glass flask with aluminum foil covering the top sitting on a scale. The second photo shows a syringe being inserted into the flask through the aluminum foil covering. The third photo shows the glass flask being inserted into a beaker of water. The water appears to be heated at 100. The fourth photo shows the glass flask being weighed again.
+
 <!-- SEG:m68752:title:fs-idp148167024-title -->
 The Pressure of a Mixture of Gases: Dalton’s Law
 
 <!-- SEG:m68752:para:fs-idp70155072 -->
-Unless they chemically react with each other, the individual gases in a mixture of gases do not affect each other’s pressure. Each individual gas in a mixture exerts the same pressure that it would exert if it were present alone in the container ([[xref:CNX_Chem_09_03_DaltonLaw1]]). The pressure exerted by each individual gas in a mixture is called its {{term}}partial pressure{{/term}}. This observation is summarized by {{term}}Dalton’s law of partial pressures{{/term}}: [[i:The total pressure of a mixture of ideal gases is equal to the sum of the partial pressures of the component gases]]:
+Unless they chemically react with each other, the individual gases in a mixture of gases do not affect each other’s pressure. Each individual gas in a mixture exerts the same pressure that it would exert if it were present alone in the container ([[xref:CNX_Chem_09_03_DaltonLaw1]]). The pressure exerted by each individual gas in a mixture is called its [[term:partial pressure|term-00002]]. This observation is summarized by [[term:Dalton’s law of partial pressures|term-00003]]: [[i:The total pressure of a mixture of ideal gases is equal to the sum of the partial pressures of the component gases]]:
 
 <!-- SEG:m68752:para:fs-idp97232880 -->
 In the equation [[i:P[[sub:Total]]]] is the total pressure of a mixture of gases, [[i:P[[sub:A]]]] is the partial pressure of gas A; [[i:P[[sub:B]]]] is the partial pressure of gas B; [[i:P[[sub:C]]]] is the partial pressure of gas C; and so on.
@@ -175,8 +178,11 @@ In the equation [[i:P[[sub:Total]]]] is the total pressure of a mixture of gases
 <!-- SEG:m68752:caption:CNX_Chem_09_03_DaltonLaw1-caption -->
 If equal-volume cylinders containing gasses at pressures of 300 kPa, 450 kPa, and 600 kPa are all combined in the same-size cylinder, the total pressure of the gas mixture is 1350 kPa.
 
+<!-- SEG:m68752:alt:fs-idp114351776-alt -->
+This figure includes images of four gas-filled cylinders or tanks. Each has a valve at the top. The interior of the first cylinder is shaded blue. This region contains 5 small blue circles that are evenly distributed. The label “300 k P a” is on the cylinder. The second cylinder is shaded lavender. This region contains 8 small purple circles that are evenly distributed. The label “450 k P a” is on the cylinder. To the right of these cylinders is a third cylinder. Its interior is shaded pale yellow. This region contains 12 small yellow circles that are evenly distributed. The label “6000 k P a” is on this region of the cylinder. An arrow labeled “Total pressure combined” appears to the right of these three cylinders. This arrow points to a fourth cylinder. The interior of this cylinder is shaded a pale green. It contains evenly distributed small circles in the following quantities and colors; 5 blue, 8 purple, and 12 yellow. This cylinder is labeled “1350 k P a.”
+
 <!-- SEG:m68752:para:fs-idp110759216 -->
-The partial pressure of gas A is related to the total pressure of the gas mixture via its {{term}}mole fraction ([[i:X]]){{/term}}, a unit of concentration defined as the number of moles of a component of a solution divided by the total number of moles of all components:
+The partial pressure of gas A is related to the total pressure of the gas mixture via its [[term:mole fraction ([[i:X]])|term-00004]], a unit of concentration defined as the number of moles of a component of a solution divided by the total number of moles of all components:
 
 <!-- SEG:m68752:para:fs-idp75739968 -->
 where [[i:P[[sub:A]]]], [[i:X[[sub:A]]]], and [[i:n[[sub:A]]]] are the partial pressure, mole fraction, and number of moles of gas A, respectively, and [[i:n[[sub:Total]]]] is the number of moles of all components in the mixture.
@@ -277,26 +283,20 @@ A simple way to collect gases that do not react with water is to capture them in
 <!-- SEG:m68752:caption:CNX_Chem_09_03_WaterVapor-caption -->
 When a reaction produces a gas that is collected above water, the trapped gas is a mixture of the gas produced by the reaction and water vapor. If the collection flask is appropriately positioned to equalize the water levels both within and outside the flask, the pressure of the trapped gas mixture will equal the atmospheric pressure outside the flask (see the earlier discussion of manometers).
 
+<!-- SEG:m68752:alt:fs-idm14272784-alt -->
+This figure shows a diagram of equipment used for collecting a gas over water. To the left is an Erlenmeyer flask. It is approximately two thirds full of a lavender colored liquid. Bubbles are evident in the liquid. The label “Reaction Producing Gas” appears below the flask. A line segment connects this label to the liquid in the flask. The flask has a stopper in it through which a single glass tube extends from the open region above the liquid in the flask up, through the stopper, to the right, then angles down into a pan that is nearly full of light blue water. This tube again extends right once it is well beneath the water’s surface. It then bends up into an inverted flask which is labeled “Collection Flask.” This collection flask is positioned with its mouth beneath the surface of the light blue water and appears approximately half full. Bubbles are evident in the water in the inverted flask. The open space above the water in the inverted flask is labeled “collected gas.”
+
 <!-- SEG:m68752:para:fs-idp221722032 -->
-However, there is another factor we must consider when we measure the pressure of the gas by this method. Water evaporates and there is always gaseous water (water vapor) above a sample of liquid water. As a gas is collected over water, it becomes saturated with water vapor and the total pressure of the mixture equals the partial pressure of the gas plus the partial pressure of the water vapor. The pressure of the pure gas is therefore equal to the total pressure minus the pressure of the water vapor—this is referred to as the “dry” gas pressure, that is, the pressure of the gas only, without water vapor. The {{term}}vapor pressure of water{{/term}}, which is the pressure exerted by water vapor in equilibrium with liquid water in a closed container, depends on the temperature ([[xref:CNX_Chem_09_03_WaterVapor2]]); more detailed information on the temperature dependence of water vapor can be found in [[xref:fs-idm68841392]], and vapor pressure will be discussed in more detail in the next chapter on liquids.
+However, there is another factor we must consider when we measure the pressure of the gas by this method. Water evaporates and there is always gaseous water (water vapor) above a sample of liquid water. As a gas is collected over water, it becomes saturated with water vapor and the total pressure of the mixture equals the partial pressure of the gas plus the partial pressure of the water vapor. The pressure of the pure gas is therefore equal to the total pressure minus the pressure of the water vapor—this is referred to as the “dry” gas pressure, that is, the pressure of the gas only, without water vapor. The [[term:vapor pressure of water|term-00005]], which is the pressure exerted by water vapor in equilibrium with liquid water in a closed container, depends on the temperature ([[xref:CNX_Chem_09_03_WaterVapor2]]); more detailed information on the temperature dependence of water vapor can be found in [[xref:fs-idm68841392]], and vapor pressure will be discussed in more detail in the next chapter on liquids.
 
 <!-- SEG:m68752:caption:CNX_Chem_09_03_WaterVapor2-caption -->
 This graph shows the vapor pressure of water at sea level as a function of temperature.
 
-<!-- SEG:m68752:entry:auto-96 -->
-Vapor Pressure of Ice and Water in Various Temperatures at Sea Level
-
-<!-- SEG:m68752:entry:auto-97 -->
-Temperature (°C)
-
-<!-- SEG:m68752:entry:auto-98 -->
-Pressure (torr)
-
-<!-- SEG:m68752:entry:auto-99 -->
-Temperature (°C)
+<!-- SEG:m68752:alt:fs-idp38546432-alt -->
+A graph is shown. The horizontal axis is labeled “Temperature ( degrees C )” with markings and labels provided for multiples of 20 beginning at 0 and ending at 100. The vertical axis is labeled “Vapor pressure ( torr )” with marking and labels provided for multiples of 200, beginning at 0 and ending at 800. A smooth solid black curve extends from the origin up and to the right across the graph. The graph shows a positive trend with an increasing rate of change. On the vertical axis is ( 7 60) and an arrow pointing to it. The arrow is labeled, “Vapor pressure at ( 100 degrees C ).”
 
 <!-- SEG:m68752:entry:auto-100 -->
-Pressure (torr)
+Vapor Pressure of Ice and Water in Various Temperatures at Sea Level
 
 <!-- SEG:m68752:entry:auto-101 -->
 Temperature (°C)
@@ -305,219 +305,231 @@ Temperature (°C)
 Pressure (torr)
 
 <!-- SEG:m68752:entry:auto-103 -->
-–10
+Temperature (°C)
 
 <!-- SEG:m68752:entry:auto-104 -->
-1.95
+Pressure (torr)
 
 <!-- SEG:m68752:entry:auto-105 -->
-18
+Temperature (°C)
 
 <!-- SEG:m68752:entry:auto-106 -->
-15.5
+Pressure (torr)
 
 <!-- SEG:m68752:entry:auto-107 -->
-30
+–10
 
 <!-- SEG:m68752:entry:auto-108 -->
-31.8
+1.95
 
 <!-- SEG:m68752:entry:auto-109 -->
-–5
+18
 
 <!-- SEG:m68752:entry:auto-110 -->
-3.0
+15.5
 
 <!-- SEG:m68752:entry:auto-111 -->
-19
+30
 
 <!-- SEG:m68752:entry:auto-112 -->
-16.5
+31.8
 
 <!-- SEG:m68752:entry:auto-113 -->
-35
+–5
 
 <!-- SEG:m68752:entry:auto-114 -->
-42.2
+3.0
 
 <!-- SEG:m68752:entry:auto-115 -->
-–2
+19
 
 <!-- SEG:m68752:entry:auto-116 -->
-3.9
+16.5
 
 <!-- SEG:m68752:entry:auto-117 -->
-20
+35
 
 <!-- SEG:m68752:entry:auto-118 -->
-17.5
+42.2
 
 <!-- SEG:m68752:entry:auto-119 -->
-40
+–2
 
 <!-- SEG:m68752:entry:auto-120 -->
-55.3
+3.9
 
 <!-- SEG:m68752:entry:auto-121 -->
-0
+20
 
 <!-- SEG:m68752:entry:auto-122 -->
-4.6
+17.5
 
 <!-- SEG:m68752:entry:auto-123 -->
-21
+40
 
 <!-- SEG:m68752:entry:auto-124 -->
-18.7
+55.3
 
 <!-- SEG:m68752:entry:auto-125 -->
-50
+0
 
 <!-- SEG:m68752:entry:auto-126 -->
-92.5
+4.6
 
 <!-- SEG:m68752:entry:auto-127 -->
-2
+21
 
 <!-- SEG:m68752:entry:auto-128 -->
-5.3
+18.7
 
 <!-- SEG:m68752:entry:auto-129 -->
-22
+50
 
 <!-- SEG:m68752:entry:auto-130 -->
-19.8
+92.5
 
 <!-- SEG:m68752:entry:auto-131 -->
-60
+2
 
 <!-- SEG:m68752:entry:auto-132 -->
-149.4
+5.3
 
 <!-- SEG:m68752:entry:auto-133 -->
-4
+22
 
 <!-- SEG:m68752:entry:auto-134 -->
-6.1
+19.8
 
 <!-- SEG:m68752:entry:auto-135 -->
-23
+60
 
 <!-- SEG:m68752:entry:auto-136 -->
-21.1
+149.4
 
 <!-- SEG:m68752:entry:auto-137 -->
-70
+4
 
 <!-- SEG:m68752:entry:auto-138 -->
-233.7
+6.1
 
 <!-- SEG:m68752:entry:auto-139 -->
-6
+23
 
 <!-- SEG:m68752:entry:auto-140 -->
-7.0
+21.1
 
 <!-- SEG:m68752:entry:auto-141 -->
-24
+70
 
 <!-- SEG:m68752:entry:auto-142 -->
-22.4
+233.7
 
 <!-- SEG:m68752:entry:auto-143 -->
-80
+6
 
 <!-- SEG:m68752:entry:auto-144 -->
-355.1
+7.0
 
 <!-- SEG:m68752:entry:auto-145 -->
-8
+24
 
 <!-- SEG:m68752:entry:auto-146 -->
-8.0
+22.4
 
 <!-- SEG:m68752:entry:auto-147 -->
-25
+80
 
 <!-- SEG:m68752:entry:auto-148 -->
-23.8
+355.1
 
 <!-- SEG:m68752:entry:auto-149 -->
-90
+8
 
 <!-- SEG:m68752:entry:auto-150 -->
-525.8
+8.0
 
 <!-- SEG:m68752:entry:auto-151 -->
-10
+25
 
 <!-- SEG:m68752:entry:auto-152 -->
-9.2
+23.8
 
 <!-- SEG:m68752:entry:auto-153 -->
-26
+90
 
 <!-- SEG:m68752:entry:auto-154 -->
-25.2
+525.8
 
 <!-- SEG:m68752:entry:auto-155 -->
-95
+10
 
 <!-- SEG:m68752:entry:auto-156 -->
-633.9
+9.2
 
 <!-- SEG:m68752:entry:auto-157 -->
-12
+26
 
 <!-- SEG:m68752:entry:auto-158 -->
-10.5
+25.2
 
 <!-- SEG:m68752:entry:auto-159 -->
-27
+95
 
 <!-- SEG:m68752:entry:auto-160 -->
-26.7
+633.9
 
 <!-- SEG:m68752:entry:auto-161 -->
-99
+12
 
 <!-- SEG:m68752:entry:auto-162 -->
-733.2
+10.5
 
 <!-- SEG:m68752:entry:auto-163 -->
-14
+27
 
 <!-- SEG:m68752:entry:auto-164 -->
-12.0
+26.7
 
 <!-- SEG:m68752:entry:auto-165 -->
-28
+99
 
 <!-- SEG:m68752:entry:auto-166 -->
-28.3
+733.2
 
 <!-- SEG:m68752:entry:auto-167 -->
-100.0
+14
 
 <!-- SEG:m68752:entry:auto-168 -->
-760.0
+12.0
 
 <!-- SEG:m68752:entry:auto-169 -->
-16
+28
 
 <!-- SEG:m68752:entry:auto-170 -->
-13.6
+28.3
 
 <!-- SEG:m68752:entry:auto-171 -->
-29
+100.0
 
 <!-- SEG:m68752:entry:auto-172 -->
-30.0
+760.0
 
 <!-- SEG:m68752:entry:auto-173 -->
-101.0
+16
 
 <!-- SEG:m68752:entry:auto-174 -->
+13.6
+
+<!-- SEG:m68752:entry:auto-175 -->
+29
+
+<!-- SEG:m68752:entry:auto-176 -->
+30.0
+
+<!-- SEG:m68752:entry:auto-177 -->
+101.0
+
+<!-- SEG:m68752:entry:auto-178 -->
 787.6
 
 <!-- SEG:m68752:example-title:fs-idp46681200-title -->
@@ -576,6 +588,9 @@ The explanation for this is illustrated in [[xref:CNX_Chem_09_03_Ammonia]]. Acco
 
 <!-- SEG:m68752:caption:CNX_Chem_09_03_Ammonia-caption -->
 One volume of N[[sub:2]] combines with three volumes of H[[sub:2]] to form two volumes of NH[[sub:3]].
+
+<!-- SEG:m68752:alt:fs-idm7395552-alt -->
+This diagram provided models of the chemical reaction written with formulas across the bottom of the figure. The reaction is written; N subscript 2 plus 3H subscript 2 followed by an arrow pointing right to NH subscript 3. Just above the formulas, space-filling models are provided. Above NH subscript 2, two blue spheres are bonded. Above 3H subscript 2, three pairs of two slightly smaller white spheres are bonded. Above NH subscript 3, two molecules are shown composed each of a central blue sphere to which three slightly smaller white spheres are bonded. Across the top of the diagram, the reaction is illustrated with balloons. To the left is a light blue balloon, which is labeled “N subscript 2”. This balloon contains a single space-filling model composed of two bonded blue spheres. This balloon is followed by a plus sign, then three grey balloons which are each labeled “H subscript 2.” Each of these balloons similarly contain a single space-filling model composed of two bonded white spheres. These white spheres are slightly smaller than the blue spheres. An arrow follows that points right to two light-green balloons, which are each labeled “2 NH subscript 3.” Each light-green balloon contains a space-filling model composed of a single central blue sphere to which three slightly smaller white spheres are bonded.
 
 <!-- SEG:m68752:example-title:fs-idp89809920-title -->
 Reaction of Gases
@@ -682,8 +697,14 @@ There is strong evidence from multiple sources that higher atmospheric levels of
 <!-- SEG:m68752:caption:CNX_Chem_09_03_GlobalWarming-caption -->
 Greenhouse gases trap enough of the sun’s energy to make the planet habitable—this is known as the greenhouse effect. Human activities are increasing greenhouse gas levels, warming the planet and causing more extreme weather events.
 
+<!-- SEG:m68752:alt:fs-idp86921200-alt -->
+This diagram shows half of a two dimensional view of the earth in blue and green at the left of the image. A slight distance outside the hemisphere is a grey arc. A line segment connects the label “Atmosphere” to the region between the hemisphere and the grey arc. In this region, near the surface of the earth the chemical formulas C O subscript 2, C H subscript 3, and N subscript 2 O appear. Five red arrows formed from wavy lines extend from green regions on the earth out into and just beyond the region labeled “Atmosphere.” The label “Infrared radiation” points to one of these red arrows. At a fair distance outside of the grey arc appears a yellow circle with a jagged boundary. This circle is labeled “Sun.” From it extend yellow arrows with wavy lines which extend toward the earth. Three of the arrows extend to the green region on the earth. One of the arrows appears to be reflected off the grey arc, causing its path to turn away from the earth.
+
 <!-- SEG:m68752:caption:CNX_Chem_09_03_GlobalWarming2-caption -->
 CO[[sub:2]] levels over the past 700,000 years were typically from 200–300 ppm, with a steep, unprecedented increase over the past 50 years.
+
+<!-- SEG:m68752:alt:fs-idp99125712-alt -->
+This figure has the heading “Carbon Dioxide in the Atmosphere.” The first graph has a horizontal axis label “Year ( B C )” and a vertical axis label “Carbon dioxide concentration ( p p m ).” The horizontal axis labels begin at 700,000 on the left and increases by multiples of 100,000 up to 0 on the right. The vertical axis begins at 0 and increases by multiples of 50 extending up to 400. A jagged, cyclical pattern is shown that begins before 600,000 B C at under 200 p p m. Up to 0 B C values appear to vary cyclically up to a high of about 300 p p m. Extending beyond 0 B C to the right, the carbon dioxide concentration appears to be on a steady increase, having reached nearly 400 p p m in recent years. The second graph is shown to magnify the portion of the graph that is most recent. This graph begins just before the year 1960 and includes markings for multiples of 10 up to the year 2010. The vertical axis begins just below 320 p p m and includes markings for all multiples of 20 up to 400 p p m. A smooth black line is shown extending through a jagged red data pattern. The trend is a steady, nearly linear increase from the lower left to the upper right on the graph.
 
 <!-- SEG:m68752:para:fs-idp85689376 -->
 Click [[link:here|http://openstax.org/l/16GlobalWarming]] to see a 2-minute video explaining greenhouse gases and global warming.
@@ -692,13 +713,16 @@ Click [[link:here|http://openstax.org/l/16GlobalWarming]] to see a 2-minute vide
 Susan Solomon
 
 <!-- SEG:m68752:para:fs-idp97050544 -->
-Atmospheric and climate scientist Susan {{term}}Solomon{{/term}} ([[xref:CNX_Chem_09_03_SusanSolom]]) is the author of one of [[i:The New York Times]] books of the year ([[i:The Coldest March]], 2001), one of Time magazine’s 100 most influential people in the world (2008), and a working group leader of the Intergovernmental Panel on Climate Change (IPCC), which was the recipient of the 2007 Nobel Peace Prize. She helped determine and explain the cause of the formation of the ozone hole over Antarctica, and has authored many important papers on climate change. She has been awarded the top scientific honors in the US and France (the National Medal of Science and the Grande Medaille, respectively), and is a member of the National Academy of Sciences, the Royal Society, the French Academy of Sciences, and the European Academy of Sciences. Formerly a professor at the University of Colorado, she is now at MIT, and continues to work at NOAA.
+Atmospheric and climate scientist Susan [[term:Solomon|term-00006]] ([[xref:CNX_Chem_09_03_SusanSolom]]) is the author of one of [[i:The New York Times]] books of the year ([[i:The Coldest March]], 2001), one of Time magazine’s 100 most influential people in the world (2008), and a working group leader of the Intergovernmental Panel on Climate Change (IPCC), which was the recipient of the 2007 Nobel Peace Prize. She helped determine and explain the cause of the formation of the ozone hole over Antarctica, and has authored many important papers on climate change. She has been awarded the top scientific honors in the US and France (the National Medal of Science and the Grande Medaille, respectively), and is a member of the National Academy of Sciences, the Royal Society, the French Academy of Sciences, and the European Academy of Sciences. Formerly a professor at the University of Colorado, she is now at MIT, and continues to work at NOAA.
 
 <!-- SEG:m68752:para:fs-idp221818192 -->
 For more information, watch this [[link:video|http://openstax.org/l/16SusanSolomon]] about Susan Solomon.
 
 <!-- SEG:m68752:caption:CNX_Chem_09_03_SusanSolom-caption -->
 Susan Solomon’s research focuses on climate change and has been instrumental in determining the cause of the ozone hole over Antarctica. (credit: National Oceanic and Atmospheric Administration)
+
+<!-- SEG:m68752:alt:fs-idp104021664-alt -->
+A photograph is shown of Susan Solomon sitting next to a globe.
 
 <!-- SEG:m68752:title:fs-idp102169424-title -->
 Key Concepts and Summary
@@ -709,13 +733,13 @@ The ideal gas law can be used to derive a number of convenient equations relatin
 <!-- SEG:m68752:title:fs-idp7509520-title -->
 Key Equations
 
-<!-- SEG:m68752:entry:auto-238 -->
+<!-- SEG:m68752:entry:auto-246 -->
 [[i:P[[sub:Total]]]] = [[i:P[[sub:A]]]] + [[i:P[[sub:B]]]] + [[i:P[[sub:C]]]] + … = Ʃ[[sub:i]][[i:P]][[sub:i]]
 
-<!-- SEG:m68752:entry:auto-239 -->
+<!-- SEG:m68752:entry:auto-247 -->
 [[i:P[[sub:A]]]] = [[i:X[[sub:A]] P[[sub:Total]]]]
 
-<!-- SEG:m68752:entry:auto-240 -->
+<!-- SEG:m68752:entry:auto-248 -->
 [[MATH:23]]
 
 <!-- SEG:m68752:title:fs-idp118960256-title -->

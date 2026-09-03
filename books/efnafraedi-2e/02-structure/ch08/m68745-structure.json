@@ -30,7 +30,10 @@
       },
       "media": {
         "id": "fs-idm125701968",
-        "alt": "Two peanut-shaped orbitals lie perpendicular to one another. They overlap with spherical orbitals to the left and top of the diagram.",
+        "alt": {
+          "segmentId": "m68745:alt:fs-idm125701968-alt",
+          "text": "Two peanut-shaped orbitals lie perpendicular to one another. They overlap with spherical orbitals to the left and top of the diagram."
+        },
         "src": "../../media/CNX_Chem_08_02_H2Ovb.jpg",
         "mimeType": "image/jpeg"
       }
@@ -49,7 +52,10 @@
       },
       "media": {
         "id": "fs-idp165066496",
-        "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows two peanut-shaped orbitals lying in a tetrahedral arrangement around the letter “O.” Diagram b shows the same two orbitals, but they now overlap to the top and to the left with two spherical orbitals, each labeled “H.” A pair of electrons occupies each lobe of the peanut-shaped orbitals.",
+        "alt": {
+          "segmentId": "m68745:alt:fs-idp165066496-alt",
+          "text": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows two peanut-shaped orbitals lying in a tetrahedral arrangement around the letter “O.” Diagram b shows the same two orbitals, but they now overlap to the top and to the left with two spherical orbitals, each labeled “H.” A pair of electrons occupies each lobe of the peanut-shaped orbitals."
+        },
         "src": "../../media/CNX_Chem_08_02_H2Otet.jpg",
         "mimeType": "image/jpeg"
       }
@@ -119,7 +125,10 @@
           },
           "media": {
             "id": "fs-idm63468032",
-            "alt": "A series of three diagrams connected by a right-facing arrow that is labeled, “Hybridization,” and a downward-facing arrow labeled, “Gives a linear arrangement,” are shown. The first diagram shows a blue spherical orbital and a red, peanut-shaped orbital, each placed on an X, Y, Z axis system. The second diagram shows the same two orbitals, but they are now purple and have one enlarged lobe and one smaller lobe. Each lies along the x-axis in the drawing. The third diagram shows the same two orbitals, but their smaller lobes now overlap along the x-axis while their larger lobes are located at and labeled as “180 degrees” from one another.",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idm63468032-alt",
+              "text": "A series of three diagrams connected by a right-facing arrow that is labeled, “Hybridization,” and a downward-facing arrow labeled, “Gives a linear arrangement,” are shown. The first diagram shows a blue spherical orbital and a red, peanut-shaped orbital, each placed on an X, Y, Z axis system. The second diagram shows the same two orbitals, but they are now purple and have one enlarged lobe and one smaller lobe. Each lies along the x-axis in the drawing. The third diagram shows the same two orbitals, but their smaller lobes now overlap along the x-axis while their larger lobes are located at and labeled as “180 degrees” from one another."
+            },
             "src": "../../media/CNX_Chem_08_02_spGeom.jpg",
             "mimeType": "image/jpeg"
           }
@@ -137,7 +146,10 @@
           },
           "media": {
             "id": "fs-idp197645472",
-            "alt": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled, “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above these two sets of lines is the phrase, “Orbitals in an isolated B e atom.” The right side of the diagram shows two short, horizontal lines placed halfway up the space and each labeled, “s p.” An upward-facing half arrow is drawn vertically on each line. Above these lines are two other short, horizontal lines, each labeled, “2 p.” Above these two sets of lines is the phrase, “Orbitals in the s p hybridized B e in B e C l subscript 2.”",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idp197645472-alt",
+              "text": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled, “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above these two sets of lines is the phrase, “Orbitals in an isolated B e atom.” The right side of the diagram shows two short, horizontal lines placed halfway up the space and each labeled, “s p.” An upward-facing half arrow is drawn vertically on each line. Above these lines are two other short, horizontal lines, each labeled, “2 p.” Above these two sets of lines is the phrase, “Orbitals in the s p hybridized B e in B e C l subscript 2.”"
+            },
             "src": "../../media/CNX_Chem_08_02_spDiag.jpg",
             "mimeType": "image/jpeg"
           }
@@ -190,7 +202,10 @@
           },
           "media": {
             "id": "fs-idm10342640",
-            "alt": "This shows a series of three diagrams with one on the left connected to one on the right by a right-facing arrow that is labeled, “Hybridization.” Below the one on the right is a downward-facing arrow labeled, “Gives a trigonal planar arrangement,” connecting to the last diagram. The first diagram shows a blue spherical orbital labeled “S” and then two red and blue, peanut-shaped orbitals, each placed on an X, Y, Z axis system, labeled “P subscript x” and “P subscript y.” The two red and blue orbitals are located on the x and z axes, respectively. The second diagram shows the three orbitals again on an X, Y, Z axis system, but they are yellow and have one enlarged lobe and one smaller lobe. Each lies in a different axis in the drawing. The third diagram shows the same three orbitals, but their smaller lobes now overlap while their larger lobes are located at and labeled as “120 degrees” from one another.",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idm10342640-alt",
+              "text": "This shows a series of three diagrams with one on the left connected to one on the right by a right-facing arrow that is labeled, “Hybridization.” Below the one on the right is a downward-facing arrow labeled, “Gives a trigonal planar arrangement,” connecting to the last diagram. The first diagram shows a blue spherical orbital labeled “S” and then two red and blue, peanut-shaped orbitals, each placed on an X, Y, Z axis system, labeled “P subscript x” and “P subscript y.” The two red and blue orbitals are located on the x and z axes, respectively. The second diagram shows the three orbitals again on an X, Y, Z axis system, but they are yellow and have one enlarged lobe and one smaller lobe. Each lies in a different axis in the drawing. The third diagram shows the same three orbitals, but their smaller lobes now overlap while their larger lobes are located at and labeled as “120 degrees” from one another."
+            },
             "src": "../../media/CNX_Chem_08_02_sp2Geom.jpg",
             "mimeType": "image/jpeg"
           }
@@ -209,7 +224,10 @@
           },
           "media": {
             "id": "fs-idp175210624",
-            "alt": "Three balloon-like orbitals are shown, and connect together near their narrower ends in one plane. The angle between a pair of lobes is labeled, “120 degrees.”",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idp175210624-alt",
+              "text": "Three balloon-like orbitals are shown, and connect together near their narrower ends in one plane. The angle between a pair of lobes is labeled, “120 degrees.”"
+            },
             "src": "../../media/CNX_Chem_08_02_sp2Conv.jpg",
             "mimeType": "image/jpeg"
           }
@@ -228,7 +246,10 @@
           },
           "media": {
             "id": "fs-idm5465792",
-            "alt": "A boron atom is shown connected to three hydrogen atoms, which are arranged around it like a pyramid. The angle from one line connecting the boron atom to a hydrogen atom to another line connecting the boron atom to a hydrogen atom is labeled, “120 degrees.”",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idm5465792-alt",
+              "text": "A boron atom is shown connected to three hydrogen atoms, which are arranged around it like a pyramid. The angle from one line connecting the boron atom to a hydrogen atom to another line connecting the boron atom to a hydrogen atom is labeled, “120 degrees.”"
+            },
             "src": "../../media/CNX_Chem_08_02_BH3.jpg",
             "mimeType": "image/jpeg"
           }
@@ -241,7 +262,10 @@
           },
           "media": {
             "id": "fs-idp19295472",
-            "alt": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above both sets of these lines is the phrase, “Orbitals in an isolated B atom.” One of the lines has a vertical, up-facing arrow drawn on it. The right side of the diagram shows three short, horizontal lines placed halfway up the space and each labeled, “s p superscript 2.” An upward-facing half arrow is drawn vertically on each line. Above these lines is one other short, horizontal line, labeled, “2 p.” Above both sets of lines is the phrase, “Orbitals in the s p superscript 2 hybridized B atom in B H subscript 3.”",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idp19295472-alt",
+              "text": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above both sets of these lines is the phrase, “Orbitals in an isolated B atom.” One of the lines has a vertical, up-facing arrow drawn on it. The right side of the diagram shows three short, horizontal lines placed halfway up the space and each labeled, “s p superscript 2.” An upward-facing half arrow is drawn vertically on each line. Above these lines is one other short, horizontal line, labeled, “2 p.” Above both sets of lines is the phrase, “Orbitals in the s p superscript 2 hybridized B atom in B H subscript 3.”"
+            },
             "src": "../../media/CNX_Chem_08_02_BH3Diag.jpg",
             "mimeType": "image/jpeg"
           }
@@ -260,7 +284,10 @@
           },
           "media": {
             "id": "fs-idp5254576",
-            "alt": "Three Lewis structures are shown. The left-hand structure shows a chlorine atom surrounded by three lone pairs of electrons single bonded to a nitrogen atom with one lone pair of electrons and double bonded to an oxygen atom with two lone pairs of electrons. The middle structure shows a carbon atom single bonded to two hydrogen atoms and double bonded to an oxygen atom that has two lone pairs of electrons. The right-hand structure shows two carbon atoms, double bonded to one another and each single bonded to two hydrogen atoms.",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idp5254576-alt",
+              "text": "Three Lewis structures are shown. The left-hand structure shows a chlorine atom surrounded by three lone pairs of electrons single bonded to a nitrogen atom with one lone pair of electrons and double bonded to an oxygen atom with two lone pairs of electrons. The middle structure shows a carbon atom single bonded to two hydrogen atoms and double bonded to an oxygen atom that has two lone pairs of electrons. The right-hand structure shows two carbon atoms, double bonded to one another and each single bonded to two hydrogen atoms."
+            },
             "src": "../../media/CNX_Chem_08_02_sp2Ex.jpg",
             "mimeType": "image/jpeg"
           }
@@ -289,7 +316,10 @@
           },
           "media": {
             "id": "fs-idm125953968",
-            "alt": "A series of three diagrams connected by a right-facing arrow that is labeled, “Hybridization,” and a downward-facing arrow labeled, “Gives a tetrahedral arrangement,” are shown. The first diagram shows a blue spherical orbital and three red, peanut-shaped orbitals, each placed on an x, y, z axis system. The three red orbitals are located on the x , y and z axes, respectively. The second diagram shows the same four orbitals, but they are now purple and have one enlarged lobe and one smaller lobe. Each lies in a different axis in the drawing. The third diagram shows the same four orbitals, but their smaller lobes now overlap to form a tetrahedral structure.",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idm125953968-alt",
+              "text": "A series of three diagrams connected by a right-facing arrow that is labeled, “Hybridization,” and a downward-facing arrow labeled, “Gives a tetrahedral arrangement,” are shown. The first diagram shows a blue spherical orbital and three red, peanut-shaped orbitals, each placed on an x, y, z axis system. The three red orbitals are located on the x , y and z axes, respectively. The second diagram shows the same four orbitals, but they are now purple and have one enlarged lobe and one smaller lobe. Each lies in a different axis in the drawing. The third diagram shows the same four orbitals, but their smaller lobes now overlap to form a tetrahedral structure."
+            },
             "src": "../../media/CNX_Chem_08_02_sp3Geom.jpg",
             "mimeType": "image/jpeg"
           }
@@ -307,7 +337,10 @@
           },
           "media": {
             "id": "fs-idp413184",
-            "alt": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Two of the lines have a vertical, up-facing arrow drawn on them. Above both sets of lines is the phrase, “Orbitals in an isolated C atom.” The right side of the diagram shows four short, horizontal lines placed halfway up the space and each labeled, “s p superscript 3.” An upward-facing half arrow is drawn vertically on each line. Above these lines is the phrase, “Orbitals in the s p superscript 3 hybridized C atom in C H subscript 4.”",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idp413184-alt",
+              "text": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Two of the lines have a vertical, up-facing arrow drawn on them. Above both sets of lines is the phrase, “Orbitals in an isolated C atom.” The right side of the diagram shows four short, horizontal lines placed halfway up the space and each labeled, “s p superscript 3.” An upward-facing half arrow is drawn vertically on each line. Above these lines is the phrase, “Orbitals in the s p superscript 3 hybridized C atom in C H subscript 4.”"
+            },
             "src": "../../media/CNX_Chem_08_02_sp3Diag.jpg",
             "mimeType": "image/jpeg"
           }
@@ -330,7 +363,10 @@
           },
           "media": {
             "id": "fs-idp175091264",
-            "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows two carbon atoms, each surrounded by their four s p subscript three hybridized orbitals in a three dimensional arrangement. Each of the orbitals is shown overlapping with a spherical hydrogen atom. Diagram b shows the same general arrangement, but the hydrogen atoms are just represented by an, “H” and their spherical orbitals are not shown.",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idp175091264-alt",
+              "text": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows two carbon atoms, each surrounded by their four s p subscript three hybridized orbitals in a three dimensional arrangement. Each of the orbitals is shown overlapping with a spherical hydrogen atom. Diagram b shows the same general arrangement, but the hydrogen atoms are just represented by an, “H” and their spherical orbitals are not shown."
+            },
             "src": "../../media/CNX_Chem_08_02_ethane.jpg",
             "mimeType": "image/jpeg"
           }
@@ -375,7 +411,10 @@
           },
           "media": {
             "id": "fs-idp31211936",
-            "alt": "Three Lewis structures are shown along with designations of molecular shape. The left image shows a sulfur atom singly bonded to four fluorine atoms. The sulfur atom has one lone pair of electrons while each fluorine has three. Two fluorine atoms are drawn vertically up and down from the sulfur while the other two are shown going into and out of the page. The second structure shows one chlorine atom singly bonded to three fluorine atoms. The chlorine has two lone pairs of electrons while each fluorine has three. Two fluorine atoms are drawn vertically up and down from the sulfur while the other is shown horizontally. The right structure shows a chlorine atom singly bonded to four fluorine atoms. The chlorine atom has one lone pair of electrons and a superscript plus sign, while each fluorine has three lone pairs of electrons. Two fluorine atoms are drawn vertically up and down from the sulfur while the other two are shown going into and out of the page.",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idp31211936-alt",
+              "text": "Three Lewis structures are shown along with designations of molecular shape. The left image shows a sulfur atom singly bonded to four fluorine atoms. The sulfur atom has one lone pair of electrons while each fluorine has three. Two fluorine atoms are drawn vertically up and down from the sulfur while the other two are shown going into and out of the page. The second structure shows one chlorine atom singly bonded to three fluorine atoms. The chlorine has two lone pairs of electrons while each fluorine has three. Two fluorine atoms are drawn vertically up and down from the sulfur while the other is shown horizontally. The right structure shows a chlorine atom singly bonded to four fluorine atoms. The chlorine atom has one lone pair of electrons and a superscript plus sign, while each fluorine has three lone pairs of electrons. Two fluorine atoms are drawn vertically up and down from the sulfur while the other two are shown going into and out of the page."
+            },
             "src": "../../media/CNX_Chem_08_02_sp3d_img.jpg",
             "mimeType": "image/jpeg"
           }
@@ -389,7 +428,10 @@
           },
           "media": {
             "id": "fs-idp112861328",
-            "alt": "Two images are shown and labeled “a” and “b.” Image a depicts a ball-and-stick model in a trigonal bipyramidal arrangement. Image b depicts the hybrid orbitals in the same arrangement and each is labeled, “s p superscript three d.”",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idp112861328-alt",
+              "text": "Two images are shown and labeled “a” and “b.” Image a depicts a ball-and-stick model in a trigonal bipyramidal arrangement. Image b depicts the hybrid orbitals in the same arrangement and each is labeled, “s p superscript three d.”"
+            },
             "src": "../../media/CNX_Chem_08_02_sp3d.jpg",
             "mimeType": "image/jpeg"
           }
@@ -408,7 +450,10 @@
           },
           "media": {
             "id": "fs-idp175928896",
-            "alt": "Two images are shown and labeled “a” and “b.” Image a depicts a ball-and-stick model in an octahedral arrangement. Image b depicts the hybrid orbitals in the same arrangement and each is labeled, “s p superscript three d superscript two.”",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idp175928896-alt",
+              "text": "Two images are shown and labeled “a” and “b.” Image a depicts a ball-and-stick model in an octahedral arrangement. Image b depicts the hybrid orbitals in the same arrangement and each is labeled, “s p superscript three d superscript two.”"
+            },
             "src": "../../media/CNX_Chem_08_02_SF6.jpg",
             "mimeType": "image/jpeg"
           }
@@ -458,7 +503,10 @@
           },
           "media": {
             "id": "fs-idp61147088",
-            "alt": "A table is shown that is composed of five columns and six rows. The header row contains the phrases, “Regions of electron density,” “Arrangement,” (which has two columns below it), and “Hybridization,” (which has two columns below it). The first column contains the numbers “2,” “3,” “4,” “5,” and “6.” The second column contains images of a line, a triangle, a three sided pyramid, a trigonal bipyramid, and an eight-faced ocatahedron. The third column contains the terms, “Linear,” “Trigonal planar,” “Tetrahedral,” “Trigonal bipyramidal,” and “Octahedral.” The fourth column contains the terms “s p,” “s p superscript 2,” “s p superscript 3,” “s p superscript 3 d,” and “s p superscript 3 d superscript 2.” The last column contains drawings of the molecules beginning with a peanut-shaped structure marked with an angle of “180 degrees.” The second structure is made up of three equal-sized, rounded structures connected at one point with an angle of “120 degrees,” while the third structure is a three-dimensional arrangement of four equal-sized, rounded structures labeled as “109.5 degrees.” The fourth structure is made up of five equal-sized, rounded structures connected at “120 and 90 degrees,” while the fifth structure has six equal-sized, rounded structures connected at “90 degrees.”",
+            "alt": {
+              "segmentId": "m68745:alt:fs-idp61147088-alt",
+              "text": "A table is shown that is composed of five columns and six rows. The header row contains the phrases, “Regions of electron density,” “Arrangement,” (which has two columns below it), and “Hybridization,” (which has two columns below it). The first column contains the numbers “2,” “3,” “4,” “5,” and “6.” The second column contains images of a line, a triangle, a three sided pyramid, a trigonal bipyramid, and an eight-faced ocatahedron. The third column contains the terms, “Linear,” “Trigonal planar,” “Tetrahedral,” “Trigonal bipyramidal,” and “Octahedral.” The fourth column contains the terms “s p,” “s p superscript 2,” “s p superscript 3,” “s p superscript 3 d,” and “s p superscript 3 d superscript 2.” The last column contains drawings of the molecules beginning with a peanut-shaped structure marked with an angle of “180 degrees.” The second structure is made up of three equal-sized, rounded structures connected at one point with an angle of “120 degrees,” while the third structure is a three-dimensional arrangement of four equal-sized, rounded structures labeled as “109.5 degrees.” The fourth structure is made up of five equal-sized, rounded structures connected at “120 and 90 degrees,” while the fifth structure has six equal-sized, rounded structures connected at “90 degrees.”"
+            },
             "src": "../../media/CNX_Chem_08_02_HybrdOrbit.jpg",
             "mimeType": "image/jpeg"
           }
@@ -472,7 +520,10 @@
           "type": "media",
           "id": "fs-idp72255632",
           "class": null,
-          "alt": "Three Lewis structures are shown. The left structure shows an oxygen atom with two lone pairs of electrons single bonded to two hydrogen atoms. The middle structure is made up of a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. The right structure is made up of a tellurium atom with two lone pairs of electrons single bonded to two hydrogen atoms. From left to right, the bond angles of each molecule decrease.",
+          "alt": {
+            "segmentId": "m68745:alt:fs-idp72255632-alt",
+            "text": "Three Lewis structures are shown. The left structure shows an oxygen atom with two lone pairs of electrons single bonded to two hydrogen atoms. The middle structure is made up of a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. The right structure is made up of a tellurium atom with two lone pairs of electrons single bonded to two hydrogen atoms. From left to right, the bond angles of each molecule decrease."
+          },
           "src": "../../media/CNX_Chem_08_02_hybrid_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -513,6 +564,22 @@
               "type": "para",
               "id": "fs-idm65914448",
               "segmentId": "m68745:para:fs-idm65914448"
+            },
+            {
+              "type": "media",
+              "id": "fs-idp193912528",
+              "alt": {
+                "segmentId": "m68745:alt:fs-idp193912528-alt",
+                "text": "A structure is shown in which a sulfur atom is bonded to four oxygen atoms in a tetrahedral arrangement. Two of the oxygen atoms have a negative charge."
+              }
+            },
+            {
+              "type": "media",
+              "id": "fs-idm12651952",
+              "alt": {
+                "segmentId": "m68745:alt:fs-idm12651952-alt",
+                "text": "A Lewis structure is shown in which four fluorine atoms are each attached to one sulfur atom. Two of the attached fluorine atoms are vertically attached up and down, while two are attached into and out of the page to the right. The sulfur also has one lone pair of electrons attached to the left of the structure."
+              }
             },
             {
               "type": "note",
@@ -571,6 +638,22 @@
               "type": "para",
               "id": "fs-idp180575168",
               "segmentId": "m68745:para:fs-idp180575168"
+            },
+            {
+              "type": "media",
+              "id": "fs-idp175456832",
+              "alt": {
+                "segmentId": "m68745:alt:fs-idp175456832-alt",
+                "text": "A Lewis structure is shown in which a carbon atom is double bonded to an oxygen atom that has two lone pairs of electrons. The carbon atom forms single bonds to two nitrogen atoms. Each nitrogen is single bonded to two hydrogen atoms, and each nitrogen atoms has one lone pair of electrons."
+              }
+            },
+            {
+              "type": "media",
+              "id": "fs-idp25876800",
+              "alt": {
+                "segmentId": "m68745:alt:fs-idp25876800-alt",
+                "text": "A Lewis structure is shown in which a carbon atom is double bonded to an oxygen atom that has two lone pairs of electrons and single bonded to another oxygen atom that is single boned to a hydrogen atom. This second oxygen atom has two lone pairs of electrons. The carbon is also single bonded to a carbon atom that is single bonded to three hydrogen atoms."
+              }
             },
             {
               "type": "note",
@@ -759,6 +842,14 @@
                 "type": "para",
                 "id": "fs-idm38892720",
                 "segmentId": "m68745:problem:fs-idm38892720"
+              },
+              {
+                "type": "media",
+                "id": "fs-idp20593920",
+                "alt": {
+                  "segmentId": "m68745:alt:fs-idp20593920-alt",
+                  "text": "A Lewis structure is shown in which a carbon atom is single bonded to three hydrogen atoms and single bonded to a sulfur atom with two lone pairs of electrons. The sulfur atom is attached to a chain of four singly bonded carbon atoms, the first two of which are single bonded to two hydrogen atoms each, and the third of which is single bonded to a hydrogen atom and single bonded to a nitrogen atom which has one lone electron pair. The nitrogen atom is also single bonded to two hydrogen atoms. The fourth andfinal carbon in the chain is double bonded to an oxygen with two lone pairs of electrons and single bonded to an oxygen atom with two lone pairs of electrons. The second oxygen atom is single bonded to a hydrogen atom."
+                }
               }
             ]
           },
@@ -927,6 +1018,14 @@
                 "segmentId": "m68745:problem:fs-idp25434064"
               },
               {
+                "type": "media",
+                "id": "fs-idp84375552",
+                "alt": {
+                  "segmentId": "m68745:alt:fs-idp84375552-alt",
+                  "text": "A Lewis structure is shown in which three phosphorus atoms are single bonded together to form a triangle. Each phosphorus is bonded to a sulfur atom by a vertical single bond and each of those sulfur atoms is then bonded to a single phosphorus atom so that a six-sided ring is created with a sulfur in the middle."
+                }
+              },
+              {
                 "type": "para",
                 "id": "fs-idp10208368",
                 "segmentId": "m68745:problem:fs-idp10208368"
@@ -967,6 +1066,14 @@
                 "type": "para",
                 "id": "fs-idm63316720",
                 "segmentId": "m68745:problem:fs-idm63316720"
+              },
+              {
+                "type": "media",
+                "id": "fs-idm54700256",
+                "alt": {
+                  "segmentId": "m68745:alt:fs-idm54700256-alt",
+                  "text": "A Lewis structure is shown that is missing all of its bonds. Six carbon atoms form a chain. There are three hydrogen atoms located around the first carbon, two located around the second, one located near the fifth, and two located around the sixth carbon."
+                }
               }
             ]
           },
@@ -986,6 +1093,14 @@
           },
           "solution": {
             "content": [
+              {
+                "type": "media",
+                "id": "fs-idm38273232",
+                "alt": {
+                  "segmentId": "m68745:alt:fs-idm38273232-alt",
+                  "text": "Two Lewis structures are shown. The left structure shows a nitrogen atom with one lone pair of electrons single bonded to three fluorine atoms, each of which has three lone pairs of electrons. The right structure shows a phosphorus atoms single bonded to five fluorine atoms, each of which has three lone pairs of electrons."
+                }
+              },
               {
                 "type": "para",
                 "id": "fs-idm31702720",
@@ -1069,67 +1184,85 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idm6721680",
       "class": null,
-      "alt": "A Lewis structure is shown in which eight sulfur atoms, each with two lone pairs of eletrons, are single bonded together into an eight-sided ring.",
       "src": "../../media/CNX_Chem_08_02_SulfManuf1_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68745:alt:fs-idm6721680-alt",
+        "text": "A Lewis structure is shown in which eight sulfur atoms, each with two lone pairs of eletrons, are single bonded together into an eight-sided ring."
+      }
     },
     {
       "placeholder": "[[MEDIA:2]]",
       "id": "fs-idm5731280",
       "class": null,
-      "alt": "Two Lewis structure are shown, connected by a double-ended arrow. The left structure shows a sulfur atom with one lone pair of electrons double bonded to an oxygen atom with two lone pairs of electrons on the left and single bonded to an oxygen atom with three lone pairs of electrons on the right. The right structure shows the same molecule, except that the double bonded oxygen is on the right side of the sulfur and the single bonded oxygen is to the left of the sulfur.",
       "src": "../../media/CNX_Chem_08_02_SulfManuf2_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68745:alt:fs-idm5731280-alt",
+        "text": "Two Lewis structure are shown, connected by a double-ended arrow. The left structure shows a sulfur atom with one lone pair of electrons double bonded to an oxygen atom with two lone pairs of electrons on the left and single bonded to an oxygen atom with three lone pairs of electrons on the right. The right structure shows the same molecule, except that the double bonded oxygen is on the right side of the sulfur and the single bonded oxygen is to the left of the sulfur."
+      }
     },
     {
       "placeholder": "[[MEDIA:3]]",
       "id": "fs-idp100080400",
       "class": null,
-      "alt": "A Lewis structure of a sulfur atom singly bonded to two oxygen atoms, each with three lone pairs of electrons, and double bonded to a third oxygen atom with two lone pairs of electrons is shown.",
       "src": "../../media/CNX_Chem_08_02_SulfManuf3_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68745:alt:fs-idp100080400-alt",
+        "text": "A Lewis structure of a sulfur atom singly bonded to two oxygen atoms, each with three lone pairs of electrons, and double bonded to a third oxygen atom with two lone pairs of electrons is shown."
+      }
     },
     {
       "placeholder": "[[MEDIA:4]]",
       "id": "fs-idp25214960",
       "class": null,
-      "alt": "A Lewis structure is shown in which a sulfur atom is single bonded to four oxygen atoms. Two of the oxygen atoms have three lone pairs of electrons while the other two each have two lone pairs of electrons and are each singly bonded to a hydrogen atom.",
       "src": "../../media/CNX_Chem_08_02_SulfManuf4_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68745:alt:fs-idp25214960-alt",
+        "text": "A Lewis structure is shown in which a sulfur atom is single bonded to four oxygen atoms. Two of the oxygen atoms have three lone pairs of electrons while the other two each have two lone pairs of electrons and are each singly bonded to a hydrogen atom."
+      }
     },
     {
       "placeholder": "[[MEDIA:5]]",
       "id": "fs-idp19199872",
       "class": null,
-      "alt": "A Lewis structure is shown in which a xenon atom that has three lone pairs of electrons is single bonded to two fluorine atoms, each of which has three lone pairs of electrons.",
       "src": "../../media/CNX_Chem_08_02_xefluoride_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68745:alt:fs-idp19199872-alt",
+        "text": "A Lewis structure is shown in which a xenon atom that has three lone pairs of electrons is single bonded to two fluorine atoms, each of which has three lone pairs of electrons."
+      }
     },
     {
       "placeholder": "[[MEDIA:6]]",
       "id": "fs-idm62815664",
       "class": null,
-      "alt": "Two Lewis structure are shown, the left of which depicts three phosphorus atoms single bonded together to form a triangle. Each phosphorus is bonded to a sulfur atom by a vertical single bond and each of those sulfur atoms is then bonded to a single phosphorus atom so that a six-sided ring is created with a sulfur in the middle. Each sulfur atom in this structure has two lone pairs of electrons while each phosphorus has one lone pair. The second Lewis structure shows a chlorate atom single bonded to two oxygen atoms, each of which has three lone pairs of electrons, and double bonded to an oxygen atom, which has two lone pairs of electrons.",
       "src": "../../media/CNX_Chem_08_02_phsphorus2_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68745:alt:fs-idm62815664-alt",
+        "text": "Two Lewis structure are shown, the left of which depicts three phosphorus atoms single bonded together to form a triangle. Each phosphorus is bonded to a sulfur atom by a vertical single bond and each of those sulfur atoms is then bonded to a single phosphorus atom so that a six-sided ring is created with a sulfur in the middle. Each sulfur atom in this structure has two lone pairs of electrons while each phosphorus has one lone pair. The second Lewis structure shows a chlorate atom single bonded to two oxygen atoms, each of which has three lone pairs of electrons, and double bonded to an oxygen atom, which has two lone pairs of electrons."
+      }
     }
   ],
   "sectionOrder": 2

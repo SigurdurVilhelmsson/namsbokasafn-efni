@@ -54,7 +54,10 @@
       },
       "media": {
         "id": "fs-idp145097616",
-        "alt": "A flow chart is shown. A cow, grass, and a tree are shown in the center of the diagram. Downward-facing arrows lead from them to the phrase, “Decomposers ( aerobic and anaerobic bacteria and fungi ).” A downward-facing arrow leads to a space-filing model with one blue atom bonded to four white atoms. The model is labeled, “Ammonium ( N H subscript 4 ).” A right-facing arrow leads from this molecule to another molecule that is composed of a blue atom bonded to two red atoms. The model is labeled, “Nitrites ( N O subscript 2 superscript negative sign ).” Below this arrow is a picture of a circle with two rod-shaped structures. It is labeled, “Nitrifying bacteria.” Above the nitrites label is an upward-facing arrow leading to a blue atom single-bonded to three red atoms. The model is labeled, “Nitrates ( N O subscript 3 superscript negative sign ).” Next to this arrow is a picture of a circle with two rod-shaped structures labeled, “Nitrifying bacteria.” The nitrates label has a double-headed, upward-facing arrow that leads to two pictures: one of the roots of the tree which is labeled, “Assimilation,” and one leading to a picture of a circle with four oval-shaped structures labeled, “Denitrifying bacteria.” A left-facing arrow leads from this bacteria to a molecule made up of two atoms triple-bonded together and labeled, “Atmospheric nitrogen ( N subscript 2 ).” This molecule is connected to a downward-facing, double-headed arrow that leads to an image showing yellow filaments on a black background and a picture of a circle with four rod-shaped structures labeled, “Nitrogen-fixing soil bacteria.” An arrow leads from a picture of a plant’s roots to the yellow filaments and then to a photo of a circle with four oval-shaped structures labeled, “Nitrogen-fixing bacteria in root nodules.”",
+        "alt": {
+          "segmentId": "m68835:alt:fs-idp145097616-alt",
+          "text": "A flow chart is shown. A cow, grass, and a tree are shown in the center of the diagram. Downward-facing arrows lead from them to the phrase, “Decomposers ( aerobic and anaerobic bacteria and fungi ).” A downward-facing arrow leads to a space-filing model with one blue atom bonded to four white atoms. The model is labeled, “Ammonium ( N H subscript 4 ).” A right-facing arrow leads from this molecule to another molecule that is composed of a blue atom bonded to two red atoms. The model is labeled, “Nitrites ( N O subscript 2 superscript negative sign ).” Below this arrow is a picture of a circle with two rod-shaped structures. It is labeled, “Nitrifying bacteria.” Above the nitrites label is an upward-facing arrow leading to a blue atom single-bonded to three red atoms. The model is labeled, “Nitrates ( N O subscript 3 superscript negative sign ).” Next to this arrow is a picture of a circle with two rod-shaped structures labeled, “Nitrifying bacteria.” The nitrates label has a double-headed, upward-facing arrow that leads to two pictures: one of the roots of the tree which is labeled, “Assimilation,” and one leading to a picture of a circle with four oval-shaped structures labeled, “Denitrifying bacteria.” A left-facing arrow leads from this bacteria to a molecule made up of two atoms triple-bonded together and labeled, “Atmospheric nitrogen ( N subscript 2 ).” This molecule is connected to a downward-facing, double-headed arrow that leads to an image showing yellow filaments on a black background and a picture of a circle with four rod-shaped structures labeled, “Nitrogen-fixing soil bacteria.” An arrow leads from a picture of a plant’s roots to the yellow filaments and then to a photo of a circle with four oval-shaped structures labeled, “Nitrogen-fixing bacteria in root nodules.”"
+        },
         "src": "../../media/CNX_Chem_18_07_Nitrogen.jpg",
         "mimeType": "image/jpeg"
       }
@@ -83,7 +86,10 @@
       },
       "media": {
         "id": "fs-idp214051744",
-        "alt": "A space-filling model of a molecule shows two blue atoms labeled 'N' bonded to one another and to one red atom labeled 'O'. Two Lewis structures are also shown and connected by a double-headed arrow. The left image shows a nitrogen atom with two lone pairs of electrons double bonded to a second nitrogen atom. The second nitrogen atom is double-bonded to an oxygen atom that has two lone pairs of electrons. The right image shows a nitrogen atom with a lone pair of electrons triple bonded to a second nitrogen atom. The second nitrogen atom is single bonded to an oxygen atom that has three lone pairs of electrons.",
+        "alt": {
+          "segmentId": "m68835:alt:fs-idp214051744-alt",
+          "text": "A space-filling model of a molecule shows two blue atoms labeled 'N' bonded to one another and to one red atom labeled 'O'. Two Lewis structures are also shown and connected by a double-headed arrow. The left image shows a nitrogen atom with two lone pairs of electrons double bonded to a second nitrogen atom. The second nitrogen atom is double-bonded to an oxygen atom that has two lone pairs of electrons. The right image shows a nitrogen atom with a lone pair of electrons triple bonded to a second nitrogen atom. The second nitrogen atom is single bonded to an oxygen atom that has three lone pairs of electrons."
+        },
         "src": "../../media/CNX_Chem_18_07_molecreso.jpg",
         "mimeType": "image/jpeg"
       }
@@ -117,7 +123,10 @@
       },
       "media": {
         "id": "fs-idp29719568",
-        "alt": "Two Lewis structures are shown and connected by a double-headed arrow. The left image shows a number two next to a nitrogen atom with a lone electron and a lone pair of electrons. The nitrogen atom is double-bonded to an oxygen atom with two lone pairs of electrons. The right image shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another. Each is also double bonded to an oxygen atom with two lone pairs of electrons.",
+        "alt": {
+          "segmentId": "m68835:alt:fs-idp29719568-alt",
+          "text": "Two Lewis structures are shown and connected by a double-headed arrow. The left image shows a number two next to a nitrogen atom with a lone electron and a lone pair of electrons. The nitrogen atom is double-bonded to an oxygen atom with two lone pairs of electrons. The right image shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another. Each is also double bonded to an oxygen atom with two lone pairs of electrons."
+        },
         "src": "../../media/CNX_Chem_18_07_N2O2.jpg",
         "mimeType": "image/jpeg"
       }
@@ -136,7 +145,10 @@
       },
       "media": {
         "id": "fs-idm41926784",
-        "alt": "A space-filling model of a molecule shows two blue atoms labeled, “N,” bonded to one another and to three red atoms labeled, “O.” Two Lewis structures are also shown and connected by a double-headed arrow. The left image shows two nitrogen atoms that are single bonded to one another. The left nitrogen is double bonded to an oxygen atom that has two lone pairs of electrons. The right nitrogen has one lone pair of electrons and is double bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen with three lone pairs of electrons. The right image shows two nitrogen atoms that are single bonded to one another. The left nitrogen is double bonded to an oxygen atom that has two lone pairs of electrons. The right nitrogen has one lone pair of electrons and is double bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen atom with three lone pairs of electrons.",
+        "alt": {
+          "segmentId": "m68835:alt:fs-idm41926784-alt",
+          "text": "A space-filling model of a molecule shows two blue atoms labeled, “N,” bonded to one another and to three red atoms labeled, “O.” Two Lewis structures are also shown and connected by a double-headed arrow. The left image shows two nitrogen atoms that are single bonded to one another. The left nitrogen is double bonded to an oxygen atom that has two lone pairs of electrons. The right nitrogen has one lone pair of electrons and is double bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen with three lone pairs of electrons. The right image shows two nitrogen atoms that are single bonded to one another. The left nitrogen is double bonded to an oxygen atom that has two lone pairs of electrons. The right nitrogen has one lone pair of electrons and is double bonded to an oxygen atom with two lone pairs of electrons and single bonded to an oxygen atom with three lone pairs of electrons."
+        },
         "src": "../../media/CNX_Chem_18_07_molecreso2.jpg",
         "mimeType": "image/jpeg"
       }
@@ -154,7 +166,10 @@
       },
       "media": {
         "id": "fs-idp62797312",
-        "alt": "Three photos are shown and connected by right-facing arrows. The left image shows a test tube in a clamp that holds a colorless solution and a wire held above it. The middle image shows a test tube in a clamp that holds a wire submerged in a pale green liquid and emitting a light brown gas. The right image shows a test tube in a clamp that holds a wire submerged in a dark green liquid and emitting a brown gas.",
+        "alt": {
+          "segmentId": "m68835:alt:fs-idp62797312-alt",
+          "text": "Three photos are shown and connected by right-facing arrows. The left image shows a test tube in a clamp that holds a colorless solution and a wire held above it. The middle image shows a test tube in a clamp that holds a wire submerged in a pale green liquid and emitting a light brown gas. The right image shows a test tube in a clamp that holds a wire submerged in a dark green liquid and emitting a brown gas."
+        },
         "src": "../../media/CNX_Chem_18_07_CuHNO32NO2.jpg",
         "mimeType": "image/jpeg"
       }
@@ -178,7 +193,10 @@
       },
       "media": {
         "id": "fs-idm34469632",
-        "alt": "Two space-filling models and two Lewis structures are shown. The left space-filling model shows a blue atom labeled, “N,” bonded to two red atoms labeled, “O,” while the right space-filling model shows two blue atoms labeled, “N,” each bonded to two red atoms labeled, “O.” The left Lewis structure shows a nitrogen atom with one lone electron single bonded to an oxygen atom with three lone pairs of electrons. The nitrogen atom is also double bonded to an oxygen atom with two lone pairs of electrons. The right structure, which is connected by a double-headed arrow to the first, is a diagram showing a similar Lewis structure, but the position of the double bond and the number of electron pairs on the oxygen atoms have switched.",
+        "alt": {
+          "segmentId": "m68835:alt:fs-idm34469632-alt",
+          "text": "Two space-filling models and two Lewis structures are shown. The left space-filling model shows a blue atom labeled, “N,” bonded to two red atoms labeled, “O,” while the right space-filling model shows two blue atoms labeled, “N,” each bonded to two red atoms labeled, “O.” The left Lewis structure shows a nitrogen atom with one lone electron single bonded to an oxygen atom with three lone pairs of electrons. The nitrogen atom is also double bonded to an oxygen atom with two lone pairs of electrons. The right structure, which is connected by a double-headed arrow to the first, is a diagram showing a similar Lewis structure, but the position of the double bond and the number of electron pairs on the oxygen atoms have switched."
+        },
         "src": "../../media/CNX_Chem_18_07_N2O4.jpg",
         "mimeType": "image/jpeg"
       }
@@ -207,7 +225,10 @@
       },
       "media": {
         "id": "fs-idp90043792",
-        "alt": "A space-filling model and a Lewis structure are shown. The space-filling model shows two blue atoms labeled, “N,” each bonded to two red atoms labeled, “O,” with another red atom labeled, “O,” in between them. The Lewis structure shows a nitrogen atom single bonded to an oxygen atom with three lone pairs of electrons in a downward position and double bonded to an oxygen atom with two lone pairs of electrons in an upward position. This nitrogen is single bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is single bonded to another nitrogen atom which is single bonded to another oxygen atom with three lone pairs of electrons in an upward position. The second nitrogen atom is also double bonded to an oxygen atom with two lone pairs of electrons in a downward position.",
+        "alt": {
+          "segmentId": "m68835:alt:fs-idp90043792-alt",
+          "text": "A space-filling model and a Lewis structure are shown. The space-filling model shows two blue atoms labeled, “N,” each bonded to two red atoms labeled, “O,” with another red atom labeled, “O,” in between them. The Lewis structure shows a nitrogen atom single bonded to an oxygen atom with three lone pairs of electrons in a downward position and double bonded to an oxygen atom with two lone pairs of electrons in an upward position. This nitrogen is single bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is single bonded to another nitrogen atom which is single bonded to another oxygen atom with three lone pairs of electrons in an upward position. The second nitrogen atom is also double bonded to an oxygen atom with two lone pairs of electrons in a downward position."
+        },
         "src": "../../media/CNX_Chem_18_07_N2O5.jpg",
         "mimeType": "image/jpeg"
       }
@@ -559,89 +580,113 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idp208966864",
       "class": null,
-      "alt": "This Lewis structure shows a nitrogen atom with three lone pairs of electrons single bonded to a hydrogen atom. The structure is surrounded by brackets. Outside and superscript to the brackets is a two negative sign.",
       "src": "../../media/CNX_Chem_18_07_Exercise1a_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68835:alt:fs-idp208966864-alt",
+        "text": "This Lewis structure shows a nitrogen atom with three lone pairs of electrons single bonded to a hydrogen atom. The structure is surrounded by brackets. Outside and superscript to the brackets is a two negative sign."
+      }
     },
     {
       "placeholder": "[[MEDIA:2]]",
       "id": "fs-idp125060640",
       "class": null,
-      "alt": "This Lewis structure shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another and each single bonded to two fluorine atoms. Each fluorine atom has three lone pairs of electrons.",
       "src": "../../media/CNX_Chem_18_07_Exercise1b_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68835:alt:fs-idp125060640-alt",
+        "text": "This Lewis structure shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another and each single bonded to two fluorine atoms. Each fluorine atom has three lone pairs of electrons."
+      }
     },
     {
       "placeholder": "[[MEDIA:3]]",
       "id": "fs-idp38448752",
       "class": null,
-      "alt": "This Lewis structure shows a nitrogen atom with two lone pairs of electrons single bonded to two hydrogen atoms. The structure is surrounded by brackets. Outside and superscript to the brackets is a negative sign.",
       "src": "../../media/CNX_Chem_18_07_Exercise1c_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68835:alt:fs-idp38448752-alt",
+        "text": "This Lewis structure shows a nitrogen atom with two lone pairs of electrons single bonded to two hydrogen atoms. The structure is surrounded by brackets. Outside and superscript to the brackets is a negative sign."
+      }
     },
     {
       "placeholder": "[[MEDIA:4]]",
       "id": "fs-idp88863712",
       "class": null,
-      "alt": "This Lewis structure shows a nitrogen atom, with one lone pair of electrons, single bonded to three fluorine atoms. Each fluorine atom has three lone pairs of electrons.",
       "src": "../../media/CNX_Chem_18_07_Exercise1d_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68835:alt:fs-idp88863712-alt",
+        "text": "This Lewis structure shows a nitrogen atom, with one lone pair of electrons, single bonded to three fluorine atoms. Each fluorine atom has three lone pairs of electrons."
+      }
     },
     {
       "placeholder": "[[MEDIA:5]]",
       "id": "fs-idp128360176",
       "class": null,
-      "alt": "Three Lewis structures are shown and connected by double-headed arrows in between. The left structure shows a nitrogen atom with a lone pair of electrons triple bonded to a second nitrogen which is single bonded to a third nitrogen. The third nitrogen has three lone pairs of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The middle structure shows a nitrogen atom with three lone pair of electrons single bonded to a second nitrogen which is triple bonded to a third nitrogen. The third nitrogen which has one lone pair of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The right structure shows a nitrogen atom with two lone pairs of electrons double bonded to a second nitrogen which is double bonded to a third nitrogen. The third nitrogen atom has two lone pairs of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign.",
       "src": "../../media/CNX_Chem_18_07_Exercise1e_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68835:alt:fs-idp128360176-alt",
+        "text": "Three Lewis structures are shown and connected by double-headed arrows in between. The left structure shows a nitrogen atom with a lone pair of electrons triple bonded to a second nitrogen which is single bonded to a third nitrogen. The third nitrogen has three lone pairs of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The middle structure shows a nitrogen atom with three lone pair of electrons single bonded to a second nitrogen which is triple bonded to a third nitrogen. The third nitrogen which has one lone pair of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The right structure shows a nitrogen atom with two lone pairs of electrons double bonded to a second nitrogen which is double bonded to a third nitrogen. The third nitrogen atom has two lone pairs of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign."
+      }
     },
     {
       "placeholder": "[[MEDIA:6]]",
       "id": "fs-idp121558896",
       "class": null,
-      "alt": "Two Lewis structures are shown and connected by double-headed arrows in between. The left structure shows a nitrogen atom with a single electron double bonded to an oxygen atom which has two lone pairs of electrons. The nitrogen atom is also single bonded to an oxygen atom with three lone pairs of electrons. The right structure is a mirror image of the left structure.",
       "src": "../../media/CNX_Chem_18_07_Exercise5a_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68835:alt:fs-idp121558896-alt",
+        "text": "Two Lewis structures are shown and connected by double-headed arrows in between. The left structure shows a nitrogen atom with a single electron double bonded to an oxygen atom which has two lone pairs of electrons. The nitrogen atom is also single bonded to an oxygen atom with three lone pairs of electrons. The right structure is a mirror image of the left structure."
+      }
     },
     {
       "placeholder": "[[MEDIA:7]]",
       "id": "fs-idp21294016",
       "class": null,
-      "alt": "Two Lewis structures are shown and connected by double-headed arrows in between. Each structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The left structure shows a nitrogen atom with a lone pair of electrons double bonded to an oxygen atom which has two lone pairs of electrons. The nitrogen atom is also single bonded to an oxygen atom with three lone pair of electrons. The right structure is a mirror image of the left structure.",
       "src": "../../media/CNX_Chem_18_07_Exercise5b_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68835:alt:fs-idp21294016-alt",
+        "text": "Two Lewis structures are shown and connected by double-headed arrows in between. Each structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The left structure shows a nitrogen atom with a lone pair of electrons double bonded to an oxygen atom which has two lone pairs of electrons. The nitrogen atom is also single bonded to an oxygen atom with three lone pair of electrons. The right structure is a mirror image of the left structure."
+      }
     },
     {
       "placeholder": "[[MEDIA:8]]",
       "id": "fs-idp20652368",
       "class": null,
-      "alt": "This Lewis structure shows a nitrogen atom double bonded on both sides to an oxygen atom which has two lone pairs of electrons each. The structure is surrounded by brackets and outside and superscript to the brackets is a negative sign.",
       "src": "../../media/CNX_Chem_18_07_Exercise5c_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68835:alt:fs-idp20652368-alt",
+        "text": "This Lewis structure shows a nitrogen atom double bonded on both sides to an oxygen atom which has two lone pairs of electrons each. The structure is surrounded by brackets and outside and superscript to the brackets is a negative sign."
+      }
     }
   ],
   "sectionOrder": 7

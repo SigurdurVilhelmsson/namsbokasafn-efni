@@ -1,0 +1,86 @@
+{
+  "moduleId": "m00281",
+  "title": {
+    "segmentId": "m00281:title:auto-1",
+    "text": "Intramolecular Aldol Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "637ebbbd-3954-4c78-bfaf-e5d38af204fe"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00281:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00281:alt:fig-00001-alt",
+          "text": "The first reaction shows a 1,4-diketone (2,5-hexanedione) with sodium hydroxide in ethanol, forming 3-methyl-2-cyclopentenone and water. The second shows 2, 6-heptanedione (1,5-diketone) with the same reagents forming 3-methyl-2-cyclohexenone and water."
+        },
+        "src": "../../media/OChem_23_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00281:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00281:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00281:alt:fig-00002-alt",
+          "text": "The reaction shows formation of 3-methyl-2-cyclopentenone through path a, from 2,5-hexanedione, using sodium hydroxide and water. Path b converts the same starting material using same reagents to (2-methylcyclopropenyl)ethanone (not formed)."
+        },
+        "src": "../../media/OChem_23_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00281:para:para-00003"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00281:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 6
+}

@@ -1,0 +1,114 @@
+{
+  "moduleId": "m00117",
+  "title": {
+    "segmentId": "m00117:title:auto-1",
+    "text": "Preparing Alkyl Halides from Alcohols"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3f1bfd0d-cffd-40f5-98c7-e3c9b15b5c33"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00117:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00117:alt:fig-00001-alt",
+          "text": "The reaction of an alcohol with HX forms an alkyl halide and water. Four alcohol structures are listed in order of increasing reactivity: methyl, primary, secondary, and tertiary."
+        },
+        "src": "../../media/OChem_10_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00117:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00117:alt:fig-00002-alt",
+          "text": "The reaction of 1-methylcyclohexanol with HCl (gas) and ether at 0 degrees Celcius forms 1-chloro-1-methylcyclohexane (90%) and water."
+        },
+        "src": "../../media/OChem_10_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00117:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00117:alt:fig-00003-alt",
+          "text": "Benzoin reacts with thionyl chloride and pyridine, forming alkyl chloride (86%), S O 2, and H Cl. 2-butanol reacts with P Br 3 and ether at 35 degrees Celcius to form 2-bromobutane (86%) and H 3 P O 3."
+        },
+        "src": "../../media/OChem_10_05_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00117:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00117:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00117:alt:fig-00004-alt",
+          "text": "The reaction of cyclohexanol in the presence of HF and pyridine forms fluorocyclohexane (99%)."
+        },
+        "src": "../../media/OChem_10_05_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00117:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

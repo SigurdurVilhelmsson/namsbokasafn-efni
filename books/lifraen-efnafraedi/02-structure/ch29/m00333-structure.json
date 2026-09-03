@@ -1,0 +1,295 @@
+{
+  "moduleId": "m00333",
+  "title": {
+    "segmentId": "m00333:title:auto-1",
+    "text": "Biosynthesis of Fatty Acids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "26127d11-6b44-49d8-a3fc-b74db3e17ef6"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00333:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00333:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00333:para:para-00003"
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": null,
+      "title": {
+        "segmentId": "m00333:title:sect-00006-title",
+        "text": "Steps 1–2 of [[xref:fig-00001]]: Acyl Transfers"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "sect-00001",
+          "class": null,
+          "title": {
+            "segmentId": "m00333:title:sect-00001-title",
+            "text": "MECHANISM"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00004",
+              "segmentId": "m00333:para:para-00004"
+            },
+            {
+              "type": "para",
+              "id": "para-00005",
+              "segmentId": "m00333:para:para-00005"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00001",
+              "class": "mechanism-figure scaled-down",
+              "caption": {
+                "segmentId": "m00333:caption:fig-00001-caption"
+              },
+              "media": {
+                "alt": {
+                  "segmentId": "m00333:alt:fig-00001-alt",
+                  "text": "Fatty acid biosynthesis of butyryl A C P from acetyl-coenzyme A involves a series of trans-esterifications, Claisain-like condensations, ketone reduction, dehydration, and double bond reduction."
+                },
+                "src": "../../media/OChem_29_04_001.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "figure",
+              "id": "fig-00002",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00333:alt:fig-00002-alt",
+                  "text": "Acetyl-coenzyme A reacts with base and H S A C P to form tetrahedral intermediate that further forms acetyl S A C P. The abbreviated mechanism is indicated in parentheses."
+                },
+                "src": "../../media/OChem_29_04_002.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00006",
+              "segmentId": "m00333:para:para-00006"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00003",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00333:alt:fig-00003-alt",
+                  "text": "The structure of acetyl A C P comprises a C H 3 C O linked to phosphopantetheine and an O connected to methylene linked to serine and A C P."
+                },
+                "src": "../../media/OChem_29_04_003.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00007",
+              "segmentId": "m00333:para:para-00007"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00002",
+          "class": null,
+          "title": {
+            "segmentId": "m00333:title:sect-00002-title",
+            "text": "Steps 3–4 of [[xref:fig-00001]]: Carboxylation and Acyl Transfer"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00008",
+              "segmentId": "m00333:para:para-00008"
+            },
+            {
+              "type": "para",
+              "id": "para-00009",
+              "segmentId": "m00333:para:para-00009"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00004",
+              "class": "mechanism-figure scaled-down",
+              "caption": {
+                "segmentId": "m00333:caption:fig-00004-caption"
+              },
+              "media": {
+                "alt": {
+                  "segmentId": "m00333:alt:fig-00004-alt",
+                  "text": "The enzyme deprotonates acetyl-coenzyme A to form an enolate and N-carboxybiotin undergoes decarboxylation to carbon dioxide and biotin. The enolate reacts with carbon dioxide to form malonyl-coenzyme A."
+                },
+                "src": "../../media/OChem_29_04_004.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00010",
+              "segmentId": "m00333:para:para-00010"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00003",
+          "class": null,
+          "title": {
+            "segmentId": "m00333:title:sect-00003-title",
+            "text": "Step 5 of [[xref:fig-00001]]: Condensation"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00011",
+              "segmentId": "m00333:para:para-00011"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00005",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00333:alt:fig-00005-alt",
+                  "text": "Acetyl synthase reacts with malonyl A C P to form an tetrahedral intermediate and carbon dioxide. This leads to acetoacetyl A C P and synthase connected to a sulfur anion."
+                },
+                "src": "../../media/OChem_29_04_005.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00004",
+          "class": null,
+          "title": {
+            "segmentId": "m00333:title:sect-00004-title",
+            "text": "Steps 6–8 of [[xref:fig-00001]]: Reduction and Dehydration"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00012",
+              "segmentId": "m00333:para:para-00012"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00006",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00333:alt:fig-00006-alt",
+                  "text": "Acetoacetyl A C P reacts with nicotinamide adenine dinucleotide phosphate hydride to form beta-hydroxybutyrate A C P and nicotinamide adenine dinucleotide phosphate cation."
+                },
+                "src": "../../media/OChem_29_04_006.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00013",
+              "segmentId": "m00333:para:para-00013"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00007",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00333:alt:fig-00007-alt",
+                  "text": "Crotonyl A C P reacts with nicotinamide adenine dinucleotide phosphate hydride to form an enolate that is protonated  to butyryl A C P."
+                },
+                "src": "../../media/OChem_29_04_007.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00014",
+              "segmentId": "m00333:para:para-00014"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00008",
+              "class": "unnumbered",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00333:alt:fig-00008-alt",
+                  "text": "A thiol butyryl ester undergoes condensation with HS-Synthase to form butyryl synthase. It forms a six-carbon chain linked to S A C P that further forms sixteen-carbon chain named palmitoyl A C P."
+                },
+                "src": "../../media/OChem_29_04_008.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00015",
+              "segmentId": "m00333:para:para-00015"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00333:title:sect-00005-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

@@ -20,7 +20,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structures and ball and stick models of methane, a methyl group, methyl alcohol, and methylamine. Grey, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.",
+        "alt": {
+          "segmentId": "m00034:alt:fig-00001-alt",
+          "text": "The molecular structures and ball and stick models of methane, a methyl group, methyl alcohol, and methylamine. Grey, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively."
+        },
         "src": "../../media/OChem_03_03_001.jpg",
         "mimeType": "image/jpeg"
       }
@@ -29,23 +32,13 @@
       "type": "table",
       "id": "table-00001",
       "summary": " ",
+      "title": {
+        "segmentId": "m00034:table-title:table-00001-title",
+        "text": "Some Straight-Chain Alkyl Groups"
+      },
       "rows": [
         {
           "cells": [
-            {
-              "segmentId": "m00034:entry:auto-3",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00034:entry:auto-4",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
             {
               "segmentId": "m00034:entry:auto-5",
               "attributes": {
@@ -59,11 +52,7 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00034:entry:auto-7",
               "attributes": {
@@ -77,7 +66,11 @@
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00034:entry:auto-9",
               "attributes": {
@@ -91,11 +84,7 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00034:entry:auto-11",
               "attributes": {
@@ -109,7 +98,11 @@
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00034:entry:auto-13",
               "attributes": {
@@ -123,11 +116,7 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00034:entry:auto-15",
               "attributes": {
@@ -141,7 +130,11 @@
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00034:entry:auto-17",
               "attributes": {
@@ -155,11 +148,7 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00034:entry:auto-19",
               "attributes": {
@@ -173,7 +162,11 @@
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00034:entry:auto-21",
               "attributes": {
@@ -187,11 +180,7 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00034:entry:auto-23",
               "attributes": {
@@ -205,7 +194,11 @@
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00034:entry:auto-25",
               "attributes": {
@@ -215,6 +208,20 @@
             },
             {
               "segmentId": "m00034:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00034:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00034:entry:auto-28",
               "attributes": {
                 "valign": "top",
                 "align": "left"
@@ -237,7 +244,10 @@
         "segmentId": "m00034:caption:fig-00002-caption"
       },
       "media": {
-        "alt": "The molecular structures and ball and stick models of propane, propyl, isopropyl, butane, butyl, sec-butyl, isobutane, isobutyl, and tert-butyl. Black and grey spheres represent carbon and hydrogen, respectively.",
+        "alt": {
+          "segmentId": "m00034:alt:fig-00002-alt",
+          "text": "The molecular structures and ball and stick models of propane, propyl, isopropyl, butane, butyl, sec-butyl, isobutane, isobutyl, and tert-butyl. Black and grey spheres represent carbon and hydrogen, respectively."
+        },
         "src": "../../media/OChem_03_03_002.jpg",
         "mimeType": "image/jpeg"
       }
@@ -253,7 +263,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The general structure of primary, secondary, tertiary, and quaternary carbons which are bonded to one, two, three, and four other carbons, respectively.",
+        "alt": {
+          "segmentId": "m00034:alt:fig-00003-alt",
+          "text": "The general structure of primary, secondary, tertiary, and quaternary carbons which are bonded to one, two, three, and four other carbons, respectively."
+        },
         "src": "../../media/OChem_03_03_003.jpg",
         "mimeType": "image/jpeg"
       }
@@ -274,7 +287,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The molecular structures of the general class of tertiary alcohols and citric acid (specific tertiary alcohol) are shown.",
+        "alt": {
+          "segmentId": "m00034:alt:fig-00004-alt",
+          "text": "The molecular structures of the general class of tertiary alcohols and citric acid (specific tertiary alcohol) are shown."
+        },
         "src": "../../media/OChem_03_03_004.jpg",
         "mimeType": "image/jpeg"
       }
@@ -290,7 +306,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The conversion of condensed formula to line-bond structure. The primary, secondary, and tertiary hydrogens in a compound are represented in condensed formula.",
+        "alt": {
+          "segmentId": "m00034:alt:fig-00005-alt",
+          "text": "The conversion of condensed formula to line-bond structure. The primary, secondary, and tertiary hydrogens in a compound are represented in condensed formula."
+        },
         "src": "../../media/OChem_03_03_005.jpg",
         "mimeType": "image/jpeg"
       }

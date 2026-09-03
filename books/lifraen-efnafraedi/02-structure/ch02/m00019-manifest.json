@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "moduleId": "m00019",
+  "extractedAt": "2026-08-31T19:08:46.664Z",
+  "sourceHash": "1fa9abec2886ac23",
+  "segmentCount": 47,
+  "segmentIds": [
+    "m00019:title:auto-1",
+    "m00019:para:para-00001",
+    "m00019:para:para-00002",
+    "m00019:para:para-00003",
+    "m00019:para:para-00005",
+    "m00019:table-title:table-00001-title",
+    "m00019:entry:auto-7",
+    "m00019:entry:auto-8",
+    "m00019:entry:auto-9",
+    "m00019:entry:auto-10",
+    "m00019:entry:auto-11",
+    "m00019:entry:auto-12",
+    "m00019:entry:auto-13",
+    "m00019:entry:auto-14",
+    "m00019:entry:auto-15",
+    "m00019:entry:auto-16",
+    "m00019:entry:auto-17",
+    "m00019:entry:auto-18",
+    "m00019:entry:auto-19",
+    "m00019:entry:auto-20",
+    "m00019:entry:auto-21",
+    "m00019:entry:auto-22",
+    "m00019:entry:auto-23",
+    "m00019:entry:auto-24",
+    "m00019:entry:auto-25",
+    "m00019:entry:auto-26",
+    "m00019:entry:auto-27",
+    "m00019:entry:auto-28",
+    "m00019:entry:auto-29",
+    "m00019:entry:auto-30",
+    "m00019:entry:auto-31",
+    "m00019:entry:auto-32",
+    "m00019:alt:OChem_02_02_001_jpg-alt",
+    "m00019:entry:auto-34",
+    "m00019:entry:auto-35",
+    "m00019:entry:auto-36",
+    "m00019:alt:fig-00002-alt",
+    "m00019:para:para-00006",
+    "m00019:alt:fig-00003-alt",
+    "m00019:example-title:exam-00001-title",
+    "m00019:para:para-00007",
+    "m00019:para-title:para-00008-title",
+    "m00019:para:para-00008",
+    "m00019:para-title:para-00009-title",
+    "m00019:para:para-00009",
+    "m00019:alt:fig-00004-alt",
+    "m00019:title:sect-00001-title"
+  ],
+  "equationCount": 1,
+  "equationIds": [
+    "eq-00001"
+  ],
+  "elementCounts": {
+    "para": 8,
+    "section": 1,
+    "figure": 3,
+    "table": 1,
+    "example": 1,
+    "exercise": 2,
+    "note": 0,
+    "equation": 1,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00002",
+      "fig-00003",
+      "fig-00004"
+    ],
+    "table": [
+      "table-00001"
+    ],
+    "example": [
+      "exam-00001"
+    ],
+    "exercise": [
+      "exer-00001",
+      "exer-00002"
+    ],
+    "note": [],
+    "equation": [
+      "eq-00001"
+    ],
+    "section": [
+      "sect-00001"
+    ]
+  }
+}

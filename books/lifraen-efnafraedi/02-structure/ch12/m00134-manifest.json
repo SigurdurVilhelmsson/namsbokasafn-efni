@@ -1,22 +1,23 @@
 {
   "version": 1,
   "moduleId": "m00134",
-  "extractedAt": "2026-08-12T16:05:00.642Z",
+  "extractedAt": "2026-08-31T19:08:48.169Z",
   "sourceHash": "ad35821ec004e187",
-  "segmentCount": 12,
+  "segmentCount": 13,
   "segmentIds": [
     "m00134:title:auto-1",
     "m00134:caption:fig-00001-caption",
+    "m00134:alt:fig-00001-alt",
     "m00134:para:para-00001",
     "m00134:para:para-00002",
-    "m00134:entry:auto-5",
     "m00134:entry:auto-6",
     "m00134:entry:auto-7",
     "m00134:entry:auto-8",
     "m00134:entry:auto-9",
     "m00134:entry:auto-10",
     "m00134:entry:auto-11",
-    "m00134:entry:auto-12"
+    "m00134:entry:auto-12",
+    "m00134:entry:auto-13"
   ],
   "equationCount": 0,
   "equationIds": [],

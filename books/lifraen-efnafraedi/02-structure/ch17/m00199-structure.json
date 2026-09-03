@@ -1,0 +1,116 @@
+{
+  "moduleId": "m00199",
+  "title": {
+    "segmentId": "m00199:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "cd8891c1-d16b-4fb5-afd6-3f935722ba61"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00199:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00199:alt:fig-00001-alt",
+          "text": "A photo of purple and red grapes hanging along with their leaves on a grapevine."
+        },
+        "src": "../../media/OChem_17_00_Grapes.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00199:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00199:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00199:alt:fig-00002-alt",
+          "text": "Three chemical structures. An alcohol has O H on a carbon with three open bonds, phenol is benzene with O H, and an enol is a vinylic O H."
+        },
+        "src": "../../media/OChem_17_00_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00199:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00199:alt:fig-00003-alt",
+          "text": "Carbon monoxide reacts with two equivalents of H 2 in the presence of 400 degree Celsius and zinc oxide, chromia catalyst to form methanol, represented by formula and ball-and-stick."
+        },
+        "src": "../../media/OChem_17_00_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00199:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00199:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00199:alt:fig-00004-alt",
+          "text": "Ethene reacts in the presence of water, and phosphoric acid at 250 degree Celsius to form ethanol. The figure also represents the ball-and-stick model of ethanol."
+        },
+        "src": "../../media/OChem_17_00_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00199:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00199:alt:fig-00005-alt",
+          "text": "Three structures named phenol (also called carbolic acid), methyl salicylate, and urushiols in which R is equal to different 15-carbon alkyl and alkenyl chains."
+        },
+        "src": "../../media/OChem_17_00_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 0
+}

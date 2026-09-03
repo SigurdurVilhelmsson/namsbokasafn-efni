@@ -8,7 +8,7 @@ By the end of this section, you will be able to:
 List common applications of radioactive isotopes
 
 <!-- SEG:m68857:para:fs-idp54341648 -->
-Radioactive isotopes have the same chemical properties as stable isotopes of the same element, but they emit radiation, which can be detected. If we replace one (or more) atom(s) with radioisotope(s) in a compound, we can track them by monitoring their radioactive emissions. This type of compound is called a {{term}}radioactive tracer{{/term}} (or {{term}}radioactive label{{/term}}). Radioisotopes are used to follow the paths of biochemical reactions or to determine how a substance is distributed within an organism. Radioactive tracers are also used in many medical applications, including both diagnosis and treatment. They are used to measure engine wear, analyze the geological formation around oil wells, and much more.
+Radioactive isotopes have the same chemical properties as stable isotopes of the same element, but they emit radiation, which can be detected. If we replace one (or more) atom(s) with radioisotope(s) in a compound, we can track them by monitoring their radioactive emissions. This type of compound is called a [[term:radioactive tracer|term-00001]] (or [[term:radioactive label|term-00002]]). Radioisotopes are used to follow the paths of biochemical reactions or to determine how a substance is distributed within an organism. Radioactive tracers are also used in many medical applications, including both diagnosis and treatment. They are used to measure engine wear, analyze the geological formation around oil wells, and much more.
 
 <!-- SEG:m68857:para:eip-608 -->
 Radioimmunossays (RIA), for example, rely on radioisotopes to detect the presence and/or concentration of certain antigens. Developed by Rosalyn Sussman Yalow and Solomon Berson in the 1950s, the technique is known for extreme sensitivity, meaning that it can detect and measure very small quantities of a substance. Prior to its discovery, most similar detection relied on large enough quantities to produce visible outcomes. RIA revolutionized and expanded entire fields of study, most notably endocrinology, and is commonly used in narcotics detection, blood bank screening, early cancer screening, hormone measurement, and allergy diagnosis. Based on her significant contribution to medicine, Yalow received a Nobel Prize, making her the second woman to be awarded the prize for medicine.
@@ -19,17 +19,26 @@ Radioisotopes have revolutionized medical practice (see [[docref:Appendix M|m688
 <!-- SEG:m68857:caption:CNX_Chem_21_05_Thallium-caption -->
 Administering thallium-201 to a patient and subsequently performing a stress test offer medical professionals an opportunity to visually analyze heart function and blood flow. (credit: modification of work by “Blue0ctane”/Wikimedia Commons)
 
+<!-- SEG:m68857:alt:fs-idp42838624-alt -->
+A photo is shown of two men, one walking on a treadmill with various wires connected to his torso region, and the other collecting blood pressure data from the first man.
+
 <!-- SEG:m68857:para:fs-idp117263328 -->
 Radioisotopes used in medicine typically have short half-lives—for example, the ubiquitous Tc-99m has a half-life of 6.01 hours. This makes Tc-99m essentially impossible to store and prohibitively expensive to transport, so it is made on-site instead. Hospitals and other medical facilities use Mo-99 (which is primarily extracted from U-235 fission products) to generate Tc-99. Mo-99 undergoes β decay with a half-life of 66 hours, and the Tc-99 is then chemically extracted ([[xref:CNX_Chem_21_05_Tc-99]]). The parent nuclide Mo-99 is part of a molybdate ion, [[MATH:5]] when it decays, it forms the pertechnetate ion, [[MATH:6]] These two water-soluble ions are separated by column chromatography, with the higher charge molybdate ion adsorbing onto the alumina in the column, and the lower charge pertechnetate ion passing through the column in the solution. A few micrograms of Mo-99 can produce enough Tc-99 to perform as many as 10,000 tests.
 
 <!-- SEG:m68857:caption:CNX_Chem_21_05_Tc-99-caption -->
 (a) The first Tc-99m generator (circa 1958) is used to separate Tc-99 from Mo-99. The [[MATH:7]] is retained by the matrix in the column, whereas the [[MATH:8]] passes through and is collected. (b) Tc-99 was used in this scan of the neck of a patient with Grave’s disease. The scan shows the location of high concentrations of Tc-99. (credit a: modification of work by the Department of Energy; credit b: modification of work by “MBq”/Wikimedia Commons)
 
+<!-- SEG:m68857:alt:fs-idp19157312-alt -->
+A photograph and a microscopic image are shown and labeled “a” and “b.” Photo a shows a person’s hand holding a graduated cylinder that contains a clear, colorless liquid and tilting the cylinder to pour it into a vertical, cylindrical glass tube. The tube has many separate glass components and is held in place by a test tube clamp. Image b shows a multitude of tiny, red dots on a black background. The dots are collected in four regions and dispersed elsewhere.
+
 <!-- SEG:m68857:para:fs-idp240963344 -->
-Radioisotopes can also be used, typically in higher doses than as a tracer, as treatment. {{term}}Radiation therapy{{/term}} is the use of high-energy radiation to damage the DNA of cancer cells, which kills them or keeps them from dividing ([[xref:CNX_Chem_21_05_RadTherapy]]). A cancer patient may receive {{term}}external beam radiation therapy{{/term}} delivered by a machine outside the body, or {{term}}internal radiation therapy (brachytherapy){{/term}} from a radioactive substance that has been introduced into the body. Note that {{term}}chemotherapy{{/term}} is similar to internal radiation therapy in that the cancer treatment is injected into the body, but differs in that chemotherapy uses chemical rather than radioactive substances to kill the cancer cells.
+Radioisotopes can also be used, typically in higher doses than as a tracer, as treatment. [[term:Radiation therapy|term-00003]] is the use of high-energy radiation to damage the DNA of cancer cells, which kills them or keeps them from dividing ([[xref:CNX_Chem_21_05_RadTherapy]]). A cancer patient may receive [[term:external beam radiation therapy|term-00004]] delivered by a machine outside the body, or [[term:internal radiation therapy (brachytherapy)|term-00005]] from a radioactive substance that has been introduced into the body. Note that [[term:chemotherapy|term-00006]] is similar to internal radiation therapy in that the cancer treatment is injected into the body, but differs in that chemotherapy uses chemical rather than radioactive substances to kill the cancer cells.
 
 <!-- SEG:m68857:caption:CNX_Chem_21_05_RadTherapy-caption -->
 The cartoon in (a) shows a cobalt-60 machine used in the treatment of cancer. The diagram in (b) shows how the gantry of the Co-60 machine swings through an arc, focusing radiation on the targeted region (tumor) and minimizing the amount of radiation that passes through nearby regions.
+
+<!-- SEG:m68857:alt:fs-idp151344384-alt -->
+Two diagrams are shown and labeled “a” and “b.” Diagram a shows a woman lying on a horizontal table with is being inserted into a dome-shaped machine. Diagram b shows a closer view of the woman’s head and upper torso in the machine. A series of beams, labeled “Gamma rays,” are shown to exit from slits in the edges of the machine, labeled “Radioactive cobalt,” and to penetrate her head, which is labeled “Target.”
 
 <!-- SEG:m68857:para:fs-idp202530192 -->
 Cobalt-60 is a synthetic radioisotope produced by the neutron activation of Co-59, which then undergoes β decay to form Ni-60, along with the emission of γ radiation. The overall process is:
@@ -39,6 +48,9 @@ The overall decay scheme for this is shown graphically in [[xref:CNX_Chem_21_05_
 
 <!-- SEG:m68857:caption:CNX_Chem_21_05_Co60Decay-caption -->
 Co-60 undergoes a series of radioactive decays. The γ emissions are used for radiation therapy.
+
+<!-- SEG:m68857:alt:fs-idp82360800-alt -->
+A chart shows a horizontal line in the upper left corner labeled “superscript 60 subscript 27 C o” and “5.272 a” with two arrows facing right and downward leading from it. These arrows are labeled “1.48 M e v beta 0.12 percent sign” and “0.31 M e v beta 99.88 percent sign.” The upper of the two arrows points to a horizontal line and the lower arrow points to a second horizontal line. A downward facing arrow lies in between these two horizontal lines and is labeled “1.1732 M e V gamma.” A fourth horizontal line lies at the bottom of the diagram below the second and third lines. A downward facing arrow lies in between it and the third horizontal line. It is labeled “1.3325 M e V gamma.” Below the last horizontal line is the label “superscript 60 subscript 28 N i.”
 
 <!-- SEG:m68857:para:fs-idp115972800 -->
 Radioisotopes are used in diverse ways to study the mechanisms of chemical reactions in plants and animals. These include labeling fertilizers in studies of nutrient uptake by plants and crop growth, investigations of digestive and milk-producing processes in cows, and studies on the growth and metabolism of animals and plants.
@@ -55,11 +67,17 @@ Commercial applications of radioactive materials are equally diverse ([[xref:CNX
 <!-- SEG:m68857:caption:CNX_Chem_21_05_UsesOfRad-caption -->
 Common commercial uses of radiation include (a) X-ray examination of luggage at an airport and (b) preservation of food. (credit a: modification of work by the Department of the Navy; credit b: modification of work by the US Department of Agriculture)
 
+<!-- SEG:m68857:alt:fs-idp105478400-alt -->
+Two photographs are shown and labeled “a” and “b.” Photo a shows a man looking at a lighted image on the wall. Photo b shows strawberries on a conveyor belt dropping into a series of collection chambers.
+
 <!-- SEG:m68857:para:fs-idp105479248 -->
 Americium-241, an α emitter with a half-life of 458 years, is used in tiny amounts in ionization-type smoke detectors ([[xref:CNX_Chem_21_05_SmokeAlarm]]). The α emissions from Am-241 ionize the air between two electrode plates in the ionizing chamber. A battery supplies a potential that causes movement of the ions, thus creating a small electric current. When smoke enters the chamber, the movement of the ions is impeded, reducing the conductivity of the air. This causes a marked drop in the current, triggering an alarm.
 
 <!-- SEG:m68857:caption:CNX_Chem_21_05_SmokeAlarm-caption -->
 Inside a smoke detector, Am-241 emits α particles that ionize the air, creating a small electric current. During a fire, smoke particles impede the flow of ions, reducing the current and triggering an alarm. (credit a: modification of work by “Muffet”/Wikimedia Commons)
+
+<!-- SEG:m68857:alt:fs-idp22507536-alt -->
+A photograph and a diagram are shown. The photograph shows the interior of a smoke detector. A circular piece of plastic in the lower section of the detector is labeled “Alarm” while a metal disk in the top left of the photo is labeled “Ionization chamber.” A battery is on the top right of the detector. The diagram shows an expanded view of the ionization chamber. Inside of the cylindrical casing are two horizontal, circular plates labeled “Metal plates”; the top is labeled with a positive sign and the bottom with a negative sign. Wires are shown connected to the plates and the terminals of a battery on the exterior of the chamber. A disk in the bottom of the chamber is labeled “Americium source” and four arrows, labeled “Alpha particles,” face vertically from this disk, through a hole in the negative plate, and into the upper space of the chamber. Two molecules, with positive signs, made up of two blue spheres and two molecules, with positive signs, made up of two red spheres are in this space, as well as two yellow spheres labeled with negative signs and arrows facing downward. Eleven white dots surround two of the molecules on the right of the image and are labeled “smoke particles. Above the left side of the image is the phrase “No smoke, charged particles complete the circuit” while a phrase above the right side of the image states “Smoke uncharges the particles, circuit is broken, alarm is triggered.”
 
 <!-- SEG:m68857:title:fs-idp11200000-title -->
 Key Concepts and Summary

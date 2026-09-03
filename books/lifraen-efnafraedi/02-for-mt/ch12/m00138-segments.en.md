@@ -15,3 +15,6 @@ The [[term:Time of Flight|term-00001]] technique is considerably more sensitive 
 
 <!-- SEG:m00138:caption:fig-00001-caption -->
 [[b:MALDI–TOF mass spectrum of chicken egg-white lysozyme.]] The peak at 14,306.7578 daltons (amu) is due to the monoprotonated protein, M + H[[sup:+]], and the peak at 28,614.2188 daltons is due to an impurity formed by dimerization of the protein. Other peaks at lower [[i:m]]/[[i:z]] values are various protonated species, M + H[[sub:[[i:n]]]][[sup:[[i:n]]+]].
+
+<!-- SEG:m00138:alt:fig-00001-alt -->
+A mass spectrum with considerably more detail and much larger values of m / z than in previous images.

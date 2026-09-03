@@ -1,0 +1,26 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;NR</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{R}}_{2}\\text{C&#x2550;NR}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>N&#x2013;CR</m:mtext><m:mo>&#x2550;</m:mo><m:msub><m:mrow><m:mtext>CR</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{R}}_{2}\\text{N&#x2013;CR}&#x2550;{{\\text{CR}}}_{2}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;N}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;Nu</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;Nu}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;O</m:mtext><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>OH</m:mtext><m:mo>→</m:mo><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;NOH</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{{({\\text{CH}}3)}2\\text{C&#x2550;O}+{{\\text{NH}}}_{2}\\text{OH}\\rightarrow {({\\text{CH}}3)}2\\text{C&#x2550;NOH}+{\\text{H}}_{2}\\text{O}}"
+  }
+}

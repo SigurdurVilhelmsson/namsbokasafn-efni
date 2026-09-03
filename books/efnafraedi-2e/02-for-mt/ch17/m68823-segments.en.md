@@ -17,13 +17,13 @@ Calculate cell potentials and predict redox spontaneity using standard electrode
 Unlike the spontaneous oxidation of copper by aqueous silver(I) ions described in section 17.2, immersing a copper wire in an aqueous solution of lead(II) ions yields no reaction. The two species, Ag[[sup:+]][[i:(aq)]] and Pb[[sup:2+]][[i:(aq)]], thus show a distinct difference in their redox activity towards copper: the silver ion spontaneously oxidized copper, but the lead ion did not. Electrochemical cells permit this relative redox activity to be quantified by an easily measured property, [[i:potential]]. This property is more commonly called [[i:voltage]] when referenced in regard to electrical applications, and it is a measure of energy accompanying the transfer of charge. Potentials are measured in the volt unit, defined as one joule of energy per one coulomb of charge, V = J/C.
 
 <!-- SEG:m68823:para:fs-idm173091280 -->
-When measured for purposes of electrochemistry, a potential reflects the driving force for a specific type of charge transfer process, namely, the transfer of electrons between redox reactants. Considering the nature of potential in this context, it is clear that the potential of a single half-cell or a single electrode can’t be measured; “transfer” of electrons requires both a donor and recipient, in this case a reductant and an oxidant, respectively. Instead, a half-cell potential may only be assessed relative to that of another half-cell. It is only the [[i:difference in potential]] between two half-cells that may be measured, and these measured potentials are called {{term}}cell potentials, E[[sub:cell]]{{/term}}, defined as
+When measured for purposes of electrochemistry, a potential reflects the driving force for a specific type of charge transfer process, namely, the transfer of electrons between redox reactants. Considering the nature of potential in this context, it is clear that the potential of a single half-cell or a single electrode can’t be measured; “transfer” of electrons requires both a donor and recipient, in this case a reductant and an oxidant, respectively. Instead, a half-cell potential may only be assessed relative to that of another half-cell. It is only the [[i:difference in potential]] between two half-cells that may be measured, and these measured potentials are called [[term:cell potentials, E[[sub:cell]]|term-00001]], defined as
 
 <!-- SEG:m68823:para:fs-idm172543920 -->
-where E[[sub:cathode]] and E[[sub:anode]] are the potentials of two different half-cells functioning as specified in the subscripts. As for other thermodynamic quantities, the {{term}}standard cell potential, E°[[sub:cell]]{{/term}}, is a cell potential measured when both half-cells are under standard-state conditions (1 [[i:M]] concentrations, 1 bar pressures, 298 K):
+where E[[sub:cathode]] and E[[sub:anode]] are the potentials of two different half-cells functioning as specified in the subscripts. As for other thermodynamic quantities, the [[term:standard cell potential, E°[[sub:cell]]|term-00002]], is a cell potential measured when both half-cells are under standard-state conditions (1 [[i:M]] concentrations, 1 bar pressures, 298 K):
 
 <!-- SEG:m68823:para:fs-idm201762368 -->
-To simplify the collection and sharing of potential data for half-reactions, the scientific community has designated one particular half-cell to serve as a universal reference for cell potential measurements, assigning it a potential of exactly 0 V. This half-cell is the {{term}}standard hydrogen electrode (SHE){{/term}} and it is based on half-reaction below:
+To simplify the collection and sharing of potential data for half-reactions, the scientific community has designated one particular half-cell to serve as a universal reference for cell potential measurements, assigning it a potential of exactly 0 V. This half-cell is the [[term:standard hydrogen electrode (SHE)|term-00003]] and it is based on half-reaction below:
 
 <!-- SEG:m68823:para:fs-idm198492112 -->
 A typical SHE contains an inert platinum electrode immersed in precisely 1 [[i:M]] aqueous H[[sup:+]] and a stream of bubbling H[[sub:2]] gas at 1 bar pressure, all maintained at a temperature of 298 K (see [[xref:CNX_Chem_17_03_SHE]]).
@@ -31,11 +31,14 @@ A typical SHE contains an inert platinum electrode immersed in precisely 1 [[i:M
 <!-- SEG:m68823:caption:CNX_Chem_17_03_SHE-caption -->
 A standard hydrogen electrode (SHE).
 
+<!-- SEG:m68823:alt:fs-idp160214096-alt -->
+The figure shows a beaker just over half full of a blue liquid. A glass tube is partially submerged in the liquid. Bubbles, which are labeled “H subscript 2 ( g )” are rising from the dark grayquare, labeled “P t electrode” at the bottom of the tube. Below the bottom of the tube pointing to the solution in the beaker is the label “ 1 M H superscript plus ( a q).” A curved arrow points up to the right, indicating the direction of the bubbles. A black wire which is labeled “P t wire” extends from the dark grgrayare up the interior of the tube through a small port at the top. A second small port extends out the top of the tube to the left. An arrow points to the port opening from the left. The base of this arrow is labeled “H subscript 2 ( g ) at 1 a t m.” A light greygray points to a diagram in a circle at the right that illustrates the surface of the P t electrode in a magnified view. P t atoms are illustrated as a uniform cluster of grey sgray which are labeled “P t electrode atoms.” On the grey atograyace, the label “e superscript negative” is shown 4 times in a nearly even vertical distribution to show electrons on the P t surface. A curved arrow extends from a white sphere labeled “H superscript plus” at the right of the P t atoms to the uppermost electron shown. Just below, a straight arrow extends from the P t surface to the right to a pair of linked white spheres which are labeled “H subscript 2.” A curved arrow extends from a second white sphere labeled “H superscript plus” at the right of the P t atoms to the second electron shown. A curved arrow extends from the third electron on the P t surface to the right to a white sphere labeled “H superscript plus.” Just below, an arrow points left from a pair of linked white spheres which are labeled “H subscript 2” to the P t surface. A curved arrow extends from the fourth electron on the P t surface to the right to a white sphere labeled “H superscript plus.”
+
 <!-- SEG:m68823:para:fs-idm475267408 -->
-The assigned potential of the SHE permits the definition of a conveniently measured potential for a single half-cell. The {{term}}electrode potential (E[[sub:X]]){{/term}} for a half-cell [[i:X]] is defined as [[i:the potential measured for a cell comprised of X acting as cathode and the SHE acting as anode]]:
+The assigned potential of the SHE permits the definition of a conveniently measured potential for a single half-cell. The [[term:electrode potential (E[[sub:X]])|term-00004]] for a half-cell [[i:X]] is defined as [[i:the potential measured for a cell comprised of X acting as cathode and the SHE acting as anode]]:
 
 <!-- SEG:m68823:para:fs-idm210033168 -->
-When the half-cell [[i:X]] is under standard-state conditions, its potential is the {{term}}standard electrode potential, E°[[sub:X]]{{/term}}. Since the definition of cell potential requires the half-cells function as cathodes, these potentials are sometimes called [[i:standard reduction potentials]].
+When the half-cell [[i:X]] is under standard-state conditions, its potential is the [[term:standard electrode potential, E°[[sub:X]]|term-00005]]. Since the definition of cell potential requires the half-cells function as cathodes, these potentials are sometimes called [[i:standard reduction potentials]].
 
 <!-- SEG:m68823:para:fs-idm167563696 -->
 This approach to measuring electrode potentials is illustrated in [[xref:CNX_Chem_17_03_GalvanCu]], which depicts a cell comprised of an SHE connected to a copper(II)/copper(0) half-cell under standard-state conditions. A voltmeter in the external circuit allows measurement of the potential difference between the two half-cells. Since the Cu half-cell is designated as the cathode in the definition of cell potential, it is connected to the red (positive) input of the voltmeter, while the designated SHE anode is connected to the black (negative) input. These connections insure that the sign of the measured potential will be consistent with the sign conventions of electrochemistry per the various definitions discussed above. A cell potential of +0.337 V is measured, and so
@@ -46,238 +49,241 @@ Tabulations of E° values for other half-cells measured in a similar fashion are
 <!-- SEG:m68823:caption:CNX_Chem_17_03_GalvanCu-caption -->
 A cell permitting experimental measurement of the standard electrode potential for the half-reaction [[MATH:1]]
 
+<!-- SEG:m68823:alt:fs-idm8697872-alt -->
+This figure contains a diagram of an electrochemical cell. Two beakers are shown. Each is just over half full. The beaker on the left contains a clear, colorless solution and is labeled below as “1 M H superscript plus.” The beaker on the right contains a blue solution and is labeled below as “1 M C u superscript 2 plus.” A glass tube in the shape of an inverted U connects the two beakers at the center of the diagram. The tube contents are colorless. The ends of the tubes are beneath the surface of the solutions in the beakers and a small graylug is present at each end of the tube. The beaker on the left has a glass tube partially submersed in the liquid. Bubbles are rising from the gray square, labeled “Standard hydrogen electrode” at the bottom of the tube. A curved arrow points up to the right, indicating the direction of the bubbles. A black wire extends from the gray square up the interior of the tube through a small port at the top to a rectangle with a digital readout of “positive 0.337 V,” which is labeled “Voltmeter.” A second small port extends out the top of the tube to the left. An arrow points to the port opening from the left. The base of this arrow is labeled “1 a t m H subscript 2 ( g ).” The beaker on the right has an orange-brown strip that is labeled “C u electrode” at the top. A wire extends from the top of this strip to the voltmeter. An arrow points toward the voltmeter from the left which is labeled “e superscript negative flow.” Similarly, an arrow points away from the voltmeter to the right. A curved arrow extends from the surrounding solution to the standard hydrogen electrode in the beaker. The end of the arrow is labeled “H subscript 2” and tip of this arrow is labeled “2 H superscript plus.” A curved arrow extends from the “C u superscript 2 plus” label in the solution to a “C u” label at the lower edge of the C u electrode. Between the two beakers is the label “T equals 298 K.”
+
 <!-- SEG:m68823:para:fs-idm218785168 -->
 [[xref:fs-idm42585168]] provides a listing of standard electrode potentials for a selection of half-reactions in numerical order, and a more extensive alphabetical listing is given in [[docref:Appendix L|m68870]].
 
-<!-- SEG:m68823:entry:auto-18 -->
+<!-- SEG:m68823:entry:auto-20 -->
 Selected Standard Reduction Potentials at 25 °C
 
-<!-- SEG:m68823:entry:auto-19 -->
+<!-- SEG:m68823:entry:auto-21 -->
 Half-Reaction
 
-<!-- SEG:m68823:entry:auto-20 -->
+<!-- SEG:m68823:entry:auto-22 -->
 [[i:E]]° (V)
 
-<!-- SEG:m68823:entry:auto-21 -->
+<!-- SEG:m68823:entry:auto-23 -->
 [[MATH:2]]
 
-<!-- SEG:m68823:entry:auto-22 -->
+<!-- SEG:m68823:entry:auto-24 -->
 +2.866
 
-<!-- SEG:m68823:entry:auto-23 -->
+<!-- SEG:m68823:entry:auto-25 -->
 [[MATH:3]]
 
-<!-- SEG:m68823:entry:auto-24 -->
+<!-- SEG:m68823:entry:auto-26 -->
 +1.69
 
-<!-- SEG:m68823:entry:auto-25 -->
+<!-- SEG:m68823:entry:auto-27 -->
 [[MATH:4]]
 
-<!-- SEG:m68823:entry:auto-26 -->
+<!-- SEG:m68823:entry:auto-28 -->
 +1.507
 
-<!-- SEG:m68823:entry:auto-27 -->
+<!-- SEG:m68823:entry:auto-29 -->
 [[MATH:5]]
 
-<!-- SEG:m68823:entry:auto-28 -->
+<!-- SEG:m68823:entry:auto-30 -->
 +1.498
 
-<!-- SEG:m68823:entry:auto-29 -->
+<!-- SEG:m68823:entry:auto-31 -->
 [[MATH:6]]
 
-<!-- SEG:m68823:entry:auto-30 -->
+<!-- SEG:m68823:entry:auto-32 -->
 +1.35827
 
-<!-- SEG:m68823:entry:auto-31 -->
+<!-- SEG:m68823:entry:auto-33 -->
 [[MATH:7]]
 
-<!-- SEG:m68823:entry:auto-32 -->
+<!-- SEG:m68823:entry:auto-34 -->
 +1.229
 
-<!-- SEG:m68823:entry:auto-33 -->
+<!-- SEG:m68823:entry:auto-35 -->
 [[MATH:8]]
 
-<!-- SEG:m68823:entry:auto-34 -->
+<!-- SEG:m68823:entry:auto-36 -->
 +1.20
 
-<!-- SEG:m68823:entry:auto-35 -->
+<!-- SEG:m68823:entry:auto-37 -->
 [[MATH:9]]
 
-<!-- SEG:m68823:entry:auto-36 -->
+<!-- SEG:m68823:entry:auto-38 -->
 +1.0873
 
-<!-- SEG:m68823:entry:auto-37 -->
+<!-- SEG:m68823:entry:auto-39 -->
 [[MATH:10]]
 
-<!-- SEG:m68823:entry:auto-38 -->
+<!-- SEG:m68823:entry:auto-40 -->
 +0.7996
 
-<!-- SEG:m68823:entry:auto-39 -->
+<!-- SEG:m68823:entry:auto-41 -->
 [[MATH:11]]
 
-<!-- SEG:m68823:entry:auto-40 -->
+<!-- SEG:m68823:entry:auto-42 -->
 +0.7973
 
-<!-- SEG:m68823:entry:auto-41 -->
+<!-- SEG:m68823:entry:auto-43 -->
 [[MATH:12]]
 
-<!-- SEG:m68823:entry:auto-42 -->
+<!-- SEG:m68823:entry:auto-44 -->
 +0.771
 
-<!-- SEG:m68823:entry:auto-43 -->
+<!-- SEG:m68823:entry:auto-45 -->
 [[MATH:13]]
 
-<!-- SEG:m68823:entry:auto-44 -->
+<!-- SEG:m68823:entry:auto-46 -->
 +0.558
 
-<!-- SEG:m68823:entry:auto-45 -->
+<!-- SEG:m68823:entry:auto-47 -->
 [[MATH:14]]
 
-<!-- SEG:m68823:entry:auto-46 -->
+<!-- SEG:m68823:entry:auto-48 -->
 +0.5355
 
-<!-- SEG:m68823:entry:auto-47 -->
+<!-- SEG:m68823:entry:auto-49 -->
 [[MATH:15]]
 
-<!-- SEG:m68823:entry:auto-48 -->
+<!-- SEG:m68823:entry:auto-50 -->
 +0.49
 
-<!-- SEG:m68823:entry:auto-49 -->
+<!-- SEG:m68823:entry:auto-51 -->
 [[MATH:16]]
 
-<!-- SEG:m68823:entry:auto-50 -->
+<!-- SEG:m68823:entry:auto-52 -->
 +0.34
 
-<!-- SEG:m68823:entry:auto-51 -->
+<!-- SEG:m68823:entry:auto-53 -->
 [[MATH:17]]
 
-<!-- SEG:m68823:entry:auto-52 -->
+<!-- SEG:m68823:entry:auto-54 -->
 +0.26808
 
-<!-- SEG:m68823:entry:auto-53 -->
+<!-- SEG:m68823:entry:auto-55 -->
 [[MATH:18]]
 
-<!-- SEG:m68823:entry:auto-54 -->
+<!-- SEG:m68823:entry:auto-56 -->
 +0.22233
 
-<!-- SEG:m68823:entry:auto-55 -->
+<!-- SEG:m68823:entry:auto-57 -->
 [[MATH:19]]
 
-<!-- SEG:m68823:entry:auto-56 -->
+<!-- SEG:m68823:entry:auto-58 -->
 +0.151
 
-<!-- SEG:m68823:entry:auto-57 -->
+<!-- SEG:m68823:entry:auto-59 -->
 [[MATH:20]]
 
-<!-- SEG:m68823:entry:auto-58 -->
+<!-- SEG:m68823:entry:auto-60 -->
 0.00
 
-<!-- SEG:m68823:entry:auto-59 -->
+<!-- SEG:m68823:entry:auto-61 -->
 [[MATH:21]]
 
-<!-- SEG:m68823:entry:auto-60 -->
+<!-- SEG:m68823:entry:auto-62 -->
 −0.1262
 
-<!-- SEG:m68823:entry:auto-61 -->
+<!-- SEG:m68823:entry:auto-63 -->
 [[MATH:22]]
 
-<!-- SEG:m68823:entry:auto-62 -->
+<!-- SEG:m68823:entry:auto-64 -->
 −0.1375
 
-<!-- SEG:m68823:entry:auto-63 -->
+<!-- SEG:m68823:entry:auto-65 -->
 [[MATH:23]]
 
-<!-- SEG:m68823:entry:auto-64 -->
+<!-- SEG:m68823:entry:auto-66 -->
 −0.257
 
-<!-- SEG:m68823:entry:auto-65 -->
+<!-- SEG:m68823:entry:auto-67 -->
 [[MATH:24]]
 
-<!-- SEG:m68823:entry:auto-66 -->
+<!-- SEG:m68823:entry:auto-68 -->
 −0.28
 
-<!-- SEG:m68823:entry:auto-67 -->
+<!-- SEG:m68823:entry:auto-69 -->
 [[MATH:25]]
 
-<!-- SEG:m68823:entry:auto-68 -->
+<!-- SEG:m68823:entry:auto-70 -->
 −0.3505
 
-<!-- SEG:m68823:entry:auto-69 -->
+<!-- SEG:m68823:entry:auto-71 -->
 [[MATH:26]]
 
-<!-- SEG:m68823:entry:auto-70 -->
+<!-- SEG:m68823:entry:auto-72 -->
 −0.4030
 
-<!-- SEG:m68823:entry:auto-71 -->
+<!-- SEG:m68823:entry:auto-73 -->
 [[MATH:27]]
 
-<!-- SEG:m68823:entry:auto-72 -->
+<!-- SEG:m68823:entry:auto-74 -->
 −0.447
 
-<!-- SEG:m68823:entry:auto-73 -->
+<!-- SEG:m68823:entry:auto-75 -->
 [[MATH:28]]
 
-<!-- SEG:m68823:entry:auto-74 -->
+<!-- SEG:m68823:entry:auto-76 -->
 −0.744
 
-<!-- SEG:m68823:entry:auto-75 -->
+<!-- SEG:m68823:entry:auto-77 -->
 [[MATH:29]]
 
-<!-- SEG:m68823:entry:auto-76 -->
+<!-- SEG:m68823:entry:auto-78 -->
 −1.185
 
-<!-- SEG:m68823:entry:auto-77 -->
+<!-- SEG:m68823:entry:auto-79 -->
 [[MATH:30]]
 
-<!-- SEG:m68823:entry:auto-78 -->
+<!-- SEG:m68823:entry:auto-80 -->
 −1.245
 
-<!-- SEG:m68823:entry:auto-79 -->
+<!-- SEG:m68823:entry:auto-81 -->
 [[MATH:31]]
 
-<!-- SEG:m68823:entry:auto-80 -->
+<!-- SEG:m68823:entry:auto-82 -->
 −0.7618
 
-<!-- SEG:m68823:entry:auto-81 -->
+<!-- SEG:m68823:entry:auto-83 -->
 [[MATH:32]]
 
-<!-- SEG:m68823:entry:auto-82 -->
+<!-- SEG:m68823:entry:auto-84 -->
 −1.662
 
-<!-- SEG:m68823:entry:auto-83 -->
+<!-- SEG:m68823:entry:auto-85 -->
 [[MATH:33]]
 
-<!-- SEG:m68823:entry:auto-84 -->
+<!-- SEG:m68823:entry:auto-86 -->
 −2.372
 
-<!-- SEG:m68823:entry:auto-85 -->
+<!-- SEG:m68823:entry:auto-87 -->
 [[MATH:34]]
 
-<!-- SEG:m68823:entry:auto-86 -->
+<!-- SEG:m68823:entry:auto-88 -->
 −2.71
 
-<!-- SEG:m68823:entry:auto-87 -->
+<!-- SEG:m68823:entry:auto-89 -->
 [[MATH:35]]
 
-<!-- SEG:m68823:entry:auto-88 -->
+<!-- SEG:m68823:entry:auto-90 -->
 −2.868
 
-<!-- SEG:m68823:entry:auto-89 -->
+<!-- SEG:m68823:entry:auto-91 -->
 [[MATH:36]]
 
-<!-- SEG:m68823:entry:auto-90 -->
+<!-- SEG:m68823:entry:auto-92 -->
 −2.912
 
-<!-- SEG:m68823:entry:auto-91 -->
+<!-- SEG:m68823:entry:auto-93 -->
 [[MATH:37]]
 
-<!-- SEG:m68823:entry:auto-92 -->
+<!-- SEG:m68823:entry:auto-94 -->
 −2.931
 
-<!-- SEG:m68823:entry:auto-93 -->
+<!-- SEG:m68823:entry:auto-95 -->
 [[MATH:38]]
 
-<!-- SEG:m68823:entry:auto-94 -->
+<!-- SEG:m68823:entry:auto-96 -->
 −3.04
 
 <!-- SEG:m68823:example-title:fs-idm10620896-title -->
@@ -373,7 +379,7 @@ The property of potential, [[i:E]], is the energy associated with the separation
 <!-- SEG:m68823:title:fs-idm175821376-title -->
 Key Equations
 
-<!-- SEG:m68823:entry:auto-126 -->
+<!-- SEG:m68823:entry:auto-128 -->
 [[MATH:42]]
 
 <!-- SEG:m68823:title:fs-idp17878176-title -->

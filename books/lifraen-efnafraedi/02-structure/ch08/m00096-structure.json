@@ -1,0 +1,182 @@
+{
+  "moduleId": "m00096",
+  "title": {
+    "segmentId": "m00096:title:auto-1",
+    "text": "Oxidation of Alkenes: Cleavage to Carbonyl Compounds"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "54be7317-2cc2-4ed8-a6e4-706aadf8d5e2"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00096:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00096:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00096:alt:fig-00001-alt",
+          "text": "Oxygen in an electric discharge produce ozone. An alkene reacts with ozone to form a molozonide, which rearranges into an ozonide. Ozonide is reduced with zinc to two carbonyl compounds."
+        },
+        "src": "../../media/OChem_08_08_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00096:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00096:alt:fig-00002-alt",
+          "text": "First reaction: Isopropylidenecyclohexane reacts with ozone, zinc, and hydronium to form cyclohexanone and acetone. Second reaction: Methyl 9-octadecenoate reacts with ozone, zinc, and hydronium to form nonanal and methyl 9-oxononanoate."
+        },
+        "src": "../../media/OChem_08_08_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00096:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00096:alt:fig-00003-alt",
+          "text": "A reaction shows 3,7-dimethyl-1-octene reacting with potassium permanganate in the presence of hydronium ion to form 2,6-dimethylheptanoic acid with 45 percent yield and carbon dioxide."
+        },
+        "src": "../../media/OChem_08_08_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00096:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00096:alt:fig-00004-alt",
+          "text": "Two reactions show the formation of 6-oxoheptanal (86 percent yield) and cyclopentanone (81 percent yield) from the parent 1,2-diol. Cyclic periodate intermediates are formed in both reaction."
+        },
+        "src": "../../media/OChem_08_08_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00096:example-title:exam-00001-title",
+        "text": "Predicting the Reactant in an Ozonolysis Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00096:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00096:para:para-00007",
+          "title": {
+            "segmentId": "m00096:para-title:para-00007-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "title": {
+            "segmentId": "m00096:para-title:para-00008-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00096:alt:fig-00005-alt",
+          "text": "An unknown reactant, depicted by a question mark, reacts with ozone in first step and zinc in acetic acid in second step to form cyclopentanone and propanal."
+        },
+        "src": "../../media/OChem_08_08_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00096:alt:fig-00006-alt",
+          "text": "A backward reaction shows a cyclopentane double bonded to a 3-carbon chain forming from cyclopentanone and propanal. The oxygen atoms of cyclopentanone and propanal are circled."
+        },
+        "src": "../../media/OChem_08_08_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00096:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

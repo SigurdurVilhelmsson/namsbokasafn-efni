@@ -1,0 +1,110 @@
+{
+  "moduleId": "m00022",
+  "title": {
+    "segmentId": "m00022:title:auto-1",
+    "text": "Rules for Resonance Forms"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "75a4288d-be74-4802-b0f1-862c0f687b03"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00022:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00022:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00022:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00022:alt:fig-00001-alt",
+          "text": "Chemical structure of acetate anion, with curved arrow from nonbonding pair on negative oxygen toward C O bond, and another curved arrow from double bond toward neutral oxygen."
+        },
+        "src": "../../media/OChem_02_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00022:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00022:alt:fig-00002-alt",
+          "text": "Chemical structure of benzene (C 6 H 6) with alternating single and double bonds. Curved arrows point from each double bond toward an adjacent single bond."
+        },
+        "src": "../../media/OChem_02_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00022:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00022:alt:fig-00003-alt",
+          "text": "Chemical structure of acetone and of anion after deprotonation. Curved arrows show movement of nonbonding pair and bond resulting in migration of negative charge from C to O."
+        },
+        "src": "../../media/OChem_02_05_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00022:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00022:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00022:alt:fig-00004-alt",
+          "text": "Chemical structure of acetate anion. Curved arrow shows migration of nonbonding pair from negative oxygen to C O bond without additional electron movement. Text says not a valid resonance form."
+        },
+        "src": "../../media/OChem_02_05_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00022:para:para-00008"
+    }
+  ],
+  "sectionOrder": 5
+}

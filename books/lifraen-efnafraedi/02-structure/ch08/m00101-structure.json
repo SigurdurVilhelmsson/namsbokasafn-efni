@@ -1,0 +1,1098 @@
+{
+  "moduleId": "m00101",
+  "title": {
+    "segmentId": "m00101:title:auto-1",
+    "text": "Problems"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "ea581398-870a-4198-a1bb-cdc838c6689e"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00101:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00101:alt:fig-00001-alt",
+          "text": "A reaction shows (R)-4-methyl-1-hexene (chiral) reacting with water in the presence of acid catalyst to form 4-methyl-2 hexanol (chiral)."
+        },
+        "src": "../../media/OChem_08_13_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00101:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00101:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00101:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00101:alt:fig-00002-alt",
+          "text": "Chiral alkene on reaction with hydronium ion forms a chiral carbocation, which further forms (2 S, 4 R)-4-methyl-2-hexanol and (2 R, 4 R)-4-methyl-2-hexanol."
+        },
+        "src": "../../media/OChem_08_13_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00101:para:para-00004"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00101:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00101:title:sect-00002-title",
+        "text": "Terpenes: Naturally Occurring Alkenes"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00101:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00101:caption:fig-00003-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00003-alt",
+              "text": "The leaves and fruits of a California Bay Umbellularia californica laurel tree."
+            },
+            "src": "../../media/OSX_OrgChem_08_98_BayLaurel.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00101:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00004-alt",
+              "text": "The structures of myrcene (oil of bay), alpha-pinene (turpentine), humulene (oil of hops), and beta-santalene (sandalwood oil)."
+            },
+            "src": "../../media/OChem_08_13_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00101:para:para-00009"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00005-alt",
+              "text": "The figure shows two isoprene units linked together to form myrcene. C1 and C4 of isoprene units are labeled as head and tail."
+            },
+            "src": "../../media/OChem_08_13_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00101:para:para-00010"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00006-alt",
+              "text": "The wedge-dash structure of lanosterol (a triterpene, C 30)."
+            },
+            "src": "../../media/OChem_08_13_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00101:para:para-00011"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00007-alt",
+              "text": "The structures of isopentenyl diphosphate and dimethylallyl diphosphate."
+            },
+            "src": "../../media/OChem_08_13_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-10"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-11"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-12"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-13"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-14"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-15"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-16"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-17"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-18"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-19"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00001-item-20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00101:title:sect-00004-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00101:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00101:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00101:para:para-00014"
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00101:para:para-00015"
+        },
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00101:para:para-00016"
+        },
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00101:para:para-00017"
+        },
+        {
+          "type": "para",
+          "id": "para-00018",
+          "segmentId": "m00101:para:para-00018"
+        },
+        {
+          "type": "note",
+          "id": "note-00001",
+          "title": {
+            "segmentId": "m00101:note-title:note-00001-title",
+            "text": "Learning Reactions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00019",
+              "segmentId": "m00101:para:para-00019"
+            },
+            {
+              "type": "para",
+              "id": "para-00020",
+              "segmentId": "m00101:para:para-00020"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "summary-reactions",
+      "title": {
+        "segmentId": "m00101:title:sect-00005-title",
+        "text": "Summary of Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00021",
+          "segmentId": "m00101:para:para-00021"
+        },
+        {
+          "type": "list",
+          "id": "list-00002",
+          "listType": "enumerated",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00002-item-1",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00003",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00101:item:list-00003-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00101:item:list-00003-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00101:item:list-00003-item-3"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00101:item:list-00003-item-4"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00101:item:list-00003-item-5"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00101:item:list-00003-item-6"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00101:item:list-00003-item-7"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00101:item:list-00003-item-8"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00101:item:list-00003-item-9"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00002-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00002-item-3",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00005",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00101:item:list-00005-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00101:item:list-00005-item-2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00101:item:list-00002-item-4"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00008-alt",
+              "text": "An alkene reacts with hydrogen halide in the presence of ether to form a product, in which C1 is bonded to a hydrogen to C2 and a halogen atom."
+            },
+            "src": "../../media/OChem_08_EC_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00009-alt",
+              "text": "A reaction shows an alkene reacting with dihalide in dichloromethane to form a product, in which each carbon is bonded to a halogen group."
+            },
+            "src": "../../media/OChem_08_EC_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00010-alt",
+              "text": "An alkene reacts with dihalogen in presence of water to form product and hydrogen halide. In product, C1 is bonded to hydroxyl group. C2 is bonded to halogen."
+            },
+            "src": "../../media/OChem_08_EC_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00011-alt",
+              "text": "Alkene reacts with mercury (II) acetate, water in tetrahydrofuran in first step, and sodium borohydride in second step to form a product, in which C1 is bonded to hydroxyl group."
+            },
+            "src": "../../media/OChem_08_EC_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00012",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00012-alt",
+              "text": "Alkene reacts with borane in tetrahydrofuran and hydrogen peroxide in hydroxide ion to form a product, in which C1 is bonded to a hydroxyl group."
+            },
+            "src": "../../media/OChem_08_EC_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00013",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00013-alt",
+              "text": "Alkene reacts with hydrogen in the presence of palladium on carbon  or platinum dioxide to form an alkane."
+            },
+            "src": "../../media/OChem_08_EC_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00014",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00014-alt",
+              "text": "Alkene reacts with peroxyacid to form an epoxide."
+            },
+            "src": "../../media/OChem_08_EC_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00015",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00015-alt",
+              "text": "Alkene reacts with osmium tetroxide in the first step, sodium bisulfite water or osmium tetroxide, and N M O in the second step to form a diol."
+            },
+            "src": "../../media/OChem_08_EC_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00016",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00016-alt",
+              "text": "A reaction shows an alkene reacting with trichloromethane in the presence of potassium hydroxide to form a cyclopropane, in which C 1 is bonded to two chlorine atoms."
+            },
+            "src": "../../media/OChem_08_EC_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00017",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00017-alt",
+              "text": "A reaction shows an alkene reacting with diiodomethane in the presence of zinc-copper and ether to form cyclopropane."
+            },
+            "src": "../../media/OChem_08_EC_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00018",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00018-alt",
+              "text": "A reaction shows an epoxide reacting with hydronium ion to form a trans-1,2-diol."
+            },
+            "src": "../../media/OChem_08_EC_011.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00019",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00019-alt",
+              "text": "Alkene with two R groups on each carbon reacts with ozone and zinc-hydronium to form two ketones, each with a carbonyl group bonded to two R groups."
+            },
+            "src": "../../media/OChem_08_EC_012.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00020",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00020-alt",
+              "text": "Alkene with two R groups on each carbon reacts with potassium permanganate and hydronium ion, yielding two ketones. Alkene with one R converts to carboxylic acid and carbon dioxide."
+            },
+            "src": "../../media/OChem_08_EC_013.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00021",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00101:alt:fig-00021-alt",
+              "text": "The figure shows 1,2-diol reacts with periodic acid in the presence of water to form two carbonyl compounds."
+            },
+            "src": "../../media/OChem_08_EC_014.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00101:title:sect-00006-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00075",
+          "segmentId": "m00101:para:para-00075"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00076",
+          "segmentId": "m00101:para:para-00076"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00040",
+          "segmentId": "m00101:para:para-00040"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00049",
+          "segmentId": "m00101:para:para-00049"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00055",
+          "segmentId": "m00101:para:para-00055"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00059",
+          "segmentId": "m00101:para:para-00059"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00041",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00042",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00043",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00044",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00045",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00046",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00047",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00048",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00049",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00050",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00051",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 13
+}

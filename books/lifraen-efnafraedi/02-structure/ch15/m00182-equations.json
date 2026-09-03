@@ -1,0 +1,26 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:msub><m:mo>°</m:mo><m:mrow><m:mtext>hydrog</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>–118</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ/mol</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{Δ}H{^{\\circ}}_{{\\text{hydrog}}}=–118\\, \\text{kJ/mol}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:msub><m:mo>°</m:mo><m:mrow><m:mtext>hydrog</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>–230</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ/mol</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{Δ}H{^{\\circ}}_{{\\text{hydrog}}}=–230\\, \\text{kJ/mol}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:msub><m:mo>°</m:mo><m:mrow><m:mtext>hydrog</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{Δ}H{^{\\circ}}_{{\\text{hydrog}}}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>ψ</m:mi><m:mn>4</m:mn></m:msub><m:mo>*</m:mo></m:mrow></m:math>",
+    "latex": "{{ψ}_{4}*}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>ψ</m:mi><m:mn>5</m:mn></m:msub><m:mo>*</m:mo></m:mrow></m:math>",
+    "latex": "{{ψ}_{5}*}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>ψ</m:mi><m:mn>4</m:mn></m:msub><m:mo>*</m:mo></m:mrow></m:math>",
+    "latex": "{{ψ}_{4}*}"
+  }
+}

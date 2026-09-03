@@ -20,16 +20,19 @@ We now know that the effervescence that occurred during this process was due to 
 The bubbling was due to the production of CO[[sub:2]].
 
 <!-- SEG:m68716:para:fs-idp55621088 -->
-The test of vinegar with potassium carbonate is one type of {{term}}quantitative analysis{{/term}}—the determination of the amount or concentration of a substance in a sample. In the analysis of vinegar, the concentration of the solute (acetic acid) was determined from the amount of reactant that combined with the solute present in a known volume of the solution. In other types of chemical analyses, the amount of a substance present in a sample is determined by measuring the amount of product that results.
+The test of vinegar with potassium carbonate is one type of [[term:quantitative analysis|term-00001]]—the determination of the amount or concentration of a substance in a sample. In the analysis of vinegar, the concentration of the solute (acetic acid) was determined from the amount of reactant that combined with the solute present in a known volume of the solution. In other types of chemical analyses, the amount of a substance present in a sample is determined by measuring the amount of product that results.
 
 <!-- SEG:m68716:title:fs-idp85215712-title -->
 Titration
 
 <!-- SEG:m68716:para:fs-idp43277952 -->
-The described approach to measuring vinegar strength was an early version of the analytical technique known as {{term}}titration analysis{{/term}}. A typical titration analysis involves the use of a {{term}}buret{{/term}} ([[xref:CNX_Chem_04_05_titration]]) to make incremental additions of a solution containing a known concentration of some substance (the {{term}}titrant{{/term}}) to a sample solution containing the substance whose concentration is to be measured (the {{term}}analyte{{/term}}). The titrant and analyte undergo a chemical reaction of known stoichiometry, and so measuring the volume of titrant solution required for complete reaction with the analyte (the {{term}}equivalence point{{/term}} of the titration) allows calculation of the analyte concentration. The equivalence point of a titration may be detected visually if a distinct change in the appearance of the sample solution accompanies the completion of the reaction. The halt of bubble formation in the classic vinegar analysis is one such example, though, more commonly, special dyes called {{term}}indicators{{/term}} are added to the sample solutions to impart a change in color at or very near the equivalence point of the titration. Equivalence points may also be detected by measuring some solution property that changes in a predictable way during the course of the titration. Regardless of the approach taken to detect a titration’s equivalence point, the volume of titrant actually measured is called the {{term}}end point{{/term}}. Properly designed titration methods typically ensure that the difference between the equivalence and end points is negligible. Though any type of chemical reaction may serve as the basis for a titration analysis, the three described in this chapter (precipitation, acid-base, and redox) are most common. Additional details regarding titration analysis are provided in the chapter on acid-base equilibria.
+The described approach to measuring vinegar strength was an early version of the analytical technique known as [[term:titration analysis|term-00002]]. A typical titration analysis involves the use of a [[term:buret|term-00003]] ([[xref:CNX_Chem_04_05_titration]]) to make incremental additions of a solution containing a known concentration of some substance (the [[term:titrant|term-00004]]) to a sample solution containing the substance whose concentration is to be measured (the [[term:analyte|term-00005]]). The titrant and analyte undergo a chemical reaction of known stoichiometry, and so measuring the volume of titrant solution required for complete reaction with the analyte (the [[term:equivalence point|term-00006]] of the titration) allows calculation of the analyte concentration. The equivalence point of a titration may be detected visually if a distinct change in the appearance of the sample solution accompanies the completion of the reaction. The halt of bubble formation in the classic vinegar analysis is one such example, though, more commonly, special dyes called [[term:indicators|term-00007]] are added to the sample solutions to impart a change in color at or very near the equivalence point of the titration. Equivalence points may also be detected by measuring some solution property that changes in a predictable way during the course of the titration. Regardless of the approach taken to detect a titration’s equivalence point, the volume of titrant actually measured is called the [[term:end point|term-00008]]. Properly designed titration methods typically ensure that the difference between the equivalence and end points is negligible. Though any type of chemical reaction may serve as the basis for a titration analysis, the three described in this chapter (precipitation, acid-base, and redox) are most common. Additional details regarding titration analysis are provided in the chapter on acid-base equilibria.
 
 <!-- SEG:m68716:caption:CNX_Chem_04_05_titration-caption -->
 (a) A student fills a buret in preparation for a titration analysis. (b) A typical buret permits volume measurements to the nearest 0.01 mL. (credit a: modification of work by Mark Blaser and Matt Evans; credit b: modification of work by Mark Blaser and Matt Evans)
+
+<!-- SEG:m68716:alt:fs-idp38472096-alt -->
+Two pictures are shown. In a, a person is shown pouring a liquid from a small beaker into a buret. The person is wearing goggles and gloves as she transfers the solution into the buret. In b, a close up view of the markings on the side of the buret is shown. The markings for 10, 15, and 20 are clearly shown with horizontal rings printed on the buret. Between each of these whole number markings, half markings are also clearly shown with horizontal line segment markings.
 
 <!-- SEG:m68716:example-title:fs-idp80717680-title -->
 Titration Analysis
@@ -73,6 +76,9 @@ A volume of 23.24 mL was required to reach the end point. What is the oxalic aci
 <!-- SEG:m68716:para:fs-idm9637984 -->
 0.2648 [[i:M]]
 
+<!-- SEG:m68716:alt:fs-idm28534832-alt -->
+This figure shows four rectangles. The first is shaded lavender and is labeled, “Volume of N a O H.” This rectangle is followed by an arrow pointing right which is labeled, “Molar concentration,” to a second rectangle. This second rectangle is shaded pink and is labeled, “Moles of N a O H.” This rectangle is followed by an arrow pointing right which is labeled, “Stoichiometric factor,” to a third rectangle which is shaded pink and is labeled, “Moles of H C l.” This rectangle is followed by an arrow labeled, “Solution volume,” which points right to a fourth rectangle. This fourth rectangle is shaded lavender and is labeled, “Concentration of H C l.”
+
 <!-- SEG:m68716:note-title:fs-idp52546208-title -->
 Answer:
 
@@ -83,13 +89,16 @@ Answer:
 Gravimetric Analysis
 
 <!-- SEG:m68716:para:fs-idp27521328 -->
-A {{term}}gravimetric analysis{{/term}} is one in which a sample is subjected to some treatment that causes a change in the physical state of the analyte that permits its separation from the other components of the sample. Mass measurements of the sample, the isolated analyte, or some other component of the analysis system, used along with the known stoichiometry of the compounds involved, permit calculation of the analyte concentration. Gravimetric methods were the first techniques used for quantitative chemical analysis, and they remain important tools in the modern chemistry laboratory.
+A [[term:gravimetric analysis|term-00009]] is one in which a sample is subjected to some treatment that causes a change in the physical state of the analyte that permits its separation from the other components of the sample. Mass measurements of the sample, the isolated analyte, or some other component of the analysis system, used along with the known stoichiometry of the compounds involved, permit calculation of the analyte concentration. Gravimetric methods were the first techniques used for quantitative chemical analysis, and they remain important tools in the modern chemistry laboratory.
 
 <!-- SEG:m68716:para:fs-idp272684448 -->
 The required change of state in a gravimetric analysis may be achieved by various physical and chemical processes. For example, the moisture (water) content of a sample is routinely determined by measuring the mass of a sample before and after it is subjected to a controlled heating process that evaporates the water. Also common are gravimetric techniques in which the analyte is subjected to a precipitation reaction of the sort described earlier in this chapter. The precipitate is typically isolated from the reaction mixture by filtration, carefully dried, and then weighed ([[xref:CNX_Chem_04_05_Filter]]). The mass of the precipitate may then be used, along with relevant stoichiometric relationships, to calculate analyte concentration.
 
 <!-- SEG:m68716:caption:CNX_Chem_04_05_Filter-caption -->
 Precipitate may be removed from a reaction mixture by filtration.
+
+<!-- SEG:m68716:alt:fs-idp79829856-alt -->
+A photo is shown of a flask and funnel used for filtration. The flask contains a slightly opaque liquid filtrate with a slight yellow tint. A funnel, which contains a bright yellow and orange material, sits atop the flask. The flask is held in place by a clamp and is connected to a vacuum line. The connection between the funnel and flask is sealed with a rubber bung or gasket.
 
 <!-- SEG:m68716:example-title:fs-idp69077568-title -->
 Gravimetric Analysis
@@ -121,6 +130,9 @@ What is the percent of chloride ion in a sample if 1.1324 g of the sample produc
 <!-- SEG:m68716:para:fs-idm20241408 -->
 23.76%
 
+<!-- SEG:m68716:alt:fs-idp125565328-alt -->
+This figure shows five rectangles. The first is shaded yellow and is labeled “Mass of B a S O subscript 4.” This rectangle is followed by an arrow pointing right to a second rectangle. The arrow is labeled, “Molar mass.” The second rectangle is shaded pink and is labeled, “Moles of B a S O subscript 4.” This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, “Stoichiometric factor.” This third rectangle is shaded pink and is labeled, “Moles of M g S O subscript 4.” This rectangle is followed by an arrow labeled, “Molar mass,” which points downward to a fourth rectangle. This fourth rectangle is shaded yellow and is labeled, “Mass of M g S O subscript 4.” This rectangle is followed by an arrow labeled, “Sample mass,” which points left to a fifth rectangle. This fifth rectangle is shaded lavender and is labeled, “Percent M g S O subscript 4.
+
 <!-- SEG:m68716:note-title:fs-idp183806096-title -->
 Answer:
 
@@ -128,10 +140,13 @@ Answer:
 23.76%
 
 <!-- SEG:m68716:para:fs-idp91356704 -->
-The elemental composition of hydrocarbons and related compounds may be determined via a gravimetric method known as {{term}}combustion analysis{{/term}}. In a combustion analysis, a weighed sample of the compound is heated to a high temperature under a stream of oxygen gas, resulting in its complete combustion to yield gaseous products of known identities. The complete combustion of hydrocarbons, for example, will yield carbon dioxide and water as the only products. The gaseous combustion products are swept through separate, preweighed collection devices containing compounds that selectively absorb each product ([[xref:CNX_Chem_04_05_combustion]]). The mass increase of each device corresponds to the mass of the absorbed product and may be used in an appropriate stoichiometric calculation to derive the mass of the relevant element.
+The elemental composition of hydrocarbons and related compounds may be determined via a gravimetric method known as [[term:combustion analysis|term-00010]]. In a combustion analysis, a weighed sample of the compound is heated to a high temperature under a stream of oxygen gas, resulting in its complete combustion to yield gaseous products of known identities. The complete combustion of hydrocarbons, for example, will yield carbon dioxide and water as the only products. The gaseous combustion products are swept through separate, preweighed collection devices containing compounds that selectively absorb each product ([[xref:CNX_Chem_04_05_combustion]]). The mass increase of each device corresponds to the mass of the absorbed product and may be used in an appropriate stoichiometric calculation to derive the mass of the relevant element.
 
 <!-- SEG:m68716:caption:CNX_Chem_04_05_combustion-caption -->
 This schematic diagram illustrates the basic components of a combustion analysis device for determining the carbon and hydrogen content of a sample.
+
+<!-- SEG:m68716:alt:fs-idp46838688-alt -->
+This diagram shows an arrow pointing from O subscript 2 into a tube that leads into a vessel containing a red material, labeled “Sample.” This vessel is inside a blue container with a red inner lining which is labeled “Furnace.” An arrow points from the tube to the right into the vessel above the red sample material. An arrow leads out of this vessel through a tube into a second vessel outside the furnace. An line points from this tube to a label above the diagram that reads “C O subscript 2, H subscript 2 O, O subscript 2, and other gases.” Many small green spheres are visible in the second vessel which is labeled below, “H subscript 2 O absorber such as M g ( C l O subscript 4 ) subscript 2.” An arrow points to the right through the vessel, and another arrow points right heading out of the vessel through a tube into a third vessel. The third vessel contains many small blue spheres. It is labeled “C O subscript 2 absorber such as N a O H.” An arrow points right through this vessel, and a final arrow points out of a tube at the right end of the vessel. Outside the end of this tube at the end of the arrow is the label, “O subscript 2 and other gases.”
 
 <!-- SEG:m68716:example-title:fs-idp72915680-title -->
 Combustion Analysis
@@ -165,6 +180,9 @@ A 0.00215-g sample of polystyrene, a polymer composed of carbon and hydrogen, pr
 
 <!-- SEG:m68716:para:fs-idp1032432 -->
 CH
+
+<!-- SEG:m68716:alt:fs-idp22371728-alt -->
+This figure shows two flowcharts. The first row is a single flow chart. In this row, a rectangle at the left is shaded yellow and is labeled, “Mass of C O subscript 2.” This rectangle is followed by an arrow pointing right to a second rectangle. The arrow is labeled, “Molar mass.” The second rectangle is shaded pink and is labeled, “Moles of C O subscript 2.” This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, “Stoichiometric factor.” The third rectangle is shaded pink and is labeled, “Moles of C.” This rectangle is followed by an arrow labeled “Molar mass” which points right to a fourth rectangle. The fourth rectangle is shaded yellow and is labeled “Mass of C.” Below, is a second flowchart. It begins with a yellow shaded rectangle on the left which is labeled, “Mass of H subscript 2 O.” This rectangle is followed by an arrow labeled, “Molar mass,” which points right to a second rectangle. The second rectangle is shaded pink and is labeled, “Moles of H subscript 2 O.” This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, “Stoichiometric factor.” The third rectangle is shaded pink and is labeled “Moles of H.” This rectangle is followed to the right by an arrow labeled, “Molar mass,” which points to a fourth rectangle. The fourth rectangle is shaded yellow and is labeled “Mass of H.” An arrow labeled, “Sample mass” points down beneath this rectangle to a green shaded rectangle. This rectangle is labeled, “Percent composition.” An arrow extends beneath the pink rectangle labeled, “Moles of H,” to a green shaded rectangle labeled, “C to H mole ratio.” Beneath this rectangle, an arrow extends to a second green shaded rectangle which is labeled, “Empirical formula.”
 
 <!-- SEG:m68716:note-title:fs-idm15574688-title -->
 Answer:
@@ -252,6 +270,9 @@ What is the molarity?
 
 <!-- SEG:m68716:problem:fs-idp123399264 -->
 What mass of Ca(OH)[[sub:2]] will react with 25.0 g of butanoic to form the preservative calcium butanoate according to the equation?
+
+<!-- SEG:m68716:alt:fs-idp179983520-alt -->
+A chemical reaction is shown. To the left, a structural formula is provided for a molecule with a 4 C atom horizontal chain involving all single bonds between the C atoms. The three C atoms to the left have H atoms bonded above and below and the left most C atom also has an H atom bonded to its left side. The fourth C atom, which is toward the right end of the structure, has a double bonded O atom above and a single bonded O atom to its right. An H atom is bonded to the right of the single bonded O atom. This structure is followed by a plus sign, then the formula C a ( O H ) subscript 2. This is followed by a reaction arrow. To the right of this arrow is a structural formula that begins C a, and in parentheses has a 4 C atom horizontal chain involving all single bonds between the C atoms. The three C atoms to the left have H atoms bonded above and below, and the left most C atom also has an H atom bonded to its left side. The fourth C atom, which is toward the right end of the structure, has a double bonded O atom above and a single bonded O atom to its right. Outside the parentheses is a subscript 2. This structure is followed by a plus sign and 2 H subscript 2 O.
 
 <!-- SEG:m68716:problem:fs-idp126876816 -->
 How many milliliters of a 0.1500-[[i:M]] solution of KOH will be required to titrate 40.00 mL of a 0.0656-[[i:M]] solution of H[[sub:3]]PO[[sub:4]]?[[BR]] [[MATH:14]]

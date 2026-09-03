@@ -11,7 +11,7 @@ Define corrosion
 List some of the methods used to prevent or slow corrosion
 
 <!-- SEG:m68826:para:fs-idm166398976 -->
-{{term}}Corrosion{{/term}} is usually defined as the degradation of metals by a naturally occurring electrochemical process. The formation of rust on iron, tarnish on silver, and the blue-green patina that develops on copper are all examples of corrosion. The total cost of corrosion remediation in the United States is significant, with estimates in excess of half a trillion dollars a year.
+[[term:Corrosion|term-00001]] is usually defined as the degradation of metals by a naturally occurring electrochemical process. The formation of rust on iron, tarnish on silver, and the blue-green patina that develops on copper are all examples of corrosion. The total cost of corrosion remediation in the United States is significant, with estimates in excess of half a trillion dollars a year.
 
 <!-- SEG:m68826:note-title:fs-idp45256160-title -->
 Statue of Liberty: Changing Colors
@@ -28,6 +28,9 @@ These three compounds are responsible for the characteristic blue-green patina s
 <!-- SEG:m68826:caption:CNX_Chem_17_06_Statue-caption -->
 (a) The Statue of Liberty is covered with a copper skin, and was originally brown, as shown in this painting. (b) Exposure to the elements has resulted in the formation of the blue-green patina seen today.
 
+<!-- SEG:m68826:alt:fs-idp102574544-alt -->
+This figure contains two photos of the Statue of Liberty. Photo a appears to be an antique photo which shows the original brown color of the copper covered statue. Photo b shows the blue-green appearance of the statue today. In both photos, the statue is shown atop a building, with a body of water in the background.
+
 <!-- SEG:m68826:para:fs-idp12347424 -->
 Perhaps the most familiar example of corrosion is the formation of rust on iron. Iron will rust when it is exposed to oxygen and water. Rust formation involves the creation of a galvanic cell at an iron surface, as illustrated in [[xref:CNX_Chem_17_06_Statue]]. The relevant redox reactions are described by the following equations:
 
@@ -40,6 +43,9 @@ The stoichiometry of the hydrate varies, as indicated by the use of [[i:x]] in t
 <!-- SEG:m68826:caption:CNX_Chem_17_06_Rust-caption -->
 Corrosion can occur when a painted iron or steel surface is exposed to the environment by a scratch through the paint. A galvanic cell results that may be approximated by the simplified cell schematic Fe([[i:s]]) | Fe[[sup:2+]]([[i:aq]]) ||O[[sub:2]]([[i:aq]]), H[[sub:2]]O([[i:l]]) | Fe([[i:s]]).
 
+<!-- SEG:m68826:alt:fs-idm172126992-alt -->
+A grey rectangle, labeled “iron,” is shown with thin purple layers, labeled “Paint layer,” at its upper and lower surfaces. A gap in the upper purple layer at the upper left of the diagram is labeled “Cathodic site.” A blue droplet labeled “water” is positioned on top of the gap. A curved arrow extends from a space above the droplet to the surface of the grey region and into the water droplet. The base of the arrow is labeled “O subscript 2” and the tip of the arrow is labeled “H subscript 2 O.” A gap to the right and on the bottom side of the grey region shows that some of the grey region is gone from the region beneath the purple layer. A water droplet covers this gap and extends into the open space in the grey rectangle. The label “F e superscript 2 positive” is at the center of the droplet. A curved arrow points from the edge of the grey area below to the label. A second curved arrow extends from the F e superscript 2 positive arrow to a rust brown chunk on the lower surface of the purple layer at the edge of the water droplet. A curved arrow extends from O subscript 2 outside the droplet into the droplet to the rust brown chunk. The grey region at the lower right portion of the diagram is labeled “Anodic site.” An arrow extends from the anodic site toward the cathodic site, which is labeled “e superscript negative.”
+
 <!-- SEG:m68826:para:fs-idm124143584 -->
 One way to keep iron from corroding is to keep it painted. The layer of paint prevents the water and oxygen necessary for rust formation from coming into contact with the iron. As long as the paint remains intact, the iron is protected from corrosion.
 
@@ -47,13 +53,16 @@ One way to keep iron from corroding is to keep it painted. The layer of paint pr
 Other strategies include alloying the iron with other metals. For example, stainless steel is an alloy of iron containing a small amount of chromium. The chromium tends to collect near the surface, where it corrodes and forms a passivating an oxide layer that protects the iron.
 
 <!-- SEG:m68826:para:fs-idp11604000 -->
-Iron and other metals may also be protected from corrosion by {{term}}galvanization{{/term}}, a process in which the metal to be protected is coated with a layer of a more readily oxidized metal, usually zinc. When the zinc layer is intact, it prevents air from contacting the underlying iron and thus prevents corrosion. If the zinc layer is breached by either corrosion or mechanical abrasion, the iron may still be protected from corrosion by a [[i:cathodic protection]] process, which is described in the next paragraph.
+Iron and other metals may also be protected from corrosion by [[term:galvanization|term-00002]], a process in which the metal to be protected is coated with a layer of a more readily oxidized metal, usually zinc. When the zinc layer is intact, it prevents air from contacting the underlying iron and thus prevents corrosion. If the zinc layer is breached by either corrosion or mechanical abrasion, the iron may still be protected from corrosion by a [[i:cathodic protection]] process, which is described in the next paragraph.
 
 <!-- SEG:m68826:para:fs-idm71940736 -->
-Another important way to protect metal is to make it the cathode in a galvanic cell. This is {{term}}cathodic protection{{/term}} and can be used for metals other than just iron. For example, the rusting of underground iron storage tanks and pipes can be prevented or greatly reduced by connecting them to a more active metal such as zinc or magnesium ([[xref:CNX_Chem_17_06_Protect]]). This is also used to protect the metal parts in water heaters. The more active metals (lower reduction potential) are called {{term}}sacrificial anodes{{/term}} because as they get used up as they corrode (oxidize) at the anode. The metal being protected serves as the cathode for the reduction of oxygen in air, and so it simply serves to conduct (not react with) the electrons being transferred. When the anodes are properly monitored and periodically replaced, the useful lifetime of the iron storage tank can be greatly extended.
+Another important way to protect metal is to make it the cathode in a galvanic cell. This is [[term:cathodic protection|term-00003]] and can be used for metals other than just iron. For example, the rusting of underground iron storage tanks and pipes can be prevented or greatly reduced by connecting them to a more active metal such as zinc or magnesium ([[xref:CNX_Chem_17_06_Protect]]). This is also used to protect the metal parts in water heaters. The more active metals (lower reduction potential) are called [[term:sacrificial anodes|term-00004]] because as they get used up as they corrode (oxidize) at the anode. The metal being protected serves as the cathode for the reduction of oxygen in air, and so it simply serves to conduct (not react with) the electrons being transferred. When the anodes are properly monitored and periodically replaced, the useful lifetime of the iron storage tank can be greatly extended.
 
 <!-- SEG:m68826:caption:CNX_Chem_17_06_Protect-caption -->
 Cathodic protection is a useful approach to electrochemically preventing corrosion of underground storage tanks.
+
+<!-- SEG:m68826:alt:fs-idm127994416-alt -->
+A diagram is shown of an underground storage tank system. Underground is a metal tank-like structure, labeled “Sacrificial anode” which is vertically oriented. M g is on the tank, followed by a right arrow, followed by M g superscript 2 plus. A black line extends upward from the center of the tank, but stays underground. A horizontal black line segment continues right underground. 2 e superscript minus is followed by an arrow that points right below the line segment. A vertical black line segment leads downward to a horizontal grey tank which is labeled “Object to be protected (cathode).” 2 e subscript minus is on the tank with an arrow pointing from it to the ground below the tank. Below that arrow is “2 H superscript plus plus O subscript 2 arrow 2 H subscript 2 O.”
 
 <!-- SEG:m68826:title:fs-idm148527888-title -->
 Key Concepts and Summary

@@ -1,0 +1,80 @@
+{
+  "moduleId": "m00305",
+  "title": {
+    "segmentId": "m00305:title:auto-1",
+    "text": "The Eight Essential Monosaccharides"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f8a52e7a-8e81-42d8-9013-28d0f708b6a7"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00305:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00305:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00305:alt:fig-00001-alt",
+          "text": "The Fischer and Haworth projections of eight essential monosaccharides. The monosaccharides are L-fucose, D-galactose, D-glucose, D-mannose, N-acetyl-D-glucosamine, N-acetyl-D-galactosamine, D-xylose, and N-acetyl-D-neuraminic acid."
+        },
+        "src": "../../media/OChem_25_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00305:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00305:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00305:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00305:alt:fig-00002-alt",
+          "text": "The schematic pathway for biosynthesis of eight essential monosaccharides (galactose, xylose, galactosamine, neuraminic acid, fucose, and mannose) from glucose. Mannose and fucose are derived from fructose."
+        },
+        "src": "../../media/OChem_25_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00305:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

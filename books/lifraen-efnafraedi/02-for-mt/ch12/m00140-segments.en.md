@@ -10,8 +10,14 @@ Thus, the useful IR region is from 4000 to 400 cm[[sup:–1]], corresponding to 
 <!-- SEG:m00140:caption:fig-00001-caption -->
 [[b:The infrared and adjacent regions of the electromagnetic spectrum.]]
 
+<!-- SEG:m00140:alt:fig-00001-alt -->
+A partial electromagnetic spectrum extending from ultraviolet through visible light and infrared to microwave radiation, where ultraviolet is higher in energy and microwave is lower.
+
 <!-- SEG:m00140:para:para-00003 -->
 Why does an organic molecule absorb some wavelengths of IR radiation but not others? All molecules have a certain amount of energy and are in constant motion. Their bonds stretch and contract, atoms wag back and forth, and other molecular vibrations occur. Some of the kinds of allowed vibrations are shown below:
+
+<!-- SEG:m00140:alt:fig-00002-alt -->
+A ball and stick model of four structures showing the bending (in-plane and out-of-plane) and stretching (symmetric and antisymmetric) of bonds. Gray and white spheres represent carbon and hydrogen, respectively.
 
 <!-- SEG:m00140:para:para-00004 -->
 The amount of energy a molecule contains is not continuously variable but is [[i:quantized.]] That is, a molecule can stretch or bend only at specific frequencies corresponding to specific energy levels. Take bond stretching, for example. Although we usually speak of bond lengths as if they were fixed, the numbers given are really averages. In fact, a typical C–H bond with an average bond length of 110 pm is actually vibrating at a specific frequency, alternately stretching and contracting as if there were a spring connecting the two atoms.

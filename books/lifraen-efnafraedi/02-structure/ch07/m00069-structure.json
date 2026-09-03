@@ -1,0 +1,147 @@
+{
+  "moduleId": "m00069",
+  "title": {
+    "segmentId": "m00069:title:auto-1",
+    "text": "Electrophilic Addition Reactions of Alkenes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "cc529241-f166-476b-8461-d69f7aaba534"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00069:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00069:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00069:alt:fig-00001-alt",
+          "text": "A 2-step reaction mechanism shows 2-methylpropene's double bond electrons abstracting a hydrogen from hydrogen bromide to form 2-bromo-2-methylpropane via a carbocation."
+        },
+        "src": "../../media/OChem_07_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00069:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00069:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00069:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00069:alt:fig-00002-alt",
+          "text": "An energy diagram for two-step reaction of 2-methylpropene with H Br. First transition state has higher energy than second, and intermediate is a carbocation. Product more stable than reactant."
+        },
+        "src": "../../media/OChem_07_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00069:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00069:alt:fig-00003-alt",
+          "text": "Three reactions show the formation of 2-chloro-2-methylpropane, 2-iodopentane, 1-methylcyclohexanol from 2-methylpropene, 1-pentene, and 1-methylcyclohexene, respectively. The reagents used are different for different reactions."
+        },
+        "src": "../../media/OChem_07_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "note-00001",
+      "title": {
+        "segmentId": "m00069:note-title:note-00001-title",
+        "text": "Writing Organic Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00069:para:para-00005"
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00069:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00069:para:para-00007"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00069:alt:fig-00004-alt",
+          "text": "A reaction shows 2-methylpropene plus H Cl forming  2-chloro-2-methylpropane. Ether (labeled solvent) appears above the reaction arrow and 25 degrees Celsius appears below the reaction arrow."
+        },
+        "src": "../../media/OChem_07_07_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00069:alt:fig-00005-alt",
+          "text": "A reaction shows 2-methylpropene forming  2-chloro-2-methylpropane. H Cl (labeled reactant) appears above the reaction arrow, and ether (labeled solvent) and 25 degrees Celsius appears below the reaction arrow."
+        },
+        "src": "../../media/OChem_07_07_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00069:alt:fig-00006-alt",
+          "text": "The reaction of glucose to form glucose-6-phosphate with conversion of A T P to A D P in the presence of hexokinase."
+        },
+        "src": "../../media/OChem_07_07_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 7
+}

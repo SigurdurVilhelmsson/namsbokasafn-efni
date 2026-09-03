@@ -1,0 +1,167 @@
+{
+  "moduleId": "m00026",
+  "title": {
+    "segmentId": "m00026:title:auto-1",
+    "text": "Problems"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "99e66dac-75b4-4e43-9559-342b907ea4b3"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00026:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00026:alt:fig-00001-alt",
+          "text": "Ball and stick models with electron density maps and molecular structures of the reaction of acetic acid with hydroxide ion to form acetic ion and water, separated by a reversible arrow."
+        },
+        "src": "../../media/OChem_02_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00026:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00026:alt:fig-00002-alt",
+          "text": "The reaction of a stronger acid with a stronger base as reactants on the left side of the reversible arrow and weaker acid and weaker base as products on the right side."
+        },
+        "src": "../../media/OChem_02_09_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00026:example-title:exam-00001-title",
+        "text": "Predicting Acid Strengths from p[[i:K]][[sub:a]] Values"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00026:para:para-00003"
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00026:para:para-00004",
+          "title": {
+            "segmentId": "m00026:para-title:para-00004-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00026:para:para-00005",
+          "title": {
+            "segmentId": "m00026:para-title:para-00005-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00026:alt:fig-00003-alt",
+          "text": "The reaction of acetylene with the hydroxide ion as reactants on the left side of the arrow and the alkynide ion and water as products on the right side."
+        },
+        "src": "../../media/OChem_02_09_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00002",
+      "title": {
+        "segmentId": "m00026:example-title:exam-00002-title",
+        "text": "Calculating [[i:K]][[sub:a]] from p[[i:K]][[sub:a]]"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00026:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00026:para:para-00007",
+          "title": {
+            "segmentId": "m00026:para-title:para-00007-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00026:para:para-00008",
+          "title": {
+            "segmentId": "m00026:para-title:para-00008-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00026:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

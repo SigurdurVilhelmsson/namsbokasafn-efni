@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68828",
-  "extractedAt": "2026-07-07T09:12:48.303Z",
+  "extractedAt": "2026-08-31T19:08:44.716Z",
   "sourceHash": "620ede56cdd07af2",
-  "segmentCount": 15,
+  "segmentCount": 16,
   "segmentIds": [
     "m68828:title:auto-1",
     "m68828:abstract-item:abstract-item-1",
@@ -19,6 +19,7 @@
     "m68828:abstract-item:abstract-item-11",
     "m68828:abstract-item:abstract-item-12",
     "m68828:caption:CNX_Chem_18_00_SilWafer-caption",
+    "m68828:alt:fs-idm340240-alt",
     "m68828:para:fs-idp11367904"
   ],
   "equationCount": 0,

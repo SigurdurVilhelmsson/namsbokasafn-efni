@@ -38,7 +38,10 @@
       },
       "media": {
         "id": "fs-idp42838624",
-        "alt": "A photo is shown of two men, one walking on a treadmill with various wires connected to his torso region, and the other collecting blood pressure data from the first man.",
+        "alt": {
+          "segmentId": "m68857:alt:fs-idp42838624-alt",
+          "text": "A photo is shown of two men, one walking on a treadmill with various wires connected to his torso region, and the other collecting blood pressure data from the first man."
+        },
         "src": "../../media/CNX_Chem_21_05_Thallium.jpg",
         "mimeType": "image/jpeg"
       }
@@ -57,7 +60,10 @@
       },
       "media": {
         "id": "fs-idp19157312",
-        "alt": "A photograph and a microscopic image are shown and labeled “a” and “b.” Photo a shows a person’s hand holding a graduated cylinder that contains a clear, colorless liquid and tilting the cylinder to pour it into a vertical, cylindrical glass tube. The tube has many separate glass components and is held in place by a test tube clamp. Image b shows a multitude of tiny, red dots on a black background. The dots are collected in four regions and dispersed elsewhere.",
+        "alt": {
+          "segmentId": "m68857:alt:fs-idp19157312-alt",
+          "text": "A photograph and a microscopic image are shown and labeled “a” and “b.” Photo a shows a person’s hand holding a graduated cylinder that contains a clear, colorless liquid and tilting the cylinder to pour it into a vertical, cylindrical glass tube. The tube has many separate glass components and is held in place by a test tube clamp. Image b shows a multitude of tiny, red dots on a black background. The dots are collected in four regions and dispersed elsewhere."
+        },
         "src": "../../media/CNX_Chem_21_05_Tc-99.jpg",
         "mimeType": "image/jpeg"
       }
@@ -76,7 +82,10 @@
       },
       "media": {
         "id": "fs-idp151344384",
-        "alt": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows a woman lying on a horizontal table with is being inserted into a dome-shaped machine. Diagram b shows a closer view of the woman’s head and upper torso in the machine. A series of beams, labeled “Gamma rays,” are shown to exit from slits in the edges of the machine, labeled “Radioactive cobalt,” and to penetrate her head, which is labeled “Target.”",
+        "alt": {
+          "segmentId": "m68857:alt:fs-idp151344384-alt",
+          "text": "Two diagrams are shown and labeled “a” and “b.” Diagram a shows a woman lying on a horizontal table with is being inserted into a dome-shaped machine. Diagram b shows a closer view of the woman’s head and upper torso in the machine. A series of beams, labeled “Gamma rays,” are shown to exit from slits in the edges of the machine, labeled “Radioactive cobalt,” and to penetrate her head, which is labeled “Target.”"
+        },
         "src": "../../media/CNX_Chem_21_05_RadTherapy.jpg",
         "mimeType": "image/jpeg"
       }
@@ -104,7 +113,10 @@
       },
       "media": {
         "id": "fs-idp82360800",
-        "alt": "A chart shows a horizontal line in the upper left corner labeled “superscript 60 subscript 27 C o” and “5.272 a” with two arrows facing right and downward leading from it. These arrows are labeled “1.48 M e v beta 0.12 percent sign” and “0.31 M e v beta 99.88 percent sign.” The upper of the two arrows points to a horizontal line and the lower arrow points to a second horizontal line. A downward facing arrow lies in between these two horizontal lines and is labeled “1.1732 M e V gamma.” A fourth horizontal line lies at the bottom of the diagram below the second and third lines. A downward facing arrow lies in between it and the third horizontal line. It is labeled “1.3325 M e V gamma.” Below the last horizontal line is the label “superscript 60 subscript 28 N i.”",
+        "alt": {
+          "segmentId": "m68857:alt:fs-idp82360800-alt",
+          "text": "A chart shows a horizontal line in the upper left corner labeled “superscript 60 subscript 27 C o” and “5.272 a” with two arrows facing right and downward leading from it. These arrows are labeled “1.48 M e v beta 0.12 percent sign” and “0.31 M e v beta 99.88 percent sign.” The upper of the two arrows points to a horizontal line and the lower arrow points to a second horizontal line. A downward facing arrow lies in between these two horizontal lines and is labeled “1.1732 M e V gamma.” A fourth horizontal line lies at the bottom of the diagram below the second and third lines. A downward facing arrow lies in between it and the third horizontal line. It is labeled “1.3325 M e V gamma.” Below the last horizontal line is the label “superscript 60 subscript 28 N i.”"
+        },
         "src": "../../media/CNX_Chem_21_05_Co60Decay.jpg",
         "mimeType": "image/jpeg"
       }
@@ -142,7 +154,10 @@
       },
       "media": {
         "id": "fs-idp105478400",
-        "alt": "Two photographs are shown and labeled “a” and “b.” Photo a shows a man looking at a lighted image on the wall. Photo b shows strawberries on a conveyor belt dropping into a series of collection chambers.",
+        "alt": {
+          "segmentId": "m68857:alt:fs-idp105478400-alt",
+          "text": "Two photographs are shown and labeled “a” and “b.” Photo a shows a man looking at a lighted image on the wall. Photo b shows strawberries on a conveyor belt dropping into a series of collection chambers."
+        },
         "src": "../../media/CNX_Chem_21_05_UsesOfRad.jpg",
         "mimeType": "image/jpeg"
       }
@@ -160,7 +175,10 @@
       },
       "media": {
         "id": "fs-idp22507536",
-        "alt": "A photograph and a diagram are shown. The photograph shows the interior of a smoke detector. A circular piece of plastic in the lower section of the detector is labeled “Alarm” while a metal disk in the top left of the photo is labeled “Ionization chamber.” A battery is on the top right of the detector. The diagram shows an expanded view of the ionization chamber. Inside of the cylindrical casing are two horizontal, circular plates labeled “Metal plates”; the top is labeled with a positive sign and the bottom with a negative sign. Wires are shown connected to the plates and the terminals of a battery on the exterior of the chamber. A disk in the bottom of the chamber is labeled “Americium source” and four arrows, labeled “Alpha particles,” face vertically from this disk, through a hole in the negative plate, and into the upper space of the chamber. Two molecules, with positive signs, made up of two blue spheres and two molecules, with positive signs, made up of two red spheres are in this space, as well as two yellow spheres labeled with negative signs and arrows facing downward. Eleven white dots surround two of the molecules on the right of the image and are labeled “smoke particles. Above the left side of the image is the phrase “No smoke, charged particles complete the circuit” while a phrase above the right side of the image states “Smoke uncharges the particles, circuit is broken, alarm is triggered.”",
+        "alt": {
+          "segmentId": "m68857:alt:fs-idp22507536-alt",
+          "text": "A photograph and a diagram are shown. The photograph shows the interior of a smoke detector. A circular piece of plastic in the lower section of the detector is labeled “Alarm” while a metal disk in the top left of the photo is labeled “Ionization chamber.” A battery is on the top right of the detector. The diagram shows an expanded view of the ionization chamber. Inside of the cylindrical casing are two horizontal, circular plates labeled “Metal plates”; the top is labeled with a positive sign and the bottom with a negative sign. Wires are shown connected to the plates and the terminals of a battery on the exterior of the chamber. A disk in the bottom of the chamber is labeled “Americium source” and four arrows, labeled “Alpha particles,” face vertically from this disk, through a hole in the negative plate, and into the upper space of the chamber. Two molecules, with positive signs, made up of two blue spheres and two molecules, with positive signs, made up of two red spheres are in this space, as well as two yellow spheres labeled with negative signs and arrows facing downward. Eleven white dots surround two of the molecules on the right of the image and are labeled “smoke particles. Above the left side of the image is the phrase “No smoke, charged particles complete the circuit” while a phrase above the right side of the image states “Smoke uncharges the particles, circuit is broken, alarm is triggered.”"
+        },
         "src": "../../media/CNX_Chem_21_05_SmokeAlarm.jpg",
         "mimeType": "image/jpeg"
       }

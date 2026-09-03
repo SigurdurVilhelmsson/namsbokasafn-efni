@@ -1,0 +1,136 @@
+{
+  "moduleId": "m00194",
+  "title": {
+    "segmentId": "m00194:title:auto-1",
+    "text": "Nucleophilic Aromatic Substitution"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3bf44505-37ad-4684-8511-d170393837fd"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00194:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00194:alt:fig-00001-alt",
+          "text": "The ball-and-stick model in the electrostatic potential map of 2,4,6-trinitrochlorobenzene and its reaction with hydroxide ion to produce 2,4,6-trinitrophenol."
+        },
+        "src": "../../media/OChem_16_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00194:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00194:alt:fig-00002-alt",
+          "text": "A reaction shows 2,4-dinitrofluorobenzene reacting with a protein to yield a labeled protein."
+        },
+        "src": "../../media/OChem_16_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00194:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00194:alt:fig-00003-alt",
+          "text": "A non-feasible reaction shows chlorobenzene forming chloride ion and benzene with a positive charge. In another non-feasible reaction, nucleophile attacks C 1 of chlorobenzene."
+        },
+        "src": "../../media/OChem_16_06_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00194:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00194:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00194:alt:fig-00004-alt",
+          "text": "A two-step mechanism of a hydroxide ion reacting with 2-nitrochlorobenzene to form 2-nitrophenol and chloride ion."
+        },
+        "src": "../../media/OChem_16_06_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00194:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "caption": {
+        "segmentId": "m00194:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00194:alt:fig-00005-alt",
+          "text": "The reaction mechanisms of ortho-, meta- and para-chloronitrobenzene with a hydroxide ion are each shown."
+        },
+        "src": "../../media/OChem_16_06_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00194:para:para-00006"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00194:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 6
+}

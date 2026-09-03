@@ -35,7 +35,10 @@
       },
       "media": {
         "id": "fs-idp34729504",
-        "alt": "A graph of two lines is shown where the y-axis is labeled, “amount of isotope remaining ( percent sign ),” and has values zero through one hundred, in increments of ten, written along the axis. The x-axis is labeled, “time ( hours )” and has values zero through seven, in increments of one, written along the axis. The first graph, drawn with a blue line, begins at the top left value of one hundred on the y-axis and zero on the x-axis and falls steeply over the first three minutes, then the graphed line becomes almost horizontal until it reaches seven minutes on the x-axis. The second graph, drawn in red, begins at the same point as the first, but remains perfectly horizontal with no change along the y-axis. A legend labels the red line as, 'U dash 238,' and the blue line as, 'T c dash 99 m'.",
+        "alt": {
+          "segmentId": "m68816:alt:fs-idp34729504-alt",
+          "text": "A graph of two lines is shown where the y-axis is labeled, “amount of isotope remaining ( percent sign ),” and has values zero through one hundred, in increments of ten, written along the axis. The x-axis is labeled, “time ( hours )” and has values zero through seven, in increments of one, written along the axis. The first graph, drawn with a blue line, begins at the top left value of one hundred on the y-axis and zero on the x-axis and falls steeply over the first three minutes, then the graphed line becomes almost horizontal until it reaches seven minutes on the x-axis. The second graph, drawn in red, begins at the same point as the first, but remains perfectly horizontal with no change along the y-axis. A legend labels the red line as, 'U dash 238,' and the blue line as, 'T c dash 99 m'."
+        },
         "src": "../../media/CNX_Chem_16_01_decayrates.jpg",
         "mimeType": "image/jpeg"
       }
@@ -64,7 +67,10 @@
       },
       "media": {
         "id": "fs-idp24588688",
-        "alt": "Two pairs of images are shown. The left pair, labeled, “C, ( diamond ),” has a picture of a diamond held by a pair of plyers and a diagram of the molecular arrangement. The second pair, labeled, “C ( graphite ),” has a picture of a large, black, slightly shiny rock and a diagram of four sheets composed of many atoms arranged in large squares in a stacked arrangement with space between each.",
+        "alt": {
+          "segmentId": "m68816:alt:fs-idp24588688-alt",
+          "text": "Two pairs of images are shown. The left pair, labeled, “C, ( diamond ),” has a picture of a diamond held by a pair of plyers and a diagram of the molecular arrangement. The second pair, labeled, “C ( graphite ),” has a picture of a large, black, slightly shiny rock and a diagram of four sheets composed of many atoms arranged in large squares in a stacked arrangement with space between each."
+        },
         "src": "../../media/CNX_Chem_16_01_carbon.jpg",
         "mimeType": "image/jpeg"
       }
@@ -111,7 +117,10 @@
           },
           "media": {
             "id": "fs-idp117381408",
-            "alt": "A diagram shows two two-sided flasks connected by a right-facing arrow labeled “Spontaneous” and a left-facing arrow labeled “Nonspontaneous.” Each pair of flasks are connected to one another by a tube with a stopcock. In the left pair of flasks, the left flask contains thirty particles evenly dispersed while the right flask contains nothing and the stopcock is closed. The right pair of flasks has an open stopcock and equal numbers of particles in both flasks.",
+            "alt": {
+              "segmentId": "m68816:alt:fs-idp117381408-alt",
+              "text": "A diagram shows two two-sided flasks connected by a right-facing arrow labeled “Spontaneous” and a left-facing arrow labeled “Nonspontaneous.” Each pair of flasks are connected to one another by a tube with a stopcock. In the left pair of flasks, the left flask contains thirty particles evenly dispersed while the right flask contains nothing and the stopcock is closed. The right pair of flasks has an open stopcock and equal numbers of particles in both flasks."
+            },
             "src": "../../media/CNX_Chem_16_02_Gas.jpg",
             "mimeType": "image/jpeg"
           }
@@ -140,7 +149,10 @@
           },
           "media": {
             "id": "fs-idp106848832",
-            "alt": "Two diagrams are shown. The left diagram is comprised of two separated squares; the left is red and labeled “X” and the right is blue and labeled “Y.” Below this diagram is the label “T subscript X, a greater than sign, T subscript Y.” The right diagram shows the boxes next to one another, shaded red on the left, blue on the right, and blended red and blue together in the middle. The left box is red and labeled “X,” the right is blue and labeled “Y” and a right-facing arrow labeled “Heat” is written above them. Below this diagram is the label “X and Y in contact.",
+            "alt": {
+              "segmentId": "m68816:alt:fs-idp106848832-alt",
+              "text": "Two diagrams are shown. The left diagram is comprised of two separated squares; the left is red and labeled “X” and the right is blue and labeled “Y.” Below this diagram is the label “T subscript X, a greater than sign, T subscript Y.” The right diagram shows the boxes next to one another, shaded red on the left, blue on the right, and blended red and blue together in the middle. The left box is red and labeled “X,” the right is blue and labeled “Y” and a right-facing arrow labeled “Heat” is written above them. Below this diagram is the label “X and Y in contact."
+            },
             "src": "../../media/CNX_Chem_16_02_Temperature.jpg",
             "mimeType": "image/jpeg"
           }
@@ -241,7 +253,10 @@
           },
           "media": {
             "id": "fs-idp205626528",
-            "alt": "This figure has three photos labeled, “a,” “b,” and “c.” Photo a shows a glass with a solid in water. There is steam or smoke coming from the top of the glass. Photo b shows the bottom half of a glass with water sticking to its outside surface. Photo c shows three images of the same container. The first shows a clear liquid in the container. The second shows a red liquid mixing with the clear liquid in the container. The third shows a red liquid.",
+            "alt": {
+              "segmentId": "m68816:alt:fs-idp205626528-alt",
+              "text": "This figure has three photos labeled, “a,” “b,” and “c.” Photo a shows a glass with a solid in water. There is steam or smoke coming from the top of the glass. Photo b shows the bottom half of a glass with water sticking to its outside surface. Photo c shows three images of the same container. The first shows a clear liquid in the container. The second shows a red liquid mixing with the clear liquid in the container. The third shows a red liquid."
+            },
             "src": "../../media/CNX_Chem_16_02_Process.jpg",
             "mimeType": "image/jpeg"
           }

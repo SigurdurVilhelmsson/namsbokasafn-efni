@@ -1,0 +1,7 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math display=\"block\">\n     <m:mtable columnalign=\"left\">\n      <m:mtr>\n       <m:mtd>\n        <m:mtext>Reaction rate </m:mtext><m:mo>=</m:mo><m:mtext>Rate of disappearance of alkyl halide</m:mtext>\n       </m:mtd>\n      </m:mtr>\n      <m:mtr>\n       <m:mtd>\n        <m:mtext>                     </m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>×</m:mo><m:mo stretchy=\"false\">[</m:mo><m:mtext>RX</m:mtext><m:mo stretchy=\"false\">]</m:mo>\n       </m:mtd>\n      </m:mtr>\n     </m:mtable>\n    </m:math>",
+    "latex": "\\begin{aligned} \\text{Reaction rate}=\\text{Rate of disappearance of alkyl halide} \\\\ \\text=k\\times [\\text{RX}] \\end{aligned}",
+    "isBlock": true
+  }
+}

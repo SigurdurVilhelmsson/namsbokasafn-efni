@@ -19,98 +19,101 @@ The development of modern atomic theory revealed much about the inner structure 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_AtomSize-caption -->
 If an atom could be expanded to the size of a football stadium, the nucleus would be the size of a single blueberry. (credit middle: modification of work by “babyknight”/Wikimedia Commons; credit right: modification of work by Paxson Woelber)
 
+<!-- SEG:m68692:alt:fs-idm200317952-alt -->
+The diagram on the left shows a picture of an atom that is 10 to the negative tenth power meters in diameter. The nucleus is labeled at the center of the atom and is 10 to the negative fifteenth power meters. The central figure shows a photograph of an American football stadium. The figure on the right shows a photograph of a person with a handful of blueberries.
+
 <!-- SEG:m68692:para:fs-idm171776576 -->
-Atoms—and the protons, neutrons, and electrons that compose them—are extremely small. For example, a carbon atom weighs less than 2 [[MATH:1]] 10[[sup:−23]] g, and an electron has a charge of less than 2 [[MATH:2]] 10[[sup:−19]] C (coulomb). When describing the properties of tiny objects such as atoms, we use appropriately small units of measure, such as the {{term}}unified atomic mass unit (u){{/term}} and the {{term}}fundamental unit of charge (e){{/term}}. The unified atomic mass unit is defined as exactly 1/12 of the mass of a single atom of the carbon-12 isotope (more on isotopes is provided later in this section) and is equal to 1.6605 [[MATH:3]] 10[[sup:−24]] g. The {{term}}dalton (Da){{/term}} is an alternative mass unit that is equivalent to the u. Many literature resources, including this text, use the older term atomic mass unit (amu) when referring to the u or the Da. The fundamental unit of charge (also called the elementary charge) equals the magnitude of the charge of an electron (e) with e = 1.602 [[MATH:4]] 10[[sup:−19]] C.
+Atoms—and the protons, neutrons, and electrons that compose them—are extremely small. For example, a carbon atom weighs less than 2 [[MATH:1]] 10[[sup:−23]] g, and an electron has a charge of less than 2 [[MATH:2]] 10[[sup:−19]] C (coulomb). When describing the properties of tiny objects such as atoms, we use appropriately small units of measure, such as the [[term:unified atomic mass unit (u)|term-00001]] and the [[term:fundamental unit of charge (e)|term-00002]]. The unified atomic mass unit is defined as exactly 1/12 of the mass of a single atom of the carbon-12 isotope (more on isotopes is provided later in this section) and is equal to 1.6605 [[MATH:3]] 10[[sup:−24]] g. The [[term:dalton (Da)|term-00003]] is an alternative mass unit that is equivalent to the u. Many literature resources, including this text, use the older term atomic mass unit (amu) when referring to the u or the Da. The fundamental unit of charge (also called the elementary charge) equals the magnitude of the charge of an electron (e) with e = 1.602 [[MATH:4]] 10[[sup:−19]] C.
 
 <!-- SEG:m68692:para:fs-idm166273840 -->
 A proton has a mass of 1.0073 amu and a charge of 1+. A neutron is a slightly heavier particle with a mass 1.0087 amu and a charge of zero; as its name suggests, it is neutral. The electron has a charge of 1− and is a much lighter particle with a mass of about 0.00055 amu (it would take about 1800 electrons to equal the mass of one proton). The properties of these fundamental particles are summarized in [[xref:fs-idp90857696]]. (An observant student might notice that the sum of an atom’s subatomic particles does not equal the atom’s actual mass: The total mass of six protons, six neutrons, and six electrons is 12.0993 amu, slightly larger than 12.00 amu. This “missing” mass is known as the mass defect, and you will learn about it in the chapter on nuclear chemistry.)
 
-<!-- SEG:m68692:entry:auto-10 -->
+<!-- SEG:m68692:entry:auto-11 -->
 Properties of Subatomic Particles
 
-<!-- SEG:m68692:entry:auto-11 -->
+<!-- SEG:m68692:entry:auto-12 -->
 Name
 
-<!-- SEG:m68692:entry:auto-12 -->
+<!-- SEG:m68692:entry:auto-13 -->
 Location
 
-<!-- SEG:m68692:entry:auto-13 -->
+<!-- SEG:m68692:entry:auto-14 -->
 Charge (C)
 
-<!-- SEG:m68692:entry:auto-14 -->
+<!-- SEG:m68692:entry:auto-15 -->
 Unit Charge
 
-<!-- SEG:m68692:entry:auto-15 -->
+<!-- SEG:m68692:entry:auto-16 -->
 Mass (amu)
 
-<!-- SEG:m68692:entry:auto-16 -->
+<!-- SEG:m68692:entry:auto-17 -->
 Mass (g)
 
-<!-- SEG:m68692:entry:auto-17 -->
+<!-- SEG:m68692:entry:auto-18 -->
 electron
 
-<!-- SEG:m68692:entry:auto-18 -->
+<!-- SEG:m68692:entry:auto-19 -->
 outside nucleus
 
-<!-- SEG:m68692:entry:auto-19 -->
+<!-- SEG:m68692:entry:auto-20 -->
 −1.602 [[MATH:5]] 10[[sup:−19]]
 
-<!-- SEG:m68692:entry:auto-20 -->
+<!-- SEG:m68692:entry:auto-21 -->
 1−
 
-<!-- SEG:m68692:entry:auto-21 -->
+<!-- SEG:m68692:entry:auto-22 -->
 0.00055
 
-<!-- SEG:m68692:entry:auto-22 -->
+<!-- SEG:m68692:entry:auto-23 -->
 0.00091 [[MATH:6]] 10[[sup:−24]]
 
-<!-- SEG:m68692:entry:auto-23 -->
+<!-- SEG:m68692:entry:auto-24 -->
 proton
 
-<!-- SEG:m68692:entry:auto-24 -->
-nucleus
-
 <!-- SEG:m68692:entry:auto-25 -->
-1.602 [[MATH:7]]10[[sup:−19]]
+nucleus
 
 <!-- SEG:m68692:entry:auto-26 -->
-1+
+1.602 [[MATH:7]]10[[sup:−19]]
 
 <!-- SEG:m68692:entry:auto-27 -->
-1.00727
+1+
 
 <!-- SEG:m68692:entry:auto-28 -->
-1.67262 [[MATH:8]] 10[[sup:−24]]
+1.00727
 
 <!-- SEG:m68692:entry:auto-29 -->
-neutron
+1.67262 [[MATH:8]] 10[[sup:−24]]
 
 <!-- SEG:m68692:entry:auto-30 -->
-nucleus
+neutron
 
 <!-- SEG:m68692:entry:auto-31 -->
-0
+nucleus
 
 <!-- SEG:m68692:entry:auto-32 -->
 0
 
 <!-- SEG:m68692:entry:auto-33 -->
-1.00866
+0
 
 <!-- SEG:m68692:entry:auto-34 -->
+1.00866
+
+<!-- SEG:m68692:entry:auto-35 -->
 1.67493 [[MATH:9]] 10[[sup:−24]]
 
 <!-- SEG:m68692:para:fs-idp27048016 -->
-The number of protons in the nucleus of an atom is its {{term}}atomic number (Z){{/term}}. This is the defining trait of an element: Its value determines the identity of the atom. For example, any atom that contains six protons is the element carbon and has the atomic number 6, regardless of how many neutrons or electrons it may have. A neutral atom must contain the same number of positive and negative charges, so the number of protons equals the number of electrons. Therefore, the atomic number also indicates the number of electrons in an atom. The total number of protons and neutrons in an atom is called its {{term}}mass number (A){{/term}}. The number of neutrons is therefore the difference between the mass number and the atomic number: A – Z = number of neutrons.
+The number of protons in the nucleus of an atom is its [[term:atomic number (Z)|term-00005]]. This is the defining trait of an element: Its value determines the identity of the atom. For example, any atom that contains six protons is the element carbon and has the atomic number 6, regardless of how many neutrons or electrons it may have. A neutral atom must contain the same number of positive and negative charges, so the number of protons equals the number of electrons. Therefore, the atomic number also indicates the number of electrons in an atom. The total number of protons and neutrons in an atom is called its [[term:mass number (A)|term-00006]]. The number of neutrons is therefore the difference between the mass number and the atomic number: A – Z = number of neutrons.
 
 <!-- SEG:m68692:para:fs-idm159569776 -->
-Atoms are electrically neutral if they contain the same number of positively charged protons and negatively charged electrons. When the numbers of these subatomic particles are [[i:not]] equal, the atom is electrically charged and is called an {{term}}ion{{/term}}. The charge of an atom is defined as follows:
+Atoms are electrically neutral if they contain the same number of positively charged protons and negatively charged electrons. When the numbers of these subatomic particles are [[i:not]] equal, the atom is electrically charged and is called an [[term:ion|term-00007]]. The charge of an atom is defined as follows:
 
 <!-- SEG:m68692:para:fs-idp142952368 -->
 Atomic charge = number of protons − number of electrons
 
 <!-- SEG:m68692:para:fs-idp59351760 -->
-As will be discussed in more detail later in this chapter, atoms (and molecules) typically acquire charge by gaining or losing electrons. An atom that gains one or more electrons will exhibit a negative charge and is called an {{term}}anion{{/term}}. Positively charged atoms called {{term}}cations{{/term}} are formed when an atom loses one or more electrons. For example, a neutral sodium atom (Z = 11) has 11 electrons. If this atom loses one electron, it will become a cation with a 1+ charge (11 − 10 = 1+). A neutral oxygen atom (Z = 8) has eight electrons, and if it gains two electrons it will become an anion with a 2− charge (8 − 10 = 2−).
+As will be discussed in more detail later in this chapter, atoms (and molecules) typically acquire charge by gaining or losing electrons. An atom that gains one or more electrons will exhibit a negative charge and is called an [[term:anion|term-00008]]. Positively charged atoms called [[term:cations|term-00009]] are formed when an atom loses one or more electrons. For example, a neutral sodium atom (Z = 11) has 11 electrons. If this atom loses one electron, it will become a cation with a 1+ charge (11 − 10 = 1+). A neutral oxygen atom (Z = 8) has eight electrons, and if it gains two electrons it will become an anion with a 2− charge (8 − 10 = 2−).
 
 <!-- SEG:m68692:example-title:fs-idm5511728-title -->
 Composition of an Atom
@@ -145,187 +148,193 @@ Answer:
 <!-- SEG:m68692:caption:CNX_Chem_02_03_Iodine-caption -->
 (a) Insufficient iodine in the diet can cause an enlargement of the thyroid gland called a goiter. (b) The addition of small amounts of iodine to salt, which prevents the formation of goiters, has helped eliminate this concern in the US where salt consumption is high. (credit a: modification of work by “Almazi”/Wikimedia Commons; credit b: modification of work by Mike Mozart)
 
+<!-- SEG:m68692:alt:fs-idp203630528-alt -->
+Figure A shows a photo of a person who has a very swollen thyroid in his or her neck. Figure B shows a photo of a canister of iodized salt.
+
 <!-- SEG:m68692:title:fs-idm176092496-title -->
 Chemical Symbols
 
 <!-- SEG:m68692:para:fs-idm48306304 -->
-A {{term}}chemical symbol{{/term}} is an abbreviation that we use to indicate an element or an atom of an element. For example, the symbol for mercury is Hg ([[xref:CNX_Chem_02_03_SiSymbol]]). We use the same symbol to indicate one atom of mercury (microscopic domain) or to label a container of many atoms of the element mercury (macroscopic domain).
+A [[term:chemical symbol|term-00010]] is an abbreviation that we use to indicate an element or an atom of an element. For example, the symbol for mercury is Hg ([[xref:CNX_Chem_02_03_SiSymbol]]). We use the same symbol to indicate one atom of mercury (microscopic domain) or to label a container of many atoms of the element mercury (macroscopic domain).
 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_SiSymbol-caption -->
 The symbol Hg represents the element mercury regardless of the amount; it could represent one atom of mercury or a large amount of mercury.
 
+<!-- SEG:m68692:alt:fs-idm53222912-alt -->
+A jar labeled “H g” is shown with a small amount of liquid mercury in it.
+
 <!-- SEG:m68692:para:fs-idm91050016 -->
 The symbols for several common elements and their atoms are listed in [[xref:fs-idm36686800]]. Some symbols are derived from the common name of the element; others are abbreviations of the name in another language. Most symbols have one or two letters, but three-letter symbols have been used to describe some elements that have atomic numbers greater than 112. To avoid confusion with other notations, only the first letter of a symbol is capitalized. For example, Co is the symbol for the element cobalt, but CO is the notation for the compound carbon monoxide, which contains atoms of the elements carbon (C) and oxygen (O). All known elements and their symbols are in the periodic table in [[docref:m68695#CNX_Chem_02_05_PerTable1]] (also found in [[docref:Appendix A|m68859#fs-idm379479808]]).
 
-<!-- SEG:m68692:entry:auto-54 -->
+<!-- SEG:m68692:entry:auto-57 -->
 Some Common Elements and Their Symbols
 
-<!-- SEG:m68692:entry:auto-55 -->
-Element
-
-<!-- SEG:m68692:entry:auto-56 -->
-Symbol
-
-<!-- SEG:m68692:entry:auto-57 -->
-Element
-
 <!-- SEG:m68692:entry:auto-58 -->
-Symbol
+Element
 
 <!-- SEG:m68692:entry:auto-59 -->
-aluminum
+Symbol
 
 <!-- SEG:m68692:entry:auto-60 -->
-Al
+Element
 
 <!-- SEG:m68692:entry:auto-61 -->
-iron
+Symbol
 
 <!-- SEG:m68692:entry:auto-62 -->
-Fe (from [[i:ferrum]])
+aluminum
 
 <!-- SEG:m68692:entry:auto-63 -->
-bromine
+Al
 
 <!-- SEG:m68692:entry:auto-64 -->
-Br
+iron
 
 <!-- SEG:m68692:entry:auto-65 -->
-lead
+Fe (from [[i:ferrum]])
 
 <!-- SEG:m68692:entry:auto-66 -->
-Pb (from [[i:plumbum]])
+bromine
 
 <!-- SEG:m68692:entry:auto-67 -->
-calcium
+Br
 
 <!-- SEG:m68692:entry:auto-68 -->
-Ca
+lead
 
 <!-- SEG:m68692:entry:auto-69 -->
-magnesium
+Pb (from [[i:plumbum]])
 
 <!-- SEG:m68692:entry:auto-70 -->
-Mg
+calcium
 
 <!-- SEG:m68692:entry:auto-71 -->
-carbon
+Ca
 
 <!-- SEG:m68692:entry:auto-72 -->
-C
+magnesium
 
 <!-- SEG:m68692:entry:auto-73 -->
-mercury
+Mg
 
 <!-- SEG:m68692:entry:auto-74 -->
-Hg (from [[i:hydrargyrum]])
+carbon
 
 <!-- SEG:m68692:entry:auto-75 -->
-chlorine
+C
 
 <!-- SEG:m68692:entry:auto-76 -->
-Cl
+mercury
 
 <!-- SEG:m68692:entry:auto-77 -->
-nitrogen
+Hg (from [[i:hydrargyrum]])
 
 <!-- SEG:m68692:entry:auto-78 -->
-N
+chlorine
 
 <!-- SEG:m68692:entry:auto-79 -->
-chromium
+Cl
 
 <!-- SEG:m68692:entry:auto-80 -->
-Cr
+nitrogen
 
 <!-- SEG:m68692:entry:auto-81 -->
-oxygen
+N
 
 <!-- SEG:m68692:entry:auto-82 -->
-O
+chromium
 
 <!-- SEG:m68692:entry:auto-83 -->
-cobalt
+Cr
 
 <!-- SEG:m68692:entry:auto-84 -->
-Co
+oxygen
 
 <!-- SEG:m68692:entry:auto-85 -->
-potassium
+O
 
 <!-- SEG:m68692:entry:auto-86 -->
-K (from [[i:kalium]])
+cobalt
 
 <!-- SEG:m68692:entry:auto-87 -->
-copper
+Co
 
 <!-- SEG:m68692:entry:auto-88 -->
-Cu (from [[i:cuprum]])
+potassium
 
 <!-- SEG:m68692:entry:auto-89 -->
-silicon
+K (from [[i:kalium]])
 
 <!-- SEG:m68692:entry:auto-90 -->
-Si
+copper
 
 <!-- SEG:m68692:entry:auto-91 -->
-fluorine
+Cu (from [[i:cuprum]])
 
 <!-- SEG:m68692:entry:auto-92 -->
-F
+silicon
 
 <!-- SEG:m68692:entry:auto-93 -->
-silver
+Si
 
 <!-- SEG:m68692:entry:auto-94 -->
-Ag (from[[i: argentum]])
+fluorine
 
 <!-- SEG:m68692:entry:auto-95 -->
-gold
+F
 
 <!-- SEG:m68692:entry:auto-96 -->
-Au (from [[i:aurum]])
+silver
 
 <!-- SEG:m68692:entry:auto-97 -->
-sodium
+Ag (from[[i: argentum]])
 
 <!-- SEG:m68692:entry:auto-98 -->
-Na (from [[i:natrium]])
+gold
 
 <!-- SEG:m68692:entry:auto-99 -->
-helium
+Au (from [[i:aurum]])
 
 <!-- SEG:m68692:entry:auto-100 -->
-He
+sodium
 
 <!-- SEG:m68692:entry:auto-101 -->
-sulfur
+Na (from [[i:natrium]])
 
 <!-- SEG:m68692:entry:auto-102 -->
-S
+helium
 
 <!-- SEG:m68692:entry:auto-103 -->
-hydrogen
+He
 
 <!-- SEG:m68692:entry:auto-104 -->
-H
+sulfur
 
 <!-- SEG:m68692:entry:auto-105 -->
-tin
+S
 
 <!-- SEG:m68692:entry:auto-106 -->
-Sn (from [[i:stannum]])
+hydrogen
 
 <!-- SEG:m68692:entry:auto-107 -->
-iodine
+H
 
 <!-- SEG:m68692:entry:auto-108 -->
-I
+tin
 
 <!-- SEG:m68692:entry:auto-109 -->
-zinc
+Sn (from [[i:stannum]])
 
 <!-- SEG:m68692:entry:auto-110 -->
+iodine
+
+<!-- SEG:m68692:entry:auto-111 -->
+I
+
+<!-- SEG:m68692:entry:auto-112 -->
+zinc
+
+<!-- SEG:m68692:entry:auto-113 -->
 Zn
 
 <!-- SEG:m68692:para:fs-idm105035264 -->
@@ -343,457 +352,460 @@ The symbol for a specific isotope of any element is written by placing the mass 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_AtomSym-caption -->
 The symbol for an atom indicates the element via its usual two-letter symbol, the mass number as a left superscript, the atomic number as a left subscript (sometimes omitted), and the charge as a right superscript.
 
+<!-- SEG:m68692:alt:fs-idm140695888-alt -->
+This diagram shows the symbol for helium, “H e.” The number to the upper left of the symbol is the mass number, which is 4. The number to the upper right of the symbol is the charge which is positive 2. The number to the lower left of the symbol is the atomic number, which is 2. This number is often omitted. Also shown is “M g” which stands for magnesium It has a mass number of 24, a charge of positive 2, and an atomic number of 12.
+
 <!-- SEG:m68692:para:fs-idm198096624 -->
 Information about the naturally occurring isotopes of elements with atomic numbers 1 through 10 is given in [[xref:fs-idm87646592]]. Note that in addition to standard names and symbols, the isotopes of hydrogen are often referred to using common names and accompanying symbols. Hydrogen-2, symbolized [[sup:2]]H, is also called deuterium and sometimes symbolized D. Hydrogen-3, symbolized [[sup:3]]H, is also called tritium and sometimes symbolized T.
 
-<!-- SEG:m68692:entry:auto-117 -->
+<!-- SEG:m68692:entry:auto-121 -->
 Nuclear Compositions of Atoms of the Very Light Elements
 
-<!-- SEG:m68692:entry:auto-118 -->
+<!-- SEG:m68692:entry:auto-122 -->
 Element
 
-<!-- SEG:m68692:entry:auto-119 -->
+<!-- SEG:m68692:entry:auto-123 -->
 Symbol
 
-<!-- SEG:m68692:entry:auto-120 -->
+<!-- SEG:m68692:entry:auto-124 -->
 Atomic Number
 
-<!-- SEG:m68692:entry:auto-121 -->
+<!-- SEG:m68692:entry:auto-125 -->
 Number of Protons
 
-<!-- SEG:m68692:entry:auto-122 -->
+<!-- SEG:m68692:entry:auto-126 -->
 Number of Neutrons
 
-<!-- SEG:m68692:entry:auto-123 -->
+<!-- SEG:m68692:entry:auto-127 -->
 Mass (amu)
 
-<!-- SEG:m68692:entry:auto-124 -->
+<!-- SEG:m68692:entry:auto-128 -->
 % Natural Abundance
 
-<!-- SEG:m68692:entry:auto-125 -->
+<!-- SEG:m68692:entry:auto-129 -->
 hydrogen
 
-<!-- SEG:m68692:entry:auto-126 -->
+<!-- SEG:m68692:entry:auto-130 -->
 [[MATH:10]][[BR]](protium)
 
-<!-- SEG:m68692:entry:auto-127 -->
-1
-
-<!-- SEG:m68692:entry:auto-128 -->
-1
-
-<!-- SEG:m68692:entry:auto-129 -->
-0
-
-<!-- SEG:m68692:entry:auto-130 -->
-1.0078
-
 <!-- SEG:m68692:entry:auto-131 -->
-99.989
+1
 
 <!-- SEG:m68692:entry:auto-132 -->
-[[MATH:11]][[BR]](deuterium)
+1
 
 <!-- SEG:m68692:entry:auto-133 -->
-1
+0
 
 <!-- SEG:m68692:entry:auto-134 -->
-1
+1.0078
 
 <!-- SEG:m68692:entry:auto-135 -->
-1
+99.989
 
 <!-- SEG:m68692:entry:auto-136 -->
-2.0141
+[[MATH:11]][[BR]](deuterium)
 
 <!-- SEG:m68692:entry:auto-137 -->
-0.0115
+1
 
 <!-- SEG:m68692:entry:auto-138 -->
-[[MATH:12]][[BR]](tritium)
+1
 
 <!-- SEG:m68692:entry:auto-139 -->
 1
 
 <!-- SEG:m68692:entry:auto-140 -->
-1
+2.0141
 
 <!-- SEG:m68692:entry:auto-141 -->
-2
+0.0115
 
 <!-- SEG:m68692:entry:auto-142 -->
-3.01605
+[[MATH:12]][[BR]](tritium)
 
 <!-- SEG:m68692:entry:auto-143 -->
-— (trace)
-
-<!-- SEG:m68692:entry:auto-144 -->
-helium
-
-<!-- SEG:m68692:entry:auto-145 -->
-[[MATH:13]]
-
-<!-- SEG:m68692:entry:auto-146 -->
-2
-
-<!-- SEG:m68692:entry:auto-147 -->
-2
-
-<!-- SEG:m68692:entry:auto-148 -->
 1
 
+<!-- SEG:m68692:entry:auto-144 -->
+1
+
+<!-- SEG:m68692:entry:auto-145 -->
+2
+
+<!-- SEG:m68692:entry:auto-146 -->
+3.01605
+
+<!-- SEG:m68692:entry:auto-147 -->
+— (trace)
+
+<!-- SEG:m68692:entry:auto-148 -->
+helium
+
 <!-- SEG:m68692:entry:auto-149 -->
-3.01603
+[[MATH:13]]
 
 <!-- SEG:m68692:entry:auto-150 -->
-0.00013
+2
 
 <!-- SEG:m68692:entry:auto-151 -->
-[[MATH:14]]
+2
 
 <!-- SEG:m68692:entry:auto-152 -->
-2
+1
 
 <!-- SEG:m68692:entry:auto-153 -->
-2
+3.01603
 
 <!-- SEG:m68692:entry:auto-154 -->
-2
+0.00013
 
 <!-- SEG:m68692:entry:auto-155 -->
-4.0026
+[[MATH:14]]
 
 <!-- SEG:m68692:entry:auto-156 -->
-100
+2
 
 <!-- SEG:m68692:entry:auto-157 -->
-lithium
+2
 
 <!-- SEG:m68692:entry:auto-158 -->
-[[MATH:15]]
+2
 
 <!-- SEG:m68692:entry:auto-159 -->
-3
+4.0026
 
 <!-- SEG:m68692:entry:auto-160 -->
-3
+100
 
 <!-- SEG:m68692:entry:auto-161 -->
-3
+lithium
 
 <!-- SEG:m68692:entry:auto-162 -->
-6.0151
+[[MATH:15]]
 
 <!-- SEG:m68692:entry:auto-163 -->
-7.59
+3
 
 <!-- SEG:m68692:entry:auto-164 -->
-[[MATH:16]]
+3
 
 <!-- SEG:m68692:entry:auto-165 -->
 3
 
 <!-- SEG:m68692:entry:auto-166 -->
-3
+6.0151
 
 <!-- SEG:m68692:entry:auto-167 -->
-4
+7.59
 
 <!-- SEG:m68692:entry:auto-168 -->
-7.0160
+[[MATH:16]]
 
 <!-- SEG:m68692:entry:auto-169 -->
-92.41
+3
 
 <!-- SEG:m68692:entry:auto-170 -->
-beryllium
+3
 
 <!-- SEG:m68692:entry:auto-171 -->
-[[MATH:17]]
+4
 
 <!-- SEG:m68692:entry:auto-172 -->
-4
+7.0160
 
 <!-- SEG:m68692:entry:auto-173 -->
-4
+92.41
 
 <!-- SEG:m68692:entry:auto-174 -->
-5
+beryllium
 
 <!-- SEG:m68692:entry:auto-175 -->
-9.0122
+[[MATH:17]]
 
 <!-- SEG:m68692:entry:auto-176 -->
-100
+4
 
 <!-- SEG:m68692:entry:auto-177 -->
-boron
+4
 
 <!-- SEG:m68692:entry:auto-178 -->
-[[MATH:18]]
+5
 
 <!-- SEG:m68692:entry:auto-179 -->
-5
+9.0122
 
 <!-- SEG:m68692:entry:auto-180 -->
-5
+100
 
 <!-- SEG:m68692:entry:auto-181 -->
-5
+boron
 
 <!-- SEG:m68692:entry:auto-182 -->
-10.0129
+[[MATH:18]]
 
 <!-- SEG:m68692:entry:auto-183 -->
-19.9
+5
 
 <!-- SEG:m68692:entry:auto-184 -->
-[[MATH:19]]
+5
 
 <!-- SEG:m68692:entry:auto-185 -->
 5
 
 <!-- SEG:m68692:entry:auto-186 -->
-5
+10.0129
 
 <!-- SEG:m68692:entry:auto-187 -->
-6
+19.9
 
 <!-- SEG:m68692:entry:auto-188 -->
-11.0093
+[[MATH:19]]
 
 <!-- SEG:m68692:entry:auto-189 -->
-80.1
+5
 
 <!-- SEG:m68692:entry:auto-190 -->
-carbon
+5
 
 <!-- SEG:m68692:entry:auto-191 -->
-[[MATH:20]]
+6
 
 <!-- SEG:m68692:entry:auto-192 -->
-6
+11.0093
 
 <!-- SEG:m68692:entry:auto-193 -->
-6
+80.1
 
 <!-- SEG:m68692:entry:auto-194 -->
-6
+carbon
 
 <!-- SEG:m68692:entry:auto-195 -->
-12.0000
+[[MATH:20]]
 
 <!-- SEG:m68692:entry:auto-196 -->
-98.89
+6
 
 <!-- SEG:m68692:entry:auto-197 -->
-[[MATH:21]]
+6
 
 <!-- SEG:m68692:entry:auto-198 -->
 6
 
 <!-- SEG:m68692:entry:auto-199 -->
-6
+12.0000
 
 <!-- SEG:m68692:entry:auto-200 -->
-7
+98.89
 
 <!-- SEG:m68692:entry:auto-201 -->
-13.0034
+[[MATH:21]]
 
 <!-- SEG:m68692:entry:auto-202 -->
-1.11
+6
 
 <!-- SEG:m68692:entry:auto-203 -->
-[[MATH:22]]
+6
 
 <!-- SEG:m68692:entry:auto-204 -->
-6
+7
 
 <!-- SEG:m68692:entry:auto-205 -->
-6
+13.0034
 
 <!-- SEG:m68692:entry:auto-206 -->
-8
+1.11
 
 <!-- SEG:m68692:entry:auto-207 -->
-14.0032
+[[MATH:22]]
 
 <!-- SEG:m68692:entry:auto-208 -->
-— (trace)
+6
 
 <!-- SEG:m68692:entry:auto-209 -->
-nitrogen
+6
 
 <!-- SEG:m68692:entry:auto-210 -->
-[[MATH:23]]
+8
 
 <!-- SEG:m68692:entry:auto-211 -->
-7
+14.0032
 
 <!-- SEG:m68692:entry:auto-212 -->
-7
+— (trace)
 
 <!-- SEG:m68692:entry:auto-213 -->
-7
+nitrogen
 
 <!-- SEG:m68692:entry:auto-214 -->
-14.0031
+[[MATH:23]]
 
 <!-- SEG:m68692:entry:auto-215 -->
-99.63
+7
 
 <!-- SEG:m68692:entry:auto-216 -->
-[[MATH:24]]
+7
 
 <!-- SEG:m68692:entry:auto-217 -->
 7
 
 <!-- SEG:m68692:entry:auto-218 -->
-7
+14.0031
 
 <!-- SEG:m68692:entry:auto-219 -->
-8
+99.63
 
 <!-- SEG:m68692:entry:auto-220 -->
-15.0001
+[[MATH:24]]
 
 <!-- SEG:m68692:entry:auto-221 -->
-0.37
+7
 
 <!-- SEG:m68692:entry:auto-222 -->
-oxygen
+7
 
 <!-- SEG:m68692:entry:auto-223 -->
-[[MATH:25]]
+8
 
 <!-- SEG:m68692:entry:auto-224 -->
-8
+15.0001
 
 <!-- SEG:m68692:entry:auto-225 -->
-8
+0.37
 
 <!-- SEG:m68692:entry:auto-226 -->
-8
+oxygen
 
 <!-- SEG:m68692:entry:auto-227 -->
-15.9949
+[[MATH:25]]
 
 <!-- SEG:m68692:entry:auto-228 -->
-99.757
+8
 
 <!-- SEG:m68692:entry:auto-229 -->
-[[MATH:26]]
+8
 
 <!-- SEG:m68692:entry:auto-230 -->
 8
 
 <!-- SEG:m68692:entry:auto-231 -->
-8
+15.9949
 
 <!-- SEG:m68692:entry:auto-232 -->
-9
+99.757
 
 <!-- SEG:m68692:entry:auto-233 -->
-16.9991
+[[MATH:26]]
 
 <!-- SEG:m68692:entry:auto-234 -->
-0.038
+8
 
 <!-- SEG:m68692:entry:auto-235 -->
-[[MATH:27]]
+8
 
 <!-- SEG:m68692:entry:auto-236 -->
-8
+9
 
 <!-- SEG:m68692:entry:auto-237 -->
-8
+16.9991
 
 <!-- SEG:m68692:entry:auto-238 -->
-10
+0.038
 
 <!-- SEG:m68692:entry:auto-239 -->
-17.9992
+[[MATH:27]]
 
 <!-- SEG:m68692:entry:auto-240 -->
-0.205
+8
 
 <!-- SEG:m68692:entry:auto-241 -->
-fluorine
+8
 
 <!-- SEG:m68692:entry:auto-242 -->
-[[MATH:28]]
+10
 
 <!-- SEG:m68692:entry:auto-243 -->
-9
+17.9992
 
 <!-- SEG:m68692:entry:auto-244 -->
-9
+0.205
 
 <!-- SEG:m68692:entry:auto-245 -->
-10
+fluorine
 
 <!-- SEG:m68692:entry:auto-246 -->
-18.9984
+[[MATH:28]]
 
 <!-- SEG:m68692:entry:auto-247 -->
-100
+9
 
 <!-- SEG:m68692:entry:auto-248 -->
-neon
+9
 
 <!-- SEG:m68692:entry:auto-249 -->
-[[MATH:29]]
+10
 
 <!-- SEG:m68692:entry:auto-250 -->
-10
+18.9984
 
 <!-- SEG:m68692:entry:auto-251 -->
-10
+100
 
 <!-- SEG:m68692:entry:auto-252 -->
-10
+neon
 
 <!-- SEG:m68692:entry:auto-253 -->
-19.9924
+[[MATH:29]]
 
 <!-- SEG:m68692:entry:auto-254 -->
-90.48
+10
 
 <!-- SEG:m68692:entry:auto-255 -->
-[[MATH:30]]
+10
 
 <!-- SEG:m68692:entry:auto-256 -->
 10
 
 <!-- SEG:m68692:entry:auto-257 -->
-10
+19.9924
 
 <!-- SEG:m68692:entry:auto-258 -->
-11
+90.48
 
 <!-- SEG:m68692:entry:auto-259 -->
-20.9938
+[[MATH:30]]
 
 <!-- SEG:m68692:entry:auto-260 -->
-0.27
+10
 
 <!-- SEG:m68692:entry:auto-261 -->
-[[MATH:31]]
+10
 
 <!-- SEG:m68692:entry:auto-262 -->
-10
+11
 
 <!-- SEG:m68692:entry:auto-263 -->
-10
+20.9938
 
 <!-- SEG:m68692:entry:auto-264 -->
-12
+0.27
 
 <!-- SEG:m68692:entry:auto-265 -->
-21.9914
+[[MATH:31]]
 
 <!-- SEG:m68692:entry:auto-266 -->
+10
+
+<!-- SEG:m68692:entry:auto-267 -->
+10
+
+<!-- SEG:m68692:entry:auto-268 -->
+12
+
+<!-- SEG:m68692:entry:auto-269 -->
+21.9914
+
+<!-- SEG:m68692:entry:auto-270 -->
 9.25
 
 <!-- SEG:m68692:para:fs-idm243168608 -->
@@ -803,7 +815,7 @@ Use this [[link:Build an Atom simulator|http://openstax.org/l/16PhetAtomBld]] to
 Atomic Mass
 
 <!-- SEG:m68692:para:fs-idp64485984 -->
-Because each proton and each neutron contribute approximately one amu to the mass of an atom, and each electron contributes far less, the {{term}}atomic mass{{/term}} of a single atom is approximately equal to its mass number (a whole number). However, the average masses of atoms of most elements are not whole numbers because most elements exist naturally as mixtures of two or more isotopes.
+Because each proton and each neutron contribute approximately one amu to the mass of an atom, and each electron contributes far less, the [[term:atomic mass|term-00011]] of a single atom is approximately equal to its mass number (a whole number). However, the average masses of atoms of most elements are not whole numbers because most elements exist naturally as mixtures of two or more isotopes.
 
 <!-- SEG:m68692:para:fs-idp249209552 -->
 The mass of an element shown in a periodic table or listed in a table of atomic masses is a weighted, average mass of all the isotopes present in a naturally occurring sample of that element. This is equal to the sum of each individual isotope’s mass multiplied by its fractional abundance.
@@ -898,6 +910,9 @@ The occurrence and natural abundances of isotopes can be experimentally determin
 <!-- SEG:m68692:caption:CNX_Chem_02_03_MassSpec-caption -->
 Analysis of zirconium in a mass spectrometer produces a mass spectrum with peaks showing the different isotopes of Zr.
 
+<!-- SEG:m68692:alt:fs-idp221044352-alt -->
+The left diagram shows how a mass spectrometer works, which is primarily a large tube that bends downward at its midpoint. The sample enters on the left side of the tube. A heater heats the sample, causing it to vaporize. The sample is also hit with a beam of electrons as it is being vaporized. Charged particles from the sample, called ions, are then accelerated and pass between two magnets. The magnetic field deflects the lightest ions most. The deflection of the ions is measured by a detector located on the right side of the tube. The graph to the right of the spectrometer shows a mass spectrum of zirconium. The relative abundance, as a percentage from 0 to 100, is graphed on the y axis, and the mass to charge ratio is graphed on the x axis. The sample contains five different isomers of zirconium. Z R 90, which has a mass to charge ratio of 90, is the most abundant isotope at about 51 percent relative abundance. Z R 91 has a mass to charge ratio of 91 and a relative abundance of about 11 percent. Z R 92 has a mass to charge ratio of 92 and a relative abundance of about 18 percent. Z R 94 has a mass to charge ratio of 94 and a relative abundance of about 18 percent. Z R 96, which has a mass to charge ratio of 96, is the least abundant zirconium isotope with a relative abundance of about 2 percent.
+
 <!-- SEG:m68692:para:fs-idm136290400 -->
 See an [[link:animation|http://openstax.org/l/16MassSpec]] that explains mass spectrometry. Watch this [[link:video|http://openstax.org/l/16RSChemistry]] from the Royal Society for Chemistry for a brief description of the rudiments of mass spectrometry.
 
@@ -916,7 +931,7 @@ Isotopes of an element are atoms with the same atomic number but different mass 
 <!-- SEG:m68692:title:fs-idm7298256-title -->
 Key Equations
 
-<!-- SEG:m68692:entry:auto-307 -->
+<!-- SEG:m68692:entry:auto-312 -->
 [[MATH:35]]
 
 <!-- SEG:m68692:title:fs-idm53754640-title -->

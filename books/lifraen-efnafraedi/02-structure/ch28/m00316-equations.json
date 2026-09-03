@@ -1,0 +1,6 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mo>–</m:mo><m:msub><m:mrow><m:mtext>OCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C≡N</m:mtext></m:mrow></m:math>",
+    "latex": "{–{{\\text{OCH}}}_{2}{{\\text{CH}}}_{2}\\text{C≡N}}"
+  }
+}

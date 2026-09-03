@@ -25,6 +25,9 @@ The remaining representative elements are nonmetals. Unlike [[term:metals|term-0
 <!-- SEG:m68829:caption:CNX_Chem_18_01_PeriodicPU3-caption -->
 The location of the representative metals is shown in the periodic table. Nonmetals are shown in green, metalloids in purple, and the transition metals and inner transition metals in blue.
 
+<!-- SEG:m68829:alt:fs-idp101665920-alt -->
+The Periodic Table of Elements is shown. The 18 columns are labeled “Group” and the 7 rows are labeled “Period.” Below the table to the right is a box labeled “Color Code” with different colors for representative metals, transition and inner transition metals, radioactive elements, metalloids, and nonmetals, as well as solids, liquids, and gases. Each element will be described in this order: atomic number; name; symbol; whether it is a representative metal, transition and inner transition metal, radioactive element, metalloid, or nonmetal; whether it is a solid, liquid, or gas; and atomic mass. Beginning at the top left of the table, or period 1, group 1, is a box containing “1; hydrogen; H; nonmetal; gas; and 1.008.” There is only one other element box in period 1, group 18, which contains “2; helium; H e; nonmetal; gas; and 4.003.” Period 2, group 1 contains “3; lithium; L i; representative metal; solid; and 6.94” Group 2 contains “4; beryllium; B e; representative metal; solid; and 9.012.” Groups 3 through 12 are skipped and group 13 contains “5; boron; B; metalloid; solid; 10.81.” Group 14 contains “6; carbon; C; nonmetal; solid; and 12.01.” Group 15 contains “7; nitrogen; N; nonmetal; gas; and 14.01.” Group 16 contains “8; oxygen; O; nonmetal; gas; and 16.00.” Group 17 contains “9; fluorine; F; nonmetal; gas; and 19.00.” Group 18 contains “10; neon; N e; nonmetal; gas; and 20.18.” Period 3, group 1 contains “11; sodium; N a; representative metal; solid; and 22.99.” Group 2 contains “12; magnesium; M g; representative metal; solid; and 24.31.” Groups 3 through 12 are skipped again in period 3 and group 13 contains “13; aluminum; A l; representative metal; solid; and 26.98.” Group 14 contains “14; silicon; S i; metalloid; solid; and 28.09.” Group 15 contains “15; phosphorous; P; nonmetal; solid; and 30.97.” Group 16 contains “16; sulfur; S; nonmetal; solid; and 32.06.” Group 17 contains “17; chlorine; C l; nonmetal; gas; and 35.45.” Group 18 contains “18; argon; A r; nonmetal; gas; and 39.95.” Period 4, group 1 contains “19; potassium; K; representative metal; solid; and 39.10.” Group 2 contains “20; calcium; C a; representative metal; solid; and 40.08.” Group 3 contains “21; scandium; S c; transition and inner transition metal; solid; and 44.96.” Group 4 contains “22; titanium; T i; transition and inner transition metal; solid; and 47.87.” Group 5 contains “23; vanadium; V; transition and inner transition metal; solid; and 50.94.” Group 6 contains “24; chromium; C r; transition and inner transition metal; solid; and 52.00.” Group 7 contains “25; manganese; M n; transition and inner transition metal; solid; and 54.94.” Group 8 contains “26; iron; F e; transition and inner transition metal; solid; and 55.85.” Group 9 contains “27; cobalt; C o; transition and inner transition metal; solid; and 58.93.” Group 10 contains “28; nickel; N i; transition and inner transition metal; solid; and 58.69.” Group 11 contains “29; copper; C u; transition and inner transition metal; solid; and 63.55.” Group 12 contains “30; zinc; Z n; transition and inner transition metal; solid; and 65.38.” Group 13 contains “31; gallium; G a; representative metal; solid; and 69.72.” Group 14 contains “32; germanium; G e; metalloid; solid; and 72.63.” Group 15 contains “33; arsenic; A s; metalloid; solid; and 74.92.” Group 16 contains “34; selenium; S e; nonmetal; solid; and 78.97.” Group 17 contains “35; bromine; B r; nonmetal; liquid; and 79.90.” Group 18 contains “36; krypton; K r; nonmetal; gas; and 83.80.” Period 5, group 1 contains “37; rubidium; R b; representative metal; solid; and 85.47.” Group 2 contains “38; strontium; S r; representative metal; solid; and 87.62.” Group 3 contains “39; yttrium; Y; transition and inner transition metal; solid; and 88.91.” Group 4 contains “40; zirconium; Z r; transition and inner transition metal; solid; and 91.22.” Group 5 contains “41; niobium; N b; transition and inner transition metal; solid; and 92.91.” Group 6 contains “42; molybdenum; M o; transition and inner transition metal; solid; and 95.95.” Group 7 contains “43; technetium; T c; radioactive element; solid; and 97.” Group 8 contains “44; ruthenium; R u; transition and inner transition metal; solid; and 101.1.” Group 9 contains “45; rhodium; R h; transition and inner transition metal; solid; and 102.9.” Group 10 contains “46; palladium; P d; transition and inner transition metal; solid; and 106.4.” Group 11 contains “47; silver; A g; transition and inner transition metal; solid; and 107.9.” Group 12 contains “48; cadmium; C d; transition and inner transition metal; solid; and 112.4.” Group 13 contains “49; indium; I n; representative metal; solid; and 114.8.” Group 14 contains “50; tin; S n; representative metal; solid; and 118.7.” Group 15 contains “51; antimony; S b; metalloid; solid; and 121.8.” Group 16 contains “52; tellurium; T e; metalloid; solid; and 127.6.” Group 17 contains “53; iodine; I; nonmetal; solid; and 126.9.” Group 18 contains “54; xenon; X e; nonmetal; gas; and 131.3.” Period 6, group 1 contains “55; cesium; C s; representative metal; solid; and 132.9.” Group 2 contains “56; barium; B a; representative metal; solid; and 137.3.” Group 3 breaks the pattern. The box has a large arrow pointing to a row of elements below the table with atomic numbers ranging from 57-71. In sequential order by atomic number, the first box in this row contains “57; lanthanum; L a; representative metal; solid; and 138.9.” To its right, the next is “58; cerium; C e; representative metal; solid; and 140.1.” Next is “59; praseodymium; P r; representative metal; solid; and 140.9.” Next is “60; neodymium; N d; representative metal; solid; and 144.2.” Next is “61; promethium; P m; radioactive element; solid; and 145.” Next is “62; samarium; S m; representative metal; solid; and 150.4.” Next is “63; europium; E u; representative metal; solid; and 152.0.” Next is “64; gadolinium; G d; representative metal; solid; and 157.3.” Next is “65; terbium; T b; representative metal; solid; and 158.9.” Next is “66; dysprosium; D y; representative metal; solid; and 162.5.” Next is “67; holmium; H o; representative metal; solid; and 164.9.” Next is “68; erbium; E r; representative metal; solid; and 167.3.” Next is “69; thulium; T m; representative metal; solid; and 168.9.” Next is “70; ytterbium; Y b; representative metal; solid; and 173.1.” The last in this special row is “71; lutetium; L u; representative metal; solid; and 175.0.” Continuing in period 6, group 4 contains “72; hafnium; H f; transition and inner transition metal; solid; and 178.5.” Group 5 contains “73; tantalum; T a; transition and inner transition metal; solid; and 180.9.” Group 6 contains “74; tungsten; W; transition and inner transition metal; solid; and 183.8.” Group 7 contains “75; rhenium; R e; transition and inner transition metal; solid; and 186.2.” Group 8 contains “76; osmium; O s; transition and inner transition metal; solid; and 190.2.” Group 9 contains “77; iridium; I r; transition and inner transition metal; solid; and 192.2.” Group 10 contains “78; platinum; P t; transition and inner transition metal; solid; and 195.1.” Group 11 contains “79; gold; A u; transition and inner transition metal; solid; and 197.0.” Group 12 contains “80; mercury; H g; transition and inner transition metal; liquid; and 200.6.” Group 13 contains “81; thallium; T l; representative metal; solid; and 204.4.” Group 14 contains “82; lead; P b; representative metal; solid; and 207.2.” Group 15 contains “83; bismuth; B i; representative metal; solid; and 209.0.” Group 16 contains “84; polonium; P o; radioactive element; solid; and 209.” Group 17 contains “85; astatine; A t; radioactive element; solid; and 210.” Group 18 contains “86; radon; R n; radioactive element; gas; and 222.” Period 7, group 1 contains “87; francium; F r; radioactive element; solid; and 223.” Group 2 contains “88; radium; R a; radioactive element; solid; and 226.” Group 3 breaks the pattern much like what occurs in period 6. A large arrow points from the box in period 7, group 3 to a special row containing the elements with atomic numbers ranging from 89-103, just below the row which contains atomic numbers 57-71. In sequential order by atomic number, the first box in this row contains “89; actinium; A c; radioactive element; solid; and 227.” To its right, the next is “90; thorium; T h; radioactive element; solid; and 232.0.” Next is “91; protactinium; P a; radioactive element; solid; and 231.0.” Next is “92; uranium; U; radioactive element; solid; and 238.0.” Next is “93; neptunium; N p; radioactive element; solid; and N p.” Next is “94; plutonium; P u; radioactive element; solid; and 244.” Next is “95; americium; A m; radioactive element; solid; and 243.” Next is “96; curium; C m; radioactive element; solid; and 247.” Next is “97; berkelium; B k; radioactive element; solid; and 247.” Next is “98; californium; C f; radioactive element; solid; and 251.” Next is “99; einsteinium; E s; radioactive element; solid; and 252.” Next is “100; fermium; F m; radioactive element; solid; and 257.” Next is “101; mendelevium; M d; radioactive element; solid; and 258.” Next is “102; nobelium; N o; radioactive element; solid; and 259.” The last in this special row is “103; lawrencium; L r; radioactive element; solid; and 262.” Continuing in period 7, group 4 contains “104; rutherfordium; R f; transition and inner transition metal; solid; and 267.” Group 5 contains “105; dubnium; D b; transition and inner transition metal; solid; and 270.” Group 6 contains “106; seaborgium; S g; transition and inner transition metal; solid; and 271.” Group 7 contains “107; bohrium; B h; transition and inner transition metal; solid; and 270.” Group 8 contains “108; hassium; H s; transition and inner transition metal; solid; and 277.” Group 9 contains “109; meitnerium; M t; radioactive element; solid; and 276.” Group 10 contains “110; darmstadtium; D s; radioactive element; solid; and 281.” Group 11 contains “111; roentgenium; R g; radioactive element; solid; and 282.” Group 12 contains “112; copernicium; C n; radioactive element; liquid; and 285.” Group 13 contains “113; ununtrium; U u t; radioactive element; solid; and 285.” Group 14 contains “114; flerovium; F l; radioactive element; solid; and 289.” Group 15 contains “115; ununpentium; U u p; radioactive element; solid; and 288.” Group 16 contains “116; livermorium; L v; radioactive element; solid; and 293.” Group 17 contains “117; ununseptium; U u s; radioactive; solid; and 294.” Group 18 contains “118; ununoctium; U u o; radioactive element; solid; and 294.”
+
 <!-- SEG:m68829:para:fs-idp105201728 -->
 Most of the representative metals do not occur naturally in an uncombined state because they readily react with water and oxygen in the air. However, it is possible to isolate elemental beryllium, magnesium, zinc, cadmium, mercury, aluminum, tin, and lead from their naturally occurring minerals and use them because they react very slowly with air. Part of the reason why these elements react slowly is that these elements react with air to form a protective coating. The formation of this protective coating is [[term:passivation|term-00005]]. The coating is a nonreactive film of oxide or some other compound. Elemental magnesium, aluminum, zinc, and tin are important in the fabrication of many familiar items, including wire, cookware, foil, and many household and personal objects. Although beryllium, cadmium, mercury, and lead are readily available, there are limitations in their use because of their toxicity.
 
@@ -43,11 +46,17 @@ The alkali metals all react vigorously with water to form hydrogen gas and a bas
 <!-- SEG:m68829:caption:CNX_Chem_18_01_LithiumRx-caption -->
 Lithium floats in paraffin oil because its density is less than the density of paraffin oil.
 
+<!-- SEG:m68829:alt:fs-idm680800-alt -->
+A glass container that is half filled with a colorless liquid is shown. Blocks of a shiny silver solid float on top of the liquid in the container.
+
 <!-- SEG:m68829:para:fs-idm78806576 -->
 Alkali metals react directly with all the nonmetals (except the noble gases) to yield binary ionic compounds containing 1+ metal ions. These metals are so reactive that it is necessary to avoid contact with both moisture and oxygen in the air. Therefore, they are stored in sealed containers under mineral oil, as shown in [[xref:CNX_Chem_18_01_AlkMetStor]], to prevent contact with air and moisture. The pure metals never exist free (uncombined) in nature due to their high reactivity. In addition, this high reactivity makes it necessary to prepare the metals by electrolysis of alkali metal compounds.
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_AlkMetStor-caption -->
 To prevent contact with air and water, potassium for laboratory use comes as sticks or beads stored under kerosene or mineral oil, or in sealed containers. (credit: http://images-of-elements.com/potassium.php)
+
+<!-- SEG:m68829:alt:fs-idp57338272-alt -->
+A sealed, tube-like glass container is shown. The container is partially filled with a colorless liquid and contains two metallic spheres.
 
 <!-- SEG:m68829:para:fs-idp151382672 -->
 Unlike many other metals, the reactivity and softness of the alkali metals make these metals unsuitable for structural applications. However, there are applications where the reactivity of the alkali metals is an advantage. For example, the production of metals such as titanium and zirconium relies, in part, on the ability of sodium to reduce compounds of these metals. The manufacture of many organic compounds, including certain dyes, drugs, and perfumes, utilizes reduction by lithium or sodium.
@@ -57,6 +66,9 @@ Sodium and its compounds impart a bright yellow color to a flame, as seen in [[x
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_NaFlame-caption -->
 Dipping a wire into a solution of a sodium salt and then heating the wire causes emission of a bright yellow light, characteristic of sodium.
+
+<!-- SEG:m68829:alt:fs-idp45426000-alt -->
+A photo of a lit Bunsen burner is shown. A wooden splint is placed in the flame, and a yellow flame is produced.
 
 <!-- SEG:m68829:para:fs-idp114736576 -->
 This [[link:video|http://openstax.org/l/16alkalih2o]] demonstrates the reactions of the alkali metals with water.
@@ -75,6 +87,9 @@ Magnesium (shown in [[xref:CNX_Chem_18_01_CalciWater]]), calcium, strontium, and
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_CalciWater-caption -->
 Magnesium metal (left jar) reacts slowly with hot water (center jar) to yield Mg[[sup:2+]] and OH[[sup:-]] and a basic solution (right jar after adding phenolphthalein indicator). (credit: modification of work by Sahar Atwa)
+
+<!-- SEG:m68829:alt:fs-idm103949424-alt -->
+Three glass containers with lids are shown in a photo. A plus sign is drawn between the first two containers and a right-facing arrow is drawn between the second and third containers. The left container holds a black granular solid while the center container holds a clear, colorless liquid. The right container holds a clear, pink liquid.
 
 <!-- SEG:m68829:para:fs-idp171667088 -->
 The potent reducing power of hot magnesium is useful in preparing some metals from their oxides. Indeed, magnesium’s affinity for oxygen is so great that burning magnesium reacts with carbon dioxide, producing elemental carbon:
@@ -96,6 +111,9 @@ Zinc and cadmium have lower reduction potentials than hydrogen, and, like the al
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_ZincHCl-caption -->
 Zinc is an active metal. It dissolves in hydrochloric acid, forming a solution of colorless Zn[[sup:2+]] ions, Cl[[sup:–]] ions, and hydrogen gas.
+
+<!-- SEG:m68829:alt:fs-idp54219056-alt -->
+A glass tube holding a metallic solid in a colorless liquid is shown laying on a black background with white lettering.
 
 <!-- SEG:m68829:para:fs-idp103146080 -->
 Zinc is a silvery metal that quickly tarnishes to a blue-gray appearance. This change in color is due to an adherent coating of a basic carbonate, Zn[[sub:2]](OH)[[sub:2]]CO[[sub:3]], which passivates the metal to inhibit further corrosion. Dry cell and alkaline batteries contain a zinc anode. Brass (Cu and Zn) and some bronze (Cu, Sn, and sometimes Zn) are important zinc alloys. About half of zinc production serves to protect iron and other metals from corrosion. This protection may take the form of a sacrificial anode (also known as a galvanic anode, which is a means of providing cathodic protection for various metals) or as a thin coating on the protected metal. Galvanized steel is steel with a protective coating of zinc.
@@ -120,6 +138,9 @@ The clear NO initially formed quickly undergoes further oxidation to the reddish
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_MercuryRx-caption -->
 From left to right: Hg([[i:l]]), Hg + concentrated HCl, Hg + concentrated HNO[[sub:3]]. (credit: Sahar Atwa)
+
+<!-- SEG:m68829:alt:fs-idp138999744-alt -->
+Three test tubes are shown in a photo. The left tube contains a metallic liquid. The middle tube contains a metallic liquid under a layer of clear, colorless liquid. The third tube contains a whitish solid under a layer of yellowish liquid.
 
 <!-- SEG:m68829:para:fs-idp208862464 -->
 Most mercury compounds decompose when heated. Most mercury compounds contain mercury with a 2+-oxidation state. When there is a large excess of mercury, it is possible to form compounds containing the [[MATH:2]] ion. All mercury compounds are toxic, and it is necessary to exercise great care in their synthesis.
@@ -180,6 +201,9 @@ The metallic members of group 14 are tin, lead, and flerovium. Carbon is a typic
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_TinChlorid-caption -->
 (a) Tin(II) chloride is an ionic solid; (b) tin(IV) chloride is a covalent liquid.
+
+<!-- SEG:m68829:alt:fs-idp15478608-alt -->
+Two photos are shown and labeled “a” and “b.” Photo a shows a watch glass holding a fine, white powder. Photo b shows a sealed glass vial holding a clear, colorless liquid.
 
 <!-- SEG:m68829:para:fs-idp6930208 -->
 Tin reacts readily with nonmetals and acids to form tin(II) compounds (indicating that it is more easily oxidized than hydrogen) and with nonmetals to form either tin(II) or tin(IV) compounds (shown in [[xref:CNX_Chem_18_01_TinChlorid]]), depending on the stoichiometry and reaction conditions. Lead is less reactive. It is only slightly easier to oxidize than hydrogen, and oxidation normally requires a hot concentrated acid.
@@ -364,26 +388,26 @@ representative metal
 <!-- SEG:m68829:glossary-def:fs-idm2235360-def -->
 metal among the representative elements
 
-<!-- SEG:m68829:entry:auto-123 -->
+<!-- SEG:m68829:entry:auto-131 -->
 1
 
-<!-- SEG:m68829:entry:auto-124 -->
+<!-- SEG:m68829:entry:auto-132 -->
 2
 
-<!-- SEG:m68829:entry:auto-125 -->
+<!-- SEG:m68829:entry:auto-133 -->
 Na
 
-<!-- SEG:m68829:entry:auto-126 -->
+<!-- SEG:m68829:entry:auto-134 -->
 I
 
-<!-- SEG:m68829:entry:auto-127 -->
+<!-- SEG:m68829:entry:auto-135 -->
 Sr
 
-<!-- SEG:m68829:entry:auto-128 -->
+<!-- SEG:m68829:entry:auto-136 -->
 Se
 
-<!-- SEG:m68829:entry:auto-129 -->
+<!-- SEG:m68829:entry:auto-137 -->
 Al
 
-<!-- SEG:m68829:entry:auto-130 -->
+<!-- SEG:m68829:entry:auto-138 -->
 O

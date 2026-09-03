@@ -1,0 +1,122 @@
+{
+  "moduleId": "m00089",
+  "title": {
+    "segmentId": "m00089:title:auto-1",
+    "text": "Preparing Alkenes: A Preview of Elimination Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f301a737-88cc-4800-ab3f-e5bfb1ab64bc"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00089:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00089:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00089:alt:fig-00001-alt",
+          "text": "In a reversible addition-elimination reaction, alkene reacts with X single bonded to Y to form a compound, in which C1 and C2 are bonded to X and Y, respectively."
+        },
+        "src": "../../media/OChem_08_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00089:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00089:alt:fig-00002-alt",
+          "text": "In a reaction, bromocyclohexane reacts with potassium hydroxide in the presence of ethanol to form cyclohexene (81 percent yield), potassium bromide, and water."
+        },
+        "src": "../../media/OChem_08_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00089:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00089:alt:fig-00003-alt",
+          "text": "In a reaction, 1-methylcyclohexanol reacts with sulfuric acid in the presence of water, tetrahydrofuran (a common solvent) at 50 degrees Celsius to form 1-methylcyclohexene (91 percent yield) and water."
+        },
+        "src": "../../media/OChem_08_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00089:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00089:alt:fig-00004-alt",
+          "text": "In a reaction, beta-hydroxybutyryl A C P forms trans-crotonyl A C P and water."
+        },
+        "src": "../../media/OChem_08_01_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00089:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

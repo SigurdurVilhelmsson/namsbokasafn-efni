@@ -20,19 +20,25 @@ Classify matter as an element, compound, homogeneous mixture, or heterogeneous m
 Define and give examples of atoms and molecules
 
 <!-- SEG:m68667:para:fs-idm2368272 -->
-{{term}}Matter{{/term}} is defined as anything that occupies space and has mass, and it is all around us. Solids and liquids are more obviously matter: We can see that they take up space, and their weight tells us that they have mass. Gases are also matter; if gases did not take up space, a balloon would not inflate (increase its volume) when filled with gas.
+[[term:Matter|term-00001]] is defined as anything that occupies space and has mass, and it is all around us. Solids and liquids are more obviously matter: We can see that they take up space, and their weight tells us that they have mass. Gases are also matter; if gases did not take up space, a balloon would not inflate (increase its volume) when filled with gas.
 
 <!-- SEG:m68667:para:fs-idm13881920 -->
-Solids, liquids, and gases are the three states of matter commonly found on earth ([[xref:CNX_Chem_01_02_StatesMatt]]). A {{term}}solid{{/term}} is rigid and possesses a definite shape. A {{term}}liquid{{/term}} flows and takes the shape of its container, except that it forms a flat or slightly curved upper surface when acted upon by gravity. (In zero gravity, liquids assume a spherical shape.) Both liquid and solid samples have volumes that are very nearly independent of pressure. A {{term}}gas{{/term}} takes both the shape and volume of its container.
+Solids, liquids, and gases are the three states of matter commonly found on earth ([[xref:CNX_Chem_01_02_StatesMatt]]). A [[term:solid|term-00002]] is rigid and possesses a definite shape. A [[term:liquid|term-00003]] flows and takes the shape of its container, except that it forms a flat or slightly curved upper surface when acted upon by gravity. (In zero gravity, liquids assume a spherical shape.) Both liquid and solid samples have volumes that are very nearly independent of pressure. A [[term:gas|term-00004]] takes both the shape and volume of its container.
 
 <!-- SEG:m68667:caption:CNX_Chem_01_02_StatesMatt-caption -->
 The three most common states or phases of matter are solid, liquid, and gas.
 
+<!-- SEG:m68667:alt:fs-idm894896-alt -->
+A beaker labeled solid contains a cube of red matter and says has fixed shape and volume. A beaker labeled liquid contains a brownish-red colored liquid. This beaker says takes shape of container, forms horizontal surfaces, has fixed volume. The beaker labeled gas is filled with a light brown gas. This beaker says expands to fill container.
+
 <!-- SEG:m68667:para:fs-idm10031184 -->
-A fourth state of matter, plasma, occurs naturally in the interiors of stars. A {{term}}plasma{{/term}} is a gaseous state of matter that contains appreciable numbers of electrically charged particles ([[xref:CNX_Chem_01_02_Plasma]]). The presence of these charged particles imparts unique properties to plasmas that justify their classification as a state of matter distinct from gases. In addition to stars, plasmas are found in some other high-temperature environments (both natural and man-made), such as lightning strikes, certain television screens, and specialized analytical instruments used to detect trace amounts of metals.
+A fourth state of matter, plasma, occurs naturally in the interiors of stars. A [[term:plasma|term-00005]] is a gaseous state of matter that contains appreciable numbers of electrically charged particles ([[xref:CNX_Chem_01_02_Plasma]]). The presence of these charged particles imparts unique properties to plasmas that justify their classification as a state of matter distinct from gases. In addition to stars, plasmas are found in some other high-temperature environments (both natural and man-made), such as lightning strikes, certain television screens, and specialized analytical instruments used to detect trace amounts of metals.
 
 <!-- SEG:m68667:caption:CNX_Chem_01_02_Plasma-caption -->
 A plasma torch can be used to cut metal. (credit: “Hypertherm”/Wikimedia Commons)
+
+<!-- SEG:m68667:alt:fs-idm25079184-alt -->
+A cutting torch is being used to cut a piece of metal. Bright, white colored plasma can be seen near the tip of the torch, where it is contacting the metal.
 
 <!-- SEG:m68667:para:fs-idp140507125044944 -->
 In a tiny cell in a plasma television, the plasma emits ultraviolet light, which in turn causes the display at that location to appear a specific color. The composite of these tiny dots of color makes up the image that you see. Watch this [[link:video|http://openstax.org/l/16plasma]] to learn more about plasma and the places you encounter it.
@@ -41,16 +47,19 @@ In a tiny cell in a plasma television, the plasma emits ultraviolet light, which
 Some samples of matter appear to have properties of solids, liquids, and/or gases at the same time. This can occur when the sample is composed of many small pieces. For example, we can pour sand as if it were a liquid because it is composed of many small grains of solid sand. Matter can also have properties of more than one state when it is a mixture, such as with clouds. Clouds appear to behave somewhat like gases, but they are actually mixtures of air (gas) and tiny particles of water (liquid or solid).
 
 <!-- SEG:m68667:para:fs-idp46064176 -->
-The {{term}}mass{{/term}} of an object is a measure of the amount of matter in it. One way to measure an object’s mass is to measure the force it takes to accelerate the object. It takes much more force to accelerate a car than a bicycle because the car has much more mass. A more common way to determine the mass of an object is to use a balance to compare its mass with a standard mass.
+The [[term:mass|term-00006]] of an object is a measure of the amount of matter in it. One way to measure an object’s mass is to measure the force it takes to accelerate the object. It takes much more force to accelerate a car than a bicycle because the car has much more mass. A more common way to determine the mass of an object is to use a balance to compare its mass with a standard mass.
 
 <!-- SEG:m68667:para:fs-idp63221808 -->
-Although weight is related to mass, it is not the same thing. {{term}}Weight{{/term}} refers to the force that gravity exerts on an object. This force is directly proportional to the mass of the object. The weight of an object changes as the force of gravity changes, but its mass does not. An astronaut’s mass does not change just because she goes to the moon. But her weight on the moon is only one-sixth her earth-bound weight because the moon’s gravity is only one-sixth that of the earth’s. She may feel “weightless” during her trip when she experiences negligible external forces (gravitational or any other), although she is, of course, never “massless.”
+Although weight is related to mass, it is not the same thing. [[term:Weight|term-00007]] refers to the force that gravity exerts on an object. This force is directly proportional to the mass of the object. The weight of an object changes as the force of gravity changes, but its mass does not. An astronaut’s mass does not change just because she goes to the moon. But her weight on the moon is only one-sixth her earth-bound weight because the moon’s gravity is only one-sixth that of the earth’s. She may feel “weightless” during her trip when she experiences negligible external forces (gravitational or any other), although she is, of course, never “massless.”
 
 <!-- SEG:m68667:para:fs-idp40529184 -->
-The {{term}}law of conservation of matter{{/term}} summarizes many scientific observations about matter: It states that [[i:there is no detectable change in the total quantity of matter present when matter converts from one type to another (a chemical change) or changes among solid, liquid, or gaseous states (a physical change)]]. Brewing beer and the operation of batteries provide examples of the conservation of matter ([[xref:CNX_Chem_01_02_ConsMatter]]). During the brewing of beer, the ingredients (water, yeast, grains, malt, hops, and sugar) are converted into beer (water, alcohol, carbonation, and flavoring substances) with no actual loss of substance. This is most clearly seen during the bottling process, when glucose turns into ethanol and carbon dioxide, and the total mass of the substances does not change. This can also be seen in a lead-acid car battery: The original substances (lead, lead oxide, and sulfuric acid), which are capable of producing electricity, are changed into other substances (lead sulfate and water) that do not produce electricity, with no change in the actual amount of matter.
+The [[term:law of conservation of matter|term-00008]] summarizes many scientific observations about matter: It states that [[i:there is no detectable change in the total quantity of matter present when matter converts from one type to another (a chemical change) or changes among solid, liquid, or gaseous states (a physical change)]]. Brewing beer and the operation of batteries provide examples of the conservation of matter ([[xref:CNX_Chem_01_02_ConsMatter]]). During the brewing of beer, the ingredients (water, yeast, grains, malt, hops, and sugar) are converted into beer (water, alcohol, carbonation, and flavoring substances) with no actual loss of substance. This is most clearly seen during the bottling process, when glucose turns into ethanol and carbon dioxide, and the total mass of the substances does not change. This can also be seen in a lead-acid car battery: The original substances (lead, lead oxide, and sulfuric acid), which are capable of producing electricity, are changed into other substances (lead sulfate and water) that do not produce electricity, with no change in the actual amount of matter.
 
 <!-- SEG:m68667:caption:CNX_Chem_01_02_ConsMatter-caption -->
 (a) The mass of beer precursor materials is the same as the mass of beer produced: Sugar has become alcohol and carbon dioxide. (b) The mass of the lead, lead oxide, and sulfuric acid consumed by the production of electricity is exactly equal to the mass of lead sulfate and water that is formed.
+
+<!-- SEG:m68667:alt:fs-idp18802448-alt -->
+Diagram A shows a beer bottle containing pre-beer and sugar. An arrow points from this bottle to a second bottle. This second bottle contains the same volume of liquid, however, the sugar has been converted into ethanol and carbonation as beer was made. Diagram B shows a car battery that contains sheets of P B and P B O subscript 2 along with H subscript 2 S O subscript 4. After the battery is used, it contains an equal mass of P B S O subscript 4 and H subscript 2 O.
 
 <!-- SEG:m68667:para:fs-idp109544240 -->
 Although this conservation law holds true for all conversions of matter, convincing examples are few and far between because, outside of the controlled conditions in a laboratory, we seldom collect all of the material that is produced during a particular conversion. For example, when you eat, digest, and assimilate food, all of the matter in the original food is preserved. But because some of the matter is incorporated into your body, and much is excreted as various types of waste, it is challenging to verify by measurement.
@@ -59,16 +68,19 @@ Although this conservation law holds true for all conversions of matter, convinc
 Classifying Matter
 
 <!-- SEG:m68667:para:fs-idm27277840 -->
-Matter can be classified into several categories. Two broad categories are mixtures and pure substances. A {{term}}pure substance{{/term}} has a constant composition. All specimens of a pure substance have exactly the same makeup and properties. Any sample of sucrose (table sugar) consists of 42.1% carbon, 6.5% hydrogen, and 51.4% oxygen by mass. Any sample of sucrose also has the same physical properties, such as melting point, color, and sweetness, regardless of the source from which it is isolated.
+Matter can be classified into several categories. Two broad categories are mixtures and pure substances. A [[term:pure substance|term-00009]] has a constant composition. All specimens of a pure substance have exactly the same makeup and properties. Any sample of sucrose (table sugar) consists of 42.1% carbon, 6.5% hydrogen, and 51.4% oxygen by mass. Any sample of sucrose also has the same physical properties, such as melting point, color, and sweetness, regardless of the source from which it is isolated.
 
 <!-- SEG:m68667:para:fs-idm96243408 -->
-Pure substances may be divided into two classes: elements and compounds. Pure substances that cannot be broken down into simpler substances by chemical changes are called {{term}}elements{{/term}}. Iron, silver, gold, aluminum, sulfur, oxygen, and copper are familiar examples of the more than 100 known elements, of which about 90 occur naturally on the earth, and two dozen or so have been created in laboratories.
+Pure substances may be divided into two classes: elements and compounds. Pure substances that cannot be broken down into simpler substances by chemical changes are called [[term:elements|term-00010]]. Iron, silver, gold, aluminum, sulfur, oxygen, and copper are familiar examples of the more than 100 known elements, of which about 90 occur naturally on the earth, and two dozen or so have been created in laboratories.
 
 <!-- SEG:m68667:para:fs-idm75785376 -->
-Pure substances that are comprised of two or more elements are called {{term}}compounds{{/term}}. Compounds may be broken down by chemical changes to yield either elements or other compounds, or both. Mercury(II) oxide, an orange, crystalline solid, can be broken down by heat into the elements mercury and oxygen ([[xref:CNX_Chem_01_02_decomp]]). When heated in the absence of air, the compound sucrose is broken down into the element carbon and the compound water. (The initial stage of this process, when the sugar is turning brown, is known as caramelization—this is what imparts the characteristic sweet and nutty flavor to caramel apples, caramelized onions, and caramel). Silver(I) chloride is a white solid that can be broken down into its elements, silver and chlorine, by absorption of light. This property is the basis for the use of this compound in photographic films and photochromic eyeglasses (those with lenses that darken when exposed to light).
+Pure substances that are comprised of two or more elements are called [[term:compounds|term-00011]]. Compounds may be broken down by chemical changes to yield either elements or other compounds, or both. Mercury(II) oxide, an orange, crystalline solid, can be broken down by heat into the elements mercury and oxygen ([[xref:CNX_Chem_01_02_decomp]]). When heated in the absence of air, the compound sucrose is broken down into the element carbon and the compound water. (The initial stage of this process, when the sugar is turning brown, is known as caramelization—this is what imparts the characteristic sweet and nutty flavor to caramel apples, caramelized onions, and caramel). Silver(I) chloride is a white solid that can be broken down into its elements, silver and chlorine, by absorption of light. This property is the basis for the use of this compound in photographic films and photochromic eyeglasses (those with lenses that darken when exposed to light).
 
 <!-- SEG:m68667:caption:CNX_Chem_01_02_decomp-caption -->
 (a) The compound mercury(II) oxide, (b) when heated, (c) decomposes into silvery droplets of liquid mercury and invisible oxygen gas. (credit: modification of work by Paul Flowers)
+
+<!-- SEG:m68667:alt:fs-idm1678528-alt -->
+This figure shows a series of three photos labeled a, b, and c. Photo a shows the bottom of a test tube that is filled with an orange-red substance. A slight amount of a silver substance is also visible. Photo b shows the substance in the test tube being heated over a flame. Photo c shows a test tube that is not longer being heated. The orange-red substance is almost completely gone, and small, silver droplets of a substance are left.
 
 <!-- SEG:m68667:para:fs-idm138330144 -->
 Many compounds break down when heated. This [[link:site|http://openstax.org/l/16mercury]] shows the breakdown of mercury oxide, HgO. You can also view an example of the [[link:photochemical decomposition of silver chloride|http://openstax.org/l/16silvchloride]] (AgCl), the basis of early photography.
@@ -77,13 +89,16 @@ Many compounds break down when heated. This [[link:site|http://openstax.org/l/16
 The properties of combined elements are different from those in the free, or uncombined, state. For example, white crystalline sugar (sucrose) is a compound resulting from the chemical combination of the element carbon, which is a black solid in one of its uncombined forms, and the two elements hydrogen and oxygen, which are colorless gases when uncombined. Free sodium, an element that is a soft, shiny, metallic solid, and free chlorine, an element that is a yellow-green gas, combine to form sodium chloride (table salt), a compound that is a white, crystalline solid.
 
 <!-- SEG:m68667:para:fs-idm77724752 -->
-A {{term}}mixture{{/term}} is composed of two or more types of matter that can be present in varying amounts and can be separated by physical changes, such as evaporation (you will learn more about this later). A mixture with a composition that varies from point to point is called a {{term}}heterogeneous mixture{{/term}}. Italian dressing is an example of a heterogeneous mixture ([[xref:CNX_Chem_01_02_Mixtures]]). Its composition can vary because it may be prepared from varying amounts of oil, vinegar, and herbs. It is not the same from point to point throughout the mixture—one drop may be mostly vinegar, whereas a different drop may be mostly oil or herbs because the oil and vinegar separate and the herbs settle. Other examples of heterogeneous mixtures are chocolate chip cookies (we can see the separate bits of chocolate, nuts, and cookie dough) and granite (we can see the quartz, mica, feldspar, and more).
+A [[term:mixture|term-00012]] is composed of two or more types of matter that can be present in varying amounts and can be separated by physical changes, such as evaporation (you will learn more about this later). A mixture with a composition that varies from point to point is called a [[term:heterogeneous mixture|term-00013]]. Italian dressing is an example of a heterogeneous mixture ([[xref:CNX_Chem_01_02_Mixtures]]). Its composition can vary because it may be prepared from varying amounts of oil, vinegar, and herbs. It is not the same from point to point throughout the mixture—one drop may be mostly vinegar, whereas a different drop may be mostly oil or herbs because the oil and vinegar separate and the herbs settle. Other examples of heterogeneous mixtures are chocolate chip cookies (we can see the separate bits of chocolate, nuts, and cookie dough) and granite (we can see the quartz, mica, feldspar, and more).
 
 <!-- SEG:m68667:para:fs-idm12481392 -->
-A {{term}}homogeneous mixture{{/term}}, also called a {{term}}solution{{/term}}, exhibits a uniform composition and appears visually the same throughout. An example of a solution is a sports drink, consisting of water, sugar, coloring, flavoring, and electrolytes mixed together uniformly ([[xref:CNX_Chem_01_02_Mixtures]]). Each drop of a sports drink tastes the same because each drop contains the same amounts of water, sugar, and other components. Note that the composition of a sports drink can vary—it could be made with somewhat more or less sugar, flavoring, or other components, and still be a sports drink. Other examples of homogeneous mixtures include air, maple syrup, gasoline, and a solution of salt in water.
+A [[term:homogeneous mixture|term-00014]], also called a [[term:solution|term-00015]], exhibits a uniform composition and appears visually the same throughout. An example of a solution is a sports drink, consisting of water, sugar, coloring, flavoring, and electrolytes mixed together uniformly ([[xref:CNX_Chem_01_02_Mixtures]]). Each drop of a sports drink tastes the same because each drop contains the same amounts of water, sugar, and other components. Note that the composition of a sports drink can vary—it could be made with somewhat more or less sugar, flavoring, or other components, and still be a sports drink. Other examples of homogeneous mixtures include air, maple syrup, gasoline, and a solution of salt in water.
 
 <!-- SEG:m68667:caption:CNX_Chem_01_02_Mixtures-caption -->
 (a) Oil and vinegar salad dressing is a heterogeneous mixture because its composition is not uniform throughout. (b) A commercial sports drink is a homogeneous mixture because its composition is uniform throughout. (credit a “left”: modification of work by John Mayer; credit a “right”: modification of work by Umberto Salvagnin; credit b “left: modification of work by Jeff Bedford)
+
+<!-- SEG:m68667:alt:fs-idm84857312-alt -->
+Diagram A shows a glass containing a red liquid with a layer of yellow oil floating on the surface of the red liquid. A zoom in box is magnifying a portion of the red liquid that contains some of the yellow oil. The zoomed in image shows that oil is forming round droplets within the red liquid. Diagram B shows a photo of Gatorade G 2. A zoom in box is magnifying a portion of the Gatorade, which is uniformly red.
 
 <!-- SEG:m68667:para:fs-idm113901040 -->
 Although there are just over 100 elements, tens of millions of chemical compounds result from different combinations of these elements. Each compound has a specific composition and possesses definite chemical and physical properties that distinguish it from all other compounds. And, of course, there are innumerable ways to combine elements and compounds to form different mixtures. A summary of how to distinguish between the various major classifications of matter is shown in ([[xref:CNX_Chem_01_02_MattType]]).
@@ -91,221 +106,227 @@ Although there are just over 100 elements, tens of millions of chemical compound
 <!-- SEG:m68667:caption:CNX_Chem_01_02_MattType-caption -->
 Depending on its properties, a given substance can be classified as a homogeneous mixture, a heterogeneous mixture, a compound, or an element.
 
+<!-- SEG:m68667:alt:fs-idm6448800-alt -->
+This flow chart begins with matter at the top and the question: does the matter have constant properties and composition? If no, then it is a mixture. This leads to the next question: is it uniform throughout? If no, it is heterogeneous. If yes, it is homogenous. If the matter does have constant properties and composition, it is a pure substance. This leads to the next question: can it be simplified chemically? If no, it is an element. If yes, then it is a compound.
+
 <!-- SEG:m68667:para:fs-idm39281712 -->
 Eleven elements make up about 99% of the earth’s crust and atmosphere ([[xref:fs-idp31507504]]). Oxygen constitutes nearly one-half and silicon about one-quarter of the total quantity of these elements. A majority of elements on earth are found in chemical combinations with other elements; about one-quarter of the elements are also found in the free state.
 
-<!-- SEG:m68667:entry:auto-33 -->
+<!-- SEG:m68667:entry:auto-39 -->
 Elemental Composition of Earth
 
-<!-- SEG:m68667:entry:auto-34 -->
-Element
-
-<!-- SEG:m68667:entry:auto-35 -->
-Symbol
-
-<!-- SEG:m68667:entry:auto-36 -->
-Percent Mass
-
-<!-- SEG:m68667:entry:auto-37 -->
-Element
-
-<!-- SEG:m68667:entry:auto-38 -->
-Symbol
-
-<!-- SEG:m68667:entry:auto-39 -->
-Percent Mass
-
 <!-- SEG:m68667:entry:auto-40 -->
-oxygen
+Element
 
 <!-- SEG:m68667:entry:auto-41 -->
-O
+Symbol
 
 <!-- SEG:m68667:entry:auto-42 -->
-49.20
+Percent Mass
 
 <!-- SEG:m68667:entry:auto-43 -->
-chlorine
+Element
 
 <!-- SEG:m68667:entry:auto-44 -->
-Cl
+Symbol
 
 <!-- SEG:m68667:entry:auto-45 -->
-0.19
+Percent Mass
 
 <!-- SEG:m68667:entry:auto-46 -->
-silicon
+oxygen
 
 <!-- SEG:m68667:entry:auto-47 -->
-Si
+O
 
 <!-- SEG:m68667:entry:auto-48 -->
-25.67
+49.20
 
 <!-- SEG:m68667:entry:auto-49 -->
-phosphorus
+chlorine
 
 <!-- SEG:m68667:entry:auto-50 -->
-P
+Cl
 
 <!-- SEG:m68667:entry:auto-51 -->
-0.11
+0.19
 
 <!-- SEG:m68667:entry:auto-52 -->
-aluminum
+silicon
 
 <!-- SEG:m68667:entry:auto-53 -->
-Al
+Si
 
 <!-- SEG:m68667:entry:auto-54 -->
-7.50
+25.67
 
 <!-- SEG:m68667:entry:auto-55 -->
-manganese
+phosphorus
 
 <!-- SEG:m68667:entry:auto-56 -->
-Mn
+P
 
 <!-- SEG:m68667:entry:auto-57 -->
-0.09
+0.11
 
 <!-- SEG:m68667:entry:auto-58 -->
-iron
+aluminum
 
 <!-- SEG:m68667:entry:auto-59 -->
-Fe
+Al
 
 <!-- SEG:m68667:entry:auto-60 -->
-4.71
+7.50
 
 <!-- SEG:m68667:entry:auto-61 -->
-carbon
+manganese
 
 <!-- SEG:m68667:entry:auto-62 -->
-C
+Mn
 
 <!-- SEG:m68667:entry:auto-63 -->
-0.08
+0.09
 
 <!-- SEG:m68667:entry:auto-64 -->
-calcium
+iron
 
 <!-- SEG:m68667:entry:auto-65 -->
-Ca
+Fe
 
 <!-- SEG:m68667:entry:auto-66 -->
-3.39
+4.71
 
 <!-- SEG:m68667:entry:auto-67 -->
-sulfur
+carbon
 
 <!-- SEG:m68667:entry:auto-68 -->
-S
+C
 
 <!-- SEG:m68667:entry:auto-69 -->
-0.06
+0.08
 
 <!-- SEG:m68667:entry:auto-70 -->
-sodium
+calcium
 
 <!-- SEG:m68667:entry:auto-71 -->
-Na
+Ca
 
 <!-- SEG:m68667:entry:auto-72 -->
-2.63
+3.39
 
 <!-- SEG:m68667:entry:auto-73 -->
-barium
+sulfur
 
 <!-- SEG:m68667:entry:auto-74 -->
-Ba
+S
 
 <!-- SEG:m68667:entry:auto-75 -->
-0.04
+0.06
 
 <!-- SEG:m68667:entry:auto-76 -->
-potassium
+sodium
 
 <!-- SEG:m68667:entry:auto-77 -->
-K
+Na
 
 <!-- SEG:m68667:entry:auto-78 -->
-2.40
+2.63
 
 <!-- SEG:m68667:entry:auto-79 -->
-nitrogen
+barium
 
 <!-- SEG:m68667:entry:auto-80 -->
-N
+Ba
 
 <!-- SEG:m68667:entry:auto-81 -->
-0.03
+0.04
 
 <!-- SEG:m68667:entry:auto-82 -->
-magnesium
+potassium
 
 <!-- SEG:m68667:entry:auto-83 -->
-Mg
+K
 
 <!-- SEG:m68667:entry:auto-84 -->
-1.93
+2.40
 
 <!-- SEG:m68667:entry:auto-85 -->
-fluorine
+nitrogen
 
 <!-- SEG:m68667:entry:auto-86 -->
-F
+N
 
 <!-- SEG:m68667:entry:auto-87 -->
 0.03
 
 <!-- SEG:m68667:entry:auto-88 -->
-hydrogen
+magnesium
 
 <!-- SEG:m68667:entry:auto-89 -->
-H
+Mg
 
 <!-- SEG:m68667:entry:auto-90 -->
-0.87
+1.93
 
 <!-- SEG:m68667:entry:auto-91 -->
-strontium
+fluorine
 
 <!-- SEG:m68667:entry:auto-92 -->
-Sr
+F
 
 <!-- SEG:m68667:entry:auto-93 -->
-0.02
+0.03
 
 <!-- SEG:m68667:entry:auto-94 -->
-titanium
+hydrogen
 
 <!-- SEG:m68667:entry:auto-95 -->
-Ti
+H
 
 <!-- SEG:m68667:entry:auto-96 -->
-0.58
+0.87
 
 <!-- SEG:m68667:entry:auto-97 -->
-all others
+strontium
 
 <!-- SEG:m68667:entry:auto-98 -->
--
+Sr
 
 <!-- SEG:m68667:entry:auto-99 -->
+0.02
+
+<!-- SEG:m68667:entry:auto-100 -->
+titanium
+
+<!-- SEG:m68667:entry:auto-101 -->
+Ti
+
+<!-- SEG:m68667:entry:auto-102 -->
+0.58
+
+<!-- SEG:m68667:entry:auto-103 -->
+all others
+
+<!-- SEG:m68667:entry:auto-104 -->
+-
+
+<!-- SEG:m68667:entry:auto-105 -->
 0.47
 
 <!-- SEG:m68667:title:fs-idm9685536-title -->
 Atoms and Molecules
 
 <!-- SEG:m68667:para:fs-idp25156032 -->
-An {{term}}atom{{/term}} is the smallest particle of an element that has the properties of that element and can enter into a chemical combination. Consider the element gold, for example. Imagine cutting a gold nugget in half, then cutting one of the halves in half, and repeating this process until a piece of gold remained that was so small that it could not be cut in half (regardless of how tiny your knife may be). This minimally sized piece of gold is an atom (from the Greek [[i:atomos]], meaning “indivisible”) ([[xref:CNX_Chem_01_02_GoldAtoms]]). This atom would no longer be gold if it were divided any further.
+An [[term:atom|term-00016]] is the smallest particle of an element that has the properties of that element and can enter into a chemical combination. Consider the element gold, for example. Imagine cutting a gold nugget in half, then cutting one of the halves in half, and repeating this process until a piece of gold remained that was so small that it could not be cut in half (regardless of how tiny your knife may be). This minimally sized piece of gold is an atom (from the Greek [[i:atomos]], meaning “indivisible”) ([[xref:CNX_Chem_01_02_GoldAtoms]]). This atom would no longer be gold if it were divided any further.
 
 <!-- SEG:m68667:caption:CNX_Chem_01_02_GoldAtoms-caption -->
 (a) This photograph shows a gold nugget. (b) A scanning-tunneling microscope (STM) can generate views of the surfaces of solids, such as this image of a gold crystal. Each sphere represents one gold atom. (credit a: modification of work by United States Geological Survey; credit b: modification of work by “Erwinrossen”/Wikimedia Commons)
 
+<!-- SEG:m68667:alt:fs-idp99062768-alt -->
+Figure A shows a gold nugget as it would appear to the naked eye. The gold nugget is very irregular, with many sharp edges. It appears gold in color. The microscope image of a gold crystal shows many similarly sized gold stripes that are separated by dark areas. Looking closely, one can see that the gold stripes are made of many, tiny, circular atoms.
+
 <!-- SEG:m68667:para:fs-idm15008032 -->
-The first suggestion that matter is composed of atoms is attributed to the Greek philosophers Leucippus and Democritus, who developed their ideas in the 5th century BCE. However, it was not until the early nineteenth century that John {{term}}Dalton{{/term}} (1766–1844), a British schoolteacher with a keen interest in science, supported this hypothesis with quantitative measurements. Since that time, repeated experiments have confirmed many aspects of this hypothesis, and it has become one of the central theories of chemistry. Other aspects of Dalton’s atomic theory are still used but with minor revisions (details of Dalton’s theory are provided in the chapter on atoms and molecules).
+The first suggestion that matter is composed of atoms is attributed to the Greek philosophers Leucippus and Democritus, who developed their ideas in the 5th century BCE. However, it was not until the early nineteenth century that John [[term:Dalton|term-00017]] (1766–1844), a British schoolteacher with a keen interest in science, supported this hypothesis with quantitative measurements. Since that time, repeated experiments have confirmed many aspects of this hypothesis, and it has become one of the central theories of chemistry. Other aspects of Dalton’s atomic theory are still used but with minor revisions (details of Dalton’s theory are provided in the chapter on atoms and molecules).
 
 <!-- SEG:m68667:para:fs-idp64376128 -->
 An atom is so small that its size is difficult to imagine. One of the smallest things we can see with our unaided eye is a single thread of a spider web: These strands are about 1/10,000 of a centimeter (0.0001 cm) in diameter. Although the cross-section of one strand is almost impossible to see without a microscope, it is huge on an atomic scale. A single carbon atom in the web has a diameter of about 0.000000015 centimeter, and it would take about 7000 carbon atoms to span the diameter of the strand. To put this in perspective, if a carbon atom were the size of a dime, the cross-section of one strand would be larger than a football field, which would require about 150 million carbon atom “dimes” to cover it. ([[xref:CNX_Chem_01_02_Cellulose]]) shows increasingly close microscopic and atomic-level views of ordinary cotton.
@@ -313,14 +334,20 @@ An atom is so small that its size is difficult to imagine. One of the smallest t
 <!-- SEG:m68667:caption:CNX_Chem_01_02_Cellulose-caption -->
 These images provide an increasingly closer view: (a) a cotton boll, (b) a single cotton fiber viewed under an optical microscope (magnified 40 times), (c) an image of a cotton fiber obtained with an electron microscope (much higher magnification than with the optical microscope); and (d and e) atomic-level models of the fiber (spheres of different colors represent atoms of different elements). (credit c: modification of work by “Featheredtar”/Wikimedia Commons)
 
+<!-- SEG:m68667:alt:fs-idm10849248-alt -->
+Figure A shows a puffy white cotton boll growing on a brown twig. Figure B shows a magnified cotton strand. The strand appears transparent but contains dark areas within its interior. Figure C shows the surface of several crisscrossing and overlapping cotton fibers. Its surface is rough along the edges but smooth near the center of each strand. Figure D shows three strands of molecules connected into three vertical chains. Each strand contains about five molecules. Figure E shows that the cotton molecule contains about a dozen atoms. The black carbon atoms form rings that are connected by red oxygen atoms. Many of the carbon atoms are also bonded to hydrogen atoms, shown as white balls, or other oxygen atoms.
+
 <!-- SEG:m68667:para:fs-idp92844000 -->
 An atom is so light that its mass is also difficult to imagine. A billion lead atoms (1,000,000,000 atoms) weigh about 3 [[MATH:1]] 10[[sup:−13]] grams, a mass that is far too light to be weighed on even the world’s most sensitive balances. It would require over 300,000,000,000,000 lead atoms (300 trillion, or 3 [[MATH:2]] 10[[sup:14]]) to be weighed, and they would weigh only 0.0000001 gram.
 
 <!-- SEG:m68667:para:fs-idp23257696 -->
-It is rare to find collections of individual atoms. Only a few elements, such as the gases helium, neon, and argon, consist of a collection of individual atoms that move about independently of one another. Other elements, such as the gases hydrogen, nitrogen, oxygen, and chlorine, are composed of units that consist of pairs of atoms ([[xref:CNX_Chem_01_02_Molecules]]). One form of the element phosphorus consists of units composed of four phosphorus atoms. The element sulfur exists in various forms, one of which consists of units composed of eight sulfur atoms. These units are called molecules. A {{term}}molecule{{/term}} consists of two or more atoms joined by strong forces called chemical bonds. The atoms in a molecule move around as a unit, much like the cans of soda in a six-pack or a bunch of keys joined together on a single key ring. A molecule may consist of two or more identical atoms, as in the molecules found in the elements hydrogen, oxygen, and sulfur, or it may consist of two or more different atoms, as in the molecules found in water. Each water molecule is a unit that contains two hydrogen atoms and one oxygen atom. Each glucose molecule is a unit that contains 6 carbon atoms, 12 hydrogen atoms, and 6 oxygen atoms. Like atoms, molecules are incredibly small and light. If an ordinary glass of water were enlarged to the size of the earth, the water molecules inside it would be about the size of golf balls.
+It is rare to find collections of individual atoms. Only a few elements, such as the gases helium, neon, and argon, consist of a collection of individual atoms that move about independently of one another. Other elements, such as the gases hydrogen, nitrogen, oxygen, and chlorine, are composed of units that consist of pairs of atoms ([[xref:CNX_Chem_01_02_Molecules]]). One form of the element phosphorus consists of units composed of four phosphorus atoms. The element sulfur exists in various forms, one of which consists of units composed of eight sulfur atoms. These units are called molecules. A [[term:molecule|term-00018]] consists of two or more atoms joined by strong forces called chemical bonds. The atoms in a molecule move around as a unit, much like the cans of soda in a six-pack or a bunch of keys joined together on a single key ring. A molecule may consist of two or more identical atoms, as in the molecules found in the elements hydrogen, oxygen, and sulfur, or it may consist of two or more different atoms, as in the molecules found in water. Each water molecule is a unit that contains two hydrogen atoms and one oxygen atom. Each glucose molecule is a unit that contains 6 carbon atoms, 12 hydrogen atoms, and 6 oxygen atoms. Like atoms, molecules are incredibly small and light. If an ordinary glass of water were enlarged to the size of the earth, the water molecules inside it would be about the size of golf balls.
 
 <!-- SEG:m68667:caption:CNX_Chem_01_02_Molecules-caption -->
 The elements hydrogen, oxygen, phosphorus, and sulfur form molecules consisting of two or more atoms of the same element. The compounds water, carbon dioxide, and glucose consist of combinations of atoms of different elements.
+
+<!-- SEG:m68667:alt:fs-idp95667712-alt -->
+The hydrogen molecule, H subscript 2, is shown as two small, white balls bonded together. The oxygen molecule O subscript 2, is shown as two red balls bonded together. The phosphorous molecule, P subscript 4, is shown as four orange balls bonded tightly together. The sulfur molecule, S subscript 8, is shown as 8 yellow balls linked together. Water molecules, H subscript 2 O, consist of one red oxygen atom bonded to two smaller white hydrogen atoms. The hydrogen atoms are at an angle on the oxygen molecule. Carbon dioxide, C O subscript 2, consists of one carbon atom and two oxygen atoms. One oxygen atom is bonded to the carbon’s right side and the other oxygen is bonded to the carbon’s left side. Glucose, C subscript 6 H subscript 12 O subscript 6, contains a chain of carbon atoms that have attached oxygen or hydrogen atoms.
 
 <!-- SEG:m68667:note-title:fs-idm86364640-title -->
 Decomposition of Water / Production of Hydrogen
@@ -337,8 +364,14 @@ The two gases produced have distinctly different properties. Oxygen is not flamm
 <!-- SEG:m68667:caption:CNX_Chem_01_01_Electrolys-caption -->
 The decomposition of water is shown at the macroscopic, microscopic, and symbolic levels. The battery provides an electric current (microscopic) that decomposes water. At the macroscopic level, the liquid separates into the gases hydrogen (on the left) and oxygen (on the right). Symbolically, this change is presented by showing how liquid H[[sub:2]]O separates into H[[sub:2]] and O[[sub:2]] gases.
 
+<!-- SEG:m68667:alt:fs-idm22586448-alt -->
+A rectangular battery is immersed in a beaker filled with liquid. Each of the battery terminals are covered by an overturned test tube. The test tubes each contain a bubbling liquid. Zoom in areas indicate that the liquid in the beaker is water, 2 H subscript 2 O liquid. The bubbles in the test tube over the negative terminal are hydrogen gas, 2 H subscript 2 gas. The bubbles in the test tube over the positive terminal are oxygen gas, O subscript 2 gas.
+
 <!-- SEG:m68667:caption:CNX_Chem_01_01_FuelCell-caption -->
 A fuel cell generates electrical energy from hydrogen and oxygen via an electrochemical process and produces only water as the waste product.
+
+<!-- SEG:m68667:alt:fs-idp123844096-alt -->
+The fuel cell consists of a proton exchange membrane sandwiched between an anode and a cathode. Hydrogen gas enters the battery near the anode. Oxygen gas enters the battery near the cathode. The entering hydrogen gas is broken up into single white spheres that each have a positive charge. These are protons. The protons repel negatively-charged electrons within the anode. These electrons travel through a circuit, providing electricity to anything attached to the battery. The protons continue through the proton exchange membrane and through the cathode to reach the oxygen gas molecules at the opposite end of the battery. There, the oxygen atoms split up into single red spheres. Each oxygen atom takes on two of the incoming protons to form a water molecule.
 
 <!-- SEG:m68667:note-title:fs-idm6260000-title -->
 Chemistry of Cell Phones
@@ -348,6 +381,9 @@ Imagine how different your life would be without cell phones ([[xref:CNX_Chem_01
 
 <!-- SEG:m68667:caption:CNX_Chem_01_02_CellPhone-caption -->
 Almost one-third of naturally occurring elements are used to make a cell phone. (credit: modification of work by John Taylor)
+
+<!-- SEG:m68667:alt:fs-idm54034640-alt -->
+A cell phone is labeled to show what its components are made of. The case components are made of polymers such as A B S and or metals such as aluminum, iron, and magnesium. The processor components are made of silicon, common metals such as copper, tin and gold, and uncommon elements such as yttrium and gadolinium. The screen components are made of silicon oxide, also known as glass. The glass is strengthened by the addition of aluminum, sodium, and potassium. The battery components contain lithium combined with other metals such as cobalt, iron, and copper.
 
 <!-- SEG:m68667:title:fs-idp11969024-title -->
 Key Concepts and Summary

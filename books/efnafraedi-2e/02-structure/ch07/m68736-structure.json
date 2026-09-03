@@ -29,7 +29,10 @@
       },
       "media": {
         "id": "fs-idm242192",
-        "alt": "Three figures are shown. The left figure is a many-sides spherical ball composed of hexagonal rings which have carbon atoms at each corner. The center picture shows a soccer ball. The right picture shown as water tower with sides shaped like hexagonal rings.",
+        "alt": {
+          "segmentId": "m68736:alt:fs-idm242192-alt",
+          "text": "Three figures are shown. The left figure is a many-sides spherical ball composed of hexagonal rings which have carbon atoms at each corner. The center picture shows a soccer ball. The right picture shown as water tower with sides shaped like hexagonal rings."
+        },
         "src": "../../media/CNX_Chem_07_00_Bucky.jpg",
         "mimeType": "image/jpeg"
       }

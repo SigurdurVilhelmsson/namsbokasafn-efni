@@ -1,0 +1,18 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{NO}}}_{2}^{+}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>HSO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{HSO}}}_{3}^{+}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>HOSO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{HOSO}}}_{2}^{+}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>RO–OH</m:mtext><m:mo>+</m:mo><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mo>→</m:mo><m:mspace width=\"0.2em\"/><m:mtext>ROH</m:mtext><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{RO–OH}+{\\text{H}}^{+}\\rightarrow \\, \\text{ROH}+{{\\text{OH}}}^{+}}"
+  }
+}

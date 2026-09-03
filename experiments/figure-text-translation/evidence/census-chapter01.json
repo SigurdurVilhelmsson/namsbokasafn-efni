@@ -1,0 +1,1558 @@
+[
+ {
+  "file": "CNX_Chem_01_00_DailyChem.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   99.0
+  ],
+  "ops": [
+   "Do",
+   "Q",
+   "cm",
+   "q"
+  ],
+  "fonts": {},
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "verdict": "NO LIVE TEXT",
+  "runs": 0,
+  "blocks": 0,
+  "words": 0
+ },
+ {
+  "file": "CNX_Chem_01_01_Alchemist.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   351.0,
+   249.1
+  ],
+  "ops": [
+   "Do",
+   "Q",
+   "cm",
+   "q"
+  ],
+  "fonts": {},
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "verdict": "NO LIVE TEXT",
+  "runs": 0,
+  "blocks": 0,
+  "words": 0
+ },
+ {
+  "file": "CNX_Chem_01_01_ChemWeb.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   203.0
+  ],
+  "ops": [
+   "BT",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/OEKYMQ+LiberationSans",
+    "subtype": "/TrueType"
+   },
+   "/TT1": {
+    "base": "/OEKYMQ+LiberationSans-Bold",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 26,
+  "blocks": 19,
+  "arc_blocks": 0,
+  "verbatim_blocks": 1,
+  "prose_blocks": 18,
+  "words": 31,
+  "prose_words": 30,
+  "single_char_runs": 2,
+  "sample": [
+   "Food Science",
+   "Agriculture",
+   "Geochemistry"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_01_Electrolys.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   432.0,
+   280.3
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q",
+   "sh"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/UZIJSH+LiberationSans",
+    "subtype": "/TrueType"
+   },
+   "/TT1": {
+    "base": "/UZIJSH+LiberationSans-Italic",
+    "subtype": "/TrueType"
+   },
+   "/TT2": {
+    "base": "/UZIJSH+LiberationSans-Bold",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 20,
+  "blocks": 8,
+  "arc_blocks": 1,
+  "verbatim_blocks": 5,
+  "prose_blocks": 3,
+  "words": 8,
+  "prose_words": 3,
+  "single_char_runs": 14,
+  "sample": [
+   "Water",
+   "2H2O(l)",
+   "2H2(g)"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_01_FuelCell.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   351.0,
+   268.7
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "T*",
+   "TD",
+   "TJ",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/GHCKCJ+LiberationSans-Bold",
+    "subtype": "/TrueType"
+   },
+   "/TT1": {
+    "base": "/GHCKCJ+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 28,
+  "blocks": 16,
+  "arc_blocks": 1,
+  "verbatim_blocks": 8,
+  "prose_blocks": 8,
+  "words": 25,
+  "prose_words": 12,
+  "single_char_runs": 17,
+  "sample": [
+   "",
+   "",
+   ""
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_01_SciMethod.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   275.6
+  ],
+  "ops": [
+   "BT",
+   "ET",
+   "Q",
+   "TD",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/LWCEUZ+LiberationSans-Bold",
+    "subtype": "/TrueType"
+   },
+   "/TT1": {
+    "base": "/LWCEUZ+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 76,
+  "blocks": 14,
+  "arc_blocks": 4,
+  "verbatim_blocks": 0,
+  "prose_blocks": 14,
+  "words": 49,
+  "prose_words": 49,
+  "single_char_runs": 43,
+  "sample": [
+   "Observation|and|curiosity",
+   "Form|hypothesis;|make|prediction",
+   "Perform|experiment;|make more|observations"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_01_WaterDom.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   259.2
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/HJRQQH+LiberationSans",
+    "subtype": "/TrueType"
+   },
+   "/TT1": {
+    "base": "/HJRQQH+LiberationSans-Italic",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 18,
+  "blocks": 6,
+  "arc_blocks": 0,
+  "verbatim_blocks": 6,
+  "prose_blocks": 0,
+  "words": 6,
+  "prose_words": 0,
+  "single_char_runs": 12,
+  "sample": [
+   "(a)",
+   "(b)",
+   "(c)"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_02_CellPhone.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   424.0,
+   226.0
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "T*",
+   "TD",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/IBPQPF+LiberationSans",
+    "subtype": "/TrueType"
+   },
+   "/TT1": {
+    "base": "/IBPQPF+LiberationSans-Bold",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 20,
+  "blocks": 10,
+  "arc_blocks": 0,
+  "verbatim_blocks": 0,
+  "prose_blocks": 10,
+  "words": 48,
+  "prose_words": 48,
+  "single_char_runs": 1,
+  "sample": [
+   "Lithium combined with other|metals such as cobalt, iron,|copper",
+   "Battery components",
+   "Polymers such asABS|and/or metals such as|aluminum, iron, magnesium"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_02_Cellulose.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.2,
+   116.0
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/TBCUWO+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 5,
+  "blocks": 5,
+  "arc_blocks": 0,
+  "verbatim_blocks": 5,
+  "prose_blocks": 0,
+  "words": 5,
+  "prose_words": 0,
+  "single_char_runs": 0,
+  "sample": [
+   "(a)",
+   "(b)",
+   "(c)"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_02_ConsMatter.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   221.0
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "TD",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q",
+   "sh"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/YDFJEW+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 19,
+  "blocks": 9,
+  "arc_blocks": 0,
+  "verbatim_blocks": 2,
+  "prose_blocks": 7,
+  "words": 18,
+  "prose_words": 16,
+  "single_char_runs": 6,
+  "sample": [
+   "Pre-|beer",
+   "Sugar",
+   "Ethanol"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_02_GoldAtoms.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   196.0
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/ZEFECC+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 2,
+  "blocks": 2,
+  "arc_blocks": 0,
+  "verbatim_blocks": 2,
+  "prose_blocks": 0,
+  "words": 2,
+  "prose_words": 0,
+  "single_char_runs": 0,
+  "sample": [
+   "(a)",
+   "(b)"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_02_MattType.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   158.3
+  ],
+  "ops": [
+   "BT",
+   "ET",
+   "Q",
+   "TJ",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/XXCSWE+LiberationSans-Bold",
+    "subtype": "/TrueType"
+   },
+   "/TT1": {
+    "base": "/XXCSWE+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 22,
+  "blocks": 16,
+  "arc_blocks": 0,
+  "verbatim_blocks": 3,
+  "prose_blocks": 13,
+  "words": 30,
+  "prose_words": 27,
+  "single_char_runs": 3,
+  "sample": [
+   "Matter",
+   "Mixture",
+   "Is it uniform|throughout?"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_02_Mixtures.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   351.0,
+   104.3
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q",
+   "sh"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/ZSMHQA+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 2,
+  "blocks": 2,
+  "arc_blocks": 0,
+  "verbatim_blocks": 2,
+  "prose_blocks": 0,
+  "words": 2,
+  "prose_words": 0,
+  "single_char_runs": 0,
+  "sample": [
+   "(a)",
+   "(b)"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_02_Molecules.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   134.0
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "TJ",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/GNHKCJ+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 33,
+  "blocks": 17,
+  "arc_blocks": 0,
+  "verbatim_blocks": 7,
+  "prose_blocks": 10,
+  "words": 21,
+  "prose_words": 14,
+  "single_char_runs": 21,
+  "sample": [
+   "Hydrogen",
+   "Oxygen",
+   "Phosphorus"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_02_Plasma.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   234.0,
+   184.0
+  ],
+  "ops": [
+   "Do",
+   "Q",
+   "cm",
+   "q"
+  ],
+  "fonts": {},
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "verdict": "NO LIVE TEXT",
+  "runs": 0,
+  "blocks": 0,
+  "words": 0
+ },
+ {
+  "file": "CNX_Chem_01_02_StatesMatt.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   223.3
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "TJ",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/BYAZMT+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 8,
+  "blocks": 6,
+  "arc_blocks": 0,
+  "verbatim_blocks": 0,
+  "prose_blocks": 6,
+  "words": 22,
+  "prose_words": 22,
+  "single_char_runs": 0,
+  "sample": [
+   "Has fixed shape and volume",
+   "Takes shape of container|Forms horizontal surface|Has fixed volume",
+   "Expands to fill container"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_02_decomp.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   351.0,
+   105.8
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/F1": {
+    "base": "/PWLXQM+LiberationSans",
+    "subtype": "/Type0"
+   }
+  },
+  "cid_fonts": [
+   "/PWLXQM+LiberationSans"
+  ],
+  "unsubstitutable_fonts": [],
+  "runs": 9,
+  "blocks": 9,
+  "arc_blocks": 0,
+  "verbatim_blocks": 9,
+  "prose_blocks": 0,
+  "words": 9,
+  "prose_words": 0,
+  "single_char_runs": 6,
+  "sample": [
+   "\u0000\u000b",
+   "\u0000D",
+   "\u0000\f"
+  ],
+  "verdict": "PARSER GAP (Type0/CID)"
+ },
+ {
+  "file": "CNX_Chem_01_03_ChemChange.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   351.0,
+   308.5
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/WAWCSD+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 4,
+  "blocks": 4,
+  "arc_blocks": 0,
+  "verbatim_blocks": 4,
+  "prose_blocks": 0,
+  "words": 4,
+  "prose_words": 0,
+  "single_char_runs": 0,
+  "sample": [
+   "(a)",
+   "(c)",
+   "(d)"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_03_HazDiamond.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   432.0,
+   301.0
+  ],
+  "ops": [
+   "BT",
+   "ET",
+   "Q",
+   "T*",
+   "TD",
+   "TJ",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/AEOHCV+LiberationSans-Bold",
+    "subtype": "/TrueType"
+   },
+   "/TT1": {
+    "base": "/AEOHCV+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 37,
+  "blocks": 13,
+  "arc_blocks": 0,
+  "verbatim_blocks": 2,
+  "prose_blocks": 11,
+  "words": 82,
+  "prose_words": 78,
+  "single_char_runs": 5,
+  "sample": [
+   "4|2",
+   "3|W",
+   "Flash points:|4 Below 73 °F|3 Below 100 °F|2 Above 100 °F not exceeding 200 °F|1 Above 200 °F|0 Will not burn"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_03_PeriodicPU.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   365.6
+  ],
+  "ops": [
+   "BT",
+   "ET",
+   "Q",
+   "T*",
+   "TD",
+   "TJ",
+   "Tc",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "Tw",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/UYYYOK+LiberationSans",
+    "subtype": "/TrueType"
+   },
+   "/TT1": {
+    "base": "/MUVXGA+LiberationSans-Bold",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 526,
+  "blocks": 523,
+  "arc_blocks": 0,
+  "verbatim_blocks": 386,
+  "prose_blocks": 137,
+  "words": 532,
+  "prose_words": 144,
+  "single_char_runs": 43,
+  "sample": [
+   "Metal",
+   "Metalloid",
+   "Nonmetal"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_03_PhysChange.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   351.0,
+   146.3
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/HGCAKM+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 2,
+  "blocks": 2,
+  "arc_blocks": 0,
+  "verbatim_blocks": 2,
+  "prose_blocks": 0,
+  "words": 2,
+  "prose_words": 0,
+  "single_char_runs": 0,
+  "sample": [
+   "(a)",
+   "(b)"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_03_Rust.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   351.0,
+   149.5
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/FOELQE+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 2,
+  "blocks": 2,
+  "arc_blocks": 0,
+  "verbatim_blocks": 2,
+  "prose_blocks": 0,
+  "words": 2,
+  "prose_words": 0,
+  "single_char_runs": 0,
+  "sample": [
+   "(b)",
+   "(a)"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_04_CylGold.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   351.0,
+   302.0
+  ],
+  "ops": [
+   "\"",
+   "'",
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "T*",
+   "TJ",
+   "TL",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/R128": {
+    "base": "/VOYFDP+LiberationSans",
+    "subtype": "/Type1"
+   },
+   "/R76": {
+    "base": "/QEEHLL+LiberationSans-Bold",
+    "subtype": "/Type1"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 18,
+  "blocks": 15,
+  "arc_blocks": 0,
+  "verbatim_blocks": 12,
+  "prose_blocks": 3,
+  "words": 26,
+  "prose_words": 14,
+  "single_char_runs": 2,
+  "sample": [
+   "10",
+   "20",
+   "15"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_04_CylRebar.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   351.0,
+   302.0
+  ],
+  "ops": [
+   "\"",
+   "'",
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "T*",
+   "TJ",
+   "TL",
+   "Td",
+   "Tf",
+   "Tm",
+   "Ts",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/R161": {
+    "base": "/JFJFKK+LiberationSans",
+    "subtype": "/Type1"
+   },
+   "/R76": {
+    "base": "/QEEHLL+LiberationSans-Bold",
+    "subtype": "/Type1"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 18,
+  "blocks": 15,
+  "arc_blocks": 0,
+  "verbatim_blocks": 12,
+  "prose_blocks": 3,
+  "words": 27,
+  "prose_words": 15,
+  "single_char_runs": 2,
+  "sample": [
+   "10",
+   "20",
+   "15"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_04_Kilogram.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   117.0,
+   165.6
+  ],
+  "ops": [
+   "Do",
+   "Q",
+   "cm",
+   "q"
+  ],
+  "fonts": {},
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "verdict": "NO LIVE TEXT",
+  "runs": 0,
+  "blocks": 0,
+  "words": 0
+ },
+ {
+  "file": "CNX_Chem_01_04_MYdCmIn.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   435.1,
+   226.9
+  ],
+  "ops": [
+   "'",
+   "BT",
+   "ET",
+   "Q",
+   "TJ",
+   "TL",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/R9": {
+    "base": "/VDCNLO+LiberationSans",
+    "subtype": "/Type1"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 15,
+  "blocks": 14,
+  "arc_blocks": 0,
+  "verbatim_blocks": 9,
+  "prose_blocks": 5,
+  "words": 30,
+  "prose_words": 17,
+  "single_char_runs": 1,
+  "sample": [
+   "102030405060708090100",
+   "1ft2ft3ft",
+   "1cm"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_04_Volume.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   432.0,
+   243.0
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/XBNYGB+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 14,
+  "blocks": 7,
+  "arc_blocks": 0,
+  "verbatim_blocks": 5,
+  "prose_blocks": 2,
+  "words": 23,
+  "prose_words": 9,
+  "single_char_runs": 3,
+  "sample": [
+   "(a)",
+   "(b)",
+   "1 cubic centimeter|= 1 milliliter"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_05_Archer2_img.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   432.0,
+   166.7
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "Tw",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/AWQTYV+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 4,
+  "blocks": 4,
+  "arc_blocks": 0,
+  "verbatim_blocks": 0,
+  "prose_blocks": 4,
+  "words": 8,
+  "prose_words": 8,
+  "single_char_runs": 0,
+  "sample": [
+   "Archer W",
+   "Archer X",
+   "Archer Y"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_05_Archery.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   149.0
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/RXERCN+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 9,
+  "blocks": 6,
+  "arc_blocks": 0,
+  "verbatim_blocks": 3,
+  "prose_blocks": 3,
+  "words": 13,
+  "prose_words": 10,
+  "single_char_runs": 0,
+  "sample": [
+   "Accurate|and precise",
+   "(a)",
+   "Precise,|not accurate"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_05_Measure.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   267.5
+  ],
+  "ops": [
+   "BT",
+   "Do",
+   "ET",
+   "Q",
+   "TD",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q",
+   "sh"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/VUYYIH+LiberationSans-Bold",
+    "subtype": "/TrueType"
+   },
+   "/TT1": {
+    "base": "/TRUMGL+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 17,
+  "blocks": 16,
+  "arc_blocks": 0,
+  "verbatim_blocks": 15,
+  "prose_blocks": 1,
+  "words": 18,
+  "prose_words": 3,
+  "single_char_runs": 2,
+  "sample": [
+   "10",
+   "20",
+   "15"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_05_SigDigits1_img.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   88.0
+  ],
+  "ops": [
+   "BT",
+   "ET",
+   "Q",
+   "T*",
+   "TD",
+   "Tc",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/HQIJSH+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 8,
+  "blocks": 6,
+  "arc_blocks": 0,
+  "verbatim_blocks": 2,
+  "prose_blocks": 4,
+  "words": 39,
+  "prose_words": 35,
+  "single_char_runs": 0,
+  "sample": [
+   "1267 m",
+   "First nonzero figure on the left",
+   "Four significant figures"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_05_SigDigits2_img.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   71.3
+  ],
+  "ops": [
+   "BT",
+   "ET",
+   "Q",
+   "Tc",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/CZAMYR+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 7,
+  "blocks": 6,
+  "arc_blocks": 0,
+  "verbatim_blocks": 2,
+  "prose_blocks": 4,
+  "words": 30,
+  "prose_words": 26,
+  "single_char_runs": 0,
+  "sample": [
+   "70.607 mL",
+   "First nonzero figure on the left",
+   "Five significant figures: all figures|are measured including the two zeros"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_05_SigDigits3_img.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   351.0,
+   62.0
+  ],
+  "ops": [
+   "BT",
+   "ET",
+   "Q",
+   "Tc",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/PTEOJU+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 3,
+  "blocks": 3,
+  "arc_blocks": 0,
+  "verbatim_blocks": 1,
+  "prose_blocks": 2,
+  "words": 20,
+  "prose_words": 18,
+  "single_char_runs": 0,
+  "sample": [
+   "1300 g",
+   "Significant figures: clearly result of measurement",
+   "These zeros could be significant (measured), or they could be placehol\rders"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_05_SigDigits4_img.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   383.9,
+   82.0
+  ],
+  "ops": [
+   "BT",
+   "ET",
+   "Q",
+   "T*",
+   "TD",
+   "TJ",
+   "Tc",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "Tw",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/ZUGNKX+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 18,
+  "blocks": 12,
+  "arc_blocks": 0,
+  "verbatim_blocks": 8,
+  "prose_blocks": 4,
+  "words": 30,
+  "prose_words": 17,
+  "single_char_runs": 5,
+  "sample": [
+   "1.0023",
+   "Ten thousandths place|Thousandths place: least precise",
+   "4.383"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_05_SigDigits5_img.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   234.0,
+   80.0
+  ],
+  "ops": [
+   "BT",
+   "ET",
+   "Q",
+   "TJ",
+   "Tc",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "Tw",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/WHSCSD+LiberationSans",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 7,
+  "blocks": 7,
+  "arc_blocks": 0,
+  "verbatim_blocks": 2,
+  "prose_blocks": 5,
+  "words": 7,
+  "prose_words": 5,
+  "single_char_runs": 0,
+  "sample": [
+   "3090",
+   "Captive",
+   "Trailing"
+  ],
+  "verdict": "AUTOMATABLE"
+ },
+ {
+  "file": "CNX_Chem_01_06_TempScales.pdf",
+  "error": null,
+  "pages": 1,
+  "page_pt": [
+   468.0,
+   328.0
+  ],
+  "ops": [
+   "BT",
+   "ET",
+   "Q",
+   "TD",
+   "Td",
+   "Tf",
+   "Tj",
+   "Tm",
+   "cm",
+   "q"
+  ],
+  "fonts": {
+   "/TT0": {
+    "base": "/GAYDEJ+LiberationSans",
+    "subtype": "/TrueType"
+   },
+   "/TT1": {
+    "base": "/GAYDEJ+LiberationSans-Bold",
+    "subtype": "/TrueType"
+   }
+  },
+  "cid_fonts": [],
+  "unsubstitutable_fonts": [],
+  "runs": 23,
+  "blocks": 17,
+  "arc_blocks": 0,
+  "verbatim_blocks": 9,
+  "prose_blocks": 8,
+  "words": 37,
+  "prose_words": 19,
+  "single_char_runs": 0,
+  "sample": [
+   "212 °F",
+   "32 °F",
+   "40 °F"
+  ],
+  "verdict": "AUTOMATABLE"
+ }
+]

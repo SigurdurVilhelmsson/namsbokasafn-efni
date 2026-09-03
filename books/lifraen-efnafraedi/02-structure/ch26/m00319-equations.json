@@ -1,0 +1,22 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math>\n<m:mrow>\n<m:mtext>pH = p</m:mtext><m:msub>\n<m:mi>K</m:mi>\n<m:mtext>a</m:mtext>\n</m:msub>\n<m:mtext> + log</m:mtext><m:mfrac>\n<m:mrow>\n<m:msup>\n<m:mrow>\n<m:mtext>[A</m:mtext></m:mrow>\n<m:mtext>–</m:mtext>\n</m:msup>\n<m:mtext>]</m:mtext></m:mrow>\n<m:mrow>\n<m:mtext>[HA]</m:mtext></m:mrow>\n</m:mfrac>\n<m:mtext> </m:mtext><m:mtext>or</m:mtext><m:mtext> </m:mtext><m:mtext>log</m:mtext><m:mfrac>\n<m:mrow>\n<m:msup>\n<m:mrow>\n<m:mtext>[A</m:mtext></m:mrow>\n<m:mtext>–</m:mtext>\n</m:msup>\n<m:mtext>]</m:mtext></m:mrow>\n<m:mrow>\n<m:mtext>[HA]</m:mtext></m:mrow>\n</m:mfrac>\n<m:mtext> = pH – p</m:mtext><m:msub>\n<m:mi>K</m:mi>\n<m:mtext>a</m:mtext>\n</m:msub>\n</m:mrow>\n</m:math>",
+    "latex": "{\\text{pH = p}{K}_{\\text{a}} \\text{+ log}\\frac{{{{\\text{[A}}}^{\\text{–}} \\text{]}}}{{\\text{[HA]}}} \\text\\text{or}\\text\\text{log}\\frac{{{{\\text{[A}}}^{\\text{–}} \\text{]}}}{{\\text{[HA]}}} \\text{= pH – p}{K}_{\\text{a}}}",
+    "isBlock": true
+  },
+  "eq-00002": {
+    "mathml": "<m:math>\n<m:mrow>\n<m:mtext>log</m:mtext><m:mfrac>\n<m:mrow>\n<m:msup>\n<m:mrow>\n<m:mtext>[A</m:mtext></m:mrow>\n<m:mtext>–</m:mtext>\n</m:msup>\n<m:mtext>]</m:mtext></m:mrow>\n<m:mrow>\n<m:mtext>[HA]</m:mtext></m:mrow>\n</m:mfrac>\n<m:mtext> = pH – p</m:mtext><m:msub>\n<m:mi>K</m:mi>\n<m:mtext>a</m:mtext>\n</m:msub>\n<m:mtext> = 9</m:mtext><m:mtext>.00 – 9</m:mtext><m:mtext>.69 = –0</m:mtext><m:mtext>.69</m:mtext></m:mrow>\n</m:math>",
+    "latex": "{\\text{log}\\frac{{{{\\text{[A}}}^{\\text{–}} \\text{]}}}{{\\text{[HA]}}} \\text{= pH – p}{K}_{\\text{a}} \\text{= 9}\\text{.00 – 9}\\text{.69 = –0}\\text{.69}}",
+    "isBlock": true
+  },
+  "eq-00003": {
+    "mathml": "<m:math>\n<m:mrow>\n<m:mfrac>\n<m:mrow>\n<m:msup>\n<m:mrow>\n<m:mtext>[A</m:mtext></m:mrow>\n<m:mtext>–</m:mtext>\n</m:msup>\n<m:mtext>]</m:mtext></m:mrow>\n<m:mrow>\n<m:mtext>[HA]</m:mtext></m:mrow>\n</m:mfrac>\n<m:mtext> = antilog(–0</m:mtext><m:mtext>.69) = 0</m:mtext><m:mtext>.20</m:mtext><m:mtext> </m:mtext><m:mtext>and</m:mtext><m:mtext> </m:mtext><m:msup>\n<m:mrow>\n<m:mtext>[A</m:mtext></m:mrow>\n<m:mtext>–</m:mtext>\n</m:msup>\n<m:mtext>] = 0</m:mtext><m:mtext>.20[HA]</m:mtext></m:mrow>\n</m:math>",
+    "latex": "{\\frac{{{{\\text{[A}}}^{\\text{–}} \\text{]}}}{{\\text{[HA]}}} \\text{= antilog(–0}\\text{.69) = 0}\\text{.20}\\text\\text{and}\\text{{\\text{[A}}}^{\\text{–}} \\text{] = 0}\\text{.20[HA]}}",
+    "isBlock": true
+  },
+  "eq-00004": {
+    "mathml": "<m:math>\n<m:mrow>\n<m:msup>\n<m:mrow>\n<m:mtext>[A</m:mtext></m:mrow>\n<m:mtext>–</m:mtext>\n</m:msup>\n<m:mtext>] + [HA] = 1</m:mtext><m:mtext>.00 M</m:mtext></m:mrow>\n</m:math>",
+    "latex": "{{{\\text{[A}}}^{\\text{–}} \\text{] + [HA] = 1}\\text{.00 M}}",
+    "isBlock": true
+  }
+}

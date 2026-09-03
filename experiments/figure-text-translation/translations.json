@@ -1,0 +1,21 @@
+{
+  "_WARNING": "PLACEHOLDER TEXT - NOT A TRANSLATION. These strings were written by hand to exercise Icelandic glyph coverage and the layout maths (á é í ó ú ý þ æ ö ð). They are NOT approved translations and must never reach a published figure. Real text comes from the Malstadur API and human review, per CLAUDE.md.",
+  "_key": "The block's English text, with '|' between lines. Content-keyed, not position-keyed, so it survives re-extraction. Arc blocks key on the joined string.",
+  "_todo": "Line-splitting is done by hand here. A real pipeline receives ONE string per block from the MT and must wrap it to fit - see FINDINGS.md, 'Not in the spike'.",
+  "blocks": {
+    "Observation|and|curiosity":                      ["Athugun", "og", "forvitni"],
+    "Form|hypothesis;|make|prediction":               ["Setja fram", "tilgátu;", "gera", "spá"],
+    "Perform|experiment;|make more|observations":     ["Framkvæma", "tilraun;", "fleiri", "athuganir"],
+    "Contributes|to body of|knowledge":               ["Leggur til", "þekkingar-", "safnsins"],
+    "Observation|becomes|law":                        ["Athugun", "verður", "lögmál"],
+    "Hypothesis|becomes|theory":                      ["Tilgáta", "verður", "kenning"],
+    "Much additional|testing yields|constant|observations": ["Frekari prófanir", "gefa stöðugar", "athuganir"],
+    "Much additional|testing supports|hypothesis":    ["Frekari prófanir", "styðja", "tilgátuna"],
+    "Further testing|does not support|hypothesis":    ["Frekari prófanir", "styðja ekki", "tilgátuna"],
+    "Results|are consistent with|prediction":         ["Niðurstöður", "eru í samræmi við", "spána"],
+    "Next ...":            "Næst ...",
+    "prediction":          "spá",
+    "not consistent with": "ekki í samræmi við",
+    "Results":             "Niðurstöður"
+  }
+}

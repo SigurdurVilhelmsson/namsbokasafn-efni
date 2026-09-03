@@ -1,0 +1,365 @@
+{
+  "moduleId": "m00054",
+  "title": {
+    "segmentId": "m00054:title:auto-1",
+    "text": "Sequence Rules for Specifying Configuration"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c713c5ab-6a99-453a-89d6-4713bb11dfdd"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00054:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00054:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00054:alt:fig-00001-alt",
+          "text": "The atoms are arranged in descending order of their ranking and atomic number as follows: B r, C l, S, P, O, N, C, 2 H, and 1 H."
+        },
+        "src": "../../media/OChem_05_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00054:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00054:alt:fig-00002-alt",
+          "text": "Four pairs of structures are ranked. Within each pair, one structure is labeled as lower while the other as higher."
+        },
+        "src": "../../media/OChem_05_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00054:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00054:alt:fig-00003-alt",
+          "text": "Two equivalent structures. The first structure has a carbonyl group. The second structure has a carbon bonded to hydrogen and two oxygens. One of the oxygens is bonded to carbon."
+        },
+        "src": "../../media/OChem_05_05_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00054:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00054:alt:fig-00004-alt",
+          "text": "Two pairs of equivalent structures. First pair shows alkene and a 4-carbon chain. Second pair shows alkyne and a 2-carbon chain, in which each carbon is bonded to two carbons"
+        },
+        "src": "../../media/OChem_05_05_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00054:para:para-00009"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00054:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00054:alt:fig-00005-alt",
+          "text": "Substituents in the compound form R configuration, depicted as a right turn of the steering wheel. Its mirror image forms S configuration, depicted as left turn of the steering wheel."
+        },
+        "src": "../../media/OChem_05_05_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00054:para:para-00010"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00054:caption:fig-00006-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00054:alt:fig-00006-alt",
+          "text": "Structure and ball-and-stick model of (minus)-lactic acid with R configuration. Its mirror image shows ball-and-stick model of (plus)-lactic acid with S configuration. The figure also shows structure of (plus)-lactic acid."
+        },
+        "src": "../../media/OChem_05_05_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00011",
+      "segmentId": "m00054:para:para-00011"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00054:caption:fig-00007-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00054:alt:fig-00007-alt",
+          "text": "The structures and ball-and-stick models of (S)-Glyceraldehyde [(S)-(minus)-2,3-dihydroxypropanal] and (S)-alanine [(S)-(plus)-2-aminopropanoic acid with their [alpha] D values equals minus 8.7 and plus 8.5, respectively."
+        },
+        "src": "../../media/OChem_05_05_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00012",
+      "segmentId": "m00054:para:para-00012"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00054:example-title:exam-00001-title",
+        "text": "Assigning Configuration to Chirality Centers"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00054:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00054:para:para-00014",
+          "title": {
+            "segmentId": "m00054:para-title:para-00014-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00054:para:para-00015",
+          "title": {
+            "segmentId": "m00054:para-title:para-00015-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00054:para:para-00016"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00008",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00054:alt:fig-00008-alt",
+          "text": "A carbon single bonded to 2 and 3, wedge to 1, and dash to 4. Another carbon single bonded to 1 and 3, wedge to 4, and dash to 2."
+        },
+        "src": "../../media/OChem_05_05_008.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00009",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00054:alt:fig-00009-alt",
+          "text": "A carbon is single bonded to substituents 2 and 3, wedge bonded to 1, and dash bonded to 4. To the right, the substituents are arranged in R configuration."
+        },
+        "src": "../../media/OChem_05_05_009.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00010",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00054:alt:fig-00010-alt",
+          "text": "A carbon is single bonded to substituents 1 and 3, wedge bonded to 4, and dash bonded to 2. To the right, the substituents are arranged in R configuration."
+        },
+        "src": "../../media/OChem_05_05_010.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00002",
+      "title": {
+        "segmentId": "m00054:example-title:exam-00002-title",
+        "text": "Drawing the Three-Dimensional Structure of a Specific Enantiomer"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00054:para:para-00017"
+        },
+        {
+          "type": "para",
+          "id": "para-00018",
+          "segmentId": "m00054:para:para-00018",
+          "title": {
+            "segmentId": "m00054:para-title:para-00018-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00019",
+          "segmentId": "m00054:para:para-00019",
+          "title": {
+            "segmentId": "m00054:para-title:para-00019-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00011",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00054:alt:media-1-alt",
+          "text": "The structure of chlorobutane has a central carbon wedge bonded to chlorine (1), ethyl (2), and methyl (3) in clockwise manner. The structure is rotated to form (R)-2-chlorobutane."
+        },
+        "src": "../../media/OChem_05_05_011.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00054:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": null,
+      "class": null,
+      "src": "../../media/OChem_05_05_011.jpg",
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": "",
+      "alt": {
+        "segmentId": "m00054:alt:media-1-alt",
+        "text": "The structure of chlorobutane has a central carbon wedge bonded to chlorine (1), ethyl (2), and methyl (3) in clockwise manner. The structure is rotated to form (R)-2-chlorobutane."
+      }
+    }
+  ],
+  "sectionOrder": 5
+}

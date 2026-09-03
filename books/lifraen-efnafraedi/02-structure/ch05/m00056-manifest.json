@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "moduleId": "m00056",
+  "extractedAt": "2026-08-31T19:08:47.264Z",
+  "sourceHash": "d6e52168bb07f47b",
+  "segmentCount": 38,
+  "segmentIds": [
+    "m00056:title:auto-1",
+    "m00056:para:para-00001",
+    "m00056:alt:fig-00001-alt",
+    "m00056:para:para-00002",
+    "m00056:alt:fig-00002-alt",
+    "m00056:para:para-00003",
+    "m00056:caption:fig-00003-caption",
+    "m00056:alt:fig-00003-alt",
+    "m00056:para:para-00004",
+    "m00056:table-title:table-00001-title",
+    "m00056:entry:auto-11",
+    "m00056:entry:auto-12",
+    "m00056:entry:auto-13",
+    "m00056:entry:auto-14",
+    "m00056:entry:auto-15",
+    "m00056:entry:auto-16",
+    "m00056:entry:auto-17",
+    "m00056:entry:auto-18",
+    "m00056:entry:auto-19",
+    "m00056:entry:auto-20",
+    "m00056:entry:auto-21",
+    "m00056:entry:auto-22",
+    "m00056:entry:auto-23",
+    "m00056:entry:auto-24",
+    "m00056:entry:auto-25",
+    "m00056:entry:auto-26",
+    "m00056:entry:auto-27",
+    "m00056:entry:auto-28",
+    "m00056:entry:auto-29",
+    "m00056:entry:auto-30",
+    "m00056:example-title:exam-00001-title",
+    "m00056:para:para-00005",
+    "m00056:para-title:para-00006-title",
+    "m00056:para:para-00006",
+    "m00056:para-title:para-00007-title",
+    "m00056:para:para-00007",
+    "m00056:alt:fig-00004-alt",
+    "m00056:title:sect-00001-title"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 7,
+    "section": 1,
+    "figure": 4,
+    "table": 1,
+    "example": 1,
+    "exercise": 3,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002",
+      "fig-00003",
+      "fig-00004"
+    ],
+    "table": [
+      "table-00001"
+    ],
+    "example": [
+      "exam-00001"
+    ],
+    "exercise": [
+      "exer-00001",
+      "exer-00002",
+      "exer-00003"
+    ],
+    "note": [],
+    "equation": [],
+    "section": [
+      "sect-00001"
+    ]
+  }
+}

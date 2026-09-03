@@ -1,0 +1,412 @@
+{
+  "moduleId": "m00068",
+  "title": {
+    "segmentId": "m00068:title:auto-1",
+    "text": "Stability of Alkenes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "184664e8-695b-4ded-a26a-9f18d4f3b332"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00068:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00068:alt:fig-00001-alt",
+          "text": "A reaction shows trans-but-2-ene and cis-but-2-ene interconvert in acid catalyst to reach a 76 to 24 percent ratio."
+        },
+        "src": "../../media/OChem_07_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00068:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00068:alt:fig-00002-alt",
+          "text": "The space-filling models of cis-2-butene and trans-2-butene. The gray and white spheres represent carbon and hydrogen atoms, respectively. Steric strain is shown between methyl groups in cis-2-butene."
+        },
+        "src": "../../media/OChem_07_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00068:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00068:alt:fig-00003-alt",
+          "text": "Trans-2-butene and cis-2-butene, each react with molecular hydrogen in the presence of palladium catalyst to form butane."
+        },
+        "src": "../../media/OChem_07_06_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00068:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00068:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00068:alt:fig-00004-alt",
+          "text": "An energy diagram for the formation of butane from cis- and trans-2-butene. Cis is higher in energy than trans, and both are higher in energy than butane."
+        },
+        "src": "../../media/OChem_07_06_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00068:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00068:alt:fig-00005-alt",
+          "text": "The structures of cis- and trans-2-butene with delta H naught hydrogenation equals minus 120 and minus 116 kilojoules per mole, respectively."
+        },
+        "src": "../../media/OChem_07_06_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00068:para:para-00006"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00068:table-title:table-00001-title",
+        "text": "Heats of Hydrogenation of Some Alkenes"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00068:entry:auto-15",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left",
+                "morerows": "1"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-16",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left",
+                "morerows": "1"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-17",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left",
+                "namest": "c3",
+                "nameend": "c4"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00068:entry:auto-18",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-19",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00068:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00068:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00068:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-31",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00068:entry:auto-32",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-34",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-35",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00068:entry:auto-36",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-37",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-38",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00068:entry:auto-39",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00068:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00068:alt:fig-00006-alt",
+          "text": "The descending order of stability for alkenes is as follows: Tetrasubstituted, trisubstituted, disubstituted (cis and trans equivalent), and monosubstituted."
+        },
+        "src": "../../media/OChem_07_06_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00068:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00068:caption:fig-00007-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00068:alt:fig-00007-alt",
+          "text": "The orbital representation of alkene and its ball-and-stick model inside fused overlapped orbitals."
+        },
+        "src": "../../media/OChem_07_06_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00068:para:para-00009"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00008",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00068:alt:fig-00008-alt",
+          "text": "Structures of of 2-butene (more stable due to more s p 2 to s p 3 bonds) and 1-butene (less stable)."
+        },
+        "src": "../../media/OChem_07_06_008.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00068:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 6
+}

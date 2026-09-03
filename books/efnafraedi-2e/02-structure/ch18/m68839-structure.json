@@ -105,7 +105,10 @@
           },
           "media": {
             "id": "fs-idm254641200",
-            "alt": "Three sealed glass vials are shown. The left vial contains a pale yellow gas and a colorless liquid, the middle contains an orange gas and solid, and the right contains a purple gas and solid.",
+            "alt": {
+              "segmentId": "m68839:alt:fs-idm254641200-alt",
+              "text": "Three sealed glass vials are shown. The left vial contains a pale yellow gas and a colorless liquid, the middle contains an orange gas and solid, and the right contains a purple gas and solid."
+            },
             "src": "../../media/CNX_Chem_18_11_Gases.jpg",
             "mimeType": "image/jpeg"
           }
@@ -308,7 +311,10 @@
           },
           "media": {
             "id": "fs-idm36383744",
-            "alt": "This figure shows three bottles and one bowl. All the bottles have lids. The first bottle is filled with a clear liquid. The second bottle is filled with a similarly clear liquid, but only about three-quarters of the way. The third bottle contains a red or pink liquid. The bowl contains a red or pink solid.",
+            "alt": {
+              "segmentId": "m68839:alt:fs-idm36383744-alt",
+              "text": "This figure shows three bottles and one bowl. All the bottles have lids. The first bottle is filled with a clear liquid. The second bottle is filled with a similarly clear liquid, but only about three-quarters of the way. The third bottle contains a red or pink liquid. The bowl contains a red or pink solid."
+            },
             "src": "../../media/CNX_Chem_18_11_PercipHgI2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -327,7 +333,10 @@
           },
           "media": {
             "id": "fs-idm53776832",
-            "alt": "A photograph of a mine shaft is shown.",
+            "alt": {
+              "segmentId": "m68839:alt:fs-idm53776832-alt",
+              "text": "A photograph of a mine shaft is shown."
+            },
             "src": "../../media/CNX_Chem_18_11_SaltMine.jpg",
             "mimeType": "image/jpeg"
           }
@@ -356,7 +365,10 @@
           },
           "media": {
             "id": "fs-idm69260048",
-            "alt": "Three ball-and-stick models are shown. The left structure, labeled, “I F subscript 3,” shows a purple atom labeled, “I,” bonded to three green atoms labeled, “F,” and with two lone pairs of electrons. The middle structure, labeled, “I F subscript 5,” shows a purple atom labeled, “I,” bonded to five green atoms labeled, “F,” and with one lone pair of electrons. The right image, labeled, “I F subscript 7,” shows a purple atom labeled, “I,” bonded to seven green atoms labeled, “F.”",
+            "alt": {
+              "segmentId": "m68839:alt:fs-idm69260048-alt",
+              "text": "Three ball-and-stick models are shown. The left structure, labeled, “I F subscript 3,” shows a purple atom labeled, “I,” bonded to three green atoms labeled, “F,” and with two lone pairs of electrons. The middle structure, labeled, “I F subscript 5,” shows a purple atom labeled, “I,” bonded to five green atoms labeled, “F,” and with one lone pair of electrons. The right image, labeled, “I F subscript 7,” shows a purple atom labeled, “I,” bonded to seven green atoms labeled, “F.”"
+            },
             "src": "../../media/CNX_Chem_18_11_IF3IF5IF7.jpg",
             "mimeType": "image/jpeg"
           }
@@ -376,43 +388,16 @@
           "id": "fs-idm73111648",
           "class": "top-titled",
           "summary": "This table has four columns and seven rows. The first row is a header row, and it labels each column, “Y X,” “Y X subscript 3,” “Y X subscript 5,” “Y X subscript 7.” Under the “Y X” column are the following: C l F ( g ); B r F ( g ); B r C l ( g ); I F ( s ); I C l ( l ); I B r ( s ). Under the “Y X subscript 3” column are the following: C l F subscript 3 ( g ); B r F subscript 3 ( l ); a blank row; I F subscript 3 ( s ); I C l subscript 3 ( s ); and another blank row. Under the column “Y X subscript 5,” are the following: C l F subscript 5 ( g ); B r F subscript 5 ( l ); a blank row; I F subscript 5 ( l ); and two blank rows. Under the column “Y X subscript 7,” are three blank rows; I F subscript 7 ( g ); and two blank rows.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68839:entry:auto-47",
+                  "segmentId": "m68839:entry:auto-51",
                   "attributes": {
                     "align": "center",
                     "namest": "c1",
                     "nameend": "c4"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68839:entry:auto-48",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68839:entry:auto-49",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68839:entry:auto-50",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68839:entry:auto-51",
-                  "attributes": {
-                    "align": "left"
                   }
                 }
               ]
@@ -438,7 +423,7 @@
                   }
                 },
                 {
-                  "segmentId": null,
+                  "segmentId": "m68839:entry:auto-55",
                   "attributes": {
                     "align": "left"
                   }
@@ -447,12 +432,6 @@
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68839:entry:auto-55",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68839:entry:auto-56",
                   "attributes": {
@@ -466,29 +445,7 @@
                   }
                 },
                 {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
                   "segmentId": "m68839:entry:auto-58",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
                   "attributes": {
                     "align": "left"
                   }
@@ -522,7 +479,35 @@
                   }
                 },
                 {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
                   "segmentId": "m68839:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
                   "attributes": {
                     "align": "left"
                   }
@@ -544,6 +529,34 @@
                   }
                 },
                 {
+                  "segmentId": "m68839:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68839:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68839:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
                   "segmentId": null,
                   "attributes": {
                     "align": "left"
@@ -560,7 +573,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68839:entry:auto-65",
+                  "segmentId": "m68839:entry:auto-69",
                   "attributes": {
                     "align": "left"
                   }
@@ -955,56 +968,71 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idp93902688",
       "class": null,
-      "alt": "This Lewis structure shows an iodine atom with one lone pair of electrons single bonded to five fluorine atoms, each of which has three lone pairs of electrons. The image is labeled, “Square pyramidal.”",
       "src": "../../media/CNX_Chem_18_11_Exercise4a_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68839:alt:fs-idp93902688-alt",
+        "text": "This Lewis structure shows an iodine atom with one lone pair of electrons single bonded to five fluorine atoms, each of which has three lone pairs of electrons. The image is labeled, “Square pyramidal.”"
+      }
     },
     {
       "placeholder": "[[MEDIA:2]]",
       "id": "fs-idm152355840",
       "class": null,
-      "alt": "This Lewis structure shows an iodine atom with three lone pairs of electrons single bonded to two iodine atoms, each of which has three lone pairs of electrons. The image is surrounded by brackets. A superscript negative sign appears outside the brackets. The image is labeled, “Linear.”",
       "src": "../../media/CNX_Chem_18_11_Exercise4b_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68839:alt:fs-idm152355840-alt",
+        "text": "This Lewis structure shows an iodine atom with three lone pairs of electrons single bonded to two iodine atoms, each of which has three lone pairs of electrons. The image is surrounded by brackets. A superscript negative sign appears outside the brackets. The image is labeled, “Linear.”"
+      }
     },
     {
       "placeholder": "[[MEDIA:3]]",
       "id": "fs-idm68548960",
       "class": null,
-      "alt": "This Lewis structure shows a phosphorus atom single bonded to five chlorine atoms, each of which has three lone pairs of electrons. The image is labeled, “Trigonal bipyramidal.”",
       "src": "../../media/CNX_Chem_18_11_Exercise4c_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68839:alt:fs-idm68548960-alt",
+        "text": "This Lewis structure shows a phosphorus atom single bonded to five chlorine atoms, each of which has three lone pairs of electrons. The image is labeled, “Trigonal bipyramidal.”"
+      }
     },
     {
       "placeholder": "[[MEDIA:4]]",
       "id": "fs-idm88994048",
       "class": null,
-      "alt": "This Lewis structure shows a selenium atom with one lone pair of electrons single bonded to four fluorine atoms, each of which has three lone pairs of electrons. The image is labeled “Seesaw.”",
       "src": "../../media/CNX_Chem_18_11_Exercise4d_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68839:alt:fs-idm88994048-alt",
+        "text": "This Lewis structure shows a selenium atom with one lone pair of electrons single bonded to four fluorine atoms, each of which has three lone pairs of electrons. The image is labeled “Seesaw.”"
+      }
     },
     {
       "placeholder": "[[MEDIA:5]]",
       "id": "fs-idm97424240",
       "class": null,
-      "alt": "This Lewis structure shows a chlorine atom with two lone pairs of electrons single bonded to three fluorine atoms, each of which has three lone pairs of electrons. The image is labeled, “T-shaped.”",
       "src": "../../media/CNX_Chem_18_11_Exercise4e_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68839:alt:fs-idm97424240-alt",
+        "text": "This Lewis structure shows a chlorine atom with two lone pairs of electrons single bonded to three fluorine atoms, each of which has three lone pairs of electrons. The image is labeled, “T-shaped.”"
+      }
     }
   ],
   "sectionOrder": 11

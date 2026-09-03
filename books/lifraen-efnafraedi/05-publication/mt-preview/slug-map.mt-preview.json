@@ -1,0 +1,22 @@
+{
+  "book": "lifraen-efnafraedi",
+  "track": "mt-preview",
+  "contract": "C9 — old→new so vefur can serve redirects. Every value is CURRENT: chains are collapsed on write, so a single lookup suffices and no transitive walk is needed. SCOPE: this map describes ONE track of ONE book. The reader site flattens both tracks into one directory, so a consumer must read each track's map separately and reconcile them itself; a `to` here can also be superseded at the destination by the reader site's own overlay pruning.",
+  "renames": {
+    "chapters/03/3-2-alkanar-og-hverfur-alkana.html": {
+      "to": "chapters/03/3-2-alkanar-og-alkanhverfur.html",
+      "moduleId": "m00033",
+      "recordedAt": "2026-09-02"
+    },
+    "chapters/03/3-6-stellingar-etans.html": {
+      "to": "chapters/03/3-6-afbrigdi-etans.html",
+      "moduleId": "m00037",
+      "recordedAt": "2026-09-02"
+    },
+    "chapters/03/3-7-afbrigdi-annarra-alkana.html": {
+      "to": "chapters/03/3-7-stellingar-annarra-alkana.html",
+      "moduleId": "m00038",
+      "recordedAt": "2026-09-02"
+    }
+  }
+}

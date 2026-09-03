@@ -1,0 +1,26 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>O=C–C</m:mtext><m:msup><m:mrow><m:mtext mathvariant=\"bold\">:</m:mtext></m:mrow><m:mrow><m:mtext>−</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{O=C–C}{{\\text{:}}}^{{\\text{−}}}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=C}}"
+  }
+}

@@ -140,16 +140,16 @@ Etýlsýklóhexýlasetat
 [[MEDIA:0]]
 
 <!-- SEG:23-07-OC-P12:stem:359727-b0 -->
-Eins og sýnt er á mynd 23.5 er Claisen-efnahvarfið [[i:afturkræft]]. Það er að segja, [[i:β]]-ketóester er hægt að kljúfa með [[i:basa]] í tvö brot. Notaðu sveigðar örvar til að sýna flæði [[i:rafeinda]] og sýndu [[i:hvarfganginn]] sem þessi klofningur verður fyrir.
+Eins og sýnt er á mynd 23.5 er Claisen-efnahvarfið afturkræft. Það er að segja, [[i:β]]-ketóester er hægt að kljúfa með basa í tvö brot. Notaðu sveigðar örvar til að sýna flæði rafeinda og sýndu hvarfganginn sem þessi klofningur verður fyrir.
 
 <!-- SEG:23-07-OC-P12:stem:359727-b1 -->
 [[MEDIA:0]]
 
 <!-- SEG:23-07-OC-P12:sol:359727-b0 -->
-Klofnunarefnahvarfið er nákvæmlega andstæðan við framvirka [[i:efnahvarfið]].
+Klofnunarefnahvarfið er nákvæmlega andstæðan við framvirka efnahvarfið.
 
 <!-- SEG:23-08-OC-P13:stem:359729-b0 -->
-Hvaða [[i:myndefni]] myndir þú búast við úr eftirfarandi blönduðu Claisen-líku [[i:efnahvarfi]]?
+Hvaða myndefni myndir þú búast við úr eftirfarandi blönduðu Claisen-líku efnahvarfi?
 
 <!-- SEG:23-08-OC-P13:stem:359729-b1 -->
 [[MEDIA:0]]
@@ -158,7 +158,7 @@ Hvaða [[i:myndefni]] myndir þú búast við úr eftirfarandi blönduðu Claise
 [[MEDIA:0]]
 
 <!-- SEG:23-09-OC-P14:stem:359771-b0 -->
-Hvaða [[i:myndefni]] myndir þú búast við úr eftirfarandi [[i:efnahvarfi]]?
+Hvaða myndefni myndir þú búast við úr eftirfarandi efnahvarfi?
 
 <!-- SEG:23-09-OC-P14:stem:359771-b1 -->
 [[MEDIA:0]]
@@ -167,13 +167,13 @@ Hvaða [[i:myndefni]] myndir þú búast við úr eftirfarandi [[i:efnahvarfi]]?
 [[MEDIA:0]]
 
 <!-- SEG:23-09-OC-P15:stem:359773-b0 -->
-Dieckmann-hringtenging díetýl 3-metýlheptandíóats gefur [[i:efnablöndu]] af tveimur [[i:β]]-ketóester [[i:myndefnum]]. Hver er bygging þeirra og hvers vegna myndast [[i:efnablanda]]?
+Dieckmann-hringtenging díetýl 3-metýlheptandíóats gefur efnablöndu af tveimur [[i:β]]-ketóester myndefnum. Hver er bygging þeirra og hvers vegna myndast efnablanda?
 
 <!-- SEG:23-09-OC-P15:sol:359773-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:23-10-OC-P16:stimulus:b0 -->
-Hvaða [[i:myndefni]] myndir þú fá úr Michael-[[i:efnahvarfi]] með [[i:basa]] sem hvata af 2,4-pentandíóni með hvorum eftirfarandi [[i:α]],[[i:β]]-ómettuðu viðtaka?
+Hvaða myndefni myndir þú fá úr Michael-efnahvarfi með basa sem hvata af 2,4-pentandíóni með hvorum eftirfarandi [[i:α]],[[i:β]]-ómettuðu viðtaka?
 
 <!-- SEG:23-10-OC-P16:stem:359791-b0 -->
 2-sýklóhexenón
@@ -194,7 +194,7 @@ Etýl 2-bútenóat
 [[MEDIA:0]]
 
 <!-- SEG:23-10-OC-P17:stimulus:b0 -->
-Hvaða [[i:myndefni]] myndir þú fá úr Michael-[[i:efnahvarfi]] með [[i:basa]] sem hvata af 3-búten-2-óni með hvorum eftirfarandi [[i:kjarnsæknum]] gjöfum?
+Hvaða myndefni myndir þú fá úr Michael-efnahvarfi með basa sem hvata af 3-búten-2-óni með hvorum eftirfarandi kjarnsæknum gjöfum?
 
 <!-- SEG:23-10-OC-P17:stem:359796-b0 -->
 [[MEDIA:0]]
@@ -209,7 +209,7 @@ Hvaða [[i:myndefni]] myndir þú fá úr Michael-[[i:efnahvarfi]] með [[i:basa
 [[MEDIA:0]]
 
 <!-- SEG:23-10-OC-P18:stem:359799-b0 -->
-Hvernig myndir þú búa til eftirfarandi [[i:efnasamband]] með Michael-[[i:efnahvarfi]] (grátt = H, svart = C, rautt = O, blátt = N)?
+Hvernig myndir þú búa til eftirfarandi efnasamband með Michael-efnahvarfi (grátt = H, svart = C, rautt = O, blátt = N)?
 
 <!-- SEG:23-10-OC-P18:stem:359799-b1 -->
 [[MEDIA:0]]
@@ -218,7 +218,7 @@ Hvernig myndir þú búa til eftirfarandi [[i:efnasamband]] með Michael-[[i:efn
 CH[[sub:3]]CH[[sub:2]]COCH[[MEDIA:0]]CH[[sub:2]] + CH[[sub:3]]CH[[sub:2]]NO[[sub:2]]
 
 <!-- SEG:23-11-OC-P19:stimulus:b0 -->
-Hvaða [[i:myndefni]] myndu myndast eftir [[i:vatnsrof]] úr [[i:efnahvarfi]] enamínsins sem búið er til úr sýklópentanóni og pýrrólidíni með eftirfarandi [[i:α]],[[i:β]]-ómettuðum viðtökum?
+Hvaða myndefni myndu myndast eftir vatnsrof úr efnahvarfi enamínsins sem búið er til úr sýklópentanóni og pýrrólidíni með eftirfarandi [[i:α]],[[i:β]]-ómettuðum viðtökum?
 
 <!-- SEG:23-11-OC-P19:stem:359807-b0 -->
 H[[sub:2]]C[[MEDIA:0]]CHCO[[sub:2]]Et
@@ -239,7 +239,7 @@ CH[[sub:3]]CH[[MEDIA:0]]CHCOCH[[sub:3]]
 [[MEDIA:0]]
 
 <!-- SEG:23-11-OC-P20:stimulus:b0 -->
-Sýndu hvernig þú gætir notað enamín-[[i:efnahvarf]] til að búa til hvert eftirfarandi [[i:efnasambanda]]:
+Sýndu hvernig þú gætir notað enamín-efnahvarf til að búa til hvert eftirfarandi efnasambanda:
 
 <!-- SEG:23-11-OC-P20:stem:359813-b0 -->
 [[MEDIA:0]]
@@ -254,7 +254,7 @@ Sýklópentanón enamín + própenítríl
 Sýklóhexanón enamín + metýlprópenóat
 
 <!-- SEG:23-12-OC-P21:stem:359816-b0 -->
-Hvaða [[i:myndefni]] myndir þú búast við úr Robinson-hringtengingar[[i:efnahvarfi]] af 2-metýl-1,3-sýklópentandíóni með 3-búten-2-óni?
+Hvaða myndefni myndir þú búast við úr Robinson-hringtengingarefnahvarfi af 2-metýl-1,3-sýklópentandíóni með 3-búten-2-óni?
 
 <!-- SEG:23-12-OC-P21:stem:359816-b1 -->
 [[MEDIA:0]]
@@ -263,7 +263,7 @@ Hvaða [[i:myndefni]] myndir þú búast við úr Robinson-hringtengingar[[i:efn
 [[MEDIA:0]]
 
 <!-- SEG:23-12-OC-P22:stem:359818-b0 -->
-Hvernig myndir þú búa til eftirfarandi [[i:efnasamband]] með Robinson-hringtengingar[[i:efnahvarfi]] milli [[i:β]]-díketóns og [[i:α]],[[i:β]]-ómettaðs ketóns? Teiknaðu byggingu beggja [[i:hvarfefna]] og Michael-[[i:álagningar]] [[i:milliefnisins]].
+Hvernig myndir þú búa til eftirfarandi efnasamband með Robinson-hringtengingarefnahvarfi milli [[i:β]]-díketóns og [[i:α]],[[i:β]]-ómettaðs ketóns? Teiknaðu byggingu beggja hvarfefna og Michael-álagningar milliefnisins.
 
 <!-- SEG:23-12-OC-P22:stem:359818-b1 -->
 [[MEDIA:0]]

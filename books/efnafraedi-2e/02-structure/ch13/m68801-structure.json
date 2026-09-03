@@ -235,6 +235,22 @@
               "segmentId": "m68801:para:fs-idp65960208"
             },
             {
+              "type": "media",
+              "id": "fs-idp68301536",
+              "alt": {
+                "segmentId": "m68801:alt:fs-idp68301536-alt",
+                "text": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header, “I subscript 2 plus sign I superscript negative sign equilibrium arrow I subscript 3 superscript negative sign.” Under the second column is a subgroup of three rows and three columns. The first column has the following: 1.000 times 10 to the negative third power, negative x, [ I subscript 2 ] subscript i minus x. The second column has the following: 1.000 times 10 to the negative third power, negative x, [ I superscript negative sign ] subscript i minus x. The third column has the following: 0, positive x, [ I superscript negative sign ] subscript i plus x."
+              }
+            },
+            {
+              "type": "media",
+              "id": "fs-idp182836896",
+              "alt": {
+                "segmentId": "m68801:alt:fs-idp182836896-alt",
+                "text": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header, “I subscript 2 plus sign I superscript negative sign equilibrium arrow I subscript 3 superscript negative sign.” Under the second column is a subgroup of three rows and three columns. The first column has the following: 1.000 times 10 to the negative third power, negative 3.39 times 10 to the negative fourth power, 6.61 times 10 to the negative fourth power. The second column has the following: 1.000 times 10 to the negative third power, negative 3.39 times 10 to the negative fourth power, 6.61 times 10 to the negative fourth power. The third column has the following: 0, positive 3.39 times 10 to the negative fourth power, 3.39 times 10 to the negative fourth power."
+              }
+            },
+            {
               "type": "equation",
               "id": "fs-idp73967168"
             },
@@ -788,6 +804,14 @@
               "type": "para",
               "id": "fs-idp139296",
               "segmentId": "m68801:para:fs-idp139296"
+            },
+            {
+              "type": "media",
+              "id": "fs-idm90952112",
+              "alt": {
+                "segmentId": "m68801:alt:fs-idm90952112-alt",
+                "text": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following: Initial pressure ( M ), Change ( M ), Equilibrium ( M ). The second column has the header, “H C N ( a q ) equilibrium arrow H superscript plus sign ( a q ) plus C N subscript negative sign ( a q ).” Under the second column is a subgroup of three columns and three rows. The first column has the following: 0.15, negative x, 0.15 minus x. The second column has the following: 0, positive x, x. The third column has the following: 0, positive x, x."
+              }
             },
             {
               "type": "equation",
@@ -1761,6 +1785,14 @@
                 "segmentId": "m68801:problem:fs-idp307490368"
               },
               {
+                "type": "media",
+                "id": "fs-idp222844848",
+                "alt": {
+                  "segmentId": "m68801:alt:fs-idp222844848-alt",
+                  "text": "Three Lewis structures are shown. The first is labeled, “n dash Butane,” and has a C H subscript 3 single bonded to a C H subscript 2 group. This C H subscript 2 group is single bonded to another C H subscript 2 group which is single bonded to a C H subscript 3 group. The second is labeled, “iso dash Butane,” and is composed of a C H group single bonded to three C H subscript 3 groups. The third structure shows a chain of atoms: “C H subscript 3, C H subscript 2, C H subscript 2, C H subscript 3,” a double-headed arrow, then a carbon atom single bonded to three C H subscript 3 groups as well as a hydrogen atom."
+                }
+              },
+              {
                 "type": "para",
                 "id": "fs-idp194751264",
                 "segmentId": "m68801:problem:fs-idp194751264"
@@ -2048,12 +2080,15 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idp123608720",
       "class": "scaled-down",
-      "alt": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header, “P C l subscript 5 equilibrium arrow P C l subscript 3 plus C l subscript 2.” Under the second column is a subgroup of three rows and three columns. The first column has the following: 1.00, negative x, 1.00 minus x. The second column has the following: 0, positive x, x. The third column has the following: 0, positive x, x.",
       "src": "../../media/CNX_Chem_13_04_ICETable3_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68801:alt:fs-idp123608720-alt",
+        "text": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header, “P C l subscript 5 equilibrium arrow P C l subscript 3 plus C l subscript 2.” Under the second column is a subgroup of three rows and three columns. The first column has the following: 1.00, negative x, 1.00 minus x. The second column has the following: 0, positive x, x. The third column has the following: 0, positive x, x."
+      }
     }
   ],
   "sectionOrder": 4

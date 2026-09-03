@@ -1,0 +1,42 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C&#x2550;}{{\\text{CH}}}_{2}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>CH&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{3}\\text{CH&#x2550;}{{\\text{CH}}}_{2}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>CH&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{3}\\text{CH&#x2550;}{{\\text{CHCH}}}_{3}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>CH&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{3}\\text{CH&#x2550;}{{\\text{CHCH}}}_{3}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:msub><m:mrow><m:mtext>(CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>)</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{{\\text{(CH}}3\\text{)}}2\\text{C&#x2550;}{{\\text{CH}}}_{2}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:msub><m:mrow><m:mtext>(CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>)</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{{\\text{(CH}}3\\text{)}}2\\text{C&#x2550;}{{\\text{CHCH}}}_{3}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:msub><m:mrow><m:mtext>(CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>)</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>C(CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mtext>)</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{{\\text{(CH}}3\\text{)}}2\\text{C&#x2550;}{{\\text{C(CH}}}_{3}{\\text{)}}_{2}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C&#x2212;C&#x2212;H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C&#x2212;C&#x2212;H}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mtext mathvariant=\"bold\">C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  }
+}

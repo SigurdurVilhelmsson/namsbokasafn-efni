@@ -110,7 +110,7 @@ milligram (mg)
 kilogram (kg)
 
 <!-- SEG:m68861:entry:auto-38 -->
-= 1000 g (exact, definition)[[BR]]= 2.205 lb {{fn}}Strictly speaking, the ounce and pound are units of weight, [[i:W]] (a force equal to the product of mass and gravitational acceleration, [[i:W]] = [[i:mg]]). The conversion relations in this table are commonly used to equate masses and weight assuming a nominal value for [[i:g]] at the surface of the earth.{{/fn}}
+= 1000 g (exact, definition)[[BR]]= 2.205 lb [[fn:Strictly speaking, the ounce and pound are units of weight, [[i:W]] (a force equal to the product of mass and gravitational acceleration, [[i:W]] = [[i:mg]]). The conversion relations in this table are commonly used to equate masses and weight assuming a nominal value for [[i:g]] at the surface of the earth.|foot-00001]]
 
 <!-- SEG:m68861:entry:auto-39 -->
 ton (metric)
@@ -185,7 +185,7 @@ nutritional calorie (Cal)
 British thermal unit (BTU)
 
 <!-- SEG:m68861:entry:auto-63 -->
-= 1054.804 J {{fn}}BTU is the amount of energy needed to heat one pound of water by one degree Fahrenheit. Therefore, the exact relationship of BTU to joules and other energy units depends on the temperature at which BTU is measured. 59 °F (15 °C) is the most widely used reference temperature for BTU definition in the United States. At this temperature, the conversion factor is the one provided in this table.{{/fn}}
+= 1054.804 J [[fn:BTU is the amount of energy needed to heat one pound of water by one degree Fahrenheit. Therefore, the exact relationship of BTU to joules and other energy units depends on the temperature at which BTU is measured. 59 °F (15 °C) is the most widely used reference temperature for BTU definition in the United States. At this temperature, the conversion factor is the one provided in this table.|fs-idp145095088]]
 
 <!-- SEG:m68861:entry:auto-64 -->
 Units of Pressure

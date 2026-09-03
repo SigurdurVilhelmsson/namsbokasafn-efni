@@ -1,0 +1,36 @@
+{
+  "m00191:para:para-00001": {
+    "terms": [
+      {
+        "id": "term-00001"
+      },
+      {
+        "id": "term-00002"
+      }
+    ]
+  },
+  "m00191:caption:fig-00001-caption": {
+    "terms": [
+      {
+        "id": "term-00003"
+      }
+    ]
+  },
+  "m00191:para:para-00007": {
+    "terms": [
+      {
+        "id": "term-00004"
+      },
+      {
+        "id": "term-00005"
+      }
+    ]
+  },
+  "m00191:para:para-00008": {
+    "terms": [
+      {
+        "id": "term-00006"
+      }
+    ]
+  }
+}

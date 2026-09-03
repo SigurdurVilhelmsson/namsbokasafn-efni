@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68845",
-  "extractedAt": "2026-08-12T13:43:10.622Z",
+  "extractedAt": "2026-08-31T19:08:45.569Z",
   "sourceHash": "b500961225b00ff0",
-  "segmentCount": 8,
+  "segmentCount": 9,
   "segmentIds": [
     "m68845:title:auto-1",
     "m68845:abstract-item:abstract-item-1",
@@ -11,6 +11,7 @@
     "m68845:abstract-item:abstract-item-3",
     "m68845:abstract-item:abstract-item-4",
     "m68845:caption:CNX_Chem_20_00_OrgCompnd-caption",
+    "m68845:alt:fs-idp66277952-alt",
     "m68845:para:fs-idm40968368",
     "m68845:para:fs-idm91844560"
   ],

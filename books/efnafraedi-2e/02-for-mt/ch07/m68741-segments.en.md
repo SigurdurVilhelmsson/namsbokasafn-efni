@@ -31,532 +31,535 @@ For example, the bond energy of the pure covalent H–H bond, D[[sub:H–H]], is
 <!-- SEG:m68741:para:fs-idp244347920 -->
 Molecules with three or more atoms have two or more bonds. The sum of all bond energies in such a molecule is equal to the standard enthalpy change for the endothermic reaction that breaks all the bonds in the molecule. For example, the sum of the four C–H bond energies in CH[[sub:4]], 1660 kJ, is equal to the standard enthalpy change of the reaction:
 
+<!-- SEG:m68741:alt:fs-idp286503296-alt -->
+A reaction is shown with Lewis structures. The first structure shows a carbon atom single bonded to four hydrogen atoms with the symbol, “( g )” written next to it. A right-facing arrow points to the letter “C” and the symbol “( g ),” which is followed by a plus sign. Next is the number 4, the letter “H” and the symbol, “( g ).” To the right of this equation is another equation: capital delta H superscript degree symbol equals 1660 k J.
+
 <!-- SEG:m68741:para:fs-idp85707472 -->
 The average C–H bond energy, D[[sub:C–H]], is 1660/4 = 415 kJ/mol because there are four moles of C–H bonds broken per mole of the reaction. Although the four C–H bonds are equivalent in the original molecule, they do not each require the same energy to break; once the first bond is broken (which requires 439 kJ/mol), the remaining bonds are easier to break. The 415 kJ/mol value is the average, not the exact value required to break any one bond.
 
 <!-- SEG:m68741:para:fs-idp26225392 -->
 The strength of a bond between two atoms increases as the number of electron pairs in the bond increases. Generally, as the bond strength increases, the bond length decreases. Thus, we find that triple bonds are stronger and shorter than double bonds between the same two atoms; likewise, double bonds are stronger and shorter than single bonds between the same two atoms. Average bond energies for some common bonds appear in [[xref:fs-idp13638832]], and a comparison of bond lengths and bond strengths for some common bonds appears in [[xref:fs-idm44464336]]. When one atom bonds to various atoms in a group, the bond strength typically decreases as we move down the group. For example, C–F is 439 kJ/mol, C–Cl is 330 kJ/mol, and C–Br is 275 kJ/mol.
 
-<!-- SEG:m68741:entry:auto-14 -->
+<!-- SEG:m68741:entry:auto-15 -->
 Bond Energies (kJ/mol)
 
-<!-- SEG:m68741:entry:auto-15 -->
-Bond
-
 <!-- SEG:m68741:entry:auto-16 -->
-Bond Energy
+Bond
 
 <!-- SEG:m68741:entry:auto-17 -->
-Bond
+Bond Energy
 
 <!-- SEG:m68741:entry:auto-18 -->
-Bond Energy
+Bond
 
 <!-- SEG:m68741:entry:auto-19 -->
-Bond
-
-<!-- SEG:m68741:entry:auto-20 -->
 Bond Energy
 
-<!-- SEG:m68741:entry:auto-21 -->
-H–H
-
-<!-- SEG:m68741:entry:auto-22 -->
-436
-
-<!-- SEG:m68741:entry:auto-23 -->
-C–S
-
-<!-- SEG:m68741:entry:auto-24 -->
-260
-
-<!-- SEG:m68741:entry:auto-25 -->
-F–Cl
-
-<!-- SEG:m68741:entry:auto-26 -->
-255
-
-<!-- SEG:m68741:entry:auto-27 -->
-H–C
-
-<!-- SEG:m68741:entry:auto-28 -->
-415
-
-<!-- SEG:m68741:entry:auto-29 -->
-C–Cl
-
-<!-- SEG:m68741:entry:auto-30 -->
-330
-
-<!-- SEG:m68741:entry:auto-31 -->
-F–Br
-
-<!-- SEG:m68741:entry:auto-32 -->
-235
-
-<!-- SEG:m68741:entry:auto-33 -->
-H–N
-
-<!-- SEG:m68741:entry:auto-34 -->
-390
-
-<!-- SEG:m68741:entry:auto-35 -->
-C–Br
-
-<!-- SEG:m68741:entry:auto-36 -->
-275
-
-<!-- SEG:m68741:entry:auto-37 -->
-Si–Si
-
-<!-- SEG:m68741:entry:auto-38 -->
-230
-
-<!-- SEG:m68741:entry:auto-39 -->
-H–O
-
-<!-- SEG:m68741:entry:auto-40 -->
-464
-
-<!-- SEG:m68741:entry:auto-41 -->
-C–I
-
-<!-- SEG:m68741:entry:auto-42 -->
-240
-
-<!-- SEG:m68741:entry:auto-43 -->
-Si–P
-
-<!-- SEG:m68741:entry:auto-44 -->
-215
-
-<!-- SEG:m68741:entry:auto-45 -->
-H–F
-
-<!-- SEG:m68741:entry:auto-46 -->
-569
-
-<!-- SEG:m68741:entry:auto-47 -->
-N–N
-
-<!-- SEG:m68741:entry:auto-48 -->
-160
-
-<!-- SEG:m68741:entry:auto-49 -->
-Si–S
-
-<!-- SEG:m68741:entry:auto-50 -->
-225
-
-<!-- SEG:m68741:entry:auto-51 -->
-H–Si
-
-<!-- SEG:m68741:entry:auto-52 -->
-395
-
-<!-- SEG:m68741:entry:auto-53 -->
-[[MATH:1]]
-
-<!-- SEG:m68741:entry:auto-54 -->
-418
-
-<!-- SEG:m68741:entry:auto-55 -->
-Si–Cl
-
-<!-- SEG:m68741:entry:auto-56 -->
-359
-
-<!-- SEG:m68741:entry:auto-57 -->
-H–P
-
-<!-- SEG:m68741:entry:auto-58 -->
-320
-
-<!-- SEG:m68741:entry:auto-59 -->
-[[MATH:2]]
-
-<!-- SEG:m68741:entry:auto-60 -->
-946
-
-<!-- SEG:m68741:entry:auto-61 -->
-Si–Br
-
-<!-- SEG:m68741:entry:auto-62 -->
-290
-
-<!-- SEG:m68741:entry:auto-63 -->
-H–S
-
-<!-- SEG:m68741:entry:auto-64 -->
-340
-
-<!-- SEG:m68741:entry:auto-65 -->
-N–O
-
-<!-- SEG:m68741:entry:auto-66 -->
-200
-
-<!-- SEG:m68741:entry:auto-67 -->
-Si–I
-
-<!-- SEG:m68741:entry:auto-68 -->
-215
-
-<!-- SEG:m68741:entry:auto-69 -->
-H–Cl
-
-<!-- SEG:m68741:entry:auto-70 -->
-432
-
-<!-- SEG:m68741:entry:auto-71 -->
-N–F
-
-<!-- SEG:m68741:entry:auto-72 -->
-270
-
-<!-- SEG:m68741:entry:auto-73 -->
-P–P
-
-<!-- SEG:m68741:entry:auto-74 -->
-215
-
-<!-- SEG:m68741:entry:auto-75 -->
-H–Br
-
-<!-- SEG:m68741:entry:auto-76 -->
-370
-
-<!-- SEG:m68741:entry:auto-77 -->
-N–P
-
-<!-- SEG:m68741:entry:auto-78 -->
-210
-
-<!-- SEG:m68741:entry:auto-79 -->
-P–S
-
-<!-- SEG:m68741:entry:auto-80 -->
-230
-
-<!-- SEG:m68741:entry:auto-81 -->
-H–I
-
-<!-- SEG:m68741:entry:auto-82 -->
-295
-
-<!-- SEG:m68741:entry:auto-83 -->
-N–Cl
-
-<!-- SEG:m68741:entry:auto-84 -->
-200
-
-<!-- SEG:m68741:entry:auto-85 -->
-P–Cl
-
-<!-- SEG:m68741:entry:auto-86 -->
-330
-
-<!-- SEG:m68741:entry:auto-87 -->
-C–C
-
-<!-- SEG:m68741:entry:auto-88 -->
-345
-
-<!-- SEG:m68741:entry:auto-89 -->
-N–Br
-
-<!-- SEG:m68741:entry:auto-90 -->
-245
-
-<!-- SEG:m68741:entry:auto-91 -->
-P–Br
-
-<!-- SEG:m68741:entry:auto-92 -->
-270
-
-<!-- SEG:m68741:entry:auto-93 -->
-[[MATH:3]]
-
-<!-- SEG:m68741:entry:auto-94 -->
-611
-
-<!-- SEG:m68741:entry:auto-95 -->
-O–O
-
-<!-- SEG:m68741:entry:auto-96 -->
-140
-
-<!-- SEG:m68741:entry:auto-97 -->
-P–I
-
-<!-- SEG:m68741:entry:auto-98 -->
-215
-
-<!-- SEG:m68741:entry:auto-99 -->
-[[MATH:4]]
-
-<!-- SEG:m68741:entry:auto-100 -->
-837
-
-<!-- SEG:m68741:entry:auto-101 -->
-[[MATH:5]]
-
-<!-- SEG:m68741:entry:auto-102 -->
-498
-
-<!-- SEG:m68741:entry:auto-103 -->
-S–S
-
-<!-- SEG:m68741:entry:auto-104 -->
-215
-
-<!-- SEG:m68741:entry:auto-105 -->
-C–N
-
-<!-- SEG:m68741:entry:auto-106 -->
-290
-
-<!-- SEG:m68741:entry:auto-107 -->
-O–F
-
-<!-- SEG:m68741:entry:auto-108 -->
-160
-
-<!-- SEG:m68741:entry:auto-109 -->
-S–Cl
-
-<!-- SEG:m68741:entry:auto-110 -->
-250
-
-<!-- SEG:m68741:entry:auto-111 -->
-[[MATH:6]]
-
-<!-- SEG:m68741:entry:auto-112 -->
-615
-
-<!-- SEG:m68741:entry:auto-113 -->
-O–Si
-
-<!-- SEG:m68741:entry:auto-114 -->
-370
-
-<!-- SEG:m68741:entry:auto-115 -->
-S–Br
-
-<!-- SEG:m68741:entry:auto-116 -->
-215
-
-<!-- SEG:m68741:entry:auto-117 -->
-[[MATH:7]]
-
-<!-- SEG:m68741:entry:auto-118 -->
-891
-
-<!-- SEG:m68741:entry:auto-119 -->
-O–P
-
-<!-- SEG:m68741:entry:auto-120 -->
-350
-
-<!-- SEG:m68741:entry:auto-121 -->
-Cl–Cl
-
-<!-- SEG:m68741:entry:auto-122 -->
-243
-
-<!-- SEG:m68741:entry:auto-123 -->
-C–O
-
-<!-- SEG:m68741:entry:auto-124 -->
-350
-
-<!-- SEG:m68741:entry:auto-125 -->
-O–Cl
-
-<!-- SEG:m68741:entry:auto-126 -->
-205
-
-<!-- SEG:m68741:entry:auto-127 -->
-Cl–Br
-
-<!-- SEG:m68741:entry:auto-128 -->
-220
-
-<!-- SEG:m68741:entry:auto-129 -->
-[[MATH:8]]
-
-<!-- SEG:m68741:entry:auto-130 -->
-741
-
-<!-- SEG:m68741:entry:auto-131 -->
-O–I
-
-<!-- SEG:m68741:entry:auto-132 -->
-200
-
-<!-- SEG:m68741:entry:auto-133 -->
-Cl–I
-
-<!-- SEG:m68741:entry:auto-134 -->
-210
-
-<!-- SEG:m68741:entry:auto-135 -->
-[[MATH:9]]
-
-<!-- SEG:m68741:entry:auto-136 -->
-1080
-
-<!-- SEG:m68741:entry:auto-137 -->
-F–F
-
-<!-- SEG:m68741:entry:auto-138 -->
-160
-
-<!-- SEG:m68741:entry:auto-139 -->
-Br–Br
-
-<!-- SEG:m68741:entry:auto-140 -->
-190
-
-<!-- SEG:m68741:entry:auto-141 -->
-C–F
-
-<!-- SEG:m68741:entry:auto-142 -->
-439
-
-<!-- SEG:m68741:entry:auto-143 -->
-F–Si
-
-<!-- SEG:m68741:entry:auto-144 -->
-540
-
-<!-- SEG:m68741:entry:auto-145 -->
-Br–I
-
-<!-- SEG:m68741:entry:auto-146 -->
-180
-
-<!-- SEG:m68741:entry:auto-147 -->
-C–Si
-
-<!-- SEG:m68741:entry:auto-148 -->
-360
-
-<!-- SEG:m68741:entry:auto-149 -->
-F–P
-
-<!-- SEG:m68741:entry:auto-150 -->
-489
-
-<!-- SEG:m68741:entry:auto-151 -->
-I–I
-
-<!-- SEG:m68741:entry:auto-152 -->
-150
-
-<!-- SEG:m68741:entry:auto-153 -->
-C–P
-
-<!-- SEG:m68741:entry:auto-154 -->
-265
-
-<!-- SEG:m68741:entry:auto-155 -->
-F–S
-
-<!-- SEG:m68741:entry:auto-156 -->
-285
-
-<!-- SEG:m68741:entry:auto-157 -->
-Average Bond Lengths and Bond Energies for Some Common Bonds
-
-<!-- SEG:m68741:entry:auto-158 -->
+<!-- SEG:m68741:entry:auto-20 -->
 Bond
 
-<!-- SEG:m68741:entry:auto-159 -->
-Bond Length (Å)
+<!-- SEG:m68741:entry:auto-21 -->
+Bond Energy
 
-<!-- SEG:m68741:entry:auto-160 -->
-Bond Energy (kJ/mol)
+<!-- SEG:m68741:entry:auto-22 -->
+H–H
 
-<!-- SEG:m68741:entry:auto-161 -->
-C–C
+<!-- SEG:m68741:entry:auto-23 -->
+436
 
-<!-- SEG:m68741:entry:auto-162 -->
-1.54
+<!-- SEG:m68741:entry:auto-24 -->
+C–S
 
-<!-- SEG:m68741:entry:auto-163 -->
-345
+<!-- SEG:m68741:entry:auto-25 -->
+260
 
-<!-- SEG:m68741:entry:auto-164 -->
-[[MATH:10]]
+<!-- SEG:m68741:entry:auto-26 -->
+F–Cl
 
-<!-- SEG:m68741:entry:auto-165 -->
-1.34
+<!-- SEG:m68741:entry:auto-27 -->
+255
 
-<!-- SEG:m68741:entry:auto-166 -->
-611
+<!-- SEG:m68741:entry:auto-28 -->
+H–C
 
-<!-- SEG:m68741:entry:auto-167 -->
-[[MATH:11]]
+<!-- SEG:m68741:entry:auto-29 -->
+415
 
-<!-- SEG:m68741:entry:auto-168 -->
-1.20
+<!-- SEG:m68741:entry:auto-30 -->
+C–Cl
 
-<!-- SEG:m68741:entry:auto-169 -->
-837
+<!-- SEG:m68741:entry:auto-31 -->
+330
 
-<!-- SEG:m68741:entry:auto-170 -->
-C–N
+<!-- SEG:m68741:entry:auto-32 -->
+F–Br
 
-<!-- SEG:m68741:entry:auto-171 -->
-1.43
+<!-- SEG:m68741:entry:auto-33 -->
+235
 
-<!-- SEG:m68741:entry:auto-172 -->
+<!-- SEG:m68741:entry:auto-34 -->
+H–N
+
+<!-- SEG:m68741:entry:auto-35 -->
+390
+
+<!-- SEG:m68741:entry:auto-36 -->
+C–Br
+
+<!-- SEG:m68741:entry:auto-37 -->
+275
+
+<!-- SEG:m68741:entry:auto-38 -->
+Si–Si
+
+<!-- SEG:m68741:entry:auto-39 -->
+230
+
+<!-- SEG:m68741:entry:auto-40 -->
+H–O
+
+<!-- SEG:m68741:entry:auto-41 -->
+464
+
+<!-- SEG:m68741:entry:auto-42 -->
+C–I
+
+<!-- SEG:m68741:entry:auto-43 -->
+240
+
+<!-- SEG:m68741:entry:auto-44 -->
+Si–P
+
+<!-- SEG:m68741:entry:auto-45 -->
+215
+
+<!-- SEG:m68741:entry:auto-46 -->
+H–F
+
+<!-- SEG:m68741:entry:auto-47 -->
+569
+
+<!-- SEG:m68741:entry:auto-48 -->
+N–N
+
+<!-- SEG:m68741:entry:auto-49 -->
+160
+
+<!-- SEG:m68741:entry:auto-50 -->
+Si–S
+
+<!-- SEG:m68741:entry:auto-51 -->
+225
+
+<!-- SEG:m68741:entry:auto-52 -->
+H–Si
+
+<!-- SEG:m68741:entry:auto-53 -->
+395
+
+<!-- SEG:m68741:entry:auto-54 -->
+[[MATH:1]]
+
+<!-- SEG:m68741:entry:auto-55 -->
+418
+
+<!-- SEG:m68741:entry:auto-56 -->
+Si–Cl
+
+<!-- SEG:m68741:entry:auto-57 -->
+359
+
+<!-- SEG:m68741:entry:auto-58 -->
+H–P
+
+<!-- SEG:m68741:entry:auto-59 -->
+320
+
+<!-- SEG:m68741:entry:auto-60 -->
+[[MATH:2]]
+
+<!-- SEG:m68741:entry:auto-61 -->
+946
+
+<!-- SEG:m68741:entry:auto-62 -->
+Si–Br
+
+<!-- SEG:m68741:entry:auto-63 -->
 290
 
-<!-- SEG:m68741:entry:auto-173 -->
-[[MATH:12]]
+<!-- SEG:m68741:entry:auto-64 -->
+H–S
 
-<!-- SEG:m68741:entry:auto-174 -->
-1.38
+<!-- SEG:m68741:entry:auto-65 -->
+340
 
-<!-- SEG:m68741:entry:auto-175 -->
+<!-- SEG:m68741:entry:auto-66 -->
+N–O
+
+<!-- SEG:m68741:entry:auto-67 -->
+200
+
+<!-- SEG:m68741:entry:auto-68 -->
+Si–I
+
+<!-- SEG:m68741:entry:auto-69 -->
+215
+
+<!-- SEG:m68741:entry:auto-70 -->
+H–Cl
+
+<!-- SEG:m68741:entry:auto-71 -->
+432
+
+<!-- SEG:m68741:entry:auto-72 -->
+N–F
+
+<!-- SEG:m68741:entry:auto-73 -->
+270
+
+<!-- SEG:m68741:entry:auto-74 -->
+P–P
+
+<!-- SEG:m68741:entry:auto-75 -->
+215
+
+<!-- SEG:m68741:entry:auto-76 -->
+H–Br
+
+<!-- SEG:m68741:entry:auto-77 -->
+370
+
+<!-- SEG:m68741:entry:auto-78 -->
+N–P
+
+<!-- SEG:m68741:entry:auto-79 -->
+210
+
+<!-- SEG:m68741:entry:auto-80 -->
+P–S
+
+<!-- SEG:m68741:entry:auto-81 -->
+230
+
+<!-- SEG:m68741:entry:auto-82 -->
+H–I
+
+<!-- SEG:m68741:entry:auto-83 -->
+295
+
+<!-- SEG:m68741:entry:auto-84 -->
+N–Cl
+
+<!-- SEG:m68741:entry:auto-85 -->
+200
+
+<!-- SEG:m68741:entry:auto-86 -->
+P–Cl
+
+<!-- SEG:m68741:entry:auto-87 -->
+330
+
+<!-- SEG:m68741:entry:auto-88 -->
+C–C
+
+<!-- SEG:m68741:entry:auto-89 -->
+345
+
+<!-- SEG:m68741:entry:auto-90 -->
+N–Br
+
+<!-- SEG:m68741:entry:auto-91 -->
+245
+
+<!-- SEG:m68741:entry:auto-92 -->
+P–Br
+
+<!-- SEG:m68741:entry:auto-93 -->
+270
+
+<!-- SEG:m68741:entry:auto-94 -->
+[[MATH:3]]
+
+<!-- SEG:m68741:entry:auto-95 -->
+611
+
+<!-- SEG:m68741:entry:auto-96 -->
+O–O
+
+<!-- SEG:m68741:entry:auto-97 -->
+140
+
+<!-- SEG:m68741:entry:auto-98 -->
+P–I
+
+<!-- SEG:m68741:entry:auto-99 -->
+215
+
+<!-- SEG:m68741:entry:auto-100 -->
+[[MATH:4]]
+
+<!-- SEG:m68741:entry:auto-101 -->
+837
+
+<!-- SEG:m68741:entry:auto-102 -->
+[[MATH:5]]
+
+<!-- SEG:m68741:entry:auto-103 -->
+498
+
+<!-- SEG:m68741:entry:auto-104 -->
+S–S
+
+<!-- SEG:m68741:entry:auto-105 -->
+215
+
+<!-- SEG:m68741:entry:auto-106 -->
+C–N
+
+<!-- SEG:m68741:entry:auto-107 -->
+290
+
+<!-- SEG:m68741:entry:auto-108 -->
+O–F
+
+<!-- SEG:m68741:entry:auto-109 -->
+160
+
+<!-- SEG:m68741:entry:auto-110 -->
+S–Cl
+
+<!-- SEG:m68741:entry:auto-111 -->
+250
+
+<!-- SEG:m68741:entry:auto-112 -->
+[[MATH:6]]
+
+<!-- SEG:m68741:entry:auto-113 -->
 615
 
-<!-- SEG:m68741:entry:auto-176 -->
-[[MATH:13]]
+<!-- SEG:m68741:entry:auto-114 -->
+O–Si
 
-<!-- SEG:m68741:entry:auto-177 -->
-1.16
+<!-- SEG:m68741:entry:auto-115 -->
+370
 
-<!-- SEG:m68741:entry:auto-178 -->
+<!-- SEG:m68741:entry:auto-116 -->
+S–Br
+
+<!-- SEG:m68741:entry:auto-117 -->
+215
+
+<!-- SEG:m68741:entry:auto-118 -->
+[[MATH:7]]
+
+<!-- SEG:m68741:entry:auto-119 -->
 891
 
-<!-- SEG:m68741:entry:auto-179 -->
-C–O
+<!-- SEG:m68741:entry:auto-120 -->
+O–P
 
-<!-- SEG:m68741:entry:auto-180 -->
-1.43
-
-<!-- SEG:m68741:entry:auto-181 -->
+<!-- SEG:m68741:entry:auto-121 -->
 350
 
-<!-- SEG:m68741:entry:auto-182 -->
-[[MATH:14]]
+<!-- SEG:m68741:entry:auto-122 -->
+Cl–Cl
 
-<!-- SEG:m68741:entry:auto-183 -->
-1.23
+<!-- SEG:m68741:entry:auto-123 -->
+243
 
-<!-- SEG:m68741:entry:auto-184 -->
+<!-- SEG:m68741:entry:auto-124 -->
+C–O
+
+<!-- SEG:m68741:entry:auto-125 -->
+350
+
+<!-- SEG:m68741:entry:auto-126 -->
+O–Cl
+
+<!-- SEG:m68741:entry:auto-127 -->
+205
+
+<!-- SEG:m68741:entry:auto-128 -->
+Cl–Br
+
+<!-- SEG:m68741:entry:auto-129 -->
+220
+
+<!-- SEG:m68741:entry:auto-130 -->
+[[MATH:8]]
+
+<!-- SEG:m68741:entry:auto-131 -->
 741
 
+<!-- SEG:m68741:entry:auto-132 -->
+O–I
+
+<!-- SEG:m68741:entry:auto-133 -->
+200
+
+<!-- SEG:m68741:entry:auto-134 -->
+Cl–I
+
+<!-- SEG:m68741:entry:auto-135 -->
+210
+
+<!-- SEG:m68741:entry:auto-136 -->
+[[MATH:9]]
+
+<!-- SEG:m68741:entry:auto-137 -->
+1080
+
+<!-- SEG:m68741:entry:auto-138 -->
+F–F
+
+<!-- SEG:m68741:entry:auto-139 -->
+160
+
+<!-- SEG:m68741:entry:auto-140 -->
+Br–Br
+
+<!-- SEG:m68741:entry:auto-141 -->
+190
+
+<!-- SEG:m68741:entry:auto-142 -->
+C–F
+
+<!-- SEG:m68741:entry:auto-143 -->
+439
+
+<!-- SEG:m68741:entry:auto-144 -->
+F–Si
+
+<!-- SEG:m68741:entry:auto-145 -->
+540
+
+<!-- SEG:m68741:entry:auto-146 -->
+Br–I
+
+<!-- SEG:m68741:entry:auto-147 -->
+180
+
+<!-- SEG:m68741:entry:auto-148 -->
+C–Si
+
+<!-- SEG:m68741:entry:auto-149 -->
+360
+
+<!-- SEG:m68741:entry:auto-150 -->
+F–P
+
+<!-- SEG:m68741:entry:auto-151 -->
+489
+
+<!-- SEG:m68741:entry:auto-152 -->
+I–I
+
+<!-- SEG:m68741:entry:auto-153 -->
+150
+
+<!-- SEG:m68741:entry:auto-154 -->
+C–P
+
+<!-- SEG:m68741:entry:auto-155 -->
+265
+
+<!-- SEG:m68741:entry:auto-156 -->
+F–S
+
+<!-- SEG:m68741:entry:auto-157 -->
+285
+
+<!-- SEG:m68741:entry:auto-158 -->
+Average Bond Lengths and Bond Energies for Some Common Bonds
+
+<!-- SEG:m68741:entry:auto-159 -->
+Bond
+
+<!-- SEG:m68741:entry:auto-160 -->
+Bond Length (Å)
+
+<!-- SEG:m68741:entry:auto-161 -->
+Bond Energy (kJ/mol)
+
+<!-- SEG:m68741:entry:auto-162 -->
+C–C
+
+<!-- SEG:m68741:entry:auto-163 -->
+1.54
+
+<!-- SEG:m68741:entry:auto-164 -->
+345
+
+<!-- SEG:m68741:entry:auto-165 -->
+[[MATH:10]]
+
+<!-- SEG:m68741:entry:auto-166 -->
+1.34
+
+<!-- SEG:m68741:entry:auto-167 -->
+611
+
+<!-- SEG:m68741:entry:auto-168 -->
+[[MATH:11]]
+
+<!-- SEG:m68741:entry:auto-169 -->
+1.20
+
+<!-- SEG:m68741:entry:auto-170 -->
+837
+
+<!-- SEG:m68741:entry:auto-171 -->
+C–N
+
+<!-- SEG:m68741:entry:auto-172 -->
+1.43
+
+<!-- SEG:m68741:entry:auto-173 -->
+290
+
+<!-- SEG:m68741:entry:auto-174 -->
+[[MATH:12]]
+
+<!-- SEG:m68741:entry:auto-175 -->
+1.38
+
+<!-- SEG:m68741:entry:auto-176 -->
+615
+
+<!-- SEG:m68741:entry:auto-177 -->
+[[MATH:13]]
+
+<!-- SEG:m68741:entry:auto-178 -->
+1.16
+
+<!-- SEG:m68741:entry:auto-179 -->
+891
+
+<!-- SEG:m68741:entry:auto-180 -->
+C–O
+
+<!-- SEG:m68741:entry:auto-181 -->
+1.43
+
+<!-- SEG:m68741:entry:auto-182 -->
+350
+
+<!-- SEG:m68741:entry:auto-183 -->
+[[MATH:14]]
+
+<!-- SEG:m68741:entry:auto-184 -->
+1.23
+
 <!-- SEG:m68741:entry:auto-185 -->
-[[MATH:15]]
+741
 
 <!-- SEG:m68741:entry:auto-186 -->
-1.13
+[[MATH:15]]
 
 <!-- SEG:m68741:entry:auto-187 -->
+1.13
+
+<!-- SEG:m68741:entry:auto-188 -->
 1080
 
 <!-- SEG:m68741:para:fs-idp29959728 -->
@@ -616,6 +619,12 @@ Using the bond energies in [[xref:fs-idm44464336]], calculate an approximate ent
 <!-- SEG:m68741:para:fs-idp24314032 -->
 –35 kJ
 
+<!-- SEG:m68741:alt:fs-idp525280-alt -->
+A set of Lewis diagrams show a chemical reaction. The first structure shows a carbon atom with a lone pair of electrons triple bonded to an oxygen with a lone pair of electrons. To the right of this structure is a plus sign, then the number 2 followed by a hydrogen atom single bonded to a hydrogen atom. To the right of this structure is a right-facing arrow followed by a hydrogen atom single bonded to a carbon atom that is single bonded to two hydrogen atoms and an oxygen atom with two lone pairs of electrons. The oxygen atom is also single bonded to a hydrogen atom.
+
+<!-- SEG:m68741:alt:fs-idp144672-alt -->
+A set of Lewis structures show a chemical reaction. The first structure shows two carbon atoms that are double bonded together and are each single bonded to two hydrogen atoms. This structure is followed by a plus sign, then an oxygen atom with two lone pairs of electrons single bonded to two hydrogen atoms. A right-facing arrow leads to a carbon atom single bonded to three hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to two hydrogen atoms and an oxygen atom with two lone pairs of electrons. The oxygen atom is single bonded to a hydrogen atom as well.
+
 <!-- SEG:m68741:note-title:fs-idp88406224-title -->
 Answer:
 
@@ -626,7 +635,7 @@ Answer:
 Ionic Bond Strength and Lattice Energy
 
 <!-- SEG:m68741:para:fs-idm57606496 -->
-An ionic compound is stable because of the electrostatic attraction between its positive and negative ions. The lattice energy of a compound is a measure of the strength of this attraction. The {{term}}lattice energy (Δ[[i:H]][[sub:lattice]]){{/term}} of an ionic compound is defined as the energy required to separate one mole of the solid into its component gaseous ions. For the ionic solid MX, the lattice energy is the enthalpy change of the process:
+An ionic compound is stable because of the electrostatic attraction between its positive and negative ions. The lattice energy of a compound is a measure of the strength of this attraction. The [[term:lattice energy (Δ[[i:H]][[sub:lattice]])|term-00001]] of an ionic compound is defined as the energy required to separate one mole of the solid into its component gaseous ions. For the ionic solid MX, the lattice energy is the enthalpy change of the process:
 
 <!-- SEG:m68741:para:fs-idm45000976 -->
 Note that we are using the convention where the ionic solid is separated into ions, so our lattice energies will be [[i:endothermic]] (positive values). Some texts use the equivalent but opposite convention, defining lattice energy as the energy released when separate ions combine to form a lattice and giving negative (exothermic) values. Thus, if you are looking up lattice energies in another reference, be certain to check which definition is being used. In both cases, a larger magnitude for lattice energy indicates a more stable ionic compound. For sodium chloride, Δ[[i:H]][[sub:lattice]] = 769 kJ. Thus, it requires 769 kJ to separate one mole of solid NaCl into gaseous Na[[sup:+]] and Cl[[sup:–]] ions. When one mole each of gaseous Na[[sup:+]] and Cl[[sup:–]] ions form solid NaCl, 769 kJ of heat is released.
@@ -671,7 +680,7 @@ ZnO would have the larger lattice energy because the Z values of both the cation
 The Born-Haber Cycle
 
 <!-- SEG:m68741:para:fs-idp51725632 -->
-It is not possible to measure lattice energies directly. However, the lattice energy can be calculated using the equation given in the previous section or by using a thermochemical cycle. The {{term}}Born-Haber cycle{{/term}} is an application of Hess’s law that breaks down the formation of an ionic solid into a series of individual steps:
+It is not possible to measure lattice energies directly. However, the lattice energy can be calculated using the equation given in the previous section or by using a thermochemical cycle. The [[term:Born-Haber cycle|term-00002]] is an application of Hess’s law that breaks down the formation of an ionic solid into a series of individual steps:
 
 <!-- SEG:m68741:item:fs-idp77725760-item-1 -->
 [[MATH:19]] the standard enthalpy of formation of the compound
@@ -697,64 +706,67 @@ It is not possible to measure lattice energies directly. However, the lattice en
 <!-- SEG:m68741:caption:CNX_Chem_07_05_BornHaber-caption -->
 The Born-Haber cycle shows the relative energies of each step involved in the formation of an ionic solid from the necessary elements in their reference states.
 
+<!-- SEG:m68741:alt:fs-idp9559440-alt -->
+A diagram is shown. An upward facing arrow is drawn to the far left of the chart and is labeled “H increasing.” A horizontal line is drawn at the bottom of the chart. A downward-facing, vertical arrow to the left side of this line is labeled, “Overall change.” Beside this arrow is another label, “capital delta H subscript f, equals negative 553.5 k J per mol, ( Enthalpy of formation ).” Three horizontal lines, one above the other, and all above the bottom line, are labeled, from bottom to top, as: “C s ( s ), plus sign, one half F subscript 2, ( g ),” “C s ( g ), plus sign, one half F subscript 2, ( g ),” and “C s, superscript positive sign, ( g ), plus sign, one half F subscript 2, ( g ).” Each of these lines is connected by an upward-facing vertical arrow. Each arrow is labeled, “capital delta H subscript 1, equals 76.5 k J per mol, ( Enthalpy of sublimation ),” “capital delta H subscript 2, equals 375.7 k J per mol, ( ionization energy ),” and “capital delta H subscript 3 equals 79.4 k J / mol ( one half dissociation energy ).” Another horizontal line is drawn in the center top portion of the diagram and is labeled “C s, superscript positive sign, ( g ), plus sign, F, ( g ).” There is one more horizontal line drawn to the right of the overall diagram and located halfway down the image. An arrow connects the top line to this line and is labeled, “capital delta H equals negative 328.2 k J / mol ( electron affinity ).” The line is labeled, “C s superscript positive sign ( g ) plus F superscript negative sign ( g ).” The arrow connecting this line to the bottom line is labeled, “negative capital delta H subscript lattice equals negative 756.9 k J / mol.” The arrow points to a label on the bottom line which reads, “C s F ( s ).”
+
 <!-- SEG:m68741:para:fs-idp53345328 -->
 We begin with the elements in their most common states, Cs([[i:s]]) and F[[sub:2]]([[i:g]]). The [[MATH:21]] represents the conversion of solid cesium into a gas, and then the ionization energy converts the gaseous cesium atoms into cations. In the next step, we account for the energy required to break the F–F bond to produce fluorine atoms. Converting one mole of fluorine atoms into fluoride ions is an exothermic process, so this step gives off energy (the electron affinity) and is shown as decreasing along the [[i:y]]-axis. We now have one mole of Cs cations and one mole of F anions. These ions combine to produce solid cesium fluoride. The enthalpy change in this step is the negative of the lattice energy, so it is also an exothermic quantity. The total energy involved in this conversion is equal to the experimentally determined enthalpy of formation, [[MATH:22]] of the compound from its elements. In this case, the overall change is exothermic.
 
 <!-- SEG:m68741:para:fs-idm23453808 -->
 Hess’s law can also be used to show the relationship between the enthalpies of the individual steps and the enthalpy of formation. [[xref:fs-idm33829552]] shows this for fluoride, CsF.
 
-<!-- SEG:m68741:entry:auto-236 -->
+<!-- SEG:m68741:entry:auto-240 -->
 Enthalpy of sublimation of Cs([[i:s]])
 
-<!-- SEG:m68741:entry:auto-237 -->
+<!-- SEG:m68741:entry:auto-241 -->
 [[MATH:23]]
 
-<!-- SEG:m68741:entry:auto-238 -->
+<!-- SEG:m68741:entry:auto-242 -->
 [[MATH:24]]
 
-<!-- SEG:m68741:entry:auto-239 -->
+<!-- SEG:m68741:entry:auto-243 -->
 One-half of the bond energy of F[[sub:2]]
 
-<!-- SEG:m68741:entry:auto-240 -->
+<!-- SEG:m68741:entry:auto-244 -->
 [[MATH:25]]
 
-<!-- SEG:m68741:entry:auto-241 -->
+<!-- SEG:m68741:entry:auto-245 -->
 [[MATH:26]]
 
-<!-- SEG:m68741:entry:auto-242 -->
+<!-- SEG:m68741:entry:auto-246 -->
 Ionization energy of Cs([[i:g]])
 
-<!-- SEG:m68741:entry:auto-243 -->
+<!-- SEG:m68741:entry:auto-247 -->
 [[MATH:27]]
 
-<!-- SEG:m68741:entry:auto-244 -->
+<!-- SEG:m68741:entry:auto-248 -->
 [[MATH:28]]
 
-<!-- SEG:m68741:entry:auto-245 -->
+<!-- SEG:m68741:entry:auto-249 -->
 Electron affinity of F
 
-<!-- SEG:m68741:entry:auto-246 -->
+<!-- SEG:m68741:entry:auto-250 -->
 [[MATH:29]]
 
-<!-- SEG:m68741:entry:auto-247 -->
+<!-- SEG:m68741:entry:auto-251 -->
 [[MATH:30]]
 
-<!-- SEG:m68741:entry:auto-248 -->
+<!-- SEG:m68741:entry:auto-252 -->
 Negative of the lattice energy of CsF([[i:s]])
 
-<!-- SEG:m68741:entry:auto-249 -->
+<!-- SEG:m68741:entry:auto-253 -->
 [[MATH:31]]
 
-<!-- SEG:m68741:entry:auto-250 -->
+<!-- SEG:m68741:entry:auto-254 -->
 [[MATH:32]]
 
-<!-- SEG:m68741:entry:auto-251 -->
+<!-- SEG:m68741:entry:auto-255 -->
 Enthalpy of formation of CsF([[i:s]]), add steps 1–5
 
-<!-- SEG:m68741:entry:auto-252 -->
+<!-- SEG:m68741:entry:auto-256 -->
 [[MATH:33]]
 
-<!-- SEG:m68741:entry:auto-253 -->
+<!-- SEG:m68741:entry:auto-257 -->
 [[MATH:34]]
 
 <!-- SEG:m68741:para:fs-idp28364752 -->
@@ -775,16 +787,16 @@ The strength of a covalent bond is measured by its bond dissociation energy, tha
 <!-- SEG:m68741:title:fs-idm37663600-title -->
 Key Equations
 
-<!-- SEG:m68741:entry:auto-260 -->
+<!-- SEG:m68741:entry:auto-264 -->
 Bond energy for a diatomic molecule: [[MATH:37]]
 
-<!-- SEG:m68741:entry:auto-261 -->
+<!-- SEG:m68741:entry:auto-265 -->
 Enthalpy change: Δ[[i:H]] = ƩD[[sub:bonds broken]] – ƩD[[sub:bonds formed]]
 
-<!-- SEG:m68741:entry:auto-262 -->
+<!-- SEG:m68741:entry:auto-266 -->
 Lattice energy for a solid MX: [[MATH:38]]
 
-<!-- SEG:m68741:entry:auto-263 -->
+<!-- SEG:m68741:entry:auto-267 -->
 Lattice energy for an ionic crystal: [[MATH:39]]
 
 <!-- SEG:m68741:title:fs-idp75946800-title -->
@@ -841,6 +853,9 @@ Using the bond energies in [[xref:fs-idp13638832]], determine the approximate en
 <!-- SEG:m68741:problem:fs-idp220216256 -->
 When a molecule can form two different structures, the structure with the stronger bonds is usually the more stable form. Use bond energies to predict the correct structure of the hydroxylamine molecule:
 
+<!-- SEG:m68741:alt:fs-idm6604832-alt -->
+Two Lewis structures are shows with the word “or” written in between them. The left structure shows a nitrogen atom with one lone pair of electrons single bonded to two hydrogen atoms. It is also bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is bonded to a hydrogen atom. The right structure shows a nitrogen atom single bonded to three hydrogen atoms and an oxygen atom with three lone pairs of electrons.
+
 <!-- SEG:m68741:solution:fs-idm52245504 -->
 The greater bond energy is in the figure on the left. It is the more stable form.
 
@@ -868,14 +883,23 @@ Using the standard enthalpy of formation data in [[docref:Appendix G|m68865]], d
 <!-- SEG:m68741:problem:fs-idp16666592 -->
 Complete the following Lewis structure by adding bonds (not atoms), and then indicate the longest bond:
 
+<!-- SEG:m68741:alt:fs-idp123644096-alt -->
+A Lewis structure is shown that is missing its bonds. It shows a horizontal row of six carbon atoms, equally spaced. Three hydrogen atoms are drawn around the first carbon, two around the second, one above the fifth, and two by the sixth.
+
 <!-- SEG:m68741:solution:fs-idp46735152 -->
 [[BR]][[MEDIA:1]][[BR]] The C–C single bonds are longest.
+
+<!-- SEG:m68741:alt:fs-idp57448112-alt -->
+A Lewis structure is shown. A carbon atom that is single bonded to three hydrogen atoms is bonded to a second carbon atom. The second carbon atom is single bonded to two hydrogen atoms. The second carbon atom is single bonded to a third carbon atom that is triple bonded to a fourth carbon atom and single bonded to a fifth carbon atom. The fifth carbon atom is single bonded to a hydrogen atom and double bonded to a sixth carbon atom that is single bonded to two hydrogen atoms.
 
 <!-- SEG:m68741:problem:fs-idp78457664 -->
 Use the bond energy to calculate an approximate value of Δ[[i:H]] for the following reaction. Which is the more stable form of FNO[[sub:2]]?
 
+<!-- SEG:m68741:alt:fs-idp40889632-alt -->
+Two Lewis structures are shown with a right-facing arrow in between. The left structure shows a nitrogen atom double bonded to an oxygen atom with two lone pairs of electrons. It is also bonded to a fluorine atom and another oxygen atom, each with three lone pairs of electrons. The right structure shows an oxygen atom with two lone pairs of electrons double bonded to a nitrogen atom with one lone pair of electrons. This nitrogen atom is single bonded to an oxygen with two lone pairs of electrons. The oxygen atom is single bonded to a fluorine atom with three lone pairs of electrons.
+
 <!-- SEG:m68741:problem:fs-idp15947888 -->
-Use principles of atomic structure to answer each of the following: {{fn}}This question is taken from the Chemistry Advanced Placement Examination and is used with the permission of the Educational Testing Service.{{/fn}}
+Use principles of atomic structure to answer each of the following: [[fn:This question is taken from the Chemistry Advanced Placement Examination and is used with the permission of the Educational Testing Service.|fs-idp7089072]]
 
 <!-- SEG:m68741:problem:fs-idm3330960 -->
 (a) The radius of the Ca atom is 197 pm; the radius of the Ca[[sup:2+]] ion is 99 pm. Account for the difference.
@@ -892,31 +916,31 @@ Use principles of atomic structure to answer each of the following: {{fn}}This q
 <!-- SEG:m68741:solution:fs-idp77726880 -->
 (a) When two electrons are removed from the valence shell, the Ca radius loses the outermost energy level and reverts to the lower [[i:n]] = 3 level, which is much smaller in radius. (b) The +2 charge on calcium pulls the oxygen much closer compared with K, thereby increasing the lattice energy relative to a less charged ion. (c) Removal of the 4[[i:s]] electron in Ca requires more energy than removal of the 4[[i:s]] electron in K because of the stronger attraction of the nucleus and the extra energy required to break the pairing of the electrons. The second ionization energy for K requires that an electron be removed from a lower energy level, where the attraction is much stronger from the nucleus for the electron. In addition, energy is required to unpair two electrons in a full orbital. For Ca, the second ionization potential requires removing only a lone electron in the exposed outer energy level. (d) In Al, the removed electron is relatively unprotected and unpaired in a [[i:p]] orbital. The higher energy for Mg mainly reflects the unpairing of the 2[[i:s]] electron.
 
-<!-- SEG:m68741:entry:auto-299 -->
+<!-- SEG:m68741:entry:auto-307 -->
 Element
 
-<!-- SEG:m68741:entry:auto-300 -->
+<!-- SEG:m68741:entry:auto-308 -->
 First Ionization Energy (kJ/mol)
 
-<!-- SEG:m68741:entry:auto-301 -->
+<!-- SEG:m68741:entry:auto-309 -->
 Second Ionization Energy (kJ/mol)
 
-<!-- SEG:m68741:entry:auto-302 -->
+<!-- SEG:m68741:entry:auto-310 -->
 K
 
-<!-- SEG:m68741:entry:auto-303 -->
+<!-- SEG:m68741:entry:auto-311 -->
 419
 
-<!-- SEG:m68741:entry:auto-304 -->
+<!-- SEG:m68741:entry:auto-312 -->
 3050
 
-<!-- SEG:m68741:entry:auto-305 -->
+<!-- SEG:m68741:entry:auto-313 -->
 Ca
 
-<!-- SEG:m68741:entry:auto-306 -->
+<!-- SEG:m68741:entry:auto-314 -->
 590
 
-<!-- SEG:m68741:entry:auto-307 -->
+<!-- SEG:m68741:entry:auto-315 -->
 1140
 
 <!-- SEG:m68741:problem:fs-idp794240 -->

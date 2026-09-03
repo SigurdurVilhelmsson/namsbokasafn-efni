@@ -28,7 +28,10 @@
       },
       "media": {
         "id": "fs-idp86676592",
-        "alt": "A photo is shown of the Crab Nebula.",
+        "alt": {
+          "segmentId": "m68728:alt:fs-idp86676592-alt",
+          "text": "A photo is shown of the Crab Nebula."
+        },
         "src": "../../media/CNX_Chem_06_00_CrabNeb.jpg",
         "mimeType": "image/jpeg"
       }

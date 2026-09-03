@@ -14,19 +14,19 @@ Express hydronium and hydroxide ion concentrations on the pH and pOH scales
 Perform calculations relating pH and pOH
 
 <!-- SEG:m68804:para:fs-idp11137424 -->
-As discussed earlier, hydronium and hydroxide ions are present both in pure water and in all aqueous solutions, and their concentrations are inversely proportional as determined by the ion product of water ([[i:K]][[sub:w]]). The concentrations of these ions in a solution are often critical determinants of the solution’s properties and the chemical behaviors of its other solutes, and specific vocabulary has been developed to describe these concentrations in relative terms. A solution is {{term}}neutral{{/term}} if it contains equal concentrations of hydronium and hydroxide ions; {{term}}acidic{{/term}} if it contains a greater concentration of hydronium ions than hydroxide ions; and {{term}}basic{{/term}} if it contains a lesser concentration of hydronium ions than hydroxide ions.
+As discussed earlier, hydronium and hydroxide ions are present both in pure water and in all aqueous solutions, and their concentrations are inversely proportional as determined by the ion product of water ([[i:K]][[sub:w]]). The concentrations of these ions in a solution are often critical determinants of the solution’s properties and the chemical behaviors of its other solutes, and specific vocabulary has been developed to describe these concentrations in relative terms. A solution is [[term:neutral|term-00001]] if it contains equal concentrations of hydronium and hydroxide ions; [[term:acidic|term-00002]] if it contains a greater concentration of hydronium ions than hydroxide ions; and [[term:basic|term-00003]] if it contains a lesser concentration of hydronium ions than hydroxide ions.
 
 <!-- SEG:m68804:para:fs-idm21650320 -->
 A common means of expressing quantities that may span many orders of magnitude is to use a logarithmic scale. One such scale that is very popular for chemical concentrations and equilibrium constants is based on the p-function, defined as shown where “X” is the quantity of interest and “log” is the base-10 logarithm:
 
 <!-- SEG:m68804:para:fs-idm40569744 -->
-The {{term}}pH{{/term}} of a solution is therefore defined as shown here, where [H[[sub:3]]O[[sup:+]]] is the molar concentration of hydronium ion in the solution:
+The [[term:pH|term-00004]] of a solution is therefore defined as shown here, where [H[[sub:3]]O[[sup:+]]] is the molar concentration of hydronium ion in the solution:
 
 <!-- SEG:m68804:para:fs-idm112635600 -->
 Rearranging this equation to isolate the hydronium ion molarity yields the equivalent expression:
 
 <!-- SEG:m68804:para:fs-idp55544688 -->
-Likewise, the hydroxide ion molarity may be expressed as a p-function, or {{term}}pOH{{/term}}:
+Likewise, the hydroxide ion molarity may be expressed as a p-function, or [[term:pOH|term-00005]]:
 
 <!-- SEG:m68804:para:fs-idp67153952 -->
 or
@@ -93,6 +93,9 @@ pH > 7
 
 <!-- SEG:m68804:caption:CNX_Chem_14_02_phscale-caption -->
 The pH and pOH scales represent concentrations of H[[sub:3]]O[[sup:+]] and OH[[sup:−]], respectively. The pH and pOH values of some common substances at 25 °C are shown in this chart.
+
+<!-- SEG:m68804:alt:fs-idm15160336-alt -->
+A table is provided with 5 columns. The first column is labeled “left bracket H subscript 3 O superscript plus right bracket (M).” Powers of ten are listed in the column beginning at 10 superscript 1, including 10 superscript 0 or 1, 10 superscript negative 1, decreasing by single powers of 10 to 10 superscript negative 15. The second column is labeled “left bracket O H superscript negative right bracket (M).” Powers of ten are listed in the column beginning at 10 superscript negative 15, increasing by single powers of 10 to including 10 superscript 0 or 1, and 10 superscript 1. The third column is labeled “p H.” Values listed in this column are integers beginning at negative 1, increasing by ones up to 14. The fourth column is labeled “p O H.” Values in this column are integers beginning at 15, decreasing by ones up to negative 1. The fifth column is labeled “Sample Solution.” A vertical line at the left of the column has tick marks corresponding to each p H level in the table. Substances are listed next to this line segment with line segments connecting them to the line to show approximate p H and p O H values. 1 M H C l is listed at a p H of 0. Gastric juices are listed at a p H of about 1.5. Lime juice is listed at a p H of about 2, followed by 1 M C H subscript 3 C O subscript 2 H, followed by stomach acid at a p H value of nearly 3. Wine is listed around 3.5. Coffee is listed just past 5. Pure water is listed at a p H of 7. Pure blood is just beyond 7. Milk of Magnesia is listed just past a p H of 10.5. Household ammonia is listed just before a pH of 12. 1 M N a O H is listed at a p H of 0. To the right of this labeled arrow is an arrow that points up and down through the height of the column. A beige strip passes through the table and to this double headed arrow at p H 7. To the left of the double headed arrow in this beige strip is the label “neutral.” A narrow beige strip runs through the arrow. Just above and below this region, the arrow is purple. It gradually turns to a bright red as it extends upward. At the top of the arrow, near the head of the arrow is the label “acidic.” Similarly, the lower region changes color from purple to blue moving to the bottom of the column. The head at this end of the arrow is labeled “basic.”
 
 <!-- SEG:m68804:example-title:fs-idp62701056-title -->
 Calculation of pH from [H[[sub:3]]O[[sup:+]]]
@@ -172,6 +175,9 @@ For further information on acid rain, visit this [[link:website|http://openstax.
 <!-- SEG:m68804:caption:CNX_Chem_14_02_AcidRain-caption -->
 (a) Acid rain makes trees more susceptible to drought and insect infestation, and depletes nutrients in the soil. (b) It also is corrodes statues that are carved from marble or limestone. (credit a: modification of work by Chris M Morris; credit b: modification of work by “Eden, Janine and Jim”/Flickr)
 
+<!-- SEG:m68804:alt:fs-idp11790976-alt -->
+Two photos are shown. Photograph a on the left shows the upper portion of trees against a bright blue sky. The tops of several trees at the center of the photograph have bare branches and appear to be dead. Image b shows a statue of a man that appears to from the revolutionary war era in either marble or limestone.
+
 <!-- SEG:m68804:example-title:fs-idm90070400-title -->
 Calculation of pOH
 
@@ -208,11 +214,17 @@ The acidity of a solution is typically assessed experimentally by measurement of
 <!-- SEG:m68804:caption:CNX_Chem_14_02_pHMeter-caption -->
 (a) A research-grade pH meter used in a laboratory can have a resolution of 0.001 pH units, an accuracy of ± 0.002 pH units, and may cost in excess of $1000. (b) A portable pH meter has lower resolution (0.01 pH units), lower accuracy (± 0.2 pH units), and a far lower price tag. (credit b: modification of work by Jacopo Werther)
 
+<!-- SEG:m68804:alt:fs-idp134372032-alt -->
+This figure contains two images. The first, image a, is of an analytical digital p H meter on a laboratory counter. The second, image b, is of a portable hand held digital p H meter.
+
 <!-- SEG:m68804:para:fs-idp57700960 -->
 The pH of a solution may also be visually estimated using colored indicators ([[xref:CNX_Chem_14_02_indicator]]). The acid-base equilibria that enable use of these indicator dyes for pH measurements are described in a later section of this chapter.
 
 <!-- SEG:m68804:caption:CNX_Chem_14_02_indicator-caption -->
 (a) A solution containing a dye mixture, called universal indicator, takes on different colors depending upon its pH. (b) Convenient test strips, called pH paper, contain embedded indicator dyes that yield pH-dependent color changes on contact with aqueous solutions.(credit: modification of work by Sahar Atwa)
+
+<!-- SEG:m68804:alt:fs-idp11928656-alt -->
+This figure contains two images. The first shows a variety of colors of solutions in labeled beakers. A red solution in a beaker is labeled “0.10 M H C l.” An orange solution is labeled “0.10 M C H subscript 3 C O O H.” A yellow-orange solution is labeled “0.1 M N H subscript 4 C l.” A yellow solution is labeled “deionized water.” A second solution beaker is labeled “0.10 M K C l.” A green solution is labeled “0.10 M aniline.” A blue solution is labeled “0.10 M N H subscript 4 C l (a q).” A final beaker containing a dark blue solution is labeled “0.10 M N a O H.” Image b shows pHydrion paper that is used for measuring pH in the range of p H from 1 to 12. The color scale for identifying p H based on color is shown along with several of the test strips used to evaluate p H.
 
 <!-- SEG:m68804:title:fs-idm51820592-title -->
 Key Concepts and Summary
@@ -223,19 +235,19 @@ Concentrations of hydronium and hydroxide ions in aqueous media are often repres
 <!-- SEG:m68804:title:fs-idp66998992-title -->
 Key Equations
 
-<!-- SEG:m68804:entry:auto-76 -->
+<!-- SEG:m68804:entry:auto-80 -->
 [[MATH:18]]
 
-<!-- SEG:m68804:entry:auto-77 -->
+<!-- SEG:m68804:entry:auto-81 -->
 pOH = −log[OH[[sup:−]]]
 
-<!-- SEG:m68804:entry:auto-78 -->
+<!-- SEG:m68804:entry:auto-82 -->
 [H[[sub:3]]O[[sup:+]]] = 10[[sup:−pH]]
 
-<!-- SEG:m68804:entry:auto-79 -->
+<!-- SEG:m68804:entry:auto-83 -->
 [OH[[sup:−]]] = 10[[sup:−pOH]]
 
-<!-- SEG:m68804:entry:auto-80 -->
+<!-- SEG:m68804:entry:auto-84 -->
 pH + pOH = p[[i:K]][[sub:w]] = 14.00 at 25 °C
 
 <!-- SEG:m68804:title:fs-idm61137872-title -->

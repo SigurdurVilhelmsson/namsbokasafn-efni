@@ -1,0 +1,201 @@
+{
+  "moduleId": "m00128",
+  "title": {
+    "segmentId": "m00128:title:auto-1",
+    "text": "Elimination Reactions: Zaitsev’s Rule"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "011c4bf1-0169-426a-94e8-27a991db92e5"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00128:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00128:alt:fig-00001-alt",
+          "text": "The substitution and elimination reactions of a bromoalkane with a hydroxyl group. Substitution forms an alcohol and bromide ion. Elimination forms an alkene, water, and bromide ion."
+        },
+        "src": "../../media/OChem_11_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00128:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00128:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00128:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00128:alt:fig-00002-alt",
+          "text": "Two reactions in presence of sodium ethoxide and ethanol. 2-Bromobutane reacts to form 2-butene (81%) and 1-butene (19%). In the second reaction, 2-bromo-2-methylbutane yields 2-methyl-2-butene (70%) and 2-methyl-1-butene (30%)."
+        },
+        "src": "../../media/OChem_11_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00128:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00128:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00128:alt:fig-00003-alt",
+          "text": "E1 reaction mechanism. Halide leaves alkyl halide to produce carbocation, and base abstracts hydrogen on adjacent carbon to yield alkene."
+        },
+        "src": "../../media/OChem_11_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00128:alt:fig-00004-alt",
+          "text": "E2 reaction mechanism. Base abstracts hydrogen adjacent to halogen on alkyl halide; movement of electrons results in halide leaving and forming double bond, all in one step."
+        },
+        "src": "../../media/OChem_11_07_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00128:alt:fig-00007-alt",
+          "text": "E1cb reaction mechanism. Base abstracts hydrogen adjacent to halogen on alkyl halide, producing carbanion intermediate. Movement of electrons results in halide leaving, forming double bond."
+        },
+        "src": "../../media/OChem_11_07_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00128:example-title:exam-00001-title",
+        "text": "Predicting the Product of an Elimination Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00128:para:para-00008"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00128:para:para-00009",
+          "title": {
+            "segmentId": "m00128:para-title:para-00009-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "title": {
+            "segmentId": "m00128:para-title:para-00010-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00128:alt:fig-00005-alt",
+          "text": "The reaction of 1-chloro-1-methylcyclohexane with K O H and ethanol forms an unknown product, depicted by a question mark."
+        },
+        "src": "../../media/OChem_11_07_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00128:alt:fig-00006-alt",
+          "text": "The reaction of 1-chloro-1-methylcyclohexane with K O H and ethanol  forms 1-methylcyclohexene (major) and methylenecyclohexane (minor)."
+        },
+        "src": "../../media/OChem_11_07_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00128:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

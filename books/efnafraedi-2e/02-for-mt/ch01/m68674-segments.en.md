@@ -23,10 +23,10 @@ Measurements provide much of the information that informs the hypotheses, theori
 The number in the measurement can be represented in different ways, including decimal form and scientific notation. (Scientific notation is also known as exponential notation; a review of this topic can be found in [[docref:Appendix B|m68860]].) For example, the maximum takeoff weight of a Boeing 777-200ER airliner is 298,000 kilograms, which can also be written as 2.98 [[MATH:1]] 10[[sup:5]] kg. The mass of the average mosquito is about 0.0000025 kilograms, which can be written as 2.5 [[MATH:2]] 10[[sup:−6]] kg.
 
 <!-- SEG:m68674:para:fs-idp178656 -->
-{{term}}Units{{/term}}, such as liters, pounds, and centimeters, are standards of comparison for measurements. A 2-liter bottle of a soft drink contains a volume of beverage that is twice that of the accepted volume of 1 liter. The meat used to prepare a 0.25-pound hamburger weighs one-fourth as much as the accepted weight of 1 pound. Without units, a number can be meaningless, confusing, or possibly life threatening. Suppose a doctor prescribes phenobarbital to control a patient’s seizures and states a dosage of “100” without specifying units. Not only will this be confusing to the medical professional giving the dose, but the consequences can be dire: 100 mg given three times per day can be effective as an anticonvulsant, but a single dose of 100 g is more than 10 times the lethal amount.
+[[term:Units|term-00001]], such as liters, pounds, and centimeters, are standards of comparison for measurements. A 2-liter bottle of a soft drink contains a volume of beverage that is twice that of the accepted volume of 1 liter. The meat used to prepare a 0.25-pound hamburger weighs one-fourth as much as the accepted weight of 1 pound. Without units, a number can be meaningless, confusing, or possibly life threatening. Suppose a doctor prescribes phenobarbital to control a patient’s seizures and states a dosage of “100” without specifying units. Not only will this be confusing to the medical professional giving the dose, but the consequences can be dire: 100 mg given three times per day can be effective as an anticonvulsant, but a single dose of 100 g is more than 10 times the lethal amount.
 
 <!-- SEG:m68674:para:fs-idm144392592 -->
-The measurement units for seven fundamental properties (“base units”) are listed in [[xref:fs-idm81346144]]. The standards for these units are fixed by international agreement, and they are called the {{term}}International System of Units{{/term}} or {{term}}SI Units{{/term}} (from the French, [[i:Le Système International d’Unités]]). SI units have been used by the United States National Institute of Standards and Technology (NIST) since 1964. Units for other properties may be derived from these seven base units.
+The measurement units for seven fundamental properties (“base units”) are listed in [[xref:fs-idm81346144]]. The standards for these units are fixed by international agreement, and they are called the [[term:International System of Units|term-00002]] or [[term:SI Units|term-00003]] (from the French, [[i:Le Système International d’Unités]]). SI units have been used by the United States National Institute of Standards and Technology (NIST) since 1964. Units for other properties may be derived from these seven base units.
 
 <!-- SEG:m68674:entry:auto-11 -->
 Base Units of the SI System
@@ -263,31 +263,37 @@ SI Base Units
 Length
 
 <!-- SEG:m68674:para:fs-idm64613648 -->
-The standard unit of {{term}}length{{/term}} in both the SI and original metric systems is the {{term}}meter (m){{/term}}. A meter was originally specified as 1/10,000,000 of the distance from the North Pole to the equator. It is now defined as the distance light in a vacuum travels in 1/299,792,458 of a second. A meter is about 3 inches longer than a yard ([[xref:CNX_Chem_01_04_MYdCmIn]]); one meter is about 39.37 inches or 1.094 yards. Longer distances are often reported in kilometers (1 km = 1000 m = 10[[sup:3]] m), whereas shorter distances can be reported in centimeters (1 cm = 0.01 m = 10[[sup:−2]] m) or millimeters (1 mm = 0.001 m = 10[[sup:−3]] m).
+The standard unit of [[term:length|term-00004]] in both the SI and original metric systems is the [[term:meter (m)|term-00005]]. A meter was originally specified as 1/10,000,000 of the distance from the North Pole to the equator. It is now defined as the distance light in a vacuum travels in 1/299,792,458 of a second. A meter is about 3 inches longer than a yard ([[xref:CNX_Chem_01_04_MYdCmIn]]); one meter is about 39.37 inches or 1.094 yards. Longer distances are often reported in kilometers (1 km = 1000 m = 10[[sup:3]] m), whereas shorter distances can be reported in centimeters (1 cm = 0.01 m = 10[[sup:−2]] m) or millimeters (1 mm = 0.001 m = 10[[sup:−3]] m).
 
 <!-- SEG:m68674:caption:CNX_Chem_01_04_MYdCmIn-caption -->
 The relative lengths of 1 m, 1 yd, 1 cm, and 1 in. are shown (not actual size), as well as comparisons of 2.54 cm and 1 in., and of 1 m and 1.094 yd.
+
+<!-- SEG:m68674:alt:fs-idm2958720-alt -->
+One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.
 
 <!-- SEG:m68674:title:fs-idm1313360-title -->
 Mass
 
 <!-- SEG:m68674:para:fs-idp222999216 -->
-The standard unit of mass in the SI system is the {{term}}kilogram (kg){{/term}}. The kilogram was previously defined by the International Union of Pure and Applied Chemistry ({{term}}IUPAC{{/term}}) as the mass of a specific reference object. This object was originally one liter of pure water, and more recently it was a metal cylinder made from a platinum-iridium alloy with a height and diameter of 39 mm ([[xref:CNX_Chem_01_04_Kilogram]]). In May 2019, this definition was changed to one that is based instead on precisely measured values of several fundamental physical constants. {{fn}}For details see https://www.nist.gov/pml/weights-and-measures/si-units-mass{{/fn}}. One kilogram is about 2.2 pounds. The gram (g) is exactly equal to 1/1000 of the mass of the kilogram (10[[sup:−3]] kg).
+The standard unit of mass in the SI system is the [[term:kilogram (kg)|term-00006]]. The kilogram was previously defined by the International Union of Pure and Applied Chemistry ([[term:IUPAC|term-00007]]) as the mass of a specific reference object. This object was originally one liter of pure water, and more recently it was a metal cylinder made from a platinum-iridium alloy with a height and diameter of 39 mm ([[xref:CNX_Chem_01_04_Kilogram]]). In May 2019, this definition was changed to one that is based instead on precisely measured values of several fundamental physical constants. [[fn:For details see https://www.nist.gov/pml/weights-and-measures/si-units-mass|eip-idm376462832]]. One kilogram is about 2.2 pounds. The gram (g) is exactly equal to 1/1000 of the mass of the kilogram (10[[sup:−3]] kg).
 
 <!-- SEG:m68674:caption:CNX_Chem_01_04_Kilogram-caption -->
 This replica prototype kilogram as previously defined is housed at the National Institute of Standards and Technology (NIST) in Maryland. (credit: National Institutes of Standards and Technology)
+
+<!-- SEG:m68674:alt:fs-idm80189648-alt -->
+The photo shows a small metal cylinder on a stand. The cylinder is covered with 2 glass lids, with the smaller glass lid encased within the larger glass lid.
 
 <!-- SEG:m68674:title:fs-idm1531808-title -->
 Temperature
 
 <!-- SEG:m68674:para:fs-idp3379184 -->
-Temperature is an intensive property. The SI unit of temperature is the {{term}}kelvin (K){{/term}}. The IUPAC convention is to use kelvin (all lowercase) for the word, K (uppercase) for the unit symbol, and neither the word “degree” nor the degree symbol (°). The degree {{term}}Celsius (°C){{/term}} is also allowed in the SI system, with both the word “degree” and the degree symbol used for Celsius measurements. Celsius degrees are the same magnitude as those of kelvin, but the two scales place their zeros in different places. Water freezes at 273.15 K (0 °C) and boils at 373.15 K (100 °C), and normal human body temperature is approximately 310 K (37 °C). The conversion between these two units and the Fahrenheit scale will be discussed later in this chapter.
+Temperature is an intensive property. The SI unit of temperature is the [[term:kelvin (K)|term-00008]]. The IUPAC convention is to use kelvin (all lowercase) for the word, K (uppercase) for the unit symbol, and neither the word “degree” nor the degree symbol (°). The degree [[term:Celsius (°C)|term-00009]] is also allowed in the SI system, with both the word “degree” and the degree symbol used for Celsius measurements. Celsius degrees are the same magnitude as those of kelvin, but the two scales place their zeros in different places. Water freezes at 273.15 K (0 °C) and boils at 373.15 K (100 °C), and normal human body temperature is approximately 310 K (37 °C). The conversion between these two units and the Fahrenheit scale will be discussed later in this chapter.
 
 <!-- SEG:m68674:title:fs-idm101578432-title -->
 Time
 
 <!-- SEG:m68674:para:fs-idm101738864 -->
-The SI base unit of time is the {{term}}second (s){{/term}}. Small and large time intervals can be expressed with the appropriate prefixes; for example, 3 microseconds = 0.000003 s = 3 [[MATH:14]] 10[[sup:−6]] and 5 megaseconds = 5,000,000 s = 5 [[MATH:15]] 10[[sup:6]] s. Alternatively, hours, days, and years can be used.
+The SI base unit of time is the [[term:second (s)|term-00010]]. Small and large time intervals can be expressed with the appropriate prefixes; for example, 3 microseconds = 0.000003 s = 3 [[MATH:14]] 10[[sup:−6]] and 5 megaseconds = 5,000,000 s = 5 [[MATH:15]] 10[[sup:6]] s. Alternatively, hours, days, and years can be used.
 
 <!-- SEG:m68674:para:fs-idp389936 -->
 The initial units of the metric system, which eventually evolved into the SI system, were established in France during the French Revolution. The original standards for the meter and the kilogram were adopted there in 1799 and eventually by other countries. This section introduces four of the SI base units commonly used in chemistry. Other SI units will be introduced in subsequent chapters.
@@ -299,16 +305,19 @@ Derived SI Units
 Volume
 
 <!-- SEG:m68674:para:fs-idm77137776 -->
-{{term}}Volume{{/term}} is the measure of the amount of space occupied by an object. The standard SI unit of volume is defined by the base unit of length ([[xref:CNX_Chem_01_04_Volume]]). The standard volume is a {{term}}cubic meter (m[[sup:3]]){{/term}}, a cube with an edge length of exactly one meter. To dispense a cubic meter of water, we could build a cubic box with edge lengths of exactly one meter. This box would hold a cubic meter of water or any other substance.
+[[term:Volume|term-00011]] is the measure of the amount of space occupied by an object. The standard SI unit of volume is defined by the base unit of length ([[xref:CNX_Chem_01_04_Volume]]). The standard volume is a [[term:cubic meter (m[[sup:3]])|term-00012]], a cube with an edge length of exactly one meter. To dispense a cubic meter of water, we could build a cubic box with edge lengths of exactly one meter. This box would hold a cubic meter of water or any other substance.
 
 <!-- SEG:m68674:para:fs-idm81813264 -->
-A more commonly used unit of volume is derived from the decimeter (0.1 m, or 10 cm). A cube with edge lengths of exactly one decimeter contains a volume of one cubic decimeter (dm[[sup:3]]). A {{term}}liter (L){{/term}} is the more common name for the cubic decimeter. One liter is about 1.06 quarts.
+A more commonly used unit of volume is derived from the decimeter (0.1 m, or 10 cm). A cube with edge lengths of exactly one decimeter contains a volume of one cubic decimeter (dm[[sup:3]]). A [[term:liter (L)|term-00013]] is the more common name for the cubic decimeter. One liter is about 1.06 quarts.
 
 <!-- SEG:m68674:para:fs-idm163691744 -->
-A {{term}}cubic centimeter (cm[[sup:3]]){{/term}} is the volume of a cube with an edge length of exactly one centimeter. The abbreviation [[b:cc]] (for [[b:c]]ubic [[b:c]]entimeter) is often used by health professionals. A cubic centimeter is equivalent to a {{term}}milliliter (mL){{/term}} and is 1/1000 of a liter.
+A [[term:cubic centimeter (cm[[sup:3]])|term-00014]] is the volume of a cube with an edge length of exactly one centimeter. The abbreviation [[b:cc]] (for [[b:c]]ubic [[b:c]]entimeter) is often used by health professionals. A cubic centimeter is equivalent to a [[term:milliliter (mL)|term-00015]] and is 1/1000 of a liter.
 
 <!-- SEG:m68674:caption:CNX_Chem_01_04_Volume-caption -->
 (a) The relative volumes are shown for cubes of 1 m[[sup:3]], 1 dm[[sup:3]] (1 L), and 1 cm[[sup:3]] (1 mL) (not to scale). (b) The diameter of a dime is compared relative to the edge length of a 1-cm[[sup:3]] (1-mL) cube.
+
+<!-- SEG:m68674:alt:fs-idm75233216-alt -->
+Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.
 
 <!-- SEG:m68674:title:fs-idm18447104-title -->
 Density
@@ -317,81 +326,81 @@ Density
 We use the mass and volume of a substance to determine its density. Thus, the units of density are defined by the base units of mass and length.
 
 <!-- SEG:m68674:para:fs-idm74744496 -->
-The {{term}}density{{/term}} of a substance is the ratio of the mass of a sample of the substance to its volume. The SI unit for density is the kilogram per cubic meter (kg/m[[sup:3]]). For many situations, however, this is an inconvenient unit, and we often use grams per cubic centimeter (g/cm[[sup:3]]) for the densities of solids and liquids, and grams per liter (g/L) for gases. Although there are exceptions, most liquids and solids have densities that range from about 0.7 g/cm[[sup:3]] (the density of gasoline) to 19 g/cm[[sup:3]] (the density of gold). The density of air is about 1.2 g/L. [[xref:fs-idm45639696]] shows the densities of some common substances.
-
-<!-- SEG:m68674:entry:auto-108 -->
-Densities of Common Substances
-
-<!-- SEG:m68674:entry:auto-109 -->
-Solids
-
-<!-- SEG:m68674:entry:auto-110 -->
-Liquids
+The [[term:density|term-00016]] of a substance is the ratio of the mass of a sample of the substance to its volume. The SI unit for density is the kilogram per cubic meter (kg/m[[sup:3]]). For many situations, however, this is an inconvenient unit, and we often use grams per cubic centimeter (g/cm[[sup:3]]) for the densities of solids and liquids, and grams per liter (g/L) for gases. Although there are exceptions, most liquids and solids have densities that range from about 0.7 g/cm[[sup:3]] (the density of gasoline) to 19 g/cm[[sup:3]] (the density of gold). The density of air is about 1.2 g/L. [[xref:fs-idm45639696]] shows the densities of some common substances.
 
 <!-- SEG:m68674:entry:auto-111 -->
-Gases (at 25 °C and 1 atm)
+Densities of Common Substances
 
 <!-- SEG:m68674:entry:auto-112 -->
-ice (at 0 °C) 0.92 g/cm[[sup:3]]
+Solids
 
 <!-- SEG:m68674:entry:auto-113 -->
-water 1.0 g/cm[[sup:3]]
+Liquids
 
 <!-- SEG:m68674:entry:auto-114 -->
-dry air 1.20 g/L
+Gases (at 25 °C and 1 atm)
 
 <!-- SEG:m68674:entry:auto-115 -->
-oak (wood) 0.60–0.90 g/cm[[sup:3]]
+ice (at 0 °C) 0.92 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-116 -->
-ethanol 0.79 g/cm[[sup:3]]
+water 1.0 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-117 -->
-oxygen 1.31 g/L
+dry air 1.20 g/L
 
 <!-- SEG:m68674:entry:auto-118 -->
-iron 7.9 g/cm[[sup:3]]
+oak (wood) 0.60–0.90 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-119 -->
-acetone 0.79 g/cm[[sup:3]]
+ethanol 0.79 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-120 -->
-nitrogen 1.14 g/L
+oxygen 1.31 g/L
 
 <!-- SEG:m68674:entry:auto-121 -->
-copper 9.0 g/cm[[sup:3]]
+iron 7.9 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-122 -->
-glycerin 1.26 g/cm[[sup:3]]
+acetone 0.79 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-123 -->
-carbon dioxide 1.80 g/L
+nitrogen 1.14 g/L
 
 <!-- SEG:m68674:entry:auto-124 -->
-lead 11.3 g/cm[[sup:3]]
+copper 9.0 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-125 -->
-olive oil 0.92 g/cm[[sup:3]]
+glycerin 1.26 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-126 -->
-helium 0.16 g/L
+carbon dioxide 1.80 g/L
 
 <!-- SEG:m68674:entry:auto-127 -->
-silver 10.5 g/cm[[sup:3]]
+lead 11.3 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-128 -->
-gasoline 0.70–0.77 g/cm[[sup:3]]
+olive oil 0.92 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-129 -->
-neon 0.83 g/L
+helium 0.16 g/L
 
 <!-- SEG:m68674:entry:auto-130 -->
-gold 19.3 g/cm[[sup:3]]
+silver 10.5 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-131 -->
-mercury 13.6 g/cm[[sup:3]]
+gasoline 0.70–0.77 g/cm[[sup:3]]
 
 <!-- SEG:m68674:entry:auto-132 -->
+neon 0.83 g/L
+
+<!-- SEG:m68674:entry:auto-133 -->
+gold 19.3 g/cm[[sup:3]]
+
+<!-- SEG:m68674:entry:auto-134 -->
+mercury 13.6 g/cm[[sup:3]]
+
+<!-- SEG:m68674:entry:auto-135 -->
 radon 9.1 g/L
 
 <!-- SEG:m68674:para:fs-idm81523280 -->
@@ -481,7 +490,7 @@ Measurements provide quantitative information that is critical in studying and p
 <!-- SEG:m68674:title:fs-idm313032912-title -->
 Key Equations
 
-<!-- SEG:m68674:entry:auto-162 -->
+<!-- SEG:m68674:entry:auto-165 -->
 [[MATH:16]]
 
 <!-- SEG:m68674:title:fs-idm357067232-title -->

@@ -1,0 +1,186 @@
+{
+  "moduleId": "m00064",
+  "title": {
+    "segmentId": "m00064:title:auto-1",
+    "text": "Calculating the Degree of Unsaturation"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c04ebfe4-70fd-4b65-8fa3-587a61666650"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00064:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00064:alt:fig-00001-alt",
+          "text": "The structures of ethylene: C 2 H 4 (fewer hydrogens-unsaturated) and ethane: C 2 H 6 (more hydrogens-saturated)."
+        },
+        "src": "../../media/OChem_07_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00064:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00064:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00064:alt:fig-00002-alt",
+          "text": "Structures of compounds with molecular formula of C 6 H 10 are 4-methyl-1,3-pentadiene (two double bonds), cyclohexene (one ring, one double bond), bicyclo[3.1.0]hexane (two rings), and 4-methyl-2-pentyne (one triple bond)."
+        },
+        "src": "../../media/OChem_07_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00064:para:para-00004"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00064:item:list-00001-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00064:item:list-00001-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m00064:item:list-00001-item-3"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00064:alt:fig-00003-alt",
+          "text": "The structure of 1,4-dibromobut-2-ene is shown as equivalently unsaturated to 2-butene. The formula C 4 H 6 Br 2 is shown as equivalently unsaturated to C 4 H 8."
+        },
+        "src": "../../media/OChem_07_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00064:alt:fig-00004-alt",
+          "text": "The structure of penta-2,4-diene-1-ol is shown as equivalently unsaturated to penta-1,3-diene. The formula C 5 H 8 O is shown as equivalently unsaturated to C 5 H 8."
+        },
+        "src": "../../media/OChem_07_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00064:alt:fig-00005-alt",
+          "text": "The structure of 1-aminocyclopent-3-ene is shown as equivalently unsaturated to cyclopentene. The formula C 5 H 9 N is shown as equivalently unsaturated to C 5 H 8."
+        },
+        "src": "../../media/OChem_07_02_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00064:para:para-00005"
+    },
+    {
+      "type": "list",
+      "id": "list-00002",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00064:item:list-00002-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00064:item:list-00002-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m00064:item:list-00002-item-3"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00064:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

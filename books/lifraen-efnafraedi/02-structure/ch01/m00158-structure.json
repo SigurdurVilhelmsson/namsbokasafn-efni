@@ -1,0 +1,50 @@
+{
+  "moduleId": "m00158",
+  "title": {
+    "segmentId": "m00158:title:auto-1",
+    "text": "Atomic Structure: The Nucleus"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3b5ae194-3c8a-499e-99fe-20a847980581"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00158:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00158:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00158:alt:fig-00001-alt",
+          "text": "Two schematic views of the structure of an atom featuring a nucleus at the center and encircled by orbiting electrons."
+        },
+        "src": "../../media/OChem_01_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00158:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00158:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00158:para:para-00004"
+    }
+  ],
+  "sectionOrder": 1
+}

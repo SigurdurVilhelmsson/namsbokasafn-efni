@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68801",
-  "extractedAt": "2026-07-07T09:12:42.850Z",
+  "extractedAt": "2026-08-31T19:08:41.694Z",
   "sourceHash": "3d150e08f4d261e6",
-  "segmentCount": 263,
+  "segmentCount": 268,
   "segmentIds": [
     "m68801:title:auto-1",
     "m68801:abstract:auto-2",
@@ -46,6 +46,8 @@
     "m68801:para:fs-idp184338272",
     "m68801:para:fs-idp379196944",
     "m68801:para:fs-idp65960208",
+    "m68801:alt:fs-idp68301536-alt",
+    "m68801:alt:fs-idp182836896-alt",
     "m68801:note-title:fs-idp119469616-title",
     "m68801:para:fs-idp65960208",
     "m68801:title:fs-idp165591440-title",
@@ -97,6 +99,7 @@
     "m68801:para:fs-idp222432912",
     "m68801:item:fs-idp88175472-item-1",
     "m68801:item:fs-idp88175472-item-2",
+    "m68801:alt:fs-idp123608720-alt",
     "m68801:item:fs-idp88175472-item-3",
     "m68801:item:fs-idp88175472-item-4",
     "m68801:note-title:fs-idp128998512-title",
@@ -117,6 +120,7 @@
     "m68801:para-title:fs-idm21377744-title",
     "m68801:para:fs-idm21377744",
     "m68801:para:fs-idp139296",
+    "m68801:alt:fs-idm90952112-alt",
     "m68801:note-title:fs-idm106766656-title",
     "m68801:para:fs-idp139296",
     "m68801:title:fs-idp274270144-title",
@@ -234,6 +238,7 @@
     "m68801:problem:fs-idp152513728",
     "m68801:solution:fs-idp187359840",
     "m68801:problem:fs-idp307490368",
+    "m68801:alt:fs-idp222844848-alt",
     "m68801:problem:fs-idp194751264",
     "m68801:problem:fs-idp194752400",
     "m68801:problem:fs-idp99671024",
@@ -429,7 +434,7 @@
     "note": 6,
     "equation": 50,
     "list": 2,
-    "media": 0,
+    "media": 4,
     "glossary": 0
   },
   "elementIds": {

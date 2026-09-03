@@ -8,19 +8,22 @@ By the end of this section, you will be able to:
 Extend previously introduced equilibrium concepts to acids and bases that may donate or accept more than one proton
 
 <!-- SEG:m68807:para:fs-idp98649872 -->
-Acids are classified by the number of protons per molecule that they can give up in a reaction. Acids such as HCl, HNO[[sub:3]], and HCN that contain one ionizable hydrogen atom in each molecule are called {{term}}monoprotic acids{{/term}}. Their reactions with water are:
+Acids are classified by the number of protons per molecule that they can give up in a reaction. Acids such as HCl, HNO[[sub:3]], and HCN that contain one ionizable hydrogen atom in each molecule are called [[term:monoprotic acids|term-00001]]. Their reactions with water are:
 
 <!-- SEG:m68807:para:fs-idp136804288 -->
 Even though it contains four hydrogen atoms, acetic acid, CH[[sub:3]]CO[[sub:2]]H, is also monoprotic because only the hydrogen atom from the carboxyl group (COOH) reacts with bases:
+
+<!-- SEG:m68807:alt:fs-idm11559264-alt -->
+This image contains two equilibrium reactions. The first shows a C atom bonded to three H atoms and another C atom. The second C atom is double bonded to an O atom and also forms a single bond to another O atom. The second O atom is bonded to an H atom. There is a plus sign and then the molecular formula H subscript 2 O. An equilibrium arrow follows the H subscript 2 O. To the right of the arrow is H subscript 3 O superscript positive sign. There is a plus sign. The final structure shows a C atom bonded the three H atoms and another C atom. This second C atom is double bonded to an O atom and single bonded to another O atom. The entire structure is in brackets and a superscript negative sign appears outside the brackets. The second reaction shows C H subscript 3 C O O H ( a q ) plus H subscript 2 O ( l ) equilibrium arrow H subscript 3 O ( a q ) plus C H subscript 3 C O O superscript negative sign ( a q ).
 
 <!-- SEG:m68807:para:fs-idp199141696 -->
 Similarly, monoprotic bases are bases that will accept a single proton.
 
 <!-- SEG:m68807:para:fs-idp13686896 -->
-{{term}}Diprotic acids{{/term}} contain two ionizable hydrogen atoms per molecule; ionization of such acids occurs in two steps. The first ionization always takes place to a greater extent than the second ionization. For example, sulfuric acid, a strong acid, ionizes as follows:
+[[term:Diprotic acids|term-00002]] contain two ionizable hydrogen atoms per molecule; ionization of such acids occurs in two steps. The first ionization always takes place to a greater extent than the second ionization. For example, sulfuric acid, a strong acid, ionizes as follows:
 
 <!-- SEG:m68807:para:fs-idp137460528 -->
-This {{term}}stepwise ionization{{/term}} process occurs for all polyprotic acids. Carbonic acid, H[[sub:2]]CO[[sub:3]], is an example of a weak diprotic acid. The first ionization of carbonic acid yields hydronium ions and bicarbonate ions in small amounts.
+This [[term:stepwise ionization|term-00003]] process occurs for all polyprotic acids. Carbonic acid, H[[sub:2]]CO[[sub:3]], is an example of a weak diprotic acid. The first ionization of carbonic acid yields hydronium ions and bicarbonate ions in small amounts.
 
 <!-- SEG:m68807:para:fs-idp84456096 -->
 The bicarbonate ion can also act as an acid. It ionizes and forms hydronium ions and carbonate ions in even smaller quantities.
@@ -46,6 +49,9 @@ As indicated by the ionization constants, H[[sub:2]]CO[[sub:3]] is a much strong
 <!-- SEG:m68807:para:fs-idm165541424 -->
 The first ionization reaction is[[BR]] [[MATH:9]][[BR]] Using provided information, an ICE table for this first step is prepared:[[BR]] [[MEDIA:1]][[BR]] Substituting the equilibrium concentrations into the equilibrium equation gives[[BR]] [[MATH:10]][[BR]] Assuming [[i:x]] &lt;&lt; 0.033 and solving the simplified equation yields[[BR]] [[MATH:11]][[BR]] The ICE table defined [[i:x]] as equal to the bicarbonate ion molarity and the hydronium ion molarity:[[BR]] [[MATH:12]][[BR]] [[MATH:13]]
 
+<!-- SEG:m68807:alt:fs-idm37059488-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “H subscript 2 C O subscript 3 plus sign H subscript 2 O equilibrium arrow H subscript 3 O superscript positive sign plus sign H C O subscript 3 superscript negative sign.” Under the second column is a subgroup of three columns and three rows. The first column has the following: 0.033, negative sign x, 0.033 minus sign x. The second column has the following: approximately 0, positive x, x. The third column has the following: 0, positive x, x.
+
 <!-- SEG:m68807:para:fs-idm162694608 -->
 Using the bicarbonate ion concentration computed above, the second ionization is subjected to a similar equilibrium calculation:
 
@@ -68,7 +74,7 @@ Answer:
 [H[[sub:2]]S] = 0.1 [[i:M]]; [[MATH:21]] = [HS[[sup:−]]] = 0.000094 [[i:M]]; [S[[sup:2−]]] = 1 [[MATH:22]] 10[[sup:−19]] [[i:M]]
 
 <!-- SEG:m68807:para:fs-idm49318672 -->
-A {{term}}triprotic acid{{/term}} is an acid that has three ionizable H atoms. Phosphoric acid is one example:
+A [[term:triprotic acid|term-00004]] is an acid that has three ionizable H atoms. Phosphoric acid is one example:
 
 <!-- SEG:m68807:para:fs-idp15743456 -->
 As for the diprotic acid examples, each successive ionization reaction is less extensive than the former, reflected in decreasing values for the stepwise acid ionization constants. This is a general characteristic of polyprotic acids and successive ionization constants often differ by a factor of about 10[[sup:5]] to 10[[sup:6]].
@@ -77,7 +83,7 @@ As for the diprotic acid examples, each successive ionization reaction is less e
 This set of three dissociation reactions may appear to make calculations of equilibrium concentrations in a solution of H[[sub:3]]PO[[sub:4]] complicated. However, because the successive ionization constants differ by a factor of 10[[sup:5]] to 10[[sup:6]], large differences exist in the small changes in concentration accompanying the ionization reactions. This allows the use of math-simplifying assumptions and processes, as demonstrated in the examples above.
 
 <!-- SEG:m68807:para:fs-idm225165120 -->
-Polyprotic bases are capable of accepting more than one hydrogen ion. The carbonate ion is an example of a {{term}}diprotic base{{/term}}, because it can accept two protons, as shown below. Similar to the case for polyprotic acids, note the ionization constants decrease with ionization step. Likewise, equilibrium calculations involving polyprotic bases follow the same approaches as those for polyprotic acids.
+Polyprotic bases are capable of accepting more than one hydrogen ion. The carbonate ion is an example of a [[term:diprotic base|term-00005]], because it can accept two protons, as shown below. Similar to the case for polyprotic acids, note the ionization constants decrease with ionization step. Likewise, equilibrium calculations involving polyprotic bases follow the same approaches as those for polyprotic acids.
 
 <!-- SEG:m68807:title:fs-idm40783936-title -->
 Key Concepts and Summary

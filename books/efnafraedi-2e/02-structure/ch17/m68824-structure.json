@@ -91,7 +91,10 @@
           },
           "media": {
             "id": "fs-idp78132768",
-            "alt": "A diagram is shown that involves three double headed arrows positioned in the shape of an equilateral triangle. The vertices are labeled in red. The top vertex is labeled “K.“ The vertex at the lower left is labeled “delta G superscript degree symbol.” The vertex at the lower right is labeled “E superscript degree symbol subscript cell.” The right side of the triangle is labeled “E superscript degree symbol subscript cell equals ( R T divided by n  F ) l n K.” The lower side of the triangle is labeled “delta G superscript degree symbol equals negative n F E superscript degree symbol subscript cell.” The left side of the triangle is labeled “delta G superscript degree symbol equals negative R T l n K.”",
+            "alt": {
+              "segmentId": "m68824:alt:fs-idp78132768-alt",
+              "text": "A diagram is shown that involves three double headed arrows positioned in the shape of an equilateral triangle. The vertices are labeled in red. The top vertex is labeled “K.“ The vertex at the lower left is labeled “delta G superscript degree symbol.” The vertex at the lower right is labeled “E superscript degree symbol subscript cell.” The right side of the triangle is labeled “E superscript degree symbol subscript cell equals ( R T divided by n  F ) l n K.” The lower side of the triangle is labeled “delta G superscript degree symbol equals negative n F E superscript degree symbol subscript cell.” The left side of the triangle is labeled “delta G superscript degree symbol equals negative R T l n K.”"
+            },
             "src": "../../media/CNX_Chem_17_04_Relation.jpg",
             "mimeType": "image/jpeg"
           }
@@ -100,16 +103,10 @@
           "type": "table",
           "id": "fs-idm241340256",
           "summary": "No Summary",
+          "title": null,
           "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68824:entry:auto-15",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68824:entry:auto-16",
                   "attributes": {
@@ -119,6 +116,13 @@
                 },
                 {
                   "segmentId": "m68824:entry:auto-17",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-18",
                   "attributes": {
                     "valign": "top",
                     "align": "left"
@@ -136,13 +140,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68824:entry:auto-18",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68824:entry:auto-19",
                   "attributes": {
                     "valign": "top",
@@ -151,6 +148,13 @@
                 },
                 {
                   "segmentId": "m68824:entry:auto-20",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-21",
                   "attributes": {
                     "valign": "top",
                     "align": "left"
@@ -177,13 +181,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68824:entry:auto-23",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68824:entry:auto-24",
                   "attributes": {
                     "valign": "top",
@@ -192,6 +189,13 @@
                 },
                 {
                   "segmentId": "m68824:entry:auto-25",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-26",
                   "attributes": {
                     "valign": "top",
                     "align": "left"
@@ -218,13 +222,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68824:entry:auto-28",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68824:entry:auto-29",
                   "attributes": {
                     "valign": "top",
@@ -233,6 +230,13 @@
                 },
                 {
                   "segmentId": "m68824:entry:auto-30",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68824:entry:auto-31",
                   "attributes": {
                     "valign": "top",
                     "align": "left"
@@ -583,15 +587,8 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68824:entry:auto-75",
-                  "attributes": {}
-                }
-              ]
-            },
             {
               "cells": [
                 {
@@ -636,6 +633,14 @@
               "cells": [
                 {
                   "segmentId": "m68824:entry:auto-81",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68824:entry:auto-82",
                   "attributes": {}
                 }
               ]

@@ -1,0 +1,14 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>R&#x2013;N&#x2550;C&#x2550;N&#x2013;R</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{R&#x2013;N&#x2550;C&#x2550;N&#x2013;R}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;N}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>P&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{P&#x2550;O}}"
+  }
+}

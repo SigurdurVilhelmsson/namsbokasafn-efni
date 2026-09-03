@@ -1,0 +1,405 @@
+{
+  "moduleId": "m00327",
+  "title": {
+    "segmentId": "m00327:title:auto-1",
+    "text": "Enzymes and Coenzymes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "342e1032-199b-4ee9-8f47-a4c794facc6d"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00327:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00327:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00327:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00327:alt:fig-00001-alt",
+          "text": "Peptide bonds in a protein undergo multiple hydrolyses in the presence of papain and water to form  the cleaved  peptide products"
+        },
+        "src": "../../media/OChem_26_10_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00327:para:para-00004"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00327:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00327:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00327:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00327:alt:fig-00002-alt",
+          "text": "The energy diagrams for catalyzed and uncatalyzed reactions. The upper and lower curve represents the uncatalyzed and enzyme-catalyzed reactions, respectively. The x-axis denotes reaction progress and the y-axis denotes energy."
+        },
+        "src": "../../media/OChem_26_10_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00327:para:para-00007"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "A ten part illustration shows structures and functions of 10 coenzymes. The first part “adenosine triphosphate - ATP (phosphorylation)” shows a chain of three phosphate groups bonded to a methylene group bonded to a cyclopentane having an oxygen embedded at its tip and two hydroxyl groups bonded at the basal positions; the upper right position is bonded to a nitrogen embedded in a cyclopentadiene; the opposite position of the embedded nitrogen shows another embedded nitrogen; the cylopentadiene is fused to a cyclohexadiene having two nitrogens embedded at the basal tip and its alternate position on the right; the top of ring is bonded to an amino group. The second part “coenzyme A (acyl transfer)” shows SH bonded to a chain of two methylene groups bonded to NH bonded to a carbonyl group bonded to two methylene groups bonded to NH bonded to a carbonyl group bonded to a methine attached to a hydroxyl group at the bottom the methine is bonded to a carbon bonded to two methyl groups at the top and bottom the carbon is bonded to a methylene bonded to two phosphate groups bonded to methylene group bonded to a cyclopentane having an oxygen embedded at its tip; the lower left position is bonded to O3 to the power two minus bonded to PO the lower right position is bonded to a hydroxyl group; the upper right position is bonded to a nitrogen embedded in a cyclopentadiene; the opposite position of the embedded nitrogen shows another embedded nitrogen; the cyclopentadiene is fused to a cyclohexadiene having two nitrogens embedded at the basal tip and its alternate position on the right; the top of ring is bonded to an amino group. The third part “nicotinamide adenine dinucleotide - NAD plus (oxidation/reduction)” shows a benzene having a nitrogen cation embedded at its bottom; the upper right position is bonded to CONH2; the nitrogen is bonded to an inverted cyclopentane with an oxygen embedded at its bottom; the two upper positions are bonded to hydroxyl groups; the position on right is bonded to a methylene group bonded to two consecutive phosphate groups having a phosphorous double bonded to oxygen above and singly bonded to two oxygens on either sides and oxygen anions are bonded at the bottom of phosphorous; the oxygen at the right side is bonded to a methylene group bonded to a cyclopentane at the bottom; the cyclopentane has an oxygen embedded at the tip; the lower left and right positions are bonded to a hydroxyl groups; OPO3 to the power two minus (pink) is shown in parenthesis; the upper right corner of the ring is bonded to a cyclopentadiene having two nitrogens embedded in it; the cyclopentadiene is fused to a cyclohexadiene bonded to an amine at the top and having two nitrogens embedded at the positions of double bond. The fourth part labeled as “flavin adenine dinucleotide-FAD (oxidation/reduction) shows a benzene bonded to two methyl groups fused to a cyclohexene that is further fused to a another cyclohexene having two double bonds with two oxygens; the tip of ring and its alternate position shows embedded nitrogens the nitrogen on the right is bonded to a hydrogen. The first cyclohexene fused to benzene shows two nitrogens embedded at the top and bottom; the nitrogen at top is bonded to a methylene group bonded to a methine group at the top which is bonded to a hydroxyl group on the left the methine is bonded to two more methine that are bonded to hydroxyl groups on top; the second methine is bonded to a methylene group bonded to two phosphate groups bonded to a methylene group bonded to a cyclopentane at the bottom; the cyclopentane has an oxygen embedded at the tip; the lower left and right positions are bonded to hydroxyl groups; the upper right corner of the ring is bonded to a cyclopentadiene having two nitrogens embedded in it; the cyclopentadiene is fused to a cyclohexadiene bonded to an amine at the top and having two nitrogens embedded at the positions of double bond. The fifth part labeled as “tetrahydrofolate (transfer of C1 units)” shows a cyclohexadiene having nitrogen embedded at its top; an amino group is bonded to top left position and NH is bonded to lower left position; the bottom is double bonded to an oxygen; the cyclohexadiene is fused to a cyclohexane bonded to NH at the top and bottom; the lower right position is wedge bonded to hydrogen that is dash bonded to carbon bonded to nitrogen bonded to hydrogen at the top; the nitrogen is bonded to a benzene bonded to a carbonyl group whose carbon is bonded to a structure in parenthesis having NH bonded to a methine bonded to a carboxylate ion at the top; the methine is bonded to two methylene groups bonded to a carbonyl group whose carbon is bonded to an oxygen anion placed outside the parenthesis; also show is 1-5. The sixth part labeled as “S-adenosylmethionine (methyl transfer)” shows an oxygen anion bonded to a carbonyl group whose carbon is bonded to a methine bonded to an amino group at the bottom; the methine is bonded to two methylene groups bonded to a sulfur cation bonded to a methyl group at the top; the sulfur is bonded to a methylene group bonded to a the cyclopentane has an oxygen embedded at the tip; the lower left and right positions are bonded to a hydroxyl groups; the upper right corner of the ring is bonded to a nitrogen embedded in a cyclopentadiene; the opposite position also shows a nitrogen embedded in it; the cyclopentadiene is fused to a cyclohexadiene bonded to an amine at the top and having two nitrogens embedded at the positions of double bond. The seventh part labeled as “lipoic acid (acyl transfer) shows an inverted pentane ring having sulfur embedded at both the basal positions; the lower right position is bonded to four methylene groups attached to an acetate ion. The eighth part labeled as “pyridoxal phosphate (amino acid metabolism) shows a benzene having an embedded nitrogen cation bonded to a hydrogen at the lower left position; the tip is bonded to a methylene group bonded to a phosphate group to the power two minus; the upper right position is bonded to an aldehyde; the lower right position is bonded to a hydroxyl group; the bottom of ring is bonded to a methyl group. The ninth part labeled as “thiamin diphosphate (decarboxylation)” shows two phosphate groups bonded to two consecutive methylene groups bonded to a cyclopentadiene having a sulfur embedded at upper left position; a nitrogen cation is embedded at the upper right position; the top of ring is bonded to a hydrogen and the basal right position is bonded to a methyl group; the nitrogen cation is further bonded to a carbon bonded to a benzene having two nitrogens embedded at the bottom and the alternate position on the right; the top is bonded to an amino group and the lower right position is bonded to a methyl group. The tenth part labeled as “biotin (carboxylation)” shows a cyclopentanone having nitrogen bonded to hydrogen at upper left and right positions; the lower left and right positions are wedge bonded to hydrogen atoms; below the cyclopentane is fused an inverted cyclopentane having a sulfur embedded at its tip and the lower right position is wedge bonded to hydrogen and dash bonded to four methylene groups bonded to an carboxylate ion.",
+      "title": {
+        "segmentId": "m00327:table-title:table-00001-title",
+        "text": "Classification of Enzymes"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00327:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00327:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00327:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00327:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "paras": [
+                {
+                  "segmentId": "m00327:entry:para-00008",
+                  "paraId": "para-00008"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00009",
+                  "paraId": "para-00009"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00010",
+                  "paraId": "para-00010"
+                }
+              ],
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "paras": [
+                {
+                  "segmentId": "m00327:entry:para-00011",
+                  "paraId": "para-00011"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00012",
+                  "paraId": "para-00012"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00013",
+                  "paraId": "para-00013"
+                }
+              ],
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00327:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "paras": [
+                {
+                  "segmentId": "m00327:entry:para-00014",
+                  "paraId": "para-00014"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00015",
+                  "paraId": "para-00015"
+                }
+              ],
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "paras": [
+                {
+                  "segmentId": "m00327:entry:para-00016",
+                  "paraId": "para-00016"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00017",
+                  "paraId": "para-00017"
+                }
+              ],
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00327:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "paras": [
+                {
+                  "segmentId": "m00327:entry:para-00018",
+                  "paraId": "para-00018"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00019",
+                  "paraId": "para-00019"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00020",
+                  "paraId": "para-00020"
+                }
+              ],
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "paras": [
+                {
+                  "segmentId": "m00327:entry:para-00021",
+                  "paraId": "para-00021"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00022",
+                  "paraId": "para-00022"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00023",
+                  "paraId": "para-00023"
+                }
+              ],
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00327:entry:auto-35",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "paras": [
+                {
+                  "segmentId": "m00327:entry:para-00024",
+                  "paraId": "para-00024"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00025",
+                  "paraId": "para-00025"
+                }
+              ],
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "paras": [
+                {
+                  "segmentId": "m00327:entry:para-00026",
+                  "paraId": "para-00026"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00027",
+                  "paraId": "para-00027"
+                }
+              ],
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00327:entry:auto-40",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00327:entry:auto-41",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00327:entry:auto-42",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00327:entry:auto-43",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "paras": [
+                {
+                  "segmentId": "m00327:entry:para-00028",
+                  "paraId": "para-00028"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00029",
+                  "paraId": "para-00029"
+                }
+              ],
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "paras": [
+                {
+                  "segmentId": "m00327:entry:para-00030",
+                  "paraId": "para-00030"
+                },
+                {
+                  "segmentId": "m00327:entry:para-00031",
+                  "paraId": "para-00031"
+                }
+              ],
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00032",
+      "segmentId": "m00327:para:para-00032"
+    },
+    {
+      "type": "para",
+      "id": "para-00033",
+      "segmentId": "m00327:para:para-00033"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00327:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 10
+}

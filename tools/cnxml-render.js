@@ -1212,6 +1212,13 @@ const LOUD_SEAM_IGNORE = new Set(
 // Tags allowed to remain inline inside a <list><item> body after renderItemBody
 // extracts its block children — a narrower question than HANDLED_INLINE, hence
 // a deliberate superset of LOUD_SEAM_IGNORE, not a canonical classification.
+//
+// ⚠️ 'span' IS NOW REDUNDANT HERE and is KEPT ON PURPOSE. §C118 ⑬ added it to
+// HANDLED_INLINE, so it already arrives via LOUD_SEAM_IGNORE (the union dedups —
+// size is still 16). It stays spelled out because this set answers its own
+// question: should HANDLED_INLINE ever lose 'span', a <span> must still be
+// allowed inline in a list item, and deleting it here would silently couple that
+// to the canonical set. Removing it is behaviour-neutral TODAY and not later.
 const ITEM_INLINE_OK = new Set([...LOUD_SEAM_IGNORE, 'para', 'space', 'image', 'span']);
 
 function renderBlockChildrenInOrder(content, context, dispatch, options = {}) {

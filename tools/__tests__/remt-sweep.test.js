@@ -15,7 +15,7 @@
  *
  * ⚠️ THE CORPUS COUNTS BELOW ARE PINNED ON PURPOSE, AND THEY WILL GO RED. The
  * two kept books are re-extracted and re-rendered by the very loop this battery
- * gates, so 166/197/161/112 are properties of TODAY'S tree. A red here after the
+ * gates, so 491/197/161/112 are properties of TODAY'S tree. A red here after the
  * run means the population moved — re-measure and re-pin; it is signal, not
  * flake. Pinning them is what stops an empty walk from passing as a clean sweep
  * (§C82 test convention: "corpus tests must assert a control count").
@@ -47,7 +47,7 @@ import {
   sweep,
   formatReport,
 } from '../remt-sweep.js';
-import { REGISTRY } from '../lib/remt-battery.js';
+import { REGISTRY, VERDICT } from '../lib/remt-battery.js';
 import { modulesWithSegments, mtOutputSegmentFiles } from './helpers/remt-corpus.js';
 
 const CHEM = 'efnafraedi-2e';
@@ -88,17 +88,23 @@ describe('the partition over REGISTRY is TOTAL', () => {
 });
 
 describe('the populations — one unit per tier, each with its own denominator', () => {
-  it('tier 1 is 166 module pairs and tier 2 is 197 IS files — DIFFERENT numbers', () => {
+  it('tier 1 is 491 module pairs and tier 2 is 197 IS files — DIFFERENT numbers', () => {
     const t1 = modulePairUnits(CHEM).length + modulePairUnits(ORG).length;
     const t2 = isFileUnits(CHEM).length + isFileUnits(ORG).length;
-    expect(t1).toBe(166);
+    // 🔴 RE-PINNED 2026-09-02, 166 -> 491: §C82 ③ re-extracted organic in full, so tier 1
+    // now pairs all 342 organic modules (149 + 342). Tier 2 is UNMOVED at 197 — the two
+    // tiers count different things, which is this test's whole point.
+    expect(t1).toBe(491);
     expect(t2).toBe(197);
     // 🔴 THE ASSERTION THAT MATTERS IS THAT THEY DIFFER. The register's
     // authoritative "197" is tier 2's; quoting it as tier 1's overstates that
     // tier's coverage by 31 units — organic's `exercises` bundles, which have no
     // source counterpart to pair with (§C82 L19 amendment).
+    // ⚠️ THE SIGN OF THE DIFFERENCE FLIPPED at the re-extract: tier 1 used to be the
+    // SMALLER population (166 < 197) and is now the larger (491 > 197), so the gap is
+    // asserted as t1 - t2 rather than t2 - t1. The `not.toBe` above is the durable half.
     expect(t1).not.toBe(t2);
-    expect(t2 - t1).toBe(31);
+    expect(t1 - t2).toBe(294);
   });
 
   it("the sweep's walkers agree UNIT-FOR-UNIT with the test helper's", () => {
@@ -358,10 +364,40 @@ describe('the sweep never gates', () => {
     // The tool MEASURES. Trips are its expected output — the acceptance criteria
     // demand several near-100% rows — so scoring them into an exit code would
     // make the honest result look like a failure and invite someone to "fix" it.
-    const report = await sweep({ books: [CHEM], tiers: [1], limit: 4 });
-    expect(report.rows.some((r) => r.tripped > 0)).toBe(true);
-    expect(report).not.toHaveProperty('exitCode');
-    expect(report).not.toHaveProperty('ok');
+    // 🔴 THE TRIP IS NOW PLANTED. It used to come free from the corpus (E1 62.7%,
+    // E5 92.8% of 166 module pairs). §C82 action ③'s re-extract repaired both BY
+    // DESIGN, so tier 1 trips nothing on 491 units and `some(tripped > 0)` read
+    // false — leaving the two assertions below satisfied by a sweep that never
+    // trips, i.e. VACUOUS. A planted check is flip-proof: no re-extract can repair
+    // it. (The live sweep does still trip in tier 0 and tier 3, but both are corpus
+    // properties this loop rewrites, which is how this test got here.)
+    const planted = {
+      id: 'ZZ1',
+      tier: 1,
+      blocking: false,
+      version: 1,
+      run: () => ({
+        verdict: VERDICT.FAIL,
+        examined: 1,
+        findings: [{ kind: 'planted-trip' }],
+        message: 'planted trip',
+      }),
+    };
+    REGISTRY.set('ZZ1', planted);
+    try {
+      const report = await sweep({ books: [CHEM], tiers: [1], limit: 4 });
+      const zz = report.rows.find((r) => r.id === 'ZZ1');
+      // Control: `sweep()` reads REGISTRY at CALL time, not at module load.
+      expect(zz, 'the planted check never reached the report').toBeTruthy();
+      expect(zz.tripped).toBe(zz.evaluable); // it tripped on every unit
+      expect(zz.tripped).toBe(4); // ...and `limit` really limited
+      expect(report.rows.some((r) => r.tripped > 0)).toBe(true);
+      expect(report).not.toHaveProperty('exitCode');
+      expect(report).not.toHaveProperty('ok');
+    } finally {
+      REGISTRY.delete('ZZ1');
+    }
+    expect(REGISTRY.has('ZZ1')).toBe(false); // restored
   });
 });
 
@@ -370,13 +406,26 @@ describe('the acceptance figures Plan B names, re-derived here with their denomi
   // acceptance section names, and the point of the section is that a TIDY sweep
   // is the failure mode. Pinning them here means a future change that quietly
   // turns one green goes red instead.
-  it('A2a / A4 / A8 are SKIPPED with examined 0 — no module carries a run record', async () => {
+  // 🔴 REWRITTEN 2026-09-02 — THE PREMISE FLIPPED, AND IT FLIPPED THE WAKING WAY. This
+  // asserted "SKIPPED with examined 0 — no module carries a run record", true of every
+  // module until the paid run wrote the first 16 run records. 14 of those sit on units
+  // `isFileUnits` counts; the other 2 are `chapter-metadata`, which it excludes by design.
+  it('A2a / A4 / A8 measure the 14 modules the paid run recorded, and SKIP the other 183', async () => {
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [2] });
     for (const id of ['A2a', 'A4', 'A8']) {
       const r = report.rows.find((x) => x.id === id);
-      expect(r.SKIPPED, `${id} skipped`).toBe(r.population);
-      expect(r.examinedTotal, `${id} examined`).toBe(0);
-      expect(r.rate, `${id} rate`).toBeNull(); // never 0% — that would read as "measured, clean"
+      expect(r.population, `${id} population`).toBe(197);
+      expect(r.SKIPPED, `${id} skipped`).toBe(183);
+      expect(r.evaluable, `${id} evaluable`).toBe(14);
+      // 🔴 NOT `toBeGreaterThan(0)`, AND NOT 0. `examined` is 1 per judged unit, so 14 is
+      // the only value consistent with 14 evaluable; the old `toBe(0)` pinned the QUIET
+      // state and would stay green if every run record were deleted again.
+      expect(r.examinedTotal, `${id} examined`).toBe(14);
+      // The successor to the old `rate).toBeNull()`. That pin said "never 0% — that would
+      // read as measured, clean"; now that these checks DO measure, the same distinction
+      // is that the rate must exist. A null rate would mean the run-record units vanished
+      // again, which is precisely the regression the 183/14 split above is watching for.
+      expect(r.rate, `${id} rate`).not.toBeNull();
     }
     // Control: the same run must produce real rates for the run-record-free
     // checks, or "everything SKIPPED" would be the trivial explanation.
@@ -463,25 +512,51 @@ describe("the blocking-bar readout — the sweep's most decision-relevant output
   }, 30_000);
 
   it('a tier whose input the loop regenerates gets the VINTAGE reading instead', async () => {
+    // 🔴 THE OVER-BAR ROW IS NOW SYNTHESISED TOO, FOR THE SAME REASON AS THE TIER-0
+    // SIBLING ABOVE. This used to rely on E5 ~92.8% and E1 ~62.7% — properties of the
+    // PRE-RUN vintage, exactly as the comment it replaces said. §C82 action ③'s
+    // re-extract repaired both by design, so every tier-1 blocking row is 0.0% of 491,
+    // the over-bar section is ABSENT, and `not.toContain('DATA THE RUN WILL CONSUME')`
+    // below was passing because NEITHER branch ran. Pushing a real blocking row over
+    // the bar keeps the FORMATTING property pinned and cannot evaporate with the corpus.
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [1] });
-    const text = formatReport(report);
-    // E5 ~92.8% and E1 ~62.7% are properties of the committed vintage — the loop
-    // rewrites 02-for-mt before any of these checks runs for real.
-    expect(text).toContain('committed VINTAGE');
-    expect(text).not.toContain('DATA THE RUN WILL CONSUME');
     const e5 = report.rows.find((r) => r.id === 'E5');
-    expect(e5.blocking).toBe(true);
-    expect(e5.rate).toBeGreaterThan(BLOCKING_RATE_BAR);
+    expect(e5, 'E5 missing from a tier-1 sweep').toBeTruthy(); // control: the row exists
+    expect(e5.blocking, 'E5 is not blocking — this fixture assumes it is').toBe(true);
+    // ▶ AND E5's LIVENESS IS PINNED BY ITS POPULATION, NOT BY ITS RATE. `rate === 0` is
+    // saturated and reads identically whether E5 judged 491 units or none; these two go
+    // red if the tier-1 walk ever empties.
+    expect(e5.evaluable).toBe(491);
+    expect(e5.examinedTotal).toBeGreaterThan(0);
+    e5.rate = BLOCKING_RATE_BAR + 0.85; // over the bar by construction
+    const text = formatReport(report);
+    expect(text).toContain('BLOCKING CHECKS OVER');
+    expect(text).toMatch(/E5\s+tier 1/);
+    expect(text).toContain('committed VINTAGE');
+    expect(text).not.toContain('DATA THE RUN WILL CONSUME'); // tier 1 must not get tier 0's reading
   }, 60_000);
 
   it('CONTROL — a run with NO blocking check over the bar omits the section entirely', async () => {
     // Without this, the two assertions above pass against a formatter that prints
     // the heading unconditionally.
+    // ⚠️ BOTH ARMS ARE CONSTRUCTED NOW, AND THAT IS THE WHOLE POINT. Post-re-extract
+    // every tier-1 blocking row is 0.0% of 491, so the LIVE report already IS the
+    // clean arm: the two arms were identical and this CONTROL proved nothing —
+    // precisely the shape it exists to catch. Deriving both from one report object,
+    // differing in one field, makes the contrast attributable to the RATE alone.
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [1] });
+    const e5 = report.rows.find((r) => r.id === 'E5');
+    expect(e5, 'E5 missing from a tier-1 sweep').toBeTruthy();
+    expect(e5.blocking, 'E5 is not blocking — this fixture assumes it is').toBe(true);
     const clean = { ...report, rows: report.rows.map((r) => ({ ...r, rate: 0 })) };
+    const over = {
+      ...report,
+      rows: report.rows.map((r) => (r.id === 'E5' ? { ...r, rate: BLOCKING_RATE_BAR + 0.85 } : r)),
+    };
     expect(formatReport(clean)).not.toContain('BLOCKING CHECKS OVER');
-    // ...and the real one DOES, so the difference is the rate and not the shape.
-    expect(formatReport(report)).toContain('BLOCKING CHECKS OVER');
+    // ...and the over-bar one DOES, so the difference is the rate and not the shape.
+    expect(formatReport(over)).toContain('BLOCKING CHECKS OVER');
+    expect(formatReport(over)).toMatch(/E5\s+tier 1/); // attributed to E5, not to a drifting sibling
   }, 60_000);
 });
 
@@ -687,14 +762,20 @@ describe('the OrNull-family keys reach their gate as `null`, never `undefined`',
     const org = r1.byBook.find((b) => b.book === ORG);
     expect(org.population).toBe(8);
     expect(org.SKIPPED).toBe(0);
-    // 🔴 SIX, NOT ZERO — and the number is pinned because the branch's own comment
-    // once claimed these units "return PASS". They do not; 6 FAIL and 2 PASS.
-    // ⚠️ EXPECTED TO MOVE: every finding is `unexplained-tag-count`, the class
-    // chemistry's allowlist explains and organic has none for, and R1 is tier 3 —
-    // so this is a VINTAGE number and the re-inject may change it. A red here is
-    // signal, not flake: re-measure and re-pin.
-    expect(org.FAIL).toBe(6);
-    expect(org.PASS).toBe(2);
+    // 🔴 RE-PINNED 2026-09-02, EXACTLY AS THE COMMENT THIS REPLACES SAID IT WOULD BE.
+    // It read "SIX, NOT ZERO … 6 FAIL and 2 PASS", a VINTAGE number the re-inject was
+    // expected to move — and it did: organic ch03 was re-extracted and re-injected, all 8
+    // units now have ZERO tag-count discrepancies, and R1 is 0 FAIL over the whole corpus.
+    // ▶ THE 8 PASSES ARE THE PIN NOW, AND THEY ARE NOT WEAKER THAN THE 6 FAILS WERE:
+    // `runCheck` downgrades a PASS that examined 0 units to SKIPPED, so `PASS === 8` says
+    // 8 units were really compared, not that R1 returned early. Revert the `?? undefined`
+    // on `fidelityAllowlist` and R1 SKIPs all 8 — which reddens PASS, org.SKIPPED,
+    // r1.SKIPPED and r1.evaluable together.
+    // ⚠️ R1's FAIL leg keeps its evidence ELSEWHERE, and both are green today:
+    // remt-checks-output.test.js FAILs m68846 with a null allowlist on real bytes, and
+    // remt-selftest.js plants an R1 bad/good pair. Do not trim either.
+    expect(org.FAIL).toBe(0);
+    expect(org.PASS).toBe(8);
   }, 120_000);
 
   it('a book with NO residue-allowlist gets an explicit null too — the latent sibling', () => {

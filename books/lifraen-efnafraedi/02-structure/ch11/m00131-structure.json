@@ -1,0 +1,121 @@
+{
+  "moduleId": "m00131",
+  "title": {
+    "segmentId": "m00131:title:auto-1",
+    "text": "The E1 and E1cB Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "5eef84d8-b86e-4f05-9a88-e09af6400e58"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00131:title:sect-00001-title",
+        "text": "The E1 Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00131:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "mechanism-figure scaled-down",
+          "caption": {
+            "segmentId": "m00131:caption:fig-00001-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00131:alt:fig-00001-alt",
+              "text": "2-chloro-2-methylpropane undergoes a 2-step reaction to produce chloride ion and carbocation, which reacts with base to yield neutral alkene. The first step is rate-limiting, while the second step is fast."
+            },
+            "src": "../../media/OChem_11_10_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00131:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00131:alt:fig-00002-alt",
+              "text": "A reaction of 2-chloro-2-methylpropane in the presence of water and ethanol at 65 degrees Celsius, yields 2-methyl-2-propanol (64%) and 2-methylpropene (36%)."
+            },
+            "src": "../../media/OChem_11_10_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00131:para:para-00003"
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00131:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00131:caption:fig-00003-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00131:alt:fig-00003-alt",
+              "text": "The figure shows the elimination reactions of menthyl chloride. Under E2 conditions, the reactant forms 2-menthene (100%). Under E1 conditions, the reactant forms 2-menthene (32%) and 3-menthene (68%)."
+            },
+            "src": "../../media/OChem_11_10_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00131:title:sect-00002-title",
+        "text": "The E1cB Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00131:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00131:alt:fig-00004-alt",
+              "text": "The reaction mechanism of a beta-halogenated carbonyl compound with a base. The alpha proton is lost to form two resonance-stabilized anions. Loss of halogen results in vinyl carbonyl product."
+            },
+            "src": "../../media/OChem_11_10_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 10
+}

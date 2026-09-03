@@ -55,6 +55,7 @@
           "id": "fs-idp282234816",
           "class": "top-titled",
           "summary": "The examples of ionic compounds shown in this table are N a C l sodium chloride, K B r potassium bromide, C a I subscript 2 calcium iodide, C s F cesium fluoride, L i C l lithium chloride, N a subscript 2 O sodium oxide, C d S cadmium sulfide, M g subscript 3 N subscript 2 magnesium nitride, C a subscript 3 P subscript 2 calcium phosphide, and A l subscript 4 C subscript 3 aluminum carbide.",
+          "title": null,
           "rows": [
             {
               "cells": [
@@ -171,6 +172,7 @@
           "id": "fs-idp279316112",
           "class": "top-titled",
           "summary": "The examples of polyatomic ionic compounds shown in this table are K C subscript 2 H subscript 3 O subscript 2 potassium acetate, N a H C O subscript 3 sodium bicarbonate, A l subscript 2 ( C O subscript 3 ) subscript 3 aluminum carbonate, (N H subscript 4) CL, ammonium chloride, C a S O subscript 4 calcium sulfate, and M g subscript 3 ( P O subscript 4 ) subscript 2 magnesium phosphate.",
+          "title": null,
           "rows": [
             {
               "cells": [
@@ -255,6 +257,7 @@
           "id": "fs-idp268265360",
           "class": "top-titled",
           "summary": "The everyday ionic compound examples included in this table are: N a C L sodium chloride, or ordinary table salt, K I potassium iodide which is added to iodized salt, N a F, sodium fluoride which is an ingredient in toothpaste, N a H C O subscript 3 sodium bicarbonate which is baking soda, used in cooking and as an antacid, N a subscript 2 C O subscript 3 sodium carbonate which is washing soda and is used in cleaning agents, N a O C l sodium hypochlorite which is the active ingredient in household bleach, C a C O subscript 3 calcium carbonate which is an ingredient of antacids, M g ( O H ) subscript 2, magnesium hydroxide which is also an ingredient of antacids, A l ( O H ) subscript 3 aluminum hydroxide which is also an ingredient in antacids, N a O H sodium hydroxide which is lye and is used as a drain cleaner, K subscript 3 P O subscript 4 potassium phosphate which is a food additive, M g S O subscript 4 magneisum sulfate which is added to purified water, N a subscript 2 H P O subscript 4 sodium hydrogen phosphate which is an anti-caking agent and is used in powdered products, and N a subscript 2 S O subscript 3 sodium sulfite which is a preservative.",
+          "title": null,
           "rows": [
             {
               "cells": [
@@ -531,6 +534,7 @@
           "id": "fs-idp282283328",
           "class": "top-titled",
           "summary": "The transition metal ionic compound examples included in this table are F e C L subscript 3 or iron three chloride, H g subscript 2 O or mercury one oxide, H g O or mercury two oxide, and C u subscript 3 ( P O subscript 4 ) subscript 2 or copper two phosphate.",
+          "title": null,
           "rows": [
             {
               "cells": [
@@ -699,6 +703,7 @@
           "id": "fs-idp268400368",
           "class": "top-titled",
           "summary": "This table has two columns labeled “prefix” and “number”. Mono is associated with one although this prefix is sometimes omitted. Di is associated with two. Tri is associated with three. Tetra is associated with four. Penta is associated with five. Hexa is associated with six. Hepta is associated with seven. Octa is associated with eight. Nona is associated with nine. Deca is associated with ten.",
+          "title": null,
           "rows": [
             {
               "cells": [
@@ -1044,7 +1049,10 @@
           },
           "media": {
             "id": "fs-idp282351072",
-            "alt": "Figure A shows a photo of Erin Brockovich. Figure B shows a 3-D ball-and-stick model of chromate. Chromate has a chromium atom at its center that forms bonds with four oxygen atoms each. Two of the oxygen atoms form single bonds with the chromium atom while the other two form double bonds each. The structure of dichromate consists of two chromate ions that are bonded and share one of their oxygen atoms to which each chromate atom has a single bond.",
+            "alt": {
+              "segmentId": "m68698:alt:fs-idp282351072-alt",
+              "text": "Figure A shows a photo of Erin Brockovich. Figure B shows a 3-D ball-and-stick model of chromate. Chromate has a chromium atom at its center that forms bonds with four oxygen atoms each. Two of the oxygen atoms form single bonds with the chromium atom while the other two form double bonds each. The structure of dichromate consists of two chromate ions that are bonded and share one of their oxygen atoms to which each chromate atom has a single bond."
+            },
             "src": "../../media/CNX_Chem_02_07_ErinBrocko.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1091,11 +1099,12 @@
           "id": "fs-idp269568176",
           "class": "top-titled",
           "summary": "A two column table is shown. The left column is titled “Compound” and the right column is titled “Name.” From left to right, the first row reads “S O subscript 2” and “sulfur dioxide.” The second row reads “S O subscript 3” and “sulfur trioxide.” The third row reads “N O subscript 2” and “nitrogen dioxide.” The fourth row reads “N subscript 2 O subscript 4” and “dinitrogen tetroxide.” The fifth row reads “N subscript 2 O subscript 5” and “dinitrogen pentoxide.” The sixth row reads “B C l subscript 3” and “boron trichloride.” The seventh row reads “S F subscript 6” and “sulfur hexafluoride.” The eighth row reads “P F subscript 5” and “phosphorus pentafluoride.” The ninth row reads “P subscript 4 O subscript 10” and “tetraphosphorus decaoxide.” The tenth row reads “I F subscript 7” and “iodine heptafluoride.”",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68698:entry:auto-142",
+                  "segmentId": "m68698:entry:auto-143",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c4",
@@ -1106,12 +1115,6 @@
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68698:entry:auto-143",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68698:entry:auto-144",
                   "attributes": {
@@ -1129,17 +1132,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-147",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-148",
                   "attributes": {
@@ -1157,17 +1160,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-151",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-152",
                   "attributes": {
@@ -1185,17 +1188,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-155",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-156",
                   "attributes": {
@@ -1213,17 +1216,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-159",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-160",
                   "attributes": {
@@ -1241,17 +1244,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-163",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-164",
                   "attributes": {
@@ -1266,6 +1269,12 @@
                 },
                 {
                   "segmentId": "m68698:entry:auto-166",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68698:entry:auto-167",
                   "attributes": {
                     "align": "left"
                   }
@@ -1452,11 +1461,12 @@
           "id": "fs-idp272649888",
           "class": "top-titled",
           "summary": "The names of simple acids included in this table are: H F gas, which is hydrogen fluoride, H C l gas which is hydrogen chloride, H B r gas which is hydrogen bromide, H I gas which is hydrogen iodide, H subscript 2 S gas which is hydrogen sulfide, H F aqueous which is hydrofluoric acid, H C l aqueous which is hydrochloric acid, H B r aqueous which is hydrobromic acid, H I aqueous which is hydroiodic acid, and H subscript 2 S aqueous which is hydrosulfuric acid.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68698:entry:auto-196",
+                  "segmentId": "m68698:entry:auto-197",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c2",
@@ -1468,77 +1478,77 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68698:entry:auto-197",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68698:entry:auto-198",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-199",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-200",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-201",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-202",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-203",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-204",
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-205",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-206",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68698:entry:auto-207",
                   "attributes": {
                     "align": "left"
                   }
@@ -1548,13 +1558,13 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68698:entry:auto-207",
+                  "segmentId": "m68698:entry:auto-208",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68698:entry:auto-208",
+                  "segmentId": "m68698:entry:auto-209",
                   "attributes": {
                     "align": "left"
                   }
@@ -1614,11 +1624,12 @@
           "id": "fs-idp268340336",
           "class": "top-titled",
           "summary": "This table has three columns labeled “formula”, “anion name”, and “acid name”. H C subscript 2 H subscript 3 O subscript 2 is named acetate or acetic acid. H N O subscript 3 is named nitrate or nitric acid. H N O subscript 2 is named nitrite or nitrous acid, H C l O subscript 4 is named perchlorate or perchloric acid. H subscript 2 C O subscript 3 is named carbonate or carbonic acid. H subscript 2 S O subscript 4 is named sulfate or sulfuric acid. H subscript 2 S O subscript 3 is named sulfite or sulfurous acid. H subscript 3 P O subscript 4 is named phosphate or phosphoric acid.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68698:entry:auto-216",
+                  "segmentId": "m68698:entry:auto-217",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c3",
@@ -1630,12 +1641,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68698:entry:auto-217",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68698:entry:auto-218",
                   "attributes": {
                     "align": "left"
@@ -1646,17 +1651,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-220",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-221",
                   "attributes": {
@@ -1668,17 +1673,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-223",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-224",
                   "attributes": {
@@ -1690,17 +1695,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-226",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-227",
                   "attributes": {
@@ -1712,17 +1717,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-229",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-230",
                   "attributes": {
@@ -1734,17 +1739,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-232",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-233",
                   "attributes": {
@@ -1756,17 +1761,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-235",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-236",
                   "attributes": {
@@ -1778,17 +1783,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-238",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-239",
                   "attributes": {
@@ -1800,17 +1805,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68698:entry:auto-241",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68698:entry:auto-242",
                   "attributes": {
@@ -1819,6 +1824,12 @@
                 },
                 {
                   "segmentId": "m68698:entry:auto-243",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68698:entry:auto-244",
                   "attributes": {
                     "align": "left"
                   }

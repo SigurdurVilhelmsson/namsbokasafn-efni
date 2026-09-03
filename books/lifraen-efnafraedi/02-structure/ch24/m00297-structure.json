@@ -1,0 +1,417 @@
+{
+  "moduleId": "m00297",
+  "title": {
+    "segmentId": "m00297:title:auto-1",
+    "text": "Heterocyclic Amines"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d2feab50-ca84-450a-a7c6-83cc75dfcd56"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00297:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00297:alt:fig-00001-alt",
+          "text": "The structures of pyridoxal phosphate which is a coenzyme, sildenafil (Viagra), and heme. Heme has iron(2) connected to porphyrin."
+        },
+        "src": "../../media/OChem_24_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00297:para:para-00002"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00297:title:sect-00001-title",
+        "text": "Pyrrole and Imidazole"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00297:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00002-alt",
+              "text": "Furan reacts with ammonia, water, and aluminum oxide at 400 degree Celsius to form pyrrole. The atoms in the ring are numbered."
+            },
+            "src": "../../media/OChem_24_09_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00297:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00003-alt",
+              "text": "The structure, orbital view, and space-filling model of pyrrole. The structure has cyclopentadiene bonded with N H group. Nitrogen is s p 2 hybridized carrying a set of lone pairs."
+            },
+            "src": "../../media/OChem_24_09_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00297:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00004-alt",
+              "text": "The ball-and-stick model in electrostatic potential maps of pyrrole, pyrrolidine, and 1,3-cyclopentadiene. An arrow points toward the nitrogen atoms of pyrrole and pyrrolidine."
+            },
+            "src": "../../media/OChem_24_09_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00297:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00005-alt",
+              "text": "Pyrrole reacts with bromine at zero degree Celsius to form 2-bromopyrrole with 92 percent yield and hydrogen bromide."
+            },
+            "src": "../../media/OChem_24_09_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00297:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00297:caption:fig-00006-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00006-alt",
+              "text": "Electrophilic nitration of pyrrole. The attack of the nitro group at the second is more favored than the third position. The product 2-nitropyrrole is formed and 3-nitropyrrole is not formed."
+            },
+            "src": "../../media/OChem_24_09_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00297:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00007-alt",
+              "text": "The structures of imidazole, histidine, thiazole, and thiamin (vitamin B 1) with their respective p K a values. The atoms in imidazole and thiazole are numbered."
+            },
+            "src": "../../media/OChem_24_09_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00297:title:sect-00002-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00297:title:sect-00003-title",
+        "text": "Pyridine and Pyrimidine"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00297:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00297:para:para-00012"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00008-alt",
+              "text": "Structure and orbital representations of pyridine and trimethylamine. The orbital containing the nonbonding pair on each nitrogen is labeled (s p 2 and s p 3 respectively)."
+            },
+            "src": "../../media/OChem_24_09_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00297:para:para-00013"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00009-alt",
+              "text": "Pyridine reacts with bromine at 300 degree Celsius to form 3-bromopyridine with a 30 percent yield. The atoms in pyridine are numbered."
+            },
+            "src": "../../media/OChem_24_09_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00297:para:para-00014"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00010-alt",
+              "text": "Structure of pyridine with a dipole arrow pointed from C 4 toward N. Value of dipole moment is 2.26 D."
+            },
+            "src": "../../media/OChem_24_09_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00297:para:para-00015"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00011-alt",
+              "text": "Structure of pyrimidine with atoms numbered. Value of p K a is 1.3."
+            },
+            "src": "../../media/OChem_24_09_011.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00297:title:sect-00004-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": null,
+      "title": {
+        "segmentId": "m00297:title:sect-00005-title",
+        "text": "Polycyclic Heterocycles"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00297:para:para-00017"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00012",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00012-alt",
+              "text": "The structures of quinoline, isoquinoline, indole, purine, quinine (antimalarial), tryptophan (amino acid), and adenine (D N A constituent). The atoms are numbered in quinoline, isoquinoline, indole, and purine."
+            },
+            "src": "../../media/OChem_24_09_012.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00018",
+          "segmentId": "m00297:para:para-00018"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00013",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00013-alt",
+              "text": "Quinoline reacts with bromine and sulfuric acid to form 5-bromoquinoline, 8-bromoquinoline. Isoquinoline reacts with nitric acid and sulfuric acid at zero degree Celsius to form 5-nitroisoquinoline and 8-nitroisoquinoline."
+            },
+            "src": "../../media/OChem_24_09_013.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00019",
+          "segmentId": "m00297:para:para-00019"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00014",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00014-alt",
+              "text": "Indole reacts with bromine, and dioxane at zero degree Celsius to form 3-bromoindole and hydrogen bromide."
+            },
+            "src": "../../media/OChem_24_09_014.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00020",
+          "segmentId": "m00297:para:para-00020"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00015",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00297:alt:fig-00015-alt",
+              "text": "The structure and ball-and-stick model in the electrostatic potential map of purine. The atoms are numbered in the structure. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively."
+            },
+            "src": "../../media/OChem_24_09_015.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00297:title:sect-00006-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

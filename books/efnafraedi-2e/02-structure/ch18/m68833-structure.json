@@ -103,7 +103,10 @@
               },
               "media": {
                 "id": "fs-idp1458704",
-                "alt": "A diagram shows a beaker that contains a liquid, a battery submerged in the liquid, and two test tubes. The battery has the positive and negative terminals labeled. The liquid is connected by a right-facing arrow to an image of two molecules made up of one red atom and two white atoms. It is labeled, “Water,” and, “2 H subscript 2 O ( l ).” The left test tube above the negative sign is connected by a right-facing arrow to an image of two pairs of white atoms. The image is labeled, “Hydrogen,” and, “2 H subscript 2 ( g ).” The right test tube above the positive sign is connected by a right-facing arrow to an image of a pair of red atoms. The image is labeled, “Oxygen,” and, “O subscript 2 ( g ).”",
+                "alt": {
+                  "segmentId": "m68833:alt:fs-idp1458704-alt",
+                  "text": "A diagram shows a beaker that contains a liquid, a battery submerged in the liquid, and two test tubes. The battery has the positive and negative terminals labeled. The liquid is connected by a right-facing arrow to an image of two molecules made up of one red atom and two white atoms. It is labeled, “Water,” and, “2 H subscript 2 O ( l ).” The left test tube above the negative sign is connected by a right-facing arrow to an image of two pairs of white atoms. The image is labeled, “Hydrogen,” and, “2 H subscript 2 ( g ).” The right test tube above the positive sign is connected by a right-facing arrow to an image of a pair of red atoms. The image is labeled, “Oxygen,” and, “O subscript 2 ( g ).”"
+                },
                 "src": "../../media/CNX_Chem_18_05_Electrolys.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -138,7 +141,10 @@
               },
               "media": {
                 "id": "fs-idp110348256",
-                "alt": "A photo shows a beaker that contains a clear, colorless liquid. It is labeled, “H C l ( a q ).” Beside the beaker is a watch glass with a dropper above it. The dropper is releasing liquid into a fizzing liquid. The fizzing liquid is releasing a white gas.",
+                "alt": {
+                  "segmentId": "m68833:alt:fs-idp110348256-alt",
+                  "text": "A photo shows a beaker that contains a clear, colorless liquid. It is labeled, “H C l ( a q ).” Beside the beaker is a watch glass with a dropper above it. The dropper is releasing liquid into a fizzing liquid. The fizzing liquid is releasing a white gas."
+                },
                 "src": "../../media/CNX_Chem_18_05_IronHCl.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -206,7 +212,10 @@
           },
           "media": {
             "id": "fs-idp117124896",
-            "alt": "A rocket is shown taking off.",
+            "alt": {
+              "segmentId": "m68833:alt:fs-idp117124896-alt",
+              "text": "A rocket is shown taking off."
+            },
             "src": "../../media/CNX_Chem_18_05_LiqHliqO.jpg",
             "mimeType": "image/jpeg"
           }
@@ -240,31 +249,16 @@
               "id": "fs-idp87200896",
               "class": "top-titled",
               "summary": "This table has two columns and seven rows. The first row is a header row and it labels each column, “General Equation” and “Comments.” Under the “General Equation” column are the following equations: M H or M H subscript 2 yields M O H or M ( O H ) subscript 2 plus H subscript 2; H subscript 2 plus C yields ( no reaction ); 2 H subscript 2 plus N subscript 2 yields 2 N H subscript 3; 2 H subscript 2 plus O subscript 2 yields 2 H subscript 2 O; H subscript 2 plus S yields H subscript 2 S; and H subscript 2 plus X subscript 2 yields 2 H X. Under the “Comments” column are the following: “ionic hydrides with group 1 and C a, S r, and B a,” nothing, “requires high pressure and temperature; low yield,” “exothermic and potentially explosive,” “requires heating; low yield,” and “X equals F, C l, B r, and I; explosive with F subscript 2; low yield with I subscript 2.”",
+              "title": null,
               "rows": [
                 {
                   "cells": [
                     {
-                      "segmentId": "m68833:entry:auto-25",
+                      "segmentId": "m68833:entry:auto-27",
                       "attributes": {
                         "align": "center",
                         "namest": "c1",
                         "nameend": "c2"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68833:entry:auto-26",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68833:entry:auto-27",
-                      "attributes": {
-                        "align": "left"
                       }
                     }
                   ]
@@ -294,7 +288,7 @@
                       }
                     },
                     {
-                      "segmentId": null,
+                      "segmentId": "m68833:entry:auto-31",
                       "attributes": {
                         "align": "left"
                       }
@@ -304,13 +298,13 @@
                 {
                   "cells": [
                     {
-                      "segmentId": "m68833:entry:auto-31",
+                      "segmentId": "m68833:entry:auto-32",
                       "attributes": {
                         "align": "left"
                       }
                     },
                     {
-                      "segmentId": "m68833:entry:auto-32",
+                      "segmentId": null,
                       "attributes": {
                         "align": "left"
                       }
@@ -359,6 +353,22 @@
                     },
                     {
                       "segmentId": "m68833:entry:auto-38",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68833:entry:auto-39",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68833:entry:auto-40",
                       "attributes": {
                         "align": "left"
                       }
@@ -448,7 +458,10 @@
               },
               "media": {
                 "id": "fs-idp100427680",
-                "alt": "A ball-and-stick model shows a nitrogen atom single bonded to three hydrogen atoms. There is a lone pair of electron dots that appears above the nitrogen atom.",
+                "alt": {
+                  "segmentId": "m68833:alt:fs-idp100427680-alt",
+                  "text": "A ball-and-stick model shows a nitrogen atom single bonded to three hydrogen atoms. There is a lone pair of electron dots that appears above the nitrogen atom."
+                },
                 "src": "../../media/CNX_Chem_18_05_Ammonia.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -492,7 +505,10 @@
               "type": "media",
               "id": "fs-idp81139952",
               "class": "scaled-down",
-              "alt": "Three Lewis structures are pictured and labeled, “a,” “b,” and “c.” Structure a shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. The structure is labeled “ammonia.” Structure b shows a nitrogen atom with one lone pair of electrons single bonded to two hydrogen atoms and a chlorine atom with three lone pairs of electrons. The structure is labeled “chloramine.” Structure c shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another and each single bonded to two hydrogen atoms. The structure is labeled “hydrazine.”",
+              "alt": {
+                "segmentId": "m68833:alt:fs-idp81139952-alt",
+                "text": "Three Lewis structures are pictured and labeled, “a,” “b,” and “c.” Structure a shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. The structure is labeled “ammonia.” Structure b shows a nitrogen atom with one lone pair of electrons single bonded to two hydrogen atoms and a chlorine atom with three lone pairs of electrons. The structure is labeled “chloramine.” Structure c shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another and each single bonded to two hydrogen atoms. The structure is labeled “hydrazine.”"
+              },
               "src": "../../media/CNX_Chem_18_05_AmmonDeriv_img.jpg",
               "embedSrc": "",
               "width": "",

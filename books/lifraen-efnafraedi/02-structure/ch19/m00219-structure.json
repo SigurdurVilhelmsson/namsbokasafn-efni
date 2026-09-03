@@ -1,0 +1,230 @@
+{
+  "moduleId": "m00219",
+  "title": {
+    "segmentId": "m00219:title:auto-1",
+    "text": "Nucleophilic Addition of Amines: Imine and Enamine Formation"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "979e442d-eb3c-463a-b3da-1f3889f0df47"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00219:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00219:alt:fig-00001-alt",
+          "text": "Two reversible pathways from ketone or aldehyde. Conversion of aldehyde or ketone to imine and water using R N H 2 and enamine and water using R 2 N H."
+        },
+        "src": "../../media/OChem_19_08_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00219:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00219:alt:fig-00002-alt",
+          "text": "Reaction of pyridoxal phosphate and alanine in multiple steps to form the Schiff base, an imine, and water. Schiff base has a imine functional group."
+        },
+        "src": "../../media/OChem_19_08_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00219:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00219:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00219:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00219:alt:fig-00003-alt",
+          "text": "Reaction mechanism for ketone or aldehyde to imine through five steps: nucleophilic attack of amine, proton transfer generating neutral carbinolamine, protonation of hydroxy, iminium ion formation, and deprotonation to imine."
+        },
+        "src": "../../media/OChem_19_08_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00219:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00219:alt:fig-00004-alt",
+          "text": "First reaction shows the formation of cyclohexanone oxime between cyclohexanone and hydroxylamine. Second reaction shows the formation of acetone-2,4-dinitrophenylhydrazone from acetone and 2,4-dinitrophenylhydrazine. Water is the by-product in both reactions."
+        },
+        "src": "../../media/OChem_19_08_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00219:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00219:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00219:alt:fig-00005-alt",
+          "text": "Reaction mechanism shows enamine formation from ketone or aldehyde by reacting with secondary amine through four steps: nucleophilic addition causing carbinolamine formation, protonation, formation of iminium ion, deprotonation to enamine."
+        },
+        "src": "../../media/OChem_19_08_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00219:para:para-00007"
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00219:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00219:caption:fig-00006-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00219:alt:fig-00006-alt",
+          "text": "A pH versus reaction rate graph. pH values range from 1 to 8. A sharp bell curve peaks at pH 4.5."
+        },
+        "src": "../../media/OChem_19_08_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00219:para:para-00009"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00219:example-title:exam-00001-title",
+        "text": "Predicting the Product of Reaction between a Ketone and an Amine"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00219:para:para-00010"
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00219:para:para-00011",
+          "title": {
+            "segmentId": "m00219:para-title:para-00011-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "title": {
+            "segmentId": "m00219:para-title:para-00012-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00219:alt:fig-00007-alt",
+          "text": "3-pentanone undergoes two reactions. It reacts with methylamine to form an imine and water. It reacts with ethyl amine to form an enamine and water."
+        },
+        "src": "../../media/OChem_19_08_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00219:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

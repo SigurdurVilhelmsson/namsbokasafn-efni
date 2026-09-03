@@ -1,0 +1,335 @@
+{
+  "moduleId": "m00083",
+  "title": {
+    "segmentId": "m00083:title:auto-1",
+    "text": "Describing a Reaction: Equilibria, Rates, and Energy Changes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "86c3c508-3eb5-45bd-abd5-92a55530dbce"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00083:para:para-00001"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00083:para:para-00002"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00002",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00083:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00083:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00083:alt:fig-00001-alt",
+          "text": "Reversible reaction shows ethene reacting with hydrogen bromide to form ethyl bromide. Formation of product is more favored. K E Q value is 7.1 times 10 to the seventh."
+        },
+        "src": "../../media/OChem_06_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00083:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00083:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00083:para:para-00007"
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00083:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00083:alt:fig-00002-alt",
+          "text": "Schematic arrows indicate energy out if K E Q greater than 1, delta G naught negative. Energy in if K E Q less than 1, delta G naught positive."
+        },
+        "src": "../../media/OChem_06_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00083:para:para-00009"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00003",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00083:para:para-00010"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00011",
+      "segmentId": "m00083:para:para-00011"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00012",
+      "segmentId": "m00083:para:para-00012"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00006",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00013",
+      "segmentId": "m00083:para:para-00013"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00083:alt:fig-00003-alt",
+          "text": "A forward-favored reaction shows ethene reacting with hydrogen bromide to form ethyl bromide. The values of delta G naught, delta H naught, delta S naught, and K E Q are mentioned."
+        },
+        "src": "../../media/OChem_06_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00014",
+      "segmentId": "m00083:para:para-00014"
+    },
+    {
+      "type": "para",
+      "id": "para-00015",
+      "segmentId": "m00083:para:para-00015"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00007",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00016",
+      "segmentId": "m00083:para:para-00016"
+    },
+    {
+      "type": "para",
+      "id": "para-00017",
+      "segmentId": "m00083:para:para-00017"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00008",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00018",
+      "segmentId": "m00083:para:para-00018"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00083:table-title:table-00001-title",
+        "text": "Explanation of Thermodynamic Quantities: Δ[[i:G]][[b:°]] = Δ[[i:H]][[b:°]] − [[i:T]]Δ[[i:S]][[b:°]]"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00083:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00083:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00083:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00083:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00083:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00083:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00083:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00083:entry:auto-31",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00083:entry:auto-32",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00083:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00083:entry:auto-34",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00083:entry:auto-35",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00019",
+      "segmentId": "m00083:para:para-00019"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00009"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00010"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00083:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

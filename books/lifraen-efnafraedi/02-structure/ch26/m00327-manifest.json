@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "moduleId": "m00327",
+  "extractedAt": "2026-08-31T19:08:49.985Z",
+  "sourceHash": "a221bbedf11bc51d",
+  "segmentCount": 50,
+  "segmentIds": [
+    "m00327:title:auto-1",
+    "m00327:para:para-00001",
+    "m00327:para:para-00002",
+    "m00327:para:para-00003",
+    "m00327:alt:fig-00001-alt",
+    "m00327:para:para-00004",
+    "m00327:para:para-00005",
+    "m00327:para:para-00006",
+    "m00327:caption:fig-00002-caption",
+    "m00327:alt:fig-00002-alt",
+    "m00327:para:para-00007",
+    "m00327:table-title:table-00001-title",
+    "m00327:entry:auto-13",
+    "m00327:entry:auto-14",
+    "m00327:entry:auto-15",
+    "m00327:entry:auto-16",
+    "m00327:entry:para-00008",
+    "m00327:entry:para-00009",
+    "m00327:entry:para-00010",
+    "m00327:entry:para-00011",
+    "m00327:entry:para-00012",
+    "m00327:entry:para-00013",
+    "m00327:entry:auto-23",
+    "m00327:entry:para-00014",
+    "m00327:entry:para-00015",
+    "m00327:entry:para-00016",
+    "m00327:entry:para-00017",
+    "m00327:entry:auto-28",
+    "m00327:entry:para-00018",
+    "m00327:entry:para-00019",
+    "m00327:entry:para-00020",
+    "m00327:entry:para-00021",
+    "m00327:entry:para-00022",
+    "m00327:entry:para-00023",
+    "m00327:entry:auto-35",
+    "m00327:entry:para-00024",
+    "m00327:entry:para-00025",
+    "m00327:entry:para-00026",
+    "m00327:entry:para-00027",
+    "m00327:entry:auto-40",
+    "m00327:entry:auto-41",
+    "m00327:entry:auto-42",
+    "m00327:entry:auto-43",
+    "m00327:entry:para-00028",
+    "m00327:entry:para-00029",
+    "m00327:entry:para-00030",
+    "m00327:entry:para-00031",
+    "m00327:para:para-00032",
+    "m00327:para:para-00033",
+    "m00327:title:sect-00001-title"
+  ],
+  "equationCount": 1,
+  "equationIds": [
+    "eq-00001"
+  ],
+  "elementCounts": {
+    "para": 9,
+    "section": 1,
+    "figure": 2,
+    "table": 1,
+    "example": 0,
+    "exercise": 1,
+    "note": 0,
+    "equation": 1,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002"
+    ],
+    "table": [
+      "table-00001"
+    ],
+    "example": [],
+    "exercise": [
+      "exer-00001"
+    ],
+    "note": [],
+    "equation": [
+      "eq-00001"
+    ],
+    "section": [
+      "sect-00001"
+    ]
+  }
+}

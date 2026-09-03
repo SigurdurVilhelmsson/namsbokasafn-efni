@@ -32,7 +32,10 @@
       },
       "media": {
         "id": "fs-idp16369520",
-        "alt": "The left side of this figure includes a graphic of the earth with an inverted rectangular prism extending from a point on it. Near the top of the image, the label, “square inch column of air molecules” is connected to the prism with a line segment. This label is also connected with a line segment to a downward pointing arrow at the right side of the figure. Beneath the arrow is a red circle labeled, “atmospheric pressure.” A narrow rectangle with a dashed line border extends from the bottom of the arrow vertically through the circle. Directly beneath this rectangle at the lower edge of the circle is a hand with a thumb appearing to be resting on a tabletop. The thumb is connected with a line segment to the label, “14.7 lbs of pressure on 1 square inch.” The red circle is sitting on top of the thumb.",
+        "alt": {
+          "segmentId": "m68750:alt:fs-idp16369520-alt",
+          "text": "The left side of this figure includes a graphic of the earth with an inverted rectangular prism extending from a point on it. Near the top of the image, the label, “square inch column of air molecules” is connected to the prism with a line segment. This label is also connected with a line segment to a downward pointing arrow at the right side of the figure. Beneath the arrow is a red circle labeled, “atmospheric pressure.” A narrow rectangle with a dashed line border extends from the bottom of the arrow vertically through the circle. Directly beneath this rectangle at the lower edge of the circle is a hand with a thumb appearing to be resting on a tabletop. The thumb is connected with a line segment to the label, “14.7 lbs of pressure on 1 square inch.” The red circle is sitting on top of the thumb."
+        },
         "src": "../../media/CNX_Chem_09_01_Pressure1.jpg",
         "mimeType": "image/jpeg"
       }
@@ -104,7 +107,10 @@
       },
       "media": {
         "id": "fs-idp170647376",
-        "alt": "This figure includes two photographs. Figure a is a photo of a large gray elephant on grassy, beige terrain. Figure b is a photo of a figure skater with her right skate on the ice, upper torso lowered, arms extended upward behind her chest, and left leg extended upward behind her.",
+        "alt": {
+          "segmentId": "m68750:alt:fs-idp170647376-alt",
+          "text": "This figure includes two photographs. Figure a is a photo of a large gray elephant on grassy, beige terrain. Figure b is a photo of a figure skater with her right skate on the ice, upper torso lowered, arms extended upward behind her chest, and left leg extended upward behind her."
+        },
         "src": "../../media/CNX_Chem_09_01_Pressure2.jpg",
         "mimeType": "image/jpeg"
       }
@@ -119,31 +125,16 @@
       "id": "fs-idp189967312",
       "class": "top-titled",
       "summary": "This table has two columns and 10 rows. The first row is a header row, and it labels the columns as “Unit Name and Abbreviation” and “Definition or Relation to Other Unit.” The first unit name and abbreviation is pascal, and it is abbreviated as P a. The definition or relation to other unit is 1 P a equals N over m squared and recommended I U P A C unit. The next unit name is kilopascal, and it is abbreviated as k P a. The definition or relation to other unit is 1 k P a equals 1000 P a. The next unit name is pounds per square inch, and it is abbreviated as p s i. The definition or relation to other unit is air pressure at sea level is approximately 14.7 p s i. The next unit name is atmosphere, and is is abbreviated as a t m. The definition or relation to other unit is 1 a t m equals 101,325 P a and air pressure at sea level is approximately one a t m. The next unit name is bar, and it is abbreviated as bar or b. The definition or relation to other unit is 1 bar equals 100,000 P a exactly and commonly used in meteorology. The next unit name is millibar, and it is abbreviated as m b a r or m b. The definition or relation to other unit is 1000 m b a r equals one bar. The next unit name is inches of mercury, and it is abbreviated as i n period, H g. The definition or relation to other unit is one i n period H g equals 3386 P a and is used by the aviation industry and also some weather reports. The next unit is torr. The definition or relation to other unit is 1 torr equals 1 over 760 a t m and named after Evangelista Torricelli, inventor of the barometer. The last unit name is millimeters of mercury, and it is abbreviated as m m H g. The definition or relation to other unit is 1 m m H g is approximately 1 torr.",
+      "title": null,
       "rows": [
         {
           "cells": [
             {
-              "segmentId": "m68750:entry:auto-18",
+              "segmentId": "m68750:entry:auto-20",
               "attributes": {
                 "namest": "c1",
                 "nameend": "c2",
                 "align": "center"
-              }
-            }
-          ]
-        },
-        {
-          "cells": [
-            {
-              "segmentId": "m68750:entry:auto-19",
-              "attributes": {
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m68750:entry:auto-20",
-              "attributes": {
-                "align": "left"
               }
             }
           ]
@@ -291,6 +282,22 @@
               }
             }
           ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-39",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68750:entry:auto-40",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
         }
       ]
     },
@@ -401,7 +408,10 @@
       },
       "media": {
         "id": "fs-idm35593680",
-        "alt": "This figure shows two barometers. The barometer to the left contains a shallow reservoir, or open container, of mercury. A narrow tube extends upward from the reservoir above the reservoir. This tube is sealed at the top. To the right, a second similar setup is shown with a reservoir filled with water. Line segments connect the label “vacuum” to the tops of the two narrow tubes. The tube on the left shows the mercury in the reservoir extending in a column upward in the narrow tube. Similarly, the tube on the right shows the water in the reservoir extending upward into the related narrow tube. Double-headed arrows extend from the surface of each liquid in the reservoir to the top of the liquid in each tube. A narrow column or bar extends from the surface of the reservoir to the same height. This bar is labeled “atmospheric pressure.” The level of the water in its tube is significantly higher than the level of mercury in its tube.",
+        "alt": {
+          "segmentId": "m68750:alt:fs-idm35593680-alt",
+          "text": "This figure shows two barometers. The barometer to the left contains a shallow reservoir, or open container, of mercury. A narrow tube extends upward from the reservoir above the reservoir. This tube is sealed at the top. To the right, a second similar setup is shown with a reservoir filled with water. Line segments connect the label “vacuum” to the tops of the two narrow tubes. The tube on the left shows the mercury in the reservoir extending in a column upward in the narrow tube. Similarly, the tube on the right shows the water in the reservoir extending upward into the related narrow tube. Double-headed arrows extend from the surface of each liquid in the reservoir to the top of the liquid in each tube. A narrow column or bar extends from the surface of the reservoir to the same height. This bar is labeled “atmospheric pressure.” The level of the water in its tube is significantly higher than the level of mercury in its tube."
+        },
         "src": "../../media/CNX_Chem_09_01_Barometer.jpg",
         "mimeType": "image/jpeg"
       }
@@ -504,7 +514,10 @@
       },
       "media": {
         "id": "fs-idm5598960",
-        "alt": "Three diagrams of manometers are shown. Each manometer consists of a spherical pink container filled with gas on the left that is connected to a U-shaped, sealed tube by a valve on its right. The top of the U aligns with the gas-filled sphere and the U, which extends below, contains mercury. The first manometer has a sealed tube. The sealed end to the upper right in the diagram is labeled “closed end” and “vacuum.” The mercury level is higher in the right side of the tube than in the left. The difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign h rho g. The second manometer has an open-ended tube, which is labeled “open end.” At this opening in the upper right of the diagram is the label P subscript atm. The mercury level is higher in the left side of the tube than in the right. This difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign P subscript atm minus sign h rho g. The third manometer has an open-ended tube and is similar to the second manometer except that the mercury level is higher in the right side of the tube than in the left. This difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign P subscript a t m plus h rho g.",
+        "alt": {
+          "segmentId": "m68750:alt:fs-idm5598960-alt",
+          "text": "Three diagrams of manometers are shown. Each manometer consists of a spherical pink container filled with gas on the left that is connected to a U-shaped, sealed tube by a valve on its right. The top of the U aligns with the gas-filled sphere and the U, which extends below, contains mercury. The first manometer has a sealed tube. The sealed end to the upper right in the diagram is labeled “closed end” and “vacuum.” The mercury level is higher in the right side of the tube than in the left. The difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign h rho g. The second manometer has an open-ended tube, which is labeled “open end.” At this opening in the upper right of the diagram is the label P subscript atm. The mercury level is higher in the left side of the tube than in the right. This difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign P subscript atm minus sign h rho g. The third manometer has an open-ended tube and is similar to the second manometer except that the mercury level is higher in the right side of the tube than in the left. This difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign P subscript a t m plus h rho g."
+        },
         "src": "../../media/CNX_Chem_09_01_Manometer.jpg",
         "mimeType": "image/jpeg"
       }
@@ -589,6 +602,22 @@
           "type": "para",
           "id": "fs-idm8669760",
           "segmentId": "m68750:para:fs-idm8669760"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp141827632",
+          "alt": {
+            "segmentId": "m68750:alt:fs-idp141827632-alt",
+            "text": "A diagram of a closed-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “closed end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height between the left side and right side is 26.4 c m which is indicated with horizontal line segments and arrows."
+          }
+        },
+        {
+          "type": "media",
+          "id": "fs-idp26163024",
+          "alt": {
+            "segmentId": "m68750:alt:fs-idp26163024-alt",
+            "text": "A diagram of a closed-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “closed end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 6.0 i n is indicated with horizontal line segments and arrows."
+          }
         },
         {
           "type": "note",
@@ -689,6 +718,22 @@
           "segmentId": "m68750:para:fs-idp154771664"
         },
         {
+          "type": "media",
+          "id": "fs-idp16540528",
+          "alt": {
+            "segmentId": "m68750:alt:fs-idp16540528-alt",
+            "text": "A diagram of an opne-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 13.7 c m is indicated with horizontal line segments and arrows."
+          }
+        },
+        {
+          "type": "media",
+          "id": "fs-idm34584432",
+          "alt": {
+            "segmentId": "m68750:alt:fs-idm34584432-alt",
+            "text": "A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the left side than on the right. The difference in height of 4.63 i n is indicated with horizontal line segments and arrows."
+          }
+        },
+        {
           "type": "note",
           "id": "fs-idp173017200",
           "title": {
@@ -730,7 +775,10 @@
       },
       "media": {
         "id": "fs-idm50439776",
-        "alt": "This figure includes two photographs. The first photo shows a young adult male placing a blood pressure cuff on the upper arm of a young adult female. The second image shows a typical sphygmomanometer, which includes a black blood pressure cuff, tubing, pump, and pressure gauge.",
+        "alt": {
+          "segmentId": "m68750:alt:fs-idm50439776-alt",
+          "text": "This figure includes two photographs. The first photo shows a young adult male placing a blood pressure cuff on the upper arm of a young adult female. The second image shows a typical sphygmomanometer, which includes a black blood pressure cuff, tubing, pump, and pressure gauge."
+        },
         "src": "../../media/CNX_Chem_09_01_Spygmo.jpg",
         "mimeType": "image/jpeg"
       }
@@ -775,7 +823,10 @@
       },
       "media": {
         "id": "fs-idm21149856",
-        "alt": "A weather map of the United States is shown which points out areas of high and low pressure with the letters H in blue and L in red. Curved lines in grey, orange, blue, and red are shown. The orange lines are segmented. The red and blue lines have small red or blue semi-circles and triangles attached along their lengths. In dashed white lines, latitude and longitude are indicated. Underlined three and four digit numbers also appear across the map.",
+        "alt": {
+          "segmentId": "m68750:alt:fs-idm21149856-alt",
+          "text": "A weather map of the United States is shown which points out areas of high and low pressure with the letters H in blue and L in red. Curved lines in grey, orange, blue, and red are shown. The orange lines are segmented. The red and blue lines have small red or blue semi-circles and triangles attached along their lengths. In dashed white lines, latitude and longitude are indicated. Underlined three and four digit numbers also appear across the map."
+        },
         "src": "../../media/CNX_Chem_09_01_WeatherMap.jpg",
         "mimeType": "image/jpeg"
       }
@@ -789,7 +840,10 @@
       },
       "media": {
         "id": "fs-idm76295840",
-        "alt": "This diagram shows half of a two dimensional view of the earth in blue and green. A narrow white layer, labeled “troposphere 0 dash 12 k m” covers this hemisphere. This layer is also labeled “layer where most weather events originate.” Next, a thicker light blue layer labeled “Stratosphere 12 dash 50 k m” is shown. This is followed by a slightly thinner layer also in light blue labeled “Mesosphere 50 dash 80 k m.” Following this layer is a relatively thick light blue layer labeled “Thermosphere 80 dash 700 k m.” A blue layer appears that covers the rightmost two thirds of the diagram. This region gradually darkens from a lighter blue at the left to a dark blue at the right. This region of the diagram is labeled “exosphere greater than 700 k m.”",
+        "alt": {
+          "segmentId": "m68750:alt:fs-idm76295840-alt",
+          "text": "This diagram shows half of a two dimensional view of the earth in blue and green. A narrow white layer, labeled “troposphere 0 dash 12 k m” covers this hemisphere. This layer is also labeled “layer where most weather events originate.” Next, a thicker light blue layer labeled “Stratosphere 12 dash 50 k m” is shown. This is followed by a slightly thinner layer also in light blue labeled “Mesosphere 50 dash 80 k m.” Following this layer is a relatively thick light blue layer labeled “Thermosphere 80 dash 700 k m.” A blue layer appears that covers the rightmost two thirds of the diagram. This region gradually darkens from a lighter blue at the left to a dark blue at the right. This region of the diagram is labeled “exosphere greater than 700 k m.”"
+        },
         "src": "../../media/CNX_Chem_09_01_Atmosphere.jpg",
         "mimeType": "image/jpeg"
       }
@@ -824,11 +878,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68750:entry:auto-120",
+                  "segmentId": "m68750:entry:auto-131",
                   "attributes": {}
                 }
               ]
@@ -836,7 +891,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68750:entry:auto-121",
+                  "segmentId": "m68750:entry:auto-132",
                   "attributes": {}
                 }
               ]
@@ -1104,6 +1159,14 @@
                 "type": "para",
                 "id": "fs-idm80328752",
                 "segmentId": "m68750:problem:fs-idm80328752"
+              },
+              {
+                "type": "media",
+                "id": "fs-idm92729728",
+                "alt": {
+                  "segmentId": "m68750:alt:fs-idm92729728-alt",
+                  "text": "A diagram of a closed-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “closed end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 26.4 c m is indicated with horizontal line segments and arrows."
+                }
               }
             ]
           },
@@ -1141,6 +1204,14 @@
                 "type": "para",
                 "id": "fs-idm69293536",
                 "segmentId": "m68750:problem:fs-idm69293536"
+              },
+              {
+                "type": "media",
+                "id": "fs-idm26453536",
+                "alt": {
+                  "segmentId": "m68750:alt:fs-idm26453536-alt",
+                  "text": "A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the left side than on the right. The difference in height of 6.00 i n is indicated with horizontal line segments and arrows."
+                }
               }
             ]
           },
@@ -1170,6 +1241,14 @@
                 "type": "para",
                 "id": "fs-idp30379328",
                 "segmentId": "m68750:problem:fs-idp30379328"
+              },
+              {
+                "type": "media",
+                "id": "fs-idm1196240",
+                "alt": {
+                  "segmentId": "m68750:alt:fs-idm1196240-alt",
+                  "text": "A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the left side than on the right. The difference in height of 13.7 c m is indicated with horizontal line segments and arrows."
+                }
               }
             ]
           },
@@ -1207,6 +1286,14 @@
                 "type": "para",
                 "id": "fs-idp189802448",
                 "segmentId": "m68750:problem:fs-idp189802448"
+              },
+              {
+                "type": "media",
+                "id": "fs-idm82208512",
+                "alt": {
+                  "segmentId": "m68750:alt:fs-idm82208512-alt",
+                  "text": "A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 26.4 c m is indicated with horizontal line segments and arrows."
+                }
               }
             ]
           },

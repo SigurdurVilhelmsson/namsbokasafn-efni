@@ -1,0 +1,923 @@
+{
+  "moduleId": "m00288",
+  "title": {
+    "segmentId": "m00288:title:auto-1",
+    "text": "Some Biological Carbonyl Condensation Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "fe8f6ee0-4c5f-493f-908a-622fc250b35f"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00288:title:sect-00001-title",
+        "text": "Biological Aldol Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00288:para:para-00001"
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00288:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00001-alt",
+              "text": "The scheme shows type one and two aldolase reactions. In both, dihydroxyacetone phosphate reacts with glyceraldehyde-3-phosphate yielding fructose 1,6-bisphosphate. Iminium ion is formed in type one on hydrolysis yields product."
+            },
+            "src": "../../media/OChem_23_13_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00288:para:para-00003"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00288:title:sect-00002-title",
+        "text": "Biological Claisen Condensations"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00288:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00002-alt",
+              "text": "Malonyl A C P reacts with acetyl synthase generating enolate ion expelling carbon dioxide. The reaction expels synthase - S H, giving acetoacetyl A C P."
+            },
+            "src": "../../media/OChem_23_13_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00288:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00003-alt",
+              "text": "The butyryl synthase and malonyl A C P reaction form 3-ketohexanoyl A C P. The product has six-carbon chain with two carbonyl groups positioned on the first and third carbon."
+            },
+            "src": "../../media/OChem_23_13_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00288:title:sect-00003-title",
+        "text": "A Prologue to Metabolism"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00288:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00288:caption:fig-00004-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00004-alt",
+              "text": "A photo shows a portrait human face made using different dried and fresh, flowers and leaves."
+            },
+            "src": "../../media/OSX_OrgChem_23_98_Flowers.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00288:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00005-alt",
+              "text": "The reaction shows the glycolysis of glucose into two pyruvate molecules. Glucose is in a chair conformation with carbon atoms highlighted using pink, blue, and green colors."
+            },
+            "src": "../../media/OChem_23_13_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00288:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00006-alt",
+              "text": "The reversible reaction shows the conversion of glucose into fructose through the formation of aldehyde and enol forms of glucose. The initial glucose is in hemiacetal form."
+            },
+            "src": "../../media/OChem_23_13_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00288:para:para-00009"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00007-alt",
+              "text": "The reaction shows the conversion of fructose (six-carbon chain) in the presence of a base to form a ketone and aldehyde, both containing a vertical three-carbon chain."
+            },
+            "src": "../../media/OChem_23_13_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00288:para:para-00010"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00001-item-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00288:title:sect-00005-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00288:para:para-00011"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00008-alt",
+              "text": "The structure shows electron transfer from nucleophilic donor to electrophilic acceptor of a carbonyl compound, forming a carbonyl compound with a new carbon-carbon bond."
+            },
+            "src": "../../media/OChem_23_EC_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00288:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00288:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00288:para:para-00014"
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00288:para:para-00015"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": "summary-reactions",
+      "title": {
+        "segmentId": "m00288:title:sect-00006-title",
+        "text": "Summary of Reactions"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00002",
+          "listType": "enumerated",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00002-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00002-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00002-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00002-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00002-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00002-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00002-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00002-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00288:item:list-00002-item-9"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00009-alt",
+              "text": "The reversible reaction shows two aldehydes with sodium hydroxide/ethanol, forming beta-hydroxy aldehyde. The product is R C H 2 C H O H C H R C H O."
+            },
+            "src": "../../media/OChem_23_EC_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00010-alt",
+              "text": "A ketone reacts with phenylaldehyde and sodium hydroxide, ethanol to form a compound with hydroxyl and keto. A ketone reacts with formaldehyde to form a compound with alcohol."
+            },
+            "src": "../../media/OChem_23_EC_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00011-alt",
+              "text": "The reaction shows the intramolecular aldol formation of a diketocarbonyl compound with sodium ethoxide in ethanol, forming a cyclic carbonyl compound and water as the products."
+            },
+            "src": "../../media/OChem_23_EC_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00012",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00012-alt",
+              "text": "The reaction shows the dehydration of a beta-hydroxy carbonyl compound, in the presence of sodium hydroxide or hydronium ions, forming an alpha-beta-unsaturated carbonyl compound and water."
+            },
+            "src": "../../media/OChem_23_EC_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00013",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00013-alt",
+              "text": "Claisen condensation of two molecules of an ester in the presence of sodium ethoxide in ethanol forms a beta keto ester product, releasing alcohol as a byproduct."
+            },
+            "src": "../../media/OChem_23_EC_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00014",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00014-alt",
+              "text": "A mixed Claisen condensation between two different esters produces a beta-ketoester product and ethyl alcohol as a byproduct. This reaction forms new carbon-carbon bonds and releases alcohol."
+            },
+            "src": "../../media/OChem_23_EC_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00015",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00015-alt",
+              "text": "The first reaction shows the intramolecular condensation of a diester (six-carbon) forming a cyclic five-membered dicarbonyl. The second reaction shows the formation of cyclic six-membered dicarbonyl (seven-carbon) using sodium ethoxide/ethanol."
+            },
+            "src": "../../media/OChem_23_EC_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00016",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00016-alt",
+              "text": "The reaction of dicarbonyl and alpha, beta-unsaturated carbonyl compound with sodium ethoxide and ethanol, forms a new carbon-carbon bond between the two reactants."
+            },
+            "src": "../../media/OChem_23_EC_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00017",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00288:alt:fig-00017-alt",
+              "text": "An enamine reacts with alpha, beta-unsaturated carbonyl compound in T H F solvent followed by acid hydrolysis, yielding a dicarbonyl product, forming a new carbon-carbon bond."
+            },
+            "src": "../../media/OChem_23_EC_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00007",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00288:title:sect-00007-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00288:para:para-00016"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00021",
+          "segmentId": "m00288:para:para-00021"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00043",
+          "segmentId": "m00288:para:para-00043"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00054",
+          "segmentId": "m00288:para:para-00054"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00059",
+          "segmentId": "m00288:para:para-00059"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00041",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00042",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00043",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00044",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00065",
+          "segmentId": "m00288:para:para-00065"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00045",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00046",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00047",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00048",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00049",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00050",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00051",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 13
+}

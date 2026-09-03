@@ -1,0 +1,11 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C═C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C═C}}"
+  },
+  "eq-00001": {
+    "mathml": "<m:math><m:mrow><m:mtext>Reaction rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:mtext>[Ketone</m:mtext><m:mo stretchy=\"false\">]</m:mo><m:mo stretchy=\"false\">[</m:mo><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{Reaction rate}=k\\text{[Ketone}][{\\text{H}}^{+}]}",
+    "isBlock": true
+  }
+}

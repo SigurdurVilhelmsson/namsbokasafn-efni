@@ -1,0 +1,56 @@
+{
+  "moduleId": "m00088",
+  "title": {
+    "segmentId": "m00088:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "1edb0fba-b48f-4865-a3c3-87a6d10ea8e5"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00088:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00088:alt:fig-00001-alt",
+          "text": "A soldier adjusting the straps on the bulletproof vest of another soldier. Both soldiers are in uniform, wearing helmets, gas masks, and gloves."
+        },
+        "src": "../../media/OChem_08_00_Vests.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00088:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00088:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00088:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00088:alt:fig-00002-alt",
+          "text": "A multi-step reaction shows the formation of alkane, 1,2-diol, carbonyl compound, cyclopropane, epoxide, halide, 1,2-dihalide, halohydrin, and alcohol from alkene."
+        },
+        "src": "../../media/OChem_08_00_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 0
+}

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68860",
-  "extractedAt": "2026-07-13T18:21:55.280Z",
+  "extractedAt": "2026-08-31T19:08:33.365Z",
   "sourceHash": "171cf098c81016a2",
-  "segmentCount": 117,
+  "segmentCount": 119,
   "segmentIds": [
     "m68860:title:auto-1",
     "m68860:title:fs-idm2979872-title",
@@ -99,7 +99,7 @@
     "m68860:para:fs-idm78087840",
     "m68860:para-title:fs-idm111716000-title",
     "m68860:para:fs-idm176114816",
-    "m68860:entry:auto-95",
+    "m68860:alt:fs-idm174022560-alt",
     "m68860:entry:auto-96",
     "m68860:entry:auto-97",
     "m68860:entry:auto-98",
@@ -109,11 +109,11 @@
     "m68860:entry:auto-102",
     "m68860:entry:auto-103",
     "m68860:entry:auto-104",
+    "m68860:entry:auto-105",
     "m68860:para:fs-idm164107136",
     "m68860:example-title:fs-idm173153104-title",
     "m68860:para:fs-idm144872640",
-    "m68860:entry:auto-108",
-    "m68860:entry:auto-109",
+    "m68860:alt:fs-idp112843584-alt",
     "m68860:entry:auto-110",
     "m68860:entry:auto-111",
     "m68860:entry:auto-112",
@@ -121,7 +121,9 @@
     "m68860:entry:auto-114",
     "m68860:entry:auto-115",
     "m68860:entry:auto-116",
-    "m68860:entry:auto-117"
+    "m68860:entry:auto-117",
+    "m68860:entry:auto-118",
+    "m68860:entry:auto-119"
   ],
   "equationCount": 37,
   "equationIds": [
@@ -173,7 +175,7 @@
     "note": 0,
     "equation": 18,
     "list": 1,
-    "media": 0,
+    "media": 2,
     "glossary": 0
   },
   "elementIds": {

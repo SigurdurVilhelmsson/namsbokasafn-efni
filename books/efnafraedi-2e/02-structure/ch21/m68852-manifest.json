@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68852",
-  "extractedAt": "2026-07-07T09:12:52.406Z",
+  "extractedAt": "2026-08-31T19:08:45.939Z",
   "sourceHash": "2395506ee583bc89",
-  "segmentCount": 82,
+  "segmentCount": 83,
   "segmentIds": [
     "m68852:title:auto-1",
     "m68852:abstract:auto-2",
@@ -13,6 +13,7 @@
     "m68852:title:fs-idp49661760-title",
     "m68852:para:fs-idm5999248",
     "m68852:caption:CNX_Chem_21_02_Nuclearrxs-caption",
+    "m68852:alt:fs-idp74884384-alt",
     "m68852:para:fs-idp183438528",
     "m68852:para:fs-idp95362336",
     "m68852:title:fs-idp244461456-title",

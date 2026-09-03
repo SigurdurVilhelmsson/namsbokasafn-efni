@@ -40,22 +40,25 @@ This equation indicates redox reactions with large (positive) standard cell pote
 <!-- SEG:m68824:caption:CNX_Chem_17_04_Relation-caption -->
 Graphic depicting the relation between three important thermodynamic properties.
 
-<!-- SEG:m68824:entry:auto-15 -->
-[[i:K]]
+<!-- SEG:m68824:alt:fs-idp78132768-alt -->
+A diagram is shown that involves three double headed arrows positioned in the shape of an equilateral triangle. The vertices are labeled in red. The top vertex is labeled “K.“ The vertex at the lower left is labeled “delta G superscript degree symbol.” The vertex at the lower right is labeled “E superscript degree symbol subscript cell.” The right side of the triangle is labeled “E superscript degree symbol subscript cell equals ( R T divided by n  F ) l n K.” The lower side of the triangle is labeled “delta G superscript degree symbol equals negative n F E superscript degree symbol subscript cell.” The left side of the triangle is labeled “delta G superscript degree symbol equals negative R T l n K.”
 
 <!-- SEG:m68824:entry:auto-16 -->
-Δ[[i:G]]°
+[[i:K]]
 
 <!-- SEG:m68824:entry:auto-17 -->
-[[i:E]]°[[sub:cell]]
+Δ[[i:G]]°
 
 <!-- SEG:m68824:entry:auto-18 -->
-> 1
+[[i:E]]°[[sub:cell]]
 
 <!-- SEG:m68824:entry:auto-19 -->
-&lt; 0
+> 1
 
 <!-- SEG:m68824:entry:auto-20 -->
+&lt; 0
+
+<!-- SEG:m68824:entry:auto-21 -->
 > 0
 
 <!-- SEG:m68824:entry:fs-idm239811792 -->
@@ -64,13 +67,13 @@ Reaction is spontaneous under standard conditions
 <!-- SEG:m68824:entry:fs-idm218962512 -->
 Products more abundant at equilibrium
 
-<!-- SEG:m68824:entry:auto-23 -->
+<!-- SEG:m68824:entry:auto-24 -->
 &lt; 1
 
-<!-- SEG:m68824:entry:auto-24 -->
+<!-- SEG:m68824:entry:auto-25 -->
 > 0
 
-<!-- SEG:m68824:entry:auto-25 -->
+<!-- SEG:m68824:entry:auto-26 -->
 &lt; 0
 
 <!-- SEG:m68824:entry:fs-idm248001280 -->
@@ -79,13 +82,13 @@ Reaction is non-spontaneous under standard conditions
 <!-- SEG:m68824:entry:fs-idm197346624 -->
 Reactants more abundant at equilibrium
 
-<!-- SEG:m68824:entry:auto-28 -->
+<!-- SEG:m68824:entry:auto-29 -->
 = 1
 
-<!-- SEG:m68824:entry:auto-29 -->
+<!-- SEG:m68824:entry:auto-30 -->
 = 0
 
-<!-- SEG:m68824:entry:auto-30 -->
+<!-- SEG:m68824:entry:auto-31 -->
 = 0
 
 <!-- SEG:m68824:entry:fs-idm249738032 -->
@@ -137,7 +140,7 @@ Potentials at Nonstandard Conditions: The Nernst Equation
 Most of the redox processes that interest science and society do not occur under standard state conditions, and so the potentials of these systems under nonstandard conditions are a property worthy of attention. Having established the relationship between potential and free energy change in this section, the previously discussed relation between free energy change and reaction mixture composition can be used for this purpose.
 
 <!-- SEG:m68824:para:fs-idm983728 -->
-Notice the reaction quotient, [[i:Q]], appears in this equation, making the free energy change dependent upon the composition of the reaction mixture. Substituting the equation relating free energy change to cell potential yields the {{term}}Nernst equation{{/term}}:
+Notice the reaction quotient, [[i:Q]], appears in this equation, making the free energy change dependent upon the composition of the reaction mixture. Substituting the equation relating free energy change to cell potential yields the [[term:Nernst equation|term-00001]]:
 
 <!-- SEG:m68824:para:fs-idp24059424 -->
 This equation describes how the potential of a redox system (such as a galvanic cell) varies from its standard state value, specifically, showing it to be a function of the number of electrons transferred, [[i:n]], the temperature, [[i:T]], and the reaction mixture composition as reflected in [[i:Q]]. A convenient form of the Nernst equation for most work is one in which values for the fundamental constants (R and F) and standard temperature (298) K), along with a factor converting from natural to base-10 logarithms, have been included:
@@ -176,7 +179,7 @@ Answer:
 [[i:n]] = 6; [[i:Q]] = 1440; [[i:E]][[sub:cell]] = +1.97 V, spontaneous.
 
 <!-- SEG:m68824:para:fs-idp264674608 -->
-A {{term}}concentration cell{{/term}} is constructed by connecting two nearly identical half-cells, each based on the same half-reaction and using the same electrode, varying only in the concentration of one redox species. The potential of a concentration cell, therefore, is determined only by the difference in concentration of the chosen redox species. The example problem below illustrates the use of the Nernst equation in calculations involving concentration cells.
+A [[term:concentration cell|term-00002]] is constructed by connecting two nearly identical half-cells, each based on the same half-reaction and using the same electrode, varying only in the concentration of one redox species. The potential of a concentration cell, therefore, is determined only by the difference in concentration of the chosen redox species. The example problem below illustrates the use of the Nernst equation in calculations involving concentration cells.
 
 <!-- SEG:m68824:example-title:fs-idp211103648-title -->
 Concentration Cells
@@ -220,25 +223,25 @@ Potential is a thermodynamic quantity reflecting the intrinsic driving force of 
 <!-- SEG:m68824:title:fs-idp39495232-title -->
 Key Equations
 
-<!-- SEG:m68824:entry:auto-75 -->
+<!-- SEG:m68824:entry:auto-76 -->
 [[MATH:7]]
 
-<!-- SEG:m68824:entry:auto-76 -->
+<!-- SEG:m68824:entry:auto-77 -->
 [[MATH:8]]
 
-<!-- SEG:m68824:entry:auto-77 -->
+<!-- SEG:m68824:entry:auto-78 -->
 [[MATH:9]]
 
-<!-- SEG:m68824:entry:auto-78 -->
+<!-- SEG:m68824:entry:auto-79 -->
 [[MATH:10]]
 
-<!-- SEG:m68824:entry:auto-79 -->
+<!-- SEG:m68824:entry:auto-80 -->
 Δ[[i:G]] = −[[i:nFE]][[sub:cell]]
 
-<!-- SEG:m68824:entry:auto-80 -->
+<!-- SEG:m68824:entry:auto-81 -->
 [[MATH:11]]
 
-<!-- SEG:m68824:entry:auto-81 -->
+<!-- SEG:m68824:entry:auto-82 -->
 [[MATH:12]]
 
 <!-- SEG:m68824:title:fs-idp39758576-title -->

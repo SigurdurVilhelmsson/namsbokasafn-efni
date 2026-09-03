@@ -34,7 +34,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "Characteristic alkane bonds and their absorption values. Alkane CH bonds absorb at 2850 to 2960 inverse centimeters and alkane CC bonds absorb at 800 to 1300 inverse centimeters.",
+            "alt": {
+              "segmentId": "m00142:alt:fig-00001-alt",
+              "text": "Characteristic alkane bonds and their absorption values. Alkane CH bonds absorb at 2850 to 2960 inverse centimeters and alkane CC bonds absorb at 800 to 1300 inverse centimeters."
+            },
             "src": "../../media/OChem_12_08_001.jpg",
             "mimeType": "image/jpeg"
           }
@@ -66,7 +69,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "Characteristic alkene bonds and their absorption values. Various alkene CC and CH bond types absorb just below 3100, below 1680, below 990, and at 890 inverse centimeters.",
+            "alt": {
+              "segmentId": "m00142:alt:fig-00002-alt",
+              "text": "Characteristic alkene bonds and their absorption values. Various alkene CC and CH bond types absorb just below 3100, below 1680, below 990, and at 890 inverse centimeters."
+            },
             "src": "../../media/OChem_12_08_002.jpg",
             "mimeType": "image/jpeg"
           }
@@ -79,7 +85,10 @@
             "segmentId": "m00142:caption:fig-00003-caption"
           },
           "media": {
-            "alt": "Characteristic alkene bonds and their absorption values, separated by level of substitution and cis or trans.",
+            "alt": {
+              "segmentId": "m00142:alt:fig-00003-alt",
+              "text": "Characteristic alkene bonds and their absorption values, separated by level of substitution and cis or trans."
+            },
             "src": "../../media/OChem_12_08_003.jpg",
             "mimeType": "image/jpeg"
           }
@@ -106,7 +115,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "Characteristic alkyne bonds and their absorption values. Alkyne CC bonds absorb at 2100 to 2260 inverse centimeters and alkyne CH bonds absorb at 3300 inverse centimeters.",
+            "alt": {
+              "segmentId": "m00142:alt:fig-00004-alt",
+              "text": "Characteristic alkyne bonds and their absorption values. Alkyne CC bonds absorb at 2100 to 2260 inverse centimeters and alkyne CH bonds absorb at 3300 inverse centimeters."
+            },
             "src": "../../media/OChem_12_08_004.jpg",
             "mimeType": "image/jpeg"
           }
@@ -133,7 +145,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "Characteristic aromatic bonds and their absorption values. Aromatic CH bonds absorb weakly at 3030 inverse centimeters and aromatic CC bonds absorb at in regions below 2000 and 1600 inverse centimeters.",
+            "alt": {
+              "segmentId": "m00142:alt:fig-00005-alt",
+              "text": "Characteristic aromatic bonds and their absorption values. Aromatic CH bonds absorb weakly at 3030 inverse centimeters and aromatic CC bonds absorb at in regions below 2000 and 1600 inverse centimeters."
+            },
             "src": "../../media/OChem_12_08_005.jpg",
             "mimeType": "image/jpeg"
           }
@@ -146,7 +161,10 @@
             "segmentId": "m00142:caption:fig-00006-caption"
           },
           "media": {
-            "alt": "Characteristic aromatic bonds and their absorption values, separated by number of substituents and ortho, meta, or para.",
+            "alt": {
+              "segmentId": "m00142:alt:fig-00006-alt",
+              "text": "Characteristic aromatic bonds and their absorption values, separated by number of substituents and ortho, meta, or para."
+            },
             "src": "../../media/OChem_12_08_006.jpg",
             "mimeType": "image/jpeg"
           }
@@ -178,7 +196,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "A characteristic alcohol bond and its absorption value, indicated as a broad intense band at 3400 to 3650 inverse centimeters.",
+            "alt": {
+              "segmentId": "m00142:alt:fig-00007-alt",
+              "text": "A characteristic alcohol bond and its absorption value, indicated as a broad intense band at 3400 to 3650 inverse centimeters."
+            },
             "src": "../../media/OChem_12_08_007.jpg",
             "mimeType": "image/jpeg"
           }
@@ -196,7 +217,10 @@
             "segmentId": "m00142:caption:fig-00008-caption"
           },
           "media": {
-            "alt": "An infrared spectrum in which a wide absorption band near 3300 inverse centimeters is labeled O H, and a sharp band below 1100 is labeled C single bond O.",
+            "alt": {
+              "segmentId": "m00142:alt:fig-00008-alt",
+              "text": "An infrared spectrum in which a wide absorption band near 3300 inverse centimeters is labeled O H, and a sharp band below 1100 is labeled C single bond O."
+            },
             "src": "../../media/OChem_12_08_008.jpg",
             "mimeType": "image/jpeg"
           }
@@ -223,7 +247,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "A characteristic amine bond and its absorption value, indicated as a sharp band at 3300 to 3500 inverse centimeters.",
+            "alt": {
+              "segmentId": "m00142:alt:fig-00009-alt",
+              "text": "A characteristic amine bond and its absorption value, indicated as a sharp band at 3300 to 3500 inverse centimeters."
+            },
             "src": "../../media/OChem_12_08_009.jpg",
             "mimeType": "image/jpeg"
           }
@@ -241,7 +268,10 @@
             "segmentId": "m00142:caption:fig-00010-caption"
           },
           "media": {
-            "alt": "An infrared spectrum in which a sharp, two-pronged absorption band near 3300 inverse centimeters is labeled N H 2.",
+            "alt": {
+              "segmentId": "m00142:alt:fig-00010-alt",
+              "text": "An infrared spectrum in which a sharp, two-pronged absorption band near 3300 inverse centimeters is labeled N H 2."
+            },
             "src": "../../media/OChem_12_08_010.jpg",
             "mimeType": "image/jpeg"
           }
@@ -282,7 +312,10 @@
               "class": "unnumbered scaled-down",
               "caption": null,
               "media": {
-                "alt": "Characteristic aldehyde C O bonds and their absorption values, indicated at 1730 and 1705 inverse centimeters for alkyl and allyl or benzyl aldehydes respectively.",
+                "alt": {
+                  "segmentId": "m00142:alt:fig-00011-alt",
+                  "text": "Characteristic aldehyde C O bonds and their absorption values, indicated at 1730 and 1705 inverse centimeters for alkyl and allyl or benzyl aldehydes respectively."
+                },
                 "src": "../../media/OChem_12_08_011.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -300,7 +333,10 @@
                 "segmentId": "m00142:caption:fig-00012-caption"
               },
               "media": {
-                "alt": "An infrared spectrum in which a small absorption band near 2800 inverse centimeters is labeled aldehyde C H, and a strong band near 1700 is labeled aldehyde C O.",
+                "alt": {
+                  "segmentId": "m00142:alt:fig-00012-alt",
+                  "text": "An infrared spectrum in which a small absorption band near 2800 inverse centimeters is labeled aldehyde C H, and a strong band near 1700 is labeled aldehyde C O."
+                },
                 "src": "../../media/OChem_12_08_012.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -327,7 +363,10 @@
               "class": "unnumbered scaled-down",
               "caption": null,
               "media": {
-                "alt": "Characteristic ketone C O bonds and their absorption values, indicated at values just above 1700 inverse centimeters for alkyl ketones and values just below 1700 for allyl and benzyl ketones.",
+                "alt": {
+                  "segmentId": "m00142:alt:fig-00013-alt",
+                  "text": "Characteristic ketone C O bonds and their absorption values, indicated at values just above 1700 inverse centimeters for alkyl ketones and values just below 1700 for allyl and benzyl ketones."
+                },
                 "src": "../../media/OChem_12_08_013.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -354,7 +393,10 @@
               "class": "unnumbered scaled-down",
               "caption": null,
               "media": {
-                "alt": "Characteristic ester C O bonds and their absorption values, indicated at 1735 inverse centimeters for alkyl esters and 1715 for allyl and benzyl esters.",
+                "alt": {
+                  "segmentId": "m00142:alt:fig-00014-alt",
+                  "text": "Characteristic ester C O bonds and their absorption values, indicated at 1735 inverse centimeters for alkyl esters and 1715 for allyl and benzyl esters."
+                },
                 "src": "../../media/OChem_12_08_014.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -364,7 +406,7 @@
               "id": "exam-00001",
               "title": {
                 "segmentId": "m00142:example-title:exam-00001-title",
-                "text": "Strategy"
+                "text": "Predicting IR Absorptions of Compounds"
               },
               "content": [
                 {
@@ -375,7 +417,11 @@
                 {
                   "type": "para",
                   "id": "para-00018",
-                  "segmentId": "m00142:para:para-00018"
+                  "segmentId": "m00142:para:para-00018",
+                  "title": {
+                    "segmentId": "m00142:para-title:para-00018-title",
+                    "text": "Strategy"
+                  }
                 },
                 {
                   "type": "para",
@@ -399,7 +445,10 @@
               "class": "unnumbered scaled-down",
               "caption": null,
               "media": {
-                "alt": "A chemical structure of 1-cyclohexen-1-ylmethanol",
+                "alt": {
+                  "segmentId": "m00142:alt:fig-00015-alt",
+                  "text": "A chemical structure of 1-cyclohexen-1-ylmethanol"
+                },
                 "src": "../../media/OChem_12_08_015a.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -410,7 +459,10 @@
               "class": "unnumbered scaled-down",
               "caption": null,
               "media": {
-                "alt": "A chemical structure of a methyl ester with a five-carbon chain off the carbonyl. There is a terminal alkyne and a methyl on the beta C.",
+                "alt": {
+                  "segmentId": "m00142:alt:fig-00019-alt",
+                  "text": "A chemical structure of a methyl ester with a five-carbon chain off the carbonyl. There is a terminal alkyne and a methyl on the beta C."
+                },
                 "src": "../../media/OChem_12_08_015b.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -420,7 +472,7 @@
               "id": "exam-00002",
               "title": {
                 "segmentId": "m00142:example-title:exam-00002-title",
-                "text": "Strategy"
+                "text": "Identifying Functional Groups from an IR Spectrum"
               },
               "content": [
                 {
@@ -431,7 +483,11 @@
                 {
                   "type": "para",
                   "id": "para-00022",
-                  "segmentId": "m00142:para:para-00022"
+                  "segmentId": "m00142:para:para-00022",
+                  "title": {
+                    "segmentId": "m00142:para-title:para-00022-title",
+                    "text": "Strategy"
+                  }
                 },
                 {
                   "type": "para",
@@ -452,7 +508,10 @@
                 "segmentId": "m00142:caption:fig-00016-caption"
               },
               "media": {
-                "alt": "An infrared spectrum of an unknown compound. Significant absorption bands are at 700,1000 and 1700 centimeter inverse.",
+                "alt": {
+                  "segmentId": "m00142:alt:fig-00016-alt",
+                  "text": "An infrared spectrum of an unknown compound. Significant absorption bands are at 700,1000 and 1700 centimeter inverse."
+                },
                 "src": "../../media/OChem_12_08_016.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -463,7 +522,10 @@
               "class": "unnumbered scaled-down",
               "caption": null,
               "media": {
-                "alt": "Chemical structure structure of phenylacetaldehyde.",
+                "alt": {
+                  "segmentId": "m00142:alt:fig-00017-alt",
+                  "text": "Chemical structure structure of phenylacetaldehyde."
+                },
                 "src": "../../media/OChem_12_08_017.jpg",
                 "mimeType": "image/jpeg"
               }
@@ -544,7 +606,10 @@
             "segmentId": "m00142:caption:fig-00018-caption"
           },
           "media": {
-            "alt": "A ribbon diagram of a protein comprising multiple regions in various colors.",
+            "alt": {
+              "segmentId": "m00142:alt:fig-00018-alt",
+              "text": "A ribbon diagram of a protein comprising multiple regions in various colors."
+            },
             "src": "../../media/OChem_12_98_Ribbon.jpg",
             "mimeType": "image/jpeg"
           }

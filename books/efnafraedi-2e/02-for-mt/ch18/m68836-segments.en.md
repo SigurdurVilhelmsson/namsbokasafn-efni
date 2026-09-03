@@ -16,6 +16,9 @@ The phosphorus distills out of the furnace and is condensed into a solid or burn
 <!-- SEG:m68836:caption:CNX_Chem_18_08_P4S3-caption -->
 P[[sub:4]]S[[sub:3]] is a component of the heads of strike-anywhere matches.
 
+<!-- SEG:m68836:alt:fs-idm5144976-alt -->
+A ball-and-stick model is shown. Three orange atoms labeled “P” are single bonded together in a triangle shape. Each “P” is single bonded to yellow atoms labeled “S,” which are each single bonded to one other orange atom labeled “P.”
+
 <!-- SEG:m68836:title:fs-idm31898272-title -->
 Phosphorus Oxygen Compounds
 
@@ -24,6 +27,9 @@ Phosphorus forms two common oxides, phosphorus(III) oxide (or tetraphosphorus he
 
 <!-- SEG:m68836:caption:CNX_Chem_18_08_P4O6P4O10-caption -->
 This image shows the molecular structures of P[[sub:4]]O[[sub:6]] (left) and P[[sub:4]]O[[sub:10]] (right).
+
+<!-- SEG:m68836:alt:fs-idp57250912-alt -->
+Two ball-and-stick models are shown. In the left model, three orange atoms labeled, “P,” are single bonded to red atoms labeled, “O,” in an alternating, six-sided ring structure. Each of the orange atoms are also single bonded to another red atom, which are in turn single bonded to a single orange atom. The right model shows three orange atoms labeled, “P,” single bonded to red atoms labeled, “O,” in an alternating, six-sided ring structure. Each of the orange atoms are also single bonded to two more red atoms, one in an upward position and one facing the outside of the molecule. The upward red atoms are single bonded to a single orange atom which is single bonded to a final red atom.
 
 <!-- SEG:m68836:para:fs-idm7162480 -->
 Phosphorus(V) oxide, P[[sub:4]]O[[sub:10]], is a white powder that is prepared by burning phosphorus in excess oxygen. Its enthalpy of formation is very high (−2984 kJ), and it is quite stable and a very poor oxidizing agent. Dropping P[[sub:4]]O[[sub:10]] into water produces a hissing sound, heat, and orthophosphoric acid:
@@ -42,6 +48,9 @@ The chlorides PCl[[sub:3]] and PCl[[sub:5]], both shown in [[xref:CNX_Chem_18_08
 
 <!-- SEG:m68836:caption:CNX_Chem_18_08_PCl3PCl5-caption -->
 This image shows the molecular structure of PCl[[sub:3]] (left) and PCl[[sub:5]] (right) in the gas phase.
+
+<!-- SEG:m68836:alt:fs-idp189314192-alt -->
+Two ball-and-stick models are shown. In the left model, an orange atom labeled, “P,” is single bonded to three green atoms labeled, “C l.” The right model shows an orange atom labeled, “P,” single bonded to five green atoms labeled, “C l.”
 
 <!-- SEG:m68836:para:fs-idp21181152 -->
 Like most other nonmetal halides, both phosphorus chlorides react with an excess of water and yield hydrogen chloride and an oxyacid: PCl[[sub:3]] yields phosphorous acid H[[sub:3]]PO[[sub:3]] and PCl[[sub:5]] yields phosphoric acid, H[[sub:3]]PO[[sub:4]].
@@ -78,6 +87,21 @@ Write the Lewis structure for each of the following. You may wish to review the 
 
 <!-- SEG:m68836:solution:fs-idm28792464 -->
 (a)[[BR]][[MEDIA:1]][[BR]] (b)[[BR]][[MEDIA:2]][[BR]] (c)[[BR]][[MEDIA:3]][[BR]] (d)[[BR]][[MEDIA:4]][[BR]] (e)[[BR]][[MEDIA:5]]
+
+<!-- SEG:m68836:alt:fs-idm55213168-alt -->
+This Lewis structure shows a phosphorus atom with a lone pair of electrons single bonded to three hydrogen atoms.
+
+<!-- SEG:m68836:alt:fs-idm1170240-alt -->
+This Lewis structure shows a phosphorus atom single bonded to four hydrogen atoms. The structure is surrounded by brackets and has a superscript positive sign outside the brackets.
+
+<!-- SEG:m68836:alt:fs-idp56334352-alt -->
+This Lewis structure shows two phosphorus atoms, each with a lone pair of electrons, single bonded to one another. Each phosphorus atom is also single bonded to two hydrogen atoms.
+
+<!-- SEG:m68836:alt:fs-idm66638800-alt -->
+This Lewis structure shows a phosphorus atom single bonded to four oxygen atoms, each with three lone pairs of electrons. The structure is surrounded by brackets and has a superscript 3 negative sign outside the brackets.
+
+<!-- SEG:m68836:alt:fs-idm5269184-alt -->
+This Lewis structure shows a phosphorus atom single bonded to five fluorine atoms, each with three lone pairs of electrons.
 
 <!-- SEG:m68836:problem:fs-idp227455632 -->
 Describe the molecular structure of each of the following molecules or ions listed. You may wish to review the chapter on chemical bonding and molecular geometry.
@@ -156,6 +180,18 @@ Draw the Lewis structures and describe the geometry for the following:
 
 <!-- SEG:m68836:solution:fs-idp12097488 -->
 (a)[[BR]][[MEDIA:6]][[BR]] (b)[[BR]][[MEDIA:7]][[BR]] (c)[[BR]][[MEDIA:8]][[BR]] (d)[[BR]][[MEDIA:9]]
+
+<!-- SEG:m68836:alt:fs-idp215036560-alt -->
+This Lewis structure shows a phosphorus atom single bonded to four fluorine atoms, each with three lone pairs of electrons. The structure is surrounded by brackets and has a superscript positive sign outside the brackets. The label, “Tetrahedral,” is written under the structure.
+
+<!-- SEG:m68836:alt:fs-idp42036672-alt -->
+This Lewis structure shows a phosphorus atom single bonded to five fluorine atoms, each with three lone pairs of electrons. The label, “Trigonal bipyramidal,” is written under the structure.
+
+<!-- SEG:m68836:alt:fs-idp41412448-alt -->
+A Lewis structure shows a phosphorus atom single bonded to six fluorine atoms, each with three lone pairs of electrons. The structure is surrounded by brackets and has a superscript negative sign outside the brackets. The label, “Octahedral,” is written under the structure.
+
+<!-- SEG:m68836:alt:fs-idm23148096-alt -->
+This Lewis structure shows a phosphorus atom single bonded to three fluorine atoms, each with three lone pairs of electrons. The phosphorus atom is also double bonded to an oxygen atom with two lone pairs of electrons. The label, “Tetrahedral,” is written under the structure.
 
 <!-- SEG:m68836:problem:fs-idp27849968 -->
 Why does phosphorous acid form only two series of salts, even though the molecule contains three hydrogen atoms?

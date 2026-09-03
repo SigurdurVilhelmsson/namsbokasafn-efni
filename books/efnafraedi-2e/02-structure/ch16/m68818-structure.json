@@ -71,6 +71,7 @@
           "id": "fs-idp41455824",
           "class": "top-titled",
           "summary": "This table contains two columns and three rows. The first column has the following: “capital delta S subscript univ is greater than 0,” “capital delta S subscript univ is less than 0,” and, “capital delta S subscript univ equals 0.” The second column contains the following: “Spontaneous,” “nonspontaneous ( spontaneous in opposite direction ),” and, “reversible ( system is at equilibrium ).”",
+          "title": null,
           "rows": [
             {
               "cells": [
@@ -292,6 +293,7 @@
           "type": "table",
           "id": "fs-idm78597984",
           "summary": "The table has two columns and twenty rows. The first row is a header row and it labels the columns, “Substance,” and “S subscript 298 superscript degree symbol ( J mol superscript negative 1 K superscript negative 1 ).” The second row spans both columns and contains the word, “Carbon.” Under the “Substance” column for carbon are the following: C ( s, graphite ), C ( s, diamond ), C O ( g ), C O subscript 2 ( g ), C H subscript 4 ( g ), C subscript 2 H subscript 4 ( g ), C subscript 2 H subscript 6 ( g ), C H subscript 3 O H ( l ), and C subscript 2 H subscript 5 O H ( l ). Under the “S subscript 298 superscript degree symbol ( J mol superscript negative 1 K superscript negative 1 )” column for carbon are the following: 5.740, 2.38, 197.7, 213.8, 186.3, 219.5, 229.5, 126.8, and 160.7. The twelfth row spans both columns and contains the word, “Hydrogen.” Under the “Substance” column for hydrogen are the following: H subscript 2 ( g ), H ( g ), H subscript 2 O ( g ), H subscript 2 O ( l ), H C I ( g ), and H subscript 2 S ( g ). Under the “S subscript 298 superscript degree symbol ( J mol superscript negative 1 K superscript negative 1 )” column for hydrogen are the following: 130.57, 114.6, 188.71, 69.91, 186.8, and 205.7. The nineteenth row spans both columns and contains the word, “Oxygen.” Under the “Substance” column for oxygen is O subscript 2 ( g ). Under the “S subscript 298 superscript degree symbol ( J mol superscript negative 1 K superscript negative 1 )” column for oxygen is 205.03.",
+          "title": null,
           "rows": [
             {
               "cells": [
@@ -773,6 +775,7 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [

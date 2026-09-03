@@ -388,7 +388,10 @@
           },
           "media": {
             "id": "fs-idp97024192",
-            "alt": "This figure contains two images. Figure a is labeled “pure water.” It shows a beaker half-filled with liquid. In the liquid, eleven molecules are evenly dispersed in the liquid each consisting of one central red sphere and two slightly smaller white spheres are shown. Four molecules near the surface of the liquid have curved arrows drawn from them pointing to the space above the liquid in the beaker. Above the liquid, twelve molecules are shown, with arrows pointing from three of them into the liquid below. Figure b is labeled “Aqueous solution.” It is similar to figure a except that eleven blue spheres, slightly larger in size than the molecules, are dispersed evenly in the liquid. Only four curved arrows appear in this diagram with two from the molecules in the liquid pointing to the space above and two from molecules in the space above the liquid pointing into the liquid below.",
+            "alt": {
+              "segmentId": "m68783:alt:fs-idp97024192-alt",
+              "text": "This figure contains two images. Figure a is labeled “pure water.” It shows a beaker half-filled with liquid. In the liquid, eleven molecules are evenly dispersed in the liquid each consisting of one central red sphere and two slightly smaller white spheres are shown. Four molecules near the surface of the liquid have curved arrows drawn from them pointing to the space above the liquid in the beaker. Above the liquid, twelve molecules are shown, with arrows pointing from three of them into the liquid below. Figure b is labeled “Aqueous solution.” It is similar to figure a except that eleven blue spheres, slightly larger in size than the molecules, are dispersed evenly in the liquid. Only four curved arrows appear in this diagram with two from the molecules in the liquid pointing to the space above and two from molecules in the space above the liquid pointing into the liquid below."
+            },
             "src": "../../media/CNX_Chem_11_04_RaoultLaw.jpg",
             "mimeType": "image/jpeg"
           }
@@ -532,7 +535,10 @@
           },
           "media": {
             "id": "fs-idp129114224",
-            "alt": "Figure a contains a photograph of a common laboratory distillation unit. Figure b provides a diagram labeling typical components of a laboratory distillation unit, including a stirrer/heat plate with heat and stirrer speed control, a heating bath of oil or sand, stirring means such as boiling chips, a still pot, a still head, a thermometer for boiling point temperature reading, a condenser with a cool water inlet and outlet, a still receiver with a vacuum or gas inlet, a receiving flask for holding distillate, and a cooling bath.",
+            "alt": {
+              "segmentId": "m68783:alt:fs-idp129114224-alt",
+              "text": "Figure a contains a photograph of a common laboratory distillation unit. Figure b provides a diagram labeling typical components of a laboratory distillation unit, including a stirrer/heat plate with heat and stirrer speed control, a heating bath of oil or sand, stirring means such as boiling chips, a still pot, a still head, a thermometer for boiling point temperature reading, a condenser with a cool water inlet and outlet, a still receiver with a vacuum or gas inlet, a receiving flask for holding distillate, and a cooling bath."
+            },
             "src": "../../media/CNX_Chem_11_04_LabDistill.jpg",
             "mimeType": "image/jpeg"
           }
@@ -550,7 +556,10 @@
           },
           "media": {
             "id": "fs-idm45846832",
-            "alt": "This figure contains a photo of a refinery, showing large columnar structures. A diagram of a fractional distillation column used in separating crude oil is also shown. Near the bottom of the column, an arrow pointing into the column shows a point of entry for heated crude oil. The column contains several layers at which different components are removed. At the very bottom, residue materials are removed as indicated by an arrow out of the column. At each successive level, different materials are removed proceeding from the bottom to the top of the column. The materials are fuel oil, followed by diesel oil, kerosene, naptha, gasoline, and refinery gas at the very top. To the right of the column diagram, a double sided arrow is shown that is blue at the top and gradually changes color to red moving downward. The blue top of the arrow is labeled, “small molecules: low boiling point, very volatile, flows easily, ignites easily.” The red bottom of the arrow is labeled, “large molecules: high boiling point, not very volatile, does not flow easily, does not ignite easily.”",
+            "alt": {
+              "segmentId": "m68783:alt:fs-idm45846832-alt",
+              "text": "This figure contains a photo of a refinery, showing large columnar structures. A diagram of a fractional distillation column used in separating crude oil is also shown. Near the bottom of the column, an arrow pointing into the column shows a point of entry for heated crude oil. The column contains several layers at which different components are removed. At the very bottom, residue materials are removed as indicated by an arrow out of the column. At each successive level, different materials are removed proceeding from the bottom to the top of the column. The materials are fuel oil, followed by diesel oil, kerosene, naptha, gasoline, and refinery gas at the very top. To the right of the column diagram, a double sided arrow is shown that is blue at the top and gradually changes color to red moving downward. The blue top of the arrow is labeled, “small molecules: low boiling point, very volatile, flows easily, ignites easily.” The red bottom of the arrow is labeled, “large molecules: high boiling point, not very volatile, does not flow easily, does not ignite easily.”"
+            },
             "src": "../../media/CNX_Chem_11_04_refinery.jpg",
             "mimeType": "image/jpeg"
           }
@@ -591,11 +600,12 @@
           "id": "fs-idm37127680",
           "class": "top-titled",
           "summary": "The table provides boiling points in degrees Celsius at 1 atmosphere of pressure, K subscript b in C m superscript negative 1, freezing point in degrees Celsius at 1 atmosphere of pressure, and K subscript f in C m superscript negative 1for five solvents. Water has the following values: 100.00, 0.512, 0.00, and 1.86. Hydrogen acetate has the following values: 118.1, 3.07, 16.6, and 3.9. Benzene has the following values: 80.1, 2.53, 5.5, 5.12. Chloroform has the following values: 61.26, 3.63, −63.5, and 4.68. Nitrobenzene has the following values: 210.9, 5.24, 5.67, 8.1",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68783:entry:auto-85",
+                  "segmentId": "m68783:entry:auto-88",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c5",
@@ -607,24 +617,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68783:entry:auto-86",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-87",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-88",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68783:entry:auto-89",
                   "attributes": {
                     "align": "left"
@@ -635,11 +627,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68783:entry:auto-91",
                   "attributes": {
@@ -657,7 +645,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68783:entry:auto-94",
                   "attributes": {
@@ -669,11 +661,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68783:entry:auto-96",
                   "attributes": {
@@ -691,7 +679,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68783:entry:auto-99",
                   "attributes": {
@@ -703,11 +695,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68783:entry:auto-101",
                   "attributes": {
@@ -725,7 +713,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68783:entry:auto-104",
                   "attributes": {
@@ -737,11 +729,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68783:entry:auto-106",
                   "attributes": {
@@ -759,7 +747,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68783:entry:auto-109",
                   "attributes": {
@@ -771,11 +763,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68783:entry:auto-111",
                   "attributes": {
@@ -793,7 +781,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68783:entry:auto-114",
                   "attributes": {
@@ -802,6 +794,24 @@
                 },
                 {
                   "segmentId": "m68783:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-118",
                   "attributes": {
                     "align": "left"
                   }
@@ -867,6 +877,14 @@
                   "segmentId": "m68783:item:fs-idp52617808-item-2"
                 }
               ]
+            },
+            {
+              "type": "media",
+              "id": "fs-idp91950512",
+              "alt": {
+                "segmentId": "m68783:alt:fs-idp91950512-alt",
+                "text": "This is a diagram with three boxes connected with two arrows pointing to the right. The first box is labeled, “Molality of solution,” followed by an arrow labeled, “1,” pointing to a second box labeled, “Change in boiling point,” followed by an arrow labeled, “2,” pointing to a third box labeled, “New boiling point.”"
+              }
             },
             {
               "type": "equation",
@@ -955,6 +973,14 @@
               ]
             },
             {
+              "type": "media",
+              "id": "fs-idp95700448",
+              "alt": {
+                "segmentId": "m68783:alt:fs-idp95700448-alt",
+                "text": "This is a diagram with five boxes oriented horizontally and linked together with arrows numbered 1 to 4 pointing from each box in succession to the next one to the right. The first box is labeled, “Mass of iodine.” Arrow 1 points from this box to a second box labeled, “Moles of iodine.” Arrow 2 points from this box to to a third box labeled, “Molality of solution.” Arrow labeled 3 points from this box to a fourth box labeled, “Change in boiling point.” Arrow 4 points to a fifth box labeled, “New boiling point.”"
+              }
+            },
+            {
               "type": "note",
               "id": "fs-idp191396352",
               "title": {
@@ -996,7 +1022,10 @@
           },
           "media": {
             "id": "fs-idm2229600",
-            "alt": "This is a photo of damp brick pavement on which a white crystalline material has been spread.",
+            "alt": {
+              "segmentId": "m68783:alt:fs-idm2229600-alt",
+              "text": "This is a photo of damp brick pavement on which a white crystalline material has been spread."
+            },
             "src": "../../media/CNX_Chem_11_04_rocksalt.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1070,6 +1099,14 @@
               ]
             },
             {
+              "type": "media",
+              "id": "fs-idm98789600",
+              "alt": {
+                "segmentId": "m68783:alt:fs-idm98789600-alt",
+                "text": "This is a diagram with three boxes connected with two arrows pointing to the right. The first box is labeled, “Molality of solution,” followed by an arrow labeled, “1,” pointing to a second box labeled, “Change in freezing point,” followed by an arrow labeled, “2” pointing to a third box labeled, “New freezing point.”"
+              }
+            },
+            {
               "type": "equation",
               "id": "fs-idm84391712"
             },
@@ -1124,7 +1161,10 @@
           },
           "media": {
             "id": "fs-idp133082032",
-            "alt": "This figure contains two photos. The first photo is a rear view of a large highway maintenance truck carrying a bright orange de-icer sign. A white material appears to be deposited at the rear of the truck onto the roadway. The second image is of an airplane being sprayed with a solution to remove ice prior to take off.",
+            "alt": {
+              "segmentId": "m68783:alt:fs-idp133082032-alt",
+              "text": "This figure contains two photos. The first photo is a rear view of a large highway maintenance truck carrying a bright orange de-icer sign. A white material appears to be deposited at the rear of the truck onto the roadway. The second image is of an airplane being sprayed with a solution to remove ice prior to take off."
+            },
             "src": "../../media/CNX_Chem_11_04_deice.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1153,7 +1193,10 @@
           },
           "media": {
             "id": "fs-idp105222176",
-            "alt": "This phase diagram indicates the pressure in atmospheres of water and a solution at various temperatures. The graph shows the freezing point of water and the freezing point of the solution, with the difference between these two values identified as delta T subscript f. The graph shows the boiling point of water and the boiling point of the solution, with the difference between these two values identified as delta T subscript b. Similarly, the difference in the pressure of water and the solution at the boiling point of water is shown and identified as delta P. This difference in pressure is labeled vapor pressure lowering. The lower level of the vapor pressure curve for the solution as opposed to that of pure water shows vapor pressure lowering in the solution. Background colors on the diagram indicate the presence of water and the solution in the solid state to the left, liquid state in the central upper region, and gas to the right.",
+            "alt": {
+              "segmentId": "m68783:alt:fs-idp105222176-alt",
+              "text": "This phase diagram indicates the pressure in atmospheres of water and a solution at various temperatures. The graph shows the freezing point of water and the freezing point of the solution, with the difference between these two values identified as delta T subscript f. The graph shows the boiling point of water and the boiling point of the solution, with the difference between these two values identified as delta T subscript b. Similarly, the difference in the pressure of water and the solution at the boiling point of water is shown and identified as delta P. This difference in pressure is labeled vapor pressure lowering. The lower level of the vapor pressure curve for the solution as opposed to that of pure water shows vapor pressure lowering in the solution. Background colors on the diagram indicate the presence of water and the solution in the solid state to the left, liquid state in the central upper region, and gas to the right."
+            },
             "src": "../../media/CNX_Chem_11_04_phasediag.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1193,7 +1236,10 @@
           },
           "media": {
             "id": "fs-idm58360672",
-            "alt": "The figure shows two U shaped tubes with a semi permeable membrane placed at the base of the U. In figure a, pure solvent is present and indicated by small yellow spheres to the left of the membrane. To the right, a solution exists with larger blue spheres intermingled with some small yellow spheres. At the membrane, arrows pointing from three small yellow spheres on both sides of the membrane cross over the membrane. An arrow drawn from one of the large blue spheres does not cross the membrane, but rather is reflected back from the surface of the membrane. The levels of liquid in both sides of the U shaped tube are equal. In figure b, arrows again point from small yellow spheres across the semipermeable membrane from both sides. This diagram shows the level of liquid in the left, pure solvent, side to be significantly lower than the liquid level on the right. Dashed lines are drawn from these two liquid levels into the middle of the U-shaped tube and between them is a red, double-headed, vertical arrow next to the term osmotic pressure.",
+            "alt": {
+              "segmentId": "m68783:alt:fs-idm58360672-alt",
+              "text": "The figure shows two U shaped tubes with a semi permeable membrane placed at the base of the U. In figure a, pure solvent is present and indicated by small yellow spheres to the left of the membrane. To the right, a solution exists with larger blue spheres intermingled with some small yellow spheres. At the membrane, arrows pointing from three small yellow spheres on both sides of the membrane cross over the membrane. An arrow drawn from one of the large blue spheres does not cross the membrane, but rather is reflected back from the surface of the membrane. The levels of liquid in both sides of the U shaped tube are equal. In figure b, arrows again point from small yellow spheres across the semipermeable membrane from both sides. This diagram shows the level of liquid in the left, pure solvent, side to be significantly lower than the liquid level on the right. Dashed lines are drawn from these two liquid levels into the middle of the U-shaped tube and between them is a red, double-headed, vertical arrow next to the term osmotic pressure."
+            },
             "src": "../../media/CNX_Chem_11_04_osmosis.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1284,7 +1330,10 @@
           },
           "media": {
             "id": "fs-idm34643696",
-            "alt": "The figure shows a U shaped tube with a semi permeable membrane placed at the base of the U. Pure solvent is present and indicated by small yellow spheres to the left of the membrane. To the right, a solution exists with larger blue spheres intermingled with some small yellow spheres. At the membrane, arrows point from four small yellow spheres to the left of the membrane. On the right side of the U, there is a disk that is the same width of the tube and appears to block it. The disk is at the same level as the solution. An arrow points down from the top of the tube to the disk and is labeled, “Pressure greater than Π subscript solution.”",
+            "alt": {
+              "segmentId": "m68783:alt:fs-idm34643696-alt",
+              "text": "The figure shows a U shaped tube with a semi permeable membrane placed at the base of the U. Pure solvent is present and indicated by small yellow spheres to the left of the membrane. To the right, a solution exists with larger blue spheres intermingled with some small yellow spheres. At the membrane, arrows point from four small yellow spheres to the left of the membrane. On the right side of the U, there is a disk that is the same width of the tube and appears to block it. The disk is at the same level as the solution. An arrow points down from the top of the tube to the disk and is labeled, “Pressure greater than Π subscript solution.”"
+            },
             "src": "../../media/CNX_Chem_11_04_rvosmosis.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1313,7 +1362,10 @@
           },
           "media": {
             "id": "fs-idp117713424",
-            "alt": "This figure shows two photos of reverse osmosis systems. The first is a small system that appears easily portable. The second is larger and situated outdoors.",
+            "alt": {
+              "segmentId": "m68783:alt:fs-idp117713424-alt",
+              "text": "This figure shows two photos of reverse osmosis systems. The first is a small system that appears easily portable. The second is larger and situated outdoors."
+            },
             "src": "../../media/CNX_Chem_11_04_waterpur.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1331,7 +1383,10 @@
           },
           "media": {
             "id": "fs-idp138335360",
-            "alt": "This figure shows three scenarios relating to red blood cell membranes. In a, H subscript 2 O has two arrows drawn from it pointing into a red disk. Beneath it in a circle are eleven similar disks with a bulging appearance, one of which appears to have burst with blue liquid erupting from it. In b, the image is similar except that rather than having two arrows pointing into the red disk, one points in and a second points out toward the H subscript 2 O. In the circle beneath, twelve of the red disks are present. In c, both arrows are drawn from a red shriveled disk toward the H subscript 2 O. In the circle below, twelve shriveled disks are shown.",
+            "alt": {
+              "segmentId": "m68783:alt:fs-idp138335360-alt",
+              "text": "This figure shows three scenarios relating to red blood cell membranes. In a, H subscript 2 O has two arrows drawn from it pointing into a red disk. Beneath it in a circle are eleven similar disks with a bulging appearance, one of which appears to have burst with blue liquid erupting from it. In b, the image is similar except that rather than having two arrows pointing into the red disk, one points in and a second points out toward the H subscript 2 O. In the circle beneath, twelve of the red disks are present. In c, both arrows are drawn from a red shriveled disk toward the H subscript 2 O. In the circle below, twelve shriveled disks are shown."
+            },
             "src": "../../media/CNX_Chem_11_04_bloodcell.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1412,6 +1467,14 @@
                   "segmentId": "m68783:item:fs-idm46223904-item-4"
                 }
               ]
+            },
+            {
+              "type": "media",
+              "id": "fs-idm56612480",
+              "alt": {
+                "segmentId": "m68783:alt:fs-idm56612480-alt",
+                "text": "This is diagram with five boxes oriented horizontally and linked together with arrows numbered 1 to 4 pointing from each box in succession to the next one to the right. The first box is labeled, “Freezing point of solution.” Arrow 1 points from this box to a second box labeled, “delta T subscript f.” Arrow 2 points from this box to to a third box labeled “Molal concentration of compound.” Arrow labeled 3 points from this box to a fourth box labeled, “Moles of compound in sample.” Arrow 4 points to a fifth box labeled, “Molar mass of compound.”"
+              }
             },
             {
               "type": "equation",
@@ -1504,6 +1567,14 @@
               ]
             },
             {
+              "type": "media",
+              "id": "fs-idp37440656",
+              "alt": {
+                "segmentId": "m68783:alt:fs-idp37440656-alt",
+                "text": "This is a diagram with four boxes oriented horizontally and linked together with arrows numbered 1 to 3 pointing from each box in succession to the next one to the right. The first box is labeled, “Osmotic pressure.” Arrow 1 points from this box to a second box labeled, “Molar concentration.” Arrow 2 points from this box to to a third box labeled, “Moles of hemoglobin in sample.” Arrow labeled 3 points from this box to a fourth box labeled, “Molar mass of hemoglobin.”"
+              }
+            },
+            {
               "type": "equation",
               "id": "fs-idp41145344"
             },
@@ -1588,131 +1659,15 @@
           "id": "fs-idp191832160",
           "class": "top-titled",
           "summary": "This table provides electrolytes, particles in solution, i (predicted), and i (Measured). H C l yields H superscript plus and C l superscript minus particles in solution with a predicted i value of 2 and a measured value of 1.9. N a C l yields N a superscript plus and C l superscript minus particles in solution with a predicted i value of 2 and a measured value of 1.9. M g S O subscript 4 yields M g superscript 2 plus and S O subscript 4 superscript 2 minus particles in solution with a predicted i value of 2 and a measured value of 1.3. M g C l subscript 2 yields M g superscript 2 plus and C l superscript minus particles in solution with a predicted i value of 3 and a measured value of 2.7. F e C l subscript 3 yields Fe superscript 3 plus and C l superscript minus particles in solution with a predicted i value of 4 and a measured value of 3.4. Glucose yields C subscript 12 H subscript 22 O subscript 11 particles in solution with a predicted i value of 1 and a measured value of 1.0.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68783:entry:auto-220",
+                  "segmentId": "m68783:entry:auto-235",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c5",
-                    "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68783:entry:auto-221",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-222",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-223",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-224",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-225",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68783:entry:auto-226",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-227",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-228",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-229",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-230",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68783:entry:auto-231",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-232",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-233",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-234",
-                  "attributes": {
-                    "valign": "top",
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68783:entry:auto-235",
-                  "attributes": {
-                    "valign": "top",
                     "align": "center"
                   }
                 }
@@ -1873,6 +1828,123 @@
                   }
                 }
               ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68783:entry:auto-256",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-257",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-258",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-259",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-260",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68783:entry:auto-261",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-262",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-263",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-264",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-265",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68783:entry:auto-266",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-267",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-268",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-269",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68783:entry:auto-270",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -1890,7 +1962,10 @@
           },
           "media": {
             "id": "fs-idp133147136",
-            "alt": "The diagram shows four purple spheres labeled K superscript plus and four green spheres labeled C l superscript minus dispersed in H subscript 2 O as shown by clusters of single red spheres with two white spheres attached. Red spheres represent oxygen and white represent hydrogen. In two locations, the purple and green spheres are touching. In these two locations, the diagram is labeled ion pair. All red and green spheres are surrounded by the white and red H subscript 2 O clusters. The white spheres are attracted to the purple spheres and the red spheres are attracted to the green spheres.",
+            "alt": {
+              "segmentId": "m68783:alt:fs-idp133147136-alt",
+              "text": "The diagram shows four purple spheres labeled K superscript plus and four green spheres labeled C l superscript minus dispersed in H subscript 2 O as shown by clusters of single red spheres with two white spheres attached. Red spheres represent oxygen and white represent hydrogen. In two locations, the purple and green spheres are touching. In these two locations, the diagram is labeled ion pair. All red and green spheres are surrounded by the white and red H subscript 2 O clusters. The white spheres are attracted to the purple spheres and the red spheres are attracted to the green spheres."
+            },
             "src": "../../media/CNX_Chem_11_04_ionpair.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1961,6 +2036,14 @@
               ]
             },
             {
+              "type": "media",
+              "id": "fs-idp102978912",
+              "alt": {
+                "segmentId": "m68783:alt:fs-idp102978912-alt",
+                "text": "This is a diagram with six boxes oriented horizontally and linked together with arrows numbered 1 to 5 pointing from each box in succession to the next one to the right. The first box is labeled, “Mass of N a C l.” Arrow 1 points from this box to a second box labeled, “Moles of N a C l.” Arrow 2 points from this box to to a third box labeled, Moles of ions.” Arrow labeled 3 points from this box to a fourth box labeled, “Molality of solution.” Arrow 4 points to a fifth box labeled, “Change in freezing point.” Arrow 5 points to a sixth box labeled, “New freezing point.”"
+              }
+            },
+            {
               "type": "note",
               "id": "fs-idp139444144",
               "title": {
@@ -2009,11 +2092,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68783:entry:auto-275",
+                  "segmentId": "m68783:entry:auto-292",
                   "attributes": {}
                 }
               ]
@@ -2021,7 +2105,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68783:entry:auto-276",
+                  "segmentId": "m68783:entry:auto-293",
                   "attributes": {}
                 }
               ]
@@ -2029,7 +2113,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68783:entry:auto-277",
+                  "segmentId": "m68783:entry:auto-294",
                   "attributes": {}
                 }
               ]
@@ -2037,7 +2121,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68783:entry:auto-278",
+                  "segmentId": "m68783:entry:auto-295",
                   "attributes": {}
                 }
               ]
@@ -2045,7 +2129,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68783:entry:auto-279",
+                  "segmentId": "m68783:entry:auto-296",
                   "attributes": {}
                 }
               ]
@@ -2053,7 +2137,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68783:entry:auto-280",
+                  "segmentId": "m68783:entry:auto-297",
                   "attributes": {}
                 }
               ]

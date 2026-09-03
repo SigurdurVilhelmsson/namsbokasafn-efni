@@ -11,7 +11,7 @@ Use this theory’s postulates to explain the gas laws
 The gas laws that we have seen to this point, as well as the ideal gas equation, are empirical, that is, they have been derived from experimental observations. The mathematical forms of these laws closely describe the macroscopic behavior of most gases at pressures less than about 1 or 2 atm. Although the gas laws describe relationships that have been verified by many experiments, they do not tell us why gases follow these relationships.
 
 <!-- SEG:m68758:para:fs-idm165041184 -->
-The {{term}}kinetic molecular theory{{/term}} (KMT) is a simple microscopic model that effectively explains the gas laws described in previous modules of this chapter. This theory is based on the following five postulates described here. (Note: The term “molecule” will be used to refer to the individual chemical species that compose the gas, although some gases are composed of atomic species, for example, the noble gases.)
+The [[term:kinetic molecular theory|term-00001]] (KMT) is a simple microscopic model that effectively explains the gas laws described in previous modules of this chapter. This theory is based on the following five postulates described here. (Note: The term “molecule” will be used to refer to the individual chemical species that compose the gas, although some gases are composed of atomic species, for example, the noble gases.)
 
 <!-- SEG:m68758:item:fs-idm178411376-item-1 -->
 Gases are composed of molecules that are in continuous motion, travelling in straight lines and changing direction only when they collide with other molecules or with the walls of a container.
@@ -55,6 +55,9 @@ Recalling that gas pressure is exerted by rapidly moving gas molecules and depen
 <!-- SEG:m68758:caption:CNX_Chem_09_04_KMT2-caption -->
 (a) When gas temperature increases, gas pressure increases due to increased force and frequency of molecular collisions. (b) When volume decreases, gas pressure increases due to increased frequency of molecular collisions. (c) When the amount of gas increases at a constant pressure, volume increases to yield a constant number of collisions per unit wall area per unit time.
 
+<!-- SEG:m68758:alt:fs-idm82315616-alt -->
+This figure shows 3 pairs of pistons and cylinders. In a, which is labeled, “Charles’s Law,” the piston is positioned for the first cylinder so that just over half of the available volume contains 6 purple spheres with trails behind them. The trails indicate movement. Orange dashes extend from the interior surface of the cylinder where the spheres have collided. This cylinder is labeled, “Baseline.” In the second cylinder, the piston is in the same position, and the label, “Heat” is indicated in red capitalized text. Four red arrows with wavy stems are pointing upward to the base of the cylinder. The six purple spheres have longer trails behind them and the number of orange dashes indicating points of collision with the container walls has increased. A rectangle beneath the diagram states, “Temperature increased, Volume constant equals Increased pressure.” In b, which is labeled, “Boyle’s Law,” the first, baseline cylinder shown is identical to the first cylinder in a. In the second cylinder, the piston has been moved, decreasing the volume available to the 6 purple spheres to half of the initial volume. The orange dashes indicating points of collision with the container walls has increased. This second cylinder is labeled, “Volume decreased.” A rectangle beneath the diagram states, “Volume decreased, Wall area decreased equals Increased pressure.” In c, which is labeled “Avogadro’s Law,” the first, baseline cylinder shown is identical to the first cylinder in a. In the second cylinder, the number of purple spheres has changed from 6 to 12 and volume has doubled. This second cylinder is labeled “Increased gas.” A rectangle beneath the diagram states, “At constant pressure, More gas molecules added equals Increased volume.”
+
 <!-- SEG:m68758:title:fs-idm203169728-title -->
 Molecular Speeds and Kinetic Energy
 
@@ -67,11 +70,14 @@ In a gas sample, individual molecules have widely varying speeds; however, becau
 <!-- SEG:m68758:caption:CNX_Chem_09_05_MolSpeed1-caption -->
 The molecular speed distribution for oxygen gas at 300 K is shown here. Very few molecules move at either very low or very high speeds. The number of molecules with intermediate speeds increases rapidly up to a maximum, which is the most probable speed, then drops off rapidly. Note that the most probable speed, ν[[sub:p]], is a little less than 400 m/s, while the root mean square speed, [[i:u]][[sub:rms]], is closer to 500 m/s.
 
+<!-- SEG:m68758:alt:fs-idm97447152-alt -->
+A graph is shown. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 20 beginning at 0 and extending up to 120. The vertical axis is labeled, “Fraction of molecules.” A positively or right-skewed curve is shown in red which begins at the origin and approaches the horizontal axis around 120 m per s. At the peak of the curve, a point is indicated with a black dot and is labeled, “v subscript p.” A vertical dashed line extends from this point to the horizontal axis at which point the intersection is labeled, “v subscript p.” Slightly to the right of the peak a second black dot is placed on the curve. This point is labeled, “v subscript r m s.” A vertical dashed line extends from this point to the horizontal axis at which point the intersection is labeled, “v subscript r m s.” The label, “O subscript 2 at T equals 300 K” appears in the open space to the right of the curve.
+
 <!-- SEG:m68758:para:fs-idm188037232 -->
 The kinetic energy (KE) of a particle of mass ([[i:m]]) and speed ([[i:u]]) is given by:
 
 <!-- SEG:m68758:para:fs-idm178023104 -->
-Expressing mass in kilograms and speed in meters per second will yield energy values in units of joules (J = kg m[[sup:2]] s[[sup:–2]]). To deal with a large number of gas molecules, we use averages for both speed and kinetic energy. In the KMT, the {{term}}root mean square speed{{/term}} of a particle, {{term}}[[i:u]][[sub:rms]]{{/term}}, is defined as the square root of the average of the squares of the speeds with [[i:n]] = the number of particles:
+Expressing mass in kilograms and speed in meters per second will yield energy values in units of joules (J = kg m[[sup:2]] s[[sup:–2]]). To deal with a large number of gas molecules, we use averages for both speed and kinetic energy. In the KMT, the [[term:root mean square speed|term-00002]] of a particle, [[term:[[i:u]][[sub:rms]]|term-00003]], is defined as the square root of the average of the squares of the speeds with [[i:n]] = the number of particles:
 
 <!-- SEG:m68758:para:fs-idm140862528 -->
 The average kinetic energy for a mole of particles, KE[[sub:avg]], is then equal to:
@@ -121,11 +127,17 @@ If the temperature of a gas increases, its KE[[sub:avg]] increases, more molecul
 <!-- SEG:m68758:caption:CNX_Chem_09_05_MolSpeed2-caption -->
 The molecular speed distribution for nitrogen gas (N[[sub:2]]) shifts to the right and flattens as the temperature increases; it shifts to the left and heightens as the temperature decreases.
 
+<!-- SEG:m68758:alt:fs-idm138828064-alt -->
+A graph with four positively or right-skewed curves of varying heights is shown. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 500 beginning at 0 and extending up to 1500. The vertical axis is labeled, “Fraction of molecules.” The label, “N subscript 2,” appears in the open space in the upper right area of the graph. The tallest and narrowest of these curves is labeled, “100 K.” Its right end appears to touch the horizontal axis around 700 m per s. It is followed by a slightly wider curve which is labeled, “200 K,” that is about three quarters of the height of the initial curve. Its right end appears to touch the horizontal axis around 850 m per s. The third curve is significantly wider and only about half the height of the initial curve. It is labeled, “500 K.” Its right end appears to touch the horizontal axis around 1450 m per s. The final curve is only about one third the height of the initial curve. It is much wider than the others, so much so that its right end has not yet reached the horizontal axis. This curve is labeled, “1000 K.”
+
 <!-- SEG:m68758:para:fs-idm131874080 -->
 At a given temperature, all gases have the same KE[[sub:avg]] for their molecules. Gases composed of lighter molecules have more high-speed particles and a higher [[i:u[[sub:rms]]]], with a speed distribution that peaks at relatively higher speeds. Gases consisting of heavier molecules have more low-speed particles, a lower [[i:u[[sub:rms]]]], and a speed distribution that peaks at relatively lower speeds. This trend is demonstrated by the data for a series of noble gases shown in [[xref:CNX_Chem_09_05_MolSpeed3]].
 
 <!-- SEG:m68758:caption:CNX_Chem_09_05_MolSpeed3-caption -->
 molecular speed is directly related to molecular mass. At a given temperature, lighter molecules move faster on average than heavier molecules.
+
+<!-- SEG:m68758:alt:fs-idm50029872-alt -->
+A graph is shown with four positively or right-skewed curves of varying heights. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 500 beginning at 0 and extending up to 3000. The vertical axis is labeled, “Fraction of molecules.” The tallest and narrowest of these curves is labeled, “X e.” Its right end appears to touch the horizontal axis around 600 m per s. It is followed by a slightly wider curve which is labeled, “A r,” that is about half the height of the initial curve. Its right end appears to touch the horizontal axis around 900 m per s. The third curve is significantly wider and just over a third of the height of the initial curve. It is labeled, “N e.” Its right end appears to touch the horizontal axis around 1200 m per s. The final curve is only about one fourth the height of the initial curve. It is much wider than the others, so much so that its right reaches the horizontal axis around 2500 m per s. This curve is labeled, “H e.”
 
 <!-- SEG:m68758:para:fs-idm110634256 -->
 The [[link:gas simulator|http://openstax.org/l/16MolecVelocity]] may be used to examine the effect of temperature on molecular speeds. Examine the simulator’s “energy histograms” (molecular speed distributions) and “species information” (which gives average speed values) for molecules of different masses at various temperatures.
@@ -154,13 +166,13 @@ The kinetic molecular theory is a simple but very effective model that effective
 <!-- SEG:m68758:title:fs-idm188828400-title -->
 Key Equations
 
-<!-- SEG:m68758:entry:auto-53 -->
+<!-- SEG:m68758:entry:auto-57 -->
 [[MATH:1]]
 
-<!-- SEG:m68758:entry:auto-54 -->
+<!-- SEG:m68758:entry:auto-58 -->
 [[MATH:2]]
 
-<!-- SEG:m68758:entry:auto-55 -->
+<!-- SEG:m68758:entry:auto-59 -->
 [[MATH:3]]
 
 <!-- SEG:m68758:title:fs-idm162733696-title -->

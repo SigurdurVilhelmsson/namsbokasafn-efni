@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>RBr</m:mtext><m:mo>→</m:mo><m:mtext>RC≡N</m:mtext><m:mo>→</m:mo><m:msub><m:mrow><m:mtext>RCO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{RBr}\\rightarrow \\text{RC≡N}\\rightarrow {{\\text{RCO}}}_{2}\\text{H}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  }
+}

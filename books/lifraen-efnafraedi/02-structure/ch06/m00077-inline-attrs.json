@@ -1,0 +1,30 @@
+{
+  "m00077:item:list-00001-item-1": {
+    "terms": [
+      {
+        "id": "term-00001"
+      }
+    ]
+  },
+  "m00077:item:list-00001-item-2": {
+    "terms": [
+      {
+        "id": "term-00002"
+      }
+    ]
+  },
+  "m00077:item:list-00001-item-3": {
+    "terms": [
+      {
+        "id": "term-00003"
+      }
+    ]
+  },
+  "m00077:item:list-00001-item-4": {
+    "terms": [
+      {
+        "id": "term-00004"
+      }
+    ]
+  }
+}

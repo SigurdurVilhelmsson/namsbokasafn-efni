@@ -30,7 +30,10 @@
       },
       "media": {
         "id": "fs-idm189620448",
-        "alt": "A photograph is shown of a parked car plugged into a charging station in a paved parking area. The parking area is situated in a wooded area. People are walking in the background in the park-like atmosphere.",
+        "alt": {
+          "segmentId": "m68820:alt:fs-idm189620448-alt",
+          "text": "A photograph is shown of a parked car plugged into a charging station in a paved parking area. The parking area is situated in a wooded area. People are walking in the background in the park-like atmosphere."
+        },
         "src": "../../media/CNX_Chem_17_00_EVCharging.jpg",
         "mimeType": "image/jpeg"
       }

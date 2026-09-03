@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68760",
-  "extractedAt": "2026-07-07T09:12:38.839Z",
+  "extractedAt": "2026-08-31T19:08:40.230Z",
   "sourceHash": "d42c5ec2295a9319",
-  "segmentCount": 9,
+  "segmentCount": 10,
   "segmentIds": [
     "m68760:title:auto-1",
     "m68760:abstract-item:abstract-item-1",
@@ -13,6 +13,7 @@
     "m68760:abstract-item:abstract-item-5",
     "m68760:abstract-item:abstract-item-6",
     "m68760:caption:CNX_Chem_10_00_Punch-caption",
+    "m68760:alt:fs-idp34998992-alt",
     "m68760:para:fs-idp5508192"
   ],
   "equationCount": 0,

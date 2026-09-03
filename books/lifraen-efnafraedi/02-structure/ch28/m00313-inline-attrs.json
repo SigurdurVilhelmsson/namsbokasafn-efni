@@ -1,0 +1,50 @@
+{
+  "m00313:item:list-00001-item-1": {
+    "terms": [
+      {
+        "id": "term-00001"
+      }
+    ]
+  },
+  "m00313:item:list-00001-item-2": {
+    "terms": [
+      {
+        "id": "term-00002"
+      }
+    ]
+  },
+  "m00313:item:list-00001-item-3": {
+    "terms": [
+      {
+        "id": "term-00003"
+      }
+    ]
+  },
+  "m00313:item:list-00001-item-4": {
+    "terms": [
+      {
+        "id": "term-00004"
+      }
+    ]
+  },
+  "m00313:para:para-00002": {
+    "terms": [
+      {
+        "id": "term-00005"
+      },
+      {
+        "id": "term-00006"
+      }
+    ]
+  },
+  "m00313:para:para-00004": {
+    "terms": [
+      {
+        "id": "term-00007"
+      },
+      {
+        "id": "term-00008"
+      }
+    ]
+  }
+}

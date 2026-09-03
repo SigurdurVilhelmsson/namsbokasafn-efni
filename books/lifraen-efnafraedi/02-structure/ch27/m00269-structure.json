@@ -1,0 +1,436 @@
+{
+  "moduleId": "m00269",
+  "title": {
+    "segmentId": "m00269:title:auto-1",
+    "text": "Terpenoids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "323f1800-5de3-4201-8424-000528bc7d37"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00269:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00269:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00269:alt:fig-00001-alt",
+          "text": "The structure of isopentenyl diphosphate is given in the box. The structure of four terpenoids named Camphor (monoterpenoid), patchouli alcohol (sesquiterpenoid), lanosterol (triterpenoid), and beta-carotene (tetraterpenoid)."
+        },
+        "src": "../../media/OChem_27_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00269:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00269:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00269:alt:fig-00002-alt",
+          "text": "Thye condensation of (R)-mevalonate and 1-deoxy-D-xylose-5-phosphate leads to the formation of isopentenyl diphosphate (I P P). This further forms terpenoids."
+        },
+        "src": "../../media/OChem_27_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00269:title:sect-00001-title",
+        "text": "The Mevalonate Pathway to Isopentenyl Diphosphate"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00269:para:para-00004"
+        },
+        {
+          "type": "section",
+          "id": "sect-00002",
+          "class": null,
+          "title": {
+            "segmentId": "m00269:title:sect-00002-title",
+            "text": "Step 1 of [[xref:fig-00004]]: Claisen Condensation"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00005",
+              "segmentId": "m00269:para:para-00005"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00003",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00269:alt:fig-00003-alt",
+                  "text": "Claisen condensation of acetyl CoA and a thioacetate forms an intermediate that leads to the formation of acetoacetyl CoA."
+                },
+                "src": "../../media/OChem_27_05_003.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00003",
+          "class": null,
+          "title": {
+            "segmentId": "m00269:title:sect-00003-title",
+            "text": "Step 2 of [[xref:fig-00004]]: Aldol Condensation"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00006",
+              "segmentId": "m00269:para:para-00006"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00004",
+              "class": "mechanism-figure scaled-down",
+              "caption": {
+                "segmentId": "m00269:caption:fig-00004-caption"
+              },
+              "media": {
+                "alt": {
+                  "segmentId": "m00269:alt:fig-00004-alt",
+                  "text": "A four-step reaction is involved to produce isopentenyl diphosphate from acetyl CoA via acetoacetyl CoA adol condensation, (3 S)-3-hydroxy-3-methylglutaryl CoA reduction, and (R)-mevalonate phosphorylation."
+                },
+                "src": "../../media/OChem_27_05_004.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "figure",
+              "id": "fig-00005",
+              "class": "unnumbered",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00269:alt:fig-00005-alt",
+                  "text": "Base catalyzed Aldol condensation of acetyl CoA with an enzyme-bound thiol diketone generated a tetrahedral intermediate which collapses to (3 S)-3-hydroxy-3-methylglutaryl coenzyme A."
+                },
+                "src": "../../media/OChem_27_05_005.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00004",
+          "class": null,
+          "title": {
+            "segmentId": "m00269:title:sect-00004-title",
+            "text": "Step 3 of [[xref:fig-00004]]: Reduction"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00007",
+              "segmentId": "m00269:para:para-00007"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00006",
+              "class": "unnumbered",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00269:alt:fig-00006-alt",
+                  "text": "H M G CoA is reduced by two nicotinamide adenine dinucleotide phosphate hydride molecules to form an aldehyde intermediate and then (R)-mevalonate."
+                },
+                "src": "../../media/OChem_27_05_006.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00005",
+          "class": null,
+          "title": {
+            "segmentId": "m00269:title:sect-00005-title",
+            "text": "Step 4 of [[xref:fig-00004]]: Phosphorylation and Decarboxylation"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00008",
+              "segmentId": "m00269:para:para-00008"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00007",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00269:alt:fig-00007-alt",
+                  "text": "(R)-Mevalonate reacts to form mevalonate-5-phosphate that further reacts to form mevalonate-5-diphosphate. Adenosine triphosphate converts to adenosine diphosphate. This forms isopentenyl diphosphate. Adenosine triphosphate converts to carbon dioxide."
+                },
+                "src": "../../media/OChem_27_05_007.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00009",
+              "segmentId": "m00269:para:para-00009"
+            },
+            {
+              "type": "para",
+              "id": "para-00010",
+              "segmentId": "m00269:para:para-00010"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00008",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00269:alt:fig-00008-alt",
+                  "text": "Mevalonate-5-diphosphate reacts with two molecules of adenosine triphosphate to form mevalonate 5-diphosphate. Decarboxylation of the diphosphate phosphate forms isopentenyl diphosphate and carbon dioxide"
+                },
+                "src": "../../media/OChem_27_05_008.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00269:title:sect-00006-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00007",
+      "class": null,
+      "title": {
+        "segmentId": "m00269:title:sect-00007-title",
+        "text": "Conversion of Isopentenyl Diphosphate to Terpenoids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00269:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00269:para:para-00013"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00269:caption:fig-00009-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00269:alt:fig-00009-alt",
+              "text": "Isopentenyl diphosphate isomerizes to dimethylallyl diphosphate which forms geranyl diphosphate. Geranyl diphosphate generates monoterpenes or farnesyl diphosphate. Farnesyl diphosphate undergoes dimerization to form squalene or triterpenes."
+            },
+            "src": "../../media/OChem_27_05_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00269:para:para-00014"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00269:alt:fig-00010-alt",
+              "text": "Protonation of isopentenyl diphosphate leads to a carbocation that rearranges to dimethylallyl diphosphate."
+            },
+            "src": "../../media/OChem_27_05_011.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00269:para:para-00015"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00269:caption:fig-00011-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00269:alt:fig-00011-alt",
+              "text": "Dimethylallyl diphosphate forms an allylic carbocation that reacts with isopentenyl pyrophosphate to form geranyl diphosphate. This further reacts to form farnesyl diphosphate."
+            },
+            "src": "../../media/OChem_27_05_012.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00269:para:para-00016"
+        },
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00269:para:para-00017"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00012",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00269:caption:fig-00012-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00269:alt:fig-00012-alt",
+              "text": "Geranyl diphosphate via an allylic carbocation forms linalyl diphosphate, which further rearranges through an allylic carbocation cyclization to form limonene."
+            },
+            "src": "../../media/OChem_27_05_013.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "exam-00001",
+          "title": {
+            "segmentId": "m00269:example-title:exam-00001-title",
+            "text": "Proposing a Terpenoid Biosynthesis Pathway"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00018",
+              "segmentId": "m00269:para:para-00018"
+            },
+            {
+              "type": "para",
+              "id": "para-00019",
+              "segmentId": "m00269:para:para-00019",
+              "title": {
+                "segmentId": "m00269:para-title:para-00019-title",
+                "text": "Strategy"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00020",
+              "title": {
+                "segmentId": "m00269:para-title:para-00020-title",
+                "text": "Solution"
+              }
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00013",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00269:alt:fig-00013-alt",
+              "text": "The structure of alpha-terpineol in which cyclohexene has methyl on C 1, and a C H linked to two methyl groups and an alcohol on C 4 position."
+            },
+            "src": "../../media/OChem_27_05_014.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00014",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00269:alt:fig-00014-alt",
+              "text": "Linalyl diphosphate forms a carbocation intermediate with the release of inorganic pyrophosphate. The attack of water on carbocation leads to alpha-terpineol."
+            },
+            "src": "../../media/OChem_27_05_015.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00008",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00269:title:sect-00008-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

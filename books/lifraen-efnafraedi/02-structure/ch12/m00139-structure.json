@@ -27,7 +27,10 @@
         "segmentId": "m00139:caption:fig-00001-caption"
       },
       "media": {
-        "alt": "A representation of the wavelengths, frequencies, and energies of radiation types from gamma radiation (highest frequency) to radio waves (lowest frequency). Other types of radiation are between these extremes.",
+        "alt": {
+          "segmentId": "m00139:alt:fig-00001-alt",
+          "text": "A representation of the wavelengths, frequencies, and energies of radiation types from gamma radiation (highest frequency) to radio waves (lowest frequency). Other types of radiation are between these extremes."
+        },
         "src": "../../media/OChem_12_05_001.jpg",
         "mimeType": "image/jpeg"
       }
@@ -45,7 +48,10 @@
         "segmentId": "m00139:caption:fig-00002-caption"
       },
       "media": {
-        "alt": "A representation of a typical waveform including indications of how wavelength and amplitude are measured along a wave, as well as specific measurements for violet light and I R radiation.",
+        "alt": {
+          "segmentId": "m00139:alt:fig-00002-alt",
+          "text": "A representation of a typical waveform including indications of how wavelength and amplitude are measured along a wave, as well as specific measurements for violet light and I R radiation."
+        },
         "src": "../../media/OChem_12_05_002.jpg",
         "mimeType": "image/jpeg"
       }
@@ -113,7 +119,10 @@
         "segmentId": "m00139:caption:fig-00003-caption"
       },
       "media": {
-        "alt": "An infrared spectrum of ethanol, showing significant absorption between wavenumbers 3500 and 3100, and just below wavenumber 3000. Other significant absorption spikes also appear.",
+        "alt": {
+          "segmentId": "m00139:alt:fig-00003-alt",
+          "text": "An infrared spectrum of ethanol, showing significant absorption between wavenumbers 3500 and 3100, and just below wavenumber 3000. Other significant absorption spikes also appear."
+        },
         "src": "../../media/OChem_12_05_003.jpg",
         "mimeType": "image/jpeg"
       }
@@ -133,7 +142,7 @@
       "id": "exam-00001",
       "title": {
         "segmentId": "m00139:example-title:exam-00001-title",
-        "text": "Strategy"
+        "text": "Correlating Energy and Frequency of Radiation"
       },
       "content": [
         {
@@ -144,7 +153,11 @@
         {
           "type": "para",
           "id": "para-00013",
-          "segmentId": "m00139:para:para-00013"
+          "segmentId": "m00139:para:para-00013",
+          "title": {
+            "segmentId": "m00139:para-title:para-00013-title",
+            "text": "Strategy"
+          }
         },
         {
           "type": "para",

@@ -1,0 +1,75 @@
+{
+  "moduleId": "m00050",
+  "title": {
+    "segmentId": "m00050:title:auto-1",
+    "text": "Enantiomers and the Tetrahedral Carbon"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "771c5ffe-5153-43a8-b272-8d9dff4782a4"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00050:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00050:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00050:alt:fig-00001-alt",
+          "text": "The figure shows condensed formulas, structures, and ball-and-stick models of C H 3 X, C H 2 X Y, and C H X Y Z along with their mirror images."
+        },
+        "src": "../../media/OChem_05_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00050:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00050:alt:fig-00002-alt",
+          "text": "Structure of lactic acid with a molecule of the general formula C H X Y Z. Ball-and-stick model and structure of (plus)-lactic acid with its mirror image, displaying (minus)-lactic acid."
+        },
+        "src": "../../media/OChem_05_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00050:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00050:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00050:alt:fig-00003-alt",
+          "text": "Two pairs of lactic acid molecules. Pair a shows the positions of substituents mismatching except hydrogen and hydroxyl groups. Pair b shows substituents mismatching except methyl and carboxylic acid groups."
+        },
+        "src": "../../media/OChem_05_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 1
+}

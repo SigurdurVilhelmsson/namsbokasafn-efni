@@ -14,7 +14,7 @@ Calculate values of reaction quotients and equilibrium constants, using concentr
 Relate the magnitude of an equilibrium constant to properties of the chemical system
 
 <!-- SEG:m68798:para:fs-idp120703584 -->
-The status of a reversible reaction is conveniently assessed by evaluating its {{term}}reaction quotient ([[i:Q]]){{/term}}. For a reversible reaction described by
+The status of a reversible reaction is conveniently assessed by evaluating its [[term:reaction quotient ([[i:Q]])|term-00001]]. For a reversible reaction described by
 
 <!-- SEG:m68798:para:fs-idp11973152 -->
 the reaction quotient is derived directly from the stoichiometry of the balanced equation as
@@ -79,6 +79,9 @@ Answer:
 <!-- SEG:m68798:caption:CNX_Chem_13_02_quotient-caption -->
 Changes in concentrations and [[i:Q[[sub:c]]]] for a chemical equilibrium achieved beginning with (a) a mixture of reactants only and (b) products only.
 
+<!-- SEG:m68798:alt:fs-idp134344480-alt -->
+Four graphs are shown and labeled, “a,” “b,” “c,” and “d.” All four graphs have a vertical dotted line running through the middle labeled, “Equilibrium is reached.” The y-axis on graph a is labeled, “Concentration,” and the x-axis is labeled, “Time.” Three curves are plotted on graph a. The first is labeled, “[ S O subscript 2 ];” this line starts high on the y-axis, ends midway down the y-axis, has a steep initial slope and a more gradual slope as it approaches the far right on the x-axis. The second curve on this graph is labeled, “[ O subscript 2 ];” this line mimics the first except that it starts and ends about fifty percent lower on the y-axis. The third curve is the inverse of the first in shape and is labeled, “[ S O subscript 3 ].” The y-axis on graph b is labeled, “Concentration,” and the x-axis is labeled, “Time.” Three curves are plotted on graph b. The first is labeled, “[ S O subscript 2 ];” this line starts low on the y-axis, ends midway up the y-axis, has a steep initial slope and a more gradual slope as it approaches the far right on the x-axis. The second curve on this graph is labeled, “[ O subscript 2 ];” this line mimics the first except that it ends about fifty percent lower on the y-axis. The third curve is the inverse of the first in shape and is labeled, “[ S O subscript 3 ].” The y-axis on graph c is labeled, “Reaction Quotient,” and the x-axis is labeled, “Time.” A single curve is plotted on graph c. This curve begins at the bottom of the y-axis and rises steeply up near the top of the y-axis, then levels off into a horizontal line. The top point of this line is labeled, “k.” The y-axis on graph d is labeled, “Reaction Quotient,” and the x-axis is labeled, “Time.” A single curve is plotted on graph d. This curve begins near the edge of the top of the y-axis and falls steeply toward the x-axis, then levels off into a horizontal line. The bottom point of this line is labeled, “k.”
+
 <!-- SEG:m68798:para:fs-idm122432 -->
 The numerical value of [[i:Q]] varies as a reaction proceeds towards equilibrium; therefore, it can serve as a useful indicator of the reaction’s status. To illustrate this point, consider the oxidation of sulfur dioxide:
 
@@ -95,10 +98,10 @@ If the reaction begins with only product present, the value of [[i:Q[[sub:c]]]] 
 In this case, the reaction proceeds toward equilibrium in the reverse direction. The product concentration and the numerator of [[i:Q[[sub:c]]]] decrease with time, the reactant concentrations and the denominator of [[i:Q[[sub:c]]]] increase, and the reaction quotient consequently decreases until it becomes constant at equilibrium.
 
 <!-- SEG:m68798:para:fs-idm389114784 -->
-The constant value of [[i:Q]] exhibited by a system at equilibrium is called the {{term}}equilibrium constant, [[i:K]]{{/term}}:
+The constant value of [[i:Q]] exhibited by a system at equilibrium is called the [[term:equilibrium constant, [[i:K]]|term-00002]]:
 
 <!-- SEG:m68798:para:fs-idm328721280 -->
-Comparison of the data plots in [[xref:CNX_Chem_13_02_quotient]] shows that both experimental scenarios resulted in the same value for the equilibrium constant. This is a general observation for all equilibrium systems, known as the {{term}}law of mass action{{/term}}: At a given temperature, the reaction quotient for a system at equilibrium is constant.
+Comparison of the data plots in [[xref:CNX_Chem_13_02_quotient]] shows that both experimental scenarios resulted in the same value for the equilibrium constant. This is a general observation for all equilibrium systems, known as the [[term:law of mass action|term-00003]]: At a given temperature, the reaction quotient for a system at equilibrium is constant.
 
 <!-- SEG:m68798:example-title:fs-idp54423808-title -->
 Evaluating a Reaction Quotient
@@ -156,6 +159,9 @@ The bar charts in [[xref:CNX_Chem_13_02_mixtures]] represent changes in reactant
 
 <!-- SEG:m68798:caption:CNX_Chem_13_02_mixtures-caption -->
 Compositions of three mixtures before (Q[[sub:c]] ≠ K[[sub:c]]) and after (Q[[sub:c]] = K[[sub:c]]) equilibrium is established for the reaction [[MATH:20]]
+
+<!-- SEG:m68798:alt:fs-idp62217296-alt -->
+Two sets of bar graphs are shown. The left is labeled, “Before reaction,” and the right is labeled, “At equilibrium.” Both graphs have y-axes labeled, “Concentration ( M ),” and three bars on the x-axes labeled, “Mixture 1,” “Mixture 2,” and “Mixture 3.” The y-axis has a scale beginning at 0.00 and ending at 0.10, with measurement increments of 0.02. The bars on the graphs are color coded and a key is provided with a legend. Red is labeled, “C O;” blue is labeled, “H subscript 2 O;” green is labeled, “C O subscript 2,” and yellow is labeled, “H subscript 2.” The graph on the left shows the red bar for mixture one just above 0.02, labeled “0.0243,” and the blue bar near 0.05, labeled “0.0243.” For mixture two, the green bar is near 0.05, labeled “0.0468,” and the yellow bar is near 0.09, labeled “0.0468.” For mixture 3, the red bar is near 0.01, labeled “0.0330,” the blue bar is slightly above that, labeled “0.190,” with green and yellow topping it off at 0.02. Green is labeled “0.00175” and yellow is labeled “0.00160.” On the right graph, the bar for mixture one shows the red bar slightly above 0.01, labeled “0.0135,” the blue bar stacked on it rising slightly above 0.02, labeled “0.0135,” the green rising near 0.04, labeled “0.0108,” and the yellow bar reaching near 0.05, labeled “0.0108.” A label above this bar reads, “Q equals 0.640.” The bar for mixture two shows the red bar slightly above 0.02, labeled “0.0260,” the blue bar stacked on it rising near 0.05, labeled “0.0260,” the green rising near 0.07, labeled “0.0208,” and the yellow bar reaching near 0.10, labeled “0.0208.” A label above this bar reads “Q equals 0.640.” The bar for mixture three shows the red bar near 0.01, labeled “0.0231,” the blue bar stacked on it rising slightly above 0.01, labeled “0.00909,” the green rising near 0.02, labeled “0.0115,” and the yellow bar reaching 0.02, labeled “0.0117.” A label above this bar reads “Q equals 0.640”.
 
 <!-- SEG:m68798:example-title:fs-idp174376240-title -->
 Predicting the Direction of Reaction
@@ -220,71 +226,71 @@ Answer:
 <!-- SEG:m68798:para:fs-idp96400256 -->
 (a) [[i:Q[[sub:c]]]] = 6.45 [[MATH:22]] 10[[sup:3]], forward. (b) [[i:Q[[sub:c]]]] = 0.23, reverse. (c) [[i:Q[[sub:c]]]] = 0, forward.
 
-<!-- SEG:m68798:entry:auto-75 -->
+<!-- SEG:m68798:entry:auto-77 -->
 Reactants/Products
 
-<!-- SEG:m68798:entry:auto-76 -->
+<!-- SEG:m68798:entry:auto-78 -->
 Experiment 1
 
-<!-- SEG:m68798:entry:auto-77 -->
+<!-- SEG:m68798:entry:auto-79 -->
 Experiment 2
 
-<!-- SEG:m68798:entry:auto-78 -->
+<!-- SEG:m68798:entry:auto-80 -->
 Experiment 3
 
-<!-- SEG:m68798:entry:auto-79 -->
+<!-- SEG:m68798:entry:auto-81 -->
 [CO][[sub:i]]
 
-<!-- SEG:m68798:entry:auto-80 -->
-0.020 [[i:M]]
-
-<!-- SEG:m68798:entry:auto-81 -->
-0.011 [[i:M]]
-
 <!-- SEG:m68798:entry:auto-82 -->
-0.0094 [[i:M]]
+0.020 [[i:M]]
 
 <!-- SEG:m68798:entry:auto-83 -->
-[H[[sub:2]]O][[sub:i]]
+0.011 [[i:M]]
 
 <!-- SEG:m68798:entry:auto-84 -->
-0.020 [[i:M]]
+0.0094 [[i:M]]
 
 <!-- SEG:m68798:entry:auto-85 -->
-0.0011 [[i:M]]
+[H[[sub:2]]O][[sub:i]]
 
 <!-- SEG:m68798:entry:auto-86 -->
-0.0025 [[i:M]]
+0.020 [[i:M]]
 
 <!-- SEG:m68798:entry:auto-87 -->
-[CO[[sub:2]]][[sub:i]]
+0.0011 [[i:M]]
 
 <!-- SEG:m68798:entry:auto-88 -->
-0.0040 [[i:M]]
+0.0025 [[i:M]]
 
 <!-- SEG:m68798:entry:auto-89 -->
-0.037 [[i:M]]
+[CO[[sub:2]]][[sub:i]]
 
 <!-- SEG:m68798:entry:auto-90 -->
-0.0015 [[i:M]]
-
-<!-- SEG:m68798:entry:auto-91 -->
-[H[[sub:2]]][[sub:i]]
-
-<!-- SEG:m68798:entry:auto-92 -->
 0.0040 [[i:M]]
 
+<!-- SEG:m68798:entry:auto-91 -->
+0.037 [[i:M]]
+
+<!-- SEG:m68798:entry:auto-92 -->
+0.0015 [[i:M]]
+
 <!-- SEG:m68798:entry:auto-93 -->
-0.046 [[i:M]]
+[H[[sub:2]]][[sub:i]]
 
 <!-- SEG:m68798:entry:auto-94 -->
+0.0040 [[i:M]]
+
+<!-- SEG:m68798:entry:auto-95 -->
+0.046 [[i:M]]
+
+<!-- SEG:m68798:entry:auto-96 -->
 0.0076 [[i:M]]
 
 <!-- SEG:m68798:title:fs-idp86160096-title -->
 Homogeneous Equilibria
 
 <!-- SEG:m68798:para:fs-idm54871216 -->
-A {{term}}homogeneous equilibrium{{/term}} is one in which all reactants and products (and any catalysts, if applicable) are present in the same phase. By this definition, homogeneous equilibria take place in [[i:solutions]]. These solutions are most commonly either liquid or gaseous phases, as shown by the examples below:
+A [[term:homogeneous equilibrium|term-00004]] is one in which all reactants and products (and any catalysts, if applicable) are present in the same phase. By this definition, homogeneous equilibria take place in [[i:solutions]]. These solutions are most commonly either liquid or gaseous phases, as shown by the examples below:
 
 <!-- SEG:m68798:para:fs-idp11719264 -->
 These examples all involve aqueous solutions, those in which water functions as the solvent. In the last two examples, water also functions as a reactant, but its concentration is [[i:not]] included in the reaction quotient. The reason for this omission is related to the more rigorous form of the [[i:Q]] (or [[i:K]]) expression mentioned previously in this chapter, in which [[i:relative concentrations for liquids and solids are equal to 1 and needn’t be included]]. Consequently, reaction quotients include concentration or pressure terms only for gaseous and solute species.
@@ -377,7 +383,7 @@ Answer:
 Heterogeneous Equilibria
 
 <!-- SEG:m68798:para:fs-idp27217312 -->
-A {{term}}heterogeneous equilibrium{{/term}} involves reactants and products in two or more different phases, as illustrated by the following examples:
+A [[term:heterogeneous equilibrium|term-00005]] involves reactants and products in two or more different phases, as illustrated by the following examples:
 
 <!-- SEG:m68798:para:fs-idp8357744 -->
 Again, note that concentration terms are only included for gaseous and solute species, as discussed previously.
@@ -460,22 +466,22 @@ A homogeneous equilibrium is an equilibrium in which all components are in the s
 <!-- SEG:m68798:title:fs-idp116522752-title -->
 Key Equations
 
-<!-- SEG:m68798:entry:auto-155 -->
+<!-- SEG:m68798:entry:auto-157 -->
 [[MATH:34]]
 
-<!-- SEG:m68798:entry:auto-156 -->
+<!-- SEG:m68798:entry:auto-158 -->
 [[MATH:35]]
 
-<!-- SEG:m68798:entry:auto-157 -->
+<!-- SEG:m68798:entry:auto-159 -->
 [[i:P]] = [[i:MRT]]
 
-<!-- SEG:m68798:entry:auto-158 -->
+<!-- SEG:m68798:entry:auto-160 -->
 [[i:K[[sub:c]]]] = [[i:Q[[sub:c]]]] at equilibrium
 
-<!-- SEG:m68798:entry:auto-159 -->
+<!-- SEG:m68798:entry:auto-161 -->
 [[i:K[[sub:p]]]] = [[i:Q[[sub:p]]]] at equilibrium
 
-<!-- SEG:m68798:entry:auto-160 -->
+<!-- SEG:m68798:entry:auto-162 -->
 [[i:K[[sub:P]]]] = [[i:K[[sub:c]]]] ([[i:RT]])[[sup:Δ[[i:n]]]]
 
 <!-- SEG:m68798:title:fs-idp16341104-title -->

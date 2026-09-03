@@ -1,0 +1,12 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math display=\"block\">\n     <m:mtable columnalign=\"left\">\n      <m:mtr>\n       <m:mtd>\n        <m:mtext>Reaction rate </m:mtext><m:mo>=</m:mo><m:mtext>Rate of disappearance of reactant</m:mtext>\n       </m:mtd>\n      </m:mtr>\n      <m:mtr>\n       <m:mtd>\n        <m:mtext>                     </m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>×</m:mo><m:mo stretchy=\"false\">[</m:mo><m:mtext>RX</m:mtext><m:mo stretchy=\"false\">]</m:mo><m:mo>×</m:mo><m:msup>\n         <m:mo stretchy=\"false\">[</m:mo>\n         <m:mtext>−</m:mtext>\n        </m:msup>\n        <m:mtext>OH</m:mtext><m:mo stretchy=\"false\">]</m:mo>\n       </m:mtd>\n      </m:mtr>\n     </m:mtable>\n    </m:math>",
+    "latex": "\\begin{aligned} \\text{Reaction rate}=\\text{Rate of disappearance of reactant} \\\\ \\text=k\\times [\\text{RX}]\\times {[}^{\\text{−}} \\text{OH}] \\end{aligned}",
+    "isBlock": true
+  },
+  "eq-00002": {
+    "mathml": "<m:math display=\"block\">\n     <m:mtable columnalign=\"left\">\n      <m:mtr>\n       <m:mtd>\n        <m:mtext>               </m:mtext><m:mo stretchy=\"false\">[</m:mo><m:mtext>RX</m:mtext><m:mo stretchy=\"false\">]</m:mo><m:mo>=</m:mo><m:msub>\n         <m:mtext>CH</m:mtext>\n         <m:mn>3</m:mn>\n        </m:msub>\n        <m:mtext>Br concentration in molarity</m:mtext>\n       </m:mtd>\n      </m:mtr>\n      <m:mtr>\n       <m:mtd>\n        <m:msup>\n         <m:mtext>               [</m:mtext>\n         <m:mtext>−</m:mtext>\n        </m:msup>\n        <m:mtext>OH]</m:mtext>\n         <m:mo>=</m:mo>\n         <m:msup>\n         <m:mtext> </m:mtext>\n         <m:mtext>−</m:mtext>\n        </m:msup>\n        <m:mtext>OH concentration in molarity</m:mtext>\n       </m:mtd>\n      </m:mtr>\n      <m:mtr>\n       <m:mtd>\n        <m:mtext>               </m:mtext><m:mi>k</m:mi><m:mo>=</m:mo><m:mtext>a constant value (the rate constant)</m:mtext>\n       </m:mtd>\n      </m:mtr>\n     </m:mtable>\n    </m:math>",
+    "latex": "\\begin{aligned} \\text[\\text{RX}]={\\text{CH}}_{3} \\text{Br concentration in molarity} \\\\ {\\text{[}}^{\\text{−}} \\text{OH]} = {\\text}^{\\text{−}} \\text{OH concentration in molarity} \\\\ \\textk=\\text{a constant value (the rate constant)} \\end{aligned}",
+    "isBlock": true
+  }
+}

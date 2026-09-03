@@ -1,0 +1,18 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>R–N–C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{R–N–C=O}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>Ar–</m:mtext><m:mover><m:mtext>N</m:mtext><m:mo>+</m:mo></m:mover><m:mtext>≡N</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mtext>X</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{Ar–}\\overset{+}{\\text{N}}\\text{≡N}\\, {\\text{X}}^{-}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>–N≡N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{–N≡N}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext mathvariant=\"bold\">Ar–N=N–A</m:mtext><m:msup><m:mrow><m:mtext mathvariant=\"bold\">r</m:mtext></m:mrow><m:mo mathvariant=\"bold\">′</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{Ar–N=N–A}{{\\text{r}}}^{′}}"
+  }
+}

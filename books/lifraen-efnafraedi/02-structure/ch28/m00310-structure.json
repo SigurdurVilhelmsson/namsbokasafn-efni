@@ -1,0 +1,119 @@
+{
+  "moduleId": "m00310",
+  "title": {
+    "segmentId": "m00310:title:auto-1",
+    "text": "Nucleotides and Nucleic Acids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "0f8f621f-231d-4ace-a805-29b1001abc24"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00310:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00310:alt:fig-00001-alt",
+          "text": "D N A with nuclease and water is cleaved to nucleotides. Nucleotidase liberates phosphate from nucleotides. Resulting nucleoside liberates phosphate upon interaction with nucleosidase forming free base and pentose sugars."
+        },
+        "src": "../../media/OChem_28_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00310:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00310:alt:fig-00002-alt",
+          "text": "The structure of ribose, 2-deoxyribose, purine, and pyrimidine. Adenine, Guanine, Cytosine and Thymine are present in D N A, whereas R N A contains Uracil instead of Thymine."
+        },
+        "src": "../../media/OChem_28_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00310:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00310:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00310:alt:fig-00003-alt",
+          "text": "Four forms of deoxyribonucleotides are 2'-deoxyadenosine 5'-phosphate, 2'-deoxyguanosine 5'-phosphate, 2'-deoxycytidine 5'-phosphate, thymidine 5'-phosphate. Four forms of ribonucleotides are adenosine 5'-phosphate, guanosine 5'-phosphate, cytidine 5'-phosphate, uridine 5'-phosphate."
+        },
+        "src": "../../media/OChem_28_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00310:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00310:alt:fig-00004-alt",
+          "text": "Two figures show the structure of D N A. Nucleotides join together in deoxyribonucleic and ribonucleic acid via phosphate between the 5-prime on one nucleotide and the 3-prime on another."
+        },
+        "src": "../../media/OChem_28_01_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00310:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

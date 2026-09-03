@@ -1,0 +1,177 @@
+{
+  "moduleId": "m00154",
+  "title": {
+    "segmentId": "m00154:title:auto-1",
+    "text": "Problems"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "7a267f6a-84bb-4d0a-9b85-4152be286ac2"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00154:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00154:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00154:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00154:alt:fig-00001-alt",
+          "text": "Chart shows intensity and chemical shift regions (from high to low) for carbonyl, alkene, aromatic, nitrile, alkyne, C-O, C-N, C-halogen, C H, methylene, and methyl groups."
+        },
+        "src": "../../media/OChem_13_11_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00154:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00154:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00154:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00154:alt:fig-00002-alt",
+          "text": "Carbon-13 N M R spectra of 2-butanone (peaks at 9, 32, 38, 208) and para-bromoacetophenone (peaks at 26, 129, 131, 134, 137, and 195)."
+        },
+        "src": "../../media/OChem_13_11_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00154:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00154:alt:fig-00003-alt",
+          "text": "The structure and ball-and-stick model of para-bromoacetophenone. The carbon atoms in the structure are labeled from right to left with methyl as C 1."
+        },
+        "src": "../../media/OChem_13_11_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00154:para:para-00006"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00154:example-title:exam-00001-title",
+        "text": "Predicting Chemical Shifts in [[sup:13]]C NMR Spectra"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00154:para:para-00007"
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00154:para:para-00008",
+          "title": {
+            "segmentId": "m00154:para-title:para-00008-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00154:para:para-00009",
+          "title": {
+            "segmentId": "m00154:para-title:para-00009-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00154:para:para-00010"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00154:alt:fig-00004-alt",
+          "text": "The structure of ethyl acrylate. Delta values of carbon atoms are C 2 of ethyl: 15, C 1 of ethyl: 60, C 1, 180, and C double bond C: 130."
+        },
+        "src": "../../media/OChem_13_11_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00154:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 11
+}

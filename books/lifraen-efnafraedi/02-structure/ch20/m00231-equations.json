@@ -1,0 +1,42 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2013;C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2013;C&#x2550;O}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>O&#x2550;C&#x2013;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{O&#x2550;C&#x2013;O}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2013;C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2013;C&#x2550;O}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2013;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2013;C}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2013;C&#x2013;OH</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2013;C&#x2013;OH}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mtext>O&#x2550;C&#x2013;OH</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{O&#x2550;C&#x2013;OH}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2013;OH</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2013;OH}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C&#x2550;}{{\\text{CHCO}}}_{2}\\text{H}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  }
+}

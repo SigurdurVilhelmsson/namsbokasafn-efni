@@ -11,9 +11,18 @@
  * regression, and they are updated in the commit that observes it (§C82 L20).
  *
  * ⚠️ THE MUST-NOT-TRIP CONTROLS ARE LOAD-BEARING, NOT DECORATION. E3's base rate is 0 over
- * every population measured — 166 modules carrying both sides, and separately all 440
- * committed EN+IS segment files across the two kept books — which is exactly what a wholly
- * broken detector returns. The planted control is what separates the two readings.
+ * every population measured — 491 modules carrying both sides (149 chemistry + 342 organic;
+ * 166 before §C82's re-extract) and, separately, all 794 committed live EN+IS segment files
+ * across the two kept books (440 before), re-RUN 2026-09-02 at {PASS 794, FAIL 0, SKIPPED 0}
+ * over 69,381 segments with a spiked real file FAILing in the same command — which is exactly
+ * what a wholly broken detector returns. The planted control separates the two readings.
+ *
+ * 🔴 AND AS OF 2026-09-02 E1 HAS NO NATURAL MUST-TRIP LEFT IN EITHER BOOK: chemistry's 104
+ * mustache carriers went to 0 at §C82's re-extract and organic was always 0, so the
+ * discriminating corpus PAIR this file was built on no longer exists. Every remaining
+ * fire-evidence for E1 is PLANTED — 'FAILS on a PLANTED {{…}} marker', 'detects every
+ * mustache tag the dialect defines', 'anchors the ++ count to the SOURCE element count' and
+ * the in-test spike below. They are load-bearing alone now and must not be trimmed.
  */
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
@@ -82,13 +91,24 @@ describe('E1 — legacy inline-marker dialects on the EN side', () => {
   });
 
   it('anchors the ++ count to the SOURCE element count, never to the regex', async () => {
-    // PREMISE PIN over `02-for-mt` — expected to move at the re-extract (§C82 L20).
-    // 27 regex hits vs 19 `<emphasis effect="underline">`; the +8 is `++` inside 8 DUPLICATED
-    // seg-id blocks, not greedy adjacency as the spec states.
-    const r = await runCheck(E1, modCtx('efnafraedi-2e', 'ch07', 'm68742'));
+    // 🔴 RE-PLANTED 2026-09-02, NOT RE-BASELINED. This pinned m68742's corpus figures
+    // {sourceElements: 19, regexHits: 27} until the §C82 re-extract rewrote all 27 `++X++`
+    // as `[[u:X]]` (cnxml-extract.js:373) — substituted value for value, 20 C / 6 O / 1 CC
+    // on both sides. 0 `++` hits remain in any of the 574 live `-segments.en.md` files across
+    // both books, so E1's `if (plusHits.length > 0)` branch is unreachable FROM DATA.
+    // ▶ The two `sourceElements` assertions below are the ONLY ones in the repo — the other
+    // two grep hits, remt-checks-mt.test.js:267/272, assert the field's ABSENCE — so bumping
+    // the numbers to `undefined` or deleting the test would leave `countUnderlineElements`
+    // and the whole {sourceElements, regexHits} anchoring contract with ZERO coverage.
+    const cnxml = synthCnxml(
+      'm00001',
+      '<para id="p1">x <emphasis effect="underline">C</emphasis></para>'
+    );
+    const dup = synthSeg('m00001', 'x ++C++'); // one source element, two seg-blocks
+    const r = await runCheck(E1, { cnxml, segText: dup + dup });
     const f = r.findings.find((x) => x.dialect === '++');
-    expect(f.sourceElements).toBe(19);
-    expect(f.regexHits).toBe(27);
+    expect(f.sourceElements).toBe(1);
+    expect(f.regexHits).toBe(2);
     expect(f.sourceElements).toBeLessThan(f.regexHits);
   });
 
@@ -120,24 +140,51 @@ describe('E1 — legacy inline-marker dialects on the EN side', () => {
     ).toBe(0);
   });
 
-  it('SHOULD-TRIP over the committed chemistry corpus — a PREMISE PIN, red after the re-extract', async () => {
+  it('MUST-NOT-TRIP over the committed chemistry corpus — the 104 carriers were repaired by the re-extract', async () => {
     const mods = modulesWithSegments('efnafraedi-2e');
     // ⚠️ POPULATION: modules carrying BOTH an `01-source` cnxml and a segment file — 149,
     // not the 170 EN segment FILES chemistry holds (the extra 21 are `chapter-metadata`
-    // units with no source counterpart). The mustache carriers happen to number 104 under
-    // EITHER denominator, which is exactly the coincidence that reads as corroboration.
+    // units with no source counterpart). Chemistry is unmoved at 149 across the re-extract.
+    // 🔴 RE-BASELINED 2026-09-02. This asserted `tripped === 104` — 1,644 mustache
+    // occurrences across 104 of these modules — until §C82's re-extract emitted bracket
+    // markers for all of them. Re-verified by replaying the UNCHANGED E1 over the
+    // pre-re-extract bytes (`git show 5895a25b:…-segments.en.md`) against this same 149-module
+    // population and the same unchanged `01-source`: {PASS 45, FAIL 104, SKIPPED 0}, mustache
+    // 1,644 in 104 files, `++` 49 hits in 6. The instrument did not move; the corpus did.
+    // ⚠️ `passed` IS LOAD-BEARING: `tripped` counts only FAIL, so `tripped === 0` is equally
+    // satisfied by 149 SKIPPEDs — i.e. by a ctx-guard or loader regression. Pinning the PASS
+    // count is what stops this going green on a battery that inspected nothing.
     expect(mods.length).toBe(149); // control: an empty walk must not pass
     let tripped = 0;
+    let passed = 0;
     for (const { ch, m } of mods) {
       const r = await runCheck(E1, modCtx('efnafraedi-2e', ch, m));
       if (r.verdict === VERDICT.FAIL) tripped++;
+      if (r.verdict === VERDICT.PASS) passed++;
     }
-    expect(tripped).toBe(104);
+    expect(tripped).toBe(0);
+    expect(passed).toBe(149);
+
+    // ⚠️ AND THE PAIRED POSITIVE CONTROL, ON THIS SAME CORPUS DATA rather than in another
+    // `it()`: 149 PASSes mean nothing unless E1 can still FAIL on these exact bytes.
+    const { ch, m } = mods[0];
+    const spiked = segTextOf('efnafraedi-2e', ch, m).replace(/\n/, '\na {{i}}leak{{/i}} here\n');
+    const control = await runCheck(E1, { cnxml: srcText('efnafraedi-2e', ch, m), segText: spiked });
+    expect(control.verdict).toBe(VERDICT.FAIL);
+    expect(control.findings[0]).toMatchObject({ dialect: '{{}}', occurrences: 2 });
   });
 
-  it('MUST-NOT-TRIP over organic — 0 of 17, the control that the 104 above means something', async () => {
+  it('MUST-NOT-TRIP over organic — 0 of 342, the whole book since §C82 re-extracted it', async () => {
     const mods = modulesWithSegments('lifraen-efnafraedi');
-    expect(mods.length).toBe(17); // 17 of organic's 342 carry a segment file today
+    // 🔴 RE-BASELINED 2026-09-02, 17 → 342. §C82's re-extract was organic's FIRST full run,
+    // so every one of its 342 `01-source` modules now carries a segment file and this
+    // MUST-NOT-TRIP covers the whole book. Derived, not copied: 342 is organic's `01-source`
+    // .cnxml count, and its `-segments.en.md` count equals it exactly.
+    // ⚠️ THE OLD TITLE'S ", the control that the 104 above means something" CLAUSE IS GONE ON
+    // PURPOSE: chemistry's mustache carriers went to 0 in the same re-extract, so the two
+    // books no longer form a discriminating pair. ALL of E1's fire-evidence is now the
+    // PLANTED controls above (:62, :72, :93) — do not trim one.
+    expect(mods.length).toBe(342); // organic's full 01-source module count
     for (const { ch, m } of mods) {
       const r = await runCheck(E1, modCtx('lifraen-efnafraedi', ch, m));
       expect(r.verdict, `${ch}/${m}`).toBe(VERDICT.PASS);
@@ -224,7 +271,7 @@ describe('E3 — raw XML residue in segments', () => {
         files++;
       }
     }
-    expect(files).toBe(166); // control: 149 chemistry + 17 organic modules with both sides
+    expect(files).toBe(491); // control: 149 chemistry + 342 organic modules with both sides
   });
 
   it('SKIPS on a missing segText and names the cause', async () => {

@@ -1,0 +1,158 @@
+{
+  "moduleId": "m00165",
+  "title": {
+    "segmentId": "m00165:title:auto-1",
+    "text": "Drawing Electron-Dot and Line-Bond Structures"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d1e8116b-fc6d-41f2-9829-7d794ce5e71e"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00165:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00165:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00165:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00165:alt:fig-00001-alt",
+          "text": "The side and top view of s p 2 hybridization. The angle between p and s p 2 lobes is 90 degrees, and between two s p 2 lobes is 120 degrees."
+        },
+        "src": "../../media/OChem_01_08_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00165:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00165:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00165:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00165:alt:fig-00002-alt",
+          "text": "The formation of carbon-carbon double bond from two s p 2-hybridized carbon atoms. The space-filling model, chemical structure, and ball and stick model of ethylene are shown."
+        },
+        "src": "../../media/OChem_01_08_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00165:para:para-00005"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00165:example-title:exam-00001-title",
+        "text": "Drawing Electron-Dot and Line-Bond Structures"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00165:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00165:para:para-00007",
+          "title": {
+            "segmentId": "m00165:para-title:para-00007-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00165:para:para-00008",
+          "title": {
+            "segmentId": "m00165:para-title:para-00008-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00165:para:para-00009"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00165:alt:fig-00003-alt",
+          "text": "The electron-dot structure and line-bond structure of formaldehyde."
+        },
+        "src": "../../media/OChem_01_08_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00165:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

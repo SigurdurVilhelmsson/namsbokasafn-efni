@@ -27,7 +27,10 @@
       },
       "media": {
         "id": "fs-idp257130400",
-        "alt": "A photograph shows an aerial view of buildings, trees and a large area clear of vegetation, above which rises a plume of steam.",
+        "alt": {
+          "segmentId": "m68815:alt:fs-idp257130400-alt",
+          "text": "A photograph shows an aerial view of buildings, trees and a large area clear of vegetation, above which rises a plume of steam."
+        },
         "src": "../../media/CNX_Chem_16_00_Geyser.jpg",
         "mimeType": "image/jpeg"
       }

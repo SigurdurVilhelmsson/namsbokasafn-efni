@@ -22,6 +22,9 @@ The common oxidation states that the nonmetals exhibit in their ionic and covale
 <!-- SEG:m68832:caption:CNX_Chem_18_04_OxStNonmts-caption -->
 Nonmetals exhibit these common oxidation states in ionic and covalent compounds.
 
+<!-- SEG:m68832:alt:fs-idp165773088-alt -->
+Six columns of information are shown. The first column has three pieces of data: “H,” “1 positive sign,” and “1 negative sign.” The second column has four pieces of data: “C,” “4 positive sign,” the word, “To,” and, “4 negative sign.” The third column has eight pieces of data: “N,” “5 positive sign,” the word, “To,” “3 negative sign,” “P, A s,” “5 positive sign,” “3 positive sign,” and “3 negative sign.” The fourth column has seven pieces of data: “O,” “1 negative sign,” “2 negative sign,” “S, S e,” “6 positive sign,” “4 positive sign,” and “2 negative sign.” The fifth column has eight pieces of data: “F,” “1 negative sign,” “C l, B r, I,” “7 positive sign,” “5 positive sign,” “3 positive sign,” “1 positive sign,” and “1 negative sign.” The sixth column has five pieces of data: “X e,” “8 positive sign,” “6 positive sign,” “4 positive sign,” and “2 positive sign.”
+
 <!-- SEG:m68832:para:fs-idm146473008 -->
 The first member of each nonmetal group exhibits different behaviors, in many respects, from the other group members. The reasons for this include smaller size, greater ionization energy, and (most important) the fact that the first member of each group has only four valence orbitals (one 2[[i:s]] and three 2[[i:p]]) available for bonding, whereas other group members have empty [[i:d]] orbitals in their valence shells, making possible five, six, or even more bonds around the central atom. For example, nitrogen forms only NF[[sub:3,]] whereas phosphorus forms both PF[[sub:3]] and PF[[sub:5]].
 
@@ -50,10 +53,10 @@ Fluorine and oxygen are the strongest oxidizing elements known. Fluorine does no
 With the exception of most of the noble gases, all nonmetals form compounds with oxygen, yielding covalent oxides. Most of these oxides are acidic, that is, they react with water to form oxyacids. Recall from the acid-base chapter that an oxyacid is an acid consisting of hydrogen, oxygen, and some other element. Notable exceptions are carbon monoxide, CO, nitrous oxide, N[[sub:2]]O, and nitric oxide, NO. There are three characteristics of these acidic oxides:
 
 <!-- SEG:m68832:item:fs-idm120122192-item-1 -->
-Oxides such as SO[[sub:2]] and N[[sub:2]]O[[sub:5]], in which the nonmetal exhibits one of its common oxidation states, are {{term}}acid anhydrides{{/term}} and react with water to form acids with no change in oxidation state. The product is an oxyacid. For example:[[BR]] [[MATH:6]] [[MATH:7]]
+Oxides such as SO[[sub:2]] and N[[sub:2]]O[[sub:5]], in which the nonmetal exhibits one of its common oxidation states, are [[term:acid anhydrides|term-00001]] and react with water to form acids with no change in oxidation state. The product is an oxyacid. For example:[[BR]] [[MATH:6]] [[MATH:7]]
 
 <!-- SEG:m68832:item:fs-idm120122192-item-2 -->
-Those oxides such as NO[[sub:2]] and ClO[[sub:2]], in which the nonmetal does not exhibit one of its common oxidation states, also react with water. In these reactions, the nonmetal is both oxidized and reduced. For example:[[BR]] [[MATH:8]][[BR]]Reactions in which the same element is both oxidized and reduced are called {{term}}disproportionation reactions{{/term}}.
+Those oxides such as NO[[sub:2]] and ClO[[sub:2]], in which the nonmetal does not exhibit one of its common oxidation states, also react with water. In these reactions, the nonmetal is both oxidized and reduced. For example:[[BR]] [[MATH:8]][[BR]]Reactions in which the same element is both oxidized and reduced are called [[term:disproportionation reactions|term-00002]].
 
 <!-- SEG:m68832:item:fs-idm120122192-item-3 -->
 The acid strength increases as the electronegativity of the central atom increases. To learn more, see the discussion in the chapter on acid-base chemistry.
@@ -88,11 +91,17 @@ Diamond, shown in [[xref:CNX_Chem_18_04_Carbonform]], is a very hard crystalline
 <!-- SEG:m68832:caption:CNX_Chem_18_04_Carbonform-caption -->
 (a) Diamond and (b) graphite are two forms of carbon. (c) In the crystal structure of diamond, the covalent bonds form three-dimensional tetrahedrons. (d) In the crystal structure of graphite, each planar layer is composed of six-membered rings. (credit a: modification of work by “Fancy Diamonds”/Flickr; credit b: modification of work from http://images-of-elements.com/carbon.php)
 
+<!-- SEG:m68832:alt:fs-idm142208784-alt -->
+Two photos and two images are shown and labeled, “a,” “b,” “c,” and “d.” Photo a is of a diamond held by tweezers. Photo b shows a black columnar solid. Image c shows layered sheets of interconnected hexagonal rings. Image d shows sheets of hexagonal rings.
+
 <!-- SEG:m68832:para:fs-idm157413808 -->
 Graphite, also shown in [[xref:CNX_Chem_18_04_Carbonform]], is a soft, slippery, grayish-black solid that conducts electricity. These properties relate to its structure, which consists of layers of carbon atoms, with each atom surrounded by three other carbon atoms in a trigonal planar arrangement. Each carbon atom in graphite forms three σ bonds, one to each of its nearest neighbors, by means of [[i:sp]][[sup:2]]-hybrid orbitals. The unhybridized [[i:p]] orbital on each carbon atom will overlap unhybridized orbitals on adjacent carbon atoms in the same layer to form π bonds. Many resonance forms are necessary to describe the electronic structure of a graphite layer; [[xref:CNX_Chem_18_04_unhyporbC]] illustrates two of these forms.
 
 <!-- SEG:m68832:caption:CNX_Chem_18_04_unhyporbC-caption -->
 (a) Carbon atoms in graphite have unhybridized [[i:p]] orbitals. Each [[i:p]] orbital is perpendicular to the plane of carbon atoms. (b) These are two of the many resonance forms of graphite necessary to describe its electronic structure as a resonance hybrid.
+
+<!-- SEG:m68832:alt:fs-idm54505824-alt -->
+Two images are shown and labeled, “a” and “b.” Image a shows two connected hexagonal rings, with figure-eight-shaped orbitals located at each point of the ring and in a perpendicular position. Image b shows a pair of diagrams, each of which has a series of connected hexagonal rings made up of carbon atoms that are connected by alternating single and double bonds. These two diagrams are connected by a double-headed arrow.
 
 <!-- SEG:m68832:para:fs-idp56198176 -->
 Atoms within a graphite layer are bonded together tightly by the σ and π bonds; however, the forces between layers are weak. London dispersion forces hold the layers together. To learn more, see the discussion of these weak forces in the chapter on liquids and solids. The weak forces between layers give graphite the soft, flaky character that makes it useful as the so-called “lead” in pencils and the slippery character that makes it useful as a lubricant. The loosely held electrons in the resonating π bonds can move throughout the solid and are responsible for the electrical conductivity of graphite.
@@ -101,10 +110,13 @@ Atoms within a graphite layer are bonded together tightly by the σ and π bonds
 Other forms of elemental carbon include carbon black, charcoal, and coke. Carbon black is an amorphous form of carbon prepared by the incomplete combustion of natural gas, CH[[sub:4]]. It is possible to produce charcoal and coke by heating wood and coal, respectively, at high temperatures in the absence of air.
 
 <!-- SEG:m68832:para:fs-idm135394992 -->
-Recently, new forms of elemental carbon molecules have been identified in the soot generated by a smoky flame and in the vapor produced when graphite is heated to very high temperatures in a vacuum or in helium. One of these new forms, first isolated by Professor Richard {{term}}Smalley{{/term}} and coworkers at Rice University, consists of icosahedral (soccer-ball-shaped) molecules that contain 60 carbon atoms, C[[sub:60]]. This is buckminsterfullerene (often called bucky balls) after the architect Buckminster {{term}}Fuller{{/term}}, who designed domed structures, which have a similar appearance ([[xref:CNX_Chem_18_04_Buckyball]]).
+Recently, new forms of elemental carbon molecules have been identified in the soot generated by a smoky flame and in the vapor produced when graphite is heated to very high temperatures in a vacuum or in helium. One of these new forms, first isolated by Professor Richard [[term:Smalley|term-00003]] and coworkers at Rice University, consists of icosahedral (soccer-ball-shaped) molecules that contain 60 carbon atoms, C[[sub:60]]. This is buckminsterfullerene (often called bucky balls) after the architect Buckminster [[term:Fuller|term-00004]], who designed domed structures, which have a similar appearance ([[xref:CNX_Chem_18_04_Buckyball]]).
 
 <!-- SEG:m68832:caption:CNX_Chem_18_04_Buckyball-caption -->
 The molecular structure of C[[sub:60]], buckminsterfullerene, is icosahedral.
+
+<!-- SEG:m68832:alt:fs-idm51418352-alt -->
+A spherical structure is made up of hexagonal rings, each of which is made up of atoms bonded together with alternating single and double bonds.
 
 <!-- SEG:m68832:note-title:fs-idm138324592-title -->
 Nanotubes and Graphene
@@ -113,7 +125,7 @@ Nanotubes and Graphene
 Graphene and carbon nanotubes are two recently discovered allotropes of carbon. Both of the forms bear some relationship to graphite. Graphene is a single layer of graphite (one atom thick), as illustrated in [[xref:CNX_Chem_18_04_Nanotube]], whereas carbon nanotubes roll the layer into a small tube, as illustrated in [[xref:CNX_Chem_18_04_Nanotube]].
 
 <!-- SEG:m68832:para:fs-idm143379488 -->
-Graphene is a very strong, lightweight, and efficient conductor of heat and electricity discovered in 2003. As in graphite, the carbon atoms form a layer of six-membered rings with [[i:sp]][[sup:2]]-hybridized carbon atoms at the corners. Resonance stabilizes the system and leads to its conductivity. Unlike graphite, there is no stacking of the layers to give a three-dimensional structure. Andre {{term}}Geim{{/term}} and Kostya {{term}}Novoselov{{/term}} at the University of Manchester won the 2010 Nobel Prize in Physics for their pioneering work characterizing graphene.
+Graphene is a very strong, lightweight, and efficient conductor of heat and electricity discovered in 2003. As in graphite, the carbon atoms form a layer of six-membered rings with [[i:sp]][[sup:2]]-hybridized carbon atoms at the corners. Resonance stabilizes the system and leads to its conductivity. Unlike graphite, there is no stacking of the layers to give a three-dimensional structure. Andre [[term:Geim|term-00005]] and Kostya [[term:Novoselov|term-00006]] at the University of Manchester won the 2010 Nobel Prize in Physics for their pioneering work characterizing graphene.
 
 <!-- SEG:m68832:para:fs-idm162489136 -->
 The simplest procedure for preparing graphene is to use a piece of adhesive tape to remove a single layer of graphene from the surface of a piece of graphite. This method works because there are only weak London dispersion forces between the layers in graphite. Alternative methods are to deposit a single layer of carbon atoms on the surface of some other material (ruthenium, iridium, or copper) or to synthesize it at the surface of silicon carbide via the sublimation of silicon.
@@ -136,6 +148,9 @@ The strength of carbon nanotubes will eventually lead to some of their most exci
 <!-- SEG:m68832:caption:CNX_Chem_18_04_Nanotube-caption -->
 (a) Graphene and (b) carbon nanotubes are both allotropes of carbon.
 
+<!-- SEG:m68832:alt:fs-idp35290448-alt -->
+Two images are shown and labeled “a” and “b.” Image a shows a long sheet of interconnected hexagonal rings. Image b shows the same interconnected hexagonal rings forming a curled sheet to make a long tube.
+
 <!-- SEG:m68832:title:fs-idm157346064-title -->
 Phosphorus
 
@@ -147,6 +162,9 @@ White phosphorus is a white, waxy solid that melts at 44.2 °C and boils at 280 
 
 <!-- SEG:m68832:caption:CNX_Chem_18_04_Phosphorus-caption -->
 (a) Because white phosphorus bursts into flame in air, it is stored in water. (b) The structure of white phosphorus consists of P[[sub:4]] molecules arranged in a tetrahedron. (c) Red phosphorus is much less reactive than is white phosphorus. (d) The structure of red phosphorus consists of networks of P[[sub:4]] tetrahedra joined by P-P single bonds. (credit a: modification of work from http://images-of-elements.com/phosphorus.php)
+
+<!-- SEG:m68832:alt:fs-idm121503472-alt -->
+Two photos and two diagrams are shown and labeled “a,” “b,” “c,” and “d.” Photo a shows a test tube that contains a solid yellow compound. Diagram b shows a four-sided pyramid shape that has an atom at each corner. Photo c shows a dark black powder in a watch glass. Diagram d shows two four-sided pyramid shapes that have an atom at each corner and are connected together by a single bond.
 
 <!-- SEG:m68832:para:fs-idp28980160 -->
 Heating white phosphorus to 270–300 °C in the absence of air yields red phosphorus. Red phosphorus (shown in [[xref:CNX_Chem_18_04_Phosphorus]]) is denser, has a higher melting point (~600 °C), is much less reactive, is essentially nontoxic, and is easier and safer to handle than is white phosphorus. Its structure is highly polymeric and appears to contain three-dimensional networks of P[[sub:4]] tetrahedra joined by P-P single bonds. Red phosphorus is insoluble in solvents that dissolve white phosphorus. When red phosphorus is heated, P[[sub:4]] molecules sublime from the solid.
@@ -162,6 +180,9 @@ Both rhombic sulfur and monoclinic sulfur contain S[[sub:8]] molecules in which 
 
 <!-- SEG:m68832:caption:CNX_Chem_18_04_Sulfrchain-caption -->
 These four sulfur allotropes show eight-membered, puckered rings. Each sulfur atom bonds to each of its two neighbors in the ring by covalent S-S single bonds. Here are (a) individual S[[sub:8]] rings, (b) S[[sub:8]] chains formed when the rings open, (c) longer chains formed by adding sulfur atoms to S[[sub:8]] chains, and (d) part of the very long sulfur chains formed at higher temperatures.
+
+<!-- SEG:m68832:alt:fs-idp5064384-alt -->
+Four diagrams are shown and labeled “a,” “b,” “c,” and “d.” Diagram a shows four ring structures that are each made up of eight single bonded atoms. Diagram b shows four chains of eight atoms. Diagram c shows three chains of atoms, one composed by nine atoms, one by twelve atoms and one by eleven atoms. Diagram d shows the same three chains, but this time they are much closer together and slightly intertwined.
 
 <!-- SEG:m68832:para:fs-idm163997136 -->
 When rhombic sulfur melts, the straw-colored liquid is quite mobile; its viscosity is low because S[[sub:8]] molecules are essentially spherical and offer relatively little resistance as they move past each other. As the temperature rises, S-S bonds in the rings break, and polymeric chains of sulfur atoms result. These chains combine end to end, forming still longer chains that tangle with one another. The liquid gradually darkens in color and becomes so viscous that finally (at about 230 °C) it does not pour easily. The dangling atoms at the ends of the chains of sulfur atoms are responsible for the dark red color because their electronic structure differs from those of sulfur atoms that have bonds to two adjacent sulfur atoms. This causes them to absorb light differently and results in a different visible color. Cooling the liquid rapidly produces a rubberlike amorphous mass, called plastic sulfur.

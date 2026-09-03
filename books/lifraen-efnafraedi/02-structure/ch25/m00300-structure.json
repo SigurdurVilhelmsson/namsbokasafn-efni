@@ -1,0 +1,280 @@
+{
+  "moduleId": "m00300",
+  "title": {
+    "segmentId": "m00300:title:auto-1",
+    "text": "Representing Carbohydrate Stereochemistry: Fischer Projections"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "296d61b5-3ae2-42c7-87ed-0a970a309500"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00300:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00300:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00300:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00300:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00300:alt:fig-00001-alt",
+          "text": "The wedge-dash structure, Fischer projection, and ball-and-stick model of (R)-glyceraldehyde. In the structure, two bonds are into the page and two bonds are out of the page."
+        },
+        "src": "../../media/OChem_25_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00300:para:para-00004"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00300:item:list-00001-item-1"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00300:alt:fig-00002-alt",
+          "text": "The structures of (R)-glyceraldehyde before and after a 180-degree rotation are the same having an R configuration. The figure shows the ball-and-stick model of both structures."
+        },
+        "src": "../../media/OChem_25_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00300:alt:fig-00003-alt",
+          "text": "The structures of (R)-glyceraldehyde before and after a 90-degree rotation are not the same. Another structure has an S configuration. The figure shows the ball-and-stick model of both structures."
+        },
+        "src": "../../media/OChem_25_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "list",
+      "id": "list-00002",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00300:item:list-00002-item-1"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00300:alt:fig-00004-alt",
+          "text": "The structures of (R)-glyceraldehyde before and after counterclockwise rotation are the same having R configuration, holding C H O group steady. The figure shows the ball-and-stick model of both structures."
+        },
+        "src": "../../media/OChem_25_02_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00300:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00300:para:para-00007"
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00300:para:para-00008"
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00300:para:para-00009"
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00300:para:para-00010"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00300:alt:fig-00005-alt",
+          "text": "Three representations of glucose. First two structures are the Fischer projection where the carbonyl group is positioned on the top and the third structure represents the Haworth projection of glucose."
+        },
+        "src": "../../media/OChem_25_02_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00300:example-title:exam-00001-title",
+        "text": "Assigning [[i:R]] or [[i:S]] Configuration to a Fischer Projection"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00300:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00300:para:para-00012",
+          "title": {
+            "segmentId": "m00300:para-title:para-00012-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00300:para:para-00013",
+          "title": {
+            "segmentId": "m00300:para-title:para-00013-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00300:para:para-00014"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00300:alt:fig-00006-alt",
+          "text": "Structure of L-alanine. It contains amine and carboxylic acid groups attached to central carbon atom also carrying methyl group side chain. Amine is to the left of Fischer projection."
+        },
+        "src": "../../media/OChem_25_02_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00300:alt:fig-00007-alt",
+          "text": "Fischer projection of  an a alanine. Holding the C H 3 group steady and rotating the other three groups counterclockwise yields the same enantiomer and does not change the stereochemistry."
+        },
+        "src": "../../media/OChem_25_02_008.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00008",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00300:alt:fig-00008-alt",
+          "text": "Three representations of the S configuration of alanine. In the  Fischer projection, alanine undergoes counterclockwise rotation forming a wedge-dash structure an the right."
+        },
+        "src": "../../media/OChem_25_02_009.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00300:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68663",
-  "extractedAt": "2026-07-07T09:12:27.869Z",
+  "extractedAt": "2026-08-31T19:08:34.759Z",
   "sourceHash": "c10d51f861386477",
-  "segmentCount": 11,
+  "segmentCount": 12,
   "segmentIds": [
     "m68663:title:auto-1",
     "m68663:abstract-item:abstract-item-1",
@@ -14,6 +14,7 @@
     "m68663:abstract-item:abstract-item-6",
     "m68663:abstract-item:abstract-item-7",
     "m68663:caption:CNX_Chem_01_00_DailyChem-caption",
+    "m68663:alt:fs-idm52126432-alt",
     "m68663:para:fs-idp32962032",
     "m68663:para:fs-idp22452080"
   ],

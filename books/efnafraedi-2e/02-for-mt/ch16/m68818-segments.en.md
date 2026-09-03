@@ -29,7 +29,7 @@ The objects are at different temperatures, and heat flows from the cooler to the
 The objects are at essentially the same temperature, [[i:T]][[sub:sys]] ≈ [[i:T]][[sub:surr]], and so the magnitudes of the entropy changes are essentially the same for both the system and the surroundings. In this case, the entropy change of the universe is zero, and the system is [[i:at equilibrium]]. [[MATH:4]]
 
 <!-- SEG:m68818:para:fs-idp26583536 -->
-These results lead to a profound statement regarding the relation between entropy and spontaneity known as the {{term}}second law of thermodynamics{{/term}}: [[i:all spontaneous changes cause an increase in the entropy of the universe.]] A summary of these three relations is provided in [[xref:fs-idp41455824]].
+These results lead to a profound statement regarding the relation between entropy and spontaneity known as the [[term:second law of thermodynamics|term-00001]]: [[i:all spontaneous changes cause an increase in the entropy of the universe.]] A summary of these three relations is provided in [[xref:fs-idp41455824]].
 
 <!-- SEG:m68818:entry:auto-12 -->
 The Second Law of Thermodynamics
@@ -107,10 +107,10 @@ The Third Law of Thermodynamics
 The previous section described the various contributions of matter and energy dispersal that contribute to the entropy of a system. With these contributions in mind, consider the entropy of a pure, perfectly crystalline solid possessing no kinetic energy (that is, at a temperature of absolute zero, 0 K). This system may be described by a single microstate, as its purity, perfect crystallinity and complete lack of motion means there is but one possible location for each identical atom or molecule comprising the crystal ([[i:W]] = 1). According to the Boltzmann equation, the entropy of this system is zero.
 
 <!-- SEG:m68818:para:fs-idm15206896 -->
-This limiting condition for a system’s entropy represents the {{term}}third law of thermodynamics{{/term}}: [[i:the entropy of a pure, perfect crystalline substance at 0 K is zero.]]
+This limiting condition for a system’s entropy represents the [[term:third law of thermodynamics|term-00002]]: [[i:the entropy of a pure, perfect crystalline substance at 0 K is zero.]]
 
 <!-- SEG:m68818:para:fs-idp12220368 -->
-Careful calorimetric measurements can be made to determine the temperature dependence of a substance’s entropy and to derive absolute entropy values under specific conditions. {{term}}Standard entropies ([[i:S]]°){{/term}} are for one mole of substance under standard conditions (a pressure of 1 bar and a temperature of 298.15 K; see details regarding standard conditions in the thermochemistry chapter of this text). The {{term}}standard entropy change (Δ[[i:S]]°){{/term}} for a reaction may be computed using standard entropies as shown below:
+Careful calorimetric measurements can be made to determine the temperature dependence of a substance’s entropy and to derive absolute entropy values under specific conditions. [[term:Standard entropies ([[i:S]]°)|term-00003]] are for one mole of substance under standard conditions (a pressure of 1 bar and a temperature of 298.15 K; see details regarding standard conditions in the thermochemistry chapter of this text). The [[term:standard entropy change (Δ[[i:S]]°)|term-00004]] for a reaction may be computed using standard entropies as shown below:
 
 <!-- SEG:m68818:para:fs-idm44012816 -->
 where ν represents stoichiometric coefficients in the balanced equation representing the process. For example, Δ[[i:S]]° for the following reaction at room temperature

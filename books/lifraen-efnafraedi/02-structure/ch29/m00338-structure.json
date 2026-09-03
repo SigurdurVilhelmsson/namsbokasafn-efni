@@ -1,0 +1,214 @@
+{
+  "moduleId": "m00338",
+  "title": {
+    "segmentId": "m00338:title:auto-1",
+    "text": "Catabolism of Proteins: Deamination"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "4f6dacf0-b2c2-4435-9915-451e020e1170"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00338:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00338:alt:fig-00001-alt",
+          "text": "Alpha-amino acids are demaninated to  alpha-keto acids and ammonia. The alpha-keto acids enter the Citric Acid cycle and converted into pyruvate, oxaloacetate, alpha-ketoglutarate, succinyl CoA fumarate acetoacetate or acetyl CoA."
+        },
+        "src": "../../media/OChem_29_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00338:title:sect-00001-title",
+        "text": "Transamination"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00338:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00338:alt:fig-00002-alt",
+              "text": "Alpha-amino acid reacts with alpha-ketoglutarate in the presence of pyridoxal phosphate to form an alpha-keto acid, glutamate. The square parentheses below show pyridoxal phosphate and pyridoxine."
+            },
+            "src": "../../media/OChem_29_09_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00338:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "mechanism-figure scaled-down",
+          "caption": {
+            "segmentId": "m00338:caption:fig-00003-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00338:alt:fig-00003-alt",
+              "text": "Enzymatic catalyzed deamination of an alpha amino acid to form an alpha-keto acid and pyridoxamine phosphate."
+            },
+            "src": "../../media/OChem_29_09_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "section",
+          "id": "sect-00002",
+          "class": null,
+          "title": {
+            "segmentId": "m00338:title:sect-00002-title",
+            "text": "Step 1 of [[xref:fig-00003]]: Transimination"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00004",
+              "segmentId": "m00338:para:para-00004"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00004",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00338:alt:fig-00004-alt",
+                  "text": "An enzyme-bound PLP-amino acid imine reacts with an amino acid to provide a diamine intermediate which decomposes to a PlP-amino acid imine and the free amino enzyme."
+                },
+                "src": "../../media/OChem_29_09_004.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00003",
+          "class": null,
+          "title": {
+            "segmentId": "m00338:title:sect-00003-title",
+            "text": "Steps 2–4 of [[xref:fig-00003]]: Tautomerization and Hydrolysis"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00005",
+              "segmentId": "m00338:para:para-00005"
+            },
+            {
+              "type": "para",
+              "id": "para-00006",
+              "segmentId": "m00338:para:para-00006"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00005",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00338:alt:fig-00005-alt",
+                  "text": "PLP-amino acid imine reacts with an amino-bound enzyme to form an alpha-keto imine, which isomerizes to an imine tautomer, upon hydrolysis provided  pyridoxamine phosphate and an alpha-keto acid."
+                },
+                "src": "../../media/OChem_29_09_005.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": null,
+      "title": {
+        "segmentId": "m00338:title:sect-00004-title",
+        "text": "Regeneration of PLP from PMP"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00338:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00338:alt:fig-00006-alt",
+              "text": "Pyridoxamine phosphate reacts with alpha-ketoglutarate to form a pyridoxal phosphate bound enzyme imine, with the release of water and glutamate."
+            },
+            "src": "../../media/OChem_29_09_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00338:title:sect-00005-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

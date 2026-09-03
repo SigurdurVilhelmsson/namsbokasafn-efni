@@ -1,0 +1,68 @@
+{
+  "moduleId": "m00174",
+  "title": {
+    "segmentId": "m00174:title:auto-1",
+    "text": "The Diels–Alder Cycloaddition Reaction"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "695aad5e-470e-4870-843c-e92c77105abb"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00174:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00174:alt:fig-00001-alt",
+          "text": "When heated, 1,3-butadiene reacts with 3-buten-2-one in toluene to yield 3-cyclohexenyl methyl ketone (96 percent)."
+        },
+        "src": "../../media/OChem_14_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00174:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00174:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00174:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "caption": {
+        "segmentId": "m00174:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00174:alt:fig-00002-alt",
+          "text": "The orbital representations of 1,3-butadiene and ethene. To the right, 1,3-butadiene and ethene react to form cyclohexene via a six-membered transition state"
+        },
+        "src": "../../media/OChem_14_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00174:para:para-00005"
+    }
+  ],
+  "sectionOrder": 4
+}

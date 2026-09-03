@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C═O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C═O}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C═O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C═O}}"
+  }
+}

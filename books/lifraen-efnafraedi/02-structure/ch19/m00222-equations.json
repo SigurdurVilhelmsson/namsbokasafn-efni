@@ -1,0 +1,26 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mover><m:mtext>C</m:mtext><m:mo>−</m:mo></m:mover><m:mo>–</m:mo><m:mover><m:mtext>P</m:mtext><m:mo>+</m:mo></m:mover><m:msub><m:mrow><m:mtext>Ph</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{R}}_{2}\\overset{-}{\\text{C}}–\\overset{+}{\\text{P}}{{\\text{Ph}}}_{3}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C═</m:mtext><m:msub><m:mrow><m:mtext>P(Ph)</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{R}}_{2}\\text{C═}{{\\text{P(Ph)}}}_{3}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>O═</m:mtext><m:mo/><m:msub><m:mrow><m:mtext>PPh</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{O═}{{\\text{PPh}}}_{3}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>C═C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C═C}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>C═O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C═O}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext>RCH═</m:mtext><m:msub><m:mrow><m:mtext>P(Ph)</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{RCH═}{{\\text{P(Ph)}}}_{3}}"
+  }
+}

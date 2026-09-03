@@ -19,11 +19,17 @@ When most liquids are cooled, they eventually freeze and form [[term:crystalline
 <!-- SEG:m68770:caption:CNX_Chem_10_05_TypesSol-caption -->
 The entities of a solid phase may be arranged in a regular, repeating pattern (crystalline solids) or randomly (amorphous).
 
+<!-- SEG:m68770:alt:fs-idp38645936-alt -->
+Two images are shown and labeled, from left to right, “Crystalline” and “Amorphous.” The crystalline diagram shows many circles drawn in rows and stacked together tightly. The amorphous diagram shows many circles spread slightly apart and in no organized pattern.
+
 <!-- SEG:m68770:para:fs-idm43294048 -->
 Metals and ionic compounds typically form ordered, crystalline solids. Substances that consist of large molecules, or a mixture of molecules whose movements are more restricted, often form amorphous solids. For examples, candle waxes are amorphous solids composed of large hydrocarbon molecules. Some substances, such as silicon dioxide (shown in [[xref:CNX_Chem_10_05_BoronOxide]]), can form either crystalline or amorphous solids, depending on the conditions under which it is produced. Also, amorphous solids may undergo a transition to the crystalline state under appropriate conditions.
 
 <!-- SEG:m68770:caption:CNX_Chem_10_05_BoronOxide-caption -->
 (a) Silicon dioxide, SiO[[sub:2]], is abundant in nature as one of several crystalline forms of the mineral quartz. (b) Rapid cooling of molten SiO[[sub:2]] yields an amorphous solid known as “fused silica”.
+
+<!-- SEG:m68770:alt:fs-idp143208400-alt -->
+Two sets of molecules are shown. The first set of molecules contains five identical, hexagonal rings composed of alternating red and maroon spheres single bonded together and with a red spheres extending outward from each maroon sphere. The second set of molecules shows four rings with twelve sides each that are joined together. Each ring is composed of alternating red and maroon spheres single bonded together and with a red spheres extending outward from each maroon sphere.
 
 <!-- SEG:m68770:para:fs-idp94426432 -->
 Crystalline solids are generally classified according to the nature of the forces that hold its particles together. These forces are primarily responsible for the physical properties exhibited by the bulk solids. The following sections provide descriptions of the major types of crystalline solids: ionic, metallic, covalent network, and molecular.
@@ -37,6 +43,9 @@ Ionic Solids
 <!-- SEG:m68770:caption:CNX_Chem_10_05_IonicSolid-caption -->
 Sodium chloride is an ionic solid.
 
+<!-- SEG:m68770:alt:fs-idp147302624-alt -->
+This figure shows large purple spheres bonded to smaller green spheres in an alternating pattern. The spheres are arranged in a cube.
+
 <!-- SEG:m68770:title:fs-idp29672304-title -->
 Metallic Solids
 
@@ -45,6 +54,9 @@ Metallic Solids
 
 <!-- SEG:m68770:caption:CNX_Chem_10_05_Metallic-caption -->
 Copper is a metallic solid.
+
+<!-- SEG:m68770:alt:fs-idp25271680-alt -->
+This figure shows large brown spheres arranged in a cube.
 
 <!-- SEG:m68770:title:fs-idm43717504-title -->
 Covalent Network Solid
@@ -55,6 +67,9 @@ Covalent Network Solid
 <!-- SEG:m68770:caption:CNX_Chem_10_05_NtwrkSolid-caption -->
 A covalent crystal contains a three-dimensional network of covalent bonds, as illustrated by the structures of diamond, silicon dioxide, silicon carbide, and graphite. Graphite is an exceptional example, composed of planar sheets of covalent crystals that are held together in layers by noncovalent forces. Unlike typical covalent solids, graphite is very soft and electrically conductive.
 
+<!-- SEG:m68770:alt:fs-idm63258736-alt -->
+Four pairs of images are shown. In the first pair, a square box containing a black atom bonded to four other black atoms is shown above a structure composed of many black atoms, each bonded to four other black atoms, where one of the upper atoms is labeled “carbon” and the whole structure is labeled “diamond.” In the second pair, a square box containing a white atom bonded to four red atoms is shown above a structure composed of many white atoms, each bonded to four red atoms, where one of the red atoms is labeled “oxygen” and one of the white atoms is labeled “silicon.” The whole structure is labeled “silicon dioxide.” In the third pair, a square box containing a blue atom bonded to four white atoms is shown above a structure composed of many blue atoms, each bonded to four white atoms, where one of the blue atoms is labeled “carbon” and one of the white atoms is labeled “silicon.” The whole structure is labeled “silicon carbide.” In the fourth pair, a square box containing six black atoms bonded into a ring is shown above a structure composed of many rings, arranged into sheets layered one atop the other, where one of the black atoms is labeled “carbon.” The whole structure is labeled “graphite.”
+
 <!-- SEG:m68770:title:fs-idm12346784-title -->
 Molecular Solid
 
@@ -64,88 +79,91 @@ Molecular Solid
 <!-- SEG:m68770:caption:CNX_Chem_10_05_MolSolids-caption -->
 Carbon dioxide (CO[[sub:2]]) consists of small, nonpolar molecules and forms a molecular solid with a melting point of −78 °C. Iodine (I[[sub:2]]) consists of larger, nonpolar molecules and forms a molecular solid that melts at 114 °C.
 
+<!-- SEG:m68770:alt:fs-idp152449872-alt -->
+Two images are shown and labeled “carbon dioxide” and “iodine.” The carbon dioxide structure is composed of molecules, each made up of one gray and two red atoms, stacked together into a cube. The image of iodine shows pairs of purple atoms arranged near one another, but not touching.
+
 <!-- SEG:m68770:title:fs-idm126346448-title -->
 Properties of Solids
 
 <!-- SEG:m68770:para:fs-idp69161920 -->
 A crystalline solid, like those listed in [[xref:fs-idp121853232]], has a precise melting temperature because each atom or molecule of the same type is held in place with the same forces or energy. Thus, the attractions between the units that make up the crystal all have the same strength and all require the same amount of energy to be broken. The gradual softening of an amorphous material differs dramatically from the distinct melting of a crystalline solid. This results from the structural nonequivalence of the molecules in the amorphous solid. Some forces are weaker than others, and when an amorphous material is heated, the weakest intermolecular attractions break first. As the temperature is increased further, the stronger attractions are broken. Thus amorphous materials soften over a range of temperatures.
 
-<!-- SEG:m68770:entry:auto-25 -->
+<!-- SEG:m68770:entry:auto-31 -->
 Types of Crystalline Solids and Their Properties
 
-<!-- SEG:m68770:entry:auto-26 -->
+<!-- SEG:m68770:entry:auto-32 -->
 Type of Solid
 
-<!-- SEG:m68770:entry:auto-27 -->
+<!-- SEG:m68770:entry:auto-33 -->
 Type of Particles
 
-<!-- SEG:m68770:entry:auto-28 -->
+<!-- SEG:m68770:entry:auto-34 -->
 Type of Attractions
 
-<!-- SEG:m68770:entry:auto-29 -->
+<!-- SEG:m68770:entry:auto-35 -->
 Properties
 
-<!-- SEG:m68770:entry:auto-30 -->
+<!-- SEG:m68770:entry:auto-36 -->
 Examples
 
-<!-- SEG:m68770:entry:auto-31 -->
+<!-- SEG:m68770:entry:auto-37 -->
 ionic
 
-<!-- SEG:m68770:entry:auto-32 -->
+<!-- SEG:m68770:entry:auto-38 -->
 ions
 
-<!-- SEG:m68770:entry:auto-33 -->
+<!-- SEG:m68770:entry:auto-39 -->
 ionic bonds
 
-<!-- SEG:m68770:entry:auto-34 -->
+<!-- SEG:m68770:entry:auto-40 -->
 hard, brittle, conducts electricity as a liquid but not as a solid, high to very high melting points
 
-<!-- SEG:m68770:entry:auto-35 -->
+<!-- SEG:m68770:entry:auto-41 -->
 NaCl, Al[[sub:2]]O[[sub:3]]
 
-<!-- SEG:m68770:entry:auto-36 -->
+<!-- SEG:m68770:entry:auto-42 -->
 metallic
 
-<!-- SEG:m68770:entry:auto-37 -->
+<!-- SEG:m68770:entry:auto-43 -->
 atoms of electropositive elements
 
-<!-- SEG:m68770:entry:auto-38 -->
+<!-- SEG:m68770:entry:auto-44 -->
 metallic bonds
 
-<!-- SEG:m68770:entry:auto-39 -->
+<!-- SEG:m68770:entry:auto-45 -->
 shiny, malleable, ductile, conducts heat and electricity well, variable hardness and melting temperature
 
-<!-- SEG:m68770:entry:auto-40 -->
+<!-- SEG:m68770:entry:auto-46 -->
 Cu, Fe, Ti, Pb, U
 
-<!-- SEG:m68770:entry:auto-41 -->
+<!-- SEG:m68770:entry:auto-47 -->
 covalent network
 
-<!-- SEG:m68770:entry:auto-42 -->
+<!-- SEG:m68770:entry:auto-48 -->
 atoms of electronegative elements
 
-<!-- SEG:m68770:entry:auto-43 -->
+<!-- SEG:m68770:entry:auto-49 -->
 covalent bonds
 
-<!-- SEG:m68770:entry:auto-44 -->
+<!-- SEG:m68770:entry:auto-50 -->
 very hard, not conductive, very high melting points
 
-<!-- SEG:m68770:entry:auto-45 -->
+<!-- SEG:m68770:entry:auto-51 -->
 C (diamond), SiO[[sub:2]], SiC
 
-<!-- SEG:m68770:entry:auto-46 -->
+<!-- SEG:m68770:entry:auto-52 -->
 molecular
 
-<!-- SEG:m68770:entry:auto-47 -->
+<!-- SEG:m68770:entry:auto-53 -->
 molecules (or atoms)
 
-<!-- SEG:m68770:entry:auto-48 -->
+<!-- SEG:m68770:entry:auto-54 -->
 IMFs
 
-<!-- SEG:m68770:entry:auto-49 -->
+<!-- SEG:m68770:entry:auto-55 -->
 variable hardness, variable brittleness, not conductive, low melting points
 
-<!-- SEG:m68770:entry:auto-50 -->
+<!-- SEG:m68770:entry:auto-56 -->
 H[[sub:2]]O, CO[[sub:2]], I[[sub:2]], C[[sub:12]]H[[sub:22]]O[[sub:11]]
 
 <!-- SEG:m68770:note-title:fs-idp29074784-title -->
@@ -160,8 +178,14 @@ You may be less familiar with a recently discovered form of carbon: graphene. Gr
 <!-- SEG:m68770:caption:CNX_Chem_10_05_Carbon-caption -->
 Diamond is extremely hard because of the strong bonding between carbon atoms in all directions. Graphite (in pencil lead) rubs off onto paper due to the weak attractions between the carbon layers. An image of a graphite surface shows the distance between the centers of adjacent carbon atoms. (credit left photo: modification of work by Steve Jurvetson; credit middle photo: modification of work by United States Geological Survey)
 
+<!-- SEG:m68770:alt:fs-idp76108928-alt -->
+Three pairs of images are shown, each composed of a photo and a diagram. In the first pair, the photo shows a close-up view of a colorless, multi-faceted crystal and the diagram shows many gray spheres bonded together in a net-like structure. The caption below this pair reads “diamond.” In the second pair, the photo shows a rough textured, dark gray solid while the image shows four horizontal sheets, composed of interlocking black spheres, lying atop one another. This pair has a caption that reads “graphite.” The third pair shows a photo of twelve black hexagons on a yellow background where two of the hexagons are encircled by a gray border and a caption of “1.4 times 10, superscript negative 10, m, Distance between center of atoms” and an image of many black hexagons evenly arranged on a yellow background. The caption below this pair of images reads “Graphite surface.”
+
 <!-- SEG:m68770:caption:CNX_Chem_10_05_Graphene-caption -->
 Graphene sheets can be formed into buckyballs, nanotubes, and stacked layers.
+
+<!-- SEG:m68770:alt:fs-idp125807232-alt -->
+Four images are shown. In the upper image, labeled “Graphene sheet,” a box is drawn around a sheet of interconnected hexagonal rings. In the lower left image, a sphere is composed of hexagonal rings linked together and is labeled “Buckyball.” In the lower middle image, a tube is shown that is composed of many hexagonal rings joined together and is labeled “Nanotube.” In the lower right image, four horizontal sheets composed of joined, hexagonal rings is shown and labeled “Stacked sheets.”
 
 <!-- SEG:m68770:title:fs-idm64089200-title -->
 Crystal Defects
@@ -171,6 +195,9 @@ In a crystalline solid, the atoms, ions, or molecules are arranged in a definite
 
 <!-- SEG:m68770:caption:CNX_Chem_10_05_CrystDfcts-caption -->
 Types of crystal defects include vacancies, interstitial atoms, and substitutions impurities.
+
+<!-- SEG:m68770:alt:fs-idp137961072-alt -->
+A diagram is shown in which one hundred and forty four spheres are arranged in a twelve by twelve square. A gap in the square is labeled “Vacancy” while one sphere that is a different color from all the rest is labeled “Interstitial impurity.” The top right corner of the square is disturbed and has a larger sphere inserted that is labeled “Substitution impurity atom.”
 
 <!-- SEG:m68770:title:fs-idp41417328-title -->
 Key Concepts and Summary
@@ -388,122 +415,122 @@ vacancy
 <!-- SEG:m68770:glossary-def:fs-idm37032656-def -->
 defect that occurs when a position that should contain an atom or ion is vacant
 
-<!-- SEG:m68770:entry:auto-131 -->
-Substance
-
-<!-- SEG:m68770:entry:auto-132 -->
-Appearance
-
-<!-- SEG:m68770:entry:auto-133 -->
-Melting Point
-
-<!-- SEG:m68770:entry:auto-134 -->
-Electrical Conductivity
-
-<!-- SEG:m68770:entry:auto-135 -->
-Solubility in Water
-
-<!-- SEG:m68770:entry:auto-136 -->
-X
-
-<!-- SEG:m68770:entry:auto-137 -->
-lustrous, malleable
-
-<!-- SEG:m68770:entry:auto-138 -->
-1500 °C
-
-<!-- SEG:m68770:entry:auto-139 -->
-high
-
 <!-- SEG:m68770:entry:auto-140 -->
-insoluble
+Substance
 
 <!-- SEG:m68770:entry:auto-141 -->
-Y
-
-<!-- SEG:m68770:entry:auto-142 -->
-soft, yellow
-
-<!-- SEG:m68770:entry:auto-143 -->
-113 °C
-
-<!-- SEG:m68770:entry:auto-144 -->
-none
-
-<!-- SEG:m68770:entry:auto-145 -->
-insoluble
-
-<!-- SEG:m68770:entry:auto-146 -->
-Z
-
-<!-- SEG:m68770:entry:auto-147 -->
-hard, white
-
-<!-- SEG:m68770:entry:auto-148 -->
-800 °C
-
-<!-- SEG:m68770:entry:auto-149 -->
-only if melted/dissolved
-
-<!-- SEG:m68770:entry:auto-150 -->
-soluble
-
-<!-- SEG:m68770:entry:auto-151 -->
-Substance
-
-<!-- SEG:m68770:entry:auto-152 -->
 Appearance
 
-<!-- SEG:m68770:entry:auto-153 -->
+<!-- SEG:m68770:entry:auto-142 -->
 Melting Point
 
-<!-- SEG:m68770:entry:auto-154 -->
+<!-- SEG:m68770:entry:auto-143 -->
 Electrical Conductivity
 
-<!-- SEG:m68770:entry:auto-155 -->
+<!-- SEG:m68770:entry:auto-144 -->
 Solubility in Water
 
-<!-- SEG:m68770:entry:auto-156 -->
+<!-- SEG:m68770:entry:auto-145 -->
 X
 
-<!-- SEG:m68770:entry:auto-157 -->
-brittle, white
+<!-- SEG:m68770:entry:auto-146 -->
+lustrous, malleable
 
-<!-- SEG:m68770:entry:auto-158 -->
-800 °C
+<!-- SEG:m68770:entry:auto-147 -->
+1500 °C
 
-<!-- SEG:m68770:entry:auto-159 -->
-only if melted/dissolved
-
-<!-- SEG:m68770:entry:auto-160 -->
-soluble
-
-<!-- SEG:m68770:entry:auto-161 -->
-Y
-
-<!-- SEG:m68770:entry:auto-162 -->
-shiny, malleable
-
-<!-- SEG:m68770:entry:auto-163 -->
-1100 °C
-
-<!-- SEG:m68770:entry:auto-164 -->
+<!-- SEG:m68770:entry:auto-148 -->
 high
 
-<!-- SEG:m68770:entry:auto-165 -->
+<!-- SEG:m68770:entry:auto-149 -->
 insoluble
 
-<!-- SEG:m68770:entry:auto-166 -->
-Z
+<!-- SEG:m68770:entry:auto-150 -->
+Y
 
-<!-- SEG:m68770:entry:auto-167 -->
-hard, colorless
+<!-- SEG:m68770:entry:auto-151 -->
+soft, yellow
 
-<!-- SEG:m68770:entry:auto-168 -->
-3550 °C
+<!-- SEG:m68770:entry:auto-152 -->
+113 °C
 
-<!-- SEG:m68770:entry:auto-169 -->
+<!-- SEG:m68770:entry:auto-153 -->
 none
 
+<!-- SEG:m68770:entry:auto-154 -->
+insoluble
+
+<!-- SEG:m68770:entry:auto-155 -->
+Z
+
+<!-- SEG:m68770:entry:auto-156 -->
+hard, white
+
+<!-- SEG:m68770:entry:auto-157 -->
+800 °C
+
+<!-- SEG:m68770:entry:auto-158 -->
+only if melted/dissolved
+
+<!-- SEG:m68770:entry:auto-159 -->
+soluble
+
+<!-- SEG:m68770:entry:auto-160 -->
+Substance
+
+<!-- SEG:m68770:entry:auto-161 -->
+Appearance
+
+<!-- SEG:m68770:entry:auto-162 -->
+Melting Point
+
+<!-- SEG:m68770:entry:auto-163 -->
+Electrical Conductivity
+
+<!-- SEG:m68770:entry:auto-164 -->
+Solubility in Water
+
+<!-- SEG:m68770:entry:auto-165 -->
+X
+
+<!-- SEG:m68770:entry:auto-166 -->
+brittle, white
+
+<!-- SEG:m68770:entry:auto-167 -->
+800 °C
+
+<!-- SEG:m68770:entry:auto-168 -->
+only if melted/dissolved
+
+<!-- SEG:m68770:entry:auto-169 -->
+soluble
+
 <!-- SEG:m68770:entry:auto-170 -->
+Y
+
+<!-- SEG:m68770:entry:auto-171 -->
+shiny, malleable
+
+<!-- SEG:m68770:entry:auto-172 -->
+1100 °C
+
+<!-- SEG:m68770:entry:auto-173 -->
+high
+
+<!-- SEG:m68770:entry:auto-174 -->
+insoluble
+
+<!-- SEG:m68770:entry:auto-175 -->
+Z
+
+<!-- SEG:m68770:entry:auto-176 -->
+hard, colorless
+
+<!-- SEG:m68770:entry:auto-177 -->
+3550 °C
+
+<!-- SEG:m68770:entry:auto-178 -->
+none
+
+<!-- SEG:m68770:entry:auto-179 -->
 insoluble

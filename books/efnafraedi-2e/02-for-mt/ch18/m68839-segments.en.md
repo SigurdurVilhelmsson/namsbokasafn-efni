@@ -46,6 +46,9 @@ Fluorine is a pale yellow gas, chlorine is a greenish-yellow gas, bromine is a d
 <!-- SEG:m68839:caption:CNX_Chem_18_11_Gases-caption -->
 Chlorine is a pale yellow-green gas (left), gaseous bromine is deep orange (center), and gaseous iodine is purple (right). (Fluorine is so reactive that it is too dangerous to handle.) (credit: Sahar Atwa)
 
+<!-- SEG:m68839:alt:fs-idm254641200-alt -->
+Three sealed glass vials are shown. The left vial contains a pale yellow gas and a colorless liquid, the middle contains an orange gas and solid, and the right contains a purple gas and solid.
+
 <!-- SEG:m68839:para:fs-idp30544480 -->
 Bromine is only slightly soluble in water, but it is miscible in all proportions in less polar (or nonpolar) solvents such as chloroform, carbon tetrachloride, and carbon disulfide, forming solutions that vary from yellow to reddish-brown, depending on the concentration.
 
@@ -89,7 +92,7 @@ Halides of the Representative Metals
 Thousands of salts of the representative metals have been prepared. The binary halides are an important subclass of salts. A salt is an ionic compound composed of cations and anions, other than hydroxide or oxide ions. In general, it is possible to prepare these salts from the metals or from oxides, hydroxides, or carbonates. We will illustrate the general types of reactions for preparing salts through reactions used to prepare binary halides.
 
 <!-- SEG:m68839:para:fs-idp78956208 -->
-The binary compounds of a metal with the halogens are the {{term}}halides{{/term}}. Most binary halides are ionic. However, mercury, the elements of group 13 with oxidation states of 3+, tin(IV), and lead(IV) form covalent binary halides.
+The binary compounds of a metal with the halogens are the [[term:halides|term-00001]]. Most binary halides are ionic. However, mercury, the elements of group 13 with oxidation states of 3+, tin(IV), and lead(IV) form covalent binary halides.
 
 <!-- SEG:m68839:para:fs-idm99323744 -->
 The direct reaction of a metal and a halogen produce the halide of the metal. Examples of these oxidation-reduction reactions include:
@@ -115,20 +118,29 @@ A few halides and many of the other salts of the representative metals are insol
 <!-- SEG:m68839:caption:CNX_Chem_18_11_PercipHgI2-caption -->
 Solid HgI[[sub:2]] forms when solutions of KI and Hg(NO[[sub:3]])[[sub:2]] are mixed. (credit: Sahar Atwa)
 
+<!-- SEG:m68839:alt:fs-idm36383744-alt -->
+This figure shows three bottles and one bowl. All the bottles have lids. The first bottle is filled with a clear liquid. The second bottle is filled with a similarly clear liquid, but only about three-quarters of the way. The third bottle contains a red or pink liquid. The bowl contains a red or pink solid.
+
 <!-- SEG:m68839:para:fs-idm16247664 -->
 Several halides occur in large quantities in nature. The ocean and underground brines contain many halides. For example, magnesium chloride in the ocean is the source of magnesium ions used in the production of magnesium. Large underground deposits of sodium chloride, like the salt mine shown in [[xref:CNX_Chem_18_11_SaltMine]], occur in many parts of the world. These deposits serve as the source of sodium and chlorine in almost all other compounds containing these elements. The chlor-alkali process is one example.
 
 <!-- SEG:m68839:caption:CNX_Chem_18_11_SaltMine-caption -->
 Underground deposits of sodium chloride are found throughout the world and are often mined. This is a tunnel in the Kłodawa salt mine in Poland. (credit: Jarek Zok)
 
+<!-- SEG:m68839:alt:fs-idm53776832-alt -->
+A photograph of a mine shaft is shown.
+
 <!-- SEG:m68839:title:fs-idm71704144-title -->
 Interhalogens
 
 <!-- SEG:m68839:para:fs-idm123500464 -->
-Compounds formed from two or more different halogens are {{term}}interhalogens{{/term}}. Interhalogen molecules consist of one atom of the heavier halogen bonded by single bonds to an odd number of atoms of the lighter halogen. The structures of IF[[sub:3]], IF[[sub:5]], and IF[[sub:7]] are illustrated in [[xref:CNX_Chem_18_11_IF3IF5IF7]]. Formulas for other interhalogens, each of which comes from the reaction of the respective halogens, are in [[xref:fs-idm73111648]].
+Compounds formed from two or more different halogens are [[term:interhalogens|term-00002]]. Interhalogen molecules consist of one atom of the heavier halogen bonded by single bonds to an odd number of atoms of the lighter halogen. The structures of IF[[sub:3]], IF[[sub:5]], and IF[[sub:7]] are illustrated in [[xref:CNX_Chem_18_11_IF3IF5IF7]]. Formulas for other interhalogens, each of which comes from the reaction of the respective halogens, are in [[xref:fs-idm73111648]].
 
 <!-- SEG:m68839:caption:CNX_Chem_18_11_IF3IF5IF7-caption -->
 The structure of IF[[sub:3]] is T-shaped (left), IF[[sub:5 ]]is square pyramidal (center), and IF[[sub:7]] is pentagonal bipyramidal (right).
+
+<!-- SEG:m68839:alt:fs-idm69260048-alt -->
+Three ball-and-stick models are shown. The left structure, labeled, “I F subscript 3,” shows a purple atom labeled, “I,” bonded to three green atoms labeled, “F,” and with two lone pairs of electrons. The middle structure, labeled, “I F subscript 5,” shows a purple atom labeled, “I,” bonded to five green atoms labeled, “F,” and with one lone pair of electrons. The right image, labeled, “I F subscript 7,” shows a purple atom labeled, “I,” bonded to seven green atoms labeled, “F.”
 
 <!-- SEG:m68839:para:fs-idm127930720 -->
 Note from [[xref:fs-idm73111648]] that fluorine is able to oxidize iodine to its maximum oxidation state, 7+, whereas bromine and chlorine, which are more difficult to oxidize, achieve only the 5+-oxidation state. A 7+-oxidation state is the limit for the halogens. Because smaller halogens are grouped about a larger one, the maximum number of smaller atoms possible increases as the radius of the larger atom increases. Many of these compounds are unstable, and most are extremely reactive. The interhalogens react like their component halides; halogen fluorides, for example, are stronger oxidizing agents than are halogen chlorides.
@@ -136,61 +148,61 @@ Note from [[xref:fs-idm73111648]] that fluorine is able to oxidize iodine to its
 <!-- SEG:m68839:para:fs-idm19980944 -->
 The ionic polyhalides of the alkali metals, such as KI[[sub:3]], KICl[[sub:2]], KICl[[sub:4]], CsIBr[[sub:2]], and CsBrCl[[sub:2]], which contain an anion composed of at least three halogen atoms, are closely related to the interhalogens. As seen previously, the formation of the polyhalide anion [[MATH:2]] is responsible for the solubility of iodine in aqueous solutions containing an iodide ion.
 
-<!-- SEG:m68839:entry:auto-47 -->
+<!-- SEG:m68839:entry:auto-51 -->
 Interhalogens
 
-<!-- SEG:m68839:entry:auto-48 -->
+<!-- SEG:m68839:entry:auto-52 -->
 YX
 
-<!-- SEG:m68839:entry:auto-49 -->
+<!-- SEG:m68839:entry:auto-53 -->
 YX[[sub:3]]
 
-<!-- SEG:m68839:entry:auto-50 -->
+<!-- SEG:m68839:entry:auto-54 -->
 YX[[sub:5]]
 
-<!-- SEG:m68839:entry:auto-51 -->
+<!-- SEG:m68839:entry:auto-55 -->
 YX[[sub:7]]
 
-<!-- SEG:m68839:entry:auto-52 -->
+<!-- SEG:m68839:entry:auto-56 -->
 ClF([[i:g]])
 
-<!-- SEG:m68839:entry:auto-53 -->
+<!-- SEG:m68839:entry:auto-57 -->
 ClF[[sub:3]]([[i:g]])
 
-<!-- SEG:m68839:entry:auto-54 -->
+<!-- SEG:m68839:entry:auto-58 -->
 ClF[[sub:5]]([[i:g]])
 
-<!-- SEG:m68839:entry:auto-55 -->
+<!-- SEG:m68839:entry:auto-59 -->
 BrF([[i:g]])
 
-<!-- SEG:m68839:entry:auto-56 -->
+<!-- SEG:m68839:entry:auto-60 -->
 BrF[[sub:3]]([[i:l]])
 
-<!-- SEG:m68839:entry:auto-57 -->
+<!-- SEG:m68839:entry:auto-61 -->
 BrF[[sub:5]]([[i:l]])
 
-<!-- SEG:m68839:entry:auto-58 -->
+<!-- SEG:m68839:entry:auto-62 -->
 BrCl([[i:g]])
 
-<!-- SEG:m68839:entry:auto-59 -->
+<!-- SEG:m68839:entry:auto-63 -->
 IF([[i:s]])
 
-<!-- SEG:m68839:entry:auto-60 -->
+<!-- SEG:m68839:entry:auto-64 -->
 IF[[sub:3]]([[i:s]])
 
-<!-- SEG:m68839:entry:auto-61 -->
+<!-- SEG:m68839:entry:auto-65 -->
 IF[[sub:5]]([[i:l]])
 
-<!-- SEG:m68839:entry:auto-62 -->
+<!-- SEG:m68839:entry:auto-66 -->
 IF[[sub:7]]([[i:g]])
 
-<!-- SEG:m68839:entry:auto-63 -->
+<!-- SEG:m68839:entry:auto-67 -->
 ICl([[i:l]])
 
-<!-- SEG:m68839:entry:auto-64 -->
+<!-- SEG:m68839:entry:auto-68 -->
 ICl[[sub:3]]([[i:s]])
 
-<!-- SEG:m68839:entry:auto-65 -->
+<!-- SEG:m68839:entry:auto-69 -->
 IBr([[i:s]])
 
 <!-- SEG:m68839:title:fs-idm72031536-title -->
@@ -270,6 +282,21 @@ Predict the molecular geometries and draw Lewis structures for each of the follo
 
 <!-- SEG:m68839:solution:fs-idm12332240 -->
 (a)[[BR]] [[MEDIA:1]][[BR]] (b)[[BR]] [[MEDIA:2]][[BR]] (c)[[BR]] [[MEDIA:3]][[BR]] (d)[[BR]] [[MEDIA:4]][[BR]] (e)[[BR]] [[MEDIA:5]]
+
+<!-- SEG:m68839:alt:fs-idp93902688-alt -->
+This Lewis structure shows an iodine atom with one lone pair of electrons single bonded to five fluorine atoms, each of which has three lone pairs of electrons. The image is labeled, “Square pyramidal.”
+
+<!-- SEG:m68839:alt:fs-idm152355840-alt -->
+This Lewis structure shows an iodine atom with three lone pairs of electrons single bonded to two iodine atoms, each of which has three lone pairs of electrons. The image is surrounded by brackets. A superscript negative sign appears outside the brackets. The image is labeled, “Linear.”
+
+<!-- SEG:m68839:alt:fs-idm68548960-alt -->
+This Lewis structure shows a phosphorus atom single bonded to five chlorine atoms, each of which has three lone pairs of electrons. The image is labeled, “Trigonal bipyramidal.”
+
+<!-- SEG:m68839:alt:fs-idm88994048-alt -->
+This Lewis structure shows a selenium atom with one lone pair of electrons single bonded to four fluorine atoms, each of which has three lone pairs of electrons. The image is labeled “Seesaw.”
+
+<!-- SEG:m68839:alt:fs-idm97424240-alt -->
+This Lewis structure shows a chlorine atom with two lone pairs of electrons single bonded to three fluorine atoms, each of which has three lone pairs of electrons. The image is labeled, “T-shaped.”
 
 <!-- SEG:m68839:problem:fs-idm97321248 -->
 Which halogen has the highest ionization energy? Is this what you would predict based on what you have learned about periodic properties?

@@ -31,7 +31,10 @@
       },
       "media": {
         "id": "fs-idp38645936",
-        "alt": "Two images are shown and labeled, from left to right, “Crystalline” and “Amorphous.” The crystalline diagram shows many circles drawn in rows and stacked together tightly. The amorphous diagram shows many circles spread slightly apart and in no organized pattern.",
+        "alt": {
+          "segmentId": "m68770:alt:fs-idp38645936-alt",
+          "text": "Two images are shown and labeled, from left to right, “Crystalline” and “Amorphous.” The crystalline diagram shows many circles drawn in rows and stacked together tightly. The amorphous diagram shows many circles spread slightly apart and in no organized pattern."
+        },
         "src": "../../media/CNX_Chem_10_05_TypesSol.jpg",
         "mimeType": "image/jpeg"
       }
@@ -50,7 +53,10 @@
       },
       "media": {
         "id": "fs-idp143208400",
-        "alt": "Two sets of molecules are shown. The first set of molecules contains five identical, hexagonal rings composed of alternating red and maroon spheres single bonded together and with a red spheres extending outward from each maroon sphere. The second set of molecules shows four rings with twelve sides each that are joined together. Each ring is composed of alternating red and maroon spheres single bonded together and with a red spheres extending outward from each maroon sphere.",
+        "alt": {
+          "segmentId": "m68770:alt:fs-idp143208400-alt",
+          "text": "Two sets of molecules are shown. The first set of molecules contains five identical, hexagonal rings composed of alternating red and maroon spheres single bonded together and with a red spheres extending outward from each maroon sphere. The second set of molecules shows four rings with twelve sides each that are joined together. Each ring is composed of alternating red and maroon spheres single bonded together and with a red spheres extending outward from each maroon sphere."
+        },
         "src": "../../media/CNX_Chem_10_05_BoronOxide.jpg",
         "mimeType": "image/jpeg"
       }
@@ -83,7 +89,10 @@
           },
           "media": {
             "id": "fs-idp147302624",
-            "alt": "This figure shows large purple spheres bonded to smaller green spheres in an alternating pattern. The spheres are arranged in a cube.",
+            "alt": {
+              "segmentId": "m68770:alt:fs-idp147302624-alt",
+              "text": "This figure shows large purple spheres bonded to smaller green spheres in an alternating pattern. The spheres are arranged in a cube."
+            },
             "src": "../../media/CNX_Chem_10_05_IonicSolid.jpg",
             "mimeType": "image/jpeg"
           }
@@ -113,7 +122,10 @@
           },
           "media": {
             "id": "fs-idp25271680",
-            "alt": "This figure shows large brown spheres arranged in a cube.",
+            "alt": {
+              "segmentId": "m68770:alt:fs-idp25271680-alt",
+              "text": "This figure shows large brown spheres arranged in a cube."
+            },
             "src": "../../media/CNX_Chem_10_05_Metallic.jpg",
             "mimeType": "image/jpeg"
           }
@@ -142,7 +154,10 @@
           },
           "media": {
             "id": "fs-idm63258736",
-            "alt": "Four pairs of images are shown. In the first pair, a square box containing a black atom bonded to four other black atoms is shown above a structure composed of many black atoms, each bonded to four other black atoms, where one of the upper atoms is labeled “carbon” and the whole structure is labeled “diamond.” In the second pair, a square box containing a white atom bonded to four red atoms is shown above a structure composed of many white atoms, each bonded to four red atoms, where one of the red atoms is labeled “oxygen” and one of the white atoms is labeled “silicon.” The whole structure is labeled “silicon dioxide.” In the third pair, a square box containing a blue atom bonded to four white atoms is shown above a structure composed of many blue atoms, each bonded to four white atoms, where one of the blue atoms is labeled “carbon” and one of the white atoms is labeled “silicon.” The whole structure is labeled “silicon carbide.” In the fourth pair, a square box containing six black atoms bonded into a ring is shown above a structure composed of many rings, arranged into sheets layered one atop the other, where one of the black atoms is labeled “carbon.” The whole structure is labeled “graphite.”",
+            "alt": {
+              "segmentId": "m68770:alt:fs-idm63258736-alt",
+              "text": "Four pairs of images are shown. In the first pair, a square box containing a black atom bonded to four other black atoms is shown above a structure composed of many black atoms, each bonded to four other black atoms, where one of the upper atoms is labeled “carbon” and the whole structure is labeled “diamond.” In the second pair, a square box containing a white atom bonded to four red atoms is shown above a structure composed of many white atoms, each bonded to four red atoms, where one of the red atoms is labeled “oxygen” and one of the white atoms is labeled “silicon.” The whole structure is labeled “silicon dioxide.” In the third pair, a square box containing a blue atom bonded to four white atoms is shown above a structure composed of many blue atoms, each bonded to four white atoms, where one of the blue atoms is labeled “carbon” and one of the white atoms is labeled “silicon.” The whole structure is labeled “silicon carbide.” In the fourth pair, a square box containing six black atoms bonded into a ring is shown above a structure composed of many rings, arranged into sheets layered one atop the other, where one of the black atoms is labeled “carbon.” The whole structure is labeled “graphite.”"
+            },
             "src": "../../media/CNX_Chem_10_05_NtwrkSolid.jpg",
             "mimeType": "image/jpeg"
           }
@@ -172,7 +187,10 @@
           },
           "media": {
             "id": "fs-idp152449872",
-            "alt": "Two images are shown and labeled “carbon dioxide” and “iodine.” The carbon dioxide structure is composed of molecules, each made up of one gray and two red atoms, stacked together into a cube. The image of iodine shows pairs of purple atoms arranged near one another, but not touching.",
+            "alt": {
+              "segmentId": "m68770:alt:fs-idp152449872-alt",
+              "text": "Two images are shown and labeled “carbon dioxide” and “iodine.” The carbon dioxide structure is composed of molecules, each made up of one gray and two red atoms, stacked together into a cube. The image of iodine shows pairs of purple atoms arranged near one another, but not touching."
+            },
             "src": "../../media/CNX_Chem_10_05_MolSolids.jpg",
             "mimeType": "image/jpeg"
           }
@@ -198,11 +216,12 @@
           "id": "fs-idp121853232",
           "class": "top-titled",
           "summary": "This table has five rows and five columns. The first row is a header row, and it labels each column: “Type of Solid,” “Type of Particles,” “Type of Attractions,” “Properties,” and “Examples.” Under the “Type of Solid” column are the following: ionic, metallic, covalent network, and molecular. Under the “Type of Particles” column are the following: ions, atoms of electropositive elements, atoms of electronegative elements, and molecules ( or atoms ). Under the “Type of Attractions” column are the following: ionic bonds, metallic bonds, covalent bonds, I M F s. Under the “Properties column” are the following: hard, brittle, conducts electricity as a liquid but not as a solid, high to very high melting points; shiny, malleable, ductile, conducts heat and electricity well, variable hardness and melting temperature; very hard, not conductive, very high melting points; variable hardness, variable brittleness, not conductive, low melting points. Under the “Examples” column are the following: N a C l, A l subscript 2 O subscript 3; C u, F e, T I, P b, U; C (diamond), S I O subscript 2, S i C; H subscript 2 O, C O subscript 2, I subscript 2, C subscript 12 H subscript 22 O subscript 11.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68770:entry:auto-25",
+                  "segmentId": "m68770:entry:auto-31",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c5",
@@ -213,46 +232,6 @@
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68770:entry:auto-26",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-27",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-28",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-29",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-30",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68770:entry:auto-31",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68770:entry:auto-32",
                   "attributes": {
@@ -276,17 +255,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68770:entry:auto-36",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68770:entry:auto-37",
                   "attributes": {
@@ -310,17 +289,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68770:entry:auto-41",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68770:entry:auto-42",
                   "attributes": {
@@ -344,17 +323,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68770:entry:auto-46",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68770:entry:auto-47",
                   "attributes": {
@@ -375,6 +354,46 @@
                 },
                 {
                   "segmentId": "m68770:entry:auto-50",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-51",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68770:entry:auto-52",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-53",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-54",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68770:entry:auto-56",
                   "attributes": {
                     "align": "left"
                   }
@@ -412,7 +431,10 @@
           },
           "media": {
             "id": "fs-idp76108928",
-            "alt": "Three pairs of images are shown, each composed of a photo and a diagram. In the first pair, the photo shows a close-up view of a colorless, multi-faceted crystal and the diagram shows many gray spheres bonded together in a net-like structure. The caption below this pair reads “diamond.” In the second pair, the photo shows a rough textured, dark gray solid while the image shows four horizontal sheets, composed of interlocking black spheres, lying atop one another. This pair has a caption that reads “graphite.” The third pair shows a photo of twelve black hexagons on a yellow background where two of the hexagons are encircled by a gray border and a caption of “1.4 times 10, superscript negative 10, m, Distance between center of atoms” and an image of many black hexagons evenly arranged on a yellow background. The caption below this pair of images reads “Graphite surface.”",
+            "alt": {
+              "segmentId": "m68770:alt:fs-idp76108928-alt",
+              "text": "Three pairs of images are shown, each composed of a photo and a diagram. In the first pair, the photo shows a close-up view of a colorless, multi-faceted crystal and the diagram shows many gray spheres bonded together in a net-like structure. The caption below this pair reads “diamond.” In the second pair, the photo shows a rough textured, dark gray solid while the image shows four horizontal sheets, composed of interlocking black spheres, lying atop one another. This pair has a caption that reads “graphite.” The third pair shows a photo of twelve black hexagons on a yellow background where two of the hexagons are encircled by a gray border and a caption of “1.4 times 10, superscript negative 10, m, Distance between center of atoms” and an image of many black hexagons evenly arranged on a yellow background. The caption below this pair of images reads “Graphite surface.”"
+            },
             "src": "../../media/CNX_Chem_10_05_Carbon.jpg",
             "mimeType": "image/jpeg"
           }
@@ -425,7 +447,10 @@
           },
           "media": {
             "id": "fs-idp125807232",
-            "alt": "Four images are shown. In the upper image, labeled “Graphene sheet,” a box is drawn around a sheet of interconnected hexagonal rings. In the lower left image, a sphere is composed of hexagonal rings linked together and is labeled “Buckyball.” In the lower middle image, a tube is shown that is composed of many hexagonal rings joined together and is labeled “Nanotube.” In the lower right image, four horizontal sheets composed of joined, hexagonal rings is shown and labeled “Stacked sheets.”",
+            "alt": {
+              "segmentId": "m68770:alt:fs-idp125807232-alt",
+              "text": "Four images are shown. In the upper image, labeled “Graphene sheet,” a box is drawn around a sheet of interconnected hexagonal rings. In the lower left image, a sphere is composed of hexagonal rings linked together and is labeled “Buckyball.” In the lower middle image, a tube is shown that is composed of many hexagonal rings joined together and is labeled “Nanotube.” In the lower right image, four horizontal sheets composed of joined, hexagonal rings is shown and labeled “Stacked sheets.”"
+            },
             "src": "../../media/CNX_Chem_10_05_Graphene.jpg",
             "mimeType": "image/jpeg"
           }
@@ -455,7 +480,10 @@
           },
           "media": {
             "id": "fs-idp137961072",
-            "alt": "A diagram is shown in which one hundred and forty four spheres are arranged in a twelve by twelve square. A gap in the square is labeled “Vacancy” while one sphere that is a different color from all the rest is labeled “Interstitial impurity.” The top right corner of the square is disturbed and has a larger sphere inserted that is labeled “Substitution impurity atom.”",
+            "alt": {
+              "segmentId": "m68770:alt:fs-idp137961072-alt",
+              "text": "A diagram is shown in which one hundred and forty four spheres are arranged in a twelve by twelve square. A gap in the square is labeled “Vacancy” while one sphere that is a different color from all the rest is labeled “Interstitial impurity.” The top right corner of the square is disturbed and has a larger sphere inserted that is labeled “Substitution impurity atom.”"
+            },
             "src": "../../media/CNX_Chem_10_05_CrystDfcts.jpg",
             "mimeType": "image/jpeg"
           }
@@ -938,77 +966,16 @@
         "id": "fs-idm7525216",
         "class": "unnumbered",
         "summary": "This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: lustrous, malleable; soft, yellow; hard, white. Under the “Melting Point,” column are the following: 1500 degrees C, 113 degrees C, and 800 degrees C. Under the “Electrical Conductivity” column are the following: high; none; only if melted / dissolved. Under the “Solubility in Water” column are the following: insoluble, insoluble, and soluble.",
+        "title": null,
         "rows": [
           {
             "cells": [
-              {
-                "segmentId": "m68770:entry:auto-131",
-                "attributes": {
-                  "align": "left"
-                }
-              },
-              {
-                "segmentId": "m68770:entry:auto-132",
-                "attributes": {
-                  "align": "left"
-                }
-              },
-              {
-                "segmentId": "m68770:entry:auto-133",
-                "attributes": {
-                  "align": "left"
-                }
-              },
-              {
-                "segmentId": "m68770:entry:auto-134",
-                "attributes": {
-                  "align": "left"
-                }
-              },
-              {
-                "segmentId": "m68770:entry:auto-135",
-                "attributes": {
-                  "align": "left"
-                }
-              }
-            ]
-          },
-          {
-            "cells": [
-              {
-                "segmentId": "m68770:entry:auto-136",
-                "attributes": {
-                  "align": "left"
-                }
-              },
-              {
-                "segmentId": "m68770:entry:auto-137",
-                "attributes": {
-                  "align": "left"
-                }
-              },
-              {
-                "segmentId": "m68770:entry:auto-138",
-                "attributes": {
-                  "align": "left"
-                }
-              },
-              {
-                "segmentId": "m68770:entry:auto-139",
-                "attributes": {
-                  "align": "left"
-                }
-              },
               {
                 "segmentId": "m68770:entry:auto-140",
                 "attributes": {
                   "align": "left"
                 }
-              }
-            ]
-          },
-          {
-            "cells": [
+              },
               {
                 "segmentId": "m68770:entry:auto-141",
                 "attributes": {
@@ -1032,17 +999,17 @@
                 "attributes": {
                   "align": "left"
                 }
-              },
-              {
-                "segmentId": "m68770:entry:auto-145",
-                "attributes": {
-                  "align": "left"
-                }
               }
             ]
           },
           {
             "cells": [
+              {
+                "segmentId": "m68770:entry:auto-145",
+                "attributes": {
+                  "align": "left"
+                }
+              },
               {
                 "segmentId": "m68770:entry:auto-146",
                 "attributes": {
@@ -1066,28 +1033,17 @@
                 "attributes": {
                   "align": "left"
                 }
-              },
+              }
+            ]
+          },
+          {
+            "cells": [
               {
                 "segmentId": "m68770:entry:auto-150",
                 "attributes": {
                   "align": "left"
                 }
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "tableId": "fs-idp139392608",
-      "structure": {
-        "type": "table",
-        "id": "fs-idp139392608",
-        "class": "unnumbered",
-        "summary": "This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: brittle, white; shiny, malleable; hard, colorless. Under the “Melting Point,” column are the following: 800 degrees C, 1100 degrees C, and 3550 degrees C. Under the “Electrical Conductivity” column are the following: only if melted / dissolved, high, and none. Under the “Solubility in Water” column are the following: soluble, insoluble, and insoluble.",
-        "rows": [
-          {
-            "cells": [
+              },
               {
                 "segmentId": "m68770:entry:auto-151",
                 "attributes": {
@@ -1111,17 +1067,17 @@
                 "attributes": {
                   "align": "left"
                 }
-              },
-              {
-                "segmentId": "m68770:entry:auto-155",
-                "attributes": {
-                  "align": "left"
-                }
               }
             ]
           },
           {
             "cells": [
+              {
+                "segmentId": "m68770:entry:auto-155",
+                "attributes": {
+                  "align": "left"
+                }
+              },
               {
                 "segmentId": "m68770:entry:auto-156",
                 "attributes": {
@@ -1145,17 +1101,29 @@
                 "attributes": {
                   "align": "left"
                 }
-              },
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "tableId": "fs-idp139392608",
+      "structure": {
+        "type": "table",
+        "id": "fs-idp139392608",
+        "class": "unnumbered",
+        "summary": "This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: brittle, white; shiny, malleable; hard, colorless. Under the “Melting Point,” column are the following: 800 degrees C, 1100 degrees C, and 3550 degrees C. Under the “Electrical Conductivity” column are the following: only if melted / dissolved, high, and none. Under the “Solubility in Water” column are the following: soluble, insoluble, and insoluble.",
+        "title": null,
+        "rows": [
+          {
+            "cells": [
               {
                 "segmentId": "m68770:entry:auto-160",
                 "attributes": {
                   "align": "left"
                 }
-              }
-            ]
-          },
-          {
-            "cells": [
+              },
               {
                 "segmentId": "m68770:entry:auto-161",
                 "attributes": {
@@ -1179,17 +1147,17 @@
                 "attributes": {
                   "align": "left"
                 }
-              },
-              {
-                "segmentId": "m68770:entry:auto-165",
-                "attributes": {
-                  "align": "left"
-                }
               }
             ]
           },
           {
             "cells": [
+              {
+                "segmentId": "m68770:entry:auto-165",
+                "attributes": {
+                  "align": "left"
+                }
+              },
               {
                 "segmentId": "m68770:entry:auto-166",
                 "attributes": {
@@ -1213,9 +1181,71 @@
                 "attributes": {
                   "align": "left"
                 }
-              },
+              }
+            ]
+          },
+          {
+            "cells": [
               {
                 "segmentId": "m68770:entry:auto-170",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-171",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-172",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-173",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-174",
+                "attributes": {
+                  "align": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "segmentId": "m68770:entry:auto-175",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-176",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-177",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-178",
+                "attributes": {
+                  "align": "left"
+                }
+              },
+              {
+                "segmentId": "m68770:entry:auto-179",
                 "attributes": {
                   "align": "left"
                 }

@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>Ar–R</m:mtext><m:mo>→</m:mo><m:mtext>Ar</m:mtext><m:mo>–</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{Ar–R}\\rightarrow \\text{Ar}–{{\\text{CO}}}_{2}\\text{H}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>Br</m:mtext><m:mo>·</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{Br}\\cdot}"
+  }
+}

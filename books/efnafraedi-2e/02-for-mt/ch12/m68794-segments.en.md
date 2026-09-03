@@ -17,16 +17,16 @@ Write a balanced chemical equation for a process given its reaction mechanism
 Derive the rate law consistent with a given reaction mechanism
 
 <!-- SEG:m68794:para:fs-idp19792192 -->
-Chemical reactions very often occur in a step-wise fashion, involving two or more distinct reactions taking place in sequence. A balanced equation indicates what is reacting and what is produced, but it reveals no details about how the reaction actually takes place. The {{term}}reaction mechanism{{/term}} (or reaction path) provides details regarding the precise, step-by-step process by which a reaction occurs.
+Chemical reactions very often occur in a step-wise fashion, involving two or more distinct reactions taking place in sequence. A balanced equation indicates what is reacting and what is produced, but it reveals no details about how the reaction actually takes place. The [[term:reaction mechanism|term-00001]] (or reaction path) provides details regarding the precise, step-by-step process by which a reaction occurs.
 
 <!-- SEG:m68794:para:fs-idm10360272 -->
 The decomposition of ozone, for example, appears to follow a mechanism with two steps:
 
 <!-- SEG:m68794:para:fs-idm40865648 -->
-Each of the steps in a reaction mechanism is an {{term}}elementary reaction{{/term}}. These elementary reactions occur precisely as represented in the step equations, and they must sum to yield the balanced chemical equation representing the overall reaction:
+Each of the steps in a reaction mechanism is an [[term:elementary reaction|term-00002]]. These elementary reactions occur precisely as represented in the step equations, and they must sum to yield the balanced chemical equation representing the overall reaction:
 
 <!-- SEG:m68794:para:fs-idp205634512 -->
-Notice that the oxygen atom produced in the first step of this mechanism is consumed in the second step and therefore does not appear as a product in the overall reaction. Species that are produced in one step and consumed in a subsequent step are called {{term}}intermediates{{/term}}.
+Notice that the oxygen atom produced in the first step of this mechanism is consumed in the second step and therefore does not appear as a product in the overall reaction. Species that are produced in one step and consumed in a subsequent step are called [[term:intermediates|term-00003]].
 
 <!-- SEG:m68794:para:fs-idp6340064 -->
 While the overall reaction equation for the decomposition of ozone indicates that two molecules of ozone react to give three molecules of oxygen, the mechanism of the reaction [[i:does not involve the direct collision and reaction of two ozone molecules]]. Instead, one O[[sub:3]] decomposes to yield O[[sub:2]] and an oxygen atom, and a second O[[sub:3]] molecule subsequently reacts with the oxygen atom to yield two additional O[[sub:2]] molecules.
@@ -38,7 +38,7 @@ Unlike balanced equations representing an overall reaction, the equations for el
 Unimolecular Elementary Reactions
 
 <!-- SEG:m68794:para:fs-idp205522704 -->
-The {{term}}molecularity{{/term}} of an elementary reaction is the number of reactant entities (atoms, molecules, or ions). For example, a {{term}}unimolecular reaction{{/term}} involves the reaction of a [[i:single]] reactant entities to produce one or more molecules of product:
+The [[term:molecularity|term-00004]] of an elementary reaction is the number of reactant entities (atoms, molecules, or ions). For example, a [[term:unimolecular reaction|term-00005]] involves the reaction of a [[i:single]] reactant entities to produce one or more molecules of product:
 
 <!-- SEG:m68794:para:fs-idp13674832 -->
 The rate law for a unimolecular reaction is first order:
@@ -48,6 +48,9 @@ A unimolecular reaction may be one of several elementary reactions in a complex 
 
 <!-- SEG:m68794:para:fs-idp196763520 -->
 illustrates a unimolecular elementary reaction that occurs as one part of a two-step reaction mechanism as described above. However, some unimolecular reactions may be the only step of a single-step reaction mechanism. (In other words, an “overall” reaction may also be an elementary reaction in some cases.) For example, the gas-phase decomposition of cyclobutane, C[[sub:4]]H[[sub:8]], to ethylene, C[[sub:2]]H[[sub:4]], is represented by the following chemical equation:
+
+<!-- SEG:m68794:alt:fs-idp32755824-alt -->
+In this figure, structural formulas are used to illustrate a chemical reaction. On the left, a structural formula for cyclobutane is shown. This structure is composed of 4 C atoms connected with single bonds in a square shape. Each C atom is bonded to two other C atoms in the structure, leaving two bonds for H atoms pointing outward above, below, left, and right. An arrow points right to two identical ethane molecules with a plus symbol between them. Each of these molecules contains two C atoms connected with a double bond oriented vertically between them. The C atom at the top of these molecules has H atoms bonded above to the right and left. Similarly, the lower C atom has two H atoms bonded below to the right and left.
 
 <!-- SEG:m68794:para:fs-idp100963616 -->
 This equation represents the overall reaction observed, and it might also represent a legitimate unimolecular elementary reaction. The rate law predicted from this equation, assuming it is an elementary reaction, turns out to be the same as the rate law derived experimentally for the overall reaction, namely, one showing first-order behavior:
@@ -59,7 +62,7 @@ This agreement between observed and predicted rate laws is interpreted to mean t
 Bimolecular Elementary Reactions
 
 <!-- SEG:m68794:para:fs-idp87793216 -->
-A {{term}}bimolecular reaction{{/term}} involves two reactant entities, for example:
+A [[term:bimolecular reaction|term-00006]] involves two reactant entities, for example:
 
 <!-- SEG:m68794:para:fs-idm80729584 -->
 For the first type, in which the two reactant molecules are different, the rate law is first-order in [[i:A]] and first order in [[i:B]] (second-order overall):
@@ -76,6 +79,9 @@ Some chemical reactions occur by mechanisms that consist of a single bimolecular
 <!-- SEG:m68794:caption:CNX_Chem_12_06_BimoElRe-caption -->
 The probable mechanism for the reaction between NO[[sub:2]] and CO to yield NO and CO[[sub:2]].
 
+<!-- SEG:m68794:alt:fs-idp70495312-alt -->
+This figure provides an illustration of a reaction between two H I molecules using space filling models. H atoms are shown as white spheres, and I atoms are shown as purple spheres. On the left, two H I molecules are shownwith a small white sphere bonded to a much larger purple sphere. The label, “Two H I molecules,” appears below. An arrow points right to a similar structure in which the two molecules appear pushed together, so that the purple spheres of the two molecules are touching. Below appears the label, “Transition state.” Following another arrow, two white spheres are shown vertically oriented and bonded together with the label, “H subscript 2” above. The H subscript 2 molecule is followed by a plus sign and two purple spheres bonded together with the label, “I subscript 2” above. Below these structures is the label, “Hydrogen iodide molecules decompose to produce hydrogen H subscript 2 and iodine I subscript 2.”
+
 <!-- SEG:m68794:para:fs-idp38432416 -->
 Bimolecular elementary reactions may also be involved as steps in a multistep reaction mechanism. The reaction of atomic oxygen with ozone is the second step of the two-step ozone decomposition mechanism discussed earlier in this section:
 
@@ -83,7 +89,7 @@ Bimolecular elementary reactions may also be involved as steps in a multistep re
 Termolecular Elementary Reactions
 
 <!-- SEG:m68794:para:fs-idm9155392 -->
-An elementary {{term}}termolecular reaction{{/term}} involves the simultaneous collision of three atoms, molecules, or ions. Termolecular elementary reactions are uncommon because the probability of three particles colliding simultaneously is less than one one-thousandth of the probability of two particles colliding. There are, however, a few established termolecular elementary reactions. The reaction of nitric oxide with oxygen appears to involve termolecular steps:
+An elementary [[term:termolecular reaction|term-00007]] involves the simultaneous collision of three atoms, molecules, or ions. Termolecular elementary reactions are uncommon because the probability of three particles colliding simultaneously is less than one one-thousandth of the probability of two particles colliding. There are, however, a few established termolecular elementary reactions. The reaction of nitric oxide with oxygen appears to involve termolecular steps:
 
 <!-- SEG:m68794:para:fs-idp136937056 -->
 Likewise, the reaction of nitric oxide with chlorine appears to involve termolecular steps:
@@ -92,10 +98,13 @@ Likewise, the reaction of nitric oxide with chlorine appears to involve termolec
 Relating Reaction Mechanisms to Rate Laws
 
 <!-- SEG:m68794:para:fs-idp253615520 -->
-It’s often the case that one step in a multistep reaction mechanism is significantly slower than the others. Because a reaction cannot proceed faster than its slowest step, this step will limit the rate at which the overall reaction occurs. The slowest step is therefore called the {{term}}rate-limiting step{{/term}} (or rate-determining step) of the reaction [[xref:CNX_Chem_12_06_Cattle]].
+It’s often the case that one step in a multistep reaction mechanism is significantly slower than the others. Because a reaction cannot proceed faster than its slowest step, this step will limit the rate at which the overall reaction occurs. The slowest step is therefore called the [[term:rate-limiting step|term-00008]] (or rate-determining step) of the reaction [[xref:CNX_Chem_12_06_Cattle]].
 
 <!-- SEG:m68794:caption:CNX_Chem_12_06_Cattle-caption -->
 A cattle chute is a nonchemical example of a rate-determining step. Cattle can only be moved from one holding pen to another as quickly as one animal can make its way through the chute. (credit: Loren Kerns)
+
+<!-- SEG:m68794:alt:fs-idp96445120-alt -->
+A photo is shown of cattle passing through a narrow chute into a holding pen. A person directs them through the gate with a long white and red pole.
 
 <!-- SEG:m68794:para:fs-idp41680064 -->
 As described earlier, rate laws may be derived directly from the chemical equations for elementary reactions. This is not the case, however, for ordinary chemical reactions. The balanced equations most often encountered represent the overall change for some chemical system, and very often this is the result of some multistep reaction mechanisms. In every case, the rate law must be determined from experimental data and the reaction mechanism subsequently deduced from the rate law (and sometimes from other data). The reaction of NO[[sub:2]] and CO provides an illustrative example:
@@ -257,7 +266,7 @@ Nitrogen monoxide, NO, reacts with hydrogen, H[[sub:2]], according to the follow
 What would the rate law be if the mechanism for this reaction were:[[BR]] [[MATH:17]]
 
 <!-- SEG:m68794:problem:fs-idp105816432 -->
-Experiments were conducted to study the rate of the reaction represented by this equation. {{fn}}This question is taken from the Chemistry Advanced Placement Examination and is used with the permission of the Educational Testing Service.{{/fn}}[[BR]] [[MATH:18]]
+Experiments were conducted to study the rate of the reaction represented by this equation. [[fn:This question is taken from the Chemistry Advanced Placement Examination and is used with the permission of the Educational Testing Service.|fs-idm12821888]][[BR]] [[MATH:18]]
 
 <!-- SEG:m68794:problem:fs-idp138927296 -->
 Initial concentrations and rates of reaction are given here.
@@ -295,64 +304,64 @@ Based on the data presented, which of these is the rate determining step? Show t
 <!-- SEG:m68794:solution:fs-idp77008528 -->
 (a) Doubling [H[[sub:2]]] doubles the rate. [H[[sub:2]]] must enter the rate law to the first power. Doubling [NO] increases the rate by a factor of 4. [NO] must enter the rate law to the second power. (b) Rate = [[i:k]] [NO][[sup:2]][H[[sub:2]]]; (c) [[i:k]] = 5.0 [[MATH:22]] 10[[sup:3]] mol[[sup:2]] L[[sup:−2]] min[[sup:−1]]; (d) 0.0050 mol/L; (e) Step II is the rate-determining step. If step I gives N[[sub:2]]O[[sub:2]] in adequate amount, steps 1 and 2 combine to give [[MATH:23]] This reaction corresponds to the observed rate law. Combine steps 1 and 2 with step 3, which occurs by supposition in a rapid fashion, to give the appropriate stoichiometry.
 
-<!-- SEG:m68794:entry:auto-100 -->
+<!-- SEG:m68794:entry:auto-103 -->
 Experiment
 
-<!-- SEG:m68794:entry:auto-101 -->
+<!-- SEG:m68794:entry:auto-104 -->
 Initial Concentration [NO] (mol L[[sup:−1]])
 
-<!-- SEG:m68794:entry:auto-102 -->
+<!-- SEG:m68794:entry:auto-105 -->
 Initial Concentration, [H[[sub:2]]] (mol L[[sup:−1]])
 
-<!-- SEG:m68794:entry:auto-103 -->
+<!-- SEG:m68794:entry:auto-106 -->
 Initial Rate of Formation of N[[sub:2]] (mol L[[sup:−1]] min[[sup:−1]])
 
-<!-- SEG:m68794:entry:auto-104 -->
+<!-- SEG:m68794:entry:auto-107 -->
 1
 
-<!-- SEG:m68794:entry:auto-105 -->
-0.0060
-
-<!-- SEG:m68794:entry:auto-106 -->
-0.0010
-
-<!-- SEG:m68794:entry:auto-107 -->
-1.8 [[MATH:24]] 10[[sup:−4]]
-
 <!-- SEG:m68794:entry:auto-108 -->
-2
+0.0060
 
 <!-- SEG:m68794:entry:auto-109 -->
-0.0060
-
-<!-- SEG:m68794:entry:auto-110 -->
-0.0020
-
-<!-- SEG:m68794:entry:auto-111 -->
-3.6 [[MATH:25]] 10[[sup:−4]]
-
-<!-- SEG:m68794:entry:auto-112 -->
-3
-
-<!-- SEG:m68794:entry:auto-113 -->
 0.0010
 
-<!-- SEG:m68794:entry:auto-114 -->
+<!-- SEG:m68794:entry:auto-110 -->
+1.8 [[MATH:24]] 10[[sup:−4]]
+
+<!-- SEG:m68794:entry:auto-111 -->
+2
+
+<!-- SEG:m68794:entry:auto-112 -->
 0.0060
 
-<!-- SEG:m68794:entry:auto-115 -->
-0.30 [[MATH:26]] 10[[sup:−4]]
-
-<!-- SEG:m68794:entry:auto-116 -->
-4
-
-<!-- SEG:m68794:entry:auto-117 -->
+<!-- SEG:m68794:entry:auto-113 -->
 0.0020
 
-<!-- SEG:m68794:entry:auto-118 -->
+<!-- SEG:m68794:entry:auto-114 -->
+3.6 [[MATH:25]] 10[[sup:−4]]
+
+<!-- SEG:m68794:entry:auto-115 -->
+3
+
+<!-- SEG:m68794:entry:auto-116 -->
+0.0010
+
+<!-- SEG:m68794:entry:auto-117 -->
 0.0060
 
+<!-- SEG:m68794:entry:auto-118 -->
+0.30 [[MATH:26]] 10[[sup:−4]]
+
 <!-- SEG:m68794:entry:auto-119 -->
+4
+
+<!-- SEG:m68794:entry:auto-120 -->
+0.0020
+
+<!-- SEG:m68794:entry:auto-121 -->
+0.0060
+
+<!-- SEG:m68794:entry:auto-122 -->
 1.2 [[MATH:27]] 10[[sup:−4]]
 
 <!-- SEG:m68794:problem:fs-idp244877904 -->

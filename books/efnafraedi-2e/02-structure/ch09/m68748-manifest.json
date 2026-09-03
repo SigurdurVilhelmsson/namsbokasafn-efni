@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68748",
-  "extractedAt": "2026-07-07T09:12:37.608Z",
+  "extractedAt": "2026-08-31T19:08:39.830Z",
   "sourceHash": "947e89a6e41eaa55",
-  "segmentCount": 11,
+  "segmentCount": 12,
   "segmentIds": [
     "m68748:title:auto-1",
     "m68748:abstract-item:abstract-item-1",
@@ -13,6 +13,7 @@
     "m68748:abstract-item:abstract-item-5",
     "m68748:abstract-item:abstract-item-6",
     "m68748:caption:CNX_Chem_09_00_HotAirBall-caption",
+    "m68748:alt:fs-idm132595392-alt",
     "m68748:para:fs-idm58981280",
     "m68748:para:fs-idm145175104",
     "m68748:para:fs-idm154865680"

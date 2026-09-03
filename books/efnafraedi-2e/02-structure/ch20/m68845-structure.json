@@ -27,7 +27,10 @@
       },
       "media": {
         "id": "fs-idp66277952",
-        "alt": "This figure includes four photographs. The first is of an orange and black butterfly on a large leaf. The second shows a seam on a worn pair of blue jeans. The third image is of a red plastic drinking cup. The last image shows the blue flames of a lit burner on a gas stove.",
+        "alt": {
+          "segmentId": "m68845:alt:fs-idp66277952-alt",
+          "text": "This figure includes four photographs. The first is of an orange and black butterfly on a large leaf. The second shows a seam on a worn pair of blue jeans. The third image is of a red plastic drinking cup. The last image shows the blue flames of a lit burner on a gas stove."
+        },
         "src": "../../media/CNX_Chem_20_00_OrgCompnd.jpg",
         "mimeType": "image/jpeg"
       }

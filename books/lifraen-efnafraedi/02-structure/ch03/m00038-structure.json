@@ -26,7 +26,10 @@
         "segmentId": "m00038:caption:fig-00001-caption"
       },
       "media": {
-        "alt": "Staggered propane undergoes rotation of rear carbon 60 degrees to form eclipsed propane.",
+        "alt": {
+          "segmentId": "m00038:alt:fig-00001-alt",
+          "text": "Staggered propane undergoes rotation of rear carbon 60 degrees to form eclipsed propane."
+        },
         "src": "../../media/OChem_03_07_001.jpg",
         "mimeType": "image/jpeg"
       }
@@ -42,7 +45,10 @@
       "class": "unnumbered",
       "caption": null,
       "media": {
-        "alt": "Anti-conformation of butane is rotated by 60 degrees to produce eclipsed conformation of butane.",
+        "alt": {
+          "segmentId": "m00038:alt:fig-00002-alt",
+          "text": "Anti-conformation of butane is rotated by 60 degrees to produce eclipsed conformation of butane."
+        },
         "src": "../../media/OChem_03_07_002.jpg",
         "mimeType": "image/jpeg"
       }
@@ -58,7 +64,10 @@
       "class": "unnumbered",
       "caption": null,
       "media": {
-        "alt": "Eclipsed conformation of butane is rotated by 60 degrees to produce gauche conformation of butane.",
+        "alt": {
+          "segmentId": "m00038:alt:fig-00003-alt",
+          "text": "Eclipsed conformation of butane is rotated by 60 degrees to produce gauche conformation of butane."
+        },
         "src": "../../media/OChem_03_07_003.jpg",
         "mimeType": "image/jpeg"
       }
@@ -74,7 +83,10 @@
       "class": "unnumbered",
       "caption": null,
       "media": {
-        "alt": "Gauche conformation of butane is rotated by 60 degrees to produce eclipsed conformation of butane.",
+        "alt": {
+          "segmentId": "m00038:alt:fig-00004-alt",
+          "text": "Gauche conformation of butane is rotated by 60 degrees to produce eclipsed conformation of butane."
+        },
         "src": "../../media/OChem_03_07_004.jpg",
         "mimeType": "image/jpeg"
       }
@@ -92,7 +104,10 @@
         "segmentId": "m00038:caption:fig-00005-caption"
       },
       "media": {
-        "alt": "A graph of potential energy versus dihedral angle between methyl groups, in butane. The curve indicates a trough at an energy of 3.8 kilojoules per mole.",
+        "alt": {
+          "segmentId": "m00038:alt:fig-00005-alt",
+          "text": "A graph of potential energy versus dihedral angle between methyl groups, in butane. The curve indicates a trough at an energy of 3.8 kilojoules per mole."
+        },
         "src": "../../media/OChem_03_07_005.jpg",
         "mimeType": "image/jpeg"
       }
@@ -111,11 +126,15 @@
       "type": "table",
       "id": "table-00001",
       "summary": " ",
+      "title": {
+        "segmentId": "m00038:table-title:table-00001-title",
+        "text": "Energy Costs for Interactions in Alkane Conformers"
+      },
       "rows": [
         {
           "cells": [
             {
-              "segmentId": "m00038:entry:auto-12",
+              "segmentId": "m00038:entry:auto-18",
               "attributes": {
                 "valign": "bottom",
                 "align": "left",
@@ -123,7 +142,7 @@
               }
             },
             {
-              "segmentId": "m00038:entry:auto-13",
+              "segmentId": "m00038:entry:auto-19",
               "attributes": {
                 "valign": "bottom",
                 "align": "left",
@@ -131,7 +150,7 @@
               }
             },
             {
-              "segmentId": "m00038:entry:auto-14",
+              "segmentId": "m00038:entry:auto-20",
               "attributes": {
                 "valign": "bottom",
                 "align": "left",
@@ -144,69 +163,23 @@
         {
           "cells": [
             {
-              "segmentId": "m00038:entry:auto-15",
-              "attributes": {
-                "valign": "bottom",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00038:entry:auto-16",
-              "attributes": {
-                "valign": "bottom",
-                "align": "left"
-              }
-            }
-          ]
-        },
-        {
-          "cells": [
-            {
-              "segmentId": "m00038:entry:auto-17",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00038:entry:auto-18",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00038:entry:auto-19",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00038:entry:auto-20",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            }
-          ]
-        },
-        {
-          "cells": [
-            {
               "segmentId": "m00038:entry:auto-21",
               "attributes": {
-                "valign": "top",
+                "valign": "bottom",
                 "align": "left"
               }
             },
             {
               "segmentId": "m00038:entry:auto-22",
               "attributes": {
-                "valign": "top",
+                "valign": "bottom",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00038:entry:auto-23",
               "attributes": {
@@ -220,11 +193,7 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00038:entry:auto-25",
               "attributes": {
@@ -238,7 +207,11 @@
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00038:entry:auto-27",
               "attributes": {
@@ -252,11 +225,7 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00038:entry:auto-29",
               "attributes": {
@@ -270,7 +239,11 @@
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00038:entry:auto-31",
               "attributes": {
@@ -280,6 +253,52 @@
             },
             {
               "segmentId": "m00038:entry:auto-32",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-34",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00038:entry:auto-35",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-36",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-37",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-38",
               "attributes": {
                 "valign": "top",
                 "align": "left"
@@ -297,7 +316,10 @@
         "segmentId": "m00038:caption:fig-00006-caption"
       },
       "media": {
-        "alt": "The ball and stick model and molecular structure of the decane are represented.",
+        "alt": {
+          "segmentId": "m00038:alt:fig-00006-alt",
+          "text": "The ball and stick model and molecular structure of the decane are represented."
+        },
         "src": "../../media/OChem_03_07_006.jpg",
         "mimeType": "image/jpeg"
       }
@@ -312,7 +334,7 @@
       "id": "exam-00001",
       "title": {
         "segmentId": "m00038:example-title:exam-00001-title",
-        "text": "Strategy"
+        "text": "Newman Projections"
       },
       "content": [
         {
@@ -323,7 +345,11 @@
         {
           "type": "para",
           "id": "para-00011",
-          "segmentId": "m00038:para:para-00011"
+          "segmentId": "m00038:para:para-00011",
+          "title": {
+            "segmentId": "m00038:para-title:para-00011-title",
+            "text": "[[span:Strategy|red-text]]"
+          }
         },
         {
           "type": "para",
@@ -331,7 +357,7 @@
           "segmentId": "m00038:para:para-00012",
           "title": {
             "segmentId": "m00038:para-title:para-00012-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]
@@ -342,7 +368,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively.",
+        "alt": {
+          "segmentId": "m00038:alt:media-1-alt",
+          "text": "Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively."
+        },
         "src": "../../media/OChem_03_07_007.jpg",
         "mimeType": "image/jpeg"
       }
@@ -412,7 +441,10 @@
             "segmentId": "m00038:caption:fig-00008-caption"
           },
           "media": {
-            "alt": "A photograph of Edwin Drake’s first oil well is presented.",
+            "alt": {
+              "segmentId": "m00038:alt:fig-00008-alt",
+              "text": "A photograph of Edwin Drake’s first oil well is presented."
+            },
             "src": "../../media/OChem_03_07_xxx.jpg",
             "mimeType": "image/jpeg"
           }
@@ -438,7 +470,10 @@
           "class": "unnumbered scaled-down",
           "caption": null,
           "media": {
-            "alt": "Two molecular structures of heptane and 2,2,4-trimethylpentane are represented. The first and second structures have octane numbers equal to 0 and 100, respectively.",
+            "alt": {
+              "segmentId": "m00038:alt:fig-00009-alt",
+              "text": "Two molecular structures of heptane and 2,2,4-trimethylpentane are represented. The first and second structures have octane numbers equal to 0 and 100, respectively."
+            },
             "src": "../../media/OChem_03_07_009.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1001,12 +1036,15 @@
       "placeholder": "[[MEDIA:1]]",
       "id": null,
       "class": null,
-      "alt": "Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively.",
       "src": "../../media/OChem_03_07_007.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m00038:alt:media-1-alt",
+        "text": "Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively."
+      }
     }
   ],
   "sectionOrder": 7

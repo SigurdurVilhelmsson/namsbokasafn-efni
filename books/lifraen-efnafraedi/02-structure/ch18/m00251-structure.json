@@ -1,0 +1,127 @@
+{
+  "moduleId": "m00251",
+  "title": {
+    "segmentId": "m00251:title:auto-1",
+    "text": "Cyclic Ethers: Epoxides"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "6e9a8bd0-13ba-4dbf-9967-3c8c36116613"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00251:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00251:alt:fig-00001-alt",
+          "text": "1,4-dioxane is a six-membered ring with oxygens instead of carbons at positions 1 and 4. Tetrahydrofuran is a five-membered ring incorporating one oxygen."
+        },
+        "src": "../../media/OChem_18_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00251:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00251:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00251:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00251:alt:fig-00002-alt",
+          "text": "A reaction converting ethylene to ethylene oxide using oxygen and silver oxide. The figure also shows the ball-and-stick model in the electrostatic potential map of the product."
+        },
+        "src": "../../media/OChem_18_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00251:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00251:alt:fig-00003-alt",
+          "text": "Cycloheptene reacts with meta-chloroperoxybenzoic acid where dichloromethane acts as the solvent to yield 1,2-epoxycycloheptane and meta-chlorobenzoic acid."
+        },
+        "src": "../../media/OChem_18_05_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00251:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00251:alt:fig-00004-alt",
+          "text": "Cyclohexene reacts with chlorine and water to yield trans-2-chlorocyclohexanol, followed by its conversion to 1,2-epoxycyclohexane via an intermediate with sodium hydroxide and water."
+        },
+        "src": "../../media/OChem_18_05_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00251:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

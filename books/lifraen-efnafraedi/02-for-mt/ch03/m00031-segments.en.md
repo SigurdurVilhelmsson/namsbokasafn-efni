@@ -4,6 +4,9 @@ Why This Chapter?
 <!-- SEG:m00031:caption:fig-00001-caption -->
 [[b:The bristlecone pine is the oldest living organism on Earth.]] The waxy coating on its needles contains a mixture of organic compounds called alkanes, the subject of this chapter. (credit: modification of work “Gnarly Bristlecone Pine” by Rick Goldwaser/Flickr, CC BY 2.0)
 
+<!-- SEG:m00031:alt:fig-00001-alt -->
+A photograph of a bristlecone pine tree. The needles of its branches contain a mixture of organic compounds.
+
 <!-- SEG:m00031:para:para-00001 -->
 The group of organic compounds called [[i:alkanes]] are simple and relatively unreactive, but they nevertheless provide a useful vehicle for introducing some important general ideas. In this chapter, we’ll use alkanes to introduce the basic approach to naming organic compounds and to take an initial look at some of the three-dimensional aspects of molecules, a topic of particular importance in understanding biological organic chemistry.
 

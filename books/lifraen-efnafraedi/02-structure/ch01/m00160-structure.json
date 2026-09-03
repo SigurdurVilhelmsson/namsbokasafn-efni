@@ -1,0 +1,209 @@
+{
+  "moduleId": "m00160",
+  "title": {
+    "segmentId": "m00160:title:auto-1",
+    "text": "Atomic Structure: Electron Configurations"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "091761c7-1a06-4c03-8e3f-41bdd4b988a7"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00160:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00160:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00160:alt:fig-00001-alt",
+          "text": "The orbital arrangement featuring orbitals in order 1s; 2s; 2p-3s; 3p-4s; 3d-4p-5s; 4d-5p-6s; 4f-5d-6p; 5f-6d; and 6f. Arrows denote the order in which orbitals are filled with electrons."
+        },
+        "src": "../../media/OChem_01_02_Aufbau.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00160:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00160:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00160:para:para-00005"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00160:table-title:table-00001-title",
+        "text": "Ground-State Electron Configurations of Some Elements"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00160:entry:auto-9",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00160:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00160:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00160:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00160:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00160:alt:OChem_01_03_001a_jpg-alt",
+                "text": "The electron configuration of hydrogen. A 1s orbital contains one electron.",
+                "mediaId": null,
+                "src": "../../media/OChem_01_03_001a.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00160:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00160:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00160:alt:OChem_01_03_001b_jpg-alt",
+                "text": "The electron configuration of carbon. 1s and 2p orbitals contain a pair of electrons. 2p contains two unpaired electrons and a vacant subshell.",
+                "mediaId": null,
+                "src": "../../media/OChem_01_03_001b.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00160:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00160:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00160:alt:OChem_01_03_001c_jpg-alt",
+                "text": "The electron configuration of phosphorus. 1s, 2s, 2p, and 3s have paired electrons in their subshells. 3p has three unpaired electrons.",
+                "mediaId": null,
+                "src": "../../media/OChem_01_03_001c.jpg"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00160:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

@@ -20,7 +20,11 @@ import { BLOCK_TAGS } from '../lib/cnxml-dom.js';
 
 const sorted = (s) => [...s].sort();
 
-// Exact pre-refactor literals (tools/lib/preintake-checks.js @ a7e0c746).
+// Exact pre-refactor literals (tools/lib/preintake-checks.js @ a7e0c746), plus
+// every deliberate addition since — each one named, so a drifting set cannot pass
+// by looking like an intentional change.
+//   + 'span' (§C118 ⑬, 2026-09-02): <span class="..."> gained a marker case in
+//     cnxml-extract.js, so it is handled inline by this set's own definition.
 const INLINE_LITERAL = [
   'emphasis',
   'sub',
@@ -31,6 +35,7 @@ const INLINE_LITERAL = [
   'newline',
   'space',
   'math',
+  'span',
 ];
 const BLOCK_LITERAL = [
   'para',
@@ -64,7 +69,7 @@ const BLOCK_LITERAL = [
 ];
 
 describe('handled-tags — canonical sets match the pre-refactor literals', () => {
-  it('HANDLED_INLINE membership is frozen (9 tags)', () => {
+  it('HANDLED_INLINE membership is frozen (10 tags)', () => {
     expect(sorted(HANDLED_INLINE)).toEqual([...INLINE_LITERAL].sort());
   });
 
@@ -90,7 +95,13 @@ describe('preintake-checks re-exports the canonical sets', () => {
 });
 
 describe('renderer seam sets derive from the canonical classification', () => {
-  // Exact pre-refactor literal (tools/cnxml-render.js:1084 @ a7e0c746).
+  // Exact pre-refactor literal (tools/cnxml-render.js:1084 @ a7e0c746), plus every
+  // deliberate addition since. This literal is the CROSS-SIDE anchor: it is written
+  // out by hand rather than derived, so that the formula test below cannot be the
+  // only witness — two sides derived from one token cannot see damage to that token.
+  //   + 'span' (§C118 ⑬, 2026-09-02): arrives via HANDLED_INLINE. Measured inert —
+  //     all 1,071 class-bearing spans in organic 01-source have an inline/text
+  //     parent, so none ever reaches the block seam this set suppresses.
   const LOUD_SEAM_LITERAL = [
     'title',
     'label',
@@ -104,9 +115,10 @@ describe('renderer seam sets derive from the canonical classification', () => {
     'link',
     'math',
     'footnote',
+    'span',
   ];
 
-  it('LOUD_SEAM_IGNORE membership is frozen (12 tags)', () => {
+  it('LOUD_SEAM_IGNORE membership is frozen (13 tags)', () => {
     expect(sorted(LOUD_SEAM_IGNORE)).toEqual([...LOUD_SEAM_LITERAL].sort());
   });
 

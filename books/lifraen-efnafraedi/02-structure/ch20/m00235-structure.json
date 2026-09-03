@@ -1,0 +1,67 @@
+{
+  "moduleId": "m00235",
+  "title": {
+    "segmentId": "m00235:title:auto-1",
+    "text": "Reactions of Carboxylic Acids: An Overview"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "cb237eef-8724-4b7e-9b75-edd0442ade1d"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00235:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00235:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00235:alt:fig-00001-alt",
+          "text": "Flow chart of different reactions of carboxylic acids: alpha substitution of H with R, deprotonation, reduction to alcohol, or nucleophilic acyl substitution of O H with Y."
+        },
+        "src": "../../media/OChem_20_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00235:para:para-00002"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00235:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 6
+}

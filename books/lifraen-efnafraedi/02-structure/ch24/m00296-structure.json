@@ -1,0 +1,458 @@
+{
+  "moduleId": "m00296",
+  "title": {
+    "segmentId": "m00296:title:auto-1",
+    "text": "Reactions of Arylamines"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "db32b340-beed-476f-bb6e-7a4450a4694b"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00296:title:sect-00001-title",
+        "text": "Electrophilic Aromatic Substitutions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00296:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00001-alt",
+              "text": "Aniline reacts with three equivalents of bromine and water to form 2,4,6-tribromoaniline with 100 percent yield."
+            },
+            "src": "../../media/OChem_24_08_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00296:para:para-00002"
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00296:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00002-alt",
+              "text": "p-Toluidine reacts with acetic anhydride and pyridine to form N-(p-tolyl)acetamide. This reacts with bromine to form N-(2-bromo-4-methylphenyl)acetamide. This reacts with sodium hydroxide and water to form 2-bromo-4-methylaniline (79 percent yield)."
+            },
+            "src": "../../media/OChem_24_08_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00296:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00003-alt",
+              "text": "Aniline reacts with acetic anhydride, pyridine to form N-phenylacetamide. This reacts with benzoyl chloride and aluminum chloride to form N-(4-benzoylphenyl)acetamide. This reacts with sodium hydroxide and water to form 4-aminobenzophenone."
+            },
+            "src": "../../media/OChem_24_08_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00296:para:para-00005"
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00296:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00004-alt",
+              "text": "Acetanilide reacts with sulfurochloridic acid to form 4-acetamidobenzene-1-sulfonyl chloride. This reacts with ammonia to form N-(4-sulfamoylphenyl)acetamide. This reacts with sodium hydroxide and water to form sulfanilamide."
+            },
+            "src": "../../media/OChem_24_08_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00296:title:sect-00002-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00296:title:sect-00003-title",
+        "text": "Diazonium Salts: The Sandmeyer Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00296:para:para-00009"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00005-alt",
+              "text": "Aniline reacts with nitrous acid and sulfuric acid to form arenediazonium salt, hydrogen sulfate, and two equivalents of water."
+            },
+            "src": "../../media/OChem_24_08_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00296:para:para-00010"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00006-alt",
+              "text": "The arenediazonium salt reacts with H S O 4 minus and nucleophile to form a benzene substituted with a nucleophile and nitrogen as the product."
+            },
+            "src": "../../media/OChem_24_08_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00296:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00296:para:para-00012"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00007-alt",
+              "text": "p-Methylaniline and aniline both undergo reactions with nitrous acid and sulfuric acid to form two different intermediates. The first intermediate forms p-bromotoluene and the second one forms iodobenzene."
+            },
+            "src": "../../media/OChem_24_08_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00296:para:para-00013"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00008-alt",
+              "text": "o-Methylaniline reacts with nitrous acid and sulfuric acid to form o-methylbenzene-diazonium bisulfate. This reacts with potassium cyanide and copper cyanide to form o-methylbenzonitrile. This reacts with hydronium forming o-methylbenzoic acid."
+            },
+            "src": "../../media/OChem_24_08_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00296:para:para-00014"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00009-alt",
+              "text": "p-Methylaniline reacts with nitrous acid and sulfuric acid to form an intermediate. This reacts with copper oxide, copper nitrate, and water to form p-cresol with a 93 percent yield."
+            },
+            "src": "../../media/OChem_24_08_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00296:para:para-00015"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00010-alt",
+              "text": "p-Methylaniline reacts with two equivalents of bromine, then nitrous and sulfuric acids, then phosphinic acid to form 3,5-dibromotoluene. Toluene reacts with two equivalents of bromine and ferric bromide forming 2,4-dibromotoluene."
+            },
+            "src": "../../media/OChem_24_08_011.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00296:para:para-00016"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00011-alt",
+              "text": "Diazonium compound reacts with copper halide to form an aryl radical. This reacts to form a product in which benzene is substituted with an X group."
+            },
+            "src": "../../media/OChem_24_08_012.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "exam-00001",
+          "title": {
+            "segmentId": "m00296:example-title:exam-00001-title",
+            "text": "Using Diazonium Replacement Reactions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00017",
+              "segmentId": "m00296:para:para-00017"
+            },
+            {
+              "type": "para",
+              "id": "para-00018",
+              "segmentId": "m00296:para:para-00018",
+              "title": {
+                "segmentId": "m00296:para-title:para-00018-title",
+                "text": "Strategy"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00019",
+              "segmentId": "m00296:para:para-00019"
+            },
+            {
+              "type": "para",
+              "id": "para-00020",
+              "title": {
+                "segmentId": "m00296:para-title:para-00020-title",
+                "text": "Solution"
+              }
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00012",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00012-alt",
+              "text": "The structure of m-hydroxyacetophenone. It comprises a benzene ring with an acetyl group on C 1 and a hydroxyl group on C 3 position."
+            },
+            "src": "../../media/OChem_24_08_013.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00013",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00013-alt",
+              "text": "Benzene reacts with acetyl chloride and aluminum chloride to form acetophenone. This reacts with four different sets of reagents in four different steps to form m-hydroxyacetophenone."
+            },
+            "src": "../../media/OChem_24_08_014.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00296:title:sect-00004-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": null,
+      "title": {
+        "segmentId": "m00296:title:sect-00005-title",
+        "text": "Diazonium Coupling Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00022",
+          "segmentId": "m00296:para:para-00022"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00014",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00014-alt",
+              "text": "An arenediazonium salt reacts with benzene substituted with Y to form an azo compound. Y can be O H or N R 2 group."
+            },
+            "src": "../../media/OChem_24_08_015.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00023",
+          "segmentId": "m00296:para:para-00023"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00015",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00015-alt",
+              "text": "Benzenediazonium sulfate reacts with phenol to form an intermediate that reacts to form p-hydroxyazobenzene, orange crystals at 152 degree Celsius. The figure shows the electrostatic potential map of benzenediazonium sulfate."
+            },
+            "src": "../../media/OChem_24_08_016.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00024",
+          "segmentId": "m00296:para:para-00024"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00016",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00296:alt:fig-00016-alt",
+              "text": "Benzenediazonium sulfate reacts with N,N-dimethylaniline to form p-(dimethylamino)azobenzene, yellow crystals with a melting point of 127 degree Celsius."
+            },
+            "src": "../../media/OChem_24_08_017.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00296:title:sect-00006-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

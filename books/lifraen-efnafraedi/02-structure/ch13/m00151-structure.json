@@ -1,0 +1,131 @@
+{
+  "moduleId": "m00151",
+  "title": {
+    "segmentId": "m00151:title:auto-1",
+    "text": "More Complex Spin–Spin Splitting Patterns"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "df398df7-062c-4667-9a1c-d4530d0cf7ae"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00151:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00151:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00151:alt:fig-00001-alt",
+          "text": "The 1 H N M R spectrum of toluene shows peaks at 0 (T M S), 2.3 (singlet), and 7.2 (adjoining sets of indistinct multiplets)."
+        },
+        "src": "../../media/OChem_13_08_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00151:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00151:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00151:alt:fig-00002-alt",
+          "text": "Spectrum for trans-3-phenylprop-2-en-1-al with shifts: C 1 (doublet, 9.69), C 3 and benzene (indistinct at 7.57, two sharp at 7.49, clusters at 7.42), and C 2 (four equal, 6.73)."
+        },
+        "src": "../../media/OChem_13_08_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00151:para:para-00003"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00151:item:list-00001-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00151:item:list-00001-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m00151:item:list-00001-item-3"
+        },
+        {
+          "id": null,
+          "segmentId": "m00151:item:list-00001-item-4"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00151:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00151:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00151:alt:fig-00003-alt",
+          "text": "The structure of trans-cinnamaldehyde and proton on C 2 splitting tree diagram. The diagram shows J 2-3 values and J 1-2 values 12 and 6 Hertz, respectively."
+        },
+        "src": "../../media/OChem_13_08_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00151:para:para-00009"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00151:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

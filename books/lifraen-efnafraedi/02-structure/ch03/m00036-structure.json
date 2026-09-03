@@ -35,7 +35,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "Four chemical reactions are represented. Methane reacts with chlorine in the presence of ultraviolet light to form methyl chloride and hydrogen chloride. Carbon tetrachloride and hydrogen chloride are formed.",
+        "alt": {
+          "segmentId": "m00036:alt:fig-00001-alt",
+          "text": "Four chemical reactions are represented. Methane reacts with chlorine in the presence of ultraviolet light to form methyl chloride and hydrogen chloride. Carbon tetrachloride and hydrogen chloride are formed."
+        },
         "src": "../../media/OChem_03_05_001.jpg",
         "mimeType": "image/jpeg"
       }
@@ -53,7 +56,10 @@
         "segmentId": "m00036:caption:fig-00002-caption"
       },
       "media": {
-        "alt": "A double bar graph of temperature versus the number of carbon atoms that plots bars for melting and boiling points with an increasing trend.",
+        "alt": {
+          "segmentId": "m00036:alt:fig-00002-alt",
+          "text": "A double bar graph of temperature versus the number of carbon atoms that plots bars for melting and boiling points with an increasing trend."
+        },
         "src": "../../media/OChem_03_05_002.jpg",
         "mimeType": "image/jpeg"
       }

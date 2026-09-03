@@ -4,7 +4,9 @@
  * ── THE POPULATION, STATED ONCE SO EVERY NUMBER BELOW INHERITS IT ──────────────
  * Every count here is over LIVE `02-mt-output/**\/*-segments.is.md` files,
  * `chapter-metadata-*` EXCLUDED, in three books: chemistry 149, organic 48, micro 10
- * = 207 files, 29,476 canonical SEG markers, 207 EN/IS pairs. Measured 2026-08-25.
+ * = 207 files, 29,607 canonical SEG markers, 207 EN/IS pairs. Re-measured 2026-09-02
+ * after §C82 ③ (was 29,476 on 2026-08-25). The FILE count 207 is unchanged; only the
+ * marker density moved, because the re-extract added segments to existing files.
  * ⚠️ `orverufraedi` is NOT a run target (§C80/§C109) — its committed bytes are static
  * fixture input only, which Global Constraints permits explicitly. `edlisfraedi-2e`,
  * `liffraedi-2e` and `books/__e2e-fixture__` are deliberately OUT of the population: a
@@ -197,7 +199,7 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     vi.resetModules();
   });
 
-  it('PREMISE PIN — chemistry: 5,442 mustache + 49 ++ hits over 115 of 149 files', async () => {
+  it('PREMISE PIN — chemistry: 5,160 mustache + 49 ++ hits over 111 of 149 files', async () => {
     let mustache = 0;
     let plus = 0;
     let carriers = 0;
@@ -216,10 +218,13 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     // +25.6%. Adding them produces a number that is neither, and no single corrected
     // figure exists to put in its place: the plan's 49-vs-39 anchor was EN-side, over 6
     // modules, against `01-source`, while this 49 is IS-side and corpus-wide.
-    expect(mustache).toBe(5442); // {{…}} occurrences, chemistry IS side, 149 files
+    expect(mustache).toBe(5160); // {{…}} occurrences, chemistry IS side, 149 files
     expect(plus).toBe(49); // ++ REGEX HITS (detector), same population
-    expect(carriers).toBe(115);
-    expect(examined).toBe(21515); // segments inspected; an empty walk cannot reach it
+    expect(carriers).toBe(111);
+    // 🔴 examined ROSE while the hits FELL — 21,515 -> 21,556 against 5,442 -> 5,160. That
+    // direction is what distinguishes repair from blindness: MORE segments were inspected
+    // and FEWER legacy-dialect hits found. A drop in both would have been the alarm.
+    expect(examined).toBe(21556); // segments inspected; an empty walk cannot reach it
   });
 
   it('MUST-NOT-TRIP CONTROL — organic: 0 findings over all 48 files', async () => {
@@ -363,7 +368,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     const cross = r.findings.find((f) => f.leg === 'cross-side');
     expect(cross).toMatchObject({
       kind: 'seg-count-cross-side-mismatch',
-      enParsed: 11,
+      enParsed: 12,
       isParsed: 10,
     });
 
@@ -494,7 +499,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     expect(r.verdict).toBe(VERDICT.FAIL);
     expect(r.examined).toBe(0);
     expect(r.findings.find((f) => f.leg === 'cross-side')).toMatchObject({
-      enParsed: 11,
+      enParsed: 12,
       isParsed: 0,
     });
   });
@@ -661,10 +666,17 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       expect(f.codepoints).toEqual(['U+200B']);
     });
 
-    it('PREMISE PIN — 0 violations over 58,952 ids in 414 files, which is what licences a BLOCK', async () => {
-      // 🔴 MEASURED 2026-08-25 over the walker population, BOTH SIDES: 207 IS files +
-      // 207 EN counterparts = 414 files, 29,476 + 29,476 = 58,952 parsed ids, **0**
+    it('PREMISE PIN — 0 violations over 60,380 ids in 414 files, which is what licences a BLOCK', async () => {
+      // 🔴 RE-MEASURED 2026-09-02 over the walker population, BOTH SIDES: 207 IS files +
+      // 207 EN counterparts = 414 files, 29,607 IS + 30,773 EN = 60,380 parsed ids, **0**
       // violations = 0.000%, far under Plan B rule 4's ~5% bar.
+      // 🔴 THE TWO SIDES USED TO BE EQUAL AND NO LONGER ARE — 29,476 = 29,476 on 2026-08-25,
+      // 29,607 vs 30,773 today. That 1,166-id gap is not noise: it is §C82 ③'s re-extract
+      // showing up as arithmetic, EN segments with no IS counterpart yet. ▶ So a future
+      // reader must NOT "restore symmetry" by averaging or by re-deriving one side from the
+      // other; the gap closes only when the corpus is one vintage again, and its SIZE is a
+      // useful readout of how much re-MT is still owed. The 0.000% violation rate — this
+      // pin's actual claim — is unaffected either way.
       // ▶ PREMISE PIN, NOT A REGRESSION PIN (§C82 L20/L27): the corpus this battery gates
       // is about to be replaced by the re-MT run, so this is re-measured when it moves.
       let ids = 0;
@@ -684,7 +696,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
         }
       }
       expect(files).toBe(414);
-      expect(ids).toBe(58952); // L37: the COUNT beside the predicate — an empty walk fails here
+      expect(ids).toBe(60380); // L37: the COUNT beside the predicate — an empty walk fails here
       expect(violations).toBe(0);
     });
 
@@ -720,7 +732,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
 });
 
 describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
-  it('POSITIVE CONTROL — 0 spaced forms against 29,476 canonical markers over 207 files', async () => {
+  it('POSITIVE CONTROL — 0 spaced forms against 29,607 canonical markers over 207 files', async () => {
     // 🔴 A GUARD THAT MATCHES NOTHING IS INDISTINGUISHABLE FROM ONE THAT WORKS (L44③).
     // The clean corpus is only interpretable beside the planted trip below.
     let markers = 0;
@@ -734,7 +746,7 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
       }
     }
     expect(files).toBe(207);
-    expect(markers).toBe(29476);
+    expect(markers).toBe(29607);
   });
 
   it('PLANTED must-trip — and the SILENT DROP is proven by value, not by the verdict', async () => {

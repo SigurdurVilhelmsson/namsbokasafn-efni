@@ -1,0 +1,196 @@
+{
+  "moduleId": "m00041",
+  "title": {
+    "segmentId": "m00041:title:auto-1",
+    "text": "Cis–Trans Isomerism in Cycloalkanes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e70b596d-517a-46e1-9848-13b87ec87656"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00041:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "caption": {
+        "segmentId": "m00041:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00041:alt:fig-00001-alt",
+          "text": "The structural formula and ball and stick models of ethane and cyclopropane. The carbon-carbon bond in ethane undergoes rotation but rotation is not observed in cyclopropane."
+        },
+        "src": "../../media/OChem_04_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00041:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00041:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "caption": {
+        "segmentId": "m00041:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00041:alt:fig-00002-alt",
+          "text": "The chemical structures and ball and stick models of cis and trans-1,2-dimethylcyclopropane. Black and gray spheres represent carbon and hydrogen atoms, respectively."
+        },
+        "src": "../../media/OChem_04_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00041:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00041:alt:fig-00003-alt",
+          "text": "Constitutional isomers have different connections between atoms (2-methylpropane and n-butane) and stereoisomers have the same connections but different three-dimensional geometry (cyclopropane with two methyl groups)."
+        },
+        "src": "../../media/OChem_04_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00041:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00041:alt:fig-00004-alt",
+          "text": "The chemical structures of cis-1,3-dimethylcyclobutane and trans-1-bromo-3-ethylcyclopentane. The carbon atoms forming the rings are numbered."
+        },
+        "src": "../../media/OChem_04_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00041:example-title:exam-00001-title",
+        "text": "Naming Cycloalkanes"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00041:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00041:para:para-00009",
+          "title": {
+            "segmentId": "m00041:para-title:para-00009-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "title": {
+            "segmentId": "m00041:para-title:para-00010-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00041:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00041:para:para-00012"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00041:alt:fig-00005-alt",
+          "text": "A chemical structure of cyclopentane with hydrogen (wedge) and methyl (dash) on C 1, and methyl (wedge) and hydrogen (dash) on C 3."
+        },
+        "src": "../../media/OChem_04_02_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00041:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

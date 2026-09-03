@@ -1,0 +1,1304 @@
+{
+  "moduleId": "m00198",
+  "title": {
+    "segmentId": "m00198:title:auto-1",
+    "text": "Synthesis of Polysubstituted Benzenes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "61414901-3d54-45d0-972a-e81bb7e8d65f"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00198:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00198:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00198:para:para-00003"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00198:example-title:exam-00001-title",
+        "text": "Synthesizing a Polysubstituted Benzene"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00198:para:para-00004"
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00198:para:para-00005",
+          "title": {
+            "segmentId": "m00198:para-title:para-00005-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00198:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00198:para:para-00007",
+          "title": {
+            "segmentId": "m00198:para-title:para-00007-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00198:para:para-00008"
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00198:para:para-00009"
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00198:para:para-00010"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00198:alt:fig-00001-alt",
+          "text": "4-Bromo-2-nitrotoluene has a benzene ring. C 1, C 2, and C 4 are bonded to a methyl group, a nitro group, and a bromine atom, respectively."
+        },
+        "src": "../../media/OChem_16_10_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00198:alt:fig-00002-alt",
+          "text": "Ortho-nitrotoluene and para-bromotoluene reacteach with bromine and nitric acid to form 4-bromo-2-nitrotoluene. Meta-bromonitrobenzene does not undergo the reaction."
+        },
+        "src": "../../media/OChem_16_10_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00198:alt:fig-00003-alt",
+          "text": "Toluene reacts with bromine in the presence of iron tribromide to form ortho- and para-bromotoluene. The same products are formed when bromobenzene reacts with chloromethane in the presence of iron tribromide."
+        },
+        "src": "../../media/OChem_16_10_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00198:alt:fig-00004-alt",
+          "text": "4-Bromo-2-nitrobenzene can be formed from benzene via two routes. One of them involves formation of toluene followed by bromination, and the other involves formation of bromobenzene followed by meythylation."
+        },
+        "src": "../../media/OChem_16_10_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00002",
+      "title": {
+        "segmentId": "m00198:example-title:exam-00002-title",
+        "text": "Synthesizing a Polysubstituted Benzene"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00198:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00198:para:para-00012",
+          "title": {
+            "segmentId": "m00198:para-title:para-00012-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00198:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00198:para:para-00014",
+          "title": {
+            "segmentId": "m00198:para-title:para-00014-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00198:para:para-00015"
+        },
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00198:para:para-00016"
+        },
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00198:para:para-00017"
+        },
+        {
+          "type": "para",
+          "id": "para-00018",
+          "segmentId": "m00198:para:para-00018"
+        },
+        {
+          "type": "para",
+          "id": "para-00019",
+          "segmentId": "m00198:para:para-00019"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00198:alt:fig-00005-alt",
+          "text": "4-Chloro-2-propylbenzenesulfonic acid has a benzene ring. C 1, C 2, and C 4 are bonded to sulfonic acid, a propyl group, and a chlorine atom, respectively."
+        },
+        "src": "../../media/OChem_16_10_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00198:alt:fig-00006-alt",
+          "text": "Meta-chlorobenzene reacts with sulfur trioxide in the presence of sulfuric acid to form 4-chloro-2-propylbenzenesulfonic acid. The same products cannot be formed from.o-Propylbenzenesulfonic acid or p-chlorobenzenesulfonic acid upon chlorination or alkylation, respectively."
+        },
+        "src": "../../media/OChem_16_10_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00198:alt:fig-00007-alt",
+          "text": "Palladium-catalyzed hydrogenation of m-chloropropiophenone forms m-chloropropylbenzene."
+        },
+        "src": "../../media/OChem_16_10_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00008",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00198:alt:fig-00008-alt",
+          "text": "Propiophenone reacts with chlorine in the presence of iron trichloride to form m-chloropropiophenone."
+        },
+        "src": "../../media/OChem_16_10_008.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00009",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00198:alt:fig-00009-alt",
+          "text": "Benzene reacts with propanoyl chloride in the presence of aluminum trichloride to form propiophenone."
+        },
+        "src": "../../media/OChem_16_10_009.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00010",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00198:alt:fig-00010-alt",
+          "text": "A four-step reaction shows the formation of 4-chloro-2-propylbenzenesulfonic acid from benzene. It involves acylation then chlorination, then hydrogenation, and lastly sulfonation."
+        },
+        "src": "../../media/OChem_16_10_010.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00198:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00198:title:sect-00002-title",
+        "text": "Combinatorial Chemistry"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00022",
+          "segmentId": "m00198:para:para-00022"
+        },
+        {
+          "type": "para",
+          "id": "para-00023",
+          "segmentId": "m00198:para:para-00023"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00011-alt",
+              "text": "Benzene with R 1 fused to 7-membered ring made of two nitrogens, five carbons, and double bond. This ring is bonded to oxygen, R 2, R 3, and R 4."
+            },
+            "src": "../../media/OChem_16_10_012.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00024",
+          "segmentId": "m00198:para:para-00024"
+        },
+        {
+          "type": "para",
+          "id": "para-00025",
+          "segmentId": "m00198:para:para-00025"
+        },
+        {
+          "type": "para",
+          "id": "para-00026",
+          "segmentId": "m00198:para:para-00026"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00012",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00198:caption:fig-00012-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00012-alt",
+              "text": "A picture of a chemistry robot used to make a library of many compounds at the same time."
+            },
+            "src": "../../media/OSX_OrgChem_16_98_Robot.jpeg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00013",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00198:caption:fig-00013-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00013-alt",
+              "text": "A reacts with four B groups to form four products which in turn each react with four C groups to form q6 products which in turn react with four D groups to make 64 products."
+            },
+            "src": "../../media/OChem_16_10_014.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00001-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00001-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00001-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00001-item-10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00198:title:sect-00004-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00027",
+          "segmentId": "m00198:para:para-00027"
+        },
+        {
+          "type": "para",
+          "id": "para-00028",
+          "segmentId": "m00198:para:para-00028"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00014",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00014-alt",
+              "text": "Benzene reacts with an electrophile to form a carbocation intermediate, which on deprotonation forms benzene bonded to the electrophile."
+            },
+            "src": "../../media/OChem_16_EC_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00029",
+          "segmentId": "m00198:para:para-00029"
+        },
+        {
+          "type": "para",
+          "id": "para-00030",
+          "segmentId": "m00198:para:para-00030"
+        },
+        {
+          "type": "para",
+          "id": "para-00031",
+          "segmentId": "m00198:para:para-00031"
+        },
+        {
+          "type": "para",
+          "id": "para-00032",
+          "segmentId": "m00198:para:para-00032"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "summary-reactions",
+      "title": {
+        "segmentId": "m00198:title:sect-00005-title",
+        "text": "Summary of Reactions"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00002",
+          "listType": "enumerated",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00002-item-1",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00003",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00198:item:list-00003-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00198:item:list-00003-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00198:item:list-00003-item-3"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00198:item:list-00003-item-4"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00198:item:list-00003-item-5"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00198:item:list-00003-item-6"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00198:item:list-00003-item-7"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00198:item:list-00003-item-8"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00002-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00002-item-3",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00004",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00198:item:list-00004-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00198:item:list-00004-item-2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00002-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00002-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00002-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00198:item:list-00002-item-7"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00015",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00015-alt",
+              "text": "Benzene reacts with a fluorinating agent to form fluorobenzene."
+            },
+            "src": "../../media/OChem_16_EC_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00016",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00016-alt",
+              "text": "Benzene reacts with bromine in the presence of iron tribromide to yield bromobenzene and hydrogen bromide."
+            },
+            "src": "../../media/OChem_16_EC_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00017",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00017-alt",
+              "text": "Benzene reacts with chlorine in the presence of iron trichloride to form chlorobenzene and hydrochloric acid."
+            },
+            "src": "../../media/OChem_16_EC_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00018",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00018-alt",
+              "text": "Benzene reacts with iodine in the presence of copper (2) chloride to form iodobenzene and hydrogen iodide."
+            },
+            "src": "../../media/OChem_16_EC_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00019",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00019-alt",
+              "text": "Benzene reacts with nitric acid in the presence of sulfuric acid to form nitrobenzene and water."
+            },
+            "src": "../../media/OChem_16_EC_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00020",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00020-alt",
+              "text": "Benzene reacts with sulfur trioxide in the presence of sulfuric acid to form benzene bonded to S O 3 H group."
+            },
+            "src": "../../media/OChem_16_EC_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00021",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00021-alt",
+              "text": "Benzene reacts with methyl chloride in the presence of aluminum trichloride to form methyl benzene and hydrogen chloride."
+            },
+            "src": "../../media/OChem_16_EC_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00022",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00022-alt",
+              "text": "Benzene reacts with acetyl chloride in the presence of aluminum trichloride to form benzene bonded to an acetyl group and hydrogen chloride."
+            },
+            "src": "../../media/OChem_16_EC_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00023",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00023-alt",
+              "text": "Nitrobenzene reacts with iron in the presence of acid in step 1, and base in step 2 to form a benzene ring bonded to an amino group."
+            },
+            "src": "../../media/OChem_16_EC_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00024",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00024-alt",
+              "text": "Benzene with three nitro groups and a chlorine atom reacts with sodium hydroxide to form benzene with three nitro groups and a hydroxyl group."
+            },
+            "src": "../../media/OChem_16_EC_011.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00025",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00025-alt",
+              "text": "Bromobenzene reacts with sodium amide in the presence of ammonia to form aniline and sodium bromide."
+            },
+            "src": "../../media/OChem_16_EC_012.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00026",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00026-alt",
+              "text": "In water, toluene reacts with potassium permanganate to form benzoic acid."
+            },
+            "src": "../../media/OChem_16_EC_013.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00027",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00027-alt",
+              "text": "In C C l 4, toluene reacts with N-bromosuccinimide in the presence of benzyl peroxide to form benzene bonded toa C h 2 B r group."
+            },
+            "src": "../../media/OChem_16_EC_014.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00028",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00028-alt",
+              "text": "Benzene reacts with hydrogen to form cyclohexane.in the presence of rhodium on carbon as a catalyst"
+            },
+            "src": "../../media/OChem_16_EC_015.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00029",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00198:alt:fig-00029-alt",
+              "text": "A carbonyl group bonded to a benzene ring on one side and an R groyp on the other reacts with hydrogen in the presence of palladium to form benzene bonded to a C H 2 R group."
+            },
+            "src": "../../media/OChem_16_EC_016.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00198:title:sect-00006-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00033",
+          "segmentId": "m00198:para:para-00033"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00038",
+          "segmentId": "m00198:para:para-00038"
+        },
+        {
+          "type": "para",
+          "id": "para-00094",
+          "segmentId": "m00198:para:para-00094"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00047",
+          "segmentId": "m00198:para:para-00047"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00058",
+          "segmentId": "m00198:para:para-00058"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00068",
+          "segmentId": "m00198:para:para-00068"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00073",
+          "segmentId": "m00198:para:para-00073"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00041",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00042",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00043",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00044",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00045",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00046",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00047",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00048",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00049",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00050",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00051",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00052",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00053",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00054",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00055",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00056",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 10
+}

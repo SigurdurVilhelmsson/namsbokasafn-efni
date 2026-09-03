@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>–</m:mtext><m:mover><m:mo>N</m:mo><m:mrow><m:mo>+</m:mo></m:mrow></m:mover><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{–}\\overset{{+}}{N}{({\\text{CH}}3)}3}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>–Ÿ</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{–Ÿ}}"
+  }
+}

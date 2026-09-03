@@ -20,7 +20,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "A series of chemical structures of methane, ethane, propane, and butane are shown.",
+        "alt": {
+          "segmentId": "m00033:alt:fig-00001-alt",
+          "text": "A series of chemical structures of methane, ethane, propane, and butane are shown."
+        },
         "src": "../../media/OChem_03_02_001.jpg",
         "mimeType": "image/jpeg"
       }
@@ -36,7 +39,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The chemical structure of typical animal fat featuring a three tier carbon chain.",
+        "alt": {
+          "segmentId": "m00033:alt:fig-00002-alt",
+          "text": "The chemical structure of typical animal fat featuring a three tier carbon chain."
+        },
         "src": "../../media/OChem_03_02_002.jpg",
         "mimeType": "image/jpeg"
       }
@@ -52,7 +58,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "Eight molecular structures and their corresponding ball and stick models of methane, ethane, propane, butane, isobutane, pentane, 2-methylbutane, and 2,2-dimethylpropane. The black and grey spheres represent carbon and hydrogen, respectively.",
+        "alt": {
+          "segmentId": "m00033:alt:fig-00003-alt",
+          "text": "Eight molecular structures and their corresponding ball and stick models of methane, ethane, propane, butane, isobutane, pentane, 2-methylbutane, and 2,2-dimethylpropane. The black and grey spheres represent carbon and hydrogen, respectively."
+        },
         "src": "../../media/OChem_03_02_003.jpg",
         "mimeType": "image/jpeg"
       }
@@ -71,39 +80,11 @@
       "type": "table",
       "id": "table-00001",
       "summary": " ",
+      "title": {
+        "segmentId": "m00033:table-title:table-00001-title",
+        "text": "Number of Alkane Isomers"
+      },
       "rows": [
-        {
-          "cells": [
-            {
-              "segmentId": "m00033:entry:auto-7",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00033:entry:auto-8",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00033:entry:auto-9",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00033:entry:auto-10",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            }
-          ]
-        },
         {
           "cells": [
             {
@@ -231,6 +212,38 @@
               }
             }
           ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00033:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00033:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00033:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00033:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
         }
       ]
     },
@@ -245,7 +258,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "Three sets of molecular structures, where each set represents two isomers. The first, second, and third sets present different carbon skeletons, functional groups, and positions of functional groups, respectively.",
+        "alt": {
+          "segmentId": "m00033:alt:fig-00004-alt",
+          "text": "Three sets of molecular structures, where each set represents two isomers. The first, second, and third sets present different carbon skeletons, functional groups, and positions of functional groups, respectively."
+        },
         "src": "../../media/OChem_03_02_004.jpg",
         "mimeType": "image/jpeg"
       }
@@ -263,7 +279,10 @@
         "segmentId": "m00033:caption:fig-00005-caption"
       },
       "media": {
-        "alt": "Five different representations of the molecular structure of butane.",
+        "alt": {
+          "segmentId": "m00033:alt:fig-00005-alt",
+          "text": "Five different representations of the molecular structure of butane."
+        },
         "src": "../../media/OChem_03_02_005.jpg",
         "mimeType": "image/jpeg"
       }
@@ -277,62 +296,13 @@
       "type": "table",
       "id": "table-00002",
       "summary": "Alt Text Placeholder",
+      "title": {
+        "segmentId": "m00033:table-title:table-00002-title",
+        "text": "Names of Straight-Chain Alkanes"
+      },
       "rows": [
         {
           "cells": [
-            {
-              "segmentId": "m00033:entry:auto-31",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00033:entry:auto-32",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00033:entry:auto-33",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00033:entry:auto-34",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00033:entry:auto-35",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m00033:entry:auto-36",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            }
-          ]
-        },
-        {
-          "cells": [
-            {
-              "segmentId": "m00033:entry:auto-37",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
             {
               "segmentId": "m00033:entry:auto-38",
               "attributes": {
@@ -367,18 +337,18 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00033:entry:auto-43",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00033:entry:auto-44",
               "attributes": {
@@ -413,18 +383,18 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00033:entry:auto-49",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00033:entry:auto-50",
               "attributes": {
@@ -459,18 +429,18 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00033:entry:auto-55",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00033:entry:auto-56",
               "attributes": {
@@ -505,18 +475,18 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00033:entry:auto-61",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00033:entry:auto-62",
               "attributes": {
@@ -551,18 +521,18 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00033:entry:auto-67",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00033:entry:auto-68",
               "attributes": {
@@ -597,18 +567,18 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00033:entry:auto-73",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00033:entry:auto-74",
               "attributes": {
@@ -643,18 +613,18 @@
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00033:entry:auto-79",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00033:entry:auto-80",
               "attributes": {
@@ -664,6 +634,59 @@
             },
             {
               "segmentId": "m00033:entry:auto-81",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00033:entry:auto-82",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00033:entry:auto-83",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00033:entry:auto-84",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00033:entry:auto-85",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00033:entry:auto-86",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00033:entry:auto-87",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00033:entry:auto-88",
               "attributes": {
                 "valign": "top",
                 "align": "left"
@@ -690,7 +713,7 @@
       "id": "exam-00001",
       "title": {
         "segmentId": "m00033:example-title:exam-00001-title",
-        "text": "Strategy"
+        "text": "Drawing the Structures of Isomers"
       },
       "content": [
         {
@@ -701,7 +724,11 @@
         {
           "type": "para",
           "id": "para-00010",
-          "segmentId": "m00033:para:para-00010"
+          "segmentId": "m00033:para:para-00010",
+          "title": {
+            "segmentId": "m00033:para-title:para-00010-title",
+            "text": "[[span:Strategy|red-text]]"
+          }
         },
         {
           "type": "para",
@@ -709,7 +736,7 @@
           "segmentId": "m00033:para:para-00011",
           "title": {
             "segmentId": "m00033:para-title:para-00011-title",
-            "text": "Solution"
+            "text": "[[span:Solution|cyan-text]]"
           }
         }
       ]
@@ -720,7 +747,10 @@
       "class": "unnumbered scaled-down",
       "caption": null,
       "media": {
-        "alt": "The formation of two isomers with the formula C2H7N from three individual components. The components used are 2 carbon, 7 hydrogen, and 1 nitrogen.",
+        "alt": {
+          "segmentId": "m00033:alt:media-1-alt",
+          "text": "The formation of two isomers with the formula C2H7N from three individual components. The components used are 2 carbon, 7 hydrogen, and 1 nitrogen."
+        },
         "src": "../../media/OChem_03_02_006.jpg",
         "mimeType": "image/jpeg"
       }
@@ -766,12 +796,15 @@
       "placeholder": "[[MEDIA:1]]",
       "id": null,
       "class": null,
-      "alt": "The formation of two isomers with the formula C2H7N from three individual components. The components used are 2 carbon, 7 hydrogen, and 1 nitrogen.",
       "src": "../../media/OChem_03_02_006.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m00033:alt:media-1-alt",
+        "text": "The formation of two isomers with the formula C2H7N from three individual components. The components used are 2 carbon, 7 hydrogen, and 1 nitrogen."
+      }
     }
   ],
   "sectionOrder": 2

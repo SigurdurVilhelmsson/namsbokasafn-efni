@@ -75,10 +75,34 @@ describe('runFileChecks — unrecognized inline (DOM)', () => {
   it('does not flag pipeline-handled block elements nested in a para', () => {
     // OpenStax nests figure/list/media/equation/table inside <para>; these are
     // built by the pipeline, not stripped. Only genuinely-unknown tags flag.
+    //
+    // ⚠️ THE POSITIVE CONTROL USED TO BE <span>, AND §C118 ⑬ RETIRED IT. <span>
+    // gained a marker case in cnxml-extract.js and joined HANDLED_INLINE, so it is
+    // no longer unknown — leaving it here would have left this test asserting
+    // `toEqual({})`, i.e. a null with nothing proving the check still fires.
+    // <quote> is the replacement: still genuinely unhandled, so the ignore-list
+    // below is measured against something that DOES flag.
     const cnxml =
       '<document><para>x<figure id="f"/><list><item>a</item></list>' +
-      '<equation/><table/><span>s</span></para></document>';
-    expect(runFileChecks(cnxml).unrecognizedInline).toEqual({ span: 1 });
+      '<equation/><table/><quote>q</quote></para></document>';
+    expect(runFileChecks(cnxml).unrecognizedInline).toEqual({ quote: 1 });
+  });
+
+  it('does not flag <span> — it is a handled inline marker type (§C118 ⑬)', () => {
+    // The behaviour ⑬ changed, asserted directly rather than inferred from the
+    // absence above. Organic's reaction-colouring spans are extracted as
+    // `[[span:inner|class]]`; before ⑬ the probe called <span> unknown 286 times
+    // across 98 of 342 organic modules (NOT the 184 the register predicted — 184 is
+    // how many modules CONTAIN a span; check 5 only walks direct children of
+    // TEXT_CONTAINERS), noise that would bury a real finding.
+    const cnxml = '<document><para>x<span class="magenta-text">F</span></para></document>';
+    const r = runFileChecks(cnxml);
+    expect(r.unrecognizedInline).toEqual({});
+    // Non-vacuity: the same container with a genuinely-unknown sibling still fires,
+    // so the {} above is a classification result and not a dead code path.
+    const withUnknown =
+      '<document><para>x<span class="magenta-text">F</span><quote>q</quote></para></document>';
+    expect(runFileChecks(withUnknown).unrecognizedInline).toEqual({ quote: 1 });
   });
 });
 

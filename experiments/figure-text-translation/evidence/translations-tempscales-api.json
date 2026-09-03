@@ -1,0 +1,29 @@
+{
+ "_source": "Málstaður /v1/translate, no glossary",
+ "blocks": {
+  "Fahrenheit": [
+   "Fahrenheit"
+  ],
+  "Boiling|point|of water": [
+   "Suðumark vatns"
+  ],
+  "Freezing|point|of water": [
+   "Frostmark vatns"
+  ],
+  "180 Fahrenheit|degrees": [
+   "180 gráður á Fahrenheit"
+  ],
+  "Celsius": [
+   "Selsíus"
+  ],
+  "100 Celsius|degrees": [
+   "100 Selsíusgráður"
+  ],
+  "Kelvin": [
+   "Kelvin"
+  ],
+  "100 kelvins": [
+   "100 kelvin"
+  ]
+ }
+}

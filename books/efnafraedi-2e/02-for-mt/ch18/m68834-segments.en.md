@@ -8,7 +8,7 @@ By the end of this section, you will be able to:
 Describe the preparation, properties, and uses of some representative metal carbonates
 
 <!-- SEG:m68834:para:fs-idm37877696 -->
-The chemistry of carbon is extensive; however, most of this chemistry is not relevant to this chapter. The other aspects of the chemistry of carbon will appear in the chapter covering organic chemistry. In this chapter, we will focus on the carbonate ion and related substances. The metals of groups 1 and 2, as well as zinc, cadmium, mercury, and lead(II), form ionic {{term}}carbonates{{/term}}—compounds that contain the carbonate anions, [[MATH:1]] The metals of group 1, magnesium, calcium, strontium, and barium also form {{term}}hydrogen carbonates{{/term}}—compounds that contain the hydrogen carbonate anion, [[MATH:2]] also known as the {{term}}bicarbonate anion{{/term}}.
+The chemistry of carbon is extensive; however, most of this chemistry is not relevant to this chapter. The other aspects of the chemistry of carbon will appear in the chapter covering organic chemistry. In this chapter, we will focus on the carbonate ion and related substances. The metals of groups 1 and 2, as well as zinc, cadmium, mercury, and lead(II), form ionic [[term:carbonates|term-00001]]—compounds that contain the carbonate anions, [[MATH:1]] The metals of group 1, magnesium, calcium, strontium, and barium also form [[term:hydrogen carbonates|term-00002]]—compounds that contain the hydrogen carbonate anion, [[MATH:2]] also known as the [[term:bicarbonate anion|term-00003]].
 
 <!-- SEG:m68834:para:fs-idm59038240 -->
 With the exception of magnesium carbonate, it is possible to prepare carbonates of the metals of groups 1 and 2 by the reaction of carbon dioxide with the respective oxide or hydroxide. Examples of such reactions include:
@@ -34,6 +34,9 @@ Hydrogen carbonates of the alkaline earth metals remain stable only in solution;
 <!-- SEG:m68834:caption:CNX_Chem_18_06_Cave-caption -->
 (a) Stalactites and (b) stalagmites are cave formations of calcium carbonate. (credit a: modification of work by Arvind Govindaraj; credit b: modification of work by the National Park Service.)
 
+<!-- SEG:m68834:alt:fs-idm72203456-alt -->
+Two photographs are shown and labeled, “a” and “b.” Photo a shows stalactites clinging to the ceiling of a cave while photo b shows a stalagmite growing from the floor of a cave.
+
 <!-- SEG:m68834:para:fs-idm80443440 -->
 The two carbonates used commercially in the largest quantities are sodium carbonate and calcium carbonate. In the United States, sodium carbonate is extracted from the mineral trona, Na[[sub:3]](CO[[sub:3]])(HCO[[sub:3]])(H[[sub:2]]O)[[sub:2]]. Following recrystallization to remove clay and other impurities, heating the recrystallized trona produces Na[[sub:2]]CO[[sub:3]]:
 
@@ -45,6 +48,9 @@ Carbonates react with acids to form salts of the metal, gaseous carbon dioxide, 
 
 <!-- SEG:m68834:caption:CNX_Chem_18_06_CarbonCO2-caption -->
 The reaction of calcium carbonate with hydrochloric acid is shown. (credit: Mark Ott)
+
+<!-- SEG:m68834:alt:fs-idm92455936-alt -->
+A photograph of a watch glass full of a white solid is shown. A plastic pipette drips a colorless liquid into the solid, causing bubbles.
 
 <!-- SEG:m68834:para:fs-idm95841776 -->
 Other applications of carbonates include glass making—where carbonate ions serve as a source of oxide ions—and synthesis of oxides.

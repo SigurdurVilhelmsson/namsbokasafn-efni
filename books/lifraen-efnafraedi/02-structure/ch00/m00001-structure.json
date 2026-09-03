@@ -1,0 +1,603 @@
+{
+  "moduleId": "m00001",
+  "title": {
+    "segmentId": "m00001:title:auto-1",
+    "text": "Dedication and Preface"
+  },
+  "documentClass": "preface",
+  "metadata": {
+    "uuid": "a38dab36-9d20-4710-806d-b4ceccef61d4"
+  },
+  "content": [
+    {
+      "type": "note",
+      "id": "note-00001",
+      "class": "dedication-page",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "dedication01",
+          "segmentId": "m00001:para:dedication01"
+        },
+        {
+          "type": "para",
+          "id": "dedication02",
+          "segmentId": "m00001:para:dedication02"
+        },
+        {
+          "type": "para",
+          "id": "dedication03",
+          "segmentId": "m00001:para:dedication03"
+        },
+        {
+          "type": "para",
+          "id": "dedication04",
+          "segmentId": "m00001:para:dedication04"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-dedication",
+      "class": "unnumbered",
+      "caption": {
+        "segmentId": "m00001:caption:fig-dedication-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00001:alt:fig-dedication-alt",
+          "text": "A photograph of a smiling adult man."
+        },
+        "src": "../../media/OChem_00_00_Dedication.jpeg",
+        "mimeType": "image/jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "eip-420",
+      "segmentId": "m00001:para:eip-420"
+    },
+    {
+      "type": "section",
+      "id": "eip-260",
+      "class": null,
+      "title": {
+        "segmentId": "m00001:title:eip-260-title",
+        "text": "About OpenStax"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "eip-616",
+          "segmentId": "m00001:para:eip-616"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "eip-479",
+      "class": null,
+      "title": {
+        "segmentId": "m00001:title:eip-479-title",
+        "text": "About OpenStax resources"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "eip-475",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:eip-475-title",
+            "text": "Customization"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "eip-849",
+              "segmentId": "m00001:para:eip-849"
+            },
+            {
+              "type": "para",
+              "id": "eip-338",
+              "segmentId": "m00001:para:eip-338"
+            },
+            {
+              "type": "para",
+              "id": "eip-23",
+              "segmentId": "m00001:para:eip-23"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "eip-596",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:eip-596-title",
+            "text": "Art attribution"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "eip-41",
+              "segmentId": "m00001:para:eip-41"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "eip-597",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:eip-597-title",
+            "text": "Errata"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "eip-42",
+              "segmentId": "m00001:para:eip-42"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "eip-255",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:eip-255-title",
+            "text": "Format"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "eip-109",
+              "segmentId": "m00001:para:eip-109"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "eip-905",
+      "class": null,
+      "title": {
+        "segmentId": "m00001:title:eip-905-title",
+        "text": "From the author—About [[i:Organic Chemistry: A Tenth Edition]]"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "eip-35",
+          "segmentId": "m00001:para:eip-35"
+        },
+        {
+          "type": "section",
+          "id": "eip-667",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:eip-667-title",
+            "text": "Changes to the tenth edition"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00001",
+              "segmentId": "m00001:para:para-00001"
+            },
+            {
+              "type": "para",
+              "id": "para-00002",
+              "segmentId": "m00001:para:para-00002"
+            },
+            {
+              "type": "list",
+              "id": "list-00001",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00001-item-1"
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "para-00003",
+              "segmentId": "m00001:para:para-00003"
+            },
+            {
+              "type": "list",
+              "id": "list-00002",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00002-item-1"
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "para-00004",
+              "segmentId": "m00001:para:para-00004"
+            },
+            {
+              "type": "list",
+              "id": "list-00003",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00003-item-1"
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "para-00005",
+              "segmentId": "m00001:para:para-00005"
+            },
+            {
+              "type": "list",
+              "id": "list-00004",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00004-item-1"
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "para-00006",
+              "segmentId": "m00001:para:para-00006"
+            },
+            {
+              "type": "list",
+              "id": "list-00005",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00005-item-1"
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "para-00008",
+              "segmentId": "m00001:para:para-00008"
+            },
+            {
+              "type": "list",
+              "id": "list-00007",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00007-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00007-item-2"
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "para-00009",
+              "segmentId": "m00001:para:para-00009"
+            },
+            {
+              "type": "list",
+              "id": "list-00008",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00008-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00008-item-2"
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "para-00010",
+              "segmentId": "m00001:para:para-00010"
+            },
+            {
+              "type": "list",
+              "id": "list-00009",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00009-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00009-item-2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "eip-668",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:eip-668-title",
+            "text": "Coverage and scope"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "eip-863",
+              "segmentId": "m00001:para:eip-863"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "eip-951",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:eip-951-title",
+            "text": "Pedagogical foundation and features"
+          },
+          "content": [
+            {
+              "type": "list",
+              "id": "list-00010",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00010-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00010-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00010-item-3"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00010-item-4"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00010-item-5"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m00001:item:list-00010-item-6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "eip-88",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:eip-88-title",
+            "text": "Comprehensive art program"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "eip-87",
+              "segmentId": "m00001:para:eip-87"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "eip-384",
+      "class": null,
+      "title": {
+        "segmentId": "m00001:title:eip-384-title",
+        "text": "About the author"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "eip-4",
+          "class": "sr-contrib-auth",
+          "title": {
+            "segmentId": "m00001:title:eip-4-title",
+            "text": "John E. McMurry"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "eip-205",
+              "segmentId": "m00001:para:eip-205"
+            },
+            {
+              "type": "para",
+              "id": "para-00011",
+              "segmentId": "m00001:para:para-00011"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00018",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:sect-00018-title",
+            "text": "Reviewers"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00020",
+              "segmentId": "m00001:para:para-00020"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00019",
+      "class": null,
+      "title": {
+        "segmentId": "m00001:title:sect-00019-title",
+        "text": "Additional resources"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "eip-00001",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:eip-00001-title",
+            "text": "Diversity and Inclusion Modules"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00012",
+              "segmentId": "m00001:para:para-00012"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "eip-00002",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:eip-00002-title",
+            "text": "Study Guide and Student Solutions Manual"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00013",
+              "segmentId": "m00001:para:para-00013"
+            },
+            {
+              "type": "para",
+              "id": "para-00014",
+              "segmentId": "m00001:para:para-00014"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00021",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:sect-00021-title",
+            "text": "Academic integrity"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00025",
+              "segmentId": "m00001:para:para-00025"
+            },
+            {
+              "type": "para",
+              "id": "para-00026",
+              "segmentId": "m00001:para:para-00026"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00001",
+              "class": "unnumbered",
+              "caption": {
+                "segmentId": "m00001:caption:fig-00001-caption"
+              },
+              "media": {
+                "alt": {
+                  "segmentId": "m00001:alt:fig-00001-alt",
+                  "text": "Three sections in a series are placed horizontally and named approved, ask instructor, and not approved. Each with different icons showing stages of the workflow."
+                },
+                "src": "../../media/AcademicIntegritySliderv3-1-column.jpg",
+                "mimeType": "image/png"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00027",
+              "segmentId": "m00001:para:para-00027"
+            },
+            {
+              "type": "para",
+              "id": "para-00027a",
+              "segmentId": "m00001:para:para-00027a"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00022",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:sect-00022-title",
+            "text": "Community Hubs"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00028",
+              "segmentId": "m00001:para:para-00028"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00023",
+          "class": null,
+          "title": {
+            "segmentId": "m00001:title:sect-00023-title",
+            "text": "Technology partners"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00029",
+              "segmentId": "m00001:para:para-00029"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

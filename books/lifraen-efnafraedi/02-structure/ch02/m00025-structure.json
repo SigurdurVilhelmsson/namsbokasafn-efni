@@ -1,0 +1,350 @@
+{
+  "moduleId": "m00025",
+  "title": {
+    "segmentId": "m00025:title:auto-1",
+    "text": "Acid and Base Strength"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3d398acd-83b4-4969-a9a6-5c09f8b96ce4"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00025:para:para-00001"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00021",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00025:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00025:para:para-00003"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00002",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00025:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00025:para:para-00005"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00003",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00025:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00025:para:para-00007"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00025:table-title:table-00001-title",
+        "text": "Relative Strengths of Some Common Acids and Their Conjugate Bases"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-10",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-11",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-12",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-13",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-14",
+              "attributes": {}
+            },
+            {
+              "segmentId": null,
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "morerows": "7"
+              },
+              "alt": {
+                "segmentId": "m00025:alt:OChem_02_08_001_jpg-alt",
+                "text": "An arrow points downward; top is blue and labeled weaker acid, bottom is red and labeled stronger acid.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_08_001.jpg"
+              }
+            },
+            {
+              "segmentId": "m00025:entry:auto-16",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-17",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-18",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-19",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-20",
+              "attributes": {}
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "morerows": "7"
+              },
+              "alt": {
+                "segmentId": "m00025:alt:OChem_02_08_002_jpg-alt",
+                "text": "An arrow points upward; top is red and labeled stronger base, bottom is blue and labeled weaker base.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_08_002.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00025:entry:auto-22",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-23",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-24",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-25",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-26",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00025:entry:auto-27",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-28",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-29",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-30",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-31",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00025:entry:auto-32",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-33",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-34",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-35",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-36",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00025:entry:auto-37",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-38",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-39",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-40",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-41",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00025:entry:auto-42",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-43",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-44",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-45",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-46",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00025:entry:auto-47",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-48",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-49",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-50",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-51",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00025:entry:auto-52",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-53",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-54",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-55",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00025:entry:auto-56",
+              "attributes": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00025:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 8
+}

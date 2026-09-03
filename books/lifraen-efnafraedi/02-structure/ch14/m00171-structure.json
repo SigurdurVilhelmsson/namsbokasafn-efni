@@ -1,0 +1,484 @@
+{
+  "moduleId": "m00171",
+  "title": {
+    "segmentId": "m00171:title:auto-1",
+    "text": "Stability of Conjugated Dienes: Molecular Orbital Theory"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "171bfea2-eda1-4696-bfa5-3682f0515248"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00171:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00171:alt:fig-00001-alt",
+          "text": "Cyclohexene reacts with N-bromosuccinimide in the presence of light, in carbon tetrachloride to form 3-bromocyclohexene, which reacts with potassium tert-butoxide and tert-butyl alcohol to form 76 percent of 1,3-cyclohexadiene."
+        },
+        "src": "../../media/OChem_14_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00171:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00171:alt:fig-00002-alt",
+          "text": "In a reaction, 3-methyl-1,3-butanediol reacts with aluminum oxide when heated to form isoprene (2-methyl-1,3-butadiene) and two moles of water."
+        },
+        "src": "../../media/OChem_14_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00171:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00171:alt:fig-00003-alt",
+          "text": "The structures of 1,3-butadiene and butane with their C 2-C 3 single bonds labeled 147 and 153 picometers, respectively."
+        },
+        "src": "../../media/OChem_14_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00171:para:para-00004"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00171:table-title:table-00001-title",
+        "text": "Heats of Hydrogenation for Some Alkenes and Dienes"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00171:entry:auto-10",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left",
+                "morerows": "1"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-11",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left",
+                "morerows": "1"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "center",
+                "namest": "c3",
+                "nameend": "c4"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00171:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00171:alt:OChem_14_01_004a_jpg-alt",
+                "text": "The condensed structural formula reads, C H 3 C H 2 C H double bonded to C H 2.",
+                "mediaId": null,
+                "src": "../../media/OChem_14_01_004a.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00171:alt:OChem_14_01_004f_jpg-alt",
+                "text": "The condensed structural formula reads, C H 3 C H 2 C H 2 C H 3.",
+                "mediaId": null,
+                "src": "../../media/OChem_14_01_004f.jpg"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00171:alt:OChem_14_01_004b_jpg-alt",
+                "text": "The structure has a 3-carbon chain with a double bond between C 1-C 2. C 2 is further single bonded to a methyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_14_01_004b.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00171:alt:OChem_14_01_004g_jpg-alt",
+                "text": "The structure has a 3-carbon chain. C 2 is bonded to a methyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_14_01_004g.jpg"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00171:alt:OChem_14_01_004c_jpg-alt",
+                "text": "The condensed structural formula reads, H 2 C double bonded to C H C H 2 C H double bonded to C H 2.",
+                "mediaId": null,
+                "src": "../../media/OChem_14_01_004c.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00171:alt:OChem_14_01_004h_jpg-alt",
+                "text": "The condensed structural formula reads, C H 3 C H 2 C H 2 C H 2 C H 3.",
+                "mediaId": null,
+                "src": "../../media/OChem_14_01_004h.jpg"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00171:alt:OChem_14_01_004d_jpg-alt",
+                "text": "The condensed structural formula reads, H 2 C double bonded to C H single bonded to C H double bonded to C H 2.",
+                "mediaId": null,
+                "src": "../../media/OChem_14_01_004d.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00171:alt:OChem_14_01_004i_jpg-alt",
+                "text": "The condensed structural formula reads, C H 3 C H 2 C H 2 C H 3.",
+                "mediaId": null,
+                "src": "../../media/OChem_14_01_004i.jpg"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00171:alt:OChem_14_01_004e_jpg-alt",
+                "text": "The condensed structural formula has a 4-carbon chain with double bonds between C 1-C 2 and C 3-C 4. C 3 is single bonded to a methyl group.\n",
+                "mediaId": null,
+                "src": "../../media/OChem_14_01_004e.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              },
+              "alt": {
+                "segmentId": "m00171:alt:OChem_14_01_004j_jpg-alt",
+                "text": "The condensed structural formula has a 4-carbon chain. C 2 is bonded to a methyl group.",
+                "mediaId": null,
+                "src": "../../media/OChem_14_01_004j.jpg"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-33",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00171:entry:auto-34",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00171:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00171:alt:fig-00004-alt",
+          "text": "The structures of 1,4-pentadiene and 1,3-butadiene with delta H degrees hydrogenation (difference in expected and observed) values equal to 1 and minus 16 kilojoules per mole, respectively."
+        },
+        "src": "../../media/OChem_14_01_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00171:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00171:alt:fig-00005-alt",
+          "text": "The structures of butane and 1,3-butadiene with single bonds formed by overlap of s p 3 orbitals and s p 2 orbitals, respectively."
+        },
+        "src": "../../media/OChem_14_01_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00171:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00171:caption:fig-00006-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00171:alt:fig-00006-alt",
+          "text": "Two isolated p orbitals form psi 2 asterisk antibonding molecular orbital with 1 node and psi 1 bonding molecular orbital with 0 nodes."
+        },
+        "src": "../../media/OChem_14_01_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00171:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00171:caption:fig-00007-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00171:alt:fig-00007-alt",
+          "text": "Four isolated p orbitals form antibonding (3 nodes), antibonding (2 nodes), bonding (1 node), and bonding molecular orbital (0 nodes) from higher energy level to lower energy level."
+        },
+        "src": "../../media/OChem_14_01_008.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00171:para:para-00009"
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00171:para:para-00010"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00008",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00171:caption:fig-00008-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00171:alt:fig-00008-alt",
+          "text": "The electrostatic potential maps and structural formulas of 1,3-butadiene (conjugated) and 1,4-pentadiene (nonconjugated). The single bond between C2-C3 in 1,3-butadiene is labeled partial double-bond character."
+        },
+        "src": "../../media/OChem_14_01_009.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00011",
+      "segmentId": "m00171:para:para-00011"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00171:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

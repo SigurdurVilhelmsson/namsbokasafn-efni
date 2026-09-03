@@ -1,0 +1,100 @@
+{
+  "moduleId": "m00284",
+  "title": {
+    "segmentId": "m00284:title:auto-1",
+    "text": "Intramolecular Claisen Condensations: The Dieckmann Cyclization"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "2ab019c0-94f4-4e1e-9966-daa292f17d07"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00284:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00284:alt:fig-00001-alt",
+          "text": "The first reaction converts diethylhexanedioate (1,6-diester) to ethyl-2-oxocyclopentanecarboxylate (eighty-two percent) and ethanol. Second reaction converts diethylheptanedioate (1,7-diester) to ethyl-2-oxo-cyclohexanecarboxylate and ethanol. The reagents are sodium hydroxide, ethanol and hydronium ion."
+        },
+        "src": "../../media/OChem_23_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00284:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00284:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00284:alt:fig-00002-alt",
+          "text": "A Dieckmann cyclization of a 1,7-diester. The reaction steps comprise deprotonation by base, nucleophilic attack, alkoxide loss, deprotonation to enolate, and final protonation to cyclic beta keto ester product."
+        },
+        "src": "../../media/OChem_23_09_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00284:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00284:alt:fig-00003-alt",
+          "text": "Ethyl 2-oxocyclohexanecarboxylate reacts with allyl bromide in the presence of sodium ethoxide, forming 2-allylcyclohexanone. Further heating with hydronium ion, yields 2-allylcyclohexanone (eighty-three percent), C O 2, and ethanol."
+        },
+        "src": "../../media/OChem_23_09_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00284:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

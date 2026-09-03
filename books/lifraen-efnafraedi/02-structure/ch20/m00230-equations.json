@@ -1,0 +1,14 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>RC≡N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{RC≡N}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>–C≡N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{–C≡N}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡N}}"
+  }
+}

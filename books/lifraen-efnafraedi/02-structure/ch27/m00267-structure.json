@@ -1,0 +1,92 @@
+{
+  "moduleId": "m00267",
+  "title": {
+    "segmentId": "m00267:title:auto-1",
+    "text": "Phospholipids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "577ff19c-755e-4603-968a-4be2ba388df4"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00267:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00267:alt:fig-00001-alt",
+          "text": "The figure shows four structures. Phosphoric acid monoester, a phosphoric acid diester, a phosphoric acid triester, and a carboxylic acid ester enclosed in square parentheses."
+        },
+        "src": "../../media/OChem_27_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00267:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00267:alt:fig-00002-alt",
+          "text": "Four structures from left to right are phosphatidic acid enclosed in square parentheses, phosphatidylcholine, phosphatidylethanolamine, and phosphatidylserine."
+        },
+        "src": "../../media/OChem_27_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00267:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00267:alt:fig-00003-alt",
+          "text": "The wedge-dash structures of Sphingosine and Sphingomyelin."
+        },
+        "src": "../../media/OChem_27_03_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00267:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00267:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00267:alt:fig-00004-alt",
+          "text": "Glycerophospholipids combine with the lipid bilayer comprising a cell membrane. An arrow points to the ionic head and two nonpolar tails of the lipid bilayer."
+        },
+        "src": "../../media/OChem_27_03_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 3
+}

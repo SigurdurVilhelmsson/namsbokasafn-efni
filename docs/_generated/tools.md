@@ -45,10 +45,13 @@
 | `remt-battery` | Runs one tier of the battery over one book/chapter/module and reports every |
 | `remt-ctx` | ── WHY THIS FILE IS TOP-LEVEL AND NOT IN `tools/lib/` ── |
 | `remt-sweep` | Runs every registered check over the EXISTING corpus and reports, per check: |
+| `render-oracle-check` | published HTML, matched 1:1 by CNXML element id. |
 | `repair-emphasis` | Compares EN and IS segment files to find segments where the MT API dropped |
+| `repair-invented-markers` | from an MT output file, but ONLY where the document proves them separable. |
 | `resolve-embeds` | Scans a book's 01-source CNXML for <iframe src="...openstax.org/l/..."> embeds, |
 | `resolve-os-embed` | Resolves <link class="os-embed" url="#exercise/{nickname}"/> references |
 | `scan-residue` | Read-only EN-residue scanner. Walks a book's 02-for-mt × 02-mt-output segment |
+| `source-roundtrip-check` | WHAT IT DOES. Extracts a module, injects its OWN ENGLISH straight back, and diff |
 | `test-glossary-comparison` | Tests whether the server-side glossary (activated in the Málstaður web UI) |
 | `test-malstadur-api` | Sends carefully crafted test strings to the Málstaður translation API and |
 | `translate-chapter-titles` | Translate chapter titles for a book via the Málstaður API. |
@@ -68,6 +71,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*47 tools total (47 active, 0 deprecated)*
+*50 tools total (50 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.

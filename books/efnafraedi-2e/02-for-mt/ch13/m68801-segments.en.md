@@ -121,6 +121,12 @@ When 1 mol each of C[[sub:2]]H[[sub:5]]OH and CH[[sub:3]]CO[[sub:2]]H are allowe
 <!-- SEG:m68801:para:fs-idp65960208 -->
 [[i:K[[sub:c]]]] = 4
 
+<!-- SEG:m68801:alt:fs-idp68301536-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header, “I subscript 2 plus sign I superscript negative sign equilibrium arrow I subscript 3 superscript negative sign.” Under the second column is a subgroup of three rows and three columns. The first column has the following: 1.000 times 10 to the negative third power, negative x, [ I subscript 2 ] subscript i minus x. The second column has the following: 1.000 times 10 to the negative third power, negative x, [ I superscript negative sign ] subscript i minus x. The third column has the following: 0, positive x, [ I superscript negative sign ] subscript i plus x.
+
+<!-- SEG:m68801:alt:fs-idp182836896-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header, “I subscript 2 plus sign I superscript negative sign equilibrium arrow I subscript 3 superscript negative sign.” Under the second column is a subgroup of three rows and three columns. The first column has the following: 1.000 times 10 to the negative third power, negative 3.39 times 10 to the negative fourth power, 6.61 times 10 to the negative fourth power. The second column has the following: 1.000 times 10 to the negative third power, negative 3.39 times 10 to the negative fourth power, 6.61 times 10 to the negative fourth power. The third column has the following: 0, positive 3.39 times 10 to the negative fourth power, 3.39 times 10 to the negative fourth power.
+
 <!-- SEG:m68801:note-title:fs-idp119469616-title -->
 Answer:
 
@@ -274,6 +280,9 @@ A 1.00-L flask is filled with 1.00 mole of H[[sub:2]] and 2.00 moles of I[[sub:2
 <!-- SEG:m68801:item:fs-idp88175472-item-2 -->
 [[i:Develop an ICE table.]] [[MEDIA:1]]
 
+<!-- SEG:m68801:alt:fs-idp123608720-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header, “P C l subscript 5 equilibrium arrow P C l subscript 3 plus C l subscript 2.” Under the second column is a subgroup of three rows and three columns. The first column has the following: 1.00, negative x, 1.00 minus x. The second column has the following: 0, positive x, x. The third column has the following: 0, positive x, x.
+
 <!-- SEG:m68801:item:fs-idp88175472-item-3 -->
 [[i:Solve for the change and the equilibrium concentrations.]] Substituting the equilibrium concentrations into the equilibrium constant equation gives [[MATH:19]] [[MATH:20]] [[MATH:21]] [[MATH:22]] [[MATH:23]] [[docref:Appendix B|m68860]] shows an equation of the form [[i:ax]][[sup:2]] + [[i:bx]] + [[i:c]] = 0 can be rearranged to solve for [[i:x]]: [[MATH:24]] In this case, [[i:a]] = 1, [[i:b]] = 0.0211, and [[i:c]] = −0.0211. Substituting the appropriate values for [[i:a]], [[i:b]], and [[i:c]] yields: [[MATH:25]] [[MATH:26]] [[MATH:27]] The two roots of the quadratic are, therefore, [[MATH:28]] and [[MATH:29]] For this scenario, only the positive root is physically meaningful (concentrations are either zero or positive), and so [[i:x]] = 0.135 [[i:M]]. The equilibrium concentrations are [[MATH:30]] [[MATH:31]] [[MATH:32]]
 
@@ -333,6 +342,9 @@ What are the equilibrium concentrations in a 0.25 [[i:M]] NH[[sub:3]] solution?
 
 <!-- SEG:m68801:para:fs-idp139296 -->
 [[MATH:35]] [NH[[sub:3]]] = 0.25 [[i:M]]
+
+<!-- SEG:m68801:alt:fs-idm90952112-alt -->
+This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following: Initial pressure ( M ), Change ( M ), Equilibrium ( M ). The second column has the header, “H C N ( a q ) equilibrium arrow H superscript plus sign ( a q ) plus C N subscript negative sign ( a q ).” Under the second column is a subgroup of three columns and three rows. The first column has the following: 0.15, negative x, 0.15 minus x. The second column has the following: 0, positive x, x. The third column has the following: 0, positive x, x.
 
 <!-- SEG:m68801:note-title:fs-idm106766656-title -->
 Answer:
@@ -684,6 +696,9 @@ Calculate the number of grams of HI that are at equilibrium with 1.25 mol of H[[
 
 <!-- SEG:m68801:problem:fs-idp307490368 -->
 Butane exists as two isomers, [[i:n]]−butane and isobutane.
+
+<!-- SEG:m68801:alt:fs-idp222844848-alt -->
+Three Lewis structures are shown. The first is labeled, “n dash Butane,” and has a C H subscript 3 single bonded to a C H subscript 2 group. This C H subscript 2 group is single bonded to another C H subscript 2 group which is single bonded to a C H subscript 3 group. The second is labeled, “iso dash Butane,” and is composed of a C H group single bonded to three C H subscript 3 groups. The third structure shows a chain of atoms: “C H subscript 3, C H subscript 2, C H subscript 2, C H subscript 3,” a double-headed arrow, then a carbon atom single bonded to three C H subscript 3 groups as well as a hydrogen atom.
 
 <!-- SEG:m68801:problem:fs-idp194751264 -->
 [[i:K[[sub:P]]]] = 2.5 at 25 °C

@@ -1,0 +1,103 @@
+{
+  "moduleId": "m00118",
+  "title": {
+    "segmentId": "m00118:title:auto-1",
+    "text": "Reactions of Alkyl Halides: Grignard Reagents"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "eb9c6d6e-8a89-4fce-89f3-7d083a563d75"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00118:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00118:alt:fig-00001-alt",
+          "text": "The reaction of RX with magnesium in the presence of ether or THF forms R-Mg-X. R can be alkenyl, aryl, primary, secondary, or tertiary and X can be Cl, Br, or I."
+        },
+        "src": "../../media/OChem_10_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00118:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00118:alt:fig-00002-alt",
+          "text": "Iodomethane reacts with magnesium and ether to form methylmagnesium iodide. The carbon in the product (structure and ball-and-stick model in the electrostatic potential map) is labeled basic and nucleophilic."
+        },
+        "src": "../../media/OChem_10_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00118:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00118:alt:fig-00003-alt",
+          "text": "1-bromohexane reacts with Mg in the presence of ether to form 1-hexylmagnesium bromide that further reacts with water to form hexane."
+        },
+        "src": "../../media/OChem_10_06_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00118:para:para-00004"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00118:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 6
+}

@@ -1,0 +1,344 @@
+{
+  "moduleId": "m00175",
+  "title": {
+    "segmentId": "m00175:title:auto-1",
+    "text": "Characteristics of the Diels–Alder Reaction"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "08c974ac-28b0-45d3-9450-b0f9ef336773"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00175:title:sect-00001-title",
+        "text": "The Dienophile"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00175:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00001-alt",
+              "text": "The structures and names of some Diels–Alder dienophiles. Ethylene: unreactive, propenal (acrolein), ethyl propenoate (ethyl acrylate), maleic anhydride, benzoquinone, propenenitrile (acrylonitrile), and methyl propynoate."
+            },
+            "src": "../../media/OChem_14_05_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00175:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00175:caption:fig-00002-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00002-alt",
+              "text": "Electrostatic potential maps along with the ball-and-stick models of ethylene, propenal, and propenenitrile each with an arrow pointing toward carbon-carbon double bonds."
+            },
+            "src": "../../media/OChem_14_05_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00175:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00003-alt",
+              "text": "The first reaction shows 1,3-butadiene reacting with methyl (Z)-2-butenoate to yield a cis product. The second reaction shows 1,3-butadiene reacting with methyl (E)-2-butenoate to yield trans product."
+            },
+            "src": "../../media/OChem_14_05_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00175:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00004-alt",
+              "text": "A 7-membered bicyclic ring with C 2 bonded to an axial R group (endo) and an equatorial R group (exo).. To the right, the ball-and-stick model of 7-membered bicyclic ring is depicted."
+            },
+            "src": "../../media/OChem_14_05_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00175:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00005-alt",
+              "text": "A reaction shows 1,3-cyclopentadiene reacting with maleic anhydride to form endo product. Exo product is not formed."
+            },
+            "src": "../../media/OChem_14_05_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "exam-00001",
+          "title": {
+            "segmentId": "m00175:example-title:exam-00001-title",
+            "text": "Predicting the Product of a Diels–Alder Reaction"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00006",
+              "segmentId": "m00175:para:para-00006"
+            },
+            {
+              "type": "para",
+              "id": "para-00007",
+              "segmentId": "m00175:para:para-00007",
+              "title": {
+                "segmentId": "m00175:para-title:para-00007-title",
+                "text": "Strategy"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00008",
+              "title": {
+                "segmentId": "m00175:para-title:para-00008-title",
+                "text": "Solution"
+              }
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00006-alt",
+              "text": "A 4-carbon chain with two alternate double bonds and methyl at C 2 reacts with cyclohexadiene with carbonyl groups at C 1 and C 4. Question mark represents the product."
+            },
+            "src": "../../media/OChem_14_05_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00007-alt",
+              "text": "A 4-carbon chain with two mutually cis double bonds and methyl at C 2 reacts with cyclohexadiene with two carbonyl groups at C 1 and C 4. The product has two cis hydrogens."
+            },
+            "src": "../../media/OChem_14_05_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00175:title:sect-00002-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00175:title:sect-00003-title",
+        "text": "The Diene"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00175:para:para-00010"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00008-alt",
+              "text": "A four-carbon chain with two alternate double bonds having s-cis conformation undergoes bond rotation at C 2-C 3 to form s-trans conformation."
+            },
+            "src": "../../media/OChem_14_05_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00175:para:para-00011"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00009-alt",
+              "text": "The orientations of 1,3-butadiene and ethene for successful reaction and no reaction (ends too far apart). The interactions between the two structures are represented by dashed lines."
+            },
+            "src": "../../media/OChem_14_05_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00175:para:para-00012"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00175:caption:fig-00010-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00010-alt",
+              "text": "The structure of bicyclic diene (rigid s-trans diene). To the right, a structure with severe steric strain in s-cis form reversibly converts to (2 Z, 4 Z)-2,4-hexadiene (s-trans, more stable)."
+            },
+            "src": "../../media/OChem_14_05_011.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00175:para:para-00013"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00011-alt",
+              "text": "Two molecules of 1,3-cyclopentadiene joined by dash lines (s-cis)  form bicyclopentadiene as the product at 25 degrees Celsius."
+            },
+            "src": "../../media/OChem_14_05_012.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00175:para:para-00014"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00012",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00175:alt:fig-00012-alt",
+              "text": "Biological Diels–Alder reaction shows the formation of Lovastatin. The reactant having three double bonds forms an intermediate in which a cyclohexane ring is fused with a cyclohexene ring. It further forms Lovastatin."
+            },
+            "src": "../../media/OChem_14_05_013.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00175:title:sect-00004-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

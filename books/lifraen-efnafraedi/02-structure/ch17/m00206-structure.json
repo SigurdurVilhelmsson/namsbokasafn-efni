@@ -1,0 +1,166 @@
+{
+  "moduleId": "m00206",
+  "title": {
+    "segmentId": "m00206:title:auto-1",
+    "text": "Oxidation of Alcohols"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c019bb86-53d8-4753-b5a9-51b5f6293e7a"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00206:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00206:alt:fig-00001-alt",
+          "text": "Primary alcohol oxidizes to an aldehyde that can be further oxidized to a carboxylic acid. A secondary alcohol oxidizes to form a ketone. A tertiary alcohol does not undergo oxidation."
+        },
+        "src": "../../media/OChem_17_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00206:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00206:alt:fig-00002-alt",
+          "text": "Geraniol reacts with methylene chloride and Dess-Martin periodinane to form geranial with 84 percent yield. The structure of Dess-Martin periodinane is also represented. O A c denotes acetate group."
+        },
+        "src": "../../media/OChem_17_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00206:alt:fig-00003-alt",
+          "text": "4-tert-butylcyclohexanol reacts with sodium dichromate, water, acetic acid, and water to form 4-tert-butylcyclohexanone with 91 percent yield."
+        },
+        "src": "../../media/OChem_17_07_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00206:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00206:alt:fig-00004-alt",
+          "text": "1-decanol reacts with chromium trioxide, hydronium ion and acetone to form decanoic acid with 93 percent yield."
+        },
+        "src": "../../media/OChem_17_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00206:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00206:alt:fig-00005-alt",
+          "text": "A primary alcohol reacts with Dess-Martin periodinane to form periodinane intermediate. This reacts to form an aldehyde."
+        },
+        "src": "../../media/OChem_17_07_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "scaled-down unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00206:alt:fig-00007-alt",
+          "text": "A primary alcohol reacts with chromium trioxide to form chromate intermediate. A base reacts with chromate intermediate to form aldehyde and chromate ion."
+        },
+        "src": "../../media/OChem_17_07_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00206:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00206:caption:fig-00006-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00206:alt:fig-00006-alt",
+          "text": "A base reacts with sn-glycerol-3-phosphate that further reacts with nicotinamide adenine dinucleotide plus to form dihydroxyacetone phosphate and nicotinamide adenine dinucleotide hydrogen."
+        },
+        "src": "../../media/OChem_17_07_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00206:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

@@ -1,0 +1,301 @@
+{
+  "moduleId": "m00252",
+  "title": {
+    "segmentId": "m00252:title:auto-1",
+    "text": "Reactions of Epoxides: Ring-Opening"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "a7d57684-ea18-4e63-86d2-a5e6047dda50"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00252:title:sect-00001-title",
+        "text": "Acid-Catalyzed Epoxide Opening"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00252:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00252:alt:fig-00001-alt",
+              "text": "Two reactions are shown: 1,2-epoxycyclohexane becomes trans-1,2-cyclohexanediol (86 percent yield) via intermediates, and cyclohexene reacts with bromine to yield trans-1,2-dibromocyclohexane."
+            },
+            "src": "../../media/OChem_18_06_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00252:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00252:alt:fig-00002-alt",
+              "text": "An epoxide reacts with H X in the presence of ether to yield trans 2-halocyclohexanol. The X refers to any halogen atom."
+            },
+            "src": "../../media/OChem_18_06_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00252:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00252:alt:fig-00003-alt",
+              "text": "Two chemical reactions show the transformation of epoxy compounds with hydrochloric acid and ether, resulting in chloro-alcohol products with specific atom arrangements and varying chlorine positions."
+            },
+            "src": "../../media/OChem_18_06_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00252:para:para-00004"
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00252:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00252:caption:fig-00004-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00252:alt:fig-00004-alt",
+              "text": "The reaction of 1,2-epoxy-1-methylcyclohexane with hydrogen bromide forms a stable tertiary carbocation, producing 2-bromo-2-methylcyclohexanol. The secondary carbocation is not formed in the reaction."
+            },
+            "src": "../../media/OChem_18_06_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "exam-00001",
+          "title": {
+            "segmentId": "m00252:example-title:exam-00001-title",
+            "text": "Predicting the Product of Epoxide Ring-Opening"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00006",
+              "segmentId": "m00252:para:para-00006"
+            },
+            {
+              "type": "para",
+              "id": "para-00007",
+              "segmentId": "m00252:para:para-00007",
+              "title": {
+                "segmentId": "m00252:para-title:para-00007-title",
+                "text": "Strategy"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00008",
+              "title": {
+                "segmentId": "m00252:para-title:para-00008-title",
+                "text": "Solution"
+              }
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00252:alt:fig-00005-alt",
+              "text": "Cyclohexyloxirane reacts with hydrochloric acid and ether to form an unknown product(s), depicted by a question mark."
+            },
+            "src": "../../media/OChem_18_06_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00252:alt:fig-00006-alt",
+              "text": "Cyclohexyloxirane reacts with hydrochloric acid and ether to form 2-chloro-1-cyclohexylethanol. C 1 is labeled secondary, C 2 is labeled primary (reaction occurs here)."
+            },
+            "src": "../../media/OChem_18_06_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00252:title:sect-00002-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00252:title:sect-00003-title",
+        "text": "Base-Catalyzed Epoxide Opening"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00252:para:para-00011"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00252:alt:fig-00007-alt",
+              "text": "Methylenecyclohexane oxide reacts with hydroxyl ion to form an intermediate that yields 1-hydroxymethylcyclohexanol (70 percent yield) and hydroxide."
+            },
+            "src": "../../media/OChem_18_06_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00252:para:para-00012"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00252:alt:fig-00008-alt",
+              "text": "1,2-epoxypropane reacts with ethanol and ethoxide ion to form 1-ethoxy-2-propanol (83 percent yield). Ethoxide attacks the less substituted side; no attack on secondary carbon."
+            },
+            "src": "../../media/OChem_18_06_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00252:para:para-00013"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00252:alt:fig-00009-alt",
+              "text": "An epoxide reacts with alcohol to form an intermediate, which, in the presence of amine yields metoprolol. The reaction mechanism is depicted using arrows."
+            },
+            "src": "../../media/OChem_18_06_011.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00252:para:para-00014"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00252:alt:fig-00010-alt",
+              "text": "Butylmagnesium bromide reacts with ethylene oxide in ether, then with hydronium ion to form 1-hexanol with 62 percent yield."
+            },
+            "src": "../../media/OChem_18_06_012.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00252:title:sect-00004-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

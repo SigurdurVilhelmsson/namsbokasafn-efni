@@ -13,6 +13,9 @@ Unfortunately, not every compound shows a molecular ion in its electron-impact m
 <!-- SEG:m00136:caption:fig-00001-caption -->
 [[b:Mass spectrum of 2,2-dimethylpropane (C[[sub:5]]H[[sub:12]]; MW = 72).]] No molecular ion is observed when electron-impact ionization is used. What do you think is the formula and structure of the M[[sup:+]] peak at [[i:m]]/[[i:z]] = 57?
 
+<!-- SEG:m00136:alt:fig-00001-alt -->
+The mass spectrum of 2,2-dimethylpropane. The m / z ratios are 29, 41, and 57 for three tall peaks noted with arrows.
+
 <!-- SEG:m00136:para:para-00004 -->
 Knowing the molecular weight makes it possible to narrow considerably the choices of molecular formula. For example, if the mass spectrum of an unknown compound shows a molecular ion at [[i:m]]/[[i:z]] = 110, the molecular formula is likely to be C[[sub:8]]H[[sub:14]], C[[sub:7]]H[[sub:10]]O, C[[sub:6]]H[[sub:6]]O[[sub:2]], or C[[sub:6]]H[[sub:10]]N[[sub:2]]. There are always a number of molecular formulas possible for all but the lowest molecular weights, and a computer can easily generate a list of the choices.
 
@@ -28,11 +31,17 @@ It’s also possible to derive structural information about a molecule by interp
 <!-- SEG:m00136:para:para-00008 -->
 Not surprisingly, the positive charge often remains with the fragment that is best able to stabilize it. In other words, a relatively stable carbocation is often formed during fragmentation. For example, 2,2-dimethylpropane tends to fragment in such a way that the positive charge remains with the [[i:tert]]-butyl group. 2,2-Dimethylpropane therefore has a base peak at [[i:m/z]] = 57, corresponding to C[[sub:4]]H[[sub:9]][[sup:+]] ([[xref:fig-00001]]).
 
+<!-- SEG:m00136:alt:fig-00002-alt -->
+The 2,2-dimethylpropane cation reacts to produce a tertiary butyl cation with a m / z ratio of 57 and a methyl radical.
+
 <!-- SEG:m00136:para:para-00009 -->
 Because mass-spectral fragmentation patterns are usually complex, it’s often difficult to assign structures to fragment ions. Most hydrocarbons fragment in many ways, as demonstrated by the mass spectrum of hexane in [[xref:fig-00003]]. The hexane spectrum shows a moderately abundant molecular ion at [[i:m]]/[[i:z]] = 86 and fragment ions at [[i:m/z]] = 71, 57, 43, and 29. Since all the carbon–carbon bonds of hexane are electronically similar, all break to a similar extent, giving rise to the observed mixture of ions.
 
 <!-- SEG:m00136:caption:fig-00003-caption -->
 [[b:Mass spectrum of hexane (C[[sub:6]]H[[sub:14]]; MW = 86).]] The base peak is at [[i:m]]/[[i:z]] = 57, and numerous other ions are present.
+
+<!-- SEG:m00136:alt:fig-00003-alt -->
+The mass spectrum of hexane. The m / z ratios are 29, 43, and 57 for three tall peaks noted with arrows. The molecular ion peak is at 86.
 
 <!-- SEG:m00136:para:para-00010 -->
 [[xref:fig-00004]] shows how the hexane fragments might arise. The loss of a methyl radical (CH[[sub:3]], M = 15) from the hexane cation radical (M[[sup:+]] = 86) gives rise to a fragment of mass 86 – 15 = 71; the loss of an ethyl radical (C[[sub:2]]H[[sub:5]], M = 29) accounts for a fragment of mass 86 – 29 = 57; the loss of a propyl radical (C[[sub:3]]H[[sub:7]], M = 43) accounts for a fragment of mass 86 – 43 = 43; and the loss of a butyl radical accounts for a fragment of mass 29. With practice, it’s sometimes possible to analyze the fragmentation pattern of an unknown compound and work backward to a structure that is compatible with the data.
@@ -40,14 +49,20 @@ Because mass-spectral fragmentation patterns are usually complex, it’s often d
 <!-- SEG:m00136:caption:fig-00004-caption -->
 [[b:Fragmentation of hexane in a mass spectrometer.]]
 
+<!-- SEG:m00136:alt:fig-00004-alt -->
+A flowchart of fragmentation of hexane. The base peak is a pentane cation at m / z 57. M / z ratios and relative abundances of other fragments are mentioned.
+
 <!-- SEG:m00136:para:para-00011 -->
 We’ll see in the next section and in later chapters that specific functional groups, such as alcohols, ketones, aldehydes, and amines, show specific kinds of mass spectral fragmentations that can be interpreted to provide structural information.
 
 <!-- SEG:m00136:example-title:exam-00001-title -->
-Strategy
+Using Mass Spectra to Identify Compounds
 
 <!-- SEG:m00136:para:para-00012 -->
 Assume that you have two unlabeled samples, one of methylcyclohexane and the other of ethylcyclopentane. How could you use mass spectrometry to tell them apart? The mass spectra of both are shown in [[xref:fig-00005]].
+
+<!-- SEG:m00136:para-title:para-00013-title -->
+Strategy
 
 <!-- SEG:m00136:para:para-00013 -->
 Look at the possible structures and decide on how they differ. Then think about how any of these differences in structure might give rise to differences in mass spectra. Methyl cyclohexane, for instance, has a –CH[[sub:3]] group, and ethylcyclopentane has a –CH[[sub:2]]CH[[sub:3]] group, which should affect the fragmentation patterns.
@@ -60,6 +75,9 @@ Both mass spectra show molecular ions at M[[sup:+]] = 98, corresponding to C[[su
 
 <!-- SEG:m00136:caption:fig-00005-caption -->
 [[b:Mass spectra of unlabeled samples A and B for [[xref:exam-00001]].]]
+
+<!-- SEG:m00136:alt:fig-00005-alt -->
+The mass spectra of two unlabeled samples A and B.
 
 <!-- SEG:m00136:title:sect-00001-title -->
 Problems

@@ -1,0 +1,135 @@
+{
+  "moduleId": "m00107",
+  "title": {
+    "segmentId": "m00107:title:auto-1",
+    "text": "Reduction of Alkynes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "7d623ee1-3ece-428f-8e7f-413036d2b3f5"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00107:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00107:alt:fig-00001-alt",
+          "text": "Acetylene reacts with hydrogen and catalyst to form ethene. Ethene reacts with hydrogen and catalyst to form ethane. The standard enthalpy of hydrogen for both reactions is given."
+        },
+        "src": "../../media/OChem_09_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00107:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00107:alt:fig-00002-alt",
+          "text": "The reaction shows 4-octyne reacting with hydrogen and Lindlar's catalyst to give cis-4-octene. This reacts with hydrogen, and palladium catalyst to form octane. Quinoline is also used in the process."
+        },
+        "src": "../../media/OChem_09_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00107:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00107:alt:fig-00003-alt",
+          "text": "An alkyne reacts with hydrogen and Lindlar catalyst to give 7-cis-retinol (7-cis-vitamin A; vitamin A has a trans double bond at C7)."
+        },
+        "src": "../../media/OChem_09_05_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00107:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00107:alt:fig-00004-alt",
+          "text": "The figure shows 5-decyne reacting with lithium and ammonia to form trans-5-decene (78%)."
+        },
+        "src": "../../media/OChem_09_05_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00107:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00107:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00107:alt:fig-00005-alt",
+          "text": "The figure shows the mechanism of reduction of an alkyne in the presence of lithium and ammonium in four steps to give a trans alkene."
+        },
+        "src": "../../media/OChem_09_05_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00107:para:para-00006"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00107:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

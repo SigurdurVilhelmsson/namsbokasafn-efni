@@ -1,0 +1,44 @@
+{
+  "m00240:para:para-00001": {
+    "terms": [
+      {
+        "id": "term-00001"
+      }
+    ]
+  },
+  "m00240:entry:auto-20": {
+    "terms": [
+      {
+        "id": "term-00002"
+      }
+    ]
+  },
+  "m00240:entry:auto-22": {
+    "terms": [
+      {
+        "id": "term-00003"
+      }
+    ]
+  },
+  "m00240:entry:auto-24": {
+    "terms": [
+      {
+        "id": "term-00004"
+      }
+    ]
+  },
+  "m00240:entry:auto-26": {
+    "terms": [
+      {
+        "id": "term-00005"
+      }
+    ]
+  },
+  "m00240:entry:auto-28": {
+    "terms": [
+      {
+        "id": "term-00006"
+      }
+    ]
+  }
+}

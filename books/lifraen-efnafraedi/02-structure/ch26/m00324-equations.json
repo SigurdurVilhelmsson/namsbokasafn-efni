@@ -1,0 +1,6 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>RCO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>–CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>Ph</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo>→</m:mo><m:msub><m:mrow><m:mtext>RCO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>PhCH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{{\\text{RCO}}}_{2}{{\\text{–CH}}}_{2}\\text{Ph}+{\\text{H}}_{2}\\rightarrow {{\\text{RCO}}}_{2}\\text{H}+{{\\text{PhCH}}}_{3}}"
+  }
+}

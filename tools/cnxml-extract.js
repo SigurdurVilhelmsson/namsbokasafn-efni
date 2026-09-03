@@ -387,6 +387,27 @@ function extractInlineText(
     return `[[i:${inner}]]`;
   });
 
+  // §C118: <span class="..."> is organic's reaction colouring — red/cyan/magenta
+  // notation OpenStax ships, which CLAUDE.md's clean-CNXML ruling says stays. It had
+  // no case here at all, so the wrapper was discarded and only its text survived:
+  // `(<span class="magenta-text">X</span>=F)` extracted as `(X=F)` and inject had
+  // nothing to rebuild. Measured 1,071 spans across 184 of 342 organic modules;
+  // chemistry has zero.
+  //
+  // ⚠️ ORDER IS LOAD-BEARING — this MUST stay after the emphasis conversions above.
+  // 101 of the 1,071 spans wrap other markup
+  // (`<span class="magenta-text">1<emphasis effect="italics">s</emphasis></span>`),
+  // and only by running last does the payload already read `1[[i:s]]` rather than raw
+  // CNXML. Nested markers are an established shape here, not a new one — the corpus
+  // already carries 1,083 of them (`[[term:S[[sub:…]]]]`, `[[b:IE[[sub:…]]]]`).
+  text = text.replace(/<span([^>]*)(?<!\/)>([\s\S]*?)<\/span>/g, (match, attrs, inner) => {
+    const parsedAttrs = parseAttributes(attrs);
+    // A class-less span carries nothing to preserve; unwrap it rather than minting a
+    // marker with an empty field that inject would have to special-case.
+    if (!parsedAttrs.class) return inner;
+    return `[[span:${inner}|${parsedAttrs.class}]]`;
+  });
+
   // Handle terms - inner markup is already markdown at this point
   // Collect attributes (class, id) for sidecar metadata
   text = text.replace(/<term([^>]*)>([\s\S]*?)<\/term>/g, (match, attrs, inner) => {
@@ -422,6 +443,17 @@ function extractInlineText(
     const parsedAttrs = parseAttributes(attrs);
     if (parsedAttrs.document && parsedAttrs['target-id']) {
       return `[[docref:${parsedAttrs.document}#${parsedAttrs['target-id']}]]`;
+    }
+    // §C118: a whole-module reference with no target-id. This branch was MISSING
+    // while the with-content handler below had its exact counterpart ("Document
+    // link without target-id"), and the asymmetry silently deleted the link:
+    // falling through here sent `<link document="m00029"/>` to the self-closing
+    // cross-reference handler, which requires a target-id, so it matched nothing
+    // and was stripped — no marker, no warning, no residue to catch.
+    // Measured: 1,198 such links across 189 of 342 organic modules; chemistry has
+    // zero. Inject already understood `[[docref:doc]]`, so this is the only site.
+    if (parsedAttrs.document) {
+      return `[[docref:${parsedAttrs.document}]]`;
     }
     return match; // Not a document link — leave for later regexes
   });

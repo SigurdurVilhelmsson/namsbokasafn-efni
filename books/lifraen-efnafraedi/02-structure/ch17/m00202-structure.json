@@ -1,0 +1,104 @@
+{
+  "moduleId": "m00202",
+  "title": {
+    "segmentId": "m00202:title:auto-1",
+    "text": "Preparation of Alcohols: A Review"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "5d3ed1c9-289b-496d-99cd-dc17eb7a10b0"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00202:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00202:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00202:alt:fig-00001-alt",
+          "text": "The structure of alcohol at the center is surrounded by several reversible arrows showing that alkene, ketone, aldehyde, ether, carboxylic acid, ester, and alkyl halide can be prepared from alcohol."
+        },
+        "src": "../../media/OChem_17_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00202:para:para-00002"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00202:item:list-00001-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00202:item:list-00001-item-2"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00202:alt:fig-00002-alt",
+          "text": "1-methylcyclohexene reacts with borane, hydrogen peroxide to form trans-2-methylcyclohexanol with 84 percent yield. Alternately, with mercuric acetate and water, then sodium borohydride to form 1-methylcyclohexanol with 90 percent yield."
+        },
+        "src": "../../media/OChem_17_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00202:alt:fig-00003-alt",
+          "text": "1-methylcyclohexene reacts with osmium tetroxide, pyridine to form osmate. This reacts with sodium hydrogen sulfite, water to form cis-1,2-diol. The reactant reacts with peroxyacid and methylene chloride to form trans-1,2-diol."
+        },
+        "src": "../../media/OChem_17_03_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00202:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

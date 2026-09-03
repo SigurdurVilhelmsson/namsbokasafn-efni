@@ -1,0 +1,6 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext><m:mo>→</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{C=O}\\rightarrow {{\\text{CH}}}_{2}}"
+  }
+}

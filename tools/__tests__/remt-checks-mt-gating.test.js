@@ -29,7 +29,12 @@ import {
   checkNumbers,
   extractNumbers,
 } from '../lib/remt-checks-mt.js';
-import { mtOutputSegmentFiles, enCounterpart, REPO_ROOT } from './helpers/remt-corpus.js';
+import {
+  modulesWithSegments,
+  mtOutputSegmentFiles,
+  enCounterpart,
+  REPO_ROOT,
+} from './helpers/remt-corpus.js';
 import { loadResidueAllowlist, loadResidueAllowlistOrNull } from '../lib/residue-allowlist.js';
 import { detectResidue, normalizeForComparison } from '../lib/residue-check.js';
 
@@ -48,14 +53,18 @@ describe('population control — an empty walk must not pass anything below', ()
     expect(mtOutputSegmentFiles('lifraen-efnafraedi')).toHaveLength(48);
   });
 
-  it('🔴 pins that ORGANIC IS 5% EXTRACTED — every organic rate here is a sliver', () => {
+  it('🔴 pins that only 17 organic modules have BOTH sides — organic is 342/342 EXTRACTED', () => {
     // Raised as a lead question on 2026-08-26 ("have we downloaded the complete organic
-    // source?"). The answer is that the DOWNLOAD is complete and the EXTRACTION is not,
+    // source?"). The answer THEN was that the DOWNLOAD was complete and the EXTRACTION was not,
     // and the second is the more dangerous of the two because it is invisible: a
     // partial download shows up as absent files and a manifest mismatch, while a
     // 5%-extracted book yields 02-mt-output numbers that read as whole-book numbers.
-    // ▶ So this pin exists to make the denominator impossible to lose. Chemistry is
-    // 149/149; organic is 19/342, and every organic percentage in this file is over 17.
+    // ▶ So this pin exists to make the denominator impossible to lose.
+    // 🔴 CORRECTED 2026-09-02 (§C118 ③) — ORGANIC EXTRACTION IS NOW COMPLETE: 342/342
+    // modules, 404 live EN segment files (342 modules + 31 chapter-metadata + 31 exercises
+    // bundles — the 31 appears twice because the two sets are different files, not a typo).
+    // What is still a sliver is the MT: chemistry has both sides for 149/149, organic for
+    // 17 of 342, and every organic percentage in this file is over 17, not over 342.
     const srcCount = (b) =>
       fs
         .readdirSync(path.join(REPO_ROOT, 'books', b, '01-source'), { withFileTypes: true })
@@ -79,7 +88,15 @@ describe('population control — an empty walk must not pass anything below', ()
         (p2) => enCounterpart(p2) && path.basename(p2) !== 'exercises-segments.is.md'
       ).length;
     expect(enModules('efnafraedi-2e')).toBe(149); // 100% of source
-    expect(enModules('lifraen-efnafraedi')).toBe(17); // 5.0% of 342
+    expect(enModules('lifraen-efnafraedi')).toBe(17); // 17 of 342 modules have committed MT
+
+    // ▶ THE DENOMINATOR THE TITLE NAMES, ASSERTED RATHER THAN DESCRIBED. NOT a duplicate of
+    // srcCount above: srcCount walks `01-source`, modulesWithSegments walks `02-for-mt`, so
+    // their EQUALITY is the claim. Measured 17 here at 98f3a245 and 342 today; the helper can
+    // report far less (micro: 10 of 159), so this is a measurement, not a tautology.
+    const extracted = (b) => modulesWithSegments(b).length;
+    expect(extracted('lifraen-efnafraedi')).toBe(342);
+    expect(extracted('efnafraedi-2e')).toBe(149);
   });
 });
 
@@ -93,8 +110,9 @@ describe('A3 — per-segment bracket-marker delta', () => {
    * in another has `total === {}` and TWO `bySegment` entries. A check keyed on `total`
    * returns PASS here; one keyed on `segmentsWithDelta` returns WARN.
    *
-   * ⚠️ MEASURED: on all 197 run-target pairs the two predicates agree EXACTLY
-   * (107 = 107, cancel-only modules = 0). So the natural corpus is structurally
+   * ⚠️ MEASURED 2026-08-26: on all 197 run-target pairs the two predicates agree EXACTLY
+   * (107 = 107, cancel-only modules = 0). The 107 is a dated vintage — the module rate is
+   * 129 today — but the AGREEMENT, not the count, is the claim. So the natural corpus is structurally
    * incapable of catching the wrong choice — this planted fixture is the only detector,
    * and the plan's acceptance trio is written in `total`-shaped notation (`m68791 → {}`),
    * which is exactly what a literal transcription would build against.
@@ -162,6 +180,9 @@ describe('A3 — per-segment bracket-marker delta', () => {
     // Measured 2026-08-26: 107/197 = 54.31% over the committed corpus, and 11/101 =
     // 10.89% over the pairs whose EN side does NOT postdate their IS side. Blocking is
     // refused on BOTH numbers, so the verdict does not turn on the split.
+    // ▶ RE-MEASURED 2026-09-02 after §C82 ③: 129/197 = 65.5%. The rate ROSE, so blocking is
+    // refused a fortiori — but note the rise is vintage mismatch, not new MT damage, so it
+    // is not evidence about the MT either way.
     expect(A3.blocking).toBe(false);
   });
 
@@ -177,7 +198,8 @@ describe('A3 — per-segment bracket-marker delta', () => {
   it('premise pin — the base rate that refuses blocking, split by finding kind', () => {
     // 🔴 THE THREE NUMBERS ARE PINNED SEPARATELY BECAUSE THEY ANSWER DIFFERENT QUESTIONS,
     // and a single "modules with findings" count silently conflates them. Folding
-    // `unpaired-segment` into A3 (see its docstring) moves the module rate 107 → 111; the
+    // `unpaired-segment` into A3 (see its docstring) moved the module rate 107 → 111 when
+    // measured on 2026-08-26; on the 2026-09-02 corpus the same fold is 129 → 155. The
     // decision to fold it in is a correctness one, and this is what it costs.
     let deltaMods = 0;
     let unpairedMods = 0;
@@ -195,9 +217,17 @@ describe('A3 — per-segment bracket-marker delta', () => {
       }
     }
     expect(pairs).toBe(197); // control: an empty walk cannot pass
-    expect(deltaMods).toBe(107); // 54.31% — the marker-destruction rate
-    expect(unpairedMods).toBe(4); //  2.03% — segments that went missing entirely
-    expect(anyMods).toBe(111); // 56.35% — what A3 would halt on, were it blocking
+    // 🔴 RE-BASELINED 2026-09-02 — AND THESE NO LONGER MEASURE WHAT THEIR OLD COMMENTS
+    // SAID. They used to be MT-side marker destruction. §C82 ③ re-extracted 159 of the 197
+    // EN files while the 2026-09-02 run re-translated only 16 in-population IS files, so
+    // what they now count is overwhelmingly the EN/IS VINTAGE MISMATCH. That is why
+    // `unpairedMods` moved 4 -> 145: not 141 modules that suddenly lost segments, but 141
+    // whose EN side gained segments their committed IS has never seen.
+    // ▶ THEY FALL AS CHAPTERS ARE BOUGHT and only regain the old meaning once the corpus is
+    // one vintage again. Do not quote them as a marker-destruction rate until then.
+    expect(deltaMods).toBe(129); //  65.5% of 197
+    expect(unpairedMods).toBe(145); //  73.6% — EN segments with no IS counterpart
+    expect(anyMods).toBe(155); //  78.7% — what A3 would halt on, were it blocking
     // Global Constraints rule 4 needs ≤ ~5%. Every one of these is an order of magnitude
     // over it, which is why `A3.blocking === false` above.
     expect(anyMods / pairs).toBeGreaterThan(0.05);
@@ -401,7 +431,9 @@ describe('A5 — untranslated-EN residue, two stages', () => {
     expect(skipped).toBe(31);
   });
 
-  it('premise pin — stage 2 finds 7 long residues in 3 run-target modules', () => {
+  // ⚠️ THIS PIN SHRINKS WITH EVERY CHAPTER BOUGHT, and at 0 it is vacuous — the planted
+  // fixtures in this file become stage 2's only evidence. Re-measure, do not delete.
+  it('premise pin — stage 2 finds 6 long residues in 2 run-target modules', () => {
     const hits = [];
     let pairs = 0;
     for (const b of BOOKS) {
@@ -421,8 +453,12 @@ describe('A5 — untranslated-EN residue, two stages', () => {
       }
     }
     expect(pairs).toBe(197); // control
-    expect(hits).toHaveLength(7);
-    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual(['m00037', 'm00135', 'm68662']);
+    expect(hits).toHaveLength(6);
+    // m00037 (organic ch03) left this set: eeac7731 re-translated it and its one long
+    // residue (m00037:para:para-00003, 267 alphabetic chars) is now Icelandic. Verified as
+    // content improved rather than population lost — the segment is still paired, m00037's
+    // IS side went 10 -> 14 segments. The remaining two modules were untouched by the run.
+    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual(['m00135', 'm68662']);
   });
 });
 
@@ -436,7 +472,13 @@ describe('A7 — number consistency, ported from the AGPL qaCheckService', () =>
   const require_ = createRequire(import.meta.url);
   const agpl = require_('../../server/services/qaCheckService.js');
 
-  it('🔴 agrees with the AGPL original — over a NON-EMPTY comparison', () => {
+  // 🔴 SPLIT INTO TWO `it()`s ON 2026-09-02, AND THE REASON IS THE POINT. These assertions
+  // used to share one block, with the stale-corpus premise pin FIRST. It throws, and a throw
+  // ends the block — so the message comparison below it, INCLUDING the ð check that caught a
+  // real shipped bug, silently stopped running. ▶ "Leave a REGRESSION red" is free only when
+  // the red assertion stands ALONE; first-in-block, it disables everything beneath it.
+  // ⚠️ Order within an `it()` is an undeclared dependency. Do not merge these back.
+  it('🔴 agrees with the AGPL original on a clean corpus pair — VACUOUS BY ITSELF, see below', () => {
     // ⚠️ THIS PIN WAS VACUOUS AND IT LET A REAL BUG SHIP. It compared `checkNumbers` on a
     // clean corpus pair, which returns [] on BOTH sides — `expect([]).toEqual([])` passes
     // whatever the port does to the finding it never produced. The port had DROPPED U+00F0
@@ -447,15 +489,30 @@ describe('A7 — number consistency, ported from the AGPL qaCheckService', () =>
     const { segText, isText } = pair('efnafraedi-2e', 'ch01', 'm68663');
     const clean = checkNumbers(segText, isText);
     expect(clean).toEqual(agpl.checkNumbers(segText, isText));
-    expect(clean).toHaveLength(0); // stated, so the vacuity is visible rather than hidden
+  });
 
+  it('📌 PREMISE PIN — the clean pair is EXPECTED to be clean, and is not while the MT is stale', () => {
+    // 🔴 THIS IS THE REGRESSION, DELIBERATELY LEFT RED AND DELIBERATELY ALONE. `clean` now
+    // carries one `number-mismatch` on the value 52126432 — the digits in
+    // `<!-- SEG:m68663:alt:fs-idm52126432-alt -->`, an EN-only alt segment the §C82 ③
+    // re-extract added and this module's committed IS side has never seen. It self-heals the
+    // moment m68663 is re-MT'd; there is no golden change that fixes it.
+    // ▶ It is stated rather than deleted so the vacuity of the sibling ABOVE stays visible.
+    const { segText, isText } = pair('efnafraedi-2e', 'ch01', 'm68663');
+    expect(checkNumbers(segText, isText)).toHaveLength(0);
+  });
+
+  it('🔴 agrees with the AGPL original — over a NON-EMPTY comparison, MESSAGE INCLUDED', () => {
     // The comparison that actually binds: a case where BOTH sides must produce findings.
+    // This is the half that the premise pin above used to switch off.
+    const { segText } = pair('efnafraedi-2e', 'ch01', 'm68663');
     const mine = checkNumbers(segText, 'engar tölur hér');
     const theirs = agpl.checkNumbers(segText, 'engar tölur hér');
-    // L37: the COUNT, not `> 0` — a one-finding comparison and an eleven-finding one are
+    // L37: the COUNT, not `> 0` — a one-finding comparison and a twelve-finding one are
     // both "non-empty", and only one of them exercises the dedup and the message path.
-    // A premise pin: it moves when m68663's numbers move.
-    expect(mine).toHaveLength(11);
+    // A premise pin: it moves when m68663's numbers move — and it MOVED, 11 -> 12, when the
+    // re-extract added the alt segment whose element id contributes 52126432.
+    expect(mine).toHaveLength(12);
     expect(mine).toEqual(theirs);
     // And the MESSAGE, character for character — the field the port actually corrupted.
     expect(mine[0].message).toBe(theirs[0].message);

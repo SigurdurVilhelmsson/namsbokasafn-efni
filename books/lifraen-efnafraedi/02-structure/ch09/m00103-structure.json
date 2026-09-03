@@ -1,0 +1,98 @@
+{
+  "moduleId": "m00103",
+  "title": {
+    "segmentId": "m00103:title:auto-1",
+    "text": "Naming Alkynes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "373ea4de-63ba-4ccb-80a8-5d0cc5b54fee"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00103:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00103:alt:fig-00001-alt",
+          "text": "The structure of 6-methyl-3-octyne or 6-methyloct-3-yne (new) with the numbering of groups starting from the carbon on the right side."
+        },
+        "src": "../../media/OChem_09_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00103:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00103:alt:fig-00002-alt",
+          "text": "The structure of 1-hepten-6-yne or hept-1-en-6-yne (new) and 4-methyl-7-nonen-1-yne or 4-methylnon-7-en-1-yne (new). The double bond is shown in blue and the triple bond in pink color."
+        },
+        "src": "../../media/OChem_09_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00103:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00103:alt:fig-00003-alt",
+          "text": "The figure shows three structural formulas. First is butyl, an alkyl group. The second is 1-butenyl or but-1-enyl, a vinylic group. The third is 1-butynyl or but-1-ynyl, an alkynyl group."
+        },
+        "src": "../../media/OChem_09_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00103:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

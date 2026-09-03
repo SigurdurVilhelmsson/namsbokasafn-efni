@@ -14,16 +14,22 @@ Use phase diagrams to identify stable phases at given temperatures and pressures
 Describe the supercritical fluid phase of matter
 
 <!-- SEG:m68769:para:fs-idm105011872 -->
-In the previous module, the variation of a liquid’s equilibrium vapor pressure with temperature was described. Considering the definition of boiling point, plots of vapor pressure versus temperature represent how the boiling point of the liquid varies with pressure. Also described was the use of heating and cooling curves to determine a substance’s melting (or freezing) point. Making such measurements over a wide range of pressures yields data that may be presented graphically as a phase diagram. A {{term}}phase diagram{{/term}} combines plots of pressure versus temperature for the liquid-gas, solid-liquid, and solid-gas phase-transition equilibria of a substance. These diagrams indicate the physical states that exist under specific conditions of pressure and temperature, and also provide the pressure dependence of the phase-transition temperatures (melting points, sublimation points, boiling points). A typical phase diagram for a pure substance is shown in [[xref:CNX_Chem_10_04_PhaseDi]].
+In the previous module, the variation of a liquid’s equilibrium vapor pressure with temperature was described. Considering the definition of boiling point, plots of vapor pressure versus temperature represent how the boiling point of the liquid varies with pressure. Also described was the use of heating and cooling curves to determine a substance’s melting (or freezing) point. Making such measurements over a wide range of pressures yields data that may be presented graphically as a phase diagram. A [[term:phase diagram|term-00001]] combines plots of pressure versus temperature for the liquid-gas, solid-liquid, and solid-gas phase-transition equilibria of a substance. These diagrams indicate the physical states that exist under specific conditions of pressure and temperature, and also provide the pressure dependence of the phase-transition temperatures (melting points, sublimation points, boiling points). A typical phase diagram for a pure substance is shown in [[xref:CNX_Chem_10_04_PhaseDi]].
 
 <!-- SEG:m68769:caption:CNX_Chem_10_04_PhaseDi-caption -->
 The physical state of a substance and its phase-transition temperatures are represented graphically in a phase diagram.
+
+<!-- SEG:m68769:alt:fs-idm57234192-alt -->
+A graph is shown where the x-axis is labeled “Temperature” and the y-axis is labeled “Pressure.” A line extends from the lower left bottom of the graph sharply upward to a point that is a third across the x-axis. A second line begins at the lower third of the first line at a point labeled “triple point” and extends to the upper right corner of the graph where it is labeled “critical point.” The two lines bisect the graph area to create three sections, labeled “solid” near the top left, “liquid” in the top middle and “gas” near the bottom right. A pair of horizontal arrows, one left-facing and labeled “deposition” and one right-facing and labeled” sublimation,” are drawn on top of the bottom section of the first line. A second pair of horizontal arrows, one left-facing and labeled “freezing” and one right-facing and labeled “melting”, are drawn on top of the upper section of the first line. A third pair of horizontal arrows, one left-facing and labeled “condensation” and one right-facing and labeled ”vaporization,” are drawn on top of the middle section of the second line.
 
 <!-- SEG:m68769:para:fs-idm53315104 -->
 To illustrate the utility of these plots, consider the phase diagram for water shown in [[xref:CNX_Chem_10_04_H2OPhasDi2]].
 
 <!-- SEG:m68769:caption:CNX_Chem_10_04_H2OPhasDi2-caption -->
 The pressure and temperature axes on this phase diagram of water are not drawn to constant scale in order to illustrate several important properties.
+
+<!-- SEG:m68769:alt:fs-idp24684528-alt -->
+A graph is shown where the x-axis is labeled “Temperature in degrees Celsius” and the y-axis is labeled “Pressure ( k P a ).” A line extends from the origin of the graph which is labeled “A” sharply upward to a point in the bottom third of the diagram labeled “B” where it branches into a line that slants slightly backward until it hits the highest point on the y-axis labeled “D” and a second line that extends to the upper right corner of the graph labeled “C”. C is labeled “Critical point, with a dotted line extending downward to the x-axis labeled 374 degrees Celsius, and another dotted line extending to the y-axis labeled 22,089 k P a. The two lines bisect the graph area to create three sections, labeled “Ice (solid)” near the middle left, “Water (liquid)” in the top middle and “Water vapor (gas)” near the bottom middle. Point B is labeled “Triple point” and has a dotted line extending downward to the x-axis labeled 0.01, and another dotted line extending to the y-axis labeled 0.6. Halfway between points B and C a dotted line extends from the originally discussed line downward to the point 100 degrees Celsius on the x-axis, and another dotted line extends to the y-axis at 101 k P a. Another dotted line extends from this dotted line downward at 0 degrees Celsius.
 
 <!-- SEG:m68769:para:fs-idm201945904 -->
 We can use the phase diagram to identify the physical state of a sample of water under specified conditions of pressure and temperature. For example, a pressure of 50 kPa and a temperature of −10 °C correspond to the region of the diagram labeled “ice.” Under these conditions, water exists only as a solid (ice). A pressure of 50 kPa and a temperature of 50 °C correspond to the “water” region—here, water exists only as a liquid. At 25 kPa and 200 °C, water exists only in the gaseous state. Note that on the H[[sub:2]]O phase diagram, the pressure and temperature axes are not drawn to a constant scale in order to permit the illustration of several important features as described here.
@@ -37,14 +43,20 @@ The solid-vapor curve, labeled AB in [[xref:CNX_Chem_10_04_H2OPhasDi2]], indicat
 <!-- SEG:m68769:caption:CNX_Chem_10_04_FreezeDry-caption -->
 Freeze-dried foods, like this ice cream, are dehydrated by sublimation at pressures below the triple point for water. (credit: ʺlwaoʺ/Flickr)
 
+<!-- SEG:m68769:alt:fs-idm142599808-alt -->
+A photograph shows a package with a rocket being launched on the front and a block of pink, white and brown striped solid in a wrapper next to it.
+
 <!-- SEG:m68769:para:fs-idm92413200 -->
 The solid-liquid curve labeled BD shows the temperatures and pressures at which ice and liquid water are in equilibrium, representing the melting/freezing points for water. Note that this curve exhibits a slight negative slope (greatly exaggerated for clarity), indicating that the melting point for water decreases slightly as pressure increases. Water is an unusual substance in this regard, as most substances exhibit an increase in melting point with increasing pressure. This behavior is partly responsible for the movement of glaciers, like the one shown in [[xref:CNX_Chem_10_04_IceMelt]]. The bottom of a glacier experiences an immense pressure due to its weight that can melt some of the ice, forming a layer of liquid water on which the glacier may more easily slide.
 
 <!-- SEG:m68769:caption:CNX_Chem_10_04_IceMelt-caption -->
 The immense pressures beneath glaciers result in partial melting to produce a layer of water that provides lubrication to assist glacial movement. This satellite photograph shows the advancing edge of the Perito Moreno glacier in Argentina. (credit: NASA)
 
+<!-- SEG:m68769:alt:fs-idp19576624-alt -->
+A photograph shows an aerial view of a land mass. The white mass of a glacier is shown near the top left quadrant of the photo and leads to two branching blue rivers. The open land is shown in brown.
+
 <!-- SEG:m68769:para:fs-idm105744432 -->
-The point of intersection of all three curves is labeled B in [[xref:CNX_Chem_10_04_H2OPhasDi2]]. At the pressure and temperature represented by this point, three phases of water coexist in equilibrium. This temperature-pressure data pair is called the {{term}}triple point{{/term}}. At pressures lower than the triple point, water cannot exist as a liquid, regardless of the temperature.
+The point of intersection of all three curves is labeled B in [[xref:CNX_Chem_10_04_H2OPhasDi2]]. At the pressure and temperature represented by this point, three phases of water coexist in equilibrium. This temperature-pressure data pair is called the [[term:triple point|term-00002]]. At pressures lower than the triple point, water cannot exist as a liquid, regardless of the temperature.
 
 <!-- SEG:m68769:example-title:fs-idm211145632-title -->
 Determining the State of Water
@@ -96,6 +108,9 @@ Consider the phase diagram for carbon dioxide shown in [[xref:CNX_Chem_10_04_CO2
 
 <!-- SEG:m68769:caption:CNX_Chem_10_04_CO2phasdi-caption -->
 A phase diagram for carbon dioxide is shown. The pressure axis is plotted on a logarithmic scale to accommodate the large range of values.
+
+<!-- SEG:m68769:alt:fs-idm185557312-alt -->
+A graph is shown where the x-axis is labeled “Temperature ( degree sign, C )” and has values of negative 100 to 100 in increments of 25 and the y-axis is labeled “Pressure ( k P a )” and has values of 10 to 1,000,000. A line extends from the lower left bottom of the graph upward to a point around“27, 9000,” where it ends. The space under this curve is labeled “Gas.” A second line extends in a curve from point around “-55, 500” to “27, 1,000,000.” The area to the left of this line and above the first line is labeled “Solid” while the area to the right is labeled “Liquid.” A section on the graph under the second line and past the point “28” on the x-axis is labeled “S C F.”
 
 <!-- SEG:m68769:example-title:fs-idm81431296-title -->
 Determining the State of Carbon Dioxide
@@ -152,82 +167,85 @@ at 50 kPa: [[MATH:10]] at −60 °C
 Supercritical Fluids
 
 <!-- SEG:m68769:para:fs-idm114606944 -->
-If we place a sample of water in a sealed container at 25 °C, remove the air, and let the vaporization-condensation equilibrium establish itself, we are left with a mixture of liquid water and water vapor at a pressure of 0.03 atm. A distinct boundary between the more dense liquid and the less dense gas is clearly observed. As we increase the temperature, the pressure of the water vapor increases, as described by the liquid-gas curve in the phase diagram for water ([[xref:CNX_Chem_10_04_H2OPhasDi2]]), and a two-phase equilibrium of liquid and gaseous phases remains. At a temperature of 374 °C, the vapor pressure has risen to 218 atm, and any further increase in temperature results in the disappearance of the boundary between liquid and vapor phases. All of the water in the container is now present in a single phase whose physical properties are intermediate between those of the gaseous and liquid states. This phase of matter is called a {{term}}supercritical fluid{{/term}}, and the temperature and pressure above which this phase exists is the {{term}}critical point{{/term}} ([[xref:CNX_Chem_10_04_CritFluid]]). Above its critical temperature, a gas cannot be liquefied no matter how much pressure is applied. The pressure required to liquefy a gas at its critical temperature is called the critical pressure. The critical temperatures and critical pressures of some common substances are given in the following table.
-
-<!-- SEG:m68769:entry:auto-53 -->
-Substance
-
-<!-- SEG:m68769:entry:auto-54 -->
-Critical Temperature (°C)
-
-<!-- SEG:m68769:entry:auto-55 -->
-Critical Pressure (kPa)
-
-<!-- SEG:m68769:entry:auto-56 -->
-hydrogen
-
-<!-- SEG:m68769:entry:auto-57 -->
-−240.0
+If we place a sample of water in a sealed container at 25 °C, remove the air, and let the vaporization-condensation equilibrium establish itself, we are left with a mixture of liquid water and water vapor at a pressure of 0.03 atm. A distinct boundary between the more dense liquid and the less dense gas is clearly observed. As we increase the temperature, the pressure of the water vapor increases, as described by the liquid-gas curve in the phase diagram for water ([[xref:CNX_Chem_10_04_H2OPhasDi2]]), and a two-phase equilibrium of liquid and gaseous phases remains. At a temperature of 374 °C, the vapor pressure has risen to 218 atm, and any further increase in temperature results in the disappearance of the boundary between liquid and vapor phases. All of the water in the container is now present in a single phase whose physical properties are intermediate between those of the gaseous and liquid states. This phase of matter is called a [[term:supercritical fluid|term-00003]], and the temperature and pressure above which this phase exists is the [[term:critical point|term-00004]] ([[xref:CNX_Chem_10_04_CritFluid]]). Above its critical temperature, a gas cannot be liquefied no matter how much pressure is applied. The pressure required to liquefy a gas at its critical temperature is called the critical pressure. The critical temperatures and critical pressures of some common substances are given in the following table.
 
 <!-- SEG:m68769:entry:auto-58 -->
-1300
+Substance
 
 <!-- SEG:m68769:entry:auto-59 -->
-nitrogen
+Critical Temperature (°C)
 
 <!-- SEG:m68769:entry:auto-60 -->
-−147.2
+Critical Pressure (kPa)
 
 <!-- SEG:m68769:entry:auto-61 -->
-3400
+hydrogen
 
 <!-- SEG:m68769:entry:auto-62 -->
-oxygen
+−240.0
 
 <!-- SEG:m68769:entry:auto-63 -->
-−118.9
+1300
 
 <!-- SEG:m68769:entry:auto-64 -->
-5000
+nitrogen
 
 <!-- SEG:m68769:entry:auto-65 -->
-carbon dioxide
+−147.2
 
 <!-- SEG:m68769:entry:auto-66 -->
-31.1
+3400
 
 <!-- SEG:m68769:entry:auto-67 -->
-7400
+oxygen
 
 <!-- SEG:m68769:entry:auto-68 -->
-ammonia
+−118.9
 
 <!-- SEG:m68769:entry:auto-69 -->
-132.4
+5000
 
 <!-- SEG:m68769:entry:auto-70 -->
-11,300
+carbon dioxide
 
 <!-- SEG:m68769:entry:auto-71 -->
-sulfur dioxide
+31.1
 
 <!-- SEG:m68769:entry:auto-72 -->
-157.2
+7400
 
 <!-- SEG:m68769:entry:auto-73 -->
-7800
+ammonia
 
 <!-- SEG:m68769:entry:auto-74 -->
-water
+132.4
 
 <!-- SEG:m68769:entry:auto-75 -->
-374.0
+11,300
 
 <!-- SEG:m68769:entry:auto-76 -->
+sulfur dioxide
+
+<!-- SEG:m68769:entry:auto-77 -->
+157.2
+
+<!-- SEG:m68769:entry:auto-78 -->
+7800
+
+<!-- SEG:m68769:entry:auto-79 -->
+water
+
+<!-- SEG:m68769:entry:auto-80 -->
+374.0
+
+<!-- SEG:m68769:entry:auto-81 -->
 22,000
 
 <!-- SEG:m68769:caption:CNX_Chem_10_04_CritFluid-caption -->
 (a) A sealed container of liquid carbon dioxide slightly below its critical point is heated, resulting in (b) the formation of the supercritical fluid phase. Cooling the supercritical fluid lowers its temperature and pressure below the critical point, resulting in the reestablishment of separate liquid and gaseous phases (c and d). Colored floats illustrate differences in density between the liquid, gaseous, and supercritical fluid states. (credit: modification of work by “mrmrobin”/YouTube)
+
+<!-- SEG:m68769:alt:fs-idm115619344-alt -->
+Four photographs are shown where each shows a circular container with a green and red float in each. In the left diagram, the container is half filled with a colorless liquid and the floats sit on the surface of the liquid. In the second photo, the green float is near the top and the red float lies near the bottom of the container. In the third photo, the fluid is darker and the green float sits halfway up the container while the red is sitting at the bottom. In the right photo, the liquid is colorless again and the two floats sit on the surface.
 
 <!-- SEG:m68769:para:fs-idm81770576 -->
 Observe the [[link:liquid-to-supercritical fluid transition|http://openstax.org/l/16supercrit]] for carbon dioxide.
@@ -276,6 +294,9 @@ Supercritical fluid extraction using carbon dioxide is now being widely used as 
 
 <!-- SEG:m68769:caption:CNX_Chem_10_04_SupCritCof-caption -->
 (a) Caffeine molecules have both polar and nonpolar regions, making it soluble in solvents of varying polarities. (b) The schematic shows a typical decaffeination process involving supercritical carbon dioxide.
+
+<!-- SEG:m68769:alt:fs-idm140720928-alt -->
+Two images are shown and labeled “a” and “b.” Image a shows a molecule composed of a five member ring composed of two blue spheres and three black spheres. One of the blue spheres is bonded to a black sphere bonded to three white spheres and one of the black spheres is bonded to a white sphere. The other two black spheres are double bonded together and make up one side of a six-membered ring that is also composed of two more black spheres and two blue spheres, both of which are bonded to a black sphere bonded to three white spheres. The black spheres are each double bonded to red spheres. Image b shows a diagram of two vertical tubes that lie next to one another. The left-hand tube is labeled “Extraction vessel.” A small tube labeled “Soaked beans” leads into the top of the tube and a label at the bottom of the tube reads “Decaffeinated beans.” The right tube is labeled “Absorption vessel.” A tube near the top of this tube is labeled “Water” and another tube leads from the right tube to the left. This tube is labeled with a left-facing arrow and the phrase “supercritical carbon dioxide.” There is a tube leading away from the bottom which is labeled, “Caffeine and water.” There is another tube that leads from the extraction vessel to the absorption vessel which is labeled, “supercritical C O subscript 2 plus caffeine.”
 
 <!-- SEG:m68769:title:fs-idm39505456-title -->
 Key Concepts and Summary
@@ -349,6 +370,9 @@ Consider a cylinder containing a mixture of liquid carbon dioxide in equilibrium
 <!-- SEG:m68769:solution:fs-idm137306816 -->
 [[BR]] [[MEDIA:1]]
 
+<!-- SEG:m68769:alt:fs-idm183173568-alt -->
+An x-axis is labeled at the left as “Full” and at the right as “Empty.” A y-axis is labeled at the top as “P.” Beneath the x-axis is the label “Amount released.” A horizontal line that then slopes downward is drawn about halfway up the vertical line and labeled on the left as “65 a t m.” About two-thirds of the way across the x-axis, it slopes downward in a straight line to meet the “empty” label on the bottom right of the axis.
+
 <!-- SEG:m68769:problem:fs-idm243757936 -->
 Dry ice, CO[[sub:2]]([[i:s]]), does not melt at atmospheric pressure. It sublimes at a temperature of −78 °C. What is the lowest pressure at which CO[[sub:2]]([[i:s]]) will melt to give CO[[sub:2]]([[i:l]])? At approximately what temperature will this occur? (See [[xref:CNX_Chem_10_04_CO2phasdi]] for the phase diagram.)
 
@@ -363,6 +387,9 @@ Is it possible to liquefy nitrogen at room temperature (about 25 °C)? Is it pos
 
 <!-- SEG:m68769:problem:fs-idm59313520 -->
 Elemental carbon has one gas phase, one liquid phase, and two different solid phases, as shown in the phase diagram:
+
+<!-- SEG:m68769:alt:fs-idm159452496-alt -->
+This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right.
 
 <!-- SEG:m68769:problem:fs-idm196192784 -->
 (a) On the phase diagram, label the gas and liquid regions.
@@ -384,6 +411,18 @@ Elemental carbon has one gas phase, one liquid phase, and two different solid ph
 
 <!-- SEG:m68769:solution:fs-idm88428112 -->
 (a)[[BR]] [[MEDIA:2]][[BR]] (b)[[BR]] [[MEDIA:3]][[BR]] (c)[[BR]] [[MEDIA:4]][[BR]] (d)[[BR]] [[MEDIA:5]][[BR]] (e) liquid phase (f) sublimation
+
+<!-- SEG:m68769:alt:fs-idm121487888-alt -->
+This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The two quadrants to the right are labeled, “Water ( liquid )” and “Water vapor ( gas ).”
+
+<!-- SEG:m68769:alt:fs-idm69191024-alt -->
+This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The quadrant to the left is labeled, “Graphite.”
+
+<!-- SEG:m68769:alt:fs-idm81439280-alt -->
+This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The top quadrant is labeled, “Diamond.”
+
+<!-- SEG:m68769:alt:fs-idm209382816-alt -->
+This figure shows an x-axis that is labeled, “Temperature ( K ),” and a y-axis labeled, “Pressure ( P a ).” The x-axis is marked off in increments of 2000 starting from 0. The y-axis is marked off at 0, 10 to the 7, ten to the 9, and ten to the 11. There is a slightly negatively sloped line that passes through the x-axis at about 3800. From this line there is a line that curves up and then down to the left to pass through the y-axis at ten to the 9. There is another line that goes up and to the right. The four quadrants are labeled, “Diamond” at the top, “Graphite”, to the left, “water ( liquid )” to the top right, and “water vapor ( gas ),” to the bottom right. There is a red circle where the liquid, gas, and graphite lines intersect.
 
 <!-- SEG:m68769:glossary-term:fs-idm66977664-term -->
 critical point

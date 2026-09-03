@@ -1,0 +1,163 @@
+{
+  "moduleId": "m00354",
+  "title": {
+    "segmentId": "m00354:title:auto-1",
+    "text": "Step-Growth Polymers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "fb00cbe2-5524-4ddd-8e4f-348bf33de7d2"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00354:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00354:alt:fig-00001-alt",
+          "text": "Adipic acid reacts with hexamethylenediamine and heat to give Nylon 66. Caprolactam reacts with water and heat to give 6-aminohexanoic acid that reacts with heat to form Nylon 6."
+        },
+        "src": "../../media/OChem_31_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00354:title:sect-00001-title",
+        "text": "Polycarbonates"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00354:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00354:alt:fig-00002-alt",
+              "text": "Diphenyl carbonate reacts with bisphenol A at 300 degree Celsius to give Lexan and two n moles of phenol. Lexan's structure is inside parentheses with n as the subscript."
+            },
+            "src": "../../media/OChem_31_04_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00354:title:sect-00002-title",
+        "text": "Polyurethanes"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00354:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00354:alt:fig-00003-alt",
+              "text": "Structures of a carbonate (carbonyl with two O R groups), a urate (carbonyl with O R and N R 2), and a urea (carbonyl with two N R 2 groups)."
+            },
+            "src": "../../media/OChem_31_04_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00004",
+          "segmentId": "m00354:para:para-00004"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00354:alt:fig-00004-alt",
+              "text": "A polymer bonded with two alcohol groups on both sides reacts with toluene-2,4-diisocyanate to form polyurethane. Polyurethane's structure is inside parentheses with n as the subscript."
+            },
+            "src": "../../media/OChem_31_04_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00354:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00354:alt:fig-00005-alt",
+              "text": "A carbonyl compound reacts with water having two lone pairs on oxygen to form an intermediate that leads to carbamic acid. This leads to two products, amine and carbon dioxide."
+            },
+            "src": "../../media/OChem_31_04_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00354:para:para-00006"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00354:title:sect-00003-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

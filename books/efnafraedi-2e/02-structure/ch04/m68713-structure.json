@@ -104,6 +104,14 @@
           "segmentId": "m68713:para:fs-idp115249152"
         },
         {
+          "type": "media",
+          "id": "fs-idp136092800",
+          "alt": {
+            "segmentId": "m68713:alt:fs-idp136092800-alt",
+            "text": "This figure shows two pink rectangles. The first is labeled, “Moles of A l.” This rectangle is followed by an arrow pointing right to a second rectangle labeled, “Moles of I subscript 2.”"
+          }
+        },
+        {
           "type": "equation",
           "id": "fs-idp147980704"
         },
@@ -137,7 +145,10 @@
       },
       "media": {
         "id": "fs-idp52310320",
-        "alt": "This figure shows three photos with an arrow leading from one to the next. The first photo shows a small pile of iodine and aluminum on a white surface. The second photo shows a small amount of purple smoke coming from the pile. The third photo shows a large amount of purple and gray smoke coming from the pile.",
+        "alt": {
+          "segmentId": "m68713:alt:fs-idp52310320-alt",
+          "text": "This figure shows three photos with an arrow leading from one to the next. The first photo shows a small pile of iodine and aluminum on a white surface. The second photo shows a small amount of purple smoke coming from the pile. The third photo shows a large amount of purple and gray smoke coming from the pile."
+        },
         "src": "../../media/CNX_Chem_04_03_iodine.jpg",
         "mimeType": "image/jpeg"
       }
@@ -187,6 +198,14 @@
           "type": "para",
           "id": "fs-idp160971824",
           "segmentId": "m68713:para:fs-idp160971824"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp94375456",
+          "alt": {
+            "segmentId": "m68713:alt:fs-idp94375456-alt",
+            "text": "This figure shows two pink rectangles. The first is labeled, “Moles of C subscript 3 H subscript 8.” This rectangle is followed by an arrow pointing right to a second rectangle labeled, “Moles of C O subscript 2.”"
+          }
         },
         {
           "type": "equation",
@@ -263,6 +282,14 @@
           "segmentId": "m68713:para:fs-idp3589264"
         },
         {
+          "type": "media",
+          "id": "fs-idp38697232",
+          "alt": {
+            "segmentId": "m68713:alt:fs-idp38697232-alt",
+            "text": "This figure shows four rectangles. The first is shaded yellow and is labeled, “Mass of M g ( O H ) subscript 2.” This rectangle is followed by an arrow pointing right to a second rectangle which is shaded pink and is labeled, “Moles of M g ( O H ) subscript 2.” This rectangle is followed by an arrow pointing right to a third rectangle which is shaded pink and is labeled, “Moles of N a O H.” This rectangle is followed by an arrow pointing right to a fourth rectangle which is shaded yellow and is labeled, “Mass of N a O H.”"
+          }
+        },
+        {
           "type": "equation",
           "id": "fs-idp158099664"
         },
@@ -324,6 +351,14 @@
           "segmentId": "m68713:para:fs-idp38243856"
         },
         {
+          "type": "media",
+          "id": "fs-idp56087040",
+          "alt": {
+            "segmentId": "m68713:alt:fs-idp56087040-alt",
+            "text": "This figure shows four rectangles. The first is shaded yellow and is labeled, “Mass of C subscript 8 H subscript 18.” This rectangle is followed by an arrow pointing right to a second rectangle which is shaded pink and is labeled, “Moles of C subscript 8 H subscript 18.” This rectangle is followed by an arrow pointing right to a third rectangle which is shaded pink and is labeled, “Moles of O subscript 2.” This rectangle is followed by an arrow pointing right to a fourth rectangle which is shaded yellow and is labeled, “Mass of O subscript 2.”"
+          }
+        },
+        {
           "type": "equation",
           "id": "fs-idp87206624"
         },
@@ -361,7 +396,10 @@
       },
       "media": {
         "id": "fs-idp53443040",
-        "alt": "This flowchart shows 10 rectangles connected by double headed arrows. To the upper left, a rectangle is shaded lavender and is labeled, “Volume of pure substance A.” This rectangle is followed by a horizontal double headed arrow labeled, “Density.” It connects to a second rectangle which is shaded yellow and is labeled, “Mass of A.” This rectangle is followed by a double headed arrow which is labeled, “Molar Mass,” that connects to a third rectangle which is shaded pink and is labeled, “Moles of A.” To the left of this rectangle is a horizontal double headed arrow labeled, “Molarity,” which connects to a lavender rectangle which is labeled, “Volume of solution A.” The pink, “Moles of A,” rectangle is also connected with a double headed arrow below and to the left. This arrow is labeled “Avogadro’s number.” It connects to a green shaded rectangle that is labeled, “Number of particles of A.” To the right of the pink “Moles of A,” rectangle is a horizontal double headed arrow which is labeled, “Stoichiometric factor.” It connects to a second pink rectangle which is labeled, “Moles of B.” A double headed arrow which is labeled, “Molar mass,” extends from the top of this rectangle above and to the right to a yellow shaded rectangle labeled, “Mass of B.” A horizontal double headed arrow which is labeled, “Density” links to a lavender rectangle labeled, “Volume of substance B,” to the right. A horizontal double headed arrow labeled, “Molarity,” extends right to the of the pink “Moles of B” rectangle. This arrow connects to a lavender rectangle that is labeled, “Volume of substance B.” Another double headed arrow extends below and to the right of the pink “Moles of B” rectangle. This arrow is labeled “Avogadro’s number,” and it extends to a green rectangle which is labeled, “Number of particles of B.”",
+        "alt": {
+          "segmentId": "m68713:alt:fs-idp53443040-alt",
+          "text": "This flowchart shows 10 rectangles connected by double headed arrows. To the upper left, a rectangle is shaded lavender and is labeled, “Volume of pure substance A.” This rectangle is followed by a horizontal double headed arrow labeled, “Density.” It connects to a second rectangle which is shaded yellow and is labeled, “Mass of A.” This rectangle is followed by a double headed arrow which is labeled, “Molar Mass,” that connects to a third rectangle which is shaded pink and is labeled, “Moles of A.” To the left of this rectangle is a horizontal double headed arrow labeled, “Molarity,” which connects to a lavender rectangle which is labeled, “Volume of solution A.” The pink, “Moles of A,” rectangle is also connected with a double headed arrow below and to the left. This arrow is labeled “Avogadro’s number.” It connects to a green shaded rectangle that is labeled, “Number of particles of A.” To the right of the pink “Moles of A,” rectangle is a horizontal double headed arrow which is labeled, “Stoichiometric factor.” It connects to a second pink rectangle which is labeled, “Moles of B.” A double headed arrow which is labeled, “Molar mass,” extends from the top of this rectangle above and to the right to a yellow shaded rectangle labeled, “Mass of B.” A horizontal double headed arrow which is labeled, “Density” links to a lavender rectangle labeled, “Volume of substance B,” to the right. A horizontal double headed arrow labeled, “Molarity,” extends right to the of the pink “Moles of B” rectangle. This arrow connects to a lavender rectangle that is labeled, “Volume of substance B.” Another double headed arrow extends below and to the right of the pink “Moles of B” rectangle. This arrow is labeled “Avogadro’s number,” and it extends to a green rectangle which is labeled, “Number of particles of B.”"
+        },
         "src": "../../media/CNX_Chem_04_03_flowchart.jpg",
         "mimeType": "image/jpeg"
       }
@@ -396,7 +434,10 @@
       },
       "media": {
         "id": "fs-idp103197840",
-        "alt": "This photograph shows the inside of an automobile from the driver’s side area. The image shows inflated airbags positioned just in front of the driver’s and passenger’s seats and along the length of the passenger side over the windows. A large, round airbag covers the steering wheel.",
+        "alt": {
+          "segmentId": "m68713:alt:fs-idp103197840-alt",
+          "text": "This photograph shows the inside of an automobile from the driver’s side area. The image shows inflated airbags positioned just in front of the driver’s and passenger’s seats and along the length of the passenger side over the windows. A large, round airbag covers the steering wheel."
+        },
         "src": "../../media/CNX_Chem_04_03_airbag.jpg",
         "mimeType": "image/jpeg"
       }
@@ -894,23 +935,29 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idp8901744",
       "class": null,
-      "alt": "This figure includes two structural formulas. It reads, “The number of moles and the mass of,” which is followed by a structure with two C atoms bonded with a single horizontal at the center. Both C atoms have H atoms bonded above and below. The C atom to the left has a B r atom bonded to its left. The C atom to the right has a B r atom bonded to its right. Following this structure, the figure reads, “formed by the reaction of 12.85 g of,” which is followed by a structure with two C atoms connected with a horizontal double bond. The C atom to the left has H atoms bonded above and to the left and below and to the left. The C atom to the right has H atoms bonded above and to the right and below and to the right. The figure ends with, “with an excess of B r subscript 2.”",
       "src": "../../media/CNX_Chem_04_03_etheneBr_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68713:alt:fs-idp8901744-alt",
+        "text": "This figure includes two structural formulas. It reads, “The number of moles and the mass of,” which is followed by a structure with two C atoms bonded with a single horizontal at the center. Both C atoms have H atoms bonded above and below. The C atom to the left has a B r atom bonded to its left. The C atom to the right has a B r atom bonded to its right. Following this structure, the figure reads, “formed by the reaction of 12.85 g of,” which is followed by a structure with two C atoms connected with a horizontal double bond. The C atom to the left has H atoms bonded above and to the left and below and to the left. The C atom to the right has H atoms bonded above and to the right and below and to the right. The figure ends with, “with an excess of B r subscript 2.”"
+      }
     },
     {
       "placeholder": "[[MEDIA:2]]",
       "id": "fs-idp272578432",
       "class": null,
-      "alt": "This figure includes two structural formulas. It reads, “The number of moles and the mass of,” which is followed by a structure with two C atoms connected with a horizontal double bond at the center. The C atom to the left has H atoms bonded above and to the left and below and to the left. The C atom to the right has H atoms bonded above and to the right and below and to the right. Following this structure, the figure reads, “required to react with H subscript 2 O to produce 9.55 g of,” which is followed by a structure with two C atoms connected with a horizontal single bond. The C atom to the left has H atoms bonded above, to the left, and below. The C atom to the right has H atoms bonded above and below. To the right, an O atom forms a single bond with the C atom. A single H atom is bonded to the right side of the O atom.",
       "src": "../../media/CNX_Chem_04_03_ethene_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68713:alt:fs-idp272578432-alt",
+        "text": "This figure includes two structural formulas. It reads, “The number of moles and the mass of,” which is followed by a structure with two C atoms connected with a horizontal double bond at the center. The C atom to the left has H atoms bonded above and to the left and below and to the left. The C atom to the right has H atoms bonded above and to the right and below and to the right. Following this structure, the figure reads, “required to react with H subscript 2 O to produce 9.55 g of,” which is followed by a structure with two C atoms connected with a horizontal single bond. The C atom to the left has H atoms bonded above, to the left, and below. The C atom to the right has H atoms bonded above and below. To the right, an O atom forms a single bond with the C atom. A single H atom is bonded to the right side of the O atom."
+      }
     }
   ],
   "sectionOrder": 3

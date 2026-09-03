@@ -1,0 +1,119 @@
+{
+  "moduleId": "m00077",
+  "title": {
+    "segmentId": "m00077:title:auto-1",
+    "text": "Kinds of Organic Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "80d7312c-01c7-4bcb-9507-cbde7122d68a"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00077:para:para-00001"
+    },
+    {
+      "type": "list",
+      "id": "list-00001",
+      "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m00077:item:list-00001-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m00077:item:list-00001-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m00077:item:list-00001-item-3"
+        },
+        {
+          "id": null,
+          "segmentId": "m00077:item:list-00001-item-4"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00077:alt:fig-00001-alt",
+          "text": "The two reactants ethylene (an alkene) and hydrogen bromide react to form one product: bromoethane (an alkyl halide)."
+        },
+        "src": "../../media/OChem_06_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00077:alt:fig-00002-alt",
+          "text": "A reversible reaction shows the single reactant ethanol (an alcohol) in the presence of acid catalyst forming two products: ethylene (an alkene) and water."
+        },
+        "src": "../../media/OChem_06_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00077:alt:fig-00003-alt",
+          "text": "The two reactants methyl acetate (ester) and water in the presence of acid catalyst form two products: acetic acid (a carboxylic acid) and methanol (an alcohol)."
+        },
+        "src": "../../media/OChem_06_01_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00077:alt:fig-00004-alt",
+          "text": "The single reactant dihydroxyacetone phosphate reacts to form a single isomeric product, glyceraldehyde 3-phosphate."
+        },
+        "src": "../../media/OChem_06_01_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00077:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

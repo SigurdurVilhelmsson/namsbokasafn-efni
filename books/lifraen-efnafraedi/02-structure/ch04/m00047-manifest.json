@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "moduleId": "m00047",
+  "extractedAt": "2026-08-31T19:08:47.113Z",
+  "sourceHash": "aab79bb201b9a4df",
+  "segmentCount": 36,
+  "segmentIds": [
+    "m00047:title:auto-1",
+    "m00047:para:para-00001",
+    "m00047:para:para-00002",
+    "m00047:caption:fig-00001-caption",
+    "m00047:alt:fig-00001-alt",
+    "m00047:para:para-00003",
+    "m00047:para:para-00004",
+    "m00047:caption:fig-00002-caption",
+    "m00047:alt:fig-00002-alt",
+    "m00047:para:para-00005",
+    "m00047:alt:fig-00003-alt",
+    "m00047:para:para-00006",
+    "m00047:table-title:table-00001-title",
+    "m00047:entry:auto-14",
+    "m00047:entry:auto-15",
+    "m00047:entry:auto-16",
+    "m00047:entry:auto-17",
+    "m00047:entry:auto-18",
+    "m00047:entry:auto-19",
+    "m00047:entry:auto-20",
+    "m00047:entry:auto-21",
+    "m00047:entry:auto-22",
+    "m00047:entry:auto-23",
+    "m00047:entry:auto-24",
+    "m00047:entry:auto-25",
+    "m00047:entry:auto-26",
+    "m00047:entry:auto-27",
+    "m00047:example-title:exam-00001-title",
+    "m00047:para:para-00007",
+    "m00047:para-title:para-00008-title",
+    "m00047:para:para-00008",
+    "m00047:para-title:para-00009-title",
+    "m00047:para:para-00009",
+    "m00047:alt:fig-00004-alt",
+    "m00047:para:para-00010",
+    "m00047:title:sect-00001-title"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 10,
+    "section": 1,
+    "figure": 4,
+    "table": 1,
+    "example": 1,
+    "exercise": 2,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002",
+      "fig-00003",
+      "fig-00004"
+    ],
+    "table": [
+      "table-00001"
+    ],
+    "example": [
+      "exam-00001"
+    ],
+    "exercise": [
+      "exer-00001",
+      "exer-00002"
+    ],
+    "note": [],
+    "equation": [],
+    "section": [
+      "sect-00001"
+    ]
+  }
+}

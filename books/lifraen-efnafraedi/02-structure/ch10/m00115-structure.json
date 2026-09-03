@@ -1,0 +1,111 @@
+{
+  "moduleId": "m00115",
+  "title": {
+    "segmentId": "m00115:title:auto-1",
+    "text": "Preparing Alkyl Halides from Alkenes: Allylic Bromination"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "7ebf1c95-fde9-4819-9a1a-cf075678928e"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00115:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00115:alt:fig-00001-alt",
+          "text": "Two reactions of an alkene. Alkene and HX give a halogenated product (X is Cl, Br, or I). Alkene and X2 give a dihalogenated product (X is Cl or Br)."
+        },
+        "src": "../../media/OChem_10_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00115:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00115:alt:fig-00002-alt",
+          "text": "The reaction of cyclohexene in the presence of N-bromosuccinimide, light, and carbon tetrachloride forms 3-bromocyclohexene (85%) and succinimide. C3 and C6 in cyclohexene are labeled as allylic positions."
+        },
+        "src": "../../media/OChem_10_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00115:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00115:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00115:alt:fig-00003-alt",
+          "text": "The mechanism of allylic bromination of an alkene with N B S involving three steps. Bromoalkene and a Br radical are the final products."
+        },
+        "src": "../../media/OChem_10_03_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00115:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00115:alt:fig-00004-alt",
+          "text": "The structure of cyclohexene, with strengths of specific CH bonds. Alkyl, allylic, and vinylic C-H bonds are 410, 370, and 465 kJ/mol, respectively. Strengths in kcal/mol are also provided."
+        },
+        "src": "../../media/OChem_10_03_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00115:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00115:alt:fig-00005-alt",
+          "text": "The structures of six radicals in order of increasing stability: vinylic, methyl, primary, secondary, tertiary, and allylic."
+        },
+        "src": "../../media/OChem_10_03_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 3
+}

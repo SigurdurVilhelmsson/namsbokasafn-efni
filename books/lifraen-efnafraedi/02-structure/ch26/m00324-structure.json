@@ -1,0 +1,127 @@
+{
+  "moduleId": "m00324",
+  "title": {
+    "segmentId": "m00324:title:auto-1",
+    "text": "Peptide Synthesis"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "412a9b9c-d1c0-4375-9aaa-5eac17658677"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00324:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00324:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00324:alt:fig-00001-alt",
+          "text": "The coupling of an N-protected L-alanine  and a carboxyl-protected L-leucine  ester with D C C, followed by deprotection of the protecting groups  provided the corresponding dipeptide  Ala-Leu"
+        },
+        "src": "../../media/OChem_26_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00324:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00324:alt:fig-00002-alt",
+          "text": "Carboxyl-protection of L-leucine with either methanol or benzyl alcohol,  catalyzed by hydrochloric acid, to form the corresponding  L- leucinate esters. Deprotection with sodium hydroxide or hydrogenation regenerates the free acid."
+        },
+        "src": "../../media/OChem_26_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00324:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00324:alt:fig-00003-alt",
+          "text": "L-Alanine reacts with tertiary-butyl dicarbonate and triethylamine to form B o c-(L)-Ala. Alanine reacts with fluorenylmethyloxycarbonyl chloride and triethyl amine to form F m o c- (L)-Ala."
+        },
+        "src": "../../media/OChem_26_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00324:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00324:alt:fig-00004-alt",
+          "text": "Five steps in the synthesis of Ala-Leu. The amino group and the carboxyl group are protected. They are coupled with N, N-dicyclohexylcarbodiimide, and later deprotected to produce the dipetide, Ala-Leu."
+        },
+        "src": "../../media/OChem_26_07_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00324:para:para-00006"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00324:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

@@ -29,7 +29,10 @@
       },
       "media": {
         "id": "fs-idp34998992",
-        "alt": "This figure shows pieces of a white substance which appear to be sublimating. To the right of these pieces are three graduated cylinders. Each cylinder holds a different color liquid, and above the liquid, the cylinders are filled with a fog-like substance. This fog-like substance swirls out of the top and around the outside of the cylinders.",
+        "alt": {
+          "segmentId": "m68760:alt:fs-idp34998992-alt",
+          "text": "This figure shows pieces of a white substance which appear to be sublimating. To the right of these pieces are three graduated cylinders. Each cylinder holds a different color liquid, and above the liquid, the cylinders are filled with a fog-like substance. This fog-like substance swirls out of the top and around the outside of the cylinders."
+        },
         "src": "../../media/CNX_Chem_10_00_Punch.jpg",
         "mimeType": "image/jpeg"
       }

@@ -1,0 +1,209 @@
+{
+  "moduleId": "m00320",
+  "title": {
+    "segmentId": "m00320:title:auto-1",
+    "text": "Synthesis of Amino Acids"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "27e03259-c891-4818-92cb-4969f67a8ef0"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00320:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00320:alt:fig-00001-alt",
+          "text": "4-Methylpentanoic acid reacts with bromine, phosphorus tribromide, and water to form 2-bromo-4-methyl-pentanoic acid. This further reacts with excess ammonia to form (R, S)-leucine in 45 percent yield."
+        },
+        "src": "../../media/OChem_26_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00320:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00320:title:sect-00002-title",
+        "text": "The Amidomalonate Synthesis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00320:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00320:alt:fig-00002-alt",
+              "text": "Diethylacetamidomalonate reacts with sodium ethoxide and ethyl-2-bromoacetate to form a triester. This reacts with hydronium ion in the presence of heat to form (R, S)-aspartic acid in 55 percent yield"
+            },
+            "src": "../../media/OChem_26_03_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00320:title:sect-00003-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": null,
+      "title": {
+        "segmentId": "m00320:title:sect-00004-title",
+        "text": "Reductive Amination of [[i:α]]-Keto Acids"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00320:para:para-00005"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00320:alt:fig-00003-alt",
+              "text": "Pyruvic acid reacts with ammonia and sodium borohydride to form an imine intermediate that further reacts to form (R, S)-alanine."
+            },
+            "src": "../../media/OChem_26_03_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": null,
+      "title": {
+        "segmentId": "m00320:title:sect-00005-title",
+        "text": "Enantioselective Synthesis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00320:para:para-00006"
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00320:para:para-00007"
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00320:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00320:alt:fig-00004-alt",
+              "text": "A (Z) enamido acid reacts with hydrogen, rhodium catalyst, sodium hydroxide, and water to form (S)-phenylalanine."
+            },
+            "src": "../../media/OChem_26_03_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00320:para:para-00009"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00320:alt:fig-00005-alt",
+              "text": "A rhodium coordination complex with boron tetrafluoride ion. The rhodium ligand is a benzene ring with a methoxy on C 1 and a methyl group on C 2 position."
+            },
+            "src": "../../media/OChem_26_03_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00320:title:sect-00006-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

@@ -376,7 +376,10 @@
           },
           "media": {
             "id": "fs-idm73431936",
-            "alt": "This figure shows four photos each connected by a right-facing arrow. The first photo shows a glass flask with aluminum foil covering the top sitting on a scale. The second photo shows a syringe being inserted into the flask through the aluminum foil covering. The third photo shows the glass flask being inserted into a beaker of water. The water appears to be heated at 100. The fourth photo shows the glass flask being weighed again.",
+            "alt": {
+              "segmentId": "m68752:alt:fs-idm73431936-alt",
+              "text": "This figure shows four photos each connected by a right-facing arrow. The first photo shows a glass flask with aluminum foil covering the top sitting on a scale. The second photo shows a syringe being inserted into the flask through the aluminum foil covering. The third photo shows the glass flask being inserted into a beaker of water. The water appears to be heated at 100. The fourth photo shows the glass flask being weighed again."
+            },
             "src": "../../media/CNX_Chem_09_03_liquidgas.jpg",
             "mimeType": "image/jpeg"
           }
@@ -415,7 +418,10 @@
           },
           "media": {
             "id": "fs-idp114351776",
-            "alt": "This figure includes images of four gas-filled cylinders or tanks. Each has a valve at the top. The interior of the first cylinder is shaded blue. This region contains 5 small blue circles that are evenly distributed. The label “300 k P a” is on the cylinder. The second cylinder is shaded lavender. This region contains 8 small purple circles that are evenly distributed. The label “450 k P a” is on the cylinder. To the right of these cylinders is a third cylinder. Its interior is shaded pale yellow. This region contains 12 small yellow circles that are evenly distributed. The label “6000 k P a” is on this region of the cylinder. An arrow labeled “Total pressure combined” appears to the right of these three cylinders. This arrow points to a fourth cylinder. The interior of this cylinder is shaded a pale green. It contains evenly distributed small circles in the following quantities and colors; 5 blue, 8 purple, and 12 yellow. This cylinder is labeled “1350 k P a.”",
+            "alt": {
+              "segmentId": "m68752:alt:fs-idp114351776-alt",
+              "text": "This figure includes images of four gas-filled cylinders or tanks. Each has a valve at the top. The interior of the first cylinder is shaded blue. This region contains 5 small blue circles that are evenly distributed. The label “300 k P a” is on the cylinder. The second cylinder is shaded lavender. This region contains 8 small purple circles that are evenly distributed. The label “450 k P a” is on the cylinder. To the right of these cylinders is a third cylinder. Its interior is shaded pale yellow. This region contains 12 small yellow circles that are evenly distributed. The label “6000 k P a” is on this region of the cylinder. An arrow labeled “Total pressure combined” appears to the right of these three cylinders. This arrow points to a fourth cylinder. The interior of this cylinder is shaded a pale green. It contains evenly distributed small circles in the following quantities and colors; 5 blue, 8 purple, and 12 yellow. This cylinder is labeled “1350 k P a.”"
+            },
             "src": "../../media/CNX_Chem_09_03_DaltonLaw1-f981.jpg",
             "mimeType": "image/jpeg"
           }
@@ -645,7 +651,10 @@
           },
           "media": {
             "id": "fs-idm14272784",
-            "alt": "This figure shows a diagram of equipment used for collecting a gas over water. To the left is an Erlenmeyer flask. It is approximately two thirds full of a lavender colored liquid. Bubbles are evident in the liquid. The label “Reaction Producing Gas” appears below the flask. A line segment connects this label to the liquid in the flask. The flask has a stopper in it through which a single glass tube extends from the open region above the liquid in the flask up, through the stopper, to the right, then angles down into a pan that is nearly full of light blue water. This tube again extends right once it is well beneath the water’s surface. It then bends up into an inverted flask which is labeled “Collection Flask.” This collection flask is positioned with its mouth beneath the surface of the light blue water and appears approximately half full. Bubbles are evident in the water in the inverted flask. The open space above the water in the inverted flask is labeled “collected gas.”",
+            "alt": {
+              "segmentId": "m68752:alt:fs-idm14272784-alt",
+              "text": "This figure shows a diagram of equipment used for collecting a gas over water. To the left is an Erlenmeyer flask. It is approximately two thirds full of a lavender colored liquid. Bubbles are evident in the liquid. The label “Reaction Producing Gas” appears below the flask. A line segment connects this label to the liquid in the flask. The flask has a stopper in it through which a single glass tube extends from the open region above the liquid in the flask up, through the stopper, to the right, then angles down into a pan that is nearly full of light blue water. This tube again extends right once it is well beneath the water’s surface. It then bends up into an inverted flask which is labeled “Collection Flask.” This collection flask is positioned with its mouth beneath the surface of the light blue water and appears approximately half full. Bubbles are evident in the water in the inverted flask. The open space above the water in the inverted flask is labeled “collected gas.”"
+            },
             "src": "../../media/CNX_Chem_09_03_WaterVapor.jpg",
             "mimeType": "image/jpeg"
           }
@@ -664,7 +673,10 @@
           },
           "media": {
             "id": "fs-idp38546432",
-            "alt": "A graph is shown. The horizontal axis is labeled “Temperature ( degrees C )” with markings and labels provided for multiples of 20 beginning at 0 and ending at 100. The vertical axis is labeled “Vapor pressure ( torr )” with marking and labels provided for multiples of 200, beginning at 0 and ending at 800. A smooth solid black curve extends from the origin up and to the right across the graph. The graph shows a positive trend with an increasing rate of change. On the vertical axis is ( 7 60) and an arrow pointing to it. The arrow is labeled, “Vapor pressure at ( 100 degrees C ).”",
+            "alt": {
+              "segmentId": "m68752:alt:fs-idp38546432-alt",
+              "text": "A graph is shown. The horizontal axis is labeled “Temperature ( degrees C )” with markings and labels provided for multiples of 20 beginning at 0 and ending at 100. The vertical axis is labeled “Vapor pressure ( torr )” with marking and labels provided for multiples of 200, beginning at 0 and ending at 800. A smooth solid black curve extends from the origin up and to the right across the graph. The graph shows a positive trend with an increasing rate of change. On the vertical axis is ( 7 60) and an arrow pointing to it. The arrow is labeled, “Vapor pressure at ( 100 degrees C ).”"
+            },
             "src": "../../media/CNX_Chem_09_03_WaterVapor2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -674,11 +686,12 @@
           "id": "fs-idm68841392",
           "class": "top-titled",
           "summary": "This table has six columns and 13 rows. The first row is a header and it labels each column, “Temperature (degree sign C),” “Pressure (torr),” “Temperature (degree sign C),” “Pressure (torr),” “Temperature (degree sign C),” and “Pressure (torr).” Under the first column are the following: negative 10, negative 5, negative 2, 0, 2, 4, 6, 8, 10, 12, 14, and 16. Under the second column are the following: 1.95, 3.0, 3.9, 4.6, 5.3, 6.1, 7.0, 8.0, 9.2, 10.5, 12.0, and 13.6. Under the third column are the following: 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, and 29. Under the fourth column are the following: 15.5, 16.5, 17.5, 18.7, 19.8, 21.1, 22.4, 23.8, 25.2, 26.7, 28.3, and 30.0. Under the fifth column are the following: 30, 35, 40, 50, 60, 70, 80, 90, 95, 99, 100.0, and 101.0. Under the sixth column are the following: 31.8, 42.2, 55.3, 92.5, 149.4, 233.7, 355.1, 525.8, 633.9, 733.2, 760.0, and 787.6.",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68752:entry:auto-96",
+                  "segmentId": "m68752:entry:auto-100",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c6",
@@ -690,30 +703,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68752:entry:auto-97",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68752:entry:auto-98",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68752:entry:auto-99",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68752:entry:auto-100",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68752:entry:auto-101",
                   "attributes": {
                     "align": "left"
@@ -724,11 +713,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-103",
                   "attributes": {
@@ -752,7 +737,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-107",
                   "attributes": {
@@ -764,11 +753,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-109",
                   "attributes": {
@@ -792,7 +777,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-113",
                   "attributes": {
@@ -804,11 +793,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-115",
                   "attributes": {
@@ -832,7 +817,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-119",
                   "attributes": {
@@ -844,11 +833,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-121",
                   "attributes": {
@@ -872,7 +857,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-125",
                   "attributes": {
@@ -884,11 +873,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-127",
                   "attributes": {
@@ -912,7 +897,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-131",
                   "attributes": {
@@ -924,11 +913,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-133",
                   "attributes": {
@@ -952,7 +937,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-137",
                   "attributes": {
@@ -964,11 +953,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-139",
                   "attributes": {
@@ -992,7 +977,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-143",
                   "attributes": {
@@ -1004,11 +993,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-145",
                   "attributes": {
@@ -1032,7 +1017,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-149",
                   "attributes": {
@@ -1044,11 +1033,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-151",
                   "attributes": {
@@ -1072,7 +1057,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-155",
                   "attributes": {
@@ -1084,11 +1073,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-157",
                   "attributes": {
@@ -1112,7 +1097,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-161",
                   "attributes": {
@@ -1124,11 +1113,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-163",
                   "attributes": {
@@ -1152,7 +1137,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-167",
                   "attributes": {
@@ -1164,11 +1153,7 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68752:entry:auto-169",
                   "attributes": {
@@ -1192,7 +1177,11 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68752:entry:auto-173",
                   "attributes": {
@@ -1201,6 +1190,30 @@
                 },
                 {
                   "segmentId": "m68752:entry:auto-174",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-175",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-176",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-177",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-178",
                   "attributes": {
                     "align": "left"
                   }
@@ -1339,7 +1352,10 @@
           },
           "media": {
             "id": "fs-idm7395552",
-            "alt": "This diagram provided models of the chemical reaction written with formulas across the bottom of the figure. The reaction is written; N subscript 2 plus 3H subscript 2 followed by an arrow pointing right to NH subscript 3. Just above the formulas, space-filling models are provided. Above NH subscript 2, two blue spheres are bonded. Above 3H subscript 2, three pairs of two slightly smaller white spheres are bonded. Above NH subscript 3, two molecules are shown composed each of a central blue sphere to which three slightly smaller white spheres are bonded. Across the top of the diagram, the reaction is illustrated with balloons. To the left is a light blue balloon, which is labeled “N subscript 2”. This balloon contains a single space-filling model composed of two bonded blue spheres. This balloon is followed by a plus sign, then three grey balloons which are each labeled “H subscript 2.” Each of these balloons similarly contain a single space-filling model composed of two bonded white spheres. These white spheres are slightly smaller than the blue spheres. An arrow follows that points right to two light-green balloons, which are each labeled “2 NH subscript 3.” Each light-green balloon contains a space-filling model composed of a single central blue sphere to which three slightly smaller white spheres are bonded.",
+            "alt": {
+              "segmentId": "m68752:alt:fs-idm7395552-alt",
+              "text": "This diagram provided models of the chemical reaction written with formulas across the bottom of the figure. The reaction is written; N subscript 2 plus 3H subscript 2 followed by an arrow pointing right to NH subscript 3. Just above the formulas, space-filling models are provided. Above NH subscript 2, two blue spheres are bonded. Above 3H subscript 2, three pairs of two slightly smaller white spheres are bonded. Above NH subscript 3, two molecules are shown composed each of a central blue sphere to which three slightly smaller white spheres are bonded. Across the top of the diagram, the reaction is illustrated with balloons. To the left is a light blue balloon, which is labeled “N subscript 2”. This balloon contains a single space-filling model composed of two bonded blue spheres. This balloon is followed by a plus sign, then three grey balloons which are each labeled “H subscript 2.” Each of these balloons similarly contain a single space-filling model composed of two bonded white spheres. These white spheres are slightly smaller than the blue spheres. An arrow follows that points right to two light-green balloons, which are each labeled “2 NH subscript 3.” Each light-green balloon contains a space-filling model composed of a single central blue sphere to which three slightly smaller white spheres are bonded."
+            },
             "src": "../../media/CNX_Chem_09_03_Ammonia.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1585,7 +1601,10 @@
           },
           "media": {
             "id": "fs-idp86921200",
-            "alt": "This diagram shows half of a two dimensional view of the earth in blue and green at the left of the image. A slight distance outside the hemisphere is a grey arc. A line segment connects the label “Atmosphere” to the region between the hemisphere and the grey arc. In this region, near the surface of the earth the chemical formulas C O subscript 2, C H subscript 3, and N subscript 2 O appear. Five red arrows formed from wavy lines extend from green regions on the earth out into and just beyond the region labeled “Atmosphere.” The label “Infrared radiation” points to one of these red arrows. At a fair distance outside of the grey arc appears a yellow circle with a jagged boundary. This circle is labeled “Sun.” From it extend yellow arrows with wavy lines which extend toward the earth. Three of the arrows extend to the green region on the earth. One of the arrows appears to be reflected off the grey arc, causing its path to turn away from the earth.",
+            "alt": {
+              "segmentId": "m68752:alt:fs-idp86921200-alt",
+              "text": "This diagram shows half of a two dimensional view of the earth in blue and green at the left of the image. A slight distance outside the hemisphere is a grey arc. A line segment connects the label “Atmosphere” to the region between the hemisphere and the grey arc. In this region, near the surface of the earth the chemical formulas C O subscript 2, C H subscript 3, and N subscript 2 O appear. Five red arrows formed from wavy lines extend from green regions on the earth out into and just beyond the region labeled “Atmosphere.” The label “Infrared radiation” points to one of these red arrows. At a fair distance outside of the grey arc appears a yellow circle with a jagged boundary. This circle is labeled “Sun.” From it extend yellow arrows with wavy lines which extend toward the earth. Three of the arrows extend to the green region on the earth. One of the arrows appears to be reflected off the grey arc, causing its path to turn away from the earth."
+            },
             "src": "../../media/CNX_Chem_09_03_GlobalWarming-b740.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1598,7 +1617,10 @@
           },
           "media": {
             "id": "fs-idp99125712",
-            "alt": "This figure has the heading “Carbon Dioxide in the Atmosphere.” The first graph has a horizontal axis label “Year ( B C )” and a vertical axis label “Carbon dioxide concentration ( p p m ).” The horizontal axis labels begin at 700,000 on the left and increases by multiples of 100,000 up to 0 on the right. The vertical axis begins at 0 and increases by multiples of 50 extending up to 400. A jagged, cyclical pattern is shown that begins before 600,000 B C at under 200 p p m. Up to 0 B C values appear to vary cyclically up to a high of about 300 p p m. Extending beyond 0 B C to the right, the carbon dioxide concentration appears to be on a steady increase, having reached nearly 400 p p m in recent years. The second graph is shown to magnify the portion of the graph that is most recent. This graph begins just before the year 1960 and includes markings for multiples of 10 up to the year 2010. The vertical axis begins just below 320 p p m and includes markings for all multiples of 20 up to 400 p p m. A smooth black line is shown extending through a jagged red data pattern. The trend is a steady, nearly linear increase from the lower left to the upper right on the graph.",
+            "alt": {
+              "segmentId": "m68752:alt:fs-idp99125712-alt",
+              "text": "This figure has the heading “Carbon Dioxide in the Atmosphere.” The first graph has a horizontal axis label “Year ( B C )” and a vertical axis label “Carbon dioxide concentration ( p p m ).” The horizontal axis labels begin at 700,000 on the left and increases by multiples of 100,000 up to 0 on the right. The vertical axis begins at 0 and increases by multiples of 50 extending up to 400. A jagged, cyclical pattern is shown that begins before 600,000 B C at under 200 p p m. Up to 0 B C values appear to vary cyclically up to a high of about 300 p p m. Extending beyond 0 B C to the right, the carbon dioxide concentration appears to be on a steady increase, having reached nearly 400 p p m in recent years. The second graph is shown to magnify the portion of the graph that is most recent. This graph begins just before the year 1960 and includes markings for multiples of 10 up to the year 2010. The vertical axis begins just below 320 p p m and includes markings for all multiples of 20 up to 400 p p m. A smooth black line is shown extending through a jagged red data pattern. The trend is a steady, nearly linear increase from the lower left to the upper right on the graph."
+            },
             "src": "../../media/CNX_Chem_09_03_GlobalWarming2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1646,7 +1668,10 @@
           },
           "media": {
             "id": "fs-idp104021664",
-            "alt": "A photograph is shown of Susan Solomon sitting next to a globe.",
+            "alt": {
+              "segmentId": "m68752:alt:fs-idp104021664-alt",
+              "text": "A photograph is shown of Susan Solomon sitting next to a globe."
+            },
             "src": "../../media/CNX_Chem_09_03_SusanSolom.jpg",
             "mimeType": "image/jpeg"
           }
@@ -1683,11 +1708,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68752:entry:auto-238",
+                  "segmentId": "m68752:entry:auto-246",
                   "attributes": {}
                 }
               ]
@@ -1695,7 +1721,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68752:entry:auto-239",
+                  "segmentId": "m68752:entry:auto-247",
                   "attributes": {}
                 }
               ]
@@ -1703,7 +1729,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68752:entry:auto-240",
+                  "segmentId": "m68752:entry:auto-248",
                   "attributes": {}
                 }
               ]

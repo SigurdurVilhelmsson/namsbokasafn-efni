@@ -1,0 +1,6 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy='false' mathvariant=\"bold\">(</m:mo><m:msub><m:mtext mathvariant=\"bold\">R</m:mtext><m:mn mathvariant=\"bold\">2</m:mn></m:msub><m:mtext mathvariant=\"bold\">C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext mathvariant=\"bold\">CR</m:mtext></m:mrow><m:mn mathvariant=\"bold\">2</m:mn></m:msub><m:mo stretchy='false' mathvariant=\"bold\">)</m:mo></m:mrow></m:math>",
+    "latex": "{({\\text{R}}_{2}\\text{C&#x2550;}{{\\text{CR}}}_{2})}"
+  }
+}

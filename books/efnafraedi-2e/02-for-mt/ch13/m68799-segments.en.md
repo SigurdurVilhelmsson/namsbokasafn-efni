@@ -11,7 +11,7 @@ Describe the ways in which an equilibrium system can be stressed
 Predict the response of a stressed equilibrium using Le Châtelier’s principle
 
 <!-- SEG:m68799:para:fs-idp113339808 -->
-A system at equilibrium is in a state of dynamic balance, with forward and reverse reactions taking place at equal rates. If an equilibrium system is subjected to a change in conditions that affects these reaction rates differently (a [[i:stress]]), then the rates are no longer equal and the system is not at equilibrium. The system will subsequently experience a net reaction in the direction of greater rate (a [[i:shift]]) that will re-establish the equilibrium. This phenomenon is summarized by {{term}}Le Châtelier’s principle{{/term}}: [[i:if an equilibrium system is stressed, the system will experience a shift in response to the stress that re-establishes equilibrium]].
+A system at equilibrium is in a state of dynamic balance, with forward and reverse reactions taking place at equal rates. If an equilibrium system is subjected to a change in conditions that affects these reaction rates differently (a [[i:stress]]), then the rates are no longer equal and the system is not at equilibrium. The system will subsequently experience a net reaction in the direction of greater rate (a [[i:shift]]) that will re-establish the equilibrium. This phenomenon is summarized by [[term:Le Châtelier’s principle|term-00001]]: [[i:if an equilibrium system is stressed, the system will experience a shift in response to the stress that re-establishes equilibrium]].
 
 <!-- SEG:m68799:para:fs-idp137820032 -->
 Reaction rates are affected primarily by concentrations, as described by the reaction’s rate law, and temperature, as described by the Arrhenius equation. Consequently, changes in concentration and temperature are the two stresses that can shift an equilibrium.
@@ -91,6 +91,9 @@ When a carbonated beverage container is opened, a hissing sound is heard as pres
 <!-- SEG:m68799:caption:CNX_Chem_13_01_SuperSat-caption -->
 Opening a soft-drink bottle lowers the CO[[sub:2]] pressure above the beverage, shifting the dissolution equilibrium and releasing dissolved CO[[sub:2]] from the beverage. (credit: modification of work by “D Coetzee”/Flickr)
 
+<!-- SEG:m68799:alt:fs-idp24901184-alt -->
+A bottle of soda sitting on the ground is shown with a large amount of fizz-filled liquid spewing out of the top.
+
 <!-- SEG:m68799:title:fs-idp43174880-title -->
 Effect of a Change in Temperature
 
@@ -133,6 +136,9 @@ To discern the effect of catalysis on an equilibrium system, consider the reacti
 <!-- SEG:m68799:caption:CNX_Chem_13_03_catalyst-caption -->
 Reaction diagrams for an elementary process in the absence (red) and presence (blue) of a catalyst. The presence of catalyst lowers the activation energies of both the forward and reverse reactions but does not affect the value of the equilibrium constant.
 
+<!-- SEG:m68799:alt:fs-idp272099696-alt -->
+A graph is shown labeled “Transition state.” The y-axis on the graph is labeled “Energy” and the x-axis is labeled “Extent of Reaction.” Two curves are plotted on the graph. Both start mid-way up the y-axis. The red curve has a steep initial slope as it increases, then reaches its peak where it meets a horizontal dotted line, then has a steep decline before leveling out. From the initial point to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a forward.” From the end point to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a reverse.” The second curve is less steep than the first and does not reach as high of a peak on the y-axis. It meets a separate horizontal dotted line at its peak, then declines at a similar rate to the first curve before leveling out with the first curve. From the initial point where the slope begins to increase to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a forward.” From the end point right as it levels out to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a reverse.”
+
 <!-- SEG:m68799:para:fs-idp7823504 -->
 An interesting case study highlighting these equilibrium concepts is the industrial production of ammonia, NH[[sub:3]]. This substance is among the “top 10” industrial chemicals with regard to production, with roughly two billion pounds produced annually in the US. Ammonia is used as a chemical feedstock to synthesize a wide range of commercially useful compounds, including fertilizers, plastics, dyes, and explosives.
 
@@ -156,6 +162,9 @@ A diagram illustrating a typical industrial setup for production of ammonia via 
 
 <!-- SEG:m68799:caption:CNX_Chem_13_03_factory-caption -->
 The figure shows a typical industrial setup for the commercial production of ammonia by the Haber-Bosch process. The process operates under conditions that stress the chemical equilibrium to favor product formation.
+
+<!-- SEG:m68799:alt:fs-idp114972544-alt -->
+A diagram is shown that is composed of three main sections. The first section shows an intake pipe labeled with blue arrows and the terms, “N subscript 2, H subscript 2, feed gases,” and “Compressor.” This pipe leads to a large chamber with a turbine in the top section and a coil in the bottom section. From top to bottom, the sections of this chamber are labeled, “Heat exchanger,” “Catalyst chamber 400 to 500 degrees C,” “Catalyst,” “Heater,” and “Preheated feed gases.” One pipe leads from the top of this chamber with red arrows and is labeled, “N H subscript 3 and unreacted N subscript 2, H subscript 2,” while another pipe leads to the bottom of the chamber and reads, “Compressor,” and has orange arrows going through it. These two pipes are connected to a square container that is labeled, “Heat exchanger,” and has red arrows going into it from the upper pipe, orange arrows going away from it to the lower pipe and into a third system. The pipes leading into and out of the heat exchanger are labeled, “Recycled N subscript 2, H subscript 2.” The third system shows a container with an interior zig-zag-shaped pipe that sits on a base that contains a curled pipe on a storage tank. From the top of the image to the bottom are the terms, “N H subscript 3 and unreacted N subscript 2, H subscript 2,” “Condenser,” “Cold water in,” “Refrigeration,” “N H subscript 3 ( l ),” and “Storage” Blue arrows lead away from the base of this system and into the second system while other blue arrows lead into the system from the right side of the diagram and back out of the same chamber.
 
 <!-- SEG:m68799:title:fs-idm26332112-title -->
 Key Concepts and Summary

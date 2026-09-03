@@ -14,7 +14,7 @@ Compare the operation of electrolytic cells with that of galvanic cells
 Perform stoichiometric calculations for electrolytic processes
 
 <!-- SEG:m68827:para:fs-idm133590080 -->
-Electrochemical cells in which spontaneous redox reactions take place ([[i:galvanic cells]]) have been the topic of discussion so far in this chapter. In these cells, [[i:electrical work is done by a redox system on its surroundings]] as electrons produced by the redox reaction are transferred through an external circuit. This final section of the chapter will address an alternative scenario in which [[i:an external circuit does work on a redox system]] by imposing a voltage sufficient to drive an otherwise nonspontaneous reaction, a process known as {{term}}electrolysis{{/term}}. A familiar example of electrolysis is recharging a battery, which involves use of an external power source to drive the spontaneous (discharge) cell reaction in the reverse direction, restoring to some extent the composition of the half-cells and the voltage of the battery. Perhaps less familiar is the use of electrolysis in the refinement of metallic ores, the manufacture of commodity chemicals, and the [[i:electroplating]] of metallic coatings on various products (e.g., jewelry, utensils, auto parts). To illustrate the essential concepts of electrolysis, a few specific processes will be considered.
+Electrochemical cells in which spontaneous redox reactions take place ([[i:galvanic cells]]) have been the topic of discussion so far in this chapter. In these cells, [[i:electrical work is done by a redox system on its surroundings]] as electrons produced by the redox reaction are transferred through an external circuit. This final section of the chapter will address an alternative scenario in which [[i:an external circuit does work on a redox system]] by imposing a voltage sufficient to drive an otherwise nonspontaneous reaction, a process known as [[term:electrolysis|term-00001]]. A familiar example of electrolysis is recharging a battery, which involves use of an external power source to drive the spontaneous (discharge) cell reaction in the reverse direction, restoring to some extent the composition of the half-cells and the voltage of the battery. Perhaps less familiar is the use of electrolysis in the refinement of metallic ores, the manufacture of commodity chemicals, and the [[i:electroplating]] of metallic coatings on various products (e.g., jewelry, utensils, auto parts). To illustrate the essential concepts of electrolysis, a few specific processes will be considered.
 
 <!-- SEG:m68827:title:fs-idp7089472-title -->
 The Electrolysis of Molten Sodium Chloride
@@ -28,6 +28,9 @@ The cell potential for the above process is negative, indicating the reaction as
 <!-- SEG:m68827:caption:CNX_Chem_17_07_NaCl-caption -->
 Cells of this sort (a cell for the electrolysis of molten sodium chloride) are used in the [[i:Downs process]] for production of sodium and chlorine, and they typically use iron cathodes and carbon anodes.
 
+<!-- SEG:m68827:alt:fs-idm121873696-alt -->
+This diagram shows a tank containing a light blue liquid, labeled “Molten N a C l.” A vertical dark grey divider with small, evenly distributed dark dots, labeled “Porous screen” is located at the center of the tank dividing it into two halves. Dark grey bars are positioned at the center of each of the halves of the tank. The bar on the left, which is labeled “Anode” has green bubbles originating from it. The bar on the right which is labeled “Cathode” has light grey bubbles originating from it. An arrow points left from the center of the tank toward the anode, which is labeled “C l superscript negative.” An arrow points right from the center of the tank toward the cathode, which is labeled “N a superscript plus.” A line extends from the tops of the anode and cathode to a rectangle centrally placed above the tank which is labeled “Voltage source.” An arrow extends upward above the anode to the left of the line which is labeled “e superscript negative.” A plus symbol is located to the left of the voltage source and a negative sign it located to its right. An arrow points downward along the line segment leading to the cathode. This arrow is labeled “e superscript negative.” The left side of below the diagram is the label “2 C l superscript negative right pointing arrow C l subscript 2 ( g ) plus 2 e superscript negative.” At the right, below the diagram is the label “2 N a superscript plus plus 2 e superscript negative right pointing arrow 2 N a ( l ).”
+
 <!-- SEG:m68827:title:fs-idm118223680-title -->
 The Electrolysis of Water
 
@@ -39,6 +42,9 @@ Again, the cell potential as written is negative, indicating a nonspontaneous ce
 
 <!-- SEG:m68827:caption:CNX_Chem_17_07_Water-caption -->
 The electrolysis of water produces stoichiometric amounts of oxygen gas at the anode and hydrogen at the cathode.
+
+<!-- SEG:m68827:alt:fs-idm328048-alt -->
+This figure shows an apparatus used for electrolysis. A central chamber with an open top has a vertical column extending below that is nearly full of a clear, colorless liquid, which is labeled “H subscript 2 O plus H subscript 2 S O subscript 4.” A horizontal tube in the apparatus connects the central region to vertical columns to the left and right, each of which has a valve or stopcock at the top and a stoppered bottom. On the left, the stopper at the bottom has a small brown square connected just above it in the liquid. The square is labeled “Anode plus.” A black wire extends from the stopper at the left to a rectangle which is labeled “Voltage source” on to the stopper at the right. The left side of the rectangle is labeled with a plus symbol and the right side is labeled with a negative sign. The stopper on the right also has a brown square connected to it which is in the liquid in the apparatus. This square is labeled “Cathode negative.” The level of the solution on the left arm or tube of the apparatus is significantly higher than the level of the right arm. Bubbles are present near the surface of the liquid on each side of the apparatus, with the bubbles labeled as “O subscript 2 ( g )” on the left and “H subscript 2 ( g )” on the right.
 
 <!-- SEG:m68827:title:fs-idm95712768-title -->
 The Electrolysis of Aqueous Sodium Chloride
@@ -62,7 +68,7 @@ This electrolysis reaction is part of the [[i:chlor-alkali process]] used by ind
 Electroplating
 
 <!-- SEG:m68827:para:fs-idm182126896 -->
-An important use for electrolytic cells is in {{term}}electroplating{{/term}}. Electroplating results in a thin coating of one metal on top of a conducting surface. Reasons for electroplating include making the object more corrosion resistant, strengthening the surface, producing a more attractive finish, or for purifying metal. The metals commonly used in electroplating include cadmium, chromium, copper, gold, nickel, silver, and tin. Common consumer products include silver-plated or gold-plated tableware, chrome-plated automobile parts, and jewelry. The silver plating of eating utensils is used here to illustrate the process. ([[xref:CNX_Chem_17_07_Electroplate]]).
+An important use for electrolytic cells is in [[term:electroplating|term-00002]]. Electroplating results in a thin coating of one metal on top of a conducting surface. Reasons for electroplating include making the object more corrosion resistant, strengthening the surface, producing a more attractive finish, or for purifying metal. The metals commonly used in electroplating include cadmium, chromium, copper, gold, nickel, silver, and tin. Common consumer products include silver-plated or gold-plated tableware, chrome-plated automobile parts, and jewelry. The silver plating of eating utensils is used here to illustrate the process. ([[xref:CNX_Chem_17_07_Electroplate]]).
 
 <!-- SEG:m68827:para:fs-idm52313424 -->
 In the figure, the anode consists of a silver electrode, shown on the left. The cathode is located on the right and is the spoon, which is made from inexpensive metal. Both electrodes are immersed in a solution of silver nitrate. Applying a sufficient potential results in the oxidation of the silver anode
@@ -75,6 +81,9 @@ The net result is the transfer of silver metal from the anode to the cathode. Se
 
 <!-- SEG:m68827:caption:CNX_Chem_17_07_Electroplate-caption -->
 This schematic shows an electrolytic cell for silver plating eating utensils.
+
+<!-- SEG:m68827:alt:fs-idp6902432-alt -->
+This figure contains a diagram of an electrochemical cell. One beakers is shown that is just over half full. The beaker contains a clear, colorless solution that is labeled “A g N O subscript 3 ( a q ).” A silver strip is mostly submerged in the liquid on the left. This strip is labeled “Silver (anode).” The top of the strip is labeled with a red plus symbol. An arrow points right from the surface of the metal strip into the solution to the label “A g superscript plus” to the right. A spoon is similarly suspended in the solution and is labeled “Spoon (cathode).” It is labeled with a black negative sign on the tip of the spoon’s handle above the surface of the liquid. An arrow extends from the label “A g superscript plus” to the spoon on the right. A wire extends from the top of the spoon and the strip to a rectangle labeled “Voltage source.” An arrow points upward from silver strip which is labeled “e superscript negative.” Similarly, an arrow points down at the right to the surface of the spoon which is also labeled “e superscript negative.” A plus sign is shown just outside the voltage source to the left and a negative is shown to its right.
 
 <!-- SEG:m68827:title:fs-idm135232752-title -->
 Quantitative Aspects of Electrolysis
@@ -169,7 +178,7 @@ Nonspontaneous redox processes may be forced to occur in electrochemical cells b
 <!-- SEG:m68827:title:fs-idm102923952-title -->
 Key Equations
 
-<!-- SEG:m68827:entry:auto-58 -->
+<!-- SEG:m68827:entry:auto-61 -->
 [[i:Q]] = [[i:I]] [[MATH:4]] [[i:t]] = [[i:n]] [[MATH:5]] [[i:F]]
 
 <!-- SEG:m68827:title:fs-idm194007232-title -->

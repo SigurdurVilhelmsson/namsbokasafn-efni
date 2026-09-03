@@ -65,7 +65,10 @@
       },
       "media": {
         "id": "fs-idp160214096",
-        "alt": "The figure shows a beaker just over half full of a blue liquid. A glass tube is partially submerged in the liquid. Bubbles, which are labeled “H subscript 2 ( g )” are rising from the dark grayquare, labeled “P t electrode” at the bottom of the tube. Below the bottom of the tube pointing to the solution in the beaker is the label “ 1 M H superscript plus ( a q).” A curved arrow points up to the right, indicating the direction of the bubbles. A black wire which is labeled “P t wire” extends from the dark grgrayare up the interior of the tube through a small port at the top. A second small port extends out the top of the tube to the left. An arrow points to the port opening from the left. The base of this arrow is labeled “H subscript 2 ( g ) at 1 a t m.” A light greygray points to a diagram in a circle at the right that illustrates the surface of the P t electrode in a magnified view. P t atoms are illustrated as a uniform cluster of grey sgray which are labeled “P t electrode atoms.” On the grey atograyace, the label “e superscript negative” is shown 4 times in a nearly even vertical distribution to show electrons on the P t surface. A curved arrow extends from a white sphere labeled “H superscript plus” at the right of the P t atoms to the uppermost electron shown. Just below, a straight arrow extends from the P t surface to the right to a pair of linked white spheres which are labeled “H subscript 2.” A curved arrow extends from a second white sphere labeled “H superscript plus” at the right of the P t atoms to the second electron shown. A curved arrow extends from the third electron on the P t surface to the right to a white sphere labeled “H superscript plus.” Just below, an arrow points left from a pair of linked white spheres which are labeled “H subscript 2” to the P t surface. A curved arrow extends from the fourth electron on the P t surface to the right to a white sphere labeled “H superscript plus.”",
+        "alt": {
+          "segmentId": "m68823:alt:fs-idp160214096-alt",
+          "text": "The figure shows a beaker just over half full of a blue liquid. A glass tube is partially submerged in the liquid. Bubbles, which are labeled “H subscript 2 ( g )” are rising from the dark grayquare, labeled “P t electrode” at the bottom of the tube. Below the bottom of the tube pointing to the solution in the beaker is the label “ 1 M H superscript plus ( a q).” A curved arrow points up to the right, indicating the direction of the bubbles. A black wire which is labeled “P t wire” extends from the dark grgrayare up the interior of the tube through a small port at the top. A second small port extends out the top of the tube to the left. An arrow points to the port opening from the left. The base of this arrow is labeled “H subscript 2 ( g ) at 1 a t m.” A light greygray points to a diagram in a circle at the right that illustrates the surface of the P t electrode in a magnified view. P t atoms are illustrated as a uniform cluster of grey sgray which are labeled “P t electrode atoms.” On the grey atograyace, the label “e superscript negative” is shown 4 times in a nearly even vertical distribution to show electrons on the P t surface. A curved arrow extends from a white sphere labeled “H superscript plus” at the right of the P t atoms to the uppermost electron shown. Just below, a straight arrow extends from the P t surface to the right to a pair of linked white spheres which are labeled “H subscript 2.” A curved arrow extends from a second white sphere labeled “H superscript plus” at the right of the P t atoms to the second electron shown. A curved arrow extends from the third electron on the P t surface to the right to a white sphere labeled “H superscript plus.” Just below, an arrow points left from a pair of linked white spheres which are labeled “H subscript 2” to the P t surface. A curved arrow extends from the fourth electron on the P t surface to the right to a white sphere labeled “H superscript plus.”"
+        },
         "src": "../../media/CNX_Chem_17_03_SHE.jpg",
         "mimeType": "image/jpeg"
       }
@@ -109,7 +112,10 @@
       },
       "media": {
         "id": "fs-idm8697872",
-        "alt": "This figure contains a diagram of an electrochemical cell. Two beakers are shown. Each is just over half full. The beaker on the left contains a clear, colorless solution and is labeled below as “1 M H superscript plus.” The beaker on the right contains a blue solution and is labeled below as “1 M C u superscript 2 plus.” A glass tube in the shape of an inverted U connects the two beakers at the center of the diagram. The tube contents are colorless. The ends of the tubes are beneath the surface of the solutions in the beakers and a small graylug is present at each end of the tube. The beaker on the left has a glass tube partially submersed in the liquid. Bubbles are rising from the gray square, labeled “Standard hydrogen electrode” at the bottom of the tube. A curved arrow points up to the right, indicating the direction of the bubbles. A black wire extends from the gray square up the interior of the tube through a small port at the top to a rectangle with a digital readout of “positive 0.337 V,” which is labeled “Voltmeter.” A second small port extends out the top of the tube to the left. An arrow points to the port opening from the left. The base of this arrow is labeled “1 a t m H subscript 2 ( g ).” The beaker on the right has an orange-brown strip that is labeled “C u electrode” at the top. A wire extends from the top of this strip to the voltmeter. An arrow points toward the voltmeter from the left which is labeled “e superscript negative flow.” Similarly, an arrow points away from the voltmeter to the right. A curved arrow extends from the surrounding solution to the standard hydrogen electrode in the beaker. The end of the arrow is labeled “H subscript 2” and tip of this arrow is labeled “2 H superscript plus.” A curved arrow extends from the “C u superscript 2 plus” label in the solution to a “C u” label at the lower edge of the C u electrode. Between the two beakers is the label “T equals 298 K.”",
+        "alt": {
+          "segmentId": "m68823:alt:fs-idm8697872-alt",
+          "text": "This figure contains a diagram of an electrochemical cell. Two beakers are shown. Each is just over half full. The beaker on the left contains a clear, colorless solution and is labeled below as “1 M H superscript plus.” The beaker on the right contains a blue solution and is labeled below as “1 M C u superscript 2 plus.” A glass tube in the shape of an inverted U connects the two beakers at the center of the diagram. The tube contents are colorless. The ends of the tubes are beneath the surface of the solutions in the beakers and a small graylug is present at each end of the tube. The beaker on the left has a glass tube partially submersed in the liquid. Bubbles are rising from the gray square, labeled “Standard hydrogen electrode” at the bottom of the tube. A curved arrow points up to the right, indicating the direction of the bubbles. A black wire extends from the gray square up the interior of the tube through a small port at the top to a rectangle with a digital readout of “positive 0.337 V,” which is labeled “Voltmeter.” A second small port extends out the top of the tube to the left. An arrow points to the port opening from the left. The base of this arrow is labeled “1 a t m H subscript 2 ( g ).” The beaker on the right has an orange-brown strip that is labeled “C u electrode” at the top. A wire extends from the top of this strip to the voltmeter. An arrow points toward the voltmeter from the left which is labeled “e superscript negative flow.” Similarly, an arrow points away from the voltmeter to the right. A curved arrow extends from the surrounding solution to the standard hydrogen electrode in the beaker. The end of the arrow is labeled “H subscript 2” and tip of this arrow is labeled “2 H superscript plus.” A curved arrow extends from the “C u superscript 2 plus” label in the solution to a “C u” label at the lower edge of the C u electrode. Between the two beakers is the label “T equals 298 K.”"
+        },
         "src": "../../media/CNX_Chem_17_03_GalvanCu.jpg",
         "mimeType": "image/jpeg"
       }
@@ -124,31 +130,16 @@
       "id": "fs-idm42585168",
       "class": "top-titled",
       "summary": "This table has two columns and thirty eight rows. The first row is a header row and it labels each column, “Half Reaction,” and “E degree symbol ( V ).” Under the “Half Reaction” column are the following reactions: F subscript 2 ( g ) plus 2 e superscript negative sign yields 2 F superscript negative sign ( a q ); P b O subscript 2 ( g ) plus S O subscript 4 superscript 2 negative sign ( a q ) plus 4 h superscript plus sing ( a q ) plus 2 e superscript negative sign yields P b S O subscript 4 ( g ) plus 2 H subscript 2 O ( l ); M n O subscript 4 superscript negative sing ( a q ) plus 8 H superscript plus sign ( a q ) plus 5 e superscript negative sign yield M n superscript 2 positive sign ( a q ) plus 4 H subscript 2 O ( l ); A u superscript 3 positive sign ( a q ) plus 3 e superscript negative sign yields A u ( s ); C l subscript 2 ( g ) plus 2 e superscript negative sign yields 2 C l superscript negative sign ( a q ); O subscript 2 ( g ) plus 4 h superscript positive sign ( a q ) plus 4 e superscript negative sign yields 2 H subscript 2 O ( l ); P t superscript 2 positive sign ( a q ) plus 2 e superscript negative sign yields P t ( s ); B r subscript 2 ( l ) plus 2 e superscript negative sign yields 2 B r superscript negative sign ( a q ); A g superscript positive sign ( a q ) plus e superscript negative sign yields A g ( s ); H g subscript 2 superscript 2 positive sign ( a q ) plus 2 e superscript negative sing yields F e superscript 2 plus ( a q ); M n O subscript 4 superscript negative sign ( a q ) plus 2 H subscript 2 O ( l ) plus 3 e superscript negative sign yields M n O subscript 2 ( s ) plus 4 O H superscript negative sign ( a q ); I subscript 2 ( g ) plus 2 e superscript negative sign yields 2 I superscript negative sign ( a q ); N i O subscript 2 ( s ) plus 2 H subscript 2 O ( l ) plus 2 e superscript negative sign yields N i ( O H ) subscript 2 ( s ) plus 2 O H superscript negative sign ( a q ); C u superscript 2 positive sign ( a q ) plus 2 e superscript negative sign yields C u ( s ); H g subscript 2 C l subscript 2 ( s ) plus 2 e superscript negative sign yields 2 H g ( l ) plus 2 C l superscript negative sign ( a q ); A g C l ( s ) plus 2 e superscript negative sign yields A g ( s ) plus C l superscript negative sign ( a q ); S n superscript 4 positive sign ( a q ) plus 2 e superscript negative sign yields Sn superscript 2 positive sing ( a q ); 2 H superscript positive sign ( a q ) plus 2 e superscript negative sign yields H subscript 2 ( g ); P b superscript 2 positive sign ( a q ) plus 2 e superscript negative sign yields P b ( s ); S n superscript two positive sign ( a q ) plus 2 e superscript negative sing yields S n ( s ); N i superscript 2 positive sign ( a q ) plus 2 e superscript negative sign yields S n ( s ); N I superscript 2 positive sign ( a q ) plus 2 e superscript negative sign yields N I ( s ); C o superscript 2 positive sign ( a q ) plus 2 e superscript negative sign C o ( s ); P b S O subscript 4 ( s ) plus 2 e superscript negative sing yields P b ( s ) plus S O subscript 4 superscript two negative ( a q ); C d superscript 2 positive sign ( a q ) plus 2 e superscript negative sign yields C d ( s ); F e superscript 2 positive sign ( a q ) plus 2 e superscript negative sign yields F e ( s ); C r superscript 3 positive sign ( a q ) plus 3 e superscript negative sing yields C r ( s ); M n superscript 2 positive sign ( a q ) plus 2 e superscript negative sing yields M n ( s ); Z n ( O H ) subscript 2 ( s ) plus 2 e superscript negative sing yields Z n ( s ) plus 2 O H superscript negative sign ( a q ); Z n superscript 2 positive sign ( a q ) plus 2 e superscript negative sign yields Z n ( s ); A l superscript 3 positive sign ( a q ) plus 3 e superscript negative sign yields A l ( s ); M g superscript 2 ( a q ) plus 2 e superscript negative sign yields M g ( s ); N a superscript positive sign ( a q ) plus e superscript negative sign yields N a ( s ); C a superscript 2 positive sign ( a q ) plus 2 e superscript negative sign yields C a ( s ); B a superscript 2 positive sing ( a q ) plus 2 e superscript negative sing yields B a ( s ); K superscript positive sign ( a q ) plus e superscript negative sign yields K ( s ); and L i superscript positive sign ( a q ) plus e superscript negative sign yields L I ( s ). Under the column “E degree symbol ( V )” are the following values: positive 2.866, positive 1.69, positive 1.507, positive 1.498, positive 1.35827, positive 1.229, positive 1.20, positive 1.0873, positive 0.7996, positive 0.7973, positive 0.771, positive 0.558, positive 0.558, positive 0.5355, positive 0.49, positive 0.337, positive 0.26808, positive 0.22233, positive 0.151, 0.00 (which appears bold), negative 0.126, negative 0.1262, negative 0.257, negative 0.28, negative 0.3505, negative 0.4030, negative 0.447, negative 0.744, negative 1.185, negative 1.245, negative 0.7618, negative 1.662, negative 2.372, negative 2.71, ne",
+      "title": null,
       "rows": [
         {
           "cells": [
             {
-              "segmentId": "m68823:entry:auto-18",
+              "segmentId": "m68823:entry:auto-20",
               "attributes": {
                 "namest": "c1",
                 "nameend": "c2",
                 "align": "center"
-              }
-            }
-          ]
-        },
-        {
-          "cells": [
-            {
-              "segmentId": "m68823:entry:auto-19",
-              "attributes": {
-                "align": "left"
-              }
-            },
-            {
-              "segmentId": "m68823:entry:auto-20",
-              "attributes": {
-                "align": "left"
               }
             }
           ]
@@ -744,6 +735,22 @@
               }
             }
           ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68823:entry:auto-95",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68823:entry:auto-96",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
         }
       ]
     },
@@ -965,11 +972,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68823:entry:auto-126",
+                  "segmentId": "m68823:entry:auto-128",
                   "attributes": {}
                 }
               ]

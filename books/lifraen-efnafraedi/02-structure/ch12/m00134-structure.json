@@ -17,7 +17,10 @@
         "segmentId": "m00134:caption:fig-00001-caption"
       },
       "media": {
-        "alt": "A cup of coffee on a saucer in a tray of coffee beans.",
+        "alt": {
+          "segmentId": "m00134:alt:fig-00001-alt",
+          "text": "A cup of coffee on a saucer in a tray of coffee beans."
+        },
         "src": "../../media/OChem_12_00_Coffee.jpg",
         "mimeType": "image/jpeg"
       }
@@ -37,54 +40,55 @@
       "id": "table-00001",
       "class": "unnumbered unstyled",
       "summary": "",
+      "title": null,
       "rows": [
         {
           "cells": [
-            {
-              "segmentId": "m00134:entry:auto-5",
-              "attributes": {
-                "valign": "top",
-                "align": "left"
-              }
-            },
             {
               "segmentId": "m00134:entry:auto-6",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00134:entry:auto-7",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00134:entry:auto-8",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m00134:entry:auto-9",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m00134:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00134:entry:auto-11",
               "attributes": {
                 "valign": "top",
                 "align": "left"
@@ -95,14 +99,14 @@
         {
           "cells": [
             {
-              "segmentId": "m00134:entry:auto-11",
+              "segmentId": "m00134:entry:auto-12",
               "attributes": {
                 "valign": "top",
                 "align": "left"
               }
             },
             {
-              "segmentId": "m00134:entry:auto-12",
+              "segmentId": "m00134:entry:auto-13",
               "attributes": {
                 "valign": "top",
                 "align": "left"

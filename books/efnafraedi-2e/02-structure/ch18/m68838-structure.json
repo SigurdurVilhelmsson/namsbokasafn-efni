@@ -29,7 +29,10 @@
       },
       "media": {
         "id": "fs-idm247704592",
-        "alt": "A lake is shown surrounded by rocky, mountainous peaks. A white vapor rises from the ground near the lake.",
+        "alt": {
+          "segmentId": "m68838:alt:fs-idm247704592-alt",
+          "text": "A lake is shown surrounded by rocky, mountainous peaks. A white vapor rises from the ground near the lake."
+        },
         "src": "../../media/CNX_Chem_18_10_Volcano.jpg",
         "mimeType": "image/jpeg"
       }
@@ -48,7 +51,10 @@
       },
       "media": {
         "id": "fs-idm119715872",
-        "alt": "A diagram is shown in which a vertical tube is embedded on the lower end into a multilayered solid. The upper layer is labeled, “Soil,” and the lower layer is labeled, “Solid sulfur deposit.” A thin tube, beginning at the top of the diagram, leads into the vertical tube to the bottom and is labeled, “Compressed air.” Left-facing and then down-facing arrows are drawn on this inner tube. These arrows then turn upward at the bottom of the tube and are drawn upward to indicate the flow of, “Liquid sulfur,” from the bottom of the diagram to the top outside the inner tube. These arrows lead to a chamber at the top right of the diagram with arrows facing to the left labeled, “Sulfur, water and air.” A horizontal tube in the center right of the diagram leads to the outer tube and arrows drawn downward lead back to the bottom of the diagram. This tube is labeled, “Superheated water.”",
+        "alt": {
+          "segmentId": "m68838:alt:fs-idm119715872-alt",
+          "text": "A diagram is shown in which a vertical tube is embedded on the lower end into a multilayered solid. The upper layer is labeled, “Soil,” and the lower layer is labeled, “Solid sulfur deposit.” A thin tube, beginning at the top of the diagram, leads into the vertical tube to the bottom and is labeled, “Compressed air.” Left-facing and then down-facing arrows are drawn on this inner tube. These arrows then turn upward at the bottom of the tube and are drawn upward to indicate the flow of, “Liquid sulfur,” from the bottom of the diagram to the top outside the inner tube. These arrows lead to a chamber at the top right of the diagram with arrows facing to the left labeled, “Sulfur, water and air.” A horizontal tube in the center right of the diagram leads to the outer tube and arrows drawn downward lead back to the bottom of the diagram. This tube is labeled, “Superheated water.”"
+        },
         "src": "../../media/CNX_Chem_18_10_FrachMine.jpg",
         "mimeType": "image/jpeg"
       }

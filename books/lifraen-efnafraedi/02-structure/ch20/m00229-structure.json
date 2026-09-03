@@ -1,0 +1,92 @@
+{
+  "moduleId": "m00229",
+  "title": {
+    "segmentId": "m00229:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "b00266b1-2f43-4cd1-8f93-f2a1ed4ea10d"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00229:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00229:alt:fig-00001-alt",
+          "text": "A photo of red, green, and black chilies arranged in heaps."
+        },
+        "src": "../../media/OChem_20_00_Chillis.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00229:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00229:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00229:alt:fig-00002-alt",
+          "text": "A set of carboxylic acid derivatives, with arrows from a generic carboxylic acid pointing toward each of acid chloride, ester, amide, and thioester."
+        },
+        "src": "../../media/OChem_20_00_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00229:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00229:alt:fig-00003-alt",
+          "text": "The structure and ball-and-stick model of cholic acid. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively."
+        },
+        "src": "../../media/OChem_20_00_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00229:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00229:alt:fig-00004-alt",
+          "text": "The reaction of methanol with carbon monoxide in presence of rhodium catalyst to form acetic acid."
+        },
+        "src": "../../media/OChem_20_00_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 0
+}

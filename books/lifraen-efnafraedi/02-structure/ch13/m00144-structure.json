@@ -1,0 +1,240 @@
+{
+  "moduleId": "m00144",
+  "title": {
+    "segmentId": "m00144:title:auto-1",
+    "text": "Nuclear Magnetic Resonance Spectroscopy"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d5863bea-2cb9-4cf6-ab5e-f797d6b6a3c1"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00144:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00144:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00144:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00144:alt:fig-00001-alt",
+          "text": "A) Spheres representing nuclei with arrows to represent spin, arranged randomly. B) Upward arrow labeled B 0; red and blue spheres have arrows pointing upward and downward respectively."
+        },
+        "src": "../../media/OChem_13_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00144:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00144:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00144:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00144:alt:fig-00002-alt",
+          "text": "Energy diagram shows as the strength of applied (upward) field increases, energy difference between blue (downward arrow) sphere and red (upward arrow) sphere increases."
+        },
+        "src": "../../media/OChem_13_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00144:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00144:para:para-00006"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00144:table-title:table-00001-title",
+        "text": "The NMR Behavior of Some Common Nuclei"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00144:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00144:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00144:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00144:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00144:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00144:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00144:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m00144:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00144:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00144:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00144:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "center"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00144:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

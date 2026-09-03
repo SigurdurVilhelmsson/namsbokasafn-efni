@@ -10,14 +10,26 @@ The eclipsed conformation of propane has three interactions—two ethane-type hy
 <!-- SEG:m00038:caption:fig-00001-caption -->
 [[b:Newman projections of propane showing staggered and eclipsed conformations.]] The staggered conformer is lower in energy by 14 kJ/mol.
 
+<!-- SEG:m00038:alt:fig-00001-alt -->
+Staggered propane undergoes rotation of rear carbon 60 degrees to form eclipsed propane.
+
 <!-- SEG:m00038:para:para-00003 -->
 The conformational situation becomes more complex for larger alkanes because not all staggered conformations have the same energy and not all eclipsed conformations have the same energy. In butane, for instance, the lowest-energy arrangement, called the [[term:anti conformation|term-00001]], is the one in which the two methyl groups are as far apart as possible—180° away from each other. As rotation around the C2–C3 bond occurs, an eclipsed conformation is reached where there are two CH[[sub:3]]&#8201;⟷&#8201;H interactions and one H&#8201;⟷&#8201;H interaction. Using the energy values derived previously from ethane and propane, this eclipsed conformation is more strained than the anti conformation by 2 × 6.0 kJ/mol + 4.0 kJ/mol (two CH[[sub:3]]&#8201;⟷&#8201;H interactions plus one H&#8201;⟷&#8201;H interaction), for a total of 16 kJ/mol (3.8 kcal/mol).
+
+<!-- SEG:m00038:alt:fig-00002-alt -->
+Anti-conformation of butane is rotated by 60 degrees to produce eclipsed conformation of butane.
 
 <!-- SEG:m00038:para:para-00004 -->
 As bond rotation continues, an energy minimum is reached at the staggered conformation where the methyl groups are 60° apart. Called the [[term:gauche conformation|term-00002]], it lies 3.8 kJ/mol (0.9 kcal/mol) higher in energy than the anti conformation even though it has no eclipsing interactions. This energy difference occurs because the hydrogen atoms of the methyl groups are near one another in the gauche conformation, resulting in what is called [[i:steric strain.]] [[term:Steric strain|term-00003]] is the repulsive interaction that occurs when atoms are forced closer together than their atomic radii allow. It’s the result of trying to force two atoms to occupy the same space.
 
+<!-- SEG:m00038:alt:fig-00003-alt -->
+Eclipsed conformation of butane is rotated by 60 degrees to produce gauche conformation of butane.
+
 <!-- SEG:m00038:para:para-00005 -->
 As the dihedral angle between the methyl groups approaches zero, an energy maximum is reached at a second eclipsed conformation. Because the methyl groups are forced even closer together than in the gauche conformation, both torsional strain and steric strain are present. A total strain energy of 19 kJ/mol (4.5 kcal/mol) has been estimated for this conformation, making it possible to calculate a value of 11 kJ/mol (2.6 kcal/mol) for the CH[[sub:3]]&#8201;⟷&#8201;CH[[sub:3]] eclipsing interaction: total strain of 19 kJ/mol minus the strain of two H&#8201;⟷&#8201;H eclipsing interactions (2 × 4.0 kcal/mol) equals 11 kJ/mol.
+
+<!-- SEG:m00038:alt:fig-00004-alt -->
+Gauche conformation of butane is rotated by 60 degrees to produce eclipsed conformation of butane.
 
 <!-- SEG:m00038:para:para-00006 -->
 After 0°, the rotation becomes a mirror image of what we’ve already seen: another gauche conformation is reached, another eclipsed conformation, and finally a return to the anti conformation. A plot of potential energy versus rotation about the C2–C3 bond is shown in [[xref:fig-00005]].
@@ -25,95 +37,110 @@ After 0°, the rotation becomes a mirror image of what we’ve already seen: ano
 <!-- SEG:m00038:caption:fig-00005-caption -->
 [[b:A plot of potential energy versus rotation for the C2−C3 bond in butane.]] The energy maximum occurs when the two methyl groups eclipse each other, and the energy minimum occurs when the two methyl groups are 180° apart (anti).
 
+<!-- SEG:m00038:alt:fig-00005-alt -->
+A graph of potential energy versus dihedral angle between methyl groups, in butane. The curve indicates a trough at an energy of 3.8 kilojoules per mole.
+
 <!-- SEG:m00038:para:para-00007 -->
 The notion of assigning definite energy values to specific interactions within a molecule is very useful, and we’ll return to it in the next chapter. A summary of what we’ve seen thus far is given in [[xref:table-00001]].
 
 <!-- SEG:m00038:para:para-00008 -->
 The same principles just developed for butane apply to pentane, hexane, and all higher alkanes. The most favorable conformation for any alkane has the carbon–carbon bonds in staggered arrangements, with large substituents arranged anti to one another. A generalized alkane structure is shown in [[xref:fig-00006]].
 
-<!-- SEG:m00038:entry:auto-12 -->
-Interaction
-
-<!-- SEG:m00038:entry:auto-13 -->
-Cause
-
-<!-- SEG:m00038:entry:auto-14 -->
-Energy cost
-
-<!-- SEG:m00038:entry:auto-15 -->
-(kJ/mol)
-
-<!-- SEG:m00038:entry:auto-16 -->
-(kcal/mol)
-
-<!-- SEG:m00038:entry:auto-17 -->
-H&#8201;⟷&#8201;H eclipsed
+<!-- SEG:m00038:table-title:table-00001-title -->
+Energy Costs for Interactions in Alkane Conformers
 
 <!-- SEG:m00038:entry:auto-18 -->
-Torsional strain
+Interaction
 
 <!-- SEG:m00038:entry:auto-19 -->
-&#8199;4.0
+Cause
 
 <!-- SEG:m00038:entry:auto-20 -->
-1.0
+Energy cost
 
 <!-- SEG:m00038:entry:auto-21 -->
-H&#8201;⟷&#8201;CH[[sub:3]] eclipsed
+(kJ/mol)
 
 <!-- SEG:m00038:entry:auto-22 -->
-Mostly torsional strain
+(kcal/mol)
 
 <!-- SEG:m00038:entry:auto-23 -->
-&#8199;6.0
+H&#8201;⟷&#8201;H eclipsed
 
 <!-- SEG:m00038:entry:auto-24 -->
-1.4
+Torsional strain
 
 <!-- SEG:m00038:entry:auto-25 -->
-CH[[sub:3]]&#8201;⟷&#8201;CH[[sub:3]] eclipsed
+&#8199;4.0
 
 <!-- SEG:m00038:entry:auto-26 -->
-Torsional and steric strain
+1.0
 
 <!-- SEG:m00038:entry:auto-27 -->
-11.0
+H&#8201;⟷&#8201;CH[[sub:3]] eclipsed
 
 <!-- SEG:m00038:entry:auto-28 -->
-2.6
+Mostly torsional strain
 
 <!-- SEG:m00038:entry:auto-29 -->
-CH[[sub:3]]&#8201;⟷&#8201;CH[[sub:3]] gauche
+&#8199;6.0
 
 <!-- SEG:m00038:entry:auto-30 -->
-Steric strain
+1.4
 
 <!-- SEG:m00038:entry:auto-31 -->
-&#8199;3.8
+CH[[sub:3]]&#8201;⟷&#8201;CH[[sub:3]] eclipsed
 
 <!-- SEG:m00038:entry:auto-32 -->
+Torsional and steric strain
+
+<!-- SEG:m00038:entry:auto-33 -->
+11.0
+
+<!-- SEG:m00038:entry:auto-34 -->
+2.6
+
+<!-- SEG:m00038:entry:auto-35 -->
+CH[[sub:3]]&#8201;⟷&#8201;CH[[sub:3]] gauche
+
+<!-- SEG:m00038:entry:auto-36 -->
+Steric strain
+
+<!-- SEG:m00038:entry:auto-37 -->
+&#8199;3.8
+
+<!-- SEG:m00038:entry:auto-38 -->
 0.9
 
 <!-- SEG:m00038:caption:fig-00006-caption -->
 [[b:The most stable alkane conformation is the one in which all substituents are staggered and the carbon–carbon bonds are arranged anti]], as shown in this model of decane.
 
+<!-- SEG:m00038:alt:fig-00006-alt -->
+The ball and stick model and molecular structure of the decane are represented.
+
 <!-- SEG:m00038:para:para-00009 -->
 One final point: saying that one particular conformer is “more stable” than another doesn’t mean the molecule adopts and maintains only the more stable conformation. At room temperature, rotations around [[i:σ]] bonds occur so rapidly that all conformers are in equilibrium. At any given instant, however, a larger percentage of molecules will be found in a more stable conformation than in a less stable one.
 
 <!-- SEG:m00038:example-title:exam-00001-title -->
-Strategy
+Newman Projections
 
 <!-- SEG:m00038:para:para-00010 -->
 Sight along the C1–C2 bond of 1-chloropropane, and draw Newman projections of the most stable and least stable conformations.
+
+<!-- SEG:m00038:para-title:para-00011-title -->
+[[span:Strategy|red-text]]
 
 <!-- SEG:m00038:para:para-00011 -->
 The most stable conformation of a substituted alkane is generally a staggered one in which large groups have an anti relationship. The least stable conformation is generally an eclipsed one in which large groups are as close as possible.
 
 <!-- SEG:m00038:para-title:para-00012-title -->
-Solution
+[[span:Solution|cyan-text]]
 
 <!-- SEG:m00038:para:para-00012 -->
 [[MEDIA:1]]
+
+<!-- SEG:m00038:alt:media-1-alt -->
+Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively.
 
 <!-- SEG:m00038:title:sect-00001-title -->
 Problems
@@ -127,6 +154,9 @@ British Foreign Minister Ernest Bevin once said that “The Kingdom of Heaven ru
 <!-- SEG:m00038:caption:fig-00008-caption -->
 Gasoline is a finite resource. It won’t be around forever. (credit: [[link:“The first oil well”|https://www.loc.gov/item/2010649522/]] by Unknown/Library of Congress)
 
+<!-- SEG:m00038:alt:fig-00008-alt -->
+A photograph of Edwin Drake’s first oil well is presented.
+
 <!-- SEG:m00038:para:para-00018 -->
 The petroleum era began in August 1859, when the world’s first oil well was drilled by Edwin Drake near Titusville, Pennsylvania. The petroleum was distilled into fractions according to boiling point, but it was high-boiling kerosene, or lamp oil, rather than gasoline that was primarily sought. Literacy was becoming widespread at the time, and people wanted better light for reading than was available from candles. Gasoline was too volatile for use in lamps and was initially considered a waste by-product. The world has changed greatly since those early days, however, and it is now gasoline rather than lamp oil that is prized.
 
@@ -135,6 +165,9 @@ Petroleum refining begins by fractional distillation of crude oil into three pri
 
 <!-- SEG:m00038:para:para-00020 -->
 The [[i:octane number]] of a fuel is the measure by which its antiknock properties are judged. It was recognized long ago that straight-chain hydrocarbons are far more prone to inducing engine knock than highly branched compounds. Heptane, a particularly bad fuel, is assigned a base value of 0 octane number, and 2,2,4-trimethylpentane, commonly known as isooctane, has a rating of 100.
+
+<!-- SEG:m00038:alt:fig-00009-alt -->
+Two molecular structures of heptane and 2,2,4-trimethylpentane are represented. The first and second structures have octane numbers equal to 0 and 100, respectively.
 
 <!-- SEG:m00038:para:para-00021 -->
 Because straight-run gasoline burns so poorly in engines, petroleum chemists have devised numerous methods for producing higher-quality fuels. One of these methods, [[i:catalytic cracking]], involves taking the high-boiling kerosene cut (C[[sub:11]]–C[[sub:14]]) and “cracking” it into smaller branched molecules suitable for use in gasoline. Another process, called [[i:reforming]], is used to convert C[[sub:6]]–C[[sub:8]] alkanes to aromatic compounds such as benzene and toluene, which have substantially higher octane numbers than alkanes. The final product that goes in your tank has an approximate composition of 15% C[[sub:4]]–C[[sub:8]] straight-chain alkanes, 25% to 40% C[[sub:4]]–C[[sub:10]] branched-chain alkanes, 10% cyclic alkanes, 10% straight-chain and cyclic alkenes, and 25% arenes (aromatics).
@@ -278,19 +311,19 @@ Carbon–carbon single bonds in alkanes are formed by [[i:σ]] overlap of carbon
 Additional Problems
 
 <!-- SEG:m00038:para:para-00029 -->
-[[b:Visualizing Chemistry]]
+[[b:[[span:Visualizing Chemistry|red-text]]]]
 
 <!-- SEG:m00038:para:para-00068 -->
-[[b:Functional Groups]]
+[[b:[[span:Functional Groups|red-text]]]]
 
 <!-- SEG:m00038:para:para-00035 -->
-[[b:Isomers]]
+[[b:[[span:Isomers|red-text]]]]
 
 <!-- SEG:m00038:para:para-00042 -->
-[[b:Naming Compounds]]
+[[b:[[span:Naming Compounds|red-text]]]]
 
 <!-- SEG:m00038:para:para-00052 -->
-[[b:Conformations]]
+[[b:[[span:Conformations|red-text]]]]
 
 <!-- SEG:m00038:para:para-00059 -->
-[[b:General Problems]]
+[[b:[[span:General Problems|red-text]]]]

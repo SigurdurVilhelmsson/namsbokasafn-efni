@@ -1,0 +1,33 @@
+{
+  "moduleId": "m00132",
+  "title": {
+    "segmentId": "m00132:title:auto-1",
+    "text": "Biological Elimination Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "1be375c8-96d0-4b67-ba99-46e7f043e49c"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00132:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00132:alt:fig-00001-alt",
+          "text": "The reaction mechanism of an alcohol with 3-hydroxybutyryl thioester, forms an intermediate compound, which further yields water and crotonyl thioester."
+        },
+        "src": "../../media/OChem_11_11_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 11
+}

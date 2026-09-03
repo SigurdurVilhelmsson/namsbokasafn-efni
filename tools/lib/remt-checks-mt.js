@@ -715,7 +715,7 @@ export const A2b = defineCheck({
  * A2c — no spaced `<!-- SEG: ` form in the MT output. BLOCKING.
  *
  * 🔴 IT HAS NO NATURAL FIXTURE AND THAT IS THE HAZARD, NOT AN INCONVENIENCE. Measured
- * 2026-08-25: **0 spaced forms across 207 live IS files carrying 29,476 canonical markers**
+ * 2026-09-02: **0 spaced forms across 207 live IS files carrying 29,607 canonical markers**
  * — and a guard that matches nothing is indistinguishable from one that is broken (L44③).
  * ▶ So the clean corpus is only interpretable BESIDE a planted trip, and the test carries
  * one that additionally proves the drop BY VALUE: 11 records become 10 on the same bytes.

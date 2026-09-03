@@ -91,7 +91,10 @@
           },
           "media": {
             "id": "fs-idp17757392",
-            "alt": "This graph shows solubilities of methane, oxygen, carbon monoxide, nitrogen, and helium in 10 superscript negative 3 mol L superscript negative 1 at temperatures ranging from 0 to 30 degrees Celsius. Solubilities as indicated on the graph in decreasing order are methane, oxygen, carbon monoxide, nitrogen, and helium. At ten degrees, solubilities in 10 superscript negative 3mol L superscript negative 1 are approximately as follows; methane 1.9, oxygen 1.8, carbon monoxide 1.2, nitrogen 0.7, and helium 0.4. At twenty degrees, solubilities in 10 superscript negative 3 mol L superscript negative 1 are approximately as follows; methane 1.2, oxygen 1.1, carbon monoxide 0.9, nitrogen 0.5, and helium 0.35.",
+            "alt": {
+              "segmentId": "m68782:alt:fs-idp17757392-alt",
+              "text": "This graph shows solubilities of methane, oxygen, carbon monoxide, nitrogen, and helium in 10 superscript negative 3 mol L superscript negative 1 at temperatures ranging from 0 to 30 degrees Celsius. Solubilities as indicated on the graph in decreasing order are methane, oxygen, carbon monoxide, nitrogen, and helium. At ten degrees, solubilities in 10 superscript negative 3mol L superscript negative 1 are approximately as follows; methane 1.9, oxygen 1.8, carbon monoxide 1.2, nitrogen 0.7, and helium 0.4. At twenty degrees, solubilities in 10 superscript negative 3 mol L superscript negative 1 are approximately as follows; methane 1.2, oxygen 1.1, carbon monoxide 0.9, nitrogen 0.5, and helium 0.35."
+            },
             "src": "../../media/CNX_Chem_11_03_gasdissolv.jpg",
             "mimeType": "image/jpeg"
           }
@@ -109,7 +112,10 @@
           },
           "media": {
             "id": "fs-idp18668432",
-            "alt": "Two photos are shown. The first shows the top portion of a transparent colorless glass of a clear colorless liquid with small bubbles near the interface of the liquid with the container. The second photo shows a portion of a partially frozen body of water with dead fish appearing on in the water and on an icy surface.",
+            "alt": {
+              "segmentId": "m68782:alt:fs-idp18668432-alt",
+              "text": "Two photos are shown. The first shows the top portion of a transparent colorless glass of a clear colorless liquid with small bubbles near the interface of the liquid with the container. The second photo shows a portion of a partially frozen body of water with dead fish appearing on in the water and on an icy surface."
+            },
             "src": "../../media/CNX_Chem_11_03_O2dissolv.jpg",
             "mimeType": "image/jpeg"
           }
@@ -128,7 +134,10 @@
           },
           "media": {
             "id": "fs-idp66125536",
-            "alt": "A dark brown liquid is shown in a clear, colorless container. A thick layer of beige bubbles appear at the surface of the liquid. In the liquid, thirteen small clusters of single black spheres with two red spheres attached to the left and right are shown. Red spheres represent oxygen atoms and black represent carbon atoms. Seven white arrows point upward in the container from these clusters to the bubble layer at the top of the liquid.",
+            "alt": {
+              "segmentId": "m68782:alt:fs-idp66125536-alt",
+              "text": "A dark brown liquid is shown in a clear, colorless container. A thick layer of beige bubbles appear at the surface of the liquid. In the liquid, thirteen small clusters of single black spheres with two red spheres attached to the left and right are shown. Red spheres represent oxygen atoms and black represent carbon atoms. Seven white arrows point upward in the container from these clusters to the bubble layer at the top of the liquid."
+            },
             "src": "../../media/CNX_Chem_11_03_beverage.jpg",
             "mimeType": "image/jpeg"
           }
@@ -329,7 +338,10 @@
           },
           "media": {
             "id": "fs-idm21151808",
-            "alt": "Two photos are shown. The first shows two people seated in a steel chamber on benches that run length of the chamber on each side. The chamber has a couple of small circular windows and an open hatch-type door. One of the two people is giving a thumbs up gesture. The second image provides a view through a small, circular window. Inside the two people can be seen with masks over their mouths and noses. The people appear to be reading.",
+            "alt": {
+              "segmentId": "m68782:alt:fs-idm21151808-alt",
+              "text": "Two photos are shown. The first shows two people seated in a steel chamber on benches that run length of the chamber on each side. The chamber has a couple of small circular windows and an open hatch-type door. One of the two people is giving a thumbs up gesture. The second image provides a view through a small, circular window. Inside the two people can be seen with masks over their mouths and noses. The people appear to be reading."
+            },
             "src": "../../media/CNX_Chem_11_03_recompress.jpg",
             "mimeType": "image/jpeg"
           }
@@ -343,7 +355,10 @@
           "type": "media",
           "id": "fs-idp36245120",
           "class": "scaled-down",
-          "alt": "This reaction diagram shows three H atoms bonded to an N atom above, below, and two the left of the N. A single pair of dots is present on the right side of the N. This is followed by a plus, then two H atoms bonded to an O atom to the left and below the O. Two pairs of dots are present on the O, one above and the other to the right of the O. A double arrow, with a top arrow pointing right and a bottom arrow pointing left follows. To the right of the double arrow, four H atoms are shown bonded to a central N atom. These 5 atoms are enclosed in brackets with a superscript plus outside. A plus follows, then an O atom linked by a bond to an H atom on its right. The O atom has pairs of dots above, to the left, and below the atom. The linked O and H are enclosed in brackets with superscript minus outside.",
+          "alt": {
+            "segmentId": "m68782:alt:fs-idp36245120-alt",
+            "text": "This reaction diagram shows three H atoms bonded to an N atom above, below, and two the left of the N. A single pair of dots is present on the right side of the N. This is followed by a plus, then two H atoms bonded to an O atom to the left and below the O. Two pairs of dots are present on the O, one above and the other to the right of the O. A double arrow, with a top arrow pointing right and a bottom arrow pointing left follows. To the right of the double arrow, four H atoms are shown bonded to a central N atom. These 5 atoms are enclosed in brackets with a superscript plus outside. A plus follows, then an O atom linked by a bond to an H atom on its right. The O atom has pairs of dots above, to the left, and below the atom. The linked O and H are enclosed in brackets with superscript minus outside."
+          },
           "src": "../../media/CNX_Chem_11_02_ammonia1_img.jpg",
           "embedSrc": "",
           "width": "",
@@ -362,7 +377,10 @@
           },
           "media": {
             "id": "fs-idp108534848",
-            "alt": "Two photos are shown. The first is an aerial view of a lake surrounded by green hills. The second shows a large body of water with a fountain sending liquid up into the air several yards or meters above the surface of the water.",
+            "alt": {
+              "segmentId": "m68782:alt:fs-idp108534848-alt",
+              "text": "Two photos are shown. The first is an aerial view of a lake surrounded by green hills. The second shows a large body of water with a fountain sending liquid up into the air several yards or meters above the surface of the water."
+            },
             "src": "../../media/CNX_Chem_11_03_LakeNyos.jpg",
             "mimeType": "image/jpeg"
           }
@@ -392,7 +410,10 @@
           },
           "media": {
             "id": "fs-idp105848592",
-            "alt": "This is a photo of a 1 gallon yellow plastic jug of Preston 50/50 Prediluted Antifreeze/Coolant.",
+            "alt": {
+              "segmentId": "m68782:alt:fs-idp105848592-alt",
+              "text": "This is a photo of a 1 gallon yellow plastic jug of Preston 50/50 Prediluted Antifreeze/Coolant."
+            },
             "src": "../../media/CNX_Chem_11_03_antifreeze.jpg",
             "mimeType": "image/jpeg"
           }
@@ -416,7 +437,10 @@
           },
           "media": {
             "id": "fs-idp48883952",
-            "alt": "This is a photo of a clear, colorless martini glass containing a golden colored liquid layer resting on top of a clear, colorless liquid.",
+            "alt": {
+              "segmentId": "m68782:alt:fs-idp48883952-alt",
+              "text": "This is a photo of a clear, colorless martini glass containing a golden colored liquid layer resting on top of a clear, colorless liquid."
+            },
             "src": "../../media/CNX_Chem_11_03_oilwater2.jpg",
             "mimeType": "image/jpeg"
           }
@@ -435,7 +459,10 @@
           },
           "media": {
             "id": "fs-idp40449744",
-            "alt": "This figure shows three test tubes. The first test tube holds a dark orange-brown substance. The second test tube holds a clear substance. The amount of substance in both test tubes is the same. The third test tube holds a dark orange-brown substance on the bottom with a lighter orange substance on top. The amount of substance in the third test tube is almost double of the first two.",
+            "alt": {
+              "segmentId": "m68782:alt:fs-idp40449744-alt",
+              "text": "This figure shows three test tubes. The first test tube holds a dark orange-brown substance. The second test tube holds a clear substance. The amount of substance in both test tubes is the same. The third test tube holds a dark orange-brown substance on the bottom with a lighter orange substance on top. The amount of substance in the third test tube is almost double of the first two."
+            },
             "src": "../../media/CNX_Chem_11_03_bromine.jpg",
             "mimeType": "image/jpeg"
           }
@@ -465,7 +492,10 @@
           },
           "media": {
             "id": "fs-idp19558160",
-            "alt": "This shows a graph of the solubility of sugar C subscript 12 H subscript 22 O subscript 11, K N O subscript 3, N a N O subscript 3, N a B r, K B r, N a subscript 2 S O subscript 4, K C l, and C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3 in g solute per 100 g H subscript 2 O at temperatures ranging from 0 degrees Celsius to 100 degrees Celsius. At 0 degrees Celsius, solubilities are approximately 180 for sugar C subscript 12 H subscript 22 O subscript 11, 115 for K N O subscript 3, 75 for N a N O subscript 3, 115 for N a B r, 55 for K B r, 7 for N a subscript 2 S O subscript 4, 25 for K C l, and 20 for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3. At 0 degrees Celsius, solubilities are approximately 180 for sugar C subscript 12 H subscript 22 O subscript 11, 115 for K N O subscript 3, 75 for N a N O subscript 3, 115 for N a B r, 55 for K B r, 7 for N a subscript 2 S O subscript 4, 25 for K C l, and 20 for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3. At 100 degrees Celsius, sugar C subscript 12 H subscript 22 O subscript 11 has exceeded the upper limit of solubility indicated on the graph, 240 for K N O subscript 3, 178 for N a N O subscript 3, 123 for N a B r, 105 for K B r, 52 for N a subscript 2 S O subscript 4, 58 for K C l, and the graph for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3 stops at about 92 degrees Celsius where the solubility is nearly zero. The graph for N a subscript 2 S O subscript 4 is shown in red. All others substances are shown in blue. The solubility of this substance increases until about 30 degrees Celsius and declines beyond that point with increasing temperature.",
+            "alt": {
+              "segmentId": "m68782:alt:fs-idp19558160-alt",
+              "text": "This shows a graph of the solubility of sugar C subscript 12 H subscript 22 O subscript 11, K N O subscript 3, N a N O subscript 3, N a B r, K B r, N a subscript 2 S O subscript 4, K C l, and C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3 in g solute per 100 g H subscript 2 O at temperatures ranging from 0 degrees Celsius to 100 degrees Celsius. At 0 degrees Celsius, solubilities are approximately 180 for sugar C subscript 12 H subscript 22 O subscript 11, 115 for K N O subscript 3, 75 for N a N O subscript 3, 115 for N a B r, 55 for K B r, 7 for N a subscript 2 S O subscript 4, 25 for K C l, and 20 for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3. At 0 degrees Celsius, solubilities are approximately 180 for sugar C subscript 12 H subscript 22 O subscript 11, 115 for K N O subscript 3, 75 for N a N O subscript 3, 115 for N a B r, 55 for K B r, 7 for N a subscript 2 S O subscript 4, 25 for K C l, and 20 for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3. At 100 degrees Celsius, sugar C subscript 12 H subscript 22 O subscript 11 has exceeded the upper limit of solubility indicated on the graph, 240 for K N O subscript 3, 178 for N a N O subscript 3, 123 for N a B r, 105 for K B r, 52 for N a subscript 2 S O subscript 4, 58 for K C l, and the graph for C e subscript 2 left parenthesis S O subscript 4 right parenthesis subscript 3 stops at about 92 degrees Celsius where the solubility is nearly zero. The graph for N a subscript 2 S O subscript 4 is shown in red. All others substances are shown in blue. The solubility of this substance increases until about 30 degrees Celsius and declines beyond that point with increasing temperature."
+            },
             "src": "../../media/CNX_Chem_11_03_solubility.jpg",
             "mimeType": "image/jpeg"
           }
@@ -484,7 +514,10 @@
           },
           "media": {
             "id": "fs-idm20585264",
-            "alt": "Three photos of hand warmers are shown side by side with an arrow pointing from the first photo to the second, and another arrow pointing from the second photo to the third. The first packet contains a clear colorless liquid and a small metal disc can be seen. In the second packet, the disc can’t be seen and a dispersion of white liquid is beginning. In the third packet, all of the liquid is white.",
+            "alt": {
+              "segmentId": "m68782:alt:fs-idm20585264-alt",
+              "text": "Three photos of hand warmers are shown side by side with an arrow pointing from the first photo to the second, and another arrow pointing from the second photo to the third. The first packet contains a clear colorless liquid and a small metal disc can be seen. In the second packet, the disc can’t be seen and a dispersion of white liquid is beginning. In the third packet, all of the liquid is white."
+            },
             "src": "../../media/CNX_Chem_11_03_handwarmer.jpg",
             "mimeType": "image/jpeg"
           }
@@ -534,11 +567,12 @@
           "id": "key-equations-table",
           "class": "unnumbered unstyled",
           "summary": "key equations table",
+          "title": null,
           "rows": [
             {
               "cells": [
                 {
-                  "segmentId": "m68782:entry:auto-69",
+                  "segmentId": "m68782:entry:auto-80",
                   "attributes": {}
                 }
               ]

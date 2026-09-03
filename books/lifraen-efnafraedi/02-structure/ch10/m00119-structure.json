@@ -1,0 +1,201 @@
+{
+  "moduleId": "m00119",
+  "title": {
+    "segmentId": "m00119:title:auto-1",
+    "text": "Organometallic Coupling Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "808ac7df-6b01-4eb0-8904-df67a4dab406"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00119:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00119:alt:fig-00001-alt",
+          "text": "1-bromobutane reacts with 2 equivalents of lithium in pentane to form butyllithium and LiBr. C1 of butyllithium (ball-and-stick model in an electrostatic potential map) is labeled basic and nucleophilic."
+        },
+        "src": "../../media/OChem_10_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00119:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00119:alt:fig-00002-alt",
+          "text": "The reaction of 2 equivalents of methyllithium with copper iodide in ether forms lithium dimethylcopper (a Gilman reagent) and lithium iodide."
+        },
+        "src": "../../media/OChem_10_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00119:alt:fig-00003-alt",
+          "text": "Lithium dimethylcopper and 1-iododecane in ether at 0 degrees Celcius forms undecane (90%), lithium iodide, and methyl copper."
+        },
+        "src": "../../media/OChem_10_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00119:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00119:alt:fig-00004-alt",
+          "text": "Trans-1-iodo-1-nonene reacts with lithium dibutylcopper to form trans-5-tridecene (71%), n-butylcopper, and LiI. Iodobenzene reacts with lithium dimethylcopper to form toluene (91%), methyl copper, and LiI."
+        },
+        "src": "../../media/OChem_10_07_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00119:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00119:alt:fig-00005-alt",
+          "text": "The reaction of cis-1-bromo-9-octadecene with lithium dipentylcopper form muscalure (9Z-tricosene)."
+        },
+        "src": "../../media/OChem_10_07_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00119:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00119:alt:fig-00006-alt",
+          "text": "RX reacts with lithium di-R' copper to form an intermediate which further reacts to form R-R' and R'-Cu."
+        },
+        "src": "../../media/OChem_10_07_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00119:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00119:alt:fig-00007-alt",
+          "text": "The reaction of an aromatic substituted boronic acid and iodobenzene in the presence of palladium-tetrakis(triphenylphosphine), calcium carbonate, and tetrahydrofuran form a biaryl compound (92%)."
+        },
+        "src": "../../media/OChem_10_07_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00119:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00008",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00119:alt:fig-00008-alt",
+          "text": "The reaction of para-methylbenzeneboronic acid and ortho-chloro-benzonitrile in the presence of palladium catalyst and potassium carbonate forms an intermediate that further produces Valsartan (Diovan)."
+        },
+        "src": "../../media/OChem_10_07_008.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00119:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00009",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00119:caption:fig-00009-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00119:alt:fig-00009-alt",
+          "text": "Via a three-step cyclic reaction, an aromatic halide reacts with catalyst, forming an organopalladium intermediate, which reacts with aromatic boronic acid, yielding diarylpalladium intermediate. Decomposition produces a biaryl product."
+        },
+        "src": "../../media/OChem_10_07_009.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00119:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

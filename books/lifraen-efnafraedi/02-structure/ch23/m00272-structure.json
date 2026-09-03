@@ -1,0 +1,54 @@
+{
+  "moduleId": "m00272",
+  "title": {
+    "segmentId": "m00272:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "a4acea61-e390-46d4-80e9-f0b1e1a9bf43"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00272:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00272:alt:fig-00001-alt",
+          "text": "A photo shows a newborn sea lion pup sitting beside its mother."
+        },
+        "src": "../../media/OChem_23_00_PigSeaLion.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00272:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00272:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00272:alt:fig-00002-alt",
+          "text": "A nucleophile is shows attacking the electrophilic carbonyl carbon; an electrophile is shown being attacked by nucleophilic enolate ion. Curved arrows represent electron movement."
+        },
+        "src": "../../media/OChem_23_00_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 0
+}

@@ -1,0 +1,10 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>FeBr</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>–</m:mo></m:msup><m:msup><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mo>+</m:mo></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{FeBr}}}_{4}^{–}{{\\text{Br}}}^{+}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:msup><m:mi>G</m:mi><m:mo>‡</m:mo></m:msup><m:msub><m:mrow/><m:mrow><m:mtext>alkene</m:mtext></m:mrow></m:msub><m:mo>&lt;</m:mo><m:mtext>Δ</m:mtext><m:msup><m:mi>G</m:mi><m:mo>‡</m:mo></m:msup><m:msub><m:mrow/><m:mrow><m:mtext>benzene</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{Δ}{G}^{‡}_{{\\text{alkene}}}&lt;\\text{Δ}{G}^{‡}_{{\\text{benzene}}}}"
+  }
+}

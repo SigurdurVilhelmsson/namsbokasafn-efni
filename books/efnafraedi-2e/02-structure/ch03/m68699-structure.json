@@ -18,7 +18,10 @@
       },
       "media": {
         "id": "fs-idp99819248",
-        "alt": "This figure shows a swimming pool that is full of water and surrounded by a concrete patio.",
+        "alt": {
+          "segmentId": "m68699:alt:fs-idp99819248-alt",
+          "text": "This figure shows a swimming pool that is full of water and surrounded by a concrete patio."
+        },
         "src": "../../media/CNX_Chem_03_00_Pool.jpg",
         "mimeType": "image/jpeg"
       }

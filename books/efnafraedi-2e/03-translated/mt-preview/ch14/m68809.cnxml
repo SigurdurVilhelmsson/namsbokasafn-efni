@@ -36,7 +36,7 @@
 <equation class="unnumbered" id="fs-idm15386080"><m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>n</m:mtext><m:mo stretchy="false">(</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>V</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.100</m:mn><m:mspace width="0.4em"/><m:mi>M</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>37.50 mL</m:mtext><m:mo>−</m:mo><m:mtext>0.002500 mol</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1000 mL</m:mtext></m:mrow><m:mrow><m:mtext>1 L</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow></m:mrow><m:mrow><m:mtext>25.00 mL</m:mtext><m:mo>+</m:mo><m:mtext>37.50 mL</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.0200</m:mn><m:mspace width="0.4em"/><m:mi>M</m:mi></m:mrow></m:math></equation><para id="fs-idm41259968">pH = 14 − pOH = 14 + log([OH<sup>−</sup>]) = 14 + log(0,0200) = 12,30</para>
 <para id="fs-idm15929056"><title>Kannaðu þekkingu þína</title>Reiknaðu pH fyrir títrun á sterkri sýru/sterkum basa milli 50,0 ml af 0,100 <emphasis effect="italics">M</emphasis> HNO<sub>3</sub>(<emphasis effect="italics">aq</emphasis>) og 0,200 <emphasis effect="italics">M</emphasis> NaOH (títrantur) við uppgefin rúmmál af viðbættum basa: 0,00 ml, 15,0 ml, 25,0 ml og 40,0 ml.</para>
 <note id="fs-idm44981872">
-<title>Answer:</title>
+<title>Svar:</title>
 <para id="fs-idm89702512">0,00: 1,000; 15,0: 1,5111; 25,0: 7; 40,0: 12,523</para>
 </note>
 </example>
@@ -70,7 +70,7 @@
 <equation class="unnumbered" id="fs-idm21431696"><m:math><m:mrow><m:mtext>pOH</m:mtext><m:mo>=</m:mo><m:mtext>−log</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.00</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>1.70, and pH</m:mtext><m:mo>=</m:mo><m:mn>14.00</m:mn><m:mo>−</m:mo><m:mn>1.70</m:mn><m:mo>=</m:mo><m:mn>12.30</m:mn></m:mrow></m:math></equation>
 <para id="fs-idm41682336"><title>Kannaðu þekkingu þína</title>Reiknaðu pH fyrir títrun veiku sýrunnar/sterka basans milli 50,0 ml af 0,100 <emphasis effect="italics">M</emphasis> HCOOH(<emphasis effect="italics">aq</emphasis>) (maurildi) og 0,200 <emphasis effect="italics">M</emphasis> NaOH (títrantur) við uppgefin rúmmál af viðbættum basa: 0,00 ml, 15,0 ml, 25,0 ml og 30,0 ml.</para>
 <note id="fs-idp68668928">
-<title>Answer:</title>
+<title>Svar:</title>
 <para id="fs-idm37877472">0,00 ml: 2,37; 15,0 ml: 3,92; 25,00 ml: 8,29; 30,0 ml: 12,097</para>
 </note>
 </example>

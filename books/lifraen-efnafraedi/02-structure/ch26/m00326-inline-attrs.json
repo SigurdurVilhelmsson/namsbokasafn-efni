@@ -1,0 +1,61 @@
+{
+  "m00326:para:para-00001": {
+    "terms": [
+      {
+        "id": "term-00001"
+      },
+      {
+        "id": "term-00002"
+      }
+    ]
+  },
+  "m00326:item:list-00001-item-1": {
+    "terms": [
+      {
+        "id": "term-00003"
+      }
+    ]
+  },
+  "m00326:item:list-00001-item-2": {
+    "terms": [
+      {
+        "id": "term-00004"
+      }
+    ]
+  },
+  "m00326:item:list-00001-item-3": {
+    "terms": [
+      {
+        "id": "term-00005"
+      }
+    ]
+  },
+  "m00326:item:list-00001-item-4": {
+    "terms": [
+      {
+        "id": "term-00006"
+      }
+    ]
+  },
+  "m00326:para:para-00004": {
+    "terms": [
+      {
+        "id": "term-00007"
+      }
+    ]
+  },
+  "m00326:para:para-00005": {
+    "terms": [
+      {
+        "id": "term-00008"
+      }
+    ]
+  },
+  "m00326:para:para-00008": {
+    "terms": [
+      {
+        "id": "term-00009"
+      }
+    ]
+  }
+}

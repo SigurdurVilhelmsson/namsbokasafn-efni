@@ -1,0 +1,231 @@
+{
+  "moduleId": "m00302",
+  "title": {
+    "segmentId": "m00302:title:auto-1",
+    "text": "Configurations of the Aldoses"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "be9d1de8-9066-4f22-9035-9a1b70628e19"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00302:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00302:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00302:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00302:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00302:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00302:alt:fig-00001-alt",
+          "text": "Fisher projections of  aldoses, D-glyceraldehyde, D-erythrose, D-threose, D-ribose, D-arabinose, D-erythrose, D-xylose, D-lyxose, D-allose, D-altrose, D-glucose, D-mannose, D-gulose, D-idose, D-galactose, ang D-talose."
+        },
+        "src": "../../media/OChem_25_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00302:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00302:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00302:para:para-00007"
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00302:para:para-00008"
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00302:para:para-00009"
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00302:para:para-00010"
+    },
+    {
+      "type": "para",
+      "id": "para-00011",
+      "segmentId": "m00302:para:para-00011"
+    },
+    {
+      "type": "para",
+      "id": "para-00012",
+      "segmentId": "m00302:para:para-00012"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00302:example-title:exam-00001-title",
+        "text": "Drawing a Fischer Projection"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00302:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00302:para:para-00014",
+          "title": {
+            "segmentId": "m00302:para-title:para-00014-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "title": {
+            "segmentId": "m00302:para-title:para-00015-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00302:alt:fig-00002-alt",
+          "text": "Fischer projections of enantiomeric  D-fructose and L-fructose, non-superimposable mirror image stereoisomers in which every O-H and H pair is switched"
+        },
+        "src": "../../media/OChem_25_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "exam-00002",
+      "title": {
+        "segmentId": "m00302:example-title:exam-00002-title",
+        "text": "Drawing a Fischer Projection of a Molecular Model"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00302:para:para-00016"
+        },
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00302:para:para-00017",
+          "title": {
+            "segmentId": "m00302:para-title:para-00017-title",
+            "text": "Strategy"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00018",
+          "title": {
+            "segmentId": "m00302:para-title:para-00018-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00302:alt:fig-00003-alt",
+          "text": "The ball-and-stick model of aldotetrose which is an aldose with four carbon atoms. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively."
+        },
+        "src": "../../media/OChem_25_04_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00302:alt:fig-00004-alt",
+          "text": "The steps to draw the Fischer projection of D-erythrose form its ball-and-stick model. The model undergoes 90 degree-rotation so that the carbonyl group is at the top."
+        },
+        "src": "../../media/OChem_25_04_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00302:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

@@ -13,7 +13,7 @@
  * Workflow:
  *   1. Place translated figures in `books/<book>/media/` (NOT 01-source/media — that
  *      is the read-only OpenStax source). Name each one `<original-basename><suffix>.<ext>`,
- *      e.g. CNX_Chem_11_03_gasdissolv_is.svg for the original CNX_Chem_11_03_gasdissolv.jpg.
+ *      e.g. CNX_Chem_11_03_gasdissolv_IS.svg for the original CNX_Chem_11_03_gasdissolv.jpg.
  *   2. Run this tool to scan the source CNXML, match each translated file back to the
  *      figure that references its original image, and write the mapping.
  *   3. Re-inject + re-render (CLI, or "Vista + Birta" per module) to publish the swap.
@@ -29,7 +29,7 @@
  *   --book <slug>      Book slug (e.g. efnafraedi-2e). Required.
  *   --chapter <num>    Only scan source for this chapter (default: all chapters).
  *                      Matching is still driven by which translated files exist.
- *   --suffix <s>       Locale suffix on translated filenames (default: _is).
+ *   --suffix <s>       Locale suffix on translated filenames (default: _IS).
  *   --dry-run          Print the mapping that would be written; write nothing.
  *   --verbose          List every matched/unmatched file.
  *   -h, --help         Show this help.
@@ -40,6 +40,18 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 let BOOKS_DIR = path.join(fileURLToPath(new URL('..', import.meta.url)), 'books');
+
+/**
+ * Locale suffix on translated figure filenames: `<basename>_IS.<ext>`.
+ *
+ * ONE definition, because it was two and they disagreed: the CLI defaulted to
+ * `_is` while every translated file on disk is `_IS`, and `deriveOriginalBasename`
+ * matches case-SENSITIVELY. A bare run therefore matched 0 files, printed a
+ * success line, and merged an unchanged mapping — so a newly translated figure
+ * was silently never added. Pinned against the committed corpus in
+ * `tools/__tests__/generate-image-mapping.test.js`.
+ */
+export const DEFAULT_SUFFIX = '_IS';
 
 /** Test seam: point the tool at a fixture books/ dir. */
 export function _setTestBooksDir(dir) {
@@ -72,8 +84,8 @@ export function indexSourceImageBasenames(cnxml) {
 
 /**
  * Recover the original image basename from a translated filename.
- * @param {string} filename e.g. "CNX_Chem_11_03_gasdissolv_is.svg"
- * @param {string} suffix   e.g. "_is"
+ * @param {string} filename e.g. "CNX_Chem_11_03_gasdissolv_IS.svg"
+ * @param {string} suffix   e.g. "_IS"
  * @returns {string|null} original basename, or null if the suffix is absent
  */
 export function deriveOriginalBasename(filename, suffix) {
@@ -144,7 +156,12 @@ function collectCnxml(dir) {
  * Generate (or update) books/<book>/media/image-mapping.json.
  * @returns {{entries: object[], unmatched: string[], mappingPath: string, written: boolean}}
  */
-export function generateImageMapping({ book, chapter, suffix = '_is', dryRun = false } = {}) {
+export function generateImageMapping({
+  book,
+  chapter,
+  suffix = DEFAULT_SUFFIX,
+  dryRun = false,
+} = {}) {
   if (!book) throw new Error('--book is required');
 
   const bookDir = path.join(BOOKS_DIR, book);
@@ -197,7 +214,13 @@ export function generateImageMapping({ book, chapter, suffix = '_is', dryRun = f
 // =====================================================================
 
 function parseArgs(argv) {
-  const result = { book: null, chapter: null, suffix: '_is', dryRun: false, verbose: false };
+  const result = {
+    book: null,
+    chapter: null,
+    suffix: DEFAULT_SUFFIX,
+    dryRun: false,
+    verbose: false,
+  };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--book') result.book = argv[++i];
@@ -213,7 +236,7 @@ function parseArgs(argv) {
 function printHelp() {
   console.log(
     `\nGenerate books/<book>/media/image-mapping.json from translated figures.\n\n` +
-      `  node tools/generate-image-mapping.js --book <slug> [--chapter N] [--suffix _is] [--dry-run] [--verbose]\n`
+      `  node tools/generate-image-mapping.js --book <slug> [--chapter N] [--suffix ${DEFAULT_SUFFIX}] [--dry-run] [--verbose]\n`
   );
 }
 

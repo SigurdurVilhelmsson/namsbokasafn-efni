@@ -1,0 +1,127 @@
+{
+  "moduleId": "m00081",
+  "title": {
+    "segmentId": "m00081:title:auto-1",
+    "text": "An Example of a Polar Reaction: Addition of HBr to Ethylene"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "5146ed1b-5c2f-4b61-a357-8d9d400ebcaf"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00081:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00081:alt:fig-00001-alt",
+          "text": "A reaction shows ethylene reacting with hydrogen bromide to form bromoethane. The reactants and the product are also represented by their electrostatic potential maps."
+        },
+        "src": "../../media/OChem_06_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00081:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00081:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00081:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00081:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00081:alt:fig-00002-alt",
+          "text": "Orbital representations and electrostatic potential maps of carbon-carbon sigma bond (stronger, less accessible bonding electrons) and carbon-carbon pi bond (weaker, more accessible electrons)."
+        },
+        "src": "../../media/OChem_06_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00081:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00081:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00081:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00081:alt:fig-00003-alt",
+          "text": "A 2-step reaction mechanism shows ethylene reacting with hydrogen bromide to form bromoethane via a carbocation intermediate."
+        },
+        "src": "../../media/OChem_06_05_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00081:para:para-00007"
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00081:para:para-00008"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00081:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}

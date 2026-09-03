@@ -1,0 +1,71 @@
+{
+  "moduleId": "m00299",
+  "title": {
+    "segmentId": "m00299:title:auto-1",
+    "text": "Classification of Carbohydrates"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "42db707f-98c2-47f2-89c5-ac2f4c5b8b57"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00299:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00299:alt:fig-00001-alt",
+          "text": "Enzyme-catalyzed hydrolysis decomposes sucrose (a disaccharide) into glucose and fructose. Similarly, cellulose (a polysaccharide) decomposes into approximately three thousand glucose units."
+        },
+        "src": "../../media/OChem_25_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00299:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00299:alt:fig-00002-alt",
+          "text": "The structures of glucose (an aldohexose), fructose (a ketohexose), ribose (an aldopentose), and sedoheptulose (a ketoheptose), presented in Fischer projection."
+        },
+        "src": "../../media/OChem_25_01_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00299:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 1
+}

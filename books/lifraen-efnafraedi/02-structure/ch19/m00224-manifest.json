@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "moduleId": "m00224",
+  "extractedAt": "2026-08-31T19:08:49.216Z",
+  "sourceHash": "d8316d65cf398450",
+  "segmentCount": 32,
+  "segmentIds": [
+    "m00224:title:auto-1",
+    "m00224:para:para-00001",
+    "m00224:caption:fig-00001-caption",
+    "m00224:alt:fig-00001-alt",
+    "m00224:para:para-00002",
+    "m00224:alt:fig-00002-alt",
+    "m00224:para:para-00003",
+    "m00224:alt:fig-00003-alt",
+    "m00224:title:sect-00001-title",
+    "m00224:para:para-00004",
+    "m00224:alt:fig-00004-alt",
+    "m00224:title:sect-00002-title",
+    "m00224:para:para-00005",
+    "m00224:alt:fig-00005-alt",
+    "m00224:title:sect-00003-title",
+    "m00224:title:sect-00004-title",
+    "m00224:para:para-00007",
+    "m00224:alt:fig-00006-alt",
+    "m00224:para:para-00008",
+    "m00224:alt:fig-00007-alt",
+    "m00224:para:para-00009",
+    "m00224:alt:fig-00008-alt",
+    "m00224:para:para-00010",
+    "m00224:alt:fig-00009-alt",
+    "m00224:example-title:exam-00001-title",
+    "m00224:para:para-00011",
+    "m00224:para-title:para-00012-title",
+    "m00224:para:para-00012",
+    "m00224:para-title:para-00013-title",
+    "m00224:alt:fig-00010-alt",
+    "m00224:alt:fig-00011-alt",
+    "m00224:title:sect-00005-title"
+  ],
+  "equationCount": 3,
+  "equationIds": [
+    "math-1",
+    "math-2",
+    "math-3"
+  ],
+  "elementCounts": {
+    "para": 12,
+    "section": 5,
+    "figure": 11,
+    "table": 0,
+    "example": 1,
+    "exercise": 3,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002",
+      "fig-00003",
+      "fig-00004",
+      "fig-00005",
+      "fig-00006",
+      "fig-00007",
+      "fig-00008",
+      "fig-00009",
+      "fig-00010",
+      "fig-00011"
+    ],
+    "table": [],
+    "example": [
+      "exam-00001"
+    ],
+    "exercise": [
+      "exer-00001",
+      "exer-00002",
+      "exer-00003"
+    ],
+    "note": [],
+    "equation": [],
+    "section": [
+      "sect-00001",
+      "sect-00002",
+      "sect-00003",
+      "sect-00004",
+      "sect-00005"
+    ]
+  }
+}

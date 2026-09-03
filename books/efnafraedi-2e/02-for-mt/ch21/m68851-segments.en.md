@@ -14,10 +14,10 @@ Calculate mass defect and binding energy for nuclei
 Explain trends in the relative stability of nuclei
 
 <!-- SEG:m68851:para:fs-idp11934128 -->
-{{term}}Nuclear chemistry{{/term}} is the study of reactions that involve changes in nuclear structure. The chapter on atoms, molecules, and ions introduced the basic idea of nuclear structure, that the nucleus of an atom is composed of protons and, with the exception of [[MATH:1]] neutrons. Recall that the number of protons in the nucleus is called the atomic number (Z) of the element, and the sum of the number of protons and the number of neutrons is the mass number (A). Atoms with the same atomic number but different mass numbers are isotopes of the same element. When referring to a single type of nucleus, we often use the term {{term}}nuclide{{/term}} and identify it by the notation [[MATH:2]] where X is the symbol for the element, A is the mass number, and Z is the atomic number (for example, [[MATH:3]] Often a nuclide is referenced by the name of the element followed by a hyphen and the mass number. For example, [[MATH:4]] is called “carbon-14.”
+[[term:Nuclear chemistry|term-00001]] is the study of reactions that involve changes in nuclear structure. The chapter on atoms, molecules, and ions introduced the basic idea of nuclear structure, that the nucleus of an atom is composed of protons and, with the exception of [[MATH:1]] neutrons. Recall that the number of protons in the nucleus is called the atomic number (Z) of the element, and the sum of the number of protons and the number of neutrons is the mass number (A). Atoms with the same atomic number but different mass numbers are isotopes of the same element. When referring to a single type of nucleus, we often use the term [[term:nuclide|term-00002]] and identify it by the notation [[MATH:2]] where X is the symbol for the element, A is the mass number, and Z is the atomic number (for example, [[MATH:3]] Often a nuclide is referenced by the name of the element followed by a hyphen and the mass number. For example, [[MATH:4]] is called “carbon-14.”
 
 <!-- SEG:m68851:para:fs-idm77528832 -->
-Protons and neutrons, collectively called {{term}}nucleons{{/term}}, are packed together tightly in a nucleus. With a radius of about 10[[sup:−15]] meters, a nucleus is quite small compared to the radius of the entire atom, which is about 10[[sup:−10]] meters. Nuclei are extremely dense compared to bulk matter, averaging 1.8 [[MATH:5]] 10[[sup:14]] grams per cubic centimeter. For example, water has a density of 1 gram per cubic centimeter, and iridium, one of the densest elements known, has a density of 22.6 g/cm[[sup:3]]. If the earth’s density were equal to the average nuclear density, the earth’s radius would be only about 200 meters (earth’s actual radius is approximately 6.4 [[MATH:6]] 10[[sup:6]] meters, 30,000 times larger). [[xref:fs-idp85198000]] demonstrates just how great nuclear densities can be in the natural world.
+Protons and neutrons, collectively called [[term:nucleons|term-00003]], are packed together tightly in a nucleus. With a radius of about 10[[sup:−15]] meters, a nucleus is quite small compared to the radius of the entire atom, which is about 10[[sup:−10]] meters. Nuclei are extremely dense compared to bulk matter, averaging 1.8 [[MATH:5]] 10[[sup:14]] grams per cubic centimeter. For example, water has a density of 1 gram per cubic centimeter, and iridium, one of the densest elements known, has a density of 22.6 g/cm[[sup:3]]. If the earth’s density were equal to the average nuclear density, the earth’s radius would be only about 200 meters (earth’s actual radius is approximately 6.4 [[MATH:6]] 10[[sup:6]] meters, 30,000 times larger). [[xref:fs-idp85198000]] demonstrates just how great nuclear densities can be in the natural world.
 
 <!-- SEG:m68851:example-title:fs-idp85198000-title -->
 Density of a Neutron Star
@@ -62,7 +62,7 @@ Answer:
 The density of the neutron star is 3.4 [[MATH:14]] 10[[sup:18]] kg/m[[sup:3]]. The density of a hydrogen nucleus is 6.0 [[MATH:15]] 10[[sup:17]] kg/m[[sup:3]]. The neutron star is 5.7 times denser than the hydrogen nucleus.
 
 <!-- SEG:m68851:para:fs-idm88935120 -->
-To hold positively charged protons together in the very small volume of a nucleus requires very strong attractive forces because the positively charged protons repel one another strongly at such short distances. The force of attraction that holds the nucleus together is the {{term}}strong nuclear force{{/term}}. (The strong force is one of the four fundamental forces that are known to exist. The others are the electromagnetic force, the gravitational force, and the nuclear weak force.) This force acts between protons, between neutrons, and between protons and neutrons. It is very different from the electrostatic force that holds negatively charged electrons around a positively charged nucleus (the attraction between opposite charges). Over distances less than 10[[sup:−15]] meters and within the nucleus, the strong nuclear force is much stronger than electrostatic repulsions between protons; over larger distances and outside the nucleus, it is essentially nonexistent.
+To hold positively charged protons together in the very small volume of a nucleus requires very strong attractive forces because the positively charged protons repel one another strongly at such short distances. The force of attraction that holds the nucleus together is the [[term:strong nuclear force|term-00004]]. (The strong force is one of the four fundamental forces that are known to exist. The others are the electromagnetic force, the gravitational force, and the nuclear weak force.) This force acts between protons, between neutrons, and between protons and neutrons. It is very different from the electrostatic force that holds negatively charged electrons around a positively charged nucleus (the attraction between opposite charges). Over distances less than 10[[sup:−15]] meters and within the nucleus, the strong nuclear force is much stronger than electrostatic repulsions between protons; over larger distances and outside the nucleus, it is essentially nonexistent.
 
 <!-- SEG:m68851:para:fs-idp91518256 -->
 Visit this [[link:website|http://openstax.org/l/16fourfund]] for more information about the four fundamental forces.
@@ -74,13 +74,13 @@ Nuclear Binding Energy
 As a simple example of the energy associated with the strong nuclear force, consider the helium atom composed of two protons, two neutrons, and two electrons. The total mass of these six subatomic particles may be calculated as:
 
 <!-- SEG:m68851:para:fs-idp28406768 -->
-However, mass spectrometric measurements reveal that the mass of an [[MATH:16]] atom is 4.0026 amu, less than the combined masses of its six constituent subatomic particles. This difference between the calculated and experimentally measured masses is known as the {{term}}mass defect{{/term}} of the atom. In the case of helium, the mass defect indicates a “loss” in mass of 4.0331 amu – 4.0026 amu = 0.0305 amu. The loss in mass accompanying the formation of an atom from protons, neutrons, and electrons is due to the conversion of that mass into energy that is evolved as the atom forms. The {{term}}nuclear binding energy{{/term}} is the energy produced when the atoms’ nucleons are bound together; this is also the energy needed to break a nucleus into its constituent protons and neutrons. In comparison to chemical bond energies, nuclear binding energies are [[i:vastly]] greater, as we will learn in this section. Consequently, the energy changes associated with nuclear reactions are vastly greater than are those for chemical reactions.
+However, mass spectrometric measurements reveal that the mass of an [[MATH:16]] atom is 4.0026 amu, less than the combined masses of its six constituent subatomic particles. This difference between the calculated and experimentally measured masses is known as the [[term:mass defect|term-00005]] of the atom. In the case of helium, the mass defect indicates a “loss” in mass of 4.0331 amu – 4.0026 amu = 0.0305 amu. The loss in mass accompanying the formation of an atom from protons, neutrons, and electrons is due to the conversion of that mass into energy that is evolved as the atom forms. The [[term:nuclear binding energy|term-00006]] is the energy produced when the atoms’ nucleons are bound together; this is also the energy needed to break a nucleus into its constituent protons and neutrons. In comparison to chemical bond energies, nuclear binding energies are [[i:vastly]] greater, as we will learn in this section. Consequently, the energy changes associated with nuclear reactions are vastly greater than are those for chemical reactions.
 
 <!-- SEG:m68851:para:fs-idp77271552 -->
-The conversion between mass and energy is most identifiably represented by the {{term}}mass-energy equivalence equation{{/term}} as stated by Albert Einstein:
+The conversion between mass and energy is most identifiably represented by the [[term:mass-energy equivalence equation|term-00007]] as stated by Albert Einstein:
 
 <!-- SEG:m68851:para:fs-idp18183904 -->
-where [[i:E]] is energy, [[i:m]] is mass of the matter being converted, and [[i:c]] is the speed of light in a vacuum. This equation can be used to find the amount of energy that results when matter is converted into energy. Using this mass-energy equivalence equation, the nuclear binding energy of a nucleus may be calculated from its mass defect, as demonstrated in [[xref:fs-idm18254784]]. A variety of units are commonly used for nuclear binding energies, including {{term}}electron volts (eV){{/term}}, with 1 eV equaling the amount of energy necessary to the move the charge of an electron across an electric potential difference of 1 volt, making 1 eV = 1.602 [[MATH:17]] 10[[sup:–19]] J.
+where [[i:E]] is energy, [[i:m]] is mass of the matter being converted, and [[i:c]] is the speed of light in a vacuum. This equation can be used to find the amount of energy that results when matter is converted into energy. Using this mass-energy equivalence equation, the nuclear binding energy of a nucleus may be calculated from its mass defect, as demonstrated in [[xref:fs-idm18254784]]. A variety of units are commonly used for nuclear binding energies, including [[term:electron volts (eV)|term-00008]], with 1 eV equaling the amount of energy necessary to the move the charge of an electron across an electric potential difference of 1 volt, making 1 eV = 1.602 [[MATH:17]] 10[[sup:–19]] J.
 
 <!-- SEG:m68851:example-title:fs-idm18254784-title -->
 Calculation of Nuclear Binding Energy
@@ -137,73 +137,79 @@ Because the energy changes for breaking and forming bonds are so small compared 
 Nuclear Stability
 
 <!-- SEG:m68851:para:fs-idm27681216 -->
-A nucleus is stable if it cannot be transformed into another configuration without adding energy from the outside. Of the thousands of nuclides that exist, about 250 are stable. A plot of the number of neutrons versus the number of protons for stable nuclei reveals that the stable isotopes fall into a narrow band. This region is known as the {{term}}band of stability{{/term}} (also called the belt, zone, or valley of stability). The straight line in [[xref:CNX_Chem_21_01_BandStable]] represents nuclei that have a 1:1 ratio of protons to neutrons (n:p ratio). Note that the lighter stable nuclei, in general, have equal numbers of protons and neutrons. For example, nitrogen-14 has seven protons and seven neutrons. Heavier stable nuclei, however, have increasingly more neutrons than protons. For example: iron-56 has 30 neutrons and 26 protons, an n:p ratio of 1.15, whereas the stable nuclide lead-207 has 125 neutrons and 82 protons, an n:p ratio equal to 1.52. This is because larger nuclei have more proton-proton repulsions, and require larger numbers of neutrons to provide compensating strong forces to overcome these electrostatic repulsions and hold the nucleus together.
+A nucleus is stable if it cannot be transformed into another configuration without adding energy from the outside. Of the thousands of nuclides that exist, about 250 are stable. A plot of the number of neutrons versus the number of protons for stable nuclei reveals that the stable isotopes fall into a narrow band. This region is known as the [[term:band of stability|term-00009]] (also called the belt, zone, or valley of stability). The straight line in [[xref:CNX_Chem_21_01_BandStable]] represents nuclei that have a 1:1 ratio of protons to neutrons (n:p ratio). Note that the lighter stable nuclei, in general, have equal numbers of protons and neutrons. For example, nitrogen-14 has seven protons and seven neutrons. Heavier stable nuclei, however, have increasingly more neutrons than protons. For example: iron-56 has 30 neutrons and 26 protons, an n:p ratio of 1.15, whereas the stable nuclide lead-207 has 125 neutrons and 82 protons, an n:p ratio equal to 1.52. This is because larger nuclei have more proton-proton repulsions, and require larger numbers of neutrons to provide compensating strong forces to overcome these electrostatic repulsions and hold the nucleus together.
 
 <!-- SEG:m68851:caption:CNX_Chem_21_01_BandStable-caption -->
 This plot shows the nuclides that are known to exist and those that are stable. The stable nuclides are indicated in blue, and the unstable nuclides are indicated in green. Note that all isotopes of elements with atomic numbers greater than 83 are unstable. The solid line is the line where n = Z.
 
+<!-- SEG:m68851:alt:fs-idm82801808-alt -->
+A graph is shown where the x-axis is labeled “Number of neutrons, open parenthesis, n, close parenthesis” and has values of 0 to 180 in increments of 10. The y-axis is labeled “Number of protons, open parenthesis, Z, close parenthesis” and has values of 0 to 120 in increments of 10. A green shaded band of varying width, labeled “Radioactive,” extends from point 0 on both axes to 178 on the y-axis and 118 on the x-axis in a linear manner. The width of this band varies from 8 to 18 units in width according to the x-axis measurements. A blue line in a roughly zig-zag pattern runs through the middle of the shaded band and stops at 128 on the y-axis and 82 on the x-axis. This line is labeled “Nonradioactive.” An unlabeled, black, solid line extends from point 0, 0 to 120, 120 in a linear manner.
+
 <!-- SEG:m68851:para:fs-idm67089056 -->
-The nuclei that are to the left or to the right of the band of stability are unstable and exhibit {{term}}radioactivity{{/term}}. They change spontaneously (decay) into other nuclei that are either in, or closer to, the band of stability. These nuclear decay reactions convert one unstable isotope (or {{term}}radioisotope{{/term}}) into another, more stable, isotope. We will discuss the nature and products of this radioactive decay in subsequent sections of this chapter.
+The nuclei that are to the left or to the right of the band of stability are unstable and exhibit [[term:radioactivity|term-00010]]. They change spontaneously (decay) into other nuclei that are either in, or closer to, the band of stability. These nuclear decay reactions convert one unstable isotope (or [[term:radioisotope|term-00011]]) into another, more stable, isotope. We will discuss the nature and products of this radioactive decay in subsequent sections of this chapter.
 
 <!-- SEG:m68851:para:fs-idm18227760 -->
-Several observations may be made regarding the relationship between the stability of a nucleus and its structure. Nuclei with even numbers of protons, neutrons, or both are more likely to be stable (see [[xref:fs-idp70040672]]). Nuclei with certain numbers of nucleons, known as {{term}}magic numbers{{/term}}, are stable against nuclear decay. These numbers of protons or neutrons (2, 8, 20, 28, 50, 82, and 126) make complete shells in the nucleus. These are similar in concept to the stable electron shells observed for the noble gases. Nuclei that have magic numbers of both protons and neutrons, such as [[MATH:23]] [[MATH:24]] [[MATH:25]] and [[MATH:26]] are called “double magic” and are particularly stable. These trends in nuclear stability may be rationalized by considering a quantum mechanical model of nuclear energy states analogous to that used to describe electronic states earlier in this textbook. The details of this model are beyond the scope of this chapter.
-
-<!-- SEG:m68851:entry:auto-51 -->
-Stable Nuclear Isotopes
+Several observations may be made regarding the relationship between the stability of a nucleus and its structure. Nuclei with even numbers of protons, neutrons, or both are more likely to be stable (see [[xref:fs-idp70040672]]). Nuclei with certain numbers of nucleons, known as [[term:magic numbers|term-00012]], are stable against nuclear decay. These numbers of protons or neutrons (2, 8, 20, 28, 50, 82, and 126) make complete shells in the nucleus. These are similar in concept to the stable electron shells observed for the noble gases. Nuclei that have magic numbers of both protons and neutrons, such as [[MATH:23]] [[MATH:24]] [[MATH:25]] and [[MATH:26]] are called “double magic” and are particularly stable. These trends in nuclear stability may be rationalized by considering a quantum mechanical model of nuclear energy states analogous to that used to describe electronic states earlier in this textbook. The details of this model are beyond the scope of this chapter.
 
 <!-- SEG:m68851:entry:auto-52 -->
-Number of Stable Isotopes
+Stable Nuclear Isotopes
 
 <!-- SEG:m68851:entry:auto-53 -->
-Proton Number
+Number of Stable Isotopes
 
 <!-- SEG:m68851:entry:auto-54 -->
-Neutron Number
+Proton Number
 
 <!-- SEG:m68851:entry:auto-55 -->
-157
+Neutron Number
 
 <!-- SEG:m68851:entry:auto-56 -->
-even
+157
 
 <!-- SEG:m68851:entry:auto-57 -->
 even
 
 <!-- SEG:m68851:entry:auto-58 -->
-53
+even
 
 <!-- SEG:m68851:entry:auto-59 -->
-even
+53
 
 <!-- SEG:m68851:entry:auto-60 -->
-odd
-
-<!-- SEG:m68851:entry:auto-61 -->
-50
-
-<!-- SEG:m68851:entry:auto-62 -->
-odd
-
-<!-- SEG:m68851:entry:auto-63 -->
 even
 
+<!-- SEG:m68851:entry:auto-61 -->
+odd
+
+<!-- SEG:m68851:entry:auto-62 -->
+50
+
+<!-- SEG:m68851:entry:auto-63 -->
+odd
+
 <!-- SEG:m68851:entry:auto-64 -->
-5
+even
 
 <!-- SEG:m68851:entry:auto-65 -->
-odd
+5
 
 <!-- SEG:m68851:entry:auto-66 -->
 odd
 
+<!-- SEG:m68851:entry:auto-67 -->
+odd
+
 <!-- SEG:m68851:para:fs-idm63271648 -->
-The relative stability of a nucleus is correlated with its {{term}}binding energy per nucleon{{/term}}, the total binding energy for the nucleus divided by the number or nucleons in the nucleus. For instance, we saw in [[xref:fs-idm18254784]] that the binding energy for a [[MATH:27]] nucleus is 28.4 MeV. The binding energy [[i:per nucleon]] for a [[MATH:28]] nucleus is therefore:
+The relative stability of a nucleus is correlated with its [[term:binding energy per nucleon|term-00013]], the total binding energy for the nucleus divided by the number or nucleons in the nucleus. For instance, we saw in [[xref:fs-idm18254784]] that the binding energy for a [[MATH:27]] nucleus is 28.4 MeV. The binding energy [[i:per nucleon]] for a [[MATH:28]] nucleus is therefore:
 
 <!-- SEG:m68851:para:fs-idp78837648 -->
 In [[xref:fs-idp47733552]], we learn how to calculate the binding energy per nucleon of a nuclide on the curve shown in [[xref:CNX_Chem_21_01_BindEnergy]].
 
 <!-- SEG:m68851:caption:CNX_Chem_21_01_BindEnergy-caption -->
 The binding energy per nucleon is largest for nuclides with mass number of approximately 56.
+
+<!-- SEG:m68851:alt:fs-idm93760-alt -->
+A graph is shown where the x-axis is labeled “binding energy per nucleon, open parenthesis, M e V, close parenthesis” and has values of 0 to 10 in increments of 1. The y-axis is labeled “Mass number” and has values of 0 to 260 in increments of 20. A line of best fit beginning at point 0, 0 is drawn through points “8, 5.5; 9, 7.3; 18, 7.1; 20, 7.5; 19, 7.9; 27, 7.8; 21, 8.1; 25, 8.4; 37, 8.6; 43, 8.8; 57, 8.6; 60, 8.9; 70, 9; 88, 8.8; 102, 8.9; 108, 8.5; 126, 8.7; 133, 8.8; 143, 8.2; 157, 8.1; 167, 8.2; 195, 7.9; 205, 7.9; 241, 7.3 and 255, 75. An upward-facing arrow near the bottom left of the graph is labeled “Fusion” while a left-facing arrow near the top right is labeled “Fission.”
 
 <!-- SEG:m68851:example-title:fs-idp47733552-title -->
 Calculation of Binding Energy per Nucleon
@@ -256,7 +262,7 @@ An atomic nucleus consists of protons and neutrons, collectively called nucleons
 <!-- SEG:m68851:title:fs-idp28539744-title -->
 Key Equations
 
-<!-- SEG:m68851:entry:auto-87 -->
+<!-- SEG:m68851:entry:auto-89 -->
 [[i:E]] = [[i:mc]][[sup:2]]
 
 <!-- SEG:m68851:title:fs-idm26476112-title -->

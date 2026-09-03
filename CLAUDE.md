@@ -428,11 +428,13 @@ Legacy protect/unprotect steps (1b, 2b) are archived in `tools/archived/` — no
 
 **🔴 DURABLE — A COUNT CANNOT SEE A SUBSTITUTION THAT DID NOT HAPPEN. Prove a translation REACHED the output with a sentinel, never with a tally.** Measured 2026-08-16 (§C89): §C81's figure `alt` translations were extracted, sent to the paid MT and then **discarded at inject** — **627 of 951 chemistry alt segments (65.9%), across 130 of 149 modules**, on merged `main`. `buildFigure`'s id-bearing path returned the source figure block **verbatim**, English `alt` included, and `readAlt(…, getSeg)` sat only in a fallback branch. **Because the English alt is still PRESENT when a translation is dropped, the attribute COUNT never moves** — so the committed round-trip check, `cnxml-extract-alt-corpus` and E5's coverage check were all green corpus-wide the entire time. ▶ **Any check of the form "did X get replaced?" must compare VALUES.** The committed shape is `tools/__tests__/alt-writeback-corpus.test.js`: overwrite each segment's text with a token that cannot have come from the source, inject, count tokens — **with the positions that already worked asserted alongside as a built-in positive control**, so a harness that broke everything equally cannot read as a pass. ⚠️ **And make such a substitution BEST-EFFORT:** reading the value through a lookup that RECORDS A MISS (`getSeg`) turns a legitimately-absent translation into "incomplete injection" and makes inject refuse the module — fatal while §C82 keeps two extraction vintages live for weeks.
 
+🔴 **DURABLE — A TRANSLATED FIGURE IS A FILE IN `books/<slug>/media/`, NOT AN EDIT TO ANY CNXML OR HTML. THE MECHANISM ALREADY EXISTS — DO NOT BUILD A SECOND ONE.** Producer `tools/generate-image-mapping.js` → `books/<slug>/media/image-mapping.json`; `cnxml-inject.js` swaps the `<image src>` **and its mime-type**; `cnxml-render.js` publishes it. So `01-source/` is never touched and no `src` is hand-edited. ⚠️ **The filename suffix is an enforceable value — `DEFAULT_SUFFIX` in that tool, pinned against the committed corpus by its test. Read it there; never restate it.** **Status, defects, and the source-edition precedence that decides WHICH PICTURE you translate → `experiments/figure-text-translation/REGISTER.md`, which owns them.**
+
 **⚠️ DURABLE RULE — never decide inject behaviour by comparing two translated strings.** When you need to know whether a piece of segment text is duplicated, figure-derived, or already carried by an element, it is tempting to compare it against another segment (a para against a figure's caption, say). **Every segment is independently editable in the segment editor**, so an equality test silently stops matching the first time an editor revises one side — the bug returns with the whole suite still green, because no test can see a future edit. **Decide from the read-only `01-source` structure instead**: every builder already receives `originalCnxml`, and `books/*/01-source/` cannot drift by project rule. Adopted 2026-07-27 (register C13, where the string-equality version would have looked correct and rotted in production).
 
 
 **🔴 DURABLE — "CLEAN CNXML" MEANS *CNXML AS OPENSTAX PUBLISHES IT*. IF IT IS IN THE SOURCE FOR A BOOK, IT STAYS IN OURS.** [LEAD] ruling 2026-08-30, full record → [docs/decisions/2026-08-30-c82-clean-break-refocus.md](docs/decisions/2026-08-30-c82-clean-break-refocus.md). The reasoning is theirs and it is durable: **if OpenStax changes their format they will build the tools to migrate it, and most of those tools are open source** — so tracking their published shape is cheaper than curating our own. Two consequences, and both are prohibitions:
-- **Never "tidy up" a construct because it looks redundant.** Organic's 1,071 `<span>` elements across 185 of 342 modules (red/cyan/magenta reaction colouring) stay, because OpenStax ships them.
+- **Never "tidy up" a construct because it looks redundant.** Organic's 1,071 `<span>` elements across **184** of 342 modules (red/cyan/magenta reaction colouring) stay, because OpenStax ships them. *(This said 185 until 2026-09-01; re-measured by two independent methods, with 0 self-closing spans. The 1,071 is correct.)* ⚠️ **They were in fact being DROPPED WHOLESALE by extract until §C118** — the marker layer had no case for `<span>` at all — so this prohibition was true as a rule and false as a description of what the pipeline did. **A stated rule is not a guarantee the code honours it; §C118 T2 is what measured it.**
 - **Never resolve a pipeline gap with a construct CNXML does not have** — a sentinel marker inside segment text, a synthetic element id the injector special-cases, a `<!-- TODO -->` in content. If a fix needs hours of coding, testing and black magic but an editor could do it in the UX, **tag it and move on**. ▶ Corollary, measured 2026-08-30: *"insert a missing segment in the editor"* is blocked by the **GENERATED** `02-structure/`+`02-for-mt/` pair, not by licensed `01-source/` — so **re-extraction supplies it for free** and no insertion path should be built.
 ⚠️ **This does NOT license editing `01-source/`** — that stays READ-ONLY under the licence-provenance rules above. It licenses *accepting* what is there.
 
@@ -496,6 +498,7 @@ The measured instances, their counts and the affected books live in the active r
 
 **⚠️ DURABLE — `glossary-unified.json` has THREE producers** *(said TWO until 2026-08-09; §C36 B3 added `export-terminology-resolved`, a resolved view of the concept model, and it is now what `export-terminology.js` builds by default — the old `export-terminology` payload is dead code awaiting Part C)*, **the export WRITES UNATTENDED, and its shrink guard does not stop a replacement.** ⚠️ **The three fingerprints are DISJOINT and must stay so** — `category`+`chapter` = merge-glossary · `subjects` = the old export · `domain` = resolved — because `detectProducer` falls back to shape inference when a payload carries no stamp, and an overlap would make a swap undetectable. `tools/merge-glossary.js` wrote every committed copy; `server/scripts/export-terminology.js` is the second, and **`scripts/git-backup.sh` invokes it on the 2-hourly cron — unforced.** The two producers are not interchangeable: **`merge-glossary.js` still has 3 sources and Íðorðabankinn is not one of them**, and its own `--db` upsert targets the `terminology_terms` table that migration 032 dropped. The file also feeds the **render** path (approved terms are substituted into published CNXML/HTML via `substituteMathLabels`), so a bad write is **reader-visible**, not merely an MT-quality regression.
 - **🔴 DURABLE — THE MT-SIDE AND RENDER-SIDE PROTECTIONS ARE INDEPENDENT. NEITHER IS EVIDENCE FOR THE OTHER.** `formatGlossary` (MT) **omits** contested headwords and drops comma values outright; `buildGlossaryMap` (render) applies **no omission at all** — it keys a Map on lowercased English with **last-write-wins**, so a contested headword silently resolves to whichever row came last. **Checking that the MT is safe tells you nothing about what readers see, and vice versa.** Measured 2026-08-12 (§C71/§C72): `at → astat | marsnákaætt` was correctly withheld from the MT while reaching **21 leaf math labels** in chemistry; the same day, the biology comma-list `missing → "skemmdar, horfnar og viðgerðar tennur"` was withheld from the MT and was in the render map, harmless only because the word never appears in `<m:mtext>`. **The render-side mask is `books/<slug>/math-label-map.json`'s self-map idiom (`"at": "at"`), pinned by `tools/__tests__/math-label-collisions-masked.test.js`.**
+  - 🔴 **AMENDED 2026-09-01 (§C82 ③) — THAT MASK IS ONE OF **TWO** RENDER-SIDE PROTECTIONS, AND IT STRUCTURALLY CANNOT REACH A SYMBOL. DO NOT REACH FOR A SELF-MAP TO STOP `ln`, `kg` OR `log`.** A self-map only exists for a token a human was offered, and `bucketToken` admits to Bucket 1 only all-lowercase ASCII tokens of **≥3 chars not on `DEFAULT_STOPLIST`** — and only Bucket 1 reaches `mergeSkeleton`, which is what fills `math-label-map.json`. So a 2-char unit/element symbol (`ln kg nm lb ft oz ne`) and a stoplisted function/unit (`log sin cos atm torr ppb exp tan`) can **never acquire a mask** the way `at`/`si`/`ppm` did. ⚠️ **`DEFAULT_STOPLIST`'s docstring calls exactly these "Units and math functions confirmed to STAY unchanged in Icelandic" — and until 2026-09-01 nothing consulted that declaration at resolution time.** ▶ **The second protection is a guard inside `resolveLabel`: the glossary is a map of WORDS, so it may not translate a SYMBOL (≤2 chars, or on `DEFAULT_STOPLIST`). The curated overlay is checked FIRST and still outranks it**, so a book may localise a symbol deliberately and `mol → mól` (3 chars, deliberately off the stoplist) is untouched. Pinned by `tools/__tests__/math-label-symbols-not-glossary-translated.test.js`, which carries both controls — the guarded population must be non-empty, and a word must still translate. **Measured: it stops 503 symbol occurrences across all books and leaves all 347 word occurrences.** ⚠️ **This is a THIRD defect class: not contested (§C71) and not wrong-sense (§C117) but wrong-REGISTER — a single approved row whose Icelandic is correct for the WORD and wrong for the SYMBOL (`ln → náttúrlegur logri` is good Icelandic and ruined `S = k ln W`). Expect none of the three guards to see the others.** Instances and counts live in the active register, never here.
 - **🔴 DURABLE — A WRONG GLOSSARY ENTRY IS WORSE THAN NO ENTRY, and compliance is PARTIAL, so you cannot predict which bad entries bite.** Measured 2026-08-12 (§C73) on real corpus text: Málstaður renders `sodium → natríum` and `magnesium → magnesíum` **correctly with no glossary at all**; supplied with our own entries it **obeyed** `magnesium→magnesín` — and the wrong stem then propagated into every compound (`magnesíumklóríð` → `magnesínklóríð`). ▶ **Before adding or defending a term, ask what the model does unprompted.**
   - 🔴 **CORRECTED 2026-08-13 — THIS RULE SAID `sodium→natrín` WAS "IGNORED". IT WAS NOT, AND THE CORRECTION MAKES THE RULE STRONGER, NOT WEAKER.** Re-measured from the committed artifact (`test-results/c73-sodium-probe-2026-08-12.json`): **bare arm `natrín` ×0 / `natríum` ×5; with-glossary arm `natrín` ×2 / `natríum` ×3.** So the bad entry was **obeyed on 2 of 5 tokens** — compliance is partial **within a single segment set**, not merely partial across terms. ▶ **"Partial" does not mean "some entries take and others don't"; the SAME entry can take on one occurrence and not the next**, so no amount of spot-checking output establishes that a bad entry is inert. **The only safe move remains removing it.** ⚠️ **This class is invisible to every gate** — such entries are well-formed, `approved` and **uncontested**, so the collision sweep, producer gate and shrink guard all correctly see nothing. **Only domain knowledge finds it.**
 - **⚠️ A claim that used to live here — "the first prod run is *expected* to refuse" — was FALSIFIED in production on 2026-08-03.** The first prod run **wrote and pushed**: the guard (`server/lib/glossaryExportDecision.js`, `SHRINK_RATIO = 0.5`) measures **size**, so a −36.5% wholesale producer swap passed and pure growth was structurally invisible. **Never reason about that guard as if it gated correctness; it gates only halving.** Full account → active register §C14 ②.
@@ -509,6 +512,11 @@ The measured instances, their counts and the affected books live in the active r
 
 **⚠️ DURABLE — the `<!-- SEG:… -->` marker takes NO SPACE after the colon.** `segmentParser.parseSegments` matches `<!-- SEG:m001:para:fs-id1 -->`; the spaced form `<!-- SEG: m001:… -->` parses to **`[]`** — an empty segment list, not an error. Prose across this repo (including specs and register entries) writes it spaced for readability, so it is easy to copy the readable form into a test fixture or a tool and get a silent empty parse that looks like a matching bug. **Verify a fixture against the real parser before building on it.** Found 2026-07-29 while writing the C16 re-attach plan, where 10 fixtures had it wrong.
 - 🔴 **SAME RULE, SECOND EDGE (2026-08-24) — A SEGMENT ID'S `elementId` MAY CONTAIN ONLY `[\w-]`.** ⚠️ **CORRECTED 2026-08-25 — THE PRESCRIPTION BELOW IS RIGHT AND WAS KEPT; THE DIAGNOSIS WAS WRONG IN EVERY PART: it named the wrong function, the wrong mechanism, and a symptom that CANNOT OCCUR.** It used to read: *"`server/services/segmentParser.js` matches `SEG:([\w]+):([\w-]+):([\w-]+)`, so an elementId carrying a dot or a slash **does not parse** — the failure is an **empty segment list, silently**; `tools/lib/extraction-coverage.js` uses a looser `[^\s]+?`, so a bad id looks FINE to the coverage check while being invisible to the editor."* **Measured on a 3-marker document whose 2nd and 3rd ids carry a dot and a slash: `parseSegments` returns ALL THREE RECORDS, IDS INTACT (`good`, `fs.id`, `a/b`).** It never uses that file's strict regex — `segmentParser.js:43` delegates to the **permissive** MIT recognizer `/<!--\s*SEG:([^\s]+?)\s*-->/g` in `tools/lib/seg-markers.cjs`, i.e. the *same* pattern this bullet attributed to `extraction-coverage.js` as the looser of the pair. The strict `SEG_MARKER_REGEX` is real (`segmentParser.js:30`) but its **only** consumer is `countModuleSegments()` (`:441`), which returns a **count** and never a segment list — it matched **1 of 3**. ▶ **So the disagreement is not BETWEEN the two files; it is INSIDE `segmentParser.js`, between `parseSegments` (permissive) and `countModuleSegments` (strict) — and the symptom is an UNDER-COUNT, not an empty parse.** Anyone debugging a dot-bearing id by searching for a silent empty list will rule out the real cause. ▶ **THE PRESCRIPTION IS UNCHANGED AND MUST NOT BE RELAXED: minting a new segment id from content? Slug it to `[\w-]` and test it against BOTH regexes** — `countModuleSegments` really does drop such ids. Found while keying §C88 Unit A's 244 alts on the image `src`: the raw `src` fails, and so does a bare basename — on the extension's dot — 245 of 245. `altElementIdFromSrc` (`tools/lib/alt-segments.js`) is the worked example. ✅ **A BLOCKING gate now ENFORCES the charset** — A2b's `id-charset` leg in `tools/lib/remt-checks-mt.js`, adopted at a measured **0.000%** base rate; full account → active register **§C82 L46/L47**.
+
+**🔴 DURABLE — `02-mt-output/`, `03-translated/` AND `05-publication/` ARE NOT CORRECTNESS REFERENCES. THE GOLD IS `01-source` AND OPENSTAX'S PUBLISHED HTML.** Measured 2026-09-01 (§C118): **94 of 149 chemistry modules cannot be re-injected at all** — their committed MT predates the re-extraction — while `translation-errors.json` reports `totalChecked: 149 … green: true` over their stale output, because it measures the committed tree rather than what the run wrote. ▶ **A diff against previous output answers "did anything change", NEVER "is this right".** The generated `02-for-mt/` + `02-structure/` are exempt: they cost nothing to regenerate, so their mixed vintage is a non-problem.
+- ✅ **THE FREE, SOURCE-ANCHORED CHECKS EXIST — USE THEM BEFORE SPENDING ANYTHING.** `tools/source-roundtrip-check.js <book> <chapter>` injects a module's OWN ENGLISH back and diffs it against `01-source` **by value**, element by element, keyed on id with a per-tag census as the control for id-less elements. `tools/render-oracle-check.js <book> <chapter> [--control]` matches our rendered HTML against OpenStax's published HTML **1:1 by CNXML element id** — the ids survive into their pages — completing `emitted → injected → RENDERED`. Both are read-only, need no network at run time, and cost 0 ISK. **Together they found five defects on their first two runs**, three of which every count-based gate in the repo reported as clean.
+- 🔴 **THE REASON THEY FIND WHAT TALLIES CANNOT: EVERY STAGE REPORTS ITS OWN SUCCESS TRUTHFULLY AND THE COMPOSITION IS STILL WRONG.** In the `<span>` fix the marker was emitted, the marker was resolved, `assertNoMarkerResidue` passed and tag counts matched — and a later pass escaped the `<` that had just been written, so readers would still have seen `(X=F)`. **Correctness here is a property of the composition, not of any stage.** ⚠️ **And an id-matched check cannot tell "id renamed" from "content dropped"** — check the text before calling a missing id a loss.
+- ⚠️ **Run `render-oracle-check --control` before believing a clean render result**, and re-extract before any paid `api-translate`: it reads the GENERATED `02-for-mt`, so paying without re-extracting re-translates the old English and exits 0.
 
 **⚠️ Schema validity ⊥ fidelity.** A RelaxNG gate complements `cnxml-fidelity-check.js`, never replaces it (chemistry has 37 known discrepancies and **0** schema errors). If you run the gate, read its traps first — `jing -i` is mandatory, and jing **aborts the rest of the batch** after the first `fatal:`, making a naive invocation fail-QUIET: `experiments/cnxml-validation-gate/FINDINGS.md`.
 
@@ -611,8 +619,8 @@ prints no lines and **exits 1** — indistinguishable from "not present". Measur
 `grep -an` → `210: … terminologyService.proposeMinedTerm(`. **This is a new mechanism for an
 old failure class and it evades the usual heuristic: no filter was chosen — the file itself
 causes the blindness**, so "an absence you manufactured with a filter" does not catch it, and
-neither does re-running the same grep. It bites **docs too**, not just code: two campaign plan
-files under `docs/superpowers/plans/` hold NULs, so a `grep` over `docs/` skips them entirely.
+neither does re-running the same grep. It bites **docs too**, not just code: MULTIPLE plan
+files under `docs/` hold NULs, so a `grep` over `docs/` skips them entirely. *(This said "two campaign plan files under `docs/superpowers/plans/`" until 2026-09-02; a byte-scan then found **5** NUL-bearing `.md` files under `docs/`. The count is deliberately not restated — re-derive it with the command below.)*
 **Do not trust any enumeration here — re-derive it**, as with the MIT→AGPL edges above:
 ```bash
 grep -rlaUP '\x00' --include='*.js' --include='*.md' --include='*.json' \
@@ -622,6 +630,17 @@ grep -rlaUP '\x00' --include='*.js' --include='*.md' --include='*.json' \
 **empty string**, which matches *every* file and returns a clean, plausible, wholly wrong
 list. Verified 2026-08-10: the `-P` form agrees exactly with an independent byte-count census
 in Python; the `$'\0'` form named files that contain no NUL at all.
+🔴 **AND `-a` IS EQUALLY LOAD-BEARING — WITHOUT IT THE NUL DETECTOR IS DISABLED BY THE VERY
+BYTE IT LOOKS FOR, AND RETURNS A CLEAN, CONFIDENT, EMPTY LIST.** Measured 2026-09-02, after a
+sister session ran `git ls-files -z docs/ | xargs -0 grep -lUP '\x00'` and reported **ZERO**
+hits — concluding this rule's own enumeration was stale. It is not; the command is. On one
+known-NUL file: `grep -lUP '\x00' <file>` → **no match**, `grep -laUP '\x00' <file>` → the
+filename. Same file, same pattern, one flag apart. ▶ **This is the rule above applied to its
+own detector**: grep treats the NUL-bearing file as binary and suppresses the match, so the
+search FOR NUL bytes is silenced BY NUL bytes. `-l` does not rescue it and neither does `-P`.
+⚠️ **A null from any NUL census is worthless unless the command carried `-a`** — and pair it
+with an independent byte-scan (a 10-line Python read of `git ls-files -z`), which is what
+adjudicated here: two instruments, same answer, against one confident false negative.
 `books/` is excluded on purpose — thousands of images legitimately hold NULs and would bury
 the six that matter.
 Sources are legitimate (a NUL separator in a hash input is deliberate and load-bearing at
@@ -725,7 +744,7 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
   currently exists and a consumer does ONE lookup — no transitive walk, no cycles, no redirect
   onto a deleted page. ⚠️ **`books/_slug-maps/` is NOT that map** — `sync-content.js` copies only
   `05-publication/{mt-preview,faithful}/`, so nothing there ever reaches vefur.
-  ⚠️ **The vefur consumer is not built yet**, so a superseded URL 404s until it is.
+  🔴 **CORRECTED 2026-09-02 — THIS SAID "the vefur consumer is not built yet, so a superseded URL 404s until it is", AND ACTING ON IT COSTS READER URLs UNNECESSARILY.** Two different things were conflated. **The GENERIC consumer — one that READS this map — is indeed not built.** But vefur ships a **hardcoded redirect table** (`src/lib/data/sectionRedirects.ts`), consumed by its section route, prerendering a ~200-byte meta-refresh stub per retired slug; it **shipped and was DEPLOYED 2026-08-19**. ▶ **So a superseded URL 404s only if nobody adds the entry.** ⚠️ **AND THE ORDERING MATTERS MORE THAN THE MECHANISM: vefur's `load` gates each entry on `exactSectionExists`, so an entry is INERT until its target is actually published — which means the redirect can land BEFORE the sync that retires the old page, and that is THE ONLY ORDERING WITH NO 404 WINDOW.** ▶ **When a render prunes a page, hand vefur the `from`/`to`/`moduleId` rows immediately; do not wait for the sync, and do not accept a 404 as inevitable.** *(Deliberately NOT a reader of this map, and that is vefur's decision, not an oversight: the synced tree is gitignored there, so anything derived from it is absent in CI and in a clean checkout. This map remains the durable RECORD that lets those hardcoded entries be written and later retired — vefur's own detector `scripts/lib/rename-detector.js` reads it, warn-only.)*
   - 🔴 **THE FILENAME IS TRACK-QUALIFIED, AND THAT IS LOAD-BEARING — do not "tidy" it back to
     `slug-map.json`.** Vefur **flattens both tracks** into one `static/content/<book>/`, and its
     overlay filter has no branch for a track-root file, so a single shared name means a
@@ -802,8 +821,16 @@ never the sister's. So when work crosses over:
    - ⚠️ **Read the sister's tree freely; never WRITE to it while its session is live.** Reading
      is how you re-measure. Writing is the two-agents-one-tree failure `[[engineering-lessons]]`
      records as having committed a mutant — hand it the text, let it land on its own branch.
+   - 🔴 **STOP WHEN IT STOPS PAYING — name the decision the next exchange could change, and if
+     you cannot, close the thread and say so.** [USER] ruling 2026-09-02, after two sessions
+     spent several exchanges forensically reconciling a **one-line** counting difference that
+     changed no decision, no code and no document. **Cross-session traffic is billed twice, once
+     per session**, and the user reads both halves. A thread that has stopped producing decisions
+     is pure cost, however interesting it is. ▶ **The same test governs any activity, not just
+     pairing**: re-measuring, censusing, reconciling and reviewing all earn their place by
+     changing something. Diminishing returns are the signal to stop, not to go deeper.
 
-These are heuristics you apply with judgment, not hard gates — **except the two 🔴 items under
+These are heuristics you apply with judgment, not hard gates — **except the three 🔴 items under
 (4), which are gates.**
 
 ## Documentation
@@ -829,6 +856,52 @@ Extraction uses API-safe `[[type:content]]` bracket markers (the legacy paired
 `{{i}}…{{/i}}` / `++text++` forms had ~2.3% loss and are still parsed for backward compat).
 **The full marker table and the injection back-compat rules are in the `inline-markers`
 skill** (`.claude/skills/inline-markers/SKILL.md`), which loads on demand.
+
+🔴 **DURABLE — TEACHING THE PIPELINE A NEW MARKER TYPE IS NOT DONE AT EXTRACT AND INJECT. THE
+PAID MT LEG KEEPS ITS OWN ENUMERATION, AND A TYPE MISSING FROM IT IS *DELETED* — WITH THE
+MARKER'S ATTRIBUTE WRITTEN INTO THE ICELANDIC AS PROSE.** `api-translate.js`'s
+`unwrapInventedMarkers` exists to strip markers the **model invents** around glossary words
+(§C67 class 3), and it decides by membership in `KNOWN_BRACKET_TYPES`. A real marker whose
+type is absent is therefore indistinguishable from an invented one: measured 2026-09-01,
+`([[span:X|magenta-text]]=F, Cl, Br, I)` came back as **`(X|magenta-text=F, Cl, Br, I)`** —
+reader-visible, on the leg that costs money. ⚠️ **THIS IS TWO DEFECTS AND FIXING EITHER ALONE
+LEAVES THE OTHER OPEN:** absence from `KNOWN_BRACKET_TYPES` **destroys** the marker; absence
+from `BRACKET_MARKER_TYPES` leaves `bracketMarkerDelta` with **no column** for it, so the
+marker-conservation check reports clean while the marker vanishes.
+- 🔴 **SO `emitted → injected → RENDERED` IS NOT THE WHOLE CHAIN FOR ANYTHING THAT GOES ON THE
+  WIRE — THE PAID LEG IS A FOURTH COLUMN.** §C82 L149's three columns are still required; they
+  simply do not touch `api-translate.js`. The `<span>` fix verified reach 31=31=31 across those
+  three, shipped, and was still losing 31 of 31 at the MT. **Measure with an IDENTITY MT** (send
+  the segment file, return it unchanged, run the real post-processing) — free, needs no network,
+  and any loss is then provably ours rather than the model's.
+- 🔴 **DO NOT GUARD THIS WITH A LIST-VS-LIST TEST. ANCHOR IT ON THE CORPUS.** The guard that was
+  in place asserted `BRACKET_MARKER_TYPES ⊆ KNOWN_BRACKET_TYPES` — **two sides derived from one
+  token**, so a type missing from *both* satisfies it trivially and stays green. The replacement
+  asserts that **every bracket type the extractor actually emits into `02-for-mt` is in
+  `KNOWN_BRACKET_TYPES`** (`tools/__tests__/api-translate-span-marker.test.js`); it named the
+  offending type and file unprompted. **An enumeration wrong twice should become a checked
+  property.**
+🔴 **DURABLE — A SEGMENT WHOSE ENTIRE CONTENT IS ONE BRACKET MARKER COMES BACK FROM THE PAID MT
+VERBATIM. YOU PAY FOR IT AND GET NOTHING.** Measured 2026-09-01 on the first fresh run: whole-segment
+`[[docref:…]]` returned untranslated **49 of 49 — a saturated rate, so it is a CATEGORY, not a
+sample.** These are key-term index labels, i.e. **reader-visible English inside an Icelandic
+chapter**. ⚠️ **The residue check sees a fraction of them** (2 of 36 in the worst module, an 18×
+understatement), so **its count is not the exposure** — census the shape yourself before believing a
+clean residue line. ▶ **The control that makes this a finding rather than a suspicion belongs in the
+same measurement:** in that module 36 docref-only items returned verbatim while **all 4 plain-text
+items translated**, and opaque placeholders behaved correctly (`MEDIA` 2285/2292 untranslated). ▶
+**Before buying a chapter, count its whole-segment prose markers** (`docref`, `link`, `b`, `i`, `em`,
+`term`, `fn` — never `MATH`/`MEDIA`/`TABLE`, which are *correctly* opaque). `stripTermFnToPaired` in
+`api-translate.js` is the existing shape for sending such a payload as translatable text. Instances
+and counts live in the active register, never here.
+- ⚠️ **AND THE ENUMERATIONS ARE PLURAL — do not trust this list, re-derive it.** Besides the two
+  in `api-translate.js`, marker/tag types are enumerated in `tools/lib/handled-tags.js`
+  (`HANDLED_INLINE`, which `cnxml-render.js` also derives seam sets from),
+  `tools/lib/bracket-body-check.js` (`BODY_SOURCE_ELEMENTS`, feeding a **BLOCKING** check whose
+  base rate a new type changes) and `server/public/js/marker-highlight.js` (editor, cosmetic).
+  **Their consequences differ — deletion, a moved gate threshold, a diagnostic false positive —
+  so they are separate decisions, not one sweep.** Which are currently out of date, and their
+  triggers, live in the active register, never here.
 
 **⚠️ DURABLE — MARKER-SURVIVAL EVIDENCE IS PER-ENDPOINT. Never generalise it to "the API".**
 This line claimed "100% Málstaður API survival" until 2026-08-06. Every check behind that

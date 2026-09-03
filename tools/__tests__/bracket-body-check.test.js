@@ -170,4 +170,86 @@ describe('checkBracketBodies — anchored to source, not to a byte pattern', () 
       expect.objectContaining({ type: 'term', body: 'cation extra swallowed text' }),
     ]);
   });
+
+  // ── §C118 ⑭ — `span` joins BODY_SOURCE_ELEMENTS ───────────────────────────
+  // The MECHANISM is pinned here, deliberately, and NOT as a corpus total in
+  // bracket-body-corpus.test.js: organic's committed 02-for-mt is mixed vintage
+  // (only ch03 post-dates the span fix — 31 markers, against 1,071 after a full
+  // re-extract), so any all-organic number pinned today dies on that re-extract.
+  // The three shapes below are stable under it.
+
+  it('span: accepts a plain-text body that matches its source <span>', () => {
+    // The §C118 reader-visible shape: organic's reaction colouring.
+    const src = doc('<para id="p1">(<span class="magenta-text">X</span>=F, Cl, Br, I)</para>');
+    const seg = '<!-- SEG:m1:para:p1 -->\n([[span:X|magenta-text]]=F, Cl, Br, I)\n';
+    const r = checkBracketBodies(src, seg);
+    expect(r.examined).toBe(1);
+    expect(r.skippedUnmatchable).toBe(0);
+    expect(r.findings).toEqual([]);
+  });
+
+  it('span: CATCHES a swallow — the fix compares bodies, it does not whitelist the type', () => {
+    // 🔴 THE POSITIVE CONTROL FOR THE WHOLE TYPE. Corpus findings are 0 of 1,071
+    // (a saturated rate — a category, not a result), so without this the type's
+    // clean corpus pass is self-evidencing and proves nothing. Same source as the
+    // test above; only the body is widened past </span> to take following prose.
+    const src = doc('<para id="p1">(<span class="magenta-text">X</span>=F, Cl, Br, I)</para>');
+    const seg = '<!-- SEG:m1:para:p1 -->\n([[span:X=F|magenta-text]], Cl, Br, I)\n';
+    const r = checkBracketBodies(src, seg);
+    expect(r.ok).toBe(false);
+    expect(r.findings).toEqual([
+      expect.objectContaining({ segId: 'm1:para:p1', type: 'span', body: 'X=F' }),
+    ]);
+  });
+
+  it('span: a markup-wrapping span is SKIPPED, not reported as a swallow', () => {
+    // 101 of the 1,071 class-bearing spans in organic wrap other markup, so their
+    // body reads `1[[i:s]]` — the body class `[^\[\]|]*` refuses `[`, so the span
+    // opener cannot match at all. That must land in skippedUnmatchable (an honest
+    // blind spot, same as nesting) and NOT in findings, or E2 halts a paid run on
+    // 101 false positives. The inner [[i:s]] is still examined normally.
+    const src = doc(
+      '<para id="p1">a <span class="magenta-text">1<emphasis effect="italics">s</emphasis></span> orbital.</para>'
+    );
+    const seg = '<!-- SEG:m1:para:p1 -->\na [[span:1[[i:s]]|magenta-text]] orbital.\n';
+    const r = checkBracketBodies(src, seg);
+    expect(r.examined).toBe(1); // the inner [[i:s]]
+    expect(r.skippedUnmatchable).toBe(1); // the [[span: opener
+    expect(r.findings).toEqual([]);
+  });
+
+  it('span: a span nested INSIDE an emphasis is examined (the dominant corpus shape)', () => {
+    // 559 of the 1,071 have an <emphasis> parent — the single commonest shape, and
+    // it inverts the case above: the OUTER [[i: is the unmatchable one and the span
+    // is what gets compared.
+    //
+    // ⚠️ WHAT THIS TEST DOES NOT COVER, STATED BECAUSE AN EARLIER DRAFT CLAIMED IT DID.
+    // This comment used to read "extraction order makes this so (spans convert last),
+    // so this test also fails if that order is ever swapped". BOTH HALVES ARE FALSE.
+    // The fixture below is a hand-written string pair fed straight to
+    // checkBracketBodies; this file never imports the extractor, so no change to
+    // cnxml-extract.js can move it by one byte — a guard that is never called is not
+    // a guard. And the premise is wrong anyway: measured on all three span fixtures in
+    // this file, running the emphasis and span replaces in EITHER order yields
+    // byte-identical output, because neither pass creates or destroys the other's
+    // anchors. What this test actually pins is the CHECK's behaviour on the nested
+    // shape — span examined, outer marker counted as unmatchable — and that is all.
+    const src = doc(
+      '<para id="p1"><emphasis effect="italics"><span class="red-text">Nu</span></emphasis></para>'
+    );
+    const seg = '<!-- SEG:m1:para:p1 -->\n[[i:[[span:Nu|red-text]]]]\n';
+    const r = checkBracketBodies(src, seg);
+    expect(r.examined).toBe(1); // the [[span:
+    expect(r.skippedUnmatchable).toBe(1); // the outer [[i:
+    expect(r.findings).toEqual([]);
+  });
+
+  it('span is in the type table, and the table still refuses opaque types', () => {
+    // Guards the edit itself: `span` present, and the opaque/id-reference types
+    // still absent, so a future "add every type" sweep cannot pass silently.
+    expect(BODY_SOURCE_ELEMENTS.span).toEqual(['span']);
+    for (const opaque of ['MATH', 'MEDIA', 'TABLE', 'xref', 'docref', 'link', 'fn']) {
+      expect(BODY_SOURCE_ELEMENTS[opaque], `${opaque} must stay out of the table`).toBeUndefined();
+    }
+  });
 });

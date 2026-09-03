@@ -25,7 +25,10 @@
       "type": "media",
       "id": "fs-idp35800208",
       "class": "scaled-down",
-      "alt": "A Lewis structure is shown in which two carbon atoms are bonded together by a double bond. Each carbon atom is bonded to two hydrogen atoms by a single bond.",
+      "alt": {
+        "segmentId": "m68746:alt:fs-idp35800208-alt",
+        "text": "A Lewis structure is shown in which two carbon atoms are bonded together by a double bond. Each carbon atom is bonded to two hydrogen atoms by a single bond."
+      },
       "src": "../../media/CNX_Chem_08_03_C4H4Lewis_img.jpg",
       "embedSrc": "",
       "width": "",
@@ -45,7 +48,10 @@
       },
       "media": {
         "id": "fs-idp21744512",
-        "alt": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled, “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above both sets of lines is the phrase, “Orbitals in an isolated C atom.” Two of the lines have vertical, up-facing arrows drawn on them. The right side of the diagram shows three short, horizontal lines placed halfway up the space and each labeled, “s p superscript 2.” An upward-facing half arrow is drawn vertically on each line. Above these lines is one other short, horizontal line, labeled, “p.” Above both sets of lines is the phrase, “Orbitals in the s p superscript 2 hybridized C atom in C subscript 2 H subscript 4.”",
+        "alt": {
+          "segmentId": "m68746:alt:fs-idp21744512-alt",
+          "text": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled, “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above both sets of lines is the phrase, “Orbitals in an isolated C atom.” Two of the lines have vertical, up-facing arrows drawn on them. The right side of the diagram shows three short, horizontal lines placed halfway up the space and each labeled, “s p superscript 2.” An upward-facing half arrow is drawn vertically on each line. Above these lines is one other short, horizontal line, labeled, “p.” Above both sets of lines is the phrase, “Orbitals in the s p superscript 2 hybridized C atom in C subscript 2 H subscript 4.”"
+        },
         "src": "../../media/CNX_Chem_08_03_sp3config.jpg",
         "mimeType": "image/jpeg"
       }
@@ -59,7 +65,10 @@
       },
       "media": {
         "id": "fs-idp201403520",
-        "alt": "Two diagrams are shown labeled, “a” and “b.” Diagram a shows two carbon atoms with three purple balloon-like orbitals arranged in a plane around them and two red balloon-like orbitals arranged vertically and perpendicularly to the plane. There is an overlap of two of the purple orbitals in between the two carbon atoms, and the other four purple orbitals that face the outside of the molecule are shown interacting with spherical blue orbitals from four hydrogen atoms. Diagram b depicts a similar image to diagram a, but the red, vertical orbitals are interacting above and below the plane of the molecule to form two areas labeled, “One pi bond.”",
+        "alt": {
+          "segmentId": "m68746:alt:fs-idp201403520-alt",
+          "text": "Two diagrams are shown labeled, “a” and “b.” Diagram a shows two carbon atoms with three purple balloon-like orbitals arranged in a plane around them and two red balloon-like orbitals arranged vertically and perpendicularly to the plane. There is an overlap of two of the purple orbitals in between the two carbon atoms, and the other four purple orbitals that face the outside of the molecule are shown interacting with spherical blue orbitals from four hydrogen atoms. Diagram b depicts a similar image to diagram a, but the red, vertical orbitals are interacting above and below the plane of the molecule to form two areas labeled, “One pi bond.”"
+        },
         "src": "../../media/CNX_Chem_08_03_C2H4orbit.jpg",
         "mimeType": "image/jpeg"
       }
@@ -83,7 +92,10 @@
       },
       "media": {
         "id": "fs-idp46978352",
-        "alt": "A diagram of a carbon atom with two balloon-like purple orbitals labeled, “sp” arranged in a linear fashion around it is shown. Four red balloon-like orbitals are aligned in pairs in the y and z axes around the carbon and are labeled, “unhybridized p orbital,” and, “Second unhybridized p orbital.”",
+        "alt": {
+          "segmentId": "m68746:alt:fs-idp46978352-alt",
+          "text": "A diagram of a carbon atom with two balloon-like purple orbitals labeled, “sp” arranged in a linear fashion around it is shown. Four red balloon-like orbitals are aligned in pairs in the y and z axes around the carbon and are labeled, “unhybridized p orbital,” and, “Second unhybridized p orbital.”"
+        },
         "src": "../../media/CNX_Chem_08_03_spC.jpg",
         "mimeType": "image/jpeg"
       }
@@ -97,7 +109,10 @@
       },
       "media": {
         "id": "fs-idp112665792",
-        "alt": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows two carbon atoms with two purple balloon-like orbitals arranged in a plane around each of them, and four red balloon-like orbitals arranged along the y and z axes perpendicular to the plane of the molecule. There is an overlap of two of the purple orbitals in between the two carbon atoms. The other two purple orbitals that face the outside of the molecule are shown interacting with spherical blue orbitals from two hydrogen atoms. Diagram b depicts a similar image to diagram a, but the red, vertical orbitals are interacting above and below and to the front and back of the plane of the molecule to form two areas labeled, “One pi bond,” and, “Second pi bond,” each respectively.",
+        "alt": {
+          "segmentId": "m68746:alt:fs-idp112665792-alt",
+          "text": "Two diagrams are shown and labeled, “a” and “b.” Diagram a shows two carbon atoms with two purple balloon-like orbitals arranged in a plane around each of them, and four red balloon-like orbitals arranged along the y and z axes perpendicular to the plane of the molecule. There is an overlap of two of the purple orbitals in between the two carbon atoms. The other two purple orbitals that face the outside of the molecule are shown interacting with spherical blue orbitals from two hydrogen atoms. Diagram b depicts a similar image to diagram a, but the red, vertical orbitals are interacting above and below and to the front and back of the plane of the molecule to form two areas labeled, “One pi bond,” and, “Second pi bond,” each respectively."
+        },
         "src": "../../media/CNX_Chem_08_03_C2H2.jpg",
         "mimeType": "image/jpeg"
       }
@@ -121,7 +136,10 @@
       },
       "media": {
         "id": "fs-idp4433648",
-        "alt": "A diagram is shown that is made up of two Lewis structures connected by a double ended arrow. The left image shows six carbon atoms bonded together with alternating double and single bonds to form a six-sided ring. Each carbon is also bonded to a hydrogen atom by a single bond. The right image shows the same structure, but the double and single bonds in between the carbon atoms have changed positions.",
+        "alt": {
+          "segmentId": "m68746:alt:fs-idp4433648-alt",
+          "text": "A diagram is shown that is made up of two Lewis structures connected by a double ended arrow. The left image shows six carbon atoms bonded together with alternating double and single bonds to form a six-sided ring. Each carbon is also bonded to a hydrogen atom by a single bond. The right image shows the same structure, but the double and single bonds in between the carbon atoms have changed positions."
+        },
         "src": "../../media/CNX_Chem_08_03_C6H6.jpg",
         "mimeType": "image/jpeg"
       }
@@ -166,6 +184,14 @@
           "type": "para",
           "id": "fs-idp224648848",
           "segmentId": "m68746:para:fs-idp224648848"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp71841872",
+          "alt": {
+            "segmentId": "m68746:alt:fs-idp71841872-alt",
+            "text": "Two Lewis structures connected by a double-ended arrow are shown. The left structure shows a sulfur atom with one lone pair of electrons and a positive sign which is single bonded on one side to an oxygen atom with three lone pairs of electrons and a negative sign. The sulfur atom is double bonded on the other side to another oxygen atom with two lone pairs of electrons. The right-hand structure is the same as the left except that the position of the double bonded oxygen atom is switched. In both structures the attached oxygen atoms form an acute angle in terms of the sulfur atom."
+          }
         },
         {
           "type": "note",
@@ -445,14 +471,38 @@
                 "segmentId": "m68746:problem:fs-idp208621408"
               },
               {
+                "type": "media",
+                "id": "fs-idm5983024",
+                "alt": {
+                  "segmentId": "m68746:alt:fs-idm5983024-alt",
+                  "text": "A Lewis structure is shown in which a carbon atom is single bonded to three hydrogen atoms and a second carbon atom. This second carbon atom is, in turn, double bonded to an oxygen atom with two lone pairs of electrons. The second carbon atom is also single bonded to another carbon atom that is single bonded to three hydrogen atoms."
+                }
+              },
+              {
                 "type": "para",
                 "id": "fs-idp81536672",
                 "segmentId": "m68746:problem:fs-idp81536672"
               },
               {
+                "type": "media",
+                "id": "fs-idm13440432",
+                "alt": {
+                  "segmentId": "m68746:alt:fs-idm13440432-alt",
+                  "text": "A Lewis structure is shown in which a sulfur atom with two lone pairs of electrons and a positive sign is double bonded to an oxygen with two lone pairs of electrons. The sulfur atom is also single bonded to an oxygen with three lone pairs of electrons with a negative sign. It is drawn in an angular shape."
+                }
+              },
+              {
                 "type": "para",
                 "id": "fs-idp40676640",
                 "segmentId": "m68746:problem:fs-idp40676640"
+              },
+              {
+                "type": "media",
+                "id": "fs-idp64002112",
+                "alt": {
+                  "segmentId": "m68746:alt:fs-idp64002112-alt",
+                  "text": "A Lewis structure is shown in which a hexagonal ring structure is made up of five carbon atoms and one nitrogen atom with a lone pair of electrons. There are alternating double and single bonds in between each carbon atom. Each carbon atom is also single bonded to one hydrogen atom."
+                }
               }
             ]
           },
@@ -472,6 +522,14 @@
           },
           "solution": {
             "content": [
+              {
+                "type": "media",
+                "id": "fs-idp20471104",
+                "alt": {
+                  "segmentId": "m68746:alt:fs-idp20471104-alt",
+                  "text": "A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled, “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above both sets of lines is the phrase, “Orbitals in an isolated C atom.” There are two upward facing arrows on two of these lines. The right side of the diagram shows two short, horizontal lines placed halfway up the space and each labeled, “s p.” An upward-facing half arrow is drawn vertically on each line. Above these lines are two other short, horizontal lines, each labeled, “2 p,” and which have two upward facing arrows on them. Above both sets of lines is the phrase, “Orbitals in the s p hybridized C in C O subscript 2.”"
+                }
+              },
               {
                 "type": "para",
                 "id": "fs-idp72644016",
@@ -501,12 +559,15 @@
       "placeholder": "[[MEDIA:1]]",
       "id": "fs-idp73575216",
       "class": null,
-      "alt": "A Lewis structure is shown in which a carbon atom is attached by single bonds to three hydrogen atoms. It is also attached by a single bond to a carbon atom that is triple bonded to a nitrogen atom with one lone electron pair. Below the structure is a right facing arrow with its head near the nitrogen and its tail, which looks like a plus sign, located near the carbon atoms. The arrow is labeled, “dipole moment.”",
       "src": "../../media/CNX_Chem_08_03_Acetonitri_img.jpg",
       "mimeType": "image/jpeg",
       "embedSrc": "",
       "width": "",
-      "height": ""
+      "height": "",
+      "alt": {
+        "segmentId": "m68746:alt:fs-idp73575216-alt",
+        "text": "A Lewis structure is shown in which a carbon atom is attached by single bonds to three hydrogen atoms. It is also attached by a single bond to a carbon atom that is triple bonded to a nitrogen atom with one lone electron pair. Below the structure is a right facing arrow with its head near the nitrogen and its tail, which looks like a plus sign, located near the carbon atoms. The arrow is labeled, “dipole moment.”"
+      }
     }
   ],
   "sectionOrder": 3

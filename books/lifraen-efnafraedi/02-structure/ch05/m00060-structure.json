@@ -1,0 +1,190 @@
+{
+  "moduleId": "m00060",
+  "title": {
+    "segmentId": "m00060:title:auto-1",
+    "text": "Prochirality"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "be9ba98e-e1b6-4bce-9d87-0ddf811597ab"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00060:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00060:alt:fig-00001-alt",
+          "text": "The figure shows a reaction in which 2-butanone (prochiral) forms 2-butanol (chiral). C2 in both structures is highlighted."
+        },
+        "src": "../../media/OChem_05_11_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00060:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00060:alt:fig-00002-alt",
+          "text": "2-Butanone is labeled Si face (counterclockwise) at the bottom and Re face (clockwise) at the top. To the right, the structures of (S)-2-butanol and (R)-2-butanol are drawn."
+        },
+        "src": "../../media/OChem_05_11_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00060:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00060:alt:fig-00003-alt",
+          "text": "The structure of ethanol with prochiral C2  labeled. Forms another compound, in which the C2  is bonded to X instead of hydrogen and labeled chirality center."
+        },
+        "src": "../../media/OChem_05_11_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00060:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00060:alt:fig-00004-alt",
+          "text": "The structure of ethanol with prochiral C2  labeled  leads to the formation of two chiral compounds, one with C2  labeled R and other with C2  labeled S."
+        },
+        "src": "../../media/OChem_05_11_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00060:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00060:alt:fig-00005-alt",
+          "text": "The figure shows a reaction where fumarate converts to (S)-malate. In fumarate, the central carbon is labeled Re at the top and Si at the bottom."
+        },
+        "src": "../../media/OChem_05_11_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00060:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00060:alt:fig-00006-alt",
+          "text": "The figure shows a reversible reaction where ethanol reacts with N A D superscript plus to form acetaldehyde and N A D H."
+        },
+        "src": "../../media/OChem_05_11_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00060:para:para-00007"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00060:alt:fig-00007-alt",
+          "text": "The figure shows a reaction where citrate on the elimination of water molecules by the loss of the pro-R-hydrogen forms cis-aconitate."
+        },
+        "src": "../../media/OChem_05_11_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00060:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 11
+}

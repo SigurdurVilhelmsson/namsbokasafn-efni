@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "moduleId": "m00247",
+  "extractedAt": "2026-08-31T19:08:49.438Z",
+  "sourceHash": "6e74bb1596f04a4c",
+  "segmentCount": 38,
+  "segmentIds": [
+    "m00247:title:auto-1",
+    "m00247:para:para-00001",
+    "m00247:alt:fig-00001-alt",
+    "m00247:para:para-00002",
+    "m00247:table-title:table-00001-title",
+    "m00247:entry:auto-6",
+    "m00247:entry:auto-7",
+    "m00247:entry:auto-8",
+    "m00247:entry:auto-9",
+    "m00247:alt:OChem_21_09_003_T-nylon66_jpg-alt",
+    "m00247:entry:auto-11",
+    "m00247:entry:auto-12",
+    "m00247:alt:OChem_21_09_003_T-dacronmylar_jpg-alt",
+    "m00247:entry:auto-14",
+    "m00247:entry:auto-15",
+    "m00247:alt:OChem_21_09_003_T-nylon6perlon_jpg-alt",
+    "m00247:entry:auto-17",
+    "m00247:entry:auto-18",
+    "m00247:alt:OChem_21_09_003_T-lexan_jpg-alt",
+    "m00247:entry:auto-20",
+    "m00247:entry:auto-21",
+    "m00247:alt:OChem_21_09_003_T-polyurethane_jpg-alt",
+    "m00247:entry:auto-23",
+    "m00247:entry:auto-24",
+    "m00247:title:sect-00001-title",
+    "m00247:para:para-00003",
+    "m00247:alt:fig-00002-alt",
+    "m00247:para:para-00004",
+    "m00247:title:sect-00002-title",
+    "m00247:para:para-00005",
+    "m00247:alt:fig-00003-alt",
+    "m00247:para:para-00006",
+    "m00247:alt:fig-00004-alt",
+    "m00247:title:sect-00003-title",
+    "m00247:para:para-00007",
+    "m00247:alt:fig-00005-alt",
+    "m00247:para:para-00008",
+    "m00247:title:sect-00004-title"
+  ],
+  "equationCount": 1,
+  "equationIds": [
+    "math-1"
+  ],
+  "elementCounts": {
+    "para": 8,
+    "section": 4,
+    "figure": 5,
+    "table": 1,
+    "example": 0,
+    "exercise": 2,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002",
+      "fig-00003",
+      "fig-00004",
+      "fig-00005"
+    ],
+    "table": [
+      "table-00001"
+    ],
+    "example": [],
+    "exercise": [
+      "exer-00001",
+      "exer-00002"
+    ],
+    "note": [],
+    "equation": [],
+    "section": [
+      "sect-00001",
+      "sect-00002",
+      "sect-00003",
+      "sect-00004"
+    ]
+  }
+}

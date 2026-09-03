@@ -1,0 +1,81 @@
+{
+  "moduleId": "m00253",
+  "title": {
+    "segmentId": "m00253:title:auto-1",
+    "text": "Crown Ethers"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "08758a8e-90ae-4527-aa98-677d6b4773cc"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00253:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00253:alt:fig-00001-alt",
+          "text": "The crown-shaped structure and ball-and-stick model in the electrostatic potential map of 18-crown-6 ether. It comprises six oxygen atoms with C H 2 C H 2 groups between them."
+        },
+        "src": "../../media/OChem_18_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00253:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00253:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00253:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00253:alt:fig-00002-alt",
+          "text": "The structure of valinomycin composing a circular arrangement of oxygen atoms, nitrogen monohydride, isopropyl groups, and a carbon chain linked by ester and amide bridges."
+        },
+        "src": "../../media/OChem_18_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00253:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 6
+}

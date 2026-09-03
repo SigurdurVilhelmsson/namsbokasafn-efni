@@ -1,0 +1,64 @@
+{
+  "moduleId": "m00075",
+  "title": {
+    "segmentId": "m00075:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "cb30f7fd-598a-4162-9cb3-850b5b1ac350"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00075:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00075:alt:fig-00001-alt",
+          "text": "A close-up of two striped skunks near a hollow log."
+        },
+        "src": "../../media/OChem_18_00_Skunk.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00075:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00075:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00075:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00075:alt:fig-00002-alt",
+          "text": "The ball-and-stick model and structures of diethyl ether, anisole (methyl phenyl ether), and tetrahydrofuran. The shared oxygen atom bonded to two organic groups is highlighted."
+        },
+        "src": "../../media/OChem_18_00_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00075:para:para-00004"
+    }
+  ],
+  "sectionOrder": 0
+}

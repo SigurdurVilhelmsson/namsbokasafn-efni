@@ -25,6 +25,9 @@ Catalysis
 <!-- SEG:m68785:caption:CNX_Chem_12_00_Ectotherm-caption -->
 An agama lizard basks in the sun. As its body warms, the chemical reactions of its metabolism speed up.
 
+<!-- SEG:m68785:alt:fs-idm5395072-alt -->
+A photograph shows the head and part of the body of a lizard on a rock in a well-lit area.
+
 <!-- SEG:m68785:para:fs-idp115543984 -->
 The lizard in the photograph is not simply enjoying the sunshine or working on its tan. The heat from the sun’s rays is critical to the lizard’s survival. A warm lizard can move faster than a cold one because the chemical reactions that allow its muscles to move occur more rapidly at higher temperatures. A cold lizard is a slower lizard and an easier meal for predators.
 

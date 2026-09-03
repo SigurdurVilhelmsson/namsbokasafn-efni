@@ -1290,7 +1290,7 @@ function reverseInlineMarkup(
   // API segments use {{i}}, {{b}}, {{term}}, {{fn}}, [[sub:]], [[sup:]] — so legacy
   // patterns (*text*, ~text~, ^text^) would be false positives from translated content.
   const hasApiMarkers =
-    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:/.test(
+    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:|\[\[span:/.test(
       text
     );
 
@@ -1403,6 +1403,23 @@ function reverseInlineMarkup(
       s = s.replace(
         /\[\[b:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
         '<emphasis effect="bold">$1</emphasis>'
+      );
+
+      // §C118: [[span:text|class]] belongs INSIDE this fixed-point loop, not in a
+      // pass of its own, because span and emphasis nest in BOTH directions on the
+      // real corpus:
+      //   <span class="magenta-text">1<emphasis effect="italics">s</emphasis></span>
+      //     -> [[span:1[[i:s]]|magenta-text]]      (span outside — emphasis must resolve first)
+      //   <emphasis effect="bold"><span class="red-text">STEP 1</span></emphasis>
+      //     -> [[b:[[span:STEP 1|red-text]]]]      (span inside — span must resolve first)
+      // A single ordered pass can satisfy one and not the other; the loop satisfies
+      // both by resolving whichever is leaf-level this round and re-testing. Placing
+      // it after the loop instead left `[[b:<span …>STEP 1</span>]]` unresolved on
+      // m00035/37/38 — caught by assertNoMarkerResidue, which is why it surfaced as a
+      // loud error rather than a silently mangled page.
+      s = s.replace(
+        /\[\[span:((?:(?!\[\[|\]\])[\s\S])+)\|([^\]|]+)\]\]/g,
+        '<span class="$2">$1</span>'
       );
 
       // Leaf-level sub/sup: [[sub:content]] and [[sup:content]] where content has no [[ or ]].
@@ -1730,7 +1747,17 @@ function reverseInlineMarkup(
   // This prevents user-typed HTML (e.g. <script>, <div>) from passing through unescaped.
   const cnxmlTags = [];
   result = result.replace(
-    /<(\/?)(term|emphasis|sup|sub|newline|space|footnote|link|equation|media|image|m:math|m:[a-z]+)([\s>\/])/g,
+    // §C118: `span` belongs on this allowlist because it IS a CNXML tag in this
+    // corpus — organic's 1,071 reaction-colouring spans, which OpenStax ships and
+    // CLAUDE.md's clean-CNXML ruling keeps. Without it the [[span:]] conversion
+    // above is undone right here: the rebuilt `<span class="magenta-text">` was
+    // escaped to `&lt;span class="magenta-text">`, so the marker resolved, the
+    // residue check passed, and the output was still wrong. That is the whole
+    // reason this is a THIRD site rather than the expected two.
+    // ⚠️ This list is a real boundary — it is what stops translated prose
+    // containing literal `<script>`/`<div>` from reaching the output unescaped.
+    // Add a tag only when the corpus genuinely carries it as CNXML.
+    /<(\/?)(term|emphasis|sup|sub|span|newline|space|footnote|link|equation|media|image|m:math|m:[a-z]+)([\s>\/])/g,
     (match) => {
       cnxmlTags.push(match);
       return `\x00CNXML:${cnxmlTags.length - 1}\x00`;
@@ -1748,7 +1775,22 @@ function reverseInlineMarkup(
   });
 
   // Now safely escape ALL remaining < and &
-  result = result.replace(/&(?!amp;|lt;|gt;|quot;|apos;)/g, '&amp;');
+  // §C118: the lookahead must also spare NUMERIC character references. It listed the
+  // five NAMED entities and nothing else, so `&#8201;` (thin space) had its `&`
+  // escaped and became `&amp;#8201;` — READER-VISIBLE, because the page then prints
+  // the text "&#8201;" instead of the space. Measured on organic m00038: rendering
+  // from source gives 28 thin spaces and 0 literal entities; via the pipeline, 0 and
+  // 28. Exposure 627 references across 89 of 342 organic modules, 12 in chemistry.
+  // ⚠️ Matched by FORM (`&#\d+;`, `&#x[0-9a-fA-F]+;`), never by code point — the bug
+  // was an enumeration and a longer enumeration is the same bug. The corpus already
+  // carries 221 hex references, and the next module may use any character at all.
+  // ⚠️ The escape itself is load-bearing: a bare `&` in translated prose must still
+  // become `&amp;` or the output is not well-formed. Hence a lookahead, not a deletion.
+  // NB: the sibling escapeXml() above escapes every `&` on purpose — it takes RAW,
+  // never-escaped values (an alt string), not mixed content. A related latent
+  // double-encode on the RENDER side (escapeAttr over entity-bearing attrs) is
+  // already logged separately and is not touched here.
+  result = result.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#\d+;|#x[0-9a-fA-F]+;)/g, '&amp;');
   result = result.replace(/</g, '&lt;');
 
   // Restore CNXML tags

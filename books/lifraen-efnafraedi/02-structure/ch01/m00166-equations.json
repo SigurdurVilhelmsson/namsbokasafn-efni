@@ -1,0 +1,18 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>H−C≡C−H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{H−C≡C−H}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=C}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>HC≡CH</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{HC≡CH}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡C}}"
+  }
+}

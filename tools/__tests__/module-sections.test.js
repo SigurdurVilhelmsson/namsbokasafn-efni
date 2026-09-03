@@ -165,7 +165,7 @@ describe('buildModuleSections — collection-order authority (efnafraedi-2e)', (
   });
 
   it.each([...Array(21)].map((_, i) => i + 1).concat(['appendices']))(
-    'chapter %s: authoritative order equals the legacy sectionOrder sort (except ch04/ch06, which collection-order fixes)',
+    'chapter %s: authoritative order equals the legacy sectionOrder sort',
     (chapter) => {
       const chapterDir =
         chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
@@ -191,22 +191,86 @@ describe('buildModuleSections — collection-order authority (efnafraedi-2e)', (
         .filter((id) => sections[id] && sections[id].section !== '0')
         .sort((a, b) => Number(sections[a].section) - Number(sections[b].section));
 
-      if (chapter === 6) {
-        // The fix: m68733 (null sectionOrder) moves from the legacy chapter-end to its true slot 3.
-        expect(newOrder).not.toEqual(legacyOrder);
-        expect(newOrder.indexOf('m68733')).toBe(2); // 3rd non-intro module → section '3'
-      } else if (chapter === 4) {
-        // F1 re-extracted m68710 via `--input` (single module), which sets its
-        // sectionOrder to null (the whole-chapter `--chapter` pass is what assigns
-        // positional sectionOrder). Under the legacy comparator a null-sectionOrder
-        // module sorts to the chapter end; collection-order (#6) authoritatively
-        // keeps m68710 at its true slot 4-2. So ch04 is now a second legitimate
-        // divergence — collection-order doing exactly its job on a newly-null module.
-        expect(newOrder).not.toEqual(legacyOrder);
-        expect(newOrder.indexOf('m68710')).toBe(1); // 2nd non-intro module → section '2'
-      } else {
-        expect(newOrder).toEqual(legacyOrder); // inert everywhere else
-      }
+      // 🔴 NON-VACUITY GUARD, and it is the reason this assertion still means
+      // something. The two orders agreeing is only evidence if there is something
+      // to agree about; an empty chapter would satisfy `toEqual` trivially.
+      expect(newOrder.length).toBeGreaterThan(0);
+      expect(newOrder).toEqual(legacyOrder);
     }
   );
+
+  /**
+   * 🔴 THE MECHANISM'S POSITIVE CONTROL — do not delete this when the equality
+   * above is quiet, because it is the ONLY remaining real-data evidence that
+   * collection-order authority changes anything.
+   *
+   * WHAT CHANGED. ch04 and ch06 used to be special-cased here: m68710 and m68733
+   * each carried `sectionOrder: null`, so the legacy comparator sorted them to the
+   * chapter end while collection-order authority kept them in their true slots —
+   * a real divergence, asserted on real data. §C82 action ③'s whole-chapter
+   * `--chapter` pass then assigned both a positional `sectionOrder`
+   * (`cnxml-extract.js` builds `moduleOrderMap` ONLY under `--chapter`; every
+   * other path writes null), so the divergence is legitimately gone: 0 of 149
+   * chemistry and 0 of 342 organic modules in authority-covered numbered chapters
+   * can still trip it.
+   *
+   * ▶ SO RE-BASELINING THE BRANCHES TO EQUALITY IS CORRECT AND NOT SUFFICIENT.
+   * Deleting them alone would retire the only check that ever demonstrated the
+   * authority doing its job, and leave a test that passes because its population
+   * is empty — which is precisely the vacuous shape this project's doctrine says
+   * causes the next bug. This control re-creates the condition IN MEMORY instead
+   * of waiting for the corpus to produce it again.
+   *
+   * ⚠️ The condition is not hypothetical: a single-module `cnxml-extract --input`
+   * run writes `sectionOrder = null` again, which is exactly how m68710 acquired
+   * its null in the first place.
+   */
+  it('🔴 CONTROL — a null sectionOrder still diverges, so the authority is demonstrably doing work', () => {
+    const structDir = path.join(REPO_ROOT, 'books', 'efnafraedi-2e', '02-structure', 'ch04');
+    const entries = fs
+      .readdirSync(structDir)
+      .filter((f) => f.endsWith('-structure.json'))
+      .map((f) => ({
+        filename: f,
+        data: JSON.parse(fs.readFileSync(path.join(structDir, f), 'utf-8')),
+      }));
+
+    // The corpus is healthy today — that is the premise this control depends on,
+    // so assert it rather than assume it.
+    expect(entries.length).toBeGreaterThan(2);
+    expect(entries.every((e) => e.data.sectionOrder !== null)).toBe(true);
+
+    const nonIntro = (list) =>
+      list.filter((e) => e.data.documentClass !== 'introduction').map((e) => e.data.moduleId);
+    const healthy = nonIntro([...entries].sort(legacyStructComparator));
+
+    // Re-create the condition the deleted branches used to observe: one module
+    // loses its positional order, as a single-module `--input` extraction does.
+    const victim = healthy[1];
+    const mutated = entries.map((e) =>
+      e.data.moduleId === victim ? { ...e, data: { ...e.data, sectionOrder: null } } : e
+    );
+    const withNull = nonIntro([...mutated].sort(legacyStructComparator));
+
+    // The legacy comparator sorts the null to the end — the divergence collection
+    // -order authority exists to correct.
+    expect(withNull).not.toEqual(healthy);
+    expect(withNull[withNull.length - 1]).toBe(victim);
+
+    // …and THE AUTHORITY IS FED THE SAME MUTATED ENTRIES, which is the only way
+    // this half discriminates. Asserting the authority against UNMUTATED data
+    // would hold even if it had silently degraded to reading `sectionOrder`,
+    // because the real corpus has no nulls left — a control that cannot fail.
+    const co = readCO('efnafraedi-2e');
+    const ids = authoritativeOrder(co, 4);
+    expect(ids).toBeTruthy();
+    const authoritative = nonIntro(
+      sortByAuthoritativeOrder(mutated, ids, {
+        book: 'efnafraedi-2e',
+        chapter: 4,
+      })
+    );
+    expect(authoritative).toEqual(healthy); // the null did not move it
+    expect(authoritative).not.toEqual(withNull); // …unlike the legacy comparator
+  });
 });

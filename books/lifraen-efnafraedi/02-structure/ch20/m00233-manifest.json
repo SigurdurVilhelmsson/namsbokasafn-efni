@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "moduleId": "m00233",
+  "extractedAt": "2026-08-31T19:08:49.319Z",
+  "sourceHash": "cf65253ea128c69c",
+  "segmentCount": 53,
+  "segmentIds": [
+    "m00233:title:auto-1",
+    "m00233:para:para-00001",
+    "m00233:para:para-00002",
+    "m00233:alt:fig-00001-alt",
+    "m00233:para:para-00003",
+    "m00233:alt:fig-00002-alt",
+    "m00233:para:para-00004",
+    "m00233:table-title:table-00001-title",
+    "m00233:alt:OChem_20_04_003_jpg-alt",
+    "m00233:entry:auto-10",
+    "m00233:entry:auto-11",
+    "m00233:entry:auto-12",
+    "m00233:alt:OChem_20_04_004_jpg-alt",
+    "m00233:entry:auto-14",
+    "m00233:entry:auto-15",
+    "m00233:entry:auto-16",
+    "m00233:entry:auto-17",
+    "m00233:entry:auto-18",
+    "m00233:entry:auto-19",
+    "m00233:entry:auto-20",
+    "m00233:entry:auto-21",
+    "m00233:entry:auto-22",
+    "m00233:entry:auto-23",
+    "m00233:entry:auto-24",
+    "m00233:entry:auto-25",
+    "m00233:entry:auto-26",
+    "m00233:entry:auto-27",
+    "m00233:entry:auto-28",
+    "m00233:entry:auto-29",
+    "m00233:entry:auto-30",
+    "m00233:entry:auto-31",
+    "m00233:entry:auto-32",
+    "m00233:entry:auto-33",
+    "m00233:entry:auto-34",
+    "m00233:entry:auto-35",
+    "m00233:entry:auto-36",
+    "m00233:entry:auto-37",
+    "m00233:entry:auto-38",
+    "m00233:entry:auto-39",
+    "m00233:entry:auto-40",
+    "m00233:entry:auto-41",
+    "m00233:entry:auto-42",
+    "m00233:para:para-00005",
+    "m00233:alt:fig-00003-alt",
+    "m00233:para:para-00006",
+    "m00233:alt:fig-00004-alt",
+    "m00233:example-title:exam-00001-title",
+    "m00233:para:para-00007",
+    "m00233:para-title:para-00008-title",
+    "m00233:para:para-00008",
+    "m00233:para-title:para-00009-title",
+    "m00233:para:para-00009",
+    "m00233:title:sect-00001-title"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 9,
+    "section": 1,
+    "figure": 4,
+    "table": 1,
+    "example": 1,
+    "exercise": 4,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "fig-00001",
+      "fig-00002",
+      "fig-00003",
+      "fig-00004"
+    ],
+    "table": [
+      "table-00001"
+    ],
+    "example": [
+      "exam-00001"
+    ],
+    "exercise": [
+      "exer-00001",
+      "exer-00002",
+      "exer-00003",
+      "exer-00004"
+    ],
+    "note": [],
+    "equation": [],
+    "section": [
+      "sect-00001"
+    ]
+  }
+}

@@ -56,7 +56,10 @@
       },
       "media": {
         "id": "fs-idm31373696",
-        "alt": "The first photo shows a small mound of an orange crystalline solid. There is a right-facing arrow. The second photo shows a translucent, colorless liquid in a clear container. There is a right-facing arrow. The third photo shows a translucent orange liquid in a clear, covered container.",
+        "alt": {
+          "segmentId": "m68778:alt:fs-idm31373696-alt",
+          "text": "The first photo shows a small mound of an orange crystalline solid. There is a right-facing arrow. The second photo shows a translucent, colorless liquid in a clear container. There is a right-facing arrow. The third photo shows a translucent orange liquid in a clear, covered container."
+        },
         "src": "../../media/CNX_Chem_11_01_K2Cr2O7_1.jpg",
         "mimeType": "image/jpeg"
       }
@@ -84,11 +87,12 @@
       "id": "fs-idp13681744",
       "class": "top-titled",
       "summary": "The table provides solutes and solvents for a variety of solutions. In air, the solute is O subscript 2 g and the solvent is N subscript 2 g. In soft drinks, the solute is C O subscript 2 g and the solvent is H subscript 2 O l. In hydrogen in palladium, H subscript 2 g is the solute and P d s is the solvent. In rubbing alcohol, H subscript 2 O l is the solute and C subscript 3 H subscript 8 O l or 2 – propanol is the solvent. In saltwater, N a C l s is the solute and H subscript 2 O l is the solvent. In brass, Z n s is the solute and C u s is the solvent.",
+      "title": null,
       "rows": [
         {
           "cells": [
             {
-              "segmentId": "m68778:entry:auto-13",
+              "segmentId": "m68778:entry:auto-14",
               "attributes": {
                 "namest": "c1",
                 "nameend": "c3",
@@ -100,12 +104,6 @@
         {
           "cells": [
             {
-              "segmentId": "m68778:entry:auto-14",
-              "attributes": {
-                "align": "left"
-              }
-            },
-            {
               "segmentId": "m68778:entry:auto-15",
               "attributes": {
                 "align": "left"
@@ -116,17 +114,17 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68778:entry:auto-17",
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68778:entry:auto-18",
               "attributes": {
@@ -138,17 +136,17 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68778:entry:auto-20",
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68778:entry:auto-21",
               "attributes": {
@@ -160,17 +158,17 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68778:entry:auto-23",
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68778:entry:auto-24",
               "attributes": {
@@ -182,17 +180,17 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68778:entry:auto-26",
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68778:entry:auto-27",
               "attributes": {
@@ -204,17 +202,17 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68778:entry:auto-29",
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68778:entry:auto-30",
               "attributes": {
@@ -226,17 +224,17 @@
               "attributes": {
                 "align": "left"
               }
-            }
-          ]
-        },
-        {
-          "cells": [
+            },
             {
               "segmentId": "m68778:entry:auto-32",
               "attributes": {
                 "align": "left"
               }
-            },
+            }
+          ]
+        },
+        {
+          "cells": [
             {
               "segmentId": "m68778:entry:auto-33",
               "attributes": {
@@ -245,6 +243,12 @@
             },
             {
               "segmentId": "m68778:entry:auto-34",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68778:entry:auto-35",
               "attributes": {
                 "align": "left"
               }
@@ -341,7 +345,10 @@
           },
           "media": {
             "id": "fs-idm50751088",
-            "alt": "Two figures are shown. The first contains two spherical containers joined by a closed stopcock. The container to the left is labeled H e. It holds about thirty evenly dispersed, small, light blue spheres. The container on the right is labeled A r and contains about thirty slightly larger blue-green spheres. The second, similar figure has an open stopcock between the two spherical containers. The light blue and green spheres are evenly dispersed and present in both containers.",
+            "alt": {
+              "segmentId": "m68778:alt:fs-idm50751088-alt",
+              "text": "Two figures are shown. The first contains two spherical containers joined by a closed stopcock. The container to the left is labeled H e. It holds about thirty evenly dispersed, small, light blue spheres. The container on the right is labeled A r and contains about thirty slightly larger blue-green spheres. The second, similar figure has an open stopcock between the two spherical containers. The light blue and green spheres are evenly dispersed and present in both containers."
+            },
             "src": "../../media/CNX_Chem_11_01_HeArsol.jpg",
             "mimeType": "image/jpeg"
           }
@@ -364,7 +371,10 @@
           },
           "media": {
             "id": "fs-idm145554960",
-            "alt": "The top, central region of the figure shows solute particles as seven blue spheres and solvent particles as 16 red spheres in separate, labeled boxes. The particles in these boxes are touching. An arrow labeled “Step 1” points left of the solute box, and shows the blue spheres no longer touching in another box labeled “expanded solute.” An arrow labeled “Step 2” points right from the solvent box and shows the red spheres no longer touching in another box labeled “expanded solvent.” Arrows proceed from the bottom of the expanded solute and expanded solvent boxes and join at the bottom of the figure where a step 3 label is shown. The joined arrows point to a box just above in which the red and blue spheres are mixed together and touching. The solute and solvent boxes are joined by another arrow labeled “direct formation of solution” which points downward at the center of the figure. This arrow also points to the box containing mixed red and blue spheres near the bottom of the figure.",
+            "alt": {
+              "segmentId": "m68778:alt:fs-idm145554960-alt",
+              "text": "The top, central region of the figure shows solute particles as seven blue spheres and solvent particles as 16 red spheres in separate, labeled boxes. The particles in these boxes are touching. An arrow labeled “Step 1” points left of the solute box, and shows the blue spheres no longer touching in another box labeled “expanded solute.” An arrow labeled “Step 2” points right from the solvent box and shows the red spheres no longer touching in another box labeled “expanded solvent.” Arrows proceed from the bottom of the expanded solute and expanded solvent boxes and join at the bottom of the figure where a step 3 label is shown. The joined arrows point to a box just above in which the red and blue spheres are mixed together and touching. The solute and solvent boxes are joined by another arrow labeled “direct formation of solution” which points downward at the center of the figure. This arrow also points to the box containing mixed red and blue spheres near the bottom of the figure."
+            },
             "src": "../../media/CNX_Chem_11_01_solusolv.jpg",
             "mimeType": "image/jpeg"
           }
@@ -388,7 +398,10 @@
           },
           "media": {
             "id": "fs-idm26849248",
-            "alt": "This figure shows a single use instant cold pack with labels indicating an inner bag of water surrounded by white particulate ammonium nitrate.",
+            "alt": {
+              "segmentId": "m68778:alt:fs-idm26849248-alt",
+              "text": "This figure shows a single use instant cold pack with labels indicating an inner bag of water surrounded by white particulate ammonium nitrate."
+            },
             "src": "../../media/CNX_Chem_11_01_Icepack.jpg",
             "mimeType": "image/jpeg"
           }

@@ -160,112 +160,115 @@ Answer:
 <!-- SEG:m68789:caption:CNX_Chem_12_03_OzoneHole-caption -->
 A contour map showing stratospheric ozone concentration and the “ozone hole” that occurs over Antarctica during its spring months. (credit: modification of work by NASA)
 
-<!-- SEG:m68789:entry:auto-55 -->
-Trial
+<!-- SEG:m68789:alt:fs-idm204213280-alt -->
+A view of Earth’s southern hemisphere is shown. A nearly circular region of approximately half the diameter of the image is shown in shades of purple, with Antarctica appearing in a slightly lighter color than the surrounding ocean areas. Immediately outside this region is a narrow bright blue zone followed by a bright green zone. In the top half of the figure, the purple region extends slightly outward from the circle and the blue zone extends more outward to the right of the center as compared to the lower half of the image. In the upper half of the image, the majority of the space outside the purple region is shaded green, with a few small strips of interspersed blue regions. The lower half however shows the majority of the space outside the central purple zone in yellow, orange, and red. The red zones appear in the lower central and left regions outside the purple zone. To the lower right of this image is a color scale that is labeled “Total Ozone (Dobsone units).” This scale begins at 0 and increases by 100’s up to 700. At the left end of the scale, the value 0 shows a very deep purple color, 100 is indigo, 200 is blue, 300 is green, 400 is a yellow-orange, 500 is red, 600 is pink, and 700 is white.
 
 <!-- SEG:m68789:entry:auto-56 -->
-[NO] (mol/L)
-
-<!-- SEG:m68789:entry:auto-57 -->
-[O[[sub:3]]] (mol/L)
-
-<!-- SEG:m68789:entry:auto-58 -->
-[[MATH:9]]
-
-<!-- SEG:m68789:entry:auto-59 -->
-1
-
-<!-- SEG:m68789:entry:auto-60 -->
-1.00 [[MATH:10]] 10[[sup:−6]]
-
-<!-- SEG:m68789:entry:auto-61 -->
-3.00 [[MATH:11]] 10[[sup:−6]]
-
-<!-- SEG:m68789:entry:auto-62 -->
-6.60 [[MATH:12]] 10[[sup:−5]]
-
-<!-- SEG:m68789:entry:auto-63 -->
-2
-
-<!-- SEG:m68789:entry:auto-64 -->
-1.00 [[MATH:13]] 10[[sup:−6]]
-
-<!-- SEG:m68789:entry:auto-65 -->
-6.00 [[MATH:14]] 10[[sup:−6]]
-
-<!-- SEG:m68789:entry:auto-66 -->
-1.32 [[MATH:15]] 10[[sup:−4]]
-
-<!-- SEG:m68789:entry:auto-67 -->
-3
-
-<!-- SEG:m68789:entry:auto-68 -->
-1.00 [[MATH:16]] 10[[sup:−6]]
-
-<!-- SEG:m68789:entry:auto-69 -->
-9.00 [[MATH:17]] 10[[sup:−6]]
-
-<!-- SEG:m68789:entry:auto-70 -->
-1.98 [[MATH:18]] 10[[sup:−4]]
-
-<!-- SEG:m68789:entry:auto-71 -->
-4
-
-<!-- SEG:m68789:entry:auto-72 -->
-2.00 [[MATH:19]] 10[[sup:−6]]
-
-<!-- SEG:m68789:entry:auto-73 -->
-9.00 [[MATH:20]] 10[[sup:−6]]
-
-<!-- SEG:m68789:entry:auto-74 -->
-3.96 [[MATH:21]] 10[[sup:−4]]
-
-<!-- SEG:m68789:entry:auto-75 -->
-5
-
-<!-- SEG:m68789:entry:auto-76 -->
-3.00 [[MATH:22]] 10[[sup:−6]]
-
-<!-- SEG:m68789:entry:auto-77 -->
-9.00 [[MATH:23]] 10[[sup:−6]]
-
-<!-- SEG:m68789:entry:auto-78 -->
-5.94 [[MATH:24]] 10[[sup:−4]]
-
-<!-- SEG:m68789:entry:auto-79 -->
 Trial
 
-<!-- SEG:m68789:entry:auto-80 -->
-[CH[[sub:3]]CHO] (mol/L)
+<!-- SEG:m68789:entry:auto-57 -->
+[NO] (mol/L)
 
-<!-- SEG:m68789:entry:auto-81 -->
-[[MATH:25]]
+<!-- SEG:m68789:entry:auto-58 -->
+[O[[sub:3]]] (mol/L)
 
-<!-- SEG:m68789:entry:auto-82 -->
+<!-- SEG:m68789:entry:auto-59 -->
+[[MATH:9]]
+
+<!-- SEG:m68789:entry:auto-60 -->
 1
 
-<!-- SEG:m68789:entry:auto-83 -->
-1.75 [[MATH:26]] 10[[sup:−3]]
+<!-- SEG:m68789:entry:auto-61 -->
+1.00 [[MATH:10]] 10[[sup:−6]]
 
-<!-- SEG:m68789:entry:auto-84 -->
-2.06 [[MATH:27]] 10[[sup:−11]]
+<!-- SEG:m68789:entry:auto-62 -->
+3.00 [[MATH:11]] 10[[sup:−6]]
 
-<!-- SEG:m68789:entry:auto-85 -->
+<!-- SEG:m68789:entry:auto-63 -->
+6.60 [[MATH:12]] 10[[sup:−5]]
+
+<!-- SEG:m68789:entry:auto-64 -->
 2
 
-<!-- SEG:m68789:entry:auto-86 -->
-3.50 [[MATH:28]] 10[[sup:−3]]
+<!-- SEG:m68789:entry:auto-65 -->
+1.00 [[MATH:13]] 10[[sup:−6]]
 
-<!-- SEG:m68789:entry:auto-87 -->
-8.24 [[MATH:29]] 10[[sup:−11]]
+<!-- SEG:m68789:entry:auto-66 -->
+6.00 [[MATH:14]] 10[[sup:−6]]
 
-<!-- SEG:m68789:entry:auto-88 -->
+<!-- SEG:m68789:entry:auto-67 -->
+1.32 [[MATH:15]] 10[[sup:−4]]
+
+<!-- SEG:m68789:entry:auto-68 -->
 3
 
+<!-- SEG:m68789:entry:auto-69 -->
+1.00 [[MATH:16]] 10[[sup:−6]]
+
+<!-- SEG:m68789:entry:auto-70 -->
+9.00 [[MATH:17]] 10[[sup:−6]]
+
+<!-- SEG:m68789:entry:auto-71 -->
+1.98 [[MATH:18]] 10[[sup:−4]]
+
+<!-- SEG:m68789:entry:auto-72 -->
+4
+
+<!-- SEG:m68789:entry:auto-73 -->
+2.00 [[MATH:19]] 10[[sup:−6]]
+
+<!-- SEG:m68789:entry:auto-74 -->
+9.00 [[MATH:20]] 10[[sup:−6]]
+
+<!-- SEG:m68789:entry:auto-75 -->
+3.96 [[MATH:21]] 10[[sup:−4]]
+
+<!-- SEG:m68789:entry:auto-76 -->
+5
+
+<!-- SEG:m68789:entry:auto-77 -->
+3.00 [[MATH:22]] 10[[sup:−6]]
+
+<!-- SEG:m68789:entry:auto-78 -->
+9.00 [[MATH:23]] 10[[sup:−6]]
+
+<!-- SEG:m68789:entry:auto-79 -->
+5.94 [[MATH:24]] 10[[sup:−4]]
+
+<!-- SEG:m68789:entry:auto-80 -->
+Trial
+
+<!-- SEG:m68789:entry:auto-81 -->
+[CH[[sub:3]]CHO] (mol/L)
+
+<!-- SEG:m68789:entry:auto-82 -->
+[[MATH:25]]
+
+<!-- SEG:m68789:entry:auto-83 -->
+1
+
+<!-- SEG:m68789:entry:auto-84 -->
+1.75 [[MATH:26]] 10[[sup:−3]]
+
+<!-- SEG:m68789:entry:auto-85 -->
+2.06 [[MATH:27]] 10[[sup:−11]]
+
+<!-- SEG:m68789:entry:auto-86 -->
+2
+
+<!-- SEG:m68789:entry:auto-87 -->
+3.50 [[MATH:28]] 10[[sup:−3]]
+
+<!-- SEG:m68789:entry:auto-88 -->
+8.24 [[MATH:29]] 10[[sup:−11]]
+
 <!-- SEG:m68789:entry:auto-89 -->
-7.00 [[MATH:30]] 10[[sup:−3]]
+3
 
 <!-- SEG:m68789:entry:auto-90 -->
+7.00 [[MATH:30]] 10[[sup:−3]]
+
+<!-- SEG:m68789:entry:auto-91 -->
 3.30 [[MATH:31]] 10[[sup:−10]]
 
 <!-- SEG:m68789:example-title:fs-idm285627376-title -->
@@ -346,100 +349,100 @@ Answer:
 <!-- SEG:m68789:para:fs-idm19062704 -->
 [[MATH:57]][[BR]] 2.00 = 2.00[[sup:[[i:y]]]][[BR]] [[i:y]] = 1[[BR]] [[MATH:58]][[BR]] [[MATH:59]][[BR]] Substituting the concentration data from trial 1 and solving for [[i:k]] yields:[[BR]] [[MATH:60]]
 
-<!-- SEG:m68789:entry:auto-117 -->
+<!-- SEG:m68789:entry:auto-118 -->
 Trial
 
-<!-- SEG:m68789:entry:auto-118 -->
+<!-- SEG:m68789:entry:auto-119 -->
 [NO] (mol/L)
 
-<!-- SEG:m68789:entry:auto-119 -->
+<!-- SEG:m68789:entry:auto-120 -->
 [Cl[[sub:2]]] (mol/L)
 
-<!-- SEG:m68789:entry:auto-120 -->
+<!-- SEG:m68789:entry:auto-121 -->
 [[MATH:61]]
 
-<!-- SEG:m68789:entry:auto-121 -->
-1
-
 <!-- SEG:m68789:entry:auto-122 -->
-0.10
+1
 
 <!-- SEG:m68789:entry:auto-123 -->
 0.10
 
 <!-- SEG:m68789:entry:auto-124 -->
-0.00300
+0.10
 
 <!-- SEG:m68789:entry:auto-125 -->
-2
+0.00300
 
 <!-- SEG:m68789:entry:auto-126 -->
-0.10
-
-<!-- SEG:m68789:entry:auto-127 -->
-0.15
-
-<!-- SEG:m68789:entry:auto-128 -->
-0.00450
-
-<!-- SEG:m68789:entry:auto-129 -->
-3
-
-<!-- SEG:m68789:entry:auto-130 -->
-0.15
-
-<!-- SEG:m68789:entry:auto-131 -->
-0.10
-
-<!-- SEG:m68789:entry:auto-132 -->
-0.00675
-
-<!-- SEG:m68789:entry:auto-133 -->
-Trial
-
-<!-- SEG:m68789:entry:auto-134 -->
-[OCl[[sup:−]]] (mol/L)
-
-<!-- SEG:m68789:entry:auto-135 -->
-[I[[sup:−]]] (mol/L)
-
-<!-- SEG:m68789:entry:auto-136 -->
-Initial Rate (mol/L/s)
-
-<!-- SEG:m68789:entry:auto-137 -->
-1
-
-<!-- SEG:m68789:entry:auto-138 -->
-0.0040
-
-<!-- SEG:m68789:entry:auto-139 -->
-0.0020
-
-<!-- SEG:m68789:entry:auto-140 -->
-0.00184
-
-<!-- SEG:m68789:entry:auto-141 -->
 2
 
-<!-- SEG:m68789:entry:auto-142 -->
-0.0020
+<!-- SEG:m68789:entry:auto-127 -->
+0.10
 
-<!-- SEG:m68789:entry:auto-143 -->
-0.0040
+<!-- SEG:m68789:entry:auto-128 -->
+0.15
 
-<!-- SEG:m68789:entry:auto-144 -->
-0.00092
+<!-- SEG:m68789:entry:auto-129 -->
+0.00450
 
-<!-- SEG:m68789:entry:auto-145 -->
+<!-- SEG:m68789:entry:auto-130 -->
 3
 
-<!-- SEG:m68789:entry:auto-146 -->
+<!-- SEG:m68789:entry:auto-131 -->
+0.15
+
+<!-- SEG:m68789:entry:auto-132 -->
+0.10
+
+<!-- SEG:m68789:entry:auto-133 -->
+0.00675
+
+<!-- SEG:m68789:entry:auto-134 -->
+Trial
+
+<!-- SEG:m68789:entry:auto-135 -->
+[OCl[[sup:−]]] (mol/L)
+
+<!-- SEG:m68789:entry:auto-136 -->
+[I[[sup:−]]] (mol/L)
+
+<!-- SEG:m68789:entry:auto-137 -->
+Initial Rate (mol/L/s)
+
+<!-- SEG:m68789:entry:auto-138 -->
+1
+
+<!-- SEG:m68789:entry:auto-139 -->
+0.0040
+
+<!-- SEG:m68789:entry:auto-140 -->
 0.0020
+
+<!-- SEG:m68789:entry:auto-141 -->
+0.00184
+
+<!-- SEG:m68789:entry:auto-142 -->
+2
+
+<!-- SEG:m68789:entry:auto-143 -->
+0.0020
+
+<!-- SEG:m68789:entry:auto-144 -->
+0.0040
+
+<!-- SEG:m68789:entry:auto-145 -->
+0.00092
+
+<!-- SEG:m68789:entry:auto-146 -->
+3
 
 <!-- SEG:m68789:entry:auto-147 -->
 0.0020
 
 <!-- SEG:m68789:entry:auto-148 -->
+0.0020
+
+<!-- SEG:m68789:entry:auto-149 -->
 0.00046
 
 <!-- SEG:m68789:title:fs-idm197875360-title -->
@@ -457,37 +460,37 @@ It is important to note that [[i:rate laws are determined by experiment only and
 <!-- SEG:m68789:para:fs-idm218845648 -->
 The units for a rate constant will vary as appropriate to accommodate the overall order of the reaction. The unit of the rate constant for the second-order reaction described in [[xref:fs-idm234815200]] was determined to be [[MATH:62]] For the third-order reaction described in [[xref:fs-idm285627376]], the unit for [[i:k]] was derived to be [[MATH:63]] Dimensional analysis requires the rate constant unit for a reaction whose overall order is [[i:x]] to be [[MATH:64]] [[xref:fs-idm233742304]] summarizes the rate constant units for common reaction orders.
 
-<!-- SEG:m68789:entry:auto-154 -->
+<!-- SEG:m68789:entry:auto-155 -->
 Rate Constant Units for Common Reaction Orders
 
-<!-- SEG:m68789:entry:auto-155 -->
+<!-- SEG:m68789:entry:auto-156 -->
 Overall Reaction Order ([[i:x]])
 
-<!-- SEG:m68789:entry:auto-156 -->
+<!-- SEG:m68789:entry:auto-157 -->
 Rate Constant Unit (L[[sup:[[i:x]]−1]] mol[[sup:1−[[i:x]]]] s[[sup:−1]])
 
-<!-- SEG:m68789:entry:auto-157 -->
+<!-- SEG:m68789:entry:auto-158 -->
 0 (zero)
 
-<!-- SEG:m68789:entry:auto-158 -->
+<!-- SEG:m68789:entry:auto-159 -->
 mol L[[sup:−1]] s[[sup:−1]]
 
-<!-- SEG:m68789:entry:auto-159 -->
+<!-- SEG:m68789:entry:auto-160 -->
 1 (first)
 
-<!-- SEG:m68789:entry:auto-160 -->
+<!-- SEG:m68789:entry:auto-161 -->
 s[[sup:−1]]
 
-<!-- SEG:m68789:entry:auto-161 -->
+<!-- SEG:m68789:entry:auto-162 -->
 2 (second)
 
-<!-- SEG:m68789:entry:auto-162 -->
+<!-- SEG:m68789:entry:auto-163 -->
 L mol[[sup:−1]] s[[sup:−1]]
 
-<!-- SEG:m68789:entry:auto-163 -->
+<!-- SEG:m68789:entry:auto-164 -->
 3 (third)
 
-<!-- SEG:m68789:entry:auto-164 -->
+<!-- SEG:m68789:entry:auto-165 -->
 L[[sup:2]] mol[[sup:−2]] s[[sup:−1]]
 
 <!-- SEG:m68789:para:fs-idm235810768 -->
@@ -586,28 +589,28 @@ Under certain conditions the decomposition of ammonia on a metal surface gives t
 <!-- SEG:m68789:problem:fs-idm279312480 -->
 Determine the rate law, the rate constant, and the overall order for this reaction.
 
-<!-- SEG:m68789:entry:auto-197 -->
+<!-- SEG:m68789:entry:auto-198 -->
 [NH[[sub:3]]] ([[i:M]])
 
-<!-- SEG:m68789:entry:auto-198 -->
+<!-- SEG:m68789:entry:auto-199 -->
 1.0 [[MATH:91]] 10[[sup:−3]]
 
-<!-- SEG:m68789:entry:auto-199 -->
+<!-- SEG:m68789:entry:auto-200 -->
 2.0 [[MATH:92]] 10[[sup:−3]]
 
-<!-- SEG:m68789:entry:auto-200 -->
+<!-- SEG:m68789:entry:auto-201 -->
 3.0 [[MATH:93]] 10[[sup:−3]]
 
-<!-- SEG:m68789:entry:auto-201 -->
+<!-- SEG:m68789:entry:auto-202 -->
 Rate (mol L[[sup:−1]] h[[sup:−1]])
 
-<!-- SEG:m68789:entry:auto-202 -->
+<!-- SEG:m68789:entry:auto-203 -->
 1.5 [[MATH:94]] 10[[sup:−6]]
 
-<!-- SEG:m68789:entry:auto-203 -->
+<!-- SEG:m68789:entry:auto-204 -->
 1.5 [[MATH:95]] 10[[sup:−6]]
 
-<!-- SEG:m68789:entry:auto-204 -->
+<!-- SEG:m68789:entry:auto-205 -->
 1.5 [[MATH:96]] 10[[sup:−6]]
 
 <!-- SEG:m68789:problem:fs-idm217433968 -->
@@ -619,55 +622,55 @@ Determine the rate law, the rate constant, and the overall order for this reacti
 <!-- SEG:m68789:solution:fs-idp5189312 -->
 rate = [[i:k]][NOCl][[sup:2]]; [[i:k]] = 8.0 [[MATH:98]] 10[[sup:−8]] L/mol/h; second order
 
-<!-- SEG:m68789:entry:auto-208 -->
+<!-- SEG:m68789:entry:auto-209 -->
 [NOCl] ([[i:M]])
 
-<!-- SEG:m68789:entry:auto-209 -->
+<!-- SEG:m68789:entry:auto-210 -->
 0.10
 
-<!-- SEG:m68789:entry:auto-210 -->
+<!-- SEG:m68789:entry:auto-211 -->
 0.20
 
-<!-- SEG:m68789:entry:auto-211 -->
+<!-- SEG:m68789:entry:auto-212 -->
 0.30
 
-<!-- SEG:m68789:entry:auto-212 -->
+<!-- SEG:m68789:entry:auto-213 -->
 Rate (mol L[[sup:−1]] h[[sup:−1]])
 
-<!-- SEG:m68789:entry:auto-213 -->
+<!-- SEG:m68789:entry:auto-214 -->
 8.0 [[MATH:99]] 10[[sup:−10]]
 
-<!-- SEG:m68789:entry:auto-214 -->
+<!-- SEG:m68789:entry:auto-215 -->
 3.2 [[MATH:100]] 10[[sup:−9]]
 
-<!-- SEG:m68789:entry:auto-215 -->
+<!-- SEG:m68789:entry:auto-216 -->
 7.2 [[MATH:101]] 10[[sup:−9]]
 
 <!-- SEG:m68789:problem:fs-idm254308880 -->
 From the following data, determine the rate law, the rate constant, and the order with respect to [[i:A]] for the reaction [[MATH:102]]
 
-<!-- SEG:m68789:entry:auto-217 -->
+<!-- SEG:m68789:entry:auto-218 -->
 [[[i:A]]] ([[i:M]])
 
-<!-- SEG:m68789:entry:auto-218 -->
+<!-- SEG:m68789:entry:auto-219 -->
 1.33 [[MATH:103]] 10[[sup:−2]]
 
-<!-- SEG:m68789:entry:auto-219 -->
+<!-- SEG:m68789:entry:auto-220 -->
 2.66 [[MATH:104]] 10[[sup:−2]]
 
-<!-- SEG:m68789:entry:auto-220 -->
+<!-- SEG:m68789:entry:auto-221 -->
 3.99 [[MATH:105]] 10[[sup:−2]]
 
-<!-- SEG:m68789:entry:auto-221 -->
+<!-- SEG:m68789:entry:auto-222 -->
 Rate (mol L[[sup:−1]] h[[sup:−1]])
 
-<!-- SEG:m68789:entry:auto-222 -->
+<!-- SEG:m68789:entry:auto-223 -->
 3.80 [[MATH:106]] 10[[sup:−7]]
 
-<!-- SEG:m68789:entry:auto-223 -->
+<!-- SEG:m68789:entry:auto-224 -->
 1.52 [[MATH:107]] 10[[sup:−6]]
 
-<!-- SEG:m68789:entry:auto-224 -->
+<!-- SEG:m68789:entry:auto-225 -->
 3.42 [[MATH:108]] 10[[sup:−6]]
 
 <!-- SEG:m68789:problem:fs-idm262783024 -->
@@ -682,40 +685,40 @@ What is the rate law that describes the rate’s dependence on the concentration
 <!-- SEG:m68789:solution:fs-idm174039344 -->
 rate = [[i:k]][NO][[sup:2]][Cl[[sub:2]]]; [[i:k]] = 9.1 L[[sup:2]] mol[[sup:−2]] h[[sup:−1]]; second order in NO; first order in Cl[[sub:2]]
 
-<!-- SEG:m68789:entry:auto-229 -->
+<!-- SEG:m68789:entry:auto-230 -->
 [NO] (mol/L)
 
-<!-- SEG:m68789:entry:auto-230 -->
+<!-- SEG:m68789:entry:auto-231 -->
 [Cl[[sub:2]]] (mol/L)
 
-<!-- SEG:m68789:entry:auto-231 -->
-Rate (mol L[[sup:−1]] h[[sup:−1]])
-
 <!-- SEG:m68789:entry:auto-232 -->
-0.50
+Rate (mol L[[sup:−1]] h[[sup:−1]])
 
 <!-- SEG:m68789:entry:auto-233 -->
 0.50
 
 <!-- SEG:m68789:entry:auto-234 -->
-1.14
-
-<!-- SEG:m68789:entry:auto-235 -->
-1.00
-
-<!-- SEG:m68789:entry:auto-236 -->
 0.50
 
+<!-- SEG:m68789:entry:auto-235 -->
+1.14
+
+<!-- SEG:m68789:entry:auto-236 -->
+1.00
+
 <!-- SEG:m68789:entry:auto-237 -->
-4.56
+0.50
 
 <!-- SEG:m68789:entry:auto-238 -->
-1.00
+4.56
 
 <!-- SEG:m68789:entry:auto-239 -->
 1.00
 
 <!-- SEG:m68789:entry:auto-240 -->
+1.00
+
+<!-- SEG:m68789:entry:auto-241 -->
 9.12
 
 <!-- SEG:m68789:problem:fs-idm219404160 -->
@@ -724,40 +727,40 @@ Hydrogen reacts with nitrogen monoxide to form dinitrogen monoxide (laughing gas
 <!-- SEG:m68789:problem:fs-idm148410512 -->
 Determine the rate law, the rate constant, and the orders with respect to each reactant from the following data:
 
-<!-- SEG:m68789:entry:auto-243 -->
+<!-- SEG:m68789:entry:auto-244 -->
 [NO] ([[i:M]])
 
-<!-- SEG:m68789:entry:auto-244 -->
-0.30
-
 <!-- SEG:m68789:entry:auto-245 -->
-0.60
+0.30
 
 <!-- SEG:m68789:entry:auto-246 -->
 0.60
 
 <!-- SEG:m68789:entry:auto-247 -->
-[H[[sub:2]]] ([[i:M]])
+0.60
 
 <!-- SEG:m68789:entry:auto-248 -->
-0.35
+[H[[sub:2]]] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-249 -->
 0.35
 
 <!-- SEG:m68789:entry:auto-250 -->
-0.70
+0.35
 
 <!-- SEG:m68789:entry:auto-251 -->
-Rate (mol L[[sup:−1]] s[[sup:−1]])
+0.70
 
 <!-- SEG:m68789:entry:auto-252 -->
-2.835 [[MATH:111]] 10[[sup:−3]]
+Rate (mol L[[sup:−1]] s[[sup:−1]])
 
 <!-- SEG:m68789:entry:auto-253 -->
-1.134 [[MATH:112]] 10[[sup:−2]]
+2.835 [[MATH:111]] 10[[sup:−3]]
 
 <!-- SEG:m68789:entry:auto-254 -->
+1.134 [[MATH:112]] 10[[sup:−2]]
+
+<!-- SEG:m68789:entry:auto-255 -->
 2.268 [[MATH:113]] 10[[sup:−2]]
 
 <!-- SEG:m68789:problem:fs-idm253875200 -->
@@ -772,28 +775,28 @@ For the reaction [[MATH:114]] the following data were obtained at 30 °C:
 <!-- SEG:m68789:solution:fs-idm168970144 -->
 (a) The rate law is second order in A and is written as rate = [[i:k]][[[i:A]]][[sup:2]]. (b) [[i:k]] = 7.88 [[MATH:115]] 10[[sup:−3]] L mol[[sup:−1]] s[[sup:−1]]
 
-<!-- SEG:m68789:entry:auto-259 -->
+<!-- SEG:m68789:entry:auto-260 -->
 [[[i:A]]] ([[i:M]])
 
-<!-- SEG:m68789:entry:auto-260 -->
+<!-- SEG:m68789:entry:auto-261 -->
 0.230
 
-<!-- SEG:m68789:entry:auto-261 -->
+<!-- SEG:m68789:entry:auto-262 -->
 0.356
 
-<!-- SEG:m68789:entry:auto-262 -->
+<!-- SEG:m68789:entry:auto-263 -->
 0.557
 
-<!-- SEG:m68789:entry:auto-263 -->
+<!-- SEG:m68789:entry:auto-264 -->
 Rate (mol L[[sup:−1]] s[[sup:−1]])
 
-<!-- SEG:m68789:entry:auto-264 -->
+<!-- SEG:m68789:entry:auto-265 -->
 4.17 [[MATH:116]] 10[[sup:−4]]
 
-<!-- SEG:m68789:entry:auto-265 -->
+<!-- SEG:m68789:entry:auto-266 -->
 9.99 [[MATH:117]] 10[[sup:−4]]
 
-<!-- SEG:m68789:entry:auto-266 -->
+<!-- SEG:m68789:entry:auto-267 -->
 2.44 [[MATH:118]] 10[[sup:−3]]
 
 <!-- SEG:m68789:problem:fs-idm189701808 -->
@@ -805,28 +808,28 @@ For the reaction [[MATH:119]] the following data were obtained at 30 °C:
 <!-- SEG:m68789:problem:fs-idm187916448 -->
 (b) What is the rate constant?
 
-<!-- SEG:m68789:entry:auto-270 -->
+<!-- SEG:m68789:entry:auto-271 -->
 [[[i:Q]]][[sub:initial]] ([[i:M]])
 
-<!-- SEG:m68789:entry:auto-271 -->
+<!-- SEG:m68789:entry:auto-272 -->
 0.170
 
-<!-- SEG:m68789:entry:auto-272 -->
+<!-- SEG:m68789:entry:auto-273 -->
 0.212
 
-<!-- SEG:m68789:entry:auto-273 -->
+<!-- SEG:m68789:entry:auto-274 -->
 0.357
 
-<!-- SEG:m68789:entry:auto-274 -->
+<!-- SEG:m68789:entry:auto-275 -->
 Rate (mol L[[sup:−1]] s[[sup:−1]])
 
-<!-- SEG:m68789:entry:auto-275 -->
+<!-- SEG:m68789:entry:auto-276 -->
 6.68 [[MATH:120]] 10[[sup:−3]]
 
-<!-- SEG:m68789:entry:auto-276 -->
+<!-- SEG:m68789:entry:auto-277 -->
 1.04 [[MATH:121]] 10[[sup:−2]]
 
-<!-- SEG:m68789:entry:auto-277 -->
+<!-- SEG:m68789:entry:auto-278 -->
 2.94 [[MATH:122]] 10[[sup:−2]]
 
 <!-- SEG:m68789:problem:fs-idm245905952 -->
@@ -862,49 +865,49 @@ Determine the rate law and the rate constant for this reaction.
 <!-- SEG:m68789:solution:fs-idm220253504 -->
 rate = [[i:k]][I[[sup:−]]][OCl[[sup:−]]]; [[i:k]] = 6.1 [[MATH:131]] 10[[sup:−2]] L mol [[sup:−1]] s[[sup:−1]]
 
-<!-- SEG:m68789:entry:auto-289 -->
+<!-- SEG:m68789:entry:auto-290 -->
 1
 
-<!-- SEG:m68789:entry:auto-290 -->
+<!-- SEG:m68789:entry:auto-291 -->
 2
 
-<!-- SEG:m68789:entry:auto-291 -->
+<!-- SEG:m68789:entry:auto-292 -->
 3
 
-<!-- SEG:m68789:entry:auto-292 -->
+<!-- SEG:m68789:entry:auto-293 -->
 [[MATH:132]] ([[i:M]])
 
-<!-- SEG:m68789:entry:auto-293 -->
+<!-- SEG:m68789:entry:auto-294 -->
 0.10
 
-<!-- SEG:m68789:entry:auto-294 -->
+<!-- SEG:m68789:entry:auto-295 -->
 0.20
 
-<!-- SEG:m68789:entry:auto-295 -->
+<!-- SEG:m68789:entry:auto-296 -->
 0.30
 
-<!-- SEG:m68789:entry:auto-296 -->
-[[MATH:133]] ([[i:M]])
-
 <!-- SEG:m68789:entry:auto-297 -->
-0.050
+[[MATH:133]] ([[i:M]])
 
 <!-- SEG:m68789:entry:auto-298 -->
 0.050
 
 <!-- SEG:m68789:entry:auto-299 -->
-0.010
+0.050
 
 <!-- SEG:m68789:entry:auto-300 -->
-Rate (mol L[[sup:−1]] s[[sup:−1]])
+0.010
 
 <!-- SEG:m68789:entry:auto-301 -->
-3.05 [[MATH:134]] 10[[sup:−4]]
+Rate (mol L[[sup:−1]] s[[sup:−1]])
 
 <!-- SEG:m68789:entry:auto-302 -->
-6.20 [[MATH:135]] 10[[sup:−4]]
+3.05 [[MATH:134]] 10[[sup:−4]]
 
 <!-- SEG:m68789:entry:auto-303 -->
+6.20 [[MATH:135]] 10[[sup:−4]]
+
+<!-- SEG:m68789:entry:auto-304 -->
 1.83 [[MATH:136]] 10[[sup:−4]]
 
 <!-- SEG:m68789:glossary-term:fs-idm176826832-term -->
@@ -937,26 +940,26 @@ reaction order
 <!-- SEG:m68789:glossary-def:fs-idm333854336-def -->
 value of an exponent in a rate law (for example, zero order for 0, first order for 1, second order for 2, and so on)
 
-<!-- SEG:m68789:entry:auto-314 -->
+<!-- SEG:m68789:entry:auto-315 -->
 [C[[sub:2]]H[[sub:5]]OH] ([[i:M]])
 
-<!-- SEG:m68789:entry:auto-315 -->
+<!-- SEG:m68789:entry:auto-316 -->
 4.4 [[MATH:84]] 10[[sup:−2]]
 
-<!-- SEG:m68789:entry:auto-316 -->
+<!-- SEG:m68789:entry:auto-317 -->
 3.3 [[MATH:85]] 10[[sup:−2]]
 
-<!-- SEG:m68789:entry:auto-317 -->
+<!-- SEG:m68789:entry:auto-318 -->
 2.2 [[MATH:86]] 10[[sup:−2]]
 
-<!-- SEG:m68789:entry:auto-318 -->
+<!-- SEG:m68789:entry:auto-319 -->
 Rate (mol L[[sup:−1]] h[[sup:−1]])
 
-<!-- SEG:m68789:entry:auto-319 -->
+<!-- SEG:m68789:entry:auto-320 -->
 2.0 [[MATH:87]] 10[[sup:−2]]
 
-<!-- SEG:m68789:entry:auto-320 -->
+<!-- SEG:m68789:entry:auto-321 -->
 2.0 [[MATH:88]] 10[[sup:−2]]
 
-<!-- SEG:m68789:entry:auto-321 -->
+<!-- SEG:m68789:entry:auto-322 -->
 2.0 [[MATH:89]] 10[[sup:−2]]

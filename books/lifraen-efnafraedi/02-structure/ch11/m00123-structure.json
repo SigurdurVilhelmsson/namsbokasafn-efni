@@ -1,0 +1,131 @@
+{
+  "moduleId": "m00123",
+  "title": {
+    "segmentId": "m00123:title:auto-1",
+    "text": "MECHANISM"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "77ecf5a3-7014-4877-9f6b-e50ee76dbd80"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00123:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00123:alt:fig-00001-alt",
+          "text": "A reaction mechanism between hydroxyl ion and bromomethane, which forms methanol and bromide ion. Arrow pushing shows hydroxide attacks carbon, displacing bromine."
+        },
+        "src": "../../media/OChem_11_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00123:para:para-00002"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00123:para:para-00003"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00123:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00123:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00123:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00123:alt:fig-00002-alt",
+          "text": "The figure shows a 2-step reaction. (S)-2-bromobutane undergoes a S N 2 mechanism forming a transition state that further produces (R)-2-butanol and bromide ion."
+        },
+        "src": "../../media/OChem_11_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00123:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00123:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00123:alt:fig-00003-alt",
+          "text": "The figure shows the S N 2 reaction along with their ball-and-stick model in electrostatic potential maps. Tertiary alkyl halide and substituted compound are tetrahedral, while transition state is planar."
+        },
+        "src": "../../media/OChem_11_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00123:para:para-00007"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00123:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

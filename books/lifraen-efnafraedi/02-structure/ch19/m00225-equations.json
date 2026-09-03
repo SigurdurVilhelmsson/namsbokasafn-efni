@@ -1,0 +1,30 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;CHCHO</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C&#x2550;CHCHO}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCOCH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C&#x2550;}{{\\text{CHCOCH}}}_{3}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>(R</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>N&#x2013;CR&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CR</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mtext>)</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{(R}}}_{2}\\text{N&#x2013;CR&#x2550;}{{\\text{CR}}}_{\\text{2}}\\text{)}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>(R</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;NR)</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{(R}}}_{2}\\text{C&#x2550;NR)}}"
+  }
+}

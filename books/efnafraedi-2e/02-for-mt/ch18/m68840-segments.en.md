@@ -8,7 +8,7 @@ By the end of this section, you will be able to:
 Describe the properties, preparation, and uses of the noble gases
 
 <!-- SEG:m68840:para:fs-idm47164624 -->
-The elements in group 18 are the noble gases (helium, neon, argon, krypton, xenon, and radon). They earned the name “noble” because they were assumed to be nonreactive since they have filled valence shells. In 1962, Dr. Neil {{term}}Bartlett{{/term}} at the University of British Columbia proved this assumption to be false.
+The elements in group 18 are the noble gases (helium, neon, argon, krypton, xenon, and radon). They earned the name “noble” because they were assumed to be nonreactive since they have filled valence shells. In 1962, Dr. Neil [[term:Bartlett|term-00001]] at the University of British Columbia proved this assumption to be false.
 
 <!-- SEG:m68840:para:fs-idm76574784 -->
 These elements are present in the atmosphere in small amounts. Some natural gas contains 1–2% helium by mass. Helium is isolated from natural gas by liquefying the condensable components, leaving only helium as a gas. The United States possesses most of the world’s commercial supply of this element in its helium-bearing gas fields. Argon, neon, krypton, and xenon come from the fractional distillation of liquid air. Radon comes from other radioactive elements. More recently, it was observed that this radioactive gas is present in very small amounts in soils and minerals. Its accumulation in well-insulated, tightly sealed buildings, however, constitutes a health hazard, primarily lung cancer.

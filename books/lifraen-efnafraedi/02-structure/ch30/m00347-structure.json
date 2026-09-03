@@ -1,0 +1,169 @@
+{
+  "moduleId": "m00347",
+  "title": {
+    "segmentId": "m00347:title:auto-1",
+    "text": "Sigmatropic Rearrangements"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3dd3e548-7cbb-4fd8-b1e0-6e1d2157f44b"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00347:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00347:alt:fig-00001-alt",
+          "text": "A sigma bond breaks in 1,3-diene to form 1,3-diene with formed sigma bond via [1,5]sigmatropic rearrangement. An allylic vinylic ether forms unsaturated ketone with formed sigma bond via [3,3]sigmatropic rearrangement."
+        },
+        "src": "../../media/OChem_30_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00347:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00347:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00347:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00347:alt:fig-00002-alt",
+          "text": "Orbital diagrams of suprafacial and antarafacial sigmatropic rearrangement. Antarafacial migrates groups to opposite face and suprafacial migrates groups to same face such that new bonds are always between same-sign lobes."
+        },
+        "src": "../../media/OChem_30_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00347:para:para-00004"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "",
+      "title": {
+        "segmentId": "m00347:table-title:table-00001-title",
+        "text": "Stereochemical Rules for Sigmatropic Rearrangements"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00347:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00347:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00347:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00347:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00347:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00347:entry:auto-15",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00347:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00347:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00347:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00347:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 7
+}

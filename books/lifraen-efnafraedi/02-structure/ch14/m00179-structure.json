@@ -1,0 +1,775 @@
+{
+  "moduleId": "m00179",
+  "title": {
+    "segmentId": "m00179:title:auto-1",
+    "text": "Conjugation, Color, and the Chemistry of Vision"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "af1fc96a-7c48-4105-939b-9cc8f8af66e2"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00179:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00179:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00179:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00179:alt:fig-00001-alt",
+          "text": "The ultraviolet spectrum of beta-carotene shows a curve with a peak (lambda max) at 455 nanometers. The x-axis and y-axis represent wavelength and absorbance, respectively."
+        },
+        "src": "../../media/OChem_14_09_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00179:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00179:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00179:alt:fig-00002-alt",
+          "text": "Beta-carotene converts to vitamin A, which further converts to 11-cis-retinal. The carbon atoms in 11-cis-retinal are numbered from left to right."
+        },
+        "src": "../../media/OChem_14_09_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00179:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00179:alt:fig-00003-alt",
+          "text": "In a reaction, Rhodopsin in the presence of light forms Metarhodopsin 2. The cis and trans C C double bond at positions 5 and 6 in reactant and product are labeled, respectively."
+        },
+        "src": "../../media/OChem_14_09_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00179:para:para-00006"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00179:title:sect-00001-title",
+        "text": "Photolithography"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00179:para:para-00007"
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00179:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00179:caption:fig-00004-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00179:alt:fig-00004-alt",
+              "text": "A photo shows a detailed perspective of silicon chips within a computer circuit."
+            },
+            "src": "../../media/OChem_14_98_CompChip.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00179:caption:fig-00005-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00179:alt:fig-00005-alt",
+              "text": "A block under light source has three layers, resist, silicon dioxide, and silicon water with mask above. Mask is exposed and washed leading to etching silicon, and dissolving resist layer."
+            },
+            "src": "../../media/OChem_14_09_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00179:para:para-00009"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00179:alt:fig-00006-alt",
+              "text": "In water, diazonaphthoquinone and Novolac resin react in the presence of light to form form benzene fused to cyclopentene with C 1 bonded to carboxylic acid. Molecular nitrogen is the byproduct."
+            },
+            "src": "../../media/OChem_14_09_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-10"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-11"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-12"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-13"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-14"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00001-item-15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00179:title:sect-00003-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00179:para:para-00010"
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00179:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00179:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00179:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00179:para:para-00014"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "summary-reactions",
+      "title": {
+        "segmentId": "m00179:title:sect-00004-title",
+        "text": "Summary of Reactions"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00002",
+          "listType": "enumerated",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00002-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00179:item:list-00002-item-2"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00179:alt:fig-00007-alt",
+              "text": "Reaction of 1,3-butadiene with hydrogen bromide  yields either 3-bromo-1-butene or 1-bromo-2-butene."
+            },
+            "src": "../../media/OChem_14_EC_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "scaled-down unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00179:alt:fig-00008-alt",
+              "text": "In a Diels–Alder cycloaddition reaction, when heated, a diene reacts with a dienophile containg a ketone group at C 1 to form a cyclohexene bonded to a ketone group at C 4."
+            },
+            "src": "../../media/OChem_14_EC_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00179:title:sect-00005-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00179:para:para-00015"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00020",
+          "segmentId": "m00179:para:para-00020"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00026",
+          "segmentId": "m00179:para:para-00026"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00033",
+          "segmentId": "m00179:para:para-00033"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00045",
+          "segmentId": "m00179:para:para-00045"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00048",
+          "segmentId": "m00179:para:para-00048"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00055",
+          "segmentId": "m00179:para:para-00055"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00041",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00042",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00043",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00044",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00045",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00046",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00047",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00048",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00049",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00050",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 9
+}

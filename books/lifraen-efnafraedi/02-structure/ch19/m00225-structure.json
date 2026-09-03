@@ -1,0 +1,1593 @@
+{
+  "moduleId": "m00225",
+  "title": {
+    "segmentId": "m00225:title:auto-1",
+    "text": "Spectroscopy of Aldehydes and Ketones"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "ab703274-63af-465e-a678-5aa4d1fd7f0b"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00225:title:sect-00001-title",
+        "text": "Infrared Spectroscopy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00225:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00225:caption:fig-00001-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00001-alt",
+              "text": "I R spectra of benzaldehyde with carbonyl peak at 1700 and aldehyde hydrogen peak around 2800, and of cyclohexanone with carbonyl peak around 1700 wavenumbers."
+            },
+            "src": "../../media/OChem_19_14_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00225:para:para-00002"
+        },
+        {
+          "type": "table",
+          "id": "table-00001",
+          "summary": "",
+          "title": {
+            "segmentId": "m00225:table-title:table-00001-title",
+            "text": "Infrared Absorptions of Some Aldehydes and Ketones"
+          },
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m00225:entry:auto-8",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-9",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-10",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00225:entry:auto-11",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-12",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-13",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00225:entry:auto-14",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-15",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-16",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00225:entry:auto-17",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-18",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-19",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00225:entry:auto-20",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-21",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-22",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00225:entry:auto-23",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-24",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00225:entry:auto-25",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-26",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00225:entry:auto-27",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-28",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00225:entry:auto-29",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-30",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-31",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00225:entry:auto-32",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-33",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00225:entry:auto-34",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00225:para:para-00003"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00225:title:sect-00002-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00225:title:sect-00003-title",
+        "text": "Nuclear Magnetic Resonance Spectroscopy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00225:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00225:caption:fig-00002-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00002-alt",
+              "text": "1 H N M R spectrum of acetaldehyde with shifts at 2.23 (doublet) and 9.79 (quartet). Relative areas are 3 and 1 respectively."
+            },
+            "src": "../../media/OChem_19_14_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00225:para:para-00007"
+        },
+        {
+          "type": "para",
+          "id": "para-00008",
+          "segmentId": "m00225:para:para-00008"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00003",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00003-alt",
+              "text": "Five structures display absorption values of carbons in aldehydes and ketones, with structural formulas and labeled carbon shifts."
+            },
+            "src": "../../media/OChem_19_14_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": null,
+      "title": {
+        "segmentId": "m00225:title:sect-00004-title",
+        "text": "Mass Spectrometry"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00009",
+          "segmentId": "m00225:para:para-00009"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00004",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00004-alt",
+              "text": "An aliphatic aldehyde or ketone undergoes Mclafferty rearrangement to form an alkene and a fragment containing oxygen, with bond migration occurring around a six-memberd ringlike framework."
+            },
+            "src": "../../media/OChem_19_14_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00225:para:para-00010"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00005",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00005-alt",
+              "text": "An aldehyde or ketone undergoes alpha cleavage to produce a neutral radical R and a resonance-stabilized acyl cation (R prime single bond to C positive double bond to O)."
+            },
+            "src": "../../media/OChem_19_14_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00225:para:para-00011"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00006",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00225:caption:fig-00006-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00006-alt",
+              "text": "Mass spectrum of 5-methyl-2-hexanone displays molecular ion at 114, m over z 43 for alpha cleavage, and McLafferty rearrangement produces m by z 58 and another compound."
+            },
+            "src": "../../media/OChem_19_14_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00225:title:sect-00005-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00006",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00225:title:sect-00006-title",
+        "text": "Enantioselective Synthesis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00225:para:para-00014"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00007",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00007-alt",
+              "text": "Geraniol reacts with m-chloroperoxybenzoic acid to form 50 percent of (2 S, 3 S) and (2 R, 3 R) epoxides."
+            },
+            "src": "../../media/OChem_19_14_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00015",
+          "segmentId": "m00225:para:para-00015"
+        },
+        {
+          "type": "para",
+          "id": "para-00016",
+          "segmentId": "m00225:para:para-00016"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00225:caption:fig-00008-caption"
+          },
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00008-alt",
+              "text": "A photo of a purplish-brown foamy, brownie-like substance."
+            },
+            "src": "../../media/OSX_OrgChem_19_98_TartaricAc.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00225:para:para-00017"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00009-alt",
+              "text": "Catalyst structures and reactions involving geraniol, resulting in specific isomers with distinct carbon-hydrogen arrangements mediated by (R, R)-D E T and (S, S)-D E T compounds."
+            },
+            "src": "../../media/OChem_19_14_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00007",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-10"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-11"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-12"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-13"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-14"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-15"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-16"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-17"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-18"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-19"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-20"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00001-item-21"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00008",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00225:title:sect-00008-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00018",
+          "segmentId": "m00225:para:para-00018"
+        },
+        {
+          "type": "para",
+          "id": "para-00019",
+          "segmentId": "m00225:para:para-00019"
+        },
+        {
+          "type": "para",
+          "id": "para-00020",
+          "segmentId": "m00225:para:para-00020"
+        },
+        {
+          "type": "para",
+          "id": "para-00021",
+          "segmentId": "m00225:para:para-00021"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00009",
+      "class": "summary-reactions",
+      "title": {
+        "segmentId": "m00225:title:sect-00009-title",
+        "text": "Summary of Reactions"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00002",
+          "listType": "enumerated",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00002-item-1",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00003",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00003-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00003-item-2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00002-item-2",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00004",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00004-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00004-item-2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00002-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00002-item-4",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00005",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00005-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00005-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00005-item-3"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00005-item-4"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00005-item-5"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00005-item-6"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00005-item-7"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00005-item-8"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": null,
+              "segmentId": "m00225:item:list-00002-item-5",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "list-00006",
+                  "listType": "enumerated",
+                  "numberStyle": "lower-alpha",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00006-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00006-item-2"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m00225:item:list-00006-item-3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-00010",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00010-alt",
+              "text": "A primary alcohol, R C H 2 O H reacts with Dess-Martin periodinane and methylene chloride to form an aldehyde, R C H O."
+            },
+            "src": "../../media/OChem_19_EC_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00011",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00011-alt",
+              "text": "An ester, R C O O R reacts with diisobutylaluminum hydride in toluene, then hydronium ion to form aldehyde, R C H O and an alcohol, R dash O H."
+            },
+            "src": "../../media/OChem_19_EC_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00012",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00012-alt",
+              "text": "A secondary alcohol reacts with periodinane or chromium trioxide to form a ketone."
+            },
+            "src": "../../media/OChem_19_EC_003.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00013",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00013-alt",
+              "text": "An acyl chloride with substituent R reacts with R prime C u L i in the presence of ether to form an R, R prime ketone."
+            },
+            "src": "../../media/OChem_19_EC_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00014",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00014-alt",
+              "text": "An aldehyde, R C H O reacts with chromium trioxide and hydronium ion to form a carboxylic acid, R C O O H."
+            },
+            "src": "../../media/OChem_19_EC_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00015",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00015-alt",
+              "text": "An R, R prime carbonyl reacts with sodium borohydride, ethanol, then hydronium ion to form an alcohol."
+            },
+            "src": "../../media/OChem_19_EC_006.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00016",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00016-alt",
+              "text": "An R, R prime carbonyl reacts with R double prime Mg Br and ether, then hydronium ion to form an alcohol."
+            },
+            "src": "../../media/OChem_19_EC_007.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00017",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00017-alt",
+              "text": "An R, R prime carbonyl reacts with H C N to form a compound with C bonded to R, R prime, O H, and C N."
+            },
+            "src": "../../media/OChem_19_EC_008.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00018",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00018-alt",
+              "text": "An R, R prime carbonyl reacts with N H 2 R double prime to form imine: C bonded to R, R prime, and double bonded to N R double prime."
+            },
+            "src": "../../media/OChem_19_EC_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00019",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00019-alt",
+              "text": "A carbonyl with one R group and one substituent with an alpha hydrogen reacts with H N R prime 2 to give an enamine."
+            },
+            "src": "../../media/OChem_19_EC_010.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00020",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00020-alt",
+              "text": "An R, R prime carbonyl reacts with H 2 N N H 2 to form alkane with R and R prime groups and two hydrogens on former carbonyl carbon."
+            },
+            "src": "../../media/OChem_19_EC_011.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00021",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00021-alt",
+              "text": "An R, R prime carbonyl reacts with 2 equivalents of R double prime alcohol in acid to give acetal with substituents R, R prime, and two O R double prime."
+            },
+            "src": "../../media/OChem_19_EC_012.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00022",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00022-alt",
+              "text": "A carbonyl compound reacts with phosphorus ylide in the presence of tetrahydro furan to form an alkene and a phosphoryl group linked to three phenyl groups."
+            },
+            "src": "../../media/OChem_19_EC_013.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00023",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00023-alt",
+              "text": "An alpha beta-unsaturated compound reacts with an amine to form a compound with carbonyl and beta amine group."
+            },
+            "src": "../../media/OChem_19_EC_014.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00024",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00024-alt",
+              "text": "An alpha beta-unsaturated compound reacts with water to form a compound with carbonyl and beta hydroxyl group."
+            },
+            "src": "../../media/OChem_19_EC_015.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00025",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00225:alt:fig-00025-alt",
+              "text": "An alpha beta-unsaturated compound reacts with R dash 2 C u L i, ether and hydronium ion to form a compound with carbonyl and beta R prime group."
+            },
+            "src": "../../media/OChem_19_EC_016.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00010",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00225:title:sect-00010-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00022",
+          "segmentId": "m00225:para:para-00022"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00026",
+          "segmentId": "m00225:para:para-00026"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00050",
+          "segmentId": "m00225:para:para-00050"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00055",
+          "segmentId": "m00225:para:para-00055"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00041",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00042",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00064",
+          "segmentId": "m00225:para:para-00064"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00043",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00044",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00045",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00046",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00047",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00048",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00071",
+          "segmentId": "m00225:para:para-00071"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00049",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00050",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00051",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00052",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00053",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00054",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00055",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00056",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00057",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00058",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00059",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00060",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00061",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00062",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00063",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00064",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 14
+}

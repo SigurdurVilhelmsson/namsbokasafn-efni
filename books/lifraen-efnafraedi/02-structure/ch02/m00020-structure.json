@@ -1,0 +1,492 @@
+{
+  "moduleId": "m00020",
+  "title": {
+    "segmentId": "m00020:title:auto-1",
+    "text": "Formal Charges"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e91e0f57-815b-44ee-9a92-86adb940e1d5"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00020:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00020:alt:fig-00001-alt",
+          "text": "Chemical structure and ball-and-stick model in electron potental map of dimethylsulfoxide. Central S has two methyl groups, oxygen, and a nonbonding pair. Sulfur is formal positive, oxygen is formal negative."
+        },
+        "src": "../../media/OChem_02_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00020:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00020:alt:fig-00002-alt",
+          "text": "Lewis structure of carbon with text reading carbon atom owns four electrons. Lewis structure of methane with text reading this carbon atom also owns 8 over 2 equals 4 electrons."
+        },
+        "src": "../../media/OChem_02_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00020:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00020:alt:fig-00003-alt",
+          "text": "Lewis structure of nitrogen showing five valence electrons. Lewis structure of ammonia with text reading this nitrogen atom also owns 6 over 2 plus 2 equals 5 electrons."
+        },
+        "src": "../../media/OChem_02_03_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00020:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00020:alt:fig-00004-alt",
+          "text": "Lewis structure of dimethyl sulfoxide with breakdown of valence, bonding, and nonbonding electrons. Sulfur owns five electrons in structure, formal positive. Oxygen owns seven electrons in structure, formal negative."
+        },
+        "src": "../../media/OChem_02_03_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00020:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00020:alt:fig-00005-alt",
+          "text": "Text image says formal charge equals number of free atom valence electrons minus number of bonded atom valence electrons (latter is half of bonding plus all nonbonding electrons)."
+        },
+        "src": "../../media/OChem_02_03_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00020:para:para-00006"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": " ",
+      "title": {
+        "segmentId": "m00020:table-title:table-00001-title",
+        "text": "A Summary of Common Formal Charges"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00020:entry:auto-14",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-15",
+              "attributes": {
+                "namest": "col2",
+                "nameend": "col4"
+              }
+            },
+            {
+              "segmentId": "m00020:entry:auto-16",
+              "attributes": {
+                "namest": "col5",
+                "nameend": "col6"
+              }
+            },
+            {
+              "segmentId": "m00020:entry:auto-17",
+              "attributes": {
+                "namest": "col7",
+                "nameend": "col8"
+              }
+            },
+            {
+              "segmentId": "m00020:entry:auto-18",
+              "attributes": {
+                "namest": "col9",
+                "nameend": "col10"
+              }
+            },
+            {
+              "segmentId": "m00020:entry:auto-19",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00020:entry:auto-20",
+              "attributes": {}
+            },
+            {
+              "segmentId": null,
+              "attributes": {},
+              "alt": {
+                "segmentId": "m00020:alt:OChem_02_03_006a_jpg-alt",
+                "text": "Structure showing carbon with three open bonds and a radical (single electron).",
+                "mediaId": null,
+                "src": "../../media/OChem_02_03_006a.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {},
+              "alt": {
+                "segmentId": "m00020:alt:OChem_02_03_006b_jpg-alt",
+                "text": "Structure showing carbon with three open bonds and a positive charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_03_006b.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {},
+              "alt": {
+                "segmentId": "m00020:alt:OChem_02_03_006c_jpg-alt",
+                "text": "Structure showing carbon with three open bonds and a positive charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_03_006c.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {},
+              "alt": {
+                "segmentId": "m00020:alt:OChem_02_03_006d_jpg-alt",
+                "text": "Structure showing nitrogen with four open bonds and a positive charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_03_006d.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {},
+              "alt": {
+                "segmentId": "m00020:alt:OChem_02_03_006e_jpg-alt",
+                "text": "Structure showing nitrogen with two open bonds, two nonbonding pairs, and a negative charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_03_006e.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {},
+              "alt": {
+                "segmentId": "m00020:alt:OChem_02_03_006f_jpg-alt",
+                "text": "Structure showing oxygen with three open bonds, a nonbonding pair, and a positive charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_03_006f.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {},
+              "alt": {
+                "segmentId": "m00020:alt:OChem_02_03_006g_jpg-alt",
+                "text": "Structure showing oxygen with one open bond, three nonbonding pairs, and a negative charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_03_006g.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {},
+              "alt": {
+                "segmentId": "m00020:alt:OChem_02_03_006h_jpg-alt",
+                "text": "Structure showing sulfur with three open bonds, a nonbonding pair, and a positive charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_03_006h.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {},
+              "alt": {
+                "segmentId": "m00020:alt:OChem_02_03_006i_jpg-alt",
+                "text": "Structure showing sulfur with one open bond, three nonbonding pairs, and a negative charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_03_006i.jpg"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {},
+              "alt": {
+                "segmentId": "m00020:alt:OChem_02_03_006j_jpg-alt",
+                "text": "Structure showing phosphorus with four open bonds and a positive charge.",
+                "mediaId": null,
+                "src": "../../media/OChem_02_03_006j.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00020:entry:auto-31",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-32",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-33",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-34",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-35",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-36",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-37",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-38",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-39",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-40",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-41",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00020:entry:auto-42",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-43",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-44",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-45",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-46",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-47",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-48",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-49",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-50",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-51",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-52",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00020:entry:auto-53",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-54",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-55",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-56",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-57",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-58",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-59",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-60",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-61",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-62",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-63",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00020:entry:auto-64",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-65",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-66",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-67",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-68",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-69",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-70",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-71",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-72",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-73",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m00020:entry:auto-74",
+              "attributes": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00020:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

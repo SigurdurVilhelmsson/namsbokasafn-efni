@@ -1,0 +1,97 @@
+{
+  "moduleId": "m00100",
+  "title": {
+    "segmentId": "m00100:title:auto-1",
+    "text": "Untitled"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "1e01b029-093e-4973-8f65-a9dc9d82614e"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00100:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00100:alt:fig-00001-alt",
+          "text": "A reaction shows 1-butene (achiral) reacting with water in the presence of an acid catalyst to form a mixture of 50 percent (S)-2-Butanol and 50 percent (R)-2-Butanol."
+        },
+        "src": "../../media/OChem_08_12_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00100:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00100:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00100:alt:fig-00002-alt",
+          "text": "A 2-pathway reaction shows sec-butyl cation (achiral) reacting with water to form (S)-2-butanol and (R)-2-butanol each with 50 percent yield via transition state 1 and transition state 2, respectively."
+        },
+        "src": "../../media/OChem_08_12_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00100:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00100:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00100:alt:fig-00003-alt",
+          "text": "A reaction shows cis-aconitate (achiral) reacting with water in the presence of aconitase to form (2 R, 3 S)-isocitrate."
+        },
+        "src": "../../media/OChem_08_12_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00100:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00100:alt:fig-00004-alt",
+          "text": "A reaction shows cis-aconitate reacting with water in the presence of aconitase to form (2 R, 3 S)-isocitrate."
+        },
+        "src": "../../media/OChem_08_12_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": 12
+}

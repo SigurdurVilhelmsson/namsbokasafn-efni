@@ -1,0 +1,124 @@
+{
+  "moduleId": "m00091",
+  "title": {
+    "segmentId": "m00091:title:auto-1",
+    "text": "Halohydrins from Alkenes: Addition of HO-X"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "db461549-23df-484a-91d9-9b331f845aeb"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00091:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00091:alt:fig-00001-alt",
+          "text": "A reaction shows an alkene reacts with dihalide in the presence of water to form a halohydrin and hydrogen halide."
+        },
+        "src": "../../media/OChem_08_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00091:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "mechanism-figure scaled-down",
+      "caption": {
+        "segmentId": "m00091:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00091:alt:fig-00002-alt",
+          "text": "A 3-step reaction mechanism shows the formation of 3-bromo-2-butanol and hydronium ion from 2-butene and molecular bromine."
+        },
+        "src": "../../media/OChem_08_03_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00091:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00091:alt:fig-00003-alt",
+          "text": "In a reaction, styrene reacts with N-bromosuccinimide in the presence of water and D M S O to form 2-bromo-1-phenylethanol with 70 percent yield."
+        },
+        "src": "../../media/OChem_08_03_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00091:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00091:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00091:alt:fig-00004-alt",
+          "text": "A reaction shows a phenyl allylic alcohol reacting with hydrogen peroxide, bromide ion at pH 3 in the presence of bromoperoxidase to form a halohydrin."
+        },
+        "src": "../../media/OChem_08_03_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00091:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 3
+}

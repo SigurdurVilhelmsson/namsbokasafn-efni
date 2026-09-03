@@ -1,0 +1,166 @@
+{
+  "moduleId": "m00243",
+  "title": {
+    "segmentId": "m00243:title:auto-1",
+    "text": "Chemistry of Acid Anhydrides"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "a28f58de-0079-45f2-b3c6-ca534123ec28"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00243:title:sect-00001-title",
+        "text": "Preparation of Acid Anhydrides"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m00243:para:para-00001"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00243:alt:fig-00001-alt",
+              "text": "Benzoyl chloride reacts with sodium acetate in ether, forming acetic benzoic anhydride. In the product structure, a benzoyl group and an acetyl group are single-bonded to an oxygen atom."
+            },
+            "src": "../../media/OChem_21_05_001.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00243:title:sect-00002-title",
+        "text": "Reactions of Acid Anhydrides"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m00243:para:para-00002"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": {
+              "segmentId": "m00243:alt:fig-00002-alt",
+              "text": "The reaction scheme shows conversion of an acid anhydride to a carboxylic acid using water (hydrolysis), ester using alcohol (alcoholysis), amide using ammonia (aminolysis), aldehyde and primary alcohol using hydride ions (reduction)."
+            },
+            "src": "../../media/OChem_21_05_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "section",
+          "id": "sect-00003",
+          "class": null,
+          "title": {
+            "segmentId": "m00243:title:sect-00003-title",
+            "text": "Conversion of Acid Anhydrides into Esters"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00003",
+              "segmentId": "m00243:para:para-00003"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00003",
+              "class": "unnumbered scaled-down",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00243:alt:fig-00003-alt",
+                  "text": "Salicylic acid reacts with acetic anhydride in aqueous sodium hydroxide, giving aspirin and acetate ion. The aspirin structure comprises of a benzene ring with carboxylic acid and methyl acetate groups attached ortho to each other."
+                },
+                "src": "../../media/OChem_21_05_003.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "sect-00004",
+          "class": null,
+          "title": {
+            "segmentId": "m00243:title:sect-00004-title",
+            "text": "Conversion of Acid Anhydrides into Amides"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "para-00004",
+              "segmentId": "m00243:para:para-00004"
+            },
+            {
+              "type": "figure",
+              "id": "fig-00004",
+              "class": "unnumbered",
+              "caption": null,
+              "media": {
+                "alt": {
+                  "segmentId": "m00243:alt:fig-00004-alt",
+                  "text": "The reaction of p-hydroxyaniline and acetic anhydride in the presence of aqueous sodium hydroxide forms an acetate ion and acetaminophen, where the para position of phenol is attached to an acetamide group."
+                },
+                "src": "../../media/OChem_21_05_004.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "para-00005",
+              "segmentId": "m00243:para:para-00005"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00005",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00243:title:sect-00005-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

@@ -1,0 +1,321 @@
+{
+  "moduleId": "m00292",
+  "title": {
+    "segmentId": "m00292:title:auto-1",
+    "text": "Basicity of Arylamines"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "0e09ccad-2651-407f-82e0-47e79d2142bd"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00292:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": {
+          "segmentId": "m00292:alt:fig-00001-alt",
+          "text": "Five resonance forms of phenylamine. Migration of electrons in double bonds and nonbonding pairs to obtain structures is denoted by arrows."
+        },
+        "src": "../../media/OChem_24_04_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00292:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00292:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": {
+          "segmentId": "m00292:alt:fig-00002-alt",
+          "text": "The energy levels of four compounds, arylamine, alkylamine, aryl ammonium ion, and alkyl ammonium ion in increasing order. Aniline reacts with hydrogen ion to form anilinium ion."
+        },
+        "src": "../../media/OChem_24_04_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00292:para:para-00003"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": "An illustration shows a hydrolysis reaction of p-substituted aniline and a table below that shows substituent Y and pK subscript a of some substituents. The strongest base is -NH2 and the weakest base is -NO2. The details are as follows: Deactivating groups: -NO2: 1.00; -CN: 1.74; -Br: 3.86; -Cl: 3.98. Activating groups: -CH3: 5.08; -OCH3: 5.34; -NH2: 6.15. Between the deactivating and activating groups is -H: 4.63. The reaction shows hydrolysis of p-substituted aniline to yield hydroxide ion and another product. The p-substituted aniline shows benzene bonded to pink Y and blue amino group that shows two electrons. The product shows benzene bonded to pink Y and blue ammonium group.",
+      "title": {
+        "segmentId": "m00292:table-title:table-00001-title",
+        "text": "Base Strength of Some [[i:p]]-Substituted Anilines"
+      },
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "center",
+                "namest": "c1",
+                "nameend": "c4"
+              },
+              "alt": {
+                "segmentId": "m00292:alt:OChem_24_04_003a_jpg-alt",
+                "text": "The reversible reaction of para-substituted amine with water to form para-substituted anilinium ion and hydroxide ion.",
+                "mediaId": null,
+                "src": "../../media/OChem_24_04_003a.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "middle",
+                "align": "left",
+                "morerows": "7"
+              },
+              "alt": {
+                "segmentId": "m00292:alt:OChem_24_04_003b_jpg-alt",
+                "text": "An arrow points upward; the bottom (blue) says weaker base, and the top (red) says stronger base.",
+                "mediaId": null,
+                "src": "../../media/OChem_24_04_003b.jpg"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-13",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-14",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-15",
+              "attributes": {
+                "valign": "middle",
+                "align": "left",
+                "morerows": "2"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00292:entry:auto-16",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00292:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00292:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00292:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-24",
+              "attributes": {
+                "valign": "middle",
+                "align": "left",
+                "morerows": "3"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00292:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00292:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00292:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00292:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00292:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 4
+}
