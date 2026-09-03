@@ -25,7 +25,9 @@
  *   - the row is RETAINED in figure_block_edit, so nothing is lost — it simply
  *     stops applying, and would apply again if the English reverted.
  *   - getFigure() and resolveFigure() return `orphans`, but buildFigurePayload
- *     DROPS the field, and no route, view, log line, CLI or test surfaces it.
+ *     DROPS the field, and no route, view, log line or CLI surfaces it. The
+ *     only place it is observed at all is figureReviewService.test.js, which
+ *     asserts it — so the behaviour is pinned, but no USER can see it.
  * So an orphaned edit is currently invisible to the editor. Reporting it is a
  * payload-contract change and is deferred; this comment exists so that a future
  * reader asking "are orphans handled?" does not find a written yes.
