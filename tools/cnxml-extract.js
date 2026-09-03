@@ -42,6 +42,7 @@ import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 import { getChapterModules } from './lib/chapter-modules.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 import { altElementId, altElementIdFromSrc } from './lib/alt-segments.js';
+import { flattenMarkersToText, scanTermMarkers } from './lib/term-text.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
 import {
   parseArgs,
@@ -2727,6 +2728,39 @@ function ensureOutputDirs(chapter) {
  * @param {string} sourceContent - Original CNXML content for hashing
  * @returns {Object} Manifest object
  */
+/**
+ * Build the id → English map render uses to emit `data-en` on each `<dfn>`.
+ *
+ * TWO POPULATIONS, TWO KEY SHAPES, ONE FLAT MAP. The key spaces are disjoint
+ * (0 collisions over the whole corpus), so a single object is unambiguous:
+ *   - glossary definition terms → the parent `<definition>` id, because the
+ *     `<term>` child carries no id of its own (765 of 1,656 injected terms);
+ *   - inline prose terms → the `<term>` id.
+ *
+ * ⚠️ Uses the DEPTH-AWARE scanner, never a character class: the corpus nests
+ * markers two levels (`[[term:Avogadro’s number ([[i:N[[sub:A]]]])|term-00003]]`)
+ * and a `[^\]]*` match truncates there — register ⑰, which put a literal
+ * `[[term:` into published CNXML.
+ *
+ * @param {Array<{id: string, type: string, text: string}>} segments
+ * @param {Object} equations - `math-N` -> { mathml }
+ * @returns {Record<string, string>}
+ */
+function buildTermEnglish(segments, equations) {
+  const out = {};
+  for (const seg of segments || []) {
+    if (seg.type === 'glossary-term') {
+      const m = /:glossary-term:(.+)-term$/.exec(seg.id || '');
+      if (m) out[m[1]] = flattenMarkersToText(seg.text, equations);
+      continue;
+    }
+    for (const marker of scanTermMarkers(seg.text || '')) {
+      if (marker.id) out[marker.id] = flattenMarkersToText(marker.body, equations);
+    }
+  }
+  return out;
+}
+
 function buildManifest(result, sourceContent) {
   const { segments, structure, equations } = result;
 
@@ -2789,6 +2823,7 @@ function buildManifest(result, sourceContent) {
     equationIds: Object.keys(equations),
     elementCounts,
     elementIds,
+    termEnglish: buildTermEnglish(segments, equations || {}),
   };
 }
 
@@ -3039,4 +3074,8 @@ export {
   assertNoDroppedListBlocks,
   hasExtractTarget,
   mtLockWarnings,
+  // Test seam: buildManifest is internal, but its `termEnglish` map is a
+  // contract with cnxml-render.js and must be testable without writing to books/.
+  buildManifest as buildManifestForTest,
+  buildTermEnglish,
 };

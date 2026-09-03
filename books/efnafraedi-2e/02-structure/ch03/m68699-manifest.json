@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68699",
-  "extractedAt": "2026-09-01T16:51:41.225Z",
+  "extractedAt": "2026-09-03T16:23:49.692Z",
   "sourceHash": "7be84bc79f21ea85",
   "segmentCount": 4,
   "segmentIds": [
@@ -35,5 +35,6 @@
     "note": [],
     "equation": [],
     "section": []
-  }
+  },
+  "termEnglish": {}
 }

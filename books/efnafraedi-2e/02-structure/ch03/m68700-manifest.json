@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68700",
-  "extractedAt": "2026-09-01T16:51:41.260Z",
+  "extractedAt": "2026-09-03T16:23:49.743Z",
   "sourceHash": "8b0d4d033c6a1cce",
   "segmentCount": 312,
   "segmentIds": [
@@ -461,5 +461,15 @@
       "fs-idp1413072",
       "fs-idp13430448"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "formula mass",
+    "term-00002": "mole",
+    "term-00003": "Avogadro’s number (NA)",
+    "term-00004": "molar mass",
+    "fs-idp40901280": "Avogadro’s number (NA)",
+    "fs-idp40905984": "formula mass",
+    "fs-idp40907280": "molar mass",
+    "fs-idp40908432": "mole"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00034",
-  "extractedAt": "2026-09-01T16:52:33.476Z",
+  "extractedAt": "2026-09-03T16:23:50.069Z",
   "sourceHash": "e2329760b1667a15",
   "segmentCount": 39,
   "segmentIds": [
@@ -83,5 +83,9 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "alkyl group",
+    "term-00002": "R"
   }
 }

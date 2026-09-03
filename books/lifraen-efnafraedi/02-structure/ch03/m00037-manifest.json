@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00037",
-  "extractedAt": "2026-09-01T16:52:33.486Z",
+  "extractedAt": "2026-09-03T16:23:50.089Z",
   "sourceHash": "ec3c71f1fa8f795b",
   "segmentCount": 14,
   "segmentIds": [
@@ -48,5 +48,16 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Stereochemistry",
+    "term-00002": "conformations",
+    "term-00003": "conformational isomers",
+    "term-00004": "conformers",
+    "term-00005": "sawhorse representation",
+    "term-00006": "Newman projection",
+    "term-00007": "staggered conformation",
+    "term-00008": "eclipsed conformation",
+    "term-00009": "torsional strain"
   }
 }
