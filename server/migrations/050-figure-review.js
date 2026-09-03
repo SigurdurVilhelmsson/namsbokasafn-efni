@@ -14,8 +14,21 @@
  * ⚠️ block_key is CONTENT-ADDRESSED ("Boiling|point|of water"), never positional.
  * Re-extraction renumbers positional auto-N ids, which would silently rebind an
  * editor's correction to a DIFFERENT label. Content addressing orphans the edit
- * instead, which is correct — changed English deserves a fresh look — and the
- * CLI names orphans rather than dropping them.
+ * instead, which is correct — changed English deserves a fresh look.
+ *
+ * ⚠️ WHAT HAPPENS TO AN ORPHANED EDIT, precisely — this comment used to claim
+ * "the CLI names orphans rather than dropping them", and THERE IS NO SUCH CLI.
+ * What the code actually does:
+ *   - resolveBlocks() computes the orphan list and EXCLUDES those edits from
+ *     blocks, and therefore from the render hash and the committed sidecar.
+ *     That part is right: a phantom block must not ride into either.
+ *   - the row is RETAINED in figure_block_edit, so nothing is lost — it simply
+ *     stops applying, and would apply again if the English reverted.
+ *   - getFigure() and resolveFigure() return `orphans`, but buildFigurePayload
+ *     DROPS the field, and no route, view, log line, CLI or test surfaces it.
+ * So an orphaned edit is currently invisible to the editor. Reporting it is a
+ * payload-contract change and is deferred; this comment exists so that a future
+ * reader asking "are orphans handled?" does not find a written yes.
  */
 
 /**
