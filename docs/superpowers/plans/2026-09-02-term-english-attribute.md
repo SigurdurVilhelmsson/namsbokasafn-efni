@@ -2,6 +2,119 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
+---
+
+## 🔴 AMENDMENTS — 2026-09-03, MEASURED. READ BEFORE ANY TASK.
+
+**Tasks 1 and 2 are DONE and shipped** (`b0abe8d8`, `cd615b9c`, `92f1ab81` on
+`feat/term-english-data-attribute`). **Tasks 3–6 are NOT SAFE TO EXECUTE AS WRITTEN** —
+each carries at least one premise that a 24-agent adversarial audit falsified against the
+tree and could not refute on re-attack. Every item below was settled by execution, not by
+reading. Fix the plan text before working the step, or you will write code that changes no
+rendered byte and tests that pass while asserting nothing.
+
+### Global — the Known-red baseline is dead, and so is its METHOD
+- **"red on 60 tests / 18 files" is a pre-⑱ figure**, measured 10+ commits ago. The eight
+  §C118 ⑱ red-clearing commits plus the two ruling commits (`5a01f2b7`, `58b0031e`) are all
+  ancestors of HEAD; the plan was committed *before* them. The register's live figure is
+  **19 assertions / 10 files, plus `findTermsGolden` as an 11th red FILE with zero failing
+  assertions**.
+- 🔴 **AND 60 WAS NEVER A TEST COUNT.** The plan's own cited source,
+  `test-results/c118-53-goldens-classification-2026-09-01.json`, reads
+  `totals: {files: 16, findings: 60, disputes: 59}` — **60 counts agent FINDINGS over 16
+  files**. The plan transposed a counting unit and then used it as a gate.
+- ▶ **Replace the criterion, not just the number.** A count is the wrong acceptance test:
+  capture the failing-test-NAME set on this branch before Task 3, **strip vitest's per-run
+  `NNms` suffix** (it invented 18 false "newly red" entries on 2026-09-02), then assert
+  set-equality in BOTH directions, with a planted row proving the comparator fires. A
+  `beforeAll` timeout converts a file's assertions to SKIPS, so a real red can go *missing*
+  rather than appear.
+
+### Task 1 — CORRECTED AND SHIPPED, but the reason matters for Task 2 onward
+- 🔴 **Step 5's rewire was NOT behaviour-identical: it silently folded MathML case.**
+  `stripTermMarkersToText` lowercases **before** substituting MathML, so symbols escape the
+  fold; routing it through a single `flattenMarkersToText` folds them too. Measured with the
+  real equations maps: **6 real inputs** — `ΔHf° → δhf°`, `ΔGf° → δgf°`, `Eker° → eker°`.
+  Both call sites **write** this into output CNXML as `(e. …)`, and the affected glosses are
+  in **published HTML today** (`05-publication/mt-preview/chapters/05/5-key-terms.html`,
+  `.../17/17-key-terms.html`).
+- ⚠️ **The invariant was already written down** — in `stripTermMarkersToText`'s own docstring,
+  naming it "the m68852 invariant" and spelling out *"ΔHf° must not become δhf°"*. The plan
+  was written against that code anyway. **A comment stating a rule is not the rule.**
+- ⚠️ **Step 6's remedy text would have shipped the bug.** The whitespace half of the change
+  breaks three *committed* assertions (`cnxml-inject.test.js:2086/:2089/:2095`), so the suite
+  goes red — but for the whitespace reason only, and Step 6 says *"differs … in a way beyond
+  case; diff the two functions and fix"*. Fixing the whitespace turns Step 6 green and ships
+  `δhf°`: **no existing test covered the case invariant**, because its MathML fixture is the
+  already-lowercase `x`.
+- ✅ Shipped fix: three primitives (`stripInlineMarkers` / `resolveMathPlaceholders` /
+  `flattenMarkersToText`), wrapper composes strip → lowercase → resolve. Verified by value
+  over **82,979 real call-site inputs, 0 divergences**, with a control that catches the
+  plan's version.
+
+### Task 3 — TWO BLOCKING ERRORS
+- 🔴 **"Site 1", `renderTerm` (`cnxml-elements.js:646`), IS DEAD CODE — zero callers anywhere
+  in the repo.** Patching it changes no rendered byte, and Step 1's tests import it
+  *directly*, so they would go green while asserting on an unreachable function. Control: the
+  same search finds `renderGlossary`'s call site, so the instrument works.
+- 🔴 **Step 6's own verification command returns EMPTY and the plan has no branch for that.**
+  There is no `const BOOKS_DIR`. It is `let BOOKS_DIR = DEFAULT_BOOKS_DIR` (`:149`) where
+  `const DEFAULT_BOOKS_DIR = 'books/efnafraedi-2e'` (`:148`) — a **bare relative literal**,
+  reassigned only inside `main()`. A worker following the text literally proceeds with a
+  cwd-relative path, violating the plan's own Global Constraint.
+- 🔴 **And the server never calls `main()`.** It calls `renderCnxmlToHtml` **in-process** for
+  the editor's live preview with `cwd=server/`, so `BOOKS_DIR` stays at its relative default
+  and `loadTermEnglish` would read `server/books/efnafraedi-2e/02-structure/…` — a miss for
+  every book, **silently swallowed by the plan's own bare `catch { return {map:{}} }`**, exit
+  0, no `data-en`. For a non-chemistry book it would also use the wrong slug.
+
+### Task 4 — THE ARCHITECTURE IS WRONG, NOT THE STEPS
+- 🔴 **A glossary definition's `<term>` NEVER reaches the id-less `<dfn>` branch, so Task 4 as
+  written annotates 0 of the 763 in-definition terms.** Both glossary renderers strip the
+  `<term>` tag *before* calling `processInlineContent` (`renderGlossary` matches
+  `/<term>([\s\S]*?)<\/term>/` and passes `termMatch[1]`).
+- 🔴 **There is a FOURTH `<dfn>`-bearing site the plan never names: `renderCompiledGlossary`
+  (`cnxml-render.js:2511`, called at `:3798`)** — and it is the one that builds the chapter
+  key-terms page, i.e. the page where these glosses are most visible.
+- ▶ This is exactly what the spec warned about in its own §4.2: *"Site 3 is 46% of the corpus
+  and is the one a plan omits … Do not treat this enumeration as complete."* **Re-derive the
+  emit sites from the rendered output before writing Task 4.**
+
+### Task 5 — THE GUARD CANNOT DETECT WHAT IT IS FOR
+- 🔴 **Both sides of the proposed comparison hash the SAME immutable file.** Measured across
+  the **14 committed manifest vintages of m68700**: `sourceHash` is byte-identical
+  (`8b0d4d033c6a1cce`) in all 14, while `segmentCount` moves **282 → 312**. That 282→312 *is*
+  an extraction-vintage shift, and the guard is silent on it.
+- 🔴 **Its stated rationale is also false: extract does not MINT term ids.** It passes through
+  the id already present in READ-ONLY `01-source` (`cnxml-extract.js:427`). Since `01-source`
+  cannot change, a re-extraction cannot shift them.
+- ▶ A vintage guard is still worth having — but it must compare something that actually moves
+  between vintages (`segmentCount`, or the segment-id set), not `sourceHash`.
+
+### Task 6 — FOUR OF SIX ASSERTIONS ARE UNREACHABLE
+- 🔴 Chemistry ch03 renders **20 `<dfn>`**, so `toBeGreaterThan(30)` is false and
+  `toBeGreaterThanOrEqual(32)` is unreachable — **32 counts `<term>` elements in CNXML
+  (16 id-bearing + 16 id-less), not rendered `<dfn>`**. And `idLess.length > 0` is false:
+  **0 id-less `<dfn>` exist** in that output, per the Task 4 finding above.
+
+### Smaller, recorded so they are not re-derived
+- ⚠️ **The "1,005 flattened glosses" figure (plan lines 73, 181, 377) reproduces under NO
+  counting unit.** Over `05-publication/**/*.html`: 3,072 gloss occurrences · 1,401 distinct
+  gloss strings · 2,113 distinct (file, gloss) pairs · 1,202 `<dfn>` elements carrying a
+  gloss. **State the unit or drop the number.**
+- ⚠️ **Key-space disjointness holds for the two live books but NOT corpus-wide** — 6 id values
+  serve as both a `<term>` id and a `<definition>` id, all in `edlisfraedi-2e` (retired). The
+  flat map is safe today; assert disjointness per module rather than assuming it globally.
+- ⚠️ **Step 2's expected failure text is imprecise.** Vitest 4 does not fail at link time on a
+  missing named export; the observed failure is a runtime `TypeError:
+  buildManifestForTest is not a function`. Same outcome, different reason.
+- ⚠️ **Read a math label through the REAL pipeline.** `applyMathLabelSubstitution` runs first,
+  so the shipped value is the Icelandic `Eker°`, not the `Ecell°` a raw replay of
+  `equations.json` reports. A probe that skips a pipeline stage reports plausible, wrong
+  strings.
+
+---
+
 **Goal:** Emit each term's English as a `data-en` attribute on the rendered `<dfn>`, so the visible gloss becomes vefur's presentation decision instead of text spliced into the translation.
 
 **Architecture:** `cnxml-extract.js` writes a per-module `termEnglish` map into the existing `02-structure/…-manifest.json`, keyed on the id the rendered CNXML exposes (an inline `<term id>`, or the parent `<definition id>` for glossary terms). `cnxml-render.js` threads that map through the `context` object it already builds and emits `data-en` at the three `<dfn>` call sites. No CNXML changes; no new artifact; no fuzzy matching.

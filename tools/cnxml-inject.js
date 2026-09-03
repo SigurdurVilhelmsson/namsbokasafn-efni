@@ -851,7 +851,7 @@ function stripTermMarkersToText(text, equations, { trim = false } = {}) {
   // 🔴 THE ORDER IS LOAD-BEARING — DO NOT COLLAPSE THIS INTO flattenMarkersToText().
   // Folding case BEFORE resolving MATH is what lets MathML-derived symbols escape
   // the fold. Route this through the flattener instead — which resolves MATH first
-  // — and ΔHf° becomes δhf°, ΔGf° becomes δgf°, Ecell° becomes ecell°. Measured
+  // — and ΔHf° becomes δhf°, ΔGf° becomes δgf°, Eker° becomes eker°. Measured
   // over the real corpus with real equations maps: 6 inputs, every one a chemistry
   // symbol, and both call sites WRITE this value into output CNXML as "(e. …)", so
   // it reaches readers. Δ and δ are different symbols.

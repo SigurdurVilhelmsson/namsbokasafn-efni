@@ -124,10 +124,13 @@ describe('stripTermMarkersToText — the two live callers must not change', () =
     );
   });
 
-  it('🔴 keeps Ecell° unfolded — the glossary-term shape, site B', () => {
-    const eq = { 'math-1': { mathml: '<m:mi>Ecell°</m:mi>' } };
+  it('🔴 keeps Eker° unfolded — the glossary-term shape, site B', () => {
+    // "Eker°" and not "Ecell°": applyMathLabelSubstitution runs BEFORE this, so
+    // the value that actually ships is the Icelandic label. It is in published
+    // output today — 05-publication/mt-preview/chapters/17/17-key-terms.html.
+    const eq = { 'math-1': { mathml: '<m:mi>Eker°</m:mi>' } };
     expect(stripTermMarkersToText('standard cell potential ([[MATH:1]])', eq, { trim: true })).toBe(
-      'standard cell potential (Ecell°)'
+      'standard cell potential (Eker°)'
     );
   });
 

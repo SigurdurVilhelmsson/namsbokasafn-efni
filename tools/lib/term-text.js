@@ -19,11 +19,23 @@
  * inputs — 1 of 1,406 [[term:]] bodies and 5 of 763 glossary-term segments —
  * and every one destroys a chemistry symbol:
  *
- *     ΔHf° → δhf°     ΔGf° → δgf°     Ecell° → ecell°     ΔHc° → δhc°
+ *     ΔHf° → δhf°     ΔGf° → δgf°     Eker° → eker°     ΔHc° → δhc°
  *
  * Δ (change in) and δ (partial) are DIFFERENT SYMBOLS in chemistry, and both
  * call sites write this value into output CNXML as "(e. …)", so the corruption
- * is reader-visible. Pinned by tools/__tests__/term-text.test.js.
+ * is reader-visible. It is visible in ALREADY-PUBLISHED output today:
+ * books/efnafraedi-2e/05-publication/mt-preview/chapters/05/5-key-terms.html
+ * carries "(e. standard enthalpy of formation (ΔHf°)" and chapters/17 carries
+ * "(e. standard cell potential (Eker°)". Pinned by term-text.test.js.
+ *
+ * ⚠️ THE INVARIANT WAS ALREADY WRITTEN DOWN — in stripTermMarkersToText's own
+ * docstring, which names it as "the m68852 invariant" and spells out
+ * "ΔHf° must not become δhf°". A plan was written against this code anyway.
+ * A COMMENT STATING A RULE IS NOT THE RULE; this file's tests are.
+ *
+ * ⚠️ And read the label through the REAL pipeline, not through equations.json:
+ * applyMathLabelSubstitution runs first, so the shipped value is the Icelandic
+ * "Eker°", not the "Ecell°" a raw replay of the equations map reports.
  *
  * ⚠️ NO toLowerCase() ANYWHERE IN THIS FILE. The original lowercased because
  * its callers compare case-insensitively; that flattened proper nouns in
