@@ -233,9 +233,9 @@ function computeRenderHash(blocks, composerVersion) {
   const h = crypto.createHash('sha256');
   h.update(String(composerVersion));
   for (const k of Object.keys(blocks).sort()) {
-    h.update(' '); // separator that cannot appear in a block key
+    h.update('\0'); // separator that cannot appear in a block key
     h.update(k);
-    h.update(' ');
+    h.update('\0');
     h.update(String(blocks[k]));
   }
   return h.digest('hex').slice(0, 16);
