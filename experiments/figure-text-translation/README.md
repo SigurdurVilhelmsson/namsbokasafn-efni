@@ -126,6 +126,35 @@ node render-check.mjs out/control.svg out/browser.png   # render it as a reader 
 
 `pdftocairo` (poppler-utils) must be on `PATH`.
 
+### Composing a figure that has a committed sidecar
+
+`compose.py --translations <path>` accepts a book's **committed sidecar**
+(`books/<slug>/figure-text/<basename>.is.json`) directly — it reads `.blocks`, so a sidecar and a
+bare `translations.json` are both valid input.
+
+```bash
+python3 compose.py --svg --translations ../../books/efnafraedi-2e/figure-text/CNX_Chem_01_01_SciMethod.is.json
+```
+
+On a **successful, non-`--control`, `--svg`** run it then copies the sidecar's own `renderHash`
+into `composedHash`, which is what turns the editor's badge from `MT-PREVIEW` to `APPROVED`
+(REGISTER.md Ⓒ). ⚠️ **It copies; it never hashes** — `computeRenderHash` is JS, and a Python twin
+would be two implementations of one rule. A `--control` run or a PNG-only run stamps nothing,
+because neither produced the published artefact.
+
+⚠️ **The SVG still lands in `out/`, not in `books/<slug>/media/`** — publishing it is a manual
+copy today, and the honest limits of what the stamp asserts are recorded as **REGISTER.md ⑰**.
+
+Python tests here are plain scripts and are **not** run by `npm test` or CI (both are node-only):
+
+```bash
+python3 test_figtext_normalise.py
+python3 test_composed_hash.py
+```
+
+The two rules they exist to protect are ALSO pinned from JS, in
+`tools/__tests__/figure-text-sidecar.test.js`, so the authoritative gate can see them.
+
 ⚠️ **The oracle must be the 200 dpi jpg** — the one in `books/*/01-source/media/`.
 OpenStax also ship a 72 dpi version of every figure; that is a different asset and
 `check.py` will refuse it on a size mismatch. Nothing in this pipeline needs it.

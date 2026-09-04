@@ -47,6 +47,29 @@ describe('buildFigurePayload', () => {
     const p = buildFigurePayload('CNX_T', { ...fig, blocks: { k: 'Suðumark' } }, '');
     expect(p.warnings).toEqual({ decimal: [], caption: [] });
   });
+
+  // ⚠️ Bound to a VALUE, not merely asserted present. The whole-branch review
+  // found `note` returned by every payload and bound by NO assertion, so its
+  // removal would have gone unnoticed; this is the same field one over.
+  it('carries the imageUrl it was given, verbatim', () => {
+    const url = '/api/segment-editor/efnafraedi-2e/1/m1/figures/CNX_T/image';
+    expect(buildFigurePayload('CNX_T', fig, '', url).imageUrl).toBe(url);
+  });
+
+  it('a figure with no translated image carries imageUrl null, not a dangling URL', () => {
+    // null is load-bearing: the client renders NOTHING for null, and a URL that
+    // 404s would put a broken-image icon on every untranslated figure.
+    expect(buildFigurePayload('CNX_T', fig, '', null).imageUrl).toBeNull();
+  });
+
+  it('omitting the argument yields null, never undefined', () => {
+    // JSON.stringify DROPS an undefined value, so the client would see no key
+    // at all and `fig.imageUrl` would be undefined rather than null — the same
+    // falsy behaviour today, and a silently different contract tomorrow.
+    const p = buildFigurePayload('CNX_T', fig, '');
+    expect(p.imageUrl).toBeNull();
+    expect(Object.prototype.hasOwnProperty.call(p, 'imageUrl')).toBe(true);
+  });
 });
 
 // =====================================================================
@@ -70,8 +93,8 @@ const EDITOR = { id: 'u-ed1', username: 'editor1', role: 'editor', books: [] };
 let svc;
 let segmentParser;
 let realBooksDir;
-let getFiguresH, postBlockH, postStateH;
-let getFiguresLayer, postBlockLayer, postStateLayer;
+let getFiguresH, postBlockH, postStateH, getImageH;
+let getFiguresLayer, postBlockLayer, postStateLayer, getImageLayer;
 let booksDir;
 
 function invoke(h, req) {
@@ -81,21 +104,35 @@ function invoke(h, req) {
   });
   const res = {
     statusCode: 200,
+    // `sent` is the SPY that makes "refused before any file was served"
+    // checkable. Both terminators report it, so a refusal asserts sent===null
+    // rather than merely asserting the absence of a key.
+    sent: null,
     status(c) {
       this.statusCode = c;
       return this;
     },
     json(body) {
-      resolveResult({ status: this.statusCode, body });
+      resolveResult({ status: this.statusCode, body, sent: this.sent });
+    },
+    sendFile(name, opts) {
+      this.sent = { name, root: opts && opts.root };
+      resolveResult({ status: this.statusCode, body: null, sent: this.sent });
     },
   };
   return Promise.resolve(h(req, res)).then(() => done);
 }
 
+// baseUrl is what Express supplies from app.use('/api/segment-editor', …) and is
+// where the image URL's prefix comes from. Hardcoding it in the service would
+// have made the route un-remountable; supplying it here mirrors production.
+const MOUNT = '/api/segment-editor';
+
 const req = (o = {}) => ({
   chapterNum: 1,
   user: EDITOR,
   body: {},
+  baseUrl: MOUNT,
   ...o,
   params: { book: BOOK, chapter: '1', moduleId: MODULE, ...(o.params || {}) },
 });
@@ -175,9 +212,11 @@ beforeAll(() => {
   getFiguresLayer = find('/:book/:chapter/:moduleId/figures', 'get');
   postBlockLayer = find('/:book/:chapter/:moduleId/figures/:basename/block', 'post');
   postStateLayer = find('/:book/:chapter/:moduleId/figures/:basename/state', 'post');
+  getImageLayer = find('/:book/:chapter/:moduleId/figures/:basename/image', 'get');
   getFiguresH = getFiguresLayer.route.stack.at(-1).handle;
   postBlockH = postBlockLayer.route.stack.at(-1).handle;
   postStateH = postStateLayer.route.stack.at(-1).handle;
+  getImageH = getImageLayer.route.stack.at(-1).handle;
 });
 
 afterAll(() => {
@@ -186,24 +225,57 @@ afterAll(() => {
   rmSync(work, { recursive: true, force: true });
 });
 
+/**
+ * The book's translated-image map, plus (optionally) the file it names.
+ *
+ * Rewritten on EVERY test rather than once in beforeAll, deliberately: a
+ * process-lifetime cache of image-mapping.json would serve a stale map after a
+ * re-run of generate-image-mapping, and tests that vary the mapping between
+ * requests are what prove no such cache exists.
+ */
+function writeImageMapping(entries, { withFile = true } = {}) {
+  const mediaDir = path.join(booksDir, BOOK, 'media');
+  rmSync(mediaDir, { recursive: true, force: true });
+  mkdirSync(mediaDir, { recursive: true });
+  writeFileSync(path.join(mediaDir, 'image-mapping.json'), JSON.stringify(entries, null, 1));
+  if (withFile) {
+    for (const e of entries) writeFileSync(path.join(mediaDir, e.outputName), '<svg/>');
+  }
+}
+
+const MAPPED = [{ originalImage: TRANSLATED, outputName: `${TRANSLATED}_IS.svg` }];
+
 beforeEach(() => {
   const db = svc.getDb();
   db.exec('DELETE FROM figure_review; DELETE FROM figure_block_edit;');
   writeSidecarFixture({ Celsius: 'Selsíus', Boiling: 'Suðumark 373.15 K' });
+  writeImageMapping(MAPPED);
 });
 
 describe('route registration', () => {
-  it('all three routes are registered', () => {
+  it('all four routes are registered', () => {
     expect(getFiguresLayer).toBeTruthy();
     expect(postBlockLayer).toBeTruthy();
     expect(postStateLayer).toBeTruthy();
+    expect(getImageLayer).toBeTruthy();
   });
 
   it('every route carries validateModule — moduleId reaches path.join too', () => {
     const { validateModule } = require('../middleware/validateParams');
-    for (const layer of [getFiguresLayer, postBlockLayer, postStateLayer]) {
+    for (const layer of [getFiguresLayer, postBlockLayer, postStateLayer, getImageLayer]) {
       expect(layer.route.stack.map((l) => l.handle)).toContain(validateModule);
     }
+  });
+
+  it("the image route's requireRole gate FIRES: viewer -> 403", async () => {
+    // The image route mirrors the READ chain, so its gate is requireRole at the
+    // same index — not requireBookAccess, which the two write routes carry.
+    expect(getImageLayer.route.stack).toHaveLength(5);
+    const out = await invoke(getImageLayer.route.stack[1].handle, {
+      params: { book: BOOK, chapter: '1', moduleId: MODULE, basename: TRANSLATED },
+      user: { id: 'v1', username: 'v', role: 'viewer' },
+    });
+    expect(out.status).toBe(403);
   });
 
   // Invoke the gate at its known index rather than sweeping the chain:
@@ -286,6 +358,118 @@ describe('GET /figures', () => {
     const out = await invoke(getFiguresH, req({ params: { moduleId: 'm99999' } }));
     expect(out.status).toBe(200);
     expect(out.body.figures).toEqual([]);
+  });
+
+  it('carries the image URL of the route that serves it, built server-side', async () => {
+    const out = await invoke(getFiguresH, req());
+    expect(out.body.figures[0].imageUrl).toBe(
+      `${MOUNT}/${BOOK}/1/${MODULE}/figures/${TRANSLATED}/image`
+    );
+  });
+
+  it('a figure with no mapping entry carries imageUrl null', async () => {
+    writeImageMapping([]);
+    const out = await invoke(getFiguresH, req());
+    // The figure itself is still listed — only its picture is missing. Losing
+    // the CARD would silently drop reviewable text.
+    expect(out.body.figures.map((f) => f.basename)).toEqual([TRANSLATED]);
+    expect(out.body.figures[0].imageUrl).toBeNull();
+  });
+
+  it('a mapping entry whose FILE is absent carries imageUrl null', async () => {
+    // Mapped-but-missing is the real corpus state for any book whose figures
+    // have not been composed yet. A URL here would render a broken image.
+    writeImageMapping(MAPPED, { withFile: false });
+    const out = await invoke(getFiguresH, req());
+    expect(out.body.figures[0].imageUrl).toBeNull();
+  });
+});
+
+describe('translatedImageFor', () => {
+  const bookDir = () => path.join(booksDir, BOOK);
+
+  it('resolves the English basename FORWARD to the mapping outputName', () => {
+    // Forward, not by string-building a suffix: DEFAULT_SUFFIX ('_IS') is an
+    // enforceable value owned by tools/generate-image-mapping.js and must not
+    // be restated on the server side.
+    expect(svc.translatedImageFor(bookDir(), TRANSLATED)).toEqual({
+      root: path.join(bookDir(), 'media'),
+      name: `${TRANSLATED}_IS.svg`,
+    });
+  });
+
+  it('returns null for a basename the mapping does not name', () => {
+    expect(svc.translatedImageFor(bookDir(), PLAIN)).toBeNull();
+  });
+
+  it('returns null when the mapping names a file that is not on disk', () => {
+    writeImageMapping(MAPPED, { withFile: false });
+    expect(svc.translatedImageFor(bookDir(), TRANSLATED)).toBeNull();
+  });
+
+  it('re-reads the mapping — a regenerated map is picked up without a restart', () => {
+    expect(svc.translatedImageFor(bookDir(), TRANSLATED)).not.toBeNull();
+    writeImageMapping([{ originalImage: TRANSLATED, outputName: `${TRANSLATED}_NEW.svg` }]);
+    expect(svc.translatedImageFor(bookDir(), TRANSLATED).name).toBe(`${TRANSLATED}_NEW.svg`);
+  });
+});
+
+describe('GET /figures/:basename/image', () => {
+  it('serves the mapped file from the book media dir, by root-relative name', () => {
+    // res.sendFile with a `root` confines the name; passing an absolute path
+    // would re-open send()'s dotfiles trap, which this repo has been bitten by
+    // twice (views.js, dd6c366b and dc94fc52).
+    return invoke(getImageH, req({ params: { basename: TRANSLATED } })).then((out) => {
+      expect(out.sent).toEqual({
+        name: `${TRANSLATED}_IS.svg`,
+        root: path.join(booksDir, BOOK, 'media'),
+      });
+    });
+  });
+
+  it('rejects a traversing basename before any filesystem access', async () => {
+    const out = await invoke(getImageH, req({ params: { basename: '../../../etc/passwd' } }));
+    expect(out.status).toBe(400);
+    expect(out.body.error).toContain('Invalid figure basename');
+    expect(out.sent).toBeNull();
+  });
+
+  it('refuses a figure from ANOTHER module with the membership 404, and serves nothing', async () => {
+    // OFF_MODULE has a sidecar AND could be given a mapping entry, so only the
+    // module-membership check can refuse it. Asserting the message pins WHICH
+    // guard fired; asserting sent===null pins that it fired BEFORE any file
+    // left the server.
+    writeImageMapping([
+      ...MAPPED,
+      { originalImage: OFF_MODULE, outputName: `${OFF_MODULE}_IS.svg` },
+    ]);
+    const out = await invoke(getImageH, req({ params: { basename: OFF_MODULE } }));
+    expect(out.status).toBe(404);
+    expect(out.body.error).toContain(`No such figure in ${MODULE}`);
+    expect(out.sent).toBeNull();
+  });
+
+  it('an unmapped figure is a 404, not a 500 or an empty 200', async () => {
+    writeImageMapping([]);
+    const out = await invoke(getImageH, req({ params: { basename: TRANSLATED } }));
+    expect(out.status).toBe(404);
+    expect(out.sent).toBeNull();
+  });
+
+  it('a figure with no sidecar is a 404 — it has no Icelandic text to review', async () => {
+    const out = await invoke(getImageH, req({ params: { basename: PLAIN } }));
+    expect(out.status).toBe(404);
+    expect(out.sent).toBeNull();
+  });
+
+  it('an unregistered book is a clean 404', async () => {
+    const out = await invoke(
+      getImageH,
+      req({ params: { book: 'engin-bok', basename: TRANSLATED } })
+    );
+    expect(out.status).toBe(404);
+    expect(out.body.error).toContain('not registered');
+    expect(out.sent).toBeNull();
   });
 });
 
@@ -394,14 +578,40 @@ describe('POST /figures/:basename/block', () => {
 describe('POST /figures/:basename/state', () => {
   it('approves a figure that has no figure_review row yet', async () => {
     // Day one: the row does not exist, and setState() is an UPDATE. Without the
-    // route minting the row first this returns mt-preview and writes nothing.
+    // route minting the row first this writes nothing at all.
     const out = await invoke(
       postStateH,
       req({ params: { basename: TRANSLATED }, body: { state: 'approved' } })
     );
     expect(out.status).toBe(200);
-    expect(out.body).toEqual({ ok: true, effectiveState: 'approved' });
+    // ⚠️ 'mt-preview', and that is the [USER]-ruled answer ([C], 2026-09-04),
+    // not a regression. Approving does not run the composer — nothing in this
+    // server invokes compose.py — so the published SVG still carries the
+    // pre-approval text and no reader can see the approval yet. The row count
+    // below is what proves the approval WAS recorded; the two together are the
+    // whole point of the inversion.
+    expect(out.body).toEqual({ ok: true, effectiveState: 'mt-preview' });
     expect(svc.getDb().prepare('SELECT COUNT(*) c FROM figure_review').get().c).toBe(1);
+    expect(svc.getDb().prepare('SELECT state FROM figure_review').get().state).toBe('approved');
+  });
+
+  it('reports approved once the sidecar carries a matching composedHash', () => {
+    // The positive control for the test above. Without it, "approving yields
+    // mt-preview" is equally consistent with an approval path that is simply
+    // broken — and a suite in which nothing ever reaches 'approved' could not
+    // tell the two apart.
+    return invoke(
+      postStateH,
+      req({ params: { basename: TRANSLATED }, body: { state: 'approved' } })
+    ).then(async () => {
+      const p = path.join(booksDir, BOOK, 'figure-text', `${TRANSLATED}.is.json`);
+      const side = JSON.parse(readFileSync(p, 'utf-8'));
+      // Stand in for compose.py, which copies renderHash into composedHash.
+      writeFileSync(p, JSON.stringify({ ...side, composedHash: side.renderHash }, null, 1));
+
+      const after = await invoke(getFiguresH, req());
+      expect(after.body.figures[0].effectiveState).toBe('approved');
+    });
   });
 
   it('writes the committed sidecar so the renderer sees the approval', async () => {

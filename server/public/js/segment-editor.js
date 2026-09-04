@@ -364,11 +364,16 @@
    * quotes BY CONSTRUCTION (`the module's caption/alt uses "X"`), so a
    * `value="${text}"` template would break the attribute or inject markup.
    *
-   * ⚠️ No <img>: nothing serves the published figures to this app (there is no
-   * /content mount — express.static covers server/public only), so the URL the
-   * plan sketched would 404 for every book, and building it here would also
-   * hardcode DEFAULT_SUFFIX ('_IS'), whose owner is tools/generate-image-mapping.js.
-   * A server-supplied image URL in the /figures payload is the clean fix.
+   * ⚠️ The <img> URL is SERVER-SUPPLIED, in fig.imageUrl, and this file must
+   * never build one. Two measured reasons: this app serves no /content mount
+   * (express.static covers server/public only), so the URL the plan originally
+   * sketched would have 404'd on every card for every book; and assembling the
+   * filename here would hardcode DEFAULT_SUFFIX, whose owner is
+   * tools/generate-image-mapping.js and which CLAUDE.md says to read from its
+   * owner rather than restate. The server resolves it FORWARD through
+   * books/<slug>/media/image-mapping.json instead, and sends null when the
+   * figure has no translated image — which is most of them.
+   * Pinned by server/__tests__/figureCardImagePins.test.js.
    */
   function figureCardsContainer() {
     return document.getElementById('figure-cards');
@@ -466,6 +471,20 @@
     badge.textContent = state.toUpperCase();
     header.append(name, badge);
     card.appendChild(header);
+
+    // The picture the text belongs to. Rendered ONLY when the server offered a
+    // URL: a figure whose image has not been composed yet gets no element at
+    // all, rather than a broken-image icon on a card that is otherwise fine.
+    if (fig.imageUrl) {
+      const img = document.createElement('img');
+      img.className = 'figure-card-image';
+      img.setAttribute('data-figure-image', '');
+      img.alt = `Þýdd mynd: ${basename}`;
+      img.loading = 'lazy';
+      // Through the DOM, never innerHTML — the rule this whole card follows.
+      img.src = fig.imageUrl;
+      card.appendChild(img);
+    }
 
     // Only ever non-null once a review row exists (a flag or an approval note).
     if (fig.note) {
