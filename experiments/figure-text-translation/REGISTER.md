@@ -66,7 +66,26 @@ consistency checks, and an editor surface. Branch **`feat/figure-text-review`**,
 ▶ **Per-task state lives in that plan's SDD ledger and in `git log`, never here** — a task
 count written into prose is stale by the next commit.
 
-**Next action after that branch lands:** ⑭ (number localization — the LOCALIZE class still
+⏩ **RESUME POINT — the next two pieces of work, in order.** Both are [USER]-ruled and briefed
+**verbatim** in `docs/superpowers/plans/2026-09-04-figure-text-followups.md`. **Read that file
+before designing either; each rules out an approach that looks obviously right**, and the reasons
+are measured, not stylistic.
+1. **Follow-up A — the card must show the figure.** A server-supplied `imageUrl` in the `/figures`
+   payload, served by a route in the existing figure family that reuses `resolveFigureRequest`.
+   ⚠️ NOT `express.static` over `books/` (a URL-supplied slug in a filesystem path, one router away
+   from the READ-ONLY `01-source/`), and NOT a client-built URL (this app serves no `/content`
+   route, and it would duplicate `DEFAULT_SUFFIX` into browser JS).
+2. **Follow-up C — make `approved` mean the PUBLISHED IMAGE carries approved text.** The composer
+   stamps `composedHash` into the sidecar; `effectiveState` reports `approved` only when it equals
+   `renderHash`. ⚠️ `compose.py` must **NOT** compute that hash — it COPIES the sidecar's existing
+   `renderHash`. Reimplementing `computeRenderHash` in Python would create two implementations of
+   one rule in two languages, which this project then requires be asserted equal on the corpus
+   forever. If you find yourself writing `hashlib.sha256` in `compose.py`, you took the wrong
+   branch.
+▶ Do A first; C's brief assumes it has landed. Each is one task: TDD, one commit, one scoped
+review of its own delta.
+
+**Superseded — the earlier next action:** ⑭ (number localization — the LOCALIZE class still
 passes through untouched) is the largest open correctness gap, and it now has a consumer: the
 advisory decimal-separator check flags it for an editor, but nothing yet transforms it.
 
