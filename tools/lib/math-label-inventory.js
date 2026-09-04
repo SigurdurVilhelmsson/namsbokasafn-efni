@@ -51,6 +51,75 @@ function enclosingMath(node) {
 export const DEFAULT_STOPLIST = new Set(['atm', 'torr', 'ppb', 'log', 'exp', 'sin', 'cos', 'tan']);
 
 /**
+ * A math abbreviation of at most this many characters keeps its ENGLISH by
+ * default. [USER] ruling 2026-09-04.
+ */
+export const SHORT_LABEL_MAX = 4;
+
+/**
+ * The ONLY short math labels that may be localized — [USER]-approved 2026-09-04.
+ *
+ * 🔴 THE DEFAULT IS INVERTED HERE, AND THAT IS THE POINT. Before this ruling a
+ * short label was translated unless someone self-mapped it in a book's
+ * `math-label-map.json`; now it renders English unless it appears below. The
+ * trigger: `E°cell` shipped as `Eker°` and `E°sys` as `Ekerfis°` in published
+ * chemistry. `cell` genuinely means *ker* — but `E°cell` is international
+ * formula convention, so the entry was correct for the WORD and wrong for the
+ * SYMBOL. That is §C82 ③'s wrong-REGISTER class, the same shape as
+ * `ln → náttúrlegur logri` ruining `S = k ln W`.
+ *
+ * ⚠️ DELIBERATELY NOT the union of "what the map happens to translate today".
+ * Each entry is a word Icelandic actually writes in a formula slot — a unit
+ * (`mol` → mól), a substance or object (`ice`, `iron`, `eggs`), or descriptive
+ * prose (`avg`, `fast`, `then`). Everything a chemist reads as a *symbol*
+ * subscript — `cell surr sys vap fus sub rxn con dep eff ele frz tet rev` — is
+ * absent on purpose and must stay absent.
+ *
+ * ⚠️ `red` is here for the COLOUR: its 13 corpus firings are all
+ * `2HgO(s, rauður)`, red mercuric oxide. It is NOT the `E_red` reduction
+ * subscript, which does not occur as a bare math leaf in this corpus. If that
+ * ever changes, `red` must leave this list — the two senses cannot share an
+ * entry, and a flat map cannot tell them apart.
+ *
+ * To localize a new short label: add it here, with its reason. Adding it to a
+ * book's `math-label-map.json` alone will NOT work, by design.
+ */
+export const LOCALIZABLE_SHORT_LABELS = new Set([
+  // units and quantities Icelandic writes in formulae
+  'mol',
+  'mmol',
+  'min',
+  'gal',
+  'oct',
+  'time',
+  'mass',
+  'rate',
+  'avg',
+  'heat',
+  // substances and objects named in worked examples
+  'ice',
+  'iron',
+  'eggs',
+  'bomb',
+  'acid',
+  'base',
+  'atom',
+  'soln',
+  'solv',
+  'elec',
+  'univ',
+  'red',
+  'day',
+  // descriptive prose used as a subscript
+  'and',
+  'for',
+  'then',
+  'with',
+  'fast',
+  'slow',
+]);
+
+/**
  * Bucket a single math text-node value.
  * Bucket 1 ('label') iff all-lowercase ASCII, length ≥ 3, and not stoplisted.
  * Everything else ('other') — formulae (uppercase element symbols), operators,

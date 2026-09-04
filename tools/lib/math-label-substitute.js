@@ -6,6 +6,8 @@ import {
   bucketToken,
   decodeEntities,
   DEFAULT_STOPLIST,
+  SHORT_LABEL_MAX,
+  LOCALIZABLE_SHORT_LABELS,
 } from './math-label-inventory.js';
 import { findGlossaryCollisions } from './glossary-collisions.js';
 
@@ -46,6 +48,24 @@ export function resolveLabel(label, { overlay = {}, glossaryMap = new Map() } = 
   const isWord = /^[A-Za-z][a-z]{2,}$/.test(label);
   const lower = label.toLowerCase();
 
+  // [USER] ruling 2026-09-04 — A SHORT MATH ABBREVIATION KEEPS ITS ENGLISH BY
+  // DEFAULT; localization is opt-in via LOCALIZABLE_SHORT_LABELS.
+  //
+  // 🔴 THIS OUTRANKS THE CURATED OVERLAY, WHICH IS THE ONLY WAY IT CAN WORK.
+  // `cell → ker` was an overlay entry — a deliberate curation — and it shipped
+  // `Eker°` for `E°cell` into published chemistry, alongside `Ekerfis°` from
+  // `sys → kerfi`. `cell` really does mean *ker*; `E°cell` is international
+  // formula convention. §C82 ③'s wrong-REGISTER class: right for the WORD,
+  // wrong for the SYMBOL.
+  //
+  // A SELF-MAP IS STILL RESOLVED BELOW RATHER THAN SHORT-CIRCUITED HERE. Both
+  // paths render English, so the VALUE is identical either way — but
+  // loadMathLabelResolver annotates a glossary collision as "masked" via
+  // `source.startsWith('overlay')`, so returning early would silently un-mask
+  // every 2-3 char self-map (`at`, `si`, `ppm`) in that report.
+  const shortKeepsEnglish =
+    [...label].length <= SHORT_LABEL_MAX && !LOCALIZABLE_SHORT_LABELS.has(lower);
+
   // overlay: exact key first (honors hand-added exact-case keys), then lowercase for words.
   let ovRaw = overlay[label];
   if (!(typeof ovRaw === 'string' && ovRaw.trim().length > 0) && isWord && lower !== label) {
@@ -57,6 +77,7 @@ export function resolveLabel(label, { overlay = {}, glossaryMap = new Map() } = 
     // (a stray leading/trailing space never reaches the output).
     const v = ovRaw.trim();
     if (v === label || v === lower) return { value: label, source: 'overlay-self' };
+    if (shortKeepsEnglish) return { value: label, source: 'english-short-default' };
     return { value: v, source: 'overlay-translated' };
   }
   // §C82 ③ — THE GLOSSARY IS A MAP OF WORDS, SO IT MAY NOT TRANSLATE A SYMBOL.
@@ -75,7 +96,7 @@ export function resolveLabel(label, { overlay = {}, glossaryMap = new Map() } = 
   // means to localise a symbol says so explicitly. That is also what keeps `mol` →
   // `mól` working — 3 chars and deliberately off the stoplist, so it is a word here.
   const isSymbol = [...label].length <= 2 || DEFAULT_STOPLIST.has(lower);
-  if (!isSymbol) {
+  if (!isSymbol && !shortKeepsEnglish) {
     // glossary keys are lowercased in buildGlossaryMap; look up the lowercase form for words.
     const g = glossaryMap.get(isWord ? lower : label);
     if (typeof g === 'string' && g.trim()) return { value: g, source: 'glossary' };
