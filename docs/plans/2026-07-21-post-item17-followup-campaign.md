@@ -27,6 +27,50 @@ new test files appears in the failing set.
   run sequentially, forked one process per file. Budget ~20 min, and do not read a quiet log as
   a hang — vitest writes its detail in the end-of-run summary.
 
+🔴 **[USER] RULING 2026-09-04 — A MATH ABBREVIATION OF ≤4 CHARACTERS KEEPS ITS ENGLISH BY
+DEFAULT; LOCALIZATION IS OPT-IN VIA ONE REPO-WIDE ALLOWLIST.** Shipped in `94ad869e`. **The rule
+and its allowlist are an ENFORCEABLE VALUE and live in `tools/lib/math-label-inventory.js`
+(`SHORT_LABEL_MAX`, `LOCALIZABLE_SHORT_LABELS`) plus their test — no list is restated here.**
+- **The trigger was reader-visible in published chemistry.**
+  `05-publication/mt-preview/chapters/17/17-key-terms.html` reads
+  `alkerspenna (Ekerfis°) (Eker°)` — `E°cell` shipped as `Eker°` and `E°sys` as `Ekerfis°`.
+  `cell` really does mean *ker*; **`E°cell` is international formula convention.** §C82 ③'s
+  wrong-REGISTER class, the same shape as `ln → náttúrlegur logri` ruining `S = k ln W`.
+- 🔴 **THE GUARD OUTRANKS THE CURATED OVERLAY, WHICH IS THE ONLY WAY IT COULD WORK** —
+  `cell → ker` *was* an overlay entry, a deliberate curation, so a rule gating only the glossary
+  would have changed nothing. ▶ **The escape hatch MOVED rather than vanished: from per-book
+  `math-label-map.json` to the one allowlist. A book can no longer localise a short symbol on its
+  own.** ⚠️ This narrows the CLAUDE.md statement that the overlay always outranks the symbol
+  guard — true still for labels of 5+ characters.
+- **Measured, counting unit = distinct math leaf token in READ-ONLY `01-source`, conservation as
+  the control: 1,972 distinct · 7 changed (119 occurrences) · 1,965 unchanged.** The seven are
+  `cell vap surr sys rev rxn fus`. The other short keeps (`con dep eff ele frz sub tet`) do not
+  move — their overlay values are empty, so they already rendered English.
+- ⚠️ **AN EMPTY OVERLAY VALUE IS NOT DELETION — I REPORTED THAT WRONG FIRST.** `resolveLabel`
+  requires a non-empty trimmed value, so an empty entry **falls through**: English, *unless the
+  glossary holds the word*, in which case the glossary translates it (`con → samtenging`,
+  verified by execution). That is the inventory tool's "pending, auto-upgrade from glossary" — a
+  latent localization, not content loss. The ruling now blocks that upgrade for short labels.
+- ⚠️ **`red` IS allow-listed, for the COLOUR.** All 13 corpus firings are `2HgO(s, rauður)`, red
+  mercuric oxide — **not** the `E_red` reduction subscript, which occurs as no math leaf here. If
+  one ever appears, `red` must leave the list: a flat map cannot hold both senses.
+- 📋 **LOGGED, NOT DONE:** `books/efnafraedi-2e/math-label-map.json` still carries the 7 now-inert
+  translations. Deliberately **not** self-mapped — the allowlist is the single owner and
+  restating the rule in per-book data is what § One source of truth forbids — but a reader of
+  that file now sees a translation that does not happen. **Trigger: the next edit to
+  `inventory-math-labels.js --validate`, which should surface them.**
+- 🔎 **AND THE QUESTION IT RAISED, ANSWERED BY MEASUREMENT: THERE IS NO EDITOR SURFACE FOR MATH,
+  AND ONE WOULD NOT HAVE CAUGHT THIS.** A segment carries only `[[MATH:n]]`; the MathML lives in
+  `02-structure/*-equations.json` (67 equations in `m68823` alone). `marker-highlight.js`
+  classifies `[[MATH:n]]` as an **atom** alongside `[[MEDIA:n]]`/`[[TABLE:…]]`, and **no editor
+  surface renders math at all** — a grep of `server/public/js/` + `server/views/` for
+  `MathJax|mathml|<m:math|renderMathML` returns **0**. ▶ **More decisive: the substitution happens
+  at INJECT over `01-source`, so it never passes through a segment** — the editor is not merely
+  blind to it, it is not on that code path. **A math review/comment surface is buildable on the
+  figure-review sidecar pattern** (sidecar + review card + CLI re-creation; `mathjax-render.js`
+  already exists), **and should be designed only after that sidecar merges**, so there is one
+  mechanism rather than two.
+
 ✅ **TASKS 1–5 AND 7 OF THE `data-en` UNIT ARE DONE ON `feat/term-english-data-attribute`
 (19 commits, nothing pushed). ONLY TASK 6 REMAINS AND IT IS BLOCKED ON A [USER]/[LEAD]
 PUBLISHING DECISION, NOT ON ENGINEERING.**
