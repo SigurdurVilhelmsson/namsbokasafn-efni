@@ -12,6 +12,9 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const Database = require('better-sqlite3');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
 const migration045 = require('../migrations/045-concept-model');
 const migration046 = require('../migrations/046-seed-domain-priority');
 const migration047 = require('../migrations/047-reconcile-domain-priority');
@@ -117,5 +120,119 @@ describe('migration 047 reconciles book_domain_priority', () => {
 
     // The fixture book is not in BOOK_DOMAIN_PRIORITY, so 047 must not touch it.
     expect(domainsFor(9)).toEqual(['chemistry']);
+  });
+});
+
+/**
+ * §C119 — 047 must be able to tell a NO-OP from a REVERT, and must say so.
+ *
+ * The enforcement itself is unchanged and correct. What was missing is that it
+ * ran blind, so the 2026-08-31 trim vanished in 102 seconds with no error, no
+ * log line and no gate. These pin the reporting, not the enforcement.
+ */
+describe('migration 047 reports what its enforcement overwrote (§C119)', () => {
+  let statusPath, tmpRoot;
+
+  beforeEach(() => {
+    tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'm047-'));
+    statusPath = path.join(tmpRoot, 'pipeline-output', 'status.json');
+    migration047._resetBootState();
+  });
+  afterEach(() => fs.rmSync(tmpRoot, { recursive: true, force: true }));
+
+  const readStatus = () => JSON.parse(fs.readFileSync(statusPath, 'utf8'));
+
+  it('reports nothing reverted when it only seeds a fresh book', () => {
+    registerChemistry();
+    const r = migration047.up(db, { statusPath });
+    expect(r.reverted).toEqual([]);
+  });
+
+  it('writes a status file even on a clean run, so a stale alarm cannot linger', () => {
+    registerChemistry();
+    migration047.up(db, { statusPath });
+    expect(readStatus().reverted).toEqual([]);
+  });
+
+  // THE INCIDENT, reproduced: a hand-made trim, then a boot.
+  it('REPORTS the revert when a hand-trimmed list is overwritten', () => {
+    registerChemistry();
+    migration047.up(db, { statusPath }); // seed
+    db.prepare("DELETE FROM book_domain_priority WHERE book_id=1 AND domain<>'chemistry'").run();
+    migration047._resetBootState();
+    const r = migration047.up(db, { statusPath });
+    expect(r.reverted).toEqual([
+      { slug: 'efnafraedi-2e', before: ['chemistry'], after: [...BOOK_DOMAIN_PRIORITY['efnafraedi-2e']] },
+    ]);
+  });
+
+  it('persists that revert where the health check will find it', () => {
+    registerChemistry();
+    migration047.up(db, { statusPath });
+    db.prepare("DELETE FROM book_domain_priority WHERE book_id=1 AND domain<>'chemistry'").run();
+    migration047._resetBootState();
+    migration047.up(db, { statusPath, now: '2026-08-31T06:29:00.000Z' });
+    expect(readStatus()).toEqual({
+      ran: '2026-08-31T06:29:00.000Z',
+      reverted: [
+        { slug: 'efnafraedi-2e', before: ['chemistry'], after: [...BOOK_DOMAIN_PRIORITY['efnafraedi-2e']] },
+      ],
+    });
+  });
+
+  // 047 RUNS TWICE PER BOOT (migrationRunner, then 049). Without accumulation
+  // the second, clean call rewrites the file with an empty list and the alarm
+  // that the first call raised is GONE — the guard would delete its own finding.
+  // REAL accumulation: two DIFFERENT books revert on two different calls and
+  // BOTH must survive. The weaker "revert then clean, expect length 1" is
+  // satisfied by `bootReverted = [c]`, which accumulates nothing — measured:
+  // that mutant survived the whole file until this test existed.
+  it('ACCUMULATES reverts across calls, so an earlier book is not dropped', () => {
+    db.prepare('INSERT INTO registered_books (id, slug) VALUES (2, ?)').run('lifraen-efnafraedi');
+    registerChemistry();
+    migration047.up(db, { statusPath }); // seed both
+    migration047._resetBootState();
+
+    db.prepare("DELETE FROM book_domain_priority WHERE book_id=1 AND domain<>'chemistry'").run();
+    migration047.up(db, { statusPath }); // chemistry reverted
+    db.prepare("DELETE FROM book_domain_priority WHERE book_id=2 AND domain<>'chemistry'").run();
+    migration047.up(db, { statusPath }); // organic reverted, on a LATER call
+
+    expect(readStatus().reverted.map((r) => r.slug).sort()).toEqual([
+      'efnafraedi-2e',
+      'lifraen-efnafraedi',
+    ]);
+  });
+
+  it('a second clean call in the same boot does NOT erase the first call alarm', () => {
+    registerChemistry();
+    migration047.up(db, { statusPath });
+    db.prepare("DELETE FROM book_domain_priority WHERE book_id=1 AND domain<>'chemistry'").run();
+    migration047._resetBootState();
+    migration047.up(db, { statusPath }); // reverts — raises the alarm
+    migration047.up(db, { statusPath }); // clean — must not erase it
+    expect(readStatus().reverted).toHaveLength(1);
+  });
+
+  // A REORDER is a change: position decides which domain wins a contested
+  // headword, so swapping two rows is not cosmetic.
+  it('reports a reorder as a revert', () => {
+    registerChemistry();
+    migration047.up(db, { statusPath });
+    db.prepare('UPDATE book_domain_priority SET position = 99 WHERE book_id=1 AND domain=?')
+      .run(BOOK_DOMAIN_PRIORITY['efnafraedi-2e'][0]);
+    migration047._resetBootState();
+    expect(migration047.up(db, { statusPath }).reverted).toHaveLength(1);
+  });
+
+  // A migration must NEVER throw: migrationRunner calls up() on every start and
+  // failLoudOnMigrationErrors exit(1)s, so a reporting failure would be a server
+  // that never boots again.
+  it('still reconciles, and does not throw, when the status file cannot be written', () => {
+    registerChemistry();
+    const blocked = path.join(tmpRoot, 'a-file');
+    fs.writeFileSync(blocked, 'x');
+    expect(() => migration047.up(db, { statusPath: path.join(blocked, 'nope.json') })).not.toThrow();
+    expect(domainsFor(1)).toEqual([...BOOK_DOMAIN_PRIORITY['efnafraedi-2e']]);
   });
 });

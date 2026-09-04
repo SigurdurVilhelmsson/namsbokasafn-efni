@@ -351,6 +351,23 @@ app.get('/api/health', (req, res) => {
     checks.content_backup = { ok: false, error: err.message };
   }
 
+  // Check whether migration 047's every-boot enforcement OVERWROTE live
+  // book_domain_priority rows (§C119). The enforcement is correct; what was
+  // missing is that it ran blind, so a hand-made trim vanished 102 seconds
+  // later on a deploy's restart with no error, no log line and no gate, and
+  // was found days afterwards from a glossary that had silently doubled.
+  // This is deliberately surfaced HERE rather than left in the boot log:
+  // ./scripts/deploy.sh prints every not-ok check, and the deploy is where the
+  // operator is actually standing when the revert happens.
+  try {
+    const { readDomainPriorityHealth } = require('./lib/domainPriorityHealth');
+    checks.domain_priority = readDomainPriorityHealth({
+      projectRoot: path.join(__dirname, '..'),
+    });
+  } catch (err) {
+    checks.domain_priority = { ok: false, error: err.message };
+  }
+
   // Check glossary-export heartbeat (register C14). The export is meant to run
   // from scripts/git-backup.sh in a contained way — a failure must not abort
   // the content backup — so this is the only place a persistently failing
