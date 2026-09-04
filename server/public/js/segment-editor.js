@@ -364,11 +364,16 @@
    * quotes BY CONSTRUCTION (`the module's caption/alt uses "X"`), so a
    * `value="${text}"` template would break the attribute or inject markup.
    *
-   * ⚠️ No <img>: nothing serves the published figures to this app (there is no
-   * /content mount — express.static covers server/public only), so the URL the
-   * plan sketched would 404 for every book, and building it here would also
-   * hardcode DEFAULT_SUFFIX ('_IS'), whose owner is tools/generate-image-mapping.js.
-   * A server-supplied image URL in the /figures payload is the clean fix.
+   * ⚠️ The <img> URL is SERVER-SUPPLIED, in fig.imageUrl, and this file must
+   * never build one. Two measured reasons: this app serves no /content mount
+   * (express.static covers server/public only), so the URL the plan originally
+   * sketched would have 404'd on every card for every book; and assembling the
+   * filename here would hardcode DEFAULT_SUFFIX, whose owner is
+   * tools/generate-image-mapping.js and which CLAUDE.md says to read from its
+   * owner rather than restate. The server resolves it FORWARD through
+   * books/<slug>/media/image-mapping.json instead, and sends null when the
+   * figure has no translated image — which is most of them.
+   * Pinned by server/__tests__/figureCardImagePins.test.js.
    */
   function figureCardsContainer() {
     return document.getElementById('figure-cards');
@@ -440,9 +445,42 @@
 
     // Both advisory checks, each rendering ITS OWN field: decimal carries a
     // whole suggested string, caption carries a note about one word.
+    //
+    // ⑭, [USER]-ruled 2026-09-04: the decimal suggestion is APPLICABLE in one
+    // click, and only in one click — never automatically. Icelandic writes the
+    // decimal separator as a comma, but it INVERTS the thousands separator too,
+    // so a wrong conversion silently changes a number in a chemistry textbook.
+    // Offering it keeps a human in the loop and keeps the sidecar a record of
+    // what somebody approved.
+    //
+    // 🔴 The conversion is NEVER computed here. `w.suggested` is the server's
+    // string, and the rule's one owner is tools/lib/figure-consistency.cjs.
     for (const w of warnings.decimal) {
-      if (w.blockKey === key) li.appendChild(figureWarning(`⚠ Tillaga: ${w.suggested}`));
+      if (w.blockKey !== key) continue;
+      li.appendChild(figureWarning(`⚠ Tillaga: ${w.suggested}`));
+
+      const apply = document.createElement('button');
+      apply.type = 'button';
+      apply.className = 'btn btn-sm figure-block-apply';
+      apply.setAttribute('data-block-apply', '');
+      apply.textContent = 'Nota';
+      apply.setAttribute('aria-label', `Nota tillögu fyrir ${key}`);
+      // ⚠️ The suggestion was derived server-side from the SAVED text. If the
+      // editor has typed since, applying it would silently discard that typing.
+      // Disabling is the honest fix; recomputing the conversion here to cope
+      // with the newer value would put a second implementation of the rule in
+      // the browser, which is exactly what the comment above forbids. Saving
+      // re-fetches and recomputes the suggestion, so the button comes back.
+      const syncApplyEnabled = () => {
+        apply.disabled = input.value !== w.current;
+      };
+      syncApplyEnabled();
+      input.addEventListener('input', syncApplyEnabled);
+      apply.addEventListener('click', () => saveFigureBlock(basename, key, w.suggested));
+      li.appendChild(apply);
     }
+    // No apply control here on purpose: a caption warning is a note ABOUT a
+    // word, not a replacement for the block, so there is nothing to apply.
     for (const w of warnings.caption) {
       if (w.blockKey === key) li.appendChild(figureWarning(`⚠ ${w.figureText}: ${w.note}`));
     }
@@ -466,6 +504,20 @@
     badge.textContent = state.toUpperCase();
     header.append(name, badge);
     card.appendChild(header);
+
+    // The picture the text belongs to. Rendered ONLY when the server offered a
+    // URL: a figure whose image has not been composed yet gets no element at
+    // all, rather than a broken-image icon on a card that is otherwise fine.
+    if (fig.imageUrl) {
+      const img = document.createElement('img');
+      img.className = 'figure-card-image';
+      img.setAttribute('data-figure-image', '');
+      img.alt = `Þýdd mynd: ${basename}`;
+      img.loading = 'lazy';
+      // Through the DOM, never innerHTML — the rule this whole card follows.
+      img.src = fig.imageUrl;
+      card.appendChild(img);
+    }
 
     // Only ever non-null once a review row exists (a flag or an approval note).
     if (fig.note) {

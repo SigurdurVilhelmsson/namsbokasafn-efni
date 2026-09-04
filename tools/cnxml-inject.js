@@ -57,6 +57,7 @@ import { updateTranslationErrors } from './lib/update-translation-errors.js';
 import { detectResidue, upsertResidueModule } from './lib/residue-check.js';
 import { loadResidueAllowlist, classifyResidue } from './lib/residue-allowlist.js';
 import { SEG_MARKER, parseSegmentsMap } from './lib/seg-markers.cjs';
+import { loadImageBasenameMap } from './lib/image-basename-map.cjs';
 import {
   parseCnxmlFragment,
   serializeCnxmlFragment,
@@ -1200,22 +1201,11 @@ function applyImageBasenameSwaps(cnxml, basenameMap) {
   });
 }
 
-/**
- * Load the new-route (basename-keyed) image map from a book's media dir.
- * Returns only entries that carry `originalImage` — legacy figure-id entries
- * (and the docx-import route) are intentionally excluded.
- * @param {string} bookDir - Book directory
- * @returns {Array<{originalImage:string,outputName:string,extension?:string}>}
- */
-function loadImageBasenameMap(bookDir) {
-  const mappingPath = path.join(bookDir, 'media', 'image-mapping.json');
-  try {
-    const data = JSON.parse(fs.readFileSync(mappingPath, 'utf-8'));
-    return Array.isArray(data) ? data.filter((e) => e && e.originalImage && e.outputName) : [];
-  } catch {
-    return [];
-  }
-}
+// loadImageBasenameMap moved to ./lib/image-basename-map.cjs — see the header
+// there. It is re-exported below so cnxml-render.js's existing import of it
+// FROM THIS FILE keeps working; the binding is the same function object, which
+// tools/__tests__/image-basename-map.test.js asserts by identity so a second
+// copy cannot quietly appear on either side.
 
 /**
  * Escape XML special characters.

@@ -8,15 +8,46 @@ things lives in [README.md](README.md).
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-03
+## ⏩ RESUME — state as of 2026-09-04
 
 **What exists:** a working extract → strip → compose → oracle-check pipeline, proven on
 `CNX_Chem_01_01_SciMethod.pdf` end to end; a census of all 36 chapter-1 figures; **one real
-Málstaður run** (⑯, 1.20 ISK, 8/8 blocks); and the output format settled as **SVG** by
-measurement (⑤).
+Málstaður run** (⑯, 1.20 ISK, 8/8 blocks); the output format settled as **SVG** by
+measurement (⑤); and **the review workflow merged as #435**.
 
-**✅ THE REVIEW WORKFLOW IS BUILT AND REVIEWED — branch `feat/figure-text-review`, 8 SDD tasks,
-awaiting a merge decision.** Unit suite matches `main`'s own red baseline exactly (19 failing
+**⏭️ NEXT: nothing is blocked.** Both [USER]-ruled follow-ups are MERGED (Ⓐ and Ⓒ below). Ⓨ
+needed no work. The open items are the pre-existing ones under *Open* — ⑭ number localization,
+⑮ label anchoring, ⑦ Type0/CID fonts — plus the one gap Ⓒ introduced and did not close,
+recorded under ⑰.
+
+**✅ Ⓐ AND Ⓒ ARE MERGED — 2026-09-04, PR #438 (`d9cd0998`), a merge commit so the three
+individual SHAs survive.** Full suite on the branch was `19 failed | 5973 passed`, diffed BY NAME
+against a baseline in both directions: **19 of 19 identical, 0 newly red, 0 cleared** — `main`'s
+documented floor. **CI agreed independently: 19 failures across 9 files, name-identical.** E2E
+6/6 (was 5). ⚠️ **This merge touched `books/`** (two `__e2e-fixture__/media/` files), so it arms
+the content-backup stranding rule — deploy, or expect the next content tick to be rejected.
+- **Ⓐ the card shows the figure.** `GET …/figures/:basename/image` reuses `resolveFigureRequest`
+  (so no new traversal surface) and `translatedImageFor` resolves the English basename **forward**
+  through `image-mapping.json` — no `_IS` anywhere in server or browser code, pinned by a test that
+  greps the client for it. `loadImageBasenameMap` moved to `tools/lib/image-basename-map.cjs`
+  because it became dual-consumer; `cnxml-inject` re-exports it, and an import-identity test pins
+  that there is one implementation and not two.
+- **Ⓒ approved now means the PUBLISHED IMAGE carries approved text.** 🔴 **The brief's own
+  prescription — "`effectiveState` gains the `composedHash` condition" — DEADLOCKS THE FEATURE IF
+  TAKEN LITERALLY, and every test that asks only "does approving write approved?" still passes.**
+  `applyApprovedFigureEdits` writes the DERIVED state into the sidecar, so gating that one function
+  makes it write `mt-preview` on every approval; `effectiveState` then short-circuits on
+  `state !== 'approved'` and the composer's later stamp can never flip it. **`approved` becomes
+  unreachable, permanently.** ▶ **The shape that works is TWO layers:** `editorialState` (did an
+  editor approve these exact blocks — what gets WRITTEN) and `effectiveState` (…and was the SVG
+  composed from them — what every reader-facing surface SHOWS). Pinned by a test asserting the two
+  DISAGREE on a real state, so nobody can quietly alias them.
+  ⚠️ **And `applyApprovedFigureEdits` must READ the sidecar first and carry `composedHash`
+  forward** — it rebuilds the whole file, and `composedHash` is written by `compose.py` and by
+  nothing on the server side, so dropping it would un-compose every figure on the next approval
+  with no error and no failing count.
+
+**✅ THE REVIEW WORKFLOW IS BUILT AND REVIEWED — merged as #435 (`f90b335e`), 8 SDD tasks.** Unit suite matches `main`'s own red baseline exactly (19 failing
 assertions across 9 files + `findTermsGolden` as a 10th zero-assertion red — all inherited, none
 added); E2E 5/5. 🔴 **A seven-lens adversarial whole-branch review found a CRITICAL that eight
 task reviews had missed:** the renderer keyed the figure sidecar on the POST-inject `_IS`
@@ -30,7 +61,9 @@ wrong reason.** ✅ **THE THREE OPEN QUESTIONS ARE RULED — [USER], 2026-09-04.
 renderer's only channel IS the sidecar — `cnxml-render.js` has no DB access, deliberately, because
 that is what keeps MIT `tools/` from importing AGPL `server/` — so a flag that did not write the
 sidecar would be invisible to the renderer and the badge is the whole feature. `applyApprovedFigureEdits`
-writes `effectiveState`, never the raw column, so nothing can be stamped `approved` unreviewed. The
+writes a DERIVED state, never the raw column, so nothing can be stamped `approved` unreviewed.
+*(That derived value was `effectiveState` when this was ruled and is `editorialState` since Ⓒ
+landed — see the two-layer note above. The ruling is unaffected; the function name is not.)* The
 alternative — write the state but keep the previous blocks — trades a visible, correctly-labelled
 record for a silent divergence between the card and the sidecar.
 **Ⓐ The card must show the figure: DO IT, via a SERVER-SUPPLIED image URL in the `/figures`
@@ -66,24 +99,16 @@ consistency checks, and an editor surface. Branch **`feat/figure-text-review`**,
 ▶ **Per-task state lives in that plan's SDD ledger and in `git log`, never here** — a task
 count written into prose is stale by the next commit.
 
-⏩ **RESUME POINT — the next two pieces of work, in order.** Both are [USER]-ruled and briefed
-**verbatim** in `docs/superpowers/plans/2026-09-04-figure-text-followups.md`. **Read that file
-before designing either; each rules out an approach that looks obviously right**, and the reasons
-are measured, not stylistic.
-1. **Follow-up A — the card must show the figure.** A server-supplied `imageUrl` in the `/figures`
-   payload, served by a route in the existing figure family that reuses `resolveFigureRequest`.
-   ⚠️ NOT `express.static` over `books/` (a URL-supplied slug in a filesystem path, one router away
-   from the READ-ONLY `01-source/`), and NOT a client-built URL (this app serves no `/content`
-   route, and it would duplicate `DEFAULT_SUFFIX` into browser JS).
-2. **Follow-up C — make `approved` mean the PUBLISHED IMAGE carries approved text.** The composer
-   stamps `composedHash` into the sidecar; `effectiveState` reports `approved` only when it equals
-   `renderHash`. ⚠️ `compose.py` must **NOT** compute that hash — it COPIES the sidecar's existing
-   `renderHash`. Reimplementing `computeRenderHash` in Python would create two implementations of
-   one rule in two languages, which this project then requires be asserted equal on the corpus
-   forever. If you find yourself writing `hashlib.sha256` in `compose.py`, you took the wrong
-   branch.
-▶ Do A first; C's brief assumes it has landed. Each is one task: TDD, one commit, one scoped
-review of its own delta.
+✅ **DONE — the two follow-ups this block used to point at.** Both merged 2026-09-04 as PR #438;
+see the Ⓐ/Ⓒ note at the top of this RESUME for what landed and for the one trap the brief itself
+walked into. The brief remains at
+`docs/superpowers/plans/2026-09-04-figure-text-followups.md` as **evidence, never status** — per
+CLAUDE.md § One source of truth, this file is the owner and it wins on any disagreement.
+
+⚠️ **One prescription in that brief is WRONG AS WRITTEN and the file has not been edited to say
+so** (it is a plan, and plans are frozen once executed): *"`effectiveState` gains the
+`composedHash` condition"*. Taken literally it makes `approved` permanently unreachable — see Ⓒ
+above. Anyone re-reading that brief should read it alongside this entry.
 
 **Superseded — the earlier next action:** ⑭ (number localization — the LOCALIZE class still
 passes through untouched) is the largest open correctness gap, and it now has a consumer: the
@@ -234,12 +259,64 @@ location is no record.
   sidecar.
 
 
-- **⑭ NUMBER LOCALIZATION IS NOT IMPLEMENTED — the LOCALIZE class passes through untouched.**
-  Demonstrated by the first real run: `373.15 K` / `273.15 K` / `233.15 K` are correctly held
-  off the MT wire and correctly kept verbatim, but Icelandic writes them `373,15 K`. Three of
-  nine verbatim blocks in one figure. ⚠️ **A blind `.` → `,` is wrong — the separators invert**
-  (`1,000` → `1.000`); `tools/lib/mathml-to-latex.js` already classifies `us`/`is`/`integer`
-  and should be reused rather than duplicated.
+- **⑰ `composedHash` CLAIMS MORE THAN THE COMPOSER DELIVERS — the SVG it stamps for is not the
+  published one.** Opened 2026-09-04 by Ⓒ itself, deliberately and with the gap named rather than
+  papered over. `compose.py --svg` writes `experiments/figure-text-translation/out/translated.svg`
+  and then stamps `composedHash` into the sidecar; **nothing copies that file to
+  `books/<slug>/media/<basename>_IS.svg`**, which is what `cnxml-inject` swaps in and what a reader
+  actually sees. So the stamp means *"a composer run produced artwork from these blocks"*, not
+  *"the published image carries them"*.
+  ▶ **It is still strictly better than the state it replaced** — before Ⓒ, `effectiveState`
+  reduced to `sidecar.state` exactly and could not fire on an editorial event at all — and it fails
+  in the SAFE direction for the failure that matters: an approval with no compose at all still
+  reads `mt-preview`.
+  ⚠️ **The residual hazard is narrow and worth stating precisely: compose into `out/`, never
+  publish, and the badge goes green anyway.** Closing it means having the composer write through
+  `image-mapping.json` — the same forward lookup `translatedImageFor` already does — so the stamp
+  and the published file move together. ⚠️ **It is NOT a two-line change, and the reason is worth
+  knowing before anyone scopes it: `compose.py` has no book context at all.** Its only pointer to
+  the outside world is `--translations <path>`; it never learns a book slug or an English basename,
+  and both are needed to resolve an `outputName` through the mapping. So the work is a `--book` /
+  `--basename` pair (or deriving them from the sidecar's own path, which couples the composer to
+  the `books/<slug>/figure-text/` layout) **plus** the write — not just a destination. **Not built;
+  not in scope for Ⓒ, which was ruled as a sidecar-only change.**
+  ⚠️ **Maintenance note: THREE test-side stand-ins now simulate the composer by hand** — the E2E
+  spec's `stampComposed`, a `writeSidecar({…composedHash})` in the service test, and a
+  `writeFileSync` in the routes test. They agree today because the operation is one copied field.
+  **If the stamp ever grows a second field** (a `composedAt`, or a `composerVersion` the composer
+  writes itself) **all three drift silently.** At that point they want one shared helper.
+  ⚠️ Exposure today is **0**: there are no figure-text sidecars anywhere in `books/` and no
+  composed figure has ever been published.
+
+- **⑭ NUMBER LOCALIZATION IS AN EDITORIAL ACTION, NOT A TRANSFORM — [USER]-ruled 2026-09-04,
+  and the one-click path is BUILT.** The gap: `373.15 K` / `273.15 K` / `233.15 K` are correctly
+  held off the MT wire and correctly kept verbatim, but Icelandic writes them `373,15 K`. Three
+  of nine verbatim blocks in one figure.
+  ✅ **What shipped:** the advisory decimal check already computed the corrected string; the
+  editor card now offers a **`Nota`** control that applies it as an ordinary block edit. Because
+  it is an ordinary edit, `renderHash` moves and the figure correctly returns to `mt-preview`
+  pending re-approval and re-compose — Ⓒ's machinery, reused rather than duplicated.
+  🔴 **RULED: it is OFFERED, never applied automatically.** A wrong conversion silently changes
+  a number in a chemistry textbook, which this project calls the worst available failure, and
+  CLAUDE.md's own clean-break rule says that when an editor can do it in the UX you do not build
+  black magic. The sidecar therefore keeps recording exactly what a human approved.
+  🔴 **THE RULE HAS ONE OWNER — `tools/lib/figure-consistency.cjs`.** The browser posts the
+  server's `suggested` string verbatim and computes nothing; a pin asserts the client contains no
+  digit character class at all, because a second implementation would drift silently and the
+  first is the one that knows Icelandic **inverts both separators** (a blind `.` → `,` turns
+  `1,000` into `1.000`).
+  ⚠️ **The guard that is easy to get wrong:** the suggestion is derived from the **saved** text,
+  so the control is DISABLED while the input differs from it. Applying a stale suggestion over
+  unsaved typing would discard it silently; recomputing client-side to cope is the wrong fix, and
+  is what the no-digit-class pin forbids. Both directions are E2E-tested and both were
+  mutation-verified (posting `input.value`, and removing the guard, each kill the test).
+  ⏭️ **STILL OPEN, deliberately:** a verbatim block reaches the composer untouched unless an
+  editor clicks, so every figure carries editorial cost. Also NOT built, for want of a single
+  measured instance: US thousands (`1,000` → `1.000`) and numbers with adjacent punctuation.
+  **The whole measured corpus is `180`, `100`, `37.5` and the three temperatures above — zero
+  thousands separators** — and each widening changes the base rate of a check on the rule above.
+  `tools/lib/mathml-to-latex.js` already classifies `us`/`is`/`integer` and is what to reuse if
+  that day comes.
 - **⑮ Label-to-artwork anchoring is unsolved when the line count changes.** The composer now
   preserves a block's vertical CENTRE (top-anchoring was clearly wrong — a 3-line English
   label replaced by 1 Icelandic line floated above the thing it labelled). But TempScales

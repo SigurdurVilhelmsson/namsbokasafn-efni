@@ -312,6 +312,37 @@
       border-color: var(--warning);
     }
 
+    /*
+     * The translated figure itself. Capped in height so a tall diagram cannot
+     * push the text blocks — the thing actually under review — below the fold,
+     * and given a light ground because the composed SVGs are transparent and
+     * their black labels vanish against a dark surface.
+     */
+    .figure-card-image {
+      display: block;
+      max-width: 100%;
+      max-height: 22rem;
+      margin: 0 auto var(--spacing-sm);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm, 4px);
+    }
+
+    /*
+     * "Nota" — apply the server's decimal suggestion (⑭). Disabled whenever the
+     * input has been typed into since the suggestion was computed, so the
+     * disabled state must be visible rather than merely inert: an editor who
+     * cannot tell why clicking does nothing will retype the value by hand.
+     */
+    .figure-block-apply {
+      flex: none;
+    }
+
+    .figure-block-apply:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
     .figure-note {
       margin: 0 0 var(--spacing-sm);
       padding: var(--spacing-sm);

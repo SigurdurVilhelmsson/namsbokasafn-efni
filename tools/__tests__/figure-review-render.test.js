@@ -42,6 +42,7 @@ import { DEFAULT_SUFFIX } from '../generate-image-mapping.js';
 const require = createRequire(import.meta.url);
 const {
   writeSidecar,
+  computeRenderHash,
   SIDECAR_VERSION,
   COMPOSER_VERSION,
 } = require('../lib/figure-text-sidecar.cjs');
@@ -127,6 +128,55 @@ describe('data-figure-review reaches the rendered HTML only from a real sidecar'
     sidecarFor('CNX_Test_Unmapped');
     const html = render(preInjectFigure('figUnmapped', 'CNX_Test_Unmapped'));
     expect(html).toContain('data-figure-review="mt-preview"');
+  });
+});
+
+/**
+ * [USER] ruling C, 2026-09-04 — as a READER sees it.
+ *
+ * This is where the ruling actually pays: the badge warns a reader that the
+ * Icelandic text in the picture is not final. An approval that has not been
+ * composed must therefore still be badged, because the published SVG still
+ * carries the pre-approval text. Nothing in the server runs compose.py, so this
+ * state is the ordinary one, not an edge case.
+ */
+describe('a figure approved but not yet COMPOSED is still badged for the reader', () => {
+  const BLOCKS = { Celsius: 'Selsíus' };
+
+  const writeApproved = (basename, extra) =>
+    writeSidecar(bookDir, basename, {
+      version: SIDECAR_VERSION,
+      basename,
+      state: 'approved',
+      renderHash: computeRenderHash(BLOCKS, COMPOSER_VERSION),
+      ...extra,
+      composerVersion: COMPOSER_VERSION,
+      blocks: BLOCKS,
+    });
+
+  it('approved with NO composedHash: badged mt-preview, because the SVG is stale', () => {
+    writeApproved('CNX_Test_Uncomposed');
+    expect(render(preInjectFigure('figU', 'CNX_Test_Uncomposed'))).toContain(
+      'data-figure-review="mt-preview"'
+    );
+  });
+
+  it('approved WITH a matching composedHash: no badge — the CONTROL', () => {
+    // Without this, the test above passes for a renderer that badges every
+    // figure unconditionally. The pair is what makes either one mean anything.
+    writeApproved('CNX_Test_Composed', {
+      composedHash: computeRenderHash(BLOCKS, COMPOSER_VERSION),
+    });
+    expect(render(preInjectFigure('figC', 'CNX_Test_Composed'))).not.toContain(
+      'data-figure-review'
+    );
+  });
+
+  it('approved with a STALE composedHash: badged again', () => {
+    writeApproved('CNX_Test_Stale', { composedHash: 'from-an-older-compose' });
+    expect(render(preInjectFigure('figS', 'CNX_Test_Stale'))).toContain(
+      'data-figure-review="mt-preview"'
+    );
   });
 });
 
