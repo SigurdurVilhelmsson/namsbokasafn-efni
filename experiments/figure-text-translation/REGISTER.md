@@ -259,34 +259,34 @@ location is no record.
   sidecar.
 
 
-- **⑰ `composedHash` CLAIMS MORE THAN THE COMPOSER DELIVERS — the SVG it stamps for is not the
-  published one.** Opened 2026-09-04 by Ⓒ itself, deliberately and with the gap named rather than
-  papered over. `compose.py --svg` writes `experiments/figure-text-translation/out/translated.svg`
-  and then stamps `composedHash` into the sidecar; **nothing copies that file to
-  `books/<slug>/media/<basename>_IS.svg`**, which is what `cnxml-inject` swaps in and what a reader
-  actually sees. So the stamp means *"a composer run produced artwork from these blocks"*, not
-  *"the published image carries them"*.
-  ▶ **It is still strictly better than the state it replaced** — before Ⓒ, `effectiveState`
-  reduced to `sidecar.state` exactly and could not fire on an editorial event at all — and it fails
-  in the SAFE direction for the failure that matters: an approval with no compose at all still
-  reads `mt-preview`.
-  ⚠️ **The residual hazard is narrow and worth stating precisely: compose into `out/`, never
-  publish, and the badge goes green anyway.** Closing it means having the composer write through
-  `image-mapping.json` — the same forward lookup `translatedImageFor` already does — so the stamp
-  and the published file move together. ⚠️ **It is NOT a two-line change, and the reason is worth
-  knowing before anyone scopes it: `compose.py` has no book context at all.** Its only pointer to
-  the outside world is `--translations <path>`; it never learns a book slug or an English basename,
-  and both are needed to resolve an `outputName` through the mapping. So the work is a `--book` /
-  `--basename` pair (or deriving them from the sidecar's own path, which couples the composer to
-  the `books/<slug>/figure-text/` layout) **plus** the write — not just a destination. **Not built;
-  not in scope for Ⓒ, which was ruled as a sidecar-only change.**
-  ⚠️ **Maintenance note: THREE test-side stand-ins now simulate the composer by hand** — the E2E
-  spec's `stampComposed`, a `writeSidecar({…composedHash})` in the service test, and a
-  `writeFileSync` in the routes test. They agree today because the operation is one copied field.
-  **If the stamp ever grows a second field** (a `composedAt`, or a `composerVersion` the composer
-  writes itself) **all three drift silently.** At that point they want one shared helper.
-  ⚠️ Exposure today is **0**: there are no figure-text sidecars anywhere in `books/` and no
-  composed figure has ever been published.
+- **✅ ⑰ CLOSED 2026-09-04 — the composed figure now reaches the tree readers load, and
+  `composedHash` means what it says.** `tools/publish-figure-svg.js` copies `out/translated.svg`
+  to `books/<slug>/media/<mapped name>` and stamps the sidecar there.
+  🔴 **IT IS JS, AND THAT RETIRED A RULE RATHER THAN GUARDING IT.** The stamp had briefly lived in
+  `compose.py`, which put a *copy-don't-compute* obligation in Python that a pin had to police.
+  Moving it beside `computeRenderHash` means **there is no hashing in the Python tree at all** —
+  an absence is cheaper to keep true than a discipline. `figtext.stamp_composed_hash` and its
+  Python test were **deleted** in the same change; the mapping lookup likewise keeps its one owner,
+  so `DEFAULT_SUFFIX` is never restated.
+  🔴 **THE GUARD THAT MATTERS IS THE BASENAME CROSS-CHECK.** `out/` holds whatever figure was
+  extracted LAST; the sidecar says which figure the TEXT is for. The publisher compares
+  `out/meta.json`'s source-PDF stem against the sidecar's filename and **refuses if they differ**.
+  Without it, publishing puts figure A's artwork under figure B's translations — a correct-looking
+  translation of the wrong picture, the same class of silent error `sources.py`'s edition
+  precedence prevents one stage earlier. **Neither side can catch it alone.**
+  ⚠️ **Publishing REPLACES a reader-visible file, deliberately.** [USER], 2026-09-04: the June
+  Cowork figures were a **test run** — freestyle translation, a few manual corrections, **no
+  editorial surface at all** — published as MT preview. Replacing them with pipeline output an
+  editor can review, and which the renderer badges `mt-preview` until approved, is the entire
+  point. All 691 are git-tracked, so `git checkout` is the restore; the tool writes no `.bak`.
+  ⚠️ **An unapproved sidecar has no `renderHash`, so nothing is stamped** — and that is the
+  ORDINARY case under the plan (publish the MT, review afterwards), not an error.
+  ⏭️ **What ⑰ does NOT do: the bulk run.** This publishes ONE figure. Running all of them through
+  extract → MT → compose → publish is the next piece, it is where Málstaður money is spent, and it
+  needs its own approval. ⚠️ **Expect the review queue to have real work in it:** ⑯'s paid run
+  produced `Selsíus` where the book says `Celsíus` **24:5** in committed MT output and **31:13** in
+  published HTML — the minority variant, and exactly what `captionDivergence` flags. That is the
+  editorial surface earning its place, but it may also be a glossary question.
 
 - **⑭ NUMBER LOCALIZATION IS AN EDITORIAL ACTION, NOT A TRANSFORM — [USER]-ruled 2026-09-04,
   and the one-click path is BUILT.** The gap: `373.15 K` / `273.15 K` / `233.15 K` are correctly
@@ -310,6 +310,13 @@ location is no record.
   unsaved typing would discard it silently; recomputing client-side to cope is the wrong fix, and
   is what the no-digit-class pin forbids. Both directions are E2E-tested and both were
   mutation-verified (posting `input.value`, and removing the guard, each kill the test).
+  ⚠️ **CORRECTED 2026-09-04 — THE MOTIVATING EXAMPLE IS ALREADY CORRECT FOR READERS.** This
+  entry reads as though `373.15 K` reaches a reader unlocalized. It does not: the PUBLISHED
+  `CNX_Chem_01_06_TempScales_IS.svg` already says `373,15 K` (see ⑰ — the corpus was translated
+  by an external process in June). What carries `373.15` is **this pipeline's own re-composition**
+  of that figure, which no reader has seen. ▶ **⑭ is therefore a gap in the NEW pipeline, not a
+  live defect on the site** — still worth closing, since anything this pipeline composes in future
+  goes out with it, but it is not a reader-facing bug and should not be prioritised as one.
   ⏭️ **STILL OPEN, deliberately:** a verbatim block reaches the composer untouched unless an
   editor clicks, so every figure carries editorial cost. Also NOT built, for want of a single
   measured instance: US thousands (`1,000` → `1.000`) and numbers with adjacent punctuation.

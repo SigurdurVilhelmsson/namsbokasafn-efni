@@ -42,6 +42,7 @@
 | `migrate-pipeline-status` | and populates the chapter_pipeline_status table in the database. |
 | `normalize-svg-dimensions` | Make translated figure SVGs render at full figure size in the reader. |
 | `preintake-probe` | Scans a candidate book's raw CNXML and prints a go/no-go fitness checklist: |
+| `publish-figure-svg` | ⑰ — publish a composed figure into the tree readers actually load. |
 | `remt-battery` | Runs one tier of the battery over one book/chapter/module and reports every |
 | `remt-ctx` | ── WHY THIS FILE IS TOP-LEVEL AND NOT IN `tools/lib/` ── |
 | `remt-sweep` | Runs every registered check over the EXISTING corpus and reports, per check: |
@@ -71,6 +72,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*50 tools total (50 active, 0 deprecated)*
+*51 tools total (51 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.

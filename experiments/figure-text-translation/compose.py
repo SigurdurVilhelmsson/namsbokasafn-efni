@@ -207,23 +207,6 @@ if SVG:
     n = write_svg(OUT / 'artwork.svg', OUT / svg_name, ITEMS, H_PT)
     print(f"wrote out/{svg_name}  ({n} bytes)")
 
-    # Record WHICH blocks this artwork was drawn from, by copying the sidecar's
-    # own renderHash into composedHash. effectiveState() then reports 'approved'
-    # only when the two agree, so approving without re-composing leaves the
-    # figure at mt-preview instead of claiming the published image carries
-    # approved text. See figtext.stamp_composed_hash - it COPIES, never hashes.
-    #
-    # ⚠️ Gated on SVG and not CONTROL on purpose. A --control run re-injects the
-    # ENGLISH through the same code, and a PNG-only run does not produce the
-    # published format (⑤); neither is a composition of approved Icelandic, so
-    # neither may claim to be one.
-    #
-    # ⚠️ Only fires when --translations pointed at a real sidecar. The default
-    # translations.json carries no renderHash, so stamp_composed_hash returns
-    # None and leaves the file untouched.
-    stamped = FT.stamp_composed_hash(tr_path) if tr_path.exists() else None
-    if stamped:
-        print(f"stamped composedHash={stamped} into {tr_path.name}")
 print(f"{len(blocks)} blocks")
 print('\n'.join(report))
 if missing:

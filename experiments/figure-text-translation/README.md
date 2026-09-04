@@ -126,34 +126,45 @@ node render-check.mjs out/control.svg out/browser.png   # render it as a reader 
 
 `pdftocairo` (poppler-utils) must be on `PATH`.
 
-### Composing a figure that has a committed sidecar
+### Composing a figure that has a committed sidecar, and publishing it
 
 `compose.py --translations <path>` accepts a book's **committed sidecar**
 (`books/<slug>/figure-text/<basename>.is.json`) directly — it reads `.blocks`, so a sidecar and a
 bare `translations.json` are both valid input.
 
 ```bash
-python3 compose.py --svg --translations ../../books/efnafraedi-2e/figure-text/CNX_Chem_01_01_SciMethod.is.json
+SIDE=../../books/efnafraedi-2e/figure-text/CNX_Chem_01_06_TempScales.is.json
+python3 compose.py --svg --translations "$SIDE"          # -> out/translated.svg
+node ../../tools/publish-figure-svg.js --sidecar "$SIDE" # -> books/.../media/<mapped name>
 ```
 
-On a **successful, non-`--control`, `--svg`** run it then copies the sidecar's own `renderHash`
-into `composedHash`, which is what turns the editor's badge from `MT-PREVIEW` to `APPROVED`
-(REGISTER.md Ⓒ). ⚠️ **It copies; it never hashes** — `computeRenderHash` is JS, and a Python twin
-would be two implementations of one rule. A `--control` run or a PNG-only run stamps nothing,
-because neither produced the published artefact.
+**The composer stops at `out/`.** Publishing is the second command, and it is JS on purpose:
+the translated filename comes from `image-mapping.json` (so `DEFAULT_SUFFIX` is never restated)
+and `composedHash` is stamped there, beside `computeRenderHash`. **Nothing in this Python tree
+hashes anything** — pinned by `tools/__tests__/figure-text-sidecar.test.js`.
 
-⚠️ **The SVG still lands in `out/`, not in `books/<slug>/media/`** — publishing it is a manual
-copy today, and the honest limits of what the stamp asserts are recorded as **REGISTER.md ⑰**.
+The publisher **refuses** rather than guessing, and writes nothing when it refuses:
 
-Python tests here are plain scripts and are **not** run by `npm test` or CI (both are node-only):
+| refusal | meaning |
+|---|---|
+| `basename-mismatch` | `out/` holds a different figure than the sidecar names — re-run `extract.py`/`compose.py`, or point `--sidecar` elsewhere. **This is the guard that matters:** it stops figure A's artwork being published under figure B's translations. |
+| `unmapped` | no `image-mapping.json` entry — run `generate-image-mapping.js` first |
+| `no-svg` | `compose.py --svg` has not been run |
+| `bad-sidecar-path` / `no-sidecar` | the path is not a `books/<slug>/figure-text/*.is.json`, or the file is malformed |
+
+⚠️ **Publishing REPLACES a reader-visible file, and that is intended.** The figures already in
+`books/<slug>/media/` came from a June test run that had no editorial surface and shipped as MT
+preview; replacing them with output an editor can review is the point. They are all git-tracked,
+so `git checkout -- books/<slug>/media/` is the restore — the tool writes no `.bak`.
+
+⚠️ A sidecar nobody has approved has no `renderHash`, so nothing is stamped and the renderer
+badges the figure `mt-preview`. That is the ordinary case: publish the MT, review it afterwards.
+
+Python tests here are plain scripts, **not** run by `npm test` or CI (both are node-only):
 
 ```bash
 python3 test_figtext_normalise.py
-python3 test_composed_hash.py
 ```
-
-The two rules they exist to protect are ALSO pinned from JS, in
-`tools/__tests__/figure-text-sidecar.test.js`, so the authoritative gate can see them.
 
 ⚠️ **The oracle must be the 200 dpi jpg** — the one in `books/*/01-source/media/`.
 OpenStax also ship a 72 dpi version of every figure; that is a different asset and
