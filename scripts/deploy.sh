@@ -102,7 +102,18 @@ echo "Installing dependencies (root)..."
 # --ignore-scripts skips the husky 'prepare' hook (husky is a dev-dep that
 # isn't present in production installs). Root has no native modules, so
 # skipping scripts is safe.
-$SYSTEM_NPM ci --omit=dev --ignore-scripts
+#
+# --no-audit: `npm ci`'s audit report is ADVISORY OUTPUT ONLY — it never
+# changes what is installed and never affects the exit code — but it makes
+# every deploy POST to registry.npmjs.org/-/npm/v1/security/audits/quick and
+# BLOCK on the answer. Measured on prod 2026-09-04: that one call was 41 s of a
+# 41 s install, and an A/B on the same box, same lockfile, same minute gave
+# 59,479 ms -> 1,911 ms with an IDENTICAL installed tree (md5 over every
+# installed package.json matched exactly). The same endpoint 503'd the CI audit
+# job that morning and hung this very deploy. The audit GATE is not lost: it
+# lives in .github/workflows/security.yml, which runs `npm audit
+# --audit-level=high` in both trees. --no-fund suppresses the funding notice.
+$SYSTEM_NPM ci --omit=dev --ignore-scripts --no-audit --no-fund
 
 echo "Installing server dependencies..."
 # No --ignore-scripts here: npm auto-runs node-gyp for better-sqlite3 (it
@@ -115,7 +126,10 @@ echo "Installing server dependencies..."
 # and the loaded binding is `prebuilds/linux-x64.node`, not `build/Release`.
 # The install step still needs python3 + make + g++ on this box (present:
 # Ubuntu 24.04, build-essential installed), so it must not be skipped.
-( cd server && $SYSTEM_NPM ci --omit=dev )
+#
+# --no-audit --no-fund: see the root install above. This is where it was
+# measured, and where it hurt.
+( cd server && $SYSTEM_NPM ci --omit=dev --no-audit --no-fund )
 
 # 6. Restart the service
 echo "Restarting ritstjorn..."
