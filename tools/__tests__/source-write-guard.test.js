@@ -1,6 +1,5 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { readdirSync, readFileSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
-import os from 'node:os';
+import { describe, it, expect } from 'vitest';
+import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 
@@ -50,7 +49,7 @@ describe('01-source overwrite path removed (PROV-1)', () => {
       'verify-source-manifest.js', // read-only: recomputes hashes and diffs against the committed manifest
     ]);
     const touchers = readdirSync(TOOLS)
-      .filter((f) => f.endsWith('.js'))
+      .filter((f) => /\.c?js$/.test(f)) // .cjs too: a .cjs tool is invisible to endsWith('.js')
       .filter((f) => /01-source/.test(readFileSync(path.join(TOOLS, f), 'utf8')));
     const unexpected = touchers.filter((f) => !ALLOW.has(f));
     expect(unexpected).toEqual([]); // a new 01-source toucher => review + add to ALLOW (read) or guard it (write)
@@ -72,82 +71,54 @@ describe('01-source overwrite path removed (PROV-1)', () => {
 });
 
 /**
- * openstax-fetch.cjs -- a SECOND, UNGATED path to the operation CLAUDE.md's
- * heaviest rule governs, currently disarmed by a host-allowlist mismatch.
+ * PROV-2 -- openstax-fetch.cjs is DELETED, and no ungated GitHub-raw CNXML
+ * fetcher may reappear under tools/.
  * --> see CLAUDE.md "Never overwrite local OpenStax CNXML from upstream without
  *     double written consent" for the rule itself; nothing is restated here.
  *
- * WHAT IS TRUE, ALL MEASURED (2026-09-04, register §C118 (7)):
- *  - 0 callers anywhere in the repo.
- *  - Every fetch refuses: it builds raw.githubusercontent.com URLs while
- *    ALLOWED_FETCH_HOSTS admits only openstax.org / cnx.org. Exit 1, loud.
- *  - It does NOT consult tools/lib/source-refresh-policy.cjs -- the four
- *    fail-closed licence gates that download-source.js, the sanctioned CNXML
- *    writer, does consult.
- *  - Its --collection + --output-dir path writes the chNN/<id>.cnxml shape into
- *    a CALLER-CHOSEN directory (outputDir defaults to null and the bulk branch
- *    is gated on it), so it is a deliberate-act path, not an accident path.
- *  - The tripwire above cannot see it, for TWO independent reasons: the glob is
- *    endsWith('.js') and this file is .cjs, AND the needle is the literal
- *    "01-source", which the file never contains. Either alone suffices, so
- *    widening the glob would NOT catch it. (The .cjs gap is latent today:
- *    neither top-level .cjs tool references 01-source.)
+ * WHY IT WAS DELETED [USER, 2026-09-04]. It was the last survivor of the retired
+ * Matecat pipeline: added 2026-01-17 (187bf27b) to feed a CNXML->MD->XLIFF runner
+ * and a Matecat client, all of which are gone. It had 0 callers. Its
+ * --collection + --output-dir path wrote the chNN/<id>.cnxml shape while
+ * consulting NONE of the four fail-closed licence gates in
+ * tools/lib/source-refresh-policy.cjs that download-source.js -- the sanctioned
+ * CNXML writer -- goes through.
  *
- * WHY A TEST RATHER THAN A DELETION. Deleting it is the cleaner outcome and is
- * the user's call, not this test's. What the test buys meanwhile is that the
- * register used to describe this tool as "appears INERT ... no covering test",
- * which invites the repair that RE-ARMS it: widen the allowlist, and a bulk
- * OpenStax CNXML fetcher that bypasses the licence gates is live again. curl is
- * equally ungated -- the difference is that nobody mistakes curl for a
- * sanctioned pipeline tool, and a file sitting in tools/ they might.
+ * WHAT MADE IT WORTH A GUARD RATHER THAN A QUIET rm. Every fetch it made was
+ * refused, because d6f05801 (F16) hardened two fetchers in one commit and gave
+ * this one openstax.org|cnx.org -- the wrong host set for its own
+ * raw.githubusercontent.com base -- while the server's openstaxFetcher.js got
+ * the right one. So it was disarmed BY ACCIDENT, and it read like a one-word bug
+ * with F16's own commit message appearing to license the fix. Measured: adding
+ * githubusercontent.com to that allowlist fetched 43,015 bytes of real chemistry
+ * CNXML on the first try. The tool was entirely functional.
  *
- * SO: if you are here because this test failed, you have re-armed that path.
- * That needs the three-step written consent in CLAUDE.md, or the licence gates
- * wired in, or the tool deleted. It does not need this assertion relaxed.
+ * SO: if you are here because this test failed, something under tools/ can fetch
+ * CNXML from GitHub again. That needs the licence gates wired in, or the
+ * three-step written consent in CLAUDE.md -- not this assertion relaxed.
  */
-describe('openstax-fetch.cjs fetch path stays refused (PROV-2)', () => {
-  const script = path.join(TOOLS, 'openstax-fetch.cjs');
-
-  /** Run the tool, returning {code, stderr} whether it exits 0 or not. */
-  function run(args) {
-    try {
-      const stdout = execFileSync('node', [script, ...args], { encoding: 'utf8', stdio: 'pipe' });
-      return { code: 0, stderr: '', stdout };
-    } catch (e) {
-      return { code: e.status, stderr: e.stderr || '', stdout: e.stdout || '' };
-    }
-  }
-
-  // POSITIVE CONTROL, and it is load-bearing: without it a non-zero exit is
-  // indistinguishable from "the tool is broken / node could not start it", and
-  // the refusal assertion below would pass for the wrong reason.
-  it('CONTROL: a non-fetching verb still runs and exits 0', () => {
-    expect(run(['--list-books']).code).toBe(0);
+describe('no ungated GitHub-raw CNXML fetcher under tools/ (PROV-2)', () => {
+  it('openstax-fetch.cjs is gone', () => {
+    expect(existsSync(path.join(TOOLS, 'openstax-fetch.cjs'))).toBe(false);
   });
 
-  // The probe's --output goes to a THROWAWAY dir, never into the repo: if this
-  // assertion is ever failing, the tool is fetching for real, and a repo-relative
-  // target would leave upstream CNXML behind. (Measured: re-arming the allowlist
-  // fetched 43,015 bytes of real chemistry CNXML on the first try -- the tool is
-  // entirely functional, and one host regex is the whole of the disarmament.)
-  let out;
-  beforeEach(() => {
-    out = path.join(mkdtempSync(path.join(os.tmpdir(), 'osfetch-probe-')), 'fetched.cnxml');
-  });
-  afterEach(() => {
-    rmSync(path.dirname(out), { recursive: true, force: true });
+  // Deliberately keyed on the HOST, not the filename: a re-introduction under any
+  // name trips this. check-source-updates.js is the one classified fetcher -- it
+  // compares against upstream and its write verb was removed by PROV-1 above.
+  it('only the classified read-only checker names raw.githubusercontent', () => {
+    const ALLOW = new Set(['check-source-updates.js']);
+    const fetchers = readdirSync(TOOLS)
+      .filter((f) => /\.c?js$/.test(f))
+      .filter((f) => /raw\.githubusercontent/.test(readFileSync(path.join(TOOLS, f), 'utf8')));
+    expect(fetchers.filter((f) => !ALLOW.has(f))).toEqual([]);
   });
 
-  it('refuses a single-module fetch rather than reaching the network', () => {
-    expect(run(['m68690', '--output', out]).stderr).toMatch(/Refusing to fetch disallowed URL/);
-  });
-
-  it('exits non-zero on that refusal, so a caller cannot read it as success', () => {
-    expect(run(['m68690', '--output', out]).code).not.toBe(0);
-  });
-
-  it('writes nothing when it refuses', () => {
-    run(['m68690', '--output', out]);
-    expect(existsSync(out)).toBe(false);
+  // Non-vacuity: the sweep must actually be looking at something. Without this,
+  // an empty tools/ or a broken glob passes the assertion above silently.
+  it('CONTROL: the classified fetcher is present and was seen by that sweep', () => {
+    const seen = readdirSync(TOOLS)
+      .filter((f) => /\.c?js$/.test(f))
+      .filter((f) => /raw\.githubusercontent/.test(readFileSync(path.join(TOOLS, f), 'utf8')));
+    expect(seen).toEqual(['check-source-updates.js']);
   });
 });

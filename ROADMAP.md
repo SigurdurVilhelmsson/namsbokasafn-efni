@@ -92,10 +92,15 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
      `tools/openstax-fetch.cjs` is a live 17 KB CLI (its own --help calls itself
      openstax-fetch.js), and server/services/openstaxFetcher.js exists too. It also first
      prescribed `ls tools/*.js`, which has the SAME blind spot and misses both .cjs tools.
-     Derive with `ls tools/*.{js,cjs}`. -->
+     Derive with `ls tools/*.{js,cjs}`.
+     SUPERSEDED 2026-09-04: `tools/openstax-fetch.cjs` has been DELETED ([USER] call, §C118 (7)) —
+     it was the last survivor of the retired Matecat pipeline, had 0 callers, and wrote the
+     01-source CNXML shape while consulting none of the licence gates. The `.cjs` warning below
+     still stands for `generate-book-data.cjs`, and the DERIVE-don't-enumerate advice stands
+     absolutely — this comment has now been wrong about this one file twice. -->
 
 **Active CLI tools:** derive them — `ls tools/*.{js,cjs}` (anything under `tools/archived/` is retired).
-⚠️ **Keep the `.cjs`** — `openstax-fetch.cjs` and `generate-book-data.cjs` are live and a bare `*.js` glob hides them.
+⚠️ **Keep the `.cjs`** — `generate-book-data.cjs` is live and a bare `*.js` glob hides it. *(This named `openstax-fetch.cjs` too until it was deleted on 2026-09-04; the blind spot is the point, not the file list.)*
 Flags that are not guessable are tabulated in CLAUDE.md § *Commands*.
 
 **Old markdown pipeline (deleted 2026-02-16):**

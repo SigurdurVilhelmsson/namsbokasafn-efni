@@ -43,7 +43,8 @@ const LOG_PATH = path.join(LOG_DIR, 'update-log.json');
 // GitHub configuration
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/openstax';
 
-// Known book repositories (mirrored from openstax-fetch.cjs)
+// Known book repositories. (These were mirrored from openstax-fetch.cjs, which
+// was deleted 2026-09-04 — this is now the only copy under tools/.)
 const BOOKS = {
   'chemistry-2e': {
     repo: 'osbooks-chemistry-bundle',
