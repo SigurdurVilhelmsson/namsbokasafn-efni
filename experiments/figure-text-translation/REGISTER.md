@@ -25,7 +25,33 @@ production figures. Fixed by inverting `cnxml-inject`'s own image mapping — **
 code**, since that suffix is an enforceable value owned by `generate-image-mapping.js`. ▶ **It
 survived every earlier gate because the committed render test's fixture used a PRE-INJECT `src`
 shape production never produces for a translated figure, so both its directions passed for the
-wrong reason.** ⚠️ **TWO KNOWN LIMITATIONS, both [LEAD] questions, neither a code defect:**
+wrong reason.** ✅ **THE THREE OPEN QUESTIONS ARE RULED — [USER], 2026-09-04.**
+**Ⓨ Flagging writes the editor's current blocks into the committed sidecar: KEPT AS IS.** The
+renderer's only channel IS the sidecar — `cnxml-render.js` has no DB access, deliberately, because
+that is what keeps MIT `tools/` from importing AGPL `server/` — so a flag that did not write the
+sidecar would be invisible to the renderer and the badge is the whole feature. `applyApprovedFigureEdits`
+writes `effectiveState`, never the raw column, so nothing can be stamped `approved` unreviewed. The
+alternative — write the state but keep the previous blocks — trades a visible, correctly-labelled
+record for a silent divergence between the card and the sidecar.
+**Ⓐ The card must show the figure: DO IT, via a SERVER-SUPPLIED image URL in the `/figures`
+payload.** Measured: this app serves no `/content` route at all — that path is vefur's — so the
+plan's `<img>` URL would 404 on every card for every book, and it would hardcode `_IS`, an
+enforceable value owned by `generate-image-mapping.js`. Putting the URL in the payload keeps the
+suffix on the server, where the mapping already lives, instead of duplicating it into browser JS.
+**Ⓒ "Approved" must mean the PUBLISHED IMAGE carries approved text: close it by comparing two
+hashes already in the sidecar.** Today `applyApprovedFigureEdits` writes `state` and `renderHash`
+in the same call, so `effectiveState` reduces to `sidecar.state` exactly and the hash can only fire
+on a `COMPOSER_VERSION` bump — never on an editorial event. Nothing in the server invokes the
+composer (grepped: a constant and a comment, nothing more), so an editor can approve and the
+published SVG still carries the old text with every surface reporting approved.
+▶ **The fix keeps staleness DERIVED, which is this feature's whole design:** the composer stamps
+`composedHash` into the sidecar when it writes the SVG, and `effectiveState` reports `approved`
+only when `composedHash === renderHash`. **No extra file read** — both values are already in the
+sidecar — and it inverts the flow correctly: approve → still `mt-preview` → run the composer →
+`approved`. ⚠️ Exposure is **0 today**: there are no figure-text sidecars anywhere in `books/`. It
+becomes real on the first genuine approval.
+
+⚠️ **Superseded framing, kept because the reasoning is still the evidence:**
 (1) approving does not re-run the composer, so `approved` can describe text that is not in the
 published SVG — the spec's own flow is "approve, then run the composer CLI"; (2) flagging is the
 only path by which unapproved editor text reaches a committed sidecar, because the renderer's
