@@ -25,6 +25,10 @@
  *   GET  /api/segment-editor/terminology/lookup              Quick term lookup
  *   GET  /api/segment-editor/:book/:chapter/:moduleId/stats  Get module stats
  *
+ *   GET  /api/segment-editor/:book/:chapter/:moduleId/figures  Translated figures + review state
+ *   POST /api/segment-editor/:book/:chapter/:moduleId/figures/:basename/block  Save a figure text edit
+ *   POST /api/segment-editor/:book/:chapter/:moduleId/figures/:basename/state  Approve/flag a figure
+ *
  *   POST /api/segment-editor/:book/:chapter/:moduleId/apply  Apply approved edits to files
  *   POST /api/segment-editor/:book/:chapter/:moduleId/apply-and-render  Apply then inject+render
  *   GET  /api/segment-editor/:book/:chapter/:moduleId/apply-status  Check apply status
@@ -478,6 +482,259 @@ router.post(
         return res.status(409).json({ error: 'conflict', message: err.message });
       }
       log.error({ err }, 'Error saving segment edit');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+// =====================================================================
+// FIGURE-TEXT REVIEW
+//
+// A translated figure's Icelandic text lives in a COMMITTED sidecar
+// (books/<slug>/figure-text/<basename>.is.json); its workflow state lives in
+// SQLite. "Is this approved?" is DERIVED from both on every read and never
+// stored, so an approved figure whose text has since changed reports
+// mt-preview on its own, with no second row to keep in sync.
+//
+// These handlers stay thin. Enumeration, the no-sidecar skip and the
+// no-DB-row fallback all live in figureReviewService because all three routes
+// need them; the router validates input and shapes nothing itself.
+// =====================================================================
+
+const figureReview = require('../services/figureReviewService');
+
+/**
+ * :basename is concatenated into a filename by sidecarPath(), so it must not be
+ * able to leave books/<slug>/figure-text/. REJECTED, never sanitised: a
+ * silently rewritten name would read and write a different figure than the one
+ * the editor is looking at, which is worse than a refusal. \w excludes both
+ * separators, so no value passing this can traverse. The corpus convention is
+ * CNX_Chem_01_01_ChemWeb; the length cap keeps a pathological name off the
+ * filesystem call.
+ */
+const FIGURE_BASENAME_RE = /^[\w.-]{1,120}$/;
+
+/**
+ * Everything the two figure write routes need, or the response saying why they
+ * cannot proceed. ORDER IS LOAD-BEARING: the syntactic guard runs before any
+ * I/O, and the book lookup runs before ensureFigureRow can reach a live foreign
+ * key (an unregistered slug would otherwise throw, not 404).
+ */
+function resolveFigureRequest(req) {
+  const { book, moduleId, basename } = req.params;
+  if (!FIGURE_BASENAME_RE.test(basename || '')) {
+    return { error: { status: 400, body: { error: `Invalid figure basename: ${basename}` } } };
+  }
+  const db = figureReview.getDb();
+  const bookId = figureReview.lookupBookId(db, book);
+  if (!bookId) {
+    return { error: { status: 404, body: { error: `Book not registered: ${book}` } } };
+  }
+  // The basename must name a figure OF THIS MODULE. Without this check a
+  // regex-valid name from anywhere would mint a figure_review row carrying
+  // THIS route's chapter/module_id — silently mis-attributed provenance, which
+  // idx_figure_review_module would then serve under the wrong module.
+  const known = figureReview.listModuleFigures(book, req.chapterNum, moduleId);
+  if (!known.some((f) => f.basename === basename)) {
+    return {
+      error: { status: 404, body: { error: `No such figure in ${moduleId}: ${basename}` } },
+    };
+  }
+  const resolved = figureReview.resolveFigure(db, bookId, book, basename);
+  if (!resolved) {
+    // No sidecar: the plain English OpenStax figure. There is no Icelandic text
+    // to edit or approve.
+    return {
+      error: { status: 404, body: { error: `No translated text for figure: ${basename}` } },
+    };
+  }
+  return { db, bookId, basename, resolved };
+}
+
+/**
+ * GET /:book/:chapter/:moduleId/figures
+ * The module's TRANSLATED figures, each with its derived review state and the
+ * advisory checks. Read chain mirrors the module GET above.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/figures',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    const { book, moduleId } = req.params;
+    try {
+      const db = figureReview.getDb();
+      const bookId = figureReview.lookupBookId(db, book);
+      if (!bookId) return res.status(404).json({ error: `Book not registered: ${book}` });
+
+      // The module's own ICELANDIC prose, as captionDivergence's reference.
+      // Icelandic on both sides on purpose: the check looks for near-variant
+      // spellings (Selsíus vs Celsíus), which can only exist between two
+      // Icelandic strings — an English caption would make it silently inert.
+      // Best-effort: a module with no segments file must still list its
+      // figures, and '' makes captionDivergence return [], which is designed
+      // silence rather than a false all-clear.
+      const isBySegment = {};
+      try {
+        const data = segmentParser.loadModuleForEditing(book, req.chapterNum, moduleId);
+        for (const seg of data.segments) isBySegment[seg.segmentId] = seg.is || '';
+      } catch (err) {
+        log.warn({ err }, 'Figure list: module segments unavailable; caption check stays silent');
+      }
+
+      const figures = [];
+      for (const f of figureReview.listModuleFigures(book, req.chapterNum, moduleId)) {
+        const resolved = figureReview.resolveFigure(db, bookId, book, f.basename);
+        if (!resolved) continue; // no sidecar -> not a translated figure; skip
+        const referenceText = [f.captionSegmentId, f.altSegmentId]
+          .map((id) => (id && isBySegment[id]) || '')
+          .filter(Boolean)
+          .join(' ');
+        figures.push(figureReview.buildFigurePayload(f.basename, resolved.fig, referenceText));
+      }
+      res.json({ figures });
+    } catch (err) {
+      log.error({ err }, 'Error listing figures for review');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /:book/:chapter/:moduleId/figures/:basename/block
+ * Save one editor correction to one figure text block. Write chain mirrors the
+ * segment edit save.
+ */
+router.post(
+  '/:book/:chapter/:moduleId/figures/:basename/block',
+  requireAuth,
+  validateBookChapter,
+  requireBookAccess(),
+  validateModule,
+  (req, res) => {
+    const { blockKey, isText } = req.body || {};
+    if (typeof blockKey !== 'string' || !blockKey) {
+      return res.status(400).json({ error: 'blockKey is required' });
+    }
+    if (typeof isText !== 'string') {
+      return res.status(400).json({ error: 'isText is required' });
+    }
+    // An empty or whitespace-only value is SILENT LOSS OF PUBLISHED CONTENT,
+    // not a no-op: resolveBlocks merges it over the MT text,
+    // applyApprovedFigureEdits commits it to the sidecar, and compose.py's
+    // guard against exactly this ("a silent blank is far worse than an
+    // untranslated label") tests `key not in TR` — so it does NOT fire for a
+    // key that is PRESENT with an empty value, and the label is drawn as
+    // show_text(''). Refuse it at the boundary instead, before any IO.
+    // ⚠️ Distinct from the hasOwnProperty guard below, which is about a
+    // block's EXISTING value legitimately being ''. Clearing a label is not
+    // an edit this endpoint offers.
+    if (!isText.trim()) {
+      return res
+        .status(400)
+        .json({ error: 'isText cannot be empty — a blank would remove the label from the figure' });
+    }
+    if (isText.length > 10000) {
+      return res.status(400).json({ error: 'Content too long (max 10,000 characters)' });
+    }
+    try {
+      const ctx = resolveFigureRequest(req);
+      if (ctx.error) return res.status(ctx.error.status).json(ctx.error.body);
+      // blockKey must name a block that currently exists in the figure's own
+      // sidecar (ctx.resolved.mtBlocks — see resolveBlocks' doc comment: block
+      // keys are content-addressed, so re-extraction changes them). Without
+      // this, an unknown key upserts into figure_block_edit unconditionally,
+      // is invisible to every later GET (resolveBlocks only merges a row whose
+      // key is still present in mtBlocks) and the client is told {ok: true} —
+      // the realistic trigger being a stale card open from before a
+      // re-extraction, not a malicious client. hasOwnProperty, not `in` or a
+      // truthiness test: a block's value can legitimately be ''.
+      if (!Object.prototype.hasOwnProperty.call(ctx.resolved.mtBlocks, blockKey)) {
+        return res.status(404).json({ error: `No such block in ${ctx.basename}: ${blockKey}` });
+      }
+      figureReview.saveBlockEdit(ctx.db, {
+        bookId: ctx.bookId,
+        basename: ctx.basename,
+        blockKey,
+        isText,
+        editedBy: String(req.user.id),
+      });
+      // Deliberately no state here: the badge is DERIVED, so the client
+      // re-fetches /figures rather than guessing what this edit did to it.
+      res.json({ ok: true });
+    } catch (err) {
+      log.error({ err }, 'Error saving figure block edit');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /:book/:chapter/:moduleId/figures/:basename/state
+ * Approve or flag a figure, and write the committed sidecar.
+ */
+router.post(
+  '/:book/:chapter/:moduleId/figures/:basename/state',
+  requireAuth,
+  validateBookChapter,
+  requireBookAccess(),
+  validateModule,
+  (req, res) => {
+    const { state, flagKind, note } = req.body || {};
+    // Validated against the service's enums, which are pinned to migration
+    // 050's CHECK constraints — otherwise SQLite throws and a typo is a 500.
+    if (!figureReview.FIGURE_STATES.includes(state)) {
+      return res.status(400).json({
+        error: `Invalid state. Must be one of: ${figureReview.FIGURE_STATES.join(', ')}`,
+      });
+    }
+    if (flagKind != null && !figureReview.FIGURE_FLAG_KINDS.includes(flagKind)) {
+      return res.status(400).json({
+        error: `Invalid flagKind. Must be one of: ${figureReview.FIGURE_FLAG_KINDS.join(', ')}`,
+      });
+    }
+    if (note != null && (typeof note !== 'string' || note.length > 2000)) {
+      return res.status(400).json({ error: 'note must be a string of at most 2,000 characters' });
+    }
+    try {
+      const ctx = resolveFigureRequest(req);
+      if (ctx.error) return res.status(ctx.error.status).json(ctx.error.body);
+      const { db, bookId, basename, resolved } = ctx;
+
+      // setState is an UPDATE and stays one — it is never told which module a
+      // basename belongs to, and chapter/module_id are NOT NULL. On day one
+      // there is no row, so mint it here from this route's own params.
+      figureReview.ensureFigureRow(db, {
+        bookId,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        basename,
+      });
+      // The approval hash must cover the blocks AS THE EDITOR SEES THEM — MT
+      // overlaid with their corrections — not the raw sidecar text.
+      figureReview.setState(db, {
+        bookId,
+        basename,
+        state,
+        flagKind: flagKind || null,
+        note: note || null,
+        reviewedBy: String(req.user.id),
+        blocks: resolved.fig.blocks,
+      });
+      // The renderer reads the SIDECAR, never the database, so every transition
+      // must reach it — a flag as much as an approval.
+      figureReview.applyApprovedFigureEdits(db, {
+        bookDir: figureReview.bookDirFor(req.params.book),
+        bookId,
+        basename,
+        mtBlocks: resolved.mtBlocks,
+      });
+      const after = figureReview.getFigure(db, bookId, basename, resolved.mtBlocks);
+      res.json({ ok: true, effectiveState: after.effectiveState });
+    } catch (err) {
+      log.error({ err }, 'Error setting figure review state');
       res.status(500).json({ error: err.message });
     }
   }

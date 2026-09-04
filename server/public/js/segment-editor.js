@@ -291,6 +291,10 @@
       // Load term data + repetition suggestions in background (non-blocking)
       loadTermData(moduleId);
       loadRepetitions(moduleId);
+      // Figure-text review cards. Also non-blocking, and it clears the
+      // container first, so switching modules cannot leave a stale card
+      // offering to approve a figure the open module does not have.
+      loadFigures(moduleId);
     } catch (err) {
       // Restore module list on error so users can retry
       document.getElementById('module-selector').style.display = 'block';
@@ -342,6 +346,218 @@
       // Non-critical
       repetitionData = {};
     }
+  }
+
+  // ================================================================
+  // FIGURE-TEXT REVIEW CARDS
+  // ================================================================
+  /**
+   * A translated figure's Icelandic text lives in a COMMITTED sidecar; its
+   * review state lives in SQLite; the badge is DERIVED from both and is never
+   * stored client-side. So every mutation below re-fetches /figures instead of
+   * guessing: an approved figure whose blocks just changed reverts to
+   * mt-preview on its own, and a local guess would disagree with the renderer.
+   *
+   * ⚠️ Every value here is assigned through the DOM (input.value, textContent,
+   * setAttribute) and never interpolated into innerHTML. Block text is MT
+   * output plus editor free-text, and a caption warning's note contains double
+   * quotes BY CONSTRUCTION (`the module's caption/alt uses "X"`), so a
+   * `value="${text}"` template would break the attribute or inject markup.
+   *
+   * ⚠️ No <img>: nothing serves the published figures to this app (there is no
+   * /content mount — express.static covers server/public only), so the URL the
+   * plan sketched would 404 for every book, and building it here would also
+   * hardcode DEFAULT_SUFFIX ('_IS'), whose owner is tools/generate-image-mapping.js.
+   * A server-supplied image URL in the /figures payload is the clean fix.
+   */
+  function figureCardsContainer() {
+    return document.getElementById('figure-cards');
+  }
+
+  async function loadFigures(moduleId) {
+    const requestedModule = currentModuleId; // capture at call time
+    // Clear FIRST: a module with no reviewable figures must show none, and a
+    // re-load must not stack a second copy of every card.
+    renderFigureCards([]);
+    try {
+      const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}/${moduleId}/figures`, {
+        credentials: 'include',
+      });
+      if (!res.ok || currentModuleId !== requestedModule) return; // stale
+      const data = await res.json();
+      if (currentModuleId !== requestedModule) return; // stale after parse
+      renderFigureCards(data.figures || []);
+    } catch {
+      // Advisory surface: a figure-review outage must never block segment work.
+      renderFigureCards([]);
+    }
+  }
+
+  function renderFigureCards(figures) {
+    const container = figureCardsContainer();
+    const section = document.getElementById('figure-review-section');
+    if (!container || !section) return;
+    container.replaceChildren();
+    // A figure with no sidecar is not returned at all (there are ~1,500
+    // untranslated OpenStax figures), so an empty list is the ordinary case.
+    section.style.display = figures.length ? 'block' : 'none';
+    for (const fig of figures) container.appendChild(renderFigureCard(fig));
+  }
+
+  function figureWarning(text) {
+    const em = document.createElement('em');
+    em.className = 'figure-warning';
+    em.setAttribute('data-block-warning', '');
+    em.textContent = text;
+    return em;
+  }
+
+  function renderFigureBlock(basename, key, text, warnings) {
+    const li = document.createElement('li');
+    li.className = 'figure-block';
+
+    const label = document.createElement('code');
+    label.className = 'figure-block-key';
+    label.textContent = key;
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'figure-block-input';
+    input.setAttribute('data-block-input', '');
+    input.setAttribute('data-block-key', key);
+    // The block key is the English source text, so it is also the field's name.
+    input.setAttribute('aria-label', key);
+    input.value = text == null ? '' : String(text);
+
+    const save = document.createElement('button');
+    save.type = 'button';
+    save.className = 'btn btn-sm';
+    save.setAttribute('data-block-save', '');
+    save.textContent = 'Vista';
+    save.addEventListener('click', () => saveFigureBlock(basename, key, input.value));
+
+    li.append(label, input, save);
+
+    // Both advisory checks, each rendering ITS OWN field: decimal carries a
+    // whole suggested string, caption carries a note about one word.
+    for (const w of warnings.decimal) {
+      if (w.blockKey === key) li.appendChild(figureWarning(`⚠ Tillaga: ${w.suggested}`));
+    }
+    for (const w of warnings.caption) {
+      if (w.blockKey === key) li.appendChild(figureWarning(`⚠ ${w.figureText}: ${w.note}`));
+    }
+    return li;
+  }
+
+  function renderFigureCard(fig) {
+    const basename = fig.basename;
+    const card = document.createElement('section');
+    card.className = 'figure-card';
+    card.setAttribute('data-figure-card', basename);
+
+    const header = document.createElement('header');
+    header.className = 'figure-card-header';
+    const name = document.createElement('code');
+    name.textContent = basename;
+    const state = String(fig.effectiveState || '');
+    const badge = document.createElement('span');
+    badge.className = `figure-state-badge state-${state}`;
+    badge.setAttribute('data-figure-state', '');
+    badge.textContent = state.toUpperCase();
+    header.append(name, badge);
+    card.appendChild(header);
+
+    // Only ever non-null once a review row exists (a flag or an approval note).
+    if (fig.note) {
+      const note = document.createElement('p');
+      note.className = 'figure-note';
+      note.setAttribute('data-figure-note', '');
+      note.textContent = fig.note;
+      card.appendChild(note);
+    }
+
+    const warnings = {
+      decimal: (fig.warnings && fig.warnings.decimal) || [],
+      caption: (fig.warnings && fig.warnings.caption) || [],
+    };
+    const list = document.createElement('ul');
+    list.className = 'figure-blocks';
+    list.setAttribute('data-figure-blocks', '');
+    for (const [key, text] of Object.entries(fig.blocks || {})) {
+      list.appendChild(renderFigureBlock(basename, key, text, warnings));
+    }
+    card.appendChild(list);
+
+    const actions = document.createElement('div');
+    actions.className = 'figure-card-actions';
+    const noteInput = document.createElement('input');
+    noteInput.type = 'text';
+    noteInput.className = 'figure-note-input';
+    noteInput.setAttribute('data-figure-note-input', '');
+    noteInput.placeholder = 'Athugasemd (valkvæð)';
+    noteInput.setAttribute('aria-label', `Athugasemd um mynd ${basename}`);
+
+    const approve = document.createElement('button');
+    approve.type = 'button';
+    approve.className = 'btn btn-sm btn-primary';
+    approve.setAttribute('data-figure-approve', '');
+    approve.textContent = 'Samþykkja';
+    approve.addEventListener('click', () =>
+      setFigureState(basename, { state: 'approved', note: noteInput.value })
+    );
+
+    const flag = document.createElement('button');
+    flag.type = 'button';
+    flag.className = 'btn btn-sm';
+    flag.setAttribute('data-figure-flag', '');
+    flag.textContent = 'Merkja villu';
+    // flagKind is required to be one of the service's enum values when present;
+    // 'text' is the kind this card can actually describe.
+    flag.addEventListener('click', () =>
+      setFigureState(basename, { state: 'flagged', flagKind: 'text', note: noteInput.value })
+    );
+
+    actions.append(noteInput, approve, flag);
+    card.appendChild(actions);
+    return card;
+  }
+
+  function figureUrl(basename, leaf) {
+    return (
+      `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}` +
+      `/figures/${encodeURIComponent(basename)}/${leaf}`
+    );
+  }
+
+  async function saveFigureBlock(basename, blockKey, isText) {
+    try {
+      await fetchJson(figureUrl(basename, 'block'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ blockKey, isText }),
+      });
+    } catch (err) {
+      alert('Ekki tókst að vista myndatexta: ' + err.message);
+      return;
+    }
+    // The route returns {ok:true} and deliberately no state — re-read it.
+    await loadFigures(currentModuleId);
+  }
+
+  async function setFigureState(basename, { state, flagKind = null, note = '' }) {
+    try {
+      await fetchJson(figureUrl(basename, 'state'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ state, flagKind, note: note || null }),
+      });
+    } catch (err) {
+      alert('Ekki tókst að uppfæra stöðu myndar: ' + err.message);
+      return;
+    }
+    await loadFigures(currentModuleId);
   }
 
   // Insert a repetition suggestion into a segment's edit box (still saved

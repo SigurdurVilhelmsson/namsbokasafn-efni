@@ -25,6 +25,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { createRequire } from 'module';
 import { renderMathML, resetMathJaxIds } from './lib/mathjax-render.js';
 import { HANDLED_INLINE } from './lib/handled-tags.js';
 import {
@@ -37,6 +38,13 @@ import {
   firstDirectChildTitle,
 } from './lib/cnxml-parser.js';
 import { parseCnxmlFragment, serializeCnxmlFragment } from './lib/cnxml-dom.js';
+// The figure-review sidecar is keyed on the ENGLISH image basename, but this
+// file's only input is 03-translated/ — cnxml-inject's OUTPUT — where the src
+// has already been swapped to the translated variant. Reusing inject's OWN
+// reader (rather than writing a second one here) is deliberate: it guarantees
+// the reverse lookup ranges over exactly the entry set the forward swap used,
+// so the two sides cannot drift apart. Both files are MIT; no server/ edge.
+import { loadImageBasenameMap } from './cnxml-inject.js';
 import {
   parseArgs,
   BOOK_OPTION,
@@ -183,6 +191,11 @@ let BOOKS_DIR_TEST_OVERRIDE = null;
 function _setBooksDirForTest(dir) {
   BOOKS_DIR_TEST_OVERRIDE = dir;
   BOOKS_DIR = dir || DEFAULT_BOOKS_DIR;
+  // The reverse image map is per-book-dir and cached; a fixture tree that is
+  // created, populated and pointed at inside one beforeEach would otherwise be
+  // read against a map built for the previous tree.
+  IMAGE_REVERSE_MAP = null;
+  IMAGE_REVERSE_MAP_DIR = null;
 }
 function _getOsEmbedStatsForTest() {
   return { ...OS_EMBED_STATS };
@@ -311,6 +324,83 @@ function normalizeImageSrc(src, bookSlug, chapterStr) {
       ? src.split('/').pop()
       : src;
   return `/content/${bookSlug}/chapters/${chapterStr}/images/media/${basename}`;
+}
+
+// The sidecar module is CommonJS (both tools/ and server/ consume it); this file is ESM.
+const { readSidecar, effectiveState, COMPOSER_VERSION } = createRequire(import.meta.url)(
+  './lib/figure-text-sidecar.cjs'
+);
+
+/**
+ * outputName -> originalImage, i.e. the EXACT inverse of the swap
+ * cnxml-inject's applyImageBasenameSwaps performed. Cached per book dir: this
+ * is read once per BOOKS_DIR rather than once per figure. A change of book dir
+ * invalidates it via the stored-dir check (main() reassigns BOOKS_DIR
+ * directly); _setBooksDirForTest clears it outright, because a fixture tree can
+ * be created and populated AFTER the dir is set but before the first render.
+ */
+let IMAGE_REVERSE_MAP = null;
+let IMAGE_REVERSE_MAP_DIR = null;
+
+function imageReverseMap() {
+  if (IMAGE_REVERSE_MAP && IMAGE_REVERSE_MAP_DIR === BOOKS_DIR) return IMAGE_REVERSE_MAP;
+  const map = new Map();
+  for (const entry of loadImageBasenameMap(BOOKS_DIR)) {
+    // outputName is unique per book (verified across every committed
+    // image-mapping.json), so the inverse is well defined.
+    map.set(entry.outputName, entry.originalImage);
+  }
+  IMAGE_REVERSE_MAP = map;
+  IMAGE_REVERSE_MAP_DIR = BOOKS_DIR;
+  return map;
+}
+
+/**
+ * The basename a figure's sidecar is keyed on: always the ENGLISH one.
+ *
+ * 🔴 This function exists because the renderer's input is 03-translated/ —
+ * cnxml-inject's output — while every other side of the seam keys on the
+ * English name: listModuleFigures derives it from 02-structure/ (extracted
+ * from 01-source), and applyApprovedFigureEdits writes
+ * figure-text/<English basename>.is.json. Deriving the key straight from the
+ * rendered src therefore asked for `<name>_IS.is.json` and matched a sidecar
+ * on exactly ZERO translated figures — the badge could only ever appear on a
+ * figure that had NO translated image at all, the precise inverse of the
+ * intent.
+ *
+ * ⚠️ The `_IS` suffix is deliberately NOT written here. It is an enforceable
+ * value owned by tools/generate-image-mapping.js's DEFAULT_SUFFIX and pinned
+ * against the committed corpus by its own test; per CLAUDE.md it is read from
+ * its owner, never restated. Inverting the mapping needs no knowledge of the
+ * suffix at all, and stays correct if the suffix ever changes or if a future
+ * entry renames an image by some other rule.
+ *
+ * A src with no mapping entry was never swapped, so its own basename already
+ * IS the English one — that is the fallback, and it is what makes untranslated
+ * figures (the large majority) behave exactly as before.
+ *
+ * @param {string} figSrc - image src as it appears in 03-translated CNXML
+ * @returns {string} the English basename to look the sidecar up under
+ */
+function sidecarBasenameForSrc(figSrc) {
+  const filename = figSrc.includes('/') ? figSrc.split('/').pop() : figSrc;
+  return imageReverseMap().get(filename) || path.basename(figSrc, path.extname(figSrc));
+}
+
+const EMITTED_REVIEW_STATES = new Set(['mt-preview', 'flagged']);
+
+/**
+ * Attribute marking a figure whose Icelandic text is not yet approved.
+ *
+ * Only the states a READER needs warning about are emitted. 'approved' emits
+ * nothing: a badge on finished work is noise, and an absent attribute is the
+ * correct default for the ~1,100 figures that have no sidecar at all.
+ *
+ * @param {string} state - from effectiveState()
+ * @returns {string} '' or ' data-figure-review="..."'
+ */
+function figureReviewAttr(state) {
+  return EMITTED_REVIEW_STATES.has(state) ? ` data-figure-review="${state}"` : '';
 }
 
 /**
@@ -1053,11 +1143,38 @@ function renderFigure(figure, context) {
       ? context.chapterFigureNumbers.get(compositeKey) || context.chapterFigureNumbers.get(id)
       : null;
 
+  // Figure review state for the badge. Read BEFORE the attrs array is built, because
+  // the <figure> open tag is pushed below and the image src is not parsed until later.
+  let reviewAttr = '';
+  const figImage = figure.content.match(new RegExp(`<image(${TAG_ATTR_SPAN})/?>`));
+  if (figImage) {
+    const figSrc = parseAttributes(figImage[1]).src || '';
+    if (figSrc) {
+      // NOT path.basename(figSrc): this src is POST-inject and may already
+      // carry the translated variant's name. See sidecarBasenameForSrc.
+      const figBasename = sidecarBasenameForSrc(figSrc);
+      // BOOKS_DIR is already `books/<slug>` — there is no books-root variable here.
+      const sidecar = readSidecar(BOOKS_DIR, figBasename);
+      // A figure with NO sidecar has no translated version at all — it is the
+      // plain English OpenStax figure, and there is nothing to badge.
+      // effectiveState(null, ...) maps to 'mt-preview', which is the right
+      // answer for a figure that HAS a sidecar and no approval yet, but
+      // conflating "no sidecar" with "unapproved sidecar" here would badge
+      // every one of the ~1,500 untranslated figures in the corpus.
+      if (sidecar) {
+        reviewAttr = figureReviewAttr(
+          effectiveState(sidecar, sidecar.blocks || {}, COMPOSER_VERSION)
+        );
+      }
+    }
+  }
+
   // Build attributes array (like exercise pattern)
   const attrs = [];
   if (id) attrs.push(`id="${escapeAttr(id)}"`);
   if (className) attrs.push(`class="${escapeAttr(className)}"`);
   if (figNum) attrs.push(`data-figure-number="${figNum}"`);
+  if (reviewAttr) attrs.push(reviewAttr.trim());
 
   lines.push(`<figure ${attrs.join(' ')}>`);
 
@@ -4337,4 +4454,5 @@ export {
   ITEM_INLINE_OK,
   escapeAttr, // §C81: exported to pin the two-path escaping asymmetry
   decodeEntities,
+  figureReviewAttr,
 };

@@ -8,15 +8,97 @@ things lives in [README.md](README.md).
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-02
+## ⏩ RESUME — state as of 2026-09-03
 
 **What exists:** a working extract → strip → compose → oracle-check pipeline, proven on
-`CNX_Chem_01_01_SciMethod.pdf` end to end, and a census of all 36 chapter-1 figures.
-**Nothing is wired into the publication pipeline and nothing has been bought from the MT.**
-All Icelandic produced so far is **placeholder probe text**, not a translation.
+`CNX_Chem_01_01_SciMethod.pdf` end to end; a census of all 36 chapter-1 figures; **one real
+Málstaður run** (⑯, 1.20 ISK, 8/8 blocks); and the output format settled as **SVG** by
+measurement (⑤).
 
-**Next action:** decide the output format (item ① below), then run one real figure's prose
-through Málstaður.
+**✅ THE REVIEW WORKFLOW IS BUILT AND REVIEWED — branch `feat/figure-text-review`, 8 SDD tasks,
+awaiting a merge decision.** Unit suite matches `main`'s own red baseline exactly (19 failing
+assertions across 9 files + `findTermsGolden` as a 10th zero-assertion red — all inherited, none
+added); E2E 5/5. 🔴 **A seven-lens adversarial whole-branch review found a CRITICAL that eight
+task reviews had missed:** the renderer keyed the figure sidecar on the POST-inject `_IS`
+basename while every writer keys on the English one, so `data-figure-review` fired on **zero**
+production figures. Fixed by inverting `cnxml-inject`'s own image mapping — **no `_IS` literal in
+code**, since that suffix is an enforceable value owned by `generate-image-mapping.js`. ▶ **It
+survived every earlier gate because the committed render test's fixture used a PRE-INJECT `src`
+shape production never produces for a translated figure, so both its directions passed for the
+wrong reason.** ✅ **THE THREE OPEN QUESTIONS ARE RULED — [USER], 2026-09-04.**
+**Ⓨ Flagging writes the editor's current blocks into the committed sidecar: KEPT AS IS.** The
+renderer's only channel IS the sidecar — `cnxml-render.js` has no DB access, deliberately, because
+that is what keeps MIT `tools/` from importing AGPL `server/` — so a flag that did not write the
+sidecar would be invisible to the renderer and the badge is the whole feature. `applyApprovedFigureEdits`
+writes `effectiveState`, never the raw column, so nothing can be stamped `approved` unreviewed. The
+alternative — write the state but keep the previous blocks — trades a visible, correctly-labelled
+record for a silent divergence between the card and the sidecar.
+**Ⓐ The card must show the figure: DO IT, via a SERVER-SUPPLIED image URL in the `/figures`
+payload.** Measured: this app serves no `/content` route at all — that path is vefur's — so the
+plan's `<img>` URL would 404 on every card for every book, and it would hardcode `_IS`, an
+enforceable value owned by `generate-image-mapping.js`. Putting the URL in the payload keeps the
+suffix on the server, where the mapping already lives, instead of duplicating it into browser JS.
+**Ⓒ "Approved" must mean the PUBLISHED IMAGE carries approved text: close it by comparing two
+hashes already in the sidecar.** Today `applyApprovedFigureEdits` writes `state` and `renderHash`
+in the same call, so `effectiveState` reduces to `sidecar.state` exactly and the hash can only fire
+on a `COMPOSER_VERSION` bump — never on an editorial event. Nothing in the server invokes the
+composer (grepped: a constant and a comment, nothing more), so an editor can approve and the
+published SVG still carries the old text with every surface reporting approved.
+▶ **The fix keeps staleness DERIVED, which is this feature's whole design:** the composer stamps
+`composedHash` into the sidecar when it writes the SVG, and `effectiveState` reports `approved`
+only when `composedHash === renderHash`. **No extra file read** — both values are already in the
+sidecar — and it inverts the flow correctly: approve → still `mt-preview` → run the composer →
+`approved`. ⚠️ Exposure is **0 today**: there are no figure-text sidecars anywhere in `books/`. It
+becomes real on the first genuine approval.
+
+⚠️ **Superseded framing, kept because the reasoning is still the evidence:**
+(1) approving does not re-run the composer, so `approved` can describe text that is not in the
+published SVG — the spec's own flow is "approve, then run the composer CLI"; (2) flagging is the
+only path by which unapproved editor text reaches a committed sidecar, because the renderer's
+only channel IS the sidecar (it has no DB access, by the MIT→AGPL design). **18 Minor findings
+are triaged in the branch's `deferred-minors.md`.**
+
+**Formerly in flight:** the *review* workflow that wires a translated figure into the editorial
+pipeline — a committed sidecar for the Icelandic text, DB rows for review state, an
+`effectiveState` that is **derived** rather than stored, a render-side badge, advisory
+consistency checks, and an editor surface. Branch **`feat/figure-text-review`**, plan
+[`docs/superpowers/plans/2026-09-02-figure-text-review-workflow.md`](../../docs/superpowers/plans/2026-09-02-figure-text-review-workflow.md).
+▶ **Per-task state lives in that plan's SDD ledger and in `git log`, never here** — a task
+count written into prose is stale by the next commit.
+
+⏩ **RESUME POINT — the next two pieces of work, in order.** Both are [USER]-ruled and briefed
+**verbatim** in `docs/superpowers/plans/2026-09-04-figure-text-followups.md`. **Read that file
+before designing either; each rules out an approach that looks obviously right**, and the reasons
+are measured, not stylistic.
+1. **Follow-up A — the card must show the figure.** A server-supplied `imageUrl` in the `/figures`
+   payload, served by a route in the existing figure family that reuses `resolveFigureRequest`.
+   ⚠️ NOT `express.static` over `books/` (a URL-supplied slug in a filesystem path, one router away
+   from the READ-ONLY `01-source/`), and NOT a client-built URL (this app serves no `/content`
+   route, and it would duplicate `DEFAULT_SUFFIX` into browser JS).
+2. **Follow-up C — make `approved` mean the PUBLISHED IMAGE carries approved text.** The composer
+   stamps `composedHash` into the sidecar; `effectiveState` reports `approved` only when it equals
+   `renderHash`. ⚠️ `compose.py` must **NOT** compute that hash — it COPIES the sidecar's existing
+   `renderHash`. Reimplementing `computeRenderHash` in Python would create two implementations of
+   one rule in two languages, which this project then requires be asserted equal on the corpus
+   forever. If you find yourself writing `hashlib.sha256` in `compose.py`, you took the wrong
+   branch.
+▶ Do A first; C's brief assumes it has landed. Each is one task: TDD, one commit, one scoped
+review of its own delta.
+
+**Superseded — the earlier next action:** ⑭ (number localization — the LOCALIZE class still
+passes through untouched) is the largest open correctness gap, and it now has a consumer: the
+advisory decimal-separator check flags it for an editor, but nothing yet transforms it.
+
+🔴 **THIS BLOCK WAS WRONG UNTIL 2026-09-03 AND THE ERROR IS WORTH KEEPING.** It read
+*"Nothing is wired into the publication pipeline and nothing has been bought from the MT …
+All Icelandic produced so far is placeholder probe text"* and *"Next action: decide the output
+format (item ① below)"*. Both were already false when written down here: `efd97384` had added
+⑯ (a real, paid, evidenced MT run) and `3e446f6d` had settled the format as SVG — as item **⑤**,
+not ①, so even the cross-reference pointed at the wrong item. **The commit that falsified a
+claim did not delete the claim**, which is precisely CLAUDE.md's stale-premise rule: a premise
+does not acquire a date from the block that carries it. Verified by opening
+`evidence/api-run-tempscales.json` (8 blocks, `when` 2026-09-02T19:23:21Z), not by re-reading
+the prose.
 
 ---
 
@@ -34,6 +116,15 @@ through Málstaður.
   [`evidence/api-run-tempscales.json`](evidence/api-run-tempscales.json).
   ⚠️ **These are NOT approved translations and are not in `books/`** — human approval gates
   content, and nothing here goes near the publication tree.
+- **⑨ CORRECTED 2026-09-03 — this said "No real MT has been run" and sat under *Open* while
+  ⑯ sat under *Settled* recording one.** ⑯ is the measured claim: `efd97384` added it with
+  evidence on disk (`evidence/api-run-tempscales.json`, 8 blocks, `when`
+  2026-09-02T19:23:21Z) and left ⑨ standing. **Real MT text exists for exactly one figure**
+  (`CNX_Chem_01_06_TempScales`); everything else in this experiment is still placeholder probe
+  text, so the *scope* half of the old claim survives and the *existence* half does not.
+  ▶ The two halves are worth separating, because they license different things: placeholder
+  text is free to regenerate, and the one real run is the only evidence the wire behaves.
+
 - **⑥ AUTO-WRAP IS BUILT — and the real run is what forced it.** The MT returns ONE string per
   block, so a 3-line English label came back as one long line and the only lever left was font
   size: `180 gráður á Fahrenheit` fell to **5.75 pt** beside 9 pt neighbours. The composer now
@@ -102,6 +193,47 @@ through Málstaður.
 
 ## Open
 
+### From the review-workflow branch (`feat/figure-text-review`) — 18 triaged findings
+
+A seven-lens adversarial whole-branch review plus eight task reviews produced 18 Minor findings
+that were deliberately NOT fixed (the SDD rule: Minors never enter a fix loop, because that is how
+loops stop converging). **They are recorded here because the branch's `deferred-minors.md` lives in
+a gitignored workspace and would otherwise die with it** — a correct record in an unreachable
+location is no record.
+
+**Two were flagged as worth acting on before merge:**
+- 🔴 **Unsaved edits in sibling blocks are silently discarded on every save.** Saving one block
+  re-fetches and rebuilds every card from the payload, so corrections typed into other blocks are
+  lost with no warning and no draft. The segment editor already carries draft machinery for
+  exactly this reason. **Silent loss of editorial input is the one thing this application exists
+  to prevent.**
+- **The `beforeAll` pristine gate fires on exactly the crashed-run state `beforeEach` exists to
+  repair**, so a hard-killed E2E run leaves the recovery path sequenced behind its own alarm.
+
+**The rest, by theme:**
+- *Untested surfaces* — the caption-warning render branch has zero coverage (fixtures deliberately
+  emit none, and it reads different fields from the decimal branch, so a misspelled field ships
+  green); migration 050's idempotency assertions pass by construction; the figure write routes'
+  `isText`/`note` guards are bound by no test; the APPROVED→no-badge render direction is never
+  rendered.
+- *Absences that look like success* — a failed `/figures` fetch renders identically to "no
+  reviewable figures", and empty **is** the ordinary case for ~1,500 untranslated figures; a
+  malformed sidecar is indistinguishable from an absent one and silently hides its figure.
+- *Not wired up* — `orphans` is computed at three points and consumed by nothing.
+- *Known-unguarded* — the two `sendFile` dot-segment fixes are untested in CI, because CI checks
+  out to a dot-free path and any naive test would pass with or without them; a real one must
+  construct a dot-bearing temp directory.
+- *Path hygiene* — `cnxml-render.js`'s `BOOKS_DIR` is a bare relative literal hardcoded to one
+  book, and the in-process preview never sets it, so **the editor preview shows no badge for any
+  book while the CLI publish path is correct**. Found independently three times. Latent hazard:
+  run the server from the repo root and a preview of one book would read another's sidecars.
+- *Smaller* — a duplicated `CONTROL:` test; `nearVariant`'s case-folding widens a pre-existing
+  false-positive surface; per-figure `readFileSync` on every render; two fixtures hardcode
+  `version: 1` instead of importing `SIDECAR_VERSION`; `referenceText` assembly sits in the router
+  against the plan's "thin router" constraint; the state transition is not atomic across DB and
+  sidecar.
+
+
 - **⑭ NUMBER LOCALIZATION IS NOT IMPLEMENTED — the LOCALIZE class passes through untouched.**
   Demonstrated by the first real run: `373.15 K` / `273.15 K` / `233.15 K` are correctly held
   off the MT wire and correctly kept verbatim, but Icelandic writes them `373,15 K`. Three of
@@ -116,8 +248,6 @@ through Málstaður.
   data says what a label points at**, so no anchoring rule can be universally correct — this
   needs either a proximity heuristic against the artwork or an editor's eye.
 
-- **⑨ No real MT has been run.** Every Icelandic string produced so far is placeholder
-  probe text written by hand.
 - **⑦ Type0/CID fonts are unreadable by this parser.** 1 of 36 chapter-1 figures
   (`CNX_Chem_01_02_decomp`). `pdftotext` reads it fine, so the file is not the problem.
 - **⑧ Arc text is approximate.** The span is centred on `(angs[0]+angs[-1])/2`, but

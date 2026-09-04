@@ -56,9 +56,9 @@ Tasks 1–3 deliver working software with **no database and no editor**: a devel
 **Interfaces:**
 - Consumes: nothing.
 - Produces:
-  - `sidecarPath(booksDir, bookSlug, basename) -> string`
-  - `readSidecar(booksDir, bookSlug, basename) -> object|null`
-  - `writeSidecar(booksDir, bookSlug, basename, data) -> void`
+  - `sidecarPath(bookDir, basename) -> string`  (bookDir is `books/<slug>`)
+  - `readSidecar(bookDir, basename) -> object|null`
+  - `writeSidecar(bookDir, basename, data) -> void`
   - `computeRenderHash(blocks, composerVersion) -> string` (16 hex chars)
   - `effectiveState(sidecar, currentBlocks, composerVersion) -> 'mt-preview'|'approved'|'flagged'`
   - `SIDECAR_VERSION = 1`, `COMPOSER_VERSION = '1'`
@@ -96,15 +96,18 @@ const {
   computeRenderHash, effectiveState, SIDECAR_VERSION, COMPOSER_VERSION,
 } = require('../lib/figure-text-sidecar.cjs');
 
-let books;
-beforeEach(() => { books = fs.mkdtempSync(path.join(os.tmpdir(), 'figtext-')); });
-afterEach(() => fs.rmSync(books, { recursive: true, force: true }));
+let bookDir;
+beforeEach(() => {
+  bookDir = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'figtext-')), 'efnafraedi-2e');
+  fs.mkdirSync(bookDir, { recursive: true });
+});
+afterEach(() => fs.rmSync(path.dirname(bookDir), { recursive: true, force: true }));
 
 const BLOCKS = { 'Boiling|point|of water': 'Suðumark vatns', 'Celsius': 'Celsíus' };
 
 describe('sidecarPath', () => {
   it('is per-figure under the book, not under 01-source', () => {
-    const p = sidecarPath(books, 'efnafraedi-2e', 'CNX_Chem_01_06_TempScales');
+    const p = sidecarPath(bookDir, 'CNX_Chem_01_06_TempScales');
     expect(p).toContain(path.join('efnafraedi-2e', 'figure-text'));
     expect(p.endsWith('CNX_Chem_01_06_TempScales.is.json')).toBe(true);
     expect(p).not.toContain('01-source');
@@ -113,22 +116,22 @@ describe('sidecarPath', () => {
 
 describe('readSidecar', () => {
   it('returns null when the figure has none', () => {
-    expect(readSidecar(books, 'efnafraedi-2e', 'CNX_Nope')).toBeNull();
+    expect(readSidecar(bookDir, 'CNX_Nope')).toBeNull();
   });
   it('round-trips what writeSidecar wrote', () => {
-    writeSidecar(books, 'efnafraedi-2e', 'CNX_A', {
+    writeSidecar(bookDir, 'CNX_A', {
       version: SIDECAR_VERSION, basename: 'CNX_A', state: 'approved',
       renderHash: 'x', composerVersion: COMPOSER_VERSION, blocks: BLOCKS,
     });
-    const got = readSidecar(books, 'efnafraedi-2e', 'CNX_A');
+    const got = readSidecar(bookDir, 'CNX_A');
     expect(got.blocks).toEqual(BLOCKS);
     expect(got.state).toBe('approved');
   });
   it('returns null rather than throwing on malformed JSON', () => {
-    const p = sidecarPath(books, 'efnafraedi-2e', 'CNX_Bad');
+    const p = sidecarPath(bookDir, 'CNX_Bad');
     fs.mkdirSync(path.dirname(p), { recursive: true });
     fs.writeFileSync(p, '{ not json');
-    expect(readSidecar(books, 'efnafraedi-2e', 'CNX_Bad')).toBeNull();
+    expect(readSidecar(bookDir, 'CNX_Bad')).toBeNull();
   });
 });
 
@@ -203,13 +206,18 @@ const SIDECAR_VERSION = 1;
  */
 const COMPOSER_VERSION = '1';
 
-function sidecarPath(booksDir, bookSlug, basename) {
-  return path.join(booksDir, bookSlug, 'figure-text', `${basename}.is.json`);
+/**
+ * @param {string} bookDir  the BOOK directory, i.e. `books/<slug>` — NOT the books
+ *   root. cnxml-render.js's BOOKS_DIR is already `books/<slug>`, so a (root, slug)
+ *   signature made its only caller wrong by construction.
+ */
+function sidecarPath(bookDir, basename) {
+  return path.join(bookDir, 'figure-text', `${basename}.is.json`);
 }
 
-function readSidecar(booksDir, bookSlug, basename) {
+function readSidecar(bookDir, basename) {
   try {
-    const raw = fs.readFileSync(sidecarPath(booksDir, bookSlug, basename), 'utf-8');
+    const raw = fs.readFileSync(sidecarPath(bookDir, basename), 'utf-8');
     const obj = JSON.parse(raw);
     if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return null;
     return obj;
@@ -221,8 +229,8 @@ function readSidecar(booksDir, bookSlug, basename) {
   }
 }
 
-function writeSidecar(booksDir, bookSlug, basename, data) {
-  const p = sidecarPath(booksDir, bookSlug, basename);
+function writeSidecar(bookDir, basename, data) {
+  const p = sidecarPath(bookDir, basename);
   fs.mkdirSync(path.dirname(p), { recursive: true });
   const tmp = `${p}.tmp`;
   fs.writeFileSync(tmp, `${JSON.stringify(data, null, 1)}\n`, 'utf-8');
@@ -269,81 +277,104 @@ git commit -m "feat(figure-text): sidecar format — committed content, derived 
 
 ---
 
-### Task 2: The composer reads the sidecar
+### Task 2: The composer accepts a sidecar's string block values
 
 **Files:**
+- Modify: `experiments/figure-text-translation/figtext.py`
 - Modify: `experiments/figure-text-translation/compose.py`
-- Test: `experiments/figure-text-translation/test_sidecar.py`
+- Test: `experiments/figure-text-translation/test_figtext_normalise.py`
 
 **Interfaces:**
-- Consumes: the sidecar shape from Task 1 (`blocks` maps block key → **one string**).
-- Produces: `python3 compose.py --sidecar <path>` renders that figure's Icelandic.
+- Consumes: the sidecar shape from Task 1 — `blocks` maps a block key to ONE STRING.
+- Produces: `figtext.normalise_block_value(value, arc) -> str | list[str]`
 
-`compose.py` already accepts `--translations <path>` reading `{blocks: {...}}` where values may be arrays. This task makes plain strings first-class so the sidecar is consumed directly, and the composer's existing wrap logic splits them.
+⚠️ **Why this is a pure function and not two inline lines in `compose.py`:** `compose.py`
+loads `out/meta.json`, `out/runs.json` and `out/artwork.png` at import time. Those are
+generated by earlier pipeline stages from a PDF that lives outside the repo, so a test that
+shells out to `compose.py` cannot run in a clean checkout — it would fail for environmental
+reasons indistinguishable from a code fault. `figtext.py` imports only `math` and `json`, so
+a test against it needs no pikepdf, no cairo, no artifacts and no PDF.
 
 - [ ] **Step 1: Write the failing test**
 
 ```python
-# experiments/figure-text-translation/test_sidecar.py
-"""A sidecar's block values are plain STRINGS; the composer wraps them itself."""
-import json, subprocess, sys, tempfile, os
-from pathlib import Path
-import _deps
-from _deps import HERE, OUT
+# experiments/figure-text-translation/test_figtext_normalise.py
+"""A sidecar stores ONE STRING per block. The composer must not iterate it per character."""
+import sys
+from figtext import normalise_block_value
 
-def main():
-    side = {
-        "version": 1, "basename": "X", "state": "approved",
-        "renderHash": "x", "composerVersion": "1",
-        "blocks": {"Boiling|point|of water": "Suðumark vatns"},
-    }
-    p = Path(tempfile.mkdtemp()) / "X.is.json"
-    p.write_text(json.dumps(side, ensure_ascii=False), encoding="utf-8")
-    r = subprocess.run(
-        [sys.executable, "compose.py", "--translations", str(p)],
-        cwd=str(HERE), capture_output=True, text=True,
-    )
-    assert r.returncode == 0, r.stderr
-    # non-vacuity: the run must actually have laid out blocks
-    assert "blocks" in r.stdout, r.stdout
-    # the string must not have been treated as a list of characters
-    assert "no translation" not in r.stdout or "Boiling" not in r.stdout, r.stdout
-    print("PASS")
+fails = []
+def check(label, got, want):
+    ok = got == want
+    print(f"  {'PASS' if ok else 'FAIL'}  {label}: {got!r}")
+    if not ok:
+        fails.append(label)
 
-if __name__ == "__main__":
-    main()
+# A non-arc block: one string becomes a ONE-ELEMENT list of lines, never a list of chars.
+check('str -> single line', normalise_block_value('Sudumark vatns', False), ['Sudumark vatns'])
+check('str is not exploded', len(normalise_block_value('abc', False)), 1)
+
+# Backward compatibility: the placeholder files stored pre-split lines.
+check('list passes through', normalise_block_value(['a', 'b'], False), ['a', 'b'])
+
+# An arc block is laid out per glyph, so it stays a string.
+check('arc stays a string', normalise_block_value('Naest ...', True), 'Naest ...')
+
+# CONTROL: the two branches must actually differ, or this test proves nothing.
+check('arc and non-arc differ',
+      normalise_block_value('x', True) != normalise_block_value('x', False), True)
+
+print('\nALL PASS' if not fails else f'\n{len(fails)} FAILED')
+sys.exit(1 if fails else 0)
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `cd experiments/figure-text-translation && FIGTEXT_PYLIBS=./pylibs python3 test_sidecar.py`
-Expected: FAIL — a plain string is iterated per character by the layout loop.
+Run: `cd experiments/figure-text-translation && python3 test_figtext_normalise.py`
+Expected: FAIL — `ImportError: cannot import name 'normalise_block_value'`
 
 - [ ] **Step 3: Write minimal implementation**
 
-In `compose.py`, immediately after `new = TR[key]` in the non-arc branch, normalise:
+Append to `experiments/figure-text-translation/figtext.py`:
+
+```python
+def normalise_block_value(value, arc):
+    """A sidecar block value is ONE STRING; the composer wraps it itself.
+
+    Accepts a list for backward compatibility with the placeholder translation
+    files, but never requires one. Pre-split lines are exactly what let a wrap
+    defect hide during the placeholder era: the composer was always handed line
+    breaks somebody else had already decided, so the one thing the real MT does
+    differently was the one thing never exercised.
+
+    An ARC block is laid out glyph by glyph along a fitted circle, so it stays a
+    single string; a non-arc block becomes a list of lines.
+    """
+    if arc:
+        return value if isinstance(value, str) else ''.join(value)
+    return [value] if isinstance(value, str) else list(value)
+```
+
+Then in `compose.py`, replace the existing `new = TR[key]` / `new = IS_BLOCK[key]` handling so
+both branches route through it:
 
 ```python
         else:
-            new = TR[key]
-    # A sidecar stores ONE string per block, because that is what the MT returns.
-    # Accept a list for backward compatibility with the placeholder files, but
-    # never require one: pre-split lines are what let a wrap defect hide during
-    # the placeholder era (the MT's single long line fell to 5.75pt unnoticed).
-    if not arc and isinstance(new, str):
-        new = [new]
+            new = FT.normalise_block_value(TR[key], arc)
 ```
 
 - [ ] **Step 4: Run test to verify it passes**
 
-Run: `cd experiments/figure-text-translation && FIGTEXT_PYLIBS=./pylibs python3 test_sidecar.py`
-Expected: `PASS`
+Run: `cd experiments/figure-text-translation && python3 test_figtext_normalise.py`
+Expected: `ALL PASS`
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add experiments/figure-text-translation/compose.py experiments/figure-text-translation/test_sidecar.py
-git commit -m "feat(figure-text): composer consumes the sidecar directly"
+git add experiments/figure-text-translation/figtext.py \
+        experiments/figure-text-translation/compose.py \
+        experiments/figure-text-translation/test_figtext_normalise.py
+git commit -m "feat(figure-text): composer accepts a sidecar's string block values"
 ```
 
 ---
@@ -405,22 +436,63 @@ const EMITTED_REVIEW_STATES = new Set(['mt-preview', 'flagged']);
  * @param {string} state - from effectiveState()
  * @returns {string} '' or ' data-figure-review="..."'
  */
-export function figureReviewAttr(state) {
+function figureReviewAttr(state) {
   return EMITTED_REVIEW_STATES.has(state) ? ` data-figure-review="${state}"` : '';
 }
 ```
 
-Then at the `<figure>` emit, derive the state from the sidecar and the figure's basename:
+⚠️ **`tools/cnxml-render.js` has NO inline `export` keywords — it uses ONE
+`export { … }` block near line 4242.** Add `figureReviewAttr,` to that block; do
+not write `export function`, which would be the file's only inline export.
+
+⚠️ **ORDERING — this is the part that is easy to get wrong.** `renderFigure` builds an
+`attrs` array and pushes `` `<figure ${attrs.join(' ')}>` `` at **line 1055**, but the image
+`src` — and therefore the basename — is not parsed until **~line 1083**, inside a nested
+branch. So the basename must be obtained BEFORE the attrs array is built. Push the attribute
+into `attrs` like the existing `id` / `class` / `data-figure-number` entries; do not
+string-concatenate onto the already-pushed line.
+
+🔴 **Use `TAG_ATTR_SPAN`, NOT `[^>]*`.** A bare `>` is legal inside an XML attribute value, so
+`<image[^>]*>` can truncate mid-attribute and silently yield an EMPTY src. `TAG_ATTR_SPAN` is
+already imported at line 36 of this file and the neighbouring `<media>` match at line 1063
+uses it — copy that shape. `path` is already imported at line 27.
+
+Insert immediately BEFORE `const attrs = [];` (~line 1050):
 
 ```js
-  const figBasename = path.basename(src, path.extname(src));
-  const sidecar = readSidecar(BOOKS_DIR_ROOT, BOOK_SLUG, figBasename);
-  const reviewAttr = figureReviewAttr(
-    effectiveState(sidecar, (sidecar && sidecar.blocks) || {}, COMPOSER_VERSION)
-  );
+  // Figure review state for the badge. Read BEFORE the attrs array is built, because
+  // the <figure> open tag is pushed below and the image src is not parsed until later.
+  let reviewAttr = '';
+  const figImage = figure.content.match(new RegExp(`<image(${TAG_ATTR_SPAN})/?>`));
+  if (figImage) {
+    const figSrc = parseAttributes(figImage[1]).src || '';
+    if (figSrc) {
+      const figBasename = path.basename(figSrc, path.extname(figSrc));
+      // BOOKS_DIR is already `books/<slug>` — there is no books-root variable here.
+      const sidecar = readSidecar(BOOKS_DIR, figBasename);
+      reviewAttr = figureReviewAttr(
+        effectiveState(sidecar, (sidecar && sidecar.blocks) || {}, COMPOSER_VERSION)
+      );
+    }
+  }
 ```
 
-and include `${reviewAttr}` in the opening `<figure` tag.
+then add it to the attrs array alongside the existing entries:
+
+```js
+  if (reviewAttr) attrs.push(reviewAttr.trim());
+```
+
+`figureReviewAttr` returns a leading-space form for direct interpolation elsewhere, so
+`.trim()` is what makes it a clean `attrs` entry. A figure with no sidecar yields `''` and
+pushes nothing — the correct default for the ~1,100 figures that have no sidecar at all.
+
+The module is CommonJS and this file is ESM, so import it with `createRequire`:
+
+```js
+const { readSidecar, effectiveState, COMPOSER_VERSION } =
+  createRequire(import.meta.url)('./lib/figure-text-sidecar.cjs');
+```
 
 - [ ] **Step 4: Run test to verify it passes**
 
@@ -623,7 +695,7 @@ git commit -m "feat(figure-text): migration 050 — figure review workflow state
   - `getFigure(db, bookId, basename) -> {state, renderHash, flagKind, note, blocks}|null`
   - `saveBlockEdit(db, {bookId, basename, blockKey, isText, editedBy}) -> void`
   - `setState(db, {bookId, basename, state, flagKind, note, reviewedBy, blocks}) -> void`
-  - `applyApprovedFigureEdits(db, {booksDir, bookSlug, bookId, basename, mtBlocks}) -> {written, path}`
+  - `applyApprovedFigureEdits(db, {bookDir, bookId, basename, mtBlocks}) -> {written, path}`
 
 - [ ] **Step 1: Write the failing test**
 
@@ -640,7 +712,7 @@ const svc = require('../services/figureReviewService');
 const { readSidecar, effectiveState, COMPOSER_VERSION } =
   require('../../tools/lib/figure-text-sidecar.cjs');
 
-let db, bookId, books;
+let db, bookId, bookDir;
 const MT = { Celsius: 'Selsíus', 'Boiling|point|of water': 'Suðumark vatns' };
 
 beforeEach(() => {
@@ -650,9 +722,10 @@ beforeEach(() => {
   ).get('efnafraedi-2e', 'Efnafræði', 't').id;
   db.prepare(`INSERT INTO figure_review (book_id, chapter, module_id, basename) VALUES (?,?,?,?)`)
     .run(bookId, 1, 'm68683', 'CNX_T');
-  books = fs.mkdtempSync(path.join(os.tmpdir(), 'figsvc-'));
+  bookDir = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'figsvc-')), 'efnafraedi-2e');
+  fs.mkdirSync(bookDir, { recursive: true });
 });
-afterEach(() => { db.close(); fs.rmSync(books, { recursive: true, force: true }); });
+afterEach(() => { db.close(); fs.rmSync(path.dirname(bookDir), { recursive: true, force: true }); });
 
 describe('saveBlockEdit', () => {
   it('overlays the editor text on the MT text', () => {
@@ -698,10 +771,10 @@ describe('applyApprovedFigureEdits', () => {
     svc.setState(db, { bookId, basename: 'CNX_T', state: 'approved',
                        reviewedBy: 'ed', blocks });
     const { written } = svc.applyApprovedFigureEdits(db, {
-      booksDir: books, bookSlug: 'efnafraedi-2e', bookId, basename: 'CNX_T', mtBlocks: MT,
+      bookDir, bookId, basename: 'CNX_T', mtBlocks: MT,
     });
     expect(written).toBe(true);
-    const side = readSidecar(books, 'efnafraedi-2e', 'CNX_T');
+    const side = readSidecar(bookDir, 'CNX_T');
     expect(side.blocks.Celsius).toBe('Celsíus');
     expect(effectiveState(side, side.blocks, COMPOSER_VERSION)).toBe('approved');
   });
@@ -726,7 +799,7 @@ Expected: FAIL — `Cannot find module '../services/figureReviewService'`
  */
 const path = require('path');
 const {
-  computeRenderHash, effectiveState, writeSidecar,
+  computeRenderHash, effectiveState, writeSidecar, sidecarPath,
   SIDECAR_VERSION, COMPOSER_VERSION,
 } = require(path.join(__dirname, '..', '..', 'tools', 'lib', 'figure-text-sidecar.cjs'));
 
@@ -784,7 +857,7 @@ function setState(db, { bookId, basename, state, flagKind, note, reviewedBy, blo
  * Write the committed sidecar. Mirrors applyApprovedEdits() -> 03-faithful-translation:
  * the DB holds workflow, the repo holds content.
  */
-function applyApprovedFigureEdits(db, { booksDir, bookSlug, bookId, basename, mtBlocks }) {
+function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
   const fig = getFigure(db, bookId, basename, mtBlocks);
   if (!fig) return { written: false, path: null };
   const data = {
@@ -795,8 +868,8 @@ function applyApprovedFigureEdits(db, { booksDir, bookSlug, bookId, basename, mt
     composerVersion: COMPOSER_VERSION,
     blocks: fig.blocks,
   };
-  writeSidecar(booksDir, bookSlug, basename, data);
-  return { written: true, path: `${bookSlug}/figure-text/${basename}.is.json` };
+  writeSidecar(bookDir, basename, data);
+  return { written: true, path: sidecarPath(bookDir, basename) };
 }
 
 module.exports = { getFigure, saveBlockEdit, setState, applyApprovedFigureEdits };

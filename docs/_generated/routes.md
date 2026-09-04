@@ -206,6 +206,9 @@
 | GET | `/:book/:chapter/repetition-report` |
 | GET | `/:book/:chapter/:moduleId` |
 | POST | `/:book/:chapter/:moduleId/edit` |
+| GET | `/:book/:chapter/:moduleId/figures` |
+| POST | `/:book/:chapter/:moduleId/figures/:basename/block` |
+| POST | `/:book/:chapter/:moduleId/figures/:basename/state` |
 | POST | `/:book/:chapter/:moduleId/accept` |
 | POST | `/acceptance/:id/revoke` |
 | DELETE | `/edit/:editId` |

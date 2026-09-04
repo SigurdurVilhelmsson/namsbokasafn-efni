@@ -148,3 +148,7 @@ docs/audit/probe-out/
 # any `git add -A` commits test residue into 02-mt-output/, a READ-ONLY tree.
 # Observed 2026-08-11: exactly that, caught in the commit's own file list.
 books/__e2e-fixture__/**/*.locked
+
+# Scratch TMPDIR — must never be committed. A git-backup test commits from its
+# own cwd, so a TMPDIR inside the worktree lets it commit into YOUR branch.
+.tmp-install/
