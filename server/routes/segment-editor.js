@@ -809,13 +809,26 @@ router.post(
       });
       // The renderer reads the SIDECAR, never the database, so every transition
       // must reach it — a flag as much as an approval.
-      figureReview.applyApprovedFigureEdits(db, {
+      const applied = figureReview.applyApprovedFigureEdits(db, {
         bookDir: figureReview.bookDirFor(req.params.book),
         bookId,
         basename,
         mtBlocks: resolved.mtBlocks,
       });
-      const after = figureReview.getFigure(db, bookId, basename, resolved.mtBlocks);
+      // composedHash from what was just WRITTEN, not from resolved.sidecar: that
+      // copy predates the write. They agree today (the write carries the value
+      // forward), and reading the authority rather than a stale twin is what
+      // keeps them agreeing if that ever changes.
+      const after = figureReview.getFigure(
+        db,
+        bookId,
+        basename,
+        resolved.mtBlocks,
+        applied.composedHash
+      );
+      // ⚠️ Approving reports 'mt-preview' until the composer has run, and that
+      // is the [USER]-ruled behaviour, not a bug: nothing in this server invokes
+      // compose.py, so the published SVG still carries the pre-approval text.
       res.json({ ok: true, effectiveState: after.effectiveState });
     } catch (err) {
       log.error({ err }, 'Error setting figure review state');

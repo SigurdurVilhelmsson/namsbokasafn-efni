@@ -12,6 +12,7 @@ const resolveDbPath = require('../lib/dbPath');
 const segmentParser = require('./segmentParser');
 const {
   computeRenderHash,
+  editorialState,
   effectiveState,
   readSidecar,
   writeSidecar,
@@ -130,7 +131,15 @@ function resolveBlocks(db, bookId, basename, mtBlocks) {
   return { blocks, orphans };
 }
 
-function getFigure(db, bookId, basename, mtBlocks = {}) {
+/**
+ * @param {string|null} composedHash the SIDECAR's composedHash — "the hash of
+ *   the blocks the SVG on disk was actually composed from". It cannot come from
+ *   the database: the composer is a CLI that never touches SQLite, and the
+ *   sidecar is its only channel (the same MIT/AGPL boundary that keeps
+ *   cnxml-render out of the DB). Callers that hold the sidecar pass it;
+ *   omitting it fails SAFE, to mt-preview.
+ */
+function getFigure(db, bookId, basename, mtBlocks = {}, composedHash = null) {
   const row = db
     .prepare(
       `SELECT state, render_hash, flag_kind, note, reviewed_by, reviewed_at
@@ -139,6 +148,10 @@ function getFigure(db, bookId, basename, mtBlocks = {}) {
     .get(bookId, basename);
   if (!row) return null;
   const { blocks, orphans } = resolveBlocks(db, bookId, basename, mtBlocks);
+  // The editor's half comes from the DB, the composer's half from the sidecar.
+  // Merging them here is what lets one call answer both "did an editor approve
+  // this?" and "is what a reader sees approved?".
+  const derived = { state: row.state, renderHash: row.render_hash, composedHash };
   return {
     state: row.state,
     renderHash: row.render_hash,
@@ -148,11 +161,11 @@ function getFigure(db, bookId, basename, mtBlocks = {}) {
     reviewedAt: row.reviewed_at,
     blocks,
     orphans,
-    effectiveState: effectiveState(
-      { state: row.state, renderHash: row.render_hash },
-      blocks,
-      COMPOSER_VERSION
-    ),
+    // BOTH are returned because they have different consumers and must not be
+    // confused: applyApprovedFigureEdits writes editorialState as the sidecar's
+    // `state`; every reader-facing surface shows effectiveState.
+    editorialState: editorialState(derived, blocks, COMPOSER_VERSION),
+    effectiveState: effectiveState(derived, blocks, COMPOSER_VERSION),
   };
 }
 
@@ -250,7 +263,7 @@ function resolveFigure(db, bookId, bookSlug, basename) {
   const sidecar = readSidecar(bookDirFor(bookSlug), basename);
   if (!sidecar) return null;
   const mtBlocks = sidecar.blocks || {};
-  let fig = getFigure(db, bookId, basename, mtBlocks);
+  let fig = getFigure(db, bookId, basename, mtBlocks, sidecar.composedHash || null);
   if (!fig) {
     // ⚠️ The editor's corrections still apply here. figure_block_edit is keyed
     // on (book_id, basename) ALONE and needs no figure_review row, so an edit
@@ -260,6 +273,7 @@ function resolveFigure(db, bookId, bookSlug, basename) {
     // could see the difference: the block is present either way.
     const { blocks, orphans } = resolveBlocks(db, bookId, basename, mtBlocks);
     fig = {
+      editorialState: editorialState(sidecar, blocks, COMPOSER_VERSION),
       effectiveState: effectiveState(sidecar, blocks, COMPOSER_VERSION),
       blocks,
       orphans,
@@ -306,22 +320,44 @@ function setState(db, { bookId, basename, state, flagKind, note, reviewedBy, blo
  * the DB holds workflow, the repo holds content.
  */
 function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
-  const fig = getFigure(db, bookId, basename, mtBlocks);
-  if (!fig) return { written: false, path: null };
+  // 🔴 READ FIRST, so the composer's stamp survives. composedHash is written by
+  // compose.py and by nothing on this side; rebuilding the sidecar without
+  // carrying it forward would silently un-compose every figure on each
+  // approval, and the only symptom would be a badge that never turns green.
+  const existing = readSidecar(bookDir, basename);
+  const composedHash = (existing && existing.composedHash) || null;
+
+  const fig = getFigure(db, bookId, basename, mtBlocks, composedHash);
+  if (!fig) return { written: false, path: null, composedHash };
   const data = {
     version: SIDECAR_VERSION,
     basename,
-    // effectiveState, never the raw fig.state: if the blocks changed since
-    // the last real approval, this must write 'mt-preview' — writing the raw
-    // DB column would stamp 'approved' over content nobody reviewed, with a
+    // editorialState, never the raw fig.state: if the blocks changed since the
+    // last real approval, this must write 'mt-preview' — writing the raw DB
+    // column would stamp 'approved' over content nobody reviewed, with a
     // self-consistent hash, and the renderer would show it unbadged.
-    state: fig.effectiveState,
+    //
+    // ⚠️ And never fig.effectiveState either, which is what this line USED to
+    // say and what the [USER] ruling C brief's wording implies. effectiveState
+    // is gated on composedHash, so on day one — no composedHash yet — it writes
+    // 'mt-preview'; effectiveState then short-circuits on state !== 'approved'
+    // and the composer's later stamp can never flip it. The feature deadlocks,
+    // permanently, and every test that asks only "does approving write
+    // approved?" still passes. Pinned by figure-text-sidecar.test.js's
+    // "the two layers really are different".
+    state: fig.editorialState,
     renderHash: computeRenderHash(fig.blocks, COMPOSER_VERSION),
+    // Carried forward, not recomputed. If the blocks are unchanged the hashes
+    // still agree and the figure stays approved; if they changed, renderHash
+    // moved and the stale composedHash correctly demotes it. Left undefined
+    // when there is none, so JSON.stringify omits the key entirely and a
+    // never-composed sidecar keeps the exact shape it has today.
+    ...(composedHash ? { composedHash } : {}),
     composerVersion: COMPOSER_VERSION,
     blocks: fig.blocks,
   };
   writeSidecar(bookDir, basename, data);
-  return { written: true, path: sidecarPath(bookDir, basename) };
+  return { written: true, path: sidecarPath(bookDir, basename), composedHash };
 }
 
 /**

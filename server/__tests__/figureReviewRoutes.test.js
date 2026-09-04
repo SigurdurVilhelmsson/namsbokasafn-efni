@@ -578,14 +578,40 @@ describe('POST /figures/:basename/block', () => {
 describe('POST /figures/:basename/state', () => {
   it('approves a figure that has no figure_review row yet', async () => {
     // Day one: the row does not exist, and setState() is an UPDATE. Without the
-    // route minting the row first this returns mt-preview and writes nothing.
+    // route minting the row first this writes nothing at all.
     const out = await invoke(
       postStateH,
       req({ params: { basename: TRANSLATED }, body: { state: 'approved' } })
     );
     expect(out.status).toBe(200);
-    expect(out.body).toEqual({ ok: true, effectiveState: 'approved' });
+    // ⚠️ 'mt-preview', and that is the [USER]-ruled answer ([C], 2026-09-04),
+    // not a regression. Approving does not run the composer — nothing in this
+    // server invokes compose.py — so the published SVG still carries the
+    // pre-approval text and no reader can see the approval yet. The row count
+    // below is what proves the approval WAS recorded; the two together are the
+    // whole point of the inversion.
+    expect(out.body).toEqual({ ok: true, effectiveState: 'mt-preview' });
     expect(svc.getDb().prepare('SELECT COUNT(*) c FROM figure_review').get().c).toBe(1);
+    expect(svc.getDb().prepare('SELECT state FROM figure_review').get().state).toBe('approved');
+  });
+
+  it('reports approved once the sidecar carries a matching composedHash', () => {
+    // The positive control for the test above. Without it, "approving yields
+    // mt-preview" is equally consistent with an approval path that is simply
+    // broken — and a suite in which nothing ever reaches 'approved' could not
+    // tell the two apart.
+    return invoke(
+      postStateH,
+      req({ params: { basename: TRANSLATED }, body: { state: 'approved' } })
+    ).then(async () => {
+      const p = path.join(booksDir, BOOK, 'figure-text', `${TRANSLATED}.is.json`);
+      const side = JSON.parse(readFileSync(p, 'utf-8'));
+      // Stand in for compose.py, which copies renderHash into composedHash.
+      writeFileSync(p, JSON.stringify({ ...side, composedHash: side.renderHash }, null, 1));
+
+      const after = await invoke(getFiguresH, req());
+      expect(after.body.figures[0].effectiveState).toBe('approved');
+    });
   });
 
   it('writes the committed sidecar so the renderer sees the approval', async () => {

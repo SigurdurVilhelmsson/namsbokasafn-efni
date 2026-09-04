@@ -8,15 +8,41 @@ things lives in [README.md](README.md).
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-03
+## ⏩ RESUME — state as of 2026-09-04
 
 **What exists:** a working extract → strip → compose → oracle-check pipeline, proven on
 `CNX_Chem_01_01_SciMethod.pdf` end to end; a census of all 36 chapter-1 figures; **one real
-Málstaður run** (⑯, 1.20 ISK, 8/8 blocks); and the output format settled as **SVG** by
-measurement (⑤).
+Málstaður run** (⑯, 1.20 ISK, 8/8 blocks); the output format settled as **SVG** by
+measurement (⑤); and **the review workflow merged as #435**.
 
-**✅ THE REVIEW WORKFLOW IS BUILT AND REVIEWED — branch `feat/figure-text-review`, 8 SDD tasks,
-awaiting a merge decision.** Unit suite matches `main`'s own red baseline exactly (19 failing
+**⏭️ NEXT: nothing is blocked.** Both [USER]-ruled follow-ups are built (Ⓐ and Ⓒ below, branch
+`feat/figure-card-image`). Ⓨ needed no work. The open items are the pre-existing ones under
+*Open* — ⑭ number localization, ⑮ label anchoring, ⑦ Type0/CID fonts — plus the one gap Ⓒ
+introduced and did not close, recorded under ⑰.
+
+**✅ Ⓐ AND Ⓒ ARE BUILT — 2026-09-04, branch `feat/figure-card-image`.**
+- **Ⓐ the card shows the figure.** `GET …/figures/:basename/image` reuses `resolveFigureRequest`
+  (so no new traversal surface) and `translatedImageFor` resolves the English basename **forward**
+  through `image-mapping.json` — no `_IS` anywhere in server or browser code, pinned by a test that
+  greps the client for it. `loadImageBasenameMap` moved to `tools/lib/image-basename-map.cjs`
+  because it became dual-consumer; `cnxml-inject` re-exports it, and an import-identity test pins
+  that there is one implementation and not two.
+- **Ⓒ approved now means the PUBLISHED IMAGE carries approved text.** 🔴 **The brief's own
+  prescription — "`effectiveState` gains the `composedHash` condition" — DEADLOCKS THE FEATURE IF
+  TAKEN LITERALLY, and every test that asks only "does approving write approved?" still passes.**
+  `applyApprovedFigureEdits` writes the DERIVED state into the sidecar, so gating that one function
+  makes it write `mt-preview` on every approval; `effectiveState` then short-circuits on
+  `state !== 'approved'` and the composer's later stamp can never flip it. **`approved` becomes
+  unreachable, permanently.** ▶ **The shape that works is TWO layers:** `editorialState` (did an
+  editor approve these exact blocks — what gets WRITTEN) and `effectiveState` (…and was the SVG
+  composed from them — what every reader-facing surface SHOWS). Pinned by a test asserting the two
+  DISAGREE on a real state, so nobody can quietly alias them.
+  ⚠️ **And `applyApprovedFigureEdits` must READ the sidecar first and carry `composedHash`
+  forward** — it rebuilds the whole file, and `composedHash` is written by `compose.py` and by
+  nothing on the server side, so dropping it would un-compose every figure on the next approval
+  with no error and no failing count.
+
+**✅ THE REVIEW WORKFLOW IS BUILT AND REVIEWED — merged as #435 (`f90b335e`), 8 SDD tasks.** Unit suite matches `main`'s own red baseline exactly (19 failing
 assertions across 9 files + `findTermsGolden` as a 10th zero-assertion red — all inherited, none
 added); E2E 5/5. 🔴 **A seven-lens adversarial whole-branch review found a CRITICAL that eight
 task reviews had missed:** the renderer keyed the figure sidecar on the POST-inject `_IS`
@@ -30,7 +56,9 @@ wrong reason.** ✅ **THE THREE OPEN QUESTIONS ARE RULED — [USER], 2026-09-04.
 renderer's only channel IS the sidecar — `cnxml-render.js` has no DB access, deliberately, because
 that is what keeps MIT `tools/` from importing AGPL `server/` — so a flag that did not write the
 sidecar would be invisible to the renderer and the badge is the whole feature. `applyApprovedFigureEdits`
-writes `effectiveState`, never the raw column, so nothing can be stamped `approved` unreviewed. The
+writes a DERIVED state, never the raw column, so nothing can be stamped `approved` unreviewed.
+*(That derived value was `effectiveState` when this was ruled and is `editorialState` since Ⓒ
+landed — see the two-layer note above. The ruling is unaffected; the function name is not.)* The
 alternative — write the state but keep the previous blocks — trades a visible, correctly-labelled
 record for a silent divergence between the card and the sidecar.
 **Ⓐ The card must show the figure: DO IT, via a SERVER-SUPPLIED image URL in the `/figures`
@@ -66,24 +94,16 @@ consistency checks, and an editor surface. Branch **`feat/figure-text-review`**,
 ▶ **Per-task state lives in that plan's SDD ledger and in `git log`, never here** — a task
 count written into prose is stale by the next commit.
 
-⏩ **RESUME POINT — the next two pieces of work, in order.** Both are [USER]-ruled and briefed
-**verbatim** in `docs/superpowers/plans/2026-09-04-figure-text-followups.md`. **Read that file
-before designing either; each rules out an approach that looks obviously right**, and the reasons
-are measured, not stylistic.
-1. **Follow-up A — the card must show the figure.** A server-supplied `imageUrl` in the `/figures`
-   payload, served by a route in the existing figure family that reuses `resolveFigureRequest`.
-   ⚠️ NOT `express.static` over `books/` (a URL-supplied slug in a filesystem path, one router away
-   from the READ-ONLY `01-source/`), and NOT a client-built URL (this app serves no `/content`
-   route, and it would duplicate `DEFAULT_SUFFIX` into browser JS).
-2. **Follow-up C — make `approved` mean the PUBLISHED IMAGE carries approved text.** The composer
-   stamps `composedHash` into the sidecar; `effectiveState` reports `approved` only when it equals
-   `renderHash`. ⚠️ `compose.py` must **NOT** compute that hash — it COPIES the sidecar's existing
-   `renderHash`. Reimplementing `computeRenderHash` in Python would create two implementations of
-   one rule in two languages, which this project then requires be asserted equal on the corpus
-   forever. If you find yourself writing `hashlib.sha256` in `compose.py`, you took the wrong
-   branch.
-▶ Do A first; C's brief assumes it has landed. Each is one task: TDD, one commit, one scoped
-review of its own delta.
+✅ **DONE — the two follow-ups this block used to point at.** Both are built on branch
+`feat/figure-card-image` (2026-09-04); see the Ⓐ/Ⓒ note at the top of this RESUME for what
+landed and for the one trap the brief itself walked into. The brief remains at
+`docs/superpowers/plans/2026-09-04-figure-text-followups.md` as **evidence, never status** — per
+CLAUDE.md § One source of truth, this file is the owner and it wins on any disagreement.
+
+⚠️ **One prescription in that brief is WRONG AS WRITTEN and the file has not been edited to say
+so** (it is a plan, and plans are frozen once executed): *"`effectiveState` gains the
+`composedHash` condition"*. Taken literally it makes `approved` permanently unreachable — see Ⓒ
+above. Anyone re-reading that brief should read it alongside this entry.
 
 **Superseded — the earlier next action:** ⑭ (number localization — the LOCALIZE class still
 passes through untouched) is the largest open correctness gap, and it now has a consumer: the
@@ -233,6 +253,25 @@ location is no record.
   against the plan's "thin router" constraint; the state transition is not atomic across DB and
   sidecar.
 
+
+- **⑰ `composedHash` CLAIMS MORE THAN THE COMPOSER DELIVERS — the SVG it stamps for is not the
+  published one.** Opened 2026-09-04 by Ⓒ itself, deliberately and with the gap named rather than
+  papered over. `compose.py --svg` writes `experiments/figure-text-translation/out/translated.svg`
+  and then stamps `composedHash` into the sidecar; **nothing copies that file to
+  `books/<slug>/media/<basename>_IS.svg`**, which is what `cnxml-inject` swaps in and what a reader
+  actually sees. So the stamp means *"a composer run produced artwork from these blocks"*, not
+  *"the published image carries them"*.
+  ▶ **It is still strictly better than the state it replaced** — before Ⓒ, `effectiveState`
+  reduced to `sidecar.state` exactly and could not fire on an editorial event at all — and it fails
+  in the SAFE direction for the failure that matters: an approval with no compose at all still
+  reads `mt-preview`.
+  ⚠️ **The residual hazard is narrow and worth stating precisely: compose into `out/`, never
+  publish, and the badge goes green anyway.** Closing it means giving the composer the book slug
+  and basename and having it write through `image-mapping.json` — the same forward lookup
+  `translatedImageFor` already does — so the stamp and the published file move together. **Not
+  built; not in scope for Ⓒ, which was ruled as a sidecar-only change.**
+  ⚠️ Exposure today is **0**: there are no figure-text sidecars anywhere in `books/` and no
+  composed figure has ever been published.
 
 - **⑭ NUMBER LOCALIZATION IS NOT IMPLEMENTED — the LOCALIZE class passes through untouched.**
   Demonstrated by the first real run: `373.15 K` / `273.15 K` / `233.15 K` are correctly held

@@ -241,7 +241,27 @@ test.describe('Figure review card', () => {
     ).toHaveCount(0);
   });
 
-  test('approve, edit, and the badge falls back to mt-preview on its own', async ({ page }) => {
+  /**
+   * Stand in for compose.py, which copies the sidecar's own renderHash into
+   * composedHash after it writes the artwork ([USER] ruling C, 2026-09-04).
+   *
+   * ⚠️ It COPIES; it never hashes. Recomputing here would put a second
+   * implementation of computeRenderHash in a THIRD language-site and make this
+   * test capable of agreeing with itself while disagreeing with production.
+   */
+  function stampComposed(basename) {
+    const side = JSON.parse(fs.readFileSync(sidecarFile(basename), 'utf-8'));
+    expect(side.renderHash, 'nothing to stamp — was the figure approved?').toBeTruthy();
+    fs.writeFileSync(
+      sidecarFile(basename),
+      `${JSON.stringify({ ...side, composedHash: side.renderHash }, null, 1)}\n`,
+      'utf-8'
+    );
+  }
+
+  test('approve, compose, edit — and the badge falls back to mt-preview on its own', async ({
+    page,
+  }) => {
     await openFixtureModule(page, 'm68664');
     const fig = card(page, SCIMETHOD);
     const state = fig.locator('[data-figure-state]');
@@ -254,8 +274,18 @@ test.describe('Figure review card', () => {
       blockRow(page, SCIMETHOD, HYPOTHESIS_KEY).locator('[data-block-input]')
     ).toHaveValue(HYPOTHESIS_MT);
 
+    // 🔴 APPROVING ALONE DOES NOT TURN THE BADGE GREEN, and that is the ruling,
+    // not a defect: nothing in this server runs the composer, so the published
+    // SVG still carries the pre-approval text.
     await fig.locator('[data-figure-approve]').click();
-    await expect(state).toHaveText('APPROVED');
+    await expect(state).toHaveText('MT-PREVIEW');
+
+    // Compose, and only then does it go green. This is the CONTROL for the
+    // assertion above: without it, "approving yields MT-PREVIEW" would be
+    // equally consistent with an approval path that is simply broken.
+    stampComposed(SCIMETHOD);
+    await openFixtureModule(page, 'm68664');
+    await expect(card(page, SCIMETHOD).locator('[data-figure-state]')).toHaveText('APPROVED');
 
     // THE POINT OF THE FEATURE. Changing a block after approval must revert the
     // badge with nothing stored to say so: the renderHash no longer matches the
@@ -271,8 +301,14 @@ test.describe('Figure review card', () => {
       blockRow(page, SCIMETHOD, HYPOTHESIS_KEY).locator('[data-block-input]')
     ).toHaveValue(HYPOTHESIS_EDIT);
 
-    // Approving the CHANGED text re-hashes it, so the badge sticks this time.
+    // Re-approving the CHANGED text re-hashes it — and the composedHash carried
+    // forward from the first compose is now STALE, so the badge correctly stays
+    // amber until the artwork is composed again.
     await card(page, SCIMETHOD).locator('[data-figure-approve]').click();
+    await expect(card(page, SCIMETHOD).locator('[data-figure-state]')).toHaveText('MT-PREVIEW');
+
+    stampComposed(SCIMETHOD);
+    await openFixtureModule(page, 'm68664');
     await expect(card(page, SCIMETHOD).locator('[data-figure-state]')).toHaveText('APPROVED');
   });
 

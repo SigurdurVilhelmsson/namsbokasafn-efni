@@ -67,7 +67,16 @@ function computeRenderHash(blocks, composerVersion) {
   return h.digest('hex').slice(0, 16);
 }
 
-function effectiveState(sidecar, currentBlocks, composerVersion) {
+/**
+ * THE EDITORIAL VERDICT: has an editor approved THESE EXACT blocks?
+ *
+ * Deliberately says nothing about the composer. This is the value
+ * applyApprovedFigureEdits WRITES as the sidecar's `state`, and gating it on
+ * composedHash would deadlock the feature: every approval would be written as
+ * 'mt-preview', effectiveState() below short-circuits on `state !== 'approved'`,
+ * and no later stamp could ever flip it. 'approved' would be unreachable.
+ */
+function editorialState(sidecar, currentBlocks, composerVersion) {
   if (!sidecar || !sidecar.state) return 'mt-preview';
   if (sidecar.state === 'flagged') return 'flagged';
   if (sidecar.state !== 'approved') return 'mt-preview';
@@ -75,7 +84,40 @@ function effectiveState(sidecar, currentBlocks, composerVersion) {
   return now === sidecar.renderHash ? 'approved' : 'mt-preview';
 }
 
+/**
+ * WHAT THE READER AND THE EDITOR SEE: does the PUBLISHED IMAGE carry approved
+ * text? The card, the /figures payload and cnxml-render all use this one.
+ *
+ * 🔴 The defect it closes ([USER] ruling C, 2026-09-04): approving does not run
+ * the composer — nothing in the server invokes it, compose.py is run by hand —
+ * so an editor could correct `Selsíus` → `Celsíus`, approve, and every surface
+ * would report approved while books/<slug>/media/<basename>_IS.svg still read
+ * `Selsíus`. NO check in the repo could see it, because the sidecar's renderHash
+ * is consistent with the sidecar's own blocks BY CONSTRUCTION.
+ *
+ * Two conditions, both from values already in the sidecar — no extra file read:
+ *   editorialState === 'approved'                  (blocks unchanged since approval)
+ *   sidecar.composedHash === sidecar.renderHash    (the SVG was composed from them)
+ *
+ * ▶ It inverts the flow correctly, and that is the point rather than a nuisance:
+ * approve → still mt-preview → run the composer → approved.
+ *
+ * 🔴 composedHash ABSENT yields mt-preview, never approved. An approved sidecar
+ * with no composedHash means the image was never composed from approved text;
+ * failing safe costs nothing today (no legacy sidecars exist) and protects every
+ * future one. The truthiness check also stops a degenerate '' === '' pair from
+ * reading as approval.
+ */
+function effectiveState(sidecar, currentBlocks, composerVersion) {
+  const editorial = editorialState(sidecar, currentBlocks, composerVersion);
+  if (editorial !== 'approved') return editorial;
+  return sidecar.composedHash && sidecar.composedHash === sidecar.renderHash
+    ? 'approved'
+    : 'mt-preview';
+}
+
 module.exports = {
   SIDECAR_VERSION, COMPOSER_VERSION,
-  sidecarPath, readSidecar, writeSidecar, computeRenderHash, effectiveState,
+  sidecarPath, readSidecar, writeSidecar, computeRenderHash,
+  editorialState, effectiveState,
 };
