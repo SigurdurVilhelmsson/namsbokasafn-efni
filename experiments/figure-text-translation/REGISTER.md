@@ -15,12 +15,17 @@ things lives in [README.md](README.md).
 Málstaður run** (⑯, 1.20 ISK, 8/8 blocks); the output format settled as **SVG** by
 measurement (⑤); and **the review workflow merged as #435**.
 
-**⏭️ NEXT: nothing is blocked.** Both [USER]-ruled follow-ups are built (Ⓐ and Ⓒ below, branch
-`feat/figure-card-image`). Ⓨ needed no work. The open items are the pre-existing ones under
-*Open* — ⑭ number localization, ⑮ label anchoring, ⑦ Type0/CID fonts — plus the one gap Ⓒ
-introduced and did not close, recorded under ⑰.
+**⏭️ NEXT: nothing is blocked.** Both [USER]-ruled follow-ups are MERGED (Ⓐ and Ⓒ below). Ⓨ
+needed no work. The open items are the pre-existing ones under *Open* — ⑭ number localization,
+⑮ label anchoring, ⑦ Type0/CID fonts — plus the one gap Ⓒ introduced and did not close,
+recorded under ⑰.
 
-**✅ Ⓐ AND Ⓒ ARE BUILT — 2026-09-04, branch `feat/figure-card-image`.**
+**✅ Ⓐ AND Ⓒ ARE MERGED — 2026-09-04, PR #438 (`d9cd0998`), a merge commit so the three
+individual SHAs survive.** Full suite on the branch was `19 failed | 5973 passed`, diffed BY NAME
+against a baseline in both directions: **19 of 19 identical, 0 newly red, 0 cleared** — `main`'s
+documented floor. **CI agreed independently: 19 failures across 9 files, name-identical.** E2E
+6/6 (was 5). ⚠️ **This merge touched `books/`** (two `__e2e-fixture__/media/` files), so it arms
+the content-backup stranding rule — deploy, or expect the next content tick to be rejected.
 - **Ⓐ the card shows the figure.** `GET …/figures/:basename/image` reuses `resolveFigureRequest`
   (so no new traversal surface) and `translatedImageFor` resolves the English basename **forward**
   through `image-mapping.json` — no `_IS` anywhere in server or browser code, pinned by a test that
@@ -94,9 +99,9 @@ consistency checks, and an editor surface. Branch **`feat/figure-text-review`**,
 ▶ **Per-task state lives in that plan's SDD ledger and in `git log`, never here** — a task
 count written into prose is stale by the next commit.
 
-✅ **DONE — the two follow-ups this block used to point at.** Both are built on branch
-`feat/figure-card-image` (2026-09-04); see the Ⓐ/Ⓒ note at the top of this RESUME for what
-landed and for the one trap the brief itself walked into. The brief remains at
+✅ **DONE — the two follow-ups this block used to point at.** Both merged 2026-09-04 as PR #438;
+see the Ⓐ/Ⓒ note at the top of this RESUME for what landed and for the one trap the brief itself
+walked into. The brief remains at
 `docs/superpowers/plans/2026-09-04-figure-text-followups.md` as **evidence, never status** — per
 CLAUDE.md § One source of truth, this file is the owner and it wins on any disagreement.
 
