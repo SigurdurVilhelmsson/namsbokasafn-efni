@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'vitest';
-import { readdirSync, readFileSync } from 'node:fs';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { readdirSync, readFileSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
+import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 
@@ -67,5 +68,86 @@ describe('01-source overwrite path removed (PROV-1)', () => {
       code = e.status;
     }
     expect(code).not.toBe(0); // update is gone → non-zero exit
+  });
+});
+
+/**
+ * openstax-fetch.cjs -- a SECOND, UNGATED path to the operation CLAUDE.md's
+ * heaviest rule governs, currently disarmed by a host-allowlist mismatch.
+ * --> see CLAUDE.md "Never overwrite local OpenStax CNXML from upstream without
+ *     double written consent" for the rule itself; nothing is restated here.
+ *
+ * WHAT IS TRUE, ALL MEASURED (2026-09-04, register §C118 (7)):
+ *  - 0 callers anywhere in the repo.
+ *  - Every fetch refuses: it builds raw.githubusercontent.com URLs while
+ *    ALLOWED_FETCH_HOSTS admits only openstax.org / cnx.org. Exit 1, loud.
+ *  - It does NOT consult tools/lib/source-refresh-policy.cjs -- the four
+ *    fail-closed licence gates that download-source.js, the sanctioned CNXML
+ *    writer, does consult.
+ *  - Its --collection + --output-dir path writes the chNN/<id>.cnxml shape into
+ *    a CALLER-CHOSEN directory (outputDir defaults to null and the bulk branch
+ *    is gated on it), so it is a deliberate-act path, not an accident path.
+ *  - The tripwire above cannot see it, for TWO independent reasons: the glob is
+ *    endsWith('.js') and this file is .cjs, AND the needle is the literal
+ *    "01-source", which the file never contains. Either alone suffices, so
+ *    widening the glob would NOT catch it. (The .cjs gap is latent today:
+ *    neither top-level .cjs tool references 01-source.)
+ *
+ * WHY A TEST RATHER THAN A DELETION. Deleting it is the cleaner outcome and is
+ * the user's call, not this test's. What the test buys meanwhile is that the
+ * register used to describe this tool as "appears INERT ... no covering test",
+ * which invites the repair that RE-ARMS it: widen the allowlist, and a bulk
+ * OpenStax CNXML fetcher that bypasses the licence gates is live again. curl is
+ * equally ungated -- the difference is that nobody mistakes curl for a
+ * sanctioned pipeline tool, and a file sitting in tools/ they might.
+ *
+ * SO: if you are here because this test failed, you have re-armed that path.
+ * That needs the three-step written consent in CLAUDE.md, or the licence gates
+ * wired in, or the tool deleted. It does not need this assertion relaxed.
+ */
+describe('openstax-fetch.cjs fetch path stays refused (PROV-2)', () => {
+  const script = path.join(TOOLS, 'openstax-fetch.cjs');
+
+  /** Run the tool, returning {code, stderr} whether it exits 0 or not. */
+  function run(args) {
+    try {
+      const stdout = execFileSync('node', [script, ...args], { encoding: 'utf8', stdio: 'pipe' });
+      return { code: 0, stderr: '', stdout };
+    } catch (e) {
+      return { code: e.status, stderr: e.stderr || '', stdout: e.stdout || '' };
+    }
+  }
+
+  // POSITIVE CONTROL, and it is load-bearing: without it a non-zero exit is
+  // indistinguishable from "the tool is broken / node could not start it", and
+  // the refusal assertion below would pass for the wrong reason.
+  it('CONTROL: a non-fetching verb still runs and exits 0', () => {
+    expect(run(['--list-books']).code).toBe(0);
+  });
+
+  // The probe's --output goes to a THROWAWAY dir, never into the repo: if this
+  // assertion is ever failing, the tool is fetching for real, and a repo-relative
+  // target would leave upstream CNXML behind. (Measured: re-arming the allowlist
+  // fetched 43,015 bytes of real chemistry CNXML on the first try -- the tool is
+  // entirely functional, and one host regex is the whole of the disarmament.)
+  let out;
+  beforeEach(() => {
+    out = path.join(mkdtempSync(path.join(os.tmpdir(), 'osfetch-probe-')), 'fetched.cnxml');
+  });
+  afterEach(() => {
+    rmSync(path.dirname(out), { recursive: true, force: true });
+  });
+
+  it('refuses a single-module fetch rather than reaching the network', () => {
+    expect(run(['m68690', '--output', out]).stderr).toMatch(/Refusing to fetch disallowed URL/);
+  });
+
+  it('exits non-zero on that refusal, so a caller cannot read it as success', () => {
+    expect(run(['m68690', '--output', out]).code).not.toBe(0);
+  });
+
+  it('writes nothing when it refuses', () => {
+    run(['m68690', '--output', out]);
+    expect(existsSync(out)).toBe(false);
   });
 });
