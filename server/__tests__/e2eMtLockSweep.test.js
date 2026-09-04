@@ -91,6 +91,20 @@ describe('listLockFiles', () => {
     expect(sweep.listLockFiles(booksDir)).toEqual([]);
   });
 
+  // NEGATIVE CONTROL on the SCOPE, not on the values. Without it a widened
+  // collect() root survives every other assertion: the sweep would start
+  // deleting look-alike files out of 01-source and 03-translated, and no test
+  // here would notice. 03-translated in particular holds 12,026 .backup.* files
+  // (register (8)) — a sweep loose in there is not a hypothetical.
+  it('does NOT collect a look-alike file outside 02-mt-output', () => {
+    for (const stage of ['01-source', '03-translated']) {
+      const dir = path.join(booksDir, 'efnafraedi-2e', stage, 'ch01');
+      fs.mkdirSync(dir, { recursive: true });
+      fs.writeFileSync(path.join(dir, `m68664${LOCK}`), '{}', 'utf8');
+    }
+    expect(sweep.listLockFiles(booksDir)).toEqual([]);
+  });
+
   // FAIL-CLOSED, not fail-open. "No markers exist" authorizes deletion;
   // "I could not look" must not, and returning [] for both conflated them.
   it('THROWS when the books dir itself cannot be enumerated', () => {
