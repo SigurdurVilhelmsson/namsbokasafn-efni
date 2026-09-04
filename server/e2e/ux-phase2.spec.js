@@ -88,9 +88,18 @@ test.describe('Phase 2 UX fixes', () => {
 
 /**
  * This block writes to the real `efnafraedi-2e` (not the fixture book), as
- * `segment-editor.spec.js` already does for the same module. That stays safe
- * because the module's MT edit-lock marker is committed and `writeMtLock`
- * no-ops when one exists, so a run leaves the git tree clean.
+ * `segment-editor.spec.js` already does for the same module.
+ *
+ * This used to read "that stays safe because the module's MT edit-lock marker
+ * is committed and writeMtLock no-ops when one exists". That was true when
+ * written and stopped being true in PR #411, whose Phase 2.1 deleted all seven
+ * committed chemistry locks to unblock the re-MT — m68664 among them. The edit
+ * below then wrote a fresh marker into READ-ONLY 02-mt-output on every run, and
+ * mtRunDecision skips a locked module silently (§C118 (9)).
+ *
+ * The tree is now kept clean by global-setup.js + global-teardown.js, which
+ * sweep markers this run created and keep any that predate it. Do NOT restore a
+ * committed lock here to make this safe: that is what re-blocks the re-MT.
  *
  * C2: the segment id used to be the invented `m68664:para:test-persist`, which
  * the SR-OOS-2 backstop correctly 404s. It is now discovered at run time; the

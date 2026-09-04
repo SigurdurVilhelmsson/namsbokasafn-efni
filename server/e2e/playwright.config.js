@@ -9,8 +9,12 @@ module.exports = defineConfig({
   testMatch: '*.spec.js',
   timeout: 30000,
   retries: 0,
-  // Writer specs trigger the MT edit-lock first-edit hook against the committed
-  // fixture book; sweep the resulting .locked markers so the tree stays clean.
+  // Writer specs trigger the MT edit-lock first-edit hook against the fixture
+  // book AND the real efnafraedi-2e modules they edit. Setup snapshots the
+  // markers that already exist; teardown removes only the ones this run added.
+  // Both are required: without globalSetup there is no snapshot and teardown
+  // conservatively sweeps the fixture book only.
+  globalSetup: require.resolve('./global-setup.js'),
   globalTeardown: require.resolve('./global-teardown.js'),
   use: {
     baseURL: 'http://localhost:3456',
