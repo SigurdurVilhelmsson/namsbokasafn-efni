@@ -104,9 +104,37 @@ and its allowlist are an ENFORCEABLE VALUE and live in `tools/lib/math-label-inv
     and `--validate` already report per-book label state. A surfacing line for now-inert overlay
     entries (the `cell → ker` residue) is the smallest useful step and needs no editor work.
 
-✅ **TASKS 1–5 AND 7 OF THE `data-en` UNIT ARE DONE ON `feat/term-english-data-attribute`
-(19 commits, nothing pushed). ONLY TASK 6 REMAINS AND IT IS BLOCKED ON A [USER]/[LEAD]
-PUBLISHING DECISION, NOT ON ENGINEERING.**
+✅ **MERGED 2026-09-04 — PR [#434](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/434)
+→ `main` = `57f846f9`, a MERGE COMMIT (not a squash, deliberately: this register cites the branch's
+individual SHAs throughout and a squash breaks every one — same call as #431–#433).** 24 commits,
+38 files, +2,837/−367. **Merge verified by TREE DIFF against the branch head (`5a7b2512`), which came
+back EMPTY** — not by exit code.
+- **CI: 5 pass · 1 fail.** `lint` · `e2e` · `check-docs` · `Validate Status Files` · `audit` all green.
+  `test` red **at exactly the documented floor** — CI's failing set is **19 names, IDENTICAL to the
+  local baseline in BOTH directions, 0 newly red, 0 cleared**, with a planted-row control.
+- 🟢 **AND CI INDEPENDENTLY RETIRED TWO LOCAL-ONLY REDS: it reports 9 failed test FILES where this box
+  reports 11.** `findTermsGolden` (§C118 ㉑) and `conceptResolverIntegrity`'s merge-cycle pin **both
+  PASS in CI.** ▶ Both are local-environment artefacts; do not chase either as a defect from a local run.
+- 🔴 **`audit` FAILED FIRST, AND THE REASON IS A DURABLE TRAP: `npm audit` EXITS 1 ON A SERVICE OUTAGE
+  EXACTLY AS IT DOES ON A REAL FINDING.** The log said
+  `503 Service Unavailable — POST registry.npmjs.org/-/npm/v1/security/audits/quick`, after 7 minutes
+  of retries. ▶ **Read the LOG, never the exit code** — the code cannot distinguish *"vulnerabilities
+  found"* from *"could not ask"*. Settled four ways: the same workflow **dispatched on `main` failed
+  identically** (lockfiles byte-identical, so the input was unchanged); a direct probe of that endpoint
+  **timed out at 25 s while the registry root answered in 0.06 s** (control); local
+  `npm audit --audit-level=high` in `server/` reported **`found 0 vulnerabilities`**; and a plain
+  **re-run of the job passed**. ⚠️ *Duration is the diagnostic here too* — minutes of retries, not the
+  ~3 s infra signature.
+- ⚠️ **A MONITOR WAS DEFEATED BY ITS OWN GUARD, and it cost 40 minutes of silence: `gh pr checks` EXITS
+  NON-ZERO WHEN ANY CHECK FAILS**, so a `|| { sleep; continue; }` wrapper skipped every iteration
+  forever and emitted nothing. **Silence from a watcher is not "still pending".**
+- 🔴 **DEPLOY OR EXPECT A STRANDED CONTENT TICK.** This merge touches `books/` (13 `02-structure/ch03`
+  manifests), and the durable rule applies: prod's cron commits and pushes without fetching, so a push
+  to `main` strands its content backup **until the next deploy**. Prod was clean at the last check, but
+  that is not a standing property.
+
+✅ **TASKS 1–5 AND 7 OF THE `data-en` UNIT ARE DONE. ONLY TASK 6 REMAINS AND IT IS BLOCKED ON A
+[USER]/[LEAD] PUBLISHING DECISION, NOT ON ENGINEERING.**
 - **Gate, re-run after Tasks 4–5:** `19 failed | 5,802 passed | 46 skipped (5,867)`, 10 failed
   FILES, `npm test` exit 1. **Failing set IDENTICAL to the branch baseline by NAME, both
   directions — 0 newly red, 0 cleared — with a planted-row control proving the comparator
