@@ -259,58 +259,34 @@ location is no record.
   sidecar.
 
 
-- **⑰ `composedHash` CLAIMS MORE THAN THE COMPOSER DELIVERS — the SVG it stamps for is not the
-  published one.** Opened 2026-09-04 by Ⓒ itself, deliberately and with the gap named rather than
-  papered over. `compose.py --svg` writes `experiments/figure-text-translation/out/translated.svg`
-  and then stamps `composedHash` into the sidecar; **nothing copies that file to
-  `books/<slug>/media/<basename>_IS.svg`**, which is what `cnxml-inject` swaps in and what a reader
-  actually sees. So the stamp means *"a composer run produced artwork from these blocks"*, not
-  *"the published image carries them"*.
-  ▶ **It is still strictly better than the state it replaced** — before Ⓒ, `effectiveState`
-  reduced to `sidecar.state` exactly and could not fire on an editorial event at all — and it fails
-  in the SAFE direction for the failure that matters: an approval with no compose at all still
-  reads `mt-preview`.
-  ⚠️ **The residual hazard is narrow and worth stating precisely: compose into `out/`, never
-  publish, and the badge goes green anyway.** Closing it means having the composer write through
-  `image-mapping.json` — the same forward lookup `translatedImageFor` already does — so the stamp
-  and the published file move together. ⚠️ **It is NOT a two-line change, and the reason is worth
-  knowing before anyone scopes it: `compose.py` has no book context at all.** Its only pointer to
-  the outside world is `--translations <path>`; it never learns a book slug or an English basename,
-  and both are needed to resolve an `outputName` through the mapping. So the work is a `--book` /
-  `--basename` pair (or deriving them from the sidecar's own path, which couples the composer to
-  the `books/<slug>/figure-text/` layout) **plus** the write — not just a destination. **Not built;
-  not in scope for Ⓒ, which was ruled as a sidecar-only change.**
-  ⚠️ **Maintenance note: THREE test-side stand-ins now simulate the composer by hand** — the E2E
-  spec's `stampComposed`, a `writeSidecar({…composedHash})` in the service test, and a
-  `writeFileSync` in the routes test. They agree today because the operation is one copied field.
-  **If the stamp ever grows a second field** (a `composedAt`, or a `composerVersion` the composer
-  writes itself) **all three drift silently.** At that point they want one shared helper.
-  🔴 **CORRECTED 2026-09-04, SAME DAY IT WAS WRITTEN — THIS ENTRY SAID "no composed figure has
-  ever been published" AND THAT IS FALSE BY 690.** `books/efnafraedi-2e/media/` holds **691
-  `_IS.svg`, 690 of which carry the composer's own `LiberationSans` `@font-face` signature**,
-  published in `9269fcda` (2026-06-26, *"localize chapter 1-9 figures (305 translated SVGs)"*) by
-  **Claude Cowork — an EXTERNAL process, not this pipeline**. This `experiments/` tree is a
-  rebuild of that capability with a review workflow attached; it is not the first thing to
-  translate these figures.
-  ▶ **THE CONSEQUENCE INVERTS THE ITEM. The write ⑰ describes is an OVERWRITE of published,
-  reader-visible artwork, not a create** — and the published artwork is measurably GOOD.
-  Measured on `CNX_Chem_01_06_TempScales_IS.svg`, the same figure as ⑯: the published file
-  already reads **`373,15 K` / `273,15 K` / `233,15 K`** — decimal comma applied, i.e. **⑭'s own
-  motivating example is already correct for readers** — and **`Celsíus`**, which is the book's
-  dominant spelling (**24:5** in committed chemistry MT output, **31:13** in published HTML).
-  ⑯'s paid run produced **`Selsíus`** for that term: the minority variant, and precisely what
-  `captionDivergence` exists to flag.
-  🔴 **SO AN UNGATED ⑰ WOULD LET THE REVIEW WORKFLOW REPLACE GOOD PUBLISHED FIGURES WITH
-  UNREVIEWED MT OUTPUT THAT IS WORSE ON A KNOWN TERM.** That is not an argument against the
-  pipeline — its whole point is that an editor sees the divergence warning and fixes `Selsíus`
-  before approving — but it IS an argument that the write must be a deliberate, per-figure,
-  reviewed replacement rather than a pipeline step.
-  ⚠️ **What IS still 0: figure-text sidecars.** There are none anywhere under `books/`, so no real
-  figure carries a review state and no `composedHash` has ever been stamped outside a test. The
-  staleness hazard is unrealised; the overwrite hazard is not hypothetical at all.
-  ⚠️ **And the Cowork corpus is NOT uniformly good** — see ⑩ (a raster PNG in an SVG wrapper),
-  ⑬ (92 % font payload) and ⑫ (stale re-export lists). Fixing *those specific figures* is the
-  use this pipeline is actually for.
+- **✅ ⑰ CLOSED 2026-09-04 — the composed figure now reaches the tree readers load, and
+  `composedHash` means what it says.** `tools/publish-figure-svg.js` copies `out/translated.svg`
+  to `books/<slug>/media/<mapped name>` and stamps the sidecar there.
+  🔴 **IT IS JS, AND THAT RETIRED A RULE RATHER THAN GUARDING IT.** The stamp had briefly lived in
+  `compose.py`, which put a *copy-don't-compute* obligation in Python that a pin had to police.
+  Moving it beside `computeRenderHash` means **there is no hashing in the Python tree at all** —
+  an absence is cheaper to keep true than a discipline. `figtext.stamp_composed_hash` and its
+  Python test were **deleted** in the same change; the mapping lookup likewise keeps its one owner,
+  so `DEFAULT_SUFFIX` is never restated.
+  🔴 **THE GUARD THAT MATTERS IS THE BASENAME CROSS-CHECK.** `out/` holds whatever figure was
+  extracted LAST; the sidecar says which figure the TEXT is for. The publisher compares
+  `out/meta.json`'s source-PDF stem against the sidecar's filename and **refuses if they differ**.
+  Without it, publishing puts figure A's artwork under figure B's translations — a correct-looking
+  translation of the wrong picture, the same class of silent error `sources.py`'s edition
+  precedence prevents one stage earlier. **Neither side can catch it alone.**
+  ⚠️ **Publishing REPLACES a reader-visible file, deliberately.** [USER], 2026-09-04: the June
+  Cowork figures were a **test run** — freestyle translation, a few manual corrections, **no
+  editorial surface at all** — published as MT preview. Replacing them with pipeline output an
+  editor can review, and which the renderer badges `mt-preview` until approved, is the entire
+  point. All 691 are git-tracked, so `git checkout` is the restore; the tool writes no `.bak`.
+  ⚠️ **An unapproved sidecar has no `renderHash`, so nothing is stamped** — and that is the
+  ORDINARY case under the plan (publish the MT, review afterwards), not an error.
+  ⏭️ **What ⑰ does NOT do: the bulk run.** This publishes ONE figure. Running all of them through
+  extract → MT → compose → publish is the next piece, it is where Málstaður money is spent, and it
+  needs its own approval. ⚠️ **Expect the review queue to have real work in it:** ⑯'s paid run
+  produced `Selsíus` where the book says `Celsíus` **24:5** in committed MT output and **31:13** in
+  published HTML — the minority variant, and exactly what `captionDivergence` flags. That is the
+  editorial surface earning its place, but it may also be a glossary question.
 
 - **⑭ NUMBER LOCALIZATION IS AN EDITORIAL ACTION, NOT A TRANSFORM — [USER]-ruled 2026-09-04,
   and the one-click path is BUILT.** The gap: `373.15 K` / `273.15 K` / `233.15 K` are correctly

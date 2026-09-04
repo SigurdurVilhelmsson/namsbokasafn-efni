@@ -175,62 +175,48 @@ describe('the two layers really are different', () => {
 });
 
 /**
- * The composer is Python and its own tests are plain scripts that neither
- * `npm test` nor CI runs (both are node-only). These two pins therefore live
- * HERE, where the authoritative gate can see them — a rule guarded only by a
- * test nothing executes is not guarded.
+ * 🔴 THE PYTHON TREE DOES NO HASHING AT ALL, and that is now a FACT about the
+ * code rather than a rule a test has to police.
+ *
+ * `composedHash` was briefly stamped by `compose.py`, which meant Python held a
+ * copy-don't-compute rule that a pin had to enforce. ⑰ moved the stamp to
+ * `tools/publish-figure-svg.js` — where it belongs, because that is where the
+ * file lands in `books/<slug>/media/` and therefore where "the image on disk was
+ * composed from these blocks" becomes true. `computeRenderHash` lives beside it.
+ *
+ * ▶ So the pin below is stronger and simpler than the pair it replaces: not
+ * "the composer must copy rather than compute", but "there is nothing in the
+ * Python tree that could compute". An absence is cheaper to keep true.
  */
-describe('the Python composer must COPY the hash, never compute one', () => {
+describe('the composer computes no hashes — there is no second implementation', () => {
   const composerDir = new URL('../../experiments/figure-text-translation/', import.meta.url);
-  const readPy = (name) => fs.readFileSync(new URL(name, composerDir), 'utf-8');
 
-  /**
-   * Docstrings and # comments removed, so this judges CODE.
-   *
-   * ⚠️ Not fussiness — measured. A pin that FORBIDS a token trips on the very
-   * comment that documents the prohibition: figtext.py's docstring says "If you
-   * are reaching for hashlib, you have taken the wrong branch", and the first
-   * draft of the assertion below went red against exactly that sentence. The
-   * prose is doing its job; the pin has to look past it.
-   */
-  const pyCode = (src) =>
-    src
-      .replace(/"""[\s\S]*?"""/g, '')
-      .replace(/'''[\s\S]*?'''/g, '')
-      .split('\n')
-      .filter((l) => !/^\s*#/.test(l))
-      .join('\n');
-
-  it('figtext.py reaches for no hashing library', () => {
-    // 🔴 computeRenderHash is JS. A Python reimplementation would be two
-    // implementations of one rule in two languages, which CLAUDE.md then
-    // requires to be proved equal ON THE CORPUS rather than on a fixture.
-    // Copying the value leaves nothing to disagree with — so the tripwire is
-    // the import, not the output.
-    const src = pyCode(readPy('figtext.py'));
-    expect(src).toContain('def stamp_composed_hash'); // control: the right file, still code
-    expect(src).not.toMatch(/\bhashlib\b/);
-    expect(src).not.toMatch(/\bsha256\b/);
+  it('no Python file in the figure-text tree reaches for a hashing library', () => {
+    const files = fs.readdirSync(composerDir).filter((f) => f.endsWith('.py'));
+    expect(files.length).toBeGreaterThan(4); // control: the directory really was read
+    for (const f of files) {
+      const src = fs.readFileSync(new URL(f, composerDir), 'utf-8');
+      expect(src, `${f} must not hash`).not.toMatch(/\bhashlib\b|\bsha256\b/);
+    }
   });
 
-  it('compose.py stamps only a real SVG compose, never a --control run', () => {
-    // A --control run re-injects the ENGLISH through the same code, and a
-    // PNG-only run does not produce the published format. Neither is a
-    // composition of approved Icelandic, so neither may claim to be one.
-    const src = pyCode(readPy('compose.py'));
-    expect(src).toContain('stamp_composed_hash');
-    const stampIdx = src.indexOf('stamp_composed_hash');
-    const svgIdx = src.indexOf('if SVG:');
-    expect(svgIdx).toBeGreaterThan(-1);
-    expect(stampIdx).toBeGreaterThan(svgIdx); // inside the SVG branch
-    expect(src.slice(svgIdx, stampIdx)).not.toContain('CONTROL =');
+  it('compose.py no longer stamps the sidecar — the publisher does', () => {
+    // A leftover stamp in compose.py would claim the sidecar describes
+    // out/translated.svg, which is precisely the dishonesty ⑰ closed.
+    const src = fs.readFileSync(new URL('compose.py', composerDir), 'utf-8');
+    expect(src).toContain('write_svg'); // control: the right file, still composing
+    expect(src).not.toContain('composedHash');
+    expect(src).not.toContain('stamp_composed_hash');
   });
 });
 
-describe('writeSidecar byte format — the constant the Python composer is anchored on', () => {
-  it('emits exactly the bytes experiments/.../test_composed_hash.py hardcodes', () => {
-    // 🔴 CROSS-LANGUAGE ANCHOR. figtext.stamp_composed_hash rewrites this file
-    // from Python, and the sidecar is COMMITTED and read as a diff. Rather than
+describe('writeSidecar byte format', () => {
+  it('emits stable, minimally-diffing bytes for a committed file', () => {
+    // The sidecar is COMMITTED and read as a diff, and TWO writers rewrite it in
+    // alternation — applyApprovedFigureEdits on approval and publish-figure-svg
+    // on publish. Pinning the exact bytes is what keeps an approve/publish cycle
+    // from churning the file. (Until ⑰ this also anchored a Python writer; that
+    // one is gone, which is why the format now has one implementation. Rather than
     // reimplement the format in Python and then have to prove two
     // implementations agree, both sides are pinned to ONE literal: this test
     // owns it, and the Python test hardcodes the same bytes.
