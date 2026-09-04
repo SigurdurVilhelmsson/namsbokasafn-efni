@@ -140,6 +140,23 @@ function shrinkVerdict(prev, next) {
 const GROWTH_RATIO = 1.5;
 
 /**
+ * A RATIO ALONE IS MEANINGLESS ON SMALL COUNTS, and leaving it out broke 15
+ * existing tests in glossaryExportRun.test.js — whose fixtures seed ONE term
+ * and export five. 1 -> 5 is 5x and is not an explosion.
+ *
+ * This is the asymmetry with the shrink guard, and it is why the mirror needed
+ * measuring rather than assuming: shrinking from 2 terms harms nothing, so
+ * SHRINK_RATIO needs no floor, while ANY small seed trips a growth ratio.
+ *
+ * So an explosion must also be LARGE IN ABSOLUTE TERMS. The separation is wide:
+ *   fixtures        1 ->     5   delta     4   must pass
+ *   incident      827 -> 1,595   delta   768   must refuse
+ *   trim rebound  172 ->   840   delta   668   must refuse
+ * 100 sits in the empty gap between 4 and 668.
+ */
+const GROWTH_MIN_DELTA = 100;
+
+/**
  * @returns {{refuse: boolean, prevApproved: number, nextApproved: number, prevTotal: number, nextTotal: number}}
  */
 function growthVerdict(prev, next) {
@@ -154,9 +171,11 @@ function growthVerdict(prev, next) {
   // EMPTY FILE permitted — there is no ratio to measure against nothing, and a
   // first population is the absent-baseline gate's business (§C21), not this
   // one's.
-  const refuse =
-    (prevApproved > 0 && nextApproved > prevApproved * GROWTH_RATIO) ||
-    (prevTotal > 0 && nextTotal > prevTotal * GROWTH_RATIO);
+  // BOTH the ratio AND a material absolute delta, per metric: a proportional
+  // jump that moves only a handful of terms is not the catastrophe this guards.
+  const exploded = (prev, next) =>
+    prev > 0 && next > prev * GROWTH_RATIO && next - prev >= GROWTH_MIN_DELTA;
+  const refuse = exploded(prevApproved, nextApproved) || exploded(prevTotal, nextTotal);
 
   return { refuse, prevApproved, nextApproved, prevTotal, nextTotal };
 }
@@ -193,4 +212,5 @@ module.exports = {
   producerVerdict,
   SHRINK_RATIO,
   GROWTH_RATIO,
+  GROWTH_MIN_DELTA,
 };

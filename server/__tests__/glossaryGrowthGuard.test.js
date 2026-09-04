@@ -25,7 +25,7 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const { growthVerdict, GROWTH_RATIO } = require('../lib/glossaryExportDecision.js');
+const { growthVerdict, GROWTH_RATIO, GROWTH_MIN_DELTA } = require('../lib/glossaryExportDecision.js');
 
 const g = (n, approved = n) => ({
   terms: Array.from({ length: n }, (_, i) => ({
@@ -79,6 +79,26 @@ describe('growthVerdict', () => {
 
   it('catches an explosion in APPROVED terms even when the total barely moves', () => {
     expect(growthVerdict(g(1000, 10), g(1000, 900)).refuse).toBe(true);
+  });
+
+  // A RATIO ALONE IS MEANINGLESS ON SMALL COUNTS. Omitting the absolute floor
+  // broke 15 tests in glossaryExportRun.test.js, whose fixtures seed ONE term
+  // and export five — the asymmetry with the shrink guard, which needs no floor
+  // because shrinking from 2 terms harms nothing.
+  it('permits the 1 -> 5 fixture growth: proportional, but four terms', () => {
+    expect(growthVerdict(g(1), g(5)).refuse).toBe(false);
+  });
+
+  it('permits a big ratio that moves few terms', () => {
+    expect(growthVerdict(g(10), g(60)).refuse).toBe(false);
+  });
+
+  it('still refuses a big ratio that moves many terms', () => {
+    expect(growthVerdict(g(100), g(400)).refuse).toBe(true);
+  });
+
+  it('the floor is small enough to leave the incident caught', () => {
+    expect(GROWTH_MIN_DELTA).toBeLessThan(768);
   });
 
   it('reports both sides so the operator can judge before forcing', () => {
