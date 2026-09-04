@@ -188,20 +188,37 @@ describe('migration 047 reports what its enforcement overwrote (§C119)', () => 
   // satisfied by `bootReverted = [c]`, which accumulates nothing — measured:
   // that mutant survived the whole file until this test existed.
   it('ACCUMULATES reverts across calls, so an earlier book is not dropped', () => {
-    db.prepare('INSERT INTO registered_books (id, slug) VALUES (2, ?)').run('lifraen-efnafraedi');
+    // Derive the second book from the map rather than naming a domain: an
+    // earlier version deleted `domain<>'chemistry'` for lifraen-efnafraedi and
+    // broke the moment §C119 scoped that book to chemistry only, because the
+    // DELETE then removed nothing and there was no revert to accumulate. A
+    // test that hard-codes another module's DATA breaks on a data change and
+    // says nothing about the behaviour it is meant to pin.
+    const second = Object.keys(BOOK_DOMAIN_PRIORITY).find(
+      (slug) => slug !== 'efnafraedi-2e' && BOOK_DOMAIN_PRIORITY[slug].length > 1
+    );
+    db.prepare('INSERT INTO registered_books (id, slug) VALUES (2, ?)').run(second);
     registerChemistry();
     migration047.up(db, { statusPath }); // seed both
     migration047._resetBootState();
 
-    db.prepare("DELETE FROM book_domain_priority WHERE book_id=1 AND domain<>'chemistry'").run();
-    migration047.up(db, { statusPath }); // chemistry reverted
-    db.prepare("DELETE FROM book_domain_priority WHERE book_id=2 AND domain<>'chemistry'").run();
-    migration047.up(db, { statusPath }); // organic reverted, on a LATER call
+    // Drop the LAST row of each: an overwrite regardless of what the lists hold.
+    const dropLast = (bookId) =>
+      db
+        .prepare(
+          'DELETE FROM book_domain_priority WHERE book_id=? AND position=' +
+            '(SELECT MAX(position) FROM book_domain_priority WHERE book_id=?)'
+        )
+        .run(bookId, bookId);
 
-    expect(readStatus().reverted.map((r) => r.slug).sort()).toEqual([
-      'efnafraedi-2e',
-      'lifraen-efnafraedi',
-    ]);
+    dropLast(1);
+    migration047.up(db, { statusPath }); // chemistry reverted
+    dropLast(2);
+    migration047.up(db, { statusPath }); // the second book reverted, on a LATER call
+
+    expect(readStatus().reverted.map((r) => r.slug).sort()).toEqual(
+      ['efnafraedi-2e', second].sort()
+    );
   });
 
   it('a second clean call in the same boot does NOT erase the first call alarm', () => {
