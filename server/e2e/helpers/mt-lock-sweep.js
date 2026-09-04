@@ -34,6 +34,26 @@
  * The fixture book is exempt from rule 2 -- no human edits it, so an
  * unconditional sweep there loses nothing and preserves global-teardown's
  * documented cleanup of markers stranded by a previous ABORTED run.
+ *
+ * KNOWN LIMITS, both degrading to "keep", never to "delete":
+ *   - TWO OVERLAPPING RUNS on one box share this snapshot path, so each sees the
+ *     other's token and both fall back to fixture-only. Their strays survive.
+ *     Largely theoretical -- concurrent runs already collide on port 3456 and the
+ *     shared e2e DB -- and the degradation is the safe direction either way.
+ *   - A HARD-KILLED run leaves a real-book marker that the next run's snapshot
+ *     adopts as pre-existing. It is not deleted, because it is indistinguishable
+ *     from a genuine editorial lock on disk; global-setup WARNS about untracked
+ *     pre-existing real-book markers instead, so it is visible, not permanent.
+ *
+ * ORDERING, verified against the installed Playwright 1.62.1 rather than assumed
+ * (runner/index.js:6003 assembles [removeOutputDirs, plugins, globalTeardowns,
+ * globalSetups] and :5835 UNSHIFTS each task's teardown before awaiting its
+ * setup): global-setup's setup is awaited during the setup loop, and this
+ * module's teardown runs afterwards, so the token is always in place by then.
+ * If global-setup throws, its teardown is already registered and teardown still
+ * runs -- with no token, hence conservatively. Both hooks are called with
+ * exactly ONE argument, which is why the `overrides` test seam is a defaulted
+ * second parameter, and a non-function return from setup is ignored (:6077).
  */
 const fs = require('fs');
 const path = require('path');
