@@ -552,6 +552,27 @@ function resolveFigureRequest(req) {
 }
 
 /**
+ * The URL of the image route below, for one figure of THIS request's module.
+ *
+ * Built here rather than in the service because only the route knows
+ * `req.baseUrl` — the prefix app.use() mounted this router under. Hardcoding
+ * '/api/segment-editor' in the service would make the router un-remountable and
+ * would put a second copy of the mount path in the tree.
+ *
+ * Every interpolated segment is encoded: `basename` has already passed
+ * FIGURE_BASENAME_RE by the time a client follows this, but the URL is BUILT
+ * before any such check on the list route, and book/chapter/moduleId reach it
+ * from params.
+ */
+function figureImageUrl(req, basename) {
+  const { book, chapter, moduleId } = req.params;
+  return (
+    `${req.baseUrl}/${encodeURIComponent(book)}/${encodeURIComponent(chapter)}` +
+    `/${encodeURIComponent(moduleId)}/figures/${encodeURIComponent(basename)}/image`
+  );
+}
+
+/**
  * GET /:book/:chapter/:moduleId/figures
  * The module's TRANSLATED figures, each with its derived review state and the
  * advisory checks. Read chain mirrors the module GET above.
@@ -584,6 +605,7 @@ router.get(
         log.warn({ err }, 'Figure list: module segments unavailable; caption check stays silent');
       }
 
+      const bookDir = figureReview.bookDirFor(book);
       const figures = [];
       for (const f of figureReview.listModuleFigures(book, req.chapterNum, moduleId)) {
         const resolved = figureReview.resolveFigure(db, bookId, book, f.basename);
@@ -592,11 +614,73 @@ router.get(
           .map((id) => (id && isBySegment[id]) || '')
           .filter(Boolean)
           .join(' ');
-        figures.push(figureReview.buildFigurePayload(f.basename, resolved.fig, referenceText));
+        // The URL is offered only when the file is really there. A figure whose
+        // image has not been composed yet keeps its card — the TEXT is what is
+        // under review — but gets no <img>, rather than a link that 404s.
+        const imageUrl = figureReview.translatedImageFor(bookDir, f.basename)
+          ? figureImageUrl(req, f.basename)
+          : null;
+        figures.push(
+          figureReview.buildFigurePayload(f.basename, resolved.fig, referenceText, imageUrl)
+        );
       }
       res.json({ figures });
     } catch (err) {
       log.error({ err }, 'Error listing figures for review');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/figures/:basename/image
+ * The figure's TRANSLATED image, so the review card can show the label an
+ * editor is correcting the text of. Read chain mirrors the figure list above.
+ *
+ * 🔴 Deliberately NOT express.static over books/. The precedent at
+ * server/index.js (`app.use('/downloads', requireAuth, express.static(...))`)
+ * is a FIXED root; books/ is not, so a per-book static mount would put a URL
+ * segment into a filesystem path with only the router between it and
+ * 01-source/, which is licence-load-bearing and READ-ONLY. Going through
+ * resolveFigureRequest instead adds NO new traversal surface: it already
+ * enforces, in this order, the basename regex (before any I/O), the book
+ * lookup, MEMBERSHIP OF THIS MODULE, and the existence of a sidecar.
+ *
+ * ⚠️ res.sendFile(name, {root}) — never an absolute path. send() applies its
+ * dotfiles policy to the whole path it is given, which is how a dot ANYWHERE
+ * above the served file (a `.worktrees/` checkout, say) turns every response
+ * into a 404. This repo has been bitten by it twice in views.js.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/figures/:basename/image',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      const ctx = resolveFigureRequest(req);
+      if (ctx.error) return res.status(ctx.error.status).json(ctx.error.body);
+
+      const img = figureReview.translatedImageFor(
+        figureReview.bookDirFor(req.params.book),
+        ctx.basename
+      );
+      // Unmapped, or mapped to a file that is not on disk. Both are the normal
+      // state of a figure whose image has not been composed yet, so a 404 is
+      // the honest answer — not a 500, and not an empty 200.
+      if (!img) {
+        return res.status(404).json({ error: `No translated image for figure: ${ctx.basename}` });
+      }
+      res.sendFile(img.name, { root: img.root }, (err) => {
+        if (!err) return;
+        // The existence check above already passed, so reaching here means the
+        // file moved mid-request or the stream broke. Log it; do not try to
+        // write a body over a response that may already be streaming.
+        log.warn({ err, basename: ctx.basename }, 'Figure image could not be sent');
+      });
+    } catch (err) {
+      log.error({ err }, 'Error serving figure image');
       res.status(500).json({ error: err.message });
     }
   }

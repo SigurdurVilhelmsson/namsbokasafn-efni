@@ -179,6 +179,44 @@ test.describe('Figure review card', () => {
     await expect(input).toHaveValue('Verkstæði gullgerðarmanns');
   });
 
+  /**
+   * The card shows the figure it is about ([USER] ruling A, 2026-09-04).
+   *
+   * Read-only, so it is exempt from the one-figure-per-test rule above.
+   *
+   * The fixture maps exactly ONE of the three figures
+   * (books/__e2e-fixture__/media/image-mapping.json names ALCHEMIST only), which
+   * makes this a two-sided measurement in one test: the mapped figure must show
+   * an image and the two unmapped ones must show NOTHING. A card that rendered
+   * an <img> unconditionally, and a client that rendered none at all, each fail
+   * exactly one half — neither can pass both.
+   */
+  test('shows the translated figure, and only where one exists', async ({ page }) => {
+    await openFixtureModule(page, 'm68664');
+
+    const image = card(page, ALCHEMIST).locator('[data-figure-image]');
+    await expect(image).toHaveCount(1);
+
+    // The URL is the SERVER's — the client is forbidden from assembling one —
+    // so assert the whole path, not just that some src is present.
+    const src = await image.getAttribute('src');
+    expect(src).toBe(`/api/segment-editor/__e2e-fixture__/1/m68664/figures/${ALCHEMIST}/image`);
+
+    // ...and the route really serves the bytes. A 200 with a real SVG body is
+    // the only thing that distinguishes a working <img> from a broken one:
+    // Playwright reports a 404'd image as present and visible either way.
+    const img = await page.request.get(src);
+    expect(img.status()).toBe(200);
+    expect(await img.text()).toContain('<svg');
+
+    // The other half. These two have sidecars (their cards are here) but no
+    // mapping entry, so they legitimately have no picture — and must render no
+    // element rather than a broken one.
+    for (const basename of [CHEMWEB, SCIMETHOD]) {
+      await expect(card(page, basename).locator('[data-figure-image]')).toHaveCount(0);
+    }
+  });
+
   test('a decimal warning renders and clears when the block is corrected', async ({ page }) => {
     await openFixtureModule(page, 'm68664');
     const row = blockRow(page, ALCHEMIST, DECIMAL_BLOCK_KEY);

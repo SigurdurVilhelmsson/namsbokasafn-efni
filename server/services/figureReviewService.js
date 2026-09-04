@@ -24,6 +24,9 @@ const {
 const { decimalSeparatorWarnings, captionDivergence } = require(
   path.join(__dirname, '..', '..', 'tools', 'lib', 'figure-consistency.cjs')
 );
+const { loadImageBasenameMap } = require(
+  path.join(__dirname, '..', '..', 'tools', 'lib', 'image-basename-map.cjs')
+);
 
 /**
  * Every function below takes `db` explicitly so a test can inject a temp
@@ -61,6 +64,40 @@ const FIGURE_FLAG_KINDS = ['text', 'terminology', 'layout', 'other'];
  */
 function bookDirFor(bookSlug) {
   return path.join(segmentParser.BOOKS_DIR, bookSlug);
+}
+
+/**
+ * The translated image for an ENGLISH figure basename, or null.
+ *
+ * 🔴 Resolved FORWARD through books/<slug>/media/image-mapping.json, never by
+ * string-building a suffix. `_IS` is an enforceable value owned by
+ * tools/generate-image-mapping.js's DEFAULT_SUFFIX and pinned against the
+ * committed corpus by its own test; per CLAUDE.md it is read from its owner and
+ * never restated. This is the exact inverse of cnxml-render's
+ * sidecarBasenameForSrc, which walks the same map the other way.
+ *
+ * ⚠️ Returns {root, name} rather than a joined path so the caller can hand it
+ * to res.sendFile(name, {root}) — send() applies its dotfiles policy to the
+ * WHOLE path it is given, so an absolute path re-opens the trap that bit
+ * views.js twice (dd6c366b, dc94fc52). The confinement is a side effect worth
+ * having: `root` is derived here from the book dir, never from user input.
+ *
+ * ⚠️ NOT cached. cnxml-render caches this map per book dir, which is right for
+ * a one-shot CLI and wrong for a process that outlives a re-run of
+ * generate-image-mapping.js. The cost is bounded by the caller: only figures
+ * that already have a sidecar ever reach it, and there are three in the whole
+ * corpus today against ~1,500 plain OpenStax figures.
+ *
+ * @returns {{root:string, name:string}|null} null when the figure is unmapped
+ *   OR the mapped file is not on disk — a figure whose image has not been
+ *   composed yet legitimately has no image to show.
+ */
+function translatedImageFor(bookDir, basename) {
+  const entry = loadImageBasenameMap(bookDir).find((e) => e.originalImage === basename);
+  if (!entry) return null;
+  const root = path.join(bookDir, 'media');
+  if (!fs.existsSync(path.join(root, entry.outputName))) return null;
+  return { root, name: entry.outputName };
 }
 
 /** The numeric id the figure tables key on. null when the book is unregistered. */
@@ -300,12 +337,22 @@ function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
  *   available", for which captionDivergence returns [] — designed silence, NOT
  *   a false all-clear.
  */
-function buildFigurePayload(basename, fig, referenceText) {
+function buildFigurePayload(basename, fig, referenceText, imageUrl = null) {
   return {
     basename,
     effectiveState: fig.effectiveState,
     blocks: fig.blocks,
     note: fig.note || null,
+    // ⚠️ `?? null`, never a bare passthrough: JSON.stringify DROPS an undefined
+    // value, so the client would see no key at all rather than an explicit
+    // "this figure has no picture". Same falsy behaviour today; a silently
+    // different contract the first time someone reads the payload as a schema.
+    //
+    // The URL is BUILT BY THE ROUTE, which owns req.baseUrl and the params. The
+    // client must never assemble it — doing so would put DEFAULT_SUFFIX ('_IS')
+    // and this app's mount path into browser JS, which is the ruling this field
+    // exists to satisfy.
+    imageUrl: imageUrl ?? null,
     warnings: {
       decimal: decimalSeparatorWarnings(fig.blocks),
       caption: captionDivergence(fig.blocks, referenceText || ''),
@@ -318,6 +365,7 @@ module.exports = {
   FIGURE_FLAG_KINDS,
   getDb,
   bookDirFor,
+  translatedImageFor,
   lookupBookId,
   listModuleFigures,
   resolveFigure,
