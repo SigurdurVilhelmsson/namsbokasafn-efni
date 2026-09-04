@@ -89,6 +89,40 @@ existing per-module manifest; **no new artifact**.
 
 ### 4.2 Consumer — `tools/cnxml-render.js` and `tools/lib/cnxml-elements.js`
 
+> 🔴 **AMENDED 2026-09-03, MEASURED — §4.2's THREE-SITE ENUMERATION IS WRONG IN KIND, NOT
+> COUNT. Read this before the text below.** *(Amended, not rewritten: this is a frozen design
+> record. The original stands as evidence of what was believed.)*
+>
+> - **Site 1, `renderTerm`, has ZERO callers.** Exported dead code. Patching it changes no
+>   rendered byte, and a test importing it directly passes while asserting on an unreachable
+>   function. ⚠️ The naive grep returns 2 hits for `renderTerms`, **plural** — an unrelated
+>   browser function in `server/views/my-work.html`.
+> - **Site 3 is unreachable for the population it was chosen to serve: a glossary
+>   definition's `<term>` never becomes an id-less `<dfn>`.** `extractChapterGlossary` matches
+>   `/<term>([\s\S]*?)<\/term>/` and passes `termMatch[1]`, so the tag is stripped before
+>   `processInlineContent` ever sees it — **0 of 763** in-definition terms.
+> - **§8's "✅ ANSWERED" resolves a scoping question in a function that never runs.**
+>   `renderGlossary` is reached via `renderContent` matching `doc.rawContent` (i.e. `<content>`'s
+>   inner), but **`<glossary>` is a SIBLING of `<content>` in 109 of 109 modules** that have one,
+>   across both live books' READ-ONLY `01-source`. **0 are inside.** Not dead code — a synthetic
+>   nested glossary reaches it — but unexercised by the corpus.
+> - **The real second site is `renderCompiledGlossary`, and it emits `<dt>`, not `<dfn>`.** That
+>   is outside the `dfn.term` contract §4.5 promises and outside what vefur's `glossaryTerms.ts`
+>   walks. ▶ **This BLOCKS §4.7**: flipping `annotateEn` off would strip `(e. …)` from the
+>   published `<dt>` elements with nothing rendering in their place, until either vefur widens
+>   its walker or the `<dt>` wraps its term in a `<dfn>`.
+> - **§4.4's vintage guard cannot fire, and its premise is false.** Both sides hash the same
+>   immutable `01-source` file, so they agree across every extraction vintage (`sourceHash`
+>   byte-identical across the committed vintages of `m68700-manifest.json` while `segmentCount`
+>   moved 282 → 312). And extract does **not mint** `term-0000N` — those are OpenStax's own ids
+>   in `01-source`. ▶ The real hazard is a **wrong-MODULE** map, because `term-0000N` restarts in
+>   every module: a flat chapter merge is wrong on **31 of 79** ch03 `(module, key)` pairs, all
+>   31 carrying different English — a HIT with the wrong value, which no count can see.
+>
+> ▶ **The corrected design lives in the plan's replaced Tasks 3–6**
+> ([`2026-09-02-term-english-attribute.md`](../plans/2026-09-02-term-english-attribute.md)).
+> Per § *One source of truth*, that plan and the active register win over this frozen record.
+
 The map is threaded through the `context` object built at `cnxml-render.js:668`, which already
 carries `moduleId`. **Three call sites emit a `<dfn>` and all three change:**
 
@@ -215,6 +249,14 @@ m68700's current `--no-annotate-en` holding state simply the default.
   resolved by this design and must not be assumed to be.
 
 ## 8. Open questions for implementation
+
+> 🔴 **AMENDED 2026-09-03 — THE "✅ ANSWERED" BELOW ANSWERS A QUESTION ABOUT A FUNCTION THAT
+> NEVER RUNS.** `renderGlossary`'s `<dt>` path is unreachable on this corpus: `<glossary>` is a
+> **sibling** of `<content>` in **109 of 109** modules that have one, while `renderContent`
+> matches against `<content>`'s inner. The glossary population's real destination is
+> `renderCompiledGlossary`, which needs no `definitionId` context clone at all — `def.id` and
+> `def.moduleId` are already loop locals on the line that writes the `<dt>`. **A correct answer
+> to the wrong question.** Full detail in the §4.2 amendment above.
 
 - ~~Does the glossary renderer's `<dt>` path reach `processInlineContent` with the definition
   id available, or does it need a new parameter?~~ ✅ **ANSWERED 2026-09-02 — see §4.2 site 3.**

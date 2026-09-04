@@ -799,12 +799,40 @@ export function processInlineContent(content, context) {
   }
 
   // Convert terms
-  result = result.replace(/<term\s+id="([^"]*)"[^>]*>([\s\S]*?)<\/term>/g, (match, id, inner) => {
-    return `<dfn id="${id}" class="term">${processInlineContent(inner, context)}</dfn>`;
-  });
-  result = result.replace(/<term[^>]*>([\s\S]*?)<\/term>/g, (match, inner) => {
-    return `<dfn class="term">${processInlineContent(inner, context)}</dfn>`;
-  });
+  // ONE order-independent handler, attributes parsed once per tag — the same
+  // idiom the <link> and <media> handlers in this file already use.
+  //
+  // 🔴 THIS REPLACED A PAIR THAT REQUIRED `id` TO BE THE FIRST ATTRIBUTE
+  // (`/<term\s+id="([^"]*)"[^>]*>/`), so a class-first `<term>` fell through to
+  // the id-less branch and its id was SILENTLY DISCARDED. cnxml-extract reads the
+  // same attributes order-independently and writes `[[term:EN|term-000NN]]`, so
+  // render was throwing away the very key extract had produced — §C89's
+  // producer/consumer shape. Measured in READ-ONLY source: 81 class-first
+  // `<term id>` against 1,325 id-first.
+  //
+  // 🔴 TAG_ATTR_SPAN, never `[^>]*`: a bare `>` is LEGAL inside an XML attribute
+  // value, so `[^>]*` truncates mid-attribute — with an EMPTY capture, so the
+  // tool reports success and emits nothing (§C115).
+  result = result.replace(
+    new RegExp(`<term(\\s${TAG_ATTR_SPAN})?>([\\s\\S]*?)<\\/term>`, 'g'),
+    (match, attrString, inner) => {
+      const id = parseAttributes(attrString || '').id;
+      // data-en is vefur's term key. Read from THIS MODULE's map only: `term-0000N`
+      // is OpenStax's own id and RESTARTS in every module (m68700's term-00001 is
+      // "formula mass", m68702's is "percent composition"), so a chapter-wide map
+      // emits plausible wrong English that no count can see (§C82 L144). Measured:
+      // a flat ch03 merge would be wrong on 31 of 79 (module, key) pairs.
+      // Absent key ⇒ absent attribute. Degrade, never corrupt.
+      const map = (context && context.termEnglish) || null;
+      const en = id && map && typeof map[id] === 'string' ? map[id] : '';
+      const enAttr = en ? ` data-en="${escapeAttr(en)}"` : '';
+      // `id` is deliberately left UNESCAPED and parseAttributes returns the RAW
+      // value, so an id-bearing <term> emits byte-identically to before. That is
+      // what makes the "empty map ⇒ unchanged output" pin mean something.
+      const idAttr = id ? ` id="${id}"` : '';
+      return `<dfn${idAttr} class="term"${enAttr}>${processInlineContent(inner, context)}</dfn>`;
+    }
+  );
 
   // Convert links (R4-6): ONE order-independent handler, attributes parsed
   // once per tag so `<link window="new" url="…">` and `<link url="…">` (or any

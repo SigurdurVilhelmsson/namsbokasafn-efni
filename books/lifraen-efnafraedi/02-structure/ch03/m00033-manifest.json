@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00033",
-  "extractedAt": "2026-09-01T16:52:33.472Z",
+  "extractedAt": "2026-09-03T16:23:50.063Z",
   "sourceHash": "8a4552a576af5079",
   "segmentCount": 96,
   "segmentIds": [
@@ -143,5 +143,15 @@
     "section": [
       "sect-00001"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "alkanes",
+    "term-00002": "hydrocarbons",
+    "term-00003": "saturated",
+    "term-00004": "aliphatic",
+    "term-00005": "straight-chain alkanes",
+    "term-00006": "branched-chain alkanes",
+    "term-00007": "Isomers",
+    "term-00008": "constitutional isomers"
   }
 }

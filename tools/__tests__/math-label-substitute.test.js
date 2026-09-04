@@ -79,9 +79,21 @@ describe('resolveLabel precedence', () => {
     });
   });
   it('pending (empty) falls through to an approved glossary term', () => {
+    // FIXTURE CHANGED 2026-09-04, not the assertion: this used `dep`, which the
+    // [USER] short-label ruling now pins to English. The behaviour under test —
+    // an empty overlay value falls through to the glossary — is unchanged for
+    // labels longer than SHORT_LABEL_MAX, so the fixture moved rather than the test.
+    const longMap = new Map([['deposition', 'útfelling']]);
+    expect(
+      resolveLabel('deposition', { overlay: { deposition: '' }, glossaryMap: longMap })
+    ).toEqual({ value: 'útfelling', source: 'glossary' });
+  });
+  it('🔴 …but a SHORT pending label is no longer auto-upgraded by the glossary', () => {
+    // [USER] ruling 2026-09-04. `dep` is 3 chars and not allow-listed, so the
+    // glossary may not reach it — this is what stops `E°cell` becoming `Eker°`.
     expect(resolveLabel('dep', { overlay: { dep: '' }, glossaryMap })).toEqual({
-      value: 'útfelling',
-      source: 'glossary',
+      value: 'dep',
+      source: 'english',
     });
   });
   it('pending with no glossary term keeps English', () => {
@@ -183,10 +195,14 @@ describe('resolveLabel — case + whitespace hardening', () => {
 });
 
 describe('substituteMathLabels — entity-decoded matching (#5)', () => {
-  const resolve = buildResolver({ overlay: { all: 'allur' }, glossaryMap: new Map() });
+  // FIXTURE CHANGED 2026-09-04: this used `all` -> `allur`, and the [USER]
+  // short-label ruling now pins any <=4-char label to English. The behaviour
+  // under test is ENTITY PRESERVATION, not translation, so the fixture moved to a
+  // long label rather than the check being retired.
+  const resolve = buildResolver({ overlay: { solution: 'lausn' }, glossaryMap: new Map() });
   it('matches a label whose node carries a trailing entity-encoded NBSP, preserving the entity', () => {
-    expect(substituteMathLabels('<m:mtext>all&#x00A0;</m:mtext>', resolve)).toBe(
-      '<m:mtext>allur&#x00A0;</m:mtext>'
+    expect(substituteMathLabels('<m:mtext>solution&#x00A0;</m:mtext>', resolve)).toBe(
+      '<m:mtext>lausn&#x00A0;</m:mtext>'
     );
   });
   it('#4 whitespace-only overlay never blanks a label (pending → unchanged)', () => {
@@ -202,12 +218,16 @@ describe('reportMathLabels', () => {
     expect(r.unmapped).toContain('newlabel');
   });
   it('advises when a glossary fill exceeds 6 chars in a subscript slot', () => {
-    const overlay = { surr: '' };
-    const glossaryMap = new Map([['surr', 'umhverfi']]); // 8 chars
+    // FIXTURE CHANGED 2026-09-04: `surr` is now pinned to English by the [USER]
+    // short-label ruling, so it can never produce a glossary fill to advise about.
+    // The check itself — "a long Icelandic fill in a subscript is hard to read" —
+    // is unchanged, so the fixture moved to a long label.
+    const overlay = { surroundings: '' };
+    const glossaryMap = new Map([['surroundings', 'umhverfi']]); // 8 chars
     const resolve = buildResolver({ overlay, glossaryMap });
-    const cnxml = '<m:math><m:msub><m:mi>q</m:mi><m:mtext>surr</m:mtext></m:msub></m:math>';
+    const cnxml = '<m:math><m:msub><m:mi>q</m:mi><m:mtext>surroundings</m:mtext></m:msub></m:math>';
     const r = reportMathLabels(cnxml, resolve, { overlay });
-    expect(r.longSubscriptFills).toEqual([{ token: 'surr', value: 'umhverfi', cp: 8 }]);
+    expect(r.longSubscriptFills).toEqual([{ token: 'surroundings', value: 'umhverfi', cp: 8 }]);
   });
   it('does not advise for a glossary fill in a non-subscript (inline) slot', () => {
     const overlay = { surr: '' };

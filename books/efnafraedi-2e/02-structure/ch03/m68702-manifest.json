@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68702",
-  "extractedAt": "2026-09-01T16:51:41.283Z",
+  "extractedAt": "2026-09-03T16:23:49.782Z",
   "sourceHash": "73fd97029886fc95",
   "segmentCount": 141,
   "segmentIds": [
@@ -276,5 +276,11 @@
       "fs-idm151713456",
       "fs-idp39993248"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "percent composition",
+    "term-00002": "empirical formula mass",
+    "fs-idp78258880": "empirical formula mass",
+    "fs-idp78260032": "percent composition"
   }
 }

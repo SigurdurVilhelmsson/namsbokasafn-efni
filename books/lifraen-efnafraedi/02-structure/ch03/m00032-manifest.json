@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m00032",
-  "extractedAt": "2026-09-01T16:52:33.464Z",
+  "extractedAt": "2026-09-03T16:23:50.049Z",
   "sourceHash": "8832544389aedece",
   "segmentCount": 114,
   "segmentIds": [
@@ -173,5 +173,23 @@
       "sect-00003",
       "sect-00004"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "functional group",
+    "term-00005": "Alkyl halides",
+    "term-00006": "alcohols",
+    "term-00007": "ethers",
+    "term-00008": "amines",
+    "term-00009": "thiols",
+    "term-00010": "sulfides",
+    "term-00011": "disulfides",
+    "term-00012": "carbonyl group",
+    "term-00013": "Aldehydes",
+    "term-00014": "ketones",
+    "term-00015": "carboxylic acids",
+    "term-00016": "esters",
+    "term-00017": "thioesters",
+    "term-00018": "amides",
+    "term-00019": "acid chlorides"
   }
 }

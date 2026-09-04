@@ -2,6 +2,260 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
+## ⏩ RESUME — state as of 2026-09-03
+
+✅ **THE GATE RAN CLEAN — `19 failed | 5,776 passed | 46 skipped (5,841)`, 10 failed FILES, at
+`6e877f6d`, `TMPDIR` on `/`. NOTHING NEWLY RED from the branch's seven code commits.** Verified
+by NAME, not by count: 9 files carry the 19 assertions and `findTermsGolden` is the 10th failed
+FILE with **zero** failing assertions (45 skipped — §C118 ㉑, pre-existing). None of the three
+new test files appears in the failing set.
+- 🔴 **AND THE BY-NAME DIFF THREW ONE FALSE POSITIVE THAT EVERY FUTURE SESSION WILL ALSO HIT:
+  `test-results/c118-53-goldens-classification-2026-09-01.json` CAN NO LONGER COVER THE LIVE
+  FAILING SET.** 18 of 19 names match it; the 19th —
+  *"📌 PREMISE PIN — the clean pair is EXPECTED to be clean…"* — was **minted by `58b0031e`
+  (⑱ ruling ②, the A7 `it()` split) on 2026-09-02, the day AFTER that JSON was frozen.** A
+  split renames, and **a rename reads as one-cleared-plus-one-new**. ▶ Settled the right way:
+  the name is on `origin/main` at `:494`, `git diff --stat origin/main..HEAD` for that file is
+  **empty**, and `git log -S` names the commit. **Do not diff a live failing set against a
+  frozen artefact without checking whether a rename landed in between.**
+- ⚠️ **A SECOND TRAP, AND IT IS THE `npm test | tail` LESSON IN A NEW SHAPE: the background job
+  reported "exit code 0" while `npm test` exited 1.** The script's status is its **last
+  command's** — here a `grep` — not the suite's. The real code survived only because the script
+  echoed `NPM TEST EXIT=$?` on the line after. **Capture the exit code on the line after the
+  command, or the harness will tell you a red suite was green.**
+- ⚠️ Duration **1,191 s** with the box otherwise quiet. `fileParallelism: false` means 375 files
+  run sequentially, forked one process per file. Budget ~20 min, and do not read a quiet log as
+  a hang — vitest writes its detail in the end-of-run summary.
+
+🔴 **§C118 ㉑ HAS A SECOND INSTANCE, AND THIS ONE COMES WITH A MULTIPLIER: `conceptResolverIntegrity`'s
+merge-cycle test took 5,401 ms under a full suite against 104–133 ms alone — a ~45× blowup, cap 5,000 ms.**
+Measured 2026-09-04. ▶ **It appeared as a 20th failing test that was NOT in the branch baseline, and the
+by-NAME diff is the only reason it was caught as an artefact rather than merged as noise or chased as a
+regression** — a count of 20-vs-19 reads as either.
+- **Settled by isolation, not by argument:** 3 runs on a quiet box, **7/7 passed each time**, at
+  **133 / 122 / 104 ms**. The file, `server/lib/conceptResolver.js` and
+  `server/__tests__/helpers/freshMigratedDb.js` are all **byte-identical to `main`**, and the branch's
+  entire `server/` diff is 14 lines in `renderService.js`, which that test never loads.
+- ▶ **Same helper as `findTermsGolden` — `freshMigratedDb`, ~49 migrations — so this is ㉑'s mechanism,
+  not a new one.** ㉑ is unsurvivable (240 ms of work, 10 s hook cap, fails even quiet); this one has
+  **45× headroom and fails only under load.** ⚠️ **That makes it a LATENT CI flake**, since CI runs the
+  same helper on a shared runner. If it ever goes red in CI, this is the first hypothesis — check the
+  duration before the assertion.
+- ⚠️ **An `rclone` NOTICE is timestamped mid-run in the same log**, so something outside vitest was also
+  competing. **Read a timeout-shaped red against wall-clock load before reading it as a defect.**
+
+🔴 **[USER] RULING 2026-09-04 — A MATH ABBREVIATION OF ≤4 CHARACTERS KEEPS ITS ENGLISH BY
+DEFAULT; LOCALIZATION IS OPT-IN VIA ONE REPO-WIDE ALLOWLIST.** Shipped in `94ad869e`. **The rule
+and its allowlist are an ENFORCEABLE VALUE and live in `tools/lib/math-label-inventory.js`
+(`SHORT_LABEL_MAX`, `LOCALIZABLE_SHORT_LABELS`) plus their test — no list is restated here.**
+- **The trigger was reader-visible in published chemistry.**
+  `05-publication/mt-preview/chapters/17/17-key-terms.html` reads
+  `alkerspenna (Ekerfis°) (Eker°)` — `E°cell` shipped as `Eker°` and `E°sys` as `Ekerfis°`.
+  `cell` really does mean *ker*; **`E°cell` is international formula convention.** §C82 ③'s
+  wrong-REGISTER class, the same shape as `ln → náttúrlegur logri` ruining `S = k ln W`.
+- 🔴 **THE GUARD OUTRANKS THE CURATED OVERLAY, WHICH IS THE ONLY WAY IT COULD WORK** —
+  `cell → ker` *was* an overlay entry, a deliberate curation, so a rule gating only the glossary
+  would have changed nothing. ▶ **The escape hatch MOVED rather than vanished: from per-book
+  `math-label-map.json` to the one allowlist. A book can no longer localise a short symbol on its
+  own.** ⚠️ This narrows the CLAUDE.md statement that the overlay always outranks the symbol
+  guard — true still for labels of 5+ characters.
+- **Measured, counting unit = distinct math leaf token in READ-ONLY `01-source`, conservation as
+  the control: 1,972 distinct · 7 changed (119 occurrences) · 1,965 unchanged.** The seven are
+  `cell vap surr sys rev rxn fus`. The other short keeps (`con dep eff ele frz sub tet`) do not
+  move — their overlay values are empty, so they already rendered English.
+- ⚠️ **AN EMPTY OVERLAY VALUE IS NOT DELETION — I REPORTED THAT WRONG FIRST.** `resolveLabel`
+  requires a non-empty trimmed value, so an empty entry **falls through**: English, *unless the
+  glossary holds the word*, in which case the glossary translates it (`con → samtenging`,
+  verified by execution). That is the inventory tool's "pending, auto-upgrade from glossary" — a
+  latent localization, not content loss. The ruling now blocks that upgrade for short labels.
+- ⚠️ **`red` IS allow-listed, for the COLOUR.** All 13 corpus firings are `2HgO(s, rauður)`, red
+  mercuric oxide — **not** the `E_red` reduction subscript, which occurs as no math leaf here. If
+  one ever appears, `red` must leave the list: a flat map cannot hold both senses.
+- 📋 **LOGGED, NOT DONE:** `books/efnafraedi-2e/math-label-map.json` still carries the 7 now-inert
+  translations. Deliberately **not** self-mapped — the allowlist is the single owner and
+  restating the rule in per-book data is what § One source of truth forbids — but a reader of
+  that file now sees a translation that does not happen. **Trigger: the next edit to
+  `inventory-math-labels.js --validate`, which should surface them.**
+- 🔎 **AND THE QUESTION IT RAISED, ANSWERED BY MEASUREMENT: THERE IS NO EDITOR SURFACE FOR MATH,
+  AND ONE WOULD NOT HAVE CAUGHT THIS.** A segment carries only `[[MATH:n]]`; the MathML lives in
+  `02-structure/*-equations.json` (67 equations in `m68823` alone). `marker-highlight.js`
+  classifies `[[MATH:n]]` as an **atom** alongside `[[MEDIA:n]]`/`[[TABLE:…]]`, and **no editor
+  surface renders math at all** — a grep of `server/public/js/` + `server/views/` for
+  `MathJax|mathml|<m:math|renderMathML` returns **0**. ▶ **More decisive: the substitution happens
+  at INJECT over `01-source`, so it never passes through a segment** — the editor is not merely
+  blind to it, it is not on that code path.
+
+- 📌 **DEFERRED — A MATH REVIEW/COMMENT SURFACE IN THE EDITOR. [USER]-requested 2026-09-04.**
+  🔴 **TRIGGER: the figure-text review sidecar landing on `main`.** Status of that work has ONE
+  owner and it is not this file — see `experiments/figure-text-translation/REGISTER.md`; check it
+  there rather than trusting any date here. **Do not start before then**, and the reason is the
+  point of the deferral: it is the *same mechanism*, and building it first produces two.
+  - **What it would be**, by analogy with the figure work: a **sidecar** file recording per-equation
+    editorial comments, a **review card** in the segment editor showing the equation rendered, and
+    **CLI re-creation** from the sidecar. `tools/lib/mathjax-render.js` already exists, so showing
+    the editor the actual equation is not the hard part.
+  - ⚠️ **SCOPE IT HONESTLY WHEN THE TIME COMES: this would NOT have caught `Eker°`.** That value
+    is produced at inject from `math-label-map.json` + the glossary, over READ-ONLY `01-source`,
+    and never enters a segment. A review surface addresses *"this equation reads wrong to a
+    chemist"*; it does **not** address label substitution, which is now guarded in code
+    (`SHORT_LABEL_MAX` / `LOCALIZABLE_SHORT_LABELS`). **Two different problems — do not let the
+    UX absorb the guard's job.**
+  - ▶ **The cheap half is already possible without any UX**: `inventory-math-labels.js --pending`
+    and `--validate` already report per-book label state. A surfacing line for now-inert overlay
+    entries (the `cell → ker` residue) is the smallest useful step and needs no editor work.
+
+✅ **TASKS 1–5 AND 7 OF THE `data-en` UNIT ARE DONE ON `feat/term-english-data-attribute`
+(19 commits, nothing pushed). ONLY TASK 6 REMAINS AND IT IS BLOCKED ON A [USER]/[LEAD]
+PUBLISHING DECISION, NOT ON ENGINEERING.**
+- **Gate, re-run after Tasks 4–5:** `19 failed | 5,802 passed | 46 skipped (5,867)`, 10 failed
+  FILES, `npm test` exit 1. **Failing set IDENTICAL to the branch baseline by NAME, both
+  directions — 0 newly red, 0 cleared — with a planted-row control proving the comparator
+  fires.**
+- ⚠️ **`books/` IS TOUCHED IN EXACTLY ONE PLACE: the 13 regenerated `02-structure/ch03`
+  manifests.** Nothing in `01-source` (licence-locked), nothing in `02-for-mt` (the tree the
+  paid MT reads), nothing in `05-publication`. Verified with
+  `git diff --name-only origin/main..HEAD -- books/`.
+- ✅ **Reach, measured at the RENDERED OUTPUT with a control:** ch03 `<dfn>` **20/20** chemistry
+  and **39/39** organic carry `data-en`; with no map supplied the same render gives **20 `<dfn>`
+  and 0 `data-en`**, so the 100% is map-driven rather than stamped.
+- 🔴 **A THIRD PRE-EXISTING DEFECT WAS FOUND AND FIXED ON ITS OWN COMMIT (`700b1800`), AND IT IS
+  DOM-VISIBLE: render required `id` to be a `<term>`'s FIRST attribute and silently discarded it
+  otherwise**, while extract reads attributes order-independently and writes that very key —
+  §C89's producer/consumer shape. Corpus census: **81 class-first `<term id>` against 1,325
+  id-first**. Before/after over both live books, counting unit = rendered `<dfn>` element:
+  **withId 810 → 891, idLess 83 → 2, conservation 893 UNCHANGED** — the fix MOVED elements
+  between buckets rather than creating any. Three byte-exact goldens regenerated; the diff was
+  verified programmatically (6 lines, all identical once `<dfn>` ids are stripped from BOTH
+  sides, 0 other changes). ▶ **81 published `<dfn>` gain an `id=`, so any vefur selector keyed on
+  `dfn[id]` presence shifts** — recorded in the handover doc.
+- 🔴 **TASK 6 STEP 6 IS THE ONLY `books/` WRITE LEFT AND IT IS A PUBLISHING DECISION.** Verified
+  rather than repeated: `m68700`'s committed CNXML carries **0** `(e. …)` glosses (the
+  `--no-annotate-en` holding state) while its ch03 siblings carry 4, 18 and 10, and its manifest
+  holds **8 keys (4 inline + 4 definition)**. ▶ **Re-rendering chemistry ch03 today trades 8
+  visible glosses for 8 `data-en` attributes that stay invisible until vefur ships its half.**
+- 📋 **The handover contract is written** →
+  [`docs/handoff/2026-09-02-vefur-term-english-contract.md`](../handoff/2026-09-02-vefur-term-english-contract.md).
+  🔴 **It names a cross-repo decision nobody has taken: efni emits `data-en` on TWO shapes —
+  `<dfn>` on section pages and `<dt>` on `*-key-terms.html` — and vefur's `glossaryTerms.ts`
+  walks `dfn.term` only, so the `<dt>` half has NO CONSUMER.** Retiring `annotateInlineTerms`
+  (spec §4.7, the cause of ⑰) is blocked until vefur widens its walker or efni wraps the `<dt>`'s
+  term in a `<dfn>`.
+- ⚠️ **The frozen spec is amended in place under §4.2 and §8** — its three-site enumeration was
+  wrong in KIND, and §8's "✅ ANSWERED" resolves scoping inside `renderGlossary`, which **never
+  runs**: `<glossary>` is a SIBLING of `<content>` in **109 of 109** modules that have one, 0
+  inside. Unexercised is not the same as dead — a synthetic nested glossary does reach it, so it
+  was left alone.
+
+*(historical framing follows)* 🔴 **THE `data-en` UNIT WAS IN FLIGHT: TASKS 3–6 WERE MEASURED
+UNSAFE AS WRITTEN AND WERE REPLACED WHOLESALE.** This supersedes the
+line-61 RESUME's *"THE NEXT ACTION IS THE TWO RULINGS ⑱ COULD NOT TAKE"* — **both rulings were
+already merged** (`5a01f2b7`, `58b0031e`, confirmed by `git merge-base --is-ancestor`), so that
+sentence had been stale since 2026-09-02. ⚠️ **This is the third time a "next action" line in
+this file has outlived the commits that discharged it.** The unit is §C118 ⑰'s designed
+successor: [spec](../superpowers/specs/2026-09-01-term-english-attribute-design.md) ·
+[plan](../superpowers/plans/2026-09-02-term-english-attribute.md), whose 🔴 AMENDMENTS block now
+owns the corrections and **must be read before any task**.
+- ✅ **SHIPPED:** `b0abe8d8` term-text primitives · `cd615b9c` the inject rewire · `92f1ab81`
+  `termEnglish` in the manifest + 13 regenerated ch03 manifests · `6e877f6d`/`44a2ffe5` the plan
+  amendments · `fb64e653` a CLAUDE.md durable rule that had inverted.
+- 🔴 **THE PLAN'S OWN TASK 1 WOULD HAVE CORRUPTED CHEMISTRY NOTATION, AND THE INVARIANT WAS
+  ALREADY WRITTEN IN THE CODE IT WAS EDITING.** `stripTermMarkersToText` folds case **before**
+  substituting MathML, so symbols escape the fold; the prescribed rewire substitutes first.
+  Measured with the real equations maps: **6 real inputs** — `ΔHf° → δhf°`, `ΔGf° → δgf°`,
+  `Eker° → eker°`. Both call sites **write** the value into output CNXML as `(e. …)`, and the
+  affected glosses are in **published HTML today**
+  (`05-publication/mt-preview/chapters/05/5-key-terms.html`, `.../17/17-key-terms.html`).
+  `stripTermMarkersToText`'s own docstring names it *"the m68852 invariant"* and spells out
+  *"ΔHf° must not become δhf°"*. ▶ **A COMMENT STATING A RULE IS NOT THE RULE.** Fixed by
+  splitting the lib into three primitives; verified **by value over 82,979 real call-site inputs,
+  0 divergences**, with a control that catches the prescribed version, and the guards proven
+  non-vacuous by mutation (4 red / 20 green — the 20 are the control).
+- ⚠️ **AND THE PLAN'S OWN SAFETY NET WOULD HAVE SHIPPED IT.** Its Step 6 acceptance is a red
+  COUNT; the whitespace half of the same change breaks three *committed* assertions, so the
+  suite goes red for the whitespace reason only, and Step 6's remedy text points the fixer at
+  whitespace. Repair that and Step 6 goes green with `δhf°` shipped — **no existing test covered
+  the case invariant, because its MathML fixture is the already-lowercase `x`.**
+- 🔴 **`60 failed / 18 files` WAS NEVER A TEST COUNT.** The plan's own cited source,
+  `test-results/c118-53-goldens-classification-2026-09-01.json`, reads
+  `totals: {files: 16, findings: 60}` — **60 counts agent FINDINGS over 16 files.** A transposed
+  counting unit, then used as a gate. The live floor is this file's own 19 assertions / 10 files
+  (+ `findTermsGolden` as an 11th red FILE with zero failing assertions).
+- 🔴 **TASKS 3–6 ARE BLOCKED ON A RE-DERIVATION, NOT A TWEAK — the consumer architecture is
+  wrong.** Confirmed by execution: `renderTerm` (`tools/lib/cnxml-elements.js`) has **zero
+  callers and zero tests** — patching it changes no rendered byte; a glossary definition's
+  `<term>` **never reaches the id-less `<dfn>` branch**, so Task 4 as written annotates **0 of
+  763**; there is a **fourth site the plan never names, `renderCompiledGlossary`**, which builds
+  the key-terms page; and Task 5's vintage guard compares **two hashes of the same immutable
+  file** (across 14 committed vintages of one manifest, `sourceHash` is byte-identical while
+  `segmentCount` moves 282 → 312).
+- ✅ **THE PATH-RESOLUTION QUESTION IS SETTLED, AND THE ANSWER IS AN EXISTING IDIOM: pass
+  `termEnglish` through `options`, never read it from a `BOOKS_DIR`-relative path inside
+  render.** `BOOKS_DIR` is a bare relative literal set only in `main()`, and
+  `renderService.renderModule` never calls `main()` — but the file **already solved this for
+  `embedMap`**, with a comment naming the server-preview case and *"future callers"*.
+  `renderService.js` resolves against an intrinsic `PROJECT_ROOT`. ⚠️ **Severity, measured with
+  the figure-text session: the in-process path is the editor PREVIEW, not the publisher** —
+  `renderModule` returns `{html}` and writes nothing — so published output is correct and this
+  is a UX gap, not a reader defect.
+- 🔎 **LATENT, LOGGED, NOT FIXED:** 8 of the 10 `render-golden` fixtures carry `<dfn>` (98
+  occurrences). No golden breaks today **by luck** — the only ch03 golden, `m68699`, has
+  `dfn=0` — but a full re-extract populates `termEnglish` for every chapter and turns all 8 red
+  at once. The plan has no step for it.
+
+✅ **2026-09-03 ~15:52Z — THE CRONTAB HAS BEEN RE-PASTED ON PROD** ([USER] reports it done). Both DB
+cron lines should now carry `>> ${DEPLOY_PATH}/pipeline-output/<script>.log 2>&1`, so `backup-db.sh`
+failures stop going to cron's local mail, which nobody reads.
+🔴 **ONE PROOF IS DEFERRED AND CANNOT BE PULLED FORWARD — AND THE TWO CLAIMS ARE DIFFERENT.**
+`crontab -l` NOW proves the paste **landed**; only a run proves the redirect **works**. `backup-db.log`
+should exist and be non-empty after the **18:30Z** tick (`30 */6 * * *`). ⚠️ **`verify-db-backup.log`
+not until 1 Oct** (`0 4 1 * *`, monthly) — **its absence proves nothing before then**, so do not read
+that as a failed paste.
+⚠️ **The paste was safe to prescribe, and that was CHECKED rather than assumed:**
+`scripts/install-cron.sh:11` is an **unquoted** `cat <<EOF`, so `${DEPLOY_PATH}` and
+`${BACKUP_REMOTE:-secret:}` expand to literals before printing (verified by running it: full paths,
+`BACKUP_REMOTE=secret:` intact, matching prod's existing line). ▶ **A *quoted* heredoc would have
+emitted `${DEPLOY_PATH}` verbatim into the crontab** — a path that never resolves, failing every tick,
+with the redirect target equally broken so output returns to mail. **Re-check the quoting if that
+script is ever edited.**
+▶ **DURABLE, and it is why this sat open at all: `deploy.sh` pulls CODE, and a crontab is NOT code.**
+Nothing in the automated path can ever close a cron change → [[deploy-infrastructure]].
+
+✅ **EVERYTHING ELSE FROM 2026-09-02/03 IS MERGED AND DEPLOYED.** `main` = `1a0145d1`; prod pulled it.
+- `7e42bf0c` (#431) §C118 full-corpus loop — [USER]-ruled to land RED · deployed, FAST-FORWARD, healthy
+- `4e2aed09` (#432) both moderate advisories closed inside ranges that already admitted the fix
+- `1a0145d1` (#433) off-box threshold **derived** from the cron (26→14), backup logging, **CI now lints `server/`**
+- vefur `31c22f54` (#222) three organic ch03 redirects — **MERGED TO vefur `main`, NOT DEPLOYED**
+🔴 **CORRECTED SAME DAY — I FIRST WROTE "live" HERE, AND vefur's CI CANNOT TELL YOU THAT.**
+vefur's CLAUDE.md § Deployment: **"CI does not deploy."** `ci.yml` went green on `main` at 13:16Z
+(run `33760133797`) and that is ALL it proves. `deploy.yml` has **no successful run since
+2026-06-17, which FAILED** — yet vefur's own notes record a deploy on 2026-08-19, so the real route
+is the **manual rsync fallback, which leaves NO RUN RECORD ANYWHERE**. ▶ **A green CI on vefur is
+not evidence of a deploy, and the absence of a deploy run is not evidence of no deploy.** Neither
+direction is decidable from the Actions tab; ask the operator or probe the live bytes.
+⚠️ **Probing cannot settle THIS one either, and that is a property of the design, not a gap:**
+`load` gates each entry on `exactSectionExists(to)`, so an undeployed table and a deployed-but-inert
+one are **byte-identical from outside** until the target publishes. **Pair the null with a control
+that CAN fire, or do not run the probe** — there is no active entry to serve as one (the physics
+block is dormant too).
+✅ **No action follows from this, and that is the point of recording it:** the vefur publish run
+(sync → build → deploy) carries the redirect code and the new pages in ONE upload, so the
+no-404-window ordering still holds. **The error would only have bitten if someone had concluded
+the redirects were already serving and skipped the vefur deploy.**
+🔴 **`main` IS RED BY DESIGN AT 19 ASSERTIONS / 10 FILES, AND THAT IS THE FLOOR** — 15 REGRESSION +
+2 BLOCKED + 2 QUIET, clearing only on re-MT. **Diff the SET by name, never the count**, strip vitest's
+per-run `NNms` first, and check BOTH directions: a `beforeAll` timeout converts a file's assertions to
+SKIPS, so a real failure can go MISSING rather than appear. `findTermsGolden` is an 11th red FILE with
+**zero** failing assertions (§C118 ㉑, pre-existing on `main`, undiagnosed, reproduced on two trees).
+⚠️ **TWO FULL VITEST SUITES ON THIS BOX PUSH A ~3 s FILE TO 141 s AND MANUFACTURE TIMEOUT-SHAPED REDS.**
+A run showing 23 was four such artefacts; isolated they pass 24/24, independently confirmed 24/24 by the
+sister session. **Detector must discriminate on the EXECUTABLE, not the command line** —
+`pgrep -f vitest` matches the waiting script itself and deadlocks; use `comm=node`.
+📌 **Docs-only commits are BATCHED and UNPUSHED on `docs/claude-md-stale-staleness-default`**, per the
+standing [USER] preference that a register/CLAUDE.md commit rides with the next code branch: `da6d5e8d`
+(CLAUDE.md carried `default 26` for hours after it became 14 — both defaults removed in favour of a pointer
+to the owning libs) plus this RESUME update. ⚠️ **Not pushing loses nothing for a session on THIS box, which
+reads the working tree** — but a fresh clone would not see either. Push them with the next code PR.
+
 ## ⏩ RESUME — state as of 2026-09-02 (**📒 READ THE §C118 DEFERRED WORK LEDGER FIRST — it is the second bullet below and it owns EVERY open item from the QC campaign, each with its measurement and its trigger.** It exists because an audit found the entire 53-golden classification lived only in a `test-results/` JSON this register never cited.) 🔴 **THE FREE TIER CAUGHT A DEFECT THAT WOULD HAVE BEEN BOUGHT, HOURS BEFORE THE RUN: THE PAID MT LEG WAS EATING EVERY `[[span:]]` MARKER AND WRITING THE CSS CLASS NAME INTO THE ICELANDIC AS PROSE.** Fixed in `84276d62`; measured reach is now `31 = 31 = 31 = 31` with **0** leaks, against **0 surviving the MT** before. ▶ **THIS IS THE SPEND RULE PAYING FOR ITSELF — record it as the precedent next time someone proposes buying first and checking after.** ✅ **THE PAID RUN IS DONE (`eeac7731`), [USER]-authorised, ~1,678 ISK ACTUAL against ~3,250 authorised — 16 units, 0 failed, and the span fix HELD against the real model (31 sent → 31 returned, 0 class names leaked).** The re-extract landed first (`96106c86`), and T0–T3 were green with a working positive control on each — chemistry's `--control` was `CONTROL VOID` until `2e65ad2d`, so its clean T3 had meant nothing. 🔴 **⑬ AND ⑭ ARE DONE (2026-09-02) — THE TWO SPAN-ENUMERATION GATES ON THE NEXT PAID CHAPTER ARE DISCHARGED, MEASURED, AND MUTATION-VERIFIED.** See the ⑬/⑭ bullet in the ledger for the numbers. 🔴 **ONE REGISTER FIGURE WAS FALSIFIED IN THE DOING: ⑬'s noise is 286 occurrences in 98 of 342 organic modules, NOT ~184 modules** — 184 is how many modules CONTAIN a span, and the probe walks only direct children of TEXT_CONTAINERS, so it never sees the 559 under `<emphasis>` or 214 under `<entry>`. ✅ **⑱'s MECHANICAL + DATA-PIN UNIT IS DONE (2026-09-02): 42 → 20 red, 22 cleared in eight commits, 0 newly red — verified by SET-EQUALITY on test names with a controlled comparator, never by count.** ▶ **THE NEXT ACTION IS THE TWO RULINGS ⑱ COULD NOT TAKE** — the NOT-SAFE QUIET in `remt-checks-extract` (a refutation EXECUTED and disagrees with this register) and the A7 `it()` split in `remt-checks-mt-gating` (its red line BLOCKS live assertions). Both are in the ⑱ ledger bullet. ⚠️ **THIS BRANCH NOW CARRIES TWO SESSIONS' WORK INTERLEAVED: two `docs(figure-text)` commits from the figure-text session sit BETWEEN the ⑬/⑭ commit and its review fixes.** Nothing was lost and nothing conflicted (disjoint files), but whoever writes the PR #431 description must not assume one author per contiguous commit range — **count and attribute with `git log --oneline main..HEAD`, never by eye.** **⑱'s ~25 golden updates are DONE — 22 cleared, and the ~17 floor is reached at 20 (the extra 3 are the QUIETs this register itself ruled NOT-SAFE).** *(historical framing follows)* **Then: ⑱'s remaining ~25 golden updates** (18 MECHANICAL + 7 data-commit pins, deliberately left for fresh context — interleaved with untouchable REGRESSION entries and carrying line-shift ordering constraints) **and ⑳'s remaining 4** (6 dropped bolds in retired orverufraedi + the e2e fixture; **do not repair them casually — they are the ⑲ gate's only remaining natural must-trips**). *(SUPERSEDED: this line read "the next action is ⑯ and ⑰". **⑯ IS DONE AND PAID-VERIFIED** — see the LATEST bullet. **⑰ is superseded by the `data-en` design** and is a chemistry-ch03-only holding state, not a gate.)* Both are measured, causally proven and logged below. ✅ **⑯ IS DISCHARGED — probe 7/7, re-buy 36 of 36, and inject now WRITES m00038; ⑰ is still unfixed.** 🔴 **BUT ORGANIC ch03 IS STILL NOT PUBLISHABLE: the same paid run invented 29 `[[b:]]` markers across two paragraphs (⑲) — the blocker MOVED, it did not clear.** ✅ **⑲ NOW HAS A GATE (`f18181c4`): a per-module bracket delta holds its chapter back and forces a non-zero exit, so a bad roll can no longer ship. 🔴 AND MEASURING ITS BASE RATE SURFACED ⑳ — SIX REAL DEFECTS IN OTHER CHAPTERS NOBODY HAD LOOKED AT.** 🔴 **⑯ AS ORIGINALLY FOUND MEANT ORGANIC ch03 WAS NOT PUBLISHABLE** — inject refused m00038, its key-terms index, so ⑯ is a **precondition on publishing that chapter**, not a deferral against some later one — **and ⑰ leaves m68700 in a `--no-annotate-en` holding state that the DOCUMENTED inject command does not reproduce (the exact command is in ⑰; re-apply it after any chemistry ch03 inject).** ⚠️ **THE RUN REQUIRES `--force` — a bare `--dry-run` reports `To translate: 0 / Already done: 6`**, because `mtRunDecision` skips on FILE EXISTENCE, not a content hash; a bare paid run translates nothing and exits 0. **Nothing is published** — reaching readers needs a vefur sync, not run. ✅ **§C118 STEP 2 REMAINS DONE: three defects fixed — the `<span>` drop and the numeric-entity double-escape, both READER-VISIBLE, plus the document-only `<link>` strip, CONTENT LOSS — and two logged as not-reader-visible.** 🔴 **FULL SUITE AFTER THE PAID RUN WAS 60 failed / 5,663 passed / 18 red files — THE SET MOVED, AND THAT WAS EXPECTED, MEASURED AND ITEMISED AS ⑱ BELOW.** ✅ **SUPERSEDED 2026-09-02 — IT IS NOW `20 failed | 5,737 passed | 46 skipped (5,803)`, 11 red files, at `4034562a`.** ⚠️ **11 red FILES but only 10 carry a failing assertion** — `findTermsGolden.test.js` dies in `beforeAll` and reports 45 skipped (§C118 ㉑, pre-existing on `main`). **A count of failing ASSERTIONS and a count of failing FILES answer different questions.** It was **53 / 16** and exactly the frozen classification through every CODE commit; the **DATA** commit (`eeac7731`) then flipped 7 premise pins in 2 further files. **0 newly green.** ⚠️ **Do not quote 53/16 after this point** — and note the shape: **every code change this session held the set; only buying new content moved it.** ✅ **The free QC tier is BUILT AND EXERCISED: T0 source-vs-OpenStax (0 missing), T2 `tools/source-roundtrip-check.js` (a VALUE comparison — it found all five defects), T3 `tools/render-oracle-check.js` (id-matched render oracle, `--control` now working on BOTH books).** ⚠️ **RUN T2 WITH `--verbose`: it caps its detail listing at 4 per category per module (`cap = verbose ? 1e9 : 4`), so a non-verbose read is a TRUNCATED view that looks complete** — 28 of 40 chemistry diff lines were shown, and "28 of 28 are benign" was very nearly recorded as a finding. 🔴 **`02-mt-output` / `03-translated` / `05-publication` MAY NOT BE CITED AS A CORRECTNESS REFERENCE — 94 of 149 chemistry modules cannot be re-injected while `translation-errors.json` reports `green: true` over their stale output.** ✅ **MERGED AND DEPLOYED 2026-09-03 — `7e42bf0c` on `main`, [USER]-ruled to land RED.** A **merge commit, not a squash**, deliberately: this register cites the branch's individual SHAs throughout and a squash would break every one; prior campaign branches (#395–#398) landed the same way. **Deploy done by [USER] the same hour: `Updating 5895a25b..7e42bf0c` FAST-FORWARD, server healthy after 2s, `Health: ok`.** 🟢 **THE PREDICTED CONTENT-BACKUP STRANDING DID NOT MATERIALISE, AND THE REASON IS CHECKABLE RATHER THAN LUCKY: the pull was a FAST-FORWARD, which means prod held NO local commits to strand.** ▶ **So the durable rule needs its precondition stated: a dev push to `main` strands the backup only when the cron has UNPUSHED CONTENT at that moment.** Prod was clean here, so 1,905 `books/` files landed with no rejected tick. **Do not read this as the rule being wrong** — read it as the rule being conditional, and deploy promptly anyway. ⚠️ **ONE THING THE DEPLOY PRINTED THAT NOBODY HAS CHECKED: `BACKUP_REMOTE not set — skipping off-box upload (local backup only)`, and `/api/health` still said `ok`.** The 52 MB `sessions.db` is every editorial edit and it is NOT leaving the box. Either the off-box staleness check stands down when `BACKUP_REMOTE` is unset — in which case a green health readout is silent about the one backup that survives a disk loss — or it is fresh for another reason. 🔴 **RESOLVED 2026-09-03, AND THE CONCERN WAS UNFOUNDED — I REASONED FROM ONE CALLER'S OUTPUT TO THE WHOLE SYSTEM.** `backup-db.sh` has **two** callers. `deploy.sh` runs it from an interactive shell where `BACKUP_REMOTE` is unset, so it correctly skips the upload and says so — that backup is a LOCAL safety copy taken before the pull. The **cron** (`30 */6 * * *`, see `scripts/install-cron.sh`) sets `BACKUP_REMOTE` **inline on the crontab line** and does the real off-box upload. [USER] confirmed from the Akamai/Linode bucket: a series of 51.2 MB objects, latest 18:30 on 2026-09-02. ✅ **AND `Health: ok` IS NOT VACUOUS HERE — THE DESIGN IS BETTER THAN THE CONCERN ASSUMED.** The heartbeat `pipeline-output/backups/.last-offbox-backup` is written **only after a successful `rclone copyto`**: the skip path returns before it and the failure path carries the comment *"heartbeat NOT written"*. **So a deploy can never falsely refresh it, and a failed upload can never look fresh.** The numbers agree independently: 18:30 → ~14.7 h at the time of reading, against `OFFBOX_BACKUP_STALE_HOURS` default **26** (`server/index.js:322`). 51.2 MB also reconciles with the deploy's local `52M` — same DB, `du -h` rounding. ▶ **THE LESSON, AND IT IS THE GENERAL ONE: BEFORE INFERRING A CAPABILITY IS ABSENT FROM A SCRIPT'S OUTPUT, ASK WHO ELSE CALLS THAT SCRIPT.** One grep of `install-cron.sh` answered it. This is the same shape as the vefur redirect error earlier the same day — concluding a system lacks something because the artefact in front of me did not do it. ✅ **AND THE 'TWO MISSED TICKS' I THEN SUSPECTED WAS ALSO WRONG — REFUTED BY THE HEARTBEAT, WHICH IS THE AUTHORITATIVE RECORD.** [USER] ran the checks on prod: local snapshots exist for **both** 00:30 and 06:30 on 2026-09-03, syslog shows cron firing at both, and `.last-offbox-backup` reads **`2026-09-03T06:30:03Z`**. That file is written ONLY after a successful `rclone copyto`, so it is proof an upload COMPLETED, not that one was attempted. **Nothing was ever missed.** 🔴 **THE BUCKET LISTING WAS THE UNRELIABLE INSTRUMENT, AND THE REASON IS STRUCTURAL: `BACKUP_REMOTE=secret:` IS AN RCLONE *CRYPT* REMOTE** (`backup-db.sh:59` — *"client-side-encrypted (crypt) remote, so plaintext never leaves this box"*). **Crypt encrypts FILENAMES as well as contents**, so the Akamai console shows opaque object names that cannot be mapped to backup timestamps by eye. ▶ **Read the remote with `rclone lsl secret:` / `rclone lsf secret: --files-only` — the idiom `verify-db-backup.sh:19` already uses — never with the provider's object browser.** ▶ **THREE WRONG READINGS IN ONE THREAD, ALL THE SAME SHAPE: an artefact was consulted that structurally could not answer the question** — a deploy's output (one caller of two), then a console listing of encrypted objects. **The heartbeat and the local snapshot names could answer it, and did.** 🔴 **`main` IS NOW RED BY DESIGN: 19 failing assertions across 10 files, plus `findTermsGolden` as an 11th red FILE with no failing assertion (§C118 ㉑, pre-existing).** 15 REGRESSION + 2 BLOCKED + 2 QUIET; they clear on re-MT, never by a golden edit. **Anyone reading a red suite from here should diff the SET by name against that baseline, not the count** — and strip vitest's per-run `NNms` suffix first, or the diff invents false positives. ⚠️ **One red WAS fixed en route and it was not a golden:** `Documentation Check` failed because `docs/_generated/tools.md` is generated and three new tools landed without regenerating it (47 → 50). **A suite red for 19 reasons is exactly how a trivially-fixable 20th hides.** *(historical, from the pre-merge state:)* ⚠️ **NOTHING IS MERGED — but the work is now OFF THE MACHINE: pushed 2026-09-02 as DRAFT PR [#431](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/431).** Draft on purpose: the branch is red on 60 goldens while `main` is green, and this register's own rule is that such a merge needs the golden work **or an explicit [LEAD] ruling that it may land red**. **That ruling has NOT been made.** ▶ **Pushing a FEATURE branch is safe and was the durability call** — ~1,678 ISK of paid MT output existed only on one disk — **but do NOT push to `main` casually: a push to `main` strands prod's content backup until the next deploy, and a docs-only commit is enough.** **Count the branch's commits with `git log --oneline main..HEAD` — this file will not carry the number, which has already gone stale twice.** ⚠️ Actions ⓪ and ② remain merged and deployed (`462a00a4` #424 · `5895a25b` #425); §C116 shipped in #424; §C117 is an INVENTORY ONLY.  *(Heading replaced in the SAME commit as the bullet below it — this file's standing fix after five prior drifts. ⚠️ An earlier attempt was written with an unquoted shell heredoc and every backtick-quoted term was eaten by command substitution; this one and the last were written with an editor tool, no shell involved at all — which is the durable fix, not "remember to quote the heredoc".)*
 
 **Read this, then §C36 (Part A · B0 · Part B) — that is the live thread.** §C10/§C11/§C12 are closed or [LEAD]-deferred and are kept as evidence, not as next actions. Everything else in this file predates the 2026-07-26 audit. *(This heading was dated 2026-08-04 and pointed at §C10–§C12 until 2026-08-08, by which time the block's top four bullets were all newer than the heading itself. It then read 2026-08-08 while B3 merged, deployed, ran a clean unattended tick and spawned §C38 underneath it — **the heading has now drifted behind its own contents twice**, so treat the top bullet's date as authoritative and this one as decoration.)*

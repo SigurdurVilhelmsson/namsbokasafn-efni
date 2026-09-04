@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68703",
-  "extractedAt": "2026-09-01T16:51:41.305Z",
+  "extractedAt": "2026-09-03T16:23:49.824Z",
   "sourceHash": "fc0090e470d90f97",
   "segmentCount": 210,
   "segmentIds": [
@@ -357,5 +357,25 @@
       "fs-idm92499152",
       "fs-idm26459312"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "concentration",
+    "term-00002": "solvent",
+    "term-00003": "dissolved",
+    "term-00004": "aqueous solution",
+    "term-00005": "solute",
+    "term-00006": "dilute",
+    "term-00007": "concentrated",
+    "term-00008": "Molarity (M)",
+    "term-00009": "Dilution",
+    "fs-idm26450752": "aqueous solution",
+    "fs-idm26449216": "concentrated",
+    "fs-idm26447680": "concentration",
+    "fs-idm26674336": "dilute",
+    "fs-idm26672800": "dilution",
+    "fs-idm26671264": "dissolved",
+    "fs-idm26669728": "molarity (M)",
+    "fs-idm26667568": "solute",
+    "fs-idm26666032": "solvent"
   }
 }

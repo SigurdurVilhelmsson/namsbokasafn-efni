@@ -13,7 +13,22 @@ function render(cnxml) {
   }).html;
 }
 
-// Glossary sits inside <content> in real CNXML files
+// 🔴 CORRECTED 2026-09-03 — THIS COMMENT SAID "Glossary sits inside <content> in
+// real CNXML files". MEASURED: IT NEVER DOES. Across the two live books'
+// READ-ONLY 01-source, 109 modules carry a <glossary> and ALL 109 place it as a
+// SIBLING after </content> — 0 inside. (Counting unit: module FILE containing a
+// <glossary>, over books/{efnafraedi-2e,lifraen-efnafraedi}/01-source.)
+//
+// ▶ The consequence is that `renderGlossary` — which renderContent reaches by
+// matching against doc.rawContent, i.e. <content>'s INNER — never runs on this
+// corpus. The chapter key-terms page is built by renderCompiledGlossary instead,
+// and it emits <dt>, not <dfn>.
+//
+// ⚠️ This file therefore CHARACTERIZES A CORPUS-UNREACHABLE PATH. That is not a
+// reason to delete it: the fixture below nests the glossary deliberately, a
+// synthetic nested <glossary> really does reach renderGlossary, and nothing
+// guarantees the corpus stays this way. Do not "tidy" renderGlossary away, and do
+// not assume it is dead code — assume it is unexercised.
 function makeDoc(glossaryInner) {
   return (
     '<document xmlns="http://cnx.rice.edu/cnxml"><content>' +

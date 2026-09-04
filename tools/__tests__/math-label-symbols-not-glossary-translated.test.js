@@ -167,11 +167,21 @@ describe('resolveLabel: the symbol guard, unit level', () => {
     expect(resolveLabel('log', { glossaryMap })).toEqual({ value: 'log', source: 'english' });
   });
 
-  it('the curated overlay still translates a symbol the glossary may not', () => {
-    // The overlay is a human decision and outranks the guard; this is how a book
-    // would localise a symbol deliberately.
+  it('🔴 SUPERSEDED 2026-09-04 — the overlay can NO LONGER translate a short symbol', () => {
+    // This asserted the opposite until the [USER] short-label ruling: the curated
+    // overlay outranked the symbol guard, so a book could localise a symbol
+    // deliberately. That escape hatch is exactly what shipped `Eker°` for `E°cell`,
+    // and it has MOVED — from per-book data to the repo-wide
+    // LOCALIZABLE_SHORT_LABELS allowlist. A book can no longer do this alone.
     expect(resolveLabel('kg', { overlay: { kg: 'kg.' }, glossaryMap })).toEqual({
-      value: 'kg.',
+      value: 'kg',
+      source: 'english-short-default',
+    });
+  });
+
+  it('CONTROL — the overlay still translates a LONG label, so the change is scoped', () => {
+    expect(resolveLabel('cathode', { overlay: { cathode: 'katóða' }, glossaryMap })).toEqual({
+      value: 'katóða',
       source: 'overlay-translated',
     });
   });

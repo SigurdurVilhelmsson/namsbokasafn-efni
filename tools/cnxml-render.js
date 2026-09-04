@@ -60,6 +60,7 @@ import {
 } from './lib/mathml-to-latex.js';
 import { decodeEntities } from './lib/math-label-inventory.js';
 import { buildModuleSections } from './lib/module-sections.js';
+import { loadChapterTermEnglish } from './lib/term-english-map.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 import {
   getBookRenderConfig,
@@ -670,6 +671,12 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     bookSlug: BOOK_SLUG,
     embedMap: EMBED_MAP,
     moduleId,
+    // THIS module's id → English map, for data-en on <dfn> (tools/lib/term-english-map.js).
+    // 🔴 Supplied by the CALLER, never loaded here: BOOKS_DIR is a bare relative
+    // literal set only in main(), and renderService.js calls this in-process with
+    // cwd=server/, where 'books/…' resolves to server/books/… and misses for every
+    // book. Same reason options.embedMap exists — see its comment above.
+    termEnglish: options.termEnglish || null,
     equations: [],
     terms: {},
     figures: [],
@@ -2521,7 +2528,21 @@ function renderCompiledGlossary(chapter, definitions, context) {
     for (const def of definitions) {
       const termHtml = processInlineContent(def.termContent || def.term, context);
       const meaning = processInlineContent(def.meaningContent, context);
-      lines.push(`    <dt${def.id ? ` id="${escapeAttr(def.id)}"` : ''}>${termHtml}</dt>`);
+      // data-en keyed on the DEFINITION's own module. glossaryContext is
+      // chapter-wide and carries no moduleId, but every def does (stamped by
+      // extractChapterGlossary), and definition ids are unique within a chapter,
+      // so this join is unambiguous.
+      // 🔴 The lookup lives HERE and not inside processInlineContent: this page
+      // emits <dt>, never <dfn>, so routing it through the inline path would emit
+      // ZERO data-en on the key-terms page while every module page looked correct
+      // — a partial success that reads as a success.
+      const defMap =
+        def.id && context && context.termEnglishByModule
+          ? context.termEnglishByModule.get(def.moduleId)
+          : null;
+      const defEn = defMap && typeof defMap[def.id] === 'string' ? defMap[def.id] : '';
+      const enAttr = defEn ? ` data-en="${escapeAttr(defEn)}"` : '';
+      lines.push(`    <dt${def.id ? ` id="${escapeAttr(def.id)}"` : ''}${enAttr}>${termHtml}</dt>`);
       lines.push(`    <dd>${meaning}</dd>`);
     }
 
@@ -3379,6 +3400,12 @@ async function main() {
     // Build module sections map from structure + segment files
     const moduleSections = buildModuleSections(BOOK_SLUG, args.chapter);
 
+    // Per-module English term maps for data-en. Loaded once per chapter; the
+    // loader keys on each manifest's own moduleId, so a wrong-module map is
+    // REFUSED rather than joined — `term-0000N` restarts in every module, so a
+    // mis-keyed map hits with wrong English rather than missing (§C82 L144).
+    const termEnglish = loadChapterTermEnglish(BOOK_SLUG, formatChapterDir(args.chapter));
+
     // Appendix id → { letter, basename } lookup, so a chapter→appendix cross-ref
     // resolves to the appendix landing URL (A1). moduleLetters is built for every
     // chapter — the appendices pass itself consumes it for per-letter table
@@ -3624,6 +3651,8 @@ async function main() {
             lang: args.lang,
             chapter: args.chapter,
             moduleId,
+            // THIS module's map only — never the chapter-wide union.
+            termEnglish: termEnglish.byModule.get(moduleId) || null,
             moduleSections,
             chapterFigureNumbers,
             chapterTableNumbers,
@@ -3637,6 +3666,27 @@ async function main() {
             equationTextDictionary,
           });
           let html = renderResult.html;
+
+          // §4.3: a missing key degrades to no attribute, and a SILENT drop is this
+          // project's recurring failure — so the absence is counted and printed.
+          // 🔴 Denominator is `<dfn id>`, not `<dfn>`: an id-less <dfn> structurally
+          // CANNOT be keyed (2 such <term> exist in READ-ONLY chemistry source and no
+          // id join will ever reach them), so counting them would report a permanent
+          // shortfall as a defect.
+          // ⚠️ Never mix units here — this counts RENDERED ELEMENTS, not the <term>
+          // elements in CNXML. The two differ and the plan already shipped one bug
+          // from transposing them.
+          {
+            const dfnWithId = (html.match(/<dfn\s+id="/g) || []).length;
+            const dfnWithEn = (html.match(/<dfn[^>]*\sdata-en="/g) || []).length;
+            if (dfnWithId > 0) {
+              const stale =
+                termEnglish.state.get(moduleId) === 'key-absent'
+                  ? ` — manifest has no termEnglish (re-run: node tools/cnxml-extract.js --book ${BOOK_SLUG} --chapter ${args.chapter})`
+                  : '';
+              console.log(`  terms: ${dfnWithEn}/${dfnWithId} <dfn id> carry data-en${stale}`);
+            }
+          }
           const pageData = renderResult.pageData;
 
           // Special handling for Periodic Table appendix
@@ -3793,6 +3843,12 @@ ${anchors}
           terms: {},
           footnotes: [],
           equationTextDictionary,
+          // Chapter-wide Map<moduleId, {id: english}> — read ONLY by
+          // renderCompiledGlossary, which keys each <dt> on its own def.moduleId.
+          // Deliberately a DIFFERENT field and shape from context.termEnglish
+          // (a flat map for one module) so the two cannot be confused: a flat
+          // chapter merge would hit with another module's English.
+          termEnglishByModule: termEnglish.byModule,
         };
 
         const glossaryContentHtml = renderCompiledGlossary(
@@ -3800,6 +3856,16 @@ ${anchors}
           chapterGlossary,
           glossaryContext
         );
+
+        // Same rule as the per-module line: count RENDERED ELEMENTS, denominator
+        // `<dt id>`. This page emits <dt>, never <dfn>.
+        {
+          const dtWithId = (glossaryContentHtml.match(/<dt\s+id="/g) || []).length;
+          const dtWithEn = (glossaryContentHtml.match(/<dt[^>]*\sdata-en="/g) || []).length;
+          if (dtWithId > 0) {
+            console.log(`  key-terms: ${dtWithEn}/${dtWithId} <dt id> carry data-en`);
+          }
+        }
 
         // Build terms map for pageData
         const termsMap = {};
