@@ -285,8 +285,32 @@ location is no record.
   `writeFileSync` in the routes test. They agree today because the operation is one copied field.
   **If the stamp ever grows a second field** (a `composedAt`, or a `composerVersion` the composer
   writes itself) **all three drift silently.** At that point they want one shared helper.
-  ⚠️ Exposure today is **0**: there are no figure-text sidecars anywhere in `books/` and no
-  composed figure has ever been published.
+  🔴 **CORRECTED 2026-09-04, SAME DAY IT WAS WRITTEN — THIS ENTRY SAID "no composed figure has
+  ever been published" AND THAT IS FALSE BY 690.** `books/efnafraedi-2e/media/` holds **691
+  `_IS.svg`, 690 of which carry the composer's own `LiberationSans` `@font-face` signature**,
+  published in `9269fcda` (2026-06-26, *"localize chapter 1-9 figures (305 translated SVGs)"*) by
+  **Claude Cowork — an EXTERNAL process, not this pipeline**. This `experiments/` tree is a
+  rebuild of that capability with a review workflow attached; it is not the first thing to
+  translate these figures.
+  ▶ **THE CONSEQUENCE INVERTS THE ITEM. The write ⑰ describes is an OVERWRITE of published,
+  reader-visible artwork, not a create** — and the published artwork is measurably GOOD.
+  Measured on `CNX_Chem_01_06_TempScales_IS.svg`, the same figure as ⑯: the published file
+  already reads **`373,15 K` / `273,15 K` / `233,15 K`** — decimal comma applied, i.e. **⑭'s own
+  motivating example is already correct for readers** — and **`Celsíus`**, which is the book's
+  dominant spelling (**24:5** in committed chemistry MT output, **31:13** in published HTML).
+  ⑯'s paid run produced **`Selsíus`** for that term: the minority variant, and precisely what
+  `captionDivergence` exists to flag.
+  🔴 **SO AN UNGATED ⑰ WOULD LET THE REVIEW WORKFLOW REPLACE GOOD PUBLISHED FIGURES WITH
+  UNREVIEWED MT OUTPUT THAT IS WORSE ON A KNOWN TERM.** That is not an argument against the
+  pipeline — its whole point is that an editor sees the divergence warning and fixes `Selsíus`
+  before approving — but it IS an argument that the write must be a deliberate, per-figure,
+  reviewed replacement rather than a pipeline step.
+  ⚠️ **What IS still 0: figure-text sidecars.** There are none anywhere under `books/`, so no real
+  figure carries a review state and no `composedHash` has ever been stamped outside a test. The
+  staleness hazard is unrealised; the overwrite hazard is not hypothetical at all.
+  ⚠️ **And the Cowork corpus is NOT uniformly good** — see ⑩ (a raster PNG in an SVG wrapper),
+  ⑬ (92 % font payload) and ⑫ (stale re-export lists). Fixing *those specific figures* is the
+  use this pipeline is actually for.
 
 - **⑭ NUMBER LOCALIZATION IS AN EDITORIAL ACTION, NOT A TRANSFORM — [USER]-ruled 2026-09-04,
   and the one-click path is BUILT.** The gap: `373.15 K` / `273.15 K` / `233.15 K` are correctly
@@ -310,6 +334,13 @@ location is no record.
   unsaved typing would discard it silently; recomputing client-side to cope is the wrong fix, and
   is what the no-digit-class pin forbids. Both directions are E2E-tested and both were
   mutation-verified (posting `input.value`, and removing the guard, each kill the test).
+  ⚠️ **CORRECTED 2026-09-04 — THE MOTIVATING EXAMPLE IS ALREADY CORRECT FOR READERS.** This
+  entry reads as though `373.15 K` reaches a reader unlocalized. It does not: the PUBLISHED
+  `CNX_Chem_01_06_TempScales_IS.svg` already says `373,15 K` (see ⑰ — the corpus was translated
+  by an external process in June). What carries `373.15` is **this pipeline's own re-composition**
+  of that figure, which no reader has seen. ▶ **⑭ is therefore a gap in the NEW pipeline, not a
+  live defect on the site** — still worth closing, since anything this pipeline composes in future
+  goes out with it, but it is not a reader-facing bug and should not be prioritised as one.
   ⏭️ **STILL OPEN, deliberately:** a verbatim block reaches the composer untouched unless an
   editor clicks, so every figure carries editorial cost. Also NOT built, for want of a single
   measured instance: US thousands (`1,000` → `1.000`) and numbers with adjacent punctuation.
