@@ -117,6 +117,51 @@ function shrinkVerdict(prev, next) {
 }
 
 /**
+ * §C119 — THE MIRROR OF SHRINK_RATIO, AND DELIBERATELY NOT ITS EXACT MIRROR.
+ *
+ * The shrink guard targets a catastrophic LOSS. Growth was structurally
+ * invisible to it, which is how `lifraen-efnafraedi` went 827 -> 1,595 in one
+ * unattended tick with every gate green — same producer stamp, baseline
+ * present, nothing to shrink — and shipped 768 unreviewed headwords of which
+ * 119 were confirmed harmful.
+ *
+ * THE THRESHOLD IS MEASURED, NOT CHOSEN. Exact symmetry with SHRINK_RATIO
+ * (0.5) would be 2.0, and the incident was 1.928x — a symmetric guard would
+ * have MISSED IT BY 3.6%. The observed values separate cleanly:
+ *   legitimate   chemistry 2,006 -> 2,090 = 1.042x   (must pass)
+ *   incident     organic     827 -> 1,595 = 1.928x   (must refuse)
+ *   trim rebound organic     172 ->   840 = 4.88x    (must refuse)
+ * 1.5 sits in the empty gap between 1.04 and 1.93. Do not raise it to 2
+ * for tidiness; the tidy value is the one that fails.
+ *
+ * Like the shrink guard: catastrophe, not drift, and `--force` is the same
+ * deliberate override — which the unattended cron cannot reach.
+ */
+const GROWTH_RATIO = 1.5;
+
+/**
+ * @returns {{refuse: boolean, prevApproved: number, nextApproved: number, prevTotal: number, nextTotal: number}}
+ */
+function growthVerdict(prev, next) {
+  const prevApproved = countApproved(prev);
+  const nextApproved = countApproved(next);
+  const prevTotal = countTerms(prev);
+  const nextTotal = countTerms(next);
+
+  // BOTH metrics, for the same reason shrinkVerdict uses both: a file whose
+  // terms are all needs_review has zero approved, so an approved-only test is
+  // structurally inert for it. The `> 0` guards are what make growth FROM AN
+  // EMPTY FILE permitted — there is no ratio to measure against nothing, and a
+  // first population is the absent-baseline gate's business (§C21), not this
+  // one's.
+  const refuse =
+    (prevApproved > 0 && nextApproved > prevApproved * GROWTH_RATIO) ||
+    (prevTotal > 0 && nextTotal > prevTotal * GROWTH_RATIO);
+
+  return { refuse, prevApproved, nextApproved, prevTotal, nextTotal };
+}
+
+/**
  * Categorical companion to shrinkVerdict (register C14 ② step 4).
  *
  * Evaluated BEFORE the shrink gate at the call site. Reporting "1117 → 709, a
@@ -144,6 +189,8 @@ module.exports = {
   countTerms,
   sameTerms,
   shrinkVerdict,
+  growthVerdict,
   producerVerdict,
   SHRINK_RATIO,
+  GROWTH_RATIO,
 };

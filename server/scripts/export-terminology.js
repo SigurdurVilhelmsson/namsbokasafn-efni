@@ -164,6 +164,7 @@ const {
   countTerms,
   sameTerms,
   shrinkVerdict,
+  growthVerdict,
   producerVerdict,
 } = require('../lib/glossaryExportDecision');
 const { createResolvedExportFn } = require('../lib/resolvedGlossary');
@@ -841,6 +842,27 @@ function runGlossaryExport({
       outcomes[b] = {
         outcome: 'refused-shrink',
         detail: `${verdict.prevTotal} → ${verdict.nextTotal}`,
+        ...integrityField,
+      };
+      continue;
+    }
+
+    // §C119 — the mirror of the shrink gate. Growth was structurally invisible
+    // to shrinkVerdict, which is how lifraen-efnafraedi went 827 → 1,595 in one
+    // unattended tick with every gate green (same producer, baseline present,
+    // nothing to shrink) and shipped 768 unreviewed headwords, 119 of them
+    // confirmed harmful. Same --force override, which the cron cannot reach.
+    const growth = growthVerdict(prev, next);
+    if (growth.refuse && !force) {
+      logError(
+        `${b}: REFUSING to write — terms would JUMP ${growth.prevTotal} → ${growth.nextTotal} ` +
+          `(approved ${growth.prevApproved} → ${growth.nextApproved}). An unreviewed explosion is ` +
+          `how 768 harmful headwords reached a book once. Read the new terms, then pass --force if ` +
+          `the growth is intended.${integrityNote}`
+      );
+      outcomes[b] = {
+        outcome: 'refused-growth',
+        detail: `${growth.prevTotal} → ${growth.nextTotal}`,
         ...integrityField,
       };
       continue;
