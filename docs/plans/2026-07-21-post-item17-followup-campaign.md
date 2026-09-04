@@ -27,6 +27,23 @@ new test files appears in the failing set.
   run sequentially, forked one process per file. Budget ~20 min, and do not read a quiet log as
   a hang — vitest writes its detail in the end-of-run summary.
 
+🔴 **§C118 ㉑ HAS A SECOND INSTANCE, AND THIS ONE COMES WITH A MULTIPLIER: `conceptResolverIntegrity`'s
+merge-cycle test took 5,401 ms under a full suite against 104–133 ms alone — a ~45× blowup, cap 5,000 ms.**
+Measured 2026-09-04. ▶ **It appeared as a 20th failing test that was NOT in the branch baseline, and the
+by-NAME diff is the only reason it was caught as an artefact rather than merged as noise or chased as a
+regression** — a count of 20-vs-19 reads as either.
+- **Settled by isolation, not by argument:** 3 runs on a quiet box, **7/7 passed each time**, at
+  **133 / 122 / 104 ms**. The file, `server/lib/conceptResolver.js` and
+  `server/__tests__/helpers/freshMigratedDb.js` are all **byte-identical to `main`**, and the branch's
+  entire `server/` diff is 14 lines in `renderService.js`, which that test never loads.
+- ▶ **Same helper as `findTermsGolden` — `freshMigratedDb`, ~49 migrations — so this is ㉑'s mechanism,
+  not a new one.** ㉑ is unsurvivable (240 ms of work, 10 s hook cap, fails even quiet); this one has
+  **45× headroom and fails only under load.** ⚠️ **That makes it a LATENT CI flake**, since CI runs the
+  same helper on a shared runner. If it ever goes red in CI, this is the first hypothesis — check the
+  duration before the assertion.
+- ⚠️ **An `rclone` NOTICE is timestamped mid-run in the same log**, so something outside vitest was also
+  competing. **Read a timeout-shaped red against wall-clock load before reading it as a defect.**
+
 🔴 **[USER] RULING 2026-09-04 — A MATH ABBREVIATION OF ≤4 CHARACTERS KEEPS ITS ENGLISH BY
 DEFAULT; LOCALIZATION IS OPT-IN VIA ONE REPO-WIDE ALLOWLIST.** Shipped in `94ad869e`. **The rule
 and its allowlist are an ENFORCEABLE VALUE and live in `tools/lib/math-label-inventory.js`
