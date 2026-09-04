@@ -66,10 +66,26 @@ and its allowlist are an ENFORCEABLE VALUE and live in `tools/lib/math-label-inv
   surface renders math at all** — a grep of `server/public/js/` + `server/views/` for
   `MathJax|mathml|<m:math|renderMathML` returns **0**. ▶ **More decisive: the substitution happens
   at INJECT over `01-source`, so it never passes through a segment** — the editor is not merely
-  blind to it, it is not on that code path. **A math review/comment surface is buildable on the
-  figure-review sidecar pattern** (sidecar + review card + CLI re-creation; `mathjax-render.js`
-  already exists), **and should be designed only after that sidecar merges**, so there is one
-  mechanism rather than two.
+  blind to it, it is not on that code path.
+
+- 📌 **DEFERRED — A MATH REVIEW/COMMENT SURFACE IN THE EDITOR. [USER]-requested 2026-09-04.**
+  🔴 **TRIGGER: the figure-text review sidecar landing on `main`.** Status of that work has ONE
+  owner and it is not this file — see `experiments/figure-text-translation/REGISTER.md`; check it
+  there rather than trusting any date here. **Do not start before then**, and the reason is the
+  point of the deferral: it is the *same mechanism*, and building it first produces two.
+  - **What it would be**, by analogy with the figure work: a **sidecar** file recording per-equation
+    editorial comments, a **review card** in the segment editor showing the equation rendered, and
+    **CLI re-creation** from the sidecar. `tools/lib/mathjax-render.js` already exists, so showing
+    the editor the actual equation is not the hard part.
+  - ⚠️ **SCOPE IT HONESTLY WHEN THE TIME COMES: this would NOT have caught `Eker°`.** That value
+    is produced at inject from `math-label-map.json` + the glossary, over READ-ONLY `01-source`,
+    and never enters a segment. A review surface addresses *"this equation reads wrong to a
+    chemist"*; it does **not** address label substitution, which is now guarded in code
+    (`SHORT_LABEL_MAX` / `LOCALIZABLE_SHORT_LABELS`). **Two different problems — do not let the
+    UX absorb the guard's job.**
+  - ▶ **The cheap half is already possible without any UX**: `inventory-math-labels.js --pending`
+    and `--validate` already report per-book label state. A surfacing line for now-inert overlay
+    entries (the `cell → ker` residue) is the smallest useful step and needs no editor work.
 
 ✅ **TASKS 1–5 AND 7 OF THE `data-en` UNIT ARE DONE ON `feat/term-english-data-attribute`
 (19 commits, nothing pushed). ONLY TASK 6 REMAINS AND IT IS BLOCKED ON A [USER]/[LEAD]
