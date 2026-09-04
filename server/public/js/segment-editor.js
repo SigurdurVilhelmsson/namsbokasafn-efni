@@ -445,9 +445,42 @@
 
     // Both advisory checks, each rendering ITS OWN field: decimal carries a
     // whole suggested string, caption carries a note about one word.
+    //
+    // ⑭, [USER]-ruled 2026-09-04: the decimal suggestion is APPLICABLE in one
+    // click, and only in one click — never automatically. Icelandic writes the
+    // decimal separator as a comma, but it INVERTS the thousands separator too,
+    // so a wrong conversion silently changes a number in a chemistry textbook.
+    // Offering it keeps a human in the loop and keeps the sidecar a record of
+    // what somebody approved.
+    //
+    // 🔴 The conversion is NEVER computed here. `w.suggested` is the server's
+    // string, and the rule's one owner is tools/lib/figure-consistency.cjs.
     for (const w of warnings.decimal) {
-      if (w.blockKey === key) li.appendChild(figureWarning(`⚠ Tillaga: ${w.suggested}`));
+      if (w.blockKey !== key) continue;
+      li.appendChild(figureWarning(`⚠ Tillaga: ${w.suggested}`));
+
+      const apply = document.createElement('button');
+      apply.type = 'button';
+      apply.className = 'btn btn-sm figure-block-apply';
+      apply.setAttribute('data-block-apply', '');
+      apply.textContent = 'Nota';
+      apply.setAttribute('aria-label', `Nota tillögu fyrir ${key}`);
+      // ⚠️ The suggestion was derived server-side from the SAVED text. If the
+      // editor has typed since, applying it would silently discard that typing.
+      // Disabling is the honest fix; recomputing the conversion here to cope
+      // with the newer value would put a second implementation of the rule in
+      // the browser, which is exactly what the comment above forbids. Saving
+      // re-fetches and recomputes the suggestion, so the button comes back.
+      const syncApplyEnabled = () => {
+        apply.disabled = input.value !== w.current;
+      };
+      syncApplyEnabled();
+      input.addEventListener('input', syncApplyEnabled);
+      apply.addEventListener('click', () => saveFigureBlock(basename, key, w.suggested));
+      li.appendChild(apply);
     }
+    // No apply control here on purpose: a caption warning is a note ABOUT a
+    // word, not a replacement for the block, so there is nothing to apply.
     for (const w of warnings.caption) {
       if (w.blockKey === key) li.appendChild(figureWarning(`⚠ ${w.figureText}: ${w.note}`));
     }

@@ -288,12 +288,35 @@ location is no record.
   ⚠️ Exposure today is **0**: there are no figure-text sidecars anywhere in `books/` and no
   composed figure has ever been published.
 
-- **⑭ NUMBER LOCALIZATION IS NOT IMPLEMENTED — the LOCALIZE class passes through untouched.**
-  Demonstrated by the first real run: `373.15 K` / `273.15 K` / `233.15 K` are correctly held
-  off the MT wire and correctly kept verbatim, but Icelandic writes them `373,15 K`. Three of
-  nine verbatim blocks in one figure. ⚠️ **A blind `.` → `,` is wrong — the separators invert**
-  (`1,000` → `1.000`); `tools/lib/mathml-to-latex.js` already classifies `us`/`is`/`integer`
-  and should be reused rather than duplicated.
+- **⑭ NUMBER LOCALIZATION IS AN EDITORIAL ACTION, NOT A TRANSFORM — [USER]-ruled 2026-09-04,
+  and the one-click path is BUILT.** The gap: `373.15 K` / `273.15 K` / `233.15 K` are correctly
+  held off the MT wire and correctly kept verbatim, but Icelandic writes them `373,15 K`. Three
+  of nine verbatim blocks in one figure.
+  ✅ **What shipped:** the advisory decimal check already computed the corrected string; the
+  editor card now offers a **`Nota`** control that applies it as an ordinary block edit. Because
+  it is an ordinary edit, `renderHash` moves and the figure correctly returns to `mt-preview`
+  pending re-approval and re-compose — Ⓒ's machinery, reused rather than duplicated.
+  🔴 **RULED: it is OFFERED, never applied automatically.** A wrong conversion silently changes
+  a number in a chemistry textbook, which this project calls the worst available failure, and
+  CLAUDE.md's own clean-break rule says that when an editor can do it in the UX you do not build
+  black magic. The sidecar therefore keeps recording exactly what a human approved.
+  🔴 **THE RULE HAS ONE OWNER — `tools/lib/figure-consistency.cjs`.** The browser posts the
+  server's `suggested` string verbatim and computes nothing; a pin asserts the client contains no
+  digit character class at all, because a second implementation would drift silently and the
+  first is the one that knows Icelandic **inverts both separators** (a blind `.` → `,` turns
+  `1,000` into `1.000`).
+  ⚠️ **The guard that is easy to get wrong:** the suggestion is derived from the **saved** text,
+  so the control is DISABLED while the input differs from it. Applying a stale suggestion over
+  unsaved typing would discard it silently; recomputing client-side to cope is the wrong fix, and
+  is what the no-digit-class pin forbids. Both directions are E2E-tested and both were
+  mutation-verified (posting `input.value`, and removing the guard, each kill the test).
+  ⏭️ **STILL OPEN, deliberately:** a verbatim block reaches the composer untouched unless an
+  editor clicks, so every figure carries editorial cost. Also NOT built, for want of a single
+  measured instance: US thousands (`1,000` → `1.000`) and numbers with adjacent punctuation.
+  **The whole measured corpus is `180`, `100`, `37.5` and the three temperatures above — zero
+  thousands separators** — and each widening changes the base rate of a check on the rule above.
+  `tools/lib/mathml-to-latex.js` already classifies `us`/`is`/`integer` and is what to reuse if
+  that day comes.
 - **⑮ Label-to-artwork anchoring is unsolved when the line count changes.** The composer now
   preserves a block's vertical CENTRE (top-anchoring was clearly wrong — a 3-line English
   label replaced by 1 Icelandic line floated above the thing it labelled). But TempScales

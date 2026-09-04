@@ -1,5 +1,9 @@
 /**
- * The figure card's <img>, pinned at the source level.
+ * Client-side rules for the figure review card, pinned at the source level.
+ *
+ * (Named for the image alone until 2026-09-04; renamed with `git mv` when the
+ * decimal-suggestion pins arrived, because a file called ...ImagePins holding
+ * number-localization rules misleads every future reader. History is preserved.)
  *
  * The card itself is exercised in the browser by server/e2e/figure-review.spec.js.
  * What THIS file pins is the pair of rules the [USER] ruling turns on, both of
@@ -61,6 +65,17 @@ function figureCardSource() {
   return region;
 }
 
+/** The renderFigureBlock region — where a block's input, save and warnings live. */
+function figureBlockSource() {
+  const start = src.indexOf('function renderFigureBlock(');
+  expect(start).toBeGreaterThan(-1);
+  const end = src.indexOf('function renderFigureCard(', start);
+  expect(end).toBeGreaterThan(start);
+  const region = codeOnly(src.slice(start, end));
+  expect(region).toContain('createElement'); // control: the region survived stripping
+  return region;
+}
+
 describe('the figure card renders the figure', () => {
   it('reads the URL off the payload rather than building one', () => {
     expect(figureCardSource()).toMatch(/fig\.imageUrl/);
@@ -80,6 +95,60 @@ describe('the figure card renders the figure', () => {
     const card = figureCardSource();
     expect(card).toMatch(/\.src\s*=\s*fig\.imageUrl/);
     expect(card).not.toMatch(/innerHTML/);
+  });
+});
+
+/**
+ * ⑭ NUMBER LOCALIZATION — as a one-click editorial action, [USER]-ruled 2026-09-04.
+ *
+ * Icelandic writes the decimal separator as a comma, so `373.15 K` must become
+ * `373,15 K`. The advisory check already computed that string; what was missing
+ * was any way to APPLY it. It is offered, never applied automatically: the
+ * sidecar records what a human approved, and a wrong conversion in a chemistry
+ * textbook is the worst available failure.
+ *
+ * 🔴 THE RULE HAS ONE OWNER — `tools/lib/figure-consistency.cjs`. The client
+ * posts the server's `suggested` string verbatim. It must NEVER recompute the
+ * conversion: a second implementation would drift from the first silently, and
+ * the first is the one that knows Icelandic INVERTS both separators (a blind
+ * '.' -> ',' turns 1,000 into 1.000).
+ */
+describe('the decimal suggestion can be applied in one click', () => {
+  it('renders an apply control for a decimal warning', () => {
+    expect(figureBlockSource()).toMatch(/data-block-apply/);
+  });
+
+  it("posts the SERVER's suggested string, not a locally computed one", () => {
+    // Bound to the field, not merely to the presence of a save call: applying
+    // input.value or a re-derived string would look identical in a screenshot
+    // and would be a second implementation of the rule.
+    expect(figureBlockSource()).toMatch(/saveFigureBlock\([^)]*w\.suggested/);
+  });
+
+  it('contains no digit class in the block region — so no client-side number rule', () => {
+    // The sharpest available pin: any client-side conversion needs a digit
+    // character class. Its absence is checkable; "does not duplicate the rule"
+    // is not.
+    expect(figureBlockSource()).not.toContain('\\d');
+  });
+
+  it('DISABLES the control while the input differs from what the suggestion came from', () => {
+    // The suggestion is derived server-side from the SAVED text. If the editor
+    // has typed since, applying it would silently discard their typing — and
+    // recomputing client-side to avoid that is the wrong fix, per the rule above.
+    const region = figureBlockSource();
+    expect(region).toMatch(/w\.current/);
+    expect(region).toMatch(/disabled/);
+  });
+
+  it('offers NO apply control for a caption warning', () => {
+    // A caption warning is a note about one word ("the module's caption uses
+    // X"), not a replacement string. There is nothing to apply, and a control
+    // that pasted the note into the block would corrupt it.
+    const region = figureBlockSource();
+    const captionPart = region.slice(region.indexOf('warnings.caption'));
+    expect(captionPart.length).toBeGreaterThan(0); // control: the loop is there
+    expect(captionPart).not.toContain('data-block-apply');
   });
 });
 
