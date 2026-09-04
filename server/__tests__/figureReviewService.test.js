@@ -215,6 +215,48 @@ describe('applyApprovedFigureEdits', () => {
     expect(effectiveState(after, after.blocks, COMPOSER_VERSION)).toBe('approved');
   });
 
+  it('SURVIVES A FLAG IN BETWEEN — flag, then re-approve, and the figure is still composed', () => {
+    // The realistic sequence, and the one the approve→approve test above cannot
+    // see: an editor flags a figure, someone looks at it, the flag is lifted.
+    // setState writes render_hash=NULL for a flag, so if applyApprovedFigureEdits
+    // took its composedHash from anywhere but the sidecar, the stamp would be
+    // lost here and the figure would need a pointless recompose.
+    svc.setState(db, {
+      bookId,
+      basename: 'CNX_T',
+      state: 'approved',
+      reviewedBy: 'ed',
+      blocks: MT,
+    });
+    svc.applyApprovedFigureEdits(db, { bookDir, bookId, basename: 'CNX_T', mtBlocks: MT });
+    const first = readSidecar(bookDir, 'CNX_T');
+    writeSidecar(bookDir, 'CNX_T', { ...first, composedHash: first.renderHash });
+
+    svc.setState(db, {
+      bookId,
+      basename: 'CNX_T',
+      state: 'flagged',
+      flagKind: 'text',
+      reviewedBy: 'ed',
+      blocks: MT,
+    });
+    svc.applyApprovedFigureEdits(db, { bookDir, bookId, basename: 'CNX_T', mtBlocks: MT });
+    const flagged = readSidecar(bookDir, 'CNX_T');
+    expect(flagged.state).toBe('flagged'); // control: the flag really reached the sidecar
+    expect(flagged.composedHash).toBe(first.renderHash); // ...and did not eat the stamp
+
+    svc.setState(db, {
+      bookId,
+      basename: 'CNX_T',
+      state: 'approved',
+      reviewedBy: 'ed',
+      blocks: MT,
+    });
+    svc.applyApprovedFigureEdits(db, { bookDir, bookId, basename: 'CNX_T', mtBlocks: MT });
+    const after = readSidecar(bookDir, 'CNX_T');
+    expect(effectiveState(after, after.blocks, COMPOSER_VERSION)).toBe('approved');
+  });
+
   it('a carried-forward composedHash still DEMOTES when the blocks changed', () => {
     // The mirror of the test above, and it is not symmetric by luck: carrying
     // the value forward is safe precisely because renderHash moves with the

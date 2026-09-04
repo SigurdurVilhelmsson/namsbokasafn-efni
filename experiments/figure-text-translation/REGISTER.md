@@ -266,10 +266,20 @@ location is no record.
   in the SAFE direction for the failure that matters: an approval with no compose at all still
   reads `mt-preview`.
   ⚠️ **The residual hazard is narrow and worth stating precisely: compose into `out/`, never
-  publish, and the badge goes green anyway.** Closing it means giving the composer the book slug
-  and basename and having it write through `image-mapping.json` — the same forward lookup
-  `translatedImageFor` already does — so the stamp and the published file move together. **Not
-  built; not in scope for Ⓒ, which was ruled as a sidecar-only change.**
+  publish, and the badge goes green anyway.** Closing it means having the composer write through
+  `image-mapping.json` — the same forward lookup `translatedImageFor` already does — so the stamp
+  and the published file move together. ⚠️ **It is NOT a two-line change, and the reason is worth
+  knowing before anyone scopes it: `compose.py` has no book context at all.** Its only pointer to
+  the outside world is `--translations <path>`; it never learns a book slug or an English basename,
+  and both are needed to resolve an `outputName` through the mapping. So the work is a `--book` /
+  `--basename` pair (or deriving them from the sidecar's own path, which couples the composer to
+  the `books/<slug>/figure-text/` layout) **plus** the write — not just a destination. **Not built;
+  not in scope for Ⓒ, which was ruled as a sidecar-only change.**
+  ⚠️ **Maintenance note: THREE test-side stand-ins now simulate the composer by hand** — the E2E
+  spec's `stampComposed`, a `writeSidecar({…composedHash})` in the service test, and a
+  `writeFileSync` in the routes test. They agree today because the operation is one copied field.
+  **If the stamp ever grows a second field** (a `composedAt`, or a `composerVersion` the composer
+  writes itself) **all three drift silently.** At that point they want one shared helper.
   ⚠️ Exposure today is **0**: there are no figure-text sidecars anywhere in `books/` and no
   composed figure has ever been published.
 
