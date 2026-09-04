@@ -71,7 +71,15 @@ const BOOK_DOMAIN_PRIORITY = Object.freeze({
   // ⚠️ THIS FILE IS THE ONLY PLACE THE CHANGE SURVIVES. book_domain_priority is
   // DELETEd and re-INSERTed from here by migration 047 on every boot, so the
   // same trim made in SQL lasts until the next restart — measured 2026-08-31,
-  // it lasted 102 seconds — and 047 now reports when it overwrites live rows.
+  // it lasted 102 seconds, with no error, no log line and no gate.
+  //
+  // ⚠️ AND NOTHING DETECTS THAT REVERT — an alarm was attempted and DROPPED as
+  // unworkable. Migration 046 runs immediately before 047 and does INSERT OR
+  // REPLACE from its own FROZEN copy of this map, so by the time 047 could look,
+  // the operator's deleted rows are already restored: a hand trim reads as "no
+  // change". Only an ADDED domain survives 046 to be seen, because INSERT OR
+  // REPLACE can add but never remove. Detecting a revert would mean snapshotting
+  // the table BEFORE the migration loop, which is a different change.
   //
   // ⚠️ Effect measured before committing: 1,595 -> 248 terms (0.155x), so the
   // FIRST export after this refuses on the shrink guard and needs a deliberate

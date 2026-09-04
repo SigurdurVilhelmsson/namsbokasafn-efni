@@ -1,0 +1,16 @@
+{
+  "ran": "2026-09-04T19:17:09.410Z",
+  "reverted": [
+    {
+      "slug": "lifraen-efnafraedi",
+      "before": [
+        "chemistry",
+        "biology",
+        "physics"
+      ],
+      "after": [
+        "chemistry"
+      ]
+    }
+  ]
+}

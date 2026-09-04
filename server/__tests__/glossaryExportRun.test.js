@@ -1700,6 +1700,20 @@ describe('runGlossaryExport — the EXACT outcome strings (C14 ② amendment D6)
     expect(outcomeOf('prufubok')).toBe('adopted');
   });
 
+  it("'refused-growth' — an unreviewed explosion is refused, and the write does NOT happen", () => {
+    // §C119. This block exists because until it did, a typo in an outcome name
+    // was invisible while /api/health quietly stopped recognising it as a
+    // refusal — so a NEW refusal outcome belongs here on the day it ships.
+    // Asserts the bytes too: the point of a refusal is that nothing is written.
+    // seedBook, NOT seedRefreshable: the latter takes ONE argument and would
+    // have silently ignored a seed size, leaving this test passing for a
+    // different reason than the one written above it. Caught by reading the
+    // helper after the test already went green.
+    seedBook('prufubok', JSON.stringify(payload(approved(200))));
+    run({ exportFn: () => payload(approved(1000)) });
+    expect(outcomeOf('prufubok')).toBe('refused-growth');
+  });
+
   it("'refused-empty-census' — an un-extracted book is REFUSED, not an error", () => {
     // Whole-branch adversarial review, 2026-08-09. An empty census threw, the
     // caller counted it as an error, and `errors > 0` returns 1 BEFORE

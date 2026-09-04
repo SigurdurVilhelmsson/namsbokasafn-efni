@@ -223,6 +223,8 @@ for i in $(seq 1 30); do
                 return 'the committed file was written by another producer, so writing would SWAP producers; --adopt migrates it (--force may ALSO be needed if the adoption then trips the shrink gate) — run: '+EXPORTER+' --book '+slug+' --adopt';
               if(outcome==='refused-shrink')
                 return 'this needs --force, NOT --adopt; read both term counts in the status file before deciding — run: '+EXPORTER+' --book '+slug+' --force';
+              if(outcome==='refused-growth')
+                return 'the export would ADD terms far faster than a normal refresh; this is the §C119 guard, and it needs --force, NOT --adopt. READ THE NEW TERMS FIRST — an unreviewed explosion is how 768 headwords, 119 of them harmful, reached one book — run: '+EXPORTER+' --book '+slug+' --force';
               if(outcome==='refused-absent-baseline')
                 return 'this book has no committed glossary, so there is nothing to compare against and BOTH gates are inert — a first export is unreviewed by construction. --force does NOT substitute here (it answers whether a shrink is intended). Decide what this book’s glossary should be, then run: '+EXPORTER+' --book '+slug+' --adopt';
               if(outcome==='refused-no-mapping')

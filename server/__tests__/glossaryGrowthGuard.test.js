@@ -101,6 +101,24 @@ describe('growthVerdict', () => {
     expect(GROWTH_MIN_DELTA).toBeLessThan(768);
   });
 
+  // PINS THE RATIO CLAUSE ITSELF, not just its value. Without this, DELETING
+  // `next > prev * GROWTH_RATIO` leaves every other assertion green — measured,
+  // 14/14 — because each one is decided by the DELTA. Even "permits the
+  // legitimate 2006 -> 2090" passes on its delta of 84 being under the floor.
+  // The discriminating case is a LARGE delta with a SMALL ratio, which no other
+  // fixture has.
+  //
+  // ▶ Mutating a constant tests that its VALUE matters; only deleting the term
+  //   tests that the TERM matters. GROWTH_RATIO = 2.0 went red and felt like
+  //   proof — it only proved the value mattered for cases the delta decided.
+  it('permits a LARGE absolute jump whose ratio is small — the ratio clause earns its place', () => {
+    expect(growthVerdict(g(10000), g(10200)).refuse).toBe(false);
+  });
+
+  it('and still refuses when that same delta comes with a big ratio', () => {
+    expect(growthVerdict(g(200), g(400)).refuse).toBe(true);
+  });
+
   it('reports both sides so the operator can judge before forcing', () => {
     const v = growthVerdict(g(827), g(1595));
     expect({ p: v.prevTotal, n: v.nextTotal }).toEqual({ p: 827, n: 1595 });
