@@ -41,6 +41,16 @@ describe('01-source overwrite path removed (PROV-1)', () => {
       'render-oracle-check.js', // read-only: §C118 T0/T3 — reads 01-source CNXML and the committed openstax-id-manifest.json, renders in memory and compares; VERIFIED its ONLY fs calls are existsSync/readFileSync (no writeFileSync/mkdir/rename/unlink anywhere in the file), and it writes no file at all, not even a report.
       'repair-emphasis.js', // read-only: reads source CNXML only as a fidelity-guard baseline; writes land in 03-translated/
       'resolve-embeds.js', // read-only: scans source CNXML for iframe embeds; writes a book-root embed-mapping.json
+      // NEVER writes 01-source — it REFUSES to. The reference is the containment check added
+      // 2026-09-05 after a provenance audit proved that a traversing `outputName` in the
+      // committed image-mapping.json escaped media/ into 01-source/ AND still returned ok:true.
+      // The published target's dirname must now BE <book>/media/, which also refuses an absolute
+      // path. Its only write is copyFileSync to that verified target, plus the sidecar.
+      // ⚠️ This entry exists because the guard greps SOURCE TEXT, so the comment explaining the
+      // prohibition trips the pin that enforces it — the shape [[engineering-lessons]] records.
+      // Classifying it here is the review the tripwire is asking for; do not strip comments
+      // instead, or the next such comment goes unreviewed.
+      'publish-figure-svg.js',
       'resolve-os-embed.js', // writes: downloads exercise JSON + images into 01-source/exercises,media (not CNXML)
       'source-roundtrip-check.js', // read-only: §C118 T2 — reads 01-source CNXML, runs the extract->inject(EN) round-trip in memory and diffs it against that same source; VERIFIED its ONLY fs calls are existsSync/readFileSync (a grep for write verbs matches once, on `norm(own)` — the substring `rm(` — and nothing else), and it writes no file at all.
       'translate-chapter-titles.js', // read-only: reads collection-order.json; writes server/data/<book>.json
