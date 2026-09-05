@@ -41,6 +41,29 @@ Runbook item 1.4 was "[LEAD], needs domain knowledge" and unmeasured. It is meas
 - ✅ **[USER] ruling 2026-09-05 — `si`: a chemical symbol keeps its symbol.** `SI` (units) and `Si` (silicon) are distinct by case and neither may be translated. *(§C116 already matches ≤3-char headwords case-sensitively, so the two do not truly collide on the wire; G1 lowercases for its collision test, which is why it reports one.)*
 - 📌 **`plus`/`minus` — recommendation is DELETE, on the §C73 control.** English `plus` occurs **415** times in chemistry; the committed Icelandic (produced under an older glossary, so an unprompted control) contains *plús* **9** times with **0** occurrences left untranslated. The model is choosing contextually where a flat map would force *plús* on all 415.
 
+### 📌 QUEUED FOR THE NEXT PROD DEPLOY — TWO GLOSSARY REMOVALS, ONE WINDOW
+
+Both need the **prod** concept model (this box has no `concept_term` table) and both need a one-time
+`export-terminology.js --force` afterwards, because the export SHRINKS and the cron passes no
+override. **Bundle them into one deploy.**
+
+| set | rows | file | scope |
+|---|---|---|---|
+| §C120 chemistry harmful headwords | **86** (incl. `SI`, `Si`) | [`test-results/c120-chemistry-glossary-removal-set-2026-09-05.tsv`](../../test-results/c120-chemistry-glossary-removal-set-2026-09-05.tsv) | chemistry |
+| §C122 `plus`/`minus` | **2** | [`test-results/c122-plus-minus-removal-set-2026-09-05.tsv`](../../test-results/c122-plus-minus-removal-set-2026-09-05.tsv) | chemistry only — organic's 249-term glossary is already clean |
+
+🔴 **[USER] RULING 2026-09-05 — `plus`/`minus` are DELETED, on the §C73 control.** This **REVERSES** a
+prior decision recorded in `remove-wrong-sense-headwords.js`'s own header, and project memory had
+recorded the reversal backwards ("KEPT") for part of a day — **corrected**. The control is the
+argument: English `plus` occurs **415** times in chemistry and the committed Icelandic (produced
+under an older glossary, so unprompted) contains *plús* **9** times with **0** occurrences left
+untranslated. **The model already chooses contextually where a flat map would force *plús* on 415.**
+
+⚠️ **`main`'s TWO RED GLOSSARY PREMISE PINS (`remt-checks-glossary` G2/G3, `remt-sweep`'s tier-0
+blocking bar) ARE WAITING ON EXACTLY THIS** — they cannot be written until the removal lands, so
+**every PR inherits an 11-file / 22-assertion floor until then.** Tolerable for a deploy window;
+a problem if it sits for weeks.
+
 ### Single next action
 
 **Step 0 of the loop: finish both ch03s end to end.** 0 ISK, and it is what proves the loop before anything else is bought.
@@ -202,7 +225,9 @@ On mismatch, keep the **translation** and strip that type's markers to plain tex
 
 ▶ **CONTROL — every ch03 module fell the same way**, so this is the cleanup, not a quirk of m00037: m00031 41→17 · m00032 79→23 · m00033 67→16 · m00034 42→10 · m00035 56→13 · m00036 62→21 · **m00037 69→16** · m00038 148→41.
 
-🔴 **AND THE MECHANISM IS §C121's OWN SHADOWING, RUNNING IN THE HELPFUL DIRECTION.** Neither glossary contains any `conform*` headword, so this is **not** "the glossary told the model both words are the same". But **`form → tilbrigði` was on the wire on 09-01 and is gone on 09-05**, and `form` matches *conformations* / *conformational* **by substring** — 4 characters, one past §C116's ≤3-char word-boundary protection. **The 09-01 output rendered *conformations* as `afbrigði`** — a `-brigði` word, the same shape as `tilbrigði`. ▶ **So the 09-01 success was ITSELF glossary-influenced by the §C121 defect; removing the shadow removed the scaffolding that had been holding three distinct term spans apart.** The cleanup was still right — it fixed three reader-visible corruptions — but **this degradation is its side effect, not an independent event.**
+📌 **THE LEADING HYPOTHESIS FOR THE MECHANISM — AND IT IS A HYPOTHESIS, NOT A MEASUREMENT: §C121's OWN SHADOWING, RUNNING IN THE HELPFUL DIRECTION.** ⚠️ **What is measured above is a CORRELATION (the glossary shrank, the module degraded) PLUS a plausible pathway. The glossary has NOT been isolated from the model**, which may also have moved between the two dates. Neither glossary contains any `conform*` headword, so this is **not** "the glossary told the model both words are the same". But **`form → tilbrigði` was on the wire on 09-01 and is gone on 09-05**, and `form` matches *conformations* / *conformational* **by substring** — 4 characters, one past §C116's ≤3-char word-boundary protection. **The 09-01 output rendered *conformations* as `afbrigði`** — a `-brigði` word, the same shape as `tilbrigði`. ▶ **If it holds, the 09-01 success was ITSELF glossary-influenced by the §C121 defect** — removing the shadow removed scaffolding that had been holding three distinct term spans apart. The cleanup would still be right; the degradation would be its side effect rather than an independent event.
+
+✅ **THE PROBE THAT SETTLES IT COSTS 0 ISK AND IS THE ONE §C122 ALREADY PRESCRIBES — AN IDENTITY MT IS NOT ENOUGH HERE; THIS NEEDS A PAIRED GLOSSARY ARM.** Send `m00037-segments.en.md` twice **on the same day, same model**: once with the 827-term 09-01 glossary, once with the 249-term 09-05 one, and count `[[term:]]` spans returned. **3 vs 2 proves the glossary; 2 vs 2 proves the MODEL moved and this entry is WRONG.** ▶ **Do not cite this section as settled until that arm has run.**
 
 ⚠️ **CONSEQUENCE FOR THE DECISION GATE BELOW, AND IT CHANGES WHAT "RECURS" MEANS: the count-guard base rate is a FUNCTION OF GLOSSARY SIZE.** A chapter bought under the 827-term glossary and one bought under the 249-term glossary are **different populations**. Recurrence must be measured on chapters bought under the NEW glossary only; pre-cleanup runs are not a baseline for it.
 
