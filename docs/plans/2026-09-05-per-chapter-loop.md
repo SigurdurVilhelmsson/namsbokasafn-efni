@@ -104,15 +104,12 @@ in that file.** → register §C123 and the M4 ledger entry.
 
 ## Step 0 — before any new chapter: finish the two that are bought
 
-🔴 **TWO CHAPTERS HAVE BEEN PAID FOR AND NEITHER HAS REACHED A READER.** Closing them costs 0 ISK,
-proves the loop end to end, and is the precondition for trusting any of it.
+🔴 **REWRITTEN 2026-09-05 (evening) — EVERY CLAIM IN THE PREVIOUS VERSION OF THIS BLOCK WAS STALE, INCLUDING ITS HEADLINE.** It read *"TWO CHAPTERS HAVE BEEN PAID FOR AND NEITHER HAS REACHED A READER"*. **Measured by fetching the content files: BOTH are live** — chemistry 9 of 10 pages, organic 11 of 13 (2026-09-02 vintage). **What has not reached a reader is the RE-MT'd version of either.** ▶ **A sync is an UPDATE, and a hold withholds an improvement rather than protecting a reader.** *(A page URL 200s for everything — only the content file and its byte size mean anything.)*
 
-- **Chemistry ch03** — re-extracted, re-MT'd 2026-09-01, injects 5/5 COMPLETE, and **was never
-  rendered**. Its new Icelandic is in `03-translated` and absent from `05-publication`.
-- **Organic ch03** — injected and rendered, **not published**: the live site 404s the new slug and
-  still serves the July render. ⚠️ **And its rendered pages MIX September module bodies with JULY
-  exercises** — the September exercise MT was paid for and never assembled, so the separate
-  exercise-assembly step must run before this chapter is published, or readers get a half-new page.
+⏹ **BOTH CHAPTERS ARE NOW HELD, AND NEITHER HOLD IS FREE TO LIFT:**
+
+- **Chemistry ch03** — re-extracted, re-MT'd 2026-09-01, injected, **rendered** (PR #449). 🔴 **HELD: it was bought under the CONTAMINATED glossary and its RENDERED pages carry the damage** — `tilbrigði` ×1, `sjálfkvæm*` ×2, `ílend*` ×1 (control `mól` = 334). **[USER] 2026-09-05: re-MT it against a clean glossary before it syncs.** → **M1 then M2**. The repair is **paid**; no free re-run reaches it, because the wrong words are in the translation itself.
+- **Organic ch03** — re-MT'd against the clean glossary, September exercises **assembled**, injected (7 of 8; `m00037` refused), **rendered**. 🔴 **HELD on §C123: 117 of 198 `alt` attributes on its pages are English**, and they are **already live** — so the hold withholds the §C121 terminology fix rather than shielding readers from the alts. → **M3 then M4**. ⚠️ `m00037` is ledger item **M4 (⚒️)**, editor-fixable, and its route is now proven — see the frozen pipeline model.
 
 ---
 
@@ -129,7 +126,9 @@ tool exits with stdout in flight).
 |---|---|---|---|
 | G1 | chemistry | `SI` → *alþjóðlega einingakerfið*, `Si` → *kísill* | **[USER] 2026-09-05: a chemical symbol keeps its symbol.** Neither casing may be translated. |
 | G3 | both books | `plus` → *plús*, `minus` → *mínus* | see the §C73 control below |
-| — | chemistry | **85 of §C119's 127 harmful headwords** are in chemistry's committed glossary | chemistry still resolves through the `physics + biology` fallback that was removed from organic |
+| — | chemistry | harmful headwords remain in the committed glossary | chemistry still resolves through the `physics + biology` fallback that was removed from organic |
+
+🔴 **THAT ROW USED TO SAY "85 of §C119's 127" AND CITING IT AS THE FIX IS THE TRAP.** The frozen §C120 set built from it **does NOT discharge §C121** — verified with a control: it holds `established` and `fall` but **NOT** `double`, `functional`, `multiple`, `form`, `consistent`, all five still `approved` in chemistry. §C119 audited **ORGANIC**; only `Si` is new. **Build a corrected set — the count is not the point, the coverage is.** → register **§C126**, milestone **M1**.
 
 ▶ **All four contested rows are `domain: physics`.** They are the same fallback contamination
 §C119 fixed for organic, still present in the book the loop is about to spend money on.
