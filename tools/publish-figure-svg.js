@@ -141,7 +141,28 @@ export function publishFigureSvg({ sidecarPath, svgPath, metaPath }) {
     return { ok: false, reason: 'no-svg', message: `Composed SVG not found: ${svgPath}` };
   }
 
-  const target = path.join(bookDir, 'media', entry.outputName);
+  // 🔴 CONTAINMENT, BEFORE THE WRITE. `outputName` arrives from a committed JSON data
+  // file, so it is data, not a literal — and `path.join` happily resolves `../` out of
+  // `media/` and into `01-source/`, which holds the legally load-bearing OpenStax CNXML
+  // whose licence is fixed at the date the copy was obtained. A provenance audit proved
+  // both arms on 2026-09-05: the traversal wrote into the licensed tree AND the call
+  // still returned ok:true.
+  //
+  // A published figure is a FLAT file directly in media/, so the check is the strict
+  // one: same directory, not merely "somewhere underneath". That also refuses an
+  // absolute path, which `path.join` would otherwise treat as a plain segment.
+  const mediaDir = path.resolve(bookDir, 'media');
+  const target = path.resolve(mediaDir, entry.outputName);
+  if (path.dirname(target) !== mediaDir) {
+    return {
+      ok: false,
+      reason: 'unsafe-output-name',
+      message:
+        `image-mapping.json entry for ${basename} names an outputName that escapes ` +
+        `media/: ${JSON.stringify(entry.outputName)}. A published figure is a flat file ` +
+        `in the book's media/ directory; nothing may be written outside it.`,
+    };
+  }
   const replaced = fs.existsSync(target);
   fs.copyFileSync(svgPath, target);
 
