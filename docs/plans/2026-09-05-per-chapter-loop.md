@@ -43,6 +43,8 @@ For one chapter, in this order. **The chapter is not finished until step 5.**
 surfaced a defect class that the previous one did not. Fixing before the next buy is what stops a
 defect being paid for 23 times.
 
+📐 **The pipeline model this loop runs on — `mt-preview` baseline, `faithful` per-module overlay — is a frozen design record: [`docs/decisions/2026-09-05-mt-preview-baseline-faithful-overlay.md`](../decisions/2026-09-05-mt-preview-baseline-faithful-overlay.md). Read it before reasoning about where an editorial fix lands.**
+
 🔴 **STEP 6 HAS A DESTINATION NOW, AND IT DID NOT BEFORE — ADDED 2026-09-05 AFTER [USER] ASKED WHETHER
 EDITOR-FIXABLE ISSUES WERE ACTUALLY BEING LOGGED. BY THIS ROUTE THEY WERE NOT.** This row said only
 *"fix what the chapter surfaced"* and named no artifact, so run-surfaced items landed in the register's
