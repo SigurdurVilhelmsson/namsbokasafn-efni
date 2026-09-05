@@ -25,7 +25,11 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const { growthVerdict, GROWTH_RATIO, GROWTH_MIN_DELTA } = require('../lib/glossaryExportDecision.js');
+const {
+  growthVerdict,
+  GROWTH_RATIO,
+  GROWTH_MIN_DELTA,
+} = require('../lib/glossaryExportDecision.js');
 
 const g = (n, approved = n) => ({
   terms: Array.from({ length: n }, (_, i) => ({

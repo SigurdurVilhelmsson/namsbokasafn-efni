@@ -218,7 +218,9 @@ describe('scripts/deploy.sh health readout — glossary refusals (register C14, 
     // as well — the same two-risks-two-acknowledgements rule the shrink test
     // above pins from the other direction.
     const out = runReadout(staleBody('orverufraedi', 'refused-absent-baseline', 8 * D));
-    expect(out).toMatch(/^ {2}⚠ STALE orverufraedi: refused-absent-baseline \(8\.0d\) — unattended/m);
+    expect(out).toMatch(
+      /^ {2}⚠ STALE orverufraedi: refused-absent-baseline \(8\.0d\) — unattended/m
+    );
     expect(out).toMatch(/no committed glossary/);
 
     const cmds = printedCommands(out);
