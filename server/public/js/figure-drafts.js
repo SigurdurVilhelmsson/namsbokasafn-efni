@@ -52,8 +52,10 @@
    *        the payload the cards are about to be rebuilt from
    * @param {Object} live
    *        what is in the inputs right now, `{[basename]: {blocks, note}}`
-   * @param {{basename: string, blockKey: string}|null} justSaved
-   *        the block whose save triggered this rebuild, if any
+   * @param {{basename: string, blockKey?: string, note?: boolean}|null} justSaved
+   *        what this rebuild has just PERSISTED, and must therefore not carry
+   *        forward: `blockKey` for a block save, `note: true` for the note that
+   *        an approve/flag just submitted.
    * @returns {Object} the same shape as `live`, holding ONLY what to re-apply
    */
   function unsavedFigureEdits(serverFigures, live, justSaved) {
@@ -87,7 +89,15 @@
       // stored review note, rendered as its own paragraph), so anything in it is
       // unsent by definition — and was lost on every save, the same class of
       // defect as a sibling block.
-      if (pending.note) entry.note = pending.note;
+      //
+      // ⚠️ UNLESS THIS REBUILD IS WHAT SENT IT. `setFigureState` submits the
+      // note and then rebuilds; carrying it forward would re-apply it to the
+      // fresh input as though still unsent, show it twice (once as the stored
+      // note, once in the input), and let the next approval submit it AGAIN.
+      // Scoped per figure, like the block exemption: approving one figure must
+      // not discard a note being typed on another.
+      const noteConsumed = justSaved && justSaved.basename === basename && justSaved.note;
+      if (pending.note && !noteConsumed) entry.note = pending.note;
       if (Object.keys(entry).length > 0) out[basename] = entry;
     }
     return out;

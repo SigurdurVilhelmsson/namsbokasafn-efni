@@ -794,9 +794,11 @@
       return;
     }
     // Approving or flagging rebuilds the cards too, so it loses sibling typing
-    // by the same mechanism. No `justSaved`: this wrote a review state, not a
-    // block, so every block's live value is still the unsaved one.
-    await loadFigures(currentModuleId, { preserve: true });
+    // by the same mechanism. Every block's live value is still unsaved — this
+    // wrote a review state, not a block — but the NOTE was just submitted, so
+    // carrying it forward would show it twice and let the next approval send it
+    // again.
+    await loadFigures(currentModuleId, { preserve: true, justSaved: { basename, note: true } });
   }
 
   // Insert a repetition suggestion into a segment's edit box (still saved

@@ -286,7 +286,8 @@ loops stop converging). **They are recorded here because the branch's `deferred-
 a gitignored workspace and would otherwise die with it** — a correct record in an unreachable
 location is no record.
 
-**Two were flagged as worth acting on before merge:**
+**Two were flagged as worth acting on before merge — the first is now fixed, the second is still
+open:**
 - ✅ **FIXED 2026-09-05 — unsaved edits in sibling blocks are no longer discarded on every save.**
   *(As found: saving one block re-fetched and rebuilt every card from the payload, so corrections
   typed into other blocks were lost with no warning and no draft. The note input went the same

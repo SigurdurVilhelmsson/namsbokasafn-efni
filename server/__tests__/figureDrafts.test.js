@@ -91,6 +91,27 @@ describe('unsavedFigureEdits', () => {
     const live = { FigA: { blocks: {}, note: '' } };
     expect(unsavedFigureEdits(serverFigures(), live, null)).toEqual({});
   });
+
+  it('drops the note once approving or flagging has CONSUMED it', () => {
+    // setFigureState submits the note and then rebuilds. Without this the
+    // just-sent note is re-applied to the fresh input as though it were still
+    // unsent — and the next approval would submit it a SECOND time, while the
+    // card shows it twice: once as the stored note, once in the input.
+    const live = { FigA: { blocks: {}, note: 'athugasemd' } };
+    const out = unsavedFigureEdits(serverFigures(), live, { basename: 'FigA', note: true });
+    expect(out).toEqual({});
+  });
+
+  it('keeps another figure’s note when one figure’s note is consumed', () => {
+    // The exemption is per figure, like the block one: approving FigA must not
+    // discard a note being typed on FigB.
+    const live = {
+      FigA: { blocks: {}, note: 'sent' },
+      FigB: { blocks: {}, note: 'still typing' },
+    };
+    const out = unsavedFigureEdits(serverFigures(), live, { basename: 'FigA', note: true });
+    expect(out).toEqual({ FigB: { note: 'still typing' } });
+  });
 });
 
 describe('draft keys', () => {

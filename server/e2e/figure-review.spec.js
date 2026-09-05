@@ -329,9 +329,12 @@ test.describe('Figure review card', () => {
 
     // CONTROL: the block that WAS saved must not be marked unsaved, or the
     // marker would mean nothing — everything would carry it after every save.
+    //
+    // ⚠️ The one-argument form asserts ABSENCE. `not.toHaveAttribute(name, '')`
+    // reads the same but only denies that exact VALUE, so a stray
+    // data-block-unsaved="x" would sail through the control.
     await expect(blockRow(page, ALCHEMIST, DECIMAL_BLOCK_KEY)).not.toHaveAttribute(
-      'data-block-unsaved',
-      ''
+      'data-block-unsaved'
     );
   });
 
