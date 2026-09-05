@@ -176,6 +176,24 @@ describe('scripts/deploy.sh health readout — glossary refusals (register C14, 
     expect(out).not.toMatch(/run --adopt/);
   });
 
+  it('a STALE refused-growth gets its own remedy, not "unrecognised refusal"', () => {
+    // §C119 added the outcome; without a branch here the remedy map falls
+    // through to 'unrecognised refusal — read the status file on the box',
+    // on the one routine surface an operator actually reads. Same shape as
+    // the shrink case below: --force, never --adopt.
+    const out = runReadout(staleBody('lifraen-efnafraedi', 'refused-growth', 9 * D));
+    expect(out).toMatch(/^ {2}⚠ STALE lifraen-efnafraedi: refused-growth \(9\.0d\) — unattended/m);
+    expect(out).not.toMatch(/unrecognised refusal/);
+    expect(out).toMatch(/needs --force, NOT --adopt/);
+
+    const cmds = printedCommands(out);
+    expect(cmds).toHaveLength(1);
+    const parsed = parseArgs(cmds[0]);
+    expect(parsed.error).toBeNull();
+    expect(parsed.book).toBe('lifraen-efnafraedi');
+    expect(parsed.force).toBe(true);
+  });
+
   it('a STALE refused-shrink is told to use --force, NOT --adopt', () => {
     // --adopt overrides the PRODUCER gate and does nothing for a shrink. The
     // old advice named --adopt for every refused-* outcome alike.
@@ -200,7 +218,9 @@ describe('scripts/deploy.sh health readout — glossary refusals (register C14, 
     // as well — the same two-risks-two-acknowledgements rule the shrink test
     // above pins from the other direction.
     const out = runReadout(staleBody('orverufraedi', 'refused-absent-baseline', 8 * D));
-    expect(out).toMatch(/^ {2}⚠ STALE orverufraedi: refused-absent-baseline \(8\.0d\) — unattended/m);
+    expect(out).toMatch(
+      /^ {2}⚠ STALE orverufraedi: refused-absent-baseline \(8\.0d\) — unattended/m
+    );
     expect(out).toMatch(/no committed glossary/);
 
     const cmds = printedCommands(out);

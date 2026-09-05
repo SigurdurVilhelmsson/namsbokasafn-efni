@@ -254,11 +254,25 @@ describe('buildScope — the preference merge', () => {
   // test characterizes it, it does not endorse it.
   it('§C39: a preference on a merged-away concept is FOUND by english, names a termId no candidate carries, and now REPORTS it', () => {
     const { db } = freshMigratedDb();
-    // lifraen-efnafraedi is the pre-registered book whose priority list includes
-    // both biology and physics (§C35), so it plays the "chemistry book" role.
+    // lifraen-efnafraedi is a pre-registered book on a fresh migrated DB (§C35),
+    // which is the only reason it plays the "chemistry book" role here.
     const bookId = db
       .prepare("SELECT id FROM registered_books WHERE slug = 'lifraen-efnafraedi'")
       .get().id;
+    // ⚠️ SET THE SCOPE EXPLICITLY rather than inheriting it from domains.js.
+    // This block used to rely on that book's priority list happening to contain
+    // biology and physics, and broke the moment §C119 scoped organic to
+    // chemistry only — a test that hard-codes another module's DATA breaks on a
+    // data change and says nothing about the behaviour it pins. The mechanism
+    // here is the preference-on-a-merged-away-concept fault; the domains are
+    // just the two buckets the fixture needs, so it now owns them. Same idiom
+    // as registerChemistryWithConcepts above.
+    db.prepare('DELETE FROM book_domain_priority WHERE book_id = ?').run(bookId);
+    for (const [i, domain] of ['biology', 'physics'].entries()) {
+      db.prepare(
+        'INSERT INTO book_domain_priority (book_id, domain, position) VALUES (?, ?, ?)'
+      ).run(bookId, domain, i + 1);
+    }
     const { conceptId: absorbed, termId } = seedConcept(db, {
       domain: 'biology',
       en: 'accuracy',

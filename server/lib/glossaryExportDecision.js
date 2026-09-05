@@ -117,6 +117,70 @@ function shrinkVerdict(prev, next) {
 }
 
 /**
+ * §C119 — THE MIRROR OF SHRINK_RATIO, AND DELIBERATELY NOT ITS EXACT MIRROR.
+ *
+ * The shrink guard targets a catastrophic LOSS. Growth was structurally
+ * invisible to it, which is how `lifraen-efnafraedi` went 827 -> 1,595 in one
+ * unattended tick with every gate green — same producer stamp, baseline
+ * present, nothing to shrink — and shipped 768 unreviewed headwords of which
+ * 119 were confirmed harmful.
+ *
+ * THE THRESHOLD IS MEASURED, NOT CHOSEN. Exact symmetry with SHRINK_RATIO
+ * (0.5) would be 2.0, and the incident was 1.928x — a symmetric guard would
+ * have MISSED IT BY 3.6%. The observed values separate cleanly:
+ *   legitimate   chemistry 2,006 -> 2,090 = 1.042x   (must pass)
+ *   incident     organic     827 -> 1,595 = 1.928x   (must refuse)
+ *   trim rebound organic     172 ->   840 = 4.88x    (must refuse)
+ * 1.5 sits in the empty gap between 1.04 and 1.93. Do not raise it to 2
+ * for tidiness; the tidy value is the one that fails.
+ *
+ * Like the shrink guard: catastrophe, not drift, and `--force` is the same
+ * deliberate override — which the unattended cron cannot reach.
+ */
+const GROWTH_RATIO = 1.5;
+
+/**
+ * A RATIO ALONE IS MEANINGLESS ON SMALL COUNTS, and leaving it out broke 15
+ * existing tests in glossaryExportRun.test.js — whose fixtures seed ONE term
+ * and export five. 1 -> 5 is 5x and is not an explosion.
+ *
+ * This is the asymmetry with the shrink guard, and it is why the mirror needed
+ * measuring rather than assuming: shrinking from 2 terms harms nothing, so
+ * SHRINK_RATIO needs no floor, while ANY small seed trips a growth ratio.
+ *
+ * So an explosion must also be LARGE IN ABSOLUTE TERMS. The separation is wide:
+ *   fixtures        1 ->     5   delta     4   must pass
+ *   incident      827 -> 1,595   delta   768   must refuse
+ *   trim rebound  172 ->   840   delta   668   must refuse
+ * 100 sits in the empty gap between 4 and 668.
+ */
+const GROWTH_MIN_DELTA = 100;
+
+/**
+ * @returns {{refuse: boolean, prevApproved: number, nextApproved: number, prevTotal: number, nextTotal: number}}
+ */
+function growthVerdict(prev, next) {
+  const prevApproved = countApproved(prev);
+  const nextApproved = countApproved(next);
+  const prevTotal = countTerms(prev);
+  const nextTotal = countTerms(next);
+
+  // BOTH metrics, for the same reason shrinkVerdict uses both: a file whose
+  // terms are all needs_review has zero approved, so an approved-only test is
+  // structurally inert for it. The `> 0` guards are what make growth FROM AN
+  // EMPTY FILE permitted — there is no ratio to measure against nothing, and a
+  // first population is the absent-baseline gate's business (§C21), not this
+  // one's.
+  // BOTH the ratio AND a material absolute delta, per metric: a proportional
+  // jump that moves only a handful of terms is not the catastrophe this guards.
+  const exploded = (prev, next) =>
+    prev > 0 && next > prev * GROWTH_RATIO && next - prev >= GROWTH_MIN_DELTA;
+  const refuse = exploded(prevApproved, nextApproved) || exploded(prevTotal, nextTotal);
+
+  return { refuse, prevApproved, nextApproved, prevTotal, nextTotal };
+}
+
+/**
  * Categorical companion to shrinkVerdict (register C14 ② step 4).
  *
  * Evaluated BEFORE the shrink gate at the call site. Reporting "1117 → 709, a
@@ -144,6 +208,9 @@ module.exports = {
   countTerms,
   sameTerms,
   shrinkVerdict,
+  growthVerdict,
   producerVerdict,
   SHRINK_RATIO,
+  GROWTH_RATIO,
+  GROWTH_MIN_DELTA,
 };

@@ -60,7 +60,31 @@ const DOMAIN_SET = new Set(DOMAINS);
  */
 const BOOK_DOMAIN_PRIORITY = Object.freeze({
   'efnafraedi-2e': Object.freeze(['chemistry', 'physics', 'biology']),
-  'lifraen-efnafraedi': Object.freeze(['chemistry', 'biology', 'physics']),
+  // §C119 [USER] 2026-09-04 — ORGANIC IS CHEMISTRY-ONLY. The biology and
+  // physics fallback tiers put 872 biology and 475 physics headwords into an
+  // organic chemistry textbook's glossary, of which a full-coverage
+  // adversarial audit confirmed 119 harmful: `ants -> maurar` fires 180 times
+  // in the corpus and 179 of those are reactants/plants/constants/locants;
+  // `activate -> örva` also matches deactivate, INVERTING the chemistry in the
+  // one chapter organised around activating vs deactivating groups.
+  //
+  // ⚠️ THIS FILE IS THE ONLY PLACE THE CHANGE SURVIVES. book_domain_priority is
+  // DELETEd and re-INSERTed from here by migration 047 on every boot, so the
+  // same trim made in SQL lasts until the next restart — measured 2026-08-31,
+  // it lasted 102 seconds, with no error, no log line and no gate.
+  //
+  // ⚠️ AND NOTHING DETECTS THAT REVERT — an alarm was attempted and DROPPED as
+  // unworkable. Migration 046 runs immediately before 047 and does INSERT OR
+  // REPLACE from its own FROZEN copy of this map, so by the time 047 could look,
+  // the operator's deleted rows are already restored: a hand trim reads as "no
+  // change". Only an ADDED domain survives 046 to be seen, because INSERT OR
+  // REPLACE can add but never remove. Detecting a revert would mean snapshotting
+  // the table BEFORE the migration loop, which is a different change.
+  //
+  // ⚠️ Effect measured before committing: 1,595 -> 248 terms (0.155x), so the
+  // FIRST export after this refuses on the shrink guard and needs a deliberate
+  // one-time --force. That refusal is correct, not a bug.
+  'lifraen-efnafraedi': Object.freeze(['chemistry']),
   'liffraedi-2e': Object.freeze(['biology', 'anatomy-physiology', 'chemistry']),
   orverufraedi: Object.freeze(['biology', 'anatomy-physiology', 'chemistry']),
   'edlisfraedi-2e': Object.freeze([

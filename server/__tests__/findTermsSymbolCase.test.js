@@ -40,7 +40,7 @@ const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const terminologyService = require('../services/terminologyService');
 
-const BOOK = 'lifraen-efnafraedi'; // chemistry > biology > physics
+const BOOK = 'lifraen-efnafraedi'; // chemistry only since §C119 (was chemistry > biology > physics)
 
 let db;
 
