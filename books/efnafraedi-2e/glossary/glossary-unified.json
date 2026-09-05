@@ -1,10 +1,10 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-03T10:00:02.798Z",
+  "generated": "2026-09-05T06:00:03.295Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 2090,
-    "approved": 2090,
+    "total": 2091,
+    "approved": 2091,
     "ties": 311,
     "nominalTies": 124,
     "outOfScopeOnly": 1275,
@@ -149,6 +149,16 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4673,
+      "alternatives": []
+    },
+    {
+      "english": "Celsius",
+      "icelandic": "Celsíus",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70190,
       "alternatives": []
     },
     {
