@@ -395,6 +395,15 @@
     const reviewSection = document.getElementById('sidebar-section-review');
     const adminSection = document.getElementById('sidebar-section-admin');
 
+    // '/admin' is gated by requirePageAuth(ROLES.ADMIN), so a head-editor
+    // following this link was silently redirected to '/'. The rest of the
+    // Stjórnun section (Bókasafn, Úthlutanir) is legitimately theirs, so hide
+    // the one link rather than the section.
+    const navAdmin = adminSection && adminSection.querySelector('a[href="/admin"]');
+    if (navAdmin) {
+      navAdmin.style.display = effectiveRole === 'admin' ? '' : 'none';
+    }
+
     if (reviewSection) {
       reviewSection.style.display = showReviewer ? '' : 'none';
     }

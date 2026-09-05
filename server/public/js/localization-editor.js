@@ -801,12 +801,12 @@
         : '') +
       '</td>' +
       '<td class="col-en">' +
-      '<div class="segment-content">' +
+      '<div class="segment-content" tabindex="0">' +
       (enHtml || '<em style="color:var(--text-muted)">\u2014</em>') +
       '</div>' +
       '</td>' +
       '<td class="col-faithful">' +
-      '<div class="segment-content">' +
+      '<div class="segment-content" tabindex="0">' +
       (faithfulHtml || '<em style="color:var(--text-muted)">\u2014</em>') +
       '</div>' +
       '<button class="btn-copy-faithful" onclick="edCopyFaithful(\'' +

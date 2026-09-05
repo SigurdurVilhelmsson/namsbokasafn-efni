@@ -1416,10 +1416,10 @@
             ${conflictHtml}
           </td>
           <td class="col-en">
-            <div class="segment-content">${enHtml || '<em class="text-muted">' + UI.segmentEditor.noEnglish + '</em>'}</div>
+            <div class="segment-content" tabindex="0">${enHtml || '<em class="text-muted">' + UI.segmentEditor.noEnglish + '</em>'}</div>
           </td>
           <td class="col-is">
-            <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>
+            <div class="segment-content" tabindex="0" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>
             ${originalHint}
             ${termIssuesHtml}
             ${repetitionHint}

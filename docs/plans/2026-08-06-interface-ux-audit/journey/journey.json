@@ -1,0 +1,41 @@
+{
+  "steps": [
+    {
+      "n": 1,
+      "label": "home",
+      "note": "actionable elements in page body: [\"Nákvæmt yfirlit\"]"
+    },
+    {
+      "n": 2,
+      "label": "editor-empty",
+      "note": "book choices: 7 → [\"Veldu bók...\",\"Eðlisfræði 2e\",\"Efnafræði 2e\",\"Líffræði 2e\",\"Lífræn efnafræði\",\"Stjörnufræði\",\"Örverufræði\"]"
+    },
+    {
+      "n": 3,
+      "label": "book-chosen",
+      "note": "chapter choices: 23"
+    },
+    {
+      "n": 4,
+      "label": "chapter-chosen",
+      "note": "selects now on page: [{\"id\":\"book-select\",\"n\":7,\"opts\":[\"Veldu bók...\",\"Eðlisfræði 2e\",\"Efnafræði 2e\",\"Líffræði 2e\"]},{\"id\":\"chapter-select\",\"n\":23,\"opts\":[\"Hleður kafla...\",\"Kafli 1 — Grunnhugmyndir\",\"Kafli 2 — Atóm, sameindir og jónir\",\"Kafli 3 — Samsetning efna og lausna\"]}]"
+    },
+    {
+      "n": 5,
+      "label": "segments-loaded",
+      "note": "{\"textareas\":0,\"firstValue\":null,\"visibleChars\":1211,\"buttons\":[\"Ljóst\"]}"
+    }
+  ],
+  "editor": {
+    "textareas": 0,
+    "firstValue": null,
+    "visibleChars": 1211,
+    "buttons": [
+      "Ljóst"
+    ]
+  },
+  "errors": [
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}
