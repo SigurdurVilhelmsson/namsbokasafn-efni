@@ -2,6 +2,47 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
+## ⏩ RESUME — state as of 2026-09-05 · **RE-ORIENTED BY [USER]**
+
+🔴 **THE PROCEDURE NOW HAS ONE OWNER: [`2026-09-05-per-chapter-loop.md`](2026-09-05-per-chapter-loop.md). READ IT BEFORE RUNNING ANYTHING.** This block owns STATUS; that document owns the loop, its order and its gates.
+
+**The purpose, restated by [USER] because the work had drifted off it:** retire the old manual MT route — legacy code, legacy tags, legacy `02-mt-output` — by re-extracting and re-MT'ing **all of Chemistry 2e** and fully MT'ing **Organic**, ending with both books clean **and their figures translated**. 🔴 **FIGURES ARE A STEP INSIDE THE PER-CHAPTER LOOP, NOT A TRACK BESIDE IT** — [USER] ruling 2026-09-05. The figure-text register still owns figure DESIGN evidence; it no longer owns a sequencing decision, and its gate 2 ("let the re-MT land" before any images) is **withdrawn** as an inversion of the loop.
+
+**⏹ THE DUAL-SESSION WORK MODE IS TERMINATED** ([USER], 2026-09-05). One active session in this repo from now on. The cross-repo pairing rules in CLAUDE.md still apply to vefur; they no longer describe two efni sessions.
+
+### Where the campaign actually is — measured 2026-09-05, adversarially verified
+
+| | Chemistry 2e | Organic |
+|---|---|---|
+| chapters / modules | 23 / 149 | 31 / 342 |
+| re-extracted | **149/149** | **342/342** |
+| re-MT'd against that extraction | **ch03 only** | **ch03 only** (8 modules; 94% of the book untranslated) |
+| injects cleanly today | 58 — **91 refused** | 8 |
+| reached a reader | **no** | **no** |
+
+🔴 **NEITHER PAID CHAPTER HAS REACHED A READER, AND THAT IS THE CURRENT STEP.** Chemistry ch03 was injected and **never rendered**; organic ch03 was rendered and **never published**, and its pages **mix September module bodies with JULY exercises** because the September exercise MT was paid for and never assembled. Closing both costs **0 ISK**.
+
+⚠️ **THE DRIFT, STATED AS A NUMBER SO IT CANNOT BE ARGUED WITH: 124 of the last 124 commits (since 2026-09-03) touched no book content.** Both registers had stopped naming a next chapter.
+
+🔴 **CORRECTION TO THIS REGISTER'S OWN FIGURE: "94 of 149 chemistry modules cannot be re-injected" IS A MISCOUNT.** Re-measured by running the real injector over all 23 chapters in a sandbox: **91 refused / 58 written**. The historical run it described was **95/54**. ▶ **And the cause is bigger than staleness: 142 of 149 modules have had their English CHANGE since their MT was produced** — entirely extractor-side (`01-source` has not been touched since June; the re-extraction added 1,108 `alt` and 481 `entry` segments).
+
+⚠️ **PROVENANCE `generatedAt` IS NOT THE MT VINTAGE.** 144 of 149 chemistry provenance files are a backfill stamped 2026-06-30; the real vintage is **March 2026 for 121 modules**. Read `git log` on the `.is.md`, not the sidecar.
+
+### Preconditions — now three rows and one sweep, not an open question
+
+Runbook item 1.4 was "[LEAD], needs domain knowledge" and unmeasured. It is measured now:
+**G1** trips on chemistry only (`SI` → *alþjóðlega einingakerfið*, `Si` → *kísill*); **G3** trips on both (`plus`, `minus`). **All four rows are `domain: physics`** — the same fallback contamination §C119 removed from organic and chemistry still carries, along with **85 of §C119's 127 harmful headwords**.
+- ✅ **[USER] ruling 2026-09-05 — `si`: a chemical symbol keeps its symbol.** `SI` (units) and `Si` (silicon) are distinct by case and neither may be translated. *(§C116 already matches ≤3-char headwords case-sensitively, so the two do not truly collide on the wire; G1 lowercases for its collision test, which is why it reports one.)*
+- 📌 **`plus`/`minus` — recommendation is DELETE, on the §C73 control.** English `plus` occurs **415** times in chemistry; the committed Icelandic (produced under an older glossary, so an unprompted control) contains *plús* **9** times with **0** occurrences left untranslated. The model is choosing contextually where a flat map would force *plús* on all 415.
+
+### Single next action
+
+**Step 0 of the loop: finish both ch03s end to end.** Chemistry — render and publish. Organic — assemble the September exercises, re-render, hand vefur the redirect rows, then a **named-book** sync. 0 ISK, and it is what proves the loop before anything else is bought.
+
+_(Everything below this line is the previous RESUME, kept as evidence. Where it disagrees with this block, this block wins.)_
+
+---
+
 ## ⏩ RESUME — state as of 2026-09-04
 
 🔴 **§C119 — THE GLOSSARY TRIM WAS SILENTLY REVERTED BY MIGRATION 047 ON A DEPLOY RESTART, AND ORGANIC'S GLOSSARY NOW CARRIES 119 CONFIRMED-HARMFUL HEADWORDS. DO NOT PUSH PROD'S STRANDED COMMIT, AND DO NOT RENDER OR RE-MT ORGANIC FROM PROD UNTIL IT IS FIXED.** [USER] recalled the trim; everything below is measured.
