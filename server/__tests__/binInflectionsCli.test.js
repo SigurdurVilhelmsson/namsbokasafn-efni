@@ -291,11 +291,22 @@ describe('fetch-bin-inflections main()', () => {
   // for "absent from BÍN" and for "present, but nothing survives the base-form
   // filter". Folded together the tripwire still balances, so the loss is silent.
   it('buckets a BÍN word with no non-base form separately from an absent one', async () => {
+    // ⚠️ DELTAS, not absolutes. Migration 051 seeds house-style terms into every
+    // database on boot, so these buckets have a non-zero FLOOR before this test
+    // seeds anything ('Celsíus' is a single-word lang='is' candidate and is not
+    // in the fixture CSV, so it lands in notInBin). This is the discipline the
+    // file already states above: assert the PARTITION, never a total that
+    // happens to equal the fixture's row count.
+    // ⚠️ One REAL candidate before the baseline run: the emptiness guard now
+    // (correctly) refuses a database whose only candidates are 051's seeded
+    // rows, so a baseline taken before any seedTerm throws instead of counting.
+    seedTerm(db, 'zsolo');
+    const base = await run();
     seedTerm(db, 'zflat');
     seedTerm(db, 'zabsent');
     const rep = await run();
-    expect(rep.strings.baseFormOnly).toBe(1);
-    expect(rep.strings.notInBin).toBe(1);
+    expect(rep.strings.baseFormOnly - base.strings.baseFormOnly).toBe(1);
+    expect(rep.strings.notInBin - base.strings.notInBin).toBe(1);
   });
 
   // ⚠️ THE COUNTING UNIT, made concrete. concept_term is keyed (concept_id,
@@ -316,10 +327,15 @@ describe('fetch-bin-inflections main()', () => {
   });
 
   it('reports multi-word strings as skipped rather than dropping them silently', async () => {
+    // A DELTA, for the same reason as the notInBin test above: 051 seeds
+    // 'stig á Celsíus', which is legitimately multi-word and legitimately
+    // skipped, so the floor is not zero.
+    // Baseline AFTER the single-word seed, for the same reason as above.
     seedTerm(db, 'zsolo');
+    const base = await run();
     seedTerm(db, 'zafl zsolo');
     const rep = await run();
-    expect(rep.rows.multiWordSkipped).toBe(1);
+    expect(rep.rows.multiWordSkipped - base.rows.multiWordSkipped).toBe(1);
   });
 
   // ⚠️ Assert the PARTITION, never a total that equals the fixture's row count —

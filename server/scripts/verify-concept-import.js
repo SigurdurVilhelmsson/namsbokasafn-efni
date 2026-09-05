@@ -10,6 +10,7 @@
 // definitions until 2026-08-08 (register §C36 finding 5) — all measured clean,
 // with nothing keeping them clean. server/lib/domains.js is the one owner.
 const { DOMAIN_SET: DOMAINS } = require('../lib/domains');
+const { countImportedConcepts, countImportedTerms } = require('../lib/houseStyleTerms');
 
 /**
  * Icelandic term → a TAG naming which sense that term denotes.
@@ -54,7 +55,10 @@ function verifyConceptImport(db) {
   // this function is what callers GATE on. The thing that measured emptiness
   // could not stop a release, and the thing that stops a release could not
   // measure it — so the measurement belongs here too.
-  const conceptCount = db.prepare('SELECT COUNT(*) n FROM concept').get().n;
+  // ⚠️ IMPORTED concepts, not every row: migration 051 seeds house-style rows on
+  // every boot, and counting those made this gate pass on a database where
+  // nothing had ever been imported — measured through this very CLI.
+  const conceptCount = countImportedConcepts(db);
   add('model-is-non-empty', conceptCount > 0, `${conceptCount} concepts imported`);
 
   const noIs = db
@@ -254,8 +258,12 @@ function main(argv = process.argv.slice(2)) {
   }
   try {
     const { ok, checks } = verifyConceptImport(db);
-    const concepts = db.prepare('SELECT COUNT(*) c FROM concept').get().c;
-    const terms = db.prepare('SELECT COUNT(*) c FROM concept_term').get().c;
+    // Same scoping as the check above, and for the same reason: printing raw
+    // totals here beside a scoped verdict produced a self-contradicting readout
+    // — `✗ model-is-non-empty — 0 concepts imported` under `[yield: 2 concepts]`
+    // — on the one tool whose whole job is legibility.
+    const concepts = countImportedConcepts(db);
+    const terms = countImportedTerms(db);
     // The yield is printed BESIDE the verdict deliberately: every check counts
     // bad things and asserts the count is 0, so all of them pass trivially on an
     // empty database.

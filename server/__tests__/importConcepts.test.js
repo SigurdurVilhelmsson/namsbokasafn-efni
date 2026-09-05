@@ -12,6 +12,7 @@ const require = createRequire(import.meta.url);
 const Database = require('better-sqlite3'); // only for the bare-connection pragma check below
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const { importConcepts } = require('../scripts/import-concepts');
+const { countImportedConcepts, countImportedTerms } = require('../lib/houseStyleTerms');
 
 let db;
 beforeEach(() => {
@@ -32,7 +33,10 @@ describe('importConcepts', () => {
       ])
     );
     expect(r.imported).toBe(2);
-    expect(db.prepare('SELECT COUNT(*) n FROM concept').get().n).toBe(2);
+    // ⚠️ IMPORTED rows, not every row: migration 051 seeds house-style concepts
+    // into every database on boot, so a whole-table count no longer means
+    // "what this import produced".
+    expect(countImportedConcepts(db)).toBe(2);
   });
 
   it('keeps two entries sharing an English string APART — this is the whole point', () => {
@@ -54,7 +58,11 @@ describe('importConcepts', () => {
 
   it('assigns the domain from the collection', () => {
     importConcepts(db, payload([{ id: 5, words: [w('IS', 'ediksgerla')] }], 'PODDUR'));
-    expect(db.prepare('SELECT domain FROM concept').get().domain).toBe('biology');
+    // Keyed on the imported entry: an unqualified SELECT returns an arbitrary row,
+    // and 051's house-style concepts now share the table.
+    expect(db.prepare('SELECT domain FROM concept WHERE idordabanki_id=5').get().domain).toBe(
+      'biology'
+    );
   });
 
   it('imports a PODDUR entry with no English side', () => {
@@ -80,8 +88,11 @@ describe('importConcepts', () => {
     const p = payload([{ id: 9, words: [w('EN', 'atom'), w('IS', 'frumeind')] }]);
     importConcepts(db, p);
     importConcepts(db, p);
-    expect(db.prepare('SELECT COUNT(*) n FROM concept').get().n).toBe(1);
-    expect(db.prepare('SELECT COUNT(*) n FROM concept_term').get().n).toBe(2);
+    // ⚠️ IMPORTED rows, not every row: migration 051 seeds house-style concepts
+    // into every database on boot, so a whole-table count no longer means
+    // "what this import produced".
+    expect(countImportedConcepts(db)).toBe(1);
+    expect(countImportedTerms(db)).toBe(2);
   });
 
   it('rejects an unknown collection loudly rather than guessing a domain', () => {

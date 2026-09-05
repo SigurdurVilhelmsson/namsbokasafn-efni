@@ -28,6 +28,7 @@
  * comment is never seen at runtime.
  */
 const fs = require('fs');
+const { HOUSE_STYLE_SOURCE } = require('../lib/houseStyleTerms');
 const path = require('path');
 const {
   loadBinEntries,
@@ -222,6 +223,21 @@ async function main(argv) {
       .get().c;
   const alreadyPopulatedBefore = countPopulated();
 
+  // 🔴 "IS THE CONCEPT MODEL EMPTY?" MUST IGNORE ENFORCEMENT-SEEDED ROWS.
+  // Migration 051 puts house-style terms into every database on every boot, so
+  // 'Celsíus' is always a candidate and `rows.length === 0` stopped being
+  // reachable — which silently killed the refusal below, on the exact operator
+  // mistake it was written for (DEFAULT_DB is the production sessions.db).
+  // ⚠️ 'Celsíus' remains a LEGITIMATE candidate and is still processed; only the
+  // emptiness JUDGEMENT excludes it. Same rule, same constant, as
+  // verify-concept-import.js — see server/lib/houseStyleTerms.js.
+  const importedCandidates = db
+    .prepare(
+      `SELECT COUNT(*) n FROM concept_term
+        WHERE lang='is' AND text NOT LIKE '% %' AND source IS NOT ?`
+    )
+    .get(HOUSE_STYLE_SOURCE).n;
+
   const emptyReport = () => ({
     strings: {
       total: 0,
@@ -257,9 +273,9 @@ async function main(argv) {
   // corpus ALSO returns zero candidates — that is the idempotent no-op the gate
   // exists to demonstrate. `alreadyPopulatedBefore`, measured above, is the
   // discriminator; without it a correct implementation fails its own gate.
-  if (rows.length === 0) {
+  if (rows.length === 0 || (importedCandidates === 0 && alreadyPopulatedBefore === 0)) {
     db.close();
-    if (alreadyPopulatedBefore === 0) {
+    if (importedCandidates === 0 && alreadyPopulatedBefore === 0) {
       throw new Error(
         `no candidate rows in ${args.db}, and NO row is populated either: concept_term holds no ` +
           "single-word lang='is' row at all. If this is a dev box, the concept model is empty — " +
