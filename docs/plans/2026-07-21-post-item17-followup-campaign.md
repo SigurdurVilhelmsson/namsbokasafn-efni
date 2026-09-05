@@ -223,6 +223,49 @@ a problem if it sits for weeks.
 On mismatch, keep the **translation** and strip that type's markers to plain text, instead of degrading to English. No wire change, so no §C118 ⑲ exposure, and the reader gets Icelandic prose.
 ⚠️ **But it converts a translation failure into a FIDELITY failure:** the `<term>` elements vanish from the injected CNXML, so `source-roundtrip-check` reports `tagCountDeltas {term: -3}` against `01-source` — and losing 3 term links is a bigger loss than the 1 that numbering would forfeit. **Recorded so it is not re-proposed as the easy option.**
 
+### §C126 — THE RE-MT PRE-FLIGHT CENSUS. **[USER] 2026-09-05: *"anything potentially requiring re-MT must be resolved before continuing translation"*** — 26 agents, adversarially verified
+
+🔴 **THE HEADLINE, AND IT OVERTURNS THIS REGISTER'S OWN QUEUED REMEDY: THE §C120 REMOVAL SET DOES NOT FIX §C121.** Re-verified by hand against the frozen TSV, with `fall` as a positive control matching in the same command:
+
+| headword | in the §C120 removal set | still `approved` in chemistry's glossary |
+|---|---|---|
+| `established → ílendur` | ✅ 1 | yes (biology) |
+| `fall` *(control)* | ✅ 1 | — |
+| **`double → stjörnupar`** | ❌ **0** | **yes (physics)** — a double STAR |
+| **`functional → felli`** | ❌ **0** | **yes (physics)** |
+| **`multiple → heilfeldi`** | ❌ **0** | **yes (physics)** |
+| **`form → tilbrigði`** | ❌ **0** | **yes (biology)** |
+| **`consistent → sjálfkvæmur`** | ❌ **0** | **yes (physics)** |
+
+▶ **Landing the 86-row set as frozen leaves live the exact three shadows that cost ~742 ISK to re-buy organic ch03.** The set is 85 rows carried over from §C119, which was **organic's** audit — only `Si` is new — so **chemistry's ~1,600 non-chemistry-domain rows have never been judged against chemistry prose at all.** That is the largest unquantified exposure on this list.
+
+🔴 **AND IT IS NOT PROSPECTIVE ANY MORE. §C117 filed itself as *"INVENTORY ONLY — nothing on disk is damaged"*; that was true on 2026-08-31 and became FALSE on 2026-09-01** when chemistry ch03 was bought under this glossary. **Measured in the committed MT *and* in the rendered pages queued for publication** (control `mól` = 334, so the search works): `tilbrigði` ×1, `sjálfkvæm*` ×2, `ílend*` ×1, `felli*` ×2 in `02-mt-output`.
+
+⚠️ **A PLAUSIBLE FIX THAT WOULD NOT HAVE WORKED, RECORDED SO IT IS NOT REACHED FOR: word-boundary matching does NOT prevent §C121.** `functional`, `double` and `multiple` all occur as real, word-bounded English — *"functional group"*, *"double bond"*. **Only removal, or longest-match-wins in `filterGlossaryForText`, reaches them.**
+
+⚠️ **THE 29 §C117 ROWS ARE NOT A FLAT SET — 24 class-A (delete) · 3 class-B (editorial ruling) · 2 class-C (`ln`, `Sm` — DO NOT DELETE).** Handing all 29 to `remove-wrong-sense-headwords.js` deletes correct terms.
+⚠️ **The "export will refuse the shrink, use `--force`" recipe is WRONG for this cut** — 88 of 2,091 is ~4.2%, far above `SHRINK_RATIO`. The conclusion is unchanged (prod DB change → deploy → one cron tick) but the operational step was inherited from organic's 1,595→248 cut, which genuinely does trip it.
+🔴 **VERIFICATION IS RE-READING `books/efnafraedi-2e/glossary/glossary-unified.json` AND RE-RUNNING THE INTERSECTION TO ZERO.** Merging is step 1 of 3; merge ≠ deploy ≠ export tick.
+
+### The pre-flight checklist — blockers are DISJOINT BY BOOK
+
+| # | must fix before buying | book | scope |
+|---|---|---|---|
+| 1 | **the glossary, verified by re-reading the file** | **chemistry only** | organic is clean: 249/249 `domain: chemistry`, all three shadows absent, all three victims present. A verifier measured **135 of 136 chemistry `chNN` modules (99.3%)** receive ≥1 harmful headword — so this bites *whichever* chapter is next. |
+| 2 | **`extractDocumentTitle`'s pure-text capture** (`tools/lib/cnxml-parser.js:52`) | **organic only** | `[^<]+` cannot match a title whose first child is an element, so the lazy scan **donates a later pure-text `<title>`** — a section's *"Problems"*, a figure's *"MECHANISM"* — or falls through to `'Untitled'`. It is billed and written into the reader-visible `<h1>`. **32 of 342 modules, a SATURATED 32/32 of markup-bearing titles ⇒ a CATEGORY.** Chemistry is **0 of 149** and structurally so. |
+| 3 | **exercise `<img alt>` → segments** (§C123) | **organic only** | 2,375 strings / **288,603 chars** across 1,961 exercise JSONs. ⚠️ **CHEMISTRY IS STRUCTURALLY ZERO — `books/efnafraedi-2e/01-source/exercises` does not exist**; its exercises are inline CNXML already on the covered path. |
+| 4 | **`table@summary` — RULE it, do not fix it** | **both** | 189 chemistry (82 of 149 modules) + 19 organic. **Not forcing today, but both freshly-bought clean chapters are ALREADY exposed**, so a later "translate it" ruling re-buys them. ⚠️ The repo already calls this *"structural, not an oversight"* (`2026-07-30-target-architecture-assessment…:356`). **Ruling it now costs one decision; ruling it in six chapters costs six chapters.** |
+
+🔴 **THE ORDERING META-RULE, VERIFIED IN CODE: `addSegment` runs `counters.segment++` for EVERY segment BEFORE `generateSegmentId` (`cnxml-extract.js:759-761`), so ANY addition or removal ANYWHERE in a module renumbers every later `auto-N` in it** — an id-keyed insertion does it just as surely as a positional one. Corollaries:
+- **The alt fix is a DESIGN choice before it is a code change, and the choice decides whether 31 bought chapters survive.** Exercise ids are `{nickname}:{type}:b{k}` where `k` indexes the translatable RUN. Emitting alt as a **new run** shifts every later `b{k}` — 855 fields have k≥1, and an insertion at k=0 shifts **all 6,664**. Emitting it as a **new field type** is purely ADDITIVE. **Take the additive shape.**
+- **The two organic title fixes renumber OPPOSITELY.** The `<document><title>` fix REPLACES text under `auto-1` (title is the first segment emitted) — **nothing renumbers, safe any time.** The self-closing-`<title/>` section fix REMOVES a donated segment — net −1, so it renumbers.
+- ✅ **Dedup does NOT renumber** — the duplicate already consumed its counter slot (`m68811`: highest `auto-233` against 428 segments). It creates one *unbought* segment per duplicate instead.
+- ▶ **Run the FREE full-corpus extract/inject loop until dry before any buy.** Every re-MT-forcing class is visible at extract or inject for **0 ISK**. **Do not pay to sample.** ⚠️ And `source-roundtrip-check.js` / `render-oracle-check.js` were run by **no lens** — run them on the target chapter first.
+
+✅ **SAFE TO DEFER (verified, not assumed):** §C115 (closed in code *and* corpus — 1 open tag across 491 modules) · §C4 nested-para (it DONATES rather than drops, so the text was translated; the RENDER-side fix is free) · chemistry's 285 duplicate seg-ids (differ only in the opaque `[[MATH:n]]` index) · wire-leg seg-id mutation (check **A1** already computes that set difference) · `sourceHash` blindness (`git rev-parse <mt-commit>:<en-path>` recovers it retroactively, free) · word-boundary tightening (orthogonal — see above).
+
+⚠️ **NAMED UNMEASURED RISKS — cheap to settle, and naming them is what makes them cheap:** the ~1,600 unjudged chemistry fallback rows · whether 19 *predicted* shadow headwords are actually harmful (only 2 are confirmed by paid measurement) · whether all 71 differing-text duplicates really differ only in `[[MATH:n]]` (4 of 71 inspected; **ch15 holds 15**) · whether whole-segment `[[i:]]`/`[[span:]]`/`[[em:]]` survive the wire (`[[b:]]` measured **13/13 TRANSLATED**, which REFUTES the general form of CLAUDE.md's docref rule) · whether Step 2's mandatory `--force` re-buys every organic exercise file regardless of change (~727,098 chars ≈ 7,271 ISK across 31 chapters).
+
 ### §C125 — ✅ RESOLVED, NO RULING NEEDED: "ADD SEGMENT" IS NOT REQUIRED, BECAUSE THE PIPELINE ALREADY PAIRS BY ID AND AN UNTRANSLATED SEGMENT IS AN EMPTY EDITABLE FIELD
 
 🔴 **THIS ENTRY'S FIRST VERSION WAS WRONG AND IS REPLACED. It said [USER] believed a head-editor add-segment method existed, that it did not, that CLAUDE.md forbade building one, and that the divergence "needs a deliberate ruling".** [USER] then reframed it, 2026-09-05: *"If the pipeline matches source segments to target segments, an 'insert segment' feature is not needed, only the ability to fix or translate mangled or empty segments."* **Measured: that is exactly what the code does, so there was never a divergence to rule on.**

@@ -10,6 +10,31 @@
 
 ---
 
+## 🛑 STOP — ADDED 2026-09-05 AFTER THIS FILE WAS WRITTEN: CHEMISTRY ch03 CARRIES 4 GLOSSARY CORRUPTIONS
+
+**Do not sync until [USER] rules on this.** A re-MT pre-flight census found that chemistry's committed
+glossary is still the **contaminated** one, and that chemistry ch03 was bought under it on 2026-09-01.
+
+**Measured in the rendered pages this handoff would publish** (control: `mól` = 334, so the search works):
+
+| wrong Icelandic | from the glossary row | occurrences |
+|---|---|---|
+| `tilbrigði` | `form → tilbrigði` (biology) | 1 |
+| `sjálfkvæm*` | `consistent → sjálfkvæmur` (physics) | 2 |
+| `ílend*` | `established → ílendur` (biology) | 1 |
+
+▶ **This is the same mechanism as §C121, which cost ~742 ISK to re-buy organic ch03.** The repair is a
+re-MT of the affected chemistry modules **after** the glossary is cleaned — it is **not** free and not
+an editor fix.
+
+⚠️ **AND THE QUEUED REMEDY DOES NOT COVER IT.** The frozen §C120 removal set contains `established`
+but **not** `form`, `consistent`, `double`, `functional` or `multiple`.
+
+▶ **THE REDIRECT EDIT (§1) IS STILL SAFE AND STILL WORTH LANDING** — it is inert until content moves
+and removes a latent 404. **It is only the SYNC that is now in question.** → efni register **§C126**.
+
+---
+
 ## ⏹ SCOPE — [USER] RULING 2026-09-05: **SYNC CHEMISTRY ONLY. ORGANIC IS HELD.**
 
 **Sync `efnafraedi-2e` and nothing else** until §C123 (below) is fixed on efni's side.
