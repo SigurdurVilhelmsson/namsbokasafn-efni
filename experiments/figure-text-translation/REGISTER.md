@@ -32,10 +32,14 @@ is to delete the number, not to raise it to four.)*
    *file absent* and for *zero usable terms*, and those are a setup error and a data defect.
    ▶ **THE RULING STILL DOES NOT REACH FIGURES, AND THE PREDICATE IS CHECKABLE RATHER THAN A
    STATUS VERB:** `grep -c Celsíus books/efnafraedi-2e/glossary/glossary-unified.json` must be
-   non-zero. Measured 2026-09-05 it is **0** against 2,006 terms. The chain is #443 merges →
-   deploy (051 asserts it at boot) → the 2-hourly export cron rewrites the file → that commit
-   pulled. **A present, pre-051 glossary passes the gate while the ruling is still absent**, so
-   do not read a green gate as a closed one.
+   non-zero. Measured 2026-09-05 it is **0** against 2,006 terms. **A present, pre-051 glossary
+   passes the wire gate while the ruling is still absent**, so do not read a green gate as a
+   closed one. The remaining chain is **deploy** (051 asserts the ruling at server start) → **one
+   2-hourly export-cron tick** (which rewrites `glossary-unified.json`) → **pull that commit**.
+   The house-style ruling itself is merged; nothing is waiting on review.
+   ⚠️ **Re-derive that last sentence rather than trusting it** — it was written the same hour the
+   PR merged, and this file's neighbours record how fast such a line rots. `gh pr list --state all`
+   and the `grep -c` above are the two instruments; neither is a sentence in a document.
    🔴 **AND THE MEASUREMENT THAT PAID FOR ITSELF: IMPORTING `translate-blocks.mjs` SPENT MONEY.**
    Every top-level statement ran at import — the paid translate loop included — so the first run
    of the new test made **8 live requests, 120 chars, 1.20 ISK, 0 failed**, from a test that had
