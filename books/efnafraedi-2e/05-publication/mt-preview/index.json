@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-19T12:41:51.914Z",
+  "generated": "2026-09-05T08:18:18.729Z",
   "termCount": 763,
   "entries": [
     {
@@ -477,9 +477,9 @@
     },
     {
       "termIs": "Avogadrosartala (NA)",
-      "termEn": "avogadro’s number (na)",
-      "termFull": "Avogadrosartala (NA) (e. avogadro’s number (na))",
-      "definition": "tilraunagildi fyrir fjölda eininga í 1 móli af efni, jafnt og 6,022 × 1023 mól−1",
+      "termEn": null,
+      "termFull": "Avogadrosartala (NA)",
+      "definition": "tilraunagildi fjölda eininga í 1 móli af efni, eins og 6,022 × 1023 mól−1",
       "chapter": 3,
       "section": "3.1",
       "sectionTitle": "Formúlumassi og mólhugtakið",
@@ -1764,9 +1764,9 @@
     },
     {
       "termIs": "formúlumassi",
-      "termEn": "formula mass",
-      "termFull": "formúlumassi (e. formula mass)",
-      "definition": "summa meðalmassa allra frumeinda í efnaformúlu; fyrir samgild efnasambönd er þetta einnig sameindamassi",
+      "termEn": null,
+      "termFull": "formúlumassi",
+      "definition": "summa meðalmassa allra atóma sem táknuð eru í efnaformúlu; fyrir samgild efnasambönd er þetta einnig sameindamassinn",
       "chapter": 3,
       "section": "3.1",
       "sectionTitle": "Formúlumassi og mólhugtakið",
@@ -3919,17 +3919,6 @@
       "termId": "fs-idm4190352"
     },
     {
-      "termIs": "leysið efni",
-      "termEn": "solute",
-      "termFull": "leysið efni (e. solute)",
-      "definition": "efnisþáttur lausnar sem er í lægri styrk en leysirinn",
-      "chapter": 3,
-      "section": "3.3",
-      "sectionTitle": "Mólstyrkur",
-      "sectionSlug": "3-3-molstyrkur",
-      "termId": "fs-idm26667568"
-    },
-    {
       "termIs": "leysir",
       "termEn": "solvent",
       "termFull": "leysir (e. solvent)",
@@ -3972,6 +3961,17 @@
       "sectionTitle": "Útfelling og upplausn",
       "sectionSlug": "15-1-utfelling-og-upplausn",
       "termId": "fs-idp3053344"
+    },
+    {
+      "termIs": "leyst efni",
+      "termEn": "solute",
+      "termFull": "leyst efni (e. solute)",
+      "definition": "efnisþáttur lausnar sem er í lægri styrk en leysirinn",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26667568"
     },
     {
       "termIs": "ligandi",
@@ -4417,7 +4417,7 @@
       "termIs": "massa-rúmmálsprósenta",
       "termEn": "mass-volume percent",
       "termFull": "massa-rúmmálsprósenta (e. mass-volume percent)",
-      "definition": "hlutfall massa leysts efnis og rúmmáls lausnar, gefið upp sem prósenta",
+      "definition": "hlutfall massa leysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
       "chapter": 3,
       "section": "3.4",
       "sectionTitle": "Aðrar einingar fyrir styrk lausna",
@@ -4437,20 +4437,9 @@
     },
     {
       "termIs": "massaprósenta",
-      "termEn": "percent composition",
-      "termFull": "massaprósenta (e. percent composition)",
-      "definition": "massaprósenta hinna ýmsu frumefna í efnasambandi",
-      "chapter": 3,
-      "section": "3.2",
-      "sectionTitle": "Ákvörðun reynsluformúla og sameindaformúla",
-      "sectionSlug": "3-2-akvordun-reynsluformula-og-sameindaformula",
-      "termId": "fs-idp78260032"
-    },
-    {
-      "termIs": "massaprósenta",
       "termEn": "mass percentage",
       "termFull": "massaprósenta (e. mass percentage)",
-      "definition": "hlutfall massa uppleysts efnis á móti massa lausnar, gefið upp sem prósenta",
+      "definition": "hlutfall massa leysts efnis á móti massa lausnar, gefið upp sem prósenta",
       "chapter": 3,
       "section": "3.4",
       "sectionTitle": "Aðrar einingar fyrir styrk lausna",
@@ -4494,11 +4483,11 @@
       "termIs": "massi reynsluformúlu",
       "termEn": "empirical formula mass",
       "termFull": "massi reynsluformúlu (e. empirical formula mass)",
-      "definition": "summa meðalatómmassa allra frumeinda sem koma fram í reynsluformúlu",
+      "definition": "summa meðalatómmassa allra atóma sem koma fyrir í reynsluformúlu",
       "chapter": 3,
       "section": "3.2",
-      "sectionTitle": "Ákvörðun reynsluformúla og sameindaformúla",
-      "sectionSlug": "3-2-akvordun-reynsluformula-og-sameindaformula",
+      "sectionTitle": "Ákvörðun reynslu- og sameindaformúla",
+      "sectionSlug": "3-2-akvordun-reynslu-og-sameindaformula",
       "termId": "fs-idp78258880"
     },
     {
@@ -4588,6 +4577,17 @@
       "sectionTitle": "Hvarfhraði efnahvarfa",
       "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
       "termId": "fs-idp11569888"
+    },
+    {
+      "termIs": "megn",
+      "termEn": "concentrated",
+      "termFull": "megn (e. concentrated)",
+      "definition": "þáttbundið hugtak fyrir lausn sem inniheldur leyst efni í tiltölulega háum styrk",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26449216"
     },
     {
       "termIs": "melmi",
@@ -4733,6 +4733,28 @@
       "termId": "fs-idm66585952"
     },
     {
+      "termIs": "milljarðshlutar (ppb)",
+      "termEn": "parts per billion (ppb)",
+      "termFull": "milljarðshlutar (ppb) (e. parts per billion (ppb))",
+      "definition": "hlutfall massa leysts efnis á móti massa lausnar, margfaldað með 109",
+      "chapter": 3,
+      "section": "3.4",
+      "sectionTitle": "Aðrar einingar fyrir styrk lausna",
+      "sectionSlug": "3-4-adrar-einingar-fyrir-styrk-lausna",
+      "termId": "fs-idp23298832"
+    },
+    {
+      "termIs": "milljónarhlutar (ppm)",
+      "termEn": "parts per million (ppm)",
+      "termFull": "milljónarhlutar (ppm) (e. parts per million (ppm))",
+      "definition": "hlutfall massa leysts efnis á móti massa lausnar, margfaldað með 106",
+      "chapter": 3,
+      "section": "3.4",
+      "sectionTitle": "Aðrar einingar fyrir styrk lausna",
+      "sectionSlug": "3-4-adrar-einingar-fyrir-styrk-lausna",
+      "termId": "fs-idm85251264"
+    },
+    {
       "termIs": "misleit efnablanda",
       "termEn": "heterogeneous mixture",
       "termFull": "misleit efnablanda (e. heterogeneous mixture)",
@@ -4789,9 +4811,9 @@
     },
     {
       "termIs": "mól",
-      "termEn": "mole",
-      "termFull": "mól (e. mole)",
-      "definition": "efnismagn sem inniheldur sama fjölda frumeinda, sameinda, jóna eða annarra eininga og fjöldi frumeinda í nákvæmlega 12 grömmum af 12C",
+      "termEn": null,
+      "termFull": "mól",
+      "definition": "magn efnis sem inniheldur sama fjölda atóma, sameinda, jóna eða annarra eininga og fjöldi atóma í nákvæmlega 12 grömmum af 12C",
       "chapter": 3,
       "section": "3.1",
       "sectionTitle": "Formúlumassi og mólhugtakið",
@@ -4833,8 +4855,8 @@
     },
     {
       "termIs": "mólmassi",
-      "termEn": "molar mass",
-      "termFull": "mólmassi (e. molar mass)",
+      "termEn": null,
+      "termFull": "mólmassi",
       "definition": "massi í grömmum af 1 móli af efni",
       "chapter": 3,
       "section": "3.1",
@@ -4846,7 +4868,7 @@
       "termIs": "mólstyrkur (M)",
       "termEn": "molarity (m)",
       "termFull": "mólstyrkur (M) (e. molarity (m))",
-      "definition": "styrkleikaeining, skilgreind sem fjöldi móla af leysi efnis uppleyst í 1 lítra af lausn",
+      "definition": "eining styrks, skilgreind sem fjöldi móla af leystu efni í 1 lítra af lausn",
       "chapter": 3,
       "section": "3.3",
       "sectionTitle": "Mólstyrkur",
@@ -5316,17 +5338,6 @@
       "termId": "fs-idm7039408"
     },
     {
-      "termIs": "óþynnt",
-      "termEn": "concentrated",
-      "termFull": "óþynnt (e. concentrated)",
-      "definition": "þáttbundið hugtak fyrir lausn sem inniheldur leysið efni í tiltölulega háum styrk",
-      "chapter": 3,
-      "section": "3.3",
-      "sectionTitle": "Mólstyrkur",
-      "sectionSlug": "3-3-molstyrkur",
-      "termId": "fs-idm26449216"
-    },
-    {
       "termIs": "p-svigrúm",
       "termEn": "p orbital",
       "termFull": "p-svigrúm (e. p orbital)",
@@ -5336,28 +5347,6 @@
       "sectionTitle": "Þróun skammtakenningarinnar",
       "sectionSlug": "6-3-throun-skammtakenningarinnar",
       "termId": "fs-idm147658080"
-    },
-    {
-      "termIs": "partar á milljarð (ppb)",
-      "termEn": "parts per billion (ppb)",
-      "termFull": "partar á milljarð (ppb) (e. parts per billion (ppb))",
-      "definition": "hlutfall massa leysts efnis og massa lausnar margfaldað með 109",
-      "chapter": 3,
-      "section": "3.4",
-      "sectionTitle": "Aðrar einingar fyrir styrk lausna",
-      "sectionSlug": "3-4-adrar-einingar-fyrir-styrk-lausna",
-      "termId": "fs-idp23298832"
-    },
-    {
-      "termIs": "partar á milljón (ppm)",
-      "termEn": "parts per million (ppm)",
-      "termFull": "partar á milljón (ppm) (e. parts per million (ppm))",
-      "definition": "hlutfall massa leysts efnis og massa lausnar margfaldað með 106",
-      "chapter": 3,
-      "section": "3.4",
-      "sectionTitle": "Aðrar einingar fyrir styrk lausna",
-      "sectionSlug": "3-4-adrar-einingar-fyrir-styrk-lausna",
-      "termId": "fs-idm85251264"
     },
     {
       "termIs": "paskal (Pa)",
@@ -5468,6 +5457,17 @@
       "sectionTitle": "Heimtur efnahvarfs",
       "sectionSlug": "4-4-heimtur-efnahvarfa",
       "termId": "fs-idp51447712"
+    },
+    {
+      "termIs": "prósentusamsetning",
+      "termEn": "percent composition",
+      "termFull": "prósentusamsetning (e. percent composition)",
+      "definition": "prósentuhlutfall af massa hinna ýmsu frumefna í efnasambandi",
+      "chapter": 3,
+      "section": "3.2",
+      "sectionTitle": "Ákvörðun reynslu- og sameindaformúla",
+      "sectionSlug": "3-2-akvordun-reynslu-og-sameindaformula",
+      "termId": "fs-idp78260032"
     },
     {
       "termIs": "pund á fertommu (psi)",
@@ -5770,7 +5770,7 @@
       "termIs": "rúmmálsprósenta",
       "termEn": "volume percentage",
       "termFull": "rúmmálsprósenta (e. volume percentage)",
-      "definition": "hlutfall rúmmáls leysts efnis og rúmmáls lausnar gefið upp sem prósenta",
+      "definition": "hlutfall rúmmáls leysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
       "chapter": 3,
       "section": "3.4",
       "sectionTitle": "Aðrar einingar fyrir styrk lausna",
@@ -6793,7 +6793,7 @@
       "termIs": "styrkur",
       "termEn": "concentration",
       "termFull": "styrkur (e. concentration)",
-      "definition": "magnbundinn mælikvarði á hlutfallslegt magn leysis efnis og leysis í lausn",
+      "definition": "magnbundið mál á hlutfallslegu magni leysts efnis og leysis í lausn",
       "chapter": 3,
       "section": "3.3",
       "sectionTitle": "Mólstyrkur",
@@ -7541,7 +7541,7 @@
       "termIs": "uppleyst",
       "termEn": "dissolved",
       "termFull": "uppleyst (e. dissolved)",
-      "definition": "lýsir ferlinu þar sem efnisþættir leysis efnis dreifast í leysi",
+      "definition": "lýsir ferlinu þar sem efnisþættir leysts efnis dreifast í leysi",
       "chapter": 3,
       "section": "3.3",
       "sectionTitle": "Mólstyrkur",
@@ -8311,7 +8311,7 @@
       "termIs": "þynnt",
       "termEn": "dilute",
       "termFull": "þynnt (e. dilute)",
-      "definition": "þáttbundið hugtak fyrir lausn sem inniheldur leysið efni í tiltölulega lágum styrk",
+      "definition": "þáttbundið hugtak fyrir lausn sem inniheldur leyst efni í tiltölulega lágum styrk",
       "chapter": 3,
       "section": "3.3",
       "sectionTitle": "Mólstyrkur",
