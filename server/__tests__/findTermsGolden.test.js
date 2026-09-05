@@ -7,6 +7,7 @@ const freshMigratedDb = require('../__tests__/helpers/freshMigratedDb');
 const { seedBooks } = require('../scripts/lib/scratchCorpus');
 const { seedC24Concepts, assertSeeded } = require('../__tests__/helpers/seedC24Concepts');
 const terminologyService = require('../services/terminologyService');
+const { HOUSE_STYLE_SOURCE } = require('../lib/houseStyleTerms');
 
 // ⚠️ §C36 B4b-1 — THIS FILE NO LONGER USES createTestDb(). That helper is a
 // hand-maintained copy of migration 032's six OLD terminology tables and has no
@@ -172,7 +173,13 @@ describe('the C24 fixture is actually seeded into the concept model', () => {
     // automaton is BUILT from — loadEnglishEntries groups by text — so it is the
     // count that silently collapses if the group-by-subject logic is wrong.
     expect(distinctEnglish).toBe(304);
-    expect(db.prepare("SELECT COUNT(*) AS n FROM concept_term WHERE lang='is'").get().n).toBe(326);
+    // Scoped for the same reason as assertSeeded: 051's rows are enforcement,
+    // not fixture content, and this count is a statement about the fixture.
+    expect(
+      db
+        .prepare("SELECT COUNT(*) AS n FROM concept_term WHERE lang='is' AND source IS NOT ?")
+        .get(HOUSE_STYLE_SOURCE).n
+    ).toBe(326);
   });
 
   it('a NAMED golden segment yields a non-zero match count against the seed', () => {

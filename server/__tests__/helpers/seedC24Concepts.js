@@ -59,6 +59,7 @@
  */
 
 const terms = require('../fixtures/c24-terms.json');
+const { HOUSE_STYLE_SOURCE } = require('../../lib/houseStyleTerms');
 
 /**
  * @param {import('better-sqlite3').Database} db a freshMigratedDb() handle
@@ -128,10 +129,17 @@ function seedC24Concepts(db) {
  * @param {import('better-sqlite3').Database} db
  */
 function assertSeeded(db) {
-  const concepts = db.prepare('SELECT COUNT(*) AS n FROM concept').get().n;
+  // ⚠️ SEEDED rows, not every row. Migration 051 asserts house-style terms into
+  // every database on every boot, so an unscoped count stopped answering "what
+  // did this fixture put here?" — which is the only question this helper asks.
+  const concepts = db
+    .prepare('SELECT COUNT(*) AS n FROM concept WHERE collection IS NOT ?')
+    .get(HOUSE_STYLE_SOURCE).n;
   const distinct = db
-    .prepare("SELECT COUNT(DISTINCT text) AS n FROM concept_term WHERE lang = 'en'")
-    .get().n;
+    .prepare(
+      "SELECT COUNT(DISTINCT text) AS n FROM concept_term WHERE lang = 'en' AND source IS NOT ?"
+    )
+    .get(HOUSE_STYLE_SOURCE).n;
   if (concepts === 0 || distinct === 0) {
     throw new Error(
       'seedC24Concepts: the concept tables are EMPTY. Every fixture-driven assertion ' +
