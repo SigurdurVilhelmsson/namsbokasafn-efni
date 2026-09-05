@@ -8,17 +8,34 @@ things lives in [README.md](README.md).
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-04
+## ⏩ RESUME — state as of 2026-09-05
 
-**What exists:** a working extract → strip → compose → oracle-check pipeline, proven on
-`CNX_Chem_01_01_SciMethod.pdf` end to end; a census of all 36 chapter-1 figures; **one real
-Málstaður run** (⑯, 1.20 ISK, 8/8 blocks); the output format settled as **SVG** by
-measurement (⑤); and **the review workflow merged as #435**.
+**✅ THE EDITORIAL PIPELINE IS COMPLETE END TO END.** An editor opens a module, sees each
+translated figure WITH ITS PICTURE, corrects the text, applies the decimal suggestion in one
+click, approves — and the badge stays amber until the artwork is actually re-composed and
+published. Merged: #435 (review surface) · #438 (Ⓐ card image, Ⓒ approved-means-published) ·
+#440 (⑭ decimal) · #441 (⑰ publish where readers load it). ⚠️ **#440 and #441 are NOT DEPLOYED.**
 
-**⏭️ NEXT: nothing is blocked.** Both [USER]-ruled follow-ups are MERGED (Ⓐ and Ⓒ below). Ⓨ
-needed no work. The open items are the pre-existing ones under *Open* — ⑭ number localization,
-⑮ label anchoring, ⑦ Type0/CID fonts — plus the one gap Ⓒ introduced and did not close,
-recorded under ⑰.
+🔴 **THE BULK RUN IS GATED ON THREE THINGS, IN ORDER — do not start it before all three.**
+1. **The figure MT leg sends NO GLOSSARY** (`glossary: null`, hardcoded). The [USER] Celsíus
+   ruling therefore does NOT reach figures. Wire it FIRST, or pay for hundreds of figures
+   carrying the term the project just ruled against.
+2. **Let the re-MT land.** Figure ALT text is **19 of 627** translated (~3%) against ~99.7% of
+   captions. Running figure text now makes an editor visit every figure twice, on two surfaces.
+   ⚠️ The caption check is DEGRADED, not inert — captions carry it — so this is a cost, not a
+   blocker on its own.
+3. **Resolve the ~14 hash-suffixed figures deliberately.** The suffix marks a 2e-updated figure;
+   string-stripping it sources the SUPERSEDED illustration, which `sources.py` warns is invisible
+   in the output.
+
+**✅ SOURCE COVERAGE IS SOLVED — measured 2026-09-05, and it is no longer 4.5%.** The book
+references **627** distinct figures; **463 resolve** through the real precedence tool and the
+remaining **164 are PHOTOGRAPHS** (all `.jpg` in `01-source/media` — no vector text to translate).
+The vector collection is effectively complete. `Myndir/` was reorganised, 7.9 GB of verified
+duplicates deleted, and **[USER] ruled `selected-art` SUPERSEDES `base`**; precedence is wired in
+the gitignored `sources.local.json` and `Myndir/README.md` records what each tree is.
+⚠️ **`1. útgáfa` reads as "1st edition" but means "first download" and holds the 2e originals** —
+that ambiguity produced a wrong conclusion once already; the trees are renamed for it.
 
 **✅ Ⓐ AND Ⓒ ARE MERGED — 2026-09-04, PR #438 (`d9cd0998`), a merge commit so the three
 individual SHAs survive.** Full suite on the branch was `19 failed | 5973 passed`, diffed BY NAME
