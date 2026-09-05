@@ -60,6 +60,18 @@ const DECIMAL_BLOCK_SUGGESTED = 'Hiti ofns 37,5 C';
  */
 const DECIMAL_BLOCK_EDIT = 'Hiti ofns 37,5 C "gæði" <b>';
 
+/**
+ * ALCHEMIST's OTHER block — the sibling whose typing a save used to destroy.
+ *
+ * It is typed into and never saved, so it writes no figure_block_edit row and
+ * leaves the sidecar pristine. That is what lets it share ALCHEMIST with the
+ * decimal flow without breaking the one-figure-per-MUTATING-test rule, and what
+ * keeps the first test's "asserted on a block NO test edits" guarantee true.
+ */
+const SIBLING_KEY = "Alchemist's workshop";
+const SIBLING_MT = 'Verkstæði gullgerðarmanns';
+const SIBLING_EDIT = 'Verkstæði gullgerðarmanns "í vinnslu" <b>';
+
 /** The derivation test's own figure and block — touched by no other test. */
 const HYPOTHESIS_KEY = 'Form hypothesis';
 const HYPOTHESIS_MT = 'Setja fram tilgátu';
@@ -273,10 +285,57 @@ test.describe('Figure review card', () => {
     // this value carries a double quote and a '<' on purpose, so a card that
     // built `value="${text}"` inside an innerHTML string would truncate or inject.
     await after.locator('[data-block-input]').fill(DECIMAL_BLOCK_EDIT);
-    await after.locator('[data-block-save]').click();
+
+    // 🔴 SIBLING SURVIVAL. Saving one block re-fetches the module's figures and
+    // rebuilds EVERY card from the payload, which used to destroy text typed
+    // into any other block — silently, with no warning and no draft.
+    //
+    // Typed and deliberately NEVER saved, which is what keeps this free of the
+    // one-figure-per-mutating-test rule: no row is written for this block and
+    // the sidecar is untouched, so the first test's "a block NO test edits"
+    // guarantee still holds and this adds no cross-test leak.
+    const sibling = blockRow(page, ALCHEMIST, SIBLING_KEY).locator('[data-block-input]');
+    await expect(sibling).toHaveValue(SIBLING_MT); // precondition, stated
+    await sibling.fill(SIBLING_EDIT);
+
+    // ⚠️ SYNCHRONISE ON THE RE-FETCH, NOT ON THE SAVE. Every assertion below is
+    // ALREADY TRUE the instant before the click — the text is in the input and
+    // the marker is set by typing — so asserting straight after the click would
+    // pass against a card that never rebuilt at all, which is precisely the bug.
+    // loadFigures GETs /figures after the POST resolves; that response is the
+    // only observable that the rebuild has actually happened.
+    await Promise.all([
+      page.waitForResponse(
+        (r) =>
+          r.url().includes('/m68664/figures') &&
+          r.request().method() === 'GET' &&
+          r.status() === 200
+      ),
+      after.locator('[data-block-save]').click(),
+    ]);
+
+    // The saved block takes the SERVER's value...
     await expect(
       blockRow(page, ALCHEMIST, DECIMAL_BLOCK_KEY).locator('[data-block-input]')
     ).toHaveValue(DECIMAL_BLOCK_EDIT);
+
+    // ...and the sibling keeps what the editor typed, MARKED as unsaved. Both
+    // halves are needed: the value alone cannot tell "carried across the rebuild"
+    // from "the rebuild never ran", and the marker is what makes the state
+    // visible instead of something the editor has to remember.
+    const siblingAfter = blockRow(page, ALCHEMIST, SIBLING_KEY);
+    await expect(siblingAfter.locator('[data-block-input]')).toHaveValue(SIBLING_EDIT);
+    await expect(siblingAfter).toHaveAttribute('data-block-unsaved', '');
+
+    // CONTROL: the block that WAS saved must not be marked unsaved, or the
+    // marker would mean nothing — everything would carry it after every save.
+    //
+    // ⚠️ The one-argument form asserts ABSENCE. `not.toHaveAttribute(name, '')`
+    // reads the same but only denies that exact VALUE, so a stray
+    // data-block-unsaved="x" would sail through the control.
+    await expect(blockRow(page, ALCHEMIST, DECIMAL_BLOCK_KEY)).not.toHaveAttribute(
+      'data-block-unsaved'
+    );
   });
 
   /**

@@ -117,7 +117,12 @@
     }
   }
 
-  const DRAFT_PREFIXES = ['loc-draft:', 'seg-draft:'];
+  // ⚠️ EVERY draft namespace must be listed here. One that is missing is never
+  // swept: its drafts accumulate in the editor's browser forever and nothing
+  // fails anywhere, which is why the figure entry is pinned by a test that
+  // asserts the CONSEQUENCE (a stale key is actually removed) rather than that
+  // this array contains a matching literal.
+  const DRAFT_PREFIXES = ['loc-draft:', 'seg-draft:', 'fig-draft:'];
   const DRAFT_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
   /**

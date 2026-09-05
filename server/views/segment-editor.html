@@ -378,6 +378,15 @@
       min-width: 10rem;
     }
 
+    /* Unsaved text carried across a rebuild, or typed and not yet saved. The
+       whole point of the feature is that this state is VISIBLE — the loss it
+       replaces was silent. Colour alone would not carry for a colour-blind
+       editor, so the marker is a weight change and a border, not a hue. */
+    .figure-block-input.figure-block-unsaved {
+      border-color: var(--warning);
+      font-weight: 600;
+    }
+
     .figure-warning {
       flex: 1 1 100%;
       font-size: 0.75rem;
@@ -1783,6 +1792,9 @@
   <script src="/js/ui-strings.js"></script>
   <script src="/js/segment-validation.js"></script>
   <script src="/js/accept-eligibility.js"></script>
+  <!-- Before segment-editor.js: the figure card reads window.figureDrafts on
+       every rebuild, and a missing tag would lose editor text silently. -->
+  <script src="/js/figure-drafts.js"></script>
   <script src="/js/marker-highlight.js"></script>
   <script src="/js/term-highlight.js"></script>
   <script src="/js/segment-editor.js"></script>
