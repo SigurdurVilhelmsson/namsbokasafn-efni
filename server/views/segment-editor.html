@@ -1,1010 +1,1084 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="is">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ritill - Námsbókasafn</title>
-  <link rel="stylesheet" href="/css/common.css">
-  <style>
-    /* ================================================================
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ritill - Námsbókasafn</title>
+    <link rel="stylesheet" href="/css/common.css" />
+    <style>
+      /* ================================================================
        SEGMENT EDITOR — Basalt & Vellum page-specific styles
        ================================================================ */
 
-    /* --- Module selector card --- */
-    .selector-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-lg);
-    }
+      /* --- Module selector card --- */
+      .selector-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+      }
 
-    .selector-card h2 {
-      font-family: var(--font-heading);
-      font-size: var(--text-xl);
-      margin-bottom: var(--spacing-md);
-    }
+      .selector-card h2 {
+        font-family: var(--font-heading);
+        font-size: var(--text-xl);
+        margin-bottom: var(--spacing-md);
+      }
 
-    .selector-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-md);
-      margin-bottom: var(--spacing-md);
-    }
+      .selector-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+      }
 
-    .selector-grid label {
-      display: block;
-      font-size: var(--text-sm);
-      font-weight: 500;
-      color: var(--text-secondary);
-      margin-bottom: var(--spacing-xs);
-    }
+      .selector-grid label {
+        display: block;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-xs);
+      }
 
-    .selector-grid select {
-      width: 100%;
-      padding: var(--spacing-sm) 0.75rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      font-size: var(--text-base);
-      font-family: var(--font-body);
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: border-color var(--transition-fast);
-    }
+      .selector-grid select {
+        width: 100%;
+        padding: var(--spacing-sm) 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        font-size: var(--text-base);
+        font-family: var(--font-body);
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: border-color var(--transition-fast);
+      }
 
-    .selector-grid select:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(200,121,65,0.15);
-    }
+      .selector-grid select:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(200, 121, 65, 0.15);
+      }
 
-    .selector-grid select:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+      .selector-grid select:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
 
-    /* --- Modules list --- */
-    .modules-list h3 {
-      font-family: var(--font-heading);
-      font-size: var(--text-lg);
-      margin-bottom: var(--spacing-sm);
-    }
+      /* --- Modules list --- */
+      .modules-list h3 {
+        font-family: var(--font-heading);
+        font-size: var(--text-lg);
+        margin-bottom: var(--spacing-sm);
+      }
 
-    .module-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 0.75rem var(--spacing-md);
-      margin-bottom: var(--spacing-sm);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+      .module-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 0.75rem var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-    .module-card:hover {
-      border-color: var(--accent);
-      background: var(--accent-subtle);
-    }
+      .module-card:hover {
+        border-color: var(--accent);
+        background: var(--accent-subtle);
+      }
 
-    .module-card strong {
-      font-family: var(--font-mono);
-      font-size: var(--text-base);
-    }
+      .module-card strong {
+        font-family: var(--font-mono);
+        font-size: var(--text-base);
+      }
 
-    .module-card .module-badges {
-      display: flex;
-      gap: var(--spacing-sm);
-    }
+      .module-card .module-badges {
+        display: flex;
+        gap: var(--spacing-sm);
+      }
 
-    .module-badge {
-      display: inline-block;
-      padding: 0.125rem 0.5rem;
-      border-radius: var(--radius-full);
-      font-size: var(--text-xs);
-      font-weight: 600;
-    }
+      .module-badge {
+        display: inline-block;
+        padding: 0.125rem 0.5rem;
+        border-radius: var(--radius-full);
+        font-size: var(--text-xs);
+        font-weight: 600;
+      }
 
-    .module-badge.en {
-      background: var(--success-subtle);
-      color: var(--success);
-    }
+      .module-badge.en {
+        background: var(--success-subtle);
+        color: var(--success);
+      }
 
-    .module-badge.mt {
-      background: var(--accent-subtle);
-      color: var(--accent);
-    }
+      .module-badge.mt {
+        background: var(--accent-subtle);
+        color: var(--accent);
+      }
 
-    .module-badge.faithful {
-      background: var(--success-subtle);
-      color: var(--success);
-    }
+      .module-badge.faithful {
+        background: var(--success-subtle);
+        color: var(--success);
+      }
 
-    .module-badge.localized {
-      background: var(--warning-subtle, #fef3c7);
-      color: var(--warning, #b45309);
-    }
+      .module-badge.mt-finding {
+        background: var(--warning-subtle);
+        color: var(--warning);
+      }
 
-    .module-section {
-      color: var(--text-muted);
-      font-weight: 400;
-    }
+      .module-badge.localized {
+        background: var(--warning-subtle, #fef3c7);
+        color: var(--warning, #b45309);
+      }
 
-    /* --- Module header bar --- */
-    .module-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: var(--spacing-md) var(--spacing-lg);
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      margin-bottom: var(--spacing-md);
-      flex-wrap: wrap;
-      gap: var(--spacing-sm);
-    }
+      .module-section {
+        color: var(--text-muted);
+        font-weight: 400;
+      }
 
-    .module-header h2 {
-      font-family: var(--font-heading);
-      font-size: var(--text-lg);
-      margin: 0;
-    }
+      /* --- Module header bar --- */
+      .module-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-md) var(--spacing-lg);
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        margin-bottom: var(--spacing-md);
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+      }
 
-    .module-meta {
-      color: var(--text-muted);
-      font-size: var(--text-sm);
-      margin-top: 0.125rem;
-    }
+      .module-header h2 {
+        font-family: var(--font-heading);
+        font-size: var(--text-lg);
+        margin: 0;
+      }
 
-    .module-toolbar {
-      display: flex;
-      gap: var(--spacing-sm);
-      align-items: center;
-    }
+      .module-meta {
+        color: var(--text-muted);
+        font-size: var(--text-sm);
+        margin-top: 0.125rem;
+      }
 
-    /* --- Stats bar --- */
-    .stats-bar {
-      display: flex;
-      gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-md);
-      flex-wrap: wrap;
-    }
+      .module-toolbar {
+        display: flex;
+        gap: var(--spacing-sm);
+        align-items: center;
+      }
 
-    .stat-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.375rem;
-      padding: 0.375rem 0.75rem;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-full);
-      font-size: var(--text-sm);
-      color: var(--text-secondary);
-    }
+      /* --- Stats bar --- */
+      .stats-bar {
+        display: flex;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+        flex-wrap: wrap;
+      }
 
-    .stat-chip strong {
-      font-weight: 600;
-      color: var(--text-primary);
-    }
+      .stat-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.375rem 0.75rem;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-full);
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+      }
 
-    .stat-chip.has-value strong {
-      color: var(--accent);
-    }
+      .stat-chip strong {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
 
-    .stat-chip.terms {
-      background: var(--success-subtle);
-      border-color: var(--success);
-    }
+      .stat-chip.has-value strong {
+        color: var(--accent);
+      }
 
-    .stat-chip.terms strong {
-      color: var(--success);
-    }
+      .stat-chip.terms {
+        background: var(--success-subtle);
+        border-color: var(--success);
+      }
 
-    .stat-chip.term-issues {
-      background: var(--warning-subtle);
-      border-color: var(--warning);
-    }
+      .stat-chip.terms strong {
+        color: var(--success);
+      }
 
-    .stat-chip.term-issues strong {
-      color: var(--warning);
-    }
+      .stat-chip.term-issues {
+        background: var(--warning-subtle);
+        border-color: var(--warning);
+      }
 
-    /* --- Filter bar --- */
-    .filter-bar {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: var(--spacing-md);
-      align-items: center;
-      flex-wrap: wrap;
-    }
+      .stat-chip.term-issues strong {
+        color: var(--warning);
+      }
 
-    .filter-bar label {
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
+      /* --- Filter bar --- */
+      .filter-bar {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: var(--spacing-md);
+        align-items: center;
+        flex-wrap: wrap;
+      }
 
-    .filter-bar select {
-      padding: 0.35rem 0.5rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      font-size: var(--text-sm);
-      font-family: var(--font-body);
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: border-color var(--transition-fast);
-    }
+      .filter-bar label {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        white-space: nowrap;
+      }
 
-    .filter-bar select:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
+      .filter-bar select {
+        padding: 0.35rem 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+        font-family: var(--font-body);
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: border-color var(--transition-fast);
+      }
 
-    /* --- Category legend --- */
-    .category-legend {
-      margin: 0.25rem 0 var(--spacing-sm);
-      font-size: var(--text-sm);
-    }
+      .filter-bar select:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
 
-    .category-legend summary {
-      cursor: pointer;
-      color: var(--text-muted);
-      font-size: var(--text-sm);
-    }
+      /* --- Category legend --- */
+      .category-legend {
+        margin: 0.25rem 0 var(--spacing-sm);
+        font-size: var(--text-sm);
+      }
 
-    .category-legend .legend-items {
-      display: flex;
-      gap: var(--spacing-md);
-      flex-wrap: wrap;
-      padding: var(--spacing-sm) 0;
-    }
+      .category-legend summary {
+        cursor: pointer;
+        color: var(--text-muted);
+        font-size: var(--text-sm);
+      }
 
-    /* --- Figure-text review cards --- */
-    .figure-review {
-      margin-bottom: var(--spacing-lg);
-    }
+      .category-legend .legend-items {
+        display: flex;
+        gap: var(--spacing-md);
+        flex-wrap: wrap;
+        padding: var(--spacing-sm) 0;
+      }
 
-    .figure-review h3 {
-      font-size: 0.6875rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      margin: 0 0 var(--spacing-sm);
-    }
+      /* --- Figure-text review cards --- */
+      .figure-review {
+        margin-bottom: var(--spacing-lg);
+      }
 
-    .figure-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md, 6px);
-      padding: var(--spacing-md);
-      margin-bottom: var(--spacing-sm);
-    }
+      .figure-review h3 {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+        margin: 0 0 var(--spacing-sm);
+      }
 
-    .figure-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-sm);
-    }
+      .figure-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md, 6px);
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+      }
 
-    .figure-state-badge {
-      font-size: 0.6875rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      padding: 0.125rem 0.5rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-strong);
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
+      .figure-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+      }
 
-    .figure-state-badge.state-approved {
-      color: var(--success);
-      border-color: var(--success);
-    }
+      .figure-state-badge {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        padding: 0.125rem 0.5rem;
+        border-radius: 999px;
+        border: 1px solid var(--border-strong);
+        color: var(--text-muted);
+        white-space: nowrap;
+      }
 
-    .figure-state-badge.state-flagged {
-      color: var(--warning);
-      border-color: var(--warning);
-    }
+      .figure-state-badge.state-approved {
+        color: var(--success);
+        border-color: var(--success);
+      }
 
-    /*
+      .figure-state-badge.state-flagged {
+        color: var(--warning);
+        border-color: var(--warning);
+      }
+
+      /*
      * The translated figure itself. Capped in height so a tall diagram cannot
      * push the text blocks — the thing actually under review — below the fold,
      * and given a light ground because the composed SVGs are transparent and
      * their black labels vanish against a dark surface.
      */
-    .figure-card-image {
-      display: block;
-      max-width: 100%;
-      max-height: 22rem;
-      margin: 0 auto var(--spacing-sm);
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm, 4px);
-    }
+      .figure-card-image {
+        display: block;
+        max-width: 100%;
+        max-height: 22rem;
+        margin: 0 auto var(--spacing-sm);
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm, 4px);
+      }
 
-    /*
+      /*
      * "Nota" — apply the server's decimal suggestion (⑭). Disabled whenever the
      * input has been typed into since the suggestion was computed, so the
      * disabled state must be visible rather than merely inert: an editor who
      * cannot tell why clicking does nothing will retype the value by hand.
      */
-    .figure-block-apply {
-      flex: none;
-    }
+      .figure-block-apply {
+        flex: none;
+      }
 
-    .figure-block-apply:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-    }
+      .figure-block-apply:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
 
-    .figure-note {
-      margin: 0 0 var(--spacing-sm);
-      padding: var(--spacing-sm);
-      border-left: 3px solid var(--warning);
-      background: var(--bg-hover);
-      white-space: pre-wrap;
-    }
+      .figure-note {
+        margin: 0 0 var(--spacing-sm);
+        padding: var(--spacing-sm);
+        border-left: 3px solid var(--warning);
+        background: var(--bg-hover);
+        white-space: pre-wrap;
+      }
 
-    .figure-blocks {
-      list-style: none;
-      margin: 0 0 var(--spacing-sm);
-      padding: 0;
-    }
+      .figure-blocks {
+        list-style: none;
+        margin: 0 0 var(--spacing-sm);
+        padding: 0;
+      }
 
-    .figure-block {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: var(--spacing-sm);
-      padding: 0.375rem 0;
-      border-bottom: 1px solid var(--border);
-    }
+      .figure-block {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        padding: 0.375rem 0;
+        border-bottom: 1px solid var(--border);
+      }
 
-    .figure-block-key {
-      flex: 0 0 14rem;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      overflow-wrap: anywhere;
-    }
+      .figure-block-key {
+        flex: 0 0 14rem;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        overflow-wrap: anywhere;
+      }
 
-    .figure-block-input {
-      flex: 1 1 16rem;
-      min-width: 10rem;
-    }
+      .figure-block-input {
+        flex: 1 1 16rem;
+        min-width: 10rem;
+      }
 
-    /* Unsaved text carried across a rebuild, or typed and not yet saved. The
+      /* Unsaved text carried across a rebuild, or typed and not yet saved. The
        whole point of the feature is that this state is VISIBLE — the loss it
        replaces was silent. Colour alone would not carry for a colour-blind
        editor, so the marker is a weight change and a border, not a hue. */
-    .figure-block-input.figure-block-unsaved {
-      border-color: var(--warning);
-      font-weight: 600;
-    }
+      .figure-block-input.figure-block-unsaved {
+        border-color: var(--warning);
+        font-weight: 600;
+      }
 
-    .figure-warning {
-      flex: 1 1 100%;
-      font-size: 0.75rem;
-      color: var(--warning);
-      font-style: normal;
-    }
+      .figure-warning {
+        flex: 1 1 100%;
+        font-size: 0.75rem;
+        color: var(--warning);
+        font-style: normal;
+      }
 
-    .figure-card-actions {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: var(--spacing-sm);
-    }
+      .figure-card-actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+      }
 
-    .figure-note-input {
-      flex: 1 1 14rem;
-      min-width: 8rem;
-    }
+      .figure-note-input {
+        flex: 1 1 14rem;
+        min-width: 8rem;
+      }
 
-    /* --- Segment table --- */
-    .segments-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+      /* --- Segment table --- */
+      .segments-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
 
-    .segments-table th {
-      text-align: left;
-      padding: 0.625rem 0.75rem;
-      font-size: 0.6875rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      border-bottom: 2px solid var(--border-strong);
-      white-space: nowrap;
-    }
+      .segments-table th {
+        text-align: left;
+        padding: 0.625rem 0.75rem;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+        border-bottom: 2px solid var(--border-strong);
+        white-space: nowrap;
+      }
 
-    .segments-table td {
-      padding: 0.75rem;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
+      .segments-table td {
+        padding: 0.75rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
 
-    .col-type { width: 6%; }
-    .col-en { width: 38%; }
-    .col-is { width: 38%; }
-    .col-actions { width: 18%; text-align: center; }
+      .col-type {
+        width: 6%;
+      }
+      .col-en {
+        width: 38%;
+      }
+      .col-is {
+        width: 38%;
+      }
+      .col-actions {
+        width: 18%;
+        text-align: center;
+      }
 
-    /* --- Segment row states --- */
-    .segment-row {
-      background: var(--bg-surface);
-      transition: background var(--transition-fast);
-    }
+      /* --- Segment row states --- */
+      .segment-row {
+        background: var(--bg-surface);
+        transition: background var(--transition-fast);
+      }
 
-    .segment-row:hover {
-      background: var(--bg-hover);
-    }
+      .segment-row:hover {
+        background: var(--bg-hover);
+      }
 
-    .segment-row.has-edit {
-      background: var(--accent-subtle);
-    }
+      .segment-row.has-edit {
+        background: var(--accent-subtle);
+      }
 
-    .segment-row.approved {
-      background: var(--success-subtle);
-    }
+      .segment-row.approved {
+        background: var(--success-subtle);
+      }
 
-    .segment-row.rejected {
-      background: var(--error-subtle);
-    }
+      .segment-row.rejected {
+        background: var(--error-subtle);
+      }
 
-    .segment-row.discuss {
-      background: var(--warning-subtle);
-    }
+      .segment-row.discuss {
+        background: var(--warning-subtle);
+      }
 
-    /* MT acceptance (item 20b) */
-    .segment-row.accepted-row {
-      background: var(--success-subtle);
-    }
+      /* MT acceptance (item 20b) */
+      .segment-row.accepted-row {
+        background: var(--success-subtle);
+      }
 
-    /* Keyboard accept-and-advance cursor */
-    .segment-row.kbd-cursor td:first-child {
-      box-shadow: inset 3px 0 0 var(--accent);
-    }
+      /* Keyboard accept-and-advance cursor */
+      .segment-row.kbd-cursor td:first-child {
+        box-shadow: inset 3px 0 0 var(--accent);
+      }
 
-    .segment-row.no-translation {
-      background: var(--warning-subtle);
-    }
+      .segment-row.no-translation {
+        background: var(--warning-subtle);
+      }
 
-    .segment-row.no-translation .col-is .segment-content {
-      color: var(--warning);
-      font-style: italic;
-    }
+      .segment-row.no-translation .col-is .segment-content {
+        color: var(--warning);
+        font-style: italic;
+      }
 
-    /* Active editing row — copper left border */
-    .segment-row.editing {
-      border-left: 4px solid var(--accent);
-    }
+      /* Active editing row — copper left border */
+      .segment-row.editing {
+        border-left: 4px solid var(--accent);
+      }
 
-    /* --- Segment type badge --- */
-    .segment-type-badge {
-      display: inline-block;
-      padding: 0.125rem 0.5rem;
-      border-radius: var(--radius-sm);
-      font-size: var(--text-xs);
-      font-weight: 600;
-      text-transform: uppercase;
-      background: var(--bg-elevated);
-      color: var(--text-muted);
-    }
+      /* --- Segment type badge --- */
+      .segment-type-badge {
+        display: inline-block;
+        padding: 0.125rem 0.5rem;
+        border-radius: var(--radius-sm);
+        font-size: var(--text-xs);
+        font-weight: 600;
+        text-transform: uppercase;
+        background: var(--bg-elevated);
+        color: var(--text-muted);
+      }
 
-    .segment-type-badge.title {
-      background: var(--accent-subtle);
-      color: var(--accent);
-    }
+      .segment-type-badge.title {
+        background: var(--accent-subtle);
+        color: var(--accent);
+      }
 
-    .segment-type-badge.para {
-      background: var(--bg-elevated);
-      color: var(--text-secondary);
-    }
+      .segment-type-badge.para {
+        background: var(--bg-elevated);
+        color: var(--text-secondary);
+      }
 
-    .segment-type-badge.caption {
-      background: var(--warning-subtle);
-      color: var(--warning);
-    }
+      .segment-type-badge.caption {
+        background: var(--warning-subtle);
+        color: var(--warning);
+      }
 
-    .other-editor-badge {
-      display: inline-block;
-      margin-left: 0.25rem;
-      font-size: var(--text-xs);
-      color: var(--warning, #b45309);
-      cursor: help;
-    }
+      .other-editor-badge {
+        display: inline-block;
+        margin-left: 0.25rem;
+        font-size: var(--text-xs);
+        color: var(--warning, #b45309);
+        cursor: help;
+      }
 
-    /* --- Segment content --- */
-    .segment-content {
-      font-size: var(--text-base);
-      line-height: 1.6;
-      white-space: pre-wrap;
-      word-break: break-word;
-      max-height: 200px;
-      overflow-y: auto;
-    }
+      /* --- Segment content --- */
+      .segment-content {
+        font-size: var(--text-base);
+        line-height: 1.6;
+        white-space: pre-wrap;
+        word-break: break-word;
+        max-height: 200px;
+        overflow-y: auto;
+      }
 
-    /* --- Diff display --- */
-    .diff-hint {
-      margin-top: 0.375rem;
-      padding: 0.25rem 0.5rem;
-      font-size: var(--text-sm);
-      background: var(--bg-elevated);
-      border-left: 2px solid var(--border);
-      border-radius: var(--radius-sm);
-      line-height: 1.6;
-    }
+      /* --- Diff display --- */
+      .diff-hint {
+        margin-top: 0.375rem;
+        padding: 0.25rem 0.5rem;
+        font-size: var(--text-sm);
+        background: var(--bg-elevated);
+        border-left: 2px solid var(--border);
+        border-radius: var(--radius-sm);
+        line-height: 1.6;
+      }
 
-    .diff-del {
-      background: var(--error-subtle);
-      color: var(--error);
-      text-decoration: line-through;
-      border-radius: var(--radius-sm);
-      padding: 0 1px;
-    }
+      .diff-del {
+        background: var(--error-subtle);
+        color: var(--error);
+        text-decoration: line-through;
+        border-radius: var(--radius-sm);
+        padding: 0 1px;
+      }
 
-    .diff-ins {
-      background: var(--success-subtle);
-      color: var(--success);
-      text-decoration: none;
-      border-radius: var(--radius-sm);
-      padding: 0 1px;
-    }
+      .diff-ins {
+        background: var(--success-subtle);
+        color: var(--success);
+        text-decoration: none;
+        border-radius: var(--radius-sm);
+        padding: 0 1px;
+      }
 
-    /* --- Original text hint --- */
-    .original-text {
-      margin-top: 0.375rem;
-      padding: 0.25rem 0.5rem;
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-      background: var(--bg-elevated);
-      border-left: 2px solid var(--border);
-      border-radius: var(--radius-sm);
-      text-decoration: line-through;
-      opacity: 0.7;
-    }
+      /* --- Original text hint --- */
+      .original-text {
+        margin-top: 0.375rem;
+        padding: 0.25rem 0.5rem;
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        background: var(--bg-elevated);
+        border-left: 2px solid var(--border);
+        border-radius: var(--radius-sm);
+        text-decoration: line-through;
+        opacity: 0.7;
+      }
 
-    /* --- Edit panel (inline) --- */
-    .edit-panel {
-      display: none;
-      margin-top: var(--spacing-sm);
-      padding: 0.75rem;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-    }
+      /* --- Edit panel (inline) --- */
+      .edit-panel {
+        display: none;
+        margin-top: var(--spacing-sm);
+        padding: 0.75rem;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+      }
 
-    .edit-panel.active {
-      display: block;
-    }
+      .edit-panel.active {
+        display: block;
+      }
 
-    .edit-panel textarea {
-      width: 100%;
-      min-height: 80px;
-      padding: var(--spacing-sm);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      line-height: 1.6;
-      resize: vertical;
-      background: var(--bg-base);
-      color: var(--text-primary);
-      transition: border-color var(--transition-fast);
-    }
+      .edit-panel textarea {
+        width: 100%;
+        min-height: 80px;
+        padding: var(--spacing-sm);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        line-height: 1.6;
+        resize: vertical;
+        background: var(--bg-base);
+        color: var(--text-primary);
+        transition: border-color var(--transition-fast);
+      }
 
-    .edit-panel textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(200,121,65,0.15);
-    }
+      .edit-panel textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(200, 121, 65, 0.15);
+      }
 
-    /* B-4 marker overlay: backdrop renders highlighted markers behind a
+      /* B-4 marker overlay: backdrop renders highlighted markers behind a
        transparent-text textarea so the native caret/selection still work. */
-    .editor-overlay-wrap { position: relative; }
-    .editor-overlay-wrap textarea {
-      position: relative;
-      background: transparent;
-      color: transparent;
-      caret-color: #1a1a1a;
-      -webkit-text-fill-color: transparent;
-    }
-    .editor-overlay-wrap textarea::selection { background: rgba(120,160,210,0.35); }
-    .marker-backdrop {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      margin: 0;
-      overflow: hidden;
-      pointer-events: none;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      color: #1a1a1a;
-      z-index: 0;
-    }
-    /* backdrop + textarea MUST share box metrics so glyphs align exactly */
-    .marker-backdrop, .editor-overlay-wrap textarea {
-      font: inherit;
-      font-family: inherit;
-      font-size: inherit;
-      line-height: inherit;
-      padding: inherit;
-      border: 1px solid transparent;
-      box-sizing: border-box;
-    }
-    .marker-hl { border-radius: 2px; }
-    .marker-hl-atom { background: #fde2c8; box-shadow: 0 0 0 1px #e8a86a inset; }
-    .marker-hl-delim { background: #d7e7f5; color: #2d5b86; font-weight: 600; }
+      .editor-overlay-wrap {
+        position: relative;
+      }
+      .editor-overlay-wrap textarea {
+        position: relative;
+        background: transparent;
+        color: transparent;
+        caret-color: #1a1a1a;
+        -webkit-text-fill-color: transparent;
+      }
+      .editor-overlay-wrap textarea::selection {
+        background: rgba(120, 160, 210, 0.35);
+      }
+      .marker-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        overflow: hidden;
+        pointer-events: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        color: #1a1a1a;
+        z-index: 0;
+      }
+      /* backdrop + textarea MUST share box metrics so glyphs align exactly */
+      .marker-backdrop,
+      .editor-overlay-wrap textarea {
+        font: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        padding: inherit;
+        border: 1px solid transparent;
+        box-sizing: border-box;
+      }
+      .marker-hl {
+        border-radius: 2px;
+      }
+      .marker-hl-atom {
+        background: #fde2c8;
+        box-shadow: 0 0 0 1px #e8a86a inset;
+      }
+      .marker-hl-delim {
+        background: #d7e7f5;
+        color: #2d5b86;
+        font-weight: 600;
+      }
 
-    .edit-controls {
-      display: flex;
-      gap: var(--spacing-sm);
-      align-items: center;
-      margin-top: var(--spacing-sm);
-      flex-wrap: wrap;
-    }
+      .edit-controls {
+        display: flex;
+        gap: var(--spacing-sm);
+        align-items: center;
+        margin-top: var(--spacing-sm);
+        flex-wrap: wrap;
+      }
 
-    .edit-controls select {
-      padding: 0.35rem 0.5rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      font-size: var(--text-sm);
-      font-family: var(--font-body);
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-      cursor: pointer;
-    }
+      .edit-controls select {
+        padding: 0.35rem 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+        font-family: var(--font-body);
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+        cursor: pointer;
+      }
 
-    .edit-controls select:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
+      .edit-controls select:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
 
-    .edit-controls input[type="text"] {
-      flex: 1;
-      min-width: 150px;
-      padding: 0.35rem 0.5rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      font-size: var(--text-sm);
-      font-family: var(--font-body);
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-    }
+      .edit-controls input[type='text'] {
+        flex: 1;
+        min-width: 150px;
+        padding: 0.35rem 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+        font-family: var(--font-body);
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+      }
 
-    .edit-controls input[type="text"]:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
+      .edit-controls input[type='text']:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
 
-    /* --- Action buttons --- */
-    .btn-edit {
-      font-size: var(--text-sm);
-      padding: 0.3rem 0.6rem;
-    }
+      /* --- Action buttons --- */
+      .btn-edit {
+        font-size: var(--text-sm);
+        padding: 0.3rem 0.6rem;
+      }
 
-    .btn-approve,
-    .btn-reject,
-    .btn-discuss,
-    .btn-reopen {
-      border: none;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      font-size: var(--text-sm);
-      font-family: var(--font-body);
-      color: white;
-      transition: filter var(--transition-fast);
-    }
+      .btn-approve,
+      .btn-reject,
+      .btn-discuss,
+      .btn-reopen {
+        border: none;
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        font-size: var(--text-sm);
+        font-family: var(--font-body);
+        color: white;
+        transition: filter var(--transition-fast);
+      }
 
-    .btn-approve { background: var(--success); }
-    .btn-reject { background: var(--error); }
-    .btn-discuss { background: var(--warning); }
-    /* Muted/neutral — distinct from the approve/reject/discuss status colors;
+      .btn-approve {
+        background: var(--success);
+      }
+      .btn-reject {
+        background: var(--error);
+      }
+      .btn-discuss {
+        background: var(--warning);
+      }
+      /* Muted/neutral — distinct from the approve/reject/discuss status colors;
        reopening isn't a review verdict, it just re-enables one. */
-    .btn-reopen { background: var(--info); }
-    .btn-approve:hover { filter: brightness(1.1); }
-    .btn-reject:hover { filter: brightness(1.1); }
-    .btn-discuss:hover { filter: brightness(1.1); }
-    .btn-reopen:hover { filter: brightness(1.1); }
-    .btn-accept {
-      background: var(--success-subtle);
-      color: var(--success);
-      border: 1px solid var(--success);
-    }
-    .btn-accept:hover { filter: brightness(1.1); }
+      .btn-reopen {
+        background: var(--info);
+      }
+      .btn-approve:hover {
+        filter: brightness(1.1);
+      }
+      .btn-reject:hover {
+        filter: brightness(1.1);
+      }
+      .btn-discuss:hover {
+        filter: brightness(1.1);
+      }
+      .btn-reopen:hover {
+        filter: brightness(1.1);
+      }
+      .btn-accept {
+        background: var(--success-subtle);
+        color: var(--success);
+        border: 1px solid var(--success);
+      }
+      .btn-accept:hover {
+        filter: brightness(1.1);
+      }
 
-    /* --- Edit status badges --- */
-    .edit-status {
-      display: inline-block;
-      padding: 0.15rem 0.5rem;
-      border-radius: var(--radius-full);
-      font-size: var(--text-xs);
-      font-weight: 600;
-    }
+      /* --- Edit status badges --- */
+      .edit-status {
+        display: inline-block;
+        padding: 0.15rem 0.5rem;
+        border-radius: var(--radius-full);
+        font-size: var(--text-xs);
+        font-weight: 600;
+      }
 
-    .edit-status.pending {
-      background: var(--accent-subtle);
-      color: var(--accent);
-    }
+      .edit-status.pending {
+        background: var(--accent-subtle);
+        color: var(--accent);
+      }
 
-    .edit-status.approved {
-      background: var(--success-subtle);
-      color: var(--success);
-    }
+      .edit-status.approved {
+        background: var(--success-subtle);
+        color: var(--success);
+      }
 
-    .edit-status.rejected {
-      background: var(--error-subtle);
-      color: var(--error);
-    }
+      .edit-status.rejected {
+        background: var(--error-subtle);
+        color: var(--error);
+      }
 
-    .edit-status.discuss {
-      background: var(--warning-subtle);
-      color: var(--warning);
-    }
+      .edit-status.discuss {
+        background: var(--warning-subtle);
+        color: var(--warning);
+      }
 
-    .edit-status.superseded {
-      background: var(--bg-elevated);
-      color: var(--text-muted);
-    }
+      .edit-status.superseded {
+        background: var(--bg-elevated);
+        color: var(--text-muted);
+      }
 
-    .edit-status.accepted {
-      background: var(--success-subtle);
-      color: var(--success);
-    }
+      .edit-status.accepted {
+        background: var(--success-subtle);
+        color: var(--success);
+      }
 
-    /* MTA-R3: why a contested row may still be attested — visible text, not a
+      /* MTA-R3: why a contested row may still be attested — visible text, not a
        tooltip, so it is on screen at the moment the editor attests. */
-    .accept-context-hint {
-      margin-top: 0.25rem;
-      font-size: 0.75rem;
-      line-height: 1.3;
-      color: var(--text-muted);
-    }
+      .accept-context-hint {
+        margin-top: 0.25rem;
+        font-size: 0.75rem;
+        line-height: 1.3;
+        color: var(--text-muted);
+      }
 
-    /* --- Category badges --- */
-    .category-badge {
-      display: inline-block;
-      padding: 0.1rem 0.4rem;
-      border-radius: var(--radius-sm);
-      font-size: var(--text-xs);
-      background: var(--bg-elevated);
-      color: var(--text-muted);
-    }
+      /* --- Category badges --- */
+      .category-badge {
+        display: inline-block;
+        padding: 0.1rem 0.4rem;
+        border-radius: var(--radius-sm);
+        font-size: var(--text-xs);
+        background: var(--bg-elevated);
+        color: var(--text-muted);
+      }
 
-    .category-badge.terminology {
-      background: var(--accent-subtle);
-      color: var(--accent);
-    }
+      .category-badge.terminology {
+        background: var(--accent-subtle);
+        color: var(--accent);
+      }
 
-    .category-badge.accuracy {
-      background: var(--error-subtle);
-      color: var(--error);
-    }
+      .category-badge.accuracy {
+        background: var(--error-subtle);
+        color: var(--error);
+      }
 
-    .category-badge.readability {
-      background: var(--success-subtle);
-      color: var(--success);
-    }
+      .category-badge.readability {
+        background: var(--success-subtle);
+        color: var(--success);
+      }
 
-    .category-badge.style {
-      background: var(--info-subtle);
-      color: var(--info);
-    }
+      .category-badge.style {
+        background: var(--info-subtle);
+        color: var(--info);
+      }
 
-    .category-badge.omission {
-      background: var(--warning-subtle);
-      color: var(--warning);
-    }
+      .category-badge.omission {
+        background: var(--warning-subtle);
+        color: var(--warning);
+      }
 
-    /* --- Review actions --- */
-    .review-actions {
-      display: flex;
-      gap: 0.25rem;
-      justify-content: center;
-    }
+      /* --- Review actions --- */
+      .review-actions {
+        display: flex;
+        gap: 0.25rem;
+        justify-content: center;
+      }
 
-    /* --- Discussion thread --- */
-    .discussion-thread {
-      margin-top: var(--spacing-sm);
-      padding: var(--spacing-sm);
-      background: var(--bg-elevated);
-      border-radius: var(--radius-md);
-      font-size: var(--text-sm);
-    }
+      /* --- Discussion thread --- */
+      .discussion-thread {
+        margin-top: var(--spacing-sm);
+        padding: var(--spacing-sm);
+        background: var(--bg-elevated);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+      }
 
-    .discussion-comment {
-      padding: 0.25rem 0;
-      border-bottom: 1px solid var(--border);
-    }
+      .discussion-comment {
+        padding: 0.25rem 0;
+        border-bottom: 1px solid var(--border);
+      }
 
-    .discussion-comment:last-child { border-bottom: none; }
-    .discussion-author { font-weight: 600; }
-    .discussion-time { color: var(--text-muted); font-size: var(--text-xs); }
+      .discussion-comment:last-child {
+        border-bottom: none;
+      }
+      .discussion-author {
+        font-weight: 600;
+      }
+      .discussion-time {
+        color: var(--text-muted);
+        font-size: var(--text-xs);
+      }
 
-    /* --- Math placeholder --- */
-    .math-placeholder {
-      display: inline;
-      padding: 0.1rem 0.3rem;
-      background: var(--info-subtle);
-      border-radius: var(--radius-sm);
-      font-family: var(--font-mono);
-      font-size: var(--text-sm);
-      color: var(--info);
-    }
+      /* --- Math placeholder --- */
+      .math-placeholder {
+        display: inline;
+        padding: 0.1rem 0.3rem;
+        background: var(--info-subtle);
+        border-radius: var(--radius-sm);
+        font-family: var(--font-mono);
+        font-size: var(--text-sm);
+        color: var(--info);
+      }
 
-    /* --- Markdown preview rendering --- */
-    .preview-term {
-      border-bottom: 2px solid var(--accent);
-      font-weight: 600;
-    }
+      /* --- Markdown preview rendering --- */
+      .preview-term {
+        border-bottom: 2px solid var(--accent);
+        font-weight: 600;
+      }
 
-    .preview-br {
-      color: var(--text-muted);
-      font-size: var(--text-xs);
-      user-select: none;
-    }
+      .preview-br {
+        color: var(--text-muted);
+        font-size: var(--text-xs);
+        user-select: none;
+      }
 
-    .xref-chip {
-      display: inline;
-      padding: 0.1rem 0.35rem;
-      background: var(--warning-subtle);
-      border-radius: var(--radius-sm);
-      font-size: var(--text-xs);
-      color: var(--warning);
-      cursor: help;
-    }
+      .xref-chip {
+        display: inline;
+        padding: 0.1rem 0.35rem;
+        background: var(--warning-subtle);
+        border-radius: var(--radius-sm);
+        font-size: var(--text-xs);
+        color: var(--warning);
+        cursor: help;
+      }
 
-    .link-chip {
-      color: var(--info);
-      text-decoration: underline;
-      text-decoration-style: dotted;
-    }
+      .link-chip {
+        color: var(--info);
+        text-decoration: underline;
+        text-decoration-style: dotted;
+      }
 
-    /* --- Preview panel (live preview above textarea) --- */
-    .preview-panel {
-      display: none;
-      padding: var(--spacing-sm);
-      margin-bottom: var(--spacing-sm);
-      background: var(--bg-base);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      line-height: 1.6;
-      min-height: 2em;
-      color: var(--text-primary);
-    }
+      /* --- Preview panel (live preview above textarea) --- */
+      .preview-panel {
+        display: none;
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+        background: var(--bg-base);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        line-height: 1.6;
+        min-height: 2em;
+        color: var(--text-primary);
+      }
 
-    .edit-panel.active .preview-panel {
-      display: block;
-    }
+      .edit-panel.active .preview-panel {
+        display: block;
+      }
 
-    .preview-panel:empty::before {
-      content: 'Forskoðun...';
-      color: var(--text-muted);
-      font-style: italic;
-    }
+      .preview-panel:empty::before {
+        content: 'Forskoðun...';
+        color: var(--text-muted);
+        font-style: italic;
+      }
 
-    /* --- Formatting toolbar --- */
-    .format-toolbar {
-      display: flex;
-      gap: 2px;
-      margin-bottom: var(--spacing-sm);
-      flex-wrap: wrap;
-    }
+      /* --- Formatting toolbar --- */
+      .format-toolbar {
+        display: flex;
+        gap: 2px;
+        margin-bottom: var(--spacing-sm);
+        flex-wrap: wrap;
+      }
 
-    .format-toolbar button {
-      padding: 0.2rem 0.5rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-      font-size: var(--text-sm);
-      cursor: pointer;
-      line-height: 1.4;
-      transition: background var(--transition-fast), border-color var(--transition-fast);
-    }
+      .format-toolbar button {
+        padding: 0.2rem 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+        font-size: var(--text-sm);
+        cursor: pointer;
+        line-height: 1.4;
+        transition:
+          background var(--transition-fast),
+          border-color var(--transition-fast);
+      }
 
-    .format-toolbar button:hover {
-      background: var(--bg-surface);
-      border-color: var(--accent);
-    }
+      .format-toolbar button:hover {
+        background: var(--bg-surface);
+        border-color: var(--accent);
+      }
 
-    .format-toolbar button:active {
-      background: var(--accent-subtle);
-    }
+      .format-toolbar button:active {
+        background: var(--accent-subtle);
+      }
 
-    .format-toolbar .tb-bold { font-weight: 700; }
-    .format-toolbar .tb-italic { font-style: italic; }
-    .format-toolbar .tb-term { border-bottom: 2px solid var(--accent); }
+      .format-toolbar .tb-bold {
+        font-weight: 700;
+      }
+      .format-toolbar .tb-italic {
+        font-style: italic;
+      }
+      .format-toolbar .tb-term {
+        border-bottom: 2px solid var(--accent);
+      }
 
-    /* --- Term highlighting --- */
-    .term-highlight {
-      background: var(--success-subtle);
-      border-bottom: 2px solid var(--success);
-      cursor: pointer;
-      padding: 0 1px;
-      border-radius: var(--radius-sm);
-      transition: background var(--transition-fast);
-    }
+      /* --- Term highlighting --- */
+      .term-highlight {
+        background: var(--success-subtle);
+        border-bottom: 2px solid var(--success);
+        cursor: pointer;
+        padding: 0 1px;
+        border-radius: var(--radius-sm);
+        transition: background var(--transition-fast);
+      }
 
-    .term-highlight:hover {
-      background: rgba(91,154,111,0.25);
-    }
+      .term-highlight:hover {
+        background: rgba(91, 154, 111, 0.25);
+      }
 
-    .term-highlight.proposed {
-      border-bottom-color: var(--warning);
-      background: var(--warning-subtle);
-    }
+      .term-highlight.proposed {
+        border-bottom-color: var(--warning);
+        background: var(--warning-subtle);
+      }
 
-    .term-highlight.proposed:hover {
-      background: rgba(196,150,58,0.25);
-    }
+      .term-highlight.proposed:hover {
+        background: rgba(196, 150, 58, 0.25);
+      }
 
-    /* Item 18 — fallback (cross-subject) matches: visibly secondary. Declared
+      /* Item 18 — fallback (cross-subject) matches: visibly secondary. Declared
        after .proposed so at equal specificity the muted look wins for
        proposed+fallback; status still shows in the popup badges. */
-    .term-highlight.cross-subject {
-      background: transparent;
-      border-bottom: 2px dashed var(--text-muted);
-    }
+      .term-highlight.cross-subject {
+        background: transparent;
+        border-bottom: 2px dashed var(--text-muted);
+      }
 
-    .term-highlight.cross-subject:hover {
-      background: var(--bg-elevated);
-    }
+      .term-highlight.cross-subject:hover {
+        background: var(--bg-elevated);
+      }
 
-    /* Item 18 — term popup subject badges + fallback note */
-    .term-subject-badge {
-      font-size: 0.7em;
-      padding: 0.1em 0.4em;
-      background: var(--bg-elevated);
-      border-radius: 3px;
-      color: var(--text-muted);
-    }
+      /* Item 18 — term popup subject badges + fallback note */
+      .term-subject-badge {
+        font-size: 0.7em;
+        padding: 0.1em 0.4em;
+        background: var(--bg-elevated);
+        border-radius: 3px;
+        color: var(--text-muted);
+      }
 
-    .term-subject-badge.other {
-      background: transparent;
-      border: 1px dashed var(--text-muted);
-    }
+      .term-subject-badge.other {
+        background: transparent;
+        border: 1px dashed var(--text-muted);
+      }
 
-    .term-popup-fallback-note {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-      padding-bottom: 0.3rem;
-      margin-bottom: 0.3rem;
-      border-bottom: 1px dashed var(--border);
-    }
+      .term-popup-fallback-note {
+        font-size: var(--text-xs);
+        color: var(--text-muted);
+        padding-bottom: 0.3rem;
+        margin-bottom: 0.3rem;
+        border-bottom: 1px dashed var(--border);
+      }
 
-    /* --- Term issue indicators --- */
-    .term-issue {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.4rem;
-      padding: 0.3rem 0.5rem;
-      margin-top: 0.35rem;
-      border-radius: var(--radius-md);
-      font-size: var(--text-xs);
-      line-height: 1.3;
-    }
+      /* --- Term issue indicators --- */
+      .term-issue {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.4rem;
+        padding: 0.3rem 0.5rem;
+        margin-top: 0.35rem;
+        border-radius: var(--radius-md);
+        font-size: var(--text-xs);
+        line-height: 1.3;
+      }
 
-    .term-issue.inconsistent {
-      background: var(--warning-subtle);
-      border-left: 3px solid var(--warning);
-      color: var(--warning);
-    }
+      .term-issue.inconsistent {
+        background: var(--warning-subtle);
+        border-left: 3px solid var(--warning);
+        color: var(--warning);
+      }
 
-    .term-issue.missing {
-      background: var(--bg-elevated);
-      border-left: 3px solid var(--text-muted);
-      color: var(--text-muted);
-    }
+      /* §C124 — an MT finding carried over from the pipeline's residue report.
+       Amber like .inconsistent because it is the same kind of claim (something
+       looks wrong here), but its own class so the two can diverge: this one is
+       ADVISORY and can be stale, while a term issue is computed live. */
+      .term-issue.mt-finding {
+        background: var(--warning-subtle);
+        border-left: 3px solid var(--warning);
+        color: var(--warning);
+      }
 
-    /* ⚠️ ADDED 2026-08-11 (§C36 B4b-1 deploy-readiness audit). The client
+      .term-issue.missing {
+        background: var(--bg-elevated);
+        border-left: 3px solid var(--text-muted);
+        color: var(--text-muted);
+      }
+
+      /* ⚠️ ADDED 2026-08-11 (§C36 B4b-1 deploy-readiness audit). The client
        interpolates `issue.type` straight into this class list
        (segment-editor.js:785), and `alternative` — introduced by B4b-1's D5
        softer tier — matched NO rule, so it fell back to bare `.term-issue`:
@@ -1016,722 +1090,865 @@
        the pinned C24 fixture.
        Quieter than `missing` on purpose: dashed, so the two are distinguishable
        at a glance without either shouting. */
-    .term-issue.alternative {
-      background: transparent;
-      border-left: 3px dashed var(--text-muted);
-      color: var(--text-muted);
-    }
+      .term-issue.alternative {
+        background: transparent;
+        border-left: 3px dashed var(--text-muted);
+        color: var(--text-muted);
+      }
 
-    .term-issue-icon { flex-shrink: 0; }
+      .term-issue-icon {
+        flex-shrink: 0;
+      }
 
-    /* --- Repetition (exact-match) hint --- */
-    .repetition-hint {
-      margin-top: 0.35rem;
-      padding: 0.4rem 0.55rem;
-      border-radius: var(--radius-md);
-      background: var(--success-subtle, #e8f5ee);
-      border-left: 3px solid var(--success, #2e8b57);
-      font-size: var(--text-xs);
-      line-height: 1.35;
-    }
-    .repetition-hint-label {
-      font-weight: 600;
-      color: var(--success, #2e8b57);
-      margin-bottom: 0.2rem;
-    }
-    .repetition-hint-text {
-      color: var(--text-secondary, #444);
-      margin-bottom: 0.35rem;
-      white-space: pre-wrap;
-    }
+      /* --- Repetition (exact-match) hint --- */
+      .repetition-hint {
+        margin-top: 0.35rem;
+        padding: 0.4rem 0.55rem;
+        border-radius: var(--radius-md);
+        background: var(--success-subtle, #e8f5ee);
+        border-left: 3px solid var(--success, #2e8b57);
+        font-size: var(--text-xs);
+        line-height: 1.35;
+      }
+      .repetition-hint-label {
+        font-weight: 600;
+        color: var(--success, #2e8b57);
+        margin-bottom: 0.2rem;
+      }
+      .repetition-hint-text {
+        color: var(--text-secondary, #444);
+        margin-bottom: 0.35rem;
+        white-space: pre-wrap;
+      }
 
-    /* --- Concordance search panel --- */
-    .concordance-panel {
-      margin: 0.75rem 0;
-      padding: 0.6rem 0.75rem;
-      border: 1px solid var(--border, #ddd);
-      border-radius: var(--radius-md);
-      background: var(--bg-elevated, #fafafa);
-    }
-    .concordance-search {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .concordance-search input {
-      flex: 1;
-      padding: 0.4rem 0.6rem;
-      font-size: var(--text-sm);
-      border: 1px solid var(--border, #ccc);
-      border-radius: var(--radius-md);
-    }
-    .concordance-results {
-      margin-top: 0.5rem;
-      max-height: 320px;
-      overflow-y: auto;
-    }
-    .concordance-results:empty {
-      display: none;
-    }
-    .concordance-hit {
-      padding: 0.45rem 0.5rem;
-      border-top: 1px solid var(--border, #eee);
-      font-size: var(--text-sm);
-    }
-    .concordance-hit:first-child {
-      border-top: none;
-    }
-    .concordance-en {
-      color: var(--text-secondary, #555);
-    }
-    .concordance-is {
-      margin-top: 0.15rem;
-    }
-    .concordance-prov {
-      display: inline-block;
-      margin-top: 0.2rem;
-      font-size: var(--text-xs);
-      color: var(--text-muted, #888);
-      text-decoration: none;
-    }
-    .concordance-prov:hover {
-      text-decoration: underline;
-    }
-    .concordance-hit mark {
-      background: var(--warning-subtle, #fff3cd);
-      padding: 0 1px;
-    }
+      /* --- Concordance search panel --- */
+      .concordance-panel {
+        margin: 0.75rem 0;
+        padding: 0.6rem 0.75rem;
+        border: 1px solid var(--border, #ddd);
+        border-radius: var(--radius-md);
+        background: var(--bg-elevated, #fafafa);
+      }
+      .concordance-search {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .concordance-search input {
+        flex: 1;
+        padding: 0.4rem 0.6rem;
+        font-size: var(--text-sm);
+        border: 1px solid var(--border, #ccc);
+        border-radius: var(--radius-md);
+      }
+      .concordance-results {
+        margin-top: 0.5rem;
+        max-height: 320px;
+        overflow-y: auto;
+      }
+      .concordance-results:empty {
+        display: none;
+      }
+      .concordance-hit {
+        padding: 0.45rem 0.5rem;
+        border-top: 1px solid var(--border, #eee);
+        font-size: var(--text-sm);
+      }
+      .concordance-hit:first-child {
+        border-top: none;
+      }
+      .concordance-en {
+        color: var(--text-secondary, #555);
+      }
+      .concordance-is {
+        margin-top: 0.15rem;
+      }
+      .concordance-prov {
+        display: inline-block;
+        margin-top: 0.2rem;
+        font-size: var(--text-xs);
+        color: var(--text-muted, #888);
+        text-decoration: none;
+      }
+      .concordance-prov:hover {
+        text-decoration: underline;
+      }
+      .concordance-hit mark {
+        background: var(--warning-subtle, #fff3cd);
+        padding: 0 1px;
+      }
 
-    /* --- Review summary panel (head-editor) --- */
-    .review-summary-panel {
-      margin: 0.75rem 0;
-      padding: 0.6rem 0.75rem;
-      border: 1px solid var(--border, #ddd);
-      border-radius: var(--radius-md);
-      background: var(--bg-elevated, #fafafa);
-    }
-    .review-summary-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .review-summary-head h4 {
-      margin: 0;
-      font-size: var(--text-sm);
-    }
-    .rs-label {
-      font-weight: 600;
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text-muted, #888);
-      margin: 0.4rem 0 0.2rem;
-    }
-    .rs-term,
-    .rs-seg {
-      font-size: var(--text-sm);
-      padding: 0.15rem 0;
-    }
-    .rs-count {
-      color: var(--text-muted, #888);
-      font-size: var(--text-xs);
-    }
-    .rs-seg code {
-      font-size: var(--text-xs);
-      color: var(--text-muted, #888);
-    }
-    .rs-agree { color: var(--success, #2e8b57); }
-    .rs-disagree { color: var(--warning, #b45309); }
+      /* --- Review summary panel (head-editor) --- */
+      .review-summary-panel {
+        margin: 0.75rem 0;
+        padding: 0.6rem 0.75rem;
+        border: 1px solid var(--border, #ddd);
+        border-radius: var(--radius-md);
+        background: var(--bg-elevated, #fafafa);
+      }
+      .review-summary-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .review-summary-head h4 {
+        margin: 0;
+        font-size: var(--text-sm);
+      }
+      .rs-label {
+        font-weight: 600;
+        font-size: var(--text-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--text-muted, #888);
+        margin: 0.4rem 0 0.2rem;
+      }
+      .rs-term,
+      .rs-seg {
+        font-size: var(--text-sm);
+        padding: 0.15rem 0;
+      }
+      .rs-count {
+        color: var(--text-muted, #888);
+        font-size: var(--text-xs);
+      }
+      .rs-seg code {
+        font-size: var(--text-xs);
+        color: var(--text-muted, #888);
+      }
+      .rs-agree {
+        color: var(--success, #2e8b57);
+      }
+      .rs-disagree {
+        color: var(--warning, #b45309);
+      }
 
-    /* --- Term popup --- */
-    .term-popup {
-      display: none;
-      position: absolute;
-      z-index: 100;
-      min-width: 280px;
-      max-width: 360px;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-modal);
-      padding: 0.75rem;
-      font-size: var(--text-sm);
-    }
+      /* --- Term popup --- */
+      .term-popup {
+        display: none;
+        position: absolute;
+        z-index: 100;
+        min-width: 280px;
+        max-width: 360px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-modal);
+        padding: 0.75rem;
+        font-size: var(--text-sm);
+      }
 
-    .term-popup.active { display: block; }
+      .term-popup.active {
+        display: block;
+      }
 
-    .term-popup-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: var(--spacing-sm);
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid var(--border);
-    }
+      .term-popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-sm);
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid var(--border);
+      }
 
-    .term-popup-header strong {
-      font-size: var(--text-base);
-      font-family: var(--font-heading);
-    }
+      .term-popup-header strong {
+        font-size: var(--text-base);
+        font-family: var(--font-heading);
+      }
 
-    .term-popup-close {
-      background: none;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      color: var(--text-muted);
-      padding: 0;
-      line-height: 1;
-      transition: color var(--transition-fast);
-    }
+      .term-popup-close {
+        background: none;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        color: var(--text-muted);
+        padding: 0;
+        line-height: 1;
+        transition: color var(--transition-fast);
+      }
 
-    .term-popup-close:hover { color: var(--text-primary); }
+      .term-popup-close:hover {
+        color: var(--text-primary);
+      }
 
-    .term-popup-row {
-      display: flex;
-      gap: var(--spacing-sm);
-      padding: 0.2rem 0;
-    }
+      .term-popup-row {
+        display: flex;
+        gap: var(--spacing-sm);
+        padding: 0.2rem 0;
+      }
 
-    .term-popup-label {
-      color: var(--text-muted);
-      min-width: 70px;
-      flex-shrink: 0;
-    }
+      .term-popup-label {
+        color: var(--text-muted);
+        min-width: 70px;
+        flex-shrink: 0;
+      }
 
-    .term-popup-value { font-weight: 500; }
+      .term-popup-value {
+        font-weight: 500;
+      }
 
-    /* --- Term lookup --- */
-    .term-lookup-container {
-      position: relative;
-      display: inline-block;
-    }
+      /* --- Term lookup --- */
+      .term-lookup-container {
+        position: relative;
+        display: inline-block;
+      }
 
-    .term-lookup-input {
-      width: 200px;
-      padding: 0.35rem 0.5rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      font-size: var(--text-sm);
-      font-family: var(--font-body);
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-      transition: border-color var(--transition-fast);
-    }
+      .term-lookup-input {
+        width: 200px;
+        padding: 0.35rem 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+        font-family: var(--font-body);
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+        transition: border-color var(--transition-fast);
+      }
 
-    .term-lookup-input:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
+      .term-lookup-input:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
 
-    .term-lookup-results {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      max-height: 200px;
-      overflow-y: auto;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: 0 0 var(--radius-md) var(--radius-md);
-      box-shadow: var(--shadow-modal);
-      z-index: 50;
-    }
+      .term-lookup-results {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 200px;
+        overflow-y: auto;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        box-shadow: var(--shadow-modal);
+        z-index: 50;
+      }
 
-    .term-lookup-results.active { display: block; }
+      .term-lookup-results.active {
+        display: block;
+      }
 
-    .term-lookup-item {
-      padding: 0.4rem 0.5rem;
-      border-bottom: 1px solid var(--border);
-      cursor: pointer;
-      font-size: var(--text-sm);
-      transition: background var(--transition-fast);
-    }
+      .term-lookup-item {
+        padding: 0.4rem 0.5rem;
+        border-bottom: 1px solid var(--border);
+        cursor: pointer;
+        font-size: var(--text-sm);
+        transition: background var(--transition-fast);
+      }
 
-    .term-lookup-item:hover { background: var(--bg-hover); }
-    .term-lookup-item:last-child { border-bottom: none; }
-    .term-lookup-en { font-weight: 600; }
-    .term-lookup-is { color: var(--text-muted); }
+      .term-lookup-item:hover {
+        background: var(--bg-hover);
+      }
+      .term-lookup-item:last-child {
+        border-bottom: none;
+      }
+      .term-lookup-en {
+        font-weight: 600;
+      }
+      .term-lookup-is {
+        color: var(--text-muted);
+      }
 
-    /* --- Pipeline panel --- */
-    .pipeline-panel {
-      margin-top: var(--spacing-md);
-      padding: 0.75rem var(--spacing-md);
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-    }
+      /* --- Pipeline panel --- */
+      .pipeline-panel {
+        margin-top: var(--spacing-md);
+        padding: 0.75rem var(--spacing-md);
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+      }
 
-    .pipeline-panel h4 {
-      margin: 0 0 var(--spacing-sm) 0;
-      font-size: var(--text-base);
-      font-family: var(--font-heading);
-    }
+      .pipeline-panel h4 {
+        margin: 0 0 var(--spacing-sm) 0;
+        font-size: var(--text-base);
+        font-family: var(--font-heading);
+      }
 
-    .pipeline-controls {
-      display: flex;
-      gap: var(--spacing-sm);
-      align-items: center;
-      flex-wrap: wrap;
-    }
+      .pipeline-controls {
+        display: flex;
+        gap: var(--spacing-sm);
+        align-items: center;
+        flex-wrap: wrap;
+      }
 
-    .pipeline-controls label {
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-    }
+      .pipeline-controls label {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+      }
 
-    .pipeline-controls select {
-      padding: 0.3rem 0.4rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      font-size: var(--text-sm);
-      font-family: var(--font-body);
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-    }
+      .pipeline-controls select {
+        padding: 0.3rem 0.4rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+        font-family: var(--font-body);
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+      }
 
-    .pipeline-output {
-      display: none;
-      margin-top: var(--spacing-sm);
-      max-height: 200px;
-      overflow-y: auto;
-      background: var(--bg-base);
-      color: var(--text-secondary);
-      font-family: var(--font-mono);
-      font-size: var(--text-xs);
-      padding: var(--spacing-sm);
-      border-radius: var(--radius-md);
-      white-space: pre-wrap;
-      word-break: break-all;
-      border: 1px solid var(--border);
-    }
+      .pipeline-output {
+        display: none;
+        margin-top: var(--spacing-sm);
+        max-height: 200px;
+        overflow-y: auto;
+        background: var(--bg-base);
+        color: var(--text-secondary);
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-md);
+        white-space: pre-wrap;
+        word-break: break-all;
+        border: 1px solid var(--border);
+      }
 
-    .pipeline-output.active { display: block; }
+      .pipeline-output.active {
+        display: block;
+      }
 
-    .pipeline-status-badge {
-      display: inline-block;
-      padding: 0.15rem 0.4rem;
-      border-radius: var(--radius-full);
-      font-size: var(--text-xs);
-      font-weight: 600;
-    }
+      .pipeline-status-badge {
+        display: inline-block;
+        padding: 0.15rem 0.4rem;
+        border-radius: var(--radius-full);
+        font-size: var(--text-xs);
+        font-weight: 600;
+      }
 
-    .pipeline-status-badge.running {
-      background: var(--info-subtle);
-      color: var(--info);
-    }
+      .pipeline-status-badge.running {
+        background: var(--info-subtle);
+        color: var(--info);
+      }
 
-    .pipeline-status-badge.completed,
-    .pipeline-status-badge.success {
-      background: var(--success-subtle);
-      color: var(--success);
-    }
+      .pipeline-status-badge.completed,
+      .pipeline-status-badge.success {
+        background: var(--success-subtle);
+        color: var(--success);
+      }
 
-    .pipeline-status-badge.failed {
-      background: var(--error-subtle);
-      color: var(--error);
-    }
+      .pipeline-status-badge.failed {
+        background: var(--error-subtle);
+        color: var(--error);
+      }
 
-    /* --- Apply panel --- */
-    .apply-panel {
-      margin-top: 0.75rem;
-      padding: 0.75rem var(--spacing-md);
-      background: var(--success-subtle);
-      border: 1px solid var(--success);
-      border-radius: var(--radius-md);
-    }
+      /* --- Apply panel --- */
+      .apply-panel {
+        margin-top: 0.75rem;
+        padding: 0.75rem var(--spacing-md);
+        background: var(--success-subtle);
+        border: 1px solid var(--success);
+        border-radius: var(--radius-md);
+      }
 
-    .apply-panel h4 {
-      margin: 0 0 var(--spacing-sm) 0;
-      font-size: var(--text-base);
-      font-family: var(--font-heading);
-      color: var(--success);
-    }
+      .apply-panel h4 {
+        margin: 0 0 var(--spacing-sm) 0;
+        font-size: var(--text-base);
+        font-family: var(--font-heading);
+        color: var(--success);
+      }
 
-    .apply-controls {
-      display: flex;
-      gap: var(--spacing-sm);
-      align-items: center;
-      flex-wrap: wrap;
-    }
+      .apply-controls {
+        display: flex;
+        gap: var(--spacing-sm);
+        align-items: center;
+        flex-wrap: wrap;
+      }
 
-    .preview-panel {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-md) var(--spacing-lg);
-      margin-bottom: var(--spacing-md);
-    }
+      .preview-panel {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-md) var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+      }
 
-    .btn-apply {
-      background: var(--success);
-      color: white;
-      border: none;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      font-size: var(--text-sm);
-      font-family: var(--font-body);
-      padding: 0.3rem 0.6rem;
-      transition: filter var(--transition-fast);
-    }
+      .btn-apply {
+        background: var(--success);
+        color: white;
+        border: none;
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        font-size: var(--text-sm);
+        font-family: var(--font-body);
+        padding: 0.3rem 0.6rem;
+        transition: filter var(--transition-fast);
+      }
 
-    .btn-apply:hover:not(:disabled) { filter: brightness(1.1); }
-    .btn-apply:disabled { opacity: 0.5; cursor: not-allowed; }
+      .btn-apply:hover:not(:disabled) {
+        filter: brightness(1.1);
+      }
+      .btn-apply:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
 
-    .apply-status {
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-    }
+      .apply-status {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+      }
 
-    .apply-status strong { color: var(--text-primary); }
+      .apply-status strong {
+        color: var(--text-primary);
+      }
 
-    /* --- MT-incomplete warning banner --- */
-    .mt-incomplete-banner {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.625rem var(--spacing-md);
-      background: var(--warning-subtle);
-      border: 1px solid var(--warning);
-      border-radius: var(--radius-md);
-      margin-bottom: var(--spacing-md);
-      font-size: var(--text-sm);
-      color: var(--warning);
-      font-weight: 500;
-    }
+      /* --- MT-incomplete warning banner --- */
+      .mt-incomplete-banner {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.625rem var(--spacing-md);
+        background: var(--warning-subtle);
+        border: 1px solid var(--warning);
+        border-radius: var(--radius-md);
+        margin-bottom: var(--spacing-md);
+        font-size: var(--text-sm);
+        color: var(--warning);
+        font-weight: 500;
+      }
 
-    /* --- Editor container card --- */
-    .editor-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-lg);
-    }
+      /* --- Editor container card --- */
+      .editor-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+      }
 
-    .editor-card .table-wrap {
-      overflow-x: auto;
-    }
+      .editor-card .table-wrap {
+        overflow-x: auto;
+      }
 
-    /* --- Save status bar --- */
-    .save-status-bar {
-      display: flex; align-items: center; gap: 0.5rem;
-      padding: 0.5rem 0.75rem;
-      background: var(--bg-elevated); border: 1px solid var(--border);
-      border-radius: var(--radius-md); margin-bottom: var(--spacing-md);
-      font-size: var(--text-sm); color: var(--text-secondary);
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .save-status-bar.has-unsaved {
-      border-color: var(--warning); background: var(--warning-subtle);
-    }
-    .save-status-bar.all-saved {
-      border-color: var(--success); background: var(--success-subtle);
-    }
-    .save-status-bar.saving {
-      border-color: var(--accent); background: var(--accent-subtle);
-    }
-    .save-status-dot { font-size: 0.6rem; }
-    .save-status-bar.has-unsaved .save-status-dot { color: var(--warning); }
-    .save-status-bar.all-saved .save-status-dot { color: var(--success); }
-    .save-status-bar.saving .save-status-dot { color: var(--accent); }
-    .save-status-time { margin-left: auto; font-size: var(--text-xs); color: var(--text-muted); }
+      /* --- Save status bar --- */
+      .save-status-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        margin-bottom: var(--spacing-md);
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+      }
+      .save-status-bar.has-unsaved {
+        border-color: var(--warning);
+        background: var(--warning-subtle);
+      }
+      .save-status-bar.all-saved {
+        border-color: var(--success);
+        background: var(--success-subtle);
+      }
+      .save-status-bar.saving {
+        border-color: var(--accent);
+        background: var(--accent-subtle);
+      }
+      .save-status-dot {
+        font-size: 0.6rem;
+      }
+      .save-status-bar.has-unsaved .save-status-dot {
+        color: var(--warning);
+      }
+      .save-status-bar.all-saved .save-status-dot {
+        color: var(--success);
+      }
+      .save-status-bar.saving .save-status-dot {
+        color: var(--accent);
+      }
+      .save-status-time {
+        margin-left: auto;
+        font-size: var(--text-xs);
+        color: var(--text-muted);
+      }
 
-    /* --- Per-segment save indicators --- */
-    .seg-save-ind { font-size: var(--text-xs); margin-left: 0.5rem; }
-    .seg-save-ind.dirty { color: var(--warning); }
-    .seg-save-ind.saving { color: var(--accent); }
-    .seg-save-ind.saved { color: var(--success); }
+      /* --- Per-segment save indicators --- */
+      .seg-save-ind {
+        font-size: var(--text-xs);
+        margin-left: 0.5rem;
+      }
+      .seg-save-ind.dirty {
+        color: var(--warning);
+      }
+      .seg-save-ind.saving {
+        color: var(--accent);
+      }
+      .seg-save-ind.saved {
+        color: var(--success);
+      }
 
-    /* --- Module progress bar --- */
-    .module-progress {
-      margin-bottom: var(--spacing-md);
-      padding: 0.5rem 0.75rem;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-    }
+      /* --- Module progress bar --- */
+      .module-progress {
+        margin-bottom: var(--spacing-md);
+        padding: 0.5rem 0.75rem;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+      }
 
-    .module-progress-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.375rem;
-    }
+      .module-progress-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.375rem;
+      }
 
-    .module-progress-text {
-      font-size: var(--text-sm);
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
+      .module-progress-text {
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
 
-    .module-progress .progress-bar {
-      height: 0.375rem;
-    }
+      .module-progress .progress-bar {
+        height: 0.375rem;
+      }
 
-    /* --- Status filter hidden rows --- */
-    .segment-row.filter-hidden {
-      display: none;
-    }
+      /* --- Status filter hidden rows --- */
+      .segment-row.filter-hidden {
+        display: none;
+      }
 
-    /* --- Version history modal --- */
-    .vh-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-    }
-    .vh-overlay.active { display: flex; }
-    .vh-modal {
-      background: var(--bg-card, #fff);
-      color: var(--text, #111);
-      border-radius: var(--radius-md, 8px);
-      box-shadow: var(--shadow-modal);
-      width: min(560px, 92vw);
-      max-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    .vh-modal header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: var(--spacing-md, 12px);
-      border-bottom: 1px solid var(--border, #ddd);
-    }
-    .vh-modal header h3 { margin: 0; font-size: var(--text-md, 1rem); }
-    .vh-list { overflow-y: auto; padding: var(--spacing-sm, 8px); }
-    .vh-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--spacing-sm, 8px);
-      padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
-      border-bottom: 1px solid var(--border, #eee);
-    }
-    .vh-row:last-child { border-bottom: none; }
-    .vh-meta { font-size: var(--text-sm, 0.85rem); }
-    .vh-meta .vh-ver { font-weight: 700; }
-    .vh-meta .vh-sub { color: var(--text-muted, #666); font-size: var(--text-xs, 0.75rem); }
-    .vh-empty { padding: var(--spacing-md, 12px); color: var(--text-muted, #666); }
-    .vh-caption { margin: 0; padding: 8px 16px; font-size: 0.85em; color: var(--text-muted, #666); border-bottom: 1px solid var(--border, #e2e2e2); }
-  </style>
-</head>
-<body>
-  <main class="page-content page-wide" id="main-content" data-page="editor" data-title="Ritill">
-
-    <!-- ============================================================
+      /* --- Version history modal --- */
+      .vh-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 200;
+      }
+      .vh-overlay.active {
+        display: flex;
+      }
+      .vh-modal {
+        background: var(--bg-card, #fff);
+        color: var(--text, #111);
+        border-radius: var(--radius-md, 8px);
+        box-shadow: var(--shadow-modal);
+        width: min(560px, 92vw);
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .vh-modal header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--spacing-md, 12px);
+        border-bottom: 1px solid var(--border, #ddd);
+      }
+      .vh-modal header h3 {
+        margin: 0;
+        font-size: var(--text-md, 1rem);
+      }
+      .vh-list {
+        overflow-y: auto;
+        padding: var(--spacing-sm, 8px);
+      }
+      .vh-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacing-sm, 8px);
+        padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
+        border-bottom: 1px solid var(--border, #eee);
+      }
+      .vh-row:last-child {
+        border-bottom: none;
+      }
+      .vh-meta {
+        font-size: var(--text-sm, 0.85rem);
+      }
+      .vh-meta .vh-ver {
+        font-weight: 700;
+      }
+      .vh-meta .vh-sub {
+        color: var(--text-muted, #666);
+        font-size: var(--text-xs, 0.75rem);
+      }
+      .vh-empty {
+        padding: var(--spacing-md, 12px);
+        color: var(--text-muted, #666);
+      }
+      .vh-caption {
+        margin: 0;
+        padding: 8px 16px;
+        font-size: 0.85em;
+        color: var(--text-muted, #666);
+        border-bottom: 1px solid var(--border, #e2e2e2);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page-content page-wide" id="main-content" data-page="editor" data-title="Ritill">
+      <!-- ============================================================
          MODULE SELECTOR
          ============================================================ -->
-    <div class="selector-card" id="module-selector">
-      <h2>Velja einingu til að ritstýra</h2>
-      <div class="selector-grid">
-        <div>
-          <label for="book-select">Bók</label>
-          <select id="book-select" class="book-select">
-          </select>
+      <div class="selector-card" id="module-selector">
+        <h2>Velja einingu til að ritstýra</h2>
+        <div class="selector-grid">
+          <div>
+            <label for="book-select">Bók</label>
+            <select id="book-select" class="book-select"></select>
+          </div>
+          <div>
+            <label for="chapter-select">Kafli</label>
+            <select id="chapter-select" disabled>
+              <option value="">Veldu kafla...</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <label for="chapter-select">Kafli</label>
-          <select id="chapter-select" disabled>
-            <option value="">Veldu kafla...</option>
-          </select>
+        <div id="modules-list" style="display: none">
+          <h3>Einingar í kafla:</h3>
+          <div id="modules-container"></div>
         </div>
       </div>
-      <div id="modules-list" style="display: none;">
-        <h3>Einingar í kafla:</h3>
-        <div id="modules-container"></div>
-      </div>
-    </div>
 
-    <!-- ============================================================
+      <!-- ============================================================
          SEGMENT EDITOR
          ============================================================ -->
-    <div id="editor-container" style="display: none;">
-      <div class="module-header">
-        <div>
-          <h2 id="module-title"></h2>
-          <div class="module-meta" id="module-meta"></div>
-        </div>
-        <div class="module-toolbar">
-          <button class="btn btn-secondary btn-sm" id="btn-back" title="Til baka">
-            &#8592; Til baka
-          </button>
-          <button class="btn btn-primary btn-sm" id="btn-submit" title="Sendir allar breytingar til yfirlestrar hjá aðalritstjóra">
-            Senda til yfirlestrar
-          </button>
-        </div>
-      </div>
-
-      <!-- Concordance search (how did we translate this before?) -->
-      <div class="concordance-panel" id="concordance-panel">
-        <div class="concordance-search">
-          <input
-            type="text"
-            id="concordance-q"
-            placeholder="Samhengisleit — leitaðu í fyrri samþykktum þýðingum…"
-            autocomplete="off"
-          />
-          <button class="btn btn-secondary btn-sm" id="btn-concordance">Leita</button>
-        </div>
-        <div class="concordance-results" id="concordance-results"></div>
-      </div>
-
-      <!-- Review summary (HEAD_EDITOR only): terminology violations + proofreading -->
-      <div class="review-summary-panel" id="review-summary-panel" style="display: none;">
-        <div class="review-summary-head">
-          <h4>Yfirlit yfirlesara</h4>
-          <div style="display:flex; gap:0.4rem;">
-            <button
-              class="btn btn-secondary btn-sm"
-              id="btn-repetition-report"
-              title="Endurteknar enskar setningar í kaflanum og hvort þýðingar þeirra samræmast"
-            >
-              Endurtekningar í kafla
+      <div id="editor-container" style="display: none">
+        <div class="module-header">
+          <div>
+            <h2 id="module-title"></h2>
+            <div class="module-meta" id="module-meta"></div>
+          </div>
+          <div class="module-toolbar">
+            <button class="btn btn-secondary btn-sm" id="btn-back" title="Til baka">
+              &#8592; Til baka
             </button>
             <button
-              class="btn btn-secondary btn-sm"
-              id="btn-spellcheck"
-              title="Málfræði- og stafsetningaryfirlestur (Greynir)"
+              class="btn btn-primary btn-sm"
+              id="btn-submit"
+              title="Sendir allar breytingar til yfirlestrar hjá aðalritstjóra"
             >
-              Yfirlestur
+              Senda til yfirlestrar
             </button>
           </div>
         </div>
-        <div id="review-summary-terms"></div>
-        <div id="review-summary-spell"></div>
-        <div id="review-summary-repetition"></div>
-      </div>
 
-      <!-- Pipeline Panel (HEAD_EDITOR only) -->
-      <div class="pipeline-panel" id="pipeline-panel" style="display: none;">
-        <h4 title="Setur þýðingar inn í CNXML skrár (inject) og breytir í HTML (render) til birtingar á vef">Ferill (innsetja &#8594; birta)</h4>
-        <div class="pipeline-controls">
-          <label>Rás:</label>
-          <select id="pipeline-track">
-            <option value="faithful">Bein þýðing (faithful)</option>
-            <option value="mt-preview">MT forskoðun</option>
-            <option value="localized">Staðfærð (localized)</option>
-          </select>
-          <button class="btn btn-secondary btn-sm" id="btn-inject" title="Setja þýðingar inn í CNXML">
-            Innsetja
-          </button>
-          <button class="btn btn-secondary btn-sm" id="btn-render" title="Breyta CNXML í HTML">
-            Birta
-          </button>
-          <button class="btn btn-primary btn-sm" id="btn-pipeline" title="Setja inn og birta">
-            Innsetja + Birta
-          </button>
-          <span class="pipeline-status-badge" id="pipeline-badge" style="display: none;"></span>
-        </div>
-        <div class="pipeline-output" id="pipeline-output"></div>
-      </div>
-
-      <!-- Preview Panel -->
-      <div class="preview-panel" id="preview-panel" style="display: none;">
-        <div style="display:flex; align-items:center; gap:var(--spacing-sm); margin-bottom:var(--spacing-sm);">
-          <h4 style="margin:0">Forskoðun</h4>
-          <button class="btn btn-secondary btn-sm" id="btn-preview" title="Birta þýðingu sem HTML">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-            Forskoðun
-          </button>
-          <select id="preview-track" style="font-size:var(--text-xs); padding:2px 4px;">
-            <option value="mt-preview">MT</option>
-            <option value="faithful">Bein þýðing</option>
-          </select>
-          <span class="pipeline-status-badge" id="preview-badge" style="display: none;"></span>
-        </div>
-      </div>
-
-      <!-- Apply Panel (HEAD_EDITOR only) -->
-      <div class="apply-panel" id="apply-panel" style="display: none;">
-        <h4>Vista samþykkt í skrár</h4>
-        <div class="apply-controls">
-          <span class="apply-status" id="apply-status">Hleður...</span>
-          <button class="btn btn-apply" id="btn-apply" disabled title="Vista samþykktar breytingar í 03-faithful-translation/ skrár">
-            Vista í skrár
-          </button>
-          <button class="btn btn-apply" id="btn-apply-render" disabled title="Vista í skrár og birta á vef" style="background: var(--accent);">
-            Vista + Birta
-          </button>
-          <button class="btn btn-secondary btn-sm" id="btn-history" title="Skoða eldri útgáfur og færa einingu aftur í fyrri útgáfu">
-            Útgáfusaga
-          </button>
-          <span class="pipeline-status-badge" id="apply-badge" style="display: none;"></span>
-        </div>
-      </div>
-
-      <div class="editor-card">
-        <div class="save-status-bar" id="save-status-bar" style="display:none">
-          <span class="save-status-dot" id="save-status-dot">&#9679;</span>
-          <span id="save-status-text">Engar breytingar</span>
-          <span class="save-status-time" id="save-status-time"></span>
-        </div>
-        <div class="stats-bar" id="stats-bar"></div>
-
-        <!-- Progress bar -->
-        <div class="module-progress" id="module-progress" style="display:none;">
-          <div class="module-progress-info">
-            <span class="module-progress-text" id="module-progress-text"></span>
+        <!-- Concordance search (how did we translate this before?) -->
+        <div class="concordance-panel" id="concordance-panel">
+          <div class="concordance-search">
+            <input
+              type="text"
+              id="concordance-q"
+              placeholder="Samhengisleit — leitaðu í fyrri samþykktum þýðingum…"
+              autocomplete="off"
+            />
+            <button class="btn btn-secondary btn-sm" id="btn-concordance">Leita</button>
           </div>
-          <div class="progress-bar">
-            <div class="progress-bar-fill" id="module-progress-fill" style="width: 0%;"></div>
-          </div>
+          <div class="concordance-results" id="concordance-results"></div>
         </div>
 
-        <div class="filter-bar">
-          <label>Sýna:</label>
-          <select id="filter-type">
-            <option value="all">Allir hlutar</option>
-            <option value="edited">Með breytingum</option>
-            <option value="pending">Bíður yfirlestrar</option>
-            <option value="term-issues">Hugtakavandamál</option>
-            <option value="title">Titlar</option>
-            <option value="para">Málsgreinar</option>
-          </select>
-          <label>Staða:</label>
-          <select id="filter-status">
-            <option value="all">Allir</option>
-            <option value="unedited">Óbreyttir</option>
-            <option value="unhandled">Óyfirfarnir</option>
-            <option value="pending">Breytt</option>
-            <option value="approved">Samþykkt</option>
-            <option value="accepted">Staðfest</option>
-            <option value="rejected">Hafnað</option>
-            <option value="discuss">Í umræðu</option>
-          </select>
-          <label>Flokkur:</label>
-          <select id="filter-category">
-            <option value="all">Allir flokkar</option>
-            <option value="terminology">Hugtök</option>
-            <option value="accuracy">Nákvæmni</option>
-            <option value="readability">Læsileiki</option>
-            <option value="style">Stíll</option>
-            <option value="omission">Úrfelling</option>
-          </select>
-          <div style="margin-left: auto;" class="term-lookup-container">
-            <input type="text" class="term-lookup-input" id="term-lookup" placeholder="Fletta upp hugtaki..." autocomplete="off">
-            <div class="term-lookup-results" id="term-lookup-results"></div>
+        <!-- Review summary (HEAD_EDITOR only): terminology violations + proofreading -->
+        <div class="review-summary-panel" id="review-summary-panel" style="display: none">
+          <div class="review-summary-head">
+            <h4>Yfirlit yfirlesara</h4>
+            <div style="display: flex; gap: 0.4rem">
+              <button
+                class="btn btn-secondary btn-sm"
+                id="btn-repetition-report"
+                title="Endurteknar enskar setningar í kaflanum og hvort þýðingar þeirra samræmast"
+              >
+                Endurtekningar í kafla
+              </button>
+              <button
+                class="btn btn-secondary btn-sm"
+                id="btn-spellcheck"
+                title="Málfræði- og stafsetningaryfirlestur (Greynir)"
+              >
+                Yfirlestur
+              </button>
+            </div>
+          </div>
+          <div id="review-summary-terms"></div>
+          <div id="review-summary-spell"></div>
+          <div id="review-summary-repetition"></div>
+        </div>
+
+        <!-- Pipeline Panel (HEAD_EDITOR only) -->
+        <div class="pipeline-panel" id="pipeline-panel" style="display: none">
+          <h4
+            title="Setur þýðingar inn í CNXML skrár (inject) og breytir í HTML (render) til birtingar á vef"
+          >
+            Ferill (innsetja &#8594; birta)
+          </h4>
+          <div class="pipeline-controls">
+            <label>Rás:</label>
+            <select id="pipeline-track">
+              <option value="faithful">Bein þýðing (faithful)</option>
+              <option value="mt-preview">MT forskoðun</option>
+              <option value="localized">Staðfærð (localized)</option>
+            </select>
+            <button
+              class="btn btn-secondary btn-sm"
+              id="btn-inject"
+              title="Setja þýðingar inn í CNXML"
+            >
+              Innsetja
+            </button>
+            <button class="btn btn-secondary btn-sm" id="btn-render" title="Breyta CNXML í HTML">
+              Birta
+            </button>
+            <button class="btn btn-primary btn-sm" id="btn-pipeline" title="Setja inn og birta">
+              Innsetja + Birta
+            </button>
+            <span class="pipeline-status-badge" id="pipeline-badge" style="display: none"></span>
+          </div>
+          <div class="pipeline-output" id="pipeline-output"></div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel" id="preview-panel" style="display: none">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: var(--spacing-sm);
+              margin-bottom: var(--spacing-sm);
+            "
+          >
+            <h4 style="margin: 0">Forskoðun</h4>
+            <button
+              class="btn btn-secondary btn-sm"
+              id="btn-preview"
+              title="Birta þýðingu sem HTML"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              Forskoðun
+            </button>
+            <select id="preview-track" style="font-size: var(--text-xs); padding: 2px 4px">
+              <option value="mt-preview">MT</option>
+              <option value="faithful">Bein þýðing</option>
+            </select>
+            <span class="pipeline-status-badge" id="preview-badge" style="display: none"></span>
           </div>
         </div>
 
-        <details class="category-legend">
-          <summary>Litaskýring flokka</summary>
-          <div class="legend-items">
-            <span class="category-badge terminology">Hugtök — fagorð og skilgreiningar</span>
-            <span class="category-badge accuracy">Nákvæmni — efnislegir gallar</span>
-            <span class="category-badge readability">Læsileiki — málfar og lestur</span>
-            <span class="category-badge style">Stíll — tónn og orðalag</span>
-            <span class="category-badge omission">Úrfelling — vantar efni</span>
+        <!-- Apply Panel (HEAD_EDITOR only) -->
+        <div class="apply-panel" id="apply-panel" style="display: none">
+          <h4>Vista samþykkt í skrár</h4>
+          <div class="apply-controls">
+            <span class="apply-status" id="apply-status">Hleður...</span>
+            <button
+              class="btn btn-apply"
+              id="btn-apply"
+              disabled
+              title="Vista samþykktar breytingar í 03-faithful-translation/ skrár"
+            >
+              Vista í skrár
+            </button>
+            <button
+              class="btn btn-apply"
+              id="btn-apply-render"
+              disabled
+              title="Vista í skrár og birta á vef"
+              style="background: var(--accent)"
+            >
+              Vista + Birta
+            </button>
+            <button
+              class="btn btn-secondary btn-sm"
+              id="btn-history"
+              title="Skoða eldri útgáfur og færa einingu aftur í fyrri útgáfu"
+            >
+              Útgáfusaga
+            </button>
+            <span class="pipeline-status-badge" id="apply-badge" style="display: none"></span>
           </div>
-        </details>
+        </div>
 
-        <!--
+        <div class="editor-card">
+          <div class="save-status-bar" id="save-status-bar" style="display: none">
+            <span class="save-status-dot" id="save-status-dot">&#9679;</span>
+            <span id="save-status-text">Engar breytingar</span>
+            <span class="save-status-time" id="save-status-time"></span>
+          </div>
+          <div class="stats-bar" id="stats-bar"></div>
+
+          <!-- Progress bar -->
+          <div class="module-progress" id="module-progress" style="display: none">
+            <div class="module-progress-info">
+              <span class="module-progress-text" id="module-progress-text"></span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="module-progress-fill" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="filter-bar">
+            <label>Sýna:</label>
+            <select id="filter-type">
+              <option value="all">Allir hlutar</option>
+              <option value="edited">Með breytingum</option>
+              <option value="pending">Bíður yfirlestrar</option>
+              <option value="term-issues">Hugtakavandamál</option>
+              <option value="title">Titlar</option>
+              <option value="para">Málsgreinar</option>
+            </select>
+            <label>Staða:</label>
+            <select id="filter-status">
+              <option value="all">Allir</option>
+              <option value="unedited">Óbreyttir</option>
+              <option value="unhandled">Óyfirfarnir</option>
+              <option value="pending">Breytt</option>
+              <option value="approved">Samþykkt</option>
+              <option value="accepted">Staðfest</option>
+              <option value="rejected">Hafnað</option>
+              <option value="discuss">Í umræðu</option>
+            </select>
+            <label>Flokkur:</label>
+            <select id="filter-category">
+              <option value="all">Allir flokkar</option>
+              <option value="terminology">Hugtök</option>
+              <option value="accuracy">Nákvæmni</option>
+              <option value="readability">Læsileiki</option>
+              <option value="style">Stíll</option>
+              <option value="omission">Úrfelling</option>
+            </select>
+            <div style="margin-left: auto" class="term-lookup-container">
+              <input
+                type="text"
+                class="term-lookup-input"
+                id="term-lookup"
+                placeholder="Fletta upp hugtaki..."
+                autocomplete="off"
+              />
+              <div class="term-lookup-results" id="term-lookup-results"></div>
+            </div>
+          </div>
+
+          <details class="category-legend">
+            <summary>Litaskýring flokka</summary>
+            <div class="legend-items">
+              <span class="category-badge terminology">Hugtök — fagorð og skilgreiningar</span>
+              <span class="category-badge accuracy">Nákvæmni — efnislegir gallar</span>
+              <span class="category-badge readability">Læsileiki — málfar og lestur</span>
+              <span class="category-badge style">Stíll — tónn og orðalag</span>
+              <span class="category-badge omission">Úrfelling — vantar efni</span>
+            </div>
+          </details>
+
+          <!--
           Figure-text review. Sits beside the segment rows rather than among
           them: the segments are <tr>s in a tbody the renderer replaces
           wholesale, and the /figures payload carries no positional key, so a
@@ -1739,64 +1956,66 @@
           contract change. Cards keep the payload's own order, which IS
           document order (listModuleFigures walks the structure tree).
         -->
-        <div class="figure-review" id="figure-review-section" style="display: none;">
-          <h3>Myndatexti til yfirlestrar</h3>
-          <div id="figure-cards"></div>
-        </div>
+          <div class="figure-review" id="figure-review-section" style="display: none">
+            <h3>Myndatexti til yfirlestrar</h3>
+            <div id="figure-cards"></div>
+          </div>
 
-        <div class="table-wrap">
-          <table class="segments-table">
-            <thead>
-              <tr>
-                <th class="col-type">Tegund</th>
-                <th class="col-en">Enska (frumtexti)</th>
-                <th class="col-is">Íslenska (þýðing)</th>
-                <th class="col-actions">Aðgerðir</th>
-              </tr>
-            </thead>
-            <tbody id="segments-body"></tbody>
-          </table>
+          <div class="table-wrap">
+            <table class="segments-table">
+              <thead>
+                <tr>
+                  <th class="col-type">Tegund</th>
+                  <th class="col-en">Enska (frumtexti)</th>
+                  <th class="col-is">Íslenska (þýðing)</th>
+                  <th class="col-actions">Aðgerðir</th>
+                </tr>
+              </thead>
+              <tbody id="segments-body"></tbody>
+            </table>
+          </div>
         </div>
+      </div>
+
+      <!-- Term Popup (positioned absolutely) -->
+      <div class="term-popup" id="term-popup">
+        <div class="term-popup-header">
+          <strong id="term-popup-en"></strong>
+          <button class="term-popup-close" onclick="closeTermPopup()">&times;</button>
+        </div>
+        <div id="term-popup-body"></div>
+      </div>
+    </main>
+
+    <!-- Version history modal (HEAD_EDITOR only) -->
+    <div class="vh-overlay" id="vh-overlay">
+      <div class="vh-modal" role="dialog" aria-modal="true" aria-labelledby="vh-title">
+        <header>
+          <h3 id="vh-title">Útgáfusaga</h3>
+          <button class="btn btn-secondary btn-sm" id="vh-close" title="Loka">Loka</button>
+        </header>
+        <p class="vh-caption">
+          Hver útgáfa sýnir efnið eins og það var <strong>áður en</strong> viðkomandi vistun átti
+          sér stað.
+        </p>
+        <div class="vh-list" id="vh-list"></div>
       </div>
     </div>
 
-    <!-- Term Popup (positioned absolutely) -->
-    <div class="term-popup" id="term-popup">
-      <div class="term-popup-header">
-        <strong id="term-popup-en"></strong>
-        <button class="term-popup-close" onclick="closeTermPopup()">&times;</button>
-      </div>
-      <div id="term-popup-body"></div>
-    </div>
-
-  </main>
-
-  <!-- Version history modal (HEAD_EDITOR only) -->
-  <div class="vh-overlay" id="vh-overlay">
-    <div class="vh-modal" role="dialog" aria-modal="true" aria-labelledby="vh-title">
-      <header>
-        <h3 id="vh-title">Útgáfusaga</h3>
-        <button class="btn btn-secondary btn-sm" id="vh-close" title="Loka">Loka</button>
-      </header>
-      <p class="vh-caption">Hver útgáfa sýnir efnið eins og það var <strong>áður en</strong> viðkomandi vistun átti sér stað.</p>
-      <div class="vh-list" id="vh-list"></div>
-    </div>
-  </div>
-
-  <script src="/js/layout.js"></script>
-  <script src="/js/bookSelector.js"></script>
-  <script src="/js/theme.js"></script>
-  <script src="/js/htmlUtils.js"></script>
-  <script src="/js/saveRetry.js"></script>
-  <script src="/js/tabGuard.js"></script>
-  <script src="/js/ui-strings.js"></script>
-  <script src="/js/segment-validation.js"></script>
-  <script src="/js/accept-eligibility.js"></script>
-  <!-- Before segment-editor.js: the figure card reads window.figureDrafts on
+    <script src="/js/layout.js"></script>
+    <script src="/js/bookSelector.js"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/htmlUtils.js"></script>
+    <script src="/js/saveRetry.js"></script>
+    <script src="/js/tabGuard.js"></script>
+    <script src="/js/ui-strings.js"></script>
+    <script src="/js/segment-validation.js"></script>
+    <script src="/js/accept-eligibility.js"></script>
+    <!-- Before segment-editor.js: the figure card reads window.figureDrafts on
        every rebuild, and a missing tag would lose editor text silently. -->
-  <script src="/js/figure-drafts.js"></script>
-  <script src="/js/marker-highlight.js"></script>
-  <script src="/js/term-highlight.js"></script>
-  <script src="/js/segment-editor.js"></script>
-</body>
+    <script src="/js/figure-drafts.js"></script>
+    <script src="/js/marker-highlight.js"></script>
+    <script src="/js/term-highlight.js"></script>
+    <script src="/js/segment-editor.js"></script>
+  </body>
 </html>

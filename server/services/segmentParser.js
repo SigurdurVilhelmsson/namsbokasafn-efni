@@ -22,6 +22,7 @@ const {
   normalizeTermMarkers,
 } = require('../../tools/lib/mt-normalize.cjs');
 const { normalizeChapter, chapterDir } = require('../lib/chapterLabel');
+const mtFindings = require('../lib/mtFindings');
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 let BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
@@ -119,6 +120,13 @@ function loadModuleForEditing(book, chapter, moduleId) {
     isSource = 'mt-output';
   }
 
+  // §C124: the MT findings that describe THE TEXT WE JUST LOADED. Keyed off
+  // isSource, not off a default, so a module being edited on the faithful
+  // overlay is not annotated with the mt-preview baseline's findings.
+  // Fail-soft: an absent or corrupt report yields no findings, never a throw —
+  // an editor must never be locked out of a module by a derived artifact.
+  const findings = mtFindings.read(book, isSource === 'faithful' ? 'faithful' : 'mt-preview');
+
   // Build lookup of IS segments by segmentId
   // Unescape MT artifacts so editors see clean markers
   const isLookup = {};
@@ -156,6 +164,9 @@ function loadModuleForEditing(book, chapter, moduleId) {
       ? normalizeTermMarkers(en.content, isLookup[en.segmentId].content)
       : '',
     hasTranslation: !!isLookup[en.segmentId],
+    // null, not undefined: a deleted key is a third state that reads as
+    // `undefined` at every use site, and the client branches on this.
+    mtFinding: findings.bySegment.get(en.segmentId) || null,
   }));
 
   const titleSeg = paired.find((s) => s.segmentType === 'title');
@@ -170,6 +181,9 @@ function loadModuleForEditing(book, chapter, moduleId) {
     equations,
     segmentCount: paired.length,
     translatedCount: paired.filter((s) => s.hasTranslation).length,
+    // The report's own vintage, shown to the editor. Null for reports written
+    // before §C124 — the UI says "unknown" rather than inventing a date.
+    mtFindingsGeneratedAt: findings.generatedAt,
     extractedAt: manifest?.extractedAt || null,
     sourceHash: manifest?.sourceHash || null,
   };
@@ -406,14 +420,28 @@ function listChapterModules(book, chapter) {
     .readdirSync(enDir)
     .filter((f) => f.endsWith('-segments.en.md') && f !== 'exercises-segments.en.md'); // item 9/D3: os-embed pipeline data, not an editable module
 
+  // §C124: read both reports ONCE for the whole chapter rather than per
+  // module — the file is per-book, so a per-module read would parse it N times.
+  const findingsByTrack = {
+    'mt-preview': mtFindings.read(book, 'mt-preview'),
+    faithful: mtFindings.read(book, 'faithful'),
+  };
+
   return files.map((f) => {
     const moduleId = f.replace('-segments.en.md', '');
+    const hasFaithful = fs.existsSync(path.join(faithfulDir, `${moduleId}-segments.is.md`));
     return {
       moduleId,
       hasEnSource: true,
       hasMtOutput: fs.existsSync(path.join(mtDir, `${moduleId}-segments.is.md`)),
-      hasFaithful: fs.existsSync(path.join(faithfulDir, `${moduleId}-segments.is.md`)),
+      hasFaithful,
       hasLocalized: fs.existsSync(path.join(localizedDir, `${moduleId}-segments.is.md`)),
+      // Counted against the track this module is actually edited on, mirroring
+      // loadModuleForEditing. 0 rather than null/undefined: the client renders
+      // a badge only when > 0, and a missing key would read as falsy anyway —
+      // an explicit 0 says "checked, clean" instead of "unknown".
+      mtFindingCount:
+        findingsByTrack[hasFaithful ? 'faithful' : 'mt-preview'].byModule.get(moduleId) || 0,
     };
   });
 }
