@@ -16,11 +16,22 @@ click, approves — and the badge stays amber until the artwork is actually re-c
 published. Merged: #435 (review surface) · #438 (Ⓐ card image, Ⓒ approved-means-published) ·
 #440 (⑭ decimal) · #441 (⑰ publish where readers load it). ⚠️ **#440 and #441 are NOT DEPLOYED.**
 
-🔴 **THE BULK RUN IS GATED ON EVERY NUMBERED ITEM BELOW, IN ORDER — do not start it before all
-of them.** *(This line said "THREE THINGS" until 2026-09-05, when doing gate 1 turned up a
-fourth. A count written into prose beside the list it counts drifts the first time that list
-grows — CLAUDE.md § One source of truth makes exactly this complaint about itself, so the fix
-is to delete the number, not to raise it to four.)*
+🔴 **THERE IS NO "BULK RUN" ANY MORE — [USER] RULING 2026-09-05. FIGURES ARE STEP 3 OF THE
+PER-CHAPTER LOOP.** The procedure's one owner is
+[`docs/plans/2026-09-05-per-chapter-loop.md`](../../docs/plans/2026-09-05-per-chapter-loop.md);
+status is the campaign register's. **This file keeps figure DESIGN evidence and defects. It no
+longer owns a sequencing decision.**
+
+⚠️ **GATE 2 BELOW IS WITHDRAWN — it inverted the loop.** It read *"let the re-MT land"* before any
+images, which makes every figure wait on a book-wide text re-MT. The user's order is
+**chapter → that chapter's figures → next chapter**, and that is precisely what removes the second
+editor visit gate 2 existed to avoid. It is kept, struck through, because the reasoning is the
+evidence for why per-chapter is right.
+
+▶ **The remaining numbered items are no longer gates on a run. They are the WORK ITEMS for building
+the chapter figure step**, and the loop document lists them in that form. *(This line said "THREE
+THINGS" until 2026-09-05, when doing gate 1 turned up a fourth. A count written into prose beside
+the list it counts drifts the first time that list grows.)*
 1. **✅ THE WIRE HALF IS DONE (2026-09-05); THE DATA HALF IS NOT — AND THE GATE IS NECESSARY,
    NOT SUFFICIENT.** `translate-blocks.mjs` now requires `--book <slug>` and filters the
    glossary per block through the same three calls `api-translate.js` makes, so §C116's
@@ -50,10 +61,13 @@ is to delete the number, not to raise it to four.)*
    does its work at import cannot be tested without doing its work**, and when the work is
    billable the test is a purchase. The cost here was trivial; a driver importing this across
    463 figures would not have been.
-2. **Let the re-MT land.** Figure ALT text is **19 of 627** translated (~3%) against ~99.7% of
-   captions. Running figure text now makes an editor visit every figure twice, on two surfaces.
-   ⚠️ The caption check is DEGRADED, not inert — captions carry it — so this is a cost, not a
-   blocker on its own.
+2. ~~**Let the re-MT land.** Figure ALT text is **19 of 627** translated (~3%) against ~99.7% of
+   captions. Running figure text now makes an editor visit every figure twice, on two surfaces.~~
+   🔴 **WITHDRAWN 2026-09-05 — this is the inversion.** The double-visit it worries about is real,
+   and the per-chapter loop is what *solves* it: a chapter's text and its figures are re-MT'd in
+   one pass, so the editor sees each figure once, with its chapter. Deferring images until a
+   book-wide re-MT completes is what *guarantees* the second visit for every chapter after the
+   first. **The measurement stands; the conclusion drawn from it was backwards.**
 3. **Resolve the ~14 hash-suffixed figures deliberately.** The suffix marks a 2e-updated figure;
    string-stripping it sources the SUPERSEDED illustration, which `sources.py` warns is invisible
    in the output.
