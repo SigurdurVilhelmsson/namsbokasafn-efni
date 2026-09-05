@@ -26,7 +26,16 @@
 | injects cleanly today | 58 — **91 refused** | 8 |
 | reached a reader | **no** | **no** |
 
-🔴 **NEITHER PAID CHAPTER HAS REACHED A READER, AND THAT IS THE CURRENT STEP.** Chemistry ch03 was injected and **never rendered**; organic ch03 was rendered and **never published**, and its pages **mix September module bodies with JULY exercises** because the September exercise MT was paid for and never assembled. Closing both costs **0 ISK**.
+🔴 **CORRECTED 2026-09-05 — "NEITHER PAID CHAPTER HAS REACHED A READER" IS FALSE. BOTH CHAPTERS ARE ALREADY LIVE; WHAT HAS NOT REACHED A READER IS THE **RE-MT'd VERSION** OF EITHER.** Measured against the deployed site by fetching every `/content/<book>/chapters/03/*.html` and comparing byte sizes with the local render — **not** by page URL, which 200s for everything:
+
+| | live now | not live |
+|---|---|---|
+| chemistry ch03 | **9 of 10** pages, all differing slightly from local | `3-2-akvordun-reynslu-og-sameindaformula` (the renamed one) — the OLD slug serves at **499,575 b** |
+| organic ch03 | **11 of 13** pages, 2026-09-02 vintage | `3-2-alkanar-og-alkana-hverfur`, `3-7-stellingar-annarra-alkana` |
+
+▶ **CONSEQUENCE FOR EVERY DECISION IN THIS BLOCK: a sync is an UPDATE, not a first publication, and a HOLD withholds an improvement rather than protecting a reader.** The §C123 alt defect is **already in production** — 42 of 43 alts on the deployed organic `3-exercises.html` are English today — so holding organic does not shield anyone from it. **[USER] holds anyway (2026-09-05), which is a legitimate call now that the trade is stated correctly.** ⚠️ **The error was inherited, not invented here: every session repeated it from the previous RESUME rather than fetching a content file. One `curl` settles it — and a page URL will not, because the SPA fallback returns 200 with an identical shell for every path.**
+
+_(Original claim, kept as filed:)_ 🔴 **NEITHER PAID CHAPTER HAS REACHED A READER, AND THAT IS THE CURRENT STEP.** Chemistry ch03 was injected and **never rendered**; organic ch03 was rendered and **never published**, and its pages **mix September module bodies with JULY exercises** because the September exercise MT was paid for and never assembled. Closing both costs **0 ISK**.
 
 ⚠️ **THE DRIFT, STATED AS A NUMBER SO IT CANNOT BE ARGUED WITH: 124 of the last 124 commits (since 2026-09-03) touched no book content.** Both registers had stopped naming a next chapter.
 
