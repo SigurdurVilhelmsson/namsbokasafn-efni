@@ -37,7 +37,9 @@ Runbook item 1.4 was "[LEAD], needs domain knowledge" and unmeasured. It is meas
 
 ### Single next action
 
-**Step 0 of the loop: finish both ch03s end to end.** Chemistry — render and publish. Organic — assemble the September exercises, re-render, hand vefur the redirect rows, then a **named-book** sync. 0 ISK, and it is what proves the loop before anything else is bought.
+**Step 0 of the loop: finish both ch03s end to end.** 0 ISK, and it is what proves the loop before anything else is bought.
+- ✅ **Chemistry ch03 RENDERED** (PR #449, 2026-09-05). Not published — that needs a **named-book** vefur sync. ⚠️ **One page was renamed**; its `from`/`to`/`moduleId` row is in `slug-map.mt-preview.json` and must reach vefur **BEFORE** the sync, because a redirect entry is inert until its target exists. ▶ The [USER] hold on rebuilding this chapter is discharged and quantified: `(e. …)` **40 → 32** in the CNXML, **60 → 48** in the HTML, `data-en` **0 → 40** — nothing lost, invisible until vefur ships display. 🔴 **And the cause is not the renderer: `(e. …)` is in the TRANSLATION TEXT**, so the new MT carries fewer because the model was not asked for them.
+- ⬜ **Organic ch03**: assemble the September exercises FIRST — its rendered pages currently mix September module bodies with **July exercises** — then re-render, redirect rows, named-book sync.
 
 _(Everything below this line is the previous RESUME, kept as evidence. Where it disagrees with this block, this block wins.)_
 
