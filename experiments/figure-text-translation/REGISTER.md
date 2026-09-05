@@ -287,11 +287,36 @@ a gitignored workspace and would otherwise die with it** — a correct record in
 location is no record.
 
 **Two were flagged as worth acting on before merge:**
-- 🔴 **Unsaved edits in sibling blocks are silently discarded on every save.** Saving one block
-  re-fetches and rebuilds every card from the payload, so corrections typed into other blocks are
-  lost with no warning and no draft. The segment editor already carries draft machinery for
-  exactly this reason. **Silent loss of editorial input is the one thing this application exists
-  to prevent.**
+- ✅ **FIXED 2026-09-05 — unsaved edits in sibling blocks are no longer discarded on every save.**
+  *(As found: saving one block re-fetched and rebuilt every card from the payload, so corrections
+  typed into other blocks were lost with no warning and no draft. The note input went the same
+  way. Silent loss of editorial input is the one thing this application exists to prevent.)*
+  Both layers landed, per [USER]: the rebuild carries unsaved text forward and MARKS it, and a
+  `fig-draft:` localStorage draft survives a reload or a crash. The decision — which values are
+  genuinely unsaved — is a pure, dual-loadable module (`server/public/js/figure-drafts.js`)
+  precisely because **E2E is a separate CI job that `npm test` does not run**, so a rule gated
+  only in the browser is gated by nothing the authoritative suite sees.
+  🔴 **THREE TRAPS, EACH OF WHICH WOULD HAVE SHIPPED SILENTLY.**
+  ① `loadModule` sets `currentModuleId` FIRST and calls `loadFigures` LAST without awaiting it,
+  so there is a window where the variable names the new module while the DOM still holds the
+  previous one's cards — capturing there files one module's text under another's id. The fix is a
+  separate `figuresModuleId`, checked by every DOM read and by the draft timer.
+  ② The draft restore **cannot** live in `loadModule`: the inputs it writes into are created by
+  `renderFigureCards`, inside the un-awaited `loadFigures`.
+  ③ `tabGuard.cleanupStaleDrafts` sweeps a **hardcoded prefix list**, so a third draft namespace
+  would never have been cleaned — accumulating in the editor's browser forever with nothing
+  failing anywhere. **Found by a test that ran the REAL sweep and asserted the consequence**, not
+  by one asserting the array contains a literal (two sides from one token, the shape CLAUDE.md
+  calls blind to damage); it carries a control — a FRESH key must survive — so a sweep that wiped
+  everything could not pass.
+  ⚠️ **The E2E assertion synchronises on the RE-FETCH, not the save.** Every added assertion is
+  already true the instant before the click — the text is in the input, the marker set by typing —
+  so asserting after the click would pass against a card that never rebuilt, i.e. against the bug.
+  ⚠️ **No fourth fixture, deliberately:** m68664 references `CNX_Chem_01_01_WaterDom` with **no
+  sidecar**, and that absence is load-bearing — the first test binds "four figures, three cards"
+  as its proof that a sidecar-less figure is skipped. Giving it a sidecar would strip a check of
+  its proof. The sibling block is typed into and **never saved**, so it writes no row and leaves
+  the sidecar pristine.
 - **The `beforeAll` pristine gate fires on exactly the crashed-run state `beforeEach` exists to
   repair**, so a hard-killed E2E run leaves the recovery path sequenced behind its own alarm.
 
