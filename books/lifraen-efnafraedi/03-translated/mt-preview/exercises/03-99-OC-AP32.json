@@ -8,7 +8,7 @@
   "questions": [
     {
       "id": "351296",
-      "stem_html": "<p>Kólesteróllækkandi lyfin sem kallast <i>statín</i>, svo sem simvastatín (Zocor) og pravastatín (Pravachol), eru meðal mest ávísuðu lyfja í heimi, en árleg sala er áætluð um 25 milljarðar Bandaríkjadala. Þekkja virknihópana í báðum og segja til um hvernig efnin tvö eru ólík.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b238dc1d56ebdee6529553b1093c0b3686d6a2b9/OChem_03_EC_008.jpg\" alt=\"The chemical structures of simvastatin and pravastatin are represented.\">",
+      "stem_html": "<p>Kólesteróllækkandi lyfin sem kallast <i>statín</i>, svo sem simvastatín (Zocor) og pravastatín (Pravachol), eru meðal mest ávísuðu lyfja í heiminum, en árleg sala er áætluð um 25 milljarðar dala. Greindu fellin í báðum efnunum og segðu hvernig efnin tvö eru ólík.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b238dc1d56ebdee6529553b1093c0b3686d6a2b9/OChem_03_EC_008.jpg\" alt=\"The chemical structures of simvastatin and pravastatin are represented.\">",
       "collaborator_solutions": []
     }
   ]

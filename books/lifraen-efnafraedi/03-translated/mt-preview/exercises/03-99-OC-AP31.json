@@ -4,7 +4,7 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Aukinn fjöldi skiptihópa umhverfis efnatengi leiðir til aukins álags. Tökum sem dæmi fjögur skipt bútön sem talin eru upp hér að neðan. Fyrir hvert efnasamband, horfðu meðfram C2–C3 efnatenginu og teiknaðu Newman-vörpun af stöðugustu og óstöðugustu stellingunum. Notaðu gögnin í töflu 3.5 til að úthluta álagsorkugildum til hverrar stellingar. Hver af átta stellingunum er með mesta álagið? Hver er með minnsta álagið?",
+  "stimulus_html": "Aukið skiptihvarf í kringum tengi leiðir til aukins álags. Tökum sem dæmi fjögur settu bútanefnin sem talin eru upp hér að neðan. Fyrir hvert efnasamband, horfðu meðfram C2–C3 tenginu og teiknaðu Newman-frávarp af stöðugustu og óstöðugustu stellingunum. Notaðu gögnin í töflu 3.5 til að úthluta álagsorkugildum til hverrar stellingar. Hver af átta stellingunum er með mesta álagið? Hver er með minnsta álagið?",
   "questions": [
     {
       "id": "330504",

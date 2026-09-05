@@ -4,7 +4,7 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Leggið til byggingar fyrir eftirfarandi:",
+  "stimulus_html": "Stingið upp á gerðum fyrir eftirfarandi:",
   "questions": [
     {
       "id": "327871",
@@ -33,7 +33,7 @@
     },
     {
       "id": "327876",
-      "stem_html": "<i>Hringlaga</i> mettað kolvetni, C<sub>6</sub>H<sub>12</sub>",
+      "stem_html": "<i>Hringlaga</i> mettað kolvatnsefni, C<sub>6</sub>H<sub>12</sub>",
       "collaborator_solutions": []
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "id": "327878",
-      "stem_html": "Ketóalken, C<sub>5</sub>H<sub>8</sub>O",
+      "stem_html": "Ketoalken, C<sub>5</sub>H<sub>8</sub>O",
       "collaborator_solutions": []
     }
   ]

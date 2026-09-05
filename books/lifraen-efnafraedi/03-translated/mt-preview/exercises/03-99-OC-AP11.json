@@ -8,22 +8,22 @@
   "questions": [
     {
       "id": "327923",
-      "stem_html": "Fyrsta stigs alkóhól",
+      "stem_html": "Primer alkóhól",
       "collaborator_solutions": []
     },
     {
       "id": "327924",
-      "stem_html": "Þriðja stigs nítríl",
+      "stem_html": "Tertíer nítríl",
       "collaborator_solutions": []
     },
     {
       "id": "327925",
-      "stem_html": "Annars stigs þíól",
+      "stem_html": "Sekúnder þíól",
       "collaborator_solutions": []
     },
     {
       "id": "327926",
-      "stem_html": "Bæði fyrsta og annars stigs alkóhól",
+      "stem_html": "Bæði primer og sekúnder alkóhól",
       "collaborator_solutions": []
     },
     {
@@ -33,7 +33,7 @@
     },
     {
       "id": "327928",
-      "stem_html": "Fjórgreint kolefni",
+      "stem_html": "Fjórðastigs kolefni",
       "collaborator_solutions": []
     }
   ]

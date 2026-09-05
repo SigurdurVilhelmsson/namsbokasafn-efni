@@ -4,14 +4,14 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": true,
-  "stimulus_html": "Hversu margar hverfur eru til með eftirfarandi lýsingum?",
+  "stimulus_html": "Hversu margar hverfur eru með eftirfarandi lýsingar?",
   "questions": [
     {
       "id": "327772",
       "stem_html": "Alkóhól með formúluna C<sub>3</sub>H<sub>8</sub>O",
       "collaborator_solutions": [
         {
-          "content_html": "Tvær"
+          "content_html": "Tvö"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "stem_html": "Brómalkanar með formúluna C<sub>4</sub>H<sub>9</sub>Br",
       "collaborator_solutions": [
         {
-          "content_html": "Fjórar"
+          "content_html": "Fjögur"
         }
       ]
     },
@@ -29,7 +29,7 @@
       "stem_html": "Þíóestrar með formúluna C<sub>4</sub>H<sub>8</sub>OS",
       "collaborator_solutions": [
         {
-          "content_html": "Fjórar"
+          "content_html": "Fjögur"
         }
       ]
     }

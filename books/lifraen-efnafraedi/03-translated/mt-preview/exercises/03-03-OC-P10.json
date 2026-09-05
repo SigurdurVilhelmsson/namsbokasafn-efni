@@ -4,11 +4,11 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": true,
-  "stimulus_html": "Teiknaðu byggingar alkana sem uppfylla eftirfarandi lýsingar:",
+  "stimulus_html": "Teiknið gerðir alkana sem uppfylla eftirfarandi lýsingar:",
   "questions": [
     {
       "id": "357617",
-      "stem_html": "Alkani með tvö þriðja stigs kolefni",
+      "stem_html": "Alkan með tveimur tertíer kolefnum",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0ace6df0ec82d307ea7fb15882e6241ec1311ce0/OChem_03_EC_207a.jpg\" alt=\"The molecular structure of  2,3-dimethylbutane with two tertiary carbons is  represented.\">"
@@ -17,7 +17,7 @@
     },
     {
       "id": "357618",
-      "stem_html": "Alkani sem inniheldur ísóprópýlhóp",
+      "stem_html": "Alkan sem inniheldur ísóprópýlhóp",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ce7905bb497508495d09a32acff842e9513d710/OChem_03_EC_207b.jpg\" alt=\"The molecular structure of 3-isopropylpentane is represented\">"
@@ -26,7 +26,7 @@
     },
     {
       "id": "357619",
-      "stem_html": "Alkani sem hefur eitt fertengt og eitt tvítengt kolefni",
+      "stem_html": "Alkan sem hefur eitt fjórðastigs og eitt annars stigs kolefni",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--989785655231c73a010ec8d1f332512b7880e2d9/OChem_03_EC_207c.jpg\" alt=\"The molecular structure of 2,2-dimethylbutane that has one quaternary and one secondary carbon is presented.\">"

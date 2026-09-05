@@ -1,0 +1,22 @@
+english	icelandic	domain	harm_class	confirmed	books	corrupts
+boiling	suða	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry+organic	boiling point→suðumark
+cell	rafhlað	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	cell potential→kerspenna | electrolytic cell→rafker | fuel cell→efnarafall | unit cell→grindareining
+constant	festutegund	biology	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	organic	equilibrium constant→jafnvægisfasti
+cylinder	sívalningur	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	graduated cylinder→mæliglas
+diagram	skýringarmynd	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	phase diagram→fasarit
+double	stjörnupar	physics	substring-corrupts-multiword-chemistry-term	CONFIRMED: 7x stjornupar* vs 1 tvitengi; EN "double bond"=16	chemistry+organic	double bond→tvítengi
+effect	hrif	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	photoelectric effect→ljósröfun
+electric	raf-	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	electric charge→hleðsla | electric current→straumur
+fraction	brot	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	mole fraction→mólhlutfall
+fuel	eldsneyti	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	fuel cell→efnarafall
+functional	felli	physics	substring-corrupts-multiword-chemistry-term	CONFIRMED: 15x felli* in organic ch03 Sept MT; 0 in all July content	chemistry+organic	functional group→virknihópur
+mechanics	aflfræði	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	quantum mechanics→skammtafræði
+multiple	heilfeldi	physics	substring-corrupts-multiword-chemistry-term	CONFIRMED: 4x heilfeldi; EN "multiple bond"=12	chemistry+organic	multiple bond -> fjoltengi (NOT a glossary headword - invisible to the structural sweep)
+osmotic	osmósu-	biology	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	osmotic pressure→flæðiþrýstingur
+plate	fleki	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	hot plate→hitahræra
+radius	geisli	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	atomic radius→atómradíus
+section	snið	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	cross section→þverskurður
+state	hagur	biology	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	organic	excited state→örvað ástand | ground state→grunnástand | transition state→virkniástand
+theoretical	kennilegur	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	theoretical yield→fræðilegar heimtur
+transition	jöfn basaskipting	biology	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	organic	transition state→virkniástand
+vapor	gufa	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	vapor pressure→gufunarþrýstingur

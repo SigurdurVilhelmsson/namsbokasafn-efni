@@ -39,7 +39,32 @@ Runbook item 1.4 was "[LEAD], needs domain knowledge" and unmeasured. It is meas
 
 **Step 0 of the loop: finish both ch03s end to end.** 0 ISK, and it is what proves the loop before anything else is bought.
 - ✅ **Chemistry ch03 RENDERED** (PR #449, 2026-09-05). Not published — that needs a **named-book** vefur sync. ⚠️ **One page was renamed**; its `from`/`to`/`moduleId` row is in `slug-map.mt-preview.json` and must reach vefur **BEFORE** the sync, because a redirect entry is inert until its target exists. ▶ The [USER] hold on rebuilding this chapter is discharged and quantified: `(e. …)` **40 → 32** in the CNXML, **60 → 48** in the HTML, `data-en` **0 → 40** — nothing lost, invisible until vefur ships display. 🔴 **And the cause is not the renderer: `(e. …)` is in the TRANSLATION TEXT**, so the new MT carries fewer because the model was not asked for them.
-- ⬜ **Organic ch03**: assemble the September exercises FIRST — its rendered pages currently mix September module bodies with **July exercises** — then re-render, redirect rows, named-book sync.
+- 🔴 **Organic ch03 — THE EXERCISES ARE ASSEMBLED, AND DOING IT SURFACED A BLOCKER: THE SEPTEMBER MT IS TERMINOLOGICALLY DEGRADED BY THE GLOSSARY. DO NOT PUBLISH THIS CHAPTER AS IT STANDS.** → §C121 below.
+
+### §C121 — a fallback-domain glossary word SHADOWS a correct multiword chemistry term, and the paid September MT obeyed it
+
+🔴 **THREE CONFIRMED BY MEASUREMENT, IN THE CHAPTER THE CAMPAIGN JUST PAID FOR.** Found by executing the loop's step 6 on organic ch03 — not by any sweep, gate or test, all of which are green.
+
+| EN | correct IS | the glossary row that shadows it | measured in organic ch03's Sept MT |
+|---|---|---|---|
+| functional group | *virknihópur* (present, `domain: chemistry`) | **`functional → felli`** `physics` | **15** `felli*`; exercises went **8 correct → 5 wrong, 0 correct left** |
+| double bond | *tvítengi* (present, `domain: chemistry`) | **`double → stjörnupar`** `physics` — a **double STAR** | **7** `stjörnupar*` against **1** `tvítengi`; EN "double bond" = 16 |
+| multiple bond | *fjöltengi* | **`multiple → heilfeldi`** `physics` | **4** `heilfeldi`; EN "multiple bond" = 12 |
+
+▶ **THE CONTROL THAT MAKES THIS A FINDING RATHER THAN A SUSPICION IS IN THE SAME SENTENCE:** *"Alkenar hafa **stjörnupar**, alkýnar hafa **þrítengi**"* — same module, same run, same model. `triple bond → þrítengi` is **correct 3 of 3** because **no `triple` headword exists to shadow it**. One chapter, one paragraph, both arms.
+
+⚠️ **AND IT IS PARTIAL, WHICH IS WHY NO TALLY SEES IT.** `virknihóp*` still occurs **26** times in the same chapter beside the 15 `felli*` — CLAUDE.md's *"the SAME entry can take on one occurrence and not the next"*, now measured on a third term class. **Spot-checking output cannot establish that a bad entry is inert.**
+
+🔴 **THE REMEDY IS REMOVAL, AND NO EXISTING GUARD REACHES IT.** `functional` (10), `double` (6) and `multiple` (8) are all far past §C116's ≤3-char word-boundary rule; the render-side symbol guard sees words, not phrases; the collision sweep sees nothing because these are **uncontested single approved rows**. **All three are `domain: physics`** — §C119's fallback contamination again, in **both** books.
+⚠️ **AND ALL THREE ARE ABSENT FROM BOTH FROZEN REMOVAL SETS** (C119's 127, C120's 86). Those sets were built by judging headwords **in isolation**; this class is only visible **in composition with another term**, so a per-headword review structurally cannot produce it.
+
+📌 **Candidates: [`test-results/c121-substring-corruption-candidates-2026-09-05.tsv`](../../test-results/c121-substring-corruption-candidates-2026-09-05.tsv) — 21 rows, 3 CONFIRMED, 18 PREDICTED and explicitly labelled so.** Do not apply the predicted rows without the §C73 unprompted-control check on each. Notable predicted: `cell → rafhlað` (a battery) inside *fuel/unit/electrolytic cell*, `state → hagur` inside *ground/excited/transition state*, `transition → jöfn basaskipting` (a genetics term).
+🔴 **THE CANDIDATE LIST IS A LOWER BOUND, AND ITS OWN BLIND SPOT IS MEASURED: `multiple` IS NOT IN IT.** The sweep keys on a *glossary* multiword partner, and **"multiple bond" is not a glossary headword at all** — so a shadowing row whose victim phrase the glossary never lists is invisible to it. It was added by hand from the measured output. ▶ **The true denominator is every chemistry phrase in the CORPUS, not every multiword row in the glossary.**
+
+⚠️ **EXPOSURE IS NOT LIMITED TO WHAT WAS BOUGHT — IT IS AIMED AT WHAT IS ABOUT TO BE.** English "functional" occurs **454** times in chemistry's `02-for-mt`, **391 of them in ch20** (its organic chapter), and **327** times across 27 of organic's 31 chapters. **Chemistry ch03 is unaffected — it contains the word zero times — so PR #449 is clean.**
+
+▶ **WHAT THIS CHANGES:** the glossary is the one input the loop *consumes without rebuilding*, so a chapter bought before the fix buys the defect. **Removing these rows is now a step-2 precondition, alongside the `SI`/`plus`/`minus` rows above.** The removal runs against **prod's** `sessions.db` (this box has no `concept_term` table) and needs a one-time `export-terminology.js --force`, per §C120.
+📌 **[USER] CALL — organic ch03: publish the degraded text now and let an editor fix ~26 words, or hold the chapter until the glossary rows are removed?** A re-MT after the fix is the clean option and costs money the chapter has already been paid for once.
 
 _(Everything below this line is the previous RESUME, kept as evidence. Where it disagrees with this block, this block wins.)_
 

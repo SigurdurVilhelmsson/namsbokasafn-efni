@@ -4,21 +4,21 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Teiknið efnasamband sem:",
+  "stimulus_html": "Teiknaðu efnasamband sem:",
   "questions": [
     {
       "id": "327948",
-      "stem_html": "Hefur aðeins eingreind og þrígreind kolefni",
+      "stem_html": "Hefur aðeins fyrsta stigs og tertíer kolefni",
       "collaborator_solutions": []
     },
     {
       "id": "327949",
-      "stem_html": "Hefur engin tvígreind eða þrígreind kolefni",
+      "stem_html": "Hefur ekkert annars stigs eða tertíer kolefni",
       "collaborator_solutions": []
     },
     {
       "id": "327950",
-      "stem_html": "Hefur engin tvígreind eða þrígreind kolefni",
+      "stem_html": "Hefur ekkert annars stigs eða tertíer kolefni",
       "collaborator_solutions": []
     }
   ]

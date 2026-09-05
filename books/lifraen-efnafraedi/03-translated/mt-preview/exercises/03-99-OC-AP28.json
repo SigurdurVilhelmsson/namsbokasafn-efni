@@ -4,16 +4,16 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Eplasýra, C<sub>4</sub>H<sub>6</sub>O<sub>5</sub>, hefur verið einangruð úr eplum. Þar sem þetta efnasamband hvarfast við 2 mólígildi af basa er það tvíkarboxýlsýra.",
+  "stimulus_html": "Eplasýra, C<sub>4</sub>H<sub>6</sub>O<sub>5</sub>, hefur verið einangruð úr eplum. Þar sem þetta efnasamband hvarfast við 2 móljafngildi af basa er það tvíkarboxýlsýra.",
   "questions": [
     {
       "id": "328013",
-      "stem_html": "Teiknaðu að minnsta kosti fimm mögulegar byggingar.",
+      "stem_html": "Teiknaðu að minnsta kosti fimm mögulegar gerðir.",
       "collaborator_solutions": []
     },
     {
       "id": "328014",
-      "stem_html": "Ef eplasýra er annars stigs alkóhól, hver er bygging hennar?",
+      "stem_html": "Ef eplasýra er annars stigs alkóhól, hver er gerð hennar?",
       "collaborator_solutions": []
     }
   ]

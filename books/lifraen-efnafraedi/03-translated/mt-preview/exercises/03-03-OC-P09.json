@@ -8,10 +8,10 @@
   "questions": [
     {
       "id": "345874",
-      "stem_html": "Greindu vetnisfrumeindirnar á efnasamböndunum sem sýnd eru í dæmi 3-8 sem fyrsta stigs, annars stigs eða þriðja stigs.",
+      "stem_html": "Greinið vetnisatómin á efnasamböndunum sem sýnd eru í dæmi 3-8 sem fyrsta stigs, annars stigs eða tertíer.",
       "collaborator_solutions": [
         {
-          "content_html": "Fyrsta stigs kolefni hafa fyrsta stigs vetni, annars stigs kolefni hafa annars stigs vetni og þriðja stigs kolefni hafa þriðja stigs vetni."
+          "content_html": "Fyrsta stigs kolefni hafa fyrsta stigs vetni, annars stigs kolefni hafa annars stigs vetni og tertíer kolefni hafa tertíer vetni."
         }
       ]
     }
