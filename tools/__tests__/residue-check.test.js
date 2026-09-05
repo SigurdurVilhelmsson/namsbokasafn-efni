@@ -272,3 +272,38 @@ describe('upsertResidueModule modulesWithResidue semantics', () => {
     expect(r.summary.modulesWithResidue).toBe(1);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// §C124 — the report must carry its own vintage.
+//
+// The editor shows an MT finding alongside a date so a human can judge whether
+// the flag predates their own fix. Without a field in the payload the only
+// other source is the file's mtime, and a fresh clone or a depth-1 CI checkout
+// rewrites that — a confidently wrong date is worse than an absent one.
+describe('upsertResidueModule — generatedAt', () => {
+  it('stamps an ISO-8601 timestamp on the report', () => {
+    const before = Date.now();
+    const report = upsertResidueModule({ track: 'mt-preview' }, 'm00037', {
+      exact: ['m00037:para:para-00003'],
+    });
+
+    expect(typeof report.generatedAt).toBe('string');
+    const parsed = Date.parse(report.generatedAt);
+    expect(Number.isNaN(parsed)).toBe(false);
+    // Bracketed rather than exact — this asserts the stamp is of THIS run and
+    // not a hardcoded constant, without depending on clock resolution.
+    expect(parsed).toBeGreaterThanOrEqual(before - 1000);
+    expect(parsed).toBeLessThanOrEqual(Date.now() + 1000);
+  });
+
+  it('re-stamps on a later write rather than preserving a stale value', () => {
+    const first = upsertResidueModule(
+      { track: 'mt-preview', generatedAt: '2020-01-01T00:00:00.000Z' },
+      'm1',
+      { exact: ['a'] }
+    );
+    // The whole point is that the date describes the LAST write. Carrying the
+    // old value forward would make a fresh report claim a stale vintage.
+    expect(first.generatedAt).not.toBe('2020-01-01T00:00:00.000Z');
+  });
+});

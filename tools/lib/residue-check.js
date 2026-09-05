@@ -213,6 +213,12 @@ export function upsertResidueModule(report, moduleId, entry = {}) {
   return {
     track: (report && report.track) || null,
     generatedBy: 'cnxml-inject.js',
+    // §C124: the report's own vintage, so the editor can show a finding's age
+    // and a human can judge whether it predates their fix. Deliberately
+    // RE-STAMPED on every write rather than carried forward — the date must
+    // describe this write. Deliberately NOT derived from file mtime, which a
+    // fresh clone or a depth-1 CI checkout rewrites.
+    generatedAt: new Date().toISOString(),
     summary: {
       modulesWithResidue: ids.filter((m) => modules[m].exact.length).length,
       exactResidues: ids.reduce((s, m) => s + modules[m].exact.length, 0),

@@ -239,6 +239,7 @@
                 ${m.hasMtOutput ? '<span class="module-badge mt">MT</span>' : ''}
                 ${m.hasFaithful ? '<span class="module-badge faithful">Ritstýrt</span>' : ''}
                 ${m.hasLocalized ? '<span class="module-badge localized">Staðfært</span>' : ''}
+                ${m.mtFindingCount > 0 ? `<span class="module-badge mt-finding" title="Vélþýðingarskoðun fann ${m.mtFindingCount} bút til skoðunar">&#9888; ${m.mtFindingCount}</span>` : ''}
               </div>
             </div>
           `;
@@ -1248,6 +1249,31 @@
         .join('');
     }
 
+    // §C124: the MT finding for THIS segment, from the residue report the
+    // pipeline already wrote at inject time.
+    //
+    // ⚠️ ADVISORY AND POSSIBLY STALE, BY DESIGN. The report is a snapshot from
+    // the last inject, so a segment already fixed can still carry a flag. It is
+    // shown WITH its date and nothing is filtered — suppressing a flag because
+    // the segment was edited would hide it whenever someone edited the segment
+    // without fixing the flagged problem.
+    let mtFindingHtml = '';
+    if (seg.mtFinding) {
+      const when = moduleData.mtFindingsGeneratedAt
+        ? new Date(moduleData.mtFindingsGeneratedAt).toLocaleDateString('is-IS')
+        : 'dagsetning óþekkt';
+      const label =
+        seg.mtFinding.kind === 'exact'
+          ? 'Vélþýðingarskoðun: virðist óþýdd enska'
+          : `Vélþýðingarskoðun: líkist enska frumtextanum (${Math.round(seg.mtFinding.ratio * 100)}%)`;
+      mtFindingHtml = `
+          <div class="term-issue mt-finding" title="Úr residue-report frá vélþýðingarkeyrslu — ráðgefandi, ekki lifandi próf">
+            <span class="term-issue-icon">&#9888;</span>
+            <span>${escapeHtml(label)} <em class="text-muted">· ${escapeHtml(when)}</em></span>
+          </div>
+        `;
+    }
+
     // Build exact-match repetition hint (an approved translation of the same
     // EN sentence elsewhere — outranks the MT draft).
     let repetitionHint = '';
@@ -1421,6 +1447,7 @@
           <td class="col-is">
             <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>
             ${originalHint}
+            ${mtFindingHtml}
             ${termIssuesHtml}
             ${repetitionHint}
             <div class="edit-panel" id="edit-${cssId(seg.segmentId)}">
