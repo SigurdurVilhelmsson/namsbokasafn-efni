@@ -2,6 +2,31 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
+## ⏩ RESUME — state as of 2026-09-05 **(EVENING — supersedes the block below)**
+
+🔴 **BOTH BOOKS ARE HELD FROM PUBLISHING. THE GLOSSARY IS THE CRITICAL PATH FOR EVERYTHING.**
+
+| book | held by | why |
+|---|---|---|
+| chemistry | **§C126** | ch03 was bought under the contaminated glossary; **its RENDERED pages carry the corruptions**. [USER]: re-MT before it syncs. |
+| organic | **§C123** | 2,375 exercise `alt` strings never extracted ⇒ English alt text, **already live on the deployed site**. |
+
+📐 **THE PATH AND ITS GATES: [`2026-09-05-per-chapter-loop.md`](2026-09-05-per-chapter-loop.md) § MILESTONES (M1–M6).** Each gate is a checkable END STATE with a control, not an activity.
+
+### ⏭ SINGLE NEXT ACTION — **M1, step 1: build a CORRECT chemistry removal set.** 0 ISK.
+
+🔴 **The frozen §C120 set does NOT discharge §C121 — verified with a control.** It holds `established` and `fall` (control) but **NOT** `double`, `functional`, `multiple`, `form`, `consistent`; all five are still `approved` in chemistry. It is 85 rows carried from §C119, which audited **organic**. ▶ The corrected set must **add** those five, **keep** `established`, and **exclude** §C117's 2 class-C rows (`ln`, `Sm` — do NOT delete) and its 3 class-B rows (editorial ruling). ⚠️ **`SI`/`Si` are RULED (a chemical symbol keeps its symbol); `plus`/`minus` are RULED DELETE.**
+
+### What moved 2026-09-05 (evening)
+
+- ✅ **§C124 SHIPPED (PR #451, `c77bfe47`)** — the editor is now told what the MT got wrong. `residue-report.<track>.json` had been computed for months with **zero** server-side readers. Per-segment badge + per-module count, track-keyed, fail-soft, staleness shown-not-filtered. Verified on the real corpus: organic m00037 flags 1 of 14 segments, the right one.
+- ✅ **§C126 — the re-MT pre-flight census** (26 agents). Blockers are **DISJOINT BY BOOK**; the ordering meta-rule (`counters.segment++` renumbers every later `auto-N`) is verified in code; what is genuinely safe to defer is listed with the reason each is free.
+- ✅ **§C125 RESOLVED — no ruling needed.** "Add segment" is unnecessary: the editor's list is built from the **EN source**, so an untranslated segment is already an empty editable row, and a correct fill saves (controls fire). The apparent conflict with CLAUDE.md's no-insertion ruling was **manufactured by conflating two different cases**.
+- 📐 **The pipeline model is a frozen decision record** — [`2026-09-05-mt-preview-baseline-faithful-overlay.md`](../decisions/2026-09-05-mt-preview-baseline-faithful-overlay.md). mt-preview is the complete machine BASELINE; faithful is a per-module human OVERLAY. **M4's earlier "the hand fix has no home" was a category error and is corrected.**
+- 🔴 **CORRECTED: BOTH ch03s ARE ALREADY LIVE** at older vintages — chemistry 9 of 10 pages, organic 11 of 13 (2026-09-02). The claim that "neither paid chapter has reached a reader" was inherited across sessions and never measured. **A sync is an UPDATE, and a hold withholds an improvement rather than protecting a reader.**
+
+---
+
 ## ⏩ RESUME — state as of 2026-09-05 · **RE-ORIENTED BY [USER]**
 
 🔴 **THE PROCEDURE NOW HAS ONE OWNER: [`2026-09-05-per-chapter-loop.md`](2026-09-05-per-chapter-loop.md). READ IT BEFORE RUNNING ANYTHING.** This block owns STATUS; that document owns the loop, its order and its gates.
