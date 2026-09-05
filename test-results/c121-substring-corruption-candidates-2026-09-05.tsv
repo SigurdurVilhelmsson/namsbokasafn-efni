@@ -11,7 +11,7 @@ fraction	brot	physics	substring-corrupts-multiword-chemistry-term	predicted-not-
 fuel	eldsneyti	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	fuel cell→efnarafall
 functional	felli	physics	substring-corrupts-multiword-chemistry-term	CONFIRMED: 15x felli* in organic ch03 Sept MT; 0 in all July content	chemistry+organic	functional group→virknihópur
 mechanics	aflfræði	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	quantum mechanics→skammtafræði
-multiple	heilfeldi	physics	substring-corrupts-multiword-chemistry-term	CONFIRMED: 4x heilfeldi; EN "multiple bond"=12	chemistry+organic	multiple bond -> fjoltengi (NOT a glossary headword - invisible to the structural sweep)
+multiple	heilfeldi	physics	substring-corrupts-multiword-chemistry-term	CONFIRMED: 4x heilfeldi; EN "multiple bond"=12	chemistry+organic	multiple bond -> margfold tengi (MEASURED unprompted July rendering; fjoltengi occurs 0x in the book). NOT a glossary headword - invisible to BOTH the structural sweep AND the longest-match matcher fix
 osmotic	osmósu-	biology	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	osmotic pressure→flæðiþrýstingur
 plate	fleki	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	hot plate→hitahræra
 radius	geisli	physics	substring-corrupts-multiword-chemistry-term	predicted-not-yet-measured	chemistry	atomic radius→atómradíus
