@@ -267,6 +267,29 @@ On mismatch, keep the **translation** and strip that type's markers to plain tex
 
 ⚠️ **This is the SECOND chapter re-bought for this mechanism** (organic ch03 cost ~742 ISK). **That is the argument for finishing the glossary properly now rather than per-chapter** — the ~1,600 unjudged chemistry rows are the largest unquantified exposure on the list, and every chapter bought before they are judged is a candidate for a third re-buy.
 
+### §C129 — THE FALLBACK-TIER AUDIT: **1,591 rows judged, 378 to remove — and it turns a blunt instrument into a scalpel**
+
+All **1,591** physics/biology rows that fire on chemistry's 4.36M-char corpus, judged with match evidence, **121 agents**. 380 marked REMOVE · **100 adversarially sampled · 3 refuted (3%)** · 377 survive + `plus`/`minus` ruled upstream.
+📋 **Frozen: [`test-results/c129-chemistry-fallback-removal-set-2026-09-05.tsv`](../../test-results/c129-chemistry-fallback-removal-set-2026-09-05.tsv)** — 378 rows, re-derived against the live glossary: **every key resolves to exactly ONE row, 224 physics / 154 biology, 0 chemistry-domain collisions.** Applying it cannot touch a chemistry row by name.
+
+🔴 **THE 3% REFUTE RATE IS THE HEADLINE, BECAUSE §C119's COMPARABLE PASS REFUTED 47%.** A judging pass that refutes nearly half its own flags is a different object from one refuting three in a hundred. ▶ **This set is APPLICABLE rather than needing a second pass.** ⚠️ **Stated honestly: only the sample was verified, so ~8 wrong removes are expected in the unsampled 277** — individually recoverable (a removed row can be re-added), and outnumbered several-fold by the measured reader-visible corruptions the set fixes. ⚠️ **And the 3% transfers only if the 100 were sampled randomly, which the brief did not require.**
+⚠️ **All three refutations share ONE mechanism, which is worth more than the rate: harm was INFERRED from over-broad selection while corruption was MEASURED ABSENT.** `pound`'s containers were protected by their own `compound → efnasamband` row; `origin`'s control was measured in a tree missing 17 of 18 relevant occurrences; `cane sugar`'s "unprompted" evidence was produced **with the entry live on the wire**. ▶ **An over-broad MATCH is not damage until you look for damage.**
+
+### 🔴 THE AUDIT CHANGES THE REMEDY, AND THIS IS ITS REAL VALUE
+
+**Chemistry still resolves `['chemistry', 'physics', 'biology']`** (`server/lib/domains.js:62`). The obvious fix has been to narrow it to `['chemistry']`, as §C119 did for organic. **Measured, that is now the wrong move:**
+
+| remedy | fixes | collateral |
+|---|---|---|
+| **A — narrow to `['chemistry']`** | 378 | 🔴 **loses ALL 1,696 fallback rows**, i.e. **1,318 the audit judged KEEP — including 278 MULTIWORD terms**: `acetic acid → ediksýra`, `acid rain → súrt regn`, `absolute temperature → Kelvinhiti`, `Geiger counter → Geiger-nemi`, `X-ray crystallography`… correct chemistry that merely carries a physics/biology label |
+| **B — apply the audited set** | 378 | **0** |
+
+▶ **Before this audit, A was the only SAFE move, because nobody knew which of the 1,696 were bad. That is precisely what an audit buys: it converts a domain-wide amputation into a 378-row excision.** *(This also retires §C116's "chemistry-only drops 1,632 of 2,021 to fix 67" as an argument — the denominator was never the point; knowing WHICH rows was.)*
+
+🔴 **BUT "REMOVE" IS NOT YET DEFINED, AND THIS NEEDS A [USER] RULING BEFORE ANYTHING IS APPLIED.** Most of these values are **wrong for chemistry and correct in their home domain** — `double → stjörnupar` is right for astronomy, `tick → blóðmítill` and `organ → líffæri` for biology. **Deleting the `concept_term` row strips the surface form from the SHARED model** — every book's export and `findTermsInSegments` editor QA. Two shapes, and CLAUDE.md names both:
+- **B1 · DELETE the 378 concept rows.** Simple and unambiguous. Cost: the three withdrawn books lose those terms from their exports, and editor terminology QA loses them everywhere.
+- **B2 · INSERT a chemistry-domain concept per headword, which OUTRANKS the lower tier non-destructively** — CLAUDE.md's own third option. Cost: it needs **378 correct chemistry replacement values**, and ⚠️ **§C128 measured that judges are UNRELIABLE at proposing replacements** even when reliable at flagging. That is a separate, slower piece of work.
+
 ### §C128 — THE IN-DOMAIN GLOSSARY AUDIT: **419 rows, 2 real defects, and a control that taught more by being WRONG**
 
 All **419** in-domain `domain: chemistry` rows judged (union of both books — 225 shared, 170 chemistry-only, 24 organic-only), each with match evidence, every flag adversarially verified. **3 flagged · 1 refuted at primary source · 2 survive.** ▶ **The in-domain tier is in good shape** — `acid → sýra`, `mole → mól`, `electron → rafeind`, `orbital → svigrúm` are all correct — which is itself the finding: the yield is low, so the removal set is short and trustworthy.
