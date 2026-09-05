@@ -58,6 +58,7 @@
  *   node server/scripts/remove-wrong-sense-headwords.js            # dry run (default)
  *   node server/scripts/remove-wrong-sense-headwords.js --apply    # actually delete
  */
+const fs = require('fs');
 const Database = require('better-sqlite3');
 const resolveDbPath = require('../lib/dbPath');
 
@@ -92,8 +93,61 @@ const REMOVE = Object.freeze([
   { english: 'OR', domain: 'physics' },
 ]);
 
+/**
+ * Read a frozen removal set from a TSV, so a reviewed, committed evidence file can be
+ * APPLIED rather than only cited.
+ *
+ * 🔴 WHY THIS EXISTS. §C119 froze 127 reviewed headwords in
+ * `test-results/c119-organic-glossary-removal-set-2026-09-04.tsv` and nothing could apply
+ * them — the list above is a different, hand-maintained 17. A reviewed set with no applier
+ * is evidence that never becomes a fix, and 85 of those 127 were still in chemistry's
+ * glossary nine months later.
+ *
+ * ⚠️ `domain` is REQUIRED in the file and is passed through to the same domain-qualified
+ * match the hardcoded list uses. A headword is only ever wrong IN A DOMAIN — `molar` is
+ * wrong from biology and right in chemistry — so a set that dropped the column would
+ * delete the correct row somewhere.
+ *
+ * @param {string} tsvPath
+ * @returns {Array<{english: string, domain: string}>}
+ */
+function loadRemovalSet(tsvPath) {
+  const text = fs.readFileSync(tsvPath, 'utf-8');
+  const lines = text.split('\n').filter((l) => l.trim().length > 0);
+  const header = lines.shift().split('\t');
+  const iEn = header.indexOf('english');
+  const iDom = header.indexOf('domain');
+  if (iEn === -1 || iDom === -1) {
+    throw new Error(
+      `${tsvPath}: needs 'english' and 'domain' columns; got [${header.join(', ')}]. ` +
+        'A set without a domain would delete the right word from the wrong subject.'
+    );
+  }
+  const out = [];
+  for (const line of lines) {
+    const cells = line.split('\t');
+    const english = (cells[iEn] || '').trim();
+    const domain = (cells[iDom] || '').trim();
+    // Fail loud on a blank cell rather than matching '' against the DB, which silently
+    // selects nothing and reads as "already absent".
+    if (!english || !domain) throw new Error(`${tsvPath}: blank english/domain in row: ${line}`);
+    out.push({ english, domain });
+  }
+  if (out.length === 0) throw new Error(`${tsvPath}: no rows — refusing a vacuous run.`);
+  return out;
+}
+
 function main() {
   const apply = process.argv.includes('--apply');
+  const setIdx = process.argv.indexOf('--set');
+  const setPath = setIdx === -1 ? null : process.argv[setIdx + 1];
+  if (setIdx !== -1 && !setPath) {
+    console.error('--set needs a path to a removal-set TSV.');
+    process.exitCode = 2;
+    return;
+  }
+  const REMOVE_SET = setPath ? loadRemovalSet(setPath) : REMOVE;
+  if (setPath) console.log(`Removal set: ${setPath} (${REMOVE_SET.length} headwords)\n`);
   const db = new Database(resolveDbPath(), { readonly: !apply });
 
   // 🔴 THE MATCH IS CASE-SENSITIVE AND EXACT. SQLite's `=` on TEXT is case-sensitive by
@@ -108,7 +162,7 @@ function main() {
 
   const targets = [];
   const missing = [];
-  for (const r of REMOVE) {
+  for (const r of REMOVE_SET) {
     const rows = find.all(r.english, r.domain);
     if (rows.length === 0) missing.push(r);
     else targets.push(...rows);
@@ -153,4 +207,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { REMOVE };
+module.exports = { REMOVE, loadRemovalSet };

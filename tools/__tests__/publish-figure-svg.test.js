@@ -41,18 +41,20 @@ const BLOCKS = { Celsius: 'Celsíus', 'Boiling point of water': 'Suðumark vatns
 let root, bookDir, outDir;
 
 /** A books/<slug>/ tree with a figure-text sidecar, a media mapping, and out/. */
-function scaffold({ mapped = true, withSvg = true, metaBasename = BASENAME, sidecar } = {}) {
+function scaffold({
+  mapped = true,
+  withSvg = true,
+  metaBasename = BASENAME,
+  sidecar,
+  outputName = `${BASENAME}_IS.svg`,
+} = {}) {
   root = fs.mkdtempSync(path.join(os.tmpdir(), 'pubfig-'));
   bookDir = path.join(root, 'books', 'efnafraedi-2e');
   fs.mkdirSync(path.join(bookDir, 'media'), { recursive: true });
   writeSidecar(bookDir, BASENAME, sidecar || { version: 1, basename: BASENAME, blocks: BLOCKS });
   fs.writeFileSync(
     path.join(bookDir, 'media', 'image-mapping.json'),
-    JSON.stringify(
-      mapped ? [{ originalImage: BASENAME, outputName: `${BASENAME}_IS.svg` }] : [],
-      null,
-      1
-    )
+    JSON.stringify(mapped ? [{ originalImage: BASENAME, outputName }] : [], null, 1)
   );
   outDir = path.join(root, 'out');
   fs.mkdirSync(outDir, { recursive: true });
@@ -242,6 +244,56 @@ describe('composedHash', () => {
     expect(norm(before).filter((l) => !norm(after).includes(l))).toEqual([]);
   });
 });
+
+/**
+ * 🔴 PROVENANCE. `01-source` holds the legally load-bearing OpenStax CNXML, and the
+ * licence governing each book is the one in force on the date that copy was obtained.
+ * This publisher writes a file whose NAME comes from a committed JSON data file — so a
+ * traversing `outputName` turns a figure publish into a write inside the licensed tree.
+ * Found by a provenance audit 2026-09-05, which proved both arms: the traversal wrote
+ * into `01-source/` AND the call still returned `ok: true`.
+ */
+describe('the published name may not escape media/', () => {
+  const TRAVERSALS = [
+    '../01-source/media/CNX_Fake.jpg',
+    '../../efnafraedi-2e/01-source/ch01/m68663.cnxml',
+    'sub/../../01-source/media/x.svg',
+    '/etc/passwd',
+  ];
+
+  for (const outputName of TRAVERSALS) {
+    it(`refuses ${outputName} and writes nothing`, () => {
+      const args = scaffold({ outputName });
+      const before = walk(bookDir);
+      const res = publishFigureSvg(args);
+      expect(res.ok).toBe(false);
+      expect(res.reason).toBe('unsafe-output-name');
+      // The refusal must also be a NON-EVENT on disk — a rejected call that already
+      // copied the file would report safety it does not have.
+      expect(walk(bookDir)).toEqual(before);
+    });
+  }
+
+  it('still publishes an ordinary name — the control', () => {
+    // Without this, "refuses everything" would pass every assertion above.
+    const args = scaffold();
+    expect(publishFigureSvg(args).ok).toBe(true);
+  });
+});
+
+/** Every file under dir, relative and sorted — a comparable snapshot of the tree. */
+function walk(dir) {
+  const out = [];
+  const rec = (d) => {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const p = path.join(d, e.name);
+      if (e.isDirectory()) rec(p);
+      else out.push(path.relative(dir, p));
+    }
+  };
+  rec(dir);
+  return out.sort();
+}
 
 describe('the committed corpus', () => {
   const repoRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');

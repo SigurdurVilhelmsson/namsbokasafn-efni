@@ -152,3 +152,11 @@ books/__e2e-fixture__/**/*.locked
 # Scratch TMPDIR — must never be committed. A git-backup test commits from its
 # own cwd, so a TMPDIR inside the worktree lets it commit into YOUR branch.
 .tmp-install/
+
+# Upstream comparison dumps from tools/check-source-updates.js.
+# 🔴 PROVENANCE: that tool downloads TODAY's OpenStax CNXML, which for the CC BY books
+# (chemistry, biology, microbiology) is now CC BY-NC-SA. Writing it under books/<slug>/
+# puts differently-licensed bytes named *.cnxml inside a CC BY book, one `git add` away
+# from destroying the provenance basis. Never commit them.
+books/*/source-updates/*.cnxml
+books/*/source-updates/*-upstream.cnxml
