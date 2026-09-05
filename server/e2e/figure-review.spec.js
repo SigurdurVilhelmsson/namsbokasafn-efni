@@ -315,7 +315,20 @@ test.describe('Figure review card', () => {
     // 🔴 APPROVING ALONE DOES NOT TURN THE BADGE GREEN, and that is the ruling,
     // not a defect: nothing in this server runs the composer, so the published
     // SVG still carries the pre-approval text.
-    await fig.locator('[data-figure-approve]').click();
+    //
+    // ⚠️ WAIT ON THE RESPONSE, NOT ON THE BADGE. The badge reads MT-PREVIEW
+    // BEFORE and AFTER this click — that is exactly what ruling C introduced —
+    // so `expect(state).toHaveText('MT-PREVIEW')` cannot fail and therefore
+    // synchronises nothing. Used as a wait it let stampComposed() read the
+    // sidecar before applyApprovedFigureEdits had written renderHash, which is
+    // a race that passed locally and failed in CI. An assertion that is true on
+    // both sides of an action is not a synchronisation point.
+    await Promise.all([
+      page.waitForResponse(
+        (r) => r.url().includes(`/figures/${SCIMETHOD}/state`) && r.request().method() === 'POST'
+      ),
+      fig.locator('[data-figure-approve]').click(),
+    ]);
     await expect(state).toHaveText('MT-PREVIEW');
 
     // Compose, and only then does it go green. This is the CONTROL for the
@@ -341,8 +354,14 @@ test.describe('Figure review card', () => {
 
     // Re-approving the CHANGED text re-hashes it — and the composedHash carried
     // forward from the first compose is now STALE, so the badge correctly stays
-    // amber until the artwork is composed again.
-    await card(page, SCIMETHOD).locator('[data-figure-approve]').click();
+    // amber until the artwork is composed again. Same response wait, same
+    // reason: MT-PREVIEW on both sides of the click.
+    await Promise.all([
+      page.waitForResponse(
+        (r) => r.url().includes(`/figures/${SCIMETHOD}/state`) && r.request().method() === 'POST'
+      ),
+      card(page, SCIMETHOD).locator('[data-figure-approve]').click(),
+    ]);
     await expect(card(page, SCIMETHOD).locator('[data-figure-state]')).toHaveText('MT-PREVIEW');
 
     stampComposed(SCIMETHOD);

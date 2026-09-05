@@ -60,9 +60,13 @@ describe('loadEnglishEntries() — D4.2, one entry per DISTINCT English string',
   });
 
   it('ignores Icelandic rows entirely', () => {
+    // A DELTA, not an absolute: migration 051 seeds house-style ENGLISH terms
+    // into every database, so "no entries at all" stopped being the right
+    // question. What this pins is that adding an ICELANDIC row adds no entry.
+    const before = loadEnglishEntries(db).entries.length;
     const a = addConcept();
     addTerm(a, 'is', 'frumeind');
-    expect(loadEnglishEntries(db).entries).toHaveLength(0);
+    expect(loadEnglishEntries(db).entries).toHaveLength(before);
   });
 
   it('englishById maps every entry id back to its string', () => {

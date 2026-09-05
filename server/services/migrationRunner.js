@@ -80,6 +80,7 @@ function runAllMigrations() {
     require('../migrations/048-book-term-preference'),
     require('../migrations/049-register-remaining-books'),
     require('../migrations/050-figure-review'),
+    require('../migrations/051-house-style-terms'),
   ];
 
   let applied = 0;

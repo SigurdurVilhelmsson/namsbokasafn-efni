@@ -12,6 +12,7 @@ const freshMigratedDb = require('./helpers/freshMigratedDb');
 // Same singleton `fs` module object run-concept-import.js itself required —
 // spying on it here patches the exact function it calls.
 const nodeFs = require('fs');
+const { countImportedConcepts, countImportedTerms } = require('../lib/houseStyleTerms');
 
 const s = (over = {}) => ({
   collection: 'EFNAFR',
@@ -136,8 +137,11 @@ describe('runImport', () => {
     const totalTerms = stats.reduce((sum, st) => sum + st.terms, 0);
     expect(totalImported).toBe(3); // 2 EFNAFR entries + 1 PODDUR entry
     expect(totalTerms).toBe(5); // EFNAFR: 2×(en+is) = 4; PODDUR: 1×is = 1
-    expect(db.prepare('SELECT COUNT(*) n FROM concept').get().n).toBe(totalImported);
-    expect(db.prepare('SELECT COUNT(*) n FROM concept_term').get().n).toBe(totalTerms);
+    // ⚠️ IMPORTED rows, not every row: migration 051 seeds house-style concepts
+    // into every database on boot, so a whole-table count no longer means
+    // "what this import produced".
+    expect(countImportedConcepts(db)).toBe(totalImported);
+    expect(countImportedTerms(db)).toBe(totalTerms);
   });
 });
 
