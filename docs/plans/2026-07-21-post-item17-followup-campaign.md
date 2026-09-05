@@ -191,6 +191,25 @@ Runbook item 1.4 was "[LEAD], needs domain knowledge" and unmeasured. It is meas
 On mismatch, keep the **translation** and strip that type's markers to plain text, instead of degrading to English. No wire change, so no §C118 ⑲ exposure, and the reader gets Icelandic prose.
 ⚠️ **But it converts a translation failure into a FIDELITY failure:** the `<term>` elements vanish from the injected CNXML, so `source-roundtrip-check` reports `tagCountDeltas {term: -3}` against `01-source` — and losing 3 term links is a bigger loss than the 1 that numbering would forfeit. **Recorded so it is not re-proposed as the easy option.**
 
+### 🔴 WHY m00037 SUCCEEDED ON 09-01 AND FAILED TWICE ON 09-05 — [USER] question, ANSWERED BY MEASUREMENT
+
+**The English is byte-identical between the two runs** (`git diff eeac7731 HEAD -- …/m00037-segments.en.md` is empty). **The GLOSSARY PAYLOAD IS NOT.**
+
+| | 09-01 (`eeac7731`) | 09-05 (§C121 clean run) |
+|---|---|---|
+| organic glossary, total | **827** terms | **249** terms |
+| **on the wire for m00037** | **69** | **16** |
+
+▶ **CONTROL — every ch03 module fell the same way**, so this is the cleanup, not a quirk of m00037: m00031 41→17 · m00032 79→23 · m00033 67→16 · m00034 42→10 · m00035 56→13 · m00036 62→21 · **m00037 69→16** · m00038 148→41.
+
+🔴 **AND THE MECHANISM IS §C121's OWN SHADOWING, RUNNING IN THE HELPFUL DIRECTION.** Neither glossary contains any `conform*` headword, so this is **not** "the glossary told the model both words are the same". But **`form → tilbrigði` was on the wire on 09-01 and is gone on 09-05**, and `form` matches *conformations* / *conformational* **by substring** — 4 characters, one past §C116's ≤3-char word-boundary protection. **The 09-01 output rendered *conformations* as `afbrigði`** — a `-brigði` word, the same shape as `tilbrigði`. ▶ **So the 09-01 success was ITSELF glossary-influenced by the §C121 defect; removing the shadow removed the scaffolding that had been holding three distinct term spans apart.** The cleanup was still right — it fixed three reader-visible corruptions — but **this degradation is its side effect, not an independent event.**
+
+⚠️ **CONSEQUENCE FOR THE DECISION GATE BELOW, AND IT CHANGES WHAT "RECURS" MEANS: the count-guard base rate is a FUNCTION OF GLOSSARY SIZE.** A chapter bought under the 827-term glossary and one bought under the 249-term glossary are **different populations**. Recurrence must be measured on chapters bought under the NEW glossary only; pre-cleanup runs are not a baseline for it.
+
+⚠️ **AND "DETERMINISTIC" IS WEAKER THAN IT READS.** It was established from **two samples minutes apart on one day**. That is evidence the API is near-deterministic *at a point in time*; it is not evidence of stability *across* days — and CLAUDE.md already records that Miðeind's commercial tools carry an LLM layer whose model changes. **Do not treat the 09-01 → 09-05 difference as proof the pipeline changed; the glossary demonstrably did, and the model may have too.**
+
+⚠️ **INSTRUMENT TRAP, MEASURED HERE AND WORTH CARRYING:** calling `filterGlossaryForText` on the **raw committed JSON** returns **0 terms for every module** — a clean, plausible, wholly wrong answer. The resolved producer writes `english`/`icelandic`; the filter reads **`sourceWord`**, which `loadGlossary` → `formatGlossary` supplies. ▶ **An all-zero result across 8 of 8 modules is what exposed it** — a single zero would have looked like a finding. **Load a glossary through `loadGlossary`, never by `JSON.parse`.**
+
 ### Decision gate — base rate first, because the chapters are being bought anyway
 
 **Measured base rate so far: 1 segment in 10 modules (organic ch03).** One instance is not a pattern.
