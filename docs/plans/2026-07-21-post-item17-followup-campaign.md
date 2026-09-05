@@ -223,17 +223,37 @@ a problem if it sits for weeks.
 On mismatch, keep the **translation** and strip that type's markers to plain text, instead of degrading to English. No wire change, so no §C118 ⑲ exposure, and the reader gets Icelandic prose.
 ⚠️ **But it converts a translation failure into a FIDELITY failure:** the `<term>` elements vanish from the injected CNXML, so `source-roundtrip-check` reports `tagCountDeltas {term: -3}` against `01-source` — and losing 3 term links is a bigger loss than the 1 that numbering would forfeit. **Recorded so it is not re-proposed as the easy option.**
 
-### §C125 — 🔴 [USER] RULING NEEDED: AN "ADD SEGMENT" CAPABILITY IS BELIEVED TO EXIST, DOES NOT EXIST, AND IS FORBIDDEN BY A FROZEN DECISION
+### §C125 — ✅ RESOLVED, NO RULING NEEDED: "ADD SEGMENT" IS NOT REQUIRED, BECAUSE THE PIPELINE ALREADY PAIRS BY ID AND AN UNTRANSLATED SEGMENT IS AN EMPTY EDITABLE FIELD
 
-[USER] 2026-09-05 described *"an admin/head-editor-only method of adding segments if dropped"* as something we have been adding. **Measured: no such capability exists in any layer** — no route (18 mutating routes in `segment-editor.js` enumerated, none creates a segment), no UI control, no table. Both editor save routes **404 on an unknown `segmentId`**, and `applyApprovedEdits` does the opposite of insertion: it maps over the file's own segment list and logs-and-drops an approved edit whose segment no longer exists.
+🔴 **THIS ENTRY'S FIRST VERSION WAS WRONG AND IS REPLACED. It said [USER] believed a head-editor add-segment method existed, that it did not, that CLAUDE.md forbade building one, and that the divergence "needs a deliberate ruling".** [USER] then reframed it, 2026-09-05: *"If the pipeline matches source segments to target segments, an 'insert segment' feature is not needed, only the ability to fix or translate mangled or empty segments."* **Measured: that is exactly what the code does, so there was never a divergence to rule on.**
 
-⚠️ **The nearest thing is dead Matecat-era plumbing** — a head-editor-gated import route writing `.en.md` into `02-for-mt`, whose filename validator **rejects every name the current pipeline uses** and which cannot write a `-structure.json`, so inject would never see the result.
+✅ **THE EDITOR'S SEGMENT LIST IS BUILT FROM THE EN SOURCE, NOT THE IS TARGET** — `segmentParser.js:149-159`:
+```js
+const paired = enSegments.map((en) => ({        // ← iterates the EN source
+  segmentId: en.segmentId,
+  en: en.content,
+  is: isLookup[en.segmentId] ? … : '',          // ← EMPTY STRING when no translation
+  hasTranslation: !!isLookup[en.segmentId],     // ← and it is FLAGGED
+}));
+```
+▶ **So a dropped, missing or empty translation is ALREADY surfaced: as an empty, editable row carrying its English, flagged `hasTranslation: false` and counted out of `translatedCount`.** There is nothing to insert — the row exists because the *English* exists.
 
-🔴 **AND THE REPO FORBIDS BUILDING ONE.** CLAUDE.md and its design record [`2026-08-30-c82-clean-break-refocus.md`](../decisions/2026-08-30-c82-clean-break-refocus.md) agree, under the heading *"Missing segments are an extraction problem, not an editor feature"*: re-extraction supplies a missing segment for free, so **no insertion path should be built**. The basis is measured, not preference — inserting one segment renumbers every later positional `auto-N` id.
+✅ **AND IT IS SAVEABLE. Verified by executing the real validator, with controls that FIRE:**
 
-▶ **SO THE DIVERGENCE IS NOT REPO-INTERNAL; IT IS BETWEEN THE STATED MODEL AND THE REPO, AND IT NEEDS A DELIBERATE RULING** — either the memory is of a different capability, or a decision to overturn the 2026-08-30 ruling was made verbally and never written down. **Stated, not resolved.**
+| case | result |
+|---|---|
+| empty baseline → editor fills it correctly | **allowed** |
+| empty baseline → fill dropping the EN's math/xref | BLOCKED (`math-missing`, `xref-missing`) |
+| empty baseline → left empty | BLOCKED |
+| good baseline → math deleted | BLOCKED (control) |
 
-✅ **THE REAL GAP BEHIND THE INTENT, AND IT IS ACTIONABLE WITHOUT OVERTURNING ANYTHING: RE-EXTRACTION — THE SANCTIONED REMEDY — IS UNREACHABLE FROM THE WEB APP.** `pipelineService.runExtract` exists, is exported and is tested, but has **zero non-test callers**; the head-editor pipeline routes stop at inject and render, and the app hands the user the literal string `node tools/cnxml-extract.js --chapter N`. ▶ **This is the repo's own "a gate never called = a gate that doesn't exist" shape.** Giving a head editor a re-extract button satisfies the intent — a head-editor remedy for a dropped segment — **using the mechanism the frozen decision prescribes.**
+The save route's `baseline` is looked up in that same EN-derived list (`segment-editor.js:394`), so the 404-on-unknown-segment guard fires **only** for a segment absent from the EN source — which is an extraction gap, not an editing one. ⚠️ **A first attempt at this test used `[[i:]]`/`[[term:]]` markers, and NOTHING blocked — including the control. That null was worthless**; only re-running with `[[MATH:]]`/`[#CNX_]` produced a firing control. **See the marker-conservation gap below, which is what that failed control actually revealed.**
+
+✅ **SO THE REPO AND THE STATED MODEL AGREE, AND SO DOES THE FROZEN RULING.** CLAUDE.md and [`2026-08-30-c82-clean-break-refocus.md`](../decisions/2026-08-30-c82-clean-break-refocus.md) say a segment missing *from the extraction* is an extraction problem fixed by re-extracting. That is a **different case** from a segment whose translation is missing — and the second case, the one that actually occurs, needs no new feature. **The two statements were never in conflict; the first version of this entry manufactured the conflict by conflating them.**
+
+📌 **WHAT SURVIVES AS REAL WORK, both smaller than the item they replace:**
+- 🔴 **THE BRACKET-MARKER FAMILY HAS NO CONSERVATION RULE — AND IT IS THE FAMILY m00037's DEFECT BELONGS TO.** `validateStructure` hard-blocks only `[[MATH:N]]`, `[[BR]]`, `[#CNX_…]`, `[text](…)` and `[doc#target]`. **`[[i:]]`, `[[term:]]`, `[[span:]]`, `[[fn:]]` — the ones the extractor actually emits — can be dropped or space-corrupted by an editor with neither a block nor a warning.** ▶ **The documented Málstaður `/v1/grammar` corruption `[[i:x]] → [[i: x]]` passes this validator clean**, and the spaced form parses to an empty list. **This is the guard that would have caught m00037's class at the editing stage.**
+- ⚠️ **RE-EXTRACTION IS UNREACHABLE FROM THE WEB APP** — `pipelineService.runExtract` exists, is exported and is tested, with **zero non-test callers**; the head-editor pipeline routes stop at inject and render, and the app hands the user the literal string `node tools/cnxml-extract.js --chapter N`. **Lower priority now** — this is the remedy for the *extraction* case, which the re-extract-per-chapter loop already performs — but it is still the repo's own *"a gate never called = a gate that doesn't exist"* shape.
 
 ### §C124 — THE EDITOR IS NOT TOLD WHAT THE MT GOT WRONG. **[CODE] · the intended workflow's missing half, and the cheapest gap on this list**
 
