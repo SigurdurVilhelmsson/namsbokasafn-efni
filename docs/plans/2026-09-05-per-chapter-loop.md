@@ -38,7 +38,7 @@ glossary).
 
 | # | milestone | gate — how you know it is done | cost |
 |---|---|---|---|
-| **M1** | **Chemistry's glossary is clean** | 🔴 **Re-read `books/efnafraedi-2e/glossary/glossary-unified.json` and the removal-set intersection is ZERO.** Not "the PR merged" — merge ≠ deploy ≠ export tick. | 0 ISK |
+| **M1** | **Chemistry's glossary is clean** | 🔴 **CORRECTED — the gate is `node tools/remt-sweep.js --tier 0 --with-spawns` PASSING on the DEPLOYED payload** (redirect, never pipe). **NOT "the removal-set intersection is zero"** — eight `-ium → -ín` rows are in no removal set, so that check can read zero while blocking gate G2 still halts the run. Sequence: deploy → concept edits → one FORCED export tick → re-run tier 0. ⚠️ Merge ≠ deploy ≠ export tick. → §C127 | 0 ISK |
 | **M2** | **Chemistry ch03 re-MT'd and published** | The rendered pages contain **0** of `tilbrigði`/`sjálfkvæm*`/`ílend*`/`felli*` (control: a term that SHOULD be there, e.g. `mól`), and `/content/efnafraedi-2e/chapters/03/…html` is live **by byte size** with a 404 control. | **paid** |
 | **M3** | **Organic's extraction gaps closed** | A re-extract of any organic chapter emits **alt segments > 0** for its exercises (control: module alt segments still emitted), and the 32 markup-bearing `<document><title>` modules emit their real title rather than a donated one. **`table@summary` has a written [LEAD] ruling** either way. | 0 ISK |
 | **M4** | **Organic ch03 completed and published** | **0** English alt attributes on its rendered pages (control: the Icelandic ones still score Icelandic), and its pages live by byte size. | **paid** |
