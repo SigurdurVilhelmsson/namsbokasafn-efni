@@ -1,23 +1,35 @@
 {
-  "generated": "2026-09-02T18:52:03.460Z",
+  "generated": "2026-09-05T09:15:36.850Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-09-02T18:52:03.460Z",
+      "generated": "2026-09-05T09:15:36.850Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 342,
         "totalChecked": 8,
         "skippedUntranslated": 334,
-        "perfect": 8,
-        "withDiscrepancies": 0,
-        "totalDiscrepancies": 0,
-        "unexplainedDiscrepancies": 0,
+        "perfect": 7,
+        "withDiscrepancies": 1,
+        "totalDiscrepancies": 1,
+        "unexplainedDiscrepancies": 1,
         "deferredLosses": 0,
         "benignArtifacts": 0,
         "green": false
       },
-      "modules": []
+      "modules": [
+        {
+          "moduleId": "m00035",
+          "chapter": "ch03",
+          "discrepancies": [
+            {
+              "tag": "emphasis",
+              "diff": -1,
+              "status": "unexplained"
+            }
+          ]
+        }
+      ]
     }
   }
 }

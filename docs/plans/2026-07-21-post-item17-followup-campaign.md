@@ -46,7 +46,8 @@ Runbook item 1.4 was "[LEAD], needs domain knowledge" and unmeasured. It is meas
 **Step 0 of the loop: finish both ch03s end to end.** 0 ISK, and it is what proves the loop before anything else is bought.
 - ⚠️ **STEP-6 ITEM FROM CHEMISTRY ch03 — the index lost four English cross-references, and the guard that caught the slug did not catch this.** Re-running `generate-index` after the render moved `termEn: null` from **14 to 18 of 763** entries; all four are in ch03 (*Avogadrosartala, formúlumassi, mól, mólmassi*), every other chapter is byte-identical and 0 entries gained one. **Cause is the same `(e. …)` drop as the bullet below**: `generate-index` derives `termEn` by parsing `(e. english)` back out of the *Icelandic*, so a translation that omits the parenthetical silently loses the index's English search key. ▶ **The durable fix is to key `termEn` off `01-source` by `termId`** instead of re-parsing the target text — one direction of derivation, and it cannot be lost by an MT.
 - ✅ **Chemistry ch03 RENDERED** (PR #449, 2026-09-05). Not published — that needs a **named-book** vefur sync. ⚠️ **One page was renamed**; its `from`/`to`/`moduleId` row is in `slug-map.mt-preview.json` and must reach vefur **BEFORE** the sync, because a redirect entry is inert until its target exists. ▶ The [USER] hold on rebuilding this chapter is discharged and quantified: `(e. …)` **40 → 32** in the CNXML, **60 → 48** in the HTML, `data-en` **0 → 40** — nothing lost, invisible until vefur ships display. 🔴 **And the cause is not the renderer: `(e. …)` is in the TRANSLATION TEXT**, so the new MT carries fewer because the model was not asked for them.
-- 🔴 **Organic ch03 — THE EXERCISES ARE ASSEMBLED, AND DOING IT SURFACED A BLOCKER: THE SEPTEMBER MT IS TERMINOLOGICALLY DEGRADED BY THE GLOSSARY. DO NOT PUBLISH THIS CHAPTER AS IT STANDS.** → §C121 below.
+- ✅ **Organic ch03 — RE-MT'd AGAINST THE CLEAN GLOSSARY, INJECTED, RENDERED, AND ALL THREE §C121 CORRUPTIONS MEASURE 0.** Exercises assembled from the new MT. **~742 ISK.** → §C121 below for the numbers and the control.
+  🔴 **STILL NOT PUBLISHABLE, FOR A DIFFERENT AND SMALLER REASON: `m00037` IS NOT INJECTED** — one paragraph came back with 2 of 3 term markers and the count-guard degraded it to English, **deterministically** (reproduced on a paid retry). **It needs an editor pass in the segment editor, not another purchase.** The other 7 modules are COMPLETE, 6 at PERFECT fidelity.
 
 ### §C121 — a fallback-domain glossary word SHADOWS a correct multiword chemistry term, and the paid September MT obeyed it
 
@@ -92,7 +93,42 @@ Runbook item 1.4 was "[LEAD], needs domain knowledge" and unmeasured. It is meas
 🔴 **IT REACHES `functional` AND `double` AND *NOT* `multiple` — because the rule needs the victim phrase to BE a selected headword, and "multiple bond" is not in the glossary at all.** The same blind spot that kept `multiple` out of the candidate sweep also keeps it out of the fix. **Do not describe this rule as closing the class.**
 ▶ **For `multiple` the §C73 control was run rather than recalled, and it changes the prescription.** Keyed on segment id across organic's July chapters (16 EN occurrences, an older glossary, so an unprompted control): the model renders *multiple bonds* as **`margföldu tengin`** — natural and correct — and **`fjöltengi` occurs 0 times in the entire book**. ⚠️ **An earlier draft of this very table asserted `fjöltengi` as the correct form from memory; it is not a form this model produces.** ▶ So the entry is **pure harm for chemistry and needs no replacement** — the instrument is C120's removal set, accepting that it deletes a row that is legitimate for *physics* from a concept model shared by all six books. **That trade is a [USER] call, not a mechanical one**, and it is only cheap today because every book but two is held back from the site.
 ⚠️ **It is a wire-side fix only** — `buildGlossaryMap` (render) is independent and unaffected, per CLAUDE.md's *"neither is evidence for the other"*. ⚠️ **And it must be measured the §C73 way before shipping**: assert the *shadowed* pair disappears from a real request while an ordinary term survives, on the corpus, with both arms.
-📌 **[USER] CALL — organic ch03: publish the degraded text now and let an editor fix ~26 words, or hold the chapter until the glossary rows are removed?** A re-MT after the fix is the clean option and costs money the chapter has already been paid for once.
+✅ **RESOLVED 2026-09-05 — [USER] CHOSE THE RE-MT, AND IT WORKED. ALL THREE CORRUPTIONS ARE 0, MEASURED.** ~742 ISK total (607 chapter + 135 for two module retries) against an 889 ISK estimate — a 0.68× billing ratio, at the bottom of the measured band.
+
+| term | Sept (dirty glossary) | Sept (clean glossary) |
+|---|---|---|
+| `virknihóp*` ✅ | 26 | **39** |
+| `fellihóp*` ❌ | 10 | **0** |
+| `tvítengi` ✅ | 1 | **8** |
+| `stjörnupar` ❌ | 7 | **0** |
+| `heilfeldi` ❌ | 4 | **0** (now `fjöltengi`) |
+| **`þrítengi` — CONTROL** | 3 | **3** |
+
+▶ **THE ARITHMETIC IS THE PROOF, NOT THE ZEROS: `stjörnupar` 7 → 0 while `tvítengi` 1 → 8. Every corrupted occurrence became the correct term; none lost, none invented.** And `þrítengi` — which never had a shadow — held at **exactly 3**, so this is the specific defect being repaired rather than a wholesale rewording. **Exercises recovered to 8 correct / 0 wrong**, matching July's count from September text.
+
+⚠️ **CORRECTION TO THIS ENTRY'S OWN §C73 CONTROL: the model DOES produce `fjöltengi`.** The July measurement (`margföldu tengin`, `fjöltengi` 0×) was true of the July run and is **not** a property of the model — with the shadow removed it compounds correctly. **A §C73 unprompted control is dated evidence about ONE RUN, never a fact about the model.**
+
+🔴 **THE PRECONDITION THAT MADE IT WORK IS THE GENERAL SHAPE: THE SHADOWS WERE GONE WHILE THE VICTIMS SURVIVED.** The 249-term glossary has `functional`/`double`/`multiple` **absent** and `functional group → virknihópur` / `double bond → tvítengi` **present**. **Check both halves before buying** — removing the shadow is only half of it.
+
+⚠️ **Re-extract was run first and was a NO-OP: all 8 manifests moved only `extractedAt`; `sourceHash`, `segmentCount` and `segmentIds` were identical.** So organic ch03's English was already current and the glossary was the sole fault. **Run it every time — it is free, and it separates a repair from a wasted purchase.**
+
+### What the chapter surfaced — step 6
+
+- 🔴 **`m00037` IS NOT INJECTED AND MUST NOT BE PUBLISHED AS IS.** `m00037:para:para-00003` returned **2 of 3 `[[term:]]` markers**, so the B4-D11 count-guard degraded the whole paragraph to **English** and inject correctly SKIPPED the module. ▶ **It reproduced IDENTICALLY on a paid retry — same segment, same counts — so it is DETERMINISTIC, not API flakiness, and a third attempt is waste.** The terms are *conformations / conformational isomers / conformers*, which plausibly collapse in Icelandic. **Route is the segment editor (translations are API-only; never hand-write one into `02-mt-output`).** The other 7 modules injected COMPLETE, 6 at PERFECT fidelity.
+- ⚠️ **`m00035`'s marker gate is a FALSE POSITIVE, and the reason generalises.** The source is `(IUPAC, usually spoken as [[b:eye]]-you-pac)` — an **English pronunciation gloss**. The model correctly dropped the parenthetical and the `b` marker went with the content it wrapped. ▶ **A marker-conservation count cannot distinguish a LOST marker from one whose wrapped text was legitimately not translated**, so this class of segment will always trip it. Held back, reviewed, benign.
+- ⚠️ **`m00038` round-trip: one attribute the injector ADDS — `#list-00001 @list-type: undefined → "bulleted"`.** Semantically inert (bulleted is CNXML's default) but not byte-faithful. **7 of 8 modules are byte-identical to `01-source` by value.**
+- ⚠️ **Anchor gaps are PRE-EXISTING, proved by CONTROL rather than assumed.** Organic ch03 = **5 of 187**; chemistry ch03, untouched by this run, = **27 of 424** — organic is the *better* of the two, so this is a renderer characteristic, not a regression. **T0 = 0 OpenStax ids missing from `01-source` on both books.**
+- ⚠️ **`generate-index` on organic emits ZERO entries, and organic has never had one committed.** It was generated and **deleted again** rather than committed — an empty `index.json` is a new artifact vefur may read. **Chemistry's is 763, so the tool works; organic simply has no indexable key-term markup.**
+- ⚠️ **The render log prints `Recorded 2 rename(s) in 05-publication/mt-preview/slug-map.json` — the un-track-qualified name CLAUDE.md forbids.** The file it actually writes is `slug-map.mt-preview.json`, which is correct. **Behaviour right, message wrong.**
+
+### Redirect rows for vefur — hand over BEFORE the sync
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/03/3-2-alkanar-og-alkanhverfur.html` | `chapters/03/3-2-alkanar-og-alkana-hverfur.html` | m00033 |
+| `chapters/03/3-6-afbrigdi-etans.html` | `chapters/03/3-6-stellingar-etans.html` | m00037 |
+
+⚠️ **`3-6-stellingar-etans` is m00037's page — the module that is NOT injected.** Do not sync this chapter until m00037 is editorially resolved.
 
 _(Everything below this line is the previous RESUME, kept as evidence. Where it disagrees with this block, this block wins.)_
 

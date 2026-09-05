@@ -8,7 +8,7 @@
   "questions": [
     {
       "id": "357594",
-      "stem_html": "<p>Greinið fellihópana í eftirfarandi líkani af arekólíni, dýralyfi sem er notað til að halda ormum í skefjum hjá dýrum. Breytið teikningunni í línutengjagerð og sameindaformúlu (rautt = O, blátt = N, svart = C, grei = H).</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc747aa3d9f798926bd72143ed95a4106471419a/OChem_03_01_007.jpg\" alt=\"The ball and stick model of arecoline where grey, black, blue and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">",
+      "stem_html": "<p>Greinið virknihópana í eftirfarandi líkani af arekólíni, dýralyfi sem notað er til að halda ormum í skefjum hjá dýrum. Breytið teikningunni í línutengibyggingu og sameindaformúlu (rautt = O, blátt = N, svart = C, grátt = H).</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc747aa3d9f798926bd72143ed95a4106471419a/OChem_03_01_007.jpg\" alt=\"The ball and stick model of arecoline where grey, black, blue and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">",
       "collaborator_solutions": [
         {
           "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6222e02a12e80b0a6cd74db691eaa1271e6e1317/OChem_03_EC_202.jpg\" alt=\"The chemical structure of arecoline that has two functional groups, amine and a double bond.\">"

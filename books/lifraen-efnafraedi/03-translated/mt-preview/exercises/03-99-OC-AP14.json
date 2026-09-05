@@ -4,7 +4,7 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Teiknaðu gerð fyrir eftirfarandi:",
+  "stimulus_html": "Teiknaðu byggingarformúlur fyrir eftirfarandi:",
   "questions": [
     {
       "id": "327939",
@@ -28,7 +28,7 @@
     },
     {
       "id": "327943",
-      "stem_html": "3,3-Díetýl-2,5-dímetýlnonan",
+      "stem_html": "3,3-Díetýl-2,5-dímetýlnónan",
       "collaborator_solutions": []
     },
     {

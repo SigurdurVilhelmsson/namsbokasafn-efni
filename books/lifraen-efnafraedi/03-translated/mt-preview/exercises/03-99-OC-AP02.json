@@ -4,21 +4,21 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Stingið upp á gerðum sem uppfylla eftirfarandi lýsingar:",
+  "stimulus_html": "Teiknaðu byggingar sem uppfylla eftirfarandi lýsingar:",
   "questions": [
     {
       "id": "327857",
-      "stem_html": "Keton með fimm kolefnum",
+      "stem_html": "Keton með fimm kolefnisfrumeindum",
       "collaborator_solutions": []
     },
     {
       "id": "327858",
-      "stem_html": "Amíð með fjórum kolefnum",
+      "stem_html": "Amíð með fjórum kolefnisfrumeindum",
       "collaborator_solutions": []
     },
     {
       "id": "327859",
-      "stem_html": "Ester með fimm kolefnum",
+      "stem_html": "Ester með fimm kolefnisfrumeindum",
       "collaborator_solutions": []
     },
     {
@@ -28,7 +28,7 @@
     },
     {
       "id": "327861",
-      "stem_html": "Ketoester",
+      "stem_html": "Ketóester",
       "collaborator_solutions": []
     },
     {

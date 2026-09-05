@@ -4,21 +4,21 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Lítum á 2-metýlbútan (ísópentan). Horft meðfram C2–C3 tenginu:",
+  "stimulus_html": "Lítum á 2-metýlbútan (ísópentan). Horft meðfram C2–C3-tenginu:",
   "questions": [
     {
       "id": "347291",
-      "stem_html": "Teiknaðu Newman-frávarp af stöðugustu stellingunni.",
+      "stem_html": "Teiknaðu Newman-vörpun af stöðugustu stellingunni.",
       "collaborator_solutions": []
     },
     {
       "id": "347292",
-      "stem_html": "Teiknaðu Newman-frávarp af óstöðugustu stellingunni.",
+      "stem_html": "Teiknaðu Newman-vörpun af óstöðugustu stellingunni.",
       "collaborator_solutions": []
     },
     {
       "id": "347293",
-      "stem_html": "Ef skyggð víxlverkun CH<sub>3</sub> ⟷ CH<sub>3</sub> kostar 11 kJ/mól (2,5 kkal/mól) og skökk víxlverkun CH<sub>3</sub> ⟷ CH<sub>3</sub> kostar 3,8 kJ/mól (0,9 kkal/mól), gerðu magnbundið línurit af orku á móti snúningi um C2–C3 tengið.",
+      "stem_html": "Ef skyggð víxlverkun CH<sub>3</sub> ⟷ CH<sub>3</sub> kostar 11 kJ/mól (2,5 kkal/mól) og goggunarvíxlverkun CH<sub>3</sub> ⟷ CH<sub>3</sub> kostar 3,8 kJ/mól (0,9 kkal/mól), gerðu þá magnbundið línurit af orku á móti snúningi um C2–C3-tengið.",
       "collaborator_solutions": []
     }
   ]

@@ -4,11 +4,11 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": true,
-  "stimulus_html": "Horfið meðfram C2–C1 tenginu í 2-metýlprópani (ísóbútani).",
+  "stimulus_html": "Horfðu eftir C2–C1 tenginu í 2-metýlprópani (ísóbútani).",
   "questions": [
     {
       "id": "357636",
-      "stem_html": "Teiknið Newman-frávarp af stöðugustu stellingunni.",
+      "stem_html": "Teiknaðu Newman-vörpun af stöðugustu stellingunni.",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a0aa9691acfe6c19cc43420c47ee513446bdb881/OChem_03_EC_211a.jpg\" alt=\"A Newman projection of the most stable conformation is represented.\">"
@@ -17,7 +17,7 @@
     },
     {
       "id": "357637",
-      "stem_html": "Teiknið Newman-frávarp af óstöðugustu stellingunni.",
+      "stem_html": "Teiknaðu Newman-vörpun af óstöðugustu stellingunni.",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79f02d3bd8291cebbab0cfd86d4d96b00d9dc3b2/OChem_03_EC_211b.jpg\" alt=\"A Newman projection of the least stable conformation is represented. It contains energy of 4 and 6 kilojoules per mol.\">"
@@ -26,7 +26,7 @@
     },
     {
       "id": "357638",
-      "stem_html": "Teiknið línurit af orku á móti snúningshorni um C2–C1 tengið.",
+      "stem_html": "Teiknaðu línurit af orku á móti snúningshorni um C2–C1 tengið.",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea7cb9ac15913f91f3997940c8379d2b5f3758c5/OChem_03_EC_211cd.jpg\" alt=\"A line graph of energy versus angle of rotation, around the C2 – C1 bond.\">"
@@ -35,7 +35,7 @@
     },
     {
       "id": "357639",
-      "stem_html": "Gefið upp afstæð gildi fyrir hámark og lágmark á línuritinu ykkar, að því gefnu að skyggð víxlverkun H ⟷ H kosti 4,0 kJ/mól og skyggð víxlverkun H ⟷ CH<sub>3</sub> kosti 6,0 kJ/mól.",
+      "stem_html": "Gefðu upp afstæð gildi fyrir hámark og lágmark á línuritinu þínu, að því gefnu að skyggð H ⟷ H víxlverkun kosti 4,0 kJ/mól og skyggð H ⟷ CH<sub>3</sub> víxlverkun kosti 6,0 kJ/mól.",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea7cb9ac15913f91f3997940c8379d2b5f3758c5/OChem_03_EC_211cd.jpg\" alt=\"A line graph of energy versus angle of rotation, around the C2 – C1 bond.\">"

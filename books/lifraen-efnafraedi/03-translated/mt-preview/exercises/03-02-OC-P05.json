@@ -4,11 +4,11 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": true,
-  "stimulus_html": "Leggið til gerðir sem uppfylla eftirfarandi lýsingar:",
+  "stimulus_html": "Leggið til byggingar sem uppfylla eftirfarandi lýsingar:",
   "questions": [
     {
       "id": "357600",
-      "stem_html": "Tveir hverfuestrar með formúluna C<sub>5</sub>H<sub>10</sub>O<sub>2:</sub>",
+      "stem_html": "Tvær esterahverfur með formúluna C<sub>5</sub>H<sub>10</sub>O<sub>2:</sub>",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0lRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78e5a08e171592f552bf61b8341fe21ce1ff9dd6/OChem_03_EC_204a.jpg\" alt=\"The molecular structures of three isomeric esters of ethyl propionate.\">"
@@ -17,7 +17,7 @@
     },
     {
       "id": "357601",
-      "stem_html": "Tvö hverfunítríl með formúluna C<sub>4</sub>H<sub>7</sub>N",
+      "stem_html": "Tvær nítrílhverfur með formúluna C<sub>4</sub>H<sub>7</sub>N",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc01RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f75063f0ccec44401864ca0c748b7016119f3aa1/OChem_03_EC_204b.jpg\" alt=\"The molecular structures of two isomeric nitriles of butyronitrile are represented.\">"
@@ -26,7 +26,7 @@
     },
     {
       "id": "357602",
-      "stem_html": "Tvö hverfudísúlfíð með formúluna C<sub>4</sub>H<sub>10</sub>S<sub>2</sub>",
+      "stem_html": "Tvær dísúlfíðhverfur með formúluna C<sub>4</sub>H<sub>10</sub>S<sub>2</sub>",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--082821bac81754b9c8a73e1e6f5e0f191e68e580/OChem_03_EC_204c.jpg\" alt=\"The molecular structures of three isomeric disulfides of diethyl disulfide.\">"

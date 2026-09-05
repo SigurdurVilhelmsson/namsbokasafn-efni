@@ -8,17 +8,17 @@
   "questions": [
     {
       "id": "327948",
-      "stem_html": "Hefur aðeins fyrsta stigs og tertíer kolefni",
+      "stem_html": "Hefur aðeins fyrsta og þriðja stigs kolefni",
       "collaborator_solutions": []
     },
     {
       "id": "327949",
-      "stem_html": "Hefur ekkert annars stigs eða tertíer kolefni",
+      "stem_html": "Hefur ekkert annars eða þriðja stigs kolefni",
       "collaborator_solutions": []
     },
     {
       "id": "327950",
-      "stem_html": "Hefur ekkert annars stigs eða tertíer kolefni",
+      "stem_html": "Hefur ekkert annars eða þriðja stigs kolefni",
       "collaborator_solutions": []
     }
   ]

@@ -4,7 +4,7 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": true,
-  "stimulus_html": "Notið töflu 3.1 til að greina fellihópana í eftirfarandi sameindum:",
+  "stimulus_html": "Notið töflu 3.1 til að greina virknihópana í eftirfarandi sameindum:",
   "questions": [
     {
       "id": "351544",
@@ -20,7 +20,7 @@
       "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4d063c69cf3fdf0bdd61a23caca3f79d0e3ae928/OChem_03_01_006b.jpg\" alt=\"The chemical structure of ibuprofen which is a pain reliever.\">",
       "collaborator_solutions": [
         {
-          "content_html": "Arómatískur baugur, karboxýlsýra"
+          "content_html": "Arómatískur hringur, karboxýlsýra"
         }
       ]
     },
@@ -29,7 +29,7 @@
       "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3981931e2bb0a971656f25e2bd491a0f117c3f28/OChem_03_01_006c.jpg\" alt=\"The chemical structure of capsaicin which is the pungent substance in chili peppers.\">",
       "collaborator_solutions": [
         {
-          "content_html": "Eter, alkóhól, arómatískur baugur, amíð, C<span data-math=\"\\text{=}\"></span>C-tengi\n"
+          "content_html": "Eter, alkóhól, arómatískur hringur, amíð, C<span data-math=\"\\text{=}\"></span>C tengi\n"
         }
       ]
     }

@@ -4,26 +4,26 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Teiknið efnasambönd sem innihalda eftirfarandi:",
+  "stimulus_html": "Teiknaðu efnasambönd sem innihalda eftirfarandi:",
   "questions": [
     {
       "id": "327923",
-      "stem_html": "Primer alkóhól",
+      "stem_html": "Fyrsta stigs alkóhól",
       "collaborator_solutions": []
     },
     {
       "id": "327924",
-      "stem_html": "Tertíer nítríl",
+      "stem_html": "Þriðja stigs nítríl",
       "collaborator_solutions": []
     },
     {
       "id": "327925",
-      "stem_html": "Sekúnder þíól",
+      "stem_html": "Annars stigs þíól",
       "collaborator_solutions": []
     },
     {
       "id": "327926",
-      "stem_html": "Bæði primer og sekúnder alkóhól",
+      "stem_html": "Bæði fyrsta og annars stigs alkóhól",
       "collaborator_solutions": []
     },
     {
@@ -33,7 +33,7 @@
     },
     {
       "id": "327928",
-      "stem_html": "Fjórðastigs kolefni",
+      "stem_html": "Fjórgilt kolefni",
       "collaborator_solutions": []
     }
   ]

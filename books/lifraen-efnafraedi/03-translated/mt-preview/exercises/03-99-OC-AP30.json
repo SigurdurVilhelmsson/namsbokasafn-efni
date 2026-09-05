@@ -4,16 +4,16 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Hindrunin fyrir snúningi um C–C tengið í brómetani er 15 kJ/mól (3,6 kkal/mól).",
+  "stimulus_html": "Snúningshindrunin um C–C tengið í brómetani er 15 kJ/mól (3,6 kkal/mól).",
   "questions": [
     {
       "id": "329825",
-      "stem_html": "Hvaða orkugildi getur þú úthlutað H ↔ Br skyggðri víxlverkun?",
+      "stem_html": "Hvaða orkugildi getur þú úthlutað H ↔ Br skyggnivíxlverkun?",
       "collaborator_solutions": []
     },
     {
       "id": "329826",
-      "stem_html": "Búðu til magnbundna skýringarmynd af stöðuorku á móti snúningi tengis fyrir brómetan.",
+      "stem_html": "Teiknaðu magnbundið línurit af stöðuorku á móti tengisnúningi fyrir brómetan.",
       "collaborator_solutions": []
     }
   ]
