@@ -16,10 +16,36 @@ click, approves — and the badge stays amber until the artwork is actually re-c
 published. Merged: #435 (review surface) · #438 (Ⓐ card image, Ⓒ approved-means-published) ·
 #440 (⑭ decimal) · #441 (⑰ publish where readers load it). ⚠️ **#440 and #441 are NOT DEPLOYED.**
 
-🔴 **THE BULK RUN IS GATED ON THREE THINGS, IN ORDER — do not start it before all three.**
-1. **The figure MT leg sends NO GLOSSARY** (`glossary: null`, hardcoded). The [USER] Celsíus
-   ruling therefore does NOT reach figures. Wire it FIRST, or pay for hundreds of figures
-   carrying the term the project just ruled against.
+🔴 **THE BULK RUN IS GATED ON EVERY NUMBERED ITEM BELOW, IN ORDER — do not start it before all
+of them.** *(This line said "THREE THINGS" until 2026-09-05, when doing gate 1 turned up a
+fourth. A count written into prose beside the list it counts drifts the first time that list
+grows — CLAUDE.md § One source of truth makes exactly this complaint about itself, so the fix
+is to delete the number, not to raise it to four.)*
+1. **✅ THE WIRE HALF IS DONE (2026-09-05); THE DATA HALF IS NOT — AND THE GATE IS NECESSARY,
+   NOT SUFFICIENT.** `translate-blocks.mjs` now requires `--book <slug>` and filters the
+   glossary per block through the same three calls `api-translate.js` makes, so §C116's
+   short-headword rule applies for free and the `glossaries` field is omitted rather than sent
+   empty. **A run that cannot load a glossary REFUSES with exit 2** — a warning in a bulk run's
+   scroll is a detector firing into a log, not a gate — with `--no-glossary` as the separate
+   acknowledgement, the `--force`/`--adopt` idiom already on `main`, which item ⑯ legitimately
+   used. The two refusal codes are distinct on purpose: `loadGlossary` returns `null` both for
+   *file absent* and for *zero usable terms*, and those are a setup error and a data defect.
+   ▶ **THE RULING STILL DOES NOT REACH FIGURES, AND THE PREDICATE IS CHECKABLE RATHER THAN A
+   STATUS VERB:** `grep -c Celsíus books/efnafraedi-2e/glossary/glossary-unified.json` must be
+   non-zero. Measured 2026-09-05 it is **0** against 2,006 terms. The chain is #443 merges →
+   deploy (051 asserts it at boot) → the 2-hourly export cron rewrites the file → that commit
+   pulled. **A present, pre-051 glossary passes the gate while the ruling is still absent**, so
+   do not read a green gate as a closed one.
+   🔴 **AND THE MEASUREMENT THAT PAID FOR ITSELF: IMPORTING `translate-blocks.mjs` SPENT MONEY.**
+   Every top-level statement ran at import — the paid translate loop included — so the first run
+   of the new test made **8 live requests, 120 chars, 1.20 ISK, 0 failed**, from a test that had
+   not yet asserted anything. The CLI body is now behind `api-translate.js`'s own
+   `process.argv[1] === fileURLToPath(...)` guard, and `.env` is read inside it. **Independent
+   confirmation, not reasoning: the test file's import time fell 50.49s → 195ms — those 50
+   seconds WERE the API loop.** ▶ The shape is worth carrying past this file: **a module that
+   does its work at import cannot be tested without doing its work**, and when the work is
+   billable the test is a purchase. The cost here was trivial; a driver importing this across
+   463 figures would not have been.
 2. **Let the re-MT land.** Figure ALT text is **19 of 627** translated (~3%) against ~99.7% of
    captions. Running figure text now makes an editor visit every figure twice, on two surfaces.
    ⚠️ The caption check is DEGRADED, not inert — captions carry it — so this is a cost, not a
@@ -27,6 +53,19 @@ published. Merged: #435 (review surface) · #438 (Ⓐ card image, Ⓒ approved-m
 3. **Resolve the ~14 hash-suffixed figures deliberately.** The suffix marks a 2e-updated figure;
    string-stripping it sources the SUPERSEDED illustration, which `sources.py` warns is invisible
    in the output.
+4. 🔴 **THERE IS NO DRIVER — AN UNLISTED FOURTH PREREQUISITE, FOUND 2026-09-05 AND NOT BUILT.**
+   Measured, not assumed: `grep -ran translate-blocks` over the repo returns this register, the
+   README, the file's own usage line and its test — **nothing invokes the MT stage**. Every
+   stage here is single-figure by construction and they all communicate through `out/`, which
+   holds whichever figure was extracted LAST: `extract.py` → `out/runs.json` + `out/meta.json`
+   → `translate-blocks.mjs` → `out/translations-api.json` → `compose.py` → `out/translated.svg`
+   → `publish-figure-svg.js`. ▶ **So "the bulk run" is not a flag on an existing tool; it is a
+   stage that does not exist** — the 463 vector figures cannot be processed by repeating a
+   command, because each would overwrite the previous one's `out/`.
+   ⚠️ **`publish-figure-svg.js`'s basename cross-check is what makes that shared directory safe
+   today** (it refuses when `out/meta.json`'s stem disagrees with the sidecar's figure), and it
+   is the shape a driver must preserve rather than route around. **Do not build it unasked** —
+   per-figure isolation is a design question, not a script.
 
 **✅ SOURCE COVERAGE IS SOLVED — measured 2026-09-05, and it is no longer 4.5%.** The book
 references **627** distinct figures; **463 resolve** through the real precedence tool and the

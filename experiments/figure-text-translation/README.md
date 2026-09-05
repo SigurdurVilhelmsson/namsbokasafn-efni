@@ -102,6 +102,8 @@ published.jpg ──check.py─────────────────�
 | `render-check.mjs` | rasterise a figure in Chromium **inside `<img>`** — the only rendering a reader ever sees |
 | `sources.py` | resolve a figure basename to its authoritative source across the two edition trees |
 | `test_sources.py` | tests that resolver, including a control that reverses the precedence |
+| `emit-blocks.py` | the MT stage's input — `runs.json` → `out/blocks.json`, marking which blocks to send |
+| `translate-blocks.mjs` | the **paid** MT stage — `out/blocks.json` → `out/translations-api.json`, one request per block |
 | `translations.json` | ⚠️ **placeholder probe text, NOT a translation** |
 
 ## Running it
@@ -125,6 +127,25 @@ node render-check.mjs out/control.svg out/browser.png   # render it as a reader 
 ```
 
 `pdftocairo` (poppler-utils) must be on `PATH`.
+
+### The MT stage — it costs money, and `--book` is not optional
+
+```bash
+node translate-blocks.mjs --book efnafraedi-2e --dry-run   # blocks, chars, ISK, glossary line
+node translate-blocks.mjs --book efnafraedi-2e             # then spend
+```
+
+🔴 **A run that cannot load a glossary REFUSES with exit 2.** This leg used to send
+`glossary: null` unconditionally, so a [USER] terminology ruling reached prose and never
+reached figures. `--no-glossary` is the separate acknowledgement for a deliberately bare
+run — the §C73 control, which is how item ⑯ was measured.
+
+⚠️ **The gate is necessary, not sufficient.** It proves a glossary rode the wire; it cannot
+prove that glossary carries any given ruling. That is a data state, and REGISTER.md carries
+the checkable predicate for it.
+
+⚠️ **Always `--dry-run` first.** It prints the cost estimate *and* the glossary status line,
+so the decision to spend is made while looking at what would actually ride the wire.
 
 ### Composing a figure that has a committed sidecar, and publishing it
 
