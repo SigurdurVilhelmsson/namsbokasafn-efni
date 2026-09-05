@@ -223,6 +223,25 @@ a problem if it sits for weeks.
 On mismatch, keep the **translation** and strip that type's markers to plain text, instead of degrading to English. No wire change, so no §C118 ⑲ exposure, and the reader gets Icelandic prose.
 ⚠️ **But it converts a translation failure into a FIDELITY failure:** the `<term>` elements vanish from the injected CNXML, so `source-roundtrip-check` reports `tagCountDeltas {term: -3}` against `01-source` — and losing 3 term links is a bigger loss than the 1 that numbering would forfeit. **Recorded so it is not re-proposed as the easy option.**
 
+### 🔴 [USER] RULING 2026-09-05 — **CHEMISTRY ch03 IS RE-MT'd AGAINST A CLEAN GLOSSARY BEFORE IT SYNCS. BOTH BOOKS ARE NOW HELD.**
+
+**This puts the glossary on the critical path for EVERYTHING, not just future purchases.** Step 0 of the loop — *finish both bought ch03s end to end* — cannot complete until it lands.
+
+**The path, in order. Every step before the buy is 0 ISK:**
+
+| # | step | cost |
+|---|---|---|
+| 1 | **Build a CORRECT chemistry removal set.** The frozen §C120 set is insufficient (see below) and mis-classes 5 of 29 §C117 rows. It must add the §C121 shadows (`double`, `functional`, `multiple`) and the measured ch03 offenders (`form`, `consistent`), keep `established`, and **exclude the 2 class-C rows (`ln`, `Sm`) and the 3 class-B rows pending an editorial ruling.** | 0 ISK |
+| 2 | **Apply on prod** (`remove-wrong-sense-headwords.js --set <tsv>`, dry-run by default) — the concept model is not on this box. | 0 ISK |
+| 3 | **Deploy, then wait one 2-hourly export tick.** | 0 ISK |
+| 4 | 🔴 **VERIFY BY RE-READING `books/efnafraedi-2e/glossary/glossary-unified.json` and re-running the intersection to ZERO.** Merging is step 1 of 3; **merge ≠ deploy ≠ export tick**, and nothing else proves it. | 0 ISK |
+| 5 | **Re-extract chemistry ch03**, then `api-translate --force`. | **paid** |
+| 6 | Inject → render → the free source-anchored checks → hand vefur fresh redirect rows → sync. | 0 ISK |
+
+**Scope of the re-buy, measured:** ch03 is **141,754 bytes across 6 modules**. Three carry known corruptions and they are the LARGE ones — `m68700` (62,982 B, `sjálfkvæm`+`tilbrigði`), `m68702` (25,056 B, `felli`), `m68703` (32,812 B, `sjálfkvæm`+`ílend`); `m68704`/`m68699` are clean. ▶ **Scoping the re-MT with `--module` to just the three saves only ~15% of the bytes, while leaving the ~1,600 unjudged fallback rows unaudited in the other modules. Buy the whole chapter.** Estimate against the measured band 1,237–3,132 ISK, billed ≈0.75× — **quote a range, never a point.**
+
+⚠️ **This is the SECOND chapter re-bought for this mechanism** (organic ch03 cost ~742 ISK). **That is the argument for finishing the glossary properly now rather than per-chapter** — the ~1,600 unjudged chemistry rows are the largest unquantified exposure on the list, and every chapter bought before they are judged is a candidate for a third re-buy.
+
 ### §C126 — THE RE-MT PRE-FLIGHT CENSUS. **[USER] 2026-09-05: *"anything potentially requiring re-MT must be resolved before continuing translation"*** — 26 agents, adversarially verified
 
 🔴 **THE HEADLINE, AND IT OVERTURNS THIS REGISTER'S OWN QUEUED REMEDY: THE §C120 REMOVAL SET DOES NOT FIX §C121.** Re-verified by hand against the frozen TSV, with `fall` as a positive control matching in the same command:

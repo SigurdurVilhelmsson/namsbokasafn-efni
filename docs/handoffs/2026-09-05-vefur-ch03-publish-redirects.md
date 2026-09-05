@@ -10,9 +10,20 @@
 
 ---
 
-## 🛑 STOP — ADDED 2026-09-05 AFTER THIS FILE WAS WRITTEN: CHEMISTRY ch03 CARRIES 4 GLOSSARY CORRUPTIONS
+## ⏹ HELD — [USER] RULING 2026-09-05: **DO NOT SYNC CHEMISTRY. IT IS BEING RE-MT'd.**
 
-**Do not sync until [USER] rules on this.** A re-MT pre-flight census found that chemistry's committed
+🔴 **BOTH BOOKS ARE NOW HELD FROM SYNCING.** Organic on §C123 (English exercise alts); chemistry on
+§C126 (glossary corruptions, below). **There is no content sync to run from this handoff today.**
+
+✅ **WHAT IS STILL LIVE HERE: THE REDIRECT EDIT IN §1.** Land it. All three rows are inert until
+content moves — verified live, both organic targets 404 — and the m00037 row is a latent hazard
+worth removing while it costs nothing. **Redirects-ahead-of-content is the only ordering with no
+404 window, so landing them during a hold is correct, not premature.**
+
+⚠️ **When the hold lifts, RE-DERIVE the rows before syncing.** A chemistry re-MT and re-render can
+rename pages again; the rows below were derived from the slug maps at `d1021ad5`.
+
+### Why chemistry is held A re-MT pre-flight census found that chemistry's committed
 glossary is still the **contaminated** one, and that chemistry ch03 was bought under it on 2026-09-01.
 
 **Measured in the rendered pages this handoff would publish** (control: `mól` = 334, so the search works):
