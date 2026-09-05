@@ -22,6 +22,7 @@
   let termLookupTimer = null;
   const dirtyEdits = new Set(); // Track segment IDs with unsaved textarea edits
   let draftTimer = null;
+  let figDraftTimer = null;
   let lastServerSaveTime = null;
   const recentlySaved = new Set(); // Track recently saved segment IDs for indicators
   let lastFocusedTextarea = null; // Track last-focused edit textarea for term insertion
@@ -283,6 +284,9 @@
       showReviewSummary();
       restoreDraft();
       startDraftTimer();
+      // Safe to start before any card exists: figSaveDraft no-ops until
+      // figuresModuleId matches, which only loadFigures sets.
+      figStartDraftTimer();
 
       // Show save status bar and update it
       document.getElementById('save-status-bar').style.display = 'flex';
@@ -379,10 +383,87 @@
     return document.getElementById('figure-cards');
   }
 
-  async function loadFigures(moduleId) {
+  /**
+   * Which module the figure cards currently on screen belong to.
+   *
+   * 🔴 NOT the same thing as `currentModuleId`. `loadModule` sets that FIRST and
+   * calls `loadFigures` last, without awaiting it, so there is a window in which
+   * the variable names the new module while the DOM still shows the previous
+   * one's cards. Capturing or drafting in that window files one module's text
+   * under another module's id. Everything that reads the figure DOM checks this.
+   */
+  let figuresModuleId = null;
+
+  /** What is in the figure inputs right now, keyed the way the payload is. */
+  function captureLiveFigureEdits() {
+    const live = {};
+    const container = figureCardsContainer();
+    if (!container) return live;
+    for (const card of container.querySelectorAll('[data-figure-card]')) {
+      const basename = card.getAttribute('data-figure-card');
+      const blocks = {};
+      for (const input of card.querySelectorAll('[data-block-input]')) {
+        blocks[input.getAttribute('data-block-key')] = input.value;
+      }
+      const noteInput = card.querySelector('[data-figure-note-input]');
+      live[basename] = { blocks, note: noteInput ? noteInput.value : '' };
+    }
+    return live;
+  }
+
+  /**
+   * Write carried-forward text back into the freshly rebuilt cards and MARK it,
+   * so "this is not saved" is visible rather than inferred from memory.
+   */
+  function applyFigureEdits(edits) {
+    const container = figureCardsContainer();
+    if (!container) return;
+    for (const basename of Object.keys(edits)) {
+      const card = container.querySelector(`[data-figure-card="${CSS.escape(basename)}"]`);
+      if (!card) continue;
+      const entry = edits[basename];
+      for (const key of Object.keys(entry.blocks || {})) {
+        const input = card.querySelector(`[data-block-input][data-block-key="${CSS.escape(key)}"]`);
+        if (!input) continue;
+        input.value = entry.blocks[key];
+        markFigureBlockUnsaved(input);
+      }
+      if (entry.note) {
+        const noteInput = card.querySelector('[data-figure-note-input]');
+        if (noteInput) noteInput.value = entry.note;
+      }
+    }
+  }
+
+  /** The visible "not saved yet" state for one block. */
+  function markFigureBlockUnsaved(input) {
+    input.classList.add('figure-block-unsaved');
+    const row = input.closest('.figure-block');
+    if (row) row.setAttribute('data-block-unsaved', '');
+  }
+
+  /**
+   * @param {string} moduleId
+   * @param {object} [opts]
+   * @param {boolean} [opts.preserve] carry unsaved input across the rebuild.
+   *        Only ever true for a refresh of the module already on screen — on the
+   *        module-load path there is nothing of THIS module's to preserve, and
+   *        capturing would file the previous module's text under this one's id.
+   * @param {{basename: string, blockKey: string}|null} [opts.justSaved]
+   *
+   * A localStorage draft is restored on the NOT-preserve path, i.e. exactly the
+   * module-load one. It cannot live in `loadModule`: the inputs a draft writes
+   * into are created by `renderFigureCards`, which runs here and is not awaited
+   * there. `preserve` therefore selects between the two reasons a rebuild
+   * happens — a fresh module (restore) and a refresh after a save (carry over).
+   */
+  async function loadFigures(moduleId, { preserve = false, justSaved = null } = {}) {
     const requestedModule = currentModuleId; // capture at call time
+    // Read the inputs BEFORE the clear below destroys them.
+    const live = preserve && figuresModuleId === moduleId ? captureLiveFigureEdits() : {};
     // Clear FIRST: a module with no reviewable figures must show none, and a
     // re-load must not stack a second copy of every card.
+    figuresModuleId = null;
     renderFigureCards([]);
     try {
       const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}/${moduleId}/figures`, {
@@ -391,10 +472,96 @@
       if (!res.ok || currentModuleId !== requestedModule) return; // stale
       const data = await res.json();
       if (currentModuleId !== requestedModule) return; // stale after parse
-      renderFigureCards(data.figures || []);
+      const figures = data.figures || [];
+      renderFigureCards(figures);
+      figuresModuleId = moduleId;
+      applyFigureEdits(figureDrafts.unsavedFigureEdits(figures, live, justSaved));
+      if (!preserve) figRestoreDraft(figures);
+      figSaveDraft();
     } catch {
       // Advisory surface: a figure-review outage must never block segment work.
       renderFigureCards([]);
+    }
+  }
+
+  // ================================================================
+  // FIGURE DRAFTS (localStorage) — survive a reload, a crash, a closed tab
+  // ================================================================
+
+  function figSaveDraft() {
+    // Guarded by figuresModuleId, not currentModuleId: see its docstring.
+    if (!currentModuleId || figuresModuleId !== currentModuleId) return;
+    const key = figureDrafts.figDraftKey(
+      currentBook,
+      currentChapter,
+      currentModuleId,
+      tabGuard.tabId
+    );
+    // Only what is genuinely unsaved — the same decision the rebuild uses, so a
+    // draft can never disagree with what the card shows as unsaved.
+    const container = figureCardsContainer();
+    const unsaved = {};
+    if (container) {
+      for (const row of container.querySelectorAll('[data-block-unsaved]')) {
+        const input = row.querySelector('[data-block-input]');
+        const card = row.closest('[data-figure-card]');
+        if (!input || !card) continue;
+        const basename = card.getAttribute('data-figure-card');
+        unsaved[basename] = unsaved[basename] || { blocks: {} };
+        unsaved[basename].blocks[input.getAttribute('data-block-key')] = input.value;
+      }
+      for (const noteInput of container.querySelectorAll('[data-figure-note-input]')) {
+        if (!noteInput.value) continue;
+        const card = noteInput.closest('[data-figure-card]');
+        if (!card) continue;
+        const basename = card.getAttribute('data-figure-card');
+        unsaved[basename] = unsaved[basename] || { blocks: {} };
+        unsaved[basename].note = noteInput.value;
+      }
+    }
+    if (Object.keys(unsaved).length === 0) {
+      localStorage.removeItem(key);
+      return;
+    }
+    try {
+      localStorage.setItem(key, JSON.stringify({ ts: Date.now(), figures: unsaved }));
+    } catch {
+      if (typeof saveRetry !== 'undefined')
+        saveRetry.showToast(UI.common.localStorageFull, 'error');
+    }
+  }
+
+  function figStartDraftTimer() {
+    if (figDraftTimer) clearInterval(figDraftTimer);
+    figDraftTimer = setInterval(figSaveDraft, 5000);
+  }
+
+  /**
+   * Re-apply a draft into the cards that were just built.
+   *
+   * ⚠️ SILENT, unlike the segment and localization editors, which `confirm()`.
+   * Those run one prompt per module load; a second one for figures would mean
+   * two dialogs before the editor can read the page. The unsaved MARKER is the
+   * notice here, and it is on the block itself rather than in a dialog the
+   * editor has already dismissed.
+   */
+  function figRestoreDraft(figures) {
+    const prefix = figureDrafts.figDraftPrefix(currentBook, currentChapter, currentModuleId);
+    const found = tabGuard.findNewestDraft(prefix);
+    if (!found) return;
+    try {
+      const draft = found.data;
+      if (Date.now() - draft.ts > 7 * 24 * 60 * 60 * 1000) {
+        tabGuard.clearDraftsByPrefix(prefix);
+        return;
+      }
+      // Through the same decision the rebuild uses: a draft older than the
+      // server's own value must not resurrect text an editor already saved
+      // elsewhere, and a figure that has since gone must not come back.
+      applyFigureEdits(figureDrafts.unsavedFigureEdits(figures, draft.figures || {}, null));
+      tabGuard.clearDraftsByPrefix(prefix);
+    } catch {
+      tabGuard.clearDraftsByPrefix(prefix);
     }
   }
 
@@ -433,6 +600,18 @@
     // The block key is the English source text, so it is also the field's name.
     input.setAttribute('aria-label', key);
     input.value = text == null ? '' : String(text);
+    // Typing marks the block unsaved immediately. The marker is what makes the
+    // loss visible instead of silent, and it is also what figSaveDraft reads —
+    // so what the card SHOWS as unsaved and what the draft PERSISTS cannot drift.
+    const serverText = text == null ? '' : String(text);
+    input.addEventListener('input', () => {
+      if (input.value === serverText) {
+        input.classList.remove('figure-block-unsaved');
+        li.removeAttribute('data-block-unsaved');
+      } else {
+        markFigureBlockUnsaved(input);
+      }
+    });
 
     const save = document.createElement('button');
     save.type = 'button';
@@ -594,7 +773,12 @@
       return;
     }
     // The route returns {ok:true} and deliberately no state — re-read it.
-    await loadFigures(currentModuleId);
+    // `preserve` is what stops that re-read from destroying text typed into the
+    // OTHER blocks; `justSaved` is what stops it from undoing this one.
+    await loadFigures(currentModuleId, {
+      preserve: true,
+      justSaved: { basename, blockKey },
+    });
   }
 
   async function setFigureState(basename, { state, flagKind = null, note = '' }) {
@@ -609,7 +793,10 @@
       alert('Ekki tókst að uppfæra stöðu myndar: ' + err.message);
       return;
     }
-    await loadFigures(currentModuleId);
+    // Approving or flagging rebuilds the cards too, so it loses sibling typing
+    // by the same mechanism. No `justSaved`: this wrote a review state, not a
+    // block, so every block's live value is still the unsaved one.
+    await loadFigures(currentModuleId, { preserve: true });
   }
 
   // Insert a repetition suggestion into a segment's edit box (still saved
