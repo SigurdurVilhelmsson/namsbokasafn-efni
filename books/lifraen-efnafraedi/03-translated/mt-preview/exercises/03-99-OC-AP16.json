@@ -4,16 +4,16 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Teiknið efnasamband sem:",
+  "stimulus_html": "Teiknaðu efnasamband sem:",
   "questions": [
     {
       "id": "327953",
-      "stem_html": "Hefur níu eingreind vetni",
+      "stem_html": "Hefur níu fyrsta stigs vetni",
       "collaborator_solutions": []
     },
     {
       "id": "327954",
-      "stem_html": "Hefur aðeins eingreind vetni",
+      "stem_html": "Hefur aðeins fyrsta stigs vetni",
       "collaborator_solutions": []
     }
   ]

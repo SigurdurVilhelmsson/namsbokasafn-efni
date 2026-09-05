@@ -1,2 +1,2 @@
 <!-- SEG:chapter:title:ch03 -->
-Lífræn efnasambönd: Alkanar og þrívíddarefnafræði þeirra
+Lífræn efnasambönd: Alkanar og staðefnafræði þeirra

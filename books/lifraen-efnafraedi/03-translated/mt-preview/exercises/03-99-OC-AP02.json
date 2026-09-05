@@ -4,7 +4,7 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Leggið til byggingar sem uppfylla eftirfarandi lýsingar:",
+  "stimulus_html": "Teiknaðu byggingar sem uppfylla eftirfarandi lýsingar:",
   "questions": [
     {
       "id": "327857",
@@ -23,7 +23,7 @@
     },
     {
       "id": "327860",
-      "stem_html": "Aromatískt aldehýð",
+      "stem_html": "Arómatískt aldehýð",
       "collaborator_solutions": []
     },
     {

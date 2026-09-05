@@ -4,7 +4,7 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": true,
-  "stimulus_html": "Horfðu meðfram C2–C1 efnatenginu í 2-metýlprópani (ísóbútani).",
+  "stimulus_html": "Horfðu eftir C2–C1 tenginu í 2-metýlprópani (ísóbútani).",
   "questions": [
     {
       "id": "357636",
@@ -26,7 +26,7 @@
     },
     {
       "id": "357638",
-      "stem_html": "Teiknaðu línurit af orku á móti snúningshorni um C2–C1 efnatengið.",
+      "stem_html": "Teiknaðu línurit af orku á móti snúningshorni um C2–C1 tengið.",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea7cb9ac15913f91f3997940c8379d2b5f3758c5/OChem_03_EC_211cd.jpg\" alt=\"A line graph of energy versus angle of rotation, around the C2 – C1 bond.\">"
@@ -35,7 +35,7 @@
     },
     {
       "id": "357639",
-      "stem_html": "Gefðu hlutfallsleg gildi fyrir hágildi og lággildi á línuritinu þínu, að því gefnu að skyggð víxlverkun H ⟷ H kosti 4,0 kJ/mól og skyggð víxlverkun H ⟷ CH<sub>3</sub> kosti 6,0 kJ/mól.",
+      "stem_html": "Gefðu upp afstæð gildi fyrir hámark og lágmark á línuritinu þínu, að því gefnu að skyggð H ⟷ H víxlverkun kosti 4,0 kJ/mól og skyggð H ⟷ CH<sub>3</sub> víxlverkun kosti 6,0 kJ/mól.",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea7cb9ac15913f91f3997940c8379d2b5f3758c5/OChem_03_EC_211cd.jpg\" alt=\"A line graph of energy versus angle of rotation, around the C2 – C1 bond.\">"

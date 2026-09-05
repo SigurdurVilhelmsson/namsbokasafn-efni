@@ -4,7 +4,7 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Teiknið eins mörg efnasambönd og þið getið sem passa við eftirfarandi lýsingar:",
+  "stimulus_html": "Teiknaðu eins mörg efnasambönd og þú getur sem passa við eftirfarandi lýsingar:",
   "questions": [
     {
       "id": "327911",
@@ -33,7 +33,7 @@
     },
     {
       "id": "327916",
-      "stem_html": "Etrar með formúluna C<sub>4</sub>H<sub>10</sub>O",
+      "stem_html": "Eterar með formúluna C<sub>4</sub>H<sub>10</sub>O",
       "collaborator_solutions": []
     }
   ]

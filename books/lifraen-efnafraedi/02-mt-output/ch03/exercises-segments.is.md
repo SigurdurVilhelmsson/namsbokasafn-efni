@@ -1,5 +1,5 @@
 <!-- SEG:03-01-OC-P01:stimulus:b0 -->
-Notið töflu 3.1 til að greina fellihópana í eftirfarandi sameindum:
+Notið töflu 3.1 til að greina virknihópana í eftirfarandi sameindum:
 
 <!-- SEG:03-01-OC-P01:stem:351544-b0 -->
 [[MEDIA:0]]
@@ -11,16 +11,16 @@ Súlfíð, karboxýlsýra, amín
 [[MEDIA:0]]
 
 <!-- SEG:03-01-OC-P01:sol:351545-b0 -->
-Arómatískur baugur, karboxýlsýra
+Arómatískur hringur, karboxýlsýra
 
 <!-- SEG:03-01-OC-P01:stem:351546-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-01-OC-P01:sol:351546-b0 -->
-Eter, alkóhól, arómatískur baugur, amíð, C[[MEDIA:0]]C-tengi
+Eter, alkóhól, arómatískur hringur, amíð, C[[MEDIA:0]]C tengi
 
 <!-- SEG:03-01-OC-P02:stimulus:b0 -->
-Leggið til gerðir fyrir einfaldar sameindir sem innihalda eftirfarandi fellihópa:
+Leggið til byggingu fyrir einfaldar sameindir sem innihalda eftirfarandi virknihópa:
 
 <!-- SEG:03-01-OC-P02:stem:357587-b0 -->
 Alkóhól
@@ -29,7 +29,7 @@ Alkóhól
 [[MEDIA:0]]
 
 <!-- SEG:03-01-OC-P02:stem:357588-b0 -->
-Arómatískur baugur
+Arómatískur hringur
 
 <!-- SEG:03-01-OC-P02:sol:357588-b0 -->
 [[MEDIA:0]]
@@ -53,13 +53,13 @@ Bæði ketón og amín
 [[MEDIA:0]]
 
 <!-- SEG:03-01-OC-P02:stem:357592-b0 -->
-Tveir stjörnuparar
+Tvö tvítengi
 
 <!-- SEG:03-01-OC-P02:sol:357592-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-01-OC-P03:stem:357594-b0 -->
-Greinið fellihópana í eftirfarandi líkani af arekólíni, dýralyfi sem er notað til að halda ormum í skefjum hjá dýrum. Breytið teikningunni í línutengjagerð og sameindaformúlu (rautt = O, blátt = N, svart = C, grei = H).
+Greinið virknihópana í eftirfarandi líkani af arekólíni, dýralyfi sem notað er til að halda ormum í skefjum hjá dýrum. Breytið teikningunni í línutengibyggingu og sameindaformúlu (rautt = O, blátt = N, svart = C, grátt = H).
 
 <!-- SEG:03-01-OC-P03:stem:357594-b1 -->
 [[MEDIA:0]]
@@ -68,61 +68,61 @@ Greinið fellihópana í eftirfarandi líkani af arekólíni, dýralyfi sem er n
 [[MEDIA:0]]
 
 <!-- SEG:03-02-OC-P04:stem:357596-b0 -->
-Teiknið gerðir fimm hverfa C[[sub:6]]H[[sub:14]].
+Teiknið byggingu fimm hverfa C[[sub:6]]H[[sub:14]].
 
 <!-- SEG:03-02-OC-P04:sol:357596-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-02-OC-P05:stimulus:b0 -->
-Leggið til gerðir sem uppfylla eftirfarandi lýsingar:
+Leggið til byggingar sem uppfylla eftirfarandi lýsingar:
 
 <!-- SEG:03-02-OC-P05:stem:357600-b0 -->
-Tveir hverfuestrar með formúluna C[[sub:5]]H[[sub:10]]O[[sub:2:]]
+Tvær esterahverfur með formúluna C[[sub:5]]H[[sub:10]]O[[sub:2:]]
 
 <!-- SEG:03-02-OC-P05:sol:357600-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-02-OC-P05:stem:357601-b0 -->
-Tvö hverfunítríl með formúluna C[[sub:4]]H[[sub:7]]N
+Tvær nítrílhverfur með formúluna C[[sub:4]]H[[sub:7]]N
 
 <!-- SEG:03-02-OC-P05:sol:357601-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-02-OC-P05:stem:357602-b0 -->
-Tvö hverfudísúlfíð með formúluna C[[sub:4]]H[[sub:10]]S[[sub:2]]
+Tvær dísúlfíðhverfur með formúluna C[[sub:4]]H[[sub:10]]S[[sub:2]]
 
 <!-- SEG:03-02-OC-P05:sol:357602-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-02-OC-P06:stimulus:b0 -->
-Hversu margar hverfur eru með eftirfarandi lýsingar?
+Hversu margar hverfur eru til með eftirfarandi lýsingum?
 
 <!-- SEG:03-02-OC-P06:stem:327772-b0 -->
 Alkóhól með formúluna C[[sub:3]]H[[sub:8]]O
 
 <!-- SEG:03-02-OC-P06:sol:327772-b0 -->
-Tvö
+Tvær
 
 <!-- SEG:03-02-OC-P06:stem:327773-b0 -->
 Brómalkanar með formúluna C[[sub:4]]H[[sub:9]]Br
 
 <!-- SEG:03-02-OC-P06:sol:327773-b0 -->
-Fjögur
+Fjórar
 
 <!-- SEG:03-02-OC-P06:stem:327774-b0 -->
-Þíóestrar með formúluna C[[sub:4]]H[[sub:8]]OS
+Þíóesterar með formúluna C[[sub:4]]H[[sub:8]]OS
 
 <!-- SEG:03-02-OC-P06:sol:327774-b0 -->
-Fjögur
+Fjórar
 
 <!-- SEG:03-03-OC-P07:stem:357604-b0 -->
-Teiknið átta 5-kolefna alkýlhópana (pentýlhverfur).
+Teiknið alkýlhópana átta með fimm kolefnum (pentýlhverfur).
 
 <!-- SEG:03-03-OC-P07:sol:357604-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-03-OC-P08:stimulus:b0 -->
-Greinið kolefnisatómin í eftirfarandi sameindum sem fyrsta stigs, annars stigs, tertíer eða fjórðastigs:
+Greinið kolefnisfrumeindirnar í eftirfarandi sameindum sem fyrsta stigs, annars stigs, þriðja stigs eða fjórða stigs:
 
 <!-- SEG:03-03-OC-P08:stem:357608-b0 -->
 [[MEDIA:0]]
@@ -143,34 +143,34 @@ Greinið kolefnisatómin í eftirfarandi sameindum sem fyrsta stigs, annars stig
 [[MEDIA:0]]
 
 <!-- SEG:03-03-OC-P09:stem:345874-b0 -->
-Greinið vetnisatómin á efnasamböndunum sem sýnd eru í dæmi 3-8 sem fyrsta stigs, annars stigs eða tertíer.
+Greinið vetnisfrumeindirnar á efnasamböndunum sem sýnd eru í dæmi 3-8 sem fyrsta stigs, annars stigs eða þriðja stigs.
 
 <!-- SEG:03-03-OC-P09:sol:345874-b0 -->
-Fyrsta stigs kolefni hafa fyrsta stigs vetni, annars stigs kolefni hafa annars stigs vetni og tertíer kolefni hafa tertíer vetni.
+Fyrsta stigs kolefni hafa fyrsta stigs vetni, annars stigs kolefni hafa annars stigs vetni og þriðja stigs kolefni hafa þriðja stigs vetni.
 
 <!-- SEG:03-03-OC-P10:stimulus:b0 -->
-Teiknið gerðir alkana sem uppfylla eftirfarandi lýsingar:
+Teiknið byggingu alkana sem uppfylla eftirfarandi lýsingar:
 
 <!-- SEG:03-03-OC-P10:stem:357617-b0 -->
-Alkan með tveimur tertíer kolefnum
+Alkani með tvö þriðja stigs kolefni
 
 <!-- SEG:03-03-OC-P10:sol:357617-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-03-OC-P10:stem:357618-b0 -->
-Alkan sem inniheldur ísóprópýlhóp
+Alkani sem inniheldur ísóprópýlhóp
 
 <!-- SEG:03-03-OC-P10:sol:357618-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-03-OC-P10:stem:357619-b0 -->
-Alkan sem hefur eitt fjórðastigs og eitt annars stigs kolefni
+Alkani sem hefur eitt fertengt og eitt tvítengt kolefni
 
 <!-- SEG:03-03-OC-P10:sol:357619-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-04-OC-P11:stimulus:b0 -->
-Gefið IUPAC-heiti fyrir eftirfarandi efnasambönd:
+Gefðu IUPAC-heiti fyrir eftirfarandi efnasambönd:
 
 <!-- SEG:03-04-OC-P11:stem:351766-b0 -->
 [[MEDIA:0]]
@@ -197,7 +197,7 @@ Pentan, 2-metýlbútan, 2,2-dímetýlprópan
 2,2,5-Trímetýlhexan
 
 <!-- SEG:03-04-OC-P12:stimulus:b0 -->
-Teiknið gerðir sem samsvara eftirfarandi IUPAC-heitum:
+Teiknaðu byggingar sem samsvara eftirfarandi IUPAC-heitum:
 
 <!-- SEG:03-04-OC-P12:stem:357624-b0 -->
 3,4-Dímetýlnónan
@@ -224,13 +224,13 @@ Teiknið gerðir sem samsvara eftirfarandi IUPAC-heitum:
 [[MEDIA:0]]
 
 <!-- SEG:03-04-OC-P13:stem:345876-b0 -->
-Nefnið alkýlhópana átta með 5 kolefnum sem þú teiknaðir í dæmi 3-7.
+Nefndu alkýlhópana átta með fimm kolefnum sem þú teiknaðir í dæmi 3-7.
 
 <!-- SEG:03-04-OC-P13:sol:345876-b0 -->
 Pentýl, 1-metýlbútýl, 1-etýlprópýl, 2-metýlbútýl, 3-metýlbútýl, 1,1-dímetýlprópýl, 1,2-dímetýlprópýl, 2,2-dímetýlprópýl
 
 <!-- SEG:03-04-OC-P14:stem:360394-b0 -->
-Gefið IUPAC-heiti fyrir eftirfarandi kolvatnsefni og breytið teikningunni í beinagrindargerð.
+Gefðu IUPAC-heiti fyrir eftirfarandi kolvetni og breyttu teikningunni í beinagrindarmynd.
 
 <!-- SEG:03-04-OC-P14:stem:360394-b1 -->
 [[MEDIA:0]]
@@ -239,46 +239,46 @@ Gefið IUPAC-heiti fyrir eftirfarandi kolvatnsefni og breytið teikningunni í b
 [[MEDIA:0]]
 
 <!-- SEG:03-07-OC-P15:stem:360396-b0 -->
-Teiknið línurit af stöðuorku á móti horni tengisnúninga fyrir própan og gefið upp gildi fyrir orkuhámarkið.
+Teiknaðu línurit af stöðuorku á móti snúningshorni tengis fyrir própan og gefðu upp gildi fyrir orkuhámarkið.
 
 <!-- SEG:03-07-OC-P15:sol:360396-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-07-OC-P16:stimulus:b0 -->
-Horfið meðfram C2–C1 tenginu í 2-metýlprópani (ísóbútani).
+Horfðu eftir C2–C1 tenginu í 2-metýlprópani (ísóbútani).
 
 <!-- SEG:03-07-OC-P16:stem:357636-b0 -->
-Teiknið Newman-frávarp af stöðugustu stellingunni.
+Teiknaðu Newman-vörpun af stöðugustu stellingunni.
 
 <!-- SEG:03-07-OC-P16:sol:357636-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-07-OC-P16:stem:357637-b0 -->
-Teiknið Newman-frávarp af óstöðugustu stellingunni.
+Teiknaðu Newman-vörpun af óstöðugustu stellingunni.
 
 <!-- SEG:03-07-OC-P16:sol:357637-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-07-OC-P16:stem:357638-b0 -->
-Teiknið línurit af orku á móti snúningshorni um C2–C1 tengið.
+Teiknaðu línurit af orku á móti snúningshorni um C2–C1 tengið.
 
 <!-- SEG:03-07-OC-P16:sol:357638-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-07-OC-P16:stem:357639-b0 -->
-Gefið upp afstæð gildi fyrir hámark og lágmark á línuritinu ykkar, að því gefnu að skyggð víxlverkun H ⟷ H kosti 4,0 kJ/mól og skyggð víxlverkun H ⟷ CH[[sub:3]] kosti 6,0 kJ/mól.
+Gefðu upp afstæð gildi fyrir hámark og lágmark á línuritinu þínu, að því gefnu að skyggð H ⟷ H víxlverkun kosti 4,0 kJ/mól og skyggð H ⟷ CH[[sub:3]] víxlverkun kosti 6,0 kJ/mól.
 
 <!-- SEG:03-07-OC-P16:sol:357639-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-07-OC-P17:stem:357641-b0 -->
-Horfið meðfram C2–C3 tenginu í 2,3-dímetýlbútani og teiknið Newman-frávarp af stöðugustu stellingunni.
+Horfðu eftir C2–C3 tenginu í 2,3-dímetýlbútani og teiknaðu Newman-vörpun af stöðugustu stellingunni.
 
 <!-- SEG:03-07-OC-P17:sol:357641-b0 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-07-OC-P18:stem:357643-b0 -->
-Teiknið Newman-frávarp meðfram C2–C3 tenginu fyrir eftirfarandi stellingu 2,3-dímetýlbútans og reiknið heildar togspennuorku:
+Teiknaðu Newman-vörpun eftir C2–C3 tenginu í eftirfarandi stellingu 2,3-dímetýlbútans og reiknaðu heildarálagsorkuna:
 
 <!-- SEG:03-07-OC-P18:stem:357643-b1 -->
 [[MEDIA:0]]
@@ -287,7 +287,7 @@ Teiknið Newman-frávarp meðfram C2–C3 tenginu fyrir eftirfarandi stellingu 2
 [[MEDIA:0]]
 
 <!-- SEG:03-99-OC-AP01:stimulus:b0 -->
-Finnið og greinið fellihópana í eftirfarandi sameindum.
+Finndu og auðkenndu virknihópana í eftirfarandi sameindum.
 
 <!-- SEG:03-99-OC-AP01:stem:351776-b0 -->
 [[MEDIA:0]]
@@ -308,28 +308,28 @@ Finnið og greinið fellihópana í eftirfarandi sameindum.
 [[MEDIA:0]]
 
 <!-- SEG:03-99-OC-AP02:stimulus:b0 -->
-Stingið upp á gerðum sem uppfylla eftirfarandi lýsingar:
+Teiknaðu byggingar sem uppfylla eftirfarandi lýsingar:
 
 <!-- SEG:03-99-OC-AP02:stem:327857-b0 -->
-Keton með fimm kolefnum
+Keton með fimm kolefnisfrumeindum
 
 <!-- SEG:03-99-OC-AP02:stem:327858-b0 -->
-Amíð með fjórum kolefnum
+Amíð með fjórum kolefnisfrumeindum
 
 <!-- SEG:03-99-OC-AP02:stem:327859-b0 -->
-Ester með fimm kolefnum
+Ester með fimm kolefnisfrumeindum
 
 <!-- SEG:03-99-OC-AP02:stem:327860-b0 -->
 Arómatískt aldehýð
 
 <!-- SEG:03-99-OC-AP02:stem:327861-b0 -->
-Ketoester
+Ketóester
 
 <!-- SEG:03-99-OC-AP02:stem:327862-b0 -->
 Amínóalkóhól
 
 <!-- SEG:03-99-OC-AP03:stimulus:b0 -->
-Stingið upp á gerðum fyrir eftirfarandi:
+Teiknaðu byggingar fyrir eftirfarandi:
 
 <!-- SEG:03-99-OC-AP03:stem:327871-b0 -->
 Keton, C[[sub:4]]H[[sub:8]]O
@@ -347,16 +347,16 @@ Brómalken, C[[sub:6]]H[[sub:11]]Br
 Alkan, C[[sub:6]]H[[sub:14]]
 
 <!-- SEG:03-99-OC-AP03:stem:327876-b0 -->
-[[i:Hringlaga]] mettað kolvatnsefni, C[[sub:6]]H[[sub:12]]
+[[i:Hringlaga]] mettað kolvetni, C[[sub:6]]H[[sub:12]]
 
 <!-- SEG:03-99-OC-AP03:stem:327877-b0 -->
 Díen (díalken), C[[sub:5]]H[[sub:8]]
 
 <!-- SEG:03-99-OC-AP03:stem:327878-b0 -->
-Ketoalken, C[[sub:5]]H[[sub:8]]O
+Ketóalken, C[[sub:5]]H[[sub:8]]O
 
 <!-- SEG:03-99-OC-AP04:stimulus:b0 -->
-Spáið fyrir um tvinnun kolefnisfrumeindarinnar í hverjum eftirfarandi fellihópa:
+Spyrðu fyrir um tvinnun kolefnisfrumeindarinnar í hverjum eftirfarandi virknihópa:
 
 <!-- SEG:03-99-OC-AP04:stem:327882-b0 -->
 Keton
@@ -368,19 +368,19 @@ Nítríl
 Karbónsýra
 
 <!-- SEG:03-99-OC-AP05:stimulus:b0 -->
-Teiknið gerðir eftirfarandi sameinda:
+Teiknaðu byggingar eftirfarandi sameinda:
 
 <!-- SEG:03-99-OC-AP05:stem:329801-b0 -->
-Bíasetýl, C[[sub:4]]H[[sub:6]]O[[sub:2]], efni með smjörilm; það inniheldur enga bauga eða heilfeldi kolefnis og kolefnis.
+Díasetýl, C[[sub:4]]H[[sub:6]]O[[sub:2]], efni með smjörilm; það inniheldur enga hringi eða fjöltengi milli kolefnisfrumeinda.
 
 <!-- SEG:03-99-OC-AP05:stem:329802-b0 -->
-Etýlenimín, C[[sub:2]]H[[sub:5]]N, efni sem notað er við nýmyndun melamínfjölliða; það inniheldur engin heilfeldi.
+Etýlenimín, C[[sub:2]]H[[sub:5]]N, efni sem notað er við myndun melamínfjölliða; það inniheldur engin fjöltengi.
 
 <!-- SEG:03-99-OC-AP05:stem:329803-b0 -->
-Glýseról, C[[sub:3]]H[[sub:8]]O[[sub:3]], efni sem er einangrað úr fitu og notað í snyrtivörur; það hefur –OH hóp á hverju kolefni.
+Glýseról, C[[sub:3]]H[[sub:8]]O[[sub:3]], efni sem er einangrað úr fitu og notað í snyrtivörur; það hefur –OH hóp á hverri kolefnisfrumeind.
 
 <!-- SEG:03-99-OC-AP06:stimulus:b0 -->
-Teiknið gerðir sem uppfylla eftirfarandi lýsingar (margir möguleikar eru fyrir hendi):
+Teiknaðu byggingar sem uppfylla eftirfarandi lýsingar (margir möguleikar eru fyrir hendi):
 
 <!-- SEG:03-99-OC-AP06:stem:327893-b0 -->
 Þrjár hverfur með formúluna C[[sub:8]]H[[sub:18]]
@@ -389,10 +389,10 @@ Teiknið gerðir sem uppfylla eftirfarandi lýsingar (margir möguleikar eru fyr
 Tvær hverfur með formúluna C[[sub:4]]H[[sub:8]]O[[sub:2]]
 
 <!-- SEG:03-99-OC-AP07:stem:327896-b0 -->
-Teiknið gerðir níu hverfa C[[sub:7]]H[[sub:16]].
+Teiknaðu byggingar níu hverfa C[[sub:7]]H[[sub:16]].
 
 <!-- SEG:03-99-OC-AP08:stimulus:b0 -->
-Í hverju eftirfarandi setta, hvaða gerðir tákna sama efnasambandið og hverjar tákna mismunandi efnasambönd?
+Í hverju eftirfarandi setta, hvaða byggingar tákna sama efnasambandið og hvaða tákna mismunandi efnasambönd?
 
 <!-- SEG:03-99-OC-AP08:stem:357178-b0 -->
 [[MEDIA:0]]
@@ -404,10 +404,10 @@ Teiknið gerðir níu hverfa C[[sub:7]]H[[sub:16]].
 [[MEDIA:0]]
 
 <!-- SEG:03-99-OC-AP09:stem:327904-b0 -->
-Sjö byggingarhverfur hafa formúluna C[[sub:4]]H[[sub:10]]O. Teiknið eins margar og þið getið.
+Sjö byggingarhverfur hafa formúluna C[[sub:4]]H[[sub:10]]O. Teiknaðu eins margar og þú getur.
 
 <!-- SEG:03-99-OC-AP10:stimulus:b0 -->
-Teiknið eins mörg efnasambönd og þið getið sem passa við eftirfarandi lýsingar:
+Teiknaðu eins mörg efnasambönd og þú getur sem passa við eftirfarandi lýsingar:
 
 <!-- SEG:03-99-OC-AP10:stem:327911-b0 -->
 Alkóhól með formúluna C[[sub:4]]H[[sub:10]]O
@@ -428,25 +428,25 @@ Esterar með formúluna C[[sub:4]]H[[sub:8]]O[[sub:2]]
 Eterar með formúluna C[[sub:4]]H[[sub:10]]O
 
 <!-- SEG:03-99-OC-AP11:stimulus:b0 -->
-Teiknið efnasambönd sem innihalda eftirfarandi:
+Teiknaðu efnasambönd sem innihalda eftirfarandi:
 
 <!-- SEG:03-99-OC-AP11:stem:327923-b0 -->
-Primer alkóhól
+Fyrsta stigs alkóhól
 
 <!-- SEG:03-99-OC-AP11:stem:327924-b0 -->
-Tertíer nítríl
+Þriðja stigs nítríl
 
 <!-- SEG:03-99-OC-AP11:stem:327925-b0 -->
-Sekúnder þíól
+Annars stigs þíól
 
 <!-- SEG:03-99-OC-AP11:stem:327926-b0 -->
-Bæði primer og sekúnder alkóhól
+Bæði fyrsta og annars stigs alkóhól
 
 <!-- SEG:03-99-OC-AP11:stem:327927-b0 -->
 Ísóprópýlhópur
 
 <!-- SEG:03-99-OC-AP11:stem:327928-b0 -->
-Fjórðastigs kolefni
+Fjórgilt kolefni
 
 <!-- SEG:03-99-OC-AP12:stem:327930-b0 -->
 Teiknaðu og nefndu allar mónóbrómafleiður pentans, C[[sub:5]]H[[sub:11]]Br.
@@ -455,7 +455,7 @@ Teiknaðu og nefndu allar mónóbrómafleiður pentans, C[[sub:5]]H[[sub:11]]Br.
 Teiknaðu og nefndu allar mónóklórafleiður 2,5-dímetýlhexans, C[[sub:8]]H[[sub:17]]Cl.
 
 <!-- SEG:03-99-OC-AP14:stimulus:b0 -->
-Teiknaðu gerð fyrir eftirfarandi:
+Teiknaðu byggingarformúlur fyrir eftirfarandi:
 
 <!-- SEG:03-99-OC-AP14:stem:327939-b0 -->
 2-Metýlheptan
@@ -470,7 +470,7 @@ Teiknaðu gerð fyrir eftirfarandi:
 2,4,4-Trímetýlheptan
 
 <!-- SEG:03-99-OC-AP14:stem:327943-b0 -->
-3,3-Díetýl-2,5-dímetýlnonan
+3,3-Díetýl-2,5-dímetýlnónan
 
 <!-- SEG:03-99-OC-AP14:stem:327944-b0 -->
 4-Ísóprópýl-3-metýlheptan
@@ -479,13 +479,13 @@ Teiknaðu gerð fyrir eftirfarandi:
 Teiknaðu efnasamband sem:
 
 <!-- SEG:03-99-OC-AP15:stem:327948-b0 -->
-Hefur aðeins fyrsta stigs og tertíer kolefni
+Hefur aðeins fyrsta og þriðja stigs kolefni
 
 <!-- SEG:03-99-OC-AP15:stem:327949-b0 -->
-Hefur ekkert annars stigs eða tertíer kolefni
+Hefur ekkert annars eða þriðja stigs kolefni
 
 <!-- SEG:03-99-OC-AP15:stem:327950-b0 -->
-Hefur ekkert annars stigs eða tertíer kolefni
+Hefur ekkert annars eða þriðja stigs kolefni
 
 <!-- SEG:03-99-OC-AP16:stimulus:b0 -->
 Teiknaðu efnasamband sem:
@@ -497,7 +497,7 @@ Hefur níu fyrsta stigs vetni
 Hefur aðeins fyrsta stigs vetni
 
 <!-- SEG:03-99-OC-AP17:stimulus:b0 -->
-Gefðu IUPAC-heiti fyrir eftirfarandi efnasambönd:
+Nefndu eftirfarandi efnasambönd samkvæmt IUPAC-nafnakerfinu:
 
 <!-- SEG:03-99-OC-AP17:stem:357187-b0 -->
 [[MEDIA:0]]
@@ -521,7 +521,7 @@ Gefðu IUPAC-heiti fyrir eftirfarandi efnasambönd:
 Nefndu fimm hverfur C[[sub:6]]H[[sub:14]].
 
 <!-- SEG:03-99-OC-AP19:stimulus:b0 -->
-Útskýrðu hvers vegna hvert eftirfarandi heita er rangt:
+Útskýrðu hvers vegna hvert eftirfarandi nafna er rangt:
 
 <!-- SEG:03-99-OC-AP19:stem:327974-b0 -->
 2,2-Dímetýl-6-etýlheptan
@@ -539,43 +539,43 @@ Nefndu fimm hverfur C[[sub:6]]H[[sub:14]].
 2-Ísóprópýl-4-metýlheptan
 
 <!-- SEG:03-99-OC-AP20:stimulus:b0 -->
-Leggðu til gerðir og gefðu IUPAC-heiti fyrir eftirfarandi:
+Settu fram byggingarformúlur og gefðu IUPAC-nöfn fyrir eftirfarandi:
 
 <!-- SEG:03-99-OC-AP20:stem:327981-b0 -->
 Díetýldímetýlhexan
 
 <!-- SEG:03-99-OC-AP20:stem:327982-b0 -->
-(3-metýlbútýl)-tengdur alkan
+Alkana með (3-metýlbútýl)-hliðarhóp
 
 <!-- SEG:03-99-OC-AP21:stimulus:b0 -->
-Lítum á 2-metýlbútan (ísópentan). Horft meðfram C2–C3 tenginu:
+Lítum á 2-metýlbútan (ísópentan). Horft meðfram C2–C3-tenginu:
 
 <!-- SEG:03-99-OC-AP21:stem:347291-b0 -->
-Teiknaðu Newman-frávarp af stöðugustu stellingunni.
+Teiknaðu Newman-vörpun af stöðugustu stellingunni.
 
 <!-- SEG:03-99-OC-AP21:stem:347292-b0 -->
-Teiknaðu Newman-frávarp af óstöðugustu stellingunni.
+Teiknaðu Newman-vörpun af óstöðugustu stellingunni.
 
 <!-- SEG:03-99-OC-AP21:stem:347293-b0 -->
-Ef skyggð víxlverkun CH[[sub:3]] ⟷ CH[[sub:3]] kostar 11 kJ/mól (2,5 kkal/mól) og skökk víxlverkun CH[[sub:3]] ⟷ CH[[sub:3]] kostar 3,8 kJ/mól (0,9 kkal/mól), gerðu magnbundið línurit af orku á móti snúningi um C2–C3 tengið.
+Ef skyggð víxlverkun CH[[sub:3]] ⟷ CH[[sub:3]] kostar 11 kJ/mól (2,5 kkal/mól) og goggunarvíxlverkun CH[[sub:3]] ⟷ CH[[sub:3]] kostar 3,8 kJ/mól (0,9 kkal/mól), gerðu þá magnbundið línurit af orku á móti snúningi um C2–C3-tengið.
 
 <!-- SEG:03-99-OC-AP22:stem:345878-b0 -->
-Hver er afstæð orka þriggja mögulegra gisinna stellinga í kringum C2–C3 tengið í 2,3-dímetýlbútani? (Sjá dæmi 3-42.)
+Hver er afstæð orka þriggja mögulegra goggunarstellinga umhverfis C2–C3-tengið í 2,3-dímetýlbútani? (Sjá dæmi 3-42.)
 
 <!-- SEG:03-99-OC-AP23:stem:328626-b0 -->
-Teiknaðu þáttbundna stöðuorkuskýringarmynd fyrir snúning um C–C tengið í 1,2-díbrómetani. Hvaða stellingu myndir þú búast við að væri stöðugust? Merktu and- og skökku stellingar 1,2-díbrómetans.
+Teiknaðu þáttbundið stöðuorkurit fyrir snúning um C–C-tengið í 1,2-díbrómetani. Hvaða stellingu myndir þú búast við að væri stöðugust? Merktu andstæðu og goggunarstellingar 1,2-díbrómetans.
 
 <!-- SEG:03-99-OC-AP24:stem:345868-b0 -->
-Hvaða stelling 1,2-díbrómetans (dæmi 3-44) myndir þú búast við að hefði stærsta tvípólsvægið? Mælt tvípólsvægi 1,2-díbrómetans er [[i:μ]] = 1,0 D. Hvað segir það þér um raunverulega stellingu sameindarinnar?
+Hvaða stelling 1,2-díbrómetans (dæmi 3-44) myndir þú búast við að hefði stærsta tvískautsvægið? Mælt tvískautsvægi 1,2-díbrómetans er [[i:μ]] = 1,0 D. Hvað segir það þér um raunverulega stellingu sameindarinnar?
 
 <!-- SEG:03-99-OC-AP25:stem:327996-b0 -->
-Teiknaðu stöðugustu stellingu pentans og notaðu fleyga og strik til að tákna tengi sem koma út úr blaðinu og fara aftur fyrir blaðið.
+Teiknaðu stöðugustu stellingu pentans og notaðu fleyga og brotalínur til að tákna tengi sem koma út úr blaðinu og fara aftur fyrir blaðið.
 
 <!-- SEG:03-99-OC-AP26:stem:327998-b0 -->
-Teiknaðu stöðugustu stellingu 1,4-díklórbútans og notaðu fleyga og strik til að tákna tengi sem koma út úr blaðinu og fara aftur fyrir blaðið.
+Teiknaðu stöðugustu stellingu 1,4-díklórbútans og notaðu fleyga og brotalínur til að tákna tengi sem koma út úr blaðinu og fara aftur fyrir blaðið.
 
 <!-- SEG:03-99-OC-AP27:stimulus:b0 -->
-Teiknaðu hverfu fyrir hvert eftirfarandi efnasambanda sem hefur sömu fellin.
+Teiknaðu hverfu fyrir hvert eftirfarandi efnasambanda sem hefur sömu virknihópa.
 
 <!-- SEG:03-99-OC-AP27:stem:351559-b0 -->
 [[MEDIA:0]]
@@ -596,28 +596,28 @@ Teiknaðu hverfu fyrir hvert eftirfarandi efnasambanda sem hefur sömu fellin.
 [[MEDIA:0]]
 
 <!-- SEG:03-99-OC-AP28:stimulus:b0 -->
-Eplasýra, C[[sub:4]]H[[sub:6]]O[[sub:5]], hefur verið einangruð úr eplum. Þar sem þetta efnasamband hvarfast við 2 móljafngildi af basa er það tvíkarboxýlsýra.
+Eplasýra, C[[sub:4]]H[[sub:6]]O[[sub:5]], hefur verið einangruð úr eplum. Þar sem þetta efnasamband hvarfast við 2 mólígildi af basa er það tvíkarboxýlsýra.
 
 <!-- SEG:03-99-OC-AP28:stem:328013-b0 -->
-Teiknaðu að minnsta kosti fimm mögulegar gerðir.
+Teiknaðu að minnsta kosti fimm mögulegar byggingar.
 
 <!-- SEG:03-99-OC-AP28:stem:328014-b0 -->
-Ef eplasýra er annars stigs alkóhól, hver er gerð hennar?
+Hver er bygging eplasýru ef hún er annars stigs alkóhól?
 
 <!-- SEG:03-99-OC-AP29:stem:328016-b0 -->
-Formaldehýð, H[[sub:2]]C[[MEDIA:0]]O, er þekkt öllum líffræðingum vegna notagildis þess sem rotvarnarefni fyrir vefi. Þegar það er hreint þrímerist formaldehýð og myndar tríoxan, C[[sub:3]]H[[sub:6]]O[[sub:3]], sem furðu lostið hefur enga karbónýlhópa. Aðeins ein einbrómafleiða (C[[sub:3]]H[[sub:5]]BrO[[sub:3]]) af tríoxani er möguleg. Leggðu til gerð fyrir tríoxan.
+Formaldehýð, H[[sub:2]]C[[MEDIA:0]]O, er þekkt öllum líffræðingum vegna notagildis þess sem vefjavörn. Þegar formaldehýð er hreint þríliðast það og myndar tríoxan, C[[sub:3]]H[[sub:6]]O[[sub:3]], sem kemur á óvart að hefur enga karbónýlhópa. Aðeins ein einbrómafleiða (C[[sub:3]]H[[sub:5]]BrO[[sub:3]]) af tríoxani er möguleg. Leggðu til byggingu fyrir tríoxan.
 
 <!-- SEG:03-99-OC-AP30:stimulus:b0 -->
-Hindrunin fyrir snúningi um C–C tengið í brómetani er 15 kJ/mól (3,6 kkal/mól).
+Snúningshindrunin um C–C tengið í brómetani er 15 kJ/mól (3,6 kkal/mól).
 
 <!-- SEG:03-99-OC-AP30:stem:329825-b0 -->
-Hvaða orkugildi getur þú úthlutað H ↔ Br skyggðri víxlverkun?
+Hvaða orkugildi getur þú úthlutað H ↔ Br skyggnivíxlverkun?
 
 <!-- SEG:03-99-OC-AP30:stem:329826-b0 -->
-Búðu til magnbundna skýringarmynd af stöðuorku á móti snúningi tengis fyrir brómetan.
+Teiknaðu magnbundið línurit af stöðuorku á móti tengisnúningi fyrir brómetan.
 
 <!-- SEG:03-99-OC-AP31:stimulus:b0 -->
-Aukið skiptihvarf í kringum tengi leiðir til aukins álags. Tökum sem dæmi fjögur settu bútanefnin sem talin eru upp hér að neðan. Fyrir hvert efnasamband, horfðu meðfram C2–C3 tenginu og teiknaðu Newman-frávarp af stöðugustu og óstöðugustu stellingunum. Notaðu gögnin í töflu 3.5 til að úthluta álagsorkugildum til hverrar stellingar. Hver af átta stellingunum er með mesta álagið? Hver er með minnsta álagið?
+Aukinn skiptihópur í kringum tengi leiðir til aukinnar spennu. Tökum sem dæmi fjögur skipt bútön sem talin eru upp hér að neðan. Fyrir hvert efnasamband, horfðu meðfram C2–C3 tenginu og teiknaðu Newman-vörpun af stöðugustu og óstöðugustu stellingunum. Notaðu gögnin í töflu 3.5 til að úthluta spennuorkugildum til hverrar stellingar. Hver af átta stellingunum er með mesta spennu? Hver er með minnsta spennu?
 
 <!-- SEG:03-99-OC-AP31:stem:330504-b0 -->
 2-Metýlbútan
@@ -632,13 +632,13 @@ Aukið skiptihvarf í kringum tengi leiðir til aukins álags. Tökum sem dæmi 
 2,2,3-Trímetýlbútan
 
 <!-- SEG:03-99-OC-AP32:stem:351296-b0 -->
-Kólesteróllækkandi lyfin sem kallast [[i:statín]], svo sem simvastatín (Zocor) og pravastatín (Pravachol), eru meðal mest ávísuðu lyfja í heiminum, en árleg sala er áætluð um 25 milljarðar dala. Greindu fellin í báðum efnunum og segðu hvernig efnin tvö eru ólík.
+Kólesteróllækkandi lyfin sem kallast [[i:statín]], svo sem simvastatín (Zocor) og pravastatín (Pravachol), eru meðal mest ávísuðu lyfja í heimi, en árleg sala er áætluð um 25 milljarðar dala. Greindu virknihópana í báðum og segðu hvernig efnin tvö eru ólík.
 
 <!-- SEG:03-99-OC-AP32:stem:351296-b1 -->
 [[MEDIA:0]]
 
 <!-- SEG:03-99-OC-AP33:stem:351298-b0 -->
-Í næsta kafla munum við skoða [[i:hringalkana]]—mettuð hringlaga kolvetni—og við munum sjá að sameindirnar taka yfirleitt á sig hrukkaðar, ósléttar stellingar. Sýklóhexan, til dæmis, hefur hrukkað form eins og legubekkur frekar en flatt form. Hvers vegna?
+Í næsta kafla munum við skoða [[i:sýklóalkana]]—mettuð hringtengd kolvetni—og við munum sjá að sameindirnar taka yfirleitt á sig hrukkaðar, ósléttar stellingar. Sýklóhexan, til dæmis, hefur hrukkað form eins og legubekkur frekar en flatt form. Hvers vegna?
 
 <!-- SEG:03-99-OC-AP33:stem:351298-b1 -->
 [[MEDIA:0]]
@@ -650,7 +650,7 @@ Við munum sjá í næsta kafla að það eru tvö hverfuefni, bæði nefnd 1,2-
 [[MEDIA:0]]
 
 <!-- SEG:03-99-OC-VC01:stimulus:b0 -->
-Greindu fellin í eftirfarandi efnum og breyttu hverri teikningu í sameindaformúlu (rautt = O, blátt = N).
+Greindu virknihópana í eftirfarandi efnum og breyttu hverri teikningu í sameindaformúlu (rautt = O, blátt = N).
 
 <!-- SEG:03-99-OC-VC01:stem:351241-b0 -->
 [[MEDIA:0]]
@@ -659,7 +659,7 @@ Greindu fellin í eftirfarandi efnum og breyttu hverri teikningu í sameindaform
 [[MEDIA:0]]
 
 <!-- SEG:03-99-OC-VC02:stimulus:b0 -->
-Gefðu IUPAC-heiti fyrir eftirfarandi alkana og breyttu hverri teikningu í beinagrindargerð.
+Nefndu eftirfarandi alkana samkvæmt IUPAC-nafnakerfinu og breyttu hverri teikningu í beinagrindarmynd.
 
 <!-- SEG:03-99-OC-VC02:stem:351247-b0 -->
 [[MEDIA:0]]
@@ -674,7 +674,7 @@ Gefðu IUPAC-heiti fyrir eftirfarandi alkana og breyttu hverri teikningu í bein
 [[MEDIA:0]]
 
 <!-- SEG:03-99-OC-VC03:stem:351252-b0 -->
-Teiknaðu Newman-frávarp meðfram C2–C3 tenginu á eftirfarandi stellingu 2-bútanóls.
+Teiknaðu Newman-vörpun meðfram C2–C3 tenginu á eftirfarandi stellingu 2-bútanóls.
 
 <!-- SEG:03-99-OC-VC03:stem:351252-b1 -->
 [[MEDIA:0]]

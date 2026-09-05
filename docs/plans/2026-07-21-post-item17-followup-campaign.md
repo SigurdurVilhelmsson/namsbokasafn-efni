@@ -8,6 +8,12 @@
 
 **The purpose, restated by [USER] because the work had drifted off it:** retire the old manual MT route — legacy code, legacy tags, legacy `02-mt-output` — by re-extracting and re-MT'ing **all of Chemistry 2e** and fully MT'ing **Organic**, ending with both books clean **and their figures translated**. 🔴 **FIGURES ARE A STEP INSIDE THE PER-CHAPTER LOOP, NOT A TRACK BESIDE IT** — [USER] ruling 2026-09-05. The figure-text register still owns figure DESIGN evidence; it no longer owns a sequencing decision, and its gate 2 ("let the re-MT land" before any images) is **withdrawn** as an inversion of the loop.
 
+🔴 **§C119'+String.fromCharCode(39)+'S QUARANTINED COMMIT NOW HAS A SHA: `ebf2477b` (`auto-backup: 2026-09-03 10:00`) ON PROD'+String.fromCharCode(39)+'S `main`, STILL UNPUSHED AS OF 2026-09-05.** Verified by content, not by date: it carries **2** `glossary-unified.json` files, organic'+String.fromCharCode(39)+'s holding **1,595** terms with `ants` **present**. ▶ **The `DO NOT PUSH` order stands until superseded** — the prod box holds **2** unpushed content commits (`ebf2477b`, `a4225677`) and `content_backup` has been stale **49 h**, so the obvious remedy for the alarm is exactly the forbidden action. ⚠️ **The health check reports a COUNT and the register holds the IDENTITY; a number cannot tell you one of its commits is quarantined.** 
+
+✅ **DISCHARGED 2026-09-05 — VERIFIED ON PROD BY SSH, AND THE ORDER IS NOW SAFE TO LIFT. `git push origin main` MAY PROCEED.** The quarantine assumed `ebf2477b` was the tip. It is not: **`a4225677` (`auto-backup: 2026-09-05 06:00`) sits on top of it and carries organic's glossary at **249 terms, `domain: chemistry` for all 249**, with `ants` **absent** and `functional` **absent**.** ▶ **So the harmful 1,595 file passes through HISTORY and is never the tip** — and a dev session or a paid MT reads the working tree, not history. ⚠️ **[USER] had already run `export-terminology.js --force` for organic several sessions ago**, which is what wrote it; the shrink guard did not fail — its logic was re-executed against the real transition and returns `refuse: true` for 1595 → 249 exactly as designed.
+
+▶ **THE TRAP THIS LEAVES BEHIND IS WORTH MORE THAN THE INCIDENT: A QUARANTINE ORDER MUST NAME WHAT DISCHARGES IT, OR IT OUTLIVES ITS CAUSE.** `DO NOT PUSH PROD'S STRANDED COMMIT` was correct when written and became **wrong two days later**, silently, because a later commit superseded the file — and nothing re-checked it. **The order was still being obeyed 49 hours into a content-backup outage whose only remedy was the forbidden push, with 2 commits of book content single-copy on one box** (`books/` leaves it only via the git remote; the off-box backup covers `sessions.db` alone). ▶ **Verify a standing prohibition against the TREE before obeying it, exactly as CLAUDE.md requires for a stale premise — and state the discharge condition when you write one.**
+
 **⏹ THE DUAL-SESSION WORK MODE IS TERMINATED** ([USER], 2026-09-05). One active session in this repo from now on. The cross-repo pairing rules in CLAUDE.md still apply to vefur; they no longer describe two efni sessions.
 
 ### Where the campaign actually is — measured 2026-09-05, adversarially verified
@@ -38,8 +44,158 @@ Runbook item 1.4 was "[LEAD], needs domain knowledge" and unmeasured. It is meas
 ### Single next action
 
 **Step 0 of the loop: finish both ch03s end to end.** 0 ISK, and it is what proves the loop before anything else is bought.
+- ⚠️ **STEP-6 ITEM FROM CHEMISTRY ch03 — the index lost four English cross-references, and the guard that caught the slug did not catch this.** Re-running `generate-index` after the render moved `termEn: null` from **14 to 18 of 763** entries; all four are in ch03 (*Avogadrosartala, formúlumassi, mól, mólmassi*), every other chapter is byte-identical and 0 entries gained one. **Cause is the same `(e. …)` drop as the bullet below**: `generate-index` derives `termEn` by parsing `(e. english)` back out of the *Icelandic*, so a translation that omits the parenthetical silently loses the index's English search key. ▶ **The durable fix is to key `termEn` off `01-source` by `termId`** instead of re-parsing the target text — one direction of derivation, and it cannot be lost by an MT.
 - ✅ **Chemistry ch03 RENDERED** (PR #449, 2026-09-05). Not published — that needs a **named-book** vefur sync. ⚠️ **One page was renamed**; its `from`/`to`/`moduleId` row is in `slug-map.mt-preview.json` and must reach vefur **BEFORE** the sync, because a redirect entry is inert until its target exists. ▶ The [USER] hold on rebuilding this chapter is discharged and quantified: `(e. …)` **40 → 32** in the CNXML, **60 → 48** in the HTML, `data-en` **0 → 40** — nothing lost, invisible until vefur ships display. 🔴 **And the cause is not the renderer: `(e. …)` is in the TRANSLATION TEXT**, so the new MT carries fewer because the model was not asked for them.
-- ⬜ **Organic ch03**: assemble the September exercises FIRST — its rendered pages currently mix September module bodies with **July exercises** — then re-render, redirect rows, named-book sync.
+- ✅ **Organic ch03 — RE-MT'd AGAINST THE CLEAN GLOSSARY, INJECTED, RENDERED, AND ALL THREE §C121 CORRUPTIONS MEASURE 0.** Exercises assembled from the new MT. **~742 ISK.** → §C121 below for the numbers and the control.
+  🔴 **STILL NOT PUBLISHABLE, FOR A DIFFERENT AND SMALLER REASON: `m00037` IS NOT INJECTED** — one paragraph came back with 2 of 3 term markers and the count-guard degraded it to English, **deterministically** (reproduced on a paid retry). **It needs an editor pass in the segment editor, not another purchase.** The other 7 modules are COMPLETE, 6 at PERFECT fidelity.
+  📌 **THE RE-MT MOVED THREE PREMISE PINS, AND THEY ARE BUMPED IN THE SAME COMMIT THAT OBSERVES THEM** — which is `remt-checks-mt-gating.test.js`'s own stated rule for corpus pins. **Identity was checked, not arithmetic**, and one prediction was WRONG in a way only identity could catch:
+
+| pin | was → is | the segment, verified |
+|---|---|---|
+| A3 `deltaMods` | 129 → **130** (and `anyMods` 155 → **156**) | `m00035:para:para-00002` — the dropped English pronunciation gloss |
+| A5 long-EN residues | 6 → **7**, module set gains `m00037` | `m00037:para:para-00003` — the count-guard degradation |
+| remt-sweep R1 organic | `PASS 8/FAIL 0` → **`PASS 7/FAIL 1`** | **`m00035`**, `emphasis` 33 → 32 — **NOT m00037, which was the prediction** |
+
+- ▶ **R1's FAIL is m00035, not m00037.** m00037 PASSES R1 because its CNXML is the **stale July file** the September inject skipped — internally consistent, merely the wrong vintage. **A check can pass precisely because the thing it examines was never updated**; that is the shape to carry, not the module name.
+- ▶ **m00035's dropped gloss is now visible in TWO instruments** — A3 as a marker delta, R1 as a tag-count loss — from one cause. **Organic has no `fidelity-allowlist`** in which to record it as known-benign; chemistry does. That asymmetry is the R1 `null` arm, not a defect.
+- ▶ **`unpairedMods` did NOT move (145), and that is the tell** that this was a re-TRANSLATION and not a re-EXTRACTION. A pin that stays put is evidence too.
+- ⚠️ **R1's pin was RESTRUCTURED, not just renumbered:** `PASS + FAIL === 8` now leads, because the property the test is *named* for is that R1 **judges** all 8 organic units — `PASS === 8` was always a vintage number, as its own comment said of the earlier 6-FAIL era.
+- ⚠️ **`anyMods` would have failed too and was VACUOUS behind `deltaMods`** — a red assertion first in a block hides its neighbours. Computed all three rather than fixing the one CI named.
+
+🔴 **SEPARATELY — `main`'s OWN CI FLOOR MOVED, AND IT IS NOT THIS BRANCH'S TO FIX: 9 → 11 failed FILES, 19 → 22 failed assertions.** Measured by pulling `main`'s run at `a4225677` and diffing the failing set by NAME against this branch: **failing FILES identical (11 = 11, 0 newly red, 0 cleared)**, assertions +3 — exactly the three above. **The two files `main` added are `remt-checks-glossary` (G2, G3) and `remt-sweep`'s tier-0 blocking bar**, i.e. glossary premise pins, moved when prod's glossary cleanup landed via the `a4225677` auto-backup. ▶ **Do not absorb them here:** their correct values depend on the `SI`/`Si` and `plus`/`minus` rulings, and the loop plan (DELETE `plus`/`minus`) and project memory ([USER] KEPT them) currently **disagree** — that contradiction must be settled before the pins can be written.
+- ⚠️ **INSTRUMENT TRAP, NEW INSTANCE OF THE INCAPABLE-NULL CLASS:** `gh run view <run> --job <id> --log` returned **exit 0 with ZERO BYTES** on a *completed* job, while `gh api .../actions/jobs/<id>/logs` returned **1.03 MB** for the same job. A by-name failing-set diff run through the first reads as **"the entire floor cleared."** Use the REST API, and keep a positive control on the byte count.
+
+### §C121 — a fallback-domain glossary word SHADOWS a correct multiword chemistry term, and the paid September MT obeyed it
+
+🔴 **THREE CONFIRMED BY MEASUREMENT, IN THE CHAPTER THE CAMPAIGN JUST PAID FOR.** Found by executing the loop's step 6 on organic ch03 — not by any sweep, gate or test, all of which are green.
+
+| EN | correct IS | the glossary row that shadows it | measured in organic ch03's Sept MT |
+|---|---|---|---|
+| functional group | *virknihópur* (present, `domain: chemistry`) | **`functional → felli`** `physics` | **15** `felli*`; exercises went **8 correct → 5 wrong, 0 correct left** |
+| double bond | *tvítengi* (present, `domain: chemistry`) | **`double → stjörnupar`** `physics` — a **double STAR** | **7** `stjörnupar*` against **1** `tvítengi`; EN "double bond" = 16 |
+| multiple bond | *margföld tengi* — **measured, not recalled** (see below) | **`multiple → heilfeldi`** `physics` | **4** `heilfeldi`; EN "multiple bond" = 12 |
+
+▶ **THE CONTROL THAT MAKES THIS A FINDING RATHER THAN A SUSPICION IS IN THE SAME SENTENCE:** *"Alkenar hafa **stjörnupar**, alkýnar hafa **þrítengi**"* — same module, same run, same model. `triple bond → þrítengi` is **correct 3 of 3** because **no `triple` headword exists to shadow it**. One chapter, one paragraph, both arms.
+
+⚠️ **AND IT IS PARTIAL, WHICH IS WHY NO TALLY SEES IT.** `virknihóp*` still occurs **26** times in the same chapter beside the 15 `felli*` — CLAUDE.md's *"the SAME entry can take on one occurrence and not the next"*, now measured on a third term class. **Spot-checking output cannot establish that a bad entry is inert.**
+
+🔴 **THE REMEDY IS REMOVAL, AND NO EXISTING GUARD REACHES IT.** `functional` (10), `double` (6) and `multiple` (8) are all far past §C116's ≤3-char word-boundary rule; the render-side symbol guard sees words, not phrases; the collision sweep sees nothing because these are **uncontested single approved rows**. **All three are `domain: physics`** — §C119's fallback contamination again, in **both** books.
+⚠️ **AND ALL THREE ARE ABSENT FROM BOTH FROZEN REMOVAL SETS** (C119's 127, C120's 86). Those sets were built by judging headwords **in isolation**; this class is only visible **in composition with another term**, so a per-headword review structurally cannot produce it.
+
+📌 **Candidates: [`test-results/c121-substring-corruption-candidates-2026-09-05.tsv`](../../test-results/c121-substring-corruption-candidates-2026-09-05.tsv) — 21 rows, 3 CONFIRMED, 18 PREDICTED and explicitly labelled so.** Do not apply the predicted rows without the §C73 unprompted-control check on each. Notable predicted: `cell → rafhlað` (a battery) inside *fuel/unit/electrolytic cell*, `state → hagur` inside *ground/excited/transition state*, `transition → jöfn basaskipting` (a genetics term).
+🔴 **THE CANDIDATE LIST IS A LOWER BOUND, AND ITS OWN BLIND SPOT IS MEASURED: `multiple` IS NOT IN IT.** The sweep keys on a *glossary* multiword partner, and **"multiple bond" is not a glossary headword at all** — so a shadowing row whose victim phrase the glossary never lists is invisible to it. It was added by hand from the measured output. ▶ **The true denominator is every chemistry phrase in the CORPUS, not every multiword row in the glossary.**
+
+⚠️ **EXPOSURE IS NOT LIMITED TO WHAT WAS BOUGHT — IT IS AIMED AT WHAT IS ABOUT TO BE.** English "functional" occurs **454** times in chemistry's `02-for-mt`, **391 of them in ch20** (its organic chapter), and **327** times across 27 of organic's 31 chapters. **Chemistry ch03 is unaffected — it contains the word zero times — so PR #449 is clean.**
+
+🔴 **RECONCILED WITH §C119 — [USER] RAISED THIS AND WAS RIGHT: THE OVER-CORRECTION-FROM-UNRELATED-DOMAINS PROBLEM WAS ALREADY RULED ON, AND THE TIMELINE IS WHAT MAKES THIS ENTRY WORTH KEEPING.** The dates settle it:
+
+| when | what |
+|---|---|
+| 2026-08-31 10:13 | organic's committed glossary generated — **827 terms, 655 of them biology+physics**, `functional → felli` among them |
+| 2026-09-01 19:44 | **organic ch03's September MT bought against exactly that file** |
+| 2026-09-04 14:15 | **[USER] §C119 ruling — organic becomes `['chemistry']`**, committed to `server/lib/domains.js` (`b0d21d6d`) |
+
+▶ **SO ORGANIC IS ALREADY FIXED AT ITS OWNER, AND THIS CHAPTER WAS BOUGHT THREE DAYS INSIDE THE WINDOW.** The degradation is **historical debt, not an open hole** — but the fix is not yet *in effect*: `domains.js` reaches readers only via **deploy → one 2-hourly export-cron tick**, which rewrites `glossary-unified.json`. ✅ **AND IT IS NOW IN EFFECT AND ON `main` — VERIFIED BY CONTENT 2026-09-05, NOT BY THE RULING'S EXISTENCE.** `origin/main` = `a4225677` carries organic's glossary at **249 terms, all `domain: chemistry`**, with `ants`, `functional`, `double`, `multiple` and `quaternary` **all absent**. ▶ **So every §C121 row above is gone from ORGANIC** — chemistry-only scoping removed the physics domain wholesale, which is a stronger fix than the per-row removal this entry proposes, and it costs organic nothing because those rows were never chemistry. ⚠️ **This paragraph previously said the committed file was still the pre-ruling 827 and told you to grep for `felli`. That was true when written and false within the hour** — the instrument was right, the conclusion had a shelf life. **Re-run the grep; do not trust this sentence either.**
+
+🔴 **WHAT IS GENUINELY STILL OPEN IS CHEMISTRY, AND IT IS THE BOOK THE LOOP IS ABOUT TO BUY.** `efnafraedi-2e` remains `['chemistry','physics','biology']` — deliberately, since a general chemistry text really does use physics terms — so its glossary is **2,006 terms of which 1,617 (81%) are physics+biology and only 389 chemistry**, and **all three shadowing rows are present in it**. CLAUDE.md already records that chemistry-only scoping is the *wrong* tool here (it would drop 1,632 of 2,021 terms to fix 67), so the mechanism for chemistry is the **removal set** — and **C120's 86 rows miss all three.**
+
+▶ **THEREFORE THE ACTION IS NARROW, NOT A NEW POLICY: add these rows to chemistry's removal set.** No domain re-scoping, no ruling to re-litigate. Removal runs against **prod's** `sessions.db` (this box has no `concept_term` table) and needs a one-time `export-terminology.js --force`, per §C120.
+
+▶ **AND WHAT THIS ADDS TO §C119 THAT ITS OWN AUDIT COULD NOT:** §C119 judged 543 headwords **in isolation** and confirmed 119 harmful. This class is invisible to that method — `double`, `functional` and `multiple` are harmless words whose harm exists **only in composition with a correct multiword term that is present in the same glossary**. It is also the first instance measured **in paid output** rather than by corpus analysis: the model demonstrably obeyed the bad row.
+
+🔴 **AND THE REMEDY SHOULD PROBABLY NOT BE REMOVAL AT ALL — REMOVAL DELETES A *CORRECT* TERM.** `functional → felli` is **right for physics** (a functional, in functional analysis); `double → stjörnupar` is **right for astronomy**. `remove-wrong-sense-headwords.js` deletes the `concept_term` row keyed on (english, domain), and the concept model is **shared across all six books** — so fixing chemistry this way removes a term the physics book legitimately needs. That is the *"three remedy classes, and merging them DELETES CORRECT TERMS"* trap, one level down.
+
+▶ **A MATCHER RULE COSTS NO CORRECT TERM AND CLOSES MOST OF THE CLASS — BUT NOT ALL OF IT, AND THE EXCEPTION IS ALREADY IN THE TABLE ABOVE: LONGEST MATCH WINS.** `filterGlossaryForText` (`tools/api-translate.js`) selects **every** headword appearing in the text and sends them all, so `functional` and `functional group` both go on the wire and the model picks inconsistently — which is exactly the 26-vs-15 split measured above. **A term whose `sourceWord` is a whole-word substring of another SELECTED term's `sourceWord` should be dropped from that request.** It is one function, it needs no DB write, no deploy and no export tick, it is book-agnostic, and it leaves every concept row intact.
+🔴 **IT REACHES `functional` AND `double` AND *NOT* `multiple` — because the rule needs the victim phrase to BE a selected headword, and "multiple bond" is not in the glossary at all.** The same blind spot that kept `multiple` out of the candidate sweep also keeps it out of the fix. **Do not describe this rule as closing the class.**
+▶ **For `multiple` the §C73 control was run rather than recalled, and it changes the prescription.** Keyed on segment id across organic's July chapters (16 EN occurrences, an older glossary, so an unprompted control): the model renders *multiple bonds* as **`margföldu tengin`** — natural and correct — and **`fjöltengi` occurs 0 times in the entire book**. ⚠️ **An earlier draft of this very table asserted `fjöltengi` as the correct form from memory; it is not a form this model produces.** ▶ So the entry is **pure harm for chemistry and needs no replacement** — the instrument is C120's removal set, accepting that it deletes a row that is legitimate for *physics* from a concept model shared by all six books. **That trade is a [USER] call, not a mechanical one**, and it is only cheap today because every book but two is held back from the site.
+⚠️ **It is a wire-side fix only** — `buildGlossaryMap` (render) is independent and unaffected, per CLAUDE.md's *"neither is evidence for the other"*. ⚠️ **And it must be measured the §C73 way before shipping**: assert the *shadowed* pair disappears from a real request while an ordinary term survives, on the corpus, with both arms.
+✅ **RESOLVED 2026-09-05 — [USER] CHOSE THE RE-MT, AND IT WORKED. ALL THREE CORRUPTIONS ARE 0, MEASURED.** ~742 ISK total (607 chapter + 135 for two module retries) against an 889 ISK estimate — a 0.68× billing ratio, at the bottom of the measured band.
+
+| term | Sept (dirty glossary) | Sept (clean glossary) |
+|---|---|---|
+| `virknihóp*` ✅ | 26 | **39** |
+| `fellihóp*` ❌ | 10 | **0** |
+| `tvítengi` ✅ | 1 | **8** |
+| `stjörnupar` ❌ | 7 | **0** |
+| `heilfeldi` ❌ | 4 | **0** (now `fjöltengi`) |
+| **`þrítengi` — CONTROL** | 3 | **3** |
+
+▶ **THE ARITHMETIC IS THE PROOF, NOT THE ZEROS: `stjörnupar` 7 → 0 while `tvítengi` 1 → 8. Every corrupted occurrence became the correct term; none lost, none invented.** And `þrítengi` — which never had a shadow — held at **exactly 3**, so this is the specific defect being repaired rather than a wholesale rewording. **Exercises recovered to 8 correct / 0 wrong**, matching July's count from September text.
+
+⚠️ **CORRECTION TO THIS ENTRY'S OWN §C73 CONTROL: the model DOES produce `fjöltengi`.** The July measurement (`margföldu tengin`, `fjöltengi` 0×) was true of the July run and is **not** a property of the model — with the shadow removed it compounds correctly. **A §C73 unprompted control is dated evidence about ONE RUN, never a fact about the model.**
+
+🔴 **THE PRECONDITION THAT MADE IT WORK IS THE GENERAL SHAPE: THE SHADOWS WERE GONE WHILE THE VICTIMS SURVIVED.** The 249-term glossary has `functional`/`double`/`multiple` **absent** and `functional group → virknihópur` / `double bond → tvítengi` **present**. **Check both halves before buying** — removing the shadow is only half of it.
+
+⚠️ **Re-extract was run first and was a NO-OP: all 8 manifests moved only `extractedAt`; `sourceHash`, `segmentCount` and `segmentIds` were identical.** So organic ch03's English was already current and the glossary was the sole fault. **Run it every time — it is free, and it separates a repair from a wasted purchase.**
+
+### What the chapter surfaced — step 6
+
+- 🔴 **`m00037` IS NOT INJECTED AND MUST NOT BE PUBLISHED AS IS.** `m00037:para:para-00003` returned **2 of 3 `[[term:]]` markers**, so the B4-D11 count-guard degraded the whole paragraph to **English** and inject correctly SKIPPED the module. ▶ **It reproduced IDENTICALLY on a paid retry — same segment, same counts — so it is DETERMINISTIC, not API flakiness, and a third attempt is waste.** The terms are *conformations / conformational isomers / conformers*, which plausibly collapse in Icelandic. **Route is the segment editor (translations are API-only; never hand-write one into `02-mt-output`).** The other 7 modules injected COMPLETE, 6 at PERFECT fidelity.
+- ⚠️ **`m00035`'s marker gate is a FALSE POSITIVE, and the reason generalises.** The source is `(IUPAC, usually spoken as [[b:eye]]-you-pac)` — an **English pronunciation gloss**. The model correctly dropped the parenthetical and the `b` marker went with the content it wrapped. ▶ **A marker-conservation count cannot distinguish a LOST marker from one whose wrapped text was legitimately not translated**, so this class of segment will always trip it. Held back, reviewed, benign.
+- ⚠️ **`m00038` round-trip: one attribute the injector ADDS — `#list-00001 @list-type: undefined → "bulleted"`.** Semantically inert (bulleted is CNXML's default) but not byte-faithful. **7 of 8 modules are byte-identical to `01-source` by value.**
+- ⚠️ **Anchor gaps are PRE-EXISTING, proved by CONTROL rather than assumed.** Organic ch03 = **5 of 187**; chemistry ch03, untouched by this run, = **27 of 424** — organic is the *better* of the two, so this is a renderer characteristic, not a regression. **T0 = 0 OpenStax ids missing from `01-source` on both books.**
+- ⚠️ **`generate-index` on organic emits ZERO entries, and organic has never had one committed.** It was generated and **deleted again** rather than committed — an empty `index.json` is a new artifact vefur may read. **Chemistry's is 763, so the tool works; organic simply has no indexable key-term markup.**
+- ⚠️ **The render log prints `Recorded 2 rename(s) in 05-publication/mt-preview/slug-map.json` — the un-track-qualified name CLAUDE.md forbids.** The file it actually writes is `slug-map.mt-preview.json`, which is correct. **Behaviour right, message wrong.**
+
+### Redirect rows for vefur — hand over BEFORE the sync
+
+| from | to | moduleId |
+|---|---|---|
+| `chapters/03/3-2-alkanar-og-alkanhverfur.html` | `chapters/03/3-2-alkanar-og-alkana-hverfur.html` | m00033 |
+| `chapters/03/3-6-afbrigdi-etans.html` | `chapters/03/3-6-stellingar-etans.html` | m00037 |
+
+⚠️ **`3-6-stellingar-etans` is m00037's page — the module that is NOT injected.** Do not sync this chapter until m00037 is editorially resolved.
+---
+
+## §C122 — numbered wire delimiters for `term`/`fn`/`docref` (PROPOSAL, not scheduled)
+
+**Raised by [USER] 2026-09-05** after §C121's `m00037` held a chapter back. **This is a proposal with a free first step, not an approved change.**
+
+### The defect it would fix
+
+`stripTermFnToPaired` rewrites `[[term:text|id]]` → **`[[term]]text[[/term]]`** for the API leg and captures the ids **positionally**. All delimiters of a type are **identical**, so when the model returns fewer pairs than were sent, the mismatch record says only `expected 3, got 2` — and that is genuinely all it knows.
+
+▶ **PROVED, NOT ASSERTED — the ambiguity is real and the obvious fix is unsafe.** Two model behaviours were run through the real `reattachIds`:
+
+| model behaviour | mismatch record | ids the survivors actually need |
+|---|---|---|
+| merged the last two | `expected 3, got 2` | term-00002, term-00003 |
+| dropped the first | `expected 3, got 2` | term-00003, **term-00004** |
+
+**Identical records, different correct answers.** So attaching positionally on a short count — the tempting fix — is right in one case and **silently mis-keys a glossary term** in the other. ▶ **The current degrade-to-English is CORRECT given un-numbered delimiters. This item is not a bug report against the guard.**
+
+### 🔴 SCOPE — MEASURED, AND IT DISSOLVES THE CNXML CONCERN ENTIRELY
+
+[USER] asked whether this diverges from OpenStax's CNXML convention and would need a find/replace to revert. **It does not, and there is nothing to revert.** The paired form is **WIRE-ONLY and never persisted** — measured: `grep -rl '\[\[/term\]\]' books/` returns **0 files**.
+
+| stage | on disk | numbering |
+|---|---|---|
+| `01-source` | `<term id="term-00002">` | **already numbered** — OpenStax's own |
+| `02-for-mt` | `[[term:conformations\|term-00002]]` | **already numbered** |
+| **the wire** | `[[term]]conformations[[/term]]` | **← the ONLY un-numbered place, and it exists in memory for one API call** |
+| `02-mt-output` | `[[term:…\|term-00002]]` | **already numbered** |
+| `03-translated` | `<term id="term-00002">` | **already numbered** |
+
+▶ **CONSEQUENCES, BOTH DIRECTIONS:**
+- ✅ **No CNXML change, no OpenStax divergence, no reader or vefur impact, no migration, nothing to revert.** The risk [USER] was weighing is not present.
+- ⚠️ **BUT THE BENEFIT IS NARROWER THAN IT LOOKS FOR THE SAME REASON: there is NO publishing upside.** Ids are already numbered everywhere that is published. **The entire payoff is MT round-trip failure handling and diagnosability.** ▶ **So "an improvement regardless" is too strong — it improves exactly one leg.**
+
+### The one real risk, and it is a MEASURED finding this cuts against
+
+🔴 **§C118 ⑲ measured that keeping marker syntax OFF the wire is what stopped the model copying the pattern into neighbouring prose** — that is why whole-segment markers ride bare. **Numbered delimiters are MORE distinctive syntax, aimed at the same model.** This proposal therefore contradicts a finding that was expensive to obtain, and must not be adopted on plausibility.
+
+✅ **THE PROBE THAT SETTLES IT IS FREE: an identity MT.** Send the segment file, return it unchanged, run the real post-processing. Any loss is then provably ours, not the model's, and it costs 0 ISK and no network. **Run that before any paid comparison.** A paid A/B on one module is the second step, not the first.
+
+### The alternative that needs no wire change — and why it is probably worse
+
+On mismatch, keep the **translation** and strip that type's markers to plain text, instead of degrading to English. No wire change, so no §C118 ⑲ exposure, and the reader gets Icelandic prose.
+⚠️ **But it converts a translation failure into a FIDELITY failure:** the `<term>` elements vanish from the injected CNXML, so `source-roundtrip-check` reports `tagCountDeltas {term: -3}` against `01-source` — and losing 3 term links is a bigger loss than the 1 that numbering would forfeit. **Recorded so it is not re-proposed as the easy option.**
+
+### Decision gate — base rate first, because the chapters are being bought anyway
+
+**Measured base rate so far: 1 segment in 10 modules (organic ch03).** One instance is not a pattern.
+▶ **[USER] 2026-09-05: run a couple more chapters and see whether it recurs.** That information is **free** — those chapters are being purchased for the campaign regardless, and every run already reports `Marker id-reattach mismatches: N`. **Record the count and the offending segment for each chapter bought; adopt only if it recurs.**
+⚠️ **Note the shape when judging recurrence: `m00037`'s cause was ENGLISH REDUNDANCY THAT ICELANDIC COLLAPSES** — *conformational isomers* and *conformers* are both `stellingarhverfur`. That is a property of appositive definition sentences, which cluster in early chapters where terms are introduced. **A base rate from ch03 alone will over-estimate the book.**
 
 _(Everything below this line is the previous RESUME, kept as evidence. Where it disagrees with this block, this block wins.)_
 

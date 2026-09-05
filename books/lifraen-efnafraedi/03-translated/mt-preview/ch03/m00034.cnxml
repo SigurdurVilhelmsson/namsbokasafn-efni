@@ -7,9 +7,9 @@
   </metadata>
 
 <content>
-<para id="para-00001">Ef þú ímyndar þér að fjarlægja vetnisfrumeind úr alkani er sá hluti gerðarinnar sem eftir stendur kallaður <term id="term-00001">alkílhópur (e. alkyl group)</term>. Alkílhópar eru ekki stöðug efnasambönd í sjálfu sér, þeir eru einfaldlega hlutar stærri efnasambanda og eru nefndir með því að skipta út -<emphasis effect="italics">an</emphasis> endingunni á upprunalega alkaninu fyrir -<emphasis effect="italics">ýl</emphasis> endingu. Til dæmis, ef vetni er fjarlægt úr metani, CH<sub>4</sub>, myndast metýlhópur, –CH<sub>3</sub>, og ef vetni er fjarlægt úr etani, CH<sub>3</sub>CH<sub>3</sub>, myndast etýlhópur, –CH<sub>2</sub>CH<sub>3</sub>. Á sama hátt, með því að fjarlægja vetnisfrumeind af endakolefninu í hvaða beinkeðju alkani sem er, fæst röð beinkeðju alkílhópa sem sýndir eru í <link target-id="table-00001"/>. Með því að sameina alkílhóp við einhvern af þeim virknihópum sem taldir voru upp áður er hægt að búa til og nefna mörg þúsund efnasambönd. Til dæmis:</para>
+<para id="para-00001">Ef þú ímyndar þér að fjarlægja vetnisfrumeind úr alkana er sá hluti byggingarinnar sem eftir stendur kallaður <term id="term-00001">alkílhópur (e. alkyl group)</term>. Alkílhópar eru ekki stöðug efnasambönd í sjálfu sér, þeir eru einfaldlega hlutar stærri efnasambanda og eru nefndir með því að skipta út -<emphasis effect="italics">an</emphasis> endingunni á foreldraalkaninu fyrir -<emphasis effect="italics">ýl</emphasis> endingu. Til dæmis, ef vetni er fjarlægt úr metani, CH<sub>4</sub>, myndast metýlhópur, –CH<sub>3</sub>, og ef vetni er fjarlægt úr etani, CH<sub>3</sub>CH<sub>3</sub>, myndast etýlhópur, –CH<sub>2</sub>CH<sub>3</sub>. Á sama hátt gefur það að fjarlægja vetnisfrumeind af endakolefninu á hvaða beinkeðju alkana sem er röð beinkeðju alkílhópa sem sýndir eru í <link target-id="table-00001"/>. Með því að sameina alkílhóp við einhvern af þeim virknihópum sem taldir voru upp áður er hægt að búa til og nefna mörg þúsund efnasambönd. Til dæmis:</para>
 <figure id="fig-00001" class="unnumbered scaled-down">
-<media alt="Sameindagerðir og kúlu-og-prikalíkön af metani, metýlhópi, metýlalkóhóli og metýlamíni. Gráar, svartar, bláar og rauðar kúlur tákna vetni, kolefni, köfnunarefni og súrefni.">
+<media alt="Sameindabyggingar og kúlu-prikalíkön af metani, metýlhópi, metýlalkóhóli og metýlamíni. Gráar, svartar, bláar og rauðar kúlur tákna vetni, kolefni, köfnunarefni og súrefni.">
 <image mime-type="image/jpeg" src="../../media/OChem_03_03_001.jpg"/>
 </media>
 </figure>
@@ -22,7 +22,7 @@
     <colspec colnum="4" colname="c4"/>
     <thead>
     <row valign="top">
-    <entry valign="top" align="left">Alkan</entry>
+    <entry valign="top" align="left">Alkani</entry>
     <entry valign="top" align="left">Nafn</entry>
     <entry valign="top" align="left">Alkílhópur</entry>
     <entry valign="top" align="left">Nafn (skammstöfun)</entry>
@@ -62,29 +62,29 @@
     </tbody>
     </tgroup>
     </table>
-<para id="para-00002">Rétt eins og beinkeðju alkílhópar eru myndaðir með því að fjarlægja vetni af endakolefni, eru greinóttir alkílhópar myndaðir með því að fjarlægja vetnisfrumeind af innri kolefnisfrumeind. Tveir 3-kolefna alkílhópar og fjórir 4-kolefna alkílhópar eru mögulegir (<link target-id="fig-00002"/>).</para>
+<para id="para-00002">Rétt eins og beinkeðju alkílhópar eru myndaðir með því að fjarlægja vetni af endakolefni, eru greinóttir alkílhópar myndaðir með því að fjarlægja vetnisfrumeind af innra kolefni. Tveir 3-kolefna alkílhópar og fjórir 4-kolefna alkílhópar eru mögulegir (<link target-id="fig-00002"/>).</para>
 <figure id="fig-00002" class="scaled-down">
-<media alt="Sameindagerðir og kúlu-og-prikalíkön af própani, própýl, ísóprópýl, bútani, bútýl, sek-bútýl, ísóbútani, ísóbútýl og tert-bútýl. Svartar og gráar kúlur tákna kolefni og vetni.">
+<media alt="Sameindabyggingar og kúlu-prikalíkön af própani, própýl, ísóprópýl, bútani, bútýl, sek-bútýl, ísóbútani, ísóbútýl og tert-bútýl. Svartar og gráar kúlur tákna kolefni og vetni.">
 <image mime-type="image/jpeg" src="../../media/OChem_03_03_002.jpg"/>
 </media>
 <caption><emphasis effect="bold">Alkílhópar myndaðir úr beinkeðju alkönum.</emphasis></caption>
 </figure>
-<para id="para-00003">Eitt atriði í viðbót varðandi nafngiftir alkílhópa: forskeytin <emphasis effect="italics">sek</emphasis>- (fyrir sekúnder) og <emphasis effect="italics">tert</emphasis>- (fyrir tertíer) sem notuð eru fyrir C<sub>4</sub> alkílhópana í <link target-id="fig-00002"/> vísa til fjölda annarra kolefnisfrumeinda sem tengjast greinóttu kolefnisfrumeindinni. Það eru fjórir möguleikar: prímer (1°), sekúnder (2°), tertíer (3°) og fjórðastigs (4°).</para>
+<para id="para-00003">Ein athugasemd í viðbót um nafngiftir alkílhópa: forskeytin <emphasis effect="italics">sek</emphasis>- (fyrir secondary) og <emphasis effect="italics">tert</emphasis>- (fyrir tertiary) sem notuð eru fyrir C<sub>4</sub> alkílhópana í <link target-id="fig-00002"/> vísa til fjölda annarra kolefnisfrumeinda sem tengjast greinóttu kolefnisfrumeindinni. Það eru fjórir möguleikar: primer (1°), sekunder (2°), tertíer (3°) og kvarterner (4°).</para>
 <figure id="fig-00003" class="unnumbered scaled-down">
-<media alt="Almenn gerð prímer, sekúnder, tertíer og fjórðastigs kolefna sem eru tengd við eitt, tvö, þrjú og fjögur önnur kolefni.">
+<media alt="Almenn bygging primer, sekunder, tertíer og kvarterner kolefna sem eru tengd við eitt, tvö, þrjú og fjögur önnur kolefni.">
 <image mime-type="image/jpeg" src="../../media/OChem_03_03_003.jpg"/>
 </media>
 </figure>
-<para id="para-00004">Táknið <term id="term-00002">R</term> er notað hér og um alla lífræna efnafræði til að tákna almennan lífrænan hóp. R-hópurinn getur verið metýl, etýl, própýl eða einhver af fjölmörgum öðrum. Þú gætir hugsað þér <emphasis effect="bold">R</emphasis> sem tákn fyrir <emphasis effect="bold">R</emphasis>estina af sameindinni, sem er ekki tilgreind.</para>
-<para id="para-00005">Hugtökin <emphasis effect="italics">prímer, sekúnder, tertíer,</emphasis> og <emphasis effect="italics">fjórðastigs</emphasis> eru reglulega notuð í lífrænni efnafræði og merking þeirra þarf að verða að eðlislægri kunnáttu. Til dæmis, ef við segðum: „Sítrónusýra er tertíer alkóhól,“ myndum við meina að hún hefði alkóhól virknihóp (–OH) tengdan við kolefnisfrumeind sem er sjálf tengd við þrjár aðrar kolefnisfrumeindir.</para>
+<para id="para-00004">Táknið <term id="term-00002">R</term> er notað hér og í allri lífrænni efnafræði til að tákna almennan lífrænan hóp. R-hópurinn getur verið metýl, etýl, própýl eða einhver af fjölmörgum öðrum. Þú gætir hugsað um <emphasis effect="bold">R</emphasis> sem tákn fyrir <emphasis effect="bold">R</emphasis>estina af sameindinni, sem er ekki tilgreind.</para>
+<para id="para-00005">Hugtökin <emphasis effect="italics">primer, sekunder, tertíer,</emphasis> og <emphasis effect="italics">kvarterner</emphasis> eru reglulega notuð í lífrænni efnafræði og merking þeirra þarf að verða að eðlislægri þekkingu. Til dæmis, ef við segðum: „Sítrónusýra er tertíer alkóhól,“ myndum við meina að hún hefði alkóhól virknihóp (–OH) tengdan við kolefnisfrumeind sem er sjálf tengd við þrjú önnur kolefni.</para>
 <figure id="fig-00004" class="unnumbered scaled-down">
-<media alt="Sýndar eru sameindagerðir almenna flokksins tertíer alkóhóla og sítrónusýru (sértækt tertíer alkóhól).">
+<media alt="Sýndar eru sameindabyggingar almenna flokksins tertíer alkóhóla og sítrónusýru (sértækt tertíer alkóhól).">
 <image mime-type="image/jpeg" src="../../media/OChem_03_03_004.jpg"/>
 </media>
 </figure>
-<para id="para-00006">Auk þess að tala um kolefnisfrumeindir sem prímer, sekúnder eða tertíer, tölum við um vetni á sama hátt. Prímer vetnisfrumeindir eru tengdar við prímer kolefni (RCH<sub>3</sub>), sekúnder vetni eru tengd við sekúnder kolefni (R<sub>2</sub>CH<sub>2</sub>) og tertíer vetni eru tengd við tertíer kolefni (R<sub>3</sub>CH). Hins vegar er ekkert til sem heitir fjórðastigs vetni. (Af hverju ekki?)</para>
+<para id="para-00006">Auk þess að tala um kolefnisfrumeindir sem primer, sekunder eða tertíer, tölum við um vetni á sama hátt. Primer vetnisfrumeindir eru tengdar við primer kolefni (RCH<sub>3</sub>), sekunder vetni eru tengd við sekunder kolefni (R<sub>2</sub>CH<sub>2</sub>) og tertíer vetni eru tengd við tertíer kolefni (R<sub>3</sub>CH). Hins vegar er ekkert til sem heitir kvarterner vetni. (Af hverju ekki?)</para>
 <figure id="fig-00005" class="unnumbered scaled-down">
-<media alt="Turnun þjappaðrar formúlu yfir í línubanda-gerð. Prímer, sekúnder og tertíer vetni í efnasambandi eru sýnd í þjappaðri formúlu.">
+<media alt="Umbreyting þjappaðrar formúlu í línustriksformúlu. Fyrsta, annars og þriðja stigs vetni í efnasambandi eru sýnd í þjappaðri formúlu.">
 <image mime-type="image/jpeg" src="../../media/OChem_03_03_005.jpg"/>
 </media>
 </figure>

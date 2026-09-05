@@ -4,7 +4,7 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Teiknið efnasambönd sem innihalda eftirfarandi:",
+  "stimulus_html": "Teiknaðu efnasambönd sem innihalda eftirfarandi:",
   "questions": [
     {
       "id": "327923",
@@ -33,7 +33,7 @@
     },
     {
       "id": "327928",
-      "stem_html": "Fjórgreint kolefni",
+      "stem_html": "Fjórgilt kolefni",
       "collaborator_solutions": []
     }
   ]

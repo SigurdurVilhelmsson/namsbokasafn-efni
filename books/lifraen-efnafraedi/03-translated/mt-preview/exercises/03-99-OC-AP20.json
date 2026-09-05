@@ -4,7 +4,7 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": false,
-  "stimulus_html": "Leggið til byggingarformúlur og gefið IUPAC-nöfn fyrir eftirfarandi:",
+  "stimulus_html": "Settu fram byggingarformúlur og gefðu IUPAC-nöfn fyrir eftirfarandi:",
   "questions": [
     {
       "id": "327981",
@@ -13,7 +13,7 @@
     },
     {
       "id": "327982",
-      "stem_html": "Alkani með (3-metýlbútýl)-hliðarhóp",
+      "stem_html": "Alkana með (3-metýlbútýl)-hliðarhóp",
       "collaborator_solutions": []
     }
   ]

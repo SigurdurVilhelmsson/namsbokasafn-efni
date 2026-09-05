@@ -4,11 +4,11 @@
   "generated_by": "exercise-assemble.js",
   "track": "mt-preview",
   "solutions_are_public": true,
-  "stimulus_html": "Teiknaðu byggingarformúlur sem samsvara eftirfarandi IUPAC-heitum:",
+  "stimulus_html": "Teiknaðu byggingar sem samsvara eftirfarandi IUPAC-heitum:",
   "questions": [
     {
       "id": "357624",
-      "stem_html": "3,4-dímetýlnónan",
+      "stem_html": "3,4-Dímetýlnónan",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e45ecf4feea0f0b311b6655c56e697e9490bb9cf/OChem_03_EC_208a.jpg\" alt=\"The molecular structure of 3,4-dimethylnonane is represented featuring a nine-carbon chain.\">"
@@ -17,7 +17,7 @@
     },
     {
       "id": "357625",
-      "stem_html": "3-etýl-4,4-dímetýlheptan",
+      "stem_html": "3-Etýl-4,4-dímetýlheptan",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--90576cad8b8dafd5a88d8a7a32417cf53b3cedfb/OChem_03_EC_208b.jpg\" alt=\"The molecular structure of 3-ethyl-4,4-dimethylheptane featuring a seven carbon chain.\">"
@@ -26,7 +26,7 @@
     },
     {
       "id": "357626",
-      "stem_html": "2,2-dímetýl-4-própýloktan",
+      "stem_html": "2,2-Dímetýl-4-própýloktan",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71f30d7ef7123dc49a8684f997ed2725f6d234be/OChem_03_EC_208c.jpg\" alt=\"The molecular structure of 2,2-dimethyl-4-propyloctane featuring an eight-carbon chain.\">"
@@ -35,7 +35,7 @@
     },
     {
       "id": "357627",
-      "stem_html": "2,2,4-trímetýlpentan",
+      "stem_html": "2,2,4-Trímetýlpentan",
       "collaborator_solutions": [
         {
           "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6b742d1e22d4d45560983379594c46682eb70bf6/OChem_03_EC_208d.jpg\" alt=\"The molecular structure of 2,2,4-trimethylpentane featuring a five-carbon chain.\">"

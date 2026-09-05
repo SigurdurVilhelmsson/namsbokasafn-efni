@@ -225,9 +225,18 @@ describe('A3 — per-segment bracket-marker delta', () => {
     // whose EN side gained segments their committed IS has never seen.
     // ▶ THEY FALL AS CHAPTERS ARE BOUGHT and only regain the old meaning once the corpus is
     // one vintage again. Do not quote them as a marker-destruction rate until then.
-    expect(deltaMods).toBe(129); //  65.5% of 197
+    // 🔴 RE-PINNED 2026-09-05 — organic ch03's re-MT against the clean glossary (§C121)
+    // added exactly ONE module to two of these three: m00035, whose `para-00002` lost a
+    // `[[b:]]` marker because the source is an ENGLISH PRONUNCIATION GLOSS — "(IUPAC,
+    // usually spoken as [[b:eye]]-you-pac)" — which the model rightly dropped along with
+    // its marker. A conservation count cannot tell a lost marker from one whose text was
+    // legitimately dropped, so this is a TRUE delta and a benign one.
+    // ▶ `unpairedMods` did NOT move, and that is the tell that this was a re-TRANSLATION
+    // and not a re-EXTRACTION: the EN side is untouched, so no pairing changed.
+    // The same segment is R1's one organic FAIL (`emphasis` 33 -> 32) in remt-sweep.
+    expect(deltaMods).toBe(130); //  66.0% of 197
     expect(unpairedMods).toBe(145); //  73.6% — EN segments with no IS counterpart
-    expect(anyMods).toBe(155); //  78.7% — what A3 would halt on, were it blocking
+    expect(anyMods).toBe(156); //  79.2% — what A3 would halt on, were it blocking
     // Global Constraints rule 4 needs ≤ ~5%. Every one of these is an order of magnitude
     // over it, which is why `A3.blocking === false` above.
     expect(anyMods / pairs).toBeGreaterThan(0.05);
@@ -453,12 +462,17 @@ describe('A5 — untranslated-EN residue, two stages', () => {
       }
     }
     expect(pairs).toBe(197); // control
-    expect(hits).toHaveLength(6);
-    // m00037 (organic ch03) left this set: eeac7731 re-translated it and its one long
-    // residue (m00037:para:para-00003, 267 alphabetic chars) is now Icelandic. Verified as
-    // content improved rather than population lost — the segment is still paired, m00037's
-    // IS side went 10 -> 14 segments. The remaining two modules were untouched by the run.
-    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual(['m00135', 'm68662']);
+    expect(hits).toHaveLength(7);
+    // 🔴 RE-PINNED 2026-09-05 — m00037 RE-ENTERED this set (it had LEFT it at eeac7731,
+    // when an earlier re-translation made it Icelandic). This is the §C121 re-MT's one
+    // paid-for casualty, NOT a regression in the check: `m00037:para:para-00003` came back
+    // from the API with 2 of 3 `[[term:]]` markers, so the B4-D11 count-guard degraded the
+    // whole paragraph to ENGLISH and inject correctly SKIPPED the module.
+    // ▶ It reproduced IDENTICALLY on a paid retry — DETERMINISTIC, not API flakiness, so a
+    // third purchase is waste. The cause is English appositive redundancy that Icelandic
+    // collapses: *conformational isomers* and *conformers* are both `stellingarhverfur`.
+    // The route is the segment editor, never a hand-edit of 02-mt-output. → §C121/§C122.
+    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual(['m00037', 'm00135', 'm68662']);
   });
 });
 
