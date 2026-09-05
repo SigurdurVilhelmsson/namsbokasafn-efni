@@ -63,7 +63,26 @@ Runbook item 1.4 was "[LEAD], needs domain knowledge" and unmeasured. It is meas
 
 ⚠️ **EXPOSURE IS NOT LIMITED TO WHAT WAS BOUGHT — IT IS AIMED AT WHAT IS ABOUT TO BE.** English "functional" occurs **454** times in chemistry's `02-for-mt`, **391 of them in ch20** (its organic chapter), and **327** times across 27 of organic's 31 chapters. **Chemistry ch03 is unaffected — it contains the word zero times — so PR #449 is clean.**
 
-▶ **WHAT THIS CHANGES:** the glossary is the one input the loop *consumes without rebuilding*, so a chapter bought before the fix buys the defect. **Removing these rows is now a step-2 precondition, alongside the `SI`/`plus`/`minus` rows above.** The removal runs against **prod's** `sessions.db` (this box has no `concept_term` table) and needs a one-time `export-terminology.js --force`, per §C120.
+🔴 **RECONCILED WITH §C119 — [USER] RAISED THIS AND WAS RIGHT: THE OVER-CORRECTION-FROM-UNRELATED-DOMAINS PROBLEM WAS ALREADY RULED ON, AND THE TIMELINE IS WHAT MAKES THIS ENTRY WORTH KEEPING.** The dates settle it:
+
+| when | what |
+|---|---|
+| 2026-08-31 10:13 | organic's committed glossary generated — **827 terms, 655 of them biology+physics**, `functional → felli` among them |
+| 2026-09-01 19:44 | **organic ch03's September MT bought against exactly that file** |
+| 2026-09-04 14:15 | **[USER] §C119 ruling — organic becomes `['chemistry']`**, committed to `server/lib/domains.js` (`b0d21d6d`) |
+
+▶ **SO ORGANIC IS ALREADY FIXED AT ITS OWNER, AND THIS CHAPTER WAS BOUGHT THREE DAYS INSIDE THE WINDOW.** The degradation is **historical debt, not an open hole** — but the fix is not yet *in effect*: `domains.js` reaches readers only via **deploy → one 2-hourly export-cron tick**, which rewrites `glossary-unified.json`. The committed 827-term file is still the pre-ruling one. ⚠️ **Do not read the ruling as done; `grep -c '"felli"' books/lifraen-efnafraedi/glossary/glossary-unified.json` is the instrument.**
+
+🔴 **WHAT IS GENUINELY STILL OPEN IS CHEMISTRY, AND IT IS THE BOOK THE LOOP IS ABOUT TO BUY.** `efnafraedi-2e` remains `['chemistry','physics','biology']` — deliberately, since a general chemistry text really does use physics terms — so its glossary is **2,006 terms of which 1,617 (81%) are physics+biology and only 389 chemistry**, and **all three shadowing rows are present in it**. CLAUDE.md already records that chemistry-only scoping is the *wrong* tool here (it would drop 1,632 of 2,021 terms to fix 67), so the mechanism for chemistry is the **removal set** — and **C120's 86 rows miss all three.**
+
+▶ **THEREFORE THE ACTION IS NARROW, NOT A NEW POLICY: add these rows to chemistry's removal set.** No domain re-scoping, no ruling to re-litigate. Removal runs against **prod's** `sessions.db` (this box has no `concept_term` table) and needs a one-time `export-terminology.js --force`, per §C120.
+
+▶ **AND WHAT THIS ADDS TO §C119 THAT ITS OWN AUDIT COULD NOT:** §C119 judged 543 headwords **in isolation** and confirmed 119 harmful. This class is invisible to that method — `double`, `functional` and `multiple` are harmless words whose harm exists **only in composition with a correct multiword term that is present in the same glossary**. It is also the first instance measured **in paid output** rather than by corpus analysis: the model demonstrably obeyed the bad row.
+
+🔴 **AND THE REMEDY SHOULD PROBABLY NOT BE REMOVAL AT ALL — REMOVAL DELETES A *CORRECT* TERM.** `functional → felli` is **right for physics** (a functional, in functional analysis); `double → stjörnupar` is **right for astronomy**. `remove-wrong-sense-headwords.js` deletes the `concept_term` row keyed on (english, domain), and the concept model is **shared across all six books** — so fixing chemistry this way removes a term the physics book legitimately needs. That is the *"three remedy classes, and merging them DELETES CORRECT TERMS"* trap, one level down.
+
+▶ **THE FIX THAT COSTS NO CORRECT TERM IS A MATCHER RULE, AND IT CLOSES THE WHOLE CLASS AT ONCE: LONGEST MATCH WINS.** `filterGlossaryForText` (`tools/api-translate.js`) selects **every** headword appearing in the text and sends them all, so `functional` and `functional group` both go on the wire and the model picks inconsistently — which is exactly the 26-vs-15 split measured above. **A term whose `sourceWord` is a whole-word substring of another SELECTED term's `sourceWord` should be dropped from that request.** It is one function, it needs no DB write, no deploy and no export tick, it is book-agnostic, and it leaves every concept row intact.
+⚠️ **It is a wire-side fix only** — `buildGlossaryMap` (render) is independent and unaffected, per CLAUDE.md's *"neither is evidence for the other"*. ⚠️ **And it must be measured the §C73 way before shipping**: assert the *shadowed* pair disappears from a real request while an ordinary term survives, on the corpus, with both arms.
 📌 **[USER] CALL — organic ch03: publish the degraded text now and let an editor fix ~26 words, or hold the chapter until the glossary rows are removed?** A re-MT after the fix is the clean option and costs money the chapter has already been paid for once.
 
 _(Everything below this line is the previous RESUME, kept as evidence. Where it disagrees with this block, this block wins.)_
