@@ -129,6 +129,57 @@ Runbook item 1.4 was "[LEAD], needs domain knowledge" and unmeasured. It is meas
 | `chapters/03/3-6-afbrigdi-etans.html` | `chapters/03/3-6-stellingar-etans.html` | m00037 |
 
 ⚠️ **`3-6-stellingar-etans` is m00037's page — the module that is NOT injected.** Do not sync this chapter until m00037 is editorially resolved.
+---
+
+## §C122 — numbered wire delimiters for `term`/`fn`/`docref` (PROPOSAL, not scheduled)
+
+**Raised by [USER] 2026-09-05** after §C121's `m00037` held a chapter back. **This is a proposal with a free first step, not an approved change.**
+
+### The defect it would fix
+
+`stripTermFnToPaired` rewrites `[[term:text|id]]` → **`[[term]]text[[/term]]`** for the API leg and captures the ids **positionally**. All delimiters of a type are **identical**, so when the model returns fewer pairs than were sent, the mismatch record says only `expected 3, got 2` — and that is genuinely all it knows.
+
+▶ **PROVED, NOT ASSERTED — the ambiguity is real and the obvious fix is unsafe.** Two model behaviours were run through the real `reattachIds`:
+
+| model behaviour | mismatch record | ids the survivors actually need |
+|---|---|---|
+| merged the last two | `expected 3, got 2` | term-00002, term-00003 |
+| dropped the first | `expected 3, got 2` | term-00003, **term-00004** |
+
+**Identical records, different correct answers.** So attaching positionally on a short count — the tempting fix — is right in one case and **silently mis-keys a glossary term** in the other. ▶ **The current degrade-to-English is CORRECT given un-numbered delimiters. This item is not a bug report against the guard.**
+
+### 🔴 SCOPE — MEASURED, AND IT DISSOLVES THE CNXML CONCERN ENTIRELY
+
+[USER] asked whether this diverges from OpenStax's CNXML convention and would need a find/replace to revert. **It does not, and there is nothing to revert.** The paired form is **WIRE-ONLY and never persisted** — measured: `grep -rl '\[\[/term\]\]' books/` returns **0 files**.
+
+| stage | on disk | numbering |
+|---|---|---|
+| `01-source` | `<term id="term-00002">` | **already numbered** — OpenStax's own |
+| `02-for-mt` | `[[term:conformations\|term-00002]]` | **already numbered** |
+| **the wire** | `[[term]]conformations[[/term]]` | **← the ONLY un-numbered place, and it exists in memory for one API call** |
+| `02-mt-output` | `[[term:…\|term-00002]]` | **already numbered** |
+| `03-translated` | `<term id="term-00002">` | **already numbered** |
+
+▶ **CONSEQUENCES, BOTH DIRECTIONS:**
+- ✅ **No CNXML change, no OpenStax divergence, no reader or vefur impact, no migration, nothing to revert.** The risk [USER] was weighing is not present.
+- ⚠️ **BUT THE BENEFIT IS NARROWER THAN IT LOOKS FOR THE SAME REASON: there is NO publishing upside.** Ids are already numbered everywhere that is published. **The entire payoff is MT round-trip failure handling and diagnosability.** ▶ **So "an improvement regardless" is too strong — it improves exactly one leg.**
+
+### The one real risk, and it is a MEASURED finding this cuts against
+
+🔴 **§C118 ⑲ measured that keeping marker syntax OFF the wire is what stopped the model copying the pattern into neighbouring prose** — that is why whole-segment markers ride bare. **Numbered delimiters are MORE distinctive syntax, aimed at the same model.** This proposal therefore contradicts a finding that was expensive to obtain, and must not be adopted on plausibility.
+
+✅ **THE PROBE THAT SETTLES IT IS FREE: an identity MT.** Send the segment file, return it unchanged, run the real post-processing. Any loss is then provably ours, not the model's, and it costs 0 ISK and no network. **Run that before any paid comparison.** A paid A/B on one module is the second step, not the first.
+
+### The alternative that needs no wire change — and why it is probably worse
+
+On mismatch, keep the **translation** and strip that type's markers to plain text, instead of degrading to English. No wire change, so no §C118 ⑲ exposure, and the reader gets Icelandic prose.
+⚠️ **But it converts a translation failure into a FIDELITY failure:** the `<term>` elements vanish from the injected CNXML, so `source-roundtrip-check` reports `tagCountDeltas {term: -3}` against `01-source` — and losing 3 term links is a bigger loss than the 1 that numbering would forfeit. **Recorded so it is not re-proposed as the easy option.**
+
+### Decision gate — base rate first, because the chapters are being bought anyway
+
+**Measured base rate so far: 1 segment in 10 modules (organic ch03).** One instance is not a pattern.
+▶ **[USER] 2026-09-05: run a couple more chapters and see whether it recurs.** That information is **free** — those chapters are being purchased for the campaign regardless, and every run already reports `Marker id-reattach mismatches: N`. **Record the count and the offending segment for each chapter bought; adopt only if it recurs.**
+⚠️ **Note the shape when judging recurrence: `m00037`'s cause was ENGLISH REDUNDANCY THAT ICELANDIC COLLAPSES** — *conformational isomers* and *conformers* are both `stellingarhverfur`. That is a property of appositive definition sentences, which cluster in early chapters where terms are introduced. **A base rate from ch03 alone will over-estimate the book.**
 
 _(Everything below this line is the previous RESUME, kept as evidence. Where it disagrees with this block, this block wins.)_
 
