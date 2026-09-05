@@ -37,11 +37,33 @@ For one chapter, in this order. **The chapter is not finished until step 5.**
 | 3 | **MT that chapter's figures** — the vector ones only | paid, small |
 | 4 | **Inject → render**, and run the free source-anchored checks | 0 ISK |
 | 5 | **Publish** — sync, redirects, deploy | 0 ISK |
-| 6 | **Fix what the chapter surfaced**, then go to the next chapter | — |
+| 6 | **Fix what the chapter surfaced — or LOG it**, then go to the next chapter | — |
 
 ⚠️ **Step 6 is not optional and it is why the loop is a loop.** Every chapter bought so far has
 surfaced a defect class that the previous one did not. Fixing before the next buy is what stops a
 defect being paid for 23 times.
+
+🔴 **STEP 6 HAS A DESTINATION NOW, AND IT DID NOT BEFORE — ADDED 2026-09-05 AFTER [USER] ASKED WHETHER
+EDITOR-FIXABLE ISSUES WERE ACTUALLY BEING LOGGED. BY THIS ROUTE THEY WERE NOT.** This row said only
+*"fix what the chapter surfaced"* and named no artifact, so run-surfaced items landed in the register's
+running prose **by convention**, while the [LEAD] ruling of 2026-08-23 had already designated one home
+for exactly this class. **A step with no destination is not a step.** Route every step-6 item, in the
+SAME COMMIT that observes it:
+
+| what you found | where it goes |
+|---|---|
+| a defect **deferred to a HAND fix** (an editor can do it in the UX) | ⚒️ **Post-run manual-fix ledger** in the campaign register. ⚠️ **Admission rule 3 is binding: name WHERE the hand fix is performed.** An item whose hand fix has no home reads as handled and is not — that is what killed M1. |
+| a defect needing a **CODE** fix | a numbered **§C…** section in the register, as a [CODE] item. **Not the ledger** — its predicate is *"cheaper by hand than by code"*. |
+| a **premise pin** the corpus moved | bump it in the commit that observes it; the pin files say so themselves. |
+| §C122's per-chapter **id-reattach mismatch count** | the chapter's step-6 entry — the count **and** the offending segment id. |
+
+⚠️ **"It is in a commit message" and "it is in the register prose" are NOT the same as being logged.**
+Neither is reachable by a human editor opening the segment editor, and neither is machine-readable.
+▶ **And the per-book `translation-errors.json` is NOT a substitute — it is structurally blind to the
+worst case**: a module the injector REFUSES is never "checked", so it is folded anonymously into
+`skippedUntranslated`, while the *stale* file left on disk can still be scored **PERFECT**. Measured on
+organic ch03: `m00037` sits inside `"perfect": 7`. **The more severe the failure, the less visible it is
+in that file.** → register §C123 and the M4 ledger entry.
 
 ---
 
