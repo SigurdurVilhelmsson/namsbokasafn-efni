@@ -26,6 +26,39 @@ editor visit, and it is the reason the loop is per-chapter rather than per-book.
 
 ---
 
+## 🎯 MILESTONES — the ordered path from today to a running loop
+
+**Added 2026-09-05 (evening).** The loop below is the PROCEDURE; this is the PATH TO BEING ABLE TO RUN IT.
+Status of each milestone lives in the register's ⏩ RESUME, never here. **Each has a GATE — a checkable
+end state, not an activity** — because "we did the work" and "the work had its effect" have come apart
+repeatedly in this campaign (a merged PR is not a deployed one; a deployed migration is not an exported
+glossary).
+
+🔴 **BOTH BOOKS ARE HELD FROM PUBLISHING TODAY.** M1–M2 unblock chemistry; M3–M4 unblock organic.
+
+| # | milestone | gate — how you know it is done | cost |
+|---|---|---|---|
+| **M1** | **Chemistry's glossary is clean** | 🔴 **Re-read `books/efnafraedi-2e/glossary/glossary-unified.json` and the removal-set intersection is ZERO.** Not "the PR merged" — merge ≠ deploy ≠ export tick. | 0 ISK |
+| **M2** | **Chemistry ch03 re-MT'd and published** | The rendered pages contain **0** of `tilbrigði`/`sjálfkvæm*`/`ílend*`/`felli*` (control: a term that SHOULD be there, e.g. `mól`), and `/content/efnafraedi-2e/chapters/03/…html` is live **by byte size** with a 404 control. | **paid** |
+| **M3** | **Organic's extraction gaps closed** | A re-extract of any organic chapter emits **alt segments > 0** for its exercises (control: module alt segments still emitted), and the 32 markup-bearing `<document><title>` modules emit their real title rather than a donated one. **`table@summary` has a written [LEAD] ruling** either way. | 0 ISK |
+| **M4** | **Organic ch03 completed and published** | **0** English alt attributes on its rendered pages (control: the Icelandic ones still score Icelandic), and its pages live by byte size. | **paid** |
+| **M5** | **Step 3 is runnable** | One chapter's figures processed end to end **unattended**, writing a `books/<slug>/figure-text/<basename>.is.json` sidecar an editor can actually see — with text-less figures SKIPPED and counted, not crashing. | small |
+| **M6** | **The loop is running** | A chapter bought under clean preconditions completes all six steps and reaches a reader, and step 6 surfaces a defect class **already known** rather than a new one. | **paid** |
+
+⚠️ **M1 AND M3 ARE THE REAL WORK; M2 AND M4 ARE THEIR PROOF.** Do not treat M2 as "publish chemistry" —
+it is "demonstrate the glossary fix reached readers". A milestone whose gate cannot fail is not a gate.
+
+⚠️ **M3 CARRIES A DESIGN DECISION THAT MUST BE MADE BEFORE THE CODE**: emit exercise alt as a new
+**field type** (purely additive) rather than a new **run** (shifts every later `b{k}` id — 855 fields
+have k≥1, and an insertion at k=0 shifts all 6,664). → register §C126.
+
+⚠️ **M5 IS THE ONE THAT COULD BE DESCOPED, AND ONLY [LEAD] CAN DO IT.** [USER] ruled figures are a step
+INSIDE the loop, so as written M6 waits on M5. **If the loop ships text-only chapters instead, that is a
+deliberate reversal that books a second editor visit per chapter** — record it as a decision, do not
+let it happen by drift.
+
+---
+
 ## The loop
 
 For one chapter, in this order. **The chapter is not finished until step 5.**
