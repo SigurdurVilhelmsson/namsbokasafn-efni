@@ -197,6 +197,22 @@ Write it to a committed artefact under `experiments/figure-text-translation/`. *
 
 ⚠️ **The buckets must be counted per RESOLUTION-WINNING figure, and the denominator stated.** Two censuses in this campaign have already disagreed because one resolved vector-only and the other probed rasters too — that is a different population, not a different answer.
 
+- [ ] **Step 6c: THE P9 SPIKE — timeboxed, and its OUTPUT IS A NUMBER, not a decision.**
+
+🔴 **[USER] RULING 2026-09-06 (R10): M5 is committed neither TO Form XObject support nor AGAINST it. Measure the size, then decide.** Deferring is costly — under the one-pass-edit ruling an editor who meets English figures has no second pass — but committing to unknown work inside the biggest task, on a chain that has surprised three review rounds, is worse. **The census makes the choice cheap; make it there.**
+
+**Timebox it.** Produce, in writing, either:
+- **a working proof on ONE real form-text figure** — `CNX_Chem_04_04_limiting` (4 forms, all with `BT`) — showing its 14 English words **extracted AND stripped from `artwork.svg`**, plus an estimate of what the remaining work is; or
+- **a statement of what blocks it**, naming the specific mechanism.
+
+**What the spike must actually establish**, because these are the parts that make it more than a `Do` recursion:
+1. does `pdftext.parse` compose the form's `/Matrix` with the CTM at the `Do` site correctly, so glyph positions land where the composer expects them?
+2. does a form's own `/Resources/Font` reach the width table?
+3. does `strip-text.py` remove `BT…ET` **inside** every reachable form — because extraction alone leaves the English *under* the Icelandic (measured 14 → 14)?
+4. are forms nested, and how deep on the real corpus?
+
+⚠️ **Do NOT let the spike quietly become the implementation.** If it runs long, that IS the answer: report the size and take the `unreadable-text` path, which is already designed, already honest, and already names every affected figure.
+
 - [ ] **Step 7: Write the CI sentence.** Add to this task's section of the repo docs, in writing: **the Python suite is NOT a CI gate — no workflow runs Python.** Name the hand-run command and its expected output. **Adding Python to CI is out of scope.** *(Without this sentence, a green CI reads as evidence the Python side passed.)*
 
 - [ ] **Step 8: Commit**
