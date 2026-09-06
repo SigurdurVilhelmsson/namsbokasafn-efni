@@ -831,7 +831,7 @@ node tools/figure-run.js --book efnafraedi-2e --chapter 4 --dry-run > /tmp/m5-ch
 - **no figure lands in `copied-*` while carrying `formTextXObjects > 0`**;
 - `failed-prepare = 0`.
 
-**The expected per-bucket numbers come from Task 0's five-way census** — page-text · form-text-only · Type0-garbage · genuinely textless · photo — and are written here once it exists.
+✅ **THE CENSUS EXISTS — read the per-bucket numbers from [`experiments/figure-text-translation/TEXT-COVERAGE.md`](../../../experiments/figure-text-translation/TEXT-COVERAGE.md), which owns them.** For chemistry: **496** page-text · **274** form-text-only · **8** Type0-unreadable · **7** textless · **71** photo · **253** unresolved · **38** ours-crashes · **1** unexplained. ⚠️ **Those are OUR reader's buckets; the adapter is expected to move most of `form-text-only` and `Type0` into readable.** Re-run the producer rather than quoting this.
 
 - [ ] **Step 6: Commit**
 
