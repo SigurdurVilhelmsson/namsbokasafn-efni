@@ -13,17 +13,21 @@ import sys, json, subprocess
 import _deps
 from _deps import OUT
 import figtext as FT
+from blockkey import block_key, block_lines
 
 subprocess.run([sys.executable, 'extract.py', sys.argv[1]], check=True,
                capture_output=True)
-runs = [r for r in json.loads((OUT / 'runs.json').read_text()) if r['text'].strip()]
+# P8: NO blank-run filter. Dropping blank runs before grouping buys
+# "notconsistentwith" instead of "not consistent with", and the key rule
+# must be identical in every consumer -> blockkey.block_key.
+runs = json.loads((OUT / 'runs.json').read_text())
 blocks = FT.merge_blocks(FT.group(runs))
 
 out = []
 for b in blocks:
     arc = FT.is_arc(b)
-    lines = [''.join(y['text'] for y in l) for l in FT.lines(b)]
-    key = ''.join(r['text'] for r in b) if arc else '|'.join(lines)
+    lines = block_lines(b)
+    key = block_key(b)
     joined = key if arc else ' '.join(lines)      # the MT unit is the LABEL, not the line
     out.append(dict(key=key, english=joined, lines=lines, arc=arc,
                     send=not FT.looks_verbatim(joined)))

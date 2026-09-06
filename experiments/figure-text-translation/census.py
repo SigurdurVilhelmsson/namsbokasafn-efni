@@ -17,6 +17,7 @@ from _deps import read_content
 import pikepdf
 from pdftext import parse
 import figtext as FT
+from blockkey import block_key
 
 # Families we can substitute a full Icelandic-covering face for. Everything else
 # needs checking by hand before its figure is called automatable.
@@ -90,9 +91,9 @@ def one(path):
     r['words'] = len(text.split())
     r['prose_words'] = len(' '.join(prose).split())
     r['single_char_runs'] = sum(1 for x in runs if len(x['text'].strip()) == 1)
-    r['sample'] = [(''.join(y['text'] for y in b) if FT.is_arc(b)
-                    else '|'.join(''.join(y['text'] for y in l) for l in FT.lines(b)))
-                   for b in blocks[:3]]
+    # THIRD consumer of the one key rule (P8) — a local copy here would make this
+    # census's samples match neither emit-blocks.py nor the acceptance harness.
+    r['sample'] = [block_key(b) for b in blocks[:3]]
 
     if r['cid_fonts']:
         r['verdict'] = 'PARSER GAP (Type0/CID)'
