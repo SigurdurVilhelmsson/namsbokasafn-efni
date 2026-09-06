@@ -236,6 +236,31 @@ finding; a zero from a blind instrument is a lie.**
 
 ---
 
+**R-13. C4b compares MULTISETS, not sets — a duplicate block key is common and a dropped twin is
+invisible to a set.** Measured independently twice: **22 of 62** page-text figures (35.5%) carry at
+least one duplicate block key (88 duplicate occurrences in that sample); over the harness's full
+run, **2,052 duplicates across 245 of 530 figures**. ▶ **Why it costs something even though the
+sidecar is a dict:** `compose.py` iterates BLOCKS and looks up `TR[key]` for each, so two blocks
+sharing a key are both drawn. A candidate producing one where the baseline produced two leaves a
+label **undrawn**, with the key set identical. Report multiplicity in both directions.
+
+**R-14. `census.py` must LOSE its blank-run filter, not merely import the shared key.** Verified at
+`census.py:75`: `runs = [x for x in runs if x['text'].strip()]`, retained while `block_key` is
+imported. ▶ **Sharing the key RULE while diverging on the run POPULATION is the same defect P8
+exists to remove** — the boundaries move anyway, so the census's counts describe a segmentation
+neither `emit-blocks.py` nor the harness uses. P8's own wording anticipated it: *"`census.py` is a
+THIRD consumer … move it too, or its counts will match neither."* **R4 removes the filter and the
+census evidence is re-derived.**
+
+**R-15. The C1 mojibake excuse (ruling R-3) needs its own selftest assertion — a FIFTH.** In a
+baseline-vs-baseline run the excuse path is **structurally unreachable** (nothing is ever missing),
+so it reported `0/530` — a zero that says nothing about whether the mechanism works. A probe
+against a mutant fires on **11 of 40** figures with exactly the named mojibake set and flags **0**
+regressions. ▶ **Assertion 5: a mutant replacing oracle-absent characters must produce 0 C1
+regressions AND a non-zero excused count.** Without it, the mechanism that decides whether R2's
+~96 H3 fixes are accepted has no control — and its failure mode is the silent rejection of
+correct work.
+
 **Measured facts that SURVIVED the scan — do not re-derive:**
 
 | fact | measurement |
@@ -318,9 +343,9 @@ contains `CNX_Chem_01_06_TempScales`, the figure `compose.py`'s wrap logic was t
 | **C2** | **Positive control**, on figures the baseline `raises` or returns `empty` | the candidate must return non-empty runs. **Report gained / still-empty, and NAME the still-empty** |
 | **C3** | **Oracle agreement** | disagreement about *whether a figure has text at all* is a finding. Not a character diff |
 | **C4** | **Block-level conformance**, on figures both read | 🔴 **pair by BLOCK, never by run** (ruling **R-10**): block bounding geometry, the set of fonts used, the joined text. Per-**run** checking is reduced to **shape conformance** — nine keys, correct types, `font` resolves in `meta.fonts` — which needs no pairing |
-| **C4b** | 🔴 **BLOCK-KEY conformance — the one that costs money** | the block key is what is bought, what keys the sidecar, and what the editor sees. Derive with `blockkey.block_key` over `figtext.merge_blocks(figtext.group(runs))` and compare **key SETS**; report added/dropped |
+| **C4b** | 🔴 **BLOCK-KEY conformance — the one that costs money** | the block key is what is bought, what keys the sidecar, and what the editor sees. Derive with `blockkey.block_key` over `figtext.merge_blocks(figtext.group(runs))` and compare **MULTISETS (`collections.Counter`), never sets** — ruling **R-13**. Report added/dropped **with multiplicity** |
 
-- [ ] **Step 6: 🔴 `--selftest` — four assertions, and it must exit NON-ZERO when they fail.**
+- [ ] **Step 6: 🔴 `--selftest` — FIVE assertions, and it must exit NON-ZERO when they fail.**
 
 1. **Plumbing** — baseline vs baseline over 40 `page-text` figures: C1 regressions **0**, C4b
    differences **0**.
@@ -332,6 +357,9 @@ contains `CNX_Chem_01_06_TempScales`, the figure `compose.py`'s wrap logic was t
 4. **The population correction is live** — over 20 of the 38 `ours-crashes` figures the baseline
    must return `reads`. *(3 and 4 are asymmetric on purpose: together they prove the harness
    distinguishes a crash from a read, which is the whole of ruling R-1.)*
+5. 🔴 **The mojibake excuse fires** (ruling **R-15**) — a mutant replacing oracle-absent characters
+   must yield **0** C1 regressions **and** a **non-zero** excused count. A baseline-vs-baseline run
+   cannot reach this path, so without the mutant the excuse is an untested zero.
 
 - [ ] **Step 7: Output.** `--json <path>` writes per-figure rows **into `census-out/`** (gitignored).
   Print the summary with **denominators on every line**. Flush before `sys.exit`.
@@ -467,6 +495,7 @@ is where the measurement lives.** R4 is P3, P6, and H2's enforcement.
 | # | file | change |
 |---|---|---|
 | **P3** | `figtext.py` | `if not runs: return []` in `group()`; `if not blocks: return []` in `merge_blocks()` — both index `[0]` unguarded (verified `IndexError` on `[]`) |
+| **P8b** | `census.py` | 🔴 **Delete its blank-run filter (`census.py:75`)** — ruling **R-14**; then **re-derive the census evidence** |
 | **P6** | `sources.py` | a configured-but-absent tree root **REFUSES** instead of falling through (verified: `sources.py:53-54` `if not root.is_dir(): continue`). Add the case to `test_sources.py` **with a positive control**: with all roots present, resolution still succeeds |
 | **H2** | `emit-blocks.py` | 🔴 **Make `decodable` actually gate spend** (ruling **R-8**): `send = not looks_verbatim(joined) AND every font the block uses is decodable`. Today the flag is written into `meta.json` and **nothing reads it** |
 
