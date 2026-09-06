@@ -10,7 +10,7 @@
 
 📐 **THE DESIGN AND ITS DEPENDENCY ORDER: [`2026-09-06-editor-terminology-assistant.md`](2026-09-06-editor-terminology-assistant.md)** — nine units U1–U9, four of them half-built already, plus the five open [USER] questions. **It collects §C36 B4c, §C54, §C50, §C78 and §C42, which turn out to be one feature.** Read it before touching terminology code.
 
-### ⏭ SINGLE NEXT ACTION — **[USER] decision: chapter 4, or the editor assistant.** Both are ready.
+### ⏭ SINGLE NEXT ACTION — **BUILD THE IMAGE TRANSLATION PROCESS (M5).** [USER] 2026-09-06: finish ch04, record/fix what it surfaced, then build it.
 
 - **Chapter 4** ([USER] agreed the conditions 2026-09-06): buys the defect-rate data that prices the retry strategy. **paid**, ~900–2,350 ISK.
 - **Editor assistant**: **U2 is client-only and the cheapest thing on the list** — the head-editor report already receives the `segments[]` it needs and drops them on the floor. **0 ISK.**
@@ -332,6 +332,39 @@ On mismatch, keep the **translation** and strip that type's markers to plain tex
 **Scope of the re-buy, measured:** ch03 is **141,754 bytes across 6 modules**. Three carry known corruptions and they are the LARGE ones — `m68700` (62,982 B, `sjálfkvæm`+`tilbrigði`), `m68702` (25,056 B, `felli`), `m68703` (32,812 B, `sjálfkvæm`+`ílend`); `m68704`/`m68699` are clean. ▶ **Scoping the re-MT with `--module` to just the three saves only ~15% of the bytes, while leaving the ~1,600 unjudged fallback rows unaudited in the other modules. Buy the whole chapter.** Estimate against the measured band 1,237–3,132 ISK, billed ≈0.75× — **quote a range, never a point.**
 
 ⚠️ **This is the SECOND chapter re-bought for this mechanism** (organic ch03 cost ~742 ISK). **That is the argument for finishing the glossary properly now rather than per-chapter** — the ~1,600 unjudged chemistry rows are the largest unquantified exposure on the list, and every chapter bought before they are judged is a candidate for a third re-buy.
+
+### §C136 — **ch04 BOUGHT: the retry ruling's rate data, and a FALSE POSITIVE that changes what "held back" means**
+
+Second chapter under the no-glossary arm ([USER] 2026-09-06). 7 modules, **Failed: 0**, 315.2s, **~1,423 ISK** against a ~1,415 ISK prediction — the 0.75× band now has a second confirmation on a chapter it was not fitted to. All 7 sidecars read `glossary.arm: no-glossary`; `mismatchCount` **0** everywhere. Commits `a8ee903c` (fixes) + `0f049e77` (data).
+
+🔴 **THE HELD-BACK MODULE WAS NOT A DEFECT — AND A COUNT-BASED GUARD CANNOT TELL.** m68710 reported `i -1`. One segment, `m68710:para:fs-idp140132618169728`:
+
+| | |
+|---|---|
+| EN | *"sometimes referred to as `[[i:double displacement]]`, `[[i:double replacement]]`, or `[[i:metathesis]]` reactions"* |
+| IS | *"eru stundum nefnd `[[i:tvöföld skipti]]` eða `[[i:metatesis]]` hvörf"* |
+
+**`double displacement` and `double replacement` are two English names for ONE concept; Icelandic has a single term.** The model collapsed a three-item English synonym list into a correct two-item Icelandic one. ▶ **A legitimately collapsed synonym list is byte-indistinguishable from a dropped marker to a guard that compares counts.** The guard was right to flag and cannot know.
+▶ **NOT RETRIED.** §C134's ruling fires on a detected **defect**; this is a detected **non-defect**. A retry would cost ~700 ISK on the chapter's largest module and risk buying a *worse* translation that pads the list to satisfy a counter. ⚠️ **"Held back" now has two meanings and only a human separates them — read the segment before reaching for `--force --module`.**
+
+📊 **THE RATE, WHICH IS THE THING ch04 WAS BOUGHT FOR — AND IT IS LOWER THAN §C134 ESTIMATED:**
+
+| run | modules | held back | real defects |
+|---|---|---|---|
+| ch03 run 1 | 6 | 1 | 1 (invented `[[sub:]]` + truncated nested `[[term:]]`, both m68700) |
+| ch03 run 2 | 6 | 0 | 0 |
+| ch04 | 7 | 1 | **0** — the synonym collapse |
+| **total** | **19** | **2** | **1** |
+
+▶ **~5% of module-runs carry a real defect, not the ~8% §C134 assumed — and HALF the hold-backs so far were false positives.** Both corrections push the same way: **retrying is cheaper than coding around it**, and the ruling stands with more margin than it was granted.
+
+✅ **STEP 4 CLEAN:** inject 6 of 6 `COMPLETE`, exit 0 (contrast ch03 run 1, where a module was refused); render exit 0 with 2 pages pruned; `generate-index --track mt-preview` re-run as required after a prune. The 76-segment residue is the pre-existing book-wide figure, not ch04's.
+
+⚠️ **[CODE] `source-roundtrip-check` IS RED ON EVERY CHEMISTRY CHAPTER FOR A NON-DEFECT.** 49 MISSING / 49 ADDED on ch04, **20/20 on ch03** — every one a `meaning#` id. Verified as a **rename, not a loss**: `<meaning>` element counts are identical source-vs-output per module (9/23/2/5/10 = 49, matching exactly) and the added ids are the source ids plus a `-meaning` suffix. ▶ **Its exit code is unusable as a gate until it is taught that rename. A check that is always red is a check nobody reads.**
+⚠️ **[CODE] `render-oracle-check` COVERS 2 OF 23 CHAPTERS** — *"Chapter 4 not in the manifest. Present: ch01, ch03."* So the free source-anchored half of step 4 is **unavailable for every new chapter** until its OpenStax HTML is captured. That is the check CLAUDE.md calls the gold standard; it currently reaches 9% of the book.
+⚠️ Both tools take `ch04`, not `4`.
+
+⏹ **NOT PUBLISHED.** The 2 renames need redirect rows handed to vefur **before** any sync, re-derived from `slug-map.mt-preview.json` and never from prose.
 
 ### §C135 — **[CODE] TWO PRE-EXISTING RAW INTERPOLATIONS IN THE SEGMENT EDITOR, FOUND WHILE REVIEWING SOMETHING ELSE**
 
