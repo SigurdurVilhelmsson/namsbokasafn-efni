@@ -47,7 +47,8 @@ The old plan ran Task 1 → 6 and would have failed at the first real figure. Se
 | V6 | **Task 6's stage list could express neither the retry path nor a 0-ISK recompose**, and referenced three functions defined nowhere. |
 | V7 | **The block-key derivation fork expires at the first live run** — a sidecar's keys ARE the block keys, so once one chapter mints sidecars it becomes a key migration. |
 
-**Revised order:** `0` repair Python · `0b` `--out` on the paid stage · `1` outcomes+verdict · `2` prepare · `3` classify (**moved after prepare**) · `4` compose · `5` invert gate 1 · `6a` the free driver · `6b` the paid driver.
+**Revised order (2026-09-06 evening):** `R1` acceptance harness · `R2` the pdfplumber adapter · `R3` `/Form`-aware strip · `R4` the surviving Task-0 repairs · `R5` acceptance evidence + licence · then `0b` `--out` on the paid stage · `1` outcomes+verdict · `2` prepare · `3` classify (**moved after prepare**) · `4` compose · `5` invert gate 1 · `6a` the free driver · `6b` the paid driver.
+▶ **`0` is superseded by `R1`–`R5`; its surviving repairs are `R4`.**
 ▶ **6b is the only task that can spend money**, which is what makes the [USER] authorisation gate at the end meaningful.
 
 ---
@@ -93,7 +94,11 @@ The old plan ran Task 1 → 6 and would have failed at the first real figure. Se
 
 | file | responsibility |
 |---|---|
-| `experiments/…/extract.py`, `figtext.py`, `emit-blocks.py`, `sources.py`, `census.py` | **repair** — Task 0 |
+| `experiments/…/read_layer_accept.py` | **new** — the acceptance harness, with a proven-red `--selftest` (R1) |
+| `experiments/…/readlayer.py` | **new** — the pdfplumber adapter; `extract.py` delegates to it and keeps its CLI (R2) |
+| `experiments/…/strip-text.py` | **modify** — descend into `/Form` XObjects (R3) |
+| `experiments/…/figtext.py`, `sources.py`, `emit-blocks.py`, `census.py` | **repair** — Task R4 (P3, P6, P8) |
+| `experiments/…/extract.py`, `pdftext.py` | 🔴 **REPLACED as the read layer** — `pdftext.parse` survives only as the harness's baseline arm |
 | `experiments/…/fixtures/fixture_figure.pdf` + `make_fixture.py` | **new** — the positive control |
 | `experiments/…/translate-blocks.mjs` | **modify** — `--out` (Task 0b), invert gate 1 (Task 5) |
 | `tools/lib/figure-outcomes.js` | **new** — outcome enum, safe tally, exit verdict. Pure. |
@@ -102,6 +107,299 @@ The old plan ran Task 1 → 6 and would have failed at the first real figure. Se
 | `experiments/…/figure-compose.py` | **new** — compose with a machine-readable verdict |
 | `tools/lib/figure-enumerate.cjs` | **new** — the enumeration predicate, shared with the server |
 | `tools/figure-run.js` | **new** — the driver |
+
+---
+
+## 🔴 THE READ-LAYER REPLACEMENT — Tasks R1–R5, and they come FIRST
+
+Added 2026-09-06 evening, after [USER] ruled the read layer **replaced, not repaired**
+(→ [`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../../decisions/2026-09-06-figure-read-layer-respec.md)),
+against the written contract
+(→ [`docs/superpowers/specs/2026-09-06-figure-read-layer-contract.md`](../specs/2026-09-06-figure-read-layer-contract.md)).
+
+**Tasks 1–6b are gated on these.** Task 0 survives only as its non-read-side repairs, which are
+Task R4 below; **Task 0's own section is kept as evidence, and its banner table says which of
+its steps still stand.** Where Task 0 and R1–R5 disagree, **R1–R5 win.**
+
+🔴 **THE ORDER IS DELIBERATE AND THE FIRST TASK SHIPS NO READER.** The harness is built and
+proven able to go RED before a candidate exists, because a harness written after the thing it
+judges gets tuned until it agrees.
+
+**Measured, before any of this was written — do not re-derive:**
+
+| fact | measurement |
+|---|---|
+| the mechanism of the 274-figure miss | on 40 `form-text-only` figures the page `/Font` dict is empty **40 of 40**, while **380 of 386** `/Form` XObjects carry one. `extract.py` reads `page.Resources.Font` and the page stream, so it sees nothing. **Not a parse failure — a scope failure** |
+| resource key as a join key is safe here | **0 of 40** figures have one key mapping to two BaseFonts; only two key names exist (`/T1_0`, `/TT0`). Positive control: 380 form font dicts. **So detect a conflict loudly; do not design around one** |
+| pdfplumber descends into forms | 19 chars on `CNX_Chem_02_00_Biomarkers`, where the baseline reads **0** |
+| `x`/`y` must come from the matrix | same figure, first char: `matrix[5] = 56.6582` vs `y0 = 53.9312` — **2.727 pt**, the descender |
+| coverage | baseline **504** of 779 text-bearing; pdfplumber **779**, with **0** real regressions on the measured `.pdf` set and **0** real character losses across all 280 EPS |
+
+### Task R1: The acceptance harness — built FIRST, and proven able to go RED
+
+🔴 **THIS TASK SHIPS NO READER. It ships the instrument that judges one.** Building the
+reader first and the harness afterwards is how a harness gets tuned until it agrees with
+whatever was built — the failure this campaign has already paid for twice.
+
+**Files:**
+- Create: `experiments/figure-text-translation/read_layer_accept.py`
+- Read only: `text-coverage-efnafraedi-2e.json`, `sources.py`, `pdftext.py`, `_deps.py`
+
+**The population is the committed census, never a fresh crawl.** Load
+`text-coverage-efnafraedi-2e.json` (1,148 rows) and take the four text-bearing buckets:
+`page-text` (496), `form-text-only` (274), `type0-unreadable` (8), `text-but-unexplained` (1)
+= **779**. `photo` (71), `textless` (7), `unresolved` (253) and `ours-crashes` (38) are out.
+⚠️ **State the denominator in every line of output.** Two censuses in this campaign already
+disagreed because they resolved different populations.
+
+- [ ] **Step 1: Two reader entry points behind one interface.**
+
+```python
+def read_baseline(pdf_path) -> (runs, meta)   # today's extract.py path: pikepdf + pdftext.parse
+def read_candidate(pdf_path) -> (runs, meta)  # imports readlayer.py if it exists, else raises
+```
+
+⚠️ **`read_baseline` MUST build `widths` in `extract.py`'s shape** — `{fontkey: {charcode:
+width/1000}}`, keyed `'/' + name.lstrip('/')`. `read-layer-bakeoff.py` builds a *different*
+shape (`{'first':…, 'w':[…]}`), which `pdftext.parse`'s `w.get(ord(ch), 0.5)` silently misses,
+so every advance falls back to the 0.5 default. That did not matter for a word count; **it
+makes `adv` meaningless, and `adv` is criterion 4.** Copy `extract.py`'s loop, do not copy the
+bake-off's.
+
+- [ ] **Step 2: EPS staging, shared by both readers.** `.eps`/`.ai` → `gs -q -dNOPAUSE -dBATCH
+  -dSAFER -dEPSCrop -sDEVICE=pdfwrite -sOutputFile=<tmp>.pdf <src>`, 120 s timeout. **Both
+  readers must get the SAME converted bytes** — convert once per figure, hand the same path to
+  both. Converting twice makes any `gs` nondeterminism read as a reader difference.
+
+- [ ] **Step 3: The four criteria.**
+
+| # | criterion | the rule, and the trap |
+|---|---|---|
+| **C1** | **Regression control** — on figures the baseline reads, the candidate must lose no text | 🔴 **COMPARE CHARACTER MULTISETS** (`collections.Counter` over all run text, whitespace stripped), **NEVER word counts.** A word-count comparison across readers that segment differently produced **155 false regressions** of which **0** were real. Report `missing = baseline_counter - candidate_counter`; a figure is a regression iff that is non-empty |
+| **C2** | **Positive control** — on figures the baseline reads as empty, the candidate must return non-empty runs | this is the 274+8+1 set. **Report it as a COUNT OF FIGURES GAINED, and name the ones still empty** |
+| **C3** | **Oracle agreement** — `pdftotext -q <pdf> -` (poppler, independently implemented) | disagreement about *whether a figure has text at all* is a finding. **Not a character diff** — poppler normalises differently |
+| **C4** | **Field conformance** — on figures BOTH read, the nine fields agree | `font` compared **as a join key** (does it resolve in `meta.fonts`?), not as a string equal to the baseline's. `x`/`y` compared **as baseline origins**, tolerance 0.01 pt. `adv` tolerance **2%**, and report the distribution, not just pass/fail |
+
+🔴 **AND ONE CRITERION THE CONTRACT DOES NOT NAME, WHICH IS THE ONE THAT COSTS MONEY:**
+
+| **C4b** | **BLOCK-KEY conformance** | Runs are an intermediate; **the block key is what is bought, what keys the sidecar, and what the editor sees.** For every figure both read, derive blocks with `figtext.merge_blocks(figtext.group(runs))` and the emit-side key rule, and compare the **key SETS**. Report set equality, plus added/dropped keys. ⚠️ **A field-by-field pass with different block keys is a failure**, because `figtext.group`'s adjacency test amplifies small `adv` errors into different cuts |
+
+- [ ] **Step 4: 🔴 PROVE THE HARNESS CAN FAIL — `--selftest`, and it is not optional.**
+
+A harness that has never been red proves nothing. `--selftest` runs three assertions and exits
+non-zero if any fails:
+
+1. **Plumbing** — baseline vs baseline over a 40-figure sample of `page-text`: C1 regressions
+   **0**, C4 mismatches **0**, C4b block-key set differences **0**. *(If this is not clean, the
+   comparator is broken, not the reader.)*
+2. **Sensitivity** — inject a mutant reader that drops the last run of every figure; C1 must
+   report a **non-zero** regression count on that same sample. *(A comparator that cannot see a
+   deleted run cannot see a lost one.)*
+3. **The positive-control set is genuinely failing today** — over a 40-figure sample of
+   `form-text-only`, the BASELINE must read **0** figures. If it reads any, the census bucket
+   and the reader disagree and the whole population is suspect.
+
+⚠️ **Assertion 2 is the one that will be skipped.** Without it C1 is a null with no control,
+and this repo's own rule is that a null without a positive control is not an answer.
+
+- [ ] **Step 5: Output.** `--json <path>` writes per-figure rows; stdout prints a summary with
+  the denominator on every line. **Never `process.exit`-equivalent after writing** — this is
+  Python, so `sys.exit(code)` after the write is fine, but flush first.
+
+- [ ] **Step 6: Run `--selftest` and paste the output into the report.** Then run the full
+  baseline-vs-baseline pass over all 779 and record the wall-clock; the candidate run must fit
+  the same budget.
+
+- [ ] **Step 7: Commit.** `test(M5 R1): the read-layer acceptance harness, with a proven-red selftest`
+
+---
+
+### Task R2: `readlayer.py` — the pdfplumber adapter
+
+**Files:**
+- Create: `experiments/figure-text-translation/readlayer.py`
+- Modify: `experiments/figure-text-translation/extract.py` (delegate to it; keep the CLI)
+- Test: `experiments/figure-text-translation/test_readlayer.py`
+
+**The seam is unchanged and that is the whole point:** `extract.py <artwork>` still writes
+`out/runs.json` + `out/meta.json` and still prints the same lines. `emit-blocks.py` already
+spawns it as a subprocess, so **nothing downstream changes and the library-vs-subprocess
+question in the contract is answered by keeping the existing boundary.**
+
+- [ ] **Step 1: Read `compose.py` lines 45–70 and `figtext.py` before writing.** They are the
+  consumers; the contract describes them but they are the authority.
+
+- [ ] **Step 2: Write the failing tests** (`test_readlayer.py`, plain-assert style like
+  `test_sources.py` — this experiment does not use pytest). **At least one test must fail if
+  the reader does not actually work** — a suite of refusals is forbidden (§C137 D11).
+
+Cases:
+1. **A `form-text-only` figure returns non-empty runs.** `CNX_Chem_02_00_Biomarkers` — measured
+   19 chars via pdfplumber, **0 runs** via the baseline.
+2. **`font` resolves as a join key**: every `run['font']` is a key of `meta['fonts']`.
+3. **`x`/`y` are baseline origins**: for a known char, `y != y0`. Measured on
+   `CNX_Chem_02_00_Biomarkers`'s first char: `matrix[5] = 56.6582`, `y0 = 53.9312` — a 2.727 pt
+   descender. **Asserting `y == y0` would pass on the wrong value.**
+4. **`fill` is a 5-tuple `compose.cmyk()` can unpack** — `_, c, m, y, k = f`. Assert
+   `len(fill) == 5 and fill[0] == 'cmyk'` for every non-null fill.
+5. **A `/Type0` figure reports `decodable: false`** and none of its runs is `send:true`.
+   Population: the 8 `type0-unreadable` figures, e.g. `CNX_Chem_01_02_decomp`.
+6. **A textless figure returns `[]`, does not raise** (H8).
+7. **`meta['source']` basename is the ORIGINAL artwork's**, for an `.eps` input.
+
+- [ ] **Step 3: Run and watch them fail.**
+
+- [ ] **Step 4: Implement.** The nine fields, and the traps that fail silently:
+
+| field | derivation | the trap |
+|---|---|---|
+| `text` | join of the run's chars | pdfminer already unescapes and maps encodings — **do not re-apply `winansi()`** |
+| `font` | 🔴 **the RESOURCE KEY**, via a BaseFont→key map built with **pikepdf** over the page `/Resources/Font` **and every `/Form` XObject's own**, recursively | pdfplumber gives `fontname` = the **BaseFont**, with **no leading slash**; pikepdf's `/BaseFont` has one. Normalise both sides or every join misses and **every bold label silently renders regular** |
+| `size` | `hypot(m[0], m[1])` of `char['matrix']` | **verify against `char['size']` across the corpus and report the disagreement rate.** The contract defines it as the Tf operand × matrix scale; if pdfminer folds the size into the matrix these coincide, and if it does not, they do not. **Do not assume — measure and record which you used** |
+| `rot` | `degrees(atan2(m[1], m[0]))` | — |
+| `x`,`y` | `char['matrix'][4]`, `[5]` | 🔴 **NOT `x0`/`y0`** — those are bbox corners. Measured 2.727 pt apart |
+| `adv` | 🔴 **derive from POSITIONS**: project (last char origin − first char origin) onto the baseline unit vector, plus the last char's own advance | **NEVER `sum(char['adv'])`** — pdfminer's per-char `adv` excludes `Tc`, `Tw` and `TJ` kerning, which move the line matrix rather than the glyph. An `adv` off by a constant factor silently **changes where blocks are CUT**, i.e. what gets bought |
+| `fill` | normalise EVERY colour space to `('cmyk', c, m, y, k)` | `compose.cmyk()` does `_, c, m, y, k = f` and **raises on any other arity**. DeviceRGB → `(1-r, 1-g, 1-b, 0)`-style conversion, DeviceGray → `(0,0,0,1-g)`. This is **H6** — the baseline records `k` only. **A 2-component space (H7) must be RECORDED, never silently dropped**: emit a null fill and count it in `meta` |
+| `tm` | `list(char['matrix'])` | — |
+
+**Run aggregation — pdfplumber gives CHARS, not runs.** Start a new run when fontname, size
+(±0.2) or rotation (±3°) changes, or when the next char's origin is not baseline-adjacent to
+the previous one's advance. 🔴 **The success criterion is NOT "the same runs as the baseline" —
+it is the same BLOCK KEYS after `figtext.group` + `merge_blocks` (harness C4b).** Tune
+aggregation against that, not against run counts.
+
+**Open with `laparams=None`** (pdfplumber's default). **Any `LAParams` triggers layout analysis
+and reorders chars into textboxes**, silently destroying content-stream order — which
+`figtext.group` depends on, since it walks `zip(runs, runs[1:])`.
+
+**Font conflict = a loud refusal, not a silent pick.** Build the BaseFont→resource-key map over
+page + all forms. If one resource key maps to two different BaseFonts within one figure, record
+`fontKeyConflict: [...]` in `meta` and **name it on stderr**. ✅ **Measured base rate: 0 of 40
+figures, with 380 of 386 form XObjects carrying a `/Font` resource as the positive control, and
+only two key names (`/T1_0`, `/TT0`) in play corpus-wide.** So this refusal should never fire —
+**if it fires, that is news, which is exactly why it must not be silent.**
+
+⚠️ **`meta.fonts[*].last` is UNDEFINED for a `/Type0` font** — CID fonts carry `/W`, not
+`/FirstChar`/`/LastChar`. **Do not fake a value and do not crash.** The subset signal is the
+standard `ABCDEF+` prefix on the BaseFont; use it, and emit `last: null`. ⚠️ `extract.py`'s
+subset warning tests `d['last'] < 200`, so **it must be updated to tolerate `None`** or it
+raises on the first Type0 figure.
+
+**H2's positive signal exists and must be used:** pdfminer emits the literal substring `(cid:`
+for an undecodable CID. A font whose text contains it gets `decodable: false` in `meta.fonts`,
+and **its runs are never eligible for `send:true`.** This is what stops control-byte garbage
+reaching the paid MT.
+
+**EPS/AI:** stage via `gs` (as R1 Step 2). 🔴 **`meta['source']` MUST be the ORIGINAL artwork
+path**, never the converted temp file — the publisher cross-checks
+`basenameFromMeta(meta.json)` against the sidecar key, and a mismatch is refused **after
+payment**, on every run, for ever.
+
+- [ ] **Step 5: Run the tests, then the harness.** `python3 read_layer_accept.py --selftest`
+  must still pass, then the full run. **Record C1, C2, C3, C4, C4b with denominators.**
+
+- [ ] **Step 6: Commit.** `feat(M5 R2): replace the figure read layer with a pdfplumber adapter`
+
+---
+
+### Task R3: `strip-text.py` must descend into `/Form` XObjects
+
+🔴 **WITHOUT THIS, R2 MAKES THINGS WORSE, NOT BETTER.** `strip-text.py` does
+`re.sub(r'BT.*?ET', '', content)` on the **page** stream only. Once R2 can read the 274
+form-text figures, their English is extracted, translated and composed — while the original
+English **survives inside the form and is drawn underneath**. Measured shape: 14 English words
+in, 14 English words still on the artwork.
+
+**pdfplumber cannot do this** — it reads, it does not write. **Stay on pikepdf.**
+
+**Files:** Modify `experiments/figure-text-translation/strip-text.py`; test in `test_readlayer.py`.
+
+- [ ] **Step 1: Write the failing test.** On `CNX_Chem_02_00_Biomarkers` (or another
+  `form-text-only` figure), assert that after stripping, **no reachable stream contains a `BT`
+  token** — page stream *and* every `/Form` XObject's, recursively. Positive control in the
+  same test: assert the figure had **> 0** `BT` blocks before stripping, or the assertion
+  passes on a figure that never had any.
+
+- [ ] **Step 2: Implement.** Walk `/Resources/XObject`; for each with `/Subtype /Form`, read its
+  stream, `re.sub(r'BT.*?ET', '', …, flags=re.S)`, write it back with `pdf.make_stream`, and
+  **recurse into that form's own `/Resources/XObject`**.
+
+⚠️ **A form object can be referenced from more than one place.** Rewrite each *object* once —
+key on `pikepdf.Object.objgen` — or a shared form is processed twice and the second pass
+operates on already-stripped bytes (harmless) while a **cycle** hangs (not harmless). **Guard
+with a visited set.**
+
+⚠️ **Depth is measured, not assumed** — report the maximum nesting depth found across the
+`form-text-only` population in the task report.
+
+- [ ] **Step 3: Run the test, then re-run `read_layer_accept.py --selftest`.**
+
+- [ ] **Step 4: Commit.** `fix(M5 R3): strip text inside /Form XObjects, not just the page stream`
+
+---
+
+### Task R4: The Task-0 repairs that SURVIVE the respec (batch — one dispatch)
+
+These are independent of the reader and each is a small edit. **Do them as one batch.**
+
+| # | file | change |
+|---|---|---|
+| **P3** | `figtext.py` | `if not runs: return []` in `group()`; `if not blocks: return []` in `merge_blocks()`. Both index `[0]` unguarded today |
+| **P6** | `sources.py` | a configured-but-absent tree root **REFUSES** rather than falling through to the next tree. Add the case to `test_sources.py`, **with a positive control**: with all roots present, resolution still succeeds |
+| **P8** | `emit-blocks.py`, `compose.py`, `census.py` | 🔴 **DELETE the blank-run filter from `emit-blocks.py`; DO NOT add one to `compose.py`.** Then put the key derivation in **ONE function both import** — `census.py` is a THIRD consumer holding the emit-side view and must move too, or its counts match neither |
+
+🔴 **P8's ruling is by measurement, and a one-figure check gives the WRONG answer.** Deleting
+emit's filter leaves `compose.py` byte-identical and the composed image **0 pixels** different,
+and costs **194 characters / 1.94 ISK** corpus-wide. Adding compose's filter moves block
+boundaries on **32 of 393** figures and corrupts the `--control` oracle. `SciMethod` shows no
+movement because all 3 of its blank runs are in *arc* blocks; **188 of 243 corpus-wide are not.**
+
+⚠️ **If a blank filter is ever wanted again, its predicate must be `text == ''`, NEVER
+`not text.strip()`** — a font declaring `/Differences [31, /uni03B1]` makes `\x1f` an alpha, and
+`'\x1f'.isspace()` is `True`, so the Greek letter is deleted and the label splits around it.
+
+- [ ] **Commit.** `fix(M5 R4): the Task-0 repairs the read-layer respec leaves standing`
+
+---
+
+### Task R5: Run acceptance for real, close criterion 5, and land the licence
+
+- [ ] **Step 1: Full acceptance run** over all 779, candidate vs baseline. Write
+  `experiments/figure-text-translation/READ-LAYER-ACCEPTANCE.md` — a committed, banner-dated
+  evidence artefact carrying C1–C4b **with denominators**, the wall-clock, and every figure
+  still empty after the swap, **named**.
+
+- [ ] **Step 2: 🔴 Criterion 5 — the round trip, which is the only check that sees the whole
+  chain.** On at least one `page-text` figure (`CNX_Chem_01_01_SciMethod`) **and at least one
+  `form-text-only` figure: `extract → strip-text → compose --control → check.py`.
+
+🔴 **DO NOT GATE ON `check.py`'s PERCENTAGE.** Its own header warns *"Read the overlay, not the
+percentage. Antialiasing between two rasterisers swamps layout error"* — **fixing four real
+placement bugs moved the scalar 3.00% → 2.70% while the overlay changed completely.** Compare
+`ITEMS` (the drawn string plus its x/y/size/rot) run-for-run, which is exact, and keep the
+overlay image as evidence.
+
+▶ **The `form-text-only` figure is the one that matters**: it is the only check that can show
+English surviving *under* the composed text, which is R3's failure mode and which C1–C4b
+structurally cannot see.
+
+- [ ] **Step 3: The licence.** ✅ **[USER] RULED 2026-09-06: `experiments/` is MIT, same as
+  `tools/` and `scripts/`.** Add it to the root `LICENSE`'s path table. Rationale to record:
+  `tools/figure-run.js` is MIT and spawns this tree, so anything else creates a new
+  MIT→copyleft edge beside known gap E-2. ⚠️ **Nothing third-party is vendored** — `pylibs/` is
+  gitignored — so the repo distributes no dependency code; the ruling is about *our* code.
+  For the record: pdfplumber **MIT** (new), pikepdf **MPL-2.0** and pycairo
+  **LGPL-2.1-only OR MPL-1.1** (both already used by the KEPT layer), all import-only.
+
+- [ ] **Step 4: The CI sentence.** State in the evidence artefact, in writing: **the Python
+  suite is NOT a CI gate — no workflow runs Python.** Name the hand-run commands and their
+  expected output. *(Without this sentence a green CI reads as evidence the Python side passed.)*
+
+- [ ] **Step 5: Root `npm test`** — it must be unaffected; this branch touches no JS on the
+  tested paths. Run it from the repo root and record the result. ⚠️ **Never `npm test | tail`**
+  — the pipe's exit code masks a red suite.
+
+- [ ] **Step 6: Commit.** `docs(M5 R5): read-layer acceptance evidence, and experiments/ is MIT`
 
 ---
 
