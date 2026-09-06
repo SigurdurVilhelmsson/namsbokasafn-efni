@@ -1,5 +1,19 @@
 # M5 Figure Driver Implementation Plan
 
+> 🔴 **DO NOT EXECUTE AS WRITTEN — THIS PLAN FAILED ITS BLIND ADVERSARIAL REVIEW (2026-09-06).**
+> 16 CONFIRMED defects, 4 partial, 0 refuted, in the two families that matter: **silent failure**
+> and **spend safety**. The architecture, the six-task shape and every [USER] ruling SURVIVE —
+> what failed is the **wiring between stages** and the **order of write-vs-refuse**.
+> ▶ **REVISE against register §C137 first. Revise, do not re-design.**
+>
+> The three that will bite first: the **paid stage cannot honour `--out`** (isolation stops one
+> stage short of the money, so every figure would translate from the shared directory);
+> **`compose.py` keeps English on a missing key and says so only on stdout**, which this plan's
+> wrapper never reads; and **the sidecar is written before publish can refuse**, so a figure whose
+> publish fails is paid for and then reported `skipped-current` for ever.
+> ⚠️ And **Task 3's tests are satisfiable by a `figure-prepare.py` that cannot process any real
+> artwork** — they assert only refusals.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Make one chapter's figures processable end to end, unattended, so an editor sees each translated figure beside its module.

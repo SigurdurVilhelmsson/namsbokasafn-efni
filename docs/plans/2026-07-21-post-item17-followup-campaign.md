@@ -4,7 +4,9 @@
 
 ## ⏩ RESUME — state as of **2026-09-06 (EVENING — context handoff)** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — **EXECUTE the M5 figure-driver plan, in a FRESH SESSION.**
+### ⏭ SINGLE NEXT ACTION — **REVISE the M5 plan against §C137, THEN execute it.**
+
+🔴 **THE PLAN FAILED ITS BLIND REVIEW — 16 CONFIRMED defects, 0 refuted. DO NOT EXECUTE IT AS WRITTEN.** The architecture, the six-task shape and every [USER] ruling survive; what failed is the WIRING BETWEEN STAGES and the ORDER of write-vs-refuse. **Revise, do not re-design.** → §C137
 
 **Plan:** [`docs/superpowers/plans/2026-09-06-m5-figure-driver.md`](../superpowers/plans/2026-09-06-m5-figure-driver.md) · **Spec:** [`…/specs/2026-09-06-m5-figure-driver-design.md`](../superpowers/specs/2026-09-06-m5-figure-driver-design.md)
 **Mode:** [USER] chose **`superpowers:subagent-driven-development`** — fresh agent per task, two-stage review between. Six TDD tasks. **NO CODE EXISTS YET.**
@@ -378,6 +380,40 @@ On mismatch, keep the **translation** and strip that type's markers to plain tex
 **Scope of the re-buy, measured:** ch03 is **141,754 bytes across 6 modules**. Three carry known corruptions and they are the LARGE ones — `m68700` (62,982 B, `sjálfkvæm`+`tilbrigði`), `m68702` (25,056 B, `felli`), `m68703` (32,812 B, `sjálfkvæm`+`ílend`); `m68704`/`m68699` are clean. ▶ **Scoping the re-MT with `--module` to just the three saves only ~15% of the bytes, while leaving the ~1,600 unjudged fallback rows unaudited in the other modules. Buy the whole chapter.** Estimate against the measured band 1,237–3,132 ISK, billed ≈0.75× — **quote a range, never a point.**
 
 ⚠️ **This is the SECOND chapter re-bought for this mechanism** (organic ch03 cost ~742 ISK). **That is the argument for finishing the glossary properly now rather than per-chapter** — the ~1,600 unjudged chemistry rows are the largest unquantified exposure on the list, and every chapter bought before they are judged is a candidate for a third re-buy.
+
+### §C137 — **THE M5 PLAN FAILED ITS BLIND REVIEW: 16 CONFIRMED, 4 PARTIAL, 0 REFUTED. DO NOT EXECUTE IT AS WRITTEN.**
+
+[USER]-authorised Fable-5 blind adversarial review of `docs/superpowers/plans/2026-09-06-m5-figure-driver.md`, scoped to **silent failure** and **spend safety** only (mechanical critique explicitly discarded). 24 agents, 0 errors. Reviewers were blind — fresh agents reading the plan and spec as artifacts, instructed to verify against the TREE rather than the plan's own prose.
+
+🔴 **THE HEADLINE IS A COMPOSITION OF TWO INNOCENT-LOOKING GAPS, AND IT IS EXACTLY THE FAILURE THE SPEC'S OWN VERDICT SECTION EXISTS TO PREVENT.**
+- `translate-blocks.mjs` has **no `--out`**: `KNOWN_FLAGS` is `--book/--dry-run/--no-glossary`, it rejects anything else, and it reads its blocks from and writes its translations to the **SHARED** `experiments/figure-text-translation/out/` by hardcoded path. **The spec's data flow says `--out T/…`; the plan says Task 5 "Produces: unchanged CLI".** Neither threads isolation into the only stage that costs money.
+- `compose.py` **keeps the English** for any key it cannot match, reports it **only on stdout**, and exits **0**. The plan's `figure-compose.py` reads `returncode` and `stderr` and never reads stdout.
+▶ **Composed: every figure tallied `translated`, English text in the image, a green verdict, ~36 ISK for a chapter that produced nothing, and a sidecar asserting ANOTHER FIGURE's labels in the editor.**
+✅ **Reproduced in an isolated scratch copy with a positive control** — wrong keys → exit 0, `translated.svg` 39,948 B containing `>Boiling<`/`>Fahrenheit<` and **zero** Icelandic; control with the real translations → `>Suðumark<`/`>Frostmark<`/`>Selsíus<`, 0 `Boiling`.
+🔴 **AND THE OBVIOUS FIX IS DEFEATED: a CORRECT run also prints `!! N block(s) … ENGLISH KEPT`** for the `send:false` verbatim blocks. **So the check must compare COUNTS, never the warning's presence.**
+
+**The distinct defects, deduplicated (several were found independently by different lenses — corroboration, not multiplicity):**
+
+| # | defect | family |
+|---|---|---|
+| D1 | the paid stage cannot honour `--out`; isolation stops one stage short of the money | spend + silent |
+| D2 | `compose.py`'s missing-key silence, swallowed | silent |
+| D3 | **the sidecar is written BEFORE publish, and "current" derives from sidecar existence** — so a figure whose publish is refused is paid for, then reported `skipped-current` on every later run: a lost figure the summary names as done | silent |
+| D4 | `unmapped` is reached only AFTER paying, and is **structurally circular** — the map is derived from `_IS.*` files in `media/`, and the publisher refuses to write that file until the map entry exists. **A second bootstrap deadlock.** | spend |
+| D5 | `--stale`/`--force` feed every figure through the full pipeline including **re-paying**; no branch composes from the sidecar's existing blocks | spend |
+| D6 | **`--module` is accepted and nothing reads it** — the declared-but-unimplemented-flag shape (§C83) the plan's own Global Constraints forbid | spend |
+| D7 | enumeration takes **every** `<image src>`, including ch04's 12 non-figure images; the review surface lists only `type === 'figure'` nodes, so those could never be reviewed | silent |
+| D8 | `copied-textless` and most of `copied-photo` are **unreachable** — the chain crashes on a PDF it cannot parse rather than returning zero blocks | silent |
+| D9 | an empty/missing MT `text` is published as English in a figure tallied `translated`, and its key is absent from the sidecar so the editor gets **no review row** | silent |
+| D10 | *(PARTIAL)* edition precedence is asserted but not enforceable: the precedence-winning tree is **EPS-only** and `figure-prepare.py` cannot open EPS; a missing tree root falls back **silently** | silent |
+| D11 | *(PARTIAL)* **Task 3's tests are satisfiable by a `figure-prepare.py` that cannot process any real artwork** — they exercise only failure paths | test design |
+
+⚠️ **D11 IS THE ONE TO INTERNALISE: THE TESTS I WROTE COULD PASS WITHOUT THE THING WORKING.** Every Task 3 case asserts a refusal; none asserts that a real figure prepares. That is this repo's vacuous-test shape, committed by the person who wrote the rule into the same plan's Global Constraints.
+⚠️ **Reachability caveat the reviewers supplied unprompted, and it does not refute:** `emit-blocks.py` spawns `'extract.py'` **cwd-relative** and the plan sets no `cwd=`, so from the driver's cwd every figure is a loud `failed-prepare` **before** the silent path is reached. A one-line fix any implementer must make — which is precisely why it cannot be relied on as a guard.
+✅ **The reviewers struck two of their own sub-claims** (unicode normalisation, arc/non-arc disagreement) as not real mechanisms here. Calibration worth noting: this was not a pile-on.
+
+▶ **CONSEQUENCE: the plan needs a revision pass BEFORE execution.** The architecture, the six-task shape and every [USER] ruling survive untouched — what failed is the wiring between stages and the ordering of write-vs-refuse. **Revise, do not re-design.**
+📋 Full report: `/tmp/…/tasks/wze3gv7l2.output` is session-local; the survivors' reasoning and evidence are in the workflow journal. **The table above is the durable record.**
 
 ### §C136 — **ch04 BOUGHT: the retry ruling's rate data, and a FALSE POSITIVE that changes what "held back" means**
 
