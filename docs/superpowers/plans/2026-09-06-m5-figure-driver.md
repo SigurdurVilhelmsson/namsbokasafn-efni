@@ -175,10 +175,30 @@ bake-off's.
 
 | # | criterion | the rule, and the trap |
 |---|---|---|
-| **C1** | **Regression control** — on figures the baseline reads, the candidate must lose no text | 🔴 **COMPARE CHARACTER MULTISETS** (`collections.Counter` over all run text, whitespace stripped), **NEVER word counts.** A word-count comparison across readers that segment differently produced **155 false regressions** of which **0** were real. Report `missing = baseline_counter - candidate_counter`; a figure is a regression iff that is non-empty |
+| **C1** | **Regression control** — on figures the baseline reads, the candidate must lose no text. 🔴 **EXCLUDING the 8 `type0-unreadable` figures — see the ruling below** | 🔴 **COMPARE CHARACTER MULTISETS** (`collections.Counter` over all run text, whitespace stripped), **NEVER word counts.** A word-count comparison across readers that segment differently produced **155 false regressions** of which **0** were real. Report `missing = baseline_counter - candidate_counter`; a figure is a regression iff that is non-empty |
 | **C2** | **Positive control** — on figures the baseline reads as empty, the candidate must return non-empty runs | this is the 274+8+1 set. **Report it as a COUNT OF FIGURES GAINED, and name the ones still empty** |
 | **C3** | **Oracle agreement** — `pdftotext -q <pdf> -` (poppler, independently implemented) | disagreement about *whether a figure has text at all* is a finding. **Not a character diff** — poppler normalises differently |
 | **C4** | **Field conformance** — on figures BOTH read, the nine fields agree | `font` compared **as a join key** (does it resolve in `meta.fonts`?), not as a string equal to the baseline's. `x`/`y` compared **as baseline origins**, tolerance 0.01 pt. `adv` tolerance **2%**, and report the distribution, not just pass/fail |
+
+🔴 **CONTROLLER RULING — THE CONTRACT'S `504` AND THE CENSUS'S `496` ARE THE SAME MEASUREMENT,
+AND THE 8-FIGURE DIFFERENCE IS A TRAP IN THE ACCEPTANCE CRITERIA ITSELF.** Arithmetic:
+`496 page-text + 8 type0-unreadable = 504`, and `274 form-text-only + 1 unexplained = 275`.
+So the contract's *"the 504 figures the current reader reads"* **includes the 8 whose text is
+control-byte garbage** — the baseline returns non-empty runs for them, which is precisely the
+defect H2 exists to stop.
+
+▶ **C1 and H2 therefore CONTRADICT each other on exactly those 8 figures**, and the contract does
+not say so. Applied naively, C1 demands the candidate **preserve garbage** and an implementer
+would "fix" a real improvement back out.
+
+**The ruling: C1's population is the 496 `page-text` figures, not 504.** The 8 `type0-unreadable`
+figures get their own criterion — and it is a POSITIVE assertion, not an exemption, because
+"returns less" is indistinguishable from "returns nothing":
+
+| **C1b** | **Type0 correctness** | On the 8 `type0-unreadable` figures the candidate must EITHER return correctly decoded text (via `/ToUnicode`) OR mark the font `decodable: false` in `meta.fonts`. **A silent reduction in output is a FAILURE of this criterion, not a pass.** Losing the garbage is the point; losing it *quietly* is the H2 defect wearing different clothes |
+
+⚠️ **Report C1 and C1b with their own denominators (496 and 8).** Rolling them into one "504"
+is what hid the contradiction in the first place.
 
 🔴 **AND ONE CRITERION THE CONTRACT DOES NOT NAME, WHICH IS THE ONE THAT COSTS MONEY:**
 
