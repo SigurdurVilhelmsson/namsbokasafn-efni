@@ -39,11 +39,35 @@ glossary).
 | # | milestone | gate — how you know it is done | cost |
 |---|---|---|---|
 | **M1** | **Chemistry's glossary is clean** | 🔴 **CORRECTED — the gate is `node tools/remt-sweep.js --tier 0 --with-spawns` PASSING on the DEPLOYED payload** (redirect, never pipe). **NOT "the removal-set intersection is zero"** — eight `-ium → -ín` rows are in no removal set, so that check can read zero while blocking gate G2 still halts the run. Sequence: deploy → concept edits → one FORCED export tick → re-run tier 0. ⚠️ Merge ≠ deploy ≠ export tick. → §C127 | 0 ISK |
-| **M2** | **Chemistry ch03 re-MT'd and published** | The rendered pages contain **0** of `tilbrigði`/`sjálfkvæm*`/`ílend*`/`felli*` (control: a term that SHOULD be there, e.g. `mól`), and `/content/efnafraedi-2e/chapters/03/…html` is live **by byte size** with a 404 control. | **paid** |
+| **M2** | **Chemistry ch03 re-MT'd and published** | The rendered pages contain **0** of `tilbrigði`/`sjálfkvæm*`/`ílend*`/`fellihóp*` (control: a term that SHOULD be there, e.g. `mól`), and `/content/efnafraedi-2e/chapters/03/…html` is live **by byte size** with a 404 control. | **paid** |
 | **M3** | **Organic's extraction gaps closed** | A re-extract of any organic chapter emits **alt segments > 0** for its exercises (control: module alt segments still emitted), and the 32 markup-bearing `<document><title>` modules emit their real title rather than a donated one. **`table@summary` has a written [LEAD] ruling** either way. | 0 ISK |
 | **M4** | **Organic ch03 completed and published** | **0** English alt attributes on its rendered pages (control: the Icelandic ones still score Icelandic), and its pages live by byte size. | **paid** |
 | **M5** | **Step 3 is runnable** | One chapter's figures processed end to end **unattended**, writing a `books/<slug>/figure-text/<basename>.is.json` sidecar an editor can actually see — with text-less figures SKIPPED and counted, not crashing. | small |
 | **M6** | **The loop is running** | A chapter bought under clean preconditions completes all six steps and reaches a reader, and step 6 surfaces a defect class **already known** rather than a new one. | **paid** |
+
+🔴 **M2's GATE WAS CORRECTED 2026-09-06 — IT LISTED A TOKEN THAT FIRES ON CORRECT ICELANDIC, AND A
+GATE THAT CANNOT PASS IS AS BROKEN AS ONE THAT CANNOT FAIL.** The row read `…/felli*`. Measured on
+chemistry ch03: **every** `felli` match — in `02-mt-output` and in the rendered pages — is
+`tilfelli`, the ordinary word for *case*, rendering the English "in the case of". Its source row
+`case → tilfelli` [biology] is **correct and still in the glossary**; so is `precipitation →
+útfelling` [chemistry], which generates `felli` forms book-wide.
+▶ **AND THE ROW BLAMED FOR IT NEVER FIRED HERE AT ALL:** `functional → felli` [physics] was the
+organic defect (`fellihóp*`), and English *functional* occurs **0 times** in chemistry ch03
+(control: 48 in ch20). **The `felli* ×2` this register recorded for chemistry ch03 was `tilfelli`
+misclassified as contamination from the first entry onward.**
+▶ **Anchored to `fellihóp*`, not dropped** — three adversarial refuters agreed: dropping it loses
+coverage of the real organic shape, while the substring form trips on two correct chemistry rows.
+⚠️ **"Unpassable" is the wrong word and the refuters were right to correct it: the model splits
+roughly 50/50 between `tilvik` and `tilfelli`, so the old token would have failed *by luck* on one
+run and passed *by luck* on the next.** A gate that passes by luck is the same defect as one that
+fails by luck.
+
+⏹ **AND M2's "published" HALF IS NOW CONDITIONAL — [USER] RULING 2026-09-06:** *nothing replaces
+published pages until the new output is demonstrated to be an improvement.* Nothing has been synced
+to production during this campaign; the MT-preview in use in schools is a pre-campaign vintage.
+**So M2's deliverable is the COMPARISON, not the sync** — corruption count at 0 with a live control,
+terminology consistency measured against the prior version, mechanics unregressed, and a sampled
+read by [USER] of the segments that moved most.
 
 ⚠️ **M1 AND M3 ARE THE REAL WORK; M2 AND M4 ARE THEIR PROOF.** Do not treat M2 as "publish chemistry" —
 it is "demonstrate the glossary fix reached readers". A milestone whose gate cannot fail is not a gate.
@@ -179,6 +203,47 @@ the OLD English, reproduces the defect exactly, and exits 0.
 **Measured cost, chemistry:** 1,237–3,132 ISK estimated per chapter (median ~1,884); billed runs
 **~0.75× the estimate** and the ratio is not constant (0.68–0.75 by book, 0.535–0.896 per module).
 **Quote a chapter as a range, never a point.**
+
+### Retrying a HELD-BACK module — the per-module path
+
+🔴 **EXIT 1 IS NOT A FAILED RUN.** A module with a bracket-marker delta or an id-reattach mismatch
+is **held back** from `--update-status` and forces `process.exit(1)` — but **its output IS written
+and the API call IS paid for either way**. Read the summary, not the exit code. `Failed: 0` with
+exit 1 means every module was bought and at least one needs review.
+
+🔴 **NEITHER OBVIOUS RETRY IS CORRECT.** `mtRunDecision` keys on FILE EXISTENCE, so after a
+held-back module:
+- a **bare re-run** reports `To translate: 0 / Already done: N`, translates nothing, exits 0;
+- a **bare `--force`** re-buys **every module in the chapter**, paying twice for the good ones.
+
+✅ **The retry is per-module** (verified 2026-09-06 by dry-run — `--module` is singular, one id per
+invocation, and requires `--chapter`):
+
+```bash
+# which modules were actually rewritten? today's date = already done
+grep -a generatedAt books/<slug>/02-mt-output/ch<NN>/*-provenance.json
+node tools/api-translate.js --book <slug> --chapter <N> --module <mNNNNN> --force [--no-glossary]
+```
+
+**Measured:** scoping to chemistry ch03's largest module priced at **~623 ISK** against **~1,408 ISK**
+for the whole chapter — so a retry costs its own module, not the chapter.
+
+▶ **[USER] RULING 2026-09-06 — A SPORADIC MARKER DEFECT IS RETRIED, NOT CODED AROUND.** Measured on
+two same-arm ch03 runs: 1 module of 12 module-runs was held back, and **the second run got both
+defects right unaided**. Retry ≈ 175 ISK for an average module. ▶ **And the proposed code fix
+measured WORSE than the retry**: unwrapping the invented markers yields `C2H5O2N`, while the clean
+run naturally produced `C neðanskrift 2 H neðanskrift 5 …` — spelling "subscript" out in words, which
+is what the English does deliberately for screen readers. **Spend on guards and the occasional
+in-loop re-MT, not on code that ships inferior text.** → register §C134 for the two classes and the
+one measured blind spot.
+
+⚠️ **THE RULING DEPENDS ON THE DEFECT BEING DETECTED, AND THAT IS VERIFIED — DO NOT EXTEND IT TO A
+SILENT ONE.** Four guards cover invented/dropped markers: `bracketMarkerDelta` (**per segment, per
+type** — deltas that sum to zero are still counted in `segmentsWithDelta`, so it does not fall into
+the cancelling-tally trap), `reattachIds`' count guard, inject's residue check (which **refuses the
+module**), and `unwrapInventedMarkers` for unknown types. **A defect no guard sees is a different
+decision.**
+
 
 ---
 

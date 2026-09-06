@@ -300,6 +300,59 @@ On mismatch, keep the **translation** and strip that type's markers to plain tex
 
 ⚠️ **This is the SECOND chapter re-bought for this mechanism** (organic ch03 cost ~742 ISK). **That is the argument for finishing the glossary properly now rather than per-chapter** — the ~1,600 unjudged chemistry rows are the largest unquantified exposure on the list, and every chapter bought before they are judged is a candidate for a third re-buy.
 
+### §C134 — **TWO MARKER CLASSES, BOTH NONDETERMINISTIC, BOTH DETECTED — [USER] RULED: RETRY, DO NOT CODE AROUND**
+
+Surfaced by the ch03 re-buy (§C133). Both fired on `m68700` in run 1 and **neither fired in run 2**, same arm, same day, same source.
+
+| class | what happens | exposure, measured | caught by |
+|---|---|---|---|
+| **invented `[[sub:]]` inside an `alt` segment** | English alt spells the formula out for a screen reader (*"C **subscript** 2 H **subscript** 5 …"*); the model renders it as markup instead. `alt` is a plain-text attribute — a marker cannot live there, and it is an accessibility regression besides. | **392 alt segments** across **96 files**; 2,288 sub/superscript mentions book-wide (430 segments mention it, 392 of them alt) | `bracketMarkerDelta` → `sub +6`, chapter held back, exit 1; then inject **REFUSED the module** on residue |
+| **triple-nested marker truncated on the wire** | `[[term:Avogadro's number ([[i:N[[sub:A]]]])|term-00003]]` came back as `[[term:tala Avogadros ([[i:N[[sub:A]]` — no close, no id | **exactly 3 in the whole chemistry book**: ch03/`m68700`, ch06/`m68733`, ch08/`m68747` (against 457 double-nested, which are fine) | inject residue check refuses the module |
+
+🔴 **[USER] RULING 2026-09-06 — SPEND ON GUARDS AND THE OCCASIONAL IN-LOOP RE-MT, NOT ON CODE.** *"the MT run is supposed to be a one-off for each source module … re-running one module in 10-20 might be cheaper (MT cost vs development cost) than spending time on fixing something that is sporadic and unpredictable."* **The measurements support it, and one of them decides it:**
+- **Rate:** 1 module held back in **12 module-runs** (run 1: 1 of 6; run 2: 0 of 6).
+- **Retry price:** ~175 ISK for an average ch03 module, **~623 ISK** worst case (m68700, dry-run verified) against ~1,408 ISK for the chapter. Across 149 chemistry + 342 organic modules at ~8%, ≈8,000 ISK of retries for the entire project.
+- 🔴 **THE DECIDING MEASUREMENT: THE CODE FIX WOULD SHIP WORSE TEXT THAN THE RETRY.** The proposed rule (*a segment whose source held zero markers of type T unwraps every T-marker in its output*) yields `C2H5O2N`. **Run 2, unaided, produced `Massi C neðanskrift 2 H neðanskrift 5 O neðanskrift 2 N (g)`** — spelling *subscript* out in words, which is exactly what the English does deliberately. ▶ **A fix that costs development time AND degrades the artifact is not a fix.**
+
+⚠️ **THE RULING'S PREMISE IS "DETECTED, NEVER SILENT", AND THAT WAS VERIFIED — DO NOT EXTEND IT.** Four guards cover invented/dropped markers: `bracketMarkerDelta` (**per segment, per type**; a comment states that deltas summing to zero are still counted in `segmentsWithDelta`, so it does **not** fall into this repo's cancelling-tally trap), `reattachIds`' count guard (degrades the segment, records a mismatch), inject's residue check (**refuses the module**), and `unwrapInventedMarkers` (unknown types).
+🔎 **ONE MEASURED BLIND SPOT, LOGGED NOT FIXED:** a drop **and** an invention of the *same type in the same segment* cancels and passes every guard. It would surface as misplaced emphasis — cosmetic rather than corrupting, and visible to an editor reading the text. **A defect no guard sees is a different decision from this one.**
+
+⚠️ **`m68733` (ch06) is named in RC1's own commit message** (`2fbe4983`) as a module it fixed, and it is one of the 3 triple-nested sites. **Treat it as the canary when ch06 is bought.**
+⚠️ **RC1 IS NOT THIS AND DID NOT REGRESS.** It fixed `restoreGlossaryTermMarkup` **mis-anchoring at INJECT**; this is the model truncating on the **WIRE**, upstream of anything RC1 sees. Same term, same module, different stage — and the 09-01 run kept the marker perfectly intact, so the code path works.
+📋 **The per-module retry procedure is now in the loop plan's Step 2** (`--chapter N --module mNNNNN --force`) — neither obvious retry is correct.
+
+### §C133 — **ch03 RE-BOUGHT WITH NO GLOSSARY: 5 corruptions → 0, and the chapter's noise floor is 25.4%**
+
+[USER] 2026-09-06, having read §C130/§C131: *"removing the glossary from the MT runs and pipeline process, and spending more effort on beefing up the glossary assistant in the editor system … rather than continue to plug all possible holes the glossary inclusion in the MT creates."* ▶ Rather than fix three more rows to protect a mechanism under question, the ch03 re-buy was made the **experiment**. Two runs, `--no-glossary`, ~1,060 ISK each. Run 1 `db229078`, run 2 `5dbc9a6b`.
+
+🔴 **THE DIVERGENCE MATRIX — 745 aligned segments, whole chapter:**
+
+| comparison | differs | |
+|---|---|---|
+| **run 1 vs run 2 — same arm, SAME DAY** | 189/745 = **25.4%** | ← **the noise floor** |
+| 09-01 glossary vs run 1 no-glossary | 339/745 = 45.5% | 5 days apart |
+| 09-01 glossary vs run 2 no-glossary | 338/745 = 45.4% | 5 days apart |
+
+▶ **The two independent no-glossary runs land 0.1 points apart against the same reference — the instrument is stable and the 45.5% is not a fluke.** ~20 points sit above the floor, but that is glossary removal **plus five days of model drift, still combined**. Isolating them needs a same-day GLOSSARY arm, which was not bought. **Do not attribute the 20 points to the glossary.**
+🔴 **THIS CHAPTER'S FLOOR IS 25.4%, NOT §C131's 16% — AND THAT RETRO-INVALIDATES §C131's HEADLINE.** §C131 measured one 109-segment appendix module and explicitly warned against quoting its percentages as constants; it was right. **Its flagship "no glossary vs clean glossary = 25%" sits INSIDE this chapter's same-arm floor**, i.e. that number was never evidence of a glossary effect. ▶ **A noise floor must be measured per population, never inherited.**
+
+✅ **THE MEASUREMENT §C130 ASKED FOR, NOW MADE — INTERNAL TERMINOLOGY CONSISTENCY.** For each English term appearing in ≥3 segments, does one Icelandic stem appear in **all** of them (stems common to >40% of segments subtracted as background)? A **within-version** property, so drift cannot manufacture a difference:
+
+| version | terms with a stable signature |
+|---|---|
+| glossary run (09-01) | 198/448 = **44.2%** |
+| no-glossary run 1 | 200/448 = **44.6%** |
+| no-glossary run 2 | 199/448 = **44.4%** |
+
+▶ **0.4 points across three runs, with the two same-arm runs 0.2 apart — the glossary-vs-none difference is INSIDE the measure's own noise. The glossary buys no measurable terminology consistency, which is the one thing it was being kept for.** Control: the signatures found are real term pairs (`calcium→kalsí`, `cations→jónae`, `shows→sýnir`), not function-word noise.
+
+✅ **ATTRIBUTABLE — these rows were not on the wire, so this is causal, not drift:** `álagn*` 1→0 · `tilbrigði` 1→0 · `sjálfkvæm*` 2→0 · `ílend*` 1→0 · `hreint efni` 1→0 (run 1); control `mól` 334→332/333. **`mismatchCount` 0 on every module in both runs** — removing the glossary caused **no** count-guard degradation, so §C122's concern did not materialise (per-module wire glossary had been 231/129/109/103/23/3 terms, a 17–25% shrink, against the −77% that degraded organic m00037).
+
+🔴 **M1 WAS DECLARED MET AND ITS IN-DOMAIN TIER WAS NEVER APPLIED.** §C129/§C132 finished the **fallback** tier. Three `domain: chemistry` rows are still deployed **in both books**: `addition → álagning` (**newly found** — `álagning` is a *tax levy*; it corrupts the core reaction class as `álagningarhvarf`, `hringálagning` ×6, `álagningarafurð`; ~54 forms in chemistry's rendered pages, and organic has **922** English `addition` occurrences), plus §C128's two known-and-unapplied rows `valence → girðitala` (31 rendered forms) and `chemical substance → hreint efni`. ▶ **`domain: chemistry` was treated as evidence of correctness; no tier-0 gate can read an Icelandic value.** Not applied — the decision is downstream of whether the glossary stays on the wire at all.
+⚠️ **`hreint efni` is not always wrong:** run 2 produced it once, unprompted, in m68703 for a genuine pure-substance/mixture contrast. The §C128 defect is the row forcing it onto *chemical substance*, not the word.
+
+⚠️ **`*-fidelity.json` sidecars in `03-translated/mt-preview/ch03/` are all dated 2026-03-23 — inject does NOT rewrite them.** That artifact does not track the run; the log's per-module `[PERFECT fidelity]` tag is the live signal.
+
 ### §C131 — **THE PAID A/B: the glossary's aggregate effect is NEAR THE NOISE FLOOR, but a row that fires, fires DETERMINISTICALLY**
 
 [USER]-approved budget 600 ISK · **spent ~325 ISK** · 4 runs on ONE module, `appendices/m68866` (109 segments, 5,681 wire chars/run), chosen because it carries **0 paired markers** and 14 removed-set headwords including `structure` ×16, `form` ×13, `double` ×5.
