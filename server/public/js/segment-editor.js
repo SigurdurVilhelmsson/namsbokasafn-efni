@@ -886,14 +886,23 @@
     if (isHeadEditor) loadTerminologyReport();
   }
 
+  /** Most ids to list per violation before collapsing the rest into a count. */
+  const TERM_JUMP_LIMIT = 8;
+
   async function loadTerminologyReport() {
     const el = document.getElementById('review-summary-terms');
     if (!el || !currentModuleId) return;
+    const requestedModule = currentModuleId; // capture at call time
     try {
       const data = await fetchJson(
-        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/terminology-report`,
+        `${API_BASE}/${currentBook}/${currentChapter}/${requestedModule}/terminology-report`,
         { credentials: 'include' }
       );
+      // Stale: the editor switched modules while this was in flight. The two
+      // sibling fetches already guard this; before the ids were rendered it only
+      // meant stale text, but they are controls now and would move ANOTHER
+      // module's cursor and filters.
+      if (currentModuleId !== requestedModule) return;
       const violations = data.violations || [];
       if (!violations.length) {
         el.innerHTML = '<div class="text-muted">Engin hugtakafrávik.</div>';
@@ -902,11 +911,33 @@
       el.innerHTML =
         '<div class="rs-label">Hugtakafrávik</div>' +
         violations
-          .map(
-            (v) =>
-              `<div class="rs-term">„${escapeHtml(v.english)}“ &#8594; „${escapeHtml(v.expected)}“ <span class="rs-count">(${v.count})</span></div>`
-          )
+          .map((v) => {
+            // U2: buildModuleTerminologyReport has always returned `segments` per
+            // violation and this panel always dropped it, so a head editor was told
+            // a term was wrong N times with no way to reach the N. Rendering them
+            // uses the same .rs-seg shape as the spellcheck and repetition reports.
+            // Capped: chemistry measures ~2.8 terminology issues per segment and
+            // biology 4.8, so an uncapped list is hundreds of focusable buttons
+            // sitting ahead of the filter bar and the table in tab order.
+            const all = v.segments || [];
+            const shown = all.slice(0, TERM_JUMP_LIMIT);
+            const rest = all.length - shown.length;
+            const segs =
+              shown
+                .map((segId) => {
+                  const shortId = escapeHtml(segId.split(':').slice(1).join(':'));
+                  return `<button type="button" class="rs-jump" data-seg="${escapeHtml(segId)}" title="Fara í þennan bút">${shortId}</button>`;
+                })
+                .join(' ') + (rest > 0 ? ` <span class="rs-count">+${rest}</span>` : '');
+            return (
+              `<div class="rs-term">„${escapeHtml(v.english)}“ &#8594; „${escapeHtml(v.expected)}“ <span class="rs-count">(${v.count})</span></div>` +
+              (segs ? `<div class="rs-seg">${segs}</div>` : '')
+            );
+          })
           .join('');
+      el.querySelectorAll('.rs-jump').forEach((btn) =>
+        btn.addEventListener('click', () => jumpToSegment(btn.dataset.seg))
+      );
     } catch {
       el.innerHTML = '';
     }
@@ -1100,7 +1131,10 @@
     // O1: Close open edit panels before re-rendering to prevent losing typed text
     const openPanels = document.querySelectorAll('.edit-panel.active');
     if (openPanels.length > 0 && dirtyEdits.size > 0) {
-      if (!confirm(UI.confirm.closePanels)) return;
+      // Returns false so callers that MUTATED state to make this render happen
+      // (jumpToSegment widens the filters) can roll back instead of leaving the
+      // filter bar describing a table that was never rebuilt.
+      if (!confirm(UI.confirm.closePanels)) return false;
     }
     openPanels.forEach((panel) => {
       panel.classList.remove('active');
@@ -1165,6 +1199,7 @@
     }
 
     tbody.innerHTML = segments.map((seg) => renderSegmentRow(seg)).join('');
+    return true;
   }
 
   /**
@@ -1550,6 +1585,47 @@
       row.classList.add('kbd-cursor');
       row.scrollIntoView({ block: 'center', behavior: 'smooth' });
     }
+  }
+
+  /**
+   * U2: jump to a segment named in the head-editor review panel.
+   *
+   * The row may be filtered out of the current view, and `paintCursor` fails
+   * silently when its row is absent — which reads as a broken button rather than
+   * as an active filter. So widen the filters first when the target is not in the
+   * DOM, and only then paint.
+   * @param {string} segmentId - full segment id as the report emits it
+   */
+  function jumpToSegment(segmentId) {
+    if (!segmentId) return;
+    const rowFor = (id) => document.getElementById('row-' + cssId(id));
+
+    if (!rowFor(segmentId)) {
+      // The row is filtered out. renderSegments() can DECLINE (its confirm()
+      // guard, on a dirty open panel), so snapshot the selects and roll them
+      // back if it does — otherwise the filter bar advertises "all" over a
+      // table that was never rebuilt.
+      const sels = ['filter-type', 'filter-category', 'filter-status']
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+      const prev = sels.map((s) => s.value);
+      sels.forEach((s) => {
+        s.value = 'all';
+      });
+      if (renderSegments() === false) {
+        sels.forEach((s, i) => {
+          s.value = prev[i];
+        });
+        return;
+      }
+    }
+
+    // Only now commit the cursor. It is the ACCEPT-AND-ADVANCE cursor, so
+    // moving it to a row that is not on screen would re-aim Ctrl/Cmd+Shift+Enter
+    // at a segment the editor cannot see.
+    if (!rowFor(segmentId)) return;
+    cursorSegmentId = segmentId;
+    paintCursor();
   }
 
   async function acceptSegment(segmentId) {

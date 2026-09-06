@@ -333,6 +333,20 @@ On mismatch, keep the **translation** and strip that type's markers to plain tex
 
 ⚠️ **This is the SECOND chapter re-bought for this mechanism** (organic ch03 cost ~742 ISK). **That is the argument for finishing the glossary properly now rather than per-chapter** — the ~1,600 unjudged chemistry rows are the largest unquantified exposure on the list, and every chapter bought before they are judged is a candidate for a third re-buy.
 
+### §C135 — **[CODE] TWO PRE-EXISTING RAW INTERPOLATIONS IN THE SEGMENT EDITOR, FOUND WHILE REVIEWING SOMETHING ELSE**
+
+Surfaced by the U2 adversarial review (19 agents over a 30-line client change). **Neither is introduced by that change and neither is fixed by it** — they are logged here rather than folded into an unrelated commit.
+
+| # | site | shape |
+|---|---|---|
+| ① | `seg.segmentType`, taken straight from the SEG marker, interpolated **raw** into a quoted `class` attribute *and* into element text in the segment-row template | attribute breakout / element injection |
+| ② | `segmentId` interpolated **raw** into inline `onclick` JS **string literals** elsewhere in `server/public/js/segment-editor.js` | script execution for an id containing a quote |
+
+▶ **② IS THE SHARPER ONE: the SAME `segmentId` value that U2 escapes correctly is unescaped a few hundred lines away**, because `escapeHtml` protects an *HTML attribute* and an inline `onclick` is a *JavaScript string* — a different context needing different escaping. **An HTML-escaped value is not a JS-escaped one.**
+⚠️ **EXPLOITABILITY IS BOUNDED BY THE ID CHARSET, AND THAT IS THE THING TO MEASURE BEFORE PRICING THIS.** Segment ids are minted by the extractor and CLAUDE.md already requires slugging an `elementId` to `[\w-]` (the §C88 rule, enforced by A2b's `id-charset` leg at a measured 0.000% base rate). **So the corpus today almost certainly cannot carry a quote** — which makes this a latent defect behind a data invariant, not a live hole. ▶ **But the invariant is enforced at EXTRACT, and these sinks trust it silently at RENDER.** A hand-written fixture, an imported id, or a future extractor change reaches them with no guard in between.
+▶ **The fix shape is `escapeJs` at the two sinks, or converting the inline `onclick`s to `addEventListener` + `data-` attributes** — which is what U2 itself does, so the pattern to copy is already in the file.
+⚠️ **DO NOT read "0.000% base rate" as "not worth fixing".** It is the reason this is P3 rather than P1; it is not evidence the sinks are safe, because **the sinks do not check what the gate checks.**
+
 ### §C134 — **TWO MARKER CLASSES, BOTH NONDETERMINISTIC, BOTH DETECTED — [USER] RULED: RETRY, DO NOT CODE AROUND**
 
 Surfaced by the ch03 re-buy (§C133). Both fired on `m68700` in run 1 and **neither fired in run 2**, same arm, same day, same source.

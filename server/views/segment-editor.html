@@ -1217,6 +1217,24 @@
         font-size: var(--text-xs);
         color: var(--text-muted, #888);
       }
+      /* U2: each id in the terminology-violation list jumps to that segment. */
+      .rs-jump {
+        font-family: var(--font-mono, monospace);
+        font-size: var(--text-xs);
+        color: var(--accent, #2563eb);
+        background: none;
+        border: 1px solid var(--border, #ddd);
+        border-radius: 3px;
+        padding: 0.05rem 0.35rem;
+        margin: 0 0.2rem 0.2rem 0;
+        cursor: pointer;
+        line-height: 1.5;
+      }
+      .rs-jump:hover,
+      .rs-jump:focus-visible {
+        background: var(--bg-hover, #eef2f7);
+        border-color: var(--accent, #2563eb);
+      }
       .rs-agree {
         color: var(--success, #2e8b57);
       }
