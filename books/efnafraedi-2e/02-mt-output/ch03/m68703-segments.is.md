@@ -5,55 +5,55 @@ Mólstyrkur
 Þegar þú hefur lokið við þennan kafla muntu geta:
 
 <!-- SEG:m68703:abstract-item:abstract-item-1 -->
-Lýst undirstöðueiginleikum lausna
+Lýst grundvallareiginleikum lausna
 
 <!-- SEG:m68703:abstract-item:abstract-item-2 -->
-Reiknað styrk lausna með mólstyrk
+Reiknað út styrk lausna með því að nota mólstyrk
 
 <!-- SEG:m68703:abstract-item:abstract-item-3 -->
 Framkvæmt þynningarútreikninga með þynningarjöfnunni
 
 <!-- SEG:m68703:para:fs-idm232512 -->
-Fyrri snið þessa kafla fjölluðu um samsetningu efna: sýni af efni sem innihalda aðeins eina tegund frumefnis eða efnasambands. Hins vegar eru efnablöndur – sýni af efni sem innihalda tvö eða fleiri efni sem eru eðlisfræðilega blönduð saman – algengari í náttúrunni en hrein efni. Líkt og með hreint efni gegnir hlutfallsleg samsetning efnablöndu mikilvægu hlutverki við að ákvarða eiginleika hennar. Hlutfallslegt magn súrefnis í andrúmslofti plánetu ákvarðar getu hennar til að viðhalda loftháðu lífi. Hlutfallslegt magn járns, kolefnis, nikkels og annarra frumefna í stáli (efnablanda sem kallast „málmblanda“) ákvarðar eðlisfræðilegan styrk þess og tæringarþol. Hlutfallslegt magn virka innihaldsefnisins í lyfi ákvarðar verkun þess við að ná fram tilætluðum lyfjafræðilegum áhrifum. Hlutfallslegt magn sykurs í drykk ákvarðar sætleika hans (sjá [[xref:CNX_Chem_03_03_espresso]]). Í þessu sniði verður lýst einni algengustu leiðinni til að magngreina hlutfallslega samsetningu efnablandna.
+Fyrri kaflar þessarar bókar fjölluðu um samsetningu efna: sýni af efni sem innihalda aðeins eina tegund frumefnis eða efnasambands. Hins vegar eru blöndur – sýni af efni sem innihalda tvö eða fleiri efni sem eru eðlisfræðilega sameinuð – algengari í náttúrunni en hrein efni. Líkt og með hrein efni gegnir hlutfallsleg samsetning blöndu mikilvægu hlutverki við að ákvarða eiginleika hennar. Hlutfallslegt magn súrefnis í lofthjúpi plánetu ákvarðar getu hennar til að viðhalda loftháðu lífi. Hlutfallslegt magn járns, kolefnis, nikkels og annarra frumefna í stáli (blanda sem kallast „málmblanda“) ákvarðar eðlisfræðilegan styrk þess og tæringarþol. Hlutfallslegt magn virka efnisins í lyfi ákvarðar virkni þess við að ná fram tilætluðum lyfjafræðilegum áhrifum. Hlutfallslegt magn sykurs í drykk ákvarðar sætleika hans (sjá [[xref:CNX_Chem_03_03_espresso]]). Í þessum kafla verður lýst einni af algengustu aðferðunum til að magngreina hlutfallslega samsetningu blandna.
 
 <!-- SEG:m68703:caption:CNX_Chem_03_03_espresso-caption -->
-Sykur er einn af mörgum íhlutum í flóknu efnablöndunni sem kallast kaffi. Magn sykurs í tilteknu magni af kaffi er mikilvæg ákveða fyrir sætleika drykkjarins. (heimild: Jane Whitney)
+Sykur er einn af mörgum efnisþáttum í flókinni blöndu sem kallast kaffi. Magn sykurs í tilteknu magni af kaffi er mikilvægur áhrifaþáttur á sætleika drykkjarins. (heimild: Jane Whitney)
 
 <!-- SEG:m68703:alt:fs-idm63360640-alt -->
-Mynd sýnir sykur sem hellt er úr skeið í bolla.
+Myndin sýnir sykur sem hellt er úr skeið í bolla.
 
 <!-- SEG:m68703:title:fs-idm10227280-title -->
 Lausnir
 
 <!-- SEG:m68703:para:fs-idm60561504 -->
-Lausnir hafa áður verið skilgreindar sem einsleitar efnablöndur, sem þýðir að samsetning efnablöndunnar (og þar með eiginleikar hennar) er einsleit um allt rúmmál hennar. Lausnir koma oft fyrir í náttúrunni og hafa einnig verið notaðar í margs konar tækni af mannavöldum. Ítarlegri umfjöllun um eiginleika lausna er að finna í kaflanum um lausnir og dreifur, en hér er kynning á nokkrum af grunneiginleikum lausna.
+Lausnir hafa áður verið skilgreindar sem einsleitar blöndur, sem þýðir að samsetning blöndunnar (og þar með eiginleikar hennar) er einsleit um allt rúmmál hennar. Lausnir eru algengar í náttúrunni og hafa einnig verið nýttar í margs konar tækni sem maðurinn hefur skapað. Ítarlegri umfjöllun um eiginleika lausna er að finna í kaflanum um lausnir og dreifur, en hér er kynning á nokkrum af grunneiginleikum lausna.
 
 <!-- SEG:m68703:para:fs-idm635664 -->
-Hlutfallslegt magn tiltekins íhlutar lausnar er þekkt sem [[term:styrkur|term-00001]] hennar. Oft, þó ekki alltaf, inniheldur lausn einn íhlut með styrk sem er verulega meiri en allra annarra íhluta. Þessi íhlutur er kallaður [[term:leysir|term-00002]] og má líta á hann sem ætið sem hinir íhlutirnir dreifast í, eða [[term:leysast upp|term-00003]]. Lausnir þar sem vatn er leysirinn eru að sjálfsögðu mjög algengar á plánetunni okkar. Lausn þar sem vatn er leysirinn er kölluð [[term:vatnslausn|term-00004]].
+Hlutfallslegt magn tiltekins efnisþáttar í lausn er þekkt sem [[term:styrkur|term-00001]] hans. Oft, þó ekki alltaf, inniheldur lausn einn efnisþátt með styrk sem er verulega meiri en allra annarra efnisþátta. Þessi efnisþáttur er kallaður [[term:leysir|term-00002]] og má líta á hann sem miðilinn sem hinir efnisþættirnir dreifast eða [[term:leysast upp|term-00003]] í. Lausnir þar sem vatn er leysirinn eru að sjálfsögðu mjög algengar á plánetunni okkar. Lausn þar sem vatn er leysirinn er kölluð [[term:vatnslausn|term-00004]].
 
 <!-- SEG:m68703:para:fs-idm64279024 -->
-[[term:Leyst efni|term-00005]] er íhlutur lausnar sem er venjulega til staðar í mun lægri styrk en leysirinn. Styrk leystra efna er oft lýst með þáttbundnum tíðum eins og [[term:þynnt|term-00006]] (af tiltölulega lágum styrk) og [[term:óþynnt|term-00007]] (af tiltölulega háum styrk).
+[[term:Uppleysanlegt efni|term-00005]] er efnisþáttur í lausn sem er venjulega til staðar í mun lægri styrk en leysirinn. Styrkur uppleystra efna er oft lýst með eigindlegum hugtökum eins og [[term:þynnt|term-00006]] (af tiltölulega lágum styrk) og [[term:þétt|term-00007]] (af tiltölulega háum styrk).
 
 <!-- SEG:m68703:para:fs-idm62212352 -->
-Styrkur má meta megindlega með ýmsum mælieiningum, sem hver um sig hentar fyrir tiltekin not. [[term:Mólstyrkur ([[i:M]])|term-00008]] er gagnleg styrkleining fyrir mörg not í efnafræði. Mólstyrkur er skilgreindur sem fjöldi móla af leystu efni í nákvæmlega 1 lítra (1 L) af lausninni:
+Styrkur má magngreina með ýmsum mælieiningum, sem hver um sig hentar fyrir tiltekin not. [[term:Mólstyrkur ([[i:M]])|term-00008]] er gagnleg styrkleikaeining fyrir mörg not í efnafræði. Mólstyrkur er skilgreindur sem fjöldi móla af uppleystu efni í nákvæmlega 1 lítra (1 L) af lausninni:
 
 <!-- SEG:m68703:example-title:fs-idm98982768-title -->
 Útreikningur á mólstyrk
 
 <!-- SEG:m68703:para:fs-idm10181424 -->
-355 ml gosdrykkjarsýni inniheldur 0,133 mól af súkrósa (borðsykri). Hver er mólstyrkur súkrósa í drykknum?
+355 ml sýni af gosdrykk inniheldur 0,133 mól af súkrósa (borðsykri). Hver er mólstyrkur súkrósa í drykknum?
 
 <!-- SEG:m68703:para-title:fs-idm60197152-title -->
 Lausn
 
 <!-- SEG:m68703:para:fs-idm60197152 -->
-Þar sem mólmagn leysta efnisins og rúmmál lausnarinnar eru bæði gefin er hægt að reikna mólstyrkinn með skilgreiningu á mólstyrk. Samkvæmt þessari skilgreiningu verður að breyta rúmmáli lausnarinnar úr ml í L:
+Þar sem mólmagn uppleysta efnisins og rúmmál lausnarinnar eru bæði gefin er hægt að reikna út mólstyrkinn með því að nota skilgreininguna á mólstyrk. Samkvæmt þessari skilgreiningu verður að breyta rúmmáli lausnarinnar úr ml í L:
 
 <!-- SEG:m68703:para-title:fs-idm883648-title -->
-Spyrðu sjálfan þig
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68703:para:fs-idm883648 -->
-Teskeið af borðsykri inniheldur um 0,01 mól af súkrósa. Hver er mólstyrkur súkrósa ef teskeið af sykri hefur verið leyst upp í tebolla með rúmmáli 200 ml?
+Teskeið af borðsykri inniheldur um 0,01 mól af súkrósa. Hver er mólstyrkur súkrósa ef teskeið af sykri hefur verið leyst upp í tebolla með rúmmálið 200 ml?
 
 <!-- SEG:m68703:para:fs-idm62230608 -->
 0,05 [[i:M]]
@@ -65,7 +65,7 @@ Svar:
 0,05 [[i:M]]
 
 <!-- SEG:m68703:example-title:fs-idm64107376-title -->
-Afleiðsla móla og rúmmáls úr mólstyrk
+Afleiðing móla og rúmmáls úr mólstyrk
 
 <!-- SEG:m68703:para:fs-idm58170960 -->
 Hversu mikið af sykri (mól) er í litlum sopa (~10 ml) af gosdrykknum úr [[xref:fs-idm98982768]]?
@@ -77,7 +77,7 @@ Lausn
 Endurraðaðu skilgreiningunni á mólstyrk til að einangra stærðina sem leitað er að, mól af sykri, og settu síðan inn gildið fyrir mólstyrk sem fengið var í [[xref:fs-idm98982768]], 0,375 [[i:M]]:
 
 <!-- SEG:m68703:para-title:fs-idm97768960-title -->
-Spyrðu sjálfan þig
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68703:para:fs-idm97768960 -->
 Hvaða rúmmál (ml) af sæta teinu sem lýst er í [[xref:fs-idm98982768]] inniheldur sama magn af sykri (mól) og 10 ml af gosdrykknum í þessu dæmi?
@@ -92,7 +92,7 @@ Svar:
 80 ml
 
 <!-- SEG:m68703:example-title:fs-idm81897840-title -->
-Útreikningur á mólstyrk út frá massa leysta efnisins
+Útreikningur á mólstyrk út frá massa uppleysts efnis
 
 <!-- SEG:m68703:para:fs-idm98918048 -->
 Eimað borðedik ([[xref:CNX_Chem_03_04_vinegar]]) er lausn af ediksýru, CH[[sub:3]]CO[[sub:2]]H, í vatni. 0,500 L ediklausn inniheldur 25,2 g af ediksýru. Hver er styrkur ediksýrulausnarinnar í einingum mólstyrks?
@@ -101,13 +101,13 @@ Eimað borðedik ([[xref:CNX_Chem_03_04_vinegar]]) er lausn af ediksýru, CH[[su
 Lausn
 
 <!-- SEG:m68703:para:fs-idm82387696 -->
-Eins og í fyrri dæmum er skilgreiningin á mólstyrk aðaljafnan sem notuð er til að reikna út stærðina sem leitað er að. Þar sem massi leysta efnisins er gefinn í stað mólmagns þess skal nota mólmassa leysta efnisins til að fá mólmagn leysta efnisins:
+Eins og í fyrri dæmum er skilgreiningin á mólstyrk aðaljafnan sem notuð er til að reikna út stærðina sem leitað er að. Þar sem massi uppleysta efnisins er gefinn í stað mólmagns þess, skal nota mólmassa uppleysta efnisins til að fá magn uppleysta efnisins í mólum:
 
 <!-- SEG:m68703:para-title:fs-idm61725600-title -->
-Prófaðu þekkingu þína
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68703:para:fs-idm61725600 -->
-Reiknaðu mólstyrk 6,52 g af CoCl[[sub:2]] (128,9 g/mól) sem er leyst upp í vatnslausn með heildarrúmmálið 75,0 ml.
+Reiknaðu mólstyrk 6,52 g af CoCl[[sub:2]] (128,9 g/mól) sem er leyst upp í vatnslausn með heildarrúmmáli 75,0 ml.
 
 <!-- SEG:m68703:para:fs-idm103606496 -->
 0,674 [[i:M]]
@@ -122,10 +122,10 @@ Svar:
 Eimað borðedik er lausn af ediksýru í vatni.
 
 <!-- SEG:m68703:alt:fs-idm69003664-alt -->
-Sýndur er merki á íláti. Á merkinu er mynd af salati með orðunum „Eimað borðedik“ og „Þynnt með vatni í 5% sýrustig“ skrifað fyrir ofan.
+Sýndur er miði á íláti. Á miðanum er mynd af salati með orðunum „Eimað borðedik“ og „Þynnt með vatni í 5% sýrustig“ skrifað fyrir ofan.
 
 <!-- SEG:m68703:example-title:fs-idm104693104-title -->
-Að ákvarða massa leysts efnis í tilteknu rúmmáli lausnar
+Ákvörðun massa uppleysts efnis í tilteknu rúmmáli lausnar
 
 <!-- SEG:m68703:para:fs-idm2448752 -->
 Hversu mörg grömm af NaCl eru í 0,250 L af 5,30-[[i:M]] lausn?
@@ -134,13 +134,13 @@ Hversu mörg grömm af NaCl eru í 0,250 L af 5,30-[[i:M]] lausn?
 Lausn
 
 <!-- SEG:m68703:para:fs-idm122143856 -->
-Rúmmál og mólstyrkur lausnarinnar eru tilgreind, þannig að auðvelt er að reikna út mólmagn leysta efnisins eins og sýnt er í [[xref:fs-idm64107376]]:
+Rúmmál og mólstyrkur lausnarinnar eru tilgreind, þannig að magn (mól) uppleysta efnisins er auðveldlega reiknað út eins og sýnt er í [[xref:fs-idm64107376]]:
 
 <!-- SEG:m68703:para:fs-idm108465360 -->
 Að lokum er þetta mólmagn notað til að leiða út massa NaCl:
 
 <!-- SEG:m68703:para-title:fs-idm122705296-title -->
-Prófaðu þekkingu þína
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68703:para:fs-idm122705296 -->
 Hversu mörg grömm af CaCl[[sub:2]] (110,98 g/mól) eru í 250,0 ml af 0,200-[[i:M]] lausn af kalsíumklóríði?
@@ -155,13 +155,13 @@ Svar:
 5,55 g CaCl[[sub:2]]
 
 <!-- SEG:m68703:para:fs-idm75726960 -->
-Þegar reikningar eru framkvæmdir í skrefum, eins og í [[xref:fs-idm104693104]], er mikilvægt að forðast að námunda niðurstöður millireikninga, þar sem það getur leitt til námundunarvillna í lokaniðurstöðunni. Í [[xref:fs-idm104693104]] væri mólmagn NaCl sem reiknað var í fyrsta skrefi, 1,325 mól, réttilega námundað í 1,32 mól ef það ætti að gefa það upp; þó, þrátt fyrir að síðasti tölustafurinn (5) sé ekki marktækur, verður að halda honum sem varðtölustaf í millireikningnum. Ef varðtölustafnum hefði ekki verið haldið hefði lokareikningurinn fyrir massa NaCl verið 77,1 g, sem er 0,3 g mismunur.
+Þegar útreikningar eru framkvæmdir skref fyrir skref, eins og í [[xref:fs-idm104693104]], er mikilvægt að forðast að námunda niðurstöður millireikninga, þar sem það getur leitt til námundunarvillna í lokaniðurstöðunni. Í [[xref:fs-idm104693104]] væri mólmagn NaCl sem reiknað var út í fyrsta skrefi, 1,325 mól, réttilega námundað í 1,32 mól ef það ætti að gefa það upp; hins vegar, þó að síðasti tölustafurinn (5) sé ekki marktækur, verður að halda honum sem varðtölu í millireikningnum. Ef varðtölunni hefði ekki verið haldið, hefði lokareikningur fyrir massa NaCl verið 77,1 g, sem er 0,3 g munur.
 
 <!-- SEG:m68703:para:fs-idm105202592 -->
-Auk þess að halda varðtölustaf fyrir millireikninga er einnig hægt að forðast námundunarvillur með því að framkvæma reikninga í einu skrefi (sjá [[xref:fs-idm88061984]]). Þetta útilokar milliskref þannig að aðeins lokaniðurstaðan er námunduð.
+Auk þess að halda varðtölu fyrir millireikninga er einnig hægt að forðast námundunarvillur með því að framkvæma útreikninga í einu skrefi (sjá [[xref:fs-idm88061984]]). Þetta útilokar milliskref þannig að aðeins lokaniðurstaðan er námunduð.
 
 <!-- SEG:m68703:example-title:fs-idm88061984-title -->
-Að ákvarða rúmmál lausnar sem inniheldur tiltekinn massa af leystu efni
+Ákvörðun rúmmáls lausnar sem inniheldur tiltekinn massa uppleysts efnis
 
 <!-- SEG:m68703:para:fs-idm111967328 -->
 Í [[xref:fs-idm81897840]] var styrkur ediksýru í borðediki ákvarðaður sem 0,839 [[i:M]]. Hvaða rúmmál ediks inniheldur 75,6 g af ediksýru?
@@ -170,16 +170,16 @@ Að ákvarða rúmmál lausnar sem inniheldur tiltekinn massa af leystu efni
 Lausn
 
 <!-- SEG:m68703:para:fs-idm108289568 -->
-Fyrst skal nota mólmassann til að reikna mól af ediksýru út frá gefnum massa:
+Fyrst skal nota mólmassann til að reikna út mól af ediksýru út frá gefnum massa:
 
 <!-- SEG:m68703:para:fs-idm67563520 -->
-Notaðu síðan mólstyrk lausnarinnar til að reikna út rúmmál lausnarinnar sem inniheldur þetta mólmagn af leystu efni:
+Síðan skal nota mólstyrk lausnarinnar til að reikna út rúmmál lausnar sem inniheldur þetta mólmagn uppleysts efnis:
 
 <!-- SEG:m68703:para:fs-idm141610240 -->
 Að sameina þessi tvö skref í eitt gefur:
 
 <!-- SEG:m68703:para-title:fs-idm59437344-title -->
-Prófaðu þekkingu þína
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68703:para:fs-idm59437344 -->
 Hvaða rúmmál af 1,50-[[i:M]] KBr lausn inniheldur 66,0 g KBr?
@@ -197,52 +197,52 @@ Svar:
 Þynning lausna
 
 <!-- SEG:m68703:para:fs-idm134700400 -->
-[[term:Þynning|term-00009]] er ferlið þar sem styrkur lausnar er minnkaður með því að bæta við leysi. Til dæmis verður glas af ístei sífellt þynntara eftir því sem ísinn bráðnar. Vatnið úr bráðnandi ísnum eykur rúmmál leysisins (vatns) og heildarrúmmál lausnarinnar (ísteisins) og dregur þannig úr hlutfallslegum styrk leystu efnanna sem gefa drykknum bragð ([[xref:CNX_Chem_03_04_dilution]]).
+[[term:Þynning|term-00009]] er ferlið þar sem styrkur lausnar er minnkaður með því að bæta við leysi. Til dæmis verður glas af ístei sífellt þynntara eftir því sem ísinn bráðnar. Vatnið úr bráðnandi ísnum eykur rúmmál leysisins (vatns) og heildarrúmmál lausnarinnar (ísteisins) og minnkar þar með hlutfallslegan styrk uppleystu efnanna sem gefa drykknum bragð sitt ([[xref:CNX_Chem_03_04_dilution]]).
 
 <!-- SEG:m68703:caption:CNX_Chem_03_04_dilution-caption -->
 Báðar lausnirnar innihalda sama massa af koparnítrati. Lausnin til hægri er þynntari vegna þess að koparnítratið er leyst upp í meiri leysi. (heimild: Mark Ott)
 
 <!-- SEG:m68703:alt:fs-idp133169776-alt -->
-Þessi mynd sýnir tvo mælisívalninga hlið við hlið. Í þeim fyrri er um það bil helmingi minni blár vökvi en í þeim seinni. Blái vökvinn er dekkri í fyrri sívalningnum en í þeim seinni.
+Þessi mynd sýnir tvo mælisílindra hlið við hlið. Í þeim fyrri er um það bil helmingi minni blár vökvi en í þeim seinni. Blái vökvinn er dekkri í fyrri sílindranum en í þeim seinni.
 
 <!-- SEG:m68703:para:fs-idm77995840 -->
-Þynning er einnig algeng leið til að útbúa lausnir með æskilegum styrk. Með því að bæta leysi við afmældan skammt af megnari [[i:stofnlausn]] er hægt að útbúa lausn með minni styrk. Til dæmis eru skordýraeitur í atvinnuskyni yfirleitt seld sem lausnir þar sem virku innihaldsefnin eru mun megnari en hentar til notkunar. Áður en hægt er að nota þau á uppskeru verður að þynna skordýraeitrið. Þetta er einnig mjög algeng aðferð við undirbúning ýmissa algengra hvarfefna á rannsóknarstofu.
+Þynning er einnig algeng leið til að útbúa lausnir með æskilegum styrk. Með því að bæta leysi við afmældan skammt af þéttari [[i:stofnlausn]] er hægt að útbúa lausn með minni styrk. Til dæmis eru skordýraeitur í atvinnuskyni yfirleitt seld sem lausnir þar sem virku innihaldsefnin eru mun þéttari en hentar til notkunar. Áður en hægt er að nota þau á uppskeru verður að þynna skordýraeitrið. Þetta er einnig mjög algeng aðferð við undirbúning ýmissa algengra hvarfefna á rannsóknarstofu.
 
 <!-- SEG:m68703:para:fs-idm77996832 -->
-Hægt er að nota einföld stærðfræðileg vensl til að tengja saman rúmmál og styrk lausnar fyrir og eftir þynningarferlið. Samkvæmt skilgreiningu á mólstyrk er fjöldi móla af leystu efni í lausn ([[i:n]]) eins og margfeldi mólstyrks lausnarinnar ([[i:M]]) og rúmmáls hennar í lítrum ([[i:L]]):
+Nota má einfalt stærðfræðilegt samband til að tengja saman rúmmál og styrk lausnar fyrir og eftir þynningarferlið. Samkvæmt skilgreiningu á mólstyrk er fjöldi móla uppleysts efnis í lausn ([[i:n]]) jafn margfeldi mólstyrks lausnarinnar ([[i:M]]) og rúmmáls hennar í lítrum ([[i:L]]):
 
 <!-- SEG:m68703:para:fs-idm104760288 -->
-Hægt er að skrifa svipaðar jöfnur fyrir lausn fyrir og eftir að hún er þynnt:
+Svona segðir má skrifa fyrir lausn fyrir og eftir að hún er þynnt:
 
 <!-- SEG:m68703:para:fs-idm123215808 -->
-þar sem neðanmálsstafirnir „1“ og „2“ vísa til lausnarinnar fyrir og eftir þynningu. Þar sem þynningarferlið [[i:breytir ekki magni leysta efnisins í lausninni, ]] er [[i:n]][[sub:1]] = [[i:n]][[sub:2]]. Þannig má setja þessar tvær jöfnur saman:
+þar sem neðanskriftirnar „1“ og „2“ vísa til lausnarinnar fyrir og eftir þynningu, í sömu röð. Þar sem þynningarferlið [[i:breytir ekki magni uppleysts efnis í lausninni, ]] er [[i:n]][[sub:1]] = [[i:n]][[sub:2]]. Þannig má setja þessar tvær jöfnur jafnar hvor annarri:
 
 <!-- SEG:m68703:para:fs-idm103311152 -->
-Þessi vensl eru almennt kölluð þynningarjafnan. Þrátt fyrir að þessi jafna noti mólstyrk sem einingu fyrir styrk og lítra sem einingu fyrir rúmmál, má nota aðrar einingar fyrir styrk og rúmmál svo lengi sem einingarnar styttast út rétt samkvæmt þáttabreytingaraðferðinni. Til að endurspegla þennan sveigjanleika er þynningarjafnan oft skrifuð í almennara formi:
+Þetta samband er almennt kallað þynningarjafnan. Þótt þessi jafna noti mólstyrk sem einingu fyrir styrk og lítra sem einingu fyrir rúmmál, má nota aðrar einingar fyrir styrk og rúmmál svo lengi sem einingarnar styttast rétt út samkvæmt þáttamerkingaraðferðinni. Til að endurspegla þennan sveigjanleika er þynningarjafnan oft skrifuð í almennara formi:
 
 <!-- SEG:m68703:para:fs-idm81143040 -->
-þar sem [[i:C]] og [[i:V]] eru styrkur og rúmmál.
+þar sem [[i:C]] og [[i:V]] eru styrkur og rúmmál, í sömu röð.
 
 <!-- SEG:m68703:para:fs-idm105278864 -->
-Notaðu [[link:herminn|http://openstax.org/l/16Phetsolvents]] til að kanna venslin milli magns leysts efnis, rúmmáls lausnar og styrks og til að staðfesta þynningarjöfnuna.
+Notaðu [[link:herminn|http://openstax.org/l/16Phetsolvents]] til að kanna sambandið milli magns uppleysts efnis, rúmmáls lausnar og styrks og til að staðfesta þynningarjöfnuna.
 
 <!-- SEG:m68703:example-title:fs-idm81737600-title -->
-Að ákvarða styrk þynntrar lausnar
+Ákvörðun styrks þynntrar lausnar
 
 <!-- SEG:m68703:para:fs-idm65542512 -->
-Ef 0,850 L af 5,00-[[i:M]] lausn af koparnítrati, Cu(NO[[sub:3]])[[sub:2]], er þynnt í 1,80 L rúmmál með því að bæta við vatni, hver er þá mólstyrkur þynntu lausnarinnar?
+Ef 0,850 L af 5,00-[[i:M]] lausn af koparnítrati, Cu(NO[[sub:3]])[[sub:2]], er þynnt í 1,80 L rúmmál með því að bæta við vatni, hver er mólstyrkur þynntu lausnarinnar?
 
 <!-- SEG:m68703:para-title:fs-idm63250768-title -->
 Lausn
 
 <!-- SEG:m68703:para:fs-idm63250768 -->
-Stofnstyrkur, [[i:C]][[sub:1]], og rúmmál, [[i:V]][[sub:1]], eru gefin ásamt rúmmáli þynntu lausnarinnar, [[i:V]][[sub:2]]. Endurraðaðu þynningarjöfnunni til að einangra óþekkta eiginleikann, styrk þynntu lausnarinnar, [[i:C]][[sub:2]]:
+Styrkur stofnlausnarinnar, [[i:C]][[sub:1]], og rúmmál hennar, [[i:V]][[sub:1]], eru gefin, ásamt rúmmáli þynntu lausnarinnar, [[i:V]][[sub:2]]. Endurraðaðu þynningarjöfnunni til að einangra óþekkta eiginleikann, styrk þynntu lausnarinnar, [[i:C]][[sub:2]]:
 
 <!-- SEG:m68703:para:fs-idm81759792 -->
-Þar sem stofnlausnin er þynnt meira en tvöfalt (rúmmál er aukið úr 0,85 L í 1,80 L), er búist við að styrkur þynntu lausnarinnar sé minni en helmingur af 5 [[i:M]]. Þetta grófa mat verður borið saman við útreiknaða niðurstöðu til að athuga hvort um grófar reikningsvillur sé að ræða (til dæmis, eins og rangt innsetning á gefnum stærðum). Með því að setja inn gefin gildi fyrir liðina hægra megin í þessari jöfnu fæst:
+Þar sem stofnlausnin er þynnt meira en tvöfalt (rúmmál er aukið úr 0,85 L í 1,80 L), er búist við að styrkur þynntu lausnarinnar sé minni en helmingur af 5 [[i:M]]. Þetta grófa mat verður borið saman við útreiknaða niðurstöðu til að athuga hvort um augljósar reikningsvillur sé að ræða (til dæmis, eins og rangt innsetning gefinna stærða). Með því að setja gefin gildi inn fyrir liðina hægra megin í þessari jöfnu fæst:
 
 <!-- SEG:m68703:para:fs-idm125598048 -->
-Þessi niðurstaða stenst vel samanburð við grófa matið okkar (hún er aðeins minni en helmingur stofnstyrksins, 5 [[i:M]]).
+Þessi niðurstaða stenst vel samanburð við grófa matið okkar (hún er aðeins minni en helmingur af styrk stofnlausnarinnar, 5 [[i:M]]).
 
 <!-- SEG:m68703:para-title:fs-idm105016944-title -->
 Kannaðu þekkingu þína
@@ -269,7 +269,7 @@ Hvaða rúmmál af 0,12 [[i:M]] HBr er hægt að útbúa úr 11 ml (0,011 L) af 
 Lausn
 
 <!-- SEG:m68703:para:fs-idm75791728 -->
-Uppgefin eru rúmmál og styrkur stofnlausnar, [[i:V]][[sub:1]] og [[i:C]][[sub:1]], og styrkur þynntu lausnarinnar sem myndast, [[i:C]][[sub:2]]. Finndu rúmmál þynntu lausnarinnar, [[i:V]][[sub:2]], með því að endurraða þynningarjöfnunni til að einangra [[i:V]][[sub:2]]:
+Gefin eru rúmmál og styrkur stofnlausnar, [[i:V]][[sub:1]] og [[i:C]][[sub:1]], og styrkur þynntu lausnarinnar sem myndast, [[i:C]][[sub:2]]. Finndu rúmmál þynntu lausnarinnar, [[i:V]][[sub:2]], með því að endurraða þynningarjöfnunni til að einangra [[i:V]][[sub:2]]:
 
 <!-- SEG:m68703:para:fs-idm61209504 -->
 Þar sem þynnti styrkurinn (0,12 [[i:M]]) er aðeins meira en fjórðungur af upprunalega styrknum (0,45 [[i:M]]), er búist við að rúmmál þynntu lausnarinnar sé um það bil fjórfalt upprunalega rúmmálið, eða um 44 ml. Með því að setja inn gefin gildi og leysa fyrir óþekkta rúmmálið fæst:
@@ -281,7 +281,7 @@ Rúmmál 0,12-[[i:M]] lausnarinnar er 0,041 L (41 ml). Niðurstaðan er sanngjö
 Kannaðu þekkingu þína
 
 <!-- SEG:m68703:para:fs-idm78684320 -->
-Tilraun á rannsóknarstofu krefst 0,125 [[i:M]] HNO[[sub:3]]. Hvaða rúmmál af 0,125 [[i:M]] HNO[[sub:3]] er hægt að útbúa úr 0,250 L af 1,88 [[i:M]] HNO[[sub:3]]?
+Í tilraun á rannsóknarstofu þarf 0,125 [[i:M]] HNO[[sub:3]]. Hvaða rúmmál af 0,125 [[i:M]] HNO[[sub:3]] er hægt að útbúa úr 0,250 L af 1,88 [[i:M]] HNO[[sub:3]]?
 
 <!-- SEG:m68703:para:fs-idm590752 -->
 3,76 L
@@ -293,7 +293,7 @@ Svar:
 3,76 L
 
 <!-- SEG:m68703:example-title:fs-idm60422464-title -->
-Rúmmál megnrar lausnar sem þarf til þynningar
+Rúmmál þéttrar lausnar sem þarf til þynningar
 
 <!-- SEG:m68703:para:fs-idm58713072 -->
 Hversu mikið rúmmál af 1,59 [[i:M]] KOH þarf til að útbúa 5,00 L af 0,100 [[i:M]] KOH?
@@ -305,13 +305,13 @@ Lausn
 Uppgefið er styrkur stofnlausnar, [[i:C]][[sub:1]], og rúmmál og styrkur þynntu lausnarinnar sem myndast, [[i:V]][[sub:2]] og [[i:C]][[sub:2]]. Finndu rúmmál stofnlausnarinnar, [[i:V]][[sub:1]], með því að endurraða þynningarjöfnunni til að einangra [[i:V]][[sub:1]]:
 
 <!-- SEG:m68703:para:fs-idm108418736 -->
-Þar sem styrkur þynntu lausnarinnar, 0,100 [[i:M]], er um það bil einn sextándi af styrk stofnlausnarinnar (1,59 [[i:M]]), er gert ráð fyrir að rúmmál stofnlausnarinnar sé um einn sextándi af rúmmáli þynntu lausnarinnar, eða um 0,3 lítrar. Með því að setja inn uppgefin gildi og leysa fyrir óþekkta rúmmálið fæst:
+Þar sem styrkur þynntu lausnarinnar, 0,100 [[i:M]], er um það bil einn sextándi af styrk stofnlausnarinnar (1,59 [[i:M]]), er gert ráð fyrir að rúmmál stofnlausnarinnar sé um það bil einn sextándi af rúmmáli þynntu lausnarinnar, eða um 0,3 lítrar. Með því að setja inn uppgefin gildi og leysa fyrir óþekkta rúmmálið fæst:
 
 <!-- SEG:m68703:para:fs-idm85673088 -->
-Þannig þarf 0,314 L af 1,59-[[i:M]] lausninni til að útbúa lausnina sem óskað er eftir. Þessi niðurstaða er sjálfkvæm við grófa matið.
+Þannig þarf 0,314 L af 1,59-[[i:M]] lausninni til að útbúa lausnina sem óskað er eftir. Þessi niðurstaða er í samræmi við grófa matið.
 
 <!-- SEG:m68703:para-title:fs-idm61586320-title -->
-Kannaðu námið þitt
+Prófaðu þekkingu þína
 
 <!-- SEG:m68703:para:fs-idm61586320 -->
 Hversu mikið rúmmál af 0,575-[[i:M]] lausn af glúkósa, C[[sub:6]]H[[sub:12]]O[[sub:6]], er hægt að útbúa úr 50,00 ml af 3,00-[[i:M]] glúkósalausn?
@@ -326,10 +326,10 @@ Svar:
 0,261 L
 
 <!-- SEG:m68703:title:fs-idm102255792-title -->
-Lykilhugtök og útdráttur
+Lykilhugtök og samantekt
 
 <!-- SEG:m68703:para:fs-idm67554336 -->
-Lausnir eru einsleitar blöndur. Margar lausnir innihalda einn efnisþátt, sem kallast leysir, þar sem aðrir efnisþættir, sem kallast leyst efni, eru leystir upp. Vatnslausn er lausn þar sem leysirinn er vatn. Styrkur lausnar er mál á hlutfallslegu magni leysts efnis í tilteknu magni af lausn. Hægt er að mæla styrk með ýmsum einingum og er ein mjög gagnleg eining mólstyrkur, skilgreindur sem fjöldi móla af leystu efni á hvern lítra af lausn. Hægt er að minnka styrk leysts efnis í lausn með því að bæta við leysi, ferli sem kallast þynning. Þynningarjafnan er einföld vensl milli styrks og rúmmáls lausnar fyrir og eftir þynningu.
+Lausnir eru einsleitar blöndur. Margar lausnir innihalda einn efnisþátt, sem kallast leysir, þar sem aðrir efnisþættir, sem kallast uppleyst efni, eru leystir upp. Vatnslausn er lausn þar sem leysirinn er vatn. Styrkur lausnar er mælikvarði á hlutfallslegt magn uppleysts efnis í tilteknu magni af lausn. Hægt er að mæla styrk með ýmsum einingum og er ein mjög gagnleg eining mólstyrkur, skilgreindur sem fjöldi móla af uppleystu efni á hvern lítra af lausn. Hægt er að minnka styrk uppleysts efnis í lausn með því að bæta við leysi, ferli sem kallast þynning. Þynningarjafnan er einfalt samband milli styrks og rúmmáls lausnar fyrir og eftir þynningu.
 
 <!-- SEG:m68703:title:fs-idm92499152-title -->
 Efnafræði – verkefni í lok kafla
@@ -392,10 +392,10 @@ Við þurfum að vita fjölda móla af brennisteinssýru sem er uppleyst í laus
 (f) 0,000889 g af glýsíni, C[[sub:2]]H[[sub:5]]NO[[sub:2]], í 1,05 ml af lausn
 
 <!-- SEG:m68703:problem:fs-idm62810592 -->
-Íhugaðu þessa spurningu: Hver er massi leysta efnisins í 0,500 L af 0,30 [[i:M]] glúkósa, C[[sub:6]]H[[sub:12]]O[[sub:6]], sem notaður er fyrir innspýtingu í bláæð?
+Íhugaðu þessa spurningu: Hver er massi uppleysta efnisins í 0,500 L af 0,30 [[i:M]] glúkósa, C[[sub:6]]H[[sub:12]]O[[sub:6]], sem notaður er í innrennslislyf?
 
 <!-- SEG:m68703:problem:fs-idm75876656 -->
-(a) Lýstu skrefunum sem eru nauðsynleg til að svara spurningunni.
+(a) Lýstu skrefunum sem þarf til að svara spurningunni.
 
 <!-- SEG:m68703:problem:fs-idp41676320 -->
 (b) Svaraðu spurningunni.
@@ -404,43 +404,43 @@ Við þurfum að vita fjölda móla af brennisteinssýru sem er uppleyst í laus
 (a) ákvarðaðu fjölda móla af glúkósa í 0,500 L af lausn; ákvarðaðu mólmassa glúkósa; ákvarðaðu massa glúkósa út frá fjölda móla og mólmassa hans; (b) 27 g
 
 <!-- SEG:m68703:problem:fs-idm1320448 -->
-Íhugaðu þessa spurningu: Hver er massi leysta efnisins í 200,0 L af 1,556-[[i:M]] lausn af KBr?
+Íhugaðu þessa spurningu: Hver er massi uppleysta efnisins í 200,0 L af 1,556-[[i:M]] lausn af KBr?
 
 <!-- SEG:m68703:problem:fs-idm91536048 -->
-(a) Lýstu skrefunum sem eru nauðsynleg til að svara spurningunni.
+(a) Lýstu skrefunum sem þarf til að svara spurningunni.
 
 <!-- SEG:m68703:problem:fs-idp164489472 -->
 (b) Svaraðu spurningunni.
 
 <!-- SEG:m68703:problem:fs-idm101359744 -->
-Reiknaðu fjölda móla og massa leysta efnisins í hverri af eftirfarandi lausnum:
+Reiknaðu fjölda móla og massa uppleysta efnisins í hverri af eftirfarandi lausnum:
 
 <!-- SEG:m68703:problem:fs-idm102145824 -->
-(a) 2,00 L af 18,5 [[i:M]] H[[sub:2]]SO[[sub:4]], megn brennisteinssýra
+(a) 2,00 L af 18,5 [[i:M]] H[[sub:2]]SO[[sub:4]], óblandaðri brennisteinssýru
 
 <!-- SEG:m68703:problem:fs-idm94203104 -->
-(b) 100,0 ml af 3,8 [[MATH:3]] 10[[sup:−6]] [[i:M]] NaCN, sem er lægsti banvæni styrkur natríumsýaníðs í blóðvatni
+(b) 100,0 ml af 3,8 [[MATH:3]] 10[[sup:−6]] [[i:M]] NaCN, lágmarks banvænn styrkur natríumsýaníðs í blóðvatni
 
 <!-- SEG:m68703:problem:fs-idm60008496 -->
 (c) 5,50 L af 13,3 [[i:M]] H[[sub:2]]CO, formaldehýðið sem notað er til að „festa“ vefjasýni
 
 <!-- SEG:m68703:problem:fs-idm91658464 -->
-(d) 325 ml af 1,8 [[MATH:4]] 10[[sup:−6]] [[i:M]] FeSO[[sub:4]], lægsti styrkur járnsúlfats sem hægt er að greina með bragði í drykkjarvatni
+(d) 325 ml af 1,8 [[MATH:4]] 10[[sup:−6]] [[i:M]] FeSO[[sub:4]], lágmarksstyrkur járnsúlfats sem hægt er að greina með bragði í drykkjarvatni
 
 <!-- SEG:m68703:solution:fs-idm96721040 -->
-(a) 37,0 mól H[[sub:2]]SO[[sub:4]], 3,63 [[MATH:5]] 10[[sup:3]] g H[[sub:2]]SO[[sub:4]]; (b) 3,8 [[MATH:6]] 10[[sup:−7]] mól NaCN, 1,9 [[MATH:7]] 10[[sup:−5]] g NaCN; (c) 73,2 mól H[[sub:2]]CO, 2,20 kílógrömm H[[sub:2]]CO; (d) 5,9 [[MATH:8]] 10[[sup:−7]] mól FeSO[[sub:4]], 8,9 [[MATH:9]] 10[[sup:−5]] g FeSO[[sub:4]]
+(a) 37,0 mól H[[sub:2]]SO[[sub:4]], 3,63 [[MATH:5]] 10[[sup:3]] g H[[sub:2]]SO[[sub:4]]; (b) 3,8 [[MATH:6]] 10[[sup:−7]] mól NaCN, 1,9 [[MATH:7]] 10[[sup:−5]] g NaCN; (c) 73,2 mól H[[sub:2]]CO, 2,20 kg H[[sub:2]]CO; (d) 5,9 [[MATH:8]] 10[[sup:−7]] mól FeSO[[sub:4]], 8,9 [[MATH:9]] 10[[sup:−5]] g FeSO[[sub:4]]
 
 <!-- SEG:m68703:problem:fs-idm55805888 -->
-Reiknaðu fjölda móla og massa leysta efnisins í hverri af eftirfarandi lausnum:
+Reiknaðu fjölda móla og massa uppleysta efnisins í hverri af eftirfarandi lausnum:
 
 <!-- SEG:m68703:problem:fs-idm9476176 -->
-(a) 325 ml af 8,23 [[MATH:10]] 10[[sup:−5]] [[i:M]] KI, uppspretta joðs í fæðu
+(a) 325 ml af 8,23 [[MATH:10]] 10[[sup:−5]] [[i:M]] KI, joðgjafi í fæðu
 
 <!-- SEG:m68703:problem:fs-idm26675232 -->
-(b) 75,0 ml af 2,2 [[MATH:11]] 10[[sup:−5]] [[i:M]] H[[sub:2]]SO[[sub:4]], sýni af súru regni
+(b) 75,0 ml af 2,2 [[MATH:11]] 10[[sup:−5]] [[i:M]] H[[sub:2]]SO[[sub:4]], sýnishorn af súru regni
 
 <!-- SEG:m68703:problem:fs-idm26426432 -->
-(c) 0,2500 L af 0,1135 [[i:M]] K[[sub:2]]CrO[[sub:4]], virkt efni til greiningar notað í járnmælingum
+(c) 0,2500 L af 0,1135 [[i:M]] K[[sub:2]]CrO[[sub:4]], greiningarhvarfefni sem notað er í járngreiningum
 
 <!-- SEG:m68703:problem:fs-idm26424384 -->
 (d) 10,5 L af 3,716 [[i:M]] (NH[[sub:4]])[[sub:2]]SO[[sub:4]], fljótandi áburður
@@ -449,7 +449,7 @@ Reiknaðu fjölda móla og massa leysta efnisins í hverri af eftirfarandi lausn
 Íhugaðu þessa spurningu: Hver er mólstyrkur KMnO[[sub:4]] í lausn af 0,0908 g af KMnO[[sub:4]] í 0,500 L af lausn?
 
 <!-- SEG:m68703:problem:fs-idm39482304 -->
-(a) Lýstu skrefunum sem eru nauðsynleg til að svara spurningunni.
+(a) Lýstu skrefunum sem þarf til að svara spurningunni.
 
 <!-- SEG:m68703:problem:fs-idm44707952 -->
 (b) Svaraðu spurningunni.
@@ -458,7 +458,7 @@ Reiknaðu fjölda móla og massa leysta efnisins í hverri af eftirfarandi lausn
 (a) Ákvarðaðu mólmassa KMnO[[sub:4]]; ákvarðaðu fjölda móla af KMnO[[sub:4]] í lausninni; út frá fjölda móla og rúmmáli lausnarinnar, ákvarðaðu mólstyrkinn; (b) 1,15 [[MATH:12]] 10[[sup:−3]] [[i:M]]
 
 <!-- SEG:m68703:problem:fs-idm3478320 -->
-Skoðaðu þessa spurningu: Hver er mólstyrkur HCl ef 35,23 ml af HCl-lausn innihalda 0,3366 g af HCl?
+Íhugaðu þessa spurningu: Hver er mólstyrkur HCl ef 35,23 ml af HCl-lausn innihalda 0,3366 g af HCl?
 
 <!-- SEG:m68703:problem:fs-idp33435888 -->
 (a) Lýstu í grófum dráttum þeim skrefum sem nauðsynleg eru til að svara spurningunni.
@@ -470,13 +470,13 @@ Skoðaðu þessa spurningu: Hver er mólstyrkur HCl ef 35,23 ml af HCl-lausn inn
 Reiknaðu mólstyrk hverrar af eftirfarandi lausnum:
 
 <!-- SEG:m68703:problem:fs-idm26577024 -->
-(a) 0,195 g af kólesteróli, C[[sub:27]]H[[sub:46]]O, í 0,100 L af blóðvatni, meðalstyrkur kólesteróls í blóðvatni manna
+(a) 0,195 g af kólesteróli, C[[sub:27]]H[[sub:46]]O, í 0,100 L af sermi, meðalstyrkur kólesteróls í sermi manna
 
 <!-- SEG:m68703:problem:fs-idm26575872 -->
 (b) 4,25 g af NH[[sub:3]] í 0,500 L af lausn, styrkur NH[[sub:3]] í heimilisammoníaki
 
 <!-- SEG:m68703:problem:fs-idm26574720 -->
-(c) 1,49 kílógrömm af ísóprópýlalkóhóli, C[[sub:3]]H[[sub:7]]OH, í 2,50 L af lausn, styrkur ísóprópýlalkóhóls í sótthreinsunarspritti
+(c) 1,49 kg af ísóprópýlalkóhóli, C[[sub:3]]H[[sub:7]]OH, í 2,50 L af lausn, styrkur ísóprópýlalkóhóls í hreinsispritti
 
 <!-- SEG:m68703:problem:fs-idm26573568 -->
 (d) 0,029 g af I[[sub:2]] í 0,100 L af lausn, leysni I[[sub:2]] í vatni við 20 °C
@@ -488,16 +488,16 @@ Reiknaðu mólstyrk hverrar af eftirfarandi lausnum:
 Reiknaðu mólstyrk hverrar af eftirfarandi lausnum:
 
 <!-- SEG:m68703:problem:fs-idm26439568 -->
-(a) 293 g af HCl í 666 ml af lausn, megn HCl-lausn
+(a) 293 g HCl í 666 ml af lausn, óþynnt HCl-lausn
 
 <!-- SEG:m68703:problem:fs-idm26439184 -->
-(b) 2,026 g af FeCl[[sub:3]] í 0,1250 L af lausn sem er notuð sem óþekkt efni á rannsóknarstofum í almennri efnafræði
+(b) 2,026 g FeCl[[sub:3]] í 0,1250 L af lausn sem notuð er sem óþekkt efni á almennum efnafræðistofum
 
 <!-- SEG:m68703:problem:fs-idm26438416 -->
-(c) 0,001 mg af Cd[[sup:2+]] í 0,100 L, hámarksleyfilegur styrkur kadmíums í drykkjarvatni
+(c) 0,001 mg Cd[[sup:2+]] í 0,100 L, hámarks leyfilegur styrkur kadmíums í drykkjarvatni
 
 <!-- SEG:m68703:problem:fs-idm26437648 -->
-(d) 0,0079 g af C[[sub:7]]H[[sub:5]]SNO[[sub:3]] í einni únsu (29,6 ml), styrkur sakkaríns í sykurskertum gosdrykk.
+(d) 0,0079 g C[[sub:7]]H[[sub:5]]SNO[[sub:3]] í einni únsu (29,6 ml), styrkur sakkaríns í sykurskertum gosdrykk.
 
 <!-- SEG:m68703:problem:fs-idm26521344 -->
 Það er um það bil 1,0 g af kalsíum, sem Ca[[sup:2+]], í 1,0 L af mjólk. Hver er mólstyrkur Ca[[sup:2+]] í mjólk?
@@ -515,7 +515,7 @@ Ef 0,1718 L af 0,3556-[[i:M]] C[[sub:3]]H[[sub:7]]OH lausn er þynnt í styrkinn
 0,5000 L
 
 <!-- SEG:m68703:problem:fs-idm27153472 -->
-Ef 4,12 L af 0,850 [[i:M]]-H[[sub:3]]PO[[sub:4]] lausn er þynnt í rúmmálið 10,00 L, hver er styrkur lausnarinnar sem myndast?
+Ef 4,12 L af 0,850 [[i:M]]-H[[sub:3]]PO[[sub:4]] lausn er þynnt í 10,00 L rúmmál, hver er styrkur lausnarinnar sem myndast?
 
 <!-- SEG:m68703:problem:fs-idm27693872 -->
 Hvaða rúmmál af 0,33-[[i:M]] C[[sub:12]]H[[sub:22]]O[[sub:11]] lausn er hægt að þynna til að útbúa 25 ml af lausn með styrkinn 0,025 [[i:M]]?
@@ -527,7 +527,7 @@ Hvaða rúmmál af 0,33-[[i:M]] C[[sub:12]]H[[sub:22]]O[[sub:11]] lausn er hægt
 Hver er styrkur NaCl-lausnarinnar sem myndast þegar 0,150 L af 0,556-[[i:M]] lausn fær að gufa upp þar til rúmmálið hefur minnkað í 0,105 L?
 
 <!-- SEG:m68703:problem:fs-idm27672112 -->
-Hver er mólstyrkur þynntu lausnarinnar þegar hver af eftirfarandi lausnum er þynnt í uppgefið lokarúmmál?
+Hver er mólstyrkur þynntu lausnarinnar þegar hver af eftirfarandi lausnum er þynnt í gefið lokarúmmál?
 
 <!-- SEG:m68703:problem:fs-idm27671600 -->
 (a) 1,00 L af 0,250-[[i:M]] lausn af Fe(NO[[sub:3]])[[sub:3]] er þynnt í lokarúmmálið 2,00 L
@@ -548,13 +548,13 @@ Hver er mólstyrkur þynntu lausnarinnar þegar hver af eftirfarandi lausnum er 
 Hver er lokastyrkur lausnarinnar sem myndast þegar 225,5 ml af 0,09988-[[i:M]] lausn af Na[[sub:2]]CO[[sub:3]] fær að gufa upp þar til rúmmál lausnarinnar hefur minnkað í 45,00 ml?
 
 <!-- SEG:m68703:problem:fs-idm27373008 -->
-Keypt var 2,00 lítra flaska af megnri HCl-lausn fyrir almenna efnafræðirannsóknarstofu. Lausnin innihélt 868,8 g af HCl. Hver er mólstyrkur lausnarinnar?
+Keypt var 2,00 lítra flaska af lausn með óblandaðri HCl fyrir efnafræðitilraunastofu. Lausnin innihélt 868,8 g af HCl. Hver er mólstyrkur lausnarinnar?
 
 <!-- SEG:m68703:solution:fs-idm27372304 -->
 11,9 [[i:M]]
 
 <!-- SEG:m68703:problem:fs-idm27363856 -->
-Í tilraun á almennri efnafræðirannsóknarstofu er kallað eftir 2,00-[[i:M]] lausn af HCl. Hversu marga ml af 11,9 [[i:M]] HCl þyrfti til að búa til 250 ml af 2,00 [[i:M]] HCl?
+Í tilraun á almennri efnafræðistofu er kallað eftir 2,00-[[i:M]] lausn af HCl. Hversu marga ml af 11,9 [[i:M]] HCl þyrfti til að búa til 250 ml af 2,00 [[i:M]] HCl?
 
 <!-- SEG:m68703:problem:fs-idm26482880 -->
 Hvaða rúmmál af 0,20-[[i:M]] K[[sub:2]]SO[[sub:4]] lausn inniheldur 57 g af K[[sub:2]]SO[[sub:4]]?
@@ -563,7 +563,7 @@ Hvaða rúmmál af 0,20-[[i:M]] K[[sub:2]]SO[[sub:4]] lausn inniheldur 57 g af K
 1,6 L
 
 <!-- SEG:m68703:problem:fs-idm26470832 -->
-Umhverfisstofnun Bandaríkjanna (EPA) setur mörk fyrir það magn eitraðra efna sem má losa í fráveitukerfi. Mörk hafa verið ílend fyrir ýmis efni, þar á meðal sexgilt króm, sem er takmarkað við 0,50 mg/L. Ef iðnaður losar sexgilt króm sem kalíumdíkrómat (K[[sub:2]]Cr[[sub:2]]O[[sub:7]]), hver er þá hámarks leyfilegur mólstyrkur þess efnis?
+Umhverfisstofnun Bandaríkjanna (EPA) setur takmarkanir á magn eitraðra efna sem má losa í fráveitukerfi. Takmörk hafa verið sett fyrir ýmis efni, þar á meðal sexgilt króm, sem er takmarkað við 0,50 mg/L. Ef iðnaður losar sexgilt króm sem kalíumdíkrómat (K[[sub:2]]Cr[[sub:2]]O[[sub:7]]), hver er þá hámarks leyfilegur mólstyrkur þess efnis?
 
 <!-- SEG:m68703:title:fs-idm26459312-title -->
 Lykiljafna
@@ -581,49 +581,49 @@ vatnslausn
 lausn þar sem vatn er leysirinn
 
 <!-- SEG:m68703:glossary-term:fs-idm26449216-term -->
-megn
+óblandað
 
 <!-- SEG:m68703:glossary-def:fs-idm26449216-def -->
-þáttbundið hugtak fyrir lausn sem inniheldur leyst efni í tiltölulega háum styrk
+eigindlegt hugtak yfir lausn sem inniheldur uppleyst efni í tiltölulega háum styrk
 
 <!-- SEG:m68703:glossary-term:fs-idm26447680-term -->
 styrkur
 
 <!-- SEG:m68703:glossary-def:fs-idm26447680-def -->
-magnbundið mál á hlutfallslegu magni leysts efnis og leysis í lausn
+magnbundinn mælikvarði á hlutfallslegt magn uppleysts efnis og leysis í lausn
 
 <!-- SEG:m68703:glossary-term:fs-idm26674336-term -->
 þynnt
 
 <!-- SEG:m68703:glossary-def:fs-idm26674336-def -->
-þáttbundið hugtak fyrir lausn sem inniheldur leyst efni í tiltölulega lágum styrk
+eigindlegt hugtak yfir lausn sem inniheldur uppleyst efni í tiltölulega lágum styrk
 
 <!-- SEG:m68703:glossary-term:fs-idm26672800-term -->
 þynning
 
 <!-- SEG:m68703:glossary-def:fs-idm26672800-def -->
-ferli þar sem leysi er bætt við lausn til að lækka styrk leystra efna
+ferli þar sem leysi er bætt við lausn til að lækka styrk uppleystra efna
 
 <!-- SEG:m68703:glossary-term:fs-idm26671264-term -->
 uppleyst
 
 <!-- SEG:m68703:glossary-def:fs-idm26671264-def -->
-lýsir ferlinu þar sem efnisþættir leysts efnis dreifast í leysi
+lýsir ferlinu þar sem uppleystir efnisþættir dreifast í leysi
 
 <!-- SEG:m68703:glossary-term:fs-idm26669728-term -->
 mólstyrkur ([[i:M]])
 
 <!-- SEG:m68703:glossary-def:fs-idm26669728-def -->
-eining styrks, skilgreind sem fjöldi móla af leystu efni í 1 lítra af lausn
+styrkleining, skilgreind sem fjöldi móla af uppleystu efni í 1 lítra af lausn
 
 <!-- SEG:m68703:glossary-term:fs-idm26667568-term -->
-leyst efni
+uppleyst efni
 
 <!-- SEG:m68703:glossary-def:fs-idm26667568-def -->
-efnisþáttur lausnar sem er í lægri styrk en leysirinn
+lausnarþáttur sem er til staðar í lægri styrk en leysirinn
 
 <!-- SEG:m68703:glossary-term:fs-idm26666032-term -->
 leysir
 
 <!-- SEG:m68703:glossary-def:fs-idm26666032-def -->
-efnisþáttur lausnar sem er í hærri styrk miðað við aðra efnisþætti
+lausnarþáttur sem er til staðar í hærri styrk miðað við aðra þætti
