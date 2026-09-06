@@ -267,6 +267,32 @@ On mismatch, keep the **translation** and strip that type's markers to plain tex
 
 ⚠️ **This is the SECOND chapter re-bought for this mechanism** (organic ch03 cost ~742 ISK). **That is the argument for finishing the glossary properly now rather than per-chapter** — the ~1,600 unjudged chemistry rows are the largest unquantified exposure on the list, and every chapter bought before they are judged is a candidate for a third re-buy.
 
+### §C130 — **"LESS IS MORE" IS MEASURED, NOT A HUNCH: THE MODEL ALREADY PRODUCES 80% OF THE ROWS WE WOULD RESTORE**
+
+**[USER] 2026-09-06:** *"Miðeind's Erlendur is getting better at terminology (natríum etc) but consistency is key. We might be facing a 'less is more' situation regarding the glossaries, where larger glossaries don't always produce better results."* ▶ **Measured, and it holds.**
+
+**The control is clean and it is the only one we have:** organic ch03 was re-MT'd 2026-09-05 under the **249-term chemistry-only** glossary, so every fallback-tier headword was **absent from the wire**. Its committed Icelandic is an unprompted rendering of exactly the rows a re-widening would restore. 675 aligned segments, 61,904 EN chars.
+
+| | |
+|---|---|
+| §C129 KEEP rows whose English appears in ch03 | **150** |
+| **model already produces the glossary's word, unprompted** | **120 (80%)** |
+| model produced something else | 22 — **and this OVERCOUNTS** |
+
+▶ **The 22 is inflated by the instrument, not by the model:** `boiling → suða` counted as a difference because the model wrote **`suðumark`** — *boiling point*, the correct compound. A bare-stem test cannot see a correct compound form, so **true agreement is above 80%.**
+
+🔴 **THIS FALSIFIES MY OWN ARGUMENT FOR RE-WIDENING, WHICH I MADE ONE MESSAGE EARLIER.** I said organic was "missing its core vocabulary — `acetic acid`, `amino acid`, `amino group`". **Measured: the model produces them anyway.** `acetic acid → ediksýra` ✓, `aldehyde → aldehýð` ✓ (7), `alkane → alkan` ✓, `alkene → alken` ✓ (7), `alkyne → alkýn` ✓ (4), `amide → amíð` ✓ (7), `affinity → sækni` ✓ (2) — **all with no glossary entry.** Organic is not missing them; **it does not need to be told.** Instrument verified in both directions: every "agree" sampled is present in the output, every "differ" sampled is absent (`gull` 0, `jafna` 0, `miðja` 0, `suða` 0).
+
+### What that means for the glossary as a whole
+
+🔴 **A GLOSSARY ROW IS NOT FREE, AND ITS EXPECTED VALUE IS NOW NEGATIVE FOR THE AVERAGE ROW.** Each row carries the over-broad and wrong-sense risk §C129 spent 121 agents finding — and for **4 rows in 5 it buys a word the model was going to write anyway.** ▶ **The default should invert: a row must EARN its place, and the test is §C73's — does the model already produce it, consistently, unprompted?**
+✅ **WHERE A ROW STILL EARNS ITS PLACE, AND THIS IS [USER]'s OWN POINT: CONSISTENCY, NOT CORRECTNESS.** The glossary's real value is forcing the SAME choice everywhere when several renderings are defensible — not rescuing a term the model gets wrong. **That is a much smaller set than 2,091 rows**, and it is a different selection criterion from any used so far: *how many distinct renderings does the model produce for this term unprompted?* — a measurement nobody has made.
+⚠️ **THE CONTROL IS ONE CHAPTER — 150 of the 746 relevant rows. Do not read 80% as a corpus-wide constant.** It is strong enough to change a default and not strong enough to be a number anyone quotes. **Widening it is free: every chapter bought under the clean glossary adds to this control.**
+
+### ▶ CONSEQUENCE FOR THE RE-WIDENING DECISION — [USER] ruled to re-widen; this is new evidence, surfaced not acted on
+
+[USER] ruled *"do B1 and then re-widen organic afterwards"* **before this measurement existed**. It bears directly on the second half: **re-widening would restore ~746 rows of which ~4 in 5 are redundant**, each carrying audited risk, to a book whose glossary is currently the only clean one in the project. ▶ **Re-widening is NOT executed pending [USER] re-confirmation.** B1 is unaffected and proceeds.
+
 ### §C129 — THE FALLBACK-TIER AUDIT: **1,591 rows judged, 378 to remove — and it turns a blunt instrument into a scalpel**
 
 All **1,591** physics/biology rows that fire on chemistry's 4.36M-char corpus, judged with match evidence, **121 agents**. 380 marked REMOVE · **100 adversarially sampled · 3 refuted (3%)** · 377 survive + `plus`/`minus` ruled upstream.
