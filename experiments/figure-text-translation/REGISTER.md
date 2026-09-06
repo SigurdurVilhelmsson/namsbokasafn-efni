@@ -8,6 +8,57 @@ things lives in [README.md](README.md).
 
 ---
 
+## ⏩ RESUME — state as of 2026-09-06 (supersedes the 2026-09-05 block below)
+
+🔴 **THE READ LAYER IS BEING REPLACED, NOT REPAIRED.** [USER] decision, frozen at
+[`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../../docs/decisions/2026-09-06-figure-read-layer-respec.md);
+its requirements have their own owner at
+[`docs/superpowers/specs/2026-09-06-figure-read-layer-contract.md`](../../docs/superpowers/specs/2026-09-06-figure-read-layer-contract.md).
+**`extract.py` + `pdftext.py` + `strip-text.py` (~239 lines) go. `figtext.py` + `compose.py` +
+`svgout.py` (~401 lines) STAY** — arc reassembly, wrap-then-shrink, per-line font/colour and font
+subsetting are real domain work no library provides, and two blind reviews left them untouched.
+
+▶ **The reason, in one line the code wrote itself:** `_deps.py`'s docstring says *"pikepdf /
+pycairo / Pillow are NOT repo dependencies — **this is an experiment, not a pipeline tool**."* It
+was promoted by writing a plan around it, never by re-specifying it.
+
+### The measured defect surface — [`TEXT-COVERAGE.md`](TEXT-COVERAGE.md) owns the numbers, re-run rather than quote
+
+Denominator **1,148** CNXML `<image src>` basenames · **895** resolved · **779** text-bearing.
+
+| defect | exposure | reader-visible? |
+|---|---|---|
+| text inside `/Form` XObjects — read as **zero** | **274 figures** | yes: English shipped |
+| **`/Encoding /Differences` ignored** — `°C` → `¡C`, `λ` → `\x7f` | **96 of 280 EPS (34%)** | 🔴 **yes, AND it reaches the PAID MT** |
+| **CID/`/Type0`** → plausible-looking control-byte garbage | **11 figures** | 🔴 **spend: can be marked `send:true`** |
+| a mechanism **not yet named** (`CNX_Chem_20_01_recycle`, 103 words) | 1 | unknown |
+| colour: only the `k` (CMYK) operator is tracked — `rg`/`g`/`sc`/`scn` are not | unquantified | wrong `fill` |
+
+🔴 **THE DEV FIXTURE WAS ATYPICAL ON EVERY AXIS THAT LATER BIT.** `CNX_Chem_01_01_SciMethod` has
+page-level text, blank runs only in *arc* blocks, no CID font, and is a `.pdf` in the base tree.
+**Each is the minority case.** One fixture produced four independent wrong assumptions, and nothing
+ever established a denominator for the tool.
+
+### The candidate, and what its controls proved
+
+**pdfplumber (MIT)** reads **779 of 779** against our **504**; **0 real character losses** anywhere
+measured; it **corrects our output on 107 figures** (96 `/Differences` + 11 CID). All nine
+`runs.json` fields are obtainable — six direct, `rot` from the text matrix, and **`adv` exact**
+(consecutive chars measured at a 0.0000 gap).
+
+⚠️ **Both regression signals were FALSE at first reading and had to be re-measured:** 155 apparent
+regressions were a word-vs-character unit mismatch (0 real), and a 280/280 "gs loses everything"
+was a regex matching Illustrator colour names. **→ [`TEXT-COVERAGE.md`](TEXT-COVERAGE.md) addenda 1 and 2.**
+
+⚠️ **What is NOT established:** whether `gs` loses *some* EPS text. It produced readable text for
+all 280 (7,884 words, 0 failures), and **it is the converter the pipeline already uses**, so it is
+not a differentiator — but the only honest instrument is `check.py` against OpenStax's published
+raster, and **no second EPS→PDF converter exists on this box** to cross-check with.
+
+**Campaign status is the campaign register's (§C137/§C138), not this file's.**
+
+---
+
 ## ⏩ RESUME — state as of 2026-09-05
 
 **✅ THE EDITORIAL PIPELINE IS COMPLETE END TO END.** An editor opens a module, sees each
