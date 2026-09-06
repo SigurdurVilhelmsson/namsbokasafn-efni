@@ -7,6 +7,8 @@
 ### ⏭ SINGLE NEXT ACTION — **EXECUTE M5 TASK 0, WHICH PRODUCES THE CENSUS EVERYTHING ELSE WAITS ON.**
 
 ✅ **THE PLAN IS REVISED TWICE AND COMMITTED** (`bfeb7887`, `61db65d7`, `237aff38`). §C137's 16 findings are folded in; a blind closure review of that revision then confirmed **8 more, 0 refuted** → §C138.
+🔴 **AND THE READ LAYER IS NOW BEING REPLACED, NOT REPAIRED — [USER] 2026-09-06, recorded at [`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../decisions/2026-09-06-figure-read-layer-respec.md).** The census that settled it is committed: `experiments/figure-text-translation/TEXT-COVERAGE.md` — **the hand-written extractor reads 496 of 779 text-bearing chemistry figures**, and `_deps.py`'s own docstring says *"this is an experiment, not a pipeline tool"*. **The LAYOUT half is kept.** Scope: re-spec the read side, bake off MIT readers first.
+
 🔴 **TASK 0 IS NO LONGER A PRELUDE — IT IS THE INSTRUMENT.** Every blocking finding across three review rounds has been about **what the Python chain does on real artwork**, which is settled **for free, on this box, with no API call**. Task 0 repairs the chain and emits a **five-way census** (page-text · form-text-only · Type0-garbage · genuinely textless · photo). **Tasks 1–6b are PROVISIONAL until that census exists** — their acceptance numbers were deleted, not adjusted, because the old ones were exactly what a form-blind extractor produces.
 ✅ **TASK 0's SCOPE IS RULED (§C138, R10): repair + census + a TIMEBOXED P9 SPIKE, then decide against a number.** ⚠️ **Do not let the spike become the implementation** — if it runs long, that is the answer, and `unreadable-text` is already designed.
 

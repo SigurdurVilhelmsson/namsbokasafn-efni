@@ -4,6 +4,8 @@
 **Owner of:** the DESIGN of `tools/figure-run.js` and its two Python entry points.
 **Status of the work lives in** `experiments/figure-text-translation/REGISTER.md` (figure status) and the campaign register's ⏩ RESUME. This document carries no status verbs.
 
+> 🔴 **THE READ LAYER'S FUTURE IS NO LONGER THIS DOCUMENT'S TO DECIDE → [`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../../decisions/2026-09-06-figure-read-layer-respec.md).** The repair list's read-side rows (P1, P2, P3, P9) describe defects in a component being **replaced rather than repaired**. They remain accurate as a description of what is wrong; they are no longer the prescription. **The classification, outcomes, data flow, invariants and CLI contract below are unaffected** — they depend on `runs.json`'s eight fields, not on who produces them.
+>
 > 🔴 **REVISION BANNER — 2026-09-06.** The first version of this spec failed a blind adversarial
 > review (§C137: 16 confirmed, 4 partial, 0 refuted) and a follow-up verification then found **two
 > more** defects the review missed. **Every correction below is marked and dated**, because the
