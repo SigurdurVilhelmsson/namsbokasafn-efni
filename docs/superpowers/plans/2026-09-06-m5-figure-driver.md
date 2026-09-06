@@ -224,7 +224,7 @@ types, `font` resolves in `meta.fonts` — which needs no pairing.
 **R-11. P8 MOVES FROM R4 INTO R1.** C4b is measured in R1 and R2; R4/P8 then *changes* the
 block-key rule. Measuring block keys under a rule the pipeline is about to abandon certifies key
 sets nobody buys. ▶ **R1 creates the ONE shared key function and deletes `emit-blocks.py`'s
-blank-run filter**, so every later measurement uses the final rule. R4 keeps only P3 and P6.
+blank-run filter**, so every later measurement uses the final rule. R4 keeps P3, P6, H2's enforcement and P8b (ruling **R-14**).
 
 **R-12. H7 has NO signal from pdfplumber, and the honest move is to say so.** When pdfminer
 cannot parse colour components it logs a warning and leaves `graphicstate.ncolor` **unchanged**,
@@ -289,7 +289,13 @@ function every later measurement depends on (ruling **R-11**).
 
 - [ ] **Step 1: `blockkey.py` first.** One function, `block_key(block) -> str`, holding the emit
   side's rule: `''.join(r['text'] for r in b)` when `figtext.is_arc(b)`, else `'|'.join(lines)`.
-  `emit-blocks.py`, `census.py` and the harness all import it. **No second copy anywhere.**
+  `emit-blocks.py`, `census.py`, `compose.py` and the harness all import it. **No second copy
+  anywhere — there are FOUR consumers, not three.** ⚠️ **`compose.py:96` holds a fourth inline
+  copy** (`key = ''.join(...) if arc else '|'.join(en_lines)`), and it is the consumer that
+  matters most: it is what looks the translation up at draw time. P8's own wording is *"emit and
+  compose must agree, whoever reads"*. Importing a function that returns the identical string is
+  **not** a behaviour change to the KEPT layout layer. **Add a test asserting the emit-side and
+  compose-side keys are identical on a real figure** — that assertion is the point of the move.
   ⚠️ **Delete `emit-blocks.py`'s `if r['text'].strip()` filter; do NOT add one to `compose.py`** —
   the measurement is in R4's P8 row and a one-figure check gives the opposite answer.
 
