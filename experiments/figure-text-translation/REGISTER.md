@@ -475,3 +475,24 @@ open:**
   translates a superseded illustration — which is what
   `books/efnafraedi-2e/media/_reexport-pending/EDITION-CHECK.txt` was tracking by hand.
   This precedence is a **configured rule**, see `figure-text.config.json`.
+
+## ⚖️ [USER] RULINGS 2026-09-06 — M5's design constraints, taken before any code
+
+**① FIGURES PUBLISH STRAIGHT TO `mt-preview`. THERE IS NO APPROVAL GATE, AND M5 MUST NOT BUILD ONE.**
+> *"MT figures go straight to mt-preview. That is the pipeline working. Editors work on MT-preview content. When that has been edited and approved, it moves to faithful."*
+
+▶ **The editor's role on a figure is to NOTE that it needs fixing, not to approve it.** Noted images are re-run through the **CLI, periodically and in batches**.
+🔴 **AND THE TWO TRACKS ARE DECOUPLED PER ASSET CLASS: a module may reach `faithful` while still carrying `mt-preview` IMAGES.** *"Re-running images through CLI does not gate faithful text."*
+⚠️ **CONSEQUENCE THAT IS NOT OURS TO IMPLEMENT: the MT-preview LABEL is per-asset-class, not per-module** — text can be faithful beside machine-translated pictures, and both are labelled on the website. **The label lives in vefur**; efni only has to make the state distinguishable. → hand it over before the first figure chapter is synced.
+▶ **This retires the ordering argument that M5 must land before the first editorial pass.** That reasoning assumed an image gap forced a SECOND editor visit; batched periodic re-runs mean it is a note made in passing, not a visit. **M5's deadline is softer than the loop plan's M5/M6 wording implies.**
+
+**② THE GLOSSARY COMES OFF THE FIGURE MT LEG TOO.** [USER] 2026-09-06, on top of §C133.
+🔴 **`2e69a637` ("gate 1 — the figure MT leg sends the glossary, or refuses") IS NOW INVERTED AND MUST BE REWRITTEN, NOT DELETED** — a gate that refuses without the glossary becomes a gate that refuses WITH it. **Deleting it instead would leave the leg silently ungated**, which is how this project has lost a guard before.
+▶ **The argument is stronger for figures than for prose:** figure text is labels and captions — short, fragmentary, often a single noun — which is exactly where a flat context-free map does its worst work, because there is no sentence to disambiguate against. §C116's short-headword hazard bites hardest here. **And a wrong figure label is worse than wrong prose: a reader cannot infer around it, and it is baked into an image rather than editable in the segment editor.**
+⚠️ **The counter-argument, recorded because it is real and will return:** labels are precisely where consistency WITH THE BODY TEXT matters most. That argues for the editor's terminology assistant eventually reaching figures (→ `docs/plans/2026-09-06-editor-terminology-assistant.md`), **not** for a flat map on the wire.
+
+**③ SCOPE IS CHEMISTRY 2e ONLY, AND ORGANIC IS BLOCKED ON AN ASSET WE DO NOT HAVE.**
+🔴 **`01-source/media/` IS NOT THE ARTWORK AND IS NOT A SUBSTITUTE — FOR EITHER BOOK.** It holds published RASTERS (chemistry 1,529 jpg; organic 5,257 jpg). Text baked into pixels cannot be extracted or replaced. ▶ **The translatable asset is the OpenStax artwork delivery (PDF/EPS with live text objects), which lives OUTSIDE the repo** at a machine-local path in the **gitignored** `sources.local.json`. **That file has exactly one book key: `efnafraedi-2e`.**
+▶ Chemistry's artwork, measured across both trees: **2,238 pdf · 1,312 svg · 516 eps** (+1,494 jpg, 71 psd, 67 png).
+⏳ **[USER] will request Organic's artwork from OpenStax 2026-09-07; previous responses took a couple of days.** ▶ **So design the driver book-agnostic and run it on chemistry — Organic must need a `sources.local.json` entry and nothing else.**
+⚠️ **The two-tree precedence is load-bearing and already has code + a test (`sources.py`, `test_sources.py`): `selected-art` (updates-2e) WINS over `base`.** Measured while planning: `selected-art` carries Ch02, Ch03, Ch06–Ch18 and AppA — **no Ch04 or Ch05**, so those fall through to `base`. **Sourcing a superseded illustration is invisible in the output and NO downstream check can see it**, so the driver resolves through `sources.py`, never by globbing a directory.
