@@ -4,9 +4,11 @@
 
 ## ⏩ RESUME — state as of **2026-09-06 (EVENING — context handoff)** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — **REVISE the M5 plan against §C137, THEN execute it.**
+### ⏭ SINGLE NEXT ACTION — **EXECUTE M5 TASK 0, WHICH PRODUCES THE CENSUS EVERYTHING ELSE WAITS ON.**
 
-🔴 **THE PLAN FAILED ITS BLIND REVIEW — 16 CONFIRMED defects, 0 refuted. DO NOT EXECUTE IT AS WRITTEN.** The architecture, the six-task shape and every [USER] ruling survive; what failed is the WIRING BETWEEN STAGES and the ORDER of write-vs-refuse. **Revise, do not re-design.** → §C137
+✅ **THE PLAN IS REVISED TWICE AND COMMITTED** (`bfeb7887`, `61db65d7`, `237aff38`). §C137's 16 findings are folded in; a blind closure review of that revision then confirmed **8 more, 0 refuted** → §C138.
+🔴 **TASK 0 IS NO LONGER A PRELUDE — IT IS THE INSTRUMENT.** Every blocking finding across three review rounds has been about **what the Python chain does on real artwork**, which is settled **for free, on this box, with no API call**. Task 0 repairs the chain and emits a **five-way census** (page-text · form-text-only · Type0-garbage · genuinely textless · photo). **Tasks 1–6b are PROVISIONAL until that census exists** — their acceptance numbers were deleted, not adjusted, because the old ones were exactly what a form-blind extractor produces.
+🔴 **ONE OPEN [USER] DECISION GATES TASK 0's SCOPE → see §C138's closing question.**
 
 **Plan:** [`docs/superpowers/plans/2026-09-06-m5-figure-driver.md`](../superpowers/plans/2026-09-06-m5-figure-driver.md) · **Spec:** [`…/specs/2026-09-06-m5-figure-driver-design.md`](../superpowers/specs/2026-09-06-m5-figure-driver-design.md)
 **Mode:** [USER] chose **`superpowers:subagent-driven-development`** — fresh agent per task, two-stage review between. Six TDD tasks. **NO CODE EXISTS YET.**
@@ -27,7 +29,7 @@
 | — | The **editor terminology assistant plan** (`3ec4f660`) — nine units U1–U9, four half-built, five open [USER] questions. |
 | — | **M5 spec + plan + three [USER] rulings** (`95f9fd5a`, `857d263a`, `e46b07cb`, `c2f98801`). |
 
-⚠️ **NOTHING IS PUSHED AND NOTHING IS PUBLISHED.** 12 commits sit on this box only. **Pushing to `main` strands prod's content backup until the next deploy** — a deliberate choice, not an oversight. Decide before pushing.
+⚠️ **CORRECTED 2026-09-06 (evening): those 12 commits ARE pushed** — measured `origin/main...HEAD` = **0 ahead, 0 behind** at `13e814ca`. **Nothing is PUBLISHED**, which is the half that still holds. **3 new M5 doc commits are local and unpushed.** Pushing to `main` strands prod's content backup until the next deploy — a deliberate choice, not an oversight. *(A push-status line in prose goes stale the moment someone pushes; read `git rev-list --left-right --count origin/main...HEAD`, never this sentence.)*
 
 ### 🔴 SEVEN THINGS A NEW SESSION MUST NOT RE-DERIVE
 
@@ -413,6 +415,40 @@ On mismatch, keep the **translation** and strip that type's markers to plain tex
 ✅ **The reviewers struck two of their own sub-claims** (unicode normalisation, arc/non-arc disagreement) as not real mechanisms here. Calibration worth noting: this was not a pile-on.
 
 ▶ **CONSEQUENCE: the plan needs a revision pass BEFORE execution.** The architecture, the six-task shape and every [USER] ruling survive untouched — what failed is the wiring between stages and the ordering of write-vs-refuse. **Revise, do not re-design.**
+
+### §C138 — **THE REVISION WAS REVIEWED AND FAILED AGAIN: 8 CONFIRMED, 0 REFUTED, 2 BLOCKING. AND THE PATTERN ACROSS THREE ROUNDS IS THE FINDING.**
+
+§C137's 16 were folded in (`bfeb7887`), one self-caught error fixed (`61db65d7`), then a **[USER]-authorised Fable-5 blind closure review** of the revised documents: 14 agents, 0 errors, **45 raw findings → 8 adversarially verified, 0 refuted, 37 lower-severity left unverified by the cap — and 48 claims the reviewers STRUCK THEMSELVES.** Folded in at `237aff38`.
+
+🔴 **THE TWO BLOCKING FINDINGS ARE ONE ROOT CAUSE, AND THE REVISION'S OWN FIX CREATED THE SILENT HALF.** Text drawn inside a **`/Form` XObject** is invisible to `extract.py` and `strip-text.py`; **P3 — "return `[]` instead of raising" — converts that from a LOUD CRASH into a GREEN LIE.** Verified independently by this session:
+
+| figure | page `/Font` | page stream has `BT` | Form XObjects | forms containing `BT` |
+|---|---|---|---|---|
+| `CNX_Chem_04_04_limiting` | **empty** | **no** | 4 | **4** |
+| `CNX_Chem_04_03_etheneBr_img` | **empty** | **no** | 17 | **17** |
+| `CNX_Chem_01_01_SciMethod` | `/TT0 /TT1` | **yes** | 0 | 0 |
+
+▶ **THE LAST ROW IS THE FINDING: `SciMethod` IS THE FIGURE THE ENTIRE EXPERIMENT WAS DEVELOPED AGAINST, AND IT IS THE ATYPICAL ONE.** **274 of 894** resolution-winning chemistry vectors keep all their text inside Form XObjects — **8 of ch04's 23**. With P1–P3 and nothing else, `limiting.pdf` (14 English words) → `blocks: 0`, exit 0 → `copied-textless` → **English shipped, no sidecar, no review row, verdict `{ok:true}` — matching the plan's own acceptance line byte for byte.** Fixing the extractor alone is worse: the 14 words survive `strip-text` and sit *under* the composed Icelandic.
+
+🔴 **THE DURABLE RULE THIS YIELDS: "NO BLOCKS" MUST NEVER BE INFERRED FROM AN ABSENCE. A COUNT OF ZERO AND AN INABILITY TO COUNT ARE DIFFERENT FACTS, AND ONLY A POSITIVE SIGNAL TELLS THEM APART.** New `unreadable-text` outcome — counted, every figure NAMED, **non-fatal** (R9's shape: a `failed-prepare` bucket would make ch04 exit 1 on 8 of 30 until P9 lands, the always-red exit code the spec rejects).
+
+**The other six:**
+
+| # | defect | family |
+|---|---|---|
+| E1 | **the identity seam** — P5's `gs` writes `artwork-src.pdf`, P7's de-hash resolves `…moles-6296` to `…moles.pdf`, so `meta.source`'s basename ≠ the sidecar key and publish refuses `basename-mismatch` **AFTER PAYMENT**. All 7 ch04 EPS and 9 ch03 hashed figures, every run, for ever — **and `--dry-run` structurally cannot see it** | spend |
+| E2 | **"never carry `state` forward"** was self-contradicting *and* dangerous — the only non-vacuous way to satisfy it is a rewrite that DROPS `state`, **silently destroying a head editor's approval on the very `--stale` run meant to turn the badge green** | silent |
+| E3 | **P2's "skip `/Type0`" is a silent ERASURE** — measured on `PerTable2`, six category labels gone from the composed figure (control `Group=1 Actinides=1`; defect `Noble=0 Halogens=0 Pnictogens=0`), exit 0 | silent |
+| E4/E5 | **the paid stage is ALL-OR-NOTHING per figure** — a throw at block k discards the k−1 already bought. **ACCEPTED, not fixed**: ~1 ISK, §C134's shape (retry, do not code around) | spend |
+| E6 | the plan's own `...` test bodies are **sketches**; five capped findings were *"this test cannot fail"* | test design |
+
+✅ **AND A BUG IN SHIPPED CODE, FOUND WHILE REVIEWING A PLAN: `withComposedHash` OVERWRITES ITS OWN STAMP when the key is already present**, so a successful publish leaves the on-disk `composedHash` at its OLD value while the publisher returns the new one. **The correction loop's last step never completes and every later `--stale` re-selects the same figure.** → its own **[CODE]** item, independent of M5.
+
+⚠️ **ONE REVIEWER DISAGREEMENT, RESOLVED AND RECORDED SO IT IS NOT RE-ARGUED:** a census struck E3 as impossible (*"0 figures mix a Type0 font with sendable text"*); a verifier confirmed it with a **positive control on the composed artifact**. **Direct observation of the output beats a census over inputs.**
+
+▶ **WHAT THE THREE ROUNDS ADD UP TO, AND IT IS THE ACTIONABLE PART: EVERY BLOCKING FINDING HAS BEEN ABOUT WHAT THE PYTHON CHAIN DOES ON REAL ARTWORK — WHICH IS FREE TO MEASURE AND WAS NEVER MEASURED.** A fourth speculative revision of a 900-line document against an assumed pipeline capability is where this stops paying. **Task 0 now emits a five-way census and Tasks 1–6b are provisional until it exists.**
+
+🔴 **OPEN [USER] DECISION — IT GATES TASK 0's SCOPE.** P9 (Form XObject descent: `pdftext.parse` recursing into `/Form` with the form's own `/Resources/Font` and `/Matrix` × CTM) is **new capability of unknown size** unlocking **~31% of the corpus**. Either it goes **into** M5's Task 0, or **M5 ships those figures as `unreadable-text`** — present in the module, English, flagged, editor can comment — and P9 becomes a follow-up. **8 of 30 on ch04; 274 of 894 corpus-wide.** Under the one-pass-edit ruling this is editor-visible, so it is [USER]'s call.
 📋 Full report: `/tmp/…/tasks/wze3gv7l2.output` is session-local; the survivors' reasoning and evidence are in the workflow journal. **The table above is the durable record.**
 
 ### §C136 — **ch04 BOUGHT: the retry ruling's rate data, and a FALSE POSITIVE that changes what "held back" means**
