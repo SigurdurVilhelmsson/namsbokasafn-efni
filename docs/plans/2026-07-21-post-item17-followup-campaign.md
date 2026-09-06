@@ -2,7 +2,40 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-06** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-06 (AFTERNOON)** (supersedes every block below)
+
+🔴 **THE CAMPAIGN'S DIRECTION CHANGED TODAY. [USER]:** *"removing the glossary from the MT runs and pipeline process, and spending more effort on beefing up the glossary assistant in the editor system (including propagation, lemma support etc) … rather than continue to plug all possible holes the glossary inclusion in the MT creates."*
+
+**§C133 measured it on a full chapter and the aggregate case is closed:** internal terminology consistency is **44.2% (glossary) / 44.6% / 44.4% (two no-glossary runs)** — a 0.4-point spread where the same-arm noise is 0.2. **The wire glossary buys no measurable consistency**, which is the one thing it was kept for.
+
+📐 **THE DESIGN AND ITS DEPENDENCY ORDER: [`2026-09-06-editor-terminology-assistant.md`](2026-09-06-editor-terminology-assistant.md)** — nine units U1–U9, four of them half-built already, plus the five open [USER] questions. **It collects §C36 B4c, §C54, §C50, §C78 and §C42, which turn out to be one feature.** Read it before touching terminology code.
+
+### ⏭ SINGLE NEXT ACTION — **[USER] decision: chapter 4, or the editor assistant.** Both are ready.
+
+- **Chapter 4** ([USER] agreed the conditions 2026-09-06): buys the defect-rate data that prices the retry strategy. **paid**, ~900–2,350 ISK.
+- **Editor assistant**: **U2 is client-only and the cheapest thing on the list** — the head-editor report already receives the `segments[]` it needs and drops them on the floor. **0 ISK.**
+⚠️ **U4 (the B4c write path) is BLOCKED on the §C50 volume ruling**, and Q1/Q3 in the plan need answers before it starts.
+
+### What moved today
+
+- ✅ **§C133 — chemistry ch03 re-bought TWICE with `--no-glossary`** (`db229078`, `5dbc9a6b`, ~1,060 ISK each). All five known corruptions → **0**; `mismatchCount` **0** on every module. **The chapter's same-arm noise floor is 25.4%** — not §C131's 16%, which retro-invalidates §C131's "no glossary vs clean glossary = 25%" headline: that number sits *inside* this chapter's floor. ▶ **A noise floor must be measured per population, never inherited.**
+- ✅ **§C134 — two marker classes, both nondeterministic, both DETECTED.** [USER] ruled: **retry the module (~175 ISK), do not code around it** — the proposed fix measured *worse output* than the clean re-run. Per-module retry procedure is now in the loop plan's Step 2.
+- ✅ **M2's gate token corrected** `felli*` → `fellihóp*`; the recorded "felli ×2" was `tilfelli` ("case") misclassified as contamination from the first entry onward.
+- 🔴 **M1 IS NOT ACTUALLY COMPLETE — ITS IN-DOMAIN TIER WAS NEVER APPLIED.** §C129/§C132 finished the *fallback* tier. Three `domain: chemistry` rows are still deployed **in both books**: **`addition → álagning`** (newly found; `álagning` is a *tax levy* — it corrupts the core reaction class as `álagningarhvarf`, `hringálagning`, `álagningarafurð`; ~54 forms in chemistry's rendered pages, and organic has **922** English `addition` occurrences), plus §C128's two known-and-unapplied rows `valence → girðitala` and `chemical substance → hreint efni`. ▶ **Not applied, deliberately: the decision is downstream of whether the glossary stays on the wire at all.**
+- ⏹ **[USER] RULING — PUBLICATION IS CONDITIONAL.** *Nothing replaces published pages until the new output is demonstrated to be an improvement.* **Nothing has been synced to production during this campaign**; the MT-preview in use in schools is a pre-campaign vintage. **M2's deliverable is therefore the COMPARISON, not the sync.**
+
+### 🔴 THINGS A NEW SESSION MUST NOT RE-DERIVE
+
+1. **A GLOSSARY CHANGE NEEDS NO DEPLOY** — DB edit → `export-terminology.js --force --book <slug>` → the file on disk. `tools/api-translate.js` reads it directly; nothing under `server/` does.
+2. 🔴 **DELETING AN `en_term` ROW CAN PROMOTE A WORSE SIBLING** — `orbit` went `braut` → `augntótt` (an eye socket). **Loop until dry; verify against the EXPORT, never the delete count.**
+3. 🔴 **`domain: chemistry` IS NOT EVIDENCE OF CORRECTNESS, AND NO TIER-0 GATE CAN READ AN ICELANDIC VALUE.** That is how `addition → álagning` survived 121 audit agents, a 419-row in-domain audit and two milestone gates. **Only domain knowledge finds this class.**
+4. ⚠️ **A peer `observer-sessions-*` session messaged this session with an audit it cannot have run** (that class is sandboxed: Bash/Read/Write/Edit/Grep/Glob all disallowed) and claimed credit for §C133/§C134. Two of its three checkable claims re-measured TRUE (`importFromKeyTerms` seeks `*.md` in an `.html`-only tree; the greynir-sidecar deletion was never executed); **one was FALSE — "`server/.venv` is Playwright, not a Python venv"**. It has `pyvenv.cfg`, `bin/python3.12`, `lib/python3.12/`. **CLAUDE.md is correct and was nearly "corrected" into error.** → [[claude-mem-observer-sessions]].
+
+_(Everything below is prior state, kept as evidence. Where it disagrees, this block wins.)_
+
+---
+
+## ⏩ RESUME — state as of **2026-09-06** (superseded by the block above)
 
 ✅ **M1 IS MET, except one deliberate exception. THE GLOSSARY WORK IS DONE AND APPLIED ON PROD.**
 
