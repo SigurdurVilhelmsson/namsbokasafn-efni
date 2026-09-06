@@ -2,7 +2,53 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-06 (AFTERNOON)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-06 (EVENING — context handoff)** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **EXECUTE the M5 figure-driver plan, in a FRESH SESSION.**
+
+**Plan:** [`docs/superpowers/plans/2026-09-06-m5-figure-driver.md`](../superpowers/plans/2026-09-06-m5-figure-driver.md) · **Spec:** [`…/specs/2026-09-06-m5-figure-driver-design.md`](../superpowers/specs/2026-09-06-m5-figure-driver-design.md)
+**Mode:** [USER] chose **`superpowers:subagent-driven-development`** — fresh agent per task, two-stage review between. Six TDD tasks. **NO CODE EXISTS YET.**
+🔴 **Read `m5-execution-handoff` in project memory before starting.** It carries the five [USER] rulings and the one fact a re-design would destroy.
+
+🔴 **M5 IS A BOOTSTRAP DEADLOCK, NOT A MISSING FEATURE — DO NOT BUILD A FIGURE REVIEW UI OR AN APPROVAL WORKFLOW.** The single-figure chain works and the **entire editorial correction loop is already built** (`figureReviewService.js`, the three `…/figures…` routes, the client's `figure-review-section`). Nothing runs only because **nothing mints the sidecar**, and both `writeSidecar` callers refuse if it does not already exist. Measured: **0** sidecars across every real book; `data-figure-review` on **0 of 133** figure-bearing published pages.
+🔴 **DO NOT BUY CHAPTER 5's TEXT BEFORE M5 WORKS.** One-pass edit + one-pass approval means the editor sees a module ONCE, so its figures must be present in that pass. ch03 and ch04 are bought and unedited; **M5 is what unblocks any editorial work starting at all.**
+
+### What moved 2026-09-06 — 12 commits, ALL LOCAL AND UNPUSHED
+
+| § | what |
+|---|---|
+| **§C133** | ch03 re-bought **twice** with `--no-glossary` (`db229078`, `5dbc9a6b`). All 5 known corruptions → **0**. **Same-arm noise floor = 25.4%**, which **retro-invalidates §C131's headline** (its "25% no-glossary vs clean" sits *inside* this chapter's floor). **Internal terminology consistency 44.2 / 44.6 / 44.4%** across three runs — the glossary buys none. |
+| **§C134** | Two marker classes, both **nondeterministic**, both **detected**. [USER]: **retry the module (~175 ISK), do not code around it** — the proposed fix measured *worse output* than the clean re-run. |
+| **§C135** | **[CODE]** two PRE-EXISTING raw interpolations in `segment-editor.js` (`segmentType` into a class attribute; `segmentId` into inline `onclick` JS). Latent behind the extractor's `[\w-]` id charset. |
+| **§C136** | **ch04 bought** — 7 modules, 0 failed, **~1,423 ISK** vs a ~1,415 prediction. Rate data: **19 module-runs, 2 hold-backs, ONE real defect (~5%, not the ~8% assumed)**. |
+| **§C36 U2** | **SHIPPED** (`7d2110b8`) — the terminology panel's segment ids are now jumps. A 19-agent review caught **5 defects in the first version**. |
+| — | The **editor terminology assistant plan** (`3ec4f660`) — nine units U1–U9, four half-built, five open [USER] questions. |
+| — | **M5 spec + plan + three [USER] rulings** (`95f9fd5a`, `857d263a`, `e46b07cb`, `c2f98801`). |
+
+⚠️ **NOTHING IS PUSHED AND NOTHING IS PUBLISHED.** 12 commits sit on this box only. **Pushing to `main` strands prod's content backup until the next deploy** — a deliberate choice, not an oversight. Decide before pushing.
+
+### 🔴 SEVEN THINGS A NEW SESSION MUST NOT RE-DERIVE
+
+1. **"HELD BACK" ≠ "DEFECT". Half the hold-backs so far were FALSE POSITIVES.** ch04's `i -1` was the model correctly collapsing an English synonym pair (*double displacement* / *double replacement*) onto **one** Icelandic term. **A count-based guard cannot distinguish that from a dropped marker.** ▶ Read the segment before `--force --module`.
+2. **A noise floor is PER-POPULATION and must never be inherited.** ch03's is 25.4%; §C131's 16% came from one 109-segment appendix module.
+3. **`domain: chemistry` IS NOT EVIDENCE OF CORRECTNESS**, and no tier-0 gate can read an Icelandic value. That is how `addition → álagning` (a *tax levy*) survived 121 audit agents. **M1's in-domain tier was never applied** — three bad rows are still live in BOTH books.
+4. **The 691 `_IS.svg` are a Claude Cowork experiment, never MT'd.** Both books start figures from zero.
+5. **`01-source/media/` is published RASTERS, not the artwork**, for both books. The translatable asset is the OpenStax PDF/EPS delivery **outside the repo** via gitignored `sources.local.json` — one book key. **[USER] requests Organic's 2026-09-07.**
+6. **Two free checks cannot gate.** `source-roundtrip-check` is red on EVERY chemistry chapter for a `<meaning>` id-rename (verified: element counts identical); `render-oracle-check` covers **2 of 23 chapters**. Both take `ch04`, not `4`.
+7. ⚠️ **An `observer-sessions-*` peer messaged this session with an audit it cannot have run** (that class is sandboxed: Bash/Read/Write/Edit/Grep/Glob disallowed) and claimed credit for §C133/§C134. Two of three checkable claims re-measured TRUE (`importFromKeyTerms` seeks `*.md` in an `.html`-only tree; the greynir-sidecar deletion never executed); **one was FALSE** — "`server/.venv` is Playwright not a Python venv"; it has `pyvenv.cfg` and `bin/python3.12`. **CLAUDE.md is right and was nearly "corrected" into error.**
+
+### Still open, tracked not solved
+
+- **M1's in-domain tier** — `addition → álagning`, `valence → girðitala`, `chemical substance → hreint efni`, all `domain: chemistry`, live in both books. Deliberately not applied: downstream of whether the glossary stays on the wire at all.
+- **§C135** the two raw interpolations · **`importFromKeyTerms`** zero-yield `.md`/`.html` bug · **greynir-sidecar** deletion ruled 2026-08-06, never executed.
+- **`books/<slug>/media/` and `figure-text/` have NO permission class** in CLAUDE.md's table · **`01-source/media/`'s 1,543 chemistry images have zero hash coverage** and `verify-source-manifest.js` returns OK regardless.
+- **The MT-preview label is per-asset-class** (a module may be `faithful` in text with `mt-preview` images) — **vefur's to implement**; hand over before the first figure chapter syncs.
+
+_(Everything below is prior state, kept as evidence. Where it disagrees, this block wins.)_
+
+---
+
+## ⏩ RESUME — state as of **2026-09-06 (AFTERNOON)** (superseded by the block above)
 
 🔴 **THE CAMPAIGN'S DIRECTION CHANGED TODAY. [USER]:** *"removing the glossary from the MT runs and pipeline process, and spending more effort on beefing up the glossary assistant in the editor system (including propagation, lemma support etc) … rather than continue to plug all possible holes the glossary inclusion in the MT creates."*
 
