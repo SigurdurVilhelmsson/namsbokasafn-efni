@@ -1,2 +1,2 @@
 <!-- SEG:chapter:title:ch04 -->
-Hlutfallaefnafræði efnahvarfa
+Efnajöfnur og efnahvörf

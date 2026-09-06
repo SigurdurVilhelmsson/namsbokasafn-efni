@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68714",
-  "extractedAt": "2026-08-31T19:08:37.872Z",
+  "extractedAt": "2026-09-06T12:36:58.220Z",
   "sourceHash": "2f0d15366fa6efc2",
   "segmentCount": 113,
   "segmentIds": [
@@ -233,5 +233,17 @@
       "fs-idp36036608",
       "fs-idm49138160"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "limiting reactant",
+    "term-00002": "excess reactant",
+    "term-00003": "theoretical yield",
+    "term-00004": "actual yield",
+    "term-00005": "percent yield",
+    "fs-idm47393392": "actual yield",
+    "fs-idm46343008": "excess reactant",
+    "fs-idp182610272": "limiting reactant",
+    "fs-idp51447712": "percent yield",
+    "fs-idp30967968": "theoretical yield"
   }
 }

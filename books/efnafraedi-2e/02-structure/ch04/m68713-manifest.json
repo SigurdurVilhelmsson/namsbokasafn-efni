@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68713",
-  "extractedAt": "2026-08-31T19:08:37.830Z",
+  "extractedAt": "2026-09-06T12:36:58.205Z",
   "sourceHash": "bfda08d195336699",
   "segmentCount": 121,
   "segmentIds": [
@@ -247,5 +247,11 @@
       "fs-idp102563712",
       "fs-idm1445952"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "stoichiometry",
+    "term-00002": "stoichiometric factors",
+    "fs-idp127461392": "stoichiometric factor",
+    "fs-idp127462672": "stoichiometry"
   }
 }

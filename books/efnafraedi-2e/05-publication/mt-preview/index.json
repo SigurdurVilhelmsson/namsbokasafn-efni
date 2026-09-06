@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-05T08:18:18.729Z",
+  "generated": "2026-09-06T13:06:16.518Z",
   "termCount": 763,
   "entries": [
     {
@@ -72,7 +72,7 @@
       "termIs": "afoxari",
       "termEn": "reducing agent",
       "termFull": "afoxari (e. reducing agent)",
-      "definition": "efni sem veldur afoxun annars efnis og oxast sjálft í ferlinu",
+      "definition": "(einnig, afoxari) efni sem veldur afoxun annars efnis og oxast sjálft í ferlinu",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -83,7 +83,7 @@
       "termIs": "afoxun",
       "termEn": "reduction",
       "termFull": "afoxun (e. reduction)",
-      "definition": "ferli þar sem oxunartala frumefnis lækkar vegna rafeindaásóknar",
+      "definition": "ferli þar sem oxunartala frumefnis lækkar vegna rafeindaaukningar",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -421,17 +421,6 @@
       "termId": "fs-idp230158528"
     },
     {
-      "termIs": "auðleystur",
-      "termEn": "soluble",
-      "termFull": "auðleystur (e. soluble)",
-      "definition": "með tiltölulega mikla leysni; leysist upp að tiltölulega miklu leyti",
-      "chapter": 4,
-      "section": "4.2",
-      "sectionTitle": "Flokkun efnahvarfa",
-      "sectionSlug": "4-2-flokkun-efnahvarfa",
-      "termId": "fs-idp64228624"
-    },
-    {
       "termIs": "Aufbau-lögmálið",
       "termEn": "aufbau principle",
       "termFull": "Aufbau-lögmálið (e. aufbau principle)",
@@ -477,9 +466,9 @@
     },
     {
       "termIs": "Avogadrosartala (NA)",
-      "termEn": null,
-      "termFull": "Avogadrosartala (NA)",
-      "definition": "tilraunagildi fjölda eininga í 1 móli af efni, eins og 6,022 × 1023 mól−1",
+      "termEn": "avogadro’s number (na)",
+      "termFull": "Avogadrosartala (NA) (e. avogadro’s number (na))",
+      "definition": "tilraunakennt ákvarðað gildi fjölda eininga sem mynda 1 mól af efni, jafnt og 6,022 × 1023 mól−1",
       "chapter": 3,
       "section": "3.1",
       "sectionTitle": "Formúlumassi og mólhugtakið",
@@ -490,7 +479,7 @@
       "termIs": "áhorfendajón",
       "termEn": "spectator ion",
       "termFull": "áhorfendajón (e. spectator ion)",
-      "definition": "jón sem verður ekki fyrir efnahvarfi eða eðlisbreytingu í efnahvarfi, en nærvera hennar er nauðsynleg til að viðhalda hleðsluhlutleysi",
+      "definition": "jón sem gengst ekki undir efna- eða eðlisfræðilega breytingu í hvarfi, en nærvera hennar er nauðsynleg til að viðhalda hleðsluhlutleysi",
       "chapter": 4,
       "section": "4.1",
       "sectionTitle": "Að skrifa og stilla efnajöfnur",
@@ -831,7 +820,7 @@
       "termIs": "botnfall",
       "termEn": "precipitate",
       "termFull": "botnfall (e. precipitate)",
-      "definition": "torleyst myndefni sem myndast við efnahvarf auðleystra hvarfefna",
+      "definition": "óleysanleg afurð sem myndast við hvarf leysanlegra hvarfefna",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -897,18 +886,18 @@
       "termIs": "brunagreining",
       "termEn": "combustion analysis",
       "termFull": "brunagreining (e. combustion analysis)",
-      "definition": "vigtagreiningartækni sem notuð er til að ákvarða frumefnasamsetningu efnasambands með söfnun og vigtun á loftkenndum brunaafurðum þess",
+      "definition": "þyngdarmælingaraðferð sem notuð er til að ákvarða frumefnasamsetningu efnasambands með söfnun og vigtun á loftkenndum brunaafurðum þess",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Magnbundin efnagreining",
-      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "sectionTitle": "Megindleg efnagreining",
+      "sectionSlug": "4-5-megindleg-efnagreining",
       "termId": "fs-idp72814256"
     },
     {
       "termIs": "bruni",
       "termEn": "combustion reaction",
       "termFull": "bruni (e. combustion reaction)",
-      "definition": "kröftugt oxunar-afoxunarhvarf sem framleiðir umtalsverða orku í formi varma og stundum ljóss",
+      "definition": "kröftugt oxunar-afoxunarhvarf sem framleiðir umtalsvert magn af orku í formi hita og stundum ljóss",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -963,11 +952,11 @@
       "termIs": "búretta",
       "termEn": "buret",
       "termFull": "búretta (e. buret)",
-      "definition": "tæki sem notað er til að skammta nákvæmlega breytilegt rúmmál vökva, eins og í títrunargreiningu",
+      "definition": "tæki sem notað er til nákvæmrar afhendingar á breytilegu vökvarúmmáli, svo sem í títrunargreiningu",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Magnbundin efnagreining",
-      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "sectionTitle": "Megindleg efnagreining",
+      "sectionSlug": "4-5-megindleg-efnagreining",
       "termId": "fs-idp237960512"
     },
     {
@@ -1323,17 +1312,6 @@
       "termId": "fs-idm23865104"
     },
     {
-      "termIs": "efniviður",
-      "termEn": "analyte",
-      "termFull": "efniviður (e. analyte)",
-      "definition": "efni sem er til rannsóknar",
-      "chapter": 4,
-      "section": "4.5",
-      "sectionTitle": "Magnbundin efnagreining",
-      "sectionSlug": "4-5-magnbundin-efnagreining",
-      "termId": "fs-idp17888704"
-    },
-    {
       "termIs": "eg svigrúm",
       "termEn": "eg orbitals",
       "termFull": "eg svigrúm (e. eg orbitals)",
@@ -1356,17 +1334,6 @@
       "termId": "fs-idp136404896"
     },
     {
-      "termIs": "einföld skipti",
-      "termEn": "single-displacement reaction",
-      "termFull": "einföld skipti (e. single-displacement reaction)",
-      "definition": "(einnig, skiptihvarf) oxunar-afoxunarhvarf sem felur í sér oxun frumefnis með jónaefni",
-      "chapter": 4,
-      "section": "4.2",
-      "sectionTitle": "Flokkun efnahvarfa",
-      "sectionSlug": "4-2-flokkun-efnahvarfa",
-      "termId": "fs-idp64227344"
-    },
-    {
       "termIs": "einföld teningslaga bygging",
       "termEn": "simple cubic structure",
       "termFull": "einföld teningslaga bygging (e. simple cubic structure)",
@@ -1387,6 +1354,17 @@
       "sectionTitle": "Grindargerðir í kristalkenndum fastefnum",
       "sectionSlug": "10-6-grindargerdir-i-kristalkenndum-fastefnum",
       "termId": "fs-idp179472016"
+    },
+    {
+      "termIs": "einföld tilfærsla",
+      "termEn": "single-displacement reaction",
+      "termFull": "einföld tilfærsla (e. single-displacement reaction)",
+      "definition": "(einnig, útskipti) oxunar-afoxunarhvarf sem felur í sér oxun frumefnis með jónaefni",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp64227344"
     },
     {
       "termIs": "eining",
@@ -1513,11 +1491,11 @@
       "termIs": "endapunktur",
       "termEn": "end point",
       "termFull": "endapunktur (e. end point)",
-      "definition": "mælt rúmmál títrantslausnar sem veldur breytingu á útliti sýnislausnar eða öðrum eiginleika sem búist er við fyrir efnajafngildi (sjá jafngildispunktur)",
+      "definition": "mælt rúmmál títrunarlausnar sem veldur breytingu á útliti sýnislausnar eða öðrum eiginleikum sem búist er við fyrir efnajafngildi (sjá jafngildispunktur)",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Magnbundin efnagreining",
-      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "sectionTitle": "Megindleg efnagreining",
+      "sectionSlug": "4-5-megindleg-efnagreining",
       "termId": "fs-idp276080304"
     },
     {
@@ -1764,8 +1742,8 @@
     },
     {
       "termIs": "formúlumassi",
-      "termEn": null,
-      "termFull": "formúlumassi",
+      "termEn": "formula mass",
+      "termFull": "formúlumassi (e. formula mass)",
       "definition": "summa meðalmassa allra atóma sem táknuð eru í efnaformúlu; fyrir samgild efnasambönd er þetta einnig sameindamassinn",
       "chapter": 3,
       "section": "3.1",
@@ -1887,10 +1865,10 @@
       "termIs": "fræðilegar heimtur",
       "termEn": "theoretical yield",
       "termFull": "fræðilegar heimtur (e. theoretical yield)",
-      "definition": "magn myndefnis sem hægt er að framleiða úr tilteknu magni hvarfefna samkvæmt hlutfallaefnafræði efnahvarfsins",
+      "definition": "magn myndefnis sem getur myndast úr tilteknu magni hvarfefna samkvæmt efnajöfnu",
       "chapter": 4,
       "section": "4.4",
-      "sectionTitle": "Heimtur efnahvarfs",
+      "sectionTitle": "Heimtur efnahvarfa",
       "sectionSlug": "4-4-heimtur-efnahvarfa",
       "termId": "fs-idp30967968"
     },
@@ -2170,6 +2148,17 @@
       "termId": "fs-idp165471824"
     },
     {
+      "termIs": "greiningarefni",
+      "termEn": "analyte",
+      "termFull": "greiningarefni (e. analyte)",
+      "definition": "efnategund sem er til rannsóknar",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Megindleg efnagreining",
+      "sectionSlug": "4-5-megindleg-efnagreining",
+      "termId": "fs-idp17888704"
+    },
+    {
       "termIs": "grindareining",
       "termEn": "unit cell",
       "termFull": "grindareining (e. unit cell)",
@@ -2302,17 +2291,6 @@
       "termId": "fs-idp11032848"
     },
     {
-      "termIs": "hálfhvarf",
-      "termEn": "half-reaction",
-      "termFull": "hálfhvarf (e. half-reaction)",
-      "definition": "efnajafna sem sýnir hvort hvert hvarfefni tapar eða fær rafeindir í efnahvarfi.",
-      "chapter": 4,
-      "section": "4.2",
-      "sectionTitle": "Flokkun efnahvarfa",
-      "sectionSlug": "4-2-flokkun-efnahvarfa",
-      "termId": "fs-idm28945840"
-    },
-    {
       "termIs": "hálfker",
       "termEn": "half cell",
       "termFull": "hálfker (e. half cell)",
@@ -2410,6 +2388,17 @@
       "sectionTitle": "Hraðajöfnur",
       "sectionSlug": "12-3-hradajofnur",
       "termId": "fs-idm276164832"
+    },
+    {
+      "termIs": "heimtur í prósentum",
+      "termEn": "percent yield",
+      "termFull": "heimtur í prósentum (e. percent yield)",
+      "definition": "mælikvarði á skilvirkni efnahvarfs, gefinn upp sem hundraðshluti af fræðilegum heimtum",
+      "chapter": 4,
+      "section": "4.4",
+      "sectionTitle": "Heimtur efnahvarfa",
+      "sectionSlug": "4-4-heimtur-efnahvarfa",
+      "termId": "fs-idp51447712"
     },
     {
       "termIs": "helmingunartími (t1/2)",
@@ -2566,28 +2555,6 @@
       "termId": "fs-idp20057136"
     },
     {
-      "termIs": "hlutfallaefnafræði",
-      "termEn": "stoichiometry",
-      "termFull": "hlutfallaefnafræði (e. stoichiometry)",
-      "definition": "tengsl milli magns hvarfefna og myndefna í efnahvarfi",
-      "chapter": 4,
-      "section": "4.3",
-      "sectionTitle": "Hlutfallaefnafræði efnahvarfa",
-      "sectionSlug": "4-3-hlutfallaefnafraedi-efnahvarfa",
-      "termId": "fs-idp127462672"
-    },
-    {
-      "termIs": "hlutfallaþáttur",
-      "termEn": "stoichiometric factor",
-      "termFull": "hlutfallaþáttur (e. stoichiometric factor)",
-      "definition": "hlutfall stuðla í stilltri efnajöfnu, notað í útreikningum sem tengjast magni hvarfefna og myndefna",
-      "chapter": 4,
-      "section": "4.3",
-      "sectionTitle": "Hlutfallaefnafræði efnahvarfa",
-      "sectionSlug": "4-3-hlutfallaefnafraedi-efnahvarfa",
-      "termId": "fs-idp127461392"
-    },
-    {
       "termIs": "hlutfallsleg líffræðileg virkni (RBE)",
       "termEn": "relative biological effectiveness (rbe)",
       "termFull": "hlutfallsleg líffræðileg virkni (RBE) (e. relative biological effectiveness (rbe))",
@@ -2723,12 +2690,23 @@
       "termIs": "hvarfefni",
       "termEn": "reactant",
       "termFull": "hvarfefni (e. reactant)",
-      "definition": "efni sem verður fyrir efna- eða eðlisbreytingu; sýnt vinstra megin við örina í efnajöfnu",
+      "definition": "efni sem gengst undir efna- eða eðlisfræðilega breytingu; sýnt vinstra megin við örina í efnajöfnu",
       "chapter": 4,
       "section": "4.1",
       "sectionTitle": "Að skrifa og stilla efnajöfnur",
       "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
       "termId": "fs-idp145225344"
+    },
+    {
+      "termIs": "hvarfefni í umframmagni",
+      "termEn": "excess reactant",
+      "termFull": "hvarfefni í umframmagni (e. excess reactant)",
+      "definition": "hvarfefni sem er til staðar í meira magni en efnajafnan segir til um",
+      "chapter": 4,
+      "section": "4.4",
+      "sectionTitle": "Heimtur efnahvarfa",
+      "sectionSlug": "4-4-heimtur-efnahvarfa",
+      "termId": "fs-idm46343008"
     },
     {
       "termIs": "hvarfgangur",
@@ -2740,6 +2718,17 @@
       "sectionTitle": "Hvarfgangar efnahvarfa",
       "sectionSlug": "12-6-hvarfgangar-efnahvarfa",
       "termId": "fs-idp154473568"
+    },
+    {
+      "termIs": "hvarfhelmingur",
+      "termEn": "half-reaction",
+      "termFull": "hvarfhelmingur (e. half-reaction)",
+      "definition": "jafna sem sýnir hvort hvert hvarfefni tapar eða fær rafeindir í efnahvarfi.",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm28945840"
     },
     {
       "termIs": "hvarfhraði",
@@ -3009,11 +2998,11 @@
       "termIs": "jafngildispunktur",
       "termEn": "equivalence point",
       "termFull": "jafngildispunktur (e. equivalence point)",
-      "definition": "rúmmál títrantslausnar sem þarf til að hvarfast að fullu við efniviðinn í títrunargreiningu; gefur efnajafngilt magn títrants fyrir efnivið sýnisins samkvæmt títrunarhvarfinu",
+      "definition": "rúmmál títrunarlausnar sem þarf til að hvarfast að fullu við greiningarefnið í títrunargreiningu; gefur efnajafngilt magn títrunarefnis fyrir greiningarefni sýnisins samkvæmt títrunarhvarfinu",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Magnbundin efnagreining",
-      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "sectionTitle": "Megindleg efnagreining",
+      "sectionSlug": "4-5-megindleg-efnagreining",
       "termId": "fs-idp90910688"
     },
     {
@@ -3919,26 +3908,37 @@
       "termId": "fs-idm4190352"
     },
     {
-      "termIs": "leysir",
-      "termEn": "solvent",
-      "termFull": "leysir (e. solvent)",
-      "definition": "efnisþáttur lausnar sem er í hærri styrk miðað við aðra efnisþætti",
-      "chapter": 3,
-      "section": "3.3",
-      "sectionTitle": "Mólstyrkur",
-      "sectionSlug": "3-3-molstyrkur",
-      "termId": "fs-idm26666032"
+      "termIs": "leysanlegt",
+      "termEn": "soluble",
+      "termFull": "leysanlegt (e. soluble)",
+      "definition": "með tiltölulega mikinn leysanleika; leysist upp að tiltölulega miklu leyti",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp64228624"
     },
     {
-      "termIs": "leysni",
+      "termIs": "leysanleiki",
       "termEn": "solubility",
-      "termFull": "leysni (e. solubility)",
+      "termFull": "leysanleiki (e. solubility)",
       "definition": "að hve miklu leyti efni getur leyst upp í vatni eða öðrum leysi",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
       "sectionSlug": "4-2-flokkun-efnahvarfa",
       "termId": "fs-idp67579088"
+    },
+    {
+      "termIs": "leysir",
+      "termEn": "solvent",
+      "termFull": "leysir (e. solvent)",
+      "definition": "efnisþáttur lausnar sem er til staðar í hærri styrk miðað við aðra efnisþætti",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26666032"
     },
     {
       "termIs": "leysni",
@@ -3961,17 +3961,6 @@
       "sectionTitle": "Útfelling og upplausn",
       "sectionSlug": "15-1-utfelling-og-upplausn",
       "termId": "fs-idp3053344"
-    },
-    {
-      "termIs": "leyst efni",
-      "termEn": "solute",
-      "termFull": "leyst efni (e. solute)",
-      "definition": "efnisþáttur lausnar sem er í lægri styrk en leysirinn",
-      "chapter": 3,
-      "section": "3.3",
-      "sectionTitle": "Mólstyrkur",
-      "sectionSlug": "3-3-molstyrkur",
-      "termId": "fs-idm26667568"
     },
     {
       "termIs": "ligandi",
@@ -4005,17 +3994,6 @@
       "sectionTitle": "Sýru-basa títranir",
       "sectionSlug": "14-7-syru-basa-titranir",
       "termId": "fs-idp67177296"
-    },
-    {
-      "termIs": "litvísir",
-      "termEn": "indicator",
-      "termFull": "litvísir (e. indicator)",
-      "definition": "efni sem bætt er við sýnið í títrunargreiningu til að gera sjónræna greiningu á endapunkti mögulega",
-      "chapter": 4,
-      "section": "4.5",
-      "sectionTitle": "Magnbundin efnagreining",
-      "sectionSlug": "4-5-magnbundin-efnagreining",
-      "termId": "fs-idp83289888"
     },
     {
       "termIs": "lífrænt efnasamband",
@@ -4365,8 +4343,8 @@
       "definition": "ákvörðun á magni eða styrk efnis í sýni",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Magnbundin efnagreining",
-      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "sectionTitle": "Megindleg efnagreining",
+      "sectionSlug": "4-5-megindleg-efnagreining",
       "termId": "fs-idp188325600"
     },
     {
@@ -4379,6 +4357,28 @@
       "sectionTitle": "Eðlis- og efnaeiginleikar",
       "sectionSlug": "1-3-edlis-og-efnaeiginleikar",
       "termId": "fs-idp102584192"
+    },
+    {
+      "termIs": "magnhlutfallsstuðull",
+      "termEn": "stoichiometric factor",
+      "termFull": "magnhlutfallsstuðull (e. stoichiometric factor)",
+      "definition": "hlutfall stuðla í stilltri efnajöfnu, notað í útreikningum sem tengjast magni hvarfefna og myndefna",
+      "chapter": 4,
+      "section": "4.3",
+      "sectionTitle": "Efnajöfnuhlutfall",
+      "sectionSlug": "4-3-efnajofnuhlutfall",
+      "termId": "fs-idp127461392"
+    },
+    {
+      "termIs": "magnhlutföll",
+      "termEn": "stoichiometry",
+      "termFull": "magnhlutföll (e. stoichiometry)",
+      "definition": "tengsl milli magns hvarfefna og myndefna í efnahvarfi",
+      "chapter": 4,
+      "section": "4.3",
+      "sectionTitle": "Efnajöfnuhlutfall",
+      "sectionSlug": "4-3-efnajofnuhlutfall",
+      "termId": "fs-idp127462672"
     },
     {
       "termIs": "markmassi",
@@ -4417,7 +4417,7 @@
       "termIs": "massa-rúmmálsprósenta",
       "termEn": "mass-volume percent",
       "termFull": "massa-rúmmálsprósenta (e. mass-volume percent)",
-      "definition": "hlutfall massa leysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
+      "definition": "hlutfall massa uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
       "chapter": 3,
       "section": "3.4",
       "sectionTitle": "Aðrar einingar fyrir styrk lausna",
@@ -4439,7 +4439,7 @@
       "termIs": "massaprósenta",
       "termEn": "mass percentage",
       "termFull": "massaprósenta (e. mass percentage)",
-      "definition": "hlutfall massa leysts efnis á móti massa lausnar, gefið upp sem prósenta",
+      "definition": "hlutfall massa uppleysts efnis á móti massa lausnar, gefið upp sem prósenta",
       "chapter": 3,
       "section": "3.4",
       "sectionTitle": "Aðrar einingar fyrir styrk lausna",
@@ -4483,7 +4483,7 @@
       "termIs": "massi reynsluformúlu",
       "termEn": "empirical formula mass",
       "termFull": "massi reynsluformúlu (e. empirical formula mass)",
-      "definition": "summa meðalatómmassa allra atóma sem koma fyrir í reynsluformúlu",
+      "definition": "summa meðalatómassa allra atóma sem koma fyrir í reynsluformúlu",
       "chapter": 3,
       "section": "3.2",
       "sectionTitle": "Ákvörðun reynslu- og sameindaformúla",
@@ -4577,17 +4577,6 @@
       "sectionTitle": "Hvarfhraði efnahvarfa",
       "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
       "termId": "fs-idp11569888"
-    },
-    {
-      "termIs": "megn",
-      "termEn": "concentrated",
-      "termFull": "megn (e. concentrated)",
-      "definition": "þáttbundið hugtak fyrir lausn sem inniheldur leyst efni í tiltölulega háum styrk",
-      "chapter": 3,
-      "section": "3.3",
-      "sectionTitle": "Mólstyrkur",
-      "sectionSlug": "3-3-molstyrkur",
-      "termId": "fs-idm26449216"
     },
     {
       "termIs": "melmi",
@@ -4736,7 +4725,7 @@
       "termIs": "milljarðshlutar (ppb)",
       "termEn": "parts per billion (ppb)",
       "termFull": "milljarðshlutar (ppb) (e. parts per billion (ppb))",
-      "definition": "hlutfall massa leysts efnis á móti massa lausnar, margfaldað með 109",
+      "definition": "hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 109",
       "chapter": 3,
       "section": "3.4",
       "sectionTitle": "Aðrar einingar fyrir styrk lausna",
@@ -4744,10 +4733,10 @@
       "termId": "fs-idp23298832"
     },
     {
-      "termIs": "milljónarhlutar (ppm)",
+      "termIs": "milljónustu hlutar (ppm)",
       "termEn": "parts per million (ppm)",
-      "termFull": "milljónarhlutar (ppm) (e. parts per million (ppm))",
-      "definition": "hlutfall massa leysts efnis á móti massa lausnar, margfaldað með 106",
+      "termFull": "milljónustu hlutar (ppm) (e. parts per million (ppm))",
+      "definition": "hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 106",
       "chapter": 3,
       "section": "3.4",
       "sectionTitle": "Aðrar einingar fyrir styrk lausna",
@@ -4811,8 +4800,8 @@
     },
     {
       "termIs": "mól",
-      "termEn": null,
-      "termFull": "mól",
+      "termEn": "mole",
+      "termFull": "mól (e. mole)",
       "definition": "magn efnis sem inniheldur sama fjölda atóma, sameinda, jóna eða annarra eininga og fjöldi atóma í nákvæmlega 12 grömmum af 12C",
       "chapter": 3,
       "section": "3.1",
@@ -4855,8 +4844,8 @@
     },
     {
       "termIs": "mólmassi",
-      "termEn": null,
-      "termFull": "mólmassi",
+      "termEn": "molar mass",
+      "termFull": "mólmassi (e. molar mass)",
       "definition": "massi í grömmum af 1 móli af efni",
       "chapter": 3,
       "section": "3.1",
@@ -4868,7 +4857,7 @@
       "termIs": "mólstyrkur (M)",
       "termEn": "molarity (m)",
       "termFull": "mólstyrkur (M) (e. molarity (m))",
-      "definition": "eining styrks, skilgreind sem fjöldi móla af leystu efni í 1 lítra af lausn",
+      "definition": "styrkleikaeining, skilgreind sem fjöldi móla af uppleystu efni í 1 lítra af lausn",
       "chapter": 3,
       "section": "3.3",
       "sectionTitle": "Mólstyrkur",
@@ -4890,7 +4879,7 @@
       "termIs": "myndefni",
       "termEn": "product",
       "termFull": "myndefni (e. product)",
-      "definition": "efni sem myndast við efna- eða eðlisbreytingu; sýnt hægra megin við örina í efnajöfnu",
+      "definition": "efni sem myndast við efna- eða eðlisfræðilega breytingu; sýnt hægra megin við örina í efnajöfnu",
       "chapter": 4,
       "section": "4.1",
       "sectionTitle": "Að skrifa og stilla efnajöfnur",
@@ -4967,7 +4956,7 @@
       "termIs": "nettójónajafna",
       "termEn": "net ionic equation",
       "termFull": "nettójónajafna (e. net ionic equation)",
-      "definition": "efnajafna þar sem aðeins þau uppleystu jónísku hvarfefni og myndefni sem verða fyrir efna- eða eðlisbreytingu eru sýnd (sleppir áhorfendajónum)",
+      "definition": "efnajafna þar sem aðeins þau uppleystu jónísku hvarfefni og myndefni sem gangast undir efna- eða eðlisfræðilega breytingu eru sýnd (sleppir áhorfendajónum)",
       "chapter": 4,
       "section": "4.1",
       "sectionTitle": "Að skrifa og stilla efnajöfnur",
@@ -5132,7 +5121,7 @@
       "termIs": "oxari",
       "termEn": "oxidizing agent",
       "termFull": "oxari (e. oxidizing agent)",
-      "definition": "efni sem veldur oxun annars efnis og afoxast sjálft í ferlinu",
+      "definition": "(einnig, oxunarefni) efni sem veldur oxun annars efnis og afoxast í ferlinu",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -5198,7 +5187,7 @@
       "termIs": "oxunartala",
       "termEn": "oxidation number",
       "termFull": "oxunartala (e. oxidation number)",
-      "definition": "(einnig, oxunarástand) hleðslan sem hver frumeind frumefnis hefði í efnasambandi ef efnasambandið væri jónaefni",
+      "definition": "(einnig, oxunarástand) hleðslan sem hvert atóm frumefnis hefði í efnasambandi ef efnasambandið væri jónískt",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -5215,6 +5204,17 @@
       "sectionTitle": "Jónaefnasambönd og sameindaefnasambönd",
       "sectionSlug": "2-6-jona-og-sameindaefnasambond",
       "termId": "fs-idp484916992"
+    },
+    {
+      "termIs": "óblandað",
+      "termEn": "concentrated",
+      "termFull": "óblandað (e. concentrated)",
+      "definition": "lýsingarorð fyrir lausn sem inniheldur uppleyst efni í tiltölulega háum styrk",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26449216"
     },
     {
       "termIs": "óblandanlegur",
@@ -5248,6 +5248,17 @@
       "sectionTitle": "Líffræðileg áhrif geislunar",
       "sectionSlug": "21-6-liffraedileg-ahrif-geislunar",
       "termId": "fs-idp8726208"
+    },
+    {
+      "termIs": "óleysanlegt",
+      "termEn": "insoluble",
+      "termFull": "óleysanlegt (e. insoluble)",
+      "definition": "af tiltölulega litlum leysanleika; leysist aðeins upp í litlum mæli",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm28944688"
     },
     {
       "termIs": "ómettaður",
@@ -5446,17 +5457,6 @@
       "sectionTitle": "pH og pOH",
       "sectionSlug": "14-2-ph-og-poh",
       "termId": "fs-idp46966768"
-    },
-    {
-      "termIs": "prósentuheimtur",
-      "termEn": "percent yield",
-      "termFull": "prósentuheimtur (e. percent yield)",
-      "definition": "mælikvarði á skilvirkni efnahvarfs, gefinn upp sem hundraðshluti af fræðilegum heimtum",
-      "chapter": 4,
-      "section": "4.4",
-      "sectionTitle": "Heimtur efnahvarfs",
-      "sectionSlug": "4-4-heimtur-efnahvarfa",
-      "termId": "fs-idp51447712"
     },
     {
       "termIs": "prósentusamsetning",
@@ -5663,7 +5663,7 @@
       "definition": "magn myndefnis sem myndast í efnahvarfi",
       "chapter": 4,
       "section": "4.4",
-      "sectionTitle": "Heimtur efnahvarfs",
+      "sectionTitle": "Heimtur efnahvarfa",
       "sectionSlug": "4-4-heimtur-efnahvarfa",
       "termId": "fs-idm47393392"
     },
@@ -5770,7 +5770,7 @@
       "termIs": "rúmmálsprósenta",
       "termEn": "volume percentage",
       "termFull": "rúmmálsprósenta (e. volume percentage)",
-      "definition": "hlutfall rúmmáls leysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
+      "definition": "hlutfall rúmmáls uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
       "chapter": 3,
       "section": "3.4",
       "sectionTitle": "Aðrar einingar fyrir styrk lausna",
@@ -5836,7 +5836,7 @@
       "termIs": "salt",
       "termEn": null,
       "termFull": "salt",
-      "definition": "jónaefni sem getur myndast við efnahvarf sýru og basa sem inniheldur katjón og anjón aðra en hýdroxíð eða oxíð",
+      "definition": "jónaefnasamband sem getur myndast við hvarf sýru og basa og inniheldur katjón og anjón aðra en hýdroxíð eða oxíð",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -6639,7 +6639,7 @@
       "termIs": "sterk sýra",
       "termEn": "strong acid",
       "termFull": "sterk sýra (e. strong acid)",
-      "definition": "sýra sem hvarfast að fullu þegar hún er leyst upp í vatni og myndar hýdróníumjónir",
+      "definition": "sýra sem hvarfast að fullu þegar hún er leyst upp í vatni og myndar oxóníumjónir",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -6705,7 +6705,7 @@
       "termIs": "stillt jafna",
       "termEn": "balanced equation",
       "termFull": "stillt jafna (e. balanced equation)",
-      "definition": "efnajafna með jöfnum fjölda frumeinda fyrir hvert frumefni í hvarfefni og myndefni",
+      "definition": "efnajafna með jöfnum fjölda atóma fyrir hvert frumefni í hvarfefni og myndefni",
       "chapter": 4,
       "section": "4.1",
       "sectionTitle": "Að skrifa og stilla efnajöfnur",
@@ -6793,7 +6793,7 @@
       "termIs": "styrkur",
       "termEn": "concentration",
       "termFull": "styrkur (e. concentration)",
-      "definition": "magnbundið mál á hlutfallslegu magni leysts efnis og leysis í lausn",
+      "definition": "magnbundinn mælikvarði á hlutfallslegt magn uppleysts efnis og leysis í lausn",
       "chapter": 3,
       "section": "3.3",
       "sectionTitle": "Mólstyrkur",
@@ -6999,10 +6999,10 @@
       "termId": "fs-idm39846352"
     },
     {
-      "termIs": "sýru-basa efnahvarf",
+      "termIs": "sýru-basa hvarf",
       "termEn": "acid-base reaction",
-      "termFull": "sýru-basa efnahvarf (e. acid-base reaction)",
-      "definition": "efnahvarf sem felur í sér flutning vetnisjónar milli hvarfefna",
+      "termFull": "sýru-basa hvarf (e. acid-base reaction)",
+      "definition": "efnahvarf sem felur í sér flutning á vetnisjón milli hvarfefna",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -7079,10 +7079,10 @@
       "termIs": "takmarkandi hvarfefni",
       "termEn": "limiting reactant",
       "termFull": "takmarkandi hvarfefni (e. limiting reactant)",
-      "definition": "hvarfefni sem er til staðar í minna magni en krafist er samkvæmt hlutfallaefnafræði efnahvarfsins og takmarkar þar með magn myndefnis sem myndast",
+      "definition": "hvarfefni sem er til staðar í minna magni en efnajafnan segir til um og takmarkar því magn myndefnis sem myndast",
       "chapter": 4,
       "section": "4.4",
-      "sectionTitle": "Heimtur efnahvarfs",
+      "sectionTitle": "Heimtur efnahvarfa",
       "sectionSlug": "4-4-heimtur-efnahvarfa",
       "termId": "fs-idp182610272"
     },
@@ -7219,14 +7219,14 @@
       "termId": "fs-idm206488448"
     },
     {
-      "termIs": "títrantur",
+      "termIs": "títrunarefni",
       "termEn": "titrant",
-      "termFull": "títrantur (e. titrant)",
-      "definition": "lausn sem inniheldur þekktan styrk efnis sem hvarfast við efniviðinn í títrunargreiningu",
+      "termFull": "títrunarefni (e. titrant)",
+      "definition": "lausn sem inniheldur þekktan styrk efnis sem hvarfast við greiningarefnið í títrunargreiningu",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Magnbundin efnagreining",
-      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "sectionTitle": "Megindleg efnagreining",
+      "sectionSlug": "4-5-megindleg-efnagreining",
       "termId": "fs-idp122976560"
     },
     {
@@ -7244,23 +7244,12 @@
       "termIs": "títrunargreining",
       "termEn": "titration analysis",
       "termFull": "títrunargreining (e. titration analysis)",
-      "definition": "magnbundin efnagreiningaraðferð sem felur í sér að mæla rúmmál hvarfefnislausnar sem þarf til að hvarfast fullkomlega við greiniefnið í sýni",
+      "definition": "magnbundin efnagreiningaraðferð sem felur í sér að mæla rúmmál hvarfefnislausnar sem þarf til að hvarfast að fullu við greiningarefnið í sýni",
       "chapter": 4,
       "section": "4.5",
-      "sectionTitle": "Magnbundin efnagreining",
-      "sectionSlug": "4-5-magnbundin-efnagreining",
+      "sectionTitle": "Megindleg efnagreining",
+      "sectionSlug": "4-5-megindleg-efnagreining",
       "termId": "fs-idp122977840"
-    },
-    {
-      "termIs": "torleystur",
-      "termEn": "insoluble",
-      "termFull": "torleystur (e. insoluble)",
-      "definition": "af tiltölulega litlum leysanleika; leysist aðeins upp að litlu leyti",
-      "chapter": 4,
-      "section": "4.2",
-      "sectionTitle": "Flokkun efnahvarfa",
-      "sectionSlug": "4-2-flokkun-efnahvarfa",
-      "termId": "fs-idm28944688"
     },
     {
       "termIs": "torr",
@@ -7461,17 +7450,6 @@
       "termId": "fs-idm146646496"
     },
     {
-      "termIs": "umframmagn hvarfefnis",
-      "termEn": "excess reactant",
-      "termFull": "umframmagn hvarfefnis (e. excess reactant)",
-      "definition": "hvarfefni sem er til staðar í meira magni en krafist er samkvæmt hlutfallaefnafræði efnahvarfsins",
-      "chapter": 4,
-      "section": "4.4",
-      "sectionTitle": "Heimtur efnahvarfs",
-      "sectionSlug": "4-4-heimtur-efnahvarfa",
-      "termId": "fs-idm46343008"
-    },
-    {
       "termIs": "umhverfi",
       "termEn": "surroundings",
       "termFull": "umhverfi (e. surroundings)",
@@ -7541,12 +7519,23 @@
       "termIs": "uppleyst",
       "termEn": "dissolved",
       "termFull": "uppleyst (e. dissolved)",
-      "definition": "lýsir ferlinu þar sem efnisþættir leysts efnis dreifast í leysi",
+      "definition": "lýsir ferlinu þar sem uppleystir efnisþættir dreifast í leysi",
       "chapter": 3,
       "section": "3.3",
       "sectionTitle": "Mólstyrkur",
       "sectionSlug": "3-3-molstyrkur",
       "termId": "fs-idm26671264"
+    },
+    {
+      "termIs": "uppleyst efni",
+      "termEn": "solute",
+      "termFull": "uppleyst efni (e. solute)",
+      "definition": "efnisþáttur lausnar sem er til staðar í lægri styrk en leysirinn",
+      "chapter": 3,
+      "section": "3.3",
+      "sectionTitle": "Mólstyrkur",
+      "sectionSlug": "3-3-molstyrkur",
+      "termId": "fs-idm26667568"
     },
     {
       "termIs": "upptekinn geislaskammtur (rad)",
@@ -7571,10 +7560,10 @@
       "termId": "fs-idm167738656"
     },
     {
-      "termIs": "útfelling",
+      "termIs": "útfeldi",
       "termEn": "precipitation reaction",
-      "termFull": "útfelling (e. precipitation reaction)",
-      "definition": "efnahvarf sem myndar eitt eða fleiri torleyst myndefni; þegar hvarfefni eru jónaefni, stundum kallað tvöföld skipti eða gagnskipti",
+      "termFull": "útfeldi (e. precipitation reaction)",
+      "definition": "efnahvarf sem myndar eina eða fleiri óleysanlegar afurðir; þegar hvarfefni eru jónísk efnasambönd, stundum kallað tvöföld skipti eða víxlun",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -7750,7 +7739,7 @@
       "termIs": "veik sýra",
       "termEn": "weak acid",
       "termFull": "veik sýra (e. weak acid)",
-      "definition": "sýra sem hvarfast aðeins að litlu leyti þegar hún er leyst upp í vatni og myndar hýdróníumjónir",
+      "definition": "sýra sem hvarfast aðeins að litlu leyti þegar hún er leyst upp í vatni og myndar oxóníumjónir",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -7890,17 +7879,6 @@
       "termId": "fs-idm87859280"
     },
     {
-      "termIs": "vigtagreining",
-      "termEn": "gravimetric analysis",
-      "termFull": "vigtagreining (e. gravimetric analysis)",
-      "definition": "magnbundin efnafræðileg greiningaraðferð sem felur í sér aðskilnað efniviðar frá sýni með eðlisfræðilegu eða efnafræðilegu ferli og síðari massamælingar á efniviðnum, hvarfafurðinni og/eða sýninu",
-      "chapter": 4,
-      "section": "4.5",
-      "sectionTitle": "Magnbundin efnagreining",
-      "sectionSlug": "4-5-magnbundin-efnagreining",
-      "termId": "fs-idp83288512"
-    },
-    {
       "termIs": "vigur",
       "termEn": "vector",
       "termFull": "vigur (e. vector)",
@@ -7987,6 +7965,17 @@
       "sectionTitle": "Efnafræði í samhengi",
       "sectionSlug": "1-1-efnafraedi-i-samhengi",
       "termId": "fs-idp132867984"
+    },
+    {
+      "termIs": "vísir",
+      "termEn": "indicator",
+      "termFull": "vísir (e. indicator)",
+      "definition": "efni sem bætt er við sýnið í títrunargreiningu til að gera sjónræna greiningu á endapunktinum mögulega",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Megindleg efnagreining",
+      "sectionSlug": "4-5-megindleg-efnagreining",
+      "termId": "fs-idp83289888"
     },
     {
       "termIs": "víxlverkunarmynstur",
@@ -8297,10 +8286,21 @@
       "termId": "fs-idm6297360"
     },
     {
+      "termIs": "þyngdarmælingagreining",
+      "termEn": "gravimetric analysis",
+      "termFull": "þyngdarmælingagreining (e. gravimetric analysis)",
+      "definition": "magnbundin efnagreiningaraðferð sem felur í sér aðskilnað greiningarefnis frá sýni með eðlisfræðilegu eða efnafræðilegu ferli og síðari massamælingar á greiningarefninu, hvarfafurðinni og/eða sýninu",
+      "chapter": 4,
+      "section": "4.5",
+      "sectionTitle": "Megindleg efnagreining",
+      "sectionSlug": "4-5-megindleg-efnagreining",
+      "termId": "fs-idp83288512"
+    },
+    {
       "termIs": "þynning",
       "termEn": "dilution",
       "termFull": "þynning (e. dilution)",
-      "definition": "ferli þar sem leysi er bætt við lausn til að lækka styrk leystra efna",
+      "definition": "ferli þar sem leysi er bætt við lausn til að lækka styrk uppleystra efna",
       "chapter": 3,
       "section": "3.3",
       "sectionTitle": "Mólstyrkur",
@@ -8311,7 +8311,7 @@
       "termIs": "þynnt",
       "termEn": "dilute",
       "termFull": "þynnt (e. dilute)",
-      "definition": "þáttbundið hugtak fyrir lausn sem inniheldur leyst efni í tiltölulega lágum styrk",
+      "definition": "lýsingarorð fyrir lausn sem inniheldur uppleyst efni í tiltölulega lágum styrk",
       "chapter": 3,
       "section": "3.3",
       "sectionTitle": "Mólstyrkur",

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68716",
-  "extractedAt": "2026-08-31T19:08:37.911Z",
+  "extractedAt": "2026-09-06T12:36:58.239Z",
   "sourceHash": "aa1a13d50dd0d66c",
   "segmentCount": 117,
   "segmentIds": [
@@ -227,5 +227,27 @@
       "fs-idp138667680",
       "fs-idp47287072"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "quantitative analysis",
+    "term-00002": "titration analysis",
+    "term-00003": "buret",
+    "term-00004": "titrant",
+    "term-00005": "analyte",
+    "term-00006": "equivalence point",
+    "term-00007": "indicators",
+    "term-00008": "end point",
+    "term-00009": "gravimetric analysis",
+    "term-00010": "combustion analysis",
+    "fs-idp17888704": "analyte",
+    "fs-idp237960512": "buret",
+    "fs-idp72814256": "combustion analysis",
+    "fs-idp276080304": "end point",
+    "fs-idp90910688": "equivalence point",
+    "fs-idp83288512": "gravimetric analysis",
+    "fs-idp83289888": "indicator",
+    "fs-idp188325600": "quantitative analysis",
+    "fs-idp122976560": "titrant",
+    "fs-idp122977840": "titration analysis"
   }
 }

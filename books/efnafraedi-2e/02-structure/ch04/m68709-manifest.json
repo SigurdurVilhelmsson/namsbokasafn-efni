@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68709",
-  "extractedAt": "2026-08-31T19:08:37.620Z",
+  "extractedAt": "2026-09-06T12:36:58.120Z",
   "sourceHash": "7109896c820c75b4",
   "segmentCount": 235,
   "segmentIds": [
@@ -432,5 +432,25 @@
       "fs-idp114420064",
       "fs-idm23851744"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "chemical equation",
+    "term-00002": "reactants",
+    "term-00003": "products",
+    "term-00004": "coefficients",
+    "term-00005": "balanced",
+    "term-00006": "molecular equation",
+    "term-00007": "complete ionic equation",
+    "term-00008": "spectator ions",
+    "term-00009": "net ionic equation",
+    "fs-idp25650896": "balanced equation",
+    "fs-idp46927152": "chemical equation",
+    "fs-idp46928304": "coefficient",
+    "fs-idp261286592": "complete ionic equation",
+    "fs-idp94343888": "molecular equation",
+    "fs-idp94345152": "net ionic equation",
+    "fs-idp145224064": "product",
+    "fs-idp145225344": "reactant",
+    "fs-idp271280640": "spectator ion"
   }
 }

@@ -1,20 +1,20 @@
 {
-  "generated": "2026-09-06T11:41:21.630Z",
+  "generated": "2026-09-06T13:04:34.874Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-09-06T11:41:21.630Z",
+      "generated": "2026-09-06T13:04:34.874Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
         "totalChecked": 149,
         "skippedUntranslated": 0,
-        "perfect": 125,
-        "withDiscrepancies": 24,
-        "totalDiscrepancies": 39,
+        "perfect": 127,
+        "withDiscrepancies": 22,
+        "totalDiscrepancies": 37,
         "unexplainedDiscrepancies": 2,
-        "deferredLosses": 20,
-        "benignArtifacts": 17,
+        "deferredLosses": 19,
+        "benignArtifacts": 16,
         "green": false
       },
       "modules": [
@@ -35,18 +35,6 @@
           ]
         },
         {
-          "moduleId": "m68709",
-          "chapter": "ch04",
-          "discrepancies": [
-            {
-              "tag": "term",
-              "diff": 1,
-              "status": "benign",
-              "reason": "benign tag-count (over-annotation from term-split); RC2 wrong-gloss defect tracked separately"
-            }
-          ]
-        },
-        {
           "moduleId": "m68710",
           "chapter": "ch04",
           "discrepancies": [
@@ -55,19 +43,6 @@
               "diff": -1,
               "status": "benign",
               "reason": "empty self-closing <emphasis/> in OpenStax source (zero content)"
-            }
-          ]
-        },
-        {
-          "moduleId": "m68716",
-          "chapter": "ch04",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": -1,
-              "status": "known-loss-deferred",
-              "reason": "(aq) state-symbol italic dropped (cosmetic)",
-              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },

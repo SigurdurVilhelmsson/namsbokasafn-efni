@@ -1,12 +1,12 @@
 {
   "schemaVersion": 2,
   "tool": "api-translate",
-  "generatedAt": "2026-09-06T13:01:52.178Z",
+  "generatedAt": "2026-09-06T13:03:18.620Z",
   "run": {
     "runRecordVersion": 1,
-    "chars": 24877,
-    "usage": 19733,
-    "estimatedIsk": 248.77,
+    "chars": 68,
+    "usage": 35,
+    "estimatedIsk": 0.68,
     "markersNormalized": 0,
     "mismatchCount": 0,
     "bracketDelta": {},
