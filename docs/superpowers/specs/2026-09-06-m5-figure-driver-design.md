@@ -228,7 +228,7 @@ node tools/figure-run.js --book <slug> --chapter <N> [--module <mNNNNN>] [--figu
 | flag | behaviour |
 |---|---|
 | `--book` | **required**; refuse `no-book`, matching `translate-blocks.mjs` |
-| `--chapter` \| `--stale` | exactly one required. `--chapter` accepts `appendices` via the repo's `cliChapterArg`, **not** `Number()` |
+| `--chapter` \| `--stale` | exactly one required. `--chapter` accepts `appendices` — parse it with `normalizeChapter()` from `server/lib/chapterLabel.js`, **never `Number()`** (`NaN` → `chapterDir` → `'chNaN'`). ⚠️ **Not `cliChapterArg`, which converts the other way** |
 | `--module` | **implemented, not decorative** — scopes enumeration to one `mNNNNN.cnxml`. Refuse `exit 2` if that file does not exist |
 | `--figure` | scopes to one basename. **Refuse `exit 2` if it matches nothing**, listing what was enumerated |
 | `--dry-run` | run steps 1–5 and stop; price the translate-able set; **must spawn `translate-blocks.mjs` ZERO times** — not "spawn it with `--dry-run`" |
