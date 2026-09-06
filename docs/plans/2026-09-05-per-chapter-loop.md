@@ -272,9 +272,14 @@ findings live in the register; the gaps, measured 2026-09-05, are:
 that chapter's figures, resolves each source (PDF or EPS), skips the text-less ones with a counted
 summary, isolates per figure, and **writes the sidecar** so the editor and publisher can see it.
 
-⚠️ **Chemistry already has 691 `_IS` SVGs** from a June test run with no editorial surface. Those
-are MT-preview quality by construction; replacing them with pipeline output an editor can review is
-the point, not a risk. All are git-tracked, so `git checkout` is the restore.
+🔴 **CORRECTED 2026-09-06 [USER] — THE 691 `_IS` SVGs ARE NOT MT OUTPUT AND ARE NOT A STARTING POSITION.** This paragraph said they were *"MT-preview quality by construction"*. **They are not: they are a Claude Cowork experiment and were never run through Miðeind's MT at all**, and the approach has moved on considerably since (the working sessions of the last ~week). ▶ **So chemistry does NOT start ahead of organic — BOTH books start from zero**, and any plan that sequences the two on that supposed asymmetry is built on a false premise. *(This paragraph was itself cited that way on 2026-09-06 before the correction; it is exactly the "a wrong 'already built' is the expensive error" shape.)*
+
+▶ **[USER] RULING 2026-09-06 — EVERY IMAGE IS RE-PROCESSED, AND THE SPLIT IS BY IMAGE KIND, NOT BY BOOK:**
+- **photographs move over UNTRANSLATED** — they carry no text paths, so there is nothing to translate and nothing to pay for;
+- **vector images WITH TEXT PATHS go through the MT.**
+▶ **That split is the driver's first job**, and it is also what makes gap 3 (`extract.py` crashes on a text-less figure — 112 of 463 resolvable chemistry figures) a *classification* problem rather than an error-handling one: a text-less vector and a photograph are both "copy it over", not "crash", and not "pay for it".
+
+⚠️ The 691 are git-tracked, so `git checkout` remains the restore — but treat them as **an artifact to be replaced**, never as coverage already achieved. **Do not count them in any figure-progress number.**
 
 ---
 

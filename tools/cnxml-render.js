@@ -77,6 +77,7 @@ import {
 } from './lib/book-rendering-config.js';
 import { loadEmbedMapping, renderEmbedHtml } from './lib/embed-mapping.js';
 import { snapshotModuleIds, reconcilePublishedRenames } from './lib/publication-reconcile.js';
+import { slugMapFilename } from './lib/slug-map.js';
 
 // Matches editor/pipeline artifact files that must never live in or sync from
 // the publication dir: safeWrite backups, manual `.pre-fix-*`, `.bak`, and any
@@ -4347,7 +4348,7 @@ ${anchors}
       }
       if (pruned.length > 0) {
         console.log(
-          `Recorded ${pruned.length} rename(s) in 05-publication/${args.track}/slug-map.json`
+          `Recorded ${pruned.length} rename(s) in 05-publication/${args.track}/${slugMapFilename(args.track)}`
         );
       }
     } catch (err) {
