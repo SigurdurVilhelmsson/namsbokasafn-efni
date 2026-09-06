@@ -145,10 +145,43 @@ whatever was built — the failure this campaign has already paid for twice.
 - Create: `experiments/figure-text-translation/read_layer_accept.py`
 - Read only: `text-coverage-efnafraedi-2e.json`, `sources.py`, `pdftext.py`, `_deps.py`
 
-**The population is the committed census, never a fresh crawl.** Load
-`text-coverage-efnafraedi-2e.json` (1,148 rows) and take the four text-bearing buckets:
-`page-text` (496), `form-text-only` (274), `type0-unreadable` (8), `text-but-unexplained` (1)
-= **779**. `photo` (71), `textless` (7), `unresolved` (253) and `ours-crashes` (38) are out.
+**The population is the committed census — CORRECTED. Load
+`text-coverage-efnafraedi-2e.json` (1,148 rows).**
+
+🔴 **THE COMMITTED CENSUS UNDERCOUNTS ITS OWN TEXT-BEARING POPULATION BY 37, AND THE CONTRACT
+INHERITS THE ERROR. MEASURED 2026-09-06, DO NOT RE-DERIVE.** The census assigns
+`bucket = 'ours-crashes'` on `if 'error' in o:` — **the FIRST branch, before the text test** — so
+a figure whose *census probe* raised is filed as a crash **whatever it contains**. A probe error
+is not the same fact as "`extract.py` cannot read it", and here they diverge almost completely:
+
+| instrument | result over the 38 `ours-crashes` figures |
+|---|---|
+| `extract.py`'s **real** path (`page.Resources.Font`, unguarded, + `pdftext.parse`, EPS staged through `gs`) | **reads text in 37**, crashes on **1**, returns empty on **0** |
+| poppler `pdftotext` (independent oracle) | **37 of 38 carry text**, 2,077 words; the 1 with **0** words is the **same** figure that crashes |
+
+**Two independently-implemented instruments agree exactly on which 37 and which 1.** The largest
+is `CNX_Chem_01_03_PeriodicPU` at 532 oracle words / 2,182 characters.
+
+▶ **So the corrected populations are, and they reconcile to the total exactly:**
+
+| criterion | population | count | what the baseline does |
+|---|---|---|---|
+| **C1** | `page-text` (496) **+ the 37 mis-bucketed** | **533** | reads real text |
+| **C1b** | `type0-unreadable` | **8** | returns control-byte garbage |
+| **C2** | `form-text-only` (274) + `text-but-unexplained` (1) | **275** | returns empty |
+| | **text-bearing total** | **816** | `533 + 8 + 275 = 816` ✅ |
+
+⚠️ **`779` and `504` appear throughout the contract, `TEXT-COVERAGE.md` and the register. They are
+an undercount, not a different population** — the corrected figures are **816** and **541**
+(`496 + 8 + 37`), and the "283 silently skipped" headline becomes **283 of 816 = 34.7%**, not
+36.3%. **R5 must amend the contract and the census artefact.** Do not silently use the old numbers.
+
+⚠️ **CONSEQUENCE FOR `read_baseline`: IT MUST NOT SWALLOW EXCEPTIONS INTO `[]`.** A draft harness
+did exactly that, with the comment *"this matches the C2 positive-control expectation"* — which
+**manufactures the very bucket this correction just disproved.** A crash is a THIRD outcome and
+must be reported as one: `reads / empty / crashed`, three counts, never two.
+
+`photo` (71), `textless` (7), `unresolved` (253) and the **1** genuinely-crashing figure are out.
 ⚠️ **State the denominator in every line of output.** Two censuses in this campaign already
 disagreed because they resolved different populations.
 
@@ -175,7 +208,7 @@ bake-off's.
 
 | # | criterion | the rule, and the trap |
 |---|---|---|
-| **C1** | **Regression control** — on figures the baseline reads, the candidate must lose no text. 🔴 **EXCLUDING the 8 `type0-unreadable` figures — see the ruling below** | 🔴 **COMPARE CHARACTER MULTISETS** (`collections.Counter` over all run text, whitespace stripped), **NEVER word counts.** A word-count comparison across readers that segment differently produced **155 false regressions** of which **0** were real. Report `missing = baseline_counter - candidate_counter`; a figure is a regression iff that is non-empty |
+| **C1** | **Regression control** — on the **533** figures the baseline actually reads, the candidate must lose no text. 🔴 **EXCLUDING the 8 `type0-unreadable` figures — see the ruling below** | 🔴 **COMPARE CHARACTER MULTISETS** (`collections.Counter` over all run text, whitespace stripped), **NEVER word counts.** A word-count comparison across readers that segment differently produced **155 false regressions** of which **0** were real. Report `missing = baseline_counter - candidate_counter`; a figure is a regression iff that is non-empty |
 | **C2** | **Positive control** — on figures the baseline reads as empty, the candidate must return non-empty runs | this is the 274+8+1 set. **Report it as a COUNT OF FIGURES GAINED, and name the ones still empty** |
 | **C3** | **Oracle agreement** — `pdftotext -q <pdf> -` (poppler, independently implemented) | disagreement about *whether a figure has text at all* is a finding. **Not a character diff** — poppler normalises differently |
 | **C4** | **Field conformance** — on figures BOTH read, the nine fields agree | `font` compared **as a join key** (does it resolve in `meta.fonts`?), not as a string equal to the baseline's. `x`/`y` compared **as baseline origins**, tolerance 0.01 pt. `adv` tolerance **2%**, and report the distribution, not just pass/fail |
@@ -191,13 +224,13 @@ defect H2 exists to stop.
 not say so. Applied naively, C1 demands the candidate **preserve garbage** and an implementer
 would "fix" a real improvement back out.
 
-**The ruling: C1's population is the 496 `page-text` figures, not 504.** The 8 `type0-unreadable`
+**The ruling: C1's population is the 533 figures the baseline actually reads (496 `page-text` + the 37 mis-bucketed above), not 504 and not 496.** The 8 `type0-unreadable`
 figures get their own criterion — and it is a POSITIVE assertion, not an exemption, because
 "returns less" is indistinguishable from "returns nothing":
 
 | **C1b** | **Type0 correctness** | On the 8 `type0-unreadable` figures the candidate must EITHER return correctly decoded text (via `/ToUnicode`) OR mark the font `decodable: false` in `meta.fonts`. **A silent reduction in output is a FAILURE of this criterion, not a pass.** Losing the garbage is the point; losing it *quietly* is the H2 defect wearing different clothes |
 
-⚠️ **Report C1 and C1b with their own denominators (496 and 8).** Rolling them into one "504"
+⚠️ **Report C1 and C1b with their own denominators (533 and 8).** Rolling them into one "504"
 is what hid the contradiction in the first place.
 
 🔴 **AND ONE CRITERION THE CONTRACT DOES NOT NAME, WHICH IS THE ONE THAT COSTS MONEY:**
@@ -216,7 +249,9 @@ non-zero if any fails:
    report a **non-zero** regression count on that same sample. *(A comparator that cannot see a
    deleted run cannot see a lost one.)*
 3. **The positive-control set is genuinely failing today** — over a 40-figure sample of
-   `form-text-only`, the BASELINE must read **0** figures. If it reads any, the census bucket
+   `form-text-only`, the BASELINE must read **0** figures, **and over a 20-figure sample of the
+   37 mis-bucketed `ours-crashes` figures it must read NON-ZERO** (that asymmetry is what proves
+   the population correction is live and not a relabelling). If it reads any, the census bucket
    and the reader disagree and the whole population is suspect.
 
 ⚠️ **Assertion 2 is the one that will be skipped.** Without it C1 is a null with no control,
