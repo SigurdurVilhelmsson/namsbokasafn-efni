@@ -126,3 +126,69 @@ It is invisible to any count-based check, because the count is non-zero and look
 - pdfplumber emitted `Cannot set non-stroke color: 2 components specified` on some figures — a
   colour space it does not map. That touches the `fill` field the composer needs and belongs on
   the read-layer contract regardless of everything above.
+
+---
+
+# Addendum 2, same day: the EPS control — 280 figures, two parts, both inverted
+
+Producer: `read-layer-eps-control.py`. **280 of the 779 text-bearing figures are `.eps` (36%)**,
+**all** of them in the set our current reader already reads — so this half of the corpus is pure
+regression risk, not upside. **139 of the 280 come from `updates-2e`, the precedence-winning tree.**
+
+## Part 1 — reader vs reader on the gs-converted PDF
+
+| | n |
+|---|---|
+| identical, or candidate a superset | **184** (candidate read *more* on 3) |
+| apparent character loss | 96 |
+| gs conversion failed | **0** |
+
+### 🔴 The 96 are not losses. They are OUR READER DECODING WRONG.
+
+The differing characters were `°`/`¡`, `λ`/`\x7f`, `Ð`, `Õ` — and the fonts say why:
+
+| figure | font `/Encoding` | ours | candidate |
+|---|---|---|---|
+| `CNX_Chem_00_EE_Density_img` | `WinAnsi` + **`/Differences [161, /degree]`** | `Temperature (¡C)` | `Temperature (°C)` |
+| `CNX_Chem_06_03_elecw` | `WinAnsi` + **`/Differences [127, /uni03BB]`** | `Wavelength \x7f` | `Wavelength λ` |
+
+▶ **This is H3 — `/Encoding /Differences` ignored — measured at 96 of 280 EPS figures (34%).**
+It is the same defect class as the Greek alpha found earlier, and far larger than it looked.
+🔴 **It is reader-visible and it costs money**: `Temperature (¡C)` is what gets **sent to the paid
+MT** and **composed into the published image**. A degree sign becomes an inverted exclamation
+mark; a lambda becomes a DEL control byte. **No count-based check can see it** — the character is
+present, just wrong.
+
+▶ **VERDICT: 0 real character losses on EPS.** Combined with the `.pdf` half, the candidate loses
+text nowhere measured, and **corrects our output on 107 figures** (96 `/Differences` + 11 CID).
+
+## Part 2 — the shared blind spot: does `gs` itself lose text?
+
+🔴 **THE INSTRUMENT WAS BROKEN AND ITS OUTPUT WAS 100% FALSE. RECORDED BECAUSE THE TELL IS
+REUSABLE.** It reported **280 of 280 figures losing 40 of 40 strings** — a *saturated* rate, which
+this repo's own rule says is a CATEGORY, not a measurement. The category was my regex.
+
+Sampling what it actually matched: `(_Red_)`, `(_Green_)`, `(_Blue_)`, `(Process)`,
+`(AGMUTIL_imagefile)`, `(HP LaserJet 2200)`. Those are **Illustrator colour-separation names,
+utility strings and printer names** from the PostScript/XMP preamble of a **binary DOS-EPS**
+(header `\xc5\xd0\xd3\xc6`). **None of them is figure text**, so "they did not survive conversion"
+means nothing.
+
+### What is actually established about `gs`
+
+- ✅ **It is not wholesale-losing text**: it produced readable text for **all 280** EPS figures,
+  **7,884 words**, and **0 conversions failed**. That is a real positive control, held already.
+- ⚠️ **Whether it loses *some* text is NOT established by anything here.** The honest instrument
+  is the one that already exists — `check.py` diffing the composed `--control` image against
+  OpenStax's **published raster**, which is upstream of every parser. That is acceptance
+  criterion 5 in the read-layer contract.
+- ⚠️ **No second EPS→PDF converter is available on this machine** (`inkscape`, `epstopdf`,
+  `mutool`, `libreoffice`, `pstopdf`, `convert` — none present), so a two-converter agreement
+  check is not currently possible.
+- ▶ **And it is not a differentiator for the adapter decision**: `gs` is the converter the
+  pipeline **already uses**, so any loss it causes is pre-existing and identical under either
+  reader.
+
+⚠️ **The lesson to keep: a check whose result is 100% is describing its own instrument until
+proven otherwise.** Both saturated rates found today — this one, and the earlier `docref` finding
+— were categories, not samples.
