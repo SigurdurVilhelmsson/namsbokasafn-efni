@@ -1,0 +1,9 @@
+english	icelandic	domain	harm_class	why
+berkelium	berklín	physics	wrong-sense	Icelandic element names take -íum; berkelíum is correct, berklín is not a word. Fails blocking tier-0 gate G2.
+erbium	erbín	physics	wrong-sense	Correct is erbíum. Fails G2.
+fermium	fermín	physics	wrong-sense	Correct is fermíum. Fails G2.
+holmium	hólmín	physics	wrong-sense	Correct is hólmíum. Fails G2.
+protactinium	prótaktín	physics	wrong-sense	Correct is prótaktíníum. Fails G2.
+samarium	samarín	physics	wrong-sense	Correct is samaríum. Fails G2.
+thulium	túlín	physics	wrong-sense	Correct is thulíum/túlíum. Fails G2.
+ytterbium	ytterbín	physics	wrong-sense	Correct is ytterbíum. Fails G2.

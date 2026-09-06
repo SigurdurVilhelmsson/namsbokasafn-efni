@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-06T09:55:35.139Z",
+  "generated": "2026-09-06T10:07:19.654Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 1713,
-    "approved": 1713,
+    "total": 1705,
+    "approved": 1705,
     "ties": 337,
     "nominalTies": 101,
-    "outOfScopeOnly": 1511,
+    "outOfScopeOnly": 1512,
     "censusStrings": 108414
   },
   "terms": [
@@ -2327,16 +2327,6 @@
       "domain": "biology",
       "position": 3,
       "conceptId": 48053,
-      "alternatives": []
-    },
-    {
-      "english": "berkelium",
-      "icelandic": "berklín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 239,
       "alternatives": []
     },
     {
@@ -6636,16 +6626,6 @@
       "alternatives": []
     },
     {
-      "english": "erbium",
-      "icelandic": "erbín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 617,
-      "alternatives": []
-    },
-    {
       "english": "error",
       "icelandic": "skekkja",
       "status": "approved",
@@ -7011,16 +6991,6 @@
       "alternatives": [
         "loftfirrð öndun"
       ]
-    },
-    {
-      "english": "fermium",
-      "icelandic": "fermín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 681,
-      "alternatives": []
     },
     {
       "english": "fertilizer",
@@ -8348,16 +8318,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 1183,
-      "alternatives": []
-    },
-    {
-      "english": "holmium",
-      "icelandic": "hólmín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1427,
       "alternatives": []
     },
     {
@@ -13594,16 +13554,6 @@
       ]
     },
     {
-      "english": "protactinium",
-      "icelandic": "prótaktín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2717,
-      "alternatives": []
-    },
-    {
       "english": "protease",
       "icelandic": "prótínkljúfur",
       "status": "approved",
@@ -14796,16 +14746,6 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 5038,
-      "alternatives": []
-    },
-    {
-      "english": "samarium",
-      "icelandic": "samarín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3007,
       "alternatives": []
     },
     {
@@ -16901,16 +16841,6 @@
       ]
     },
     {
-      "english": "thulium",
-      "icelandic": "túlín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4062,
-      "alternatives": []
-    },
-    {
       "english": "thymine",
       "icelandic": "týmín",
       "status": "approved",
@@ -18207,16 +18137,6 @@
         "afrakstur",
         "nýtni"
       ]
-    },
-    {
-      "english": "ytterbium",
-      "icelandic": "ytterbín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4448,
-      "alternatives": []
     },
     {
       "english": "zinc",
