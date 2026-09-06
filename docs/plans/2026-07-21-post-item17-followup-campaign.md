@@ -267,6 +267,44 @@ On mismatch, keep the **translation** and strip that type's markers to plain tex
 
 ⚠️ **This is the SECOND chapter re-bought for this mechanism** (organic ch03 cost ~742 ISK). **That is the argument for finishing the glossary properly now rather than per-chapter** — the ~1,600 unjudged chemistry rows are the largest unquantified exposure on the list, and every chapter bought before they are judged is a candidate for a third re-buy.
 
+### §C131 — **THE PAID A/B: the glossary's aggregate effect is NEAR THE NOISE FLOOR, but a row that fires, fires DETERMINISTICALLY**
+
+[USER]-approved budget 600 ISK · **spent ~325 ISK** · 4 runs on ONE module, `appendices/m68866` (109 segments, 5,681 wire chars/run), chosen because it carries **0 paired markers** and 14 removed-set headwords including `structure` ×16, `form` ×13, `double` ×5.
+
+| arm | glossary | |
+|---|---|---|
+| **C**, **C2** | current, contaminated (2,089) | run twice — **this pair is the noise floor** |
+| **B** | cleaned, §C129 applied (1,713) | |
+| **A** | none (`--no-glossary`) | |
+
+🔴 **THE CONTROL THAT MAKES THE REST MEAN ANYTHING — C vs C2, same glossary, two runs: 17 of 109 segments differ (16%).** The model is **not deterministic**, so without this every other number is uninterpretable.
+
+| comparison | differs | vs the 16% floor |
+|---|---|---|
+| **C vs C2** (same glossary) | 16% | — *the floor* |
+| **C dirty vs B clean** | 22% | **+6 pts** |
+| **A none vs B clean** | 25% | **+9 pts** |
+
+▶ **THE GLOSSARY'S AGGREGATE EFFECT ON WORDING IS BARELY ABOVE RUN-TO-RUN VARIANCE.** Removing 378 rows moved 6 points; removing *all 1,713* moved 9. **Most of what looks like "the glossary changed the translation" is the model being non-deterministic.**
+
+🔴 **AND YET, THE OPPOSITE IS ALSO TRUE AT TERM LEVEL — THIS IS THE FINDING:**
+
+| | C | C2 | B | A |
+|---|---|---|---|---|
+| `gerð` (the audited-WRONG word) | **16** | **16** | **0** | **0** |
+| `bygging` (the correct word) | **0** | **0** | **6** | **7** |
+
+▶ **`structure → gerð` fired 16 of 16, twice, and vanished the moment the row was removed. That is not noise — it is saturated and reproducible.** ✅ **§C129's damage claim is now EXPERIMENTALLY confirmed, not merely observational.**
+⚠️ **BUT 5 OF THE 6 AUDITED-BAD ROWS TESTED HERE DID NOT FIRE AT ALL** — `tilbrigði`, `stjörnupar`, `baugur`, `námunda`, `maurar` are **0 in every arm including both dirty runs**, despite their headwords being present (`form` ×13, `double` ×5, `ring` ×3). **They were sent and IGNORED.** ▶ **This is §C73's partial-compliance rule at row granularity: a row on the wire is not a row obeyed.** So the removal set is better read as *"rows that COULD fire wrongly"* than *"rows that DO"* — the cost of removing them is near zero either way, but the benefit is concentrated in a few.
+
+### ▶ WHAT THIS SAYS ABOUT "LESS IS MORE" — [USER]'s hypothesis, tested
+
+✅ **Supported, with a sharpened shape. Arm A (NO glossary) and arm B (clean glossary) are indistinguishable where it matters** — `bygging` 7 vs 6, and the A-vs-B gap is 9 points over a 16-point floor. **For this module, the 1,713-term glossary bought essentially nothing the model was not already doing.**
+🔴 **The glossary's value is therefore NOT breadth — it is a small number of rows that fire deterministically.** Each such row is a lever that works: `gerð` proves a row can control output completely. **The same mechanism that makes a good row valuable makes a bad row catastrophic**, and 4 rows in 5 are neither.
+▶ **CONSEQUENCE: the selection criterion should be "does this row fire, and is it right?" — not "is this term in our domain?".** A row that never fires is dead weight carrying risk; a row that fires is worth auditing individually. **That is a much smaller glossary than 2,091 and a different construction rule from any used so far.**
+⚠️ **ONE MODULE, 109 segments, one book, one day. Do NOT quote 16% or 25% as constants** — the noise floor especially is likely to vary by text type. **The design is the reusable part: any future glossary claim needs a same-arm repeat, or it is uninterpretable.**
+📌 **RE-WIDENING ORGANIC STAYS HELD** ([USER] 2026-09-06, pending arm A). ▶ **Arm A is now in: no glossary ≈ clean glossary on this sample. That is evidence AGAINST re-widening**, and it is one module — the decision is [USER]'s.
+
 ### §C130 — **"LESS IS MORE" IS MEASURED, NOT A HUNCH: THE MODEL ALREADY PRODUCES 80% OF THE ROWS WE WOULD RESTORE**
 
 **[USER] 2026-09-06:** *"Miðeind's Erlendur is getting better at terminology (natríum etc) but consistency is key. We might be facing a 'less is more' situation regarding the glossaries, where larger glossaries don't always produce better results."* ▶ **Measured, and it holds.**
