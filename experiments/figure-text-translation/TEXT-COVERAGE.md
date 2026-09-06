@@ -63,3 +63,66 @@ Median 13 words each, so these are labels and short captions, not decoration.
 
 ⚠️ **Re-run it rather than quoting it.** `python3 text-coverage-census.py <book>` — the numbers move
 with the delivery, with `sources.local.json`, and with every extractor change.
+
+---
+
+# Addendum, same day: the read-layer bake-off
+
+Producer: `read-layer-bakeoff.py`, over the population above. Candidate: **pdfplumber (MIT)**.
+
+| | reads ≥1 word | total words |
+|---|---|---|
+| ours (`pdftext.py`) | **504 / 779** (64.7%) | 14,641 |
+| **pdfplumber** | **779 / 779 (100%)** | 19,181 |
+| oracle (`pdftotext`) | — | 17,272 |
+
+**275 figures gained** — every text-bearing figure in the book becomes readable.
+
+## 🔴 The control is the interesting half, and it inverted the finding
+
+The bake-off flagged **155 figures where pdfplumber returned FEWER WORDS than ours**. Reported
+as-is, that reads as a regression that would sink the candidate. It is not one.
+
+⚠️ **"Words" is not the same unit on both sides.** pdfplumber groups characters into words by
+spatial gaps; ours splits text-showing operators on whitespace. **Comparing them is the
+`a WORD ≠ a THING` denominator error.** Re-measured as a **character multiset** — every character
+ours found must appear in the candidate's stream:
+
+| of the 155 | | |
+|---|---|---|
+| `.eps` source | **92** | ⚠️ **UNMEASURED** — the char control covered `.pdf` only. Not clean, unmeasured |
+| `.pdf`, segmentation-only | **55** | identical character counts (320=320, 173=173, 114=114) |
+| `.pdf`, apparent character loss | **8** | ▼ see below |
+
+### The 8 "losses" are OUR garbage, decoded correctly by the candidate
+
+The missing characters were `\x00`, `\x03`, `\x11`… — NUL and control bytes, the signature of a
+2-byte CID code read as single Latin-1 characters. Printed side by side:
+
+| figure | ours | pdfplumber |
+|---|---|---|
+| `CNX_Chem_04_02_ammonia` | `'\x00\x0b\x00D\x00\x0c\x00\x0b\x00E\x00\x0c'` | `'(a)(b)'` |
+| `CNX_Chem_03_02_moles` | 166 bytes of control codes | `'32.1 g S  65.4 g Zn  28.1 g Si  12.0 g C  207 g Pb…'` |
+
+▶ **VERDICT: 0 real regressions among the measured `.pdf` set.** The candidate reads everything
+ours reads, plus 275 figures ours cannot read at all, plus the CID text ours turns into noise.
+
+## 🔴 And the control surfaced a SPEND defect nobody had named
+
+Our reader does not crash on a `/Type0` font and does not return empty — **it returns
+plausible-looking text made of control bytes.** Nothing downstream distinguishes that from real
+English, so it is a candidate for `send: true` and **would reach the paid MT**.
+
+**Measured exposure: 11 text-bearing chemistry figures carry a `/Type0` font.**
+
+⚠️ This is a *third* failure mode, distinct from the two already recorded: not a crash
+(`ours-crashes`), not a silent skip (`form-text-only`), but **silent garbage that costs money**.
+It is invisible to any count-based check, because the count is non-zero and looks healthy.
+
+## What is NOT established here
+
+- **The 92 EPS cases are unmeasured**, not clean. They need the same char-level control after
+  `gs` conversion before the candidate is adopted.
+- pdfplumber emitted `Cannot set non-stroke color: 2 components specified` on some figures — a
+  colour space it does not map. That touches the `fill` field the composer needs and belongs on
+  the read-layer contract regardless of everything above.
