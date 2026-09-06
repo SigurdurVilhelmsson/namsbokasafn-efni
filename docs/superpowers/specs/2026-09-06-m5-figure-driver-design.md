@@ -63,12 +63,13 @@ Each was measured, and a throwaway-copy proof took ch04 from **6 translated + 23
 | # | file | defect | consequence |
 |---|---|---|---|
 | P1 | `extract.py` | reads `page.Resources.Font` unguarded | a page with no font resource raises |
-| P2 | `extract.py` | `/Type0` CID fonts have no `/FirstChar`/`/Widths` | `AttributeError` mid-chapter |
+| P2 | `extract.py` | `/Type0` CID fonts have no `/FirstChar`/`/Widths` | `AttributeError` mid-chapter. 🔴 **SKIPPING IT SILENTLY IS NOT THE FIX** — the font's text still becomes garbage runs, is held back, and the figure reads as partly textless. Measured on `PerTable2`: six Type0 category labels **ERASED** from the composed figure (control: `Group=1 Actinides=1`, `Noble=0 Halogens=0 Pnictogens=0`), exit 0, verdict ok. **Record the skipped font in `meta.json` and warn, naming it.** |
 | P3 | `figtext.py` | `group()` / `merge_blocks()` index empty lists | a **text-less** figure CRASHES instead of returning zero blocks — which is the whole of `copied-textless` |
 | P4 | `emit-blocks.py` | spawns `'extract.py'` **cwd-relative**, and `capture_output=True` swallows the child's stderr | from any cwd but its own, every figure is a loud `failed-prepare`; and the subset-font warning that flags a silently mistranslated figure is discarded |
 | P5 | — | `.eps`/`.ai` are opened with `pikepdf` | the precedence-WINNING tree is EPS-only for some chapters, so the correct artwork is exactly the artwork that cannot be opened. `gs -dEPSCrop -sDEVICE=pdfwrite` converts 7 of 7 real ch04 EPS in ~0.23 s each |
 | P6 | `sources.py` | a configured tree root that is absent from disk `continue`s | **sourcing a superseded illustration is invisible in the output** — a correct-looking Icelandic translation of the wrong picture |
-| P7 | driver | CNXML `src` carries a `-[0-9a-f]{4}` hash suffix the delivery filenames lack | inflates `unresolved` with a naming gap rather than a delivery hole |
+| P7 | driver | CNXML `src` carries a `-[0-9a-f]{4}` hash suffix the delivery filenames lack | inflates `unresolved` with a naming gap rather than a delivery hole. ⚠️ **De-hashing is for RESOLUTION ONLY — see the identity rule in Invariants** |
+| **P9** | `extract.py`, `pdftext.py`, `strip-text.py`, `census.py` | **text drawn inside a `/Form` XObject is invisible** — the page `/Contents` carries no `BT` and the page has no `/Font`, so nothing is extracted and nothing is stripped | 🔴 **THE LARGEST SINGLE FINDING, AND P3 IS WHAT MAKES IT SILENT** |
 | P8 | `emit-blocks.py` + `compose.py` | the two derive the block key from **different** inputs — emit filters blank runs, compose does not | a `send:true` block is **paid for and then discarded as ENGLISH KEPT**. Measured **71 of 393** pipeline-readable chemistry figures (18%); worst case 9 of 11 blocks on one figure |
 
 🔴 **P8's FIX IS DECIDED BY MEASUREMENT, NOT BY PREFERENCE — DELETE THE FILTER FROM `emit-blocks.py`; DO NOT ADD ONE TO `compose.py`.** Two independent figures, both arms, with per-glyph controls:
@@ -76,6 +77,18 @@ Each was measured, and a throwaway-copy proof took ch04 from **6 translated + 23
 - **Adding compose's filter** moves block boundaries on **32 of 393** figures — one label splits into three, two of which flip `left` → `center` alignment, and a length-realistic Icelandic map produces **overlapping text**. It also corrupts the `--control` oracle image, destroying the published-JPG comparison.
 - ⚠️ **The single-figure answer is the WRONG answer.** On `SciMethod` no boundary moves, because all 3 of its blank runs sit in **arc** blocks and the arc predicate is pure Euclidean distance that never reads the adjacency arithmetic. **188 of 243 blank-bearing blocks corpus-wide are non-arc.** A one-figure measurement would have shipped the label-splitting arm.
 - ▶ **Then make it unrepeatable: the key derivation belongs in ONE shared function both scripts import.** Keeping two copies in agreement by hand is what produced P8. ⚠️ **There is a THIRD consumer — `census.py` holds the emit-side view — so a fix that touches only the two scripts leaves the census reporting numbers that match neither.**
+
+🔴 **P9 IS THE ONE THAT INVALIDATES THIS SPEC'S OWN ACCEPTANCE NUMBERS, AND P3 TURNS IT FROM A CRASH INTO A GREEN LIE.** Measured directly:
+
+| figure | page `/Font` | page stream has `BT` | Form XObjects | forms containing `BT` |
+|---|---|---|---|---|
+| `CNX_Chem_04_04_limiting` | **empty** | **no** | 4 | **4** |
+| `CNX_Chem_04_03_etheneBr_img` | **empty** | **no** | 17 | **17** |
+| `CNX_Chem_01_01_SciMethod` | `/TT0 /TT1` | **yes** | 0 | 0 |
+
+▶ **THE LAST ROW IS THE POINT: `SciMethod` IS THE FIGURE THE WHOLE EXPERIMENT WAS DEVELOPED AGAINST, AND IT IS THE ATYPICAL ONE.** **274 of 894** resolution-winning chemistry vectors keep all their text inside Form XObjects — **8 of ch04's 23**.
+🔴 **AND P3 CONVERTS A LOUD FAILURE INTO A SILENT ONE.** At HEAD these figures CRASH. With P1–P3 applied and nothing else, `CNX_Chem_04_04_limiting` (14 English words) yields `blocks: 0`, exit 0 → `copied-textless` → English shipped to the reader, no sidecar, no review row, verdict `{ok: true}` — **matching this spec's own former acceptance line byte for byte.** A partial fix (extractor only, no strip) is worse: measured 14 English words → 14, now sitting *under* the composed Icelandic.
+▶ **THE RULE THAT FALLS OUT: "NO BLOCKS" MUST NEVER BE INFERRED FROM AN ABSENCE.** `figure-prepare.py` reports `formTextXObjects` — a POSITIVE signal, the count of reachable `/Form` XObjects whose stream contains `BT` — and a figure with `sendable == 0 && formTextXObjects > 0` is **`unreadable-text`**, never `copied-*`.
 
 
 ---
@@ -118,6 +131,10 @@ Each was measured, and a throwaway-copy proof took ch04 from **6 translated + 23
 🔴 **STEP 7 MOVED AHEAD OF EVERYTHING THAT CAN FAIL AFTER PAYMENT, AND STEP 8 MUST NOT GATE IT.** The sidecar is written **the moment the paid stage returns**, and **regardless of what the verification in step 8 concludes**. The check decides which *bucket* the figure lands in; it never decides whether the purchase is *recorded*.
 ▶ **Why this is not fussiness:** without it, adding step 8 at all would make things WORSE. A 7-of-8 MT return would be bucketed `failed-mt`, and all 7 paid translations discarded — **a new detection converted into a new loss.** The paid Icelandic otherwise lives only in a `mkdtemp` directory nothing records and nothing re-reads.
 
+🔴 **BUT THE GUARANTEE STOPS AT THE STAGE BOUNDARY, AND THAT IS ACCEPTED RATHER THAN FIXED: THE PAID STAGE IS ALL-OR-NOTHING PER FIGURE.** `translate-blocks.mjs` writes its two output files only *after* its whole loop, so a throw at block k of n (a 5xx or network error surviving 3 retries, or any non-429 4xx) **persists nothing** — measured: 2 blocks billed, neither output file written, the shared `out/` byte-identical. The figure lands `failed-mt` with **no sidecar**, and under R8 the next run re-buys the whole figure. **Exposure is one figure, ~1 ISK** — the same shape as §C134, where [USER] ruled **retry the module, do not code around it.**
+⚠️ **DO NOT "FIX" THIS WITH A PARTIAL WRITE ON CATCH.** A partial sidecar makes the figure R8-**ineligible** to spend and permanently part-English, with no review row for the missing keys — strictly worse than re-buying.
+⚠️ **AND STEP 7 FIRES ONLY WHEN `translations-api.json` EXISTS AND PARSES TO ≥ 1 BLOCK.** Read literally, *"write the sidecar IMMEDIATELY and REGARDLESS of step 8's verdict"* invites an implementer facing a missing file to mint an **empty** sidecar — `blocks: {}` with a valid `renderHash` — which R8 then locks for ever.
+
 🔴 **STEP 1 IS CNXML-DRIVEN, DELIBERATELY, AGAINST THE EASIER OPTION.** Enumerating the artwork delivery would be simpler — it is already per-chapter — but it answers *"what artwork do we have"* when the question is *"what does this chapter show a reader"*. The sets differ **in both directions**: artwork with no CNXML reference is money spent on nothing, and a CNXML figure with no artwork is the `unresolved` count that reveals a hole in the delivery. **Only the CNXML side can surface that.**
 
 ⚠️ **The `{k: [v]}` → `{k: v}` normalisation happens at the SIDECAR BOUNDARY and nowhere else.** `out/translations-api.json` is `{"key": ["value"]}`; the sidecar is `{"key": "value"}`. One conversion site, one test. ⚠️ **An ARC block's value is written as a BARE STRING, not an array** — `Array.isArray(v) ? v[0] : v` handles both shapes exactly, and a naive `v[0]` on an arc block would yield its first **character**. **Do not add arc plumbing; the discriminator is already correct.** The test for it must be *labelled* as the arc case, which it was not.
@@ -142,7 +159,9 @@ Each was measured, and a throwaway-copy proof took ch04 from **6 translated + 23
 | sidecar, `composedHash === renderHash` | current |
 | sidecar, `composedHash !== renderHash` | approved text has moved past the image — **recompose, free** |
 
-⚠️ **A `--stale`/`--force` pass that does not change `blocks` must NOT rewrite `state` or `renderHash`** — it recomposes and lets the publisher stamp. And it must **carry `composedHash` forward** while never carrying `state` forward: the two fields travel in opposite directions.
+🔴 **A RECOMPOSE PASS WRITES THE SIDECAR UNDER NO CIRCUMSTANCES. The publisher's stamp is the only write.** *(This replaces a sentence saying the driver must "carry `composedHash` forward while never carrying `state` forward". That was self-contradicting and dangerous: the only way to satisfy it non-vacuously is a rewrite that DROPS `state` — silently destroying a head editor's approval, on the very `--stale` run meant to turn the badge green. `editorialState` then reads `mt-preview`, the run reports success, and the DB-backed panel still says approved while a fresh clone does not.)*
+⚠️ **The driver writes `state` NOWHERE** — it mints without one and never rewrites an existing file.
+🔴 **[CODE] ITEM, INDEPENDENT OF M5, FOUND WHILE REVIEWING IT: `withComposedHash` OVERWRITES ITS OWN STAMP WHEN THE KEY IS ALREADY PRESENT**, so after a successful publish the on-disk `composedHash` stays at the OLD value while the publisher returns and prints the new one. Consequence: the correction loop's step 7 (`editorialState` derives to `approved`) is **never reached**, and every later `--stale` re-selects the same figure and "succeeds" on it, for ever. **This is a bug in shipped code, not in this plan.**
 
 ---
 
@@ -155,6 +174,7 @@ R2 is a consequence rather than a rule anyone implements. 🔴 **BUT THE DISCRIM
 | resolve result | evidence | outcome |
 |---|---|---|
 | vector, ≥1 sendable block | — | **translate** |
+| vector, 0 sendable blocks, **but text lives in a Form XObject** | `formTextXObjects > 0` | 🔴 **unreadable-text** — tested FIRST, before either copied bucket |
 | vector, 0 sendable blocks, page has paint operations | `paintOps > 0, imageXObjects == 0` | **copied-textless** |
 | vector, 0 sendable blocks, page is a wrapped bitmap | `imageXObjects > 0, paintOps ≈ 0` | **copied-photo** |
 | **raster only** (`.jpg`/`.png`/`.tif`, same trees, same precedence) | — | **copied-photo** |
@@ -267,7 +287,10 @@ node tools/figure-run.js --book <slug> --chapter <N> [--module <mNNNNN>] [--figu
 3. **The pre-spend mapping check WRITES NOTHING.** `unmapped` must be unreachable on any path that has already spent money, so the check runs at step 5 — but it is a **pure predicate**; the entry is minted at step 10, alongside the publish. *(Splitting the check from the write is what lets Invariant 2 and the pre-spend guarantee both hold.)*
 4. **`01-source/` is never read for artwork and never written.** The artwork lives outside the repo, via gitignored `sources.local.json`.
 5. **Warnings are surfaced, not swallowed.** `emit-blocks.py`'s `capture_output=True` discards extract's subset-font warning; in an unattended 30-figure run a swallowed warning is a silently mistranslated figure. ▶ **Derive the warning list from `<out>/meta.json` rather than plumbing a child's stderr** — measured to reproduce `extract.py`'s own list exactly, and it works on real chemistry artwork too.
-6. **The mapping entry the driver mints restates NO enforceable value.** Import `DEFAULT_SUFFIX` from `tools/generate-image-mapping.js`; take the extension from `path.extname()` of the composer's output; gate on the basename being in the source-image index, so `unmapped`'s typo protection survives; write tmp+rename.
+6. 🔴 **A FIGURE'S IDENTITY IS THE UNSTRIPPED CNXML BASENAME, EVERYWHERE** — sidecar filename, `--out T/<basename>`, mapping entry, source-image-index gate. `listModuleFigures`, `applyImageBasenameSwaps` and `sidecarBasenameForSrc` already key on it. **P7's de-hash is a LOOKUP-ONLY fallback inside resolution and must never rename the figure.**
+   ⚠️ **THE SEAM THIS CLOSES COSTS MONEY, AND `--dry-run` CANNOT SEE IT.** The publisher cross-checks `basenameFromMeta(<out>/meta.json)` against the sidecar's basename. P5's `gs` conversion writes `artwork-src.pdf`, and P7's de-hash resolves `…moles-6296` to `…moles.pdf` — so `meta.source`'s basename differs from the key and publish refuses **`basename-mismatch` AFTER the figure has been paid for**. Measured on all **7 ch04 EPS** and **9 hashed ch03** figures; a control with the name corrected publishes `ok: true`. Every later `--stale` re-runs `gs` and re-refuses identically.
+   ▶ **THE FIX IS TWO-PART:** `figure-prepare.py` takes `--basename <b>` and stages the resolved artwork as `<out>/<b>.pdf` **before** extraction (gs output for EPS/AI, a copy for a de-hashed PDF), so `meta.source`'s basename equals the key for every figure; **and the pure pre-flight at step 5 asserts `basenameFromMeta === basename` BEFORE any spend**, so the seam refuses for free and `--dry-run` sees it.
+7. **The mapping entry the driver mints restates NO enforceable value.** Import `DEFAULT_SUFFIX` from `tools/generate-image-mapping.js`; take the extension from `path.extname()` of the composer's output; gate on the basename being in the source-image index, so `unmapped`'s typo protection survives; write tmp+rename.
 
 ---
 
@@ -279,7 +302,8 @@ node tools/figure-run.js --book <slug> --chapter <N> [--module <mNNNNN>] [--figu
 - ⚠️ **The artwork lives outside the repo, so a real-artwork test is vacuous in CI.** Commit a small stdlib-generated PDF fixture with its generator, **and state in writing that the Python suite is not a CI gate** (no workflow runs Python), naming the hand-run command and its expected output.
 - ⚠️ **A test that watches ONE filename to prove isolation proves nothing.** Compare the shared `out/`'s full inventory and mtimes.
 - **`--dry-run` over a real chapter must reach the same classification as a live run** — the pre-flight is worthless if it classifies differently from the thing it previews.
-- **Free acceptance criterion, costs 0 ISK:** `node tools/figure-run.js --book efnafraedi-2e --chapter 4 --dry-run` shows **`failed-prepare = 0`** and a tally summing to **30**.
+- 🔴 **THE ACCEPTANCE NUMBERS ARE PENDING A CENSUS THAT DOES NOT EXIST YET.** This spec used to require ch04 to show `failed-prepare = 0` and a tally of **13 translated / 16 copied-* / 1 photo / 0 unresolved = 30**. **That is exactly the shape a form-blind extractor produces, and 6–8 of those "copied" figures contain English prose** — so the criterion would have certified the defect. ▶ **Task 0 must first produce a FIVE-WAY census of the corpus — page-text · form-text-only · Type0-garbage · genuinely textless · photo — and the acceptance tally is read off that.** It is free: the artwork is on this box and no API call is involved.
+- **What survives as acceptance regardless of the census:** the run is `--dry-run` and costs **0 ISK**; the tally **sums to the enumerated count** (the driver asserts it); and **no figure lands in `copied-*` while carrying `formTextXObjects > 0`.**
 
 ---
 

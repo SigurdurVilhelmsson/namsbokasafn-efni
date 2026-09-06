@@ -1,5 +1,10 @@
 # M5 Figure Driver Implementation Plan
 
+> 🔴 **REVISED TWICE, 2026-09-06. TASK 0's ACCEPTANCE IS PENDING A CENSUS TASK 0 ITSELF PRODUCES; TASKS 1–6b ARE PROVISIONAL UNTIL IT LANDS.**
+> A blind Fable closure review of the FIRST revision confirmed **8 more defects, 0 refuted** (48 claims self-struck, 37 lower-severity left unverified). **Two are blocking, and both are one root cause:** text drawn inside a `/Form` XObject is invisible to the extractor, and this plan's own P3 fix turns that from a loud crash into a **silent green copy** — English shipped to readers with a verdict of `ok`, matching this plan's own former acceptance line byte for byte. → new **P9**, a new `unreadable-text` outcome, and a replaced acceptance criterion.
+> ▶ **The pattern across three review rounds is worth naming: every blocking finding has been about WHAT THE PYTHON CHAIN ACTUALLY DOES ON REAL ARTWORK — which is settled for free, on this box, with no API call.** That is why Task 0 comes first and why its acceptance is a measurement rather than a number written in advance.
+> ⚠️ **THE TEST BLOCKS BELOW WITH `...` BODIES ARE SKETCHES, NOT TESTS.** Five capped findings were *"this test cannot fail"*. When a task is executed, either write its tests in full or state the property that makes each one non-vacuous — **a test written as a suggestion is what a fresh agent satisfies vacuously.**
+
 > ✅ **REVISED 2026-09-06 against register §C137 and a 9-agent constraint verification.**
 > The first version failed a blind adversarial review (16 confirmed, 4 partial, 0 refuted); the
 > verification then found **two more** defects the review had missed, and **measured a fix the
@@ -110,7 +115,8 @@ The old plan ran Task 1 → 6 and would have failed at the first real figure. Se
 Cases, each of which must FAIL now:
 1. **A text-less vector returns zero blocks, does not raise.** Build a PDF with a stroke and no `BT…ET`; assert `emit-blocks` exits 0 and `blocks.json` is `[]`.
 2. **A page with no `/Font` resource does not raise.**
-3. **A `/Type0` CID font is skipped, not fatal.**
+3. 🔴 **A `/Type0` font is REPORTED, not merely skipped.** *(The old wording — "skipped, not fatal" — is a test that passes on the failure.)* Skipping suppresses the crash while the font's text still becomes garbage runs, is held back as verbatim, and the figure reads as partly textless. **Measured on `PerTable2`: six Type0 category labels ERASED from the composed figure** — control `Group=1 Actinides=1`, defect `Noble=0 Halogens=0 Pnictogens=0` — exit 0, verdict ok, no review row, because block keys exist only for extracted blocks. The fixture gains a Type0 font with one hex-string `Tj`, and the assertion is that a **warning names it**.
+4. 🔴 **TEXT INSIDE A `/Form` XObject IS FOUND, AND STRIPPED.** Build a PDF whose only `BT…ET` sits inside a `/Form` XObject invoked by `Do`; assert emit-blocks finds it AND strip-text removes it from `artwork.svg`. **Without this the positive control tests values, not coverage** — and coverage is where the corpus actually fails.
 4. **`emit-blocks.py` works from a foreign cwd.** Run it with `cwd=` a tempdir. *(Today it spawns `'extract.py'` cwd-relative and dies.)*
 5. **`emit-blocks.py` does not swallow the child's stderr** — assert the subset-font warning is observable.
 6. **`sources.py` REFUSES when a configured tree root is absent from disk**, rather than falling through to the next tree. Positive control: with all roots present, resolution still succeeds.
@@ -123,7 +129,7 @@ Cases, each of which must FAIL now:
 | # | change |
 |---|---|
 | P1 | `extract.py` — read `/Resources`→`/Font` defensively, defaulting to `{}`, instead of `page.Resources.Font` |
-| P2 | `extract.py` — `if '/FirstChar' not in fobj or '/Widths' not in fobj: continue` (skip `/Type0`; `pdftext.parse` already defaults a missing width to 0.5) |
+| P2 | `extract.py` — do not let a `/Type0` font raise, but **RECORD IT**: `fonts[key] = {subtype, skipped: true}` in `meta.json`, and Task 2's warning derivation emits `unreadable font <name> (/Type0): N text-showing ops not extracted`, counting `Tj/TJ/'/"` executed under a font absent from `widths`. **A bare `continue` is a silent erasure** — see Step 2 case 3 |
 | P3 | `figtext.py` — `if not runs: return []` in `group()`, `if not blocks: return []` in `merge_blocks()` |
 | P4 | `emit-blocks.py` — spawn `str(HERE / 'extract.py')`, and stop discarding the child's stderr |
 | P6 | `sources.py` — a configured-but-absent tree root REFUSES (or `load_trees` preflights every root in `editionPrecedence`); add the case to `test_sources.py` |
@@ -135,6 +141,23 @@ Cases, each of which must FAIL now:
 - ⚠️ **A one-figure measurement gives the WRONG answer here.** `SciMethod` shows no boundary movement because all 3 of its blank runs sit in *arc* blocks, whose predicate is pure Euclidean distance. **188 of 243 blank-bearing blocks corpus-wide are non-arc.**
 - ▶ **Then make it unrepeatable: put the key derivation in ONE function both scripts import.** ⚠️ **`census.py` is a THIRD consumer holding the emit-side view — move it too, or its counts will match neither script.**
 - ⚠️ **If a filter is ever wanted again, the predicate must be `text == ''`, NEVER `not text.strip()`** — see the alpha item below.
+
+🔴 **P9 — TEXT INSIDE A `/Form` XObject IS INVISIBLE, AND P3 IS WHAT MAKES IT SILENT. THIS IS THE LARGEST FINDING IN THREE REVIEW ROUNDS.** Measured directly:
+
+| figure | page `/Font` | page stream has `BT` | Form XObjects | forms containing `BT` |
+|---|---|---|---|---|
+| `CNX_Chem_04_04_limiting` | **empty** | **no** | 4 | **4** |
+| `CNX_Chem_04_03_etheneBr_img` | **empty** | **no** | 17 | **17** |
+| `CNX_Chem_01_01_SciMethod` | `/TT0 /TT1` | **yes** | 0 | 0 |
+
+▶ **THE LAST ROW IS THE POINT: `SciMethod` IS THE FIGURE THE WHOLE EXPERIMENT WAS DEVELOPED AGAINST, AND IT IS THE ATYPICAL ONE.** **274 of 894** resolution-winning chemistry vectors keep all their text inside Form XObjects — **8 of ch04's 23**. At HEAD they CRASH. With P1–P3 applied and nothing else, `CNX_Chem_04_04_limiting` (14 English words) yields `blocks: 0`, exit 0 → `copied-textless` → **English shipped, no sidecar, no review row, verdict `{ok:true}`.** Fixing the extractor alone is worse: 14 English words survive `strip-text` and sit *under* the composed Icelandic.
+
+**P9 has two halves, and BOTH are needed:**
+- **Read:** `extract.py` / `pdftext.parse` descend recursively into `/Form` XObjects, using each form's own `/Resources/Font` and its `/Matrix` composed with the CTM at the `Do` site.
+- **Strip:** `strip-text.py` removes `BT…ET` inside every reachable form, not just the page stream. ⚠️ **`census.py` is blind in the same way and must move with them.**
+
+⚠️ **IF P9 IS DESCOPED, THE FIGURES MUST STILL BE NAMED — NEVER BUCKETED `copied-*`.** `figure-prepare.py` reports `formTextXObjects` (a POSITIVE count of reachable forms whose stream contains `BT`), and `sendable == 0 && formTextXObjects > 0` becomes the **`unreadable-text`** outcome: counted, every figure NAMED in the summary, a NOTE in the verdict, **not fatal** — R9's shape, because a `failed-prepare` bucket would make ch04 exit 1 on 8 of 30 for as long as the extractor cannot read forms, which is the always-red exit code this design rejects.
+🔴 **THE GENERAL RULE, AND IT IS THE ONE TO CARRY: "NO BLOCKS" MUST NEVER BE INFERRED FROM AN ABSENCE.** A count of zero and an inability to count are different facts, and only a positive signal tells them apart.
 
 🔴 **P5 — EPS IS NOT AN EDGE CASE; IT IS THE CORRECT ARTWORK.** The precedence-winning tree is **EPS-only for some chapters**, so the figures `pikepdf` cannot open are exactly the ones we are supposed to use. Convert first, in `figure-prepare.py` (Task 2):
 
@@ -157,6 +180,22 @@ The fixture MUST contain, or the positive control is not a control:
 Measured end to end on this fixture: **4 blocks, 3 sendable, `artwork.svg` 397 bytes with the stroke intact.**
 
 - [ ] **Step 6: Run and watch them pass.** Then the existing suites: `python3 test_sources.py && python3 test_figtext_normalise.py`.
+
+- [ ] **Step 6b: PRODUCE THE FIVE-WAY CENSUS — this is the deliverable the rest of the plan waits on.**
+
+🔴 **Every blocking finding in three review rounds has been about what the chain does on real artwork, and that is settled here, for free, with no API call.** Run the repaired chain over the resolution-winning artwork for chemistry and classify each figure into exactly one of:
+
+| bucket | signal |
+|---|---|
+| **page-text** | page `/Font` present and the page stream carries `BT` |
+| **form-text-only** | no page text; ≥1 reachable `/Form` XObject whose stream carries `BT` |
+| **Type0-garbage** | text-showing ops executed under a font absent from `widths` |
+| **genuinely textless** | no text-showing ops anywhere reachable |
+| **photo** | image XObjects, no paint ops |
+
+Write it to a committed artefact under `experiments/figure-text-translation/`. **Then fill in Task 6a Step 5's expected per-bucket tally from it**, and only then treat Tasks 1–6b as final.
+
+⚠️ **The buckets must be counted per RESOLUTION-WINNING figure, and the denominator stated.** Two censuses in this campaign have already disagreed because one resolved vector-only and the other probed rasters too — that is a different population, not a different answer.
 
 - [ ] **Step 7: Write the CI sentence.** Add to this task's section of the repo docs, in writing: **the Python suite is NOT a CI gate — no workflow runs Python.** Name the hand-run command and its expected output. **Adding Python to CI is out of scope.** *(Without this sentence, a green CI reads as evidence the Python side passed.)*
 
@@ -270,6 +309,15 @@ describe('verdict', () => {
 
   // 🔴 R9, [USER] 2026-09-06. 170 of 1,148 chemistry figures (14.8%) are unresolved in the
   // delivery TODAY, in every chapter. Failing on it made every run exit 1 by design.
+  // 🔴 Same shape as unresolved: named, never fatal. If it failed the run, ch04 would exit 1
+  // on 8 of 30 for as long as the extractor cannot read Form XObjects.
+  it('is ok when figures are unreadable-text — but SAYS SO', () => {
+    const t = { ...emptyTally(), translated: 5, 'unreadable-text': 8 };
+    const v = verdict(t, sum(t));
+    expect(v.ok).toBe(true);
+    expect(v.reasons.join(' ')).toMatch(/cannot read/i);
+  });
+
   it('is ok when figures are unresolved — counted and named, never fatal', () => {
     const t = { ...emptyTally(), translated: 5, unresolved: 3 };
     expect(verdict(t, sum(t)).ok).toBe(true);
@@ -330,6 +378,11 @@ describe('verdict', () => {
 /** What the figure IS. */
 export const CLASSIFICATION_OUTCOMES = [
   'translated', 'copied-photo', 'copied-textless', 'unresolved',
+  // 🔴 The figure HAS text; our extractor cannot read it — today because the text lives
+  // inside a /Form XObject (274 of 894 chemistry vectors). NOT copied-*: a count of zero
+  // and an inability to count are different facts. Non-fatal, like `unresolved` (R9), or
+  // ch04 would exit 1 on 8 of 30 until P9 lands.
+  'unreadable-text',
 ];
 
 /** What HAPPENED to it. A translate-able figure that failed lands here, never in `translated`. */
@@ -381,6 +434,14 @@ export function verdict(tally, enumeratedCount) {
       `NOTE (not a failure): ${tally.unresolved} figure(s) unresolved — the artwork delivery has a hole here`
     );
   }
+  // 🔴 Same shape, different cause: the artwork is present and carries text we cannot read.
+  // It MUST be named, because the alternative — bucketing it copied-* — ships English to a
+  // reader under a green verdict, which is the defect this outcome exists to make visible.
+  if (tally['unreadable-text'] > 0) {
+    reasons.push(
+      `NOTE (not a failure): ${tally['unreadable-text']} figure(s) carry text this extractor cannot read (see P9)`
+    );
+  }
 
   // The predicate is deliberately NOT `translated === 0 && figures > 0`: a chapter whose
   // figures are legitimately ALL photographs translates zero and is correct.
@@ -424,6 +485,9 @@ git commit -m "feat(M5 Task 1): the figure outcome vocabulary, a tally that cann
 ```
 
 Exit 0 on success (**including zero blocks**), 1 on failure with `{"error": str, "warnings": []}` in `prepare.json`, 2 on a usage error.
+
+🔴 **`prepare.json` ALSO CARRIES `formTextXObjects`** — the count of reachable `/Form` XObjects whose stream contains `BT`. Task 3 cannot tell "no text" from "cannot read the text" without it.
+🔴 **AND `figure-prepare.py` TAKES `--basename <b>` AND STAGES THE ARTWORK AS `<out>/<b>.pdf` BEFORE EXTRACTION** — gs output for EPS/AI, a copy for a de-hashed PDF. **Delete the literal `artwork-src.pdf`.** Without this, `meta.source`'s basename is `artwork-src` (or the de-hashed name) while the sidecar key is the CNXML basename, and the publisher refuses `basename-mismatch` **after the figure has been paid for** — measured on all 7 ch04 EPS and 9 hashed ch03 figures, and `--dry-run` structurally cannot see it.
 
 🔴 **`imageXObjects` and `paintOps` are NOT optional extras — Task 3's classification cannot work without them.**
 
@@ -486,6 +550,22 @@ git commit -m "feat(M5 Task 2): figure-prepare.py — per-figure isolation, EPS,
 - [ ] **Step 1: Write the failing test.** Keep the old cases (vector with sendable blocks → `translated`; all-unsendable → `copied-textless`; no blocks → `copied-textless`; raster-only → `copied-photo`; nothing → `unresolved`; vector wins over raster) and **add the two the old table could not express**:
 
 ```js
+// 🔴 THE BLOCKING CASE. The figure HAS text; we cannot read it. Bucketing it copied-* ships
+// English to a reader under a green verdict — measured on CNX_Chem_04_04_limiting, 14 English
+// words, blocks:0, exit 0. This test must be FIRST, because formTextXObjects outranks both
+// copied buckets.
+it('calls a figure whose text lives in a Form XObject UNREADABLE, never copied', () => {
+  const r = classifyFigure({ vectorPath: '/a/x.pdf', rasterPath: null, blocks: [],
+    imageXObjects: 20, paintOps: 2, formTextXObjects: 4 });
+  expect(r.outcome).toBe('unreadable-text');
+});
+
+it('still calls a genuinely text-less vector copied — the control for the case above', () => {
+  const r = classifyFigure({ vectorPath: '/a/x.pdf', rasterPath: null, blocks: [],
+    imageXObjects: 0, paintOps: 22, formTextXObjects: 0 });
+  expect(r.outcome).toBe('copied-textless');
+});
+
 // 🔴 OpenStax ships photographs as PDFs. Without a content discriminator this figure —
 // a wrapped bitmap with no text — was called `copied-textless`, and every photograph in
 // the corpus with it. Measured separable on ch04: line art has paint ops and no image
@@ -506,7 +586,8 @@ it('calls a text-less vector with paint operations LINE ART', () => {
 ⚠️ **The table keys on `sendable`, not on `blocks`.** They disagree on 4 of 30 ch04 figures and `sendable` is right — sending `'\x00\x0b'` to a paid MT is the failure this prevents. *(The old spec's table said `blocks`; the code said `sendable`. The code was right, and the spec is now corrected.)*
 
 - [ ] **Step 2: Run it and watch it fail.**
-- [ ] **Step 3: Implement.** A vector with ≥1 sendable block is `translated`. A vector with none splits on `imageXObjects > 0 && paintOps === 0` → `copied-photo`, else `copied-textless`. Raster-only → `copied-photo`. Nothing → `unresolved`.
+- [ ] **Step 3: Implement.** A vector with ≥1 sendable block is `translated`. A vector with none: **test `formTextXObjects > 0` FIRST** → `unreadable-text`; otherwise split on `imageXObjects > 0 && paintOps === 0` → `copied-photo`, else `copied-textless`. Raster-only → `copied-photo`. Nothing → `unresolved`.
+  🔴 **ORDER IS LOAD-BEARING.** `CNX_Chem_04_04_limiting` reports `imageXObjects: 20, paintOps: 2` — it would land in `copied-photo` on the content discriminator alone, while carrying 14 English words. **The unreadable test must precede both copied buckets.**
   🔴 **Keep `copied-photo` and `unresolved` distinct** though they share a path: a photograph legitimately has no translatable text; a missing vector is a hole in the delivery, and **`unresolved` is the only number in the pipeline that looks at the delivery at all.**
 - [ ] **Step 4: Run and watch it pass.**
 - [ ] **Step 5: Commit**
@@ -692,6 +773,7 @@ it('NAMES the translated figures the review panel cannot show', () => { ... });
 - **Strip a `-[0-9a-f]{4}` suffix** from the CNXML-derived basename before declaring `unresolved` — otherwise a naming gap is reported as a delivery hole.
 - **Count with `tallyOutcome`**, never `tally[x] += 1`.
 - **PRE-FLIGHT, PURE:** check that an `image-mapping.json` entry exists *or could be minted* — no write. Organic has **0** entries, so without this every figure would be bought and then refused `unmapped`.
+- 🔴 **PRE-FLIGHT ALSO ASSERTS IDENTITY, AND THIS IS THE ONE `--dry-run` COULD NOT SEE:** `basenameFromMeta(<out>/meta.json) === basename`. `meta.json` already exists after step 3, so the check is free. Without it, every EPS figure (7 of ch04's 30) and every hash-suffixed figure (9 on ch03) is **paid for and then refused `basename-mismatch`**, on every run, for ever. **A figure's identity is the UNSTRIPPED CNXML basename everywhere; P7's de-hash is lookup-only and must never rename it.**
 - **Label the mode in the summary.** A `--dry-run` summary must not be byte-identical to a successful live run.
 - **`process.exitCode = v.ok ? 0 : 1` as the last statement.** Never `process.exit()`.
 - **Remove `tmpRoot`** at the end — `/tmp` here is a ~4.9 GB tmpfs that runs >90% full.
@@ -703,7 +785,15 @@ it('NAMES the translated figures the review panel cannot show', () => { ... });
 node tools/figure-run.js --book efnafraedi-2e --chapter 4 --dry-run > /tmp/m5-ch04.txt 2>&1; echo "exit=$?"; cat /tmp/m5-ch04.txt
 ```
 
-**Acceptance, and it costs 0 ISK:** `failed-prepare = 0`, the tally sums to **30**, and the expected shape is **13 translated / 16 copied-* / 1 copied-photo / 0 unresolved**. The driver asserts the sum itself; do not verify it by hand.
+🔴 **THE EXPECTED TALLY IS PENDING TASK 0's CENSUS — DO NOT USE THE OLD ONE.** This step used to require **13 translated / 16 copied-* / 1 photo / 0 unresolved = 30**. **That is precisely the shape a form-blind extractor produces**, and 6–8 of those "copied" figures contain English prose — so the criterion would have certified the defect it was meant to catch.
+
+**Acceptance that holds regardless of the census:**
+- the run is `--dry-run` and costs **0 ISK**;
+- the tally **sums to the enumerated count** — the driver asserts this itself, do not verify by hand;
+- **no figure lands in `copied-*` while carrying `formTextXObjects > 0`**;
+- `failed-prepare = 0`.
+
+**The expected per-bucket numbers come from Task 0's five-way census** — page-text · form-text-only · Type0-garbage · genuinely textless · photo — and are written here once it exists.
 
 - [ ] **Step 6: Commit**
 
@@ -748,8 +838,28 @@ it('does not overwrite an editor\'s corrected text with a fresh machine translat
 // R8: the only spendable figure is one with no sidecar.
 it('spends only on a figure with NO sidecar', () => { ... });
 
+// 🔴 The paid stage is ALL-OR-NOTHING PER FIGURE, and that is ACCEPTED, not fixed:
+// translate-blocks.mjs writes its outputs only after its whole loop, so a throw at block k of n
+// persists NOTHING (measured: 2 blocks billed, neither output file written). Exposure is one
+// figure, ~1 ISK — §C134's shape, where [USER] ruled retry rather than code around it.
+it('a non-zero exit from the MT buckets failed-mt, writes NO sidecar, and stays eligible', () => { ... });
+
+// ⚠️ And the clause that stops an implementer minting an empty sidecar R8 would lock for ever.
+it('mints NO sidecar when translations-api.json is absent or parses to zero blocks', () => { ... });
+
 // D3: the two hash fields travel in opposite directions.
-it('carries composedHash forward on a recompose and never carries state forward', () => { ... });
+// 🔴 REPLACED. The old test here was 'carries composedHash forward and never carries state
+// forward' — satisfiable non-vacuously ONLY by a recompose that rewrites the sidecar without
+// `state`, which SILENTLY DESTROYS a head editor's approval on the very --stale run meant to
+// turn the badge green. A recompose writes the sidecar under NO circumstances.
+it('a recompose does not write the sidecar at all; the publisher stamp is the only write', () => {
+  // Drive the REAL publishFigureSvg (not a stub) on an approved fixture carrying a STALE
+  // composedHash. Assert state === 'approved' SURVIVES and composedHash === renderHash after.
+  // ⚠️ This test FAILS TODAY on a shipped bug: withComposedHash overwrites its own stamp when
+  // the key is already present, so composedHash stays OLD after a successful publish and every
+  // later --stale re-selects the same figure. That is a [CODE] item, not a plan defect —
+  // record it, and do not paper over it by relaxing the assertion.
+});
 
 // D4: unmapped must be unreachable after money has been spent.
 it('refuses an unmintable figure BEFORE the MT is called', () => { expect(stubMt.calls).toBe(0); });
@@ -794,6 +904,8 @@ git commit -m "feat(M5 Task 6b): the paid half — the purchase is recorded befo
 **Do NOT run a paid figure translation as part of implementation.** The first live run is a separate, **[USER]-authorised** step, preceded by `--dry-run` on the target chapter. Task 6a's acceptance check is free and is the evidence that the chapter is ready.
 
 **Known limitations this plan deliberately does NOT close** — each is in the spec's Open items with its measured consequence:
+- 🔴 **`withComposedHash` OVERWRITES ITS OWN STAMP when the key is already present**, so a successful publish leaves the on-disk `composedHash` at its OLD value while the publisher returns the new one. The correction loop's final step never completes and every later `--stale` re-selects the same figure. **A bug in shipped code, found while reviewing this plan** → its own [CODE] item.
+- **The paid stage is all-or-nothing per figure** — a throw at block k discards the k−1 already bought. ~1 ISK, §C134's shape: retry, do not code around.
 - **A Greek letter is being treated as whitespace.** `/Differences [31, /uni03B1]` means `\x1f` IS alpha, and `'\x1f'.isspace()` is True. `pdftext.parse` never applies `/Encoding /Differences` at all, so alpha reaches the wire raw and composes as a missing glyph. **Pre-existing, arm-independent, and it degrades every Greek-bearing chemistry figure M5 translates.** → needs its own [CODE] item.
 - **Widening the review surface to non-figure media (R7)** — three legs, not a filter: the 12 ch04 images have no node in `02-structure` at all.
 - **`books/<slug>/media/` and `figure-text/` have no permission class**, and this plan adds a third automated writer to `media/`.
