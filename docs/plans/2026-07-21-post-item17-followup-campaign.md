@@ -2,7 +2,40 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of 2026-09-05 **(EVENING — supersedes the block below)**
+## ⏩ RESUME — state as of **2026-09-06** (supersedes every block below)
+
+✅ **M1 IS MET, except one deliberate exception. THE GLOSSARY WORK IS DONE AND APPLIED ON PROD.**
+
+| tier-0 gate | before | now |
+|---|---|---|
+| **G1** `SI`/`Si` collision | fail (chem) | **fail — DELIBERATE.** [USER] 2026-09-06: leave `SI` alone. It is a correct physics term, and §C116 already matches ≤3-char headwords case-sensitively so the two do not truly collide on the wire; G1 lowercases for its test. |
+| **G2** `-ium → -ín` spellings | fail (chem) | ✅ **0.0% both books** (§C132) |
+| **G3** `plus`/`minus` | fail (both) | ✅ **0.0% both books** (§C129) |
+| G5 | pass | pass |
+
+**Chemistry's glossary: 2,091 → 1,705** (`bf732deb` + `a9eee54a`, both pushed). **Organic unchanged at 249** — [USER] 2026-09-06 **agreed NOT to re-widen it**, on §C131's evidence.
+
+### ⏭ SINGLE NEXT ACTION — **M2: re-extract chemistry ch03, then `api-translate --force`.** Paid.
+
+Its 3 corrupted modules are `m68700` (62,982 B), `m68702` (25,056 B), `m68703` (32,812 B); `m68699`/`m68704` are clean. **Buy the whole chapter** — scoping with `--module` saves only ~15% of bytes and leaves the rest unaudited. Estimate 1,237–3,132 ISK, billed ≈0.75×; **quote a range.** ⚠️ **Re-extract FIRST** or the money is wasted.
+
+### 🔴 FOUR THINGS A NEW SESSION MUST NOT RE-DERIVE
+
+1. **A GLOSSARY CHANGE NEEDS NO DEPLOY.** The chain is **DB edit → `export-terminology.js --force --book <slug>` → the file on disk**, and `tools/api-translate.js` reads that file directly at run time. **Nothing under `server/` reads it**, so a service restart cannot affect it. *(Cost me a wasted deploy on 2026-09-06; the 2-hourly cron had also already committed and pushed the change, so `git pull` found nothing either.)*
+2. 🔴 **DELETING AN `en_term` ROW CAN PROMOTE A WORSE SIBLING.** A headword can hold rows on several concepts; the export shows only the winner. **42 of 378 survived pass 1**, and `orbit` went `braut` (wrong) → **`augntótt`** (an eye socket). ▶ **Loop until dry, and verify against the EXPORT, never the delete count.** §C129 needed 2 passes, §C132 needed 1.
+3. 🔴 **"LESS IS MORE" IS MEASURED (§C131), AND IT CHANGES THE SELECTION RULE.** Paid 3-arm A/B on one module with a same-arm repeat as the noise floor: **same glossary twice = 16% of segments differ.** No-glossary vs clean-glossary = 25%, i.e. **9 points over noise**. ▶ **The glossary's aggregate effect is barely above run-to-run variance — but a row that fires, fires ABSOLUTELY** (`structure → gerð` 16/16 twice, 0 after removal). **4 rows in 5 never fire at all.** ▶ **Select on "does this row fire, and is it right?", never on "is this term in our domain?".**
+4. ⚠️ **THE `-ium` CLASS REGRESSED ONCE** — §C77 removed 44 element spellings in August, 8 were back by 09-03. **Writers of `concept_term`:** `server/scripts/import-concepts.js`, migration 051, `verify-b4b1-gates.js`, the e2e seed. **The reintroducing path is still unidentified**, so §C132 can be undone the same way.
+
+### Still held, and why
+
+- **Organic** — §C123, exercise `alt` never extracted (2,375 strings / 288,603 chars). **Already live in English.** → M3.
+- **Chemistry** — its ch03 pages still carry the pre-fix corruptions until M2 re-buys them. The redirect rows for vefur are in [`docs/handoffs/2026-09-05-vefur-ch03-publish-redirects.md`](../handoffs/2026-09-05-vefur-ch03-publish-redirects.md); ⚠️ **re-derive them after the re-render**, since it can rename pages again.
+
+_(Everything below is prior state, kept as evidence. Where it disagrees, this block wins.)_
+
+---
+
+## ⏩ RESUME — state as of 2026-09-05 **(EVENING)**
 
 🔴 **BOTH BOOKS ARE HELD FROM PUBLISHING. THE GLOSSARY IS THE CRITICAL PATH FOR EVERYTHING.**
 
