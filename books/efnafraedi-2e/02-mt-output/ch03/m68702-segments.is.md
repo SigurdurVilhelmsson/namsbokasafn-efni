@@ -1,8 +1,8 @@
 <!-- SEG:m68702:title:auto-1 -->
-Ákvörðun reynsluformúlu og sameindaformúlu
+Ákvörðun reynsluformúla og sameindaformúla
 
 <!-- SEG:m68702:abstract:auto-2 -->
-Í lok þessa kafla muntu geta:
+Þegar þú hefur lokið við þennan kafla muntu geta:
 
 <!-- SEG:m68702:abstract-item:abstract-item-1 -->
 Reiknað út prósentusamsetningu efnasambands
@@ -14,7 +14,7 @@ Reiknað út prósentusamsetningu efnasambands
 Ákvarðað sameindaformúlu efnasambands
 
 <!-- SEG:m68702:para:fs-idp63066960 -->
-Í fyrri kafla var fjallað um sambandið milli heildarmassa efnis og fjölda atóma eða sameinda sem það inniheldur (mól). Ef efnaformúla efnisins er þekkt er hægt að ákvarða efnismagn þess (mól) út frá massa þess og öfugt. En hvað ef efnaformúla efnis er óþekkt? Í þessum kafla verður sömu lögmálum beitt til að leiða út efnaformúlur óþekktra efna út frá tilraunamælingum á massa.
+Í fyrri kafla var fjallað um sambandið milli heildarmassa efnis og fjölda atóma eða sameinda sem það inniheldur (mól). Ef efnaformúla efnisins er þekkt er hægt að ákvarða efnismagn þess (mól) út frá massa þess og öfugt. En hvað ef efnaformúla efnis er óþekkt? Í þessum kafla verður sömu meginreglum beitt til að leiða út efnaformúlur óþekktra efna út frá tilraunamælingum á massa.
 
 <!-- SEG:m68702:title:fs-idm175230352-title -->
 Prósentusamsetning
@@ -23,7 +23,7 @@ Prósentusamsetning
 Ákvörðun prósentusamsetningar út frá sameinda- eða reynsluformúlum
 
 <!-- SEG:m68702:para:fs-idm153839088 -->
-Prósentusamsetning er einnig gagnleg til að meta hlutfallslegt magn tiltekins frumefnis í mismunandi efnasamböndum með þekktum formúlum. Sem dæmi má nefna algenga köfnunarefnisáburði eins og ammóníak (NH[[sub:3]]), ammóníumnítrat (NH[[sub:4]]NO[[sub:3]]) og þvagefni (CH[[sub:4]]N[[sub:2]]O). Frumefnið köfnunarefni er virka efnið í landbúnaði, þannig að massaprósenta köfnunarefnis í efnasambandinu er hagnýtt og efnahagslegt atriði fyrir neytendur sem velja á milli þessara áburðartegunda. Fyrir slík not er auðvelt að leiða prósentusamsetningu efnasambands út frá formúlumassa þess og atómmössum frumefnanna sem það er gert úr. Ein sameind af NH[[sub:3]] inniheldur eitt N-atóm sem vegur 14,01 amu og þrjú H-atóm sem vega samtals (3 [[MATH:1]] 1,008 amu) = 3,024 amu. Formúlumassi ammóníaks er því (14,01 amu + 3,024 amu) = 17,03 amu og prósentusamsetning þess er:
+Prósentusamsetning er einnig gagnleg til að meta hlutfallslegt magn tiltekins frumefnis í mismunandi efnasamböndum með þekktum formúlum. Sem dæmi má nefna algenga köfnunarefnisáburði eins og ammóníak (NH[[sub:3]]), ammóníumnítrat (NH[[sub:4]]NO[[sub:3]]) og þvagefni (CH[[sub:4]]N[[sub:2]]O). Frumefnið köfnunarefni er virka efnið í landbúnaði, þannig að massaprósenta köfnunarefnis í efnasambandinu er hagnýtt og efnahagslegt atriði fyrir neytendur sem velja á milli þessara áburðartegunda. Fyrir slíka notkun er auðvelt að leiða prósentusamsetningu efnasambands út frá formúlumassa þess og atómmössum frumefnanna sem það er samsett úr. Ein sameind af NH[[sub:3]] inniheldur eitt N-atóm sem vegur 14,01 amu og þrjú H-atóm sem vega samtals (3 [[MATH:1]] 1,008 amu) = 3,024 amu. Formúlumassi ammóníaks er því (14,01 amu + 3,024 amu) = 17,03 amu og prósentusamsetning þess er:
 
 <!-- SEG:m68702:para:fs-idm159904272 -->
 Sömu aðferð má beita þegar litið er á par af sameindum, tylft sameinda eða mól af sameindum o.s.frv. Síðastnefnda magnið er hentugast og myndi einfaldlega fela í sér notkun mólmassa í stað atóm- og formúlumassa, eins og sýnt er í [[xref:fs-idm162294688]]. Svo lengi sem sameinda- eða reynsluformúla viðkomandi efnasambands er þekkt er hægt að leiða prósentusamsetninguna út frá atóm- eða mólmössum frumefna efnasambandsins.
@@ -32,7 +32,7 @@ Sömu aðferð má beita þegar litið er á par af sameindum, tylft sameinda e�
 Ákvörðun prósentusamsetningar út frá sameindaformúlu
 
 <!-- SEG:m68702:para:fs-idm28923440 -->
-Aspirín er efnasamband með sameindaformúluna C[[sub:9]]H[[sub:8]]O[[sub:4]]. Hver er prósentusamsetning þess?
+Asperín er efnasamband með sameindaformúluna C[[sub:9]]H[[sub:8]]O[[sub:4]]. Hver er prósentusamsetning þess?
 
 <!-- SEG:m68702:para-title:fs-idm77779888-title -->
 Lausn
@@ -41,7 +41,7 @@ Lausn
 Til að reikna út prósentusamsetninguna þarf að vita massa C, H og O í þekktum massa af C[[sub:9]]H[[sub:8]]O[[sub:4]]. Það er hentugt að skoða 1 mól af C[[sub:9]]H[[sub:8]]O[[sub:4]] og nota mólmassa þess (180,159 g/mól, ákvarðað út frá efnaformúlunni) til að reikna út prósentur hvers frumefnis:
 
 <!-- SEG:m68702:para:fs-idp47168 -->
-Takið eftir að þegar þessar prósentur eru lagðar saman er summan 100,00% þegar rétt er námundað.
+Takið eftir að þegar þessar prósentur eru lagðar saman er summan 100,00% þegar námundað er á viðeigandi hátt.
 
 <!-- SEG:m68702:para-title:fs-idm29762576-title -->
 Skoðaðu þekkingu þína
@@ -59,7 +59,7 @@ Svar:
 69,9% Fe
 
 <!-- SEG:m68702:para:fs-idm144417840 -->
-Frumefnasamsetning efnasambands skilgreinir efnaauðkenni þess og efnaformúlur eru hnitmiðaðasta leiðin til að tákna þessa frumefnasamsetningu. Þegar formúla efnasambands er óþekkt er mæling á massa hvers frumefnis þess oft fyrsta skrefið í því ferli að ákvarða formúluna með tilraunum. Niðurstöður þessara mælinga gera kleift að reikna út [[term:prósentusamsetningu|term-00001]] efnasambandsins, sem er skilgreind sem massaprósenta hvers frumefnis í efnasambandinu. Lítum til dæmis á loftkennt efnasamband sem samanstendur eingöngu af kolefni og vetni. Prósentusamsetningu þessa efnasambands mætti tákna á eftirfarandi hátt:
+Frumefnasamsetning efnasambands skilgreinir efnafræðilegt eðli þess og efnaformúlur eru hnitmiðaðasta leiðin til að tákna þessa frumefnasamsetningu. Þegar formúla efnasambands er óþekkt er mæling á massa hvers frumefnis sem það er samsett úr oft fyrsta skrefið í því ferli að ákvarða formúluna með tilraunum. Niðurstöður þessara mælinga gera kleift að reikna út [[term:prósentusamsetningu|term-00001]] efnasambandsins, sem er skilgreind sem massaprósenta hvers frumefnis í efnasambandinu. Lítum til dæmis á loftkennt efnasamband sem samanstendur eingöngu af kolefni og vetni. Prósentusamsetningu þessa efnasambands mætti tákna á eftirfarandi hátt:
 
 <!-- SEG:m68702:para:fs-idm144352192 -->
 Ef greining á 10,0 g sýni af þessu gasi sýndi að það innihéldi 2,5 g H og 7,5 g C, yrði prósentusamsetningin reiknuð 25% H og 75% C:
@@ -68,7 +68,7 @@ Ef greining á 10,0 g sýni af þessu gasi sýndi að það innihéldi 2,5 g H o
 Útreikningur á prósentusamsetningu
 
 <!-- SEG:m68702:para:fs-idm20386912 -->
-Greining á 12,04 g sýni af fljótandi efnasambandi sem samanstendur af kolefni, vetni og köfnunarefni sýndi að það innihélt 7,34 g C, 1,85 g H og 2,85 g N. Hver er prósentusamsetning þessa efnasambands?
+Greining á 12,04 g sýni af fljótandi efnasambandi sem samanstendur af kolefni, vetni og köfnunarefni sýndi að það innihéldi 7,34 g C, 1,85 g H og 2,85 g N. Hver er prósentusamsetning þessa efnasambands?
 
 <!-- SEG:m68702:para-title:fs-idm111369568-title -->
 Lausn
@@ -77,7 +77,7 @@ Lausn
 Til að reikna út prósentusamsetningu skal deila tilraunamældum massa hvers frumefnis með heildarmassa efnasambandsins og breyta síðan í prósentu:
 
 <!-- SEG:m68702:para:fs-idm125592496 -->
-Greiningarniðurstöðurnar benda til þess að efnasambandið sé 61,0% C, 15,4% H og 23,7% N miðað við massa.
+Niðurstöður greiningarinnar benda til þess að efnasambandið sé 61,0% C, 15,4% H og 23,7% N miðað við massa.
 
 <!-- SEG:m68702:para-title:fs-idp63575312-title -->
 Skoðaðu þekkingu þína
@@ -182,13 +182,13 @@ Margfalda alla stuðla með heiltölu, ef nauðsyn krefur, til að tryggja að m
 Reynsluformúlu efnasambands má leiða út frá massa allra frumefna í sýninu.
 
 <!-- SEG:m68702:alt:fs-idm114759824-alt -->
-Sýnt er flæðirit sem samanstendur af sex kössum, þar af eru tveir tengdir saman með ör sem vísar til hægri og eru staðsettir fyrir ofan tvo aðra sem einnig eru tengdir með ör sem vísar til hægri. Þessar tvær raðir af kössum eru tengdar lóðrétt með línu sem leiðir að ör sem vísar til hægri og síðustu tveimur kössunum, sem eru tengdir með síðustu örinni sem vísar til hægri. Í fyrstu tveimur efri kössunum eru setningarnar „Massi A atóma“ og „Mól A atóma“, en á örinni sem tengir þá er setningin „Deilt með mólmassa“ skrifuð fyrir neðan. Í seinni tveimur neðri kössunum eru setningarnar „Massi X atóma“ og „Mól X atóma“, en á örinni sem tengir þá er setningin „Deilt með mólmassa“ skrifuð fyrir neðan. Á örinni sem tengir efri og neðri kassana við síðustu tvo kassana er setningin „Deilt með lægsta fjölda móla“ skrifuð fyrir neðan. Í síðustu tveimur kössunum eru setningarnar „Mólhlutfall A á móti X“ og „Einfaldasta formúla“, en á örinni sem tengir þá er setningin „Hlutfalli breytt í lægstu heilu tölur“ skrifuð fyrir neðan.
+Sýnt er flæðirit sem samanstendur af sex kössum, þar sem tveir eru tengdir saman með ör sem vísar til hægri og eru staðsettir fyrir ofan tvo aðra sem einnig eru tengdir með ör sem vísar til hægri. Þessar tvær raðir af kössum eru tengdar lóðrétt með línu sem leiðir að ör sem vísar til hægri og síðustu tveimur kössunum, sem eru tengdir með síðustu örinni sem vísar til hægri. Í fyrstu tveimur efri kössunum eru setningarnar „Massi A atóma“ og „Mól A atóma“, en á örinni sem tengir þá er setningin „Deilt með mólmassa“ skrifuð fyrir neðan. Í seinni tveimur neðri kössunum eru setningarnar „Massi X atóma“ og „Mól X atóma“, en á örinni sem tengir þá er setningin „Deilt með mólmassa“ skrifuð fyrir neðan. Á örinni sem tengir efri og neðri kassana við síðustu tvo kassana er setningin „Deilt með lægsta mólfjölda“ skrifuð fyrir neðan. Í síðustu tveimur kössunum eru setningarnar „Mólhlutfall A á móti X“ og „Reynsluformúla“, en á örinni sem tengir þá er setningin „Hlutfalli breytt í lægstu heilu tölur“ skrifuð fyrir neðan.
 
 <!-- SEG:m68702:example-title:fs-idp70151968-title -->
-Ákvörðun á einföldustu formúlu efnasambands út frá massa frumefna þess
+Ákvörðun reynsluformúlu efnasambands út frá massa frumefna þess
 
 <!-- SEG:m68702:para:fs-idm148697040 -->
-Sýni af svarta steinefninu hematíti ([[xref:CNX_Chem_03_03_hematite]]), járnoxíði sem finnst í mörgum járngrýtum, inniheldur 34,97 g af járni og 15,03 g af súrefni. Hver er einfaldasta formúla hematíts?
+Sýni af svarta steinefninu hematíti ([[xref:CNX_Chem_03_03_hematite]]), járnoxíði sem finnst í mörgum járngrýtum, inniheldur 34,97 g af járni og 15,03 g af súrefni. Hver er reynsluformúla hematíts?
 
 <!-- SEG:m68702:para-title:fs-idp9584080-title -->
 Lausn
@@ -197,19 +197,19 @@ Lausn
 Í þessu dæmi er gefinn massi hvers frumefnis í grömmum. Byrjaðu á því að finna mólfjölda hvers þeirra:
 
 <!-- SEG:m68702:para:fs-idp19490304 -->
-Næst skal finna mólhlutfall járns á móti súrefni með því að deila með lægri mólfjöldanum:
+Næst skaltu finna mólhlutfall járns á móti súrefni með því að deila með lægri mólfjöldanum:
 
 <!-- SEG:m68702:para:fs-idm169565728 -->
-Hlutfallið er 1,000 mól af járni á móti 1,500 mólum af súrefni (Fe[[sub:1]]O[[sub:1,5]]). Að lokum skal margfalda hlutfallið með tveimur til að fá lægstu mögulegu heiltölustuðlana en viðhalda samt réttu hlutfalli járns og súrefnis:
+Hlutfallið er 1,000 mól af járni á móti 1,500 mólum af súrefni (Fe[[sub:1]]O[[sub:1,5]]). Að lokum skaltu margfalda hlutfallið með tveimur til að fá lægstu mögulegu heiltölustuðlana en viðhalda samt réttu hlutfalli járns og súrefnis:
 
 <!-- SEG:m68702:para:fs-idm196066368 -->
-Einfaldasta formúlan er Fe[[sub:2]]O[[sub:3]].
+Reynsluformúlan er Fe[[sub:2]]O[[sub:3]].
 
 <!-- SEG:m68702:para-title:fs-idm180356384-title -->
 Prófaðu þekkingu þína
 
 <!-- SEG:m68702:para:fs-idm180356384 -->
-Hver er einfaldasta formúla efnasambands ef sýni inniheldur 0,130 g af köfnunarefni og 0,370 g af súrefni?
+Hver er reynsluformúla efnasambands ef sýni inniheldur 0,130 g af köfnunarefni og 0,370 g af súrefni?
 
 <!-- SEG:m68702:para:fs-idm112291760 -->
 N[[sub:2]]O[[sub:5]]
@@ -227,43 +227,43 @@ Hematít er járnoxíð sem er notað í skartgripi. (heimild: Mauro Cateb)
 Sýndir eru tveir ávalir, sléttir svartir steinar.
 
 <!-- SEG:m68702:para:fs-idp89502368 -->
-Fyrir fleiri útreiknuð dæmi sem sýna hvernig einfaldasta formúla er fundin, horfðu á stutta [[link:video|http://openstax.org/l/16empforms]] myndbandið.
+Fyrir fleiri útreiknuð dæmi sem sýna hvernig reynsluformúlur eru fundnar, horfðu á stutta [[link:video|http://openstax.org/l/16empforms]] myndbandið.
 
 <!-- SEG:m68702:title:fs-idp23895104-title -->
-Afleiðsla sameindaformúla
+Útleiðsla efnaformúla
 
 <!-- SEG:m68702:para:fs-idp60635424 -->
-Munið að einfaldasta formúla er tákn sem sýnir [[i:hlutfallslegan]] fjölda frumefna í efnasambandi. Til að ákvarða [[i:raunverulegan]] fjölda atóma sem mynda eina sameind samgilds efnasambands þarf að þekkja bæði einföldustu formúlu þess og sameindamassa eða mólmassa. Þessar stærðir má ákvarða með tilraunum með ýmsum mælitækni. Sameindamassi er til dæmis oft fenginn út frá massarófi efnasambandsins (sjá umfjöllun um þessa tækni í fyrri kafla um atóm og sameindir). Mólmassa má mæla með ýmsum tilraunaaðferðum, og margar þeirra verða kynntar í síðari köflum þessa texta.
+Munið að reynsluformúlur eru tákn sem sýna [[i:hlutfallslegan]] fjölda frumefna í efnasambandi. Til að ákvarða [[i:raunverulegan]] fjölda atóma sem mynda eina sameind samgilds efnasambands þarf að þekkja bæði reynsluformúlu þess og sameindamassa eða mólmassa. Hægt er að ákvarða þessar stærðir með tilraunum með ýmsum mælitækni. Sameindamassi er til dæmis oft fenginn út frá massarófi efnasambandsins (sjá umfjöllun um þessa tækni í fyrri kafla um atóm og sameindir). Mólmassa má mæla með ýmsum tilraunaaðferðum, en margar þeirra verða kynntar í síðari köflum þessa texta.
 
 <!-- SEG:m68702:para:fs-idm152826480 -->
-Sameindaformúlur eru fengnar með því að bera saman sameinda- eða mólmassa efnasambandsins við [[term:massa einföldustu formúlu|term-00002]] þess. Eins og nafnið gefur til kynna er massi einföldustu formúlu summa meðalatómassa allra atóma sem táknuð eru í einföldustu formúlunni. Ef sameinda- (eða mól-) massi efnisins er þekktur má deila honum með massa einföldustu formúlu til að fá fjölda eininga einföldustu formúlu á hverja sameind ([[i:n]]):
+Efnaformúlur eru fengnar með því að bera saman sameinda- eða mólmassa efnasambandsins við [[term:reynsluformúlumassa|term-00002]] þess. Eins og nafnið gefur til kynna er reynsluformúlumassi summa meðalatómamassa allra atóma sem sýnd eru í reynsluformúlu. Ef sameinda- (eða mól-) massi efnisins er þekktur má deila honum með reynsluformúlumassanum til að fá fjölda reynsluformúlueininga á hverja sameind ([[i:n]]):
 
 <!-- SEG:m68702:para:fs-idp7653408 -->
-Sameindaformúlan er síðan fengin með því að margfalda hvern neðanáskriftarstuðul í einföldustu formúlunni með [[i:n]], eins og sýnt er með almennu einföldustu formúlunni A[[sub:x]]B[[sub:y]]:
+Efnaformúlan er síðan fengin með því að margfalda hvern neðanáskrifaðan stuðul í reynsluformúlunni með [[i:n]], eins og sýnt er með almennu reynsluformúlunni A[[sub:x]]B[[sub:y]]:
 
 <!-- SEG:m68702:para:fs-idm149844688 -->
-Tökum sem dæmi samgilt efnasamband þar sem einfaldasta formúlan er ákvörðuð sem CH[[sub:2]]O. Massi einföldustu formúlu fyrir þetta efnasamband er um það bil 30 ame (summa 12 ame fyrir eitt C-atóm, 2 ame fyrir tvö H-atóm og 16 ame fyrir eitt O-atóm). Ef sameindamassi efnasambandsins er ákvarðaður sem 180 ame, bendir það til þess að sameindir þessa efnasambands innihaldi sex sinnum fleiri atóm en táknuð eru í einföldustu formúlunni:
+Tökum sem dæmi samgilt efnasamband þar sem reynsluformúlan er ákvörðuð sem CH[[sub:2]]O. Reynsluformúlumassi þessa efnasambands er um það bil 30 ame (summa 12 ame fyrir eitt C-atóm, 2 ame fyrir tvö H-atóm og 16 ame fyrir eitt O-atóm). Ef sameindamassi efnasambandsins er ákvarðaður sem 180 ame, bendir það til þess að sameindir þessa efnasambands innihaldi sex sinnum fleiri atóm en sýnt er í reynsluformúlunni:
 
 <!-- SEG:m68702:para:fs-idm156812016 -->
-Sameindir þessa efnasambands eru þá táknaðar með sameindaformúlum þar sem neðanáskriftarstuðlarnir eru sex sinnum stærri en í einföldustu formúlunni:
+Sameindir þessa efnasambands eru þá táknaðar með efnaformúlum þar sem neðanáskrifaðir stuðlar eru sex sinnum stærri en í reynsluformúlunni:
 
 <!-- SEG:m68702:para:fs-idm146366240 -->
-Athugið að nota má sömu aðferð þegar mólmassi (g/mól) er notaður í stað sameindamassa (ame). Í því tilfelli er litið á [[i:eitt mól]] af einingum einföldustu formúlu og sameindum, í stað stakra eininga og sameinda.
+Athugið að nota má sömu aðferð þegar mólmassi (g/mól) er notaður í stað sameindamassa (ame). Í því tilfelli er litið á [[i:eitt mól]] af reynsluformúlueiningum og sameindum, öfugt við stakar einingar og sameindir.
 
 <!-- SEG:m68702:example-title:fs-idm153155296-title -->
-Ákvörðun sameindaformúlu nikótíns
+Ákvörðun efnaformúlu nikótíns
 
 <!-- SEG:m68702:para:fs-idm56345360 -->
-Nikótín, alkalóíð í náttskuggaætt plantna sem er aðallega ábyrgt fyrir ávanabindandi eðli sígarettna, inniheldur 74,02% C, 8,710% H og 17,27% N. Ef 40,57 g af nikótíni innihalda 0,2500 mól af nikótíni, hver er þá sameindaformúlan?
+Nikótín, alkalóíði í náttskuggaætt plantna sem er aðallega ábyrgt fyrir ávanabindandi eðli sígarettna, inniheldur 74,02% C, 8,710% H og 17,27% N. Ef 40,57 g af nikótíni innihalda 0,2500 mól af nikótíni, hver er efnaformúlan?
 
 <!-- SEG:m68702:para-title:fs-idm146789392-title -->
 Lausn
 
 <!-- SEG:m68702:para:fs-idm146789392 -->
-Til að ákvarða sameindaformúlu út frá uppgefnum gögnum þarf að bera saman massa reynsluformúlu efnasambandsins við mólmassa þess. Fyrsta skrefið er að nota prósentusamsetninguna til að leiða út reynsluformúlu efnasambandsins. Ef við gerum ráð fyrir hentugu 100 g sýni af nikótíni gefur það eftirfarandi mólmagn frumefna þess:
+Til að ákvarða sameindaformúlu út frá uppgefnum gögnum þarf að bera saman massa reynsluformúlu efnasambandsins við mólmassa þess. Í fyrsta skrefi skal nota prósentusamsetninguna til að leiða út reynsluformúlu efnasambandsins. Ef við gerum ráð fyrir hentugu 100 g sýni af nikótíni gefur það eftirfarandi mólmagn frumefna þess:
 
 <!-- SEG:m68702:para:fs-idm3598576 -->
-Næst skaltu reikna mólhlutföll þessara frumefna miðað við það frumefni sem minnst er af, N.
+Næst skal reikna mólhlutföll þessara frumefna miðað við það frumefni sem minnst er af, N.
 
 <!-- SEG:m68702:para:fs-idm152642880 -->
 Mólhlutföll C-við-N og H-við-N eru nægilega nálægt heilum tölum og því er reynsluformúlan C[[sub:5]]H[[sub:7]]N. Massi reynsluformúlunnar fyrir þetta efnasamband er því 81,13 amu/formúlueining, eða 81,13 g/mól formúlueining.
@@ -281,7 +281,7 @@ Að lokum skal leiða út sameindaformúlu nikótíns út frá reynsluformúlunn
 Prófaðu þekkingu þína
 
 <!-- SEG:m68702:para:fs-idp8627344 -->
-Hver er sameindaformúla efnasambands með prósentusamsetninguna 49,47% C, 5,201% H, 28,84% N og 16,48% O og sameindamassa 194,2 amu?
+Hver er sameindaformúla efnasambands með prósentusamsetninguna 49,47% C, 5,201% H, 28,84% N og 16,48% O og sameindamassa upp á 194,2 amu?
 
 <!-- SEG:m68702:para:fs-idm152847216 -->
 C[[sub:8]]H[[sub:10]]N[[sub:4]]O[[sub:2]]
@@ -296,7 +296,7 @@ C[[sub:8]]H[[sub:10]]N[[sub:4]]O[[sub:2]]
 Lykilhugtök og samantekt
 
 <!-- SEG:m68702:para:fs-idm171937152 -->
-Efniseinkenni efnis er skilgreint af tegundum og hlutfallslegum fjölda atóma sem mynda grunneiningar þess (sameindir í tilfelli samgildra efnasambanda, jónir í tilfelli jónaefnasambanda). Prósentusamsetning efnasambands gefur upp massaprósentu hvers frumefnis í efnasambandinu og er hún oft ákvörðuð með tilraunum og notuð til að leiða út reynsluformúlu efnasambandsins. Hægt er að bera saman massa reynsluformúlu samgilds efnasambands við sameinda- eða mólmassa efnasambandsins til að leiða út sameindaformúlu.
+Efnaauðkenni efnis er skilgreint af gerðum og hlutfallslegum fjölda atóma sem mynda grunneiningar þess (sameindir í tilfelli samgildra efnasambanda, jónir í tilfelli jónaefnasambanda). Prósentusamsetning efnasambands gefur upp massaprósentu hvers frumefnis í efnasambandinu og er hún oft ákvörðuð með tilraunum og notuð til að leiða út reynsluformúlu efnasambandsins. Hægt er að bera saman massa reynsluformúlu samgilds efnasambands við sameinda- eða mólmassa efnasambandsins til að leiða út sameindaformúlu.
 
 <!-- SEG:m68702:problem:fs-idm219427632 -->
 Hvaða upplýsingar þarf til að ákvarða sameindaformúlu efnasambands út frá reynsluformúlunni?
@@ -335,7 +335,7 @@ Reiknaðu eftirfarandi með fjórum markverðum stöfum:
 % NH[[sub:3]] = 38,2%
 
 <!-- SEG:m68702:problem:fs-idm107182224 -->
-Ákvarðaðu prósentu vatns í CuSO[[sub:4]]∙5H[[sub:2]]O með þremur markverðum stöfum.
+Ákvarðaðu prósentu vatns í CuSO[[sub:4]]⋅5H[[sub:2]]O með þremur markverðum stöfum.
 
 <!-- SEG:m68702:problem:fs-idm157957232 -->
 Ákvarðaðu reynsluformúlur fyrir efnasambönd með eftirfarandi prósentusamsetningu:
@@ -368,13 +368,13 @@ C[[sub:6]]H[[sub:6]]
 Díklóretan, efnasamband sem er oft notað í fatahreinsun, inniheldur kolefni, vetni og klór. Það hefur mólmassa upp á 99 g/mól. Greining á sýni sýnir að það inniheldur 24,3% kolefni og 4,1% vetni. Hver er sameindaformúla þess?
 
 <!-- SEG:m68702:problem:fs-idp1815712 -->
-Ákvarðið reynsluformúlu og sameindaformúlu fyrir krýsótíl asbest. Krýsótíl hefur eftirfarandi prósentusamsetningu: 28,03% Mg, 21,60% Si, 1,16% H og 49,21% O. Mólmassi krýsótíls er 520,8 g/mól.
+Ákvarðaðu reynsluformúlu og sameindaformúlu fyrir krýsótíl-asbest. Krýsótíl hefur eftirfarandi prósentusamsetningu: 28,03% Mg, 21,60% Si, 1,16% H og 49,21% O. Mólmassi krýsótíls er 520,8 g/mól.
 
 <!-- SEG:m68702:solution:fs-idp63157456 -->
 Mg[[sub:3]]Si[[sub:2]]H[[sub:3]]O[[sub:8]] (reynsluformúla), Mg[[sub:6]]Si[[sub:4]]H[[sub:6]]O[[sub:16]] (sameindaformúla)
 
 <!-- SEG:m68702:problem:fs-idm174073760 -->
-Fjölliður eru stórar sameindir sem samanstanda af einföldum einingum sem endurteknar eru mörgum sinnum. Þess vegna hafa þær oft tiltölulega einfaldar reynsluformúlur. Reiknið reynsluformúlur eftirfarandi fjölliða:
+Fjölliður eru stórar sameindir sem samanstanda af einföldum einingum sem endurteknar eru mörgum sinnum. Þess vegna hafa þær oft tiltölulega einfaldar reynsluformúlur. Reiknaðu reynsluformúlur eftirfarandi fjölliða:
 
 <!-- SEG:m68702:problem:fs-idm12982896 -->
 (a) Lúsít (Plexiglas); 59,9% C, 8,06% H, 32,0% O
@@ -392,7 +392,7 @@ Fjölliður eru stórar sameindir sem samanstanda af einföldum einingum sem end
 (e) Orlon; 67,9% C, 5,70% H, 26,4% N
 
 <!-- SEG:m68702:problem:fs-idp14848 -->
-Stór framleiðandi textíllitunar þróaði nýjan gulan lit. Liturinn hefur prósentusamsetninguna 75,95% C, 17,72% N og 6,33% H miðað við massa og mólmassa um 240 g/mól. Ákvarðið sameindaformúlu litarins.
+Stór framleiðandi á textíllitunarefnum þróaði nýtt gult litunarefni. Litunarefnið hefur prósentusamsetninguna 75,95% C, 17,72% N og 6,33% H miðað við massa og mólmassa um 240 g/mól. Ákvarðaðu sameindaformúlu litunarefnisins.
 
 <!-- SEG:m68702:solution:fs-idm160039136 -->
 C[[sub:15]]H[[sub:15]]N[[sub:3]]
@@ -413,10 +413,10 @@ Lykiljafna
 massi reynsluformúlu
 
 <!-- SEG:m68702:glossary-def:fs-idp78258880-def -->
-summa meðalatómassa allra atóma sem koma fram í reynsluformúlu
+summa meðalatómassa allra atóma sem koma fyrir í reynsluformúlu
 
 <!-- SEG:m68702:glossary-term:fs-idp78260032-term -->
 prósentusamsetning
 
 <!-- SEG:m68702:glossary-def:fs-idp78260032-def -->
-prósentuhlutfall massa hinna ýmsu frumefna í efnasambandi
+prósentuhlutfall af massa hinna ýmsu frumefna í efnasambandi

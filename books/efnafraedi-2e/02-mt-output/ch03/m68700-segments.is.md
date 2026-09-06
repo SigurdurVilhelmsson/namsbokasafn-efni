@@ -23,10 +23,10 @@ Formúlumassi
 Formúlumassi fyrir samgild efni
 
 <!-- SEG:m68700:para:fs-idp128238864 -->
-Fyrir samgild efni táknar formúlan fjölda og gerðir atóma sem mynda eina sameind efnisins; því má réttilega vísa til formúlumassans sem sameindamassa. Lítum á klóróform (CHCl[[sub:3]]), samgilt efnasamband sem eitt sinn var notað sem svæfingarlyf við skurðaðgerðir og er nú aðallega notað við framleiðslu á tetraflúoretýleni, byggingareiningunni fyrir „viðloðunarfríu“ fjölliðuna Teflon. Sameindaformúla klóróforms gefur til kynna að ein sameind innihaldi eitt kolefnisatóm, eitt vetnisatóm og þrjú klóratóm. Meðalsameindamassi klóróformsameindar er því jafn summu meðalatómmassa þessara atóma. [[xref:CNX_Chem_03_01_chloroform]] sýnir útreikningana sem notaðir eru til að leiða út sameindamassa klóróforms, sem er 119,37 amu.
+Fyrir samgild efni táknar formúlan fjölda og gerðir atóma sem mynda eina sameind efnisins; því má réttilega vísa til formúlumassans sem sameindamassa. Lítum á klóróform (CHCl[[sub:3]]), samgilt efnasamband sem eitt sinn var notað sem svæfingarlyf við skurðaðgerðir og er nú aðallega notað við framleiðslu á tetraflúoretýleni, byggingareiningunni fyrir „viðloðunarfríu“ fjölliðuna, Teflon. Sameindaformúla klóróforms gefur til kynna að ein sameind innihaldi eitt kolefnisatóm, eitt vetnisatóm og þrjú klóratóm. Meðalsameindamassi klóróformsameindar er því jafn summu meðalatómmassa þessara atóma. [[xref:CNX_Chem_03_01_chloroform]] sýnir útreikningana sem notaðir eru til að leiða út sameindamassa klóróforms, sem er 119,37 amu.
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_chloroform-caption -->
-Meðalmassi klóróformsameindar, CHCl[[sub:3]], er 119,37 amu, sem er summa meðalatómmassa hvers atóms sem hún er samsett úr. Líkanið sýnir sameindabyggingu klóróforms.
+Meðalmassi klóróformsameindar, CHCl[[sub:3]], er 119,37 amu, sem er summa meðalatómmassa hvers frumeinda hennar. Líkanið sýnir sameindabyggingu klóróforms.
 
 <!-- SEG:m68700:alt:fs-idp71460256-alt -->
 Tafla og skýringarmynd eru sýndar. Taflan samanstendur af sex dálkum og fimm röðum. Fyrirsagnarröðin er: „Frumefni“, „Magn“, autt bil, „Meðalatómmassi (a m u)“, autt bil og „Millitala (a m u)“. Fyrsti dálkurinn inniheldur táknin „C“, „H“, „C l“ og auttan, sameinaðan reit sem nær yfir breidd fyrstu fimm dálkanna. Annar dálkurinn inniheldur tölurnar „1“, „1“ og „3“ auk sameinaða reitsins. Þriðji dálkurinn inniheldur margföldunartáknið í hverjum reit nema þeim síðasta, sameinaða reitnum. Fjórði dálkurinn inniheldur tölurnar „12,01“, „1,008“ og „35,45“ auk sameinaða reitsins. Fimmti dálkurinn inniheldur táknið „=“ í hverjum reit nema þeim síðasta, sameinaða reitnum. Sjötti dálkurinn inniheldur gildin „12,01“, „1,008“, „106,35“ og „119,37“. Það er þykk svört lína fyrir neðan töluna 106,35. Sameinaði reiturinn undir fyrstu fimm dálkunum er merktur „Sameindamassi“. Vinstra megin við töfluna er skýringarmynd af sameind. Þrjár grænar kúlur eru festar við aðeins minni svarta kúlu, sem er einnig fest við minni hvíta kúlu. Grænu kúlurnar liggja fyrir neðan og til hliðar við svörtu kúluna á meðan hvíta kúlan er staðsett beint upp frá svörtu kúlunni.
@@ -110,7 +110,7 @@ Kalsíumfosfat, Ca[[sub:3]](PO[[sub:4]])[[sub:2]], er jónaefni og algengt kekkj
 310,18 amu
 
 <!-- SEG:m68700:alt:fs-idm34238496-alt -->
-Sýnd er tafla sem samanstendur af sex dálkum og fimm röðum. Í hausnum stendur: „Frumefni“, „Magn“, autt bil, „Meðalatómþyngd (a m u)“, autt bil og „Millitala (a m u)“. Fyrsti dálkurinn inniheldur táknin „A l“, „S“, „O“ og sameinaðan reit. Sameinaði reiturinn nær yfir lengd fyrstu fimm dálkanna. Annar dálkurinn inniheldur tölurnar „2“, „3“ og „12“ auk sameinaða reitsins. Þriðji dálkurinn inniheldur margföldunartáknið í hverjum reit nema þeim síðasta, sameinaða reitnum. Fjórði dálkurinn inniheldur tölurnar „26,98“, „32,06“ og „16,00“ auk sameinaða reitsins. Fimmti dálkurinn inniheldur táknið „=“ í hverjum reit nema þeim síðasta, sameinaða reitnum. Sjötti dálkurinn inniheldur gildin „53,96“, „96,18“, „192,00“ og „342,14“. Það er þykk svört lína undir tölunni 192,00. Í sameinaða reitnum undir fyrstu fimm dálkunum stendur „Formúlumassi“. Hægra megin við þessa töflu er kúlu-og-pinnabygging. Hún sýnir gular og gráar kúlur tengdar rauðum kúlum í flóknu mynstri. Gulu og gráu kúlurnar eru svipaðar að stærð en rauðu kúlurnar virðast minni í samanburði.
+Sýnd er tafla sem samanstendur af sex dálkum og fimm röðum. Í hausnum stendur: „Frumefni“, „Magn“, autt bil, „Meðalatómamassi (a m u)“, autt bil og „Millitala (a m u)“. Fyrsti dálkurinn inniheldur táknin „A l“, „S“, „O“ og sameinaðan reit. Sameinaði reiturinn nær yfir lengd fyrstu fimm dálkanna. Annar dálkurinn inniheldur tölurnar „2“, „3“ og „12“ auk sameinaða reitsins. Þriðji dálkurinn inniheldur margföldunartáknið í hverjum reit nema þeim síðasta, sameinaða reitnum. Fjórði dálkurinn inniheldur tölurnar „26,98“, „32,06“ og „16,00“ auk sameinaða reitsins. Fimmti dálkurinn inniheldur táknið „=“ í hverjum reit nema þeim síðasta, sameinaða reitnum. Sjötti dálkurinn inniheldur gildin „53,96“, „96,18“, „192,00“ og „342,14“. Það er þykk svört lína undir tölunni 192,00. Í sameinaða reitnum undir fyrstu fimm dálkunum stendur „Formúlumassi“. Hægra megin við þessa töflu er kúlu-og-pinnabygging. Hún sýnir gular og gráar kúlur tengdar rauðum kúlum í flóknu mynstri. Gulu og gráu kúlurnar eru svipaðar að stærð en rauðu kúlurnar virðast minni í samanburði.
 
 <!-- SEG:m68700:note-title:fs-idm5833232-title -->
 Svar:
@@ -119,19 +119,19 @@ Svar:
 310,18 amu
 
 <!-- SEG:m68700:para:fs-idp76705136 -->
-Í fyrri kafla þessa texta var lýst þróun atómmassaeiningarinnar, hugtakinu um meðalatómþyngd og notkun efnaformúla til að tákna frumefnasamsetningu efna. Hægt er að víkka þessar hugmyndir út til að reikna út [[term:formúlumassa|term-00001]] efnis með því að leggja saman meðalatómþyngd allra atóma sem táknuð eru í formúlu efnisins.
+Í fyrri kafla þessa texta var lýst þróun atómmassaeiningarinnar, hugtakinu um meðalatómamassa og notkun efnaformúla til að tákna frumefnasamsetningu efna. Hægt er að víkka þessar hugmyndir út til að reikna út [[term:formúlumassa|term-00001]] efnis með því að leggja saman meðalatómamassa allra atóma sem táknuð eru í formúlu efnisins.
 
 <!-- SEG:m68700:title:fs-idp3385536-title -->
 Mólið
 
 <!-- SEG:m68700:para:fs-idm38739232 -->
-Einkenni efnis ræðst ekki aðeins af tegundum atóma eða jóna sem það inniheldur, heldur einnig af magni hverrar tegundar atóms eða jónar. Til dæmis eru vatn, H[[sub:2]]O, og vetnisperoxíð, H[[sub:2]]O[[sub:2]], lík að því leyti að sameindir þeirra eru samsettar úr vetnis- og súrefnisatómum. Hins vegar, vegna þess að vetnisperoxíðsameind inniheldur tvö súrefnisatóm, öfugt við vatnssameindina sem hefur aðeins eitt, sýna efnin tvö mjög ólíka eiginleika. Í dag gera háþróuð tæki kleift að mæla beint þessa skilgreinandi smásæju eiginleika; hins vegar voru sömu eiginleikar upphaflega leiddir af mælingum á stórsæjum eiginleikum (mössum og rúmmáli efna í lausu formi) með tiltölulega einföldum verkfærum (vogum og mæliglösum). Þessi tilraunaaðferð krafðist þess að ný eining fyrir efnismagn yrði tekin upp, [[i:mólið]], sem er enn ómissandi í nútíma efnafræði.
+Einkenni efnis ræðst ekki aðeins af tegundum atóma eða jóna sem það inniheldur, heldur einnig af magni hverrar tegundar atóms eða jónar. Til dæmis eru vatn, H[[sub:2]]O, og vetnisperoxíð, H[[sub:2]]O[[sub:2]], lík að því leyti að sameindir þeirra eru samsettar úr vetnis- og súrefnisatómum. Hins vegar, vegna þess að vetnisperoxíðsameind inniheldur tvö súrefnisatóm, öfugt við vatnssameindina sem hefur aðeins eitt, sýna efnin tvö mjög ólíka eiginleika. Í dag gera háþróuð tæki kleift að mæla beint þessa skilgreinandi smásæju eiginleika; hins vegar voru sömu eiginleikar upphaflega leiddir út frá mælingum á stórsæjum eiginleikum (mössum og rúmmáli efna í lausu formi) með tiltölulega einföldum verkfærum (vogum og mæliglerjum). Þessi tilraunaaðferð krafðist þess að ný eining fyrir efnismagn yrði tekin upp, [[i:mólið]], sem er enn ómissandi í nútíma efnafræði.
 
 <!-- SEG:m68700:para:fs-idp4269776 -->
-[[i:Mólið]] er magneining svipuð kunnuglegum einingum eins og par, tylft, gros o.s.frv. Það gefur ákveðinn mælikvarða á [[i:fjölda]] atóma eða sameinda í efnsýni. Ein latnesk merking orðsins „mole“ er „stór massi“ eða „magn“, sem er í samræmi við notkun þess sem heiti á þessari einingu. Mólið myndar tengingu milli auðmælds stórsæs eiginleika, heildarmassa, og afar mikilvægs grundvallareiginleika, fjölda atóma, sameinda og svo framvegis. Eitt [[term:mól|term-00002]] af efni er það magn sem inniheldur 6,02214076 [[MATH:1]] 10[[sup:23]] aðskildar einingar (atóm eða sameindir). Þessi stóra tala er grundvallarfasti þekktur sem [[term:tala Avogadros ([[i:N[[sub:A]]]])|term-00003]] eða Avogadros-fastinn til heiðurs ítalska vísindamanninum Amedeo Avogadro. Þessi fasti er réttilega gefinn upp með skýrri einingu „á mól“, en þægilega námunduð útgáfa er 6,022 [[MATH:2]] 10[[sup:23]]/mól.
+[[i:Mólið]] er magneining svipuð kunnuglegum einingum eins og par, tylft, gross o.s.frv. Það gefur ákveðna mælingu á [[i:fjölda]] atóma eða sameinda í efnissýni. Ein latnesk merking orðsins „mole“ er „stór massi“ eða „magn“, sem er í samræmi við notkun þess sem heiti á þessari einingu. Mólið myndar tengingu milli auðmælds stórsæs eiginleika, heildarmassa, og afar mikilvægs grundvallareiginleika, fjölda atóma, sameinda og svo framvegis. Eitt [[term:mól|term-00002]] af efni er það magn sem inniheldur 6,02214076 [[MATH:1]] 10[[sup:23]] aðskildar einingar (atóm eða sameindir). Þessi stóra tala er grundvallarfasti þekktur sem [[term:tala Avogadros ([[i:N[[sub:A]]]])|term-00003]] eða Avogadros-fastinn til heiðurs ítalska vísindamanninum Amedeo Avogadro. Þessi fasti er réttilega gefinn upp með skýrri einingu „á mól“, en þægilega námunduð útgáfa er 6,022 [[MATH:2]] 10[[sup:23]]/mól.
 
 <!-- SEG:m68700:para:fs-idm42768912 -->
-Í samræmi við skilgreiningu sína sem magneining inniheldur 1 mól af hvaða frumefni sem er sama fjölda atóma og 1 mól af hvaða öðru frumefni sem er. Massi 1 móls af mismunandi frumefnum er hins vegar ólíkur, þar sem massi einstakra atóma er verulega mismunandi. [[term:Mólmassi|term-00004]] frumefnis (eða efnasambands) er massi í grömmum af 1 móli af því efni, eiginleiki sem er gefinn upp í einingum gramma á mól (g/mól) (sjá [[xref:CNX_Chem_03_02_moles]]).
+Í samræmi við skilgreiningu sína sem magneining inniheldur 1 mól af hvaða frumefni sem er sama fjölda atóma og 1 mól af hvaða öðru frumefni sem er. Massi 1 móls af mismunandi frumefnum er hins vegar mismunandi, þar sem massi einstakra atóma er verulega ólíkur. [[term:Mólmassi|term-00004]] frumefnis (eða efnasambands) er massi í grömmum af 1 móli af því efni, eiginleiki sem er gefinn upp í einingum grömm á mól (g/mól) (sjá [[xref:CNX_Chem_03_02_moles]]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_moles-caption -->
 Hvert sýni inniheldur 6,022 [[MATH:3]] 10[[sup:23]] atóm — 1,00 mól af atómum. Frá vinstri til hægri (efri röð): 65,4 g sink, 12,0 g kolefni, 24,3 g magnesíum og 63,5 g kopar. Frá vinstri til hægri (neðri röð): 32,1 g brennisteinn, 28,1 g kísill, 207 g blý og 118,7 g tin. (heimild: breyting á verki eftir Mark Ott)
@@ -140,7 +140,7 @@ Hvert sýni inniheldur 6,022 [[MATH:3]] 10[[sup:23]] atóm — 1,00 mól af ató
 Þessi mynd sýnir átta mismunandi efni á hvítum hringjum. Magn hvers efnis er sýnilega mismunandi.
 
 <!-- SEG:m68700:para:fs-idm26436032 -->
-Mólmassi hvers efnis sem er er tölulega jafngildur atóm- eða formúlumassa þess í amu. Samkvæmt skilgreiningu á amu vegur eitt [[sup:12]]C atóm 12 amu (atóm massi þess er 12 amu). Eitt mól af [[sup:12]]C vegur 12 g (mólmassi þess er 12 g/mól). Þetta samband gildir fyrir öll frumefni, þar sem atómmassar þeirra eru mældir miðað við amu-viðmiðunarefnið, [[sup:12]]C. Með því að útvíkka þessa meginreglu er mólmassi efnasambands í grömmum sömuleiðis tölulega jafngildur formúlumassa þess í amu ([[xref:CNX_Chem_03_02_compound]]).
+Mólmassi hvers efnis sem er er tölulega jafngildur atóm- eða formúlumassa þess í amu. Samkvæmt skilgreiningu amu vegur eitt [[sup:12]]C atóm 12 amu (atóm massi þess er 12 amu). Eitt mól af [[sup:12]]C vegur 12 g (mólmassi þess er 12 g/mól). Þetta samband gildir fyrir öll frumefni, þar sem atómmassar þeirra eru mældir miðað við amu-viðmiðunarefnið, [[sup:12]]C. Með því að útvíkka þessa meginreglu er mólmassi efnasambands í grömmum sömuleiðis tölulega jafngildur formúlumassa þess í amu ([[xref:CNX_Chem_03_02_compound]]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_compound-caption -->
 Hvert sýni inniheldur 6,02 [[MATH:4]] 10[[sup:23]] sameindir eða formúlueiningar—1,00 mól af efnasambandinu eða frumefninu. Réttsælis frá efra vinstra horni: 130,2 g af C[[sub:8]]H[[sub:17]]OH (1-oktanól, formúlumassi 130,2 amu), 454,4 g af HgI[[sub:2]] (kvikasilfurs(II)joðíð, formúlumassi 454,4 amu), 32,0 g af CH[[sub:3]]OH (metanól, formúlumassi 32,0 amu) og 256,5 g af S[[sub:8]] (brennisteinn, formúlumassi 256,5 amu). (Heimild: Sahar Atwa)
@@ -221,7 +221,7 @@ Cl
 6,022 [[MATH:9]] 10[[sup:23]]
 
 <!-- SEG:m68700:para:fs-idp18068224 -->
-Þótt atómmassi og mólmassi séu tölulega jafngildir, hafðu í huga að þeir eru mjög ólíkir hvað varðar stærðargráðu, eins og sést á gríðarlegum mun á stærð viðkomandi eininga (amu á móti g). Til að skilja hversu gríðarlega stórt mólið er, íhugaðu lítinn vatnsdropa sem vegur um 0,03 g (sjá [[xref:CNX_Chem_03_02_water]]). Þótt þetta sé aðeins örlítið brot af 1 móli af vatni (~18 g), inniheldur það fleiri vatnssameindir en hægt er að ímynda sér. Ef sameindunum væri dreift jafnt á meðal um það bil sjö milljarða manna á jörðinni, myndi hver einstaklingur fá meira en 100 milljarða sameinda.
+Þótt atómmassi og mólmassi séu tölulega jafngildir, hafðu í huga að þeir eru mjög ólíkir hvað varðar stærðargráðu, eins og sést á miklum mun á stærð viðkomandi eininga (amu á móti g). Til að skilja hversu gríðarlega stórt mólið er, íhugaðu lítinn vatnsdropa sem vegur um 0,03 g (sjá [[xref:CNX_Chem_03_02_water]]). Þótt þetta sé aðeins örlítið brot af 1 móli af vatni (~18 g), inniheldur það fleiri vatnssameindir en hægt er að ímynda sér. Ef sameindunum væri dreift jafnt á um það bil sjö milljarða manna á jörðinni, myndi hver einstaklingur fá meira en 100 milljarða sameinda.
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_water-caption -->
 Fjöldi sameinda í einum vatnsdropa er um það bil 100 milljörðum sinnum meiri en fjöldi fólks á jörðinni. (Heimild: „tanakawho“/Wikimedia commons)
@@ -230,7 +230,7 @@ Fjöldi sameinda í einum vatnsdropa er um það bil 100 milljörðum sinnum mei
 Sýnd er nærmynd af vatnsdropa á laufblaði. Vatnsdropinn er ekki fullkomlega kúlulaga.
 
 <!-- SEG:m68700:para:fs-idp18455776 -->
-Mólið er notað í efnafræði til að tákna 6,022 [[MATH:10]] 10[[sup:23]] af einhverju, en það getur verið erfitt að skilja svo stóra tölu. Horfðu á þetta [[link:video|http://openstax.org/l/16molevideo]] og svaraðu síðan „Hugsaðu“-spurningunum sem fylgja. Kynntu þér mólið nánar með því að fara yfir upplýsingarnar undir „Kafaðu dýpra“.
+Mólið er notað í efnafræði til að tákna 6,022 [[MATH:10]] 10[[sup:23]] af einhverju, en það getur verið erfitt að gera sér í hugarlund svo stóra tölu. Horfðu á þetta [[link:video|http://openstax.org/l/16molevideo]] og svaraðu síðan „Hugsaðu“ spurningunum sem fylgja. Kynntu þér mólið nánar með því að fara yfir upplýsingarnar undir „Kafaðu dýpra“.
 
 <!-- SEG:m68700:para:fs-idm4828384 -->
 Hægt er að beita samböndunum milli formúlumassa, mólsins og tölu Avogadros til að reikna út ýmis magn sem lýsa samsetningu efna og efnasambanda, eins og sýnt er í næstu dæmum.
@@ -239,13 +239,13 @@ Hægt er að beita samböndunum milli formúlumassa, mólsins og tölu Avogadros
 Útreikningur á mólum út frá grömmum fyrir frumefni
 
 <!-- SEG:m68700:para:fs-idp15725488 -->
-Samkvæmt næringarleiðbeiningum frá Landbúnaðarráðuneyti Bandaríkjanna er áætluð meðalþörf fyrir kalíum í fæðu 4,7 g. Hver er áætluð meðalþörf fyrir kalíum í mólum?
+Samkvæmt næringarleiðbeiningum frá landbúnaðarráðuneyti Bandaríkjanna er áætluð meðalþörf fyrir kalíum í fæðu 4,7 g. Hver er áætluð meðalþörf fyrir kalíum í mólum?
 
 <!-- SEG:m68700:para-title:fs-idm16014480-title -->
 Lausn
 
 <!-- SEG:m68700:para:fs-idm16014480 -->
-Massi K er gefinn og beðið er um samsvarandi magn af K í mólum. Samkvæmt lotukerfinu er atómmassi K 39,10 amu og því er mólmassi þess 39,10 g/mól. Gefinn massi K (4,7 g) er aðeins meira en einn tíundi af mólmassanum (39,10 g), þannig að sanngjarnt „gróft“ mat á fjölda móla væri aðeins meira en 0,1 mól.
+Massi K er gefinn og spurt er um samsvarandi magn K í mólum. Ef litið er í lotukerfið er atómmassi K 39,10 amu og því er mólmassi þess 39,10 g/mól. Gefinn massi K (4,7 g) er aðeins meira en einn tíundi af mólmassanum (39,10 g), þannig að sanngjarnt „gróft“ mat á fjölda móla væri aðeins meira en 0,1 mól.
 
 <!-- SEG:m68700:para:fs-idm1867456 -->
 Reikna má mólmagn efnis með því að deila massa þess (g) með mólmassa þess (g/mól):
@@ -254,10 +254,10 @@ Reikna má mólmagn efnis með því að deila massa þess (g) með mólmassa þ
 Þáttamerkingaraðferðin styður þessa stærðfræðilegu nálgun þar sem einingin „g“ styttist út og svarið hefur eininguna „mól“:
 
 <!-- SEG:m68700:para:fs-idm29254000 -->
-Útreiknuð stærð (0,12 mól K) er í samræmi við grófa matið okkar, þar sem hún er aðeins meiri en 0,1 mól.
+Reiknaða stærðin (0,12 mól K) er í samræmi við grófa matið okkar, þar sem hún er aðeins meiri en 0,1 mól.
 
 <!-- SEG:m68700:para-title:fs-idm33771376-title -->
-Kannaðu þekkingu þína
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68700:para:fs-idm33771376 -->
 Beryllíum er léttmálmur sem notaður er til að búa til gegnsæja röntgenglugga fyrir læknisfræðileg myndgreiningartæki. Hversu mörg mól af Be eru í þunnri filmu sem vegur 3,24 g?
@@ -266,7 +266,7 @@ Beryllíum er léttmálmur sem notaður er til að búa til gegnsæja röntgengl
 0,360 mól
 
 <!-- SEG:m68700:alt:fs-idm11797312-alt -->
-Mynd af tveimur kössum sem tengdir eru með ör sem vísar til hægri. Kassinn til vinstri inniheldur orðasambandið „Massi K-atóma (g)“ en sá til hægri inniheldur orðasambandið „Mól K-atóma (mól)“. Undir örinni er orðasamband sem segir: „Deilt með mólmassa (g/mól).“
+Mynd af tveimur kössum sem tengdir eru með ör sem vísar til hægri. Kassinn til vinstri inniheldur orðasambandið „Massi K-atóma (g)“ en sá til hægri inniheldur orðasambandið „Mól K-atóma (mól)“. Undir örinni er setning sem segir: „Deilt með mólmassa (g/mól).“
 
 <!-- SEG:m68700:note-title:fs-idp73845104-title -->
 Svar:
@@ -278,13 +278,13 @@ Svar:
 Útreikningur á grömmum út frá mólum fyrir frumefni
 
 <!-- SEG:m68700:para:fs-idp15452464 -->
-Einn lítri af lofti inniheldur 9,2 [[MATH:11]] 10[[sup:−4]] mól af argoni. Hver er massi Ar í einum lítra af lofti?
+Lítri af lofti inniheldur 9,2 [[MATH:11]] 10[[sup:−4]] mól af argoni. Hver er massi Ar í lítra af lofti?
 
 <!-- SEG:m68700:para-title:fs-idm19496816-title -->
 Lausn
 
 <!-- SEG:m68700:para:fs-idm19496816 -->
-Mólmagn Ar er gefið og það verður að nota til að finna samsvarandi massa í grömmum. Þar sem magn Ar er minna en 1 mól verður massinn minni en massi 1 móls af Ar, eða um það bil 40 g. Mólmagnið sem um ræðir er um það bil einn þúsundasti (~10[[sup:−3]]) úr móli og því ætti samsvarandi massi að vera um það bil einn þúsundasti úr mólmassa (~0,04 g):
+Mólmagn Ar er gefið og verður að nota til að leiða út samsvarandi massa í grömmum. Þar sem magn Ar er minna en 1 mól verður massinn minni en massi 1 móls af Ar, eða um það bil 40 g. Mólmagnið sem um ræðir er um það bil einn þúsundasti (~10[[sup:−3]]) úr móli og því ætti samsvarandi massi að vera um það bil einn þúsundasti úr mólmassanum (~0,04 g):
 
 <!-- SEG:m68700:para:fs-idm1982944 -->
 Í þessu tilfelli segir rökfræðin (og þáttamerkingaraðferðin styður) að margfalda gefið magn (mól) með mólmassanum (g/mól):
@@ -296,13 +296,13 @@ Niðurstaðan er í samræmi við væntingar okkar, um 0,04 g Ar.
 Kannaðu þekkingu þína
 
 <!-- SEG:m68700:para:fs-idm25528064 -->
-Hver er massi 2,561 móla af gulli?
+Hver er massi 2,561 móls af gulli?
 
 <!-- SEG:m68700:para:fs-idp11414864 -->
 504,5 g
 
 <!-- SEG:m68700:alt:fs-idp10919328-alt -->
-Sýnd er skýringarmynd af tveimur kössum sem tengdir eru með hægri ör. Kassinn til vinstri inniheldur orðasambandið „Mól af Ar atómum (mól)“ en sá til hægri inniheldur orðasambandið „Massi Ar atóma (g)“. Undir örinni er setning sem segir „Margfaldaðu með mólmassa (g/mól)“.
+Sýnd er skýringarmynd af tveimur kössum sem tengdir eru með ör sem vísar til hægri. Kassinn til vinstri inniheldur orðasambandið „Mól af Ar-atómum (mól)“ en sá til hægri inniheldur orðasambandið „Massi Ar-atóma (g)“. Undir örinni er orðasamband sem segir „Margfaldaðu með mólmassa (g/mól)“.
 
 <!-- SEG:m68700:note-title:fs-idm64655584-title -->
 Svar:
@@ -311,7 +311,7 @@ Svar:
 504,5 g
 
 <!-- SEG:m68700:example-title:fs-idm8741648-title -->
-Ákvörðun fjölda atóma út frá massa frumefnis
+Útleiðsla á fjölda atóma úr massa frumefnis
 
 <!-- SEG:m68700:para:fs-idm24646960 -->
 Kopar er almennt notaður til að framleiða rafmagnsvír ([[xref:CNX_Chem_03_02_copper]]). Hversu mörg koparatóm eru í 5,00 g af koparvír?
@@ -320,13 +320,13 @@ Kopar er almennt notaður til að framleiða rafmagnsvír ([[xref:CNX_Chem_03_02
 Lausn
 
 <!-- SEG:m68700:para:fs-idm40043360 -->
-Fjölda Cu-atóma í vírnum má auðveldlega ákvarða út frá massa hans með tveggja þrepa útreikningi: fyrst með því að reikna út mólmagn Cu og síðan með því að nota tölu Avogadros ([[i:N[[sub:A]]]]) til að breyta þessu mólmagni í fjölda Cu-atóma:
+Fjölda Cu-atóma í vírnum má auðveldlega leiða út frá massa hans með tveggja þrepa útreikningi: fyrst með því að reikna út mólmagn Cu og síðan með því að nota tölu Avogadros ([[i:N[[sub:A]]]]) til að breyta þessu mólmagni í fjölda Cu-atóma:
 
 <!-- SEG:m68700:para:fs-idp18362672 -->
-Miðað við að uppgefinn sýnismassi (5,00 g) er aðeins minni en einn tíundi af massa 1 móls af Cu (~64 g), væri sanngjarnt mat á fjölda atóma í sýninu í stærðargráðunni einn tíundi [[i:N[[sub:A]]]], eða um það bil 10[[sup:22]] Cu-atóm. Tveggja þrepa útreikningurinn gefur:
+Miðað við að uppgefinn sýnismassi (5,00 g) er aðeins minni en einn tíundi af massa 1 móls af Cu (~64 g), væri sanngjarnt mat á fjölda atóma í sýninu í stærðargráðunni einn tíundi af [[i:N[[sub:A]]]], eða um það bil 10[[sup:22]] Cu-atóm. Tveggja þrepa útreikningurinn gefur:
 
 <!-- SEG:m68700:para:fs-idp27818080 -->
-Þáttamerkingaraðferðin gefur æskilega styttingu eininga og reiknuð niðurstaða er í stærðargráðunni 10[[sup:22]] eins og við var að búast.
+Þáttamerkingaraðferðin gefur tilætlaða styttingu eininga og útreiknuð niðurstaða er í stærðargráðunni 10[[sup:22]] eins og við var að búast.
 
 <!-- SEG:m68700:para-title:fs-idp18156240-title -->
 Kannaðu þekkingu þína
@@ -338,7 +338,7 @@ Gullgrafari sem vaskar gull í á safnar 15,00 g af hreinu gulli. Hversu mörg A
 4,586 [[MATH:12]] 10[[sup:22]] Au-atóm
 
 <!-- SEG:m68700:alt:fs-idm28023104-alt -->
-Sýnd er skýringarmynd af þremur kössum sem tengdir eru með hægri ör á milli hvers þeirra. Kassinn til vinstri inniheldur orðasambandið „Massi Cu-atóma (g)“, miðjukassinn segir „Mól af Cu-atómum (mól)“ en sá til hægri inniheldur orðasambandið „Fjöldi Cu-atóma“. Undir vinstri örinni er setning sem segir „Deilið með mólmassa (g/mól)“ og undir hægri örinni stendur „Margfaldið með tölu Avogadros (mól í mínus fyrsta veldi)“.
+Sýnd er skýringarmynd af þremur kössum sem tengdir eru með ör sem vísar til hægri á milli hvers þeirra. Kassinn til vinstri inniheldur orðasambandið „Massi Cu-atóma (g)“, í miðjukassanum stendur „Mól af Cu-atómum (mól)“ en sá til hægri inniheldur orðasambandið „Fjöldi Cu-atóma“. Undir vinstri örinni er orðasamband sem segir „Deildu með mólmassa (g/mól)“ og undir hægri örinni stendur „Margfaldaðu með tölu Avogadros (mól í mínus fyrsta veldi)“.
 
 <!-- SEG:m68700:note-title:fs-idm4952320-title -->
 Svar:
@@ -350,10 +350,10 @@ Svar:
 Koparvír er samsettur úr mörgum, mörgum atómum af Cu. (heimild: Emilian Robert Vicol)
 
 <!-- SEG:m68700:alt:fs-idm20298688-alt -->
-Sýnd er nærmynd af kefli með koparvír.
+Sýnd er nærmynd af spólu með koparvír.
 
 <!-- SEG:m68700:example-title:fs-idm1714048-title -->
-Ákvörðun móla út frá grömmum fyrir efnasamband
+Útleiðsla á mólum úr grömmum fyrir efnasamband
 
 <!-- SEG:m68700:para:fs-idp75300336 -->
 Líkamar okkar mynda prótein úr amínósýrum. Ein þessara amínósýra er glýsín, sem hefur sameindaformúluna C[[sub:2]]H[[sub:5]]O[[sub:2]]N. Hversu mörg mól af glýsínsameindum eru í 28,35 g af glýsíni?
@@ -362,16 +362,16 @@ Líkamar okkar mynda prótein úr amínósýrum. Ein þessara amínósýra er gl
 Lausn
 
 <!-- SEG:m68700:para:fs-idp1446192 -->
-Ákvarðaðu fjölda móla efnasambands út frá massa þess með sömu aðferð og notuð var fyrir frumefni í [[xref:fs-idp76540048]]:
+Leiddu út fjölda móla efnasambands út frá massa þess með sömu aðferð og notuð var fyrir frumefni í [[xref:fs-idp76540048]]:
 
 <!-- SEG:m68700:para:fs-idm36743808 -->
 Mólmassi glýsíns er nauðsynlegur fyrir þennan útreikning og hann er reiknaður á sama hátt og sameindamassi þess. Eitt mól af glýsíni, C[[sub:2]]H[[sub:5]]O[[sub:2]]N, inniheldur 2 mól af kolefni, 5 mól af vetni, 2 mól af súrefni og 1 mól af köfnunarefni:
 
 <!-- SEG:m68700:para:fs-idm24120480 -->
-Uppgefinn massi glýsíns (~28 g) er aðeins meira en þriðjungur mólmassans (~75 g/mól), þannig að búast má við að reiknuð niðurstaða sé aðeins meiri en þriðjungur úr móli (~0,33 mól). Með því að deila massa efnasambandsins með mólmassa þess fæst:
+Uppgefinn massi glýsíns (~28 g) er aðeins meira en þriðjungur mólmassans (~75 g/mól), þannig að búast má við að útreiknuð niðurstaða sé aðeins meiri en þriðjungur úr móli (~0,33 mól). Með því að deila massa efnasambandsins með mólmassa þess fæst:
 
 <!-- SEG:m68700:para:fs-idp10905424 -->
-Þessi niðurstaða er í samræmi við gróft mat.
+Þessi niðurstaða er í samræmi við grófa matið.
 
 <!-- SEG:m68700:para-title:fs-idm30097376-title -->
 Kannaðu þekkingu þína
@@ -383,10 +383,10 @@ Hversu mörg mól af súkrósa, C[[sub:12]]H[[sub:22]]O[[sub:11]], eru í 25 g s
 0,073 mól
 
 <!-- SEG:m68700:alt:fs-idm4806704-alt -->
-Sýnd er skýringarmynd af tveimur kössum sem tengdir eru með ör sem vísar til hægri. Kassinn til vinstri inniheldur textann „Massi C[[sub:2]]H[[sub:5]]O[[sub:2]]N (g)“ en kassinn til hægri inniheldur textann „Mól af C[[sub:2]]H[[sub:5]]O[[sub:2]]N (mól)“. Undir örinni er texti sem segir „Deilt með mólmassa (g/mól)“.
+Sýnd er skýringarmynd af tveimur kössum sem tengdir eru með ör sem vísar til hægri. Kassinn til vinstri inniheldur textann „Massi C neðanskrift 2 H neðanskrift 5 O neðanskrift 2 N (g)“ en kassinn til hægri inniheldur textann „Mól C neðanskrift 2 H neðanskrift 5 O neðanskrift 2 N (mól)“. Undir örinni er texti sem segir „Deilt með mólmassa (g/mól)“.
 
 <!-- SEG:m68700:alt:fs-idm4204416-alt -->
-Sýnd er tafla sem samanstendur af sex dálkum og sex röðum. Í hausnum stendur: „Frumefni“, „Magn (mól frumefnis/mól efnasambands)“, autt bil, „Mólmassi (g/mól frumefnis)“, autt bil og „Millitala (a m u)“. Fyrsti dálkurinn inniheldur táknin „C“, „H“, „O“, „N“ og sameinaðan reit. Sameinaði reiturinn nær yfir breidd fyrstu fimm dálkanna. Annar dálkurinn inniheldur tölurnar „2“, „5“, „2“ og „1“ auk sameinaða reitsins. Þriðji dálkurinn inniheldur margföldunarmerki í hverjum reit nema þeim síðasta, sameinaða reitnum. Fjórði dálkurinn inniheldur tölurnar „12,01“, „1,008“, „16,00“ og „14,007“ auk sameinaða reitsins. Fimmti dálkurinn inniheldur táknið „=“ í hverjum reit nema þeim síðasta, sameinaða reitnum. Sjötti dálkurinn inniheldur gildin „24,02“, „5,040“, „32,00“, „14,007“ og „75,07“. Þykk svört lína er undir tölunni 14,007. Í sameinaða reitnum undir fyrstu fimm dálkunum stendur „Mólmassi (g/mól efnasambands)“. Hægra megin við þessa töflu er kúlu-og-pinnateikning. Hún sýnir svarta kúlu sem myndar tvítengi við aðeins minni rauða kúlu, eintengi við aðra rauða kúlu og eintengi við aðra svarta kúlu. Rauða kúlan sem myndar eintengi við svörtu kúluna myndar einnig eintengi við minni, hvíta kúlu. Seinni svarta kúlan myndar eintengi við minni, hvíta kúlu og minni, bláa kúlu. Bláa kúlan myndar eintengi við tvær minni, hvítar kúlur hvor.
+Sýnd er tafla sem samanstendur af sex dálkum og sex röðum. Fyrirsagnarröðin er: „Frumefni“, „Magn (mól frumefnis/mól efnasambands)“, autt svæði, „Mólmassi (g/mól frumefnis)“, autt svæði og „Millitala (a m u)“. Fyrsti dálkurinn inniheldur táknin „C“, „H“, „O“, „N“ og sameinaðan reit. Sameinaði reiturinn nær yfir breidd fyrstu fimm dálkanna. Annar dálkurinn inniheldur tölurnar „2“, „5“, „2“ og „1“ auk sameinaða reitsins. Þriðji dálkurinn inniheldur margföldunartáknið í hverjum reit nema þeim síðasta, sameinaða reitnum. Fjórði dálkurinn inniheldur tölurnar „12,01“, „1,008“, „16,00“ og „14,007“ auk sameinaða reitsins. Fimmti dálkurinn inniheldur táknið „=“ í hverjum reit nema þeim síðasta, sameinaða reitnum. Sjötti dálkurinn inniheldur gildin „24,02“, „5,040“, „32,00“, „14,007“ og „75,07“. Það er þykk svört lína undir tölunni 14,007. Sameinaði reiturinn undir fyrstu fimm dálkunum segir „Mólmassi (g/mól efnasambands)“. Hægra megin við þessa töflu er kúlu-og-pinnateikning. Hún sýnir svarta kúlu sem myndar tvítengi við aðeins minni rauða kúlu, eintengi við aðra rauða kúlu og eintengi við aðra svarta kúlu. Rauða kúlan sem myndar eintengi við svörtu kúluna myndar einnig eintengi við minni, hvíta kúlu. Seinni svarta kúlan myndar eintengi við minni, hvíta kúlu og minni, bláa kúlu. Bláa kúlan myndar eintengi við tvær minni, hvítar kúlur hvor.
 
 <!-- SEG:m68700:note-title:fs-idm27877216-title -->
 Svar:
@@ -422,7 +422,7 @@ Hver er massi 0,443 móla af hýdrasíni, N[[sub:2]]H[[sub:4]]?
 14,2 g
 
 <!-- SEG:m68700:alt:fs-idm20822880-alt -->
-Sýnd er skýringarmynd af tveimur kössum sem tengdir eru með ör sem vísar til hægri. Kassinn til vinstri inniheldur textann „Mól af C-vítamíni (mól)“ en sá til hægri inniheldur textann „Massi C-vítamíns (g)“. Undir örinni er texti sem segir „Margfaldað með mólmassa (g/mól)“.
+Sýnd er skýringarmynd af tveimur kössum sem tengdir eru með ör sem vísar til hægri. Kassinn til vinstri inniheldur textann „Mól C-vítamíns (mól)“ en sá til hægri inniheldur textann „Massi C-vítamíns (g)“. Undir örinni er texti sem segir „Margfaldað með mólmassa (g/mól)“.
 
 <!-- SEG:m68700:note-title:fs-idp75070976-title -->
 Svar:
@@ -437,7 +437,7 @@ Svar:
 Pakki af gervisætuefni inniheldur 40,0 mg af sakkaríni (C[[sub:7]]H[[sub:5]]NO[[sub:3]]S), sem hefur byggingarformúluna:
 
 <!-- SEG:m68700:para:fs-idp33552 -->
-Ef mólmassi sakkaríns er 183,18 g/mól, hversu margar sakkarínsameindir eru í 40,0 mg (0,0400 g) sýni af sakkaríni? Hversu mörg kolefnisatóm eru í sama sýni?
+Að gefnu að sakkarín hafi mólmassann 183,18 g/mól, hversu margar sakkarínsameindir eru í 40,0 mg (0,0400 g) sýni af sakkaríni? Hversu mörg kolefnisatóm eru í sama sýni?
 
 <!-- SEG:m68700:para-title:fs-idm20251168-title -->
 Lausn
@@ -461,10 +461,10 @@ Hversu margar C[[sub:4]]H[[sub:10]] sameindir eru í 9,213 g af þessu efnasamba
 9,545 [[MATH:15]] 10[[sup:22]] sameindir C[[sub:4]]H[[sub:10]]; 9,545 [[MATH:16]] 10[[sup:23]] atóm H
 
 <!-- SEG:m68700:alt:fs-idp74120656-alt -->
-Sýnd er skýringarmynd af sameind sem samanstendur af tveimur hringlaga byggingum sem eru festar saman. Vinstri hringurinn er sexhyrndur með C-atómum á hverjum punkti hringsins og víxlvísa stökum og tvöföldum tengjum. Tvöfalt tengi er á milli C-atómsins efst í sexhyrningnum og C-atómsins niður og til vinstri við það. C-atómin vinstra megin, efst og neðst í byggingunni mynda stakt tengi við H-atóm hvert. Hægri C-atómin tvö mynda aðra hlið fimmhyrnings og hinir punktar fimmhyrningsins eru C-atóm, N-atóm og S-atóm ef lesið er réttsælis. C-atómið myndar tvöfalt tengi við O-atóm. N-atómið myndar stakt tengi við H-atóm. S-atómið myndar tvö tvöföld tengi við tvö O-atóm.
+Skýringarmynd af sameind er sýnd sem samanstendur af tveimur hringformum sem eru tengd saman. Vinstri hringurinn er sexhyrndur með C-atómum á hverjum punkti hringsins og víxlvísa stökum og tvöföldum tengjum. Tvöfalt tengi er á milli C-atómsins efst í sexhyrningnum og C-atómsins niður og til vinstri við það. C-atómin vinstra megin, efst og neðst í forminu mynda stakt tengi við H-atóm hvert. Hægri C-atómin tvö mynda aðra hlið fimmhyrnings og hinir punktar fimmhyrningsins eru C-atóm, N-atóm og S-atóm ef lesið er réttsælis. C-atómið myndar tvöfalt tengi við O-atóm. N-atómið myndar stakt tengi við H-atóm. S-atómið myndar tvö tvöföld tengi við tvö O-atóm.
 
 <!-- SEG:m68700:alt:fs-idm1701808-alt -->
-Sýnd er skýringarmynd af þremur kössum sem tengdir eru með ör sem vísar til hægri á milli hvers þeirra. Kassinn vinstra megin inniheldur setninguna „Massi C með lágstaf sjö H með lágstaf fimm N O með lágstaf þrjú S (g)“, í miðjukassanum stendur „Mól af C með lágstaf sjö H með lágstaf fimm N O með lágstaf þrjú S (mól)“, en í þeim hægra megin er setningin „Fjöldi C með lágstaf sjö H með lágstaf fimm N O með lágstaf þrjú S sameinda“. Undir vinstri örinni er setning sem segir „Deilt með mólmassa (g/mól)“ og undir hægri örinni stendur „Margfaldað með tölu Avogadros (mól í veldinu mínus einn)“.
+Skýringarmynd af þremur kössum sem tengdir eru með ör sem vísar til hægri á milli hvers þeirra er sýnd. Kassinn vinstra megin inniheldur setninguna „Massi C með lágstaf sjö H með lágstaf fimm N O með lágstaf þrjú S (g)“, í miðjukassanum stendur „Mól af C með lágstaf sjö H með lágstaf fimm N O með lágstaf þrjú S (mól)“, á meðan sá hægra megin inniheldur setninguna „Fjöldi C með lágstaf sjö H með lágstaf fimm N O með lágstaf þrjú S sameinda“. Undir vinstri örinni er setning sem segir „Deilt með mólmassa (g/mól)“ og undir hægri örinni stendur „Margfaldað með tölu Avogadros (mól í veldinu mínus einn)“.
 
 <!-- SEG:m68700:note-title:fs-idp51031648-title -->
 Svar:
@@ -476,28 +476,28 @@ Svar:
 Að telja taugaboðefnissameindir í heilanum
 
 <!-- SEG:m68700:para:fs-idm4217280 -->
-Heilinn er stjórnstöð miðtaugakerfisins ([[xref:CNX_Chem_03_01_brain]]). Hann sendir og tekur á móti boðum til og frá vöðvum og öðrum innri líffærum til að fylgjast með og stjórna starfsemi þeirra; hann vinnur úr áreiti sem skynfæri nema til að leiðbeina samskiptum við umheiminn; og hann hýsir flókin lífeðlisfræðileg ferli sem gefa af sér vitsmuni okkar og tilfinningar. Hið víðfeðma svið taugavísinda spannar alla þætti byggingar og starfsemi miðtaugakerfisins, þar á meðal rannsóknir á líffærafræði og lífeðlisfræði heilans. Miklar framfarir hafa orðið í heilarannsóknum á síðustu áratugum og BRAIN-verkefnið, alríkisverkefni sem tilkynnt var um árið 2013, miðar að því að hraða og nýta þessar framfarir með samstilltu átaki ýmissa iðnaðar-, fræðasviða- og ríkisstofnana (nánari upplýsingar eru aðgengilegar á www.whitehouse.gov/share/brain-initiative).
+Heilinn er stjórnstöð miðtaugakerfisins ([[xref:CNX_Chem_03_01_brain]]). Hann sendir og tekur á móti boðum til og frá vöðvum og öðrum innri líffærum til að fylgjast með og stjórna starfsemi þeirra; hann vinnur úr áreiti sem skynfæri nema til að leiðbeina samskiptum við umheiminn; og hann hýsir flókin lífeðlisfræðileg ferli sem gefa af sér vitsmuni okkar og tilfinningar. Hið víðfeðma svið taugavísinda spannar alla þætti byggingar og starfsemi miðtaugakerfisins, þar á meðal rannsóknir á líffærafræði og lífeðlisfræði heilans. Miklar framfarir hafa orðið í heilarannsóknum á síðustu áratugum og BRAIN-verkefnið, alríkisverkefni sem tilkynnt var um árið 2013, miðar að því að hraða og nýta þessar framfarir með samstilltu átaki ýmissa iðnaðar-, fræðasamfélags- og ríkisstofnana (nánari upplýsingar eru aðgengilegar á www.whitehouse.gov/share/brain-initiative).
 
 <!-- SEG:m68700:para:fs-idm14541088 -->
-Sérhæfðar frumur sem kallast taugafrumur senda upplýsingar milli mismunandi hluta miðtaugakerfisins með raf- og efnaboðum. Efnaboð eiga sér stað á mótum mismunandi taugafrumna þegar ein frumanna losar sameindir (kallaðar taugaboðefni) sem dreifast yfir lítið bil milli frumnanna (kallað taugamót) og bindast yfirborði hinnar frumunnar. Þessar taugaboðefnissameindir eru geymdar í litlum innanfrumubyggingum sem kallast blöðrur og renna saman við frumuhimnuna og rofna síðan til að losa innihald sitt þegar taugafruman er viðeigandi örvuð. Þetta ferli er kallað útfrumun (sjá [[xref:CNX_Chem_03_01_exocytosis]]). Eitt taugaboðefni sem hefur verið mjög mikið rannsakað er dópamín, C[[sub:8]]H[[sub:11]]NO[[sub:2]]. Dópamín tekur þátt í ýmsum taugafræðilegum ferlum sem hafa áhrif á fjölbreytta mannlega hegðun. Truflanir í dópamínkerfum heilans liggja að baki alvarlegum taugasjúkdómum eins og Parkinsonsveiki og geðklofa.
+Sérhæfðar frumur sem kallast taugafrumur flytja upplýsingar milli mismunandi hluta miðtaugakerfisins með raf- og efnaboðum. Efnaboð eiga sér stað á mótum mismunandi taugafrumna þegar ein frumanna losar sameindir (kallaðar taugaboðefni) sem dreifast yfir lítið bil milli frumnanna (kallað taugamót) og bindast yfirborði hinnar frumunnar. Þessar taugaboðefnissameindir eru geymdar í litlum innanfrumubyggingum sem kallast seytibólur og renna saman við frumuhimnuna og rofna síðan til að losa innihald sitt þegar taugafruman er viðeigandi örvuð. Þetta ferli er kallað útfrumun (sjá [[xref:CNX_Chem_03_01_exocytosis]]). Eitt taugaboðefni sem hefur verið mjög mikið rannsakað er dópamín, C[[sub:8]]H[[sub:11]]NO[[sub:2]]. Dópamín tekur þátt í ýmsum taugafræðilegum ferlum sem hafa áhrif á fjölbreytta mannlega hegðun. Truflanir í dópamínkerfum heilans liggja að baki alvarlegum taugasjúkdómum eins og Parkinsonsveiki og geðklofa.
 
 <!-- SEG:m68700:para:fs-idp15499232 -->
-Mikilvægur þáttur í flóknum ferlum sem tengjast dópamínboðum er fjöldi taugaboðefnissameinda sem losna við útfrumun. Þar sem þessi fjöldi er aðalþáttur í að ákvarða taugafræðilega svörun (og síðari mannlega hugsun og athafnir) er mikilvægt að vita hvernig þessi fjöldi breytist við ákveðna stýrða örvun, svo sem lyfjagjöf. Einnig er mikilvægt að skilja þann búnað sem ber ábyrgð á breytingum á fjölda losaðra taugaboðefnissameinda – til dæmis einhverja truflun í útfrumun, breytingu á fjölda blaðra í taugafrumunni eða breytingu á fjölda taugaboðefnissameinda í hverri blöðru.
+Einn mikilvægur þáttur í flóknum ferlum sem tengjast dópamínboðum er fjöldi taugaboðefnissameinda sem losna við útfrumun. Þar sem þessi fjöldi er lykilþáttur í að ákvarða taugafræðileg viðbrögð (og síðari mannlega hugsun og athafnir), er mikilvægt að vita hvernig þessi fjöldi breytist við ákveðna stýrða örvun, svo sem lyfjagjöf. Einnig er mikilvægt að skilja þann búnað sem ber ábyrgð á breytingum á fjölda losaðra taugaboðefnissameinda – til dæmis einhver truflun í útfrumun, breyting á fjölda seytibóla í taugafrumunni eða breyting á fjölda taugaboðefnissameinda í hverri seytibólu.
 
 <!-- SEG:m68700:para:fs-idm2962416 -->
-Nýlega hafa orðið verulegar framfarir í beinni mælingu á fjölda dópamínsameinda sem geymdar eru í einstökum blöðrum og því magni sem raunverulega losnar þegar blaðran fer í gegnum útfrumun. Með því að nota smækkaða nema sem geta valið og greint dópamínsameindir í mjög litlu magni hafa vísindamenn komist að því að blöðrur ákveðinnar tegundar taugafrumna í heila músa innihalda að meðaltali 30.000 dópamínsameindir á hverja blöðru (um [[MATH:19]] mól eða 50 zmól). Greining á þessum taugafrumum úr músum sem fengu ýmsar lyfjameðferðir sýnir verulegar breytingar á meðalfjölda dópamínsameinda í einstökum blöðrum, sem eykst eða minnkar allt að þrefalt, allt eftir því hvaða lyf er notað. Þessar rannsóknir benda einnig til þess að ekki allt dópamínið í tiltekinni blöðru losni við útfrumun, sem bendir til þess að mögulegt sé að stjórna þeim hluta sem losnar með lyfjameðferðum. [[fn:Omiatek, Donna M., Amanda J. Bressler, Ann-Sofie Cans, Anne M. Andrews, Michael L. Heien og Andrew G. Ewing. „The Real Catecholamine Content of Secretory Vesicles in the CNS Revealed by Electrochemical Cytometry.“ [[i:Scientific Report]] 3 (2013): 1447, skoðað 14. janúar 2015, doi:10.1038/srep01447.|fs-idp50539888]]
+Nýlega hafa orðið verulegar framfarir í beinni mælingu á fjölda dópamínsameinda sem geymdar eru í einstökum seytibólum og því magni sem raunverulega losnar þegar seytibólan fer í gegnum útfrumun. Með því að nota smækkaða nemaskynjara sem geta valið og greint dópamínsameindir í mjög litlu magni hafa vísindamenn komist að því að seytibólur ákveðinnar tegundar taugafrumna í heila músa innihalda að meðaltali 30.000 dópamínsameindir á hverja seytibólu (um [[MATH:19]] mól eða 50 zmol). Greining á þessum taugafrumum úr músum sem fengu ýmsar lyfjameðferðir sýnir verulegar breytingar á meðalfjölda dópamínsameinda í einstökum seytibólum, sem eykst eða minnkar allt að þrefalt, allt eftir því hvaða lyf er notað. Þessar rannsóknir benda einnig til þess að ekki allt dópamínið í tiltekinni seytibólu losni við útfrumun, sem gefur til kynna að mögulegt sé að stjórna þeim hluta sem losnar með lyfjameðferðum. [[fn:Omiatek, Donna M., Amanda J. Bressler, Ann-Sofie Cans, Anne M. Andrews, Michael L. Heien og Andrew G. Ewing. „The Real Catecholamine Content of Secretory Vesicles in the CNS Revealed by Electrochemical Cytometry.“ [[i:Scientific Report]] 3 (2013): 1447, sótt 14. janúar 2015, doi:10.1038/srep01447.|fs-idp50539888]]
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_brain-caption -->
-(a) Dæmigerður mannsheili vegur um 1,5 kg og tekur um það bil 1,1 L rúmmál. (b) Upplýsingar eru sendar í heilavef og um allt miðtaugakerfið af sérhæfðum frumum sem kallast taugafrumur (smásjármynd sýnir frumur við 1600× stækkun).
+(a) Dæmigerður mannsheili vegur um 1,5 kg og tekur um það bil 1,1 L rúmmál. (b) Upplýsingar eru sendar í heilavef og um allt miðtaugakerfið með sérhæfðum frumum sem kallast taugafrumur (smásjármynd sýnir frumur við 1600× stækkun).
 
 <!-- SEG:m68700:alt:fs-idp71769904-alt -->
-Sýndar eru tvær myndir. Vinstri myndin sýnir mannsheilann. Hægri myndin er smásjármynd sem sýnir tvo stóra óreglulega massa á svæði með þráðlíku efni sem er blandað smærri, tiltölulega kringlóttum mössum. Stærri massarnir tveir eru merktir með örvum og orðunum „Taugafrumur“.
+Tvær myndir eru sýndar. Vinstri myndin sýnir mannsheilann. Hægri myndin er smásjármynd sem sýnir tvo stóra óreglulega massa á svæði með þráðlíku efni sem er blandað smærri, tiltölulega kringlóttum mössum. Stærri massarnir tveir eru merktir með örvum og orðunum „Taugafrumur“.
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_exocytosis-caption -->
-(a) Efnaboð berast frá taugafrumum til annarra frumna með losun taugaboðefnasameinda í litlu bilin (taugamótin) milli frumnanna. (b) Dópamín, C[[sub:8]]H[[sub:11]]NO[[sub:2]], er taugaboðefni sem tekur þátt í ýmsum taugaferlum.
+(a) Efnaboð berast frá taugafrumum til annarra frumna með losun taugaboðefnasameinda í litlu bilin (taugamótin) milli frumnanna. (b) Dópamín, C[[sub:8]]H[[sub:11]]NO[[sub:2]], er taugaboðefni sem tekur þátt í ýmsum taugafræðilegum ferlum.
 
 <!-- SEG:m68700:alt:fs-idp18792480-alt -->
-Tvær skýringarmyndir eru sýndar. Í efra vinstra horni vinstri myndarinnar er sýndur sporaskjöldur með dökkum miðhluta sem hefur fimm stutta, greinótta anga og einn langan halaangan og er tengdur með ör við aðra mynd. Þessi mynd sýnir nærmynd af sporaskjaldarhlutanum og samspili hans við halaangan á svipaðri byggingu. Nærmyndin samanstendur af mjórri pípu sem merkt er „taugafruma“ og liggur niður að kúlulaga grunni sem inniheldur þrettán hringi fyllta með litlum punktum. Þessir hringir eru merktir „bólur“. Grunnur kúlulaga byggingarinnar er við hliðina á bogadregnum hlut sem merktur er „taugafruma“ og mjög litlir punktar koma fram úr grunni kúlunnar og flæða í átt að bogadregnu byggingunni. Bilið á milli bygginganna tveggja er merkt „taugamót“ og litlu punktarnir eru merktir „taugaboðefni“. Myndin til hægri sýnir sameind sem samanstendur af sex svörtum kúlum sem eru tengdar með víxl tvöföldum og einföldum tengjum í sexhyrndum hring með öðrum kúlum tengdum við hann. Þrjár af svörtu kúlunum eru tengdar við eina minni, hvíta kúlu hver. Tvær af svörtu kúlunum eru tengdar við eina minni, rauða kúlu hver. Hver rauð kúla er tengd við eina minni, hvíta kúlu. Ein svört kúla er tengd við aðra svarta kúlu. Hún er tengd við tvær minni, hvítar kúlur og aðra svarta kúlu. Þessi seinni svarta kúla er tengd við tvær minni, hvítar kúlur og eina aðeins minni, bláa kúlu. Bláa kúlan er tengd við tvær minni, hvítar kúlur.
+Tvær skýringarmyndir eru sýndar. Í efra vinstra horni vinstri skýringarmyndarinnar er sýndur sporöskjulaga hlutur með dökkum miðhluta sem hefur fimm stuttar, greinóttar viðhengi og eitt langt halalíkt viðhengi, og er hann tengdur með ör við aðra mynd. Þessi mynd sýnir nærmynd af sporöskjulaga hlutanum og samspili hans við halalíkan hluta svipaðrar byggingar. Nærmyndin samanstendur af mjórri pípu sem merkt er „taugafruma“ og liggur niður að kúlulaga grunni sem inniheldur þrettán hringi fyllta með litlum doppum. Þessir hringir eru merktir „bólur“. Grunnur kúlulaga byggingarinnar er við hliðina á bogadregnum hlut sem merktur er „taugafruma“ og mjög litlar doppur koma frá grunni kúlunnar og flæða í átt að bogadregnu byggingunni. Bilið á milli bygginganna tveggja er merkt „taugamót“ og litlu doppurnar eru merktar „taugaboðefni“. Skýringarmyndin til hægri sýnir sameind sem samanstendur af sex svörtum kúlum sem tengdar eru með víxlverkun tvöfaldra og einfaldra tengja í sexhyrndum hring með öðrum kúlum tengdum við hann. Þrjár af svörtu kúlunum eru tengdar við eina minni, hvíta kúlu hver. Tvær af svörtu kúlunum eru tengdar við eina minni, rauða kúlu hver. Hver rauð kúla er tengd við eina minni, hvíta kúlu. Ein svört kúla er tengd við aðra svarta kúlu. Hún er tengd við tvær minni, hvítar kúlur og aðra svarta kúlu. Þessi seinni svarta kúla er tengd við tvær minni, hvítar kúlur og eina aðeins minni, bláa kúlu. Bláa kúlan er tengd við tvær minni, hvítar kúlur.
 
 <!-- SEG:m68700:title:fs-idp1413072-title -->
 Lykilhugtök og samantekt
@@ -506,7 +506,7 @@ Lykilhugtök og samantekt
 Formúlumassi efnis er summa meðalatómassa hvers atóms sem táknað er í efnaformúlunni og er gefinn upp í atómmassaeiningum. Formúlumassi samgilds efnasambands er einnig kallaður sameindamassi. Mól er hentug magnseining til að tákna mjög stóran fjölda atóma eða sameinda. Tilraunamælingar hafa ákvarðað að fjöldi eininga sem mynda 1 mól af efni sé 6,022 [[MATH:20]] 10[[sup:23]], magn sem kallast tala Avogadros. Massi í grömmum af 1 móli af efni er mólmassi þess. Vegna notkunar á sama viðmiðunarefni við skilgreiningu á atómmassaeiningunni og mólinu eru formúlumassi (amu) og mólmassi (g/mól) hvers efnis tölulega jafngildir (til dæmis vegur ein H[[sub:2]]O sameind um það bil 18 amu og 1 mól af H[[sub:2]]O sameindum vegur um það bil 18 g).
 
 <!-- SEG:m68700:title:fs-idp13430448-title -->
-Efnafræði – verkefni í lok kafla
+Efnafræði – Æfingar í lok kafla
 
 <!-- SEG:m68700:problem:fs-idp66967088 -->
 Hver er heildarmassi (amu) kolefnis í hverri af eftirfarandi sameindum?
@@ -587,46 +587,46 @@ Bygging er sýnd. Tvö C-atóm mynda tvítengi sín á milli. Hvert C-atóm mynd
 (d)[[BR]] [[MEDIA:4]]
 
 <!-- SEG:m68700:alt:fs-idm31327616-alt -->
-Sýnd er bygging. S-atóm myndar tvítengi við tvö O-atóm. S-atómið myndar einnig eintengi við O-atóm sem myndar eintengi við H-atóm. S-atómið myndar einnig eintengi við annað O-atóm sem myndar eintengi við annað H-atóm.
+Mynd af byggingu. S-atóm myndar tvítengi við tvö O-atóm. S-atómið myndar einnig eintengi við O-atóm sem myndar eintengi við H-atóm. S-atómið myndar einnig eintengi við annað O-atóm sem myndar eintengi við annað H-atóm.
 
 <!-- SEG:m68700:problem:fs-idp52450416 -->
-Ákvarðaðu sameindamassa eftirfarandi efnasambanda:
+Ákvarðaðu mólmassa eftirfarandi efnasambanda:
 
 <!-- SEG:m68700:problem:fs-idp12831088 -->
 (a)[[BR]] [[MEDIA:5]]
 
 <!-- SEG:m68700:alt:fs-idp13412608-alt -->
-Sýnd er bygging. Tvö C-atóm mynda tvítengi sín á milli. C-atómið vinstra megin myndar eintengi við tvö H-atóm. C-atómið hægra megin myndar eintengi við H-atóm og við CH-neðanskrift 2 CH-neðanskrift 3 hóp.
+Mynd af byggingu. Tvö C-atóm mynda tvítengi sín á milli. C-atómið vinstra megin myndar eintengi við tvö H-atóm. C-atómið hægra megin myndar eintengi við H-atóm og við CH subscript 2 CH subscript 3 hóp.
 
 <!-- SEG:m68700:problem:fs-idp76139456 -->
 (b)[[BR]] [[MEDIA:6]]
 
 <!-- SEG:m68700:alt:fs-idp47952992-alt -->
-Sýnd er bygging. Þar er C-atóm sem myndar eintengi við þrjú H-atóm. Þetta C-atóm er tengt öðru C-atómi. Þetta annað C-atóm myndar þrítengi við annað C-atóm sem myndar eintengi við fjórða C-atómið. Fjórða C-atómið myndar eintengi við þrjú H-atóm.
+Mynd af byggingu. Þar er C-atóm sem myndar eintengi við þrjú H-atóm. Þetta C-atóm er tengt öðru C-atómi. Þetta annað C-atóm myndar þrítengi við annað C-atóm sem myndar eintengi við fjórða C-atómið. Fjórða C-atómið myndar eintengi við þrjú H-atóm.
 
 <!-- SEG:m68700:problem:fs-idp55882592 -->
 (c)[[BR]] [[MEDIA:7]]
 
 <!-- SEG:m68700:alt:fs-idp49963664-alt -->
-Sýnd er bygging. Si-atóm myndar eintengi við Cl-atóm, eintengi við Cl-atóm, eintengi við H-atóm og eintengi við annað Si-atóm. Annað Si-atómið myndar eintengi við Cl-atóm, eintengi við Cl-atóm og eintengi við H-atóm.
+Mynd af byggingu. Si-atóm myndar eintengi við Cl-atóm, eintengi við Cl-atóm, eintengi við H-atóm og eintengi við annað Si-atóm. Annað Si-atómið myndar eintengi við Cl-atóm, eintengi við Cl-atóm og eintengi við H-atóm.
 
 <!-- SEG:m68700:problem:fs-idp17404336 -->
 (d)[[BR]] [[MEDIA:8]]
 
 <!-- SEG:m68700:alt:fs-idp56968256-alt -->
-Sýnd er bygging. P-atóm myndar tvítengi við O-atóm. Það myndar einnig eintengi við O-atóm sem myndar eintengi við H-atóm. Það myndar einnig eintengi við annað O-atóm sem myndar eintengi við H-atóm. Það myndar einnig eintengi við annað O-atóm sem myndar eintengi við H-atóm.
+Mynd af byggingu. P-atóm myndar tvítengi við O-atóm. Það myndar einnig eintengi við O-atóm sem myndar eintengi við H-atóm. Það myndar einnig eintengi við annað O-atóm sem myndar eintengi við H-atóm. Það myndar einnig eintengi við annað O-atóm sem myndar eintengi við H-atóm.
 
 <!-- SEG:m68700:solution:fs-idp18584256 -->
 (a) 56,107 ame; (b) 54,091 ame; (c) 199,9976 ame; (d) 97,9950 ame
 
 <!-- SEG:m68700:problem:fs-idp50213760 -->
-Hvaða sameind hefur sameindamassann 28,05 ame?
+Hvaða sameind hefur mólmassann 28,05 ame?
 
 <!-- SEG:m68700:problem:fs-idp50214144 -->
 (a)[[BR]] [[MEDIA:9]]
 
 <!-- SEG:m68700:alt:fs-idp52022448-alt -->
-Sýnd er bygging. C-atóm myndar þrítengi við annað C-atóm. Hvert C-atóm myndar einnig eintengi við H-atóm.
+Mynd af byggingu. C-atóm myndar þrítengi við annað C-atóm. Hvert C-atóm myndar einnig eintengi við H-atóm.
 
 <!-- SEG:m68700:problem:fs-idp66877424 -->
 (b)[[BR]] [[MEDIA:10]]
@@ -749,7 +749,7 @@ Reiknaðu mólmassa hvers eftirfarandi:
 (a) 197,382 g mól[[sup:−1]]; (b) 257,163 g mól[[sup:−1]]; (c) 194,193 g mól[[sup:−1]]; (d) 60,056 g mól[[sup:−1]]; (e) 306,464 g mól[[sup:−1]]
 
 <!-- SEG:m68700:problem:fs-idp51940592 -->
-Ákvarðaðu fjölda móla af efnasambandinu og fjölda móla af hverri frumeindategund í eftirfarandi:
+Ákvarðið fjölda móla af efnasambandinu og fjölda móla af hverri frumeindategund í eftirfarandi:
 
 <!-- SEG:m68700:problem:fs-idp51941104 -->
 (a) 25,0 g af própýleni, C[[sub:3]]H[[sub:6]]
@@ -767,7 +767,7 @@ Reiknaðu mólmassa hvers eftirfarandi:
 (e) 325 mg af aspiríni, C[[sub:6]]H[[sub:4]](CO[[sub:2]]H)(CO[[sub:2]]CH[[sub:3]])
 
 <!-- SEG:m68700:problem:fs-idp56804752 -->
-Ákvarðaðu massa eftirfarandi:
+Ákvarðið massa eftirfarandi:
 
 <!-- SEG:m68700:problem:fs-idp56805136 -->
 (a) 0,0146 mól KOH
@@ -788,7 +788,7 @@ Reiknaðu mólmassa hvers eftirfarandi:
 (a) 0,819 g; (b) 307 g; (c) 0,23 g; (d) 1,235 [[MATH:25]] 10[[sup:6]] g (1235 kg); (e) 765 g
 
 <!-- SEG:m68700:problem:fs-idp51218912 -->
-Ákvarðaðu fjölda móla af efnasambandinu og fjölda móla af hverri frumeindategund í eftirfarandi:
+Ákvarðið fjölda móla af efnasambandinu og ákvarðið fjölda móla af hverri frumeindategund í eftirfarandi:
 
 <!-- SEG:m68700:problem:fs-idp51219440 -->
 (a) 2,12 g af kalíumbrómíði, KBr
@@ -806,7 +806,7 @@ Reiknaðu mólmassa hvers eftirfarandi:
 (e) 0,1250 mg af koffíni, C[[sub:8]]H[[sub:10]]N[[sub:4]]O[[sub:2]]
 
 <!-- SEG:m68700:problem:fs-idp50969648 -->
-Ákvarðaðu massa eftirfarandi:
+Ákvarðið massa eftirfarandi:
 
 <!-- SEG:m68700:problem:fs-idp50970032 -->
 (a) 2,345 mól LiCl
@@ -830,7 +830,7 @@ Reiknaðu mólmassa hvers eftirfarandi:
 Áætluð lágmarks dagleg næringarþörf fyrir amínósýruna lefsín, C[[sub:6]]H[[sub:13]]NO[[sub:2]], er 1,1 g. Hver er þessi þörf í mólum?
 
 <!-- SEG:m68700:problem:fs-idp41416736 -->
-Ákvarðaðu massann í grömmum af eftirfarandi:
+Ákvarðið massa eftirfarandi í grömmum:
 
 <!-- SEG:m68700:problem:fs-idp41417120 -->
 (a) 0,600 mól af súrefnisfrumeindum
@@ -845,7 +845,7 @@ Reiknaðu mólmassa hvers eftirfarandi:
 (a) 9,60 g; (b) 19,2 g; (c) 28,8 g
 
 <!-- SEG:m68700:problem:fs-idp42846096 -->
-55 kg kona er með 7,5 [[MATH:28]] 10[[sup:−3]] mól af blóðrauða (mólmassi = 64.456 g/mól) í blóðinu. Hversu margar blóðrauðasameindir eru þetta? Hvað er þetta magn í grömmum?
+55 kg kona er með 7,5 [[MATH:28]] 10[[sup:−3]] mól af blóðrauða (mólmassi = 64.456 g/mól) í blóði sínu. Hversu margar blóðrauðasameindir eru þetta? Hver er þessi massi í grömmum?
 
 <!-- SEG:m68700:problem:fs-idp42865184 -->
 Ákvarðaðu fjölda atóma og massa sirkons, kísils og súrefnis sem finnast í 0,3384 mólum af sirkoni, ZrSiO[[sub:4]], sem er hálfeðalsteinn.
@@ -854,10 +854,10 @@ Reiknaðu mólmassa hvers eftirfarandi:
 sirkon: 2,038 [[MATH:29]] 10[[sup:23]] atóm; 30,87 g; kísill: 2,038 [[MATH:30]] 10[[sup:23]] atóm; 9,504 g; súrefni: 8,151 [[MATH:31]] 10[[sup:23]] atóm; 21,66 g
 
 <!-- SEG:m68700:problem:fs-idp40477552 -->
-Ákvarðaðu hvort af eftirfarandi inniheldur mesta massa vetnis: 1 mól af CH[[sub:4]], 0,6 mól af C[[sub:6]]H[[sub:6]] eða 0,4 mól af C[[sub:3]]H[[sub:8]].
+Ákvarðaðu hvað af eftirfarandi inniheldur mesta massa vetnis: 1 mól af CH[[sub:4]], 0,6 mól af C[[sub:6]]H[[sub:6]] eða 0,4 mól af C[[sub:3]]H[[sub:8]].
 
 <!-- SEG:m68700:problem:fs-idp40492608 -->
-Ákvarðaðu hvort af eftirfarandi inniheldur mesta massa áls: 122 g af AlPO[[sub:4]], 266 g af Al[[sub:2]]Cl[[sub:6]] eða 225 g af Al[[sub:2]]S[[sub:3]].
+Ákvarðaðu hvað af eftirfarandi inniheldur mesta massa áls: 122 g af AlPO[[sub:4]], 266 g af Al[[sub:2]]Cl[[sub:6]] eða 225 g af Al[[sub:2]]S[[sub:3]].
 
 <!-- SEG:m68700:solution:fs-idp40495296 -->
 AlPO[[sub:4]]: 1,000 mól, eða 26,98 g Al; Al[[sub:2]]Cl[[sub:6]]: 1,994 mól, eða 53,74 g Al; Al[[sub:2]]S[[sub:3]]: 3,00 mól, eða 80,94 g Al; Al[[sub:2]]S[[sub:3]] sýnið inniheldur því mesta massa af Al.
@@ -875,7 +875,7 @@ Cullinan-demanturinn var stærsti náttúrulegi demantur sem fundist hefur (25. 
 Einn 55 gramma skammtur af tilteknu morgunkorni gefur 270 mg af natríum, sem er 11% af ráðlögðum dagskammti. Hversu mörg mól og atóm af natríum eru í ráðlögðum dagskammti?
 
 <!-- SEG:m68700:problem:fs-idp71747728 -->
-Ákveðið hnetukornmorgunkorn inniheldur 11,0 grömm af sykri (súkrósa, C[[sub:12]]H[[sub:22]]O[[sub:11]]) í hverjum 60,0 gramma skammti. Hversu marga skammta af þessu morgunkorni þarf að borða til að neyta 0,0278 móla af sykri?
+Ákveðið hnetumorgunkorn inniheldur 11,0 grömm af sykri (súkrósa, C[[sub:12]]H[[sub:22]]O[[sub:11]]) í hverjum 60,0 gramma skammti. Hversu marga skammta af þessu morgunkorni þarf að borða til að neyta 0,0278 móla af sykri?
 
 <!-- SEG:m68700:solution:fs-idp71749776 -->
 0,865 skammtar, eða um það bil 1 skammtur.
@@ -884,13 +884,13 @@ Einn 55 gramma skammtur af tilteknu morgunkorni gefur 270 mg af natríum, sem er
 Túpa af tannkremi inniheldur 0,76 g af natríummónóflúorfosfati (Na[[sub:2]]PO[[sub:3]]F) í 100 ml.
 
 <!-- SEG:m68700:problem:fs-idm180787456 -->
-(a) Hver var massi flúoratómanna í mg?
+(a) Hver var massi flúoratóma í mg?
 
 <!-- SEG:m68700:problem:fs-idm180787072 -->
-(b) Hversu mörg flúoratóm voru til staðar?
+(b) Hversu mörg flúoratóma voru til staðar?
 
 <!-- SEG:m68700:problem:fs-idp40890784 -->
-Hvert af eftirfarandi táknar fæstan fjölda sameinda?
+Hvað af eftirfarandi táknar fæstan fjölda sameinda?
 
 <!-- SEG:m68700:problem:fs-idp40891168 -->
 (a) 20,0 g af H[[sub:2]]O (18,02 g/mól)
@@ -911,7 +911,7 @@ Hvert af eftirfarandi táknar fæstan fjölda sameinda?
 20,0 g af H[[sub:2]]O táknar fæstan fjölda sameinda þar sem það hefur fæstan fjölda móla.
 
 <!-- SEG:m68700:glossary-term:fs-idp40901280-term -->
-Tala Avogadros ([[i:N[[sub:A]]]])
+Avogadrosartala ([[i:N[[sub:A]]]])
 
 <!-- SEG:m68700:glossary-def:fs-idp40901280-def -->
 tilraunakennt ákvarðað gildi fjölda eininga sem mynda 1 mól af efni, jafnt og 6,022 [[MATH:33]] 10[[sup:23]] mól[[sup:−1]]
