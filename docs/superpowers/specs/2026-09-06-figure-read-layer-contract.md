@@ -77,7 +77,7 @@ Each row is measured on chemistry 2e, denominator **1,148** CNXML `<image src>` 
 |---|---|---|
 | H1 | text inside **`/Form` XObjects**, recursively, with the form's own `/Resources/Font` and its `/Matrix` composed with the CTM at the `Do` site | **274 figures** — 35% of text-bearing |
 | H2 | **CID / `/Type0`** fonts, decoded through `/ToUnicode` | **11 figures**, and see the spend note below |
-| H3 | **`/Encoding /Differences`** — a font may map a control byte to a real glyph | at least 1 known (`\x1f` → GREEK SMALL LETTER ALPHA) |
+| H3 | **`/Encoding /Differences`** — a font may map a control byte to a real glyph | 🔴 **96 of 280 EPS figures (34%)** — `°C` read as `¡C`, `λ` as a DEL byte, **and that wrong text reaches the PAID MT and the published image**. *(First seen as a single Greek-alpha instance; measured far larger.)* |
 | H4 | `/Contents` as **an ARRAY of streams**, concatenated | already handled; must not regress |
 | H5 | **`.eps` / `.ai`**, via `gs -dEPSCrop -sDEVICE=pdfwrite` before parsing | the precedence-winning tree is EPS-only for some chapters |
 | H6 | **colour operators beyond `k`** — the current reader tracks CMYK (`k`) **only**, so `rg`, `g`, `sc`/`scn` fills are not recorded at all | unquantified; a known gap |
@@ -122,7 +122,7 @@ regression control, and the regression control alone cannot see a missing capabi
    or compare `ITEMS` (the drawn string plus its x/y/size/rot) run-for-run, which is what the
    block-key measurement used and which is exact.
 
-⚠️ **The `.eps` half of (1) is UNMEASURED**, not clean → the register owns that item.
+✅ **The `.eps` half of (1) WAS measured the same day: 280 figures, 0 real character losses, 0 `gs` conversion failures** → `TEXT-COVERAGE.md` addendum 2. ⚠️ **What remains unmeasured is whether `gs` itself drops text before either reader sees it** — a reader-vs-reader check structurally cannot answer that; only criterion (5) can.
 
 ---
 

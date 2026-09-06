@@ -121,7 +121,7 @@ It is invisible to any count-based check, because the count is non-zero and look
 
 ## What is NOT established here
 
-- **The 92 EPS cases are unmeasured**, not clean. They need the same char-level control after
+- ✅ **SUPERSEDED BY ADDENDUM 2, BELOW — and the set was 280, not 92.** *(Kept because the correction is the point: 92 was only the EPS inside the word-count discrepancies, a subset of a subset.)* They needed the same char-level control after
   `gs` conversion before the candidate is adopted.
 - pdfplumber emitted `Cannot set non-stroke color: 2 components specified` on some figures — a
   colour space it does not map. That touches the `fill` field the composer needs and belongs on
@@ -192,3 +192,23 @@ means nothing.
 ⚠️ **The lesson to keep: a check whose result is 100% is describing its own instrument until
 proven otherwise.** Both saturated rates found today — this one, and the earlier `docref` finding
 — were categories, not samples.
+
+---
+
+# Reconciliation — the numbers that legitimately differ, and the one that was wrong
+
+🔴 **THIS FILE IS THE OWNER OF THE CENSUS NUMBERS. Where another document disagrees, this wins —
+and several were written before the census existed.**
+
+| pair | both right? | which predicate |
+|---|---|---|
+| **"ours reads 496"** vs **"ours reads 504"** | ✅ both | **496** = the `page-text` bucket, i.e. figures our reader reads *correctly*. **504** = the bake-off's "returns ≥ 1 word", which additionally counts **8 `/Type0` figures where it returns control-byte garbage**. ▶ **Use 496 when the question is coverage; 504 when the question is regression risk.** |
+| **`/Type0` = 11** vs **= 8** | ✅ both | **11** text-bearing figures *carry* a `/Type0` font; **8** land in the `type0-unreadable` bucket. |
+| **"274 of 894"** vs **"of 895"** | ⚠️ 895 | The resolved population is **895**. `894` is a typo that propagated. |
+| **`unresolved` = 170** vs **= 253** | 🔴 **253** | **170 was measured before this census and is superseded.** The census resolves vector-only through `sources.py`'s `SOURCE_EXTS` with no raster probe, and reports **253**. ▶ **This makes ruling R9 (`unresolved` is reported, never fatal) STRONGER, not weaker** — the always-red exit code it prevents would have fired even more often. |
+| **`runs.json` = 8 fields** vs **= 9** | 🔴 **9** | The read-layer contract owns this list. Earlier prose said eight, omitting `tm`. |
+
+⚠️ **Every number above is a DATED MEASUREMENT, not an enforceable value.** Re-run the producers
+rather than quoting them: `python3 text-coverage-census.py <book>` · `read-layer-bakeoff.py` ·
+`read-layer-eps-control.py`. **All three resolve their own paths from `__file__` and take
+`FIGTEXT_CENSUS_OUT` for output**, so they run on any machine with the artwork configured.

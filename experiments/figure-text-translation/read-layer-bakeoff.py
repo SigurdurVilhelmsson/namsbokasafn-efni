@@ -7,13 +7,15 @@ on the failing set means nothing if it silently regresses the working set.
 """
 import json, os, subprocess, sys, tempfile
 from pathlib import Path
-EXP = Path('/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation')
+EXP = Path(__file__).resolve().parent   # never an absolute machine path - repo rule
 sys.path.insert(0, str(EXP)); sys.path.insert(0, str(EXP / 'pylibs'))
 os.environ.setdefault('FIGTEXT_PYLIBS', str(EXP / 'pylibs'))
 import sources as S, pdfplumber, warnings
 warnings.filterwarnings('ignore')
 
-CEN = Path('/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/text-coverage-efnafraedi-2e.json')
+OUTDIR = Path(os.environ.get('FIGTEXT_CENSUS_OUT') or (EXP / 'census-out'))
+OUTDIR.mkdir(parents=True, exist_ok=True)
+CEN = EXP / 'text-coverage-efnafraedi-2e.json'
 rows = json.loads(CEN.read_text())
 TEXT = [r for r in rows if r['bucket'] in ('page-text','form-text-only','type0-unreadable','text-but-unexplained')]
 cfg = S.load_config(); trees = S.load_trees('efnafraedi-2e', cfg); prec = cfg['editionPrecedence']
@@ -67,7 +69,7 @@ for i, r in enumerate(TEXT):
     out.append(dict(name=n, bucket=r['bucket'], oracle=r.get('words',0), ours=o, plumber=pl))
     if i % 100 == 0: print(f"  ...{i}/{len(TEXT)}", flush=True)
 
-Path('/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/a14335b8-192d-4c29-9cc6-d2a67f9048b6/scratchpad/census/bakeoff.json').write_text(json.dumps(out, indent=1))
+(OUTDIR / 'bakeoff.json').write_text(json.dumps(out, indent=1))
 n = len(out)
 ours_ok = sum(1 for r in out if r['ours'] > 0)
 pl_ok    = sum(1 for r in out if r['plumber'] > 0)

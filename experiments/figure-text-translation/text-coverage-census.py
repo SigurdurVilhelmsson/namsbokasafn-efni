@@ -13,7 +13,7 @@ A disagreement is the finding.
 import json, re, subprocess, sys, tempfile, os
 from pathlib import Path
 
-EXP = Path('/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation')
+EXP = Path(__file__).resolve().parent   # never an absolute machine path - repo rule
 sys.path.insert(0, str(EXP))
 sys.path.insert(0, str(EXP / 'pylibs'))
 os.environ.setdefault('FIGTEXT_PYLIBS', str(EXP / 'pylibs'))
@@ -21,7 +21,7 @@ import pikepdf
 import sources as S
 
 BOOK = sys.argv[1] if len(sys.argv) > 1 else 'efnafraedi-2e'
-REPO = Path('/home/siggi/dev/repos/namsbokasafn-efni')
+REPO = Path(__file__).resolve().parents[2]
 SRC = REPO / 'books' / BOOK / '01-source'
 
 # --- population: CNXML <image src> basenames -------------------------------
@@ -115,7 +115,7 @@ for n in names:
     rows.append(dict(name=n, bucket=bucket, words=w, edition=key,
                      dehashed=dehashed, ext=p.suffix.lower(), **o))
 
-out = Path('/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/a14335b8-192d-4c29-9cc6-d2a67f9048b6/scratchpad/census')
+out = Path(os.environ.get('FIGTEXT_CENSUS_OUT') or (Path(__file__).resolve().parent / 'census-out'))
 (out / f'{BOOK}.json').write_text(json.dumps(rows, indent=1))
 from collections import Counter
 c = Counter(r['bucket'] for r in rows)

@@ -10,7 +10,7 @@ the RAW EPS against the text present after conversion.
 import json, os, re, subprocess, sys, tempfile, warnings
 from collections import Counter
 from pathlib import Path
-EXP = Path('/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation')
+EXP = Path(__file__).resolve().parent   # never an absolute machine path - repo rule
 sys.path.insert(0, str(EXP)); sys.path.insert(0, str(EXP / 'pylibs'))
 os.environ.setdefault('FIGTEXT_PYLIBS', str(EXP / 'pylibs'))
 warnings.filterwarnings('ignore')

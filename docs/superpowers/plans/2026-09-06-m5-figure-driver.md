@@ -3,9 +3,10 @@
 > 🔴 **TASK 0's READ-SIDE REPAIRS (P1, P2, P3, P9) ARE SUPERSEDED BY A DECISION TAKEN AFTER THIS PLAN WAS WRITTEN → [`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../../decisions/2026-09-06-figure-read-layer-respec.md).**
 > The read layer — `extract.py` + `pdftext.py` + `strip-text.py`, ~239 lines — is being **replaced with a ready-made MIT reader**, not repaired. The measured reason is in [`TEXT-COVERAGE.md`](../../../experiments/figure-text-translation/TEXT-COVERAGE.md): it reads **496 of 779** text-bearing chemistry figures, and one figure is already outside every mechanism we have named. **The LAYOUT side (`figtext.py`, `compose.py`, `svgout.py`) is untouched by that decision** and everything in this plan that depends on it still stands.
 > ▶ **What survives here verbatim:** the driver architecture, the spend rules, the sidecar/publish/review ordering, the outcome vocabulary, and every [USER] ruling. **What to re-read against the decision first:** Task 0 and Task 2.
-> ▶ **The read layer's requirements now have their own owner** → [`docs/superpowers/specs/2026-09-06-figure-read-layer-contract.md`](../specs/2026-09-06-figure-read-layer-contract.md). **Task 0 and Task 2 are written against it, not against the repair list.**
+> ▶ **The read layer's requirements now have their own owner** → [`docs/superpowers/specs/2026-09-06-figure-read-layer-contract.md`](../specs/2026-09-06-figure-read-layer-contract.md).
+> 🔴 **CORRECTED — AN EARLIER VERSION OF THIS BANNER CLAIMED "Task 0 and Task 2 are written against it, not against the repair list". THAT WAS FALSE OF THIS FILE.** Task 0 is still titled *Repair the Python chain*, its Step 4 table still prescribes P1/P2/P3, and Step 6c is still the `/Form`-descent spike. **A banner asserting a rewrite that did not happen is worse than no banner**, because the chosen execution mode hands a fresh agent the TASK TEXT, not this header. ▶ **The per-step verdicts are marked inside Task 0 itself; read them there.**
 
-> 🔴 **REVISED TWICE, 2026-09-06. TASK 0's ACCEPTANCE IS PENDING A CENSUS TASK 0 ITSELF PRODUCES; TASKS 1–6b ARE PROVISIONAL UNTIL IT LANDS.**
+> 🔴 **REVISED TWICE, 2026-09-06.** ✅ **THE CENSUS IS NO LONGER PENDING — it was produced and committed later the same day** (`experiments/figure-text-translation/TEXT-COVERAGE.md`), so every "pending a census" line below is discharged. **Tasks 1–6b are no longer gated on it; they are gated on the read-layer adapter.**
 > A blind Fable closure review of the FIRST revision confirmed **8 more defects, 0 refuted** (48 claims self-struck, 37 lower-severity left unverified). **Two are blocking, and both are one root cause:** text drawn inside a `/Form` XObject is invisible to the extractor, and this plan's own P3 fix turns that from a loud crash into a **silent green copy** — English shipped to readers with a verdict of `ok`, matching this plan's own former acceptance line byte for byte. → new **P9**, a new `unreadable-text` outcome, and a replaced acceptance criterion.
 > ▶ **The pattern across three review rounds is worth naming: every blocking finding has been about WHAT THE PYTHON CHAIN ACTUALLY DOES ON REAL ARTWORK — which is settled for free, on this box, with no API call.** That is why Task 0 comes first and why its acceptance is a measurement rather than a number written in advance.
 > ⚠️ **THE TEST BLOCKS BELOW WITH `...` BODIES ARE SKETCHES, NOT TESTS.** Five capped findings were *"this test cannot fail"*. When a task is executed, either write its tests in full or state the property that makes each one non-vacuous — **a test written as a suggestion is what a fresh agent satisfies vacuously.**
@@ -106,6 +107,22 @@ The old plan ran Task 1 → 6 and would have failed at the first real figure. Se
 
 ### Task 0: Repair the Python chain so it can process real artwork
 
+> 🔴 **HALF OF THIS TASK IS SUPERSEDED. READ THIS BEFORE EXECUTING ANY STEP.**
+> [USER] 2026-09-06 (later the same day) → [`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../../decisions/2026-09-06-figure-read-layer-respec.md):
+> **the READ layer is REPLACED with an off-the-shelf reader, not repaired.**
+>
+> | step | verdict |
+> |---|---|
+> | **P1, P2** (`extract.py`) | 🔴 **DO NOT IMPLEMENT** — that file is being replaced. P2's *requirement* — an unreadable font must be REPORTED, never silently skipped — survives as contract **H2** |
+> | **P3** (`figtext.py`) | ✅ **IMPLEMENT** — `figtext.py` is the LAYOUT layer, which is kept |
+> | **P4** (`emit-blocks.py`) | ⚠️ **DEFER** — it orchestrates the reader; its shape depends on the adapter |
+> | **P5** (EPS → PDF via `gs`) | ✅ **IMPLEMENT** — the adapter needs it too; 0 failures measured over 280 figures |
+> | **P6** (`sources.py`) | ✅ **IMPLEMENT** — resolution, not reading |
+> | **P8** (block-key derivation) | ✅ **IMPLEMENT** — emit and compose must agree whoever reads |
+> | **P9** (`/Form` descent) | 🔴 **FORECLOSED** — the adopted reader already does it |
+> | **Step 6b** (produce the census) | ✅ **DONE** — committed as `TEXT-COVERAGE.md`; do not re-run as a task |
+> | **Step 6c** (the P9 spike) | ✅ **DISCHARGED** — the census and bake-off ARE the measurement R10 asked for, and the answer was *adopt, do not hand-write* |
+
 🔴 **Without this, every later task is tested against something that cannot run.** A throwaway-copy proof took ch04 from **6 translated + 23 crashes** to **13 translated + 16 copied + 0 crashes**, with no regression in the 6 that already worked.
 
 **Files:**
@@ -155,7 +172,7 @@ Cases, each of which must FAIL now:
 | `CNX_Chem_04_03_etheneBr_img` | **empty** | **no** | 17 | **17** |
 | `CNX_Chem_01_01_SciMethod` | `/TT0 /TT1` | **yes** | 0 | 0 |
 
-▶ **THE LAST ROW IS THE POINT: `SciMethod` IS THE FIGURE THE WHOLE EXPERIMENT WAS DEVELOPED AGAINST, AND IT IS THE ATYPICAL ONE.** **274 of 894** resolution-winning chemistry vectors keep all their text inside Form XObjects — **8 of ch04's 23**. At HEAD they CRASH. With P1–P3 applied and nothing else, `CNX_Chem_04_04_limiting` (14 English words) yields `blocks: 0`, exit 0 → `copied-textless` → **English shipped, no sidecar, no review row, verdict `{ok:true}`.** Fixing the extractor alone is worse: 14 English words survive `strip-text` and sit *under* the composed Icelandic.
+▶ **THE LAST ROW IS THE POINT: `SciMethod` IS THE FIGURE THE WHOLE EXPERIMENT WAS DEVELOPED AGAINST, AND IT IS THE ATYPICAL ONE.** **274 of 895** resolution-winning chemistry vectors keep all their text inside Form XObjects — **8 of ch04's 23**. At HEAD they CRASH. With P1–P3 applied and nothing else, `CNX_Chem_04_04_limiting` (14 English words) yields `blocks: 0`, exit 0 → `copied-textless` → **English shipped, no sidecar, no review row, verdict `{ok:true}`.** Fixing the extractor alone is worse: 14 English words survive `strip-text` and sit *under* the composed Icelandic.
 
 **P9 has two halves, and BOTH are needed:**
 - **Read:** `extract.py` / `pdftext.parse` descend recursively into `/Form` XObjects, using each form's own `/Resources/Font` and its `/Matrix` composed with the CTM at the `Do` site.
@@ -328,7 +345,7 @@ describe('verdict', () => {
     expect(v.reasons.join(' ')).toContain('failed-compose');
   });
 
-  // 🔴 R9, [USER] 2026-09-06. 170 of 1,148 chemistry figures (14.8%) are unresolved in the
+  // 🔴 R9, [USER] 2026-09-06. 253 of 1,148 chemistry figures (22%) — *(prose here said 170 before the census existed; `TEXT-COVERAGE.md` owns this number)* are unresolved in the
   // delivery TODAY, in every chapter. Failing on it made every run exit 1 by design.
   // 🔴 Same shape as unresolved: named, never fatal. If it failed the run, ch04 would exit 1
   // on 8 of 30 for as long as the extractor cannot read Form XObjects.
@@ -400,7 +417,7 @@ describe('verdict', () => {
 export const CLASSIFICATION_OUTCOMES = [
   'translated', 'copied-photo', 'copied-textless', 'unresolved',
   // 🔴 The figure HAS text; our extractor cannot read it — today because the text lives
-  // inside a /Form XObject (274 of 894 chemistry vectors). NOT copied-*: a count of zero
+  // inside a /Form XObject (274 of 895 chemistry vectors). NOT copied-*: a count of zero
   // and an inability to count are different facts. Non-fatal, like `unresolved` (R9), or
   // ch04 would exit 1 on 8 of 30 until P9 lands.
   'unreadable-text',
@@ -930,4 +947,4 @@ git commit -m "feat(M5 Task 6b): the paid half — the purchase is recorded befo
 - **A Greek letter is being treated as whitespace.** `/Differences [31, /uni03B1]` means `\x1f` IS alpha, and `'\x1f'.isspace()` is True. `pdftext.parse` never applies `/Encoding /Differences` at all, so alpha reaches the wire raw and composes as a missing glyph. **Pre-existing, arm-independent, and it degrades every Greek-bearing chemistry figure M5 translates.** → **§C138** owns its status.
 - **Widening the review surface to non-figure media (R7)** — three legs, not a filter: the 12 ch04 images have no node in `02-structure` at all.
 - **`books/<slug>/media/` and `figure-text/` have no permission class**, and this plan adds a third automated writer to `media/`.
-- **170 of 1,148 chemistry figures are unresolved in the artwork delivery** — R9 makes it reportable, not fixed.
+- **253 of 1,148 chemistry figures are unresolved in the artwork delivery** — R9 makes it reportable, not fixed.
