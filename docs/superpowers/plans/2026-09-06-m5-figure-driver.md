@@ -574,8 +574,16 @@ verified `'\x1f'.isspace() is True`, and a `/Differences` font maps `\x1f` to a 
   OUR code**: `pylibs/` is gitignored, so the repo distributes no third-party code. For the
   record — pdfplumber **MIT** (new), and its runtime deps pdfminer.six, pypdfium2, cryptography
   and Pillow; pikepdf **MPL-2.0** and pycairo **LGPL-2.1-only OR MPL-1.1**, both already used by
-  the KEPT layer. All import-only. **Rationale: `tools/figure-run.js` is MIT and spawns this
-  tree**, so anything else creates a new MIT→copyleft edge beside known gap E-2.
+  the KEPT layer. All import-only. 🔴 **CORRECTED 2026-09-07 — THIS LINE ASSERTED A LIVE EDGE
+  THAT DOES NOT EXIST, IN THE PRESENT TENSE, AND IT REACHED THE ROOT `LICENSE` BEFORE THE R5
+  IMPLEMENTER CAUGHT IT.** It read *"Rationale: `tools/figure-run.js` is MIT and spawns this
+  tree"*. **`tools/figure-run.js` has never existed** — it is this plan's own Task 1 deliverable,
+  correctly written as *new* / *Create* everywhere else here, and as *"will spawn"* in the
+  campaign register. Only this sentence conjugated a planned artefact into a present fact.
+  **The REAL rationale, verified: `tools/publish-figure-svg.js` (MIT) reads this tree's
+  `out/translated.svg` and `out/meta.json` by default (`:202-208`)** — the edge already exists
+  and needs no driver. Anything but MIT here creates a new MIT→copyleft edge beside known gap
+  E-2. ▶ **A plan's present tense is a hypothesis; open the file before building on it.**
 
 - [ ] **Step 4: Amend the CONTRACT and the CENSUS artefact.** Both carry numbers the scan
   falsified: the spec's `504 read / 275 unread` acceptance populations, and `TEXT-COVERAGE.md`'s

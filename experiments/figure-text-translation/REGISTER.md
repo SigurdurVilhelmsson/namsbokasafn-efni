@@ -344,6 +344,35 @@ case down to **2.5%** of the ink the shipped code preserves. **The BT assertion 
 wreckage.** Only the non-white pixel count sees it, and on 17 of 25 figures the two arms are
 pixel-identical, so **a regression is invisible on two thirds of the figures you might sample.**
 
+### ④ OPEN — 143 of 530 figures move a block's GEOMETRY by >1pt, and it is not all re-segmentation
+
+Raised by the R5 implementer and handed to the controller; priced here 2026-09-07.
+
+**What was measured.** Of 530 figures both readers read, **143 differ in C4 block geometry**.
+109 of those also change block keys — expected, since the two readers segment differently by
+design (ruling R-10). But **34 have an IDENTICAL key multiset, and 20 of those carry no
+duplicate keys at all**, so the pairing is unambiguous and the block genuinely moved.
+
+**Controller pricing.** **1,714 blocks** moved across those 143 figures.
+⚠️ **The obvious story — "it is only axis tick labels" — was tested and does NOT hold.**
+Numeric keys are **44%** of the moved set against a **33%** baseline among ordinary block keys:
+real enrichment, not domination. 66% are ≤4 characters, but long multi-line labels moved too
+(`'Large molecules:|- High boiling point|- Not very volatile|…'`). **The control is what killed
+the tidy explanation; without it this would have been filed as a non-finding.**
+
+**Why it is OPEN rather than a defect.** The prior favours *correction*: R2 measured the old
+reader's advance as **64.517 where the real distance to the next glyph is 67.019**, and its
+`size` as a per-glyph *width* on rotated text — both of which misplace a block. A more accurate
+reader SHOULD move things. But "should move" is not "moved correctly", and nothing here
+establishes which.
+
+🔴 **The right instrument is a COMPOSED-IMAGE diff, not a coordinate delta** — the question is
+whether a reader sees the label in the right place, and only the composition answers that. That
+belongs with the driver work, which is what first composes figures at scale.
+
+✅ **Live exposure today is ZERO**: the only block-keyed sidecars in the repo are 3, all under
+`books/__e2e-fixture__/`. Nothing has been bought against either segmentation.
+
 ### ④ Not exercised, stated rather than left silent
 
 The census's **`unresolved` rows have no file to stage** (nothing is measurable on them), and no
