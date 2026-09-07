@@ -134,6 +134,13 @@ def fit_circle(pts):
 
 BOXW = 63.0     # rounded rect is 67.3pt wide; 2pt padding each side
 report, missing, degenerate = [], [], []
+# The MACHINE-READABLE half of the report printed at the bottom of this file. `report`
+# holds formatted DISPLAY STRINGS ("  center 12.0->12.00pt  'Boiling|point'"), so it
+# cannot be compared against blocks.json by anything; these two hold BLOCK KEYS, in draw
+# order, WITH MULTIPLICITY. A wrapper compares them as multisets - a figure may carry the
+# same key twice and this loop draws both, so a lost twin leaves a label undrawn with the
+# key SET identical (ruling R-13).
+keys, translated = [], []
 
 for b in blocks:
     ls = FT.lines(b)
@@ -152,18 +159,31 @@ for b in blocks:
     # from the one emit-blocks.py bought leaves the label in English with nothing to
     # report. test_blockkey_consumers.py asserts the two agree on a real figure.
     key = block_key(b)
+    keys.append(key)
 
     if CONTROL:
         new = key if arc else en_lines
     else:
-        if key not in TR:
+        value = FT.normalise_block_value(TR[key], arc) if key in TR else None
+        # ⚠️ AN EMPTY OR WHITESPACE-ONLY VALUE IS *MISSING*, NOT A TRANSLATION. It reaches
+        # this line looking like a hit - `key in TR` is True - and then DELETES the label:
+        # `wrap()` below turns a whitespace-only paragraph into '' and cairo draws nothing,
+        # and the arc path draws nothing for the same reason. Before this branch existed
+        # the erasure was recorded nowhere at all, so the block vanished from the figure
+        # while `missing` stayed empty and every count read clean.
+        # The predicate is `.strip()` because that is exactly what `wrap()` does with
+        # `para.split()`; it deliberately errs toward KEEPING English, which is the safe
+        # direction. (blockkey.py's warning that `.strip()` can eat a /Differences glyph is
+        # about SOURCE runs read out of a PDF, not about an MT/editor-authored value.)
+        if value is None or not (value if arc else ''.join(value)).strip():
             # Keep the ORIGINAL text. A missing key must never delete text from a
             # figure - formulas (H2O(g)) legitimately have no translation, and a
             # silent blank is far worse than an untranslated label.
             missing.append(key)
             new = key if arc else en_lines
         else:
-            new = FT.normalise_block_value(TR[key], arc)
+            translated.append(key)
+            new = value
 
     if arc:
         cx, cy, R = circle
@@ -263,6 +283,37 @@ if SVG:
     n = write_svg(OUT / 'artwork.svg', OUT / svg_name, ITEMS, H_PT)
     print(f"wrote out/{svg_name}  ({n} bytes)")
 
+# THE VERDICT, IN A FILE. Everything below this line is stdout, and stdout is where the
+# ENGLISH KEPT warning has always gone - which is why a wrapper reading `returncode` and
+# `stderr` saw success on a figure that shipped in English (this script has no exit call
+# at all; it falls off the end at 0). `figure-compose.py` reads THIS instead and compares
+# `blocks` and `missing` against blocks.json as MULTISETS.
+#
+# ⚠️ WRITTEN AFTER THE PNG AND THE SVG ON PURPOSE: its presence then means the drawing
+# completed. `svgout.write_svg` asserts on the artwork's last tag and can die AFTER
+# translated.png is on disk, and a report written before that would describe a compose
+# that never finished.
+#
+# ⚠️ NOTHING IS PRINTED BETWEEN THE `!!` HEADER BELOW AND ITS KEYS, AND NOTHING MAY BE.
+# `test_blockkey_consumers.py:88-97` parses that block out of stdout: it starts at the
+# `!!` line, `ast.literal_eval`s each following line, and stops at the first BLANK one -
+# a blank that only exists as the leading '\n' of whatever prints next. Any new stdout
+# line must therefore precede the header or begin with '\n'.
+(OUT / 'compose-report.json').write_text(json.dumps({
+    'blocks': keys,
+    'missing': missing,
+    'translated': translated,
+    # NAMED here as well as printed. `degenerate` is not in the wrapper's contract, but
+    # dropping it from the machine-readable copy would narrow what a driver can see to
+    # less than what a human reading stdout sees.
+    'degenerate': degenerate,
+    'translationsPath': str(tr_path),
+    # A --control run re-injects the ENGLISH and never populates `missing`, so a consumer
+    # that compared `missing` against the send:false blocks of a control run would refuse
+    # a correct one. It is here so that mistake is impossible to make silently.
+    'control': CONTROL,
+}, indent=1, ensure_ascii=False))
+
 print(f"{len(blocks)} blocks")
 print('\n'.join(report))
 if missing:
@@ -278,3 +329,6 @@ if degenerate:
     for k in degenerate:
         print(f"     {k!r}")
 print(f"\nwrote out/{name}")
+# Leading '\n' is load-bearing - see the note above the compose-report.json write.
+print(f"\nwrote out/compose-report.json  "
+      f"({len(translated)} translated, {len(missing)} english-kept)")
