@@ -111,23 +111,61 @@ def undecodable_fonts(block, fonts):
                    if fonts.get(r['font'], {}).get('decodable') is not True})
 
 
-def sendable(block, joined, fonts):
-    """Should this block be BOUGHT?  (ruling R-8)
+def missing_fonts(block, fonts):
+    """The fonts this block draws with that meta.json does not describe AT ALL.
 
-    Two independent reasons to hold money back, and they catch different things:
-      * `looks_verbatim` — it is a formula/symbol/number, identical in Icelandic;
-      * an undecodable font — its "text" is control-byte garbage, so translating it
-        buys mojibake.
-
-    🔴 The second clause is not redundant, and the ORDER OF EVENTS is why. Before the
-    pdfplumber reader, undecodable text arrived as bytes like '\x00\x0b\x00D' which
-    `looks_verbatim` calls verbatim — TRUE, but by luck: it contains no run of 3+
-    letters. Nothing was gating on decodability; the garbage was held back by an
-    accident of the prose heuristic. A reader that decodes more will eventually decode
-    something PARTIALLY, and a partially-decoded block reads as prose and becomes
-    sendable. This clause is what makes the hold deliberate.
+    A PLUMBING fault, not a text fault, and deliberately kept separate from the
+    decodability decision below: it means `runs.json` and `meta.json` are out of step
+    (`readlayer.resolve_font` mints an `UNSCOPED/...` entry precisely so this cannot
+    happen), and the cheap direction of a spend gate is to hold money back and say so.
     """
-    return not looks_verbatim(joined) and not undecodable_fonts(block, fonts)
+    return sorted({r['font'] for r in block if r['font'] not in fonts})
+
+
+def sendable(block, joined, fonts):
+    """Should this block be BOUGHT?  (ruling R-8, COMPLETED by R4b)
+
+    Three independent reasons to hold money back, and they catch different things:
+      * `looks_verbatim` — it is a formula/symbol/number, identical in Icelandic;
+      * the block's OWN TEXT did not decode — it is control-byte garbage, so
+        translating it buys mojibake;
+      * a font it draws with is missing from meta.json — the plumbing is broken.
+
+    🔴 THE DECODABILITY CLAUSE JUDGES THE BLOCK, NOT THE FONT — R4b, and R-8 is
+    COMPLETED rather than overturned. R-8 said `decodable` must be CONSUMED; it did not
+    say at what unit, and R4 read it conservatively as per-font. But `decodable: False`
+    is a property of a FONT, set the moment that font produces one unreadable run
+    ANYWHERE in the figure, while the unit of PURCHASE is a BLOCK. Measured on
+    CNX_Chem_05_02_FoodLabel — the only figure in 120 carrying an undecodable font —
+    the per-font rule held 24 blocks where a per-block rule holds 2: 22 FALSE
+    POSITIVES, 92% of all holds. The 2 real ones carry a bullet glyph
+    ('(cid:127) 5% or less'); the 22 withheld are clean English — 'Nutrition Facts',
+    'Calories 250', 'Total Fat 12g', '% Daily Value*'. Refusing to buy those is not
+    caution, it is a figure that silently ships in English.
+
+    The FLAG stays per-font (it is a font property, and the judge's `classify_type0`
+    expects it); only the DECISION moves. `undecodable_fonts` is unchanged and is what
+    emit-blocks.py REPORTS with, so a held block still names the font responsible.
+
+    🔴 The decodability clause is not redundant with `looks_verbatim`, and the ORDER OF
+    EVENTS is why. Before the pdfplumber reader, undecodable text arrived as bytes like
+    '\x00\x0b\x00D' which `looks_verbatim` calls verbatim — TRUE, but by luck: it
+    contains no run of 3+ letters. Nothing was gating on decodability; the garbage was
+    held back by an accident of the prose heuristic. A reader that decodes more will
+    eventually decode something PARTIALLY, and a partially-decoded block reads as prose
+    and becomes sendable. This clause is what makes the hold deliberate.
+
+    ⚠️ The predicate is IMPORTED from readlayer, never copied. `readlayer._looks_undecoded`
+    is deliberately identical to the judge's `classify_type0`, and a third implementation
+    is how the two drift apart. The import is function-local on purpose: `readlayer`
+    pulls in pdfplumber at module scope, and `read_layer_accept.py` imports it LAZILY so
+    that "readlayer.py is not importable" stays a reportable contract failure rather than
+    a crash at line 66.
+    """
+    from readlayer import _looks_undecoded
+    return (not looks_verbatim(joined)
+            and not _looks_undecoded(joined)
+            and not missing_fonts(block, fonts))
 
 
 def normalise_block_value(value, arc):

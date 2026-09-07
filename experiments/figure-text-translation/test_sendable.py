@@ -49,9 +49,23 @@ OK = {'PAGE/T1_0': dict(base='LiberationSans', decodable=True)}
 BAD = {'PAGE/T1_0': dict(base='ABCDEF+Subset', decodable=False)}
 PROSE = 'Wavelength'
 
-# ── 1. the gate itself ──────────────────────────────────────────────────────────────
-check('prose on an UNDECODABLE font is NOT sent',
-      sendable(block(PROSE, 'PAGE/T1_0'), PROSE, BAD), False)
+# ── 1. the gate itself — THE DECISION IS PER BLOCK (R4b) ────────────────────────────
+# R-8 said `decodable` must be CONSUMED; it did not say at what unit, and R4 read it as
+# per-font. `decodable: False` is a FONT property, set the moment that font produces one
+# unreadable run ANYWHERE in the figure, while the unit of PURCHASE is a BLOCK. So the
+# question is not "is this font ever unreadable?" but "did THIS TEXT come out garbage?".
+UNDECODED = 'Wave(cid:127)length'      # prose whose OWN text did not decode
+check('prose whose OWN TEXT did not decode is NOT sent',
+      sendable(block(UNDECODED, 'PAGE/T1_0'), UNDECODED, BAD), False)
+
+# 🔴 THE R4b BEHAVIOUR CHANGE, and the assertion a per-font revert turns red. On
+# CNX_Chem_05_02_FoodLabel the per-font rule held 24 blocks where 2 are genuinely
+# undecoded — 22 false positives, all clean English ('Nutrition Facts', 'Calories 250').
+# A figure that ships in English because one of its fonts has a bad glyph elsewhere is
+# not caution, it is a silent loss.
+check('R4b clean prose IS sent even on a FLAGGED font (the flag is per FONT, the '
+      'decision per BLOCK)',
+      sendable(block(PROSE, 'PAGE/T1_0'), PROSE, BAD), True)
 
 # ── 2. THE POSITIVE CONTROL — without it assertion 1 passes on `return False` ───────
 check('CONTROL prose on a DECODABLE font IS sent',
@@ -61,13 +75,18 @@ check('CONTROL prose on a DECODABLE font IS sent',
 check('verbatim on a decodable font is NOT sent',
       sendable(block('H2O', 'PAGE/T1_0'), 'H2O', OK), False)
 
-# ── 4. a block is only as sendable as its WORST font ────────────────────────────────
-# A label mixing a decodable body font with an undecodable symbol font must be held:
-# a block is bought whole, so one bad font poisons the purchase.
+# ── 4. a block is only as sendable as its WORST RUN ─────────────────────────────────
+# A block is bought whole, so one garbled run poisons the purchase — but the evidence is
+# that run's OWN TEXT, not its font's reputation. Both halves are asserted so the unit
+# cannot drift back: garbled -> held, clean -> sent, with the SAME flagged font table.
 mixed = block('Wave', 'PAGE/T1_0') + block('length', 'PAGE/T2_0')
 fonts = {'PAGE/T1_0': dict(decodable=True), 'PAGE/T2_0': dict(decodable=False)}
-check('one undecodable font in a mixed block holds the whole block',
-      sendable(mixed, PROSE, fonts), False)
+mixed_bad = block('Wave', 'PAGE/T1_0') + block('(cid:5)length', 'PAGE/T2_0')
+MIXED_BAD_JOINED = 'Wave (cid:5)length'
+check('one UNDECODED run in a mixed block holds the whole block',
+      sendable(mixed_bad, MIXED_BAD_JOINED, fonts), False)
+check('R4b CONTROL the same mixed block reading CLEAN is sent, flagged font and all',
+      sendable(mixed, PROSE, fonts), True)
 check('CONTROL the same mixed block with BOTH fonts decodable IS sent',
       sendable(mixed, PROSE, {'PAGE/T1_0': dict(decodable=True),
                               'PAGE/T2_0': dict(decodable=True)}), True)
@@ -87,9 +106,15 @@ check('the missing font is NAMED, not silently dropped',
 # Both halves are asserted so the reasoning cannot rot silently.
 GARBAGE = '\x00\x0b\x00D\x00\x0c'
 check('undecoded bytes look verbatim BY LUCK', looks_verbatim(GARBAGE), True)
-check('...and once they decode, only the font gate holds them',
-      (sendable(block(PROSE, 'PAGE/T1_0'), PROSE, BAD),
-       sendable(block(PROSE, 'PAGE/T1_0'), PROSE, OK)), (False, True))
+# A PARTIALLY decoded block is the case the luck runs out on: 'Wave\x0blength' carries a
+# run of 3+ letters, so looks_verbatim calls it PROSE and would have sent it. Only the
+# text-decodability clause holds it — and it holds it on a font table where nothing is
+# flagged at all, which is exactly what a per-font rule could never do.
+PARTIAL = 'Wave\x0blength'
+check('a PARTIALLY decoded block reads as prose to the old heuristic',
+      looks_verbatim(PARTIAL), False)
+check('...and the block-text gate holds it even with EVERY font marked decodable',
+      sendable(block(PARTIAL, 'PAGE/T1_0'), PARTIAL, OK), False)
 
 # ── 7. undecodable_fonts returns EMPTY, not None, on a clean block ───────────────────
 check('clean block reports no blocking fonts',
@@ -152,6 +177,13 @@ else:
     else:
         blocks = json.loads((OUT / 'blocks.json').read_text())
         meta_fonts = json.loads((OUT / 'meta.json').read_text())['fonts']
+        # Real block objects, re-derived from runs.json exactly as emit-blocks.py does
+        # (same grouping, same key rule — never a second implementation): blocks.json
+        # carries no font field, and 9d's non-vacuity clause needs one.
+        import figtext as FT
+        from blockkey import block_key, block_lines
+        _runs = json.loads((OUT / 'runs.json').read_text())
+        _blocks = FT.merge_blocks(FT.group(_runs))
         undec = [k for k, v in meta_fonts.items() if v.get('decodable') is False]
         # 9a NON-VACUITY: the figure must really carry an undecodable font, or 9b is
         # asserting over an empty set and would pass on a gate that does nothing.
@@ -168,6 +200,56 @@ else:
         # Without this, a gate that refused the whole figure would pass 9b.
         check('9c CONTROL decodable prose on the SAME figure is still sent',
               sum(1 for b in blocks if b['send']) > 0, True)
+        # ── 9d THE DECISION UNIT, ASSERTED BY CONTENT (R4b) ─────────────────────────
+        # 🔴 9b and 9c pass under BOTH units — which is precisely why they were not
+        # enough, and why the per-font decision survived R4 with everything green. A
+        # COUNT cannot say WHICH blocks were held, and both of this task's defects are
+        # cases where the count looked reasonable: 24 holds on a figure with a broken
+        # font reads as diligence until you read the 24 strings.
+        #
+        # Measured on this figure: per-FONT holds 24 blocks, per-BLOCK holds 2. The 2
+        # carry a bullet glyph poppler renders as (cid:127); the 22 are clean English.
+        from readlayer import _looks_undecoded
+        clean_on_flagged = []
+        for _b in _blocks:
+            _joined = (block_key(_b) if FT.is_arc(_b)
+                       else ' '.join(block_lines(_b)))
+            if (not looks_verbatim(_joined) and not _looks_undecoded(_joined)
+                    and {r['font'] for r in _b} & set(undec)):
+                clean_on_flagged.append(_joined)
+        # 9d-i NON-VACUITY, BOTH SIDES. A "2" proves nothing unless this figure really
+        # carries an undecodable font (9a) AND really carries clean prose drawn with it
+        # — otherwise the held set could be 2 on a figure with nothing to get wrong.
+        check('9d-i NON-VACUITY clean prose IS drawn with the undecodable font '
+              f'({len(clean_on_flagged)} blocks)',
+              len(clean_on_flagged) > 0, True)
+        # 9d-ii the held set BY CONTENT, not by count.
+        held_now = sorted(b['english'].strip() for b in blocks
+                          if not b['send'] and not looks_verbatim(b['english']))
+        check('9d-ii the held prose set is EXACTLY the two undecoded blocks',
+              held_now, ['(cid:127) 20% or', '(cid:127) 5% or less'])
+        # 9d-iii one freed block NAMED — the purchase R4b unblocks, asserted positively
+        # so a gate that quietly held everything again cannot pass 9d-ii by accident.
+        sent_now = {b['english'].strip() for b in blocks if b['send']}
+        check('9d-iii the flagship false positive IS now bought',
+              'Nutrition Facts' in sent_now, True)
+
+# ── 10. THE IMPORT MUST STAY LAZY (R4b introduced this dependency) ─────────────────
+# `figtext.sendable` imports readlayer._looks_undecoded rather than copying it, because a
+# third implementation of the predicate is how the reader and the judge drift apart. But
+# `readlayer` pulls in pdfplumber at module scope, and `read_layer_accept.py` imports
+# readlayer LAZILY on purpose, so that "readlayer.py is not importable" is a REPORTABLE
+# CONTRACT FAILURE naming what Task R2 must build — not a crash at its own import line.
+# Hoisting figtext's import to module scope would silently take that away, because
+# read_layer_accept imports figtext at module scope. Asserted in a SUBPROCESS: this file
+# has already imported readlayer by now, so an in-process check would pass vacuously.
+import subprocess as _sp
+_probe = ("import sys, figtext; "
+          "print('LOADED' if 'readlayer' in sys.modules else 'LAZY')")
+_r = _sp.run([sys.executable, '-c', _probe], cwd=str(Path(__file__).resolve().parent),
+             capture_output=True, text=True, timeout=120)
+check('10 importing figtext does NOT eagerly import readlayer',
+      _r.stdout.strip(), 'LAZY')
 
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)

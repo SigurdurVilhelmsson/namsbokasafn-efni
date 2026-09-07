@@ -9,9 +9,12 @@ Verbatim blocks — formulas, element symbols, bare numbers, unit symbols — ar
 emitted with `send: false`: they are identical in Icelandic and sending them
 costs money to corrupt chemistry.
 
-`send: false` ALSO covers a block drawn with a font the read layer could not decode
-to Unicode (ruling R-8): its "text" is control-byte garbage, so buying it buys
-mojibake. That flag lives in out/meta.json and this is what reads it.
+`send: false` ALSO covers a block whose OWN TEXT the read layer could not decode to
+Unicode (ruling R-8, completed by R4b): its "text" is control-byte garbage, so buying
+it buys mojibake. The `decodable` FLAG is per-font and lives in out/meta.json; this is
+what reads it, and it reports with it — but the DECISION is per BLOCK, because a block
+is the unit of purchase. On CNX_Chem_05_02_FoodLabel a per-font decision held 24 blocks
+where 2 are genuinely undecoded: 22 false positives, all of them clean English.
 """
 import sys, json, subprocess
 import _deps
@@ -29,18 +32,25 @@ runs = json.loads((OUT / 'runs.json').read_text())
 # NOTHING READ IT — the flag was a detector reporting into a file with no consumer. The
 # spend decision is made here, so the consumption belongs here.
 fonts = json.loads((OUT / 'meta.json').read_text())['fonts']
+# The per-BLOCK predicate (R4b). Imported from the read layer, never re-implemented:
+# it is deliberately identical to the judge's classify_type0, and a copy is how the
+# two drift apart.
+from readlayer import _looks_undecoded
 blocks = FT.merge_blocks(FT.group(runs))
 
-out, blocked = [], []
+out, blocked, freed = [], [], []
 for b in blocks:
     arc = FT.is_arc(b)
     lines = block_lines(b)
     key = block_key(b)
     joined = key if arc else ' '.join(lines)      # the MT unit is the LABEL, not the line
-    bad = FT.undecodable_fonts(b, fonts)
+    bad = FT.undecodable_fonts(b, fonts)          # per-FONT flag — REPORTING only
     send = FT.sendable(b, joined, fonts)
-    if bad and not FT.looks_verbatim(joined):
-        blocked.append((joined, bad))             # prose we WOULD have bought
+    if not FT.looks_verbatim(joined):
+        if _looks_undecoded(joined):
+            blocked.append((joined, bad))         # prose we WOULD have bought
+        elif bad:
+            freed.append((joined, bad))           # drawn with a flagged font, reads CLEAN
     out.append(dict(key=key, english=joined, lines=lines, arc=arc, send=send))
 (OUT / 'blocks.json').write_text(json.dumps(out, indent=1, ensure_ascii=False))
 
@@ -61,6 +71,16 @@ for b in out:
 # a font fix rather than a translation. A fail-closed gate nobody can see is a gate
 # nobody can debug.
 if blocked:
-    print("\n  !! HELD BACK (undecodable font - would have bought mojibake):")
+    print("\n  !! HELD BACK (undecoded TEXT - would have bought mojibake):")
     for text, bad in blocked:
+        print(f"    {text!r}   fonts: {bad}")
+# The other half of the same fact, and it is the one R4b exists to make visible: a block
+# drawn with a flagged font whose own text reads CLEAN is BOUGHT. Silence here is what a
+# per-font decision produced — 22 of 24 holds on CNX_Chem_05_02_FoodLabel were blocks
+# like 'Nutrition Facts', withheld with no line of output saying so.
+if freed:
+    flagged = sorted({f for _t, bad in freed for f in bad})
+    print(f"\n  SENT ANYWAY ({len(freed)} prose blocks on a flagged font, text reads "
+          f"clean - the decision is per BLOCK, the flag is per FONT: {flagged}):")
+    for text, bad in freed:
         print(f"    {text!r}   fonts: {bad}")

@@ -418,7 +418,21 @@ def _to_runs(prepared):
 def _looks_undecoded(text):
     """The predicate `read_layer_accept.classify_type0` judges by, deliberately the same:
     a reader whose `decodable` flag disagreed with the judge's `looks_undecoded` would
-    declare a font readable and then be marked FAIL-silent for its output."""
+    declare a font readable and then be marked FAIL-silent for its output.
+
+    ⚠️ LATENT DEFECT, RECORDED AND DELIBERATELY NOT FIXED (R4b). The control-byte test
+    CAN CONDEMN CORRECTLY-READ TEXT. `_looks_undecoded('\x1f bond')` returns True, but
+    under a /Differences font `\x1f` is a REAL GREEK ALPHA (see blockkey.py's docstring;
+    '\x1f bond' is a genuine block key in this corpus), so that is a correct read being
+    called garbage. Since R4b this predicate also decides SPEND via `figtext.sendable`,
+    which makes the consequence "a real label is never bought" rather than merely "a
+    font is flagged".
+
+    MEASURED: 0 occurrences across 120 figures — latent, not firing. It is left alone
+    because the fix must change the JUDGE's `classify_type0` in the same breath (the two
+    are deliberately identical, and a reader that disagreed with the judge would be
+    marked FAIL-silent), which is a larger change than R4b's decision-unit correction.
+    """
     if CID in text:
         return True
     return any(ord(ch) < 0x20 and ch not in '\t\n\r' for ch in text)
