@@ -2,7 +2,71 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-06 (EVENING — context handoff)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-07** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **[USER] DECIDES ON PR #452, THEN THE DRIVER.**
+
+✅ **THE READ-LAYER ADAPTER IS BUILT. The previous block's single next action is DONE.**
+→ **PR [#452](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/452)**, branch
+`feat/m5-read-layer-adapter`, **pushed, NOT merged**. ⚠️ **It also carries 14 earlier M5
+preparation commits that were sitting unpushed on local `main`** — same effort, not unrelated
+work. ⚠️ **Merging pushes `main`, which can strand prod's content backup until the next deploy**
+(§ *Content delivery* in CLAUDE.md): deploy after merging, or expect the next content tick to be
+rejected.
+
+**What it did — the numbers are the harness's, re-run at close, not quoted from a report:**
+figures the reader can read **530 → 816 of 817** · oracle disagreements (C3) **286 → 0** ·
+C1 regressions **0** · per-run shape violations **6 → 0**. The one unread figure is genuinely
+textless and the old reader *crashed* on it. **0 ISK — nothing was bought, nothing under
+`books/` was touched.**
+
+**Built:** `readlayer.py` (pdfplumber, behind the unchanged on-disk seam) · `read_layer_accept.py`
+(the corpus-wide judge) · `strip-text.py` `/Form` descent that does not destroy artwork ·
+`blockkey.py` (the ONE block-key rule, imported by four consumers) · `experiments/` declared
+**MIT** in the root `LICENSE`.
+
+**Evidence and its blindnesses:** `experiments/figure-text-translation/READ-LAYER-ACCEPTANCE.md`;
+**figure-text STATUS is owned by `experiments/figure-text-translation/REGISTER.md`** — read it
+there, it is not restated here.
+
+### ⏭ AFTER THE MERGE DECISION — the driver, and NOTHING ELSE FIRST
+🔴 **M5 IS STILL A BOOTSTRAP DEADLOCK AND THE DEADLOCK IS UNCHANGED.** The editorial correction
+loop is already built (`figureReviewService.js`, the `…/figures…` routes, `figure-review-section`).
+**Nothing runs because nothing mints the sidecar**, and both `writeSidecar` callers refuse if one
+does not already exist. **The read layer was the blocker to building the driver; it is not the
+driver.** → M5 plan Tasks 0b, 1–6b.
+🔴 **`tools/figure-run.js` DOES NOT EXIST — it is Task 1's deliverable.** *(A plan line asserted
+in the present tense that it did, and that claim reached the root `LICENSE` before the R5
+implementer caught it. Corrected `3649bd58`. **A plan's present tense is a hypothesis.**)*
+🔴 **DO NOT BUY CHAPTER 5's TEXT BEFORE M5 WORKS.** One-pass edit + one-pass approval means the
+editor sees a module ONCE, so its figures must be present in that pass. ch03 and ch04 are bought
+and unedited.
+
+### ⚠️ Carried forward, each with an owner — none of these blocks the merge
+| what | owner |
+|---|---|
+| `/Type0 /Identity-V` labels are one run per glyph, so some labels would be **bought as fragments** — a cost at PURCHASE time | register § ⑤ |
+| the `fit_circle` guard is verified end-to-end but **has no committed assertion** — a regression there CRASHES, which is loud | register § ⑤ |
+| **`C2b` now GATES.** 0 today; **its first red is a real finding, not a harness fault** | the harness |
+| R3's `/Form` walk is a **no-op on EPS-sourced figures** — a property of ghostscript's `pdfwrite`, which emits no forms, not of EPS | `READ-LAYER-ACCEPTANCE.md` |
+| C4 geometry: **143 of 530 figures move a block >1pt**; "just axis ticks" is refuted by its own control. Prior favours *correction*; the deciding instrument is a **composed-image diff**, which belongs with the driver | register § ④ |
+
+### 🔬 How this campaign was run, in one line each — the parts that changed outcomes
+- **A five-lens adversarial review** of the whole branch, every finding handed to a separate agent
+  told to REFUTE it: **31 raised, 21 confirmed, 10 refuted.** It found a `/Separation` tint read
+  as a DeviceGray *level*, publishing solid-black labels **pure white** — invisible, with the
+  English already stripped underneath. **No acceptance criterion compared fills at all.**
+- 🔴 **FOUR separate instances of ONE defect shape: a membership test asking "does this exist
+  somewhere?" where the question is "did we lose one we needed?"** — the block-key compare, C1's
+  oracle tiebreak, the H2 font-vs-block gate, and C1b certifying a figure "decoded" on **one**
+  shared character. **Look for the fifth.**
+- **Ruling R-9 reproduced independently:** `pdf.make_stream` drops a figure from **8,927 to 435
+  non-white pixels** while the text assertion passes on the wreckage. **Only pixels separate
+  "text removed" from "figure destroyed".**
+
+---
+
+## ⏩ RESUME — state as of **2026-09-06 (EVENING — context handoff)** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — **BUILD THE READ-LAYER ADAPTER, against its written contract.**
 
