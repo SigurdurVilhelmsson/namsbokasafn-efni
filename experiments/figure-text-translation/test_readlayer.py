@@ -187,18 +187,18 @@ check('5c-i CONTROL — pdfplumber\'s own size really does vary per glyph when r
       f'{len(rotated)} rotated chars, char["size"] takes {len(raw_sizes)} distinct '
       f'values: {sorted(raw_sizes)[:6]}')
 # ⚠️ NOT "constant": this label is `Density (kg/m3)` and the 3 is a REAL 7pt superscript,
-# so a constant-size assertion would be asserting a defect. The exact per-glyph mapping is
-# the strong form — it fails both if a size is wrong AND if the superscript is flattened.
-# round(…, 4) is what `_to_runs` writes into the run, so this compares the emitted value.
-ours = [(c['text'], round(RL._visual_size(c, [float(v) for v in c['matrix']]), 4))
-        for c in rotated]
-body = {t: s for t, s in ours if t != '3'}
-supers = [s for t, s in ours if t == '3']
-check('5c-ii our size is the TRUE size for every rotated glyph — 9.0 for the label, '
-      '7.0 for the superscript',
-      set(body.values()) == {9.0} and supers == [7.0] and len(body) > 5,
-      f'label glyphs {"".join(t for t, _ in ours)!r} -> '
-      f'{sorted(set(body.values()))}, superscript 3 -> {supers}')
+# so a constant-size assertion would be asserting a defect.
+#
+# 🔴 ASSERTED ON THE RUNS `read()` EMITS, NOT ON `_visual_size` DIRECTLY. An earlier version
+# called the helper itself and was MISSED by the mutation that matters: reverting
+# `_prepare` to `char['size']` — the plan's own prescription — left `_visual_size` correct
+# and simply stopped calling it, so a helper-level assertion passed while the reader was
+# broken. A gate never called is a gate that does not exist.
+emitted = [(r['text'], r['size']) for r in read_figure(ROT_FIG)[0] if abs(r['rot']) > 1]
+check('5c-ii the RUNS carry the true size — 9.0 for the label, 7.0 for the superscript, '
+      'and the superscript is not flattened into it',
+      emitted == [('Density (kg/m', 9.0), ('3', 7.0), (')', 9.0)],
+      f'{emitted}')
 # The compatibility half: R-5's population is UPRIGHT text, where char['size'] is right.
 disagree = []
 for name in ['CNX_Chem_02_00_Biomarkers', EPS_FIG, 'CNX_Chem_00_AA_PeriodicPU_img']:
@@ -224,6 +224,12 @@ check('6b the run carries 6.498, not 0.722',
 # Tc/Tw are exactly what a sum of glyph widths omits, so the assertion needs a figure that
 # HAS them. Measured: 23 figures in the corpus carry a non-zero Tc or Tw; this one has 5
 # of each. The alternative derivation is computed here independently and must DISAGREE.
+#
+# 🔴 AGAIN, ASSERTED ON THE EMITTED `run['adv']`. An earlier version re-derived BOTH sides
+# inside the test and never looked at what `_to_runs` wrote, so replacing the run's advance
+# with the forbidden `sum(char['adv'])` passed the whole suite — exit 0, nothing failed.
+# Case 6b cannot cover it either: Biomarkers' runs are single characters, where the
+# positional advance and the sum are equal by construction.
 TCTW_FIG = 'CNX_Chem_01_05_SigDigits4_img'
 prepared = RL._prepare(chars_of(TCTW_FIG), lambda f: str(f), collections.Counter())
 groups, current = [], []
@@ -236,22 +242,20 @@ for char in prepared:
         current = [char]
 if current:
     groups.append(current)
-differing = []
-for g in groups:
-    if len(g) < 2:
+emitted_runs = read_figure(TCTW_FIG)[0]
+paired = len(groups) == len(emitted_runs)
+differing, multi = [], 0
+for g, run in zip(groups, emitted_runs):
+    if len(g) < 2 or run['text'] != ''.join(c['text'] for c in g):
         continue
-    rot = g[0]['rot']
-    positional = (RL._along(g[-1]['x'], g[-1]['y'], rot)
-                  - RL._along(g[0]['x'], g[0]['y'], rot) + g[-1]['adv'])
+    multi += 1
     naive = sum(c['adv'] for c in g)          # the forbidden sum-of-widths derivation
-    if abs(positional - naive) > 0.01:
-        differing.append((''.join(c['text'] for c in g), round(positional, 3),
-                          round(naive, 3)))
-check('6c on a figure with non-zero Tc/Tw the positional advance DIFFERS from a '
-      'sum of glyph widths',
-      len(differing) > 0,
-      f'{len(differing)} of {len([g for g in groups if len(g) > 1])} multi-char runs '
-      f'differ (must be > 0, or this figure does not exercise R-6): {differing[:3]}')
+    if abs(run['adv'] - naive) > 0.01:
+        differing.append((run['text'], run['adv'], round(naive, 3)))
+check('6c the EMITTED run adv differs from a sum of glyph widths on a Tc/Tw figure',
+      paired and len(differing) > 0 and multi > 0,
+      f'{len(differing)} of {multi} multi-char runs differ (must be > 0, or the run advance '
+      f'is a width-sum and R-6 is violated): {differing[:3]}')
 
 # ── 7. `fill` IS A 5-TUPLE compose.cmyk() CAN UNPACK ────────────────────────────────
 print('\n[7] fill unpacks in compose.cmyk')
