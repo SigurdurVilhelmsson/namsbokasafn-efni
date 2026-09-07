@@ -149,6 +149,29 @@ def strip_text(pdf):
     artwork: on this corpus the forms that DRAW carry no text and the text sits in
     sibling forms, so under skip-if-unchanged the destructive path is never reached and
     no test on a real figure could see a regression back to make_stream.
+
+    🔴 KNOWN, MEASURED, UNFIXED — TEXT DRAWN IN A CLIPPING RENDERING MODE (`7 Tr`).
+    Mode 7 adds the glyphs to the CLIPPING path instead of painting them, and the
+    producer then paints an image THROUGH the letterforms.  Removing the BT..ET removes
+    the clip, so those images are drawn unclipped and cover the artwork underneath.
+    Measured 2026-09-07 on CNX_Chem_04_02_Citrus: the source renders 152,693 non-white
+    pixels and the stripped file 1,404 - 0.9%, i.e. a blank page.  Bisected: a bare
+    open/save renders identically, `remove_unreferenced_resources` is innocent, and an
+    identity parse->unparse round trip is lossless; removing ONLY the text-showing
+    operators while keeping BT/ET/Tr reproduces the loss exactly, which is what names
+    the mechanism.
+    ⚠️ EVERY TEXT-BASED CHECK PASSES ON THIS WRECKAGE, exactly as with the byte-regex
+    above: `pdftotext` returns 0 words and no BT survives, so a residue count reads
+    clean.  Only a pixel comparison sees it.
+    ▶ SCOPE, so nobody re-derives it: `7 Tr` occurs on **8 of the 895 resolved chemistry
+    figures** (the only non-zero mode besides 0), and they are exactly the census's
+    `type0-unreadable` bucket - CNX_Chem_01_02_decomp, _02_04_Benzene,
+    _03_02_moles-6296, _04_02_Citrus, _04_02_ammonia, _04_04_CuAgNO3, _04_05_titration,
+    _11_03_recompress.  ALL EIGHT measure `sendable 0` with images and 0 paint ops, so
+    the driver classifies them `copied-photo`, copies the original artwork and never
+    reads this tool's output for them.  **Live exposure is therefore 0** - and nothing
+    enforces that.  A re-extraction that made one of them sendable would compose
+    translations onto a blank canvas.
     """
     page = pdf.pages[0]
     content = read_content(page).encode('latin-1')
