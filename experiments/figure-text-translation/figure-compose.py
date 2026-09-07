@@ -39,14 +39,26 @@ THE TWO ASSERTIONS, AND WHY THEY ARE DIFFERENT ANCHORS
    written for one figure and whose `runs.json` belongs to another. That is exactly the
    failure that had a sidecar asserting another figure's labels.
 2. `Counter(report.missing) == Counter(blocks.json keys where not send)` - the money
-   assertion. A key on the left that is not on the right was BOUGHT and came back with no
-   usable translation; the label is in English and nothing downstream can see it.
+   assertion. A key on the left that is not on the right ships in English and nothing
+   downstream can see it.
 
-⚠️ ASSERTION 2 ASSUMES THE TRANSLATIONS FILE CARRIES EXACTLY THE `send:true` KEYS, which
-is true of `translate-blocks.mjs` output (it filters to `send` before it buys). A sidecar
-that had acquired a translation for a `send:false` block - an editor adding one through the
-review UI, say - would leave that key out of `missing` and refuse a CORRECT recompose. The
-recompose path is Task 6b's; this is flagged there rather than guessed at here.
+🔴 ASSERTION 2 REPORTS WHAT THE FILE SHOWS, NEVER WHAT IT GUESSES WAS BOUGHT. It used to
+say a key on the left "was BOUGHT and came back with no usable translation", and that is
+false on the case that actually happens: on the driver's recompose path `--translations`
+is the figure's SIDECAR, block keys are content-addressed, and a re-extraction or a
+read-layer change MOVES them - so a key can be absent from the file because it was bought
+at an earlier vintage, never because an API lost it. The two conditions are distinguished
+and worded separately (NO ENTRY at all vs an entry that is empty or whitespace-only), and
+the remedy is conditional on whether the file carries a `state`: deleting a sidecar is what
+makes a figure eligible to be bought again, and deleting an APPROVED one destroys a head
+editor's ruling.
+
+⚠️ ASSERTION 2 STILL ASSUMES THE TRANSLATIONS FILE CARRIES ONLY `send:true` KEYS, which is
+true of `translate-blocks.mjs` output (it filters to `send` before it buys). A sidecar that
+had acquired a translation for a `send:false` block - an editor adding one through the
+review UI, say - would leave that key out of `missing` and refuse a CORRECT recompose. That
+direction is reported with its own wording; making it non-fatal is a behaviour change and
+is not this wrapper's to take.
 
 WHY `FIGTEXT_OUT` AND NOT `--out`
 ---------------------------------
@@ -86,6 +98,13 @@ DERIVED_OUTPUTS = ('compose.json', 'compose-report.json', 'translated.svg')
 COMPOSE_TIMEOUT_S = 900         # an unattended driver must not wedge on one figure
 
 
+# What `validate_inputs` LEARNED about the --translations file, carried forward so the
+# refusal can describe the file it actually read instead of guessing at its provenance.
+# `keys` is the key set the composer will look up; `has_state` says whether the file is a
+# sidecar a human has ruled on, which decides whether "delete it" is safe advice.
+Translations = collections.namedtuple('Translations', 'path keys has_state')
+
+
 class ComposeError(Exception):
     """A per-figure failure. Reported into compose.json and exits 1 - never a traceback,
     because the driver reads the file, not the stderr.
@@ -101,7 +120,10 @@ class ComposeError(Exception):
 
 
 def validate_inputs(out_dir, translations):
-    """Everything that can be known before spending a subprocess. Raises ComposeError."""
+    """Everything that can be known before spending a subprocess. Raises ComposeError.
+
+    -> the `Translations` record. The payload is parsed here anyway, and `verify` cannot
+    tell "never sold" from "sold and unusable" without it."""
     if not out_dir.is_dir():
         raise ComposeError(f'--out is not a directory: {out_dir}')
 
@@ -147,6 +169,13 @@ def validate_inputs(out_dir, translations):
         raise ComposeError(
             f'--translations `blocks` must be a JSON object, got '
             f'{type(inner).__name__}: {translations}')
+    # `state` is only a REVIEW STATE when the file is the sidecar/MT shape - i.e. when it
+    # has a `blocks` object around the translations. In the flat shape a top-level 'state'
+    # would be a BLOCK KEY, and reading it as an editor's ruling would suppress the
+    # deletion remedy on a file that carries no ruling at all.
+    return Translations(path=translations, keys=frozenset(inner),
+                        has_state=isinstance(payload.get('blocks'), dict)
+                        and 'state' in payload)
 
 
 def run_compose(out_dir, translations):
@@ -205,8 +234,11 @@ def read_report(out_dir, child):
     return report
 
 
-def verify(report, blocks):
-    """The two multiset assertions. Raises ComposeError naming the offending keys."""
+def verify(report, blocks, translations):
+    """The two multiset assertions. Raises ComposeError naming the offending keys.
+
+    `translations` is REQUIRED - a default would silently pick one of the two wordings
+    below, and picking wrong is the defect this argument exists to close."""
     drawn = collections.Counter(report['blocks'])
     declared = collections.Counter(b['key'] for b in blocks)
     if drawn != declared:
@@ -221,31 +253,64 @@ def verify(report, blocks):
     kept_english = collections.Counter(report['missing'])
     never_bought = collections.Counter(b['key'] for b in blocks if not b.get('send'))
     if kept_english != never_bought:
-        bought_but_english = sorted((kept_english - never_bought))
+        english_but_sendable = sorted((kept_english - never_bought))
         held_but_drawn = sorted((never_bought - kept_english))
-        if bought_but_english:
-            detail = (f'{len(bought_but_english)} block(s) were BOUGHT and came back '
-                      f'with no usable translation, so the figure ships them in '
-                      f'English: {bought_but_english}')
-        else:
-            detail = (f'{len(held_but_drawn)} block(s) blocks.json holds back as '
-                      f'send:false were translated anyway: {held_but_drawn}')
+        # 🔴 THE SPLIT IS THE WHOLE POINT, AND IT IS OBSERVATIONAL. This wrapper knows
+        # what the --translations FILE contains and nothing else; it has no idea what was
+        # ever sent to an API. A single "were BOUGHT and came back with no usable
+        # translation" sentence covered both branches and was FALSE on the one that
+        # actually happens: on the driver's recompose path the file is the SIDECAR, and a
+        # key can be absent from it simply because it was bought at an earlier extraction
+        # vintage. Block keys are content-addressed, so a re-extraction or a read-layer
+        # change moves them - and the message sent the operator hunting the paid MT for a
+        # translation it had never been sold.
+        # ⚠️ The MT is not the author of the other branch either: `normaliseTranslations`
+        # (tools/figure-run.js) DROPS empty values before the sidecar is written and step 8
+        # then refuses the figure, so an empty value cannot reach compose on the buy path.
+        absent = [k for k in english_but_sendable if k not in translations.keys]
+        unusable = [k for k in english_but_sendable if k in translations.keys]
+        parts = []
+        if absent:
+            parts.append(
+                f'{len(absent)} block(s) marked send:true in blocks.json have NO ENTRY '
+                f'at all in {translations.path}, so nothing in that file was ever bought '
+                f'for them and the figure ships them in English: {absent}. Block keys are '
+                f'content-addressed, so a re-extraction or a read-layer change moves them: '
+                f'on the driver this file is the figure\'s sidecar, and a sidecar bought '
+                f'at an earlier vintage no longer covers the figure. ' + (
+                    'A figure is eligible to be bought again only once it has NO sidecar - '
+                    'but this file carries a `state`, i.e. an editor has already ruled on '
+                    'it, and deleting it discards that decision.'
+                    if translations.has_state else
+                    'A figure is eligible to be bought again only once it has no sidecar; '
+                    'this file carries no `state`, so deleting it discards no editorial '
+                    'decision.'))
+        if unusable:
+            parts.append(
+                f'{len(unusable)} block(s) HAVE an entry in {translations.path} that is '
+                f'empty or whitespace-only, which compose.py keeps in English rather than '
+                f'letting it erase the label: {unusable}.')
+        if held_but_drawn:
+            parts.append(
+                f'{len(held_but_drawn)} block(s) blocks.json holds back as send:false '
+                f'were translated anyway: {held_but_drawn}.')
         raise ComposeError(
-            f'the English-kept blocks are not the blocks that were never bought. '
-            f'{detail}',
-            keys=bought_but_english + held_but_drawn)
+            f'the blocks compose.py kept in ENGLISH are not the blocks blocks.json '
+            f'held back as send:false. '
+            + ' '.join(parts),
+            keys=english_but_sendable + held_but_drawn)
 
 
 def compose(out_dir, translations):
     """-> the path to translated.svg. Raises ComposeError on a per-figure failure."""
-    validate_inputs(out_dir, translations)
+    tr = validate_inputs(out_dir, translations)
     for name in DERIVED_OUTPUTS:
         (out_dir / name).unlink(missing_ok=True)
 
     child = run_compose(out_dir, translations)
     report = read_report(out_dir, child)
     blocks = json.loads((out_dir / 'blocks.json').read_text(encoding='utf-8'))
-    verify(report, blocks)
+    verify(report, blocks, tr)
 
     svg = out_dir / 'translated.svg'
     if not svg.is_file() or svg.stat().st_size == 0:

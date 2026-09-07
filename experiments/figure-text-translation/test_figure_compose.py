@@ -236,6 +236,52 @@ with tempfile.TemporaryDirectory() as td:
           not (out / 'translated.svg').exists(),
           f"translated.svg present={(out / 'translated.svg').exists()}")
 
+    # 1g-1i: THE MESSAGE MUST NAME THE CONDITION IT ACTUALLY MEASURED.
+    # 🔴 K_TEST is not in the translations file AT ALL, and the wrapper cannot know that
+    # anything was ever bought for it. On the DRIVER this shape never reaches compose on
+    # the buy path - `normaliseTranslations` drops empty values and step 8 refuses the
+    # figure before step 9 - so at compose time it means the file predates this figure's
+    # current block keys (they are content-addressed: a re-extraction or a read-layer
+    # change MOVES them). Saying "BOUGHT" here accuses the paid MT of losing a
+    # translation it was never sold, and sends the operator hunting for a refund.
+    err = d.get('error', '')
+    check('1g the refusal says the key has NO ENTRY in the translations file',
+          'NO ENTRY' in err and str(tr) in err, f'{err!r}')
+    check('1h ... and does NOT claim it was BOUGHT - nothing here shows a purchase',
+          'BOUGHT' not in err, f'{err!r}')
+    check('1i ... and, this file carrying no `state`, says deleting it discards no '
+          'editorial decision',
+          'no `state`' in err and 'discards no' in err, f'{err!r}')
+
+
+# ── 1j. THE SAME DRIFT AGAINST AN APPROVED SIDECAR — the remedy must NOT be "delete it" ─
+# 🔴 A SIDECAR'S `state` IS A HEAD EDITOR'S RULING. Deleting the file is what makes a
+# figure eligible to be bought again (R8), so it is the obvious remedy to print here - and
+# on an approved sidecar it silently destroys the approval. The wording is therefore
+# conditional on what the file actually carries, and 1i above is this case's control: the
+# same defect, the same tool, opposite advice.
+with tempfile.TemporaryDirectory() as td:
+    out = Path(td) / 'fig-approved'
+    prep = run_prepare(FIXTURE, out, 'CNX_Fixture_Approved')
+    check('1j PRECONDITION prepare produced the fixture directory', prep.returncode == 0,
+          f'exit {prep.returncode}: {prep.stderr.strip()[-400:]}')
+    sidecar = Path(td) / 'approved.is.json'
+    sidecar.write_text(json.dumps({
+        'version': 1, 'basename': 'CNX_Fixture_Approved', 'renderHash': 'deadbeef',
+        'composerVersion': 1, 'state': 'approved',
+        'blocks': {K_OBS: 'Athugun og forvitni', K_HYP: 'Setja fram tilgatu'},
+    }, ensure_ascii=False))
+    r = run_wrapper('--out', out, '--translations', sidecar)
+    d = load_json(out / 'compose.json') or {}
+    err = d.get('error', '')
+    check('1k the wrapper refuses a sidecar that predates this figure\'s keys',
+          refused(r, 1) and K_TEST in d.get('keys', []), f'exit {r.returncode}: {d!r}')
+    check('1l ... and WARNS that deleting this one discards an editor\'s decision',
+          'discards' in err and 'no `state`' not in err
+          and ('approved' in err or 'editor' in err), f'{err!r}')
+    check('1m ... and still does not claim the block was BOUGHT', 'BOUGHT' not in err,
+          f'{err!r}')
+
 
 # ── 2. THE CONTROL THAT MAKES CASE 1 MEAN ANYTHING ───────────────────────────────────
 # A CORRECT run. All three sendable keys are translated; `H2O (g)` is send:false and was
@@ -413,6 +459,18 @@ with tempfile.TemporaryDirectory() as td:
           refused(r, 1) and K_TEST in d.get('keys', []),
           f'exit {r.returncode}: {d!r}')
 
+    # 5e-5f: THE TWIN OF 1g/1h, AND THE PAIR IS THE POINT. Case 1's key is ABSENT from
+    # the file; this key is PRESENT with an unusable value. Both ship English, both must
+    # be refused, and the two sentences must not be interchangeable - an operator reading
+    # "no entry" goes looking at extraction vintages, one reading "empty entry" goes
+    # looking at what wrote the value. Before this pair existed both printed the SAME
+    # sentence, and it was the wrong one on the case that actually happens.
+    err = d.get('error', '')
+    check('5e the refusal says the entry EXISTS and is empty or whitespace-only',
+          'empty or whitespace-only' in err, f'{err!r}')
+    check('5f ... and does NOT reuse case 1\'s "no entry" wording',
+          'NO ENTRY' not in err, f'{err!r}')
+
 
 # ── 6. usage and per-figure refusals ─────────────────────────────────────────────────
 with tempfile.TemporaryDirectory() as td:
@@ -564,16 +622,52 @@ if _mod is not None:
     # `verify`'s two directions produce DIFFERENT messages on purpose: a driver log full
     # of "key mismatch" cannot tell "we paid and shipped English" from "wrong directory".
     blocks = [{'key': 'a', 'send': True}, {'key': 'b', 'send': False}]
-    ok, _k, msg = _raises(lambda: _mod.verify(GOOD, blocks))
-    check('8e CONTROL verify PASSES on an agreeing report', not ok, msg)
+    ok, _k, msg = _raises(lambda: _mod.verify(
+        GOOD, blocks, _mod.Translations(path='/x.json', keys=frozenset({'a'}),
+                                        has_state=False)))
+    # ⚠️ `msg == ''` IS LOAD-BEARING, and `not ok` alone was vacuous: `_raises` returns
+    # ok=False for ANY non-ComposeError too, so a TypeError from a wrong call signature
+    # read as "verify accepted this report". Measured on the red run for this very
+    # change - an AttributeError printed PASS here.
+    check('8e CONTROL verify PASSES on an agreeing report - nothing raised at all',
+          not ok and msg == '', f'{msg!r}')
+
+    # 🔴 `verify`'s THIRD argument is REQUIRED, not defaulted. The two directions below
+    # differ ONLY in what the translations file was found to contain, so a default would
+    # silently pick one of them - and picking wrong is exactly the defect being closed.
+    present = _mod.Translations(path='/x.json', keys=frozenset({'a'}), has_state=False)
+    absent = _mod.Translations(path='/x.json', keys=frozenset(), has_state=False)
+    approved = _mod.Translations(path='/x.json', keys=frozenset(), has_state=True)
 
     ok, keys, msg = _raises(lambda: _mod.verify(
-        {**GOOD, 'missing': ['a', 'b'], 'translated': []}, blocks))
-    check('8f a BOUGHT key left in English is named, and the message says so',
-          ok and keys == ['a'] and 'BOUGHT' in msg, f'{keys!r}: {msg}')
+        {**GOOD, 'missing': ['a', 'b'], 'translated': []}, blocks, present))
+    check('8f a key with an UNUSABLE entry is named, and the message says the entry '
+          'exists', ok and keys == ['a'] and 'empty or whitespace-only' in msg
+          and 'NO ENTRY' not in msg, f'{keys!r}: {msg}')
+
+    ok, keys, msg = _raises(lambda: _mod.verify(
+        {**GOOD, 'missing': ['a', 'b'], 'translated': []}, blocks, absent))
+    check('8f-2 a key ABSENT from the file gets the OTHER message, and no purchase is '
+          'claimed', ok and keys == ['a'] and 'NO ENTRY' in msg
+          and 'BOUGHT' not in msg and 'empty or whitespace-only' not in msg,
+          f'{keys!r}: {msg}')
+
+    ok, keys, msg = _raises(lambda: _mod.verify(
+        {**GOOD, 'missing': ['a', 'b'], 'translated': []}, blocks, approved))
+    check('8f-3 ... and the deletion remedy flips when the file carries a `state`',
+          ok and 'discards' in msg and 'no `state`' not in msg, f'{keys!r}: {msg}')
+
+    # BOTH directions at once: a send:false key drawn as translated AND a send:true key
+    # with no entry. The old code reported only the first branch it found, so a real
+    # finding was hidden whenever the two coincided.
+    ok, keys, msg = _raises(lambda: _mod.verify(
+        {**GOOD, 'missing': ['a'], 'translated': ['b']}, blocks, absent))
+    check('8f-4 a two-direction mismatch reports BOTH, not just the first',
+          ok and sorted(keys) == ['a', 'b'] and 'NO ENTRY' in msg
+          and 'send:false' in msg, f'{keys!r}: {msg}')
 
     ok, keys, msg = _raises(lambda: _mod.verify({**GOOD, 'blocks': ['a', 'b', 'b']},
-                                                blocks))
+                                                blocks, present))
     check('8g a block-set disagreement is a DIFFERENT message — stale directory, not '
           'lost money', ok and keys == ['b'] and 'stale' in msg, f'{keys!r}: {msg}')
 
