@@ -376,5 +376,55 @@ check('11b meta.source basename is the original, and the figure still read',
       Path(meta['source']).name == f'{EPS_FIG}.eps' and meta['staged'] and outcome == 'reads',
       f"source={meta['source']!r} staged={meta['staged']} outcome={outcome}")
 
+# ── 12. RUN SEGMENTATION: A KERN PAIR MUST NOT BREAK A LABEL ───────────────────────
+# Added after the fact, and the reason is worth keeping: the two hardest-won findings in
+# this task — the relative gap window and exact rotation matching — were caught only by
+# the harness's C4b, and NOTHING in cases 1-11 fails if either regresses. A defect that
+# only an out-of-tree instrument can see is one nobody runs.
+print('\n[12] a kern pair does not split a label into two runs')
+KERN_FIG = 'CNX_Chem_00_AA_PeriodicPU_img'
+prepared = RL._prepare(chars_of(KERN_FIG), lambda f: str(f), collections.Counter())
+text = ''.join(c['text'] for c in prepared)
+start = text.find('Periodic Table')
+negative = []
+for a, b in zip(prepared[start:start + 29], prepared[start + 1:start + 30]):
+    rot = a['rot']
+    gap = (RL._along(b['x'], b['y'], rot) - RL._along(a['x'], a['y'], rot) - a['adv'])
+    if gap < 0:
+        negative.append((a['text'], b['text'], round(gap, 4)))
+check('12a CONTROL — this label really does contain a NEGATIVE (kerned) gap',
+      len(negative) > 0,
+      f'{negative} (if empty, the fixture cannot exercise the window at all)')
+runs, meta, _ = read_figure(KERN_FIG)
+whole = [r for r in runs if r['text'] == 'Periodic Table of the Elements']
+check('12b the kerned label is ONE run, not split at the kern',
+      len(whole) == 1,
+      f"runs containing 'Periodic': "
+      f"{[r['text'] for r in runs if 'Periodic' in r['text']]}")
+
+# ── 13. RUN SEGMENTATION: ARC TEXT STAYS ONE RUN PER GLYPH ─────────────────────────
+print('\n[13] arc text keeps one run per glyph, so figtext still sees an arc')
+import figtext as FT  # noqa: E402
+ARC_FIG = 'CNX_Chem_01_01_SciMethod'
+prepared = RL._prepare(chars_of(ARC_FIG), lambda f: str(f), collections.Counter())
+text = ''.join(c['text'] for c in prepared)
+start = text.find('not consistent with')
+steps = [round(RL._angle_delta(a['rot'], b['rot']), 3)
+         for a, b in zip(prepared[start:start + 18], prepared[start + 1:start + 19])]
+check('13a CONTROL — the per-glyph rotation steps STRADDLE figtext\'s 3 degrees',
+      steps and min(steps) < 3.0 < max(steps),
+      f'steps {min(steps)}..{max(steps)} — a 3-degree tolerance would merge some and '
+      f'split the rest, which is worse than either')
+runs, meta, _ = read_figure(ARC_FIG)
+arcs = [b for b in H.blocks_of(runs) if H.block_key(b) == 'not consistent with']
+check('13b the arc label is ONE block, is_arc, and every run is a single glyph',
+      len(arcs) == 1 and FT.is_arc(arcs[0])
+      and all(len(r['text']) <= 1 for r in arcs[0]),
+      f"{len(arcs)} matching block(s)" + (
+          f", is_arc={FT.is_arc(arcs[0])}, "
+          f"multi-char runs={[r['text'] for r in arcs[0] if len(r['text']) > 1]}"
+          if arcs else '; keys present: '
+          f'{[H.block_key(b) for b in H.blocks_of(runs)][-8:]}'))
+
 print(f"\n  {'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(0 if not fails else 1)
