@@ -2,20 +2,100 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-06 (EVENING — context handoff)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-07** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — **REVISE the M5 plan against §C137, THEN execute it.**
+### ⏭ SINGLE NEXT ACTION — **[USER] DECIDES ON PR #452, THEN THE DRIVER.**
 
-🔴 **THE PLAN FAILED ITS BLIND REVIEW — 16 CONFIRMED defects, 0 refuted. DO NOT EXECUTE IT AS WRITTEN.** The architecture, the six-task shape and every [USER] ruling survive; what failed is the WIRING BETWEEN STAGES and the ORDER of write-vs-refuse. **Revise, do not re-design.** → §C137
+✅ **THE READ-LAYER ADAPTER IS BUILT. The previous block's single next action is DONE.**
+→ **PR [#452](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/452)**, branch
+`feat/m5-read-layer-adapter`, **pushed, NOT merged**. ⚠️ **It also carries 14 earlier M5
+preparation commits that were sitting unpushed on local `main`** — same effort, not unrelated
+work. ⚠️ **Merging pushes `main`, which can strand prod's content backup until the next deploy**
+(§ *Content delivery* in CLAUDE.md): deploy after merging, or expect the next content tick to be
+rejected.
+
+**What it did — the numbers are the harness's, re-run at close, not quoted from a report:**
+figures the reader can read **530 → 816 of 817** · oracle disagreements (C3) **286 → 0** ·
+C1 regressions **0** · per-run shape violations **6 → 0**. The one unread figure is genuinely
+textless and the old reader *crashed* on it. **0 ISK — nothing was bought, nothing under
+`books/` was touched.**
+
+**Built:** `readlayer.py` (pdfplumber, behind the unchanged on-disk seam) · `read_layer_accept.py`
+(the corpus-wide judge) · `strip-text.py` `/Form` descent that does not destroy artwork ·
+`blockkey.py` (the ONE block-key rule, imported by four consumers) · `experiments/` declared
+**MIT** in the root `LICENSE`.
+
+**Evidence and its blindnesses:** `experiments/figure-text-translation/READ-LAYER-ACCEPTANCE.md`;
+**figure-text STATUS is owned by `experiments/figure-text-translation/REGISTER.md`** — read it
+there, it is not restated here.
+
+### ⏭ AFTER THE MERGE DECISION — the driver, and NOTHING ELSE FIRST
+🔴 **M5 IS STILL A BOOTSTRAP DEADLOCK AND THE DEADLOCK IS UNCHANGED.** The editorial correction
+loop is already built (`figureReviewService.js`, the `…/figures…` routes, `figure-review-section`).
+**Nothing runs because nothing mints the sidecar**, and both `writeSidecar` callers refuse if one
+does not already exist. **The read layer was the blocker to building the driver; it is not the
+driver.** → M5 plan Tasks 0b, 1–6b.
+🔴 **`tools/figure-run.js` DOES NOT EXIST — it is Task 1's deliverable.** *(A plan line asserted
+in the present tense that it did, and that claim reached the root `LICENSE` before the R5
+implementer caught it. Corrected `3649bd58`. **A plan's present tense is a hypothesis.**)*
+🔴 **DO NOT BUY CHAPTER 5's TEXT BEFORE M5 WORKS.** One-pass edit + one-pass approval means the
+editor sees a module ONCE, so its figures must be present in that pass. ch03 and ch04 are bought
+and unedited.
+
+### ⚠️ Carried forward, each with an owner — none of these blocks the merge
+| what | owner |
+|---|---|
+| `/Type0 /Identity-V` labels are one run per glyph, so some labels would be **bought as fragments** — a cost at PURCHASE time | register § ⑤ |
+| the `fit_circle` guard is verified end-to-end but **has no committed assertion** — a regression there CRASHES, which is loud | register § ⑤ |
+| **`C2b` now GATES.** 0 today; **its first red is a real finding, not a harness fault** | the harness |
+| R3's `/Form` walk is a **no-op on EPS-sourced figures** — a property of ghostscript's `pdfwrite`, which emits no forms, not of EPS | `READ-LAYER-ACCEPTANCE.md` |
+| C4 geometry: **143 of 530 figures move a block >1pt**; "just axis ticks" is refuted by its own control. Prior favours *correction*; the deciding instrument is a **composed-image diff**, which belongs with the driver | register § ④ |
+
+### 🔬 How this campaign was run, in one line each — the parts that changed outcomes
+- **A five-lens adversarial review** of the whole branch, every finding handed to a separate agent
+  told to REFUTE it: **31 raised, 21 confirmed, 10 refuted.** It found a `/Separation` tint read
+  as a DeviceGray *level*, publishing solid-black labels **pure white** — invisible, with the
+  English already stripped underneath. **No acceptance criterion compared fills at all.**
+- 🔴 **FOUR separate instances of ONE defect shape: a membership test asking "does this exist
+  somewhere?" where the question is "did we lose one we needed?"** — the block-key compare, C1's
+  oracle tiebreak, the H2 font-vs-block gate, and C1b certifying a figure "decoded" on **one**
+  shared character. **Look for the fifth.**
+- **Ruling R-9 reproduced independently:** `pdf.make_stream` drops a figure from **8,927 to 435
+  non-white pixels** while the text assertion passes on the wreckage. **Only pixels separate
+  "text removed" from "figure destroyed".**
+
+---
+
+## ⏩ RESUME — state as of **2026-09-06 (EVENING — context handoff)** (superseded by the block above)
+
+### ⏭ SINGLE NEXT ACTION — **BUILD THE READ-LAYER ADAPTER, against its written contract.**
+
+✅ **THE PLAN IS REVISED TWICE AND COMMITTED** (`bfeb7887`, `61db65d7`, `237aff38`). §C137's 16 findings are folded in; a blind closure review of that revision then confirmed **8 more, 0 refuted** → §C138.
+🔴 **AND THE READ LAYER IS NOW BEING REPLACED, NOT REPAIRED — [USER] 2026-09-06, recorded at [`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../decisions/2026-09-06-figure-read-layer-respec.md).** The census that settled it is committed: `experiments/figure-text-translation/TEXT-COVERAGE.md` — **the hand-written extractor reads 496 of 779 text-bearing chemistry figures**, and `_deps.py`'s own docstring says *"this is an experiment, not a pipeline tool"*. **The LAYOUT half is kept.** Scope: re-spec the read side, bake off MIT readers first. ✅ **The contract is written** → [`docs/superpowers/specs/2026-09-06-figure-read-layer-contract.md`](../superpowers/specs/2026-09-06-figure-read-layer-contract.md) — nine `runs.json` fields, eight handling requirements (H1–H8) each with a measured exposure, and a five-part acceptance derived from the committed census. **The bake-off candidate reads 779 of 779 against our 504, with 0 real regressions on the measured `.pdf` set.**
+
+✅ **THE CENSUS IS DONE AND COMMITTED — it is no longer a task, it is evidence.** `experiments/figure-text-translation/TEXT-COVERAGE.md` + its three runnable producers. That is what settled the replacement decision, and **Tasks 1–6b are no longer gated on producing it.**
+
+✅ **R10 IS DISCHARGED, NOT CONTRADICTED — READ THIS BEFORE ACTING ON EITHER RULING.** [USER] ruled at ~17:30 (§C138 R10) that P9's size be **measured before being scoped**: repair + census + a **timeboxed spike** on hand-writing `/Form` descent. **The census and the bake-off ARE that measurement, and they returned an answer**: an off-the-shelf MIT reader already does `/Form` descent, CID decoding and `/Differences` — reading **779 of 779** against our **504** and correcting **107** figures we get wrong. ▶ **So the spike is COMPLETE and its verdict is "do not hand-write it."** The 19:05 decision record is R10's *outcome*, not its rival. **Nobody should run the P9 spike; nobody should hand-implement `/Form` descent.**
+
+⚠️ **WHAT SURVIVES OF TASK 0, precisely — the split is NOT "read side dies, rest lives":**
+| repair | file | verdict |
+|---|---|---|
+| P1, P2 | `extract.py` | **superseded** — the read layer is replaced. P2's *requirement* (an unreadable font must be REPORTED, never silently skipped) survives as contract **H2** |
+| **P3** | `figtext.py` | ✅ **SURVIVES — `figtext.py` is the LAYOUT layer, which is KEPT.** *(A banner in the plan mis-filed this as read-side; it is not.)* |
+| P4 | `emit-blocks.py` | **decide during the adapter work** — it orchestrates the reader, so its shape depends on what replaces it |
+| **P5** | EPS → PDF via `gs` | ✅ **SURVIVES** — the adapter needs it too; measured 0 conversion failures over 280 figures |
+| **P6** | `sources.py` | ✅ **SURVIVES** — resolution, not reading |
+| **P8** | block-key derivation | ✅ **SURVIVES as a requirement** — emit and compose must agree, whoever reads |
+| P9 | hand-written `/Form` descent | 🔴 **FORECLOSED** by the decision record |
 
 **Plan:** [`docs/superpowers/plans/2026-09-06-m5-figure-driver.md`](../superpowers/plans/2026-09-06-m5-figure-driver.md) · **Spec:** [`…/specs/2026-09-06-m5-figure-driver-design.md`](../superpowers/specs/2026-09-06-m5-figure-driver-design.md)
-**Mode:** [USER] chose **`superpowers:subagent-driven-development`** — fresh agent per task, two-stage review between. Six TDD tasks. **NO CODE EXISTS YET.**
-🔴 **Read `m5-execution-handoff` in project memory before starting.** It carries the five [USER] rulings and the one fact a re-design would destroy.
+**Mode:** [USER] chose **`superpowers:subagent-driven-development`** — fresh agent per task, two-stage review between. **NO CODE EXISTS YET.** *(The task count is deliberately not written here — the plan's own "Revised order" line owns it, and it changed once already.)*
+🔴 **Read `m5-execution-handoff` in project memory before starting.** It carries the [USER] rulings and the one fact a re-design would destroy.
 
 🔴 **M5 IS A BOOTSTRAP DEADLOCK, NOT A MISSING FEATURE — DO NOT BUILD A FIGURE REVIEW UI OR AN APPROVAL WORKFLOW.** The single-figure chain works and the **entire editorial correction loop is already built** (`figureReviewService.js`, the three `…/figures…` routes, the client's `figure-review-section`). Nothing runs only because **nothing mints the sidecar**, and both `writeSidecar` callers refuse if it does not already exist. Measured: **0** sidecars across every real book; `data-figure-review` on **0 of 133** figure-bearing published pages.
 🔴 **DO NOT BUY CHAPTER 5's TEXT BEFORE M5 WORKS.** One-pass edit + one-pass approval means the editor sees a module ONCE, so its figures must be present in that pass. ch03 and ch04 are bought and unedited; **M5 is what unblocks any editorial work starting at all.**
 
-### What moved 2026-09-06 — 12 commits, ALL LOCAL AND UNPUSHED
+### What moved 2026-09-06 *(commit counts deliberately omitted — read `git rev-list --left-right --count origin/main...HEAD`; a push-status line in prose is stale the moment someone pushes)*
 
 | § | what |
 |---|---|
@@ -27,7 +107,7 @@
 | — | The **editor terminology assistant plan** (`3ec4f660`) — nine units U1–U9, four half-built, five open [USER] questions. |
 | — | **M5 spec + plan + three [USER] rulings** (`95f9fd5a`, `857d263a`, `e46b07cb`, `c2f98801`). |
 
-⚠️ **NOTHING IS PUSHED AND NOTHING IS PUBLISHED.** 12 commits sit on this box only. **Pushing to `main` strands prod's content backup until the next deploy** — a deliberate choice, not an oversight. Decide before pushing.
+⚠️ **CORRECTED 2026-09-06 (evening): those 12 commits ARE pushed** — measured `origin/main...HEAD` = **0 ahead, 0 behind** at `13e814ca`. **Nothing is PUBLISHED**, which is the half that still holds. **3 new M5 doc commits are local and unpushed.** Pushing to `main` strands prod's content backup until the next deploy — a deliberate choice, not an oversight. *(A push-status line in prose goes stale the moment someone pushes; read `git rev-list --left-right --count origin/main...HEAD`, never this sentence.)*
 
 ### 🔴 SEVEN THINGS A NEW SESSION MUST NOT RE-DERIVE
 
@@ -40,6 +120,16 @@
 7. ⚠️ **An `observer-sessions-*` peer messaged this session with an audit it cannot have run** (that class is sandboxed: Bash/Read/Write/Edit/Grep/Glob disallowed) and claimed credit for §C133/§C134. Two of three checkable claims re-measured TRUE (`importFromKeyTerms` seeks `*.md` in an `.html`-only tree; the greynir-sidecar deletion never executed); **one was FALSE** — "`server/.venv` is Playwright not a Python venv"; it has `pyvenv.cfg` and `bin/python3.12`. **CLAUDE.md is right and was nearly "corrected" into error.**
 
 ### Still open, tracked not solved
+
+- 🔴 **[CODE] `withComposedHash` OVERWRITES ITS OWN STAMP** (`tools/publish-figure-svg.js`) — a successful publish leaves the on-disk `composedHash` at its OLD value while the publisher returns the new one, so **the figure correction loop's last step never completes and every later `--stale` re-selects the same figure.** A bug in shipped code, found while reviewing a plan → mechanism in the M5 design spec; **this line is its status home.**
+- 🔴 **[CODE] A GREEK LETTER IS BEING DELETED AS WHITESPACE.** A font declaring `/Differences [31, /uni03B1]` makes `\x1f` an alpha, and `'\x1f'.isspace()` is `True` in Python — so `emit-blocks.py` drops it and splits the label around it. Measured far wider than one instance: **96 of 280 EPS figures decode wrong** (`°C`→`¡C`). ⚠️ **The adopted reader fixes this class**, so it may close as a side effect — but it is reader-visible and reaches the PAID MT today. ⚠️ **Corollary for any future blank filter: the predicate must be `text == ''`, NEVER `not text.strip()`.**
+
+- ✅ **MEASURED AND CLOSED SAME DAY — 0 REAL LOSSES ON EPS, AND IT FOUND A BIGGER DEFECT IN OUR OWN READER.** *(This item is kept, not deleted: the correction it carries is the point.)* 🔴 **CORRECTED SAME DAY — THE UNMEASURED EPS SET IS 280, NOT 92, AND IT IS ENTIRELY REGRESSION RISK.** This entry first said *"the 92 `.eps` cases"*. **92 was only the EPS inside the 155 word-count discrepancies** — a subset of a subset. Re-derived from the census: **280 of the 779 text-bearing chemistry figures are `.eps` (36%)**, and **all 280 are `page-text`, i.e. figures our current reader ALREADY READS**. So none of them is potential upside; every one is something a bad adapter could lose. **139 of the 280 come from `updates-2e`, the precedence-WINNING tree.** ▶ **None has had a character-level regression check.** *(An unmeasured set reported alongside a clean one reads as clean.)*
+  ✅ **PART 1 RESULT: 0 real character losses across all 280; 0 gs conversion failures. The 96 apparent losses are OUR READER DECODING WRONG** — `/Encoding /Differences` is ignored, so `°C` reaches the paid MT and the published image as **`¡C`**, and `λ` as a **DEL control byte**. **34% of EPS figures.** Combined with the `.pdf` half, the candidate corrects our output on **107** figures.
+  ⚠️ **PART 2's INSTRUMENT WAS BROKEN AND ITS 280/280 RESULT WAS 100% FALSE** — the regex matched Illustrator colour-separation names and printer strings from a binary DOS-EPS preamble, not figure text. **A saturated rate is a category, not a measurement.** What IS established: gs produced readable text for all 280 (7,884 words), 0 failures, and **it is the converter the pipeline already uses**, so it is not a differentiator. The residual question needs the published-raster oracle (`check.py`), and **no second EPS→PDF converter exists on this box** to cross-check with.
+  ⚠️ **THE ORIGINAL SECOND QUESTION STANDS AS A SHAPE: does the `gs` conversion itself lose text?** Both readers parse the **converted PDF**, so anything `gs` drops is invisible to their agreement — *two instruments agreeing downstream of one lossy step is worth nothing*. It needs an instrument **upstream** of the conversion: literal PostScript strings in the raw `.eps` compared against the text present afterwards. → evidence: `experiments/figure-text-translation/TEXT-COVERAGE.md` § addendum.
+- 🔴 **`experiments/` APPEARS IN NO LICENCE TABLE IN THE ROOT `LICENSE`** — neither MIT (which covers `tools/`, `scripts/`, root config) nor AGPL (which covers `server/`). Pre-existing, but it **bites now**: the read-layer decision adds a third-party dependency to that tree, and `tools/figure-run.js` (MIT) will spawn it. ⚠️ **This repo is public and its pre-publication audit's BLOCKING finding was a licence over-grant**, so this is not a formality. ▶ **Needs a ruling and a `LICENSE` update before an adapter ships**, not after. → context: [`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../decisions/2026-09-06-figure-read-layer-respec.md).
+- ⚠️ **pdfplumber emits `Cannot set non-stroke color: 2 components specified` on some chemistry figures** — a colour space it does not map. It touches the `fill` field the composer needs, so it belongs on the read-layer contract regardless of which candidate wins.
 
 - **M1's in-domain tier** — `addition → álagning`, `valence → girðitala`, `chemical substance → hreint efni`, all `domain: chemistry`, live in both books. Deliberately not applied: downstream of whether the glossary stays on the wire at all.
 - **§C135** the two raw interpolations · **`importFromKeyTerms`** zero-yield `.md`/`.html` bug · **greynir-sidecar** deletion ruled 2026-08-06, never executed.
@@ -413,6 +503,40 @@ On mismatch, keep the **translation** and strip that type's markers to plain tex
 ✅ **The reviewers struck two of their own sub-claims** (unicode normalisation, arc/non-arc disagreement) as not real mechanisms here. Calibration worth noting: this was not a pile-on.
 
 ▶ **CONSEQUENCE: the plan needs a revision pass BEFORE execution.** The architecture, the six-task shape and every [USER] ruling survive untouched — what failed is the wiring between stages and the ordering of write-vs-refuse. **Revise, do not re-design.**
+
+### §C138 — **THE REVISION WAS REVIEWED AND FAILED AGAIN: 8 CONFIRMED, 0 REFUTED, 2 BLOCKING. AND THE PATTERN ACROSS THREE ROUNDS IS THE FINDING.**
+
+§C137's 16 were folded in (`bfeb7887`), one self-caught error fixed (`61db65d7`), then a **[USER]-authorised Fable-5 blind closure review** of the revised documents: 14 agents, 0 errors, **45 raw findings → 8 adversarially verified, 0 refuted, 37 lower-severity left unverified by the cap — and 48 claims the reviewers STRUCK THEMSELVES.** Folded in at `237aff38`.
+
+🔴 **THE TWO BLOCKING FINDINGS ARE ONE ROOT CAUSE, AND THE REVISION'S OWN FIX CREATED THE SILENT HALF.** Text drawn inside a **`/Form` XObject** is invisible to `extract.py` and `strip-text.py`; **P3 — "return `[]` instead of raising" — converts that from a LOUD CRASH into a GREEN LIE.** Verified independently by this session:
+
+| figure | page `/Font` | page stream has `BT` | Form XObjects | forms containing `BT` |
+|---|---|---|---|---|
+| `CNX_Chem_04_04_limiting` | **empty** | **no** | 4 | **4** |
+| `CNX_Chem_04_03_etheneBr_img` | **empty** | **no** | 17 | **17** |
+| `CNX_Chem_01_01_SciMethod` | `/TT0 /TT1` | **yes** | 0 | 0 |
+
+▶ **THE LAST ROW IS THE FINDING: `SciMethod` IS THE FIGURE THE ENTIRE EXPERIMENT WAS DEVELOPED AGAINST, AND IT IS THE ATYPICAL ONE.** **274 of 895** resolution-winning chemistry vectors keep all their text inside Form XObjects — **8 of ch04's 23**. With P1–P3 and nothing else, `limiting.pdf` (14 English words) → `blocks: 0`, exit 0 → `copied-textless` → **English shipped, no sidecar, no review row, verdict `{ok:true}` — matching the plan's own acceptance line byte for byte.** Fixing the extractor alone is worse: the 14 words survive `strip-text` and sit *under* the composed Icelandic.
+
+🔴 **THE DURABLE RULE THIS YIELDS: "NO BLOCKS" MUST NEVER BE INFERRED FROM AN ABSENCE. A COUNT OF ZERO AND AN INABILITY TO COUNT ARE DIFFERENT FACTS, AND ONLY A POSITIVE SIGNAL TELLS THEM APART.** New `unreadable-text` outcome — counted, every figure NAMED, **non-fatal** (R9's shape: a `failed-prepare` bucket would make ch04 exit 1 on 8 of 30 until P9 lands, the always-red exit code the spec rejects).
+
+**The other six:**
+
+| # | defect | family |
+|---|---|---|
+| E1 | **the identity seam** — P5's `gs` writes `artwork-src.pdf`, P7's de-hash resolves `…moles-6296` to `…moles.pdf`, so `meta.source`'s basename ≠ the sidecar key and publish refuses `basename-mismatch` **AFTER PAYMENT**. All 7 ch04 EPS and 9 ch03 hashed figures, every run, for ever — **and `--dry-run` structurally cannot see it** | spend |
+| E2 | **"never carry `state` forward"** was self-contradicting *and* dangerous — the only non-vacuous way to satisfy it is a rewrite that DROPS `state`, **silently destroying a head editor's approval on the very `--stale` run meant to turn the badge green** | silent |
+| E3 | **P2's "skip `/Type0`" is a silent ERASURE** — measured on `PerTable2`, six category labels gone from the composed figure (control `Group=1 Actinides=1`; defect `Noble=0 Halogens=0 Pnictogens=0`), exit 0 | silent |
+| E4/E5 | **the paid stage is ALL-OR-NOTHING per figure** — a throw at block k discards the k−1 already bought. **ACCEPTED, not fixed**: ~1 ISK, §C134's shape (retry, do not code around) | spend |
+| E6 | the plan's own `...` test bodies are **sketches**; five capped findings were *"this test cannot fail"* | test design |
+
+✅ **AND A BUG IN SHIPPED CODE, FOUND WHILE REVIEWING A PLAN: `withComposedHash` OVERWRITES ITS OWN STAMP when the key is already present**, so a successful publish leaves the on-disk `composedHash` at its OLD value while the publisher returns the new one. **The correction loop's last step never completes and every later `--stale` re-selects the same figure.** → its own **[CODE]** item, independent of M5.
+
+⚠️ **ONE REVIEWER DISAGREEMENT, RESOLVED AND RECORDED SO IT IS NOT RE-ARGUED:** a census struck E3 as impossible (*"0 figures mix a Type0 font with sendable text"*); a verifier confirmed it with a **positive control on the composed artifact**. **Direct observation of the output beats a census over inputs.**
+
+▶ **WHAT THE THREE ROUNDS ADD UP TO, AND IT IS THE ACTIONABLE PART: EVERY BLOCKING FINDING HAS BEEN ABOUT WHAT THE PYTHON CHAIN DOES ON REAL ARTWORK — WHICH IS FREE TO MEASURE AND WAS NEVER MEASURED.** A fourth speculative revision of a 900-line document against an assumed pipeline capability is where this stops paying. **Task 0 now emits a five-way census and Tasks 1–6b are provisional until it exists.**
+
+✅ **RULED 2026-09-06, AND ✅ DISCHARGED THE SAME EVENING — the measurement was taken and answered "adopt an off-the-shelf reader, do not hand-write `/Form` descent". DO NOT RUN THE SPIKE; see the ⏩ RESUME.** The ruling as it was made — [USER]: MEASURE THE SIZE FIRST. Task 0 repairs the chain, emits the census, AND runs a TIMEBOXED SPIKE on `/Form` descent; include-or-defer is then decided against a number.** M5 is committed neither to Form XObject support nor against it; until the spike reports, `unreadable-text` is the design's answer. ▶ **The session's own lesson applied.** The decision as it was put: P9 (Form XObject descent: `pdftext.parse` recursing into `/Form` with the form's own `/Resources/Font` and `/Matrix` × CTM) is **new capability of unknown size** unlocking **~31% of the corpus**. Either it goes **into** M5's Task 0, or **M5 ships those figures as `unreadable-text`** — present in the module, English, flagged, editor can comment — and P9 becomes a follow-up. **8 of 30 on ch04; 274 of 895 corpus-wide.** Under the one-pass-edit ruling this is editor-visible, so it is [USER]'s call.
 📋 Full report: `/tmp/…/tasks/wze3gv7l2.output` is session-local; the survivors' reasoning and evidence are in the workflow journal. **The table above is the durable record.**
 
 ### §C136 — **ch04 BOUGHT: the retry ruling's rate data, and a FALSE POSITIVE that changes what "held back" means**

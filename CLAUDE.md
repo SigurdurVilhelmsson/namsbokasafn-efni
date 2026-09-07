@@ -610,6 +610,20 @@ hang. A hang is louder. ⚠️ **Do not trust a grep here** — a file containin
 `JSON.stringify` and `process.exit` proves nothing (31 files do), and *line* order is not
 *execution* order. **The predicate is an exit on the same path AFTER a write; only reading the
 function settles it.** Instances live in the active register, never here.
+- 🔴 **PYTHON IS THE MIRROR IMAGE, AND CARRYING THIS RULE ACROSS INVERTS IT. A `>`
+  REDIRECT IS THE DANGEROUS CONFIGURATION THERE, NOT THE SAFE ONE.** Node writes to a pipe
+  asynchronously and to a file synchronously, which is why `>` rescues it above. Python's
+  stdout is **line**-buffered to a TTY and **block**-buffered to a file, so a long run killed
+  or timed out mid-flight leaves **0 bytes** having printed plenty. Measured 2026-09-07 on a
+  job that printed 51 lines before being killed: `> file` → **0 bytes**; `python3 -u` → 2,591
+  bytes; both exit 124. ⚠️ **And a shell wrapper hides the death**: `( cmd ; true )` reports
+  **exit 0** where the bare command reports 124 — so a background-task notification can say
+  *"completed (exit code 0)"* about a job that was killed, next to an output file that is
+  empty. ▶ **THAT PAIR IS INDISTINGUISHABLE FROM "ran and found nothing"** — the repo's oldest
+  failure class. **Use `python3 -u` for any long batch whose output you redirect, and judge a
+  run by a TERMINAL MARKER in its artifact (a final verdict line, a closing brace), never by
+  the exit code a wrapper reports.** Relevant wherever `experiments/` batches run for minutes.
+
 
 🔴 **DURABLE — `git checkout -- <file>` IS NOT A MUTATION-TEST RESTORE. IT RESTORES TO `HEAD`,
 SO IT SILENTLY DISCARDS UNCOMMITTED WORK ON THAT FILE — AND THE ROUNDS THAT FOLLOW STILL PRINT
@@ -624,6 +638,20 @@ cap that fires between the run and the restore leaves the mutation in place; her
 golden after every round; and `cmp` once more at the end — the round that dies is precisely the
 one that never restored.** ⚠️ **Commit first where you can:** an uncommitted edit has no second
 copy anywhere, which is what made the loss total rather than recoverable.
+- 🔴 **AMENDED 2026-09-07 — A TIMEOUT IS THE MILD PATH. AN *AGENT DEATH* STRANDS THE MUTANT
+  TOO, AND NOTHING ANYWHERE REPORTS IT.** Measured: a review agent died mid-probe between its
+  mutation write and its restore, leaving a set-comparison mutant uncommitted in
+  `experiments/figure-text-translation/read_layer_accept.py`. ▶ **A timeout at least returns a
+  non-zero exit code to somebody. A dead agent returns NOTHING** — no exit code, no report, no
+  notification — so the controller sees an agent that simply stopped talking, and `HEAD` still
+  looks clean because the mutation is *uncommitted*. Every ordinary health signal was silent.
+  ⚠️ **And the stranded mutant can PASS the suite**, which is how it survives review: this one
+  left `--selftest` printing `ALL 5 PASS`, exit 0, because no assertion read the field it
+  damaged. ▶ **THE RULE: run `git status --porcelain` the moment ANY agent that mutates files
+  goes quiet — dead, finished, or merely silent — and before you trust any verdict it produced.**
+  It is the only detector that fires here, and it is two seconds. **This is the second mutant
+  stranded in this repo by an agent rather than a timeout** (the first was committed; see
+  memory `engineering-lessons`, two agents on one tree).
 
 🔴 **DURABLE — A PROMISE THAT NEVER SETTLES EXITS 0; IT DOES NOT HANG.** `new Promise(() => {})`
 holds **no handle**, so Node's event loop empties and the process exits **normally with 0**,

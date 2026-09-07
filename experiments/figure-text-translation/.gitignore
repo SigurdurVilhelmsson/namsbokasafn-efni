@@ -7,3 +7,8 @@ pylibs/
 
 # Machine-specific source-tree paths (see sources.local.json.example)
 sources.local.json
+
+# Harness + census scratch output (read_layer_accept.py --json, read-layer-bakeoff.py).
+# The COMMITTED evidence is text-coverage-efnafraedi-2e.json, TEXT-COVERAGE.md and
+# READ-LAYER-ACCEPTANCE.md - per-figure rows are regenerable and large.
+census-out/

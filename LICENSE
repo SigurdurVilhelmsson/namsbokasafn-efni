@@ -5,7 +5,7 @@ on where a file lives:
 
 | Path | Licence | Where |
 |---|---|---|
-| `tools/`, `scripts/` — pipeline & tooling | **MIT** | below |
+| `tools/`, `scripts/`, `experiments/` — pipeline, tooling & experiments | **MIT** | below |
 | `server/` — Ritstjóri editorial server (incl. `greynir-sidecar/`) | **AGPL-3.0** | [`server/LICENSE`](server/LICENSE) |
 | `books/` — translated content | **per-book Creative Commons** | below |
 
@@ -15,8 +15,40 @@ Repository-root configuration files (`package.json`, `eslint.config.js`,
 ## Pipeline and Tooling (MIT License)
 
 The MIT grant covers the CNXML extraction, machine-translation integration,
-reinjection and HTML-rendering pipeline: the `tools/` and `scripts/` directories
-and the root configuration files listed above.
+reinjection and HTML-rendering pipeline: the `tools/`, `scripts/` and
+`experiments/` directories and the root configuration files listed above.
+
+`experiments/` is MIT for the same reason `tools/` is, and the reason is a
+combination one rather than a preference: MIT tooling already depends on the
+figure-text tree under `experiments/figure-text-translation/`. `tools/publish-figure-svg.js`
+reads `out/translated.svg` and `out/meta.json` from it by default (`:202-208`), and
+the figure-text driver planned for that tree will live in `tools/` beside it. Any
+other licence here would create a new MIT→copyleft edge alongside the `server/`
+edges catalogued below.
+
+**The grant covers OUR code only.** `experiments/figure-text-translation/pylibs/`
+is a local dependency install and is **gitignored**, so this repository
+distributes no third-party *code*, and nothing below is a sublicence of anything.
+Recorded for the reader who installs those dependencies themselves: the figure
+**read** layer imports **pdfplumber** (MIT) and, through it, pdfminer.six,
+pypdfium2, cryptography and Pillow; the read layer and the **text-strip** layer
+both import **pikepdf** (MPL-2.0); the **composition** layer imports **pycairo**
+(LGPL-2.1-only OR MPL-1.1); and the **SVG** writer imports **fontTools** (MIT)
+and **brotli** (MIT) to subset a face to woff2. Every one of them is used as an
+imported library, unmodified.
+
+**It DOES distribute third-party FONT DATA, which is a different thing and is
+stated separately because a licence file must not overstate its own scope.**
+1,418 tracked `.svg` files under `books/` carry an `@font-face` whose `src` is a
+base64 **woff2 subset of Liberation Sans**, embedded by
+`experiments/figure-text-translation/svgout.py` so a reader without that face
+installed still sees the figure as laid out. Liberation Sans is licensed under
+the **SIL Open Font License 1.1**, which expressly permits embedding a face in a
+document and carries no Reserved Font Name for these families. The subsets are
+font data, not code; they are not covered by the MIT grant above and are not
+sublicensed by it. *(Re-derive the count rather than trusting this one — it is
+`git ls-files -z '*.svg' | xargs -0 grep -la '@font-face' | wc -l`, and it moves
+whenever a figure is published.)*
 
 **It does not cover `server/`** (which is AGPL-3.0 — see `server/LICENSE`) **or
 `books/`** (which is content under per-book Creative Commons terms — see below).
@@ -95,8 +127,9 @@ and the root configuration files listed above.
 >    `server/data/`. They are not enumerated here: they are out of the pipeline,
 >    and they depend on the path rather than on anything in `server/`.
 > 4. **Package resolution, not code** — resolves a third-party package through
->    `server/node_modules`; loads no AGPL code. The package in every case is
->    `better-sqlite3`, which is itself MIT; it lives under `server/` because the
+>    `server/node_modules`; loads no AGPL code. Two packages are reached this
+>    way, both permissively licensed themselves — `better-sqlite3` (MIT) and
+>    `playwright` (Apache-2.0) — and each lives under `server/` because the
 >    repository root has no dependency on it.
 >    - `tools/lib/safeWrite.js:50`, `tools/migrate-pipeline-status.js:24` and
 >      `scripts/backfill-mt-locks.js:98` anchor a `createRequire` inside
@@ -106,10 +139,20 @@ and the root configuration files listed above.
 >      `server/node_modules/better-sqlite3` path directly.
 >    - `tools/merge-glossary.js:495` tries that path and falls back to the bare
 >      specifier.
+>    - `experiments/figure-text-translation/render-check.mjs:11` and
+>      `experiments/figure-text-translation/probe-img.mjs:3` import `playwright`
+>      through an **absolute** path into `server/node_modules`. Neither is on the
+>      pipeline: they are hand-run rendering probes, and no tool spawns either.
+>      ⚠️ Their absolute path is a
+>      separate defect — it hardcodes one machine's checkout — recorded here
+>      because it is what makes them invisible to the three search shapes below.
 >
 > This list is the authoritative enumeration — update it here when an edge is
-> added or removed, and re-derive rather than trusting it. Three search shapes
-> are needed, because none of them sees the others' matches:
+> added or removed, and re-derive rather than trusting it. **Four** search shapes
+> are needed, because none of them sees the others' matches. *(This said three
+> until 2026-09-07, when adding `experiments/` found two edges that all three
+> missed — the note's own instruction to re-derive rather than trust it is what
+> caught them.)*
 >
 > - a literal `'../server/…'`;
 > - a computed `path.join`/`path.resolve` over a separate `'server'` argument;
@@ -119,6 +162,10 @@ and the root configuration files listed above.
 >   cannot match these: there is no `'server'` token to find and no `../`
 >   prefix. `tools/merge-glossary.js:495` and
 >   `scripts/backfill-mt-locks.js:98` are reachable only this way.
+> - an **absolute** path containing `…/server/` — no `../`, no separate
+>   `'server'` argument, and the string does not *begin* `server/`, so the first
+>   three shapes are all blind to it. The two `experiments/` entries above are
+>   reachable only this way.
 >
 > And do not filter `node_modules` out of the results. An exclusion meant to
 > skip files *inside* `node_modules` also hides every edge that merely mentions

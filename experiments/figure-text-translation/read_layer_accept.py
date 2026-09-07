@@ -1,0 +1,1349 @@
+#!/usr/bin/env python3
+"""Acceptance harness for the figure READ layer — the instrument that decides whether
+the pdfplumber replacement may be swapped in.
+
+    FIGTEXT_PYLIBS=./pylibs python3 read_layer_accept.py --selftest
+    FIGTEXT_PYLIBS=./pylibs python3 read_layer_accept.py --baseline  --json accept-baseline.json
+    FIGTEXT_PYLIBS=./pylibs python3 read_layer_accept.py --candidate --json accept-candidate.json
+
+🔴 THIS SHIPS NO READER. It ships the thing that judges one. It is written BEFORE the
+replacement on purpose: a harness written afterwards gets tuned until it agrees.
+
+Three readers, and a THREE-valued outcome (ruling R-1):
+
+    read_baseline(pdf)  -> (runs, meta, outcome)   outcome: 'reads' | 'empty' | 'raises'
+    read_candidate(pdf) -> (runs, meta, outcome)   imports readlayer.py, else raises
+    read_oracle(pdf)    -> str                     pdftotext -q <pdf> -
+
+`read_baseline` is `extract.py`'s loop VERBATIM and UNGUARDED — `page.Resources.Font`
+and `int(fobj.FirstChar)` — with the exception caught at the boundary and classified.
+It must never be made defensive: the point is to measure the program being replaced.
+Swallowing a raise into `[]` is forbidden; it manufactures the population.
+
+DENOMINATORS ARE MEASURED, NEVER INHERITED (ruling R-2). The census supplies the
+PARTITION (its bucket labels); every count in this file is derived here. No population
+size is hard-coded — 504, 496, 779 and 816 are outputs, and two of them came from a
+guarded reader that is a third program again.
+
+────────────────────────────────────────────────────────────────────────────────────
+CONTRACT FOR TASK R2 — what `readlayer.py` must expose:
+
+    readlayer.read(pdf_path) -> (runs, meta, outcome)
+
+    runs : list of dicts, each carrying the NINE keys
+           text(str) font(str) size(num) rot(num) x(num) y(num) adv(num)
+           fill(None|seq) tm(6-seq)
+    meta : {'fonts': {<fontkey>: {'base': <BaseFont str>, ...}}, ...}
+           `run['font']` MUST be a key of `meta['fonts']` (ruling R-4 makes that key
+           scope-qualified, e.g. 'PAGE/TT0', 'PAGE/Fm3/T1_0' — that is fine; this
+           harness joins across readers on `base`, the only shared unit).
+           A font whose bytes cannot be decoded to Unicode MUST carry
+           `decodable: False` — C1b fails a silent reduction, and only that flag
+           distinguishes "cannot read this" from "read nothing".
+    outcome : advisory. The harness RE-DERIVES reads/empty from the runs and reports
+              any disagreement, so a reader cannot certify itself.
+────────────────────────────────────────────────────────────────────────────────────
+"""
+import collections
+import json
+import math
+import os
+import re
+import subprocess
+import sys
+import tempfile
+import time
+import traceback
+from contextlib import contextmanager
+from pathlib import Path
+
+EXP = Path(__file__).resolve().parent          # never process.cwd() — repo rule
+sys.path.insert(0, str(EXP))
+sys.path.insert(0, str(EXP / 'pylibs'))
+os.environ.setdefault('FIGTEXT_PYLIBS', str(EXP / 'pylibs'))
+
+import pikepdf                                                    # noqa: E402
+import figtext as FT                                              # noqa: E402
+import sources as S                                               # noqa: E402
+from _deps import read_content                                    # noqa: E402
+from pdftext import parse as pdftext_parse                        # noqa: E402
+from blockkey import block_key                                    # noqa: E402
+
+BOOK = 'efnafraedi-2e'
+CENSUS = EXP / 'text-coverage-efnafraedi-2e.json'
+OUTDIR = Path(os.environ.get('FIGTEXT_CENSUS_OUT') or (EXP / 'census-out'))
+DEHASH = re.compile(r'-[0-9a-f]{4}$')
+
+# The census buckets that are IN SCOPE. `ours-crashes` is included deliberately: it is an
+# artefact of the CENSUS's instrument (text-coverage-census.py calls pg.Contents.read_bytes(),
+# which raises when /Contents is an ARRAY), not of the reader. Those figures ARE the whole of
+# spec H4, so excluding them measures H4 on zero figures.
+TEXT_BUCKETS = ('page-text', 'form-text-only', 'type0-unreadable',
+                'text-but-unexplained', 'ours-crashes')
+
+# The nine run keys. Shape conformance is per-run and needs no pairing (ruling R-10).
+RUN_KEYS = ('text', 'font', 'size', 'rot', 'x', 'y', 'adv', 'fill', 'tm')
+NUMERIC_KEYS = ('size', 'rot', 'x', 'y', 'adv')
+
+# ⚠️ An EXPLICIT whitespace set, never str.isspace()/str.strip(). `'\x1f'.isspace()` is
+# True and a /Differences font maps \x1f to a Greek alpha, so .strip() would delete a real
+# glyph — and would delete it from the `dropped, oracle also lacks` column too, which is
+# exactly where a loss poppler cannot see would hide.
+WS = ' \t\r\n\f'
+
+# C4 pairs blocks by key and then compares geometry. The two readers derive x/y by
+# different routes, so an exact compare is not the question; a block that has MOVED is.
+BBOX_TOL_PT = 1.0
+
+SELFTEST_SAMPLE = 40      # figures per bucket for selftest assertions 1-3, 5-7 and 9.
+                          # NOT 8: that one runs the WHOLE type0 bucket (8 figures), so it
+                          # has no sample to size — its denominator is the population.
+                          # (the page-text sample is 41: see C1_SURPLUS_FIGURE below)
+SELFTEST_CRASH_FLOOR = 20 # assertion 4's floor: "over 20 of the 38"
+
+# Assertion 7's stimulus, named into the page-text sample because the evenly-spaced 40
+# carry NO figure whose baseline over-reads an oracle-attested character (probed: 0/40,
+# with this figure as the positive control that proves the probe can fire). See selftest().
+C1_SURPLUS_FIGURE = 'CNX_Chem_18_03_SiPurif'
+
+
+# ── population ──────────────────────────────────────────────────────────────────────
+
+def load_population(buckets=TEXT_BUCKETS, limit=None):
+    rows = json.loads(CENSUS.read_text())
+    pop = [r for r in rows if r['bucket'] in buckets]
+    if limit:
+        pop = pop[:limit]
+    return rows, pop
+
+
+def resolver():
+    cfg = S.load_config()
+    trees = S.load_trees(BOOK, cfg)
+    prec = cfg['editionPrecedence']
+
+    def resolve(name):
+        p, key = S.resolve(name, trees, prec)
+        if not p and DEHASH.search(name):
+            p, key = S.resolve(DEHASH.sub('', name), trees, prec)
+        return p, key
+    return resolve
+
+
+@contextmanager
+def staged(path):
+    """Convert .eps/.ai ONCE per figure and hand the SAME path to every reader.
+
+    Converting per reader makes ghostscript's nondeterminism read as a reader difference.
+    Yields (pdf_path, error); the temp file is removed in a finally.
+    """
+    if path.suffix.lower() not in ('.eps', '.ai'):
+        yield path, None
+        return
+    tf = tempfile.NamedTemporaryFile(suffix='.pdf', delete=False)
+    tf.close()
+    try:
+        r = subprocess.run(['gs', '-q', '-dNOPAUSE', '-dBATCH', '-dSAFER', '-dEPSCrop',
+                            '-sDEVICE=pdfwrite', f'-sOutputFile={tf.name}', str(path)],
+                           capture_output=True, timeout=120)
+        if r.returncode != 0 or os.path.getsize(tf.name) == 0:
+            yield None, f'gs exit {r.returncode}, {os.path.getsize(tf.name)} bytes'
+        else:
+            yield Path(tf.name), None
+    except subprocess.TimeoutExpired:
+        yield None, 'gs timeout 120s'
+    finally:
+        try:
+            os.unlink(tf.name)
+        except OSError:
+            pass
+
+
+# ── the three readers ───────────────────────────────────────────────────────────────
+
+def outcome_of(runs):
+    """'reads' iff any run carries a non-empty text string.
+
+    The predicate is `text != ''`, NOT `text.strip()` — see WS above."""
+    return 'reads' if any((r.get('text') if isinstance(r, dict) else '') for r in runs) else 'empty'
+
+
+def read_baseline(pdf_path):
+    """extract.py's loop, VERBATIM and UNGUARDED, with the exception caught AT THE
+    BOUNDARY and classified as 'raises'. Do not make this defensive.
+
+    `widths` is built in extract.py's shape — {fontkey: {charcode: width/1000}} — and
+    NOT read-layer-bakeoff.py's {'first':…, 'w':[…]}, which pdftext.parse's
+    `w.get(ord(ch), 0.5)` silently misses (advances 52.515/16.002/37.512 vs
+    49.5/13.5/40.5, i.e. every advance wrong and no error).
+    """
+    try:
+        pdf = pikepdf.open(pdf_path)
+        page = pdf.pages[0]
+        content = read_content(page)
+
+        widths, fontmap = {}, {}
+        for name, fobj in page.Resources.Font.items():
+            first = int(fobj.FirstChar)
+            ws = [float(w) for w in fobj.Widths]
+            key = '/' + str(name).lstrip('/')
+            widths[key] = {first + i: w / 1000.0 for i, w in enumerate(ws)}
+            fontmap[key] = dict(base=str(fobj.BaseFont), first=first,
+                                last=int(fobj.LastChar), subtype=str(fobj.Subtype),
+                                encoding=str(fobj.get('/Encoding', '')))
+
+        runs = pdftext_parse(content, widths)
+        box = page.MediaBox
+        meta = dict(source=str(pdf_path), fonts=fontmap,
+                    page=[float(box[2]), float(box[3])], runs=len(runs))
+    except Exception as exc:
+        return [], {'fonts': {}, 'error': f'{type(exc).__name__}: {exc}',
+                    'error_type': type(exc).__name__}, 'raises'
+    return runs, meta, outcome_of(runs)
+
+
+def read_candidate(pdf_path):
+    """The replacement reader (Task R2's readlayer.py). See the CONTRACT block above."""
+    try:
+        import readlayer
+    except ImportError as exc:
+        raise SystemExit(
+            "readlayer.py is not importable, so there is no candidate to accept.\n"
+            f"  ({type(exc).__name__}: {exc})\n"
+            "  Task R2 must create experiments/figure-text-translation/readlayer.py\n"
+            "  exposing:  read(pdf_path) -> (runs, meta, outcome)\n"
+            "  See the CONTRACT FOR TASK R2 block at the top of read_layer_accept.py.")
+    if not hasattr(readlayer, 'read'):
+        raise SystemExit("readlayer.py has no read(pdf_path) -> (runs, meta, outcome). "
+                         "See the CONTRACT block in read_layer_accept.py.")
+    try:
+        runs, meta, declared = readlayer.read(pdf_path)
+    except Exception as exc:
+        return [], {'fonts': {}, 'error': f'{type(exc).__name__}: {exc}',
+                    'error_type': type(exc).__name__}, 'raises'
+    meta = dict(meta or {})
+    meta['declared_outcome'] = declared      # reported, never trusted: a reader may not
+    return runs, meta, outcome_of(runs)      # certify itself
+
+
+def read_oracle(pdf_path):
+    """poppler's view. `pdftotext` descends into /Form XObjects, which is precisely the
+    scope the baseline cannot see, so it is the tiebreak in C1 and the referee in C3."""
+    r = subprocess.run(['pdftotext', '-q', str(pdf_path), '-'],
+                       capture_output=True, timeout=120)
+    return r.stdout.decode('utf-8', 'replace')
+
+
+def make_mutant(reader):
+    """A reader that drops the LAST run of every figure. Used only by --selftest
+    assertion 2: it is the positive control that proves C1 can go red at all."""
+    def mutant(pdf_path):
+        runs, meta, outcome = reader(pdf_path)
+        if runs:
+            runs = list(runs)[:-1]
+        return runs, meta, outcome
+    return mutant
+
+
+MOJIBAKE_FIX = '°'   # '°' — the glyph H3's real fix produces where the baseline
+                          # reads '¡'. See below: C1 cannot be affected by this CHOICE.
+
+
+def make_mojibake_mutant(reader):
+    """A reader that REPLACES every character poppler cannot see — R2's H3 fix in
+    miniature. Used only by --selftest assertion 5 (ruling R-15).
+
+    🔴 WHY THIS ASSERTION EXISTS. C1's rule is
+    `regression ⟺ ∃ch. dropped[ch] > 0 ∧ candidate[ch] < oracle[ch]`, and the oracle
+    tiebreak is what stops the harness REJECTING the ~96 mojibake repairs R2 exists to
+    make: when the
+    candidate correctly reads `°C` where the baseline read `¡C`, the `¡` is "missing"
+    and a mechanical compare calls that a regression. In a baseline-vs-baseline run
+    nothing is ever missing, so that branch is STRUCTURALLY UNREACHABLE and reports
+    `0/530` — a zero that says nothing whatever about whether the mechanism works. This
+    mutant is the only thing that reaches it.
+
+    ⚠️ The REPLACEMENT CHARACTER cannot make the assertion pass spuriously: C1 looks only
+    at the dropped side (`Counter(baseline) − Counter(candidate)`), so adding a character
+    to the candidate can never create a regression, only mask one — and this mutant makes
+    no other change for it to mask. The half that could genuinely fail is the one asserted
+    alongside: zero regressions AND a non-zero excused count.
+
+    ⚠️ Whitespace is skipped deliberately. `charcount` excludes whitespace, so `ochars`
+    never contains a space, and without this guard every space in the corpus would be
+    "oracle-absent" and get replaced — mangling block keys and making the mutant a
+    caricature rather than a miniature of the fix it stands in for.
+    """
+    def mutant(pdf_path):
+        runs, meta, outcome = reader(pdf_path)
+        try:
+            # ⚠️ A SET HERE IS CORRECT AND MUST STAY ONE — this is NOT the wrong-unit
+            # defect the C1 tiebreak had. The mutant asks an EXISTENCE question ("can
+            # poppler see this glyph at all?") to decide what to overwrite; C1 asks a
+            # SHORTFALL question ("are we below what poppler attests?") and needs counts.
+            # Task R4b's own brief cited this line as the defect; it is not. Same
+            # expression, different question — the unit follows the QUESTION.
+            ochars = set(charcount(read_oracle(pdf_path)))
+        except Exception:
+            # No oracle, no mutation. `process_figure` tolerates an oracle failure; this
+            # dict comprehension does not, and a mutant that raises would be read as a
+            # harness fault rather than as the absence of a stimulus.
+            return runs, meta, outcome
+        if not ochars:
+            return runs, meta, outcome
+        out = []
+        for r in runs:
+            if isinstance(r, dict) and r.get('text'):
+                t = ''.join(MOJIBAKE_FIX if (ch not in ochars and ch not in WS) else ch
+                            for ch in r['text'])
+                if t != r['text']:
+                    r = dict(r, text=t)
+            out.append(r)
+        return out, meta, outcome
+    return mutant
+
+
+def make_twin_drop_mutant(reader):
+    """A reader that drops one of a duplicated pair of blocks — the ONLY mutant shape
+    that discriminates the multiset compare `key_delta` (ruling R-13) from the set
+    compare it replaced. Used only by --selftest assertion 6, which closes the gap left
+    by assertion 2 (ruling R-13's own lesson turned on the harness): a drop-a-RUN
+    mutant changes a key, which a SET compare also sees; only drop-a-TWIN
+    (`b[k]=2 -> c[k]=1`) discriminates, because the key SET is unchanged (the key is
+    still present, just once instead of twice) while the MULTISET delta is `{k: 1}`.
+
+    A figure with no duplicate key passes through UNCHANGED — that is not a failure of
+    the mutant, it is simply outside assertion 6's denominator (`dup_rows` in
+    selftest()). Recovered from a dead reviewer's proven-working probe
+    (`rr_e2e_twin.py`, which measured the lost twin visible end to end on
+    CNX_Chem_08_01_N2LewStru_img); that probe raised `IndexError` on a figure with no
+    duplicate because it assumed one (`dup[0]`) — this factory is what makes it safe to
+    run across the full 40-figure selftest sample.
+    """
+    def mutant(pdf_path):
+        runs, meta, outcome = reader(pdf_path)
+        if not runs:
+            return runs, meta, outcome
+        blocks = blocks_of(runs)
+        keys = [block_key(b) for b in blocks]
+        dup = [k for k, n in collections.Counter(keys).items() if n > 1]
+        if not dup:
+            return runs, meta, outcome
+        victim = blocks[keys.index(dup[0])]        # first block with a dup key
+        doomed = {id(r) for r in victim}
+        return [r for r in runs if id(r) not in doomed], meta, outcome
+    return mutant
+
+
+def make_partial_loss_mutant(reader, keep=0.25):
+    """A reader that keeps only the first `keep` fraction of a figure's runs — a PARTIAL
+    loss, which is the shape neither `make_mutant` nor the truncate-to-nothing case can
+    stand in for. Used by --selftest assertions 8 and 9.
+
+    🔴 WHY THIS SHAPE AND NOT A TRUNCATION TO ZERO. Both C1b and C2b already fire on TOTAL
+    loss — C1b because an empty `used` font set falls through to FAIL-silent, C2 because
+    an empty read is not 'reads'. A gate that fires only at zero is what both criteria
+    were before this fix, and a mutant that removes everything cannot tell the two rules
+    apart. Dropping three quarters of the runs is also the REALISTIC failure: it is the
+    shape of a /Form walk that descends into some forms and not others, which is this
+    branch's own subject matter and the failure its handoff note predicts
+    ("the obvious repair makes that SILENT").
+
+    ⚠️ A figure with a single run passes through UNCHANGED — `max(1, ...)` keeps the read
+    non-empty on purpose, so the stimulus stays a PARTIAL loss and never degenerates into
+    the total-loss case the criteria could already see. Such a figure is then outside the
+    assertions' denominators, which are derived from the ARTIFACT (candidate chars strictly
+    below the real reader's), never from this closure's internals.
+    """
+    def mutant(pdf_path):
+        runs, meta, outcome = reader(pdf_path)
+        if len(runs) > 1:
+            runs = list(runs)[:max(1, int(len(runs) * keep))]
+        return runs, meta, outcome
+    return mutant
+
+
+def make_surplus_drop_mutant(reader):
+    """A reader that drops ONE occurrence of a character the baseline holds MORE of than
+    the oracle attests. The ONLY mutant shape that discriminates C1's count-aware oracle
+    tiebreak from the membership test it replaced. Used only by --selftest assertion 7.
+
+    🔴 WHY NO EXISTING MUTANT REACHES IT — the same lesson ruling R-13 taught at C4b,
+    turned on C1. Assertion 2's drop-a-RUN mutant removes whole labels, so the candidate
+    falls BELOW the oracle and both rules flag it; assertion 5's mojibake mutant only
+    touches characters the oracle does not have at all (`oracle[ch] == 0`), so both rules
+    excuse it. Neither can tell the two rules apart. This one can, because it lands in
+    the gap between them: the glyph IS in the oracle (so membership flags it) and the
+    candidate is STILL AT OR ABOVE the oracle's count (so counts excuse it).
+
+        membership rule:  dropped[ch] > 0 ∧ ch ∈ oracle          -> REGRESSION (wrong)
+        count rule:       dropped[ch] > 0 ∧ candidate[ch] < oracle[ch] -> excused (right)
+
+    This is CNX_Chem_18_03_SiPurif in miniature — the only C1 regression in the full
+    817-figure run, where the candidate dropped 44 chars of the baseline's binary garbage
+    and was flagged for the one 'c' among them while still carrying all 3 the oracle
+    attests.
+
+    ⚠️ THE VICTIM IS CHOSEN DETERMINISTICALLY (`sorted`), never by dict order: a mutant
+    whose stimulus varies between runs makes a red unreproducible.
+
+    ⚠️ A figure with no surplus character passes through UNCHANGED — it is outside
+    assertion 7's denominator, not a failure. The selftest detects which figures were
+    actually mutated from the OUTPUT (candidate chars == baseline chars − 1), a positive
+    signal in the artifact, rather than from this closure's internal state.
+    """
+    def mutant(pdf_path):
+        runs, meta, outcome = reader(pdf_path)
+        try:
+            ochars = charcount(read_oracle(pdf_path))
+        except Exception:
+            # No oracle, no mutation — same reasoning as make_mojibake_mutant: a mutant
+            # that raises would be read as a harness fault, not as an absent stimulus.
+            return runs, meta, outcome
+        bchars = charcount(runs_text(runs))
+        surplus = sorted(ch for ch in ochars if bchars[ch] > ochars[ch] > 0)
+        if not surplus:
+            return runs, meta, outcome
+        victim = surplus[0]
+        out, done = [], False
+        for r in runs:
+            t = r.get('text') if isinstance(r, dict) else None
+            if not done and t and victim in t:
+                r = dict(r, text=t.replace(victim, '', 1))   # exactly ONE occurrence
+                done = True
+            out.append(r)
+        return out, meta, outcome
+    return mutant
+
+
+# ── measurement primitives ──────────────────────────────────────────────────────────
+
+def charcount(text):
+    return collections.Counter(ch for ch in text if ch not in WS)
+
+
+def runs_text(runs):
+    return ''.join((r.get('text') or '') if isinstance(r, dict) else '' for r in runs)
+
+
+def blocks_of(runs):
+    """figtext.group()/merge_blocks() index [0] unguarded and IndexError on []; the guard
+    lives here because figtext.py is Task R4's file (P3), not this task's."""
+    if not runs:
+        return []
+    return FT.merge_blocks(FT.group(runs))
+
+
+def block_bbox(block):
+    """Baseline extent of the block in user space: each run's origin plus its advance
+    along its own rotation."""
+    xs, ys = [], []
+    for r in block:
+        a = math.radians(r['rot'])
+        xs += [r['x'], r['x'] + r['adv'] * math.cos(a)]
+        ys += [r['y'], r['y'] + r['adv'] * math.sin(a)]
+    return (min(xs), min(ys), max(xs), max(ys))
+
+
+def block_fonts(block, meta):
+    """The BaseFonts a block uses. Resolved through meta['fonts'] because the two readers
+    key fonts differently by design (R-4: 'TT0' vs 'PAGE/TT0'); BaseFont is the shared unit."""
+    fonts = (meta or {}).get('fonts') or {}
+    out = set()
+    for r in block:
+        k = r.get('font')
+        ent = fonts.get(k) or {}
+        out.add(ent.get('base') or f'UNRESOLVED:{k}')
+    return frozenset(out)
+
+
+def block_records(runs, meta):
+    """-> (list of (key, bbox, fonts), Counter of key -> multiplicity, error|None)"""
+    try:
+        blocks = blocks_of(runs)
+        recs = [(block_key(b), block_bbox(b), block_fonts(b, meta)) for b in blocks]
+    except Exception as exc:
+        return [], collections.Counter(), f'{type(exc).__name__}: {exc}'
+    return recs, collections.Counter(k for k, _, _ in recs), None
+
+
+def key_delta(b_keys, c_keys):
+    """C4b's comparison. MULTISETS, never sets — ruling R-13.
+
+    🔴 A SET COMPARE CANNOT SEE A DROPPED TWIN, AND THE TWIN IS THE COMMON CASE.
+    `compose.py` iterates BLOCKS and looks up `TR[key]` for each one, so two blocks that
+    share a key are BOTH drawn. A candidate that produces one where the baseline produced
+    two therefore leaves a label **undrawn** — while `set(candidate) == set(baseline)`,
+    so a set compare reports nothing and every other count stays green. Measured over the
+    full baseline run: **2,052 duplicate keys across 245 of 530 figures**, and 22 of 62
+    page-text figures in an independent check.
+
+    Takes two `collections.Counter`s; returns `(added, dropped)` as sorted
+    `[(key, multiplicity)]`. The multiplicity IS the finding, so it is carried through to
+    the row rather than summed away — `Counter - Counter` keeps only positive counts, which
+    is exactly the asymmetric "what did this side have that the other did not" both
+    directions need.
+    """
+    return (sorted((c_keys - b_keys).items()),
+            sorted((b_keys - c_keys).items()))
+
+
+CID = '(cid:'
+
+
+def looks_undecoded(text):
+    """Control-byte garbage, or poppler's explicit un-decodable marker."""
+    if CID in text:
+        return True
+    return any(ord(ch) < 0x20 and ch not in '\t\n\r' for ch in text)
+
+
+def shape_violations(runs, meta):
+    """C4's per-run half: nine keys, right types, font resolves. No pairing needed."""
+    v = collections.Counter()
+    fonts = (meta or {}).get('fonts') or {}
+    for r in runs:
+        if not isinstance(r, dict):
+            v['not-a-dict'] += 1
+            continue
+        for k in RUN_KEYS:
+            if k not in r:
+                v[f'missing:{k}'] += 1
+        if not isinstance(r.get('text'), str):
+            v['type:text'] += 1
+        for k in NUMERIC_KEYS:
+            if not isinstance(r.get(k), (int, float)) or isinstance(r.get(k), bool):
+                v[f'type:{k}'] += 1
+        tm = r.get('tm')
+        if not isinstance(tm, (list, tuple)) or len(tm) != 6:
+            v['type:tm'] += 1
+        fill = r.get('fill')
+        if fill is not None and not isinstance(fill, (list, tuple)):
+            v['type:fill'] += 1
+        if r.get('font') not in fonts:
+            v['font-unresolved'] += 1
+    return v
+
+
+# ── one figure, one staging, N readers ──────────────────────────────────────────────
+
+def process_figure(row, resolve, cmp_readers):
+    """Stage ONCE, read baseline ONCE, read the oracle ONCE, then every candidate arm.
+
+    Every in-scope figure lands in exactly one status, so the table's columns sum to its
+    rows. A `continue` on an unresolvable figure would manufacture the denominator.
+    """
+    name = row['name']
+    out = dict(name=name, bucket=row['bucket'], arms={})
+    path, edition = resolve(name)
+    if not path:
+        out['status'] = 'unresolved-now'
+        return out
+    out['edition'] = edition
+    out['ext'] = path.suffix.lower()
+
+    with staged(path) as (src, stage_err):
+        if stage_err:
+            out['status'] = 'stage-failed'
+            out['stage_error'] = stage_err
+            return out
+        out['status'] = 'staged'
+        try:
+            oracle = read_oracle(src)
+            out['oracle_error'] = None
+        except Exception as exc:
+            oracle = ''
+            out['oracle_error'] = f'{type(exc).__name__}: {exc}'
+        b_runs, b_meta, b_out = read_baseline(src)
+        arms = {label: reader(src) for label, reader in cmp_readers.items()}
+
+    ochars = charcount(oracle)
+    out['oracle_words'] = len(oracle.split())
+    out['oracle_chars'] = sum(ochars.values())
+    out['base'] = dict(outcome=b_out, runs=len(b_runs),
+                       chars=sum(charcount(runs_text(b_runs)).values()),
+                       error=b_meta.get('error'))
+    b_recs, b_keys, b_kerr = block_records(b_runs, b_meta)
+    out['base']['blocks'] = len(b_recs)
+    out['base']['blockkey_error'] = b_kerr
+    out['base']['dup_keys'] = sum(n - 1 for n in b_keys.values() if n > 1)
+    out['base']['shape'] = dict(shape_violations(b_runs, b_meta))
+
+    b_chars = charcount(runs_text(b_runs))
+    b_bykey = {k: (bb, ff) for k, bb, ff in b_recs}
+
+    for label, (c_runs, c_meta, c_out) in arms.items():
+        a = dict(outcome=c_out, runs=len(c_runs),
+                 chars=sum(charcount(runs_text(c_runs)).values()),
+                 error=c_meta.get('error'),
+                 declared_outcome=c_meta.get('declared_outcome'))
+        a['declared_disagrees'] = (a['declared_outcome'] is not None
+                                   and a['declared_outcome'] != c_out)
+        c_recs, c_keys, c_kerr = block_records(c_runs, c_meta)
+        a['blocks'] = len(c_recs)
+        a['blockkey_error'] = c_kerr
+        a['dup_keys'] = sum(n - 1 for n in c_keys.values() if n > 1)
+        a['shape'] = dict(shape_violations(c_runs, c_meta))
+        c_chars = charcount(runs_text(c_runs))
+
+        # ── C1: regression control, scoped to figures the BASELINE reads ──────────
+        # 🔴 THE TIEBREAK COMPARES COUNTS, NOT MEMBERSHIP (ruling R-13's shape, third
+        # instance). `ochars` is a Counter, so `ch in ochars` asks "does poppler see
+        # this glyph ANYWHERE?" when the question is "are we now SHORT of what poppler
+        # attests?". Measured on CNX_Chem_18_03_SiPurif, the only C1 regression in the
+        # full 817-figure run: baseline 81 chars, candidate 37, oracle 37; the baseline
+        # emits 44 chars of binary garbage before the three real labels and the
+        # candidate drops all 44, one of which is a 'c' (baseline 4, candidate 3,
+        # oracle 3). Membership flags {'c': 1}; counts flag nothing, and nothing is
+        # what is true — no character is below its oracle count, at full multiplicity.
+        #
+        # ⚠️ HONEST CAVEAT, carried from R2: this is STRICTLY MORE PRECISE, NOT PERFECT.
+        # When the counts coincide it still cannot tell a dropped junk 'c' from a
+        # dropped real one — baseline 4 -> candidate 3 with oracle 3 reads clean whether
+        # the occurrence lost was garbage or a label. Do not oversell it: it removes a
+        # class of FALSE regression, it does not prove no real character was lost.
+        if b_out == 'reads':
+            dropped = b_chars - c_chars          # Counter-, positive counts only
+            a['c1_regression'] = {ch: n for ch, n in dropped.items()
+                                  if c_chars[ch] < ochars[ch]}
+            a['c1_excused'] = {ch: n for ch, n in dropped.items()
+                               if not c_chars[ch] < ochars[ch]}
+            a['c1_scope'] = True
+        else:
+            a['c1_regression'], a['c1_excused'], a['c1_scope'] = {}, {}, False
+
+        # ── C1b: type0 correctness ────────────────────────────────────────────────
+        if row['bucket'] == 'type0-unreadable':
+            a['c1b'] = classify_type0(c_runs, c_meta, ochars)
+            # The VALUES, not just the verdict: a FAIL-silent line that says only "8
+            # figures" cannot tell a lost label from a lost accent. Recorded on every
+            # row, so `decoded` carries its own evidence ({} — nothing short).
+            a['c1b_shortfall'] = oracle_shortfall(runs_text(c_runs), ochars)
+
+        # ── C2: positive control, scoped to figures the baseline CANNOT read ──────
+        a['c2_scope'] = b_out in ('raises', 'empty')
+        a['c2_gained'] = a['c2_scope'] and c_out == 'reads'
+
+        # ── C2b: COMPLETENESS on the population C2 covers — against the ORACLE ─────
+        # 🔴 C2 IS AN EXISTENCE TEST AND THE QUESTION IS SHORTFALL — the same wrong unit
+        # as C1b's old overlap, in the place it costs most. `c2_gained` is
+        # `c_out == 'reads'`, and `outcome_of` is `any(r['text'] != '')`, so ONE SPACE
+        # is 'reads'. On the 287 figures the baseline crashes on — 274 of them the
+        # form-text population this whole swap exists to fix — C1, C4 and C4b have a
+        # structurally EMPTY denominator (`if b_out == 'reads'`), C3 asks only "has text
+        # at all", and only the 8 type0 figures get C1b. That leaves 279 figures graded
+        # on "did we emit anything", so the headline "readable 530 -> 816 of 817" means
+        # ">= 1 character", not "read the figure". Measured with a realistic /Form-walk
+        # mutant (keep the first quarter of the runs): 70% of oracle-attested characters
+        # lost, every printed criterion clean, exit 0 — while the SAME mutant on the
+        # page-text bucket trips C1 on 40 of 40.
+        #
+        # The datum needed to close it was already collected on every row and read by
+        # nothing but two print statements: `oracle_chars`. C2b compares it BY VALUE.
+        #
+        # ⚠️ SCOPE IS THE *SILENT* CASE ONLY. A candidate that raises or is empty is
+        # LOUD and C2 already names it under "still not read"; folding it in here would
+        # double-count one failure as two. And a figure with no oracle text, or whose
+        # oracle call failed, has no reference — it is out of the denominator, not
+        # silently passing inside it. `c2b_scope` is reported so that denominator is
+        # visible rather than assumed.
+        a['c2b_scope'] = bool(a['c2_scope'] and ochars and out['oracle_error'] is None
+                              and c_out == 'reads')
+        a['c2b_shortfall'] = (oracle_shortfall(runs_text(c_runs), ochars)
+                              if a['c2b_scope'] else {})
+
+        # ── C3: oracle agreement about whether the figure has text AT ALL ─────────
+        a['c3_oracle_has_text'] = bool(ochars)
+        a['c3_reader_has_text'] = c_out == 'reads'
+        a['c3_disagrees'] = a['c3_oracle_has_text'] != a['c3_reader_has_text']
+
+        # ── C4 / C4b: paired by BLOCK KEY, never by run index (ruling R-10) ───────
+        if b_out == 'reads' and c_out == 'reads':
+            c_bykey = {k: (bb, ff) for k, bb, ff in c_recs}
+            a['c4b_added'], a['c4b_dropped'] = key_delta(b_keys, c_keys)
+            # A vanished key is gone from the candidate ENTIRELY (c_keys[k] == 0) — a real
+            # key loss. A dropped-but-not-vanished key is a TWIN loss: the key survives at
+            # reduced multiplicity, so compose.py still draws it once. `len(c4b_dropped)`
+            # (DISTINCT keys, below) cannot tell these apart — see the comment at C4b's
+            # summary print. `Counter[missing_key]` is 0 by definition, never KeyError.
+            a['c4b_vanished'] = sum(1 for k, _ in a['c4b_dropped'] if c_keys[k] == 0)
+            # Pair only keys UNIQUE on both sides: a duplicated key has no single partner.
+            pairable = [k for k in set(b_keys) & set(c_keys)
+                        if b_keys[k] == 1 and c_keys[k] == 1]
+            geom, font = [], []
+            for k in pairable:
+                bb, bf = b_bykey[k]
+                cb, cf = c_bykey[k]
+                if max(abs(x - y) for x, y in zip(bb, cb)) > BBOX_TOL_PT:
+                    geom.append(k)
+                if bf != cf:
+                    font.append(k)
+            a['c4_paired'] = len(pairable)
+            a['c4_geom_diff'] = sorted(geom)
+            a['c4_font_diff'] = sorted(font)
+            a['c4_scope'] = True
+        else:
+            a.update(c4b_added=[], c4b_dropped=[], c4b_vanished=0, c4_paired=0,
+                     c4_geom_diff=[], c4_font_diff=[], c4_scope=False)
+        out['arms'][label] = a
+    return out
+
+
+def oracle_shortfall(text, ochars):
+    """Characters the ORACLE attests that we hold FEWER of, with the size of each gap.
+
+    🔴 THE UNIT FOLLOWS THE QUESTION, AND THE QUESTION IS SHORTFALL. `set(a) & set(b)`
+    asks "does any character we read appear in poppler's view?" — a MEMBERSHIP test.
+    "Did we lose text poppler attests?" is a COUNT question and needs Counters. The two
+    agree only at the extremes, which is exactly why a membership test looks fine: it
+    fires on TOTAL loss and on nothing else.
+
+    Empty dict == no shortfall. Surplus is deliberately NOT reported here: reading MORE
+    than poppler is not a silent reduction, and C1's own tiebreak excuses it for the same
+    reason (ruling R-13, and R-3's mojibake repairs, which ADD characters poppler lacks).
+    """
+    have = charcount(text)
+    return {ch: n - have[ch] for ch, n in ochars.items() if have[ch] < n}
+
+
+def classify_type0(runs, meta, ochars):
+    """C1b. The reference is the ORACLE, not the baseline — the baseline RAISES on every
+    type0 figure (AttributeError: /FirstChar), so 'less text than the baseline' is a
+    predicate that can never fire.
+
+    'decoded'              — real text, no control bytes, and NO character held in
+                             smaller number than the oracle attests
+    'declared-undecodable' — every font the runs use carries decodable: False
+    'FAIL-silent'          — anything else: text quietly reduced, with nothing said
+
+    🔴 THIS PREDICATE COMPARES COUNTS. It used to be `set(charcount(text)) & set(ochars)`
+    — ONE shared character certified a figure `decoded` — and that is the FOURTH instance
+    of ruling R-13's shape on this branch, after C4b's block-key compare, C1's oracle
+    tiebreak (which sits forty lines above and was fixed from this exact shape in
+    7fab73b7) and the H2 font-vs-block gate. It is the worst-placed of the four: the
+    baseline raises on every type0 figure so `c1_scope` is False there, C2/C3 are not in
+    the exit code, and C4/C4b need both readers to read — which makes C1b the ONLY
+    verdict-bearing criterion over its bucket, and `verdict = 0 if (c1_bad == 0 and
+    c1b_fail == 0)` half the exit code of the run that decides whether the swap happens.
+    Measured: a reader keeping ONE character of every type0 figure (moles-6296: 1 of 54)
+    was classified `decoded 8` and exited 0.
+
+    ⚠️ THE CHANGE COSTS NOTHING MEASURED. All 8 type0 figures match the oracle multiset
+    EXACTLY today (9/9, 12/12, 54/54, 6/6, 6/6, 9/9, 6/6, 6/6), so the strict rule
+    produces zero false failures on the real corpus while catching the truncating mutant
+    8 of 8. `--selftest` assertion 8 is that measurement, kept live.
+
+    ⚠️ ORDER IS LOAD-BEARING: the shortfall test runs BEFORE the `declared-undecodable`
+    branch is consulted, exactly as the overlap test did. A reader must not be able to
+    excuse a partial loss by declaring the font unreadable — the flag exists to
+    distinguish "cannot read this" from "read nothing", not to license reading half.
+    """
+    if not ochars:
+        return 'n/a-no-oracle-text'
+    text = runs_text(runs)
+    if text and not looks_undecoded(text) and not oracle_shortfall(text, ochars):
+        return 'decoded'
+    fonts = (meta or {}).get('fonts') or {}
+    used = {r.get('font') for r in runs if isinstance(r, dict)}
+    if used and all((fonts.get(k) or {}).get('decodable') is False for k in used):
+        return 'declared-undecodable'
+    return 'FAIL-silent'
+
+
+# ── reporting ───────────────────────────────────────────────────────────────────────
+
+def bucket_table(results, buckets):
+    """The per-bucket table. Six columns, and they SUM to `rows` — a table whose columns
+    do not sum has silently dropped a population."""
+    lines = []
+    hdr = (f"{'bucket':24} {'rows':>5} {'reads':>6} {'empty':>6} {'raises':>7} "
+           f"{'unres':>6} {'stagefail':>10}")
+    lines.append(hdr)
+    lines.append('-' * len(hdr))
+    tot = collections.Counter()
+    for b in buckets:
+        rs = [r for r in results if r['bucket'] == b]
+        if not rs:
+            continue
+        c = collections.Counter()
+        for r in rs:
+            if r['status'] == 'unresolved-now':
+                c['unres'] += 1
+            elif r['status'] == 'stage-failed':
+                c['stagefail'] += 1
+            else:
+                c[r['base']['outcome']] += 1
+        summed = c['reads'] + c['empty'] + c['raises'] + c['unres'] + c['stagefail']
+        flag = '' if summed == len(rs) else f'  !! columns sum to {summed}, not {len(rs)}'
+        lines.append(f"{b:24} {len(rs):>5} {c['reads']:>6} {c['empty']:>6} "
+                     f"{c['raises']:>7} {c['unres']:>6} {c['stagefail']:>10}{flag}")
+        tot.update(c)
+        tot['rows'] += len(rs)
+    lines.append('-' * len(hdr))
+    lines.append(f"{'TOTAL':24} {tot['rows']:>5} {tot['reads']:>6} {tot['empty']:>6} "
+                 f"{tot['raises']:>7} {tot['unres']:>6} {tot['stagefail']:>10}")
+    return '\n'.join(lines), tot
+
+
+def summarise(results, label, buckets):
+    """Print the criteria with a denominator on every line. Returns (c1_regs, c1b_fails)."""
+    table, tot = bucket_table(results, buckets)
+    print(table)
+    print()
+
+    staged_rows = [r for r in results if r['status'] == 'staged']
+    arms = [r for r in staged_rows if label in r['arms']]
+
+    def arm(r):
+        return r['arms'][label]
+
+    n = len(arms)
+    print(f"  ARM: {label}   ({n} of {len(results)} in-scope figures staged and read)")
+    ac = collections.Counter(arm(r)['outcome'] for r in arms)
+    print(f"    candidate outcomes:        reads {ac['reads']}/{n}  "
+          f"empty {ac['empty']}/{n}  raises {ac['raises']}/{n}")
+    lied = [r['name'] for r in arms if arm(r)['declared_disagrees']]
+    if lied:
+        print(f"    ⚠ declared outcome disagrees with derived: {len(lied)}/{n}  "
+              f"{lied[:5]}")
+
+    # C1
+    c1_scope = [r for r in arms if arm(r)['c1_scope']]
+    c1_bad = [r for r in c1_scope if arm(r)['c1_regression']]
+    c1_exc = [r for r in c1_scope if arm(r)['c1_excused']]
+    print(f"\n  C1  regression (baseline reads it, candidate now holds FEWER of a char "
+          f"than the ORACLE attests)")
+    print(f"      REGRESSIONS:               {len(c1_bad)}/{len(c1_scope)} figures")
+    for r in c1_bad[:10]:
+        d = arm(r)['c1_regression']
+        print(f"        {r['name']:44} {sum(d.values()):>5} chars  {dict(list(d.items())[:6])}")
+    if len(c1_bad) > 10:
+        print(f"        … and {len(c1_bad)-10} more (see --json)")
+    print(f"      dropped, still >= oracle:   {len(c1_exc)}/{len(c1_scope)} figures "
+          f"(NON-FAILING — mojibake the candidate fixed, per ruling R-3, and surplus "
+          f"the baseline over-read, per ruling R-13's shape)")
+    exc_chars = collections.Counter()
+    for r in c1_exc:
+        exc_chars.update(arm(r)['c1_excused'])
+    if exc_chars:
+        print(f"        top excused chars: {dict(exc_chars.most_common(8))}")
+
+    # C1b
+    c1b = [r for r in arms if 'c1b' in arm(r)]
+    c1b_fail = [r for r in c1b if arm(r)['c1b'] == 'FAIL-silent']
+    if c1b:
+        cc = collections.Counter(arm(r)['c1b'] for r in c1b)
+        print(f"\n  C1b type0 correctness       {len(c1b)} figures: "
+              + '  '.join(f'{k} {v}' for k, v in cc.most_common()))
+        for r in c1b_fail:
+            sf = arm(r).get('c1b_shortfall') or {}
+            print(f"        FAIL-silent: {r['name']}  "
+                  f"(oracle {r['oracle_words']} words, candidate {arm(r)['chars']} chars, "
+                  f"SHORT by {sum(sf.values())}: {dict(list(sf.items())[:8])})")
+
+    # C2
+    c2 = [r for r in arms if arm(r)['c2_scope']]
+    gained = [r for r in c2 if arm(r)['c2_gained']]
+    stuck = [r for r in c2 if not arm(r)['c2_gained']]
+    print(f"\n  C2  positive control (baseline raises or is empty)  {len(c2)} figures")
+    print(f"      GAINED (candidate reads):  {len(gained)}/{len(c2)}")
+    print(f"      still not read:            {len(stuck)}/{len(c2)}")
+    for r in stuck[:15]:
+        print(f"        {r['name']:44} base={r['base']['outcome']:6} "
+              f"cand={arm(r)['outcome']:6} oracle={r['oracle_words']}w")
+    if len(stuck) > 15:
+        print(f"        … and {len(stuck)-15} more (see --json)")
+
+    # C2b — the completeness half of C2. Reported with its own denominator, because a
+    # clean C2b over an empty scope is not evidence of anything.
+    c2b = [r for r in arms if arm(r)['c2b_scope']]
+    c2b_short = [r for r in c2b if arm(r)['c2b_shortfall']]
+    print(f"\n  C2b completeness on that same population — candidate vs the ORACLE, "
+          f"BY CHARACTER COUNT (C2 above asks only 'did we emit anything')")
+    print(f"      in scope (baseline cannot read it, oracle HAS text, candidate reads): "
+          f"{len(c2b)}/{len(c2)}   ← the denominator; a clean result over 0 means nothing")
+    print(f"      SHORT of the oracle:       {len(c2b_short)}/{len(c2b)} figures")
+    for r in c2b_short[:10]:
+        sf = arm(r)['c2b_shortfall']
+        print(f"        {r['name']:44} short {sum(sf.values()):>5} of "
+              f"{r['oracle_chars']:>5} chars  {dict(list(sf.items())[:6])}")
+    if len(c2b_short) > 10:
+        print(f"        … and {len(c2b_short)-10} more (see --json)")
+
+    # C3
+    c3 = [r for r in arms if arm(r)['c3_disagrees']]
+    only_o = [r for r in c3 if r['arms'][label]['c3_oracle_has_text']]
+    only_r = [r for r in c3 if not r['arms'][label]['c3_oracle_has_text']]
+    print(f"\n  C3  oracle agreement (does the figure have text AT ALL)")
+    print(f"      disagreements:             {len(c3)}/{len(arms)}  "
+          f"(oracle-only {len(only_o)}, reader-only {len(only_r)})")
+    for r in only_r[:8]:
+        print(f"        reader-only text: {r['name']}  (poppler sees none — suspect junk)")
+
+    # C4 / C4b
+    c4 = [r for r in arms if arm(r)['c4_scope']]
+    geom = [r for r in c4 if arm(r)['c4_geom_diff']]
+    font = [r for r in c4 if arm(r)['c4_font_diff']]
+    kdiff = [r for r in c4 if arm(r)['c4b_added'] or arm(r)['c4b_dropped']]
+    paired = sum(arm(r)['c4_paired'] for r in c4)
+    print(f"\n  C4  block conformance (both read: {len(c4)} figures, {paired} paired blocks)")
+    print(f"      geometry differs > {BBOX_TOL_PT}pt:   {len(geom)}/{len(c4)} figures")
+    print(f"      font set differs:          {len(font)}/{len(c4)} figures")
+    shape = collections.Counter()
+    for r in arms:
+        shape.update(arm(r)['shape'])
+    base_shape = collections.Counter()
+    for r in staged_rows:
+        base_shape.update(r['base']['shape'])
+    print(f"      per-run shape violations:  candidate {sum(shape.values())}  "
+          f"| baseline {sum(base_shape.values())} (CONTROL: a 0/0 pair may mean the "
+          f"check is vacuous)")
+    if shape:
+        print(f"        candidate: {dict(shape.most_common(6))}")
+    if base_shape:
+        print(f"        baseline:  {dict(base_shape.most_common(6))}")
+    # OCCURRENCES and DISTINCT are different numbers and both are reported — but DISTINCT
+    # (len(delta)) does NOT tell a twin-loss from a real key loss: `Counter - Counter`
+    # emits ONE delta entry per key that lost multiplicity, so a candidate that turns two
+    # identical blocks into one drops 1 OCCURRENCE and 1 DISTINCT key, exactly like losing
+    # a wholly unique block does. VANISHED is the field that separates them: 0 when the
+    # key survives at reduced multiplicity (a twin loss — compose.py still draws it once),
+    # 1 when the key is gone from the candidate entirely (a real key loss). That
+    # distinction, not DISTINCT, is what ruling R-13 exists to make visible.
+    add_occ = sum(n for r in c4 for _, n in arm(r)['c4b_added'])
+    drop_occ = sum(n for r in c4 for _, n in arm(r)['c4b_dropped'])
+    add_dis = sum(len(arm(r)['c4b_added']) for r in c4)
+    drop_dis = sum(len(arm(r)['c4b_dropped']) for r in c4)
+    drop_vanished = sum(arm(r)['c4b_vanished'] for r in c4)
+    bdup = sum(r['base']['dup_keys'] for r in staged_rows)
+    cdup = sum(arm(r)['dup_keys'] for r in arms)
+    print(f"\n  C4b BLOCK-KEY conformance — the one that costs money (MULTISET, R-13)")
+    print(f"      figures with key differences: {len(kdiff)}/{len(c4)}   "
+          f"blocks added {add_occ} ({add_dis} distinct keys), "
+          f"dropped {drop_occ} ({drop_dis} distinct keys: {drop_vanished} vanished "
+          f"entirely, {drop_dis - drop_vanished} twin-loss-only)")
+    print(f"      duplicate keys — WHY this compare is a multiset and not a set: "
+          f"baseline {bdup}, candidate {cdup}")
+    for r in kdiff[:8]:
+        d = arm(r)['c4b_dropped']
+        docc = sum(n for _, n in d)
+        print(f"        {r['name']:40} +{arm(r)['c4b_added'][:2]} -{d[:2]} "
+              f"(occ {docc} / vanished {arm(r)['c4b_vanished']})")
+    if len(kdiff) > 8:
+        print(f"        … and {len(kdiff)-8} more (see --json)")
+
+    blkerr = [r['name'] for r in arms if arm(r)['blockkey_error']]
+    if blkerr:
+        print(f"\n  ⚠ block-key derivation raised on {len(blkerr)}/{n}: {blkerr[:5]}")
+    return len(c1_bad), len(c1b_fail), len(c2b_short), len(c2b)
+
+
+# ── the runs ────────────────────────────────────────────────────────────────────────
+
+def run_arms(pop, cmp_readers, progress=True):
+    resolve = resolver()
+    results = []
+    t0 = time.time()
+    for i, row in enumerate(pop):
+        results.append(process_figure(row, resolve, cmp_readers))
+        if progress and i and i % 50 == 0:
+            print(f"    …{i}/{len(pop)}  ({time.time()-t0:.0f}s)", flush=True)
+    return results, time.time() - t0
+
+
+def full_run(label, cmp_readers, jout, limit, bucket):
+    buckets = (bucket,) if bucket else TEXT_BUCKETS
+    if bucket and bucket not in TEXT_BUCKETS:
+        print(f"--bucket must be one of {TEXT_BUCKETS}", file=sys.stderr)
+        return 2
+    _, pop = load_population(buckets, limit)
+    print(f"POPULATION: {len(pop)} figures in buckets {list(buckets)} "
+          f"(partition from the census; every count below is measured here)\n")
+    results, secs = run_arms(pop, cmp_readers)
+    c1_bad, c1b_fail, c2b_short, c2b_scope = summarise(results, label, buckets)
+    print(f"\n  wall-clock: {secs:.1f}s for {len(pop)} figures "
+          f"({secs/max(len(pop),1):.2f}s each)")
+    if jout:
+        jout.parent.mkdir(parents=True, exist_ok=True)
+        jout.write_text(json.dumps(results, indent=1, ensure_ascii=False))
+        print(f"  per-figure rows -> {jout}")
+
+    # An exit code is a VERDICT, and this run is what decides whether the swap may
+    # happen. C1b is folded in deliberately: its rule is "a silent reduction is a
+    # FAILURE", and a gate that exits 0 while 8 figures quietly lose their text is not
+    # a gate. Both components are printed every time, so the code is never ambiguous.
+    # C2b is folded in for the same reason C1b is, and it is the bigger hole of the two:
+    # C1b guards 8 figures, C2b guards the 279 that had NO completeness check at all —
+    # the population the swap exists to fix. Its denominator is printed alongside the
+    # count, because a 0 over an empty scope is not a pass, it is a vacuum.
+    verdict = 0 if (c1_bad == 0 and c1b_fail == 0 and c2b_short == 0) else 1
+    print(f"\n  VERDICT: exit {verdict} — C1 regressions ×{c1_bad}, "
+          f"C1b silent-reduction ×{c1b_fail}, "
+          f"C2b oracle shortfall ×{c2b_short} (of {c2b_scope} in scope)")
+    if label == 'self' and c1b_fail:
+        print("    (baseline-vs-baseline: the C1b failures are EXPECTED and are the "
+              "defect R2 must fix —\n     the baseline raises AttributeError: /FirstChar "
+              "on every type0 figure, so it reduces\n     their text to nothing and says "
+              "nothing. That is what `decodable: False` exists to declare.)")
+    return verdict
+
+
+def sample(rows, n):
+    """Evenly spaced across the bucket, so a selftest sample is not one chapter."""
+    if len(rows) <= n:
+        return list(rows)
+    return [rows[int(i * len(rows) / n)] for i in range(n)]
+
+
+def selftest():
+    """NINE assertions. Exits NON-ZERO when any fails.
+
+    8 and 9 are the sensitivity controls for the two criteria that had none, and both
+    stimuli are the SAME partial-loss mutant, deliberately: it is the shape a /Form walk
+    that descends into some forms and not others actually produces. 8 covers C1b (which
+    fired only on TOTAL loss, so a reader keeping one character of every type0 figure was
+    certified `decoded`), 9 covers C2b (which did not exist: 279 figures, the population
+    the swap is FOR, were graded on "did we emit anything at all"). Both are anchored on
+    `read_candidate` rather than `read_baseline` — they are the first assertions here to
+    read the candidate, and they must be, since the baseline RAISES on both populations
+    and cannot supply a stimulus for either.
+
+    3 and 4 are asymmetric on purpose: together they prove the harness distinguishes a
+    crash from a read, which is the whole of ruling R-1.
+
+    5 is the one a baseline-vs-baseline run CANNOT reach (ruling R-15): C1's mojibake
+    excuse only fires when something is missing, so without a mutant its 0 is a zero from
+    an unexercised branch. It is what decides whether R2's ~96 H3 repairs are accepted or
+    silently rejected as regressions, and its failure mode is the rejection of correct
+    work — the direction nobody goes looking for.
+
+    7 is the one NEITHER 2 NOR 5 can reach, and it is why C1's tiebreak had a wrong-unit
+    defect for the whole of R1-R4: 2's drop-a-RUN mutant puts the candidate BELOW the
+    oracle (both rules flag it) and 5's mojibake mutant only touches characters the
+    oracle lacks entirely (both rules excuse it). Only dropping a SURPLUS occurrence —
+    one the baseline over-read, where the candidate is still at or above the oracle's
+    count — lands in the gap where a membership test and a count test disagree. Its
+    stimulus is not in the evenly-spaced sample at all: the figure is NAMED in, and the
+    zero that made that necessary was measured, not assumed.
+
+    6 is the one a `c1_regression`/`c1_excused`-only reading of C1 CANNOT reach either:
+    C4b is computed for every arm, but before this assertion nothing outside the `self`
+    arm ever inspected `c4b_*`, and set-compare and multiset-compare agree on the EMPTY
+    case — which is all `self` (and assertions 1/2/5, which never read C4b at all) ever
+    produce. It is the only assertion that goes red when `read_layer_accept.py:486` is
+    reverted from the multiset `key_delta` to the set compare it replaced.
+    """
+    rows = json.loads(CENSUS.read_text())
+    fails = []
+
+    def check(label, ok, detail):
+        print(f"  {'PASS' if ok else 'FAIL'}  {label}: {detail}", flush=True)
+        if not ok:
+            fails.append(label)
+
+    pt = sample([r for r in rows if r['bucket'] == 'page-text'], SELFTEST_SAMPLE)
+    # ⚠️ ONE figure is NAMED into the evenly-spaced sample, and the reason is measured,
+    # not stylistic. Assertion 7 needs a figure whose BASELINE holds more of some
+    # oracle-attested character than the oracle does (`baseline[ch] > oracle[ch] > 0`) —
+    # the only shape that discriminates C1's count rule from the membership test it
+    # replaced. Probed over the evenly-spaced 40: ZERO carry one, with SiPurif itself as
+    # the positive control proving the probe fires ({'c': (4, 3)}). If this figure ever
+    # leaves the census the append is a no-op and assertion 7 fails on its non-vacuity
+    # clause — LOUDLY, which is correct: a silent skip would read as a pass.
+    if not any(r['name'] == C1_SURPLUS_FIGURE for r in pt):
+        pt = pt + [r for r in rows if r['name'] == C1_SURPLUS_FIGURE]
+    ft = sample([r for r in rows if r['bucket'] == 'form-text-only'], SELFTEST_SAMPLE)
+    oc = [r for r in rows if r['bucket'] == 'ours-crashes']
+
+    # 1, 2, 5, 6 and 7 share ONE collection pass, so they are the same sample by
+    # construction (ruling R-2: reuse the collection, never a second pass over the
+    # population).
+    print(f"\n[1+2+5+6+7] page-text sample: {len(pt)} figures, baseline vs "
+          f"{{self, drop-last-run mutant, mojibake mutant, twin-drop mutant, "
+          f"surplus-drop mutant}}", flush=True)
+    res, secs = run_arms(pt, {'self': read_baseline,
+                              'mutant': make_mutant(read_baseline),
+                              'mojibake': make_mojibake_mutant(read_baseline),
+                              'twindrop': make_twin_drop_mutant(read_baseline),
+                              'surplus': make_surplus_drop_mutant(read_baseline)},
+                         progress=False)
+    staged_rows = [r for r in res if r['status'] == 'staged']
+    read_rows = [r for r in staged_rows if r['base']['outcome'] == 'reads']
+
+    self_reg = [r for r in read_rows if r['arms']['self']['c1_regression']]
+    self_key = [r for r in staged_rows if r['arms']['self']['c4b_added']
+                or r['arms']['self']['c4b_dropped']]
+    blocks_seen = sum(r['base']['blocks'] for r in staged_rows)
+    check('1 plumbing — baseline vs baseline is clean',
+          len(self_reg) == 0 and len(self_key) == 0 and len(read_rows) > 0
+          and blocks_seen > 0,
+          f"{len(read_rows)}/{len(pt)} figures read, {blocks_seen} blocks derived; "
+          f"C1 regressions {len(self_reg)}, C4b key differences {len(self_key)} "
+          f"(non-vacuity: both denominators must be > 0)")
+
+    mut_reg = [r for r in read_rows if r['arms']['mutant']['c1_regression']]
+    check('2 SENSITIVITY — a reader that drops the last run MUST trip C1',
+          len(mut_reg) > 0,
+          f"{len(mut_reg)}/{len(read_rows)} figures flagged. Without this, C1 is a null "
+          f"with no positive control")
+
+    print(f"\n[3+9] form-text-only sample: {len(ft)} figures — the set C2 exists to fix, "
+          f"baseline vs {{candidate, partial-loss mutant}}", flush=True)
+    # 3 and 9 share ONE collection pass (ruling R-2), so they are the same sample by
+    # construction and no figure is read twice.
+    res3, _ = run_arms(ft, {'cand': read_candidate,
+                            'partial': make_partial_loss_mutant(read_candidate)},
+                       progress=False)
+    st3 = [r for r in res3 if r['status'] == 'staged']
+    oc3 = collections.Counter(r['base']['outcome'] for r in st3)
+    errs = collections.Counter(r['base']['error'] for r in st3
+                               if r['base']['outcome'] == 'raises')
+    check('3 the positive-control set is genuinely failing TODAY',
+          oc3['raises'] == len(st3) and len(st3) > 0 and oc3['empty'] == 0,
+          f"raises {oc3['raises']}/{len(st3)}, empty {oc3['empty']}, reads {oc3['reads']} "
+          f"— a CRASH, not a silent scope failure. {dict(errs.most_common(2))}")
+
+    print(f"\n[4] ours-crashes: all {len(oc)} figures — the census's instrument crashed, "
+          f"the reader does not", flush=True)
+    res4, _ = run_arms(oc, {}, progress=False)
+    st4 = [r for r in res4 if r['status'] == 'staged']
+    oc4 = collections.Counter(r['base']['outcome'] for r in st4)
+    check(f'4 the population correction is live (>= {SELFTEST_CRASH_FLOOR} of {len(oc)} read)',
+          oc4['reads'] >= SELFTEST_CRASH_FLOOR,
+          f"reads {oc4['reads']}, empty {oc4['empty']}, raises {oc4['raises']} "
+          f"of {len(st4)} staged ({len(oc)} rows)")
+    nonread = [(r['name'], r['base']['error'] or r['base']['outcome'])
+               for r in st4 if r['base']['outcome'] != 'reads']
+    if nonread:
+        print(f"        the non-readers, NAMED: {nonread}")
+
+    # 5 reuses the [1+2+5] pass above — no figure is read twice — but is asserted here so
+    # the output reads in order. It is the ONLY thing that reaches C1's excuse branch.
+    print(f"\n[5] the mojibake excuse (ruling R-15) — measured on the same {len(pt)} "
+          f"page-text figures", flush=True)
+    moj_reg = [r for r in read_rows if r['arms']['mojibake']['c1_regression']]
+    moj_exc = [r for r in read_rows if r['arms']['mojibake']['c1_excused']]
+    moj_chars = collections.Counter()
+    for r in moj_exc:
+        moj_chars.update(r['arms']['mojibake']['c1_excused'])
+    check('5 the EXCUSE fires and C1 does NOT reject the fix it exists to accept',
+          len(moj_reg) == 0 and len(moj_exc) > 0,
+          f"regressions {len(moj_reg)}/{len(read_rows)} (MUST be 0), excused "
+          f"{len(moj_exc)}/{len(read_rows)} figures (MUST be > 0, or the branch was "
+          f"never reached and its 0 means nothing): "
+          f"{dict(moj_chars.most_common(6))}")
+    if moj_reg:
+        for r in moj_reg[:5]:
+            print(f"        WRONGLY FLAGGED: {r['name']:44} "
+                  f"{dict(list(r['arms']['mojibake']['c1_regression'].items())[:6])}")
+
+    # 6 reuses the [1+2+5+6] pass above — no figure is read twice. It is the ONLY
+    # assertion that reads c4b_* outside the `self` arm, which is why the line-486
+    # regression (multiset key_delta reverted to a set compare) survived assertion 1/2/5
+    # with ALL 5 PASS: `self` is 0 by construction and no other arm's C4b was inspected.
+    print(f"\n[6] the C4b line-486 call site — dropping one of a duplicated pair of "
+          f"blocks MUST trip C4b, measured on the same {len(pt)} page-text figures",
+          flush=True)
+    dup_rows = [r for r in staged_rows if r['base']['dup_keys'] > 0]
+    total_dup_occ = sum(r['base']['dup_keys'] for r in staged_rows)
+    caught = [r for r in dup_rows if r['arms']['twindrop']['c4b_dropped']]
+    missed = [r for r in dup_rows if not r['arms']['twindrop']['c4b_dropped']]
+    check('6 SENSITIVITY — dropping one of a duplicated pair of blocks MUST trip C4b',
+          len(dup_rows) > 0 and len(missed) == 0,
+          f"{len(dup_rows)}/{len(staged_rows)} figures carry >=1 duplicate block key "
+          f"({total_dup_occ} duplicate occurrences total; non-vacuity: MUST be > 0, or "
+          f"a clean result would mean 'no twins existed', not 'the drop was caught') — "
+          f"caught {len(caught)}/{len(dup_rows)} (MUST equal {len(dup_rows)}: a SET "
+          f"compare would catch 0 of these, because the key survives, just once instead "
+          f"of twice)")
+    if missed:
+        for r in missed[:5]:
+            a = r['arms']['twindrop']
+            print(f"        NOT CAUGHT: {r['name']:44} dup_keys={r['base']['dup_keys']} "
+                  f"twindrop outcome={a['outcome']} c4_scope={a['c4_scope']} "
+                  f"c4b_dropped={a['c4b_dropped']}")
+
+    # 7 reuses the [1+2+5+6+7] pass above — no figure is read twice. It is the ONLY
+    # assertion that discriminates C1's COUNT-AWARE oracle tiebreak from the MEMBERSHIP
+    # test it replaced (`ch in ochars`), and it is the third instance in this harness of
+    # ruling R-13's shape: a gate comparing at the wrong unit.
+    print(f"\n[7] C1's oracle tiebreak compares COUNTS — dropping ONE occurrence of a "
+          f"character the baseline holds MORE of than the oracle attests MUST NOT be "
+          f"called a regression, measured on the same {len(pt)} page-text figures",
+          flush=True)
+    # THE DENOMINATOR IS DERIVED FROM THE ARTIFACT, not from the mutant's internals: the
+    # mutant removes exactly one non-whitespace character, so a figure it actually
+    # mutated is one whose candidate char count is exactly one below the baseline's.
+    # `charcount` excludes whitespace and the victim is drawn from the oracle's keys
+    # (never whitespace), so the −1 is exact.
+    surplus_rows = [r for r in read_rows
+                    if r['arms']['surplus']['chars'] == r['base']['chars'] - 1]
+    sur_reg = [r for r in surplus_rows if r['arms']['surplus']['c1_regression']]
+    sur_exc = [r for r in surplus_rows if r['arms']['surplus']['c1_excused']]
+    sur_chars = collections.Counter()
+    for r in sur_exc:
+        sur_chars.update(r['arms']['surplus']['c1_excused'])
+    check('7 the tiebreak is COUNT-AWARE — a surplus drop is NOT a regression',
+          len(surplus_rows) > 0 and len(sur_reg) == 0 and len(sur_exc) > 0,
+          f"{len(surplus_rows)}/{len(read_rows)} figures carry a surplus character and "
+          f"were mutated (non-vacuity: MUST be > 0, or a clean result would mean 'no "
+          f"figure had a surplus char', not 'the surplus drop was excused'); "
+          f"regressions {len(sur_reg)} (MUST be 0 — a MEMBERSHIP test flags every one of "
+          f"these); excused {len(sur_exc)} (MUST be > 0, or the drop never reached C1 at "
+          f"all): {dict(sur_chars.most_common(6))}")
+    if sur_reg:
+        for r in sur_reg[:5]:
+            print(f"        WRONGLY FLAGGED: {r['name']:44} "
+                  f"{dict(list(r['arms']['surplus']['c1_regression'].items())[:6])}")
+    if surplus_rows:
+        print(f"        mutated, NAMED: {[r['name'] for r in surplus_rows][:5]}")
+
+    # 8 is C1b's FIRST sensitivity control. Until it existed, C1b's only live control was
+    # the --baseline arm, which exercises TOTAL loss (0 chars) — and total loss is the one
+    # case the old membership test could already see. Nothing anywhere controlled the
+    # PARTIAL reduction the criterion is named for.
+    t0 = [r for r in rows if r['bucket'] == 'type0-unreadable']
+    print(f"\n[8] C1b compares COUNTS, not membership — a reader that keeps a QUARTER of "
+          f"every type0 figure's runs MUST be FAIL-silent, not `decoded`. All {len(t0)} "
+          f"type0 figures, candidate vs partial-loss mutant", flush=True)
+    res8, _ = run_arms(t0, {'cand': read_candidate,
+                            'partial': make_partial_loss_mutant(read_candidate)},
+                       progress=False)
+    st8 = [r for r in res8 if r['status'] == 'staged']
+    # THE DENOMINATOR IS DERIVED FROM THE ARTIFACT, never from the mutant's internals: a
+    # figure the mutant actually reduced is one whose partial arm holds strictly fewer
+    # characters than the real candidate. A single-run figure is unchanged and is
+    # correctly outside the denominator rather than silently inside it.
+    red8 = [r for r in st8
+            if r['arms']['partial']['chars'] < r['arms']['cand']['chars']]
+    caught8 = [r for r in red8 if r['arms']['partial']['c1b'] == 'FAIL-silent']
+    clean8 = [r for r in st8 if r['arms']['cand']['c1b'] == 'decoded']
+    check('8 SENSITIVITY — C1b catches a PARTIAL type0 reduction (a membership test '
+          'catches none of these)',
+          len(red8) > 0 and len(caught8) == len(red8) and len(clean8) == len(st8),
+          f"{len(red8)}/{len(st8)} figures were actually reduced (non-vacuity: MUST be "
+          f"> 0, or a clean result would mean 'the mutant changed nothing'); caught "
+          f"{len(caught8)}/{len(red8)} (MUST be all — the OLD set-intersection rule "
+          f"caught 0 of these, because one shared character certified `decoded`); and "
+          f"the REAL candidate is still decoded on {len(clean8)}/{len(st8)} (MUST be all, "
+          f"or the new rule costs a false failure)")
+    for r in red8[:3]:
+        a = r['arms']['partial']
+        print(f"        {r['name']:44} {a['chars']:>4} of "
+              f"{r['arms']['cand']['chars']:>4} chars kept -> {a['c1b']}  "
+              f"short {dict(list(a['c1b_shortfall'].items())[:4])}")
+
+    # 9 is C2b's sensitivity control, and it reuses the [3+9] pass above — no figure is
+    # read twice. This is the assertion the whole 279-figure hole reduces to: the SAME
+    # mutant that trips C1 on 40 of 40 page-text figures (assertion 2's population) used
+    # to sail through here, because the baseline raises so C1/C4/C4b have an empty
+    # denominator and C2 asks only "did we emit anything".
+    print(f"\n[9] C2b sees a PARTIAL loss on the form-text population — the 274 figures "
+          f"the swap exists to fix, where the baseline RAISES and C1 therefore cannot "
+          f"reach. Same {len(ft)} figures as [3]", flush=True)
+    red9 = [r for r in st3
+            if r['arms']['partial']['chars'] < r['arms']['cand']['chars']]
+    caught9 = [r for r in red9 if r['arms']['partial']['c2b_shortfall']]
+    scope9 = [r for r in st3 if r['arms']['cand']['c2b_scope']]
+    clean9 = [r for r in scope9 if not r['arms']['cand']['c2b_shortfall']]
+    check('9 SENSITIVITY — C2b catches a partial loss where C1 structurally cannot',
+          len(red9) > 0 and len(caught9) == len(red9) and len(scope9) > 0,
+          f"{len(red9)}/{len(st3)} figures actually reduced (non-vacuity: MUST be > 0); "
+          f"caught {len(caught9)}/{len(red9)} (MUST be all); C2b scope on the real "
+          f"candidate {len(scope9)}/{len(st3)} figures (non-vacuity: MUST be > 0, or the "
+          f"criterion grades nobody), of which {len(clean9)} are complete against the "
+          f"oracle")
+    missed9 = [r for r in red9 if not r['arms']['partial']['c2b_shortfall']]
+    for r in missed9[:5]:
+        a = r['arms']['partial']
+        print(f"        NOT CAUGHT: {r['name']:44} c2b_scope={a['c2b_scope']} "
+              f"outcome={a['outcome']} chars={a['chars']}")
+    short9 = [r for r in scope9 if r['arms']['cand']['c2b_shortfall']]
+    if short9:
+        print(f"        ⚠ the REAL candidate is short on {len(short9)}/{len(scope9)} of "
+              f"this sample — NAMED: {[r['name'] for r in short9][:5]}")
+
+    print(f"\n  {'ALL 9 PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
+    return 0 if not fails else 1
+
+
+# ── strict argv ─────────────────────────────────────────────────────────────────────
+
+BOOL_FLAGS = {'--selftest', '--baseline', '--candidate', '--help', '-h'}
+VALUE_FLAGS = {'--json', '--limit', '--bucket'}
+USAGE = __doc__.split('🔴')[0].strip()
+
+
+def parse_argv(argv):
+    """Unknown flags are REJECTED, not dropped, and a valued flag whose value is missing
+    or begins with '--' is rejected too. `tools/lib/parseArgs.js`'s silent drop is how a
+    'safe rehearsal into a scratch directory' becomes a full-strength run."""
+    opts = {'json': None, 'limit': None, 'bucket': None, 'mode': None}
+    i = 0
+    while i < len(argv):
+        a = argv[i]
+        if a in ('--help', '-h'):
+            print(USAGE)
+            raise SystemExit(0)
+        if a in ('--selftest', '--baseline', '--candidate'):
+            if opts['mode']:
+                print(f"Conflicting modes: {opts['mode']} and {a[2:]}", file=sys.stderr)
+                raise SystemExit(2)
+            opts['mode'] = a[2:]
+            i += 1
+            continue
+        if a in VALUE_FLAGS:
+            if i + 1 >= len(argv) or argv[i + 1].startswith('--'):
+                print(f"Missing value for {a}", file=sys.stderr)
+                raise SystemExit(2)
+            opts[a[2:]] = argv[i + 1]
+            i += 2
+            continue
+        print(f"Unknown argument: {a}", file=sys.stderr)
+        print(f"Known: {sorted(BOOL_FLAGS | VALUE_FLAGS)}", file=sys.stderr)
+        raise SystemExit(2)
+    if opts['limit'] is not None:
+        if not opts['limit'].isdigit() or int(opts['limit']) < 1:
+            print("--limit must be a positive integer", file=sys.stderr)
+            raise SystemExit(2)
+        opts['limit'] = int(opts['limit'])
+    if opts['json']:
+        p = Path(opts['json'])
+        opts['json'] = p if p.is_absolute() else OUTDIR / p
+    if not opts['mode']:
+        print(USAGE, file=sys.stderr)
+        raise SystemExit(2)
+    return opts
+
+
+def main(argv):
+    opts = parse_argv(argv)
+    if opts['mode'] == 'selftest':
+        return selftest()
+    if opts['mode'] == 'baseline':
+        return full_run('self', {'self': read_baseline},
+                        opts['json'], opts['limit'], opts['bucket'])
+    return full_run('candidate', {'candidate': read_candidate},
+                    opts['json'], opts['limit'], opts['bucket'])
+
+
+if __name__ == '__main__':
+    # Failure default: a run that dies before reaching a verdict is NOT a pass.
+    code = 2
+    try:
+        code = main(sys.argv[1:])
+    except SystemExit as e:
+        if isinstance(e.code, int):
+            code = e.code
+        else:
+            # A SystemExit carrying a MESSAGE (read_candidate's contract refusal). Print
+            # it — swallowing it turns a loud refusal into a bare exit code.
+            if e.code:
+                print(e.code, file=sys.stderr)
+            code = 2
+    except Exception:
+        traceback.print_exc()
+        code = 2
+    sys.stdout.flush()
+    sys.stderr.flush()
+    sys.exit(code)

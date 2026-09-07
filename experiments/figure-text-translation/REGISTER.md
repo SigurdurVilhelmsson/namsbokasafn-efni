@@ -8,6 +8,79 @@ things lives in [README.md](README.md).
 
 ---
 
+## ⏩ RESUME — state as of 2026-09-07 (supersedes the 2026-09-06 block below)
+
+**The read-layer swap has been MEASURED, and its evidence has an owner:**
+[`READ-LAYER-ACCEPTANCE.md`](READ-LAYER-ACCEPTANCE.md) — C1, C1b, C2, C3, C4, C4b with denominators,
+both readers per census bucket, criterion 5 on two measured-not-named figures, H7 named rather than
+counted as zero, and every figure still empty after the swap named. **Read the numbers there; none
+is restated here or anywhere else.**
+
+**The hazards that remain open are recorded below** under *Known hazards of the shipped read layer*
+— the `\x1f`/`_looks_undecoded` spend hazard, the census's deliberate baseline vintage, and R3's
+form walk being a no-op on EPS. They are **recorded, not fixed**, each with the reason.
+
+⚠️ **Campaign status — whether M5 is done, and what is next — is the campaign register's
+(§C137/§C138), not this file's.** This file owns figure-text status; it does not own the campaign's.
+
+🔴 **The block below is retained as dated evidence and its numbers are SUPERSEDED.** In particular
+its *"779 of 779 against our 504"* uses the bake-off's guarded reader — a third program, neither the
+baseline nor the candidate — which is exactly the figure ruling R-2 forbids inheriting. The
+acceptance harness re-derives every denominator on each run.
+
+---
+
+## ⏩ RESUME — state as of 2026-09-06 (supersedes the 2026-09-05 block below)
+
+🔴 **THE READ LAYER IS BEING REPLACED, NOT REPAIRED.** [USER] decision, frozen at
+[`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../../docs/decisions/2026-09-06-figure-read-layer-respec.md);
+its requirements have their own owner at
+[`docs/superpowers/specs/2026-09-06-figure-read-layer-contract.md`](../../docs/superpowers/specs/2026-09-06-figure-read-layer-contract.md).
+**`extract.py` + `pdftext.py` + `strip-text.py` (~239 lines) go. `figtext.py` + `compose.py` +
+`svgout.py` (~401 lines) STAY** — arc reassembly, wrap-then-shrink, per-line font/colour and font
+subsetting are real domain work no library provides, and two blind reviews left them untouched.
+
+▶ **The reason, in one line the code wrote itself:** `_deps.py`'s docstring says *"pikepdf /
+pycairo / Pillow are NOT repo dependencies — **this is an experiment, not a pipeline tool**."* It
+was promoted by writing a plan around it, never by re-specifying it.
+
+### The measured defect surface — [`TEXT-COVERAGE.md`](TEXT-COVERAGE.md) owns the numbers, re-run rather than quote
+
+Denominator **1,148** CNXML `<image src>` basenames · **895** resolved · **779** text-bearing.
+
+| defect | exposure | reader-visible? |
+|---|---|---|
+| text inside `/Form` XObjects — read as **zero** | **274 figures** | yes: English shipped |
+| **`/Encoding /Differences` ignored** — `°C` → `¡C`, `λ` → `\x7f` | **96 of 280 EPS (34%)** | 🔴 **yes, AND it reaches the PAID MT** |
+| **CID/`/Type0`** → plausible-looking control-byte garbage | **11 figures** | 🔴 **spend: can be marked `send:true`** |
+| a mechanism **not yet named** (`CNX_Chem_20_01_recycle`, 103 words) | 1 | unknown |
+| colour: only the `k` (CMYK) operator is tracked — `rg`/`g`/`sc`/`scn` are not | unquantified | wrong `fill` |
+
+🔴 **THE DEV FIXTURE WAS ATYPICAL ON EVERY AXIS THAT LATER BIT.** `CNX_Chem_01_01_SciMethod` has
+page-level text, blank runs only in *arc* blocks, no CID font, and is a `.pdf` in the base tree.
+**Each is the minority case.** One fixture produced four independent wrong assumptions, and nothing
+ever established a denominator for the tool.
+
+### The candidate, and what its controls proved
+
+**pdfplumber (MIT)** reads **779 of 779** against our **504**; **0 real character losses** anywhere
+measured; it **corrects our output on 107 figures** (96 `/Differences` + 11 CID). All nine
+`runs.json` fields are obtainable — six direct, `rot` from the text matrix, and **`adv` exact**
+(consecutive chars measured at a 0.0000 gap).
+
+⚠️ **Both regression signals were FALSE at first reading and had to be re-measured:** 155 apparent
+regressions were a word-vs-character unit mismatch (0 real), and a 280/280 "gs loses everything"
+was a regex matching Illustrator colour names. **→ [`TEXT-COVERAGE.md`](TEXT-COVERAGE.md) addenda 1 and 2.**
+
+⚠️ **What is NOT established:** whether `gs` loses *some* EPS text. It produced readable text for
+all 280 (7,884 words, 0 failures), and **it is the converter the pipeline already uses**, so it is
+not a differentiator — but the only honest instrument is `check.py` against OpenStax's published
+raster, and **no second EPS→PDF converter exists on this box** to cross-check with.
+
+**Campaign status is the campaign register's (§C137/§C138), not this file's.**
+
+---
+
 ## ⏩ RESUME — state as of 2026-09-05
 
 **✅ THE EDITORIAL PIPELINE IS COMPLETE END TO END.** An editor opens a module, sees each
@@ -198,6 +271,160 @@ claim did not delete the claim**, which is precisely CLAUDE.md's stale-premise r
 does not acquire a date from the block that carries it. Verified by opening
 `evidence/api-run-tempscales.json` (8 blocks, `when` 2026-09-02T19:23:21Z), not by re-reading
 the prose.
+
+---
+
+## ⚠️ Known hazards of the shipped read layer — recorded 2026-09-07 (M5 R5)
+
+**These are RECORDED, not fixed.** Evidence and denominators live in
+[`READ-LAYER-ACCEPTANCE.md`](READ-LAYER-ACCEPTANCE.md); this section owns their status.
+
+### ① A PRICED HAZARD: `_looks_undecoded` can condemn a correctly-read glyph, and since R4b that means a real label is never bought
+
+`readlayer._looks_undecoded` treats **every** character below `0x20` as evidence the font could not
+be decoded. But under an `/Encoding /Differences` font **`\x1f` is a REAL GREEK ALPHA** — `'\x1f
+bond'` is a genuine block key in this corpus — so that is a correct read being called garbage.
+⚠️ **That block key is BASELINE-VINTAGE**: it is what the OLD reader produced. The shipped reader
+decodes `/Differences` correctly and emits no such key, which is why the hazard is latent rather
+than firing.
+
+🔴 **THE CONSEQUENCE CHANGED WITH R4b AND GOT MORE EXPENSIVE.** The predicate now also decides
+**spend**, through `figtext.sendable`. Before R4b the effect was *"a font is flagged"*; now it is
+**"a real label is never sent to the MT, and therefore never translated"** — a silent omission from
+a purchased chapter, invisible to any count, because the block simply is not in the payload.
+
+⚠️ **It is LATENT, not firing: measured 2026-09-07 over the FULL 817-figure in-scope population,
+the candidate emits `\x1f` on 0 figures and ANY sub-`0x20` control byte on 0 figures.** *(The code
+comment records 0 across 120 figures; this is the wider re-measurement.)* The zero is worth
+something only because the same pass proves the reader emits no control bytes at all — an absence
+paired with the positive fact that would have to be false for it to be vacuous. **It was left alone deliberately:** the fix must change the judge's
+`classify_type0` in the same breath. The two predicates are *deliberately identical*, and a reader
+whose `decodable` flag disagreed with the judge would declare a font readable and then be marked
+`FAIL-silent` for its own correct output. That is a larger change than R4b's decision-unit
+correction, and doing half of it is worse than doing none.
+
+▶ **If this is ever picked up, the unit of work is BOTH predicates plus a fixture that exercises a
+`/Differences` font mapping a sub-`0x20` byte to a real glyph** — the corpus does not currently
+supply one, which is exactly why it went unnoticed.
+
+### ② The census is BASELINE-VINTAGE by design — never quote it as a description of the new reader
+
+`census.py` and `text-coverage-census.py` still read through `pdftext.py`, so they report **NO LIVE
+TEXT** on the form-text figures. 🔴 **That is CORRECT and deliberate, not a stale tool.** The census
+describes the corpus **as the OLD reader saw it**, which is precisely what makes it the partition —
+and the baseline — that the acceptance result is stated *against*. Re-pointing it at the new reader
+would destroy the comparison it exists to enable.
+
+▶ **The consequence you must honour: label every census-derived number baseline-vintage, and never
+present one as evidence about the shipped read layer.** [`TEXT-COVERAGE.md`](TEXT-COVERAGE.md)
+carries that warning in its own header as of 2026-09-07.
+
+⚠️ **`ours-crashes` is a census bucket name that describes the CENSUS.** `text-coverage-census.py:59`
+calls `pg.Contents.read_bytes()`, which raises when `/Contents` is an **array** — the *baseline
+reader* reads almost all of that bucket perfectly well. Counting it as a reader failure inflates the
+defect surface.
+
+### ③ R3's `/Form` walk is a NO-OP on every EPS-sourced figure — and the reason is the converter
+
+Ghostscript's `pdfwrite` emits **no `/Form` XObjects**, so the walk R3 exists for cannot execute on
+an EPS source at all. Text removal itself is clean on EPS. ▶ **Consequences:**
+
+- **R-9's failure mode is unreachable on EPS**, so the two-armed artwork-survival control has an
+  **empty population** there. That is a null with a denominator, not a pass.
+- ⚠️ **State it as a property of `gs`, not of EPS.** The measurement is *"gs's output carries no
+  forms"*, **not** *"EPS files contain no form-like structure"* — the original PostScript may well,
+  and `gs` flattens it. It holds operationally because the pipeline always routes EPS through `gs`.
+- ⚠️ **The census and the probe both sit downstream of that same `gs` invocation**, so their
+  agreement corroborates the converter's behaviour rather than giving two independent views.
+
+🔴 **AND THE R-9 CHECK MUST NEVER BE "no reachable stream contains `BT`" ALONE.** Measured over 25
+real `.pdf` figures carrying forms: the `make_stream` mutant leaves **0 of 25** with any `BT`
+remaining — identical to the correct implementation — while destroying artwork on 8 of them, worst
+case down to **2.5%** of the ink the shipped code preserves. **The BT assertion passes on the
+wreckage.** Only the non-white pixel count sees it, and on 17 of 25 figures the two arms are
+pixel-identical, so **a regression is invisible on two thirds of the figures you might sample.**
+
+### ④ OPEN — a large minority of shared-scope figures move a block's GEOMETRY by >1pt, and it is not all re-segmentation
+
+Raised by the R5 implementer and handed to the controller; priced here 2026-09-07.
+
+**What was measured.** 🔴 **THE COUNTS ARE `READ-LAYER-ACCEPTANCE.md`'s (C4) AND ARE NOT RESTATED
+HERE** — this file's own ⏩ RESUME says so ninety lines above, and until 2026-09-07 this section
+restated them anyway, which is exactly the drift that rule exists to stop. Read the C4 table there
+for the in-scope denominator and the geometry-differs figure count; the JSON rows behind it carry
+the per-figure detail. **What is this section's to own is the SHAPE of the finding, which no other
+document holds:** a minority of the moved figures also change block keys — expected, since the two
+readers segment differently by design (ruling R-10) — but a residue have an IDENTICAL key multiset,
+and most of those carry no duplicate keys at all, so the pairing is unambiguous and the block
+genuinely moved.
+
+**Controller pricing.** The moved BLOCK count across those figures is likewise C4's to report.
+⚠️ **The obvious story — "it is only axis tick labels" — was tested and does NOT hold.**
+Numeric keys are **44%** of the moved set against a **33%** baseline among ordinary block keys:
+real enrichment, not domination. 66% are ≤4 characters, but long multi-line labels moved too
+(`'Large molecules:|- High boiling point|- Not very volatile|…'`). **The control is what killed
+the tidy explanation; without it this would have been filed as a non-finding.**
+
+**Why it is OPEN rather than a defect.** The prior favours *correction*: R2 measured the old
+reader's advance as **64.517 where the real distance to the next glyph is 67.019**, and its
+`size` as a per-glyph *width* on rotated text — both of which misplace a block. A more accurate
+reader SHOULD move things. But "should move" is not "moved correctly", and nothing here
+establishes which.
+
+🔴 **The right instrument is a COMPOSED-IMAGE diff, not a coordinate delta** — the question is
+whether a reader sees the label in the right place, and only the composition answers that. That
+belongs with the driver work, which is what first composes figures at scale.
+
+✅ **Live exposure today is ZERO**: the only block-keyed sidecars in the repo are 3, all under
+`books/__e2e-fixture__/`. Nothing has been bought against either segmentation.
+
+### ⑤ OPEN — two glyph-advance classes survive the R5 fix round, and one of them BUYS the wrong thing
+
+Recorded 2026-09-07, because `readlayer._prepare`'s docstring points here and a pointer to no
+record is worse than no pointer. **Both are bounded, both are named, neither is fixed**, and the
+reason is the same in both cases: the repair is a **writing-mode branch in the run splitter**, which
+changes the layout layer the [USER] ruled is KEPT *and* changes `blockkey.block_key` — the unit that
+is BOUGHT. **That is a scope decision, not an implementation detail.**
+
+**(a) `/Type0 /Identity-V` vertical text is still one run per glyph.** What WAS fixed is only the
+advance's SIGN: pdfminer reports a correctly NEGATIVE advance for downward text, `_prepare` used to
+project it onto a horizontal model unchanged, and it now substitutes the glyph's own axis-aligned
+extent and counts the substitution into `meta['adv_repaired']`. **That does not re-merge the
+glyphs**, because `_continues` splits on the PROJECTION — which does not move at all for vertical
+text — and not on the advance. So the periodic-table group labels on `CNX_Chem_02_05_PerTable2` are
+still emitted as one-word blocks, and `figtext.sendable` returns True for them: **`'earth'` and
+`'metals'` are bought as standalone Icelandic translation keys, out of the context that makes them
+translatable, and `'metals'` is one key covering two different labels.** Live exposure is the same
+as ④'s and for the same reason — nothing has been bought against this segmentation — but this one
+is a *wrong* key rather than a *moved* one.
+
+**(b) The no-`/W`/`/DW` constant-advance class is untouched, deliberately.** A `/Type0 /Identity-H
+CIDFontType2` whose descendant declares neither `/W` nor `/DW` makes pdfminer fall back to the spec
+default of 1.0 em, so every glyph reports the same advance whatever its shape. **No bound can
+distinguish that from a real advance** — it is positive and plausible — without reading the font's
+width tables, which is the same design change as (a). `CNX_Chem_03_02_moles-6296` is the measured
+instance, and `test_readlayer.py` CASE 6d carries it as an explicit CONTROL: it must report NO
+repairs, so a future fix that "repaired" everything indiscriminately goes red.
+
+**(c) `figtext.is_arc` misclassifies straight text, and is now NAMED rather than fixed.**
+`len(b) > 3 and all(len(r['text'].strip()) <= 1 ...)` calls any block of four-plus single-character
+runs an arc, curved or not — which is exactly what (a) and (b) produce. `compose.fit_circle` used to
+divide by zero on the collinear result, or return a centre ~1e15 pt away and draw cancellation
+noise. **It now returns None for a block with no usable circle and the caller draws it straight and
+PRINTS the key**, under `!! N block(s) is_arc says are arcs but have no usable circle`. ▶ **That is
+a crash guard, not a classification fix**: the block is still the wrong unit, and the printed keys
+are the evidence for whoever revisits `is_arc`. The guard is deliberately NOT in `is_arc` itself,
+because `is_arc` feeds `block_key` and changing it would move purchased keys corpus-wide to fix a
+drawing crash.
+
+⚠️ **The counts and the per-figure detail are the review findings' and the fix report's; they are
+not restated here** — this file's own ⏩ RESUME says no number is restated in it.
+
+### ⑥ Not exercised, stated rather than left silent
+
+The census's **`unresolved` rows have no file to stage** (nothing is measurable on them), and no
+**second EPS→PDF converter** exists on this box, so whether `gs` itself drops text before either
+reader sees it is unanswerable by any reader-vs-reader check.
 
 ---
 

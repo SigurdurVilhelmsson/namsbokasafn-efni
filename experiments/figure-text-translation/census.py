@@ -17,6 +17,7 @@ from _deps import read_content
 import pikepdf
 from pdftext import parse
 import figtext as FT
+from blockkey import block_key
 
 # Families we can substitute a full Icelandic-covering face for. Everything else
 # needs checking by hand before its figure is called automatable.
@@ -71,7 +72,13 @@ def one(path):
         return r
 
     runs = parse(content, widths)
-    runs = [x for x in runs if x['text'].strip()]
+    # R-14: NO blank-run filter. Sharing the key RULE (blockkey.block_key, below) while
+    # diverging on the run POPULATION is the same defect P8 exists to remove — the block
+    # boundaries move either way, so a filtered census describes a segmentation that
+    # neither emit-blocks.py nor the acceptance harness uses.
+    # ⚠️ If a blank filter is ever wanted back, its predicate must be `text == ''`, NEVER
+    # `not text.strip()`: '\x1f'.isspace() is True and a /Differences font maps \x1f to a
+    # Greek alpha, so .strip() silently deletes a real glyph.
     r['runs'] = len(runs)
     if not runs:
         r['verdict'] = 'NO LIVE TEXT'; r['blocks'] = r['words'] = 0; return r
@@ -90,9 +97,9 @@ def one(path):
     r['words'] = len(text.split())
     r['prose_words'] = len(' '.join(prose).split())
     r['single_char_runs'] = sum(1 for x in runs if len(x['text'].strip()) == 1)
-    r['sample'] = [(''.join(y['text'] for y in b) if FT.is_arc(b)
-                    else '|'.join(''.join(y['text'] for y in l) for l in FT.lines(b)))
-                   for b in blocks[:3]]
+    # THIRD consumer of the one key rule (P8) — a local copy here would make this
+    # census's samples match neither emit-blocks.py nor the acceptance harness.
+    r['sample'] = [block_key(b) for b in blocks[:3]]
 
     if r['cid_fonts']:
         r['verdict'] = 'PARSER GAP (Type0/CID)'
