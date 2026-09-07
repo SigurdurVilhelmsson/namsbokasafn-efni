@@ -354,11 +354,20 @@ function resolveArtwork(spawn, book, names) {
 /**
  * Walk one chapter's figures, free of charge.
  *
+ * ⚠️ `readSidecar` is injectable for the same reason `spawn` is, and it is not a convenience:
+ * `books/efnafraedi-2e/figure-text/` DOES NOT EXIST — the campaign has minted no sidecar for a
+ * real book yet — so on every chapter of the real corpus `readSidecar` returns null, `&&`
+ * short-circuits, and the `skipped-current` branch below is unreachable from any corpus-driven
+ * test. Two mutations of that branch survived all 57 tests before this seam existed. It is the
+ * branch that decides whether 6b re-buys a figure, so it needs an exerciser, and the only
+ * honest way to get one without writing into `books/` is to inject the reader.
+ *
  * @param {ReturnType<typeof parseCli>} args
- * @param {{spawn?: Function}} [deps]
+ * @param {{spawn?: Function, readSidecar?: Function}} [deps]
  */
 export async function runFigures(args, deps = {}) {
   const spawn = deps.spawn || defaultSpawn;
+  const readSidecarFor = deps.readSidecar || readSidecar;
   const enumeration = enumerateChapterFigures(args.book, args.chapter, { modules: args.modules });
 
   let figures = enumeration.figures;
@@ -394,7 +403,7 @@ export async function runFigures(args, deps = {}) {
     reviewable: f.reviewable,
     captionSegmentId: f.captionSegmentId,
     altSegmentId: f.altSegmentId,
-    sidecar: readSidecar(bookDir, f.basename),
+    sidecar: readSidecarFor(bookDir, f.basename),
     artwork: null,
     edition: null,
     resolvedVia: null,
@@ -412,6 +421,10 @@ export async function runFigures(args, deps = {}) {
     warnings: [],
   }));
 
+  // 🔴 "ALREADY DONE" IS A HASH QUESTION, NOT A FILE QUESTION, AND IT IS ASKED FIRST — before
+  // anything is resolved or prepared, because a figure that needs nothing should cost nothing.
+  // ⚠️ A STALE SIDECAR MUST NOT BE SKIPPED. `renderHash` with no `composedHash` means the
+  // figure was PAID FOR and never published; skipping it would strand that spend for ever.
   for (const rec of records) {
     if (rec.sidecar && !isStale(rec.sidecar)) {
       rec.outcome = 'skipped-current';

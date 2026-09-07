@@ -456,6 +456,56 @@ describe('the dry run spends nothing and writes nothing', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 THIS BRANCH HAD NO EXERCISER, AND TWO MUTATIONS OF IT SURVIVED ALL 57 TESTS.
+// `books/efnafraedi-2e/figure-text/` does not exist — the campaign has minted no sidecar for a
+// real book yet — so `readSidecar` returns null for every figure of every chapter, `&&`
+// short-circuits, and no corpus-driven test can reach `isStale` through `runFigures` at all.
+// The reader is injected rather than planted on disk, because a test that writes into `books/`
+// would violate the invariant the suite next door exists to prove.
+describe('a figure whose sidecar is current is skipped before anything is spent', () => {
+  const TARGET = 'CNX_Chem_04_04_limiting';
+  const blocks = { 'Boiling|point': 'Suðumark' };
+  const currentHash = computeRenderHash(blocks, COMPOSER_VERSION);
+  const only = (basename, sidecar) => (_bookDir, name) => (name === basename ? sidecar : null);
+
+  it('skips a published, current figure — no resolve, no prepare', async () => {
+    const spawn = fakeSpawn();
+    const result = await runFigures(CH04, {
+      spawn,
+      readSidecar: only(TARGET, { blocks, renderHash: currentHash, composedHash: currentHash }),
+    });
+    const rec = result.figures.find((f) => f.basename === TARGET);
+    expect(rec.outcome).toBe('skipped-current');
+    expect(result.tally['skipped-current']).toBe(1);
+    // It cost nothing: one fewer prepare, and the resolver was never even asked about it.
+    expect(spawn.countOf('prepare')).toBe(result.figures.length - 1);
+    const resolveCall = spawn.calls.find((c) => c.stage === 'resolve');
+    expect(resolveCall.argv).not.toContain(TARGET);
+    expect(Object.values(result.tally).reduce((n, v) => n + v, 0)).toBe(result.figures.length);
+  });
+
+  // 🔴 THE CONTROL, AND IT IS THE ONE THAT MATTERS FOR MONEY. A sidecar with `renderHash` and
+  // no `composedHash` was PAID FOR AND NEVER PUBLISHED. Skipping it would strand that spend for
+  // ever, so it must go through prepare like any other figure.
+  it('does NOT skip a figure that was paid for and never published', async () => {
+    const spawn = fakeSpawn();
+    const result = await runFigures(CH04, {
+      spawn,
+      readSidecar: only(TARGET, { blocks, renderHash: currentHash }),
+    });
+    const rec = result.figures.find((f) => f.basename === TARGET);
+    expect(rec.outcome).not.toBe('skipped-current');
+    expect(result.tally['skipped-current']).toBe(0);
+    expect(spawn.countOf('prepare')).toBe(result.figures.length);
+  });
+
+  it('does not skip anything when no figure has a sidecar (the real corpus today)', async () => {
+    const result = await runFigures(CH04, { spawn: fakeSpawn() });
+    expect(result.tally['skipped-current']).toBe(0);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
 describe('the pre-flight refusals that a dry run exists to surface', () => {
   it('files a prepare that exited non-zero as failed-prepare, not as text-less', async () => {
     const spawn = fakeSpawn({
