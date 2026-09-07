@@ -145,6 +145,21 @@ describe('parseCli', () => {
     expect(args.dryRun).toBe(true);
   });
 
+  // The two flags Task 6b added. Both are BOOLEANS: putting either in VALUED_FLAGS would make
+  // the bare `--stale` a usage error. Neither can cause a purchase — that is proven in
+  // `figure-run-paid.test.js`, where the assertion is a spawn counter.
+  it('parses --stale and --force as booleans', () => {
+    const args = parseCli(['--book', 'b', '--chapter', '1', '--stale', '--force', '--dry-run']);
+    expect(args.stale).toBe(true);
+    expect(args.force).toBe(true);
+  });
+
+  it('leaves --stale and --force false when absent (the control for the test above)', () => {
+    const args = parseCli(['--book', 'b', '--chapter', '1', '--dry-run']);
+    expect(args.stale).toBe(false);
+    expect(args.force).toBe(false);
+  });
+
   it('leaves dryRun false when --dry-run is absent (the control for the test above)', () => {
     expect(parseCli(['--book', 'b', '--chapter', '1']).dryRun).toBe(false);
   });
@@ -447,11 +462,19 @@ describe('the dry run spends nothing and writes nothing', () => {
     expect(result.figures.every((f) => f.outDir === null)).toBe(true);
   });
 
-  it('REFUSES to run live: the paid half is Task 6b, and it spawns nothing', async () => {
-    const spawn = fakeSpawn();
-    const code = await main(['--book', 'efnafraedi-2e', '--chapter', '4'], { spawn });
-    expect(code).toBe(2);
-    expect(spawn.calls.length).toBe(0);
+  // 🔴 THIS REPLACES 'REFUSES to run live: the paid half is Task 6b'. That guard is GONE —
+  // Task 6b built the live path, so `main` without `--dry-run` now buys, writes and publishes.
+  // The live behaviour is proven in `figure-run-paid.test.js`, against a THROWAWAY books tree.
+  // What this file needs instead is a tripwire on ITSELF: it drives the real
+  // `books/efnafraedi-2e`, so one invocation here that forgets `--dry-run` would write a
+  // sidecar, a mapping entry and an SVG into the tracked corpus.
+  it('never runs the live path: every invocation in THIS file is a dry run', () => {
+    const src = fs.readFileSync(path.join(HERE, 'figure-run-free.test.js'), 'utf-8');
+    expect(CH04.dryRun).toBe(true); // the shared arg object every describe here reuses
+    expect(src).not.toMatch(/dryRun:\s*false/); // …and no local one overrides it
+    const mainCalls = src.match(/main\(\s*\[[^\]]*\]/g) || [];
+    expect(mainCalls.length).toBeGreaterThan(2); // non-vacuity: the pattern really finds them
+    expect(mainCalls.filter((c) => !c.includes('--dry-run'))).toEqual([]);
   });
 });
 

@@ -1,16 +1,39 @@
 #!/usr/bin/env node
 /**
- * The M5 figure driver — FREE half (Task 6a). It enumerates a chapter's figures, resolves each
- * to its artwork, prepares it, classifies it, and previews what a paid run would do.
+ * The M5 figure driver. It enumerates a chapter's figures, resolves each to its artwork,
+ * prepares it, classifies it and — without `--dry-run` — buys, records, composes and publishes it.
  *
- *   node tools/figure-run.js --book <slug> --chapter <N|appendices> [--module m…] [--figure B…] --dry-run
+ *   node tools/figure-run.js --book <slug> --chapter <N|appendices>
+ *        [--module m…] [--figure B…] [--stale] [--force] [--dry-run]
  *
- * 🔴 THIS HALF SPENDS NOTHING AND WRITES NOTHING UNDER `books/`. `--dry-run` is currently
- * MANDATORY: the paid half — spend, mint the sidecar, compose, publish — is Task 6b, and a
- * driver that silently did nothing when asked to run live would be the §C83 failure (a declared
- * flag nothing reads) pointed at money. Every child process goes through ONE injectable
- * `spawn`, tagged by stage, so "translate-blocks.mjs was spawned zero times" is a counter a
- * test can read rather than a claim.
+ * 🔴 THE ONLY STAGE THAT SPENDS MONEY IS `translate-blocks.mjs`, AND THE ONLY FIGURE IT IS EVER
+ * RUN FOR IS ONE WITH **NO SIDECAR**. That is R8, and it is not a flag: after an editor's
+ * correction the sidecar's blocks ARE the corrected Icelandic, so re-running the MT would
+ * overwrite the correction *and* charge for it. `--stale` and `--force` therefore spend NOTHING
+ * — they recompose. **To re-buy a figure, a human deletes its `books/<slug>/figure-text/
+ * <basename>.is.json`.** Every child process goes through ONE injectable `spawn`, tagged by
+ * stage, so "the MT was spawned zero times" is a counter a test can read rather than a claim.
+ *
+ * 🔴 THE ORDER IS THE FIX, AND IT IS THE WHOLE POINT OF THIS FILE:
+ *
+ *    5. PRE-FLIGHT   is a mapping entry present or mintable? + the identity seam   PURE, no write
+ *    6. translate    ONLY when no sidecar exists                                   ← the paid step
+ *    7. SIDECAR      writeSidecar IMMEDIATELY, and REGARDLESS of step 8            ← records it
+ *    8. verify       compare key SETS both ways → decides the BUCKET, never the record
+ *    9. compose      figure-compose.py, from the sidecar's own blocks
+ *   10. mint+publish the mapping entry (tmp+rename), then publish → stamps composedHash
+ *
+ * Step 7 sits ahead of everything that can fail after payment. Without it, ADDING step 8 would
+ * make things worse: a 7-of-8 return would be bucketed `failed-mt` and all 7 paid translations
+ * discarded — a new DETECTION converted into a new LOSS, since the paid Icelandic otherwise
+ * lives only in a `mkdtemp` directory nothing records and nothing re-reads.
+ *
+ * ⚠️ THE PAID STAGE IS ALL-OR-NOTHING PER FIGURE, AND THAT IS ACCEPTED RATHER THAN FIXED.
+ * `translate-blocks.mjs` writes its outputs only after its whole loop, so a throw at block k of
+ * n persists nothing; the figure lands `failed-mt` with NO sidecar and the next run re-buys it.
+ * Exposure is one figure, ~1 ISK — §C134's shape, where [USER] ruled retry over coding around
+ * it. **Do NOT "fix" it with a partial write on catch:** a partial sidecar makes the figure
+ * R8-ineligible to spend and permanently part-English, with no review row for the missing keys.
  *
  * WHY A DRY RUN STILL RUNS PYTHON. Classification consumes `figure-prepare.py`'s summary
  * integers, and prepare costs nothing but CPU. Three of the four things this run exists to
@@ -45,18 +68,22 @@ import { fileURLToPath } from 'url';
 import { normalizeChapter, chapterDir } from '../server/lib/chapterLabel.js';
 import { classifyFigure } from './lib/figure-classify.js';
 import { emptyTally, tallyOutcome, verdict, ALL_OUTCOMES } from './lib/figure-outcomes.js';
-import { basenameFromMeta } from './publish-figure-svg.js';
+import { basenameFromMeta, publishFigureSvg } from './publish-figure-svg.js';
 import {
   DEFAULT_SUFFIX,
   indexSourceImageBasenames,
   buildMappingEntries,
+  mergeMapping,
 } from './generate-image-mapping.js';
 
 const require = createRequire(import.meta.url);
 const { enumerateChapterImages } = require('./lib/figure-enumerate.cjs');
 const { loadImageBasenameMap } = require('./lib/image-basename-map.cjs');
 const {
+  SIDECAR_VERSION,
   readSidecar,
+  writeSidecar,
+  sidecarPath,
   computeRenderHash,
   COMPOSER_VERSION,
 } = require('./lib/figure-text-sidecar.cjs');
@@ -73,7 +100,15 @@ const PYTHON = process.env.FIGTEXT_PYTHON || 'python3';
 const HASH_SUFFIX = /-[0-9a-f]{4}$/;
 
 /** Every flag this tool accepts. An argv token outside it is a typo, not a no-op. */
-const KNOWN_FLAGS = new Set(['--book', '--chapter', '--module', '--figure', '--dry-run']);
+const KNOWN_FLAGS = new Set([
+  '--book',
+  '--chapter',
+  '--module',
+  '--figure',
+  '--stale',
+  '--force',
+  '--dry-run',
+]);
 
 /** Flags that take a value, kept as its own set so the missing-value check is a property of
  *  the flag rather than a branch somebody has to remember to add. */
@@ -102,11 +137,26 @@ export class CliError extends Error {
  * `args.dryRun` from a parser that only ever set `args['dry-run']`, so every consumer written
  * that way would have run LIVE.
  *
+ * ⚠️ `--stale` AND `--force` ARE BOOLEANS, AND NEITHER CAN CAUSE A PURCHASE. `--stale` narrows
+ * the run to figures that already HAVE a sidecar; `--force` stops a current one being skipped so
+ * it is recomposed anyway. A figure with no sidecar is bought with or without either flag,
+ * because that is not a re-do — it is the first do. Neither is in VALUED_FLAGS: adding them
+ * there would make the bare `--stale` a usage error.
+ *
  * @param {string[]} argv
- * @returns {{book:string, chapter:string, modules:string[]|null, figures:string[]|null, dryRun:boolean}}
+ * @returns {{book:string, chapter:string, modules:string[]|null, figures:string[]|null,
+ *            stale:boolean, force:boolean, dryRun:boolean}}
  */
 export function parseCli(argv) {
-  const args = { book: null, chapter: null, modules: null, figures: null, dryRun: false };
+  const args = {
+    book: null,
+    chapter: null,
+    modules: null,
+    figures: null,
+    stale: false,
+    force: false,
+    dryRun: false,
+  };
   const lists = { '--module': [], '--figure': [] };
 
   for (let i = 0; i < argv.length; i += 1) {
@@ -116,6 +166,8 @@ export function parseCli(argv) {
     }
     if (!VALUED_FLAGS.has(token)) {
       if (token === '--dry-run') args.dryRun = true;
+      else if (token === '--stale') args.stale = true;
+      else if (token === '--force') args.force = true;
       continue;
     }
     const value = argv[i + 1];
@@ -155,8 +207,13 @@ export function parseCli(argv) {
  * `structureDirExists` to tell "nothing extracted yet" from "this chapter has no figures".
  *
  * @param {string} bookSlug
+ * ⚠️ `booksRoot` IS A TEST SEAM AND IT IS NOT OPTIONAL EQUIPMENT. The paid half WRITES —
+ * a sidecar, a mapping entry, an SVG in `media/` — so its suite has to drive the real code
+ * against a throwaway tree. Pointing the whole run at one root is the only injection point
+ * that covers all three writers, because every one of them derives its path from `bookDir`.
+ *
  * @param {string|number} chapter any dialect: 4, '4', 'appendices'
- * @param {{modules?: string[]|null}} [opts]
+ * @param {{modules?: string[]|null, booksRoot?: string}} [opts]
  */
 export function enumerateChapterFigures(bookSlug, chapter, opts = {}) {
   const canonical = normalizeChapter(chapter);
@@ -166,7 +223,7 @@ export function enumerateChapterFigures(bookSlug, chapter, opts = {}) {
     );
   }
   return enumerateChapterImages({
-    bookDir: path.join(REPO_ROOT, 'books', bookSlug),
+    bookDir: path.join(opts.booksRoot || path.join(REPO_ROOT, 'books'), bookSlug),
     chapterDir: chapterDir(canonical),
     moduleIds: opts.modules || undefined,
   });
@@ -351,10 +408,393 @@ function resolveArtwork(spawn, book, names) {
   return new Map(Object.entries(parsed));
 }
 
+/** How many translated blocks a sidecar carries. `null`/malformed counts as zero. */
+function sidecarBlockCount(sidecar) {
+  if (!sidecar || typeof sidecar.blocks !== 'object' || sidecar.blocks === null) return 0;
+  return Object.keys(sidecar.blocks).length;
+}
+
 /**
- * Walk one chapter's figures, free of charge.
+ * The block keys the paid stage was asked to translate — `blocks.json`'s `send:true` entries.
  *
- * ⚠️ `readSidecar` is injectable for the same reason `spawn` is, and it is not a convenience:
+ * ⚠️ READ AS A SET, NOT A MULTISET, AND THAT IS CORRECT ONLY HERE. `figure-compose.py` compares
+ * the same keys as MULTISETS because `compose.py` DRAWS a duplicate key twice; this comparison
+ * is against `translations-api.json`, whose `blocks` is a JSON OBJECT, so duplicates have
+ * already collapsed by construction and a multiset check would report a loss that cannot exist.
+ *
+ * @returns {string[]|null} null when blocks.json is missing or is not an array
+ */
+function sendKeysFrom(outDir) {
+  const blocks = readJson(path.join(outDir, 'blocks.json'));
+  if (!Array.isArray(blocks)) return null;
+  return blocks.filter((b) => b && b.send).map((b) => b.key);
+}
+
+/**
+ * STEP 8. Compare the keys we PAID FOR against the keys that came BACK, in both directions.
+ *
+ * 🔴 IT DECIDES THE BUCKET, NEVER THE RECORD. The sidecar has already been written by the time
+ * this runs, deliberately — see the module header.
+ *
+ * `missing` is the money finding: a key that was bought and returned nothing usable ships in
+ * English, and nothing downstream can see it. `extra` is the stale-directory finding: a key we
+ * never asked for means the payload belongs to another figure or another vintage.
+ */
+export function verifyTranslatedKeys(expected, blocks) {
+  const got = new Set(Object.keys(blocks));
+  const want = new Set(expected);
+  return {
+    missing: [...want].filter((k) => !got.has(k)),
+    extra: [...got].filter((k) => !want.has(k)),
+  };
+}
+
+/**
+ * STEP 10a. Add this figure's entry to `books/<slug>/media/image-mapping.json`.
+ *
+ * 🔴 THE OBVIOUS ALTERNATIVE IS MEASURED CLOSED: "just run generate-image-mapping.js first" is a
+ * NO-OP here. It derives entries from files ALREADY IN `media/`, so with nothing published yet
+ * it mints zero — it helps only the figures that need no help — and it throws outright on a book
+ * with no `media/` directory at all.
+ *
+ * ⚠️ IT REFUSES OVER AN UNPARSABLE MAPPING rather than replacing it. Overwriting would silently
+ * discard whatever legacy entries the file held, and `mergeMapping` keys on `originalImage`, so
+ * a file it cannot read is a file it must not merge into.
+ *
+ * ⚠️ tmp + rename, like `writeSidecar`: this file is read by `cnxml-inject` on every render, and
+ * a crash mid-write would leave half a JSON array in the reader's path.
+ *
+ * @returns {{mappingPath: string, previous: string|null}} `previous` is the exact bytes that
+ *   were there (null when the file did not exist), which is what a rollback needs.
+ */
+function mintMappingEntry(bookDir, basename, outputName) {
+  const mappingPath = path.join(bookDir, 'media', 'image-mapping.json');
+  let previous = null;
+  try {
+    previous = fs.readFileSync(mappingPath, 'utf-8');
+  } catch {
+    previous = null;
+  }
+  let existing = [];
+  if (previous !== null) {
+    let parsed;
+    try {
+      parsed = JSON.parse(previous);
+    } catch (err) {
+      throw new Error(`image-mapping.json is not valid JSON (${err.message}); refusing to merge`);
+    }
+    if (!Array.isArray(parsed)) {
+      throw new Error(
+        `image-mapping.json is a ${typeof parsed}, not an array; refusing to merge over it`
+      );
+    }
+    existing = parsed;
+  }
+  const fresh = [{ originalImage: basename, outputName, extension: path.extname(outputName) }];
+
+  // 🔴 `mergeMapping` KEYS ON `originalImage`, SO EVERY ROW WITHOUT ONE COLLAPSES ONTO
+  // `undefined` AND ALL BUT THE LAST IS LOST. This is not hypothetical: measured 2026-09-07,
+  // `books/liffraedi-2e/media/image-mapping.json` holds 34 rows and ALL 34 lack the field —
+  // it is the docx-import route, keyed on `figureId`, which `cnxml-inject`'s legacy
+  // `resolveTranslatedImage` still consumes. Handing that file to `mergeMapping` whole returns
+  // ONE row. So the rows it cannot key are held out, and every row is re-emitted in its
+  // ORIGINAL POSITION — a reordered mapping is diff churn on a committed data file.
+  const keyed = existing.filter((e) => e && e.originalImage);
+  const mergedKeyed = new Map(mergeMapping(keyed, fresh).map((e) => [e.originalImage, e]));
+  const merged = [];
+  const emitted = new Set();
+  for (const entry of existing) {
+    if (!entry || !entry.originalImage) {
+      merged.push(entry);
+      continue;
+    }
+    if (emitted.has(entry.originalImage)) continue; // mergeMapping dedupes; match it
+    emitted.add(entry.originalImage);
+    merged.push(mergedKeyed.get(entry.originalImage));
+  }
+  for (const entry of mergedKeyed.values()) {
+    if (emitted.has(entry.originalImage)) continue;
+    emitted.add(entry.originalImage);
+    merged.push(entry);
+  }
+
+  fs.mkdirSync(path.dirname(mappingPath), { recursive: true });
+  const tmp = `${mappingPath}.tmp`;
+  fs.writeFileSync(tmp, `${JSON.stringify(merged, null, 2)}\n`, 'utf-8');
+  fs.renameSync(tmp, mappingPath);
+  return { mappingPath, previous };
+}
+
+/**
+ * Undo a mint whose publish then failed.
+ *
+ * 🔴 A DANGLING MAPPING ENTRY IS A READER-VISIBLE BROKEN IMAGE, NOT A HARMLESS LEFTOVER.
+ * `cnxml-inject.js`'s `applyImageBasenameSwaps` rewrites `<image src>` on a basename match and
+ * NEVER checks that the target exists, so an entry pointing at a file the publish did not write
+ * puts a 404 on the page at the next render.
+ */
+function restoreMapping(minted) {
+  if (!minted) return;
+  if (minted.previous === null) fs.rmSync(minted.mappingPath, { force: true });
+  else fs.writeFileSync(minted.mappingPath, minted.previous, 'utf-8');
+}
+
+/**
+ * The classification outcomes a figure can land in while a PAID sidecar already exists for it.
+ * `unresolved` is deliberately absent: a missing artwork is a hole in the delivery (R9, named
+ * and non-fatal), not a composition problem, and re-labelling it would hide the one number in
+ * the pipeline that looks at the delivery at all.
+ */
+const DRIFTABLE = new Set(['copied-photo', 'copied-textless', 'unreadable-text']);
+
+/**
+ * 🔴 THE READ LAYER MOVED UNDER A FIGURE WE HAVE ALREADY PAID FOR — REFUSE, DO NOT RECOMPOSE.
+ *
+ * The sidecar says this figure has text; prepare now finds none. `figure-compose.py` CANNOT see
+ * it: with an empty `blocks.json` both of its multiset assertions compare `[]` against `[]` and
+ * pass, and it would happily publish the artwork with its text STRIPPED and nothing drawn back —
+ * a figure whose labels have been deleted, reported as a success.
+ *
+ * ⚠️ It fires in a DRY RUN too, on purpose. A dry run exists to surface exactly this before any
+ * money moves, and the reason string says plainly that compose was never spawned.
+ */
+export function applyDriftGuard(rec) {
+  if (!DRIFTABLE.has(rec.outcome) || sidecarBlockCount(rec.sidecar) === 0) return rec;
+  // Captured BEFORE the overwrite: it is the whole diagnosis. Reading `rec.outcome` after the
+  // assignment reports `failed-compose` back to itself and loses which bucket the figure had
+  // actually drifted into — `copied-photo`, `copied-textless` and `unreadable-text` each mean
+  // something different about what went wrong upstream.
+  const classified = rec.outcome;
+  rec.outcome = 'failed-compose';
+  rec.reason =
+    `a sidecar with ${sidecarBlockCount(rec.sidecar)} translated block(s) exists, but the read ` +
+    `layer now finds no sendable text in this figure (classified ${classified}). ` +
+    `Composing would publish the artwork with its labels stripped and nothing drawn back, and ` +
+    `figure-compose.py cannot detect that — its key-set assertions compare [] against []. ` +
+    `Compose was NOT run. Re-check the artwork edition, or delete the sidecar to start over.`;
+  return rec;
+}
+
+/**
+ * STEPS 6–10 for ONE figure, live. Mutates `rec`; returns nothing.
+ *
+ * 🔴 TWO PATHS, SELECTED BY WHETHER A SIDECAR EXISTS — NOT BY A FLAG.
+ *   no sidecar  → buy it (the ONLY spendable state), record it, verify it, compose, publish
+ *   a sidecar   → RECOMPOSE from its own blocks, 0 ISK, and write nothing but the publisher's
+ *                 stamp. The blocks may be an editor's corrections; re-running the MT would
+ *                 overwrite them and charge for it.
+ *
+ * @param {object} rec MUTATED
+ * @param {{spawn:Function, publish:Function, args:object, bookDir:string, outDir:string}} ctx
+ */
+function processFigureLive(rec, { spawn, publish, args, bookDir, outDir }) {
+  // Copies, failures and unresolved figures end at classification: there is no text to compose
+  // and nothing to publish that a reader is not already getting from the OpenStax media tree.
+  if (rec.outcome !== 'translated') return;
+  if (!rec.mapping) {
+    rec.outcome = 'failed-publish';
+    rec.reason = 'no mapping pre-flight ran for this figure; refusing to publish blind';
+    return;
+  }
+  const sidecarFile = sidecarPath(bookDir, rec.basename);
+
+  if (!rec.sidecar) {
+    // ── STEP 6. THE ONLY PAID STEP IN THE WHOLE DRIVER. ──────────────────────────────────
+    const expected = sendKeysFrom(outDir);
+    if (expected === null) {
+      rec.outcome = 'failed-mt';
+      rec.reason = `figure-prepare.py wrote no readable blocks.json in ${outDir}, so there is no key set to buy against and nothing was sent`;
+      return;
+    }
+    rec.spent = true;
+    const mt = spawn({
+      stage: 'translate',
+      command: process.execPath,
+      // ⚠️ `--book` is REQUIRED and is provenance, not glossary selection — the figure MT leg
+      // sends no glossary at all ([USER] 2026-09-06, §C133). `--no-glossary` is deliberately
+      // NOT passed: it is a redundant no-op kept only so old callers are not rejected as typos.
+      argv: [
+        path.join(EXPERIMENT_DIR, 'translate-blocks.mjs'),
+        '--book',
+        args.book,
+        '--out',
+        outDir,
+      ],
+      cwd: EXPERIMENT_DIR,
+      env: {},
+      timeout: 900_000,
+    });
+    if (mt.status !== 0) {
+      rec.outcome = 'failed-mt';
+      rec.reason =
+        `translate-blocks.mjs exited ${mt.status}. It writes its output files only after its ` +
+        `whole loop, so NOTHING was persisted and no sidecar was minted — the figure stays ` +
+        `eligible and the next run re-buys it (~1 ISK). ${mt.stderr.trim().slice(-400)}`;
+      return;
+    }
+    const { blocks, dropped } = normaliseTranslations(
+      readJson(path.join(outDir, 'translations-api.json'))
+    );
+    rec.droppedKeys = dropped;
+    // ⚠️ THE CLAUSE THAT STOPS AN EMPTY SIDECAR. Read literally, "write the sidecar regardless
+    // of step 8's verdict" invites `blocks: {}` with a perfectly valid renderHash — which R8
+    // then locks out of ever being bought again.
+    if (Object.keys(blocks).length === 0) {
+      rec.outcome = 'failed-mt';
+      rec.reason =
+        `translations-api.json is absent or carries no usable translation` +
+        (dropped.length ? ` (${dropped.length} empty value(s): ${dropped.join(', ')})` : '') +
+        `. NO sidecar was minted, deliberately: an empty one would make this figure ` +
+        `permanently ineligible to spend.`;
+      return;
+    }
+
+    // ── STEP 7. RECORD THE PURCHASE, AHEAD OF EVERYTHING THAT CAN FAIL AFTER IT. ─────────
+    const minted = {
+      version: SIDECAR_VERSION,
+      basename: rec.basename,
+      renderHash: computeRenderHash(blocks, COMPOSER_VERSION),
+      composerVersion: COMPOSER_VERSION,
+      blocks,
+    };
+    // 🔴 NO `state` KEY, AND THAT IS LOAD-BEARING. `editorialState` returns 'mt-preview' on
+    // `!sidecar.state` before it looks at any hash, so an unreviewed machine translation reads
+    // as mt-preview for free; storing a derived value is what this design exists not to do.
+    // `renderHash` IS required — `publish-figure-svg.js` stamps `composedHash` iff it is
+    // truthy, which makes the stamp the publish-success marker at no extra cost.
+    writeSidecar(bookDir, rec.basename, minted);
+    rec.sidecar = minted;
+    rec.sidecarWritten = true;
+
+    // ── STEP 8. VERIFY. IT DECIDES THE BUCKET, NEVER THE RECORD. ────────────────────────
+    const { missing, extra } = verifyTranslatedKeys(expected, blocks);
+    if (missing.length || extra.length) {
+      rec.outcome = 'failed-mt';
+      rec.reason =
+        `the MT returned a different key set from the one it was paid for. ` +
+        (missing.length
+          ? `BOUGHT AND NOT RETURNED (these ship in English): ${missing.join(', ')}. `
+          : '') +
+        (extra.length ? `RETURNED BUT NEVER ASKED FOR: ${extra.join(', ')}. ` : '') +
+        `The ${Object.keys(blocks).length} translation(s) that DID come back are on disk in ` +
+        `${sidecarFile} — they are paid for and are not thrown away. To re-buy the whole ` +
+        `figure, delete that file.`;
+      return;
+    }
+  }
+
+  // ── STEP 9. COMPOSE — from the SIDECAR, on both paths. ────────────────────────────────
+  // `compose.py` reads `TR = _tr.get('blocks', _tr)`, so a sidecar is a valid --translations
+  // payload as it stands, and `normalise_block_value` accepts its flat strings. Passing the
+  // sidecar itself rather than a second copy is what makes "recompose from the sidecar's own
+  // blocks" a fact about the command line rather than a claim.
+  if (sidecarBlockCount(rec.sidecar) === 0) {
+    rec.outcome = 'failed-compose';
+    rec.reason = `the sidecar at ${sidecarFile} carries no translated blocks; composing from it would strip this figure's text and draw nothing back`;
+    return;
+  }
+  const composed = spawn({
+    stage: 'compose',
+    command: PYTHON,
+    argv: [
+      path.join(EXPERIMENT_DIR, 'figure-compose.py'),
+      '--out',
+      outDir,
+      '--translations',
+      sidecarFile,
+    ],
+    cwd: EXPERIMENT_DIR,
+    env: { FIGTEXT_PYLIBS: path.join(EXPERIMENT_DIR, 'pylibs') },
+    timeout: 900_000,
+  });
+  // ⚠️ THE VERDICT IS compose.json, NEVER THE EXIT CODE ALONE — `compose.py` keeps the English
+  // for any key it cannot match and exits 0. The wrapper REMOVES translated.svg on any refusal,
+  // so the file's presence means exit 0; reading the file is still what decides.
+  const composeVerdict = readJson(path.join(outDir, 'compose.json'));
+  if (
+    composed.status !== 0 ||
+    !composeVerdict ||
+    composeVerdict.error ||
+    !composeVerdict.outputPath
+  ) {
+    rec.outcome = 'failed-compose';
+    rec.reason =
+      (composeVerdict && composeVerdict.error) ||
+      composed.stderr.trim().slice(-400) ||
+      `figure-compose.py exited ${composed.status} and wrote no verdict`;
+    return;
+  }
+  const svgPath = composeVerdict.outputPath;
+
+  // ── STEP 10. MINT THE MAPPING ENTRY, THEN PUBLISH. ────────────────────────────────────
+  const outputName = rec.mapping.outputName;
+  if (path.extname(outputName) !== path.extname(svgPath)) {
+    // The pre-flight builds the mintable name with a `.svg` literal while the composer's
+    // extension is whatever it actually wrote. They agree today; if they ever stop, publishing
+    // would copy one format's bytes into the other format's filename, silently.
+    rec.outcome = 'failed-publish';
+    rec.reason =
+      `the composer produced ${path.basename(svgPath)} but image-mapping.json names ` +
+      `${outputName}: publishing would write ${path.extname(svgPath)} bytes into a ` +
+      `${path.extname(outputName)} file.`;
+    return;
+  }
+  let minted = null;
+  if (rec.mapping.status === 'mintable') {
+    try {
+      minted = mintMappingEntry(bookDir, rec.basename, outputName);
+    } catch (err) {
+      rec.outcome = 'failed-publish';
+      rec.reason = `could not mint the image-mapping.json entry for ${rec.basename}: ${err.message}`;
+      return;
+    }
+  }
+
+  // 🔴 `publishFigureSvg` HAS THREE OUTCOMES, NOT TWO. It refuses with six distinct reason
+  // codes, and it also THROWS: `fs.copyFileSync` is unguarded, and so is the `writeSidecar`
+  // that follows it — the second fires with the artwork ALREADY on disk, which is why the
+  // rollback below only takes the mapping entry back and leaves an unreferenced file alone.
+  // Such a file is inert (nothing points at it) and the next run republishes over it, whereas
+  // a mapping entry with no file is a 404 on the reader's page.
+  let result;
+  try {
+    result = publish({
+      sidecarPath: sidecarFile,
+      svgPath,
+      metaPath: path.join(outDir, 'meta.json'),
+    });
+  } catch (err) {
+    restoreMapping(minted);
+    rec.outcome = 'failed-publish';
+    rec.reason = `publish-figure-svg.js THREW: ${err && err.message}`;
+    return;
+  }
+  if (!result || !result.ok) {
+    restoreMapping(minted);
+    rec.outcome = 'failed-publish';
+    rec.reason = `publish refused (${result ? result.reason : 'no result'}): ${result ? result.message : 'the publisher returned nothing'}`;
+    return;
+  }
+  rec.published = {
+    outputName: result.outputName,
+    path: result.path,
+    replaced: result.replaced,
+    // ⚠️ RECORDED FROM THE RETURN VALUE FOR THE REPORT ONLY. §C138 was a bug in which the
+    // publisher returned the correct stamp while writing the stale one, so nothing may treat
+    // this as evidence that the file on disk is stamped — read the sidecar for that.
+    composedHash: result.composedHash,
+  };
+}
+
+/**
+ * Walk one chapter's figures.
+ *
+ * ⚠️ `readSidecar`, `publish` and `booksRoot` are injectable for the same reason `spawn` is:
+ * the live path WRITES, so its suite has to drive the real code against a throwaway tree.
+ * `booksRoot` covers all three writers at once (sidecar, mapping entry, published SVG) because
+ * every one of them derives its path from `bookDir`.
+ *
+ * ⚠️ `readSidecar` is injectable for a second reason, and it is not a convenience:
  * `books/efnafraedi-2e/figure-text/` DOES NOT EXIST — the campaign has minted no sidecar for a
  * real book yet — so on every chapter of the real corpus `readSidecar` returns null, `&&`
  * short-circuits, and the `skipped-current` branch below is unreachable from any corpus-driven
@@ -363,12 +803,16 @@ function resolveArtwork(spawn, book, names) {
  * honest way to get one without writing into `books/` is to inject the reader.
  *
  * @param {ReturnType<typeof parseCli>} args
- * @param {{spawn?: Function, readSidecar?: Function}} [deps]
+ * @param {{spawn?: Function, readSidecar?: Function, publish?: Function, booksRoot?: string}} [deps]
  */
 export async function runFigures(args, deps = {}) {
   const spawn = deps.spawn || defaultSpawn;
   const readSidecarFor = deps.readSidecar || readSidecar;
-  const enumeration = enumerateChapterFigures(args.book, args.chapter, { modules: args.modules });
+  const publish = deps.publish || publishFigureSvg;
+  const enumeration = enumerateChapterFigures(args.book, args.chapter, {
+    modules: args.modules,
+    booksRoot: deps.booksRoot,
+  });
 
   let figures = enumeration.figures;
   if (args.figures) {
@@ -418,21 +862,36 @@ export async function runFigures(args, deps = {}) {
     holds: null,
     mapping: null,
     outDir: null,
+    // The paid half's own record. `spent` is TRUE only when the MT was actually spawned for
+    // this figure, so a run's total spend is a count over the records rather than a claim.
+    spent: false,
+    sidecarWritten: false,
+    droppedKeys: [],
+    published: null,
     warnings: [],
   }));
+
+  // `--stale`: narrow to the figures that already HAVE a sidecar, i.e. the ones a recompose can
+  // finish. Selecting them OUT of the run rather than giving them an outcome is deliberate and
+  // matches `--figure`: the tally then describes what was worked on, and the partition still
+  // sums. Selecting nothing is a legitimate answer here (nothing is stranded), so — unlike a
+  // `--figure` that names no figure — it is not a refusal.
+  const selected = args.stale ? records.filter((r) => r.sidecar) : records;
 
   // 🔴 "ALREADY DONE" IS A HASH QUESTION, NOT A FILE QUESTION, AND IT IS ASKED FIRST — before
   // anything is resolved or prepared, because a figure that needs nothing should cost nothing.
   // ⚠️ A STALE SIDECAR MUST NOT BE SKIPPED. `renderHash` with no `composedHash` means the
   // figure was PAID FOR and never published; skipping it would strand that spend for ever.
-  for (const rec of records) {
-    if (rec.sidecar && !isStale(rec.sidecar)) {
+  // ⚠️ `--force` suppresses ONLY this skip. It cannot make a figure spendable, because
+  // spendability is decided by whether a sidecar EXISTS, one branch further down.
+  for (const rec of selected) {
+    if (rec.sidecar && !isStale(rec.sidecar) && !args.force) {
       rec.outcome = 'skipped-current';
       rec.reason = 'sidecar is published and current';
     }
   }
 
-  const pending = records.filter((r) => r.outcome === null);
+  const pending = selected.filter((r) => r.outcome === null);
   const resolved = resolveArtwork(
     spawn,
     args.book,
@@ -532,18 +991,26 @@ export async function runFigures(args, deps = {}) {
           rec.sendable = sendable;
         }
       }
-      // A dry run keeps nothing: one figure's output directory is ~14 MB and /tmp here is a
-      // 4.9 GB tmpfs that routinely runs over 90% full.
-      if (args.dryRun) {
-        fs.rmSync(outDir, { recursive: true, force: true });
-        rec.outDir = null;
-      }
+      // 🔴 THE PRE-FLIGHT RUNS HERE, PER FIGURE, AND NOT IN A SECOND PASS AFTERWARDS. It has
+      // to be ahead of THIS figure's paid stage, or "refuses an unmintable figure before the
+      // MT is called" is unsatisfiable. Nothing outside this loop needs it: every record is
+      // either `skipped-current` or in `pending`, and neither of the outcomes reached by the
+      // early `continue` above is PUBLISH_BOUND.
+      applyDriftGuard(rec);
+      applyMappingPreflight(rec, { mapped, mintIndex });
+      if (!args.dryRun) processFigureLive(rec, { spawn, publish, args, bookDir, outDir });
+
+      // 🔴 PEAK DISK, IN BOTH MODES. One figure's output directory is ~14 MB and /tmp here is
+      // a 4.9 GB tmpfs routinely over 90% full, so 30 figures kept at once is ~420 MB and a
+      // whole book ~16 GB — an ENOSPC that reads as a code fault. The live path needs the
+      // directory right up to publish (compose reads artwork.svg from it, the MT writes
+      // translations-api.json into it) and not one figure longer.
+      fs.rmSync(outDir, { recursive: true, force: true });
+      rec.outDir = null;
     }
 
-    for (const rec of records) applyMappingPreflight(rec, { mapped, mintIndex });
-
     const tally = emptyTally();
-    for (const rec of records) tallyOutcome(tally, rec.outcome);
+    for (const rec of selected) tallyOutcome(tally, rec.outcome);
 
     return {
       mode: args.dryRun ? 'dry-run' : 'live',
@@ -555,10 +1022,13 @@ export async function runFigures(args, deps = {}) {
       structureDirExists: enumeration.structureDirExists,
       structureOnly: enumeration.structureOnly,
       enumerationWarnings: enumeration.warnings,
-      enumerated: records.length,
-      figures: records,
+      enumerated: selected.length,
+      // How many the chapter holds that this run did not work on — `--stale` narrows the run,
+      // and a report that silently dropped them would look like a chapter that shrank.
+      deselected: records.length - selected.length,
+      figures: selected,
       tally,
-      verdict: verdict(tally, records.length),
+      verdict: verdict(tally, selected.length),
       tmpRoot,
     };
   } finally {
@@ -608,6 +1078,13 @@ export function summarise(result) {
     lines.push(
       `  ⚠️ 02-structure/${result.chapterDir} is absent — reviewability is UNKNOWN, not zero. ` +
         `Re-extract the chapter before reading the gap below.`
+    );
+  }
+
+  if (result.deselected > 0) {
+    lines.push(
+      `  --stale: ${result.deselected} figure(s) in this chapter have no sidecar and were not ` +
+        `selected. They are the ones a run WITHOUT --stale would buy.`
     );
   }
 
@@ -682,6 +1159,33 @@ export function summarise(result) {
     lines.push(`  enumeration warning [${w.moduleId}] ${w.reason}: ${w.tag}`);
   }
 
+  // 🔴 THE SPEND, AS A COUNT OVER THE RECORDS. `spent` is set at the paid spawn and nowhere
+  // else, so this line cannot report a purchase that did not happen or hide one that did.
+  // ⚠️ It is printed on a dry run too, where it is always zero — a line that appears only when
+  // it is non-zero is a line nobody learns to look for.
+  if (result.mode === 'live') {
+    const spent = result.figures.filter((f) => f.spent);
+    const published = result.figures.filter((f) => f.published);
+    lines.push('');
+    lines.push(
+      `  MT spawned for ${spent.length} figure(s) — only a figure with NO sidecar is spendable`
+    );
+    lines.push(`  published ${published.length} figure(s) into ${result.bookDir}/media/`);
+    lines.push(
+      ...nameList(
+        'bought this run',
+        spent.map((f) => f.basename)
+      )
+    );
+    const dropped = result.figures.filter((f) => f.droppedKeys.length);
+    for (const f of dropped) {
+      lines.push(
+        `  ⚠️ ${f.basename}: the MT returned ${f.droppedKeys.length} empty value(s) ` +
+          `(${f.droppedKeys.join(', ')}) — those labels ship in English`
+      );
+    }
+  }
+
   lines.push('');
   lines.push(result.verdict.ok ? 'VERDICT ok' : 'VERDICT needs a human');
   for (const reason of result.verdict.reasons) lines.push(`  ${reason}`);
@@ -701,18 +1205,6 @@ export async function main(argv, deps = {}) {
       return 2;
     }
     throw err;
-  }
-
-  // 🔴 THE MONEY GUARD. Task 6a builds the free half only; the paid half is 6b. Refusing here
-  // — loudly, before a single child process — is what makes "this session spent nothing" a
-  // property of the code rather than of the operator's care.
-  if (!args.dryRun) {
-    console.error(
-      'figure-run.js: --dry-run is required. The paid half (spend, sidecar, compose, publish) ' +
-        'is M5 Task 6b and is not built on this branch; running without --dry-run would do ' +
-        'nothing and report success.'
-    );
-    return 2;
   }
 
   try {

@@ -1,0 +1,734 @@
+/**
+ * `tools/figure-run.js` — the figure driver's PAID half (M5 Task 6b).
+ *
+ * 🔴 EVERY TEST HERE COSTS ZERO ISK, AND THE SUITE PROVES IT RATHER THAN ASSERTING IT.
+ * `experiments/figure-text-translation/translate-blocks.mjs` is the only stage that spends, and
+ * the driver reaches it through the SAME injectable `spawn` seam every other child goes through
+ * — so "the MT was spawned N times" is a counter a test reads, not a claim a comment makes.
+ * ⚠️ A count of zero is only evidence when something else in the SAME run is non-zero: every
+ * "spends nothing" test below asserts a live control beside it (compose spawned, a figure
+ * published, a stamp written), because "0 because it refused to spend" and "0 because it did
+ * nothing at all" are different facts.
+ *
+ * 🔴 AND NO TEST HERE TOUCHES `books/` IN THE REPO. The live path WRITES — a sidecar, a mapping
+ * entry, an SVG in `media/` — so every test drives it against a throwaway `<tmp>/books/<slug>`
+ * tree via `deps.booksRoot`. The publisher's own `parseSidecarPath` requires the grandparent
+ * directory to be literally `books`, which is why the fixture is `<tmp>/books/...` and not
+ * `<tmp>/<slug>`.
+ *
+ * ⚠️ THE PUBLISHER IS THE REAL ONE unless a test says otherwise. `publishFigureSvg` is where
+ * three of this task's findings live (six refusal codes, two unguarded throw sites, and the
+ * §C138 stale-stamp bug), and a stub cannot reproduce any of them. `deps.publish` exists for
+ * the one case that needs a fabricated failure, and is otherwise left at its default.
+ */
+import { describe, it, expect, afterEach } from 'vitest';
+import { createRequire } from 'module';
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+import { runFigures, main, isStale, applyDriftGuard } from '../figure-run.js';
+
+const require = createRequire(import.meta.url);
+const {
+  readSidecar,
+  writeSidecar,
+  sidecarPath,
+  computeRenderHash,
+  COMPOSER_VERSION,
+} = require('../lib/figure-text-sidecar.cjs');
+
+const HERE = path.dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = path.resolve(HERE, '..', '..');
+const SLUG = 'figrun-testbook';
+
+/** Every fixture tree this file made, torn down after each test — /tmp here is a small tmpfs. */
+const madeRoots = [];
+afterEach(() => {
+  while (madeRoots.length) {
+    const root = madeRoots.pop();
+    // A test may have chmod'ed a directory read-only to force EACCES; put it back or the
+    // teardown itself fails and the next test inherits a full /tmp.
+    try {
+      fs.chmodSync(path.join(root, 'books', SLUG, 'media'), 0o755);
+    } catch {
+      /* the directory may not exist; nothing to restore */
+    }
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+/**
+ * A throwaway `books/<slug>` tree.
+ *
+ * `figures` are basenames; each becomes an `<image src>` inside its own `<figure>` in one
+ * module. A basename listed in `unmintable` is written with a RAW `>` inside an earlier
+ * attribute value — legal XML, and §C115's exact shape: the quote-aware enumeration sees it
+ * while `generate-image-mapping.js`'s `[^>]*` scan does not, so the driver can enumerate a
+ * figure it could never mint a mapping entry for. That disagreement is the pre-flight's whole
+ * reason to exist, and it is reproduced here rather than simulated.
+ */
+function makeBook({ figures, unmintable = [], mapping = null, sidecars = {} } = {}) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'figrun-paid-'));
+  madeRoots.push(root);
+  const booksRoot = path.join(root, 'books');
+  const bookDir = path.join(booksRoot, SLUG);
+  const sourceDir = path.join(bookDir, '01-source', 'ch01');
+  fs.mkdirSync(sourceDir, { recursive: true });
+  fs.mkdirSync(path.join(bookDir, 'media'), { recursive: true });
+
+  const body = figures
+    .map((b, i) => {
+      const alt = unmintable.includes(b) ? ' alt="a > b"' : '';
+      return (
+        `<figure id="fig${i}"><media alt="m${i}">` +
+        `<image${alt} mime-type="application/pdf" src="../../media/${b}.pdf"/>` +
+        `</media></figure>`
+      );
+    })
+    .join('\n');
+  fs.writeFileSync(path.join(sourceDir, 'm00001.cnxml'), `<document>\n${body}\n</document>\n`);
+
+  if (mapping) {
+    fs.writeFileSync(
+      path.join(bookDir, 'media', 'image-mapping.json'),
+      `${JSON.stringify(mapping, null, 2)}\n`
+    );
+  }
+  for (const [basename, sidecar] of Object.entries(sidecars)) {
+    writeSidecar(bookDir, basename, sidecar);
+  }
+  return { root, booksRoot, bookDir, sourceDir };
+}
+
+/** The sidecar the driver mints, built here so a test can plant one that looks driver-made. */
+function madeSidecar(basename, blocks, extra = {}) {
+  return {
+    version: 1,
+    basename,
+    renderHash: computeRenderHash(blocks, COMPOSER_VERSION),
+    composerVersion: COMPOSER_VERSION,
+    blocks,
+    ...extra,
+  };
+}
+
+/** A published, current sidecar: `composedHash === renderHash`, so `isStale` is false. */
+function currentSidecar(basename, blocks, extra = {}) {
+  const hash = computeRenderHash(blocks, COMPOSER_VERSION);
+  return {
+    version: 1,
+    basename,
+    renderHash: hash,
+    composedHash: hash,
+    composerVersion: COMPOSER_VERSION,
+    blocks,
+    ...extra,
+  };
+}
+
+/**
+ * A fake `spawn` covering all FOUR stages, fabricating what each one promises on disk.
+ *
+ * @param {object} [plan]
+ * @param {(b:string)=>object|null} [plan.resolve]
+ * @param {(b:string)=>object} [plan.prepare] merged into prepare.json; `__blocks` overrides the
+ *   generated blocks.json, `__fail` makes prepare exit 1.
+ * @param {(b:string, blocks:Array)=>object} [plan.translate] `{__exit: n}` to fail, `{__absent:
+ *   true}` to write no translations file, `{__blocks: {...}}` for a literal payload; the default
+ *   returns one Icelandic value per `send:true` block.
+ * @param {(b:string)=>object} [plan.compose] `{__error: 'msg'}` to make compose exit 1.
+ */
+function fakeSpawn(plan = {}) {
+  const calls = [];
+  const fn = ({ stage, argv }) => {
+    calls.push({ stage, argv });
+    const outDir = argv.includes('--out') ? argv[argv.indexOf('--out') + 1] : null;
+
+    if (stage === 'resolve') {
+      const names = argv.slice(argv.indexOf('--json') + 2);
+      const out = {};
+      for (const n of names) {
+        out[n] = plan.resolve
+          ? plan.resolve(n)
+          : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' };
+      }
+      return { status: 0, stdout: JSON.stringify(out), stderr: '' };
+    }
+
+    if (stage === 'prepare') {
+      const basename = argv[argv.indexOf('--basename') + 1];
+      fs.mkdirSync(outDir, { recursive: true });
+      // How many figure directories exist AT THIS MOMENT — the peak-disk invariant measured
+      // directly rather than through a proxy field. A real prepare leaves ~14 MB behind.
+      fn.liveDirs.push(fs.readdirSync(path.dirname(outDir)).length);
+      const extra = plan.prepare ? plan.prepare(basename) : {};
+      if (extra.__fail) {
+        fs.writeFileSync(
+          path.join(outDir, 'prepare.json'),
+          JSON.stringify({ error: extra.__fail, warnings: [] })
+        );
+        return { status: 1, stdout: '', stderr: extra.__fail };
+      }
+      const sendable = extra.sendable === undefined ? 2 : extra.sendable;
+      const blocks =
+        extra.__blocks ||
+        Array.from({ length: sendable }, (_, i) => ({
+          key: `k${i}`,
+          english: `English ${i}`,
+          lines: [`English ${i}`],
+          arc: false,
+          send: true,
+        }));
+      fs.writeFileSync(path.join(outDir, 'blocks.json'), JSON.stringify(blocks));
+      fs.writeFileSync(
+        path.join(outDir, 'meta.json'),
+        JSON.stringify({ source: path.join(outDir, `${basename}.pdf`) })
+      );
+      fs.writeFileSync(path.join(outDir, 'artwork.svg'), '<svg/>');
+      // `__blocks` is the fake's own control channel, not a prepare.json field — strip it so
+      // the written manifest holds only what the real tool would write.
+      const rest = Object.fromEntries(Object.entries(extra).filter(([k]) => k !== '__blocks'));
+      fs.writeFileSync(
+        path.join(outDir, 'prepare.json'),
+        JSON.stringify({
+          basename,
+          source: `/fake/artwork/${basename}.pdf`,
+          blocks: blocks.length,
+          sendable,
+          undecodedBlocks: 0,
+          verbatimBlocks: 0,
+          missingFontBlocks: 0,
+          chars: sendable * 10,
+          artworkSvgPath: path.join(outDir, 'artwork.svg'),
+          imageXObjects: 1,
+          paintOps: 5,
+          formTextXObjects: 0,
+          warnings: [],
+          ...rest,
+        })
+      );
+      return { status: 0, stdout: '', stderr: '' };
+    }
+
+    if (stage === 'translate') {
+      const blocks = JSON.parse(fs.readFileSync(path.join(outDir, 'blocks.json'), 'utf-8'));
+      const basename = path.basename(outDir);
+      const spec = plan.translate ? plan.translate(basename, blocks) : {};
+      if (spec.__exit) return { status: spec.__exit, stdout: '', stderr: 'the API said no' };
+      if (spec.__absent) return { status: 0, stdout: '', stderr: '' };
+      const payload =
+        spec.__blocks ||
+        Object.fromEntries(blocks.filter((b) => b.send).map((b) => [b.key, [`IS ${b.key}`]]));
+      fs.writeFileSync(
+        path.join(outDir, 'translations-api.json'),
+        JSON.stringify({ _source: 'stub, no glossary', blocks: payload })
+      );
+      return { status: 0, stdout: '', stderr: '' };
+    }
+
+    if (stage === 'compose') {
+      const basename = path.basename(outDir);
+      const spec = plan.compose ? plan.compose(basename) : {};
+      if (spec.__error) {
+        fs.rmSync(path.join(outDir, 'translated.svg'), { force: true });
+        fs.writeFileSync(
+          path.join(outDir, 'compose.json'),
+          JSON.stringify({ error: spec.__error, keys: [] })
+        );
+        return { status: 1, stdout: '', stderr: spec.__error };
+      }
+      fs.writeFileSync(path.join(outDir, 'translated.svg'), `<svg id="${basename}"/>`);
+      fs.writeFileSync(
+        path.join(outDir, 'compose.json'),
+        JSON.stringify({ outputPath: path.join(outDir, 'translated.svg') })
+      );
+      return { status: 0, stdout: '', stderr: '' };
+    }
+    throw new Error(`fakeSpawn was asked for an unexpected stage: ${stage}`);
+  };
+  fn.calls = calls;
+  fn.liveDirs = [];
+  fn.countOf = (stage) => calls.filter((c) => c.stage === stage).length;
+  fn.outDirsFor = (stage) =>
+    calls
+      .filter((c) => c.stage === stage)
+      .map((c) => path.basename(c.argv[c.argv.indexOf('--out') + 1]));
+  return fn;
+}
+
+/** A publisher that refuses, counting its calls so "the mapping is unchanged" cannot pass
+ *  because the publish was never reached. */
+function refusingPublisher(reason = 'no-svg') {
+  const fn = () => {
+    fn.calls += 1;
+    return { ok: false, reason, message: `stub publisher refused: ${reason}` };
+  };
+  fn.calls = 0;
+  return fn;
+}
+
+const live = (booksRoot, over = {}) => ({
+  book: SLUG,
+  chapter: '1',
+  modules: null,
+  figures: null,
+  dryRun: false,
+  stale: false,
+  force: false,
+  ...over,
+});
+
+/** Two legacy figure-id rows (liffraedi-2e's whole file is this shape) plus one new-route row. */
+const mapping3 = () => [
+  { figureId: 'legacy-1', outputName: 'LEGACY_ONE.png' },
+  { figureId: 'legacy-2', outputName: 'LEGACY_TWO.png' },
+  { originalImage: 'SOMETHING_ELSE', outputName: 'SOMETHING_ELSE_IS.svg', extension: '.svg' },
+];
+
+const rec = (result, basename) => result.figures.find((f) => f.basename === basename);
+const mapEntries = (bookDir) =>
+  JSON.parse(fs.readFileSync(path.join(bookDir, 'media', 'image-mapping.json'), 'utf-8'));
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 N2 — THE PURCHASE IS RECORDED BEFORE ANYTHING THAT CAN FAIL AFTER IT.
+// Without this, adopting Task 4's key-set check converts a new DETECTION into a new LOSS: the
+// paid Icelandic otherwise lives only in a mkdtemp directory nothing records and nothing rereads.
+describe('the purchase is recorded before anything that can fail after it', () => {
+  const short = (b, blocks) => ({
+    __blocks: Object.fromEntries(
+      blocks
+        .filter((x) => x.send)
+        .slice(0, -1)
+        .map((x) => [x.key, [`IS ${x.key}`]])
+    ),
+  });
+
+  it('writes the sidecar as soon as the MT returns, even when the post-MT check then FAILS', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn({ prepare: () => ({ sendable: 8 }), translate: short });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-mt');
+    // …AND all seven translations are on disk. A COUNT would pass against an implementation
+    // that wrote a different seven, so compare the object.
+    const onDisk = readSidecar(bookDir, 'FIG_A');
+    expect(onDisk.blocks).toEqual({
+      k0: 'IS k0',
+      k1: 'IS k1',
+      k2: 'IS k2',
+      k3: 'IS k3',
+      k4: 'IS k4',
+      k5: 'IS k5',
+      k6: 'IS k6',
+    });
+    expect(rec(result, 'FIG_A').reason).toMatch(/k7/); // it NAMES the key that was lost
+    expect(spawn.countOf('compose')).toBe(0); // and it does not compose over the hole
+  });
+
+  // THE CONTROL. Same fixture, same stages, a complete return: without it the test above passes
+  // against a driver that buckets every MT return as a failure.
+  it('a complete return is translated, composed and published (the control)', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn({ prepare: () => ({ sendable: 8 }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(Object.keys(readSidecar(bookDir, 'FIG_A').blocks)).toHaveLength(8);
+    expect(spawn.countOf('compose')).toBe(1);
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(true);
+    expect(result.verdict.ok).toBe(true);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('a figure whose publish fails is never reported done', () => {
+  // 🔴 D3. The refusal is a REAL one from the real publisher: an `outputName` that escapes
+  // media/ is `unsafe-output-name`, the shape a 2026-09-05 provenance audit proved could write
+  // into the licensed 01-source tree AND still return ok:true.
+  it('a refused publish leaves no composedHash, lands in failed-publish, and is NOT skipped next run', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      mapping: [{ originalImage: 'FIG_A', outputName: '../01-source/evil.svg', extension: '.svg' }],
+    });
+    const spawn = fakeSpawn();
+    const first = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(first, 'FIG_A').outcome).toBe('failed-publish');
+    expect(rec(first, 'FIG_A').reason).toMatch(/unsafe-output-name/);
+    expect(first.verdict.ok).toBe(false);
+    const after = readSidecar(bookDir, 'FIG_A');
+    expect(after.composedHash).toBeUndefined(); // the stamp is the publish-success marker
+    expect(isStale(after)).toBe(true);
+
+    // The second run: still not done, and it does NOT buy the figure again.
+    const spawn2 = fakeSpawn();
+    const second = await runFigures(live(booksRoot), { spawn: spawn2, booksRoot });
+    expect(rec(second, 'FIG_A').outcome).not.toBe('skipped-current');
+    expect(second.tally['skipped-current']).toBe(0);
+    expect(spawn2.countOf('translate')).toBe(0); // R8: a sidecar exists, so nothing is bought
+    expect(spawn2.countOf('compose')).toBe(1); // …and the control: it really did re-run
+  });
+
+  // 🔴 `publishFigureSvg` has THREE outcomes, not two: `fs.copyFileSync` is unguarded and throws
+  // past every refusal. Proven with a real EACCES rather than a fabricated throw.
+  it('buckets a THROW from publish as failed-publish', async () => {
+    // The mapping entry is SEEDED, so the driver mints nothing and `media/` is untouched until
+    // `publishFigureSvg`'s own unguarded `fs.copyFileSync`. Without that, the mint would throw
+    // EACCES first and this test would pass while proving the wrong throw site.
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      mapping: [{ originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' }],
+    });
+    const mediaDir = path.join(bookDir, 'media');
+    fs.chmodSync(mediaDir, 0o500);
+    // THE INSTRUMENT'S OWN CONTROL: running as root ignores the mode bits, and this test would
+    // then pass for the wrong reason. Prove the directory really is unwritable first.
+    let writable = true;
+    try {
+      fs.writeFileSync(path.join(mediaDir, '__probe__'), 'x');
+      fs.rmSync(path.join(mediaDir, '__probe__'), { force: true });
+    } catch {
+      writable = false;
+    }
+    expect(writable).toBe(false);
+
+    const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-publish');
+    expect(rec(result, 'FIG_A').reason).toMatch(/EACCES/);
+    expect(rec(result, 'FIG_A').reason).toMatch(/THREW/); // …from publish, not from the mint
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 R8 — THE ONLY SPENDABLE FIGURE IS ONE WITH NO SIDECAR. After an editor's correction the
+// sidecar's blocks ARE the corrected Icelandic; re-running the MT would overwrite the
+// correction AND charge for it. To re-buy, a human deletes the `.is.json`.
+describe('--stale and --force spend NOTHING', () => {
+  const STALE = { FIG_A: madeSidecar('FIG_A', { k0: 'IS k0', k1: 'IS k1' }) };
+
+  it('spends NOTHING on --stale: it recomposes from the sidecar’s own blocks', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A', 'FIG_B'], sidecars: STALE });
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot, { stale: true }), { spawn, booksRoot });
+
+    expect(spawn.countOf('translate')).toBe(0);
+    // THE CONTROLS, in the same run: --stale narrowed to the sidecar-bearing figure, and that
+    // figure was really recomposed and really published.
+    expect(result.figures.map((f) => f.basename)).toEqual(['FIG_A']);
+    expect(spawn.countOf('compose')).toBe(1);
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(true);
+    // …and the recompose composed from the SIDECAR, not from a fresh MT payload.
+    const composeCall = spawn.calls.find((c) => c.stage === 'compose');
+    expect(composeCall.argv).toContain(sidecarPath(bookDir, 'FIG_A'));
+  });
+
+  it('spends NOTHING on --force either, and --force is what makes a current figure move', async () => {
+    const blocks = { k0: 'IS k0', k1: 'IS k1' };
+    const make = () =>
+      makeBook({ figures: ['FIG_A'], sidecars: { FIG_A: currentSidecar('FIG_A', blocks) } });
+
+    // Without --force, a current figure is skipped before anything is resolved or prepared.
+    const plain = make();
+    const spawnPlain = fakeSpawn();
+    const skipped = await runFigures(live(plain.booksRoot), {
+      spawn: spawnPlain,
+      booksRoot: plain.booksRoot,
+    });
+    expect(rec(skipped, 'FIG_A').outcome).toBe('skipped-current');
+    expect(spawnPlain.countOf('compose')).toBe(0);
+
+    // With --force it is recomposed and republished — and STILL costs nothing.
+    const forced = make();
+    const spawnForced = fakeSpawn();
+    const result = await runFigures(live(forced.booksRoot, { force: true }), {
+      spawn: spawnForced,
+      booksRoot: forced.booksRoot,
+    });
+    expect(spawnForced.countOf('translate')).toBe(0);
+    expect(spawnForced.countOf('compose')).toBe(1);
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(result.tally['skipped-current']).toBe(0);
+  });
+
+  // 🔴 THE TEST THE RULE EXISTS FOR. Drives the REAL publisher over an APPROVED sidecar whose
+  // Icelandic an editor corrected, carrying a STALE composedHash — the §C138 shape.
+  it('does not overwrite an editor’s corrected text, and the approval survives the recompose', async () => {
+    const corrected = { k0: 'Celsíus', k1: 'Suðumark' };
+    const approved = {
+      version: 1,
+      basename: 'FIG_A',
+      state: 'approved',
+      renderHash: computeRenderHash(corrected, COMPOSER_VERSION),
+      composedHash: 'STALE-FROM-AN-OLDER-COMPOSE',
+      composerVersion: COMPOSER_VERSION,
+      blocks: corrected,
+    };
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'], sidecars: { FIG_A: approved } });
+    const rawBefore = fs.readFileSync(sidecarPath(bookDir, 'FIG_A'), 'utf-8');
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot, { stale: true }), { spawn, booksRoot });
+
+    expect(spawn.countOf('translate')).toBe(0);
+    // 🔴 THE RULE ITSELF, NOT ITS CONSEQUENCE: a recompose writes the sidecar under NO
+    // circumstances — the publisher's stamp is the only write. The assertions below on
+    // `blocks`/`state` would all pass against a driver that REWROTE the file faithfully, and
+    // the rewrite that drops `state` is exactly the failure this rule exists to forbid.
+    expect(rec(result, 'FIG_A').sidecarWritten).toBe(false);
+    const norm = (t) =>
+      t
+        .split('\n')
+        .map((l) => l.trim().replace(/,$/, ''))
+        .filter(Boolean);
+    const rawAfter = fs.readFileSync(sidecarPath(bookDir, 'FIG_A'), 'utf-8');
+    const added = norm(rawAfter).filter((l) => !norm(rawBefore).includes(l));
+    expect(added).toHaveLength(1); // …one line changed, and it is the stamp
+    expect(added[0]).toContain('composedHash');
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    const after = readSidecar(bookDir, 'FIG_A');
+    expect(after.blocks).toEqual(corrected); // the correction is untouched
+    expect(after.state).toBe('approved'); // and so is the head editor's approval
+    expect(after.composedHash).toBe(after.renderHash); // the stamp converged (§C138)
+    // ⚠️ ON DISK, not the publisher's return value: the shipped bug returned the right hash
+    // while writing the stale one, so a test reading the return value passed vacuously.
+    expect(after.composedHash).not.toBe('STALE-FROM-AN-OLDER-COMPOSE');
+  });
+
+  it('spends only on the figure with NO sidecar when the chapter is mixed', async () => {
+    const { booksRoot } = makeBook({
+      figures: ['FIG_A', 'FIG_B', 'FIG_C'],
+      sidecars: {
+        FIG_A: madeSidecar('FIG_A', { k0: 'IS k0', k1: 'IS k1' }),
+        FIG_C: madeSidecar('FIG_C', { k0: 'IS k0', k1: 'IS k1' }),
+      },
+    });
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(spawn.countOf('translate')).toBe(1);
+    expect(spawn.outDirsFor('translate')).toEqual(['FIG_B']); // NAMED, not counted
+    expect(spawn.countOf('compose')).toBe(3); // the control: all three still reached compose
+    expect(result.tally.translated).toBe(3);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('the MT failure modes each leave the figure eligible', () => {
+  it('a non-zero exit from the MT buckets failed-mt, writes NO sidecar, and stays eligible', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn({ translate: () => ({ __exit: 1 }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-mt');
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_A'))).toBe(false);
+    expect(readSidecar(bookDir, 'FIG_A')).toBeNull();
+    expect(isStale(readSidecar(bookDir, 'FIG_A'))).toBe(true); // eligible again next run
+    expect(spawn.countOf('compose')).toBe(0);
+
+    // …and the next run really does re-buy it. Without this the "eligible" claim is a comment.
+    const spawn2 = fakeSpawn();
+    await runFigures(live(booksRoot), { spawn: spawn2, booksRoot });
+    expect(spawn2.countOf('translate')).toBe(1);
+  });
+
+  // ⚠️ THE CLAUSE THAT STOPS AN IMPLEMENTER MINTING AN EMPTY SIDECAR R8 WOULD LOCK FOR EVER.
+  // "Write the sidecar regardless of step 8's verdict" read literally invites `blocks: {}` with
+  // a perfectly valid renderHash — which makes the figure permanently ineligible to spend.
+  it('mints NO sidecar when translations-api.json is absent', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn({ translate: () => ({ __absent: true }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-mt');
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_A'))).toBe(false);
+  });
+
+  it('mints NO sidecar when translations-api.json parses to zero usable blocks', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    // Present, well-formed, and every value empty — D9's shape: `normaliseTranslations` drops
+    // them all, and a driver that trusted "the file exists" would mint `blocks: {}`.
+    const spawn = fakeSpawn({ translate: () => ({ __blocks: { k0: [''], k1: ['   '] } }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-mt');
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_A'))).toBe(false);
+    expect(rec(result, 'FIG_A').reason).toMatch(/k0/);
+  });
+
+  it('buckets a compose refusal as failed-compose and keeps the paid sidecar', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn({ compose: () => ({ __error: 'the English-kept blocks are wrong' }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-compose');
+    expect(rec(result, 'FIG_A').reason).toMatch(/English-kept/);
+    expect(readSidecar(bookDir, 'FIG_A').blocks).toEqual({ k0: 'IS k0', k1: 'IS k1' });
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(false);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 D4 — `unmapped` MUST BE UNREACHABLE AFTER MONEY HAS BEEN SPENT.
+describe('the pre-flight refuses before the money', () => {
+  it('refuses an unmintable figure BEFORE the MT is called', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_RAWGT', 'FIG_PLAIN'],
+      unmintable: ['FIG_RAWGT'],
+    });
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_RAWGT').outcome).toBe('failed-publish');
+    expect(spawn.outDirsFor('translate')).toEqual(['FIG_PLAIN']); // the money went elsewhere
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_RAWGT'))).toBe(false);
+    // The control: the OTHER figure in the same chapter went all the way through.
+    expect(rec(result, 'FIG_PLAIN').outcome).toBe('translated');
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('the minted sidecar and the minted mapping entry', () => {
+  it('mints renderHash and NO state, so the figure reads mt-preview and publish can stamp', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
+    const s = readSidecar(bookDir, 'FIG_A');
+    expect(Object.keys(s)).not.toContain('state');
+    expect(s.renderHash).toBe(computeRenderHash(s.blocks, COMPOSER_VERSION));
+    expect(s.version).toBe(1);
+    expect(s.basename).toBe('FIG_A');
+    expect(s.composerVersion).toBe(COMPOSER_VERSION);
+    // The stamp is what the publisher wrote, and it needed only renderHash to do it.
+    expect(s.composedHash).toBe(s.renderHash);
+  });
+
+  it('mints the mapping entry itself and preserves every entry already there', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      // A legacy figure-id entry with NO originalImage: `mergeMapping` keys on that field, so a
+      // pair of them would collapse onto `undefined`. Nothing in the committed corpus has one
+      // today; this is here so the merge cannot start losing them unnoticed.
+      mapping: mapping3(),
+    });
+    await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
+
+    const entries = mapEntries(bookDir);
+    expect(entries).toContainEqual({
+      originalImage: 'FIG_A',
+      outputName: 'FIG_A_IS.svg',
+      extension: '.svg',
+    });
+    // 🔴 BOTH legacy rows survive, IN ORDER. `mergeMapping` keys on `originalImage`, so a pair
+    // of rows without one collapses onto `undefined` and only the last survives — measured on
+    // books/liffraedi-2e, whose whole 34-row file is that shape.
+    expect(entries.filter((e) => e.figureId).map((e) => e.figureId)).toEqual([
+      'legacy-1',
+      'legacy-2',
+    ]);
+    expect(entries.slice(0, 3)).toEqual(mapping3()); // and nothing was reordered
+    expect(entries).toHaveLength(4);
+  });
+
+  // 🔴 A DANGLING MAPPING ENTRY IS A READER-VISIBLE BROKEN IMAGE: `applyImageBasenameSwaps`
+  // rewrites `<image src>` on a basename match and never checks the target exists. So a mint
+  // that outlives a failed publish would put a 404 on the page at the next render.
+  it('rolls the minted entry back when the publish that follows it fails', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const before = fs.existsSync(path.join(bookDir, 'media', 'image-mapping.json'));
+    expect(before).toBe(false); // the pre-state this test is about: no mapping file at all
+    const refuse = refusingPublisher();
+    const result = await runFigures(live(booksRoot), {
+      spawn: fakeSpawn(),
+      booksRoot,
+      publish: refuse,
+    });
+    expect(refuse.calls).toBe(1); // NON-VACUITY: the publish really was attempted
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-publish');
+    expect(fs.existsSync(path.join(bookDir, 'media', 'image-mapping.json'))).toBe(false);
+  });
+
+  it('leaves an entry it did not mint alone when the publish fails', async () => {
+    const seeded = [
+      { originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' },
+      { originalImage: 'OTHER', outputName: 'OTHER_IS.svg', extension: '.svg' },
+    ];
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'], mapping: seeded });
+    const refuse = refusingPublisher();
+    await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot, publish: refuse });
+    expect(refuse.calls).toBe(1); // NON-VACUITY: without this the assertion below is trivial
+    expect(mapEntries(bookDir)).toEqual(seeded);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('the live run’s own housekeeping', () => {
+  // 🔴 PEAK DISK, LIVE. The dry run removes each figure directory as soon as it is classified;
+  // the live path must keep it until publish and then remove it just the same. One prepared
+  // figure is ~14 MB and /tmp here is a 4.9 GB tmpfs routinely over 90% full.
+  it('never holds more than one figure directory at a time, live', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A', 'FIG_B', 'FIG_C', 'FIG_D'] });
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(spawn.liveDirs).toHaveLength(4); // non-vacuity: it really prepared four figures
+    expect(Math.max(...spawn.liveDirs)).toBe(1);
+    expect(result.figures.every((f) => f.outDir === null)).toBe(true);
+    expect(fs.existsSync(result.tmpRoot)).toBe(false);
+  });
+
+  // A drifted read layer: the sidecar says this figure has text, prepare now finds none.
+  // Recomposing would publish the artwork with its labels STRIPPED and nothing drawn back.
+  it('refuses to recompose a figure whose text the read layer no longer sees', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      sidecars: { FIG_A: madeSidecar('FIG_A', { k0: 'IS k0' }) },
+    });
+    const spawn = fakeSpawn({ prepare: () => ({ sendable: 0, __blocks: [] }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-compose');
+    expect(spawn.countOf('compose')).toBe(0);
+    expect(readSidecar(bookDir, 'FIG_A').blocks).toEqual({ k0: 'IS k0' }); // untouched
+    // …and the reason NAMES the bucket it drifted into. Reading `rec.outcome` after the
+    // overwrite reports `failed-compose` back to itself and loses the whole diagnosis;
+    // copied-photo, copied-textless and unreadable-text mean three different upstream faults.
+    expect(rec(result, 'FIG_A').reason).toMatch(/classified copied-textless/);
+  });
+
+  it('names copied-photo, not a generic label, when THAT is the bucket it drifted into', () => {
+    // The control for the assertion above: a fixed string would satisfy one case and not two.
+    const drifted = {
+      outcome: 'copied-photo',
+      sidecar: { blocks: { k0: 'IS k0' } },
+      reason: null,
+    };
+    applyDriftGuard(drifted);
+    expect(drifted.outcome).toBe('failed-compose');
+    expect(drifted.reason).toMatch(/classified copied-photo/);
+  });
+
+  it('leaves a copied figure with NO sidecar alone (the drift guard’s own control)', () => {
+    const clean = { outcome: 'copied-textless', sidecar: null, reason: null };
+    applyDriftGuard(clean);
+    expect(clean.outcome).toBe('copied-textless');
+    expect(clean.reason).toBeNull();
+  });
+
+  it('main() runs live now, returns 0 on a clean chapter, and 1 when a figure needs a human', async () => {
+    const ok = makeBook({ figures: ['FIG_A'] });
+    const code = await main(['--book', SLUG, '--chapter', '1'], {
+      spawn: fakeSpawn(),
+      booksRoot: ok.booksRoot,
+    });
+    expect(code).toBe(0);
+
+    const bad = makeBook({ figures: ['FIG_A'] });
+    const badCode = await main(['--book', SLUG, '--chapter', '1'], {
+      spawn: fakeSpawn({ translate: () => ({ __exit: 1 }) }),
+      booksRoot: bad.booksRoot,
+    });
+    expect(badCode).toBe(1);
+  });
+
+  it('leaves the repo’s own books/ untouched: no fixture path escapes into it', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
+    expect(fs.existsSync(path.join(REPO_ROOT, 'books', SLUG))).toBe(false);
+  });
+});

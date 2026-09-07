@@ -217,11 +217,12 @@ describe('composedHash', () => {
     expect(keys[keys.indexOf('renderHash') + 1]).toBe('composedHash');
   });
 
-  it('publishes an UNAPPROVED figure and stamps nothing', () => {
-    // 🔴 The ordinary case, and it must not be an error: the plan is to publish
-    // MT output and review it afterwards. A sidecar nobody has approved has no
-    // renderHash to copy, and effectiveState reads mt-preview regardless — so
-    // the reader correctly gets a badged figure.
+  it('publishes a sidecar with NO renderHash and stamps nothing', () => {
+    // ⚠️ CORRECTED 2026-09-07 (M5 Task 6b). This used to be described as "the ordinary case:
+    // a sidecar nobody has approved has no renderHash to copy". The driver now mints every
+    // sidecar WITH a renderHash and no `state`, so this shape is the exception — hand-written,
+    // or from before the driver existed. It must still publish rather than error, and
+    // effectiveState reads mt-preview regardless, so the reader gets a badged figure.
     const r = publishFigureSvg(scaffold());
     expect(r.ok).toBe(true);
     expect(r.composedHash).toBeNull();

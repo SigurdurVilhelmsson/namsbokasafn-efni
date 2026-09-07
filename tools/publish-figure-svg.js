@@ -179,10 +179,15 @@ export function publishFigureSvg({ sidecarPath, svgPath, metaPath }) {
   const replaced = fs.existsSync(target);
   fs.copyFileSync(svgPath, target);
 
-  // Copied, never computed — see the header. A sidecar nobody has approved has
-  // no renderHash, and that is the ORDINARY case under the current plan
-  // (publish the MT, review it afterwards): there is simply no approval to
-  // record, and effectiveState reads mt-preview either way.
+  // Copied, never computed — see the header.
+  //
+  // ⚠️ CORRECTED 2026-09-07 (M5 Task 6b). This used to say a sidecar with no renderHash was
+  // "the ORDINARY case". It is not any more: `tools/figure-run.js` mints every sidecar with a
+  // renderHash and NO `state`, so the ordinary case is now a stamp that lands on an unapproved
+  // figure — which is exactly what makes the stamp the publish-success marker the driver's
+  // staleness test reads. A sidecar WITHOUT a renderHash is now the exception: hand-written, or
+  // from before the driver existed. What has not changed is that `state` is irrelevant here and
+  // `effectiveState` reads mt-preview until an editor approves the blocks.
   const composedHash = sidecar.renderHash || null;
   if (composedHash && sidecar.composedHash !== composedHash) {
     writeSidecar(bookDir, basename, withComposedHash(sidecar, composedHash));
