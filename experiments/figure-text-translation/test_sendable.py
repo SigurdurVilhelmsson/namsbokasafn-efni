@@ -87,14 +87,9 @@ check('clean block reports no blocking fonts',
 # which is the failure R-8 actually found: `decodable` was computed, written to
 # meta.json, and read by nobody.
 #
-# ⚠️ This is a SOURCE-level positive check, and that is a deliberate second-best. The
-# decisive test would run emit-blocks.py on a figure carrying an undecodable font and
-# watch `send` go false — but ruling R-7 measured that 7 of the 8 type0 figures now
-# decode cleanly, so NO SUCH FIGURE REMAINS IN THE CORPUS. Rather than assert something
-# the corpus cannot exercise, this pins the two facts that are checkable: emit-blocks
-# calls the shared rule, and it opens the file the flag lives in. Written as a positive
-# check, not a forbidden-token pin — a pin that forbids a token trips on the comment
-# documenting the prohibition.
+# Written as a positive check, not a forbidden-token pin — a pin that forbids a token
+# trips on the comment documenting the prohibition. Assertion 9 below is the behavioural
+# half; this one still earns its place because it fails FAST and names the call site.
 src = (Path(__file__).resolve().parent / 'emit-blocks.py').read_text()
 code = '\n'.join(l for l in src.splitlines() if not l.lstrip().startswith('#'))
 check('emit-blocks.py CALLS the shared gate', 'FT.sendable(' in code, True)
@@ -105,6 +100,61 @@ check("emit-blocks.py opens the file `decodable` lives in", "'meta.json'" in cod
 _flat = code.replace(' ', '')
 check('emit-blocks.py no longer decides with looks_verbatim ALONE',
       'send=notFT.looks_verbatim'.replace(' ', '') in _flat, False)
+
+# ── 9. THE BEHAVIOURAL PIN — the gate firing on REAL ARTWORK ────────────────────────
+# 🔴 An earlier version of this file asserted that no corpus figure could exercise this,
+# reasoning from ruling R-7 ("7 of the 8 type0 figures decode cleanly"). THAT WAS AN
+# INFERENCE, NOT A MEASUREMENT, AND IT WAS WRONG. Scanning all 817 harness rows
+# (800 resolved, 0 read errors) found exactly ONE figure carrying a decodable:False
+# font — CNX_Chem_05_02_FoodLabel, font PAGE/TT1 — and it is in the PAGE-TEXT bucket,
+# which is why a type0 argument could never have reached it.
+#
+# Measured on that figure: pre-R4 `looks_verbatim` alone would send 30 blocks / 736
+# chars; the R-8 gate sends 11 / 442. So this holds back 19 prose blocks — including
+# two that literally contain '(cid:' — that the paid MT would otherwise have been
+# billed for and returned as mojibake.
+#
+# ⚠️ FAILS, never skips, when the artwork is absent: a skip here reads as a pass.
+import json
+import subprocess
+import sources as S
+from _deps import HERE, OUT
+
+FIGURE = 'CNX_Chem_05_02_FoodLabel'
+cfg = S.load_config()
+try:
+    trees = S.load_trees('efnafraedi-2e', cfg)
+    fig_path, _edition = S.resolve(FIGURE, trees, cfg['editionPrecedence'])
+except Exception as exc:                                       # noqa: BLE001
+    fig_path = None
+    print(f"  (source trees unavailable: {type(exc).__name__}: {exc})")
+
+if fig_path is None:
+    check(f'9 {FIGURE} resolves (a skip here would read as a pass)', False, True)
+else:
+    r = subprocess.run([sys.executable, 'emit-blocks.py', str(fig_path)], cwd=str(HERE),
+                       capture_output=True, timeout=600)
+    if r.returncode != 0:
+        check('9 emit-blocks.py runs on the figure', r.stderr.decode()[-400:], '')
+    else:
+        blocks = json.loads((OUT / 'blocks.json').read_text())
+        meta_fonts = json.loads((OUT / 'meta.json').read_text())['fonts']
+        undec = [k for k, v in meta_fonts.items() if v.get('decodable') is False]
+        # 9a NON-VACUITY: the figure must really carry an undecodable font, or 9b is
+        # asserting over an empty set and would pass on a gate that does nothing.
+        check('9a NON-VACUITY the real figure carries an undecodable font',
+              bool(undec), True)
+        # 9b every block drawn with it is held back, END TO END through the CLI
+        # `send` is `not looks_verbatim AND fonts ok`, so a block that is PROSE and
+        # NOT sent can only have been stopped by the font clause. That is the gate
+        # firing, observed through the CLI rather than by calling the function.
+        held = [b for b in blocks if not b['send'] and not looks_verbatim(b['english'])]
+        check('9b prose blocks ARE held back on the real undecodable figure',
+              len(held) > 0, True)
+        # 9c CONTROL: the gate did NOT hold everything — decodable prose still sells.
+        # Without this, a gate that refused the whole figure would pass 9b.
+        check('9c CONTROL decodable prose on the SAME figure is still sent',
+              sum(1 for b in blocks if b['send']) > 0, True)
 
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)
