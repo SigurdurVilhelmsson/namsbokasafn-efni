@@ -19,6 +19,7 @@ from _deps import HERE, OUT
 from pathlib import Path
 import cairo
 import figtext as FT
+from blockkey import block_key
 
 DPI = 200.0
 S = DPI / 72.0
@@ -94,7 +95,11 @@ for b in blocks:
     ls = FT.lines(b)
     en_lines = [''.join(r['text'] for r in l) for l in ls]
     arc = FT.is_arc(b)
-    key = ''.join(r['text'] for r in b) if arc else '|'.join(en_lines)
+    # The key is the ONE rule (blockkey.block_key), never an inline copy. This is the
+    # consumer that DRAWS: it looks the translation up as TR[key], so a key that differs
+    # from the one emit-blocks.py bought leaves the label in English with nothing to
+    # report. test_blockkey_consumers.py asserts the two agree on a real figure.
+    key = block_key(b)
 
     if CONTROL:
         new = key if arc else en_lines

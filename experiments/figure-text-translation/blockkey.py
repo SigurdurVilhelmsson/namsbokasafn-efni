@@ -2,9 +2,17 @@
 
 The block key is what is BOUGHT, what keys the sidecar (`blocks` in
 `books/<slug>/figure-text/<basename>.is.json`), and what the editor sees. So
-`emit-blocks.py`, `census.py` and `read_layer_accept.py` must derive it identically or
-their counts describe three different populations. Holding the rule in three places is
-how they drift; holding it here is why they cannot (P8 / ruling R-11).
+`emit-blocks.py`, `census.py`, `compose.py` and `read_layer_accept.py` must derive it
+identically or their counts describe four different populations. Holding the rule in four
+places is how they drift; holding it here is why they cannot (P8 / ruling R-11).
+
+⚠️ THERE ARE FOUR CONSUMERS, AND `compose.py` IS THE ONE THAT MATTERS MOST — it is what
+looks the translation up at DRAW time (`TR[key]`). A key that differs from the one
+`emit-blocks.py` bought leaves the label in English while every count stays green, because
+both sides succeeded at their own job. `test_blockkey_consumers.py` asserts the emit-side
+and compose-side keys are identical on a real figure; that assertion is the point of
+importing rather than restating. Do not trust this enumeration — re-derive it with
+`grep -an "from blockkey import" *.py`.
 
 ⚠️ THE KEY IS DERIVED OVER UNFILTERED RUNS. `emit-blocks.py` used to drop blank runs
 (`if r['text'].strip()`) before grouping. That filter is DELETED, by measurement, not by

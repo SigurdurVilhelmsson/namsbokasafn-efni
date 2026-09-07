@@ -95,7 +95,7 @@ WS = ' \t\r\n\f'
 # different routes, so an exact compare is not the question; a block that has MOVED is.
 BBOX_TOL_PT = 1.0
 
-SELFTEST_SAMPLE = 40      # figures per bucket for selftest assertions 1-3
+SELFTEST_SAMPLE = 40      # figures per bucket for selftest assertions 1-3 and 5
 SELFTEST_CRASH_FLOOR = 20 # assertion 4's floor: "over 20 of the 38"
 
 
@@ -237,6 +237,57 @@ def make_mutant(reader):
     return mutant
 
 
+MOJIBAKE_FIX = '°'   # '°' — the glyph H3's real fix produces where the baseline
+                          # reads '¡'. See below: C1 cannot be affected by this CHOICE.
+
+
+def make_mojibake_mutant(reader):
+    """A reader that REPLACES every character poppler cannot see — R2's H3 fix in
+    miniature. Used only by --selftest assertion 5 (ruling R-15).
+
+    🔴 WHY THIS ASSERTION EXISTS. C1's rule is
+    `regression ⟺ (baseline − candidate) ∩ oracle ≠ ∅`, and the intersection is what
+    stops the harness REJECTING the ~96 mojibake repairs R2 exists to make: when the
+    candidate correctly reads `°C` where the baseline read `¡C`, the `¡` is "missing"
+    and a mechanical compare calls that a regression. In a baseline-vs-baseline run
+    nothing is ever missing, so that branch is STRUCTURALLY UNREACHABLE and reports
+    `0/530` — a zero that says nothing whatever about whether the mechanism works. This
+    mutant is the only thing that reaches it.
+
+    ⚠️ The REPLACEMENT CHARACTER cannot make the assertion pass spuriously: C1 looks only
+    at the dropped side (`Counter(baseline) − Counter(candidate)`), so adding a character
+    to the candidate can never create a regression, only mask one — and this mutant makes
+    no other change for it to mask. The half that could genuinely fail is the one asserted
+    alongside: zero regressions AND a non-zero excused count.
+
+    ⚠️ Whitespace is skipped deliberately. `charcount` excludes whitespace, so `ochars`
+    never contains a space, and without this guard every space in the corpus would be
+    "oracle-absent" and get replaced — mangling block keys and making the mutant a
+    caricature rather than a miniature of the fix it stands in for.
+    """
+    def mutant(pdf_path):
+        runs, meta, outcome = reader(pdf_path)
+        try:
+            ochars = set(charcount(read_oracle(pdf_path)))
+        except Exception:
+            # No oracle, no mutation. `process_figure` tolerates an oracle failure; this
+            # dict comprehension does not, and a mutant that raises would be read as a
+            # harness fault rather than as the absence of a stimulus.
+            return runs, meta, outcome
+        if not ochars:
+            return runs, meta, outcome
+        out = []
+        for r in runs:
+            if isinstance(r, dict) and r.get('text'):
+                t = ''.join(MOJIBAKE_FIX if (ch not in ochars and ch not in WS) else ch
+                            for ch in r['text'])
+                if t != r['text']:
+                    r = dict(r, text=t)
+            out.append(r)
+        return out, meta, outcome
+    return mutant
+
+
 # ── measurement primitives ──────────────────────────────────────────────────────────
 
 def charcount(text):
@@ -286,6 +337,27 @@ def block_records(runs, meta):
     except Exception as exc:
         return [], collections.Counter(), f'{type(exc).__name__}: {exc}'
     return recs, collections.Counter(k for k, _, _ in recs), None
+
+
+def key_delta(b_keys, c_keys):
+    """C4b's comparison. MULTISETS, never sets — ruling R-13.
+
+    🔴 A SET COMPARE CANNOT SEE A DROPPED TWIN, AND THE TWIN IS THE COMMON CASE.
+    `compose.py` iterates BLOCKS and looks up `TR[key]` for each one, so two blocks that
+    share a key are BOTH drawn. A candidate that produces one where the baseline produced
+    two therefore leaves a label **undrawn** — while `set(candidate) == set(baseline)`,
+    so a set compare reports nothing and every other count stays green. Measured over the
+    full baseline run: **2,052 duplicate keys across 245 of 530 figures**, and 22 of 62
+    page-text figures in an independent check.
+
+    Takes two `collections.Counter`s; returns `(added, dropped)` as sorted
+    `[(key, multiplicity)]`. The multiplicity IS the finding, so it is carried through to
+    the row rather than summed away — `Counter - Counter` keeps only positive counts, which
+    is exactly the asymmetric "what did this side have that the other did not" both
+    directions need.
+    """
+    return (sorted((c_keys - b_keys).items()),
+            sorted((b_keys - c_keys).items()))
 
 
 CID = '(cid:'
@@ -411,8 +483,7 @@ def process_figure(row, resolve, cmp_readers):
         # ── C4 / C4b: paired by BLOCK KEY, never by run index (ruling R-10) ───────
         if b_out == 'reads' and c_out == 'reads':
             c_bykey = {k: (bb, ff) for k, bb, ff in c_recs}
-            a['c4b_added'] = sorted(set(c_keys) - set(b_keys))
-            a['c4b_dropped'] = sorted(set(b_keys) - set(c_keys))
+            a['c4b_added'], a['c4b_dropped'] = key_delta(b_keys, c_keys)
             # Pair only keys UNIQUE on both sides: a duplicated key has no single partner.
             pairable = [k for k in set(b_keys) & set(c_keys)
                         if b_keys[k] == 1 and c_keys[k] == 1]
@@ -588,14 +659,20 @@ def summarise(results, label, buckets):
         print(f"        candidate: {dict(shape.most_common(6))}")
     if base_shape:
         print(f"        baseline:  {dict(base_shape.most_common(6))}")
-    add = sum(len(arm(r)['c4b_added']) for r in c4)
-    drop = sum(len(arm(r)['c4b_dropped']) for r in c4)
+    # OCCURRENCES and DISTINCT are different numbers and both are reported: a candidate
+    # that turns two identical blocks into one drops 1 OCCURRENCE and 0 DISTINCT keys,
+    # which is precisely the loss ruling R-13 exists to make visible.
+    add_occ = sum(n for r in c4 for _, n in arm(r)['c4b_added'])
+    drop_occ = sum(n for r in c4 for _, n in arm(r)['c4b_dropped'])
+    add_dis = sum(len(arm(r)['c4b_added']) for r in c4)
+    drop_dis = sum(len(arm(r)['c4b_dropped']) for r in c4)
     bdup = sum(r['base']['dup_keys'] for r in staged_rows)
     cdup = sum(arm(r)['dup_keys'] for r in arms)
-    print(f"\n  C4b BLOCK-KEY conformance — the one that costs money")
+    print(f"\n  C4b BLOCK-KEY conformance — the one that costs money (MULTISET, R-13)")
     print(f"      figures with key differences: {len(kdiff)}/{len(c4)}   "
-          f"keys added {add}, dropped {drop}")
-    print(f"      duplicate keys (a SET compare cannot see a lost twin): "
+          f"blocks added {add_occ} ({add_dis} distinct keys), "
+          f"dropped {drop_occ} ({drop_dis} distinct keys)")
+    print(f"      duplicate keys — WHY this compare is a multiset and not a set: "
           f"baseline {bdup}, candidate {cdup}")
     for r in kdiff[:8]:
         print(f"        {r['name']:40} +{arm(r)['c4b_added'][:2]} -{arm(r)['c4b_dropped'][:2]}")
@@ -661,10 +738,16 @@ def sample(rows, n):
 
 
 def selftest():
-    """Four assertions. Exits NON-ZERO when any fails.
+    """FIVE assertions. Exits NON-ZERO when any fails.
 
     3 and 4 are asymmetric on purpose: together they prove the harness distinguishes a
     crash from a read, which is the whole of ruling R-1.
+
+    5 is the one a baseline-vs-baseline run CANNOT reach (ruling R-15): C1's mojibake
+    excuse only fires when something is missing, so without a mutant its 0 is a zero from
+    an unexercised branch. It is what decides whether R2's ~96 H3 repairs are accepted or
+    silently rejected as regressions, and its failure mode is the rejection of correct
+    work — the direction nobody goes looking for.
     """
     rows = json.loads(CENSUS.read_text())
     fails = []
@@ -678,11 +761,13 @@ def selftest():
     ft = sample([r for r in rows if r['bucket'] == 'form-text-only'], SELFTEST_SAMPLE)
     oc = [r for r in rows if r['bucket'] == 'ours-crashes']
 
-    # 1 + 2 share ONE collection pass, so they are the same sample by construction.
-    print(f"\n[1+2] page-text sample: {len(pt)} figures, baseline vs {{self, mutant}}",
-          flush=True)
+    # 1, 2 and 5 share ONE collection pass, so they are the same sample by construction.
+    print(f"\n[1+2+5] page-text sample: {len(pt)} figures, baseline vs "
+          f"{{self, drop-last-run mutant, mojibake mutant}}", flush=True)
     res, secs = run_arms(pt, {'self': read_baseline,
-                              'mutant': make_mutant(read_baseline)}, progress=False)
+                              'mutant': make_mutant(read_baseline),
+                              'mojibake': make_mojibake_mutant(read_baseline)},
+                         progress=False)
     staged_rows = [r for r in res if r['status'] == 'staged']
     read_rows = [r for r in staged_rows if r['base']['outcome'] == 'reads']
 
@@ -729,7 +814,27 @@ def selftest():
     if nonread:
         print(f"        the non-readers, NAMED: {nonread}")
 
-    print(f"\n  {'ALL 4 PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
+    # 5 reuses the [1+2+5] pass above — no figure is read twice — but is asserted here so
+    # the output reads in order. It is the ONLY thing that reaches C1's excuse branch.
+    print(f"\n[5] the mojibake excuse (ruling R-15) — measured on the same {len(pt)} "
+          f"page-text figures", flush=True)
+    moj_reg = [r for r in read_rows if r['arms']['mojibake']['c1_regression']]
+    moj_exc = [r for r in read_rows if r['arms']['mojibake']['c1_excused']]
+    moj_chars = collections.Counter()
+    for r in moj_exc:
+        moj_chars.update(r['arms']['mojibake']['c1_excused'])
+    check('5 the EXCUSE fires and C1 does NOT reject the fix it exists to accept',
+          len(moj_reg) == 0 and len(moj_exc) > 0,
+          f"regressions {len(moj_reg)}/{len(read_rows)} (MUST be 0), excused "
+          f"{len(moj_exc)}/{len(read_rows)} figures (MUST be > 0, or the branch was "
+          f"never reached and its 0 means nothing): "
+          f"{dict(moj_chars.most_common(6))}")
+    if moj_reg:
+        for r in moj_reg[:5]:
+            print(f"        WRONGLY FLAGGED: {r['name']:44} "
+                  f"{dict(list(r['arms']['mojibake']['c1_regression'].items())[:6])}")
+
+    print(f"\n  {'ALL 5 PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
     return 0 if not fails else 1
 
 
