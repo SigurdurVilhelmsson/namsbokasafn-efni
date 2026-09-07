@@ -585,9 +585,13 @@ export function applyDriftGuard(rec) {
  *                 overwrite them and charge for it.
  *
  * @param {object} rec MUTATED
- * @param {{spawn:Function, publish:Function, args:object, bookDir:string, outDir:string}} ctx
+ * @param {{spawn:Function, publish:Function, readSidecar:Function, args:object,
+ *          bookDir:string, outDir:string}} ctx
  */
-function processFigureLive(rec, { spawn, publish, args, bookDir, outDir }) {
+function processFigureLive(
+  rec,
+  { spawn, publish, readSidecar: readSidecarFor, args, bookDir, outDir }
+) {
   // Copies, failures and unresolved figures end at classification: there is no text to compose
   // and nothing to publish that a reader is not already getting from the OpenStax media tree.
   if (rec.outcome !== 'translated') return;
@@ -693,6 +697,25 @@ function processFigureLive(rec, { spawn, publish, args, bookDir, outDir }) {
     rec.reason = `the sidecar at ${sidecarFile} carries no translated blocks; composing from it would strip this figure's text and draw nothing back`;
     return;
   }
+  // 🔴 THE COMPOSE VINTAGE, READ AS LATE AS POSSIBLE. `publishFigureSvg` re-reads this file
+  // after the composer has run — it must, because it MERGES its stamp into whatever the file
+  // now holds — so a `writeSidecar` landing in between (a head editor approving THIS figure)
+  // used to have the stamp certify blocks the SVG was never drawn from: composedHash ===
+  // renderHash, effectiveState 'approved', no badge, `isStale` false, and the reader kept the
+  // pre-correction artwork for ever. The publisher refuses `sidecar-moved` on a disagreement,
+  // and this is the value it disagrees with.
+  //
+  // ⚠️ RE-READ RATHER THAN REUSING `rec.sidecar`, WHICH IS READ FOR THE WHOLE CHAPTER UP
+  // FRONT. On a 50-figure run that read can be minutes old, and an approval landing in THAT
+  // window is composed correctly — the composer reads the file, not our copy — so comparing
+  // against the stale copy would refuse a publish that was right. Reading here narrows the
+  // window to the compose itself, which is the part that cannot be closed.
+  //
+  // ⚠️ AND IT IS COPIED, NEVER RECOMPUTED FROM `blocks`: a sidecar whose stored hash disagrees
+  // with its own blocks is legal, and hashing here would refuse it on every run for ever.
+  // `rec.sidecar` is deliberately NOT overwritten — the report must say what the driver minted
+  // or found, not what someone else wrote underneath it.
+  const composeFrom = readSidecarFor(bookDir, rec.basename) || rec.sidecar;
   const composed = spawn({
     stage: 'compose',
     command: PYTHON,
@@ -750,7 +773,7 @@ function processFigureLive(rec, { spawn, publish, args, bookDir, outDir }) {
     }
   }
 
-  // 🔴 `publishFigureSvg` HAS THREE OUTCOMES, NOT TWO. It refuses with six distinct reason
+  // 🔴 `publishFigureSvg` HAS THREE OUTCOMES, NOT TWO. It refuses with seven distinct reason
   // codes, and it also THROWS: `fs.copyFileSync` is unguarded, and so is the `writeSidecar`
   // that follows it — the second fires with the artwork ALREADY on disk, which is why the
   // rollback below only takes the mapping entry back and leaves an unreferenced file alone.
@@ -762,6 +785,9 @@ function processFigureLive(rec, { spawn, publish, args, bookDir, outDir }) {
       sidecarPath: sidecarFile,
       svgPath,
       metaPath: path.join(outDir, 'meta.json'),
+      // Present even when null — the key's PRESENCE is what turns the check on, and a
+      // legacy sidecar with no renderHash is a real expectation, not an absent one.
+      expectedRenderHash: (composeFrom && composeFrom.renderHash) || null,
     });
   } catch (err) {
     restoreMapping(minted);
@@ -998,7 +1024,15 @@ export async function runFigures(args, deps = {}) {
       // early `continue` above is PUBLISH_BOUND.
       applyDriftGuard(rec);
       applyMappingPreflight(rec, { mapped, mintIndex });
-      if (!args.dryRun) processFigureLive(rec, { spawn, publish, args, bookDir, outDir });
+      if (!args.dryRun)
+        processFigureLive(rec, {
+          spawn,
+          publish,
+          readSidecar: readSidecarFor,
+          args,
+          bookDir,
+          outDir,
+        });
 
       // 🔴 PEAK DISK, IN BOTH MODES. One figure's output directory is ~14 MB and /tmp here is
       // a 4.9 GB tmpfs routinely over 90% full, so 30 figures kept at once is ~420 MB and a

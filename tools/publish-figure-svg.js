@@ -98,10 +98,21 @@ function withComposedHash(sidecar, composedHash) {
  * refuse does so before a single byte is written, so a refusal always leaves the
  * tree exactly as it was.
  *
+ * 🔴 `expectedRenderHash` IS THE COMPOSE VINTAGE, AND IT IS DETECTED BY THE KEY'S
+ * PRESENCE — `null` is a real expectation ("the sidecar I composed from had no
+ * renderHash"), while omitting the key entirely means "do not check". Only a
+ * caller that ran the composer knows which blocks the SVG was drawn from, so the
+ * hand-run CLI below omits it and keeps its existing behaviour; `figure-run.js`
+ * always supplies it.
+ *
+ * @param {{sidecarPath:string, svgPath:string, metaPath:string,
+ *          expectedRenderHash?:string|null}} options
  * @returns {{ok:true, book, basename, outputName, path, replaced, composedHash:string|null}
  *          |{ok:false, reason:string, message:string}}
  */
-export function publishFigureSvg({ sidecarPath, svgPath, metaPath }) {
+export function publishFigureSvg(options = {}) {
+  const { sidecarPath, svgPath, metaPath, expectedRenderHash } = options;
+  const checkVintage = Object.prototype.hasOwnProperty.call(options, 'expectedRenderHash');
   const parts = parseSidecarPath(sidecarPath);
   if (!parts) {
     return {
@@ -118,6 +129,39 @@ export function publishFigureSvg({ sidecarPath, svgPath, metaPath }) {
       ok: false,
       reason: 'no-sidecar',
       message: `Sidecar missing or malformed: ${sidecarPath}`,
+    };
+  }
+
+  // 🔴 THE SECOND CROSS-CHECK, AND IT IS ABOUT VINTAGE RATHER THAN IDENTITY. The read
+  // above happens AFTER the caller composed, so anything that rewrote this file in
+  // between — `applyApprovedFigureEdits`, i.e. a head editor pressing approve on the
+  // figure being recomposed — would have the stamp below certify blocks the SVG was
+  // never drawn from. `composedHash` would then equal `renderHash`, `effectiveState`
+  // would read 'approved', the renderer would emit no badge and `isStale` would be
+  // false, so the reader kept the PRE-correction artwork permanently and only
+  // `--force` ever revisited it. The sidecar is self-consistent throughout, which is
+  // why no check in the repo could see it.
+  //
+  // ⚠️ THE RE-READ ITSELF IS CORRECT AND STAYS. `withComposedHash` MERGES into the file
+  // as it now stands; a publisher handed the caller's in-memory copy would write that
+  // copy back wholesale and destroy the concurrent approval outright — strictly worse
+  // than the race it would close. So the fix is to REFUSE, not to stop re-reading.
+  //
+  // ⚠️ COMPARED AS STORED VALUES, NEVER AS A HASH RECOMPUTED FROM `blocks`. A
+  // hand-written sidecar whose stored hash disagrees with its own blocks is legal here
+  // (`isStale` is what re-hashes, for the composer-version case); recomputing would
+  // refuse such a figure on every run for ever. `|| null` normalises the two spellings
+  // of "no hash" so a legacy sidecar with neither side set still publishes.
+  if (checkVintage && (sidecar.renderHash || null) !== (expectedRenderHash || null)) {
+    return {
+      ok: false,
+      reason: 'sidecar-moved',
+      message:
+        `${basename} was composed from renderHash ${expectedRenderHash || '(none)'} but its ` +
+        `sidecar now carries ${sidecar.renderHash || '(none)'}: it was rewritten while the ` +
+        `composer was running. The SVG in out/ describes the EARLIER text, so publishing it ` +
+        `would stamp a hash it was never composed from. Nothing was written; re-run to ` +
+        `compose from the current blocks.`,
     };
   }
 
@@ -224,6 +268,10 @@ if (process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1])))
       'figure-text-translation',
       'out'
     );
+    // ⚠️ NO `expectedRenderHash` KEY, DELIBERATELY. Here a human ran the composer by hand and
+    // this process cannot know which blocks it was given; the vintage check belongs to
+    // `figure-run.js`, which composed and publishes in one breath. Omitting the key is what
+    // turns the check off — passing `null` would assert "it had no renderHash".
     const res = publishFigureSvg({
       sidecarPath: args.sidecar,
       svgPath: args.svg || path.join(expDir, 'translated.svg'),

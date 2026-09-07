@@ -402,6 +402,155 @@ describe('a figure whose publish fails is never reported done', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 THE SIDECAR MOVING UNDER A COMPOSE. The driver reads every sidecar up front, hands the
+// FILE to `figure-compose.py` as `--translations`, and the publisher re-reads that same file
+// afterwards to merge its stamp in. A `writeSidecar` landing inside that window — a head
+// editor pressing approve on the figure being recomposed — used to make the stamp certify
+// blocks the SVG was never drawn from, and every downstream surface then agreed the figure was
+// finished: `composedHash === renderHash`, effectiveState 'approved', no badge, `isStale`
+// false. The reader kept the PRE-correction artwork permanently, and only `--force` ever
+// revisited it.
+describe('a sidecar that moves during compose', () => {
+  const V1 = { k0: 'IS-k0-VERSION-ONE', k1: 'IS-k1' };
+  const V2 = { k0: 'IS-k0-SECOND-CORRECTION', k1: 'IS-k1' };
+  const H1 = computeRenderHash(V1, COMPOSER_VERSION);
+  const H2 = computeRenderHash(V2, COMPOSER_VERSION);
+
+  /** A book whose one figure has an approved-but-never-composed sidecar: stale, recomposable. */
+  const staleBook = () =>
+    makeBook({
+      figures: ['FIG_A'],
+      mapping: [{ originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' }],
+      sidecars: {
+        FIG_A: {
+          version: 1,
+          basename: 'FIG_A',
+          state: 'approved',
+          renderHash: H1,
+          composerVersion: COMPOSER_VERSION,
+          blocks: V1,
+        },
+      },
+    });
+
+  it('REFUSES to publish, and does not certify blocks the SVG was never composed from', async () => {
+    const { booksRoot, bookDir } = staleBook();
+    const composedFrom = [];
+    // The plan callback fires inside the compose stage, before the SVG is written — exactly
+    // where the real composer has already read its --translations and not yet drawn. It reads
+    // the same file the composer would, then lands the concurrent approval: byte-for-byte what
+    // `applyApprovedFigureEdits` writes (new blocks, new renderHash, no composedHash to carry).
+    const spawn = fakeSpawn({
+      compose: () => {
+        composedFrom.push(readSidecar(bookDir, 'FIG_A').blocks.k0);
+        writeSidecar(bookDir, 'FIG_A', {
+          version: 1,
+          basename: 'FIG_A',
+          state: 'approved',
+          renderHash: H2,
+          composerVersion: COMPOSER_VERSION,
+          blocks: V2,
+        });
+        return {};
+      },
+    });
+    const result = await runFigures(live(booksRoot, { stale: true }), { spawn, booksRoot });
+
+    // The instrument's own control: the composer really did read the OLD blocks, so the SVG
+    // it produced is V1 artwork and stamping H2 on it would be a lie.
+    expect(composedFrom).toEqual(['IS-k0-VERSION-ONE']);
+    expect(spawn.countOf('translate')).toBe(0); // R8: a sidecar exists, so nothing was bought
+
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-publish');
+    expect(rec(result, 'FIG_A').reason).toMatch(/sidecar-moved/);
+
+    // The editor's correction survives untouched, and carries NO stamp — so the figure reads
+    // stale and the next run recomposes it from V2 instead of skipping it for ever.
+    const after = readSidecar(bookDir, 'FIG_A');
+    expect(after.blocks).toEqual(V2);
+    expect(after.composedHash).toBeUndefined();
+    expect(isStale(after)).toBe(true);
+    // …and no V1 artwork was published under the V2 stamp.
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(false);
+  });
+
+  it('the next run finishes the figure from the corrected blocks', async () => {
+    // The recovery arm. Without it, "refuses" would be indistinguishable from "wedged".
+    const { booksRoot, bookDir } = staleBook();
+    let raced = false;
+    const spawn = fakeSpawn({
+      compose: () => {
+        if (!raced) {
+          raced = true;
+          writeSidecar(bookDir, 'FIG_A', {
+            version: 1,
+            basename: 'FIG_A',
+            state: 'approved',
+            renderHash: H2,
+            composerVersion: COMPOSER_VERSION,
+            blocks: V2,
+          });
+        }
+        return {};
+      },
+    });
+    await runFigures(live(booksRoot, { stale: true }), { spawn, booksRoot });
+    const second = await runFigures(live(booksRoot, { stale: true }), {
+      spawn: fakeSpawn(),
+      booksRoot,
+    });
+    expect(rec(second, 'FIG_A').outcome).toBe('translated');
+    const after = readSidecar(bookDir, 'FIG_A');
+    expect(after.composedHash).toBe(H2);
+    expect(isStale(after)).toBe(false);
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(true);
+  });
+
+  it('publishes normally when nothing moves — the control', async () => {
+    // The same fixture and the same stage sequence with the concurrent write removed. Without
+    // it, a driver that refused every publish would satisfy the refusal above.
+    const { booksRoot, bookDir } = staleBook();
+    const result = await runFigures(live(booksRoot, { stale: true }), {
+      spawn: fakeSpawn(),
+      booksRoot,
+    });
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(readSidecar(bookDir, 'FIG_A').composedHash).toBe(H1);
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(true);
+  });
+
+  it('a benign approval that leaves the blocks alone still publishes', async () => {
+    // 🔴 THE FALSE-POSITIVE ARM, and the reason the check is keyed on `renderHash` rather than
+    // on the file's bytes or its mtime. Approving unchanged blocks rewrites the sidecar with a
+    // new `state` and the SAME hash; the SVG really was composed from those blocks, so
+    // refusing here would strand the very approval the editor just made.
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      mapping: [{ originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' }],
+      sidecars: { FIG_A: madeSidecar('FIG_A', V1) }, // no state: an unreviewed mint
+    });
+    const spawn = fakeSpawn({
+      compose: () => {
+        writeSidecar(bookDir, 'FIG_A', {
+          version: 1,
+          basename: 'FIG_A',
+          state: 'approved', // the editor approved; the BLOCKS did not move
+          renderHash: H1,
+          composerVersion: COMPOSER_VERSION,
+          blocks: V1,
+        });
+        return {};
+      },
+    });
+    const result = await runFigures(live(booksRoot, { stale: true }), { spawn, booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    const after = readSidecar(bookDir, 'FIG_A');
+    expect(after.state).toBe('approved'); // the approval survived the merge
+    expect(after.composedHash).toBe(H1);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
 // 🔴 R8 — THE ONLY SPENDABLE FIGURE IS ONE WITH NO SIDECAR. After an editor's correction the
 // sidecar's blocks ARE the corrected Icelandic; re-running the MT would overwrite the
 // correction AND charge for it. To re-buy, a human deletes the `.is.json`.
