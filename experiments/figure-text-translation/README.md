@@ -103,7 +103,7 @@ published.jpg ──check.py─────────────────�
 | `sources.py` | resolve a figure basename to its authoritative source across the two edition trees |
 | `test_sources.py` | tests that resolver, including a control that reverses the precedence |
 | `emit-blocks.py` | the MT stage's input — `runs.json` → `out/blocks.json`, marking which blocks to send |
-| `translate-blocks.mjs` | the **paid** MT stage — `out/blocks.json` → `out/translations-api.json`, one request per block |
+| `translate-blocks.mjs` | the **paid** MT stage — `out/blocks.json` → `out/translations-api.json`, one request per **distinct block key** (a repeated label is bought once; the multiplicity stays in `blocks.json`, per R-13) |
 | `translations.json` | ⚠️ **placeholder probe text, NOT a translation** |
 
 ## Running it

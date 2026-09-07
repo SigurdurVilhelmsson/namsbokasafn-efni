@@ -1,10 +1,22 @@
 /**
  * Send a figure's prose blocks to Málstaður and record the result.
  *
- * One request per BLOCK, not one joined request: a block is the semantic unit
- * (a label, not a line), and a joined payload would have to be split back out of
- * the response — which §C118 measured the model restructuring. Per-block costs
- * the same in characters, since billing is by character.
+ * One request per DISTINCT BLOCK KEY, not one joined request: a block is the
+ * semantic unit (a label, not a line), and a joined payload would have to be
+ * split back out of the response — which §C118 measured the model restructuring.
+ * Per-block costs the same in characters as a joined payload, since billing is by
+ * character.
+ *
+ * 🔴 "DISTINCT" IS LOAD-BEARING AND WAS NOT ALWAYS TRUE. `blocks.json` carries the
+ * same key more than once whenever a figure repeats a label — `compose.py` DRAWS
+ * both, which is ruling R-13 — and this loop used to issue one BILLED request per
+ * OCCURRENCE while `out[b.key]` kept only the last. Every extra request was paid
+ * for and discarded before it could be written anywhere. Measured over chemistry
+ * ch03/05/06/07 (265 figures prepared, 102 with sendable text): 446 send
+ * occurrences over 426 distinct keys — 20 requests, 238 characters, 2.38 ISK
+ * bought for nothing, on 9 of the 102 figures; ch04 measured 11.0% of its
+ * requests. The multiplicity STAYS in `blocks.json` and in the composer, which is
+ * what R-13 rules; it is the WIRE that is content-keyed. See `dedupeSendBlocks`.
  *
  *   node translate-blocks.mjs --book <slug> [--out <dir>] [--dry-run] [--no-glossary]
  *
@@ -223,6 +235,44 @@ export function glossarySteeredBlocks(wire) {
 }
 
 /**
+ * One entry per DISTINCT block key — what the wire buys, out of what the read
+ * layer emitted.
+ *
+ * 🔴 THE MULTIPLICITY IS CORRECT WHERE IT LIVES AND WRONG ON THE WIRE. A figure
+ * that repeats a label carries that key twice in `blocks.json`, and `compose.py`
+ * DRAWS both — ruling R-13, which is why nothing here touches `blocks.json`,
+ * `figure-prepare.py`'s counts or `figure-compose.py`'s multiset check. But the
+ * translation is looked up BY KEY (`TR[key]` at draw time, `out[b.key]` here), so
+ * a second request for a key already bought is money spent on an answer that has
+ * nowhere to go.
+ *
+ * 🔴 THE SURVIVOR IS THE **LAST** TWIN, NOT THE FIRST, AND THAT IS DELIBERATE.
+ * `out[b.key] = …` was already last-write-wins, so keeping the last occurrence
+ * makes "the files this tool writes are unchanged" true BY CONSTRUCTION instead
+ * of by measurement. The two choices are not equivalent: `blockkey.block_key`
+ * joins an ARC block's runs bare and a non-arc block's lines with '|', so a
+ * one-line block `NaCl` and an arc block spelling N-a-C-l collide on `key` AND on
+ * `english` while differing in `arc` — and `arc` is the whole of what reaches the
+ * written value. A keep-first dedupe would quietly write `["…"]` where this tool
+ * has always written `"…"`. Unobserved in 265 prepared figures, and pinned in
+ * `figure-mt-duplicate-keys.test.js` precisely because a rare shape that no
+ * measurement covers is exactly what a test is for.
+ *
+ * ⚠️ A `Map` keyed on the block key gives both halves at once: an existing key
+ * keeps its FIRST insertion position and takes the LAST value, so the request
+ * order is the order the blocks were emitted in while the surviving record is the
+ * one whose translation would have been kept anyway.
+ *
+ * @param {Array<{key: string}>} send  the `send:true` blocks, in emit order
+ * @returns {Array<{key: string}>} one block per key, first-occurrence order
+ */
+export function dedupeSendBlocks(send) {
+  const byKey = new Map();
+  for (const b of send) byKey.set(b.key, b);
+  return [...byKey.values()];
+}
+
+/**
  * The figure this run is for, read from the `meta.json` the extractor left in
  * this run's output directory.
  *
@@ -301,7 +351,17 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
   const outDir = args.out ? path.resolve(args.out) : path.join(HERE, 'out');
 
   const blocks = JSON.parse(fs.readFileSync(path.join(outDir, 'blocks.json'), 'utf-8'));
-  const send = blocks.filter((b) => b.send);
+  // One request per DISTINCT key — see `dedupeSendBlocks`. Deduped HERE rather than at
+  // the loop so that the plan line, the pre-flight invariant and the billed requests are
+  // all derived from one list; a plan that quotes a cost the run does not spend is the
+  // provenance defect gate 1's inversion already had to fix once.
+  //
+  // ⚠️ SO THIS `chars` READS LOWER THAN `prepare.json`'s ON A FIGURE THAT REPEATS A
+  // LABEL, and `tools/figure-run.js` records THAT one as `rec.chars`. The two are
+  // different questions — the read layer counts the characters a figure DRAWS (R-13
+  // multiplicity intact), this counts the characters it BUYS — so the difference is the
+  // duplicate, not a discrepancy. Do not "reconcile" them by re-counting either side.
+  const send = dedupeSendBlocks(blocks.filter((b) => b.send));
   const chars = send.reduce((n, b) => n + b.english.length, 0);
 
   // 🔴 GATE 1, INVERTED. `null` is not a placeholder for a glossary we failed to
