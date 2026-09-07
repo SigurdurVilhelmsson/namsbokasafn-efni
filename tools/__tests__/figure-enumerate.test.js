@@ -399,3 +399,111 @@ describe('the server and the driver get the SAME answer', () => {
     });
   }
 });
+
+/**
+ * 🔴 THE CHARSET THAT DECIDES WHETHER A FIGURE CAN BE PROCESSED AT ALL LIVES IN
+ * A DIFFERENT LANGUAGE FROM THE ENUMERATOR, AND NOTHING COMPARED THE TWO.
+ * `figure-prepare.py`'s `SAFE_BASENAME` is right to exist — `--basename` becomes
+ * a path segment and arrives from a CLI flag — but it was hand-picked, and it
+ * refused `CNX_Chem_11_02_Fe(NO3)3_img` (efnafraedi-2e ch11, m68781): argparse
+ * exits 2 before `main`, so no `prepare.json` is written, the driver files the
+ * figure `failed-prepare`, and chemistry ch11 could never reach `VERDICT ok`.
+ *
+ * The enumerator is the population the charset has to cover, so the pin belongs
+ * here — next to the only instrument that can list it. It reads the pattern out
+ * of the tool rather than restating it: a copy of a charset is exactly the
+ * enumeration this repo keeps finding stale.
+ */
+describe("figure-prepare.py's basename guards, against the corpus they must admit", () => {
+  const PREPARE_PY = path.join(
+    REPO_ROOT,
+    'experiments',
+    'figure-text-translation',
+    'figure-prepare.py'
+  );
+  const KEPT_BOOKS = ['efnafraedi-2e', 'lifraen-efnafraedi'];
+  // The figure the hand-picked class refused. Its `01-source` is READ-ONLY by
+  // project rule, so this is a stable anchor, and it is what makes the
+  // "0 refusals" result below mean something other than "nothing interesting
+  // was enumerated".
+  const PAREN_BASENAME = 'CNX_Chem_11_02_Fe(NO3)3_img';
+
+  /** The charset AS THE TOOL SPELLS IT. A failed extraction must fail the test. */
+  function safeBasenamePattern() {
+    const src = fs.readFileSync(PREPARE_PY, 'utf-8');
+    const m = src.match(/^SAFE_BASENAME = re\.compile\(r'(.+)'\)$/m);
+    expect(m, `no SAFE_BASENAME literal found in ${PREPARE_PY}`).not.toBeNull();
+    return new RegExp(m[1]);
+  }
+
+  /** The reserved names the tool refuses outright, likewise read from it. */
+  function reservedBasenames() {
+    const src = fs.readFileSync(PREPARE_PY, 'utf-8');
+    const m = src.match(/^RESERVED_BASENAMES = \{([^}]*)\}$/m);
+    expect(m, `no RESERVED_BASENAMES literal found in ${PREPARE_PY}`).not.toBeNull();
+    const names = [...m[1].matchAll(/'([^']+)'/g)].map((x) => x[1]);
+    expect(names.length).toBeGreaterThan(0);
+    return new Set(names);
+  }
+
+  /** Every enumerated figure of both kept books: chNN and appendices. */
+  function everyKeptFigure() {
+    const out = [];
+    for (const slug of KEPT_BOOKS) {
+      const bookDir = path.join(REPO_ROOT, 'books', slug);
+      const sourceRoot = path.join(bookDir, '01-source');
+      const chapterDirs = fs
+        .readdirSync(sourceRoot, { withFileTypes: true })
+        .filter((d) => d.isDirectory() && (/^ch\d+$/.test(d.name) || d.name === 'appendices'))
+        .map((d) => d.name)
+        .sort();
+      expect(chapterDirs.length).toBeGreaterThan(0);
+      for (const chapterDir of chapterDirs) {
+        for (const f of enumerateChapterImages({ bookDir, chapterDir }).figures) {
+          out.push({ slug, chapterDir, basename: f.basename });
+        }
+      }
+    }
+    return out;
+  }
+
+  it('CONTROL the pattern read out of the tool is a real charset, not .*', () => {
+    const re = safeBasenamePattern();
+    expect(re.test('CNX_Chem_04_01_rxn2')).toBe(true);
+    // the property the class exists for — none of these may be admitted
+    expect(re.test('a/../b')).toBe(false);
+    expect(re.test('..')).toBe(false);
+    expect(re.test('/etc/passwd')).toBe(false);
+    expect(re.test('-x')).toBe(false);
+    expect(re.test('.hidden')).toBe(false);
+    expect(re.test('')).toBe(false);
+  });
+
+  it('admits every basename either kept book enumerates', () => {
+    const figures = everyKeptFigure();
+    // NON-VACUITY, two ways: the corpus is large, and it contains the exact
+    // figure whose refusal this pin exists to prevent recurring.
+    expect(figures.length).toBeGreaterThan(3000);
+    expect(figures.map((f) => f.basename)).toContain(PAREN_BASENAME);
+
+    const re = safeBasenamePattern();
+    const refused = figures
+      .filter((f) => !re.test(f.basename))
+      .map((f) => `${f.slug}/${f.chapterDir}: ${f.basename}`);
+    expect(refused).toEqual([]);
+  });
+
+  it('and no enumerated basename collides with a RESERVED name', () => {
+    const reserved = reservedBasenames();
+    const figures = everyKeptFigure();
+    expect(figures.length).toBeGreaterThan(3000);
+    // CONTROL: a PLANTED row for every reserved name, so the [] below is a
+    // measurement of the corpus rather than a predicate that never fires.
+    const planted = [...reserved].map((n) => ({ slug: 'planted', chapterDir: '-', basename: n }));
+    expect(planted.filter((f) => reserved.has(f.basename))).toHaveLength(reserved.size);
+    const collisions = figures
+      .filter((f) => reserved.has(f.basename))
+      .map((f) => `${f.slug}/${f.chapterDir}: ${f.basename}`);
+    expect(collisions).toEqual([]);
+  });
+});

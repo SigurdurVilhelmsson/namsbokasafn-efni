@@ -384,6 +384,65 @@ with tempfile.TemporaryDirectory() as td:
           'artwork.pdf', refused(r, 2),
           f'exit {r.returncode}: {r.stderr.strip()[-200:]}')
 
+# ── 4h. THE CHARSET, CALIBRATED ON THE CORPUS RATHER THAN HAND-PICKED ────────────────
+# 🔴 THE REGEX THAT WAS HERE REFUSED A REAL FIGURE, AND NOTHING IN THIS SUITE COULD SEE
+# IT: case 4e probes `a/../b`, i.e. only the property the class exists to protect. The
+# one basename in either kept book outside `[A-Za-z0-9._-]` is chemistry ch11's
+# `CNX_Chem_11_02_Fe(NO3)3_img` (m68781) - it RESOLVES to real artwork, so the driver
+# never filters it as `unresolved`, argparse then exits 2 before `main`, and the whole
+# chapter can never reach `VERDICT ok`.
+#
+# MEASURED over `enumerateChapterImages` on both kept books, every chNN + appendices:
+# 56 chapters, 3,311 figures, distinct characters `()-0-9A-Z_a-z` - i.e. exactly TWO
+# characters outside the old class, both in that one basename, and 0 leading characters
+# outside `[0AC O]`. The corpus-wide pin lives in
+# tools/__tests__/figure-enumerate.test.js, where the enumerator already is.
+CORPUS_PAREN_BASENAME = 'CNX_Chem_11_02_Fe(NO3)3_img'
+with tempfile.TemporaryDirectory() as td:
+    out = Path(td) / 'paren'
+    r = run_prepare(FIXTURE, '--basename', CORPUS_PAREN_BASENAME, '--out', out)
+    d = load_prepare_json(out) or {}
+    check('4h a REAL enumerated basename carrying parentheses is ACCEPTED',
+          r.returncode == 0,
+          f'exit {r.returncode}: {r.stderr.strip()[-300:]}')
+    check('4h-b ... and prepare.json echoes it back unchanged - nothing was sanitised',
+          d.get('basename') == CORPUS_PAREN_BASENAME, f"{d.get('basename')!r}")
+    check('4h-c ... and the artwork was STAGED under that exact name',
+          (out / f'{CORPUS_PAREN_BASENAME}.pdf').exists(),
+          f'{sorted(p.name for p in out.iterdir()) if out.is_dir() else out!r}')
+    _meta = json.loads((out / 'meta.json').read_text()) \
+        if (out / 'meta.json').exists() else {}
+    check("4h-d ... and meta.json's source stem is that basename, which is what "
+          "basenameFromMeta cross-checks AFTER the figure has been paid for",
+          Path(_meta.get('source', '')).stem == CORPUS_PAREN_BASENAME,
+          f"{_meta.get('source')!r}")
+
+# ── 4i. THE CONTROL: the widening admits exactly `(` and `)` and nothing else ────────
+# 🔴 WITHOUT THIS, 4h IS SATISFIED BY DELETING THE CHECK. The unit of the question is a
+# CHARACTER CLASS, so every case below differs from an accepted basename by one
+# character or by one leading character - not by being obviously absurd.
+REFUSALS = [
+    ('a/../b', 'traversal through a separator'),
+    ('..', 'the parent directory itself'),
+    ('.', 'the current directory itself'),
+    ('../CNX_Chem_11_02_Fe(NO3)3_img', 'traversal in front of a legal name'),
+    ('/etc/passwd', 'an absolute path'),
+    ('CNX_Chem/11', 'a bare separator'),
+    ('-out', 'a leading dash, which the next tool would read as a flag'),
+    ('.hidden', 'a leading dot'),
+    ('(NO3)3', 'a LEADING paren - the corpus leads with 0/A/C/O only'),
+    ('CNX $(id)', 'a space and a shell metacharacter'),
+    ('CNX;rm', 'a semicolon'),
+    ('CNX*', 'a glob star'),
+    ('CNX\\11', 'a backslash'),
+]
+with tempfile.TemporaryDirectory() as td:
+    for i, (bad, why) in enumerate(REFUSALS):
+        r = run_prepare(FIXTURE, '--basename', bad, '--out', Path(td) / f'ref{i}')
+        check(f'4i-{i} REFUSED ({why}): {bad!r}', refused(r, 2),
+              f'exit {r.returncode}: {r.stderr.strip()[-160:]}')
+
+
 # ── 4g. a STALE artwork.svg cannot satisfy the success check ────────────────────────
 # `artwork.svg` has a fixed name. A driver reusing a directory, or a retry after a failed
 # run, would otherwise let prepare report success against the PREVIOUS figure's artwork -

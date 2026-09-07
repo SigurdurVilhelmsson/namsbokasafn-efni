@@ -84,7 +84,28 @@ STAGED_EXTS = ('.eps', '.ai')
 
 # A bare filename, and nothing that could reach outside --out. This value becomes a path
 # segment, and it arrives from a CLI flag.
-SAFE_BASENAME = re.compile(r'^[A-Za-z0-9][A-Za-z0-9._-]*$')
+#
+# 🔴 THE CLASS IS MEASURED AGAINST THE CORPUS, NOT HAND-PICKED - THE HAND-PICKED ONE
+# REFUSED A REAL FIGURE AND COST A WHOLE CHAPTER. Without `()` this pattern rejects
+# `CNX_Chem_11_02_Fe(NO3)3_img` (efnafraedi-2e ch11, m68781), which RESOLVES to real
+# artwork - so the driver never filters it as `unresolved`, argparse exits 2 before
+# `main` writes any prepare.json, the figure is filed `failed-prepare`, and ch11 can
+# never reach `VERDICT ok` on any run.
+#
+# MEASURED over `tools/lib/figure-enumerate.cjs` on both kept books, every chNN +
+# appendices: 56 chapters, 3,311 figures, and the ONLY characters outside `[A-Za-z0-9._-]`
+# anywhere in the population are the `(` and `)` of that one basename. The first character
+# stays `[A-Za-z0-9]` (measured leads: 0, A, C, O) - that is what refuses a leading `-`,
+# which the NEXT tool would read as a flag, and a leading `.`, so `.` and `..` are refused
+# whole. Parentheses cannot reach outside `--out`: they are not separators, every spawn on
+# this path is an argv array with no shell, and nothing downstream builds a regex or a glob
+# from a basename.
+#
+# ⚠️ DO NOT WIDEN THIS BY GUESSING THE NEXT TIME EITHER. The corpus-wide pin is
+# `tools/__tests__/figure-enumerate.test.js` ("figure-prepare.py's basename guards, against
+# the corpus they must admit"); it reads this literal out of this file, so re-run it and let
+# it name what is actually missing.
+SAFE_BASENAME = re.compile(r'^[A-Za-z0-9][A-Za-z0-9._()-]*$')
 
 # `strip-text.py` saves the de-texted artwork as OUT/'artwork.pdf' and renders
 # OUT/'artwork.png' and OUT/'artwork.svg' beside it, so a figure called "artwork" would
