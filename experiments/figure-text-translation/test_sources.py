@@ -22,6 +22,7 @@ with tempfile.TemporaryDirectory() as td:
     (old/'CNX_B.pdf').write_bytes(b'old')
     # only the updates tree has this one (an ADDED 2e figure)
     (new/'CNX_C.eps').write_bytes(b'new')
+    old_dir = old
     trees = {'first-edition': str(old), 'updates-2e': str(new)}
     prec = ['updates-2e', 'first-edition']
 
@@ -40,6 +41,33 @@ with tempfile.TemporaryDirectory() as td:
     (old/'CNX_D.pdf').write_bytes(b'old'); (new/'CNX_D.eps').write_bytes(b'new')
     p, k = resolve('CNX_D', trees, prec)
     check('2e .eps beats 1e .pdf', (k, p.read_bytes()), ('updates-2e', b'new'))
+
+    # ── P6: a CONFIGURED tree root that is not a directory must REFUSE ──────────────
+    # It used to `continue`, so an unmounted updates-2e resolved every figure to its
+    # superseded 1st-edition artwork — a correct-looking translation of the wrong
+    # picture, invisible to every downstream check.
+    absent = {'updates-2e': str(td / 'not-mounted'), 'first-edition': str(old_dir)}
+    try:
+        got = resolve('CNX_A', absent, prec)
+        raised = f'returned {got!r}'
+    except SystemExit as exc:
+        raised = str(exc)
+    check('P6 configured-but-absent root REFUSES',
+          raised.startswith("Source tree 'updates-2e' is configured"), True)
+    # and it must name the tree AND the figure, or the operator cannot act on it
+    check('P6 refusal names the figure', "'CNX_A'" in raised, True)
+
+    # CONTROL 1: the refusal is not "resolve now always raises" — with every configured
+    # root present, resolution still succeeds and still picks the right edition.
+    p, k = resolve('CNX_A', trees, prec)
+    check('P6 CONTROL all roots present -> still resolves',
+          (k, p.read_bytes()), ('updates-2e', b'new'))
+
+    # CONTROL 2: an UNCONFIGURED tree is a different case and must still fall through.
+    # A book with only one tree has to keep working.
+    p, k = resolve('CNX_B', {'first-edition': str(old_dir)}, prec)
+    check('P6 CONTROL unconfigured tree still falls through',
+          (k, p.read_bytes()), ('first-edition', b'old'))
 
 print(f"\n{'ALL PASS' if not fails else str(len(fails))+' FAILED'}")
 sys.exit(1 if fails else 0)

@@ -72,7 +72,13 @@ def one(path):
         return r
 
     runs = parse(content, widths)
-    runs = [x for x in runs if x['text'].strip()]
+    # R-14: NO blank-run filter. Sharing the key RULE (blockkey.block_key, below) while
+    # diverging on the run POPULATION is the same defect P8 exists to remove — the block
+    # boundaries move either way, so a filtered census describes a segmentation that
+    # neither emit-blocks.py nor the acceptance harness uses.
+    # ⚠️ If a blank filter is ever wanted back, its predicate must be `text == ''`, NEVER
+    # `not text.strip()`: '\x1f'.isspace() is True and a /Differences font maps \x1f to a
+    # Greek alpha, so .strip() silently deletes a real glyph.
     r['runs'] = len(runs)
     if not runs:
         r['verdict'] = 'NO LIVE TEXT'; r['blocks'] = r['words'] = 0; return r

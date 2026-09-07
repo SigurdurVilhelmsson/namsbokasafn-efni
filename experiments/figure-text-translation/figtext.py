@@ -14,6 +14,11 @@ def along(r):
     return r['x']*math.cos(a) + r['y']*math.sin(a)
 
 def group(runs):
+    # A figure with no live text is a REAL corpus state, not a caller error:
+    # CNX_Chem_06_01_Vibrstring reads 0 runs (outcome 'empty'), and this line used to
+    # take emit-blocks.py down with an IndexError on it. Returning [] lets the caller
+    # write an empty blocks.json and say "nothing to buy" instead of crashing.
+    if not runs: return []
     blocks=[]; cur=[runs[0]]
     for p,r in zip(runs, runs[1:]):
         same = abs(r['size']-p['size'])<0.2 and abs(r['rot']-p['rot'])<3
@@ -41,6 +46,7 @@ def is_arc(b):
 def merge_blocks(blocks):
     """join blocks that are consecutive LINES of one visual block - they get split
     when a line changes colour (emphasis) or font."""
+    if not blocks: return []          # group([]) is [] - see the note there
     out=[blocks[0]]
     for b in blocks[1:]:
         p=out[-1]
@@ -85,6 +91,43 @@ def looks_verbatim(text):
     bought."""
     import re as _re
     return not _re.search(r'[A-Za-z\u00C0-\u017F]{3,}', text)
+
+
+
+def undecodable_fonts(block, fonts):
+    """The fonts this block draws with that are NOT known-decodable (ruling R-8).
+
+    `fonts` is `meta['fonts']` as `readlayer.read` produced it: keyed by the scope-
+    qualified font key that `run['font']` also carries, with `decodable: False` set on
+    any font whose bytes pdfminer could not map to Unicode.
+
+    ⚠️ A font key that is ABSENT from `fonts` counts as undecodable. It means
+    `runs.json` and `meta.json` are out of step — `readlayer.resolve_font` mints an
+    `UNSCOPED/...` entry precisely so this cannot happen — and the cheap direction of a
+    spend gate is to hold money back and say so. The caller REPORTS the names; a silent
+    fail-closed would be a gate nobody can debug.
+    """
+    return sorted({r['font'] for r in block
+                   if fonts.get(r['font'], {}).get('decodable') is not True})
+
+
+def sendable(block, joined, fonts):
+    """Should this block be BOUGHT?  (ruling R-8)
+
+    Two independent reasons to hold money back, and they catch different things:
+      * `looks_verbatim` — it is a formula/symbol/number, identical in Icelandic;
+      * an undecodable font — its "text" is control-byte garbage, so translating it
+        buys mojibake.
+
+    🔴 The second clause is not redundant, and the ORDER OF EVENTS is why. Before the
+    pdfplumber reader, undecodable text arrived as bytes like '\x00\x0b\x00D' which
+    `looks_verbatim` calls verbatim — TRUE, but by luck: it contains no run of 3+
+    letters. Nothing was gating on decodability; the garbage was held back by an
+    accident of the prose heuristic. A reader that decodes more will eventually decode
+    something PARTIALLY, and a partially-decoded block reads as prose and becomes
+    sendable. This clause is what makes the hold deliberate.
+    """
+    return not looks_verbatim(joined) and not undecodable_fonts(block, fonts)
 
 
 def normalise_block_value(value, arc):

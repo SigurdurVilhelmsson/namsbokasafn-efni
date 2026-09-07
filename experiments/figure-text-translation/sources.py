@@ -48,10 +48,26 @@ def resolve(basename, trees, precedence, exts=SOURCE_EXTS):
     for key in precedence:
         root = trees.get(key)
         if not root:
+            # NOT configured for this book. A book that legitimately has one tree must
+            # still resolve, so this one falls through — unlike the case below.
             continue
         root = Path(root).expanduser()
         if not root.is_dir():
-            continue
+            # CONFIGURED but ABSENT. Falling through here is the exact failure this
+            # module exists to prevent: with 'updates-2e' unmounted every figure
+            # silently resolves to its superseded 1st-edition artwork, and the output
+            # is a correct-looking translation of the wrong picture. Nothing downstream
+            # can see it — the file resolves, reads, composes and publishes.
+            # SystemExit, not a caught exception: it is BaseException, so a per-figure
+            # `except Exception` in a batch loop cannot swallow it into a skip.
+            raise SystemExit(
+                f"Source tree {key!r} is configured for this book but is not a "
+                f"directory: {root}\n"
+                f"  Refusing to resolve {basename!r} — falling back to a lower-precedence "
+                f"tree would silently source superseded artwork.\n"
+                f"  Mount the tree, or remove {key!r} from sources.local.json if it is "
+                f"genuinely gone."
+            )
         for ext in exts:
             for cand in root.rglob(basename + ext):
                 return cand, key
