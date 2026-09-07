@@ -11,7 +11,13 @@ Text is NOT only in the page content stream.  Illustrator routinely puts it insi
 the page alone leaves the English drawn underneath the translation.  So the walk
 descends into every reachable /Form, recursively.
 
-    FIGTEXT_PYLIBS=./pylibs python3 strip-text.py ~/path/figure.pdf [--dpi 200]
+    FIGTEXT_PYLIBS=./pylibs python3 strip-text.py ~/path/figure.pdf [--dpi 200] [--svg]
+
+--svg additionally writes out/artwork.svg.  The composer READS that file
+(compose.py -> svgout.write_svg), and until now nothing in the tree wrote it: the copy
+on disk had been produced by a hand-run `pdftocairo -svg`.  An automated driver that
+returned success with no artwork.svg would have the translation paid for and only then
+discover composition has no input, so the producer belongs here, beside the PNG.
 """
 import sys, subprocess
 import _deps
@@ -211,7 +217,7 @@ def strip_text(pdf):
     return stats
 
 
-def main(pdf_path, dpi=DEFAULT_DPI):
+def main(pdf_path, dpi=DEFAULT_DPI, svg=False):
     OUT.mkdir(exist_ok=True)
     pdf = pikepdf.open(pdf_path)
     page = pdf.pages[0]
@@ -234,9 +240,17 @@ def main(pdf_path, dpi=DEFAULT_DPI):
                     str(out_pdf), str(OUT / 'artwork')], check=True)
     print(f"artwork.png at {dpi} dpi -> out/artwork.png")
 
+    if svg:
+        # ⚠️ `-svg` takes the OUTPUT FILE, extension included - unlike `-png -singlefile`
+        # above, which takes a ROOT and appends `.png` itself.  Passing a root here
+        # writes a file literally called `artwork`.
+        out_svg = OUT / 'artwork.svg'
+        subprocess.run(['pdftocairo', '-svg', str(out_pdf), str(out_svg)], check=True)
+        print(f"artwork.svg -> out/artwork.svg ({os.path.getsize(out_svg)} bytes)")
+
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         sys.exit(__doc__)
     dpi = int(sys.argv[sys.argv.index('--dpi') + 1]) if '--dpi' in sys.argv else DEFAULT_DPI
-    main(sys.argv[1], dpi)
+    main(sys.argv[1], dpi, svg='--svg' in sys.argv)
