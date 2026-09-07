@@ -610,6 +610,20 @@ hang. A hang is louder. ⚠️ **Do not trust a grep here** — a file containin
 `JSON.stringify` and `process.exit` proves nothing (31 files do), and *line* order is not
 *execution* order. **The predicate is an exit on the same path AFTER a write; only reading the
 function settles it.** Instances live in the active register, never here.
+- 🔴 **PYTHON IS THE MIRROR IMAGE, AND CARRYING THIS RULE ACROSS INVERTS IT. A `>`
+  REDIRECT IS THE DANGEROUS CONFIGURATION THERE, NOT THE SAFE ONE.** Node writes to a pipe
+  asynchronously and to a file synchronously, which is why `>` rescues it above. Python's
+  stdout is **line**-buffered to a TTY and **block**-buffered to a file, so a long run killed
+  or timed out mid-flight leaves **0 bytes** having printed plenty. Measured 2026-09-07 on a
+  job that printed 51 lines before being killed: `> file` → **0 bytes**; `python3 -u` → 2,591
+  bytes; both exit 124. ⚠️ **And a shell wrapper hides the death**: `( cmd ; true )` reports
+  **exit 0** where the bare command reports 124 — so a background-task notification can say
+  *"completed (exit code 0)"* about a job that was killed, next to an output file that is
+  empty. ▶ **THAT PAIR IS INDISTINGUISHABLE FROM "ran and found nothing"** — the repo's oldest
+  failure class. **Use `python3 -u` for any long batch whose output you redirect, and judge a
+  run by a TERMINAL MARKER in its artifact (a final verdict line, a closing brace), never by
+  the exit code a wrapper reports.** Relevant wherever `experiments/` batches run for minutes.
+
 
 🔴 **DURABLE — `git checkout -- <file>` IS NOT A MUTATION-TEST RESTORE. IT RESTORES TO `HEAD`,
 SO IT SILENTLY DISCARDS UNCOMMITTED WORK ON THAT FILE — AND THE ROUNDS THAT FOLLOW STILL PRINT
