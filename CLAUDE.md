@@ -624,6 +624,20 @@ cap that fires between the run and the restore leaves the mutation in place; her
 golden after every round; and `cmp` once more at the end — the round that dies is precisely the
 one that never restored.** ⚠️ **Commit first where you can:** an uncommitted edit has no second
 copy anywhere, which is what made the loss total rather than recoverable.
+- 🔴 **AMENDED 2026-09-07 — A TIMEOUT IS THE MILD PATH. AN *AGENT DEATH* STRANDS THE MUTANT
+  TOO, AND NOTHING ANYWHERE REPORTS IT.** Measured: a review agent died mid-probe between its
+  mutation write and its restore, leaving a set-comparison mutant uncommitted in
+  `experiments/figure-text-translation/read_layer_accept.py`. ▶ **A timeout at least returns a
+  non-zero exit code to somebody. A dead agent returns NOTHING** — no exit code, no report, no
+  notification — so the controller sees an agent that simply stopped talking, and `HEAD` still
+  looks clean because the mutation is *uncommitted*. Every ordinary health signal was silent.
+  ⚠️ **And the stranded mutant can PASS the suite**, which is how it survives review: this one
+  left `--selftest` printing `ALL 5 PASS`, exit 0, because no assertion read the field it
+  damaged. ▶ **THE RULE: run `git status --porcelain` the moment ANY agent that mutates files
+  goes quiet — dead, finished, or merely silent — and before you trust any verdict it produced.**
+  It is the only detector that fires here, and it is two seconds. **This is the second mutant
+  stranded in this repo by an agent rather than a timeout** (the first was committed; see
+  memory `engineering-lessons`, two agents on one tree).
 
 🔴 **DURABLE — A PROMISE THAT NEVER SETTLES EXITS 0; IT DOES NOT HANG.** `new Promise(() => {})`
 holds **no handle**, so Node's event loop empties and the process exits **normally with 0**,
