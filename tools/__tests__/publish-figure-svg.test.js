@@ -243,6 +243,53 @@ describe('composedHash', () => {
     expect(added[0]).toContain('composedHash');
     expect(norm(before).filter((l) => !norm(after).includes(l))).toEqual([]);
   });
+
+  // 🔴 A SHIPPED BUG, found while reviewing the M5 driver plan (register §C138).
+  // `withComposedHash` stamped the NEW hash when the loop reached `renderHash`, then
+  // walked on to the sidecar's OWN pre-existing `composedHash` key and copied the STALE
+  // value back over it. The returned object is built from `sidecar.renderHash` by a
+  // different path and stayed correct — so a test asserting on `r.composedHash` passes
+  // VACUOUSLY against the live bug. These assert on disk, which is the only place the
+  // defect is observable.
+  //
+  // Consequence: a re-publish never completed the correction loop. `composedHash` stayed
+  // behind `renderHash` for ever, so every later `--stale` query re-selected the same
+  // figure and an approved figure's badge could never go green.
+  it('OVERWRITES a stale composedHash that is already in the sidecar', () => {
+    const args = scaffold({
+      sidecar: { ...approved(), composedHash: 'stale-from-an-earlier-publish' },
+    });
+    const expected = readSidecar(bookDir, BASENAME).renderHash;
+    const r = publishFigureSvg(args);
+    expect(r.ok).toBe(true);
+    expect(readSidecar(bookDir, BASENAME).composedHash).toBe(expected);
+  });
+
+  // The control for the fix's SHAPE. Skipping the key in the loop must still place it
+  // directly after `renderHash`, even when the file on disk had it somewhere else —
+  // otherwise the fix trades a stale value for a churning diff. An unconditional
+  // re-assign passes the test above and fails this one.
+  it('restores the canonical key order when composedHash arrived BEFORE renderHash', () => {
+    const renderHash = computeRenderHash(BLOCKS, COMPOSER_VERSION);
+    const args = scaffold({
+      sidecar: {
+        version: 1,
+        basename: BASENAME,
+        composedHash: 'stale-and-in-the-wrong-place',
+        state: 'approved',
+        renderHash,
+        composerVersion: COMPOSER_VERSION,
+        blocks: BLOCKS,
+      },
+    });
+    publishFigureSvg(args);
+    const written = readSidecar(bookDir, BASENAME);
+    const keys = Object.keys(written);
+    expect(keys[keys.indexOf('renderHash') + 1]).toBe('composedHash');
+    expect(written.composedHash).toBe(renderHash);
+    // Non-vacuity: the key really was somewhere else before, so this is a MOVE.
+    expect(keys.filter((k) => k === 'composedHash')).toHaveLength(1);
+  });
 });
 
 /**

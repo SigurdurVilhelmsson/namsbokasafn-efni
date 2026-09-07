@@ -67,10 +67,23 @@ export function basenameFromMeta(metaPath) {
   }
 }
 
-/** composedHash directly after renderHash — the order applyApprovedFigureEdits writes. */
+/**
+ * composedHash directly after renderHash — the order applyApprovedFigureEdits writes.
+ *
+ * 🔴 THE `continue` IS THE WHOLE FIX, AND IT WAS A SHIPPED BUG (register §C138).
+ * Without it the loop stamped the new hash on reaching `renderHash` and then walked on
+ * to the sidecar's OWN pre-existing `composedHash` key, copying the STALE value back
+ * over the stamp. The returned object is built elsewhere and stayed correct, so the
+ * defect was observable only on disk: a re-publish never completed the correction loop
+ * and every later `--stale` query re-selected the same figure for ever.
+ *
+ * Skipping in the loop — rather than re-assigning after it — is what keeps the key in
+ * its canonical position when the file on disk had it BEFORE `renderHash`.
+ */
 function withComposedHash(sidecar, composedHash) {
   const out = {};
   for (const [k, v] of Object.entries(sidecar)) {
+    if (k === 'composedHash') continue; // re-inserted below, at the canonical position
     out[k] = v;
     if (k === 'renderHash') out.composedHash = composedHash;
   }
