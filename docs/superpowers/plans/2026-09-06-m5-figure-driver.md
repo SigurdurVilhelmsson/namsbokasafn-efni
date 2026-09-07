@@ -544,9 +544,23 @@ verified `'\x1f'.isspace() is True`, and a `/Differences` font maps `\x1f` to a 
     exercise R3's failure mode at all.
   - `CNX_Chem_02_00_Biomarkers` dies on `check.py:24-25`'s `if o.size != c.size: sys.exit(...)` —
     the published raster is **1348×600**, our render **1300×600**.
-  ▶ **Select, by measurement:** (a) a `page-text` figure with `forms > 0` whose published raster
-  size matches, and (b) a `form-text-only` figure likewise. **If none matches, fix `check.py` to
-  resize rather than skipping the criterion** — this is the only check that can see English
+  ✅ **THE SEARCH IS DONE — measured 2026-09-06, both arms have candidates, so `check.py` needs no
+  change and the criterion is not blocked.** Selected on two conditions: the published raster in
+  `books/efnafraedi-2e/01-source/media/<name>.jpg` matches our 200 dpi `pdftocairo` render exactly,
+  **and** the figure has `/Form` XObjects whose streams contain `BT`, so R3's walk is not a no-op:
+
+  | arm | figure | forms containing text | size |
+  |---|---|---|---|
+  | **page-text** | **`CNX_Chem_02_04_Isomers2`** ← use this | **44** | 1300×731 |
+  | page-text | `CNX_Chem_04_04_GreenChem` | 8 | 1200×1062 |
+  | **form-text-only** | **`CNX_Chem_02_04_Question4a_img`** ← use this | **12** | 325×142 |
+  | form-text-only | `CNX_Chem_02_04_Question3d_img` | 7 | 325×143 |
+
+  ⚠️ **`CNX_Chem_01_01_SciMethod` has `forms = 0`** — R3's walk is a **no-op** on it, so it cannot
+  exercise R3's failure mode however green it comes out. **`CNX_Chem_02_00_Biomarkers` dies on
+  `check.py:24-25`'s size guard** (published 1348×600 vs our 1300×600). Both were named in an
+  earlier draft; neither is usable. **If a selected figure nevertheless fails the size guard, fix
+  `check.py` to resize rather than skipping the criterion** — this is the only check that can see English
   surviving *under* the composed Icelandic, which C1–C4b structurally cannot.
 
   🔴 **DO NOT GATE ON `check.py`'s PERCENTAGE** — its own header says *"Read the overlay, not the
