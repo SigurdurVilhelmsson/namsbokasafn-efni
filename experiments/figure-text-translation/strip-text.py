@@ -189,7 +189,13 @@ def strip_text(pdf):
                 stats['unparsable'].append(f'{objgen}: {type(exc).__name__}: {exc}')
                 continue
             xobj.write(new)                      # IN PLACE - see R-9 above
-            if new != old:
+            # ⚠️ COUNT THE TEXT BLOCKS REMOVED, NOT `new != old`. `main()` prints this as
+            # "N contained text", and since the scan became token-aware EVERY stream is
+            # re-serialised, so `new != old` is now true of a form that contained no text
+            # at all - the stat would read ~= forms_visited on every figure and mean
+            # nothing. `strip_text_ops` already returns the real number and it was being
+            # thrown away.
+            if _n:
                 stats['forms_rewritten'] += 1
             sub = xobj.get('/Resources')
             if sub is not None:

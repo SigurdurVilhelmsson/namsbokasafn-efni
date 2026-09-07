@@ -378,7 +378,49 @@ belongs with the driver work, which is what first composes figures at scale.
 ✅ **Live exposure today is ZERO**: the only block-keyed sidecars in the repo are 3, all under
 `books/__e2e-fixture__/`. Nothing has been bought against either segmentation.
 
-### ⑤ Not exercised, stated rather than left silent
+### ⑤ OPEN — two glyph-advance classes survive the R5 fix round, and one of them BUYS the wrong thing
+
+Recorded 2026-09-07, because `readlayer._prepare`'s docstring points here and a pointer to no
+record is worse than no pointer. **Both are bounded, both are named, neither is fixed**, and the
+reason is the same in both cases: the repair is a **writing-mode branch in the run splitter**, which
+changes the layout layer the [USER] ruled is KEPT *and* changes `blockkey.block_key` — the unit that
+is BOUGHT. **That is a scope decision, not an implementation detail.**
+
+**(a) `/Type0 /Identity-V` vertical text is still one run per glyph.** What WAS fixed is only the
+advance's SIGN: pdfminer reports a correctly NEGATIVE advance for downward text, `_prepare` used to
+project it onto a horizontal model unchanged, and it now substitutes the glyph's own axis-aligned
+extent and counts the substitution into `meta['adv_repaired']`. **That does not re-merge the
+glyphs**, because `_continues` splits on the PROJECTION — which does not move at all for vertical
+text — and not on the advance. So the periodic-table group labels on `CNX_Chem_02_05_PerTable2` are
+still emitted as one-word blocks, and `figtext.sendable` returns True for them: **`'earth'` and
+`'metals'` are bought as standalone Icelandic translation keys, out of the context that makes them
+translatable, and `'metals'` is one key covering two different labels.** Live exposure is the same
+as ④'s and for the same reason — nothing has been bought against this segmentation — but this one
+is a *wrong* key rather than a *moved* one.
+
+**(b) The no-`/W`/`/DW` constant-advance class is untouched, deliberately.** A `/Type0 /Identity-H
+CIDFontType2` whose descendant declares neither `/W` nor `/DW` makes pdfminer fall back to the spec
+default of 1.0 em, so every glyph reports the same advance whatever its shape. **No bound can
+distinguish that from a real advance** — it is positive and plausible — without reading the font's
+width tables, which is the same design change as (a). `CNX_Chem_03_02_moles-6296` is the measured
+instance, and `test_readlayer.py` CASE 6d carries it as an explicit CONTROL: it must report NO
+repairs, so a future fix that "repaired" everything indiscriminately goes red.
+
+**(c) `figtext.is_arc` misclassifies straight text, and is now NAMED rather than fixed.**
+`len(b) > 3 and all(len(r['text'].strip()) <= 1 ...)` calls any block of four-plus single-character
+runs an arc, curved or not — which is exactly what (a) and (b) produce. `compose.fit_circle` used to
+divide by zero on the collinear result, or return a centre ~1e15 pt away and draw cancellation
+noise. **It now returns None for a block with no usable circle and the caller draws it straight and
+PRINTS the key**, under `!! N block(s) is_arc says are arcs but have no usable circle`. ▶ **That is
+a crash guard, not a classification fix**: the block is still the wrong unit, and the printed keys
+are the evidence for whoever revisits `is_arc`. The guard is deliberately NOT in `is_arc` itself,
+because `is_arc` feeds `block_key` and changing it would move purchased keys corpus-wide to fix a
+drawing crash.
+
+⚠️ **The counts and the per-figure detail are the review findings' and the fix report's; they are
+not restated here** — this file's own ⏩ RESUME says no number is restated in it.
+
+### ⑥ Not exercised, stated rather than left silent
 
 The census's **`unresolved` rows have no file to stage** (nothing is measurable on them), and no
 **second EPS→PDF converter** exists on this box, so whether `gs` itself drops text before either
