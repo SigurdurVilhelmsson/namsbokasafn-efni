@@ -33,6 +33,7 @@ import {
   normaliseTranslations,
   summarise,
   runFigures,
+  dehashStemClaims,
   main,
 } from '../figure-run.js';
 
@@ -767,4 +768,148 @@ afterAll(() => {
       fs.rmSync(path.join('/tmp', name), { recursive: true, force: true });
     }
   }
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 integration/F1 — TWO DIFFERENT FIGURES, ONE ARTWORK FILE, AND NOTHING DOWNSTREAM CAN SEE IT.
+//
+// The de-hash fallback assumed the stripped→delivered map is INJECTIVE. On chemistry ch21 it is
+// not: `CNX_Chem_21_03_RadioDecay-d92b` (m68852, a table of PARTICLE types) and
+// `CNX_Chem_21_03_RadioDecay-e619` (m68854, a table of DECAY types) are different pictures,
+// neither resolves directly, and both strip to `CNX_Chem_21_03_RadioDecay`. Both were handed the
+// SAME PDF: the MT bought twice for one picture, and `-d92b` published the decay table under the
+// particle-types caption and alt text, in Icelandic, with VERDICT ok.
+//
+// 🔴 NOTHING DOWNSTREAM COULD CATCH IT, WHICH IS WHY THE GUARD BELONGS HERE. `figure-prepare.py`
+// stages the artwork AS the requested basename, so `basenameFromMeta(meta.json) === rec.basename`
+// compares the name with ITSELF whatever picture was staged; `publishFigureSvg`'s
+// `basename-mismatch` reads that same meta.json; and `figure-compose.py`'s key-set assertions
+// compare the sidecar against a blocks.json derived from the same wrong artwork.
+describe('the de-hash refuses a CONTESTED stem rather than guessing which figure owns it', () => {
+  const CH21 = { book: 'efnafraedi-2e', chapter: '21', modules: null, figures: null, dryRun: true };
+  const D92B = 'CNX_Chem_21_03_RadioDecay-d92b';
+  const E619 = 'CNX_Chem_21_03_RadioDecay-e619';
+  const STEM = 'CNX_Chem_21_03_RadioDecay';
+  const isHashed = (name) => /-[0-9a-f]{4}$/.test(name);
+  const strippedOnly = {
+    resolve: (n) =>
+      isHashed(n) ? null : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' },
+  };
+
+  // 🔴 ANCHORED ON THE CORPUS, WITH BOTH DIRECTIONS. ch21 is the live exerciser; ch03's nine
+  // hashed figures are the positive control that the predicate does not simply call everything
+  // contested. Re-derived with the driver's own enumeration, not with a regex over the CNXML.
+  it('names exactly the ch21 pair from the real CNXML, and nothing in ch03', () => {
+    const ch21 = enumerateChapterFigures('efnafraedi-2e', '21').figures.map((f) => f.basename);
+    const ch03 = enumerateChapterFigures('efnafraedi-2e', '3').figures.map((f) => f.basename);
+    expect(ch21.filter(isHashed).sort()).toEqual([D92B, E619]);
+    expect(ch03.filter(isHashed).length).toBe(9); // non-vacuity: ch03 really is hashed-bearing
+
+    const contested = dehashStemClaims(ch21);
+    expect([...contested.keys()]).toEqual([STEM]);
+    expect(contested.get(STEM)).toEqual([D92B, E619]);
+    expect([...dehashStemClaims(ch03).keys()]).toEqual([]); // the control
+  });
+
+  // An UNHASHED figure enumerated beside a hashed one claims the stem too: the artwork under
+  // that name is the unhashed figure's OWN picture, so de-hashing onto it is the same defect
+  // with one of the two claimants arriving through the first resolver pass.
+  it('counts an unhashed figure of the same name as a claimant', () => {
+    const contested = dehashStemClaims(['FOO', 'FOO-abcd', 'BAR-1234']);
+    expect([...contested.keys()]).toEqual(['FOO']);
+    expect(contested.get('FOO')).toEqual(['FOO', 'FOO-abcd']);
+  });
+
+  it('leaves both ch21 figures unresolved, NAMED, rather than handing them one PDF', async () => {
+    const spawn = fakeSpawn(strippedOnly);
+    const result = await runFigures(CH21, { spawn });
+    const d = result.figures.find((f) => f.basename === D92B);
+    const e = result.figures.find((f) => f.basename === E619);
+    for (const r of [d, e]) {
+      expect(r.outcome).toBe('unresolved');
+      expect(r.artwork).toBeNull();
+      expect(r.reason).toContain(STEM);
+      expect(r.reason).toContain(D92B);
+      expect(r.reason).toContain(E619);
+    }
+    // …and the resolver was never even ASKED for the contested stem. Refusing after the answer
+    // came back would leave the wrong path sitting in a variable one edit away from being used.
+    const asked = spawn.calls.filter((c) => c.stage === 'resolve').flatMap((c) => c.argv);
+    expect(asked).not.toContain(STEM);
+    expect(asked).toContain(D92B); // the control: pass 1 really did ask about them
+    // R9: unresolved is named, never fatal — so the run is still green and the operator reads
+    // the reason. The money assertion for the whole file is elsewhere; this one is the picture.
+    expect(result.verdict.ok).toBe(true);
+    expect(summarise(result)).toContain(STEM);
+  });
+
+  // 🔴 THE SCOPE IS THE CHAPTER, NOT THE SELECTION. With `--figure` or `--module` naming only
+  // ONE of the two claimants, the contest is invisible inside the run — and that is exactly the
+  // invocation that would buy the wrong picture, because there is no second record to compare
+  // against. A guard that looked only at the selected figures would be defeated by narrowing.
+  it('still refuses when --figure names only one of the two claimants', async () => {
+    const spawn = fakeSpawn(strippedOnly);
+    const result = await runFigures({ ...CH21, figures: [D92B] }, { spawn });
+    expect(result.figures).toHaveLength(1);
+    expect(result.figures[0].outcome).toBe('unresolved');
+    expect(result.figures[0].reason).toContain(E619); // it names the claimant NOT in this run
+  });
+
+  it('still refuses when --module names only one of the two claimants', async () => {
+    const spawn = fakeSpawn(strippedOnly);
+    const result = await runFigures({ ...CH21, modules: ['m68852'] }, { spawn });
+    const d = result.figures.find((f) => f.basename === D92B);
+    expect(d.outcome).toBe('unresolved');
+    expect(d.reason).toContain(E619);
+  });
+
+  // The control for the three above: with only ONE claimant in the whole chapter the de-hash
+  // still works. ch03's nine hashed figures all resolve through their stripped names.
+  it('de-hashes ch03 exactly as before — the guard refuses the contest, not the fallback', async () => {
+    const spawn = fakeSpawn(strippedOnly);
+    const result = await runFigures(
+      { book: 'efnafraedi-2e', chapter: '3', modules: null, figures: null, dryRun: true },
+      { spawn }
+    );
+    const hashed = result.figures.filter((f) => isHashed(f.basename));
+    expect(hashed).toHaveLength(9);
+    expect(hashed.every((f) => f.resolvedVia === 'de-hashed')).toBe(true);
+    expect(result.tally.unresolved).toBe(0);
+  });
+
+  // 🔴 THE BACKSTOP, WHICH THE STEM GUARD CANNOT REPLACE AND WHICH CANNOT REPLACE IT. The
+  // invariant is "one artwork file, one figure", however the two got there — the resolver
+  // itself can map two distinct names onto one delivered file. Measured 0 times on the corpus
+  // today, which is why it needs a fabricated resolver to exercise at all.
+  it('refuses two figures that the RESOLVER hands one file, with no de-hash involved', async () => {
+    const spawn = fakeSpawn({
+      resolve: () => ({ path: '/fake/artwork/ONE_FILE.pdf', edition: 'first-edition' }),
+    });
+    const result = await runFigures(CH04, { spawn });
+    expect(result.figures.length).toBeGreaterThan(1); // non-vacuity
+    expect(result.tally.unresolved).toBe(result.figures.length);
+    expect(result.figures[0].reason).toContain('/fake/artwork/ONE_FILE.pdf');
+    expect(spawn.countOf('prepare')).toBe(0); // nothing was prepared from the shared file
+  });
+
+  // The backstop's control: distinct files per figure, nothing refused.
+  it('leaves figures with their own artwork alone (the backstop’s control)', async () => {
+    const result = await runFigures(CH04, { spawn: fakeSpawn() });
+    expect(result.tally.unresolved).toBe(0);
+  });
+
+  // 🔴 `summarise()` PRINTED NEITHER `artwork` NOR `resolvedVia`, so a --dry-run was silent
+  // about which figures share a source — the one report an operator would have read before
+  // spending. It must name the de-hashed ones with the file each was given.
+  it('shows which artwork each de-hashed figure was given', async () => {
+    const report = summarise(
+      await runFigures(
+        { book: 'efnafraedi-2e', chapter: '3', modules: null, figures: null, dryRun: true },
+        { spawn: fakeSpawn(strippedOnly) }
+      )
+    );
+    expect(report).toMatch(/de-hashed/);
+    expect(report).toContain('CNX_Chem_03_02_moles-6296');
+    expect(report).toContain('/fake/artwork/CNX_Chem_03_02_moles.pdf');
+  });
 });

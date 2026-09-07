@@ -117,9 +117,15 @@ export function verdict(tally, enumeratedCount) {
   // figures are unresolved in the artwork delivery today, so failing on it made every chapter run
   // exit 1 — the always-red exit code the spec argues against. The count is owned by
   // `experiments/figure-text-translation/TEXT-COVERAGE.md`; do not restate it here.
+  // ⚠️ THE MESSAGE NAMES BOTH CAUSES BECAUSE A TALLY CANNOT TELL THEM APART. `unresolved` now
+  // also carries the figures the driver REFUSED to resolve — two or more enumerated figures
+  // that would have been handed one artwork file. Calling that "a hole in the delivery" sends
+  // the operator to fix the wrong thing, three lines below a report line saying otherwise.
   if (tally.unresolved > 0) {
     reasons.push(
-      `NOTE (not a failure): ${tally.unresolved} figure(s) unresolved — the artwork delivery has a hole here`
+      `NOTE (not a failure): ${tally.unresolved} figure(s) unresolved — the artwork delivery has ` +
+        `a hole here, or two figures would have shared one file and the run refused to guess ` +
+        `(the report names which)`
     );
   }
   // 🔴 Same shape, different cause: the artwork is present and carries text we could not decode.

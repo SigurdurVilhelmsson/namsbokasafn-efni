@@ -411,6 +411,50 @@ function resolveArtwork(spawn, book, names) {
   return new Map(Object.entries(parsed));
 }
 
+/**
+ * 🔴 WHICH STRIPPED STEMS MORE THAN ONE ENUMERATED FIGURE WOULD CLAIM.
+ *
+ * The de-hash fallback assumed the stripped -> delivered map is INJECTIVE. On chemistry ch21 it
+ * is not: `CNX_Chem_21_03_RadioDecay-d92b` (a table of PARTICLE types) and
+ * `…-e619` (a table of DECAY types) are different pictures, neither resolves directly, and both
+ * strip to `CNX_Chem_21_03_RadioDecay`. Both were handed the SAME PDF — the MT bought twice for
+ * one picture, and one figure published the other's artwork under its own caption and alt text.
+ *
+ * 🔴 AND NOTHING DOWNSTREAM COULD SEE IT. `figure-prepare.py` stages the artwork AS the
+ * requested basename, so `basenameFromMeta(meta.json) === rec.basename` compares the name with
+ * ITSELF whatever picture was staged; `publishFigureSvg`'s `basename-mismatch` reads that same
+ * meta.json; `figure-compose.py`'s key-set assertions compare the sidecar against a blocks.json
+ * derived from the same wrong artwork. Every stage reports its own success truthfully.
+ *
+ * ⚠️ AN UNHASHED FIGURE OF THE SAME NAME IS A CLAIMANT TOO. `FOO` enumerated beside `FOO-abcd`
+ * means the artwork delivered as `FOO` is `FOO`'s OWN picture, so de-hashing onto it is the same
+ * defect with one claimant arriving through the first resolver pass instead of the second.
+ *
+ * ⚠️ THE INPUT MUST BE THE WHOLE CHAPTER'S BASENAMES, NEVER THE RUN'S SELECTION. `--figure` or
+ * `--module` naming only ONE claimant hides the contest inside the run — and that is precisely
+ * the invocation that would buy the wrong picture, because there is no second record to compare
+ * against. Its caller re-enumerates without `modules` when the run is narrowed.
+ *
+ * @param {string[]} basenames every figure basename in the chapter
+ * @returns {Map<string, string[]>} contested stem -> the basenames claiming it, sorted
+ */
+export function dehashStemClaims(basenames) {
+  const unhashed = new Set(basenames.filter((b) => !HASH_SUFFIX.test(b)));
+  const byStem = new Map();
+  for (const b of basenames) {
+    if (!HASH_SUFFIX.test(b)) continue;
+    const stem = b.replace(HASH_SUFFIX, '');
+    if (!byStem.has(stem)) byStem.set(stem, new Set());
+    byStem.get(stem).add(b);
+  }
+  const contested = new Map();
+  for (const [stem, claimants] of byStem) {
+    if (unhashed.has(stem)) claimants.add(stem);
+    if (claimants.size > 1) contested.set(stem, [...claimants].sort());
+  }
+  return contested;
+}
+
 /** How many translated blocks a sidecar carries. `null`/malformed counts as zero. */
 function sidecarBlockCount(sidecar) {
   if (!sidecar || typeof sidecar.blocks !== 'object' || sidecar.blocks === null) return 0;
@@ -929,6 +973,10 @@ export async function runFigures(args, deps = {}) {
     artwork: null,
     edition: null,
     resolvedVia: null,
+    // Set when two or more enumerated figures would be given ONE artwork file — by the de-hash,
+    // or by the resolver itself. It turns `unresolved` from "the delivery has a hole" into
+    // "we refused to guess", which is a different fact and gets its own report line.
+    artworkContest: null,
     outcome: null,
     reason: null,
     sendable: 0,
@@ -997,16 +1045,57 @@ export async function runFigures(args, deps = {}) {
   // directory, image-mapping entry — because that is what publish cross-checks against.
   const hashed = pending.filter((r) => !r.artwork && HASH_SUFFIX.test(r.basename));
   if (hashed.length) {
-    const stripped = hashed.map((r) => r.basename.replace(HASH_SUFFIX, ''));
-    const second = resolveArtwork(spawn, args.book, [...new Set(stripped)]);
-    hashed.forEach((rec, i) => {
-      const hit = second.get(stripped[i]);
-      if (hit) {
-        rec.artwork = hit.path;
-        rec.edition = hit.edition;
-        rec.resolvedVia = 'de-hashed';
-      }
-    });
+    // 🔴 THE CONTEST IS A PROPERTY OF THE CHAPTER, NOT OF THIS RUN'S SELECTION — so when
+    // `--module` narrowed the enumeration, ask the chapter again. It is pure file reading, no
+    // spawn, and it is what stops `--module m68852` (one claimant, no second record to compare
+    // against) buying the picture that belongs to the module next door.
+    const chapterFigures = args.modules
+      ? enumerateChapterFigures(args.book, args.chapter, { booksRoot: deps.booksRoot }).figures
+      : enumeration.figures;
+    const contested = dehashStemClaims(chapterFigures.map((f) => f.basename));
+
+    const dehashable = [];
+    for (const rec of hashed) {
+      const stem = rec.basename.replace(HASH_SUFFIX, '');
+      const claimants = contested.get(stem);
+      if (claimants) rec.artworkContest = { source: stem, claimants };
+      else dehashable.push(rec);
+    }
+    if (dehashable.length) {
+      const stripped = dehashable.map((r) => r.basename.replace(HASH_SUFFIX, ''));
+      const second = resolveArtwork(spawn, args.book, [...new Set(stripped)]);
+      dehashable.forEach((rec, i) => {
+        const hit = second.get(stripped[i]);
+        if (hit) {
+          rec.artwork = hit.path;
+          rec.edition = hit.edition;
+          rec.resolvedVia = 'de-hashed';
+        }
+      });
+    }
+  }
+
+  // 🔴 THE BACKSTOP, AND IT IS NOT A DUPLICATE OF THE GUARD ABOVE. The invariant is "one
+  // artwork file, one figure", however the two got there: the resolver itself can map two
+  // distinct names onto one delivered file, which no stem check can see. Neither guard can
+  // replace the other — this one cannot fire when a narrowed run holds a single claimant, and
+  // the stem guard cannot see a collision that never involved a de-hash. Measured 0 times on
+  // the corpus today, so this is the class rather than the instance.
+  const byArtwork = new Map();
+  for (const rec of pending) {
+    if (!rec.artwork) continue;
+    if (!byArtwork.has(rec.artwork)) byArtwork.set(rec.artwork, []);
+    byArtwork.get(rec.artwork).push(rec);
+  }
+  for (const [file, claimants] of byArtwork) {
+    if (claimants.length < 2) continue;
+    const names = claimants.map((r) => r.basename).sort();
+    for (const rec of claimants) {
+      rec.artwork = null;
+      rec.edition = null;
+      rec.resolvedVia = null;
+      rec.artworkContest = { source: file, claimants: names };
+    }
   }
 
   const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'figure-run-'));
@@ -1014,7 +1103,15 @@ export async function runFigures(args, deps = {}) {
     for (const rec of pending) {
       if (!rec.artwork) {
         rec.outcome = 'unresolved';
-        rec.reason = 'no artwork in any configured source tree';
+        rec.reason = rec.artworkContest
+          ? `REFUSED, not missing: ${rec.artworkContest.claimants.length} enumerated figures ` +
+            `would be handed the same artwork ${JSON.stringify(rec.artworkContest.source)} ` +
+            `(${rec.artworkContest.claimants.join(', ')}). They are different figures, so at ` +
+            `most one of them owns that picture and nothing here can tell which — translating ` +
+            `on a guess publishes one figure's artwork under another's caption and alt text, ` +
+            `and no downstream check can see it. Deliver the artwork under each figure's own ` +
+            `basename, or narrow the run to the one that owns it once that is known.`
+          : 'no artwork in any configured source tree';
         continue;
       }
       const outDir = path.join(tmpRoot, rec.basename);
@@ -1193,9 +1290,32 @@ export function summarise(result) {
   lines.push(
     ...nameList(
       'unresolved — the artwork delivery has a hole here',
-      by((f) => f.outcome === 'unresolved')
+      by((f) => f.outcome === 'unresolved' && !f.artworkContest)
     )
   );
+  // 🔴 A REFUSAL IS NOT A HOLE, AND THE OPERATOR'S NEXT ACTION IS DIFFERENT. A hole is fixed in
+  // the artwork delivery; a contest is fixed by giving each figure its own file — and until then
+  // the run is CORRECT to translate neither. Kept out of the list above so a delivery count is
+  // not quietly inflated by our own refusals.
+  const contests = new Map();
+  for (const f of result.figures) {
+    if (f.artworkContest) contests.set(f.artworkContest.source, f.artworkContest.claimants);
+  }
+  for (const [source, claimants] of contests) {
+    lines.push(
+      `  ⚠️ REFUSED to guess: ${claimants.length} figures would share one artwork ` +
+        `${JSON.stringify(source)} — ${claimants.join(', ')}`
+    );
+  }
+  // 🔴 WHICH FIGURE GOT WHICH FILE. `summarise` printed neither `artwork` nor `resolvedVia`, so
+  // a --dry-run — the one report an operator reads BEFORE spending — was silent about two
+  // figures sharing a source. The de-hashed ones are where a lookup-only fallback can put the
+  // wrong picture on the page, so they are the ones named with their file.
+  const dehashed = result.figures.filter((f) => f.resolvedVia === 'de-hashed');
+  if (dehashed.length) {
+    lines.push(`  de-hashed to stripped-name artwork, LOOKUP ONLY (${dehashed.length}):`);
+    for (const f of dehashed) lines.push(`    ${f.basename}  <-  ${f.artwork}`);
+  }
   lines.push(
     ...nameList(
       'text we cannot read — see experiments/figure-text-translation/READ-LAYER-ACCEPTANCE.md',
