@@ -6,7 +6,7 @@
  * the response — which §C118 measured the model restructuring. Per-block costs
  * the same in characters, since billing is by character.
  *
- *   node translate-blocks.mjs --book <slug> [--dry-run] [--no-glossary]
+ *   node translate-blocks.mjs --book <slug> [--out <dir>] [--dry-run] [--no-glossary]
  *
  * 🔴 `--book` IS REQUIRED, AND THE REFUSAL IS THE POINT. This is the figure
  * track's gate 1: the leg used to send `glossary: null` unconditionally, so a
@@ -31,6 +31,11 @@
  * CLI body now sits behind the `process.argv[1] === fileURLToPath(...)` guard
  * that `api-translate.js` uses, and `.env` is read inside it, so the module is
  * import-safe and its wiring is testable with a stub client and no network.
+ *
+ * ⚠️ THAT LAST CLAUSE WAS TRUE ONLY OF THE THREE PURE EXPORTS. `main` was not
+ * exported and minted its own client, so the WRITE path — the half `--out`
+ * changes — had no stub anywhere. `main` now takes its API module as a
+ * PARAMETER; see its docstring for why a module mock could not do the job.
  */
 import fs from 'fs';
 import path from 'path';
@@ -39,6 +44,7 @@ import {
   loadGlossary,
   filterGlossaryForText,
   glossaryStatusLine,
+  loadEnvFile,
 } from '../../tools/api-translate.js';
 import { bookToDomain } from '../../tools/lib/book-rendering-config.js';
 
@@ -46,7 +52,13 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '../..');
 
 /** Every flag this tool accepts. An argv token outside it is a typo, not a no-op. */
-const KNOWN_FLAGS = new Set(['--book', '--dry-run', '--no-glossary']);
+const KNOWN_FLAGS = new Set(['--book', '--out', '--dry-run', '--no-glossary']);
+
+/**
+ * The flags that take a value. Kept as its own set so the missing-value check
+ * below is a property of the flag, not a branch somebody has to remember to add.
+ */
+const VALUED_FLAGS = new Set(['--book', '--out']);
 
 /**
  * Parse argv, REFUSING anything unrecognised.
@@ -56,12 +68,18 @@ const KNOWN_FLAGS = new Set(['--book', '--dry-run', '--no-glossary']);
  * leave `book` unset and the run would send bare — walking straight through the
  * gate this file exists to hold.
  *
+ * ⚠️ A VALUED FLAG WHOSE VALUE IS MISSING IS ALSO A REFUSAL. `--book --dry-run`
+ * used to parse as `{book: '--dry-run', dryRun: FALSE}` — the operator asked for
+ * a dry run and would have got a PAID one, the safety flag eaten by the slug.
+ * That is the same silent-no-op class one argument along.
+ *
  * @param {string[]} argv  arguments only, without node/script
- * @returns {{ok: true, book: string|null, dryRun: boolean, noGlossary: boolean}
+ * @returns {{ok: true, book: string|null, out: string|null, dryRun: boolean,
+ *            noGlossary: boolean}
  *           | {ok: false, message: string}}
  */
 export function parseFigureArgs(argv) {
-  const out = { ok: true, book: null, dryRun: false, noGlossary: false };
+  const parsed = { ok: true, book: null, out: null, dryRun: false, noGlossary: false };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (!KNOWN_FLAGS.has(arg)) {
@@ -70,11 +88,21 @@ export function parseFigureArgs(argv) {
         message: `Unknown argument: ${arg}\nKnown: ${[...KNOWN_FLAGS].join(' ')}`,
       };
     }
-    if (arg === '--book') out.book = argv[++i] ?? null;
-    else if (arg === '--dry-run') out.dryRun = true;
-    else if (arg === '--no-glossary') out.noGlossary = true;
+    if (VALUED_FLAGS.has(arg)) {
+      const value = argv[i + 1];
+      if (value === undefined || value.startsWith('--')) {
+        return {
+          ok: false,
+          message: `${arg} needs a value, and got ${value === undefined ? 'nothing' : `\`${value}\``}.`,
+        };
+      }
+      i++;
+      if (arg === '--book') parsed.book = value;
+      else parsed.out = value;
+    } else if (arg === '--dry-run') parsed.dryRun = true;
+    else if (arg === '--no-glossary') parsed.noGlossary = true;
   }
-  return out;
+  return parsed;
 }
 
 /**
@@ -160,10 +188,13 @@ export function translateOptsFor(glossary, english) {
 }
 
 /**
- * The figure this run is for, read from what the extractor left in `out/`.
+ * The figure this run is for, read from the `meta.json` the extractor left in
+ * this run's output directory.
  *
- * Derived rather than hardcoded: `out/` holds whichever figure was extracted
- * LAST, and a literal in the record goes stale the moment a second figure runs.
+ * Derived rather than hardcoded: the DEFAULT output directory holds whichever
+ * figure was extracted LAST, and a literal in the record goes stale the moment a
+ * second figure runs. (Under `--out` there is one directory per figure, which is
+ * what makes a chapter-wide run possible at all.)
  * This is the same stem `publish-figure-svg.js` cross-checks the sidecar
  * against, so both stages name the figure from one place.
  */
@@ -172,8 +203,32 @@ export function figureNameFrom(metaPath) {
   return path.basename(meta.source, path.extname(meta.source));
 }
 
-async function main() {
-  const args = parseFigureArgs(process.argv.slice(2));
+/**
+ * Run the paid stage.
+ *
+ * 🔴 THE API MODULE IS A PARAMETER, NOT A MODULE MOCK. The real load is a
+ * dynamic `import()` of a COMPUTED ABSOLUTE PATH, which `vi.mock` cannot reach,
+ * so without this seam every test of the write path would have to spawn the tool
+ * — against the live, billed API. Injection is what keeps the isolation test
+ * free.
+ *
+ * ⚠️ A HALF injection is refused rather than filled in: supplying only
+ * `estimateIsk` would silently fall back to the real `createClient`, i.e. a test
+ * that believes it is stubbed spends money. Both or neither.
+ *
+ * `envPath` exists for the same reason: on a developer box `.env` is present, so
+ * a test asserting "a missing `.env` is survivable" passes there whatever the
+ * code does.
+ *
+ * @param {string[]} argv  arguments only, without node/script
+ * @param {{createClient?: Function, estimateIsk?: Function, envPath?: string}} [deps]
+ *        `envPath` defaults to `<repo>/.env`; the API pair to the real module.
+ */
+export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
+  if (Boolean(createClient) !== Boolean(estimateIsk)) {
+    throw new TypeError('main: inject both createClient and estimateIsk, or neither');
+  }
+  const args = parseFigureArgs(argv);
   if (!args.ok) {
     console.error(`  ✗ ${args.message}`);
     process.exitCode = 2;
@@ -187,21 +242,36 @@ async function main() {
     return;
   }
 
-  const blocks = JSON.parse(fs.readFileSync(path.join(HERE, 'out/blocks.json'), 'utf-8'));
+  // One figure, one directory. `HERE/out` is the default because the single-
+  // figure exploratory runs that built this tool use it; a chapter-wide run MUST
+  // pass --out, or every figure translates from whichever was extracted last.
+  // `path.resolve` because a relative --out is relative to the operator's cwd,
+  // not to this file — the one place cwd is what the user meant.
+  const outDir = args.out ? path.resolve(args.out) : path.join(HERE, 'out');
+
+  const blocks = JSON.parse(fs.readFileSync(path.join(outDir, 'blocks.json'), 'utf-8'));
   const send = blocks.filter((b) => b.send);
   const chars = send.reduce((n, b) => n + b.english.length, 0);
 
   // .env is not auto-loaded by node. Read it here, not at import: this file is
   // imported by its test, and a module that reads secrets at import cannot be.
-  for (const line of fs.readFileSync(path.join(REPO, '.env'), 'utf-8').split('\n')) {
-    const m = line.match(/^([A-Z_]+)=(.*)$/);
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim();
+  //
+  // ⚠️ `loadEnvFile` RETURNS a vars object and never touches `process.env`, so
+  // this is an assignment loop rather than a bare call — a literal "replace the
+  // readFileSync with loadEnvFile" would load the file, throw the result away,
+  // and drop the API key on the leg that costs money.
+  for (const [key, value] of Object.entries(loadEnvFile(envPath ?? path.join(REPO, '.env')))) {
+    if (!process.env[key]) process.env[key] = value;
   }
-  const { createClient, estimateIsk } = await import(path.join(REPO, 'tools/lib/malstadur-api.js'));
+  const api = createClient
+    ? { createClient, estimateIsk }
+    : await import(path.join(REPO, 'tools/lib/malstadur-api.js'));
 
   // The glossary line is part of the PLAN, so --dry-run shows it: the operator
   // decides whether to spend while looking at what would ride the wire.
-  console.log(`  ${send.length} blocks, ${chars} chars, est ${estimateIsk(chars).toFixed(2)} ISK`);
+  console.log(
+    `  ${send.length} blocks, ${chars} chars, est ${api.estimateIsk(chars).toFixed(2)} ISK`
+  );
   console.log(
     args.noGlossary
       ? '  glossary: NONE — bare run, acknowledged with --no-glossary'
@@ -212,7 +282,7 @@ async function main() {
     return;
   }
 
-  const client = createClient();
+  const client = api.createClient();
   const out = {};
   const log = [];
   for (const b of send) {
@@ -242,10 +312,10 @@ async function main() {
         blocksSteered: log.filter((l) => l.glossarySent).length,
       };
   fs.writeFileSync(
-    path.join(HERE, 'out/api-run.json'),
+    path.join(outDir, 'api-run.json'),
     JSON.stringify(
       {
-        figure: figureNameFrom(path.join(HERE, 'out/meta.json')),
+        figure: figureNameFrom(path.join(outDir, 'meta.json')),
         when: new Date().toISOString(),
         glossary: glossaryRecord,
         blocks: log,
@@ -256,7 +326,7 @@ async function main() {
     )
   );
   fs.writeFileSync(
-    path.join(HERE, 'out/translations-api.json'),
+    path.join(outDir, 'translations-api.json'),
     JSON.stringify(
       {
         _source: glossaryRecord
@@ -272,5 +342,5 @@ async function main() {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  await main();
+  await main(process.argv.slice(2));
 }
