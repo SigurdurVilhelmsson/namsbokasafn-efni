@@ -7,10 +7,23 @@ Before this, `send` was `not looks_verbatim(joined)` alone and `emit-blocks.py` 
 opened meta.json — the read layer's `decodable` flag had no consumer at all, so any test
 asserting "undecodable text is never sent" passed vacuously against every possible reader.
 
-🔴 The gate is tested on SYNTHETIC fonts on purpose. The current corpus decodes 7 of the 8
-type0 figures cleanly (ruling R-7), so the real artwork no longer exercises the undecodable
-path. A test that only ran when the corpus happened to be broken would go vacuous the day
-the reader improved — which is exactly what happened to the clause this replaces.
+Assertions 1-7 use SYNTHETIC fonts, so the gate stays pinned whatever the corpus does: a
+test that only ran while the artwork happened to be broken would go vacuous the day the
+reader improved, which is exactly what happened to the clause this file replaces.
+Assertion 9 is the other half — the gate firing END TO END on real artwork.
+
+🔴 An earlier version of this docstring said "the real artwork no longer exercises the
+undecodable path", inferred from ruling R-7's "7 of the 8 type0 figures decode cleanly".
+That was an inference presented as a measurement and it was FALSE: scanning all 817
+harness rows found CNX_Chem_05_02_FoodLabel carrying an undecodable PAGE/TT1, in the
+PAGE-TEXT bucket — a population R-7 says nothing about. Re-derive before believing any
+claim of the form "the corpus cannot exercise this".
+
+⚠️ Assertion 9 SPAWNS emit-blocks.py, so this file WRITES out/{runs,meta,blocks}.json —
+the scratch directory shared with test_blockkey_consumers.py. Both regenerate those three
+themselves, so the two are order-independent in both directions (verified). It does NOT
+touch out/artwork.png, which test_blockkey_consumers requires to be SciMethod's; only
+strip-text.py writes that, and a manual run of it clobbers that fixture.
 """
 import sys
 from pathlib import Path
