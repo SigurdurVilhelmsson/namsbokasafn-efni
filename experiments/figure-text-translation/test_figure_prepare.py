@@ -190,6 +190,9 @@ if PREPARE.exists():
         _mod = importlib.util.module_from_spec(_spec)
         _spec.loader.exec_module(_mod)
     except Exception as exc:                      # noqa: BLE001
+        _mod = None                               # module_from_spec binds BEFORE
+        # exec_module, so without this the next check reports PASS on a module whose
+        # import raised.
         check('0c figure-prepare.py imports without running', False,
               f'{type(exc).__name__}: {exc}')
 check('0c figure-prepare.py imports without running', _mod is not None,
@@ -315,6 +318,44 @@ with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as forei
           f"{d.get('sendable')!r} sendable: {r.stderr.strip()[-300:]}")
     check('3g ... and prepare.json carries the form-text count from the same run',
           d.get('formTextXObjects') == 2, f"{d.get('formTextXObjects')!r}")
+
+# ── 3h. THE GHOSTSCRIPT BRANCH — .eps input, which no other case reaches ─────────────
+# `stage_artwork` has two paths and only the copy path was exercised above. The EPS path
+# is not hypothetical: 294 chemistry figures and 7 of ch04's 29 are `.eps`, and it is
+# also where `--basename` earns its keep, because a gs-staged temp file has a name that
+# has nothing to do with the CNXML basename.
+# The EPS is MADE HERE from the committed fixture rather than committed itself: a second
+# binary artefact that has to be kept true is a liability, and `gs` is already a hard
+# dependency of this chain (readlayer stages .eps with the same argv).
+with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as foreign:
+    eps = Path(td) / 'CNX_Fake_Vector_img.eps'
+    made = subprocess.run(['gs', '-q', '-dNOPAUSE', '-dBATCH', '-dSAFER',
+                           '-sDEVICE=eps2write', f'-sOutputFile={eps}', str(FIXTURE)],
+                          capture_output=True, text=True)
+    check('3h PRECONDITION an .eps was produced from the fixture',
+          made.returncode == 0 and eps.exists() and eps.stat().st_size > 0,
+          f'gs exit {made.returncode}: {made.stderr.strip()[-200:]}')
+    if eps.exists() and eps.stat().st_size > 0:
+        out = Path(td) / 'out-eps'
+        r = run_prepare(eps, '--basename', 'CNX_Chem_04_03_map2_img', '--out', out,
+                        cwd=foreign)
+        d = load_prepare_json(out) or {}
+        check('3i an .eps is staged through ghostscript and prepares', r.returncode == 0,
+              f'exit {r.returncode}: {r.stderr.strip()[-400:]}')
+        # THE WHOLE POINT of --basename on this branch. Without the staging rename,
+        # meta.source names a random ghostscript temp file, publish-figure-svg.js
+        # refuses `basename-mismatch`, and it does so AFTER the figure is paid for.
+        meta = json.loads((out / 'meta.json').read_text()) \
+            if (out / 'meta.json').exists() else {}
+        check('3j the gs-staged PDF carries the CNXML basename, not a temp name',
+              Path(meta.get('source', '')).stem == 'CNX_Chem_04_03_map2_img'
+              and (out / 'CNX_Chem_04_03_map2_img.pdf').exists(),
+              f"{meta.get('source')!r}")
+        check('3k the text survives the PDF -> EPS -> PDF round trip',
+              d.get('blocks') == 4 and d.get('sendable') == 3,
+              f"{d.get('blocks')!r}/{d.get('sendable')!r}")
+        check('3l ... and prepare.json still reports the ORIGINAL .eps as its source',
+              d.get('source') == str(eps), f"{d.get('source')!r}")
 
 # ── 4. refusals ──────────────────────────────────────────────────────────────────────
 with tempfile.TemporaryDirectory() as td:
