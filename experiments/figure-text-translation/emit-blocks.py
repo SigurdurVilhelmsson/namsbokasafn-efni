@@ -49,7 +49,7 @@ for b in blocks:
     if not FT.looks_verbatim(joined):
         if _looks_undecoded(joined):
             blocked.append((joined, bad))         # prose we WOULD have bought
-        elif bad:
+        elif bad and send:
             freed.append((joined, bad))           # drawn with a flagged font, reads CLEAN
     out.append(dict(key=key, english=joined, lines=lines, arc=arc, send=send))
 (OUT / 'blocks.json').write_text(json.dumps(out, indent=1, ensure_ascii=False))
@@ -78,6 +78,12 @@ if blocked:
 # drawn with a flagged font whose own text reads CLEAN is BOUGHT. Silence here is what a
 # per-font decision produced — 22 of 24 holds on CNX_Chem_05_02_FoodLabel were blocks
 # like 'Nutrition Facts', withheld with no line of output saying so.
+# ⚠️ `and send` is LOAD-BEARING, not belt-and-braces. `bad` comes from
+# `undecodable_fonts`, which reports every font that is not KNOWN-decodable — and that
+# includes a font MISSING from meta.json, which `sendable` refuses via `missing_fonts`.
+# Without this clause a block held by the fail-closed plumbing check would be printed
+# under "SENT ANYWAY" while `send` is False: a report contradicting the spend decision it
+# describes, which is the very class of defect R4b exists to remove.
 if freed:
     flagged = sorted({f for _t, bad in freed for f in bad})
     print(f"\n  SENT ANYWAY ({len(freed)} prose blocks on a flagged font, text reads "

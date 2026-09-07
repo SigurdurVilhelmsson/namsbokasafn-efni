@@ -41,7 +41,12 @@ def check(label, got, want):
 
 
 def block(text, font):
-    """One run is enough: the gate is over the SET of fonts a block draws with."""
+    """One run is enough.
+
+    ⚠️ The docstring here used to read "the gate is over the SET of fonts a block draws
+    with". Since R4b that is FALSE: the decodability gate is over the block's own TEXT,
+    and the font table only still matters for the fail-closed missing-font clause.
+    """
     return [dict(text=text, x=0.0, y=0.0, size=9.0, rot=0.0, adv=6.0, font=font)]
 
 
@@ -233,6 +238,23 @@ else:
         sent_now = {b['english'].strip() for b in blocks if b['send']}
         check('9d-iii the flagship false positive IS now bought',
               'Nutrition Facts' in sent_now, True)
+
+# ── 9e THE REPORT MUST NOT CONTRADICT THE SPEND DECISION ───────────────────────────
+# emit-blocks.py prints a block under "SENT ANYWAY" when it is drawn with a flagged font
+# and its own text reads clean. `bad` (from undecodable_fonts) also covers a font MISSING
+# from meta.json, which `sendable` refuses via `missing_fonts` — so without an `and send`
+# guard, a block held by the fail-closed clause is announced as bought. Asserted on the
+# FUNCTIONS rather than through the CLI, because no corpus figure has a ghost font
+# (resolve_font mints UNSCOPED/... precisely so), and a behavioural pin would be vacuous.
+_ghost = block(PROSE, 'PAGE/GHOST')
+check('9e a ghost-font block is flagged by the per-font report...',
+      bool(undecodable_fonts(_ghost, OK)), True)
+check('9e ...and is NOT sendable, so the two must never be reported together',
+      sendable(_ghost, PROSE, OK), False)
+src_eb = (Path(__file__).resolve().parent / 'emit-blocks.py').read_text()
+code_eb = '\n'.join(l for l in src_eb.splitlines() if not l.lstrip().startswith('#'))
+check('9e emit-blocks.py gates its SENT-ANYWAY report on `send`',
+      'elif bad and send:' in code_eb, True)
 
 # ── 10. THE IMPORT MUST STAY LAZY (R4b introduced this dependency) ─────────────────
 # `figtext.sendable` imports readlayer._looks_undecoded rather than copying it, because a

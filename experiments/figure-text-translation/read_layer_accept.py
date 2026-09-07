@@ -95,7 +95,8 @@ WS = ' \t\r\n\f'
 # different routes, so an exact compare is not the question; a block that has MOVED is.
 BBOX_TOL_PT = 1.0
 
-SELFTEST_SAMPLE = 40      # figures per bucket for selftest assertions 1-3 and 5
+SELFTEST_SAMPLE = 40      # figures per bucket for selftest assertions 1-3 and 5-7
+                          # (the page-text sample is 41: see C1_SURPLUS_FIGURE below)
 SELFTEST_CRASH_FLOOR = 20 # assertion 4's floor: "over 20 of the 38"
 
 # Assertion 7's stimulus, named into the page-text sample because the evenly-spaced 40
