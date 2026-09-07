@@ -153,6 +153,33 @@ characters lost, every printed criterion clean, `exit 0`**, while the SAME mutan
 40 page-text figures. The comparison datum sat unused on every row from the start: `oracle_chars`.
 See **C2b**, below.
 
+### C2b — completeness on the C2 population · **0 short of the oracle / 286 in scope**
+
+🔴 **ADDED 2026-09-07. This is the criterion whose absence made C2's number mean ">= 1 character".**
+On every figure where the baseline cannot read, the oracle HAS text and the candidate reads — the
+**silent** case, since a candidate that raises or is empty is loud and C2 already names it — the
+candidate must hold, per character, at least what `pdftotext` attests.
+
+| | figures |
+|---|---:|
+| in scope (baseline cannot read · oracle has text · candidate reads) | 286 |
+| **SHORT of the oracle** | **0** |
+
+⚠️ **THE DENOMINATOR IS THE POINT.** A clean C2b over an empty scope would say nothing whatever,
+so the scope is printed beside the count on every run. 286 of 287 is the whole C2 population bar
+`CNX_Chem_06_01_Vibrstring`, which has no text for any instrument.
+
+**It is VERDICT-BEARING, and that was decided by measurement rather than by preference:** the full
+817-figure run reports 0 shortfall figures out of 286, so making it gate costs nothing today while
+catching the class it exists for. Had it been non-zero the criterion would have stayed advisory
+with the figures NAMED, and the decision handed back.
+
+**`--selftest` assertion 9** is its sensitivity control: a mutant keeping the first quarter of each
+figure's runs must be flagged on every figure it actually reduced (40 of 40 measured), while the
+real candidate is clean over a scope that must be non-zero. That mutant shape is deliberate — it is
+what a /Form walk that descends into some forms and not others produces, which is this branch's own
+subject matter.
+
 ### C3 — oracle agreement · **0 disagreements / 817**
 
 Neither oracle-only nor reader-only. The candidate and poppler agree on *whether a figure has text
@@ -235,7 +262,8 @@ candidate-arm fields including `c1_regression`, `c1_excused`, `c2_gained`, `c4b_
 `c4b_dropped`, `c4b_vanished`, `shape` and `dup_keys`). **A planted change was detected by the same
 comparator**, so the null is not an instrument failure.
 
-**`VERDICT: exit 0 — C1 regressions ×0, C1b silent-reduction ×0.`**
+**`VERDICT: exit 0 — C1 regressions ×0, C1b silent-reduction ×0, C2b oracle shortfall ×0`**
+**`(of 286 in scope).`**
 
 ---
 
@@ -265,6 +293,27 @@ move it. Only then is anything below a fact.
 
 ▶ **Fills on those four figures are unreliable and should not be trusted**, and that is the whole of
 the claim — H7 is *narrow*, not absent.
+
+🔴 **AMENDED 2026-09-07 — "UNRELIABLE" WAS TOO KIND FOR THE THREE `Separation` FIGURES, AND THE
+DIFFERENCE WAS THE WHOLE DEFECT.** `_fill` dispatched on the COMPONENT COUNT, so a 1-component
+`/Separation` tint fell into the DeviceGray branch — and the two spaces mean OPPOSITE things by one
+component: DeviceGray 1.0 is white, a Separation tint of 1.0 is FULL colorant. titration2's tint
+transform decodes to DeviceCMYK `(0,0,0,t)`, i.e. 100% black ink, and the reader returned
+`('cmyk',0,0,0,0)` → RGB (1,1,1). **18 runs across the three figures published `fill="#ffffff"`
+through the real `svgout.write_svg`** — `'Phenolphthalein'`, `'pH range'`, `'Methyl orange'`,
+`'ammonium (NH4+)'` among them — and `strip-text.py` removes the English underneath (712 dark px →
+0). **5 of the affected blocks are `sendable`, so that is a PURCHASED Icelandic label rendered
+white on white: absent, not mis-coloured.** "Unreliable colour" and "the label you paid for
+disappears" are not the same disclosure.
+▶ **Fixed:** dispatch is on the colour space, and an unrecognised space returns `None`, which
+`compose.cmyk` and `svgout` render BLACK — the behaviour `_fill`'s own comment ("a fourth colour
+space showing up must be VISIBLE rather than quietly turning black") was reaching for, black being
+visible and white not. Measured after: white runs 18 → 0, with the DeviceCMYK `k=1.0` control on
+the SAME figures unchanged. Pinned BY VALUE at `test_readlayer.py` CASE 7c — which 7b structurally
+could not do, being a shape test over a population that excludes all three figures.
+⚠️ **The three figures are still counted here, and must be:** they still carry an unrecognised
+space, the fill is still not *known* to be right, and 7c uses that very count as its non-vacuity
+denominator. What changed is that the failure is now the VISIBLE direction.
 
 ### The `\x1f` hazard, re-measured on the full population
 
@@ -382,6 +431,27 @@ R3's strip-text evidence was **`.pdf` rows only**. Ruling **R-5** found the `.ep
 🔴 **Ghostscript's `pdfwrite` emits no `/Form` XObjects, so the form walk R3 exists for cannot
 execute on an EPS-sourced figure at all.** Text removal itself works — 60 of 60 clean.
 
+🔴 **CORRECTED 2026-09-07 — THAT "60 of 60 clean" WAS MEASURED WITH BT-RESIDUE, THE ONE INSTRUMENT
+THIS DOCUMENT ITSELF PROVES CANNOT FAIL HERE.** Line 394 below says it in as many words: *"BOTH
+ARMS LEAVE ZERO BT … A test asserting only 'no reachable stream contains BT' therefore PASSES ON
+THE WRECKAGE."* The pixel arm that could have seen it was selected on `forms > 0` — a property
+`gs`'s `pdfwrite` guarantees is 0 for every EPS — so the `.eps` pixel population was **empty by
+construction**, and the surviving claim was a saturated rate from a blind instrument over exactly
+the population where the defect lived.
+▶ **What it was blind to:** `BT` are two ordinary bytes and they occur inside the FLATE PAYLOAD of
+an inline image, which only `.eps`-sourced figures carry here. `re.compile(rb'BT.*?ET', re.S)` then
+matched from inside the payload forward to the next real `ET`, deleting the image's tail and every
+drawing operator between. **6 of 817 figures, 8 matches; `CNX_Chem_09_03_BoylesLaw1` lost 147,074
+non-white pixels — 53.9% of its drawing, the pressure gauge and BOTH Boyle's-law graphs** — while
+`bt_blocks()` reported 0 and `pdftotext` reported 0 words on the wreckage.
+✅ **Fixed:** the scan is `pikepdf.parse_content_stream`, where an inline image is its own
+instruction and its payload is never scanned; an unparsable stream RAISES rather than falling back.
+**Corpus reach, all 817 in-scope figures: 817/817 stripped, 0 parse failures, inline images
+conserved 18,941 → 18,941 exactly.** `test_readlayer.py` CASE 14j-14m anchors on a TOKENISER and on
+pixels — never on `BT.*?ET` — and 14k is a serialiser control, since every stream now re-serialises
+and "the bytes changed" no longer implies "something was removed". **14j plants the evidence
+first**: the byte regex must be shown destroying this figure's artwork before the fix is asserted.
+
 ⚠️ **State this as a property of the CONVERTER, not of EPS.** The claim measured is *"gs's output
 carries no forms"*, **not** *"EPS files contain no form-like structure"*. The original PostScript
 may well; `gs` flattens it. The operative consequence holds either way, because **the pipeline
@@ -469,7 +539,7 @@ Run them from `experiments/figure-text-translation`, with `FIGTEXT_PYLIBS=./pyli
 | command | what a pass looks like |
 |---|---|
 | `python3 -u read_layer_accept.py --selftest` | a terminal `ALL … PASS` line, **exit 0** |
-| `python3 -u read_layer_accept.py --candidate --json <f>` | a terminal `VERDICT: exit 0` line naming 0 C1 regressions and 0 C1b silent reductions |
+| `python3 -u read_layer_accept.py --candidate --json <f>` | a terminal `VERDICT: exit 0` line naming 0 C1 regressions, 0 C1b silent reductions and 0 C2b oracle shortfalls, the last with its in-scope denominator printed beside it |
 | `python3 -u test_readlayer.py` (and `test_sendable`, `test_blockkey_consumers`, `test_c4b_multiset`, `test_figtext_normalise`, `test_sources`) | a terminal `ALL PASS` line, **exit 0** |
 
 ⚠️ **They are NOT pytest suites and `pytest` is not installed here** — each is a plain script that
