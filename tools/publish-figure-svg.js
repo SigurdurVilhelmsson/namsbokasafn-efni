@@ -145,7 +145,8 @@ export function escapesMediaDir(bookDir, outputName) {
  *
  * @param {{sidecarPath:string, svgPath:string, metaPath:string,
  *          expectedRenderHash?:string|null}} options
- * @returns {{ok:true, book, basename, outputName, path, replaced, composedHash:string|null}
+ * @returns {{ok:true, book, basename, outputName, path, replaced,
+ *            composedHash:string|null, composedVersion:string|null}
  *          |{ok:false, reason:string, message:string}}
  */
 export function publishFigureSvg(options = {}) {

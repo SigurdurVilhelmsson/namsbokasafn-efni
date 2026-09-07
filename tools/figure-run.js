@@ -24,7 +24,8 @@
  *    7. SIDECAR      writeSidecar IMMEDIATELY, and REGARDLESS of step 8            ← records it
  *    8. verify       compare key SETS both ways → decides the BUCKET, never the record
  *    9. compose      figure-compose.py, from the sidecar's own blocks
- *   10. mint+publish the mapping entry (tmp+rename), then publish → stamps composedHash
+ *   10. mint+publish the mapping entry (tmp+rename), then publish → stamps composedHash AND
+ *                   composedVersion, the two fields that describe the PUBLISHED ARTWORK
  *
  * Step 7 sits ahead of everything that can fail after payment. Without it, ADDING step 8 would
  * make things worse: a 7-of-8 return would be bucketed `failed-mt` and all 7 paid translations
