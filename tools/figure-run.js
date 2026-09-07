@@ -7,7 +7,10 @@
  *        [--module m…] [--figure B…] [--stale] [--force] [--dry-run]
  *
  * 🔴 THE ONLY STAGE THAT SPENDS MONEY IS `translate-blocks.mjs`, AND THE ONLY FIGURE IT IS EVER
- * RUN FOR IS ONE WITH **NO SIDECAR**. That is R8, and it is not a flag: after an editor's
+ * RUN FOR IS ONE WITH **NO SIDECAR FILE**. ⚠️ The word FILE is load-bearing and was missing:
+ * `readSidecar` returns null for a malformed sidecar as well as an absent one, so a
+ * git-conflicted or truncated file read as "nobody has bought this" and was bought AND
+ * overwritten — see `applySidecarGuard`. That is R8, and it is not a flag: after an editor's
  * correction the sidecar's blocks ARE the corrected Icelandic, so re-running the MT would
  * overwrite the correction *and* charge for it. `--stale` and `--force` therefore spend NOTHING
  * — they recompose. **To re-buy a figure, a human deletes its `books/<slug>/figure-text/
@@ -576,6 +579,50 @@ export function applyDriftGuard(rec) {
 }
 
 /**
+ * 🔴 A SIDECAR THAT EXISTS AND CANNOT BE READ IS NOT "NO SIDECAR" — REFUSE, NEVER RE-BUY.
+ *
+ * `readSidecar` answers `null` for BOTH "the file is absent" and "the file is present and
+ * malformed", and its own comment gives the RENDERER's reason for that: one bad file must not
+ * kill a whole chapter's render. The spend gate one function down reads that single value, so
+ * a git-conflicted, truncated or hand-mangled sidecar was indistinguishable from a figure
+ * nobody has ever bought — it was sent to the paid MT, and step 7's `writeSidecar` then
+ * overwrote it, destroying a head editor's approved Icelandic and the `state` key, with a
+ * green verdict and no bucket.
+ *
+ * ⚠️ THIS IS CLAUDE.md §C14 ③'s CLASS, NOT A ONE-OFF: a gate keyed on one representation of
+ * "nothing", walked past by another representation of "nothing". There it was four bytes of
+ * `null` in `glossary-unified.json`, which parsed, so `kind` was not `'absent'` while the
+ * payload was the exact sentinel for "no previous producer", and all three gates stood down.
+ * Expect the shape wherever a reader collapses "missing" and "broken" into one falsy value.
+ *
+ * ▶ `publishFigureSvg` already gets this right — it refuses `no-sidecar` with "missing OR
+ * malformed" — but it runs AFTER the money and AFTER the overwrite, so it can never see the
+ * file the driver destroyed.
+ *
+ * The check is `existsSync` on the path `readSidecar` just failed on: it costs one stat, it
+ * runs before anything is resolved or prepared, and it cannot be reached by `--force` (which
+ * suppresses only the skipped-current skip) or by `--dry-run`.
+ *
+ * @param {object} rec MUTATED
+ * @param {string} bookDir
+ * @returns {object} the same record
+ */
+export function applySidecarGuard(rec, bookDir) {
+  if (rec.sidecar) return rec;
+  const file = sidecarPath(bookDir, rec.basename);
+  if (!fs.existsSync(file)) return rec; // genuinely absent: the ordinary, spendable state
+  rec.sidecarUnreadable = true;
+  rec.outcome = 'failed-sidecar';
+  rec.reason =
+    `${file} EXISTS and could not be read as a sidecar object (malformed JSON, a git merge ` +
+    `conflict, a truncated write, or a top-level array). That is NOT "no sidecar": this ` +
+    `figure may already carry an editor's approved Icelandic, so it was neither sent to the ` +
+    `MT nor overwritten. Repair or delete the file by hand — deleting it is what makes the ` +
+    `figure spendable again.`;
+  return rec;
+}
+
+/**
  * STEPS 6–10 for ONE figure, live. Mutates `rec`; returns nothing.
  *
  * 🔴 TWO PATHS, SELECTED BY WHETHER A SIDECAR EXISTS — NOT BY A FLAG.
@@ -874,6 +921,11 @@ export async function runFigures(args, deps = {}) {
     captionSegmentId: f.captionSegmentId,
     altSegmentId: f.altSegmentId,
     sidecar: readSidecarFor(bookDir, f.basename),
+    // 🔴 THE FILE IS THERE AND THE READ CAME BACK NULL — SEE `applySidecarGuard`. Recorded
+    // beside the parsed value rather than replacing it, because every other consumer of
+    // `rec.sidecar` (the spend gate, `--stale`, the drift guard, compose) wants the parsed
+    // object and must keep seeing `null` here.
+    sidecarUnreadable: false,
     artwork: null,
     edition: null,
     resolvedVia: null,
@@ -897,12 +949,19 @@ export async function runFigures(args, deps = {}) {
     warnings: [],
   }));
 
+  for (const rec of records) applySidecarGuard(rec, bookDir);
+
   // `--stale`: narrow to the figures that already HAVE a sidecar, i.e. the ones a recompose can
   // finish. Selecting them OUT of the run rather than giving them an outcome is deliberate and
   // matches `--figure`: the tally then describes what was worked on, and the partition still
   // sums. Selecting nothing is a legitimate answer here (nothing is stranded), so — unlike a
   // `--figure` that names no figure — it is not a refusal.
-  const selected = args.stale ? records.filter((r) => r.sidecar) : records;
+  //
+  // 🔴 THE PREDICATE IS "A SIDECAR FILE IS PRESENT", NOT "readSidecar RETURNED SOMETHING". An
+  // unreadable sidecar HAS a file, so `--stale` must SELECT it — deselecting it printed the
+  // operator the exact opposite of the truth: "have no sidecar … the ones a run WITHOUT
+  // --stale would buy", about the one file in the chapter that must never be bought again.
+  const selected = args.stale ? records.filter((r) => r.sidecar || r.sidecarUnreadable) : records;
 
   // 🔴 "ALREADY DONE" IS A HASH QUESTION, NOT A FILE QUESTION, AND IT IS ASKED FIRST — before
   // anything is resolved or prepared, because a figure that needs nothing should cost nothing.

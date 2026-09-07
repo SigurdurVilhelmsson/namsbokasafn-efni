@@ -38,13 +38,29 @@ export const PROCESS_OUTCOMES = [
   'failed-mt',
   'failed-compose',
   'failed-publish',
+  // 🔴 THE SIDECAR FILE IS PRESENT AND COULD NOT BE READ — WHICH IS NOT "NO SIDECAR".
+  // `readSidecar` answers null for absent AND for malformed (the renderer's reason: one bad
+  // file must not kill a whole chapter's render), so the spend gate could not tell a figure
+  // nobody has bought from a figure whose committed Icelandic is a git conflict. It bought the
+  // second one and overwrote the file. This bucket is what makes the two states different
+  // facts: it is a FAILURE (the run needs a human), never spendable, and never overwritten.
+  // ⚠️ Deliberately NOT in TRANSLATE_PATH_FAILURES: a photograph's sidecar can be conflicted
+  // too, and counting this as an attempted translation would print "zero translated although
+  // translate-able figures were found" about a chapter of photographs.
+  'failed-sidecar',
   'skipped-current',
 ];
 
 export const ALL_OUTCOMES = [...CLASSIFICATION_OUTCOMES, ...PROCESS_OUTCOMES];
 
 /** Every failure. Each one pushes its own fatal reason, so any of them makes the run not-ok. */
-const FAILED = ['failed-prepare', 'failed-mt', 'failed-compose', 'failed-publish'];
+const FAILED = [
+  'failed-prepare',
+  'failed-mt',
+  'failed-compose',
+  'failed-publish',
+  'failed-sidecar',
+];
 
 /**
  * The failures reachable ONLY by a figure that was going to be translated.

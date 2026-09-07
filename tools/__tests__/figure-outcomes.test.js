@@ -36,6 +36,7 @@ describe('figure outcome vocabulary', () => {
       'failed-mt',
       'failed-compose',
       'failed-publish',
+      'failed-sidecar',
       'skipped-current',
     ])
       expect(PROCESS_OUTCOMES).toContain(o);
@@ -158,6 +159,28 @@ describe('verdict', () => {
     const v = verdict(t, sum(t));
     expect(v.ok).toBe(false);
     expect(v.reasons.join(' ')).toContain('failed-prepare');
+    expect(v.reasons.join(' ')).not.toMatch(/none .*translated|zero translated/i);
+  });
+
+  // 🔴 money/F1. A sidecar file that is present and unreadable is a FAILURE — the run needs a
+  // human — because the figure may already carry an editor's approved Icelandic and the driver
+  // cannot tell. It is the bucket that stops the spend gate reading such a file as "no sidecar".
+  it('is NOT ok when a sidecar is present and unreadable', () => {
+    const t = { ...emptyTally(), translated: 5, 'failed-sidecar': 1 };
+    const v = verdict(t, sum(t));
+    expect(v.ok).toBe(false);
+    expect(v.reasons.join(' ')).toContain('failed-sidecar');
+  });
+
+  // 🔴 …and it is NOT an attempted translation. A photograph's sidecar can be conflicted too,
+  // so counting it in `attempted` would print "zero translated although translate-able figures
+  // were found" about a chapter of legitimate photographs — the same false claim `failed-publish`
+  // and `failed-prepare` were narrowed out of, for the same reason.
+  it('does NOT claim translate-able figures existed when a photo-only chapter has an unreadable sidecar', () => {
+    const t = { ...emptyTally(), 'copied-photo': 9, 'failed-sidecar': 1 };
+    const v = verdict(t, sum(t));
+    expect(v.ok).toBe(false);
+    expect(v.reasons.join(' ')).toContain('failed-sidecar');
     expect(v.reasons.join(' ')).not.toMatch(/none .*translated|zero translated/i);
   });
 

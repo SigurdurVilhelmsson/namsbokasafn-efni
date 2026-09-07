@@ -28,7 +28,7 @@ import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { runFigures, main, isStale, applyDriftGuard } from '../figure-run.js';
+import { runFigures, main, isStale, applyDriftGuard, summarise } from '../figure-run.js';
 
 const require = createRequire(import.meta.url);
 const {
@@ -68,8 +68,17 @@ afterEach(() => {
  * while `generate-image-mapping.js`'s `[^>]*` scan does not, so the driver can enumerate a
  * figure it could never mint a mapping entry for. That disagreement is the pre-flight's whole
  * reason to exist, and it is reproduced here rather than simulated.
+ *
+ * `rawSidecars` writes the BYTES given, bypassing `writeSidecar` — the only way to plant a
+ * sidecar that is present on disk and unparsable, which is money/F1's whole subject.
  */
-function makeBook({ figures, unmintable = [], mapping = null, sidecars = {} } = {}) {
+function makeBook({
+  figures,
+  unmintable = [],
+  mapping = null,
+  sidecars = {},
+  rawSidecars = {},
+} = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'figrun-paid-'));
   madeRoots.push(root);
   const booksRoot = path.join(root, 'books');
@@ -98,6 +107,11 @@ function makeBook({ figures, unmintable = [], mapping = null, sidecars = {} } = 
   }
   for (const [basename, sidecar] of Object.entries(sidecars)) {
     writeSidecar(bookDir, basename, sidecar);
+  }
+  for (const [basename, bytes] of Object.entries(rawSidecars)) {
+    const p = sidecarPath(bookDir, basename);
+    fs.mkdirSync(path.dirname(p), { recursive: true });
+    fs.writeFileSync(p, bytes, 'utf-8');
   }
   return { root, booksRoot, bookDir, sourceDir };
 }
@@ -879,5 +893,144 @@ describe('the live run’s own housekeeping', () => {
     const { booksRoot } = makeBook({ figures: ['FIG_A'] });
     await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
     expect(fs.existsSync(path.join(REPO_ROOT, 'books', SLUG))).toBe(false);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 money/F1 — A SIDECAR THAT EXISTS BUT CANNOT BE READ IS NOT "NO SIDECAR".
+//
+// `readSidecar` returns null for BOTH "absent" and "present but malformed" (the renderer's
+// reason: one bad file must not kill a whole chapter render). The spend gate reads that one
+// value, so a git-conflicted, truncated or hand-mangled sidecar was SPENDABLE — and step 7's
+// `writeSidecar` then overwrote it, destroying a head editor's approved Icelandic and the
+// `state` key with a green verdict and no bucket.
+//
+// This is CLAUDE.md §C14 ③'s class exactly: a gate keyed on one representation of "nothing",
+// walked past by another representation of "nothing" (there, four bytes of `null` in
+// glossary-unified.json; here, any byte sequence JSON.parse refuses).
+//
+// ⚠️ EVERY CASE BELOW IS PAIRED WITH THE VALID-SIDECAR CONTROL in the same describe: an
+// unreadable-file suite that only ever refuses would pass against a driver that refuses
+// everything, and the money assertion (`translate` spawned 0) would then be meaningless.
+describe('a sidecar that is present but unreadable is refused, never re-bought', () => {
+  const CONFLICTED =
+    '<<<<<<< HEAD\n' +
+    JSON.stringify({
+      version: 1,
+      basename: 'FIG_A',
+      state: 'approved',
+      blocks: { k0: 'Celsíus' },
+    }) +
+    '\n=======\n' +
+    JSON.stringify({ version: 1, basename: 'FIG_A', blocks: { k0: 'IS k0' } }) +
+    '\n>>>>>>> origin/main\n';
+  const TRUNCATED = '{"version": 1, "basename": "FIG_A", "blocks": {"k0": "Cels';
+  // 🔴 THE SHAPE THAT PARSES. `readSidecar` returns null for a top-level array too, so this
+  // one never reaches JSON.parse's throw — it is refused by the type check. A fix keyed on
+  // `try { JSON.parse } catch` alone would leave this arm open, which is why it is here.
+  const ARRAY = '[{"version": 1, "blocks": {"k0": "Celsíus"}}]\n';
+
+  for (const [label, bytes] of [
+    ['a git merge conflict', CONFLICTED],
+    ['a truncated write', TRUNCATED],
+    ['a top-level array', ARRAY],
+  ]) {
+    it(`refuses ${label}: no MT, no overwrite, and the run needs a human`, async () => {
+      const { booksRoot, bookDir } = makeBook({
+        figures: ['FIG_A'],
+        rawSidecars: { FIG_A: bytes },
+      });
+      const before = fs.readFileSync(sidecarPath(bookDir, 'FIG_A'), 'utf-8');
+      const spawn = fakeSpawn();
+      const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+      expect(spawn.countOf('translate')).toBe(0); // THE MONEY ASSERTION
+      expect(rec(result, 'FIG_A').spent).toBe(false);
+      expect(rec(result, 'FIG_A').outcome).toBe('failed-sidecar');
+      expect(rec(result, 'FIG_A').reason).toContain(sidecarPath(bookDir, 'FIG_A'));
+      // …and the bytes are EXACTLY as they were. A count of keys would pass against a driver
+      // that rewrote the file with the same number of different ones.
+      expect(fs.readFileSync(sidecarPath(bookDir, 'FIG_A'), 'utf-8')).toBe(before);
+      expect(result.verdict.ok).toBe(false);
+      // It costs nothing: the resolver is never even asked about it.
+      expect(spawn.countOf('prepare')).toBe(0);
+    });
+  }
+
+  // 🔴 THE CONTROL. Same fixture, same stages, one byte-level difference in the file: a VALID
+  // sidecar with no composedHash is paid for and never published, so it recomposes and
+  // publishes. Without this the three refusals above are indistinguishable from a driver that
+  // refuses every figure that has any sidecar at all.
+  it('a VALID sidecar in the same harness still recomposes and publishes (the control)', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      sidecars: { FIG_A: madeSidecar('FIG_A', { k0: 'Celsíus' }) },
+    });
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(spawn.countOf('translate')).toBe(0);
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(result.verdict.ok).toBe(true);
+    expect(readSidecar(bookDir, 'FIG_A').blocks).toEqual({ k0: 'Celsíus' });
+  });
+
+  // 🔴 AND THE ONE THAT SEPARATES "unreadable" FROM "absent": a figure with NO sidecar file at
+  // all in the SAME run is bought. Both arms are needed, or "refuses the unreadable one" is
+  // satisfied by a driver that has stopped spending altogether.
+  it('buys the figure with no sidecar FILE while refusing the unreadable one beside it', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A', 'FIG_B'],
+      rawSidecars: { FIG_A: TRUNCATED },
+    });
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(spawn.outDirsFor('translate')).toEqual(['FIG_B']); // NAMED, not counted
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-sidecar');
+    expect(rec(result, 'FIG_B').outcome).toBe('translated');
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_B_IS.svg'))).toBe(true);
+  });
+
+  // `--force` suppresses only the skipped-current check. It must not make an unreadable
+  // sidecar spendable — spendability is a property of the file, never of a flag.
+  it('--force cannot make an unreadable sidecar spendable', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'], rawSidecars: { FIG_A: TRUNCATED } });
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot, { force: true }), { spawn, booksRoot });
+    expect(spawn.countOf('translate')).toBe(0);
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-sidecar');
+  });
+
+  // 🔴 THE REPORT LINE, WHICH WAS MEASURABLY WRONG. `--stale` narrows to the figures that
+  // already HAVE a sidecar; the unreadable one HAS one, so it must be SELECTED and named —
+  // not deselected and described to the operator as "no sidecar … the ones a run WITHOUT
+  // --stale would buy", which is the exact opposite of the truth about it.
+  it('--stale SELECTS it and the report does not call it "no sidecar"', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A', 'FIG_B'],
+      rawSidecars: { FIG_A: CONFLICTED },
+    });
+    const result = await runFigures(live(booksRoot, { stale: true }), {
+      spawn: fakeSpawn(),
+      booksRoot,
+    });
+    expect(result.enumerated).toBe(1); // FIG_A selected…
+    expect(result.deselected).toBe(1); // …FIG_B, the one with no file, is not
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-sidecar');
+    const report = summarise(result);
+    expect(report).toMatch(/1 figure\(s\) in this chapter have no sidecar/);
+    expect(report).toContain(sidecarPath(bookDir, 'FIG_A'));
+    expect(report).toMatch(/VERDICT needs a human/);
+  });
+
+  // The dry run must see it too — a pre-flight exists to surface exactly this before any money
+  // moves, and the refusal costs one existsSync.
+  it('a dry run reports it as well', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'], rawSidecars: { FIG_A: ARRAY } });
+    const result = await runFigures(live(booksRoot, { dryRun: true }), {
+      spawn: fakeSpawn(),
+      booksRoot,
+    });
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-sidecar');
+    expect(result.verdict.ok).toBe(false);
   });
 });
