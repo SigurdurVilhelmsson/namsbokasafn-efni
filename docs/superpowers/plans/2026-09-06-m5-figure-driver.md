@@ -393,6 +393,20 @@ contains `CNX_Chem_01_06_TempScales`, the figure `compose.py`'s wrap logic was t
 `emit-blocks.py` already spawns it as a subprocess, so **the contract's library-vs-subprocess
 question is answered by keeping the existing boundary.**
 
+🔴 **THE INTERFACE R2 MUST EXPOSE IS OWNED BY `read_layer_accept.py`'s MODULE DOCSTRING, NOT BY
+THIS PLAN — read it there** (§ *CONTRACT FOR TASK R2*). R1 wrote it while building the harness, it
+is versioned with the code that enforces it, and restating it here would create a second copy that
+drifts. Three points from it that change how you build:
+- **`readlayer.read(pdf_path) -> (runs, meta, outcome)`** — the same three-valued outcome as the
+  baseline arm.
+- 🔴 **`outcome` is ADVISORY. The harness RE-DERIVES `reads`/`empty` from the runs and reports any
+  disagreement, so a reader cannot certify itself.** Do not try to satisfy the harness by
+  reporting a favourable outcome; report what happened.
+- 🔴 **The harness joins across readers on `meta['fonts'][k]['base']`, because that is the only
+  unit the two readers SHARE.** Ruling R-4 makes your key scope-qualified (`PAGE/Fm3/T1_0`), which
+  the baseline has no equivalent for — so `base` is required on every font entry, and a
+  `decodable: False` flag is what distinguishes *"cannot read this"* from *"read nothing"*.
+
 - [ ] **Step 1: Read `compose.py` lines 45–70 and `figtext.py`.** They are the consumers.
 
 - [ ] **Step 2: The failing tests** (plain-assert, like `test_sources.py` — no pytest).
