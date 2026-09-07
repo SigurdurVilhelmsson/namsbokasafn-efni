@@ -1034,3 +1034,97 @@ describe('a sidecar that is present but unreadable is refused, never re-bought',
     expect(result.verdict.ok).toBe(false);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 editorial/F3 — THE PRE-FLIGHT WAS BLIND TO A CORRUPT image-mapping.json, SO THE WHOLE
+// CHAPTER WAS BOUGHT BEFORE THE MINT REFUSED IT.
+//
+// `mappingPreflight` reads the mapping through `loadImageBasenameMap`, which swallows a parse
+// error or a non-array payload into `[]` — correctly, for the RENDERER, whose chapter must not
+// die on one bad file. Every figure therefore read `mintable` and passed the pre-flight, while
+// `mintMappingEntry` refuses the SAME file, one stage and one purchase later.
+//
+// ⚠️ SAME SHAPE AS money/F1 IN THE COMMIT BEFORE THIS ONE: a reader that collapses "absent" and
+// "broken" into one value, consulted by a gate that must tell them apart. A MISSING mapping is
+// handled correctly (organic has none, and every figure is legitimately mintable); a CORRUPT one
+// was not.
+describe('a corrupt image-mapping.json aborts the run BEFORE the money', () => {
+  const CORRUPT = [
+    ['a JSON object rather than an array', '{"originalImage": "FIG_A"}\n'],
+    ['unparsable bytes (a git conflict)', '<<<<<<< HEAD\n[]\n=======\n[]\n>>>>>>> origin/main\n'],
+  ];
+
+  for (const [label, bytes] of CORRUPT) {
+    it(`refuses ${label} — nothing spawned at all`, async () => {
+      const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A', 'FIG_B', 'FIG_C'] });
+      const mappingPath = path.join(bookDir, 'media', 'image-mapping.json');
+      fs.writeFileSync(mappingPath, bytes, 'utf-8');
+      const spawn = fakeSpawn();
+      await expect(runFigures(live(booksRoot), { spawn, booksRoot })).rejects.toThrow(
+        /image-mapping\.json/
+      );
+      expect(spawn.countOf('translate')).toBe(0); // THE MONEY ASSERTION
+      expect(spawn.calls).toHaveLength(0); // …and not one child process was started
+      expect(fs.readFileSync(mappingPath, 'utf-8')).toBe(bytes); // the file is untouched
+      expect(fs.existsSync(sidecarPath(bookDir, 'FIG_A'))).toBe(false);
+    });
+
+    // 🔴 A DRY RUN REPORTED IT AS PERFECTLY HEALTHY — byte-identical to the valid case — which
+    // is the report an operator reads before deciding to spend.
+    it(`refuses ${label} in a DRY RUN too`, async () => {
+      const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+      fs.writeFileSync(path.join(bookDir, 'media', 'image-mapping.json'), bytes, 'utf-8');
+      await expect(
+        runFigures(live(booksRoot, { dryRun: true }), { spawn: fakeSpawn(), booksRoot })
+      ).rejects.toThrow(/image-mapping\.json/);
+    });
+
+    // ⚠️ THE EXIT CODE ALONE IS TRUE ON BOTH SIDES OF THIS FIX — today's driver also exits 1,
+    // having bought the chapter and landed failed-publish on the mint. The spend counter beside
+    // it is what makes the assertion mean something.
+    it(`exits 1 (needs a human), not 2 (usage), on ${label} — having spent nothing`, async () => {
+      const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+      fs.writeFileSync(path.join(bookDir, 'media', 'image-mapping.json'), bytes, 'utf-8');
+      const spawn = fakeSpawn();
+      const code = await main(['--book', SLUG, '--chapter', '1'], { spawn, booksRoot });
+      expect(code).toBe(1); // the operator typed the command correctly; the DATA is broken
+      expect(spawn.countOf('translate')).toBe(0);
+    });
+  }
+
+  // 🔴 THE TWO CONTROLS, IN THE SAME DESCRIBE. Without them "refuses a corrupt mapping" is
+  // satisfied by a driver that refuses every run — and an ABSENT mapping is the ordinary state
+  // of a book that has never published a figure, which must keep working.
+  it('an ABSENT mapping file still runs and mints (organic’s state today)', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    expect(fs.existsSync(path.join(bookDir, 'media', 'image-mapping.json'))).toBe(false);
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(spawn.countOf('translate')).toBe(1);
+  });
+
+  it('a VALID array mapping still runs (the second control)', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'], mapping: mapping3() });
+    const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(result.verdict.ok).toBe(true);
+  });
+
+  // …and repairing the file is all it takes: the SECOND run completes at 0 ISK, because the
+  // refusal happens before anything is bought rather than after.
+  it('completes at zero spend once the mapping is repaired', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const mappingPath = path.join(bookDir, 'media', 'image-mapping.json');
+    fs.writeFileSync(mappingPath, '{"nope": true}\n', 'utf-8');
+    const first = fakeSpawn();
+    await expect(runFigures(live(booksRoot), { spawn: first, booksRoot })).rejects.toThrow();
+    expect(first.countOf('translate')).toBe(0);
+
+    fs.writeFileSync(mappingPath, '[]\n', 'utf-8');
+    const second = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn: second, booksRoot });
+    expect(second.countOf('translate')).toBe(1); // it had never been bought, so it is bought now
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+  });
+});

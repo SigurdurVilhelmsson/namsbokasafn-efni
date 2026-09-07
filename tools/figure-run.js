@@ -496,6 +496,66 @@ export function verifyTranslatedKeys(expected, blocks) {
   };
 }
 
+/** The one construction of the mapping path, so the two readers cannot drift apart. */
+function mappingFilePath(bookDir) {
+  return path.join(bookDir, 'media', 'image-mapping.json');
+}
+
+/**
+ * 🔴 THE ONE PLACE A MAPPING PAYLOAD IS JUDGED. Both the run-level pre-flight and the mint call
+ * it, so they cannot disagree about what "readable" means — and a third `JSON.parse` here would
+ * have been the third representation of the same question.
+ *
+ * ⚠️ `loadImageBasenameMap` deliberately swallows a parse error into `[]`, and that is right for
+ * the RENDERER — one bad file must not kill a chapter. It is wrong for a gate: every figure then
+ * reads `mintable`, the pre-flight passes, and `mintMappingEntry` refuses the SAME file one
+ * purchase later. Same shape as `readSidecar`'s null (see `applySidecarGuard`).
+ *
+ * @throws {Error} when the bytes are not a JSON array
+ */
+function parseMappingOrRefuse(mappingPath, raw) {
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(
+      `${mappingPath} is not valid JSON (${err.message}); refusing to merge over it. ` +
+        `Repair the file — a run that continued would buy this chapter's figures and then be ` +
+        `unable to publish a single one of them.`
+    );
+  }
+  if (!Array.isArray(parsed)) {
+    throw new Error(
+      `${mappingPath} is a ${Array.isArray(parsed) ? 'array' : typeof parsed}, not an array; ` +
+        `refusing to merge over it. Repair the file — a run that continued would buy this ` +
+        `chapter's figures and then be unable to publish a single one of them.`
+    );
+  }
+  return parsed;
+}
+
+/**
+ * The run-level pre-flight for the mapping file. ABORTS the run rather than bucketing figures,
+ * for the reason `resolveArtwork` aborts: this is one broken FILE, not N broken figures, and
+ * filing it per-figure would report a chapter-wide fault as a scatter of individual ones.
+ *
+ * ⚠️ It runs in a DRY RUN too. A dry run over a corrupt mapping printed a report BYTE-IDENTICAL
+ * to the healthy case — VERDICT ok — which is the report an operator reads before spending.
+ *
+ * A MISSING file is fine and stays fine: organic has none, and every one of its figures is
+ * legitimately `mintable`.
+ */
+function assertMappingReadable(bookDir) {
+  const mappingPath = mappingFilePath(bookDir);
+  let raw;
+  try {
+    raw = fs.readFileSync(mappingPath, 'utf-8');
+  } catch {
+    return; // absent: the ordinary state of a book that has published no figure
+  }
+  parseMappingOrRefuse(mappingPath, raw);
+}
+
 /**
  * STEP 10a. Add this figure's entry to `books/<slug>/media/image-mapping.json`.
  *
@@ -515,28 +575,16 @@ export function verifyTranslatedKeys(expected, blocks) {
  *   were there (null when the file did not exist), which is what a rollback needs.
  */
 function mintMappingEntry(bookDir, basename, outputName) {
-  const mappingPath = path.join(bookDir, 'media', 'image-mapping.json');
+  const mappingPath = mappingFilePath(bookDir);
   let previous = null;
   try {
     previous = fs.readFileSync(mappingPath, 'utf-8');
   } catch {
     previous = null;
   }
-  let existing = [];
-  if (previous !== null) {
-    let parsed;
-    try {
-      parsed = JSON.parse(previous);
-    } catch (err) {
-      throw new Error(`image-mapping.json is not valid JSON (${err.message}); refusing to merge`);
-    }
-    if (!Array.isArray(parsed)) {
-      throw new Error(
-        `image-mapping.json is a ${typeof parsed}, not an array; refusing to merge over it`
-      );
-    }
-    existing = parsed;
-  }
+  // Re-read and re-checked here rather than trusting the pre-flight's earlier verdict: the file
+  // is committed and two writers touch it, so the bytes may have moved since the run started.
+  const existing = previous === null ? [] : parseMappingOrRefuse(mappingPath, previous);
   const fresh = [{ originalImage: basename, outputName, extension: path.extname(outputName) }];
 
   // 🔴 `mergeMapping` KEYS ON `originalImage`, SO EVERY ROW WITHOUT ONE COLLAPSES ONTO
@@ -947,6 +995,10 @@ export async function runFigures(args, deps = {}) {
   }
 
   const { bookDir } = enumeration;
+  // 🔴 BEFORE THE PER-FIGURE LOOP, AND SO BEFORE ANY MONEY. `loadImageBasenameMap` swallows a
+  // corrupt payload into `[]`, which makes every figure read `mintable` and the pre-flight pass
+  // — while `mintMappingEntry` refuses the same file one purchase later.
+  assertMappingReadable(bookDir);
   const mapped = new Map(loadImageBasenameMap(bookDir).map((e) => [e.originalImage, e]));
   const mintIndex = new Set();
   for (const id of enumeration.moduleIds) {
