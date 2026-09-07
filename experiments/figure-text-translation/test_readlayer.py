@@ -713,11 +713,23 @@ check('14i a REFERENCE CYCLE terminates, and both forms are stripped',
 print('\n[14j] the strip is TOKEN-aware: an inline image no longer starts a text block')
 
 
+def _tokens(data):
+    """Instructions in a raw content stream.
+
+    ⚠️ `parse_content_stream` REFUSES BYTES (`TypeError: stream must be a pikepdf.Object
+    or pikepdf.Page`), and the throwaway Pdf must be a NAMED LOCAL — inline, its only
+    reference dies with the expression and the stream is destroyed mid-parse. Both
+    mistakes were made here first and caught by running the suite, which is the whole
+    reason this helper exists once instead of twice."""
+    owner = pikepdf.new()
+    return list(pikepdf.parse_content_stream(owner.make_stream(bytes(data))))
+
+
 def bt_ops(pdf_path):
     """Real BT operators over the page stream and every reachable /Form, counted by a
     TOKENISER. Deliberately NOT `rb'BT.*?ET'` — see the block comment above."""
     def count(data):
-        return sum(1 for i in pikepdf.parse_content_stream(data)
+        return sum(1 for i in _tokens(data)
                    if not isinstance(i, pikepdf.ContentStreamInlineImage)
                    and str(i.operator) == 'BT')
     pdf = pikepdf.open(pdf_path)
@@ -747,7 +759,7 @@ def inline_images(pdf_path):
     old regex started a match inside, so its survival is the property under test."""
     pdf = pikepdf.open(pdf_path)
     data = _deps.read_content(pdf.pages[0]).encode('latin-1')
-    return sum(1 for i in pikepdf.parse_content_stream(data)
+    return sum(1 for i in _tokens(data)
                if isinstance(i, pikepdf.ContentStreamInlineImage))
 
 
@@ -808,7 +820,7 @@ with H.staged(_ip) as (_isrc, _ierr):
     _rt = pikepdf.open(_isrc)
     _rtp = _rt.pages[0]
     _rtp.Contents = _rt.make_stream(pikepdf.unparse_content_stream(
-        pikepdf.parse_content_stream(_deps.read_content(_rtp).encode('latin-1'))))
+        _tokens(_deps.read_content(_rtp).encode('latin-1'))))
     rt_bl = S14 / 'boyles-roundtrip.pdf'
     _rt.save(rt_bl)
     rt_px, rt_words = nonwhite(rt_bl, 'bl-roundtrip'), len(words(rt_bl))
@@ -822,9 +834,14 @@ with H.staged(_ip) as (_isrc, _ierr):
     bl_stats = new_strip(_isrc, new_bl)
     new_bl_px = nonwhite(new_bl, 'bl-new')
     new_bl_words = len(words(new_bl))
+    # ⚠️ THE 0.90 IS DERIVED, NOT PICKED. Removing this figure's 69 words of labels
+    # legitimately costs 289,109 -> 273,020 px at 200 dpi, i.e. 5.6% of the ink; the byte
+    # regex additionally destroys 147,074 px, i.e. a further 50.9%, leaving 43.6%. Any
+    # threshold in (0.44, 0.94) separates "text removed" from "artwork eaten", and 0.90
+    # sits inside it with headroom for antialiasing. Re-measure before moving it.
     check('14l THE ARTWORK THE REGEX ATE SURVIVES — and the text is still all removed',
-          new_bl_px > old_bl_px and new_bl_px >= src_px * 0.95
-          and new_bl_words == 0 and src_words >= 0,
+          new_bl_px > old_bl_px and new_bl_px >= src_px * 0.90
+          and new_bl_words == 0 and src_words > 0,
           f'regex {old_bl_px} px -> token-aware {new_bl_px} px of {src_px} in the '
           f'source ({new_bl_px-old_bl_px} px recovered); pdftotext {src_words} words in '
           f'the source -> {new_bl_words} after (MUST be 0 — otherwise this is "removed '
