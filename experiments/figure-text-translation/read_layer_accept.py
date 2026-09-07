@@ -98,6 +98,11 @@ BBOX_TOL_PT = 1.0
 SELFTEST_SAMPLE = 40      # figures per bucket for selftest assertions 1-3 and 5
 SELFTEST_CRASH_FLOOR = 20 # assertion 4's floor: "over 20 of the 38"
 
+# Assertion 7's stimulus, named into the page-text sample because the evenly-spaced 40
+# carry NO figure whose baseline over-reads an oracle-attested character (probed: 0/40,
+# with this figure as the positive control that proves the probe can fire). See selftest().
+C1_SURPLUS_FIGURE = 'CNX_Chem_18_03_SiPurif'
+
 
 # ── population ──────────────────────────────────────────────────────────────────────
 
@@ -246,8 +251,9 @@ def make_mojibake_mutant(reader):
     miniature. Used only by --selftest assertion 5 (ruling R-15).
 
     🔴 WHY THIS ASSERTION EXISTS. C1's rule is
-    `regression ⟺ (baseline − candidate) ∩ oracle ≠ ∅`, and the intersection is what
-    stops the harness REJECTING the ~96 mojibake repairs R2 exists to make: when the
+    `regression ⟺ ∃ch. dropped[ch] > 0 ∧ candidate[ch] < oracle[ch]`, and the oracle
+    tiebreak is what stops the harness REJECTING the ~96 mojibake repairs R2 exists to
+    make: when the
     candidate correctly reads `°C` where the baseline read `¡C`, the `¡` is "missing"
     and a mechanical compare calls that a regression. In a baseline-vs-baseline run
     nothing is ever missing, so that branch is STRUCTURALLY UNREACHABLE and reports
@@ -268,6 +274,12 @@ def make_mojibake_mutant(reader):
     def mutant(pdf_path):
         runs, meta, outcome = reader(pdf_path)
         try:
+            # ⚠️ A SET HERE IS CORRECT AND MUST STAY ONE — this is NOT the wrong-unit
+            # defect the C1 tiebreak had. The mutant asks an EXISTENCE question ("can
+            # poppler see this glyph at all?") to decide what to overwrite; C1 asks a
+            # SHORTFALL question ("are we below what poppler attests?") and needs counts.
+            # Task R4b's own brief cited this line as the defect; it is not. Same
+            # expression, different question — the unit follows the QUESTION.
             ochars = set(charcount(read_oracle(pdf_path)))
         except Exception:
             # No oracle, no mutation. `process_figure` tolerates an oracle failure; this
@@ -317,6 +329,59 @@ def make_twin_drop_mutant(reader):
         victim = blocks[keys.index(dup[0])]        # first block with a dup key
         doomed = {id(r) for r in victim}
         return [r for r in runs if id(r) not in doomed], meta, outcome
+    return mutant
+
+
+def make_surplus_drop_mutant(reader):
+    """A reader that drops ONE occurrence of a character the baseline holds MORE of than
+    the oracle attests. The ONLY mutant shape that discriminates C1's count-aware oracle
+    tiebreak from the membership test it replaced. Used only by --selftest assertion 7.
+
+    🔴 WHY NO EXISTING MUTANT REACHES IT — the same lesson ruling R-13 taught at C4b,
+    turned on C1. Assertion 2's drop-a-RUN mutant removes whole labels, so the candidate
+    falls BELOW the oracle and both rules flag it; assertion 5's mojibake mutant only
+    touches characters the oracle does not have at all (`oracle[ch] == 0`), so both rules
+    excuse it. Neither can tell the two rules apart. This one can, because it lands in
+    the gap between them: the glyph IS in the oracle (so membership flags it) and the
+    candidate is STILL AT OR ABOVE the oracle's count (so counts excuse it).
+
+        membership rule:  dropped[ch] > 0 ∧ ch ∈ oracle          -> REGRESSION (wrong)
+        count rule:       dropped[ch] > 0 ∧ candidate[ch] < oracle[ch] -> excused (right)
+
+    This is CNX_Chem_18_03_SiPurif in miniature — the only C1 regression in the full
+    817-figure run, where the candidate dropped 44 chars of the baseline's binary garbage
+    and was flagged for the one 'c' among them while still carrying all 3 the oracle
+    attests.
+
+    ⚠️ THE VICTIM IS CHOSEN DETERMINISTICALLY (`sorted`), never by dict order: a mutant
+    whose stimulus varies between runs makes a red unreproducible.
+
+    ⚠️ A figure with no surplus character passes through UNCHANGED — it is outside
+    assertion 7's denominator, not a failure. The selftest detects which figures were
+    actually mutated from the OUTPUT (candidate chars == baseline chars − 1), a positive
+    signal in the artifact, rather than from this closure's internal state.
+    """
+    def mutant(pdf_path):
+        runs, meta, outcome = reader(pdf_path)
+        try:
+            ochars = charcount(read_oracle(pdf_path))
+        except Exception:
+            # No oracle, no mutation — same reasoning as make_mojibake_mutant: a mutant
+            # that raises would be read as a harness fault, not as an absent stimulus.
+            return runs, meta, outcome
+        bchars = charcount(runs_text(runs))
+        surplus = sorted(ch for ch in ochars if bchars[ch] > ochars[ch] > 0)
+        if not surplus:
+            return runs, meta, outcome
+        victim = surplus[0]
+        out, done = [], False
+        for r in runs:
+            t = r.get('text') if isinstance(r, dict) else None
+            if not done and t and victim in t:
+                r = dict(r, text=t.replace(victim, '', 1))   # exactly ONE occurrence
+                done = True
+            out.append(r)
+        return out, meta, outcome
     return mutant
 
 
@@ -491,10 +556,27 @@ def process_figure(row, resolve, cmp_readers):
         c_chars = charcount(runs_text(c_runs))
 
         # ── C1: regression control, scoped to figures the BASELINE reads ──────────
+        # 🔴 THE TIEBREAK COMPARES COUNTS, NOT MEMBERSHIP (ruling R-13's shape, third
+        # instance). `ochars` is a Counter, so `ch in ochars` asks "does poppler see
+        # this glyph ANYWHERE?" when the question is "are we now SHORT of what poppler
+        # attests?". Measured on CNX_Chem_18_03_SiPurif, the only C1 regression in the
+        # full 817-figure run: baseline 81 chars, candidate 37, oracle 37; the baseline
+        # emits 44 chars of binary garbage before the three real labels and the
+        # candidate drops all 44, one of which is a 'c' (baseline 4, candidate 3,
+        # oracle 3). Membership flags {'c': 1}; counts flag nothing, and nothing is
+        # what is true — no character is below its oracle count, at full multiplicity.
+        #
+        # ⚠️ HONEST CAVEAT, carried from R2: this is STRICTLY MORE PRECISE, NOT PERFECT.
+        # When the counts coincide it still cannot tell a dropped junk 'c' from a
+        # dropped real one — baseline 4 -> candidate 3 with oracle 3 reads clean whether
+        # the occurrence lost was garbage or a label. Do not oversell it: it removes a
+        # class of FALSE regression, it does not prove no real character was lost.
         if b_out == 'reads':
             dropped = b_chars - c_chars          # Counter-, positive counts only
-            a['c1_regression'] = {ch: n for ch, n in dropped.items() if ch in ochars}
-            a['c1_excused'] = {ch: n for ch, n in dropped.items() if ch not in ochars}
+            a['c1_regression'] = {ch: n for ch, n in dropped.items()
+                                  if c_chars[ch] < ochars[ch]}
+            a['c1_excused'] = {ch: n for ch, n in dropped.items()
+                               if not c_chars[ch] < ochars[ch]}
             a['c1_scope'] = True
         else:
             a['c1_regression'], a['c1_excused'], a['c1_scope'] = {}, {}, False
@@ -626,15 +708,17 @@ def summarise(results, label, buckets):
     c1_scope = [r for r in arms if arm(r)['c1_scope']]
     c1_bad = [r for r in c1_scope if arm(r)['c1_regression']]
     c1_exc = [r for r in c1_scope if arm(r)['c1_excused']]
-    print(f"\n  C1  regression (baseline reads it, candidate loses a char the ORACLE also has)")
+    print(f"\n  C1  regression (baseline reads it, candidate now holds FEWER of a char "
+          f"than the ORACLE attests)")
     print(f"      REGRESSIONS:               {len(c1_bad)}/{len(c1_scope)} figures")
     for r in c1_bad[:10]:
         d = arm(r)['c1_regression']
         print(f"        {r['name']:44} {sum(d.values()):>5} chars  {dict(list(d.items())[:6])}")
     if len(c1_bad) > 10:
         print(f"        … and {len(c1_bad)-10} more (see --json)")
-    print(f"      dropped, oracle also lacks: {len(c1_exc)}/{len(c1_scope)} figures "
-          f"(NON-FAILING — mojibake the candidate fixed, per ruling R-3)")
+    print(f"      dropped, still >= oracle:   {len(c1_exc)}/{len(c1_scope)} figures "
+          f"(NON-FAILING — mojibake the candidate fixed, per ruling R-3, and surplus "
+          f"the baseline over-read, per ruling R-13's shape)")
     exc_chars = collections.Counter()
     for r in c1_exc:
         exc_chars.update(arm(r)['c1_excused'])
@@ -786,7 +870,7 @@ def sample(rows, n):
 
 
 def selftest():
-    """SIX assertions. Exits NON-ZERO when any fails.
+    """SEVEN assertions. Exits NON-ZERO when any fails.
 
     3 and 4 are asymmetric on purpose: together they prove the harness distinguishes a
     crash from a read, which is the whole of ruling R-1.
@@ -796,6 +880,15 @@ def selftest():
     an unexercised branch. It is what decides whether R2's ~96 H3 repairs are accepted or
     silently rejected as regressions, and its failure mode is the rejection of correct
     work — the direction nobody goes looking for.
+
+    7 is the one NEITHER 2 NOR 5 can reach, and it is why C1's tiebreak had a wrong-unit
+    defect for the whole of R1-R4: 2's drop-a-RUN mutant puts the candidate BELOW the
+    oracle (both rules flag it) and 5's mojibake mutant only touches characters the
+    oracle lacks entirely (both rules excuse it). Only dropping a SURPLUS occurrence —
+    one the baseline over-read, where the candidate is still at or above the oracle's
+    count — lands in the gap where a membership test and a count test disagree. Its
+    stimulus is not in the evenly-spaced sample at all: the figure is NAMED in, and the
+    zero that made that necessary was measured, not assumed.
 
     6 is the one a `c1_regression`/`c1_excused`-only reading of C1 CANNOT reach either:
     C4b is computed for every arm, but before this assertion nothing outside the `self`
@@ -813,17 +906,30 @@ def selftest():
             fails.append(label)
 
     pt = sample([r for r in rows if r['bucket'] == 'page-text'], SELFTEST_SAMPLE)
+    # ⚠️ ONE figure is NAMED into the evenly-spaced sample, and the reason is measured,
+    # not stylistic. Assertion 7 needs a figure whose BASELINE holds more of some
+    # oracle-attested character than the oracle does (`baseline[ch] > oracle[ch] > 0`) —
+    # the only shape that discriminates C1's count rule from the membership test it
+    # replaced. Probed over the evenly-spaced 40: ZERO carry one, with SiPurif itself as
+    # the positive control proving the probe fires ({'c': (4, 3)}). If this figure ever
+    # leaves the census the append is a no-op and assertion 7 fails on its non-vacuity
+    # clause — LOUDLY, which is correct: a silent skip would read as a pass.
+    if not any(r['name'] == C1_SURPLUS_FIGURE for r in pt):
+        pt = pt + [r for r in rows if r['name'] == C1_SURPLUS_FIGURE]
     ft = sample([r for r in rows if r['bucket'] == 'form-text-only'], SELFTEST_SAMPLE)
     oc = [r for r in rows if r['bucket'] == 'ours-crashes']
 
-    # 1, 2, 5 and 6 share ONE collection pass, so they are the same sample by construction
-    # (ruling R-2: reuse the collection, never a second pass over the population).
-    print(f"\n[1+2+5+6] page-text sample: {len(pt)} figures, baseline vs "
-          f"{{self, drop-last-run mutant, mojibake mutant, twin-drop mutant}}", flush=True)
+    # 1, 2, 5, 6 and 7 share ONE collection pass, so they are the same sample by
+    # construction (ruling R-2: reuse the collection, never a second pass over the
+    # population).
+    print(f"\n[1+2+5+6+7] page-text sample: {len(pt)} figures, baseline vs "
+          f"{{self, drop-last-run mutant, mojibake mutant, twin-drop mutant, "
+          f"surplus-drop mutant}}", flush=True)
     res, secs = run_arms(pt, {'self': read_baseline,
                               'mutant': make_mutant(read_baseline),
                               'mojibake': make_mojibake_mutant(read_baseline),
-                              'twindrop': make_twin_drop_mutant(read_baseline)},
+                              'twindrop': make_twin_drop_mutant(read_baseline),
+                              'surplus': make_surplus_drop_mutant(read_baseline)},
                          progress=False)
     staged_rows = [r for r in res if r['status'] == 'staged']
     read_rows = [r for r in staged_rows if r['base']['outcome'] == 'reads']
@@ -917,7 +1023,42 @@ def selftest():
                   f"twindrop outcome={a['outcome']} c4_scope={a['c4_scope']} "
                   f"c4b_dropped={a['c4b_dropped']}")
 
-    print(f"\n  {'ALL 6 PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
+    # 7 reuses the [1+2+5+6+7] pass above — no figure is read twice. It is the ONLY
+    # assertion that discriminates C1's COUNT-AWARE oracle tiebreak from the MEMBERSHIP
+    # test it replaced (`ch in ochars`), and it is the third instance in this harness of
+    # ruling R-13's shape: a gate comparing at the wrong unit.
+    print(f"\n[7] C1's oracle tiebreak compares COUNTS — dropping ONE occurrence of a "
+          f"character the baseline holds MORE of than the oracle attests MUST NOT be "
+          f"called a regression, measured on the same {len(pt)} page-text figures",
+          flush=True)
+    # THE DENOMINATOR IS DERIVED FROM THE ARTIFACT, not from the mutant's internals: the
+    # mutant removes exactly one non-whitespace character, so a figure it actually
+    # mutated is one whose candidate char count is exactly one below the baseline's.
+    # `charcount` excludes whitespace and the victim is drawn from the oracle's keys
+    # (never whitespace), so the −1 is exact.
+    surplus_rows = [r for r in read_rows
+                    if r['arms']['surplus']['chars'] == r['base']['chars'] - 1]
+    sur_reg = [r for r in surplus_rows if r['arms']['surplus']['c1_regression']]
+    sur_exc = [r for r in surplus_rows if r['arms']['surplus']['c1_excused']]
+    sur_chars = collections.Counter()
+    for r in sur_exc:
+        sur_chars.update(r['arms']['surplus']['c1_excused'])
+    check('7 the tiebreak is COUNT-AWARE — a surplus drop is NOT a regression',
+          len(surplus_rows) > 0 and len(sur_reg) == 0 and len(sur_exc) > 0,
+          f"{len(surplus_rows)}/{len(read_rows)} figures carry a surplus character and "
+          f"were mutated (non-vacuity: MUST be > 0, or a clean result would mean 'no "
+          f"figure had a surplus char', not 'the surplus drop was excused'); "
+          f"regressions {len(sur_reg)} (MUST be 0 — a MEMBERSHIP test flags every one of "
+          f"these); excused {len(sur_exc)} (MUST be > 0, or the drop never reached C1 at "
+          f"all): {dict(sur_chars.most_common(6))}")
+    if sur_reg:
+        for r in sur_reg[:5]:
+            print(f"        WRONGLY FLAGGED: {r['name']:44} "
+                  f"{dict(list(r['arms']['surplus']['c1_regression'].items())[:6])}")
+    if surplus_rows:
+        print(f"        mutated, NAMED: {[r['name'] for r in surplus_rows][:5]}")
+
+    print(f"\n  {'ALL 7 PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
     return 0 if not fails else 1
 
 
