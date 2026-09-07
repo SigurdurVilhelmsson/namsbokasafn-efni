@@ -1,11 +1,15 @@
 """Dependency shim.
 
-pikepdf / pycairo / Pillow are NOT repo dependencies - this is an experiment, not
-a pipeline tool. Install them into a directory of your choice and point
-FIGTEXT_PYLIBS at it, or install them normally:
+pikepdf / pdfplumber / pycairo / Pillow are NOT repo dependencies - this is an
+experiment, not a pipeline tool. Install them into a directory of your choice and
+point FIGTEXT_PYLIBS at it, or install them normally:
 
-    python3 -m pip install --target=./pylibs pikepdf pycairo pillow
+    python3 -m pip install --target=./pylibs pikepdf pdfplumber pycairo pillow
     FIGTEXT_PYLIBS=./pylibs python3 extract.py <figure.pdf>
+
+pdfplumber (which brings pdfminer.six) is the READ layer - readlayer.py. It is
+easy to miss because pylibs/ already happens to contain it, so everything works
+here without it ever being declared. It is not optional: extract.py cannot import.
 """
 import os, sys
 from pathlib import Path
