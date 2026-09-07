@@ -34,6 +34,19 @@ describe('01-source overwrite path removed (PROV-1)', () => {
       'exercise-extract.js', // read-only: reads the exercises cache; writes only 02-for-mt/02-structure (item 9 D3)
       'generate-image-mapping.js', // read-only: scans source CNXML for image basenames; writes book-level media/image-mapping.json
       'generate-source-manifest.js', // writes: the .source-manifest.json provenance file (not CNXML)
+      // READ-ONLY, and it is a REAL 01-source reader that this net could not see until now: the
+      // driver reads `books/<slug>/01-source/<chapterDir>/*.cnxml` for `indexSourceImageBasenames`
+      // and through `figure-enumerate.cjs`, but every path literal lived in tools/lib/ — outside
+      // the SCOPE note above — so no text matched. What put it here is the money/F3 refusal
+      // message, which names 01-source/ as the thing containment protects.
+      // ⚠️ Same shape as `publish-figure-svg.js` below: the comment explaining the prohibition
+      // trips the pin that enforces it. Classify, never strip the comment.
+      // VERIFIED for this entry: every `fs` write verb in the file targets `<bookDir>/media/
+      // image-mapping.json` (mkdir/writeFileSync/renameSync/rmSync in mintMappingEntry and
+      // restoreMapping) or `os.tmpdir()` (mkdtemp + the per-figure out dir); the only other
+      // writers it reaches are `writeSidecar` (books/<slug>/figure-text/) and
+      // `publishFigureSvg`, whose containment check is the entry below.
+      'figure-run.js',
       'inventory-math-labels.js', // read-only: scans source math text; docstring states "Never writes under 01-source/"
       'preintake-probe.js', // read-only: probes source dir at intake, no writes
       'remt-sweep.js', // read-only: walks 01-source to build the §C82 battery's measurement populations; VERIFIED — its only fs calls are existsSync/readFileSync/readdirSync, and a full --with-spawns run leaves books/ byte-clean. It spawns audit-render-output.js and the schema validator, both read-only and both already classified here / under experiments/.
