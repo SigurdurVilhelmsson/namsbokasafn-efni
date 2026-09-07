@@ -13,6 +13,7 @@ path. A test that only ran when the corpus happened to be broken would go vacuou
 the reader improved — which is exactly what happened to the clause this replaces.
 """
 import sys
+from pathlib import Path
 import _deps  # noqa: F401  - puts this directory on sys.path; never process.cwd()
 from figtext import sendable, undecodable_fonts, looks_verbatim
 
@@ -80,6 +81,30 @@ check('...and once they decode, only the font gate holds them',
 # ── 7. undecodable_fonts returns EMPTY, not None, on a clean block ───────────────────
 check('clean block reports no blocking fonts',
       undecodable_fonts(block(PROSE, 'PAGE/T1_0'), OK), [])
+
+# ── 8. THE CALL SITE — a gate never called is a gate that does not exist ────────────
+# The assertions above test the FUNCTION. This one tests that emit-blocks.py reaches it,
+# which is the failure R-8 actually found: `decodable` was computed, written to
+# meta.json, and read by nobody.
+#
+# ⚠️ This is a SOURCE-level positive check, and that is a deliberate second-best. The
+# decisive test would run emit-blocks.py on a figure carrying an undecodable font and
+# watch `send` go false — but ruling R-7 measured that 7 of the 8 type0 figures now
+# decode cleanly, so NO SUCH FIGURE REMAINS IN THE CORPUS. Rather than assert something
+# the corpus cannot exercise, this pins the two facts that are checkable: emit-blocks
+# calls the shared rule, and it opens the file the flag lives in. Written as a positive
+# check, not a forbidden-token pin — a pin that forbids a token trips on the comment
+# documenting the prohibition.
+src = (Path(__file__).resolve().parent / 'emit-blocks.py').read_text()
+code = '\n'.join(l for l in src.splitlines() if not l.lstrip().startswith('#'))
+check('emit-blocks.py CALLS the shared gate', 'FT.sendable(' in code, True)
+check("emit-blocks.py opens the file `decodable` lives in", "'meta.json'" in code, True)
+# ⚠️ BOTH sides are space-stripped. Normalising only the haystack made this assertion
+# UNFIREABLE — the needle kept a space the haystack no longer had — and a mutation round
+# caught it passing against the exact source it forbids.
+_flat = code.replace(' ', '')
+check('emit-blocks.py no longer decides with looks_verbatim ALONE',
+      'send=notFT.looks_verbatim'.replace(' ', '') in _flat, False)
 
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)
