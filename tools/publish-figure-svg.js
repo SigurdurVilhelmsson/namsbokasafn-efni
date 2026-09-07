@@ -92,6 +92,28 @@ function withComposedHash(sidecar, composedHash) {
 }
 
 /**
+ * 🔴 CONTAINMENT, AS A PREDICATE WITH ONE OWNER. `outputName` arrives from a committed JSON data
+ * file, so it is data, not a literal — and `path.join` happily resolves `../` out of `media/`
+ * and into `01-source/`, which holds the legally load-bearing OpenStax CNXML whose licence is
+ * fixed at the date the copy was obtained. A provenance audit proved both arms on 2026-09-05:
+ * the traversal wrote into the licensed tree AND the call still returned ok:true.
+ *
+ * A published figure is a FLAT file directly in media/, so the test is the strict one — same
+ * directory, not merely "somewhere underneath". That also refuses an absolute path, which
+ * `path.join` would otherwise treat as a plain segment.
+ *
+ * ⚠️ EXPORTED because `tools/figure-run.js`'s pre-flight must ask the same question BEFORE the
+ * money, and the rule may not have two implementations: a second copy here is exactly how a
+ * pre-flight and a publisher come to disagree about what is safe.
+ *
+ * @returns {boolean} true when publishing `outputName` would write outside `<bookDir>/media/`
+ */
+export function escapesMediaDir(bookDir, outputName) {
+  const mediaDir = path.resolve(bookDir, 'media');
+  return path.dirname(path.resolve(mediaDir, outputName)) !== mediaDir;
+}
+
+/**
  * Publish one composed figure.
  *
  * ORDER IS LOAD-BEARING, as it is in resolveFigureRequest: everything that can
@@ -198,19 +220,10 @@ export function publishFigureSvg(options = {}) {
     return { ok: false, reason: 'no-svg', message: `Composed SVG not found: ${svgPath}` };
   }
 
-  // 🔴 CONTAINMENT, BEFORE THE WRITE. `outputName` arrives from a committed JSON data
-  // file, so it is data, not a literal — and `path.join` happily resolves `../` out of
-  // `media/` and into `01-source/`, which holds the legally load-bearing OpenStax CNXML
-  // whose licence is fixed at the date the copy was obtained. A provenance audit proved
-  // both arms on 2026-09-05: the traversal wrote into the licensed tree AND the call
-  // still returned ok:true.
-  //
-  // A published figure is a FLAT file directly in media/, so the check is the strict
-  // one: same directory, not merely "somewhere underneath". That also refuses an
-  // absolute path, which `path.join` would otherwise treat as a plain segment.
-  const mediaDir = path.resolve(bookDir, 'media');
-  const target = path.resolve(mediaDir, entry.outputName);
-  if (path.dirname(target) !== mediaDir) {
+  // CONTAINMENT, BEFORE THE WRITE — see `escapesMediaDir` above, which owns the rule and which
+  // figure-run.js's pre-flight asks the same question of before any money is spent.
+  const target = path.resolve(bookDir, 'media', entry.outputName);
+  if (escapesMediaDir(bookDir, entry.outputName)) {
     return {
       ok: false,
       reason: 'unsafe-output-name',

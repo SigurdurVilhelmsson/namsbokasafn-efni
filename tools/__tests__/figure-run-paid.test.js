@@ -358,21 +358,33 @@ describe('the purchase is recorded before anything that can fail after it', () =
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
 describe('a figure whose publish fails is never reported done', () => {
-  // 🔴 D3. The refusal is a REAL one from the real publisher: an `outputName` that escapes
-  // media/ is `unsafe-output-name`, the shape a 2026-09-05 provenance audit proved could write
-  // into the licensed 01-source tree AND still return ok:true.
+  // 🔴 D3. WHAT THIS TEST PROVES IS UNCHANGED; ITS TRIGGER HAD TO MOVE, AND MY OWN FIX IS WHY.
+  // It used to force the refusal with an `outputName` that escapes media/ — a REAL
+  // `unsafe-output-name` from the real publisher. money/F3 moved that decision into the
+  // pre-flight, ahead of the money, so the old trigger now refuses with NO sidecar at all and
+  // this test's whole premise (a purchase that a publish then refuses) is unreachable through
+  // it. That the old trigger is now caught before the money is asserted next door, in "the
+  // pre-flight refuses an UNPUBLISHABLE mapped entry before the money".
+  //
+  // The refusal here is therefore fabricated through `deps.publish`, which is what that seam
+  // exists for. A REAL post-money refusal from the real publisher is still exercised — see
+  // `sidecar-moved` in "a sidecar that moves during compose", where the trigger is a race the
+  // pre-flight cannot possibly see.
   it('a refused publish leaves no composedHash, lands in failed-publish, and is NOT skipped next run', async () => {
     const { booksRoot, bookDir } = makeBook({
       figures: ['FIG_A'],
-      mapping: [{ originalImage: 'FIG_A', outputName: '../01-source/evil.svg', extension: '.svg' }],
+      mapping: [{ originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' }],
     });
     const spawn = fakeSpawn();
-    const first = await runFigures(live(booksRoot), { spawn, booksRoot });
+    const refuse = refusingPublisher();
+    const first = await runFigures(live(booksRoot), { spawn, booksRoot, publish: refuse });
 
+    expect(spawn.countOf('translate')).toBe(1); // the figure WAS bought — the premise
+    expect(refuse.calls).toBe(1); // NON-VACUITY: the publish really was attempted
     expect(rec(first, 'FIG_A').outcome).toBe('failed-publish');
-    expect(rec(first, 'FIG_A').reason).toMatch(/unsafe-output-name/);
     expect(first.verdict.ok).toBe(false);
     const after = readSidecar(bookDir, 'FIG_A');
+    expect(after.blocks).toEqual({ k0: 'IS k0', k1: 'IS k1' }); // the purchase is on disk
     expect(after.composedHash).toBeUndefined(); // the stamp is the publish-success marker
     expect(isStale(after)).toBe(true);
 
@@ -1125,6 +1137,122 @@ describe('a corrupt image-mapping.json aborts the run BEFORE the money', () => {
     const second = fakeSpawn();
     const result = await runFigures(live(booksRoot), { spawn: second, booksRoot });
     expect(second.countOf('translate')).toBe(1); // it had never been bought, so it is bought now
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 money/F3 — THE PRE-FLIGHT CHECKED WHETHER AN ENTRY COULD BE MINTED, NEVER WHETHER THE ONE
+// ALREADY THERE COULD BE PUBLISHED.
+//
+// `mappingPreflight` returns `mapped` for ANY existing image-mapping.json row without looking at
+// its `outputName`, so two publish refusals still landed AFTER the money: the driver's own
+// extension check (`the composer produced translated.svg but image-mapping.json names …`) and
+// `publishFigureSvg`'s `unsafe-output-name`. Both are decidable from `rec.mapping.outputName`,
+// which the pre-flight already holds, against the `.svg` literal it already uses.
+//
+// ⚠️ THE TWO HALVES HAVE DIFFERENT SCOPES, AND CONFLATING THEM MANUFACTURES A FALSE RED.
+// Containment applies to every PUBLISH_BOUND outcome — nothing may ever be written outside
+// media/. The `.svg` extension applies ONLY to `translated`, the one outcome whose composer
+// output is an SVG: a `copied-photo` with a legitimate `PHOTO1_IS.png` row is healthy, and
+// asserting `.svg` over all of PUBLISH_BOUND flips it to a spurious failed-publish.
+describe('the pre-flight refuses an UNPUBLISHABLE mapped entry before the money', () => {
+  const photo = { prepare: () => ({ sendable: 0, imageXObjects: 1, paintOps: 0 }) };
+
+  it('refuses a mapped .png on a TRANSLATED figure before the MT, not after', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      mapping: [{ originalImage: 'FIG_A', outputName: 'FIG_A_IS.png', extension: '.png' }],
+    });
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(spawn.countOf('translate')).toBe(0); // THE MONEY ASSERTION
+    expect(rec(result, 'FIG_A').spent).toBe(false);
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-publish');
+    expect(rec(result, 'FIG_A').reason).toMatch(/FIG_A_IS\.png/);
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_A'))).toBe(false);
+    expect(spawn.countOf('compose')).toBe(0);
+  });
+
+  it('refuses a mapped outputName that escapes media/ before the MT', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      mapping: [
+        { originalImage: 'FIG_A', outputName: '../01-source/FIG_A.svg', extension: '.svg' },
+      ],
+    });
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(spawn.countOf('translate')).toBe(0);
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-publish');
+    expect(rec(result, 'FIG_A').reason).toMatch(/media\//);
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_A'))).toBe(false);
+    // 🔴 AND NOTHING REACHED 01-source/, WHICH IS THE POINT OF THE CONTAINMENT RULE: those
+    // bytes are the legally load-bearing OpenStax copy and their licence is fixed at the date
+    // the copy was obtained.
+    expect(fs.readdirSync(path.join(bookDir, '01-source', 'ch01'))).toEqual(['m00001.cnxml']);
+  });
+
+  // 🔴 CONTAINMENT IS WIDER THAN THE EXTENSION CHECK. A copy is not published by the driver
+  // today, but a row that would write outside media/ is a real defect in a committed data file
+  // and `unmintable` already downgrades copies for the milder reason of being unpublishable.
+  it('refuses an escaping outputName on a COPIED figure too', async () => {
+    const { booksRoot } = makeBook({
+      figures: ['PHOTO1'],
+      mapping: [{ originalImage: 'PHOTO1', outputName: '/etc/PHOTO1.svg', extension: '.svg' }],
+    });
+    const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(photo), booksRoot });
+    expect(rec(result, 'PHOTO1').outcome).toBe('failed-publish');
+  });
+
+  // 🔴 THE CONTROL THAT KILLS THE OBVIOUS OVER-FIX, measured before it was written: a
+  // `copied-photo` with a legitimate `.png` row is HEALTHY and must stay `copied-photo`.
+  // Asserting `.svg` across all of PUBLISH_BOUND turns this green run red for nothing.
+  it('leaves a copied-photo with a legitimate .png mapping alone', async () => {
+    const { booksRoot } = makeBook({
+      figures: ['PHOTO1'],
+      mapping: [{ originalImage: 'PHOTO1', outputName: 'PHOTO1_IS.png', extension: '.png' }],
+    });
+    const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(photo), booksRoot });
+    expect(rec(result, 'PHOTO1').outcome).toBe('copied-photo');
+    expect(rec(result, 'PHOTO1').mapping).toEqual({
+      status: 'mapped',
+      outputName: 'PHOTO1_IS.png',
+    });
+    expect(result.verdict.ok).toBe(true);
+  });
+
+  // The second control: a healthy mapped .svg on a translated figure goes all the way through.
+  it('publishes a translated figure whose mapped entry is a flat .svg (the control)', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      mapping: [{ originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' }],
+    });
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(spawn.countOf('translate')).toBe(1);
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(true);
+  });
+
+  // …and the repair completes at ZERO spend, because the refusal happened before the purchase.
+  it('completes at zero spend once the row is repaired', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      mapping: [{ originalImage: 'FIG_A', outputName: 'FIG_A_IS.png', extension: '.png' }],
+    });
+    const first = fakeSpawn();
+    await runFigures(live(booksRoot), { spawn: first, booksRoot });
+    expect(first.countOf('translate')).toBe(0);
+    fs.writeFileSync(
+      path.join(bookDir, 'media', 'image-mapping.json'),
+      `${JSON.stringify([{ originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' }], null, 2)}\n`
+    );
+    const second = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn: second, booksRoot });
+    expect(second.countOf('translate')).toBe(1); // bought once, on the run that could publish it
     expect(rec(result, 'FIG_A').outcome).toBe('translated');
   });
 });

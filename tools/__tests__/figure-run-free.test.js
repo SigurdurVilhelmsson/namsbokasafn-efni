@@ -713,23 +713,26 @@ describe('the image-mapping pre-flight', () => {
 
   // 🔴 THE DOWNGRADE. A figure nothing can ever publish must not be reported `translated` —
   // the run would go green and the next paid run would buy it again.
+  // `bookDir` is required now: the pre-flight also asks whether an already-MAPPED entry could be
+  // published at all, and containment is answered against the book's own media/ directory.
+  const BOOK = path.join(REPO_ROOT, 'books', 'efnafraedi-2e');
   it('downgrades an unmintable figure from translated to failed-publish', () => {
     const rec = { basename: 'A', outcome: 'translated', reason: null, mapping: null };
-    applyMappingPreflight(rec, { mapped: new Map(), mintIndex: new Set(['B']) });
+    applyMappingPreflight(rec, { mapped: new Map(), mintIndex: new Set(['B']), bookDir: BOOK });
     expect(rec.outcome).toBe('failed-publish');
     expect(rec.reason).toMatch(/unmapped/);
   });
 
   it('leaves a mintable figure translated (the control for the downgrade)', () => {
     const rec = { basename: 'A', outcome: 'translated', reason: null, mapping: null };
-    applyMappingPreflight(rec, { mapped: new Map(), mintIndex: new Set(['A']) });
+    applyMappingPreflight(rec, { mapped: new Map(), mintIndex: new Set(['A']), bookDir: BOOK });
     expect(rec.outcome).toBe('translated');
     expect(rec.mapping.status).toBe('mintable');
   });
 
   it('does not pre-flight an outcome that publishes nothing', () => {
     const rec = { basename: 'A', outcome: 'unresolved', reason: null, mapping: null };
-    applyMappingPreflight(rec, { mapped: new Map(), mintIndex: new Set() });
+    applyMappingPreflight(rec, { mapped: new Map(), mintIndex: new Set(), bookDir: BOOK });
     expect(rec.outcome).toBe('unresolved');
     expect(rec.mapping).toBe(null);
   });

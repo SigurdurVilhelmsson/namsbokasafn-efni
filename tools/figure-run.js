@@ -71,7 +71,7 @@ import { fileURLToPath } from 'url';
 import { normalizeChapter, chapterDir } from '../server/lib/chapterLabel.js';
 import { classifyFigure } from './lib/figure-classify.js';
 import { emptyTally, tallyOutcome, verdict, ALL_OUTCOMES } from './lib/figure-outcomes.js';
-import { basenameFromMeta, publishFigureSvg } from './publish-figure-svg.js';
+import { basenameFromMeta, escapesMediaDir, publishFigureSvg } from './publish-figure-svg.js';
 import {
   DEFAULT_SUFFIX,
   indexSourceImageBasenames,
@@ -334,8 +334,21 @@ const PUBLISH_BOUND = new Set(['translated', 'copied-photo', 'copied-textless'])
  * partition summing (a throw would not) and it makes the run not-ok, which is the entire point
  * of doing this check before the money is spent.
  *
+ * 🔴 AND IT CHECKS THAT AN ALREADY-`mapped` ENTRY CAN ACTUALLY BE PUBLISHED. Returning `mapped`
+ * for any existing row without inspecting its `outputName` left TWO publish refusals landing
+ * after the money — the extension check in `processFigureLive` and `publishFigureSvg`'s
+ * `unsafe-output-name` — both decidable here, from a value this function already holds.
+ *
+ * ⚠️ THE TWO CHECKS HAVE DIFFERENT SCOPES, AND CONFLATING THEM MANUFACTURES A FALSE RED.
+ * CONTAINMENT applies to every PUBLISH_BOUND outcome: nothing may ever be written outside
+ * `media/`, and the rule has ONE owner (`escapesMediaDir`, in the publisher) rather than a copy
+ * here. The `.svg` EXTENSION applies only to `translated`, the one outcome whose composer output
+ * is an SVG — a `copied-photo` carrying a legitimate `PHOTO1_IS.png` row is healthy, and
+ * asserting `.svg` across all of PUBLISH_BOUND flips it to a spurious `failed-publish`
+ * (measured).
+ *
  * @param {object} rec a per-figure record; MUTATED
- * @param {{mapped: Map, mintIndex: Set}} ctx
+ * @param {{mapped: Map, mintIndex: Set, bookDir: string}} ctx
  * @returns {object} the same record
  */
 export function applyMappingPreflight(rec, ctx) {
@@ -347,6 +360,27 @@ export function applyMappingPreflight(rec, ctx) {
       `no image-mapping.json entry, and generate-image-mapping.js would not mint one: ` +
       `its own source scan does not see ${rec.basename}. publish-figure-svg.js refuses ` +
       `"unmapped", so this figure is permanently unpublishable.`;
+    return rec;
+  }
+  const { outputName } = rec.mapping;
+  if (escapesMediaDir(ctx.bookDir, outputName)) {
+    rec.outcome = 'failed-publish';
+    rec.reason =
+      `the image-mapping.json entry for ${rec.basename} names an outputName that escapes ` +
+      `media/: ${JSON.stringify(outputName)}. A published figure is a flat file in the book's ` +
+      `media/ directory; nothing may be written outside it — 01-source/ in particular holds ` +
+      `the licensed OpenStax copy. publish-figure-svg.js refuses "unsafe-output-name", so this ` +
+      `figure is unpublishable until the row is repaired.`;
+    return rec;
+  }
+  // ⚠️ `translated` ONLY. The composer writes an SVG; a copy publishes its own bytes, and
+  // `.png` is a correct outputName for one.
+  if (rec.outcome === 'translated' && path.extname(outputName) !== '.svg') {
+    rec.outcome = 'failed-publish';
+    rec.reason =
+      `the image-mapping.json entry for ${rec.basename} names ${outputName}, but the composer ` +
+      `writes an .svg: publishing would put ${path.extname(outputName) || '(no extension)'} ` +
+      `bytes into that filename. Repair the row before this figure is bought.`;
   }
   return rec;
 }
@@ -1231,7 +1265,7 @@ export async function runFigures(args, deps = {}) {
       // either `skipped-current` or in `pending`, and neither of the outcomes reached by the
       // early `continue` above is PUBLISH_BOUND.
       applyDriftGuard(rec);
-      applyMappingPreflight(rec, { mapped, mintIndex });
+      applyMappingPreflight(rec, { mapped, mintIndex, bookDir });
       if (!args.dryRun)
         processFigureLive(rec, {
           spawn,
