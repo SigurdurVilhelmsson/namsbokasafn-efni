@@ -57,11 +57,11 @@ whenever a figure is published.)*
 > parts of that tooling reach into `server/`, which is AGPL-3.0. This changes
 > nobody's rights either way; it is a combination caveat, recorded so that
 > anyone taking the MIT tooling on its own knows what it expects to find beside
-> it. The edges fall into four classes:
+> it. The edges fall into five classes:
 >
 > 1. **Optional, guarded** — loads AGPL code inside a try/catch; the tool works
 >    without `server/`.
->    - `tools/api-translate.js:1051` → `server/services/pipelineStatusService.js`
+>    - `tools/api-translate.js:1768` → `server/services/pipelineStatusService.js`
 >
 >    It warns and continues if the module is absent: translation runs correctly
 >    without `server/`, and only a convenience status update is skipped.
@@ -71,15 +71,15 @@ whenever a figure is published.)*
 >
 >    **(a) At load time — the module cannot even be imported without `server/`:**
 >    - `tools/validate-chapter.js:33` → `server/lib/chapterLabel`
->    - `tools/figure-run.js:45` → `server/lib/chapterLabel.js`
+>    - `tools/figure-run.js:68` → `server/lib/chapterLabel.js`
 >    - `scripts/validate-status.js:14` → `server/lib/chapterLabel.js`
 >    - `tools/generate-book-data.cjs:20` → `server/services/bookDataGenerator`
 >    - `scripts/export-segment-edits.js:23` → `server/lib/chapterLabel.js`
->      (also `:28` → `server/services/segmentParser.js` and `:119` →
+>      (also `:28` → `server/services/segmentParser.js` and `:140` →
 >      `server/lib/dbPath.js`, both lazy — but `:23` already makes the file
 >      load-time)
 >    - `scripts/reattach-segment-edits.js:35` → `server/lib/chapterLabel.js`
->      (also `:46` → `server/services/segmentParser.js` and `:277` →
+>      (also `:46` → `server/services/segmentParser.js` and `:288` →
 >      `server/services/segmentEditorService.js`, both lazy — but `:35` already
 >      makes the file load-time)
 >
@@ -88,7 +88,7 @@ whenever a figure is published.)*
 >    says:**
 >    - `scripts/backfill-mt-locks.js:99` → `server/lib/dbPath.js` and `:173` →
 >      `server/services/segmentParser.js` (for `chapterDir`, which
->      `segmentParser` re-exports at `:463`). Both sit inside `--db`-only
+>      `segmentParser` re-exports at `:491`). Both sit inside `--db`-only
 >      branches (`if (USE_DB)` at `:93`, `if (dbRows)` at `:166`). The script's
 >      own comment gives the reason: the requires are lazy so that a problem
 >      loading them can never break the default file-only signal. **Run without
@@ -110,11 +110,10 @@ whenever a figure is published.)*
 > 3. **Data path, not code** — resolves a path under `server/` to read files
 >    from it; loads no AGPL code.
 >    - `tools/validate-pipeline-consistency.js:27` → `server/data`
->    - `tools/openstax-fetch.cjs:70` → `server/data/chemistry-2e.json`
->    - `tools/check-source-updates.js:134` → `server/data/${book}.json`
+>    - `tools/check-source-updates.js:135` → `server/data/${book}.json`
 >    - `tools/translate-chapter-titles.js:46` → `server/data`
->    - `tools/generate-index.js:146` → `server/data`
->    - `tools/docx-import.js:200-206` → a per-book JSON under `server/data`.
+>    - `tools/generate-index.js:149` → `server/data`
+>    - `tools/docx-import.js:201-208` → a per-book JSON under `server/data`.
 >      Both real books are mapped by name (`liffraedi-2e` → `biology-2e.json`,
 >      `efnafraedi-2e` → `chemistry-2e.json`); `${bookSlug}.json` is only the
 >      fallback branch.
@@ -127,6 +126,11 @@ whenever a figure is published.)*
 >    Retired scripts under `tools/archived/` also write JSON into
 >    `server/data/`. They are not enumerated here: they are out of the pipeline,
 >    and they depend on the path rather than on anything in `server/`.
+>
+>    *(A `tools/openstax-fetch.cjs:70` → `server/data/chemistry-2e.json` entry
+>    sat here until 2026-09-07. The file was deleted on 2026-09-04 in `b593916d`
+>    and the entry was not; an enumeration keeps a dead edge alive exactly as
+>    readily as it lets a live one drift.)*
 > 4. **Package resolution, not code** — resolves a third-party package through
 >    `server/node_modules`; loads no AGPL code. Two packages are reached this
 >    way, both permissively licensed themselves — `better-sqlite3` (MIT) and
@@ -147,6 +151,17 @@ whenever a figure is published.)*
 >      ⚠️ Their absolute path is a
 >      separate defect — it hardcodes one machine's checkout — recorded here
 >      because it is what makes them invisible to the three search shapes below.
+> 5. **Separate process, not a load** — spawns a `server/` script as its own
+>    Node process and reads its stdout. No AGPL code enters the MIT process, but
+>    the tool cannot produce a verdict without `server/` present.
+>    - `tools/remt-ctx.js:366` and `tools/lib/remt-checks-glossary.js:468` both
+>      run `server/scripts/check-glossary-payload.js --file … --json`. They are
+>      the sync and async halves of the same loader for the re-MT battery's G5
+>      check; `remt-checks-glossary.js:358` records why it is a spawn rather than
+>      a require — G5 must not import `server/`, so it takes VALUES.
+>      *(Added 2026-09-07. Both were already matched by the second search shape
+>      below and had simply never been written down — the class is new here, the
+>      edges are not, and no fifth search shape is needed to find them.)*
 >
 > This list is the authoritative enumeration — update it here when an edge is
 > added or removed, and re-derive rather than trusting it. **Four** search shapes
