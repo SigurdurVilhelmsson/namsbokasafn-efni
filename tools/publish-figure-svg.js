@@ -32,7 +32,7 @@ import { createRequire } from 'module';
 import { loadImageBasenameMap } from './lib/image-basename-map.cjs';
 
 const require = createRequire(import.meta.url);
-const { readSidecar, writeSidecar } = require('./lib/figure-text-sidecar.cjs');
+const { readSidecar, writeSidecar, COMPOSER_VERSION } = require('./lib/figure-text-sidecar.cjs');
 
 /**
  * `<anything>/books/<slug>/figure-text/<basename>.is.json` → its parts.
@@ -68,7 +68,8 @@ export function basenameFromMeta(metaPath) {
 }
 
 /**
- * composedHash directly after renderHash — the order applyApprovedFigureEdits writes.
+ * The publish stamp — `composedHash` and `composedVersion` — directly after `renderHash`, the
+ * order applyApprovedFigureEdits writes.
  *
  * 🔴 THE `continue` IS THE WHOLE FIX, AND IT WAS A SHIPPED BUG (register §C138).
  * Without it the loop stamped the new hash on reaching `renderHash` and then walked on
@@ -79,15 +80,30 @@ export function basenameFromMeta(metaPath) {
  *
  * Skipping in the loop — rather than re-assigning after it — is what keeps the key in
  * its canonical position when the file on disk had it BEFORE `renderHash`.
+ * ⚠️ `composedVersion` needs the SAME treatment for the same reason; a second stamp added
+ * without it would inherit §C138 exactly.
+ *
+ * 🔴 THE TWO STAMPS DESCRIBE THE PUBLISHED ARTWORK; `renderHash`/`composerVersion` DESCRIBE THE
+ * TEXT. Keeping them apart is what lets a COMPOSER_VERSION bump be RESOLVED by a recompose
+ * (`composedVersion` catches up) while still DEMOTING an approved figure to mt-preview until a
+ * human re-reviews it (`editorialState` re-hashes the blocks against `renderHash`, which nothing
+ * here touches). Refreshing `renderHash` on a recompose instead would re-certify an approval for
+ * output the editor never saw.
  */
-function withComposedHash(sidecar, composedHash) {
+function withComposedStamp(sidecar, composedHash, composedVersion) {
   const out = {};
   for (const [k, v] of Object.entries(sidecar)) {
-    if (k === 'composedHash') continue; // re-inserted below, at the canonical position
+    if (k === 'composedHash' || k === 'composedVersion') continue; // re-inserted below
     out[k] = v;
-    if (k === 'renderHash') out.composedHash = composedHash;
+    if (k === 'renderHash') {
+      out.composedHash = composedHash;
+      out.composedVersion = composedVersion;
+    }
   }
-  if (!('composedHash' in out)) out.composedHash = composedHash;
+  if (!('composedHash' in out)) {
+    out.composedHash = composedHash;
+    out.composedVersion = composedVersion;
+  }
   return out;
 }
 
@@ -245,9 +261,18 @@ export function publishFigureSvg(options = {}) {
   // staleness test reads. A sidecar WITHOUT a renderHash is now the exception: hand-written, or
   // from before the driver existed. What has not changed is that `state` is irrelevant here and
   // `effectiveState` reads mt-preview until an editor approves the blocks.
+  //
+  // 🔴 THE WRITE GUARD READS BOTH STAMPS, AND THE SECOND CLAUSE IS THE ONE THAT IS EASY TO MISS.
+  // On a COMPOSER_VERSION bump `composedHash` does NOT move — it is copied from the unchanged
+  // `renderHash` — so a guard keyed on the hash alone writes nothing in exactly the scenario the
+  // version stamp exists for, and the figure recomposes and republishes on every run for ever
+  // (measured: four runs, `sidecarBytesUnchanged=true` each time, VERDICT ok each time).
   const composedHash = sidecar.renderHash || null;
-  if (composedHash && sidecar.composedHash !== composedHash) {
-    writeSidecar(bookDir, basename, withComposedHash(sidecar, composedHash));
+  if (
+    composedHash &&
+    (sidecar.composedHash !== composedHash || sidecar.composedVersion !== COMPOSER_VERSION)
+  ) {
+    writeSidecar(bookDir, basename, withComposedStamp(sidecar, composedHash, COMPOSER_VERSION));
   }
 
   return {
@@ -258,6 +283,9 @@ export function publishFigureSvg(options = {}) {
     path: target,
     replaced,
     composedHash,
+    // Reported for the same reason `composedHash` is: the run record says what was stamped.
+    // ⚠️ Null when there was no renderHash to stamp, so the two travel together.
+    composedVersion: composedHash ? COMPOSER_VERSION : null,
   };
 }
 

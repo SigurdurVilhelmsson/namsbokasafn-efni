@@ -215,6 +215,71 @@ describe('applyApprovedFigureEdits', () => {
     expect(effectiveState(after, after.blocks, COMPOSER_VERSION)).toBe('approved');
   });
 
+  // 🔴 THE SAME CARRY-FORWARD, FOR THE SECOND HALF OF THE PUBLISH STAMP (M5 review editorial/F5).
+  // `composedVersion` says WHICH COMPOSER drew the published SVG, and `tools/figure-run.js`'s
+  // `isStale` reads it to answer a COMPOSER_VERSION bump. This function rebuilds the whole
+  // sidecar, so dropping it would make every approval look like "I do not know which composer
+  // drew this" — one spurious recompose-and-republish per approval, silently, with no failing
+  // count. It carries forward for exactly the reason `composedHash` does: an approval does not
+  // change the published artwork.
+  it('CARRIES composedVersion FORWARD — a re-approval must not un-know the composer', () => {
+    const isStale = (side) =>
+      !side.renderHash ||
+      !side.composedHash ||
+      side.composedHash !== side.renderHash ||
+      side.composedVersion !== COMPOSER_VERSION;
+
+    svc.setState(db, {
+      bookId,
+      basename: 'CNX_T',
+      state: 'approved',
+      reviewedBy: 'ed',
+      blocks: MT,
+    });
+    svc.applyApprovedFigureEdits(db, { bookDir, bookId, basename: 'CNX_T', mtBlocks: MT });
+
+    // Stand in for the publisher: both stamps, the way publish-figure-svg.js writes them.
+    const first = readSidecar(bookDir, 'CNX_T');
+    writeSidecar(bookDir, 'CNX_T', {
+      ...first,
+      composedHash: first.renderHash,
+      composedVersion: COMPOSER_VERSION,
+    });
+    expect(isStale(readSidecar(bookDir, 'CNX_T'))).toBe(false); // control: it really is current
+
+    // Re-approve the SAME blocks — the ordinary "editor clicks approve again".
+    svc.setState(db, {
+      bookId,
+      basename: 'CNX_T',
+      state: 'approved',
+      reviewedBy: 'ed',
+      blocks: MT,
+    });
+    svc.applyApprovedFigureEdits(db, { bookDir, bookId, basename: 'CNX_T', mtBlocks: MT });
+
+    const after = readSidecar(bookDir, 'CNX_T');
+    expect(after.composedVersion).toBe(COMPOSER_VERSION);
+    expect(after.composedHash).toBe(first.renderHash);
+    expect(isStale(after)).toBe(false); // …so the next figure-run skips it instead of redoing it
+  });
+
+  // The control for the carry-forward: a sidecar that was NEVER published has no version to
+  // carry, and the key must stay absent rather than being invented — an invented one would
+  // claim the artwork is current when no artwork was ever composed.
+  it('does NOT invent a composedVersion for a figure that was never published', () => {
+    svc.setState(db, {
+      bookId,
+      basename: 'CNX_T',
+      state: 'approved',
+      reviewedBy: 'ed',
+      blocks: MT,
+    });
+    svc.applyApprovedFigureEdits(db, { bookDir, bookId, basename: 'CNX_T', mtBlocks: MT });
+    const side = readSidecar(bookDir, 'CNX_T');
+    expect(side.composedHash).toBeUndefined();
+    expect(side.composedVersion).toBeUndefined();
+  });
+
   it('SURVIVES A FLAG IN BETWEEN — flag, then re-approve, and the figure is still composed', () => {
     // The realistic sequence, and the one the approve→approve test above cannot
     // see: an editor flags a figure, someone looks at it, the flag is lifted.

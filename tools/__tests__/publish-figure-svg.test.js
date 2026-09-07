@@ -240,8 +240,11 @@ describe('composedHash', () => {
         .map((l) => l.trim().replace(/,$/, ''))
         .filter(Boolean);
     const added = norm(after).filter((l) => !norm(before).includes(l));
-    expect(added).toHaveLength(1);
-    expect(added[0]).toContain('composedHash');
+    // TWO lines now, and only two: `composedHash` and `composedVersion` are one stamp with two
+    // fields — the hash says WHICH TEXT the SVG was drawn from, the version says WHICH COMPOSER
+    // drew it. Both describe the published artwork; neither touches renderHash.
+    expect(added).toHaveLength(2);
+    expect(added.map((l) => l.split(':')[0])).toEqual(['"composedHash"', '"composedVersion"']);
     expect(norm(before).filter((l) => !norm(after).includes(l))).toEqual([]);
   });
 

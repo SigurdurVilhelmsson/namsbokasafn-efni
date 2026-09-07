@@ -36,6 +36,8 @@ const {
   writeSidecar,
   sidecarPath,
   computeRenderHash,
+  editorialState,
+  effectiveState,
   COMPOSER_VERSION,
 } = require('../lib/figure-text-sidecar.cjs');
 
@@ -128,7 +130,12 @@ function madeSidecar(basename, blocks, extra = {}) {
   };
 }
 
-/** A published, current sidecar: `composedHash === renderHash`, so `isStale` is false. */
+/**
+ * A published, current sidecar, so `isStale` is false. That takes BOTH publish stamps:
+ * `composedHash === renderHash` (the SVG was drawn from this text) and `composedVersion ===
+ * COMPOSER_VERSION` (by this composer). A sidecar carrying only the first is one a bump has
+ * invalidated, and it must recompose — see the COMPOSER_VERSION-bump describe below.
+ */
 function currentSidecar(basename, blocks, extra = {}) {
   const hash = computeRenderHash(blocks, COMPOSER_VERSION);
   return {
@@ -137,6 +144,7 @@ function currentSidecar(basename, blocks, extra = {}) {
     renderHash: hash,
     composedHash: hash,
     composerVersion: COMPOSER_VERSION,
+    composedVersion: COMPOSER_VERSION,
     blocks,
     ...extra,
   };
@@ -659,8 +667,10 @@ describe('--stale and --force spend NOTHING', () => {
         .filter(Boolean);
     const rawAfter = fs.readFileSync(sidecarPath(bookDir, 'FIG_A'), 'utf-8');
     const added = norm(rawAfter).filter((l) => !norm(rawBefore).includes(l));
-    expect(added).toHaveLength(1); // …one line changed, and it is the stamp
-    expect(added[0]).toContain('composedHash');
+    // TWO lines changed, and both are the publish stamp: `composedHash` (which text the SVG was
+    // drawn from) and `composedVersion` (which composer drew it). Nothing else moved.
+    expect(added).toHaveLength(2);
+    expect(added.map((l) => l.split(':')[0])).toEqual(['"composedHash"', '"composedVersion"']);
     expect(rec(result, 'FIG_A').outcome).toBe('translated');
     const after = readSidecar(bookDir, 'FIG_A');
     expect(after.blocks).toEqual(corrected); // the correction is untouched
@@ -1254,5 +1264,128 @@ describe('the pre-flight refuses an UNPUBLISHABLE mapped entry before the money'
     const result = await runFigures(live(booksRoot), { spawn: second, booksRoot });
     expect(second.countOf('translate')).toBe(1); // bought once, on the run that could publish it
     expect(rec(result, 'FIG_A').outcome).toBe('translated');
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 editorial/F5 — isStale AND THE PUBLISHER DISAGREED ABOUT renderHash, SO A COMPOSER_VERSION
+// BUMP PUT EVERY FIGURE INTO A PERMANENT RECOMPOSE-AND-REPUBLISH LOOP.
+//
+// `isStale` re-hashed `blocks` under the module's CURRENT COMPOSER_VERSION and compared against
+// the STORED renderHash — the documented way to invalidate every stored hash on a bump. But
+// NOTHING in the driver ever rewrites renderHash: the publisher stamps
+// `composedHash = sidecar.renderHash`, the value already stored, so its write guard was false
+// and it wrote nothing. The figure recomposed and republished on every run, for ever, reporting
+// `translated` and VERDICT ok. `applyApprovedFigureEdits` is the only writer that refreshes
+// renderHash, so the loop's only exit was a human review pass — and the R7 figures with no
+// <figure> node have no editor who can perform one.
+//
+// 🔴 THE FIX IS A SECOND STAMP, NOT A REFRESHED renderHash. Refreshing renderHash on recompose
+// silently re-certifies a head editor's approval for output produced by a composer they never
+// saw (measured: mt-preview/mt-preview -> approved/approved), which is the one reader-visible
+// failure anywhere in this finding. `composedVersion` describes the PUBLISHED ARTWORK, exactly
+// as `composedHash` does; `renderHash`/`composerVersion` keep describing the TEXT, so
+// `editorialState` still demotes an approved figure to mt-preview after a bump — which is what
+// COMPOSER_VERSION's own docstring promises.
+describe('a COMPOSER_VERSION bump recomposes ONCE, not for ever', () => {
+  const blocks = { k0: 'IS k0', k1: 'IS k1' };
+  const OLD = '0'; // "the composer the stored hashes were computed under", i.e. a bump happened
+  const oldHash = computeRenderHash(blocks, OLD);
+  /** A sidecar minted and published by an OLDER composer: self-consistent, and now out of date. */
+  const bumped = () => ({
+    version: 1,
+    basename: 'FIG_A',
+    renderHash: oldHash,
+    composedHash: oldHash,
+    composerVersion: OLD,
+    composedVersion: OLD,
+    blocks,
+  });
+
+  it('does not loop: run 1 recomposes and republishes, run 2 is skipped-current', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      mapping: [{ originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' }],
+      sidecars: { FIG_A: bumped() },
+    });
+    expect(isStale(bumped())).toBe(true); // the premise: the bump really does reach it
+
+    const one = fakeSpawn();
+    const first = await runFigures(live(booksRoot), { spawn: one, booksRoot });
+    expect(one.countOf('translate')).toBe(0); // a recompose spends NOTHING
+    expect(rec(first, 'FIG_A').outcome).toBe('translated');
+    expect(one.countOf('compose')).toBe(1);
+    expect(rec(first, 'FIG_A').published).not.toBeNull();
+
+    // 🔴 THE WRITE GUARD IS THE HALF THAT IS EASY TO MISS. `composedHash` did not move — it is
+    // still the old hash — so a guard keyed on `composedHash` alone writes NOTHING here and the
+    // new stamp is a no-op in exactly the scenario it exists to fix.
+    const after = readSidecar(bookDir, 'FIG_A');
+    expect(after.composedHash).toBe(oldHash); // unchanged…
+    expect(after.composedVersion).toBe(COMPOSER_VERSION); // …and the version stamp DID land
+    expect(isStale(after)).toBe(false);
+
+    const two = fakeSpawn();
+    const second = await runFigures(live(booksRoot), { spawn: two, booksRoot });
+    expect(rec(second, 'FIG_A').outcome).toBe('skipped-current');
+    expect(two.countOf('prepare')).toBe(0);
+    expect(two.countOf('compose')).toBe(0);
+    expect(two.countOf('translate')).toBe(0);
+  });
+
+  // 🔴 THE TWO SIDES, PINNED AGAINST EACH OTHER RATHER THAN EACH ASSERTED ALONE. Whatever the
+  // publisher has just stamped, `isStale` must call current — that is the property whose absence
+  // WAS the loop, and it is the one a future edit to either side can break.
+  it('every sidecar the publisher stamps reads NOT stale', async () => {
+    const shapes = {
+      FRESH: null, // bought this run
+      BUMPED: bumped(),
+      PAID_UNPUBLISHED: madeSidecar('X', blocks), // renderHash, no composedHash
+    };
+    for (const [label, planted] of Object.entries(shapes)) {
+      const { booksRoot, bookDir } = makeBook({
+        figures: ['FIG_A'],
+        sidecars: planted ? { FIG_A: { ...planted, basename: 'FIG_A' } } : {},
+      });
+      const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
+      expect(`${label}:${rec(result, 'FIG_A').outcome}`).toBe(`${label}:translated`);
+      expect(`${label}:${isStale(readSidecar(bookDir, 'FIG_A'))}`).toBe(`${label}:false`);
+    }
+  });
+
+  // 🔴 THE PROPERTY THE OBVIOUS ALTERNATIVE FIX BREAKS. A bump must send an APPROVED figure back
+  // to mt-preview until a human re-reviews it — that is what COMPOSER_VERSION is for. Refreshing
+  // renderHash on recompose would leave it reading 'approved' for artwork nobody approved.
+  it('still demotes an approved figure to mt-preview after the bump, and after the recompose', async () => {
+    const approved = { ...bumped(), state: 'approved' };
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      mapping: [{ originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' }],
+      sidecars: { FIG_A: approved },
+    });
+    await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
+    const after = readSidecar(bookDir, 'FIG_A');
+    expect(after.state).toBe('approved'); // the stored column is untouched…
+    expect(editorialState(after, after.blocks, COMPOSER_VERSION)).toBe('mt-preview');
+    expect(effectiveState(after, after.blocks, COMPOSER_VERSION)).toBe('mt-preview');
+    // …and the CONTROL: a sidecar whose hashes are current under THIS composer still reads
+    // approved, so the demotion above is the bump and not a driver that demotes everything.
+    const current = { ...currentSidecar('FIG_B', blocks), state: 'approved' };
+    expect(effectiveState(current, current.blocks, COMPOSER_VERSION)).toBe('approved');
+  });
+
+  // The block-drift detector must survive the change: a sidecar whose stored renderHash no
+  // longer matches its own blocks (someone edited the file by hand) is still stale. Hashing
+  // under the sidecar's OWN composerVersion is what keeps this true without reopening the loop.
+  it('still calls a hand-edited sidecar stale when its renderHash no longer matches its blocks', () => {
+    const drifted = {
+      ...currentSidecar('FIG_A', blocks),
+      composedVersion: COMPOSER_VERSION,
+      blocks: { ...blocks, k0: 'SOMEONE EDITED THIS BY HAND' },
+    };
+    expect(isStale(drifted)).toBe(true);
+    // The control: the same sidecar with its blocks untouched is current.
+    const clean = { ...currentSidecar('FIG_A', blocks), composedVersion: COMPOSER_VERSION };
+    expect(isStale(clean)).toBe(false);
   });
 });

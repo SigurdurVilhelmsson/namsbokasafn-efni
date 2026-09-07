@@ -277,14 +277,31 @@ describe('isStale', () => {
   it('treats a published sidecar whose blocks still hash to renderHash as CURRENT', () => {
     const blocks = { 'Boiling|point': 'Suðumark' };
     const renderHash = computeRenderHash(blocks, COMPOSER_VERSION);
-    expect(isStale({ blocks, renderHash, composedHash: renderHash })).toBe(false);
+    expect(
+      isStale({ blocks, renderHash, composedHash: renderHash, composedVersion: COMPOSER_VERSION })
+    ).toBe(false);
+  });
+
+  // 🔴 …AND `composedVersion` IS PART OF "PUBLISHED". Its absence means "I do not know which
+  // composer drew this SVG", which fails safe exactly as an absent `composedHash` does: one
+  // recompose, 0 ISK, and the stamp then lands. Same pair of assertions one field apart, so a
+  // reader can see which field carries the difference.
+  it('treats the same sidecar with NO composedVersion as stale', () => {
+    const blocks = { 'Boiling|point': 'Suðumark' };
+    const renderHash = computeRenderHash(blocks, COMPOSER_VERSION);
+    expect(isStale({ blocks, renderHash, composedHash: renderHash })).toBe(true);
   });
 
   it('goes stale when the blocks no longer hash to the recorded renderHash', () => {
     const blocks = { 'Boiling|point': 'Suðumark' };
     const renderHash = computeRenderHash(blocks, COMPOSER_VERSION);
     expect(
-      isStale({ blocks: { 'Boiling|point': 'Annað' }, renderHash, composedHash: renderHash })
+      isStale({
+        blocks: { 'Boiling|point': 'Annað' },
+        renderHash,
+        composedHash: renderHash,
+        composedVersion: COMPOSER_VERSION,
+      })
     ).toBe(true);
   });
 });
@@ -496,7 +513,12 @@ describe('a figure whose sidecar is current is skipped before anything is spent'
     const spawn = fakeSpawn();
     const result = await runFigures(CH04, {
       spawn,
-      readSidecar: only(TARGET, { blocks, renderHash: currentHash, composedHash: currentHash }),
+      readSidecar: only(TARGET, {
+        blocks,
+        renderHash: currentHash,
+        composedHash: currentHash,
+        composedVersion: COMPOSER_VERSION,
+      }),
     });
     const rec = result.figures.find((f) => f.basename === TARGET);
     expect(rec.outcome).toBe('skipped-current');

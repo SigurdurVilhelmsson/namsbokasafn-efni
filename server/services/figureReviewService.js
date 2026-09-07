@@ -286,6 +286,13 @@ function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
   // approval, and the only symptom would be a badge that never turns green.
   const existing = readSidecar(bookDir, basename);
   const composedHash = (existing && existing.composedHash) || null;
+  // 🔴 THE SECOND HALF OF THE PUBLISH STAMP, CARRIED FOR THE SAME REASON (M5 review
+  // editorial/F5). `composedVersion` says WHICH COMPOSER drew the published SVG, and
+  // `tools/figure-run.js`'s `isStale` reads it to answer a COMPOSER_VERSION bump. This function
+  // rebuilds the whole sidecar, so dropping it makes every approval look like "I do not know
+  // which composer drew this" — one spurious recompose-and-republish per approval, silent, with
+  // nothing failing. An approval does not change the published artwork, so neither stamp moves.
+  const composedVersion = (existing && existing.composedVersion) || null;
 
   const fig = getFigure(db, bookId, basename, mtBlocks, composedHash);
   if (!fig) return { written: false, path: null, composedHash };
@@ -313,6 +320,9 @@ function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
     // when there is none, so JSON.stringify omits the key entirely and a
     // never-composed sidecar keeps the exact shape it has today.
     ...(composedHash ? { composedHash } : {}),
+    // Never invented: a figure that was never published has no version to carry, and writing
+    // one would claim the artwork is current when no artwork was ever composed.
+    ...(composedVersion ? { composedVersion } : {}),
     composerVersion: COMPOSER_VERSION,
     blocks: fig.blocks,
   };

@@ -240,16 +240,39 @@ export function enumerateChapterFigures(bookSlug, chapter, opts = {}) {
  * successful publish — which makes the stamp the publish-success marker for free. So a sidecar
  * carrying `renderHash` and no `composedHash` was PAID FOR AND NEVER PUBLISHED, and is stale.
  *
- * The `blocks` re-hash is what makes a COMPOSER_VERSION bump reach every figure: the stamp can
- * agree with itself while both were computed by a composer that no longer exists.
+ * 🔴 A COMPOSER_VERSION BUMP IS ANSWERED BY `composedVersion`, NOT BY RE-HASHING THE BLOCKS —
+ * AND THE DIFFERENCE WAS A PERMANENT LOOP. This used to re-hash `blocks` under the module's
+ * CURRENT COMPOSER_VERSION and compare against the STORED `renderHash`, which is a perfectly
+ * good bump detector and has no way to be SATISFIED: nothing in the driver ever rewrites
+ * `renderHash`, and the publisher stamps `composedHash = sidecar.renderHash`, the value already
+ * there. So after a bump every figure recomposed and republished on every run, wrote nothing,
+ * and reported VERDICT ok — measured over four consecutive runs, `sidecarBytesUnchanged=true`
+ * each time. The only writer that refreshes `renderHash` is an editor approving, so the loop's
+ * exit was a human review pass, which the R7 figures with no `<figure>` node cannot have.
+ *
+ * ⚠️ A SIDECAR WITH NO `composedVersion` IS STALE, DELIBERATELY. "I do not know which composer
+ * drew this SVG" fails safe, exactly as an absent `composedHash` does — it costs ONE recompose
+ * (0 ISK) and then converges, because that recompose stamps the version.
+ *
+ * ⚠️ AND THE BLOCK RE-HASH STAYS, UNDER THE SIDECAR'S OWN `composerVersion`. It still catches a
+ * sidecar whose `blocks` were hand-edited while its `renderHash` was left alone. Hashing under
+ * the CURRENT version instead would re-open the loop the moment the publisher stamps a new
+ * `composedVersion`, because `renderHash` was computed under the old one and never moves.
+ *
+ * ▶ WHAT IT DELIBERATELY DOES NOT ANSWER: whether an EDITOR still approves. That is
+ * `editorialState`, which re-hashes the blocks under the CURRENT composer against `renderHash`
+ * and therefore still demotes an approved figure to mt-preview after a bump — which is what
+ * COMPOSER_VERSION's own docstring promises. "The artwork is current" and "the approval is
+ * current" are different questions and this one answers only the first.
  */
 export function isStale(sidecar) {
   if (!sidecar || typeof sidecar !== 'object' || Array.isArray(sidecar)) return true;
-  const { blocks, renderHash, composedHash } = sidecar;
+  const { blocks, renderHash, composedHash, composerVersion, composedVersion } = sidecar;
   if (!renderHash || !composedHash) return true;
   if (composedHash !== renderHash) return true;
+  if (composedVersion !== COMPOSER_VERSION) return true;
   if (blocks && typeof blocks === 'object') {
-    if (computeRenderHash(blocks, COMPOSER_VERSION) !== renderHash) return true;
+    if (computeRenderHash(blocks, composerVersion || COMPOSER_VERSION) !== renderHash) return true;
   }
   return false;
 }
