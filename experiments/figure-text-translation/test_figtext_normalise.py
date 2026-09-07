@@ -31,8 +31,19 @@ check('arc and non-arc differ',
 # CNX_Chem_06_01_Vibrstring reads 0 runs (harness outcome 'empty', 1 of 817). Both of
 # these indexed [0] unguarded, so emit-blocks.py died with IndexError on it rather than
 # reporting "nothing to buy".
-check('P3 group([]) -> []', group([]), [])
-check('P3 merge_blocks([]) -> []', merge_blocks([]), [])
+# Called through `attempt` so a REGRESSION reports a named FAIL rather than taking the
+# whole file down with an IndexError. A crash is ambiguous evidence: its non-zero exit
+# is indistinguishable from the suite being caught by something else entirely, and every
+# assertion after it becomes unreachable — vacuous from outside.
+def attempt(fn, arg):
+    try:
+        return fn(arg)
+    except Exception as exc:                                   # noqa: BLE001
+        return f'{type(exc).__name__}: {exc}'
+
+
+check('P3 group([]) -> []', attempt(group, []), [])
+check('P3 merge_blocks([]) -> []', attempt(merge_blocks, []), [])
 
 # CONTROL: the guards must not have turned these into functions that return [] for
 # EVERYTHING. A refusal-only pair of assertions would pass on `return []`.
