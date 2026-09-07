@@ -265,6 +265,35 @@ check('6c the EMITTED run adv differs from a sum of glyph widths on a Tc/Tw figu
       f'{len(differing)} of {multi} multi-char runs differ (must be > 0, or the run advance '
       f'is a width-sum and R-6 is violated): {differing[:3]}')
 
+# 6d: a run's advance may never be NEGATIVE OR ZERO for text that draws ink. pdfminer
+# reports a NEGATIVE advance — correctly — for `/Type0 /Identity-V` VERTICAL text, where
+# the pen moves down; `_prepare` has no writing-mode branch and projects it onto a
+# horizontal model, so it emitted adv = -9.0 on 69 of 97 runs of PerTable2. Nothing could
+# see it: `shape_violations` checks that adv is NUMERIC and never that it is positive.
+print('\n[6d] a glyph advance is never negative or zero on text that draws ink')
+ADV_FIG = 'CNX_Chem_02_05_PerTable2'      # the ONLY figure in 817 carrying negative adv
+adv_runs, adv_meta, _ = read_figure(ADV_FIG)
+bad_adv = [(r['text'][:16], r['adv']) for r in adv_runs
+           if r['text'].strip() and r['adv'] <= 0]
+repaired = (adv_meta.get('adv_repaired') or {}).get('nonpositive-adv', 0)
+check('6d no run on the Identity-V figure has adv <= 0, and the repair is COUNTED',
+      not bad_adv and repaired > 0 and len(adv_runs) > 0,
+      f'{repaired} char advances repaired (non-vacuity: MUST be > 0, or this figure no '
+      f'longer carries the stimulus and a clean result means nothing); runs with adv <= 0 '
+      f'{len(bad_adv)} (MUST be 0) {bad_adv[:3]}; {len(adv_runs)} runs read')
+# ⚠️ WHAT 6d DOES NOT ASSERT, said here rather than left to be inferred: the glyphs are
+# still one run each, because `_continues` splits on the PROJECTION and not on the
+# advance. And the second fabricated-advance class — a CIDFontType2 with no /W and no /DW,
+# where every glyph reports 1.0 em — is deliberately untouched, so this figure's sibling
+# CNX_Chem_03_02_moles-6296 correctly reports NO repairs. Both need a writing-mode branch
+# in the run splitter, which changes the KEPT layout and the BOUGHT block key.
+moles_runs, moles_meta, _ = read_figure('CNX_Chem_03_02_moles-6296')
+check('6d CONTROL — the constant-1.0-em class is NOT silently "repaired" too',
+      not (moles_meta.get('adv_repaired') or {}) and len(moles_runs) > 0,
+      f'moles-6296 adv_repaired={moles_meta.get("adv_repaired")} (MUST be empty: its '
+      f'advances are positive and plausible, so no bound can tell them from real ones)')
+
+
 # ── 7. `fill` IS A 5-TUPLE compose.cmyk() CAN UNPACK ────────────────────────────────
 print('\n[7] fill unpacks in compose.cmyk')
 check('7a PIN — compose.cmyk still unpacks exactly five values',
