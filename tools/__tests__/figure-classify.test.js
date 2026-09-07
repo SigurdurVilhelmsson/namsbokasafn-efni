@@ -63,6 +63,9 @@ const MEASURED_LIMITING = {
  * vocabulary gap logged in this task's openConcerns: two prose blocks ship in English under a
  * green verdict, and a single per-figure outcome cannot say "partially undecodable".
  * The complete 13-key payload is used further down as the over-strict-validation control.
+ * ⚠️ ONE FIELD IS ABBREVIATED AND EVERY OTHER IS VERBATIM: `artworkSvgPath` held the
+ * machine-specific scratch directory the measurement ran in. The predicate never reads it, and it
+ * is the only place this file departs from what prepare actually wrote.
  */
 const MEASURED_FOODLABEL = {
   basename: 'CNX_Chem_05_02_FoodLabel',
@@ -78,7 +81,12 @@ const MEASURED_FOODLABEL = {
   imageXObjects: 1,
   paintOps: 38,
   formTextXObjects: 0,
-  warnings: ['subset font PAGE/TT0', 'subset font PAGE/TT1', 'undecodable font PAGE/TT1'],
+  warnings: [
+    'subset font PAGE/TT0',
+    'subset font PAGE/TT1',
+    'subset font PAGE/TT2',
+    'undecodable font PAGE/TT1',
+  ],
 };
 
 /** `CNX_Chem_01_00_DailyChem` — a photograph delivered as a PDF: one image XObject, nothing painted. */
