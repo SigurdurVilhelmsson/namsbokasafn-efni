@@ -74,7 +74,42 @@ def dev(x, y):
     return x * S, (H_PT - y) * S
 
 
+# See fit_circle. A circle this much larger than the block's OWN extent is a straight
+# line, whatever the algebra returns. ⚠️ THE NUMBER IS MEASURED, NOT CHOSEN, AND THE GAP
+# IT SITS IN IS ELEVEN ORDERS OF MAGNITUDE WIDE: the four genuine arcs on
+# CNX_Chem_01_01_SciMethod have R/span of 0.748, 1.305, 1.429 and 2.565, while the
+# degenerate blocks the review measured come back at R = 6.15e15 to 1.02e17 against spans
+# of tens of points, i.e. R/span ~ 1e14. So this threshold is ~400x above the largest real
+# arc and ~1e11 below the smallest fake one. Re-measure before moving it; do not tune it.
+ARC_MAX_R_SPANS = 1000.0
+
+
 def fit_circle(pts):
+    """Least-squares circle through `pts`, or None when there is no usable circle.
+
+    🔴 RETURNS None ON A DEGENERATE BLOCK — CALLERS MUST FALL BACK TO THE STRAIGHT PATH.
+    `figtext.is_arc` is `len(b) > 3 and all(len(r['text'].strip()) <= 1 ...)`, i.e. it
+    calls ANY block of four-plus single-character runs an arc, whether or not the
+    characters curve. Straight text that splits per glyph therefore arrives here
+    collinear, where `den = 2*(C*G - D*D)` is exactly 0 and this divided by zero:
+    measured, `compose.py --control` died at this line on CNX_Chem_03_02_moles-6296
+    ('28.1 g Si', '118.7 g Sn'), CNX_Chem_13_02_mixtures ('Q = ' x3),
+    CNX_Chem_14_03_ICETable3_img ('0 + x = x') and five more — 9 blocks corpus-wide,
+    no PNG written.
+
+    ⚠️ THE NEAR-COLLINEAR CASE IS THE DANGEROUS ONE, and a `den == 0` guard alone does
+    not catch it: `den` is merely tiny, so the algebra returns a finite centre 1e15 pt
+    away and a radius to match, `cx + R*cos(th)` becomes pure cancellation noise, and the
+    figure is silently garbled instead of loudly crashing. Both are the same fact — the
+    points do not lie on any circle — so both return None. The threshold is scale-free
+    (a multiple of the block's OWN extent), because these are points on a page and the
+    absolute numbers vary with figure size.
+
+    ⚠️ THE FIX IS DELIBERATELY HERE AND NOT IN `is_arc`. [USER] ruled the layout layer is
+    KEPT, and `is_arc` feeds `blockkey.block_key` — the unit that is BOUGHT. Changing it
+    would change purchased keys corpus-wide to fix a drawing crash. This guard changes
+    only how a block is DRAWN.
+    """
     n = len(pts)
     sx = sy = sxx = syy = sxy = sxxx = syyy = sxyy = sxxy = 0
     for x, y in pts:
@@ -84,17 +119,34 @@ def fit_circle(pts):
     E = n * sxxx + n * sxyy - (sxx + syy) * sx
     G = n * syy - sy * sy; H = n * sxxy + n * syyy - (sxx + syy) * sy
     den = 2 * (C * G - D * D)
+    if den == 0:
+        return None
     cx = (E * G - D * H) / den; cy = (C * H - D * E) / den
-    return cx, cy, sum(math.hypot(x - cx, y - cy) for x, y in pts) / n
+    R = sum(math.hypot(x - cx, y - cy) for x, y in pts) / n
+    if not (math.isfinite(cx) and math.isfinite(cy) and math.isfinite(R)) or R <= 0:
+        return None
+    span = max(math.hypot(x1 - x2, y1 - y2)
+               for x1, y1 in pts for x2, y2 in pts)
+    if span <= 0 or R > ARC_MAX_R_SPANS * span:
+        return None
+    return cx, cy, R
 
 
 BOXW = 63.0     # rounded rect is 67.3pt wide; 2pt padding each side
-report, missing = [], []
+report, missing, degenerate = [], [], []
 
 for b in blocks:
     ls = FT.lines(b)
     en_lines = [''.join(r['text'] for r in l) for l in ls]
-    arc = FT.is_arc(b)
+    # The arc decision must be made BEFORE `new` is built: `new` is a STRING for an arc
+    # and a LIST OF LINES otherwise, so deciding afterwards would hand the straight path
+    # a value of the wrong shape. A block `is_arc` calls an arc but that has no usable
+    # circle is drawn STRAIGHT — see fit_circle, which returns None for those.
+    pts = [(r['x'], r['y']) for r in b]
+    circle = fit_circle(pts) if FT.is_arc(b) else None
+    arc = circle is not None
+    if FT.is_arc(b) and circle is None:
+        degenerate.append(block_key(b))
     # The key is the ONE rule (blockkey.block_key), never an inline copy. This is the
     # consumer that DRAWS: it looks the translation up as TR[key], so a key that differs
     # from the one emit-blocks.py bought leaves the label in English with nothing to
@@ -114,8 +166,7 @@ for b in blocks:
             new = FT.normalise_block_value(TR[key], arc)
 
     if arc:
-        pts = [(r['x'], r['y']) for r in b]
-        cx, cy, R = fit_circle(pts)
+        cx, cy, R = circle
         angs = [math.atan2(y - cy, x - cx) for x, y in pts]
         for j in range(1, len(angs)):
             while angs[j] - angs[j - 1] > math.pi:  angs[j] -= 2 * math.pi
@@ -217,5 +268,13 @@ print('\n'.join(report))
 if missing:
     print(f"\n!! {len(missing)} block(s) with no translation - ENGLISH KEPT:")
     for k in missing:
+        print(f"     {k!r}")
+# NAMED, never counted. `is_arc` calling straight text an arc is a real mis-classification
+# and the straight fallback only stops it CRASHING; the keys below are the evidence for
+# whoever revisits `is_arc`, which this guard deliberately does not touch.
+if degenerate:
+    print(f"\n!! {len(degenerate)} block(s) is_arc says are arcs but have no usable "
+          f"circle - DRAWN STRAIGHT:")
+    for k in degenerate:
         print(f"     {k!r}")
 print(f"\nwrote out/{name}")

@@ -27,13 +27,28 @@ other licence here would create a new MIT→copyleft edge alongside the `server/
 edges catalogued below.
 
 **The grant covers OUR code only.** `experiments/figure-text-translation/pylibs/`
-is a local dependency install and is **gitignored** — this repository therefore
-distributes no third-party code, and nothing below is a sublicence of anything.
+is a local dependency install and is **gitignored**, so this repository
+distributes no third-party *code*, and nothing below is a sublicence of anything.
 Recorded for the reader who installs those dependencies themselves: the figure
-read layer imports **pdfplumber** (MIT) and, through it, pdfminer.six, pypdfium2,
-cryptography and Pillow; the layout and composition layer imports **pikepdf**
-(MPL-2.0) and **pycairo** (LGPL-2.1-only OR MPL-1.1). Every one of them is used
-as an imported library, unmodified.
+**read** layer imports **pdfplumber** (MIT) and, through it, pdfminer.six,
+pypdfium2, cryptography and Pillow; the read layer and the **text-strip** layer
+both import **pikepdf** (MPL-2.0); the **composition** layer imports **pycairo**
+(LGPL-2.1-only OR MPL-1.1); and the **SVG** writer imports **fontTools** (MIT)
+and **brotli** (MIT) to subset a face to woff2. Every one of them is used as an
+imported library, unmodified.
+
+**It DOES distribute third-party FONT DATA, which is a different thing and is
+stated separately because a licence file must not overstate its own scope.**
+1,418 tracked `.svg` files under `books/` carry an `@font-face` whose `src` is a
+base64 **woff2 subset of Liberation Sans**, embedded by
+`experiments/figure-text-translation/svgout.py` so a reader without that face
+installed still sees the figure as laid out. Liberation Sans is licensed under
+the **SIL Open Font License 1.1**, which expressly permits embedding a face in a
+document and carries no Reserved Font Name for these families. The subsets are
+font data, not code; they are not covered by the MIT grant above and are not
+sublicensed by it. *(Re-derive the count rather than trusting this one — it is
+`git ls-files -z '*.svg' | xargs -0 grep -la '@font-face' | wc -l`, and it moves
+whenever a figure is published.)*
 
 **It does not cover `server/`** (which is AGPL-3.0 — see `server/LICENSE`) **or
 `books/`** (which is content under per-book Creative Commons terms — see below).

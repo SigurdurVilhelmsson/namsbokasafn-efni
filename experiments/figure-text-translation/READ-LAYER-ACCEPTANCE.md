@@ -74,13 +74,25 @@ success with zero runs, never an exception. The census bucketed it as a crash be
 
 The predicate is **not** `baseline − candidate ≠ ∅` (ruling R-3). That mechanical rule flags every
 mojibake fix: where the candidate correctly reads `°C` that the baseline read as `¡C`, the `¡` is
-"missing". The rule is
+"missing". So the tiebreak asks poppler — **by COUNT, not by membership**:
 
 ```
-regression  ⟺  (baseline_chars − candidate_chars) ∩ oracle_chars  ≠  ∅
+regression  ⟺  ∃ch.  (baseline_chars − candidate_chars)[ch] > 0
+                 ∧   candidate_chars[ch] < oracle_chars[ch]
 ```
 
-— a character the baseline has that poppler does **not** have is mojibake, not content.
+— a character the baseline has that poppler does **not** attest **at that multiplicity** is
+mojibake or surplus, not content.
+
+🔴 **CORRECTED 2026-09-07 — THIS SECTION STATED `∩ oracle_chars ≠ ∅`, THE MEMBERSHIP FORM COMMIT
+`7fab73b7` REPLACED, AND IT WAS WRITTEN AFTER THAT COMMIT.** `∩` asks *"does poppler see this glyph
+anywhere?"*; the question is *"are we now short of what poppler attests?"* — ruling R-13's wrong
+unit. The distinction is not academic: on `CNX_Chem_18_03_SiPurif`, the only C1 regression in the
+full run, the baseline emits 44 characters of binary garbage before three real labels and the
+candidate drops all 44, one of them a `c` (baseline 4, candidate 3, **oracle 3**). The membership
+form flags `{'c': 1}`; the count form flags nothing, and nothing is what is true. **The `0 / 530`
+below was produced by the COUNT form; only this prose was stale.** ⚠️ Strictly more precise, not
+perfect: where the counts coincide it cannot tell a dropped junk `c` from a dropped real one.
 
 | | figures |
 |---|---:|
@@ -109,6 +121,19 @@ reduction is a FAILURE.** All 8 decode cleanly through `/ToUnicode`. The baselin
 figures was control-byte garbage (`'\x00\x0b\x00D\x00\x0c'` where the figure says `(a)(b)`), which
 nothing downstream could tell from English.
 
+🔴 **CORRECTED 2026-09-07 — UNTIL THAT DATE THIS CRITERION COULD NOT SEE THE FAILURE IT IS NAMED
+FOR, AND `8 / 8 decoded` WAS A SATURATED RATE FROM AN INSTRUMENT THAT COULD ONLY REPORT TOTAL
+LOSS.** `classify_type0` certified `decoded` on `set(charcount(text)) & set(ochars)` — **ONE shared
+character**. A reader keeping a single character of every type0 figure (moles-6296: 1 of 54) was
+classified `decoded 8` and the run exited 0. Since the baseline RAISES on all 8, `c1_scope` is
+False there and C1b is the **only** verdict-bearing criterion over the bucket. It now compares
+counts (`candidate[ch] < oracle[ch]` → FAIL-silent) and prints the shortfall by character.
+▶ **The published `8 / 8` was TRUE and remains true** — the candidate's character multiset equals
+the oracle's exactly on all 8, re-measured after the change, failing set unchanged in both
+directions — **but it was not, until now, ESTABLISHED by the instrument that reported it.**
+**`--selftest` assertion 8** is the sensitivity control it never had: a mutant keeping a quarter of
+every type0 figure's runs must be `FAIL-silent`, with the real candidate still `decoded` alongside.
+
 ⚠️ **The `(cid:` detector is therefore tested against a SYNTHETIC fixture**, because the real corpus
 no longer exercises it — 0 of the 8 contain that substring.
 
@@ -116,6 +141,17 @@ no longer exercises it — 0 of the 8 contain that substring.
 
 Every figure the baseline could not read. The one that did not gain is `CNX_Chem_06_01_Vibrstring`,
 above, which has no text for any instrument.
+
+🔴 **THIS NUMBER MEANS ">= 1 CHARACTER", NOT "READ THE FIGURE" — and until 2026-09-07 nothing
+anywhere measured the difference.** `c2_gained` is `outcome == 'reads'`, and `outcome_of` is
+`any(r['text'] != '')`, so a single SPACE gains a figure. On this population C1, C4 and C4b have a
+structurally empty denominator (they are fenced by `if b_out == 'reads'`, and the baseline raises
+on all 287) and C3 asks only *has text at all*; only the 8 type0 figures got C1b. **That left 279
+figures — the population this whole swap exists to fix — graded on existence alone.** Measured with
+a partial /Form-walk mutant (keep the first quarter of the runs): **70% of oracle-attested
+characters lost, every printed criterion clean, `exit 0`**, while the SAME mutant trips C1 on 40 of
+40 page-text figures. The comparison datum sat unused on every row from the start: `oracle_chars`.
+See **C2b**, below.
 
 ### C3 — oracle agreement · **0 disagreements / 817**
 

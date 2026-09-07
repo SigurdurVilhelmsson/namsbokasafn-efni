@@ -696,6 +696,147 @@ check('14i a REFERENCE CYCLE terminates, and both forms are stripped',
       f'{cy_stats["forms_visited"]} forms visited, {bt_blocks(cy_out)[1]} BT left '
       f'(an unguarded walk never returns from A -> B -> A)')
 
+# ── 14j-14m: the BYTE-LEVEL SCAN, and an anchor that does not derive from it ─────
+# 🔴 EVERY ASSERTION ABOVE THAT COUNTS "LEFTOVER TEXT" USES `bt_blocks()`, WHICH COUNTS
+# WITH `rb'BT.*?ET'` — THE VERY PATTERN THE STRIP USED. Two sides derived from one token,
+# so the check could not see damage to its own anchor: a match that STARTS inside an
+# inline image's flate payload runs forward to the next real ET and deletes the artwork
+# between, and the wreckage contains no BT, so 14c/14g/14i all pass on it. `pdftotext`
+# returns 0 words on both arms too, so the independent word oracle is blind here as well.
+# Measured on CNX_Chem_09_03_BoylesLaw1: the old regex removed 17,539 bytes where a
+# syntax-aware strip removes ~3,355, taking the pressure gauge and BOTH Boyle's-law
+# graphs with it and leaving the syringe barrel alone.
+#
+# The anchor below is `pikepdf.parse_content_stream` — a TOKENISER, a different
+# instrument from a byte regex — plus a pixel comparison, which is the only thing that
+# can see artwork loss at all (the same lesson 14e already encodes for R-9).
+print('\n[14j] the strip is TOKEN-aware: an inline image no longer starts a text block')
+
+
+def bt_ops(pdf_path):
+    """Real BT operators over the page stream and every reachable /Form, counted by a
+    TOKENISER. Deliberately NOT `rb'BT.*?ET'` — see the block comment above."""
+    def count(data):
+        return sum(1 for i in pikepdf.parse_content_stream(data)
+                   if not isinstance(i, pikepdf.ContentStreamInlineImage)
+                   and str(i.operator) == 'BT')
+    pdf = pikepdf.open(pdf_path)
+    page = pdf.pages[0]
+    total = count(_deps.read_content(page).encode('latin-1'))
+    seen, stack = set(), []
+    res = pikepdf.Page(page).obj.get('/Resources')
+    if res is not None:
+        stack.append(res)
+    while stack:
+        xo = stack.pop().get('/XObject')
+        if xo is None:
+            continue
+        for _k, x in xo.items():
+            if str(x.get('/Subtype', '')) != '/Form' or x.objgen in seen:
+                continue
+            seen.add(x.objgen)
+            total += count(x.read_bytes())
+            sub = x.get('/Resources')
+            if sub is not None:
+                stack.append(sub)
+    return total
+
+
+def inline_images(pdf_path):
+    """Inline images in the PAGE stream, by the same tokeniser. The payload is what the
+    old regex started a match inside, so its survival is the property under test."""
+    pdf = pikepdf.open(pdf_path)
+    data = _deps.read_content(pdf.pages[0]).encode('latin-1')
+    return sum(1 for i in pikepdf.parse_content_stream(data)
+               if isinstance(i, pikepdf.ContentStreamInlineImage))
+
+
+def regex_strip(src, dst):
+    """THE SCAN BEING REPLACED, frozen — page stream AND forms, so the comparison is
+    like for like and any pixel difference is the SCAN, not the walk."""
+    pat = re.compile(rb'BT.*?ET', re.S)
+    pdf = pikepdf.open(src)
+    page = pdf.pages[0]
+    page.Contents = pdf.make_stream(
+        pat.sub(b'', _deps.read_content(page).encode('latin-1')))
+    seen = set()
+
+    def walk(res):
+        xo = res.get('/XObject')
+        if xo is None:
+            return
+        for _k, x in xo.items():
+            if str(x.get('/Subtype', '')) != '/Form' or not isinstance(x, pikepdf.Stream):
+                continue
+            if x.objgen in seen:
+                continue
+            seen.add(x.objgen)
+            x.write(pat.sub(b'', x.read_bytes()))
+            sub = x.get('/Resources')
+            if sub is not None:
+                walk(sub)
+    r = pikepdf.Page(page).obj.get('/Resources')
+    if r is not None:
+        walk(r)
+    pdf.save(dst)
+
+
+INLINE_FIG = 'CNX_Chem_09_03_BoylesLaw1'
+_ip, _ = resolve(INLINE_FIG)
+with H.staged(_ip) as (_isrc, _ierr):
+    assert not _ierr, f'staging {INLINE_FIG} failed: {_ierr}'
+    src_px = nonwhite(_isrc, 'bl-src')
+    src_words = len(words(_isrc))
+    src_inline = inline_images(_isrc)
+
+    # 14j — PLANT THE EVIDENCE. Without this the pixel assertions below could pass on a
+    # figure that never had the defect, which is a pass that means nothing.
+    old_bl = S14 / 'boyles-regex.pdf'
+    regex_strip(_isrc, old_bl)
+    old_bl_px = nonwhite(old_bl, 'bl-regex')
+    check('14j CONTROL — the fixture HAS inline images and the byte regex destroys its '
+          'artwork',
+          src_inline > 0 and src_px > 0 and old_bl_px < src_px * 0.75,
+          f'{src_inline} inline images in the page stream (non-vacuity: MUST be > 0, or '
+          f'this figure cannot show the defect); source {src_px} non-white px -> '
+          f'{old_bl_px} after the OLD `BT.*?ET` scan '
+          f'({100.0*(src_px-old_bl_px)/max(src_px,1):.1f}% of the drawing deleted)')
+
+    # 14k — THE SERIALISER CONTROL, and it must come before the filter is judged. The
+    # new strip re-serialises every stream, so "the bytes changed" no longer means
+    # "something was removed"; this proves parse -> unparse alone loses nothing.
+    _rt = pikepdf.open(_isrc)
+    _rtp = _rt.pages[0]
+    _rtp.Contents = _rt.make_stream(pikepdf.unparse_content_stream(
+        pikepdf.parse_content_stream(_deps.read_content(_rtp).encode('latin-1'))))
+    rt_bl = S14 / 'boyles-roundtrip.pdf'
+    _rt.save(rt_bl)
+    rt_px, rt_words = nonwhite(rt_bl, 'bl-roundtrip'), len(words(rt_bl))
+    check('14k CONTROL — parse -> unparse with NO filtering is lossless',
+          abs(rt_px - src_px) <= max(50, src_px * 0.01) and rt_words == src_words,
+          f'{src_px} px -> {rt_px} px, {src_words} words -> {rt_words} words. If the '
+          f'ROUND TRIP loses ink, every pixel number below is measuring the serialiser '
+          f'rather than the filter')
+
+    new_bl = S14 / 'boyles-new.pdf'
+    bl_stats = new_strip(_isrc, new_bl)
+    new_bl_px = nonwhite(new_bl, 'bl-new')
+    new_bl_words = len(words(new_bl))
+    check('14l THE ARTWORK THE REGEX ATE SURVIVES — and the text is still all removed',
+          new_bl_px > old_bl_px and new_bl_px >= src_px * 0.95
+          and new_bl_words == 0 and src_words >= 0,
+          f'regex {old_bl_px} px -> token-aware {new_bl_px} px of {src_px} in the '
+          f'source ({new_bl_px-old_bl_px} px recovered); pdftotext {src_words} words in '
+          f'the source -> {new_bl_words} after (MUST be 0 — otherwise this is "removed '
+          f'less text", not "kept more artwork")')
+    check('14m the inline images are intact, counted by a TOKENISER not by `BT.*?ET`',
+          inline_images(new_bl) == src_inline and bt_ops(new_bl) == 0,
+          f'{inline_images(new_bl)}/{src_inline} inline images survive (the old scan '
+          f'consumed one payload and its EI); real BT operators left: {bt_ops(new_bl)} '
+          f'(MUST be 0). `bt_blocks()` reports '
+          f'{bt_blocks(new_bl)[1]} — and reported 0 on the WRECKAGE too, which is why '
+          f'this assertion does not use it')
+
 shutil.rmtree(S14, ignore_errors=True)
 
 print(f"\n  {'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")

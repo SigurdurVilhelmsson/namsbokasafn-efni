@@ -348,21 +348,61 @@ def _proj(x, y, rot):
     return -x * math.sin(a) + y * math.cos(a)
 
 
-def _prepare(chars, resolve_font, unknown):
-    """pdfplumber chars -> the per-char facts the run splitter needs."""
+def _prepare(chars, resolve_font, unknown, adv_repairs=None):
+    """pdfplumber chars -> the per-char facts the run splitter needs.
+
+    ⚠️ `char['adv']` IS NOT ALWAYS A HORIZONTAL GLYPH WIDTH, and this model assumes it is.
+    Two font classes in this corpus break that assumption, and they break it DIFFERENTLY:
+
+      1. `/Type0` with `/Encoding /Identity-V` — VERTICAL writing. pdfminer reports the
+         advance CORRECTLY: the pen moves DOWN, so `adv` is NEGATIVE. There is no error in
+         pdfminer; the error would be ours, in projecting it onto a horizontal model.
+         Measured: 69 of 97 runs on `CNX_Chem_02_05_PerTable2` carry `adv = -9.0`.
+      2. `/Type0 /Identity-H CIDFontType2` whose descendant declares neither `/W` nor
+         `/DW` — pdfminer falls back to the spec default of 1000 (1.0 em), so EVERY glyph
+         reports the same advance whatever its shape. Measured on
+         `CNX_Chem_03_02_moles-6296`: `adv = 1.0` for `2`, `8`, `.`, `1`, ` `, `g` alike,
+         where the real pen steps are 5.0 / 5.0 / 2.5 / 5.0 / 2.5.
+
+    🔴 ONLY (1) IS BOUNDED HERE, AND THE BOUND IS DELIBERATELY NARROW: an advance that is
+    NEGATIVE OR ZERO for a glyph that draws ink is not a measurement of anything, so the
+    glyph's own axis-aligned extent (`x1 - x0`, which pdfminer derives from the rendered
+    box rather than from the width table) is substituted and the substitution is COUNTED
+    into `meta['adv_repaired']` — a positive signal, so "no repairs" and "this reader
+    cannot see them" are different readings.
+
+    ⚠️ WHAT THIS DOES **NOT** FIX, STATED RATHER THAN LEFT TO BE DISCOVERED. It does not
+    merge those glyphs back into runs. `_continues` tests
+    `along(cur) - along(prev) - prev['adv']` against a band scaled by `size`, and for
+    vertical text `along` (with `rot = 0`) is x, which does not move at all — so the gap
+    is outside the band whether `adv` is -9.0 or +5.5, and the label still becomes one run
+    per glyph. Fixing THAT needs a writing-mode branch in the run splitter, i.e. a design
+    change to the layout the [USER] ruled is KEPT, and it changes `blockkey.block_key` —
+    the unit that is BOUGHT. Case (2) is likewise LEFT AS IS: a constant 1.0-em advance is
+    positive and plausible, so no bound can distinguish it from a real one without reading
+    `/W` and `/DW` out of the font, which is the same design change. Both remain live and
+    are recorded in the register; `compose.fit_circle`'s degeneracy guard is what stops
+    their downstream half from crashing or drawing noise.
+    """
     out = []
     for char in chars:
         matrix = [float(v) for v in char['matrix']]
+        # The glyph's own advance in USER space. `char['adv']` is expressed in the
+        # matrix's source space, so the matrix scale is what carries it into user
+        # space — and that is true for BOTH producer idioms (see the header).
+        adv = float(char['adv']) * math.hypot(matrix[0], matrix[1])
+        text = char.get('text') or ''
+        if adv <= 0.0 and text.strip():
+            adv = abs(float(char['x1']) - float(char['x0']))
+            if adv_repairs is not None:
+                adv_repairs['nonpositive-adv'] += 1
         out.append(dict(
-            text=char.get('text') or '',
+            text=text,
             font=resolve_font(char.get('fontname')),
             size=_visual_size(char, matrix),
             rot=math.degrees(math.atan2(matrix[1], matrix[0])),
             x=matrix[4], y=matrix[5],
-            # The glyph's own advance in USER space. `char['adv']` is expressed in the
-            # matrix's source space, so the matrix scale is what carries it into user
-            # space — and that is true for BOTH producer idioms (see the header).
-            adv=float(char['adv']) * math.hypot(matrix[0], matrix[1]),
+            adv=adv,
             fill=_fill(char, unknown),
             tm=matrix))
     return out
@@ -499,6 +539,7 @@ def read(pdf_path):
     source = Path(pdf_path)
     target, temp = _stage(source)
     unknown = collections.Counter()
+    adv_repairs = collections.Counter()
     handler = _WarningCounter()
     logger = logging.getLogger('pdfminer')
     logger.addHandler(handler)
@@ -541,7 +582,7 @@ def read(pdf_path):
             # laparams stays at its default None. Any LAParams reorders chars into
             # textboxes and destroys content-stream order, which figtext.group depends on.
             chars = doc.pages[0].chars
-        runs = _to_runs(_prepare(chars, resolve_font, unknown))
+        runs = _to_runs(_prepare(chars, resolve_font, unknown, adv_repairs))
     finally:
         logger.removeHandler(handler)
         if temp:
@@ -557,7 +598,8 @@ def read(pdf_path):
                 color_warnings=handler.count, color_warning_note=H7_NOTE,
                 fonts_unexercised=unexercised,
                 unscoped_fonts=dict(unscoped),
-                unknown_colorspaces=dict(unknown))
+                unknown_colorspaces=dict(unknown),
+                adv_repaired=dict(adv_repairs))
     return runs, meta, 'reads' if any(r['text'] for r in runs) else 'empty'
 
 

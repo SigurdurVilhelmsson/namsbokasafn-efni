@@ -122,12 +122,38 @@ Read it there — a population hard-coded in prose is how the two wrong numbers 
      `decodable: false` — and *a silent reduction is a FAILURE*, which is the part a bare "lose no
      text" cannot express.
    - **A mojibake fix reads as a loss.** Where the candidate correctly reads `°C` that the baseline
-     read as `¡C`, the `¡` is "missing". ▶ **The predicate is therefore
-     `regression ⟺ (baseline_chars − candidate_chars) ∩ oracle_chars ≠ ∅`** (ruling R-3): a
-     character the baseline has that poppler does **not** have is mojibake, not content.
+     read as `¡C`, the `¡` is "missing". So the tiebreak asks poppler — but it must ask by COUNT.
+     🔴 **AMENDED 2026-09-07 — THIS DOCUMENT STATED A MEMBERSHIP PREDICATE THE CODE HAD ALREADY
+     REPLACED, AND THE SPEC DECLARES ITSELF THE WINNER ON DISAGREEMENT, SO THE STALE HALF OUTRANKED
+     THE WORKING ONE.** It read
+     `regression ⟺ (baseline_chars − candidate_chars) ∩ oracle_chars ≠ ∅`. **`∩` asks "does poppler
+     see this glyph ANYWHERE?" where the question is "are we now SHORT of what poppler attests?"**
+     — the same wrong unit as ruling R-13, and commit `7fab73b7` fixed the code out of it. ▶ **The
+     predicate the harness implements is
+     `regression ⟺ ∃ch. (baseline_chars − candidate_chars)[ch] > 0 ∧ candidate_chars[ch] < oracle_chars[ch]`.**
+     Measured on `CNX_Chem_18_03_SiPurif`, the only C1 regression in the full run: the baseline
+     emits 44 characters of binary garbage before three real labels and the candidate drops all
+     44, one of which is a `c` (baseline 4, candidate 3, oracle 3). **Membership flags it; counts
+     flag nothing, and nothing is what is true.**
+     ⚠️ **HONEST CAVEAT: strictly more precise, not perfect.** Where the counts coincide it still
+     cannot tell a dropped junk `c` from a dropped real one. It removes a class of FALSE
+     regression; it does not prove no real character was lost.
      ⚠️ **The excused set is reported as its own non-failing column**, never silently — that column
      is where a real loss of something poppler cannot see would hide.
 2. **Positive control** — on the figures it cannot read, the candidate must return non-empty runs.
+   🔴 **AMENDED 2026-09-07 — AS WRITTEN THIS WAS AN EXISTENCE TEST, AND IT LEFT THE POPULATION THE
+   SWAP EXISTS FOR WITH NO COMPLETENESS CHECK AT ALL.** "Non-empty runs" is
+   `any(r['text'] != '')`, so ONE SPACE satisfies it. On the 287 figures the baseline crashes on,
+   criterion 1 is out of scope by construction (the baseline must read a figure to be compared
+   against), criterion 4 needs both readers, and only the 8 `/Type0` figures get C1b — leaving
+   **279 figures graded solely on "did we emit anything"**. Measured with a realistic partial
+   /Form-walk mutant: **70% of oracle-attested characters lost, every criterion clean, exit 0**,
+   while the SAME mutant trips criterion 1 on 40 of 40 figures where the baseline reads.
+   ▶ **The candidate must additionally hold, per character, AT LEAST what the oracle attests**
+   (`C2b`: `∃ch. candidate_chars[ch] < oracle_chars[ch]` is a failure), scoped to the figures where
+   the oracle has text and the candidate reads — the SILENT case. A candidate that raises or is
+   empty is loud and criterion 2 already names it. **The comparison datum was collected on every
+   row from the start (`oracle_chars`) and read by nothing but two print statements.**
 3. **Oracle agreement** — poppler `pdftotext` is a third, independently-implemented instrument.
    Where the candidate and the oracle disagree on whether a figure has text at all, that is a
    finding.

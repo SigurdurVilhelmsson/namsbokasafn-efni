@@ -113,11 +113,19 @@ check('1 emit-side and compose-side keys are IDENTICAL on a real figure',
 runs = json.loads((OUT / 'runs.json').read_text())
 pre_p8 = [block_key(b) for b in FT.merge_blocks(FT.group(
     [r for r in runs if r['text'].strip()]))]
-differ = sorted(set(pre_p8) ^ set(emit_keys))
+# ⚠️ THE CONTROL USES THE SAME UNIT AS THE ASSERTION IT CONTROLS — a MULTISET. It was a
+# `set(...) ^ set(...)` until 2026-09-07, i.e. a control weaker than the thing it
+# controls: a rule difference that changed only MULTIPLICITIES would have shown 0 here.
+# The failure direction was safe (this asserts > 0, so it would have gone red rather than
+# quietly passing), but a control that cannot see the class its assertion exists for is
+# not a control, and matching the unit costs one line.
+pre_c = collections.Counter(pre_p8)
+differ = sorted(((pre_c - emit_c) + (emit_c - pre_c)).items())
 check('2 CONTROL — a DIFFERENT key rule produces a DIFFERENT answer',
       len(differ) > 0,
-      f"the pre-P8 blank-run filter changes {len(differ)} keys on this figure: "
-      f"{differ[:4]}  (if this were 0, assertion 1 would prove nothing)")
+      f"the pre-P8 blank-run filter changes {len(differ)} keys on this figure "
+      f"(multiset delta, both directions): {differ[:4]}  "
+      f"(if this were 0, assertion 1 would prove nothing)")
 
 # ── 3. there is no second copy of the rule left in compose.py ───────────────────────
 # Positive check, not a forbidden-token pin: a pin that forbids a token trips on the

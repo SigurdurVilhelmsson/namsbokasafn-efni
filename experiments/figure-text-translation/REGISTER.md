@@ -344,16 +344,21 @@ case down to **2.5%** of the ink the shipped code preserves. **The BT assertion 
 wreckage.** Only the non-white pixel count sees it, and on 17 of 25 figures the two arms are
 pixel-identical, so **a regression is invisible on two thirds of the figures you might sample.**
 
-### ④ OPEN — 143 of 530 figures move a block's GEOMETRY by >1pt, and it is not all re-segmentation
+### ④ OPEN — a large minority of shared-scope figures move a block's GEOMETRY by >1pt, and it is not all re-segmentation
 
 Raised by the R5 implementer and handed to the controller; priced here 2026-09-07.
 
-**What was measured.** Of 530 figures both readers read, **143 differ in C4 block geometry**.
-109 of those also change block keys — expected, since the two readers segment differently by
-design (ruling R-10). But **34 have an IDENTICAL key multiset, and 20 of those carry no
-duplicate keys at all**, so the pairing is unambiguous and the block genuinely moved.
+**What was measured.** 🔴 **THE COUNTS ARE `READ-LAYER-ACCEPTANCE.md`'s (C4) AND ARE NOT RESTATED
+HERE** — this file's own ⏩ RESUME says so ninety lines above, and until 2026-09-07 this section
+restated them anyway, which is exactly the drift that rule exists to stop. Read the C4 table there
+for the in-scope denominator and the geometry-differs figure count; the JSON rows behind it carry
+the per-figure detail. **What is this section's to own is the SHAPE of the finding, which no other
+document holds:** a minority of the moved figures also change block keys — expected, since the two
+readers segment differently by design (ruling R-10) — but a residue have an IDENTICAL key multiset,
+and most of those carry no duplicate keys at all, so the pairing is unambiguous and the block
+genuinely moved.
 
-**Controller pricing.** **1,714 blocks** moved across those 143 figures.
+**Controller pricing.** The moved BLOCK count across those figures is likewise C4's to report.
 ⚠️ **The obvious story — "it is only axis tick labels" — was tested and does NOT hold.**
 Numeric keys are **44%** of the moved set against a **33%** baseline among ordinary block keys:
 real enrichment, not domination. 66% are ≤4 characters, but long multi-line labels moved too
@@ -373,7 +378,7 @@ belongs with the driver work, which is what first composes figures at scale.
 ✅ **Live exposure today is ZERO**: the only block-keyed sidecars in the repo are 3, all under
 `books/__e2e-fixture__/`. Nothing has been bought against either segmentation.
 
-### ④ Not exercised, stated rather than left silent
+### ⑤ Not exercised, stated rather than left silent
 
 The census's **`unresolved` rows have no file to stage** (nothing is measurable on them), and no
 **second EPS→PDF converter** exists on this box, so whether `gs` itself drops text before either
