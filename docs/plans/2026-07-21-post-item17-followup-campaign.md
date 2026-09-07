@@ -4,15 +4,21 @@
 
 ## ⏩ RESUME — state as of **2026-09-07** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — **[USER] DECIDES ON PR #452, THEN THE DRIVER.**
+### ⏭ SINGLE NEXT ACTION — **BUILD THE DRIVER (M5 Tasks 0b, 1–6b).**
 
-✅ **THE READ-LAYER ADAPTER IS BUILT. The previous block's single next action is DONE.**
-→ **PR [#452](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/452)**, branch
-`feat/m5-read-layer-adapter`, **pushed, NOT merged**. ⚠️ **It also carries 14 earlier M5
-preparation commits that were sitting unpushed on local `main`** — same effort, not unrelated
-work. ⚠️ **Merging pushes `main`, which can strand prod's content backup until the next deploy**
-(§ *Content delivery* in CLAUDE.md): deploy after merging, or expect the next content tick to be
-rejected.
+✅ **THE READ-LAYER ADAPTER IS BUILT, MERGED AND DEPLOYED.** The previous block's single next
+action is DONE, and so is the merge decision that replaced it.
+→ **PR [#452](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/452) MERGED
+2026-09-07 16:33Z** as `3f28d9e1` (a merge commit — the 49 commit messages are the record, so it
+was deliberately not squashed). Branch deleted. **[USER] deployed it the same day.**
+✅ **Verified on `origin/main` BY CONTENT, not by the merge report:** `readlayer.py`,
+`read_layer_accept.py` and `blockkey.py` are present, and a commit from every task is an ancestor.
+⚠️ **The deploy shipped NO functional code — `git diff … -- server/` over the whole campaign is
+empty.** Its job was the `git pull --rebase` that un-strands prod's content backup after a push
+to `main`. **Do not read that deploy as having changed anything a pupil can see.**
+⚠️ **`checks.content_backup` may still read `degraded` for a while, and that is NOT a defect** —
+the check is `ok: !stale` and only the **cron** writes the heartbeat, so fixing the condition by
+hand never clears it; it clears on the next healthy tick.
 
 **What it did — the numbers are the harness's, re-run at close, not quoted from a report:**
 figures the reader can read **530 → 816 of 817** · oracle disagreements (C3) **286 → 0** ·
