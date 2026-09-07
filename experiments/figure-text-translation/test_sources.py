@@ -3,7 +3,7 @@
 import tempfile, sys
 from pathlib import Path
 import _deps
-from sources import resolve
+from sources import resolve, resolve_report
 
 fails = []
 def check(label, got, want):
@@ -68,6 +68,27 @@ with tempfile.TemporaryDirectory() as td:
     p, k = resolve('CNX_B', {'first-edition': str(old_dir)}, prec)
     check('P6 CONTROL unconfigured tree still falls through',
           (k, p.read_bytes()), ('first-edition', b'old'))
+
+    # ── the JSON report the driver consumes ────────────────────────────────────────
+    # A machine caller needs the whole batch in one spawn, and needs "not found" to be a
+    # per-figure VALUE rather than an exit code — tools/figure-run.js tallies it as the
+    # `unresolved` outcome (R9: counted and named, never fatal).
+    rep = resolve_report(['CNX_A', 'CNX_MISSING'], trees, prec)
+    check('report resolves a present figure', rep['CNX_A']['edition'], 'updates-2e')
+    check('report path is a string, not a Path', isinstance(rep['CNX_A']['path'], str), True)
+    check('report says None for a figure in no tree', rep['CNX_MISSING'], None)
+    # CONTROL: the report is not "always None" — the two answers above are different, and
+    # the key set is exactly what was asked for.
+    check('report keys are the names asked for', sorted(rep), ['CNX_A', 'CNX_MISSING'])
+    # And the P6 refusal must travel THROUGH the report, or a batch caller converts an
+    # unmounted tree into N silent `unresolved`s.
+    try:
+        resolve_report(['CNX_A'], absent, prec)
+        raised = 'returned normally'
+    except SystemExit as exc:
+        raised = str(exc)
+    check('report propagates the P6 refusal',
+          raised.startswith("Source tree 'updates-2e' is configured"), True)
 
 print(f"\n{'ALL PASS' if not fails else str(len(fails))+' FAILED'}")
 sys.exit(1 if fails else 0)

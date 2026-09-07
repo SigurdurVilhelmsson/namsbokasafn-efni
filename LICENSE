@@ -71,6 +71,7 @@ whenever a figure is published.)*
 >
 >    **(a) At load time — the module cannot even be imported without `server/`:**
 >    - `tools/validate-chapter.js:33` → `server/lib/chapterLabel`
+>    - `tools/figure-run.js:45` → `server/lib/chapterLabel.js`
 >    - `scripts/validate-status.js:14` → `server/lib/chapterLabel.js`
 >    - `tools/generate-book-data.cjs:20` → `server/services/bookDataGenerator`
 >    - `scripts/export-segment-edits.js:23` → `server/lib/chapterLabel.js`
