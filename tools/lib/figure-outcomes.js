@@ -48,9 +48,9 @@ const FAILED = ['failed-prepare', 'failed-mt', 'failed-compose', 'failed-publish
 
 /**
  * The failures reachable ONLY by a figure that was going to be translated.
- * `failed-prepare` and `failed-mt`/`failed-compose` are not interchangeable here: prepare runs
- * BEFORE anything is classified and publish runs for copies too, so a photograph can reach either
- * of them. Only the MT and compose stages are downstream of "this figure is a vector with text".
+ * `failed-prepare` and `failed-publish` are deliberately ABSENT: prepare runs BEFORE anything is
+ * classified, and publish runs for copies too, so a photograph can reach either. Only the MT and
+ * compose stages are downstream of "this figure is a vector with text".
  */
 const TRANSLATE_PATH_FAILURES = ['failed-mt', 'failed-compose'];
 
