@@ -3,6 +3,14 @@
 **Measured 2026-09-06.** Producer: `text-coverage-census.py` (read-only, 0 ISK, no network).
 **Status of the work is the campaign register's (§C138) — this file is EVIDENCE, and it is dated.**
 
+🔴 **EVERY NUMBER IN THIS FILE IS BASELINE-VINTAGE, AND THAT IS DELIBERATE — DO NOT QUOTE ONE AS IF
+IT DESCRIBED THE READ LAYER SHIPPED ON 2026-09-07.** `census.py` and `text-coverage-census.py` still
+read through `pdftext.py`, so they report **no live text** on the form-text figures. That is
+correct: the census describes the corpus **as the OLD reader saw it**, which is precisely what makes
+it the partition and the baseline the acceptance result is stated *against*. ▶ **A census verdict is
+never evidence about the new reader.** For that, read
+[`READ-LAYER-ACCEPTANCE.md`](READ-LAYER-ACCEPTANCE.md).
+
 ## Why it exists
 
 The figure pipeline was developed against **one** figure, `CNX_Chem_01_01_SciMethod`, and the
@@ -37,7 +45,7 @@ censuses in this campaign disagreed for exactly that reason.)*
 | `form-text-only` | **274** | 🔴 text is inside `/Form` XObjects — **we read zero** |
 | `unresolved` | 253 | not in the delivery at all (after de-hashing) |
 | `photo` | 71 | image, no text — correctly nothing to do |
-| `ours-crashes` | 38 | raises today; **loud, not silent** |
+| `ours-crashes` | 38 | 🔴 **the CENSUS's blindness, not the reader's** — see the 2026-09-07 amendment below |
 | `type0-unreadable` | 8 | 🔴 CID font, text comes back as garbage |
 | `textless` | 7 | genuinely no text |
 | `text-but-unexplained` | 1 | 🔴 **a mechanism we have not named** — `CNX_Chem_20_01_recycle`, 103 words |
@@ -46,11 +54,36 @@ censuses in this campaign disagreed for exactly that reason.)*
 
 - resolved in the delivery: **895**
 - of those, **text-bearing: 779**
-- readable by our extractor: **496**
-- 🔴 **SILENTLY SKIPPED: 283 — 36.3% of every text-bearing chemistry figure, carrying 4,500 English words.**
 
-Median 13 words each, so these are labels and short captions, not decoration.
-**All 283 are `.pdf` in the `first-edition` tree** — this is not an EPS or an edition problem.
+🔴 **AMENDED 2026-09-07 (M5 R5) — THE TWO NUMBERS THAT USED TO CLOSE THIS SECTION WERE
+`readable: 496` AND `SILENTLY SKIPPED: 283 — 36.3%`, AND THE ACCEPTANCE HARNESS FALSIFIED BOTH.**
+They are not restated here, because the harness re-derives every population on each run
+(ruling R-2) and **its measured table's owner is
+[`READ-LAYER-ACCEPTANCE.md`](READ-LAYER-ACCEPTANCE.md)** — read it there.
+
+Three things the harness measured that this census could not:
+
+1. **The old reader does not silently skip; it CRASHES.** `page.Resources.Font` is unguarded, so
+   it raises `AttributeError: /Font` on the form-text figures and `AttributeError: /FirstChar` on
+   the type0 ones. *(The earlier "the page `/Font` dict is empty" was measured with a **guarded**
+   accessor — a different program from the one being replaced.)*
+2. **`ours-crashes` is THIS CENSUS's blindness, not the reader's.** `text-coverage-census.py:59`
+   calls `pg.Contents.read_bytes()`, which raises when `/Contents` is an **array**. Measured on
+   that bucket: the old reader reads most of it perfectly well. ▶ **It was never a reader failure
+   and must not be counted as one.**
+3. **The skipped set was not exactly the three named buckets** — a few `page-text` rows crash too,
+   and one `ours-crashes` row has no text at all for either reader.
+
+⚠️ **AND THE DENOMINATORS ARE DIFFERENT POPULATIONS: 36.3% is a share of the 779 text-bearing
+figures; the harness's table is over the in-scope census BUCKETS. Do not put the two side by side.**
+
+What survives: median 13 words each, so these are labels and short captions, not decoration — and
+**the whole of the set the old reader cannot read is `.pdf` in the `first-edition` tree**, so it is
+not an EPS or an edition problem. ✅ **RE-MEASURED 2026-09-07 rather than carried over**, because the
+set changed underneath the claim: it is now the baseline's *raises*, which includes `page-text` and
+`ours-crashes` rows the original sentence never covered, and every `.eps` figure in the corpus is
+`page-text`. Measured on the harness's own rows — **0 exceptions**, with a control confirming the
+`ext` and `edition` fields are populated.
 
 ## The two things this census is for
 
@@ -58,8 +91,9 @@ Median 13 words each, so these are labels and short captions, not decoration.
    were unknown on the morning of 2026-09-06 and Type0 was known but mis-scoped. One figure is
    *already* outside both explanations. ▶ **Do not gate on "does it have a Form XObject"** — gate
    on **"the oracle found words and we did not"**, which catches the mechanism nobody has named yet.
-2. **It bounds the spend before it is spent.** 496 figures are translatable today; 283 more become
-   translatable if the reader is fixed.
+2. **It bounds the spend before it is spent** — but read the counts from
+   [`READ-LAYER-ACCEPTANCE.md`](READ-LAYER-ACCEPTANCE.md), not from here. *(This bullet restated
+   `496` and `283`; see the 2026-09-07 amendment above.)*
 
 ⚠️ **Re-run it rather than quoting it.** `python3 text-coverage-census.py <book>` — the numbers move
 with the delivery, with `sources.local.json`, and with every extractor change.

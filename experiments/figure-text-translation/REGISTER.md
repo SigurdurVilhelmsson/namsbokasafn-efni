@@ -8,6 +8,28 @@ things lives in [README.md](README.md).
 
 ---
 
+## ⏩ RESUME — state as of 2026-09-07 (supersedes the 2026-09-06 block below)
+
+**The read-layer swap has been MEASURED, and its evidence has an owner:**
+[`READ-LAYER-ACCEPTANCE.md`](READ-LAYER-ACCEPTANCE.md) — C1, C1b, C2, C3, C4, C4b with denominators,
+both readers per census bucket, criterion 5 on two measured-not-named figures, H7 named rather than
+counted as zero, and every figure still empty after the swap named. **Read the numbers there; none
+is restated here or anywhere else.**
+
+**The hazards that remain open are recorded below** under *Known hazards of the shipped read layer*
+— the `\x1f`/`_looks_undecoded` spend hazard, the census's deliberate baseline vintage, and R3's
+form walk being a no-op on EPS. They are **recorded, not fixed**, each with the reason.
+
+⚠️ **Campaign status — whether M5 is done, and what is next — is the campaign register's
+(§C137/§C138), not this file's.** This file owns figure-text status; it does not own the campaign's.
+
+🔴 **The block below is retained as dated evidence and its numbers are SUPERSEDED.** In particular
+its *"779 of 779 against our 504"* uses the bake-off's guarded reader — a third program, neither the
+baseline nor the candidate — which is exactly the figure ruling R-2 forbids inheriting. The
+acceptance harness re-derives every denominator on each run.
+
+---
+
 ## ⏩ RESUME — state as of 2026-09-06 (supersedes the 2026-09-05 block below)
 
 🔴 **THE READ LAYER IS BEING REPLACED, NOT REPAIRED.** [USER] decision, frozen at
@@ -249,6 +271,84 @@ claim did not delete the claim**, which is precisely CLAUDE.md's stale-premise r
 does not acquire a date from the block that carries it. Verified by opening
 `evidence/api-run-tempscales.json` (8 blocks, `when` 2026-09-02T19:23:21Z), not by re-reading
 the prose.
+
+---
+
+## ⚠️ Known hazards of the shipped read layer — recorded 2026-09-07 (M5 R5)
+
+**These are RECORDED, not fixed.** Evidence and denominators live in
+[`READ-LAYER-ACCEPTANCE.md`](READ-LAYER-ACCEPTANCE.md); this section owns their status.
+
+### ① A PRICED HAZARD: `_looks_undecoded` can condemn a correctly-read glyph, and since R4b that means a real label is never bought
+
+`readlayer._looks_undecoded` treats **every** character below `0x20` as evidence the font could not
+be decoded. But under an `/Encoding /Differences` font **`\x1f` is a REAL GREEK ALPHA** — `'\x1f
+bond'` is a genuine block key in this corpus — so that is a correct read being called garbage.
+⚠️ **That block key is BASELINE-VINTAGE**: it is what the OLD reader produced. The shipped reader
+decodes `/Differences` correctly and emits no such key, which is why the hazard is latent rather
+than firing.
+
+🔴 **THE CONSEQUENCE CHANGED WITH R4b AND GOT MORE EXPENSIVE.** The predicate now also decides
+**spend**, through `figtext.sendable`. Before R4b the effect was *"a font is flagged"*; now it is
+**"a real label is never sent to the MT, and therefore never translated"** — a silent omission from
+a purchased chapter, invisible to any count, because the block simply is not in the payload.
+
+⚠️ **It is LATENT, not firing: measured 2026-09-07 over the FULL 817-figure in-scope population,
+the candidate emits `\x1f` on 0 figures and ANY sub-`0x20` control byte on 0 figures.** *(The code
+comment records 0 across 120 figures; this is the wider re-measurement.)* The zero is worth
+something only because the same pass proves the reader emits no control bytes at all — an absence
+paired with the positive fact that would have to be false for it to be vacuous. **It was left alone deliberately:** the fix must change the judge's
+`classify_type0` in the same breath. The two predicates are *deliberately identical*, and a reader
+whose `decodable` flag disagreed with the judge would declare a font readable and then be marked
+`FAIL-silent` for its own correct output. That is a larger change than R4b's decision-unit
+correction, and doing half of it is worse than doing none.
+
+▶ **If this is ever picked up, the unit of work is BOTH predicates plus a fixture that exercises a
+`/Differences` font mapping a sub-`0x20` byte to a real glyph** — the corpus does not currently
+supply one, which is exactly why it went unnoticed.
+
+### ② The census is BASELINE-VINTAGE by design — never quote it as a description of the new reader
+
+`census.py` and `text-coverage-census.py` still read through `pdftext.py`, so they report **NO LIVE
+TEXT** on the form-text figures. 🔴 **That is CORRECT and deliberate, not a stale tool.** The census
+describes the corpus **as the OLD reader saw it**, which is precisely what makes it the partition —
+and the baseline — that the acceptance result is stated *against*. Re-pointing it at the new reader
+would destroy the comparison it exists to enable.
+
+▶ **The consequence you must honour: label every census-derived number baseline-vintage, and never
+present one as evidence about the shipped read layer.** [`TEXT-COVERAGE.md`](TEXT-COVERAGE.md)
+carries that warning in its own header as of 2026-09-07.
+
+⚠️ **`ours-crashes` is a census bucket name that describes the CENSUS.** `text-coverage-census.py:59`
+calls `pg.Contents.read_bytes()`, which raises when `/Contents` is an **array** — the *baseline
+reader* reads almost all of that bucket perfectly well. Counting it as a reader failure inflates the
+defect surface.
+
+### ③ R3's `/Form` walk is a NO-OP on every EPS-sourced figure — and the reason is the converter
+
+Ghostscript's `pdfwrite` emits **no `/Form` XObjects**, so the walk R3 exists for cannot execute on
+an EPS source at all. Text removal itself is clean on EPS. ▶ **Consequences:**
+
+- **R-9's failure mode is unreachable on EPS**, so the two-armed artwork-survival control has an
+  **empty population** there. That is a null with a denominator, not a pass.
+- ⚠️ **State it as a property of `gs`, not of EPS.** The measurement is *"gs's output carries no
+  forms"*, **not** *"EPS files contain no form-like structure"* — the original PostScript may well,
+  and `gs` flattens it. It holds operationally because the pipeline always routes EPS through `gs`.
+- ⚠️ **The census and the probe both sit downstream of that same `gs` invocation**, so their
+  agreement corroborates the converter's behaviour rather than giving two independent views.
+
+🔴 **AND THE R-9 CHECK MUST NEVER BE "no reachable stream contains `BT`" ALONE.** Measured over 25
+real `.pdf` figures carrying forms: the `make_stream` mutant leaves **0 of 25** with any `BT`
+remaining — identical to the correct implementation — while destroying artwork on 8 of them, worst
+case down to **2.5%** of the ink the shipped code preserves. **The BT assertion passes on the
+wreckage.** Only the non-white pixel count sees it, and on 17 of 25 figures the two arms are
+pixel-identical, so **a regression is invisible on two thirds of the figures you might sample.**
+
+### ④ Not exercised, stated rather than left silent
+
+The census's **`unresolved` rows have no file to stage** (nothing is measurable on them), and no
+**second EPS→PDF converter** exists on this box, so whether `gs` itself drops text before either
+reader sees it is unanswerable by any reader-vs-reader check.
 
 ---
 

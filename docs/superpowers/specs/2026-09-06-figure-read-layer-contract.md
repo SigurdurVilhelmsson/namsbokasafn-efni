@@ -1,6 +1,7 @@
 # The figure read layer: the contract
 
-**Date:** 2026-09-06 · **Status:** design. Not yet implemented.
+**Date:** 2026-09-06 · **Amended 2026-09-07 (M5 R5)** — the four corrections below are
+marked inline; everything else stands as written.
 **Owner of:** what the figure-text READ layer must PRODUCE and must HANDLE — the enforceable
 interface between artwork on disk and the layout stage.
 **Why this exists:** the read layer was written against one figure and never had a written
@@ -30,8 +31,8 @@ This document is the owner of the list; where anything disagrees, this wins.)*
 | field | type | meaning — and the trap |
 |---|---|---|
 | `text` | string | the shown string, after escape-unwrapping and WinAnsi mapping |
-| `font` | string | 🔴 **the RESOURCE KEY (`/TT0`), NOT the BaseFont.** It is a **join key** into `meta.fonts` |
-| `size` | number | **VISUAL** size in pt = the `Tf` operand × `hypot(M[0], M[1])`. Not the `Tf` operand |
+| `font` | string | 🔴 **a SCOPE-QUALIFIED join key into `meta.fonts` — `PAGE/TT0`, `PAGE/Fm3/T1_0` — NOT the BaseFont, and NOT a bare resource key.** *(Amended 2026-09-07, ruling R-4. This row said "the RESOURCE KEY (`/TT0`)". A form's `/Resources` is its own scope, so a flat map is unsound **in principle**: measured, **7 of 274** form-text figures have one resource key naming two different BaseFonts. The join-key PROPERTY is what this contract requires; "the resource key" was its wording, not its purpose. `compose.py` needed no change — it derives `BOLD` from `meta.fonts` and tests `run['font'] in BOLD`, so both sides move together.)* |
+| `size` | number | **VISUAL** size in pt. 🔴 **NOT `hypot(M[0], M[1])`** — that is the BASELINE direction, which ghostscript leaves unit-scaled, so on `.eps` it reports **1.0** where the real size is **9.0**: measured bimodal, agreeing **283 of 283** on `.pdf` and **0 of 318** on `.eps` (ruling R-5). 🔴 **And NOT a bare `char['size']` either** — pdfminer sets that to the axis-aligned bbox HEIGHT, so on rotated text it is the glyph's WIDTH and varies per character, splitting one label into one run per glyph. **The owner of the derivation is `readlayer._visual_size`, whose docstring carries the algebra; read it there.** *(Amended 2026-09-07. This row prescribed the `hypot(M[0], M[1])` form, which was wrong for all 280 EPS figures — 36% of the corpus.)* |
 | `rot` | number | degrees, `atan2(M[1], M[0])` |
 | `x` | number | 🔴 **BASELINE ORIGIN** in user space = `M[4]`. **Not a bounding-box corner** |
 | `y` | number | 🔴 **BASELINE ORIGIN** in user space = `M[5]`, PDF origin bottom-left, **y up** |
@@ -100,11 +101,33 @@ outside every mechanism named here. **Do not build a check that enumerates mecha
 🔴 **Neither side alone is sufficient. A gain on the failing set means nothing without the
 regression control, and the regression control alone cannot see a missing capability.**
 
-1. **Regression control** — on the **504** figures the current reader reads, the candidate must
-   lose no text. ⚠️ **Compare CHARACTER MULTISETS, never word counts**: the two readers segment
+🔴 **AMENDED 2026-09-07 — NO POPULATION IS WRITTEN DOWN HERE ANY MORE, AND THAT IS RULING R-2.**
+This section carried **504** read / **275** unread. Both were the **bake-off's guarded reader's**
+numbers — a third program, neither the baseline nor the candidate — and the real baseline does not
+merely fail to read those figures, it **crashes** on them. ▶ **The harness re-derives every
+denominator from the census partition on each run and prints the table; the measured table's owner
+is [`experiments/figure-text-translation/READ-LAYER-ACCEPTANCE.md`](../../../experiments/figure-text-translation/READ-LAYER-ACCEPTANCE.md).**
+Read it there — a population hard-coded in prose is how the two wrong numbers above survived.
+
+1. **Regression control** — on the figures the current reader reads, the candidate must lose no
+   text. ⚠️ **Compare CHARACTER MULTISETS, never word counts**: the two readers segment
    words differently, and a naive comparison produced **155 false regressions** of which the
    measured `.pdf` set held **zero** real ones.
-2. **Positive control** — on the **275** it cannot read, the candidate must return non-empty runs.
+   🔴 **AMENDED 2026-09-07 — AS WRITTEN, "LOSE NO TEXT" CONTRADICTED THIS DOCUMENT'S OWN H2 AND
+   WOULD HAVE REJECTED THE FIX IT EXISTS TO ACCEPT.** Two independent ways:
+   - **H2 REQUIRES a loss.** The baseline's `/Type0` output is control-byte garbage, and H2 says a
+     reader that cannot decode a font must declare it rather than emit bytes. A candidate obeying
+     H2 therefore *loses* every one of those characters. **C1b is the rule that governs the type0
+     bucket**: the candidate must **either** return correctly decoded text **or** mark the font
+     `decodable: false` — and *a silent reduction is a FAILURE*, which is the part a bare "lose no
+     text" cannot express.
+   - **A mojibake fix reads as a loss.** Where the candidate correctly reads `°C` that the baseline
+     read as `¡C`, the `¡` is "missing". ▶ **The predicate is therefore
+     `regression ⟺ (baseline_chars − candidate_chars) ∩ oracle_chars ≠ ∅`** (ruling R-3): a
+     character the baseline has that poppler does **not** have is mojibake, not content.
+     ⚠️ **The excused set is reported as its own non-failing column**, never silently — that column
+     is where a real loss of something poppler cannot see would hide.
+2. **Positive control** — on the figures it cannot read, the candidate must return non-empty runs.
 3. **Oracle agreement** — poppler `pdftotext` is a third, independently-implemented instrument.
    Where the candidate and the oracle disagree on whether a figure has text at all, that is a
    finding.
