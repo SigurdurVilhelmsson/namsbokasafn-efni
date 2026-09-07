@@ -384,6 +384,22 @@ with tempfile.TemporaryDirectory() as td:
           'artwork.pdf', refused(r, 2),
           f'exit {r.returncode}: {r.stderr.strip()[-200:]}')
 
+# ── 4g. a STALE artwork.svg cannot satisfy the success check ────────────────────────
+# `artwork.svg` has a fixed name. A driver reusing a directory, or a retry after a failed
+# run, would otherwise let prepare report success against the PREVIOUS figure's artwork -
+# and composition would render the wrong picture under this figure's translations, with
+# every downstream check green because the file exists, is non-empty and is valid SVG.
+with tempfile.TemporaryDirectory() as td:
+    out = Path(td) / 'reused'
+    out.mkdir()
+    (out / 'artwork.svg').write_text('<svg><!-- A PREVIOUS FIGURE --></svg>')
+    r = run_prepare(Path(td) / 'no-such-figure.pdf', '--basename', 'CNX_Fake_Retry',
+                    '--out', out)
+    check('4g a run that fails removes the previous figure\'s artwork.svg rather than '
+          'leaving it to be mistaken for its own',
+          refused(r, 1) and not (out / 'artwork.svg').exists(),
+          f"exit {r.returncode}, artwork.svg present={(out / 'artwork.svg').exists()}")
+
 # ── 5. ISOLATION — the shared out/ is not touched ───────────────────────────────────
 before_shared = snapshot(SHARED_OUT)
 with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as foreign:

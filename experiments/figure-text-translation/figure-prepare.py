@@ -353,6 +353,19 @@ def build_warnings(meta, features):
 
 def prepare(artwork, out_dir, basename):
     """-> the prepare.json payload. Raises PrepareError on a per-figure failure."""
+    # 🔴 A STALE artwork.svg MUST NOT BE ABLE TO SATISFY THE CHECK AT THE END OF THIS
+    # FUNCTION. `artwork.svg` has a fixed name, so a driver that reuses a directory - or
+    # a retry after a failed run - could otherwise have prepare report success against
+    # the PREVIOUS figure's artwork, and composition would then render the wrong
+    # picture under this figure's translations. Nothing downstream could see it: the
+    # file exists, is non-empty, and is valid SVG. Unlinking FIRST makes the check mean
+    # "this run produced it" rather than "a file with this name is present".
+    # ⚠️ pdftocairo currently always overwrites, so this cannot fire today - it is the
+    # invariant that is being pinned, not a live bug.
+    stale = out_dir / 'artwork.svg'
+    if stale.exists():
+        stale.unlink()
+
     if not artwork.is_file():
         raise PrepareError(f'artwork not found: {artwork}')
 
