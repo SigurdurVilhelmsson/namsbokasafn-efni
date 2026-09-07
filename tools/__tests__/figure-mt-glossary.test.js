@@ -1,6 +1,13 @@
 /**
- * The figure MT leg's glossary wiring — the first of the three gates the
- * figure-text register puts in front of the bulk run.
+ * The figure MT leg's glossary wiring — gate 1, INVERTED.
+ *
+ * 🔴 THE GATE USED TO MEAN "send the glossary, or refuse". Since [USER]
+ * 2026-09-06 (on §C133) it means the opposite: this leg loads no glossary at
+ * all, and `main` asserts as a pre-flight invariant that no block's options
+ * carry `glossaries` before the first paid request. The suite is arranged
+ * around that — the wire payload and the two durable run records are the
+ * assertions; `glossarySteeredBlocks` is pinned separately because the refusal
+ * branch it guards is unreachable while `main` passes a null glossary.
  *
  * ⚠️ THIS FILE LIVES IN `tools/__tests__/` ON PURPOSE, though the module under
  * test is in `experiments/`. Root `vitest.config.js` declares no `include`, so
@@ -10,9 +17,10 @@
  * placed there silently stops running. `tools/__tests__/**` is covered by BOTH
  * configs, so this test cannot become a gate that does not exist.
  *
- * ⚠️ NO NETWORK. The client is a stub; the assertions are about what would ride
- * the wire, which is the only half of gate 1 that is ours. Whether the glossary
- * FILE carries a given ruling is a data state — see the register's predicate.
+ * ⚠️ NO NETWORK, EVER. The client is a stub and the assertions are about what
+ * would ride the wire. `resolveGlossaryOrRefuse` still has its own tests here
+ * even though `main` no longer calls it: they are now the ONLY thing keeping
+ * its three refusal codes alive, which the function's own banner says.
  */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import fs from 'fs';
@@ -23,6 +31,7 @@ import {
   parseFigureArgs,
   resolveGlossaryOrRefuse,
   translateOptsFor,
+  glossarySteeredBlocks,
   figureNameFrom,
   main,
 } from '../../experiments/figure-text-translation/translate-blocks.mjs';
@@ -106,6 +115,22 @@ const CELSIUS = {
   terms: [{ english: 'Celsius', icelandic: 'Celsíus', status: 'approved' }],
 };
 
+/**
+ * What this tool calls: `client.translate(text, opts)` + `client.getUsage()`.
+ *
+ * `seen` records the OPTS as well as the text, because the wire payload — not
+ * stdout — is what gate 1 is about.
+ */
+function stubClient(seen) {
+  return {
+    translate: async (text, opts) => {
+      seen.push({ text, opts });
+      return { text: `IS:${text}` };
+    },
+    getUsage: () => ({ chars: 13, requests: 1 }),
+  };
+}
+
 describe('parseFigureArgs', () => {
   it('rejects an unknown flag rather than ignoring it', () => {
     // The CLAUDE.md parseArgs trap one level down: a hand-rolled
@@ -177,7 +202,11 @@ describe('translateOptsFor', () => {
     terms: [{ sourceWord: 'Celsius', targetWord: 'Celsíus' }],
   };
 
-  it('sends the matching headword on the wire for a block that contains it', () => {
+  it('CAN still build a glossaries field — what makes the main() invariant real', () => {
+    // Retitled, not deleted, when gate 1 inverted. `main` never hands this
+    // function a glossary any more, so its ability to produce the field is the
+    // only remaining proof that "no request carried one" is a measurement
+    // rather than a property of a function that cannot express it.
     const opts = translateOptsFor(glossary, '100 Celsius degrees');
     expect(opts.glossaries[0].terms).toEqual([{ sourceWord: 'Celsius', targetWord: 'Celsíus' }]);
   });
@@ -256,17 +285,6 @@ describe('main — --out isolates the only stage that costs money', () => {
     process.exitCode = savedExitCode;
   });
 
-  /** What this tool calls: `client.translate(text, opts)` + `client.getUsage()`. */
-  function stubClient(seen) {
-    return {
-      translate: async (text, opts) => {
-        seen.push({ text, opts });
-        return { text: `IS:${text}` };
-      },
-      getUsage: () => ({ chars: 13, requests: 1 }),
-    };
-  }
-
   it('writes both records into --out and leaves the shared out/ untouched', async () => {
     const fixture = fixtureOut();
     const before = inventory(SHARED_OUT);
@@ -286,7 +304,15 @@ describe('main — --out isolates the only stage that costs money', () => {
     expect(apiRun.figure).toBe('FIXTURE_ONLY_FIGURE'); // read the FIXTURE's meta.json
     expect(apiRun.blocks.map((b) => b.key)).toEqual(['Boiling|point']); // send:false skipped
     expect(apiRun.usage).toEqual({ chars: 13, requests: 1 });
-    expect(apiRun.glossary).toMatchObject({ book: 'efnafraedi-2e' });
+    // Was `toMatchObject({ book: 'efnafraedi-2e' })` until gate 1 inverted:
+    // the record's `glossary` is now null on every run and the slug has its own
+    // field. Worth naming — this test no longer reads the real
+    // `books/efnafraedi-2e/glossary/` at all, so it no longer depends on a tree
+    // the 2-hourly export cron rewrites.
+    expect({ glossary: apiRun.glossary, book: apiRun.book }).toEqual({
+      glossary: null,
+      book: 'efnafraedi-2e',
+    });
 
     const trans = JSON.parse(fs.readFileSync(path.join(fixture, 'translations-api.json'), 'utf-8'));
     expect(trans.blocks).toEqual({ 'Boiling|point': ['IS:Boiling point'] });
@@ -360,6 +386,204 @@ describe('main — --out isolates the only stage that costs money', () => {
     await expect(
       main(['--book', 'efnafraedi-2e', '--out', '/nonexistent'], { estimateIsk: () => 0 })
     ).rejects.toThrow(/inject both/i);
+  });
+});
+
+describe('main — gate 1 INVERTED: nothing carries a glossary onto the figure wire', () => {
+  // 🔴 [USER] 2026-09-06, on §C133: take the glossary off the MT wire. These
+  // tests assert the WIRE PAYLOAD and the DURABLE RUN RECORD, never stdout
+  // wording — except for the one status-line test below, which exists because
+  // that line is a third provenance site and was keying on the operator's
+  // INTENT rather than on what actually rode the wire.
+  //
+  // ⚠️ RED-FIRST NOTE, so a later reader can tell a real red from a
+  // manufactured one: at the commit that introduced these, `main` loaded
+  // `books/efnafraedi-2e/glossary/glossary-unified.json` and the fixture's one
+  // sent block, "Boiling point", matched TWO live headwords (`boiling → suða`,
+  // `boiling point → suðumark`). So the wire and provenance assertions below
+  // failed against real behaviour, not against a missing export. After the
+  // inversion no glossary file is read at all, which is why these are stable.
+  let savedExitCode;
+  let logged;
+  let errored;
+  let realLog;
+  let realError;
+
+  beforeEach(() => {
+    savedExitCode = process.exitCode;
+    process.exitCode = undefined; // a stale value must not mask a missing set
+    logged = [];
+    errored = [];
+    realLog = console.log;
+    realError = console.error;
+    console.log = (...a) => logged.push(a.map(String).join(' '));
+    console.error = (...a) => errored.push(a.map(String).join(' '));
+  });
+  afterEach(() => {
+    console.log = realLog;
+    console.error = realError;
+    process.exitCode = savedExitCode;
+  });
+
+  it('sends NO glossary on any request, whatever --book says', async () => {
+    const fixture = fixtureOut();
+    const seen = [];
+
+    await main(['--book', 'efnafraedi-2e', '--out', fixture], {
+      createClient: () => stubClient(seen),
+      estimateIsk: () => 0,
+      envPath: path.join(fixture, 'absent.env'),
+    });
+
+    // Verdict before payload: a refusal returns early, and then "no request
+    // carried a glossary" is true for the wrong reason.
+    expect(process.exitCode).toBeUndefined();
+    // NON-VACUITY. Without this, a client that is never called passes — which
+    // is precisely how "found 0" and "my instrument saw nothing" read alike.
+    expect(seen.length).toBeGreaterThan(0);
+    expect(seen.map((s) => s.text)).toEqual(['Boiling point']);
+    // The unit of the question is the REQUEST, so report every offender, not a
+    // boolean: a per-request list names which block leaked if this ever fires.
+    expect(seen.filter((s) => 'glossaries' in s.opts).map((s) => s.text)).toEqual([]);
+    // …and the requests really did carry options, so the filter above had a
+    // populated field to look at.
+    expect(seen.every((s) => s.opts.targetLanguage === 'is')).toBe(true);
+  });
+
+  it('stamps BARE provenance in both durable records on a default --book run', async () => {
+    // The three provenance sites keyed on `args.noGlossary` — the operator's
+    // INTENT — so a default `--book efnafraedi-2e` run stamped a glossary
+    // provenance on a run that (after the inversion) sends nothing. A run
+    // record that lies about its own provenance is worse than none.
+    const fixture = fixtureOut();
+    const seen = [];
+
+    await main(['--book', 'efnafraedi-2e', '--out', fixture], {
+      createClient: () => stubClient(seen),
+      estimateIsk: () => 0,
+      envPath: path.join(fixture, 'absent.env'),
+    });
+
+    expect(process.exitCode).toBeUndefined();
+
+    const apiRun = JSON.parse(fs.readFileSync(path.join(fixture, 'api-run.json'), 'utf-8'));
+    const trans = JSON.parse(fs.readFileSync(path.join(fixture, 'translations-api.json'), 'utf-8'));
+
+    // One assertion over an object, not three in a row: a red FIRST assertion
+    // makes its neighbours vacuous from outside.
+    expect({
+      glossary: apiRun.glossary,
+      book: apiRun.book,
+      source: trans._source,
+      steered: apiRun.blocks.map((b) => b.glossarySent),
+    }).toEqual({
+      glossary: null,
+      book: 'efnafraedi-2e', // the slug survives as its own field, not inside `glossary`
+      source: 'Málstaður /v1/translate, no glossary',
+      steered: [false],
+    });
+  });
+
+  it('says BARE on the status line too, and never "N approved … terms"', async () => {
+    // The third site. `glossaryStatusLine(null, …)` prints "Glossary: none
+    // available (continuing without)", which describes an accident; and the
+    // pre-inversion default printed a live term count, which describes a
+    // glossary that no longer rides anything.
+    const fixture = fixtureOut();
+
+    await main(['--book', 'efnafraedi-2e', '--out', fixture, '--dry-run'], {
+      createClient: () => {
+        throw new Error('not reached under --dry-run');
+      },
+      estimateIsk: () => 0,
+      envPath: path.join(fixture, 'absent.env'),
+    });
+
+    expect(process.exitCode).toBeUndefined();
+    const out = logged.join('\n');
+    // Positive: the instrument captured the run's plan at all.
+    expect(out).toMatch(/blocks,/);
+    expect(out).toMatch(/glossary: NONE/);
+    expect(out).not.toMatch(/approved/); // the false term-count provenance
+    expect(out).not.toMatch(/none available/); // the misleading accident wording
+  });
+
+  it('accepts --no-glossary as a no-op and says so, rather than rejecting it', async () => {
+    // Retiring the flag would make it an UNKNOWN flag (exit 2), breaking every
+    // caller that still passes it. The reject-unknown rule exists for typos,
+    // not for retired flags.
+    const fixture = fixtureOut();
+    const seen = [];
+
+    await main(['--book', 'efnafraedi-2e', '--out', fixture, '--no-glossary'], {
+      createClient: () => stubClient(seen),
+      estimateIsk: () => 0,
+      envPath: path.join(fixture, 'absent.env'),
+    });
+
+    expect(process.exitCode).toBeUndefined();
+    expect(seen.length).toBeGreaterThan(0); // it RAN; it was not refused early
+    expect(logged.join('\n')).toMatch(/--no-glossary: accepted/);
+    const trans = JSON.parse(fs.readFileSync(path.join(fixture, 'translations-api.json'), 'utf-8'));
+    // Identical outcome to the default run — that IS the no-op.
+    expect(trans._source).toBe('Málstaður /v1/translate, no glossary');
+  });
+
+  it('still REFUSES a run with no --book, even though no glossary is loaded', async () => {
+    // Not a red-first: this passed before the inversion too, via
+    // resolveGlossaryOrRefuse's `no-book` code. It is here because the
+    // inversion removes that call, and dropping the requirement silently would
+    // hand Task 6b a flag it can forget.
+    const fixture = fixtureOut();
+    await main(['--out', fixture], {
+      createClient: () => {
+        throw new Error('a bookless run must not reach a client');
+      },
+      estimateIsk: () => 0,
+      envPath: path.join(fixture, 'absent.env'),
+    });
+
+    expect(process.exitCode).toBe(2);
+    expect(errored.join('\n')).toMatch(/no-book/);
+    expect(fs.existsSync(path.join(fixture, 'api-run.json'))).toBe(false);
+  });
+});
+
+describe('glossarySteeredBlocks — the pre-flight predicate', () => {
+  // `main` builds its plan from a null glossary, so its refusal branch is
+  // UNREACHABLE at HEAD. A gate that cannot fire is a gate that does not exist,
+  // so the predicate is pinned here against a plan that DOES carry a glossary.
+  const glossary = {
+    domain: 'chemistry',
+    terms: [{ sourceWord: 'Celsius', targetWord: 'Celsíus' }],
+  };
+  const plan = (glos, texts) =>
+    texts.map((t, i) => ({ block: { key: `k${i}` }, opts: translateOptsFor(glos, t) }));
+
+  it('names the steered blocks, and only those, in a MIXED plan', () => {
+    // Mixed on purpose: a predicate that returned every key, or none, would
+    // satisfy an all-steered or all-bare plan without discriminating. Built
+    // through the real translateOptsFor, so the opts are the shape main sends.
+    const keys = glossarySteeredBlocks(
+      plan(glossary, ['100 Celsius degrees', 'Freezing point of water', 'Celsius scale'])
+    );
+    expect(keys).toEqual(['k0', 'k2']);
+  });
+
+  it('reports duplicates as duplicates — the unit is the REQUEST, not the block text', () => {
+    // Two blocks can legitimately carry the same text (a label repeated in a
+    // figure). A set-valued answer would lose the twin, and the operator would
+    // under-count what leaked. This is a multiset question.
+    const keys = glossarySteeredBlocks(plan(glossary, ['Celsius', 'Celsius']));
+    expect(keys).toEqual(['k0', 'k1']);
+  });
+
+  it('is empty for a bare plan — the case main actually produces', () => {
+    expect(glossarySteeredBlocks(plan(null, ['100 Celsius degrees', 'Anything']))).toEqual([]);
+  });
+
+  it('is empty for an empty plan, without throwing', () => {
+    expect(glossarySteeredBlocks([])).toEqual([]);
   });
 });
 

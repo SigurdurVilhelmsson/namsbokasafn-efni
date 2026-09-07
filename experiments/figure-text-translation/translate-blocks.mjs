@@ -8,21 +8,31 @@
  *
  *   node translate-blocks.mjs --book <slug> [--out <dir>] [--dry-run] [--no-glossary]
  *
- * 🔴 `--book` IS REQUIRED, AND THE REFUSAL IS THE POINT. This is the figure
- * track's gate 1: the leg used to send `glossary: null` unconditionally, so a
- * [USER] terminology ruling reached prose and never reached figures. A warning
- * printed into a bulk run's scroll is a detector firing into a log, not a gate
- * (CLAUDE.md), so a run that cannot load a glossary REFUSES rather than quietly
- * paying for hundreds of figures that carry the term the project ruled against.
- * `--no-glossary` is the separate acknowledgement — the `--force`/`--adopt`
- * idiom already on `main` — and it has a real use: item ⑯ was sent bare on
- * purpose, because §C73's control is what the model does UNPROMPTED.
+ * 🔴 GATE 1 IS INVERTED: THIS LEG SENDS NO GLOSSARY, EVER. [USER] 2026-09-06,
+ * on §C133's measurement that the glossary buys no terminology consistency —
+ * 44.2 / 44.6 / 44.4% across three runs, inside the measure's own noise floor.
+ * The case is STRONGER for figures than for prose: figure text is labels and
+ * captions — short, fragmentary, often a single noun — which is exactly where a
+ * flat context-free map does its worst work, because there is no sentence to
+ * disambiguate against. And a wrong label is baked into an IMAGE, not editable
+ * in the segment editor the way a prose segment is.
  *
- * ⚠️ THE GATE IS NECESSARY, NOT SUFFICIENT. It proves a glossary rode the wire;
- * it cannot prove that glossary carries any particular ruling. That is a data
- * state reached by: the ruling's PR merges → deploy (051 asserts it at boot) →
- * the 2-hourly export cron rewrites `glossary-unified.json` → that commit is
- * pulled. The register carries the checkable predicate.
+ * This REPLACES the gate that used to live here ("send the glossary, or
+ * refuse"). It is inverted rather than DELETED: deleting it would leave the
+ * paid figure leg ungated, and this project has lost a guard that way before.
+ * What remains is a PRE-FLIGHT INVARIANT — every block's wire options are built
+ * before the first paid request, and the run refuses outright if any of them
+ * carries `glossaries`. See `glossarySteeredBlocks`.
+ *
+ * ⚠️ `--book` IS STILL REQUIRED, and it no longer selects anything. It names
+ * the run in `api-run.json`, and keeping it mandatory keeps a driver's
+ * per-figure spawn self-describing. `--no-glossary` is now a no-op kept for
+ * callers that still pass it — retiring it would make it an UNKNOWN flag, i.e.
+ * exit 2, and the reject-unknown rule exists for typos, not for retired flags.
+ *
+ * ⚠️ WHAT THIS CANNOT DO IS MAKE THE GLOSSARY REACH FIGURES BY ANOTHER ROUTE.
+ * A [USER] terminology ruling now reaches figure text only through an editor,
+ * which is what `docs/plans/2026-09-06-editor-terminology-assistant.md` is for.
  *
  * 🔴 IMPORTING THIS FILE USED TO SPEND MONEY. Every top-level statement ran at
  * import — including the paid translate loop — so merely importing the module
@@ -32,7 +42,7 @@
  * that `api-translate.js` uses, and `.env` is read inside it, so the module is
  * import-safe and its wiring is testable with a stub client and no network.
  *
- * ⚠️ THAT LAST CLAUSE WAS TRUE ONLY OF THE THREE PURE EXPORTS. `main` was not
+ * ⚠️ THAT LAST CLAUSE WAS TRUE ONLY OF THE PURE EXPORTS. `main` was not
  * exported and minted its own client, so the WRITE path — the half `--out`
  * changes — had no stub anywhere. `main` now takes its API module as a
  * PARAMETER; see its docstring for why a module mock could not do the job.
@@ -40,12 +50,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import {
-  loadGlossary,
-  filterGlossaryForText,
-  glossaryStatusLine,
-  loadEnvFile,
-} from '../../tools/api-translate.js';
+import { loadGlossary, filterGlossaryForText, loadEnvFile } from '../../tools/api-translate.js';
 import { bookToDomain } from '../../tools/lib/book-rendering-config.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -65,8 +70,9 @@ const VALUED_FLAGS = new Set(['--book', '--out']);
  *
  * `tools/lib/parseArgs.js` silently drops unknown flags (CLAUDE.md), and a
  * hand-rolled `argv.includes` is the same trap one level down: `--bok` would
- * leave `book` unset and the run would send bare — walking straight through the
- * gate this file exists to hold.
+ * leave `book` unset, and the run record would then name no book at all while
+ * still spending money. (Before the gate inverted, the same typo walked the run
+ * straight past a glossary check; the trap outlived the check.)
  *
  * ⚠️ A VALUED FLAG WHOSE VALUE IS MISSING IS ALSO A REFUSAL. `--book --dry-run`
  * used to parse as `{book: '--dry-run', dryRun: FALSE}` — the operator asked for
@@ -107,6 +113,13 @@ export function parseFigureArgs(argv) {
 
 /**
  * Load the book's glossary, or refuse the run.
+ *
+ * 🔴 NO LONGER CALLED BY `main` — GATE 1 INVERTED (see the file header). Kept,
+ * unmodified, because it is the whole of a `--with-glossary` escape hatch
+ * should one ever be wanted, and because its three refusal CODES are a
+ * worked distinction worth not re-deriving. ⚠️ Consequence to state plainly:
+ * `no-book`, `no-glossary-file` and `glossary-unusable` are now unreachable
+ * from the CLI, and are held alive only by this function's own unit tests.
  *
  * ⚠️ THE TWO REFUSAL CODES ARE DELIBERATELY DISTINCT. `loadGlossary` returns
  * `null` both when the file is absent and when it loads to zero usable terms,
@@ -188,6 +201,28 @@ export function translateOptsFor(glossary, english) {
 }
 
 /**
+ * The blocks whose wire options would carry a glossary — the pre-flight
+ * invariant's predicate.
+ *
+ * 🔴 EXPORTED BECAUSE ITS BRANCH IN `main` IS UNREACHABLE AT HEAD. `main` builds
+ * every block's options from a null glossary, so the refusal below it cannot
+ * fire, and a gate that cannot fire is a gate that does not exist (CLAUDE.md).
+ * Pinning the predicate against a plan that DOES carry a glossary is what keeps
+ * it a real assertion: the test proves it can SEE one, so an empty result on the
+ * real path means "none present" rather than "this instrument is blind".
+ *
+ * ⚠️ Returns the offending KEYS, not a boolean: if this ever fires, the operator
+ * needs to know which blocks leaked, and a count cannot say.
+ *
+ * @param {Array<{block: {key: string}, opts: object}>} wire  one entry per block
+ *        that would be sent, each holding the exact opts destined for the API
+ * @returns {string[]} the offending blocks' keys, in send order
+ */
+export function glossarySteeredBlocks(wire) {
+  return wire.filter((w) => Boolean(w.opts.glossaries)).map((w) => w.block.key);
+}
+
+/**
  * The figure this run is for, read from the `meta.json` the extractor left in
  * this run's output directory.
  *
@@ -220,6 +255,15 @@ export function figureNameFrom(metaPath) {
  * a test asserting "a missing `.env` is survivable" passes there whatever the
  * code does.
  *
+ * 🔴 NO GLOSSARY IS LOADED HERE, BY DESIGN — see the file header. The three
+ * sites that record what happened (the status line, `api-run.json`'s `glossary`
+ * and `translations-api.json`'s `_source`) are keyed on the OUTCOME, never on
+ * `args.noGlossary`. That was not cosmetic: keyed on the flag, a default
+ * `--book efnafraedi-2e` run stamped `glossary efnafraedi-2e (N terms)` on a run
+ * that sent nothing — a durable record lying about its own provenance, which is
+ * worse than no record. The convention is the one `glossarySent` already states
+ * in the loop below.
+ *
  * @param {string[]} argv  arguments only, without node/script
  * @param {{createClient?: Function, estimateIsk?: Function, envPath?: string}} [deps]
  *        `envPath` defaults to `<repo>/.env`; the API pair to the real module.
@@ -235,9 +279,16 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
     return;
   }
 
-  const resolved = resolveGlossaryOrRefuse({ book: args.book, noGlossary: args.noGlossary });
-  if (!resolved.ok) {
-    console.error(`  ✗ REFUSED (${resolved.code}): ${resolved.message}`);
+  // `--book` survives the inversion as a REQUIREMENT even though nothing now
+  // selects on it: it is what names the run in `api-run.json`, and a driver that
+  // could forget it would produce a pile of records naming no book. Checked here
+  // rather than via `resolveGlossaryOrRefuse`, which `main` no longer calls.
+  if (!args.book) {
+    console.error(
+      '  ✗ REFUSED (no-book): No --book given, so the run record would name no book.\n' +
+        'The figure leg sends no glossary either way ([USER] 2026-09-06); the slug is provenance.\n' +
+        'Pass --book <slug>.'
+    );
     process.exitCode = 2;
     return;
   }
@@ -252,6 +303,28 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
   const blocks = JSON.parse(fs.readFileSync(path.join(outDir, 'blocks.json'), 'utf-8'));
   const send = blocks.filter((b) => b.send);
   const chars = send.reduce((n, b) => n + b.english.length, 0);
+
+  // 🔴 GATE 1, INVERTED. `null` is not a placeholder for a glossary we failed to
+  // load — it is the value `translateOptsFor` needs in order to OMIT the field.
+  const glossary = null;
+
+  // PRE-FLIGHT INVARIANT: build every block's wire options up front and refuse
+  // the whole run if any of them carries a glossary. Deliberately placed here —
+  // before `.env` is read, before the API module is imported, before a client
+  // exists — so the refusal cannot happen with a request already in flight.
+  // Building the opts once and reusing them below also means the thing asserted
+  // on is the same object that rides the wire, not a second computation of it.
+  const wire = send.map((b) => ({ block: b, opts: translateOptsFor(glossary, b.english) }));
+  const steered = glossarySteeredBlocks(wire);
+  if (steered.length > 0) {
+    console.error(
+      `  ✗ REFUSED (glossary-on-the-figure-wire): ${steered.length} of ${wire.length} ` +
+        `blocks would carry a glossary — ${steered.join(', ')}.\n` +
+        'The figure MT leg is bare by [USER] ruling 2026-09-06 (§C133). Nothing sent.'
+    );
+    process.exitCode = 2;
+    return;
+  }
 
   // .env is not auto-loaded by node. Read it here, not at import: this file is
   // imported by its test, and a module that reads secrets at import cannot be.
@@ -272,11 +345,19 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
   console.log(
     `  ${send.length} blocks, ${chars} chars, est ${api.estimateIsk(chars).toFixed(2)} ISK`
   );
+  // Keyed on the PLAN, not on `args.noGlossary`: the count is derived from the
+  // opts that will actually be sent, so this line stays true if a future
+  // `--with-glossary` ever reintroduces one.
   console.log(
-    args.noGlossary
-      ? '  glossary: NONE — bare run, acknowledged with --no-glossary'
-      : `  ${glossaryStatusLine(resolved.glossary, resolved.skippedCount, resolved.omittedCount)}`
+    `  glossary: NONE — the figure leg is bare by default ` +
+      `([USER] 2026-09-06, §C133); ${steered.length} of ${wire.length} blocks steered`
   );
+  if (args.noGlossary) {
+    console.log(
+      '  --no-glossary: accepted, and now redundant — the leg is bare either way. ' +
+        'Kept as a no-op so callers that still pass it are not rejected as typos.'
+    );
+  }
   if (args.dryRun) {
     console.log('  --dry-run: nothing sent.');
     return;
@@ -285,9 +366,8 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
   const client = api.createClient();
   const out = {};
   const log = [];
-  for (const b of send) {
+  for (const { block: b, opts } of wire) {
     const t0 = Date.now();
-    const opts = translateOptsFor(resolved.glossary, b.english);
     const r = await client.translate(b.english, opts);
     const got = (r.text || '').trim();
     // `glossarySent` is an OUTCOME, not the caller's intent: it is false
@@ -304,18 +384,20 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
     console.log(`    ${JSON.stringify(b.english).padEnd(28)} -> ${JSON.stringify(got)}`);
   }
   const usage = client.getUsage ? client.getUsage() : client.usage;
-  const glossaryRecord = args.noGlossary
-    ? null
-    : {
-        book: args.book,
-        terms: resolved.termCount,
-        blocksSteered: log.filter((l) => l.glossarySent).length,
-      };
+  // OUTCOME, not intent — same convention as `glossarySent` above. At HEAD this
+  // is always null, because `glossary` is always null; writing it as a
+  // derivation rather than a literal is what keeps the record honest if that
+  // ever changes.
+  const blocksSteered = log.filter((l) => l.glossarySent).length;
+  const glossaryRecord = blocksSteered === 0 ? null : { book: args.book, blocksSteered };
   fs.writeFileSync(
     path.join(outDir, 'api-run.json'),
     JSON.stringify(
       {
         figure: figureNameFrom(path.join(outDir, 'meta.json')),
+        // The slug used to live inside `glossary`, which is now null on every
+        // run — so it is recorded in its own right rather than lost with it.
+        book: args.book,
         when: new Date().toISOString(),
         glossary: glossaryRecord,
         blocks: log,
@@ -330,7 +412,7 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
     JSON.stringify(
       {
         _source: glossaryRecord
-          ? `Málstaður /v1/translate, glossary ${args.book} (${resolved.termCount} terms)`
+          ? `Málstaður /v1/translate, glossary ${args.book}`
           : 'Málstaður /v1/translate, no glossary',
         blocks: out,
       },
