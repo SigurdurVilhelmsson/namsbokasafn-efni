@@ -253,23 +253,40 @@ def _fill(char, unknown):
         unknown[f'non-numeric:{str(char.get("ncs"))}'] += 1
         return None
     space = str(char.get('ncs') or '')
-    if space not in ('DeviceCMYK', 'DeviceRGB', 'DeviceGray'):
-        # Recorded, not refused: the component count still decides, but a fourth colour
-        # space showing up in the corpus must be VISIBLE rather than quietly turning black.
-        unknown[f'{space}:{len(value)}'] += 1
     vals = [float(v) for v in value]
-    if len(vals) == 4:
+    # 🔴 DISPATCH ON THE COLOUR SPACE, NEVER ON THE COMPONENT COUNT. A /Separation
+    # carries ONE component exactly as DeviceGray does and means the OPPOSITE by it:
+    # tint 1.0 is FULL colorant, where DeviceGray 1.0 is white. Under the arity branch
+    # this file used to carry, `('cmyk',0,0,0,1.0-vals[0])` turned 91 solid-black
+    # characters into ('cmyk',0,0,0,0) -> RGB (1,1,1), and `svgout.write_svg` published
+    # `fill="#ffffff"` on labels whose English `strip-text.py` had already removed. The
+    # purchased Icelandic would have been ABSENT, not merely mis-coloured. Measured on
+    # the only three figures in this corpus carrying an unrecognised space:
+    # CNX_Chem_14_07_titration2 (44 chars), _18_07_Nitrogen (45), _21_06_Penetrate (2);
+    # their tint transform decodes to DeviceCMYK (0,0,0,t), i.e. 100% black ink at t=1.
+    # ▶ An unrecognised space now returns None, which `compose.cmyk` and `svgout` render
+    # BLACK — which is what the comment that stood here ("must be VISIBLE rather than
+    # quietly turning black") was reaching for: black is visible, white is not. Pinned by
+    # test_readlayer.py CASE 7c, whose positive control is a real DeviceCMYK k=1.0 run on
+    # the SAME figure.
+    if space == 'DeviceCMYK' and len(vals) == 4:
         return ('cmyk',) + tuple(vals)
-    if len(vals) == 3:
+    if space == 'DeviceRGB' and len(vals) == 3:
         r, g, b = vals
         k = 1.0 - max(r, g, b)
         if k >= 1.0:
             return ('cmyk', 0.0, 0.0, 0.0, 1.0)
         return ('cmyk', (1 - r - k) / (1 - k), (1 - g - k) / (1 - k),
                 (1 - b - k) / (1 - k), k)
-    if len(vals) == 1:
+    if space == 'DeviceGray' and len(vals) == 1:
         return ('cmyk', 0.0, 0.0, 0.0, 1.0 - vals[0])
-    unknown[f'arity:{space}:{len(vals)}'] += 1
+    # Two distinguishable records, because they are different faults: a space we do not
+    # know (`Separation:1`), and a space we DO know arriving with the wrong number of
+    # components (`arity:DeviceRGB:4`). Both are refused; neither is guessed at.
+    if space in ('DeviceCMYK', 'DeviceRGB', 'DeviceGray'):
+        unknown[f'arity:{space}:{len(vals)}'] += 1
+    else:
+        unknown[f'{space}:{len(vals)}'] += 1
     return None
 
 

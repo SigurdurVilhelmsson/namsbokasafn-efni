@@ -288,6 +288,50 @@ check('7b every non-None fill is ("cmyk", c, m, y, k)',
       not bad and seen_fills > 0,
       f'{seen_fills} fills checked (non-vacuity: must be > 0); bad {bad[:3]}')
 
+# 7c is the VALUE assertion 7b cannot make. 7b is a SHAPE test — arity and types — over a
+# population (JOIN_FIGURES + EPS_FIG) that contains none of the three figures below, so a
+# wrong value passed it by construction. `_fill` used to dispatch on the COMPONENT COUNT,
+# which put a 1-component /Separation tint into the DeviceGray branch: tint 1.0 is FULL
+# colorant, DeviceGray 1.0 is white, so 91 solid-black characters came back as
+# ('cmyk',0,0,0,0) -> RGB (1,1,1) and svgout published fill="#ffffff" on them. Since
+# strip-text.py removes the English underneath, a purchased Icelandic label would have been
+# INVISIBLE, not mis-coloured. The three figures are the whole of the affected population:
+# they are the only ones in the 817-figure corpus whose meta['unknown_colorspaces'] is
+# non-empty.
+print('\n[7c] an unrecognised colour space is refused (black), never read as DeviceGray')
+SEPARATION_FIGURES = ['CNX_Chem_14_07_titration2', 'CNX_Chem_18_07_Nitrogen',
+                      'CNX_Chem_21_06_Penetrate']
+
+
+def _rgb(f):
+    """compose.cmyk's body, verbatim — the consumer that decides what a reader SEES."""
+    if not f:
+        return (0, 0, 0)
+    _, c, m, y, k = f
+    return ((1 - c) * (1 - k), (1 - m) * (1 - k), (1 - y) * (1 - k))
+
+
+white, unknown_seen, black_control = [], 0, 0
+for name in SEPARATION_FIGURES:
+    runs, meta, _ = read_figure(name)
+    # NON-VACUITY, and it is the stimulus itself: unless this figure still presents an
+    # unrecognised space, the assertion below is measuring nothing. Asserted, not printed.
+    unknown_seen += sum(n for k, n in (meta.get('unknown_colorspaces') or {}).items()
+                        if not k.startswith(('arity:', 'non-numeric:')))
+    for run in runs:
+        if _rgb(run['fill']) == (1.0, 1.0, 1.0):
+            white.append((name, run['text'][:24], run['fill']))
+        # POSITIVE CONTROL, on the SAME figures: a genuine DeviceCMYK k=1.0 run must
+        # still read black. Without it, a change that refused EVERY colour would pass.
+        if run['fill'] == ('cmyk', 0.0, 0.0, 0.0, 1.0):
+            black_control += 1
+check('7c no run on a /Separation figure renders WHITE, and real black still reads black',
+      not white and unknown_seen > 0 and black_control > 0,
+      f'{unknown_seen} chars in an unrecognised colour space across '
+      f'{len(SEPARATION_FIGURES)} figures (non-vacuity: MUST be > 0, or the stimulus is '
+      f'gone and a clean result means nothing); white runs {len(white)} (MUST be 0) '
+      f'{white[:3]}; DeviceCMYK k=1.0 control runs {black_control} (MUST be > 0)')
+
 # ── 8. THE TYPE0 FIGURES DECODE (ruling R-7) ────────────────────────────────────────
 print('\n[8] the type0 figures decode, and the baseline garbage is gone')
 import json  # noqa: E402
