@@ -5,11 +5,19 @@
 
 Plain asserts, like test_sources.py — no pytest in this tree.
 
-🔴 THIS SUITE IS NOT ALL REFUSALS (§C137 D11). Cases 1, 3, 5, 5b, 6, 8 and 9 FAIL if the
-reader does not actually work: each one is anchored on a figure where the reader being
+🔴 THIS SUITE IS NOT ALL REFUSALS (§C137 D11). Cases 1, 3, 5, 5b, 6, 8, 9 and 14 FAIL if
+the code does not actually work: each one is anchored on a figure where the program being
 replaced demonstrably fails, and several plant the evidence of the defect first and then
 assert the fix — a control, so that a harness which broke everything equally could not
 read as a pass.
+
+  CASE 14 covers strip-text.py rather than the reader. It carries THREE synthetic
+  fixtures, which is a deviation worth naming: measured over 110 real figures, NO single
+  /Form holds both text and visible artwork (Illustrator isolates text into its own
+  form), and neither a form referenced twice nor a reference cycle occurs at all. So the
+  shapes that the visited set, the recursion and the non-greedy regex exist to survive
+  are not in the corpus. Precedent is ruling R-7, which kept the `(cid:` detector against
+  a synthetic fixture once the real corpus stopped exercising it.
 
 ⚠️ TWO CASES DEVIATE FROM THE PLAN'S WORDING, BOTH BECAUSE THE CORPUS DOES NOT CONTAIN
 THE FIXTURE THE PLAN NAMED. Both are recorded here rather than in a report only:
@@ -429,6 +437,222 @@ check('13b the arc label is ONE block, is_arc, and every run is a single glyph',
           f"multi-char runs={[r['text'] for r in arcs[0] if len(r['text']) > 1]}"
           if arcs else '; keys present: '
           f'{[H.block_key(b) for b in H.blocks_of(runs)][-8:]}'))
+
+# ── 14. strip-text.py DESCENDS INTO /Form XObjects — WITHOUT DESTROYING THEM ────────
+# Two properties, and each needs the other's control to mean anything (ruling R-9):
+# the text must be GONE, and the artwork must still be THERE. A form rewritten with
+# pdf.make_stream() contains no text either — it contains nothing at all — so the
+# first assertion passes on a figure the change erased. Only a pixel count sees that.
+print('\n[14] strip-text descends into /Form XObjects without destroying them')
+import re  # noqa: E402
+import shutil  # noqa: E402
+import subprocess  # noqa: E402
+import importlib.util  # noqa: E402
+from PIL import Image  # noqa: E402
+
+_spec = importlib.util.spec_from_file_location('strip_text_tool', HERE / 'strip-text.py')
+ST = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(ST)          # hyphenated filename: no plain `import` exists
+
+S14 = Path(tempfile.mkdtemp(prefix='r3-strip-'))   # never a /tmp literal: tmpfs fills up
+
+
+def bt_blocks(pdf_path):
+    """(page blocks, total blocks) over the page stream and every reachable /Form.
+
+    Deliberately NOT strip-text.py's own walk. A check that reuses the code it is
+    checking cannot see a walk that descends into the wrong set of objects."""
+    pdf = pikepdf.open(pdf_path)
+    page = pdf.pages[0]
+    page_n = len(re.findall(rb'BT.*?ET', _deps.read_content(page).encode('latin-1'), re.S))
+    total, seen = page_n, set()
+    stack, res = [], pikepdf.Page(page).obj.get('/Resources')
+    if res is not None:
+        stack.append(res)
+    while stack:
+        xo = stack.pop().get('/XObject')
+        if xo is None:
+            continue
+        for _k, x in xo.items():
+            if str(x.get('/Subtype', '')) != '/Form' or x.objgen in seen:
+                continue
+            seen.add(x.objgen)
+            total += len(re.findall(rb'BT.*?ET', x.read_bytes(), re.S))
+            sub = x.get('/Resources')
+            if sub is not None:
+                stack.append(sub)
+    return page_n, total
+
+
+def words(pdf_path):
+    """The INDEPENDENT oracle — a different program from the one under test."""
+    return subprocess.run(['pdftotext', str(pdf_path), '-'],
+                          capture_output=True).stdout.split()
+
+
+def nonwhite(pdf_path, tag):
+    """Non-white pixels at 200 dpi — the only instrument that can see R-9."""
+    base = str(S14 / tag)
+    subprocess.run(['pdftocairo', '-png', '-r', '200', '-singlefile', str(pdf_path), base],
+                   check=True, capture_output=True)
+    with Image.open(base + '.png') as im:
+        return sum(1 for v in im.convert('L').get_flattened_data() if v < 250)
+
+
+def pageonly_strip(src, dst):
+    """THE BEHAVIOUR BEING REPLACED, frozen: the page stream only, no form walk.
+
+    This is what 'before' means for the artwork comparison — the artwork as the old
+    tool left it, with its page text legitimately removed. Copied rather than imported
+    because the original is being changed by this very task; it never changes again."""
+    pdf = pikepdf.open(src)
+    page = pdf.pages[0]
+    stripped = re.sub(r'BT.*?ET', '', _deps.read_content(page), flags=re.S)
+    page.Contents = pdf.make_stream(stripped.encode('latin-1'))
+    pdf.save(dst)
+
+
+def new_strip(src, dst):
+    pdf = pikepdf.open(src)
+    stats = ST.strip_text(pdf)
+    pdf.save(dst)
+    return stats
+
+
+# ── the text half: a figure that hides ALL of its text inside forms ──────────────
+FORM_FIG = 'CNX_Chem_02_00_Biomarkers'
+form_src, _ = resolve(FORM_FIG)
+f_page_bt, f_total_bt = bt_blocks(form_src)
+check('14a CONTROL — this figure keeps ALL its text inside /Form XObjects',
+      f_page_bt == 0 and f_total_bt > 0 and len(words(form_src)) == 19,
+      f'page BT={f_page_bt}, reachable BT={f_total_bt}, pdftotext words='
+      f'{len(words(form_src))} (if page BT > 0 the fixture cannot show the defect)')
+
+old_out = S14 / 'biomarkers-pageonly.pdf'
+pageonly_strip(form_src, old_out)
+check('14b CONTROL — the behaviour being REPLACED leaves that text in place',
+      len(words(old_out)) == 19,
+      f'{len(words(old_out))} words survive a page-only strip — this is the defect, '
+      f'planted before the fix is asserted')
+
+new_out = S14 / 'biomarkers-new.pdf'
+f_stats = new_strip(form_src, new_out)
+n_page_bt, n_total_bt = bt_blocks(new_out)
+check('14c the text is gone — no reachable BT block, and the oracle reads nothing',
+      n_total_bt == 0 and words(new_out) == [],
+      f'reachable BT={n_total_bt}, pdftotext={words(new_out)[:6]}; '
+      f'walk visited {f_stats["forms_visited"]} forms, rewrote {f_stats["forms_rewritten"]}')
+
+# ── the artwork half: a figure whose FORMS carry the drawing ─────────────────────
+# Measured across 110 figures: no single /Form holds both text and visible artwork —
+# Illustrator isolates text into its own form. So the two halves cannot be one real
+# fixture, and the artwork detector must be a figure whose forms are pure artwork.
+ART_FIG = 'CNX_Chem_02_01_Dalton10_img'
+art_src, _ = resolve(ART_FIG)
+art_old = S14 / 'dalton-pageonly.pdf'
+pageonly_strip(art_src, art_old)
+old_px = nonwhite(art_old, 'dalton-old')
+art_new = S14 / 'dalton-new.pdf'
+a_stats = new_strip(art_src, art_new)
+new_px = nonwhite(art_new, 'dalton-new')
+check('14d CONTROL — there IS artwork to lose, and the walk really enters its forms',
+      old_px > 1000 and a_stats['forms_visited'] > 0,
+      f'{old_px} non-white px after the old strip, {a_stats["forms_visited"]} forms '
+      f'visited (0 forms would make 14e true of a walk that did nothing)')
+check('14e THE ARTWORK SURVIVES — same pixels as the old strip, to the pixel',
+      new_px == old_px,
+      f'old {old_px} -> new {new_px}. pdf.make_stream() gives 435 here: erased, and '
+      f'still free of BT, which is why 14c alone cannot see it')
+
+# ── synthetic fixtures: the shapes the corpus does not contain ───────────────────
+# Precedented by ruling R-7, which kept the `(cid:` detector against a synthetic
+# fixture once the real corpus stopped exercising it.
+N = pikepdf.Name
+RECT = b'0 0 0 rg 10 10 80 40 re f\n'
+TEXT1 = b'BT /F1 12 Tf 10 80 Td (HELLO) Tj ET\n'
+TEXT2 = b'BT /F1 12 Tf 10 60 Td (WORLD) Tj ET\n'
+
+
+def synth(kind, dst):
+    """A tiny PDF exercising one shape. -> saved path."""
+    pdf = pikepdf.new()
+    font = pdf.make_indirect(pikepdf.Dictionary(
+        Type=N('/Font'), Subtype=N('/Type1'), BaseFont=N('/Helvetica')))
+
+    def form(content, res=None):
+        s = pdf.make_stream(content)
+        s.Type, s.Subtype = N('/XObject'), N('/Form')
+        s.BBox = pikepdf.Array([0, 0, 100, 100])
+        s.Resources = res if res is not None else pikepdf.Dictionary(
+            Font=pikepdf.Dictionary(F1=font))
+        return pdf.make_indirect(s)
+
+    page = pdf.add_blank_page(page_size=(100, 100))
+    if kind == 'textrect':      # artwork drawn BETWEEN two text blocks
+        xobj = pikepdf.Dictionary(Fm0=form(TEXT1 + RECT + TEXT2))
+    elif kind == 'rectonly':    # the reference render for textrect
+        xobj = pikepdf.Dictionary(Fm0=form(RECT))
+    elif kind == 'nested':
+        child = form(TEXT2)
+        parent = form(TEXT1 + b'q /Fm1 Do Q\n', pikepdf.Dictionary(
+            Font=pikepdf.Dictionary(F1=font), XObject=pikepdf.Dictionary(Fm1=child)))
+        xobj = pikepdf.Dictionary(Fm0=parent)
+    elif kind == 'dup':         # ONE object, referenced under two names
+        shared = form(TEXT1 + RECT)
+        xobj = pikepdf.Dictionary(Fm0=shared, FmAgain=shared)
+    elif kind == 'cycle':       # A -> B -> A
+        a = form(TEXT1)
+        b = form(TEXT2, pikepdf.Dictionary(Font=pikepdf.Dictionary(F1=font),
+                                           XObject=pikepdf.Dictionary(FmA=a)))
+        a.Resources = pikepdf.Dictionary(Font=pikepdf.Dictionary(F1=font),
+                                         XObject=pikepdf.Dictionary(FmB=b))
+        xobj = pikepdf.Dictionary(Fm0=a)
+    page.Contents = pdf.make_stream(b'q /Fm0 Do Q\n')
+    page.Resources = pikepdf.Dictionary(XObject=xobj)
+    pdf.save(dst)
+    return dst
+
+
+tr_src = synth('textrect', S14 / 'textrect.pdf')
+ro_src = synth('rectonly', S14 / 'rectonly.pdf')
+tr_before, ro_px = nonwhite(tr_src, 'tr-before'), nonwhite(ro_src, 'ro')
+tr_out = S14 / 'textrect-stripped.pdf'
+tr_stats = new_strip(tr_src, tr_out)
+tr_after = nonwhite(tr_out, 'tr-after')
+check('14f CONTROL — the synthetic form really draws text AND artwork',
+      tr_before > ro_px > 0 and len(words(tr_src)) == 2 and tr_stats['forms_rewritten'] == 1,
+      f'with text {tr_before} px, artwork alone {ro_px} px, words {words(tr_src)}, '
+      f'{tr_stats["forms_rewritten"]} form rewritten')
+check("14f a rewritten form keeps the artwork drawn BETWEEN its two text blocks",
+      tr_after == ro_px and words(tr_out) == [],
+      f'{tr_after} px vs the {ro_px} px reference, words {words(tr_out)}. A greedy '
+      f'BT.*ET eats the rectangle between the blocks and lands near 0')
+
+ne_out = S14 / 'nested-stripped.pdf'
+ne_stats = new_strip(synth('nested', S14 / 'nested.pdf'), ne_out)
+check('14g the walk RECURSES — a form inside a form is stripped too',
+      ne_stats['forms_visited'] == 2 and bt_blocks(ne_out)[1] == 0,
+      f'{ne_stats["forms_visited"]} forms visited (want 2), '
+      f'{bt_blocks(ne_out)[1]} BT blocks left')
+
+dup_src = synth('dup', S14 / 'dup.pdf')
+with pikepdf.open(dup_src) as _dup:   # hold the Pdf: a temporary is destroyed mid-expression
+    dup_refs = len(_dup.pages[0].Resources.XObject.keys())
+dup_stats = new_strip(dup_src, S14 / 'dup-stripped.pdf')
+check('14h CONTROL — the page really does reference one form under two names',
+      dup_refs == 2, f'{dup_refs} /XObject entries')
+check('14h a form reachable twice is visited ONCE (the objgen visited set)',
+      dup_stats['forms_visited'] == 1,
+      f'{dup_stats["forms_visited"]} visits for 2 references')
+
+cy_out = S14 / 'cycle-stripped.pdf'
+cy_stats = new_strip(synth('cycle', S14 / 'cycle.pdf'), cy_out)
+check('14i a REFERENCE CYCLE terminates, and both forms are stripped',
+      cy_stats['forms_visited'] == 2 and bt_blocks(cy_out)[1] == 0,
+      f'{cy_stats["forms_visited"]} forms visited, {bt_blocks(cy_out)[1]} BT left '
+      f'(an unguarded walk never returns from A -> B -> A)')
+
+shutil.rmtree(S14, ignore_errors=True)
 
 print(f"\n  {'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(0 if not fails else 1)
