@@ -288,6 +288,38 @@ def make_mojibake_mutant(reader):
     return mutant
 
 
+def make_twin_drop_mutant(reader):
+    """A reader that drops one of a duplicated pair of blocks — the ONLY mutant shape
+    that discriminates the multiset compare `key_delta` (ruling R-13) from the set
+    compare it replaced. Used only by --selftest assertion 6, which closes the gap left
+    by assertion 2 (ruling R-13's own lesson turned on the harness): a drop-a-RUN
+    mutant changes a key, which a SET compare also sees; only drop-a-TWIN
+    (`b[k]=2 -> c[k]=1`) discriminates, because the key SET is unchanged (the key is
+    still present, just once instead of twice) while the MULTISET delta is `{k: 1}`.
+
+    A figure with no duplicate key passes through UNCHANGED — that is not a failure of
+    the mutant, it is simply outside assertion 6's denominator (`dup_rows` in
+    selftest()). Recovered from a dead reviewer's proven-working probe
+    (`rr_e2e_twin.py`, which measured the lost twin visible end to end on
+    CNX_Chem_08_01_N2LewStru_img); that probe raised `IndexError` on a figure with no
+    duplicate because it assumed one (`dup[0]`) — this factory is what makes it safe to
+    run across the full 40-figure selftest sample.
+    """
+    def mutant(pdf_path):
+        runs, meta, outcome = reader(pdf_path)
+        if not runs:
+            return runs, meta, outcome
+        blocks = blocks_of(runs)
+        keys = [block_key(b) for b in blocks]
+        dup = [k for k, n in collections.Counter(keys).items() if n > 1]
+        if not dup:
+            return runs, meta, outcome
+        victim = blocks[keys.index(dup[0])]        # first block with a dup key
+        doomed = {id(r) for r in victim}
+        return [r for r in runs if id(r) not in doomed], meta, outcome
+    return mutant
+
+
 # ── measurement primitives ──────────────────────────────────────────────────────────
 
 def charcount(text):
@@ -484,6 +516,12 @@ def process_figure(row, resolve, cmp_readers):
         if b_out == 'reads' and c_out == 'reads':
             c_bykey = {k: (bb, ff) for k, bb, ff in c_recs}
             a['c4b_added'], a['c4b_dropped'] = key_delta(b_keys, c_keys)
+            # A vanished key is gone from the candidate ENTIRELY (c_keys[k] == 0) — a real
+            # key loss. A dropped-but-not-vanished key is a TWIN loss: the key survives at
+            # reduced multiplicity, so compose.py still draws it once. `len(c4b_dropped)`
+            # (DISTINCT keys, below) cannot tell these apart — see the comment at C4b's
+            # summary print. `Counter[missing_key]` is 0 by definition, never KeyError.
+            a['c4b_vanished'] = sum(1 for k, _ in a['c4b_dropped'] if c_keys[k] == 0)
             # Pair only keys UNIQUE on both sides: a duplicated key has no single partner.
             pairable = [k for k in set(b_keys) & set(c_keys)
                         if b_keys[k] == 1 and c_keys[k] == 1]
@@ -500,7 +538,7 @@ def process_figure(row, resolve, cmp_readers):
             a['c4_font_diff'] = sorted(font)
             a['c4_scope'] = True
         else:
-            a.update(c4b_added=[], c4b_dropped=[], c4_paired=0,
+            a.update(c4b_added=[], c4b_dropped=[], c4b_vanished=0, c4_paired=0,
                      c4_geom_diff=[], c4_font_diff=[], c4_scope=False)
         out['arms'][label] = a
     return out
@@ -659,23 +697,33 @@ def summarise(results, label, buckets):
         print(f"        candidate: {dict(shape.most_common(6))}")
     if base_shape:
         print(f"        baseline:  {dict(base_shape.most_common(6))}")
-    # OCCURRENCES and DISTINCT are different numbers and both are reported: a candidate
-    # that turns two identical blocks into one drops 1 OCCURRENCE and 0 DISTINCT keys,
-    # which is precisely the loss ruling R-13 exists to make visible.
+    # OCCURRENCES and DISTINCT are different numbers and both are reported — but DISTINCT
+    # (len(delta)) does NOT tell a twin-loss from a real key loss: `Counter - Counter`
+    # emits ONE delta entry per key that lost multiplicity, so a candidate that turns two
+    # identical blocks into one drops 1 OCCURRENCE and 1 DISTINCT key, exactly like losing
+    # a wholly unique block does. VANISHED is the field that separates them: 0 when the
+    # key survives at reduced multiplicity (a twin loss — compose.py still draws it once),
+    # 1 when the key is gone from the candidate entirely (a real key loss). That
+    # distinction, not DISTINCT, is what ruling R-13 exists to make visible.
     add_occ = sum(n for r in c4 for _, n in arm(r)['c4b_added'])
     drop_occ = sum(n for r in c4 for _, n in arm(r)['c4b_dropped'])
     add_dis = sum(len(arm(r)['c4b_added']) for r in c4)
     drop_dis = sum(len(arm(r)['c4b_dropped']) for r in c4)
+    drop_vanished = sum(arm(r)['c4b_vanished'] for r in c4)
     bdup = sum(r['base']['dup_keys'] for r in staged_rows)
     cdup = sum(arm(r)['dup_keys'] for r in arms)
     print(f"\n  C4b BLOCK-KEY conformance — the one that costs money (MULTISET, R-13)")
     print(f"      figures with key differences: {len(kdiff)}/{len(c4)}   "
           f"blocks added {add_occ} ({add_dis} distinct keys), "
-          f"dropped {drop_occ} ({drop_dis} distinct keys)")
+          f"dropped {drop_occ} ({drop_dis} distinct keys: {drop_vanished} vanished "
+          f"entirely, {drop_dis - drop_vanished} twin-loss-only)")
     print(f"      duplicate keys — WHY this compare is a multiset and not a set: "
           f"baseline {bdup}, candidate {cdup}")
     for r in kdiff[:8]:
-        print(f"        {r['name']:40} +{arm(r)['c4b_added'][:2]} -{arm(r)['c4b_dropped'][:2]}")
+        d = arm(r)['c4b_dropped']
+        docc = sum(n for _, n in d)
+        print(f"        {r['name']:40} +{arm(r)['c4b_added'][:2]} -{d[:2]} "
+              f"(occ {docc} / vanished {arm(r)['c4b_vanished']})")
     if len(kdiff) > 8:
         print(f"        … and {len(kdiff)-8} more (see --json)")
 
@@ -738,7 +786,7 @@ def sample(rows, n):
 
 
 def selftest():
-    """FIVE assertions. Exits NON-ZERO when any fails.
+    """SIX assertions. Exits NON-ZERO when any fails.
 
     3 and 4 are asymmetric on purpose: together they prove the harness distinguishes a
     crash from a read, which is the whole of ruling R-1.
@@ -748,6 +796,13 @@ def selftest():
     an unexercised branch. It is what decides whether R2's ~96 H3 repairs are accepted or
     silently rejected as regressions, and its failure mode is the rejection of correct
     work — the direction nobody goes looking for.
+
+    6 is the one a `c1_regression`/`c1_excused`-only reading of C1 CANNOT reach either:
+    C4b is computed for every arm, but before this assertion nothing outside the `self`
+    arm ever inspected `c4b_*`, and set-compare and multiset-compare agree on the EMPTY
+    case — which is all `self` (and assertions 1/2/5, which never read C4b at all) ever
+    produce. It is the only assertion that goes red when `read_layer_accept.py:486` is
+    reverted from the multiset `key_delta` to the set compare it replaced.
     """
     rows = json.loads(CENSUS.read_text())
     fails = []
@@ -761,12 +816,14 @@ def selftest():
     ft = sample([r for r in rows if r['bucket'] == 'form-text-only'], SELFTEST_SAMPLE)
     oc = [r for r in rows if r['bucket'] == 'ours-crashes']
 
-    # 1, 2 and 5 share ONE collection pass, so they are the same sample by construction.
-    print(f"\n[1+2+5] page-text sample: {len(pt)} figures, baseline vs "
-          f"{{self, drop-last-run mutant, mojibake mutant}}", flush=True)
+    # 1, 2, 5 and 6 share ONE collection pass, so they are the same sample by construction
+    # (ruling R-2: reuse the collection, never a second pass over the population).
+    print(f"\n[1+2+5+6] page-text sample: {len(pt)} figures, baseline vs "
+          f"{{self, drop-last-run mutant, mojibake mutant, twin-drop mutant}}", flush=True)
     res, secs = run_arms(pt, {'self': read_baseline,
                               'mutant': make_mutant(read_baseline),
-                              'mojibake': make_mojibake_mutant(read_baseline)},
+                              'mojibake': make_mojibake_mutant(read_baseline),
+                              'twindrop': make_twin_drop_mutant(read_baseline)},
                          progress=False)
     staged_rows = [r for r in res if r['status'] == 'staged']
     read_rows = [r for r in staged_rows if r['base']['outcome'] == 'reads']
@@ -834,7 +891,33 @@ def selftest():
             print(f"        WRONGLY FLAGGED: {r['name']:44} "
                   f"{dict(list(r['arms']['mojibake']['c1_regression'].items())[:6])}")
 
-    print(f"\n  {'ALL 5 PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
+    # 6 reuses the [1+2+5+6] pass above — no figure is read twice. It is the ONLY
+    # assertion that reads c4b_* outside the `self` arm, which is why the line-486
+    # regression (multiset key_delta reverted to a set compare) survived assertion 1/2/5
+    # with ALL 5 PASS: `self` is 0 by construction and no other arm's C4b was inspected.
+    print(f"\n[6] the C4b line-486 call site — dropping one of a duplicated pair of "
+          f"blocks MUST trip C4b, measured on the same {len(pt)} page-text figures",
+          flush=True)
+    dup_rows = [r for r in staged_rows if r['base']['dup_keys'] > 0]
+    total_dup_occ = sum(r['base']['dup_keys'] for r in staged_rows)
+    caught = [r for r in dup_rows if r['arms']['twindrop']['c4b_dropped']]
+    missed = [r for r in dup_rows if not r['arms']['twindrop']['c4b_dropped']]
+    check('6 SENSITIVITY — dropping one of a duplicated pair of blocks MUST trip C4b',
+          len(dup_rows) > 0 and len(missed) == 0,
+          f"{len(dup_rows)}/{len(staged_rows)} figures carry >=1 duplicate block key "
+          f"({total_dup_occ} duplicate occurrences total; non-vacuity: MUST be > 0, or "
+          f"a clean result would mean 'no twins existed', not 'the drop was caught') — "
+          f"caught {len(caught)}/{len(dup_rows)} (MUST equal {len(dup_rows)}: a SET "
+          f"compare would catch 0 of these, because the key survives, just once instead "
+          f"of twice)")
+    if missed:
+        for r in missed[:5]:
+            a = r['arms']['twindrop']
+            print(f"        NOT CAUGHT: {r['name']:44} dup_keys={r['base']['dup_keys']} "
+                  f"twindrop outcome={a['outcome']} c4_scope={a['c4_scope']} "
+                  f"c4b_dropped={a['c4b_dropped']}")
+
+    print(f"\n  {'ALL 6 PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
     return 0 if not fails else 1
 
 
