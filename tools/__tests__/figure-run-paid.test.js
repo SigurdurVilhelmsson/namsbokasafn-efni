@@ -17,7 +17,7 @@
  * `<tmp>/<slug>`.
  *
  * ⚠️ THE PUBLISHER IS THE REAL ONE unless a test says otherwise. `publishFigureSvg` is where
- * three of this task's findings live (six refusal codes, two unguarded throw sites, and the
+ * three of this task's findings live (seven refusal codes, two unguarded throw sites, and the
  * §C138 stale-stamp bug), and a stub cannot reproduce any of them. `deps.publish` exists for
  * the one case that needs a fabricated failure, and is otherwise left at its default.
  */
