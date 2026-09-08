@@ -549,9 +549,27 @@ function sidecarBlockCount(sidecar) {
  * @returns {string[]|null} null when blocks.json is missing or is not an array
  */
 function sendKeysFrom(outDir) {
+  const keys = blockKeysFrom(outDir);
+  return keys && keys.send;
+}
+
+/**
+ * The ONE reader of `blocks.json`, so the two questions asked of it cannot drift apart:
+ * which keys were offered for translation (`send`) and which keys the figure HAS (`all`).
+ * The difference is what tells a key the read layer has DROPPED from one it now holds back —
+ * see `applyPartialDriftGuard`, where the two mean opposite things.
+ *
+ * @returns {{send: string[], all: string[]}|null} null when blocks.json is missing or is not
+ *   an array
+ */
+function blockKeysFrom(outDir) {
   const blocks = readJson(path.join(outDir, 'blocks.json'));
   if (!Array.isArray(blocks)) return null;
-  return blocks.filter((b) => b && b.send).map((b) => b.key);
+  const present = blocks.filter((b) => b);
+  return {
+    send: present.filter((b) => b.send).map((b) => b.key),
+    all: present.map((b) => b.key),
+  };
 }
 
 /**
@@ -744,6 +762,84 @@ export function applyDriftGuard(rec) {
     `Composing would publish the artwork with its labels stripped and nothing drawn back, and ` +
     `figure-compose.py cannot detect that — its key-set assertions compare [] against []. ` +
     `Compose was NOT run. Re-check the artwork edition, or delete the sidecar to start over.`;
+  return rec;
+}
+
+/**
+ * 🔴 THE READ LAYER MOVED UNDER A FIGURE WE HAVE ALREADY PAID FOR — *PARTIALLY*. REFUSE.
+ *
+ * `applyDriftGuard` above covers TOTAL loss only: it fires for DRIFTABLE outcomes, i.e. only
+ * where the classifier saw `sendable === 0`. A partial loss keeps `sendable > 0` and the
+ * outcome `translated`, so that guard is silent — and `figure-compose.py` cannot see it
+ * either. Its two multiset assertions compare `blocks.json` against ITSELF and against
+ * `report.missing`; a sidecar key `blocks.json` no longer declares is in neither side of
+ * either comparison.
+ *
+ * 🔴 THE CONSEQUENCE IS AN ERASED LABEL, NOT AN ENGLISH ONE. `strip-text.py` removes every
+ * BT..ET object from the artwork with pikepdf while the block set comes from a different
+ * reader (pdfplumber, via `extract.py`), so a label whose key has gone is stripped and NEVER
+ * DRAWN BACK. Measured on a real drift built from the live CNX_Chem_05_02_FoodLabel directory
+ * (one block's runs dropped, `blocks.json` re-derived with the real figtext/blockkey rules):
+ * compose exited 0, the driver published, the sentinel count in the published SVG went 28 ->
+ * 27 with the dropped key's sentinel absent and NO English fallback, `VERDICT ok`,
+ * `composedHash` stamped — and the figure is `skipped-current` for ever after.
+ *
+ * ⚠️ ONLY `extra` NEEDS A NEW GATE. `missing` — a key `blocks.json` declares that the sidecar
+ * does not carry — is the direction `figure-compose.py` already refuses, loudly and by name.
+ *
+ * ⚠️ IT RUNS IN A DRY RUN TOO, like the guard above: the free report is what an operator reads
+ * before committing to a chapter, and a dry run calling a figure `translated` that the live
+ * run refuses is the dry/live disagreement this driver keeps closing.
+ *
+ * @param {object} rec MUTATED
+ * @param {string} outDir this figure's prepared directory
+ * @returns {object} the same record
+ */
+export function applyPartialDriftGuard(rec, outDir) {
+  if (rec.outcome !== 'translated' || !rec.sidecar) return rec;
+  const keys = blockKeysFrom(outDir);
+  if (keys === null) {
+    rec.outcome = 'failed-compose';
+    rec.reason =
+      `a sidecar exists for this figure but figure-prepare.py wrote no readable blocks.json ` +
+      `in ${outDir}, so there is no key set to check the paid translations against. Compose ` +
+      `was NOT run: it would draw from the sidecar and nothing could tell which labels the ` +
+      `read layer has stopped offering.`;
+    return rec;
+  }
+  const { extra } = verifyTranslatedKeys(keys.send, (rec.sidecar && rec.sidecar.blocks) || {});
+  if (!extra.length) return rec;
+
+  // Two different facts, and the operator's next move differs. A key that is GONE from
+  // blocks.json altogether is the silent erasure above; a key still there but now `send:false`
+  // is refused by figure-compose.py anyway — this just says which, before a composer spawn.
+  const declared = new Set(keys.all);
+  const gone = extra.filter((k) => !declared.has(k));
+  const heldBack = extra.filter((k) => declared.has(k));
+  const parts = [];
+  if (gone.length) {
+    parts.push(
+      `${gone.length} key(s) this sidecar was bought for are no longer in blocks.json AT ALL ` +
+        `(${gone.join(', ')}). strip-text.py removes every glyph from the artwork, so ` +
+        `composing would publish those labels ERASED rather than in English, and ` +
+        `figure-compose.py cannot detect it — its key-set assertions never look at a key that ` +
+        `is on neither side.`
+    );
+  }
+  if (heldBack.length) {
+    parts.push(
+      `${heldBack.length} key(s) are still in blocks.json but the read layer now holds them ` +
+        `back as send:false (${heldBack.join(', ')}); figure-compose.py refuses that, after a ` +
+        `composer spawn.`
+    );
+  }
+  rec.outcome = 'failed-compose';
+  rec.reason =
+    `the sidecar and this figure's CURRENT read layer disagree about which blocks exist. ` +
+    `${parts.join(' ')} Compose was NOT run. Block keys are content-addressed, so a ` +
+    `re-extraction, a read-layer change or a different artwork edition MOVES them — re-check ` +
+    `the artwork edition first. Deleting the sidecar is what makes the figure buyable again, ` +
+    `and it destroys any editorial ruling the file carries.`;
   return rec;
 }
 
@@ -1308,6 +1404,7 @@ export async function runFigures(args, deps = {}) {
       // either `skipped-current` or in `pending`, and neither of the outcomes reached by the
       // early `continue` above is PUBLISH_BOUND.
       applyDriftGuard(rec);
+      applyPartialDriftGuard(rec, outDir);
       applyMappingPreflight(rec, { mapped, mintIndex, bookDir });
       if (!args.dryRun)
         processFigureLive(rec, {

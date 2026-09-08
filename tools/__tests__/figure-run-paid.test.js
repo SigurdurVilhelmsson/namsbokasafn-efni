@@ -1389,3 +1389,104 @@ describe('a COMPOSER_VERSION bump recomposes ONCE, not for ever', () => {
     expect(isStale(clean)).toBe(false);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 editorial/F2 — A RECOMPOSE WAS NEVER CHECKED AGAINST THE READ LAYER'S CURRENT KEY SET,
+// AND THE FAILURE IS AN ERASED LABEL UNDER `VERDICT ok`.
+//
+// `applyDriftGuard` fires only for DRIFTABLE = {copied-photo, copied-textless,
+// unreadable-text}, i.e. only when the classifier saw `sendable === 0` — TOTAL loss. A
+// PARTIAL loss keeps `sendable > 0` and the outcome `translated`, so the guard is silent.
+// `figure-compose.py`'s two multiset assertions cannot see it either: they compare
+// blocks.json against itself and against `report.missing`, and a sidecar key blocks.json no
+// longer declares appears in neither. `strip-text.py` removes EVERY glyph from the artwork
+// with pikepdf while the block set comes from a different reader, so the orphaned label is
+// ERASED, not left in English — and the driver then stamps composedHash and files the figure
+// `skipped-current` for ever after.
+//
+// Refuted by execution before it was fixed: a real drift built on the live
+// CNX_Chem_05_02_FoodLabel directory (one block's 2 runs dropped, blocks.json re-derived with
+// the real figtext/blockkey rules) composed exit 0, published, and the sentinel count in the
+// published SVG went 28 -> 27 with the dropped key's sentinel absent and no English fallback.
+describe('a recompose is refused when the read layer no longer declares a bought key', () => {
+  const mapped = [{ originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' }];
+
+  /** A stale sidecar (no composedHash) for three keys, so the figure is pending, not skipped. */
+  const threeKeys = () => ({
+    FIG_A: madeSidecar('FIG_A', { k0: 'IS k0', k1: 'IS k1', k2: 'IS k2' }),
+  });
+
+  it('refuses, spawns no composer, and spends nothing when a bought key is GONE', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'], mapping: mapped, sidecars: threeKeys() });
+    // The read layer now emits k0 and k1 only — k2 is not in blocks.json at all.
+    const spawn = fakeSpawn({ prepare: () => ({ sendable: 2 }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-compose');
+    expect(rec(result, 'FIG_A').reason).toMatch(/k2/);
+    expect(spawn.countOf('compose')).toBe(0);
+    expect(spawn.countOf('translate')).toBe(0); // 0 ISK — a recompose never spends
+    expect(result.verdict.ok).toBe(false);
+  });
+
+  it('says so in a DRY RUN too, so the free report agrees with the live one', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'], mapping: mapped, sidecars: threeKeys() });
+    const spawn = fakeSpawn({ prepare: () => ({ sendable: 2 }) });
+    const result = await runFigures(live(booksRoot, { dryRun: true }), { spawn, booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-compose');
+    expect(summarise(result)).toMatch(/k2/);
+  });
+
+  // 🔴 THE CONTROL. Without it every assertion above passes against a driver that refuses
+  // every recompose — which would strand every figure the campaign has already bought.
+  it('recomposes and publishes when the key sets still agree', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      mapping: mapped,
+      sidecars: threeKeys(),
+    });
+    const spawn = fakeSpawn({ prepare: () => ({ sendable: 3 }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(spawn.countOf('compose')).toBe(1);
+    expect(spawn.countOf('translate')).toBe(0);
+    expect(rec(result, 'FIG_A').published).toBeTruthy();
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(true);
+    expect(result.verdict.ok).toBe(true);
+  });
+
+  // The other direction of `extra`, and it is a DIFFERENT fact: the key is still in
+  // blocks.json but the read layer now holds it back as send:false. figure-compose.py refuses
+  // that loudly ("blocks.json holds back as send:false were translated anyway"), so nothing is
+  // erased — but it refuses AFTER a composer spawn, and the driver can say which it is.
+  it('distinguishes a key that is now HELD BACK from one that is gone', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'], mapping: mapped, sidecars: threeKeys() });
+    const spawn = fakeSpawn({
+      prepare: () => ({
+        sendable: 2,
+        __blocks: [
+          { key: 'k0', english: 'E0', lines: ['E0'], arc: false, send: true },
+          { key: 'k1', english: 'E1', lines: ['E1'], arc: false, send: true },
+          { key: 'k2', english: 'E2', lines: ['E2'], arc: false, send: false },
+        ],
+      }),
+    });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-compose');
+    expect(rec(result, 'FIG_A').reason).toMatch(/held back|send:false/);
+    expect(rec(result, 'FIG_A').reason).not.toMatch(/ERASED/);
+    expect(spawn.countOf('compose')).toBe(0);
+  });
+
+  // A figure with NO sidecar goes down the buy path, where step 8 already compares the same
+  // two key sets. The new guard must not fire there and change that bucket.
+  it('does not touch the BUY path, where step 8 already compares the key sets', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'], mapping: mapped });
+    const spawn = fakeSpawn({ prepare: () => ({ sendable: 2 }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(rec(result, 'FIG_A').spent).toBe(true);
+    expect(spawn.countOf('translate')).toBe(1);
+  });
+});
