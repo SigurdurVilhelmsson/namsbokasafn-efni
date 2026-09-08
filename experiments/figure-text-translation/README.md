@@ -93,7 +93,9 @@ figure-prepare.py <artwork> --basename <b> --out <dir>
                     artwork.{pdf,png,svg}  prepare.json
 translate-blocks.mjs --book <slug> --out <dir>          ◄── the ONLY stage that spends money
         └─► <dir>/translations-api.json
-figure-compose.py --out <dir> --translations <sidecar>
+  ── the driver writes the SIDECAR here, books/<slug>/figure-text/<b>.is.json, and it does so
+     BEFORE composing, so a compose that fails cannot lose a translation already paid for ──
+figure-compose.py --out <dir> --translations <sidecar>   ◄── reads the SIDECAR, not translations-api.json
         └─► <dir>/translated.svg  +  <dir>/compose.json   ◄── the verdict is the FILE
 publishFigureSvg()          — called IN-PROCESS by the driver, not spawned
         └─► books/<slug>/media/<mapped name>
@@ -242,6 +244,12 @@ The publisher **refuses** rather than guessing, and writes nothing when it refus
 | `unmapped` | no `image-mapping.json` entry — run `generate-image-mapping.js` first |
 | `no-svg` | `compose.py --svg` has not been run |
 | `bad-sidecar-path` / `no-sidecar` | the path is not a `books/<slug>/figure-text/*.is.json`, or the file is malformed |
+| `unsafe-output-name` | the `image-mapping.json` entry names an `outputName` that escapes `media/`. A published figure is a flat file in the book's `media/`; nothing may be written outside it |
+| `sidecar-moved` | ⚠️ **not reachable from this CLI.** The vintage check is opt-in and the CLI deliberately passes no `expectedRenderHash`, because a human running the composer by hand leaves this process no way to know which blocks it was given. `figure-run.js`, which composes and publishes in one breath, is what asks |
+
+⚠️ **`--svg` and `--meta` also exist** and both default into this directory's shared `out/`. Pass
+them when the figure was composed somewhere else — a driver's per-figure `--out` directory, say.
+Read the usage line in `publish-figure-svg.js`'s own CLI block; there is no `--help`.
 
 ⚠️ **Publishing REPLACES a reader-visible file, and that is intended.** The figures already in
 `books/<slug>/media/` came from a June test run that had no editorial surface and shipped as MT
