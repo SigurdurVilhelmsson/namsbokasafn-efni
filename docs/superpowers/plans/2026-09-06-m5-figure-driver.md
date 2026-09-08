@@ -1494,7 +1494,15 @@ git commit -m "feat(M5 Task 6b): the paid half — the purchase is recorded befo
 **Known limitations this plan deliberately does NOT close** — each is in the spec's Open items with its measured consequence:
 - ~~🔴 **`withComposedHash` OVERWRITES ITS OWN STAMP when the key is already present**, so a successful publish leaves the on-disk `composedHash` at its OLD value while the publisher returns the new one. The correction loop's final step never completes and every later `--stale` re-selects the same figure.~~ ✅ **FIXED in PR #457 — struck 2026-09-08, because it was listed here as live.** `tools/publish-figure-svg.js` now MERGES into the file as it stands, with an added `sidecar-moved` refusal for the concurrent-approval race the naive fix would have opened. **Status has one owner and it is the register (§C138); this line is a pointer.**
 - **The paid stage is all-or-nothing per figure** — a throw at block k discards the k−1 already bought. ~1 ISK, §C134's shape: retry, do not code around.
-- **A Greek letter is being treated as whitespace.** `/Differences [31, /uni03B1]` means `\x1f` IS alpha, and `'\x1f'.isspace()` is True. `pdftext.parse` never applies `/Encoding /Differences` at all, so alpha reaches the wire raw and composes as a missing glyph. **Pre-existing, arm-independent, and it degrades every Greek-bearing chemistry figure M5 translates.** → **§C138** owns its status.
+- ~~**A Greek letter is being treated as whitespace.**~~ ✅ **CLOSED 2026-09-08 BY MEASUREMENT — AND
+  IT WAS ALREADY DEAD WHEN THIS BULLET WAS WRITTEN DOWN AS OPEN.** The defect was a property of
+  `pdftext.parse`, which *"never applies `/Encoding /Differences` at all"* — and **PR #452 replaced
+  `pdftext.parse` as the read layer**, so the limitation went with it. Measured on the shipped
+  reader over ch06/ch07/ch12: **161 figures resolved and read · 14 carry Greek letters, all decoded
+  correctly (λ ν Δ δ) · 0 carry a control byte**, which is the defect's own signature. ▶ **SAME
+  SHAPE AS `withComposedHash`: a "known limitation" attributed to a component that had since been
+  replaced, carried forward because nobody re-ran it.** A limitation naming a component is only as
+  live as that component.
 - **Widening the review surface to non-figure media (R7)** — three legs, not a filter: the 12 ch04 images have no node in `02-structure` at all.
 - **`books/<slug>/media/` and `figure-text/` have no permission class**, and this plan adds a third automated writer to `media/`.
 - **253 of 1,148 chemistry figures are unresolved in the artwork delivery** — R9 makes it reportable, not fixed.
