@@ -1,12 +1,18 @@
 # M5 Figure Driver Implementation Plan
 
+> 🔴 **THIS PLAN IS SPENT — EVERY TASK IN IT HAS SHIPPED, AND NOTHING BELOW IS WORK TO EXECUTE.**
+> R1–R5 merged as PR #452 (`3f28d9e1`); Tasks 0b and 1–6b merged as PR #457 (`633f60a9`).
+> **Task 0 is NOT "done"** — it was **superseded** by R1–R5 (its own banner says so) and must not be executed either.
+> ▶ **Status of the figure work has ONE owner and it is not this file** → the campaign register's ⏩ RESUME block ([`docs/plans/2026-07-21-post-item17-followup-campaign.md`](../../plans/2026-07-21-post-item17-followup-campaign.md)) and [`experiments/figure-text-translation/REGISTER.md`](../../../experiments/figure-text-translation/REGISTER.md). **For what the driver actually does, read the code** — `tools/figure-run.js`, `tools/lib/figure-classify.js`, `tools/lib/figure-outcomes.js`, `tools/lib/figure-enumerate.cjs`, and the Python entry points beside them.
+> 🔴 **A BANNER IS NOT SUFFICIENT HERE, AND THIS FILE'S OWN HISTORY IS THE REASON: the chosen execution mode hands a fresh agent the TASK TEXT, not this header.** So every step whose prescribed code was measured WRONG has also been corrected **in place**, each marked `🔴 CORRECTED 2026-09-08` beside the sentence it replaces. The corrections are dated and the wrong text is kept beside them: what shipped disagreed with this plan, and the disagreement is the record.
+
 > 🔴 **TASK 0's READ-SIDE REPAIRS (P1, P2, P3, P9) ARE SUPERSEDED BY A DECISION TAKEN AFTER THIS PLAN WAS WRITTEN → [`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../../decisions/2026-09-06-figure-read-layer-respec.md).**
 > The read layer — `extract.py` + `pdftext.py` + `strip-text.py`, ~239 lines — is being **replaced with a ready-made MIT reader**, not repaired. The measured reason is in [`TEXT-COVERAGE.md`](../../../experiments/figure-text-translation/TEXT-COVERAGE.md): it reads **496 of 779** text-bearing chemistry figures, and one figure is already outside every mechanism we have named. **The LAYOUT side (`figtext.py`, `compose.py`, `svgout.py`) is untouched by that decision** and everything in this plan that depends on it still stands.
 > ▶ **What survives here verbatim:** the driver architecture, the spend rules, the sidecar/publish/review ordering, the outcome vocabulary, and every [USER] ruling. **What to re-read against the decision first:** Task 0 and Task 2.
 > ▶ **The read layer's requirements now have their own owner** → [`docs/superpowers/specs/2026-09-06-figure-read-layer-contract.md`](../specs/2026-09-06-figure-read-layer-contract.md).
 > 🔴 **CORRECTED — AN EARLIER VERSION OF THIS BANNER CLAIMED "Task 0 and Task 2 are written against it, not against the repair list". THAT WAS FALSE OF THIS FILE.** Task 0 is still titled *Repair the Python chain*, its Step 4 table still prescribes P1/P2/P3, and Step 6c is still the `/Form`-descent spike. **A banner asserting a rewrite that did not happen is worse than no banner**, because the chosen execution mode hands a fresh agent the TASK TEXT, not this header. ▶ **The per-step verdicts are marked inside Task 0 itself; read them there.**
 
-> 🔴 **REVISED TWICE, 2026-09-06.** ✅ **THE CENSUS IS NO LONGER PENDING — it was produced and committed later the same day** (`experiments/figure-text-translation/TEXT-COVERAGE.md`), so every "pending a census" line below is discharged. **Tasks 1–6b are no longer gated on it; they are gated on the read-layer adapter.**
+> 🔴 **REVISED TWICE, 2026-09-06.** ✅ **THE CENSUS IS NO LONGER PENDING — it was produced and committed later the same day** (`experiments/figure-text-translation/TEXT-COVERAGE.md`), so every "pending a census" line below is discharged. **Tasks 1–6b were not gated on it; they were gated on the read-layer adapter** — which shipped as PR #452. *(Past tense as of 2026-09-08: this sentence read as a live blocker long after the adapter merged.)*
 > A blind Fable closure review of the FIRST revision confirmed **8 more defects, 0 refuted** (48 claims self-struck, 37 lower-severity left unverified). **Two are blocking, and both are one root cause:** text drawn inside a `/Form` XObject is invisible to the extractor, and this plan's own P3 fix turns that from a loud crash into a **silent green copy** — English shipped to readers with a verdict of `ok`, matching this plan's own former acceptance line byte for byte. → new **P9**, a new `unreadable-text` outcome, and a replaced acceptance criterion.
 > ▶ **The pattern across three review rounds is worth naming: every blocking finding has been about WHAT THE PYTHON CHAIN ACTUALLY DOES ON REAL ARTWORK — which is settled for free, on this box, with no API call.** That is why Task 0 comes first and why its acceptance is a measurement rather than a number written in advance.
 > ⚠️ **THE TEST BLOCKS BELOW WITH `...` BODIES ARE SKETCHES, NOT TESTS.** Five capped findings were *"this test cannot fail"*. When a task is executed, either write its tests in full or state the property that makes each one non-vacuous — **a test written as a suggestion is what a fresh agent satisfies vacuously.**
@@ -24,6 +30,8 @@
 > **Findings this plan encodes:** register §C137 (D1–D11) plus N1/N2 and P1–P8 in the spec.
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+>
+> 🔴 **THOSE CHECKBOXES ARE NOW A HISTORICAL EXECUTION RECORD, NOT A WORK LIST (2026-09-08).** Every task's boxes are ticked because that task shipped. **Task 0's are deliberately left UNTICKED, because it was SUPERSEDED rather than done** — see its own banner. Whatever remains anywhere is the register's ⏩ RESUME block; **never a box in this file.**
 
 **Goal:** Make one chapter's figures processable end to end, unattended, so an editor sees each translated figure beside its module.
 
@@ -108,6 +116,8 @@ The old plan ran Task 1 → 6 and would have failed at the first real figure. Se
 | `tools/lib/figure-enumerate.cjs` | **new** — the enumeration predicate, shared with the server |
 | `tools/figure-run.js` | **new** — the driver |
 
+⚠️ **The bold word in each row records what that file WAS WHEN THIS PLAN WAS WRITTEN — new / modify / repair — not what remains to be done. Every row landed** (R1–R5 in PR #452, the rest in PR #457). The column is kept as evidence of the plan's shape; **it is not a status column, and this file owns no status.**
+
 ---
 
 ## 🔴 THE READ-LAYER REPLACEMENT — Tasks R1–R5, and they come FIRST
@@ -117,7 +127,7 @@ Added 2026-09-06 evening, after [USER] ruled the read layer **replaced, not repa
 against the written contract
 (→ [`docs/superpowers/specs/2026-09-06-figure-read-layer-contract.md`](../specs/2026-09-06-figure-read-layer-contract.md)).
 
-**Tasks 1–6b are gated on these.** Task 0 survives only as its non-read-side repairs, which are
+**Tasks 1–6b WERE gated on these** — all five shipped as PR #452, so this ordering constraint is a record of why R1–R5 came first, never a live blocker; status → the register's ⏩ RESUME. Task 0 survives only as its non-read-side repairs, which are
 Task R4 below. Where Task 0 and R1–R5 disagree, **R1–R5 win.**
 
 🔴 **REVISED ONCE, 2026-09-06 late evening, after a 64-agent pre-flight scan returned 34 confirmed
@@ -277,6 +287,8 @@ correct work.
 
 ### Task R1: The acceptance harness — built FIRST, and proven able to go RED
 
+✅ **SHIPPED — merged in PR #452 (`3f28d9e1`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
+
 🔴 **THIS TASK SHIPS NO READER. It ships the instrument that judges one**, plus the ONE block-key
 function every later measurement depends on (ruling **R-11**).
 
@@ -287,7 +299,7 @@ function every later measurement depends on (ruling **R-11**).
   blank-run filter** (P8; the ruling and its measurements are in Task R4's P8 row, still binding)
 - Modify: `experiments/figure-text-translation/census.py` — import it (third consumer)
 
-- [ ] **Step 1: `blockkey.py` first.** One function, `block_key(block) -> str`, holding the emit
+- [x] **Step 1: `blockkey.py` first.** One function, `block_key(block) -> str`, holding the emit
   side's rule: `''.join(r['text'] for r in b)` when `figtext.is_arc(b)`, else `'|'.join(lines)`.
   `emit-blocks.py`, `census.py`, `compose.py` and the harness all import it. **No second copy
   anywhere — there are FOUR consumers, not three.** ⚠️ **`compose.py:96` holds a fourth inline
@@ -299,7 +311,7 @@ function every later measurement depends on (ruling **R-11**).
   ⚠️ **Delete `emit-blocks.py`'s `if r['text'].strip()` filter; do NOT add one to `compose.py`** —
   the measurement is in R4's P8 row and a one-figure check gives the opposite answer.
 
-- [ ] **Step 2: Three reader entry points, and a THREE-valued outcome** (ruling **R-1**).
+- [x] **Step 2: Three reader entry points, and a THREE-valued outcome** (ruling **R-1**).
 
 ```python
 def read_baseline(pdf_path) -> (runs, meta, outcome)   # outcome: 'reads' | 'empty' | 'raises'
@@ -319,7 +331,7 @@ is to measure the program that is being replaced. Measured expectation: **286 ra
 silently misses. Verified numerically: the two shapes give advances `[52.515, 16.002, 37.512…]`
 vs `[49.5, 13.5, 40.5…]`.
 
-- [ ] **Step 3: Population — MEASURED, not asserted** (ruling **R-2**). Load
+- [x] **Step 3: Population — MEASURED, not asserted** (ruling **R-2**). Load
 `text-coverage-efnafraedi-2e.json` (1,148 rows). Use the census's **bucket labels as the
 partition** and **derive every count yourself**. Print the full table:
 
@@ -335,12 +347,12 @@ population, i.e. ALL of spec H4** — excluding them measures H4 on **zero** fig
 contains `CNX_Chem_01_06_TempScales`, the figure `compose.py`'s wrap logic was tuned on.
 **`photo` (71), `textless` (7) and `unresolved` (253) stay out.**
 
-- [ ] **Step 4: EPS staging, shared.** `.eps`/`.ai` → `gs -q -dNOPAUSE -dBATCH -dSAFER -dEPSCrop
+- [x] **Step 4: EPS staging, shared.** `.eps`/`.ai` → `gs -q -dNOPAUSE -dBATCH -dSAFER -dEPSCrop
   -sDEVICE=pdfwrite`, 120 s timeout. **Convert ONCE per figure and hand the same path to all three
   readers** — converting twice makes `gs` nondeterminism read as a reader difference. Delete the
   temp file in a `finally`.
 
-- [ ] **Step 5: The criteria.**
+- [x] **Step 5: The criteria.**
 
 | # | criterion | the rule |
 |---|---|---|
@@ -351,7 +363,7 @@ contains `CNX_Chem_01_06_TempScales`, the figure `compose.py`'s wrap logic was t
 | **C4** | **Block-level conformance**, on figures both read | 🔴 **pair by BLOCK, never by run** (ruling **R-10**): block bounding geometry, the set of fonts used, the joined text. Per-**run** checking is reduced to **shape conformance** — nine keys, correct types, `font` resolves in `meta.fonts` — which needs no pairing |
 | **C4b** | 🔴 **BLOCK-KEY conformance — the one that costs money** | the block key is what is bought, what keys the sidecar, and what the editor sees. Derive with `blockkey.block_key` over `figtext.merge_blocks(figtext.group(runs))` and compare **MULTISETS (`collections.Counter`), never sets** — ruling **R-13**. Report added/dropped **with multiplicity** |
 
-- [ ] **Step 6: 🔴 `--selftest` — FIVE assertions, and it must exit NON-ZERO when they fail.**
+- [x] **Step 6: 🔴 `--selftest` — FIVE assertions, and it must exit NON-ZERO when they fail.**
 
 1. **Plumbing** — baseline vs baseline over 40 `page-text` figures: C1 regressions **0**, C4b
    differences **0**.
@@ -367,19 +379,21 @@ contains `CNX_Chem_01_06_TempScales`, the figure `compose.py`'s wrap logic was t
    must yield **0** C1 regressions **and** a **non-zero** excused count. A baseline-vs-baseline run
    cannot reach this path, so without the mutant the excuse is an untested zero.
 
-- [ ] **Step 7: Output.** `--json <path>` writes per-figure rows **into `census-out/`** (gitignored).
+- [x] **Step 7: Output.** `--json <path>` writes per-figure rows **into `census-out/`** (gitignored).
   Print the summary with **denominators on every line**. Flush before `sys.exit`.
   **The full run must set a non-zero exit code when C1 reports any regression** — an exit code is
   a verdict, and the acceptance run is the thing that decides whether the swap may happen.
 
-- [ ] **Step 8: Run `--selftest`, paste the output into the report, then run the full
+- [x] **Step 8: Run `--selftest`, paste the output into the report, then run the full
   baseline-vs-baseline pass and record the per-bucket table and wall-clock.**
 
-- [ ] **Step 9: Commit.** `test(M5 R1): the read-layer acceptance harness, with a proven-red selftest`
+- [x] **Step 9: Commit.** `test(M5 R1): the read-layer acceptance harness, with a proven-red selftest`
 
 ---
 
 ### Task R2: `readlayer.py` — the pdfplumber adapter
+
+✅ **SHIPPED — merged in PR #452 (`3f28d9e1`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
 
 **Files:**
 - Create: `experiments/figure-text-translation/readlayer.py`
@@ -407,9 +421,9 @@ drifts. Three points from it that change how you build:
   the baseline has no equivalent for — so `base` is required on every font entry, and a
   `decodable: False` flag is what distinguishes *"cannot read this"* from *"read nothing"*.
 
-- [ ] **Step 1: Read `compose.py` lines 45–70 and `figtext.py`.** They are the consumers.
+- [x] **Step 1: Read `compose.py` lines 45–70 and `figtext.py`.** They are the consumers.
 
-- [ ] **Step 2: The failing tests** (plain-assert, like `test_sources.py` — no pytest).
+- [x] **Step 2: The failing tests** (plain-assert, like `test_sources.py` — no pytest).
   **At least one must fail if the reader does not work** (§C137 D11).
 
 1. **A form-text figure returns non-empty runs.** `CNX_Chem_02_00_Biomarkers` — 19 chars via
@@ -433,9 +447,9 @@ drifts. Three points from it that change how you build:
 10. **A textless figure returns `[]`, does not raise** (H8).
 11. **`meta['source']` basename is the ORIGINAL artwork's**, for an `.eps` input.
 
-- [ ] **Step 3: Run and watch them fail.**
+- [x] **Step 3: Run and watch them fail.**
 
-- [ ] **Step 4: Implement.** The nine fields:
+- [x] **Step 4: Implement.** The nine fields:
 
 | field | derivation | the trap |
 |---|---|---|
@@ -462,14 +476,16 @@ content-stream order, which `figtext.group` depends on.
 **EPS/AI:** stage via `gs`. 🔴 **`meta['source']` is the ORIGINAL path** — the publisher
 cross-checks `basenameFromMeta` against the sidecar key and refuses **after payment**.
 
-- [ ] **Step 5: Tests, then `--selftest`, then the full harness run.** Record C1, C1b, C2, C3, C4,
+- [x] **Step 5: Tests, then `--selftest`, then the full harness run.** Record C1, C1b, C2, C3, C4,
   C4b with denominators, and the per-bucket `reads/empty/raises` table for **both** readers.
 
-- [ ] **Step 6: Commit.** `feat(M5 R2): replace the figure read layer with a pdfplumber adapter`
+- [x] **Step 6: Commit.** `feat(M5 R2): replace the figure read layer with a pdfplumber adapter`
 
 ---
 
 ### Task R3: `strip-text.py` must descend into `/Form` XObjects — WITHOUT destroying them
+
+✅ **SHIPPED — merged in PR #452 (`3f28d9e1`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
 
 🔴 **WITHOUT THIS, R2 MAKES THINGS WORSE.** `strip-text.py` does `re.sub(r'BT.*?ET', '')` on the
 **page** stream only. Once R2 reads the 274 form-text figures, their English is extracted,
@@ -484,7 +500,7 @@ write; 11 of 15 sampled figures lost artwork; **120 of 496 page-text figures car
 
 **Files:** Modify `strip-text.py`; test in `test_readlayer.py`.
 
-- [ ] **Step 1: The failing test, with TWO assertions and a positive control on each.**
+- [x] **Step 1: The failing test, with TWO assertions and a positive control on each.**
   1. **No reachable stream contains a `BT` token** after stripping — page stream and every
      `/Form`'s, recursively. *Control:* the figure had **> 0** `BT` blocks before.
   2. 🔴 **THE ARTWORK SURVIVES** — render before and after at 200 dpi and assert the non-white
@@ -492,7 +508,7 @@ write; 11 of 15 sampled figures lost artwork; **120 of 496 page-text figures car
      non-trivial. **Without this, assertion 1 passes on a figure the change destroyed**, because
      a destroyed form contains no `BT` either.
 
-- [ ] **Step 2: Implement.** Walk `/Resources/XObject`; for each `/Subtype /Form`, read its
+- [x] **Step 2: Implement.** Walk `/Resources/XObject`; for each `/Subtype /Form`, read its
   stream, `re.sub(r'BT.*?ET', '', …, flags=re.S)`, and 🔴 **write it back IN PLACE — mutate the
   existing stream object, preserving its dictionary. NEVER `pdf.make_stream`**, which mints a
   stream carrying only `/Length`. Recurse into that form's own `/Resources/XObject`.
@@ -500,13 +516,15 @@ write; 11 of 15 sampled figures lost artwork; **120 of 496 page-text figures car
 ⚠️ **Guard with a visited set keyed on `pikepdf.Object.objgen`** — a form can be referenced from
 several places, and a cycle otherwise hangs. Measured max nesting depth **1**, but do not assume it.
 
-- [ ] **Step 3: Run the tests, then `read_layer_accept.py --selftest`.**
+- [x] **Step 3: Run the tests, then `read_layer_accept.py --selftest`.**
 
-- [ ] **Step 4: Commit.** `fix(M5 R3): strip text inside /Form XObjects without destroying them`
+- [x] **Step 4: Commit.** `fix(M5 R3): strip text inside /Form XObjects without destroying them`
 
 ---
 
 ### Task R4: The Task-0 repairs that SURVIVE the respec (batch — one dispatch)
+
+✅ **SHIPPED — merged in PR #452 (`3f28d9e1`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
 
 ⚠️ **P8 has MOVED INTO R1** (ruling **R-11**) — C4b is measured before R4, so the shared key
 function and the filter deletion must land with the harness. **Its ruling below stays binding and
@@ -527,18 +545,20 @@ its blank runs are **arc** blocks (verified: in-arc 3, non-arc 0); **188 of 243 
 not.** ⚠️ **Any future blank filter's predicate must be `text == ''`, NEVER `not text.strip()`** —
 verified `'\x1f'.isspace() is True`, and a `/Differences` font maps `\x1f` to a Greek alpha.
 
-- [ ] **Commit.** `fix(M5 R4): the Task-0 repairs the read-layer respec leaves standing`
+- [x] **Commit.** `fix(M5 R4): the Task-0 repairs the read-layer respec leaves standing`
 
 ---
 
 ### Task R5: Run acceptance for real, close criterion 5, and land the licence
 
-- [ ] **Step 1: Full acceptance run.** Write `READ-LAYER-ACCEPTANCE.md` — committed,
+✅ **SHIPPED — merged in PR #452 (`3f28d9e1`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
+
+- [x] **Step 1: Full acceptance run.** Write `READ-LAYER-ACCEPTANCE.md` — committed,
   banner-dated — carrying C1, C1b, C2, C3, C4, C4b **with denominators**, the per-bucket
   `reads/empty/raises` table for both readers, the wall-clock, and **every figure still empty
   after the swap, NAMED**.
 
-- [ ] **Step 2: 🔴 Criterion 5 — the round trip, and CHOOSE ITS FIGURES BY MEASUREMENT**
+- [x] **Step 2: 🔴 Criterion 5 — the round trip, and CHOOSE ITS FIGURES BY MEASUREMENT**
   (ruling **R-10** does not cover this; the scan found both named figures unusable).
   - `CNX_Chem_01_01_SciMethod` has **forms = 0**, so R3's walk is a **no-op** on it — it cannot
     exercise R3's failure mode at all.
@@ -569,7 +589,7 @@ verified `'\x1f'.isspace() is True`, and a `/Differences` font maps `\x1f` to a 
   which is exact. ⚠️ **`ITEMS` is held in memory by `compose.py` and externalised only via
   `--svg`** — add a small dump rather than inferring it.
 
-- [ ] **Step 3: The licence.** ✅ **[USER] RULED 2026-09-06: `experiments/` is MIT**, same as
+- [x] **Step 3: The licence.** ✅ **[USER] RULED 2026-09-06: `experiments/` is MIT**, same as
   `tools/` and `scripts/`. Add the path to the root `LICENSE` table. ⚠️ **State that it covers
   OUR code**: `pylibs/` is gitignored, so the repo distributes no third-party code. For the
   record — pdfplumber **MIT** (new), and its runtime deps pdfminer.six, pypdfium2, cryptography
@@ -577,31 +597,37 @@ verified `'\x1f'.isspace() is True`, and a `/Differences` font maps `\x1f` to a 
   the KEPT layer. All import-only. 🔴 **CORRECTED 2026-09-07 — THIS LINE ASSERTED A LIVE EDGE
   THAT DOES NOT EXIST, IN THE PRESENT TENSE, AND IT REACHED THE ROOT `LICENSE` BEFORE THE R5
   IMPLEMENTER CAUGHT IT.** It read *"Rationale: `tools/figure-run.js` is MIT and spawns this
-  tree"*. **`tools/figure-run.js` has never existed** — it is this plan's own Task 1 deliverable,
+  tree"*. **`tools/figure-run.js` did not exist when that rationale was written** — it was this plan's own Task 6a deliverable,
   correctly written as *new* / *Create* everywhere else here, and as *"will spawn"* in the
   campaign register. Only this sentence conjugated a planned artefact into a present fact.
   **The REAL rationale, verified: `tools/publish-figure-svg.js` (MIT) reads this tree's
   `out/translated.svg` and `out/meta.json` by default (`:202-208`)** — the edge already exists
   and needs no driver. Anything but MIT here creates a new MIT→copyleft edge beside known gap
   E-2. ▶ **A plan's present tense is a hypothesis; open the file before building on it.**
+  *(Tense corrected 2026-09-08 — `tools/figure-run.js` shipped in PR #457, and the present-perfect
+  form here was the one claim the merge most directly falsified. The lesson stands and the
+  conclusion stands: the edge that justifies MIT pre-dates the driver. **Root `LICENSE` owns the
+  current enumeration — read it there, not here.**)*
 
-- [ ] **Step 4: Amend the CONTRACT and the CENSUS artefact.** Both carry numbers the scan
+- [x] **Step 4: Amend the CONTRACT and the CENSUS artefact.** Both carry numbers the scan
   falsified: the spec's `504 read / 275 unread` acceptance populations, and `TEXT-COVERAGE.md`'s
   `283 skipped / 36.3%`. ▶ **Replace them with the harness's own measured table**, and record
   that `ours-crashes` labels the census's `/Contents`-array blindness, not a reader failure.
   **Also amend the spec's C1, which contradicts its own H2** — see the C1b ruling.
 
-- [ ] **Step 5: The CI sentence.** In the evidence artefact, in writing: **the Python suite is NOT
+- [x] **Step 5: The CI sentence.** In the evidence artefact, in writing: **the Python suite is NOT
   a CI gate — no workflow runs Python.** Name the hand-run commands and their expected output.
 
-- [ ] **Step 6: Root `npm test`** from the repo root; record the result. ⚠️ **Never `npm test |
+- [x] **Step 6: Root `npm test`** from the repo root; record the result. ⚠️ **Never `npm test |
   tail`** — the pipe's exit code masks a red suite.
 
-- [ ] **Step 7: Commit.** `docs(M5 R5): read-layer acceptance evidence, and experiments/ is MIT`
+- [x] **Step 7: Commit.** `docs(M5 R5): read-layer acceptance evidence, and experiments/ is MIT`
 
 ---
 
 ### Task 0: Repair the Python chain so it can process real artwork
+
+⛔ **NOT EXECUTABLE — SUPERSEDED by Tasks R1–R5, which shipped instead (PR #452). Its surviving non-read-side repairs became Task R4 and shipped with them. The boxes below are deliberately left UNTICKED: superseded is not done.**
 
 > 🔴 **HALF OF THIS TASK IS SUPERSEDED. READ THIS BEFORE EXECUTING ANY STEP.**
 > [USER] 2026-09-06 (later the same day) → [`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../../decisions/2026-09-06-figure-read-layer-respec.md):
@@ -674,8 +700,9 @@ Cases, each of which must FAIL now:
 - **Read:** `extract.py` / `pdftext.parse` descend recursively into `/Form` XObjects, using each form's own `/Resources/Font` and its `/Matrix` composed with the CTM at the `Do` site.
 - **Strip:** `strip-text.py` removes `BT…ET` inside every reachable form, not just the page stream. ⚠️ **`census.py` is blind in the same way and must move with them.**
 
-⚠️ **IF P9 IS DESCOPED, THE FIGURES MUST STILL BE NAMED — NEVER BUCKETED `copied-*`.** `figure-prepare.py` reports `formTextXObjects` (a POSITIVE count of reachable forms whose stream contains `BT`), and `sendable == 0 && formTextXObjects > 0` becomes the **`unreadable-text`** outcome: counted, every figure NAMED in the summary, a NOTE in the verdict, **not fatal** — R9's shape, because a `failed-prepare` bucket would make ch04 exit 1 on 8 of 30 for as long as the extractor cannot read forms, which is the always-red exit code this design rejects.
-🔴 **THE GENERAL RULE, AND IT IS THE ONE TO CARRY: "NO BLOCKS" MUST NEVER BE INFERRED FROM AN ABSENCE.** A count of zero and an inability to count are different facts, and only a positive signal tells them apart.
+⚠️ **IF P9 IS DESCOPED, THE FIGURES MUST STILL BE NAMED — NEVER BUCKETED `copied-*`.** They become the **`unreadable-text`** outcome: counted, every figure NAMED in the summary, a NOTE in the verdict, **not fatal** — R9's shape, because a `failed-prepare` bucket would make ch04 exit 1 on 8 of 30 for as long as the extractor cannot read forms, which is the always-red exit code this design rejects.
+🔴 **CORRECTED 2026-09-08 — THE DISCRIMINATOR THIS PARAGRAPH PRESCRIBED IS REFUTED, AND IT MUST NOT BE REBUILT.** It read: ~~*`figure-prepare.py` reports `formTextXObjects` (a POSITIVE count of reachable forms whose stream contains `BT`), and `sendable == 0 && formTextXObjects > 0` becomes the `unreadable-text` outcome*~~. P9 was **not** descoped: the read layer was replaced (PR #452) by an adapter that descends into `/Form` XObjects, so form-borne text is now read like any other and the premise died with the old extractor. Keyed that way the rule fires on figures that read perfectly and withdraws them from the paid stage under a green verdict. ▶ **`tools/lib/figure-classify.js` OWNS the predicate, its order, and the dated measurement that replaced this one — read it there. Do not copy a count into this file.**
+🔴 **THE GENERAL RULE SURVIVES INTACT, AND IT IS THE ONE TO CARRY: "NO BLOCKS" MUST NEVER BE INFERRED FROM AN ABSENCE.** A count of zero and an inability to count are different facts, and only a positive signal tells them apart. *(What the correction above changes is WHICH positive signal implements it, never the rule.)*
 
 🔴 **P5 — EPS IS NOT AN EDGE CASE; IT IS THE CORRECT ARTWORK.** The precedence-winning tree is **EPS-only for some chapters**, so the figures `pikepdf` cannot open are exactly the ones we are supposed to use. Convert first, in `figure-prepare.py` (Task 2):
 
@@ -744,32 +771,34 @@ git commit -m "fix(M5 Task 0): repair the figure chain — it crashed on 23 of 3
 
 ### Task 0b: `--out` on the paid stage, and a `.env` that may be absent
 
+✅ **SHIPPED — merged in PR #457 (`633f60a9`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
+
 🔴 **Spec Invariant 1 is unimplementable without this.** `translate-blocks.mjs` has no `--out`, rejects unknown flags, and reads/writes four hardcoded `HERE/out/…` paths — so **every figure in a chapter would translate from whichever figure was extracted last.** The old spec asserted the flag existed; the old plan said "unchanged CLI". Neither threaded isolation into the only stage that costs money.
 
 **Files:** Modify `experiments/figure-text-translation/translate-blocks.mjs` · Test `tools/__tests__/figure-mt-glossary.test.js` (exists — extend it)
 
 **Interfaces:** `--out <dir>` added to `KNOWN_FLAGS`; all four `out/` paths resolve against it, defaulting to `path.join(HERE, 'out')` when absent.
 
-- [ ] **Step 1: Read the tool.** Confirm at HEAD: `KNOWN_FLAGS` (~:49), the read of `out/blocks.json` (~:190), the unguarded `.env` read (~:196), the writes of `out/api-run.json` (~:245) and `out/translations-api.json` (~:259), and the `out/meta.json` read via `figureNameFrom` (~:248).
+- [x] **Step 1: Read the tool.** Confirm at HEAD: `KNOWN_FLAGS` (~:49), the read of `out/blocks.json` (~:190), the unguarded `.env` read (~:196), the writes of `out/api-run.json` (~:245) and `out/translations-api.json` (~:259), and the `out/meta.json` read via `figureNameFrom` (~:248).
 
-- [ ] **Step 2: Write the failing test.** Unit-level, no subprocess, no `.env`, no shared `out/` — matching the 12 existing tests in that file, which run in 29 ms and touch none of those. Build a fixture dir under `os.tmpdir()` holding `blocks.json` + `meta.json`; drive the tool with `--book efnafraedi-2e --out <fixture>` and a **stub client that records every `opts` it is handed**. Assert:
+- [x] **Step 2: Write the failing test.** Unit-level, no subprocess, no `.env`, no shared `out/` — matching the 12 existing tests in that file, which run in 29 ms and touch none of those. Build a fixture dir under `os.tmpdir()` holding `blocks.json` + `meta.json`; drive the tool with `--book efnafraedi-2e --out <fixture>` and a **stub client that records every `opts` it is handed**. Assert:
   1. the fixture dir received `api-run.json` and `translations-api.json`, **and the shared `experiments/…/out/` was not written** — compare its **full inventory and mtimes**, not one filename;
   2. `--dry-run` exits **0** in a tree with no `.env` and no shared `out/`.
 
 Both fail today: (1) with `Unknown argument: --out`, exit 2; (2) with an uncaught `ENOENT`.
 
-- [ ] **Step 3: Run and watch it fail.**
+- [x] **Step 3: Run and watch it fail.**
 
-- [ ] **Step 4: Implement**
+- [x] **Step 4: Implement**
 - Add `'--out'` to `KNOWN_FLAGS`; add its branch to `parseFigureArgs`; compute `const outDir = args.out ?? path.join(HERE, 'out')` and use it at the four call sites. `figureNameFrom` already takes a path — only its argument changes.
 - Replace the unguarded `fs.readFileSync(path.join(REPO, '.env'))` with **`loadEnvFile`**, already imported from `tools/api-translate.js` in this file and already pinned by `api-translate.test.js` to return `{}` for a missing path.
 - Add a **missing-value check** to `parseFigureArgs`, so `--book --dry-run` refuses instead of swallowing `--dry-run` as the book name.
 
 ⚠️ **Do NOT use an env var here, and do NOT try cwd-per-figure.** `FIGTEXT_OUT` is right for Python (one line in `_deps.py` reaches all five importers) but wrong for Node: an env var has **no refusal machinery**, so a misspelled `FIGTEXT_OUTT=` writes silently to the shared directory — the exact silent-no-op class this tool's own docstring exists to close, on the paid leg. And cwd-per-figure is **refuted by execution**: `HERE` derives from `import.meta.url`, so cwd changes nothing. **Mixed mechanisms are correct: `--out` to Node, `FIGTEXT_OUT=` to Python.**
 
-- [ ] **Step 5: Run and watch it pass.** Confirm the 12 existing tests still pass — all three `parseFigureArgs` assertions use `toMatchObject`, and no test asserts `KNOWN_FLAGS`'s contents, so nothing should break.
+- [x] **Step 5: Run and watch it pass.** Confirm the 12 existing tests still pass — all three `parseFigureArgs` assertions use `toMatchObject`, and no test asserts `KNOWN_FLAGS`'s contents, so nothing should break.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add experiments/figure-text-translation/translate-blocks.mjs tools/__tests__/figure-mt-glossary.test.js
@@ -780,13 +809,15 @@ git commit -m "feat(M5 Task 0b): --out on the paid figure stage — isolation re
 
 ### Task 1: Outcome vocabulary, safe tally, and the exit verdict
 
+✅ **SHIPPED — merged in PR #457 (`633f60a9`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
+
 Pure, no I/O. It fixes the vocabulary every later task uses.
 
 **Files:** Create `tools/lib/figure-outcomes.js` · Test `tools/__tests__/figure-outcomes.test.js`
 
 **Interfaces:** `CLASSIFICATION_OUTCOMES`, `PROCESS_OUTCOMES`, `ALL_OUTCOMES`; `emptyTally()`; **`tallyOutcome(tally, outcome)`** (throws on an outcome outside the vocabulary); **`verdict(tally, enumeratedCount)`** → `{ok, reasons}`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```js
 import { describe, it, expect } from 'vitest';
@@ -896,9 +927,9 @@ describe('verdict', () => {
 });
 ```
 
-- [ ] **Step 2: Run it and watch it fail.** `npx vitest run tools/__tests__/figure-outcomes.test.js` → cannot resolve the import.
+- [x] **Step 2: Run it and watch it fail.** `npx vitest run tools/__tests__/figure-outcomes.test.js` → cannot resolve the import.
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
 ```js
 // tools/lib/figure-outcomes.js
@@ -996,9 +1027,9 @@ export function verdict(tally, enumeratedCount) {
 }
 ```
 
-- [ ] **Step 4: Run and watch it pass.**
+- [x] **Step 4: Run and watch it pass.**
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add tools/lib/figure-outcomes.js tools/__tests__/figure-outcomes.test.js
@@ -1009,9 +1040,13 @@ git commit -m "feat(M5 Task 1): the figure outcome vocabulary, a tally that cann
 
 ### Task 2: `figure-prepare.py` — artwork to blocks, into `--out`
 
+✅ **SHIPPED — merged in PR #457 (`633f60a9`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
+
 **Files:** Create `experiments/figure-text-translation/figure-prepare.py` · Test `experiments/figure-text-translation/test_figure_prepare.py`
 
 **Interfaces:** `python3 figure-prepare.py <artwork-path> --out <dir>`; writes `<out>/blocks.json`, `artwork.png`, `artwork.svg`, `meta.json`, `runs.json`, and `prepare.json`:
+
+🔴 **CORRECTED 2026-09-08 — THE SHAPE BELOW IS INCOMPLETE, AND A PAYLOAD BUILT FROM IT IS REFUSED OUTRIGHT.** It omits `undecodedBlocks` and `chars`, and relegates `formTextXObjects` to the footnote under it; the shipped classifier throws `figure-classify: undecodedBlocks must be a non-negative integer from prepare.json` rather than guessing, because **a count of zero and an inability to count are different facts**. ▶ **`prepare()`'s return statement in `experiments/figure-text-translation/figure-prepare.py` owns the payload; `REQUIRED_COUNTS` in `tools/lib/figure-classify.js` owns the subset the classifier consumes. Read them there rather than any list in this file.**
 
 ```jsonc
 { "basename": str, "source": str, "blocks": int, "sendable": int,
@@ -1025,7 +1060,7 @@ Exit 0 on success (**including zero blocks**), 1 on failure with `{"error": str,
 
 🔴 **`imageXObjects` and `paintOps` are NOT optional extras — Task 3's classification cannot work without them.**
 
-- [ ] **Step 1: Write the failing test — refusals AND a positive control**
+- [x] **Step 1: Write the failing test — refusals AND a positive control**
 
 🔴 **The old version of this task had three cases, all refusals, and a 12-line stub that refuses everything passed 5 of 5.** The positive control is the point of this step.
 
@@ -1050,21 +1085,22 @@ Keep the refusal cases (missing artwork → exit 1 with an error in `prepare.jso
 
 Add: **a text-less vector exits 0 with `blocks == 0`** — that is `copied-textless`, and the old chain crashed on it.
 
-- [ ] **Step 2: Run it and watch it fail.**
+- [x] **Step 2: Run it and watch it fail.**
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
 Wrap `emit-blocks.py` and `strip-text.py`, threading `FIGTEXT_OUT`. Specifics that were wrong or missing before:
 - **Convert `.eps`/`.ai` to PDF first** with the `gs` invocation in Task 0.
-- **Derive `warnings` from `<out>/meta.json`** — `[f for f, d in meta['fonts'].items() if d['last'] < 200]` — **not** by plumbing a child's stderr. Verified to reproduce `extract.py`'s own list exactly on the fixture (`['/F1']`) and on real chemistry artwork (`['/TT0','/TT1']`).
+- **Derive `warnings` from `<out>/meta.json`**, **not** by plumbing a child's stderr.
+  🔴 **CORRECTED 2026-09-08 — THE EXPRESSION THIS STEP PRESCRIBED RAISES `TypeError` ON EVERY `/Type0` FONT.** It read ~~`[f for f, d in meta['fonts'].items() if d['last'] < 200]`~~. A `/Type0` font carries `/W` and has **no `/LastChar` at all**, so `last` is `None` and the comparison throws. ▶ **Import `is_subset` from `extract.py`** — a TWO-signal predicate (`last < SUBSET_LAST` when `last` is not None, else the `ABCDEF+` BaseFont-prefix test) — **and it owns the threshold, which is deliberately not restated here.** ⚠️ **Emit each warning as a STRING carrying the word that names it** (`subset font PAGE/TT0`), never a bare font key, or an acceptance test asking `any('subset' in w.lower() for w in warnings)` can never be satisfied. `figure-prepare.py`'s `build_warnings` docstring carries the reasoning. *(This plan half-knew it — see Task R4's notes — and Task 2's step was never brought into line.)*
 - **Count `imageXObjects` and `paintOps`** from the page. Measured cleanly separable on ch04: 0 images / 13–31 paint ops for line art versus 1–20 images / 0–4 paint ops for photographs.
 - **`artworkSvgPath` must be non-null on success, or exit 1.** N2b: the old contract let prepare return 0 with `artworkSvgPath: null`, classification say `translated`, **the MT be paid**, and compose then fail on the missing input.
 - Add the `--svg` branch to `strip-text.py` beside the existing `-png` call. *(`out/artwork.svg` had no producer — the file on disk was a hand-run `pdftocairo -svg`.)*
 - Thread `FIGTEXT_OUT` in `_deps.py`. ⚠️ **`OUT = Path(os.environ.get('FIGTEXT_OUT') or (HERE / 'out'))`** — the old plan wrote `pathlib.Path(...)`, but `_deps.py` does `from pathlib import Path`, so `pathlib` is not in scope and that patch is a `NameError`.
 
-- [ ] **Step 4: Run and watch it pass**, including the positive control.
+- [x] **Step 4: Run and watch it pass**, including the positive control.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add experiments/figure-text-translation/
@@ -1075,13 +1111,18 @@ git commit -m "feat(M5 Task 2): figure-prepare.py — per-figure isolation, EPS,
 
 ### Task 3: Classification — moved AFTER prepare, because its discriminator is prepare's output
 
+✅ **SHIPPED — merged in PR #457 (`633f60a9`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
+
 **Files:** Create `tools/lib/figure-classify.js` · Test `tools/__tests__/figure-classify.test.js`
 
-**Interfaces:** `classifyFigure({ vectorPath, rasterPath, blocks, imageXObjects, paintOps })` → `{ outcome, sendable }`. `outcome` is the **intent**; the driver downgrades it to a `failed-*` if a later stage throws.
+**Interfaces:** `classifyFigure(figure)` → `{ outcome, sendable }`. `outcome` is the **intent**; the driver downgrades it to a `failed-*` if a later stage throws.
+🔴 **CORRECTED 2026-09-08 — THIS LINE NAMED A FIELD THE SHIPPED FUNCTION NEVER READS AND OMITTED THREE IT REQUIRES.** It read ~~`classifyFigure({ vectorPath, rasterPath, blocks, imageXObjects, paintOps })`~~, contradicting this task's own note 40 lines down that *"the table keys on `sendable`, not on `blocks`"* — so a reader had to guess which half was current. The argument is `vectorPath`, `rasterPath` and the counts named by **`REQUIRED_COUNTS` in `tools/lib/figure-classify.js`, which owns that list**; a payload missing any of them is refused rather than guessed.
 
 🔴 **THE OLD DISCRIMINATOR WAS WRONG IN THE DIRECTION THAT LOOKS RIGHT.** *"A photograph simply has no vector in the delivery"* is false — **OpenStax delivers photographs AS PDFs.** Measured: **167 of 178** figures across ch01–ch05 resolve to a vector, so a `copied-photo` bucket keyed on "has no vector" fires **once in 178**, and every photograph is fed to extraction as though it were line art.
 
-- [ ] **Step 1: Write the failing test.** Keep the old cases (vector with sendable blocks → `translated`; all-unsendable → `copied-textless`; no blocks → `copied-textless`; raster-only → `copied-photo`; nothing → `unresolved`; vector wins over raster) and **add the two the old table could not express**:
+- [x] **Step 1: Write the failing test.** Keep the old cases (vector with sendable blocks → `translated`; all-unsendable → `copied-textless`; no blocks → `copied-textless`; raster-only → `copied-photo`; nothing → `unresolved`; vector wins over raster) and **add the two the old table could not express**:
+
+🔴 **CORRECTED 2026-09-08 — THE FIRST TWO SNIPPETS BELOW ENCODE THE REFUTED DISCRIMINATOR AND CANNOT EVEN RUN.** They anchor `unreadable-text` on `formTextXObjects > 0` (refuted — see Step 3), and they pass five of the six counts `assertCounts` requires, so the shipped classifier throws before any expectation is reached; an implementer meeting an unexplained throw "fixes" it by relaxing the classifier. ▶ **The cases that shipped are in `tools/__tests__/figure-classify.test.js`** — anchored on `undecodedBlocks`, with `chars === 0 && formTextXObjects > 0` pinned separately as a **regression sentinel**, and carrying the control this pair lacks: a figure with `formTextXObjects > 0` whose text WAS decoded is *not* unreadable. **Read them there; do not paste these.**
 
 ```js
 // 🔴 THE BLOCKING CASE. The figure HAS text; we cannot read it. Bucketing it copied-* ships
@@ -1119,12 +1160,13 @@ it('calls a text-less vector with paint operations LINE ART', () => {
 
 ⚠️ **The table keys on `sendable`, not on `blocks`.** They disagree on 4 of 30 ch04 figures and `sendable` is right — sending `'\x00\x0b'` to a paid MT is the failure this prevents. *(The old spec's table said `blocks`; the code said `sendable`. The code was right, and the spec is now corrected.)*
 
-- [ ] **Step 2: Run it and watch it fail.**
-- [ ] **Step 3: Implement.** A vector with ≥1 sendable block is `translated`. A vector with none: **test `formTextXObjects > 0` FIRST** → `unreadable-text`; otherwise split on `imageXObjects > 0 && paintOps === 0` → `copied-photo`, else `copied-textless`. Raster-only → `copied-photo`. Nothing → `unresolved`.
-  🔴 **ORDER IS LOAD-BEARING.** `CNX_Chem_04_04_limiting` reports `imageXObjects: 20, paintOps: 2` — it would land in `copied-photo` on the content discriminator alone, while carrying 14 English words. **The unreadable test must precede both copied buckets.**
+- [x] **Step 2: Run it and watch it fail.**
+- [x] **Step 3: Implement.** A vector with ≥1 sendable block is `translated`. A vector with none: **test `undecodedBlocks > 0` FIRST** → `unreadable-text`; then `chars === 0 && formTextXObjects > 0` → `unreadable-text` **as a REGRESSION SENTINEL ONLY**; then split on `imageXObjects > 0 && paintOps === 0` → `copied-photo`, else `copied-textless`. Raster-only → `copied-photo`. Nothing → `unresolved`.
+  🔴 **CORRECTED 2026-09-08 — THIS STEP PRESCRIBED ~~test `formTextXObjects > 0` FIRST~~, AND THAT IS REFUTED BY MEASUREMENT. IT IS THE MOST DANGEROUS SENTENCE THIS PLAN EVER CARRIED**, because the execution mode hands a fresh agent this step's text and nothing else. The pdfplumber adapter (PR #452) descends into `/Form` XObjects, so form-borne text is read like any other and `formTextXObjects > 0` now selects figures that read **perfectly** — labelling them `unreadable-text` silently withdraws them from the paid stage under a green verdict. ▶ **`tools/lib/figure-classify.js`'s module docstring OWNS the predicate, its order, and the dated measurement that replaced this one. Read it there; do not restate a count in this file.**
+  🔴 **ORDER IS STILL LOAD-BEARING, FOR THE SAME REASON WITH A DIFFERENT FIRST TEST.** `sendable > 0` outranks everything — `CNX_Chem_04_04_limiting` **sends 4 blocks** while reporting `formTextXObjects: 4` and `imageXObjects: 14`, so under the shipped reader it is `translated`, not the unreadable example this step used to give it as. And the unreadable test must still precede both copied buckets: filing an unreadable figure as text-less ships English to a reader under a green verdict, which is the defect the outcome exists to prevent.
   🔴 **Keep `copied-photo` and `unresolved` distinct** though they share a path: a photograph legitimately has no translatable text; a missing vector is a hole in the delivery, and **`unresolved` is the only number in the pipeline that looks at the delivery at all.**
-- [ ] **Step 4: Run and watch it pass.**
-- [ ] **Step 5: Commit**
+- [x] **Step 4: Run and watch it pass.**
+- [x] **Step 5: Commit**
 
 ```bash
 git add tools/lib/figure-classify.js tools/__tests__/figure-classify.test.js
@@ -1135,6 +1177,8 @@ git commit -m "feat(M5 Task 3): classify from CONTENT — OpenStax ships photogr
 
 ### Task 4: `figure-compose.py` — compose with a verdict the driver can read
 
+✅ **SHIPPED — merged in PR #457 (`633f60a9`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
+
 🔴 **THIS IS HALF OF §C137's HEADLINE.** `compose.py` **keeps the English** for any key it cannot match, reports it **only on stdout**, and exits **0**. The old wrapper read `returncode` and `stderr` and never read stdout. Composed with the missing `--out`: every figure tallied `translated`, English in the image, a green verdict, ~36 ISK for a chapter that produced nothing, and a sidecar asserting **another figure's** labels.
 
 🔴 **AND THE OBVIOUS FIX IS DEFEATED: A CORRECT RUN ALSO PRINTS `!! N block(s) … ENGLISH KEPT`** — for the `send:false` verbatim blocks. **So the check must compare KEY SETS, never the warning's presence, and never a count** (a count cancels a swap).
@@ -1144,7 +1188,7 @@ git commit -m "feat(M5 Task 3): classify from CONTENT — OpenStax ships photogr
 **Interfaces:** `python3 figure-compose.py --out <dir> --translations <path>`; writes `<out>/translated.svg` and `<out>/compose.json` = `{"outputPath": str}` or `{"error": str, "keys": [...]}`. Exit 0 / 1 / 2.
 `compose.py` additionally writes `<out>/compose-report.json` = `{blocks: [...], missing: [...], translated: [...], translationsPath: str, control: bool}`.
 
-- [ ] **Step 1: Write the failing test.** Keep the two refusal cases, and add the ones that matter:
+- [x] **Step 1: Write the failing test.** Keep the two refusal cases, and add the ones that matter:
 
 ```python
 def test_a_missing_key_is_caught_even_though_compose_exits_zero():
@@ -1162,9 +1206,9 @@ def test_a_CORRECT_run_with_send_false_blocks_still_passes():
     check('correct run exits 0', r.returncode == 0)
 ```
 
-- [ ] **Step 2: Run and watch them fail.**
+- [x] **Step 2: Run and watch them fail.**
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
 In `compose.py`: after the block loop, write `compose-report.json`. **Keep the existing stdout prints** — humans use them. Also treat an **empty/whitespace** normalised value on the `key in TR` branch as *missing*, which the code's own comment already claims and the code does not do.
 ⚠️ **Safe to change:** a repo-wide search for a programmatic invocation of `compose.py` finds none — every hit is a comment, a doc, or a test asserting the server does **not** run it.
@@ -1178,8 +1222,8 @@ In `figure-compose.py`:
 
 🔴 **Do NOT rely on `returncode`/`stderr`.** Measured: exit 0 and **0 bytes of stderr** for every failure mode, including a nonexistent `--translations` path.
 
-- [ ] **Step 4: Run and watch them pass.**
-- [ ] **Step 5: Commit**
+- [x] **Step 4: Run and watch them pass.**
+- [x] **Step 5: Commit**
 
 ```bash
 git add experiments/figure-text-translation/
@@ -1188,15 +1232,19 @@ git commit -m "feat(M5 Task 4): compose reports its own key set — the silent E
 
 ---
 
-### Task 5: Invert gate 1 — the figure MT leg must refuse WITH a glossary
+### Task 5: Invert gate 1 — the figure MT leg defaults to sending NO glossary
+
+✅ **SHIPPED — merged in PR #457 (`633f60a9`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
+
+*(Heading corrected 2026-09-08. It read **"must refuse WITH a glossary"**. Step 4 below already supersedes that precisely and honestly — refusing on a loaded glossary is jointly unsatisfiable with this task's own Step 5 — but the **heading** is what a task-text reader sees first, and it cannot be left stating the unsatisfiable gate. What shipped is a default-to-bare plus a pre-flight invariant.)*
 
 **Files:** Modify `experiments/figure-text-translation/translate-blocks.mjs` · Test `tools/__tests__/figure-mt-glossary.test.js`
 
 🔴 **THE OLD VERSION OF THIS TASK CANNOT BE PASTED, AND PATCHING IT WOULD PRESERVE A WRONG PREMISE.** Its replacement snippet used `glossaryTerms` and `runSource`, which appear **0 times** in the file; the `_source` string it assigned is an **inlined ternary**; its refusal format differs from every existing one; and **its test and its code were jointly unsatisfiable** — the test demanded exit 0 under `--book efnafraedi-2e`, while the gate refused whenever a glossary loaded, and that book loads one.
 
-- [ ] **Step 1: Read the real code.** `resolveGlossaryOrRefuse({book, noGlossary})` (~:183) returning `{ok, glossary, termCount, code, message}`; the refusal print `  ✗ REFUSED (${resolved.code}): ${resolved.message}` (~:185); `translateOptsFor(resolved.glossary, b.english)` (~:220); the `_source` ternary (~:262). Note that **`--no-glossary` already implements the whole desired end-state** — it skips the file read, omits the field, nulls the record and sets the bare `_source`. **Only the DEFAULT and the refusal branch need to move.**
+- [x] **Step 1: Read the real code.** `resolveGlossaryOrRefuse({book, noGlossary})` (~:183) returning `{ok, glossary, termCount, code, message}`; the refusal print `  ✗ REFUSED (${resolved.code}): ${resolved.message}` (~:185); `translateOptsFor(resolved.glossary, b.english)` (~:220); the `_source` ternary (~:262). Note that **`--no-glossary` already implements the whole desired end-state** — it skips the file read, omits the field, nulls the record and sets the bare `_source`. **Only the DEFAULT and the refusal branch need to move.**
 
-- [ ] **Step 2: Write the failing test.** Assert on the **wire payload**, not on stdout:
+- [x] **Step 2: Write the failing test.** Assert on the **wire payload**, not on stdout:
 
 ```js
 it('sends NO glossary on the figure leg, whatever --book says ([USER] 2026-09-06, on §C133)', () => {
@@ -1210,7 +1258,7 @@ it('sends NO glossary on the figure leg, whatever --book says ([USER] 2026-09-06
 ⚠️ **Delete the old Step-2 test `expect(res.stdout).toMatch(/no glossary/i)`.** The tool's bare-run stdout is `glossary: NONE — bare run, acknowledged with --no-glossary`, which that regex misses; the only string it matches is the `_source` **field**, written to a file a `--dry-run` never produces. **A test cannot observe a run record its own command does not write.**
 ⚠️ **Delete the old Step-3 expectation naming `Glossary: 1703 approved chemistry terms`.** A live glossary count in a plan document is forbidden by CLAUDE.md § One source of truth, drifts on the 2-hourly export, and was true only on a machine whose stale `out/` happened to hold 8 blocks.
 
-- [ ] **Step 3: Run it and watch it fail.**
+- [x] **Step 3: Run it and watch it fail.**
 
 - [x] **Step 4: Invert the gate — on the OUTCOME, not on a count.** ~~Refuse if any block's `opts.glossaries` would be present.~~ 🔴 **SUPERSEDED 2026-09-07, BY MEASUREMENT — THAT SENTENCE IS JOINTLY UNSATISFIABLE WITH THIS TASK'S OWN STEP 5, WHICH IS THE PLAN'S OWN V5 DEFECT RECURRING INSIDE THE TASK WRITTEN TO FIX IT.** Measured on the committed `out/blocks.json`: **11 of 14 blocks would carry `opts.glossaries`** under chemistry's glossary, so refusing on that makes `--book efnafraedi-2e --dry-run → exit 0` — Step 5's acceptance — impossible. ▶ **What shipped (`153858a3`): the DEFAULT moves to bare.** `main()` never loads a glossary and the gate is a **pre-flight invariant** asserting no block's `opts` carries one before the first paid request. Still an inversion, not a deletion — the leg is not silently ungated — and it breaks **0** of the 12 existing tests where gutting `resolveGlossaryOrRefuse` breaks 4. **Do not gate on `resolved.termCount`**: that makes `--book` a self-destruct flag, contradicting both the CLI contract (`--book` is required) and this task's own exit-0 test. ⚠️ **And three sites this step never named had to move with it** — the status print, `glossaryRecord` and `_source` all keyed on the `--no-glossary` FLAG rather than on what rode the wire, so a default run would have stamped a glossary's provenance on a bare one. **Key a provenance field on the OUTCOME, never on the flag meant to cause it.**
 
@@ -1227,9 +1275,9 @@ The rationale belongs in the code, because the next reader will wonder why a gat
 // would leave the paid figure leg ungated.
 ```
 
-- [ ] **Step 5: Run and watch it pass.** Then `node experiments/figure-text-translation/translate-blocks.mjs --book efnafraedi-2e --dry-run` → **exit 0**, a cost line, and no glossary on the wire.
+- [x] **Step 5: Run and watch it pass.** Then `node experiments/figure-text-translation/translate-blocks.mjs --book efnafraedi-2e --dry-run` → **exit 0**, a cost line, and no glossary on the wire.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add experiments/figure-text-translation/translate-blocks.mjs tools/__tests__/figure-mt-glossary.test.js
@@ -1240,11 +1288,13 @@ git commit -m "feat(M5 Task 5): invert figure gate 1 — the MT leg refuses to c
 
 ### Task 6a: The driver, free half — enumerate, classify, preview. Writes nothing.
 
+✅ **SHIPPED — merged in PR #457 (`633f60a9`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
+
 **Files:** Create `tools/figure-run.js`, `tools/lib/figure-enumerate.cjs` · Test `tools/__tests__/figure-run-free.test.js`
 
 **Interfaces:** exports `parseCli`, `enumerateChapterFigures(bookSlug, chapter, opts)`, `isStale(sidecar)`, `normaliseTranslations(apiJson)` → `{blocks, dropped}`, `summarise(...)`. The CLI through `--dry-run`.
 
-- [ ] **Step 1: Write the failing test.** Carry over the normaliser and staleness cases, and add or fix these:
+- [x] **Step 1: Write the failing test.** Carry over the normaliser and staleness cases, and add or fix these:
 
 ```js
 // ⚠️ RELABELLED, not new: an ARC block's value is written as a BARE STRING. `Array.isArray(v)
@@ -1296,9 +1346,9 @@ it('NAMES the translated figures the review panel cannot show', () => { ... });
 
 ⚠️ **Delete the old `describe('the outcome partition')` source-regex test.** It greps `figure-run.js` for `outcome: '<literal>'`, which is not the partition check, and is defeated by the idiomatic `` outcome: `failed-${stage}` `` form — measured: it sees only `["translated"]` and still passes `length > 0`. Keep a regex only as a *secondary* lint, with a non-vacuity control.
 
-- [ ] **Step 2: Run and watch it fail.**
+- [x] **Step 2: Run and watch it fail.**
 
-- [ ] **Step 3: Implement.** Notes that are load-bearing:
+- [x] **Step 3: Implement.** Notes that are load-bearing:
 - **Failure default first**: `process.exitCode = 1` as the first statement.
 - **Strict `parseCli`** — reject unknown flags AND missing/`--`-prefixed values. Normalise `dry-run` → `dryRun`; the old skeleton read `args.dryRun`, which `parseCli` never set, so **any consumer written that way would have run LIVE**.
 - **Enumerate through `tools/lib/figure-enumerate.cjs`**, consumed by both this ESM driver and the CJS `figureReviewService.js`, so the driver's idea of a figure and the review panel's cannot drift. Dual-consumer is the one legitimate `.cjs` reason in this repo, and that service already reaches into `tools/lib/` twice.
@@ -1312,8 +1362,8 @@ it('NAMES the translated figures the review panel cannot show', () => { ... });
 - **`process.exitCode = v.ok ? 0 : 1` as the last statement.** Never `process.exit()`.
 - **Remove `tmpRoot`** at the end — `/tmp` here is a ~4.9 GB tmpfs that runs >90% full.
 
-- [ ] **Step 4: Run the unit tests.**
-- [ ] **Step 5: The free corpus check.**
+- [x] **Step 4: Run the unit tests.**
+- [x] **Step 5: The free corpus check.**
 
 ```bash
 node tools/figure-run.js --book efnafraedi-2e --chapter 4 --dry-run > /tmp/m5-ch04.txt 2>&1; echo "exit=$?"; cat /tmp/m5-ch04.txt
@@ -1324,12 +1374,13 @@ node tools/figure-run.js --book efnafraedi-2e --chapter 4 --dry-run > /tmp/m5-ch
 **Acceptance that holds regardless of the census:**
 - the run is `--dry-run` and costs **0 ISK**;
 - the tally **sums to the enumerated count** — the driver asserts this itself, do not verify by hand;
-- **no figure lands in `copied-*` while carrying `formTextXObjects > 0`**;
+- **no figure lands in `copied-*` while carrying `undecodedBlocks > 0`**;
+  🔴 *(CORRECTED 2026-09-08. This read ~~`formTextXObjects > 0`~~, which under the shipped reader INVERTS: it would certify the refuted discriminator as correct and reject a correct implementation as a failure. A figure carrying `formTextXObjects > 0` whose text the reader decoded successfully is a legitimate `copied-*` when it genuinely has no sendable text.)*
 - `failed-prepare = 0`.
 
 ✅ **THE CENSUS EXISTS — read the per-bucket numbers from [`experiments/figure-text-translation/TEXT-COVERAGE.md`](../../../experiments/figure-text-translation/TEXT-COVERAGE.md), which owns them.** For chemistry: **496** page-text · **274** form-text-only · **8** Type0-unreadable · **7** textless · **71** photo · **253** unresolved · **38** ours-crashes · **1** unexplained. ⚠️ **Those are OUR reader's buckets; the adapter is expected to move most of `form-text-only` and `Type0` into readable.** Re-run the producer rather than quoting this.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add tools/figure-run.js tools/lib/figure-enumerate.cjs tools/__tests__/figure-run-free.test.js
@@ -1340,11 +1391,13 @@ git commit -m "feat(M5 Task 6a): the figure driver's free half — enumerate, cl
 
 ### Task 6b: The driver, paid half — spend, record, compose, publish
 
+✅ **SHIPPED — merged in PR #457 (`633f60a9`). This task is a RECORD, not work to execute; the ticks below are its execution history.**
+
 🔴 **THIS IS THE ONLY TASK THAT CAN SPEND MONEY.** Two per-figure paths, **selected by whether a sidecar exists — not by a flag**.
 
 **Files:** Modify `tools/figure-run.js` · Test `tools/__tests__/figure-run-paid.test.js`
 
-- [ ] **Step 1: Write the failing test.** With a stub MT and a stub publisher, assert:
+- [x] **Step 1: Write the failing test.** With a stub MT and a stub publisher, assert:
 
 ```js
 // 🔴 N2 — THE PURCHASE IS RECORDED BEFORE ANYTHING THAT CAN FAIL AFTER IT.
@@ -1389,10 +1442,11 @@ it('mints NO sidecar when translations-api.json is absent or parses to zero bloc
 it('a recompose does not write the sidecar at all; the publisher stamp is the only write', () => {
   // Drive the REAL publishFigureSvg (not a stub) on an approved fixture carrying a STALE
   // composedHash. Assert state === 'approved' SURVIVES and composedHash === renderHash after.
-  // ⚠️ This test FAILS TODAY on a shipped bug: withComposedHash overwrites its own stamp when
-  // the key is already present, so composedHash stays OLD after a successful publish and every
-  // later --stale re-selects the same figure. That is a [CODE] item, not a plan defect —
-  // record it, and do not paper over it by relaxing the assertion.
+  // (A 'this test FAILS TODAY on a shipped bug' clause was removed here on 2026-09-08: the
+  // withComposedHash overwrite was fixed in PR #457. The assertion's rationale is unchanged and
+  // is the reason to keep it — a recompose writes the sidecar under NO circumstances; the
+  // publisher's stamp is the only write. An implementer told to expect a red, who then sees the
+  // test pass, concludes the harness is not exercising what it claims and weakens it.)
 });
 
 // D4: unmapped must be unreachable after money has been spent.
@@ -1402,9 +1456,9 @@ it('refuses an unmintable figure BEFORE the MT is called', () => { expect(stubMt
 it('mints renderHash and NO state, so the figure reads mt-preview and publish can stamp', () => { ... });
 ```
 
-- [ ] **Step 2: Run and watch them fail.**
+- [x] **Step 2: Run and watch them fail.**
 
-- [ ] **Step 3: Implement — the order is the fix.**
+- [x] **Step 3: Implement — the order is the fix.**
 
 ```
  5. PRE-FLIGHT   mapping entry exists or is mintable?          PURE, no write
@@ -1422,9 +1476,9 @@ it('mints renderHash and NO state, so the figure reads mt-preview and publish ca
 - **Add `tools/figure-run.js` to `tools/__tests__/source-write-guard.test.js`'s ALLOW set** as a writer of `books/<slug>/media/image-mapping.json`.
 - **Update the comment at `publish-figure-svg.js` (~:169-172)**, which this change falsifies: a driver-minted sidecar *does* carry a `renderHash`, so the "ordinary case" it describes is no longer ordinary.
 
-- [ ] **Step 4: Run the unit tests.**
-- [ ] **Step 5: Run the whole suite.** `npm test` from the repo root. **Compare the failing set by NAME against `main`'s floor, both directions** — a count alone hides a swap. ⚠️ `npm test | tail` reports the pipe's exit code; do not read it as the suite's.
-- [ ] **Step 6: Commit**
+- [x] **Step 4: Run the unit tests.**
+- [x] **Step 5: Run the whole suite.** `npm test` from the repo root. **Compare the failing set by NAME against `main`'s floor, both directions** — a count alone hides a swap. ⚠️ `npm test | tail` reports the pipe's exit code; do not read it as the suite's.
+- [x] **Step 6: Commit**
 
 ```bash
 git add tools/figure-run.js tools/__tests__/figure-run-paid.test.js tools/publish-figure-svg.js tools/__tests__/source-write-guard.test.js
@@ -1438,7 +1492,7 @@ git commit -m "feat(M5 Task 6b): the paid half — the purchase is recorded befo
 **Do NOT run a paid figure translation as part of implementation.** The first live run is a separate, **[USER]-authorised** step, preceded by `--dry-run` on the target chapter. Task 6a's acceptance check is free and is the evidence that the chapter is ready.
 
 **Known limitations this plan deliberately does NOT close** — each is in the spec's Open items with its measured consequence:
-- 🔴 **`withComposedHash` OVERWRITES ITS OWN STAMP when the key is already present**, so a successful publish leaves the on-disk `composedHash` at its OLD value while the publisher returns the new one. The correction loop's final step never completes and every later `--stale` re-selects the same figure. **A bug in shipped code, found while reviewing this plan** → **§C138** owns its status.
+- ~~🔴 **`withComposedHash` OVERWRITES ITS OWN STAMP when the key is already present**, so a successful publish leaves the on-disk `composedHash` at its OLD value while the publisher returns the new one. The correction loop's final step never completes and every later `--stale` re-selects the same figure.~~ ✅ **FIXED in PR #457 — struck 2026-09-08, because it was listed here as live.** `tools/publish-figure-svg.js` now MERGES into the file as it stands, with an added `sidecar-moved` refusal for the concurrent-approval race the naive fix would have opened. **Status has one owner and it is the register (§C138); this line is a pointer.**
 - **The paid stage is all-or-nothing per figure** — a throw at block k discards the k−1 already bought. ~1 ISK, §C134's shape: retry, do not code around.
 - **A Greek letter is being treated as whitespace.** `/Differences [31, /uni03B1]` means `\x1f` IS alpha, and `'\x1f'.isspace()` is True. `pdftext.parse` never applies `/Encoding /Differences` at all, so alpha reaches the wire raw and composes as a missing glyph. **Pre-existing, arm-independent, and it degrades every Greek-bearing chemistry figure M5 translates.** → **§C138** owns its status.
 - **Widening the review surface to non-figure media (R7)** — three legs, not a filter: the 12 ch04 images have no node in `02-structure` at all.
