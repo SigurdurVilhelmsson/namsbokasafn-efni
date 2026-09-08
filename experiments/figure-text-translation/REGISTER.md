@@ -123,7 +123,7 @@ raster, and **no second EPS→PDF converter exists on this box** to cross-check 
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-05
+## ⏩ RESUME — state as of 2026-09-05 (superseded by the block above)
 
 **✅ THE EDITORIAL PIPELINE IS COMPLETE END TO END.** An editor opens a module, sees each
 translated figure WITH ITS PICTURE, corrects the text, applies the decimal suggestion in one
@@ -147,7 +147,14 @@ evidence for why per-chapter is right.
 the chapter figure step**, and the loop document lists them in that form. *(This line said "THREE
 THINGS" until 2026-09-05, when doing gate 1 turned up a fourth. A count written into prose beside
 the list it counts drifts the first time that list grows.)*
-1. **✅ THE WIRE HALF IS DONE (2026-09-05); THE DATA HALF IS NOT — AND THE GATE IS NECESSARY,
+1. ⚠️ **SUPERSEDED 2026-09-07 — GATE 1 IS INVERTED, AND THE WORK CHAIN BELOW CAN NO LONGER HAVE
+   ITS INTENDED EFFECT.** The figure MT leg now sends **no glossary at all**, by default and by
+   [USER] ruling; a pre-flight invariant refuses the run if one ever appears on the wire, and
+   `--no-glossary` survives as an accepted no-op. So the `grep -c Celsíus` predicate below is
+   **moot for figures** — nothing rides this leg for a terminology ruling to reach. The reasoning,
+   and why the prescription it replaced was UNSATISFIABLE, are in § *⚖️ [USER] RULINGS 2026-09-06*
+   ② below; do not re-derive it. The text that follows is kept as the record of what was built.
+   **✅ THE WIRE HALF IS DONE (2026-09-05); THE DATA HALF IS NOT — AND THE GATE IS NECESSARY,
    NOT SUFFICIENT.** `translate-blocks.mjs` now requires `--book <slug>` and filters the
    glossary per block through the same three calls `api-translate.js` makes, so §C116's
    short-headword rule applies for free and the `glossaries` field is omitted rather than sent
@@ -186,7 +193,7 @@ the list it counts drifts the first time that list grows.)*
 3. **Resolve the ~14 hash-suffixed figures deliberately.** The suffix marks a 2e-updated figure;
    string-stripping it sources the SUPERSEDED illustration, which `sources.py` warns is invisible
    in the output.
-4. 🔴 **THERE IS NO DRIVER — AN UNLISTED FOURTH PREREQUISITE, FOUND 2026-09-05 AND NOT BUILT.**
+4. ~~🔴 **THERE IS NO DRIVER — AN UNLISTED FOURTH PREREQUISITE, FOUND 2026-09-05 AND NOT BUILT.**
    Measured, not assumed: `grep -ran translate-blocks` over the repo returns this register, the
    README, the file's own usage line and its test — **nothing invokes the MT stage**. Every
    stage here is single-figure by construction and they all communicate through `out/`, which
@@ -198,7 +205,13 @@ the list it counts drifts the first time that list grows.)*
    ⚠️ **`publish-figure-svg.js`'s basename cross-check is what makes that shared directory safe
    today** (it refuses when `out/meta.json`'s stem disagrees with the sidecar's figure), and it
    is the shape a driver must preserve rather than route around. **Do not build it unasked** —
-   per-figure isolation is a design question, not a script.
+   per-figure isolation is a design question, not a script.~~
+   🔴 **BUILT AND MERGED 2026-09-08 as `tools/figure-run.js` (PR #457, `633f60a9`). THE
+   PROHIBITION ABOVE IS SPENT — DO NOT HONOUR IT, AND DO NOT BUILD A SECOND DRIVER.** Both
+   halves of the item are answered in code: the register's own instrument now returns
+   `tools/figure-run.js`, and the design question it reserved was settled. **The pieces, and
+   the seam the cross-check turned into, are listed in the 2026-09-08 RESUME block above** —
+   read it there rather than from this struck-through paragraph.
 
 **✅ SOURCE COVERAGE IS SOLVED — measured 2026-09-05, and it is no longer 4.5%.** The book
 references **627** distinct figures; **463 resolve** through the real precedence tool and the
@@ -650,9 +663,14 @@ open:**
   point. All 691 are git-tracked, so `git checkout` is the restore; the tool writes no `.bak`.
   ⚠️ **An unapproved sidecar has no `renderHash`, so nothing is stamped** — and that is the
   ORDINARY case under the plan (publish the MT, review afterwards), not an error.
-  ⏭️ **What ⑰ does NOT do: the bulk run.** This publishes ONE figure. Running all of them through
-  extract → MT → compose → publish is the next piece, it is where Málstaður money is spent, and it
-  needs its own approval. ⚠️ **Expect the review queue to have real work in it:** ⑯'s paid run
+  ⏭️ **What ⑰ does NOT do: drive a chapter.** `publish-figure-svg.js` publishes ONE figure.
+  🔴 **AND THAT IS NO LONGER A GAP — DO NOT SCOPE A DRIVER HERE.** `tools/figure-run.js` walks a
+  chapter's figures through prepare → MT → sidecar → compose → publish, and calls this publisher
+  in-process for the last step; merged 2026-09-08 as `633f60a9` (PR #457). ⚠️ **There is no "bulk
+  run" to approve** — that concept was retired by the [USER] ruling in the 2026-09-05 block above,
+  which makes figures a step *inside* the per-chapter loop. Money is spent only for a figure with
+  **no sidecar FILE**. → the 2026-09-08 RESUME block for the pieces and the spend rule.
+  ⚠️ **Expect the review queue to have real work in it:** ⑯'s paid run
   produced `Selsíus` where the book says `Celsíus` **24:5** in committed MT output and **31:13** in
   published HTML — the minority variant, and exactly what `captionDivergence` flags. That is the
   editorial surface earning its place, but it may also be a glossary question.
