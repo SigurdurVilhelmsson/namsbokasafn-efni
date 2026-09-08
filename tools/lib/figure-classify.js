@@ -11,13 +11,20 @@
  * 🔴 THE `unreadable-text` DISCRIMINATOR IS KEYED ON POSITIVE EVIDENCE OF UNDECODABILITY, NOT ON
  * `formTextXObjects > 0`. The plan tested `formTextXObjects > 0` FIRST, because the OLD extractor
  * could not see text drawn inside a /Form XObject. The pdfplumber adapter that shipped in PR #452
- * descends into forms, so that premise died with it: measured by this task's recon pass over the
- * whole chemistry read population (the 817 figures of `READ-LAYER-ACCEPTANCE.md`'s TOTAL row),
- * `formTextXObjects > 0` holds for 323 figures, ALL 323 read successfully and
- * NONE has an undecodable font. The plan's rule would have labelled 216 of them `unreadable-text`,
- * 216 of 216 wrongly, with zero true positives anywhere in the corpus — printing "cannot read"
- * over figures that read perfectly, and drowning the signal this outcome exists to carry.
- * (`CNX_Chem_20_01_hexane_a_img` is the worked example in the test file.)
+ * descends into forms, so that premise died with it.
+ *
+ * 🔴 THE NUMBERS BELOW ARE A DATED MEASUREMENT OF ONE CORPUS + ONE READER, NOT A LAW — AND SAYING
+ * SO IS THE POINT, BECAUSE INHERITING AN UNDATED MEASUREMENT IS THE EXACT DEFECT THIS PARAGRAPH
+ * DESCRIBES. Taken 2026-09-07 by a read-only recon pass, NOT re-derived by the author of this
+ * module: over the whole chemistry read population (the 817 figures of
+ * `READ-LAYER-ACCEPTANCE.md`'s TOTAL row, which OWNS that denominator), `formTextXObjects > 0`
+ * held for 323 figures, all 323 read successfully and none had an undecodable font; the plan's
+ * rule would have labelled 216 of them `unreadable-text`, 216 of 216 wrongly, with zero true
+ * positives anywhere in the corpus. To re-derive: run `figure-prepare.py` over the resolved
+ * chemistry corpus and count `formTextXObjects > 0 && sendable === 0` against `undecodedBlocks`.
+ * ▶ A source refresh, a new book, or another read-layer swap can move every one of them; what does
+ * NOT move is the reason the discriminator is keyed on positive evidence instead.
+ * (`CNX_Chem_20_01_hexane_a_img` is the worked example in the test file, and IS re-measured there.)
  *
  * The predicate, in order:
  *
