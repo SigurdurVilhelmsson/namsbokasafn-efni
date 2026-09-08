@@ -9,7 +9,7 @@
  *     cannot see — a figure with no sidecar, a figure with no DB row, an
  *     unregistered book, and a basename that reaches the filesystem.
  */
-import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, beforeEach, afterEach } from 'vitest';
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync, existsSync, readFileSync } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
@@ -81,12 +81,24 @@ const MODULE = 'm99001';
 const TRANSLATED = 'CNX_Fig_Translated'; // has a sidecar
 const PLAIN = 'CNX_Fig_Plain'; // no sidecar -> must be SKIPPED (Ruling I)
 const OFF_MODULE = 'CNX_Fig_Elsewhere'; // regex-valid, not in this module
+// §C139 tier 1: the two constructs the panel could not reach before. Both are
+// in the fixture structure from the start and both are SKIPPED by every test
+// above, because neither has a sidecar — Ruling I, the same path PLAIN takes.
+const INLINE = 'CNX_Fig_Inline'; // top-level inlineMedia array
+const LOOSE = 'CNX_Fig_LooseMedia'; // a type:'media' node loose in content
 
 // Icelandic caption prose. 'Celsíus' here vs 'Selsíus' in the figure block is the
 // near-variant captionDivergence exists to catch, so a caption warning appearing
 // proves referenceText was really sourced from the module — an empty reference
 // yields [] and would look identical to "no divergence".
 const CAPTION_IS = 'Mynd 1. Celsíus kvarðinn og suðumark vatns.';
+
+// The INLINE figure's ALT prose, carrying the same 'Celsíus' near-variant. An
+// inlineMedia image has NO caption, so its reference text can only have come
+// from the alt segment — which makes a caption warning here the POSITIVE
+// CONTROL for the empty-reference silence asserted on LOOSE. Without the pair,
+// "warnings.caption is []" is indistinguishable from "nothing was wired up".
+const ALT_IS = 'Skýringarmynd af Celsíus kvarðanum.';
 
 const EDITOR = { id: 'u-ed1', username: 'editor1', role: 'editor', books: [] };
 
@@ -185,22 +197,46 @@ beforeAll(() => {
               caption: { segmentId: `${MODULE}:caption:${PLAIN}-caption` },
               media: { id: 'fs-b', src: `../../media/${PLAIN}.png` },
             },
+            // §C139 tier 1. Nested a level down, like the figure above, so the
+            // walk has to reach it rather than finding it at the root.
+            {
+              type: 'media',
+              id: 'fs-c',
+              src: `../../media/${LOOSE}.jpg`,
+              alt: { segmentId: `${MODULE}:alt:${LOOSE}-alt` },
+            },
           ],
+        },
+      ],
+      // §C139 tier 1. A sibling of `content`, not inside it — which is exactly
+      // why the content walk alone could never see these.
+      inlineMedia: [
+        {
+          placeholder: '[[MEDIA:1]]',
+          id: 'fs-d',
+          src: `../../media/${INLINE}.jpg`,
+          alt: { segmentId: `${MODULE}:alt:${INLINE}-alt` },
         },
       ],
     })
   );
 
   const seg = (id, text) => `<!-- SEG:${MODULE}:caption:${id} -->\n${text}\n`;
+  // ⚠️ NO SPACE after the colon. `<!-- SEG: m99001:… -->` parses to an EMPTY
+  // list, silently — prose across this repo writes the spaced form for
+  // readability and copying it into a fixture is a known way to build a test
+  // that proves nothing.
+  const altSeg = (id, text) => `<!-- SEG:${MODULE}:alt:${id} -->\n${text}\n`;
   mkdirSync(path.join(booksDir, BOOK, '02-for-mt/ch01'), { recursive: true });
   mkdirSync(path.join(booksDir, BOOK, '02-mt-output/ch01'), { recursive: true });
   writeFileSync(
     path.join(booksDir, BOOK, '02-for-mt/ch01', `${MODULE}-segments.en.md`),
-    seg(`${TRANSLATED}-caption`, 'Figure 1. The Celsius scale.')
+    seg(`${TRANSLATED}-caption`, 'Figure 1. The Celsius scale.') +
+      altSeg(`${INLINE}-alt`, 'A diagram of the Celsius scale.')
   );
   writeFileSync(
     path.join(booksDir, BOOK, '02-mt-output/ch01', `${MODULE}-segments.is.md`),
-    seg(`${TRANSLATED}-caption`, CAPTION_IS)
+    seg(`${TRANSLATED}-caption`, CAPTION_IS) + altSeg(`${INLINE}-alt`, ALT_IS)
   );
 
   segmentParser._setTestBooksDir(booksDir);
@@ -315,6 +351,120 @@ describe('route registration', () => {
         .map((x) => x.trim().replace(/^'|'$/g, ''));
     expect(svc.FIGURE_STATES).toEqual(listIn('state'));
     expect(svc.FIGURE_FLAG_KINDS).toEqual(listIn('flag_kind'));
+  });
+});
+
+/**
+ * §C139 TIER 1, END TO END THROUGH THE ROUTES — the surface the [USER] ruling
+ * is actually about.
+ *
+ * The predicate's own suite proves listStructureFigures RETURNS these records.
+ * That is not the claim the ruling rests on. The claim is that an editor, in
+ * one pass, can SEE and APPROVE such a figure — which runs through the list
+ * route, the membership guard shared by all three write routes, and
+ * buildFigurePayload with a null caption. Widening the predicate widened the
+ * WRITE surface too: ~324 more chemistry basenames may now be approved and
+ * edited, and nothing above this line exercises one.
+ *
+ * ⚠️ The register's accepted cost for landing tier 1 first was that it is
+ * "UNVERIFIABLE against live data" — the route returns only figures that
+ * already have a sidecar, and none exist yet. These tests ARE the proof it was
+ * promised would stand in; a quiet panel on prod is not evidence either way.
+ */
+describe('§C139 tier 1 — inlineMedia and loose media through the routes', () => {
+  const figureTextDir = () => path.join(booksDir, BOOK, 'figure-text');
+  const sidecarFor = (name) => path.join(figureTextDir(), `${name}.is.json`);
+
+  beforeEach(() => {
+    // Written HERE, not in the global fixture, so every test above keeps
+    // listing exactly [TRANSLATED]: without a sidecar these two take the same
+    // skip path as PLAIN, which is what makes them invisible until now.
+    for (const [name, blocks] of [
+      [INLINE, { Celsius: 'Selsíus' }],
+      [LOOSE, { Note: 'Athugasemd' }],
+    ]) {
+      writeFileSync(
+        sidecarFor(name),
+        JSON.stringify({ version: 1, basename: name, blocks }, null, 1)
+      );
+    }
+  });
+
+  afterEach(() => {
+    for (const name of [INLINE, LOOSE]) rmSync(sidecarFor(name), { force: true });
+  });
+
+  it('lists both new constructs alongside the <figure> one, and still skips PLAIN', async () => {
+    const out = await invoke(getFiguresH, req());
+    expect(out.status).toBe(200);
+    expect(out.body.figures.map((f) => f.basename).sort()).toEqual([INLINE, LOOSE, TRANSLATED]);
+    // PLAIN has a node and no sidecar: still skipped, so widening enumeration
+    // did not weaken Ruling I.
+    expect(out.body.figures.map((f) => f.basename)).not.toContain(PLAIN);
+  });
+
+  it('sources an inlineMedia card’s reference text from its ALT segment', async () => {
+    // POSITIVE CONTROL for the silence asserted below. An inlineMedia image has
+    // no caption, so a warning here can ONLY have come from the alt segment id
+    // travelling from 02-structure through listModuleFigures into the route's
+    // isBySegment lookup. If this goes quiet, the alt id stopped being carried.
+    const out = await invoke(getFiguresH, req());
+    const card = out.body.figures.find((f) => f.basename === INLINE);
+    expect(card.warnings.caption.map((c) => c.figureText)).toEqual(['Selsíus']);
+    expect(card.warnings.caption[0].note).toContain('Celsíus');
+  });
+
+  it('is SILENT — not falsely all-clear — when the alt has no Icelandic yet', async () => {
+    // LOOSE's alt segment id names a segment that does not exist in the
+    // module's files, so referenceText is ''. captionDivergence returns [] for
+    // an empty reference BY DESIGN ("designed silence, NOT a false
+    // all-clear"), and the card must still be listed and editable.
+    const out = await invoke(getFiguresH, req());
+    const card = out.body.figures.find((f) => f.basename === LOOSE);
+    expect(card.warnings.caption).toEqual([]);
+    expect(card.effectiveState).toBe('mt-preview');
+    expect(card.blocks.Note).toBe('Athugasemd');
+  });
+
+  it('the membership guard ADMITS an inlineMedia figure — approving mints the row', async () => {
+    const out = await invoke(
+      postStateH,
+      req({ params: { basename: INLINE }, body: { state: 'approved' } })
+    );
+    expect(out.status).toBe(200);
+    const row = svc.getDb().prepare('SELECT basename, module_id FROM figure_review').all();
+    expect(row.map((r) => r.basename)).toEqual([INLINE]);
+    expect(row[0].module_id).toBe(MODULE);
+  });
+
+  it('and admits a loose media figure for a BLOCK EDIT too', async () => {
+    const out = await invoke(
+      postBlockH,
+      req({ params: { basename: LOOSE }, body: { blockKey: 'Note', isText: 'Leiðrétt' } })
+    );
+    expect(out.status).toBe(200);
+    const after = await invoke(getFiguresH, req());
+    expect(after.body.figures.find((f) => f.basename === LOOSE).blocks.Note).toBe('Leiðrétt');
+  });
+
+  it('serves the translated image for a loose media figure when it is mapped', async () => {
+    writeImageMapping([...MAPPED, { originalImage: LOOSE, outputName: `${LOOSE}_IS.svg` }]);
+    const out = await invoke(getImageH, req({ params: { basename: LOOSE } }));
+    expect(out.status).toBe(200);
+    expect(out.sent.name).toBe(`${LOOSE}_IS.svg`);
+  });
+
+  it('CONTROL — a figure from another module is still refused, and serves nothing', async () => {
+    // The guard was WIDENED, not removed. Without this, deleting the
+    // membership check entirely would leave every test above green.
+    writeImageMapping([
+      ...MAPPED,
+      { originalImage: OFF_MODULE, outputName: `${OFF_MODULE}_IS.svg` },
+    ]);
+    const out = await invoke(getImageH, req({ params: { basename: OFF_MODULE } }));
+    expect(out.status).toBe(404);
+    expect(out.body.error).toContain(`No such figure in ${MODULE}`);
+    expect(out.sent).toBeNull();
   });
 });
 
