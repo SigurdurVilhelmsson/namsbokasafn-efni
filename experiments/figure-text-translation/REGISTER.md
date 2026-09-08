@@ -8,7 +8,49 @@ things lives in [README.md](README.md).
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-07 (supersedes the 2026-09-06 block below)
+## ⏩ RESUME — state as of 2026-09-08 (supersedes every block below)
+
+🔴 **THE DRIVER EXISTS. THE BOOTSTRAP DEADLOCK IS BROKEN.** For weeks the editorial correction loop
+— `figureReviewService.js`, the `…/figures…` routes, the client's `figure-review-section` — was
+fully built and never ran, because **nothing minted the sidecar**. `tools/figure-run.js` now does:
+it enumerates a chapter's figures from CNXML, resolves each through `sources.py`, classifies it,
+sends only vectors with sendable text to the paid stage, writes the sidecar, composes and publishes.
+**Merged 2026-09-08 as `633f60a9` (PR #457).**
+
+**The pieces, so nobody rebuilds one:** `tools/lib/figure-outcomes.js` (closed outcome vocabulary,
+a tally that throws rather than lose a figure, the run verdict) · `tools/lib/figure-classify.js` ·
+`tools/lib/figure-enumerate.cjs` (the ONE enumeration predicate, now required by
+`figureReviewService.js` too) · `figure-prepare.py` · `figure-compose.py` · a committed PDF fixture
++ `make_fixture.py` · `FIGTEXT_OUT` isolation in `_deps.py` · a `--svg` branch on `strip-text.py` ·
+`--out` and an injectable client seam on `translate-blocks.mjs`.
+
+🔴 **GATE 1 IS INVERTED AND SHIPPED: the figure MT leg now sends NO glossary by default**, with a
+pre-flight invariant that refuses if one ever appears on the wire. The ② bullet below records why
+the prescription it replaced was unsatisfiable — read that before re-deriving it.
+
+🔴 **THE `unreadable-text` DISCRIMINATOR IS NOT WHAT THE M5 PLAN SPECIFIED, AND THE PLAN'S VERSION
+MUST NOT BE RESTORED.** The plan keyed it on `formTextXObjects > 0` — correct for the OLD reader,
+which could not see text inside `/Form` XObjects. **The pdfplumber adapter descends into forms**, so
+measured over the 817-figure read population that rule fires on **216 figures, is wrong on 216 of
+216, and has ZERO true positives.** It is now keyed on `undecodedBlocks > 0`, with
+`chars === 0 && formTextXObjects > 0` kept ONLY as a read-layer regression sentinel that has no
+corpus exerciser today and says so in the code.
+
+⚠️ **KNOWN AND UNFIXED, recorded here because live exposure is 0 and NOTHING ENFORCES THAT:**
+`strip-text.py` blanks 8 figures whose text is drawn in clipping mode (`7 Tr`) — the producer paints
+an image *through* the letterforms, so removing the text removes the clip and the image floods the
+page. Measured on `CNX_Chem_04_02_Citrus`: 152,693 non-white pixels → 1,404. **Every text-based
+check passes on the wreckage** (pdftotext returns 0 words, no `BT` survives); only pixels see it.
+All 8 classify `copied-photo`, so this tool's output is never read for them — a re-extraction that
+made one of them sendable would compose onto a blank canvas. Full account in `strip-text.py`'s own
+docstring.
+
+⚠️ **Campaign status — what is next — is the campaign register's (§C137/§C138/§C139), not this
+file's.** This file owns figure-text status; it does not own the campaign's.
+
+---
+
+## ⏩ RESUME — state as of 2026-09-07 (superseded by the block above)
 
 **The read-layer swap has been MEASURED, and its evidence has an owner:**
 [`READ-LAYER-ACCEPTANCE.md`](READ-LAYER-ACCEPTANCE.md) — C1, C1b, C2, C3, C4, C4b with denominators,
@@ -30,7 +72,7 @@ acceptance harness re-derives every denominator on each run.
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-06 (supersedes the 2026-09-05 block below)
+## ⏩ RESUME — state as of 2026-09-06 (superseded by the block above)
 
 🔴 **THE READ LAYER IS BEING REPLACED, NOT REPAIRED.** [USER] decision, frozen at
 [`docs/decisions/2026-09-06-figure-read-layer-respec.md`](../../docs/decisions/2026-09-06-figure-read-layer-respec.md);

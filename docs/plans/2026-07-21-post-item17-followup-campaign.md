@@ -4,18 +4,44 @@
 
 ## ⏩ RESUME — state as of **2026-09-08** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — **[USER] DECIDES ON PR #457. THEN DEPLOY, THEN THE FIRST *AUTHORISED* PAID FIGURE RUN.**
+### ⏭ SINGLE NEXT ACTION — 🔴 **DEPLOY. THEN M6: THE FIRST *AUTHORISED* PAID FIGURE RUN.**
 
-✅ **THE DRIVER IS BUILT. M5'S BOOTSTRAP DEADLOCK IS BROKEN.** The previous block's single next
-action is DONE — all of Tasks 0b and 1–6b, plus the §C138 `withComposedHash` fix.
-→ **PR [#457](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/457)**, branch
-`feat/m5-figure-driver`, **pushed, NOT merged.** 42 commits.
-🔴 **THIS BRANCH CARRIES A `server/` CHANGE AND THE LAST ONE DID NOT.** `figureReviewService.js`
-now requires the shared `tools/lib/figure-enumerate.cjs`, so the driver and the review panel cannot
-drift — [USER] chose this over shipping it driver-only. Behaviour is unchanged (the moved body is
-byte-identical, the five server figure suites report the same counts either side), **but the panel
-picks it up only on a DEPLOY.** ⚠️ And merging pushes `main`, which can strand prod's content
-backup until the next deploy (§ *Content delivery* in CLAUDE.md) — **deploy after merging.**
+✅ **THE DRIVER IS BUILT AND MERGED. M5'S BOOTSTRAP DEADLOCK IS BROKEN.** All of Tasks 0b and 1–6b,
+plus the §C138 `withComposedHash` fix.
+→ **PR [#457](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/457) MERGED 2026-09-08**
+as **`633f60a9`** — a **merge commit, not a squash**, deliberately: this register cites the branch's
+individual SHAs throughout and a squash would break every one (spot-checked after the merge: 8 of 8
+cited SHAs are ancestors of `main`). Branch deleted. **46 commits.**
+✅ **Verified on `origin/main` BY CONTENT, never by the merge report:** `tools/figure-run.js`,
+`tools/lib/figure-outcomes.js`, `figure-classify.js`, `figure-enumerate.cjs`,
+`experiments/…/figure-prepare.py`, `figure-compose.py` and the committed PDF fixture are all present.
+
+🔴 **DEPLOY IS THE NEXT ACTION AND IT IS NOT OPTIONAL THIS TIME — THIS BRANCH CARRIES A `server/`
+CHANGE AND THE LAST ONE DID NOT.** `figureReviewService.js` now requires the shared
+`tools/lib/figure-enumerate.cjs`, so the driver and the review panel cannot drift ([USER] chose this
+over shipping it driver-only). **Behaviour is unchanged** — the moved body is byte-identical and the
+five server figure suites report the same counts either side — **so nothing breaks by delaying, but
+the panel runs the OLD copy of the predicate until a deploy.**
+⚠️ **The merge pushed `main`, so prod's content backup may be stranded until that deploy**
+(§ *Content delivery* in CLAUDE.md). ⚠️ **And `checks.content_backup` will read `degraded` for a
+while afterwards — that is NOT a defect:** the check is `ok: !stale` and **only the cron writes the
+heartbeat**, so fixing the condition by hand never clears it; it clears on the next healthy tick.
+⚠️ **A deploy verification should hit the figures route once** — the code path is new even though the
+behaviour is not.
+
+✅ **THE `require(esm)` FLOOR IS CONFIRMED AGAINST PRODUCTION, NOT ASSUMED.** Both `engines` floors
+moved `>=22.0.0` → `>=22.12.0` (pinned by an assertion in `ci-node-version.test.js`, mutation-verified).
+Checked over SSH: `ritstjorn.service` runs `/usr/bin/node`, and that binary clears the floor.
+🔴 **"WHAT NODE DOES PROD RUN" HAS THREE TRUE ANSWERS THAT DISAGREE IN THE MINOR — the system binary
+the SERVICE runs, and nvm's own 22 (plus a v20 and a **v24**, the 2026-05-10 ABI incident's live
+ingredient, defused only by `deploy.sh`'s `export PATH="/usr/bin:$PATH"`). The METHOD is the durable
+part — resolve the service's MainPID to its own binary; the number moves on every apt upgrade.**
+⚠️ **`engines` is ADVISORY here** (no `.npmrc`, `engine-strict` false, Node never reads it), so the
+floor documents the requirement and does **not** enforce it. **What keeps `server/` safe is
+structural — the ESM parser is required LAZILY and the server's path never reaches it.** Do not
+flatten that to a top-level require on the strength of the floor.
+✅ **Swept rather than assumed: `tools/lib/figure-enumerate.cjs` is the ONLY `require(esm)` site in
+the repo**; every other `server/ → tools/lib` edge targets a `.cjs`.
 
 **0 ISK. Nothing under `books/` was touched. No chapter published.** The first live paid run is a
 separate [USER]-authorised step; `--dry-run` spawns the paid stage **zero** times, asserted on a
