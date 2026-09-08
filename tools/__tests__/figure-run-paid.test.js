@@ -1748,6 +1748,83 @@ describe('a recompose is refused when the read layer no longer declares a bought
     expect(rec(result, 'FIG_A').reason).toMatch(/held back|send:false/);
     expect(rec(result, 'FIG_A').reason).not.toMatch(/ERASED/);
     expect(spawn.countOf('compose')).toBe(0);
+    // 🔴 AND IT NAMES THE NON-DESTRUCTIVE REPAIR. The only remedy this message used to
+    // document was "delete the sidecar", which re-buys the figure AND destroys a head
+    // editor's ruling — over a fault the next test proves costs 0 ISK to repair.
+    expect(rec(result, 'FIG_A').reason).toMatch(/REMOVING EXACTLY THOSE KEY\(S\)/);
+    expect(rec(result, 'FIG_A').reason).toMatch(/mt-preview/); // …and what it costs
+  });
+
+  // 🔴 THE REMEDY, EXECUTED. A message naming a repair nobody has run is prose; this drives
+  // it. `figure-compose.py`'s own docstring hands this exact direction to the driver in
+  // writing — "a sidecar that had acquired a translation for a `send:false` block … would
+  // leave that key out of `missing` and refuse a CORRECT recompose … making it non-fatal is
+  // a behaviour change and is not this wrapper's to take" — so the driver's answer must be
+  // an operator instruction that WORKS, not one that merely sounds safe.
+  //
+  // ⚠️ THE PRUNE IS A HAND EDIT: the stored `renderHash` is left exactly as it was, because
+  // that is what an operator with a text editor does. `isStale` therefore reads true and the
+  // figure is pending rather than skipped.
+  //
+  // ⚠️ AND THE COST IS ASSERTED BESIDE THE BENEFIT. `renderHash` is computed OVER the blocks,
+  // so pruning one moves it: `state` survives on disk while `effectiveState` drops to
+  // mt-preview. Asserting only the happy half would make this test evidence for a claim the
+  // message must not make.
+  it('the repair its message names WORKS: prune the drifted key, publish, 0 ISK', async () => {
+    const approved = {
+      version: 1,
+      basename: 'FIG_A',
+      state: 'approved',
+      renderHash: computeRenderHash(
+        { k0: 'IS k0', k1: 'IS k1', k2: 'IS k2', HELD: 'IS held' },
+        COMPOSER_VERSION
+      ),
+      composerVersion: COMPOSER_VERSION,
+      blocks: { k0: 'IS k0', k1: 'IS k1', k2: 'IS k2', HELD: 'IS held' },
+    };
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      mapping: mapped,
+      sidecars: { FIG_A: approved },
+    });
+    const drifted = {
+      prepare: () => ({
+        sendable: 3,
+        __blocks: [
+          { key: 'k0', english: 'E0', lines: ['E0'], arc: false, send: true },
+          { key: 'k1', english: 'E1', lines: ['E1'], arc: false, send: true },
+          { key: 'k2', english: 'E2', lines: ['E2'], arc: false, send: true },
+          { key: 'HELD', english: 'HELD', lines: ['HELD'], arc: false, send: false },
+        ],
+      }),
+    };
+
+    // Run 1: the refusal, which is the premise. Without it the run below is not a repair.
+    const first = fakeSpawn(drifted);
+    const before = await runFigures(live(booksRoot), { spawn: first, booksRoot });
+    expect(rec(before, 'FIG_A').outcome).toBe('failed-compose');
+    expect(first.countOf('compose')).toBe(0);
+
+    // THE REPAIR: drop exactly the drifted key. Everything else in the file is untouched,
+    // renderHash included — a hand edit, not a re-mint.
+    const pruned = { ...approved, blocks: { k0: 'IS k0', k1: 'IS k1', k2: 'IS k2' } };
+    writeSidecar(bookDir, 'FIG_A', pruned);
+
+    const second = fakeSpawn(drifted);
+    const after = await runFigures(live(booksRoot), { spawn: second, booksRoot });
+    expect(rec(after, 'FIG_A').outcome).toBe('translated');
+    expect(second.countOf('translate')).toBe(0); // 0 ISK — nothing was re-bought
+    expect(second.countOf('compose')).toBe(1);
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(true);
+
+    const onDisk = readSidecar(bookDir, 'FIG_A');
+    // The benefit: the other three translations survived, and so did the `state` column.
+    expect(onDisk.blocks).toEqual({ k0: 'IS k0', k1: 'IS k1', k2: 'IS k2' });
+    expect(onDisk.state).toBe('approved');
+    // THE COST, measured rather than hoped: the ruling is kept but no longer honoured, so
+    // the figure is back in front of a head editor instead of shipping as approved.
+    expect(effectiveState(onDisk, onDisk.blocks, COMPOSER_VERSION)).toBe('mt-preview');
+    expect(editorialState(onDisk, onDisk.blocks, COMPOSER_VERSION)).toBe('mt-preview');
   });
 
   // 🔴 THE BUY PATH'S OWN `send` FILTER, WHICH NO FIXTURE EXERCISED: every block either fake

@@ -820,5 +820,135 @@ with tempfile.TemporaryDirectory() as td:
     check('9p ... leaving exactly one empty, inert <text> element',
           sum(1 for t in texts if t.strip() == '') == 1, f'{texts!r}')
 
+# ── 10. THE DRIVER'S OWN SIDECAR AS `--translations` — the seam nothing crossed ───────
+# 🔴 EVERY COMPOSE IN THE DRIVER'S 74-TEST PAID SUITE GOES THROUGH A FAKE `spawn` THAT
+# WRITES A SUCCESS compose.json, so `verify()` had never run against a driver-minted
+# sidecar anywhere in the tree. The driver hands the SIDECAR FILE ITSELF to
+# `--translations` (figure-run.js step 9) and relies on two things it never checks:
+# `compose.py` reading `TR = _tr.get('blocks', _tr)`, which steps past the envelope, and
+# `normalise_block_value` accepting the sidecar's FLAT STRINGS. A change to either — or
+# to the sidecar's shape — makes every figure in every chapter fail at compose, and no
+# test in either language could see it.
+#
+# 🔴 THE SIDECAR IS MINTED BY THE DRIVER'S OWN JS MODULE, NOT HAND-WRITTEN. `node` writes
+# it through `tools/lib/figure-text-sidecar.cjs` — the same `writeSidecar`,
+# `computeRenderHash`, `sidecarPath`, `SIDECAR_VERSION` and `COMPOSER_VERSION` the driver
+# uses — so this really is the file the driver produces, serialization and path included.
+# ⚠️ RESIDUAL LIMIT, stated rather than glossed: the OBJECT LITERAL is transcribed from
+# figure-run.js step 7, which does not export it. A change to the sidecar MODULE is
+# caught here; a change to that literal is not.
+REPO_ROOT = HERE.parents[1]
+SIDECAR_JS = REPO_ROOT / 'tools' / 'lib' / 'figure-text-sidecar.cjs'
+
+# ⚠️ `node -e` PUTS NO SCRIPT PATH IN argv: it is [execPath, ...args], so the first user
+# argument is argv[1], not argv[2]. Measured — the argv[2] form reads `undefined` and dies
+# in `require`, which arrives here as "--translations file does not exist: .../None".
+MINT = """
+const m = require(process.argv[1]);
+const [bookDir, basename, blocksJson] = process.argv.slice(2);
+const blocks = JSON.parse(blocksJson);
+// figure-run.js step 7, verbatim: renderHash and NO `state`.
+m.writeSidecar(bookDir, basename, {
+  version: m.SIDECAR_VERSION,
+  basename,
+  renderHash: m.computeRenderHash(blocks, m.COMPOSER_VERSION),
+  composerVersion: m.COMPOSER_VERSION,
+  blocks,
+});
+process.stdout.write(m.sidecarPath(bookDir, basename));
+"""
+
+
+def mint_sidecar(book_dir, basename, blocks):
+    """Write the sidecar the DRIVER would write, using the driver's own module."""
+    r = subprocess.run(['node', '-e', MINT, str(SIDECAR_JS), str(book_dir), basename,
+                        json.dumps(blocks, ensure_ascii=False)],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        return None, r
+    return Path(r.stdout.strip()), r
+
+
+# THE INSTRUMENT'S OWN CONTROL, FIRST: if `node` is missing every case below would report
+# a plausible-looking refusal for the wrong reason. Prove the minter works before using it.
+with tempfile.TemporaryDirectory() as td:
+    probe_path, probe = mint_sidecar(Path(td) / 'books' / 'probe', 'PROBE', {'a': 'b'})
+    minted = json.loads(probe_path.read_text(encoding='utf-8')) if probe_path else {}
+    check('10 PRECONDITION the driver\'s own module mints a sidecar here',
+          probe_path is not None and probe_path.exists()
+          and minted.get('basename') == 'PROBE' and minted.get('blocks') == {'a': 'b'}
+          and isinstance(minted.get('renderHash'), str) and minted['renderHash']
+          and 'state' not in minted,
+          f'exit {probe.returncode}: {probe.stderr.strip()[-300:]} :: {minted!r}')
+
+# 10a-10f: THE AGREEING CASE. The sidecar carries exactly the three send:true keys, which
+# is what every driver-minted sidecar holds by construction (step 8 refuses any other key
+# set before the figure is ever composed).
+with tempfile.TemporaryDirectory() as td:
+    out = Path(td) / 'fig-sidecar-ok'
+    prep = run_prepare(FIXTURE, out, 'CNX_Fixture_Sidecar')
+    check('10a PRECONDITION prepare produced the fixture directory', prep.returncode == 0,
+          f'exit {prep.returncode}: {prep.stderr.strip()[-400:]}')
+    sidecar, _ = mint_sidecar(Path(td) / 'books' / 'figrun-testbook', 'CNX_Fixture_Sidecar',
+                              {K_OBS: 'Athugun og forvitni', K_HYP: 'Setja fram tilgatu',
+                               K_TEST: 'Profa tilgatuna'})
+    r = run_wrapper('--out', out, '--translations', sidecar)
+    d = load_json(out / 'compose.json') or {}
+    check('10b A DRIVER-MINTED SIDECAR IS A VALID --translations PAYLOAD: exit 0',
+          r.returncode == 0 and not d.get('error') and d.get('outputPath'),
+          f'exit {r.returncode}: {d!r} :: {r.stderr.strip()[-300:]}')
+    svg_text = Path(d['outputPath']).read_text(encoding='utf-8') if d.get('outputPath') \
+        and Path(d['outputPath']).exists() else ''
+    # NON-VACUITY: the envelope did not merely fail to crash it — the Icelandic INSIDE
+    # `blocks` reached the SVG and the English left it. `compose.py` steps past the
+    # envelope with `TR = _tr.get('blocks', _tr)`; without that this exits 0 having drawn
+    # every label in English.
+    check('10c ... and the Icelandic in `blocks` REACHED the svg, the English leaving it',
+          'Athugun' in svg_text and 'Profa tilgatuna' in svg_text
+          and K_OBS not in svg_text and K_TEST not in svg_text,
+          f'{len(svg_text)} bytes: Athugun={"Athugun" in svg_text} '
+          f'obs-english={K_OBS in svg_text}')
+    # The same decoy that makes case 2 a control: a send:false block prints the ENGLISH
+    # KEPT warning on a PASSING run, so nothing here may be keyed on that warning.
+    check('10d ... while the send:false formula stays in English, as it must',
+          K_VERBATIM in svg_text, f'{K_VERBATIM!r} in svg={K_VERBATIM in svg_text}')
+    rep = load_json(out / 'compose-report.json') or {}
+    check('10e ... and the composer read OUR file, not one left in the directory',
+          rep.get('translationsPath') == str(sidecar), f"{rep.get('translationsPath')!r}")
+    check('10f ... partitioning the four keys 3 translated / 1 missing, as case 2 does',
+          sorted(rep.get('translated', [])) == sorted([K_OBS, K_HYP, K_TEST])
+          and rep.get('missing') == [K_VERBATIM], f'{rep!r}')
+
+# 10g-10j: THE DRIFT ARM, and the reason this section exists at all. This file's own
+# docstring defers it in writing: "A sidecar that had acquired a translation for a
+# `send:false` block ... would leave that key out of `missing` and refuse a CORRECT
+# recompose. That direction is reported with its own wording; making it non-fatal is a
+# behaviour change and is not this wrapper's to take." The DRIVER now refuses this shape
+# before it ever spawns a composer (`applyPartialDriftGuard`, pinned in
+# tools/__tests__/figure-run-paid.test.js) — so what is measured here is the backstop
+# underneath that guard: if the driver's check is ever removed or narrowed, THIS is what
+# the operator meets, and it must name the key rather than fail obscurely.
+with tempfile.TemporaryDirectory() as td:
+    out = Path(td) / 'fig-sidecar-drift'
+    prep = run_prepare(FIXTURE, out, 'CNX_Fixture_Drift')
+    check('10g PRECONDITION prepare produced the fixture directory', prep.returncode == 0,
+          f'exit {prep.returncode}: {prep.stderr.strip()[-400:]}')
+    # The figure was bought when this key was send:true; the read layer now holds it back.
+    sidecar, _ = mint_sidecar(Path(td) / 'books' / 'figrun-testbook', 'CNX_Fixture_Drift',
+                              {K_OBS: 'Athugun og forvitni', K_HYP: 'Setja fram tilgatu',
+                               K_TEST: 'Profa tilgatuna', K_VERBATIM: K_VERBATIM})
+    r = run_wrapper('--out', out, '--translations', sidecar)
+    d = load_json(out / 'compose.json') or {}
+    err = d.get('error', '')
+    check('10h a sidecar carrying a key blocks.json now holds back is REFUSED (exit 1)',
+          refused(r, 1) and d.get('keys') == [K_VERBATIM],
+          f'exit {r.returncode}: {d!r}')
+    check('10i ... and the refusal NAMES send:false rather than blaming the MT',
+          'send:false' in err and 'BOUGHT' not in err, f'{err!r}')
+    check('10j ... and no translated.svg is left behind claiming success',
+          not (out / 'translated.svg').exists(),
+          f"translated.svg present={(out / 'translated.svg').exists()}")
+
+
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)

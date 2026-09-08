@@ -864,6 +864,20 @@ export function applyPartialDriftGuard(rec, outDir) {
   // Two different facts, and the operator's next move differs. A key that is GONE from
   // blocks.json altogether is the silent erasure above; a key still there but now `send:false`
   // is refused by figure-compose.py anyway — this just says which, before a composer spawn.
+  //
+  // 🔴 AND THE TWO REMEDIES DIFFER, WHICH IS WHY THE ADVICE IS NOT IN THE SHARED TAIL. For a
+  // HELD-BACK key the sidecar is salvageable: dropping exactly those keys leaves every other
+  // translation in place, re-buys nothing, and the figure composes and publishes (measured end
+  // to end — the composer accepts a driver-minted sidecar carrying only the current send:true
+  // keys; `test_figure_compose.py` case 10). For a GONE key it is not: the block is no longer
+  // in blocks.json at all, so `strip-text.py` erases that label whatever the sidecar says, and
+  // the repair is upstream — the artwork edition or the extraction.
+  // ⚠️ THE SALVAGE IS NOT FREE, AND SAYING SO IS THE POINT. `renderHash` is computed OVER the
+  // blocks, so pruning one moves it: measured on an approved sidecar, `state` stays 'approved'
+  // on disk while `editorialState` and `effectiveState` both drop to 'mt-preview'. The head
+  // editor's ruling is PRESERVED but not honoured until they approve again. Telling an
+  // operator the prune is free would be a wrong remedy, which is worse than the destructive
+  // one it replaces.
   const declared = new Set(keys.all);
   const gone = extra.filter((k) => !declared.has(k));
   const heldBack = extra.filter((k) => declared.has(k));
@@ -880,8 +894,13 @@ export function applyPartialDriftGuard(rec, outDir) {
   if (heldBack.length) {
     parts.push(
       `${heldBack.length} key(s) are still in blocks.json but the read layer now holds them ` +
-        `back as send:false (${heldBack.join(', ')}); figure-compose.py refuses that, after a ` +
-        `composer spawn.`
+        `back as send:false (${heldBack.join(', ')}). figure-compose.py refuses that too, but ` +
+        `only after a composer spawn; refusing here saves the spawn. REMOVING EXACTLY THOSE ` +
+        `KEY(S) FROM THE SIDECAR is the non-destructive repair: every other translation stays, ` +
+        `nothing is re-bought, and the next run composes and publishes. It does move ` +
+        `renderHash, which is computed over the blocks, so an approved figure reads mt-preview ` +
+        `until a head editor approves it again — the ruling is kept in the file, not honoured ` +
+        `until then.`
     );
   }
   rec.outcome = 'failed-compose';
