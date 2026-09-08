@@ -16,13 +16,18 @@ Content licensing is **per book, not uniform** — see [Licensing](#licensing). 
 
 ### Books
 
-| Book | Slug | Source | Licence | Status | Published |
-|------|------|--------|---------|--------|-----------|
-| **Efnafræði** (Chemistry 2e) | `efnafraedi-2e` | [OpenStax](https://openstax.org/details/books/chemistry-2e) | CC BY 4.0 | In progress | [namsbokasafn.is](https://namsbokasafn.is) |
-| **Líffræði** (Biology 2e) | `liffraedi-2e` | [OpenStax](https://openstax.org/details/books/biology-2e) | CC BY 4.0 | Proof-of-concept (Ch3 imported) | — |
-| **Örverufræði** (Microbiology) | `orverufraedi` | [OpenStax](https://openstax.org/details/books/microbiology) | CC BY 4.0 | Registered | — |
-| **Lífræn efnafræði** (Organic Chemistry) | `lifraen-efnafraedi` | [OpenStax](https://openstax.org/details/books/organic-chemistry) | **CC BY-NC-SA 4.0** | MT preview | [namsbokasafn.is](https://namsbokasafn.is) |
-| **Eðlisfræði** (College Physics 2e) | `edlisfraedi-2e` | [OpenStax](https://openstax.org/details/books/college-physics-2e) | **CC BY-NC-SA 4.0** | MT preview | [namsbokasafn.is](https://namsbokasafn.is) |
+| Book | Slug | Source | Licence |
+|------|------|--------|---------|
+| **Efnafræði** (Chemistry 2e) | `efnafraedi-2e` | [OpenStax](https://openstax.org/details/books/chemistry-2e) | CC BY 4.0 |
+| **Líffræði** (Biology 2e) | `liffraedi-2e` | [OpenStax](https://openstax.org/details/books/biology-2e) | CC BY 4.0 |
+| **Örverufræði** (Microbiology) | `orverufraedi` | [OpenStax](https://openstax.org/details/books/microbiology) | CC BY 4.0 |
+| **Lífræn efnafræði** (Organic Chemistry) | `lifraen-efnafraedi` | [OpenStax](https://openstax.org/details/books/organic-chemistry) | **CC BY-NC-SA 4.0** |
+| **Eðlisfræði** (College Physics 2e) | `edlisfraedi-2e` | [OpenStax](https://openstax.org/details/books/college-physics-2e) | **CC BY-NC-SA 4.0** |
+
+Which of these actually reach [namsbokasafn.is](https://namsbokasafn.is) is decided by the
+publication allowlist in the reader repo (`scripts/lib/published-books.js` in
+[namsbokasafn-vefur](https://github.com/SigurdurVilhelmsson/namsbokasafn-vefur)); how far each
+book has been carried through the pipeline is tracked in `docs/plans/`, not here.
 
 ## Demo / Live Version
 
@@ -32,18 +37,18 @@ Content licensing is **per book, not uniform** — see [Licensing](#licensing). 
 
 ## Tech Stack
 
-- **Runtime:** Node.js 22.x LTS (`.nvmrc` specifies 22; lockfiles must be generated under Node 22 / npm 10)
+- **Runtime:** Node.js — the major is in `.nvmrc` and the minimum minor in `package.json`'s `engines` (it is not `.0`); lockfiles must be generated under the npm that ships with it
 - **Pipeline tools:** Custom CLI scripts in `tools/` (ES modules)
-- **Server:** Express 5.1 (CommonJS), better-sqlite3 12.6, Helmet 8, express-rate-limit 8
+- **Server:** Express (CommonJS), better-sqlite3, Helmet, express-rate-limit — versions in `server/package.json`
 - **Auth:** Microsoft Entra ID (Azure AD), JWT sessions
 - **Content format:** CNXML (OpenStax source) → extracted segments → translated → injected → rendered to HTML
-- **Math:** MathJax 4 (@mathjax/src 4.1) with New Computer Modern font
-- **Testing:** Vitest 4 (1,106 unit tests), Playwright (137 E2E tests), ESLint 10, Prettier, Husky
+- **Math:** MathJax (@mathjax/src) with New Computer Modern font
+- **Testing:** Vitest (unit) + Playwright (E2E), ESLint, Prettier, Husky — run `npm test`
 - **CI:** GitHub Actions (lint, test, validate, security, docs-check)
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) 22.x (see `.nvmrc`)
+- [Node.js](https://nodejs.org/) — the major version is in `.nvmrc`, the minimum minor in `package.json`'s `engines`. Install at least that minor: `engines` is advisory (Node never reads it), so an older minor of the same major installs cleanly and then throws the first time you run a tool that needs a newer one.
 - npm
 
 For the workflow server in production:
@@ -167,23 +172,27 @@ See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md)
 
 The workflow server runs on a Linode Ubuntu instance.
 
-- **Server path:** deployed via git pull
+- **Deploy:** `./scripts/deploy.sh` (the single deploy path — see below)
 - **Service:** `ritstjorn.service` (systemd)
 - **Port:** 3000
 - **Domain:** `ritstjorn.namsbokasafn.is`
 - **Nginx:** Reverse proxy to port 3000
 - **SSL:** Let's Encrypt via certbot
-- **Database:** SQLite (`pipeline-output/sessions.db`, auto-migrated on startup via 22 migrations)
+- **Database:** SQLite (`pipeline-output/sessions.db`, auto-migrated on startup)
 - **Auth:** Microsoft Entra ID with role-based access (admin, head editor, editor, contributor, viewer)
 
 ### Deploy / update
 
 ```bash
 cd namsbokasafn-efni
-git pull
-cd server && npm install
-sudo systemctl restart ritstjorn
+./scripts/deploy.sh
 ```
+
+`deploy.sh` is the single deploy path — pinned by
+`tools/__tests__/deployPathSingleSource.test.js`. Do not hand-run the steps: it backs up the
+database first, pins Node to the systemd runtime before any `npm` runs, re-asserts the `ours`
+merge driver the pull needs, and stashes and re-applies the editorial changes the server has
+made on disk. A manual `git pull` skips all four.
 
 See [docs/deployment/linode-deployment-checklist.md](docs/deployment/linode-deployment-checklist.md) for the full deployment guide.
 
@@ -222,13 +231,13 @@ namsbokasafn-efni/
 │   ├── tm/                       # Translation memory (TMX)
 │   └── glossary/                 # Terminology files
 ├── books/liffraedi-2e/           # Biology 2e (proof-of-concept)
-├── tools/                        # CLI pipeline tools (20 active)
+├── tools/                        # CLI pipeline tools -> docs/_generated/tools.md
 ├── server/                       # Express workflow server
-│   ├── routes/                   #   API routes (25 groups)
-│   ├── services/                 #   Business logic (36 services)
-│   ├── middleware/                #   Auth, roles, validation (3)
-│   ├── views/                    #   HTML pages (12)
-│   └── migrations/               #   SQLite migrations (22)
+│   ├── routes/                   #   API routes -> docs/_generated/routes.md
+│   ├── services/                 #   Business logic
+│   ├── middleware/               #   Auth, roles, validation
+│   ├── views/                    #   HTML pages
+│   └── migrations/               #   SQLite migrations
 ├── scripts/                      # Status updates, validation, doc generation
 ├── schemas/                      # JSON Schema definitions
 └── docs/                         # Comprehensive documentation
@@ -247,16 +256,16 @@ namsbokasafn-efni/
 ### Run tests
 
 ```bash
-npm test                  # Vitest unit tests (1,106 tests)
+npm test                  # Vitest unit tests (run from the repo root)
 npm run test:watch        # Watch mode
 npm run test:coverage     # With coverage report
-cd server && npm run test:e2e   # Playwright E2E tests (137 tests)
+cd server && npm run test:e2e   # Playwright E2E tests (a separate CI job; `npm test` does not run them)
 ```
 
 ### Code quality
 
 ```bash
-npm run lint              # ESLint (tools/ and scripts/)
+npm run lint              # ESLint — scope is package.json's `lint` script
 npm run format            # Prettier
 npm run docs:generate     # Regenerate tool/route inventories
 npm run docs:check        # Verify generated docs are up-to-date
@@ -313,7 +322,7 @@ Three licences apply, depending on where a file lives:
 
 | Path | Licence | |
 |------|---------|---|
-| `tools/`, `scripts/` — the CNXML extract → MT → inject → render pipeline, plus root config | **MIT** | [LICENSE](LICENSE) |
+| `tools/`, `scripts/`, `experiments/` — the CNXML extract → MT → inject → render pipeline, plus root config | **MIT** | [LICENSE](LICENSE) |
 | `server/` — Ritstjóri, the editorial workflow server (incl. `greynir-sidecar/`) | **AGPL-3.0** | [server/LICENSE](server/LICENSE) |
 | `books/` — translated content | **per-book Creative Commons** | [table below](#content-licensing-is-per-book) |
 
@@ -325,10 +334,13 @@ follows [OpenStax's own convention](https://github.com/openstax): its server-sid
 and editorial systems (`openstax-cms`, `rex-web`, `poet`, `cnxml`) are AGPL-3.0,
 while its build and pipeline tools (`corgi`, `cookbook`) are MIT.
 
-The MIT grant does **not** extend to `server/`. If you take only `tools/` under
-MIT, note that `tools/api-translate.js` has one optional runtime `require()`
-into `server/`, guarded by try/catch — the pipeline works without the server,
-skipping only a status update.
+The MIT grant does **not** extend to `server/`. Parts of the MIT tooling do reach into it,
+and not all of those reaches are optional: some are unguarded and happen at import time, so
+the tool cannot even load without `server/` present — taking `tools/` alone needs
+`server/lib/chapterLabel.js` (or an equivalent) beside it. This changes nobody's rights; it
+is a combination caveat. **[LICENSE](LICENSE) carries the authoritative enumeration**, with
+the search shapes to re-derive it — no copy of that list is kept here, because the copy is
+what goes stale.
 
 ### Content licensing is per book
 
@@ -393,11 +405,18 @@ License: CC BY 4.0
 
 ## Status
 
-Actively maintained. Pipeline phases 8-13 complete (February 2026). Microsoft Entra ID authentication migration complete (March 2026). Multi-book support operational with per-book rendering configuration.
+Actively maintained. The Extract-Inject-Render pipeline, the multi-book rendering configuration
+and the Microsoft Entra ID authentication migration are all in production use.
 
-As of June 2026 all five CI checks (lint, test, e2e, audit, docs-check) are green: the Playwright E2E suite was repaired after a fresh-database migration bug kept it red since February, and the `xlsx`/`qs` security advisories were resolved. The Extract-Inject-Render pipeline is verified with ~1,154 unit tests and 137 E2E tests. New chapters are processed as editorial review progresses.
+**What is being worked on right now, and how far each book has got, lives in one place:** the
+active register under [`docs/plans/`](docs/plans/) — currently
+[2026-07-21-post-item17-followup-campaign.md](docs/plans/2026-07-21-post-item17-followup-campaign.md),
+whose ⏩ RESUME block is the entry point. Nothing outside it tracks open work, deliberately: a
+second copy of a status is the copy that goes stale.
 
-Current development plan: a security/quality review (June 2026) produced an approved remediation roadmap — see [docs/plans/2026-06-10-remediation-roadmap.md](docs/plans/2026-06-10-remediation-roadmap.md) (Units 0–5: security hotfixes, content reversibility, localization review tier, assignment enforcement, editor UX, housekeeping). **Units 0–4 are merged** (security hotfixes incl. book-scoped head-editor authz, in-app content restore, the per-book localization review tier, default-deny chapter-assignment enforcement, and editor-UX fixes incl. the rebuild affordance and optimistic-concurrency token); **Unit 5 (defense & housekeeping)** is the remaining unit, with the manual QA checklists still to be walked on a running server.
+Live CI status is the
+[Actions tab](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/actions) — no document in
+this repository asserts a green or red verdict, this one included.
 
 ## Related Projects
 
