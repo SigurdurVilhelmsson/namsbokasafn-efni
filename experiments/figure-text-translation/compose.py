@@ -133,7 +133,7 @@ def fit_circle(pts):
 
 
 BOXW = 63.0     # rounded rect is 67.3pt wide; 2pt padding each side
-report, missing, degenerate = [], [], []
+report, missing, degenerate, undecodable = [], [], [], []
 # The MACHINE-READABLE half of the report printed at the bottom of this file. `report`
 # holds formatted DISPLAY STRINGS ("  center 12.0->12.00pt  'Boiling|point'"), so it
 # cannot be compared against blocks.json by anything; these two hold BLOCK KEYS, in draw
@@ -161,8 +161,24 @@ for b in blocks:
     key = block_key(b)
     keys.append(key)
 
+    # 🔴 THE ENGLISH KEPT HERE IS REDRAWN FROM SCRATCH - strip-text.py removed every glyph
+    # from the artwork - so a pdfminer `(cid:N)` placeholder in it is DRAWN ON THE FIGURE.
+    # Measured on CNX_Chem_05_02_FoodLabel: two live <text> elements reading
+    # `(cid:127) 5% or less`, exit 0, under the driver's VERDICT ok. The token is removed at
+    # the draw site and NOWHERE UPSTREAM: `readlayer._looks_undecoded` keys the block's hold
+    # on exactly that substring, so stripping it earlier would send the block to the paid MT.
+    # ⚠️ --control gets the same treatment on purpose: it is diffed against the ORIGINAL
+    # artwork, where the placeholder does not appear either, and a control that drew
+    # different pixels from the published path would be measuring the wrong thing.
+    def keep_english():
+        original = key if arc else en_lines
+        cleaned = FT.strip_undecodable(original)
+        if cleaned != original:
+            undecodable.append(key)
+        return cleaned
+
     if CONTROL:
-        new = key if arc else en_lines
+        new = keep_english()
     else:
         value = FT.normalise_block_value(TR[key], arc) if key in TR else None
         # ⚠️ AN EMPTY OR WHITESPACE-ONLY VALUE IS *MISSING*, NOT A TRANSLATION. It reaches
@@ -180,7 +196,7 @@ for b in blocks:
             # figure - formulas (H2O(g)) legitimately have no translation, and a
             # silent blank is far worse than an untranslated label.
             missing.append(key)
-            new = key if arc else en_lines
+            new = keep_english()
         else:
             translated.append(key)
             new = value
@@ -307,6 +323,10 @@ if SVG:
     # dropping it from the machine-readable copy would narrow what a driver can see to
     # less than what a human reading stdout sees.
     'degenerate': degenerate,
+    # The blocks whose kept English carried a pdfminer `(cid:N)` placeholder, which was
+    # removed before drawing. NAMED, never only counted: it is the one signal that says
+    # WHICH label a reader is getting in partial English.
+    'undecodable': undecodable,
     'translationsPath': str(tr_path),
     # A --control run re-injects the ENGLISH and never populates `missing`, so a consumer
     # that compared `missing` against the send:false blocks of a control run would refuse
@@ -327,6 +347,12 @@ if degenerate:
     print(f"\n!! {len(degenerate)} block(s) is_arc says are arcs but have no usable "
           f"circle - DRAWN STRAIGHT:")
     for k in degenerate:
+        print(f"     {k!r}")
+# Leading '\n' is load-bearing - see the note above the compose-report.json write.
+if undecodable:
+    print(f"\n!! {len(undecodable)} block(s) carried a pdfminer (cid:N) placeholder, "
+          f"REMOVED before drawing:")
+    for k in undecodable:
         print(f"     {k!r}")
 print(f"\nwrote out/{name}")
 # Leading '\n' is load-bearing - see the note above the compose-report.json write.

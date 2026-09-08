@@ -938,3 +938,105 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
     expect(report).toContain('/fake/artwork/CNX_Chem_03_02_moles.pdf');
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 dataflow/F3 — A FIGURE CAN BE `translated` AND STILL SHIP LABELS THE READ LAYER COULD NOT
+// DECODE, AND NOTHING ANYWHERE SAID SO.
+//
+// `classifyFigure` tests `sendable > 0` before `undecodedBlocks > 0`; that ordering is CORRECT
+// (the corpus case is a figure with both, and reversing it would file a mostly-translatable
+// figure as unreadable). The defect is that the fact then reached nobody: the `unreadable-text`
+// NOTE cannot fire for a `translated` figure, and `summarise` printed the `held=Nv/Nu/Nf` triple
+// only inside the `copied-*` block. Measured 2026-09-07 on the real artwork of ch05 — the next
+// chapter this driver is meant to walk:
+//
+//   figure-prepare.py  -> exit 0, "47 blocks, 28 sendable (held: 17 verbatim, 2 undecoded,
+//                         0 missing-font) | 788 chars" + "!! undecodable font PAGE/TT1"
+//   figure-compose.py  -> exit 0, and translated.svg carried TWO live <text> elements:
+//                         <text …>(cid:127) 5% or less</text> / <text …>(cid:127) 20% or</text>
+//   the decisive control: artwork.svg holds 0 `<text>` elements, so strip-text removed every
+//                         label and every one of them is REDRAWN by compose — there is no path
+//                         on which the original English survives instead.
+//   the driver          -> "1 translated / 1 = enumerated / VERDICT ok", naming neither.
+describe('labels the read layer could not decode are reported for EVERY outcome', () => {
+  const FOODLABEL = 'CNX_Chem_05_02_FoodLabel';
+  /** figure-prepare.py's real prepare.json for that artwork, field for field. */
+  const foodLabel = {
+    blocks: 47,
+    sendable: 28,
+    undecodedBlocks: 2,
+    verbatimBlocks: 17,
+    missingFontBlocks: 0,
+    chars: 788,
+    imageXObjects: 1,
+    paintOps: 38,
+    formTextXObjects: 0,
+    warnings: [
+      'subset font PAGE/TT0',
+      'subset font PAGE/TT1',
+      'subset font PAGE/TT2',
+      'undecodable font PAGE/TT1',
+    ],
+  };
+  const CH05 = (over = {}) => ({
+    book: 'efnafraedi-2e',
+    chapter: '5',
+    modules: null,
+    figures: [FOODLABEL],
+    dryRun: true,
+    ...over,
+  });
+
+  it('still classifies it translated — the ordering is right and must not move', async () => {
+    const result = await runFigures(CH05(), { spawn: fakeSpawn({ prepare: () => foodLabel }) });
+    expect(result.figures[0].outcome).toBe('translated');
+    expect(result.figures[0].holds).toEqual({ verbatim: 17, undecoded: 2, missingFont: 0 });
+  });
+
+  it('NAMES the figure and its undecodable label count in the report', async () => {
+    const result = await runFigures(CH05(), { spawn: fakeSpawn({ prepare: () => foodLabel }) });
+    const text = summarise(result);
+    expect(text).toMatch(/undecodable/i);
+    expect(text).toContain(FOODLABEL);
+  });
+
+  it('adds a non-fatal NOTE so a chapter walk cannot end green in silence', async () => {
+    const result = await runFigures(CH05(), { spawn: fakeSpawn({ prepare: () => foodLabel }) });
+    expect(result.verdict.ok).toBe(true);
+    expect(result.verdict.reasons.join(' ')).toMatch(/could not decode/i);
+    expect(summarise(result)).toMatch(/could not decode/i);
+  });
+
+  // The control. Without it every assertion above passes against a report that prints this
+  // line for every figure in every chapter.
+  it('says none of it for the same figure with no undecodable holds', async () => {
+    const clean = { ...foodLabel, undecodedBlocks: 0, verbatimBlocks: 19, warnings: [] };
+    const result = await runFigures(CH05(), { spawn: fakeSpawn({ prepare: () => clean }) });
+    const text = summarise(result);
+    expect(result.figures[0].outcome).toBe('translated');
+    expect(text).not.toMatch(/undecodable/i);
+    expect(result.verdict.reasons.join(' ')).not.toMatch(/could not decode/i);
+  });
+
+  // 🔴 The report line must not be keyed on the bucket. A missing-font hold is a PLUMBING
+  // fault ("the read layer stopped resolving a font"), it lands in `copied-textless` because
+  // the classifier has no branch for it, and F4's refuter measured that ROUTING on it would
+  // re-commit the plan's 216/216 false-positive error. Reporting it is the honest shape.
+  it('reports a missing-font hold too, whatever bucket the figure landed in', async () => {
+    const plumbing = {
+      blocks: 12,
+      sendable: 0,
+      undecodedBlocks: 0,
+      verbatimBlocks: 0,
+      missingFontBlocks: 12,
+      chars: 120,
+      imageXObjects: 0,
+      paintOps: 40,
+      formTextXObjects: 0,
+      warnings: [],
+    };
+    const result = await runFigures(CH05(), { spawn: fakeSpawn({ prepare: () => plumbing }) });
+    expect(result.figures[0].outcome).toBe('copied-textless');
+    expect(summarise(result)).toMatch(/missing-font/i);
+  });
+});

@@ -105,11 +105,18 @@ export function tallyOutcome(tally, outcome) {
 /**
  * Decide the run's verdict. NOT "did it finish" — "does a human need to look?".
  * A reason beginning `NOTE` is reported but never fatal; that prefix is part of the interface.
+ *
+ * 🔴 THE THIRD ARGUMENT EXISTS BECAUSE A TALLY CANNOT CARRY IT. A tally counts BUCKETS, and
+ * the fact below is a property of a figure INSIDE the `translated` bucket — see the NOTE. It
+ * is optional so the two-argument call stays exactly what it was.
+ *
  * @param {Record<string, number>} tally
  * @param {number} enumeratedCount figures enumerated; the partition must sum to it
+ * @param {{undecodedFigures?: number, undecodedLabels?: number}} [extra] counted over the
+ *   records, not derivable from the tally
  * @returns {{ok: boolean, reasons: string[]}}
  */
-export function verdict(tally, enumeratedCount) {
+export function verdict(tally, enumeratedCount, extra = {}) {
   const reasons = [];
   for (const k of FAILED) if (tally[k] > 0) reasons.push(`${tally[k]} figure(s) ${k}`);
 
@@ -134,6 +141,27 @@ export function verdict(tally, enumeratedCount) {
   if (tally['unreadable-text'] > 0) {
     reasons.push(
       `NOTE (not a failure): ${tally['unreadable-text']} figure(s) carry text we cannot read — see experiments/figure-text-translation/READ-LAYER-ACCEPTANCE.md`
+    );
+  }
+
+  // 🔴 A FIGURE CAN BE `translated` AND STILL CARRY LABELS THE READ LAYER COULD NOT DECODE,
+  // AND NO BUCKET CAN SAY SO. `classifyFigure` tests `sendable > 0` FIRST — correctly: the
+  // corpus case is a figure with both, and reversing it would file a mostly-translatable
+  // figure as unreadable. So the `unreadable-text` NOTE above structurally cannot fire for
+  // one, and the fact reached nobody. Measured 2026-09-07 on CNX_Chem_05_02_FoodLabel
+  // (47 blocks, 28 sendable, 2 undecoded): the composed SVG carried two live `<text>`
+  // elements reading `(cid:127) 5% or less`, published under VERDICT ok.
+  // ⚠️ NOT FATAL, and not a downgrade of the bucket. The figure IS translated — 28 of its
+  // labels are Icelandic — and failing the run would be the always-red exit code R9 rejects.
+  // ⚠️ COUNTED OVER `translated` ONLY, so this never doubles the NOTE above: an
+  // `unreadable-text` figure is never composed or published, so no reader sees anything.
+  const undecodedFigures = extra.undecodedFigures || 0;
+  if (undecodedFigures > 0) {
+    reasons.push(
+      `NOTE (not a failure): ${undecodedFigures} translated figure(s) carry ` +
+        `${extra.undecodedLabels || 0} label(s) the read layer could not decode. They were ` +
+        `never bought and ship in whatever English DID decode — compose strips the ` +
+        `(cid:N) placeholder rather than drawing it. The report names them.`
     );
   }
 

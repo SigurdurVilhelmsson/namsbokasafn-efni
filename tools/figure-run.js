@@ -1311,6 +1311,9 @@ export async function runFigures(args, deps = {}) {
 
     const tally = emptyTally();
     for (const rec of selected) tallyOutcome(tally, rec.outcome);
+    const shipsUndecoded = selected.filter(
+      (r) => r.outcome === 'translated' && r.holds && r.holds.undecoded > 0
+    );
 
     return {
       mode: args.dryRun ? 'dry-run' : 'live',
@@ -1328,7 +1331,13 @@ export async function runFigures(args, deps = {}) {
       deselected: records.length - selected.length,
       figures: selected,
       tally,
-      verdict: verdict(tally, selected.length),
+      // 🔴 COUNTED OVER THE RECORDS, BECAUSE A TALLY COUNTS BUCKETS AND THIS IS A PROPERTY
+      // OF A FIGURE INSIDE ONE. A `translated` figure may still carry labels the read layer
+      // could not decode — see `verdict`'s NOTE and the report section that names them.
+      verdict: verdict(tally, selected.length, {
+        undecodedFigures: shipsUndecoded.length,
+        undecodedLabels: shipsUndecoded.reduce((n, r) => n + r.holds.undecoded, 0),
+      }),
       tmpRoot,
     };
   } finally {
@@ -1461,6 +1470,32 @@ export function summarise(result) {
           `images=${f.imageXObjects} paint=${f.paintOps} ` +
           `held=${f.holds ? `${f.holds.verbatim}v/${f.holds.undecoded}u/${f.holds.missingFont}f` : '-'}` +
           `  ${f.basename}`
+      );
+    }
+  }
+
+  // 🔴 THE HOLDS THE READ LAYER COULD NOT RESOLVE, FOR EVERY OUTCOME — NOT ONLY `copied-*`.
+  // The `held=` triple above is printed only inside the copied block, and the two holds that
+  // mean something is BROKEN can occur in any bucket. Measured 2026-09-07 on
+  // CNX_Chem_05_02_FoodLabel: 47 blocks / 28 sendable / 2 undecoded classifies `translated`
+  // (correctly — `sendable > 0` is tested first), so neither the copied block nor the
+  // `unreadable-text` NOTE could name it, and the composed SVG shipped two live `<text>`
+  // elements reading `(cid:127) 5% or less` under VERDICT ok.
+  // ⚠️ `missingFont` is REPORTED here and routed nowhere. It is a RESIDUE, not evidence — it
+  // fires with a complete font table — so classifying on it would re-commit the plan's
+  // `formTextXObjects > 0` error (216 of 216 false positives). A line is the honest shape.
+  const unreadableHolds = result.figures.filter(
+    (f) => f.holds && (f.holds.undecoded > 0 || f.holds.missingFont > 0)
+  );
+  if (unreadableHolds.length) {
+    lines.push(
+      `  blocks the read layer could not read (${unreadableHolds.length}) — never bought, ` +
+        `so these labels ship in English:`
+    );
+    for (const f of unreadableHolds) {
+      lines.push(
+        `    ${f.outcome.padEnd(16)} ${f.holds.undecoded} undecodable, ` +
+          `${f.holds.missingFont} missing-font of ${f.blocks} block(s)  ${f.basename}`
       );
     }
   }

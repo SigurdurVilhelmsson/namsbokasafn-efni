@@ -671,5 +671,110 @@ if _mod is not None:
     check('8g a block-set disagreement is a DIFFERENT message — stale directory, not '
           'lost money', ok and keys == ['b'] and 'stale' in msg, f'{keys!r}: {msg}')
 
+
+# ── 9. A pdfminer PLACEHOLDER MUST NEVER BE DRAWN ON A PUBLISHED FIGURE ───────────────
+# 🔴 THE DEFECT, MEASURED ON REAL ARTWORK (dataflow/F3, 2026-09-07). A block whose own text
+# did not decode is held back from the MT by `figtext.sendable`, so it takes compose.py's
+# ENGLISH-KEPT branch - and `strip-text.py` has already removed EVERY glyph from the
+# artwork (`grep -ac '<text' artwork.svg` -> 0), so that label is REDRAWN from the read
+# layer's text or not at all. On CNX_Chem_05_02_FoodLabel (47 blocks, 28 sendable, 2
+# undecoded) figure-compose.py exited 0 and translated.svg carried two live elements:
+#     <text ... >(cid:127) 5% or less</text>   <text ... >(cid:127) 20% or</text>
+#
+# 🔴 THE TOKEN IS NOT REMOVED UPSTREAM, DELIBERATELY: it is the POSITIVE EVIDENCE the hold
+# is keyed on (`readlayer._looks_undecoded`). Stripping it at extraction would make the
+# block read as clean prose and send it to the paid MT. The draw site is the only place.
+#
+# The fixture is SYNTHESISED rather than committed: one run of the committed figure gets a
+# leading `(cid:127) `, and blocks.json is re-derived with the REAL rules (the same loop
+# emit-blocks.py runs), because block keys are content-addressed and a hand-written
+# blocks.json would be a second implementation of the rule the wrapper checks against.
+K_CID = '(cid:127) Observation and curiosity'
+
+
+def regenerate_blocks(out_dir):
+    """Re-derive blocks.json from runs.json exactly as emit-blocks.py does. -> the entries."""
+    import figtext as FT
+    from blockkey import block_key, block_lines
+    out_dir = Path(out_dir)
+    runs = json.loads((out_dir / 'runs.json').read_text())
+    fonts = json.loads((out_dir / 'meta.json').read_text())['fonts']
+    entries = []
+    for b in FT.merge_blocks(FT.group(runs)):
+        arc = FT.is_arc(b)
+        lines = block_lines(b)
+        key = block_key(b)
+        joined = key if arc else ' '.join(lines)
+        entries.append(dict(key=key, english=joined, lines=lines, arc=arc,
+                            send=FT.sendable(b, joined, fonts)))
+    (out_dir / 'blocks.json').write_text(json.dumps(entries, indent=1, ensure_ascii=False))
+    return entries
+
+
+def drawn_text(svg_path):
+    """Every string the composer DREW, read out of the SVG a reader would be served."""
+    import re
+    return re.findall(r'<text[^>]*>([^<]*)</text>',
+                      Path(svg_path).read_text(encoding='utf-8'))
+
+
+with tempfile.TemporaryDirectory() as td:
+    out = Path(td) / 'fig-cid'
+    prep = run_prepare(FIXTURE, out, 'CNX_Fixture_Cid')
+    check('9 PRECONDITION prepare produced the fixture directory', prep.returncode == 0,
+          f'exit {prep.returncode}: {prep.stderr.strip()[-400:]}')
+
+    # THE DECISIVE CONTROL, re-measured here rather than quoted: strip-text removed every
+    # glyph, so a label that is not redrawn is ERASED - the original English cannot survive.
+    art = (out / 'artwork.svg').read_text(encoding='utf-8')
+    check('9a strip-text left NO text in the artwork, so every label is redrawn',
+          '<text' not in art, f'{art.count("<text")} <text elements')
+
+    runs = json.loads((out / 'runs.json').read_text())
+    runs[0]['text'] = '(cid:127) ' + runs[0]['text']
+    (out / 'runs.json').write_text(json.dumps(runs, ensure_ascii=False))
+    entries = regenerate_blocks(out)
+    by_key = {e['key']: e for e in entries}
+    check('9b the read layer HOLDS the undecodable block back from the MT',
+          K_CID in by_key and by_key[K_CID]['send'] is False, f'{sorted(by_key)}')
+    check('9c ... and the other prose blocks are still sendable (the hold is not blanket)',
+          by_key.get(K_HYP, {}).get('send') is True
+          and by_key.get(K_TEST, {}).get('send') is True, f'{by_key.keys()}')
+
+    tr = write_tr(Path(td) / 'cid.json',
+                  {K_HYP: 'Setja fram tilgatu', K_TEST: 'Profa tilgatuna'})
+    r = run_wrapper('--out', out, '--translations', tr)
+    d = load_json(out / 'compose.json') or {}
+    check('9d the wrapper composes it (a held block is not a failure)',
+          r.returncode == 0 and d.get('outputPath'),
+          f'exit {r.returncode}: {d!r}')
+
+    texts = drawn_text(out / 'translated.svg') if (out / 'translated.svg').exists() else []
+    check('9e NO pdfminer placeholder is drawn on the published figure',
+          not any('(cid:' in t for t in texts), f'{texts!r}')
+    # POSITIVE CONTROLS in the SAME output. Without them 9e passes against a composer that
+    # drew nothing at all, or that erased the whole label rather than the token.
+    check('9f ... and the label KEEPS the English that DID decode - it is not erased',
+          any('Observation and curiosity' in t for t in texts), f'{texts!r}')
+    check('9g ... and the translated siblings are still drawn',
+          any('Setja fram tilgatu' in t for t in texts)
+          and any('Profa tilgatuna' in t for t in texts), f'{texts!r}')
+    check('9h ... and the send:false English block is untouched',
+          any('H2O (g)' in t for t in texts), f'{texts!r}')
+
+    # The remover and the DETECTOR are two representations of one token, in two modules.
+    # Asserted against each other rather than described, because a drift here is silent:
+    # the block is still held back, and the placeholder is drawn anyway.
+    import figtext as _FT
+    import readlayer as _RL
+    probe = f'{_RL.CID}127) x'
+    check('9i the remover matches everything readlayer\'s DETECTOR finds',
+          _RL.CID in probe and _FT.strip_undecodable(probe) == 'x',
+          f'{probe!r} -> {_FT.strip_undecodable(probe)!r}')
+    check('9j ... and it leaves ordinary text alone',
+          _FT.strip_undecodable(['Nutrition Facts', 'Calories 250'])
+          == ['Nutrition Facts', 'Calories 250'],
+          repr(_FT.strip_undecodable(['Nutrition Facts', 'Calories 250'])))
+
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)

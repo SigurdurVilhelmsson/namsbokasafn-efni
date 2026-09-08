@@ -202,3 +202,46 @@ describe('verdict', () => {
     expect(verdict(t, 5).ok).toBe(true);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 dataflow/F3. `classifyFigure` tests `sendable > 0` BEFORE `undecodedBlocks > 0` — which is
+// right, the corpus case is a figure with both — so a figure carrying undecodable labels is
+// bucketed `translated` and the `unreadable-text` NOTE never fires for it. Measured on real
+// artwork: CNX_Chem_05_02_FoodLabel prepares as 47 blocks / 28 sendable / 2 undecoded, composes
+// exit 0, and the published SVG carried two live `<text>` elements reading `(cid:127) 5% or
+// less` — a pdfminer debug token drawn on a figure, under VERDICT ok. The classifier's ordering
+// stays; what is added is that the fact SURVIVES INTO THE REPORT.
+describe('verdict NOTEs the labels a TRANSLATED figure could not decode', () => {
+  it('names the figure and label counts, and is not fatal', () => {
+    const t = { ...emptyTally(), translated: 1 };
+    const v = verdict(t, 1, { undecodedFigures: 1, undecodedLabels: 2 });
+    expect(v.ok).toBe(true);
+    expect(v.reasons.join(' ')).toMatch(/could not decode/i);
+    expect(v.reasons.join(' ')).toMatch(/\b1\b.*\b2\b/);
+  });
+
+  // The control: without it the assertion above passes against a verdict that says this on
+  // every run.
+  it('says nothing when no translated figure carries an undecodable label', () => {
+    const t = { ...emptyTally(), translated: 1 };
+    const v = verdict(t, 1, { undecodedFigures: 0, undecodedLabels: 0 });
+    expect(v.reasons.join(' ')).not.toMatch(/could not decode/i);
+    expect(v.ok).toBe(true);
+  });
+
+  // Back-compat: every existing caller passes two arguments, and the third is optional.
+  it('is unchanged when called with two arguments', () => {
+    const t = { ...emptyTally(), translated: 1 };
+    expect(verdict(t, 1)).toEqual({ ok: true, reasons: [] });
+  });
+
+  // 🔴 IT MUST NOT DOUBLE-REPORT `unreadable-text`. That outcome already has its own NOTE and
+  // is a different fact — nothing is composed or published for it, so no reader sees anything.
+  // This NOTE is about a figure that IS published.
+  it('is a different reason from the unreadable-text NOTE', () => {
+    const t = { ...emptyTally(), 'unreadable-text': 1 };
+    const v = verdict(t, 1, { undecodedFigures: 0, undecodedLabels: 0 });
+    expect(v.reasons.length).toBe(1);
+    expect(v.reasons[0]).toMatch(/carry text we cannot read/);
+  });
+});
