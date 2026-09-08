@@ -118,7 +118,7 @@ remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
 
 | Path | Licence | File |
 |---|---|---|
-| `tools/`, `scripts/`, root config | **MIT** | root `LICENSE` |
+| `tools/`, `scripts/`, `experiments/`, root config | **MIT** | root `LICENSE` |
 | `server/` incl. `greynir-sidecar/` — Ritstjóri | **AGPL-3.0** | `server/LICENSE` |
 | `books/` | **per-book Creative Commons** | `books/<slug>/book-config.json` is authoritative |
 
@@ -127,12 +127,17 @@ remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
   over-grant was the audit's blocking finding.
 - The AGPL/MIT split mirrors OpenStax's own convention (their server-side systems are
   AGPL-3.0, build tooling MIT).
-- **Known gap E-2 — MIT tooling (`tools/`, `scripts/`) reaching AGPL `server/` code.**
+- **Known gap E-2 — MIT tooling (`tools/`, `scripts/`, `experiments/`) reaching AGPL
+  `server/` code.**
   **Do not trust any enumeration here; re-derive before asserting the boundary** — this
   bullet said "one optional `require()`" until 2026-07-28, by which point there were three.
-  Search for **both** shapes: a literal `'../server/…'` require/import, and
-  `require(path.join(…, 'server', …))`, which a `../server/` grep cannot see.
-  **Two classes, treated differently:**
+  ⚠️ **The SEARCH SHAPES are not enumerated here either, and that is the same rule applied
+  to the instrument** — this bullet named two until 2026-09-08, by which point root
+  `LICENSE` needed **four**, none of which sees the others' matches; a session obeying the
+  short list would have reported `LICENSE`'s own entries as spurious. **→ read the shapes,
+  and the exclusion trap that goes with them, in root `LICENSE`.**
+  **Two rules, applied to different edges** (`LICENSE` classifies them more finely —
+  do not read these as its class count):
   - `api-translate.js`'s require of `pipelineStatusService` is **optional and
     try/catch-guarded** — sever it if you touch that file.
   - the `server/lib/chapterLabel` imports in the appendix-aware tools/scripts are
@@ -782,7 +787,9 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 
 ### ⚠️ Durable cross-repo rules
 
-- **⚠️ ONLY `efnafraedi-2e` AND `lifraen-efnafraedi` MAY BE PUBLISHED. Every other book is held back from the website ([LEAD] 2026-08-22 — indefinite, reversible, and NOTHING IS DELETED in either repo).** `sync-content.js` with no arguments syncs **EVERY** book — it accepts `[book...]` and `--dry-run`, and a bare run picks up whatever `05-publication/` currently holds for all of them. ⚠️ **AND A SCOPED RUN REMOVES NOTHING** — `--delete` is scoped to `${bookDest}/` *inside* the per-book loop, so naming the two kept books stops **new** publication but does not retire what is **already live**; that is vefur's sync/build to do → **active register §C109**, which owns the retirement and its status. **Never run it bare. Never name a third book.** *(Learned 2026-08-07, when a bare sync would have published a chapter the assessment already records as known-bad; sharpened 2026-08-22, when the register's own holds lookup was measured insufficient — every live hold named one book while three were held.)* ⚠️ **THIS LIST LIVES HERE ONLY UNTIL VEFUR'S SYNC READS A PUBLISHED-BOOKS ALLOWLIST. WHEN THAT SHIPS, DELETE THIS BULLET and replace it with `→ see <that file>`** — a list in this always-loaded file is exactly what § *One source of truth* forbids (**enforceable value → the file the code reads + its test; no number, no list**). It is carried here as a **stopgap with an expiry**, not as the owner, because the gap is live today: efni's own `.github/workflows/sync-content.yml` fires on `books/*/05-publication/**` for **any** book and runs a bare all-books sync, and it is one repository secret away from working.
+- **⚠️ WHICH BOOKS MAY REACH THE WEBSITE IS AN ENFORCEABLE VALUE, AND ITS OWNER IS IN THE SISTER REPO: `../namsbokasafn-vefur/scripts/lib/published-books.js` (`PUBLISHED_BOOKS`) plus `published-books.test.js`. Read the list there; never restate it.** It is an **allowlist, default-deny** — a book present in efni and absent from it is withheld — so **a bare `node scripts/sync-content.js` run is safe**: it publishes the permitted books and names the ones it skipped, and **naming a withheld book is an error, not a silent skip** (overridable only with `--allow-withheld`). The [LEAD] ruling behind it is 2026-08-22 — indefinite, reversible, **nothing deleted in either repo** — recorded at [docs/decisions/2026-08-22-two-book-focus-and-publication-withdrawal.md](docs/decisions/2026-08-22-two-book-focus-and-publication-withdrawal.md).
+  ⚠️ **THE ALLOWLIST GOVERNS WHAT IS *SYNCED*, NOT WHAT IS ALREADY *DEPLOYED*** — its own header says so, and the sync's stale-directory sweep is keyed on the SOURCE tree. Retiring pages that are already live is a separate decision with its own consequences → **active register §C109**, which owns it and its status.
+  🔴 **CORRECTED 2026-09-08 — THIS BULLET USED TO CARRY THE TWO SLUGS AND THE 🔴 DURABLE RULE "Never run it bare. Never name a third book.", AND BOTH DESCRIBED A MECHANISM THAT NO LONGER EXISTS.** It also carried its own expiry — *"THIS LIST LIVES HERE ONLY UNTIL VEFUR'S SYNC READS A PUBLISHED-BOOKS ALLOWLIST"* — and that condition was met on vefur's `main` without anything on this side noticing. ▶ **A prohibition is not self-retiring: the guard moved into code-plus-test in another repo and the always-loaded prose kept claiming the guard was itself.** A session trusting it would have believed a safe, gated operation was destructive, and would have gone looking on the wrong side of the boundary for the thing protecting it. ⚠️ **And an expiry written into a rule only fires if somebody re-reads the rule** — this one was found by an audit, not by the condition.
 - **⚠️ A vefur sync/deploy proves nothing until you fetch the CONTENT FILE.** Verify at `/content/<book>/chapters/<NN>/<file>.html`, never a page URL — the SPA fallback returns 200 with an identical shell for every path. **And pair it with a control you expect to still be broken**: a set of clean results is indistinguishable from fetching something empty. Measured 2026-08-07: a live page is ~30 KB against ~160 bytes for a nonsense URL, and a page knowingly left unfixed still returned its defect — which is what made the clean ones mean anything. → [[engineering-lessons]]
 - **⚠️ `deleting toc.json` in the sync output is EXPECTED — and its regeneration is warn-only.** efni ships no `toc.json`; vefur deletes and regenerates it. But that regen cannot fail the sync, while vefur skips any book lacking one — so a failed regen silently drops a whole book with every exit code green. **The rule is vefur's and lives in vefur's CLAUDE.md**; noted here only so nobody aborts an efni delivery over the line.
 - **✅ Prune-on-rename SHIPPED (§C9).** A render that supersedes a page deletes it and records
