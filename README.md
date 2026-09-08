@@ -411,8 +411,9 @@ and the Microsoft Entra ID authentication migration are all in production use.
 **What is being worked on right now, and how far each book has got, lives in one place:** the
 active register under [`docs/plans/`](docs/plans/) — currently
 [2026-07-21-post-item17-followup-campaign.md](docs/plans/2026-07-21-post-item17-followup-campaign.md),
-whose ⏩ RESUME block is the entry point. Nothing outside it tracks open work, deliberately: a
-second copy of a status is the copy that goes stale.
+whose ⏩ RESUME block is the entry point. (The figure-text translation track keeps its own
+register at `experiments/figure-text-translation/REGISTER.md`.) No other file duplicates either
+one, deliberately: a second copy of a status is the copy that goes stale.
 
 Live CI status is the
 [Actions tab](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/actions) — no document in
