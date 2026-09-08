@@ -4,7 +4,42 @@
 
 ## ⏩ RESUME — state as of **2026-09-08** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — 🔴 **§C139 TIER 1. THEN M6, THE FIRST *AUTHORISED* PAID FIGURE RUN.**
+### ⏭ SINGLE NEXT ACTION — 🔴 **MERGE §C139 TIER 1, THEN *DEPLOY*, THEN M6.**
+
+✅ **§C139 TIER 1 IS BUILT — branch `feat/c139-tier1-widen-review-surface`, 0 ISK, nothing under
+`books/` touched.** The panel now reads **four** constructs instead of one. **Counts are §C139's and
+are deliberately not restated here.**
+🔴 **THE PLAN'S CENSUS WAS AN UNDERCOUNT, AND SO WAS MY FIRST CORRECTION OF IT.** Obeying §C139's own
+*"re-derive these numbers"* line found a **third** construct the plan never named. A five-lens
+adversarial review then found a **fourth**, on the book neither the plan nor I had measured —
+organic's entire remaining gap — plus the fact that my replacement diagnosis of the residue was
+**itself false**, and green only because the guarding test's instrument was blind to the class it
+claimed to bound. ▶ **Both corrections came from re-deriving rather than from reading, and the
+second came from an adversary rather than from me.** Full account, with the measurements: §C139.
+
+🔴 **DEPLOY IS NOT OPTIONAL AND THE REASON IS NOT OBVIOUS FROM THE DIFF: the only change under
+`server/` is a DOCSTRING, and it is still a server change.** `figureReviewService` requires
+`tools/lib/figure-enumerate.cjs`, so **the panel runs the old predicate until `./scripts/deploy.sh`
+runs**. ▶ **Buying a chapter's figures before that deploy spends the editor's ONE pass on a panel
+that cannot show the new constructs — the exact failure tier 1 exists to prevent.** Verify by
+hitting the figures route, never by reading the deploy's own output.
+
+⚠️ **A CLAIM THIS BLOCK MADE FOR ONE COMMIT — "organic barely benefits, this tier is
+overwhelmingly a chemistry win" — WAS FALSIFIED BY THE REVIEW, AND IT WOULD HAVE STEERED M6.** It was
+true of the three constructs then implemented and false of the book: organic's gap was a **fourth**
+construct nobody had looked for, and reading it takes organic to **zero** unreviewable images —
+proportionally a better result than chemistry's. ▶ **A "this book barely benefits" conclusion drawn
+from constructs measured on the OTHER book is not a measurement of that book.**
+
+**The gate — re-derive it, do not quote it:** the property that matters is that the full-suite
+failing set is **identical BY NAME to `main` in both directions**, with the volatile `NNms` suffix
+stripped and a planted sentinel row proving the comparator fires. `main` is red by design, so a count
+means nothing here.
+⚠️ **A PASSING-TEST DELTA IS A MOVING TARGET AND THIS BLOCK GOT IT WRONG ONCE.** It read *"passing
+moved 6,410 → 6,424, and the +14 reconciles exactly"* — measured before the branch's own later
+commits added more tests, so it was stale within the hour it was written. **A reconciliation is
+evidence only against the run it was computed from.** Re-run the suite; the by-name set diff is the
+gate.
 
 ✅ **DEPLOYED 2026-09-08 09:30 UTC BY [USER], AND VERIFIED BY CONTENT ON PROD RATHER THAN BY THE
 DEPLOY'S OWN OUTPUT.** `633f60a9` is an ancestor of prod's HEAD; `tools/lib/figure-enumerate.cjs` is
@@ -19,7 +54,8 @@ has UNPUSHED CONTENT at that moment.** That is now twice in a row; do not read i
 wrong, and deploy promptly anyway.
 
 ⚠️ **THE ORDER OF THE LAST TWO IS A [USER] RULING (2026-09-08) AND IT REVERSES WHAT THIS BLOCK
-FIRST SAID.** §C139 lands **before** any chapter's figures are bought. **The reason is the one-pass
+FIRST SAID — IT HELD, AND THE BUILD VINDICATED IT.** §C139 lands **before** any chapter's figures
+are bought. **The reason is the one-pass
 ruling:** an editor sees a module ONCE, so a figure that is bought, composed and published but
 cannot appear in the review panel ships **uncorrectable**. The two chapters whose text is already
 paid for are exactly the ones that would suffer — **ch03 hides 22 of 41 images and ch04 hides 12 of
@@ -27,6 +63,13 @@ paid for are exactly the ones that would suffer — **ch03 hides 22 of 41 images
 much it costs. ▶ **Accepted cost of this order: tier 1 lands UNVERIFIABLE against live data**, because
 the route returns only figures that already have a sidecar and none exist yet. Its tests carry the
 proof instead of a live run; do not treat a quiet panel as evidence it works.
+✅ **THAT DEBT IS PAID IN THE SHAPE IT WAS PROMISED: 7 ROUTE-LEVEL TESTS, 6 OF THEM WATCHED RED
+AGAINST THE UN-WIDENED PREDICATE.** The predicate's own suite proves only that the function returns
+records — **not** the claim the ruling rests on, which is that an editor can SEE and APPROVE one in
+their single pass. ▶ **Widening the predicate also widened the WRITE surface**: the membership guard
+in `resolveFigureRequest` now admits ~324 more chemistry basenames to approve and block-edit, and
+nothing had exercised it. The suite carries its own negative control (a figure from another module
+is still refused, and serves nothing), so deleting the guard outright cannot leave it green.
 
 ✅ **THE DRIVER IS BUILT AND MERGED. M5'S BOOTSTRAP DEADLOCK IS BROKEN.** All of Tasks 0b and 1–6b,
 plus the §C138 `withComposedHash` fix.
@@ -127,7 +170,7 @@ measured as wrong is worse than one that argues back.**
 | **`tools/figure-run.js` has been an unclassified `01-source` reader since it existed** — invisible to `source-write-guard` because every path literal lived in a variable, not the string the guard greps for. **A guard keyed on a SPELLING rather than a BEHAVIOUR** | `source-write-guard.test.js` |
 | **A hand-picked basename charset refused a real figure and cost chemistry ch11** — `CNX_Chem_11_02_Fe(NO3)3_img`, the ONLY rejection among 3,311 enumerated figures across 56 chapters | `figure-prepare.py` |
 | `applyPartialDriftGuard`'s refusal semantics, and `figure-compose.py`'s recompose-drift question | open design items, named in the code |
-| **Enumeration is ALL images; the review panel shows only the `<figure>` subset.** On ch04, 10 of 19 translated figures have no `<figure>` node — the driver NAMES them ([USER] ruling R7) | `figure-enumerate.cjs` |
+| **Enumeration is ALL images; the review panel showed only the `<figure>` subset.** ⏳ **ADDRESSED ON A BRANCH, NOT CLOSED — nothing is merged or deployed, and the ⏩ RESUME owns that.** The panel now reads four constructs; the residue is images `02-structure` has **no src-keyed node** for. ⚠️ **Do not restate the ch04 number here** — an earlier version of this row said "the driver names 8, not 10", which is a **`--dry-run` prediction** (the R7 line fires only on `outcome === 'translated'` and no chemistry figure run has ever happened), and it belongs to a command anyone can re-run | `figure-enumerate.cjs` |
 
 ⚠️ **`docs-check` fires on any `tools/**` change and regenerates `docs/_generated/`.** This branch
 adds a tool, so the gate was red and no vitest run could see it. Regenerated and committed —
@@ -709,19 +752,104 @@ The unreviewable images cluster hard by container: **156 `exercise>solution` · 
 100 `exercise>problem` · 105 other · 29 `table` · 10 `note`** — worked problems and their
 solutions, which in a chemistry text is where the reaction schemes live.
 
-✅ **THE CHEAP TIER, AND IT NEEDS NO RE-EXTRACTION AND NO CNXML PARSING.** `02-structure` carries a
-top-level **`inlineMedia`** array holding these images with `src`, `id` and an `alt` bearing its own
-`segmentId`. `listStructureFigures` walks only `structure.content` for `type === 'figure'` and
-**never looks at `inlineMedia`**. Reading it reaches **227 of the 521 (43.6%)** — a service-side
-change alone. ▶ **The remaining 294 (56.4%) are absent from `02-structure` entirely** and are the
-"three legs" the M5 plan named: extractor change, then re-extraction.
+✅ **BUILT 2026-09-08 — ON A BRANCH, NOT MERGED AND NOT DEPLOYED; the ⏩ RESUME owns where it
+stands. AND THE CHEAP TIER WAS BIGGER THAN THIS SECTION SAID, FOUND BY OBEYING THIS SECTION'S OWN
+"re-derive these numbers" INSTRUCTION.** `02-structure` carries a top-level
+**`inlineMedia`** array holding these images with `src`, `id` and an `alt` bearing its own
+`segmentId`; `listStructureFigures` walked only `structure.content` for `type === 'figure'` and
+never looked at it. That was measured at **227 of the 521** and is correct as far as it goes.
+🔴 **BUT A THIRD CONSTRUCT WAS SITTING IN THE VERY TREE THE FIGURE WALK ALREADY TRAVERSES: a
+`type:'media'` node loose in `content`** — an `<image>` in a para, an example or an exercise
+solution that never went through `inlineMedia`. Same shape (a `src` and an `alt.segmentId`); the
+walk simply tested for one node type. **97 more images, DISJOINT from the inlineMedia set (0
+basenames in both).**
+
+| construct | images | reaches the panel |
+|---|---|---|
+| `figure` | 627 | before |
+| `inlineMedia` | 227 | **now** |
+| `media` (loose in content) | 97 | **now** |
+| absent from `02-structure` | 197 | needs the extractor change + re-extraction |
+
+🔴 **AND A FOURTH CONSTRUCT WAS FOUND BY AN ADVERSARIAL REVIEW, ON THE BOOK THIS SECTION NEVER
+MEASURED.** Every one of `lifraen-efnafraedi`'s **245** unreviewable images sits in a **table cell's
+`alt`** (`rows[].cells[].alt`), carrying both a `src` and its §C88 alt segment. Reading it takes
+**organic from 245 unreviewable to ZERO**. Chemistry has **0** of them and organic has 0 of
+chemistry's residue — **the two books' gaps have different causes, and neither was visible from the
+other.** ▶ **A corpus property asserted on ONE book is not a corpus property**; the guarding test
+was chemistry-only, so nothing would have caught it.
+
+▶ **So tier 1 reached 324 of chemistry's 521 and ALL 245 of organic's, and the population genuinely
+needing the "three legs" is 197 chemistry images rather than 294.** Each record carries `via` naming its construct, which is what lets
+the R7 report say *why* a figure is unreviewable — now "absent from `02-structure` entirely", a
+claim about **re-extraction**, not about `<figure>`.
+
+🔴 **AND A MEASURED CLAIM IN `figure-enumerate.cjs`'s OWN DOCSTRING WAS REFUTED IN THE DOING.** It
+read: *"the 12 non-figure ch04 images have **no node there in any form** (0 hits, against a 3-hit
+positive control)"* — the stated justification for reading `01-source` rather than walking
+`02-structure`. Re-measured with a raw text search over ch04's structure files: **2 of the 12 ARE
+there**, in `inlineMedia`. The instrument behind "0 hits" could only have been looking at figure
+nodes, so it answered a narrower question than the sentence claimed. ▶ **A session trusting it would
+have concluded tier 1 was impossible.** The CONCLUSION survives on the other 10 (197 book-wide) and
+the shortcut stays closed — **a rationale can be false while the conclusion is right** — and the
+correction is recorded in the docstring rather than quietly swapped.
+
+⚠️ **THE CHANGE LANDED IN THE SHARED `tools/lib/figure-enumerate.cjs`, NOT "a service-side change
+alone".** That module exists so the driver and the panel cannot drift about what a figure is (PR
+#457, merged and deployed the same day). A service-only widening would have recreated that drift
+within hours — the panel showing images the driver still named unreviewable. **`reviewable` is
+report-only in the driver** (it rides on the record and is read by exactly one report line), so
+nothing here changes what is bought: verified by `--dry-run`, **0 ISK**.
 ⚠️ **A caption-less card already degrades correctly and that is not luck** — `buildFigurePayload`
 hands `referenceText` to `captionDivergence`, whose own docstring calls the empty-reference `[]`
 *"designed silence, NOT a false all-clear"*. And the route returns only figures **that have a
 sidecar**, so widening enumeration surfaces nothing until the driver has actually translated one —
 which is what makes this safe to land before it has anything to show.
 🔴 **Re-derive these numbers before acting on them; do not quote this table.** The producer is
-`enumerateChapterImages` plus a read of each module's `inlineMedia`, and both move with the corpus.
+`enumerateChapterImages`, and it moves with the corpus. **This instruction is the reason the 227 was
+caught, so it has now paid for itself once — keep it.**
+
+🔴 **[CODE] THE REMAINING 197 ARE *NOT* "ABSENT FROM `02-structure`", AND GETTING THAT WRONG COSTS A
+PAID RE-EXTRACTION THAT CHANGES NOTHING.** Measured by an adversarial review and re-measured here:
+chemistry holds **169 `type:'media'` nodes across 47 modules that carry a full alt segment and NO
+`src`** (97 sibling nodes do have one), because the extractor never writes one on those paths. Those
+images **are** in `02-structure`; they cannot be *keyed*. ▶ **Re-extraction with today's extractor
+reproduces them byte for byte — the remedy is an EXTRACTOR change, and re-extraction is expensive
+(§C82 keeps two vintages live, and it invalidates the committed MT for those modules).**
+⚠️ **THE WRONG DIAGNOSIS WAS COMMITTED TO THIS BRANCH BEFORE THE REVIEW CAUGHT IT**, in the same
+work that corrected an inherited false premise in `figure-enumerate.cjs`'s docstring — **the second
+instance of one error in one session.** The guarding test was green **because its instrument searched
+for the BASENAME, the one field those nodes lack**; it could see 2 of 169, and its "positive control"
+used a *reviewable* basename, which has a `src` by definition. **A control on a detector's VALUES is
+not a control on its COVERAGE.** ▶ Now stated as a property of the LOOKUP — *"`02-structure` has no
+src-keyed node for it"* — never as a claim about what the corpus contains, and the src-less class is
+counted in its own test rather than bounded by a name search.
+
+⚠️ **[CODE] TWO OF THOSE 169 ARE DELIBERATELY LEFT UNREVIEWABLE EVEN THOUGH THEY COULD BE GUESSED.**
+`ch06/m68734 CNX_Chem_06_04_PhosphOrb_img` and `ch16/m68817 CNX_Chem_16_03_Matter_img` are the only
+two whose `id` happens to BE the basename. Keying on `id` would recover them by inventing a **second
+key derivation**, which `basenameFromSrc`'s docstring exists to forbid — and it would fix 2 of 169
+while making the lookup's contract incoherent. Both are still enumerated and still translated.
+⚠️ **These two were originally recorded as the WHOLE class, with a test that "names them exactly so a
+third instance goes red". That was the blind instrument talking: 167 third instances already existed.**
+The lesson is the general one — **when a class is defined by a MISSING field, do not bound it with a
+search keyed on that field.**
+
+⚠️ **[CODE] PRE-EXISTING, SURFACED BY THE REVIEW, NOT INTRODUCED BY IT — two comments that
+describe consumers which do not exist.** (a) `structureOnly` filters **chapter-wide**, so it cannot
+see module A's structure naming an image that lives only in module B — while the write guard it is
+cited as protecting is **per-module**. (b) `resolveFigureRequest`'s comment defends the membership
+guard by saying a mis-attributed row is one *"which `idx_figure_review_module` would then serve under
+the wrong module"* — **no production query filters on `chapter` or `module_id` at all.** The guard is
+still worth having (it stops a row being minted with another module's provenance); the *stated*
+justification names a consumer that was never built. **Neither is a defect this branch caused; both
+are the "a comment stating the rule is not the rule" class.**
+
+⚠️ **[CODE] THE RENDER-SIDE BADGE DID NOT FOLLOW.** `cnxml-render.js` emits `data-figure-review`
+inside the `<figure>` renderer only, so a newly-reviewable inline image **lists in the panel and
+carries no badge in the rendered preview**. Not blocking — the panel is the review surface — but it
+is an `emitted → injected → RENDERED` composition gap of exactly the shape §C82 L149 warns about,
+and it needs a re-render to reach anyone once fixed.
 
 ### §C136 — **ch04 BOUGHT: the retry ruling's rate data, and a FALSE POSITIVE that changes what "held back" means**
 
