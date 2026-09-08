@@ -197,8 +197,19 @@ function saveBlockEdit(db, { bookId, basename, blockKey, isText, editedBy }) {
  * conversion. figure-enumerate.cjs may not require server/ (the reverse of the
  * permitted direction), so it takes the resolved path instead.
  *
- * @returns {Array<{basename:string, captionSegmentId:string|null, altSegmentId:string|null}>}
- *   Empty when the module has no structure file or no figures — never throws.
+ * ⚠️ SINCE §C139 TIER 1 THIS IS WIDER THAN "THE `<figure>` SUBSET". It also
+ * returns images from the top-level `inlineMedia` array and from loose
+ * `type:'media'` nodes — worked examples and exercise solutions, which in a
+ * chemistry text is where the reaction schemes live. On chemistry that took the
+ * panel's reach from 627 of 1,148 images to 951. Each record carries `via`
+ * saying which construct supplied it, and `captionSegmentId` is null for every
+ * value but 'figure' — a caption-less card degrades correctly, because
+ * captionDivergence returns [] for an empty reference by design.
+ *
+ * @returns {Array<{basename:string, captionSegmentId:string|null,
+ *                  altSegmentId:string|null, via:'figure'|'inlineMedia'|'media'}>}
+ *   Empty when the module has no structure file or no reviewable image — never
+ *   throws.
  */
 function listModuleFigures(bookSlug, chapter, moduleId) {
   const paths = segmentParser.getModulePaths(bookSlug, chapter, moduleId);

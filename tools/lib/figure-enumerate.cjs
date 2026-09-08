@@ -8,27 +8,42 @@
  * See docs/superpowers/specs/2026-09-06-m5-figure-driver-design.md:39 and :197.
  *
  *   ENUMERATION   every `<image src>` in the chapter's CNXML. This is what the
- *                 driver translates, because readers are the point. Measured on
- *                 chemistry ch04: 30.
- *   REVIEWABILITY the subset that has a `type:'figure'` node in the generated
- *                 `02-structure/`, i.e. what the review panel can show an
- *                 editor. Measured on chemistry ch04: 18.
+ *                 driver translates, because readers are the point.
+ *   REVIEWABILITY the subset the review panel can show an editor: an image with
+ *                 a node in the generated `02-structure/` that carries a `src`
+ *                 to key on. `via` says which construct supplied it.
  *
  * The module's job is to compute both and NAME the gap — never to make them
- * agree. Widening the review surface is a tracked follow-up, not part of M5.
+ * agree.
  *
- * 🔴 THE ATTRACTIVE SHORTCUT IS MEASURED CLOSED. "Walk `02-structure` for all
- * images and flag the figure nodes" would make the two sets one by
- * construction and need no CNXML at all — but the 12 non-figure ch04 images
- * have **no node there in any form** (0 hits, against a 3-hit positive
- * control). Reading `01-source/*.cnxml` is therefore load-bearing, and so is
- * doing it with `TAG_ATTR_SPAN`.
+ * 🔴 §C139 TIER 1 (2026-09-08) WIDENED REVIEWABILITY FROM "IS IT IN A
+ * `<figure>`" TO THREE CONSTRUCTS, AND THE GAP IS NOW A DIFFERENT STATEMENT.
+ * `via` is 'figure' | 'inlineMedia' | 'media':
+ *   figure       a `type:'figure'` node — the only one that can carry a caption
+ *   inlineMedia  the top-level `inlineMedia` array
+ *   media        a `type:'media'` node loose in the content tree
+ * Measured on chemistry: 1,148 images = 627 + 227 + 97 reviewable, leaving 197
+ * with no node at all. So "unreviewable" now means ABSENT FROM 02-structure,
+ * which is a claim about re-extraction rather than about `<figure>` — and that
+ * is the whole reason the report line in figure-run.js was rewritten.
  *
- * ⚠️ `reviewable` here is STRUCTURAL — "is this image inside a `<figure>`". It
- * is deliberately NOT the review panel's *runtime* sense ("does
- * `books/<slug>/figure-text/<basename>.is.json` exist"), which is false for
- * every figure until the driver has spent money and would make a `--dry-run`
- * report zero reviewable figures for ever.
+ * 🔴 THE ATTRACTIVE SHORTCUT IS STILL CLOSED, BUT ITS ORIGINAL JUSTIFICATION
+ * WAS REFUTED BY MEASUREMENT AND IS RECORDED HERE RATHER THAN QUIETLY FIXED.
+ * This paragraph read: "the 12 non-figure ch04 images have **no node there in
+ * any form** (0 hits, against a 3-hit positive control)". Re-measured
+ * 2026-09-08 with a raw text search over ch04's structure files: **2 of the 12
+ * ARE there**, in `inlineMedia`. The instrument behind "0 hits" could only have
+ * been looking at figure nodes, so it was answering a narrower question than
+ * the sentence claimed — and had anyone trusted it, tier 1 would have looked
+ * impossible. ▶ The CONCLUSION survives on the other 10 (197 book-wide):
+ * reading `01-source/*.cnxml` is load-bearing, and so is doing it with
+ * `TAG_ATTR_SPAN`. A rationale can be false while the conclusion is right.
+ *
+ * ⚠️ `reviewable` here is STRUCTURAL — "does this image have a src-keyed node
+ * in 02-structure". It is deliberately NOT the review panel's *runtime* sense
+ * ("does `books/<slug>/figure-text/<basename>.is.json` exist"), which is false
+ * for every figure until the driver has spent money and would make a
+ * `--dry-run` report zero reviewable figures for ever.
  *
  * 🔴 THIS MODULE MUST NOT REQUIRE ANYTHING UNDER `server/`.
  * `server/` (AGPL) -> `tools/lib` (MIT) is the permitted import direction and
@@ -81,6 +96,22 @@ function basenameFromSrc(src) {
 }
 
 /**
+ * How much a `via` provenance is worth when two modules of one chapter both
+ * claim a basename. `figure` outranks the two captionless constructs; those two
+ * are disjoint on the corpus (0 basenames in both) and interchangeable if they
+ * ever met. An unknown value ranks lowest so a future construct cannot silently
+ * displace a figure by being added here and forgotten there.
+ *
+ * @param {string|null|undefined} via
+ * @returns {number}
+ */
+function viaRank(via) {
+  if (via === 'figure') return 2;
+  if (via === 'inlineMedia' || via === 'media') return 1;
+  return 0;
+}
+
+/**
  * Every `<image>` in one CNXML module, in document order, deduplicated.
  *
  * ⚠️ Uses `openTagPattern`/`TAG_ATTR_SPAN`, never `[^>]*`: a raw `>` is legal
@@ -125,8 +156,20 @@ function listCnxmlImages(cnxmlPath) {
 }
 
 /**
- * Every figure basename in one module's `02-structure` file, in document
- * order, deduplicated.
+ * Every REVIEWABLE image basename in one module's `02-structure` file, in
+ * document order, deduplicated — not only the `<figure>` ones.
+ *
+ * ⚠️ THE NAME IS NARROWER THAN THE BEHAVIOUR AND IS KEPT ON PURPOSE. Since
+ * §C139 tier 1 this returns three constructs, tagged by `via`: a
+ * `type:'figure'` node, a `type:'media'` node loose in the content tree, and an
+ * entry of the top-level `inlineMedia` array. Renaming it would churn both
+ * trees and every caller for no behavioural gain; the docstring is the fix.
+ *
+ * ORDER IS LOAD-BEARING: `content` is walked before `inlineMedia`, and the
+ * figure branch precedes the media branch within the walk, so `seen` gives a
+ * `<figure>` precedence over any captionless record of the same image inside
+ * one module. Across modules that job belongs to `viaRank` in
+ * enumerateChapterImages — `seen` cannot reach there.
  *
  * ⚠️ Figures nest arbitrarily (section > example > figure), so this walks the
  * whole structure tree rather than scanning one level. The basename idiom is a
@@ -152,8 +195,10 @@ function listCnxmlImages(cnxmlPath) {
  * module's own prose as captionDivergence's reference text.
  *
  * @param {string} structurePath - absolute path to `<moduleId>-structure.json`
- * @returns {Array<{basename:string, captionSegmentId:string|null, altSegmentId:string|null}>}
- *   Empty when the module has no structure file or no figures — never throws.
+ * @returns {Array<{basename:string, captionSegmentId:string|null,
+ *                   altSegmentId:string|null, via:'figure'|'inlineMedia'|'media'}>}
+ *   Empty when the module has no structure file or no reviewable image — never
+ *   throws. `captionSegmentId` is null for every `via` but 'figure'.
  */
 function listStructureFigures(structurePath) {
   let structure;
@@ -180,14 +225,67 @@ function listStructureFigures(structurePath) {
             basename,
             captionSegmentId: (node.caption && node.caption.segmentId) || null,
             altSegmentId: (node.media.alt && node.media.alt.segmentId) || null,
+            via: 'figure',
           });
         }
       }
       // deliberately no early return: a figure may nest another figure
     }
+    // §C139 tier 1. A `type:'media'` node loose in the tree — an <image> in a
+    // para, an example or an exercise solution that never went through a
+    // <figure>. Same shape as an inlineMedia record and the walk was passing
+    // straight over it, because it tested only for 'figure'.
+    //
+    // ⚠️ A figure's own `media` is a bare object with NO `type`, so this cannot
+    // fire on it; and even where a structure did carry one, the figure branch
+    // above has already claimed the basename via `seen`. Both are pinned.
+    //
+    // 🔴 KEYED ON `src`, NEVER ON `id`. Two chemistry modules extract such a
+    // node whose src was lost while its id happens to BE the basename; keying
+    // on id would recover them by inventing a second key derivation, which is
+    // exactly what basenameFromSrc's docstring exists to prevent. They stay
+    // unreviewable — an extractor defect to fix at the extractor.
+    if (node.type === 'media') {
+      const basename = basenameFromSrc(node.src);
+      if (basename && !seen.has(basename)) {
+        seen.add(basename);
+        out.push({
+          basename,
+          captionSegmentId: null, // no <figure>, so no <caption> to key on
+          altSegmentId: (node.alt && node.alt.segmentId) || null,
+          via: 'media',
+        });
+      }
+    }
     for (const v of Object.values(node)) visit(v);
   };
   visit(structure.content);
+
+  // §C139 tier 1. AFTER the content walk, never before: `seen` is what gives a
+  // <figure> precedence over an inlineMedia entry naming the same image within
+  // one module, and the figure record is the richer one — it is the only one
+  // that can carry a caption. Real instance: efnafraedi-2e ch10/m68764.
+  //
+  // ⚠️ `alt` may be ABSENT, not null. drainInlineMediaAlts leaves it undefined
+  // when the media has no alt text, and JSON.stringify drops an undefined
+  // value, so `m.alt.segmentId` would throw on a real module.
+  if (Array.isArray(structure.inlineMedia)) {
+    for (const media of structure.inlineMedia) {
+      if (!media || typeof media !== 'object') continue;
+      const basename = basenameFromSrc(media.src);
+      if (!basename || seen.has(basename)) continue;
+      seen.add(basename);
+      out.push({
+        basename,
+        // Null BY CONSTRUCTION, not by omission: an inlineMedia image is an
+        // <image> loose in a para, an example or an exercise solution. It has
+        // no <caption> to have a segment id for.
+        captionSegmentId: null,
+        altSegmentId: (media.alt && media.alt.segmentId) || null,
+        via: 'inlineMedia',
+      });
+    }
+  }
   return out;
 }
 
@@ -208,6 +306,7 @@ function listStructureFigures(structurePath) {
  *   bookDir: string, chapterDir: string, sourceDir: string, structureDir: string,
  *   structureDirExists: boolean, moduleIds: string[],
  *   figures: Array<{basename:string, src:string, moduleId:string, reviewable:boolean,
+ *                   reviewableVia:'figure'|'inlineMedia'|'media'|null,
  *                   captionSegmentId:string|null, altSegmentId:string|null}>,
  *   reviewable: string[], unreviewable: string[], structureOnly: string[],
  *   warnings: Array<{moduleId:string, file:string, reason:string, tag?:string}>
@@ -278,7 +377,20 @@ function enumerateChapterImages({ bookDir, chapterDir, moduleIds } = {}) {
       continue;
     }
     for (const fig of figs) {
-      if (!structureByBasename.has(fig.basename)) {
+      const prev = structureByBasename.get(fig.basename);
+      // First-wins, WITH ONE EXCEPTION (§C139 tier 1): a `<figure>` record
+      // outranks a captionless one whatever the module order. Intra-module
+      // precedence is handled by listStructureFigures' own `seen` set; ACROSS
+      // modules there is no such walk, so without this a module sorting
+      // earlier and holding the image only as loose media would shadow the
+      // figure and drop its caption. Real instance: efnafraedi-2e ch06, where
+      // CNX_Chem_06_01_2spectra is a <figure> in m68729 and inlineMedia in
+      // m68732 — correct today only because m68729 happens to sort first.
+      //
+      // Ranked on PROVENANCE rather than on "has a caption": a <figure> with
+      // no caption is still the richer record, and ranking says so without
+      // depending on whether this particular one happens to carry one.
+      if (!prev || viaRank(fig.via) > viaRank(prev.via)) {
         structureByBasename.set(fig.basename, fig);
       }
     }
@@ -297,6 +409,11 @@ function enumerateChapterImages({ bookDir, chapterDir, moduleIds } = {}) {
         src: img.src,
         moduleId: id,
         reviewable: Boolean(st),
+        // WHY it is reviewable: 'figure' | 'inlineMedia' | null. The R7 gap is
+        // no longer one population, and a bare boolean cannot say which. It is
+        // also what keeps the independent `<figure>`-open-tag cross-check on
+        // the extractor alive now that `reviewable` is the wider set.
+        reviewableVia: st ? st.via : null,
         captionSegmentId: st ? st.captionSegmentId : null,
         altSegmentId: st ? st.altSegmentId : null,
       };
@@ -317,6 +434,8 @@ function enumerateChapterImages({ bookDir, chapterDir, moduleIds } = {}) {
     unreviewable: figures.filter((f) => !f.reviewable).map((f) => f.basename),
     // 02-structure naming an image the CNXML does not have would mean the
     // extractor invented one. Reported rather than quietly dropped.
+    // ⚠️ Since §C139 tier 1 this covers inlineMedia and loose media nodes too,
+    // so it is a wider check than it was — and it is still empty on both books.
     structureOnly: [...structureByBasename.keys()].filter((b) => !byBasename.has(b)),
     warnings,
   };

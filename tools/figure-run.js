@@ -1668,11 +1668,18 @@ export function summarise(result) {
       by((f) => f.outcome === 'unreadable-text')
     )
   );
-  // R7 ([USER]): the review panel shows only images inside a <figure>. The gap is REPORTED,
-  // never silent — widening the review surface is a tracked follow-up, not part of M5.
+  // R7 ([USER]): the gap between what the driver translates and what the panel can show is
+  // REPORTED, never silent.
+  //
+  // ⚠️ THE REASON CHANGED WITH §C139 TIER 1 AND THE OLD WORDING WOULD NOW MISDIRECT. It used
+  // to read "no <figure> node", which was the whole story while reviewability was the <figure>
+  // subset. The panel now also reaches inlineMedia and loose `type:'media'` nodes, so a figure
+  // reaching this line has NO NODE IN 02-structure AT ALL — a statement about re-extraction,
+  // not about <figure>. On chemistry that moved the gap from 521 images to 197.
   lines.push(
     ...nameList(
-      'translated but NOT reviewable — no <figure> node, so no editor can see this one (R7)',
+      'translated but NOT reviewable — absent from 02-structure entirely, so no editor can ' +
+        'see this one until the chapter is re-extracted (R7)',
       by((f) => f.outcome === 'translated' && !f.reviewable)
     )
   );
