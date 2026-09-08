@@ -343,3 +343,31 @@ classes and merging them would delete correct terms.
 0 ISK → ④ buy chemistry ch15. §C117 is logged, not scheduled.
 
 ---
+## 2026-09-08 08:14 - Built and merged the M5 figure driver, breaking the bootstrap deadlock
+
+**Branch:** main (feat/m5-figure-driver merged as 633f60a9, PR #457, branch deleted)
+**Modified:**
+(clean — everything committed; one docs commit local, pushing with the sweep results)
+
+**Recent commits:**
+0902ba89 docs: the driver is MERGED — both registers now say so, and deploy is next
+633f60a9 Merge pull request #457 from SigurdurVilhelmsson/feat/m5-figure-driver
+af422d02 docs(register): §C139 — 45.4% of chemistry's images cannot reach the review panel
+
+**Why:** The editorial correction loop had been fully built for weeks and never ran,
+because nothing minted the sidecar. The driver mints it. Method that paid for itself:
+a read-only recon pass checked 193 of the plan's claims against the tree BEFORE any
+code, and found the plan's central discriminator refuted — it keyed `unreadable-text`
+on `formTextXObjects > 0`, true of the old reader, but PR #452 replaced that reader
+the day after the plan was written. Building it as specified would have printed
+"cannot read" over 216 figures that read perfectly, with zero true positives.
+A five-lens adversarial review then raised 30 findings, 27 survived refutation,
+25 were fixed and 2 were correctly refused on re-measurement. All three blocking
+defects lived in seams, and each was found by RUNNING the code, not reading it.
+
+**Next:** DEPLOY (this branch carries a server/ change and the last one did not, so
+the review panel runs the old enumeration predicate until then) → then M6, the first
+[USER]-authorised paid figure run. §C139 (45% of images unreachable by the review
+panel; ~2/5 of that fixable without re-extraction) is its own PR after this.
+
+---
