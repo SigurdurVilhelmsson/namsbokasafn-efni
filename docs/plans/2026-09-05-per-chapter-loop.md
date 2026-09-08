@@ -258,8 +258,10 @@ node tools/figure-run.js --book <slug> --chapter <N> --stale     # recompose onl
 The driver enumerates the chapter's figures, resolves each source (PDF, EPS or AI), classifies it,
 sends only the vectors whose text it can actually read to the paid MT, and **writes the
 `books/<slug>/figure-text/<basename>.is.json` sidecar** that the editor's review panel and
-`publish-figure-svg.js` both read. Text-less figures and photographs are **copied and counted, not
-crashed on and not paid for**. ⚠️ **The dry run prints no cost estimate** — what it gives you is
+`publish-figure-svg.js` both read. Text-less figures and photographs land in a `copied-*` outcome —
+**counted and NAMED, never crashed on and never paid for**. ⚠️ **The driver publishes only
+`translated` figures**: `processFigureLive` returns early for anything else, so a `copied-*` bucket
+records a decision about a figure, it does not move the artwork onto the page. ⚠️ **The dry run prints no cost estimate** — what it gives you is
 the per-outcome tally (the `translated` count is the buy list), every figure NAMED, and a partition
 assertion the driver makes on itself. Its design is
 [`docs/superpowers/specs/2026-09-06-m5-figure-driver-design.md`](../superpowers/specs/2026-09-06-m5-figure-driver-design.md).
@@ -271,8 +273,8 @@ DELETES `books/<slug>/figure-text/<basename>.is.json`** — there is no `--retra
 stage runs for exactly one class of figure: one with **no sidecar file**.
 
 ⚠️ **`--chapter` is required on EVERY invocation, `--stale` included** — the CLI refuses without it.
-*(Corrected 2026-09-08 before it was written down: a bare `--stale` was drafted here from a
-misreading of the driver's own docstring, which says that putting `--stale`/`--force` in
+*(Corrected 2026-09-08 before it was written down: a bare `--stale` was proposed for this block,
+from a misreading of the driver's own docstring, which says that putting `--stale`/`--force` in
 `VALUED_FLAGS` would make the bare flag a usage error — a statement about value-taking, not about
 `--chapter` being optional. `parseCli` throws `--chapter is required`.)*
 
