@@ -1,6 +1,6 @@
 # M5 — the per-chapter figure driver: design
 
-**Date:** 2026-09-06 · **Status:** design. **REVISED 2026-09-06** against register §C137 and a 9-agent constraint verification. Not yet implemented.
+**Date:** 2026-09-06 · **Status:** design. **REVISED 2026-09-06** against register §C137 and a 9-agent constraint verification.
 **Owner of:** the DESIGN of `tools/figure-run.js` and its two Python entry points.
 **Status of the work lives in** `experiments/figure-text-translation/REGISTER.md` (figure status) and the campaign register's ⏩ RESUME. This document carries no status verbs.
 
@@ -91,14 +91,15 @@ Each was measured, and a throwaway-copy proof took ch04 from **6 translated + 23
 
 ▶ **THE LAST ROW IS THE POINT: `SciMethod` IS THE FIGURE THE WHOLE EXPERIMENT WAS DEVELOPED AGAINST, AND IT IS THE ATYPICAL ONE.** **274 of 895** resolution-winning chemistry vectors keep all their text inside Form XObjects — **8 of ch04's 23**.
 🔴 **AND P3 CONVERTS A LOUD FAILURE INTO A SILENT ONE.** At HEAD these figures CRASH. With P1–P3 applied and nothing else, `CNX_Chem_04_04_limiting` (14 English words) yields `blocks: 0`, exit 0 → `copied-textless` → English shipped to the reader, no sidecar, no review row, verdict `{ok: true}` — **matching this spec's own former acceptance line byte for byte.** A partial fix (extractor only, no strip) is worse: measured 14 English words → 14, now sitting *under* the composed Icelandic.
-▶ **THE RULE THAT FALLS OUT: "NO BLOCKS" MUST NEVER BE INFERRED FROM AN ABSENCE.** `figure-prepare.py` reports `formTextXObjects` — a POSITIVE signal, the count of reachable `/Form` XObjects whose stream contains `BT` — and a figure with `sendable == 0 && formTextXObjects > 0` is **`unreadable-text`**, never `copied-*`.
+▶ **THE RULE THAT FALLS OUT: "NO BLOCKS" MUST NEVER BE INFERRED FROM AN ABSENCE.** A count of zero and an inability to count are different facts, and only a POSITIVE signal tells them apart — so a figure whose text cannot be read is **`unreadable-text`**, never `copied-*`.
+🔴 **CORRECTED 2026-09-08 — THE POSITIVE SIGNAL NAMED HERE AS THE RULE'S IMPLEMENTATION IS REFUTED.** This sentence continued: ~~*`figure-prepare.py` reports `formTextXObjects` — the count of reachable `/Form` XObjects whose stream contains `BT` — and a figure with `sendable == 0 && formTextXObjects > 0` is `unreadable-text`*~~. The read layer was **replaced** rather than repaired, and the adapter descends into `/Form` XObjects, so form-borne text now reads like any other and that predicate selects figures that read perfectly. **The signal is `undecodedBlocks`; `chars === 0 && formTextXObjects > 0` survives only as a REGRESSION SENTINEL.** ▶ **`tools/lib/figure-classify.js` is the OWNER of the discriminator and of the measurement that replaced this one — read it there, and do not restate a count here.** *(The rule above is untouched by the correction; what changed is which positive signal implements it. This is the version of the claim most likely to be carried into a new document, which is why it is struck rather than quietly edited.)*
 
 
 ---
 
 ## Architecture
 
-| component | status | responsibility |
+| component | role at design time | responsibility |
 |---|---|---|
 | `tools/figure-run.js` | **new** | enumerate · resolve · classify · orchestrate · summarise · write the sidecar · mint the mapping entry |
 | `experiments/…/figure-prepare.py` | **new** | artwork → `blocks.json` + `artwork.svg` + manifest, into `--out` |
@@ -106,7 +107,8 @@ Each was measured, and a throwaway-copy proof took ch04 from **6 translated + 23
 | `experiments/…/translate-blocks.mjs` | **modify** | gains `--out`; gate 1 inverts |
 | the Python stages | **repair** | P1–P6 above |
 
-⚠️ **CORRECTED 2026-09-06 — the Python entry points are NOT "thin wrappers adding nothing but isolation".** They are thin *after* the repair list lands; before it, the thing they wrap does not work on real artwork.
+⚠️ **The bold word in each row records what the file WAS WHEN THIS DESIGN WAS WRITTEN — new / modify / repair. It is not a status column; this document owns no status (see line 5), and every row has since landed.**
+⚠️ **CORRECTED 2026-09-06 — the Python entry points were NOT "thin wrappers adding nothing but isolation".** They were thin *after* the repair list landed; before it, the thing they wrap did not work on real artwork. *(Past tense 2026-09-08: this read as a live warning that the Python side could not process real artwork. It is a durable lesson about how an estimate was wrong, not a description of the tree.)*
 
 ▶ **Why Node holds the middle:** the chain is Python → **paid Node stage** → Python. It is inherently interleaved, so no design can let Python own a whole figure. Given that, the driver belongs where `books/`, the sidecar writer and the publisher already are.
 
@@ -164,7 +166,8 @@ Each was measured, and a throwaway-copy proof took ch04 from **6 translated + 23
 
 🔴 **A RECOMPOSE PASS WRITES THE SIDECAR UNDER NO CIRCUMSTANCES. The publisher's stamp is the only write.** *(This replaces a sentence saying the driver must "carry `composedHash` forward while never carrying `state` forward". That was self-contradicting and dangerous: the only way to satisfy it non-vacuously is a rewrite that DROPS `state` — silently destroying a head editor's approval, on the very `--stale` run meant to turn the badge green. `editorialState` then reads `mt-preview`, the run reports success, and the DB-backed panel still says approved while a fresh clone does not.)*
 ⚠️ **The driver writes `state` NOWHERE** — it mints without one and never rewrites an existing file.
-🔴 **[CODE] ITEM, INDEPENDENT OF M5, FOUND WHILE REVIEWING IT: `withComposedHash` OVERWRITES ITS OWN STAMP WHEN THE KEY IS ALREADY PRESENT**, so after a successful publish the on-disk `composedHash` stays at the OLD value while the publisher returns and prints the new one. Consequence: the correction loop's step 7 (`editorialState` derives to `approved`) is **never reached**, and every later `--stale` re-selects the same figure and "succeeds" on it, for ever. **This is a bug in shipped code, not in this design** → its status is the register's (**§C138**); this document carries only the mechanism.
+🔴 **THE MECHANISM THIS DESIGN DEPENDS ON: `publish-figure-svg.js` stamps `composedHash` iff `sidecar.renderHash` is truthy, and that stamp is the ONLY write on a recompose pass.**
+✅ ~~**[CODE] ITEM, INDEPENDENT OF M5, FOUND WHILE REVIEWING IT: `withComposedHash` OVERWRITES ITS OWN STAMP WHEN THE KEY IS ALREADY PRESENT**, so after a successful publish the on-disk `composedHash` stays at the OLD value while the publisher returns and prints the new one. Consequence: the correction loop's step 7 (`editorialState` derives to `approved`) is **never reached**, and every later `--stale` re-selects the same figure and "succeeds" on it, for ever.~~ **Struck 2026-09-08: the defect was FIXED — `withComposedHash` now merges into the file as it stands, with a `sidecar-moved` refusal for the concurrent-approval race the naive fix would have opened.** It was a bug in shipped code, not in this design, and **its status is the register's (§C138)**, exactly as this line already said; the correction is here only because the line asserted a LIVE bug and a reader would otherwise conclude the correction loop's final step can never be reached.
 
 ---
 
@@ -177,7 +180,8 @@ R2 is a consequence rather than a rule anyone implements. 🔴 **BUT THE DISCRIM
 | resolve result | evidence | outcome |
 |---|---|---|
 | vector, ≥1 sendable block | — | **translate** |
-| vector, 0 sendable blocks, **but text lives in a Form XObject** | `formTextXObjects > 0` | 🔴 **unreadable-text** — tested FIRST, before either copied bucket |
+| vector, 0 sendable blocks, **and the reader could not decode the text it found** | `undecodedBlocks > 0` | 🔴 **unreadable-text** — tested FIRST, before either copied bucket |
+| vector, the reader found **no characters at all** while forms carry text | `chars == 0 && formTextXObjects > 0` | 🔴 **unreadable-text** — **REGRESSION SENTINEL ONLY**, for a read layer that has lost its `/Form` descent |
 | vector, 0 sendable blocks, page has paint operations | `paintOps > 0, imageXObjects == 0` | **copied-textless** |
 | vector, 0 sendable blocks, page is a wrapped bitmap | `imageXObjects > 0, paintOps ≈ 0` | **copied-photo** |
 | **raster only** (`.jpg`/`.png`/`.tif`, same trees, same precedence) | — | **copied-photo** |
@@ -285,7 +289,7 @@ node tools/figure-run.js --book <slug> --chapter <N> [--module <mNNNNN>] [--figu
 
 ## Invariants
 
-1. **`--out` is per-figure and temporary** — `T/<basename>/` in the scratch tree, never the shared `experiments/…/out/`. 🔴 **This is UNIMPLEMENTABLE until `translate-blocks.mjs` gains `--out`**: it has no such flag, rejects unknown ones, and reads and writes four hardcoded `HERE/out/…` paths. **The first version of this spec asserted the flag existed.** Without it, every figure in a chapter translates from whichever figure was extracted last.
+1. **`--out` is per-figure and temporary** — `T/<basename>/` in the scratch tree, never the shared `experiments/…/out/`. Without it, every figure in a chapter translates from whichever figure was extracted last. ⚠️ **The invariant could not hold until `--out` was ADDED to the paid stage** — `translate-blocks.mjs` had no such flag, rejected unknown ones, and read and wrote four hardcoded `HERE/out/…` paths; the flag had to be built before the invariant meant anything. *(Corrected 2026-09-08: this said "**This is UNIMPLEMENTABLE until `translate-blocks.mjs` gains `--out`**", which told a reader that per-figure isolation does not hold on the leg that costs money — the opposite of what shipped.)* **The lesson survives and is the reason the sentence is kept at all: the first version of this spec asserted the flag existed.**
 2. **Nothing writes under `books/` before the sidecar step.** 🔴 **The RULE survives; its RATIONALE is superseded.** It used to read *"a mid-figure crash leaves the repo untouched"*. After the reordering, a post-payment crash **deliberately leaves a sidecar behind** — and that sidecar is the **record of a purchase**, not debris. The rule now means: the sidecar is the *first* `books/` write, and it happens as soon as money has been spent.
 3. **The pre-spend mapping check WRITES NOTHING.** `unmapped` must be unreachable on any path that has already spent money, so the check runs at step 5 — but it is a **pure predicate**; the entry is minted at step 10, alongside the publish. *(Splitting the check from the write is what lets Invariant 2 and the pre-spend guarantee both hold.)*
 4. **`01-source/` is never read for artwork and never written.** The artwork lives outside the repo, via gitignored `sources.local.json`.
@@ -306,7 +310,7 @@ node tools/figure-run.js --book <slug> --chapter <N> [--module <mNNNNN>] [--figu
 - ⚠️ **A test that watches ONE filename to prove isolation proves nothing.** Compare the shared `out/`'s full inventory and mtimes.
 - **`--dry-run` over a real chapter must reach the same classification as a live run** — the pre-flight is worthless if it classifies differently from the thing it previews.
 - 🔴 **THE ACCEPTANCE NUMBERS ARE PENDING A CENSUS THAT DOES NOT EXIST YET.** This spec used to require ch04 to show `failed-prepare = 0` and a tally of **13 translated / 16 copied-* / 1 photo / 0 unresolved = 30**. **That is exactly the shape a form-blind extractor produces, and 6–8 of those "copied" figures contain English prose** — so the criterion would have certified the defect. ▶ **Task 0 must first produce a FIVE-WAY census of the corpus — page-text · form-text-only · Type0-garbage · genuinely textless · photo — and the acceptance tally is read off that.** It is free: the artwork is on this box and no API call is involved.
-- **What survives as acceptance regardless of the census:** the run is `--dry-run` and costs **0 ISK**; the tally **sums to the enumerated count** (the driver asserts it); and **no figure lands in `copied-*` while carrying `formTextXObjects > 0`.**
+- **What survives as acceptance regardless of the census:** the run is `--dry-run` and costs **0 ISK**; the tally **sums to the enumerated count** (the driver asserts it); and **no figure lands in `copied-*` while carrying `undecodedBlocks > 0`.** 🔴 *(CORRECTED 2026-09-08 — this read `formTextXObjects > 0`. Framed as the acceptance that survives everything else, it is the criterion a reader trusts most, and under the shipped reader it INVERTS: it would certify the refuted discriminator and reject a correct implementation. A figure with `formTextXObjects > 0` whose text was decoded is a legitimate `copied-*`.)*
 
 ---
 

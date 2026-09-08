@@ -42,10 +42,18 @@ This document is the owner of the list; where anything disagrees, this wins.)*
 
 #### The three traps, each of which fails SILENTLY
 
-1. 🔴 **`font` MUST be the resource key.** `compose.py` builds
+1. 🔴 **`font` MUST be a JOIN KEY into `meta.fonts` — scope-qualified (`PAGE/TT0`, `PAGE/Fm3/T1_0`).**
+   `compose.py` builds
    `BOLD = {k for k, v in meta['fonts'].items() if 'bold' in v['base'].lower()}` and then tests
    `run['font'] in BOLD`. **An adapter emitting the BaseFont (`CYUXQR+LiberationSans`) makes that
    test match nothing, and EVERY BOLD LABEL SILENTLY RENDERS REGULAR.** No error, no count change.
+   ▶ **It is the join PROPERTY that this trap is about, not which string implements it.**
+   🔴 *(CORRECTED 2026-09-08. This trap read "**`font` MUST be the resource key**" — the wording
+   the `runs.json` row above was AMENDED away from on 2026-09-07, explicitly to "NOT a bare
+   resource key", for the measured reason the amended row gives (which owns that measurement and
+   is not restated here). This document declares itself the winner
+   on disagreement, so leaving the stale half here made it OUTRANK the amended row: a reader
+   following this trap emits a bare key and collapses exactly those figures.)*
 2. 🔴 **`x`/`y` are the baseline origin, not the bbox.** A reader offering both — pdfplumber's
    `x0`/`y0` are bbox corners, its `matrix[4]`/`matrix[5]` are the origin — makes this a one-word
    choice with no visible symptom until descenders and multi-size lines drift.
@@ -59,13 +67,20 @@ This document is the owner of the list; where anything disagrees, this wins.)*
 | field | meaning |
 |---|---|
 | `source` | 🔴 **path whose BASENAME is the figure's identity** — the publisher cross-checks it against the sidecar key. A staged/converted file named anything else is refused **after payment** |
-| `fonts` | map, **keyed by resource key**, of `{base, first, last, subtype, encoding}` |
+| `fonts` | map, **keyed by the SCOPE-QUALIFIED join key** of the `runs.json` `font` row above — not a bare resource key — of `{base, first, last, subtype, encoding, decodable}`. *(Corrected 2026-09-08: this said "keyed by resource key", the third instance of that stale claim in this document and the one a reader reaches after correctly reading the amended `font` row. `decodable` is H2's signal and every entry carries it.)* |
 | `page` | `[width_pt, height_pt]` |
 | `runs` | count |
 
-⚠️ **`fonts[*].last` is load-bearing beyond bookkeeping:** `last < 200` is the subset-font signal
-that warns a figure has no Icelandic glyphs. A reader that does not expose per-font first/last
-char must supply that signal another way, or the warning disappears.
+⚠️ **`fonts[*].last` is load-bearing beyond bookkeeping:** it feeds the subset-font signal that
+warns a figure has no Icelandic glyphs. A reader that does not expose per-font first/last char
+must supply that signal another way, or the warning disappears.
+🔴 **CORRECTED 2026-09-08 — THE SIGNAL IS NOT `last < 200`, AND THE ONE-SIGNAL FORM CRASHES.** A
+`/Type0` font carries `/W` and has **no `/LastChar` at all**, so `last` may legitimately be
+`None` and the comparison raises `TypeError`. **The predicate is `is_subset` in `extract.py` —
+TWO-signal: the `last` threshold when `last` is not None, otherwise the `ABCDEF+` BaseFont-prefix
+test. That function owns the threshold and it is deliberately not restated here.** *(This was the
+same defect the M5 plan's Task 2 carried; stated here as the contract a reader implements
+against, it would have been built in twice.)*
 
 ---
 
@@ -180,9 +195,16 @@ Read it there — a population hard-coded in prose is how the two wrong numbers 
 Block grouping and layout (`figtext.py`) · composition and SVG output (`compose.py`, `svgout.py`) ·
 the MT leg · the sidecar, publish and review path · adding Python to CI.
 
-## Open questions — the register owns whether any of these is next
+## The two questions this contract carried — both ANSWERED (the register owns what is next)
 
-- `experiments/` appears in **no licence table** in the root `LICENSE`, and this contract implies
-  adding a third-party dependency there.
-- Whether the reader is a library adapter or a subprocess boundary — a subprocess is the weaker
-  licence coupling and the easier fallback, at the cost of per-figure spawn.
+*(Both questions this section carried were ANSWERED and are removed here on 2026-09-08 rather than
+restated — an open licence question on a public repo is the class this project treats as blocking,
+so a stale one costs real investigation time, and a settled architectural decision re-opened costs
+the same twice.)*
+
+- **The licence question → root [`LICENSE`](../../../LICENSE), which owns the answer and its
+  rationale.** Do not restate the table here.
+- **Library adapter *or* subprocess boundary: both ends were taken.** The existing
+  `emit-blocks.py` → `extract.py` subprocess seam is KEPT, and the adapter is imported as a
+  library behind it — so the on-disk contract above is unchanged and the spawn count does not
+  move.
