@@ -4,11 +4,21 @@
 
 ## ⏩ RESUME — state as of **2026-09-08** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — 🔴 **MERGE §C139 TIER 1, THEN *DEPLOY*, THEN M6.**
+### ⏭ SINGLE NEXT ACTION — 🔴 **DEPLOY §C139 TIER 1. THEN M6, THE FIRST *AUTHORISED* PAID FIGURE RUN.**
 
-✅ **§C139 TIER 1 IS BUILT — branch `feat/c139-tier1-widen-review-surface`, 0 ISK, nothing under
+✅ **MERGED 2026-09-08 as [PR #458](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/458)
+→ `c3cda2a0`, a **merge commit, not a squash** (this register cites the branch's individual SHAs;
+spot-checked after the merge: 5 of 5 are ancestors of `main`). Branch deleted. 0 ISK, nothing under
 `books/` touched.** The panel now reads **four** constructs instead of one. **Counts are §C139's and
 are deliberately not restated here.**
+✅ **Verified on `origin/main` BY CONTENT, never by the merge report:** `cellAlt` and `viaRank` are in
+`tools/lib/figure-enumerate.cjs` there, and the corrected R7 string is in `tools/figure-run.js`.
+🔴 **MERGED IS NOT DEPLOYED AND NOT LIVE — [USER] is deploying.** Until `./scripts/deploy.sh` runs,
+**the panel serves the OLD predicate**, and the diff hides that: the only change under `server/` is a
+**docstring**. `figureReviewService` requires the shared `.cjs`, so behaviour moves with the deploy,
+not with the merge. ▶ **Verify by hitting the figures route once, not by reading the deploy's output**
+— the code path is new even though the panel will still look empty (the route returns only figures
+that already have a sidecar, and none exist yet; that quiet is expected, not evidence).
 🔴 **THE PLAN'S CENSUS WAS AN UNDERCOUNT, AND SO WAS MY FIRST CORRECTION OF IT.** Obeying §C139's own
 *"re-derive these numbers"* line found a **third** construct the plan never named. A five-lens
 adversarial review then found a **fourth**, on the book neither the plan nor I had measured —
@@ -170,7 +180,7 @@ measured as wrong is worse than one that argues back.**
 | **`tools/figure-run.js` has been an unclassified `01-source` reader since it existed** — invisible to `source-write-guard` because every path literal lived in a variable, not the string the guard greps for. **A guard keyed on a SPELLING rather than a BEHAVIOUR** | `source-write-guard.test.js` |
 | **A hand-picked basename charset refused a real figure and cost chemistry ch11** — `CNX_Chem_11_02_Fe(NO3)3_img`, the ONLY rejection among 3,311 enumerated figures across 56 chapters | `figure-prepare.py` |
 | `applyPartialDriftGuard`'s refusal semantics, and `figure-compose.py`'s recompose-drift question | open design items, named in the code |
-| **Enumeration is ALL images; the review panel showed only the `<figure>` subset.** ⏳ **ADDRESSED ON A BRANCH, NOT CLOSED — nothing is merged or deployed, and the ⏩ RESUME owns that.** The panel now reads four constructs; the residue is images `02-structure` has **no src-keyed node** for. ⚠️ **Do not restate the ch04 number here** — an earlier version of this row said "the driver names 8, not 10", which is a **`--dry-run` prediction** (the R7 line fires only on `outcome === 'translated'` and no chemistry figure run has ever happened), and it belongs to a command anyone can re-run | `figure-enumerate.cjs` |
+| **Enumeration is ALL images; the review panel showed only the `<figure>` subset.** ⏳ **MERGED, NOT DEPLOYED — the ⏩ RESUME owns that, and merged is not live.** The panel now reads four constructs; the residue is images `02-structure` has **no src-keyed node** for. ⚠️ **Do not restate the ch04 number here** — an earlier version of this row said "the driver names 8, not 10", which is a **`--dry-run` prediction** (the R7 line fires only on `outcome === 'translated'` and no chemistry figure run has ever happened), and it belongs to a command anyone can re-run | `figure-enumerate.cjs` |
 
 ⚠️ **`docs-check` fires on any `tools/**` change and regenerates `docs/_generated/`.** This branch
 adds a tool, so the gate was red and no vitest run could see it. Regenerated and committed —
@@ -752,7 +762,7 @@ The unreviewable images cluster hard by container: **156 `exercise>solution` · 
 100 `exercise>problem` · 105 other · 29 `table` · 10 `note`** — worked problems and their
 solutions, which in a chemistry text is where the reaction schemes live.
 
-✅ **BUILT 2026-09-08 — ON A BRANCH, NOT MERGED AND NOT DEPLOYED; the ⏩ RESUME owns where it
+✅ **MERGED 2026-09-08 (PR #458, `c3cda2a0`) — NOT YET DEPLOYED; the ⏩ RESUME owns where it
 stands. AND THE CHEAP TIER WAS BIGGER THAN THIS SECTION SAID, FOUND BY OBEYING THIS SECTION'S OWN
 "re-derive these numbers" INSTRUCTION.** `02-structure` carries a top-level
 **`inlineMedia`** array holding these images with `src`, `id` and an `alt` bearing its own
