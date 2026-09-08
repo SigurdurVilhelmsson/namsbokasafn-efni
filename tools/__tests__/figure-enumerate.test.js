@@ -403,6 +403,103 @@ describe('listStructureFigures — §C139 tier 1: inlineMedia is reviewable too'
     expect(listStructureFigures(file).map((f) => f.basename)).toEqual(['Kept']);
   });
 
+  /**
+   * 🔴 A FOURTH CONSTRUCT, AND IT IS THE WHOLE OF ORGANIC'S REMAINING GAP.
+   * An adversarial review measured that ALL 245 of lifraen-efnafraedi's
+   * unreviewable images sit in a table cell's `alt` object —
+   * `rows[].cells[].alt` = {segmentId, text, mediaId, src} — carrying both a
+   * src to key on and a live §C88 alt segment. Reading it takes organic from
+   * 245 unreviewable to ZERO. Chemistry has none, so the two books needed
+   * different branches and neither would have been found from the other.
+   */
+  it('returns a table cell’s alt image — organic’s entire remaining gap', () => {
+    const file = path.join(tmpRoot, 'cell-alt.json');
+    fs.writeFileSync(
+      file,
+      JSON.stringify({
+        content: [
+          {
+            type: 'table',
+            rows: [
+              { cells: [{ content: 'text' }] },
+              {
+                cells: [
+                  {
+                    alt: {
+                      segmentId: 'm1:alt:InCell_jpg-alt',
+                      text: 'The general structure of alkene.',
+                      mediaId: null,
+                      src: '../../media/InCell.jpg',
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      }),
+      'utf-8'
+    );
+    expect(listStructureFigures(file)).toEqual([
+      {
+        basename: 'InCell',
+        captionSegmentId: null,
+        altSegmentId: 'm1:alt:InCell_jpg-alt',
+        via: 'cellAlt',
+      },
+    ]);
+  });
+
+  it('skips a cell alt with no src, and a cell whose alt is not an object', () => {
+    const file = path.join(tmpRoot, 'cell-alt-bad.json');
+    fs.writeFileSync(
+      file,
+      JSON.stringify({
+        content: [
+          {
+            type: 'table',
+            rows: [
+              { cells: [{ alt: { segmentId: 'x' } }, { alt: 'just a string' }, { alt: null }] },
+              { cells: [{ alt: { segmentId: 'y', src: '../../media/Kept.jpg' } }] },
+            ],
+          },
+        ],
+      }),
+      'utf-8'
+    );
+    expect(listStructureFigures(file).map((f) => f.basename)).toEqual(['Kept']);
+  });
+
+  /**
+   * 🔴 PRECEDENCE MUST NOT DEPEND ON DOCUMENT ORDER. The docstring used to say
+   * "the figure branch precedes the media branch within the walk, so `seen`
+   * gives a <figure> precedence" — true per NODE, false across SIBLINGS. A
+   * loose `type:'media'` node appearing BEFORE its <figure> sibling would take
+   * the slot and the caption would be lost. Measured live exposure: 0 cases on
+   * both kept books — so this pins a rule the corpus currently satisfies by
+   * luck, which is exactly when it is cheapest to make it a rule.
+   */
+  it('lets the FIGURE win even when a loose media node comes FIRST in the document', () => {
+    const file = path.join(tmpRoot, 'media-before-figure.json');
+    fs.writeFileSync(
+      file,
+      JSON.stringify({
+        content: [
+          { type: 'media', src: '../../media/Both.jpg', alt: { segmentId: 'media-alt' } },
+          {
+            type: 'figure',
+            media: { src: '../../media/Both.jpg', alt: { segmentId: 'fig-alt' } },
+            caption: { segmentId: 'fig-cap' },
+          },
+        ],
+      }),
+      'utf-8'
+    );
+    expect(listStructureFigures(file)).toEqual([
+      { basename: 'Both', captionSegmentId: 'fig-cap', altSegmentId: 'fig-alt', via: 'figure' },
+    ]);
+  });
+
   it('ignores an inlineMedia that is not an array, and still returns the figures', () => {
     for (const bad of [undefined, null, 'nope', 42, { src: 'x.jpg' }]) {
       const file = structureWith('inline-bad', bad);
@@ -588,66 +685,202 @@ describe('§C139 tier 1 over the whole chemistry corpus — what "unreviewable" 
    * chapter's structure files must not find an unreviewable basename anywhere.
    */
   /**
-   * 🔴 THE EXACT EXCEPTIONS, NOT A TOLERANCE. Two chemistry modules extract a
-   * `type:'media'` node whose `src` was LOST — the node carries an `id` equal
-   * to the basename and a full `alt`, while the CNXML `<media>` plainly holds
-   * `<image src=…/>`. That is an extractor defect, logged separately and
-   * deliberately not worked around here: keying on `id` would invent a second
-   * key derivation, which basenameFromSrc's docstring forbids.
+   * 🔴 THIS TEST USED TO PASS FOR THE WRONG REASON, AND AN ADVERSARIAL REVIEW
+   * CAUGHT IT. It searched each structure file's raw text for the BASENAME and
+   * asserted only two exceptions. Both halves were wrong:
+   *   - the instrument was BLIND to the very class it claimed to bound. A
+   *     src-less `type:'media'` node carries an `fs-id*` id, so the basename
+   *     appears nowhere in it. Measured: the class is 169 nodes across 47
+   *     chemistry modules, not 2 — the 2 were merely the ones whose `id`
+   *     happens to BE the basename, i.e. the only ones a name search could see.
+   *   - its "positive control" used a REVIEWABLE basename, which has a `src` in
+   *     the file by definition. It proved the search finds a src string; it
+   *     never proved the search could see a src-less node. A control on a
+   *     detector's VALUES is not a control on its COVERAGE.
+   *   - and `t.includes(b)` can match a basename as a PREFIX of a longer one:
+   *     chemistry holds 21 such pairs, so it could invent an offender too.
    *
-   * Naming them exactly, rather than allowing "a couple", is what makes a
-   * THIRD instance fail this test instead of being absorbed by a threshold.
+   * Replaced by the property the code actually guarantees, measured by SRC.
    */
-  const SRC_LOST_BY_EXTRACTOR = [
-    'ch06/CNX_Chem_06_04_PhosphOrb_img',
-    'ch16/CNX_Chem_16_03_Matter_img',
-  ];
-
-  it('no unreviewable image appears ANYWHERE in its chapter’s 02-structure files', () => {
+  it('no unreviewable image has a SRC-KEYED node anywhere in its chapter’s 02-structure', () => {
+    const srcsIn = (obj) => {
+      const out = new Set();
+      (function visit(n) {
+        if (Array.isArray(n)) return n.forEach(visit);
+        if (!n || typeof n !== 'object') return;
+        for (const [k, v] of Object.entries(n)) {
+          if (k === 'src' && typeof v === 'string' && v) {
+            const b = path.basename(v, path.extname(v));
+            if (b) out.add(b);
+          }
+          visit(v);
+        }
+      })(obj);
+      return out;
+    };
     const offenders = [];
     let checked = 0;
     for (const r of all()) {
-      const blobs = fs.existsSync(r.structureDir)
-        ? fs
-            .readdirSync(r.structureDir)
-            .filter((f) => f.endsWith('-structure.json'))
-            .map((f) => fs.readFileSync(path.join(r.structureDir, f), 'utf-8'))
-        : [];
+      const keyed = new Set();
+      if (fs.existsSync(r.structureDir)) {
+        for (const f of fs
+          .readdirSync(r.structureDir)
+          .filter((x) => x.endsWith('-structure.json'))) {
+          let d;
+          try {
+            d = JSON.parse(fs.readFileSync(path.join(r.structureDir, f), 'utf-8'));
+          } catch {
+            continue;
+          }
+          for (const b of srcsIn(d)) keyed.add(b);
+        }
+      }
       for (const b of r.unreviewable) {
         checked++;
-        if (blobs.some((t) => t.includes(b))) offenders.push(`${r.chapterDir}/${b}`);
+        if (keyed.has(b)) offenders.push(`${r.chapterDir}/${b}`);
       }
     }
-    expect(checked).toBeGreaterThan(0); // non-vacuity: there IS still a gap to check
-    expect(offenders.sort()).toEqual([...SRC_LOST_BY_EXTRACTOR].sort());
+    expect(checked).toBeGreaterThan(0); // non-vacuity: there IS still a gap
+    expect(offenders).toEqual([]);
   });
 
-  it('CONTROL — the same search DOES find a reviewable basename', () => {
-    // Without this the null above is an incapable instrument, not a result.
+  /**
+   * 🔴 THE REAL SIZE OF THE REMAINING GAP'S CAUSE, PINNED SO IT CANNOT HIDE
+   * BEHIND A BLIND SEARCH AGAIN. Most of chemistry's residual unreviewable
+   * images are NOT "absent from 02-structure": the extractor emits a
+   * `type:'media'` node for them carrying a full alt segment and simply omits
+   * the `src`. Re-extracting with today's extractor reproduces that byte for
+   * byte, so the remedy is an EXTRACTOR change — which is why the R7 report
+   * line must not tell an operator to re-extract.
+   *
+   * This is a MEASUREMENT of a known defect, not an approval of it. If it goes
+   * red because the count fell, the extractor was fixed and this test should be
+   * retired along with the class.
+   */
+  it('measures the src-less type:media class the extractor emits — 169 nodes, 47 modules', () => {
+    let withSrc = 0;
+    let withoutSrc = 0;
+    let withoutSrcCarryingAnAltSegment = 0;
+    const modules = new Set();
+    for (const r of all()) {
+      if (!fs.existsSync(r.structureDir)) continue;
+      for (const f of fs.readdirSync(r.structureDir).filter((x) => x.endsWith('-structure.json'))) {
+        let d;
+        try {
+          d = JSON.parse(fs.readFileSync(path.join(r.structureDir, f), 'utf-8'));
+        } catch {
+          continue;
+        }
+        (function visit(n) {
+          if (Array.isArray(n)) return n.forEach(visit);
+          if (!n || typeof n !== 'object') return;
+          if (n.type === 'media') {
+            if (typeof n.src === 'string' && n.src) withSrc++;
+            else {
+              withoutSrc++;
+              modules.add(`${r.chapterDir}/${f}`);
+              if (n.alt && n.alt.segmentId) withoutSrcCarryingAnAltSegment++;
+            }
+          }
+          for (const v of Object.values(n)) visit(v);
+        })(d.content);
+      }
+    }
+    // The positive control is the OTHER side of the same count: if the walk
+    // were broken both numbers would be 0, and the assertion below would pass
+    // for exactly the reason this whole test exists to rule out.
+    expect(withSrc).toBe(97);
+    expect(withoutSrc).toBe(169);
+    expect(withoutSrcCarryingAnAltSegment).toBe(168);
+    expect(modules.size).toBe(47);
+  });
+
+  it('CONTROL — the src-keyed search finds a reviewable image, and is blind to a src-less node BY DESIGN', () => {
+    // Two halves, and the second is the one the old control was missing.
     const r = enumerateChapterImages({ bookDir: CHEM_DIR, chapterDir: 'ch04' });
-    const blobs = fs
-      .readdirSync(r.structureDir)
-      .filter((f) => f.endsWith('-structure.json'))
-      .map((f) => fs.readFileSync(path.join(r.structureDir, f), 'utf-8'));
-    expect(blobs.some((t) => t.includes(r.reviewable[0]))).toBe(true);
+    const read = (f) => JSON.parse(fs.readFileSync(path.join(r.structureDir, f), 'utf-8'));
+    const files = fs.readdirSync(r.structureDir).filter((f) => f.endsWith('-structure.json'));
+    const srcs = new Set();
+    for (const f of files) {
+      (function visit(n) {
+        if (Array.isArray(n)) return n.forEach(visit);
+        if (!n || typeof n !== 'object') return;
+        for (const [k, v] of Object.entries(n)) {
+          if (k === 'src' && typeof v === 'string' && v)
+            srcs.add(path.basename(v, path.extname(v)));
+          visit(v);
+        }
+      })(read(f));
+    }
+    // (a) it CAN find something — otherwise the null above is an incapable
+    //     instrument rather than a measurement.
+    expect(srcs.has(r.reviewable[0])).toBe(true);
+    // (b) and it is blind to a src-less node ON PURPOSE, which is why the
+    //     test above states the honest property and the one below counts the
+    //     class separately instead of pretending a name search bounds it.
+    const chem06 = enumerateChapterImages({ bookDir: CHEM_DIR, chapterDir: 'ch06' });
+    expect(chem06.unreviewable).toContain('CNX_Chem_06_04_PhosphOrb_img');
   });
 
   it('reaches BOTH new populations, and they are disjoint — the tier’s whole point', () => {
-    // ⚠️ ANCHORS, not laws. Measured 2026-09-08 against this committed corpus:
-    // 1,148 images = 627 <figure> + 227 inlineMedia + 97 content media + 197
-    // absent. `01-source` is READ-ONLY by project rule, but `02-structure` is
-    // GENERATED — a re-extraction legitimately moves every one of these. If
-    // this goes red, re-derive before treating it as a defect.
     const rs = all();
     const by = (v) => rs.flatMap((r) => r.figures.filter((f) => f.reviewableVia === v));
-    expect(by('figure').length).toBe(627);
-    expect(by('inlineMedia').length).toBe(227);
-    expect(by('media').length).toBe(97);
-    // Both new classes are captionless BY CONSTRUCTION and carry an alt id.
+
+    // 🔴 PROPERTIES FIRST, ANCHORS LAST. These assertions used to sit BEHIND
+    // the hardcoded counts in the same `it`, so the first re-extraction to move
+    // a count would have made them unreachable — a red that silently stops
+    // checking the thing the test is named for.
     for (const v of ['inlineMedia', 'media']) {
+      expect(by(v).length).toBeGreaterThan(0); // non-vacuity per class
       expect(by(v).every((f) => f.captionSegmentId === null)).toBe(true);
       expect(by(v).every((f) => typeof f.altSegmentId === 'string')).toBe(true);
     }
+    // The title says DISJOINT and nothing asserted it. viaRank's comment
+    // justifies ranking the captionless constructs equal on exactly this
+    // measured fact, so it is the claim most worth pinning.
+    const names = (v) => new Set(by(v).map((f) => f.basename));
+    const inline = names('inlineMedia');
+    expect([...names('media')].filter((b) => inline.has(b))).toEqual([]);
+
+    // ⚠️ ANCHORS, not laws. Measured 2026-09-08 against this committed corpus.
+    // `01-source` is READ-ONLY by project rule, but `02-structure` is
+    // GENERATED — a re-extraction legitimately moves every one of these. If
+    // this goes red, re-derive before treating it as a defect.
+    expect(by('figure').length).toBe(627);
+    expect(by('inlineMedia').length).toBe(227);
+    expect(by('media').length).toBe(97);
+  });
+
+  /**
+   * 🔴 THE OTHER KEPT BOOK, WHICH THE FIRST ROUND OF THIS WORK NEVER MEASURED —
+   * and an adversarial review found the branch's headline property was FALSE
+   * there. Chemistry and organic have disjoint gaps: chemistry's residue is
+   * src-less `type:'media'` nodes (an extractor defect), organic's was entirely
+   * table-cell alts (a read-layer gap, now closed). Neither was visible from
+   * the other book. ▶ A corpus property asserted on ONE book is not a corpus
+   * property.
+   */
+  it('organic: the fourth construct closes its gap ENTIRELY — 0 unreviewable', () => {
+    const ORG = path.join(REPO_ROOT, 'books', 'lifraen-efnafraedi');
+    const chapters = fs
+      .readdirSync(path.join(ORG, '01-source'))
+      .filter((d) => /^(ch\d+|appendices)$/.test(d))
+      .sort();
+    const rs = chapters.map((c) => enumerateChapterImages({ bookDir: ORG, chapterDir: c }));
+    const cellAlt = rs.flatMap((r) => r.figures.filter((f) => f.reviewableVia === 'cellAlt'));
+    expect(cellAlt.length).toBeGreaterThan(0); // non-vacuity
+    expect(cellAlt.every((f) => typeof f.altSegmentId === 'string')).toBe(true);
+    expect(rs.flatMap((r) => r.unreviewable)).toEqual([]);
+    expect(rs.flatMap((r) => r.structureOnly)).toEqual([]);
+    expect(cellAlt.length).toBe(245); // anchor, same caveat as above
+  });
+
+  it('and chemistry has NO cellAlt — the two books needed different branches', () => {
+    // Without this, `cellAlt` could be silently doing chemistry's work too and
+    // the "disjoint gaps" reasoning above would be untested.
+    expect(all().flatMap((r) => r.figures.filter((f) => f.reviewableVia === 'cellAlt'))).toEqual(
+      []
+    );
   });
 
   it('leaves the still-absent population intact and does NOT invent structure-only names', () => {

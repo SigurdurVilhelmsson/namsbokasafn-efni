@@ -1671,15 +1671,23 @@ export function summarise(result) {
   // R7 ([USER]): the gap between what the driver translates and what the panel can show is
   // REPORTED, never silent.
   //
-  // ⚠️ THE REASON CHANGED WITH §C139 TIER 1 AND THE OLD WORDING WOULD NOW MISDIRECT. It used
-  // to read "no <figure> node", which was the whole story while reviewability was the <figure>
-  // subset. The panel now also reaches inlineMedia and loose `type:'media'` nodes, so a figure
-  // reaching this line has NO NODE IN 02-structure AT ALL — a statement about re-extraction,
-  // not about <figure>. On chemistry that moved the gap from 521 images to 197.
+  // 🔴 THE REASON CHANGED TWICE, AND THE SECOND WORDING WAS FALSE FOR MOST OF THE POPULATION.
+  // It first read "no <figure> node", true while reviewability WAS the <figure> subset. §C139
+  // tier 1 then made the panel read four constructs, and this line was rewritten to say the
+  // figure was "absent from 02-structure entirely … until the chapter is re-extracted".
+  // ▶ AN ADVERSARIAL REVIEW MEASURED THAT SENTENCE FALSE IN BOTH HALVES for most of what it
+  // names: chemistry's residue is overwhelmingly images that DO have a `type:'media'` node in
+  // 02-structure carrying a full alt segment and missing only `src` — 169 such nodes across 47
+  // modules — because the extractor never writes one. Re-extracting with today's extractor
+  // reproduces that byte for byte, so the prescribed remedy fixes NONE of them, while
+  // re-extraction is expensive (§C82 keeps two vintages live and it invalidates committed MT).
+  // ⚠️ A REPORT LINE IS AN OPERATOR'S DECISION INPUT. Naming the wrong remedy costs a paid
+  // re-extraction that changes nothing — so this says only what is measured: the panel cannot
+  // key it, and WHY is a question for the enumerator, not a conclusion to hand the reader.
   lines.push(
     ...nameList(
-      'translated but NOT reviewable — absent from 02-structure entirely, so no editor can ' +
-        'see this one until the chapter is re-extracted (R7)',
+      'translated but NOT reviewable — 02-structure has no src-keyed node for it, so the ' +
+        'review panel cannot show it (R7). Diagnose before remedying: see §C139',
       by((f) => f.outcome === 'translated' && !f.reviewable)
     )
   );

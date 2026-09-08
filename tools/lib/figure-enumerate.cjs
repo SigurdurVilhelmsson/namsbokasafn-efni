@@ -17,15 +17,27 @@
  * agree.
  *
  * 🔴 §C139 TIER 1 (2026-09-08) WIDENED REVIEWABILITY FROM "IS IT IN A
- * `<figure>`" TO THREE CONSTRUCTS, AND THE GAP IS NOW A DIFFERENT STATEMENT.
- * `via` is 'figure' | 'inlineMedia' | 'media':
+ * `<figure>`" TO FOUR CONSTRUCTS. `via` names which one supplied the record:
  *   figure       a `type:'figure'` node — the only one that can carry a caption
  *   inlineMedia  the top-level `inlineMedia` array
  *   media        a `type:'media'` node loose in the content tree
- * Measured on chemistry: 1,148 images = 627 + 227 + 97 reviewable, leaving 197
- * with no node at all. So "unreviewable" now means ABSENT FROM 02-structure,
- * which is a claim about re-extraction rather than about `<figure>` — and that
- * is the whole reason the report line in figure-run.js was rewritten.
+ *   cellAlt      a table cell's `alt` object (`rows[].cells[].alt`), which
+ *                carries both a `src` and its §C88 alt segment
+ * ⚠️ THE COUNTS ARE NOT RESTATED HERE. §C139 in the active register owns them
+ * and says "do not quote this table"; the test file holds them as executable
+ * anchors. A census copied into a docstring is exactly what this repo keeps
+ * finding stale.
+ *
+ * 🔴 "UNREVIEWABLE" MEANS **02-structure HAS NO SRC-KEYED NODE FOR THIS IMAGE**
+ * — IT DOES *NOT* MEAN "ABSENT FROM 02-structure", AND THE DIFFERENCE DECIDES
+ * WHAT AN OPERATOR SHOULD DO. This header said the latter for one commit and an
+ * adversarial review measured it false: most of chemistry's residue HAS a
+ * `type:'media'` node carrying a full alt segment and missing only `src`,
+ * because the extractor never writes one there. Re-extraction with today's
+ * extractor reproduces it byte for byte, so it is an EXTRACTOR defect, not a
+ * stale vintage. ▶ Each book's residue has its own cause — organic's was
+ * entirely `cellAlt` and chemistry has zero of those — so **a gap measured on
+ * one book says nothing about the other.** The test file pins both.
  *
  * 🔴 THE ATTRACTIVE SHORTCUT IS STILL CLOSED, BUT ITS ORIGINAL JUSTIFICATION
  * WAS REFUTED BY MEASUREMENT AND IS RECORDED HERE RATHER THAN QUIETLY FIXED.
@@ -35,9 +47,12 @@
  * ARE there**, in `inlineMedia`. The instrument behind "0 hits" could only have
  * been looking at figure nodes, so it was answering a narrower question than
  * the sentence claimed — and had anyone trusted it, tier 1 would have looked
- * impossible. ▶ The CONCLUSION survives on the other 10 (197 book-wide):
- * reading `01-source/*.cnxml` is load-bearing, and so is doing it with
- * `TAG_ATTR_SPAN`. A rationale can be false while the conclusion is right.
+ * impossible. ▶ The CONCLUSION survives: reading `01-source/*.cnxml` is
+ * load-bearing, and so is doing it with `TAG_ATTR_SPAN`. A rationale can be
+ * false while the conclusion is right. ⚠️ The same error was then committed a
+ * second time in this very file — see the "no src-keyed node" paragraph above —
+ * which is why the remaining gap is now stated as a property of the LOOKUP and
+ * never as a claim about what the corpus contains.
  *
  * ⚠️ `reviewable` here is STRUCTURAL — "does this image have a src-keyed node
  * in 02-structure". It is deliberately NOT the review panel's *runtime* sense
@@ -107,7 +122,7 @@ function basenameFromSrc(src) {
  */
 function viaRank(via) {
   if (via === 'figure') return 2;
-  if (via === 'inlineMedia' || via === 'media') return 1;
+  if (via === 'inlineMedia' || via === 'media' || via === 'cellAlt') return 1;
   return 0;
 }
 
@@ -165,11 +180,16 @@ function listCnxmlImages(cnxmlPath) {
  * entry of the top-level `inlineMedia` array. Renaming it would churn both
  * trees and every caller for no behavioural gain; the docstring is the fix.
  *
- * ORDER IS LOAD-BEARING: `content` is walked before `inlineMedia`, and the
- * figure branch precedes the media branch within the walk, so `seen` gives a
- * `<figure>` precedence over any captionless record of the same image inside
- * one module. Across modules that job belongs to `viaRank` in
- * enumerateChapterImages — `seen` cannot reach there.
+ * PRECEDENCE IS RANKED, NOT ORDERED, AND THAT IS A CORRECTION. This said
+ * "`content` is walked before `inlineMedia`, and the figure branch precedes the
+ * media branch, so `seen` gives a `<figure>` precedence" — true per NODE and
+ * FALSE ACROSS SIBLINGS: a first-wins set makes precedence depend on document
+ * order, so a loose `type:'media'` node appearing before its `<figure>` sibling
+ * would take the slot and the caption would be lost. Measured exposure on both
+ * kept books: 0 — i.e. it was correct by luck, which is the cheapest possible
+ * moment to make it a rule. Records are now collected into a Map and `viaRank`
+ * decides, here and in enumerateChapterImages, so one rule covers both the
+ * intra-module and cross-module cases.
  *
  * ⚠️ Figures nest arbitrarily (section > example > figure), so this walks the
  * whole structure tree rather than scanning one level. The basename idiom is a
@@ -207,8 +227,17 @@ function listStructureFigures(structurePath) {
   } catch {
     return []; // absent or malformed: a module with no structure has no figures
   }
-  const out = [];
-  const seen = new Set();
+  // Keyed by basename so a <figure> can DISPLACE a captionless record already
+  // taken by an earlier sibling. A plain `seen` set made precedence depend on
+  // DOCUMENT ORDER — correct per node, wrong across siblings, and true on
+  // today's corpus only by luck (measured: 0 such cases on both kept books).
+  // Insertion order is preserved on replace, so document order still decides
+  // the OUTPUT order; only the winner changes.
+  const out = new Map();
+  const take = (rec) => {
+    const prev = out.get(rec.basename);
+    if (!prev || viaRank(rec.via) > viaRank(prev.via)) out.set(rec.basename, rec);
+  };
   const visit = (node) => {
     if (Array.isArray(node)) {
       node.forEach(visit);
@@ -219,9 +248,8 @@ function listStructureFigures(structurePath) {
       const src = node.media && node.media.src;
       if (typeof src === 'string' && src) {
         const basename = path.basename(src, path.extname(src));
-        if (basename && !seen.has(basename)) {
-          seen.add(basename);
-          out.push({
+        if (basename) {
+          take({
             basename,
             captionSegmentId: (node.caption && node.caption.segmentId) || null,
             altSegmentId: (node.media.alt && node.media.alt.segmentId) || null,
@@ -247,14 +275,38 @@ function listStructureFigures(structurePath) {
     // unreviewable — an extractor defect to fix at the extractor.
     if (node.type === 'media') {
       const basename = basenameFromSrc(node.src);
-      if (basename && !seen.has(basename)) {
-        seen.add(basename);
-        out.push({
+      if (basename) {
+        take({
           basename,
           captionSegmentId: null, // no <figure>, so no <caption> to key on
           altSegmentId: (node.alt && node.alt.segmentId) || null,
           via: 'media',
         });
+      }
+    }
+    // §C139 tier 1, FOURTH construct. A table cell's `alt` object carries both
+    // an image `src` and its §C88 src-keyed alt segment:
+    //   rows[].cells[].alt = {segmentId, text, mediaId, src}
+    // Measured: this is ALL 245 of lifraen-efnafraedi's remaining unreviewable
+    // images and 0 of every other book's. Organic and chemistry needed
+    // different branches, and neither gap was visible from the other book —
+    // which is why a per-book re-derivation, not a generalisation, is what
+    // found it.
+    if (Array.isArray(node.rows)) {
+      for (const row of node.rows) {
+        if (!row || !Array.isArray(row.cells)) continue;
+        for (const cell of row.cells) {
+          const alt = cell && cell.alt;
+          if (!alt || typeof alt !== 'object') continue;
+          const basename = basenameFromSrc(alt.src);
+          if (!basename) continue;
+          take({
+            basename,
+            captionSegmentId: null,
+            altSegmentId: alt.segmentId || null,
+            via: 'cellAlt',
+          });
+        }
       }
     }
     for (const v of Object.values(node)) visit(v);
@@ -273,9 +325,8 @@ function listStructureFigures(structurePath) {
     for (const media of structure.inlineMedia) {
       if (!media || typeof media !== 'object') continue;
       const basename = basenameFromSrc(media.src);
-      if (!basename || seen.has(basename)) continue;
-      seen.add(basename);
-      out.push({
+      if (!basename) continue;
+      take({
         basename,
         // Null BY CONSTRUCTION, not by omission: an inlineMedia image is an
         // <image> loose in a para, an example or an exercise solution. It has
@@ -286,7 +337,7 @@ function listStructureFigures(structurePath) {
       });
     }
   }
-  return out;
+  return [...out.values()];
 }
 
 /**
@@ -409,7 +460,8 @@ function enumerateChapterImages({ bookDir, chapterDir, moduleIds } = {}) {
         src: img.src,
         moduleId: id,
         reviewable: Boolean(st),
-        // WHY it is reviewable: 'figure' | 'inlineMedia' | null. The R7 gap is
+        // WHY it is reviewable: 'figure' | 'inlineMedia' | 'media' | 'cellAlt'
+        // | null — the same set viaRank ranks, kept in step with it. The R7 gap is
         // no longer one population, and a bare boolean cannot say which. It is
         // also what keeps the independent `<figure>`-open-tag cross-check on
         // the extractor alive now that `reviewable` is the wider set.
