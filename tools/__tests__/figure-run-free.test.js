@@ -1040,3 +1040,49 @@ describe('labels the read layer could not decode are reported for EVERY outcome'
     expect(summarise(result)).toMatch(/missing-font/i);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 dataflow/F2 — `figure-prepare.py`'s WARNINGS WERE RECORDED AND RENDERED NOWHERE.
+// `rec.warnings = payload.warnings || []` was the only write; `summarise` never read it, and
+// the child's stdout (where prepare prints the same facts as `!! …` lines) is captured by
+// `defaultSpawn` and used only on the failure path. So the whole channel reached nobody —
+// including `unparsable content stream …`, about which figure-prepare.py says verbatim
+// "Silence there would mean a form whose English may still be drawn, counted as clean", and
+// `N unparsable colour operand(s); fills on this figure are unreliable`. The design's own
+// Invariant 5 is "Warnings are surfaced, not swallowed".
+describe('prepare warnings reach the operator', () => {
+  const STREAM = 'unparsable content stream 12 0: operand stack underflow';
+  const COLOUR = '3 unparsable colour operand(s); fills on this figure are unreliable';
+
+  it('prints a warning verbatim, naming the figure that produced it', async () => {
+    const spawn = fakeSpawn({
+      prepare: (b) =>
+        b === 'CNX_Chem_04_04_limiting' ? { sendable: 2, chars: 20, warnings: [STREAM] } : {},
+    });
+    const text = summarise(await runFigures(CH04, { spawn }));
+    expect(text).toContain(STREAM);
+    expect(text).toContain('CNX_Chem_04_04_limiting');
+  });
+
+  // 🔴 NOT KEYED ON THE BUCKET. A `copied-textless` figure is exactly the one the
+  // unparsable-stream warning is about — "a form whose English may still be drawn, counted
+  // as clean" — so restricting the print to `translated` would silence it where it matters.
+  it('prints it for a COPIED figure too, not only for the ones that spend', async () => {
+    const spawn = fakeSpawn({
+      prepare: (b) => (b === 'CNX_Chem_04_05_filter' ? { warnings: [COLOUR] } : {}),
+    });
+    const result = await runFigures(CH04, { spawn });
+    expect(result.figures.find((f) => f.basename === 'CNX_Chem_04_05_filter').outcome).toMatch(
+      /^copied-/
+    );
+    expect(summarise(result)).toContain(COLOUR);
+  });
+
+  // The control. Without it both assertions above pass against a report that prints a
+  // warnings section unconditionally, or that prints every string it can find.
+  it('prints no warning section at all when prepare emitted none', async () => {
+    const text = summarise(await runFigures(CH04, { spawn: fakeSpawn() }));
+    expect(text).not.toMatch(/warning/i);
+    expect(text).not.toContain(STREAM);
+  });
+});

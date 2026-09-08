@@ -1500,6 +1500,31 @@ export function summarise(result) {
     }
   }
 
+  // 🔴 `figure-prepare.py`'s WARNINGS, WHICH REACHED NOBODY. `rec.warnings` was written and
+  // never read, and the child's stdout — where prepare prints the same facts as `!! …` lines
+  // — is captured by `defaultSpawn` and used only on the failure path. The design's
+  // Invariant 5 is "Warnings are surfaced, not swallowed"; this is where that happens.
+  // ⚠️ EVERY WARNING, FOR EVERY OUTCOME, AND DELIBERATELY UNFILTERED. `unparsable content
+  // stream …` — figure-prepare.py: "Silence there would mean a form whose English may still
+  // be drawn, counted as clean" — lands on figures that classify `copied-*`, so keying this
+  // on `translated` would silence it exactly where it matters.
+  // ⚠️ THE VOLUME WAS MEASURED, NOT GUESSED: real efnafraedi-2e ch05, 24 figures → 35
+  // warnings across 20 of them, of which **34 of 35 are `subset font …`**. That one benign
+  // kind is 97% of the channel, and it is tempting to filter it here. Do not: the driver has
+  // no severity information, `build_warnings` emits a flat list of strings, and a
+  // benign-kinds enumeration maintained HERE would be a second copy of the producer's
+  // vocabulary — drifting silently, in the direction that hides a warning. If a kind is ever
+  // worth suppressing, suppress it in the PRODUCER, which knows what it means.
+  const warned = result.figures.filter((f) => f.warnings && f.warnings.length);
+  if (warned.length) {
+    const total = warned.reduce((n, f) => n + f.warnings.length, 0);
+    lines.push(
+      `  figure-prepare.py warnings — ${total} across ${warned.length} figure(s), its own ` +
+        `!! lines:`
+    );
+    for (const f of warned) lines.push(`    ${f.basename}: ${f.warnings.join('; ')}`);
+  }
+
   for (const rec of result.figures) {
     if (rec.outcome.startsWith('failed-')) {
       lines.push(`  ${rec.outcome}  ${rec.basename}: ${rec.reason}`);
