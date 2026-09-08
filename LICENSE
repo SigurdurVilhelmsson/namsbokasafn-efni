@@ -21,10 +21,11 @@ reinjection and HTML-rendering pipeline: the `tools/`, `scripts/` and
 `experiments/` is MIT for the same reason `tools/` is, and the reason is a
 combination one rather than a preference: MIT tooling already depends on the
 figure-text tree under `experiments/figure-text-translation/`. `tools/publish-figure-svg.js`
-reads `out/translated.svg` and `out/meta.json` from it by default (`:202-208`), and
-the figure-text driver planned for that tree will live in `tools/` beside it. Any
-other licence here would create a new MIT→copyleft edge alongside the `server/`
-edges catalogued below.
+reads `out/translated.svg` and `out/meta.json` from it by default (the directory is
+built at `:306-312` and the two defaults are at `:319-320`), and the figure-text
+driver `tools/figure-run.js` lives in `tools/` beside it. Any other licence here
+would create a new MIT→copyleft edge alongside the `server/` edges catalogued
+below.
 
 **The grant covers OUR code only.** `experiments/figure-text-translation/pylibs/`
 is a local dependency install and is **gitignored**, so this repository
@@ -71,7 +72,7 @@ whenever a figure is published.)*
 >
 >    **(a) At load time — the module cannot even be imported without `server/`:**
 >    - `tools/validate-chapter.js:33` → `server/lib/chapterLabel`
->    - `tools/figure-run.js:68` → `server/lib/chapterLabel.js`
+>    - `tools/figure-run.js:72` → `server/lib/chapterLabel.js`
 >    - `scripts/validate-status.js:14` → `server/lib/chapterLabel.js`
 >    - `tools/generate-book-data.cjs:20` → `server/services/bookDataGenerator`
 >    - `scripts/export-segment-edits.js:23` → `server/lib/chapterLabel.js`
@@ -150,7 +151,8 @@ whenever a figure is published.)*
 >      pipeline: they are hand-run rendering probes, and no tool spawns either.
 >      ⚠️ Their absolute path is a
 >      separate defect — it hardcodes one machine's checkout — recorded here
->      because it is what makes them invisible to the three search shapes below.
+>      because it is what makes them invisible to the first three search shapes
+>      below.
 > 5. **Separate process, not a load** — spawns a `server/` script as its own
 >    Node process and reads its stdout. No AGPL code enters the MIT process, but
 >    the tool cannot produce a verdict without `server/` present.
