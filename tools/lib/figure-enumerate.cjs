@@ -43,10 +43,18 @@ const path = require('path');
 
 /**
  * `tools/lib/cnxml-parser.js` is ESM, and this file is CJS, so reaching it is
- * `require(esm)` — which needs Node >= 22.12 while both `engines` floors in
- * this repo read `>=22.0.0`. Loading it LAZILY confines that requirement to
- * the CNXML half: `server/` requires this module for `listStructureFigures`,
- * which never reaches here, so a server on 22.0 is unaffected either way.
+ * `require(esm)` — unflagged from Node 22.12.0 and a throw before it. Both
+ * `engines` floors now declare `>=22.12.0` for exactly this reason, pinned by
+ * `tools/__tests__/ci-node-version.test.js`.
+ *
+ * 🔴 BUT THE FLOOR IS NOT WHAT MAKES THIS SAFE, AND THE LAZY LOAD IS — DO NOT
+ * "SIMPLIFY" IT TO A TOP-LEVEL REQUIRE ON THE STRENGTH OF THAT FLOOR.
+ * `engines` is advisory: no `.npmrc`, `engine-strict` false, npm only warns and
+ * Node never reads it, so a box on 22.11 installs, runs, and throws. Loading
+ * lazily confines the requirement to the CNXML half — `server/` requires this
+ * module for `listStructureFigures`, which never reaches here (verified with a
+ * `Module._load` probe on chemistry and on the e2e fixture book). That is a
+ * property of the code and survives whatever any machine happens to run.
  */
 let _parser = null;
 function parser() {

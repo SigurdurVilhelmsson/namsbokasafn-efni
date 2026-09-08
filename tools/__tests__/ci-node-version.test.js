@@ -71,4 +71,46 @@ describe('CI Node version tracks .nvmrc', () => {
       expect(floor, `${manifest} engines.node = ${pkg.engines?.node}`).toBeGreaterThanOrEqual(want);
     }
   });
+
+  /**
+   * 🔴 WHY THE FLOOR CARRIES A MINOR: `require(esm)`.
+   *
+   * `tools/lib/figure-enumerate.cjs` is CJS and requires `tools/lib/cnxml-parser.js`,
+   * which is ESM. That is `require(esm)` — unflagged from Node **22.12.0** (backported
+   * from 23) and a throw on anything earlier in the 22 line.
+   *
+   * ⚠️ THIS PINS A DECLARATION, NOT A PROTECTION, AND THE DIFFERENCE MATTERS.
+   * `engines` is advisory here: there is no `.npmrc`, `engine-strict` is false, npm only
+   * warns, and Node never reads the field at all. A box on 22.11 would install and run
+   * and still throw. **What actually keeps `server/` safe is STRUCTURAL** — the parser is
+   * required LAZILY, so `listStructureFigures`, the only function `server/` calls, never
+   * reaches it (verified with a `Module._load` probe on two books). Do not read a green
+   * here as evidence any particular machine can run the code; that is `node -v` on the
+   * machine, and production's minor is pinned by nothing in this repo.
+   */
+  it('admits no Node that would throw on require(esm), while the major is 22', () => {
+    const REQUIRE_ESM_MINOR = 12;
+    let constrained = 0;
+    for (const manifest of ['package.json', 'server/package.json']) {
+      const pkg = JSON.parse(fs.readFileSync(path.join(REPO_ROOT, manifest), 'utf8'));
+      const declared = pkg.engines?.node || '';
+      const m = declared.match(/(\d+)\.(\d+)/);
+      expect(m, `${manifest} engines.node must carry a MINOR, got '${declared}'`).not.toBeNull();
+      const major = Number(m[1]);
+      const minor = Number(m[2]);
+      // 23+ ships require(esm) on by default, so a later major is unconstrained here.
+      if (major !== 22) continue;
+      constrained += 1;
+      expect(minor, `${manifest} engines.node = '${declared}'`).toBeGreaterThanOrEqual(
+        REQUIRE_ESM_MINOR
+      );
+    }
+    // Non-vacuity. If both trees ever move off major 22 the loop above checks NOTHING and
+    // would pass in silence. Fail loudly instead, so whoever does that upgrade decides
+    // deliberately whether this threshold still means anything rather than inheriting it.
+    expect(
+      constrained,
+      'neither manifest is on Node major 22 any more — re-derive this threshold for the new major, or retire this test'
+    ).toBe(2);
+  });
 });
