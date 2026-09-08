@@ -142,6 +142,40 @@ and unedited.
 | R3's `/Form` walk is a **no-op on EPS-sourced figures** — a property of ghostscript's `pdfwrite`, which emits no forms, not of EPS | `READ-LAYER-ACCEPTANCE.md` |
 | C4 geometry: **143 of 530 figures move a block >1pt**; "just axis ticks" is refuted by its own control. Prior favours *correction*; the deciding instrument is a **composed-image diff**, which belongs with the driver | register § ④ |
 
+### ⏭ THE NAMED FOLLOW-UP — §C139, ITS OWN PR AFTER #457 MERGES ([USER] 2026-09-08)
+
+🔴 **NEARLY HALF OF CHEMISTRY'S IMAGES CANNOT APPEAR IN THE REVIEW PANEL AT ALL — AND 227 OF THEM
+ARE ALREADY IN `02-structure`, ONE UNREAD ARRAY AWAY.** Measured 2026-09-08 with the branch's own
+`enumerateChapterImages` over every chapter of `efnafraedi-2e`:
+
+| | images | reviewable | **not** |
+|---|---|---|---|
+| **book** | **1,148** | **627** | **521 (45.4%)** |
+| ch07 | 159 | 28 | 131 |
+| ch20 | 134 | 24 | 110 |
+| ch04 | 30 | 18 | 12 |
+| ch05 | 24 | 24 | **0** |
+
+⚠️ **ONLY 3 OF 23 CHAPTERS HAVE NO GAP, AND ch04 IS NOT REPRESENTATIVE IN EITHER DIRECTION** — a
+number quoted from one chapter (this session first reported "10 of 19 on ch04") describes nothing.
+The unreviewable images cluster hard by container: **156 `exercise>solution` · 121 `example` ·
+100 `exercise>problem` · 105 other · 29 `table` · 10 `note`** — worked problems and their
+solutions, which in a chemistry text is where the reaction schemes live.
+
+✅ **THE CHEAP TIER, AND IT NEEDS NO RE-EXTRACTION AND NO CNXML PARSING.** `02-structure` carries a
+top-level **`inlineMedia`** array holding these images with `src`, `id` and an `alt` bearing its own
+`segmentId`. `listStructureFigures` walks only `structure.content` for `type === 'figure'` and
+**never looks at `inlineMedia`**. Reading it reaches **227 of the 521 (43.6%)** — a service-side
+change alone. ▶ **The remaining 294 (56.4%) are absent from `02-structure` entirely** and are the
+"three legs" the M5 plan named: extractor change, then re-extraction.
+⚠️ **A caption-less card already degrades correctly and that is not luck** — `buildFigurePayload`
+hands `referenceText` to `captionDivergence`, whose own docstring calls the empty-reference `[]`
+*"designed silence, NOT a false all-clear"*. And the route returns only figures **that have a
+sidecar**, so widening enumeration surfaces nothing until the driver has actually translated one —
+which is what makes this safe to land before it has anything to show.
+🔴 **Re-derive these numbers before acting on them; do not quote this table.** The producer is
+`enumerateChapterImages` plus a read of each module's `inlineMedia`, and both move with the corpus.
+
 ### 🔬 How this campaign was run, in one line each — the parts that changed outcomes
 - **A five-lens adversarial review** of the whole branch, every finding handed to a separate agent
   told to REFUTE it: **31 raised, 21 confirmed, 10 refuted.** It found a `/Separation` tint read
