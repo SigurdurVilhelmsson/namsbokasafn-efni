@@ -1086,3 +1086,77 @@ describe('prepare warnings reach the operator', () => {
     expect(text).not.toContain(STREAM);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 dataflow/F5 — A COPY WAS DOWNGRADED TO `failed-publish` OVER A PUBLISH THE DRIVER WAS
+// NEVER GOING TO ATTEMPT, AND THE REPORT'S MINT WORK-LIST WAS WRONG FOR EVERY ENTRY IT
+// PRINTED.
+//
+// `processFigureLive` opens with `if (rec.outcome !== 'translated') return;`, so nothing is
+// composed, minted or published for a `copied-photo`/`copied-textless` — the reader keeps
+// OpenStax's own artwork out of the media tree. `unmintable` nevertheless made such a figure
+// `failed-publish`, which `verdict()` makes FATAL: a chapter would exit 1 and "need a human"
+// over a mapping row nothing was ever going to write.
+//
+// ⚠️ THE FIX IS THE DOWNGRADE, NOT `PUBLISH_BOUND`. Narrowing the set to ['translated'] —
+// the finding's own suggestion — would delete the CONTAINMENT check on copies, which the
+// commit one before this one (money/F3) added deliberately and pinned: an outputName that
+// escapes media/ is a defect in a COMMITTED data file whatever the figure's bucket, whereas
+// "no row, and the minter cannot make one" is simply the ordinary state of a figure nobody
+// publishes (organic has no mapping file at all). The two are different facts.
+describe('a copy is not failed over a publish that never happens', () => {
+  const BOOKDIR = path.join(REPO_ROOT, 'books', 'efnafraedi-2e');
+  const preflight = (outcome, mintIndex) => {
+    const rec = { basename: 'A', outcome, reason: null, mapping: null };
+    applyMappingPreflight(rec, { mapped: new Map(), mintIndex, bookDir: BOOKDIR });
+    return rec;
+  };
+
+  it('leaves an unmintable COPY in its own bucket', () => {
+    const rec = preflight('copied-photo', new Set(['B']));
+    expect(rec.outcome).toBe('copied-photo');
+    // The pre-flight's ANSWER is still recorded — it is a fact about the book — it just
+    // stops being a failure for a figure that publishes nothing.
+    expect(rec.mapping).toEqual({ status: 'unmintable', outputName: null });
+    expect(rec.reason).toBe(null);
+  });
+
+  it('leaves an unmintable copied-textless in its own bucket too', () => {
+    expect(preflight('copied-textless', new Set(['B'])).outcome).toBe('copied-textless');
+  });
+
+  // 🔴 THE CONTROL. Without it the two assertions above pass against a pre-flight that has
+  // stopped downgrading anything at all — and the unmintable downgrade on a TRANSLATED
+  // figure is the one that saves the money.
+  it('still fails an unmintable TRANSLATED figure, which is what the check is for', () => {
+    const rec = preflight('translated', new Set(['B']));
+    expect(rec.outcome).toBe('failed-publish');
+    expect(rec.reason).toMatch(/unmapped/);
+  });
+
+  // Corpus. Today ch04's mint work-list is 9 of 9 copies — wrong for every entry it prints.
+  it('names in the mint work-list only figures the run will actually publish', async () => {
+    const copies = await runFigures(CH04, { spawn: fakeSpawn() });
+    expect(copies.figures.every((f) => f.outcome.startsWith('copied-'))).toBe(true);
+    // The pre-flight still ANSWERS for a copy — 9 of ch04's 30 are `mintable` — and that
+    // fact is what the containment check needs. It is the REPORT and the DOWNGRADE that
+    // stop acting on it, so this is the non-vacuity control for the two assertions below.
+    expect(copies.figures.filter((f) => f.mapping.status === 'mintable').length).toBe(9);
+    expect(
+      copies.figures
+        .filter((f) => f.outcome === 'translated' && f.mapping.status === 'mintable')
+        .map((f) => f.basename)
+    ).toEqual([]);
+    expect(copies.tally['failed-publish']).toBe(0);
+    expect(summarise(copies)).not.toMatch(/minted before publish/);
+  });
+
+  it('DOES name them when the same figures are translated (the control above)', async () => {
+    const translated = await runFigures(CH04, {
+      spawn: fakeSpawn({ prepare: () => ({ sendable: 2, chars: 20, blocks: 2 }) }),
+    });
+    const mintable = translated.figures.filter((f) => f.mapping.status === 'mintable');
+    expect(mintable.length).toBeGreaterThan(0);
+    expect(summarise(translated)).toMatch(/minted before publish/);
+  });
+});

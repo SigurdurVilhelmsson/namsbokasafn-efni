@@ -343,7 +343,16 @@ export function mappingPreflight(basename, { mapped, mintIndex }) {
 }
 
 /**
- * The outcomes that end as a file in `books/<slug>/media/`, and therefore need a mapping entry.
+ * The outcomes whose `image-mapping.json` row is INSPECTED. Not "the outcomes that end as a
+ * file in `books/<slug>/media/`", which is what this comment used to say and is false:
+ * `processFigureLive` returns at `rec.outcome !== 'translated'`, so THIS DRIVER PUBLISHES
+ * NOTHING FOR A COPY — the reader keeps OpenStax's own artwork out of the media tree, and
+ * `ls books/efnafraedi-2e/media/` is all `*_IS.*` bar its housekeeping files.
+ *
+ * A copy is still inspected, and that is deliberate: a row whose `outputName` escapes
+ * `media/` is a defect in a COMMITTED data file whatever the figure's bucket. What a copy is
+ * NOT subject to is the `unmintable` downgrade — see `applyMappingPreflight`.
+ *
  * `unresolved` and `unreadable-text` are absent because neither produces anything to publish;
  * `skipped-current` because its artwork is already there.
  */
@@ -379,6 +388,16 @@ export function applyMappingPreflight(rec, ctx) {
   if (!PUBLISH_BOUND.has(rec.outcome)) return rec;
   rec.mapping = mappingPreflight(rec.basename, ctx);
   if (rec.mapping.status === 'unmintable') {
+    // 🔴 A COPY IS NOT FAILED OVER A PUBLISH THAT NEVER HAPPENS. `processFigureLive` returns
+    // at `rec.outcome !== 'translated'`, so nothing is composed, minted or published for a
+    // `copied-*` — "no row, and the minter cannot make one" is the ORDINARY state of a figure
+    // nobody publishes (organic has no mapping file at all and every one of its figures reads
+    // `mintable`). Downgrading it made `verdict()` FATAL and the chapter exit 1, "needs a
+    // human", over work that does not exist. The pre-flight's ANSWER is still recorded above,
+    // because it is a fact about the book; it just stops being a failure.
+    // ⚠️ THIS IS NOT THE CONTAINMENT CHECK BELOW, WHICH STILL COVERS COPIES. An outputName
+    // that escapes media/ is a defect in a committed data file whatever the bucket.
+    if (rec.outcome !== 'translated') return rec;
     rec.outcome = 'failed-publish';
     rec.reason =
       `no image-mapping.json entry, and generate-image-mapping.js would not mint one: ` +
@@ -1449,10 +1468,14 @@ export function summarise(result) {
       by((f) => f.outcome === 'translated' && !f.reviewable)
     )
   );
+  // 🔴 ONLY THE FIGURES THIS RUN WOULD ACTUALLY PUBLISH. Measured on real chemistry ch04
+  // before this line was narrowed: the work-list named 9 figures and ALL 9 were copies — an
+  // entry nothing was ever going to mint, for a figure nothing was ever going to publish, so
+  // the list was wrong for every row it printed.
   lines.push(
     ...nameList(
       'would need an image-mapping.json entry minted before publish',
-      by((f) => f.mapping && f.mapping.status === 'mintable')
+      by((f) => f.outcome === 'translated' && f.mapping && f.mapping.status === 'mintable')
     )
   );
   // 🔴 THE COPIED FIGURES' OWN NUMBERS, BECAUSE THE ACCEPTANCE CRITERION IS ABOUT THEM AND A

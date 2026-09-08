@@ -64,9 +64,14 @@ const FAILED = [
 
 /**
  * The failures reachable ONLY by a figure that was going to be translated.
- * `failed-prepare` and `failed-publish` are deliberately ABSENT: prepare runs BEFORE anything is
- * classified, and publish runs for copies too, so a photograph can reach either. Only the MT and
- * compose stages are downstream of "this figure is a vector with text".
+ * `failed-prepare` and `failed-publish` are deliberately ABSENT, and a photograph can reach
+ * either. Only the MT and compose stages are downstream of "this figure is a vector with text".
+ *
+ * ⚠️ THE CONCLUSION IS RIGHT AND THIS COMMENT'S REASON FOR IT WAS NOT. It used to say "publish
+ * runs for copies too" — the driver publishes NOTHING for a copy (`processFigureLive` returns
+ * at `rec.outcome !== 'translated'`). What a photograph actually reaches `failed-publish`
+ * through is the PRE-FLIGHT's containment check: an `image-mapping.json` row whose
+ * `outputName` escapes `media/` is a defect in a committed data file whatever the bucket.
  */
 const TRANSLATE_PATH_FAILURES = ['failed-mt', 'failed-compose'];
 
