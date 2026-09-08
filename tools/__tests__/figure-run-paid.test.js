@@ -712,8 +712,8 @@ describe('--stale and --force spend NOTHING', () => {
   // 🔴 THE ONE LINE THAT KEEPS A PHOTOGRAPH OFF THE PAID PATH, AND IT HAD NO EXERCISER.
   // `processFigureLive` opens with `if (rec.outcome !== 'translated') return;` — the sole
   // separator between classification and the money. Widening it by one token
-  // (`&& rec.outcome !== 'copied-photo'`, or the same for copied-textless) left all 195 tests
-  // green, MEASURED, because no fixture in either suite put a non-translated figure in front
+  // (`&& rec.outcome !== 'copied-photo'`, or the same for copied-textless) left the whole
+  // suite green, MEASURED, because no fixture in either suite put a non-translated figure in front
   // of the live path with a mapping entry behind it.
   //
   // The cost is not a refund — it is a full-chapter false red. A `copied-*` figure has
@@ -982,7 +982,7 @@ describe('the minted sidecar and the minted mapping entry', () => {
   // and the `writeSidecar` after it are both unguarded. The suite's two rollback tests drive a
   // publisher that RETURNS `ok:false`, and the one THROW test seeds the mapping entry so the
   // figure is `mapped`, `minted` is null and the rollback there is a no-op. Deleting
-  // `restoreMapping(minted)` from the CATCH therefore left all 195 tests green (measured),
+  // `restoreMapping(minted)` from the CATCH therefore left the whole suite green (measured),
   // while deleting the identical call from the refusal path one line below goes red — which is
   // what makes the null an answer rather than a blind harness.
   //
@@ -1101,7 +1101,7 @@ describe('the live run’s own housekeeping', () => {
   });
 
   // 🔴 THE THIRD MEMBER OF `DRIFTABLE`, AND THE ONE WHOSE LOSS GOES *GREEN*. Removing
-  // 'unreadable-text' from that set left all 195 tests green (measured) — the two cases above
+  // 'unreadable-text' from that set left the whole suite green (measured) — the two cases above
   // cover copied-textless and copied-photo only. The direction matters: with the member gone
   // the guard returns untouched, `processFigureLive` returns early at `outcome !== 'translated'`,
   // and `verdict` reports it as `NOTE (not a failure): 1 figure(s) carry text we cannot read`,
@@ -1752,7 +1752,10 @@ describe('a recompose is refused when the read layer no longer declares a bought
     // document was "delete the sidecar", which re-buys the figure AND destroys a head
     // editor's ruling — over a fault the next test proves costs 0 ISK to repair.
     expect(rec(result, 'FIG_A').reason).toMatch(/REMOVING EXACTLY THOSE KEY\(S\)/);
-    expect(rec(result, 'FIG_A').reason).toMatch(/mt-preview/); // …and what it costs
+    // …and BOTH halves of what it costs. Naming only the mt-preview demotion would leave the
+    // recompose loop out, which is the same half-stated-remedy shape this message just fixed.
+    expect(rec(result, 'FIG_A').reason).toMatch(/mt-preview/);
+    expect(rec(result, 'FIG_A').reason).toMatch(/recomposes and republishes/);
   });
 
   // 🔴 THE REMEDY, EXECUTED. A message naming a repair nobody has run is prose; this drives
@@ -1821,15 +1824,32 @@ describe('a recompose is refused when the read layer no longer declares a bought
     // The benefit: the other three translations survived, and so did the `state` column.
     expect(onDisk.blocks).toEqual({ k0: 'IS k0', k1: 'IS k1', k2: 'IS k2' });
     expect(onDisk.state).toBe('approved');
-    // THE COST, measured rather than hoped: the ruling is kept but no longer honoured, so
-    // the figure is back in front of a head editor instead of shipping as approved.
+    // THE FIRST COST, measured rather than hoped: the ruling is kept but no longer honoured,
+    // so the figure is back in front of a head editor instead of shipping as approved.
     expect(effectiveState(onDisk, onDisk.blocks, COMPOSER_VERSION)).toBe('mt-preview');
     expect(editorialState(onDisk, onDisk.blocks, COMPOSER_VERSION)).toBe('mt-preview');
+
+    // 🔴 THE SECOND COST, AND IT IS ONLY VISIBLE ON A THIRD RUN. A hand prune moves the
+    // blocks and not the stored renderHash, and the publisher stamps composedHash FROM that
+    // stale renderHash — so the two agree with a value neither side recomputed, and `isStale`
+    // (which re-hashes the blocks) stays TRUE for ever. The figure recomposes and republishes
+    // on every subsequent run, `translated`, VERDICT ok: editorial/F5's loop, reached by an
+    // operator's text editor rather than by a COMPOSER_VERSION bump. It is bounded — 0 ISK,
+    // identical bytes, and a head editor's re-approval is the exit, because the review
+    // service is the only writer that recomputes renderHash — but the message must say so,
+    // and the assertion above is what stops it being dropped.
+    expect(isStale(onDisk)).toBe(true);
+    const third = fakeSpawn(drifted);
+    const again = await runFigures(live(booksRoot), { spawn: third, booksRoot });
+    expect(rec(again, 'FIG_A').outcome).toBe('translated');
+    expect(third.countOf('compose')).toBe(1); // …composed AGAIN, not skipped-current
+    expect(third.countOf('translate')).toBe(0); // …and still 0 ISK, which is what bounds it
+    expect(again.tally['skipped-current']).toBe(0);
   });
 
   // 🔴 THE BUY PATH'S OWN `send` FILTER, WHICH NO FIXTURE EXERCISED: every block either fake
   // makes is `send: true`, so `sendKeysFrom` could return `keys.all` instead of `keys.send`
-  // with all 195 tests green (measured). `expected` then names every block the figure HAS,
+  // with the whole suite green (measured). `expected` then names every block the figure HAS,
   // while `translate-blocks.mjs` keeps its own `blocks.filter((b) => b.send)` and returns only
   // the bought ones — so step 8 reports the HELD-BACK keys as `missing`, i.e. as "BOUGHT AND
   // NOT RETURNED (these ship in English)", and a figure translated completely and correctly is

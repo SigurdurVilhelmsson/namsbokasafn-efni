@@ -872,12 +872,19 @@ export function applyPartialDriftGuard(rec, outDir) {
   // keys; `test_figure_compose.py` case 10). For a GONE key it is not: the block is no longer
   // in blocks.json at all, so `strip-text.py` erases that label whatever the sidecar says, and
   // the repair is upstream — the artwork edition or the extraction.
-  // ⚠️ THE SALVAGE IS NOT FREE, AND SAYING SO IS THE POINT. `renderHash` is computed OVER the
-  // blocks, so pruning one moves it: measured on an approved sidecar, `state` stays 'approved'
-  // on disk while `editorialState` and `effectiveState` both drop to 'mt-preview'. The head
-  // editor's ruling is PRESERVED but not honoured until they approve again. Telling an
-  // operator the prune is free would be a wrong remedy, which is worse than the destructive
-  // one it replaces.
+  // ⚠️ THE SALVAGE IS NOT FREE, AND SAYING SO IS THE POINT. A HAND prune changes the blocks
+  // and NOT the stored `renderHash`, which is computed over them. Measured, four runs deep on
+  // an approved sidecar: run 2 composes and publishes, and `isStale` is STILL true afterwards
+  // (`composedHash` is stamped from the stale `renderHash`, so it agrees with a value neither
+  // side recomputed) — runs 3 and 4 recompose and republish again, `translated`, VERDICT ok,
+  // for ever. That is editorial/F5's loop, reached this time by an operator's text editor
+  // rather than by a COMPOSER_VERSION bump. Meanwhile `state` stays 'approved' on disk while
+  // `editorialState` and `effectiveState` both read 'mt-preview'.
+  // ▶ BOTH END ON ONE ACTION, which is why the message names it: the review service is the
+  // ONLY writer that recomputes `renderHash` (`figureReviewService.js`, from the current
+  // blocks), so a head editor re-approving the figure ends the loop AND restores the ruling.
+  // Telling an operator the prune is free would be a wrong remedy — worse than the
+  // destructive one it replaces — and so would telling them only half of what it costs.
   const declared = new Set(keys.all);
   const gone = extra.filter((k) => !declared.has(k));
   const heldBack = extra.filter((k) => declared.has(k));
@@ -897,10 +904,11 @@ export function applyPartialDriftGuard(rec, outDir) {
         `back as send:false (${heldBack.join(', ')}). figure-compose.py refuses that too, but ` +
         `only after a composer spawn; refusing here saves the spawn. REMOVING EXACTLY THOSE ` +
         `KEY(S) FROM THE SIDECAR is the non-destructive repair: every other translation stays, ` +
-        `nothing is re-bought, and the next run composes and publishes. It does move ` +
-        `renderHash, which is computed over the blocks, so an approved figure reads mt-preview ` +
-        `until a head editor approves it again — the ruling is kept in the file, not honoured ` +
-        `until then.`
+        `nothing is re-bought, and the next run composes and publishes. Editing the file by ` +
+        `hand does not move its stored renderHash, which is computed over the blocks, so ` +
+        `until a head editor re-approves the figure in the review UI — the only writer that ` +
+        `recomputes renderHash — it reads mt-preview and every later run recomposes and ` +
+        `republishes it (0 ISK, identical bytes). That one approval ends both.`
     );
   }
   rec.outcome = 'failed-compose';

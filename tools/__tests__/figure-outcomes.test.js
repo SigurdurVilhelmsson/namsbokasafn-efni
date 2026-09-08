@@ -144,7 +144,7 @@ describe('verdict', () => {
 
   // 🔴 THE SECOND MEMBER OF `TRANSLATE_PATH_FAILURES`, WHICH THE CONTROL ABOVE CANNOT SEE.
   // That constant is `['failed-mt', 'failed-compose']` and the control above exercises only
-  // the first, so reducing it to `['failed-mt']` left all 195 tests green (measured). A chapter
+  // the first, so reducing it to `['failed-mt']` left the whole suite green (measured). A chapter
   // whose translate-able figures all die at COMPOSE — an artwork-edition drift across a whole
   // module — then computes `attempted === 0` and the operator is told "4 figure(s)
   // failed-compose" without the fact that the chapter produced no translation at all.

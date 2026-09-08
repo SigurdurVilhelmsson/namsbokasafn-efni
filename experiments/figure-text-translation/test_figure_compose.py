@@ -821,7 +821,7 @@ with tempfile.TemporaryDirectory() as td:
           sum(1 for t in texts if t.strip() == '') == 1, f'{texts!r}')
 
 # ── 10. THE DRIVER'S OWN SIDECAR AS `--translations` — the seam nothing crossed ───────
-# 🔴 EVERY COMPOSE IN THE DRIVER'S 74-TEST PAID SUITE GOES THROUGH A FAKE `spawn` THAT
+# 🔴 EVERY COMPOSE IN THE DRIVER'S PAID SUITE GOES THROUGH A FAKE `spawn` THAT
 # WRITES A SUCCESS compose.json, so `verify()` had never run against a driver-minted
 # sidecar anywhere in the tree. The driver hands the SIDECAR FILE ITSELF to
 # `--translations` (figure-run.js step 9) and relies on two things it never checks:

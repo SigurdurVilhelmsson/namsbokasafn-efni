@@ -266,7 +266,7 @@ describe('normaliseTranslations', () => {
 // figure or another vintage.
 //
 // The only exerciser produced `missing` alone and asserted `reason).toMatch(/k7/)`, which
-// matches under EITHER label: swapping the two filter bodies left all 195 tests green
+// matches under EITHER label: swapping the two filter bodies left the whole suite green
 // (measured), and the operator's one diagnostic string then says "BOUGHT AND NOT RETURNED
 // (these ship in English)" about a key nobody paid for — sending them to look for lost money —
 // while a genuinely lost, paid-for key reads as a directory problem.
