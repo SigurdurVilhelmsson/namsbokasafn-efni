@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Resolve a figure basename to its authoritative source file.
 
-    FIGTEXT_PYLIBS=./pylibs python3 sources.py <book> [basename ...]
+    FIGTEXT_PYLIBS=./pylibs python3 sources.py [--json] <book> [basename ...]
 
 The OpenStax delivery is TWO trees: every 1st-edition image, and a second tree
 holding ONLY the images updated or added for the 2nd edition. A figure present in
@@ -74,6 +74,26 @@ def resolve(basename, trees, precedence, exts=SOURCE_EXTS):
     return None, None
 
 
+def resolve_report(names, trees, precedence, exts=SOURCE_EXTS):
+    """-> {name: {'path': str, 'edition': key} or None}, for a machine caller.
+
+    The JSON half of this tool's CLI, kept as a pure function so it can be tested against
+    temporary trees like `resolve` itself. `None` is a per-figure FACT — the artwork
+    delivery has a hole here — and deliberately NOT an exit code: `tools/figure-run.js`
+    tallies it as the `unresolved` outcome, which [USER] ruling R9 says is counted and
+    named but never fails a run.
+
+    ⚠️ A configured-but-unmounted tree still raises SystemExit out of `resolve`, and that
+    MUST keep travelling: it is the difference between "this figure is missing" and "every
+    figure is about to silently resolve to superseded artwork".
+    """
+    out = {}
+    for n in names:
+        p, key = resolve(n, trees, precedence, exts)
+        out[n] = {'path': str(p), 'edition': key} if p else None
+    return out
+
+
 def main(book, names):
     cfg = load_config()
     trees = load_trees(book, cfg)
@@ -92,6 +112,19 @@ def main(book, names):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 3:
+    argv = sys.argv[1:]
+    as_json = bool(argv) and argv[0] == '--json'
+    if as_json:
+        argv = argv[1:]
+    if len(argv) < 2:
         sys.exit(__doc__)
-    sys.exit(main(sys.argv[1], sys.argv[2:]))
+    if as_json:
+        cfg = load_config()
+        trees = load_trees(argv[0], cfg)
+        report = resolve_report(argv[1:], trees, cfg['editionPrecedence'])
+        print(json.dumps(report, ensure_ascii=False))
+        # Exit 0 even when names went unresolved: see resolve_report's docstring. A
+        # non-zero exit here is reserved for a failure of the RESOLVER, which the caller
+        # must treat as fatal.
+        sys.exit(0)
+    sys.exit(main(argv[0], argv[1:]))

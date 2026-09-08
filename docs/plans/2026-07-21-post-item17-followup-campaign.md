@@ -2,7 +2,92 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-07** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-08** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **[USER] DECIDES ON PR #457. THEN DEPLOY, THEN THE FIRST *AUTHORISED* PAID FIGURE RUN.**
+
+✅ **THE DRIVER IS BUILT. M5'S BOOTSTRAP DEADLOCK IS BROKEN.** The previous block's single next
+action is DONE — all of Tasks 0b and 1–6b, plus the §C138 `withComposedHash` fix.
+→ **PR [#457](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/457)**, branch
+`feat/m5-figure-driver`, **pushed, NOT merged.** 42 commits.
+🔴 **THIS BRANCH CARRIES A `server/` CHANGE AND THE LAST ONE DID NOT.** `figureReviewService.js`
+now requires the shared `tools/lib/figure-enumerate.cjs`, so the driver and the review panel cannot
+drift — [USER] chose this over shipping it driver-only. Behaviour is unchanged (the moved body is
+byte-identical, the five server figure suites report the same counts either side), **but the panel
+picks it up only on a DEPLOY.** ⚠️ And merging pushes `main`, which can strand prod's content
+backup until the next deploy (§ *Content delivery* in CLAUDE.md) — **deploy after merging.**
+
+**0 ISK. Nothing under `books/` was touched. No chapter published.** The first live paid run is a
+separate [USER]-authorised step; `--dry-run` spawns the paid stage **zero** times, asserted on a
+spawn counter.
+
+**Acceptance is FREE and re-derivable — run it, do not quote it:**
+`node tools/figure-run.js --book efnafraedi-2e --chapter 4 --dry-run` → exit 0, the tally sums to
+the enumerated count (the driver asserts that itself), `failed-prepare` 0. **Chapter 11 went from
+`VERDICT needs a human` to `VERDICT ok`** once the charset defect below was fixed.
+🔴 **No test count and no CI verdict is recorded here** (§ One source of truth). What IS recorded is
+the *property*: the failing set is **identical BY NAME to the branch point in both directions**,
+with the volatile `NNms` suffix stripped and a planted row on each side proving the comparator
+fires. Baseline and final sets are in the PR; re-derive from the Actions tab.
+
+### 🔴 THE PLAN'S CENTRAL DESIGN DECISION WAS REFUTED BEFORE IT WAS BUILT — AND THIS IS THE LESSON
+The plan keys `unreadable-text` on **`formTextXObjects > 0`**, because the OLD extractor could not
+see text inside `/Form` XObjects (274 chemistry vectors — §C138, measured and correct **when
+written**). **PR #452 replaced that reader the day after**, and pdfplumber descends into forms.
+▶ Measured over the 817-figure read population: the rule fires on **216 figures, is wrong on 216 of
+216, and has ZERO true positives anywhere in the corpus.** The plan's own named true positive,
+`CNX_Chem_04_04_limiting`, is cited as `blocks: 0`; it measures **4 blocks, 4 sendable, clean
+English**, and short-circuits to `translated` before the discriminator is reached.
+✅ Now keyed on **`undecodedBlocks > 0`** (positive evidence), with `chars === 0 &&
+formTextXObjects > 0` kept ONLY as a read-layer regression sentinel that has no corpus exerciser
+today and says so in the code.
+🔴 **A PREMISE DOES NOT ACQUIRE A DATE FROM THE DOCUMENT THAT CARRIES IT.** CLAUDE.md already states
+this; here it cost nothing only because a read-only recon pass checked **193 plan claims against the
+tree** before any code was written. **That pass is the reusable part of this session, not the code.**
+
+### 🔬 The adversarial review — 30 raised, 27 confirmed by execution, 3 refuted, 25 fixed, 2 disputed
+Five lenses over the whole branch, every finding handed to a separate agent told to REFUTE it.
+**All three blocking defects live in SEAMS**, and each was found by running the code, never by
+reading it:
+- **Two ch21 figures de-hashed to ONE artwork file** — `…RadioDecay-d92b` (particle types) and
+  `-e619` (decay types). Double spend, wrong picture published, `VERDICT ok`. 🔴 **Nothing
+  downstream could see it: `figure-prepare.py` stages artwork AS the requested basename, so the
+  identity check compared the name with itself.** Every guard was downstream of the substitution.
+- **An unreadable sidecar was treated as "no sidecar"** — `readSidecar` returns `null` for *absent*
+  and *malformed* alike, and "no sidecar = spendable" is what protects an editor's work, so a
+  git-conflicted sidecar was re-bought and overwritten, destroying an approval, under a green
+  verdict. **Same class as §C14 ③'s null glossary: a gate keyed on one representation of "nothing",
+  walked past by another.**
+- **A pdfminer debug token drawn on a published figure** — `CNX_Chem_05_02_FoodLabel` (chapter 5,
+  the next chapter the loop reaches) has 28 sendable and 2 undecodable blocks; `sendable > 0`
+  short-circuits, so it bucketed `translated` and the composed SVG carried two live `<text>`
+  elements reading `(cid:127) 5% or less`. ▶ **The control that settles it: `artwork.svg` holds
+  ZERO `<text>` elements** — strip-text removes every one and compose redraws them all, so there is
+  no path where the original English survives instead. **Two earlier agents had flagged this exact
+  gap as an "open concern" and moved on; running the chain turned it from a taxonomy quibble into a
+  reader-visible defect.**
+⚠️ **The 2 disputes were REFUSALS ON MEASUREMENT and both were right** — one proposed fix would have
+made the driver print "could not decode this text" over figures with a complete font table; the
+other's named trigger provably cannot produce the failure. **An agent that implements a finding it
+measured as wrong is worse than one that argues back.**
+
+### ⚠️ Found while doing the above — each with an owner, none blocking the merge
+| what | where |
+|---|---|
+| **`strip-text.py` blanks 8 figures whose text is a CLIPPING path (`7 Tr`)** — bisected, scoped, **recorded not fixed**. Live exposure 0 (all 8 classify `copied-photo`) and **nothing enforces that**. Every text-based check passes on the wreckage; only pixels see it | `strip-text.py` docstring |
+| **root `LICENSE`'s MIT→AGPL enumeration was stale** — 8 drifted lines, 1 edge whose file no longer exists, 2 real edges never written down. CLAUDE.md says re-derive it and never trust it; nobody had | root `LICENSE` |
+| **`tools/figure-run.js` has been an unclassified `01-source` reader since it existed** — invisible to `source-write-guard` because every path literal lived in a variable, not the string the guard greps for. **A guard keyed on a SPELLING rather than a BEHAVIOUR** | `source-write-guard.test.js` |
+| **A hand-picked basename charset refused a real figure and cost chemistry ch11** — `CNX_Chem_11_02_Fe(NO3)3_img`, the ONLY rejection among 3,311 enumerated figures across 56 chapters | `figure-prepare.py` |
+| `applyPartialDriftGuard`'s refusal semantics, and `figure-compose.py`'s recompose-drift question | open design items, named in the code |
+| **Enumeration is ALL images; the review panel shows only the `<figure>` subset.** On ch04, 10 of 19 translated figures have no `<figure>` node — the driver NAMES them ([USER] ruling R7) | `figure-enumerate.cjs` |
+
+⚠️ **`docs-check` fires on any `tools/**` change and regenerates `docs/_generated/`.** This branch
+adds a tool, so the gate was red and no vitest run could see it. Regenerated and committed —
+**expect this on every branch that adds a tool.**
+
+---
+
+## ⏩ RESUME — state as of **2026-09-07** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — **BUILD THE DRIVER (M5 Tasks 0b, 1–6b).**
 
@@ -56,6 +141,40 @@ and unedited.
 | **`C2b` now GATES.** 0 today; **its first red is a real finding, not a harness fault** | the harness |
 | R3's `/Form` walk is a **no-op on EPS-sourced figures** — a property of ghostscript's `pdfwrite`, which emits no forms, not of EPS | `READ-LAYER-ACCEPTANCE.md` |
 | C4 geometry: **143 of 530 figures move a block >1pt**; "just axis ticks" is refuted by its own control. Prior favours *correction*; the deciding instrument is a **composed-image diff**, which belongs with the driver | register § ④ |
+
+### ⏭ THE NAMED FOLLOW-UP — §C139, ITS OWN PR AFTER #457 MERGES ([USER] 2026-09-08)
+
+🔴 **NEARLY HALF OF CHEMISTRY'S IMAGES CANNOT APPEAR IN THE REVIEW PANEL AT ALL — AND 227 OF THEM
+ARE ALREADY IN `02-structure`, ONE UNREAD ARRAY AWAY.** Measured 2026-09-08 with the branch's own
+`enumerateChapterImages` over every chapter of `efnafraedi-2e`:
+
+| | images | reviewable | **not** |
+|---|---|---|---|
+| **book** | **1,148** | **627** | **521 (45.4%)** |
+| ch07 | 159 | 28 | 131 |
+| ch20 | 134 | 24 | 110 |
+| ch04 | 30 | 18 | 12 |
+| ch05 | 24 | 24 | **0** |
+
+⚠️ **ONLY 3 OF 23 CHAPTERS HAVE NO GAP, AND ch04 IS NOT REPRESENTATIVE IN EITHER DIRECTION** — a
+number quoted from one chapter (this session first reported "10 of 19 on ch04") describes nothing.
+The unreviewable images cluster hard by container: **156 `exercise>solution` · 121 `example` ·
+100 `exercise>problem` · 105 other · 29 `table` · 10 `note`** — worked problems and their
+solutions, which in a chemistry text is where the reaction schemes live.
+
+✅ **THE CHEAP TIER, AND IT NEEDS NO RE-EXTRACTION AND NO CNXML PARSING.** `02-structure` carries a
+top-level **`inlineMedia`** array holding these images with `src`, `id` and an `alt` bearing its own
+`segmentId`. `listStructureFigures` walks only `structure.content` for `type === 'figure'` and
+**never looks at `inlineMedia`**. Reading it reaches **227 of the 521 (43.6%)** — a service-side
+change alone. ▶ **The remaining 294 (56.4%) are absent from `02-structure` entirely** and are the
+"three legs" the M5 plan named: extractor change, then re-extraction.
+⚠️ **A caption-less card already degrades correctly and that is not luck** — `buildFigurePayload`
+hands `referenceText` to `captionDivergence`, whose own docstring calls the empty-reference `[]`
+*"designed silence, NOT a false all-clear"*. And the route returns only figures **that have a
+sidecar**, so widening enumeration surfaces nothing until the driver has actually translated one —
+which is what makes this safe to land before it has anything to show.
+🔴 **Re-derive these numbers before acting on them; do not quote this table.** The producer is
+`enumerateChapterImages` plus a read of each module's `inlineMedia`, and both move with the corpus.
 
 ### 🔬 How this campaign was run, in one line each — the parts that changed outcomes
 - **A five-lens adversarial review** of the whole branch, every finding handed to a separate agent

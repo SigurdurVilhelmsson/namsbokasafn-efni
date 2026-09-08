@@ -32,6 +32,7 @@
 | `exercise-assemble` | (item 9 / D3). The inject-stage counterpart for exercise content. |
 | `exercise-extract` | segments (item 9 / D3). |
 | `export-corpus` | Emits, per segment, the four pipeline tiers {EN, MT, faithful, localized} |
+| `figure-run` | The M5 figure driver. It enumerates a chapter's figures, resolves each to its ar |
 | `generate-glossary` | translated CNXML files. Produces a book-wide glossary sorted by |
 | `generate-image-mapping` | translated figure files. This is the producer side of the image-localization |
 | `generate-index` | translated CNXML files and organizing them alphabetically with |
@@ -72,6 +73,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*51 tools total (51 active, 0 deprecated)*
+*52 tools total (52 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.

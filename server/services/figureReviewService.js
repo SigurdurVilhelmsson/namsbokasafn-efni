@@ -28,6 +28,11 @@ const { decimalSeparatorWarnings, captionDivergence } = require(
 const { loadImageBasenameMap } = require(
   path.join(__dirname, '..', '..', 'tools', 'lib', 'image-basename-map.cjs')
 );
+// The figure enumeration predicate, shared with the M5 driver so the panel's
+// idea of a figure and the driver's cannot drift. Same permitted direction.
+const { listStructureFigures } = require(
+  path.join(__dirname, '..', '..', 'tools', 'lib', 'figure-enumerate.cjs')
+);
 
 /**
  * Every function below takes `db` explicitly so a test can inject a temp
@@ -182,67 +187,22 @@ function saveBlockEdit(db, { bookId, basename, blockKey, isText, editedBy }) {
 /**
  * Every figure basename in a module, in document order, deduplicated.
  *
- * ⚠️ Figures nest arbitrarily (section > example > figure), so this walks the
- * whole structure tree rather than scanning one level. The basename idiom is a
- * plain `path.basename(src, extname(src))`, so
- * `../../media/CNX_Chem_01_01_ChemWeb.jpg` -> `CNX_Chem_01_01_ChemWeb`.
+ * 🔴 THE PREDICATE ITSELF LIVES IN tools/lib/figure-enumerate.cjs, so the M5
+ * figure driver (tools/figure-run.js) and this review panel cannot drift apart
+ * about what a figure is. Its docstring carries the DO-NOT-UNIFY rule about the
+ * renderer's derivation — read it there before changing either side.
  *
- * 🔴 DO NOT "UNIFY" THIS WITH THE RENDERER'S DERIVATION. This comment used to
- * say the idiom was identical to the renderer's, and that WAS true — which is
- * precisely why the review badge fired on zero production figures. The two
- * sides read different vintages of the same figure and must derive the key
- * differently:
- *   - HERE the input is 02-structure/, extracted from 01-source, so the src
- *     basename already IS the English one and a plain basename is correct.
- *   - the RENDERER's input is 03-translated/, cnxml-inject's OUTPUT, where a
- *     mapped `<image src>` has been swapped to the translated variant; it must
- *     invert books/<slug>/media/image-mapping.json first (see
- *     sidecarBasenameForSrc in cnxml-render.js).
- * Both then agree on the ENGLISH basename, which is the join key the sidecar
- * and applyApprovedFigureEdits are written against. Copying either derivation
- * onto the other side reintroduces the defect.
- *
- * Returns the caption/alt segment ids alongside, because the caller needs the
- * module's own prose as captionDivergence's reference text.
+ * This wrapper is the path resolution only: 02-structure/<chapterDir>/ via
+ * segmentParser.getModulePaths, which is where server/ owns the chapterLabel
+ * conversion. figure-enumerate.cjs may not require server/ (the reverse of the
+ * permitted direction), so it takes the resolved path instead.
  *
  * @returns {Array<{basename:string, captionSegmentId:string|null, altSegmentId:string|null}>}
  *   Empty when the module has no structure file or no figures — never throws.
  */
 function listModuleFigures(bookSlug, chapter, moduleId) {
   const paths = segmentParser.getModulePaths(bookSlug, chapter, moduleId);
-  let structure;
-  try {
-    structure = JSON.parse(fs.readFileSync(paths.structure, 'utf-8'));
-  } catch {
-    return []; // absent or malformed: a module with no structure has no figures
-  }
-  const out = [];
-  const seen = new Set();
-  const visit = (node) => {
-    if (Array.isArray(node)) {
-      node.forEach(visit);
-      return;
-    }
-    if (!node || typeof node !== 'object') return;
-    if (node.type === 'figure') {
-      const src = node.media && node.media.src;
-      if (typeof src === 'string' && src) {
-        const basename = path.basename(src, path.extname(src));
-        if (basename && !seen.has(basename)) {
-          seen.add(basename);
-          out.push({
-            basename,
-            captionSegmentId: (node.caption && node.caption.segmentId) || null,
-            altSegmentId: (node.media.alt && node.media.alt.segmentId) || null,
-          });
-        }
-      }
-      // deliberately no early return: a figure may nest another figure
-    }
-    for (const v of Object.values(node)) visit(v);
-  };
-  visit(structure.content);
-  return out;
+  return listStructureFigures(paths.structure);
 }
 
 /**
@@ -326,6 +286,13 @@ function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
   // approval, and the only symptom would be a badge that never turns green.
   const existing = readSidecar(bookDir, basename);
   const composedHash = (existing && existing.composedHash) || null;
+  // 🔴 THE SECOND HALF OF THE PUBLISH STAMP, CARRIED FOR THE SAME REASON (M5 review
+  // editorial/F5). `composedVersion` says WHICH COMPOSER drew the published SVG, and
+  // `tools/figure-run.js`'s `isStale` reads it to answer a COMPOSER_VERSION bump. This function
+  // rebuilds the whole sidecar, so dropping it makes every approval look like "I do not know
+  // which composer drew this" — one spurious recompose-and-republish per approval, silent, with
+  // nothing failing. An approval does not change the published artwork, so neither stamp moves.
+  const composedVersion = (existing && existing.composedVersion) || null;
 
   const fig = getFigure(db, bookId, basename, mtBlocks, composedHash);
   if (!fig) return { written: false, path: null, composedHash };
@@ -353,6 +320,9 @@ function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
     // when there is none, so JSON.stringify omits the key entirely and a
     // never-composed sidecar keeps the exact shape it has today.
     ...(composedHash ? { composedHash } : {}),
+    // Never invented: a figure that was never published has no version to carry, and writing
+    // one would claim the artwork is current when no artwork was ever composed.
+    ...(composedVersion ? { composedVersion } : {}),
     composerVersion: COMPOSER_VERSION,
     blocks: fig.blocks,
   };

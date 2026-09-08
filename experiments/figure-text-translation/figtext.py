@@ -2,7 +2,7 @@
 and lay translated text back with the block's own geometry. Pure geometry -
 no assumption that text is centred, and lines are split on the text NORMAL so
 rotated blocks work the same as horizontal ones."""
-import math, json
+import math, json, re
 
 def proj(r):
     """distance along the text normal (which line of the block a run sits on)"""
@@ -183,3 +183,39 @@ def normalise_block_value(value, arc):
     if arc:
         return value if isinstance(value, str) else ''.join(value)
     return [value] if isinstance(value, str) else list(value)
+
+
+# pdfminer's placeholder for a glyph it could not map to Unicode: `(cid:127)`.
+# ⚠️ TWO REPRESENTATIONS OF ONE TOKEN, IN TWO MODULES, AND THEY MUST NOT DRIFT.
+# `readlayer.CID` is the DETECTOR ('(cid:' as a substring, which is what `_looks_undecoded`
+# and therefore `sendable` key on); this is the REMOVER, and it has to match everything the
+# detector finds or a held block is drawn with its placeholder anyway. Asserted against
+# `readlayer.CID` rather than described - test_figure_compose.py case 9i.
+_CID_TOKEN = re.compile(r'\(cid:\d+\)')
+
+
+def strip_undecodable(value):
+    """Remove pdfminer's `(cid:N)` placeholders from text that is about to be DRAWN.
+
+    🔴 A PLACEHOLDER IS NEVER READER-FACING CONTENT, AND THE DRAW SITE IS THE ONLY PLACE
+    IT CAN REACH A READER. A block whose own text did not decode is held back from the MT
+    by `sendable`, so it takes compose.py's ENGLISH-KEPT branch - and `strip-text.py` has
+    already removed EVERY glyph from the artwork, so the label is redrawn from this text or
+    not at all. Measured 2026-09-07 on CNX_Chem_05_02_FoodLabel (47 blocks, 28 sendable,
+    2 undecoded): figure-compose.py exited 0 and translated.svg carried two live elements
+    reading `(cid:127) 5% or less` and `(cid:127) 20% or`, under the driver's VERDICT ok.
+
+    ⚠️ IT IS NOT DONE AT EXTRACTION, DELIBERATELY. The token is the POSITIVE EVIDENCE the
+    hold is keyed on (`readlayer._looks_undecoded`); removing it upstream would make an
+    undecodable block read as clean prose and send it to the paid MT.
+
+    ⚠️ IT REMOVES THE TOKEN, NOT THE LABEL. On the measured figure the surrounding text
+    ('5% or less') is ordinary English that DID decode, and blanking the line would erase
+    it - a silent deletion, which compose.py's own ENGLISH-KEPT branch exists to avoid.
+
+    `value` is a str (an arc block, laid out glyph by glyph) or a list of line strings;
+    the shape is preserved so the caller's arc/straight branch stays the one decision.
+    """
+    if isinstance(value, str):
+        return _CID_TOKEN.sub('', value).strip()
+    return [_CID_TOKEN.sub('', line).strip() for line in value]

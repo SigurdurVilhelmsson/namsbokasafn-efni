@@ -217,11 +217,12 @@ describe('composedHash', () => {
     expect(keys[keys.indexOf('renderHash') + 1]).toBe('composedHash');
   });
 
-  it('publishes an UNAPPROVED figure and stamps nothing', () => {
-    // 🔴 The ordinary case, and it must not be an error: the plan is to publish
-    // MT output and review it afterwards. A sidecar nobody has approved has no
-    // renderHash to copy, and effectiveState reads mt-preview regardless — so
-    // the reader correctly gets a badged figure.
+  it('publishes a sidecar with NO renderHash and stamps nothing', () => {
+    // ⚠️ CORRECTED 2026-09-07 (M5 Task 6b). This used to be described as "the ordinary case:
+    // a sidecar nobody has approved has no renderHash to copy". The driver now mints every
+    // sidecar WITH a renderHash and no `state`, so this shape is the exception — hand-written,
+    // or from before the driver existed. It must still publish rather than error, and
+    // effectiveState reads mt-preview regardless, so the reader gets a badged figure.
     const r = publishFigureSvg(scaffold());
     expect(r.ok).toBe(true);
     expect(r.composedHash).toBeNull();
@@ -239,9 +240,156 @@ describe('composedHash', () => {
         .map((l) => l.trim().replace(/,$/, ''))
         .filter(Boolean);
     const added = norm(after).filter((l) => !norm(before).includes(l));
-    expect(added).toHaveLength(1);
-    expect(added[0]).toContain('composedHash');
+    // TWO lines now, and only two: `composedHash` and `composedVersion` are one stamp with two
+    // fields — the hash says WHICH TEXT the SVG was drawn from, the version says WHICH COMPOSER
+    // drew it. Both describe the published artwork; neither touches renderHash.
+    expect(added).toHaveLength(2);
+    expect(added.map((l) => l.split(':')[0])).toEqual(['"composedHash"', '"composedVersion"']);
     expect(norm(before).filter((l) => !norm(after).includes(l))).toEqual([]);
+  });
+
+  // 🔴 A SHIPPED BUG, found while reviewing the M5 driver plan (register §C138).
+  // `withComposedHash` stamped the NEW hash when the loop reached `renderHash`, then
+  // walked on to the sidecar's OWN pre-existing `composedHash` key and copied the STALE
+  // value back over it. The returned object is built from `sidecar.renderHash` by a
+  // different path and stayed correct — so a test asserting on `r.composedHash` passes
+  // VACUOUSLY against the live bug. These assert on disk, which is the only place the
+  // defect is observable.
+  //
+  // Consequence: a re-publish never completed the correction loop. `composedHash` stayed
+  // behind `renderHash` for ever, so every later `--stale` query re-selected the same
+  // figure and an approved figure's badge could never go green.
+  it('OVERWRITES a stale composedHash that is already in the sidecar', () => {
+    const args = scaffold({
+      sidecar: { ...approved(), composedHash: 'stale-from-an-earlier-publish' },
+    });
+    const expected = readSidecar(bookDir, BASENAME).renderHash;
+    const r = publishFigureSvg(args);
+    expect(r.ok).toBe(true);
+    expect(readSidecar(bookDir, BASENAME).composedHash).toBe(expected);
+  });
+
+  // The control for the fix's SHAPE. Skipping the key in the loop must still place it
+  // directly after `renderHash`, even when the file on disk had it somewhere else —
+  // otherwise the fix trades a stale value for a churning diff. An unconditional
+  // re-assign passes the test above and fails this one.
+  it('restores the canonical key order when composedHash arrived BEFORE renderHash', () => {
+    const renderHash = computeRenderHash(BLOCKS, COMPOSER_VERSION);
+    const args = scaffold({
+      sidecar: {
+        version: 1,
+        basename: BASENAME,
+        composedHash: 'stale-and-in-the-wrong-place',
+        state: 'approved',
+        renderHash,
+        composerVersion: COMPOSER_VERSION,
+        blocks: BLOCKS,
+      },
+    });
+    publishFigureSvg(args);
+    const written = readSidecar(bookDir, BASENAME);
+    const keys = Object.keys(written);
+    expect(keys[keys.indexOf('renderHash') + 1]).toBe('composedHash');
+    expect(written.composedHash).toBe(renderHash);
+    // Non-vacuity: the key really was somewhere else before, so this is a MOVE.
+    expect(keys.filter((k) => k === 'composedHash')).toHaveLength(1);
+  });
+});
+
+/**
+ * 🔴 THE COMPOSE VINTAGE CHECK — the window this publisher's own re-read opens.
+ *
+ * `publishFigureSvg` reads the sidecar from disk AFTER the caller has already composed the
+ * SVG. It has to: `withComposedHash` MERGES the stamp into the file as it now stands, so a
+ * publisher handed the caller's in-memory copy would write that copy back wholesale and
+ * silently un-approve a head editor's concurrent correction. The re-read is correct; what was
+ * missing is any check that it read the SAME blocks the SVG was drawn from.
+ *
+ * Without it, a `writeSidecar` landing inside the caller's compose — `applyApprovedFigureEdits`
+ * on the very figure being recomposed — makes the stamp certify blocks the SVG was never
+ * composed from: `composedHash === renderHash`, `effectiveState` goes 'approved', the renderer
+ * emits NO badge, `isStale` goes false, and the reader sees the PRE-correction artwork for
+ * ever. Nothing in the repo can see it, because the sidecar is self-consistent by construction.
+ *
+ * ⚠️ The expectation is `renderHash` COPIED from the caller's own sidecar, never a hash
+ * recomputed from its blocks: a hand-written sidecar whose stored hash disagrees with its
+ * blocks would otherwise refuse on every run, for ever. "Copied, never computed" is the rule
+ * on both sides of this call.
+ */
+describe('the compose vintage check', () => {
+  const approved = () => ({
+    version: 1,
+    basename: BASENAME,
+    state: 'approved',
+    renderHash: computeRenderHash(BLOCKS, COMPOSER_VERSION),
+    composerVersion: COMPOSER_VERSION,
+    blocks: BLOCKS,
+  });
+
+  it('REFUSES when the sidecar on disk is not the one the caller composed from', () => {
+    const args = scaffold({ sidecar: approved() });
+    const r = publishFigureSvg({ ...args, expectedRenderHash: 'the-vintage-the-caller-composed' });
+    expect(r.ok).toBe(false);
+    expect(r.reason).toBe('sidecar-moved');
+    // BOTH sides named, as `basename-mismatch` does — otherwise the operator cannot tell
+    // which of the two is the stale one.
+    expect(r.message).toContain('the-vintage-the-caller-composed');
+    expect(r.message).toContain(approved().renderHash);
+  });
+
+  it('leaves the tree exactly as it was when it refuses', () => {
+    const args = scaffold({ sidecar: approved() });
+    const before = fs.readFileSync(args.sidecarPath, 'utf-8');
+    publishFigureSvg({ ...args, expectedRenderHash: 'moved' });
+    // No artwork published, and no stamp: a refusal must be a non-event on disk, or the
+    // next run would read the figure as current and never revisit it.
+    expect(fs.existsSync(path.join(bookDir, 'media', `${BASENAME}_IS.svg`))).toBe(false);
+    expect(fs.readFileSync(args.sidecarPath, 'utf-8')).toBe(before);
+  });
+
+  it('PUBLISHES when the vintage agrees — the control that keeps the refusal meaningful', () => {
+    const args = scaffold({ sidecar: approved() });
+    const expected = approved().renderHash;
+    const r = publishFigureSvg({ ...args, expectedRenderHash: expected });
+    expect(r.ok).toBe(true);
+    expect(readSidecar(bookDir, BASENAME).composedHash).toBe(expected);
+  });
+
+  it('COPIES the expectation rather than recomputing it from the blocks', () => {
+    // A sidecar whose stored renderHash cannot be the hash of its own blocks. A publisher
+    // that compared `computeRenderHash(sidecar.blocks, …)` against the caller's expectation
+    // refuses here — for ever, on every run — while a publisher that compares the stored
+    // values agrees. Only this fixture separates the two.
+    const args = scaffold({ sidecar: { ...approved(), renderHash: 'not-a-hash-at-all' } });
+    const r = publishFigureSvg({ ...args, expectedRenderHash: 'not-a-hash-at-all' });
+    expect(r.ok).toBe(true);
+    expect(readSidecar(bookDir, BASENAME).composedHash).toBe('not-a-hash-at-all');
+  });
+
+  it('does not check at all when the caller states no expectation', () => {
+    // The hand-run CLI composes by hand and passes no key, and must keep publishing. The
+    // check is the DRIVER's, because only the driver knows which blocks it fed the composer.
+    const args = scaffold({ sidecar: approved() });
+    expect(publishFigureSvg(args).ok).toBe(true);
+    expect('expectedRenderHash' in args).toBe(false); // non-vacuity: the key really is absent
+  });
+
+  it('accepts a null expectation against a sidecar that has no renderHash', () => {
+    // The legacy shape: hand-written, or from before the driver existed. The driver passes
+    // `null` for it, which must agree with `undefined` on disk rather than refusing.
+    const args = scaffold();
+    const r = publishFigureSvg({ ...args, expectedRenderHash: null });
+    expect(r.ok).toBe(true);
+    expect(r.composedHash).toBeNull();
+  });
+
+  it('REFUSES a null expectation once a renderHash has appeared underneath it', () => {
+    // The same legacy shape, with a concurrent approval landing during compose. `null` vs a
+    // real hash is a move, and the || null normalisation must not swallow it.
+    const args = scaffold({ sidecar: approved() });
+    const r = publishFigureSvg({ ...args, expectedRenderHash: null });
+    expect(r.ok).toBe(false);
+    expect(r.reason).toBe('sidecar-moved');
   });
 });
 
