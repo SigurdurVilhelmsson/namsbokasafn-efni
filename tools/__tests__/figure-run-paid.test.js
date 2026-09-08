@@ -1205,9 +1205,14 @@ describe('the pre-flight refuses an UNPUBLISHABLE mapped entry before the money'
     expect(fs.readdirSync(path.join(bookDir, '01-source', 'ch01'))).toEqual(['m00001.cnxml']);
   });
 
-  // 🔴 CONTAINMENT IS WIDER THAN THE EXTENSION CHECK. A copy is not published by the driver
-  // today, but a row that would write outside media/ is a real defect in a committed data file
-  // and `unmintable` already downgrades copies for the milder reason of being unpublishable.
+  // 🔴 CONTAINMENT IS WIDER THAN THE EXTENSION CHECK, AND IT STANDS ON ITS OWN REASONING.
+  // A copy is not published by the driver, so nothing here is about to write that path — but
+  // an outputName that escapes media/ is a defect in a COMMITTED data file, and it stays one
+  // for whoever reads the row next: those bytes sit beside the licensed OpenStax copy.
+  // ⚠️ THIS COMMENT USED TO LEAN ON A PRECEDENT THAT NO LONGER EXISTS — "`unmintable` already
+  // downgrades copies for the milder reason of being unpublishable". dataflow/F5 removed
+  // exactly that downgrade (a copy is no longer failed over a publish the driver never
+  // attempts), so the containment refusal is now the ONLY thing that fails a copy here.
   it('refuses an escaping outputName on a COPIED figure too', async () => {
     const { booksRoot } = makeBook({
       figures: ['PHOTO1'],

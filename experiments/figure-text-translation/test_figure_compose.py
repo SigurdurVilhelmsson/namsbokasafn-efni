@@ -776,5 +776,49 @@ with tempfile.TemporaryDirectory() as td:
           == ['Nutrition Facts', 'Calories 250'],
           repr(_FT.strip_undecodable(['Nutrition Facts', 'Calories 250'])))
 
+
+# ── 9k. THE PUREST CASE: a block whose ENTIRE text is the placeholder ─────────────────
+# 🔴 THE ONE WAY THE SCRUB COULD BE WORSE THAN THE DEFECT. Every case above has English
+# AFTER the token, so something is left to draw. A lone unmerged bullet glyph strips to '',
+# and `wrap([''])` -> [''] -> `measure('')` -> `show_text('')` -> svgout. If that path
+# refused or produced a malformed SVG, this fix would convert reader-visible garbage into a
+# FATAL failed-compose for the figure, which is strictly worse. Measured, not assumed.
+with tempfile.TemporaryDirectory() as td:
+    out = Path(td) / 'fig-pure-cid'
+    prep = run_prepare(FIXTURE, out, 'CNX_Fixture_PureCid')
+    check('9k PRECONDITION prepare produced the fixture directory', prep.returncode == 0,
+          f'exit {prep.returncode}: {prep.stderr.strip()[-400:]}')
+    runs = json.loads((out / 'runs.json').read_text())
+    runs[0]['text'] = '(cid:127)'
+    (out / 'runs.json').write_text(json.dumps(runs, ensure_ascii=False))
+    entries = regenerate_blocks(out)
+    check('9l the whole-placeholder block is held back', 
+          {e['key']: e['send'] for e in entries}.get('(cid:127)') is False,
+          f"{[(e['key'], e['send']) for e in entries]}")
+
+    tr = write_tr(Path(td) / 'pure.json',
+                  {K_HYP: 'Setja fram tilgatu', K_TEST: 'Profa tilgatuna'})
+    r = run_wrapper('--out', out, '--translations', tr)
+    d = load_json(out / 'compose.json') or {}
+    check('9m composing a figure whose label is NOTHING BUT a placeholder still succeeds',
+          r.returncode == 0 and d.get('outputPath'), f'exit {r.returncode}: {d!r}')
+
+    svg = (out / 'translated.svg').read_text(encoding='utf-8') \
+        if (out / 'translated.svg').exists() else ''
+    texts = drawn_text(out / 'translated.svg') if (out / 'translated.svg').exists() else []
+    check('9n ... the SVG is well formed and carries no placeholder',
+          svg.rstrip().endswith('</svg>') and '(cid:' not in svg, f'{len(svg)} bytes')
+    # POSITIVE CONTROL: the figure's other three labels are untouched, so 9n cannot pass
+    # against a composer that drew nothing at all.
+    check('9o ... and every OTHER label is still drawn',
+          all(any(w in t for t in texts)
+              for w in ('Setja fram tilgatu', 'Profa tilgatuna', 'H2O (g)')), f'{texts!r}')
+    # RECORDED, not merely tolerated: the stripped label leaves ONE empty <text> element.
+    # It renders nothing and is well formed. `wrap()` already emits '' for a blank paragraph,
+    # so this shape predates the scrub - it is pinned here so a future change to it is a
+    # decision rather than a surprise.
+    check('9p ... leaving exactly one empty, inert <text> element',
+          sum(1 for t in texts if t.strip() == '') == 1, f'{texts!r}')
+
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)
