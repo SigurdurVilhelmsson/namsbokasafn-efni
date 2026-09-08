@@ -31,6 +31,7 @@ import {
   enumerateChapterFigures,
   isStale,
   normaliseTranslations,
+  verifyTranslatedKeys,
   summarise,
   runFigures,
   dehashStemClaims,
@@ -254,6 +255,39 @@ describe('normaliseTranslations', () => {
   it('survives a payload with no blocks at all', () => {
     expect(normaliseTranslations(null)).toEqual({ blocks: {}, dropped: [] });
     expect(normaliseTranslations({})).toEqual({ blocks: {}, dropped: [] });
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 verifyTranslatedKeys' TWO ARMS MEAN OPPOSITE THINGS TO THE OPERATOR, AND THEY HAD NO
+// DIRECT EXERCISER. `missing` is the money finding — a key that was BOUGHT and came back with
+// nothing usable ships in English and no downstream check can see it. `extra` is the
+// stale-directory finding — a key we never asked for means the payload belongs to another
+// figure or another vintage.
+//
+// The only exerciser produced `missing` alone and asserted `reason).toMatch(/k7/)`, which
+// matches under EITHER label: swapping the two filter bodies left all 195 tests green
+// (measured), and the operator's one diagnostic string then says "BOUGHT AND NOT RETURNED
+// (these ship in English)" about a key nobody paid for — sending them to look for lost money —
+// while a genuinely lost, paid-for key reads as a directory problem.
+//
+// ⚠️ THE ASSERTION MUST PIN THE PAIRING, NOT THE MEMBERSHIP. Both arms are non-empty here on
+// purpose: a case with only one populated arm cannot tell a swap from the truth.
+describe('verifyTranslatedKeys', () => {
+  it('puts a bought-and-unreturned key in `missing` and an unasked-for key in `extra`', () => {
+    expect(verifyTranslatedKeys(['k0', 'k1'], { k0: 'IS k0', GHOST: 'IS ghost' })).toEqual({
+      missing: ['k1'],
+      extra: ['GHOST'],
+    });
+  });
+
+  // The control: an exact agreement populates neither arm, so the test above is reporting a
+  // real difference rather than a function that always names something.
+  it('reports nothing when the key sets agree exactly', () => {
+    expect(verifyTranslatedKeys(['k0', 'k1'], { k0: 'IS k0', k1: 'IS k1' })).toEqual({
+      missing: [],
+      extra: [],
+    });
   });
 });
 
@@ -767,11 +801,15 @@ describe('the image-mapping pre-flight', () => {
     expect(statuses.has('unmintable')).toBe(false);
   });
 
-  it('the tally still sums when a figure is downgraded (partition survives the pre-flight)', async () => {
-    const result = await runFigures(CH04, { spawn: fakeSpawn() });
-    const summed = Object.values(result.tally).reduce((n, v) => n + v, 0);
-    expect(summed).toBe(result.figures.length);
-  });
+  // 🔴 THE PARTITION-UNDER-A-DOWNGRADE TEST USED TO LIVE HERE AND MEASURED NOTHING. It ran the
+  // plain ch04 fixture, in which NO figure is downgraded — the mapping statuses are
+  // {mapped: 21, mintable: 9}, `unmintable` is 0 and `failed-publish` is 0 — so it was a
+  // strict subset of "asserts its own partition" 300 lines above (the same two lines, minus
+  // that one's `toBeGreaterThan(0)`), while its NAME told a reviewer the interaction was
+  // covered. It has MOVED to the paid suite's `unmintable` fixture, where a downgrade really
+  // happens: see "the tally counts a DOWNGRADED figure in the failed-publish slot".
+  // ⚠️ It could not be made real here: the downgrade needs a basename the minter's own scan
+  // cannot see, which the corpus does not contain — §C115's raw-`>` shape has to be planted.
 });
 
 // ─────────────────────────────────────────────────────────────────────────────────────────

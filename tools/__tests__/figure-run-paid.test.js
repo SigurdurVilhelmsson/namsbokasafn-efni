@@ -362,6 +362,34 @@ describe('the purchase is recorded before anything that can fail after it', () =
     expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(true);
     expect(result.verdict.ok).toBe(true);
   });
+
+  // 🔴 THE OTHER ARM OF THE KEY-SET CHECK, AND THE ONE THAT HAD NO EXERCISER AT ALL.
+  // `verifyTranslatedKeys` reports `missing` (bought, nothing usable came back — it ships in
+  // English) and `extra` (a key we never asked for — the payload belongs to another figure or
+  // another vintage). The test above drives `missing` only, and its assertion `toMatch(/k7/)`
+  // is satisfied under EITHER label, so the two filter bodies could be swapped with the whole
+  // suite green (measured). The buckets and the exit code stay correct under a swap; only the
+  // ONE message that tells a human whether a reader is seeing English inverts.
+  //
+  // ⚠️ BOTH ARMS ARE POPULATED HERE ON PURPOSE — `k1` was bought and lost, `GHOST` was never
+  // asked for — because a case with one arm empty cannot tell a swap from the truth. The
+  // assertions pin the LABEL TO THE KEY, not the presence of either.
+  it('names the lost key and the unasked-for key under the RIGHT headings', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn({
+      prepare: () => ({ sendable: 2 }),
+      translate: () => ({ __blocks: { k0: ['IS k0'], GHOST: ['IS ghost'] } }),
+    });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-mt');
+    const reason = rec(result, 'FIG_A').reason;
+    expect(reason).toMatch(/BOUGHT AND NOT RETURNED \(these ship in English\): k1\./);
+    expect(reason).toMatch(/RETURNED BUT NEVER ASKED FOR: GHOST\./);
+    // …and the purchase is still on disk, both values, because step 7 precedes step 8.
+    expect(readSidecar(bookDir, 'FIG_A').blocks).toEqual({ k0: 'IS k0', GHOST: 'IS ghost' });
+    expect(spawn.countOf('compose')).toBe(0);
+  });
 });
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
@@ -681,6 +709,69 @@ describe('--stale and --force spend NOTHING', () => {
     expect(after.composedHash).not.toBe('STALE-FROM-AN-OLDER-COMPOSE');
   });
 
+  // 🔴 THE ONE LINE THAT KEEPS A PHOTOGRAPH OFF THE PAID PATH, AND IT HAD NO EXERCISER.
+  // `processFigureLive` opens with `if (rec.outcome !== 'translated') return;` — the sole
+  // separator between classification and the money. Widening it by one token
+  // (`&& rec.outcome !== 'copied-photo'`, or the same for copied-textless) left all 195 tests
+  // green, MEASURED, because no fixture in either suite put a non-translated figure in front
+  // of the live path with a mapping entry behind it.
+  //
+  // The cost is not a refund — it is a full-chapter false red. A `copied-*` figure has
+  // `sendable === 0`, so `blocks.json` carries no `send:true` block and
+  // `translate-blocks.mjs`'s own `blocks.filter((b) => b.send)` makes ZERO API requests: it
+  // writes `blocks: {}`, `normaliseTranslations` yields nothing, and the figure lands
+  // `failed-mt` with "translations-api.json is absent or carries no usable translation". On
+  // real chemistry ch04 that is 8 of 30 figures reported as MT failures an operator cannot
+  // tell from real ones.
+  //
+  // ⚠️ THE ASSERTION IS ON `outDirsFor('translate')` — NAMED, NOT COUNTED — plus `spent` on
+  // each copy. `rec.spent` is the driver's own record of "the MT was spawned for this figure"
+  // and had ZERO assertions anywhere in either suite before this test; it is a second,
+  // independent kill for the same mutation.
+  it('never spawns the MT for a copied figure, however the chapter is mixed', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_PHOTO', 'FIG_TEXTLESS', 'FIG_TEXT'],
+      // Mapped, so nothing else can refuse these figures ahead of the guard under test: the
+      // pre-flight must have no reason of its own to stop them.
+      mapping: [
+        { originalImage: 'FIG_PHOTO', outputName: 'FIG_PHOTO_IS.png', extension: '.png' },
+        { originalImage: 'FIG_TEXTLESS', outputName: 'FIG_TEXTLESS_IS.png', extension: '.png' },
+        { originalImage: 'FIG_TEXT', outputName: 'FIG_TEXT_IS.svg', extension: '.svg' },
+      ],
+    });
+    const spawn = fakeSpawn({
+      prepare: (b) => {
+        // The two copied shapes are DIFFERENT branches of classifyFigure and both must be
+        // held back: `imageXObjects > 0 && paintOps === 0` is copied-photo, anything else with
+        // sendable 0 is copied-textless. The fake's defaults are paintOps 5, so a bare
+        // `sendable: 0` would only ever produce the second of the two.
+        if (b === 'FIG_PHOTO') return { sendable: 0, imageXObjects: 1, paintOps: 0, __blocks: [] };
+        if (b === 'FIG_TEXTLESS')
+          return { sendable: 0, imageXObjects: 0, paintOps: 9, __blocks: [] };
+        return { sendable: 2 };
+      },
+    });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    // The premise: the two copies really did classify as the two different copied buckets.
+    expect(rec(result, 'FIG_PHOTO').outcome).toBe('copied-photo');
+    expect(rec(result, 'FIG_TEXTLESS').outcome).toBe('copied-textless');
+
+    // THE MONEY ASSERTION, NAMED: exactly one figure reached the paid stage.
+    expect(spawn.outDirsFor('translate')).toEqual(['FIG_TEXT']);
+    expect(rec(result, 'FIG_PHOTO').spent).toBe(false);
+    expect(rec(result, 'FIG_TEXTLESS').spent).toBe(false);
+    expect(rec(result, 'FIG_TEXT').spent).toBe(true); // …and the control, in the same run
+
+    // …and nothing was composed, recorded or published for either copy.
+    expect(spawn.outDirsFor('compose')).toEqual(['FIG_TEXT']);
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_PHOTO'))).toBe(false);
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_TEXTLESS'))).toBe(false);
+    // The whole chapter is HEALTHY: under the widened guard both copies land failed-mt and
+    // this flips to false.
+    expect(result.verdict.ok).toBe(true);
+  });
+
   it('spends only on the figure with NO sidecar when the chapter is mixed', async () => {
     const { booksRoot } = makeBook({
       figures: ['FIG_A', 'FIG_B', 'FIG_C'],
@@ -696,6 +787,30 @@ describe('--stale and --force spend NOTHING', () => {
     expect(spawn.outDirsFor('translate')).toEqual(['FIG_B']); // NAMED, not counted
     expect(spawn.countOf('compose')).toBe(3); // the control: all three still reached compose
     expect(result.tally.translated).toBe(3);
+  });
+
+  // 🔴 THE ONE ARGV TOKEN THE FAKE DOES NOT READ, AND THE ONLY ONE WHOSE ABSENCE IS FATAL.
+  // The fakes record `{stage, argv}` and consume only `--out`/`--basename`/`--json`, so
+  // deleting `'--book', args.book,` from the translate spawn left the whole suite green
+  // (measured) while the real callee refuses: `translate-blocks.mjs` exits 2 with
+  // `✗ REFUSED (no-book)` before it reads .env or builds a client, so EVERY translate-able
+  // figure of every chapter would land failed-mt and nothing would ever be bought.
+  // ⚠️ ADJACENCY, NOT MEMBERSHIP: the slug is also the book directory, so it appears inside
+  // `--out` on some layouts and a bare `toContain(SLUG)` could pass with the flag gone. The
+  // assertion reads the value AT the flag's index, which is how the callee reads it.
+  // ⚠️ THE OTHER THREE SPAWN FIELDS ARE DELIBERATELY NOT PINNED HERE. `command`, `cwd` and
+  // `env` were measured against the REAL children and are not load-bearing: figure-prepare.py
+  // and figure-compose.py both `os.environ.setdefault('FIGTEXT_PYLIBS', HERE/'pylibs')` and
+  // resolve every path from `__file__`, so running them from /tmp with FIGTEXT_PYLIBS unset
+  // produces a byte-identical blocks.json. Pinning them would pin a redundancy.
+  it('passes the book slug to the paid stage, at the flag the callee reads it from', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn();
+    await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    const call = spawn.calls.find((c) => c.stage === 'translate');
+    expect(call).toBeDefined(); // NON-VACUITY: the paid stage really was reached
+    expect(call.argv[call.argv.indexOf('--book') + 1]).toBe(SLUG);
   });
 });
 
@@ -768,6 +883,38 @@ describe('the pre-flight refuses before the money', () => {
     // The control: the OTHER figure in the same chapter went all the way through.
     expect(rec(result, 'FIG_PLAIN').outcome).toBe('translated');
   });
+
+  // 🔴 THE DOWNGRADE MUST REACH THE TALLY, NOT ONLY THE RECORD. Every assertion above reads
+  // `rec(...).outcome`, and `failed-publish` had NO tally-slot assertion anywhere on the
+  // branch — so a change that counted a figure in a slot other than the one its record names
+  // would keep the partition summing and turn the run GREEN, because `failed-publish` is fatal
+  // and most other slots are not. Measured: accumulating the tally inside the per-figure loop
+  // ahead of `applyMappingPreflight` (the obvious "avoid a second pass" refactor) counts this
+  // figure as `translated`, leaves `failed-publish` at 0, still sums to 2, and returns
+  // `verdict.ok === true` — with every record-level assertion above still green.
+  //
+  // ⚠️ THE THREE ASSERTIONS ARE ONE CLAIM AND NONE OF THEM IS REDUNDANT: the SLOT (which
+  // bucket), the SUM (nothing fell out of the partition), and the VERDICT (the run still
+  // needs a human). A sum alone is satisfied by any mis-bucketing.
+  //
+  // ⚠️ THIS REPLACES A TEST OF THE SAME NAME IN THE FREE SUITE that ran the plain ch04
+  // fixture, in which no figure is downgraded at all.
+  it('the tally counts a DOWNGRADED figure in the failed-publish slot', async () => {
+    const { booksRoot } = makeBook({
+      figures: ['FIG_RAWGT', 'FIG_PLAIN'],
+      unmintable: ['FIG_RAWGT'],
+    });
+    const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
+
+    // NON-VACUITY: a downgrade really happened in this run, and it is the pre-flight's.
+    expect(rec(result, 'FIG_RAWGT').outcome).toBe('failed-publish');
+    expect(result.tally['failed-publish']).toBe(1);
+    expect(result.tally.translated).toBe(1); // …and the other figure is still counted
+    const summed = Object.values(result.tally).reduce((n, v) => n + v, 0);
+    expect(summed).toBe(result.figures.length);
+    expect(summed).toBeGreaterThan(0);
+    expect(result.verdict.ok).toBe(false);
+  });
 });
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
@@ -830,6 +977,71 @@ describe('the minted sidecar and the minted mapping entry', () => {
     expect(fs.existsSync(path.join(bookDir, 'media', 'image-mapping.json'))).toBe(false);
   });
 
+  // 🔴 THE SAME ROLLBACK ON THE OTHER PATH, WHICH HAD NO EXERCISER. `publishFigureSvg` has
+  // THREE outcomes, not two: it refuses with seven reason codes AND it throws — `copyFileSync`
+  // and the `writeSidecar` after it are both unguarded. The suite's two rollback tests drive a
+  // publisher that RETURNS `ok:false`, and the one THROW test seeds the mapping entry so the
+  // figure is `mapped`, `minted` is null and the rollback there is a no-op. Deleting
+  // `restoreMapping(minted)` from the CATCH therefore left all 195 tests green (measured),
+  // while deleting the identical call from the refusal path one line below goes red — which is
+  // what makes the null an answer rather than a blind harness.
+  //
+  // 🔴 THE CONSEQUENCE IS A 404 ON THE READER'S PAGE, AND NO COUNT CAN SEE IT.
+  // `cnxml-inject.js`'s `applyImageBasenameSwaps` rewrites `<image src>` on a bare basename
+  // match and never checks the target exists; `cnxml-render.js` warns and renders anyway; and
+  // `generate-image-mapping.js`'s `mergeMapping` preserves entries absent from a fresh scan,
+  // so re-running the minter does NOT prune a dangling row. Bucket, tally and verdict are
+  // byte-identical with and without the rollback — only the file on disk differs, which is why
+  // the assertion is on the file.
+  //
+  // ⚠️ THE MINT MUST REALLY HAPPEN, so this fixture has NO mapping file at all. That is not an
+  // edge case: `books/lifraen-efnafraedi/` has no `media/image-mapping.json`, so on organic
+  // EVERY publishable figure is `mintable` and `minted !== null` is the main line.
+  it('rolls the minted entry back when the publish THROWS, not only when it refuses', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const mappingPath = path.join(bookDir, 'media', 'image-mapping.json');
+    expect(fs.existsSync(mappingPath)).toBe(false); // the pre-state: nothing to roll back TO
+
+    // ENOSPC is the production shape: `fs.copyFileSync` into media/ on a full volume. The
+    // counter is what stops "the mapping is unchanged" passing because publish never ran.
+    const thrower = () => {
+      thrower.calls += 1;
+      const err = new Error('ENOSPC: no space left on device, copyfile');
+      err.code = 'ENOSPC';
+      throw err;
+    };
+    thrower.calls = 0;
+
+    const result = await runFigures(live(booksRoot), {
+      spawn: fakeSpawn(),
+      booksRoot,
+      publish: thrower,
+    });
+
+    expect(thrower.calls).toBe(1); // NON-VACUITY: the publish really was attempted
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-publish');
+    expect(rec(result, 'FIG_A').reason).toMatch(/THREW/);
+    expect(rec(result, 'FIG_A').reason).toMatch(/ENOSPC/);
+    // THE ASSERTION THE BUCKET CANNOT MAKE: no row was left pointing at a file nobody wrote.
+    expect(fs.existsSync(mappingPath)).toBe(false);
+    // …and the purchase survives, so the next run recomposes instead of re-buying.
+    expect(readSidecar(bookDir, 'FIG_A').blocks).toEqual({ k0: 'IS k0', k1: 'IS k1' });
+  });
+
+  // 🔴 THE CONTROL FOR THE ROLLBACK, and it is a different claim from the two refusal tests:
+  // a mint whose publish SUCCEEDS must survive. Without it "the file does not exist afterwards"
+  // is satisfied by a driver that never mints at all, and every figure on organic would then
+  // publish an SVG no `<image src>` ever points at.
+  it('KEEPS the minted entry when the publish succeeds (the rollback’s own control)', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(mapEntries(bookDir)).toEqual([
+      { originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' },
+    ]);
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(true);
+  });
+
   it('leaves an entry it did not mint alone when the publish fails', async () => {
     const seeded = [
       { originalImage: 'FIG_A', outputName: 'FIG_A_IS.svg', extension: '.svg' },
@@ -886,6 +1098,60 @@ describe('the live run’s own housekeeping', () => {
     applyDriftGuard(drifted);
     expect(drifted.outcome).toBe('failed-compose');
     expect(drifted.reason).toMatch(/classified copied-photo/);
+  });
+
+  // 🔴 THE THIRD MEMBER OF `DRIFTABLE`, AND THE ONE WHOSE LOSS GOES *GREEN*. Removing
+  // 'unreadable-text' from that set left all 195 tests green (measured) — the two cases above
+  // cover copied-textless and copied-photo only. The direction matters: with the member gone
+  // the guard returns untouched, `processFigureLive` returns early at `outcome !== 'translated'`,
+  // and `verdict` reports it as `NOTE (not a failure): 1 figure(s) carry text we cannot read`,
+  // so a PAID figure silently stops being maintained under exit 0 — the false green this
+  // outcome exists to prevent. The bucket it drifted into is named for the same reason the two
+  // cases above name theirs: copied-photo, copied-textless and unreadable-text mean three
+  // different upstream faults.
+  it('names unreadable-text when THAT is the bucket a paid figure drifted into', () => {
+    const drifted = {
+      outcome: 'unreadable-text',
+      sidecar: { blocks: { k0: 'IS k0' } },
+      reason: null,
+    };
+    applyDriftGuard(drifted);
+    expect(drifted.outcome).toBe('failed-compose');
+    expect(drifted.reason).toMatch(/classified unreadable-text/);
+  });
+
+  // …and the consequence end to end, which the direct call cannot show: the run must NEED A
+  // HUMAN. `unreadable-text` is a NOTE — deliberately never fatal on its own — so a guard that
+  // stops covering it does not merely mislabel the figure, it flips the whole run's exit code.
+  it('a paid figure whose text is now UNREADABLE fails the run, it does not NOTE it', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_A'],
+      sidecars: { FIG_A: madeSidecar('FIG_A', { k0: 'IS k0' }) },
+    });
+    // sendable 0 with positive evidence of undecodability: classifyFigure's `undecodedBlocks`
+    // branch, which is `unreadable-text` rather than either copied-* bucket.
+    const spawn = fakeSpawn({ prepare: () => ({ sendable: 0, undecodedBlocks: 3, __blocks: [] }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-compose');
+    expect(result.verdict.ok).toBe(false); // NOT the NOTE, which would exit 0
+    expect(spawn.countOf('compose')).toBe(0);
+    expect(spawn.countOf('translate')).toBe(0); // a recompose never spends
+    expect(readSidecar(bookDir, 'FIG_A').blocks).toEqual({ k0: 'IS k0' }); // untouched
+  });
+
+  // 🔴 THE CONTROL FOR THE RUN ABOVE, and it is not the same as the guard's no-sidecar control:
+  // the SAME classification with NO sidecar is a legitimate `unreadable-text`, a NOTE, and the
+  // run is ok. Without it, "fails the run" would be satisfied by a driver that fails every
+  // unreadable figure — which would make R9's non-fatal ruling unreachable.
+  it('the same figure with NO sidecar is a NOTE, and the run stays ok', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn({ prepare: () => ({ sendable: 0, undecodedBlocks: 3, __blocks: [] }) });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_A').outcome).toBe('unreadable-text');
+    expect(result.verdict.ok).toBe(true);
+    expect(result.verdict.reasons.join(' ')).toMatch(/cannot read/);
   });
 
   it('leaves a copied figure with NO sidecar alone (the drift guard’s own control)', () => {
@@ -1482,6 +1748,46 @@ describe('a recompose is refused when the read layer no longer declares a bought
     expect(rec(result, 'FIG_A').reason).toMatch(/held back|send:false/);
     expect(rec(result, 'FIG_A').reason).not.toMatch(/ERASED/);
     expect(spawn.countOf('compose')).toBe(0);
+  });
+
+  // 🔴 THE BUY PATH'S OWN `send` FILTER, WHICH NO FIXTURE EXERCISED: every block either fake
+  // makes is `send: true`, so `sendKeysFrom` could return `keys.all` instead of `keys.send`
+  // with all 195 tests green (measured). `expected` then names every block the figure HAS,
+  // while `translate-blocks.mjs` keeps its own `blocks.filter((b) => b.send)` and returns only
+  // the bought ones — so step 8 reports the HELD-BACK keys as `missing`, i.e. as "BOUGHT AND
+  // NOT RETURNED (these ship in English)", and a figure translated completely and correctly is
+  // bucketed `failed-mt`, never composed, never published, with the chapter exiting 1.
+  //
+  // Held blocks are the NORM on this corpus, not an edge: `figtext.looks_verbatim` holds any
+  // block with no 3+ letter run — formulae, units, tick labels, `(a)` — and the committed
+  // fixture alone prepares as 4 blocks / 3 sendable.
+  //
+  // ⚠️ THE ASSERTIONS ARE ON THE SIDECAR'S KEY SET, NOT ONLY THE BUCKET. A weaker future
+  // mutant that counted the held key as bought but still composed would satisfy a
+  // bucket-only check; what must be true is that the driver asked for, paid for and recorded
+  // EXACTLY the send:true keys.
+  it('asks for, records and composes exactly the send:true keys when the read layer holds one back', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'], mapping: mapped });
+    const spawn = fakeSpawn({
+      prepare: () => ({
+        sendable: 3,
+        __blocks: [
+          { key: 'k0', english: 'E0', lines: ['E0'], arc: false, send: true },
+          { key: 'k1', english: 'E1', lines: ['E1'], arc: false, send: true },
+          { key: 'k2', english: 'E2', lines: ['E2'], arc: false, send: true },
+          // The held-back block: present in blocks.json, never offered to the MT.
+          { key: 'H2O (g)', english: 'H2O (g)', lines: ['H2O (g)'], arc: false, send: false },
+        ],
+      }),
+    });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(rec(result, 'FIG_A').reason).toBeNull(); // the held key was NOT counted as bought
+    expect(rec(result, 'FIG_A').spent).toBe(true); // …and this figure really was the paid one
+    expect(Object.keys(readSidecar(bookDir, 'FIG_A').blocks).sort()).toEqual(['k0', 'k1', 'k2']);
+    expect(spawn.countOf('compose')).toBe(1);
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_A_IS.svg'))).toBe(true);
   });
 
   // A figure with NO sidecar goes down the buy path, where step 8 already compares the same

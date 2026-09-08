@@ -142,6 +142,23 @@ describe('verdict', () => {
     expect(v.reasons.join(' ')).toMatch(/none .*translated|zero translated/i);
   });
 
+  // 🔴 THE SECOND MEMBER OF `TRANSLATE_PATH_FAILURES`, WHICH THE CONTROL ABOVE CANNOT SEE.
+  // That constant is `['failed-mt', 'failed-compose']` and the control above exercises only
+  // the first, so reducing it to `['failed-mt']` left all 195 tests green (measured). A chapter
+  // whose translate-able figures all die at COMPOSE — an artwork-edition drift across a whole
+  // module — then computes `attempted === 0` and the operator is told "4 figure(s)
+  // failed-compose" without the fact that the chapter produced no translation at all.
+  // ⚠️ `ok` is unaffected either way (every failed-* pushes its own fatal reason), which is
+  // exactly why no existing assertion could see the loss: the defect is the REASON, not the
+  // verdict — as this module's own docstring says.
+  it('is NOT ok, and says zero translated, when the failures were all at COMPOSE', () => {
+    const t = { ...emptyTally(), 'copied-photo': 9, 'failed-compose': 4 };
+    const v = verdict(t, sum(t));
+    expect(v.ok).toBe(false);
+    expect(v.reasons.join(' ')).toContain('failed-compose');
+    expect(v.reasons.join(' ')).toMatch(/none .*translated|zero translated/i);
+  });
+
   // 🔴 `attempted` used to be `translated + EVERY failed-*`. But `failed-publish` and
   // `failed-prepare` are reachable by ANY figure, a photograph included — publish runs for copies
   // too, and prepare runs before anything is classified. So a chapter of legitimate photographs
