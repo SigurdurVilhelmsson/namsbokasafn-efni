@@ -652,6 +652,57 @@ function assertMappingReadable(bookDir) {
 }
 
 /**
+ * The run-level pre-flight for the SIDECAR DIRECTORY. Aborts the run, for the reason
+ * `assertMappingReadable` aborts: this is one broken PATH shared by every figure in the book,
+ * not N broken figures.
+ *
+ * 🔴 IT IS A MONEY GATE, AND IT IS THE ONE FAULT THAT COSTS A PURCHASE OUTRIGHT. `writeSidecar`
+ * is `mkdirSync` + `writeFileSync` + `renameSync`, all unguarded, and it runs IMMEDIATELY after
+ * the paid stage returns — deliberately, so the purchase is recorded ahead of everything that
+ * can fail after it. If that write cannot succeed, the paid Icelandic exists only in a
+ * `mkdtemp` the run then deletes: the money is spent and the translation is gone.
+ *
+ * ⚠️ AND THE COMMONEST CAUSES ARE CHAPTER-WIDE — the path occupied by a file, EACCES/EROFS on
+ * the books volume, ENOSPC — which is exactly why "catch the throw and carry on" is the wrong
+ * remedy: measured on the reviewer's own fixture, continuing spends once PER FIGURE into the
+ * same broken write and records nothing. Refusing here costs one `mkdir` and 0 ISK.
+ *
+ * ⚠️ A DRY RUN MUST NOT CREATE THE DIRECTORY TO FIND OUT. The report's first line promises
+ * "nothing written under books/", so it checks what it can see instead: the path is not
+ * occupied by a non-directory, and whichever of the directory or its parent exists is
+ * writable. That is weaker than the live check and it is supposed to be.
+ */
+function assertSidecarDirWritable(bookDir, dryRun) {
+  // Derived from `sidecarPath`, never spelled out: the directory name is that module's to own.
+  const dir = path.dirname(sidecarPath(bookDir, 'probe'));
+  const refuse = (why) => {
+    throw new Error(
+      `${dir} is not usable as this book's sidecar directory (${why}). Every purchase is ` +
+        `recorded by writing a file there the moment the MT returns, so a run that continued ` +
+        `would pay for figures it could not record — the paid Icelandic lives only in a ` +
+        `temporary directory the run then deletes. NOTHING WAS SPENT. Repair the path and ` +
+        `re-run.`
+    );
+  };
+  let stat = null;
+  try {
+    stat = fs.statSync(dir);
+  } catch {
+    stat = null; // absent is the ordinary state of a book that has bought no figure
+  }
+  if (stat && !stat.isDirectory()) refuse('it exists and is not a directory');
+  try {
+    if (dryRun) fs.accessSync(stat ? dir : bookDir, fs.constants.W_OK);
+    else {
+      fs.mkdirSync(dir, { recursive: true });
+      fs.accessSync(dir, fs.constants.W_OK);
+    }
+  } catch (err) {
+    refuse(err.message);
+  }
+}
+
+/**
  * STEP 10a. Add this figure's entry to `books/<slug>/media/image-mapping.json`.
  *
  * 🔴 THE OBVIOUS ALTERNATIVE IS MEASURED CLOSED: "just run generate-image-mapping.js first" is a
@@ -1172,6 +1223,9 @@ export async function runFigures(args, deps = {}) {
   // corrupt payload into `[]`, which makes every figure read `mintable` and the pre-flight pass
   // — while `mintMappingEntry` refuses the same file one purchase later.
   assertMappingReadable(bookDir);
+  // 🔴 AND SO IS THIS ONE: the sidecar write is what RECORDS a purchase, and its commonest
+  // failures are properties of the book's directory rather than of any figure.
+  assertSidecarDirWritable(bookDir, args.dryRun);
   const mapped = new Map(loadImageBasenameMap(bookDir).map((e) => [e.originalImage, e]));
   const mintIndex = new Set();
   for (const id of enumeration.moduleIds) {
@@ -1456,6 +1510,36 @@ export async function runFigures(args, deps = {}) {
       }),
       tmpRoot,
     };
+  } catch (err) {
+    // 🔴 THE ABANDONMENT MUST SAY WHAT WAS BOUGHT. A throw anywhere in the loop skips
+    // `summarise()` entirely, so `main` prints one stderr line and the operator is left
+    // without the one fact they need: which figures this run paid for. Every figure whose
+    // sidecar was written is RECORDED and will be skipped rather than re-bought; the one
+    // that was paid for and not recorded is the loss, and it is named as such.
+    // ⚠️ THE RUN IS STILL ABANDONED, DELIBERATELY. Bucketing the throw and carrying on was
+    // measured to spend once per remaining figure into the same fault (3 spawns / 0 sidecars
+    // where this code spends 1), and `resolveArtwork` states the same stance for the same
+    // reason: a fault in the book's own storage is one fault, not N figure outcomes.
+    // ⚠️ The message is AUGMENTED rather than replaced, so the cause stays first and
+    // `instanceof` survives for `main`'s exit code.
+    if (err instanceof Error) {
+      const spent = selected.filter((r) => r.spent);
+      if (spent.length) {
+        const rows = spent.map(
+          (r) =>
+            `${r.basename} (${
+              r.sidecarWritten
+                ? 'sidecar written — recorded, will be skipped'
+                : 'SIDECAR NOT WRITTEN — this purchase is LOST'
+            })`
+        );
+        err.message =
+          `${err.message}\n  The run was ABANDONED here, so no report was printed. The MT was ` +
+          `spawned for ${spent.length} figure(s) this run: ${rows.join('; ')}. Fix the fault ` +
+          `above and re-run — nothing already recorded is bought twice.`;
+      }
+    }
+    throw err;
   } finally {
     fs.rmSync(tmpRoot, { recursive: true, force: true });
   }

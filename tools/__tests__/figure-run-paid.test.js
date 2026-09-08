@@ -1490,3 +1490,98 @@ describe('a recompose is refused when the read layer no longer declares a bought
     expect(spawn.countOf('translate')).toBe(1);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 money/F2 — NOTHING CAUGHT A THROW BETWEEN THE PURCHASE AND THE SIDECAR WRITE.
+//
+// `writeSidecar` is `mkdirSync` + `writeFileSync` + `renameSync`, all unguarded, and
+// `processFigureLive` is called bare in the per-figure loop. So a filesystem fault on the
+// books volume after the paid spawn discards that figure's paid Icelandic (it lives only in
+// the mkdtemp the `finally` deletes), abandons every remaining figure, and skips
+// `summarise()` entirely — the operator is never told which figures were bought.
+//
+// 🔴 THE REVIEWER'S SUGGESTED FIX IS MEASURED WORSE AND IS NOT APPLIED: "bucket the throw and
+// continue" spends 3x where the current code spends 1x, because the commonest cause of this
+// fault is CHAPTER-WIDE (the sidecar directory) and continuing buys every remaining figure
+// into the same broken write. See the commit body.
+//
+// What is fixed instead: the chapter-wide cause is refused BEFORE any money, the way
+// `assertMappingReadable` refuses a corrupt mapping; and the abandonment message names what
+// was bought, so the one thing that survived the refuter's downgrade is closed too.
+describe('the sidecar directory is pre-flighted before any money moves', () => {
+  const three = ['FIG_A', 'FIG_B', 'FIG_C'];
+  const mapping = three.map((b) => ({
+    originalImage: b,
+    outputName: `${b}_IS.svg`,
+    extension: '.svg',
+  }));
+
+  it('REFUSES the run when books/<slug>/figure-text is not usable, spending nothing', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: three, mapping });
+    // The reviewer's own fixture: the sidecar directory's path is occupied by a FILE, so
+    // writeSidecar's mkdirSync dies with EEXIST — in production the same shape arrives as
+    // EACCES/EROFS/ENOSPC on the books volume.
+    fs.writeFileSync(path.join(bookDir, 'figure-text'), 'not a directory');
+    const spawn = fakeSpawn();
+
+    await expect(runFigures(live(booksRoot), { spawn, booksRoot })).rejects.toThrow(/figure-text/);
+    expect(spawn.countOf('translate')).toBe(0); // THE MONEY ASSERTION
+    expect(spawn.countOf('prepare')).toBe(0);
+  });
+
+  // 🔴 THE CONTROL. Without it the assertion above passes against a driver that refuses every
+  // live run — and "0 translate spawns" is exactly what that looks like.
+  it('runs normally on the same fixture without the planted file', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: three, mapping });
+    const spawn = fakeSpawn();
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(spawn.countOf('translate')).toBe(3);
+    expect(result.tally.translated).toBe(3);
+    expect(fs.existsSync(path.join(bookDir, 'figure-text'))).toBe(true);
+  });
+
+  // A DRY RUN must not create anything under books/, so it checks what it can see rather than
+  // creating the directory to find out.
+  it('a dry run refuses the same fixture and creates nothing', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: three, mapping });
+    fs.writeFileSync(path.join(bookDir, 'figure-text'), 'not a directory');
+    await expect(
+      runFigures(live(booksRoot, { dryRun: true }), { spawn: fakeSpawn(), booksRoot })
+    ).rejects.toThrow(/figure-text/);
+  });
+
+  it('a dry run on a healthy book creates no figure-text directory', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: three, mapping });
+    const result = await runFigures(live(booksRoot, { dryRun: true }), {
+      spawn: fakeSpawn(),
+      booksRoot,
+    });
+    expect(result.tally.translated).toBe(3);
+    expect(fs.existsSync(path.join(bookDir, 'figure-text'))).toBe(false);
+  });
+
+  // 🔴 THE FAULT THAT ARRIVES MID-RUN CANNOT BE PRE-FLIGHTED, so the abandonment must at
+  // least say what was bought. The publisher chmods the sidecar directory read-only after
+  // FIG_A publishes, so FIG_B's writeSidecar hits EACCES with FIG_B already paid for.
+  it('names the figures already bought when a mid-run fault abandons the chapter', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: three, mapping });
+    const dir = path.join(bookDir, 'figure-text');
+    const spawn = fakeSpawn();
+    const publish = () => {
+      fs.chmodSync(dir, 0o555);
+      return { ok: true, outputName: 'FIG_A_IS.svg', path: '/dev/null', replaced: false };
+    };
+    try {
+      await expect(runFigures(live(booksRoot), { spawn, publish, booksRoot })).rejects.toThrow(
+        /FIG_A/
+      );
+      // The abandonment is bounded: FIG_B was bought and lost (~1 ISK, §C134's shape), FIG_C
+      // was never reached. "Bucket and continue" would have bought FIG_C into the same fault.
+      expect(spawn.countOf('translate')).toBe(2);
+      expect(fs.existsSync(sidecarPath(bookDir, 'FIG_A'))).toBe(true);
+      expect(fs.existsSync(sidecarPath(bookDir, 'FIG_C'))).toBe(false);
+    } finally {
+      fs.chmodSync(dir, 0o755);
+    }
+  });
+});
