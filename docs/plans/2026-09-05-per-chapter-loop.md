@@ -249,35 +249,43 @@ decision.**
 
 ## Step 3 — MT that chapter's figures
 
-⚠️ **THIS STEP IS NOT RUNNABLE YET.** What exists is a proven single-figure chain and an editorial
-review surface. What is missing is everything that makes it a chapter step. Status and the detailed
-findings live in the register; the gaps, measured 2026-09-05, are:
+```bash
+node tools/figure-run.js --book <slug> --chapter <N> --dry-run   # free: classify + name, buys nothing
+node tools/figure-run.js --book <slug> --chapter <N>             # the paid run
+node tools/figure-run.js --book <slug> --chapter <N> --stale     # recompose only, 0 ISK
+```
 
-1. 🔴 **Nothing writes the sidecar.** The chain dead-ends at the last step: paid MT lands in
-   `out/translations-api.json`, and `publish-figure-svg.js` REFUSES because
-   `books/<slug>/figure-text/<basename>.is.json` — which seeds both the editor and the publisher —
-   is written by no code in the repo. **Paid figure MT currently reaches neither readers nor
-   editors.** The block shapes differ too (`{"k": ["v"]}` vs `{"k": "v"}`).
-2. 🔴 **No driver, and one shared `out/`.** Every stage reads and writes a single hardcoded
-   directory holding whichever figure was extracted last, so figures cannot be processed in
-   sequence without each overwriting the previous one.
-3. 🔴 **`extract.py` crashes** on a figure whose source PDF has no live text — **112 of 463**
-   resolvable chemistry figures (24%). A naive loop dies on the first one; it must SKIP.
-4. 🔴 **173 of 463 sources are EPS** and need a ghostscript conversion the README documents and no
-   script performs.
-5. 🔴 **`out/artwork.svg` has no producer** anywhere in the repo, and the settled output format is
-   SVG.
+The driver enumerates the chapter's figures, resolves each source (PDF, EPS or AI), classifies it,
+sends only the vectors whose text it can actually read to the paid MT, and **writes the
+`books/<slug>/figure-text/<basename>.is.json` sidecar** that the editor's review panel and
+`publish-figure-svg.js` both read. Text-less figures and photographs are **copied and counted, not
+crashed on and not paid for**. ⚠️ **The dry run prints no cost estimate** — what it gives you is
+the per-outcome tally (the `translated` count is the buy list), every figure NAMED, and a partition
+assertion the driver makes on itself. Its design is
+[`docs/superpowers/specs/2026-09-06-m5-figure-driver-design.md`](../superpowers/specs/2026-09-06-m5-figure-driver-design.md).
 
-▶ **The unit of work is therefore: a figure driver that takes a BOOK and a CHAPTER**, enumerates
-that chapter's figures, resolves each source (PDF or EPS), skips the text-less ones with a counted
-summary, isolates per figure, and **writes the sidecar** so the editor and publisher can see it.
+🔴 **NEITHER `--stale` NOR `--force` CAN SPEND — THEY RECOMPOSE.** Both compose from the sidecar's
+own blocks, and after an editorial correction those blocks ARE the corrected Icelandic, so
+re-running the MT would overwrite the correction *and* charge for it. **To re-buy a figure, a human
+DELETES `books/<slug>/figure-text/<basename>.is.json`** — there is no `--retranslate`. The paid
+stage runs for exactly one class of figure: one with **no sidecar file**.
+
+⚠️ **`--chapter` is required on EVERY invocation, `--stale` included** — the CLI refuses without it.
+*(Corrected 2026-09-08 before it was written down: a bare `--stale` was drafted here from a
+misreading of the driver's own docstring, which says that putting `--stale`/`--force` in
+`VALUED_FLAGS` would make the bare flag a usage error — a statement about value-taking, not about
+`--chapter` being optional. `parseCli` throws `--chapter is required`.)*
+
+⚠️ **Do NOT read a clean run here as M5's gate being met.** That gate is one chapter's figures
+processed end to end unattended, and **whether it has happened is the register's ⏩ RESUME to say**,
+never this document.
 
 🔴 **CORRECTED 2026-09-06 [USER] — THE 691 `_IS` SVGs ARE NOT MT OUTPUT AND ARE NOT A STARTING POSITION.** This paragraph said they were *"MT-preview quality by construction"*. **They are not: they are a Claude Cowork experiment and were never run through Miðeind's MT at all**, and the approach has moved on considerably since (the working sessions of the last ~week). ▶ **So chemistry does NOT start ahead of organic — BOTH books start from zero**, and any plan that sequences the two on that supposed asymmetry is built on a false premise. *(This paragraph was itself cited that way on 2026-09-06 before the correction; it is exactly the "a wrong 'already built' is the expensive error" shape.)*
 
 ▶ **[USER] RULING 2026-09-06 — EVERY IMAGE IS RE-PROCESSED, AND THE SPLIT IS BY IMAGE KIND, NOT BY BOOK:**
 - **photographs move over UNTRANSLATED** — they carry no text paths, so there is nothing to translate and nothing to pay for;
 - **vector images WITH TEXT PATHS go through the MT.**
-▶ **That split is the driver's first job**, and it is also what makes gap 3 (`extract.py` crashes on a text-less figure — 112 of 463 resolvable chemistry figures) a *classification* problem rather than an error-handling one: a text-less vector and a photograph are both "copy it over", not "crash", and not "pay for it".
+▶ **That split is the driver's first job**, and it is what makes a figure the reader finds no text in a *classification* problem rather than an error-handling one: a text-less vector and a photograph are both "copy it over", not "crash", and not "pay for it". *(Reworded 2026-09-08: this cited a numbered gap that has since been closed and deleted above, and a figure population from a superseded census. **Figure populations are owned by [`experiments/figure-text-translation/TEXT-COVERAGE.md`](../../experiments/figure-text-translation/TEXT-COVERAGE.md); this document restates none.**)*
 
 ⚠️ The 691 are git-tracked, so `git checkout` remains the restore — but treat them as **an artifact to be replaced**, never as coverage already achieved. **Do not count them in any figure-progress number.**
 
