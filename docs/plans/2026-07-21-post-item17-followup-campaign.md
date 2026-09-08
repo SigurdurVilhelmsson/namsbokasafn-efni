@@ -4,7 +4,17 @@
 
 ## ⏩ RESUME — state as of **2026-09-08** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — 🔴 **DEPLOY. THEN M6: THE FIRST *AUTHORISED* PAID FIGURE RUN.**
+### ⏭ SINGLE NEXT ACTION — 🔴 **DEPLOY. THEN §C139 TIER 1. THEN M6, THE FIRST *AUTHORISED* PAID FIGURE RUN.**
+
+⚠️ **THE ORDER OF THE LAST TWO IS A [USER] RULING (2026-09-08) AND IT REVERSES WHAT THIS BLOCK
+FIRST SAID.** §C139 lands **before** any chapter's figures are bought. **The reason is the one-pass
+ruling:** an editor sees a module ONCE, so a figure that is bought, composed and published but
+cannot appear in the review panel ships **uncorrectable**. The two chapters whose text is already
+paid for are exactly the ones that would suffer — **ch03 hides 22 of 41 images and ch04 hides 12 of
+30** — while ch05 hides none, so the gap is not a constant and the chapter chosen for M6 changes how
+much it costs. ▶ **Accepted cost of this order: tier 1 lands UNVERIFIABLE against live data**, because
+the route returns only figures that already have a sidecar and none exist yet. Its tests carry the
+proof instead of a live run; do not treat a quiet panel as evidence it works.
 
 ✅ **THE DRIVER IS BUILT AND MERGED. M5'S BOOTSTRAP DEADLOCK IS BROKEN.** All of Tasks 0b and 1–6b,
 plus the §C138 `withComposedHash` fix.
@@ -168,7 +178,7 @@ and unedited.
 | R3's `/Form` walk is a **no-op on EPS-sourced figures** — a property of ghostscript's `pdfwrite`, which emits no forms, not of EPS | `READ-LAYER-ACCEPTANCE.md` |
 | C4 geometry: **143 of 530 figures move a block >1pt**; "just axis ticks" is refuted by its own control. Prior favours *correction*; the deciding instrument is a **composed-image diff**, which belongs with the driver | register § ④ |
 
-### ⏭ THE NAMED FOLLOW-UP — §C139, ITS OWN PR AFTER #457 MERGES ([USER] 2026-09-08)
+### ⏭ §C139 — ▶ **THE NEXT PR, AFTER THE DEPLOY AND BEFORE M6** ([USER] 2026-09-08)
 
 🔴 **NEARLY HALF OF CHEMISTRY'S IMAGES CANNOT APPEAR IN THE REVIEW PANEL AT ALL — AND 227 OF THEM
 ARE ALREADY IN `02-structure`, ONE UNREAD ARRAY AWAY.** Measured 2026-09-08 with the branch's own
