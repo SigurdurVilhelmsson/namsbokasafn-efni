@@ -4,7 +4,19 @@
 
 ## ⏩ RESUME — state as of **2026-09-08** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — 🔴 **DEPLOY. THEN §C139 TIER 1. THEN M6, THE FIRST *AUTHORISED* PAID FIGURE RUN.**
+### ⏭ SINGLE NEXT ACTION — 🔴 **§C139 TIER 1. THEN M6, THE FIRST *AUTHORISED* PAID FIGURE RUN.**
+
+✅ **DEPLOYED 2026-09-08 09:30 UTC BY [USER], AND VERIFIED BY CONTENT ON PROD RATHER THAN BY THE
+DEPLOY'S OWN OUTPUT.** `633f60a9` is an ancestor of prod's HEAD; `tools/lib/figure-enumerate.cjs` is
+on disk there and `figureReviewService.js` requires it, so **the shared enumeration predicate is
+live** — the review panel and the driver can no longer drift. ⚠️ **The ordering was checked, not
+assumed:** the file was written at 09:30:11 and the unit restarted at 09:30:21, so the running
+process holds the new code. `/api/health` → `status: ok`.
+🟢 **THE PREDICTED `content_backup: degraded` DID NOT MATERIALISE, AND THE REASON IS CHECKABLE
+RATHER THAN LUCKY — the cron had `"Nothing to commit"`, so the merge push stranded nothing.** ▶ **So
+the durable rule keeps its precondition: a dev push to `main` strands the backup only when the cron
+has UNPUSHED CONTENT at that moment.** That is now twice in a row; do not read it as the rule being
+wrong, and deploy promptly anyway.
 
 ⚠️ **THE ORDER OF THE LAST TWO IS A [USER] RULING (2026-09-08) AND IT REVERSES WHAT THIS BLOCK
 FIRST SAID.** §C139 lands **before** any chapter's figures are bought. **The reason is the one-pass
