@@ -14,6 +14,12 @@
   "editionPrecedence": ["updates-2e", "first-edition"],
   "_editionPrecedence": "The OpenStax delivery is TWO trees: all 1st-edition images, and a second tree holding ONLY images updated or added for the 2nd edition. A figure present in the updates tree MUST be sourced from there; the 1st-edition tree is the fallback. Getting this backwards silently translates a superseded illustration. Enforced by sources.py, not by this comment.",
 
+  "supersededArtwork": {
+    "CNX_Chem_19_03_Pattern_img": "[USER] verified 2026-09-08: the published 2e figure is RE-ORIENTED - a vertical stack with an E-axis, three single then two side by side - while the box delivery holds only the old horizontal strip and was never updated. Sourcing it would publish correct Icelandic on the wrong arrangement.",
+    "CNX_Chem_19_01_BlastFurn": "The EPS artboard holds TWO blast furnaces: an older revision placed as an embedded BITMAP (8 images spanning x -1..618) beside the current vector artwork (all 230 paths and all 418 live characters at x >= 483). [USER] confirmed 2026-09-08 that the published jpg matches the current version. Text extraction is CORRECT - the old revision carries no live text - but compose operates on the whole canvas, so a published SVG would show both furnaces. Measured 2026-09-08; this figure classifies `translated`, so it was in the path for the next paid run."
+  },
+  "_supersededArtwork": "Basenames whose ONLY available vector is known to be superseded by the published figure. sources.py refuses these before any lookup, so they report `unresolved` and ship in English - deliberately, because an untranslated correct figure beats a translated wrong one, and unresolved stays counted and named. The value is the REASON and is required: an entry nobody can later evaluate is a permanent unexplained hole. Matched case-insensitively, like the lookup. ⚠️ This list is HAND-VERIFIED, not a detector output. An aspect-ratio scan flags 38 chemistry figures at >25% disagreement with the published raster, but its precision is UNKNOWN (a crop, a padded bounding box or a multi-panel composite all produce the same signal), so a figure belongs here only once a human has looked at both.",
+
   "sourceTreesFile": "sources.local.json",
   "_sourceTreesFile": "Local absolute paths live in a gitignored file because they are machine-specific. Copy sources.local.json.example and fill it in."
 }
