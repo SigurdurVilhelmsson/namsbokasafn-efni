@@ -53,6 +53,22 @@ EXISTING semver range already admits the patched version (`npm update <pkg>`, a 
 before reaching for `overrides`; a bare `>=X` override crosses majors silently; pair a green `audit`
 with `npm ls <pkg>`, because a green audit is not evidence an override resolved sanely.
 
+✅ **BOTH FIXES ARE ALREADY OPEN AS DEPENDABOT PRs — DO NOT HAND-ROLL THEM.** Found 2026-09-09 by
+listing open PRs rather than assuming there were none:
+- **[#429] multer 2.2.0 → 2.3.0.** `server/package.json` declares **`^2.2.0`**, so the caret range
+  **ALREADY ADMITS** the patched version — this is the three-line `npm update multer` case, exactly
+  the check CLAUDE.md says to make before reaching for anything heavier. **Take it first; it is the
+  cheap one.**
+- **[#455] nodemailer 9.0.5 → 10.0.0.** `server/package.json` declares **`^9.0.5`**, which does
+  **NOT** admit 10.x. 🔴 **This is a MAJOR bump, not a patch** — it needs the API surface checked
+  against `server/services/notifications.js`'s `sendEmail`/`generateEmailHtml` path before merging,
+  and it is the one whose advisories matter most (recipient-domain bypass on a server that sends
+  editor mail).
+⚠️ **Neither PR has been rebased since the advisories were published**, and `mergeable=UNKNOWN` on
+both — re-run the checks after rebasing rather than trusting a stale green. **8 other Dependabot PRs
+are also open** (#413, #414, #426, #427, #453, #454, #456) plus the UX audit #367; none is on the
+P0 path.
+
 **P1 — the editor-UX gap that the raster ruling depends on.** The figures route skips any figure with
 no sidecar (`server/routes/segment-editor.js:612`), so a raster-only image cannot appear in the panel
 and there is nowhere to record "does not need translation". `figure_review` is keyed on
