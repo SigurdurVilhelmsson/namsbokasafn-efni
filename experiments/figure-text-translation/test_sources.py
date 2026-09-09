@@ -3,7 +3,7 @@
 import tempfile, sys
 from pathlib import Path
 import _deps
-from sources import resolve, resolve_report
+from sources import resolve, resolve_report, load_config
 
 fails = []
 def check(label, got, want):
@@ -185,6 +185,19 @@ with tempfile.TemporaryDirectory() as td:
     (tis/'cnx_chem_19_09_own.pdf').write_bytes(b'ours')
     got, ed = resolve('CNX_Chem_19_09_Own', trees, prec)
     check('never resolves into Translated_IS', got, None)
+
+# ---------------------------------------------------------------------------
+# The shipped list is DATA, and its integrity is checkable without a machine's
+# artwork trees: an entry whose value is empty is a permanent hole nobody can
+# later evaluate, which is the whole reason the value is the reason.
+# ---------------------------------------------------------------------------
+_cfg = load_config()
+_sup = _cfg.get('supersededArtwork', {})
+check('supersededArtwork is a non-empty mapping', bool(_sup) and isinstance(_sup, dict), True)
+check('every superseded entry carries a substantive reason',
+      sorted(k for k, v in _sup.items() if not (isinstance(v, str) and len(v.strip()) > 40)), [])
+check('the two verified entries are present',
+      sorted(_sup) == sorted(['CNX_Chem_19_01_BlastFurn', 'CNX_Chem_19_03_Pattern_img']), True)
 
 print(f"\n{'ALL PASS' if not fails else str(len(fails))+' FAILED'}")
 sys.exit(1 if fails else 0)
