@@ -2,7 +2,102 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-08** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-09** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — 🔴 **M6: THE FIRST *AUTHORISED* PAID FIGURE RUN. THE FIGURE TRACK IS AS READY AS IT WILL GET.**
+
+Resuming after the weekly usage reset (**Saturday 2026-09-12, 07:00 Atlantic/Reykjavik**). Mission
+unchanged: **re-MT the text and the images, chapter by chapter.**
+
+✅ **BOTH FIGURE PRs ARE MERGED AND ON `main`. NOTHING IS UNCOMMITTED OR UNPUSHED.**
+- **#458 `c3cda2a0`** — §C139 tier 1, the review panel reads **four** constructs, not one.
+  **DEPLOYED by [USER] 2026-09-08.** Chemistry panel reach 627 → **951** of 1,148; organic
+  1,918 → **2,163 (all of them)**.
+- **#459 `0b325cb5`** — artwork lookup tolerance. Chemistry resolution 875 → **892**.
+  🔴 **NO DEPLOY NEEDED** — `experiments/figure-text-translation/` is Python invoked by the CLI
+  driver; `server/` never loads it. (Contrast #458, which did need one.)
+
+⚠️ **BEFORE THE NEXT PAID RUN: 18 FIGURES NOW RESOLVE THAT NEVER DID.** They will be classified for
+the first time and some will enter the spend path. **Run `--dry-run` on the chapter first and read
+the tally** — ch18 and ch19 gained most.
+
+🔴 **THE RASTER-ONLY QUESTION IS SETTLED AND IT IS NOT A CODING PROBLEM.** [USER] eyeballed all 256
+chemistry images with no vector: **~176 need nothing** (clean Lewis structures, photographs),
+**~60 are simple label swaps** (≈5 min each, ≈6–7 h total), **~20 are complex**. Ruling: translate
+what the vector track can, **pipe the rest through untranslated**, and replace by hand on an
+official, registered route. ▶ **Design + procedure + what was decided against:
+[docs/plans/2026-09-09-raster-figure-manual-replacement.md](2026-09-09-raster-figure-manual-replacement.md).**
+Five automated approaches were explored and all rejected; the reasoning is in that file so nobody
+rebuilds them.
+
+🔴 **[USER] PRIORITY ORDER, AND IT GOVERNS EVERYTHING: 1. STRUCTURE (CNXML to OpenStax standards)
+· 2. TEXT (all source text through the pipeline and editable) · 3. IMAGES (MT what is possible, pipe
+the rest, log the remainder in the editor UX).** ▶ Structure and text are where the **silent**
+failures live; images are where the **loud** ones do. Image work never pre-empts text work.
+
+### 📋 OUTSTANDING WORK, BY PRIORITY — nothing here is in flight
+
+**P0 — SECURITY, and it blocks every PR.** `audit` is RED on `main` and will fail every branch until
+addressed. **Not caused by any recent change**: all four dependency files are byte-identical across
+#459, and `main` passed on 2026-09-08 14:25Z then failed 2026-09-09 08:11Z, because `npm audit`
+reads the LIVE advisory database.
+- **`nodemailer` ≤9.1.0 (high)** — recipient-domain validation bypass via RFC 5322 comment
+  mis-parsing **and** IDN/punycode, both leading to **delivery to an attacker-controlled domain**;
+  plus quadratic-time DoS in the address parser. 🔴 **The server sends editor notifications, so this
+  is not theoretical.**
+- **`multer` ≤2.2.0 (high)** — four DoS advisories plus a file-size-limit bypass via a `fileFilter`
+  race.
+- **`vitest`/`@vitest/mocker` (moderate, root)** — path traversal / arbitrary file read.
+⚠️ **CLAUDE.md's rules apply and are not optional:** never `npm audit fix`; check whether the
+EXISTING semver range already admits the patched version (`npm update <pkg>`, a three-line diff)
+before reaching for `overrides`; a bare `>=X` override crosses majors silently; pair a green `audit`
+with `npm ls <pkg>`, because a green audit is not evidence an override resolved sanely.
+
+**P1 — the editor-UX gap that the raster ruling depends on.** The figures route skips any figure with
+no sidecar (`server/routes/segment-editor.js:612`), so a raster-only image cannot appear in the panel
+and there is nowhere to record "does not need translation". `figure_review` is keyed on
+`(book_id, basename)` alone and needs no sidecar, so this is a route change plus a state vocabulary,
+not new infrastructure. 🔴 **`replaced` must be DERIVED from the file + the mapping row, never a
+ticked box.** Full design → the raster plan above.
+
+**P2 — [CODE] the extractor drops `src` on 169 `type:'media'` nodes across 47 chemistry modules.**
+Those images ARE in `02-structure` carrying a full alt segment; only the `src` is missing, so they
+cannot be keyed and stay out of the panel. **Re-extraction with today's extractor reproduces it byte
+for byte — the fix is at the EXTRACTOR.** Only 62 of the 197 remaining hidden images carry text at
+all (7.5% of chemistry's figure text), so this is **not urgent and not a prerequisite for M6**.
+
+**P3 — [CODE] the render-side badge is `<figure>`-scoped.** `cnxml-render.js` emits
+`data-figure-review` only inside the `<figure>` renderer, so a newly-reviewable inline image lists in
+the panel with no badge in the rendered preview. Needs a re-render to reach anyone once fixed.
+
+**P4 — [CODE] two comments that name consumers which do not exist.** `structureOnly` filters
+chapter-wide while the guard it is cited as protecting is per-module; `resolveFigureRequest`'s
+comment justifies itself by naming `idx_figure_review_module` when **no production query filters on
+`chapter` or `module_id` at all**. Pre-existing; the "a comment stating the rule is not the rule"
+class.
+
+**P5 — the driver's `unresolved` message is now known FALSE.** It says the artwork delivery "has a
+hole here". [USER] has confirmed box.com is fully downloaded: there is no hole, the vector never
+existed. Fix when the P1 states land, and split the outcome into honest names.
+
+### 🔬 What this session measured that outlives it
+- **Aspect ratio does NOT detect superseded artwork.** A scan flagged 38 chemistry figures at >25%
+  disagreement with the published raster; of 4 checked by eye, **3 were false positives** (canvas
+  padding, not layout change). Comparing INK EXTENT instead improves 20 of 38 and still flags all
+  three. **No gate is built on it and none should be.** Exposure is nil anyway:
+  `processFigureLive` returns early for anything but `translated`, so only `translated` figures can
+  carry an artwork defect to a reader — **that predicate is what to check, not the ratio.**
+- **Two REAL artwork defects were found and are refused in `figure-text.config.json`:**
+  `CNX_Chem_19_03_Pattern_img` (published 2e re-oriented; box holds the old strip) and
+  `CNX_Chem_19_01_BlastFurn` (artboard holds an OLD revision as an embedded bitmap beside the current
+  vector — text extraction correct, published picture would show **two furnaces**).
+- **`-dEPSCrop` is mandatory when converting EPS.** Without it Ghostscript pads to A4 (ratio 0.707)
+  and every EPS reads as a geometry mismatch — it cost one good recovery a false verdict before it
+  was caught.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-08** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — 🔴 **DEPLOY §C139 TIER 1. THEN M6, THE FIRST *AUTHORISED* PAID FIGURE RUN.**
 
