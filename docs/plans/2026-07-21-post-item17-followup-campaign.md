@@ -37,8 +37,13 @@ failures live; images are where the **loud** ones do. Image work never pre-empts
 
 ### 📋 OUTSTANDING WORK, BY PRIORITY — nothing here is in flight
 
-**P0 — SECURITY, and it blocks every PR.** `audit` is RED on `main` and will fail every branch until
-addressed. **Not caused by any recent change**: all four dependency files are byte-identical across
+**P0 — SECURITY.** ✅ **CLOSED 2026-09-10 — both HIGH advisories are gone and `audit` exits 0 in BOTH
+trees, measured (`found 0 vulnerabilities`, all levels, paired with `npm ls`).** Landed as six
+Dependabot merges (#429 multer 2.3.0 · #453 express-rate-limit 8.7.0 · #413 uuid 14.0.2 · #426
+mammoth 1.12.2 · #454 globals 17.12.0 · #456 eslint 10.10.0 + lint-staged 17.4.1) plus one in-range
+`npm update nodemailer`. 🔴 **THE BLOCK BELOW IS KEPT AS EVIDENCE AND ONE OF ITS CLAIMS WAS FALSE —
+READ THE AMENDMENT.** History, as written 2026-09-09: **Not caused by any recent change**: all four
+dependency files are byte-identical across
 #459, and `main` passed on 2026-09-08 14:25Z then failed 2026-09-09 08:11Z, because `npm audit`
 reads the LIVE advisory database.
 - **`nodemailer` ≤9.1.0 (high)** — recipient-domain validation bypass via RFC 5322 comment
@@ -68,6 +73,52 @@ listing open PRs rather than assuming there were none:
 both — re-run the checks after rebasing rather than trusting a stale green. **8 other Dependabot PRs
 are also open** (#413, #414, #426, #427, #453, #454, #456) plus the UX audit #367; none is on the
 P0 path.
+
+🔴 **AMENDED 2026-09-10 — THE `#455 IS A MAJOR BUMP, SO WE MUST TAKE IT` PREMISE WAS FALSE, AND THE
+RULE THE BLOCK ITSELF QUOTES IS WHAT REFUTES IT.** The entry above reasoned: `^9.0.5` does not admit
+`10.x`, therefore the major bump is the route. **It never asked whether a patched 9.x exists.**
+`npm view nodemailer versions` lists **9.1.1**, and every one of the four advisories is scoped
+**`<=9.1.0`** — so the existing caret range **already admitted the fix**, exactly as it did for
+multer. ▶ **THE TELL WAS IN THE ADVISORY RANGE ALL ALONG: `<=9.1.0` names a boundary, and a boundary
+implies something on the other side of it.** A range ending at `9.1.0` is not evidence that `10.0.0`
+is the next release; it is evidence that **something above 9.1.0 is fixed**, and the registry says
+what. ⚠️ **The generalisation, because this is the second premise in two days to survive by never
+being executed: `npm view <pkg> versions` is two seconds and settles it — run it before classifying
+any advisory as forcing a major.**
+- ▶ **AND #455 COULD NOT HAVE BEEN VALIDATED EVEN IF TAKEN.** `sendEmail`/`isEmailConfigured` have
+  **zero** references outside `notifications.js` — no test calls them — and **no `SMTP_*` variable is
+  set in any workflow**, so `isEmailConfigured()` is false in CI and the **lazy**
+  `require('nodemailer')` at `notifications.js:224` never executes. **A green CI on #455 would have
+  proved that nodemailer 10 installs, not that it works.** Its own advisories are the ones that
+  matter most (recipient-domain bypass on a server that really does send editor mail), which is
+  precisely why the untestable route was the wrong one.
+- ✅ **Shipped instead:** `npm update nodemailer` → **9.1.1**, a 4-line lockfile diff, `found 0
+  vulnerabilities` at all levels. **#455 to be CLOSED, not merged.**
+
+⚠️ **`vitest` (moderate, root) IS DELIBERATELY NOT FIXED, AND THE REASON IS MECHANICAL RATHER THAN A
+JUDGEMENT CALL.** It does **not** gate: `security.yml` runs `npm audit --audit-level=high` and the
+advisory is **moderate**, so the root tree exits **0** with it present — the red was **only ever the
+server tree**. And the in-range bump is **not currently installable**: `vitest@4.1.11` exists and
+`^4.1.10` admits it, but **every** route to it (`npm install`, `npm install vitest@4.1.11`,
+`npm update --package-lock-only`) dies on **npm 10.9.7** with `Cannot read properties of null
+(reading 'edgesOut')`. **Controlled twice:** the identical command on the identical tree **without**
+the vitest bump exits **0**, and removing the `overrides` block does **not** help — so it is neither
+a broken tree nor the overrides, it is vitest 4.1.11 specifically under this npm. ▶ **This is a
+second, independent reason to want npm 11** — see the Node 22→26 note in CLAUDE.md, which already
+frames that upgrade as an npm-10→11 lockfile migration rather than a runtime bump. **Do not reach
+for an `overrides` pin to force it**; a bare `>=` there is the documented way to cross a major
+silently, on the package that runs every test.
+
+⚠️ **TWO DEPENDABOT PRs REMAIN OPEN ON PURPOSE — they are not oversights.** **#427** (`@xmldom/xmldom`
+0.9.11 → 0.9.12) is **already satisfied**: `745d2766` closed that advisory in-range and main's
+lockfile has carried **0.9.12** since; the PR only raises the declared floor and changes **no
+installed version**. **#414** (`@monyone/aho-corasick` 1.5.8 → 1.5.10) is the **only exact-pinned
+dependency of the 17** in `server/package.json`, its consumer `server/lib/termAutomaton.js` opens by
+warning that occurrence enumeration must keep **byte-identity with the old behaviour**, and the
+strongest guard on it — `server/__tests__/findTermsGolden.test.js` — is the **pre-existing §C118 ㉑
+red that dies in `beforeAll`**. **No advisory forces either.** ▶ **A behaviour-sensitive bump whose
+golden guard is currently dead is one to take deliberately, with the guard repaired first — not as
+dependency hygiene.**
 
 **P1 — the editor-UX gap that the raster ruling depends on.** The figures route skips any figure with
 no sidecar (`server/routes/segment-editor.js:612`), so a raster-only image cannot appear in the panel
