@@ -2,7 +2,72 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-09** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-10** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — 🔴 **M6, SATURDAY 2026-09-12 AFTER THE 07:00 RESET. P0 IS GONE; NOTHING BLOCKS IT NOW.**
+
+✅ **P0 IS CLOSED AND THE GATE AGREES.** `Security Audit` on `main` is **`success`** (run 1631,
+`c9d21020`) — the job had failed on every run since 2026-09-09. Both trees exit **0** on
+`npm audit --audit-level=high`. Landed as **seven merges**: #429 multer 2.3.0 · #453
+express-rate-limit 8.7.0 · #413 uuid 14.0.2 · #426 mammoth 1.12.2 · #454 globals 17.12.0 · #456
+eslint 10.10.0 + lint-staged 17.4.1 · **#460** nodemailer **9.1.1** (the in-range fix no Dependabot
+PR offered). Full reasoning and the falsified premise → the amended **P0** block below, and the two
+durable rules it produced are now in **CLAUDE.md § npm advisories**.
+
+🔴 **THE M6 PRE-FLIGHT NUMBER, MEASURED TODAY — AND IT IS ROUGHLY DOUBLE WHAT THE DASHBOARD SAID.**
+`node tools/api-translate.js --book efnafraedi-2e --chapter <N> --dry-run --force`, swept over
+every chapter, **free, no paid call**:
+
+| ch | mods | ISK | ch | mods | ISK | ch | mods | ISK | ch | mods | ISK |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | 1 | ~156 | 6 | 7 | ~2,452 | 12 | 9 | ~2,188 | 18 | 14 | **~3,132** |
+| 1 | 8 | ~1,877 | 7 | 8 | ~2,856 | 13 | 6 | ~1,287 | 19 | 5 | ~2,052 |
+| 2 | 9 | ~2,349 | 8 | 6 | ~1,645 | 14 | 9 | ~2,129 | 20 | 6 | ~2,099 |
+| 3 | 6 | ~1,408 | 9 | 8 | ~2,175 | 15 | 5 | ~1,357 | 21 | 8 | ~2,114 |
+| 4 | 7 | ~1,884 | 10 | 8 | ~2,772 | 16 | 6 | ~1,237 | app | 13 | ~1,627 |
+| 5 | 5 | ~1,624 | 11 | 7 | ~1,813 | 17 | 9 | ~1,399 | | | |
+
+**Whole book: 170 modules · 4,363,109 chars · ~43,631 ISK estimated.** Mean **~1,909**/chapter,
+range **156 → 3,132**. ▶ **CONTROLLED, not asserted: the per-chapter sweep and an independent
+whole-book run agree to the BYTE (4,363,109 both ways), and the module counts sum to exactly 170.**
+⚠️ **This is an ESTIMATE and the register's own billing evidence says actuals run under it** — the
+2026-09-05 re-MT billed **0.68× its estimate**, described there as *the bottom of the measured
+band*. **Do not treat 0.68 as a constant; it is one chapter.** ▶ **The correction that matters is
+not the estimator, it is the EXTRAPOLATION: the "~1,060–1,423 ISK/chapter → ~21,000 remaining"
+figure generalised a narrow early sample. ch03 estimates at 1,408 — inside that band — so the band
+was never wrong about ch03; it was wrong about every chapter unlike ch03.** Chapters vary **20×**.
+⚠️ **`--dry-run` WITHOUT `--force` is useless here and reports `To translate: 0`** (file-existence
+skip, per CLAUDE.md). The pre-flight command is the one above, `--force` included.
+
+🔴 **THE FIGURE PRE-FLIGHT CANNOT BE RUN FROM A FRESH CLONE — IT MUST HAPPEN ON [USER]'S BOX.**
+`figure-text.config.json` points at **`sources.local.json`**, which is gitignored and holds
+machine-specific absolute paths to the two box.com artwork trees. A clean checkout has neither.
+▶ **So the 09-09 instruction "run `--dry-run` on the chapter first and read the tally" (18 newly
+resolving figures, ch18/ch19 gained most) is still OUTSTANDING and is [USER]'s to run**, not
+something a session can discharge remotely.
+
+### ✅ SATURDAY RUNBOOK — in order, stop at the first surprise
+1. **Pick the chapter from the table above** and authorise that figure explicitly. ch0 (~156) is
+   the cheapest live rehearsal; ch13/ch16 (~1,240–1,290) are the cheapest *real* chapters; **avoid
+   ch18 (~3,132) for a first loop.**
+2. **Deploy first if it has not happened** — eight pushes to `main` on 2026-09-10 strand prod's
+   content backup until a deploy runs (bounded, released by `deploy.sh`'s rebase; the deploy does
+   **not** push, so releasing the commit is a second manual step).
+3. **Re-extract before paying.** `api-translate` reads the GENERATED `02-for-mt/`; a bare `--force`
+   without re-extraction re-translates the old English and exits 0.
+4. **Run the free source-anchored checks** — `tools/source-roundtrip-check.js` (with `--verbose`,
+   it truncates at 4 per category otherwise) and `tools/render-oracle-check.js --control`. **Run
+   `--control` before believing a clean render result.**
+5. **Figure `--dry-run` on the chapter** and read the tally, per the block above.
+6. **Then buy**, and judge the run by `emitted → injected → RENDERED` plus the paid-leg column.
+
+⚠️ **UNCHANGED AND STILL TRUE — everything in the 2026-09-09 block below except its P0 section**:
+both figure PRs merged (#458 deployed, #459 needs no deploy), the raster ruling, [USER]'s priority
+order (**structure → text → images**), and P1–P5. Read it for those.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-09** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — 🔴 **M6: THE FIRST *AUTHORISED* PAID FIGURE RUN. THE FIGURE TRACK IS AS READY AS IT WILL GET.**
 

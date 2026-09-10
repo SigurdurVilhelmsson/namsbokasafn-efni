@@ -355,6 +355,29 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
     version *newer* than the advisory — i.e. safe — while `npm audit` reported the vulnerability,
     because the working tree had drifted ahead of the committed lockfile. Reading `npm ls` as the
     answer concludes a real red is spurious.
+  - 🔴 **AN ADVISORY'S RANGE NAMES A BOUNDARY, AND A BOUNDARY IMPLIES SOMETHING ON THE OTHER SIDE
+    OF IT. `npm view <pkg> versions` BEFORE YOU CLASSIFY AN ADVISORY AS FORCING A MAJOR.** Measured
+    2026-09-10 (§P0): four nodemailer advisories scoped **`<=9.1.0`** against a declared `^9.0.5`.
+    A register entry read that as *"`^9.0.5` does not admit `10.x`, so the major bump is the
+    route"* — and Dependabot's PR, proposing exactly `10.0.0`, **corroborated the misreading**.
+    **9.1.1 exists.** The caret already admitted the fix, and the whole P0 was a 4-line lockfile
+    diff. ▶ **The question is never "what did the tool offer"; it is "what is the LOWEST version
+    that clears the range".** The bot proposes latest-major by design, so its PR is evidence about
+    the bot's policy, not about what the advisory requires. ⚠️ **And the entry that got it wrong
+    quoted the rule below, one bullet after applying it correctly to a different package** — so
+    knowing the rule is not the same as executing it.
+  - 🔴 **A GREEN CI ON A DEPENDENCY BUMP PROVES IT INSTALLS. IT PROVES IT *WORKS* ONLY IF THE
+    CONSUMING PATH ACTUALLY EXECUTES IN CI — CHECK THAT BEFORE TREATING GREEN AS VALIDATION.**
+    Measured on the same nodemailer bump: the sole consumer is `sendEmail`, which returns early
+    unless `isEmailConfigured()` finds `SMTP_HOST`/`USER`/`PASS`, **no `SMTP_*` variable is set in
+    any workflow**, and the `require('nodemailer')` is **lazy — inside the function**. So the
+    module is never even loaded by a CI run, no test references `sendEmail` at all, and a green
+    suite on a major bump would have been worth nothing. ▶ **The tell is the pair: a lazy
+    `require`/dynamic `import` inside a config-gated branch. Grep the symbol for references outside
+    its own module, and grep the workflows for the env var that gates it** — two greps, and they
+    decide whether CI can speak to the change at all. ⚠️ **This cuts both ways: it is also the
+    argument for taking the in-range patch,** because the unvalidatable route is the one to avoid
+    when a validated-by-construction one exists.
   - **⚠️ Check whether the EXISTING semver range already admits the fix before reaching for
     `overrides`.** If it does, `npm update <pkg>` re-resolves within it and the diff is three
     lines. An override is a permanent pin to maintain, and **an `overrides` pin can BECOME the
