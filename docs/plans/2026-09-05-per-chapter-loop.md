@@ -270,6 +270,27 @@ decision.**
 
 ## Step 3 — MT that chapter's figures
 
+🔴 **RUN THIS IMMEDIATELY AFTER STEP 2, FOR THE SAME CHAPTER, BEFORE ANY EDITOR OPENS IT. THE
+ORDERING IS THE WHOLE POINT AND IT IS [USER]'s RULING** (2026-09-06, restated 2026-09-12).
+One-pass edit + one-pass approval means the editor sees a module **once**, so its figures must
+already be there when they do. A chapter whose text is bought and whose figures are not books a
+**second editor visit** — which is a cost paid in the scarcest thing this project has, not in ISK.
+▶ **Text and figures are ONE unit of work per chapter. Do not batch the figures of several
+chapters "later"; that is the same reversal by another name.**
+
+✅ **THE PAID PATH IS PROVEN — first real run 2026-09-12, `CNX_Chem_04_03_flowchart`, ~1 ISK.**
+Sidecar minted, SVG composed and published, `image-mapping.json` already carrying the swap, and the
+identity seam held *through* payment. Translation quality with **no glossary on the wire**:
+`Molar mass → Mólmassi`, `Stoichiometric factor → Efnajöfnustuðull`, `Avogadro's number → Tala
+Avogadros`. Verified by VALUE with English controls at 0, not by tally.
+
+⚠️ **DO NOT RUN A PAID FIGURE BATCH CONCURRENTLY WITH ANYTHING HEAVY.** The first attempt at that
+run was killed by the OOM killer while a full vitest suite and a 10-agent workflow shared the box.
+✅ Nothing was stranded — no sidecar, no tree change, no evidence of a billed call, and the figure
+stayed eligible — which is the all-or-nothing design surviving an *external kill* rather than a
+non-zero exit. But a chapter is ~20 min of Ghostscript/pdfplumber at 200 dpi on a 9.7 GiB box.
+**Check `free -h` and `df -h /tmp` first**; `/tmp` here is a 4.9 GB tmpfs.
+
 ```bash
 node tools/figure-run.js --book <slug> --chapter <N> --dry-run   # free: classify + name, buys nothing
 node tools/figure-run.js --book <slug> --chapter <N>             # the paid run

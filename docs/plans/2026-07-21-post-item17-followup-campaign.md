@@ -2,7 +2,92 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-12** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-12 (EVENING)** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — 🔴 **BUY A CHAPTER: TEXT *AND* FIGURES, TOGETHER, AS ONE UNIT.**
+
+✅ **EVERYTHING THAT WAS BLOCKING IS MERGED. THE LOOP IS READY AND THE PAID PATH IS PROVEN.**
+
+| | | |
+|---|---|---|
+| **#462** | G1 subtracts the §C18 baseline — **M1's gate PASSES on `main`** (G1 0.0% both books, over-bar section absent, `examined` still 1954) | merged |
+| **#463** | P2 — container-built media carry `src`; **the editor can now see them** | merged |
+| — | **First real paid figure run**, `CNX_Chem_04_03_flowchart`, ~1 ISK, verified end to end | `7fe87d6f` |
+
+🔴 **THE ORDERING IS THE RULING AND IT IS NOW IN THE LOOP DOC (Step 3): FIGURES IMMEDIATELY
+AFTER THAT CHAPTER'S TEXT, BEFORE ANY EDITOR OPENS IT.** One-pass edit + one-pass approval means
+the editor sees a module **once**. ▶ **Text and figures are ONE unit of work per chapter; batching
+several chapters' figures "later" is the same reversal by another name.**
+
+### ✅ WHAT THE FIGURE TRACK ACTUALLY DOES NOW — measured, not asserted
+
+**The paid path works.** Sidecar minted, SVG composed and published, `image-mapping.json` already
+carrying the swap, identity seam held **through** payment. With **no glossary on the wire**:
+`Molar mass → Mólmassi` · `Stoichiometric factor → Efnajöfnustuðull` · `Avogadro's number → Tala
+Avogadros`. Verified **by VALUE with English controls at 0**, and 19 sendable blocks → 15 unique
+keys → 15 sidecar entries with the set difference **empty both directions** (the 4-block gap is 4
+genuinely duplicated labels; the ×2 counts in the SVG corroborate it).
+
+**P2's effect, book-wide:** media nodes with `src` **97 → 265**; without `src` **169 → 1** (ch13/
+m68801's alt-less stub, which MUST stay); **without `src` but carrying a PAID alt segment 168 → 0**
+— the defect class is empty. Chemistry panel-unreviewable **197 → 29**. ch03 and ch04 R7 gap
+**gone**. Text-bearing AND panel-invisible: **62 → 6**.
+⚠️ **`02-for-mt/` diff EMPTY book-wide — the ~2,480 ISK of paid MT is untouched, and the fix mints
+ZERO segments** (the three sites already called `addSegment`), so no positional `auto-N` id moved.
+**21 added lines in ch03+ch04 and 168 book-wide, both predicted exactly.**
+
+### ❓ OPEN FOR [USER]
+
+- **Q2 — which chapter, and authorise the spend.** ch13 ~1,287 ISK est. (figure pre-flight already
+  run: 14 figures, 9 translated) · ch16 ~1,237 (pre-flight not run) · avoid ch18 ~3,132. Billed
+  ≈ 0.68–0.75×, **ratio not constant — quote a range**. Figures add ~1 ISK each.
+- **Q1b — the collisions baseline is a WORKLIST that has silently shrunk.** Chemistry lists 11
+  accepted competitions, only `si` still fires; organic lists 3 and fires 0. G1 now names the
+  resolved ones on every run. Data change, no gate effect.
+- **Q1 residue — the 2026-09-05 "a chemical symbol keeps its symbol" ruling is STILL UNAPPLIED.**
+  The `si` competition is still in the data; **`Si`-only remains a measured regression** (un-omits
+  the survivor onto the paid wire, 1,703 → 1,704, against 141 occurrences).
+- **Q4 — the three in-domain rows** (`addition → álagning` 4649 · `valence` 4764 · `chemical
+  substance` 4815). Unblocking only because the glossary is off the wire.
+- **NEW — the 29 appendices table-cell alts.** Same consumer predicate as P2, but `buildTable`
+  omits `src` `if (!media.id)` **deliberately and documented twice (§C88)**. Lifting it reverses a
+  written ruling and would close the last 6 text-bearing invisible figures. **Your call, not a
+  fourth line of a patch.**
+- **NEW — the ~304 other June SVGs.** `CNX_Chem_04_03_flowchart_IS.svg` was REPLACED, not created:
+  the committed version came from `9269fcda` (2026-06-26, "localize chapter 1-9 figures (305
+  translated SVGs)") and is visibly broken — 8 `<text>` elements where the new one has 25, labels
+  DOUBLED (`MólstyrkurMólstyrkur`) and distinct labels MERGED into one element. 🔴 **Whether the
+  other ~304 share it is UNMEASURED, and "305" comes from a commit subject, not a count.**
+
+### ⚠️ TRAPS MEASURED TODAY, FOR THE NEXT PAID RUN
+
+- 🔴 **DO NOT RUN A PAID FIGURE BATCH CONCURRENTLY WITH ANYTHING HEAVY.** The first attempt was
+  killed by the OOM killer while a full vitest suite and a 10-agent workflow shared the box.
+  ✅ **Nothing was stranded** — no sidecar, no tree change, no evidence of a billed call, figure
+  stayed eligible: the all-or-nothing design surviving an *external kill*, not just a non-zero
+  exit. But a chapter is ~20 min of Ghostscript/pdfplumber at 200 dpi on a 9.7 GiB box.
+  **`free -h` and `df -h /tmp` first.**
+- 🔴 **A SUITE THAT BREAKS WHEN THE PIPELINE IS USED FOR REAL IS MEASURING THE WRONG THING.**
+  `7fe87d6f` — the first purchase — turned **7 tests red on `main`** with no code change, because
+  they assert against the REAL corpus and assumed nothing had ever been bought (one was named
+  *"… no figure has a sidecar (the real corpus today)"*). Repaired in #463 at the seam:
+  `sidecarExists` is injectable alongside `readSidecar`, and one `PRISTINE` helper stubs **both
+  halves of the same question**. ▶ **A pin on "how much have we bought so far" is a countdown.**
+- 🔴 **NEVER SEARCH `02-structure` FOR AN IMAGE BASENAME TO ASK WHETHER ITS NODE EXISTS.** The
+  basename only enters via `src`, so a node missing `src` returns 0 **BY CONSTRUCTION** — "absent
+  entirely" and "present but unkeyable" are indistinguishable to it, and they are different
+  defects with different fixes. **Key on the media ID.** Made three times against
+  `figure-enumerate.cjs` now, including by this session, which reported "P2 is refuted" on it
+  before a peer session's independent census corrected it.
+
+⚠️ **UNVERIFIED:** the review PANEL has not been seen rendering a real sidecar — that needs a
+logged-in browser. `GET /api/segment-editor/efnafraedi-2e/4/m68713/figures` (chapter `4`, not
+`ch04`); **read the JSON, never the UI** — `renderFigureCards([])` runs identically on empty, on
+`!res.ok` and in a bare `catch{}`. And **main has NOT been deployed since these merges.**
+
+---
+
+## ⏩ RESUME — state as of **2026-09-12** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — 🔴 **M6, AND THE GATE THAT GUARDS IT IS UNMET. READ ① BEFORE PICKING A CHAPTER.**
 
