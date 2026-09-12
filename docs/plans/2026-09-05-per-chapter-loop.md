@@ -284,12 +284,23 @@ identity seam held *through* payment. Translation quality with **no glossary on 
 `Molar mass → Mólmassi`, `Stoichiometric factor → Efnajöfnustuðull`, `Avogadro's number → Tala
 Avogadros`. Verified by VALUE with English controls at 0, not by tally.
 
-🔴 **BUY ONE FIGURE PER INVOCATION. A CHAPTER-WIDE PAID RUN IS OOM-KILLED ON THIS BOX.**
-Measured 2026-09-12 on ch03, twice: `--chapter 3` died after 2 of 15 figures; `--chapter 3 --module
-m68700` (the chapter's biggest module, ~21 figures) died too. **`--figure <name>`, one per
-invocation, then ran 13 consecutively with memory flat at 7.0–7.4 GB available throughout** — so
-there is no leak BETWEEN runs; the load accumulates INSIDE one invocation and scales with how many
-figures it BUYS.
+🔴 **RUN PAID FIGURE WORK IN THE FOREGROUND, IN MODEST BATCHES. A LONG-RUNNING *BACKGROUND* TASK
+IS KILLED — AND IT IS NOT THE DRIVER'S FAULT.**
+
+⚠️ **CORRECTED SAME DAY. The first version of this block said "a chapter-wide paid run exhausts
+memory; buy one figure per invocation" — WRONG ABOUT BOTH CAUSE AND REMEDY, and it was committed
+before the controlling measurement was taken.** A per-figure loop was then killed too, which
+refuted it. What settled it: **running the supposedly-guilty figure ALONE succeeded at a peak of
+2,823 MB used out of 9.7 GB**, and the box reported ~7 GB *available* after every figure and at the
+moment of each kill. ▶ **The driver is not exhausting memory.** Four kills, all of long-running
+BACKGROUND tasks; the same work run in the FOREGROUND completed 6 figures at a time, twice, without
+incident. **The common factor is the background task's lifetime, not the figure count, not the
+module, and not the artwork.**
+
+▶ **THE LESSON UNDER THE LESSON: a remedy that appears to work is not evidence for the diagnosis
+that motivated it.** Per-figure invocation DID get 13 figures through — which read as confirmation,
+and was coincidence. A cheap control (run one figure, watch peak memory) was available the whole
+time and would have refuted the story in one command.
 
 ```bash
 # the working shape — note the TRAILING NEWLINE on the todo file (see below)
@@ -298,18 +309,18 @@ while read -r f; do
 done < todo.txt
 ```
 
-🔴 **AND `--dry-run` STRUCTURALLY CANNOT WARN YOU.** The chapter-wide rehearsal SUCCEEDED on that
-same chapter **twice the same day**, rendering every figure at 200 dpi exactly as the live run does.
-The expensive-looking step is not the one that breaks. ▶ **A clean rehearsal tells you cost and
-classification; it says nothing about whether the run will survive.**
+⚠️ **A clean `--dry-run` still tells you cost and classification, not survivability** — the
+chapter-wide rehearsal succeeded on that chapter twice while live runs were being killed. That much
+holds; it simply is not evidence about the driver's memory, since the kills were not memory-bound.
 
 ✅ **NOTHING IS LOST WHEN IT DIES.** The paid stage is all-or-nothing per figure, so every completed
 figure is whole — sidecar *and* published SVG — and the rest stay eligible. Re-running skips what was
 bought. Proven twice: an OOM kill mid-chapter and an earlier one mid-figure both left a clean tree.
 
-⚠️ **TWO THEORIES THAT WERE WRONG** — do not re-run them. It is NOT concurrent load (7 GiB free,
-nothing else running) and it is NOT large artwork (the offending module's biggest source is 2.3 MB;
-the 38 MB photographs sit in a module that ran fine).
+⚠️ **THREE THEORIES THAT WERE WRONG** — do not re-run them. NOT concurrent load (7 GiB free,
+nothing else running). NOT large artwork (the offending module's biggest source is 2.3 MB; the 38 MB
+photographs sit in a module that ran fine). NOT figure count per invocation (the single-figure
+control peaked at 2.8 GB and a 6-figure foreground batch ran clean).
 
 ⚠️ **GIVE THE TODO FILE A TRAILING NEWLINE** — `while read` drops a final line without one, and it
 silently skipped a figure. **State the denominator and check it:** enumerated = copied +

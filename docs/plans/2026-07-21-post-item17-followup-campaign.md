@@ -33,19 +33,26 @@ translated labels present in the published SVGs, 0 English residue, negative con
 matcher can still miss.** All 15 structurally clean (basename matches, `composedHash` stamped, no
 `state` key). 26 figures correctly classified `copied` and never paid for.
 
-🔴 **BUT THE COMMAND ABOVE IS NOT HOW TO DO IT — A CHAPTER-WIDE PAID RUN IS OOM-KILLED.**
-Measured twice on ch03: `--chapter 3` died after 2 of 15; `--chapter 3 --module m68700` (~21 figures)
-died too. **`--figure <name>`, one per invocation, ran 13 consecutively with memory flat at
-7.0–7.4 GB.** No leak between runs; the load accumulates inside one invocation and scales with how
-many figures it BUYS. ▶ **`--dry-run` CANNOT PREDICT THIS** — the chapter-wide rehearsal succeeded on
-that same chapter twice the same day, rendering every figure identically. Full account and the
-working loop shape → the loop plan's Step 3 and `[[figure-run-oom-buy-per-figure]]`.
-✅ **Nothing was lost either time** — all-or-nothing per figure held; completed figures were whole and
-the rest stayed eligible.
-⚠️ **Two theories that were WRONG, so nobody re-runs them:** not concurrent load (7 GiB free,
-nothing running), not large artwork (the offending module's biggest source is 2.3 MB; the 38 MB
-photographs are in a module that ran fine).
-⚠️ **ch04 reports `skipped-current` for `CNX_Chem_04_03_flowchart`** — already bought, not a fault.
+✅ **ch04 IS DONE TOO — 19 of 19, 103 of 103 labels reach the published SVGs, 0 real English
+residue.** Both chapters are now whole units: text and figures, ready for an editor's single pass.
+
+🔴 **RUN PAID FIGURE WORK IN THE FOREGROUND, IN MODEST BATCHES — A LONG-RUNNING *BACKGROUND* TASK
+IS KILLED, AND THE DRIVER IS NOT THE CAUSE.** Four background kills on 2026-09-12; the same work in
+the foreground did 6 figures at a time, twice, cleanly. ⚠️ **An earlier version of this entry, and of
+the loop plan and memory, claimed "a chapter-wide paid run exhausts memory; buy one figure per
+invocation" — WRONG about cause and remedy, and committed before the controlling measurement
+existed.** A per-figure loop was then killed too. What settled it: the supposedly-guilty figure run
+ALONE succeeded at **2,823 MB peak of 9.7 GB**, with ~7 GB available after every figure and at each
+kill. ▶ **A remedy that appears to work is not evidence for the diagnosis that motivated it** —
+per-figure DID get 13 through, which read as confirmation and was coincidence. Full account → the
+loop plan's Step 3 and `[[figure-run-oom-buy-per-figure]]`.
+✅ **Nothing was lost across any of the four kills** — all-or-nothing per figure held every time.
+⚠️ **Three theories that were WRONG:** concurrent load, large artwork, figure count per invocation.
+⚠️ **Two verification false alarms, both from my own checker, both instructive:** a contiguous
+14-char probe misses a label the composer WRAPS across `<text>` elements (tell: `is=0` with
+`en_residue=0` describes a blank figure — not physically possible); and a residue check fires on
+EN == IS pairs like `HCl(g)` or `H2, Raney Ni`, where the model correctly changed nothing.
+**Exclude `norm(EN) == norm(IS)` before counting residue.**
 
 **THEN, and only then, the next new chapter** — text and figures together, as one unit:
 
