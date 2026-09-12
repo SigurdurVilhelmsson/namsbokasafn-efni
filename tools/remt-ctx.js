@@ -97,6 +97,8 @@ export const RUN_BOOKS = Object.freeze(['efnafraedi-2e', 'lifraen-efnafraedi']);
 
 const bookDir = (book) => path.join(REPO_ROOT, 'books', book);
 const glossaryPath = (book) => path.join(bookDir(book), 'glossary', 'glossary-unified.json');
+const collisionsBaselinePath = (book) =>
+  path.join(bookDir(book), 'glossary', 'glossary-collisions-baseline.json');
 
 /**
  * `{unit, sources: {[ctxKey]: {path, mtime, bytes}}, extractRunStartedAt}` — I4's evidence.
@@ -416,10 +418,25 @@ export function loadTier0Ctx(unit) {
   const raw = spawnGlossaryPayloadCheck(unit.book);
   const payloadVerdict = isPlainRecord(raw) && typeof raw.producer === 'string' ? raw : null;
 
-  const ctx = { book: unit.book, glossary, glossariesByBook, payloadVerdict };
+  // §C18 — the accepted-competitions worklist G1 subtracts. `parseJsonStrict` yields null for
+  // absent, unreadable OR shapeless, and G1 treats null as "subtract nothing": an unreadable
+  // baseline must make the gate STRICTER, never quieter.
+  const collisionsBaseline = parseJsonStrict(
+    readOrNull(collisionsBaselinePath(unit.book)),
+    isPlainRecord
+  );
+
+  const ctx = { book: unit.book, glossary, glossariesByBook, payloadVerdict, collisionsBaseline };
   if (payloadText !== null) ctx.payloadText = payloadText;
 
-  const provenance = provenanceFor(unit, { glossary: gPath, payloadText: gPath });
+  // §C18 — the baseline is EVIDENCE now: G1's verdict depends on it, so its path/mtime/bytes
+  // belong in the provenance record like every other input. `provenanceFor` omits an absent
+  // source rather than recording a null, so a book with no baseline simply has no entry.
+  const provenance = provenanceFor(unit, {
+    glossary: gPath,
+    payloadText: gPath,
+    collisionsBaseline: collisionsBaselinePath(unit.book),
+  });
   assertSameUnit(unit, provenance);
   return { ctx, provenance };
 }
@@ -437,6 +454,7 @@ export const BOOK_KEYS = Object.freeze([
   'glossariesByBook',
   'payloadText',
   'payloadVerdict',
+  'collisionsBaseline',
 ]);
 export const MODULE_KEYS = Object.freeze([
   'chapter',
