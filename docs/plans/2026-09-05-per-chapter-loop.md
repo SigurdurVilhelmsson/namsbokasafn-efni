@@ -284,12 +284,37 @@ identity seam held *through* payment. Translation quality with **no glossary on 
 `Molar mass → Mólmassi`, `Stoichiometric factor → Efnajöfnustuðull`, `Avogadro's number → Tala
 Avogadros`. Verified by VALUE with English controls at 0, not by tally.
 
-⚠️ **DO NOT RUN A PAID FIGURE BATCH CONCURRENTLY WITH ANYTHING HEAVY.** The first attempt at that
-run was killed by the OOM killer while a full vitest suite and a 10-agent workflow shared the box.
-✅ Nothing was stranded — no sidecar, no tree change, no evidence of a billed call, and the figure
-stayed eligible — which is the all-or-nothing design surviving an *external kill* rather than a
-non-zero exit. But a chapter is ~20 min of Ghostscript/pdfplumber at 200 dpi on a 9.7 GiB box.
-**Check `free -h` and `df -h /tmp` first**; `/tmp` here is a 4.9 GB tmpfs.
+🔴 **BUY ONE FIGURE PER INVOCATION. A CHAPTER-WIDE PAID RUN IS OOM-KILLED ON THIS BOX.**
+Measured 2026-09-12 on ch03, twice: `--chapter 3` died after 2 of 15 figures; `--chapter 3 --module
+m68700` (the chapter's biggest module, ~21 figures) died too. **`--figure <name>`, one per
+invocation, then ran 13 consecutively with memory flat at 7.0–7.4 GB available throughout** — so
+there is no leak BETWEEN runs; the load accumulates INSIDE one invocation and scales with how many
+figures it BUYS.
+
+```bash
+# the working shape — note the TRAILING NEWLINE on the todo file (see below)
+while read -r f; do
+  node tools/figure-run.js --book <slug> --chapter <N> --figure "$f"
+done < todo.txt
+```
+
+🔴 **AND `--dry-run` STRUCTURALLY CANNOT WARN YOU.** The chapter-wide rehearsal SUCCEEDED on that
+same chapter **twice the same day**, rendering every figure at 200 dpi exactly as the live run does.
+The expensive-looking step is not the one that breaks. ▶ **A clean rehearsal tells you cost and
+classification; it says nothing about whether the run will survive.**
+
+✅ **NOTHING IS LOST WHEN IT DIES.** The paid stage is all-or-nothing per figure, so every completed
+figure is whole — sidecar *and* published SVG — and the rest stay eligible. Re-running skips what was
+bought. Proven twice: an OOM kill mid-chapter and an earlier one mid-figure both left a clean tree.
+
+⚠️ **TWO THEORIES THAT WERE WRONG** — do not re-run them. It is NOT concurrent load (7 GiB free,
+nothing else running) and it is NOT large artwork (the offending module's biggest source is 2.3 MB;
+the 38 MB photographs sit in a module that ran fine).
+
+⚠️ **GIVE THE TODO FILE A TRAILING NEWLINE** — `while read` drops a final line without one, and it
+silently skipped a figure. **State the denominator and check it:** enumerated = copied +
+already-bought + todo, and total labels expected. Every error in this run surfaced as an arithmetic
+mismatch, never as an intuition.
 
 ```bash
 node tools/figure-run.js --book <slug> --chapter <N> --dry-run   # free: classify + name, buys nothing

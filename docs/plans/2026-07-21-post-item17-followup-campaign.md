@@ -28,14 +28,24 @@ half-finished chapters into two chapters an editor can actually be handed.
 ✅ **And it is the real M5 gate**, which asks for *one chapter's figures processed end to end
 unattended* — something one more single figure would not demonstrate.
 
-```bash
-node tools/figure-run.js --book efnafraedi-2e --chapter 3 --dry-run   # free, read the tally first
-node tools/figure-run.js --book efnafraedi-2e --chapter 3             # ~15 ISK
-node tools/figure-run.js --book efnafraedi-2e --chapter 4             # ~18 ISK (1 already bought, skipped)
-```
-⚠️ **Nothing heavy running alongside** — `free -h`, `df -h /tmp` first. ~20 min per chapter.
-⚠️ **ch04 will report `skipped-current` for `CNX_Chem_04_03_flowchart`** — that is the one already
-bought, not a fault. Only a figure with NO sidecar is spendable.
+✅ **ch03 IS DONE — 15 of 15 translated figures bought, ~15 ISK, VERIFIED BY VALUE: 66 of 66
+translated labels present in the published SVGs, 0 English residue, negative control confirms the
+matcher can still miss.** All 15 structurally clean (basename matches, `composedHash` stamped, no
+`state` key). 26 figures correctly classified `copied` and never paid for.
+
+🔴 **BUT THE COMMAND ABOVE IS NOT HOW TO DO IT — A CHAPTER-WIDE PAID RUN IS OOM-KILLED.**
+Measured twice on ch03: `--chapter 3` died after 2 of 15; `--chapter 3 --module m68700` (~21 figures)
+died too. **`--figure <name>`, one per invocation, ran 13 consecutively with memory flat at
+7.0–7.4 GB.** No leak between runs; the load accumulates inside one invocation and scales with how
+many figures it BUYS. ▶ **`--dry-run` CANNOT PREDICT THIS** — the chapter-wide rehearsal succeeded on
+that same chapter twice the same day, rendering every figure identically. Full account and the
+working loop shape → the loop plan's Step 3 and `[[figure-run-oom-buy-per-figure]]`.
+✅ **Nothing was lost either time** — all-or-nothing per figure held; completed figures were whole and
+the rest stayed eligible.
+⚠️ **Two theories that were WRONG, so nobody re-runs them:** not concurrent load (7 GiB free,
+nothing running), not large artwork (the offending module's biggest source is 2.3 MB; the 38 MB
+photographs are in a module that ran fine).
+⚠️ **ch04 reports `skipped-current` for `CNX_Chem_04_03_flowchart`** — already bought, not a fault.
 
 **THEN, and only then, the next new chapter** — text and figures together, as one unit:
 
