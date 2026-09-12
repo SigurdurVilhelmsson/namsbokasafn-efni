@@ -189,9 +189,30 @@ chapter**: 255 of 342 segment files differ from what today's extractor produces.
 ## Step 2 — re-MT the text
 
 ```bash
-node tools/api-translate.js --book <slug> --chapter <N> --dry-run   # cost, glossary line
-node tools/api-translate.js --book <slug> --chapter <N> --force
+node tools/api-translate.js --book <slug> --chapter <N> --dry-run --force   # 0 ISK — see below, --force is REQUIRED
+node tools/api-translate.js --book <slug> --chapter <N> --force --no-glossary
 ```
+
+🔴 **`--no-glossary` IS MANDATORY AND THE DEFAULT IS THE WRONG ONE.** [USER] ruled 2026-09-06 to
+take the glossary off the MT wire (§C133 measured its effect *inside* the same-arm noise floor; the
+verbatim ruling is quoted in the register’s **§C133**). **That ruling was implemented for the FIGURE leg (`153858a3`)
+and never for the TEXT leg**: `tools/api-translate.js:1290` declares
+`{ name: 'noGlossary', flags: ['--no-glossary'], default: false }`, consumed at `:1826`. **Nothing
+gates on the arm** — `glossaryArm` is read by two test files and by no check — so the ruling was
+enforced only by the operator remembering an optional flag this command did not show. Practice has
+been correct (all 13 ch03+ch04 provenance sidecars read `arm: "no-glossary"`), which is exactly what
+makes the omission easy to miss. ▶ **The damage lands INSIDE the paid translation and the repair is
+a paid re-run**: `addition → álagning` (*a tax levy*) is 8 chars, so `filterGlossaryForText` selects
+it by case-insensitive SUBSTRING, in 23 of 23 chemistry chapters. **Verify the arm after every buy:**
+
+```bash
+grep -ah -o '"arm"[^,}]*' books/<slug>/02-mt-output/ch<NN>/*-provenance.json | sort | uniq -c
+# every module must read arm: "no-glossary"
+```
+
+⚠️ **AND `--dry-run` WITHOUT `--force` IS USELESS — it reports `To translate: 0` and prices
+nothing**, because `mtRunDecision` skips on file existence. The pre-flight is the `--dry-run --force`
+form above; it costs **0 ISK**, exiting before `createClient()` is ever constructed.
 
 🔴 **`--force` IS MANDATORY.** `mtRunDecision` skips on FILE EXISTENCE, not a content hash, so a
 bare run reports `To translate: 0 / Already done: N` and translates nothing while exiting 0.
