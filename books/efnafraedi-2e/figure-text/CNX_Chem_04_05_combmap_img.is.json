@@ -1,0 +1,23 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_04_05_combmap_img",
+ "renderHash": "78e4ad29f7164213",
+ "composedHash": "78e4ad29f7164213",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Mass of|CO2": "Massi CO2",
+  "Moles of|CO2": "Mól af CO2",
+  "Moles of C": "Mól af C",
+  "Mass of C": "Massi C",
+  "Mass of|H2O": "Massi H2O",
+  "Moles of|H2O": "Mól af H2O",
+  "Moles of H": "Mól af H",
+  "Mass of H": "Massi H",
+  "Percent|composition": "Prósentusamsetning",
+  "C to H|mole ratio": "Mólhlutfall C á móti H",
+  "Empirical|formula": "Reynsluformúla",
+  "Molar|mass": "Mólmassi",
+  "Stoichiometric|factor": "Efnajöfnustuðull"
+ }
+}

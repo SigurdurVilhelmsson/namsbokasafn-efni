@@ -1,0 +1,12 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_04_03_ethene_img",
+ "renderHash": "46bee83e80df9ce3",
+ "composedHash": "46bee83e80df9ce3",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "required to react with H2O to produce 9.55 g of": "sem þarf til að hvarfast við H2O til að mynda 9,55 g af",
+  "The number of moles and the mass of": "Fjöldi móla og massi"
+ }
+}

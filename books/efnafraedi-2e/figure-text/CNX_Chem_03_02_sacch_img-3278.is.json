@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_03_02_sacch_img-3278",
+ "renderHash": "c8aa8ebca6c7b38a",
+ "composedHash": "c8aa8ebca6c7b38a",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Moles of|C7H5NO3S|(mol)": "Mól af C7H5NO3S (mól)",
+  "Divide by molar|mass (g/mol)": "Deilið með mólmassa (g/mól)",
+  "Mass of|C7H5NO3S|(g)": "Massi C7H5NO3S (g)",
+  "Number of|C7H5NO3S|molecules": "Fjöldi C7H5NO3S sameinda",
+  "Multiply by|Avogadro’s|number (mol–1)": "Margfalda með tölu Avogadros (mól–1)"
+ }
+}

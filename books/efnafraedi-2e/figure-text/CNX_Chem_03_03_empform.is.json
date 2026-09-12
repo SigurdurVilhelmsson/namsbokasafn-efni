@@ -1,0 +1,19 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_03_03_empform",
+ "renderHash": "935f2723ec8d5eae",
+ "composedHash": "935f2723ec8d5eae",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Moles of|A atoms": "Mól af A atómum",
+  "Divide by|molar mass": "Deilið með mólmassa",
+  "Mass of|A atoms": "Massi A atóma",
+  "Moles of|X atoms": "Mól af X atómum",
+  "Mass of|X atoms": "Massi X atóma",
+  "A to X|mole ratio": "Mólhlutfall A á móti X",
+  "Divide by|lowest number|of moles": "Deilið með lægsta mólfjölda",
+  "Empirical|formula": "Reynsluformúla",
+  "Convert ratio to|lowest whole|numbers": "Breyta hlutfalli í lægstu heilu tölur"
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_03_02_potassium_img-f1d1",
+ "renderHash": "e91a5b7f164f8aac",
+ "composedHash": "e91a5b7f164f8aac",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Moles of|K atoms (mol)": "Mól K atóma (mól)",
+  "Divide by molar|mass (g/mol)": "Deilið með mólmassa (g/mól)",
+  "Mass of|K atoms (g)": "Massi K atóma (g)"
+ }
+}

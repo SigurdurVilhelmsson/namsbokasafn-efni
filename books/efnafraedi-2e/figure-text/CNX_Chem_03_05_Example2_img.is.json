@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_03_05_Example2_img",
+ "renderHash": "adf029023869ef52",
+ "composedHash": "adf029023869ef52",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Mass of|solution (g)": "Massi lausnar (g)",
+  "Multiply by|mass percent as ratio|(g HCl/g solution)": "Margfaldaðu með massaprósentu sem hlutfalli (g HCl/g lausn)",
+  "Mass of|HCl (g)": "Massi HCl (g)",
+  "Multiply by|density (g/mL)": "Margfalda með eðlismassa (g/ml)",
+  "Volume of|solution (mL)": "Rúmmál lausnar (ml)"
+ }
+}

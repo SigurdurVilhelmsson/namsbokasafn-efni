@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_04_05_map7_img",
+ "renderHash": "a184c179f6164d71",
+ "composedHash": "a184c179f6164d71",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Volume of |NaOH": "Rúmmál NaOH",
+  "Moles of |NaOH": "Mól af NaOH",
+  "Moles of HCl": "Mól af HCl",
+  "Molar|concentration": "Mólstyrkur",
+  "Concentration |of HCl": "Styrkur HCl",
+  "Solution volume": "Rúmmál lausnar",
+  "Stoichiometric|factor": "Efnajöfnustuðull"
+ }
+}

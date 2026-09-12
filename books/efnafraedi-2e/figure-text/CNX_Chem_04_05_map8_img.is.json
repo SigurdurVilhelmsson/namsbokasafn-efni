@@ -1,0 +1,18 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_04_05_map8_img",
+ "renderHash": "702477adf2e03763",
+ "composedHash": "702477adf2e03763",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Molar mass": "Mólmassi",
+  "Stoichiometric|factor": "Efnajöfnustuðull",
+  "Sample mass": "Massi sýnis",
+  "Mass of |BaSO4": "Massi BaSO4",
+  "Moles of |BaSO4": "Mól af BaSO4",
+  "Moles of |CaSO4": "Mól af CaSO4",
+  "Mass of |CaSO4": "Massi CaSO4",
+  "Percent |CaSO4": "Prósenta CaSO4"
+ }
+}

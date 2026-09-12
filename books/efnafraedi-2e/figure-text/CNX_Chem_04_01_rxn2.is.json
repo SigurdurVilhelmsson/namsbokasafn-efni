@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_04_01_rxn2",
+ "renderHash": "fdbc9b7a327e1342",
+ "composedHash": "fdbc9b7a327e1342",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Reactant": "Hvarfefni",
+  "Reactant side": "Hvarfefnamegin",
+  "Product side": "Vörumegin",
+  "Coefficient": "Stuðull",
+  "Product": "Vara"
+ }
+}

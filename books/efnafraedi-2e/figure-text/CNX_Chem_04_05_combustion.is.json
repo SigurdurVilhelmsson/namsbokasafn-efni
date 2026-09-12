@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_04_05_combustion",
+ "renderHash": "eb34149adccaba4f",
+ "composedHash": "eb34149adccaba4f",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Furnace": "Ofn",
+  "CO2, H2O, O2,|and other gases": "CO2, H2O, O2 og aðrar lofttegundir",
+  "H2O absorber|such as |Mg(ClO4)2": "H2O-gleypir eins og Mg(ClO4)2",
+  "CO2 absorber|such as NaOH": "CO2-gleypir eins og NaOH",
+  "O2 and |other gases": "O2 og aðrar lofttegundir",
+  "Sample": "Sýnishorn"
+ }
+}

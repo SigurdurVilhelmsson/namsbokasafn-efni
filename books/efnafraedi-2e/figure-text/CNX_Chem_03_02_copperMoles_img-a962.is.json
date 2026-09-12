@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_03_02_copperMoles_img-a962",
+ "renderHash": "00e2a1a6b5189f4a",
+ "composedHash": "00e2a1a6b5189f4a",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Moles of|Cu atoms (mol)": "Mól af Cu atómum (mól)",
+  "Divide by molar|mass (g/mol)": "Deila með mólmassa (g/mól)",
+  "Mass of|Cu atoms (g)": "Massi Cu atóma (g)",
+  "Number of|Cu atoms": "Fjöldi Cu atóma",
+  "Multiply by|Avogadro’s|number (mol–1)": "Margfaldaðu með tölu Avogadros (mól–1)"
+ }
+}

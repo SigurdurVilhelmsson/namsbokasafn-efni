@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_04_04_sandwich",
+ "renderHash": "86c8718226458355",
+ "composedHash": "86c8718226458355",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Provided with:": "Fylgir með:",
+  "+ 11 slices of cheese": "+ 11 ostsneiðar",
+  "We can make:": "Við getum búið til:",
+  "28 slices of bread": "28 brauðsneiðar",
+  "11 sandwiches": "11 samlokur",
+  "+ 6 slices bread left over": "+ 6 brauðsneiðar afgangs",
+  "1 sandwich = 2 slices of bread + 1 slice of cheese": "1 samloka = 2 brauðsneiðar + 1 ostsneið"
+ }
+}
