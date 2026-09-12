@@ -14,7 +14,14 @@ sentence.** Three things sit between `main` and an authorised paid chapter, all 
 all free to re-derive. ⚠️ **None was introduced by the P0 work** — two pre-date it by a week and the
 third by three days; they were simply never in front of the session that wrote the headline.
 
-#### ① M1's GATE FAILS — ONE ROW, AND THE [USER] RULING ON IT IS A WEEK OLD AND WAS NEVER APPLIED TO THE DATA
+#### ① M1's GATE FAILED — ONE ROW, AND THE [USER] RULING ON IT IS A WEEK OLD AND WAS NEVER APPLIED TO THE DATA
+
+✅ **RESOLVED 2026-09-12, AS THE GATE ONLY — see Q1 below for exactly what moved and what did not.**
+[USER] chose option (c): G1 now subtracts the §C18 baseline it was always specified to subtract, and
+tier-0 passes. 🔴 **THE RULING IS STILL UNAPPLIED AND THE `si` COMPETITION IS STILL IN THE DATA.**
+Everything below is the evidence as measured while the gate was red; it is kept because the exposure
+analysis (MT wire, render side, the `Si`-only trap) is what makes options (a)/(b) decidable, and
+none of it changed.
 
 `node tools/remt-sweep.js --tier 0 --with-spawns` (redirect, never pipe) → **`efnafraedi-2e` G1
 FAIL**, exactly one finding:
@@ -196,10 +203,34 @@ regression arrives looking like weather.
    Vefur gates each entry on `exactSectionExists`, so an entry landing early is **inert**; landing late
    is a reader-facing 404 window. **Early is the only ordering with no window.**
 
-### ❓ OPEN FOR [USER] — the buy is blocked on Q1 only
+### ❓ OPEN FOR [USER] — ✅ Q1 IS ANSWERED; the buy is no longer blocked by a gate
 
-- **Q1 — M1's gate: accept as satisfied in substance, delete both `si` rows (wire-neutral, cosmetic),
-  or narrow G1 to subtract the collisions baseline?** Evidence in ①. **Never `Si`-only.**
+- **Q1 — ✅ ANSWERED 2026-09-12 ([USER] chose option (c)): G1 now subtracts the §C18 collisions
+  baseline, and the tier-0 gate PASSES — G1 0.0% on both books, over-bar section absent, `examined`
+  still 1954 (unchanged, so the same population is judged).** Shipped as a PR off `main`, not a
+  direct push. 🔴 **READ THE SCOPE, BECAUSE THE GATE AND THE RULING ARE DIFFERENT THINGS AND ONLY
+  ONE MOVED.** What shipped is **SPEC CONFORMANCE**: the check's own spec row
+  (`docs/superpowers/specs/2026-08-13-remt-check-battery.md:93`) has always read *"beyond
+  `glossary-collisions-baseline.json`"* — and *"**reuse** `tools/validate-glossary.js`"* — while the
+  implementation subtracted nothing, so a blocking gate was red on a row it was specified to
+  ignore, and `validate-glossary.js` had been reading that same row as accepted all along.
+  ⚠️ **WHAT DID *NOT* HAPPEN: the 2026-09-05 [USER] ruling that a chemical symbol keeps its symbol
+  is STILL UNAPPLIED.** The `si` competition is still in the data; options **(a)** accept in
+  substance and **(b)** delete both concept rows remain open, and **`Si`-only is still a measured
+  regression — never do it** (it un-omits the survivor onto the paid wire, 1,703 → 1,704, against
+  141 occurrences). ▶ **So "the gate is green" must not be read as "the glossary is clean", and G1
+  will not tell you otherwise — measured, both arms, with a positive control: its message carries a
+  COUNT, and the only headwords it names are the 10 RESOLVED ones. What names `si` is the baseline
+  JSON and `node tools/validate-glossary.js --book efnafraedi-2e`.**
+  ⚠️ **AND THE EXPOSURE WAS ALREADY NIL BEFORE ANY OF THIS, WHICH IS WHY (c) WAS SAFE:**
+  `formatGlossary` omits both `si` candidates from the MT wire, and on the render side all 21 `Si`
+  math labels resolve to `english` behind two independent guards.
+- **Q1b — NEW, and free: chemistry's collisions baseline is a WORKLIST that has silently shrunk.**
+  It lists **11** accepted competitions and only `si` still fires; the other ten
+  (`am at cd er ir in no os pd pr`) were resolved and never removed. Organic: 3 listed, 0 firing.
+  The file's own `_note` says *"Shrink it by resolving terms … do not grow it to silence the gate"*,
+  and G1's message now names the resolved ones on every run. **Removing them is a data change with
+  no gate effect — own item, or fold into whichever of (a)/(b) you pick.**
 - **Q2 — which chapter, and authorise the spend.** Table in runbook step 2.
 - **Q3 — P2's `src` fix (169 media nodes / 47 modules) before or after M6?** Free **if** it lands
   before the chosen chapter's step-1 re-extract: the alt segment id is `altElementId(media.id, 0)`,
