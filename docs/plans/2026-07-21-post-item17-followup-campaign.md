@@ -4,7 +4,40 @@
 
 ## ⏩ RESUME — state as of **2026-09-12 (EVENING)** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — 🔴 **BUY A CHAPTER: TEXT *AND* FIGURES, TOGETHER, AS ONE UNIT.**
+### ⏭ SINGLE NEXT ACTION — 🔴 **FINISH ch03 AND ch04'S FIGURES. ~35 ISK. DO NOT BUY A NEW CHAPTER FIRST.**
+
+🔴 **CORRECTED BY [USER] 2026-09-12, AND THE ERROR IS INSTRUCTIVE.** The first version of this
+block said *"buy a chapter: text AND figures, together, as one unit"* — correct as a RULE and wrong
+as the NEXT ACTION, because **two chapters already have their text and are sitting half-done**:
+
+| chapter | text | figures | |
+|---|---|---|---|
+| **ch03** | bought (twice, ~2,120 ISK) | **15 translated, 0 bought** | **incomplete unit** |
+| **ch04** | bought (~1,423 ISK) | **18 translated, 1 bought** | **incomplete unit** |
+
+▶ **Buying a new chapter's text while these two wait is exactly the second-editor-visit failure the
+one-unit rule exists to prevent** — and it is the same thing [USER] already ruled on 2026-09-06
+(*"do not buy chapter 5's text before a chapter's figures have actually been run"*). **The rule was
+written into the loop plan and then not applied to the state the project was actually in.** A rule
+stated in the abstract does not apply itself to the case in front of you.
+
+✅ **AND IT IS THE CHEAPEST THING AVAILABLE: 33 figures at ~1 ISK measured ≈ 35 ISK**, against
+~1,240 for the cheapest new chapter. It converts **~3,540 ISK of already-spent text** from two
+half-finished chapters into two chapters an editor can actually be handed.
+✅ **All 33 are reachable** — the 9 + 8 that were invisible this morning were closed by P2 today.
+✅ **And it is the real M5 gate**, which asks for *one chapter's figures processed end to end
+unattended* — something one more single figure would not demonstrate.
+
+```bash
+node tools/figure-run.js --book efnafraedi-2e --chapter 3 --dry-run   # free, read the tally first
+node tools/figure-run.js --book efnafraedi-2e --chapter 3             # ~15 ISK
+node tools/figure-run.js --book efnafraedi-2e --chapter 4             # ~18 ISK (1 already bought, skipped)
+```
+⚠️ **Nothing heavy running alongside** — `free -h`, `df -h /tmp` first. ~20 min per chapter.
+⚠️ **ch04 will report `skipped-current` for `CNX_Chem_04_03_flowchart`** — that is the one already
+bought, not a fault. Only a figure with NO sidecar is spendable.
+
+**THEN, and only then, the next new chapter** — text and figures together, as one unit:
 
 ✅ **EVERYTHING THAT WAS BLOCKING IS MERGED. THE LOOP IS READY AND THE PAID PATH IS PROVEN.**
 
