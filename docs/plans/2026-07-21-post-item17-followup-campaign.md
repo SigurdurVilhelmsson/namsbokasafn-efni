@@ -2,7 +2,227 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-10** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-12** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — 🔴 **M6, AND THE GATE THAT GUARDS IT IS UNMET. READ ① BEFORE PICKING A CHAPTER.**
+
+🔴 **THE 2026-09-10 BLOCK'S HEADLINE — "P0 IS GONE; NOTHING BLOCKS IT NOW" — IS TRUE OF P0 AND OF
+NOTHING ELSE, AND THE GAP IS NOT SUBTLE: M6's OWN STATED PRECONDITION IS M1, WHOSE GATE FAILS TODAY.**
+P0 really is closed (`npm audit --audit-level=high` exits 0 in both trees, re-measured 2026-09-12).
+▶ **But "P0 no longer blocks" was written as "nothing blocks", and the two are not the same
+sentence.** Three things sit between `main` and an authorised paid chapter, all measured 2026-09-12,
+all free to re-derive. ⚠️ **None was introduced by the P0 work** — two pre-date it by a week and the
+third by three days; they were simply never in front of the session that wrote the headline.
+
+#### ① M1's GATE FAILS — ONE ROW, AND THE [USER] RULING ON IT IS A WEEK OLD AND WAS NEVER APPLIED TO THE DATA
+
+`node tools/remt-sweep.js --tier 0 --with-spawns` (redirect, never pipe) → **`efnafraedi-2e` G1
+FAIL**, exactly one finding:
+
+```json
+{"kind":"glossary-competition","english":"si","candidates":["alþjóðlega einingakerfið","kísill"],"chosen":"kísill"}
+```
+
+G2/G3/G5 pass both books; G4 warns both (non-blocking); `lifraen-efnafraedi` passes G1. **This is the
+identical row the loop plan's own Preconditions table names**, against which [USER] ruled
+**2026-09-05**: *"a chemical symbol keeps its symbol. Neither casing may be translated."* ▶ **THE
+RULING WAS MADE AND THE DATA WAS NEVER CHANGED. A RULING IS NOT A COMMIT** — the data-side twin of
+this file's own *"a stated rule is not a guarantee the code honours it"*, and no gate anywhere watches
+for a ruling that never landed.
+
+⚠️ **BUT CLASSIFY IT HONESTLY: THE EXPOSURE IS ALREADY ZERO ON BOTH CONSUMER SIDES, SO THIS IS A RED
+DETECTOR OVER A MITIGATED ROW, NOT A CORRECTNESS BLOCKER.** Measured on the real 1,705-term payload:
+`formatGlossary` puts **1,703 on the wire** with `omitted = [SI, Si]` (control: `silicon → kísill`
+still on the wire), and `resolveLabel` returns `Si → {value:'Si', source:'english'}` behind **two
+independent** guards — the ≤ 2-char symbol guard and a pre-existing `"si":"si"` self-map in the
+book's overlay (controls `silicon→kísill`, `mol→mól`, `Rate→hraði` all fire). `si` is also already
+in `glossary-collisions-baseline.json`, so the C18 gate correctly does not fail on it.
+
+🔴 **AND THE OBVIOUS REMEDY IS A MEASURED REGRESSION — NEVER DELETE `Si` ALONE.** Deleting **one**
+`lang='en'` row removes the *omission* and puts the survivor **onto the paid wire** (1,703 → 1,704),
+against **64 `SI` occurrences in 9 files / 77 `Si` in 21 files** across the 219-file chemistry
+`02-for-mt` corpus. Deleting **both** is safe but **exactly wire-neutral** (1,703 → 1,703): it changes
+not one byte reaching the paid MT, turns a detector green, and reddens three further pinned
+assertions. ▶ **So the three options are (a) accept the gate as satisfied in substance, (b) delete
+both rows knowing it is cosmetic, or (c) narrow G1 to subtract `glossary-collisions-baseline.json`,
+which G1's own spec row already says it operates beyond. This is a [USER] call, not an engineering
+one.** ⚠️ Removing `SI` costs the physics book conceptId 110, a correct uncontested entry — mitigated
+only by that book being retired from the site under the 2026-08-22 ruling.
+
+⚠️ **AND DO NOT LET ① LAUNDER THE THREE LIVE IN-DOMAIN ROWS.** `addition → álagning` (4649),
+`valence → girðitala` (4764), `chemical substance → hreint efni` (4815) are present byte-identically
+in **both** books. A same-segment A/B (identical SEG id, identical English) settles 4649, which the
+register had contradicted itself on: glossary arm gave *"requires regular **additions** of various
+chemical compounds"* → *"krefst reglulegrar **ÁLAGNINGAR** ýmissa efnasambanda"* (**a regular
+levying**); the no-glossary arm produced it 0 times in **both** re-buys — a same-arm repeat, so not
+§C133's 25.4% noise floor. **4649 is harmful in chemistry**, and it is unblocking today only because
+the glossary is off the wire. Unprompted, the model picks `samlagning` for the reaction class and
+`bæta við` for the ordinary sense, so the remedy is sense- or book-scoped, not keep-vs-delete.
+
+#### ② THE RULING TO TAKE THE GLOSSARY OFF THE WIRE WAS HALF-APPLIED — ✅ **FIXED IN THE LOOP PLAN 2026-09-12**
+
+🔴 **THIS, NOT ①, IS THE FINDING THAT COULD HAVE COST REAL MONEY.** [USER] ruled 2026-09-06 (quoted
+verbatim in **§C133** — cited by section, never by line, because inserting this very block
+moved that line by ~197)
+to take the glossary off the MT wire. It was implemented for the **figure** leg (`153858a3`) and
+**never for the text leg**: `tools/api-translate.js:1290` declares `noGlossary` **`default: false`**,
+consumed at `:1826` — and the loop plan's **primary buy command omitted the flag entirely**, showing
+it only bracketed, in the *retry* subsection 30 lines below. **Nothing gates on the arm — measured, with a
+repaired control.** `glossaryArm` reaches `tools/lib/run-record.js` and IS written into the run record
+as `arm:`, and remt checks DO read run records (`readRunRecord`, `remt-checks-mt.js:842`, consumed by
+A2a/A4/A8) — **but the five fields they read are `chars`, `estimatedIsk`, `markersNormalized`,
+`unwrappedCount`, `unwrappedByType`.** The token `arm` appears in the whole check layer exactly twice,
+both in a **comment** calling it *"an input to the §C82 ③ glossary-arm decision"* — i.e. an input to a
+HUMAN decision, not a gate. ⚠️ **The first attempt at this null was uninterpretable and looked fine:**
+its control grepped `runRecord` while the function is `readRunRecord`, so the control silently matched
+nothing and the "no check reads it" answer rested on an instrument never shown to work. `defineCheck`
+(43 hits across the 5 files) is the control that fires. ▶ So the ruling was enforced by nothing but the
+operator remembering an optional flag the documented command did not show.
+
+▶ **PRACTICE WAS CORRECT, AND THAT IS PRECISELY WHAT MADE IT INVISIBLE:** all 13 ch03+ch04
+provenance sidecars read `arm: "no-glossary"`. **A rule obeyed by habit reads exactly like a rule
+enforced by the system, right up until the habit lapses.** `addition` is 8 chars →
+`filterGlossaryForText` selects it by case-insensitive **substring**, in **23 of 23** chemistry
+chapters; the damage lands *inside* the paid translation and the repair is a **paid re-run**.
+✅ **`docs/plans/2026-09-05-per-chapter-loop.md` Step 2 now carries `--no-glossary` on the buy line,
+the reason, and a post-buy `grep` that proves the arm.** Its `--dry-run` line was wrong in the same
+block for a second reason and is also fixed — without `--force` it reports `To translate: 0` and
+prices nothing.
+
+#### ③ THE SUITE HAS DRIFTED BEYOND §C118's AUTHORISED RED SET
+
+**A DATED READING, NOT A STATUS — live gate state is the Actions tab, per CLAUDE.md, and this number
+is stale the moment anything merges.** Measured 2026-09-12 from the job log of run **34587995884**
+(`gh api repos/…/actions/jobs/<id>/logs`, **1,156,741 bytes** — the byte-count control matters, because
+`gh run view --log` returns exit 0 with **zero bytes** on a completed job and a by-name diff then reads
+as *"the entire floor cleared"*):
+
+| reading | Test Files | Tests |
+|---|---|---|
+| §C118-authorised baseline (run of 2026-09-03) | **9** failed / 373 | **19** failed / 5,805 |
+| HEAD, run 34587995884 (2026-09-11) | **12** failed / 405 | **28** failed / 6,466 |
+
+▶ **+3 files and +9 assertions beyond what §C118 signed off.** The `e2e` job is a **separate job** and
+its conclusion is its own — read it there, not from this row. 🔴 **THE PART THAT MATTERS FOR THE LOOP:
+four of the newly-red pins are CORPUS-INDEXED and drift FURTHER with every chapter bought**, and
+at `tools/__tests__/remt-checks-mt.test.js:699` the three assertions run in the order
+`expect(files).toBe(414)` → `expect(ids).toBe(60380)` → `expect(violations).toBe(0)` **inside one
+`it()`**, so either corpus pin throwing leaves the third — the assertion that licenses the **blocking**
+A2b charset gate — **unreachable in CI**. The live sweep still runs; CI
+is blind to it. ⚠️ **Judge any merge from here by a BY-NAME diff of the failing set, never by "main is
+red anyway"** — a red floor that grows on its own is the exact condition under which a real
+regression arrives looking like weather.
+
+#### ④ CORRECTIONS TO THE 2026-09-10 BLOCK
+
+- 🔴 **"THE FIGURE PRE-FLIGHT CANNOT BE RUN FROM A FRESH CLONE — IT MUST HAPPEN ON [USER]'S BOX … IS
+  [USER]'S TO RUN, not something a session can discharge remotely" — HALF RIGHT, AND THE HALF THAT IS
+  WRONG COST AN OUTSTANDING ITEM A WEEK.** The *fresh-clone* clause is correct: `sources.local.json`
+  is gitignored. But **a session running ON this box can run it**, and did, 2026-09-12:
+  `node tools/figure-run.js --book efnafraedi-2e --chapter 13 --dry-run` → exit 0, VERDICT ok, **14
+  figures = 9 translated / 2 copied-photo / 1 copied-textless / 2 unresolved, ~6.76 ISK** (0.5% of
+  ch13's text cost), 3 of the 9 translated **not reviewable**. ▶ **"[USER] must run it" and "a session
+  cannot" are different claims, and the block asserted the second from the first.** It is a
+  **per-chapter** step and is discharged **for ch13 only**.
+- **#459's "18 newly resolving figures" is +17, not +18** (875 → 892), reproduced by running both real
+  resolvers over the same 1,148 basenames. 8 of them land in ch18.
+- **Readers are on the 2026-08-19 build.** 249 of 251 chemistry content files return 200 sharing one
+  `last-modified: Wed, 19 Aug 2026 14:37:16 GMT` — **and that timestamp is identical ACROSS BOTH
+  BOOKS** (re-confirmed 2026-09-12 on chemistry ch03 + ch10 and organic ch03: one value, to the
+  second), which is a single deploy snapshot rather than a per-file coincidence. **Decisive control**:
+  organic `3-6-afbrigdi-etans.html` existed in the tree only 2026-09-02→09-05 and is **404** live,
+  while a nonsense URL returns the same 404/162 b — so the instrument distinguishes *absent* from
+  *present*, which a set of uniform 200s alone cannot. ▶ **September's re-MT of chemistry ch03 and organic ch03 has
+  reached ZERO readers**, so every "hold" currently in force withholds an improvement and shields
+  nobody — the trade this campaign has repeatedly stated and repeatedly re-inherited backwards.
+- **Nothing is stranded.** `/api/health` → `status: ok`, `content_backup.last_status: "no_changes"`,
+  and **[USER] confirmed 2026-09-12 that prod is up to date.**
+  🔴 **A "12 COMMITS BEHIND" FIGURE WAS COMPUTED FOR THIS BLOCK AND IS WRONG — KEPT HERE BECAUSE THE
+  WAY IT WAS WRONG IS THE POINT.** `git rev-list --count --first-parent c3cda2a0..main` really does
+  return 12; the command was right and the **baseline** was invented, by reading the 09-09 block's
+  "#458 deployed" as if it were the LAST deploy rather than *a* deploy. ▶ **The number was flagged in
+  this same block as carrying an unverified premise, and the premise was falsified within the hour by
+  asking the one person who knew.** A local repo cannot see prod's HEAD: `/api/health` carries no SHA,
+  so **there is no instrument on this side that could have settled it** — which makes it a question to
+  ASK, not a number to compute. ⚠️ **The standing hazard is unchanged and is not retired by this
+  correction:** the cron never fetches by design, so a dev push to `main` still strands the next
+  content tick until a deploy runs, and `/api/health` still reports `ok` throughout because it answers
+  *"is the cron alive?"*, never *"is anything unpushed?"*. **The mechanism is armed; it simply is not
+  triggered right now.** **The
+  loop's first content commit is a rejected non-fast-forward unless a deploy runs first**, and
+  `/api/health` will keep saying `ok` throughout, because it answers *"is the cron alive?"*, never
+  *"is anything unpushed?"*.
+
+### ✅ SATURDAY RUNBOOK — the 2026-09-10 list, amended. Stop at the first surprise.
+
+0. **①'s decision first** — it is the only item that gates the buy, and it is one question (below).
+1. **Deploy** (`./scripts/deploy.sh`, on prod). It does **not** push — `grep -n 'git push' scripts/deploy.sh`
+   returns nothing (control: `grep -an 'git '` → 6 lines) — so releasing a re-based content commit is
+   the next cron tick or a human. Its `git pull --rebase origin main` (`:73`) is what levels prod.
+2. **Pick the chapter and authorise that figure explicitly.** Estimates from the free
+   `--dry-run --force` sweep; billed ≈ 0.68–0.75×, **ratio not constant — quote a range, never a point**:
+   **ch13 ~1,287** (pre-flight done, figures ~7 ISK) · **ch16 ~1,237** (pre-flight NOT run) ·
+   ch0 ~156 but 1 module — *does a 1-module chapter demonstrate M6?* · **avoid ch18 ~3,132**.
+3. **Re-extract before paying.** `api-translate` reads the GENERATED `02-for-mt` and spawns no extractor.
+4. **Figure `--dry-run`** on the chosen chapter — and read the *"translated but NOT reviewable"* list,
+   not only the tally.
+5. **Free source-anchored checks**: `source-roundtrip-check.js` (`--verbose`; it truncates at 4 per
+   category otherwise) and `render-oracle-check.js --control`. **Run `--control` before believing a
+   clean render result.**
+6. **Then buy, with `--no-glossary --force`**, and verify the arm from the sidecars afterwards. Judge
+   the run by `emitted → injected → RENDERED` **plus the paid-leg column**.
+7. **Hand vefur its redirect rows BEFORE any sync.** **Measured by fetch 2026-09-12, with a
+   nonsense-URL control returning 404/162 b in the same run** — the three `slug-map.mt-preview.json`
+   files hold **13** rename rows (chemistry 5, organic 4, physics 4), and they are in **three
+   different states**, so the row count is not the work:
+
+   | state | rows | action |
+   |---|---|---|
+   | new name **404**, old name **200 serving** | **5** | ← **these need a redirect entry** |
+   | new name **200 serving**, old name 404 | 4 | already migrated on or before the 08-19 build — **leave alone** |
+   | physics (`edlisfraedi-2e`) | 4 | book retired from the site (2026-08-22 ruling) — out of scope |
+
+   **The five, by their OLD path** (the redirect's `from`; the `to` is that row's value in the map):
+   `efnafraedi-2e` → `chapters/03/3-2-akvordun-reynsluformula-og-sameindaformula.html` (499,575 b),
+   `chapters/04/4-3-hlutfallaefnafraedi-efnahvarfa.html` (266,708 b),
+   `chapters/04/4-5-magnbundin-efnagreining.html` (278,338 b) ·
+   `lifraen-efnafraedi` → `chapters/03/3-2-alkanar-og-hverfur-alkana.html` (16,608 b),
+   `chapters/03/3-7-afbrigdi-annarra-alkana.html` (14,864 b).
+   ⚠️ **Organic ch03 3-2 has TWO old names collapsing onto one new one and only ONE of them serves**
+   (`…-hverfur-alkana` is live; `…-alkanhverfur` is already 404). **Take the row by its measured state,
+   never by its presence in the map** — a count of rename rows would have put 13 or 9 rows in front of
+   vefur, 8 of them pointless and 4 of them for a retired book.
+
+   Vefur gates each entry on `exactSectionExists`, so an entry landing early is **inert**; landing late
+   is a reader-facing 404 window. **Early is the only ordering with no window.**
+
+### ❓ OPEN FOR [USER] — the buy is blocked on Q1 only
+
+- **Q1 — M1's gate: accept as satisfied in substance, delete both `si` rows (wire-neutral, cosmetic),
+  or narrow G1 to subtract the collisions baseline?** Evidence in ①. **Never `Si`-only.**
+- **Q2 — which chapter, and authorise the spend.** Table in runbook step 2.
+- **Q3 — P2's `src` fix (169 media nodes / 47 modules) before or after M6?** Free **if** it lands
+  before the chosen chapter's step-1 re-extract: the alt segment id is `altElementId(media.id, 0)`,
+  a function of the media id and **not** of `src`, and 147 of 168 carry no committed MT to invalidate
+  (the other 21 are ch03+ch04, current vintage). **Against:** an extractor change minutes before the
+  first authorised paid run is exactly what *"clean preconditions / stop at the first surprise"*
+  exists to prevent.
+- **Q4 — the three in-domain rows** (4649 / 4764 / 4815). None blocks M6 while the glossary is off the
+  wire. Own item, or folded into the M1 PR?
+- **Q5 — publication.** Readers are on the 2026-08-19 build. What *"demonstrated better"* evidence do
+  you want before a chapter goes live?
+
+⚠️ **UNVERIFIED — DO NOT READ AS CLEAN:** (a) **production's concept model** — the local
+`sessions.db` holds 42 tables and **zero** `concept_*` (control: `terminology_translations` present),
+so every DB-side glossary claim here is derived from the committed payload + the exporter code and is
+**prod-only to confirm**; ✅ **(b) RESOLVED by [USER] 2026-09-12 — prod is up to date**; it had
+read *"whether any deploy has run since 2026-09-08"*, and `/api/health` carrying no SHA is why no
+session can answer it unaided; (c) box.com delivery completeness; (d) what the editor's
+`findTermsInSegments` would suggest for `Si` on prod.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-10** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — 🔴 **M6, SATURDAY 2026-09-12 AFTER THE 07:00 RESET. P0 IS GONE; NOTHING BLOCKS IT NOW.**
 
