@@ -430,7 +430,13 @@ export function chapterCellUnits(book) {
  * These read files; the gates stay pure (Global Constraint 5).
  * ──────────────────────────────────────────────────────────────────────────── */
 
-function tier0Ctx(unit, { spawns }) {
+/**
+ * ⚠️ EXPORTED FOR THE CONTRACT TEST, NOT FOR REUSE. This is the SECOND tier-0 ctx builder —
+ * `loadTier0Ctx` (remt-ctx.js) is the first — and `remt-ctx-contract.test.js` pins it against
+ * `BOOK_KEYS` because adding a key to one builder and not the other leaves every unit test
+ * green while the real sweep reads `undefined` (measured 2026-09-12 on `collisionsBaseline`).
+ */
+export function tier0Ctx(unit, { spawns }) {
   const dir = bookDir(unit.book);
   const payloadPath = path.join(dir, 'glossary', 'glossary-unified.json');
   const glossary = readJsonOrNull(payloadPath);
@@ -443,10 +449,23 @@ function tier0Ctx(unit, { spawns }) {
     book: unit.book,
     glossary,
     glossariesByBook,
+    // §C18 — the accepted-competitions worklist G1 subtracts. null (absent/unreadable/shapeless)
+    // means "subtract nothing", which is the fail-SAFE direction for a blocking check.
+    // ⚠️ THE `isPlainRecord` NARROWING IS DELIBERATE AND MATCHES `loadTier0Ctx`'s
+    // `parseJsonStrict(…, isPlainRecord)`. `readJsonOrNull` alone admits an ARRAY (it tests
+    // `typeof v === 'object'`), so a `[]`-shaped baseline would read here as "a baseline with no
+    // competitions" and in the driver as "NO BASELINE". Same verdict, DIFFERENT operator message
+    // — which is the two-builders class this key was added to fix, one layer down.
+    collisionsBaseline: asPlainRecord(
+      readJsonOrNull(path.join(dir, 'glossary', 'glossary-collisions-baseline.json'))
+    ),
     payloadText: readIf(payloadPath) ?? undefined,
     payloadVerdict: spawns ? spawns.glossary.get(unit.book) : undefined,
   };
 }
+
+/** A plain, non-null, non-array object, else null — mirrors remt-ctx.js's `isPlainRecord`. */
+const asPlainRecord = (v) => (v !== null && typeof v === 'object' && !Array.isArray(v) ? v : null);
 
 function tier1Ctx(unit) {
   const dir = bookDir(unit.book);

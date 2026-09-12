@@ -26,6 +26,7 @@ import { spawn } from 'node:child_process';
 import path from 'node:path';
 import { defineCheck, registerChecks, VERDICT } from './remt-battery.js';
 import { findGlossaryCollisions } from './glossary-collisions.js';
+import { diffAgainstBaseline } from '../validate-glossary.js';
 import { formatGlossary } from './malstadur-api.js';
 
 /**
@@ -126,18 +127,31 @@ export const G1 = defineCheck({
     // `PASS + 0 -> SKIPPED` downgrade for an all-unapproved glossary, where G2 and G3 correctly
     // read SKIPPED and G1 alone read PASS. That is §C82 L6 inside Tier 0.
     const judged = terms.filter((t) => t && t.status === 'approved');
-    const { competitions, commaLists } = findGlossaryCollisions(terms, { approvedOnly: true });
+    const collisions = findGlossaryCollisions(terms, { approvedOnly: true });
+    // §C18 subtraction, per this check's SPEC ROW ("beyond glossary-collisions-baseline.json").
+    // REUSES validate-glossary's differ rather than reimplementing it, so the two gates over the
+    // same detector cannot drift. A null/absent baseline puts every competition in
+    // `newCompetitions`, i.e. behaviour identical to no subtraction — the fail-SAFE direction.
+    const d = diffAgainstBaseline(collisions, ctx.collisionsBaseline);
     const findings = [
-      ...competitions.map((c) => ({ kind: 'glossary-competition', ...c })),
-      ...commaLists.map((c) => ({ kind: 'glossary-comma-list', ...c })),
+      ...d.newCompetitions.map((c) => ({ kind: 'glossary-competition', ...c })),
+      // A baselined headword whose chosen value or candidate SET has moved is NOT the decision
+      // the baseline accepted. Without this the worklist would be a permanent silencer.
+      ...d.changedChoices.map((c) => ({ kind: 'glossary-competition-changed', ...c })),
+      ...d.newCommaLists.map((c) => ({ kind: 'glossary-comma-list', ...c })),
     ];
     return {
       verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
       examined: judged.length,
       findings,
       message:
-        `${judged.length} approved terms judged of ${terms.length} supplied; ${competitions.length} competitions, ${commaLists.length} comma lists. ` +
-        `BLIND to a single-valued WRONG entry (§C73/§C77) — a PASS here is not "the glossary is sound"`,
+        `${judged.length} approved terms judged of ${terms.length} supplied; ` +
+        `${collisions.competitions.length} competitions, ${collisions.commaLists.length} comma lists, ` +
+        `${findings.length} beyond baseline` +
+        (ctx.collisionsBaseline ? '' : ' (NO BASELINE — every finding is new)') +
+        `; ${d.resolved.length} resolved since baseline` +
+        (d.resolved.length ? ` (remove from baseline: ${d.resolved.join(', ')})` : '') +
+        `. BLIND to a single-valued WRONG entry (§C73/§C77) — a PASS here is not "the glossary is sound"`,
     };
   },
 });

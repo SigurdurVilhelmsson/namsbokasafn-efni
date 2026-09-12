@@ -486,29 +486,62 @@ describe("the blocking-bar readout — the sweep's most decision-relevant output
     expect(text).not.toContain('committed VINTAGE'); // tier 0 must not get tier 1-4's reading
   }, 30_000);
 
-  it('📌 PREMISE — the LIVE tier-0 sweep is over the bar on EXACTLY G1 and G3', async () => {
+  it('📌 PREMISE — the LIVE tier-0 sweep is over the bar on NOTHING, and G1/G3 are measured clean', async () => {
     // The other half of the statement above, and the record of why the fixture above had to
     // change.
-    // 🔴 REWRITTEN 2026-08-31 (§C116). This asserted an EMPTY over-bar list, true only under
-    // the 2026-08-30 domain-scoped glossary. That approach was replaced (it dropped 1,632 of
-    // 2,021 terms to fix 67), so the cross-domain terms are back and both checks fire again:
-    //   G1 — one competition: `si` = `alþjóðlega einingakerfið` vs `kísill`
-    //   G3 — `minus → mínus` and `plus → plús`, BOTH BENIGN (same-sense; G3 knows homography
-    //        and not sense). The seven harmful entries it used to fire on are gone.
-    // ▶ PINNED AS AN EXACT SET, WHICH IS STRONGER THAN THE EMPTY LIST IT REPLACES: a THIRD
-    // check going over the bar reddens this, and so does either of these two going clean —
-    // the second direction being the one an empty-list assertion can never catch.
-    // ⚠️ Neither is a reader-visible defect today: `formatGlossary` OMITS both `si`
-    // candidates from the MT wire, and on the render side all 21 `Si` math labels resolve to
-    // `english`. The MT-side and render-side protections are independent (CLAUDE.md), and
-    // here they happen to both hold — which is a measurement, not a guarantee.
+    // 🔴 REWRITTEN AGAIN 2026-09-12. It asserted the EXACT SET ['G1','G3']; both have since
+    // gone clean, INDEPENDENTLY AND FOR UNRELATED REASONS, which is why the exact-set form was
+    // the right call — it went red on the FIRST movement instead of waiting for the second.
+    //   G3 — was firing on `minus → mínus` / `plus → plús`, both BENIGN (same-sense; G3 knows
+    //        homography, not sense). A glossary DATA change removed them. ⚠️ THIS PIN IS NOT
+    //        WHAT SURFACED THAT, and an earlier draft of this comment claimed it was: a
+    //        set-of-ids assertion cannot emit a headword. `remt-checks-glossary.test.js`'s
+    //        "FIRES ON EXACTLY THE TWO BENIGN HEADWORDS" named `minus`/`plus`, and is STILL
+    //        RED here — this pin merely went red alongside the sharper detector.
+    //   G1 — was firing on the one competition `si` = `alþjóðlega einingakerfið` vs `kísill`.
+    //        Cleared 2026-09-12 by G1 finally implementing its own spec row ("beyond
+    //        glossary-collisions-baseline.json"); `si` is IN that baseline. The COMPETITION
+    //        still exists in the data — what changed is that G1 now subtracts an accepted one.
+    // ⚠️ So this line going green is NOT "the glossary got cleaner" in either case, and reading
+    // it that way is the trap.
+    // 🔴 AND DO NOT EXPECT G1's MESSAGE TO TELL YOU SO — MEASURED, BOTH ARMS, WITH A POSITIVE
+    // CONTROL. An earlier draft of this comment asserted "G1's own message still names `si`".
+    // It does not, in either arm: it carries a COUNT (`1 competitions … 0 beyond baseline`), and
+    // the only headwords it names are the 10 RESOLVED ones. That is this repo's own "a count
+    // cannot see a substitution that did not happen" failure, committed inside the warning
+    // written to prevent it. ▶ The things that DO name `si` are the baseline JSON itself and
+    // `node tools/validate-glossary.js --book efnafraedi-2e`.
+    // ⚠️ Neither check's cleared finding is a reader-visible defect today: `formatGlossary`
+    // OMITS both `si` candidates from the MT wire, and on the render side all 21 `Si` math
+    // labels resolve to `english`. The MT-side and render-side protections are independent
+    // (CLAUDE.md), and here they happen to both hold — a measurement, not a guarantee.
+    // (History, for the second rewrite in a fortnight: before 2026-08-31 this asserted an empty
+    // list, true only under the 2026-08-30 domain-scoped glossary — an approach replaced because
+    // it dropped 1,632 of 2,021 terms to fix 67. The §C116 rewrite then pinned the exact set
+    // ['G1','G3'], which is what caught the FIRST of the two movements above rather than waiting
+    // for the second. The assertion below is an empty list again, so the loop that follows it
+    // exists to buy back what the exact set was giving.)
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [0] });
     expect(
       report.rows.length,
       'empty sweep — the result below would be manufactured'
     ).toBeGreaterThan(0);
     const overBar = report.rows.filter((r) => r.blocking && r.rate !== null && r.rate > 0.05);
-    expect(overBar.map((r) => r.id).sort()).toEqual(['G1', 'G3']);
+    expect(overBar.map((r) => r.id).sort()).toEqual([]);
+
+    // 🔴 THE EMPTY LIST IS THE WEAK HALF, AND THIS BLOCK IS WHY IT IS STILL STRONGER THAN THE
+    // ['G1','G3'] IT REPLACES. `toEqual([])` cannot tell "both went clean" from "both vanished
+    // from the registry" — and §C82 L71 is the precedent: dropping two blocking checks left the
+    // suite byte-identical to baseline. So assert each is PRESENT, still BLOCKING, and measured
+    // at 0. That preserves both directions the previous exact-set pin bought: a third check going
+    // over the bar reddens the line above, and either of these two silently leaving the registry
+    // reddens the loop below.
+    const byId = Object.fromEntries(report.rows.map((r) => [r.id, r]));
+    for (const id of ['G1', 'G3']) {
+      expect(byId[id], `${id} is no longer in the tier-0 sweep at all`).toBeDefined();
+      expect(byId[id].blocking, `${id} is no longer blocking`).toBe(true);
+      expect(byId[id].rate, `${id} rate`).toBe(0);
+    }
   }, 30_000);
 
   it('a tier whose input the loop regenerates gets the VINTAGE reading instead', async () => {
