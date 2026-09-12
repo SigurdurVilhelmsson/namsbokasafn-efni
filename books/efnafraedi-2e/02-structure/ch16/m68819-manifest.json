@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68819",
-  "extractedAt": "2026-08-31T19:08:44.137Z",
+  "extractedAt": "2026-09-12T20:15:19.252Z",
   "sourceHash": "b342f64356416e65",
   "segmentCount": 336,
   "segmentIds": [
@@ -680,5 +680,15 @@
       "fs-idm248576000",
       "fs-idm233991504"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Gibbs",
+    "term-00002": "Gibbs free energy (G)",
+    "term-00003": "free energy change (ΔG)",
+    "term-00004": "standard free energy changes, ΔG°",
+    "term-00005": "standard free energy of formation ΔGf°",
+    "fs-idm119810368": "Gibbs free energy change (G)",
+    "fs-idm119807952": "standard free energy change (ΔG°)",
+    "fs-idm119806032": "standard free energy of formation (ΔGf°)"
   }
 }

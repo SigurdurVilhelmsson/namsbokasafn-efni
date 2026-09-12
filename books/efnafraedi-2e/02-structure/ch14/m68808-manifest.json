@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68808",
-  "extractedAt": "2026-08-31T19:08:42.919Z",
+  "extractedAt": "2026-09-12T20:15:18.728Z",
   "sourceHash": "506fc69d94ea1463",
   "segmentCount": 122,
   "segmentIds": [
@@ -284,5 +284,15 @@
       "fs-idm101899904",
       "fs-idp119412416"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "buffer",
+    "term-00002": "buffer capacity",
+    "term-00003": "Henderson-Hasselbalch equation",
+    "term-00004": "Henderson",
+    "term-00005": "Hasselbalch",
+    "fs-idp88494848": "buffer capacity",
+    "fs-idp88495904": "buffer",
+    "fs-idm71412016": "Henderson-Hasselbalch equation"
   }
 }

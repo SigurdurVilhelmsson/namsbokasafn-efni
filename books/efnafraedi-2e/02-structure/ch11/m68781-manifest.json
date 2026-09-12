@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68781",
-  "extractedAt": "2026-08-31T19:08:40.589Z",
+  "extractedAt": "2026-09-12T20:15:17.661Z",
   "sourceHash": "ff364296c2eb15ec",
   "segmentCount": 59,
   "segmentIds": [
@@ -110,5 +110,19 @@
       "fs-idm11909136",
       "fs-idm559200"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "electrolytes",
+    "term-00002": "nonelectrolytes",
+    "term-00003": "strong electrolyte",
+    "term-00004": "weak electrolyte",
+    "term-00005": "ion-dipole attraction",
+    "term-00006": "dissociation",
+    "fs-idm32680960": "dissociation",
+    "fs-idm10926960": "electrolyte",
+    "fs-idp1071840": "ion-dipole attraction",
+    "fs-idp10683312": "nonelectrolyte",
+    "fs-idm7742384": "strong electrolyte",
+    "fs-idp4277680": "weak electrolyte"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68783",
-  "extractedAt": "2026-08-31T19:08:40.706Z",
+  "extractedAt": "2026-09-12T20:15:17.761Z",
   "sourceHash": "4dbbbc21c36317f6",
   "segmentCount": 440,
   "segmentIds": [
@@ -695,5 +695,43 @@
       "fs-idp102974528",
       "fs-idp169461824"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "colligative properties",
+    "term-00002": "Molality",
+    "term-00003": "Raoult’s law",
+    "term-00004": "boiling point elevation",
+    "term-00005": "boiling point elevation constant",
+    "term-00006": "freezing point depression",
+    "term-00007": "freezing point depression constant",
+    "term-00008": "semipermeable membranes",
+    "term-00009": "osmosis",
+    "term-00010": "osmotic pressure (Π)",
+    "term-00011": "isotonic",
+    "term-00012": "hypotonic",
+    "term-00013": "hemolysis",
+    "term-00014": "hypertonic",
+    "term-00015": "crenation",
+    "term-00016": "van’t Hoff factor (i)",
+    "term-00017": "Debye",
+    "term-00018": "Hückel",
+    "term-00019": "activity",
+    "fs-idp188855296": "boiling point elevation",
+    "fs-idp188856832": "boiling point elevation constant",
+    "fs-idp188858528": "colligative property",
+    "fs-idp141096064": "crenation",
+    "fs-idp141097600": "freezing point depression",
+    "fs-idp141099136": "freezing point depression constant",
+    "fs-idp141100816": "hemolysis",
+    "fs-idp141102352": "hypertonic",
+    "fs-idp141103888": "hypotonic",
+    "fs-idp141105424": "ion pair",
+    "fs-idp141106960": "isotonic",
+    "fs-idp141108496": "molality (m)",
+    "fs-idp141112944": "osmosis",
+    "fs-idp141114480": "osmotic pressure (Π)",
+    "fs-idp141116656": "Raoult’s law",
+    "fs-idp11032848": "semipermeable membrane",
+    "fs-idp11034384": "van’t Hoff factor (i)"
   }
 }

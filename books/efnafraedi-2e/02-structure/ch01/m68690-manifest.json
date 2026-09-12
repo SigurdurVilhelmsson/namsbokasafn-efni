@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68690",
-  "extractedAt": "2026-08-31T19:08:35.573Z",
+  "extractedAt": "2026-09-12T20:15:15.855Z",
   "sourceHash": "24f7a5823bb2c8a5",
   "segmentCount": 251,
   "segmentIds": [
@@ -361,5 +361,20 @@
       "fs-idp223627024",
       "fs-idp243777760"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "exact number",
+    "term-00002": "uncertainty",
+    "term-00003": "significant figures",
+    "term-00004": "significant digits",
+    "term-00005": "rounding",
+    "term-00006": "precision",
+    "term-00007": "accuracy",
+    "fs-idp330245120": "accuracy",
+    "fs-idp17670352": "exact number",
+    "fs-idp28800512": "precision",
+    "fs-idp68905696": "rounding",
+    "fs-idp3346000": "significant figures",
+    "fs-idp96606928": "uncertainty"
   }
 }

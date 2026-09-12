@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68797",
-  "extractedAt": "2026-08-31T19:08:41.388Z",
+  "extractedAt": "2026-09-12T20:15:18.236Z",
   "sourceHash": "09bc4e492617251e",
   "segmentCount": 32,
   "segmentIds": [
@@ -84,5 +84,11 @@
       "fs-idp62938640",
       "fs-idp157340304"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Reversible reactions",
+    "term-00002": "equilibrium",
+    "fs-idp87452944": "equilibrium",
+    "fs-idp4379168": "reversible reaction"
   }
 }

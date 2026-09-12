@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_04_03_flowchart",
+ "renderHash": "a5f57e62d8b00043",
+ "composedHash": "a5f57e62d8b00043",
+ "composedVersion": "1",
+ "composerVersion": "1",
+ "blocks": {
+  "Density": "Þéttleiki",
+  "Molar mass": "Mólmassi",
+  "Avogadro’s|number": "Tala Avogadros",
+  "Stoichiometric|factor": "Efnajöfnustuðull",
+  "Volume|of pure|substance|B": "Rúmmál hreins efnis B",
+  "Mass|of B": "Massi B",
+  "Mass|of A": "Massi A",
+  "Volume|of pure|substance|A": "Rúmmál hreins efnis A",
+  "Number|of|particles|of A": "Fjöldi agna af A",
+  "Number|of|particles|of B": "Fjöldi agna af B",
+  "Molarity": "Mólstyrkur",
+  "Volume|of |solution|B": "Rúmmál lausnar B",
+  "Moles|of B": "Mól af B",
+  "Moles|of A": "Mól af A",
+  "Volume|of |solution|A": "Rúmmál lausnar A"
+ }
+}

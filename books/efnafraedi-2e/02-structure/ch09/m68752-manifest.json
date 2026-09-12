@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68752",
-  "extractedAt": "2026-08-31T19:08:40.000Z",
+  "extractedAt": "2026-09-12T20:15:17.187Z",
   "sourceHash": "87f7d7641d0838c1",
   "segmentCount": 322,
   "segmentIds": [
@@ -535,5 +535,17 @@
       "fs-idp7509520",
       "fs-idp118960256"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Lavoisier",
+    "term-00002": "partial pressure",
+    "term-00003": "Dalton’s law of partial pressures",
+    "term-00004": "mole fraction (X)",
+    "term-00005": "vapor pressure of water",
+    "term-00006": "Solomon",
+    "fs-idp142977184": "Dalton’s law of partial pressures",
+    "fs-idp1132336": "mole fraction (X)",
+    "fs-idp104769888": "partial pressure",
+    "fs-idp57901520": "vapor pressure of water"
   }
 }

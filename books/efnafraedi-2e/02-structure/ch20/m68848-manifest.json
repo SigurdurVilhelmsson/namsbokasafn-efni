@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68848",
-  "extractedAt": "2026-08-31T19:08:45.686Z",
+  "extractedAt": "2026-09-12T20:15:19.673Z",
   "sourceHash": "49d043e5bbf715e6",
   "segmentCount": 125,
   "segmentIds": [
@@ -194,5 +194,17 @@
       "fs-idp47391040",
       "fs-idp47523392"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "aldehydes",
+    "term-00002": "ketones",
+    "term-00003": "carbonyl group",
+    "term-00004": "carboxylic acids",
+    "term-00005": "esters",
+    "fs-idp49554496": "aldehyde",
+    "fs-idp57350832": "carbonyl group",
+    "fs-idm3165296": "carboxylic acid",
+    "fs-idp49325568": "ester",
+    "fs-idm20899104": "ketone"
   }
 }

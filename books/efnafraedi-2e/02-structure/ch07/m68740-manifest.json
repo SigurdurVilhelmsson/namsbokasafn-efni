@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68740",
-  "extractedAt": "2026-08-31T19:08:39.298Z",
+  "extractedAt": "2026-09-12T20:15:16.698Z",
   "sourceHash": "7512393de4a04cb8",
   "segmentCount": 178,
   "segmentIds": [
@@ -268,5 +268,17 @@
       "fs-idp77377632",
       "fs-idp27655616"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "formal charge",
+    "term-00002": "molecular structure",
+    "term-00003": "resonance",
+    "term-00004": "resonance forms",
+    "term-00005": "resonance hybrid",
+    "fs-idp10384768": "formal charge",
+    "fs-idp31379776": "molecular structure",
+    "fs-idp213363824": "resonance",
+    "fs-idp9239856": "resonance forms",
+    "fs-idp8038096": "resonance hybrid"
   }
 }

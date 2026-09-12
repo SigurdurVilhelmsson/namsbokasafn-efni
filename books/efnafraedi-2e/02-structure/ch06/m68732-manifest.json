@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68732",
-  "extractedAt": "2026-08-31T19:08:38.789Z",
+  "extractedAt": "2026-09-12T20:15:16.428Z",
   "sourceHash": "4840cbc4649de2bb",
   "segmentCount": 86,
   "segmentIds": [
@@ -203,5 +203,17 @@
       "fs-idp212850576",
       "fs-idp53264832"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Rutherford",
+    "term-00002": "Bohr",
+    "term-00003": "Bohr’s model",
+    "term-00004": "ground electronic state",
+    "term-00005": "excited electronic state",
+    "term-00006": "quantum numbers",
+    "fs-idm13416416": "Bohr’s model of the hydrogen atom",
+    "fs-idp157417744": "excited state",
+    "fs-idp97866656": "ground state",
+    "fs-idp170832400": "quantum number"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68741",
-  "extractedAt": "2026-08-31T19:08:39.354Z",
+  "extractedAt": "2026-09-12T20:15:16.731Z",
   "sourceHash": "4a6450c01b08275c",
   "segmentCount": 364,
   "segmentIds": [
@@ -516,5 +516,12 @@
       "fs-idm37663600",
       "fs-idp75946800"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "lattice energy (ΔHlattice)",
+    "term-00002": "Born-Haber cycle",
+    "fs-idp10319376": "bond energy",
+    "fs-idp39711472": "Born-Haber cycle",
+    "fs-idp29295648": "lattice energy (ΔHlattice)"
   }
 }

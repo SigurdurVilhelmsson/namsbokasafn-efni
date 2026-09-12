@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68693",
-  "extractedAt": "2026-08-31T19:08:36.605Z",
+  "extractedAt": "2026-09-12T20:15:16.171Z",
   "sourceHash": "d71366f136196214",
   "segmentCount": 113,
   "segmentIds": [
@@ -173,5 +173,20 @@
       "fs-idm97603328",
       "fs-idm78153008"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "molecular formula",
+    "term-00002": "structural formula",
+    "term-00003": "empirical formula",
+    "term-00004": "molecular mass",
+    "term-00006": "isomers",
+    "term-00007": "structural isomers",
+    "term-00008": "spatial isomers",
+    "fs-idm164678176": "empirical formula",
+    "fs-idp55104": "isomers",
+    "fs-idm86848640": "molecular formula",
+    "fs-idm54570400": "spatial isomers",
+    "fs-idm163422864": "structural formula",
+    "fs-idp1084128": "structural isomer"
   }
 }

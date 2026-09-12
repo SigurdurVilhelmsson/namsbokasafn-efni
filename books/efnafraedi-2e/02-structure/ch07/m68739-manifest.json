@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68739",
-  "extractedAt": "2026-08-31T19:08:39.258Z",
+  "extractedAt": "2026-09-12T20:15:16.679Z",
   "sourceHash": "9feac6d504af9d46",
   "segmentCount": 299,
   "segmentIds": [
@@ -424,5 +424,26 @@
       "fs-idm103622960",
       "fs-idm14528032"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Lewis symbol",
+    "term-00005": "octet rule",
+    "term-00006": "double bond",
+    "term-00007": "triple bond",
+    "term-00002": "Lewis structures",
+    "term-00003": "lone pairs",
+    "term-00004": "single bond",
+    "term-00008": "Smalley",
+    "term-00009": "free radicals",
+    "term-00010": "hypervalent molecules",
+    "fs-idm42302272": "double bond",
+    "fs-idm4719424": "free radical",
+    "fs-idp87877296": "hypervalent molecule",
+    "fs-idm67089472": "Lewis structure",
+    "fs-idm4190352": "Lewis symbol",
+    "fs-idm44296912": "lone pair",
+    "fs-idm73604928": "octet rule",
+    "fs-idp177199648": "single bond",
+    "fs-idm68093504": "triple bond"
   }
 }

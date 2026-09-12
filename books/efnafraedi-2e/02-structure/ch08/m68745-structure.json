@@ -568,6 +568,7 @@
             {
               "type": "media",
               "id": "fs-idp193912528",
+              "src": "../../media/CNX_Chem_08_02_sulfate_img.jpg",
               "alt": {
                 "segmentId": "m68745:alt:fs-idp193912528-alt",
                 "text": "A structure is shown in which a sulfur atom is bonded to four oxygen atoms in a tetrahedral arrangement. Two of the oxygen atoms have a negative charge."
@@ -576,6 +577,7 @@
             {
               "type": "media",
               "id": "fs-idm12651952",
+              "src": "../../media/CNX_Chem_08_02_SF4_img.jpg",
               "alt": {
                 "segmentId": "m68745:alt:fs-idm12651952-alt",
                 "text": "A Lewis structure is shown in which four fluorine atoms are each attached to one sulfur atom. Two of the attached fluorine atoms are vertically attached up and down, while two are attached into and out of the page to the right. The sulfur also has one lone pair of electrons attached to the left of the structure."
@@ -642,6 +644,7 @@
             {
               "type": "media",
               "id": "fs-idp175456832",
+              "src": "../../media/CNX_Chem_08_02_urea_img.jpg",
               "alt": {
                 "segmentId": "m68745:alt:fs-idp175456832-alt",
                 "text": "A Lewis structure is shown in which a carbon atom is double bonded to an oxygen atom that has two lone pairs of electrons. The carbon atom forms single bonds to two nitrogen atoms. Each nitrogen is single bonded to two hydrogen atoms, and each nitrogen atoms has one lone pair of electrons."
@@ -650,6 +653,7 @@
             {
               "type": "media",
               "id": "fs-idp25876800",
+              "src": "../../media/CNX_Chem_08_02_acetic_img.jpg",
               "alt": {
                 "segmentId": "m68745:alt:fs-idp25876800-alt",
                 "text": "A Lewis structure is shown in which a carbon atom is double bonded to an oxygen atom that has two lone pairs of electrons and single bonded to another oxygen atom that is single boned to a hydrogen atom. This second oxygen atom has two lone pairs of electrons. The carbon is also single bonded to a carbon atom that is single bonded to three hydrogen atoms."
@@ -846,6 +850,7 @@
               {
                 "type": "media",
                 "id": "fs-idp20593920",
+                "src": "../../media/CNX_Chem_08_02_methionine_img.jpg",
                 "alt": {
                   "segmentId": "m68745:alt:fs-idp20593920-alt",
                   "text": "A Lewis structure is shown in which a carbon atom is single bonded to three hydrogen atoms and single bonded to a sulfur atom with two lone pairs of electrons. The sulfur atom is attached to a chain of four singly bonded carbon atoms, the first two of which are single bonded to two hydrogen atoms each, and the third of which is single bonded to a hydrogen atom and single bonded to a nitrogen atom which has one lone electron pair. The nitrogen atom is also single bonded to two hydrogen atoms. The fourth andfinal carbon in the chain is double bonded to an oxygen with two lone pairs of electrons and single bonded to an oxygen atom with two lone pairs of electrons. The second oxygen atom is single bonded to a hydrogen atom."
@@ -1020,6 +1025,7 @@
               {
                 "type": "media",
                 "id": "fs-idp84375552",
+                "src": "../../media/CNX_Chem_08_02_phsphorus1_img.jpg",
                 "alt": {
                   "segmentId": "m68745:alt:fs-idp84375552-alt",
                   "text": "A Lewis structure is shown in which three phosphorus atoms are single bonded together to form a triangle. Each phosphorus is bonded to a sulfur atom by a vertical single bond and each of those sulfur atoms is then bonded to a single phosphorus atom so that a six-sided ring is created with a sulfur in the middle."
@@ -1070,6 +1076,7 @@
               {
                 "type": "media",
                 "id": "fs-idm54700256",
+                "src": "../../media/CNX_Chem_08_02_enyne_img.jpg",
                 "alt": {
                   "segmentId": "m68745:alt:fs-idm54700256-alt",
                   "text": "A Lewis structure is shown that is missing all of its bonds. Six carbon atoms form a chain. There are three hydrogen atoms located around the first carbon, two located around the second, one located near the fifth, and two located around the sixth carbon."
@@ -1096,6 +1103,7 @@
               {
                 "type": "media",
                 "id": "fs-idm38273232",
+                "src": "../../media/CNX_Chem_08_02_phosnitro_img.jpg",
                 "alt": {
                   "segmentId": "m68745:alt:fs-idm38273232-alt",
                   "text": "Two Lewis structures are shown. The left structure shows a nitrogen atom with one lone pair of electrons single bonded to three fluorine atoms, each of which has three lone pairs of electrons. The right structure shows a phosphorus atoms single bonded to five fluorine atoms, each of which has three lone pairs of electrons."

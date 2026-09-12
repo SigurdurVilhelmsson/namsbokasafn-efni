@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68842",
-  "extractedAt": "2026-08-31T19:08:45.367Z",
+  "extractedAt": "2026-09-12T20:15:19.428Z",
   "sourceHash": "ebe8985639aef0da",
   "segmentCount": 266,
   "segmentIds": [
@@ -487,5 +487,39 @@
       "fs-idm173161328",
       "fs-idm796896"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "d-block elements",
+    "term-00002": "f-block elements",
+    "term-00003": "first transition series",
+    "term-00004": "second transition series",
+    "term-00005": "third transition series",
+    "term-00006": "fourth transition series",
+    "term-00007": "lanthanide series",
+    "term-00008": "lanthanoid series",
+    "term-00009": "actinide series",
+    "term-00010": "actinoid series",
+    "term-00011": "rare earth elements",
+    "term-00012": "coordination compounds",
+    "term-00013": "platinum metals",
+    "term-00014": "smelting",
+    "term-00015": "Steel",
+    "term-00016": "hydrometallurgy",
+    "term-00017": "superconductor",
+    "fs-idm98560816": "actinide series",
+    "fs-idm163589328": "coordination compound",
+    "fs-idm163588304": "d-block element",
+    "fs-idm214063344": "f-block element",
+    "fs-idm186870544": "first transition series",
+    "fs-idm52768832": "fourth transition series",
+    "fs-idm281484512": "hydrometallurgy",
+    "fs-idm108395328": "lanthanide series",
+    "fs-idm194011232": "platinum metals",
+    "fs-idm42041824": "rare earth element",
+    "fs-idm163687904": "second transition series",
+    "fs-idm246107488": "smelting",
+    "fs-idm24132624": "steel",
+    "fs-idm24131568": "superconductor",
+    "fs-idm42835168": "third transition series"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68696",
-  "extractedAt": "2026-08-31T19:08:36.756Z",
+  "extractedAt": "2026-09-12T20:15:16.222Z",
   "sourceHash": "91fc201f5832be7e",
   "segmentCount": 226,
   "segmentIds": [
@@ -334,5 +334,22 @@
       "fs-idp184156752",
       "fs-idp22868752"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "monatomic ions",
+    "term-00002": "polyatomic ions",
+    "term-00003": "Oxyanions",
+    "term-00004": "ionic bonds",
+    "term-00005": "covalent bonds",
+    "term-00006": "ionic compound",
+    "term-00007": "molecular compounds",
+    "fs-idp97231552": "covalent bond",
+    "fs-idp184530720": "covalent compound",
+    "fs-idp160949776": "ionic bond",
+    "fs-idp182712496": "ionic compound",
+    "fs-idp93864192": "molecular compound",
+    "fs-idp136404896": "monatomic ion",
+    "fs-idp484916992": "oxyanion",
+    "fs-idp93746160": "polyatomic ion"
   }
 }

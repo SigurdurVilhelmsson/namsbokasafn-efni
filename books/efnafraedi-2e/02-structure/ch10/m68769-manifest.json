@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68769",
-  "extractedAt": "2026-08-31T19:08:40.354Z",
+  "extractedAt": "2026-09-12T20:15:17.447Z",
   "sourceHash": "bd9019710d664f19",
   "segmentCount": 150,
   "segmentIds": [
@@ -225,5 +225,15 @@
       "fs-idm39505456",
       "fs-idm278580384"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "phase diagram",
+    "term-00002": "triple point",
+    "term-00003": "supercritical fluid",
+    "term-00004": "critical point",
+    "fs-idm66977664": "critical point",
+    "fs-idm186055200": "phase diagram",
+    "fs-idm208980304": "supercritical fluid",
+    "fs-idm153679600": "triple point"
   }
 }

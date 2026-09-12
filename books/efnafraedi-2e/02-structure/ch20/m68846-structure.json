@@ -118,6 +118,7 @@
             {
               "type": "media",
               "id": "fs-idp63318480",
+              "src": "../../media/CNX_Chem_20_01_LineStruct2_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp63318480-alt",
                 "text": "Figure a shows a branched molecule with C H subscript 3 bonded to C with C H subscript 3 groups bonded both above and below it. To the right of the central C, a C H is bonded which has a C H subscript 3 group bonded above and to the right and below and to the right. Figure b shows a straight chain molecule composed of C H subscript 3 C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 3."
@@ -126,6 +127,7 @@
             {
               "type": "media",
               "id": "fs-idp68332416",
+              "src": "../../media/CNX_Chem_20_01_LineStruct3_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp68332416-alt",
                 "text": "Figure a shows a branched skeleton structure that looks like a plus sign with line segments extending up and to the right and down and to the left of the rightmost point of the plus sign. Figure b appears in a zig zag pattern made with six line segments. The segments rise, fall, rise, fall, rise, and fall moving left to right across the figure."
@@ -134,6 +136,7 @@
             {
               "type": "media",
               "id": "fs-idp52862288",
+              "src": "../../media/CNX_Chem_20_01_LineStruct4_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp52862288-alt",
                 "text": "Figure a shows five C H subscript 2 groups and one C H group bonded in a hexagonal ring. A C H subscript 3 group appears above and to the right of the ring, bonded to the ring on the C H group appearing at the upper right portion of the ring. In b, a straight chain molecule composed of C H subscript 3 C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 3 is shown."
@@ -150,6 +153,7 @@
                 {
                   "type": "media",
                   "id": "fs-idp37158144",
+                  "src": "../../media/CNX_Chem_20_01_LineStruct5_img.jpg",
                   "alt": {
                     "segmentId": "m68846:alt:fs-idp37158144-alt",
                     "text": "In a, a hexagon with a vertex at the top is shown. The vertex just to the right has a line segment attached that extends up and to the right. In b, a zig zag pattern is shown in which line segments rise, fall, rise, fall, and rise moving left to right."
@@ -203,6 +207,7 @@
             {
               "type": "media",
               "id": "fs-idp73780224",
+              "src": "../../media/CNX_Chem_20_01_LineStruct6_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp73780224-alt",
                 "text": "This figure shows a pentagon with a vertex pointing right, from which a line segment extends that has two line segments attached at its right end, one extending up and to the right, and the other extending down and to the right."
@@ -211,6 +216,7 @@
             {
               "type": "media",
               "id": "fs-idp77092912",
+              "src": "../../media/CNX_Chem_20_01_LineStruct7_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp77092912-alt",
                 "text": "In this figure a ring composed of four C H subscript 2 groups and one C H group in a pentagonal shape is shown. From the C H group, which is at the right side of the pentagon, a C H is bonded. From this C H, a C H subscript 3 group is bonded above and to the right and a second is bonded below and to the right."
@@ -219,6 +225,7 @@
             {
               "type": "media",
               "id": "fs-idp69279616",
+              "src": "../../media/CNX_Chem_20_01_LineStruct8_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp69279616-alt",
                 "text": "A skeleton model is shown with a zig zag pattern that rises, falls, rises, and falls again left to right through the center of the molecule. From the two risen points, line segments extend both up and down, creating four branches."
@@ -925,6 +932,7 @@
             {
               "type": "media",
               "id": "fs-idp19146880",
+              "src": "../../media/CNX_Chem_20_01_HalAlkane_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp19146880-alt",
                 "text": "This structure shows a C atom bonded to the H atoms and another C atom. This second C atom is bonded to two H atoms and another C atom. This third C atom is bonded to a B r atom, an H atom, and another C atom. This fourth C atom is bonded to two H atoms and a C l atom."
@@ -933,6 +941,7 @@
             {
               "type": "media",
               "id": "fs-idp3065072",
+              "src": "../../media/CNX_Chem_20_01_HalAlkane2_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp3065072-alt",
                 "text": "This structure shows a C atom bonded to the H atoms and another C atom. This second C atom is bonded to two H atoms and another C atom. This third C atom is bonded to an H atom, a B r atom, and another C atom. This fourth C atom is bonded to two H atoms and a C l atom. The C atoms are numbered 4, 3, 2, and 1 from left to right."
@@ -941,6 +950,7 @@
             {
               "type": "media",
               "id": "fs-idm66323184",
+              "src": "../../media/CNX_Chem_20_01_HalAlkane3_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idm66323184-alt",
                 "text": "This figure shows a C atom bonded to three H atoms and another C atom. This second C atom is bonded to two H atoms and a third C atom. The third C atom is bonded to two B r atoms and a fourth C atom. This C atom is bonded to an H atom, and I atom, and a fifth C atom. This last C atom is bonded to three H atoms."
@@ -1025,6 +1035,7 @@
             {
               "type": "media",
               "id": "fs-idp69579584",
+              "src": "../../media/CNX_Chem_20_01_octane1_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp69579584-alt",
                 "text": "A chain of six carbon atoms, numbered 6, 5, 4, 3, 2, and 1 is shown. Bonded above carbon 3, a chain of two carbons is shown, numbered 1 and 2 moving upward. H atoms are present directly above, below, left and right of all carbon atoms in positions not already taken up in bonding to other carbon atoms."
@@ -1033,6 +1044,7 @@
             {
               "type": "media",
               "id": "fs-idp45701152",
+              "src": "../../media/CNX_Chem_20_01_octane2_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp45701152-alt",
                 "text": "This figure shows a C atom bonded to three H atoms and another C atom. This C atom is bonded to two H atoms and third C atom. The third C atom is bonded to two H atoms and a fourth C atom. The fourth C atom is bonded to two H atoms and a fifth C atom. This C atom is bonded to an H atom, a sixth C atom in the chain, and another C atom which appears to branch off the chain. The C atom in the branch is bonded to two H atoms and another C atom. This C atom is bonded to two H atoms and another C atom. This third C atom appears to the left of the second and is bonded to three H atoms. The sixth C atom in the chain is bonded to two H atoms and a seventh C atom. The seventh C atom is bonded to two H atoms and an eighth C atom. The eighth C atom is bonded to three H atoms."
@@ -1405,6 +1417,7 @@
                 {
                   "type": "media",
                   "id": "fs-idp31467664",
+                  "src": "../../media/CNX_Chem_20_01_HaloReact_img.jpg",
                   "alt": {
                     "segmentId": "m68846:alt:fs-idp31467664-alt",
                     "text": "The left side of a reaction and arrow are shown with an empty product side. On the left, C H subscript 3 is bonded down and to the right to C H which has a double bond to another C H. The second C H is bonded up and to the right to C H subscript 2 which is also bonded to C H subscript 3. A plus sign is shown with a C l atom bonded to a C l atom following it. This is also followed by a reaction arrow."
@@ -1413,6 +1426,7 @@
                 {
                   "type": "media",
                   "id": "fs-idp19259184",
+                  "src": "../../media/CNX_Chem_20_01_HaloReact2_img.jpg",
                   "alt": {
                     "segmentId": "m68846:alt:fs-idp19259184-alt",
                     "text": "C H subscript 3 is bonded down and to the right to C H which is bonded down and to the left to C l. C H is also bonded to another C H which is bonded down and to the right to C l and up and to the right to C H subscript 2. C H subscript 2 is also bonded to C H subscript 3."
@@ -1421,6 +1435,7 @@
                 {
                   "type": "media",
                   "id": "fs-idp11889184",
+                  "src": "../../media/CNX_Chem_20_01_ReactProd1_img.jpg",
                   "alt": {
                     "segmentId": "m68846:alt:fs-idp11889184-alt",
                     "text": "This shows a C atom bonded to three H atoms and another C atom. This second C atom is bonded to two H atoms and a third C atom. This third C atom is bonded to one H atom and also forms a double bond with a fourth C atom. This fourth C atom is bonded to one H atom and a fifth C atom. This fifth C atom is bonded to two H atoms and a sixth C atom. This sixth C atom is bonded to three H atoms. There is a plus sign followed by a C l atom bonded to another C l atom. There is a reaction arrow. no products are shown."
@@ -1523,6 +1538,7 @@
             {
               "type": "media",
               "id": "fs-idp49788512",
+              "src": "../../media/CNX_Chem_20_01_GeomHybr1_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp49788512-alt",
                 "text": "A structural formula is shown with C H subscript 3 bonded to a C atom which is triple bonded to another C atom which is bonded to C H subscript 3. Each C atom is labeled 1, 2, 3, and 4 from left to right."
@@ -1531,6 +1547,7 @@
             {
               "type": "media",
               "id": "fs-idp81875424",
+              "src": "../../media/CNX_Chem_20_01_HybrBAngl_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp81875424-alt",
                 "text": "A structural formula is shown with an H atom bonded to a C atom. The C atom has a triple bond with another C atom which is also bonded to C H. The C H has a double bond with another C H which is also bonded up and to the right to C H subscript 3. Each C atom is labeled 1, 2, 3, 4, or 5 from left to right."
@@ -1684,6 +1701,7 @@
             {
               "type": "media",
               "id": "fs-idp34537552",
+              "src": "../../media/CNX_Chem_20_01_AromatIso1_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp34537552-alt",
                 "text": "Two structural formulas are shown. The first has a six carbon hydrocarbon ring in which four of the carbon atoms are each bonded to only one H atom. At the upper right of the ring, the carbon that does not have a bonded H atom has a C H subscript 3 group attached. The C to the lower right has a C l atom attached. A circle is at the center of the ring. The second molecule has a hexagon with a circle inside. From a vertex of the hexagon at the upper right a C H subscript 3 group is attached. From the vertex at the lower right, a C l atom is attached."
@@ -1692,6 +1710,7 @@
             {
               "type": "media",
               "id": "fs-idp41418224",
+              "src": "../../media/CNX_Chem_20_01_AromatIso2_img.jpg",
               "alt": {
                 "segmentId": "m68846:alt:fs-idp41418224-alt",
                 "text": "Two pairs of structural formulas are shown. The first has a six carbon hydrocarbon ring in which four of the C atoms are each bonded to only one H atom. At the upper right of the ring, the C atom that does not have a bonded H atom has a C H subscript 3 group attached. The C atom to the right has a C l atom attached. A circle is at the center of the ring. The second molecule in the first pair has a hexagon with a circle inside. From a vertex of the hexagon at the upper right a C H subscript 3 group is attached. From the vertex at the right, a C l atom is attached. The second pair first shows a six carbon hydrocarbon ring in which four of the C atoms are each bonded to only one H atom. A C l atom is attached to the left-most C atom and a C H subscript 3 group is attached to the right-most C atom. A circle is at the center of the ring. The second molecule in the pair has a hexagon with a circle inside. A C H subscript 3 group is attached to a vertex on the right side of the hexagon and to a vertex on the left side, a C l atom is bonded."
@@ -1708,6 +1727,7 @@
                 {
                   "type": "media",
                   "id": "fs-idp64316608",
+                  "src": "../../media/CNX_Chem_20_01_AromatIso3_img.jpg",
                   "alt": {
                     "segmentId": "m68846:alt:fs-idp64316608-alt",
                     "text": "Three pairs of structural formulas are shown. The first has a six carbon hydrocarbon ring in which four of the C atoms are each bonded to only one H atom. At the upper right and right of the ring, the two C atoms that do not have bonded H atoms have one B r atom bonded each. A circle is at the center of the ring. Beneath this structure, a similar structure is shown which has a hexagon with a circle inside. From vertices of the hexagon at the upper right and right single B r atoms are attached. The second has a six carbon hydrocarbon ring in which four of the C atoms are each bonded to only one H atom. At the upper right and lower right of the ring, the two C atoms that do not have bonded H atoms have a single B r atom bonded each. A circle is at the center of the ring. Beneath this structure, a similar structure is shown which has a hexagon with a circle inside. From vertices of the hexagon at the upper right and lower right single B r atoms are attached. The third has a six carbon hydrocarbon ring in which four of the C atoms are each bonded to only one H atom. At the upper right and lower left of the ring, the two C atoms that do not have bonded H atoms have B r atoms bonded. A circle is at the center of the ring. Beneath this structure, a similar structure is shown which has a hexagon with a circle inside. From vertices of the hexagon at the upper right and lower left, single B r atoms are attached."
@@ -2117,6 +2137,7 @@
               {
                 "type": "media",
                 "id": "fs-idp53900368",
+                "src": "../../media/CNX_Chem_20_01_ex1_14_img.jpg",
                 "alt": {
                   "segmentId": "m68846:alt:fs-idp53900368-alt",
                   "text": "Two structures are shown. The first includes a chain of four singly bonded C atoms. Each C atom has two H atoms bonded above and below it. The two C atoms at either end of the chain each have a third H atom bonded to it. The molecule is named n dash butane. The second includes a chain of three singly bonded C atoms with a C atom bonded above the middle C atom in the chain. The first C atom (from left to right) has three H atoms bonded to it. The second C atom has one H atom bonded below it and a C atom bonded above it. The C atom bonded above the middle C atom has three H atoms bonded to it. The third C atom in the chain has three H atoms bonded to it. This molecule is named 2 dash methylpropane."
@@ -2156,6 +2177,7 @@
               {
                 "type": "media",
                 "id": "fs-idp51661648",
+                "src": "../../media/CNX_Chem_20_01_ex1_16_img.jpg",
                 "alt": {
                   "segmentId": "m68846:alt:fs-idp51661648-alt",
                   "text": "This figure includes two structural formulas. The first structure shows two double bounded C atoms with C l bonded to the upper right, C H subscript 3 bonded to the upper left, and H atoms attached to the lower right and lower left in the structure. This structure is labeled cis dash. The second structure shows two double bounded carbon atoms with C l attached to the lower right, C H subscript 3 attached to the upper left, and H atoms attached to the upper right and lower left in the structure. This structure is labeled trans dash."
@@ -2241,6 +2263,7 @@
               {
                 "type": "media",
                 "id": "fs-idp78726288",
+                "src": "../../media/CNX_Chem_20_01_ex1_20_img.jpg",
                 "alt": {
                   "segmentId": "m68846:alt:fs-idp78726288-alt",
                   "text": "Four structural formulas are provided. The first has a hydrocarbon chain with a length of four C atom. All bonds are single. Nine H atoms are attached and a single C l atom is attached at the far right end of the structure which is labeled 1 dash chlorobutane. The second has a hydrocarbon chain with a length four C atoms. All bonds are single. Nine H atoms are attached and a single C l atom is attached above the second carbon counting left to right. This structure is labeled 2 dash chlorobutane. The third has a hydrocarbon chain with a length of three C atoms. All bonds are single. A single C l atom is bonded beneath the middle C atom and a C H subscript 3 group is also bonded above the middle C atom. Six H atoms are attached, and the structure is labeled 2 dash chloro dash 2 dash methylpropane. The fourth structure has a hydrocarbon chain with a length of three C atoms. All bonds are single. A single C l atom is bonded beneath the first C atom (from left to right) and a C H subscript 3 group is bonded above the middle C atom. Six H atoms are attached, and the structure is labeled 1 dash chloro dash 2 dash methylpropane."
@@ -2341,6 +2364,7 @@
               {
                 "type": "media",
                 "id": "fs-idp81625744",
+                "src": "../../media/CNX_Chem_20_01_ex1_23_img.jpg",
                 "alt": {
                   "segmentId": "m68846:alt:fs-idp81625744-alt",
                   "text": "Two structural formulas are shown. The first shows two C atoms with a triple bond between them. At each end of the structure, a single H atom is bonded. The second structure involves a hydrocarbon ring of 6 C atoms with a circle at the center. There are alternating double bonds between C atoms. Each C atom is bonded to a single H atom."

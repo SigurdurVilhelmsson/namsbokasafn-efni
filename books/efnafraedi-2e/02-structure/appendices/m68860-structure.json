@@ -773,6 +773,7 @@
             {
               "type": "media",
               "id": "fs-idm174022560",
+              "src": "../../media/CNX_Chem_00_BB_Dependence_img.jpg",
               "alt": {
                 "segmentId": "m68860:alt:fs-idm174022560-alt",
                 "text": "A graph is titled “Dependency of Y on X.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 16. Four points are plotted as a line graph; the points are 1 and 5, 2 and 10, 3 and 7, and 4 and 14."
@@ -890,6 +891,7 @@
             {
               "type": "media",
               "id": "fs-idp112843584",
+              "src": "../../media/CNX_Chem_00_BB_Function_img.jpg",
               "alt": {
                 "segmentId": "m68860:alt:fs-idp112843584-alt",
                 "text": "A graph is titled “Y equals x superscript 2 plus 2.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 20. Four points are plotted as a line graph; the points are 1 and 3, 2 and 6, 3 and 11, and 4 and 18."

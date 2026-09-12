@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68844",
-  "extractedAt": "2026-08-31T19:08:45.435Z",
+  "extractedAt": "2026-09-12T20:15:19.478Z",
   "sourceHash": "ed4ef7734a2156c7",
   "segmentCount": 137,
   "segmentIds": [
@@ -218,5 +218,29 @@
       "fs-idm106302704",
       "fs-idm64314816"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "crystal field theory",
+    "term-00002": "eg orbitals",
+    "term-00003": "t2g orbitals",
+    "term-00004": "crystal field splitting",
+    "term-00005": "Δoct",
+    "term-00006": "spectrochemical series",
+    "term-00007": "weak-field ligands",
+    "term-00008": "strong-field ligands",
+    "term-00009": "pairing energy (P)",
+    "term-00010": "low-spin complexes",
+    "term-00011": "high-spin complexes",
+    "fs-idm99275552": "crystal field splitting (Δoct)",
+    "fs-idm31354480": "crystal field theory",
+    "fs-idm148194896": "eg orbitals",
+    "fs-idm132411312": "geometric isomers",
+    "fs-idm33844976": "high-spin complex",
+    "fs-idp121047712": "low-spin complex",
+    "fs-idm65480336": "pairing energy (P)",
+    "fs-idm145242928": "spectrochemical series",
+    "fs-idm24403040": "strong-field ligand",
+    "fs-idm104611088": "t2g orbitals",
+    "fs-idp10927328": "weak-field ligand"
   }
 }

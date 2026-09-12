@@ -246,6 +246,7 @@
                 {
                   "type": "media",
                   "id": "fs-idm135178736",
+                  "src": "../../media/CNX_Chem_12_04_CYL1_img.jpg",
                   "alt": {
                     "segmentId": "m68791:alt:fs-idm135178736-alt",
                     "text": "A graph, labeled above as “l n [ A ] vs. Time” is shown. The x-axis is labeled, “Time ( s )” and the y-axis is labeled, “l n [ A ].” The x-axis shows markings at 5, 10, 15, 20, and 25 hours. The y-axis shows markings at negative 3, negative 2, negative 1, and 0. A slight curve is drawn connecting five points at coordinates of approximately (4, negative 1.5), (8, negative 2), (12, negative 2.2), (16, negative 2.4), and (20, negative 2.6)."
@@ -720,6 +721,7 @@
                 {
                   "type": "media",
                   "id": "fs-idm144508704",
+                  "src": "../../media/CNX_Chem_12_04_CYL2_img.jpg",
                   "alt": {
                     "segmentId": "m68791:alt:fs-idm144508704-alt",
                     "text": "A graph, with the title “1 divided by [ A ] vs. Time” is shown, with the label, “Time ( s ),” on the x-axis. The label “1 divided by [ A ]” appears left of the y-axis. The x-axis shows markings beginning at zero and continuing at intervals of 10 up to and including 40. The y-axis on the left shows markings beginning at 0 and increasing by intervals of 1 up to and including 5. A line with an increasing trend is drawn through six points at approximately (4, 1), (10, 1.5), (15, 2.2), (20, 2.8), (26, 3.4), and (36, 4.4)."

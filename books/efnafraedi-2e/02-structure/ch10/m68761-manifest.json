@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68761",
-  "extractedAt": "2026-08-31T19:08:40.275Z",
+  "extractedAt": "2026-09-12T20:15:17.385Z",
   "sourceHash": "7d2e3bcf65d19389",
   "segmentCount": 195,
   "segmentIds": [
@@ -285,5 +285,28 @@
       "fs-idm78986320",
       "fs-idp29893056"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "intermolecular forces",
+    "term-00002": "van der Waals forces",
+    "term-00003": "London dispersion force",
+    "term-00004": "London",
+    "term-00005": "dispersion force",
+    "term-00006": "instantaneous dipole",
+    "term-00007": "induced dipole",
+    "term-00008": "polarizability",
+    "term-00009": "Autumn",
+    "term-00010": "Greaney",
+    "term-00011": "Hu",
+    "term-00012": "dipole-dipole attraction",
+    "term-00013": "hydrogen bonding",
+    "fs-idp127496336": "dipole-dipole attraction",
+    "fs-idm16566240": "dispersion force",
+    "fs-idp18243872": "hydrogen bonding",
+    "fs-idm31438528": "induced dipole",
+    "fs-idp127211536": "instantaneous dipole",
+    "fs-idm66585952": "intermolecular force",
+    "fs-idp128571888": "polarizability",
+    "fs-idm134093104": "van der Waals force"
   }
 }

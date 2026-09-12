@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68811",
-  "extractedAt": "2026-08-31T19:08:43.709Z",
+  "extractedAt": "2026-09-12T20:15:18.955Z",
   "sourceHash": "840ab72503a7c2a8",
   "segmentCount": 428,
   "segmentIds": [
@@ -918,5 +918,12 @@
       "fs-idp13519952",
       "fs-idp13535408"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "selective precipitation",
+    "fs-idp3050576": "common ion effect",
+    "fs-idp3051616": "molar solubility",
+    "fs-idp3052416": "selective precipitation",
+    "fs-idp3053344": "solubility product constant (Ksp)"
   }
 }

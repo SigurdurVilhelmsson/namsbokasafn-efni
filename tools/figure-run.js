@@ -946,14 +946,24 @@ export function applyPartialDriftGuard(rec, outDir) {
  * runs before anything is resolved or prepared, and it cannot be reached by `--force` (which
  * suppresses only the skipped-current skip) or by `--dry-run`.
  *
+ * ⚠️ `exists` IS INJECTABLE, AND THAT IS A TEST-SEAM FIX, NOT A WEAKENING. This check and
+ * `readSidecar` answer two halves of ONE question, and only one of them was stubbable — so a
+ * test could inject "this figure has no sidecar" while the real file sat on disk and this
+ * `existsSync` correctly fired. It went unnoticed until the FIRST REAL PURCHASE in the project
+ * (2026-09-12, CNX_Chem_04_03_flowchart) put one sidecar in `books/`, which turned 7 tests red
+ * on `main` at once. ▶ The driver was right and the tests were coupled to what had been bought;
+ * a suite that breaks the moment the pipeline is used for real is measuring the wrong thing.
+ * Injecting both halves together is what keeps them consistent.
+ *
  * @param {object} rec MUTATED
  * @param {string} bookDir
+ * @param {(path: string) => boolean} [exists] defaults to the real filesystem
  * @returns {object} the same record
  */
-export function applySidecarGuard(rec, bookDir) {
+export function applySidecarGuard(rec, bookDir, exists = fs.existsSync) {
   if (rec.sidecar) return rec;
   const file = sidecarPath(bookDir, rec.basename);
-  if (!fs.existsSync(file)) return rec; // genuinely absent: the ordinary, spendable state
+  if (!exists(file)) return rec; // genuinely absent: the ordinary, spendable state
   rec.sidecarUnreadable = true;
   rec.outcome = 'failed-sidecar';
   rec.reason =
@@ -1224,6 +1234,9 @@ function processFigureLive(
 export async function runFigures(args, deps = {}) {
   const spawn = deps.spawn || defaultSpawn;
   const readSidecarFor = deps.readSidecar || readSidecar;
+  // Paired with `readSidecar` on purpose — see applySidecarGuard's header. Stubbing one without
+  // the other lets a test believe in a corpus that has bought nothing while the disk disagrees.
+  const sidecarExists = deps.sidecarExists || fs.existsSync;
   const publish = deps.publish || publishFigureSvg;
   const enumeration = enumerateChapterFigures(args.book, args.chapter, {
     modules: args.modules,
@@ -1303,7 +1316,7 @@ export async function runFigures(args, deps = {}) {
     warnings: [],
   }));
 
-  for (const rec of records) applySidecarGuard(rec, bookDir);
+  for (const rec of records) applySidecarGuard(rec, bookDir, sidecarExists);
 
   // `--stale`: narrow to the figures that already HAVE a sidecar, i.e. the ones a recompose can
   // finish. Selecting them OUT of the run rather than giving them an outcome is deliberate and

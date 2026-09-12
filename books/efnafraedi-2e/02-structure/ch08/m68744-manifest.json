@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68744",
-  "extractedAt": "2026-08-31T19:08:39.578Z",
+  "extractedAt": "2026-09-12T20:15:16.868Z",
   "sourceHash": "7ff528c3fcf12092",
   "segmentCount": 136,
   "segmentIds": [
@@ -200,5 +200,17 @@
       "fs-idp111264480",
       "fs-idp52122896"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Valence bond theory",
+    "term-00002": "overlap",
+    "term-00003": "sigma bonds (σ bonds)",
+    "term-00004": "pi bond (π bond)",
+    "term-00005": "node",
+    "fs-idp42480608": "overlap",
+    "fs-idp123920528": "node",
+    "fs-idp94790208": "pi bond (π bond)",
+    "fs-idp36919168": "sigma bond (σ bond)",
+    "fs-idp81645184": "valence bond theory"
   }
 }

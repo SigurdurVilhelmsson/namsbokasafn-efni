@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68795",
-  "extractedAt": "2026-08-31T19:08:41.200Z",
+  "extractedAt": "2026-09-12T20:15:18.106Z",
   "sourceHash": "c6f658466391ec04",
   "segmentCount": 122,
   "segmentIds": [
@@ -205,5 +205,12 @@
       "fs-idm181838416",
       "fs-idm32536608"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "homogeneous catalyst",
+    "term-00002": "Molina",
+    "term-00003": "heterogeneous catalyst",
+    "fs-idm228167568": "heterogeneous catalyst",
+    "fs-idm218392224": "homogeneous catalyst"
   }
 }

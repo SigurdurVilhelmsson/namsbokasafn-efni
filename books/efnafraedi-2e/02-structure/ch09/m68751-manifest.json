@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68751",
-  "extractedAt": "2026-08-31T19:08:39.934Z",
+  "extractedAt": "2026-09-12T20:15:17.143Z",
   "sourceHash": "e7c4694bae8e34ee",
   "segmentCount": 231,
   "segmentIds": [
@@ -396,5 +396,28 @@
       "fs-idm157803264",
       "fs-idm132049520"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Amontons’s law",
+    "term-00002": "Gay-Lussac’s law",
+    "term-00003": "absolute zero",
+    "term-00004": "Charles’s law",
+    "term-00005": "Boyle’s law",
+    "term-00006": "Avogadro’s law",
+    "term-00007": "ideal gas law",
+    "term-00008": "ideal gas constant",
+    "term-00009": "ideal gas",
+    "term-00010": "standard temperature and pressure (STP)",
+    "term-00011": "standard molar volume",
+    "fs-idp80443824": "absolute zero",
+    "fs-idp77543648": "Amontons’s law",
+    "fs-idm85214288": "Avogadro’s law",
+    "fs-idm51295520": "Boyle’s law",
+    "fs-idm100735488": "Charles’s law",
+    "fs-idm161542192": "ideal gas",
+    "fs-idm78852976": "ideal gas constant (R)",
+    "fs-idm111878496": "ideal gas law",
+    "fs-idm158190720": "standard conditions of temperature and pressure (STP)",
+    "fs-idm62647600": "standard molar volume"
   }
 }

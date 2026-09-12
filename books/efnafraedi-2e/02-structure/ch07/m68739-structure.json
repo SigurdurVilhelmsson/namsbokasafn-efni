@@ -533,6 +533,7 @@
                 {
                   "type": "media",
                   "id": "fs-idp87884384",
+                  "src": "../../media/CNX_Chem_07_03_COCO2_img.jpg",
                   "alt": {
                     "segmentId": "m68739:alt:fs-idp87884384-alt",
                     "text": "Two Lewis structures are shown. The left shows a carbon triple bonded to an oxygen, each with a lone electron pair. The right structure shows a carbon double bonded to an oxygen on each side. Each oxygen has two lone pairs of electrons."
@@ -843,6 +844,7 @@
                 {
                   "type": "media",
                   "id": "fs-idp48495808",
+                  "src": "../../media/CNX_Chem_07_03_Interhal_img.jpg",
                   "alt": {
                     "segmentId": "m68739:alt:fs-idp48495808-alt",
                     "text": "Two Lewis structures are shown. The left depicts a bromine atom with two lone pairs of electrons single bonded to three chlorine atoms, each with three lone pairs of electrons. The right shows an iodine atom, with two lone pairs of electrons, single boned to four chlorine atoms, each with three lone pairs of electrons. This structure is surrounded by brackets and has a superscripted negative sign."
@@ -1422,6 +1424,7 @@
               {
                 "type": "media",
                 "id": "fs-idp205470208",
+                "src": "../../media/CNX_Chem_07_03_Question18_img.jpg",
                 "alt": {
                   "segmentId": "m68739:alt:fs-idp205470208-alt",
                   "text": "Two reactions are shown using Lewis structures. The top reaction shows a carbon atom, single bonded to three hydrogen atoms and single bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is also bonded to a hydrogen atom. This is followed by a plus sign and the number one point five, followed by two oxygen atoms bonded together with a double bond and each with two lone pairs of electrons. A right-facing arrow leads to a carbon atom that is double bonded to two oxygen atoms, each of which has two lone pairs of electrons. This structure is followed by a plus sign, a number two, and a structure made up of an oxygen with two lone pairs of electrons single bonded to two hydrogen atoms. The bottom reaction shows a carbon atom, single bonded to three hydrogen atoms and single bonded to another carbon atom. The second carbon atom is single bonded to two hydrogen atoms and one oxygen atom with two lone pairs of electrons. The oxygen atom is also bonded to a hydrogen atom. This is followed by a plus sign and the number three, followed by two oxygen atoms bonded together with a double bond. Each oxygen atom has two lone pairs of electrons. A right-facing arrow leads to a number two and a carbon atom that is double bonded to two oxygen atoms, each of which has two lone pairs of electrons. This structure is followed by a plus sign, a number three, and a structure made up of an oxygen with two lone pairs of electrons single bonded to two hydrogen atoms."
@@ -1523,6 +1526,7 @@
               {
                 "type": "media",
                 "id": "fs-idm41214176",
+                "src": "../../media/CNX_Chem_07_03_Impbioa_img.jpg",
                 "alt": {
                   "segmentId": "m68739:alt:fs-idm41214176-alt",
                   "text": "A Lewis structure is shown. A nitrogen atom is single bonded to two hydrogen atoms and a carbon atom. The carbon atom is single bonded to a hydrogen atom and two other carbon atoms. One of these carbon atoms is single bonded to two hydrogen atoms and an oxygen atom. The oxygen atom is bonded to a hydrogen atom. The other carbon atom is single bonded to two oxygen atoms, one of which is bonded to a hydrogen atom."
@@ -1536,6 +1540,7 @@
               {
                 "type": "media",
                 "id": "fs-idm72883232",
+                "src": "../../media/CNX_Chem_07_03_Impbiob_img.jpg",
                 "alt": {
                   "segmentId": "m68739:alt:fs-idm72883232-alt",
                   "text": "A Lewis structure is shown. A nitrogen atom is single bonded to two hydrogen atoms and a carbon atom. The carbon atom is single bonded to an oxygen atom and another nitrogen atom. That nitrogen atom is then single bonded to two hydrogen atoms."
@@ -1549,6 +1554,7 @@
               {
                 "type": "media",
                 "id": "fs-idm13924160",
+                "src": "../../media/CNX_Chem_07_03_Impbioc_img.jpg",
                 "alt": {
                   "segmentId": "m68739:alt:fs-idm13924160-alt",
                   "text": "A Lewis structure is shown. A carbon atom is single bonded to three hydrogen atoms and another carbon atom. The second carbon atom is single bonded to an oxygen atom and a third carbon atom. This carbon is then single bonded to two oxygen atoms, one of which is single bonded to a hydrogen atom."
@@ -1562,6 +1568,7 @@
               {
                 "type": "media",
                 "id": "fs-idp22935856",
+                "src": "../../media/CNX_Chem_07_03_Impbiod_img.jpg",
                 "alt": {
                   "segmentId": "m68739:alt:fs-idp22935856-alt",
                   "text": "A Lewis hexagonal ring structure is shown. From the top of the ring (moving clockwise), three carbon atoms, one nitrogen atom, a carbon atom, and a nitrogen atom are single bonded to each another. The top carbon atom is single bonded to an oxygen atom. The second and third carbons and the nitrogen atom are each single bonded to a hydrogen atom. The next carbon atom is single bonded to an oxygen atom, and the last nitrogen atom is single bonded to a hydrogen atom."
@@ -1575,6 +1582,7 @@
               {
                 "type": "media",
                 "id": "fs-idp35561104",
+                "src": "../../media/CNX_Chem_07_03_Impbioe_img.jpg",
                 "alt": {
                   "segmentId": "m68739:alt:fs-idp35561104-alt",
                   "text": "A Lewis structure is shown. A carbon atom is single bonded to three oxygen atoms. Two of those oxygen atoms are each single bonded to a hydrogen atom."

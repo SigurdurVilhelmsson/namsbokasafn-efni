@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68759",
-  "extractedAt": "2026-08-31T19:08:40.077Z",
+  "extractedAt": "2026-09-12T20:15:17.248Z",
   "sourceHash": "4899a02d62e002fa",
   "segmentCount": 98,
   "segmentIds": [
@@ -162,5 +162,11 @@
       "fs-idm24142800",
       "fs-idp25013184"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "compressibility factor (Z)",
+    "term-00002": "van der Waals equation",
+    "fs-idp3716528": "compressibility factor (Z)",
+    "fs-idm15517248": "van der Waals equation"
   }
 }

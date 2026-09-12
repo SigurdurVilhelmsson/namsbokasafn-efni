@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68750",
-  "extractedAt": "2026-08-31T19:08:39.880Z",
+  "extractedAt": "2026-09-12T20:15:17.098Z",
   "sourceHash": "21ab34fa0d6d4ebb",
   "segmentCount": 195,
   "segmentIds": [
@@ -303,5 +303,25 @@
       "fs-idp68662112",
       "fs-idm20163680"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "pressure",
+    "term-00002": "pascal (Pa)",
+    "term-00003": "bar",
+    "term-00004": "pounds per square inch (psi)",
+    "term-00005": "atmosphere (atm)",
+    "term-00006": "barometer",
+    "term-00007": "torr",
+    "term-00008": "hydrostatic pressure",
+    "term-00009": "manometer",
+    "fs-idm92046304": "atmosphere (atm)",
+    "fs-idm49164816": "bar",
+    "fs-idp128557152": "barometer",
+    "fs-idp1898224": "hydrostatic pressure",
+    "fs-idm30126128": "manometer",
+    "fs-idm69533872": "pascal (Pa)",
+    "fs-idm87137504": "pounds per square inch (psi)",
+    "fs-idm61385376": "pressure",
+    "fs-idm23965520": "torr"
   }
 }

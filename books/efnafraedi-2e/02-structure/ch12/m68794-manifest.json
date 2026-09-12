@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68794",
-  "extractedAt": "2026-08-31T19:08:41.176Z",
+  "extractedAt": "2026-09-12T20:15:18.087Z",
   "sourceHash": "4613374fe89686d2",
   "segmentCount": 143,
   "segmentIds": [
@@ -280,5 +280,23 @@
       "fs-idp145811120",
       "fs-idm483184"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "reaction mechanism",
+    "term-00002": "elementary reaction",
+    "term-00003": "intermediates",
+    "term-00004": "molecularity",
+    "term-00005": "unimolecular reaction",
+    "term-00006": "bimolecular reaction",
+    "term-00007": "termolecular reaction",
+    "term-00008": "rate-limiting step",
+    "fs-idp131244384": "bimolecular reaction",
+    "fs-idp36862592": "elementary reaction",
+    "fs-idp63453216": "intermediate",
+    "fs-idp7133520": "molecularity",
+    "fs-idp105000160": "rate-determining step",
+    "fs-idp154473568": "reaction mechanism",
+    "fs-idp251542624": "termolecular reaction",
+    "fs-idm2926992": "unimolecular reaction"
   }
 }

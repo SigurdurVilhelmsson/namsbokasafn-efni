@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68736",
-  "extractedAt": "2026-08-31T19:08:39.109Z",
+  "extractedAt": "2026-09-12T20:15:16.606Z",
   "sourceHash": "0f7b847e9f54d4df",
   "segmentCount": 10,
   "segmentIds": [
@@ -41,5 +41,8 @@
     "note": [],
     "equation": [],
     "section": []
+  },
+  "termEnglish": {
+    "term-00001": "Fuller"
   }
 }

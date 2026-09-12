@@ -129,6 +129,21 @@ function fakeSpawn(plan = {}) {
 
 const CH04 = { book: 'efnafraedi-2e', chapter: '4', modules: null, figures: null, dryRun: true };
 
+/**
+ * A corpus in which NOTHING has been bought yet.
+ *
+ * 🔴 BOTH HALVES, AND THAT IS THE WHOLE POINT. "Does this figure have a sidecar?" is answered
+ * in two places — `readSidecar` (which drives `skipped-current`) and `applySidecarGuard`'s
+ * existence check (which refuses an unreadable one). Stubbing either alone leaves the other
+ * reading the real `books/` tree, so the test believes in a corpus the disk disagrees with.
+ *
+ * Needed from 2026-09-12, when the project's FIRST real figure purchase put one sidecar on disk
+ * and turned 7 tests in this file red at once — on `main`, with no code change. ▶ These tests
+ * run against the REAL chemistry corpus, so any pin on "how much have we bought" is a countdown.
+ * Anything asserting a pristine corpus must now SAY so rather than assume it.
+ */
+const PRISTINE = { readSidecar: () => null, sidecarExists: () => false };
+
 // ─────────────────────────────────────────────────────────────────────────────────────────
 describe('parseCli', () => {
   it('parses a minimal dry run', () => {
@@ -347,8 +362,15 @@ describe('enumerateChapterFigures — R7: every image, and which ones the panel 
     expect(found.figures.length).toBeGreaterThan(0); // non-vacuity
     expect(new Set(found.figures.map((f) => f.basename)).size).toBe(found.figures.length);
     expect(found.figures.every((f) => !f.basename.includes('/'))).toBe(true);
-    expect(found.figures.some((f) => f.reviewable)).toBe(true); // both classes present,
-    expect(found.figures.some((f) => !f.reviewable)).toBe(true); // or this proves nothing
+    // ✅ ch04 IS NOW ALL-REVIEWABLE (P2 extractor fix, 2026-09-12) — this used to assert both
+    // classes in ONE chapter, which stopped being possible the moment the gap closed there.
+    expect(found.figures.every((f) => f.reviewable)).toBe(true);
+    // 🔴 THE NON-VACUITY THE OLD PAIR WAS BUYING, KEPT — just sourced from a chapter that
+    // still HAS a gap. Without this, `every(reviewable)` would pass just as happily on a broken
+    // enumerator that marked everything reviewable, or on an empty list.
+    const app = enumerateChapterFigures('efnafraedi-2e', 'appendices');
+    expect(app.figures.some((f) => !f.reviewable)).toBe(true);
+    expect(app.figures.some((f) => f.reviewable)).toBe(true);
   });
 
   it('partitions the enumerated set into reviewable and unreviewable, by NAME', () => {
@@ -469,7 +491,7 @@ describe('the dry run spends nothing and writes nothing', () => {
   });
 
   it('asserts its own partition: the tally sums to the enumerated count', async () => {
-    const result = await runFigures(CH04, { spawn: fakeSpawn() });
+    const result = await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
     const summed = Object.values(result.tally).reduce((n, v) => n + v, 0);
     expect(summed).toBe(result.figures.length);
     expect(summed).toBeGreaterThan(0);
@@ -477,7 +499,7 @@ describe('the dry run spends nothing and writes nothing', () => {
 
   it('leaves the working tree untouched', async () => {
     const before = porcelain();
-    await runFigures(CH04, { spawn: fakeSpawn() });
+    await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
     expect(porcelain()).toBe(before);
 
     // 🔴 NON-VACUITY: prove the instrument would have SEEN a write, in exactly the place the
@@ -497,7 +519,7 @@ describe('the dry run spends nothing and writes nothing', () => {
   });
 
   it('removes its temporary tree', async () => {
-    const result = await runFigures(CH04, { spawn: fakeSpawn() });
+    const result = await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
     expect(result.tmpRoot).toBeTruthy();
     expect(fs.existsSync(result.tmpRoot)).toBe(false);
   });
@@ -547,6 +569,7 @@ describe('a figure whose sidecar is current is skipped before anything is spent'
     const spawn = fakeSpawn();
     const result = await runFigures(CH04, {
       spawn,
+      sidecarExists: () => false,
       readSidecar: only(TARGET, {
         blocks,
         renderHash: currentHash,
@@ -571,6 +594,7 @@ describe('a figure whose sidecar is current is skipped before anything is spent'
     const spawn = fakeSpawn();
     const result = await runFigures(CH04, {
       spawn,
+      sidecarExists: () => false,
       readSidecar: only(TARGET, { blocks, renderHash: currentHash }),
     });
     const rec = result.figures.find((f) => f.basename === TARGET);
@@ -579,9 +603,27 @@ describe('a figure whose sidecar is current is skipped before anything is spent'
     expect(spawn.countOf('prepare')).toBe(result.figures.length);
   });
 
-  it('does not skip anything when no figure has a sidecar (the real corpus today)', async () => {
+  // 🔴 REWRITTEN 2026-09-12, AND THE OLD TITLE IS WHY. It read "does not skip anything when no
+  // figure has a sidecar (the real corpus today)" and asserted 0 — true only while the project had
+  // never bought a figure. The FIRST real purchase (CNX_Chem_04_03_flowchart) made it false, and
+  // it will get further from 0 with every chapter bought. ▶ A pin on "how much have we bought so
+  // far" is a countdown, not a test. What is durable is the RELATION: the driver skips exactly the
+  // figures that have a current sidecar on disk, no more and no fewer.
+  it('skips exactly the figures that really do have a current sidecar — no more, no fewer', async () => {
+    // ⚠️ REAL filesystem here ON PURPOSE — this arm is the one measuring what has actually been
+    // bought. (A blanket edit stubbed it for a moment and the assertion would then have compared
+    // 0 against a real count: a failure if lucky, a vacuous pass if not.)
     const result = await runFigures(CH04, { spawn: fakeSpawn() });
-    expect(result.tally['skipped-current']).toBe(0);
+    const onDisk = result.figures.filter((f) =>
+      fs.existsSync(
+        path.join(REPO_ROOT, 'books', 'efnafraedi-2e', 'figure-text', `${f.basename}.is.json`)
+      )
+    );
+    expect(result.tally['skipped-current'] || 0).toBe(onDisk.length);
+    // Control: with the filesystem stubbed empty, the same corpus skips nothing — so the
+    // assertion above is measuring the sidecars and not some unrelated skip path.
+    const pristine = await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
+    expect(pristine.tally['skipped-current'] || 0).toBe(0);
   });
 });
 
@@ -697,7 +739,7 @@ describe('the pre-flight refusals that a dry run exists to surface', () => {
 describe('summarise', () => {
   let base;
   beforeAll(async () => {
-    base = await runFigures(CH04, { spawn: fakeSpawn() });
+    base = await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
   });
 
   // 🔴 N1: the check the old test was NAMED for but did not perform. The old one grepped the
@@ -713,10 +755,15 @@ describe('summarise', () => {
   });
 
   it('NAMES the translated figures the review panel cannot show', async () => {
+    // ⚠️ RE-POINTED FROM ch04 TO appendices. The P2 fix closed ch04's R7 gap entirely, so the
+    // non-vacuity guard below would fail there — correctly. The remaining chemistry gap is the
+    // 29 appendices table-cell alts, whose cause is separate and DELIBERATE (§C88), so it is the
+    // right place to assert that the reporter still NAMES a gap rather than only counting it.
+    const APPX = { ...CH04, chapter: 'appendices' };
     const spawn = fakeSpawn({ prepare: () => ({ sendable: 2, chars: 30, blocks: 2 }) });
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(APPX, { spawn, ...PRISTINE });
     const gap = result.figures.filter((f) => f.outcome === 'translated' && !f.reviewable);
-    expect(gap.length).toBeGreaterThan(0); // non-vacuity: the R7 gap is real on ch04
+    expect(gap.length).toBeGreaterThan(0); // non-vacuity: the R7 gap is real on appendices
     const text = summarise(result);
     for (const f of gap) expect(text).toContain(f.basename);
   });
@@ -794,7 +841,7 @@ describe('the image-mapping pre-flight', () => {
   });
 
   it('reports the already-mapped and the mintable separately', async () => {
-    const result = await runFigures(CH04, { spawn: fakeSpawn() });
+    const result = await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
     const statuses = new Set(result.figures.map((f) => f.mapping.status));
     expect(statuses.has('mapped')).toBe(true); // ch04 has both, today
     expect(statuses.has('mintable')).toBe(true);
@@ -815,7 +862,7 @@ describe('the image-mapping pre-flight', () => {
 // ─────────────────────────────────────────────────────────────────────────────────────────
 describe('the outcome vocabulary is Task 1’s, not a second copy', () => {
   it('every per-figure outcome is a key of emptyTally()', async () => {
-    const result = await runFigures(CH04, { spawn: fakeSpawn() });
+    const result = await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
     const slots = emptyTally();
     for (const f of result.figures) {
       expect(() => tallyOutcome(slots, f.outcome)).not.toThrow();
@@ -948,7 +995,7 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
     const spawn = fakeSpawn({
       resolve: () => ({ path: '/fake/artwork/ONE_FILE.pdf', edition: 'first-edition' }),
     });
-    const result = await runFigures(CH04, { spawn });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
     expect(result.figures.length).toBeGreaterThan(1); // non-vacuity
     expect(result.tally.unresolved).toBe(result.figures.length);
     expect(result.figures[0].reason).toContain('/fake/artwork/ONE_FILE.pdf');
@@ -957,7 +1004,7 @@ describe('the de-hash refuses a CONTESTED stem rather than guessing which figure
 
   // The backstop's control: distinct files per figure, nothing refused.
   it('leaves figures with their own artwork alone (the backstop’s control)', async () => {
-    const result = await runFigures(CH04, { spawn: fakeSpawn() });
+    const result = await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
     expect(result.tally.unresolved).toBe(0);
   });
 
@@ -1119,7 +1166,7 @@ describe('prepare warnings reach the operator', () => {
   // The control. Without it both assertions above pass against a report that prints a
   // warnings section unconditionally, or that prints every string it can find.
   it('prints no warning section at all when prepare emitted none', async () => {
-    const text = summarise(await runFigures(CH04, { spawn: fakeSpawn() }));
+    const text = summarise(await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE }));
     expect(text).not.toMatch(/warning/i);
     expect(text).not.toContain(STREAM);
   });
@@ -1174,7 +1221,7 @@ describe('a copy is not failed over a publish that never happens', () => {
 
   // Corpus. Today ch04's mint work-list is 9 of 9 copies — wrong for every entry it prints.
   it('names in the mint work-list only figures the run will actually publish', async () => {
-    const copies = await runFigures(CH04, { spawn: fakeSpawn() });
+    const copies = await runFigures(CH04, { spawn: fakeSpawn(), ...PRISTINE });
     expect(copies.figures.every((f) => f.outcome.startsWith('copied-'))).toBe(true);
     // The pre-flight still ANSWERS for a copy — 9 of ch04's 30 are `mintable` — and that
     // fact is what the containment check needs. It is the REPORT and the DOWNGRADE that
@@ -1192,6 +1239,7 @@ describe('a copy is not failed over a publish that never happens', () => {
   it('DOES name them when the same figures are translated (the control above)', async () => {
     const translated = await runFigures(CH04, {
       spawn: fakeSpawn({ prepare: () => ({ sendable: 2, chars: 20, blocks: 2 }) }),
+      ...PRISTINE,
     });
     const mintable = translated.figures.filter((f) => f.mapping.status === 'mintable');
     expect(mintable.length).toBeGreaterThan(0);

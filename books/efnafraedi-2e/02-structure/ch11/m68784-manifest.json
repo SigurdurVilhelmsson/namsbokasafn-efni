@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68784",
-  "extractedAt": "2026-08-31T19:08:40.727Z",
+  "extractedAt": "2026-09-12T20:15:17.777Z",
   "sourceHash": "19d689687848bf62",
   "segmentCount": 145,
   "segmentIds": [
@@ -212,5 +212,27 @@
       "fs-idm184888480",
       "fs-idm198925920"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "suspensions",
+    "term-00002": "colloids",
+    "term-00003": "colloidal dispersions",
+    "term-00004": "Tyndall effect",
+    "term-00005": "dispersed phase",
+    "term-00006": "dispersion medium",
+    "term-00007": "emulsion",
+    "term-00008": "emulsifying agent",
+    "term-00009": "amphiphilic",
+    "term-00010": "Cottrell",
+    "term-00011": "gel",
+    "fs-idm237171488": "amphiphilic",
+    "fs-idm164804608": "colloid",
+    "fs-idm203045728": "dispersion medium",
+    "fs-idm117651760": "dispersed phase",
+    "fs-idp52912": "emulsifying agent",
+    "fs-idm96998512": "emulsion",
+    "fs-idm167483808": "gel",
+    "fs-idm380612256": "suspension",
+    "fs-idm171842784": "Tyndall effect"
   }
 }

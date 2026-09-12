@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68786",
-  "extractedAt": "2026-08-31T19:08:40.953Z",
+  "extractedAt": "2026-09-12T20:15:17.926Z",
   "sourceHash": "85f79953513e8cce",
   "segmentCount": 120,
   "segmentIds": [
@@ -248,5 +248,17 @@
       "fs-idp13917664",
       "fs-idm87178096"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "rate of reaction",
+    "term-00002": "rate expression",
+    "term-00003": "average rate",
+    "term-00004": "instantaneous rate",
+    "term-00005": "initial rate",
+    "fs-idp11569888": "average rate",
+    "fs-idp24984224": "initial rate",
+    "fs-idp70925872": "instantaneous rate",
+    "fs-idp172602144": "rate of reaction",
+    "fs-idp193131840": "rate expression"
   }
 }

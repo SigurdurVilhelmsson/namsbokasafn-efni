@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68782",
-  "extractedAt": "2026-08-31T19:08:40.618Z",
+  "extractedAt": "2026-09-12T20:15:17.686Z",
   "sourceHash": "d8ff8a59cfc122f8",
   "segmentCount": 118,
   "segmentIds": [
@@ -210,5 +210,24 @@
       "fs-idp44827264",
       "fs-idm30288080"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "solubility",
+    "term-00002": "saturated",
+    "term-00003": "unsaturated",
+    "term-00004": "supersaturated",
+    "term-00005": "Henry’s law",
+    "term-00006": "Henry’s law",
+    "term-00007": "miscible",
+    "term-00008": "immiscible",
+    "term-00009": "partially miscible",
+    "fs-idp6753792": "Henry’s law",
+    "fs-idp30466624": "immiscible",
+    "fs-idp83966400": "miscible",
+    "fs-idp7162656": "partially miscible",
+    "fs-idp18522912": "saturated",
+    "fs-idm7148400": "solubility",
+    "fs-idp69776": "supersaturated",
+    "fs-idm39109968": "unsaturated"
   }
 }

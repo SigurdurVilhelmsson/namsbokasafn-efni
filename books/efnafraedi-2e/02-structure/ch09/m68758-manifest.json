@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68758",
-  "extractedAt": "2026-08-31T19:08:40.056Z",
+  "extractedAt": "2026-09-12T20:15:17.229Z",
   "sourceHash": "0a813b5bf3e8ed4a",
   "segmentCount": 91,
   "segmentIds": [
@@ -188,5 +188,12 @@
       "fs-idm188828400",
       "fs-idm162733696"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "kinetic molecular theory",
+    "term-00002": "root mean square speed",
+    "term-00003": "urms",
+    "fs-idm198763536": "kinetic molecular theory",
+    "fs-idm271276336": "root mean square speed (urms)"
   }
 }

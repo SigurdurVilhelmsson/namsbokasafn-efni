@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68770",
-  "extractedAt": "2026-08-31T19:08:40.369Z",
+  "extractedAt": "2026-09-12T20:15:17.459Z",
   "sourceHash": "7872bddb1833636a",
   "segmentCount": 179,
   "segmentIds": [
@@ -243,5 +243,25 @@
       "fs-idp41417328",
       "fs-idm10815344"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "crystalline solids",
+    "term-00002": "amorphous solids",
+    "term-00003": "Ionic solids",
+    "term-00004": "Metallic solids",
+    "term-00005": "Covalent network solids",
+    "term-00006": "Molecular solids",
+    "term-00007": "Geim",
+    "term-00008": "Novoselov",
+    "term-00009": "Vacancies",
+    "term-00010": "interstitial sites",
+    "fs-idm63193280": "amorphous solid",
+    "fs-idp42521392": "covalent network solid",
+    "fs-idp141680624": "crystalline solid",
+    "fs-idm134621184": "interstitial sites",
+    "fs-idm37301360": "ionic solid",
+    "fs-idm21108640": "metallic solid",
+    "fs-idp66006736": "molecular solid",
+    "fs-idm37032656": "vacancy"
   }
 }
