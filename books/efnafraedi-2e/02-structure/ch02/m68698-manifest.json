@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68698",
-  "extractedAt": "2026-08-31T19:08:36.809Z",
+  "extractedAt": "2026-09-12T20:15:16.248Z",
   "sourceHash": "b74dd18e23131b6a",
   "segmentCount": 341,
   "segmentIds": [
@@ -423,5 +423,17 @@
       "fs-idp282340144",
       "fs-idm121332480"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Nomenclature",
+    "term-00002": "binary compounds",
+    "term-00003": "acids",
+    "term-00004": "hydrates",
+    "term-00005": "binary acid",
+    "term-00006": "oxyacids",
+    "fs-idp282291040": "binary acid",
+    "fs-idp282226176": "binary compound",
+    "fs-idp282227200": "nomenclature",
+    "fs-idp282228224": "oxyacid"
   }
 }

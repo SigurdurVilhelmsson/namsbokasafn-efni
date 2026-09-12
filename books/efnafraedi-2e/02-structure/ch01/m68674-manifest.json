@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68674",
-  "extractedAt": "2026-08-31T19:08:35.228Z",
+  "extractedAt": "2026-09-12T20:15:15.644Z",
   "sourceHash": "dbecc98b53a4facf",
   "segmentCount": 247,
   "segmentIds": [
@@ -354,5 +354,37 @@
       "fs-idm313032912",
       "fs-idm357067232"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Units",
+    "term-00002": "International System of Units",
+    "term-00003": "SI Units",
+    "term-00004": "length",
+    "term-00005": "meter (m)",
+    "term-00006": "kilogram (kg)",
+    "term-00007": "IUPAC",
+    "term-00008": "kelvin (K)",
+    "term-00009": "Celsius (°C)",
+    "term-00010": "second (s)",
+    "term-00011": "Volume",
+    "term-00012": "cubic meter (m3)",
+    "term-00013": "liter (L)",
+    "term-00014": "cubic centimeter (cm3)",
+    "term-00015": "milliliter (mL)",
+    "term-00016": "density",
+    "fs-idm285658848": "Celsius (°C)",
+    "fs-idm227540096": "cubic centimeter (cm3 or cc)",
+    "fs-idm244788352": "cubic meter (m3)",
+    "fs-idm147403536": "density",
+    "fs-idm160547456": "kelvin (K)",
+    "fs-idm228140240": "kilogram (kg)",
+    "fs-idp28932848": "length",
+    "fs-idm238691152": "liter (L)",
+    "fs-idm22681216": "meter (m)",
+    "fs-idp19165184": "milliliter (mL)",
+    "fs-idm310839680": "second (s)",
+    "fs-idm23328032": "SI units (International System of Units)",
+    "fs-idm331555696": "unit",
+    "fs-idm207134160": "volume"
   }
 }

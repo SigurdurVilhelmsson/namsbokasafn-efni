@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68803",
-  "extractedAt": "2026-08-31T19:08:42.219Z",
+  "extractedAt": "2026-09-12T20:15:18.545Z",
   "sourceHash": "fd1d4073611c3773",
   "segmentCount": 169,
   "segmentIds": [
@@ -341,5 +341,28 @@
       "fs-idp36036608",
       "fs-idp54308864"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Boyle",
+    "term-00002": "Davy",
+    "term-00003": "Arrhenius",
+    "term-00004": "Brønsted-Lowry acid",
+    "term-00005": "Brønsted-Lowry base",
+    "term-00006": "acid ionization",
+    "term-00007": "Base ionization",
+    "term-00008": "amphiprotic",
+    "term-00009": "amphoteric",
+    "term-00010": "autoionization",
+    "term-00011": "ion-product constant for water, Kw",
+    "fs-idm26650176": "acid ionization",
+    "fs-idp140545888": "amphiprotic",
+    "fs-idp12571968": "amphoteric",
+    "fs-idp12573120": "autoionization",
+    "fs-idp46883520": "base ionization",
+    "fs-idp43874496": "Brønsted-Lowry acid",
+    "fs-idp89677040": "Brønsted-Lowry base",
+    "fs-idp41345504": "conjugate acid",
+    "fs-idp41346656": "conjugate base",
+    "fs-idp9778624": "ion-product constant for water (Kw)"
   }
 }

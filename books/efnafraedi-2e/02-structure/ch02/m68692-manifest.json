@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68692",
-  "extractedAt": "2026-08-31T19:08:36.543Z",
+  "extractedAt": "2026-09-12T20:15:16.146Z",
   "sourceHash": "36fddcb42c3cb34d",
   "segmentCount": 399,
   "segmentIds": [
@@ -539,5 +539,28 @@
       "fs-idm7298256",
       "fs-idm53754640"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "unified atomic mass unit (u)",
+    "term-00002": "fundamental unit of charge (e)",
+    "term-00003": "dalton (Da)",
+    "term-00005": "atomic number (Z)",
+    "term-00006": "mass number (A)",
+    "term-00007": "ion",
+    "term-00008": "anion",
+    "term-00009": "cations",
+    "term-00010": "chemical symbol",
+    "term-00011": "atomic mass",
+    "fs-idm68508272": "anion",
+    "fs-idp230158528": "atomic mass",
+    "fs-idm20897872": "atomic mass unit (amu)",
+    "fs-idp42201168": "atomic number (Z)",
+    "fs-idp1800912": "cation",
+    "fs-idm109251440": "chemical symbol",
+    "fs-idm103888640": "Dalton (Da)",
+    "fs-idp226765840": "fundamental unit of charge",
+    "fs-idp277782656": "ion",
+    "fs-idp22869776": "mass number (A)",
+    "fs-idm284976": "unified atomic mass unit (u)"
   }
 }

@@ -221,6 +221,7 @@
             {
               "type": "media",
               "id": "fs-idm123715040",
+              "src": "../../media/CNX_Chem_14_06_ICETable16_img.jpg",
               "alt": {
                 "segmentId": "m68808:alt:fs-idm123715040-alt",
                 "text": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “[ C H subscript 3 C O subscript 2 H ] [ H subscript 2 O ] equilibrium arrow H subscript 3 O superscript plus sign [ C H subscript 3 C O subscript 2 superscript negative sign ].” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.10, negative x, 0.10 minus sign x. The second column is blank. The third column has the following: approximately 0, positive x, x. The fourth column has the following: 0.10, positive x, 0.10 plus sign x."

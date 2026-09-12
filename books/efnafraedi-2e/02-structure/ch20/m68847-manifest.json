@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68847",
-  "extractedAt": "2026-08-31T19:08:45.660Z",
+  "extractedAt": "2026-09-12T20:15:19.644Z",
   "sourceHash": "5e0c1efe401d5b7f",
   "segmentCount": 108,
   "segmentIds": [
@@ -169,5 +169,11 @@
       "fs-idm82374704",
       "fs-idm77059568"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Alcohols",
+    "term-00002": "Ethers",
+    "fs-idm17880560": "alcohol",
+    "fs-idm24389904": "ether"
   }
 }

@@ -148,6 +148,7 @@
                 {
                   "type": "media",
                   "id": "fs-idm20720800",
+                  "src": "../../media/CNX_Chem_20_02_alcohol1_img.jpg",
                   "alt": {
                     "segmentId": "m68847:alt:fs-idm20720800-alt",
                     "text": "A molecular structure of a hydrocarbon chain with a length of five C atoms is shown. The first C atom (from left to right) is bonded to three H atoms. The second C atom is bonded on one H atom and an O atom which is also bonded to an H atom. The O atom has two sets of electron dots. The third C atom is bonded to two H atoms. The fourth C atom is bonded to two H atoms. The fifth C atom is bonded to three H atoms. All bonds shown are single."
@@ -156,6 +157,7 @@
                 {
                   "type": "media",
                   "id": "fs-idm39569728",
+                  "src": "../../media/CNX_Chem_20_02_alcohol2_img.jpg",
                   "alt": {
                     "segmentId": "m68847:alt:fs-idm39569728-alt",
                     "text": "The structure shown has a C H subscript 3 group bonded up and to the right to a C atom. The C atom is bonded down and to the right to a C H subscript 2 group. The C H subscript 2 group is bonded up and to the right to a C H subscript 2 group. The C H subscript 2 group is bonded down and to the right to a C H subscript 3 group. The second C atom (from left to right) is bonded to a C H subscript 3 group and an O H group."
@@ -253,6 +255,7 @@
             {
               "type": "media",
               "id": "fs-idp882608",
+              "src": "../../media/CNX_Chem_20_02_ethers1_img.jpg",
               "alt": {
                 "segmentId": "m68847:alt:fs-idp882608-alt",
                 "text": "A molecular structure shows a C H subscript 3 group bonded down and to the right to a C H subscript 2 group. The C H subscript 2 group is bonded up and to the right to an O atom. The O atom is bonded down and to the right to a C H subscript 2 group. The C H subscript 2 group is bonded up and to the right to a C H subscript 3 group."
@@ -261,6 +264,7 @@
             {
               "type": "media",
               "id": "fs-idp6957760",
+              "src": "../../media/CNX_Chem_20_02_ethers2_img.jpg",
               "alt": {
                 "segmentId": "m68847:alt:fs-idp6957760-alt",
                 "text": "A molecular structure shows a C H subscript 3 group bonded up and to the right to an O atom. The O atom is bonded down and to the right to a C H group. The C H group is bonded up and to the right to a C H subscript 3 group. The C H group is also bonded down and to the right to another C H subscript 3 group."

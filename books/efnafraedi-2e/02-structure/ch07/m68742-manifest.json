@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68742",
-  "extractedAt": "2026-08-31T19:08:39.401Z",
+  "extractedAt": "2026-09-12T20:15:16.756Z",
   "sourceHash": "522195d80aa86fd1",
   "segmentCount": 359,
   "segmentIds": [
@@ -507,5 +507,39 @@
       "fs-idp238464336",
       "fs-idp125299408"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "bond angle",
+    "term-00002": "bond distance",
+    "term-00009": "electron-pair geometry",
+    "term-00010": "molecular structure",
+    "term-00011": "axial position",
+    "term-00012": "equatorial position",
+    "term-00003": "Valence shell electron-pair repulsion theory (VSEPR theory)",
+    "term-00004": "linear",
+    "term-00005": "trigonal planar",
+    "term-00006": "tetrahedral",
+    "term-00007": "trigonal bipyramidal",
+    "term-00008": "octahedral",
+    "term-00013": "bond dipole moment",
+    "term-00014": "vector",
+    "term-00015": "polar molecule",
+    "term-00016": "dipole moment",
+    "fs-idp280671424": "axial position",
+    "fs-idp51366688": "bond angle",
+    "fs-idp64874768": "bond distance",
+    "fs-idp60998304": "bond dipole moment",
+    "fs-idp12081312": "dipole moment",
+    "fs-idp86864304": "electron-pair geometry",
+    "fs-idp113684160": "equatorial position",
+    "fs-idp35872064": "linear",
+    "fs-idp108813632": "molecular structure",
+    "fs-idp80913744": "octahedral",
+    "fs-idp57075984": "polar molecule",
+    "fs-idp51917808": "tetrahedral",
+    "fs-idp124673792": "trigonal bipyramidal",
+    "fs-idp36467056": "trigonal planar",
+    "fs-idp27828880": "valence shell electron-pair repulsion theory (VSEPR)",
+    "fs-idp103056288": "vector"
   }
 }

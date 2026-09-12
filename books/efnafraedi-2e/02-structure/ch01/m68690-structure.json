@@ -398,6 +398,7 @@
             {
               "type": "media",
               "id": "fs-idm330284704",
+              "src": "../../media/CNX_Chem_01_05_SigDigits4_img.jpg",
               "alt": {
                 "segmentId": "m68690:alt:fs-idm330284704-alt",
                 "text": "Figure A shows 1.0023 being added to 4.383 to yield the answer 5.385. 1.0023 goes to the ten thousandths place, but 4.383 goes to the thousandths place, making it the less precise of the two numbers. Therefore the answer, 5.3853, should be rounded to the thousandths, to yield 5.385. Figure B shows 486 grams minus 421.23 grams, which yields the answer 64.77 grams. This answer should be round to the ones place, making the answer 65 grams."
@@ -637,6 +638,7 @@
             {
               "type": "media",
               "id": "fs-idm332426528",
+              "src": "../../media/CNX_Chem_01_04_CylRebar.jpg",
               "alt": {
                 "segmentId": "m68690:alt:fs-idm332426528-alt",
                 "text": "This diagram shows the initial volume of water in a graduated cylinder as 13.5 milliliters. A 69.658 gram piece of metal rebar is added to the graduated cylinder, causing the water to reach a final volume of 22.4 milliliters"
@@ -645,6 +647,7 @@
             {
               "type": "media",
               "id": "fs-idm283007920",
+              "src": "../../media/CNX_Chem_01_04_CylGold.jpg",
               "alt": {
                 "segmentId": "m68690:alt:fs-idm283007920-alt",
                 "text": "This diagram shows the initial volume of water in a graduated cylinder as 17.1 milliliters. A 51.842 gram gold colored rock is added to the graduated cylinder, causing the water to reach a final volume of 19.8 milliliters"
@@ -1489,6 +1492,7 @@
               {
                 "type": "media",
                 "id": "fs-idp94481888",
+                "src": "../../media/CNX_Chem_01_05_Archer2_img.jpg",
                 "alt": {
                   "segmentId": "m68690:alt:fs-idp94481888-alt",
                   "text": "4 targets are shown each with 4 holes indicating where the arrows hit the targets. Archer W put all 4 arrows closely around the center of the target. Archer X put all 4 arrows in a tight cluster but far to the lower right of the target. Archer Y put all 4 arrows at different corners of the target. All 4 arrows are very far from the center of the target. Archer Z put 2 arrows close to the target and 2 other arrows far outside of the target."

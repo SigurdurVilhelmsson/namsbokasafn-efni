@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68789",
-  "extractedAt": "2026-08-31T19:08:41.045Z",
+  "extractedAt": "2026-09-12T20:15:17.991Z",
   "sourceHash": "86ebf4e0cd534505",
   "segmentCount": 322,
   "segmentIds": [
@@ -601,5 +601,18 @@
       "fs-idm168364064",
       "fs-idm273385984"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Rate laws",
+    "term-00002": "rate equations",
+    "term-00003": "rate constant",
+    "term-00004": "reaction orders",
+    "term-00005": "overall reaction order",
+    "term-00006": "method of initial rates",
+    "fs-idm176826832": "method of initial rates",
+    "fs-idm276164832": "overall reaction order",
+    "fs-idm185628880": "rate constant (k)",
+    "fs-idm215968704": "rate law",
+    "fs-idm333854336": "reaction order"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68737",
-  "extractedAt": "2026-08-31T19:08:39.154Z",
+  "extractedAt": "2026-09-12T20:15:16.630Z",
   "sourceHash": "eb590aff2c430ac3",
   "segmentCount": 107,
   "segmentIds": [
@@ -170,5 +170,11 @@
       "fs-idm20865904",
       "fs-idm7304032"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "ionic bonds",
+    "term-00002": "inert pair effect",
+    "fs-idm113628896": "inert pair effect",
+    "fs-idm118453184": "ionic bond"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68768",
-  "extractedAt": "2026-08-31T19:08:40.338Z",
+  "extractedAt": "2026-09-12T20:15:17.433Z",
   "sourceHash": "8b1de869fbb9fe9a",
   "segmentCount": 207,
   "segmentIds": [
@@ -347,5 +347,33 @@
       "fs-idp14058304",
       "fs-idm73098240"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "condensation",
+    "term-00002": "vaporization",
+    "term-00003": "dynamic equilibrium",
+    "term-00004": "vapor pressure",
+    "term-00005": "boiling point",
+    "term-00006": "normal boiling point",
+    "term-00007": "Clausius-Clapeyron equation",
+    "term-00008": "melting",
+    "term-00009": "freezing",
+    "term-00010": "melting point",
+    "term-00011": "freezing point",
+    "term-00012": "sublimation",
+    "term-00013": "deposition",
+    "fs-idm193814624": "boiling point",
+    "fs-idp13200944": "Clausius-Clapeyron equation",
+    "fs-idm193371200": "condensation",
+    "fs-idm7778192": "deposition",
+    "fs-idm101715056": "dynamic equilibrium",
+    "fs-idm144682752": "freezing",
+    "fs-idp5444368": "freezing point",
+    "fs-idm69563216": "melting",
+    "fs-idm143011312": "melting point",
+    "fs-idm205028976": "normal boiling point",
+    "fs-idm146567360": "sublimation",
+    "fs-idm195421616": "vapor pressure",
+    "fs-idm93994416": "vaporization"
   }
 }

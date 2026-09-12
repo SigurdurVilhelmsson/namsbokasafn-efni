@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68685",
-  "extractedAt": "2026-08-31T19:08:36.335Z",
+  "extractedAt": "2026-09-12T20:15:16.073Z",
   "sourceHash": "d7ffcaf23f3cca56",
   "segmentCount": 100,
   "segmentIds": [
@@ -174,5 +174,17 @@
       "fs-idp7570768",
       "fs-idm51563888"
     ]
+  },
+  "termEnglish": {
+    "term-00002": "atom",
+    "term-00003": "element",
+    "term-00001": "Dalton’s atomic theory",
+    "term-00004": "law of definite proportions",
+    "term-00005": "law of constant composition",
+    "term-00006": "law of multiple proportions",
+    "fs-idp110829184": "Dalton’s atomic theory",
+    "fs-idm56716560": "law of constant composition",
+    "fs-idp76336256": "law of definite proportions",
+    "fs-idp47442976": "law of multiple proportions"
   }
 }

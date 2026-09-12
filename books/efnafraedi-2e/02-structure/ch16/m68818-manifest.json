@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68818",
-  "extractedAt": "2026-08-31T19:08:44.039Z",
+  "extractedAt": "2026-09-12T20:15:19.187Z",
   "sourceHash": "b355b93fb7cc5d29",
   "segmentCount": 154,
   "segmentIds": [
@@ -289,5 +289,15 @@
       "fs-idp50875552",
       "fs-idm53180608"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "second law of thermodynamics",
+    "term-00002": "third law of thermodynamics",
+    "term-00003": "Standard entropies (S°)",
+    "term-00004": "standard entropy change (ΔS°)",
+    "fs-idp194754048": "second law of thermodynamics",
+    "fs-idp170415152": "standard entropy (S°)",
+    "fs-idp85418944": "standard entropy change (ΔS°)",
+    "fs-idp90512720": "third law of thermodynamics"
   }
 }

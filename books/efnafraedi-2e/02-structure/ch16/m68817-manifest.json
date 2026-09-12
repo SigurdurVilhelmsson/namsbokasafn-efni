@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68817",
-  "extractedAt": "2026-08-31T19:08:43.987Z",
+  "extractedAt": "2026-09-12T20:15:19.151Z",
   "sourceHash": "43ae001071c4abd5",
   "segmentCount": 118,
   "segmentIds": [
@@ -222,5 +222,16 @@
       "fs-idm145716272",
       "fs-idm93579488"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Carnot",
+    "term-00002": "Clausius",
+    "term-00003": "reversible process",
+    "term-00004": "entropy (S)",
+    "term-00005": "Boltzmann",
+    "term-00006": "microstate",
+    "fs-idm225836896": "entropy (S)",
+    "fs-idm228328464": "microstate",
+    "fs-idp48318480": "reversible process"
   }
 }

@@ -13,7 +13,19 @@
  * CONSTRUCTS — `figure`, the top-level `inlineMedia` array, and a loose
  * `type:'media'` node — recorded per record as `via`. The gap therefore now
  * means "absent from 02-structure entirely", a claim about re-extraction. On
- * chemistry: 1,148 images = 627 + 227 + 97 reviewable, 197 absent.
+ * chemistry, as measured 2026-09-08: 1,148 images = 627 + 227 + 97 reviewable, 197 not.
+ *
+ * 🔴 UPDATED 2026-09-12 (P2 fix) — AND THE OLD WORDING WAS WRONG IN A WAY WORTH KEEPING.
+ * It called the 197 "absent", i.e. absent from 02-structure. They were not: 168 of them had a
+ * node carrying their id AND their paid alt segment, missing only `src`, which is the one key
+ * the enumerator reads. "Absent" and "present but unkeyable" are different defects with
+ * different fixes, and the gloss picked the wrong one. ▶ A diagnosis session searched
+ * 02-structure for the image BASENAME to settle it and got 0 — but the basename only ever
+ * enters 02-structure VIA `src`, so that search returns 0 BY CONSTRUCTION and cannot tell the
+ * two apart. Key such a check on the media ID, which is present either way. (That error has now
+ * been made three times against this file; see the header of figure-enumerate.cjs.)
+ * ✅ NOW: 1,148 images = 627 + 227 + 265 reviewable, 29 not — and the 29 are a DIFFERENT and
+ * deliberate class (appendices table-cell alts, §C88), not a residue of this one.
  *
  * ⚠️ `reviewable` here is STRUCTURAL — "does this image have a node in
  * 02-structure to key on" — and deliberately NOT the runtime sense the review
@@ -315,10 +327,14 @@ describe('listStructureFigures — §C139 tier 1: inlineMedia is reviewable too'
    * `visit` walks straight past it, because the walk tests only for
    * `type === 'figure'`.
    *
-   * Measured on chemistry: 97 more images, DISJOINT from the inlineMedia 228
+   * Measured on chemistry (2026-09-08): 97 more images, DISJOINT from the inlineMedia 228
    * (0 basenames in both). So the no-re-extraction tier reaches 324 of the 521,
    * not 227, and the population that genuinely needs the extractor changed and
    * a re-extraction is 197.
+   *
+   * ✅ 2026-09-12 — THAT EXTRACTOR CHANGE AND RE-EXTRACTION HAPPENED (P2). This tier now
+   * reaches 265 rather than 97, because the three container builders write `src`. The 197 fell
+   * to 29, all of them appendices cellAlt records with a separate, documented cause.
    */
   it('returns a type:media node loose in the content tree, the same way', () => {
     const file = path.join(tmpRoot, 'content-media.json');
@@ -525,20 +541,28 @@ describe('enumerateChapterImages over efnafraedi-2e ch04 — BOTH sets, and the 
     expect(r.reviewable.length).toBeGreaterThan(0);
   });
 
-  it('reviewable is a PROPER subset of enumeration — both directions asserted', () => {
+  it('reviewable is a subset of enumeration, and on ch04 it is now the WHOLE of it', () => {
     const enumerated = new Set(r.figures.map((f) => f.basename));
     // direction 1: nothing reviewable is outside the enumeration
     expect(r.reviewable.filter((b) => !enumerated.has(b))).toEqual([]);
-    // direction 2: the enumeration is strictly larger — if this is 0 the whole
-    // R7 distinction has collapsed and the test above proves nothing
-    expect(r.reviewable.length).toBeLessThan(enumerated.size);
+    // 🔴 DIRECTION 2 USED TO READ `toBeLessThan`, with the comment "if this is 0 the whole
+    // R7 distinction has collapsed and the test above proves nothing". On ch04 it IS 0 now, and
+    // legitimately: the P2 extractor fix gave every container-built <media> its `src`. The
+    // distinction has not collapsed — it MOVED, to the 29 appendices cellAlt records, which the
+    // sibling test below asserts. Equality is the honest relation here; the non-vacuity that
+    // comment was protecting lives where the gap still exists.
+    expect(r.reviewable.length).toBeLessThanOrEqual(enumerated.size);
+    expect(r.unreviewable).toEqual([]);
   });
 
-  it('NAMES the gap rather than only counting it', () => {
-    expect(r.unreviewable.length).toBeGreaterThan(0);
-    expect(r.unreviewable.every((b) => typeof b === 'string' && b.length > 0)).toBe(true);
-    const reviewable = new Set(r.reviewable);
-    expect(r.unreviewable.filter((b) => reviewable.has(b))).toEqual([]);
+  it('NAMES the gap rather than only counting it — asserted where a gap still EXISTS', () => {
+    // ⚠️ Re-pointed from ch04 (now 0) to appendices, ON PURPOSE. A naming property asserted
+    // over an empty set is vacuous, and silently so: every `.every()` below passes on [].
+    const app = enumerateChapterImages({ bookDir: CHEM_DIR, chapterDir: 'appendices' });
+    expect(app.unreviewable.length).toBeGreaterThan(0); // non-vacuity
+    expect(app.unreviewable.every((b) => typeof b === 'string' && b.length > 0)).toBe(true);
+    const reviewable = new Set(app.reviewable);
+    expect(app.unreviewable.filter((b) => reviewable.has(b))).toEqual([]);
   });
 
   it('the two sets partition the enumeration exactly — nothing lost, nothing double-counted', () => {
@@ -757,7 +781,7 @@ describe('§C139 tier 1 over the whole chemistry corpus — what "unreviewable" 
    * red because the count fell, the extractor was fixed and this test should be
    * retired along with the class.
    */
-  it('measures the src-less type:media class the extractor emits — 169 nodes, 47 modules', () => {
+  it('the src-less type:media class is CLOSED — 0 defective nodes, 1 alt-less residue', () => {
     let withSrc = 0;
     let withoutSrc = 0;
     let withoutSrcCarryingAnAltSegment = 0;
@@ -789,10 +813,24 @@ describe('§C139 tier 1 over the whole chemistry corpus — what "unreviewable" 
     // The positive control is the OTHER side of the same count: if the walk
     // were broken both numbers would be 0, and the assertion below would pass
     // for exactly the reason this whole test exists to rule out.
-    expect(withSrc).toBe(97);
-    expect(withoutSrc).toBe(169);
-    expect(withoutSrcCarryingAnAltSegment).toBe(168);
-    expect(modules.size).toBe(47);
+    // ✅ RETIRED AS A DEFECT MEASUREMENT, PER THIS TEST'S OWN DOCSTRING: "if it goes red because
+    // the count fell, the extractor was fixed and this test should be retired along with the
+    // class." It is kept as the CLOSURE pin, which is the stronger assertion — it fails if the
+    // fix is ever reverted, which a deleted test cannot do.
+    //
+    // 🔴 THE NUMBER THAT MATTERS IS `withoutSrcCarryingAnAltSegment === 0`: a src-less node
+    // carrying a paid alt segment is exactly the P2 defect — translated, injected, published and
+    // invisible to the editor. ZERO of them remain.
+    //
+    // ⚠️ ONE src-less node SURVIVES AND MUST: ch13/m68801's alt-less stub from the
+    // `blockChildren` minter. Giving it a `src` would be a REGRESSION, not a completion —
+    // `take()`'s viaRank is strictly greater, so an src-bearing alt-less node wins the basename
+    // and nulls out the altSegmentId of the node that actually carries the translation. The fix
+    // is guarded on altSegId precisely so this one stays as it is.
+    expect(withSrc).toBe(265);
+    expect(withoutSrc).toBe(1);
+    expect(withoutSrcCarryingAnAltSegment).toBe(0);
+    expect(modules.size).toBe(1);
   });
 
   it('CONTROL — the src-keyed search finds a reviewable image, and is blind to a src-less node BY DESIGN', () => {
@@ -818,8 +856,12 @@ describe('§C139 tier 1 over the whole chemistry corpus — what "unreviewable" 
     // (b) and it is blind to a src-less node ON PURPOSE, which is why the
     //     test above states the honest property and the one below counts the
     //     class separately instead of pretending a name search bounds it.
-    const chem06 = enumerateChapterImages({ bookDir: CHEM_DIR, chapterDir: 'ch06' });
-    expect(chem06.unreviewable).toContain('CNX_Chem_06_04_PhosphOrb_img');
+    // ⚠️ RE-POINTED: `CNX_Chem_06_04_PhosphOrb_img` was the example here until the P2 fix made
+    // it reviewable. The half of this control that still needs an unreviewable specimen now uses
+    // the appendices cellAlt class — a DIFFERENT cause (buildTable adds src only `if (!media.id)`,
+    // a documented §C88 decision), which is why it survives a fix aimed at the container builders.
+    const app = enumerateChapterImages({ bookDir: CHEM_DIR, chapterDir: 'appendices' });
+    expect(app.unreviewable).toContain('CNX_Chem_00_HH_chemform1_img');
   });
 
   it('reaches BOTH new populations, and they are disjoint — the tier’s whole point', () => {
@@ -848,7 +890,11 @@ describe('§C139 tier 1 over the whole chemistry corpus — what "unreviewable" 
     // this goes red, re-derive before treating it as a defect.
     expect(by('figure').length).toBe(627);
     expect(by('inlineMedia').length).toBe(227);
-    expect(by('media').length).toBe(97);
+    // 97 -> 265 at the P2 extractor fix (2026-09-12): the container builders
+    // (<example>, <exercise>'s problem/solution, <note>) now write `src`.
+    // ⚠️ `figure` and `inlineMedia` are UNCHANGED, and that is the control — a fix that had
+    // moved them too would have been reaching constructs it was never meant to touch.
+    expect(by('media').length).toBe(265);
   });
 
   /**
@@ -885,7 +931,10 @@ describe('§C139 tier 1 over the whole chemistry corpus — what "unreviewable" 
 
   it('leaves the still-absent population intact and does NOT invent structure-only names', () => {
     const rs = all();
-    expect(rs.flatMap((r) => r.unreviewable).length).toBe(197);
+    // 197 -> 29 at the P2 fix. The residue is ENTIRELY appendices cellAlt records, a different
+    // and DELIBERATE cause (§C88), so this number will not move again until that ruling is
+    // revisited. 197 = 168 + 29 exactly, which is how the two classes were told apart.
+    expect(rs.flatMap((r) => r.unreviewable).length).toBe(29);
     expect(rs.flatMap((r) => r.figures).length).toBe(1148);
     expect(rs.flatMap((r) => r.structureOnly)).toEqual([]);
   });

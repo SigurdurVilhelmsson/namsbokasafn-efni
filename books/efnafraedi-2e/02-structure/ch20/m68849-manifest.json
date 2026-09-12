@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68849",
-  "extractedAt": "2026-08-31T19:08:45.703Z",
+  "extractedAt": "2026-09-12T20:15:19.692Z",
   "sourceHash": "10a1eb17435b1068",
   "segmentCount": 79,
   "segmentIds": [
@@ -144,5 +144,11 @@
       "fs-idp61186848",
       "fs-idp22491952"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Amines",
+    "term-00002": "Amides",
+    "fs-idp18741408": "amine",
+    "fs-idp61773824": "amide"
   }
 }

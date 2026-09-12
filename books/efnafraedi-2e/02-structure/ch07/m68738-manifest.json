@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68738",
-  "extractedAt": "2026-08-31T19:08:39.188Z",
+  "extractedAt": "2026-09-12T20:15:16.647Z",
   "sourceHash": "b65237de72ccd578",
   "segmentCount": 169,
   "segmentIds": [
@@ -258,5 +258,18 @@
       "fs-idm4705056",
       "fs-idp134316112"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "covalent bonds",
+    "term-00002": "bond length",
+    "term-00003": "pure covalent bond",
+    "term-00004": "polar covalent bond",
+    "term-00006": "Pauling",
+    "term-00005": "electronegativity",
+    "fs-idm4648560": "bond length",
+    "fs-idm100141920": "covalent bond",
+    "fs-idp28641840": "electronegativity",
+    "fs-idp45896864": "polar covalent bond",
+    "fs-idm47184144": "pure covalent bond"
   }
 }

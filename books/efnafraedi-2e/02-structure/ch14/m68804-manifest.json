@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68804",
-  "extractedAt": "2026-08-31T19:08:42.313Z",
+  "extractedAt": "2026-09-12T20:15:18.568Z",
   "sourceHash": "3b2209907f2053e1",
   "segmentCount": 120,
   "segmentIds": [
@@ -270,5 +270,17 @@
       "fs-idp66998992",
       "fs-idm61137872"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "neutral",
+    "term-00002": "acidic",
+    "term-00003": "basic",
+    "term-00004": "pH",
+    "term-00005": "pOH",
+    "fs-idm64563696": "acidic",
+    "fs-idm111671584": "basic",
+    "fs-idp143891408": "neutral",
+    "fs-idm103907536": "pH",
+    "fs-idp46966768": "pOH"
   }
 }

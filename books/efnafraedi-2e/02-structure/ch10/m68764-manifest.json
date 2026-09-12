@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68764",
-  "extractedAt": "2026-08-31T19:08:40.297Z",
+  "extractedAt": "2026-09-12T20:15:17.402Z",
   "sourceHash": "f9d31768d53329a2",
   "segmentCount": 138,
   "segmentIds": [
@@ -207,5 +207,17 @@
       "fs-idm31673664",
       "fs-idm81325184"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "viscosity",
+    "term-00002": "cohesive forces",
+    "term-00003": "Surface tension",
+    "term-00004": "adhesive forces",
+    "term-00005": "capillary action",
+    "fs-idm87859280": "adhesive force",
+    "fs-idm184465568": "capillary action",
+    "fs-idm114308784": "cohesive force",
+    "fs-idm79392464": "surface tension",
+    "fs-idm129199712": "viscosity"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68807",
-  "extractedAt": "2026-08-31T19:08:42.811Z",
+  "extractedAt": "2026-09-12T20:15:18.701Z",
   "sourceHash": "f1c46ea9112c9a51",
   "segmentCount": 55,
   "segmentIds": [
@@ -175,5 +175,17 @@
       "fs-idm40783936",
       "fs-idm45487824"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "monoprotic acids",
+    "term-00002": "Diprotic acids",
+    "term-00003": "stepwise ionization",
+    "term-00004": "triprotic acid",
+    "term-00005": "diprotic base",
+    "fs-idp88439392": "diprotic acid",
+    "fs-idm124847888": "diprotic base",
+    "fs-idp98784944": "monoprotic acid",
+    "fs-idm63142976": "stepwise ionization",
+    "fs-idm25629392": "triprotic acid"
   }
 }

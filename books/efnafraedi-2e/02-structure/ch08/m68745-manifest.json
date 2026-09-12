@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68745",
-  "extractedAt": "2026-08-31T19:08:39.610Z",
+  "extractedAt": "2026-09-12T20:15:16.890Z",
   "sourceHash": "122bad10c0440c04",
   "segmentCount": 174,
   "segmentIds": [
@@ -268,5 +268,21 @@
       "fs-idm69243360",
       "fs-idp58929664"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "hybridization",
+    "term-00002": "hybrid orbitals",
+    "term-00003": "sp hybrid orbitals",
+    "term-00004": "sp2 hybrid orbitals",
+    "term-00005": "sp3 hybrid orbitals",
+    "term-00006": "sp3d hybrid orbitals",
+    "term-00007": "sp3d2 hybrid orbitals",
+    "fs-idp102362976": "hybrid orbital",
+    "fs-idm29433408": "hybridization",
+    "fs-idm71427776": "sp hybrid orbital",
+    "fs-idm48701168": "sp2 hybrid orbital",
+    "fs-idp88964992": "sp3 hybrid orbital",
+    "fs-idm16838896": "sp3d hybrid orbital",
+    "fs-idm47317072": "sp3d2 hybrid orbital"
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68683",
-  "extractedAt": "2026-08-31T19:08:35.459Z",
+  "extractedAt": "2026-09-12T20:15:15.802Z",
   "sourceHash": "2af64c3be99b1587",
   "segmentCount": 235,
   "segmentIds": [
@@ -437,5 +437,16 @@
       "fs-idm299998176",
       "fs-idm321708320"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "dimensional analysis",
+    "term-00002": "factor-label method",
+    "term-00003": "unit conversion factor",
+    "term-00004": "temperature",
+    "term-00005": "Fahrenheit",
+    "fs-idm216300016": "dimensional analysis",
+    "fs-idm207141104": "Fahrenheit",
+    "fs-idm327357936": "temperature",
+    "fs-idm307214528": "unit conversion factor"
   }
 }

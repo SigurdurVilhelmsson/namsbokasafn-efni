@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68746",
-  "extractedAt": "2026-08-31T19:08:39.625Z",
+  "extractedAt": "2026-09-12T20:15:16.900Z",
   "sourceHash": "4a1cd6339729a80a",
   "segmentCount": 75,
   "segmentIds": [
@@ -137,5 +137,6 @@
       "fs-idp38327968",
       "fs-idp19779216"
     ]
-  }
+  },
+  "termEnglish": {}
 }

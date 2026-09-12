@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68670",
-  "extractedAt": "2026-08-31T19:08:35.068Z",
+  "extractedAt": "2026-09-12T20:15:15.566Z",
   "sourceHash": "7f2ac5f9860f375a",
   "segmentCount": 68,
   "segmentIds": [
@@ -119,5 +119,19 @@
       "fs-idp74996960",
       "fs-idp111561136"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "physical property",
+    "term-00002": "physical change",
+    "term-00003": "chemical property",
+    "term-00004": "chemical change",
+    "term-00005": "extensive property",
+    "term-00006": "intensive property",
+    "fs-idp392534800": "chemical change",
+    "fs-idm88320752": "chemical property",
+    "fs-idp102584192": "extensive property",
+    "fs-idp42386976": "intensive property",
+    "fs-idm13656928": "physical change",
+    "fs-idm12232368": "physical property"
   }
 }

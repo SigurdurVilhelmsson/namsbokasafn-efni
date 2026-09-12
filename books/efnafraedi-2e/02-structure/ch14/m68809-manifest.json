@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68809",
-  "extractedAt": "2026-08-31T19:08:43.001Z",
+  "extractedAt": "2026-09-12T20:15:18.748Z",
   "sourceHash": "21038e566c91d3f7",
   "segmentCount": 167,
   "segmentIds": [
@@ -266,5 +266,13 @@
       "fs-idp81138704",
       "fs-idp63641264"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "titration curve",
+    "term-00002": "acid-base indicators",
+    "term-00003": "color change interval",
+    "fs-idp67176144": "acid-base indicator",
+    "fs-idp67177296": "color-change interval",
+    "fs-idp67179744": "titration curve"
   }
 }

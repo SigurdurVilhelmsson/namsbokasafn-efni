@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68805",
-  "extractedAt": "2026-08-31T19:08:42.591Z",
+  "extractedAt": "2026-09-12T20:15:18.649Z",
   "sourceHash": "a862e5e620060773",
   "segmentCount": 309,
   "segmentIds": [
@@ -744,5 +744,16 @@
       "fs-idp31338208",
       "fs-idm94405216"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "acid-ionization constant, Ka",
+    "term-00002": "percent ionization",
+    "term-00003": "base-ionization constant (Kb)",
+    "term-00004": "oxyacids",
+    "fs-idp86058640": "acid ionization constant (Ka)",
+    "fs-idp86060672": "base ionization constant (Kb)",
+    "fs-idm94080720": "leveling effect",
+    "fs-idm94074528": "oxyacid",
+    "fs-idm94073376": "percent ionization"
   }
 }

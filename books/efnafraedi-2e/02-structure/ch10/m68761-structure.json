@@ -476,6 +476,7 @@
             {
               "type": "media",
               "id": "fs-idp63841152",
+              "src": "../../media/CNX_Chem_10_01_BoilPoints_img.jpg",
               "alt": {
                 "segmentId": "m68761:alt:fs-idp63841152-alt",
                 "text": "A line graph, titled “Carbon Family,” is shown where the y-axis is labeled “Temperature, ( degree sign C )” and has values of “negative 200” to “negative 40” from bottom to top in increments of 20. The x-axis is labeled “Period” and has values of “0” to “5” in increments of 1. The first point on the graph is labeled “C H subscript 4” and is at point “2, negative 160.” The second point on the graph is labeled “S i H subscript 4” and is at point “3, negative 120” while the third point on the graph is labeled “G e H subscript 4” and is at point “4, negative 100.” The fourth point on the graph is labeled “S n H subscript 4” and is at point “5, negative 60.”"
@@ -1275,6 +1276,7 @@
               {
                 "type": "media",
                 "id": "fs-idp16845232",
+                "src": "../../media/CNX_Chem_10_01_AceticAcid_img.jpg",
                 "alt": {
                   "segmentId": "m68761:alt:fs-idp16845232-alt",
                   "text": "A Lewis structure shows a carbon atom single bonded to three hydrogen atoms and one other carbon atom, that is in turn double bonded to an oxygen atom and single bonded to another oxygen atom that is single bonded to a hydrogen atom. Dotted lines connect the terminal oxygen and hydrogen atoms to a reciprocal lewis structure to the right, rotated 180 degrees. Each dotted line is labeled “hydrogen bond.”"
@@ -1302,6 +1304,7 @@
               {
                 "type": "media",
                 "id": "fs-idp27423728",
+                "src": "../../media/CNX_Chem_10_01_Aminacidch_img.jpg",
                 "alt": {
                   "segmentId": "m68761:alt:fs-idp27423728-alt",
                   "text": "Two turns of a helical structure are shown horizontally. Three Lewis structures are superimposed on the helix. The first shows horizontally stacked dashes next to an oxygen atom, with three dots connecting to a hydrogen atom, and a single dash connecting the hydrogen atom to a nitrogen atom. The second shows a carbon atom double bonded to an oxygen atom, then three dots connecting to a hydrogen atom which is bonded to a nitrogen atom. The third shows a carbon atom double bonded to an oxygen atom with three dots extending to the right of the oxygen atom."

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68667",
-  "extractedAt": "2026-08-31T19:08:34.944Z",
+  "extractedAt": "2026-09-12T20:15:15.520Z",
   "sourceHash": "8fd06816cdd967d3",
   "segmentCount": 213,
   "segmentIds": [
@@ -292,5 +292,41 @@
       "fs-idp11969024",
       "fs-idm173241344"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Matter",
+    "term-00002": "solid",
+    "term-00003": "liquid",
+    "term-00004": "gas",
+    "term-00005": "plasma",
+    "term-00006": "mass",
+    "term-00007": "Weight",
+    "term-00008": "law of conservation of matter",
+    "term-00009": "pure substance",
+    "term-00010": "elements",
+    "term-00011": "compounds",
+    "term-00012": "mixture",
+    "term-00013": "heterogeneous mixture",
+    "term-00014": "homogeneous mixture",
+    "term-00015": "solution",
+    "term-00016": "atom",
+    "term-00017": "Dalton",
+    "term-00018": "molecule",
+    "fs-idm8143856": "atom",
+    "fs-idm115227296": "compound",
+    "fs-idm6667232": "element",
+    "fs-idm37203312": "gas",
+    "fs-idp85033264": "heterogeneous mixture",
+    "fs-idm25215648": "homogeneous mixture",
+    "fs-idp9074576": "liquid",
+    "fs-idp19511536": "law of conservation of matter",
+    "fs-idm23882384": "mass",
+    "fs-idm23865104": "matter",
+    "fs-idm5111888": "mixture",
+    "fs-idm6673632": "molecule",
+    "fs-idm37314320": "plasma",
+    "fs-idm37107584": "pure substance",
+    "fs-idm10806528": "solid",
+    "fs-idm6297360": "weight"
   }
 }

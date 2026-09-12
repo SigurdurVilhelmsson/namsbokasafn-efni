@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68664",
-  "extractedAt": "2026-08-31T19:08:34.812Z",
+  "extractedAt": "2026-09-12T20:15:15.450Z",
   "sourceHash": "e6ae3ace2dd4ac4b",
   "segmentCount": 76,
   "segmentIds": [
@@ -124,5 +124,23 @@
       "fs-idm40478192",
       "fs-idp75215696"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "chemistry",
+    "term-00002": "hypothesis",
+    "term-00003": "laws",
+    "term-00004": "theories",
+    "term-00005": "scientific method",
+    "term-00006": "macroscopic domain",
+    "term-00007": "microscopic domain",
+    "term-00008": "symbolic domain",
+    "fs-idm42704816": "chemistry",
+    "fs-idm100774384": "hypothesis",
+    "fs-idp16592704": "law",
+    "fs-idm41373200": "macroscopic domain",
+    "fs-idm121167952": "microscopic domain",
+    "fs-idp132867984": "scientific method",
+    "fs-idm105060976": "symbolic domain",
+    "fs-idm134113488": "theory"
   }
 }

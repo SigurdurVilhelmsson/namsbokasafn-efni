@@ -423,3 +423,99 @@ describe('§C88 — bare media alt in a table <entry>', () => {
     expect(lastCellText).toBe('B');
   });
 });
+
+/**
+ * P2 — the `src` key the review panel keys on.
+ *
+ * 🔴 A <media> reached through a CONTAINER'S OWN BUILDER (<example>, <exercise>'s
+ * problem/solution walk, <note>) got a structure node carrying its id and its already-PAID alt
+ * segment but no `src`. `figure-enumerate.cjs` keys on `src` and NOTHING ELSE, so the figure was
+ * invisible to the editor while remaining fully translated, injected and published — the worst
+ * shape, because every count reads healthy. Measured 2026-09-12: 168 images across 47 chemistry
+ * modules, 62 of them text-bearing, 17 in the two chapters already bought and unedited.
+ *
+ * ⚠️ The standalone (content/section) site at processTopLevelContent ALWAYS wrote `src`; that
+ * asymmetry is why the defect reads as "some figures just aren't reviewable" rather than as a bug.
+ *
+ * ⚠️ AND THE DIAGNOSIS THAT FOUND THIS WAS FIRST GOT BACKWARDS, TWICE OVER, BY SEARCHING
+ * 02-structure FOR THE IMAGE BASENAME: the basename only ever enters 02-structure VIA `src`, so a
+ * node missing `src` carries no basename and the search returns 0 BY CONSTRUCTION — "absent
+ * entirely" and "present without src" are indistinguishable to it. Key any such check on the
+ * media ID, which is present either way. `figure-enumerate.cjs`'s header records the same error
+ * twice before this one.
+ */
+describe('P2 — container-built media carry `src` for the review panel', () => {
+  const srcsOf = (r) => {
+    const found = [];
+    const walk = (n) => {
+      if (Array.isArray(n)) return n.forEach(walk);
+      if (n && typeof n === 'object') {
+        if (n.type === 'media') found.push({ id: n.id, src: n.src });
+        Object.values(n).forEach(walk);
+      }
+    };
+    walk(r.structure);
+    return found;
+  };
+
+  it('<example> media carries src', () => {
+    const r = extractSegments(
+      wrap(`<example id="ex1"><para id="p1">Step.</para>
+             <media id="m-ex" alt="A flowchart"><image src="../../media/CNX_Chem_04_03_flowchart.jpg"/></media>
+           </example>`)
+    );
+    expect(srcsOf(r)).toContainEqual({
+      id: 'm-ex',
+      src: '../../media/CNX_Chem_04_03_flowchart.jpg',
+    });
+  });
+
+  it('<problem>/<solution> media carries src', () => {
+    const r = extractSegments(
+      wrap(`<exercise id="ex1"><problem id="p1">
+             <media id="m-prob" alt="A titration setup"><image src="a.png"/></media>
+           </problem><solution id="s1">
+             <media id="m-sol" alt="A graph"><image src="b.png"/></media>
+           </solution></exercise>`)
+    );
+    const got = srcsOf(r);
+    expect(got).toContainEqual({ id: 'm-prob', src: 'a.png' });
+    expect(got).toContainEqual({ id: 'm-sol', src: 'b.png' });
+  });
+
+  it('<note> media carries src', () => {
+    const r = extractSegments(
+      wrap(`<note id="n1"><para id="p1">Aside.</para>
+             <media id="m-note" alt="A photograph"><image src="c.png"/></media>
+           </note>`)
+    );
+    expect(srcsOf(r)).toContainEqual({ id: 'm-note', src: 'c.png' });
+  });
+
+  it('§C115 — a RAW `>` inside the alt reaches src intact', () => {
+    // A bare `>` is LEGAL in an attribute value, so `<image[^>]*>` truncates mid-attribute and
+    // yields an EMPTY capture — reported as success, indistinguishable from "the source had
+    // nothing there". The three sites still read `alt` with exactly that idiom, so copying it
+    // for `src` would reintroduce §C115 ON THE VERY NODES THIS FIX RESCUES.
+    const r = extractSegments(
+      wrap(`<example id="ex1">
+             <media id="m-gt" alt="Shown as a > b here"><image src="gt.png"/></media>
+           </example>`)
+    );
+    expect(srcsOf(r)).toContainEqual({ id: 'm-gt', src: 'gt.png' });
+  });
+
+  it('an ALT-LESS media gets NO src — blanket-adding it would destroy a real alt segment', () => {
+    // 🔴 take()'s viaRank is STRICTLY GREATER, so an src-bearing alt-less node WINS the
+    // basename and nulls out the altSegmentId of the node that actually carries the translation.
+    // The fix must be additive for reviewability, never for precedence.
+    const r = extractSegments(
+      wrap(`<example id="ex1">
+             <media id="m-noalt"><image src="noalt.png"/></media>
+           </example>`)
+    );
+    const node = srcsOf(r).find((n) => n.id === 'm-noalt');
+    expect(node).toBeDefined();
+    expect(node.src).toBeUndefined();
+  });
+});

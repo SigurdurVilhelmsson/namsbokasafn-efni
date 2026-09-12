@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68687",
-  "extractedAt": "2026-08-31T19:08:36.407Z",
+  "extractedAt": "2026-09-12T20:15:16.097Z",
   "sourceHash": "b150fb7aee20a410",
   "segmentCount": 62,
   "segmentIds": [
@@ -119,5 +119,28 @@
       "fs-idp11422832",
       "fs-idm75605440"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Thomson",
+    "term-00002": "cathode ray",
+    "term-00003": "electron",
+    "term-00004": "Millikan",
+    "term-00005": "Nagaoka",
+    "term-00006": "Rutherford",
+    "term-00007": "alpha particles (α particles)",
+    "term-00008": "Geiger",
+    "term-00009": "Marsden",
+    "term-00010": "nucleus",
+    "term-00011": "proton",
+    "term-00012": "Soddy",
+    "term-00013": "isotopes",
+    "term-00014": "Chadwick",
+    "term-00015": "neutrons",
+    "fs-idm10811088": "alpha particle (α particle)",
+    "fs-idp27115648": "electron",
+    "fs-idm25241664": "isotopes",
+    "fs-idp100350096": "neutron",
+    "fs-idp130134704": "nucleus",
+    "fs-idp21637408": "proton"
   }
 }

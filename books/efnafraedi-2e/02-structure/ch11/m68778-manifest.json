@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68778",
-  "extractedAt": "2026-08-31T19:08:40.576Z",
+  "extractedAt": "2026-09-12T20:15:17.643Z",
   "sourceHash": "3267e3d0d2c6fa9a",
   "segmentCount": 99,
   "segmentIds": [
@@ -159,5 +159,15 @@
       "fs-idm71104864",
       "fs-idm34912672"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "alloys",
+    "term-00002": "spontaneous process",
+    "term-00003": "ideal solution",
+    "term-00004": "solvation",
+    "fs-idm104294208": "alloy",
+    "fs-idm54772688": "ideal solution",
+    "fs-idm91470352": "solvation",
+    "fs-idm55870880": "spontaneous process"
   }
 }

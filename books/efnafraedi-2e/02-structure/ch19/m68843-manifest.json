@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68843",
-  "extractedAt": "2026-08-31T19:08:45.407Z",
+  "extractedAt": "2026-09-12T20:15:19.460Z",
   "sourceHash": "970c001ffda03089",
   "segmentCount": 289,
   "segmentIds": [
@@ -384,5 +384,41 @@
       "fs-idp136064256",
       "fs-idp99118624"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "central metal",
+    "term-00002": "coordination compounds",
+    "term-00003": "ligands",
+    "term-00004": "donor atom",
+    "term-00005": "coordination sphere",
+    "term-00006": "coordination number",
+    "term-00007": "monodentate",
+    "term-00008": "Bidentate ligands",
+    "term-00009": "polydentate ligand",
+    "term-00010": "chelate",
+    "term-00011": "chelating ligands",
+    "term-00012": "cis configuration",
+    "term-00013": "trans configuration",
+    "term-00014": "optical isomers",
+    "term-00015": "enantiomers",
+    "term-00016": "Linkage isomers",
+    "term-00017": "Ionization isomers",
+    "term-00018": "coordination isomers",
+    "fs-idp65460624": "bidentate ligand",
+    "fs-idp53705200": "central metal",
+    "fs-idp64634960": "chelate",
+    "fs-idp51669120": "chelating ligand",
+    "fs-idp15506400": "cis configuration",
+    "fs-idp246761680": "coordination compound",
+    "fs-idp55828544": "coordination number",
+    "fs-idp56324672": "coordination sphere",
+    "fs-idp275481408": "donor atom",
+    "fs-idp165361216": "ionization isomer",
+    "fs-idp279277792": "ligand",
+    "fs-idp63930000": "linkage isomer",
+    "fs-idp8060128": "monodentate",
+    "fs-idp216879616": "optical isomer",
+    "fs-idp158869120": "polydentate ligand",
+    "fs-idp75431424": "trans configuration"
   }
 }

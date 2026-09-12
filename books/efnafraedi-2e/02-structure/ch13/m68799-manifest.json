@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68799",
-  "extractedAt": "2026-08-31T19:08:41.603Z",
+  "extractedAt": "2026-09-12T20:15:18.356Z",
   "sourceHash": "f931ac832b2f2c14",
   "segmentCount": 139,
   "segmentIds": [
@@ -267,5 +267,9 @@
       "fs-idm26332112",
       "fs-idm7256160"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Le Châtelier’s principle",
+    "fs-idp108249008": "Le Châtelier’s principle"
   }
 }

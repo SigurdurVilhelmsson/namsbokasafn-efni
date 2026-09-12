@@ -1436,6 +1436,26 @@ function processTopLevelContent(
 }
 
 /**
+ * The `<image>` element's attributes inside a `<media>` block.
+ *
+ * §C115 — QUOTE-AWARE ON PURPOSE. A bare `>` is legal inside an XML attribute value, so
+ * `<image[^>]*>` can stop mid-attribute, leaving `parseAttributes` with an unterminated
+ * `attr="` and yielding NO key at all — reported as success, and indistinguishable from
+ * "the source had nothing there". `TAG_ATTR_SPAN` is the drop-in that respects quoting.
+ *
+ * ⚠️ Reads alt and src in ONE parse so the two can never disagree about which `<image>`
+ * they came from.
+ *
+ * @param {string} mediaContent - inner text of a `<media>` element
+ * @returns {Object} the image's attributes, or `{}` when it has no `<image>`
+ */
+const IMAGE_OPEN_TAG = new RegExp(`<image\\b(${TAG_ATTR_SPAN})\\/?>`);
+function imageAttrsOf(mediaContent) {
+  const m = String(mediaContent || '').match(IMAGE_OPEN_TAG);
+  return m ? parseAttributes(m[1]) : {};
+}
+
+/**
  * Process a figure element.
  */
 function processFigure(figure, moduleId, addSegment, mathMap, counters) {
@@ -2059,6 +2079,12 @@ function processExample(
     exampleStructure.content.push({
       type: 'media',
       id: media.id,
+      // §C88/P2 — the review panel keys on `src` AND NOTHING ELSE, so a node without it is
+      // invisible to the editor however complete its alt is: translated, injected, published,
+      // and unreviewable. ⚠️ GUARDED ON altSegId, never blanket-added: `take()`'s viaRank is
+      // STRICTLY GREATER, so an src-bearing ALT-LESS node would win the basename and null out
+      // the altSegmentId of the node that actually carries the translation.
+      ...(altSegId ? { src: imageAttrsOf(media.content).src || '' } : {}),
       alt: altSegId ? { segmentId: altSegId, text: altText } : undefined,
     });
   }
@@ -2191,6 +2217,12 @@ function emitExerciseSection(
       content.push({
         type: 'media',
         id: mediaEl.id,
+        // §C88/P2 — the review panel keys on `src` AND NOTHING ELSE, so a node without it is
+        // invisible to the editor however complete its alt is: translated, injected, published,
+        // and unreviewable. ⚠️ GUARDED ON altSegId, never blanket-added: `take()`'s viaRank is
+        // STRICTLY GREATER, so an src-bearing ALT-LESS node would win the basename and null out
+        // the altSegmentId of the node that actually carries the translation.
+        ...(altSegId ? { src: imageAttrsOf(mediaEl.content).src || '' } : {}),
         alt: altSegId ? { segmentId: altSegId, text: altText } : undefined,
       });
       continue;
@@ -2389,6 +2421,12 @@ function processNote(
     noteStructure.content.push({
       type: 'media',
       id: media.id,
+      // §C88/P2 — the review panel keys on `src` AND NOTHING ELSE, so a node without it is
+      // invisible to the editor however complete its alt is: translated, injected, published,
+      // and unreviewable. ⚠️ GUARDED ON altSegId, never blanket-added: `take()`'s viaRank is
+      // STRICTLY GREATER, so an src-bearing ALT-LESS node would win the basename and null out
+      // the altSegmentId of the node that actually carries the translation.
+      ...(altSegId ? { src: imageAttrsOf(media.content).src || '' } : {}),
       alt: altSegId ? { segmentId: altSegId, text: altText } : undefined,
     });
   }

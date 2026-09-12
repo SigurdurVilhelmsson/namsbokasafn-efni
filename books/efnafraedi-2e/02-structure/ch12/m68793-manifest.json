@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68793",
-  "extractedAt": "2026-08-31T19:08:41.142Z",
+  "extractedAt": "2026-09-12T20:15:18.061Z",
   "sourceHash": "4d3b594a81841aa6",
   "segmentCount": 147,
   "segmentIds": [
@@ -283,5 +283,20 @@
       "fs-idp2946768",
       "fs-idm193786736"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Collision theory",
+    "term-00002": "activated complex",
+    "term-00003": "transition state",
+    "term-00004": "activation energy (Ea)",
+    "term-00005": "reaction diagrams",
+    "term-00006": "Arrhenius equation",
+    "term-00007": "frequency factor",
+    "fs-idm89472432": "activated complex",
+    "fs-idm162201904": "activation energy (Ea)",
+    "fs-idm187159584": "Arrhenius equation",
+    "fs-idm101548864": "collision theory",
+    "fs-idm206488448": "frequency factor (A)",
+    "fs-idm355773584": "reaction diagram"
   }
 }

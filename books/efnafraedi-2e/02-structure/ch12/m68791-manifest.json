@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68791",
-  "extractedAt": "2026-08-31T19:08:41.111Z",
+  "extractedAt": "2026-09-12T20:15:18.037Z",
   "sourceHash": "dfeb4996caab85f2",
   "segmentCount": 390,
   "segmentIds": [
@@ -626,5 +626,11 @@
       "fs-idm150818384",
       "fs-idm92366464"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "integrated rate laws",
+    "term-00002": "half-life of a reaction (t1/2)",
+    "fs-idm46849712": "half-life of a reaction (tl/2)",
+    "fs-idm46847680": "integrated rate law"
   }
 }

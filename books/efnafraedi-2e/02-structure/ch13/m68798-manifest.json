@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68798",
-  "extractedAt": "2026-08-31T19:08:41.545Z",
+  "extractedAt": "2026-09-12T20:15:18.328Z",
   "sourceHash": "f9d514cc7e1285e0",
   "segmentCount": 252,
   "segmentIds": [
@@ -527,5 +527,17 @@
       "fs-idp116522752",
       "fs-idp16341104"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "reaction quotient (Q)",
+    "term-00002": "equilibrium constant, K",
+    "term-00003": "law of mass action",
+    "term-00004": "homogeneous equilibrium",
+    "term-00005": "heterogeneous equilibrium",
+    "fs-idp63345136": "equilibrium constant (K)",
+    "fs-idp102632368": "heterogeneous equilibria",
+    "fs-idp35066960": "homogeneous equilibria",
+    "fs-idp89564720": "law of mass action",
+    "fs-idp74361936": "reaction quotient (Q)"
   }
 }

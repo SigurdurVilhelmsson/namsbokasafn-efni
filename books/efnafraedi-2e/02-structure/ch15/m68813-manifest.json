@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68813",
-  "extractedAt": "2026-08-31T19:08:43.746Z",
+  "extractedAt": "2026-09-12T20:15:18.980Z",
   "sourceHash": "d3f5e06c88db9ab7",
   "segmentCount": 131,
   "segmentIds": [
@@ -278,5 +278,25 @@
       "fs-idp45945376",
       "fs-idp110000448"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "Lewis",
+    "term-00002": "coordinate covalent bond",
+    "term-00003": "Lewis acid-base chemistry",
+    "term-00004": "Lewis base",
+    "term-00005": "Lewis acid",
+    "term-00006": "Lewis acid-base adduct",
+    "term-00007": "ligands",
+    "term-00008": "formation constant (Kf)",
+    "term-00009": "dissociation constant (Kd)",
+    "fs-idm90510160": "complex ion",
+    "fs-idp1460096": "coordinate covalent bond",
+    "fs-idm25500528": "dissociation constant",
+    "fs-idp120133664": "formation constant",
+    "fs-idp11302544": "Lewis acid",
+    "fs-idm26641568": "Lewis acid-base adduct",
+    "fs-idm465112896": "Lewis acid-base chemistry",
+    "fs-idp29842512": "Lewis base",
+    "fs-idm101700576": "ligand"
   }
 }

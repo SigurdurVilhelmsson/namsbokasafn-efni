@@ -150,6 +150,7 @@
         {
           "type": "media",
           "id": "fs-idp71137024",
+          "src": "../../media/CNX_Chem_02_01_Dalton6_img.jpg",
           "alt": {
             "segmentId": "m68685:alt:fs-idp71137024-alt",
             "text": "This equation shows that the starting materials of the reaction are two bonded, green spheres, which are being combined with two smaller, bonded purple spheres. The product of the change is one purple sphere that is bonded to one green sphere."
@@ -158,6 +159,7 @@
         {
           "type": "media",
           "id": "fs-idp149298560",
+          "src": "../../media/CNX_Chem_02_01_Dalton8_img.jpg",
           "alt": {
             "segmentId": "m68685:alt:fs-idp149298560-alt",
             "text": "This equation shows that the starting materials of the reaction are two sets of bonded, green spheres which are each being combined with two smaller, bonded purple spheres. The products of the change are two molecules that each contain one purple sphere bonded between two green spheres."
@@ -478,6 +480,7 @@
               {
                 "type": "media",
                 "id": "fs-idp159684336",
+                "src": "../../media/CNX_Chem_02_01_Dalton10_img.jpg",
                 "alt": {
                   "segmentId": "m68685:alt:fs-idp159684336-alt",
                   "text": "This equation contains the starting materials of a single, green sphere plus two smaller, purple spheres bonded together. When the starting materials are added together the products of the change are one purple sphere bonded with one green sphere plus one purple sphere bonded with one green sphere."

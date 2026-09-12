@@ -115,6 +115,7 @@
             {
               "type": "media",
               "id": "fs-idp11533504",
+              "src": "../../media/CNX_Chem_07_04_CO_img.jpg",
               "alt": {
                 "segmentId": "m68740:alt:fs-idp11533504-alt",
                 "text": "A Lewis structure is shown. A carbon atom with one lone pair of electrons is triple bonded to an oxygen with one lone pair of electrons."
@@ -209,6 +210,7 @@
                 {
                   "type": "media",
                   "id": "fs-idm2350000",
+                  "src": "../../media/CNX_Chem_07_04_Ex070402_img.jpg",
                   "alt": {
                     "segmentId": "m68740:alt:fs-idm2350000-alt",
                     "text": "A Lewis structure is shown. A nitrogen atom with one lone pair of electrons is single bonded to three chlorine atoms, each of which has three lone pairs of electrons."
@@ -354,6 +356,7 @@
             {
               "type": "media",
               "id": "fs-idp27289968",
+              "src": "../../media/CNX_Chem_07_04_N2O_img.jpg",
               "alt": {
                 "segmentId": "m68740:alt:fs-idp27289968-alt",
                 "text": "Two Lewis structures are shown with the word “or” in between them. The left structure depicts a nitrogen atom with one lone pair of electrons triple bonded to a nitrogen that is single bonded to an oxygen with three lone pairs of electrons. The right structure shows a nitrogen atom with two lone pairs of electrons double bonded to an oxygen atom that is double bonded to a nitrogen atom with two lone pairs of electrons."
@@ -362,6 +365,7 @@
             {
               "type": "media",
               "id": "fs-idp30477296",
+              "src": "../../media/CNX_Chem_07_04_N2Ofc_img.jpg",
               "alt": {
                 "segmentId": "m68740:alt:fs-idp30477296-alt",
                 "text": "Two Lewis structures are shown with the word “or” in between them. The left structure depicts a nitrogen atom with one lone pair of electrons triple bonded to a nitrogen atom that is single bonded to an oxygen atom with three lone pairs of electrons. The numbers zero, positive one, and negative one are written below this structure. The right structure shows a nitrogen atom with two lone pairs of electrons double bonded to an oxygen atom that is double bonded to a nitrogen atom with two lone pairs of electrons. The numbers negative one, positive two, and negative one are written below this structure."
@@ -370,6 +374,7 @@
             {
               "type": "media",
               "id": "fs-idp61736672",
+              "src": "../../media/CNX_Chem_07_04_NNO_img.jpg",
               "alt": {
                 "segmentId": "m68740:alt:fs-idp61736672-alt",
                 "text": "A Lewis structure is shown. A nitrogen atom with one lone pair of electrons is triple bonded to a nitrogen atom that is single bonded to an oxygen atom with three lone pairs of electrons."
@@ -378,6 +383,7 @@
             {
               "type": "media",
               "id": "fs-idp250861152",
+              "src": "../../media/CNX_Chem_07_04_NO2ion_img.jpg",
               "alt": {
                 "segmentId": "m68740:alt:fs-idp250861152-alt",
                 "text": "Two Lewis structures are shown with the word “or” written between them. The left structure shows a nitrogen atom with two lone pairs of electrons double bonded to an oxygen atom with one lone pair of electrons that is single bonded to an oxygen atom with three lone pairs of electrons. Brackets surround this structure and there is a superscripted negative sign. The right structure shows an oxygen atom with two lone pairs of electrons double bonded to a nitrogen atom with one lone pair of electrons that is single bonded to an oxygen with three lone pairs of electrons. Brackets surround this structure and there is a superscripted negative sign."
@@ -581,6 +587,7 @@
               {
                 "type": "media",
                 "id": "fs-idp6338064",
+                "src": "../../media/CNX_Chem_07_04_CHOOd_img.jpg",
                 "alt": {
                   "segmentId": "m68740:alt:fs-idp6338064-alt",
                   "text": "A Lewis structure shows a hexagonal ring composed of six carbon atoms. They form single bonds to each another and single bonds to one hydrogen atom each."
@@ -594,6 +601,7 @@
               {
                 "type": "media",
                 "id": "fs-idm22375248",
+                "src": "../../media/CNX_Chem_07_04_CHOOe_img.jpg",
                 "alt": {
                   "segmentId": "m68740:alt:fs-idm22375248-alt",
                   "text": "A Lewis structure shows a carbon atom single bonded to two oxygen atoms and a hydrogen atom. The structure is surrounded by brackets and there is a superscripted negative sign."
@@ -636,6 +644,7 @@
               {
                 "type": "media",
                 "id": "fs-idp77072272",
+                "src": "../../media/CNX_Chem_07_04_SO2resd_img.jpg",
                 "alt": {
                   "segmentId": "m68740:alt:fs-idp77072272-alt",
                   "text": "A Lewis structure depicts a hexagonal ring composed of five carbon atoms and one nitrogen atom. Each carbon atom is single bonded to a hydrogen atom."
@@ -649,6 +658,7 @@
               {
                 "type": "media",
                 "id": "fs-idp30893072",
+                "src": "../../media/CNX_Chem_07_04_SO2rese_img.jpg",
                 "alt": {
                   "segmentId": "m68740:alt:fs-idp30893072-alt",
                   "text": "A Lewis structure shows a carbon atom single bonded to two hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to a hydrogen atom and a third carbon atom. The third carbon atom is single bonded to two hydrogen atoms. The whole structure is surrounded by brackets, and there is a superscripted negative sign."
@@ -715,6 +725,7 @@
               {
                 "type": "media",
                 "id": "fs-idm19699600",
+                "src": "../../media/CNX_Chem_07_04_Acet_img.jpg",
                 "alt": {
                   "segmentId": "m68740:alt:fs-idm19699600-alt",
                   "text": "Two Lewis structures are shown with a double headed arrow in between. The left structure shows a carbon atom single bonded to three hydrogen atoms and a second carbon atom. The second carbon is single bonded to two oxygen atoms. One of the oxygen atoms is single bonded to a hydrogen atom. The right structure, surrounded by brackets and with a superscripted negative sign, depicts a carbon atom single bonded to three hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to two oxygen atoms."
@@ -1110,6 +1121,7 @@
               {
                 "type": "media",
                 "id": "fs-idp76630304",
+                "src": "../../media/CNX_Chem_07_04_HNO2_img.jpg",
                 "alt": {
                   "segmentId": "m68740:alt:fs-idp76630304-alt",
                   "text": "Two Lewis structures are shown, with the word “or” in between. The left structure shows a nitrogen atom single bonded to an oxygen atom with three lone pairs of electrons. It is also single bonded to a hydrogen atom and double bonded to an oxygen atom with two lone pairs of electrons. The right structure shows a hydrogen atom single bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is single bonded to a nitrogen atom which is double bonded to an oxygen atom with two lone pairs of electrons."

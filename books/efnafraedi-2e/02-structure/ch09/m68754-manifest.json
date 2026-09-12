@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68754",
-  "extractedAt": "2026-08-31T19:08:40.030Z",
+  "extractedAt": "2026-09-12T20:15:17.207Z",
   "sourceHash": "9d7b1e2c162765f3",
   "segmentCount": 90,
   "segmentIds": [
@@ -192,5 +192,17 @@
       "fs-idp166246928",
       "fs-idm54662752"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "mean free path",
+    "term-00002": "diffusion",
+    "term-00003": "rate of diffusion",
+    "term-00004": "effusion",
+    "term-00005": "Graham’s law of effusion",
+    "fs-idp133388272": "diffusion",
+    "fs-idp39360864": "effusion",
+    "fs-idp257364480": "Graham’s law of effusion",
+    "fs-idp132026496": "mean free path",
+    "fs-idp43914864": "rate of diffusion"
   }
 }

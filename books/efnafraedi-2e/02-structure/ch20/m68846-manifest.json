@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68846",
-  "extractedAt": "2026-08-31T19:08:45.642Z",
+  "extractedAt": "2026-09-12T20:15:19.628Z",
   "sourceHash": "8a75d0ca7a990b03",
   "segmentCount": 385,
   "segmentIds": [
@@ -505,5 +505,32 @@
       "fs-idm28708640",
       "fs-idp889008"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "organic compounds",
+    "term-00002": "Alkanes",
+    "term-00003": "saturated hydrocarbons",
+    "term-00004": "skeletal structure",
+    "term-00005": "IUPAC",
+    "term-00006": "substituents",
+    "term-00007": "alkyl group",
+    "term-00008": "substitution reaction",
+    "term-00009": "functional group",
+    "term-00011": "addition reaction",
+    "term-00010": "alkenes",
+    "term-00012": "alkynes",
+    "term-00013": "aromatic hydrocarbons",
+    "fs-id1170893631592": "addition reaction",
+    "fs-idp52591280": "alkane",
+    "fs-idp77685456": "alkene",
+    "fs-idp64410384": "alkyl group",
+    "fs-idp70106672": "alkyne",
+    "fs-idp73021984": "aromatic hydrocarbon",
+    "fs-idp68092560": "functional group",
+    "fs-idp68355136": "organic compound",
+    "fs-idp73075792": "saturated hydrocarbon",
+    "fs-idp39277120": "skeletal structure",
+    "fs-idp68310656": "substituent",
+    "fs-idp79627072": "substitution reaction"
   }
 }

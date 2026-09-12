@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68747",
-  "extractedAt": "2026-08-31T19:08:39.692Z",
+  "extractedAt": "2026-09-12T20:15:16.944Z",
   "sourceHash": "72267d71555a9c12",
   "segmentCount": 250,
   "segmentIds": [
@@ -421,5 +421,41 @@
       "fs-idm136319184",
       "fs-idm158963280"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "paramagnetism",
+    "term-00002": "Gouy",
+    "term-00003": "diamagnetic",
+    "term-00004": "Molecular orbital theory",
+    "term-00005": "molecular orbital (Ψ2)",
+    "term-00006": "homonuclear diatomic molecules",
+    "term-00007": "linear combination of atomic orbitals (LCAO)",
+    "term-00008": "σs molecular orbital",
+    "term-00009": "σs* molecular orbital",
+    "term-00010": "bonding orbitals",
+    "term-00011": "antibonding orbitals",
+    "term-00012": "pi (π) bonding molecular orbital",
+    "term-00013": "π* antibonding molecular orbital",
+    "term-00014": "degenerate orbitals",
+    "term-00015": "Kohn",
+    "term-00016": "molecular orbital diagram",
+    "term-00017": "bond order",
+    "term-00018": "s-p mixing",
+    "fs-idm143725728": "antibonding orbital",
+    "fs-idm57102096": "bond order",
+    "fs-idm133686144": "bonding orbital",
+    "fs-idm167738656": "degenerate orbitals",
+    "fs-idm83103936": "diamagnetism",
+    "fs-idm165896720": "homonuclear diatomic molecule",
+    "fs-idm41528352": "linear combination of atomic orbitals",
+    "fs-idm131261760": "molecular orbital",
+    "fs-idm132723600": "molecular orbital diagram",
+    "fs-idm249965088": "molecular orbital theory",
+    "fs-idm100788960": "paramagnetism",
+    "fs-idm100344544": "π bonding orbital",
+    "fs-idm18620192": "π* bonding orbital",
+    "fs-idm41960016": "σ bonding orbital",
+    "fs-idm169269152": "σ* bonding orbital",
+    "fs-idp5821920": "s-p mixing"
   }
 }

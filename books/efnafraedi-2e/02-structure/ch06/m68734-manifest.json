@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68734",
-  "extractedAt": "2026-08-31T19:08:38.894Z",
+  "extractedAt": "2026-09-12T20:15:16.486Z",
   "sourceHash": "7254f761bd4cd3ee",
   "segmentCount": 187,
   "segmentIds": [
@@ -267,5 +267,21 @@
       "fs-idp19121552",
       "fs-idp6359712"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "electron configuration",
+    "term-00002": "Aufbau principle",
+    "term-00003": "Orbital diagrams",
+    "term-00004": "Hund’s rule",
+    "term-00005": "valence electrons",
+    "term-00006": "core electrons",
+    "term-00007": "valence shell",
+    "fs-idp150242960": "Aufbau principle",
+    "fs-idp7870592": "core electron",
+    "fs-idp161527712": "electron configuration",
+    "fs-idp3194736": "Hund’s rule",
+    "fs-idp15489472": "orbital diagram",
+    "fs-idp159361136": "valence electrons",
+    "fs-idp52735024": "valence shell"
   }
 }
