@@ -90,6 +90,10 @@
  *                                     sidecars today.
  *   @property {object} [glossary]     parsed glossary-unified.json   (Task 7: G1-G3)
  *   @property {object} [glossariesByBook] {slug: parsedGlossary}     (Task 7: G4)
+ *   @property {object} [collisionsBaseline] parsed glossary-collisions-baseline.json (G1, §C18)
+ *                                     — the ACCEPTED competitions G1 subtracts. Absent/null
+ *                                     means "subtract nothing", i.e. the pre-§C18 behaviour,
+ *                                     which is the fail-SAFE direction for a blocking check.
  *   @property {object} [payloadVerdict]   spawnGlossaryPayloadCheck() result (Task 7: G5)
  *                                     🔴 G5's producer leg is a FINDING when this is absent,
  *                                     not a pass. It was missing from this typedef, so a

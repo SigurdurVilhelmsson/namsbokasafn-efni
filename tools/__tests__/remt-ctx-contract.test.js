@@ -179,3 +179,58 @@ describe('the ctx contract is COMPLETE — every key a check reads is documented
     expect([...src.matchAll(/@typedef\s+\{object\}\s+CheckContext/g)]).toHaveLength(1);
   });
 });
+
+/**
+ * 🔴 THERE ARE TWO TIER-0 ctx BUILDERS AND NOTHING MADE THEM AGREE.
+ *
+ * `loadTier0Ctx` (remt-ctx.js) serves the driver and the sentinel probe; `tier0Ctx`
+ * (remt-sweep.js) serves the sweep — the instrument whose output the register quotes and
+ * whose PASS is milestone M1's gate. They are independent literals.
+ *
+ * MEASURED 2026-09-12, and it is why this test exists rather than being a nice idea: adding
+ * `collisionsBaseline` to `loadTier0Ctx` alone left every unit test GREEN — including the
+ * contract test above, which reads the typedef, not the builders — while the real sweep went
+ * on reporting the identical blocking FAIL, because the sweep's builder never supplied the key
+ * and G1 read `undefined` as "no baseline". A fix that reports success and changes nothing.
+ *
+ * ⚠️ The assertion is against `BOOK_KEYS`, the DECLARED contract, not against the other
+ * builder's current shape — two literals compared to each other can both be wrong together,
+ * and this way a seventh book-scoped key forces BOTH builders to follow it.
+ */
+describe("the sweep's tier-0 builder honours the declared book-scoped contract", () => {
+  it('supplies every BOOK_KEYS key, so a check cannot read undefined where the driver reads a value', async () => {
+    const { BOOK_KEYS } = await import('../remt-ctx.js');
+    const { tier0Ctx, SWEEP_BOOKS } = await import('../remt-sweep.js');
+
+    // Control: the contract is non-empty and names the key this test was written for. Without
+    // it, a BOOK_KEYS that failed to import would make the loop below vacuously pass.
+    expect(BOOK_KEYS.length).toBeGreaterThan(1);
+    expect(BOOK_KEYS).toContain('collisionsBaseline');
+
+    const ctx = tier0Ctx({ book: SWEEP_BOOKS[0] }, { spawns: null });
+    const supplied = new Set(Object.keys(ctx));
+    expect(BOOK_KEYS.filter((k) => !supplied.has(k))).toEqual([]);
+
+    // 🔴 PRESENCE IS THE WEAK TEST, AND THE FIRST VERSION OF THIS GUARD STOPPED THERE.
+    // `Object.keys` counts a key assigned `undefined`, so `collisionsBaseline: undefined` — the
+    // EXACT shape whose absence this whole branch exists to prevent — satisfies it. Measured:
+    // `payloadVerdict` really IS undefined in this call (no spawns), so the VALUE assertion needs
+    // that one exemption and only that one; a blanket presence check would have hidden the rest.
+    const EXPECTED_UNDEFINED = ['payloadVerdict']; // no spawns supplied in this probe
+    const undefinedValued = BOOK_KEYS.filter(
+      (k) => ctx[k] === undefined && !EXPECTED_UNDEFINED.includes(k)
+    );
+    expect(undefinedValued).toEqual([]);
+    // Control for the exemption itself: if `payloadVerdict` ever stops being undefined here, the
+    // carve-out is stale and should be removed rather than quietly covering something new.
+    expect(ctx.payloadVerdict).toBeUndefined();
+  });
+
+  it('actually reads the baseline off disk for a book that HAS one — not merely the key', async () => {
+    // A key present with a null value is exactly the shape that made the gate look fixed.
+    const { tier0Ctx } = await import('../remt-sweep.js');
+    const ctx = tier0Ctx({ book: 'efnafraedi-2e' }, { spawns: null });
+    expect(ctx.collisionsBaseline).not.toBeNull();
+    expect(Object.keys(ctx.collisionsBaseline.competitions).length).toBeGreaterThan(0);
+  });
+});

@@ -152,6 +152,119 @@ describe('G1 — competitions and comma lists', () => {
   });
 });
 
+/**
+ * G1 vs the accepted-competitions baseline (§C18).
+ *
+ * 🔴 THE SPEC HAS ALWAYS SAID "beyond `glossary-collisions-baseline.json`"
+ * (`docs/superpowers/specs/2026-08-13-remt-check-battery.md`, the G1 row) AND THE CHECK NEVER
+ * SUBTRACTED IT. The consequence was measured 2026-09-12: G1 halted chemistry on `si`, a row that
+ * is IN the baseline, omitted from the MT wire by `formatGlossary`, and blocked on the render side
+ * by two independent guards — i.e. a blocking gate red on a row nothing can reach, while
+ * `validate-glossary.js` (the other consumer of the same detector) correctly read it as accepted.
+ *
+ * ⚠️ THE SUBTRACTION IS NOT "IGNORE BASELINED HEADWORDS". A baseline entry records a headword,
+ * its candidate SET and the value row order currently `chosen`. If any of those move, the accepted
+ * decision is no longer the decision being made, and the gate must fire — otherwise a stale
+ * worklist becomes a permanent silencer, which is the failure this repo calls "a guard that skips
+ * is a guard that lies". `diffAgainstBaseline` already encodes exactly that, and is REUSED here
+ * rather than reimplemented, so the two gates cannot drift apart.
+ */
+describe('G1 — the §C18 accepted-competitions baseline', () => {
+  const CONTESTED = [term('si', 'alþjóðlega einingakerfið'), term('si', 'kísill')];
+  const baselineOf = (chosen, candidates = ['alþjóðlega einingakerfið', 'kísill']) => ({
+    competitions: { si: { candidates, chosen } },
+    commaLists: {},
+  });
+
+  it('PASSES a competition the baseline already accepts, unchanged', async () => {
+    const r = await runCheck(G1, {
+      glossary: [...CONTESTED, term('bond', 'tengi')],
+      collisionsBaseline: baselineOf('kísill'),
+    });
+    expect(r.verdict).toBe(VERDICT.PASS);
+  });
+
+  it('still FAILS a competition the baseline does NOT carry — the non-vacuity control', async () => {
+    // Without this, "subtract the baseline" and "never fire again" are indistinguishable.
+    const r = await runCheck(G1, {
+      glossary: [term('atom', 'frumeind'), term('atom', 'atóm')],
+      collisionsBaseline: baselineOf('kísill'),
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.map((f) => f.english)).toContain('atom');
+  });
+
+  it("FAILS when a baselined headword's CHOSEN value has moved — row order shifted under an accepted decision", async () => {
+    const r = await runCheck(G1, {
+      glossary: [...CONTESTED],
+      collisionsBaseline: baselineOf('alþjóðlega einingakerfið'),
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.some((f) => f.kind === 'glossary-competition-changed')).toBe(true);
+  });
+
+  it('FAILS when a baselined headword gains a THIRD candidate — the accepted set is not this set', async () => {
+    const r = await runCheck(G1, {
+      glossary: [...CONTESTED, term('si', 'kisil')],
+      collisionsBaseline: baselineOf('kísill'),
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+  });
+
+  it('with NO baseline, behaves exactly as before — every competition is a finding', async () => {
+    // The fail-SAFE direction: an absent or unreadable baseline must never soften the gate.
+    for (const absent of [undefined, null]) {
+      const r = await runCheck(G1, { glossary: [...CONTESTED], collisionsBaseline: absent });
+      expect(r.verdict, `collisionsBaseline=${JSON.stringify(absent)}`).toBe(VERDICT.FAIL);
+    }
+  });
+
+  /**
+   * 🔴 THE CORPUS ANCHOR, WITH ITS CONTROL IN THE SAME TEST.
+   *
+   * A blocking gate that passes is indistinguishable from one that has stopped looking, so the
+   * two arms are asserted together over the SAME real glossary: with the committed baseline it
+   * must PASS, and with the baseline withheld it must FAIL on the very row the baseline carries.
+   * Reading only the first arm is how "subtract the baseline" and "never fire again" become the
+   * same commit. Neither arm mutates the tree — the withheld arm simply passes null.
+   */
+  it('chemistry PASSES with its committed baseline and FAILS without it — both arms, same data', async () => {
+    const glossary = JSON.parse(
+      fs.readFileSync(path.join(ROOT, 'books/efnafraedi-2e/glossary/glossary-unified.json'), 'utf8')
+    );
+    const baseline = JSON.parse(
+      fs.readFileSync(
+        path.join(ROOT, 'books/efnafraedi-2e/glossary/glossary-collisions-baseline.json'),
+        'utf8'
+      )
+    );
+
+    const withBaseline = await runCheck(G1, { glossary, collisionsBaseline: baseline });
+    const without = await runCheck(G1, { glossary, collisionsBaseline: null });
+
+    expect(withBaseline.verdict).toBe(VERDICT.PASS);
+    expect(without.verdict).toBe(VERDICT.FAIL);
+    // The control that matters: the PASS arm judged the SAME population as the FAIL arm, so the
+    // pass cannot have come from an empty walk. §C82 L6 — `examined` is keyed to content.
+    expect(withBaseline.examined).toBe(without.examined);
+    expect(withBaseline.examined).toBeGreaterThan(1000);
+    // And the row the baseline is doing the work for is named, so this test says WHY it passes.
+    expect(without.findings.map((f) => f.english)).toContain('si');
+  });
+
+  it('reports baseline entries that no longer fire, so the worklist can SHRINK', async () => {
+    // The baseline's own note says "shrink it by resolving terms". A resolved entry that nothing
+    // surfaces is a worklist item nobody can see is done — measured on chemistry, where 10 of 11
+    // baselined competitions no longer fire.
+    const r = await runCheck(G1, {
+      glossary: [term('bond', 'tengi')],
+      collisionsBaseline: baselineOf('kísill'),
+    });
+    expect(r.verdict).toBe(VERDICT.PASS);
+    expect(r.message).toMatch(/1 resolved/);
+  });
+});
+
 describe('G2 — the §C73 element-suffix rule', () => {
   it('fires 44 times on the pre-§C73 chemistry glossary and 0 after it', async () => {
     // Runs EVERYWHERE, from the committed slice — this is the known-bad fixture that lets G2
