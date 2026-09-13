@@ -2,12 +2,12 @@
 """Stage 3 - lay translated text back onto the stripped artwork.
 
     FIGTEXT_PYLIBS=./pylibs python3 compose.py                      # translated
-    FIGTEXT_PYLIBS=./pylibs python3 compose.py --control            # re-inject the ENGLISH
+    FIGTEXT_PYLIBS=./pylibs python3 compose.py --control            # redraw the ENGLISH run-exact
 
---control is the whole point.  It re-injects the figure's own English through the
-same code and lets you diff against the untouched OpenStax raster.  It found four
-real defects that the translated output could never have shown, because with
-different text you cannot tell misplacement from "that is how it lays out".
+Until §C140 ① (E), --control re-injected the figure's own English through the same layout
+code used for translations and let you diff against the untouched OpenStax raster. It found
+four real defects that the translated output could never have shown, because with different
+text you cannot tell misplacement from "that is how it lays out".
 
 ⚠️ SINCE §C140 ① (E), --control DRAWS EVERY BLOCK RUN-EXACT - each run at its own origin,
 size, rotation, fill and face, as the source drew it. It is therefore a FAITHFUL REDRAW of
@@ -133,7 +133,10 @@ ARC_MAX_R_SPANS = 1000.0
 def fit_circle(pts):
     """Least-squares circle through `pts`, or None when there is no usable circle.
 
-    🔴 RETURNS None ON A DEGENERATE BLOCK — A TRANSLATED BLOCK THEN FALLS BACK TO THE STRAIGHT PATH. (A KEPT block never reaches the arc code: it is drawn run-exact, glyph by glyph at its source origin.)
+    🔴 RETURNS None ON A DEGENERATE BLOCK — A TRANSLATED BLOCK THEN FALLS BACK TO THE STRAIGHT
+    PATH. A kept block still passes through `fit_circle` — it is called before the kept decision
+    — so this guard protects it too; a kept block is simply never DRAWN on the arc path (it is
+    drawn run-exact).
     `figtext.is_arc` is `len(b) > 3 and all(len(r['text'].strip()) <= 1 ...)`, i.e. it
     calls ANY block of four-plus single-character runs an arc, whether or not the
     characters curve. Straight text that splits per glyph therefore arrives here
@@ -195,7 +198,6 @@ identity, run_exact, degenerate_kept = [], [], []
 
 for b in blocks:
     ls = FT.lines(b)
-    en_lines = [''.join(r['text'] for r in l) for l in ls]
     # The arc decision must be made BEFORE `new` is built: `new` is a STRING for an arc
     # and a LIST OF LINES otherwise, so deciding afterwards would hand the straight path
     # a value of the wrong shape. A block `is_arc` calls an arc but that has no usable
@@ -226,6 +228,9 @@ for b in blocks:
         # was recorded nowhere, so the block vanished while `missing` stayed empty.
         # The predicate is `.strip()` because that is exactly what `wrap()` does with
         # `para.split()`; it errs toward KEEPING English, the safe direction.
+        # (`.strip()` is right here: this judges an MT/editor-authored VALUE. The no-`.strip()`
+        # rule in `run_draw_text` and blockkey.py is about SOURCE runs read from a PDF, whose
+        # edge spaces are glyph positions.)
         if value is None or not (value if arc else ''.join(value)).strip():
             # A missing key must never delete text from a figure - formulas (H2O(g))
             # legitimately have no translation, and a silent blank is far worse than an

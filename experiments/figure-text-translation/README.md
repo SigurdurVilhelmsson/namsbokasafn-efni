@@ -137,7 +137,7 @@ published.jpg ──check.py─────────────────�
 | `readlayer.py` | 🔴 **the READ layer** — a pdfplumber/pdfminer adapter producing positioned runs; it descends into `/Form` XObjects and decodes `/Encoding /Differences` and `/ToUnicode`. **This is what `extract.py` calls.** Its interface contract is owned by `read_layer_accept.py`'s module docstring, not restated |
 | `pdftext.py` | ⚠️ **the SUPERSEDED hand-written content-stream parser, not on the live path.** Kept as the **baseline arm** for `census.py`, `text-coverage-census.py`, the bake-off scripts and `read_layer_accept.py` — so a change here moves a baseline, never the reader |
 | `figtext.py` | grouping into blocks/lines, alignment detection — pure geometry |
-| `blockkey.py` | the ONE block-key derivation — what is bought, what keys the sidecar, what the editor sees. Four consumers import it; there is no second copy |
+| `blockkey.py` | the ONE block-key derivation — what is bought, what keys the sidecar, what the editor sees. Every consumer imports it; there is no second copy |
 | `extract.py` | stage 1 — PDF → `runs.json` + font/page metadata (the CLI and on-disk seam over `readlayer.py`) |
 | `strip-text.py` | stage 2 — remove `BT..ET`, drop Illustrator private data, render artwork |
 | `compose.py` | stage 3 — lay text back. A block kept in English (never sent, no translation, or a reply identical to what was sent) is drawn **run-exact** — every run at its source origin, size, rotation, fill and face; only a genuine translation is laid out. `--control` keeps every block, so it is a faithful redraw of the source (§C140 ①) |

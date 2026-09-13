@@ -29,7 +29,7 @@ without sub/superscripts; re-flow, overflow and off-centre text in boxes), in **
 | `readlayer.py` | ✅ keeps size, baseline, italic font, typed spaces | unchanged |
 | `figtext.lines()` | ❌ splits a kerned-back stacked script (`NH₃⁺`) | still true; no longer drawn wrong for KEPT blocks (run-exact never uses `lines()` to place text). ⚠️ fixing it moves bought keys |
 | `compose.py` — kept blocks | ✅ run-exact: each run at its own origin/size/rotation/fill/face | 191 kept blocks on the 34; `blocks.json` byte-identical 34/34; [USER]: fine wherever changed |
-| `compose.py` — translated blocks | ❌ one string per line at one size; `BOXW = 63` + centre anchor | unchanged by E (items identical 34/34); [USER] flags formulas and re-flow on most figures |
+| `compose.py` — translated blocks | ❌ one string per line at one size; `BOXW = 63` + centre anchor | unchanged by E (31 non-empty translated populations identical, 3 figures have none); [USER] flags formulas and re-flow on most figures |
 | `svgout.py` | ✅ Regular/Bold/Italic/BoldItalic faces | italic now drawn |
 | kept numeric labels | ❌ decimal point stays a point | never sent to the MT; inside translated prose the comma comes out right |
 | `strip-text.py` | ❌ drops colour/graphics-state ops inside BT..ET | unchanged |

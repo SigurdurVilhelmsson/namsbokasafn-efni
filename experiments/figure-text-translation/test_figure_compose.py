@@ -778,10 +778,13 @@ with tempfile.TemporaryDirectory() as td:
 
 # ── 9k. THE PUREST CASE: a block whose ENTIRE text is the placeholder ─────────────────
 # 🔴 THE ONE WAY THE SCRUB COULD BE WORSE THAN THE DEFECT. Every case above has English
-# AFTER the token, so something is left to draw. A lone unmerged bullet glyph strips to '',
-# and `wrap([''])` -> [''] -> `measure('')` -> `show_text('')` -> svgout. If that path
-# refused or produced a malformed SVG, this fix would convert reader-visible garbage into a
-# FATAL failed-compose for the figure, which is strictly worse. Measured, not assumed.
+# AFTER the token, so something is left to draw. A lone unmerged bullet glyph is a block
+# whose only run strips to '' — the block is KEPT (see compose.py) and drawn via
+# `draw_run_exact`, which removes the placeholder token and SKIPS the now-empty run rather
+# than drawing it: 9p pins zero empty <text> elements and 9q proves the block was still
+# processed (undecodable + runExact) rather than silently dropped. If the scrub instead
+# produced a malformed SVG or a fatal compose, this fix would have converted reader-visible
+# garbage into something strictly worse. Measured, not assumed.
 with tempfile.TemporaryDirectory() as td:
     out = Path(td) / 'fig-pure-cid'
     prep = run_prepare(FIXTURE, out, 'CNX_Fixture_PureCid')
