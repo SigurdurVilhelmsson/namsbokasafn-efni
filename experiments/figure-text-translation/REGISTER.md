@@ -10,8 +10,7 @@ things lives in [README.md](README.md).
 
 ## ⏩ RESUME — state as of 2026-09-13 (EVENING) (supersedes every block below)
 
-✅ **E IS BUILT, VERIFIED AND ACCEPTED ON ITS OWN SCOPE — on branch `feat/c140-e-run-exact-kept-text`,
-not yet merged.** A block `compose.py` keeps in English is now drawn run-exact. Design:
+✅ **E IS BUILT, VERIFIED, ACCEPTED ON ITS OWN SCOPE AND MERGED — PR #464, merge commit `bd69d0d6`.** A block `compose.py` keeps in English is now drawn run-exact. Design:
 [`docs/superpowers/specs/2026-09-13-c140-e-run-exact-kept-text-design.md`](../../docs/superpowers/specs/2026-09-13-c140-e-run-exact-kept-text-design.md) ·
 measurements (frozen): [`evidence/2026-09-13-e-build/VERIFICATION.md`](evidence/2026-09-13-e-build/VERIFICATION.md) ·
 [USER]'s per-figure review (verbatim): [`evidence/2026-09-13-e-build/USER-REVIEW.md`](evidence/2026-09-13-e-build/USER-REVIEW.md).
@@ -24,7 +23,7 @@ without sub/superscripts; re-flow, overflow and off-centre text in boxes), in **
 
 **The status, per component — replaces the table in the block below:**
 
-| component | state on the branch | measured |
+| component | state on `main` | measured |
 |---|---|---|
 | `readlayer.py` | ✅ keeps size, baseline, italic font, typed spaces | unchanged |
 | `figtext.lines()` | ❌ splits a kerned-back stacked script (`NH₃⁺`) | still true; no longer drawn wrong for KEPT blocks (run-exact never uses `lines()` to place text). ⚠️ fixing it moves bought keys |
