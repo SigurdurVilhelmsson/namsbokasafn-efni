@@ -1,0 +1,143 @@
+--- experiments/figure-text-translation/compose.py	2026-09-08 08:11:27.347813935 +0000
++++ /tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/d293cd29-19d8-4ccc-a2b3-244bf111501b/scratchpad/proto/compose.py	2026-09-13 09:09:41.824931002 +0000
+@@ -13,7 +13,7 @@
+ with '|' between lines.  Blocks are keyed by CONTENT, not position, so the file
+ survives re-extraction.
+ """
+-import sys, json, math
++import sys, json, math, os
+ import _deps
+ from _deps import HERE, OUT
+ from pathlib import Path
+@@ -50,6 +50,45 @@
+ # (what an EPS becomes) writes /R9,/R11. Never key on them; read the BaseFont.
+ BOLD = {k for k, v in meta['fonts'].items() if 'bold' in v['base'].lower()}
+ 
++# ---------------------------------------------------------------- PROTOTYPE (2a)
++# RUN-EXACT drawing of ENGLISH-KEPT blocks.  PROTO_RUNEXACT=0 switches it off, which must
++# reproduce the unmodified composer byte for byte (the copy's own equivalence control).
++RUNEXACT = os.environ.get('PROTO_RUNEXACT', '1') != '0'
++
++
++def run_face(run):
++    """(bold, italic, is_liberation) from the run's OWN BaseFont - never the resource name.
++    Same predicate as scratchpad/tools/runexact_png.py:face_of (1a's ceiling)."""
++    base = meta['fonts'].get(run['font'], {}).get('base', '').split('+')[-1].lower()
++    return ('bold' in base, 'italic' in base or 'oblique' in base, 'liberation' in base)
++
++
++def draw_run_exact(b, bi):
++    """Draw every run of block `b` at its own origin, size, rotation, fill and face.
++    Nothing is joined, wrapped, re-anchored, re-led or re-sized.  Returns True when a
++    pdfminer (cid:N) placeholder was removed from any run (and ONLY then - no .strip(),
++    which would move glyphs inside a run and is what mis-reports edge-space lines)."""
++    changed = False
++    for r in b:
++        text = FT._CID_TOKEN.sub('', r['text'])
++        changed |= text != r['text']
++        if text == '':
++            continue
++        bold, italic, _lib = run_face(r)
++        rot = r['rot']
++        px, py = dev(r['x'], r['y'])
++        col = cmyk(r['fill'])
++        ITEMS.append(dict(text=text, x=px / S, y=H_PT - py / S, rot=rot, size=r['size'],
++                          bold=bold, italic=italic, rgb=col, dx=0.0, block=bi, path='runexact'))
++        ctx.select_font_face(FAMILY,
++                             cairo.FONT_SLANT_ITALIC if italic else cairo.FONT_SLANT_NORMAL,
++                             cairo.FONT_WEIGHT_BOLD if bold else cairo.FONT_WEIGHT_NORMAL)
++        ctx.set_font_size(r['size'] * S)
++        ctx.save(); ctx.translate(px, py); ctx.rotate(-math.radians(rot))
++        ctx.set_source_rgb(*col); ctx.move_to(0, 0); ctx.show_text(text)
++        ctx.restore()
++    return changed
++
+ 
+ def setfont(run, size):
+     ctx.select_font_face(FAMILY, cairo.FONT_SLANT_NORMAL,
+@@ -141,8 +180,9 @@
+ # same key twice and this loop draws both, so a lost twin leaves a label undrawn with the
+ # key SET identical (ruling R-13).
+ keys, translated = [], []
++runexact, identity = [], []     # PROTOTYPE: additive report fields
+ 
+-for b in blocks:
++for bi, b in enumerate(blocks):
+     ls = FT.lines(b)
+     en_lines = [''.join(r['text'] for r in l) for l in ls]
+     # The arc decision must be made BEFORE `new` is built: `new` is a STRING for an arc
+@@ -177,8 +217,10 @@
+             undecodable.append(key)
+         return cleaned
+ 
++    kept = False
+     if CONTROL:
+-        new = keep_english()
++        kept = True
++        new = None if RUNEXACT else keep_english()
+     else:
+         value = FT.normalise_block_value(TR[key], arc) if key in TR else None
+         # ⚠️ AN EMPTY OR WHITESPACE-ONLY VALUE IS *MISSING*, NOT A TRANSLATION. It reaches
+@@ -196,10 +238,27 @@
+             # figure - formulas (H2O(g)) legitimately have no translation, and a
+             # silent blank is far worse than an untranslated label.
+             missing.append(key)
+-            new = keep_english()
++            kept = True
++            new = None if RUNEXACT else keep_english()
+         else:
+             translated.append(key)
+             new = value
++            # PROTOTYPE: IDENTITY = the MT gave back what went on the wire. The wire text is
++            # emit-blocks.py's `joined` (key for an arc, lines joined by ONE space otherwise)
++            # and translate-blocks.mjs .trim()s the reply; wrap() below already reads the
++            # value only through .split(), so token equality is exactly the equivalence the
++            # translated path applies. Stays in `translated` (figure-compose.py assertion 2).
++            wire = key if arc else ' '.join(en_lines)
++            if (value if arc else ' '.join(value)).split() == wire.split():
++                identity.append(key)
++                kept = True
++
++    if RUNEXACT and kept:
++        if draw_run_exact(b, bi):
++            undecodable.append(key)
++        runexact.append(key)
++        report.append(f"  RUNEXACT {len(b)} runs  {key!r}")
++        continue
+ 
+     if arc:
+         cx, cy, R = circle
+@@ -220,7 +279,8 @@
+             px, py = dev(cx + R * math.cos(th), cy + R * math.sin(th))
+             rot_deg = math.degrees(th + side * math.pi / 2)
+             ITEMS.append(dict(text=ch, x=px / S, y=H_PT - py / S, rot=rot_deg,
+-                              size=sz, bold=b[0]['font'] in BOLD, rgb=col, dx=-w / 2))
++                              size=sz, bold=b[0]['font'] in BOLD, rgb=col, dx=-w / 2,
++                              italic=False, block=bi, path='arc'))
+             ctx.save(); ctx.translate(px, py); ctx.rotate(-(th + side * math.pi / 2))
+             ctx.set_source_rgb(*col); ctx.move_to(-w * S / 2, 0); ctx.show_text(ch)
+             ctx.restore()
+@@ -285,7 +345,8 @@
+         px, py = dev(x, y)
+         setfont(fr, sz)
+         ITEMS.append(dict(text=t, x=px / S, y=H_PT - py / S, rot=rot,
+-                          size=sz, bold=fr['font'] in BOLD, rgb=cmyk(fr['fill']), dx=0.0))
++                          size=sz, bold=fr['font'] in BOLD, rgb=cmyk(fr['fill']), dx=0.0,
++                          italic=False, block=bi, path='layout'))
+         ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
+         ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
+         ctx.restore()
+@@ -332,7 +393,13 @@
+     # that compared `missing` against the send:false blocks of a control run would refuse
+     # a correct one. It is here so that mistake is impossible to make silently.
+     'control': CONTROL,
++    # PROTOTYPE (additive; figure-compose.py reads only blocks/missing/translated):
++    'runExact': runexact,
++    'identity': identity,
++    'runExactEnabled': RUNEXACT,
+ }, indent=1, ensure_ascii=False))
++(OUT / ('items-' + ('control' if CONTROL else 'translated') + '.json')).write_text(
++    json.dumps(ITEMS, ensure_ascii=False))
+ 
+ print(f"{len(blocks)} blocks")
+ print('\n'.join(report))

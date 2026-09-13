@@ -1,0 +1,30 @@
+{
+ "population": [
+  "<text x=\"28.000\" y=\"60.000\" font-family=\"FigIS\" font-weight=\"400\" font-size=\"12.000\" fill=\"#3366cc\" xml:space=\"preserve\">Athugun og forvitni</text>",
+  "<text x=\"23.680\" y=\"140.000\" font-family=\"FigIS\" font-weight=\"400\" font-size=\"12.000\" fill=\"#3366cc\" xml:space=\"preserve\">Profa tilgatuna</text>",
+  "<text x=\"221.576\" y=\"140.167\" font-family=\"FigIS\" font-weight=\"400\" font-size=\"12.000\" fill=\"#3366cc\" xml:space=\"preserve\" transform=\"rotate(-4.2674 225.536 140.167)\">B</text>",
+  "<text x=\"229.488\" y=\"140.145\" font-family=\"FigIS\" font-weight=\"400\" font-size=\"12.000\" fill=\"#3366cc\" xml:space=\"preserve\" transform=\"rotate(3.9829 234.168 140.145)\">O</text>",
+  "<text x=\"238.737\" y=\"141.519\" font-family=\"FigIS\" font-weight=\"400\" font-size=\"12.000\" fill=\"#3366cc\" xml:space=\"preserve\" transform=\"rotate(12.9207 243.417 141.519)\">G</text>",
+  "<text x=\"247.853\" y=\"143.248\" font-family=\"FigIS\" font-weight=\"400\" font-size=\"12.000\" fill=\"#3366cc\" xml:space=\"preserve\" transform=\"rotate(18.9365 249.473 143.248)\">I</text>",
+  "<text x=\"250.699\" y=\"145.301\" font-family=\"FigIS\" font-weight=\"400\" font-size=\"12.000\" fill=\"#3366cc\" xml:space=\"preserve\" transform=\"rotate(24.2649 254.659 145.301)\">X</text>"
+ ],
+ "faces_plain": [
+  [
+   "400",
+   "normal",
+   " ()2AHOPSaefghijlmnortuv"
+  ]
+ ],
+ "faces_bold": [
+  [
+   "400",
+   "normal",
+   " ()2AHOSaefghijlmnortuv"
+  ],
+  [
+   "700",
+   "normal",
+   " Pafgilnortu"
+  ]
+ ]
+}

@@ -46,3 +46,20 @@ def block_key(block):
     if FT.is_arc(block):
         return ''.join(r['text'] for r in block)
     return '|'.join(block_lines(block))
+
+
+def block_english(block):
+    """What emit-blocks.py SENT for this block - the MT wire text.
+
+    An ARC (FT.is_arc) sends its key, the bare concatenation of its glyphs; every other block
+    sends its lines joined by ONE space - the MT unit is the LABEL, not the line.
+
+    ⚠️ THE SAME `FT.is_arc` AS `block_key`, DELIBERATELY NOT compose.py's `arc`, which also
+    requires a usable circle. The question this answers is what went on the wire, and a
+    degenerate arc went on the wire as its bare concatenation. compose.py asks it to decide
+    IDENTITY (`figtext.is_identity`); deriving the wire from its own `arc` compared a reply
+    against a string that was never sent (spec §C140 ①, component 1).
+    """
+    if FT.is_arc(block):
+        return block_key(block)
+    return ' '.join(block_lines(block))

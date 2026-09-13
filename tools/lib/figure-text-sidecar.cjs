@@ -21,8 +21,10 @@ const SIDECAR_VERSION = 1;
  * Bump when a composer change alters pixels for unchanged text. Doing so
  * invalidates every stored renderHash, which correctly sends every approved
  * figure back to mt-preview until re-reviewed.
+ *
+ * '2' (2026-09-13, §C140 ①): kept figure text is drawn run-exact.
  */
-const COMPOSER_VERSION = '1';
+const COMPOSER_VERSION = '2';
 
 /**
  * @param {string} bookDir  the BOOK directory, i.e. `books/<slug>` — NOT the books

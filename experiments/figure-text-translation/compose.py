@@ -2,24 +2,31 @@
 """Stage 3 - lay translated text back onto the stripped artwork.
 
     FIGTEXT_PYLIBS=./pylibs python3 compose.py                      # translated
-    FIGTEXT_PYLIBS=./pylibs python3 compose.py --control            # re-inject the ENGLISH
+    FIGTEXT_PYLIBS=./pylibs python3 compose.py --control            # redraw the ENGLISH run-exact
 
---control is the whole point.  It re-injects the figure's own English through the
-same code and lets you diff against the untouched OpenStax raster.  It found four
-real defects that the translated output could never have shown, because with
-different text you cannot tell misplacement from "that is how it lays out".
+Until §C140 ① (E), --control re-injected the figure's own English through the same layout
+code used for translations and let you diff against the untouched OpenStax raster. It found
+four real defects that the translated output could never have shown, because with different
+text you cannot tell misplacement from "that is how it lays out".
+
+⚠️ SINCE §C140 ① (E), --control DRAWS EVERY BLOCK RUN-EXACT - each run at its own origin,
+size, rotation, fill and face, as the source drew it. It is therefore a FAITHFUL REDRAW of
+the source: a disagreement with the raster now isolates artwork and rasteriser defects. It no
+longer exercises the wrap / anchor / shrink path at all - and neither can any translations
+file, because a reply token-equal to its English is IDENTITY and is drawn run-exact too.
+Work on that path (§C140 ③) needs its own switch.
 
 Translations are read from translations.json, keyed by the block's English text
 with '|' between lines.  Blocks are keyed by CONTENT, not position, so the file
 survives re-extraction.
 """
-import sys, json, math
+import sys, json, math, collections
 import _deps
 from _deps import HERE, OUT
 from pathlib import Path
 import cairo
 import figtext as FT
-from blockkey import block_key
+from blockkey import block_key, block_english
 
 DPI = 200.0
 S = DPI / 72.0
@@ -49,6 +56,45 @@ FAMILY = "Liberation Sans"   # the figure's own font; OFL, full Icelandic covera
 # Font RESOURCE names are per-file - Illustrator writes /TT0,/TT1 and Ghostscript
 # (what an EPS becomes) writes /R9,/R11. Never key on them; read the BaseFont.
 BOLD = {k for k, v in meta['fonts'].items() if 'bold' in v['base'].lower()}
+
+
+def draw_run_exact(block):
+    """Draw every run of a KEPT block at its own origin, size, rotation, fill and face.
+
+    -> True when a pdfminer `(cid:N)` placeholder was removed from any run (the caller names
+    the block in `undecodable`).
+
+    🔴 WHY: `runs.json` already carries what the source drew - a subscript's size and
+    baseline, an italic BaseFont, the ten spaces a typist put in an arrow gap, a kerned-back
+    superscript. The layout path below joins each line into ONE string at ONE size on ONE
+    baseline, re-wraps it (collapsing whitespace), re-anchors it and never selects a slant,
+    which destroyed exactly that for 191 of 367 drawn blocks in the 34 bought figures while
+    every value check passed (COMPOSE-FIDELITY.md). For English that is kept, nothing needs
+    laying out: draw it where it was.
+
+    Nothing is joined, wrapped, re-anchored, re-led or re-sized. A run whose text becomes ''
+    after `run_draw_text` is skipped - it would draw nothing. Weight, slant and fill are per
+    RUN (the layout path's are per line). One ITEMS entry per drawn run.
+    """
+    removed = False
+    for r in block:
+        text, gone = FT.run_draw_text(r)
+        removed = removed or gone
+        if text == '':
+            continue
+        bold, italic = FT.run_face(r, meta['fonts'])
+        px, py = dev(r['x'], r['y'])
+        col = cmyk(r['fill'])
+        ITEMS.append(dict(text=text, x=px / S, y=H_PT - py / S, rot=r['rot'],
+                          size=r['size'], bold=bold, italic=italic, rgb=col, dx=0.0))
+        ctx.select_font_face(FAMILY,
+                             cairo.FONT_SLANT_ITALIC if italic else cairo.FONT_SLANT_NORMAL,
+                             cairo.FONT_WEIGHT_BOLD if bold else cairo.FONT_WEIGHT_NORMAL)
+        ctx.set_font_size(r['size'] * S)
+        ctx.save(); ctx.translate(px, py); ctx.rotate(-math.radians(r['rot']))
+        ctx.set_source_rgb(*col); ctx.move_to(0, 0); ctx.show_text(text)
+        ctx.restore()
+    return removed
 
 
 def setfont(run, size):
@@ -87,7 +133,10 @@ ARC_MAX_R_SPANS = 1000.0
 def fit_circle(pts):
     """Least-squares circle through `pts`, or None when there is no usable circle.
 
-    🔴 RETURNS None ON A DEGENERATE BLOCK — CALLERS MUST FALL BACK TO THE STRAIGHT PATH.
+    🔴 RETURNS None ON A DEGENERATE BLOCK — A TRANSLATED BLOCK THEN FALLS BACK TO THE STRAIGHT
+    PATH. A kept block still passes through `fit_circle` — it is called before the kept decision
+    — so this guard protects it too; a kept block is simply never DRAWN on the arc path (it is
+    drawn run-exact).
     `figtext.is_arc` is `len(b) > 3 and all(len(r['text'].strip()) <= 1 ...)`, i.e. it
     calls ANY block of four-plus single-character runs an arc, whether or not the
     characters curve. Straight text that splits per glyph therefore arrives here
@@ -141,14 +190,18 @@ report, missing, degenerate, undecodable = [], [], [], []
 # same key twice and this loop draws both, so a lost twin leaves a label undrawn with the
 # key SET identical (ruling R-13).
 keys, translated = [], []
+# E (§C140 ①), both additive to the contract above and, like it, in draw order WITH
+# multiplicity. `identity` keys are ALSO in `translated` (figure-compose.py assertion 2);
+# `runExact` is every kept block, identity included. `degenerate_kept` only splits the
+# stdout warning - `degenerate` itself keeps its meaning.
+identity, run_exact, degenerate_kept = [], [], []
 
 for b in blocks:
     ls = FT.lines(b)
-    en_lines = [''.join(r['text'] for r in l) for l in ls]
     # The arc decision must be made BEFORE `new` is built: `new` is a STRING for an arc
     # and a LIST OF LINES otherwise, so deciding afterwards would hand the straight path
     # a value of the wrong shape. A block `is_arc` calls an arc but that has no usable
-    # circle is drawn STRAIGHT — see fit_circle, which returns None for those.
+    # circle is drawn STRAIGHT if translated (see fit_circle) and run-exact if kept.
     pts = [(r['x'], r['y']) for r in b]
     circle = fit_circle(pts) if FT.is_arc(b) else None
     arc = circle is not None
@@ -161,45 +214,46 @@ for b in blocks:
     key = block_key(b)
     keys.append(key)
 
-    # 🔴 THE ENGLISH KEPT HERE IS REDRAWN FROM SCRATCH - strip-text.py removed every glyph
-    # from the artwork - so a pdfminer `(cid:N)` placeholder in it is DRAWN ON THE FIGURE.
-    # Measured on CNX_Chem_05_02_FoodLabel: two live <text> elements reading
-    # `(cid:127) 5% or less`, exit 0, under the driver's VERDICT ok. The token is removed at
-    # the draw site and NOWHERE UPSTREAM: `readlayer._looks_undecoded` keys the block's hold
-    # on exactly that substring, so stripping it earlier would send the block to the paid MT.
-    # ⚠️ --control gets the same treatment on purpose: it is diffed against the ORIGINAL
-    # artwork, where the placeholder does not appear either, and a control that drew
-    # different pixels from the published path would be measuring the wrong thing.
-    def keep_english():
-        original = key if arc else en_lines
-        cleaned = FT.strip_undecodable(original)
-        if cleaned != original:
-            undecodable.append(key)
-        return cleaned
-
+    # KEPT := --control, or no translation, or an empty one, or an IDENTITY reply. Every kept
+    # block is drawn run-exact (draw_run_exact); only a genuine translation is laid out.
+    kept = False
     if CONTROL:
-        new = keep_english()
+        kept = True
     else:
         value = FT.normalise_block_value(TR[key], arc) if key in TR else None
         # ⚠️ AN EMPTY OR WHITESPACE-ONLY VALUE IS *MISSING*, NOT A TRANSLATION. It reaches
-        # this line looking like a hit - `key in TR` is True - and then DELETES the label:
-        # `wrap()` below turns a whitespace-only paragraph into '' and cairo draws nothing,
-        # and the arc path draws nothing for the same reason. Before this branch existed
-        # the erasure was recorded nowhere at all, so the block vanished from the figure
-        # while `missing` stayed empty and every count read clean.
+        # this line looking like a hit - `key in TR` is True - and would DELETE the label:
+        # `wrap()` turns a whitespace-only paragraph into '' and cairo draws nothing, and the
+        # arc path draws nothing for the same reason. Before this branch existed the erasure
+        # was recorded nowhere, so the block vanished while `missing` stayed empty.
         # The predicate is `.strip()` because that is exactly what `wrap()` does with
-        # `para.split()`; it deliberately errs toward KEEPING English, which is the safe
-        # direction. (blockkey.py's warning that `.strip()` can eat a /Differences glyph is
-        # about SOURCE runs read out of a PDF, not about an MT/editor-authored value.)
+        # `para.split()`; it errs toward KEEPING English, the safe direction.
+        # (`.strip()` is right here: this judges an MT/editor-authored VALUE. The no-`.strip()`
+        # rule in `run_draw_text` and blockkey.py is about SOURCE runs read from a PDF, whose
+        # edge spaces are glyph positions.)
         if value is None or not (value if arc else ''.join(value)).strip():
-            # Keep the ORIGINAL text. A missing key must never delete text from a
-            # figure - formulas (H2O(g)) legitimately have no translation, and a
-            # silent blank is far worse than an untranslated label.
+            # A missing key must never delete text from a figure - formulas (H2O(g))
+            # legitimately have no translation, and a silent blank is far worse than an
+            # untranslated label.
             missing.append(key)
-            new = keep_english()
+            kept = True
         else:
             translated.append(key)
             new = value
+            # IDENTITY: the MT gave back what went on the wire. It stays in `translated`
+            # (it was bought) and is drawn run-exact (it is English we can draw exactly).
+            if FT.is_identity(TR[key], block_english(b), arc):
+                identity.append(key)
+                kept = True
+
+    if kept:
+        if FT.is_arc(b) and circle is None:
+            degenerate_kept.append(key)
+        if draw_run_exact(b):
+            undecodable.append(key)
+        run_exact.append(key)
+        report.append(f"  RUNEXACT {len(b)} run(s)  {key!r}")
+        continue
 
     if arc:
         cx, cy, R = circle
@@ -220,7 +274,7 @@ for b in blocks:
             px, py = dev(cx + R * math.cos(th), cy + R * math.sin(th))
             rot_deg = math.degrees(th + side * math.pi / 2)
             ITEMS.append(dict(text=ch, x=px / S, y=H_PT - py / S, rot=rot_deg,
-                              size=sz, bold=b[0]['font'] in BOLD, rgb=col, dx=-w / 2))
+                              size=sz, bold=b[0]['font'] in BOLD, italic=False, rgb=col, dx=-w / 2))
             ctx.save(); ctx.translate(px, py); ctx.rotate(-(th + side * math.pi / 2))
             ctx.set_source_rgb(*col); ctx.move_to(-w * S / 2, 0); ctx.show_text(ch)
             ctx.restore()
@@ -285,7 +339,8 @@ for b in blocks:
         px, py = dev(x, y)
         setfont(fr, sz)
         ITEMS.append(dict(text=t, x=px / S, y=H_PT - py / S, rot=rot,
-                          size=sz, bold=fr['font'] in BOLD, rgb=cmyk(fr['fill']), dx=0.0))
+                          size=sz, bold=fr['font'] in BOLD, italic=False, rgb=cmyk(fr['fill']),
+                          dx=0.0))
         ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
         ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
         ctx.restore()
@@ -332,6 +387,9 @@ if SVG:
     # that compared `missing` against the send:false blocks of a control run would refuse
     # a correct one. It is here so that mistake is impossible to make silently.
     'control': CONTROL,
+    # E (§C140 ①). Additive: figure-compose.py reads only blocks/missing/translated.
+    'identity': identity,
+    'runExact': run_exact,
 }, indent=1, ensure_ascii=False))
 
 print(f"{len(blocks)} blocks")
@@ -340,13 +398,20 @@ if missing:
     print(f"\n!! {len(missing)} block(s) with no translation - ENGLISH KEPT:")
     for k in missing:
         print(f"     {k!r}")
-# NAMED, never counted. `is_arc` calling straight text an arc is a real mis-classification
-# and the straight fallback only stops it CRASHING; the keys below are the evidence for
-# whoever revisits `is_arc`, which this guard deliberately does not touch.
-if degenerate:
-    print(f"\n!! {len(degenerate)} block(s) is_arc says are arcs but have no usable "
-          f"circle - DRAWN STRAIGHT:")
-    for k in degenerate:
+# NAMED, never counted. `is_arc` calling straight text an arc is a real mis-classification; the
+# keys below are the evidence for whoever revisits `is_arc`, which this file
+# deliberately does not touch. Split by path, because only a TRANSLATED one is laid out.
+degenerate_straight = list((collections.Counter(degenerate)
+                            - collections.Counter(degenerate_kept)).elements())
+if degenerate_straight:
+    print(f"\n!! {len(degenerate_straight)} block(s) is_arc says are arcs but have no usable "
+          f"circle - TRANSLATED, DRAWN STRAIGHT:")
+    for k in degenerate_straight:
+        print(f"     {k!r}")
+if degenerate_kept:
+    print(f"\n!! {len(degenerate_kept)} block(s) is_arc says are arcs but have no usable "
+          f"circle - KEPT, DRAWN RUN-EXACT:")
+    for k in degenerate_kept:
         print(f"     {k!r}")
 # Leading '\n' is load-bearing - see the note above the compose-report.json write.
 if undecodable:

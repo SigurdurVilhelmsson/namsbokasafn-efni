@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_03_01_brain-ec0b",
  "renderHash": "f07c01b7b8961927",
  "composedHash": "f07c01b7b8961927",
- "composedVersion": "1",
+ "composedVersion": "2",
  "composerVersion": "1",
  "blocks": {
   "Neuron cells": "Taugafrumur"

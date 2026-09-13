@@ -20,7 +20,7 @@ import sys, json, subprocess
 import _deps
 from _deps import OUT
 import figtext as FT
-from blockkey import block_key, block_lines
+from blockkey import block_key, block_lines, block_english
 
 subprocess.run([sys.executable, 'extract.py', sys.argv[1]], check=True,
                capture_output=True)
@@ -43,7 +43,7 @@ for b in blocks:
     arc = FT.is_arc(b)
     lines = block_lines(b)
     key = block_key(b)
-    joined = key if arc else ' '.join(lines)      # the MT unit is the LABEL, not the line
+    joined = block_english(b)                     # the MT unit is the LABEL, not the line
     bad = FT.undecodable_fonts(b, fonts)          # per-FONT flag — REPORTING only
     send = FT.sendable(b, joined, fonts)
     if not FT.looks_verbatim(joined):

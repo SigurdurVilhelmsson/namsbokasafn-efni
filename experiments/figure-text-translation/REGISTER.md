@@ -8,7 +8,72 @@ things lives in [README.md](README.md).
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-08 (supersedes every block below)
+## ⏩ RESUME — state as of 2026-09-13 (EVENING) (supersedes every block below)
+
+✅ **E IS BUILT, VERIFIED AND ACCEPTED ON ITS OWN SCOPE — on branch `feat/c140-e-run-exact-kept-text`,
+not yet merged.** A block `compose.py` keeps in English is now drawn run-exact. Design:
+[`docs/superpowers/specs/2026-09-13-c140-e-run-exact-kept-text-design.md`](../../docs/superpowers/specs/2026-09-13-c140-e-run-exact-kept-text-design.md) ·
+measurements (frozen): [`evidence/2026-09-13-e-build/VERIFICATION.md`](evidence/2026-09-13-e-build/VERIFICATION.md) ·
+[USER]'s per-figure review (verbatim): [`evidence/2026-09-13-e-build/USER-REVIEW.md`](evidence/2026-09-13-e-build/USER-REVIEW.md).
+
+🔴 **[USER] LOOKED AT ALL 34 AND MOST ARE STILL WRONG — BUT NOT IN ANYTHING E DRAWS.** Every figure
+where E changed a label reads fine. The remaining defects are in **translated** labels (formulas
+without sub/superscripts; re-flow, overflow and off-centre text in boxes), in **kept numeric labels**
+(decimal point, not comma), in MT wording, and in one artwork outline. Classification and the
+[USER] scope ruling for the next work → the campaign register's **§C140**.
+
+**The status, per component — replaces the table in the block below:**
+
+| component | state on the branch | measured |
+|---|---|---|
+| `readlayer.py` | ✅ keeps size, baseline, italic font, typed spaces | unchanged |
+| `figtext.lines()` | ❌ splits a kerned-back stacked script (`NH₃⁺`) | still true; no longer drawn wrong for KEPT blocks (run-exact never uses `lines()` to place text). ⚠️ fixing it moves bought keys |
+| `compose.py` — kept blocks | ✅ run-exact: each run at its own origin/size/rotation/fill/face | 191 kept blocks on the 34; `blocks.json` byte-identical 34/34; [USER]: fine wherever changed |
+| `compose.py` — translated blocks | ❌ one string per line at one size; `BOXW = 63` + centre anchor | unchanged by E (31 non-empty translated populations identical, 3 figures have none); [USER] flags formulas and re-flow on most figures |
+| `svgout.py` | ✅ Regular/Bold/Italic/BoldItalic faces | italic now drawn |
+| kept numeric labels | ❌ decimal point stays a point | never sent to the MT; inside translated prose the comma comes out right |
+| `strip-text.py` | ❌ drops colour/graphics-state ops inside BT..ET | unchanged |
+| `strip-text.py --svg` (`pdftocairo -svg`) | ❌ scales content on non-integer page sizes | unchanged; a text-box outline on `CNX_Chem_03_01_brain` is a separate, uninvestigated artwork finding |
+| driver spend gate | ❌ blind to MathematicalPi `°`→`8` and to production pages resolved as figures | unchanged |
+
+⚠️ **`--control` now draws every block run-exact** — a faithful redraw of the source. It no longer
+exercises the layout path for translations, and no translations file can.
+
+⚠️ **Campaign status — what is next — is the campaign register's (§C140), not this file's.**
+
+---
+
+## ⏩ RESUME — state as of 2026-09-13 (superseded by the block above)
+
+🔴 **THE COMPOSER DESTROYS FORMATTING THE READ LAYER KEPT, AND EVERY COUNT-BASED CHECK IS BLIND TO IT.**
+The 34 figures bought 2026-09-12 passed reach, residue and structure checks and are visibly damaged.
+**Measured, 0 ISK → [`COMPOSE-FIDELITY.md`](COMPOSE-FIDELITY.md)** (evidence, frozen). The campaign's
+open work and the rulings it needs → the campaign register's **§C140**.
+
+**The status, per component — nothing below is fixed yet:**
+
+| component | state on `main` | measured |
+|---|---|---|
+| `readlayer.py` | ✅ keeps size, baseline, italic font, typed spaces | `runs.json` carries them (HClsoln `'2'` 7pt −3pt; `aq` in LiberationSans-Italic) |
+| `figtext.lines()` | ❌ splits a kerned-back stacked script (`NH₃⁺`) into two lines | 59 corpus blocks — ⚠️ **fixing it moves bought KEYS**; draw run-exact instead |
+| `compose.py` | ❌ joins each line into one string, one size, one baseline; `wrap()` collapses whitespace; no slant; `BOXW = 63` + centre anchor for translations | 55/367 blocks grossly damaged in `--control` alone (18/34 figs); ~44/176 translated blocks collide |
+| `svgout.py` | ❌ Regular + Bold faces only | italic never drawn |
+| `strip-text.py` | ❌ drops colour/graphics-state ops inside BT..ET | recolours artwork in 1/34; latent in 18/34 |
+| `strip-text.py --svg` (`pdftocairo -svg`) | ❌ scales content on non-integer page sizes | ≤4 px misregistration; page-box padding fixes it, `-origpagesizes` does not |
+| driver spend gate | ❌ blind to MathematicalPi `°`→`8` and to production pages resolved as figures | PentIso `36 8C` ×3 `send:true`; rvosmosis, N2O5 |
+
+🔴 **`--control` IS NOT A SOURCE-FAITHFUL BASELINE ON FORMULA LINES** — flattening widens the line past
+its own wrap budget, so the English re-wraps (5/176). `check.py` stays a true oracle (a disagreement is
+still our defect); what changed is that the control output is itself defective.
+
+🔴 **THE PIXEL INSTRUMENT IN `evidence/2026-09-13-compose-fidelity/instruments/1a` SEES LAYOUT ONLY** —
+colour, `l`→`I` and decimal comma all score faithful. Its damage flags stand; its nulls are weak.
+
+⚠️ **Campaign status — what is next — is the campaign register's (§C140), not this file's.**
+
+---
+
+## ⏩ RESUME — state as of 2026-09-08 (superseded by the block above)
 
 🔴 **THE DRIVER EXISTS. THE BOOTSTRAP DEADLOCK IS BROKEN.** For weeks the editorial correction loop
 — `figureReviewService.js`, the `…/figures…` routes, the client's `figure-review-section` — was
@@ -750,6 +815,16 @@ open:**
   re-produce those figures, not to teach the tool a second convention.
 - **⑫ `media/_reexport-pending/*.txt` lists are stale.** `RE-EXPORT-LIST.txt` names 48
   oversized files; measured 2026-09-02, only **1** of 691 now exceeds 500 KB.
+- **⑬ 🔴 LIVE: June-vintage `_IS.svg` files with mis-assigned embedded rasters** (measured 2026-09-13).
+  `CNX_Chem_04_02_HClsoln_IS.svg` — **served on namsbokasafn.is today** (sha256 checked against the
+  live bytes, 404 control) — has **17 of 27** `<image>` elements carrying a 44×42 px payload in boxes
+  up to 467×739: blurred molecule blobs across both flasks, the Cl⁻ spheres missing. **File-intrinsic,
+  not a browser quirk** (decoded with PIL, no renderer). A census of the **700** published mt-preview
+  `_IS.svg` finds **206** with embedded rasters and **8** with an aspect-mismatched one: ch01, 04, 05, 06,
+  08 ×2, 09, 10. **Only HClsoln is visually confirmed; the other 7 are candidates.** The composed
+  replacement in `media/` has intact artwork (0/62 mismatches) but damaged text — see §C140 ⑧ for
+  the choice. Instrument: `evidence/2026-09-13-compose-fidelity/instruments/verify/svgimages.py`,
+  `june_census.py`.
 
 ## Provenance
 
