@@ -130,10 +130,24 @@ ZERO segments** (the three sites already called `addSegment`), so no positional 
   `figure-enumerate.cjs` now, including by this session, which reported "P2 is refuted" on it
   before a peer session's independent census corrected it.
 
-⚠️ **UNVERIFIED:** the review PANEL has not been seen rendering a real sidecar — that needs a
-logged-in browser. `GET /api/segment-editor/efnafraedi-2e/4/m68713/figures` (chapter `4`, not
-`ch04`); **read the JSON, never the UI** — `renderFigureCards([])` runs identically on empty, on
-`!res.ok` and in a bare `catch{}`. And **main has NOT been deployed since these merges.**
+✅ **RESOLVED 2026-09-13 BY [USER]: DEPLOYED, AND THE PANEL RENDERS REAL SIDECARS WITH EDITABLE
+LABELS.** Observed on **m68710**, which lists exactly `CNX_Chem_04_02_HClsoln` and
+`CNX_Chem_14_03_FishLemon`, labels below each, suggestions saveable. ✅ **Cross-checked against the
+source and it is the COMPLETE and CORRECT set**: m68710 references 6 images, the other 4 are
+photographs classified `copied` with no text — so *text-less figures skipped and counted* is
+confirmed by their ABSENCE from the panel, not merely by a tally.
+
+🔴 **M5's GATE IS THEREFORE MET IN FULL, AND THE LAST CLAUSE WAS THE ONE NOTHING HERE COULD CHECK.**
+It reads *"one chapter's figures processed end to end unattended, writing a sidecar AN EDITOR CAN
+ACTUALLY SEE"* — 34 figures across two chapters, verified by value, and now seen by an editor. That
+half had been UNVERIFIED since the machinery was built; a session cannot authenticate, and
+`renderFigureCards([])` renders identically on empty, on `!res.ok` and inside a bare `catch{}`, so
+the UI could never have settled it either.
+
+⚠️ **`CNX_Chem_14_03_FishLemon` IS A ch14-NAMED FIGURE LIVING IN A ch04 MODULE, AND EVERYTHING
+ROUTED IT CORRECTLY** — the pipeline keys on the module that references an image, never on the
+chapter number in its filename. ▶ **Do not filter figures by a `CNX_Chem_NN_` name prefix**; two
+ad-hoc counts in this session did exactly that and undercounted.
 
 ---
 
