@@ -1,0 +1,49 @@
+--- experiments/figure-text-translation/svgout.py	2026-09-03 08:31:31.277523624 +0000
++++ /tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/d293cd29-19d8-4ccc-a2b3-244bf111501b/scratchpad/proto/svgout.py	2026-09-13 09:09:53.112932783 +0000
+@@ -13,9 +13,11 @@
+ from pathlib import Path
+ import _deps
+ 
+-FACES = {
+-    False: '/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf',
+-    True:  '/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf',
++FACES = {   # PROTOTYPE: (bold, italic)
++    (False, False): '/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf',
++    (True, False):  '/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf',
++    (False, True):  '/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf',
++    (True, True):   '/usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf',
+ }
+ FAMILY = 'FigIS'          # local name; must not collide with a real installed family
+ 
+@@ -49,14 +51,19 @@
+     assert art.rstrip().endswith('</svg>'), 'unexpected artwork svg'
+ 
+     faces = []
+-    for bold in (False, True):
+-        chars = {c for it in items if it['bold'] is bold for c in it['text']}
++    # Order (F,F),(T,F),(F,T),(T,T): a figure with no italic run emits exactly the
++    # original two rules, so the non-italic output is unchanged.
++    for bold, italic in ((False, False), (True, False), (False, True), (True, True)):
++        chars = {c for it in items
++                 if bool(it['bold']) is bold and bool(it.get('italic')) is italic
++                 for c in it['text']}
+         if not chars:
+             continue
+-        b64 = base64.b64encode(subset_face(FACES[bold], chars)).decode('ascii')
++        b64 = base64.b64encode(subset_face(FACES[(bold, italic)], chars)).decode('ascii')
+         faces.append(
+             f"@font-face{{font-family:'{FAMILY}';font-weight:{700 if bold else 400};"
+-            f"font-style:normal;src:url(data:font/woff2;base64,{b64}) format('woff2');}}"
++            f"font-style:{'italic' if italic else 'normal'};"
++            f"src:url(data:font/woff2;base64,{b64}) format('woff2');}}"
+         )
+ 
+     parts = [f"<style>{''.join(faces)}</style>", '<g>']
+@@ -68,6 +75,7 @@
+         attrs = [f'x="{x + it["dx"]:.3f}"', f'y="{y:.3f}"',
+                  f'font-family="{FAMILY}"',
+                  f'font-weight="{700 if it["bold"] else 400}"',
++                 *(['font-style="italic"'] if it.get('italic') else []),
+                  f'font-size="{it["size"]:.3f}"', f'fill="{fill}"',
+                  'xml:space="preserve"']
+         if abs(it['rot']) > 1e-6:
