@@ -751,6 +751,13 @@ open:**
   a number in a chemistry textbook, which this project calls the worst available failure, and
   CLAUDE.md's own clean-break rule says that when an editor can do it in the UX you do not build
   black magic. The sidecar therefore keeps recording exactly what a human approved.
+  ⚠️ **AMENDED 2026-09-13 ([USER], ruling R6 of
+  `docs/superpowers/specs/2026-09-13-c140-t23-scripts-reflow-decimals-design.md`): for labels DRAWN IN
+  ENGLISH the conversion is automatic, at compose time, on the drawn text only.** Most such labels are
+  `send:false` and have no card, so "offered" never reached them. Sidecars, keys and `blocks.json` still
+  carry the source text unchanged. Translated labels are untouched by the amendment, and `Nota` stays for
+  identity replies. The rule and its hazards (not idempotent; tuples and a leading point left alone) are the
+  spec's §2.
   🔴 **THE RULE HAS ONE OWNER — `tools/lib/figure-consistency.cjs`.** The browser posts the
   server's `suggested` string verbatim and computes nothing; a pin asserts the client contains no
   digit character class at all, because a second implementation would drift silently and the

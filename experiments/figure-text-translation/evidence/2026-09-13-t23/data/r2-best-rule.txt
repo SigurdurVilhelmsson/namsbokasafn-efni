@@ -1,0 +1,24 @@
+r2 selection rule for the (PAD, F) cell. WRITTEN 2026-09-13 BEFORE ANY V5 COMPOSE WAS RUN.
+
+Population: the 176 layout-path drawn blocks; unit: drawn block unless stated.
+
+GATES (a cell failing any gate is disqualified, whatever its numbers):
+  G1 text sentinel passes on 176/176 blocks
+  G2 kept (run-exact) items identical to V0 on 34/34 figures (decimal off)
+  G3 no compose failure (rc 0 on 34/34) and bought keys unchanged 34/34
+
+RANK (lexicographic, smaller is better):
+  1 PROBLEM blocks = c3b's extended verdict (hit-artwork >=10 px | off-page > source | spill >=10 px |
+    BOUNDED contact < 1.0 pt | text-coll >=10 px) UNION blocks with an unresolved [USER] mechanism
+    (c3b analyse.py post-conditions, unchanged), EXCLUDING nothing
+  2 unresolved [USER] mechanism checks (of 50)
+  3 overflow-list blocks (named overhang at the floor)
+  4 blocks drawn below 8.5 pt that were NOT below 8.5 pt in the source (sz0 < 8.5 blocks excluded, named)
+  5 sum over those blocks of (8.5 - drawn size), pt
+  6 off-page blocks
+
+Shrink is NOT a tiebreak-only afterthought here: F is a hard floor inside the composer, and item 4/5
+count sub-8.5 pt text directly ([USER] called 8.5 pt fine and 6.75 pt tiny; 7.25-8.25 is unreviewed).
+PAD cannot be ranked by any instrument between 2.0 and 2.5 pt: [USER] flagged 1.02 pt and accepted
+3.46 pt; the source's own tightest box clearance is 2.5 pt (c3b). That is stated beside the result,
+not folded into the rank.
