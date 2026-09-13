@@ -2,7 +2,93 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-12 (EVENING)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-13** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — 🔴 **STOP BUYING FIGURES. GET TO THE BOTTOM OF THE IMAGE QUALITY PROBLEM FIRST.** ([USER] 2026-09-13)
+
+🔴 **A FIGURE CAN PASS EVERY AUTOMATED CHECK AND STILL BE VISIBLY WORSE THAN BEFORE.** This session
+reported ch03+ch04 as `96/96 labels reached, 0 English residue, 0 structural problems` — **every one
+of those numbers is true** — and [USER] then LOOKED AT TWO PICTURES and found them mangled. ▶ **I
+checked that TEXT ARRIVED; the question is whether THE PICTURE IS STILL RIGHT.** The repo's
+*"a count cannot see a substitution that did not happen"* has a sibling: **a VALUE check cannot see
+FORMATTING that was destroyed**, because every character is present and in the right order.
+
+### 🔴 THE NEXT SESSION'S AGENDA, IN THIS ORDER ([USER])
+
+#### ① THE SIDECAR QUESTION — in detail, first
+
+**3 of the 34 bought figures had EVERY block come back `EN == IS`** — chemical formulae and equations
+the model correctly left alone — **and were recomposed anyway, mangling the layout for no gain
+whatever.** `CNX_Chem_04_02_HClsoln` (3/3 identical) · `CNX_Chem_04_01_basehyd_img` (1/1) ·
+`CNX_Chem_04_04_GreenChem` (1/1). ⚠️ **Such a figure passes every check BY CONSTRUCTION** — reach
+100%, residue 0. **The cost is not money; it is damage.**
+
+**The decision, and it is NOT binary:** when every block is identity the driver should not compose —
+**but should it still write a sidecar?**
+- **Write one** → marked done, never re-bought or re-damaged; but it asserts a composition that never
+  happened, and `composedHash` is the publish-success marker.
+- **Write none** → stays eligible, and the next chapter-wide run re-buys and re-damages it.
+
+⚠️ **AND IT DOES NOT SOLVE THE WHOLE PROBLEM.** `CNX_Chem_14_03_FishLemon` is **2 of 6 blocks
+identical**: it genuinely needs composing for its 4 real translations, and its 2 formulas are damaged
+regardless. **All-identity is the clean SUBSET, not the problem.**
+⚠️ **You cannot know a figure is all-identity before paying**, so any guard is post-hoc.
+
+#### ② SUB/SUPERSCRIPT — second
+
+**Destroyed, and lost at EXTRACTION rather than at composition.** The stored block text is FLAT —
+`H2O`, `H3O+`, `Cl–`, `CH3COOH` — so the composer cannot restore what it never received. **Affects
+every figure containing a formula, including the 30 genuinely-translated ones.** This is the defect
+that decides whether figure translation is worth running at all on formula-heavy chapters.
+
+#### ③ TEXT RE-LAID-OUT AGAINST ARTWORK THAT DID NOT MOVE — third
+
+An equation's arrow is **artwork, not text**, so the reader captures the text either side and records
+the gap as **whitespace**: `'HCl(aq) + H2O(l)          H3O+(aq) + Cl–(aq)'`. Recomposed at different
+metrics, the text lands **on top of** the untouched arrow. Same class: a product split across two
+lines. Full account → `[[figure-compose-damages-formulas]]`.
+
+### ✅ WHAT THIS SESSION SHIPPED (2026-09-12–13), ALL MERGED AND PUSHED
+
+| | | |
+|---|---|---|
+| **P0** | security — `audit` green in both trees | closed |
+| **#462** | G1 subtracts the §C18 baseline — **M1's gate PASSES** | merged |
+| **#463** | P2 — container-built media carry `src`; 168 → 0 defective nodes | merged |
+| **M5** | **gate MET IN FULL** — 34 figures, and [USER] confirmed the panel renders them with editable labels | done |
+| figures | ch03 15/15 · ch04 19/19, **~34 ISK** | bought |
+
+**ch03 and ch04 are complete units — text AND figures — which is what the one-pass editing rule
+requires.** ⚠️ **But see the agenda above before treating the figures as usable.**
+✅ **NOTHING REACHED A READER** — no sync ran. All 3 all-identity figures REPLACED a pre-existing SVG
+and are revertible from git.
+
+### ❓ STILL OPEN FOR [USER] (unchanged from the 09-12 block, which retains the detail)
+
+- **Which chapter next** — ch13 ~1,287 / ch16 ~1,237; avoid ch18. **Blocked behind the agenda above.**
+- **The 29 appendices table-cell alts** — same consumer predicate, DELIBERATE §C88 omission.
+- **The ~304 June-vintage SVGs** — the one replaced today was visibly broken; the rest UNMEASURED.
+- **Q1 residue** — the `si`/`SI` ruling is still unapplied; **`Si`-only remains a measured regression**.
+- **The three in-domain glossary rows** (`addition → álagning` · `valence` · `chemical substance`).
+
+### ⚠️ OPERATIONAL, MEASURED THIS SESSION
+
+- 🔴 **Run paid figure work in the FOREGROUND, in modest batches.** Four long-running BACKGROUND
+  tasks were killed; **the driver was never the cause** — the suspect figure run ALONE peaked at
+  2,823 MB of 9.7 GB with ~7 GB available at every kill. ▶ **A remedy that appears to work is not
+  evidence for the diagnosis that motivated it** — per-figure invocation got 13 through, which read
+  as confirmation and was coincidence. Three theories recorded as WRONG: concurrent load, large
+  artwork, figure count. → `[[figure-run-oom-buy-per-figure]]`
+- ✅ **Nothing is lost when a run is killed** — all-or-nothing per figure held across four kills.
+- ⚠️ **Do not filter figures by a `CNX_Chem_NN_` name prefix.** `CNX_Chem_14_03_FishLemon` lives in a
+  **ch04** module and routed correctly everywhere; two ad-hoc counts here filtered by name and
+  undercounted.
+- ⚠️ **Give a todo file a TRAILING NEWLINE** — `while read` drops the last line, and it silently
+  skipped a figure. Caught only by comparing attempted against expected.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-12 (EVENING)** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — 🔴 **FINISH ch03 AND ch04'S FIGURES. ~35 ISK. DO NOT BUY A NEW CHAPTER FIRST.**
 
