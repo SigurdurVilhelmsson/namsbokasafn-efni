@@ -60,9 +60,9 @@ at all — every block was *kept*), so their `population_items_equal` is the vac
 | `CNX_Chem_04_02_HClsoln` | 0 | 3 | 7 |
 | `CNX_Chem_04_04_GreenChem` | 0 | 1 | 2 |
 
-These three are exactly the figures where E's effect is largest relative to the figure's size —
-every drawn block in them is a *kept* block, so `kept_changed` (2, 7, 2) reflects almost the
-whole figure switching from re-laid-out to run-exact drawing.
+In these three, every drawn block is a *kept* block (no population blocks to dilute the count),
+so their `kept_changed` (2, 7, 2) counts changed blocks out of the whole figure, not out of a
+subset.
 
 ### `kept_changed` per figure (all 34, from `t3.jsonl`)
 
@@ -107,7 +107,22 @@ under both composers.
 | CNX_Chem_04_05_map7_img | 0 | 0 | 7 | 0 |
 | CNX_Chem_04_05_map8_img | 0 | 0 | 9 | 0 |
 | **CNX_Chem_14_03_FishLemon** | 2 | 8 | 4 | **4** |
-| **TOTAL** | **7** | **191** | **160** | **20** |
+| **TOTAL** | **7** | **191** | **176** | **20** |
+
+The TOTAL row is computed from `$SCRATCH/t3/t3.jsonl`, not hand-summed, by:
+```bash
+python3 -c "
+import json
+rows = [json.loads(l) for l in open('\$SCRATCH/t3/t3.jsonl') if l.strip()]
+print(dict(figures=len(rows), identity=sum(r['identity'] for r in rows),
+           runExact=sum(r['runExact'] for r in rows),
+           population_blocks=sum(r['population_blocks'] for r in rows),
+           kept_changed=sum(r['kept_changed'] for r in rows)))
+"
+```
+which printed `{'figures': 34, 'identity': 7, 'runExact': 191, 'population_blocks': 176, 'kept_changed': 20}`.
+(An earlier version of this table hand-summed `population_blocks` and got 160 — wrong; 176 is
+the sum of the table's own 34 rows and of `t3.jsonl` directly, checked two ways.)
 
 Across all 34 figures, `blocks_json_identical` and `multisets_equal` were both `true` — E never
 changes the block layout `compose.py` emits, only how the *kept*-text items within those blocks
@@ -151,20 +166,62 @@ a flattened/expanded subscript run) collapses to **1.04** under head, and base's
 shrinks to well under 1 px under head. This is the C140 defect (`kept text re-laid out, not
 drawn run-exact`) measured directly on real artwork, and E fixing it, in the same table.
 
+**What this instrument does and does not show.** `fidelity.py` is a **layout** instrument: it
+scores where composed text ink falls relative to the source PDF's ink (position, extent,
+centroid), not which characters were drawn or in what colour. Per `COMPOSE-FIDELITY.md`
+(*"IT IS A LAYOUT INSTRUMENT, NOT A CONTENT OR COLOUR INSTRUMENT"*), planted red-or-blue text,
+`l`→`I` substitution and a decimal point→comma swap all score **0 detected** (0/313 · 0/103 ·
+0/37) — a "faithful" score says nothing about which characters or which colour were drawn. So
+the `iou1`/`c_no`/`h_ratio` improvements above are evidence about **placement, size and
+baseline only** — not about character or colour correctness — and only for the two named
+figures (`CNX_Chem_14_03_corresp`, `CNX_Chem_01_01_SciMethod`), not the full 34.
+
 ---
 
-## Python and JS results (Tasks 4–6; cited, not re-measured here)
+## Python and JS results
 
-Per the Task 4/5/6 reports:
+**Python — run twice, at two shas, both by this VERIFICATION task:**
 
-- **Python** — all 12 `test_*.py` files under `experiments/figure-text-translation/` print
-  `ALL PASS` at `d1f9a724` / `c0bfbdcd` (verified present: `ls test_*.py | wc -l` → 12).
-- **JS** — at `4612f3e4` the vitest failing set moved only inside
-  `tools/__tests__/figure-run-free.test.js` (7 newly green, 2 newly red), data-coupled to the
-  committed sidecars and expected to return to the 36-name baseline recorded at `0c339b9d`
-  (`SCRATCH/baseline-main/js-failing-by-name.txt`) after the recompose data commit.
+- **All 12** `test_*.py` files under `experiments/figure-text-translation/` at `d1f9a724`
+  (Task 4's own run).
+- **All 12** re-run here, now, at `77d98b26e46942d21bca644c94eb4fbecdf25c5b` (this repo's HEAD
+  at fix time — the commit that added this file's first version; a docs-only change, no `.py`
+  touched), via:
+  ```bash
+  cd experiments/figure-text-translation
+  for t in test_*.py; do FIGTEXT_PYLIBS=./pylibs timeout 900 python3 -u "$t" \
+    > "$SCRATCH/t7fix-$t.log" 2>&1; echo "$t rc=$? $(tail -1 "$SCRATCH/t7fix-$t.log")"; done
+  ```
+  All 12 returned `rc=0` with a final `ALL PASS` line (verbatim):
+  ```
+  test_blockkey_consumers.py rc=0 ALL PASS
+  test_c4b_multiset.py rc=0 ALL PASS
+  test_compose_runexact.py rc=0 ALL PASS
+  test_figtext_normalise.py rc=0 ALL PASS
+  test_figtext_out.py rc=0 ALL PASS
+  test_figtext_runexact.py rc=0 ALL PASS
+  test_figure_compose.py rc=0 ALL PASS
+  test_figure_prepare.py rc=0 ALL PASS
+  test_make_fixture.py rc=0 ALL PASS
+  test_readlayer.py rc=0   ALL PASS
+  test_sendable.py rc=0 ALL PASS
+  test_sources.py rc=0 ALL PASS
+  ```
+  (12 files present, checked with `ls test_*.py | wc -l` → 12, matching the count above.)
 
-This note does not re-run either suite; it cites Tasks 4–6's own committed results.
+  Task 5 additionally re-ran 2 of the 12 at `c0bfbdcd` (not all 12); that partial re-run is
+  Task 5's own record and is not what either Python line above cites.
+
+**JS** — per Task 6, at `4612f3e4` the vitest failing set moved only inside
+`tools/__tests__/figure-run-free.test.js` (7 newly green, 2 newly red), data-coupled to the
+committed sidecars' `composedVersion`. Per the design spec's own Testing → Baselines section
+(`docs/superpowers/specs/2026-09-13-c140-e-run-exact-kept-text-design.md`), that file's failing
+set is *expected* to move between commits for exactly this reason and to return to the 36-name
+baseline recorded at `0c339b9d` (`SCRATCH/baseline-main/js-failing-by-name.txt`) after the
+recompose data commit — the spec states this as the plan's own design, not as something this
+note measured or predicts on its own authority.
+
+This note does not re-run the JS suite; it cites Task 6's own committed result.
 
 ---
 
