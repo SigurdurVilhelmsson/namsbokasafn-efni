@@ -363,4 +363,9 @@ check('E7 runExact names exactly the kept blocks, identity included',
       == collections.Counter([K_HYP, K_VERBATIM, K_GAP, K_EDGE, K_KARC]),
       repr(rep.get('runExact')))
 
+check('E8 ITALIC: an italic @font-face exists and the italic run uses it',
+      ['400', 'italic', '()g'] in faces(svg)
+      and len(find(els, '(g)', font_style='italic')) == 1,
+      f"faces={[f[:2] for f in faces(svg)]!r} (g)={find(els, '(g)')!r}")
+
 finish()

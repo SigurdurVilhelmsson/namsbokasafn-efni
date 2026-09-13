@@ -13,9 +13,11 @@ import base64, io, re
 from pathlib import Path
 import _deps
 
-FACES = {
-    False: '/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf',
-    True:  '/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf',
+FACES = {   # (bold, italic)
+    (False, False): '/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf',
+    (True, False):  '/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf',
+    (False, True):  '/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf',
+    (True, True):   '/usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf',
 }
 FAMILY = 'FigIS'          # local name; must not collide with a real installed family
 
@@ -49,14 +51,20 @@ def write_svg(artwork_svg, out_path, items, page_h):
     assert art.rstrip().endswith('</svg>'), 'unexpected artwork svg'
 
     faces = []
-    for bold in (False, True):
-        chars = {c for it in items if it['bold'] is bold for c in it['text']}
+    # A face is embedded only when some item uses it, iterated (F,F),(T,F),(F,T),(T,T): a
+    # figure with no italic item therefore emits today's rules in today's order. Italic
+    # arrives with E (§C140 ①) - a kept run in an italic BaseFont is drawn italic.
+    for bold, italic in ((False, False), (True, False), (False, True), (True, True)):
+        chars = {c for it in items
+                 if bool(it['bold']) is bold and bool(it.get('italic')) is italic
+                 for c in it['text']}
         if not chars:
             continue
-        b64 = base64.b64encode(subset_face(FACES[bold], chars)).decode('ascii')
+        b64 = base64.b64encode(subset_face(FACES[(bold, italic)], chars)).decode('ascii')
         faces.append(
             f"@font-face{{font-family:'{FAMILY}';font-weight:{700 if bold else 400};"
-            f"font-style:normal;src:url(data:font/woff2;base64,{b64}) format('woff2');}}"
+            f"font-style:{'italic' if italic else 'normal'};"
+            f"src:url(data:font/woff2;base64,{b64}) format('woff2');}}"
         )
 
     parts = [f"<style>{''.join(faces)}</style>", '<g>']
@@ -68,6 +76,7 @@ def write_svg(artwork_svg, out_path, items, page_h):
         attrs = [f'x="{x + it["dx"]:.3f}"', f'y="{y:.3f}"',
                  f'font-family="{FAMILY}"',
                  f'font-weight="{700 if it["bold"] else 400}"',
+                 *(['font-style="italic"'] if it.get('italic') else []),
                  f'font-size="{it["size"]:.3f}"', f'fill="{fill}"',
                  'xml:space="preserve"']
         if abs(it['rot']) > 1e-6:
