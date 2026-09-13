@@ -66,5 +66,59 @@ check('1f a degenerate multi-line arc sends its KEY, not its space-joined lines'
 check('1g CONTROL the space-joined form really differs here (the prototype\'s miss)',
       ' '.join(BK.block_lines(degen)) == 'ab cd', repr(' '.join(BK.block_lines(degen))))
 
+# ── 2. is_identity ──────────────────────────────────────────────────────────────────
+check('2a a multi-line reply equal to what was sent is identity',
+      FT.is_identity('Mass of reactant', 'Mass of reactant', False))
+check('2b ... also when the reply is a LEGACY list of lines',
+      FT.is_identity(['Mass of', 'reactant'], 'Mass of reactant', False))
+check('2c whitespace is not content: a collapsed arrow gap is still identity',
+      FT.is_identity('HCl(g) HCl(aq)', 'HCl(g)          HCl(aq)', False))
+check('2d edge whitespace is not content (translate-blocks.mjs .trim()s the reply)',
+      FT.is_identity('  Mass of reactant ', 'Mass of reactant', False))
+check('2e an arc reply equal to its key is identity',
+      FT.is_identity('ABCD', 'ABCD', True))
+check('2f CONTROL a prefixed reply is NOT identity',
+      not FT.is_identity('X Mass of reactant', 'Mass of reactant', False))
+check('2g CONTROL one extra character is NOT identity',
+      not FT.is_identity('Mass of reactants', 'Mass of reactant', False))
+check('2h CONTROL a real translation is NOT identity',
+      not FT.is_identity('Massi hvarfefnis', 'Mass of reactant', False))
+
+# ── 3. run_face ─────────────────────────────────────────────────────────────────────
+FONTS = {
+    'R': {'base': '/ABCDEF+LiberationSans'},
+    'B': {'base': '/LiberationSans-Bold'},
+    'I': {'base': '/ABCDEF+LiberationSans-Italic'},
+    'BI': {'base': '/LiberationSans-BoldItalic'},
+    'O': {'base': '/Helvetica-Oblique'},
+    'Bold': {'base': '/ABCDEF+Helvetica'},     # a RESOURCE name that lies
+}
+for key, want in (('R', (False, False)), ('B', (True, False)), ('I', (False, True)),
+                  ('BI', (True, True)), ('O', (False, True))):
+    got = FT.run_face({'font': key}, FONTS)
+    check(f'3 {key}: the face comes from the BaseFont', got == want, f'{got!r} want {want!r}')
+got = FT.run_face({'font': 'Bold'}, FONTS)
+check('3f the RESOURCE name is never read (a key called "Bold" with a regular base)',
+      got == (False, False), repr(got))
+got = FT.run_face({'font': 'MISSING'}, FONTS)
+check('3g a font absent from meta.fonts draws Regular rather than raising',
+      got == (False, False), repr(got))
+
+# ── 4. run_draw_text ────────────────────────────────────────────────────────────────
+got = FT.run_draw_text({'text': '(cid:127) 5% or less'})
+check('4a a placeholder is removed and flagged; the edge space it leaves is KEPT',
+      got == (' 5% or less', True), repr(got))
+got = FT.run_draw_text({'text': 'Mass of '})
+check('4b a trailing space is a glyph position: unchanged and NOT flagged',
+      got == ('Mass of ', False), repr(got))
+got = FT.run_draw_text({'text': '(cid:127)'})
+check('4c a run that is nothing but a placeholder becomes empty, flagged',
+      got == ('', True), repr(got))
+import readlayer as RL                          # noqa: E402 - pdfplumber via FIGTEXT_PYLIBS
+probe = f'{RL.CID}42) y'
+got = FT.run_draw_text({'text': probe})
+check("4d DRIFT GUARD the remover matches everything readlayer's DETECTOR finds",
+      RL.CID in probe and got == (' y', True), f'{probe!r} -> {got!r}')
+
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)

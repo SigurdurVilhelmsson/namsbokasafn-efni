@@ -219,3 +219,77 @@ def strip_undecodable(value):
     if isinstance(value, str):
         return _CID_TOKEN.sub('', value).strip()
     return [_CID_TOKEN.sub('', line).strip() for line in value]
+
+
+def is_identity(value, english, arc):
+    """Did the MT give back what went on the wire?
+
+    `value` is the RAW translations entry (a str, or a legacy list of lines); `english` is
+    `blockkey.block_english(block)` - what emit-blocks.py SENT; `arc` is compose.py's
+    draw-shape decision, used only to shape `value` the way the composer would draw it.
+
+    TOKEN equality, not byte equality, and that is the equivalence already in force:
+    `translate-blocks.mjs` `.trim()`s every reply, and compose.py's translated path reads a
+    value only through `para.split()`, so two token-equal values already drew identically.
+
+    🔴 AN IDENTITY BLOCK STAYS IN compose-report `translated`. It was bought, and
+    `figure-compose.py` assertion 2 requires `missing` to equal exactly the `send:false`
+    keys - moving it would refuse a correct figure. It is ALSO listed in `identity`, and
+    drawn run-exact, because re-laying English it could draw exactly is the defect E fixes.
+
+    Callers decide identity only AFTER the empty/whitespace check: an empty value is
+    `missing`, never identity.
+    """
+    shaped = normalise_block_value(value, arc)
+    text = shaped if arc else ' '.join(shaped)
+    return text.split() == english.split()
+
+
+def run_face(run, fonts):
+    """(bold, italic) for ONE run, from that run's own BaseFont.
+
+    `fonts` is `meta['fonts']`. The base looks like `/ABCDEF+LiberationSans-Italic`: the
+    leading '/' and a subset prefix are dropped before matching. 'oblique' counts as italic
+    (Helvetica names its slanted face that way).
+
+    ⚠️ NEVER KEY ON THE RESOURCE NAME (`/TT0`, `/R9`, `PAGE/F1`) - it is per file. The same
+    rule as compose.py's BOLD set.
+
+    ⚠️ A font key absent from `fonts` draws REGULAR rather than raising. `runs.json` and
+    `meta.json` out of step is a plumbing fault that `sendable` (`missing_fonts`) already
+    reports and holds back from the MT, so such a block only ever reaches the composer as
+    kept English - failing the whole figure over it would turn a report into a lost figure.
+    """
+    base = fonts.get(run['font'], {}).get('base', '')
+    name = base.lstrip('/').split('+')[-1].lower()
+    return ('bold' in name, 'italic' in name or 'oblique' in name)
+
+
+def run_draw_text(run):
+    """(text, token_removed) for ONE run that is about to be DRAWN run-exact.
+
+    Removes pdfminer's `(cid:N)` placeholders with `_CID_TOKEN`, the one remover regex, and
+    nothing else. `token_removed` is `text != run['text']`.
+
+    🔴 A PLACEHOLDER IS NEVER READER-FACING CONTENT, AND THE DRAW SITE IS THE ONLY PLACE IT
+    CAN REACH A READER. A block whose own text did not decode is held back from the MT by
+    `sendable`, so it is KEPT - and `strip-text.py` has already removed every glyph from the
+    artwork, so the label is redrawn from this text or not at all. Measured 2026-09-07 on
+    CNX_Chem_05_02_FoodLabel: two live `<text>` elements reading `(cid:127) 5% or less`
+    under the driver's VERDICT ok.
+
+    ⚠️ IT IS NOT DONE AT EXTRACTION, DELIBERATELY: the token is the POSITIVE EVIDENCE the hold
+    is keyed on (`readlayer._looks_undecoded`); removing it upstream would make an
+    undecodable block read as clean prose and send it to the paid MT.
+
+    ⚠️ NO `.strip()`. A run's edge spaces are glyph POSITIONS the source typed. The `.strip()`
+    in the remover this replaces named 19 keys in 8 figures as undecodable when they carried
+    no `(cid:` at all, only an edge space (COMPOSE-FIDELITY.md). A run that becomes '' is
+    skipped by the caller.
+
+    ⚠️ The glyphs after a removed token keep the run's origin, so they sit one token-width
+    left of where the source drew them. Accepted: 0 such runs in the 34 bought figures, and
+    the block is named in compose-report `undecodable`.
+    """
+    text = _CID_TOKEN.sub('', run['text'])
+    return text, text != run['text']
