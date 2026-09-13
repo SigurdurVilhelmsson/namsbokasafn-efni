@@ -222,9 +222,9 @@ and line 63 becomes:
         joined = block_english(b)
 ```
 
-Then confirm nothing else restates it:
-Run: `grep -an "if arc else ' '.join\|is_arc(b) else\|is_arc(_b)" *.py | grep -v pylibs`
-Expected: only `blockkey.py`'s own body (no other hit).
+Then confirm the known inline copies are gone:
+Run: `grep -an "if arc else ' '.join\|is_arc(_b)\|join(''.join(r\['text'\] for r in line)" *.py | grep -v pylibs`
+Expected: **no output** (`block_english`'s own body matches none of these patterns). ⚠️ This grep is a weak detector — `census.py`'s copy spanned two lines and never matched a one-line pattern; the byte-identity in Step 7 and T3 is the real check.
 
 - [ ] **Step 7: Prove the refactor is behaviour-identical**
 
@@ -1117,6 +1117,7 @@ Run all 12 Python test files (the 10 baseline + `test_figtext_runexact.py` + `te
 for t in test_*.py; do FIGTEXT_PYLIBS=./pylibs timeout 900 python3 -u "$t" > "$SCRATCH/t4-$t.log" 2>&1; echo "$t rc=$? $(tail -1 "$SCRATCH/t4-$t.log")"; done
 ```
 Expected: 12 lines, every one `rc=0 ALL PASS` (`test_readlayer.py`'s last line is indented `  ALL PASS`).
+⚠️ **The one seam the scratch mirror could not exercise is `test_blockkey_consumers.py`**, which parses compose's STDOUT: from the `!! … no translation - ENGLISH KEPT` header, one key per line, until the first blank line. The new `RUNEXACT` report lines print *before* that header and both degenerate warnings begin with `\n`, so the structure holds — but if that file goes red, this contract is the first place to look (compose.py's note above the `compose-report.json` write describes it).
 
 - [ ] **Step 12: Commit**
 
@@ -1290,7 +1291,7 @@ Create `SCRATCH/t3/t3_verify.py`:
 #!/usr/bin/env python3
 """T3: compose the 34 bought figures with the UNCHANGED (BASE) and the E (HEAD) composer,
 each with its committed sidecar. Scratch only; resumable; 0 ISK (no MT anywhere)."""
-import collections, json, os, shutil, subprocess, sys
+import collections, json, os, re, shutil, subprocess, sys
 from pathlib import Path
 
 REPO = Path('/home/siggi/dev/repos/namsbokasafn-efni')
@@ -1334,6 +1335,28 @@ def sh(argv, env=None, cwd=None, timeout=900):
     return subprocess.run(argv, capture_output=True, text=True, env=env, cwd=cwd, timeout=timeout)
 
 
+HASH_SUFFIX = re.compile(r'-[0-9a-f]{4}$')
+
+
+def resolve(names, env, cwd):
+    """basename -> source record, with the driver's LOOKUP-ONLY de-hash fallback.
+
+    8 of the 34 sidecar basenames carry a CNXML hash suffix (`…brain-ec0b`) that sources.py
+    cannot resolve; tools/figure-run.js strips `-[0-9a-f]{4}` for the LOOKUP only. The
+    figure's identity - the `--basename` passed to prepare - stays the UNSTRIPPED name."""
+    got = json.loads(sh([sys.executable, 'sources.py', '--json', 'efnafraedi-2e', *names],
+                        env=env, cwd=cwd).stdout)
+    missing = [n for n in names if not got.get(n)]
+    if missing:
+        alt = json.loads(sh([sys.executable, 'sources.py', '--json', 'efnafraedi-2e',
+                             *[HASH_SUFFIX.sub('', n) for n in missing]], env=env, cwd=cwd).stdout)
+        for n in missing:
+            got[n] = alt.get(HASH_SUFFIX.sub('', n))
+    bad = [n for n in names if not got.get(n)]
+    assert not bad, f'unresolved even after the de-hash fallback: {bad}'
+    return got
+
+
 def item_key(it):
     return (it['text'], round(it['x'], 6), round(it['y'], 6), it['size'], round(it['rot'], 6),
             bool(it['bold']), tuple(round(c, 6) for c in it['rgb']))
@@ -1347,8 +1370,7 @@ def main():
     env = dict(os.environ, FIGTEXT_PYLIBS=str(REPO / REL / 'pylibs'))
     names = sorted(p.name[:-len('.is.json')] for p in SIDECARS.glob('*.is.json'))
     assert len(names) == 34, len(names)
-    src = json.loads(sh([sys.executable, 'sources.py', '--json', 'efnafraedi-2e', *names],
-                        env=env, cwd=str(trees['head'])).stdout)
+    src = resolve(names, env, str(trees['head']))       # 17 .pdf + 9 .eps + 8 de-hashed
     for b in names:
         if b in done:
             continue
@@ -1525,13 +1547,15 @@ Expected in ch04: the same with **19** / **11** / `19 translated` / `19 = enumer
 `15 + 19 = 34`. ⚠️ `= enumerated` is the SELECTED count; the chapter totals are not printed, and no dry-run line reports purchases — "0 purchases" is guaranteed by the `--stale` selection, and the live run's `MT spawned for N figure(s)` line is its observable.
 **Any other tally row: STOP and report.**
 
-- [ ] **Step 3: Live run, in the foreground, in batches of ≤ 8 figures**
+- [ ] **Step 3: Live run, in the foreground, one chapter at a time**
 
-Build the batches from the dry-run logs' figure names (or from the sidecar list), then for each batch:
+This run buys nothing, and the 2026-09-12 kills were of BACKGROUND tasks, not a driver fault (memory `figure-run-oom-buy-per-figure`). Run each chapter whole, in the foreground, with a tool timeout of 600000 ms:
 ```bash
-node tools/figure-run.js --book efnafraedi-2e --chapter 3 --stale --figure <b1>,<b2>,…,<b8> 2>&1 | tee -a "$SCRATCH/t8-live-ch03.log" | tail -15
+node tools/figure-run.js --book efnafraedi-2e --chapter 3 --stale 2>&1 | tee "$SCRATCH/t8-live-ch03.log" | tail -20
+node tools/figure-run.js --book efnafraedi-2e --chapter 4 --stale 2>&1 | tee "$SCRATCH/t8-live-ch04.log" | tail -20
 ```
-(chapter 4 likewise; `CNX_Chem_14_03_FishLemon` is enumerated under chapter 4.) Use a tool timeout of 600000 ms. Expected per batch: `MT spawned for 0 figure(s)` (or no MT line at all if 0), tally all `translated`, `VERDICT ok`. **A kill loses nothing** — re-run the same batch; recomposed figures then read `skipped-current`.
+(`CNX_Chem_14_03_FishLemon` is enumerated under chapter 4.) Expected per chapter: `MT spawned for 0 figure(s)` (or no MT line at all if 0), a tally of all `translated` (15, then 19), `VERDICT ok`.
+**Fallback only if a run is killed or times out:** a kill loses nothing — recomposed figures read `skipped-current` on re-run. Re-run the same chapter command; if it dies again, batch with `--figure <b1>,<b2>,…` (≤ 8 names). Before relying on `--figure` with a hash-suffixed name, confirm it selects: `node tools/figure-run.js --book efnafraedi-2e --chapter 3 --stale --dry-run --figure CNX_Chem_03_01_brain-ec0b` must report `1 figure(s)`.
 
 - [ ] **Step 4: Check exactly what changed**
 
@@ -1594,7 +1618,7 @@ Create `SCRATCH/t9/t9_stacks.py`:
 ```python
 #!/usr/bin/env python3
 """source raster / before (BASE media) / after (working-tree media), per figure, as one JPEG."""
-import json, os, subprocess, sys
+import json, os, re, shutil, subprocess, sys
 from pathlib import Path
 REPO = Path('/home/siggi/dev/repos/namsbokasafn-efni')
 EXP = REPO / 'experiments/figure-text-translation'
@@ -1607,13 +1631,29 @@ SITE = T9 / 'site' / 'img'
 SITE.mkdir(parents=True, exist_ok=True)
 env = dict(os.environ, FIGTEXT_PYLIBS=str(EXP / 'pylibs'))
 names = sorted(p.name[:-len('.is.json')] for p in (REPO / 'books/efnafraedi-2e/figure-text').glob('*.is.json'))
-src = json.loads(subprocess.run([sys.executable, 'sources.py', '--json', 'efnafraedi-2e', *names],
-                                capture_output=True, text=True, env=env, cwd=str(EXP)).stdout)
+HASH_SUFFIX = re.compile(r'-[0-9a-f]{4}$')
+
+
+def sources(ns):
+    return json.loads(subprocess.run([sys.executable, 'sources.py', '--json', 'efnafraedi-2e', *ns],
+                                     capture_output=True, text=True, env=env, cwd=str(EXP)).stdout)
+
+
+src = sources(names)
+for n in [n for n in names if not src.get(n)]:          # the driver's lookup-only de-hash
+    src[n] = sources([HASH_SUFFIX.sub('', n)]).get(HASH_SUFFIX.sub('', n))
+assert all(src.get(n) for n in names), [n for n in names if not src.get(n)]
 done = []
 for b in names:
     w = T9 / 'work' / b
     w.mkdir(parents=True, exist_ok=True)
-    subprocess.run(['pdftocairo', '-png', '-r', '150', '-singlefile', src[b]['path'], str(w / 'source')],
+    # Rasterise the PDF prepare STAGES, never the raw source: 9 of the 34 sources are .eps,
+    # which pdftocairo cannot read; prepare converts them and writes <basename>.pdf.
+    subprocess.run([sys.executable, str(EXP / 'figure-prepare.py'), src[b]['path'], '--basename', b,
+                    '--out', str(w / 'prep')], check=True, capture_output=True, env=env, cwd=str(EXP))
+    staged = w / 'prep' / f'{b}.pdf'
+    assert staged.exists(), f'prepare staged no {staged.name} for {b}'
+    subprocess.run(['pdftocairo', '-png', '-r', '150', '-singlefile', str(staged), str(w / 'source')],
                    check=True, timeout=300)
     srcimg = Image.open(w / 'source.png').convert('RGB')
     W, H = srcimg.size
@@ -1648,6 +1688,7 @@ for b in names:
     if out.size[0] > 1400:
         out = out.resize((1400, round(out.size[1] * 1400 / out.size[0])))
     out.save(SITE / f'{b}.jpg', quality=85)
+    shutil.rmtree(w, ignore_errors=True)                 # /tmp is small; the JPEG is what is kept
     done.append(b)
     print('ok', b, flush=True)
 print('rendered', len(done), 'of', len(names))
