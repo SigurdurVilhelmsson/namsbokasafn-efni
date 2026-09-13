@@ -2,7 +2,32 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-13 (AFTERNOON)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-13 (EVENING)** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **merge E's PR → `./scripts/deploy.sh` → verify the figures route.** Then the next item: **§C140 ② + ③ + ⑨ + ⑩** on a new branch (brainstorm → spec → plan → SDD). Buying stays stopped.
+
+✅ **§C140 ① E IS BUILT, VERIFIED AND [USER]-ACCEPTED ON ITS OWN SCOPE** — branch
+`feat/c140-e-run-exact-kept-text`. Design: [`docs/superpowers/specs/2026-09-13-c140-e-run-exact-kept-text-design.md`](../superpowers/specs/2026-09-13-c140-e-run-exact-kept-text-design.md);
+plan: [`docs/superpowers/plans/2026-09-13-c140-e-run-exact-kept-text.md`](../superpowers/plans/2026-09-13-c140-e-run-exact-kept-text.md);
+measurements (frozen): [`experiments/figure-text-translation/evidence/2026-09-13-e-build/VERIFICATION.md`](../../experiments/figure-text-translation/evidence/2026-09-13-e-build/VERIFICATION.md).
+The 34 bought figures are recomposed on the branch at 0 ISK (`MT spawned for 0 figure(s)`, sidecars changed only in
+`composedVersion`). **Nothing is rendered or synced.**
+
+⚠️ **`tools/lib/figure-text-sidecar.cjs` changed (`COMPOSER_VERSION` → `'2'`), and `figureReviewService.js` requires it — so the
+merge is a SERVER change.** Deploy after merging, or the review panel runs the old constant.
+
+🔴 **[USER] LOOKED AT ALL 34: MOST ARE STILL WRONG — BUT NOT IN ANYTHING E DRAWS.** Verbatim notes:
+[`evidence/2026-09-13-e-build/USER-REVIEW.md`](../../experiments/figure-text-translation/evidence/2026-09-13-e-build/USER-REVIEW.md).
+Every figure where E changed a label reads fine. What remains is classified in §C140 and **[USER] RULED 2026-09-13: land E now; the
+next coding work is ② + ③ + ⑨ + ⑩; MT wording (⑪) stays out of scope.**
+
+⏹ **Publication of ch03/ch04 figures stays [USER]'s call** — the review shows translated-label defects on most figures, so a
+render + sync now would ship E's improvement alongside them. ⑧ (the corrupt June HClsoln readers are served) is cured only by that
+render + sync.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-13 (AFTERNOON)** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — **BUILD E (§C140 ①): draw English-kept figure text run-exact.** ✅ **[USER] RULED 2026-09-13: E** (over E′, B′ and D). Per item: brainstorm → plan → SDD/TDD, one PR. Buying stays stopped.
 
@@ -1621,14 +1646,17 @@ and it needs a re-render to reach anyone once fixed.
 
 | # | open item | fixes | measured on the 34 | status |
 |---|---|---|---|---|
-| ① | **E — draw English-kept blocks run-exact** (+ italic faces), bump `COMPOSER_VERSION`, `figure-run --stale` | M1/M1b/M2/M3/M4/P2/P3 for 191 kept blocks in every figure; dissolves the all-identity sidecar question | scratch prototype: kept damage **21/191 → 2/191**; translated items identical 258/258; 0-ISK repair route's staleness/restamp logic run on the real driver **with spawns faked** (34 selected, 0 MT spawns, converges; **no real compose run**). **Alternative E′ — leave kept text objects in the artwork, strip only translated blocks — named, unmeasured** | ✅ **[USER] RULED 2026-09-13: BUILD E** (not E′/B′/D); unbuilt |
-| ② | **T-scripts — source-keyed formatting transfer** for translated blocks | the 34/52 script blocks E cannot reach | feasibility: **52/52 stretches placed, 0 misplaced**; misses must be NAMED | open, unbuilt |
-| ③ | **T-reflow — per-block wrap budget and anchor** | ~44/176 translated blocks (22–23/34 figs) on artwork / off page / shrunk | **no global constant works** (BOXW 0/63/80 and top-anchor each trade one defect for another) | open, **the real design work** |
+| ① | **E — draw English-kept blocks run-exact** (+ italic faces), bump `COMPOSER_VERSION`, `figure-run --stale` | M1/M1b/M2/M3/M4/P2/P3 for 191 kept blocks in every figure; dissolves the all-identity sidecar question | **built, 2026-09-13** — on the 34: `blocks.json` byte-identical 34/34, identity 7, runExact 191, translated items identical 34/34, formula-arc `C2H5O–` ink overlap 0.26 → 0.88 (`evidence/2026-09-13-e-build/VERIFICATION.md`); real 0-ISK recompose run. **[USER] looked at all 34: kept text fine wherever E changed it** | ✅ **built, verified and [USER]-accepted on `feat/c140-e-run-exact-kept-text`; merge → deploy pending** |
+| ② | **T-scripts — source-keyed formatting transfer** for translated blocks | the 34/52 script blocks E cannot reach | feasibility: **52/52 stretches placed, 0 misplaced**; misses must be NAMED. **[USER] review: missing sub/superscripts in translated labels on 13 of 34 figures** — every flagged formula checked to sit in a translated label | ✅ **[USER] SCOPED 2026-09-13 as next work**; unbuilt |
+| ③ | **T-reflow — per-block wrap budget and anchor** | ~44/176 translated blocks (22–23/34 figs) on artwork / off page / shrunk | **no global constant works** (BOXW 0/63/80 and top-anchor each trade one defect for another). **[USER] review: extra/missing line breaks, overflow, arrow overlap, constant indent where schematic boxes want centred text, a tiny-font fallback — ~19 of 34 figures** | ✅ **[USER] SCOPED 2026-09-13 as next work**; **the real design work** |
 | ④ | **S — `strip-text.py` keeps non-text graphics-state ops inside BT..ET** | combustion's 7 recoloured arrowheads; latent in 18/34 | variant: 0 px differ on 18/18 | open |
 | ⑤ | **artwork — pad the page box to whole points before `pdftocairo -svg`** | ≤4 px artwork/text misregistration on non-integer pages (24/24 carry the scale) | 2/2: dx −3/0/+3 → 0/0/0; `-origpagesizes` does NOT work | open |
 | ⑥ | **F — STIX face, `geometricPrecision`, per-run kerning** | 45 symbol blocks ~2 px high; browser advance rounding | plus variant: symbol offset 2.0 → 0.2 px | ❓ **[LEAD] provenance call: extracting OFL STIX subsets from OpenStax PDFs** |
 | ⑦ | **spend gates**: MathematicalPi `°`→`8` / `−`→`2` (PentIso `36 8C` ×3 is `send:true`); production pages resolved as figures (rvosmosis dialogue sheet, N2O5 InDesign page) | money + reader-visible wrong content | 3 readers agree → detection, not a reader swap | open, **before the next chapter** |
-| ⑧ | **LIVE: the June `HClsoln_IS.svg` pupils are served is corrupt in its bytes** (17/27 rasters stretched); **8/700** published mt-preview SVGs carry the signature | reader-visible today, not caused by this run | only HClsoln visually confirmed | ❓ **[USER]: act now, or let ① recompose + re-render + sync** |
+| ⑧ | **LIVE: the June `HClsoln_IS.svg` pupils are served is corrupt in its bytes** (17/27 rasters stretched); **8/700** published mt-preview SVGs carry the signature | reader-visible today, not caused by this run | only HClsoln visually confirmed. The recomposed HClsoln on the E branch carries 62 embedded images, 0 aspect-mismatched | ❓ **[USER]: act now, or let ① recompose + re-render + sync** — ① is done on the branch; the render + sync is the publication call |
+| ⑨ | **Decimal separator in KEPT numeric labels** — `26.98` stays a point in figures kept in English | ch03 mass tables (7, 8, 10, 12, 13 in USER-REVIEW.md) | those labels are `send:false`, so the MT never sees them; inside translated prose the comma comes out right (etheneBr, ethene) | ✅ **[USER] SCOPED 2026-09-13 as next work**; needs a rule for what counts as a decimal number |
+| ⑩ | **Artwork: a text-box outline visible in the recomposed figure, absent from the source** (`CNX_Chem_03_01_brain`) | 1 figure seen | not investigated; artwork-side, not the composer | ✅ **[USER] SCOPED 2026-09-13 as next work** (investigate, 0 ISK) |
+| ⑪ | **MT wording in figure labels** — Vara→Myndefni (Vörumegin), þáttur→frumefni, Meðalatómamassi/sætismassi→meðalatómmassi, Þéttleiki→eðlismassi, Eftir viðbrögð→Eftir hvarf, Fylgir með→Við fáum. [USER] general note: *"sending tiny fragments of text for translation seems to strip the MT-engine of context"* | 8 figures in USER-REVIEW.md | the figure MT leg sends one request per block key, with no glossary by default | ⏹ **[USER] 2026-09-13: out of scope for this coding work**; editorial correction goes through the review panel |
 
 ⚠️ **Buying stays stopped** ([USER] 2026-09-13). ① is ruled (E); **which of ②–⑦ must also land before buying resumes is NOT ruled** — do not assume a default.
 ⚠️ **Do not `git checkout` the June copies of the three all-identity figures** — HClsoln's is the corrupt one, and ① recomposes all 34 for free.

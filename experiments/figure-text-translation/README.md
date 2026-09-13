@@ -140,7 +140,7 @@ published.jpg ──check.py─────────────────�
 | `blockkey.py` | the ONE block-key derivation — what is bought, what keys the sidecar, what the editor sees. Four consumers import it; there is no second copy |
 | `extract.py` | stage 1 — PDF → `runs.json` + font/page metadata (the CLI and on-disk seam over `readlayer.py`) |
 | `strip-text.py` | stage 2 — remove `BT..ET`, drop Illustrator private data, render artwork |
-| `compose.py` | stage 3 — lay text back; `--control` re-injects the English |
+| `compose.py` | stage 3 — lay text back. A block kept in English (never sent, no translation, or a reply identical to what was sent) is drawn **run-exact** — every run at its source origin, size, rotation, fill and face; only a genuine translation is laid out. `--control` keeps every block, so it is a faithful redraw of the source (§C140 ①) |
 | `check.py` | stage 4 — diff against the published raster, write an overlay |
 | `census.py` | survey a directory of figure PDFs: live text? substitutable font? prose vs verbatim? |
 | `svgout.py` | emit SVG: vector artwork + real `<text>` + a woff2 **subset** of the figure's own font |
@@ -169,7 +169,7 @@ PDF=~/dev/repos/CNX_Chem_01_01_SciMethod.pdf
 
 python3 extract.py     "$PDF"
 python3 strip-text.py  "$PDF" --svg   # --svg also writes out/artwork.svg, which compose.py --svg READS
-python3 compose.py --control --svg    # re-inject the English -> out/control.png + out/control.svg
+python3 compose.py --control --svg    # redraw the English run-exact -> out/control.png + out/control.svg
 python3 check.py ../../books/efnafraedi-2e/01-source/media/CNX_Chem_01_01_SciMethod.jpg --control
 python3 compose.py               # then the Icelandic
 python3 compose.py --svg         # SVG output (the settled format - REGISTER.md item 5)
@@ -289,6 +289,13 @@ symbols that **must never be sent to the MT**. See FINDINGS.md.
 
 `check.py --control` is the whole method. Re-injecting the figure's **own English**
 makes the published jpg a true oracle: any disagreement is our defect.
+
+⚠️ **Since §C140 ① (2026-09-13) `--control` draws every block run-exact**, so a disagreement now
+isolates **artwork and rasteriser** defects. It no longer exercises the wrap / anchor / shrink
+path that lays out a translation — and no translations file can either, because a reply
+token-equal to its English is drawn run-exact too. Layout work on translated labels (§C140 ③)
+needs its own switch. Design record:
+[`docs/superpowers/specs/2026-09-13-c140-e-run-exact-kept-text-design.md`](../../docs/superpowers/specs/2026-09-13-c140-e-run-exact-kept-text-design.md).
 
 It found four real defects that the translated output could never have shown, because
 with different text you cannot tell misplacement from "that is how it lays out".
