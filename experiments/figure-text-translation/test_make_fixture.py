@@ -33,6 +33,7 @@ import figtext as FT           # noqa: E402
 import make_fixture as MF      # noqa: E402
 from extract import is_subset  # noqa: E402  - the predicate itself, never a copy
 from readlayer import read     # noqa: E402
+from blockkey import block_english  # noqa: E402  - the wire rule itself, never a copy
 
 HERE = Path(__file__).resolve().parent
 FIXTURE = HERE / 'fixtures' / 'fixture_figure.pdf'
@@ -60,7 +61,7 @@ def measure(pdf_path):
     blocks = FT.merge_blocks(FT.group(runs))
     texts, sendable = [], []
     for b in blocks:
-        joined = ' '.join(''.join(r['text'] for r in line) for line in FT.lines(b))
+        joined = block_english(b)
         texts.append(joined)
         if FT.sendable(b, joined, meta['fonts']):
             sendable.append(joined)

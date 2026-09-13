@@ -186,7 +186,7 @@ else:
         # (same grouping, same key rule — never a second implementation): blocks.json
         # carries no font field, and 9d's non-vacuity clause needs one.
         import figtext as FT
-        from blockkey import block_key, block_lines
+        from blockkey import block_key, block_lines, block_english
         _runs = json.loads((OUT / 'runs.json').read_text())
         _blocks = FT.merge_blocks(FT.group(_runs))
         undec = [k for k, v in meta_fonts.items() if v.get('decodable') is False]
@@ -217,8 +217,7 @@ else:
         from readlayer import _looks_undecoded
         clean_on_flagged = []
         for _b in _blocks:
-            _joined = (block_key(_b) if FT.is_arc(_b)
-                       else ' '.join(block_lines(_b)))
+            _joined = block_english(_b)
             if (not looks_verbatim(_joined) and not _looks_undecoded(_joined)
                     and {r['font'] for r in _b} & set(undec)):
                 clean_on_flagged.append(_joined)

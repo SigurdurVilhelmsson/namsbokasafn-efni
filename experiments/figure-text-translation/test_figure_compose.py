@@ -695,7 +695,7 @@ K_CID = '(cid:127) Observation and curiosity'
 def regenerate_blocks(out_dir):
     """Re-derive blocks.json from runs.json exactly as emit-blocks.py does. -> the entries."""
     import figtext as FT
-    from blockkey import block_key, block_lines
+    from blockkey import block_key, block_lines, block_english
     out_dir = Path(out_dir)
     runs = json.loads((out_dir / 'runs.json').read_text())
     fonts = json.loads((out_dir / 'meta.json').read_text())['fonts']
@@ -704,7 +704,7 @@ def regenerate_blocks(out_dir):
         arc = FT.is_arc(b)
         lines = block_lines(b)
         key = block_key(b)
-        joined = key if arc else ' '.join(lines)
+        joined = block_english(b)
         entries.append(dict(key=key, english=joined, lines=lines, arc=arc,
                             send=FT.sendable(b, joined, fonts)))
     (out_dir / 'blocks.json').write_text(json.dumps(entries, indent=1, ensure_ascii=False))
