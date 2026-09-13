@@ -768,13 +768,12 @@ with tempfile.TemporaryDirectory() as td:
     import figtext as _FT
     import readlayer as _RL
     probe = f'{_RL.CID}127) x'
-    check('9i the remover matches everything readlayer\'s DETECTOR finds',
-          _RL.CID in probe and _FT.strip_undecodable(probe) == 'x',
-          f'{probe!r} -> {_FT.strip_undecodable(probe)!r}')
-    check('9j ... and it leaves ordinary text alone',
-          _FT.strip_undecodable(['Nutrition Facts', 'Calories 250'])
-          == ['Nutrition Facts', 'Calories 250'],
-          repr(_FT.strip_undecodable(['Nutrition Facts', 'Calories 250'])))
+    got = _FT.run_draw_text({'text': probe})
+    check("9i the remover that DRAWS matches everything readlayer's DETECTOR finds",
+          _RL.CID in probe and got == (' x', True), f'{probe!r} -> {got!r}')
+    plain = _FT.run_draw_text({'text': 'Nutrition Facts '})
+    check('9j ... and it leaves ordinary text alone, edge space included',
+          plain == ('Nutrition Facts ', False), repr(plain))
 
 
 # ── 9k. THE PUREST CASE: a block whose ENTIRE text is the placeholder ─────────────────
@@ -813,12 +812,16 @@ with tempfile.TemporaryDirectory() as td:
     check('9o ... and every OTHER label is still drawn',
           all(any(w in t for t in texts)
               for w in ('Setja fram tilgatu', 'Profa tilgatuna', 'H2O (g)')), f'{texts!r}')
-    # RECORDED, not merely tolerated: the stripped label leaves ONE empty <text> element.
-    # It renders nothing and is well formed. `wrap()` already emits '' for a blank paragraph,
-    # so this shape predates the scrub - it is pinned here so a future change to it is a
-    # decision rather than a surprise.
-    check('9p ... leaving exactly one empty, inert <text> element',
-          sum(1 for t in texts if t.strip() == '') == 1, f'{texts!r}')
+    # RE-PINNED by E (§C140 ①), a DECISION: a run that is nothing but a placeholder strips to
+    # '' and draw_run_exact SKIPS it, so no empty <text> element is written any more (the old
+    # composer wrote exactly one). An absence proves nothing on its own - 9q pairs it.
+    check('9p ... drawing NO empty <text> element: a run that strips to nothing is skipped',
+          sum(1 for t in texts if t.strip() == '') == 0, f'{texts!r}')
+    rep = load_json(out / 'compose-report.json') or {}
+    check('9q ... PAIRED: the placeholder block WAS processed - named undecodable, drawn '
+          'run-exact', '(cid:127)' in rep.get('undecodable', [])
+          and '(cid:127)' in rep.get('runExact', []),
+          f"undecodable={rep.get('undecodable')!r} runExact={rep.get('runExact')!r}")
 
 # ── 10. THE DRIVER'S OWN SIDECAR AS `--translations` — the seam nothing crossed ───────
 # 🔴 EVERY COMPOSE IN THE DRIVER'S PAID SUITE GOES THROUGH A FAKE `spawn` THAT

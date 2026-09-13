@@ -316,4 +316,51 @@ check('C3 CONTROL ... and with a whole bold run (face order is visible here)',
 
 # ── E's assertions are appended below this line by Tasks 4 and 5 ────────────────────
 
+A1 = adv('Form a ', 12)
+check('E1 IDENTITY, POSITIONAL: each run of the two-run identity line is its own <text> at '
+      'its own origin (a joined line would be one element at x=10)',
+      len(find(els, 'Form a ', x='10.000', y=f'{PAGE_H - 120.0:.3f}')) == 1
+      and len(find(els, 'hypothesis', x=f'{10.0 + A1:.3f}', y=f'{PAGE_H - 120.0:.3f}')) == 1,
+      repr([(t, a.get('x'), a.get('y')) for t, a, _ in els if 'hyp' in t or 'Form' in t]))
+
+check('E2 IDENTITY, REPORT: the identity key is in `identity` AND stays in `translated`',
+      K_HYP in rep.get('identity', []) and K_HYP in rep['translated'],
+      f"identity={rep.get('identity')!r} translated={rep['translated']!r}")
+
+h = find(els, 'H', font_size='12.000')
+two = find(els, '2', font_size='8.000')
+check('E3 SUBSCRIPT: the 2 is its own <text> at 8 pt, 3.000 below the H baseline',
+      len(h) == 1 and len(two) == 1
+      and float(two[0][1]['y']) - float(h[0][1]['y']) == 3.0,
+      repr([(t, a.get('font-size'), a.get('y')) for t, a, _ in els if t in ('H', '2', 'H2O (g)')]))
+
+check('E4 ARROW GAP: the 10 typed spaces survive inside one <text>',
+      len(find(els, K_GAP)) == 1, repr([t for t, _, _ in els if 'H2O(' in t]))
+
+# The kept arc is centred at (230, 100): its glyphs sit at y 152-159. The subscript '2'
+# (y 37) and the translated arc (y 72-79) share glyph texts or shapes and are excluded.
+karc = [r for r in RUNS if r['text'] in list(K_KARC) and r['y'] > 150]
+
+
+def arc_ok(r):
+    x, y = f"{r['x']:.3f}", f"{PAGE_H - r['y']:.3f}"
+    hit = find(els, r['text'], x=x, y=y)
+    want = (f"rotate({-r['rot']:.4f} {x} {y})" if abs(r['rot']) > 1e-6 else None)
+    return len(hit) == 1 and hit[0][1].get('transform') == want
+
+
+check('E5 KEPT ARC: every glyph is a <text> at its run\'s (text, x, y) with its own rotation',
+      len(karc) == 5 and all(arc_ok(r) for r in karc),
+      repr([(t, a.get('x'), a.get('y'), a.get('transform')) for t, a, _ in els
+            if t in list(K_KARC)]))
+
+check('E6 EDGE SPACE: a kept line ending in a space is NOT named undecodable, and keeps it',
+      K_EDGE not in rep.get('undecodable', []) and len(find(els, K_EDGE)) == 1,
+      f"undecodable={rep.get('undecodable')!r}")
+
+check('E7 runExact names exactly the kept blocks, identity included',
+      collections.Counter(rep.get('runExact', []))
+      == collections.Counter([K_HYP, K_VERBATIM, K_GAP, K_EDGE, K_KARC]),
+      repr(rep.get('runExact')))
+
 finish()
