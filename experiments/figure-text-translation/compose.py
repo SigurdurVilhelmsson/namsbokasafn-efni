@@ -27,6 +27,7 @@ from pathlib import Path
 import cairo
 import figtext as FT
 import figscripts as FS
+import numloc
 from blockkey import block_key, block_english
 
 DPI = 200.0
@@ -96,6 +97,28 @@ def draw_run_exact(block):
         ctx.set_source_rgb(*col); ctx.move_to(0, 0); ctx.show_text(text)
         ctx.restore()
     return removed
+
+
+def localise_block(block):
+    """§C140 ⑨: the block's runs with Icelandic number separators in their TEXT - `26.98` ->
+    `26,98`, `1,000` -> `1.000` - and every other field untouched. -> a list aligned 1:1 with
+    `block` (an unchanged run is the same dict).
+
+    The unit is the `FT.lines` LINE, not the run: a PDF may set a number one glyph per run
+    (`CNX_Chem_03_02_moles-6296`), and no single run then holds a digit-flanked point. `numloc`
+    exchanges `.` and `,` one for one, so each run keeps its length and its origin - and both
+    characters advance 569/2048 em in every Liberation Sans face, so nothing moves.
+
+    🔴 SOURCE TEXT ONLY, ONCE. `numloc.localize` is not idempotent (`1.008 -> 1,008 -> 1.008`), so it
+    runs here on `runs.json` text and nowhere else. NOT inside `figtext.run_draw_text`: its second
+    return value means "a (cid:N) token was removed" and would name every converted label
+    `undecodable`. Never on `--control`, which stays a faithful redraw of the source."""
+    out = []
+    for line in FT.lines(block):
+        for r, t in zip(line, numloc.localize_runs([r['text'] for r in line])):
+            out.append(r if t == r['text'] else dict(r, text=t))
+    assert len(out) == len(block), (len(out), len(block))
+    return out
 
 
 def setfont(run, size):
@@ -240,6 +263,9 @@ identity, run_exact, degenerate_kept = [], [], []
 # no-base / partial (transfer) and stacked / inverted-base / arc (the source side). A named miss is
 # drawn as flat text, never refused and never blanked.
 unformatted = []
+# §C140 ⑨, additive, draw order WITH multiplicity: the kept blocks whose DRAWN text changed under
+# `localise_block`. Empty on --control.
+localized = []
 
 for BI, b in enumerate(blocks):
     ls = FT.lines(b)
@@ -294,8 +320,12 @@ for BI, b in enumerate(blocks):
     if kept:
         if FT.is_arc(b) and circle is None:
             degenerate_kept.append(key)
-        if draw_run_exact(b):
+        # ⑨ AFTER the key and the identity decision, on the drawn text only.
+        drawn = b if CONTROL else localise_block(b)
+        if draw_run_exact(drawn):
             undecodable.append(key)
+        if any(FT.run_draw_text(d)[0] != FT.run_draw_text(r)[0] for d, r in zip(drawn, b)):
+            localized.append(key)
         run_exact.append(key)
         report.append(f"  RUNEXACT {len(b)} run(s)  {key!r}")
         continue
@@ -485,6 +515,8 @@ if SVG:
     'runExact': run_exact,
     # §C140 ②. Additive: named formula stretches drawn as flat text (see `unformatted` above).
     'unformatted': unformatted,
+    # §C140 ⑨. Additive: kept blocks drawn with Icelandic number separators.
+    'localized': localized,
 }, indent=1, ensure_ascii=False))
 
 print(f"{len(blocks)} blocks")
@@ -519,6 +551,11 @@ if unformatted:
     print(f"\nNOTE (not a failure): {len(unformatted)} formula stretch(es) drawn UNFORMATTED:")
     for u in unformatted:
         print(f"     {u['key']!r}: {u['stretch']!r} of {u['token']!r} - {u['reason']}")
+if localized:
+    print(f"\nNOTE (not a failure): {len(localized)} kept block(s) drawn with Icelandic number "
+          f"separators:")
+    for k in localized:
+        print(f"     {k!r}")
 print(f"\nwrote out/{name}")
 # Leading '\n' is load-bearing - see the note above the compose-report.json write.
 print(f"\nwrote out/compose-report.json  "
