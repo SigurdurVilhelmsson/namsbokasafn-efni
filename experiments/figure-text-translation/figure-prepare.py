@@ -75,6 +75,7 @@ os.environ.setdefault('FIGTEXT_PYLIBS', str(HERE / 'pylibs'))
 
 import pikepdf                                  # noqa: E402  - after the bootstrap
 from _deps import read_content                  # noqa: E402
+import svgfix                                   # noqa: E402
 
 # ⚠️ deliberately NOT `from _deps import OUT`. This tool never reads the shared output
 # directory; it passes FIGTEXT_OUT to its CHILDREN and computes its own paths from
@@ -372,6 +373,30 @@ def build_warnings(meta, features):
     return warnings
 
 
+def reference_cost_warnings(svg):
+    """-> [] or ONE warning: artwork.svg's no-sharing reference cost above 2^REFCOST_WARN_LOG2.
+
+    The shape-INDEPENDENT half of the blend-chain fix. `strip-text.py` collapses cairo's
+    blend lerps by recognising cairo's exact output shape; if that shape ever changes the
+    collapse matches nothing and the exponential chain ships silently. This depends on
+    nothing but references, so it still fires. Measured with `svgfix.reference_cost`:
+    exocytosis 2^116.4 uncollapsed, 2^12.2 collapsed; brain-ec0b and map2 2^4.2 (cost 18).
+
+    A file that does not parse is a warning too, never a silent pass: this runs on EVERY
+    figure, and prepare's exit code is not changed by it.
+    """
+    try:
+        log2_cost, _depth = svgfix.reference_cost(svg.read_bytes())
+    except SyntaxError as exc:                    # ElementTree.ParseError
+        return [f'artwork.svg reference cost not computed ({type(exc).__name__}: {exc}) '
+                f'(see svgfix.py)']
+    if log2_cost > svgfix.REFCOST_WARN_LOG2:
+        return [f'artwork.svg reference cost 2^{log2_cost:.1f} exceeds '
+                f'2^{svgfix.REFCOST_WARN_LOG2} — a browser may never finish loading it '
+                f'(see svgfix.py)']
+    return []
+
+
 def prepare(artwork, out_dir, basename):
     """-> the prepare.json payload. Raises PrepareError on a per-figure failure."""
     # 🔴 A STALE artwork.svg MUST NOT BE ABLE TO SATISFY THE CHECK AT THE END OF THIS
@@ -424,7 +449,7 @@ def prepare(artwork, out_dir, basename):
         'imageXObjects': features['imageXObjects'],
         'paintOps': features['paintOps'],
         'formTextXObjects': features['formTextXObjects'],
-        'warnings': build_warnings(meta, features),
+        'warnings': build_warnings(meta, features) + reference_cost_warnings(svg),
     }
 
 
