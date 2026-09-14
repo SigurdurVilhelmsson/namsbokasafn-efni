@@ -303,10 +303,21 @@ if CAPTURE:
     finish()
 
 golden = json.loads(GOLDEN.read_text()) if GOLDEN.exists() else None
-check('C1 CONTROL the translated population - plain labels AND the translated arc - is '
-      'byte-identical to the unchanged composer',
-      golden is not None and current['population'] == golden['population'],
-      f"now {current['population']!r}")
+# §C140 ③ re-lays every translated STRAIGHT label (figcontainers + figlayout, linear metrics), so the
+# plain labels' geometry is no longer E's to pin - test_compose_t23.py owns it. The ARC path is not
+# touched by ③ and stays byte-identical; the plain labels must still draw exactly their words.
+ARC_GLYPHS = ('B', 'O', 'G', 'I', 'X')
+arc_now = [raw for text, _, raw in els if text in ARC_GLYPHS]
+arc_gold = [raw for raw in (golden or {}).get('population', [])
+            if re.search(r'>(?:B|O|G|I|X)</text>$', raw)]
+check('C1 CONTROL the translated ARC is byte-identical to the unchanged composer',
+      golden is not None and len(arc_gold) == 5 and arc_now == arc_gold, f"now {arc_now!r}")
+plain_now = [text for text, _, _ in els if text in ('Athugun og forvitni', 'Profa tilgatuna')]
+plain_gold = [re.sub(r'<[^>]+>', '', raw) for raw in (golden or {}).get('population', [])
+              if not re.search(r'>(?:B|O|G|I|X)</text>$', raw)]
+check('C1b CONTROL the two plain translated labels still draw exactly their words (geometry: '
+      'test_compose_t23.py)', golden is not None and plain_now == plain_gold,
+      f"now {plain_now!r} golden {plain_gold!r}")
 check('C2 CONTROL a figure with no italic run has the unchanged composer\'s faces (plain)',
       golden is not None and current['faces_plain'] == golden['faces_plain'],
       repr(current['faces_plain']))

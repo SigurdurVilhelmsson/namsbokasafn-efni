@@ -427,6 +427,59 @@ with tempfile.TemporaryDirectory() as td:
           refused(r3, 1) and not (out / 'translated.png').exists(),
           f"exit {r3.returncode}, png={(out / 'translated.png').exists()}")
 
+# ── 4f. a missing artwork.pdf is refused BEFORE compose.py runs ──────────────────────
+# §C140 ③: compose.py reads the stripped artwork.pdf for CONTAINER DETECTION, lazily, on the
+# first translated label it lays out - and that load sits outside the detector's never-raises
+# boundary. Measured on the ③ composer (reviews.txt, 'artwork.pdf is a new required input'): a
+# missing artwork.pdf exits 1 with FileNotFoundError and NO compose-report.json, but only on a
+# figure that carries a translation - a figure with none composes fine. Case 4's pre-flight is the
+# same remedy for the same shape, so it is asserted the same way, paired control included.
+# 🔴 BUT 4c's SHAPE IS VACUOUS HERE, MEASURED. On the ③ composer the UNCHANGED wrapper already
+# exits 1 with no PNG and no report - the child crashes before it writes either - and its
+# "wrote no compose-report.json" message quotes the child's stderr, traceback and `artwork.pdf`
+# included. So "refused" and "names artwork.pdf" pass without any pre-flight at all. What only a
+# pre-flight produces is a refusal with NO traceback and in the pre-flight's own wording, and
+# that is what 4h and 4i assert.
+with tempfile.TemporaryDirectory() as td:
+    out = Path(td) / 'fig-nopdf'
+    prep = run_prepare(FIXTURE, out, 'CNX_Fixture_NoPdf')
+    check('4f PRECONDITION prepare produced the fixture directory, artwork.pdf included',
+          prep.returncode == 0 and (out / 'artwork.pdf').is_file(),
+          f"exit {prep.returncode}, artwork.pdf={(out / 'artwork.pdf').is_file()}: "
+          f"{prep.stderr.strip()[-400:]}")
+    tr = write_tr(Path(td) / 'full.json',
+                  {K_OBS: 'Athugun og forvitni', K_HYP: 'Setja fram tilgatu',
+                   K_TEST: 'Profa tilgatuna'})
+    keep = Path(td) / 'artwork.pdf.keep'
+    shutil.move(str(out / 'artwork.pdf'), str(keep))
+
+    r = run_wrapper('--out', out, '--translations', tr)
+    d = load_json(out / 'compose.json') or {}
+    check('4g a missing artwork.pdf is refused (exit 1)', refused(r, 1),
+          f'exit {r.returncode}: {r.stderr.strip()[-300:]}')
+    check('4h ... BEFORE compose.py ran — no translated.png, no compose-report.json, and no '
+          'composer traceback',
+          not (out / 'translated.png').exists()
+          and not (out / 'compose-report.json').exists()
+          and 'Traceback' not in r.stderr,
+          f"png={(out / 'translated.png').exists()} "
+          f"report={(out / 'compose-report.json').exists()} "
+          f"traceback={'Traceback' in r.stderr}")
+    err = d.get('error', '') if isinstance(d.get('error'), str) else ''
+    check('4i ... and compose.json names artwork.pdf AS A MISSING INPUT, not as a crash',
+          'artwork.pdf is missing' in err and 'wrote no compose-report.json' not in err,
+          f'{d!r}')
+
+    # PAIRED CONTROL, as 4d: "no translated.png" is also what a wrapper that silently does
+    # nothing produces. Restore the file and require both artefacts to appear.
+    shutil.move(str(keep), str(out / 'artwork.pdf'))
+    r2 = run_wrapper('--out', out, '--translations', tr)
+    check('4j CONTROL with artwork.pdf restored the SAME probe produces both files',
+          r2.returncode == 0 and (out / 'translated.png').exists()
+          and (out / 'compose-report.json').exists(),
+          f"exit {r2.returncode}, png={(out / 'translated.png').exists()}, "
+          f"report={(out / 'compose-report.json').exists()}")
+
 
 # ── 5. an empty / whitespace translation value ERASES a label — treat it as missing ──
 with tempfile.TemporaryDirectory() as td:
