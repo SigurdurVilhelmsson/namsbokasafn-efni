@@ -1,0 +1,16 @@
+{
+ "kept": [
+  "<text x=\"10.000\" y=\"160.000\" font-family=\"FigIS\" font-weight=\"400\" font-size=\"12.000\" fill=\"#000000\" xml:space=\"preserve\">26.98</text>",
+  "<text x=\"10.000\" y=\"200.000\" font-family=\"FigIS\" font-weight=\"400\" font-size=\"12.000\" fill=\"#000000\" xml:space=\"preserve\">H2O (g)</text>"
+ ],
+ "plain_label": [
+  "<text x=\"28.000\" y=\"120.000\" font-family=\"FigIS\" font-weight=\"400\" font-size=\"12.000\" fill=\"#000000\" xml:space=\"preserve\">Athugun og forvitni</text>"
+ ],
+ "faces_plain": [
+  [
+   "400",
+   "normal",
+   " ()2AHOPSaefghijlmnortuv"
+  ]
+ ]
+}
