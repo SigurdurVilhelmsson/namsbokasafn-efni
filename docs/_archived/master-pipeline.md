@@ -1,6 +1,37 @@
-# Master Pipeline: CNXML → Markdown → HTML
+<!-- ARCHIVED: 2026-09-14 - superseded by simplified-workflow.md; described the retired manual-MT pipeline while self-declaring authority over the accurate docs. Moved from docs/workflow/master-pipeline.md. -->
 
-This is the authoritative reference for the namsbokasafn translation pipeline. All other workflow documentation should be consistent with this document.
+# Master Pipeline: CNXML → Markdown → HTML (ARCHIVED)
+
+> # ⛔ ARCHIVED 2026-09-14 — SUPERSEDED
+>
+> **→ The current pipeline reference is
+> [docs/workflow/simplified-workflow.md](../workflow/simplified-workflow.md).**
+> For the canonical stage/tool table see **CLAUDE.md § *Extract-Inject-Render Pipeline***;
+> for tool flags, [cli-reference.md](../technical/cli-reference.md).
+>
+> **Why this was archived.** The document opened by declaring itself *"the authoritative
+> reference for the namsbokasafn translation pipeline. All other workflow documentation
+> should be consistent with this document"* — while describing a pipeline that had been
+> retired for months. A stale document asserting authority over the accurate ones is worse
+> than either problem alone, and it was tracked as exactly that
+> (`ed-drift-1` / `ed-dim-docs-a` / `ed-rec-1`, "cheapest fix, widest blast radius").
+>
+> **What in here is retired:**
+>
+> - **Stages 2, 3 and 4** — protect/split → manual upload to malstadur.is → restore-from-mt.
+>   Replaced by a single step, `tools/api-translate.js`, which sends whole segment files to
+>   the Málstaður API with `[[type:content]]` bracket markers that survive intact.
+>   `protect-segments-for-mt.js`, `restore-segments-from-mt.js` and `prepare-for-align.js`
+>   are in `tools/archived/`.
+> - **Stage 8's Matecat Align dependency** — TM is generated in-house by
+>   `tools/generate-tm.js` from the already-aligned EN/IS segment pairs. Nothing is uploaded.
+> - **"Pipeline Automation" / server-triggered extract, protect, restore** — those buttons
+>   were removed; `server/routes/pipeline.js` exposes only inject, render and job tracking.
+>
+> **What is still broadly accurate**, and why this is kept rather than deleted: the design
+> principles, the three-track publication model, the directory layout, the terminology model
+> and the editorial-review detail. Treat all of it as historical context, not as instructions
+> — and never as an authority over the live docs above.
 
 ## Design Principles
 
@@ -121,6 +152,9 @@ node tools/cnxml-extract.js --chapter 5
 
 ### Stage 2: Protect and Split for MT
 
+> ⛔ **RETIRED.** `protect-segments-for-mt.js` is in `tools/archived/`. `api-translate.js` needs no protect/split pass.
+
+
 **Goal:** Make segment files safe for Erlendur MT, which strips HTML comments and markdown link URLs, and has a ~20KB file size limit.
 
 **Tool:** `protect-segments-for-mt.js`
@@ -149,6 +183,9 @@ node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch05
 
 ### Stage 3: Machine Translation
 
+> ⛔ **RETIRED AS WRITTEN.** MT now runs through `tools/api-translate.js` (Málstaður API); nothing is uploaded to malstadur.is by hand.
+
+
 **Service:** [malstadur.is](https://malstadur.is) (Erlendur)
 
 **Process (manual):**
@@ -164,6 +201,9 @@ node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch05
 - Preserves protected markers (they survive as escaped text)
 
 ### Stage 4: Restore Segments from MT
+
+> ⛔ **RETIRED.** `restore-segments-from-mt.js` is in `tools/archived/`; the API preserves markers, so there is nothing to restore.
+
 
 **Goal:** Undo Erlendur's escaping, restore links and cross-refs, and optionally merge split files.
 
@@ -211,7 +251,7 @@ node tools/cnxml-render.js --chapter 5 --track mt-preview
 
 **cnxml-render reads:** `03-translated/ch05/m68724.cnxml`
 
-**cnxml-render produces:** `05-publication/mt-preview/chapters/05/5-1-energy-basics.html` — semantic HTML with pre-rendered KaTeX, embedded page metadata JSON, Icelandic note-type labels, and all IDs preserved.
+**cnxml-render produces:** `05-publication/mt-preview/chapters/05/5-1-energy-basics.html` — semantic HTML with pre-rendered MathJax SVG, embedded page metadata JSON, Icelandic note-type labels, and all IDs preserved.
 
 **Output filename convention:** `{chapter}-{section}-{slug}.html` (section notation, not module ID).
 
@@ -266,6 +306,9 @@ Same inject-render process as mt-preview, but reads from `03-faithful-translatio
 **Sync:** Copy to vefur. Faithful replaces mt-preview on the website.
 
 ### Stage 8: TM Creation
+
+> ⚠️ **Matecat Align is RETIRED.** TM is generated in-house by `tools/generate-tm.js` (TMX by default). `prepare-for-align.js` is in `tools/archived/`.
+
 
 **Goal:** Create human-verified Translation Memory from the faithful translation.
 
@@ -567,7 +610,7 @@ Automated extract, protect, restore, inject, render triggered from the server UI
 
 | Document | Purpose |
 |----------|---------|
-| [Editor Rebuild Plan](./editor-improvements-jan2026.md) | Server rebuild detail for Phase 8 |
+| [Editor Rebuild Plan](../workflow/editor-improvements-jan2026.md) | Server rebuild detail for Phase 8 |
 | [Pass 1 Guidelines](../editorial/pass1-linguistic.md) | Linguistic review instructions |
 | [Pass 2 Guidelines](../editorial/pass2-localization.md) | Localization instructions |
 | [Terminology Standards](../editorial/terminology.md) | Term conventions |

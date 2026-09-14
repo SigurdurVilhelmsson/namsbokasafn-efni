@@ -1,6 +1,27 @@
 # Machine Translation Process Guide
 
-This document covers the full MT workflow using malstadur.is (Erlendur), including both available methods, troubleshooting, and how the pipeline GUI automates key steps.
+> # ⛔ RETIRED — HISTORICAL RECORD, NOT INSTRUCTIONS
+>
+> **Everything in this document describes the manual malstadur.is **web-UI** route, which no
+> longer exists.** It is kept as a record of how MT was done before the API integration.
+>
+> **Do not follow these steps.** Concretely, as of this banner:
+>
+> - `protect-segments-for-mt.js`, `unprotect-segments.js` and `restore-segments-from-mt.js`
+>   are in **`tools/archived/`** — the `node tools/…` paths below will fail.
+> - The pipeline GUI buttons this document is built around (**"↓ Sækja EN"**,
+>   **"↑ Hlaða upp IS"**) **were removed.** `server/routes/pipeline.js` now exposes only
+>   inject, render and job tracking; its own header says extract/protect/unprotect "has been
+>   moved to CLI tools".
+> - Nothing is uploaded to malstadur.is by hand any more, and no protect/unprotect pass is
+>   needed: the `[[type:content]]` bracket markers survive the API intact.
+>
+> **The live route is `tools/api-translate.js`** — see
+> [simplified-workflow.md § Step 2](simplified-workflow.md#step-2-machine-translation) and
+> CLAUDE.md § *Extract-Inject-Render Pipeline*, which is the canonical pipeline table.
+
+This document covers the MT workflow as it was performed through the malstadur.is (Erlendur)
+web UI, including both methods, troubleshooting, and how the pipeline GUI automated key steps.
 
 ## Prerequisites
 
