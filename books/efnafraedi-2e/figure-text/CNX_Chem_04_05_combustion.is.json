@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_04_05_combustion",
  "renderHash": "eb34149adccaba4f",
  "composedHash": "eb34149adccaba4f",
- "composedVersion": "2",
+ "composedVersion": "3",
  "composerVersion": "1",
  "blocks": {
   "Furnace": "Ofn",

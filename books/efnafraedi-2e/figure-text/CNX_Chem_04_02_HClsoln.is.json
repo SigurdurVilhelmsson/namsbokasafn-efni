@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_04_02_HClsoln",
  "renderHash": "0759c11742beafe3",
  "composedHash": "0759c11742beafe3",
- "composedVersion": "2",
+ "composedVersion": "3",
  "composerVersion": "1",
  "blocks": {
   "HCl(aq) + H2O(l)          H3O+(aq) + Cl–(aq)": "HCl(aq) + H2O(l)          H3O+(aq) + Cl–(aq)",
