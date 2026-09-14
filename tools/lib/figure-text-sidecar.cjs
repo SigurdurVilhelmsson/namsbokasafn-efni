@@ -23,8 +23,11 @@ const SIDECAR_VERSION = 1;
  * figure back to mt-preview until re-reviewed.
  *
  * '2' (2026-09-13, §C140 ①): kept figure text is drawn run-exact.
+ * '3' (2026-09-14, §C140 ② ③ ⑨): translated labels keep their formula formatting and are laid
+ * out against their own container; English-kept numbers are drawn with a decimal comma; the
+ * artwork's cairo blend chains are collapsed so a browser can load them.
  */
-const COMPOSER_VERSION = '2';
+const COMPOSER_VERSION = '3';
 
 /**
  * @param {string} bookDir  the BOOK directory, i.e. `books/<slug>` — NOT the books
