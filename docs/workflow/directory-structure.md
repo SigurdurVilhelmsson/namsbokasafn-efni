@@ -1,5 +1,20 @@
 # Directory Structure (Updated 2026-02-10)
 
+> # ⛔ SUPERSEDED — DESCRIBES A LAYOUT THAT WAS NEVER ADOPTED
+>
+> **This document is built on `02-machine-translated/` and `03-editing/`. Neither directory
+> exists in any book** — verified 2026-09-14 against `books/*/`. The intermediate
+> "machine-translated" staging stage it describes was abandoned; MT output is consumed
+> directly from `02-mt-output/`, and review output goes to `03-faithful-translation/`.
+>
+> It also predates the Extract-Inject-Render pipeline: the `--source-dir 02-machine-translated`
+> invocations below will not work, and the CNXML tools now **require `--book`**.
+>
+> **For the real, current layout see:**
+> [simplified-workflow.md § Directory Structure](simplified-workflow.md#directory-structure),
+> the *Project Structure* section of the [root README](../../README.md), or simply
+> `ls books/<slug>/`. Kept as a record of the February 2026 cleanup discussion.
+
 This document describes the current, cleaned-up directory structure for the translation workflow.
 
 ## Overview

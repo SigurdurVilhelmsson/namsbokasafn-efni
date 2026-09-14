@@ -1,6 +1,33 @@
 # Master Pipeline: CNXML → Markdown → HTML
 
-This is the authoritative reference for the namsbokasafn translation pipeline. All other workflow documentation should be consistent with this document.
+> # ⚠️ PARTLY SUPERSEDED — NOT THE AUTHORITATIVE REFERENCE
+>
+> **This document used to open by declaring itself "the authoritative reference … all other
+> workflow documentation should be consistent with this document". It is not, and it has not
+> been for some time** — that claim was removed on 2026-09-14 because the document still
+> describes the retired manual-MT pipeline as current, and the combination (a stale document
+> asserting authority over the accurate ones) is worse than either problem alone.
+>
+> **The owners of this material, in order:**
+>
+> 1. **CLAUDE.md § *Extract-Inject-Render Pipeline*** — the canonical stage/tool table.
+> 2. **[simplified-workflow.md](simplified-workflow.md)** — the live 5-step walkthrough.
+> 3. **[../technical/cli-reference.md](../technical/cli-reference.md)** — tool flags.
+>
+> **Stages 2, 3 and 4 below are RETIRED** (protect/split → manual upload to malstadur.is →
+> restore-from-mt). They are replaced by a single step, `tools/api-translate.js`, which sends
+> whole segment files to the Málstaður API with `[[type:content]]` bracket markers that
+> survive intact — no protection, no splitting, no restore. `protect-segments-for-mt.js`,
+> `restore-segments-from-mt.js` and `prepare-for-align.js` are in **`tools/archived/`**.
+>
+> **Stage 8's Matecat Align dependency is RETIRED** — TM is generated in-house by
+> `tools/generate-tm.js` from the already-aligned EN/IS segment pairs. Nothing is uploaded.
+>
+> The stage numbering, design principles, directory layout, terminology model and editorial
+> detail below remain broadly accurate; the MT-mechanics sections do not.
+
+This document records the full stage-by-stage model of the namsbokasafn translation pipeline,
+including the retired MT stages noted above.
 
 ## Design Principles
 
@@ -121,6 +148,9 @@ node tools/cnxml-extract.js --chapter 5
 
 ### Stage 2: Protect and Split for MT
 
+> ⛔ **RETIRED.** `protect-segments-for-mt.js` is in `tools/archived/`. `api-translate.js` needs no protect/split pass.
+
+
 **Goal:** Make segment files safe for Erlendur MT, which strips HTML comments and markdown link URLs, and has a ~20KB file size limit.
 
 **Tool:** `protect-segments-for-mt.js`
@@ -149,6 +179,9 @@ node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch05
 
 ### Stage 3: Machine Translation
 
+> ⛔ **RETIRED AS WRITTEN.** MT now runs through `tools/api-translate.js` (Málstaður API); nothing is uploaded to malstadur.is by hand.
+
+
 **Service:** [malstadur.is](https://malstadur.is) (Erlendur)
 
 **Process (manual):**
@@ -164,6 +197,9 @@ node tools/protect-segments-for-mt.js --batch books/efnafraedi-2e/02-for-mt/ch05
 - Preserves protected markers (they survive as escaped text)
 
 ### Stage 4: Restore Segments from MT
+
+> ⛔ **RETIRED.** `restore-segments-from-mt.js` is in `tools/archived/`; the API preserves markers, so there is nothing to restore.
+
 
 **Goal:** Undo Erlendur's escaping, restore links and cross-refs, and optionally merge split files.
 
@@ -211,7 +247,7 @@ node tools/cnxml-render.js --chapter 5 --track mt-preview
 
 **cnxml-render reads:** `03-translated/ch05/m68724.cnxml`
 
-**cnxml-render produces:** `05-publication/mt-preview/chapters/05/5-1-energy-basics.html` — semantic HTML with pre-rendered KaTeX, embedded page metadata JSON, Icelandic note-type labels, and all IDs preserved.
+**cnxml-render produces:** `05-publication/mt-preview/chapters/05/5-1-energy-basics.html` — semantic HTML with pre-rendered MathJax SVG, embedded page metadata JSON, Icelandic note-type labels, and all IDs preserved.
 
 **Output filename convention:** `{chapter}-{section}-{slug}.html` (section notation, not module ID).
 
@@ -266,6 +302,9 @@ Same inject-render process as mt-preview, but reads from `03-faithful-translatio
 **Sync:** Copy to vefur. Faithful replaces mt-preview on the website.
 
 ### Stage 8: TM Creation
+
+> ⚠️ **Matecat Align is RETIRED.** TM is generated in-house by `tools/generate-tm.js` (TMX by default). `prepare-for-align.js` is in `tools/archived/`.
+
 
 **Goal:** Create human-verified Translation Memory from the faithful translation.
 

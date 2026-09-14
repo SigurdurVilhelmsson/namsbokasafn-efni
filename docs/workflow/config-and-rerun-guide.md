@@ -13,9 +13,19 @@ These are the files you can safely edit by hand. Each entry shows what it contro
 
 ### 1. Book Rendering Config
 
-**File:** `tools/lib/book-rendering-config.js`
+**File:** `books/<book>/book-config.json` — **per-book overrides**
+**File:** `tools/lib/book-rendering-config.js` — **shared defaults for all books**
 
-Controls how `cnxml-render.js` renders each book's HTML. This is the main place where books differ from each other.
+Controls how `cnxml-render.js` renders each book's HTML. `book-rendering-config.js` holds the
+`SHARED_*` defaults; each book's `book-config.json` is deep-merged **on top** of them
+(`mergeWithShared()`).
+
+⚠️ **To change ONE book, edit that book's `book-config.json`.** Editing the `SHARED_*`
+constants changes every book at once. The keys below are the same in both files.
+
+⚠️ `book-config.json` is **multi-consumer** — it also carries the book's `licence` block and
+is read outside the render path. A new non-render key must be excluded via `NON_RENDER_KEYS`;
+see CLAUDE.md.
 
 | Config Key | What It Controls | Example |
 |------------|-----------------|---------|
@@ -71,18 +81,32 @@ npm run validate
 
 ### 4. Glossary / Terminology
 
-**Files:** `books/<book>/glossary/*.csv`
+**Files:** `books/<book>/glossary/glossary-unified.json` (the file the tools read),
+plus `glossary-unified.csv` and `terminology-en-is.csv`.
 
-Term glossaries used by `api-translate.js` to guide Miðeind's translation API.
+Term glossaries used by `api-translate.js` to guide Miðeind's translation API, **and** by the
+render path (approved terms are substituted into published math labels).
 
-**After editing:**
+🔴 **Do not hand-edit `glossary-unified.json`.** It is machine-written — the 2-hourly backup
+cron runs the terminology export, which regenerates it from the **concept model** in
+`sessions.db`. A hand edit is silently republished over. To actually change a term, change the
+concept model (`UPDATE concept_term.text`, delete the `concept_term` row, or add a concept in a
+higher-priority domain) — **and read CLAUDE.md § glossary first**: a wrong entry is worse than
+no entry, and several plausible-looking edits (`terminology_translations.status`, deleting a
+`book_domain_priority` row) report success and do nothing.
+
+**After changing terminology:**
 ```bash
-# Re-translate affected chapters (use --force to overwrite existing translations)
+# Re-extract FIRST — api-translate reads the GENERATED 02-for-mt/, not 01-source/,
+# so a bare --force re-translates the old English and exits 0.
+node tools/cnxml-extract.js --book <book> --chapter <num>
+
+# Re-translate affected chapters (--force overwrites existing translations; this COSTS MONEY)
 node tools/api-translate.js --book <book> --chapter <num> --force
 
 # Then re-inject and re-render
-node tools/cnxml-inject.js --book <book> --chapter <num>
-node tools/cnxml-render.js --book <book> --chapter <num>
+node tools/cnxml-inject.js --book <book> --chapter <num> --source-dir 03-faithful-translation
+node tools/cnxml-render.js --book <book> --chapter <num> --track faithful
 ```
 
 ---
@@ -98,7 +122,7 @@ Human-reviewed Icelandic translations, written by the segment editor's "Apply" f
 **After editing:**
 ```bash
 # Re-inject to produce updated CNXML
-node tools/cnxml-inject.js --book <book> --chapter <num> --track faithful
+node tools/cnxml-inject.js --book <book> --chapter <num> --source-dir 03-faithful-translation
 
 # Re-render to produce updated HTML
 node tools/cnxml-render.js --book <book> --chapter <num> --track faithful
@@ -112,10 +136,15 @@ node tools/cnxml-render.js --book <book> --chapter <num> --track faithful
 
 | Variable | Purpose |
 |----------|---------|
-| `MALSTADUR_API_KEY` | Miðeind translation API key |
+| `MALSTADUR_API_KEY` | Miðeind translation API key (pipeline tools) |
 | `LOG_LEVEL` | Server log level (debug, info, warn, error) |
-| `AZURE_*` | Microsoft Entra ID auth settings |
-| `SESSION_SECRET` | Express session secret |
+| `MS_CLIENT_ID` / `MS_CLIENT_SECRET` / `MS_TENANT_ID` | Microsoft Entra ID auth settings |
+| `MS_CALLBACK_URL` | OAuth redirect URI (falls back to `CALLBACK_URL`) |
+| `JWT_SECRET` | Session token secret |
+
+*(This table named `AZURE_*` and `SESSION_SECRET` until 2026-09-14. Neither string appears
+anywhere in the codebase — the real names are the `MS_*` set above, read in
+`server/services/auth.js` and required by `server/config.js`. Full list: `.env.example`.)*
 
 **After editing:** Restart the server (`npm run server:dev`). Pipeline CLI tools read `.env` automatically.
 
@@ -144,7 +173,7 @@ When you change something, this tells you what to re-run. Read across the row.
 ### "I fixed a translation in the segment editor"
 The editor's "Apply" button writes to `03-faithful-translation/`. Then:
 ```bash
-node tools/cnxml-inject.js --book <book> --chapter <num> --track faithful
+node tools/cnxml-inject.js --book <book> --chapter <num> --source-dir 03-faithful-translation
 node tools/cnxml-render.js --book <book> --chapter <num> --track faithful
 ```
 

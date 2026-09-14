@@ -1,5 +1,22 @@
 # Corrected Directory Structure and Workflow
 
+> # ⛔ SUPERSEDED — DESCRIBES A LAYOUT THAT WAS NEVER ADOPTED
+>
+> **The `02-machine-translated/` directory this document introduces ("NEW!") does not exist
+> in any book** — verified 2026-09-14 against `books/*/`. Neither does `03-machine-translation`.
+> The migration steps below (copying `03-faithful-translation/` content into
+> `02-machine-translated/`, deleting `05-publication/for-mt/`) were not carried out in this form.
+>
+> This and [directory-structure.md](directory-structure.md) are two records of the same
+> February 2026 discussion about MT-preview vs faithful tracks. The **outcome** — three
+> publication tracks, `mt-preview` / `faithful` / `localized` — is real and is documented in
+> [simplified-workflow.md § 5c](simplified-workflow.md#5c-publication-tracks) and
+> [../technical/publication-format.md](../technical/publication-format.md). The directory
+> mechanics here are not.
+>
+> **For the real, current layout:** `ls books/<slug>/`, or
+> [simplified-workflow.md § Directory Structure](simplified-workflow.md#directory-structure).
+
 This document describes the corrected directory structure and workflow after fixing the confusion between MT preview and faithful tracks.
 
 ## The Problem We Fixed
