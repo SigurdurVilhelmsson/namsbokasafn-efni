@@ -273,4 +273,4 @@ The full JSON Schema is at: `schemas/chapter-status.schema.json`
 
 - [CLI Reference](cli-reference.md) - How to update status via CLI
 - [Simplified Workflow](../workflow/simplified-workflow.md) - Translation pipeline overview
-- [Master Pipeline](../workflow/master-pipeline.md) - Complete pipeline reference
+- [Simplified Workflow](../workflow/simplified-workflow.md) - Complete pipeline reference

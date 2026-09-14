@@ -1,33 +1,37 @@
-# Master Pipeline: CNXML → Markdown → HTML
+<!-- ARCHIVED: 2026-09-14 - superseded by simplified-workflow.md; described the retired manual-MT pipeline while self-declaring authority over the accurate docs. Moved from docs/workflow/master-pipeline.md. -->
 
-> # ⚠️ PARTLY SUPERSEDED — NOT THE AUTHORITATIVE REFERENCE
->
-> **This document used to open by declaring itself "the authoritative reference … all other
-> workflow documentation should be consistent with this document". It is not, and it has not
-> been for some time** — that claim was removed on 2026-09-14 because the document still
-> describes the retired manual-MT pipeline as current, and the combination (a stale document
-> asserting authority over the accurate ones) is worse than either problem alone.
->
-> **The owners of this material, in order:**
->
-> 1. **CLAUDE.md § *Extract-Inject-Render Pipeline*** — the canonical stage/tool table.
-> 2. **[simplified-workflow.md](simplified-workflow.md)** — the live 5-step walkthrough.
-> 3. **[../technical/cli-reference.md](../technical/cli-reference.md)** — tool flags.
->
-> **Stages 2, 3 and 4 below are RETIRED** (protect/split → manual upload to malstadur.is →
-> restore-from-mt). They are replaced by a single step, `tools/api-translate.js`, which sends
-> whole segment files to the Málstaður API with `[[type:content]]` bracket markers that
-> survive intact — no protection, no splitting, no restore. `protect-segments-for-mt.js`,
-> `restore-segments-from-mt.js` and `prepare-for-align.js` are in **`tools/archived/`**.
->
-> **Stage 8's Matecat Align dependency is RETIRED** — TM is generated in-house by
-> `tools/generate-tm.js` from the already-aligned EN/IS segment pairs. Nothing is uploaded.
->
-> The stage numbering, design principles, directory layout, terminology model and editorial
-> detail below remain broadly accurate; the MT-mechanics sections do not.
+# Master Pipeline: CNXML → Markdown → HTML (ARCHIVED)
 
-This document records the full stage-by-stage model of the namsbokasafn translation pipeline,
-including the retired MT stages noted above.
+> # ⛔ ARCHIVED 2026-09-14 — SUPERSEDED
+>
+> **→ The current pipeline reference is
+> [docs/workflow/simplified-workflow.md](../workflow/simplified-workflow.md).**
+> For the canonical stage/tool table see **CLAUDE.md § *Extract-Inject-Render Pipeline***;
+> for tool flags, [cli-reference.md](../technical/cli-reference.md).
+>
+> **Why this was archived.** The document opened by declaring itself *"the authoritative
+> reference for the namsbokasafn translation pipeline. All other workflow documentation
+> should be consistent with this document"* — while describing a pipeline that had been
+> retired for months. A stale document asserting authority over the accurate ones is worse
+> than either problem alone, and it was tracked as exactly that
+> (`ed-drift-1` / `ed-dim-docs-a` / `ed-rec-1`, "cheapest fix, widest blast radius").
+>
+> **What in here is retired:**
+>
+> - **Stages 2, 3 and 4** — protect/split → manual upload to malstadur.is → restore-from-mt.
+>   Replaced by a single step, `tools/api-translate.js`, which sends whole segment files to
+>   the Málstaður API with `[[type:content]]` bracket markers that survive intact.
+>   `protect-segments-for-mt.js`, `restore-segments-from-mt.js` and `prepare-for-align.js`
+>   are in `tools/archived/`.
+> - **Stage 8's Matecat Align dependency** — TM is generated in-house by
+>   `tools/generate-tm.js` from the already-aligned EN/IS segment pairs. Nothing is uploaded.
+> - **"Pipeline Automation" / server-triggered extract, protect, restore** — those buttons
+>   were removed; `server/routes/pipeline.js` exposes only inject, render and job tracking.
+>
+> **What is still broadly accurate**, and why this is kept rather than deleted: the design
+> principles, the three-track publication model, the directory layout, the terminology model
+> and the editorial-review detail. Treat all of it as historical context, not as instructions
+> — and never as an authority over the live docs above.
 
 ## Design Principles
 
@@ -606,7 +610,7 @@ Automated extract, protect, restore, inject, render triggered from the server UI
 
 | Document | Purpose |
 |----------|---------|
-| [Editor Rebuild Plan](./editor-improvements-jan2026.md) | Server rebuild detail for Phase 8 |
+| [Editor Rebuild Plan](../workflow/editor-improvements-jan2026.md) | Server rebuild detail for Phase 8 |
 | [Pass 1 Guidelines](../editorial/pass1-linguistic.md) | Linguistic review instructions |
 | [Pass 2 Guidelines](../editorial/pass2-localization.md) | Localization instructions |
 | [Terminology Standards](../editorial/terminology.md) | Term conventions |

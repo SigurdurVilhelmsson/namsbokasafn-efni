@@ -58,6 +58,14 @@ We archive rather than delete documentation because:
 - **Reason:** Superseded by Phase 8 CNXML→HTML pipeline
 - **Context:** Described markdown directive updates for the vefur markdown renderer. Publication output changed from markdown to semantic HTML, making directive updates irrelevant.
 
+### Pipeline Authority Triage (2026-09-14)
+
+**`master-pipeline.md`**
+- **Original location:** `docs/workflow/master-pipeline.md`
+- **Archived:** 2026-09-14
+- **Reason:** Superseded by [simplified-workflow.md](../workflow/simplified-workflow.md); described the retired manual-MT pipeline while declaring itself authoritative over the docs that were correct.
+- **Context:** Opened with *"This is the authoritative reference … all other workflow documentation should be consistent with this document"*, then described protect/split → manual upload to malstadur.is → restore-from-mt (stages 2-4) and Matecat Align (stage 8) — all retired, with their tools in `tools/archived/`. Tracked as `ed-drift-1` / `ed-dim-docs-a` and as recommendation `ed-rec-1` ("cheapest fix, widest blast radius") since the 2026-07 closure audit. The design principles, three-track publication model, directory layout and terminology/editorial detail remain broadly accurate and are why it is archived rather than deleted. **Current pipeline reference:** [docs/workflow/simplified-workflow.md](../workflow/simplified-workflow.md); canonical stage/tool table: CLAUDE.md § *Extract-Inject-Render Pipeline*.
+
 ## Action Items
 
 **Regenerate Tool Inventory:**
@@ -83,7 +91,7 @@ This provides immediate context when viewing the file.
 Archive documentation when:
 
 1. **Workflow changes** - Process described no longer exists (e.g., docx-based workflow → segment editor)
-2. **Tool deprecation** - Tools referenced are in `tools/_archived/`
+2. **Tool deprecation** - Tools referenced are in `tools/archived/`
 3. **Architecture shift** - System design fundamentally changed (e.g., markdown → HTML)
 4. **Superseded** - New doc explicitly replaces old one
 
@@ -97,7 +105,6 @@ Archive documentation when:
 For current, maintained documentation, see:
 - [docs/README.md](../README.md) - Documentation index
 - [docs/workflow/simplified-workflow.md](../workflow/simplified-workflow.md) - Current pipeline
-- [docs/workflow/master-pipeline.md](../workflow/master-pipeline.md) - Comprehensive pipeline reference
 - [docs/technical/architecture.md](../technical/architecture.md) - System architecture
 
 ## Restoration Process
@@ -112,7 +119,7 @@ To restore archived documentation:
 
 ## See Also
 
-- [tools/_archived/README.md](../../tools/_archived/README.md) - Archived tools
+- [tools/archived/README.md](../../tools/archived/README.md) - Archived tools
 - [CHANGELOG.md](../../CHANGELOG.md) - Version history and deprecations
 - [ROADMAP.md](../../ROADMAP.md) - Phase completion timeline
 - [docs/contributing/freshness-policy.md](../contributing/freshness-policy.md) - Documentation maintenance policy

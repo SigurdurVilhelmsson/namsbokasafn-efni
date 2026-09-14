@@ -309,7 +309,6 @@ sudo journalctl -u ritstjorn -f
 | Document | Description |
 |----------|-------------|
 | [Simplified Workflow](docs/workflow/simplified-workflow.md) | 5-step Extract-Inject-Render pipeline |
-| [Master Pipeline](docs/workflow/master-pipeline.md) | Complete CNXML-to-HTML reference |
 | [Pass 1: Linguistic Review](docs/editorial/pass1-linguistic.md) | First editorial pass instructions |
 | [Pass 2: Localization](docs/editorial/pass2-localization.md) | Second editorial pass instructions |
 | [Terminology](docs/editorial/terminology.md) | Terminology standards and glossary |
