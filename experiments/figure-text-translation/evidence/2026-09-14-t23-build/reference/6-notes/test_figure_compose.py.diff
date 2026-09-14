@@ -1,0 +1,127 @@
+--- a/experiments/figure-text-translation/test_figure_compose.py
++++ b/experiments/figure-text-translation/test_figure_compose.py
+@@ -71,6 +71,11 @@
+ K_TEST = 'Test the hypothesis'
+ K_VERBATIM = 'H2O (g)'
+ 
++# The composer's NOTE lists that figure-compose.py copies into compose.json (§C140 ② ③ ⑨).
++# Spelled out here rather than read from the wrapper, so a list the wrapper stops copying fails
++# this file instead of silently shrinking the set it is checked against.
++COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors')
++
+ fails = []
+ 
+ 
+@@ -326,6 +331,16 @@
+           '--control run', rep.get('translationsPath') == str(tr)
+           and rep.get('control') is False,
+           f"{rep.get('translationsPath')!r} control={rep.get('control')!r}")
++    # §C140: compose.json carries the composer's four NOTE lists beside outputPath, so the
++    # driver can name them without a second file. Each must be the REPORT'S list, and a report
++    # that has none (an older composer's) must read as [] - a note is never a refusal. Section 11
++    # carries the non-empty arm, which this fixture cannot produce.
++    check("2h compose.json carries the composer's four note lists, each the report's own "
++          "(or [] where the report has none)",
++          all(isinstance(d.get(k), list) and d.get(k) == rep.get(k, [])
++              for k in COMPOSE_NOTES),
++          f'compose.json keys {sorted(d)}; report lists '
++          + repr({k: rep.get(k) for k in COMPOSE_NOTES}))
+ 
+ 
+ # ── 3. THE MULTISET CASE — a duplicate key lost ONCE ─────────────────────────────────
+@@ -427,6 +442,7 @@
+           refused(r3, 1) and not (out / 'translated.png').exists(),
+           f"exit {r3.returncode}, png={(out / 'translated.png').exists()}")
+ 
++
+ # ── 4f. a missing artwork.pdf is refused BEFORE compose.py runs ──────────────────────
+ # §C140 ③: compose.py reads the stripped artwork.pdf for CONTAINER DETECTION, lazily, on the
+ # first translated label it lays out - and that load sits outside the detector's never-raises
+@@ -1009,5 +1025,87 @@
+           f"translated.svg present={(out / 'translated.svg').exists()}")
+ 
+ 
++# ── 11. THE COMPOSER'S NOTES REACH compose.json — THROUGH main(), NOT A HELPER ────────
++# §C140 ② ③ ⑨. compose-report.json carries four lists beside its key sets - `unformatted`,
++# `overflow`, `localized`, `containerErrors` - and the driver reads compose.json, never the
++# report, so a list the wrapper does not copy is a list nobody sees. Case 2h can only show []
++# (the committed fixture has nothing to style, nothing to overhang, no decimal and a detectable
++# page), so this plants the CHILD: `run_compose` is replaced in-process by one that writes a
++# report the real `verify` accepts, and `main()` is driven for real - validate, read_report,
++# verify and the compose.json write all run.
++# ⚠️ THROUGH main() ON PURPOSE. A unit test of a payload helper stays green against a main() that
++# writes four hand-built [] lists, and case 2h cannot tell that apart either.
++NOTES_PLANTED = {
++    'unformatted': [
++        {'key': K_OBS, 'token': 'Na3PO4', 'stretch': '3', 'reason': 'absent', 'candidates': 0},
++        {'key': K_OBS, 'token': 'Na3PO4', 'stretch': '4', 'reason': 'absent', 'candidates': 0},
++    ],
++    'overflow': [
++        {'key': K_TEST, 'block': 2, 'word': 'Prósentusamsetningar', 'needPt': 75.04028320312501,
++         'budgetPt': 33.999999999999986, 'sizePt': 7.5, 'axis': 'width'},
++    ],
++    # multiplicity is data: a figure that draws one localised key twice names it twice
++    'localized': [K_HYP, K_HYP],
++    'containerErrors': [{'key': K_TEST, 'block': 2, 'why': 'error: KeyError'}],
++}
++
++
++def main_with_planted_report(extra_report):
++    """Prepare the fixture, plant a verify-clean report carrying `extra_report`, drive main().
++    -> (main's return code, the compose.json it wrote, the prepare result)."""
++    with tempfile.TemporaryDirectory() as td:
++        out = Path(td) / 'fig-notes'
++        prep = run_prepare(FIXTURE, out, 'CNX_Fixture_Notes')
++        tr = write_tr(Path(td) / 'full.json',
++                      {K_OBS: 'Athugun og forvitni', K_HYP: 'Setja fram tilgatu',
++                       K_TEST: 'Profa tilgatuna'})
++        blocks = load_json(out / 'blocks.json') or []
++        report = {'blocks': [b['key'] for b in blocks],
++                  'missing': [b['key'] for b in blocks if not b.get('send')],
++                  'translated': [b['key'] for b in blocks if b.get('send')],
++                  'translationsPath': str(tr), 'control': False, **extra_report}
++
++        class _Child:
++            returncode, stdout, stderr = 0, '', ''
++
++        def planted_child(out_dir, _translations):
++            (out_dir / 'compose-report.json').write_text(
++                json.dumps(report, ensure_ascii=False), encoding='utf-8')
++            (out_dir / 'translated.svg').write_text('<svg/>', encoding='utf-8')
++            return _Child
++
++        real = _mod.run_compose
++        _mod.run_compose = planted_child
++        try:
++            rc = _mod.main(['--out', str(out), '--translations', str(tr)])
++        finally:
++            _mod.run_compose = real
++        return rc, load_json(out / 'compose.json') or {}, prep
++
++
++if _mod is not None:
++    rc, d, prep = main_with_planted_report(NOTES_PLANTED)
++    check('11 PRECONDITION the planted report is one verify ACCEPTS - main() exits 0 with an '
++          'outputPath, so 11a is about the copy and not a refusal',
++          prep.returncode == 0 and rc == 0 and d.get('outputPath') and 'error' not in d,
++          f'prepare exit {prep.returncode}, main {rc}: {d!r}')
++    check('11a compose.json carries all four note lists VERBATIM - draw order, multiplicity '
++          'and every field of every entry',
++          all(d.get(k) == NOTES_PLANTED[k] for k in COMPOSE_NOTES),
++          repr({k: d.get(k) for k in COMPOSE_NOTES}))
++    check('11b ... and nothing else from the report leaks into compose.json',
++          set(d) == {'outputPath', *COMPOSE_NOTES}, f'{sorted(d)}')
++
++    # THE OLDER COMPOSER. Its report has none of the four lists, and that must read as four
++    # EMPTY lists - never a refusal, because none of them is a verdict.
++    rc, d, prep = main_with_planted_report({})
++    check("11c a report WITHOUT the lists (an older composer's) still composes, exit 0",
++          prep.returncode == 0 and rc == 0 and d.get('outputPath') and 'error' not in d,
++          f'prepare exit {prep.returncode}, main {rc}: {d!r}')
++    check('11d ... and its compose.json carries each list as []',
++          all(d.get(k) == [] for k in COMPOSE_NOTES),
++          repr({k: d.get(k) for k in COMPOSE_NOTES}))
++
++
+ print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
+ sys.exit(1 if fails else 0)

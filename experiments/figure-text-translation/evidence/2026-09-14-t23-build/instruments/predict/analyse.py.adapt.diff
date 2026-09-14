@@ -1,0 +1,55 @@
+--- frozen/analyse.py	2026-09-14 08:31:17.647147990 +0000
++++ analyse.py	2026-09-14 08:46:17.075830551 +0000
+@@ -6,10 +6,18 @@
+ from pathlib import Path
+ 
+ C3 = Path('/home/siggi/dev/scratch-c140/c3'); R2 = Path('/home/siggi/dev/scratch-c140/r2')
++import sys   # PRED ADAPTATION A2/A4: per-tag input paths, output dir, mode
++PRED = Path('/home/siggi/dev/scratch-c140/plan/pred')
++MODE = sys.argv[1] if len(sys.argv) > 1 else 'final'
++assert MODE in ('control', 'final'), MODE
++NEWTAG = sys.argv[2] if len(sys.argv) > 2 else 'FINAL'   # the build under test (PRED/work/<NEWTAG>)
++REMEASURED = {'V0', 'V5_p2.0_f7.5', NEWTAG}   # measured by the adapted measure.py into PRED/out
++MEAS = lambda V: (PRED / 'out' if V in REMEASURED else R2) / f'measure-{V}.jsonl'
++WORKDIR = lambda V: (PRED / 'work' if V == NEWTAG else R2 / 'work') / V
+ PREP = Path('/home/siggi/dev/scratch-c140/prep')
+ SWEEP = ['V5_p2.0_f7.0', 'V5_p2.0_f7.5', 'V5_p2.0_f8.0', 'V5_p2.5_f7.0', 'V5_p2.5_f7.5', 'V5_p2.5_f8.0']
+-TAGS = ['V0'] + SWEEP + ['V5_p2.0_f7.5_dec']
+-M = {V: {(r['basename'], r['block']): r for r in map(json.loads, open(R2 / f'measure-{V}.jsonl'))} for V in TAGS}
++TAGS = ['V0'] + SWEEP + ['V5_p2.0_f7.5_dec'] + ([NEWTAG] if MODE == 'final' else [])   # PRED ADAPTATION A4
++M = {V: {(r['basename'], r['block']): r for r in map(json.loads, open(MEAS(V)))} for V in TAGS}
+ UF = json.loads((C3 / 'userflags.json').read_text())
+ CEN = json.loads((R2 / 'census.json').read_text())
+ KEYS = sorted(M['V0'])
+@@ -125,7 +133,12 @@
+     shrunk = [(short(k), rows[k]['sz0'], rows[k]['size']) for k in KEYS if rows[k]['shrunk']]
+     rep_over, rep_fb = [], []
+     for b in names:
+-        rp = json.loads((R2 / 'work' / V / b / 'compose-report.json').read_text())
++        rp = json.loads((WORKDIR(V) / b / 'compose-report.json').read_text())
++        if V == NEWTAG:   # PRED ADAPTATION A5: the build's field names -> r2's; word None = line-count overhang
++            dg = {d['block']: d for d in json.loads((WORKDIR(V) / b / 'diag.json').read_text())}
++            conv = [dict(key=o['key'], block=o['block'], word=o['word'], need_pt=round(o['needPt'], 3),
++                         budget_pt=round(o['budgetPt'], 3), size=o['sizePt'], cls=dg[o['block']]['cls']) for o in rp.get('overflow', [])]
++            rp = dict(overflow=[o for o in conv if o['word'] is not None], openFallback=[o for o in conv if o['word'] is None])
+         rep_over += [dict(basename=b.replace('CNX_Chem_', ''), **o) for o in rp.get('overflow', [])]
+         rep_fb += [dict(basename=b.replace('CNX_Chem_', ''), **o) for o in rp.get('openFallback', [])]
+     offp = [(short(k), rows[k]['ink_off_page'] - rows[k]['src_ink_off_page']) for k in KEYS if 'off-page' in census_verdict(rows[k])]
+@@ -159,7 +172,7 @@
+     A['blocks'][short(k)]['key'] = M['V0'][k]['key']
+ A['best_by_rule'] = min(SWEEP, key=lambda V: A['per_tag'][V]['rank'])
+ A['ranks'] = {V: A['per_tag'][V]['rank'] for V in TAGS}
+-(R2 / 'analysis.json').write_text(json.dumps(A, ensure_ascii=False, indent=1))
++(PRED / 'out' / (f'analysis-{MODE}.json' if NEWTAG == 'FINAL' or MODE == 'control' else f'analysis-{MODE}-{NEWTAG}.json')).write_text(json.dumps(A, ensure_ascii=False, indent=1))
+ 
+ # ---------------- tables.md ----------------
+ L = []
+@@ -226,7 +239,7 @@
+             w(f'  - {s}: {len(bl)}')
+         else:
+             w(f'  - {s} ({len(bl)}): ' + ', '.join(bl))
+-(R2 / 'tables.md').write_text('\n'.join(L) + '\n')
++(PRED / 'out' / (f'tables-{MODE}.md' if NEWTAG == 'FINAL' or MODE == 'control' else f'tables-{MODE}-{NEWTAG}.md')).write_text('\n'.join(L) + '\n')
+ for V in TAGS:
+     P = A['per_tag'][V]
+     print(V, 'rank', P['rank'], 'totals', P['totals'])

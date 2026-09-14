@@ -1,0 +1,73 @@
+--- ../../r9/r9_variants.py	2026-09-14 09:53:11.477744509 +0000
++++ r9_variants.py	2026-09-14 12:10:12.435896112 +0000
+@@ -1,5 +1,10 @@
+ #!/usr/bin/env python3
+-"""SUPPLEMENTARY: how close each FINAL layout decision sits to flipping - the predictions most likely to move if the
++"""PRED2 COPY of plan/r9/r9_variants.py (the controller's R9 harness). CHANGES: paths -> pred2; `literal` is now
++EXPLICIT (len(w) > SHORT_TOKEN) because on the fixed build the module's own cut_allowed IS symbols-only; `symbols` is
++the module's own cut_allowed (asserted equal to the ruling's predicate on every word); a CONTROL that `symbols` mode
++reproduces the build's diag (lines, size, step) 176/176; the bound flag per mode; a JSON dump.
++
++ORIGINAL DOCSTRING (it was copied from fragility.py and does not describe this file): how close each FINAL layout decision sits to flipping - the predictions most likely to move if the
+ repository implementation differs from the scratch build by a fraction of a point (a container inset, a metric).
+ 
+     PYTHONDONTWRITEBYTECODE=1 python3 -u fragility.py     -> ../out/fragility.json (+ stdout)
+@@ -16,7 +21,7 @@
+ import json, sys
+ from pathlib import Path
+ sys.dont_write_bytecode = True
+-PRED = Path('/home/siggi/dev/scratch-c140/plan/pred')
++PRED = Path('/home/siggi/dev/scratch-c140/plan/pred2')
+ INST = PRED / 'inst-C'
+ sys.path.insert(0, str(INST / 'pylibs')); sys.path.insert(0, str(INST))
+ import cairo
+@@ -68,26 +73,39 @@
+         res = {}
+         for mode in ('literal', 'symbols', 'off'):
+             if mode == 'literal':
+-                FLY._Partition.cut_allowed = ORIG
+-            elif mode == 'symbols':
+-                def ca(self, k):
+-                    if k == 0: return True
+-                    w = self.words[k - 1][0]
+-                    if len(w) > FLY.SHORT_TOKEN: return True
+-                    return w.isalpha() and w.islower()     # a lowercase word (af, og, á, í) may end a line; a symbol may not
++                def ca(self, k):                           # the design spec's literal R9: no cut after ANY 1-2 char word
++                    return k == 0 or len(self.words[k - 1][0]) > FLY.SHORT_TOKEN
+                 FLY._Partition.cut_allowed = ca
++            else:
++                FLY._Partition.cut_allowed = ORIG          # the fixed build's own rule (symbols only); 'off' ignores it
+             lay = FLY.decide(words, width, c, cues, _r9=(mode != 'off'))
+-            res[mode] = ([''.join(ch for ch, _ in l) for l in lay['lines']], lay['size'], lay['step'])
++            res[mode] = ([''.join(ch for ch, _ in l) for l in lay['lines']], lay['size'], lay['step'], lay['bound'])
++        if res['symbols'][:3] != (d['lines'], d['size'], d['step']) or res['symbols'][3] != d['bound']:
++            ctrl_fail.append((name, d['block']))
++        for w, _ in words:                                 # the module's predicate == the ruling's, word by word
++            pr = FLY._Partition([(w, [None] * len(w)), ('x', [None])], width)
++            assert ORIG(pr, 1) == (len(w) > 2 or (w.isalpha() and w.islower())), w
+         FLY._Partition.cut_allowed = ORIG
+         out.append((name.replace('CNX_Chem_', ''), d['block'], c['cls'], cues['n_src'], res))
+ import collections
+ cnt = collections.Counter()
+ for name, bi, cls, nsrc, res in out:
+-    L, S_, O = res['literal'], res['symbols'], res['off']
++    L, S_, O = (tuple(res[m][:3]) for m in ('literal', 'symbols', 'off'))
++    cnt['bound_symbols'] += bool(res['symbols'][3]); cnt['bound_literal'] += bool(res['literal'][3])
+     cnt['literal!=off'] += L != O; cnt['symbols!=off'] += S_ != O; cnt['literal!=symbols'] += L != S_
+     if L != O or S_ != O:
+         print(f"{name} b{bi} [{cls}] src {nsrc} lines")
+         print('   off     :', ' | '.join(O[0]), O[1], O[2])
+         print('   literal :', ' | '.join(L[0]), L[1], L[2])
+         print('   symbols :', ' | '.join(S_[0]), S_[1], S_[2])
+-print(dict(cnt), 'blocks', len(out))
++print(dict(cnt), 'blocks', len(out), '| CONTROL symbols mode reproduces the build diag (lines, size, step, bound): fail', len(ctrl_fail), ctrl_fail)
++nm = lambda x: f"{x[0]} b{x[1]}"
++J = dict(symbols_vs_off=[nm(x) for x in out if tuple(x[4]['symbols'][:3]) != tuple(x[4]['off'][:3])],
++         literal_vs_symbols=[nm(x) for x in out if tuple(x[4]['literal'][:3]) != tuple(x[4]['symbols'][:3])],
++         literal_vs_off=[nm(x) for x in out if tuple(x[4]['literal'][:3]) != tuple(x[4]['off'][:3])],
++         bound_symbols_false=[nm(x) for x in out if not x[4]['symbols'][3]], bound_literal_false=[nm(x) for x in out if not x[4]['literal'][3]],
++         blocks={nm(x): dict(cls=x[2], n_src=x[3], **{m: dict(lines=x[4][m][0], size=x[4][m][1], step=x[4][m][2], bound=x[4][m][3]) for m in x[4]}) for x in out},
++         counts=dict(cnt), control_fail=ctrl_fail)
++for k in ('symbols_vs_off', 'literal_vs_symbols', 'literal_vs_off', 'bound_symbols_false', 'bound_literal_false'):
++    print(k, len(J[k]), J[k])
++(PRED / 'out' / 'r9_variants.json').write_text(json.dumps(J, indent=1, ensure_ascii=False))

@@ -1,0 +1,13 @@
+--- ../../pred/instruments/pred_numbers.py	2026-09-14 08:48:07.707675738 +0000
++++ pred_numbers.py	2026-09-14 12:06:46.830407926 +0000
+@@ -5,8 +5,8 @@
+ """
+ import json, collections, sys
+ from pathlib import Path
+-P = Path('/home/siggi/dev/scratch-c140/plan/pred/out')
+-W = Path('/home/siggi/dev/scratch-c140/plan/pred/work/FINAL')
++P = Path('/home/siggi/dev/scratch-c140/plan/pred2/out')
++W = Path('/home/siggi/dev/scratch-c140/plan/pred2/work/FINAL')
+ CEN = json.loads(Path('/home/siggi/dev/scratch-c140/r2/census.json').read_text())
+ A = json.loads((P / 'analysis-final.json').read_text())
+ S = {T: json.loads((P / f'sentinels-{T}.json').read_text()) for T in ('V5_p2.0_f7.5', 'FINAL')}

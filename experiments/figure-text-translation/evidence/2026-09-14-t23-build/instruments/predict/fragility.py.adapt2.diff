@@ -1,0 +1,132 @@
+--- ../../pred/instruments/fragility.py	2026-09-14 08:51:22.076236491 +0000
++++ fragility.py	2026-09-14 12:13:17.039583281 +0000
+@@ -12,17 +12,36 @@
+   overflow     widest word - budget (> 0; small = could stop overflowing)
+   R9           budget - the bound partition's longest line (small = binding could be dropped)
+ CONTROL: decide() on the same inputs reproduces the FINAL diag (lines, size, step) 176/176.
++
++PRED2 CHANGES (fragility.py.adapt2.diff):
++  * argv [INST WORK OUT]: the module tree, the work dir and the output name, so the SAME definitions run on the previous
++    build (plan/pred/inst-C + plan/pred/work/FINAL) and on the fixed one (defaults).
++  * box/cell margins follow the BUILD'S OWN order. tree-fix (F5) tries every line count n <= n_src, closest first, from
++    sz0 down to the floor, before any n > n_src; tree-int tried every size before the next size. So
++      miss margin (tree-fix)   minmax(s + 0.25, n) - budget for the CHOSEN count n (height permitting), and
++      earlier-count margin     minmax(floor, n') - budget for every count n' ahead of n in that order (height permitting)
++      miss margin (tree-int)   min over height-permitted counts of minmax(s + 0.25, m) - budget (unchanged).
++    Which order a module uses is read from the module (it has `first_fit`), never assumed.
++  * R9 margin is reported only where binding CHANGES the partition (the bound partition != the unconstrained one at the
++    chosen size and count); elsewhere it equals the fit margin and names no flip of its own.
++  * Unrounded margins are kept in the JSON (6 dp); stdout prints 2 dp.
+ """
+ import json, sys
+ from pathlib import Path
+ sys.dont_write_bytecode = True
+-PRED = Path('/home/siggi/dev/scratch-c140/plan/pred')
+-INST = PRED / 'inst-C'
++PRED = Path('/home/siggi/dev/scratch-c140/plan/pred2')
++INST = Path(sys.argv[1]) if len(sys.argv) > 1 else PRED / 'inst-C'
++WORKF = Path(sys.argv[2]) if len(sys.argv) > 2 else PRED / 'work/FINAL'
++OUTNAME = sys.argv[3] if len(sys.argv) > 3 else 'fragility.json'
+ sys.path.insert(0, str(INST / 'pylibs')); sys.path.insert(0, str(INST))
+ import cairo
+ import figtext as FT
+ import figscripts as FS
+ import figlayout as FLY
++assert Path(FLY.__file__).resolve().parent == INST.resolve(), FLY.__file__
++import inspect
++F5 = 'first_fit' in inspect.getsource(FLY.decide)
++R6 = lambda x: round(x, 6)
+ from blockkey import block_key
+ PREP = Path('/home/siggi/dev/scratch-c140/prep/figs')
+ SIDE = Path('/home/siggi/dev/repos/namsbokasafn-efni/books/efnafraedi-2e/figure-text')
+@@ -40,7 +59,7 @@
+ 
+ 
+ out, ctrl_fail = [], []
+-for fd in sorted((PRED / 'work/FINAL').iterdir()):
++for fd in sorted(WORKF.iterdir()):
+     if not fd.is_dir():
+         continue
+     name = fd.name
+@@ -68,18 +87,29 @@
+             ctrl_fail.append((name, d['block'], got))
+         P = FLY._Partition(words, width)
+         s, n, sz0 = lay['size'], len(lay['lines']), cues['sz0']
+-        row = dict(block=f"{name.replace('CNX_Chem_', '')} b{d['block']}", cls=c['cls'], step=lay['step'], size=s, n=n)
++        row = dict(block=f"{name.replace('CNX_Chem_', '')} b{d['block']}", cls=c['cls'], step=lay['step'], size=s, n=n, n_src=cues['n_src'])
+         lead = sz0 * FLY.LEAD
+         if c['cls'] in ('box', 'cell'):
+             bud = (c['R'] - c['L']) - 2 * PAD; hb = (c['U'] - c['D']) - 2 * PAD
+-            row['fit_margin'] = round(bud - P.minmax(s, n), 3)
++            hok = lambda m, sz: (m - 1) * lead + (FLY.ASC + FLY.DESC) * sz <= hb + EPS
++            row['fit_margin'] = R6(bud - P.minmax(s, n))
+             if s < sz0 - EPS:
+                 up = s + FLY.STEP
+-                ok_n = [m for m in range(1, len(words) + 1) if (m - 1) * lead + (FLY.ASC + FLY.DESC) * up <= hb + EPS]
+-                row['miss_margin_next_size'] = round(min(P.minmax(up, m) for m in ok_n) - bud, 3) if ok_n else None
++                if F5:
++                    row['miss_margin_next_size'] = R6(P.minmax(up, n) - bud) if hok(n, up) else None
++                else:
++                    ok_n = [m for m in range(1, len(words) + 1) if hok(m, up)]
++                    row['miss_margin_next_size'] = R6(min(P.minmax(up, m) for m in ok_n) - bud) if ok_n else None
++            if F5:
++                n_src_ = cues['n_src']
++                order = sorted(range(1, len(words) + 1), key=lambda m: (m > n_src_, abs(m - n_src_), m))
++                ahead = [m for m in order[:order.index(n)] if hok(m, FLY.size_steps(sz0, 7.5)[-1])]
++                if ahead:
++                    fl = FLY.size_steps(sz0, 7.5)[-1]
++                    row['earlier_count_margin'] = R6(min(P.minmax(fl, m) for m in ahead) - bud)
+             if lay['overflow']:
+-                row['overflow_margin'] = round(lay['overflow']['needPt'] - lay['overflow']['budgetPt'], 3)
+-            row['height_margin'] = round(hb - ((n - 1) * lead + (FLY.ASC + FLY.DESC) * s), 3)
++                row['overflow_margin'] = R6(lay['overflow']['needPt'] - lay['overflow']['budgetPt'])
++            row['height_margin'] = R6(hb - ((n - 1) * lead + (FLY.ASC + FLY.DESC) * s))
+             bud_used = max(bud, lay['overflow']['needPt']) if lay['overflow'] else bud
+         else:
+             FLl, FRr = c['FL'], c['FR']; anc = lay['anchor']; al = lay['align']
+@@ -87,18 +117,19 @@
+             b_ii = (FRr - FLl) - 2 * PAD
+             n_t = min(cues['n_src'], len(words))
+             m = P.minmax(s, n_t)
+-            row.update(b_i_margin=round(b_i - m, 3), b_ii_margin=round(b_ii - m, 3))
++            row.update(b_i_margin=R6(b_i - m), b_ii_margin=R6(b_ii - m))
+             if s < sz0 - EPS:
+                 m_up = P.minmax(s + FLY.STEP, n_t)
+-                row.update(next_size_b_i_miss=round(m_up - b_i, 3), next_size_b_ii_miss=round(m_up - b_ii, 3))
++                row.update(next_size_b_i_miss=R6(m_up - b_i), next_size_b_ii_miss=R6(m_up - b_ii))
+             if lay['overflow']:
+-                row['overflow_margin'] = round(lay['overflow']['needPt'] - lay['overflow']['budgetPt'], 3)
++                row['overflow_margin'] = R6(lay['overflow']['needPt'] - lay['overflow']['budgetPt'])
+             bud_used = lay['budget']
+-        if lay['bound'] and n > 1:           # R9 cannot matter on a one-line label
+-            row['r9_bound_margin'] = round(bud_used - P.minmax(s, n, bound=True), 3)
++        if lay['bound'] and n > 1 and P.cut(s, n, bound=True) != P.cut(s, n):   # R9 matters only where it moves the cut
++            row['r9_bound_margin'] = R6(bud_used - P.minmax(s, n, bound=True))
++            row['r9_unbound_lines'] = [''.join(ch for ch, _ in P.chars(a, e)) for a, e in P.cut(s, n)]
+         out.append(row)
+ 
+-keys = ('fit_margin', 'miss_margin_next_size', 'overflow_margin', 'b_i_margin', 'b_ii_margin', 'next_size_b_i_miss', 'next_size_b_ii_miss', 'r9_bound_margin', 'height_margin')
++keys = ('fit_margin', 'miss_margin_next_size', 'earlier_count_margin', 'overflow_margin', 'b_i_margin', 'b_ii_margin', 'next_size_b_i_miss', 'next_size_b_ii_miss', 'r9_bound_margin', 'height_margin')
+ print('CONTROL decide() reproduces FINAL (lines, size, step): fail', len(ctrl_fail), ctrl_fail[:3])
+ close = []
+ for r in out:
+@@ -107,7 +138,7 @@
+     crit = []
+     if r['cls'] in ('box', 'cell'):
+         crit += [vals.get('fit_margin')] if r['step'] == 'fit' else []
+-        crit += [vals.get('miss_margin_next_size'), vals.get('overflow_margin'), vals.get('r9_bound_margin')]
++        crit += [vals.get('miss_margin_next_size'), vals.get('earlier_count_margin'), vals.get('overflow_margin'), vals.get('r9_bound_margin')]
+     else:
+         if r['step'] in ('i', 'iii-anchor'):
+             crit += [vals.get('b_i_margin'), vals.get('next_size_b_ii_miss')]
+@@ -118,7 +149,8 @@
+     r['critical'] = min(crit, key=abs) if crit else None
+     if crit and abs(r['critical']) < 0.3:
+         close.append(r)
++print(f'build {INST} | box/cell order: {"line count before size (F5)" if F5 else "size before line count"}')
+ print(f'decisions within 0.3 pt of flipping ({len(close)} of {len(out)}):')
+ for r in sorted(close, key=lambda r: abs(r['critical'])):
+-    print('   ', json.dumps(r, ensure_ascii=False))
+-(PRED / 'out' / 'fragility.json').write_text(json.dumps(dict(control_fail=ctrl_fail, blocks=out, close=close), indent=1, ensure_ascii=False))
++    print('   ', json.dumps({k: (f'{v:.2f}' if isinstance(v, float) and k not in ('size',) else v) for k, v in r.items()}, ensure_ascii=False))
++(PRED / 'out' / OUTNAME).write_text(json.dumps(dict(build=str(INST), work=str(WORKF), f5_order=F5, control_fail=ctrl_fail, blocks=out, close=close), indent=1, ensure_ascii=False))

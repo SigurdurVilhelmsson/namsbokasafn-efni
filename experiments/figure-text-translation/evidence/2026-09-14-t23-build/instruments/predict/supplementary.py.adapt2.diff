@@ -1,0 +1,119 @@
+--- ../../pred/instruments/supplementary.py	2026-09-14 08:42:21.270680754 +0000
++++ supplementary.py	2026-09-14 12:14:30.325140701 +0000
+@@ -3,8 +3,8 @@
+ 
+     PYTHONDONTWRITEBYTECODE=1 python3 -u supplementary.py     -> ../out/supplementary.json (+ stdout)
+ 
+-Reads only: plan/pred/out/measure-{V5_p2.0_f7.5,FINAL}.jsonl, plan/pred/work/FINAL/<b>/{diag,items}.json,
+-r2/work/{V0,V5_p2.0_f7.5}/<b>/{diag,items}.json, r2/census.json, prep/figs. Writes only plan/pred/out.
++Reads only: plan/pred2/out/measure-{V5_p2.0_f7.5,FINAL}.jsonl, plan/pred2/work/FINAL/<b>/{diag,items}.json,
++r2/work/{V0,V5_p2.0_f7.5}/<b>/{diag,items}.json, r2/census.json, prep/figs. Writes only plan/pred2/out.
+   A  inverted base: lines on which figscripts.line_styles reports `inverted` (176 layout blocks, token lines)
+   B  alignment: production container align vs census (cell_align / open_align_r2) on the 110 non-box blocks
+   C  container geometry: production (figcontainers) vs census, per class
+@@ -16,11 +16,19 @@
+   I  R9-repartitioned blocks: drawn container / free-box margin before and after
+   J  drawn items per layout block: FINAL vs V5_p2.0_f7.5 and vs V0 (exact (text,x,y,size,rot,bold,italic))
+   K  cell displacements and ethene b0's column edge
++PRED2 CHANGES (supplementary.py.adapt2.diff):
++  G  FINAL margins (census AND production) are computed from the diag's UNROUNDED frame - a0 = min(x0), a1 = max(x0 + w),
++     x0 displacement included, w = the build's linear widths - never from measure's 2-dp drawn_frame (spec reviewer,
++     finding 1: the third decimal of the old production margins was rounding noise). The V5 prototype keeps the frozen
++     measure rows. The measure-row (2-dp) census margins ride along as a cross-check.
++  L  (new) every BOUNDED block with a drawn container margin < 2.5 pt (frozen measure geometry, 2 dp), with its PRODUCTION
++     container margins from the unrounded frame, on the fixed build and on the previous build (plan/pred).
++  P  (new) the blocks F1 (R9 symbols-only) repartitions against the previous build: text and margins before and after.
+ """
+ import json, math, sys, collections
+ from pathlib import Path
+ sys.dont_write_bytecode = True
+-PRED = Path('/home/siggi/dev/scratch-c140/plan/pred')
++PRED = Path('/home/siggi/dev/scratch-c140/plan/pred2')
+ sys.path.insert(0, str(PRED / 'instruments'))
+ from c3lib import *            # Fig, FT, cairo, S, ASC, DESC, measure_adv (hinted)
+ import importlib.util
+@@ -177,18 +185,25 @@
+     row = {}
+     for T in ('V5_p2.0_f7.5', 'FINAL'):
+         r = M[T][k]; fr = r['drawn_frame']
++        if T == 'FINAL':   # PRED2: unrounded frame from the diag (x0 includes displacement; linear widths)
++            dgr = DG['FINAL'][b][bi]
++            fr_m = fr
++            fr = dict(a0=min(dgr['x0']), a1=max(x + w for x, w in zip(dgr['x0'], dgr['drawn_widths'])))
++            assert abs(fr['a0'] - fr_m['a0']) <= 0.005 + 1e-9 and abs(fr['a1'] - fr_m['a1']) <= 0.005 + 1e-9, (b, bi, fr, fr_m)
+         cls = ce['r2cls']
+         if cls in ('box', 'cell'):
+             outer = (ce['L'], ce['R'])
+         else:
+             outer = (ce['FL'], ce['FR'])
+-        ent = dict(size=r['size'], lines=r['lines'], text=r['text'], census_margin_L=round(fr['a0'] - outer[0], 2),
+-                   census_margin_R=round(outer[1] - fr['a1'], 2), census_budget=round(outer[1] - outer[0] - 2 * PAD, 3),
++        ent = dict(size=r['size'], lines=r['lines'], text=r['text'], census_margin_L=round(fr['a0'] - outer[0], 6),
++                   census_margin_R=round(outer[1] - fr['a1'], 6), census_budget=round(outer[1] - outer[0] - 2 * PAD, 3),
+                    ink=r['ink_on_dark'], spill=r['spill'])
+         if T == 'FINAL':
+             c = DG['FINAL'][b][bi]['container']
+             po = (c['L'], c['R']) if cls in ('box', 'cell') else (c['FL'], c['FR'])
+-            ent.update(prod_margin_L=round(fr['a0'] - po[0], 3), prod_margin_R=round(po[1] - fr['a1'], 3),
++            ent.update(census_margin_from_measure_row_2dp=[round(fr_m['a0'] - outer[0], 2), round(outer[1] - fr_m['a1'], 2)],
++                       frame_unrounded=[round(fr['a0'], 6), round(fr['a1'], 6)])
++            ent.update(prod_margin_L=round(fr['a0'] - po[0], 6), prod_margin_R=round(po[1] - fr['a1'], 6),
+                        prod_budget=round(po[1] - po[0] - 2 * PAD, 3), prod_outer=[round(po[0], 3), round(po[1], 3)],
+                        census_outer=[round(outer[0], 3), round(outer[1], 3)],
+                        step=DG['FINAL'][b][bi]['step'], overflow=DG['FINAL'][b][bi]['overflow'], why=c['why'])
+@@ -265,4 +280,55 @@
+     print(f"K ethene b0 {T}: drawn a0 {r['drawn_frame']['a0']} source left edge {r['src_left_edge']} -> {round(r['drawn_frame']['a0'] - r['src_left_edge'], 2)} pt",
+           '' if r17 is None else f"(b17 source left edge {r17['src_left_edge']}, drawn a0 {r17['drawn_frame']['a0']})")
+     out[f'K_ethene_b0_{T}'] = dict(a0=r['drawn_frame']['a0'], src_left_edge=r['src_left_edge'])
++# L (PRED2) -------------------------------------------------------------------------------------------------
++PREV = Path('/home/siggi/dev/scratch-c140/plan/pred')
++MP = {(r['basename'], r['block']): r for r in map(json.loads, open(PREV / 'out' / 'measure-FINAL.jsonl'))}
++DGP = {b: {d['block']: d for d in json.loads((PREV / 'work/FINAL' / b / 'diag.json').read_text())} for b in names()}
++
++
++def cm2(r):
++    g = r['geometry'].get('container_vector') or r['geometry']['container']
++    return min(g['drawn']['left'], g['drawn']['right'])
++
++
++def prod_margins(dg):
++    c = dg['container']; a0 = min(dg['x0']); a1 = max(x + w for x, w in zip(dg['x0'], dg['drawn_widths']))
++    if c['cls'] in ('box', 'cell'):
++        return round(a0 - c['L'], 6), round(c['R'] - a1, 6)
++    return round(a0 - c['FL'], 6), round(c['FR'] - a1, 6)
++
++
++L25 = {}
++for tag, MM, DD in (('FINAL', M['FINAL'], DG['FINAL']), ('PREV', MP, DGP)):
++    L25[tag] = sorted([dict(block=short(*k), census_min_margin_2dp=cm2(r), text=r['text'], prod_LR=prod_margins(DD[k[0]][k[1]]))
++                       for k, r in MM.items() if r['cls'] == 'BOUNDED' and cm2(r) < 2.5], key=lambda x: x['census_min_margin_2dp'])
++out['L_bounded_margin_lt_2_5'] = L25
++print('\nL BOUNDED blocks with drawn container margin < 2.5 pt (census 2 dp; production L/R unrounded):')
++for tag in ('PREV', 'FINAL'):
++    print('  ', tag, len(L25[tag]))
++    for x in L25[tag]:
++        print('      ', x['block'], f"{x['census_min_margin_2dp']:.2f}", 'prod', tuple(f'{v:.2f}' for v in x['prod_LR']), x['text'])
++
++# P (PRED2) -------------------------------------------------------------------------------------------------
++cmpj = json.loads((PRED / 'out' / 'compare_prev.json').read_text())
++r9j = json.loads((PRED / 'out' / 'r9_variants.json').read_text())
++PP = {}
++for k in KEYS:
++    s = short(*k)
++    if s not in set(cmpj['items_layout_changed']) and s not in set(r9j['symbols_vs_off']):
++        continue
++    rp, rn = MP[k], M['FINAL'][k]
++    def mg(r):
++        return round(cm2(r), 2) if r['cls'] == 'BOUNDED' else round(min(r['geometry']['free_dark_or_labels']['drawn']['left'], r['geometry']['free_dark_or_labels']['drawn']['right']), 2)
++    PP[s] = dict(cls=rn['cls'], F1_moved=s in set(cmpj['items_layout_changed']), R9_binds=s in set(r9j['symbols_vs_off']),
++                 prev_text=rp['text'], new_text=rn['text'], unbound_text=r9j['blocks'][s]['off']['lines'],
++                 prev_census_min=mg(rp), new_census_min=mg(rn),
++                 prev_prod_LR=prod_margins(DGP[k[0]][k[1]]), new_prod_LR=prod_margins(DG['FINAL'][k[0]][k[1]]),
++                 ink=(rp['ink_on_dark'], rn['ink_on_dark']), spill=(rp['spill'], rn['spill']), text_coll=(rp['text_coll'], rn['text_coll']))
++out['P_f1_and_r9_blocks'] = PP
++print('\nP blocks F1 moved (literal -> symbols) or where symbols-only R9 binds (vs no R9): prev -> new; min drawn margin (census; free box for OPEN)')
++for s_, x in sorted(PP.items()):
++    print('   ', s_, x['cls'], 'F1' if x['F1_moved'] else '  ', 'R9' if x['R9_binds'] else '  ', ' | '.join(x['prev_text']), '->', ' | '.join(x['new_text']),
++          f"| {x['prev_census_min']:.2f} -> {x['new_census_min']:.2f}", 'prod', tuple(f'{v:.2f}' for v in x['prev_prod_LR']), '->', tuple(f'{v:.2f}' for v in x['new_prod_LR']),
++          'ink', x['ink'], 'spill', x['spill'], 'tc', x['text_coll'])
+ (PRED / 'out' / 'supplementary.json').write_text(json.dumps(out, indent=1, ensure_ascii=False))

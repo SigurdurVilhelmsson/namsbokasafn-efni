@@ -1,0 +1,459 @@
+diff --git a/tools/__tests__/figure-outcomes.test.js b/tools/__tests__/figure-outcomes.test.js
+index c4974eb8..5d75bd41 100644
+--- a/tools/__tests__/figure-outcomes.test.js
++++ b/tools/__tests__/figure-outcomes.test.js
+@@ -262,3 +262,67 @@ describe('verdict NOTEs the labels a TRANSLATED figure could not decode', () =>
+     expect(v.reasons[0]).toMatch(/carry text we cannot read/);
+   });
+ });
++
++// ─────────────────────────────────────────────────────────────────────────────────────────
++// 🔴 §C140 ② ③ ⑨ — WHAT THE COMPOSER REPORTED ABOUT THE FIGURES IT DREW. `figure-compose.py`
++// copies four lists out of compose-report.json into compose.json; the driver counts the
++// `translated` figures carrying each and hands the counts to `verdict` through `extra`, the same
++// channel as the undecoded NOTE, because each is a property of a figure INSIDE a bucket.
++// ⚠️ NONE IS FATAL, AND THAT IS PINNED TOGETHER WITH THE MESSAGE. The figure is drawn and every
++// label is in it: a named formula miss draws plain text, an overhang draws at the floor, a
++// localised number is the house style, a failed detection lays a label out as open. Failing on
++// any of them would be the always-red exit code R9 rejects — so each test below asserts the NOTE
++// AND `ok` in one run, and a NOTE that lost its prefix fails here rather than failing chapters.
++describe('verdict NOTEs what the composer reported about the figures it drew', () => {
++  const tally = () => ({ ...emptyTally(), translated: 3 });
++  const NOTES = [
++    [
++      'unformattedFigures',
++      'NOTE (not a failure): 2 translated figure(s) carry formula formatting the composer could not place — the report names each',
++    ],
++    [
++      'overflowFigures',
++      'NOTE (not a failure): 2 figure(s) carry label(s) drawn at the floor that overhang their space — the report names each',
++    ],
++    [
++      'localizedFigures',
++      'NOTE (not a failure): 2 figure(s) had English-kept numbers drawn with a decimal comma',
++    ],
++    [
++      'containerErrorFigures',
++      'NOTE (not a failure): 2 figure(s) had container detection fail — those labels were laid out as open',
++    ],
++  ];
++
++  for (const [field, message] of NOTES) {
++    it(`names ${field} in exactly one NOTE, and the run stays ok`, () => {
++      const v = verdict(tally(), 3, { [field]: 2 });
++      expect(v.reasons).toEqual([message]);
++      expect(v.ok).toBe(true);
++    });
++  }
++
++  // The control for all four: a zero is silence. Without it the tests above pass against a
++  // verdict that prints these lines on every run.
++  it('says nothing when every count is zero', () => {
++    const extra = Object.fromEntries(NOTES.map(([field]) => [field, 0]));
++    expect(verdict(tally(), 3, extra)).toEqual({ ok: true, reasons: [] });
++  });
++
++  it('all four at once are four NOTEs in list order, and the run is still ok', () => {
++    const extra = Object.fromEntries(NOTES.map(([field]) => [field, 2]));
++    const v = verdict(tally(), 3, extra);
++    expect(v.reasons).toEqual(NOTES.map(([, message]) => message));
++    expect(v.ok).toBe(true);
++  });
++
++  // 🔴 A NOTE MUST NOT MASK A FAILURE. Beside a real `failed-compose` the run is still not ok —
++  // so the NOTEs are additive, never a substitute reason.
++  it('does not turn a failing run ok', () => {
++    const t = { ...emptyTally(), translated: 2, 'failed-compose': 1 };
++    const extra = Object.fromEntries(NOTES.map(([field]) => [field, 1]));
++    const v = verdict(t, 3, extra);
++    expect(v.ok).toBe(false);
++    expect(v.reasons.filter((r) => r.startsWith('NOTE'))).toHaveLength(4);
++  });
++});
+diff --git a/tools/__tests__/figure-run-paid.test.js b/tools/__tests__/figure-run-paid.test.js
+index 3599cba4..7c3083c8 100644
+--- a/tools/__tests__/figure-run-paid.test.js
++++ b/tools/__tests__/figure-run-paid.test.js
+@@ -160,7 +160,9 @@ function currentSidecar(basename, blocks, extra = {}) {
+  * @param {(b:string, blocks:Array)=>object} [plan.translate] `{__exit: n}` to fail, `{__absent:
+  *   true}` to write no translations file, `{__blocks: {...}}` for a literal payload; the default
+  *   returns one Icelandic value per `send:true` block.
+- * @param {(b:string)=>object} [plan.compose] `{__error: 'msg'}` to make compose exit 1.
++ * @param {(b:string)=>object} [plan.compose] `{__error: 'msg'}` to make compose exit 1;
++ *   `{__notes: {...}}` to write those keys into a successful compose.json beside `outputPath` —
++ *   the composer's note lists `figure-compose.py` copies there (§C140).
+  */
+ function fakeSpawn(plan = {}) {
+   const calls = [];
+@@ -264,7 +266,7 @@ function fakeSpawn(plan = {}) {
+       fs.writeFileSync(path.join(outDir, 'translated.svg'), `<svg id="${basename}"/>`);
+       fs.writeFileSync(
+         path.join(outDir, 'compose.json'),
+-        JSON.stringify({ outputPath: path.join(outDir, 'translated.svg') })
++        JSON.stringify({ outputPath: path.join(outDir, 'translated.svg'), ...spec.__notes })
+       );
+       return { status: 0, stdout: '', stderr: '' };
+     }
+@@ -463,6 +465,165 @@ describe('a figure whose publish fails is never reported done', () => {
+   });
+ });
+ 
++// ─────────────────────────────────────────────────────────────────────────────────────────
++// 🔴 §C140 ② ③ ⑨ — THE COMPOSER'S NOTES REACH THE OPERATOR. `figure-compose.py` copies four lists
++// out of compose-report.json into compose.json: formula formatting a translated label could not
++// carry, words drawn at the floor that overhang, English-kept numbers given a decimal comma, and
++// blocks whose container detection failed. The figure is drawn and published either way — so
++// these are NOTEs — but a list the driver never reads is a list nobody sees, and the remedy for
++// most of them (a wrap point, a shorter word) is an editor's, in a panel keyed on the BLOCK KEY.
++// ⚠️ THE FAKE COMPOSE IS THE SEAM, DELIBERATELY. `figure-compose.py`'s own suite
++// (test_figure_compose.py §2h/§11) proves the lists land in compose.json; this proves the driver
++// reads them from there. The free half cannot: every run in it is a dry run, which never composes.
++describe("the composer's notes reach the verdict and the report", () => {
++  const NOTES = {
++    unformatted: [
++      { key: 'k0', token: 'Na3PO4', stretch: '3', reason: 'absent', candidates: 0 },
++      { key: 'k0', token: 'Na3PO4', stretch: '4', reason: 'absent', candidates: 0 },
++    ],
++    overflow: [
++      {
++        key: 'Percent|composition',
++        block: 8,
++        word: 'Prósentusamsetning',
++        needPt: 68.37158203125001,
++        budgetPt: 54.5,
++        sizePt: 7.5,
++        axis: 'width',
++      },
++    ],
++    // multiplicity is data: a figure that draws one localised key twice names it twice
++    localized: ['26.98', '26.98'],
++    containerErrors: [{ key: 'k1', block: 1, why: 'error: KeyError' }],
++  };
++  const EMPTY = { unformatted: [], overflow: [], localized: [], containerErrors: [] };
++  const withNotes = (notes) => fakeSpawn({ compose: () => ({ __notes: notes }) });
++
++  it('copies the four lists from compose.json onto the record, verbatim', async () => {
++    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
++    const result = await runFigures(live(booksRoot), { spawn: withNotes(NOTES), booksRoot });
++    expect(rec(result, 'FIG_A').outcome).toBe('translated');
++    expect(rec(result, 'FIG_A').composeNotes).toEqual(NOTES);
++  });
++
++  it('names each list once, as a NOTE, and the run stays ok', async () => {
++    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
++    const result = await runFigures(live(booksRoot), { spawn: withNotes(NOTES), booksRoot });
++    expect(result.verdict.reasons).toEqual([
++      'NOTE (not a failure): 1 translated figure(s) carry formula formatting the composer could not place — the report names each',
++      'NOTE (not a failure): 1 figure(s) carry label(s) drawn at the floor that overhang their space — the report names each',
++      'NOTE (not a failure): 1 figure(s) had English-kept numbers drawn with a decimal comma',
++      'NOTE (not a failure): 1 figure(s) had container detection fail — those labels were laid out as open',
++    ]);
++    expect(result.verdict.ok).toBe(true);
++  });
++
++  it('counts FIGURES, not entries: two figures with notes are "2 figure(s)"', async () => {
++    const { booksRoot } = makeBook({ figures: ['FIG_A', 'FIG_B'] });
++    const result = await runFigures(live(booksRoot), { spawn: withNotes(NOTES), booksRoot });
++    expect(result.tally.translated).toBe(2); // the premise: both were composed and shipped
++    expect(result.verdict.reasons.join('\n')).toMatch(
++      /2 translated figure\(s\) carry formula formatting/
++    );
++  });
++
++  it('the report names the figure and each key, overflow with 2-dp widths and its axis', async () => {
++    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
++    const text = summarise(
++      await runFigures(live(booksRoot), { spawn: withNotes(NOTES), booksRoot })
++    );
++    expect(text).toContain('    FIG_A: "k0" stretch "3" of "Na3PO4" (absent)');
++    expect(text).toContain('    FIG_A: "k0" stretch "4" of "Na3PO4" (absent)');
++    expect(text).toContain(
++      '    FIG_A: "Percent|composition" block 8 "Prósentusamsetning" needs 68.37 pt, budget 54.50 pt (width)'
++    );
++    expect(text).toContain('    FIG_A: "26.98", "26.98"');
++    expect(text).toContain('    FIG_A: "k1" block 1 — error: KeyError');
++  });
++
++  // An overflow entry need not carry a word (a line-count overhang names none) or an axis (a
++  // composer that predates it). The line must still print, and never as "undefined".
++  it('prints an overflow with no word and no axis without inventing either', async () => {
++    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
++    const bare = {
++      ...EMPTY,
++      overflow: [{ key: 'k1', block: 1, word: null, needPt: 40, budgetPt: 33.999999999999986 }],
++    };
++    const text = summarise(
++      await runFigures(live(booksRoot), { spawn: withNotes(bare), booksRoot })
++    );
++    const lines = text.split('\n').filter((l) => l.startsWith('    FIG_A: "k1"'));
++    expect(lines).toEqual(['    FIG_A: "k1" block 1 a line needs 40.00 pt, budget 34.00 pt']);
++  });
++
++  // A HEIGHT overhang is not a width one: its need is a glyph-box height and re-wrapping the label
++  // makes it worse, so the line names what overhangs. A width entry whose glyph box ALSO misses its
++  // height budget names both, never the width alone.
++  it('prints a height overhang as a glyph box, and a width entry that also misses height as both', async () => {
++    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
++    const notes = {
++      ...EMPTY,
++      overflow: [
++        {
++          key: 'k2',
++          block: 2,
++          word: null,
++          needPt: 40.04,
++          budgetPt: 39.5,
++          sizePt: 7.5,
++          axis: 'height',
++        },
++        {
++          key: 'k3',
++          block: 3,
++          word: 'Prósentusamsetning',
++          needPt: 70.5,
++          budgetPt: 36,
++          sizePt: 7.5,
++          axis: 'width',
++          linePt: 70.5,
++          heightNeedPt: 7.05,
++          heightBudgetPt: 2,
++        },
++      ],
++    };
++    const text = summarise(
++      await runFigures(live(booksRoot), { spawn: withNotes(notes), booksRoot })
++    );
++    const lines = text.split('\n').filter((l) => l.startsWith('    FIG_A: "k'));
++    expect(lines).toEqual([
++      '    FIG_A: "k2" block 2 glyph box needs 40.04 pt, height budget 39.50 pt (height)',
++      '    FIG_A: "k3" block 3 "Prósentusamsetning" needs 70.50 pt, budget 36.00 pt (width); ' +
++        'glyph box needs 7.05 pt, height budget 2.00 pt',
++    ]);
++  });
++
++  // THE CONTROL, AND THE OLDER WRAPPER. A compose.json carrying only `outputPath` — what every
++  // figure-compose.py before §C140 writes — reads as four empty lists: no NOTE, no section.
++  // Without it every assertion above passes against a driver that invents notes.
++  it('a compose.json with no lists reads as four empty lists and says nothing', async () => {
++    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
++    const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
++    expect(rec(result, 'FIG_A').composeNotes).toEqual(EMPTY);
++    expect(result.verdict).toEqual({ ok: true, reasons: [] });
++    expect(summarise(result)).not.toMatch(/decimal comma|overhang|formula formatting|container/);
++  });
++
++  // 🔴 COUNTED OVER `translated` ONLY, like the undecoded NOTE. A figure whose publish then failed
++  // shipped nothing and already carries its own fatal reason; its notes describe no reader's page.
++  it('a figure whose publish failed carries no NOTE, though compose reported lists', async () => {
++    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
++    const result = await runFigures(live(booksRoot), {
++      spawn: withNotes(NOTES),
++      booksRoot,
++      publish: refusingPublisher(),
++    });
++    expect(rec(result, 'FIG_A').outcome).toBe('failed-publish');
++    expect(rec(result, 'FIG_A').composeNotes).toEqual(NOTES); // the premise: the lists were read
++    expect(result.verdict.reasons.filter((r) => r.startsWith('NOTE'))).toEqual([]);
++  });
++});
++
+ // ─────────────────────────────────────────────────────────────────────────────────────────
+ // 🔴 THE SIDECAR MOVING UNDER A COMPOSE. The driver reads every sidecar up front, hands the
+ // FILE to `figure-compose.py` as `--translations`, and the publisher re-reads that same file
+diff --git a/tools/figure-run.js b/tools/figure-run.js
+index 7e94b555..366aef54 100644
+--- a/tools/figure-run.js
++++ b/tools/figure-run.js
+@@ -975,6 +975,44 @@ export function applySidecarGuard(rec, bookDir, exists = fs.existsSync) {
+   return rec;
+ }
+ 
++/**
++ * The composer's NOTE lists, in the order the verdict and the report print them (§C140):
++ * `unformatted` formula formatting a translated label could not carry (②), `overflow` words drawn
++ * at the floor that overhang their space (③, R5), `localized` English-kept numbers drawn with a
++ * decimal comma (⑨), `containerErrors` blocks whose container detection failed (③).
++ * `figure-compose.py` copies them out of compose-report.json into compose.json.
++ */
++const COMPOSE_NOTE_LISTS = ['unformatted', 'overflow', 'localized', 'containerErrors'];
++
++/**
++ * compose.json's note lists, each an array. ⚠️ AN ABSENT LIST IS AN EMPTY ONE, NEVER A REFUSAL:
++ * a compose.json written before §C140 carries only `outputPath`, and every list is a NOTE — the
++ * figure is drawn either way, so nothing here may fail a compose `figure-compose.py` accepted.
++ *
++ * @param {object} composeVerdict the parsed compose.json of a successful compose
++ * @returns {{unformatted: object[], overflow: object[], localized: string[], containerErrors: object[]}}
++ */
++function composeNotesFrom(composeVerdict) {
++  return Object.fromEntries(
++    COMPOSE_NOTE_LISTS.map((k) => [k, Array.isArray(composeVerdict[k]) ? composeVerdict[k] : []])
++  );
++}
++
++/**
++ * The figures whose compose reported something on `list`. 🔴 `translated` ONLY — the same stance
++ * as the undecoded NOTE: a figure whose publish then failed shipped nothing and already carries
++ * its own fatal reason. The verdict's count and the report's section both come from here, so the
++ * number in the NOTE is the number of figures the report names.
++ *
++ * @param {object[]} figures run records
++ * @param {string} list one of COMPOSE_NOTE_LISTS
++ */
++function figuresWithComposeNote(figures, list) {
++  return figures.filter(
++    (f) => f.outcome === 'translated' && f.composeNotes && f.composeNotes[list].length > 0
++  );
++}
++
+ /**
+  * STEPS 6–10 for ONE figure, live. Mutates `rec`; returns nothing.
+  *
+@@ -1148,6 +1186,7 @@ function processFigureLive(
+     return;
+   }
+   const svgPath = composeVerdict.outputPath;
++  rec.composeNotes = composeNotesFrom(composeVerdict);
+ 
+   // ── STEP 10. MINT THE MAPPING ENTRY, THEN PUBLISH. ────────────────────────────────────
+   const outputName = rec.mapping.outputName;
+@@ -1314,6 +1353,9 @@ export async function runFigures(args, deps = {}) {
+     droppedKeys: [],
+     published: null,
+     warnings: [],
++    // What the composer reported about the figure it DREW (§C140), read from compose.json by
++    // `composeNotesFrom`. Null until a compose succeeds, so a figure never composed has none.
++    composeNotes: null,
+   }));
+ 
+   for (const rec of records) applySidecarGuard(rec, bookDir, sidecarExists);
+@@ -1547,6 +1589,10 @@ export async function runFigures(args, deps = {}) {
+       verdict: verdict(tally, selected.length, {
+         undecodedFigures: shipsUndecoded.length,
+         undecodedLabels: shipsUndecoded.reduce((n, r) => n + r.holds.undecoded, 0),
++        unformattedFigures: figuresWithComposeNote(selected, 'unformatted').length,
++        overflowFigures: figuresWithComposeNote(selected, 'overflow').length,
++        localizedFigures: figuresWithComposeNote(selected, 'localized').length,
++        containerErrorFigures: figuresWithComposeNote(selected, 'containerErrors').length,
+       }),
+       tmpRoot,
+     };
+@@ -1784,6 +1830,64 @@ export function summarise(result) {
+     for (const f of warned) lines.push(`    ${f.basename}: ${f.warnings.join('; ')}`);
+   }
+ 
++  // 🔴 §C140 ② ③ ⑨ — THE COMPOSER'S NOTES, NAMED BY FIGURE AND BLOCK KEY. Each is a NOTE in the
++  // verdict, never a failure, but a count gives an operator nothing to act on: the remedy for most
++  // of them (a wrap point, a shorter word) is an editor's, in a panel keyed on the block key. Keys
++  // are JSON-quoted because a block key carries `|` as its line separator and may carry commas.
++  // ⚠️ `translated` figures only (`figuresWithComposeNote`), so each section names exactly the
++  // figures its NOTE counts. An overflow may name no word (a line-count overhang) and a report
++  // from an older composer carries no `axis`; neither is printed as `undefined`.
++  const quoted = (s) => JSON.stringify(s);
++  const pt = (n) => (Number.isFinite(n) ? n.toFixed(2) : String(n));
++  const noteEntries = (list, format) =>
++    figuresWithComposeNote(result.figures, list).flatMap((f) =>
++      f.composeNotes[list].map((entry) => `${f.basename}: ${format(entry)}`)
++    );
++  lines.push(
++    ...nameList(
++      'formula formatting the composer could not place — drawn as plain text',
++      noteEntries(
++        'unformatted',
++        (u) => `${quoted(u.key)} stretch ${quoted(u.stretch)} of ${quoted(u.token)} (${u.reason})`
++      )
++    )
++  );
++  lines.push(
++    ...nameList(
++      'labels drawn at the floor that overhang their space — an editor can shorten or re-break them',
++      noteEntries('overflow', (o) => {
++        // `block` is printed because twin labels share a key (flowchart's two `Molarity` cells)
++        // and would otherwise print as two identical lines.
++        const head = `${quoted(o.key)} block ${o.block} `;
++        // A HEIGHT overhang's need is a glyph-box height, not a width: wrapping makes it worse.
++        if (o.axis === 'height') {
++          return `${head}glyph box needs ${pt(o.needPt)} pt, height budget ${pt(o.budgetPt)} pt (height)`;
++        }
++        const width =
++          `${head}${o.word == null ? 'a line' : quoted(o.word)} needs ` +
++          `${pt(o.needPt)} pt, budget ${pt(o.budgetPt)} pt${o.axis ? ` (${o.axis})` : ''}`;
++        // A width entry whose glyph box also misses height names both (figlayout sets the pair).
++        return o.heightNeedPt == null
++          ? width
++          : `${width}; glyph box needs ${pt(o.heightNeedPt)} pt, height budget ${pt(o.heightBudgetPt)} pt`;
++      })
++    )
++  );
++  lines.push(
++    ...nameList(
++      'English-kept numbers drawn with a decimal comma, by figure',
++      figuresWithComposeNote(result.figures, 'localized').map(
++        (f) => `${f.basename}: ${f.composeNotes.localized.map(quoted).join(', ')}`
++      )
++    )
++  );
++  lines.push(
++    ...nameList(
++      'container detection failed — these labels were laid out as open',
++      noteEntries('containerErrors', (c) => `${quoted(c.key)} block ${c.block} — ${c.why}`)
++    )
++  );
++
+   for (const rec of result.figures) {
+     if (rec.outcome.startsWith('failed-')) {
+       lines.push(`  ${rec.outcome}  ${rec.basename}: ${rec.reason}`);
+diff --git a/tools/lib/figure-outcomes.js b/tools/lib/figure-outcomes.js
+index 2c875db3..c4ab1247 100644
+--- a/tools/lib/figure-outcomes.js
++++ b/tools/lib/figure-outcomes.js
+@@ -117,8 +117,10 @@ export function tallyOutcome(tally, outcome) {
+  *
+  * @param {Record<string, number>} tally
+  * @param {number} enumeratedCount figures enumerated; the partition must sum to it
+- * @param {{undecodedFigures?: number, undecodedLabels?: number}} [extra] counted over the
+- *   records, not derivable from the tally
++ * @param {{undecodedFigures?: number, undecodedLabels?: number, unformattedFigures?: number,
++ *   overflowFigures?: number, localizedFigures?: number, containerErrorFigures?: number}} [extra]
++ *   counted over the records, not derivable from the tally. The last four are `translated`
++ *   figures whose compose.json carried a non-empty list of that name (§C140).
+  * @returns {{ok: boolean, reasons: string[]}}
+  */
+ export function verdict(tally, enumeratedCount, extra = {}) {
+@@ -170,6 +172,36 @@ export function verdict(tally, enumeratedCount, extra = {}) {
+     );
+   }
+ 
++  // 🔴 §C140 ② ③ ⑨ — WHAT THE COMPOSER COULD NOT DO AS THE SOURCE DID, OR DID DIFFERENTLY ON
++  // PURPOSE. Same channel and same stance as the NOTE above: a property of figures inside
++  // `translated`, counted over the records. ⚠️ NONE IS FATAL. Every label is drawn — a formula miss
++  // as plain text, an overhang at the 7.5 pt floor (R4/R5), a localised number in the house style
++  // (R6), a failed detection laid out as open — so the figure ships, and the report names what to
++  // look at. Failing on any of them would be the always-red exit code R9 rejects.
++  const composeNotes = [
++    [
++      extra.unformattedFigures,
++      (n) =>
++        `${n} translated figure(s) carry formula formatting the composer could not place — the report names each`,
++    ],
++    [
++      extra.overflowFigures,
++      (n) =>
++        `${n} figure(s) carry label(s) drawn at the floor that overhang their space — the report names each`,
++    ],
++    [
++      extra.localizedFigures,
++      (n) => `${n} figure(s) had English-kept numbers drawn with a decimal comma`,
++    ],
++    [
++      extra.containerErrorFigures,
++      (n) => `${n} figure(s) had container detection fail — those labels were laid out as open`,
++    ],
++  ];
++  for (const [count, message] of composeNotes) {
++    if (count > 0) reasons.push(`NOTE (not a failure): ${message(count)}`);
++  }
++
+   // The predicate is deliberately NOT `translated === 0 && figures > 0`: a chapter whose
+   // figures are legitimately ALL photographs translates zero and is correct.
+   // ⚠️ And `attempted` counts only TRANSLATE_PATH_FAILURES, not every `failed-*`. Counting

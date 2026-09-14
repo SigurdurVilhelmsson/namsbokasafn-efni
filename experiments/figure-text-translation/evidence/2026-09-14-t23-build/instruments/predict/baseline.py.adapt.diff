@@ -1,0 +1,11 @@
+--- frozen/baseline.py	2026-09-14 08:31:17.649800066 +0000
++++ baseline.py	2026-09-14 08:33:28.386366317 +0000
+@@ -17,7 +17,7 @@
+ Draw control: all items re-drawn with colour onto artwork.png must equal translated.png.
+ """
+ import json, math, sys
+-sys.path.insert(0, '/home/siggi/dev/scratch-c140/c3b/scripts')
++sys.path.insert(0, '/home/siggi/dev/scratch-c140/plan/pred/instruments')   # PRED ADAPTATION A1: import the adapted copies
+ from c3lib import *
+ from fontTools.ttLib import TTFont
+ 

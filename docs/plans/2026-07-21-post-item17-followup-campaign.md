@@ -2,7 +2,24 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-13 (NIGHT)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-14** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **execute the plan [`docs/superpowers/plans/2026-09-14-c140-t23-scripts-reflow-decimals.md`](../superpowers/plans/2026-09-14-c140-t23-scripts-reflow-decimals.md) (subagent-driven) on branch `feat/c140-t23-scripts-reflow-decimals`, from its Task 1.** Buying stays stopped.
+
+✅ **[USER] approved the written spec 2026-09-14** (floor stays 7.5 pt) and **ruled R9 symbols only** (a lowercase `af`/`og` may end
+a line) — both in the spec's rulings table and its **Amendments — 2026-09-14** section, not restated here.
+
+✅ **The design was BUILT and verified in scratch before the plan was written** — reference build, predictions and
+reports, frozen: [`experiments/figure-text-translation/evidence/2026-09-14-t23-build/`](../../experiments/figure-text-translation/evidence/2026-09-14-t23-build/README.md).
+The plan installs that build by copy/patch, RED-first, and holds the repository implementation to its `PREDICTIONS.md`
+(which supersedes every prototype number in the spec). 0 ISK; nothing under `books/` touched.
+
+⚠️ A cloud session ("README and docs review") is editing the README and `docs/` on its own branch; it was told which paths
+this branch touches. Expect a merge conflict here only if it edits this RESUME block or §C140.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-13 (NIGHT)** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — **[USER] reviews the written spec; then `writing-plans` → SDD on branch `feat/c140-t23-scripts-reflow-decimals`.** Buying stays stopped.
 
@@ -1670,7 +1687,7 @@ and it needs a re-render to reach anyone once fixed.
 |---|---|---|---|---|
 | ① | **E — draw English-kept blocks run-exact** (+ italic faces), bump `COMPOSER_VERSION`, `figure-run --stale` | M1/M1b/M2/M3/M4/P2/P3 for 191 kept blocks in every figure; dissolves the all-identity sidecar question | **built, 2026-09-13** — on the 34: `blocks.json` byte-identical 34/34, identity 7, runExact 191, 31 non-empty translated populations identical (3 figures have none), formula-arc `C2H5O–` ink overlap 0.26 → 0.88 (`evidence/2026-09-13-e-build/VERIFICATION.md`); real 0-ISK recompose run. **[USER] looked at all 34: kept text fine wherever E changed it** | ✅ **built, verified, [USER]-accepted, merged (PR #464, `bd69d0d6`) and deployed; figures confirmed in the review panel** |
 | ② | **T-scripts — source-keyed formatting transfer** for translated blocks | the 34/52 script blocks E cannot reach | feasibility: **52/52 stretches placed, 0 misplaced**; misses must be NAMED. **[USER] review: missing sub/superscripts in translated labels on 13 of 34 figures** — every flagged formula checked to sit in a translated label | ✅ **DESIGNED 2026-09-13, [USER]-approved section by section** — `docs/superpowers/specs/2026-09-13-c140-t23-scripts-reflow-decimals-design.md` §1; prototype 52/52 placed, verified (`evidence/2026-09-13-t23/`); unbuilt. ⚠️ 2b's script rule is NOT the production rule (two measured defects) |
-| ③ | **T-reflow — per-block wrap budget and anchor** | ~44/176 translated blocks (22–23/34 figs) on artwork / off page / shrunk | **no global constant works** (BOXW 0/63/80 and top-anchor each trade one defect for another). **[USER] review: extra/missing line breaks, overflow, arrow overlap, constant indent where schematic boxes want centred text, a tiny-font fallback — rows 7, 8, 10, 14–21, 23, 24, 25, 29, 31, 32, 34 of `evidence/2026-09-13-e-build/USER-REVIEW.md`, plus its general note on schematics** | ✅ **DESIGNED 2026-09-13** — same spec §4. **[USER] RULED:** schematic boxes centre every line · table cells keep source alignment · floor 7.5 pt · a word that still does not fit overhangs and is NAMED · a 1–2 char token stays with the next word. Prototype under those rulings: problem blocks 50 → 4, arrow labels hold the source line count 9/9 (hinted metrics, before four verifier corrections — predictions are re-derived in the plan); unbuilt |
+| ③ | **T-reflow — per-block wrap budget and anchor** | ~44/176 translated blocks (22–23/34 figs) on artwork / off page / shrunk | **no global constant works** (BOXW 0/63/80 and top-anchor each trade one defect for another). **[USER] review: extra/missing line breaks, overflow, arrow overlap, constant indent where schematic boxes want centred text, a tiny-font fallback — rows 7, 8, 10, 14–21, 23, 24, 25, 29, 31, 32, 34 of `evidence/2026-09-13-e-build/USER-REVIEW.md`, plus its general note on schematics** | ✅ **DESIGNED 2026-09-13** — same spec §4. **[USER] RULED:** schematic boxes centre every line · table cells keep source alignment · floor 7.5 pt · a word that still does not fit overhangs and is NAMED · a 1–2 char token stays with the next word (**amended 2026-09-14: symbols only** — a lowercase `af`/`og` may end a line). Prototype under those rulings (superseded by `evidence/2026-09-14-t23-build/PREDICTIONS.md`): problem blocks 50 → 4, arrow labels hold the source line count 9/9 (hinted metrics, before four verifier corrections — predictions are re-derived in the plan); unbuilt |
 | ④ | **S — `strip-text.py` keeps non-text graphics-state ops inside BT..ET** | combustion's 7 recoloured arrowheads; latent in 18/34 | variant: 0 px differ on 18/18 | open |
 | ⑤ | **artwork — pad the page box to whole points before `pdftocairo -svg`** | ≤4 px artwork/text misregistration on non-integer pages (24/24 carry the scale) | 2/2: dx −3/0/+3 → 0/0/0; `-origpagesizes` does NOT work | open |
 | ⑥ | **F — STIX face, `geometricPrecision`, per-run kerning** | 45 symbol blocks ~2 px high; browser advance rounding | plus variant: symbol offset 2.0 → 0.2 px | ❓ **[LEAD] provenance call: extracting OFL STIX subsets from OpenStax PDFs** |

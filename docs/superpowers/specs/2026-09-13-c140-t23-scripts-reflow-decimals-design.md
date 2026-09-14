@@ -28,9 +28,51 @@ verifier), their instruments, `data/c3-blocks.jsonl` and the gzipped corpus cens
 | R6 | **⑨ converts automatically** — an explicit exception to figure `REGISTER.md` ⑭ ("offered, never automatic") for every label drawn in English. Most are `send:false` and have no review card; an identity reply keeps its card's `Nota`, and accepting it no longer changes how the label is drawn (§2) | [USER] 2026-09-13 |
 | R7 | **Exocytosis: fold its fix in only if small and in the same post-conversion step.** Outcome: the blend-lerp collapse qualified (§3) | [USER] 2026-09-13 |
 | R8 | **Structure A: pure helpers beside `compose.py`**, each unit-tested alone; `compose.py` keeps the cairo calls (E's R3 pattern) | [USER] 2026-09-13 |
-| R9 | **A 1–2 character token stays on the same line as the word after it** whenever that still fits (`Massi \| A atóma`, not `Massi A \| atóma`) | [USER] 2026-09-13 |
+| R9 | **A 1–2 character token stays on the same line as the word after it** whenever that still fits (`Massi \| A atóma`, not `Massi A \| atóma`). **Amended 2026-09-14: symbols only** — a lowercase alphabetic word (`af`, `og`, `á`, `í`) may end a line, so `Mól af \| CO2` follows the source's `Moles of \| CO2` | [USER] 2026-09-13, amended 2026-09-14 |
 | R10 | **⑩ is deferred to its own item.** The measured heal damaged real shading on exocytosis; a visibility gate must exist before any heal ships | [USER] 2026-09-13 |
 | R11 | Carried from E: block keys must not move · buying stays stopped · the PR is not merged until [USER] has looked at the recomposed figures · ⑪ (MT wording) is out | [USER] 2026-09-13 |
+
+## Amendments — 2026-09-14, measured while writing the plan
+
+The design was built in scratch before the plan was written (five module builders, an integrator, a predictor,
+three adversarial reviewers over two rounds; `experiments/figure-text-translation/evidence/2026-09-14-t23-build/`).
+What the build measured changes the text below in these places. **Numbers live in that folder's `PREDICTIONS.md`,
+not here**; where a paragraph below quotes a number, `PREDICTIONS.md` wins.
+
+- **R9 scope** — [USER] ruled symbols only (see the rulings table). Versus no binding, 11 of 176 labels change.
+- **§4 "What the 7.5 pt floor costs" and "Known consequences" are superseded by `PREDICTIONS.md`.** Measured with
+  linear metrics and vector container geometry, `Reynsluformúla` (empform b8) now FITS at 7.5 pt by 0.11 pt instead
+  of overflowing; the flowchart, combmap and ethene figures and the arrow-label split differ from the prototype's.
+- **§3 numbers**: the collapsed exocytosis artwork costs 4835 = 2^12.24, not 2^12.4 (that was the rejected V1
+  variant); "brain and map2: 18" is a raw cost (2^4.2). The collapse takes bytes and returns bytes
+  (`collapse_blend_lerp(data: bytes)`), byte-substituting use sites after a semantic parse — it never serialises the
+  tree. On a parse error or a count mismatch `strip-text.py` leaves `artwork.svg` as cairo wrote it and records the
+  error in `svgfix.json`.
+- **§1 body size**: the size carrying the most letters, with each run's letters attributed to its LINE'S RESOLVED
+  base (the letter vote alone returned the subscript size on 13 corpus `send:true` blocks, e.g. `Patm`). The inverted
+  base resolves to the largest non-symbol letter-bearing run on the line (or the largest inked non-symbol run on a
+  letterless line); only inked runs count as inversion suspects. An all-styled token containing ANY letter (`ν1`,
+  `sp2`, `dz2`) is placed only at a clean unique occurrence; one with no letter is `no-base`. A same-size stacked
+  charge (`ammonium (NH4|+|)`, 1 corpus block) is named `no-base`, not attached.
+- **§4 container detection, as built**: the source frame is per RUN (adv-based, so subscripts count); every container
+  side is pulled in by `max(linewidth, 1.0)/2` (a fill-only rect by 0.5); four rules make a cell only if each SPANS
+  the cell (without that, 9 arrow labels and 2 exocytosis labels became cells); the sibling-edge tolerance is
+  0.2 pt, measured from the gap distribution (real columns ≤ 0.107 pt, first coincidence 0.26 pt; rxn2
+  `Reactant`/`Coefficient` no cue, ethene b0/b17 cue); free-space obstacles are other blocks' per-run frames. Rotated
+  labels are box/cell only within 0.5° of a multiple of 90°, else open. The census is reproduced 176/176.
+- **§4 box/cell order**: every line count ≤ the source's is tried from full size down to the floor before any
+  larger count — the open path's (iii)-before-(iv) order, applied to boxes and cells (plan author's reading of
+  "shrink ... down to the floor"; 0 of 176 decisions move).
+- **§4 overflow shape**: `{key, block, word, needPt, budgetPt, sizePt, axis}`; `axis` is `width` or `height`;
+  width entries add `linePt` (the widest drawn line); a width entry whose glyph box also misses height adds
+  `heightNeedPt` / `heightBudgetPt`. A box/cell label that meets its height budget at no size is shrunk to the floor
+  and named on the `height` axis. A source size off the 0.25 pt grid still tries the floor itself.
+- **§5 report and inputs**: the report also carries `containerErrors: [{key, block, why}]` — a container detection
+  that raised is laid out as open and NAMED (a stdout NOTE and a driver NOTE). `artwork.pdf` is a required compose
+  input, refused by `figure-compose.py` before compose runs (even for a figure with nothing translated).
+  A legacy list-shaped value is joined into one string before transfer.
+- **Known limit, not fixed**: the height budget and vertical centring use base-size ascent/descent only, so a
+  subscript's drop is not counted (smallest box/cell margin on the 34: 3.97 pt).
 
 ---
 
@@ -254,7 +296,7 @@ edge it is ruled to be flush with.
 - Target line count = the source's; choose the achievable count closest to it (ties → fewer lines; a value with
   fewer words than source lines uses fewer lines).
 - Among partitions with that count that fit, choose the most **balanced** (minimise the longest line).
-- **Short tokens stay with the next word (R9):** a token of 1–2 characters binds to the following word whenever
+- **Short tokens stay with the next word (R9, symbols only since 2026-09-14):** a token of 1–2 characters that is not a lowercase alphabetic word binds to the following word whenever
   a partition honouring every such binding fits; otherwise balancing decides as above.
 
 **Box (R2).** Budget: inner width − 2·PAD and inner height − 2·PAD. Every line centred on the container's
@@ -286,13 +328,13 @@ driver NOTE. The editor's remedy is in the panel — `Prósentu- samsetning` wra
 
 **Rotated labels** follow the same rules in their own rotation frame.
 
-**Known consequences, shown on the review page:** map7 `Rúmmál lausnar` (a figure [USER] called fine) becomes 1
+**Known consequences, shown on the review page** (⚠️ superseded 2026-09-14 by `evidence/2026-09-14-t23-build/PREDICTIONS.md` — see Amendments)**:** map7 `Rúmmál lausnar` (a figure [USER] called fine) becomes 1
 line at ~8.75 pt instead of 2 lines at 9 pt; ethene's second line moves ~6.8 pt left to avoid its break (as
 [USER] suggested in row 24); `Prósentusamsetning` overhangs both frame strokes until an editor splits it; twin
 labels can draw at different sizes (Example2 b1 9.0 / b3 8.0); a table header row can mix 8.5 and 9.0 pt where a
 long MT term (`Meðalatómamassi`) does not fit its cell.
 
-**What the 7.5 pt floor costs, measured after [USER] ruled it** (prototype at PAD 2.0; `r2-build.md` §7,
+**What the 7.5 pt floor costs, measured after [USER] ruled it** (⚠️ prototype numbers, superseded 2026-09-14 by `PREDICTIONS.md`: empform b8 now fits — see Amendments) (prototype at PAD 2.0; `r2-build.md` §7,
 `r2v-numbers.md` D4). Exactly four blocks differ between F 7.0 and F 7.5:
 - empform b8 `Reynsluformúla`: at F 7.5 it **overflows** (52.92 > 51.99 pt) with a **1.53 pt** box margin; at F 7.0
   it fits at 7.25 pt with 2.97 pt.

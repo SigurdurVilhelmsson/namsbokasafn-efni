@@ -1,0 +1,11 @@
+--- ../../pred/instruments/analyse.py	2026-09-14 08:46:17.075830551 +0000
++++ analyse.py	2026-09-14 12:06:46.802257648 +0000
+@@ -7,7 +7,7 @@
+ 
+ C3 = Path('/home/siggi/dev/scratch-c140/c3'); R2 = Path('/home/siggi/dev/scratch-c140/r2')
+ import sys   # PRED ADAPTATION A2/A4: per-tag input paths, output dir, mode
+-PRED = Path('/home/siggi/dev/scratch-c140/plan/pred')
++PRED = Path('/home/siggi/dev/scratch-c140/plan/pred2')
+ MODE = sys.argv[1] if len(sys.argv) > 1 else 'final'
+ assert MODE in ('control', 'final'), MODE
+ NEWTAG = sys.argv[2] if len(sys.argv) > 2 else 'FINAL'   # the build under test (PRED/work/<NEWTAG>)
