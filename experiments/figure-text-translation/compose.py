@@ -26,6 +26,7 @@ from _deps import HERE, OUT
 from pathlib import Path
 import cairo
 import figtext as FT
+import figscripts as FS
 from blockkey import block_key, block_english
 
 DPI = 200.0
@@ -85,7 +86,7 @@ def draw_run_exact(block):
         bold, italic = FT.run_face(r, meta['fonts'])
         px, py = dev(r['x'], r['y'])
         col = cmyk(r['fill'])
-        ITEMS.append(dict(text=text, x=px / S, y=H_PT - py / S, rot=r['rot'],
+        ITEMS.append(dict(path='run-exact', text=text, x=px / S, y=H_PT - py / S, rot=r['rot'],
                           size=r['size'], bold=bold, italic=italic, rgb=col, dx=0.0))
         ctx.select_font_face(FAMILY,
                              cairo.FONT_SLANT_ITALIC if italic else cairo.FONT_SLANT_NORMAL,
@@ -107,6 +108,45 @@ def setfont(run, size):
 def measure(text, run, size=None):
     setfont(run, size or run['size'])
     return ctx.text_extents(text).x_advance / S
+
+
+def setfont_st(run, size, st):
+    """`setfont` for one SEGMENT of a translated line: weight from the LINE's run (bold is per
+    line - 8 corpus blocks change weight within a line, none bought), slant and size from the
+    segment's SourceStyle (§C140 ②). A plain segment is exactly `setfont`, so a label with
+    nothing to style measures and draws as it did before ②."""
+    if st is None:
+        return setfont(run, size)
+    ctx.select_font_face(FAMILY,
+                         cairo.FONT_SLANT_ITALIC if st.italic else cairo.FONT_SLANT_NORMAL,
+                         cairo.FONT_WEIGHT_BOLD if run['font'] in BOLD
+                         else cairo.FONT_WEIGHT_NORMAL)
+    ctx.set_font_size(size * st.ratio * S)
+
+
+def seg_advance(text, run, size, st):
+    """The advance of ONE drawn segment at its own size and slant."""
+    if st is None:
+        return measure(text, run, size)
+    setfont_st(run, size, st)
+    return ctx.text_extents(text).x_advance / S
+
+
+def line_segments(chars):
+    """[(char, style)] of one drawn line -> the (text, style) segments it is drawn as: maximal
+    equal-style runs, and - only when a style is present - plain text cut at the space next to a
+    styled segment (figscripts.split_at_word_edges). An empty line is one empty segment, as the
+    pre-② composer drew one empty string."""
+    segs = FS.segments(chars) or [('', None)]
+    if any(st is not None for _, st in segs):
+        segs = FS.split_at_word_edges(segs)
+    return segs
+
+
+def seg_width(chars, run, size):
+    """THE width of one drawn line: the sum of its segments' advances (spec §1 'one width
+    function'). For a line with nothing to style this is exactly `measure(text, run, size)`."""
+    return sum(seg_advance(t, run, size, st) for t, st in line_segments(chars))
 
 
 def cmyk(f):
@@ -195,8 +235,13 @@ keys, translated = [], []
 # `runExact` is every kept block, identity included. `degenerate_kept` only splits the
 # stdout warning - `degenerate` itself keeps its meaning.
 identity, run_exact, degenerate_kept = [], [], []
+# §C140 ②, additive and in draw order WITH multiplicity: every formula stretch a translated label
+# could NOT carry over - `{key, token, stretch, reason, candidates}`, reason in absent / ambiguous /
+# no-base / partial (transfer) and stacked / inverted-base / arc (the source side). A named miss is
+# drawn as flat text, never refused and never blanked.
+unformatted = []
 
-for b in blocks:
+for BI, b in enumerate(blocks):
     ls = FT.lines(b)
     # The arc decision must be made BEFORE `new` is built: `new` is a STRING for an arc
     # and a LIST OF LINES otherwise, so deciding afterwards would hand the straight path
@@ -255,6 +300,13 @@ for b in blocks:
         report.append(f"  RUNEXACT {len(b)} run(s)  {key!r}")
         continue
 
+    # §C140 ②: which source runs are sub/superscripts or italic, as TOKENS built from runs.json
+    # only - never from the value. Asked for every translated block BEFORE the arc decision, so an
+    # arc block's `arc` miss (sized or italic glyphs it will not style) is named too; an arc is
+    # never styled.
+    tokens, src_misses = FS.source_tokens(b, meta['fonts'])
+    unformatted.extend(dict(key=key, **m) for m in src_misses)
+
     if arc:
         cx, cy, R = circle
         angs = [math.atan2(y - cy, x - cx) for x, y in pts]
@@ -273,7 +325,7 @@ for b in blocks:
             th = a + side * (w / R) / 2
             px, py = dev(cx + R * math.cos(th), cy + R * math.sin(th))
             rot_deg = math.degrees(th + side * math.pi / 2)
-            ITEMS.append(dict(text=ch, x=px / S, y=H_PT - py / S, rot=rot_deg,
+            ITEMS.append(dict(path='arc', text=ch, x=px / S, y=H_PT - py / S, rot=rot_deg,
                               size=sz, bold=b[0]['font'] in BOLD, italic=False, rgb=col, dx=-w / 2))
             ctx.save(); ctx.translate(px, py); ctx.rotate(-(th + side * math.pi / 2))
             ctx.set_source_rgb(*col); ctx.move_to(-w * S / 2, 0); ctx.show_text(ch)
@@ -284,7 +336,11 @@ for b in blocks:
 
     align = FT.alignment(b, lambda t, r: measure(t, r))
     rot = b[0]['rot']; rad = math.radians(rot)
-    sz0 = b[0]['size']
+    # §C140 ②: the label's BODY size - the size carrying the most letters among non-symbol runs -
+    # not its first run's. A formula's scripts are drawn at sz * ratio, so a block opening on an
+    # 11 pt STIX symbol over a 9 pt body (47 corpus send:true blocks; 0 of 176 in the 34) would
+    # otherwise draw the whole label, scripts included, from the symbol's size.
+    sz0 = FS.body_size(b, meta['fonts'])
     starts = [FT.along(l[0]) for l in ls]
     widths = [sum(measure(r['text'], r) for r in l) for l in ls]
     anchor = {'left':   min(starts),
@@ -295,31 +351,58 @@ for b in blocks:
     maxw = max(BOXW if abs(rot) < 0.5 else 999, max(widths) + 1.0)
     ref = ls[0][0]
 
+    # §C140 ②: carry the source's sub/superscripts and italics onto the value. `transfer` reads
+    # the RAW value (possibly editor-edited) and never alters it; `words` keys every style by its
+    # offset in that raw string (`re.finditer(r'\S+')` == `str.split()` on every codepoint), so
+    # the whitespace collapse below cannot misalign a style. A paragraph is a list of
+    # (word, [SourceStyle|None per char]).
+    # ⚠️ ONE transfer per VALUE, never one per paragraph. A legacy LIST value (normalise_block_value
+    # still accepts pre-split lines) is joined with ' ' first - a formula token holds no space, so
+    # the join cannot create or break an occurrence - and its styles are sliced back per paragraph
+    # for the wrap below, which keeps today's paragraph breaks. Per-paragraph transfer searched
+    # every token in every paragraph and named a false `absent` in each paragraph that lacked it.
+    # A str value is one paragraph, so for it the join is the value itself.
+    raw = ' '.join(new)
+    if tokens:
+        fmt, misses = FS.transfer(tokens, raw)
+        unformatted.extend(dict(key=key, **m) for m in misses)
+    else:
+        fmt = [None] * len(raw)
+    paras, at = [], 0
+    for para in new:
+        paras.append(FS.words(para, fmt[at:at + len(para)]))
+        at += len(para) + 1
+
+    def chars_of(word):
+        return list(zip(word[0], word[1]))
+
     # WRAP before shrinking. The MT returns ONE string per block; without this a
     # 3-line English label comes back as one long line and the only lever left is
     # font size — TempScales' "180 gradur a Fahrenheit" fell to 5.75pt beside 9pt
     # neighbours. Shrinking is the fallback for a single unbreakable word, not the
     # primary response to a longer translation.
-    def wrap(lines_in, size):
+    # A wrapped line is a list of (char, style); widths come from `seg_width`, which is today's
+    # `measure` for a line with nothing to style.
+    def wrap(paras_in, size):
         out = []
-        for para in lines_in:
-            words = para.split()
+        for words in paras_in:
             if not words:
-                out.append(''); continue
-            cur = words[0]
+                out.append([]); continue
+            cur = chars_of(words[0])
             for w_ in words[1:]:
-                if measure(cur + ' ' + w_, ref, size) <= maxw:
-                    cur += ' ' + w_
+                cand = cur + [(' ', None)] + chars_of(w_)
+                if seg_width(cand, ref, size) <= maxw:
+                    cur = cand
                 else:
-                    out.append(cur); cur = w_
+                    out.append(cur); cur = chars_of(w_)
             out.append(cur)
         return out
 
     sz = sz0
-    wrapped = wrap(new, sz)
-    while sz > 5 and max((measure(t, ref, sz) for t in wrapped), default=0) > maxw:
+    wrapped = wrap(paras, sz)
+    while sz > 5 and max((seg_width(t, ref, sz) for t in wrapped), default=0) > maxw:
         sz -= 0.25
-        wrapped = wrap(new, sz)
+        wrapped = wrap(paras, sz)
     new = wrapped
 
     # Anchor on the block's vertical CENTRE, not its first baseline. The line count
@@ -329,21 +412,31 @@ for b in blocks:
     projs = [FT.proj(l[0]) for l in ls]
     centre = (max(projs) + min(projs)) / 2
     top = centre + (len(new) - 1) / 2.0 * lead
-    for j, t in enumerate(new):
+    for j, lc in enumerate(new):
         fr = ls[min(j, len(ls) - 1)][0]     # font AND colour are per LINE
-        w = measure(t, fr, sz)
+        segs = line_segments(lc)
+        w = sum(seg_advance(t, fr, sz, st) for t, st in segs)
         a_ = {'left': anchor, 'right': anchor - w, 'center': anchor - w / 2}[align]
         p_ = top - j * lead
-        x = a_ * math.cos(rad) - p_ * math.sin(rad)
-        y = a_ * math.sin(rad) + p_ * math.cos(rad)
-        px, py = dev(x, y)
-        setfont(fr, sz)
-        ITEMS.append(dict(text=t, x=px / S, y=H_PT - py / S, rot=rot,
-                          size=sz, bold=fr['font'] in BOLD, italic=False, rgb=cmyk(fr['fill']),
-                          dx=0.0))
-        ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
-        ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
-        ctx.restore()
+        # One ITEMS entry - one <text> - per SEGMENT: a script at sz * ratio, its baseline shifted
+        # sz * frac along the text normal, the pen advancing by each segment's own advance. A line
+        # with nothing to style is ONE segment drawn exactly where the pre-② composer drew it.
+        off = 0.0
+        for k, (t, st) in enumerate(segs):
+            aa = a_ + off
+            pp = p_ if st is None else p_ + sz * st.frac
+            x = aa * math.cos(rad) - pp * math.sin(rad)
+            y = aa * math.sin(rad) + pp * math.cos(rad)
+            px, py = dev(x, y)
+            setfont_st(fr, sz, st)
+            ITEMS.append(dict(path='layout', line=j, seg=k, text=t, x=px / S, y=H_PT - py / S,
+                              rot=rot, size=sz if st is None else sz * st.ratio,
+                              bold=fr['font'] in BOLD, italic=st is not None and st.italic,
+                              rgb=cmyk(fr['fill']), dx=0.0))
+            ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
+            ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
+            ctx.restore()
+            off += seg_advance(t, fr, sz, st)
     report.append(f"  {align:6} {sz0}->{sz:.2f}pt  {key!r}")
 
 name = 'control.png' if CONTROL else 'translated.png'
@@ -390,6 +483,8 @@ if SVG:
     # E (§C140 ①). Additive: figure-compose.py reads only blocks/missing/translated.
     'identity': identity,
     'runExact': run_exact,
+    # §C140 ②. Additive: named formula stretches drawn as flat text (see `unformatted` above).
+    'unformatted': unformatted,
 }, indent=1, ensure_ascii=False))
 
 print(f"{len(blocks)} blocks")
@@ -419,6 +514,11 @@ if undecodable:
           f"REMOVED before drawing:")
     for k in undecodable:
         print(f"     {k!r}")
+# Leading '\n' is load-bearing - see the note above the compose-report.json write.
+if unformatted:
+    print(f"\nNOTE (not a failure): {len(unformatted)} formula stretch(es) drawn UNFORMATTED:")
+    for u in unformatted:
+        print(f"     {u['key']!r}: {u['stretch']!r} of {u['token']!r} - {u['reason']}")
 print(f"\nwrote out/{name}")
 # Leading '\n' is load-bearing - see the note above the compose-report.json write.
 print(f"\nwrote out/compose-report.json  "
