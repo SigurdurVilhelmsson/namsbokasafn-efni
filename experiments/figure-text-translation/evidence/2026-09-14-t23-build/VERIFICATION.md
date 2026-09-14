@@ -186,6 +186,7 @@ against, not a figures-specific baseline. `js-loadfail.txt` is one blank line: 0
 |---|---|---|
 | `t2-compare.txt` | `test_svgfix.py` (NEW) | `rc=0 fails=[] last='ALL PASS'` |
 | `t3-compare.txt` | `test_compose_t23.py` (NEW) | `rc=1`, 23 named fails (RED-first e2e baseline) |
+| `t3-compare.txt` | `test_figcontainers.py` (NEW) | `rc=0 fails=[] last='ALL PASS'` |
 | `t4-compare.txt` | `test_compose_t23.py` NEWLY GREEN 6 (rc still 1); `test_figscripts.py` (NEW) | figscripts `rc=0 fails=[] ALL PASS` |
 | `t5-compare.txt` | `test_compose_t23.py` NEWLY GREEN 2 (rc still 1); `test_numloc.py` (NEW) | numloc `rc=0 fails=[] ALL PASS` |
 | `t6-compare.txt` | `test_compose_t23.py` NEWLY GREEN 15 (rc 1→0, now fully green); `test_figlayout.py` (NEW) | figlayout `rc=0 fails=[] ALL PASS` |
