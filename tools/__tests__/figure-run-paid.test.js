@@ -160,7 +160,9 @@ function currentSidecar(basename, blocks, extra = {}) {
  * @param {(b:string, blocks:Array)=>object} [plan.translate] `{__exit: n}` to fail, `{__absent:
  *   true}` to write no translations file, `{__blocks: {...}}` for a literal payload; the default
  *   returns one Icelandic value per `send:true` block.
- * @param {(b:string)=>object} [plan.compose] `{__error: 'msg'}` to make compose exit 1.
+ * @param {(b:string)=>object} [plan.compose] `{__error: 'msg'}` to make compose exit 1;
+ *   `{__notes: {...}}` to write those keys into a successful compose.json beside `outputPath` —
+ *   the composer's note lists `figure-compose.py` copies there (§C140).
  */
 function fakeSpawn(plan = {}) {
   const calls = [];
@@ -264,7 +266,7 @@ function fakeSpawn(plan = {}) {
       fs.writeFileSync(path.join(outDir, 'translated.svg'), `<svg id="${basename}"/>`);
       fs.writeFileSync(
         path.join(outDir, 'compose.json'),
-        JSON.stringify({ outputPath: path.join(outDir, 'translated.svg') })
+        JSON.stringify({ outputPath: path.join(outDir, 'translated.svg'), ...spec.__notes })
       );
       return { status: 0, stdout: '', stderr: '' };
     }
@@ -460,6 +462,165 @@ describe('a figure whose publish fails is never reported done', () => {
     expect(rec(result, 'FIG_A').outcome).toBe('failed-publish');
     expect(rec(result, 'FIG_A').reason).toMatch(/EACCES/);
     expect(rec(result, 'FIG_A').reason).toMatch(/THREW/); // …from publish, not from the mint
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 §C140 ② ③ ⑨ — THE COMPOSER'S NOTES REACH THE OPERATOR. `figure-compose.py` copies four lists
+// out of compose-report.json into compose.json: formula formatting a translated label could not
+// carry, words drawn at the floor that overhang, English-kept numbers given a decimal comma, and
+// blocks whose container detection failed. The figure is drawn and published either way — so
+// these are NOTEs — but a list the driver never reads is a list nobody sees, and the remedy for
+// most of them (a wrap point, a shorter word) is an editor's, in a panel keyed on the BLOCK KEY.
+// ⚠️ THE FAKE COMPOSE IS THE SEAM, DELIBERATELY. `figure-compose.py`'s own suite
+// (test_figure_compose.py §2h/§11) proves the lists land in compose.json; this proves the driver
+// reads them from there. The free half cannot: every run in it is a dry run, which never composes.
+describe("the composer's notes reach the verdict and the report", () => {
+  const NOTES = {
+    unformatted: [
+      { key: 'k0', token: 'Na3PO4', stretch: '3', reason: 'absent', candidates: 0 },
+      { key: 'k0', token: 'Na3PO4', stretch: '4', reason: 'absent', candidates: 0 },
+    ],
+    overflow: [
+      {
+        key: 'Percent|composition',
+        block: 8,
+        word: 'Prósentusamsetning',
+        needPt: 68.37158203125001,
+        budgetPt: 54.5,
+        sizePt: 7.5,
+        axis: 'width',
+      },
+    ],
+    // multiplicity is data: a figure that draws one localised key twice names it twice
+    localized: ['26.98', '26.98'],
+    containerErrors: [{ key: 'k1', block: 1, why: 'error: KeyError' }],
+  };
+  const EMPTY = { unformatted: [], overflow: [], localized: [], containerErrors: [] };
+  const withNotes = (notes) => fakeSpawn({ compose: () => ({ __notes: notes }) });
+
+  it('copies the four lists from compose.json onto the record, verbatim', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const result = await runFigures(live(booksRoot), { spawn: withNotes(NOTES), booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    expect(rec(result, 'FIG_A').composeNotes).toEqual(NOTES);
+  });
+
+  it('names each list once, as a NOTE, and the run stays ok', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const result = await runFigures(live(booksRoot), { spawn: withNotes(NOTES), booksRoot });
+    expect(result.verdict.reasons).toEqual([
+      'NOTE (not a failure): 1 translated figure(s) carry formula formatting the composer could not place — the report names each',
+      'NOTE (not a failure): 1 figure(s) carry label(s) drawn at the floor that overhang their space — the report names each',
+      'NOTE (not a failure): 1 figure(s) had English-kept numbers drawn with a decimal comma',
+      'NOTE (not a failure): 1 figure(s) had container detection fail — those labels were laid out as open',
+    ]);
+    expect(result.verdict.ok).toBe(true);
+  });
+
+  it('counts FIGURES, not entries: two figures with notes are "2 figure(s)"', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A', 'FIG_B'] });
+    const result = await runFigures(live(booksRoot), { spawn: withNotes(NOTES), booksRoot });
+    expect(result.tally.translated).toBe(2); // the premise: both were composed and shipped
+    expect(result.verdict.reasons.join('\n')).toMatch(
+      /2 translated figure\(s\) carry formula formatting/
+    );
+  });
+
+  it('the report names the figure and each key, overflow with 2-dp widths and its axis', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const text = summarise(
+      await runFigures(live(booksRoot), { spawn: withNotes(NOTES), booksRoot })
+    );
+    expect(text).toContain('    FIG_A: "k0" stretch "3" of "Na3PO4" (absent)');
+    expect(text).toContain('    FIG_A: "k0" stretch "4" of "Na3PO4" (absent)');
+    expect(text).toContain(
+      '    FIG_A: "Percent|composition" block 8 "Prósentusamsetning" needs 68.37 pt, budget 54.50 pt (width)'
+    );
+    expect(text).toContain('    FIG_A: "26.98", "26.98"');
+    expect(text).toContain('    FIG_A: "k1" block 1 — error: KeyError');
+  });
+
+  // An overflow entry need not carry a word (a line-count overhang names none) or an axis (a
+  // composer that predates it). The line must still print, and never as "undefined".
+  it('prints an overflow with no word and no axis without inventing either', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const bare = {
+      ...EMPTY,
+      overflow: [{ key: 'k1', block: 1, word: null, needPt: 40, budgetPt: 33.999999999999986 }],
+    };
+    const text = summarise(
+      await runFigures(live(booksRoot), { spawn: withNotes(bare), booksRoot })
+    );
+    const lines = text.split('\n').filter((l) => l.startsWith('    FIG_A: "k1"'));
+    expect(lines).toEqual(['    FIG_A: "k1" block 1 a line needs 40.00 pt, budget 34.00 pt']);
+  });
+
+  // A HEIGHT overhang is not a width one: its need is a glyph-box height and re-wrapping the label
+  // makes it worse, so the line names what overhangs. A width entry whose glyph box ALSO misses its
+  // height budget names both, never the width alone.
+  it('prints a height overhang as a glyph box, and a width entry that also misses height as both', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const notes = {
+      ...EMPTY,
+      overflow: [
+        {
+          key: 'k2',
+          block: 2,
+          word: null,
+          needPt: 40.04,
+          budgetPt: 39.5,
+          sizePt: 7.5,
+          axis: 'height',
+        },
+        {
+          key: 'k3',
+          block: 3,
+          word: 'Prósentusamsetning',
+          needPt: 70.5,
+          budgetPt: 36,
+          sizePt: 7.5,
+          axis: 'width',
+          linePt: 70.5,
+          heightNeedPt: 7.05,
+          heightBudgetPt: 2,
+        },
+      ],
+    };
+    const text = summarise(
+      await runFigures(live(booksRoot), { spawn: withNotes(notes), booksRoot })
+    );
+    const lines = text.split('\n').filter((l) => l.startsWith('    FIG_A: "k'));
+    expect(lines).toEqual([
+      '    FIG_A: "k2" block 2 glyph box needs 40.04 pt, height budget 39.50 pt (height)',
+      '    FIG_A: "k3" block 3 "Prósentusamsetning" needs 70.50 pt, budget 36.00 pt (width); ' +
+        'glyph box needs 7.05 pt, height budget 2.00 pt',
+    ]);
+  });
+
+  // THE CONTROL, AND THE OLDER WRAPPER. A compose.json carrying only `outputPath` — what every
+  // figure-compose.py before §C140 writes — reads as four empty lists: no NOTE, no section.
+  // Without it every assertion above passes against a driver that invents notes.
+  it('a compose.json with no lists reads as four empty lists and says nothing', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const result = await runFigures(live(booksRoot), { spawn: fakeSpawn(), booksRoot });
+    expect(rec(result, 'FIG_A').composeNotes).toEqual(EMPTY);
+    expect(result.verdict).toEqual({ ok: true, reasons: [] });
+    expect(summarise(result)).not.toMatch(/decimal comma|overhang|formula formatting|container/);
+  });
+
+  // 🔴 COUNTED OVER `translated` ONLY, like the undecoded NOTE. A figure whose publish then failed
+  // shipped nothing and already carries its own fatal reason; its notes describe no reader's page.
+  it('a figure whose publish failed carries no NOTE, though compose reported lists', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_A'] });
+    const result = await runFigures(live(booksRoot), {
+      spawn: withNotes(NOTES),
+      booksRoot,
+      publish: refusingPublisher(),
+    });
+    expect(rec(result, 'FIG_A').outcome).toBe('failed-publish');
+    expect(rec(result, 'FIG_A').composeNotes).toEqual(NOTES); // the premise: the lists were read
+    expect(result.verdict.reasons.filter((r) => r.startsWith('NOTE'))).toEqual([]);
   });
 });
 

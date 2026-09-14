@@ -976,6 +976,44 @@ export function applySidecarGuard(rec, bookDir, exists = fs.existsSync) {
 }
 
 /**
+ * The composer's NOTE lists, in the order the verdict and the report print them (§C140):
+ * `unformatted` formula formatting a translated label could not carry (②), `overflow` words drawn
+ * at the floor that overhang their space (③, R5), `localized` English-kept numbers drawn with a
+ * decimal comma (⑨), `containerErrors` blocks whose container detection failed (③).
+ * `figure-compose.py` copies them out of compose-report.json into compose.json.
+ */
+const COMPOSE_NOTE_LISTS = ['unformatted', 'overflow', 'localized', 'containerErrors'];
+
+/**
+ * compose.json's note lists, each an array. ⚠️ AN ABSENT LIST IS AN EMPTY ONE, NEVER A REFUSAL:
+ * a compose.json written before §C140 carries only `outputPath`, and every list is a NOTE — the
+ * figure is drawn either way, so nothing here may fail a compose `figure-compose.py` accepted.
+ *
+ * @param {object} composeVerdict the parsed compose.json of a successful compose
+ * @returns {{unformatted: object[], overflow: object[], localized: string[], containerErrors: object[]}}
+ */
+function composeNotesFrom(composeVerdict) {
+  return Object.fromEntries(
+    COMPOSE_NOTE_LISTS.map((k) => [k, Array.isArray(composeVerdict[k]) ? composeVerdict[k] : []])
+  );
+}
+
+/**
+ * The figures whose compose reported something on `list`. 🔴 `translated` ONLY — the same stance
+ * as the undecoded NOTE: a figure whose publish then failed shipped nothing and already carries
+ * its own fatal reason. The verdict's count and the report's section both come from here, so the
+ * number in the NOTE is the number of figures the report names.
+ *
+ * @param {object[]} figures run records
+ * @param {string} list one of COMPOSE_NOTE_LISTS
+ */
+function figuresWithComposeNote(figures, list) {
+  return figures.filter(
+    (f) => f.outcome === 'translated' && f.composeNotes && f.composeNotes[list].length > 0
+  );
+}
+
+/**
  * STEPS 6–10 for ONE figure, live. Mutates `rec`; returns nothing.
  *
  * 🔴 TWO PATHS, SELECTED BY WHETHER A SIDECAR EXISTS — NOT BY A FLAG.
@@ -1148,6 +1186,7 @@ function processFigureLive(
     return;
   }
   const svgPath = composeVerdict.outputPath;
+  rec.composeNotes = composeNotesFrom(composeVerdict);
 
   // ── STEP 10. MINT THE MAPPING ENTRY, THEN PUBLISH. ────────────────────────────────────
   const outputName = rec.mapping.outputName;
@@ -1314,6 +1353,9 @@ export async function runFigures(args, deps = {}) {
     droppedKeys: [],
     published: null,
     warnings: [],
+    // What the composer reported about the figure it DREW (§C140), read from compose.json by
+    // `composeNotesFrom`. Null until a compose succeeds, so a figure never composed has none.
+    composeNotes: null,
   }));
 
   for (const rec of records) applySidecarGuard(rec, bookDir, sidecarExists);
@@ -1547,6 +1589,10 @@ export async function runFigures(args, deps = {}) {
       verdict: verdict(tally, selected.length, {
         undecodedFigures: shipsUndecoded.length,
         undecodedLabels: shipsUndecoded.reduce((n, r) => n + r.holds.undecoded, 0),
+        unformattedFigures: figuresWithComposeNote(selected, 'unformatted').length,
+        overflowFigures: figuresWithComposeNote(selected, 'overflow').length,
+        localizedFigures: figuresWithComposeNote(selected, 'localized').length,
+        containerErrorFigures: figuresWithComposeNote(selected, 'containerErrors').length,
       }),
       tmpRoot,
     };
@@ -1783,6 +1829,64 @@ export function summarise(result) {
     );
     for (const f of warned) lines.push(`    ${f.basename}: ${f.warnings.join('; ')}`);
   }
+
+  // 🔴 §C140 ② ③ ⑨ — THE COMPOSER'S NOTES, NAMED BY FIGURE AND BLOCK KEY. Each is a NOTE in the
+  // verdict, never a failure, but a count gives an operator nothing to act on: the remedy for most
+  // of them (a wrap point, a shorter word) is an editor's, in a panel keyed on the block key. Keys
+  // are JSON-quoted because a block key carries `|` as its line separator and may carry commas.
+  // ⚠️ `translated` figures only (`figuresWithComposeNote`), so each section names exactly the
+  // figures its NOTE counts. An overflow may name no word (a line-count overhang) and a report
+  // from an older composer carries no `axis`; neither is printed as `undefined`.
+  const quoted = (s) => JSON.stringify(s);
+  const pt = (n) => (Number.isFinite(n) ? n.toFixed(2) : String(n));
+  const noteEntries = (list, format) =>
+    figuresWithComposeNote(result.figures, list).flatMap((f) =>
+      f.composeNotes[list].map((entry) => `${f.basename}: ${format(entry)}`)
+    );
+  lines.push(
+    ...nameList(
+      'formula formatting the composer could not place — drawn as plain text',
+      noteEntries(
+        'unformatted',
+        (u) => `${quoted(u.key)} stretch ${quoted(u.stretch)} of ${quoted(u.token)} (${u.reason})`
+      )
+    )
+  );
+  lines.push(
+    ...nameList(
+      'labels drawn at the floor that overhang their space — an editor can shorten or re-break them',
+      noteEntries('overflow', (o) => {
+        // `block` is printed because twin labels share a key (flowchart's two `Molarity` cells)
+        // and would otherwise print as two identical lines.
+        const head = `${quoted(o.key)} block ${o.block} `;
+        // A HEIGHT overhang's need is a glyph-box height, not a width: wrapping makes it worse.
+        if (o.axis === 'height') {
+          return `${head}glyph box needs ${pt(o.needPt)} pt, height budget ${pt(o.budgetPt)} pt (height)`;
+        }
+        const width =
+          `${head}${o.word == null ? 'a line' : quoted(o.word)} needs ` +
+          `${pt(o.needPt)} pt, budget ${pt(o.budgetPt)} pt${o.axis ? ` (${o.axis})` : ''}`;
+        // A width entry whose glyph box also misses height names both (figlayout sets the pair).
+        return o.heightNeedPt == null
+          ? width
+          : `${width}; glyph box needs ${pt(o.heightNeedPt)} pt, height budget ${pt(o.heightBudgetPt)} pt`;
+      })
+    )
+  );
+  lines.push(
+    ...nameList(
+      'English-kept numbers drawn with a decimal comma, by figure',
+      figuresWithComposeNote(result.figures, 'localized').map(
+        (f) => `${f.basename}: ${f.composeNotes.localized.map(quoted).join(', ')}`
+      )
+    )
+  );
+  lines.push(
+    ...nameList(
+      'container detection failed — these labels were laid out as open',
+      noteEntries('containerErrors', (c) => `${quoted(c.key)} block ${c.block} — ${c.why}`)
+    )
+  );
 
   for (const rec of result.figures) {
     if (rec.outcome.startsWith('failed-')) {

@@ -117,8 +117,10 @@ export function tallyOutcome(tally, outcome) {
  *
  * @param {Record<string, number>} tally
  * @param {number} enumeratedCount figures enumerated; the partition must sum to it
- * @param {{undecodedFigures?: number, undecodedLabels?: number}} [extra] counted over the
- *   records, not derivable from the tally
+ * @param {{undecodedFigures?: number, undecodedLabels?: number, unformattedFigures?: number,
+ *   overflowFigures?: number, localizedFigures?: number, containerErrorFigures?: number}} [extra]
+ *   counted over the records, not derivable from the tally. The last four are `translated`
+ *   figures whose compose.json carried a non-empty list of that name (§C140).
  * @returns {{ok: boolean, reasons: string[]}}
  */
 export function verdict(tally, enumeratedCount, extra = {}) {
@@ -168,6 +170,36 @@ export function verdict(tally, enumeratedCount, extra = {}) {
         `never bought and ship in whatever English DID decode — compose strips the ` +
         `(cid:N) placeholder rather than drawing it. The report names them.`
     );
+  }
+
+  // 🔴 §C140 ② ③ ⑨ — WHAT THE COMPOSER COULD NOT DO AS THE SOURCE DID, OR DID DIFFERENTLY ON
+  // PURPOSE. Same channel and same stance as the NOTE above: a property of figures inside
+  // `translated`, counted over the records. ⚠️ NONE IS FATAL. Every label is drawn — a formula miss
+  // as plain text, an overhang at the 7.5 pt floor (R4/R5), a localised number in the house style
+  // (R6), a failed detection laid out as open — so the figure ships, and the report names what to
+  // look at. Failing on any of them would be the always-red exit code R9 rejects.
+  const composeNotes = [
+    [
+      extra.unformattedFigures,
+      (n) =>
+        `${n} translated figure(s) carry formula formatting the composer could not place — the report names each`,
+    ],
+    [
+      extra.overflowFigures,
+      (n) =>
+        `${n} figure(s) carry label(s) drawn at the floor that overhang their space — the report names each`,
+    ],
+    [
+      extra.localizedFigures,
+      (n) => `${n} figure(s) had English-kept numbers drawn with a decimal comma`,
+    ],
+    [
+      extra.containerErrorFigures,
+      (n) => `${n} figure(s) had container detection fail — those labels were laid out as open`,
+    ],
+  ];
+  for (const [count, message] of composeNotes) {
+    if (count > 0) reasons.push(`NOTE (not a failure): ${message(count)}`);
   }
 
   // The predicate is deliberately NOT `translated === 0 && figures > 0`: a chapter whose

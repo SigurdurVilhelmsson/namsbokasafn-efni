@@ -7,10 +7,13 @@ Reads the directory `figure-prepare.py` wrote (`runs.json`, `meta.json`, `blocks
 `artwork.pdf`, `artwork.png`, `artwork.svg`) and writes `<dir>/translated.svg` plus
 `<dir>/compose.json`:
 
-    {"outputPath": "<dir>/translated.svg"}          exit 0
+    {"outputPath": "<dir>/translated.svg",
+     "unformatted": [...], "overflow": [...],
+     "localized": [...], "containerErrors": [...]}  exit 0
     {"error": "...", "keys": ["<block key>", ...]}  exit 1
 
-Exit 2 is a usage error.
+Exit 2 is a usage error. The four lists are the composer's NOTES, copied from
+compose-report.json (see `COMPOSE_NOTES`); none of them is a verdict.
 
 🔴 WHY THIS WRAPPER EXISTS: `compose.py` KEEPS THE ENGLISH FOR ANY KEY IT CANNOT MATCH,
 REPORTS IT ONLY ON STDOUT, AND EXITS 0. It has no exit call at all - it falls off the end.
@@ -97,6 +100,17 @@ os.environ.setdefault('FIGTEXT_PYLIBS', str(HERE / 'pylibs'))
 # below as "wrote no compose-report.json" rather than published.
 REQUIRED_INPUTS = ('runs.json', 'meta.json', 'blocks.json', 'artwork.pdf', 'artwork.png',
                    'artwork.svg')
+
+# The composer's NOTES: lists compose-report.json carries beside its key sets, copied into
+# compose.json on success so the driver can name them without reading a second file.
+#   unformatted      formula formatting a translated label could not carry (§C140 ②)
+#   overflow         a word drawn at the floor that overhangs its space (§C140 ③, R5)
+#   localized        English-kept labels drawn with a decimal comma (§C140 ⑨)
+#   containerErrors  blocks whose container detection failed, laid out as open (§C140 ③)
+# 🔴 NONE OF THEM IS A VERDICT, SO NONE IS CHECKED. A figure with a note is drawn and every label
+# is in it; `verify` stays the only thing that refuses. A report written by an older composer
+# lacks them, and that reads as four EMPTY lists - never a refusal.
+COMPOSE_NOTES = ('unformatted', 'overflow', 'localized', 'containerErrors')
 
 # Written by this run, and only by this run. Removed before the child starts so their
 # presence afterwards MEANS "this run produced them" rather than "a file with this name is
@@ -309,8 +323,23 @@ def verify(report, blocks, translations):
             keys=english_but_sendable + held_but_drawn)
 
 
+def success_payload(svg, report):
+    """compose.json on the success path. -> the dict to write.
+
+    Each note list is copied VERBATIM - draw order and multiplicity kept, because `localized`
+    names one key twice when a figure draws it twice. A list the report does not carry, or
+    carries as something other than a list, is written as []: the driver reads these as lists,
+    and a malformed note must not be able to fail a figure `verify` accepted."""
+    payload = {'outputPath': str(svg)}
+    for name in COMPOSE_NOTES:
+        value = report.get(name)
+        payload[name] = value if isinstance(value, list) else []
+    return payload
+
+
 def compose(out_dir, translations):
-    """-> the path to translated.svg. Raises ComposeError on a per-figure failure."""
+    """-> (the path to translated.svg, the compose-report.json payload `verify` accepted).
+    Raises ComposeError on a per-figure failure."""
     tr = validate_inputs(out_dir, translations)
     for name in DERIVED_OUTPUTS:
         (out_dir / name).unlink(missing_ok=True)
@@ -326,7 +355,7 @@ def compose(out_dir, translations):
             f'compose.py produced no usable {svg.name} (child exit '
             f'{child.returncode}). This is the file that gets published, so reporting '
             f'success here would publish nothing.')
-    return svg
+    return svg, report
 
 
 def parse_args(argv):
@@ -351,7 +380,7 @@ def main(argv):
     translations = Path(args.translations).expanduser().resolve()
 
     try:
-        svg = compose(out_dir, translations)
+        svg, report = compose(out_dir, translations)
     except ComposeError as exc:
         _write_failure(out_dir, str(exc), exc.keys)
         return 1
@@ -361,7 +390,7 @@ def main(argv):
         return 1
 
     (out_dir / 'compose.json').write_text(
-        json.dumps({'outputPath': str(svg)}, indent=1, ensure_ascii=False))
+        json.dumps(success_payload(svg, report), indent=1, ensure_ascii=False))
     print(f'  -> {svg}')
     return 0
 
