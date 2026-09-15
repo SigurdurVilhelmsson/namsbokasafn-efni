@@ -270,6 +270,21 @@ function fakeSpawn(plan = {}) {
       );
       return { status: 0, stdout: '', stderr: '' };
     }
+    // §C140 ⑩'s ring gate runs between prepare and compose whenever prepare left an
+    // `artwork.svg` — which the fake prepare above does. A one-line `<svg/>` carries no soft
+    // mask, so the faithful stand-in is a census that finds NOTHING: the gate then records a
+    // clean result, spawns no browser, and every assertion in this file is about the stages it
+    // was already about.
+    // ⚠️ `plan.rings` lets one test hand the census candidates instead, which is what proves
+    // this branch is not simply short-circuiting the gate away.
+    if (stage === 'ring-gate') {
+      const candidates = (plan.rings || []).map((mask) => ({ mask }));
+      return {
+        status: 0,
+        stderr: '',
+        stdout: JSON.stringify([{ svg: 'artwork.svg', viewBox: [0, 0, 100, 100], candidates }]),
+      };
+    }
     throw new Error(`fakeSpawn was asked for an unexpected stage: ${stage}`);
   };
   fn.calls = calls;

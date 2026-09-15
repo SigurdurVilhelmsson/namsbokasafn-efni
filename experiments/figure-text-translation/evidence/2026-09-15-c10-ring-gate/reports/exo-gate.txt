@@ -1,0 +1,44 @@
+# CNX_Chem_03_01_exocytosis-88f6_IS.svg  render 1200x669  scale 2.7778
+mask       side     before   after   delta  pass
+mask-8     left        0.1     0.1     0.0  .
+mask-8     right       0.0     0.0     0.0  .
+mask-8     top         0.0     0.0     0.0  .
+mask-8     bottom      0.6     0.6     0.0  .
+mask-8     -> refused  sidesPassed=0 bestDelta=0.0  sides 0 < 2
+mask-12    left        0.0     0.0     0.0  .
+mask-12    right       0.2     0.2     0.0  .
+mask-12    top         0.2     0.3    -0.0  .
+mask-12    bottom      0.0     0.0     0.0  .
+mask-12    -> refused  sidesPassed=0 bestDelta=0.0  sides 0 < 2
+mask-39    left        0.1     0.1     0.0  .
+mask-39    right       0.0     0.0     0.0  .
+mask-39    top         0.0     0.0     0.0  .
+mask-39    bottom      0.6     0.6     0.0  .
+mask-39    -> refused  sidesPassed=0 bestDelta=0.0  sides 0 < 2
+mask-43    left        0.0     0.0     0.0  .
+mask-43    right       0.2     0.2     0.0  .
+mask-43    top         0.2     0.3    -0.0  .
+mask-43    bottom      0.0     0.0     0.0  .
+mask-43    -> refused  sidesPassed=0 bestDelta=0.0  sides 0 < 2
+mask-189   left        0.4     0.4     0.0  .
+mask-189   right      11.0    11.0     0.0  .
+mask-189   top         0.0     0.0     0.0  .
+mask-189   bottom      0.0     0.0     0.0  .
+mask-189   -> refused  sidesPassed=0 bestDelta=0.0  sides 0 < 2
+mask-271   left        3.5     3.7    -0.2  .
+mask-271   right      33.2    33.2     0.0  .
+mask-271   top         0.0     0.0     0.0  .
+mask-271   bottom      8.7     8.7     0.0  .
+mask-271   -> refused  sidesPassed=0 bestDelta=0.0  sides 0 < 2
+mask-409   left        1.0     1.0     0.0  .
+mask-409   right       0.9     0.9     0.0  .
+mask-409   top        13.0    13.0    -0.1  .
+mask-409   bottom      0.5     0.5     0.0  .
+mask-409   -> refused  sidesPassed=0 bestDelta=0.0  sides 0 < 2
+mask-491   left        8.8     3.3     5.4  .
+mask-491   right       4.6     4.6     0.0  .
+mask-491   top         0.0     0.0     0.0  .
+mask-491   bottom     10.2     0.0    10.2  yes
+mask-491   -> refused  sidesPassed=1 bestDelta=10.2  sides 1 < 2
+# approved 0 of 8
+# report -> /home/user/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-c10-ring-gate/reports/exo-gate.json

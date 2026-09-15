@@ -100,6 +100,14 @@ const REPO_ROOT = path.resolve(HERE, '..');
 const EXPERIMENT_DIR = path.join(REPO_ROOT, 'experiments', 'figure-text-translation');
 const PYTHON = process.env.FIGTEXT_PYTHON || 'python3';
 
+/**
+ * Render DPI for §C140 ⑩'s ring gate. 200 dpi is what every measurement behind that gate's
+ * thresholds was taken at (`evidence/2026-09-15-c10-ring-gate/`), and the thresholds are
+ * luminance contrasts over a +-2 px band — so changing this changes what the gate decides.
+ * It is not a display setting; do not "tidy" it to 96.
+ */
+const RING_RENDER_DPI = 200;
+
 /** A hashed CNXML basename: `CNX_Chem_03_02_moles-6296`. LOOKUP ONLY — never an identity. */
 const HASH_SUFFIX = /-[0-9a-f]{4}$/;
 
@@ -799,6 +807,159 @@ const DRIFTABLE = new Set(['copied-photo', 'copied-textless', 'unreadable-text']
  * ⚠️ It fires in a DRY RUN too, on purpose. A dry run exists to surface exactly this before any
  * money moves, and the reason string says plainly that compose was never spawned.
  */
+/**
+ * STEP 8b — §C140 ⑩'s SOFT-MASK RING GATE, between prepare and compose ([USER] ruling Q2,
+ * 2026-09-15).
+ *
+ * `pdftocairo -svg` rasterises a PDF soft mask over the WHOLE-NUMBER extents of the clip it is
+ * painted under and fills that surface with the mask's `/BC` backdrop, so an outer row or column
+ * the clip only partly covers keeps the backdrop. The browser upsamples it bilinearly and the
+ * reader sees a 1–2 px light outline of the masked form's BBox that is in neither the source nor
+ * `pdftocairo -png`. Full account: `experiments/figure-text-translation/figrings.py`.
+ *
+ * 🔴 THE BYTE SIGNATURE IS NOT THE DEFECT, WHICH IS THE ONLY REASON THIS IS A STEP AND NOT A
+ * ONE-LINE PASS INSIDE PREPARE. Measured over all 691 composed SVGs: 9 masks carry the signature,
+ * in 2 figures, and exactly ONE ring is visible. Healing the other 8 destroys real picture content
+ * (`evidence/2026-09-13-t23/reports/exo-spike.md` §7). So the decision is interventional and is
+ * made on a RENDER: heal a side only when healing it demonstrably removes a light line.
+ *
+ * ⚠️ THE CENSUS GATES THE COST. It is a pure read of the SVG, no browser, ~5 ms, and on 689 of 691
+ * figures it returns nothing and this step spawns NOTHING further. Only a figure that carries a
+ * candidate pays for two Chromium renders.
+ *
+ * 🔴 FAIL-CLOSED TOWARDS NOT HEALING. Every failure here — no renderer, a render that times out, a
+ * malformed report — leaves `artwork.svg` byte-identical and records a warning. A figure is never
+ * blocked by this step and artwork is never rewritten on a guess: the damage a wrong heal does is
+ * silent and reader-visible, while a skipped heal is one outline somebody can still see.
+ *
+ * @param {object} rec the figure record; `rec.rings` and `rec.warnings` are written
+ * @param {string} outDir this figure's prepared directory
+ */
+export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync = fs.existsSync }) {
+  const artwork = path.join(outDir, 'artwork.svg');
+  // Nothing to gate: a raster-sourced figure has no cairo artwork at all.
+  if (!existsSync(artwork)) return rec;
+
+  // ⚠️ ITS OWN CHANNEL, NOT `rec.warnings`. That list is `figure-prepare.py`'s, and the summary
+  // prints it under the producer's name as "its own !! lines" — folding a driver-side warning in
+  // there attributes it to a tool that never emitted it.
+  const warn = (msg) => {
+    rec.ringWarnings = rec.ringWarnings || [];
+    rec.ringWarnings.push(msg);
+  };
+  const runPy = (argv) =>
+    spawn({
+      stage: 'ring-gate',
+      command: PYTHON,
+      argv: [path.join(EXPERIMENT_DIR, 'figure-rings.py'), ...argv],
+      cwd: EXPERIMENT_DIR,
+      env: { FIGTEXT_PYLIBS: path.join(EXPERIMENT_DIR, 'pylibs') },
+      timeout: 600_000,
+    });
+
+  const censused = runPy(['census', artwork, '--json']);
+  let census;
+  try {
+    census = JSON.parse(censused.stdout)[0];
+  } catch {
+    warn(`census did not return JSON (exit ${censused.status}); artwork left untouched`);
+    return rec;
+  }
+  const candidates = (census && census.candidates) || [];
+  rec.rings = { candidates: candidates.length, approved: [], refused: [] };
+  if (candidates.length === 0) return rec;
+
+  // A dry run reports the exposure and stops. The census is what makes a candidate visible
+  // before any money moves; the renders are not free and decide nothing a dry run acts on.
+  if (dryRun) {
+    warn(
+      `${candidates.length} soft-mask ring candidate(s) — ` +
+        `${candidates.map((c) => c.mask).join(', ')}; not gated in a dry run`
+    );
+    return rec;
+  }
+
+  const vb = census.viewBox || [0, 0, 0, 0];
+  if (!(vb[2] > 0 && vb[3] > 0)) {
+    warn('artwork has no usable viewBox, so a render cannot be mapped to it; left untouched');
+    return rec;
+  }
+  const scale = RING_RENDER_DPI / 72;
+  const w = Math.round(vb[2] * scale);
+  const h = vb[3] * scale;
+
+  const counterfactual = path.join(outDir, 'artwork.ring-all.svg');
+  const healedAll = runPy(['heal', artwork, '--out', counterfactual, '--approve-all']);
+  if (healedAll.status !== 0 || !existsSync(counterfactual)) {
+    warn(`could not build the counterfactual heal (exit ${healedAll.status}); left untouched`);
+    return rec;
+  }
+
+  const render = (src, dst) =>
+    spawn({
+      stage: 'ring-render',
+      command: process.execPath,
+      argv: [path.join(EXPERIMENT_DIR, 'render-check.mjs'), src, dst, String(w), String(h), '1'],
+      cwd: EXPERIMENT_DIR,
+      env: {},
+      timeout: 600_000,
+    });
+  const before = path.join(outDir, 'ring-before.png');
+  const after = path.join(outDir, 'ring-after.png');
+  const rb = render(artwork, before);
+  const ra = render(counterfactual, after);
+  if (rb.status !== 0 || ra.status !== 0 || !existsSync(before) || !existsSync(after)) {
+    warn(
+      `could not render the artwork (before ${rb.status}, after ${ra.status}), so ` +
+        `${candidates.length} ring candidate(s) were NOT judged; artwork left untouched`
+    );
+    return rec;
+  }
+
+  const reportPath = path.join(outDir, 'ring-gate.json');
+  const gated = runPy([
+    'gate',
+    artwork,
+    '--before',
+    before,
+    '--after',
+    after,
+    '--report',
+    reportPath,
+  ]);
+  const report = readJson(reportPath);
+  if (gated.status !== 0 || !report) {
+    warn(`the gate produced no verdict (exit ${gated.status}); artwork left untouched`);
+    return rec;
+  }
+  const approved = report.approved || [];
+  rec.rings.approved = approved;
+  rec.rings.refused = candidates.map((c) => c.mask).filter((m) => !approved.includes(m));
+
+  // Q4 — a refused candidate is NAMED, never silent. It is the thing a later poppler change
+  // turns into a regression, and the byte detector still firing on it is the signal that this
+  // whole step is still looking at the shape it was built for.
+  if (rec.rings.refused.length) {
+    warn(
+      `${rec.rings.refused.length} soft-mask ring candidate(s) carry the byte signature but no ` +
+        `visible ring, so they were NOT healed: ${rec.rings.refused.join(', ')}`
+    );
+  }
+  if (approved.length === 0) return rec;
+
+  const healedPath = path.join(outDir, 'artwork.ring-healed.svg');
+  const healed = runPy(['heal', artwork, '--out', healedPath, '--gate-report', reportPath]);
+  if (healed.status !== 0 || !existsSync(healedPath)) {
+    warn(`the gated heal failed (exit ${healed.status}); artwork left untouched`);
+    rec.rings.approved = [];
+    return rec;
+  }
+  // Replace in place only once the healed bytes exist, so a failure anywhere above cannot leave
+  // a half-written artwork for compose to draw on.
+  fs.renameSync(healedPath, artwork);
+  return rec;
+}
+
 export function applyDriftGuard(rec) {
   if (!DRIFTABLE.has(rec.outcome) || sidecarBlockCount(rec.sidecar) === 0) return rec;
   // Captured BEFORE the overwrite: it is the whole diagnosis. Reading `rec.outcome` after the
@@ -1532,6 +1693,10 @@ export async function runFigures(args, deps = {}) {
           });
           rec.outcome = outcome;
           rec.sendable = sendable;
+          // STEP 8b — the ring gate, on the artwork prepare just wrote and before anything
+          // composes from it. It never changes an outcome: a figure is published or not for
+          // reasons that have nothing to do with a mask ring.
+          applyRingGate(rec, outDir, { spawn, dryRun: args.dryRun });
         }
       }
       // 🔴 THE PRE-FLIGHT RUNS HERE, PER FIGURE, AND NOT IN A SECOND PASS AFTERWARDS. It has
@@ -1828,6 +1993,29 @@ export function summarise(result) {
         `!! lines:`
     );
     for (const f of warned) lines.push(`    ${f.basename}: ${f.warnings.join('; ')}`);
+  }
+
+  // 🔴 §C140 ⑩ — THE RING GATE, NAMED BY FIGURE AND MASK ([USER] ruling Q4, 2026-09-15).
+  // A refused candidate is the interesting line, not the healed one: it means the byte signature
+  // still fires where nothing is visible, which is exactly what a later poppler change would turn
+  // into a regression. Silence here would make that indistinguishable from a corpus with no
+  // candidates at all — the repo's oldest failure shape.
+  const ringed = result.figures.filter(
+    (f) => (f.rings && f.rings.candidates) || (f.ringWarnings && f.ringWarnings.length)
+  );
+  if (ringed.length) {
+    const healed = ringed.reduce((n, f) => n + ((f.rings && f.rings.approved.length) || 0), 0);
+    const refused = ringed.reduce((n, f) => n + ((f.rings && f.rings.refused.length) || 0), 0);
+    lines.push(
+      `  soft-mask ring gate (§C140 ⑩) — ${ringed.length} figure(s) carry a candidate; ` +
+        `${healed} healed, ${refused} refused:`
+    );
+    for (const f of ringed) {
+      if (f.rings && f.rings.approved.length) {
+        lines.push(`    ${f.basename}: healed ${f.rings.approved.join(', ')}`);
+      }
+      for (const w of f.ringWarnings || []) lines.push(`    ${f.basename}: ${w}`);
+    }
   }
 
   // 🔴 §C140 ② ③ ⑨ — THE COMPOSER'S NOTES, NAMED BY FIGURE AND BLOCK KEY. Each is a NOTE in the

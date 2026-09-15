@@ -1,0 +1,284 @@
+{
+ "svg": "CNX_Chem_03_01_exocytosis-88f6_IS.svg",
+ "approved": [],
+ "verdicts": {
+  "mask-8": {
+   "mask": "mask-8",
+   "refuse": null,
+   "sides": {
+    "left": {
+     "before": 0.1,
+     "after": 0.1,
+     "delta": 0.0,
+     "pass": false
+    },
+    "right": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    },
+    "top": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    },
+    "bottom": {
+     "before": 0.6,
+     "after": 0.6,
+     "delta": 0.0,
+     "pass": false
+    }
+   },
+   "approved": false,
+   "reason": "sides 0 < 2",
+   "sidesPassed": 0,
+   "bestDelta": 0.0
+  },
+  "mask-12": {
+   "mask": "mask-12",
+   "refuse": null,
+   "sides": {
+    "left": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    },
+    "right": {
+     "before": 0.2,
+     "after": 0.2,
+     "delta": 0.0,
+     "pass": false
+    },
+    "top": {
+     "before": 0.2,
+     "after": 0.3,
+     "delta": -0.0,
+     "pass": false
+    },
+    "bottom": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    }
+   },
+   "approved": false,
+   "reason": "sides 0 < 2",
+   "sidesPassed": 0,
+   "bestDelta": 0.0
+  },
+  "mask-39": {
+   "mask": "mask-39",
+   "refuse": null,
+   "sides": {
+    "left": {
+     "before": 0.1,
+     "after": 0.1,
+     "delta": 0.0,
+     "pass": false
+    },
+    "right": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    },
+    "top": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    },
+    "bottom": {
+     "before": 0.6,
+     "after": 0.6,
+     "delta": 0.0,
+     "pass": false
+    }
+   },
+   "approved": false,
+   "reason": "sides 0 < 2",
+   "sidesPassed": 0,
+   "bestDelta": 0.0
+  },
+  "mask-43": {
+   "mask": "mask-43",
+   "refuse": null,
+   "sides": {
+    "left": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    },
+    "right": {
+     "before": 0.2,
+     "after": 0.2,
+     "delta": 0.0,
+     "pass": false
+    },
+    "top": {
+     "before": 0.2,
+     "after": 0.3,
+     "delta": -0.0,
+     "pass": false
+    },
+    "bottom": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    }
+   },
+   "approved": false,
+   "reason": "sides 0 < 2",
+   "sidesPassed": 0,
+   "bestDelta": 0.0
+  },
+  "mask-189": {
+   "mask": "mask-189",
+   "refuse": null,
+   "sides": {
+    "left": {
+     "before": 0.4,
+     "after": 0.4,
+     "delta": 0.0,
+     "pass": false
+    },
+    "right": {
+     "before": 11.0,
+     "after": 11.0,
+     "delta": 0.0,
+     "pass": false
+    },
+    "top": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    },
+    "bottom": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    }
+   },
+   "approved": false,
+   "reason": "sides 0 < 2",
+   "sidesPassed": 0,
+   "bestDelta": 0.0
+  },
+  "mask-271": {
+   "mask": "mask-271",
+   "refuse": null,
+   "sides": {
+    "left": {
+     "before": 3.5,
+     "after": 3.7,
+     "delta": -0.2,
+     "pass": false
+    },
+    "right": {
+     "before": 33.2,
+     "after": 33.2,
+     "delta": 0.0,
+     "pass": false
+    },
+    "top": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    },
+    "bottom": {
+     "before": 8.7,
+     "after": 8.7,
+     "delta": 0.0,
+     "pass": false
+    }
+   },
+   "approved": false,
+   "reason": "sides 0 < 2",
+   "sidesPassed": 0,
+   "bestDelta": 0.0
+  },
+  "mask-409": {
+   "mask": "mask-409",
+   "refuse": null,
+   "sides": {
+    "left": {
+     "before": 1.0,
+     "after": 1.0,
+     "delta": 0.0,
+     "pass": false
+    },
+    "right": {
+     "before": 0.9,
+     "after": 0.9,
+     "delta": 0.0,
+     "pass": false
+    },
+    "top": {
+     "before": 13.0,
+     "after": 13.0,
+     "delta": -0.1,
+     "pass": false
+    },
+    "bottom": {
+     "before": 0.5,
+     "after": 0.5,
+     "delta": 0.0,
+     "pass": false
+    }
+   },
+   "approved": false,
+   "reason": "sides 0 < 2",
+   "sidesPassed": 0,
+   "bestDelta": 0.0
+  },
+  "mask-491": {
+   "mask": "mask-491",
+   "refuse": null,
+   "sides": {
+    "left": {
+     "before": 8.8,
+     "after": 3.3,
+     "delta": 5.4,
+     "pass": false
+    },
+    "right": {
+     "before": 4.6,
+     "after": 4.6,
+     "delta": 0.0,
+     "pass": false
+    },
+    "top": {
+     "before": 0.0,
+     "after": 0.0,
+     "delta": 0.0,
+     "pass": false
+    },
+    "bottom": {
+     "before": 10.2,
+     "after": 0.0,
+     "delta": 10.2,
+     "pass": true
+    }
+   },
+   "approved": false,
+   "reason": "sides 1 < 2",
+   "sidesPassed": 1,
+   "bestDelta": 10.2
+  }
+ },
+ "thresholds": {
+  "sideFloor": 10.0,
+  "sideDrop": 8.0,
+  "minSides": 2,
+  "minDelta": 20.0
+ }
+}

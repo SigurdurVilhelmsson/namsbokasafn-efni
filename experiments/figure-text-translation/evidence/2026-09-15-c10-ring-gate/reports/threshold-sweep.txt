@@ -1,0 +1,8 @@
+brain: 1 candidates, render 975x484
+exo: 8 candidates, render 1200x669
+settings tried            360
+give the wanted decision  360
+give a different one      0
+shipped setting           floor=10.0 drop=8.0 minSides=2 minDelta=20.0
+  CONTROL floor=0 drop=0 minSides=1 minDelta=0 -> brain approves ['mask-2']
+  CONTROL floor=0 drop=0 minSides=1 minDelta=0 -> exo approves ['mask-12', 'mask-189', 'mask-271', 'mask-39', 'mask-409', 'mask-43', 'mask-491', 'mask-8']
