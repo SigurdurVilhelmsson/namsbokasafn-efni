@@ -1,7 +1,7 @@
 # §C140 ⑩ — the `pdftocairo -svg` soft-mask ring, and the visibility gate its heal needs — design
 
-**Date:** 2026-09-15 · **Status:** design. **The build of Part 1 is done and measured; Parts 2–4 wait on
-the rulings below.**
+**Date:** 2026-09-15 · **Status:** design. **Rulings Q1–Q4 answered 2026-09-15; Parts 1–3 built.
+Part 4's rollout run needs a box with poppler and the OpenStax source PDFs — see § Parts.**
 **Owner of:** the DESIGN of how the ring artefact is detected, how a heal is authorised, and where that
 decision runs. Nothing else in §C140.
 **Status of the work lives in** the campaign register's ⏩ RESUME and §C140; figure-text status in
@@ -24,19 +24,24 @@ decision runs. Nothing else in §C140.
 | — | **⑩ runs BEFORE any ch03/ch04 figure publication decision** | [USER] 2026-09-15 |
 | — | Carried: buying stays stopped · block keys must not move · no PR merges until [USER] has looked at the pictures | [USER] 2026-09-13 |
 
-## Rulings this design NEEDS — the open questions
+## Rulings — answered 2026-09-15
 
-| # | question | what turns on it |
+| # | question | [USER]'s ruling |
 |---|---|---|
-| **Q1** | **Does the heal ship at all?** The measured corpus-wide exposure is **1 visible ring, in 1 figure, on a page no reader is served today.** The alternative is to detect and refuse, and let a human decide per figure | Parts 2–4. If no, Part 1 alone is the item, and brain's publication is answered by Q3 instead |
-| **Q2** | **If it ships, where does the decision run?** (a) inside `figure-prepare.py`, which makes a browser a prepare-time dependency; (b) as a step in `figure-run.js` between prepare and compose; (c) as an operator-run tool whose verdict is committed per figure | the shape of Part 3 |
-| **Q3** | **Brain's publication.** With the gate approving it, may the recomposed `CNX_Chem_03_01_brain-ec0b` be healed and published — or does brain keep its June raster copy? | whether ⑩ still blocks the ch03/ch04 publication decision |
-| **Q4** | **What happens to a figure the gate REFUSES but the detector flags** (exocytosis today)? Silent pass, a named warning in the run output, or a review-panel flag? | Part 4 |
+| **Q1** | Does the heal ship at all? | **Yes.** It ships, gated. |
+| **Q2** | Where does the decision run? | **(b) a step in `figure-run.js`, between prepare and compose.** |
+| **Q3** | Brain's publication | **Publish the healed brain.** ⑩ no longer blocks the ch03/ch04 publication decision. |
+| **Q4** | What a refused candidate does | **A named warning** — never silent. |
 
-**Recommendation, stated so a ruling can disagree with it:** Q1 **yes, but narrowly** — ship the heal,
-gated, and take Q2(b). The heal is byte-local, reversible, and the gate refused 32 of 32 damaging sides
-on the one figure that could be damaged. Q4: a **named warning**, not silence — a refused candidate is
-exactly the thing a later poppler change would turn into a regression, and it must stay visible.
+**Q2 has a consequence worth stating: `render-check.mjs` is now on the driver path.** It imported
+playwright by an absolute path inside one developer's home directory, so it ran on exactly one
+machine. Harmless while only a human invoked it; not harmless once the driver does. Fixed here
+(resolution against both `node_modules` trees, a `PLAYWRIGHT_CHROMIUM_EXECUTABLE` escape hatch,
+a fractional `<img>` height against a ceil()ed viewport so the 0.14 % vertical stretch does not
+walk the measurement off its target, and a timeout that can tell "slow" from "never").
+
+*(The recommendation put to [USER] was Q1 yes-but-narrowly, Q2(b), Q4 named warning. All four rulings
+came back matching it, Q3 included.)*
 
 ---
 
@@ -126,13 +131,27 @@ Pinned by a planted fixture whose premise is itself asserted.
 | part | what | state |
 |---|---|---|
 | **1 — detector, gate and gated heal, as a standalone tool** | `figrings.py` (library), `figure-rings.py` (CLI: `census` / `gate` / `heal`), `test_figrings.py`. Read-only by default: `heal` without a gate report heals nothing, and the CLI **refuses to write inside `books/` at all** | **built and measured** |
-| **2 — the heal's authorisation** | whether the heal ships, and under what rule | **waits on Q1** |
-| **3 — where the decision runs** | prepare-time, driver-step, or operator-run with a committed verdict | **waits on Q2** |
-| **4 — what a refused candidate does** | silent / named warning / review-panel flag | **waits on Q4** |
+| **2 — the heal's authorisation** | Q1: it ships, gated by §3.2 | **ruled** |
+| **3 — the decision's place** | Q2(b): `applyRingGate` in `tools/figure-run.js`, called the moment prepare has written `artwork.svg` and before anything composes from it. The census gates the cost — a pure read, no browser, and on 689 of 691 figures the step spawns nothing further. Fail-closed: any failure leaves the artwork byte-identical and names itself | **built**, `tools/__tests__/figure-run-ring-gate.test.js` |
+| **4 — a refused candidate** | Q4: its own warning channel (`rec.ringWarnings`, not `figure-prepare.py`'s list) and its own section in the run summary, naming the figure and the mask | **built** |
+| **4b — the rollout run** | `figure-run.js --figure CNX_Chem_03_01_brain-ec0b --force` (0 ISK), then [USER] reviews the picture | **not run — needs poppler and the source PDFs**, see below |
 
-Part 1 is deliberately the whole of the safe work: it is what every answer to Q1–Q4 needs, it cannot
-destroy a picture, and it is what lets [USER] answer Q3 by looking at a rendered before/after rather than
-at a table.
+**Part 4b cannot run where this was built.** `figure-run.js` spawns `figure-prepare.py`, which needs
+`pdftocairo` and the figure's OpenStax source PDF; the environment this was built in has neither
+(verified, not assumed: `which pdftocairo` is empty and no `CNX_Chem_03_01_brain*.pdf` exists anywhere
+on the box). The artwork under `books/*/media/` is pipeline output and is not hand-edited — CLAUDE.md
+§ *Pipeline operations*. So Q3 is discharged by running, on a box with the sources:
+
+```bash
+node tools/figure-run.js --book efnafraedi-2e --chapter 3 \
+     --figure CNX_Chem_03_01_brain-ec0b --force        # 0 ISK, spawns no MT
+```
+
+`isStale` keys on `COMPOSER_VERSION` and the render hashes, never on the artwork, so `--force` is what
+picks the healed artwork up. Expect the run summary to name `CNX_Chem_03_01_brain-ec0b: healed mask-2`.
+A run over ch03 as a whole should additionally name `CNX_Chem_03_01_exocytosis-88f6` with 8 refused
+candidates and heal none of them — that refusal is the Q4 line, and seeing it is how you know the step
+is still looking at the shape it was built for.
 
 ## 5. Rollout, when there is one
 

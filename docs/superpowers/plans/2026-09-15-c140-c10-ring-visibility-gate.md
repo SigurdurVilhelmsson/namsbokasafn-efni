@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-15 · **Design:**
 [`../specs/2026-09-15-c140-c10-ring-visibility-gate-design.md`](../specs/2026-09-15-c140-c10-ring-visibility-gate-design.md)
-(its § *Rulings this design NEEDS* wins over anything here) · **Measurements, frozen:**
+(its § *Rulings — answered* wins over anything here) · **Measurements, frozen:**
 [`evidence/2026-09-15-c10-ring-gate/`](../../../experiments/figure-text-translation/evidence/2026-09-15-c10-ring-gate/README.md).
 **No status verbs** — the active register's ⏩ RESUME owns state. **0 ISK throughout: nothing here
 calls the MT, and no task reads or writes a source PDF.**
@@ -18,23 +18,36 @@ calls the MT, and no task reads or writes a source PDF.**
 | 5 | **Gated heal + CLI** — `figrings.heal`, `figure-rings.py census|gate|heal` | without a gate report it heals nothing and says why; it refuses to write inside `books/`; the gated brain output is byte-identical to the counterfactual and the gated exocytosis output is byte-identical to its input |
 | 6 | **Tests** — `test_figrings.py`, every planted negative paired with a positive through the same path, corpus anchors with a non-vacuity control, skips counted and printed | `ALL PASS`, and the corpus-anchor block asserts a non-empty population before asserting anything about it |
 
-## Tasks 7–10 — Parts 2–4, blocked on rulings
+## Tasks 7–10 — Parts 2–4, unblocked by [USER]'s rulings of 2026-09-15
 
-Do **not** start these before the matching ruling exists. Each names the ruling it waits on.
+**Q1 yes · Q2 driver step · Q3 publish healed brain · Q4 named warning.** The design's
+§ *Rulings — answered* owns the wording.
 
-| # | task | waits on | done when |
-|---|---|---|---|
-| 7 | **Decide brain's publication** — [USER] looks at `crops/brain-outline-before-after.png` and, if that is not enough, at a full-size render of the healed figure | **Q3** | brain is either healed and cleared for the ch03/ch04 publication decision, or kept on its June raster copy, and §C140 ⑩ records which |
-| 8 | **Wire the decision into the pipeline** at the place Q2 chooses. If Q2 is (b), a `figure-run.js` step between prepare and compose that runs the two renders and the gate | **Q1 + Q2** | a figure whose gate approves is healed by an ordinary `figure-run --figure <b> --force`; a refused one comes through byte-identical; both pinned by a test that runs the driver, not just the library |
-| 9 | **Surface a refused candidate** per Q4 | **Q4** | a refused candidate appears where the chosen surface says, with the mask id and the reason; a corpus with no candidates produces no noise |
-| 10 | **Roll out to the carriers** — `figure-run --figure <b> --force` on brain (and exocytosis, which comes through unchanged), then [USER] reviews the pictures | **7 + 8** | the recomposed figures are in `books/`, [USER] has looked, and the deploy/publication call is [USER]'s |
+| # | task | done when |
+|---|---|---|
+| 7 | **Q2's consequence first: make `render-check.mjs` runnable off one laptop** — it is on the driver path now | playwright resolved against both `node_modules` trees with an escape hatch, the `<img>` height kept fractional against a ceil()ed viewport, a timeout that separates slow from never; the fixed tool reproduces the frozen brain measurement `33.8 / 25.5 / 12.3 / 23.3` exactly |
+| 8 | **`applyRingGate` in `tools/figure-run.js`**, called the moment prepare has written `artwork.svg`, before anything composes from it | the census gates the cost (no candidates → no browser spawned at all); an approved mask is healed and the artwork replaced in place; **every** failure path leaves the artwork byte-identical; the existing driver suite's failing set is unchanged **by name** |
+| 9 | **Q4's surface** — `rec.ringWarnings`, its own channel and its own summary section | a refused candidate is named with its figure and mask; `figure-prepare.py`'s warning list is not borrowed for it |
+| 10 | **Roll out to brain** — `figure-run.js --figure CNX_Chem_03_01_brain-ec0b --force` (0 ISK), then [USER] reviews | the recomposed figure is in `books/`, the run summary names `healed mask-2`, and the publication call is [USER]'s |
+
+⚠️ **Task 10 needs a box with `pdftocairo` and the OpenStax source PDFs.** The driver spawns
+`figure-prepare.py`, which reads the figure's source PDF; verified absent in the environment
+Tasks 7–9 were built in (`which pdftocairo` empty, no `CNX_Chem_03_01_brain*.pdf` anywhere).
+`books/*/media/` is pipeline output and is not hand-edited (CLAUDE.md § *Pipeline operations*),
+so this is a run for the box that has the sources — not a patch.
+
+**A control worth running with it:** a whole-ch03 run should ALSO name
+`CNX_Chem_03_01_exocytosis-88f6` with 8 refused candidates and heal none. A run that heals brain
+and says nothing about exocytosis means the refusal channel is not working, which is the half of
+this item that protects a picture.
 
 ## What is deliberately NOT in this plan
 
 - **No `COMPOSER_VERSION` bump.** The composer does not change; bumping it restages all 34 figures for a
   2-figure artwork change. → design §5.
-- **No change to `strip-text.py`.** c10 proposed the heal there. Part 1 keeps it in its own module so the
-  gate can be built and judged without touching the prepare path at all; where it finally lands is Q2.
+- **No change to `strip-text.py`.** c10 proposed the heal there. It lives in its own module instead, and
+  Q2 put the decision in the driver rather than in prepare — so the prepare path is untouched and the
+  gate can be judged, and turned off, without disturbing how artwork is produced.
 - **No attempt to stop poppler writing the ring.** c10 measured `-r`, `-scale-to-*` and `-paperw/h -expand`
   as not working, and judged pre-scaling in pikepdf as failing "smallest fix". Not reopened.
 - **No Firefox/WebKit work.** That is §C140 ⑭, a publication pre-check, and it is not this item.

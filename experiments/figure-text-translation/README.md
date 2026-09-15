@@ -153,7 +153,7 @@ published.jpg ──check.py─────────────────�
 | `test_figrings.py` | tests both, every planted negative paired with a positive through the same path, plus corpus anchors with a non-vacuity control |
 | `census.py` | survey a directory of figure PDFs: live text? substitutable font? prose vs verbatim? |
 | `svgout.py` | emit SVG: vector artwork + real `<text>` + a woff2 **subset** of the figure's own font |
-| `render-check.mjs` | rasterise a figure in Chromium **inside `<img>`** — the only rendering a reader ever sees |
+| `render-check.mjs` | rasterise a figure in Chromium **inside `<img>`** — the only rendering a reader ever sees. ⚠️ **On the DRIVER path since §C140 ⑩** (`figure-run.js` renders artwork twice to judge a soft-mask ring), so it resolves playwright rather than hard-coding a path, and its `<img>` height stays fractional against a ceil()ed viewport — rounding both rescales the picture by 0.14 % and walks a user-unit-keyed measurement off its target |
 | `sources.py` | resolve a figure basename to its authoritative source across the two edition trees |
 | `test_sources.py` | tests that resolver, including a control that reverses the precedence |
 | `emit-blocks.py` | the MT stage's input — `runs.json` → `out/blocks.json`, marking which blocks to send |
