@@ -826,8 +826,9 @@ const DRIFTABLE = new Set(['copied-photo', 'copied-textless', 'unreadable-text']
  * `pdftocairo -png`. Full account: `experiments/figure-text-translation/figrings.py`.
  *
  * 🔴 THE BYTE SIGNATURE IS NOT THE DEFECT, WHICH IS THE ONLY REASON THIS IS A STEP AND NOT A
- * ONE-LINE PASS INSIDE PREPARE. Measured over all 691 composed SVGs: 9 masks carry the signature,
- * in 2 figures, and exactly ONE ring is visible. Healing the other 8 destroys real picture content
+ * ONE-LINE PASS INSIDE PREPARE. Measured over all 691 composed SVGs on 2026-09-15, before brain's heal
+ * was committed: 9 masks carry the signature, in 2 figures, and exactly ONE ring is visible. The
+ * driver still sees all 9, because it gates the artwork prepare re-derives from the source PDF. Healing the other 8 destroys real picture content
  * (`evidence/2026-09-13-t23/reports/exo-spike.md` §7). So the decision is interventional and is
  * made on a RENDER: heal a side only when healing it demonstrably removes a light line.
  *

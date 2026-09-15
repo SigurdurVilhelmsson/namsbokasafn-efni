@@ -17,7 +17,7 @@ neither, and **reported `VERDICT ok`**. What went wrong is the more durable half
 |---|---|---|
 | census sees both carriers before any write (P1, dry run) | brain 1 (`mask-2`), exocytosis 8, nobody else | ✅ exactly that |
 | live brain (P2, first attempt) | `healed mask-2` | ❌ **`could not build the counterfactual heal (exit 1); left untouched`** — and `VERDICT ok` |
-| determinism, clock pinned (P5′) | two runs `cmp`-identical | ✅ identical, `healed mask-2` both times |
+| determinism, clock pinned (P5′) | two runs `cmp`-identical | ✅ identical, `healed mask-2` both times (`reports/P5-pinned-determinism.txt`) |
 | live brain (P2′) | 2 font timestamps + `source-29` payload, nothing else | ✅ exactly that; remainder identical |
 | live exocytosis (P3′) | 8 refused, named; SVG changes by font timestamp only | ✅ 37 of 37 images untouched, remainder identical |
 | `source-29` raster (90×24) | interior 1,936 px unchanged; only the 4 cut edges move | ✅ 0 interior, 224 edge px; **equals `figrings.heal(golden)` exactly** |
@@ -45,8 +45,10 @@ stderr, so the cause took a hand reproduction to find.
   `reports/test-figrings-AFTER-numpy.txt`; corpus census 691 / 9, brain and exocytosis lines identical
   to frozen: `reports/corpus-census-before-heal.txt`
 
-This branch also makes every ring-gate failure warning carry the failing child's stderr tail, and
-adds `numpy` to the README install line with a note on why its absence is quiet.
+This branch also makes every ring-gate failure warning carry the failing child's cause — on ONE
+line, keeping both the head (where Node prints an uncaught error's message) and the tail (where
+Python prints its exception), and naming the signal when a child is killed — and adds `numpy` to
+the README install line with a note on why its absence is quiet.
 
 ### 2. A recompose is not byte-deterministic, and `cmp` was the wrong instrument
 
@@ -77,8 +79,8 @@ masks refused — which is a second, independent reading of the gate, not a re-r
   went red the moment the heal it gates was used (`reports/test-figrings-HEALED-TREE.txt`). It now
   asserts the healed state, **with a witness** (at an unbounded threshold the walker still reaches
   `mask-2`, ring excess now −1.0…−0.3). Verified both ways: ALL PASS on the healed tree
-  (`reports/tf-A-healed.txt`), FAIL on exactly the two new assertions with the unhealed bytes
-  swapped in (`reports/tf-B-unhealed.txt`).
+  (`reports/tf-A-healed.txt`); with the unhealed bytes swapped in, FAIL on the two heal-state
+  assertions while the witness still passes, as designed (`reports/tf-B-unhealed.txt`).
 - Driver tests: `figure-run-ring-gate.test.js` 17/17 (5 new cause tests were RED before the
   stderr change, plus the previously unexercised gated-heal failure branch); `figure-run-paid`
   all pass; `figure-run-free`'s 9 failures are **the committed baseline, by name, both directions**,
@@ -91,8 +93,9 @@ masks refused — which is a second, independent reading of the gate, not a re-r
 ## Limits
 
 - **One figure, one browser.** Firefox and WebKit are §C140 ⑭, still unmeasured.
-- **Post-heal corpus exposure is 691 figures / 8 candidate masks, all in exocytosis and all
-  refused** (`reports/corpus-census-after-heal.txt`). A future `--force` recompose of brain
+- **Post-heal corpus exposure is 691 figures / 8 candidate masks, all in exocytosis**
+  (`reports/corpus-census-after-heal.txt` — whose `refused=` column counts STRUCTURAL refusals
+  and reads 0), **and the gate refused all 8** (`reports/P3prime-exo.txt`). A future `--force` recompose of brain
   re-derives the unhealed artwork from the PDF and the gate heals it again (P5′ shows that is
   deterministic).
 - **Nothing is rendered, synced or deployed.** Publication of ch03/ch04 is [USER]'s call.

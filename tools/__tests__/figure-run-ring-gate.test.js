@@ -3,7 +3,8 @@
  * ([USER] ruling Q2, 2026-09-15).
  *
  * 🔴 WHAT THIS FILE IS REALLY GUARDING IS A REFUSAL, NOT A FIX. The byte signature this step
- * starts from fires on 9 masks in this corpus and only ONE of them is a visible ring; healing the
+ * starts from fired on 9 masks in the artwork derived from this corpus's source PDFs (2026-09-15)
+ * and only ONE of them was a visible ring; healing the
  * other 8 destroys picture content. So the assertions that matter are the ones where the step
  * does NOTHING — and each of those is paired with a run through the SAME code path where it DOES
  * heal, because "spawned nothing because it correctly stood down" and "spawned nothing because it

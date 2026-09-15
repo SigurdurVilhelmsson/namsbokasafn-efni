@@ -7,7 +7,7 @@
 
 `census` is cheap and needs no browser: it reports every mask carrying the byte signature.
 It is a DETECTOR, never a decision — measured, it false-positives on 8 of the 9 candidate
-masks in this corpus (see figrings.__doc__).
+masks in the artwork derived from this corpus's source PDFs (see figrings.__doc__).
 
 `gate` is the decision, and it is interventional.  It needs two renders of the SAME file:
   before — the file as it is;
@@ -125,7 +125,7 @@ def cmd_heal(args):
     else:
         approved = set()
         note = ('no --gate-report and no --approve-all: healing nothing. An ungated heal '
-                'destroys picture content on 8 of the 9 candidates in this corpus.')
+                'destroys picture content on 8 of the 9 candidates measured in this corpus\'s artwork.')
     healed, rep = figrings.heal(text, approved)
     out.write_text(healed, encoding='utf-8')
     print(json.dumps({'note': note, 'approved': sorted(approved), 'report': rep,

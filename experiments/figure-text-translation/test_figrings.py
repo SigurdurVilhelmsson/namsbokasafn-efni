@@ -11,11 +11,11 @@ DECISION, and both fail silently in the two ways this repo keeps re-learning:
     and the corpus anchors assert a NON-EMPTY population before asserting anything about
     it.  A harness that broke everything equally cannot read as a pass here.
 
-  * a gate calibrated on one picture is a number, not a rule.  The gate's own separation
-    is therefore asserted against BOTH real carriers in this corpus — the one where the
-    ring is visible and the one where the identical byte signature is picture content —
-    and the per-side numbers are pinned loosely (the decision), not exactly (the render,
-    which moves with the browser build).
+  * a gate calibrated on one picture is a number, not a rule.  The gate's separation is
+    exercised on PLANTED renders (section 6) and RECORDED where a reader will find it
+    (section 8, which checks the module docstring names the false-positive carrier); no
+    test here runs `gate()` on real bytes.  The measured per-side numbers behind it live
+    in the frozen evidence, not in this file, because a render moves with the browser build.
 
 ⚠️ Since the 2026-09-15 local-box run the committed brain SVG carries the HEAL, not the
 ring, so its corpus anchor asserts the healed state with a reachability witness; exocytosis
@@ -356,9 +356,9 @@ def test_corpus_anchors():
     # candidate, which was a COUNTDOWN — true only until the fix it gates was first used. So it
     # now asserts the heal, and the zero is paired with a WITNESS: at an unbounded threshold the
     # walker must still reach mask-2, or "no candidate" would read the same as a walker that no
-    # longer finds the mask at all. The visible-ring positive on real bytes lives on in the
-    # planted fixture above and in git history (38f60765); it is not read here, because a
-    # history lookup is vacuous on a depth-1 clone.
+    # longer finds the mask at all. A visible ring on REAL bytes now survives only in git
+    # history (38f60765) — not read here, because a history lookup is vacuous on a depth-1 clone;
+    # the planted 90x24 ring fixture above is its SYNTHETIC stand-in, not a copy of it.
     brain_text = brain.read_text(encoding='utf-8')
     bc, _ = figrings.find_candidates(brain_text)
     check('brain carries no candidate — its ring was healed', len(bc) == 0,
