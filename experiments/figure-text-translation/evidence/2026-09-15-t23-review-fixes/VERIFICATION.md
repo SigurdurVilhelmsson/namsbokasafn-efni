@@ -35,6 +35,12 @@ Full step-by-step detail (manifest check, Python baseline, every RED/GREEN/mutat
 one bash-export correction needed) is in `task-13-16-report.md`, cited here rather than restated in full;
 the lines the addendum's own STOP conditions gate on are reproduced below.
 
+> 📝 **Dated note — 2026-09-15, final review (the text above is unchanged).** The four files this document cites
+> for detail — `task-13-16-report.md`, `task-17-report.md`, `task-18-report.md` and `task-18-brief.md` — lived only
+> in the gitignored SDD ledger (`.superpowers/`), so in a clone every such citation led nowhere. They are now
+> committed byte-exact under [`reports/`](reports/): read `task-13-16-report.md` below as
+> `reports/task-13-16-report.md`, and likewise for the other three.
+
 ### Task 13 — R15, artwork shift (`pdftocairo -svg -noshrink -nocenter` + a prepare guard)
 
 - RED (patch `04-test_figure_prepare.patch`): `3 FAILED: 7c prepare's artwork.svg of a FRACTIONAL page draws
@@ -103,6 +109,13 @@ the lines the addendum's own STOP conditions gate on are reproduced below.
 - Compare (`t16/py` vs `t13/base`, plus a hash check against `PREDICTIONS.json`'s `tree_files_sha256`): `NEW
   FILE test_figcolour.py …`, `NEW FILE test_svgout.py …`, `compare done`; `composer files matching the
   verified build: 9 of 9 differ: []`
+
+  > 📝 **Dated note — 2026-09-15, final review.** That hash check describes `e922fa21`. The final review's code
+  > commit (`bc2ba79e`) then changed `figcolour.py` (DeviceRGB/DeviceGray fills clipped to [0, 1], like poppler)
+  > and `compose.py` (docstrings only), so against HEAD `tree_files_sha256` now differs for exactly those two of
+  > the 9. No check consumes that key (`predict.py` only writes it). The per-figure keys still hold on the
+  > changed tree: re-prepared and recomposed with `regen34.py`, `predict.py check --dir` gave 34/34 on all eight
+  > keys, and `check --media` 34/34 on the committed media.
 - Commit `e922fa21`
 
 All four: `lint-staged could not find any staged files matching configured tasks` (info line, not a
@@ -301,6 +314,12 @@ Every class `total 0`, `worst |delta| pt = 0.0`; bond segment `(3454, 3539)` on 
 pixel columns, matching Task 17's repository build exactly (the committed media are the same bytes Task 17
 verified in scratch). **MATCH.**
 
+> 📝 **Dated correction — 2026-09-15, final review.** "the same bytes" above overstates what was checked: the
+> committed media carry **the same artwork and text-group bytes** as Task 17's build (the `<style>` woff2 is
+> excluded by design — Step 5's note and `PREDICTIONS.md`: its `head.modified` is not pinned in a
+> `figure-run.js` compose). Measured by the reviewer: 0 of 34 files byte-identical in full, 34 of 34 identical
+> with the `<style>` block removed.
+
 ### Step 7 — the JS failing set is the baseline
 
 Task 7 Step 3's commands re-run with `--outputFile="$SCRATCH/t18-js.json"`, snippet argument `t18-js.json`:
@@ -318,6 +337,16 @@ suites failing to LOAD: [] | baseline: []
 unrelated to figures, per Task 7's report) — not a Task 18 regression. `tests 6498` is the same total Task 7
 measured; this task reports the count without judging it, per instruction. `NEWLY RED: []` and `NEWLY GREEN:
 []` — the delta is empty in both directions. **MATCH.**
+
+> 📝 **Dated correction — 2026-09-15, final review.** "36 named failures unrelated to figures" is wrong for 9 of
+> them. Recounted from the baseline file (`$SCRATCH/baseline/js-failing-by-name.txt`, now committed byte-exact as
+> [`../2026-09-14-t23-build/reports/js-baseline-failing-by-name.txt`](../2026-09-14-t23-build/reports/js-baseline-failing-by-name.txt)):
+> 36 lines, **9 of them `tools/__tests__/figure-run-free.test.js`** — a pre-existing figure-DRIVER suite whose
+> un-stubbed tests read the real committed sidecars (`../2026-09-14-t23-build/reports/task-8-report.md`); the other
+> 27 are outside figures. Re-run 2026-09-15 on `bc2ba79e`: 9 failed / 77 passed, the same 9 names as the baseline,
+> failing on `skipped-current` classifications, resolver counts (`26` vs `41`), a non-vacuity guard (`0`) and a
+> missing verbatim prepare warning — not diagnosed further. The delta verdict above stands (the set did not move);
+> the 9 are logged, not fixed, in campaign register §C140 ㉒.
 
 ### Step 8 — commit
 

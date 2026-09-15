@@ -24,6 +24,9 @@ and adversarial reviewers — two rounds, the second applying the reviewers' fix
 | `reports/round1-*` | round one: `0-build-figlayout`, `1-build-numloc`, `2-build-svgfix`, `3-build-figscripts`, `4-build-figcontainers`, `5-integrate`, `6-predict`, `7-review-numbers`, `8-review-spec` |
 | `reports/round2-*` | round two: `0-fix-modules`, `1-fix-commit5`, `2-fix-integrate`, `3-fix-predict`, `4-fix-verify` |
 | `reports/rehearsal.md` | the dress rehearsal: the plan's Tasks 1–9 and Task 10's pre-flights executed verbatim in a throwaway detached worktree at the plan commit, every step MATCH or DEVIATION with the plan-text fix; the plan was corrected from it |
+| `VERIFICATION.md` | *(row added 2026-09-15, final review; the file is `9b654d57`)* the frozen measurement of the repository implementation on the 34 bought figures against `PREDICTIONS.md` |
+| `reports/task-8-report.md` | *(added 2026-09-15, final review)* Task 8's SDD report (`COMPOSER_VERSION` `'2'` → `'3'`, the JS delta and why the moved `figure-run-free.test.js` cases read committed sidecars), byte-exact copy of the gitignored ledger file `VERIFICATION.md` cites |
+| `reports/js-baseline-failing-by-name.txt` | *(added 2026-09-15, final review)* the whole-repo JS red baseline `VERIFICATION.md` measures against, byte-exact from the session scratch: 36 names, 9 of them `figure-run-free.test.js` (campaign register §C140 ㉒) |
 
 ## Read the later round against the earlier one
 

@@ -182,6 +182,15 @@ spread across pre-existing suites unrelated to figures (`bracket-delta-corpus`, 
 `remt-sweep`, and others) — this is the whole-repo JS red baseline this task's Tasks 7–8 deltas are measured
 against, not a figures-specific baseline. `js-loadfail.txt` is one blank line: 0 named load failures.
 
+> 📝 **Dated correction — 2026-09-15, final review (the text above is unchanged).** "unrelated to figures" is wrong
+> for 9 of the 36, and the example list leaves out the largest group. Recounted from the baseline file, now committed
+> byte-exact as [`reports/js-baseline-failing-by-name.txt`](reports/js-baseline-failing-by-name.txt): **9 are
+> `tools/__tests__/figure-run-free.test.js`**, a pre-existing figure-DRIVER suite whose un-stubbed tests read the
+> real committed sidecars (see [`reports/task-8-report.md`](reports/task-8-report.md)); the other 27 are outside
+> figures. Logged, not fixed, in campaign register §C140 ㉒. The other `$SCRATCH` files this section cites
+> (`js-loadfail.txt`, `t2-compare.txt` … `t8-delta.txt`) were not committed and are not recoverable from the
+> repository — the class logged as §C140 ㉓.
+
 | file (Python compare) | new/changed test file | result |
 |---|---|---|
 | `t2-compare.txt` | `test_svgfix.py` (NEW) | `rc=0 fails=[] last='ALL PASS'` |
@@ -205,6 +214,10 @@ unresolved figure instead of failing the run over it (R9)"), `NEWLY GREEN: [7]` 
 `figure-run-free.test.js` cases covering the same de-hash and pre-flight-refusal mechanisms), `suites failing
 to LOAD: [] | baseline: []`. Task 8's own report (`task-8-report.md` line 59) records this exact 2-item
 NEWLY RED set as its Expected and calls it MATCH — cited here, not re-adjudicated.
+
+> 📝 **Dated note — 2026-09-15, final review.** `task-8-report.md` lived only in the gitignored SDD ledger; it is now
+> committed byte-exact as [`reports/task-8-report.md`](reports/task-8-report.md) (in that copy the NEWLY RED row is
+> line 58 of its Step 2 table).
 
 ---
 

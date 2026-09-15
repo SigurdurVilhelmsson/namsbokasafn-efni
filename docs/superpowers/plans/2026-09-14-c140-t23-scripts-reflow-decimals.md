@@ -1079,7 +1079,7 @@ Report the PR URL. **Merge only on [USER]'s instruction** (a merge commit, not a
 
 **Why.** At Task 11 [USER] looked at the 34 and did not accept. They reported a missing space in `afBr₂` and `viðH₂O`, the etheneBr double bond sitting left of centre, text that looks bolder than the source, and `Fjöldi / agna / af / A`. Each was root-caused, and [USER] ruled R12–R15 — read the spec's **"Amendments — 2026-09-15"** before any task below. Task 11's Step 4 gate therefore moves to Task 19, and **Task 12 runs only after [USER] says yes at Task 19**. Task 12 then also cites this addendum's evidence folder, logs the spec amendment's known limits, and logs [USER]'s "correcting translations and splitting long words" as future work.
 
-**Reference build — read before Task 13.** The fixes were built in scratch before this addendum was written, over three rounds:
+**Reference build — read before Task 13.** The fixes were built in scratch before this addendum was written, in two build rounds plus an assembler/verifier pass:
 - Round 1: four builders, an integrator and an adversarial reviewer — ready-with-minors, 0 defects.
 - Round 2: a fixer and a scoped re-reviewer — ready-with-minors, 0 defects.
 - An assembler and a verifier, who captured every install step below on a fresh copy of the tree — ready-with-minors, 0 defects.

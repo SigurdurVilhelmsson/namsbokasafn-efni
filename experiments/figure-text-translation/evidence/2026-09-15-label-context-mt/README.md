@@ -57,6 +57,7 @@ alt text with labels. That is why the main comparison has no alt arm.
 | blind consensus over the 76 judged items — J1 | **2 wrong · 20 acceptable · 54 correct** (J2: 4 · 20 · 52) | `verdicts.json` → `summary["J1 consensus"]`, `["J2 consensus"]` |
 | the labels P gets wrong that J1 does not | **all 12 of P's 12** | `verdicts.json` → `summary["P wrong, J1 not wrong"]` |
 | the labels J1 gets wrong that P does not | **2** (J2: **4**) | `verdicts.json` → `summary["J1 wrong, P not wrong"]`, `["J2 wrong, P not wrong"]` |
+| blind consensus, J vs P per item, over the 76 *(row added 2026-09-15, final review — the table first reported only the wrong counts)* | **J1 better 44 · same 21 · worse 11** (J2: 41 · 25 · 10); where J1 = J2, 38 · 15 · 6, and where they differ, 6 · 6 · 5 | `verdicts.json` → `summary["J1 vs P"]`, `["J2 vs P"]`, `["J1 vs P, stable (J1==J2)"]`, `["J1 vs P, unstable"]` |
 | formula, number or symbol damage, any arm | **none** | `recount/recount.py` |
 
 **What the 12 fixes are** (`verdicts.json` → `rows`): `Element` `Þáttur` → `Frumefni` (5 figures), `Molecular mass`

@@ -282,7 +282,7 @@ every arithmetic filter but remove only the second D reference → loads. Not th
 not the 25 MB.
 
 **Fix — `collapse_blend_lerp(svg_text) → (svg_text, report)`, called by `strip-text.py` directly after the
-`pdftocairo -svg` call (`strip-text.py:271`), as a read → edit → write of `artwork.svg`.**
+`pdftocairo -svg` call (`strip-text.py` `main()`, whose argv comes from `svgfix.pdftocairo_svg_argv`), as a read → edit → write of `artwork.svg`.**
 - For each add filter: verify R (a group carrying only `filter` + `mask`, whose filter is a two-input
   `feBlend` with the same subregion SR), L (a group carrying only `mask`, using D), Ma (a plain mask whose
   content ends in an opaque white rect covering SR) and Mb (the inverted Ma over the same extents).

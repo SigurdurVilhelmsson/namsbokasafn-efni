@@ -1,0 +1,23 @@
+# Final review code-1 (R22) exposure, 2026-09-15 - verbatim output of instruments/code1_exposure.py
+
+## POSITIVE CONTROL - CNX_Chem_18_07_Nitrogen (outside the 34), the reproduction the verifier used: scratch /home/siggi/dev/scratch-c140/final-review/verify-code/n/N (the verifier's figure-prepare of Ch_18 CNX_Chem_18_07_Nitrogen.eps in a git-archive copy of the branch HEAD)
+$ python3 -u instruments/code1_exposure.py .../verify-code/n/N
+HIT {"fig": "N", "key": "ammonium (NH4|+|)", "ftLines": 3, "visualA": 1, "tokenLines": 3}
+HIT {"fig": "N", "key": "nitrites (NO2|–", "ftLines": 2, "visualA": 1, "tokenLines": 1}
+HIT {"fig": "N", "key": "nitrates (NO3|–", "ftLines": 2, "visualA": 1, "tokenLines": 1}
+TOTAL {"figs": 1, "send": 11, "A": 3, "B": 2, "U": 3}
+
+## THE 34 BOUGHT FIGURES - the session's prepared directories /home/siggi/dev/scratch-c140/prep/figs/<b> (the same 34 names as books/efnafraedi-2e/figure-text/*.is.json; 183 = every send:true entry in their blocks.json, 0 arcs, no unmatched key)
+$ python3 -u instruments/code1_exposure.py /home/siggi/dev/scratch-c140/prep/figs/*/
+TOTAL {"figs": 34, "send": 183, "A": 0, "B": 0, "U": 0}
+
+## THE 34 RE-PREPARED with the composer committed as bc2ba79e (regen34.py --out /home/siggi/dev/scratch-c140/build/fr/regen; predict.py check --dir 34/34 on all eight keys)
+$ python3 -u instruments/code1_exposure.py /home/siggi/dev/scratch-c140/build/fr/regen/prep/*/
+TOTAL {"figs": 34, "send": 183, "A": 0, "B": 0, "U": 0}
+
+## THE SAME CONTROL, from the committed copy of its three inputs (reports/code1-control-nitrogen/, byte-exact from .../verify-code/n/N)
+$ python3 -u instruments/code1_exposure.py reports/code1-control-nitrogen
+HIT {"fig": "code1-control-nitrogen", "key": "ammonium (NH4|+|)", "ftLines": 3, "visualA": 1, "tokenLines": 3}
+HIT {"fig": "code1-control-nitrogen", "key": "nitrites (NO2|–", "ftLines": 2, "visualA": 1, "tokenLines": 1}
+HIT {"fig": "code1-control-nitrogen", "key": "nitrates (NO3|–", "ftLines": 2, "visualA": 1, "tokenLines": 1}
+TOTAL {"figs": 1, "send": 11, "A": 3, "B": 2, "U": 3}

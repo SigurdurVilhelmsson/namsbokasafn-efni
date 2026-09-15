@@ -6,6 +6,11 @@
 > the build this folder extends is `../2026-09-14-t23-build/`. If this folder disagrees with the spec or the
 > register, they win. **Cost of everything here: 0 ISK** — no MT call; `tools/figure-run.js` never run; nothing
 > under `books/` written; the repository was read-only apart from this folder.
+>
+> 📝 **Dated note — 2026-09-15, final review.** The banner above describes the folder as first committed (`6cf8ab89`).
+> `VERIFICATION.md` was added later (`13d577ed`) and covers Tasks 13–18, **including the 0-ISK
+> `tools/figure-run.js --stale --force` repair run that wrote the 34 `books/efnafraedi-2e/media/*_IS.svg` files**
+> (`38f60765`). The final review also added the rows marked *(added 2026-09-15)* in the table below.
 
 [USER] looked at the 34 figures recomposed at `433f9a2e` and did not accept them: spaces missing (`afBr₂`,
 `viðH₂O`), the etheneBr double bond left of centre, translated text bolder than the source, and a box label
@@ -73,6 +78,9 @@ From the spec's "Amendments — 2026-09-15" (the spec owns the wording):
 | `reports/head-predictions.json` | the same keys for the unchanged composer at `433f9a2e` (the HEAD side of the key diff) |
 | `reports/census-head.txt`, `reports/census-final.txt`, `reports/bond.txt` | verbatim instrument runs on the committed media and on the final build |
 | `reports/round1-result.json`, `reports/round2-result.json` | the two scratch rounds' structured results, byte-identical to `/home/siggi/dev/scratch-c140/fix2/wf-result.json` and `wf2-result.json` |
+| `VERIFICATION.md` | *(added 2026-09-15, `13d577ed`)* the frozen measurement of Tasks 13–18 against `PREDICTIONS.md`, including Task 18's repair run that wrote the 34 media |
+| `reports/task-13-16-report.md`, `reports/task-17-report.md`, `reports/task-18-report.md`, `reports/task-18-brief.md` | *(added 2026-09-15, final review)* the SDD task reports and the Task 18 brief `VERIFICATION.md` cites for detail, byte-exact copies of the gitignored ledger files |
+| `instruments/code1_exposure.py`, `reports/code1-exposure.txt`, `reports/code1-control-nitrogen/` | *(added 2026-09-15, final review)* the exposure measurement behind campaign register §C140 ㉑ — a one-line source label with a stacked charge or same-size superscript counted as several source lines: its positive control on `CNX_Chem_18_07_Nitrogen` (the control's `runs.json` / `blocks.json` / `meta.json`, byte-exact from the verifier's scratch prepare) and 0 of 183 `send:true` blocks on the 34 |
 
 ## The install rehearsal, in short
 
