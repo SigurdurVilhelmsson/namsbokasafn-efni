@@ -64,21 +64,21 @@ light line — and it is fail-closed: any failure leaves the artwork byte-identi
 
 Design, plan and frozen measurements are linked from §C140 ⑩. Nothing is restated here.
 
-## 4. State of PR [#472](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/472)
+## 4. PR [#472](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/472) — merged
 
-Open, **draft**, 3 commits, head `ede5eb81`, base `0895fd7e`, no conflict, 0 reviews.
-Lint ✅ · Security Audit ✅ · Documentation Check ✅ · **Tests ❌ on `main`'s own pre-existing baseline**
-— red on `main` at both `8e697c6a` and `0895fd7e`, two comments on the PR carry the run-to-run
-comparison. **Do not re-litigate it; do check whether the failing set MOVED** before assuming it is
-still the baseline.
+Merged 2026-09-15 on [USER]'s instruction, as a **merge commit** (the evidence cites individual
+SHAs, so a squash would break those citations). Lint ✅ · Security Audit ✅ · Documentation Check ✅
+· **Tests ❌ on `main`'s own pre-existing baseline** — red on `main` at both `8e697c6a` and
+`0895fd7e` before this branch existed, and the failing set was compared **by name**, not by count.
+Two comments on the PR carry that comparison.
 
-⚠️ **A regression happened on this branch and was fixed** (`4b25b8d9` → `ede5eb81`): the new driver
-step broke all 63 tests in `figure-run-paid.test.js`, because that file's fake prepare writes an
-`artwork.svg` and its harness threw on the unrecognised stage. **The cause of the miss is worth more
-than the bug**: `figure-run-free.test.js` was checked, found unchanged, and that was generalised to
-"the driver tests are fine" — and the difference between the two files is exactly what the new step
-keys on. On the local box the full suite actually runs, so **`npm test` and compare failing names**
-rather than sampling files.
+⚠️ **A regression happened on this branch and was fixed before the merge** (`4b25b8d9` →
+`ede5eb81`): the new driver step broke all 63 tests in `figure-run-paid.test.js`, because that
+file's fake prepare writes an `artwork.svg` and its harness threw on the unrecognised stage.
+**The cause of the miss is worth more than the bug**: `figure-run-free.test.js` was checked, found
+unchanged, and that was generalised to "the driver tests are fine" — and the difference between
+the two files is exactly what the new step keys on. On the local box the full suite actually runs,
+so **`npm test` and compare failing names** rather than sampling files.
 
 ## 5. Memory — apply this on your box
 

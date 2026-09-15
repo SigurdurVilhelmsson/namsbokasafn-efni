@@ -8,7 +8,7 @@
 
 📦 **HANDOFF, READ FIRST: [`docs/plans/2026-09-15-c140-c10-local-box-handoff.md`](2026-09-15-c140-c10-local-box-handoff.md)** — what the remote container could not do and why, the exact commands, the refusal control to watch for, the regression that happened on the branch and what caused the miss, and the memory lines to apply on that box.
 
-✅ **§C140 ⑩ IS BUILT AND WIRED — [USER] ruled Q1–Q4 on 2026-09-15** (heal ships gated · as a `figure-run.js` step between prepare and compose · publish the healed brain · a refused candidate gets a named warning). §C140 ⑩ owns the measurements. **Nothing under `books/` has been touched**; ⑩ no longer blocks the publication decision — only the run does. PR [#472](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/472) is open and draft.
+✅ **§C140 ⑩ IS BUILT AND WIRED — [USER] ruled Q1–Q4 on 2026-09-15** (heal ships gated · as a `figure-run.js` step between prepare and compose · publish the healed brain · a refused candidate gets a named warning). §C140 ⑩ owns the measurements. **Nothing under `books/` has been touched**; ⑩ no longer blocks the publication decision — only the run does. PR [#472](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/472) is **merged** (2026-09-15, [USER]'s instruction; merge commit, and the failing test set was compared **by name** with `main`'s first).
 
 ⚠️ **THE REMAINING WORK IS LOCAL-BOX-ONLY, AND THAT WAS MEASURED RATHER THAN ASSUMED:** a remote container for this repo has **no poppler, no OpenStax source PDFs, no `server/node_modules`** (so the full `npm test` dies on `better-sqlite3`) **and no project memory**. Figure preparation and the whole test suite are local-box work.
 
