@@ -31,6 +31,19 @@ afterEach(() => {
 
 const ARTWORK = 'original-artwork-bytes';
 
+/**
+ * What each faked child prints when it fails. Distinct per stage, so an assertion that finds one
+ * in a warning proves THAT stage's cause was carried — not some other stage's. The heal's is the
+ * real one from the 2026-09-15 local-box run, where a `pylibs/` without numpy failed the heal and
+ * the warning said only "exit 1".
+ */
+const STDERR = {
+  render: 'Error: browserType.launch: Executable does not exist',
+  census: 'Traceback (most recent call last):\n  census exploded',
+  gate: 'Traceback (most recent call last):\n  gate exploded',
+  heal: "Traceback (most recent call last):\nModuleNotFoundError: No module named 'numpy'",
+};
+
 function writeArtwork() {
   fs.writeFileSync(path.join(outDir, 'artwork.svg'), ARTWORK);
 }
@@ -44,7 +57,9 @@ function artworkNow() {
  * @param {object} plan
  * @param {string[]} plan.candidates mask ids the census reports
  * @param {string[]} plan.approved   mask ids the gate approves
- * @param {object}   plan.fail       force a stage to fail: {render, heal, gate, census}
+ * @param {object}   plan.fail       force a stage to fail: {render, heal, gatedHeal, gate, census}
+ *                                   — `heal` fails EVERY heal (so the counterfactual one first);
+ *                                   `gatedHeal` fails only the gated heal that follows a verdict
  */
 function fakeSpawn(plan = {}) {
   const calls = [];
@@ -52,13 +67,14 @@ function fakeSpawn(plan = {}) {
   const fn = ({ stage, argv }) => {
     calls.push({ stage, argv });
     if (stage === 'ring-render') {
-      if (plan.fail && plan.fail.render) return { status: 1, stdout: '', stderr: 'no browser' };
+      if (plan.fail && plan.fail.render) return { status: 1, stdout: '', stderr: STDERR.render };
       fs.writeFileSync(argv[argv.length - 4], 'png');
       return { status: 0, stdout: '', stderr: '' };
     }
     const sub = argv[1];
     if (sub === 'census') {
-      if (plan.fail && plan.fail.census) return { status: 1, stdout: 'not json', stderr: '' };
+      if (plan.fail && plan.fail.census)
+        return { status: 1, stdout: 'not json', stderr: STDERR.census };
       return {
         status: 0,
         stderr: '',
@@ -66,7 +82,7 @@ function fakeSpawn(plan = {}) {
       };
     }
     if (sub === 'gate') {
-      if (plan.fail && plan.fail.gate) return { status: 1, stdout: '', stderr: 'boom' };
+      if (plan.fail && plan.fail.gate) return { status: 1, stdout: '', stderr: STDERR.gate };
       fs.writeFileSync(
         argv[argv.indexOf('--report') + 1],
         JSON.stringify({ approved: plan.approved || [] })
@@ -74,7 +90,9 @@ function fakeSpawn(plan = {}) {
       return { status: 0, stdout: '', stderr: '' };
     }
     if (sub === 'heal') {
-      if (plan.fail && plan.fail.heal) return { status: 1, stdout: '', stderr: 'boom' };
+      const gated = argv.includes('--gate-report');
+      if (plan.fail && (plan.fail.heal || (plan.fail.gatedHeal && gated)))
+        return { status: 1, stdout: '', stderr: STDERR.heal };
       const out = argv[argv.indexOf('--out') + 1];
       fs.writeFileSync(out, argv.includes('--approve-all') ? 'all-healed' : 'gated-healed');
       return { status: 0, stdout: '', stderr: '' };
@@ -181,6 +199,43 @@ describe('applyRingGate — fail-closed', () => {
       expect(rec.rings ? rec.rings.approved : []).toEqual([]);
     });
   }
+
+  // 🔴 A FAIL-CLOSED WARNING THAT DROPS THE CHILD'S STDERR HIDES THE CAUSE. On 2026-09-15 a box
+  // whose `pylibs/` lacked numpy printed "could not build the counterfactual heal (exit 1)" and
+  // shipped brain unhealed with VERDICT ok; the ModuleNotFoundError was one stderr read away.
+  const causes = [
+    ['the renderer', { render: true }, STDERR.render],
+    ['the census', { census: true }, 'census exploded'],
+    ['the gate', { gate: true }, 'gate exploded'],
+    ['the counterfactual heal', { heal: true }, "No module named 'numpy'"],
+    ['the gated heal', { gatedHeal: true }, "No module named 'numpy'"],
+  ];
+  for (const [name, fail, cause] of causes) {
+    it(`names the child's own error when ${name} fails`, () => {
+      writeArtwork();
+      const spawn = fakeSpawn({ candidates: ['mask-2'], approved: ['mask-2'], fail });
+      const rec = applyRingGate({ basename: 'b' }, outDir, { spawn });
+      expect((rec.ringWarnings || []).join('\n')).toContain(cause);
+      expect(artworkNow()).toBe(ARTWORK);
+    });
+  }
+
+  it('leaves the artwork untouched and un-approves when only the gated heal fails', () => {
+    writeArtwork();
+    const spawn = fakeSpawn({
+      candidates: ['mask-2'],
+      approved: ['mask-2'],
+      fail: { gatedHeal: true },
+    });
+    const rec = applyRingGate({ basename: 'b' }, outDir, { spawn });
+    // It got as far as a verdict — the counterfactual heal and both renders succeeded …
+    expect(spawn.countOf('ring-render')).toBe(2);
+    expect(spawn.calls.filter((c) => c.argv.includes('--gate-report'))).toHaveLength(1);
+    // … and the failure after it still stands down.
+    expect((rec.ringWarnings || []).join(' ')).toContain('the gated heal failed');
+    expect(rec.rings.approved).toEqual([]);
+    expect(artworkNow()).toBe(ARTWORK);
+  });
 
   it('CONTROL: the same corpus with nothing forced to fail does heal', () => {
     writeArtwork();

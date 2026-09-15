@@ -847,6 +847,16 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
     rec.ringWarnings = rec.ringWarnings || [];
     rec.ringWarnings.push(msg);
   };
+  // 🔴 EVERY FAILURE BELOW CARRIES THE CHILD'S OWN STDERR. Fail-closed means the run goes on and
+  // exits 0, so this warning is the only place the cause can surface: on 2026-09-15 a `pylibs/`
+  // without numpy printed "could not build the counterfactual heal (exit 1)" and shipped the ring
+  // unhealed, with the ModuleNotFoundError discarded. Same 400-char tail as prepare's failure path.
+  const cause = (...results) => {
+    const tails = results
+      .filter((r) => r && r.status !== 0 && r.stderr && r.stderr.trim())
+      .map((r) => r.stderr.trim().slice(-400));
+    return tails.length ? ` — ${tails.join(' | ')}` : '';
+  };
   const runPy = (argv) =>
     spawn({
       stage: 'ring-gate',
@@ -862,7 +872,9 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   try {
     census = JSON.parse(censused.stdout)[0];
   } catch {
-    warn(`census did not return JSON (exit ${censused.status}); artwork left untouched`);
+    warn(
+      `census did not return JSON (exit ${censused.status}); artwork left untouched${cause(censused)}`
+    );
     return rec;
   }
   const candidates = (census && census.candidates) || [];
@@ -891,7 +903,9 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   const counterfactual = path.join(outDir, 'artwork.ring-all.svg');
   const healedAll = runPy(['heal', artwork, '--out', counterfactual, '--approve-all']);
   if (healedAll.status !== 0 || !existsSync(counterfactual)) {
-    warn(`could not build the counterfactual heal (exit ${healedAll.status}); left untouched`);
+    warn(
+      `could not build the counterfactual heal (exit ${healedAll.status}); left untouched${cause(healedAll)}`
+    );
     return rec;
   }
 
@@ -911,7 +925,7 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   if (rb.status !== 0 || ra.status !== 0 || !existsSync(before) || !existsSync(after)) {
     warn(
       `could not render the artwork (before ${rb.status}, after ${ra.status}), so ` +
-        `${candidates.length} ring candidate(s) were NOT judged; artwork left untouched`
+        `${candidates.length} ring candidate(s) were NOT judged; artwork left untouched${cause(rb, ra)}`
     );
     return rec;
   }
@@ -929,7 +943,9 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   ]);
   const report = readJson(reportPath);
   if (gated.status !== 0 || !report) {
-    warn(`the gate produced no verdict (exit ${gated.status}); artwork left untouched`);
+    warn(
+      `the gate produced no verdict (exit ${gated.status}); artwork left untouched${cause(gated)}`
+    );
     return rec;
   }
   const approved = report.approved || [];
@@ -950,7 +966,7 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   const healedPath = path.join(outDir, 'artwork.ring-healed.svg');
   const healed = runPy(['heal', artwork, '--out', healedPath, '--gate-report', reportPath]);
   if (healed.status !== 0 || !existsSync(healedPath)) {
-    warn(`the gated heal failed (exit ${healed.status}); artwork left untouched`);
+    warn(`the gated heal failed (exit ${healed.status}); artwork left untouched${cause(healed)}`);
     rec.rings.approved = [];
     return rec;
   }
