@@ -445,10 +445,18 @@ function defaultSpawn({ stage, command, argv, cwd, env, timeout }) {
     timeout,
     maxBuffer: 64 * 1024 * 1024,
   });
+  // `signal` rides along so a caller can name a kill (an OOM SIGKILL leaves status null and stderr
+  // empty — without it the only trace is "exit null").
+  const signal = result.signal || null;
   if (result.error) {
-    return { status: null, stdout: '', stderr: `${stage}: ${result.error.message}` };
+    return { status: null, signal, stdout: '', stderr: `${stage}: ${result.error.message}` };
   }
-  return { status: result.status, stdout: result.stdout || '', stderr: result.stderr || '' };
+  return {
+    status: result.status,
+    signal,
+    stdout: result.stdout || '',
+    stderr: result.stderr || '',
+  };
 }
 
 /** Read a JSON file, or null. Used where absence is a fact the caller must handle, not a crash. */
@@ -847,15 +855,47 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
     rec.ringWarnings = rec.ringWarnings || [];
     rec.ringWarnings.push(msg);
   };
-  // 🔴 EVERY FAILURE BELOW CARRIES THE CHILD'S OWN STDERR. Fail-closed means the run goes on and
+  // 🔴 EVERY FAILURE BELOW CARRIES THE CHILD'S OWN CAUSE. Fail-closed means the run goes on and
   // exits 0, so this warning is the only place the cause can surface: on 2026-09-15 a `pylibs/`
   // without numpy printed "could not build the counterfactual heal (exit 1)" and shipped the ring
-  // unhealed, with the ModuleNotFoundError discarded. Same 400-char tail as prepare's failure path.
+  // unhealed, with the ModuleNotFoundError discarded.
+  // ⚠️ HEAD AND TAIL, NOT A TAIL. Python prints its exception LAST; Node prints an uncaught error's
+  // message FIRST and then a stack and a `Node.js vNN` footer — a bare tail keeps one and loses
+  // the other. Stack frames, the footer, the run_main preamble, carets and box drawing are dropped
+  // first, and the rest is folded onto ONE line, because `summarise` prints one line per warning.
+  const oneLine = (text) => {
+    const kept = text
+      .split(/\r?\n/)
+      .map((l) =>
+        l
+          .replace(/[╔╗╚╝║═]+/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      )
+      .filter(
+        (l) =>
+          l &&
+          !/^at\s/.test(l) &&
+          !/^Node\.js v\d/.test(l) &&
+          !/^node:internal\//.test(l) &&
+          !/^triggerUncaughtException\($/.test(l) &&
+          !/^[~^]+$/.test(l) &&
+          !/^[{}]$/.test(l)
+      )
+      .join(' ⏎ ');
+    return kept.length <= 400 ? kept : `${kept.slice(0, 200)} … ${kept.slice(-190)}`;
+  };
   const cause = (...results) => {
-    const tails = results
-      .filter((r) => r && r.status !== 0 && r.stderr && r.stderr.trim())
-      .map((r) => r.stderr.trim().slice(-400));
-    return tails.length ? ` — ${tails.join(' | ')}` : '';
+    const parts = [];
+    for (const r of results) {
+      if (!r || r.status === 0) continue;
+      const bits = [];
+      if (r.signal) bits.push(`killed by ${r.signal}`);
+      if (r.stderr && r.stderr.trim()) bits.push(oneLine(r.stderr));
+      const said = bits.join(': ');
+      if (said && !parts.includes(said)) parts.push(said);
+    }
+    return parts.length ? ` — ${parts.join(' | ')}` : '';
   };
   const runPy = (argv) =>
     spawn({
