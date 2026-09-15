@@ -17,6 +17,10 @@ DECISION, and both fail silently in the two ways this repo keeps re-learning:
     and the per-side numbers are pinned loosely (the decision), not exactly (the render,
     which moves with the browser build).
 
+⚠️ Since the 2026-09-15 local-box run the committed brain SVG carries the HEAL, not the
+ring, so its corpus anchor asserts the healed state with a reachability witness; exocytosis
+remains the real-bytes carrier the detector must still fire on.
+
 The corpus anchors need the committed SVGs under books/.  They SKIP when those are
 absent, and the skip is counted and printed, because a silent skip would turn this file
 into the empty-result failure it exists to prevent.
@@ -347,12 +351,25 @@ def test_corpus_anchors():
     if not brain.exists() or not exo.exists():
         skip('corpus anchors', 'committed media SVGs not present')
         return
-    bc, _ = figrings.find_candidates(brain.read_text(encoding='utf-8'))
-    check('brain carries exactly one candidate', len(bc) == 1, f'got {len(bc)}')
-    if bc:
-        check('brain mask-2, 90x24, nothing refused',
-              bc[0].mask == 'mask-2' and bc[0].px == [90, 24] and bc[0].refuse is None,
-              repr(bc[0]))
+    # 🔴 BRAIN IS NO LONGER A CARRIER: THE DRIVER HEALED ITS RING (§C140 ⑩, local-box run
+    # 2026-09-15, evidence/2026-09-15-c10-local-run/). This anchor used to assert exactly one
+    # candidate, which was a COUNTDOWN — true only until the fix it gates was first used. So it
+    # now asserts the heal, and the zero is paired with a WITNESS: at an unbounded threshold the
+    # walker must still reach mask-2, or "no candidate" would read the same as a walker that no
+    # longer finds the mask at all. The visible-ring positive on real bytes lives on in the
+    # planted fixture above and in git history (38f60765); it is not read here, because a
+    # history lookup is vacuous on a depth-1 clone.
+    brain_text = brain.read_text(encoding='utf-8')
+    bc, _ = figrings.find_candidates(brain_text)
+    check('brain carries no candidate — its ring was healed', len(bc) == 0,
+          f'got {[c.mask for c in bc]}')
+    reach, _ = figrings.find_candidates(brain_text, ring_bytes=float('-inf'))
+    check('WITNESS: the walker still reaches brain mask-2 (source-29, 90x24, nothing refused)',
+          [(c.mask, c.image, c.px, c.refuse) for c in reach] == [('mask-2', 'source-29', [90, 24], None)],
+          repr(reach))
+    if reach:
+        check('and every side of mask-2 is now below the byte threshold',
+              max(reach[0].ring.values()) < figrings.RING_BYTES, repr(reach[0].ring))
 
     ec, _ = figrings.find_candidates(exo.read_text(encoding='utf-8'))
     check('exocytosis carries eight candidates — reachable only through feImage',

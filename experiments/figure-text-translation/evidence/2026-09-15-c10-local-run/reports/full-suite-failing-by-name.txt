@@ -1,0 +1,10 @@
+# Full root `npm test` on this branch (driver stderr change + healed brain in tree), 2026-09-15
+# vitest: Test Files  13 failed | 394 passed (407) · Tests  36 failed | 6478 passed | 1 skipped (6515) · exit 1
+# baseline: evidence/2026-09-14-t23-build/reports/js-baseline-failing-by-name.txt
+# both normalised to 'file :: describe test'; the 4 'timeout' strings in the log are execSync source excerpts, not timed-out tests
+baseline 36  now 36  files 13
+only-now:
+only-baseline:
+(end)
+CONTROL planted name appears as only-now:
+tools/__tests__/zz.test.js :: planted

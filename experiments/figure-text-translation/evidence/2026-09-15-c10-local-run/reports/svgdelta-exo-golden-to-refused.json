@@ -1,0 +1,20 @@
+{
+ "a": "exo.golden.svg",
+ "b": "exo.P3prime.svg",
+ "byteIdentical": false,
+ "fonts": [
+  {
+   "face": "FigIS/400/normal",
+   "verdict": "head.modified-only",
+   "tables": []
+  }
+ ],
+ "images": {
+  "differ": [],
+  "onlyA": [],
+  "onlyB": [],
+  "countA": 37,
+  "countB": 37
+ },
+ "remainderIdentical": true
+}

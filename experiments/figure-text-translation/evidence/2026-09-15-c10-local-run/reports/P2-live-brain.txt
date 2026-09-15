@@ -1,0 +1,21 @@
+LIVE RUN
+efnafraedi-2e ch03: 1 figure(s) across 5 module(s)
+
+     1  translated
+     1  = enumerated
+
+  de-hashed to stripped-name artwork, LOOKUP ONLY (1):
+    CNX_Chem_03_01_brain-ec0b  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_03/Source_File/CNX_Chem_03_01_brain.pdf
+  figure-prepare.py warnings — 2 across 1 figure(s), its own !! lines:
+    CNX_Chem_03_01_brain-ec0b: subset font PAGE/TT0; subset font PAGE/TT1
+  soft-mask ring gate (§C140 ⑩) — 1 figure(s) carry a candidate; 0 healed, 0 refused:
+    CNX_Chem_03_01_brain-ec0b: could not build the counterfactual heal (exit 1); left untouched
+
+  MT spawned for 0 figure(s) — only a figure with NO sidecar is spendable
+  published 1 figure(s) into /home/siggi/dev/repos/namsbokasafn-efni/books/efnafraedi-2e/media/
+
+VERDICT ok
+
+real	0m3.939s
+user	0m3.384s
+sys	0m0.445s

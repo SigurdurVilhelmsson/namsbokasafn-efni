@@ -1,0 +1,25 @@
+{
+ "a": "brain.golden.svg",
+ "b": "brain.P2.svg",
+ "byteIdentical": false,
+ "fonts": [
+  {
+   "face": "FigIS/400/normal",
+   "verdict": "head.modified-only",
+   "tables": []
+  },
+  {
+   "face": "FigIS/700/normal",
+   "verdict": "head.modified-only",
+   "tables": []
+  }
+ ],
+ "images": {
+  "differ": [],
+  "onlyA": [],
+  "onlyB": [],
+  "countA": 4,
+  "countB": 4
+ },
+ "remainderIdentical": true
+}
