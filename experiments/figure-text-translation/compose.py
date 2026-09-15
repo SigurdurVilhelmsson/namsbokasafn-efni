@@ -41,6 +41,7 @@ import figlayout as FL
 import numloc
 from PIL import Image
 from blockkey import block_key, block_english
+from figcolour import fill_rgb
 
 DPI = 200.0
 S = DPI / 72.0
@@ -160,9 +161,12 @@ def setfont_st(run, size, st):
 
 
 # §C140 ③: ONE width function, in LINEAR metrics. A separate measuring context whose font options
-# switch hint metrics OFF: its advances equal the PDF's own (148.52 vs 148.53 measured) and a
-# browser's unkerned shaping of the published SVG, where the drawing context's 200-dpi hinted
-# advances flipped two fit decisions and left a right-flush `Mólmassi` 0.93 pt short of its edge.
+# switch hint metrics OFF: its advances equal the PDF's own (148.52 vs 148.53 measured), where the
+# drawing context's 200-dpi hinted advances flipped two fit decisions and left a right-flush
+# `Mólmassi` 0.93 pt short of its edge. They equal a BROWSER's only because svgout.write_svg sets
+# text-rendering="geometricPrecision" on the text group (without it Chromium's default render was
+# up to 8.97 pt off on the 34) - and even then Chromium applies the font's kern table, which cairo
+# does not: 28 of 647 segments on the 34 draw up to 0.99 pt short, which can only widen a gap.
 # The DRAWING context is untouched, so kept blocks' raster does not change.
 _msurf = cairo.ImageSurface(cairo.FORMAT_A8, 8, 8)
 mctx = cairo.Context(_msurf)
@@ -206,10 +210,12 @@ def seg_width(chars, run, size):
 
 
 def cmyk(f):
-    if not f:
-        return (0, 0, 0)
-    _, c, m, y, k = f
-    return ((1 - c) * (1 - k), (1 - m) * (1 - k), (1 - y) * (1 - k))
+    """A run's `fill` -> (r, g, b), as pdftocairo draws that colour under the artwork.
+
+    The ONE conversion is `figcolour.fill_rgb` ([USER] ruling (C)): DeviceCMYK through poppler's
+    table (K=1 is #231f20, like the artwork's strokes), DeviceRGB and DeviceGray exact. The name
+    is kept from the naive (1-c)(1-k) map it replaced, so the call sites did not move."""
+    return fill_rgb(f)
 
 
 def dev(x, y):

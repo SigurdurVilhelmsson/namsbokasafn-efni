@@ -294,11 +294,19 @@ check('6d CONTROL — the constant-1.0-em class is NOT silently "repaired" too',
       f'advances are positive and plausible, so no bound can tell them from real ones)')
 
 
-# ── 7. `fill` IS A 5-TUPLE compose.cmyk() CAN UNPACK ────────────────────────────────
-print('\n[7] fill unpacks in compose.cmyk')
-check('7a PIN — compose.cmyk still unpacks exactly five values',
-      '_, c, m, y, k = f' in COMPOSE, 'else the arity asserted below is wrong')
-bad, seen_fills = [], 0
+# ── 7. `fill` IS A TAGGED TUPLE figcolour.fill_rgb() DRAWS ─────────────────────────────
+# 7a/7b used to pin `('cmyk', c, m, y, k)` for EVERY fill, because `_fill` folded DeviceRGB and
+# DeviceGray into CMYK - an exact round trip only through the naive inverse compose.cmyk then
+# carried. [USER] ruling (C) 2026-09-15 draws text as poppler does: CMYK through its table, RGB
+# and Gray exact. The fold stopped being lossless, so the space is now carried. The premise these
+# two cases pinned is what changed; what they protect (a fill the composer can always draw) is not.
+import figcolour  # noqa: E402
+print('\n[7] fill is a tagged tuple that compose.cmyk draws')
+check('7a PIN — compose.cmyk draws through figcolour.fill_rgb, the one conversion',
+      'from figcolour import fill_rgb' in COMPOSE and 'return fill_rgb(f)' in COMPOSE,
+      'else the shapes asserted below are not the ones the composer accepts')
+ARITY = {'cmyk': 5, 'rgb': 4, 'gray': 2}
+bad, seen_fills, seen_spaces = [], 0, collections.Counter()
 for name in JOIN_FIGURES + [EPS_FIG]:
     runs, meta, _ = read_figure(name)
     for run in runs:
@@ -306,16 +314,21 @@ for name in JOIN_FIGURES + [EPS_FIG]:
         if f is None:
             continue
         seen_fills += 1
-        try:
-            _, c, m, y, k = f              # compose.cmyk's own unpack, verbatim
-        except (ValueError, TypeError):
+        if (not isinstance(f, (list, tuple)) or not f or ARITY.get(f[0]) != len(f)
+                or not all(isinstance(v, (int, float)) for v in f[1:])):
             bad.append((name, f))
             continue
-        if f[0] != 'cmyk' or not all(isinstance(v, (int, float)) for v in (c, m, y, k)):
+        seen_spaces[f[0]] += 1
+        try:
+            figcolour.fill_rgb(f)
+        except (ValueError, TypeError):
             bad.append((name, f))
-check('7b every non-None fill is ("cmyk", c, m, y, k)',
+check('7b every non-None fill is ("cmyk",c,m,y,k), ("rgb",r,g,b) or ("gray",g), and draws',
       not bad and seen_fills > 0,
       f'{seen_fills} fills checked (non-vacuity: must be > 0); bad {bad[:3]}')
+check('7b2 a DeviceGray/RGB glyph in this population keeps its OWN space - not folded into cmyk',
+      seen_spaces['gray'] + seen_spaces['rgb'] > 0 and seen_spaces['cmyk'] > 0,
+      f'{dict(seen_spaces)} (CNX_Chem_01_02_decomp draws DeviceGray text; MUST be > 0 beside cmyk)')
 
 # 7c is the VALUE assertion 7b cannot make. 7b is a SHAPE test — arity and types — over a
 # population (JOIN_FIGURES + EPS_FIG) that contains none of the three figures below, so a
@@ -333,11 +346,9 @@ SEPARATION_FIGURES = ['CNX_Chem_14_07_titration2', 'CNX_Chem_18_07_Nitrogen',
 
 
 def _rgb(f):
-    """compose.cmyk's body, verbatim — the consumer that decides what a reader SEES."""
-    if not f:
-        return (0, 0, 0)
-    _, c, m, y, k = f
-    return ((1 - c) * (1 - k), (1 - m) * (1 - k), (1 - y) * (1 - k))
+    """What compose.cmyk draws (7a pins that it IS this) — the consumer that decides what a
+    reader SEES."""
+    return tuple(figcolour.fill_rgb(f))
 
 
 white, unknown_seen, black_control = [], 0, 0

@@ -72,6 +72,7 @@ sys.dont_write_bytecode = True
 
 import cairo                                                  # noqa: E402
 import figtext as FT                                          # noqa: E402
+import figcolour                                              # noqa: E402
 import figcontainers as FC                                    # noqa: E402
 from blockkey import block_key, block_lines, block_english    # noqa: E402
 from fontTools.ttLib import TTFont                            # noqa: E402
@@ -398,11 +399,29 @@ REFLOW = 'overflow' in rep1           # ③ (commit 4) adds `overflow` to the re
 
 # ── controls ────────────────────────────────────────────────────────────────────────────────
 dec_golden = [raw for raw in golden['kept'] if f'>{K_DEC}<' in raw]
+# [USER] ruling (C) 2026-09-15 moves ONE attribute, and it must move EXACTLY there: the golden was captured
+# under the naive (1-c)(1-k) text colour, which drew the planted FILL (K=1) #000000; poppler - and the
+# artwork's own strokes - draw it #231f20 (test_figcolour.py 1a). The expected attribute is derived from
+# figcolour.fill_rgb(FILL) with svgout.write_svg's own rounding, and it must DIFFER from the golden's naive
+# one - so a composer, or a figcolour, that went back to the naive map fails here.
+KEPT_FILL_NOW = 'fill="#%02x%02x%02x"' % tuple(round(v * 255) for v in figcolour.fill_rgb(FILL))
+KEPT_FILL_GOLD = sorted({f for raw in golden['kept'] for f in re.findall(r'fill="#[0-9a-f]{6}"', raw)})
+
+
+def kept_fill(raw):
+    return raw.replace(KEPT_FILL_GOLD[0], KEPT_FILL_NOW) if raw.count(KEPT_FILL_GOLD[0]) == 1 else None
+
+
 check('G1 CONTROL the kept population is byte-identical to the unchanged composer - except the '
-      'planted decimal, which may differ ONLY by 26.98 -> 26,98',
-      len(dec_golden) == 1 and len(kept1) == len(golden['kept'])
-      and all(now == old or (old == dec_golden[0] and now == old.replace('>26.98<', '>26,98<'))
-              for now, old in zip(kept1, golden['kept'])), f'now {kept1!r}')
+      'planted decimal, which may differ ONLY by 26.98 -> 26,98, and ruling (C)\'s fill, which is exactly '
+      'figcolour.fill_rgb of the planted fill',
+      len(dec_golden) == 1 and len(kept1) == len(golden['kept']) and len(KEPT_FILL_GOLD) == 1
+      and KEPT_FILL_NOW != KEPT_FILL_GOLD[0]
+      and all(kept_fill(old) is not None
+              and (now == kept_fill(old)
+                   or (old == dec_golden[0] and now == kept_fill(old).replace('>26.98<', '>26,98<')))
+              for now, old in zip(kept1, golden['kept'])),
+      f'expected {KEPT_FILL_NOW} (golden {KEPT_FILL_GOLD}), now {kept1!r}')
 if not REFLOW:
     check('G2 CONTROL (before ③) the translated label with nothing to style is byte-identical to the '
           'unchanged composer', current['plain_label'] == golden['plain_label'],
