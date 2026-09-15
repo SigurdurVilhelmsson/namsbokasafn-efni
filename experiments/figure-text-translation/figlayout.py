@@ -5,10 +5,11 @@
 PURE. No cairo, no pdfplumber, no file IO: `compose.py` measures (through `width`) and draws the result, so every
 rule below is unit-tested with a fake width function (test_figlayout.py). Ported from the verified r2 prototype
 (`r2v5.layout_block`, evidence/2026-09-13-t23/reports/r2-build.md) and extended with R9 short-token binding and a
-box/cell HEIGHT budget. With both extensions switched off (the private `_r9=False, _height=False`) it reproduces the
-prototype's (lines, size, anchor, step) on the 176 layout blocks of the 34 bought figures (equiv_figlayout.py).
-That equivalence is MEASURED on those 176, not guaranteed by construction: the floor appended to an off-grid size
-ladder and the box/cell line-count-before-size order have no switch, and both differ from the prototype elsewhere.
+box/cell HEIGHT budget, and then with the (A)+(E) line-count rules of [USER]'s 2026-09-15 ruling. With all three
+switched off (the private `_r9=False, _height=False, _ae=False`) it reproduces the prototype's (lines, size,
+anchor, step) on the 176 layout blocks of the 34 bought figures (equiv_figlayout.py). That equivalence is MEASURED
+on those 176, not guaranteed by construction: the floor appended to an off-grid size ladder and the box/cell
+line-count-before-size order have no switch, and both differ from the prototype elsewhere.
 
 INPUTS
   words      [(word, styles)] from figscripts.words - `styles` is a per-character list of SourceStyle|None.
@@ -21,7 +22,7 @@ INPUTS
   container  figcontainers.container_for(...) - 'box' | 'cell' | 'open', in the block's own along/normal frame.
   cues       {'n_src', 'sz0', 'starts', 'ends', 'projs'} per SOURCE line (adv-based in production).
 
-RULES (design spec §4; rulings R2-R5, R9)
+RULES (design spec §4; rulings R2-R5, R9; [USER] 2026-09-15 (A) and (E))
   sizes      sz0, sz0-0.25, ... down to floor_eff = min(floor, sz0) inclusive (1e-9 slack); when sz0 is off the
              0.25 grid the grid misses the floor, so floor_eff is appended as the last step. A label the source
              set below the floor is never enlarged and never shrunk.
@@ -44,11 +45,26 @@ RULES (design spec §4; rulings R2-R5, R9)
              each from sz0 down. A (count, size) fits when its partition meets the width budget AND its glyph box
              meets the height budget.
              HEIGHT met by no (count, size): the count chosen by width alone is kept and shrunk toward the floor
-             until its glyph box fits - which never happens above the floor (see the code) - and the overhang is
-             NAMED: step 'floor-overflow', axis 'height'.
+             until its glyph box fits - which never happens above the floor (see the code) - and the overhang of
+             the lines actually drawn (after (E)) is NAMED: step 'floor-overflow', axis 'height'.
              WIDTH met at no size: at the floor, partition with budget max(width budget, widest word) and NAME the
              widest word: step 'floor-overflow', axis 'width'. A label that ALSO misses height there carries the
              height overhang on the same entry (heightNeedPt, heightBudgetPt) - never heightFit alone.
+  (E)        box/cell, every branch above: a line that does not shorten the longest line is never kept - n lines
+             are rejected at a size where the min-max partition of n-1 lines is no wider than that of n (+EPS).
+             In the fitting search it is a test on the COUNT: a count rejected at its largest fitting size is
+             skipped and the next count is tried from sz0 down, so the size is the one the order above picks for
+             the count that survives, never one only the rejected count needed. In the floor-overflow branches
+             the size is already the floor, and n is stepped down there. The width budget stays met and the glyph
+             box only gets shorter.
+  (A)        box/cell: a SYMBOL (R9's notion, `is_symbol`) that ends the label may not stand alone on the LAST line.
+             When the last of >= 2 words is a symbol, the whole box/cell selection above - counts, sizes, (E) - is
+             run first with the cut before the last word forbidden; it is used when it yields step 'fit' (width AND
+             height met at some size >= floor), which can mean fewer lines or a smaller size than without (A) (line
+             count is still decided before size). Otherwise the label is laid out exactly as without (A). The final
+             partition prefers, in order: R9 + (A), (A), R9, unconstrained - each only if it meets the step's budget.
+             Open labels are not touched by (A) or (E): the ruling is for boxes and cells, and 0 of 84 open blocks
+             on the 34 bought figures change under either (linebreak root-cause census, 2026-09-15).
   open       n_t = min(n_src, words).
              (i)   n_t at sz0 within the free width from the anchor - pad
              (ii)  n_t at sz0 within (FR-FL) - 2 pad, anchor displaced minimally
@@ -78,7 +94,8 @@ OUTPUT  Layout dict:
                              'axis'} (box/cell only).
   additive, for the report: widths (per drawn line, pt), budget (the width budget the partition was held to),
             bound (True when the R9-constrained partition fit the step's budget and was therefore taken - it may
-            EQUAL the unconstrained one; False when no binding-honouring partition exists or it did not fit),
+            EQUAL the unconstrained one; False when no binding-honouring partition exists, it did not fit, or an
+            (A)-only partition was preferred to it),
             heightFit (box/cell: whether the DRAWN line
             count and size meet the height budget; None for open or when the height budget is switched off), cls
 """
@@ -116,6 +133,12 @@ def size_steps(sz0, floor):
     return out
 
 
+def is_symbol(w):
+    """R9's and A's one notion of a SYMBOL: a word of 1..SHORT_TOKEN characters that is not lowercase alphabetic
+    (`A`, `Cu`, `Ar`, `K`, `2`, `H2` are symbols; `af`, `og`, `á`, `í` are words)."""
+    return len(w) <= SHORT_TOKEN and not (w.isalpha() and w.islower())
+
+
 class _Partition:
     """Min-max balanced partitions of `words` into n lines, per size, optionally honouring R9. Rows are computed
     lazily and every width is memoised on (i, j, line index, size) - one decide() call may ask for many sizes."""
@@ -147,11 +170,15 @@ class _Partition:
         may not). k is the index of the next line's first word; k == 0 is the start of the text, never a cut."""
         if k == 0:
             return True
-        w = self.words[k - 1][0]
-        return len(w) > SHORT_TOKEN or (w.isalpha() and w.islower())
+        return not is_symbol(self.words[k - 1][0])
 
-    def _row(self, size, n, bound):
-        rows = self._rows.setdefault((size, bound), [None])
+    def lone_tail(self):
+        """(A) True when the LAST word is a symbol (is_symbol) that a cut could leave alone on the last line."""
+        return self.W >= 2 and is_symbol(self.words[-1][0])
+
+    def _row(self, size, n, bound, tail=False):
+        """`tail` (A): forbid the cut directly before the last word - callers pass it only when lone_tail()."""
+        rows = self._rows.setdefault((size, bound, tail), [None])
         W = self.W
         INF = float('inf')
         if len(rows) == 1:
@@ -167,6 +194,8 @@ class _Partition:
                         continue
                     if bound and not self.cut_allowed(k):
                         continue
+                    if tail and k == W - 1:
+                        continue
                     v = max(prev[k][0], self.wd(k, j, m - 1, size))
                     if v < bv - 1e-9:         # earliest k wins a near-tie (the prototype's order)
                         bv, bk = v, k
@@ -174,11 +203,11 @@ class _Partition:
             rows.append(row)
         return rows
 
-    def minmax(self, size, n, bound=False):
-        return self._row(size, n, bound)[n][self.W][0]
+    def minmax(self, size, n, bound=False, tail=False):
+        return self._row(size, n, bound, tail)[n][self.W][0]
 
-    def cut(self, size, n, bound=False):
-        rows = self._row(size, n, bound)
+    def cut(self, size, n, bound=False, tail=False):
+        rows = self._row(size, n, bound, tail)
         spans = []
         j, m = self.W, n
         while m > 0:
@@ -200,8 +229,8 @@ class _Partition:
         return best
 
 
-def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _height=True):
-    """-> Layout dict (see the module docstring). `_r9` / `_height` exist ONLY for the prototype-equivalence
+def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _height=True, _ae=True):
+    """-> Layout dict (see the module docstring). `_r9` / `_height` / `_ae` exist ONLY for the prototype-equivalence
     harness and the RED-first runs; production never passes them."""
     W = len(words)
     if W == 0:
@@ -230,13 +259,13 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
         """Height of the glyph box of n lines drawn at `size` (the lead stays sz0 * LEAD)."""
         return (n - 1) * lead + (ASC + DESC) * size
 
-    def choose(size, budget, hb=None):
+    def choose(size, budget, hb=None, tail=False):
         """The line count closest to the source (tie -> fewer) whose min-max partition fits `budget` and, when
         `hb` is given, whose glyph box fits the height budget; None if no count fits."""
         for n in sorted(range(1, W + 1), key=lambda n: (abs(n - n_src), n)):
             if hb is not None and (n - 1) * lead + (ASC + DESC) * size > hb + EPS:
                 continue
-            if P.minmax(size, n) <= budget + EPS:
+            if P.minmax(size, n, tail=tail) <= budget + EPS:
                 return n
         return None
 
@@ -244,6 +273,8 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
     height_fit = None
     use_disp = False
     grow = None
+    # (A) is live only for a box/cell label whose last word is a symbol.
+    lone = bool(_ae) and cls in ('box', 'cell') and P.lone_tail()
 
     if cls in ('box', 'cell'):
         L, R, D, U = container['L'], container['R'], container['D'], container['U']
@@ -253,45 +284,86 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
         # tried from sz0 down to the floor before any count n > n_src (closest first), each from sz0 down.
         counts = sorted(range(1, W + 1), key=lambda n: (n > n_src, abs(n - n_src), n))
 
-        def first_fit(h):
-            """(n, size): the first count in `counts` order, at the largest size where its min-max partition meets
-            the width budget and - when `h` is given - its glyph box meets `h`; (None, None) if there is none."""
-            for n_try in counts:
-                for s_try in sizes:
-                    if h is not None and glyph_h(n_try, s_try) > h + EPS:
-                        continue
-                    if P.minmax(s_try, n_try) <= budget + EPS:
-                        return n_try, s_try
-            return None, None
+        def select(tl):
+            """(n, s, step, bud, overflow): the box/cell count and size, with partitions constrained by (A) when
+            `tl`, and (E) deciding which counts are admissible."""
 
-        n, s = first_fit(hb)
-        step = 'fit'
-        bud = budget
-        if n is None and hb is not None:      # no (count, size) meets width AND height: width decides the count
-            n, s = first_fit(None)
-            if n is not None:
-                # Keep that count and shrink toward the floor until its glyph box meets the height budget. It never
-                # stops above the floor: first_fit(hb) tried this count at every size, the count meets width at
-                # this size and at every smaller one, and a glyph box only shrinks with size - so it meets height
-                # at no size at all, and the overhang is NAMED (R5), never silent.
-                for s_try in sizes[sizes.index(s):]:
-                    s = s_try
-                    if glyph_h(n, s) <= hb + EPS:
-                        break
-                if glyph_h(n, s) > hb + EPS:
-                    step = 'floor-overflow'
-                    overflow = {'word': None, 'needPt': glyph_h(n, s), 'budgetPt': hb, 'sizePt': s,
-                                'axis': 'height'}
-        if n is None:
-            s = sizes[-1]
-            ww, wword = P.widest_word(s)
-            bud = max(budget, ww)
-            n = choose(s, bud, hb)
-            if n is None and hb is not None:
-                n = choose(s, bud)
-            step = 'floor-overflow'
-            if ww > budget + EPS:
-                overflow = {'word': wword, 'needPt': ww, 'budgetPt': budget, 'sizePt': s, 'axis': 'width'}
+            def useless(n, s):
+                """(E) [USER] 2026-09-15: the n-th line shortens nothing - n-1 lines are no wider than n at `s`."""
+                return bool(_ae) and n > 1 and P.minmax(s, n - 1, tail=tl) <= P.minmax(s, n, tail=tl) + EPS
+
+            def first_fit(h):
+                """(n, size): the first count in `counts` order, at the largest size where its min-max partition
+                meets the width budget and - when `h` is given - its glyph box meets `h`; (None, None) if none.
+                (E) is a test on the COUNT, not a pass after it: a count whose largest fitting size carries a line
+                that shortens nothing is skipped, and the next count is tried from sz0 down - so a size that only
+                the rejected count needed is never kept (R17). Nothing else moves: when n fits at s and is rejected,
+                n-1 fits at s too (same longest line, shorter glyph box), and every count <= n_src precedes every
+                count > n_src in `counts`, so the skip walks n_src, n_src-1, ... as the old step-down did and only
+                the size of the surviving count changes - never down. A first-fitting count > n_src is never
+                rejected: n-1 would fit at s, and it was tried before n."""
+                for n_try in counts:
+                    for s_try in sizes:
+                        if h is not None and glyph_h(n_try, s_try) > h + EPS:
+                            continue
+                        if P.minmax(s_try, n_try, tail=tl) <= budget + EPS:
+                            if useless(n_try, s_try):
+                                break
+                            return n_try, s_try
+                return None, None
+
+            def fewer(n, s):
+                """(E) at a size a floor-overflow branch has already pinned to the floor: step the count down while
+                the n-th line shortens nothing. The size cannot move, so no rejected count can influence it; the
+                width budget stays met (the longest line does not grow) and the glyph box only gets shorter."""
+                while useless(n, s):
+                    n -= 1
+                return n
+
+            ov = None
+            n, s = first_fit(hb)
+            st = 'fit'
+            bd = budget
+            if n is None and hb is not None:  # no (count, size) meets width AND height: width decides the count
+                n, s = first_fit(None)
+                if n is not None:
+                    # Keep that count and shrink toward the floor until its glyph box meets the height budget. It
+                    # never stops above the floor: first_fit(hb) tried this count at every size, the count meets
+                    # width at this size and at every smaller one, and a glyph box only shrinks with size - so it
+                    # meets height at no size at all, and the overhang is NAMED (R5), never silent. (E) chose the
+                    # count inside first_fit; `fewer` re-applies it at the floor the size was shrunk to (a no-op
+                    # while widths scale with size). Fewer lines never meet height either (first_fit(hb) tried every
+                    # count), so the overhang stays, measured on the lines actually drawn.
+                    for s_try in sizes[sizes.index(s):]:
+                        s = s_try
+                        if glyph_h(n, s) <= hb + EPS:
+                            break
+                    n = fewer(n, s)
+                    if glyph_h(n, s) > hb + EPS:
+                        st = 'floor-overflow'
+                        ov = {'word': None, 'needPt': glyph_h(n, s), 'budgetPt': hb, 'sizePt': s,
+                              'axis': 'height'}
+            if n is None:
+                s = sizes[-1]
+                ww, wword = P.widest_word(s)
+                bd = max(budget, ww)
+                n = choose(s, bd, hb, tl)
+                if n is None and hb is not None:
+                    n = choose(s, bd, None, tl)
+                if n is not None:
+                    n = fewer(n, s)
+                st = 'floor-overflow'
+                if ww > budget + EPS:
+                    ov = {'word': wword, 'needPt': ww, 'budgetPt': budget, 'sizePt': s, 'axis': 'width'}
+            return n, s, st, bd, ov
+
+        # (A) [USER] 2026-09-15: a lone SYMBOL may not stand alone on the last line. Every (count, size) is tried
+        # under that constraint first, in the same order; only when none of them FITS (width and height) is the
+        # label laid out exactly as without (A). A count of 1 always honours it, so this can mean fewer lines - or a
+        # smaller size, when the binding count fits only shrunk: line count is still decided before size.
+        n, s, step, bud, overflow = select(True) if lone else (None, None, None, None, None)
+        if n is None or step != 'fit':
+            n, s, step, bud, overflow = select(False)
         assert n is not None, 'unreachable: one word per line fits max(budget, widest word)'
         if hb is not None:
             height_fit = glyph_h(n, s) <= hb + EPS
@@ -360,8 +432,19 @@ def decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _heig
             top = (max(projs) + min(projs)) / 2 + (n - 1) / 2.0 * lead
         budget = bud
 
-    bound = bool(_r9) and P.minmax(s, n, bound=True) <= bud + EPS
-    spans = P.cut(s, n, bound=bound)
+    # The final partition at the chosen (n, s): R9 when it fits; for a box/cell label ending in a symbol, (A) first -
+    # it is guaranteed to fit when the count was chosen under it, and is taken in an overflow path whenever it fits
+    # the budget that path holds the lines to.
+    modes = [(True, True), (False, True)] if lone else []
+    modes += [(True, False), (False, False)]
+    for b_try, t_try in modes:
+        if (b_try and not _r9) or P.minmax(s, n, bound=b_try, tail=t_try) > bud + EPS:
+            continue
+        bound, tail = b_try, t_try
+        break
+    else:
+        bound, tail = False, False
+    spans = P.cut(s, n, bound=bound, tail=tail)
     lines = [P.chars(a, c) for a, c in spans]
     widths = [width(lc, s, j) for j, lc in enumerate(lines)]
     x0 = [{'left': anchor, 'right': anchor - w, 'center': anchor - w / 2}[align] for w in widths]
