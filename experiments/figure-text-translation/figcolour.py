@@ -65,7 +65,10 @@ def fill_rgb(f):
     """A run's `fill` -> (r, g, b) in 0..1, as pdftocairo draws that colour.
 
     None (a refused colour space) is BLACK - visible, never white; see readlayer._fill and
-    test_readlayer.py CASE 7c. DeviceRGB and DeviceGray keep their exact values.
+    test_readlayer.py CASE 7c. DeviceRGB and DeviceGray keep their exact values, CLIPPED to
+    [0, 1] as poppler's GfxDeviceRGBColorSpace / GfxDeviceGrayColorSpace clip them (an
+    out-of-range operand otherwise reached svgout as an invalid `#132-1a80`; 0 corpus runs carry
+    one - test_figcolour.py 1e/1i).
     """
     if not f:
         return (0, 0, 0)
@@ -75,8 +78,9 @@ def fill_rgb(f):
         return poppler_cmyk_rgb(c, m, y, k)
     if space == 'rgb':
         _, r, g, b = f
-        return (r, g, b)
+        return (_clip01(r), _clip01(g), _clip01(b))
     if space == 'gray':
         _, v = f
+        v = _clip01(v)
         return (v, v, v)
     raise ValueError(f'unknown fill colour space {space!r} in {f!r}')

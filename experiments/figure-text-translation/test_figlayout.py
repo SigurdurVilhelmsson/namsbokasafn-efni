@@ -179,6 +179,13 @@ check('box floor-overflow: still centred (overhangs both sides equally)',
 check('[F2] box floor-overflow is on the width axis', _o.get('axis') == 'width', str(_o))
 check('[F4] box floor-overflow carries linePt = the widest drawn line (== needPt 70.5: one word, one line)',
       near(_o.get('linePt', 0), 70.5), str(_o))
+# R4's floor is the PRODUCTION DEFAULT: compose.py calls FLY.decide without `floor`, and this file's `decide` wrapper
+# always passes floor=7.5 - so a changed default (measured: 7.0) left every case above green (final review). The same
+# floor-overflow case, straight through FLY.decide with no `floor` (pad passed explicitly, so only the floor varies).
+_l = FLY.decide(words_of('Prósentusamsetning'), fw, box(0, 40, 0, 30), cues(), pad=2.0)
+check('R4 decide() with NO floor argument stops the floor-overflow case at 7.5 (the production default)',
+      _l['size'] == 7.5 and _l['step'] == 'floor-overflow' and (_l['overflow'] or {}).get('sizePt') == 7.5,
+      f"{_l['size']} {_l['step']} {_l['overflow']}")
 # Two long words at the floor: 'aaaaaaaaaaa' (11 -> 41.25) and 'bbbbbbbbbb' (10 -> 37.5), budget 36:
 # the partition is held to max(36, 41.25) -> one word per line, and the WIDEST word is the one named.
 _l = decide('bbbbbbbbbb aaaaaaaaaaa', box(0, 40, 0, 30), cues(n_src=1))

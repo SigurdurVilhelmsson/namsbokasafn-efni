@@ -112,7 +112,13 @@ CASES = [('K=1', 'DeviceCMYK', (0, 0, 0, 1)),
          ('Gray 0', 'DeviceGray', (0,)),
          ('Gray 0.5', 'DeviceGray', (0.5,)),
          ('RGB blue', 'DeviceRGB', (0.2, 0.4, 0.8)),
-         ('RGB black', 'DeviceRGB', (0, 0, 0))]
+         ('RGB black', 'DeviceRGB', (0, 0, 0)),
+         # OUT-OF-RANGE operands (final review, code-3): poppler's DeviceRGB/DeviceGray getRGB clip to
+         # [0, 1]; fill_rgb returned them raw, and svgout's '#%02x%02x%02x' then wrote `#132-1a80`.
+         # 0 of 71,930 corpus runs carry one - hardening, pinned against pdftocairo's own bytes.
+         ('RGB out of range', 'DeviceRGB', (1.2, -0.1, 0.5)),
+         ('Gray above 1', 'DeviceGray', (1.3,)),
+         ('Gray below 0', 'DeviceGray', (-0.2,))]
 pdf = pikepdf.new()
 page = pdf.add_blank_page(page_size=(20 * len(CASES), 20))
 page.Contents = pdf.make_stream(b''.join(pdf_op(sp, v) + b' %d 0 20 20 re f\n' % (20 * i)
@@ -140,6 +146,11 @@ check('1c DeviceGray 0 stays PURE black (0,0,0), exactly', tuple(g0) == (0, 0, 0
 rgb = CMYK(RL._fill(char('DeviceRGB', (0.2, 0.4, 0.8)), collections.Counter()))
 check('1d a DeviceRGB value is drawn unchanged, exactly (no table, no fixed-point)',
       all(abs(a - b) < 1e-12 for a, b in zip(rgb, (0.2, 0.4, 0.8))), repr(rgb))
+# svgout.write_svg's fill format, over the out-of-range cases: a valid #rrggbb or nothing.
+_hex = {label: '#%02x%02x%02x' % tuple(round(x * 255) for x in CMYK(RL._fill(char(sp, v), collections.Counter())))
+        for label, sp, v in CASES if 'range' in label or 'above' in label or 'below' in label}
+check('1i out-of-range DeviceRGB/DeviceGray operands are CLIPPED like poppler: every one formats as a valid #rrggbb',
+      len(_hex) == 3 and all(re.fullmatch(r'#[0-9a-f]{6}', h) for h in _hex.values()), repr(_hex))
 unknown = collections.Counter()
 sep = RL._fill(char('Separation', (1.0,)), unknown)
 check('1f a refused space (None) still draws black, never white - test_readlayer.py 7c',

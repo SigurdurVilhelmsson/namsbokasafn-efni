@@ -544,6 +544,65 @@ with tempfile.TemporaryDirectory() as td:
           and report['addOps'] == 0 and report['useSitesRewritten'] == 0,
           f'exit {r.returncode}, {report!r}')
 
+# ── 6d. THE COLLAPSE IS WRITTEN — end to end, on a page that HAS a blend paint (final review) ─
+# 6c's fixture has no blend paint and test_svgfix.py drives collapse_blend_lerp on bytes in
+# memory, so a strip-text.py that COMPUTED the collapse and never saved it (measured: its
+# `if fixed is not data and fixed != data:` turned into `if False:`) passed every test while a
+# recompose would put exocytosis's uncollapsed 2^116 chain back. So: one text-less page with ONE
+# `/BM /Multiply` fill over another fill - cairo writes that as the add/blend lerp - through
+# prepare, and artwork.svg must be exactly the collapse of a bare `pdftocairo -svg` of the
+# artwork.pdf prepare wrote (same argv, `svgfix.pdftocairo_svg_argv`), and must differ from it.
+# CONTROL: the same page with `/BM /Normal` has nothing to collapse, and artwork.svg must equal
+# the bare conversion byte for byte - otherwise "differs" could come from anything else in the
+# chain.
+def synth_blend(dst, blend):
+    """A text-less 100 x 100 pt page: an opaque fill, then a second fill under an ExtGState whose
+    /BM is /Multiply (blend) or /Normal (control)."""
+    pdf = pikepdf.new()
+    page = pdf.add_blank_page(page_size=(100, 100))
+    state = pikepdf.Dictionary(Type=N('/ExtGState'), BM=N('/Multiply') if blend else N('/Normal'))
+    page.Resources = pikepdf.Dictionary(ExtGState=pikepdf.Dictionary(GS0=state))
+    page.Contents = pdf.make_stream(b'0.2 0.4 0.8 rg 0 0 60 60 re f\n'
+                                    b'q /GS0 gs 0.9 0.5 0.1 rg 30 30 60 60 re f Q\n')
+    pdf.save(str(dst), deterministic_id=True)
+    return Path(dst)
+
+
+import svgfix as _svgfix                        # noqa: E402 - the argv owner, stdlib only (HERE is on sys.path)
+with tempfile.TemporaryDirectory() as td:
+    seen = {}
+    for tag, blend in (('blend', True), ('normal', False)):
+        art = synth_blend(Path(td) / f'CNX_Fake_Blend_{tag}.pdf', blend)
+        out = Path(td) / f'out-{tag}'
+        r = run_prepare(art, '--basename', f'CNX_Fake_Blend_{tag}', '--out', out)
+        report = json.loads((out / 'svgfix.json').read_text()) \
+            if (out / 'svgfix.json').exists() else None
+        bare = Path(td) / f'bare-{tag}.svg'
+        if (out / 'artwork.pdf').exists():
+            subprocess.run(_svgfix.pdftocairo_svg_argv(out / 'artwork.pdf', bare), check=True,
+                           timeout=120)
+        written = (out / 'artwork.svg').read_bytes() if (out / 'artwork.svg').exists() else None
+        bare_bytes = bare.read_bytes() if bare.exists() else None
+        seen[tag] = (r, report, written, bare_bytes)
+    r, report, written, bare_bytes = seen['blend']
+    expected = _svgfix.collapse_blend_lerp(bare_bytes)[0] if bare_bytes is not None else None
+    check('6d a /BM /Multiply page: prepare exits 0 and svgfix.json reports collapsed >= 1',
+          r.returncode == 0 and isinstance(report, dict) and report.get('collapsed', 0) >= 1,
+          f'exit {r.returncode}, {report!r}: {r.stderr.strip()[-300:]}')
+    check('6e ... and artwork.svg IS the collapse: it differs from a bare `pdftocairo -svg` of '
+          'artwork.pdf and equals collapse_blend_lerp of those bytes',
+          written is not None and bare_bytes is not None and written != bare_bytes
+          and written == expected,
+          f'written {None if written is None else len(written)} bytes, bare '
+          f'{None if bare_bytes is None else len(bare_bytes)}, '
+          f'equal-to-bare {written == bare_bytes}, equal-to-collapse {written == expected}')
+    r, report, written, bare_bytes = seen['normal']
+    check('6f CONTROL the same page with /BM /Normal: addOps 0, and artwork.svg equals the bare '
+          'conversion byte for byte',
+          r.returncode == 0 and isinstance(report, dict) and report.get('addOps') == 0
+          and written is not None and written == bare_bytes,
+          f'exit {r.returncode}, {report!r}, equal-to-bare {written == bare_bytes}')
+
 # ── 7. THE ARTWORK SHARES THE TEXT'S COORDINATES — ruling (W), 2026-09-15 ──────────────────
 # `pdftocairo -svg` without `-noshrink -nocenter` fits the page onto a "paper" of the page size
 # rounded UP to whole points: on a page with a fractional dimension every artwork element is
@@ -674,6 +733,31 @@ with tempfile.TemporaryDirectory() as td:
         shipped = _call(frac)
         check('7f ... and does NOT refuse the shipped argv on the fractional page', shipped is None,
               f'{shipped!r}')
+
+        # 7h/7i FAIL CLOSED (final review). The block comment above the guard promises that a probe
+        # which cannot be READ refuses too, because nothing else can see an artwork displacement -
+        # and 7d-7f only ever feed probes that parse, while 7d's `'transform' in fired` is also
+        # satisfied by the could-not-verify text. Measured: turning either branch into a pass left
+        # this file ALL PASS. 7f above is the control: the shipped argv on a readable probe is None.
+        # 7h: an argv pdftocairo rejects (it exits 99 on an unknown flag and writes no probe.svg).
+        broken = _call(frac, flags=('-bogus-flag',))
+        check('7h the guard REFUSES when the probe conversion exits non-zero, saying the transform '
+              'could not be verified', isinstance(broken, str) and not broken.startswith('RAISED')
+              and 'could not be verified' in broken, f'{broken!r}')
+        # 7i: a probe SVG the reader cannot interpret - `_probe_points` raising ValueError, which is
+        # what it does on any shape it does not recognise. Restored in `finally`.
+        saved_probe = getattr(_mod, '_probe_points', None)
+
+        def _unreadable(_svg_bytes):
+            raise ValueError('planted: probe shape not recognised')
+        try:
+            _mod._probe_points = _unreadable
+            unread = _call(frac)
+        finally:
+            _mod._probe_points = saved_probe
+        check('7i the guard REFUSES when the probe cannot be read, saying the transform could not be '
+              'verified', isinstance(unread, str) and not unread.startswith('RAISED')
+              and 'could not be verified' in unread, f'{unread!r}')
 
     # 7g WIRING: prepare() consults the guard and refuses. The guard reads svgfix's flags AT
     # CALL TIME, so dropping them in THIS process makes the guard's probe scale while the

@@ -3,11 +3,15 @@
  * `decimalSeparatorWarnings`) against the composer's rule R3 (`experiments/figure-text-translation/
  * numloc.py`) on the ONE shape the panel handles: a label that is exactly one plain decimal.
  *
- * Two implementations of one convention, in two languages, are kept from drifting by a shared
- * fixture of REAL census strings. PLAIN_DECIMAL is the subset of `test_numloc.py`'s fixture
- * (c9-appendix.md B1 rows + B2 values) whose input matches /^\d+\.\d+$/ as a WHOLE string; the
- * second element is R3's output there, i.e. what the Python test asserts. Generated from that
- * fixture as a literal — never parsed at test time.
+ * Two implementations of one convention, in two languages. This file is a JS PIN on literals
+ * COPIED from the Python side, not a shared fixture: PLAIN_DECIMAL is the subset of
+ * `test_numloc.py`'s fixture (c9-appendix.md B1 rows + B2 values) whose input matches
+ * /^\d+\.\d+$/ as a WHOLE string; the second element is R3's output there, i.e. what the Python
+ * test asserts. Generated from that fixture ONCE as a literal — never parsed at test time, and no
+ * Python test reads this literal. ⚠️ So nothing makes the two sides agree: a change to R3 in
+ * `numloc.py` made in step with `test_numloc.py` leaves this file green, and PLAIN_DECIMAL must
+ * be RE-COPIED BY HAND whenever R3 changes (final review 2026-09-15; on that day `numloc.localize`
+ * matched all 173 pairs).
  *
  * Deliberately NOT in the subset: inputs with edge spaces (`0.00 `, ` 0.000`; the panel splits
  * and re-joins on whitespace), negatives (`–0.062`), and everything with a unit, thousands group,

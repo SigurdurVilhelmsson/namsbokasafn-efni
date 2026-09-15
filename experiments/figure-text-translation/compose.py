@@ -12,9 +12,10 @@ text you cannot tell misplacement from "that is how it lays out".
 ⚠️ SINCE §C140 ① (E), --control DRAWS EVERY BLOCK RUN-EXACT - each run at its own origin,
 size, rotation, fill and face, as the source drew it. It is therefore a FAITHFUL REDRAW of
 the source: a disagreement with the raster now isolates artwork and rasteriser defects. It no
-longer exercises the wrap / anchor / shrink path at all - and neither can any translations
-file, because a reply token-equal to its English is IDENTITY and is drawn run-exact too.
-Work on that path (§C140 ③) needs its own switch.
+longer exercises the wrap / anchor / shrink path at all, and neither does a reply token-equal to
+its English: that is IDENTITY and is drawn run-exact too. The layout path is reached by any
+non-identity translation - see the §C140 ② ③ ⑨ paragraph below (test_compose_t23.py reaches it
+with an edited identity label; no switch is needed).
 
 §C140 ② ③ ⑨ (spec docs/superpowers/specs/2026-09-13-c140-t23-scripts-reflow-decimals-design.md):
 a TRANSLATED straight label is laid out by two pure helpers and drawn here - `figcontainers` says
@@ -213,7 +214,7 @@ def cmyk(f):
     """A run's `fill` -> (r, g, b), as pdftocairo draws that colour under the artwork.
 
     The ONE conversion is `figcolour.fill_rgb` ([USER] ruling (C)): DeviceCMYK through poppler's
-    table (K=1 is #231f20, like the artwork's strokes), DeviceRGB and DeviceGray exact. The name
+    table (K=1 is #231f20, like the artwork's strokes), DeviceRGB and DeviceGray exact (clipped to [0, 1]). The name
     is kept from the naive (1-c)(1-k) map it replaced, so the call sites did not move."""
     return fill_rgb(f)
 

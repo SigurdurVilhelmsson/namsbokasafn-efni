@@ -41,7 +41,8 @@ RED-FIRST, AND WHAT IS NOT. Every S/D/L/X/LG/R9 assertion was run against the un
 the ones that pin a correction, against the composer before it) and seen FAIL. The exceptions are
 named where they stand: the controls (G*, D3, T2, L4c, X0), the sentinels (T1, T3), and two PINS -
 L0 (the prototype's crash, which the unchanged composer never had) and X4 (an error container that
-fits names no overhang, so `containerErrors` is its only record).
+fits names no overhang, so `containerErrors` is its only record). R6 (added by the final review) was
+seen FAIL against a named MUTANT of the finished composer instead - an identity reply drawn unlocalised.
 
 A DETECTION ERROR CANNOT BE PLANTED THROUGH DATA the rest of the composer survives: every input that
 makes figcontainers raise (a NaN coordinate, a run with no `adv`, a malformed page object) breaks
@@ -468,6 +469,36 @@ check('D3 CONTROL ⑨ --control is a faithful redraw: it draws 26.98, and locali
       f1c['rc'] == 0 and [el['text'] for el in elements(f1c['svg']) if '26' in el['text']] == ['26.98']
       and not (f1c['report'] or {}).get('localized'),
       repr([el['text'] for el in elements(f1c['svg'])]))
+
+# ── ⑨ / R6 end to end: an IDENTITY reply carrying a number (final review, tests-3) ──────────────────────
+# R6: every label drawn in English gets Icelandic separators, identity replies included, and an identity reply
+# keeps its Nota card - so ACCEPTING `373,15 K` must not change how the label is drawn. D1/D2 reach ⑨ only
+# through a send:false `missing` block, and this file's only identity plant (K_IDENT) has no digits: measured,
+# `drawn = b if (CONTROL or key in identity) else localise_block(b)` left every test green. So ONE send:true
+# one-run label with a decimal, composed twice on the same prepared page: reply = the exact English, and reply
+# = the accepted Nota value. Both must be identity (and translated, and localized), both must draw the
+# localised text run-exact at the source origin, and the two SVGs must be byte-identical to each other.
+K_R6 = 'Temperature 373.15 K'
+R6_RUNS = [run(K_R6, 10.0, 60.0)]
+r6a = compose_case(TMP.name, 'r6exact', R6_RUNS, {K_R6: K_R6}, artwork=blank_page)
+b, e = one(r6a, K_R6)
+precondition('PR6 the R6 plant is ONE send:true one-run block (a decimal inside prose is bought)',
+             e is not None and e['send'] is True and len(b) == 1 and len(r6a['entries']) == 1,
+             repr(r6a['entries']))
+r6b = compose_case(TMP.name, 'r6nota', None, {K_R6: 'Temperature 373,15 K'}, reuse=r6a['out'])
+R6_XY = (float(f'{10.0:.3f}'), float(f'{PAGE_H - 60.0:.3f}'))
+for tag, case in (('the exact English', r6a), ('the accepted Nota value 373,15 K', r6b)):
+    rep = case['report'] or {}
+    drawn = [(el['text'], el['x'], el['y']) for el in elements(case['svg'])]
+    check(f'R6 an identity reply of {tag}: identity, translated and localized, drawn run-exact as '
+          f'`Temperature 373,15 K` at the source origin',
+          case['rc'] == 0 and rep.get('identity') == [K_R6] and rep.get('translated') == [K_R6]
+          and rep.get('localized') == [K_R6] and rep.get('runExact') == [K_R6]
+          and drawn == [('Temperature 373,15 K',) + R6_XY],
+          f"rc {case['rc']}, identity {rep.get('identity')!r} localized {rep.get('localized')!r}, drawn {drawn!r}")
+check('R6 accepting the Nota value does not change the drawing: the two SVGs are byte-identical',
+      r6a['svg'] != '' and r6a['svg'] == r6b['svg'],
+      f"{len(r6a['svg'])} vs {len(r6b['svg'])} chars")
 
 # ════════════════════════════════════════════════════════════════════════════════════════════
 # FIGURE 2 - ③ containers
