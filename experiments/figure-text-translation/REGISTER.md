@@ -8,7 +8,15 @@ things lives in [README.md](README.md).
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-15 (supersedes every block below)
+## ⏩ RESUME — state as of 2026-09-15, after the merge (supersedes every block below)
+
+✅ **The branch below is MERGED to `main`** — [PR #471](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/471), `8e697c6a`, 2026-09-15. The component table in the block below now describes `main`. **Not deployed yet** — the campaign register's ⏩ RESUME owns the next action (deploy, then **§C140 ⑩, the brain outline, before any publication decision** — [USER] 2026-09-15).
+
+⚖️ **The figure MT leg is RULED to change, and is not changed yet:** send each figure's labels both per label and joined, keep the joined wording, flag every disagreement for an editor — [`docs/decisions/2026-09-15-figure-label-mt-joined-and-per-label.md`](../../docs/decisions/2026-09-15-figure-label-mt-joined-and-per-label.md) ([USER] 2026-09-15; building it is campaign §C140 ㉔). Until it lands, `translate-blocks.mjs` still sends one request per block key. **[USER] will run a batch of label corrections on the bought figures at a later date** (§C140 ㉕).
+
+---
+
+## ⏩ RESUME — state as of 2026-09-15 (superseded by the block above)
 
 ✅ **§C140 ② ③ ⑨ ⑫ and [USER]'s review fixes R12–R15 are BUILT on branch `feat/c140-t23-scripts-reflow-decimals`; [USER] accepted the
 recomposed 34 on 2026-09-15. The merge is [USER]'s.** Design and rulings:
