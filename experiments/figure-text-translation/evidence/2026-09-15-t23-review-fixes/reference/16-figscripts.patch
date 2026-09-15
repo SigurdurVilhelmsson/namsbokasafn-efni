@@ -1,0 +1,17 @@
+--- a/experiments/figure-text-translation/figscripts.py
++++ b/experiments/figure-text-translation/figscripts.py
+@@ -439,8 +439,12 @@
+ 
+ def split_at_word_edges(segs):
+     """Cut a plain segment adjacent to a styled one at its last/first SPACE, so a formula word is
+-    drawn from its own first letter and browser/cairo advance rounding from a long plain prefix
+-    lands in a word space (in-formula error <= 0.57 pt instead of up to 1.56 pt, c2 Q3)."""
++    drawn from its own first letter and anything a browser lays out differently in a long plain
++    prefix lands in a word space. The bound this was sized on (in-formula error <= 0.57 pt instead
++    of up to 1.56 pt, c2 Q3) was browser advance ROUNDING, measured before svgout set
++    text-rendering="geometricPrecision"; under it Chromium's advances equal compose's linear ones,
++    and what remains is its kern table (cairo applies none) - up to 0.99 pt short per segment on
++    the 34, which the cut keeps out of the formula word."""
+     out = []
+     n = len(segs)
+     for i, (t, st) in enumerate(segs):

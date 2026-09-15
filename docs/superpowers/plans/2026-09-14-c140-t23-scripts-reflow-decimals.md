@@ -10,6 +10,8 @@
 
 **Spec:** [`docs/superpowers/specs/2026-09-13-c140-t23-scripts-reflow-decimals-design.md`](../specs/2026-09-13-c140-t23-scripts-reflow-decimals-design.md) — read all of it, **including "Amendments — 2026-09-14"**, before any task.
 
+> **Addendum 2026-09-15 (end of this file): Tasks 13–19 — [USER]'s review fixes — run after Task 11 and BEFORE Task 12.** Read the spec's "Amendments — 2026-09-15" first.
+
 **Reference build — read this before Task 1.** Every module, test, fixture, patch and `compose.py` stage in this plan was built and verified in scratch before the plan was written: five module builders, an integrator that ran each stage RED/GREEN against the unchanged composer and on the 34 real figures, a predictor, and adversarial reviewers over two rounds (reports in `EXP/evidence/2026-09-14-t23-build/reports/`). The verified files are committed byte-exact under `REF` = `EXP/evidence/2026-09-14-t23-build/reference/`, checked by `MANIFEST.sha256`, and **tasks install them by `cp` or `git apply`, never by retyping** — a builder measured the Write tool turning an escape into an invisible character, and ~8,000 lines of markdown transcription would reintroduce exactly that class. Each task still states the rules the code implements, shows each new assertion FAIL before the change and PASS after, and gives the executor a named mutation for every pure module. `EXP/evidence/2026-09-14-t23-build/PREDICTIONS.md` holds every real-figure number Task 9 is held to; it was written before the repository implementation exists. **If a reference file does not install cleanly or a predicted result does not reproduce, STOP and report — never edit the reference to make it fit.** **Dress-rehearsed 2026-09-14:** Tasks 1–9 and Task 10's pre-flights were executed verbatim in a throwaway detached worktree at `BASE`; every install, every stage `cmp`, every expected RED set and every real-figure number reproduced, and the plan text was corrected wherever a command did not run literally (report: `EXP/evidence/2026-09-14-t23-build/reports/rehearsal.md`).
 
 ## Global Constraints
@@ -1070,3 +1072,655 @@ https://claude.ai/code/session_01W11kXYeK3JsWvW7Fv4QP4X
 - [ ] **Step 6: Hand over**
 
 Report the PR URL. **Merge only on [USER]'s instruction** (a merge commit, not a squash — the register cites individual SHAs). `./scripts/deploy.sh` runs on prod and needs a human for `sudo`.
+
+---
+
+## Addendum — 2026-09-15: [USER]'s review fixes (Tasks 13–19, run BEFORE Task 12)
+
+**Why.** At Task 11 [USER] looked at the 34 and did not accept. They reported a missing space in `afBr₂` and `viðH₂O`, the etheneBr double bond sitting left of centre, text that looks bolder than the source, and `Fjöldi / agna / af / A`. Each was root-caused, and [USER] ruled R12–R15 — read the spec's **"Amendments — 2026-09-15"** before any task below. Task 11's Step 4 gate therefore moves to Task 19, and **Task 12 runs only after [USER] says yes at Task 19**. Task 12 then also cites this addendum's evidence folder, logs the spec amendment's known limits, and logs [USER]'s "correcting translations and splitting long words" as future work.
+
+**Reference build — read before Task 13.** The fixes were built in scratch before this addendum was written, over three rounds:
+- Round 1: four builders, an integrator and an adversarial reviewer — ready-with-minors, 0 defects.
+- Round 2: a fixer and a scoped re-reviewer — ready-with-minors, 0 defects.
+- An assembler and a verifier, who captured every install step below on a fresh copy of the tree — ready-with-minors, 0 defects.
+
+Everything is committed under `EV2` = `EXP/evidence/2026-09-15-t23-review-fixes/`:
+- `reference/` holds 16 per-file patches and 3 new files, with `MANIFEST.sha256`.
+- `PREDICTIONS.json` / `PREDICTIONS.md` hold per-figure values.
+- `instruments/` holds `regen34.py`, `figparts.py`, `predict.py`, `census/`, `bond/` and `rehearse.py`.
+- `reports/install-rehearsal.md` holds the verbatim output of every step below.
+
+As before, **tasks install by `git apply` / `cp`, never by retyping. A patch that does not apply or an expected result that does not reproduce: STOP and report — never edit the reference.**
+
+### Addendum Global Constraints
+
+- **`BASE2`** = the commit that adds this addendum. Every Global Constraint above still binds.
+- **Shell variables**, exported in every command that uses them:
+  - `REPO`, `EXP`, `SCRATCH` as above;
+  - `EV2=$EXP/evidence/2026-09-15-t23-review-fixes`;
+  - `REF2=$EV2/reference`.
+- **Install order is W → S → C → L** (Tasks 13–16). The patch numbers are not the order.
+- **Do not delete `/home/siggi/dev/scratch-c140/`** before Task 19 is complete. The instruments read, by absolute path:
+  - `prep/sources.json`;
+  - `fix2/final/work`, the census item pairing for the final build;
+  - `plan/pred2/work/REPO`, the census item pairing for the pre-fix media.
+- **`books/` is written only in Task 18**, and only by `node tools/figure-run.js … --stale --force`.
+  - `COMPOSER_VERSION` stays `'3'` (spec amendment: one bump per PR, and `'3'` never left this branch).
+  - `--force` is read only where it suppresses the skipped-current check; it cannot make a figure spendable.
+  - Never run `figure-run.js` without `--stale`. **No MT, no spend.**
+- **Test command:** `cd "$EXP" && FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u <test_file>`. Below it is written `T <test_file>`, and `| tail -1` means the last line.
+- **Mutation-probe restore rule** as above: golden copy, restore from it, `cmp`. The anchors below each occur exactly once; assert `count == 1` before replacing.
+- **Timeouts:** long commands run in the foreground with the tool timeout at 600000. A Python batch uses `-u` and is judged by its terminal line (`DONE …`, `CENSUS-DONE`, `BOND-DONE`), never by an exit code.
+
+---
+
+### Task 13: Baseline at `BASE2`, then R15 — the artwork shift (`-noshrink -nocenter` + the prepare guard)
+
+**Files:**
+- Modify (patches `REF2/04, 01, 02, 03`): `EXP/test_figure_prepare.py`, `EXP/strip-text.py`, `EXP/svgfix.py`, `EXP/figure-prepare.py`
+
+**Interfaces:**
+- Produces:
+  - `svgfix.PDFTOCAIRO_SVG_FLAGS = ('-noshrink', '-nocenter')` and `svgfix.pdftocairo_svg_argv(pdf, svg)`, used by `strip-text.py`;
+  - `figure-prepare.artwork_transform_refusal(pdf_path, flags=None) -> str | None`;
+  - `figure-prepare.TRANSFORM_TOL_PT`;
+  - `prepare()` exits 1 with the refusal in `prepare.json` when the guard refuses.
+
+What the code does (spec amendment R15): `strip-text.py` builds its `pdftocairo -svg` argument list from `svgfix`, with both flags. The guard runs the same argument list on a probe copy of `artwork.pdf`, with the page dictionary untouched and one planted stroke through known points. It refuses when cairo draws a point more than `TRANSFORM_TOL_PT` away from `(x, MediaBox[3] − y)`, the convention `svgout` uses for `<text>`.
+
+- [ ] **Step 1: The reference build is intact; the tree is clean**
+
+```bash
+export REPO=/home/siggi/dev/repos/namsbokasafn-efni EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation
+export EV2=$EXP/evidence/2026-09-15-t23-review-fixes REF2=$EXP/evidence/2026-09-15-t23-review-fixes/reference SCRATCH=/home/siggi/dev/scratch-c140/build
+mkdir -p "$SCRATCH/tmp" && cd "$REF2" && sha256sum -c MANIFEST.sha256 | grep -av ': OK$'; echo "manifest-check exit=${PIPESTATUS[0]}"
+cd "$REPO" && git status --porcelain && git log --oneline -1
+```
+Expected:
+- no non-OK line, then `manifest-check exit=0`;
+- an empty status;
+- HEAD is `BASE2`.
+
+- [ ] **Step 2: Python baseline by name at `BASE2`**
+
+```bash
+export SCRATCH=/home/siggi/dev/scratch-c140/build EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation
+cd "$EXP" && FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u "$SCRATCH/suite.py" run "$SCRATCH/t13/base" 2>&1 | tail -20
+```
+Expected: 18 lines, every one `rc=0 fails=0` with last line `'ALL PASS'` (`test_readlayer.py`'s is `'  ALL PASS'`). **A non-zero rc here must be understood before Step 3.** Every later `compare` in Tasks 13–16 uses `$SCRATCH/t13/base`.
+
+- [ ] **Step 3: The test first — RED on the unchanged code**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation REF2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/reference SCRATCH=/home/siggi/dev/scratch-c140/build
+cd /home/siggi/dev/repos/namsbokasafn-efni && git apply "$REF2/04-test_figure_prepare.patch"
+cd "$EXP" && FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u test_figure_prepare.py | tail -1
+```
+Expected: `3 FAILED: 7c prepare's artwork.svg of a FRACTIONAL page draws every point exactly where the <text> convention (x, page_h - y) puts it, 7 PRECONDITION figure-prepare.py exposes artwork_transform_refusal, 7g PRECONDITION svgfix exposes PDFTOCAIRO_SVG_FLAGS for the guard to read`.
+- The `7c` detail reads `max displacement 1.394… pt`.
+- Controls `7a`/`7b` pass: the bare `pdftocairo -svg` on a 468 × 69.5 pt page is displaced 1.394 pt, and on 468 × 70 pt it is not.
+
+- [ ] **Step 4: The implementation — GREEN**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation REF2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/reference SCRATCH=/home/siggi/dev/scratch-c140/build
+cd /home/siggi/dev/repos/namsbokasafn-efni && git apply "$REF2/01-strip-text.patch" "$REF2/02-svgfix.patch" "$REF2/03-figure-prepare.patch"
+cd "$EXP" && FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u test_figure_prepare.py | tail -1
+```
+Expected: `ALL PASS`.
+
+- [ ] **Step 5: Named mutation — prepare stops calling the guard**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation SCRATCH=/home/siggi/dev/scratch-c140/build
+cd "$EXP" && mkdir -p "$SCRATCH/golden" && cp figure-prepare.py "$SCRATCH/golden/figure-prepare.py"
+python3 - <<'EOF'
+p = 'figure-prepare.py'; s = open(p).read(); old = "    refusal = artwork_transform_refusal(out_dir / 'artwork.pdf')"
+assert s.count(old) == 1; open(p, 'w').write(s.replace(old, "    refusal = None"))
+EOF
+FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u test_figure_prepare.py | tail -1
+cp "$SCRATCH/golden/figure-prepare.py" figure-prepare.py && cmp figure-prepare.py "$SCRATCH/golden/figure-prepare.py" && echo restored
+```
+Expected: `1 FAILED: 7g prepare EXITS 1 when the guard refuses, with the refusal in prepare.json`, then `restored`.
+
+- [ ] **Step 6: Whole Python suite by name**
+
+```bash
+export SCRATCH=/home/siggi/dev/scratch-c140/build EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation
+cd "$EXP" && FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u "$SCRATCH/suite.py" run "$SCRATCH/t13/py" > /dev/null 2>&1; python3 "$SCRATCH/suite.py" compare "$SCRATCH/t13/base" "$SCRATCH/t13/py"
+```
+Expected: `compare done` and nothing before it.
+
+- [ ] **Step 7: Commit**
+
+```bash
+cd /home/siggi/dev/repos/namsbokasafn-efni
+git add experiments/figure-text-translation/{strip-text.py,svgfix.py,figure-prepare.py,test_figure_prepare.py}
+git commit -m "fix(figures): draw the artwork where the text is — pdftocairo -svg -noshrink -nocenter + a prepare guard (R15)
+
+Without the two flags pdftocairo scales a page with a fractional dimension by
+min(w/ceil w, h/ceil h) and centres it, while compose places text at true
+coordinates: 24 of the 34 bought figures were shifted, worst 2.66 pt (etheneBr's
+double bond sat 1.3 pt left). Every PNG-based check was blind to it. cairo writes
+no page transform to read back, so prepare probes the same argv on a copy of the
+page and refuses a displaced point; 0 of 817 in-scope sources refuse.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01W11kXYeK3JsWvW7Fv4QP4X"
+```
+
+---
+
+### Task 14: R12 — `text-rendering="geometricPrecision"` on the text group
+
+**Files:**
+- Create (patch `REF2/13`): `EXP/test_svgout.py`
+- Modify (patches `REF2/12, 16`): `EXP/svgout.py`, `EXP/figscripts.py` (docstring only)
+
+**Interfaces:**
+- Produces: `svgout.write_svg` opens the text group as `<g text-rendering="geometricPrecision">`; each `<text>` element stays byte-identical, so the raw-string goldens of `test_compose_runexact.py` and `test_compose_t23.py` stay valid.
+
+What the code does (spec amendment R12): one inherited presentation attribute on the `<g>` that holds every `<text>`, layout and run-exact alike. In an `<img>` render it is pixel-identical to the attribute on each `<text>`. Chromium then draws with the same linear advances `compose.py` measured, so the space before a styled segment is no longer lost or doubled.
+
+- [ ] **Step 1: The test first — RED**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation REF2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/reference SCRATCH=/home/siggi/dev/scratch-c140/build
+cd /home/siggi/dev/repos/namsbokasafn-efni && git apply "$REF2/13-test_svgout.patch" && cmp "$EXP/test_svgout.py" "$REF2/test_svgout.py" && echo test-installed
+cd "$EXP" && FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u test_svgout.py | tail -1
+```
+Expected: `test-installed`, then `1 FAILED: S1 every one of the 8 <text> elements resolves to text-rendering=geometricPrecision (layout segments, the subscript, run-exact bold/italic, the rotated glyph)`.
+
+- [ ] **Step 2: The implementation — GREEN, and the raw goldens still hold**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation REF2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/reference SCRATCH=/home/siggi/dev/scratch-c140/build
+cd /home/siggi/dev/repos/namsbokasafn-efni && git apply "$REF2/12-svgout.patch" "$REF2/16-figscripts.patch"
+cd "$EXP" && for t in test_svgout.py test_compose_runexact.py test_compose_t23.py; do printf '%s: ' $t; FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u $t | tail -1; done
+```
+Expected: `ALL PASS` three times.
+
+- [ ] **Step 3: Named mutation — the group loses the attribute**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation SCRATCH=/home/siggi/dev/scratch-c140/build
+cd "$EXP" && cp svgout.py "$SCRATCH/golden/svgout.py"
+python3 - <<'EOF'
+p = 'svgout.py'; s = open(p).read(); old = "'<g text-rendering=\"geometricPrecision\">'"
+assert s.count(old) == 1; open(p, 'w').write(s.replace(old, "'<g>'"))
+EOF
+FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u test_svgout.py | tail -1
+cp "$SCRATCH/golden/svgout.py" svgout.py && cmp svgout.py "$SCRATCH/golden/svgout.py" && echo restored
+```
+Expected: the same `1 FAILED: S1 …` line, then `restored`.
+
+- [ ] **Step 4: Suite by name, then commit**
+
+```bash
+export SCRATCH=/home/siggi/dev/scratch-c140/build EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation
+cd "$EXP" && FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u "$SCRATCH/suite.py" run "$SCRATCH/t14/py" > /dev/null 2>&1; python3 "$SCRATCH/suite.py" compare "$SCRATCH/t13/base" "$SCRATCH/t14/py"
+```
+Expected: `NEW FILE test_svgout.py: rc=0 fails=[] …` and nothing else before `compare done`.
+
+```bash
+cd /home/siggi/dev/repos/namsbokasafn-efni
+git add experiments/figure-text-translation/{svgout.py,test_svgout.py,figscripts.py}
+git commit -m "fix(figures): render figure text with geometricPrecision so spaces survive at every zoom (R12)
+
+compose places each segment of a split line at an absolute x from cairo's linear
+advances; Chromium's default rendering rounds advances per glyph at the display
+scale, so the drift of a whole plain prefix landed in the space before a styled
+segment (afBr2, viðH2O) or collided subscripts. One attribute on the text group:
+the browser census over the 34 at 7 scales goes from 16 lost spaces, 94
+collisions and 36 browser-only overhangs to 0, 0, 0.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01W11kXYeK3JsWvW7Fv4QP4X"
+```
+
+---
+
+### Task 15: R14 — text colour the way poppler draws it
+
+**Files:**
+- Create (patches `REF2/05, 08`): `EXP/figcolour.py`, `EXP/test_figcolour.py`
+- Modify (patches `REF2/09, 10, 11, 06, 07`): `EXP/test_readlayer.py`, `EXP/test_compose_runexact.py`, `EXP/test_compose_t23.py`, `EXP/compose.py`, `EXP/readlayer.py`
+
+**Interfaces:**
+- Produces:
+  - `figcolour.fill_rgb(fill) -> (r, g, b)` in 0..1: `('cmyk', c, m, y, k)` goes through `poppler_cmyk_rgb`; `('rgb', r, g, b)` and `('gray', g)` pass through exactly; `None` draws black; an unknown tag raises `ValueError`.
+  - `compose.cmyk` draws through `figcolour.fill_rgb`.
+  - `readlayer._fill` keeps the `rgb` / `gray` tags instead of folding them into `cmyk`.
+
+What the code does (spec amendment R14): DeviceCMYK text now gets the same RGB that pdftocairo gives the artwork (K=1 → `#231f20`), where before it was the naive `(1−c)(1−k)` that drew `#000000`. DeviceRGB and DeviceGray text keep their own colour. That is why `readlayer` must stop folding: under the new table a folded Gray 0 would draw `#231f20`. A `runs.json` written before this change must be re-prepared; `figure-run.js` re-prepares on every run.
+
+- [ ] **Step 1: Module and tests first, composer not wired — RED in four files**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation REF2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/reference SCRATCH=/home/siggi/dev/scratch-c140/build
+cd /home/siggi/dev/repos/namsbokasafn-efni && git apply "$REF2/05-figcolour.patch" "$REF2/08-test_figcolour.patch" "$REF2/09-test_readlayer.patch" "$REF2/10-test_compose_runexact.patch" "$REF2/11-test_compose_t23.patch"
+cmp "$EXP/figcolour.py" "$REF2/figcolour.py" && cmp "$EXP/test_figcolour.py" "$REF2/test_figcolour.py" && echo installed
+cd "$EXP" && for t in test_figcolour.py test_readlayer.py test_compose_runexact.py test_compose_t23.py; do printf '%s: ' $t; FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u $t | tail -1; done
+```
+Expected: `installed`, then four RED lines:
+- `test_figcolour.py: 8 FAILED: 1e K=1 (DeviceCMYK (0, 0, 0, 1)) draws pdftocairo's bytes, 1e rich black (corpus) …, 1e CMYK blue …, 1e CMYK red …, 1a K=1 draws (35,31,32) = #231f20 …, 1b the corpus rich black draws (33,28,29) …, 2a translated 'Observation and curiosity' …, 2d kept 'H2O (g)' …` — the composer draws (0, 0, 0) where pdftocairo gives (35, 31, 32);
+- `test_readlayer.py:   2 FAILED: 7a PIN — compose.cmyk draws through figcolour.fill_rgb, the one conversion, 7b2 a DeviceGray/RGB glyph in this population keeps its OWN space - not folded into cmyk` (7b2 reads `{'cmyk': 804}`);
+- `test_compose_runexact.py: 1 FAILED: C1 CONTROL the translated ARC is byte-identical to the unchanged composer but for ruling (C)'s fill, which is exactly figcolour.fill_rgb of the planted fill` (expected `#415e9f`, drawn `#3366cc`);
+- `test_compose_t23.py: 1 FAILED: G1 CONTROL the kept population is byte-identical to the unchanged composer - except the planted decimal, which may differ ONLY by 26.98 -> 26,98, and ruling (C)'s fill, which is exactly figcolour.fill_rgb of the planted fill` (expected `#231f20`, drawn `#000000`).
+
+Verbatim: `EV2/reports/install-rehearsal.md` § T-C.
+
+- [ ] **Step 2: Wire the composer and readlayer — GREEN**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation REF2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/reference SCRATCH=/home/siggi/dev/scratch-c140/build
+cd /home/siggi/dev/repos/namsbokasafn-efni && git apply "$REF2/06-compose.patch" "$REF2/07-readlayer.patch"
+cd "$EXP" && for t in test_figcolour.py test_readlayer.py test_compose_runexact.py test_compose_t23.py; do printf '%s: ' $t; FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u $t | tail -1; done
+```
+Expected: `ALL PASS` four times (`test_readlayer.py`'s line is `  ALL PASS`).
+
+- [ ] **Step 3: Named mutation on the pure module — AFTER wiring (before wiring it cannot be told from the unwired RED)**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation SCRATCH=/home/siggi/dev/scratch-c140/build
+cd "$EXP" && cp figcolour.py "$SCRATCH/golden/figcolour.py"
+python3 - <<'EOF'
+p = 'figcolour.py'; s = open(p).read(); old = "        return poppler_cmyk_rgb(c, m, y, k)"
+assert s.count(old) == 1; open(p, 'w').write(s.replace(old, "        return ((1 - c) * (1 - k), (1 - m) * (1 - k), (1 - y) * (1 - k))"))
+EOF
+for t in test_figcolour.py test_compose_runexact.py test_compose_t23.py; do printf '%s: ' $t; FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u $t | tail -1; done
+cp "$SCRATCH/golden/figcolour.py" figcolour.py && cmp figcolour.py "$SCRATCH/golden/figcolour.py" && echo restored
+```
+Expected:
+- `test_figcolour.py: 8 FAILED:` with the same eight names as Step 1;
+- `test_compose_runexact.py: 1 FAILED: C1 CONTROL …`;
+- `test_compose_t23.py: 1 FAILED: G1 CONTROL …`;
+- then `restored`.
+
+- [ ] **Step 4: Trap mutation — the old folding `readlayer.py` under the wired composer**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation SCRATCH=/home/siggi/dev/scratch-c140/build
+cd "$EXP" && cp readlayer.py "$SCRATCH/golden/readlayer.py"
+git -C /home/siggi/dev/repos/namsbokasafn-efni show HEAD:experiments/figure-text-translation/readlayer.py > readlayer.py
+FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u test_figcolour.py | tail -1
+cp "$SCRATCH/golden/readlayer.py" readlayer.py && cmp readlayer.py "$SCRATCH/golden/readlayer.py" && echo restored
+```
+(`HEAD` is Task 14's commit, whose `readlayer.py` is the folding one.)
+
+Expected: `8 FAILED: 1e Gray 0 (DeviceGray (0,)) draws pdftocairo's bytes, 1e Gray 0.5 …, 1e RGB blue …, 1e RGB black …, 1c DeviceGray 0 stays PURE black (0,0,0), exactly, 1d a DeviceRGB value is drawn unchanged, exactly (no table, no fixed-point), 2b translated 'Form a hypothesis' …, 2c kept 'Test the hypothesis' …`, then `restored`.
+
+- [ ] **Step 5: Suite by name, then commit**
+
+```bash
+export SCRATCH=/home/siggi/dev/scratch-c140/build EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation
+cd "$EXP" && FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u "$SCRATCH/suite.py" run "$SCRATCH/t15/py" > /dev/null 2>&1; python3 "$SCRATCH/suite.py" compare "$SCRATCH/t13/base" "$SCRATCH/t15/py"
+```
+Expected: `NEW FILE test_figcolour.py: rc=0 fails=[] …` and `NEW FILE test_svgout.py: rc=0 fails=[] …`, and nothing else before `compare done`.
+
+```bash
+cd /home/siggi/dev/repos/namsbokasafn-efni
+git add experiments/figure-text-translation/{figcolour.py,test_figcolour.py,compose.py,readlayer.py,test_readlayer.py,test_compose_runexact.py,test_compose_t23.py}
+git commit -m "fix(figures): draw DeviceCMYK text in poppler's colour, keep RGB/Gray exact (R14)
+
+compose.cmyk was the naive (1-c)(1-k), so K=1 text drew #000000 beside artwork
+pdftocairo draws #231f20 - translated labels read bolder than the source with
+identical font and geometry. figcolour.fill_rgb is the one conversion (checked
+against pdftocairo on 1,504 CMYK values, 0 8-bit mismatches); readlayer keeps
+its rgb/gray tags, because a folded DeviceGray 0 would now draw #231f20.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01W11kXYeK3JsWvW7Fv4QP4X"
+```
+
+---
+
+### Task 16: R13 — rules A and E for box and cell labels
+
+**Files:**
+- Modify (patches `REF2/15, 14`): `EXP/test_figlayout.py`, `EXP/figlayout.py`
+
+**Interfaces:**
+- Produces: `figlayout.decide(words, width, container, cues, floor=7.5, pad=2.0, *, _r9=True, _height=True, _ae=True)`. `_ae=False` switches both rules off for the prototype-equivalence harness.
+
+What the code does (spec amendment R13), for box and cell labels only:
+- **(E)** Inside the size search, a count `n` is rejected when `minmax(s, n−1) <= minmax(s, n) + EPS` (`useless(n, s)`), and the next count is tried from full size down. A rejected count therefore never decides the size. In the height floor-overflow branch the same check runs, and `fewer()` re-checks at the drawn size. The width floor-overflow branch steps down with `fewer()`.
+- **(A)** When a 1–2 character symbol ends the label (`lone_tail`), the selection first runs constrained to partitions that keep it with the previous word (`select(True)`). It falls back to the unconstrained selection only when that one does not fit.
+
+Open labels are untouched.
+
+- [ ] **Step 1: The tests first — RED**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation REF2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/reference SCRATCH=/home/siggi/dev/scratch-c140/build
+cd /home/siggi/dev/repos/namsbokasafn-efni && git apply "$REF2/15-test_figlayout.patch"
+cd "$EXP" && FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u test_figlayout.py | tail -1
+```
+Expected: `10 FAILED:`, naming:
+- `[L] flowchart b10: 'Fjöldi agna af A' -> Fjöldi / agna / af A at 9.0, fit, no overflow`
+- `[L] flowchart b7: 'Massi A' -> one line at 9.0`
+- `[L] flowchart b15: 'Rúmmál lausnar A' -> Rúmmál / lausnar A at 9.0`
+- `[L] flowchart b9: 'Rúmmál hreins efnis A' -> Rúmmál / hreins / efnis A at 9.0`
+- `[L] E alone (no symbol): 'Fjöldi agna af xy' -> Fjöldi / agna / af xy`
+- `[L] A: a binding count that fits only when shrunk (1 line at 8.0) beats a lone symbol at full size`
+- `[L] E in the width floor-overflow path: aaaaaaaaaaaaaaa / bb cc, the long word still named`
+- `[L] E in the height floor-overflow path: aaaaaaaa / b c at 7.5, height overhang named 18.048 > 6`
+- `[L] E does not keep the size of the count it rejects: 'Massi af cu' -> Massi / af cu at 9.0, fit`
+- `[L] CONTROL E's surviving count takes the largest size where it fits: Massi / af cu at 8.0`
+
+- [ ] **Step 2: The implementation — GREEN**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation REF2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/reference SCRATCH=/home/siggi/dev/scratch-c140/build
+cd /home/siggi/dev/repos/namsbokasafn-efni && git apply "$REF2/14-figlayout.patch"
+cd "$EXP" && FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u test_figlayout.py | tail -1
+```
+Expected: `ALL PASS`.
+
+- [ ] **Step 3: Three named mutations — both rules off, E alone off, A alone off**
+
+```bash
+export EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation SCRATCH=/home/siggi/dev/scratch-c140/build
+cd "$EXP" && cp figlayout.py "$SCRATCH/golden/figlayout.py"
+for pair in "_height=True, _ae=True):|_height=True, _ae=False):" \
+            "                return bool(_ae) and n > 1 and P.minmax(s, n - 1, tail=tl) <= P.minmax(s, n, tail=tl) + EPS|                return False" \
+            "    lone = bool(_ae) and cls in ('box', 'cell') and P.lone_tail()|    lone = False"; do
+  OLD="${pair%%|*}" NEW="${pair#*|}" python3 - <<'EOF'
+import os
+p = 'figlayout.py'; s = open(p).read(); old, new = os.environ['OLD'], os.environ['NEW']
+assert s.count(old) == 1, old; open(p, 'w').write(s.replace(old, new))
+EOF
+  echo "== ${pair#*|}"; FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u test_figlayout.py | grep -a '^  FAIL' | cut -c1-110
+  cp "$SCRATCH/golden/figlayout.py" figlayout.py && cmp figlayout.py "$SCRATCH/golden/figlayout.py" && echo restored
+done
+```
+Expected, in order:
+1. **`_ae=False`** fails the same 10 cases as Step 1, then `restored`.
+2. **`return False`** (E off, A on) fails exactly the 6 E cases, then `restored`:
+   - `E alone`
+   - `E in the width floor-overflow path`
+   - `E in the height floor-overflow path`
+   - `E does not keep the size of the count it rejects`
+   - `case pair: 'Massi af cu' and 'Massi af Cu' get the same size, line count and step`
+   - `CONTROL E's surviving count takes the largest size where it fits`
+3. **`lone = False`** (A off, E on) fails exactly the 4 A cases, then `restored`:
+   - `flowchart b7`
+   - `flowchart b15`
+   - `flowchart b9`
+   - `A: a binding count that fits only when shrunk`
+   
+   b10 still passes, because E alone joins `af A`.
+
+(The `case pair` check passes on HEAD code, where neither rule touches either label; it fails only when A is on and E is off, so it appears in the E-off set but not in Step 1's RED set.)
+
+- [ ] **Step 4: Suite by name; every touched file matches the verified build; commit**
+
+```bash
+export SCRATCH=/home/siggi/dev/scratch-c140/build EXP=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation EV2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes
+cd "$EXP" && FIGTEXT_PYLIBS=./pylibs PYTHONDONTWRITEBYTECODE=1 TMPDIR=$SCRATCH/tmp python3 -u "$SCRATCH/suite.py" run "$SCRATCH/t16/py" > /dev/null 2>&1; python3 "$SCRATCH/suite.py" compare "$SCRATCH/t13/base" "$SCRATCH/t16/py"
+python3 - <<'EOF'
+import hashlib, json, os
+EXP = os.environ['EXP']; meta = json.load(open(os.environ['EV2'] + '/PREDICTIONS.json'))['meta']['tree_files_sha256']
+bad = [f for f, h in meta.items() if hashlib.sha256(open(f'{EXP}/{f}', 'rb').read()).hexdigest() != h]
+print('composer files matching the verified build:', len(meta) - len(bad), 'of', len(meta), 'differ:', bad)
+EOF
+```
+Expected:
+- `NEW FILE test_figcolour.py …` and `NEW FILE test_svgout.py …`, and nothing else before `compare done`;
+- `composer files matching the verified build: 9 of 9 differ: []`.
+
+```bash
+cd /home/siggi/dev/repos/namsbokasafn-efni
+git add experiments/figure-text-translation/{figlayout.py,test_figlayout.py}
+git commit -m "fix(figures): no lone symbol, no useless line in box and cell labels (R13)
+
+Chasing the source line count drew 'Fjöldi / agna / af / A'. In a box or cell
+a count whose one-fewer partition is no wider is rejected inside the size search
+(so it never decides the size), and a 1-2 character symbol that ends the label
+stays with the word before it whenever some partition fits. On the 34 exactly 8
+flowchart boxes change, all at 9 pt; open labels are untouched.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01W11kXYeK3JsWvW7Fv4QP4X"
+```
+
+---
+
+### Task 17: The 34 in scratch with the repository composer — against `PREDICTIONS.json`, 0 ISK
+
+**Files:**
+- Create (scratch only): `$SCRATCH/t17/`
+
+**Interfaces:**
+- Consumes: `EV2/PREDICTIONS.json`, `EV2/instruments/{regen34.py,predict.py,census/,bond/}`.
+- Produces: `$SCRATCH/t17/{regen,census,census-control,bond}`, used by Task 18's VERIFICATION.md.
+
+- [ ] **Step 1: Prepare and compose the 34 with the repository tree, in two halves**
+
+```bash
+export REPO=/home/siggi/dev/repos/namsbokasafn-efni SCRATCH=/home/siggi/dev/scratch-c140/build EV2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes
+cd "$REPO" && CH03=$(ls books/efnafraedi-2e/figure-text | grep -a '^CNX_Chem_03_' | sed 's/\.is\.json$//')
+python3 -u "$EV2/instruments/regen34.py" --out "$SCRATCH/t17/regen" --only $CH03 2>&1 | tail -3
+```
+```bash
+export REPO=/home/siggi/dev/repos/namsbokasafn-efni SCRATCH=/home/siggi/dev/scratch-c140/build EV2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes
+cd "$REPO" && REST=$(ls books/efnafraedi-2e/figure-text | grep -av '^CNX_Chem_03_' | sed 's/\.is\.json$//')
+python3 -u "$EV2/instruments/regen34.py" --out "$SCRATCH/t17/regen" --only $REST 2>&1 | tail -3
+```
+Expected: `DONE 15 figures prep_fail=0 compose_fail=0`, then `DONE 19 figures prep_fail=0 compose_fail=0`. A half that prints no `DONE` line was killed: re-run it, since it rewrites only the figures it names.
+
+- [ ] **Step 2: By value, every key, 34/34**
+
+```bash
+export SCRATCH=/home/siggi/dev/scratch-c140/build EV2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes
+python3 "$EV2/instruments/predict.py" check "$EV2/PREDICTIONS.json" --dir "$SCRATCH/t17/regen" | tail -9
+```
+Expected: eight lines `<key> 34/34 MATCH` (artwork_svg, blocks, runs, compose_report, media_artwork, media_textgroup, text_count, style_font_faces), then `34/34 MATCH`. **A MISMATCH: STOP and name the figures and keys.** `compose_report_sha256` embeds the sidecar's absolute path, so run from this repository path.
+
+- [ ] **Step 3: Browser census and the bond — the result, and the control that the instrument sees the defect**
+
+```bash
+export REPO=/home/siggi/dev/repos/namsbokasafn-efni SCRATCH=/home/siggi/dev/scratch-c140/build EV2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes
+pgrep -a chrome-headless
+python3 -u "$EV2/instruments/census/census.py" --out "$SCRATCH/t17/census" "$SCRATCH"/t17/regen/work/*/translated.svg 2>&1 | tail -10
+MEDIA34=$(ls "$REPO/books/efnafraedi-2e/figure-text" | sed "s#\.is\.json\$#_IS.svg#; s#^#$REPO/books/efnafraedi-2e/media/#"); echo $MEDIA34 | wc -w
+python3 -u "$EV2/instruments/census/census.py" --out "$SCRATCH/t17/census-control" --items-root /home/siggi/dev/scratch-c140/plan/pred2/work/REPO $MEDIA34 2>&1 | tail -10
+python3 -u "$EV2/instruments/bond/bond.py" --out "$SCRATCH/t17/bond" "$REPO/books/efnafraedi-2e/media/CNX_Chem_04_03_etheneBr_img_IS.svg" "$SCRATCH/t17/regen/work/CNX_Chem_04_03_etheneBr_img/translated.svg" 2>&1 | tail -8
+pgrep -a chrome-headless || echo "no chromium survivors"
+```
+(`books/efnafraedi-2e/media/` holds hundreds of `_IS.svg` files, so the 34 are passed by name from the sidecar list; the `wc -w` line must print `34`.)
+
+Expected:
+- **Census on the repository build:** `boundaries 164, space-bearing 24`; `lost`, `added`, `narrowed`, `collision` and `overhang` all `total 0`; `CONTROL … worst |delta| pt = 0.0`; `CENSUS-DONE`.
+- **Control census on the committed pre-fix media:** `lost … total 16`, `collision … total 94`, `overhang … total 36`, `worst |delta| pt = 8.9688`.
+- **Bond:** the source segment `(3454, 3540)`; the committed media `(3443, 3528)` on rows 200…232; the repository build `(3454, 3539)` on rows 201…233; `BOND-DONE`.
+- `no chromium survivors`.
+
+---
+
+### Task 18: The repair run — recompose the 34 with `--stale --force`, verify the media BY VALUE, commit data and evidence
+
+**Files:**
+- Data: `books/efnafraedi-2e/media/<basename>_IS.svg` ×34, written by `tools/figure-run.js` only
+- Create (committed): `EV2/VERIFICATION.md`
+
+**Interfaces:**
+- Consumes: Tasks 13–16's composer; `EV2/PREDICTIONS.json`; Task 17's outputs; Task 1's JS baseline (`$SCRATCH/baseline/js-failing-by-name.txt`, `js-loadfail.txt`).
+- Produces: the recomposed media for Task 19.
+
+- [ ] **Step 1: Pre-flight — editorial state on the remote, with a positive control**
+
+Run Task 10 Step 1's commands verbatim. Expected: no output with `state-grep exit=1`, then `34`. **A non-zero `state` count: STOP and report** — a recompose would send an approved figure back to `mt-preview`.
+
+- [ ] **Step 2: Pre-flight — dry runs (free)**
+
+```bash
+export SCRATCH=/home/siggi/dev/scratch-c140/build TMPDIR=/home/siggi/dev/scratch-c140/build/tmp; cd /home/siggi/dev/repos/namsbokasafn-efni
+node tools/figure-run.js --book efnafraedi-2e --chapter 3 --stale --force --dry-run 2>&1 | tee "$SCRATCH/t18-dry-ch03.log" | tail -40
+node tools/figure-run.js --book efnafraedi-2e --chapter 4 --stale --force --dry-run 2>&1 | tee "$SCRATCH/t18-dry-ch04.log" | tail -40
+```
+Expected (measured 2026-09-15 at `433f9a2e`; the tallies do not depend on the composer):
+- ch03 opens with `DRY RUN — nothing bought, nothing written under books/`, then:
+  - `efnafraedi-2e ch03: 15 figure(s) across 5 module(s)`
+  - `--stale: 26 figure(s) in this chapter have no sidecar and were not selected. …`
+  - `15  translated`
+  - `15  = enumerated`
+  - `VERDICT ok`
+- ch04 reads `19 figure(s) across 6 module(s)` / `11 figure(s) … not selected` / `19  translated` / `19  = enumerated` / `VERDICT ok`.
+- Both chapters list `figure-prepare.py warnings` of the `subset font` kind only, as before.
+
+`translated` is the driver's name for a recomposed figure; with `--force` no figure reads `skipped-current`. **Any `failed-*`, `unresolved`, `unreadable-text` or `copied-*` row, or a prepare warning naming the artwork guard (`artwork.svg transform …`): STOP and report.**
+
+- [ ] **Step 3: Live run, in the foreground, one chapter at a time**
+
+```bash
+export SCRATCH=/home/siggi/dev/scratch-c140/build TMPDIR=/home/siggi/dev/scratch-c140/build/tmp; cd /home/siggi/dev/repos/namsbokasafn-efni
+node tools/figure-run.js --book efnafraedi-2e --chapter 3 --stale --force 2>&1 | tee "$SCRATCH/t18-live-ch03.log" | tail -40
+node tools/figure-run.js --book efnafraedi-2e --chapter 4 --stale --force 2>&1 | tee "$SCRATCH/t18-live-ch04.log" | tail -40
+```
+(tool timeout 600000 each.)
+
+Expected per chapter:
+- `MT spawned for 0 figure(s)`, or no MT line;
+- the same outcome tallies as that chapter's dry run in Step 2;
+- `VERDICT ok`;
+- ch03 carries the `localized` NOTE and ch04 the `overflow` NOTE, as in Task 10.
+
+**Any `failed-*`, `unresolved` or `unreadable-text` row, an `MT spawned` count above 0, or an `unformatted` / `containerErrors` NOTE: STOP.** If a run is killed or times out, re-run the same chapter: `--force` recomposes every figure again, which is idempotent at 0 ISK.
+
+- [ ] **Step 4: Exactly the 34 media changed — no sidecar, no mapping, nothing else**
+
+```bash
+cd /home/siggi/dev/repos/namsbokasafn-efni
+git status --porcelain | awk '{print $1, $2}' | sed -E 's#(books/efnafraedi-2e/media)/.*#\1/…#' | sort | uniq -c
+git status --porcelain -- books/efnafraedi-2e/figure-text books/efnafraedi-2e/media/image-mapping.json | wc -l
+```
+Expected: `34 M books/efnafraedi-2e/media/…` and nothing else, then `0`. The sidecars are rewritten only when `composedVersion` or `composedHash` differs, and neither does.
+
+- [ ] **Step 5: The recomposed media equal the prediction, by value**
+
+```bash
+export EV2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes
+python3 "$EV2/instruments/predict.py" check "$EV2/PREDICTIONS.json" --media | tail -5
+```
+Expected: `media_artwork_sha256 34/34 MATCH`, `media_textgroup_sha256 34/34 MATCH`, `text_count 34/34 MATCH`, `style_font_faces 34/34 MATCH`, `34/34 MATCH`.
+
+This is the check a version stamp could not make: every figure's artwork and every label, byte for byte, as the verified build drew them. The `<style>` bytes differ, because the woff2 `head.modified` is not pinned in a `figure-run.js` compose.
+
+- [ ] **Step 6: Census and bond on the committed media**
+
+```bash
+export REPO=/home/siggi/dev/repos/namsbokasafn-efni SCRATCH=/home/siggi/dev/scratch-c140/build EV2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes
+MEDIA34=$(ls "$REPO/books/efnafraedi-2e/figure-text" | sed "s#\.is\.json\$#_IS.svg#; s#^#$REPO/books/efnafraedi-2e/media/#"); echo $MEDIA34 | wc -w
+python3 -u "$EV2/instruments/census/census.py" --out "$SCRATCH/t18/census" $MEDIA34 2>&1 | tail -10
+python3 -u "$EV2/instruments/bond/bond.py" --out "$SCRATCH/t18/bond" "$REPO/books/efnafraedi-2e/media/CNX_Chem_04_03_etheneBr_img_IS.svg" 2>&1 | tail -5
+pgrep -a chrome-headless || echo "no chromium survivors"
+```
+Expected:
+- `34`;
+- census: every class `total 0`, `worst |delta| pt = 0.0`, `CENSUS-DONE`;
+- bond: `(3454, 3539)` on rows 201…233, `BOND-DONE`;
+- `no chromium survivors`.
+
+- [ ] **Step 7: The JS failing set is the baseline**
+
+Re-run Task 7 Step 3's commands with `--outputFile="$SCRATCH/t18-js.json"` and the snippet's second argument `t18-js.json` (tool timeout 600000). Expected: `NEWLY RED: []`, `NEWLY GREEN: []`. **Anything else: STOP and report.**
+
+- [ ] **Step 8: Commit the data**
+
+```bash
+cd /home/siggi/dev/repos/namsbokasafn-efni
+git add books/efnafraedi-2e/media/*_IS.svg
+git commit -m "feat(figures): recompose the 34 ch03/ch04 figures with [USER]'s review fixes
+
+figure-run --stale --force (COMPOSER_VERSION stays 3, which never left this
+branch): 34 media recomposed, 0 MT calls, 0 sidecars changed. Every figure's
+artwork part and text group equal the verified build byte for byte
+(predict.py --media 34/34); browser census 0 lost spaces, 0 collisions, 0
+overhangs at 7 scales; etheneBr's bond back at the source's pixel columns.
+Not rendered or synced - publication is [USER]'s call.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01W11kXYeK3JsWvW7Fv4QP4X"
+```
+
+- [ ] **Step 9: Write the frozen VERIFICATION.md and commit**
+
+Create `EV2/VERIFICATION.md` with:
+- a 🧊 FROZEN banner (cited, never synced; status lives in the campaign register and `REGISTER.md`);
+- the `BASE2` and HEAD shas;
+- Tasks 13–16: each RED line, GREEN line and mutation result, and each `compare` output;
+- Task 17: the two `DONE` lines, the eight `34/34 MATCH` lines, and the census, control census and bond lines;
+- Task 18: the dry-run and live tallies, Step 4's two outputs, Step 5's five lines, Step 6's census and bond lines, and Step 7's JS result;
+- the commands used.
+
+Cite `PREDICTIONS.md` and `reports/` rather than restating their numbers.
+
+```bash
+cd /home/siggi/dev/repos/namsbokasafn-efni
+git add experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/VERIFICATION.md
+git commit -m "docs(figures): [USER]'s review fixes verified on the recomposed 34 at 0 ISK
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01W11kXYeK3JsWvW7Fv4QP4X"
+```
+
+---
+
+### Task 19: Acceptance again — [USER] looks at the review fixes
+
+**Files:**
+- Create (scratch only): `$SCRATCH/t19/`
+
+**Interfaces:**
+- Consumes:
+  - `BASE2` media: exactly what [USER] reviewed at Task 11, unchanged until Task 18;
+  - the working-tree media (Task 18);
+  - `EV2/PREDICTIONS.md`;
+  - `$SCRATCH/t11/` (Task 11's stack script and page builder);
+  - `/home/siggi/dev/scratch-c140/fix2/artwork/rows.jsonl` (per-figure artwork transforms);
+  - `/home/siggi/dev/scratch-c140/label-context-mt/verdicts.json` (the 2026-09-15 figure-label MT comparison).
+- Produces: the same acceptance artifact URL, republished, and [USER]'s answer.
+
+- [ ] **Step 1: Render the stacks — source / what you reviewed / after the fixes**
+
+```bash
+export SCRATCH=/home/siggi/dev/scratch-c140/build
+mkdir -p "$SCRATCH/t19" && cp "$SCRATCH/t11/t11_stacks.py" "$SCRATCH/t19/t19_stacks.py" && cd "$SCRATCH/t19"
+python3 - <<'EOF'
+p = 't19_stacks.py'; s = open(p).read()
+for old, new in (("'BEFORE — E (composer 2)'", "'BEFORE — what you reviewed'"), ("'AFTER — composer 3'", "'AFTER — your review fixes'")):
+    assert s.count(old) == 1, old; s = s.replace(old, new)
+open(p, 'w').write(s)
+EOF
+pgrep -a chrome-headless; python3 -u t19_stacks.py <BASE2 sha> 2>&1 | tee -a t19.log | tail -3
+```
+(tool timeout 600000; resumable, so re-run until `rendered 34 of 34`.)
+
+Expected: `rendered 34 of 34`, `render failures []`.
+
+- [ ] **Step 2: Notes and page (controller; the page's design is Task 11's)**
+
+Build `$SCRATCH/t19/site/index.html` from `$SCRATCH/t11/build_page.py` (copy it, point it at `t19`). Keep the title "Composer 3 figure check" and the chapter layout. The intro says what changed since [USER]'s review (R12–R15 in one line each) and that this page is again the merge gate.
+
+Per figure, a "Since your review" note list derived from `PREDICTIONS.md`:
+- the fill change, on every figure;
+- the artwork correction in pt, for the 24 figures, from `rows.jsonl`'s old transform (the worst displacement);
+- the new line breaks, for the 8 flowchart boxes;
+- the space and bond, for etheneBr and ethene.
+
+Also, per figure, a "Wording — not changed by this branch" list: the labels the 2026-09-15 MT comparison judged `wrong` in the committed sidecars (e.g. `Element` → `Þáttur`, `Molecular mass` → `Mólmassi`), each with the judged-correct alternative. These are editorial fixes [USER] can make in figure review.
+
+Keep Task 11's own notes below, collapsed under "First review".
+
+- [ ] **Step 3: Republish to the same artifact and hand it over**
+
+Publish with the `Artifact` tool to the Task 11 artifact (same file path in the same session, or `url` = the Task 11 artifact URL), with `files` for the 34 images. Send [USER] the link with one paragraph:
+- the four fixes;
+- where to look first: etheneBr (space and bond), ethene (space), flowchart (line breaks), and any figure for colour against the artwork;
+- the wording list;
+- the question **"Do these pass — may the PR be merged?"**
+
+- [ ] **Step 4: STOP until [USER] answers**
+
+Task 12 runs only after a yes. A new problem goes back through systematic debugging on this branch.

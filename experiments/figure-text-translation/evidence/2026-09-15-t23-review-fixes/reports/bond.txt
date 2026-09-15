@@ -1,0 +1,14 @@
+source /home/siggi/dev/scratch-c140/fix2/integrated/prep/CNX_Chem_04_03_etheneBr_img/CNX_Chem_04_03_etheneBr_img.pdf -> /home/siggi/dev/scratch-c140/fix3/assembler/bond-run/source600.png rc=0 
+svg0 /home/siggi/dev/repos/namsbokasafn-efni/books/efnafraedi-2e/media/CNX_Chem_04_03_etheneBr_img_IS.svg -> /home/siggi/dev/scratch-c140/fix3/assembler/bond-run/svg0.png rc=0 
+svg1 final-regen/work/CNX_Chem_04_03_etheneBr_img/translated.svg -> /home/siggi/dev/scratch-c140/fix3/assembler/bond-run/svg1.png rc=0 
+/home/siggi/dev/scratch-c140/fix3/assembler/bond-run/source600.png bond rows [201, 202] [232, 233]
+   row 201 [(3395, 3403), (3428, 3436), (3454, 3540), (3562, 3570), (3595, 3602)]
+   row 233 [(3395, 3403), (3429, 3436), (3454, 3540), (3562, 3569), (3596, 3603)]
+/home/siggi/dev/scratch-c140/fix3/assembler/bond-run/svg0.png bond rows [200, 201] [231, 232]
+   row 200 [(3396, 3404), (3427, 3435), (3443, 3528), (3562, 3570), (3593, 3601)]
+   row 232 [(3394, 3401), (3430, 3437), (3443, 3528), (3560, 3567), (3596, 3603)]
+/home/siggi/dev/scratch-c140/fix3/assembler/bond-run/svg1.png bond rows [201, 202] [232, 233]
+   row 201 [(3395, 3403), (3427, 3435), (3454, 3539), (3562, 3569), (3594, 3601)]
+   row 233 [(3394, 3402), (3429, 3436), (3454, 3539), (3561, 3568), (3595, 3602)]
+ 
+BOND-DONE

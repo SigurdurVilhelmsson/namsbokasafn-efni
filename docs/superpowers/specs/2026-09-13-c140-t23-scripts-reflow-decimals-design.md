@@ -74,6 +74,68 @@ not here**; where a paragraph below quotes a number, `PREDICTIONS.md` wins.
 - **Known limit, not fixed**: the height budget and vertical centring use base-size ascent/descent only, so a
   subscript's drop is not counted (smallest box/cell margin on the 34: 3.97 pt).
 
+## Amendments — 2026-09-15, after [USER] looked at the 34 recomposed figures
+
+[USER] reviewed the acceptance page and did **not** accept: spaces were missing (`afBr₂`, `viðH₂O`), the
+etheneBr double bond sat left of centre, translated text looked bolder than the source, and a box label
+chased the source line count into `Fjöldi / agna / af / A`. Each symptom was root-caused before any fix, then
+the fixes were built and adversarially reviewed in scratch over two rounds, the same way as the 2026-09-14 build.
+Evidence, reference files and every real-figure number:
+[`experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/`](../../../experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/README.md).
+Where a paragraph above disagrees, this section wins.
+
+| # | ruling | by |
+|---|---|---|
+| R12 | **Precise text rendering.** Every drawn `<text>` renders with `text-rendering="geometricPrecision"` — written once, on the `<g>` that holds them all (an inherited presentation attribute; pixel-identical in an `<img>` to one attribute per `<text>`). **Reverses, for `geometricPrecision` only, E's R2 scope exclusion** | [USER] 2026-09-15 |
+| R13 | **No lone symbol, no useless line** — box and cell labels only (rules A and E, §4 below) | [USER] 2026-09-15 |
+| R14 | **Match the source black.** DeviceCMYK text converts to RGB the way poppler does (`GfxDeviceCMYKColorSpace::getRGB`), so K=1 draws `#231f20` like the artwork's own strokes; DeviceRGB and DeviceGray text keep their exact colour | [USER] 2026-09-15 |
+| R15 | **Fix the artwork shift on this branch.** `pdftocairo -svg -noshrink -nocenter`, and prepare refuses a page whose artwork would not sit under the text | [USER] 2026-09-15 |
+
+- **Why spaces went missing (R12)** — the premise of §1 "Drawing" was wrong. Cutting plain text at the space
+  next to a styled segment puts each segment at an absolute x computed from cairo's LINEAR advances, while
+  Chromium's default rendering rounds advances per glyph at the display scale; the whole plain prefix's
+  drift therefore lands exactly in that space, which is lost at some scales and doubled at others, and
+  subscripts collide at others. E's run-exact labels had the same mechanism. Under `geometricPrecision`
+  Chromium uses the linear advances, and the browser census over the 34 at seven scales (1 … 3 px/pt) went
+  from 16 lost spaces, 94 collisions and 36 browser-only overhangs to 0, 0 and 0. **Known limits:** Chromium
+  still applies the font's kern table and cairo does not (28 of 647 segments draw up to 0.99 pt short, which
+  can only widen a gap); a thin 7 pt en dash (HClsoln) rasterises lighter; only Chromium on Linux was measured.
+- **§4 "Line partition", box and cell labels (R13).** The target stays the source line count, with two rules:
+  **(E)** a line that does not shorten the longest line is never kept — a count whose one-fewer partition is no
+  wider is rejected, and a rejected count does not influence the size (the next count is tried from full size
+  down, as in the order above); **(A)** a 1–2 character symbol (R9's notion — not a lowercase alphabetic word)
+  that ends the label never stands alone on the last line: count and size are first chosen among partitions that
+  keep it with the word before it, and the unconstrained choice applies only when no such partition fits at any
+  size down to the floor. A may therefore draw a label a size step smaller or larger than without it; neither
+  rule ever adds a line. E also applies in the floor-overflow branches, so a named height overhang describes the
+  lines actually drawn. Open labels are unchanged (0 of 84 open blocks on the 34 are affected by either rule). On
+  the 34, exactly 8 flowchart boxes change, all at 9 pt (`Fjöldi / agna / af A`, `Massi A`, `Rúmmál / lausnar A`,
+  `Rúmmál / hreins / efnis A` and their B twins); `Mól / af A` already met both rules. **Known limits (0 on the
+  34, measured on randomised labels):** E judges the partition before R9's binding, so when the drawn lines are
+  the R9-bound partition, one fewer bound line can be no wider (about 1.5% of randomised box labels); and a label
+  can lose an R9 binding to a larger size (1–4 in 20,000).
+- **Why the text looked bolder (R14)** — `compose.py`'s `cmyk()` was the naive `(1−c)(1−k)`, so K=1 text drew
+  `#000000` beside artwork that pdftocairo draws `#231f20`; the font and geometry were already identical to the
+  source. The conversion lives in `figcolour.py`. `readlayer` keeps each fill's colour space tag instead of
+  folding RGB and Gray into CMYK (a folded fill would now be drawn through poppler's table), so a `runs.json`
+  written before this change must be re-prepared (`figure-run.js` re-prepares on every run). On the 34 every text
+  fill moves and nothing else does.
+- **Why the bond sat left (R15)** — without the two flags, `pdftocairo -svg` scales a page with a fractional
+  dimension by `min(w/⌈w⌉, h/⌈h⌉)` and centres it, while the text is placed at true coordinates: 24 of the 34
+  are affected, worst 2.66 pt, and every PNG-based check was blind to it. cairo writes no page-level transform
+  that could be read back, so the guard runs the same `pdftocairo` argument list on a probe copy of the page
+  and refuses when a known point is displaced; a separate test pins what prepare actually writes. It refuses a
+  /Rotate, a box origin off 0,0 and a CropBox that cuts the left or top edge; over every in-scope chemistry figure
+  source (537 PDF, 280 EPS) it refuses none.
+- **No second version bump.** `COMPOSER_VERSION` stays `'3'`: it has never left this branch, and R1 is one bump
+  per PR. The 34 are recomposed with `figure-run.js --stale --force` (`--force` suppresses only the
+  skipped-current check, so it cannot make a figure spendable), and the recomposed media are verified BY VALUE
+  against the scratch prediction, figure by figure.
+- **§1 "Drawing"** — `svgout.py` is no longer unchanged (R12). **§5** — `strip-text.py` and `figure-prepare.py`
+  change (R15), and `readlayer.py` and the new `figcolour.py` (R14).
+- **Out of scope, logged:** wording fixes and splitting long words ([USER]: "much can be fixed by correcting
+  translations and splitting long words") belong to the translation, not the composer.
+
 ---
 
 ## Purpose

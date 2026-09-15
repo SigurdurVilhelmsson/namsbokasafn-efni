@@ -1,0 +1,171 @@
+$ python3 instruments/predict.py check PREDICTIONS.json --dir /home/siggi/dev/scratch-c140/fix2/final/work
+MATCH    CNX_Chem_03_01_alsulfatemass_img
+MATCH    CNX_Chem_03_01_aspirin
+MATCH    CNX_Chem_03_01_brain-ec0b
+MATCH    CNX_Chem_03_01_chloroform
+MATCH    CNX_Chem_03_01_exocytosis-88f6
+MATCH    CNX_Chem_03_01_glycinemass_img
+MATCH    CNX_Chem_03_01_saltMass
+MATCH    CNX_Chem_03_02_argon_img-9025
+MATCH    CNX_Chem_03_02_copperMoles_img-a962
+MATCH    CNX_Chem_03_02_glycine_img-7c96
+MATCH    CNX_Chem_03_02_potassium_img-f1d1
+MATCH    CNX_Chem_03_02_sacch_img-3278
+MATCH    CNX_Chem_03_02_vitC_img-e537
+MATCH    CNX_Chem_03_03_empform
+MATCH    CNX_Chem_03_05_Example2_img
+MATCH    CNX_Chem_04_01_basehyd_img
+MATCH    CNX_Chem_04_01_rxn2
+MATCH    CNX_Chem_04_01_rxn3
+MATCH    CNX_Chem_04_02_HClsoln
+MATCH    CNX_Chem_04_03_etheneBr_img
+MATCH    CNX_Chem_04_03_ethene_img
+MATCH    CNX_Chem_04_03_flowchart
+MATCH    CNX_Chem_04_03_map2_img
+MATCH    CNX_Chem_04_03_map3_img
+MATCH    CNX_Chem_04_03_moleratio1_img
+MATCH    CNX_Chem_04_03_moleratio2_img
+MATCH    CNX_Chem_04_04_GreenChem
+MATCH    CNX_Chem_04_04_limiting
+MATCH    CNX_Chem_04_04_sandwich
+MATCH    CNX_Chem_04_05_combmap_img
+MATCH    CNX_Chem_04_05_combustion
+MATCH    CNX_Chem_04_05_map7_img
+MATCH    CNX_Chem_04_05_map8_img
+MATCH    CNX_Chem_14_03_FishLemon
+  artwork_svg_sha256       34/34 MATCH
+  blocks_sha256            34/34 MATCH
+  runs_sha256              34/34 MATCH
+  compose_report_sha256    34/34 MATCH
+  media_artwork_sha256     34/34 MATCH
+  media_textgroup_sha256   34/34 MATCH
+  text_count               34/34 MATCH
+34/34 MATCH
+exit=0
+
+$ python3 instruments/predict.py check reports/head-predictions.json --media   # committed books/efnafraedi-2e/media at HEAD 433f9a2e
+MATCH    CNX_Chem_03_01_alsulfatemass_img
+MATCH    CNX_Chem_03_01_aspirin
+MATCH    CNX_Chem_03_01_brain-ec0b
+MATCH    CNX_Chem_03_01_chloroform
+MATCH    CNX_Chem_03_01_exocytosis-88f6
+MATCH    CNX_Chem_03_01_glycinemass_img
+MATCH    CNX_Chem_03_01_saltMass
+MATCH    CNX_Chem_03_02_argon_img-9025
+MATCH    CNX_Chem_03_02_copperMoles_img-a962
+MATCH    CNX_Chem_03_02_glycine_img-7c96
+MATCH    CNX_Chem_03_02_potassium_img-f1d1
+MATCH    CNX_Chem_03_02_sacch_img-3278
+MATCH    CNX_Chem_03_02_vitC_img-e537
+MATCH    CNX_Chem_03_03_empform
+MATCH    CNX_Chem_03_05_Example2_img
+MATCH    CNX_Chem_04_01_basehyd_img
+MATCH    CNX_Chem_04_01_rxn2
+MATCH    CNX_Chem_04_01_rxn3
+MATCH    CNX_Chem_04_02_HClsoln
+MATCH    CNX_Chem_04_03_etheneBr_img
+MATCH    CNX_Chem_04_03_ethene_img
+MATCH    CNX_Chem_04_03_flowchart
+MATCH    CNX_Chem_04_03_map2_img
+MATCH    CNX_Chem_04_03_map3_img
+MATCH    CNX_Chem_04_03_moleratio1_img
+MATCH    CNX_Chem_04_03_moleratio2_img
+MATCH    CNX_Chem_04_04_GreenChem
+MATCH    CNX_Chem_04_04_limiting
+MATCH    CNX_Chem_04_04_sandwich
+MATCH    CNX_Chem_04_05_combmap_img
+MATCH    CNX_Chem_04_05_combustion
+MATCH    CNX_Chem_04_05_map7_img
+MATCH    CNX_Chem_04_05_map8_img
+MATCH    CNX_Chem_14_03_FishLemon
+  media_artwork_sha256     34/34 MATCH
+  media_textgroup_sha256   34/34 MATCH
+  text_count               34/34 MATCH
+34/34 MATCH
+exit=0
+
+$ python3 instruments/predict.py check PREDICTIONS.json --media   # FINAL prediction vs committed (pre-recompose) media
+MISMATCH CNX_Chem_03_01_alsulfatemass_img  keys=['media_textgroup_sha256']
+MISMATCH CNX_Chem_03_01_aspirin  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_03_01_brain-ec0b  keys=['media_textgroup_sha256']
+MISMATCH CNX_Chem_03_01_chloroform  keys=['media_textgroup_sha256']
+MISMATCH CNX_Chem_03_01_exocytosis-88f6  keys=['media_textgroup_sha256']
+MISMATCH CNX_Chem_03_01_glycinemass_img  keys=['media_textgroup_sha256']
+MISMATCH CNX_Chem_03_01_saltMass  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_03_02_argon_img-9025  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_03_02_copperMoles_img-a962  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_03_02_glycine_img-7c96  keys=['media_textgroup_sha256']
+MISMATCH CNX_Chem_03_02_potassium_img-f1d1  keys=['media_textgroup_sha256']
+MISMATCH CNX_Chem_03_02_sacch_img-3278  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_03_02_vitC_img-e537  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_03_03_empform  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_03_05_Example2_img  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_01_basehyd_img  keys=['media_textgroup_sha256']
+MISMATCH CNX_Chem_04_01_rxn2  keys=['media_textgroup_sha256']
+MISMATCH CNX_Chem_04_01_rxn3  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_02_HClsoln  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_03_etheneBr_img  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_03_ethene_img  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_03_flowchart  keys=['media_artwork_sha256', 'media_textgroup_sha256', 'text_count']
+MISMATCH CNX_Chem_04_03_map2_img  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_03_map3_img  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_03_moleratio1_img  keys=['media_textgroup_sha256']
+MISMATCH CNX_Chem_04_03_moleratio2_img  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_04_GreenChem  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_04_limiting  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_04_sandwich  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_05_combmap_img  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_05_combustion  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_05_map7_img  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_04_05_map8_img  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+MISMATCH CNX_Chem_14_03_FishLemon  keys=['media_artwork_sha256', 'media_textgroup_sha256']
+  media_artwork_sha256     10/34 MATCH
+  media_textgroup_sha256   0/34 MATCH
+  text_count               33/34 MATCH
+0/34 MATCH
+exit=1
+
+$ python3 instruments/predict.py diff reports/head-predictions.json PREDICTIONS.json
+artwork_svg_sha256       differ 24/34: CNX_Chem_03_01_aspirin CNX_Chem_03_01_saltMass CNX_Chem_03_02_argon_img-9025 CNX_Chem_03_02_copperMoles_img-a962 CNX_Chem_03_02_sacch_img-3278 CNX_Chem_03_02_vitC_img-e537 CNX_Chem_03_03_empform CNX_Chem_03_05_Example2_img CNX_Chem_04_01_rxn3 CNX_Chem_04_02_HClsoln CNX_Chem_04_03_etheneBr_img CNX_Chem_04_03_ethene_img CNX_Chem_04_03_flowchart CNX_Chem_04_03_map2_img CNX_Chem_04_03_map3_img CNX_Chem_04_03_moleratio2_img CNX_Chem_04_04_GreenChem CNX_Chem_04_04_limiting CNX_Chem_04_04_sandwich CNX_Chem_04_05_combmap_img CNX_Chem_04_05_combustion CNX_Chem_04_05_map7_img CNX_Chem_04_05_map8_img CNX_Chem_14_03_FishLemon
+blocks_sha256            differ 0/34
+runs_sha256              differ 0/34
+compose_report_sha256    differ 0/34
+media_artwork_sha256     differ 24/34: CNX_Chem_03_01_aspirin CNX_Chem_03_01_saltMass CNX_Chem_03_02_argon_img-9025 CNX_Chem_03_02_copperMoles_img-a962 CNX_Chem_03_02_sacch_img-3278 CNX_Chem_03_02_vitC_img-e537 CNX_Chem_03_03_empform CNX_Chem_03_05_Example2_img CNX_Chem_04_01_rxn3 CNX_Chem_04_02_HClsoln CNX_Chem_04_03_etheneBr_img CNX_Chem_04_03_ethene_img CNX_Chem_04_03_flowchart CNX_Chem_04_03_map2_img CNX_Chem_04_03_map3_img CNX_Chem_04_03_moleratio2_img CNX_Chem_04_04_GreenChem CNX_Chem_04_04_limiting CNX_Chem_04_04_sandwich CNX_Chem_04_05_combmap_img CNX_Chem_04_05_combustion CNX_Chem_04_05_map7_img CNX_Chem_04_05_map8_img CNX_Chem_14_03_FishLemon
+media_textgroup_sha256   differ 34/34
+text_count               differ 1/34: CNX_Chem_04_03_flowchart
+
+## Re-run 2026-09-15 after adding the style_font_faces key (controller)
+
+```
+$ predict.py check PREDICTIONS.json --dir /home/siggi/dev/scratch-c140/fix2/final/work
+  artwork_svg_sha256       34/34 MATCH
+  blocks_sha256            34/34 MATCH
+  runs_sha256              34/34 MATCH
+  compose_report_sha256    34/34 MATCH
+  media_artwork_sha256     34/34 MATCH
+  media_textgroup_sha256   34/34 MATCH
+  text_count               34/34 MATCH
+  style_font_faces         34/34 MATCH
+34/34 MATCH
+$ predict.py check reports/head-predictions.json --media
+  media_artwork_sha256     34/34 MATCH
+  media_textgroup_sha256   34/34 MATCH
+  text_count               34/34 MATCH
+  style_font_faces         34/34 MATCH
+34/34 MATCH
+$ predict.py check PREDICTIONS.json --media   (positive control: the committed media are pre-fix)
+  media_artwork_sha256     10/34 MATCH
+  media_textgroup_sha256   0/34 MATCH
+  text_count               33/34 MATCH
+  style_font_faces         34/34 MATCH
+0/34 MATCH
+$ predict.py diff reports/head-predictions.json PREDICTIONS.json
+artwork_svg_sha256       differ 24/34: CNX_Chem_03_01_aspirin CNX_Chem_03_01_saltMass CNX_Chem_03_02_argon_img-9025 CNX_Chem_03_02_copperMoles_img-a962 CNX_Chem_03_02_sacch_img-3278 CNX_Chem_03_02_vitC_img-e537 CNX_Chem_03_03_empform CNX_Chem_03_05_Example2_img CNX_Chem_04_01_rxn3 CNX_Chem_04_02_HClsoln CNX_Chem_04_03_etheneBr_img CNX_Chem_04_03_ethene_img CNX_Chem_04_03_flowchart CNX_Chem_04_03_map2_img CNX_Chem_04_03_map3_img CNX_Chem_04_03_moleratio2_img CNX_Chem_04_04_GreenChem CNX_Chem_04_04_limiting CNX_Chem_04_04_sandwich CNX_Chem_04_05_combmap_img CNX_Chem_04_05_combustion CNX_Chem_04_05_map7_img CNX_Chem_04_05_map8_img CNX_Chem_14_03_FishLemon
+blocks_sha256            differ 0/34
+runs_sha256              differ 0/34
+compose_report_sha256    differ 0/34
+media_artwork_sha256     differ 24/34: CNX_Chem_03_01_aspirin CNX_Chem_03_01_saltMass CNX_Chem_03_02_argon_img-9025 CNX_Chem_03_02_copperMoles_img-a962 CNX_Chem_03_02_sacch_img-3278 CNX_Chem_03_02_vitC_img-e537 CNX_Chem_03_03_empform CNX_Chem_03_05_Example2_img CNX_Chem_04_01_rxn3 CNX_Chem_04_02_HClsoln CNX_Chem_04_03_etheneBr_img CNX_Chem_04_03_ethene_img CNX_Chem_04_03_flowchart CNX_Chem_04_03_map2_img CNX_Chem_04_03_map3_img CNX_Chem_04_03_moleratio2_img CNX_Chem_04_04_GreenChem CNX_Chem_04_04_limiting CNX_Chem_04_04_sandwich CNX_Chem_04_05_combmap_img CNX_Chem_04_05_combustion CNX_Chem_04_05_map7_img CNX_Chem_04_05_map8_img CNX_Chem_14_03_FishLemon
+media_textgroup_sha256   differ 34/34
+text_count               differ 1/34: CNX_Chem_04_03_flowchart
+style_font_faces         differ 0/34
+```

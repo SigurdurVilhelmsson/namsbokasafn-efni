@@ -1,0 +1,168 @@
+--- a/experiments/figure-text-translation/figure-prepare.py
++++ b/experiments/figure-text-translation/figure-prepare.py
+@@ -62,6 +62,7 @@
+ import shutil
+ import subprocess
+ import sys
++import xml.etree.ElementTree as ET
+ from pathlib import Path
+ 
+ HERE = Path(__file__).resolve().parent          # never process.cwd() - repo rule
+@@ -397,6 +398,145 @@
+     return []
+ 
+ 
++# ── the artwork/text coordinate guard — ruling (W), 2026-09-15 ────────────────────────
++#
++# 🔴 WHY THIS REFUSES RATHER THAN WARNS. `prepare.json`'s warnings are ADVISORY - the driver
++# prints them and carries on (`tools/figure-run.js`, "figure-prepare.py's WARNINGS") - and a
++# displaced artwork has NO other detector: artwork.pdf and artwork.png are unshifted, so compose,
++# figcontainers and every PNG check see true coordinates, and only the published SVG is wrong.
++# A warning would therefore let the MT be PAID for a figure whose deliverable is misdrawn, and
++# the first reader of the defect would be a human looking at the picture. A refusal costs
++# nothing: prepare runs before any spend, the figure is filed failed-prepare, and the message
++# names the cause.
++#
++# 🔴 WHY IT PROBES INSTEAD OF READING artwork.svg. There is no page-level transform in the file
++# to read: cairo bakes the page transform into EVERY element's own `transform`, composed with the
++# PDF's own `cm` operators (etheneBr: `matrix(0.992857, 0, 0, -0.992857, 196.13, 25.91)` on each
++# path; sandwich: 309 of 6,257 matrices carry it, the rest are group-local). The page transform is
++# only observable through a path whose PDF coordinates are KNOWN. So the guard re-runs the SAME
++# argv (svgfix.pdftocairo_svg_argv) on a copy of artwork.pdf whose page dictionary - MediaBox,
++# CropBox, Rotate, UserUnit, inherited or not - is untouched and whose content is one planted
++# stroke through three points spanning the page, and checks cairo draws them at (x, page_h - y):
++# the convention svgout.write_svg uses for <text>, with page_h = MediaBox[3] as readlayer reads
++# it. What pdftocairo does to a page depends on the page's geometry and the argv, never on what
++# the page draws, so the probe measures the transform artwork.svg was written with.
++# ▶ It refuses a page GEOMETRY under which the probe's points land more than TRANSFORM_TOL_PT from
++# (x, page_h - y) - not a list of dictionary keys, and not only a scale. Measured on planted variants
++# of a real page (2026-09-15): /Rotate 90 or 180, a MediaBox origin off 0,0 (with or without a
++# matching CropBox), and a CropBox that cuts the LEFT or TOP edge refuse (10 to 267 pt); a CropBox
++# that cuts only the bottom or right, a CropBox LARGER than the MediaBox, and /UserUnit 2 pass
++# (0.002 pt), as does a fractional page under the shipped flags (bare argv: 1.394 pt, refused).
++# Corpus, same day: 0 of the 817 in-scope sources refuse - every page has origin 0,0 and no
++# /Rotate but 0; the 19 PDFs whose CropBox differs from the MediaBox all have a LARGER one; the
++# 280 EPS come out of gs -dEPSCrop at origin 0,0, Rotate 0, with no CropBox.
++# ⚠️ A probe that cannot be READ refuses too (fail closed): the guard exists because nothing else
++# can see this, so "could not tell" must not read as "fine".
++TRANSFORM_TOL_PT = 0.01      # cairo's 1/256 fixed point reads 0.0008 pt on an exact page; the
++                             # smallest real shift on the 34 is argon's 0.16 pt.
++_PROBE_FRACTIONS = ((0.1, 0.2), (0.9, 0.2), (0.1, 0.8))
++_SVG_NS = '{http://www.w3.org/2000/svg}'
++_MATRIX_RE = re.compile(r'\s*matrix\(([^)]*)\)\s*')
++_NUMBER_RE = re.compile(r'[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?')
++
++
++def _probe_points(svg_bytes):
++    """-> the probe stroke's points as the SVG draws them, or raise ValueError naming why not.
++
++    Accepts the shape cairo writes for one plain stroke: exactly ONE stroked <path> outside
++    <defs>/<clipPath>/<mask> (cairo adds a clip rectangle on some geometries, as a <path> inside
++    a <clipPath>), `d` = M/L commands with six numbers, and `matrix(...)` transforms on it and its
++    ancestors, composed. Anything else raises."""
++    root = ET.fromstring(svg_bytes)
++    parent = {child: node for node in root.iter() for child in node}
++
++    def hidden(e):
++        node = parent.get(e)
++        while node is not None:
++            if node.tag in (_SVG_NS + 'defs', _SVG_NS + 'clipPath', _SVG_NS + 'mask'):
++                return True
++            node = parent.get(node)
++        return False
++
++    strokes = [e for e in root.iter()
++               if e.tag == _SVG_NS + 'path' and e.get('stroke') not in (None, 'none')
++               and not hidden(e)]
++    if len(strokes) != 1:
++        raise ValueError(f'{len(strokes)} drawn stroked <path> elements in the probe, expected 1')
++    path = strokes[0]
++    d = path.get('d', '')
++    if set(re.sub(_NUMBER_RE, '', d)) - set('ML \t\n,'):
++        raise ValueError(f'probe path d={d!r} is not M/L only')
++    nums = [float(v) for v in _NUMBER_RE.findall(d)]
++    if len(nums) != 2 * len(_PROBE_FRACTIONS):
++        raise ValueError(f'probe path d={d!r} does not carry {len(_PROBE_FRACTIONS)} points')
++
++    matrix = (1.0, 0.0, 0.0, 1.0, 0.0, 0.0)
++    node = path
++    while node is not None:                       # innermost first: M = ancestor ∘ M
++        t = node.get('transform')
++        if t:
++            m = _MATRIX_RE.fullmatch(t)
++            parts = re.split(r'[\s,]+', m.group(1).strip()) if m else []
++            if len(parts) != 6:
++                raise ValueError(f'unrecognised transform {t!r} in the probe')
++            a, b, c, dd, e, f = (float(v) for v in parts)
++            A, B, C, D, E, F = matrix
++            matrix = (a * A + c * B, b * A + dd * B, a * C + c * D, b * C + dd * D,
++                      a * E + c * F + e, b * E + dd * F + f)
++        node = parent.get(node)
++    a, b, c, dd, e, f = matrix
++    return [(a * x + c * y + e, b * x + dd * y + f) for x, y in zip(nums[0::2], nums[1::2])]
++
++
++def artwork_transform_refusal(artwork_pdf, flags=None):
++    """-> None if `pdftocairo -svg` (with `flags`; None = svgfix's shipped flags, read at call
++    time) draws page 1 of `artwork_pdf` in the <text> coordinate system, else ONE refusal string.
++
++    See the block comment above for why this probes, why it refuses, and which page geometries
++    it refuses. Raises nothing it can turn into a refusal: an unreadable probe IS a refusal."""
++    import math
++    import tempfile
++
++    with tempfile.TemporaryDirectory(prefix='figprep-probe-') as td:
++        probe_pdf, probe_svg = Path(td) / 'probe.pdf', Path(td) / 'probe.svg'
++        with pikepdf.open(str(artwork_pdf)) as pdf:
++            page = pdf.pages[0]
++            box = [float(v) for v in pikepdf.Page(page).mediabox]
++            x0, y0, x1, y1 = box
++            page_h = box[3]
++            pts = [(x0 + fx * (x1 - x0), y0 + fy * (y1 - y0)) for fx, fy in _PROBE_FRACTIONS]
++            ops = '0 0 0 RG 1 w ' + ' '.join(
++                f'{x:.4f} {y:.4f} {"m" if i == 0 else "l"}' for i, (x, y) in enumerate(pts)) + ' S\n'
++            # Geometry is the page DICTIONARY and stays; only what it draws is replaced. /Annots
++            # goes because pdftocairo can draw annotation appearances, which would be a second
++            # stroke the probe did not plant.
++            page.obj.Resources = pikepdf.Dictionary()
++            if '/Annots' in page.obj:
++                del page.obj['/Annots']
++            page.Contents = pdf.make_stream(ops.encode('ascii'))
++            pdf.save(str(probe_pdf))
++        argv = svgfix.pdftocairo_svg_argv(probe_pdf, probe_svg, flags)
++        result = subprocess.run(argv, capture_output=True, text=True, timeout=120)
++        if result.returncode != 0 or not probe_svg.is_file():
++            return (f'artwork.svg transform could not be verified: the probe `{" ".join(argv[:-2])}` '
++                    f'exited {result.returncode}: {result.stderr.strip()[-200:]}')
++        try:
++            got = _probe_points(probe_svg.read_bytes())
++        except (ValueError, SyntaxError) as exc:  # ElementTree.ParseError is a SyntaxError
++            return f'artwork.svg transform could not be verified: {exc}'
++
++    worst = max(math.hypot(gx - x, gy - (page_h - y)) for (gx, gy), (x, y) in zip(got, pts))
++    if worst <= TRANSFORM_TOL_PT:
++        return None
++    scale = (got[1][0] - got[0][0]) / (pts[1][0] - pts[0][0])
++    return (f'artwork.svg transform is not the <text> coordinate system: '
++            f'`{" ".join(argv[:-2])}` draws page point ({pts[1][0]:.3f}, {pts[1][1]:.3f}) at '
++            f'({got[1][0]:.3f}, {got[1][1]:.3f}), expected ({pts[1][0]:.3f}, '
++            f'{page_h - pts[1][1]:.3f}); worst {worst:.3f} pt, x scale {scale:.6f}, page '
++            f'{x1 - x0:g} x {y1 - y0:g} pt. The artwork would be drawn displaced under '
++            f'correctly placed labels (see svgfix.PDFTOCAIRO_SVG_FLAGS).')
++
++
+ def prepare(artwork, out_dir, basename):
+     """-> the prepare.json payload. Raises PrepareError on a per-figure failure."""
+     # 🔴 A STALE artwork.svg MUST NOT BE ABLE TO SATISFY THE CHECK AT THE END OF THIS
+@@ -432,6 +572,11 @@
+         raise PrepareError(
+             f'strip-text.py produced no usable {svg.name}. Composition reads this file, '
+             f'so returning success here would buy a translation nothing can render.')
++    # 🔴 Ruling (W): the artwork must be drawn in the coordinates the labels are placed in.
++    # REFUSED, not warned - see the block comment above artwork_transform_refusal.
++    refusal = artwork_transform_refusal(out_dir / 'artwork.pdf')
++    if refusal:
++        raise PrepareError(refusal)
+ 
+     return {
+         'basename': basename,

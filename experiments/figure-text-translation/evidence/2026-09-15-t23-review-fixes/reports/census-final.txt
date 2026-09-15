@@ -1,0 +1,12 @@
+paired 34 figures against /home/siggi/dev/scratch-c140/fix2/final/work
+cb.mjs default: rc=0 done 34 DONE-MARKER 
+cb.mjs gp: rc=0 done 34 DONE-MARKER 
+boundaries 164, space-bearing 24
+   lost       1:0 1.25:0 1.5:0 1.75:0 2.0833333:0 2.5:0 3:0 | total 0
+   added      1:0 1.25:0 1.5:0 1.75:0 2.0833333:0 2.5:0 3:0 | total 0
+   narrowed   1:0 1.25:0 1.5:0 1.75:0 2.0833333:0 2.5:0 3:0 | total 0
+   collision  1:0 1.25:0 1.5:0 1.75:0 2.0833333:0 2.5:0 3:0 | total 0
+   overhang   1:0 1.25:0 1.5:0 1.75:0 2.0833333:0 2.5:0 3:0 | total 0
+CONTROL default (all 7 scales) vs gp@2.0833: worst |delta| pt = 0.0
+CENSUS-DONE
+CENSUS-BOTH-DONE

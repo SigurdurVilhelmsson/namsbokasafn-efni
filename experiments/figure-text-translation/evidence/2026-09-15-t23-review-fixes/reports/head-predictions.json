@@ -1,0 +1,445 @@
+{
+ "meta": {
+  "source": "/home/siggi/dev/scratch-c140/fix3/assembler/head-regen",
+  "keys": [
+   "artwork_svg_sha256",
+   "blocks_sha256",
+   "runs_sha256",
+   "compose_report_sha256",
+   "media_artwork_sha256",
+   "media_textgroup_sha256",
+   "text_count",
+   "style_font_faces"
+  ],
+  "sidecars_sha256": "6ad2b745d95fd5472f9fa65be793ef866a9e5b1f133d0132e034d5de4654523d",
+  "note": "sidecars_sha256 = sha256 of the concatenated hex sha256 of the 34 *.is.json in sorted name order",
+  "tree": "/home/siggi/dev/scratch-c140/fix3/assembler/head/experiments/figure-text-translation",
+  "tree_files_sha256": {
+   "compose.py": "673a5852df55e2cba658b25f7de3dbc8e65364dde6021e1e35c3dbc2e8366d08",
+   "figlayout.py": "b683d7477e9a77dd6ccd7e4a08d84a90166fa07034571b3ee822749af901405b",
+   "figscripts.py": "7f4d067bf289169109cd5f05af5f28b0f33284a0c2ab07c67d1195bd43430406",
+   "figure-prepare.py": "a0bacfd7141afd0e29ac2828bacc4620ea38152cf080500e15762dbc7105f09c",
+   "readlayer.py": "68c235f0e423ffc3e5ba60a8a1064168294656fbe9ff7e6095024f2a8e0ac923",
+   "strip-text.py": "3de789fcf63ce1a9f60eb45eb667cdab33e43d4bd812e4b730aef2af1e9dfc6a",
+   "svgfix.py": "1b60d10969e0a491f52347ac980b073518a941ca6ca5aff50b7f80b2fcb17e2d",
+   "svgout.py": "63ea69b97a7606d3e5f979514b5e2fcdd2026916f3561b2ae901f037c400cd23"
+  }
+ },
+ "figures": {
+  "CNX_Chem_03_01_alsulfatemass_img": {
+   "artwork_svg_sha256": "b1b742006543646fa4d9e1d4b7cf64c4d441681e0d8480ae124bbc6e3d45298f",
+   "blocks_sha256": "e41193e1aef1d2af4e9ab4eb924334f1ad81a50dc732db4ebe7f3c4f1871d862",
+   "runs_sha256": "895ac1c8a3e65e93c1db3d537ad5cf9447e9499a75d7bd9c3f673e6aa3fbd67d",
+   "compose_report_sha256": "6b757b4dcaf02bc221b9a797632578a124a2177cd8d753154d13ced7c7d2797d",
+   "media_artwork_sha256": "cd5fd5980cfe200058bf3de87095758dd37635d20b7b45374c5827a43d3ecafd",
+   "media_textgroup_sha256": "572433af8faf36e3c42b5dd3782baad6e0bb82409de6315f681f50f6540a27f5",
+   "text_count": 26,
+   "style_font_faces": [
+    "FigIS/400/normal",
+    "FigIS/700/normal"
+   ]
+  },
+  "CNX_Chem_03_01_aspirin": {
+   "artwork_svg_sha256": "a82aabfd87121b9f9565651ffdf606862bee038009e093694cd85cdfbe430520",
+   "blocks_sha256": "3d4c55ce4401b8d4ec1d4c142343afb7f9d14a6d9de5b324be4feb4350886db8",
+   "runs_sha256": "a69f835ac65bc30355195ac55ff7abd7f60076cfc4000726c3caa1ac5d37a1bc",
+   "compose_report_sha256": "628d961e86a917c4f2ae408c41c98fac5b0f89264af6f2b218bcd17682c1d6a9",
+   "media_artwork_sha256": "f6850c9c31c746e40324b582de6c509ba5573556392b6da315927e9d894af4d4",
+   "media_textgroup_sha256": "35a779280f647401ca8ab547beeb5b2c85e3bf535e91f238f5b71d5efb858918",
+   "text_count": 26,
+   "style_font_faces": [
+    "FigIS/400/normal",
+    "FigIS/700/normal"
+   ]
+  },
+  "CNX_Chem_03_01_brain-ec0b": {
+   "artwork_svg_sha256": "890d11ce0c2b51906bfade3923749e43a1d030afc7c875654f0e3c55e8e71e54",
+   "blocks_sha256": "788c9d0055b58515f1a7405251a9e7752188c106abdfe93626919117978b9989",
+   "runs_sha256": "306cd497cc36372b6cdd81ca091e7417d34a686176114994f68a17ca864373ce",
+   "compose_report_sha256": "3f4133848dd343fd2ed6152ced44cdef84a00eb7cdd362f39957de24b9bf24cf",
+   "media_artwork_sha256": "5c96c8a7f4226ee34c8419b889f700b7bde5ab1cd0213aa5fb5d0bef39c5163a",
+   "media_textgroup_sha256": "1f06f0395fed3212f9f6c61b0852d0b217e851c791fe5aae9cda1a019794b4da",
+   "text_count": 3,
+   "style_font_faces": [
+    "FigIS/400/normal",
+    "FigIS/700/normal"
+   ]
+  },
+  "CNX_Chem_03_01_chloroform": {
+   "artwork_svg_sha256": "ddb8a92228ab389892c3e135d8765a4f2292a4b0e242e072be96ebb86cda0f2c",
+   "blocks_sha256": "c954d79212d3606dacde299eebcd7a340f9cbb4f358ea24dd4cbf130902d4e1e",
+   "runs_sha256": "912ba753c8060f22ada264dc718293582131dbb2497a1c5a0e0c74425a5d64c4",
+   "compose_report_sha256": "5986d77d2568d3a77794a3218be316bfe81a368b7e839038c03c5cc80bd6265c",
+   "media_artwork_sha256": "28e265eb703e2cb9e5cdd060f4791c7e1f6a5f86524e6360796f58fba8fc16ce",
+   "media_textgroup_sha256": "0845b39e3254b6d559d40cdc0a0a2b836add83d94f14d8a0c8a2147d07f4165c",
+   "text_count": 26,
+   "style_font_faces": [
+    "FigIS/400/normal",
+    "FigIS/700/normal"
+   ]
+  },
+  "CNX_Chem_03_01_exocytosis-88f6": {
+   "artwork_svg_sha256": "a3cf4bb21000544460b96683a1fd758c9aebed140bb82ccb1fa721fcd956ffb0",
+   "blocks_sha256": "465f864d25bc7465518f65eedd6dd295546cee4fd2ebd22be8995818c69c8881",
+   "runs_sha256": "00269909711e570da7c0a05fd5395fbddc7357238cd268aba5c5b8dc33072e12",
+   "compose_report_sha256": "b59394f849c597f67a16a021dbbc88102332bf11840748393da7846ec5cd5795",
+   "media_artwork_sha256": "5daf4372099eac0a3706cc03d22bd5218f462da9ee7c1fe15bcdb49c874fe6a5",
+   "media_textgroup_sha256": "ed0001cd799846e1ff33a9f5683e0128c4d691f632c458087e0eeac49e1463a1",
+   "text_count": 7,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_03_01_glycinemass_img": {
+   "artwork_svg_sha256": "cbc4b9d6b47a6e61ca85cee3e063543e576a7b64e2cd2b49f8c4e7e1a7faecac",
+   "blocks_sha256": "2f61148bbd69d4f286f34613edb68eaaa71e970ee64f5f435c628cc26b9d1ead",
+   "runs_sha256": "fadca67c424fe7e91ace7d79217a09f75dc712f31bb36034876701282f737186",
+   "compose_report_sha256": "4e88d6f48a54c2460eb43aed90f0a8d32f0bf5d68dae223b74b18e3f7af91e90",
+   "media_artwork_sha256": "7ec6aba034799d1f7b354a4aec8fdca59327f678a269654c18df5833974080a7",
+   "media_textgroup_sha256": "c6e4e1656276abd3c2fd4373b4a689725a365ac8125a2b142106f3871bdcfb91",
+   "text_count": 34,
+   "style_font_faces": [
+    "FigIS/400/normal",
+    "FigIS/700/normal"
+   ]
+  },
+  "CNX_Chem_03_01_saltMass": {
+   "artwork_svg_sha256": "87f5a2d4ed41af38e2a20a1cc9172283298db2887c0e91ef8e811cbc60ba6577",
+   "blocks_sha256": "678c1eb1257d59a8ebde0fe8fdec5c5bfb30c861665e61babe58e4bbb34771fd",
+   "runs_sha256": "3bc05b3212ccc73bde51da0b02680cc146ed430f4d737c1c8b1f377742e9d381",
+   "compose_report_sha256": "e1fc86f576a0fc1964ea379178c8e6954ec360fae472ae3a9f3b2d258c92d105",
+   "media_artwork_sha256": "af2b7de430a8b75725b12810fd22557ab9f3ab8ded17eef2f2c7eef84afc2aad",
+   "media_textgroup_sha256": "4caa7ce6c78771f1c14092a962eeaf237fe5c074ae593a05acd7ae608f746f23",
+   "text_count": 19,
+   "style_font_faces": [
+    "FigIS/400/normal",
+    "FigIS/700/normal"
+   ]
+  },
+  "CNX_Chem_03_02_argon_img-9025": {
+   "artwork_svg_sha256": "c6c8c21af50edb0f42bb8431149d1c8f626a94f7ba972b5602160205772635a9",
+   "blocks_sha256": "d858ab5875afe11fc53dc564bd96a5f22c5d453d6b0f14ec93b183ed355c884e",
+   "runs_sha256": "bf666ca877e63d4b8c8c63f34e8037415a673290d2e6008d9ac49416ef73db7f",
+   "compose_report_sha256": "b60f9cdb8c44c500fa7dbe060b59860273a66689229420be6e082a56ffb577ca",
+   "media_artwork_sha256": "4a373d48edd0bcc4e3cd6af92ab8549fc458ccc4877fabe89a81574acf111c31",
+   "media_textgroup_sha256": "c0ebbfb016dd4ef3a4c2dfbf9a3c694e464347537d384c9b4ddce23e79a4e2cb",
+   "text_count": 6,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_03_02_copperMoles_img-a962": {
+   "artwork_svg_sha256": "b0368da2ea9063aabce3c544464d66e52563acf8eed252ae334cadca68237b91",
+   "blocks_sha256": "482c54b4c107d5d4d2af1a6a4839f6908bbd4ab1651cfc1151914ec665d5e427",
+   "runs_sha256": "fe9babfed0e941d5cf4c3cdaa8559fc5dbfdf4385fdeff1a5c2f647c670f6433",
+   "compose_report_sha256": "bd92f3550af9db9b9ed8ff624bad3301c935512f245708d4df75848b5f2f6a80",
+   "media_artwork_sha256": "5451aa5843d64f65d57b5ab7a4bb82b31f7a0b56051e699574023681eab9f9b2",
+   "media_textgroup_sha256": "3b4e170e261e8364cf87bbcdf46a0b2ce629e23f4e84390d559bed9d69cea309",
+   "text_count": 13,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_03_02_glycine_img-7c96": {
+   "artwork_svg_sha256": "51a0825c1ce057fd66c644526cddf72f413f8f4051d7f8df736297c8aacee4cc",
+   "blocks_sha256": "ecba36336e27ebbeb7338be3756bc42d7b5fdc0ac121f3b8e8060c285fafbb27",
+   "runs_sha256": "255fd4c0b4da0e5a708d2f80f1acd41f5090a9fba79baaf75b70ee116d22d4d0",
+   "compose_report_sha256": "2842a36110e19d8b63fe1814eeb9bf1e996a5e241123ada5e8ab39d1f0ac473e",
+   "media_artwork_sha256": "56528edff2b91665fdfed4b9789730e254f571b7787e8211523cc3c90826a169",
+   "media_textgroup_sha256": "e38c41a6015db60acd5f90b741dfbda040306f630eb39e0901350482977ffdc3",
+   "text_count": 20,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_03_02_potassium_img-f1d1": {
+   "artwork_svg_sha256": "c73e2fdd1b19d83c7b5420d8bda66d637115b4c0203f62a15e852f2b2d20cc41",
+   "blocks_sha256": "a2fb7527dc1a7aa2befc0037c74931e33be0e7cfe7f12f68115564921bfbde2d",
+   "runs_sha256": "48adce4a8052a1a698ce1e582655c7931b42a4c5afb77eb9eea98a123cffe6f3",
+   "compose_report_sha256": "2dfbe02f4c54cc95cf792bc01a46895d9a56bed6f23bbf93fd71ee16b505f0f5",
+   "media_artwork_sha256": "bd021cb9b131baa3cc4c7b1556754b2211a360373e707f4fb8fe01ff3b9f5ea9",
+   "media_textgroup_sha256": "7600651785553329484f4ee817ade35770bd173d575286268973369363413913",
+   "text_count": 6,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_03_02_sacch_img-3278": {
+   "artwork_svg_sha256": "d580fcc88132e628fb986b75d5a156eb3e158da1565e1dff85854491d75a450a",
+   "blocks_sha256": "19c0fcda40dc0209f03e9f352352bb07e9b34b2a1c136bf2fed71b5ae76d04cd",
+   "runs_sha256": "87114117c1feb23e2a2f5f405005d6e8996b63f852f6c0ba3560c9b52a9f1e50",
+   "compose_report_sha256": "9f2487522a14fbe334d0f3a51038f762b65ccc0b96e963575fd0c0cb46ecb019",
+   "media_artwork_sha256": "ad60616b488ec0e1e0a580b33667a33b3a378dc866c9f2f447bebd7c5aed8141",
+   "media_textgroup_sha256": "7e107c6840687e7a1692668a6df658594e1d1a9c0b25c086c770c87d271f1a1a",
+   "text_count": 34,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_03_02_vitC_img-e537": {
+   "artwork_svg_sha256": "f7f5df005165558f7d48f14c8af5d92e182cbd140d318427c80992a0525df12c",
+   "blocks_sha256": "3e4d6c6fe4e2826e5d3216b533388d31f016bb3993361923ba530ffc29cedd1e",
+   "runs_sha256": "5143b69b8d1e19ecb4eae4e0256ffd39fcb1d2c44fa1f5344c09ea79a4aee58d",
+   "compose_report_sha256": "eb8e6e9c6d082f953e6c5898ef28b8b8ce589ae09280d1c9e1f0bd5b9f89aedc",
+   "media_artwork_sha256": "ce1cc972746dd6777665d9875d55b08832f169117dfb1cecdf8cde6563e1ab48",
+   "media_textgroup_sha256": "f021513a3d3fa5894a987d07a5e04be634ceeea067b7e942c1c5f95bc36f264c",
+   "text_count": 6,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_03_03_empform": {
+   "artwork_svg_sha256": "315d3d8414329e642abe2b959fd0b297e9abe81c6d283c6188b943eabdbe132d",
+   "blocks_sha256": "9f16d3bb993949d392cce7abe81834c476696c562b76c22e577f498cce2f2d33",
+   "runs_sha256": "d9da2f81d753eef75d2b9cf7e0b4ba840096046988fc894408283bc9c1713078",
+   "compose_report_sha256": "7154dc12ca9a489ac858b1cf9032d1d54220cf88393f9b4a9cd28cd58c759c20",
+   "media_artwork_sha256": "8e8572772a591e4c153b31e8dd6a9beaec01193bdce901839d45daccc6e0942c",
+   "media_textgroup_sha256": "30f2ed16a6bd033f2f801f7f8a986e49514da70d55408cf4d5b3f2cdfc99f871",
+   "text_count": 21,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_03_05_Example2_img": {
+   "artwork_svg_sha256": "70ce9b1cf1f5f85a5aaf5e63fe74a6425a07d6176dd3a2ab6ba39271162bb024",
+   "blocks_sha256": "13e3a7ea454586e0668fb8c3da03fb0bd817ae719185259f267ecc211b0bad18",
+   "runs_sha256": "f24a1fd8c4fe23484218bfe4bff59c954f456b1128380188b7a637e95432bafc",
+   "compose_report_sha256": "dbd0d5a8680fca2e9965a784439f65f08e8d7e0ef67f4fd7fe403dd378bc6e1a",
+   "media_artwork_sha256": "71aa87a1c96223f416b8670db2d2a2a17e3c78ade4c5d90673efa6e7c3ef0fa2",
+   "media_textgroup_sha256": "983439dd06152d5f5a059eef7f353d53b55bd9a906cdea208ee1bce591ee5bc6",
+   "text_count": 11,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_01_basehyd_img": {
+   "artwork_svg_sha256": "40233692e07c9979e5fa6a0f160f1f97e0b82c2d4ca29bc489474a5511159254",
+   "blocks_sha256": "4af0b9521f383a14270aab0dd8a7bb784368ba7780ed46f133836f26eb1e60db",
+   "runs_sha256": "e172e19942989d0fc8db40b73c967a4d60b3c2fa6ed0fb818e4af8fcdf4fd018",
+   "compose_report_sha256": "9795b52f9a3c43c50ea81e77aa9972919fde8ba05f632d0f1a8aa97392d5de77",
+   "media_artwork_sha256": "5bf7fc755151baec62b9b2b3616ed1c0fd6ad67f97089cf451cbbaf650d6621a",
+   "media_textgroup_sha256": "1e242fd482ac7b3bc08f4f6d18f47fbe7c9296044fc114cf4e6f1bb3d24ce7a6",
+   "text_count": 28,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_01_rxn2": {
+   "artwork_svg_sha256": "3497895bc417b6d120545d6f8e6f6d71fde2f2d0dc01e362fe4858912695ed79",
+   "blocks_sha256": "bb6ebf09990a6412e63a364d2b1b58c9e0e9147ccc99cf7e72ed49ca821b60aa",
+   "runs_sha256": "2ad76b149aaafbd56b0a9bcaa2e7cf2eca712b18847a1d149f7fda056c517dba",
+   "compose_report_sha256": "1d9ba7467fe8a534ea124949d5c4afb0a3535e66611b4415844386b5c2b7058f",
+   "media_artwork_sha256": "d34196520997da902faa7f8513a690c8ffe9be4538469985991e3e1469bbdd6d",
+   "media_textgroup_sha256": "529521ae4b1bd5aaa201cbd24efa9d99e228e04f1a5416d85617cb2b2f3b33d1",
+   "text_count": 21,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_01_rxn3": {
+   "artwork_svg_sha256": "1992951b0a6deeb061fdae67f77262eaf77b706c5d1948488c5825b7cc70c3d6",
+   "blocks_sha256": "71d7d7c84af858da2b27f01ffb59589f5d0f0796c3fab9cceff4f0bd80cb4b86",
+   "runs_sha256": "f8b7b24e81e0916ab977cc27e3c81400970ab5eec1e257b7b673cc0cfb822939",
+   "compose_report_sha256": "bd4105d4ddbc9fe39a47514f728d64608f97431e8e4ae233667f281643f9569c",
+   "media_artwork_sha256": "8f4351ff05d03528cda82ba5483d5224b58c08537abc05bcd1f3f04a3af44146",
+   "media_textgroup_sha256": "190d27f2a3b978e94f4aa8ee5e38ba229d8f11b24ef16dec789ee465a69eda08",
+   "text_count": 2,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_02_HClsoln": {
+   "artwork_svg_sha256": "402b53f63dc81a277ffaaa1a90c501c7ee77d5a04fd2e55c9a5645813a59a6fc",
+   "blocks_sha256": "4a82217342c87b72c30dd2bad7e20760cc4bc5773129d456914339b132b95feb",
+   "runs_sha256": "b0c8245b872502bd8fb108f0553caa7c026aa5664784ce772f9bb5e3ae61720e",
+   "compose_report_sha256": "d5e9851db6e0fbf01afdd1307bb5babdc97f56c23bc7b8b66336647011ea3240",
+   "media_artwork_sha256": "23ed4b1aad08cb0a37d047786dae30eaa5ef02a9229b01a43768a90e40baaf8e",
+   "media_textgroup_sha256": "c97fbc179454cd0f0ddf91b34fda029f0899342fbf43a277625d43976471423e",
+   "text_count": 53,
+   "style_font_faces": [
+    "FigIS/400/normal",
+    "FigIS/400/italic"
+   ]
+  },
+  "CNX_Chem_04_03_etheneBr_img": {
+   "artwork_svg_sha256": "1cf2d5ef11e9d21002489030963fecbb44098165e026be65477cea50873250c0",
+   "blocks_sha256": "7b4d6bd3d85bdae0cd57a1051c3e5a16a3d9b3c6388fd04e474dbd9b1e62ad2d",
+   "runs_sha256": "622347021e8d0c99e4348e755ed878e2eb00ae975619ddf9d840875e37c8287e",
+   "compose_report_sha256": "d0efa436b95ee2a716d6978299eed4a4c65651853d231c8b010f5ac6e5ed3554",
+   "media_artwork_sha256": "fef019cbcb4c1c5a10866f705e5cd2efcc2aea0a715f5cd43a61ebf9744671e9",
+   "media_textgroup_sha256": "c09c4e7aa92ab0d4c27177f1537f057ae0303df99b22ba8ca9b816efc70db00c",
+   "text_count": 20,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_03_ethene_img": {
+   "artwork_svg_sha256": "cbaf4647c93b411c3295d17fbbad204c178a3c8f0be07a45ec18a2b7901702a9",
+   "blocks_sha256": "139bba6afb54f12796251a26570dee6690da0bd11c61f06d3b60c5e214a248ce",
+   "runs_sha256": "c9eba3cd4d975d9b088a48b8199d0e5ca7a9c51145b729bc5b49b976441097a7",
+   "compose_report_sha256": "afaa894596b805851cdf4c8985e2c2940e57433422c47136a820d48c91f86a9c",
+   "media_artwork_sha256": "018e5b8af55d8b1b00f6134489bff8abbf2fb838f842fb52a5566cb2d52844d6",
+   "media_textgroup_sha256": "bace9ad0ddc2a66d58c01c0c5f42f911a09fd0d4fd93b98e837e0007b000e9d0",
+   "text_count": 22,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_03_flowchart": {
+   "artwork_svg_sha256": "e57b5276cc554f8c4297c0a883c472b1356b456150ea6d70e39974a78b21665a",
+   "blocks_sha256": "23193a84fce24c74b61403c29d156d3b39abc33f2bf080d12be3c99e6e53c461",
+   "runs_sha256": "ae35a856ac4b4ff69b7cba3c6ff62dfc6dbc506dd40a26303f92f87a35148a6c",
+   "compose_report_sha256": "d15594ad60525514111eb31e80ec1369359d44c9555dea6ece35c75f84d424c1",
+   "media_artwork_sha256": "f8769a49c4a9782e280cadd867cc5c3ff0476c250a87e7abffc5f428710d78cd",
+   "media_textgroup_sha256": "8e918aaf2be61e14336fbeeffb36ae38a822118b28eaa7632322f8c68481bfcb",
+   "text_count": 41,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_03_map2_img": {
+   "artwork_svg_sha256": "f26432e69f3c507c8fa880f283d7d5b337e4d150de21b24f2f7ac47da9cb0c6e",
+   "blocks_sha256": "d8133a9da10e9d06771f4836a50fb69dcf97ae529ad4e88367e38a89960cc54d",
+   "runs_sha256": "caca0e8211f6e35d7b676af86589b4717f01a1e5ad751e6fa4d9c53d6f4a4747",
+   "compose_report_sha256": "9deb38df923e165a1b6cd5cf2595f49d5f91f0fcc3dbdeaae9a91d1e3ef61279",
+   "media_artwork_sha256": "37416ae643342e5680779daa8d8769d10af722d42abbf4a7a9845e24dca44340",
+   "media_textgroup_sha256": "ffb06feb8eadac3560512827b527326579701a7d68fd2328f9d4bc8dcf7b2396",
+   "text_count": 11,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_03_map3_img": {
+   "artwork_svg_sha256": "f26432e69f3c507c8fa880f283d7d5b337e4d150de21b24f2f7ac47da9cb0c6e",
+   "blocks_sha256": "4b3fc95155a2016650472c235b049f969407def68114a220d387c7bd6321769f",
+   "runs_sha256": "167dea9aeb49f345ba83e56dbeee246319b116a780f23453fc173f05ac7efc7c",
+   "compose_report_sha256": "ff3d46c52b2166ba3e15bbf3f1d356c22f903d77ac2a8ed1bac515350b08fc60",
+   "media_artwork_sha256": "37416ae643342e5680779daa8d8769d10af722d42abbf4a7a9845e24dca44340",
+   "media_textgroup_sha256": "aecf0d381c2d53f0dab6b43dedca781e4641ef445494dd21f114291dacfea1d6",
+   "text_count": 19,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_03_moleratio1_img": {
+   "artwork_svg_sha256": "b6e004a7bb2e9885b9849b51a7ba8df8f67de8372306108a4aae2352e4b7725d",
+   "blocks_sha256": "47552d51ccc78dd5fae73b1f0773e16469b68ac7c3ecbbb492791101af73cbda",
+   "runs_sha256": "3532ed65100a604e22b3862a1731ff8b271ebf140f67c1ace47c4b4f1c597a3d",
+   "compose_report_sha256": "e3e5b6af1423153b31dac4a823bc6e6c6c8cfdfef42713a4da283af8014c3851",
+   "media_artwork_sha256": "89499acfdc95198d2df30b0ad76b22c60a7a36cf6d0227b1bc2574197493ee5b",
+   "media_textgroup_sha256": "8f3842ab0e002851df7238dfd1adad91ea002d4ab1584198db739dcb90454f30",
+   "text_count": 5,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_03_moleratio2_img": {
+   "artwork_svg_sha256": "d7f51242f4845bc29aef9002d33b1486ffda816cf076252d1893c7607535bb30",
+   "blocks_sha256": "b9574bca9681c226c12c7653026f128731e13951419ec9d9f509e6ec8017a716",
+   "runs_sha256": "c67eb238974b7bfe2f63981b4649b9e19dbd5fa819fa62b55706332fec50a5a6",
+   "compose_report_sha256": "abcc9063b62dfdce471f7cb6f164fde2b74e12d2b76548e7a12c25966fde661d",
+   "media_artwork_sha256": "f36741986075b1f76f1b84715285b3478ad51b337234904dea0fb300215b5ae6",
+   "media_textgroup_sha256": "9f43064d9a53c8bb718116d40c3d014f8fbfc5257f46338f8c2068b43e532106",
+   "text_count": 14,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_04_GreenChem": {
+   "artwork_svg_sha256": "d166a7e80070d4fe977f5cc9437a3d05f5e214f9f501c0b1c3406cf9569ff0d8",
+   "blocks_sha256": "e2cbe2641e18f3b30886f9fc75cb1dff3924f4bf8bac84c9080e6064913bcea8",
+   "runs_sha256": "62416dd09f2b244d1e29bb7f83f87ff4fb3974d45a054523f79558ce277abd5c",
+   "compose_report_sha256": "88796ebd327389f566dcd31eafe26ab54395ebc46aea10ffa1326fab446ae5d0",
+   "media_artwork_sha256": "002a2b0b864e4c7ecc4b5603aca9d65a4e939d35c9cd5f3e55cd6baec551df6f",
+   "media_textgroup_sha256": "a4f7c5d382c5a87a1c7ae37e43d0d2e21ce824c95721512f7d2fcac0e1be6964",
+   "text_count": 16,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_04_limiting": {
+   "artwork_svg_sha256": "e2f25aacc6645821f6cdd41f31d6df253e4662cbaab1d3b5f9da177ef77203f0",
+   "blocks_sha256": "4a8ab9ca4c38cadf1d9a45e50726983fccec4797056060ede18328b63d4a753b",
+   "runs_sha256": "cb21181709ba10d5b9cfb6a1655f9437c2f59f0bed7c9dd744604f0b7fd44cf5",
+   "compose_report_sha256": "05818633b435917056a42d8f5d2f9381795d466d06bfe809291397e863684a62",
+   "media_artwork_sha256": "81cff2501bbc90ffec8fa7840a5e02d0bf7a129b01f9d25d811da3a602824300",
+   "media_textgroup_sha256": "ef38f0e4c230059603f377351cf4178e4067c7b75e081e319e48b75fec0763ea",
+   "text_count": 11,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_04_sandwich": {
+   "artwork_svg_sha256": "a99829cbe2f4fc392f2c0b857293570386e7d86b03d8dd9cf52124117716cd46",
+   "blocks_sha256": "3f03d3bd956cb9b36c43528a6425ed1f3c194f5b6375ec4ef94886354d8ae09b",
+   "runs_sha256": "f90da4bd3b6f0429374b5a335e7cfe514905cff2839dc7fa5a69814ad83bf7cd",
+   "compose_report_sha256": "566ac5ab4f558c25063d89dc385bf27fe5b64ff1924dd6f18a9d5a0b14fc1af2",
+   "media_artwork_sha256": "45eb6fdf06664834d1862f6cebe003012bd72f95dd8f260c2e750de2a3d85db5",
+   "media_textgroup_sha256": "638c132104ecd6b72c760cb3c62c9a8ee3852bf6a3c30a2bd40b8d7597f18130",
+   "text_count": 7,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_05_combmap_img": {
+   "artwork_svg_sha256": "1dfd84810a9c6611c16d435208434cb88595b884dc44d69b63418c67a3d793fa",
+   "blocks_sha256": "c55c27f25171360bf027772ca18dbeff9f1874a58df4ed2ce9bf51f9e9f1eb9d",
+   "runs_sha256": "028a4c871c5fb20bd7f39553c93b315377b4254f1fc949e5575577ab2e3426b2",
+   "compose_report_sha256": "2caffab1c9184af17559abffc93667cf77ea1ad769d7dbad6d828af839116934",
+   "media_artwork_sha256": "ed230e336eb155c10a089f4805099dadef94f5a4a1d796f8481ef54cd63b1dfd",
+   "media_textgroup_sha256": "7ee8bfc4ed6f160acfe5bbbc2395d5720c9a0a32200846a75d9bd5ce689e294c",
+   "text_count": 26,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_05_combustion": {
+   "artwork_svg_sha256": "af68369584f24d240183921a4786feb4871639ea0142efe2180d4fe9d6459222",
+   "blocks_sha256": "656881fd2ef598be4880abdfe84eec89ad0dd9897358d93632ac03998f602bba",
+   "runs_sha256": "847a6734d2a2a984aceef6956eacb7951be84c052a5e1e09f6af5dfbd0b60e41",
+   "compose_report_sha256": "4388accc25a1f53ae93503ac881bc5f49b50e6943cb5c11f5eb478e810fee4c1",
+   "media_artwork_sha256": "c49d4dca5a74f78734a76e5ea65e4c3d064217c7d5aaf27a0706970d3a26f543",
+   "media_textgroup_sha256": "f0a4bdc91bd59021383018d03b9ed54299a9dc008f988bfbe5cb1016598682ee",
+   "text_count": 32,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_05_map7_img": {
+   "artwork_svg_sha256": "51b2bc159b683b9e4d81fe02845a43beb3acf88315e777d88893121fa51d7809",
+   "blocks_sha256": "1b02f210cbacb48c5de08f2aa52cb39691480cae4dfe3c5ace2e6907ba71a470",
+   "runs_sha256": "4209893efa64601314209dcd0ddbbcf4a089867c6885fb3b6c917ae952ca7f74",
+   "compose_report_sha256": "16e1b2ecaadc7ad4819596ba7b5ce046d1f169ee397d76e89da99cd6f19c816b",
+   "media_artwork_sha256": "4e9549f24146c9bd1aced0380a34ab9580eff76edfeee128d3c3908b16d236bf",
+   "media_textgroup_sha256": "70dffcbe13e5a60e898d50ec2ae7f0b1b4a368ffdd75331c1ccb9731e38944ed",
+   "text_count": 10,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_04_05_map8_img": {
+   "artwork_svg_sha256": "cf6af93e39e274babaf80d0c0a4ed154c0e97fc43b18f5e8182be2690e21e252",
+   "blocks_sha256": "fc090a75c745c972e4a33ac7233b798a10d9e221a0a30571147652dd7f107088",
+   "runs_sha256": "7f898c28de3176ce9f7e58795772e623375b81aceab025e7f2be56fa4302f567",
+   "compose_report_sha256": "7864762c5704fb5647cd0b010cec63ee1b41bf48c4e43eaffeb0e569b7898dc5",
+   "media_artwork_sha256": "f3a186d4fd0135c1269706f94e7bcd89dc5e28e3b52ba527dfa89699a00f2e87",
+   "media_textgroup_sha256": "c3f2ad46d4bec203c981f3791e1d20b24d13867c0b89cdcef27c30aa14f5b43b",
+   "text_count": 19,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  },
+  "CNX_Chem_14_03_FishLemon": {
+   "artwork_svg_sha256": "4ddab12fc900d69ea7d619907d51a29a353dfd70f1b199cf2697a959028c041a",
+   "blocks_sha256": "25721d89ffb04d14519175e080069ea2e1dd90bafd441e63d2f5a66fe7c97dc8",
+   "runs_sha256": "7c1671fb9c700ca1b46939ca9e02c3653a0d1e5837c8de99304d3ebef4a2a761",
+   "compose_report_sha256": "4259eff7078c9b28769419072f7dc3aec3aadd392490cea40692253f2656bb63",
+   "media_artwork_sha256": "4246d38a743aff6cc94e2ef8fb0c051e9145e5690f2bbc00e9fcd638ef1d1c71",
+   "media_textgroup_sha256": "f73ed09ce794497816b4194df4c61a8363ac665f87c6a8a1abed01e26c747aeb",
+   "text_count": 40,
+   "style_font_faces": [
+    "FigIS/400/normal"
+   ]
+  }
+ }
+}
