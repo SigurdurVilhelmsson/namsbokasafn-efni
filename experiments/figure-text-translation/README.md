@@ -148,6 +148,9 @@ published.jpg ──check.py─────────────────�
 | `numloc.py` | Icelandic number separators for labels drawn in English (`26.98` → `26,98`). Runs only on source run text, never on a value that may already be localised — it is not idempotent (§C140 ⑨) |
 | `figcolour.py` | the ONE text-fill → RGB conversion, the way poppler draws DeviceCMYK, DeviceRGB and DeviceGray, so a label's black matches the artwork's (R14) |
 | `svgfix.py` | the post-`pdftocairo -svg` artwork pass — owns that call's argv (`-noshrink -nocenter`, R15), collapses cairo's blend-mode lerp so a browser can load the artwork, and measures the reference cost `figure-prepare.py` warns on (§C140 ⑫) |
+| `figrings.py` | the §C140 ⑩ soft-mask ring: locate every image-backed mask (following cairo's `feImage` blend chains, without which a blend-carrying figure reports 0 masks), the frozen `edgeline` statistic, the **interventional** gate, and the heal that gate authorises. The byte signature alone is NOT the decision — it false-positives on 8 of the 9 candidates in this corpus |
+| `figure-rings.py` | CLI over `figrings.py` — `census` (no browser), `gate` (needs a before/after render pair), `heal` (heals nothing without a gate report, and refuses to write inside `books/`) |
+| `test_figrings.py` | tests both, every planted negative paired with a positive through the same path, plus corpus anchors with a non-vacuity control |
 | `census.py` | survey a directory of figure PDFs: live text? substitutable font? prose vs verbatim? |
 | `svgout.py` | emit SVG: vector artwork + real `<text>` + a woff2 **subset** of the figure's own font |
 | `render-check.mjs` | rasterise a figure in Chromium **inside `<img>`** — the only rendering a reader ever sees |

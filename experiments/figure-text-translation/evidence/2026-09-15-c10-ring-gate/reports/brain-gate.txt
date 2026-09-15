@@ -1,0 +1,9 @@
+# CNX_Chem_03_01_brain-ec0b_IS.svg  render 975x484  scale 2.7778
+mask       side     before   after   delta  pass
+mask-2     left       35.0     0.4    34.5  yes
+mask-2     right      24.7     0.0    24.7  yes
+mask-2     top        10.3     0.0    10.3  yes
+mask-2     bottom     20.9     0.7    20.2  yes
+mask-2     -> APPROVED  sidesPassed=4 bestDelta=34.5  
+# approved 1 of 1
+# report -> /home/user/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-c10-ring-gate/reports/brain-gate.json

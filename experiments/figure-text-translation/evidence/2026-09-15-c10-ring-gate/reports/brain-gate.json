@@ -1,0 +1,48 @@
+{
+ "svg": "CNX_Chem_03_01_brain-ec0b_IS.svg",
+ "approved": [
+  "mask-2"
+ ],
+ "verdicts": {
+  "mask-2": {
+   "mask": "mask-2",
+   "refuse": null,
+   "sides": {
+    "left": {
+     "before": 35.0,
+     "after": 0.4,
+     "delta": 34.5,
+     "pass": true
+    },
+    "right": {
+     "before": 24.7,
+     "after": 0.0,
+     "delta": 24.7,
+     "pass": true
+    },
+    "top": {
+     "before": 10.3,
+     "after": 0.0,
+     "delta": 10.3,
+     "pass": true
+    },
+    "bottom": {
+     "before": 20.9,
+     "after": 0.7,
+     "delta": 20.2,
+     "pass": true
+    }
+   },
+   "approved": true,
+   "reason": null,
+   "sidesPassed": 4,
+   "bestDelta": 34.5
+  }
+ },
+ "thresholds": {
+  "sideFloor": 10.0,
+  "sideDrop": 8.0,
+  "minSides": 2,
+  "minDelta": 20.0
+ }
+}
