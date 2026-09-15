@@ -1098,7 +1098,7 @@ As before, **tasks install by `git apply` / `cp`, never by retyping. A patch tha
 - **Shell variables**, exported in every command that uses them:
   - `REPO`, `EXP`, `SCRATCH` as above;
   - `EV2=$EXP/evidence/2026-09-15-t23-review-fixes`;
-  - `REF2=$EV2/reference`.
+  - `REF2=/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-15-t23-review-fixes/reference` — written out in full, because `export EV2=… REF2=$EV2/…` expands `$EV2` before assigning it, so `REF2` silently becomes `/reference`.
 - **Install order is W → S → C → L** (Tasks 13–16). The patch numbers are not the order.
 - **Do not delete `/home/siggi/dev/scratch-c140/`** before Task 19 is complete. The instruments read, by absolute path:
   - `prep/sources.json`;

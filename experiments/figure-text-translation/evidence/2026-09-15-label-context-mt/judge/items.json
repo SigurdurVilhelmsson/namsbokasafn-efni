@@ -1,0 +1,1879 @@
+[
+ {
+  "id": "i01",
+  "figure": "CNX_Chem_03_01_alsulfatemass_img",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal (amu)",
+   "Molecular mass"
+  ],
+  "english": "Element",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Frumefni"
+   },
+   {
+    "cid": "B",
+    "text": "Þáttur"
+   }
+  ]
+ },
+ {
+  "id": "i02",
+  "figure": "CNX_Chem_03_01_alsulfatemass_img",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal (amu)",
+   "Molecular mass"
+  ],
+  "english": "Average atomic mass (amu)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Meðal atómmassi (amu)"
+   },
+   {
+    "cid": "B",
+    "text": "Meðalatómamassi (amu)"
+   }
+  ]
+ },
+ {
+  "id": "i03",
+  "figure": "CNX_Chem_03_01_alsulfatemass_img",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal (amu)",
+   "Molecular mass"
+  ],
+  "english": "Molecular mass",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Sameindamassi"
+   },
+   {
+    "cid": "B",
+    "text": "Mólmassi"
+   }
+  ]
+ },
+ {
+  "id": "i04",
+  "figure": "CNX_Chem_03_01_aspirin",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal (amu)",
+   "Molecular mass"
+  ],
+  "english": "Element",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Frumefni"
+   },
+   {
+    "cid": "B",
+    "text": "Þáttur"
+   }
+  ]
+ },
+ {
+  "id": "i05",
+  "figure": "CNX_Chem_03_01_aspirin",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal (amu)",
+   "Molecular mass"
+  ],
+  "english": "Quantity",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Magn"
+   },
+   {
+    "cid": "B",
+    "text": "Fjöldi"
+   }
+  ]
+ },
+ {
+  "id": "i06",
+  "figure": "CNX_Chem_03_01_aspirin",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal (amu)",
+   "Molecular mass"
+  ],
+  "english": "Average atomic mass (amu)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Meðal atómmassi (amu)"
+   },
+   {
+    "cid": "B",
+    "text": "Meðalatómamassi (amu)"
+   },
+   {
+    "cid": "C",
+    "text": "Meðalsætismassi (amu)"
+   }
+  ]
+ },
+ {
+  "id": "i07",
+  "figure": "CNX_Chem_03_01_aspirin",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal (amu)",
+   "Molecular mass"
+  ],
+  "english": "Molecular mass",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Sameindamassi"
+   },
+   {
+    "cid": "B",
+    "text": "Mólmassi"
+   }
+  ]
+ },
+ {
+  "id": "i08",
+  "figure": "CNX_Chem_03_01_chloroform",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal (amu)",
+   "Molecular mass"
+  ],
+  "english": "Element",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Frumefni"
+   },
+   {
+    "cid": "B",
+    "text": "Þáttur"
+   }
+  ]
+ },
+ {
+  "id": "i09",
+  "figure": "CNX_Chem_03_01_chloroform",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal (amu)",
+   "Molecular mass"
+  ],
+  "english": "Average atomic mass (amu)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Meðalatómamassi (amu)"
+   },
+   {
+    "cid": "B",
+    "text": "Meðalsætismassi (amu)"
+   },
+   {
+    "cid": "C",
+    "text": "Meðal atómmassi (amu)"
+   }
+  ]
+ },
+ {
+  "id": "i10",
+  "figure": "CNX_Chem_03_01_chloroform",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal (amu)",
+   "Molecular mass"
+  ],
+  "english": "Molecular mass",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Sameindamassi"
+   },
+   {
+    "cid": "B",
+    "text": "Mólmassi"
+   }
+  ]
+ },
+ {
+  "id": "i11",
+  "figure": "CNX_Chem_03_01_exocytosis-88f6",
+  "figureLabelsEnglish": [
+   "Synapse",
+   "Vesicles",
+   "Neuron",
+   "Neurotransmitters"
+  ],
+  "english": "Neuron",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Taugungur"
+   },
+   {
+    "cid": "B",
+    "text": "Taugafruma"
+   }
+  ]
+ },
+ {
+  "id": "i12",
+  "figure": "CNX_Chem_03_01_glycinemass_img",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity (mol element/ mol compound)",
+   "Molar mass (g/mol element)",
+   "Subtotal (g/mol compound)",
+   "Molecular mass (g/mol compound)"
+  ],
+  "english": "Element",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Frumefni"
+   },
+   {
+    "cid": "B",
+    "text": "Þáttur"
+   }
+  ]
+ },
+ {
+  "id": "i13",
+  "figure": "CNX_Chem_03_01_glycinemass_img",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity (mol element/ mol compound)",
+   "Molar mass (g/mol element)",
+   "Subtotal (g/mol compound)",
+   "Molecular mass (g/mol compound)"
+  ],
+  "english": "Molar mass (g/mol element)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mólmassi (g/mól frumefni)"
+   },
+   {
+    "cid": "B",
+    "text": "Mólmassi (g/mól frumefnis)"
+   }
+  ]
+ },
+ {
+  "id": "i14",
+  "figure": "CNX_Chem_03_01_glycinemass_img",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity (mol element/ mol compound)",
+   "Molar mass (g/mol element)",
+   "Subtotal (g/mol compound)",
+   "Molecular mass (g/mol compound)"
+  ],
+  "english": "Subtotal (g/mol compound)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Samtals (g/mól efnasambands)"
+   },
+   {
+    "cid": "B",
+    "text": "Millitala (g/mól efnasambands)"
+   },
+   {
+    "cid": "C",
+    "text": "Samtals (g/mól efnasamband)"
+   }
+  ]
+ },
+ {
+  "id": "i15",
+  "figure": "CNX_Chem_03_01_saltMass",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal",
+   "Formula mass"
+  ],
+  "english": "Element",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Frumefni"
+   },
+   {
+    "cid": "B",
+    "text": "Þáttur"
+   }
+  ]
+ },
+ {
+  "id": "i16",
+  "figure": "CNX_Chem_03_01_saltMass",
+  "figureLabelsEnglish": [
+   "Element",
+   "Quantity",
+   "Average atomic mass (amu)",
+   "Subtotal",
+   "Formula mass"
+  ],
+  "english": "Average atomic mass (amu)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Meðalatómamassi (amu)"
+   },
+   {
+    "cid": "B",
+    "text": "Meðal atómmassi (amu)"
+   },
+   {
+    "cid": "C",
+    "text": "Meðalatómmassi (amu)"
+   }
+  ]
+ },
+ {
+  "id": "i17",
+  "figure": "CNX_Chem_03_02_argon_img-9025",
+  "figureLabelsEnglish": [
+   "Moles of Ar atoms (mol)",
+   "Mass of Ar atoms (g)",
+   "Multiply by molar mass (g/mol)"
+  ],
+  "english": "Moles of Ar atoms (mol)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól Ar atóma (mól)"
+   },
+   {
+    "cid": "B",
+    "text": "Mól af Ar atómum (mól)"
+   }
+  ]
+ },
+ {
+  "id": "i18",
+  "figure": "CNX_Chem_03_02_argon_img-9025",
+  "figureLabelsEnglish": [
+   "Moles of Ar atoms (mol)",
+   "Mass of Ar atoms (g)",
+   "Multiply by molar mass (g/mol)"
+  ],
+  "english": "Multiply by molar mass (g/mol)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Margfaldaðu með mólmassa (g/mól)"
+   },
+   {
+    "cid": "B",
+    "text": "Margfaldað með mólmassa (g/mól)"
+   }
+  ]
+ },
+ {
+  "id": "i19",
+  "figure": "CNX_Chem_03_02_copperMoles_img-a962",
+  "figureLabelsEnglish": [
+   "Moles of Cu atoms (mol)",
+   "Divide by molar mass (g/mol)",
+   "Mass of Cu atoms (g)",
+   "Number of Cu atoms",
+   "Multiply by Avogadro’s number (mol–1)"
+  ],
+  "english": "Moles of Cu atoms (mol)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól Cu atóma (mól)"
+   },
+   {
+    "cid": "B",
+    "text": "Mól af Cu atómum (mól)"
+   }
+  ]
+ },
+ {
+  "id": "i20",
+  "figure": "CNX_Chem_03_02_copperMoles_img-a962",
+  "figureLabelsEnglish": [
+   "Moles of Cu atoms (mol)",
+   "Divide by molar mass (g/mol)",
+   "Mass of Cu atoms (g)",
+   "Number of Cu atoms",
+   "Multiply by Avogadro’s number (mol–1)"
+  ],
+  "english": "Multiply by Avogadro’s number (mol–1)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Margfaldið með tölu Avogadros (mól–1)"
+   },
+   {
+    "cid": "B",
+    "text": "Margfaldaðu með tölu Avogadros (mól–1)"
+   }
+  ]
+ },
+ {
+  "id": "i21",
+  "figure": "CNX_Chem_03_02_glycine_img-7c96",
+  "figureLabelsEnglish": [
+   "Moles of C2H5O2N (mol)",
+   "Divide by molar mass (g/mol)",
+   "Mass of C2H5O2N (g)"
+  ],
+  "english": "Moles of C2H5O2N (mol)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mólfjöldi C2H5O2N (mól)"
+   },
+   {
+    "cid": "B",
+    "text": "Mól af C2H5O2N (mól)"
+   }
+  ]
+ },
+ {
+  "id": "i22",
+  "figure": "CNX_Chem_03_02_glycine_img-7c96",
+  "figureLabelsEnglish": [
+   "Moles of C2H5O2N (mol)",
+   "Divide by molar mass (g/mol)",
+   "Mass of C2H5O2N (g)"
+  ],
+  "english": "Divide by molar mass (g/mol)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Deilt með mólmassa (g/mól)"
+   },
+   {
+    "cid": "B",
+    "text": "Deilið með mólmassa (g/mól)"
+   },
+   {
+    "cid": "C",
+    "text": "Deila með mólmassa (g/mól)"
+   }
+  ]
+ },
+ {
+  "id": "i23",
+  "figure": "CNX_Chem_03_02_potassium_img-f1d1",
+  "figureLabelsEnglish": [
+   "Moles of K atoms (mol)",
+   "Divide by molar mass (g/mol)",
+   "Mass of K atoms (g)"
+  ],
+  "english": "Moles of K atoms (mol)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól K-atóma (mól)"
+   },
+   {
+    "cid": "B",
+    "text": "Mól K atóma (mól)"
+   }
+  ]
+ },
+ {
+  "id": "i24",
+  "figure": "CNX_Chem_03_02_potassium_img-f1d1",
+  "figureLabelsEnglish": [
+   "Moles of K atoms (mol)",
+   "Divide by molar mass (g/mol)",
+   "Mass of K atoms (g)"
+  ],
+  "english": "Divide by molar mass (g/mol)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Deila með mólmassa (g/mól)"
+   },
+   {
+    "cid": "B",
+    "text": "Deilið með mólmassa (g/mól)"
+   },
+   {
+    "cid": "C",
+    "text": "Deilt með mólmassa (g/mól)"
+   }
+  ]
+ },
+ {
+  "id": "i25",
+  "figure": "CNX_Chem_03_02_potassium_img-f1d1",
+  "figureLabelsEnglish": [
+   "Moles of K atoms (mol)",
+   "Divide by molar mass (g/mol)",
+   "Mass of K atoms (g)"
+  ],
+  "english": "Mass of K atoms (g)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Massi K-atóma (g)"
+   },
+   {
+    "cid": "B",
+    "text": "Massi K atóma (g)"
+   }
+  ]
+ },
+ {
+  "id": "i26",
+  "figure": "CNX_Chem_03_02_sacch_img-3278",
+  "figureLabelsEnglish": [
+   "Moles of C7H5NO3S (mol)",
+   "Divide by molar mass (g/mol)",
+   "Mass of C7H5NO3S (g)",
+   "Number of C7H5NO3S molecules",
+   "Multiply by Avogadro’s number (mol–1)"
+  ],
+  "english": "Moles of C7H5NO3S (mol)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mólfjöldi C7H5NO3S (mól)"
+   },
+   {
+    "cid": "B",
+    "text": "Mól af C7H5NO3S (mól)"
+   }
+  ]
+ },
+ {
+  "id": "i27",
+  "figure": "CNX_Chem_03_02_sacch_img-3278",
+  "figureLabelsEnglish": [
+   "Moles of C7H5NO3S (mol)",
+   "Divide by molar mass (g/mol)",
+   "Mass of C7H5NO3S (g)",
+   "Number of C7H5NO3S molecules",
+   "Multiply by Avogadro’s number (mol–1)"
+  ],
+  "english": "Divide by molar mass (g/mol)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Deilið með mólmassa (g/mól)"
+   },
+   {
+    "cid": "B",
+    "text": "Deila með mólmassa (g/mól)"
+   },
+   {
+    "cid": "C",
+    "text": "Deilt með mólmassa (g/mól)"
+   }
+  ]
+ },
+ {
+  "id": "i28",
+  "figure": "CNX_Chem_03_02_sacch_img-3278",
+  "figureLabelsEnglish": [
+   "Moles of C7H5NO3S (mol)",
+   "Divide by molar mass (g/mol)",
+   "Mass of C7H5NO3S (g)",
+   "Number of C7H5NO3S molecules",
+   "Multiply by Avogadro’s number (mol–1)"
+  ],
+  "english": "Multiply by Avogadro’s number (mol–1)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Margfalda með tölu Avogadros (mól–1)"
+   },
+   {
+    "cid": "B",
+    "text": "Margfaldaðu með tölu Avogadros (mól–1)"
+   },
+   {
+    "cid": "C",
+    "text": "Margfaldað með tölu Avogadros (mól–1)"
+   }
+  ]
+ },
+ {
+  "id": "i29",
+  "figure": "CNX_Chem_03_02_vitC_img-e537",
+  "figureLabelsEnglish": [
+   "Mass of vitamin C (g)",
+   "Multiply by molar mass (g/mol)",
+   "Moles of vitamin C (mol)"
+  ],
+  "english": "Multiply by molar mass (g/mol)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Margfaldað með mólmassa (g/mól)"
+   },
+   {
+    "cid": "B",
+    "text": "Margfalda með mólmassa (g/mól)"
+   }
+  ]
+ },
+ {
+  "id": "i30",
+  "figure": "CNX_Chem_03_02_vitC_img-e537",
+  "figureLabelsEnglish": [
+   "Mass of vitamin C (g)",
+   "Multiply by molar mass (g/mol)",
+   "Moles of vitamin C (mol)"
+  ],
+  "english": "Moles of vitamin C (mol)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól af C-vítamíni (mól)"
+   },
+   {
+    "cid": "B",
+    "text": "Mólfjöldi C-vítamíns (mól)"
+   }
+  ]
+ },
+ {
+  "id": "i31",
+  "figure": "CNX_Chem_03_03_empform",
+  "figureLabelsEnglish": [
+   "Moles of A atoms",
+   "Divide by molar mass",
+   "Mass of A atoms",
+   "Moles of X atoms",
+   "Mass of X atoms",
+   "A to X mole ratio",
+   "Divide by lowest number of moles",
+   "Empirical formula",
+   "Convert ratio to lowest whole numbers"
+  ],
+  "english": "Moles of A atoms",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól af A atómum"
+   },
+   {
+    "cid": "B",
+    "text": "Mól A-atóma"
+   },
+   {
+    "cid": "C",
+    "text": "Mólfjöldi A atóma"
+   }
+  ]
+ },
+ {
+  "id": "i32",
+  "figure": "CNX_Chem_03_03_empform",
+  "figureLabelsEnglish": [
+   "Moles of A atoms",
+   "Divide by molar mass",
+   "Mass of A atoms",
+   "Moles of X atoms",
+   "Mass of X atoms",
+   "A to X mole ratio",
+   "Divide by lowest number of moles",
+   "Empirical formula",
+   "Convert ratio to lowest whole numbers"
+  ],
+  "english": "Divide by molar mass",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Deilið með mólmassa"
+   },
+   {
+    "cid": "B",
+    "text": "Deila með mólmassa"
+   }
+  ]
+ },
+ {
+  "id": "i33",
+  "figure": "CNX_Chem_03_03_empform",
+  "figureLabelsEnglish": [
+   "Moles of A atoms",
+   "Divide by molar mass",
+   "Mass of A atoms",
+   "Moles of X atoms",
+   "Mass of X atoms",
+   "A to X mole ratio",
+   "Divide by lowest number of moles",
+   "Empirical formula",
+   "Convert ratio to lowest whole numbers"
+  ],
+  "english": "Mass of A atoms",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Massi A atóma"
+   },
+   {
+    "cid": "B",
+    "text": "Massi A-atóma"
+   }
+  ]
+ },
+ {
+  "id": "i34",
+  "figure": "CNX_Chem_03_03_empform",
+  "figureLabelsEnglish": [
+   "Moles of A atoms",
+   "Divide by molar mass",
+   "Mass of A atoms",
+   "Moles of X atoms",
+   "Mass of X atoms",
+   "A to X mole ratio",
+   "Divide by lowest number of moles",
+   "Empirical formula",
+   "Convert ratio to lowest whole numbers"
+  ],
+  "english": "Moles of X atoms",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól X-atóma"
+   },
+   {
+    "cid": "B",
+    "text": "Mólfjöldi X atóma"
+   },
+   {
+    "cid": "C",
+    "text": "Mól af X atómum"
+   }
+  ]
+ },
+ {
+  "id": "i35",
+  "figure": "CNX_Chem_03_03_empform",
+  "figureLabelsEnglish": [
+   "Moles of A atoms",
+   "Divide by molar mass",
+   "Mass of A atoms",
+   "Moles of X atoms",
+   "Mass of X atoms",
+   "A to X mole ratio",
+   "Divide by lowest number of moles",
+   "Empirical formula",
+   "Convert ratio to lowest whole numbers"
+  ],
+  "english": "Mass of X atoms",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Massi X-atóma"
+   },
+   {
+    "cid": "B",
+    "text": "Massi X atóma"
+   }
+  ]
+ },
+ {
+  "id": "i36",
+  "figure": "CNX_Chem_03_03_empform",
+  "figureLabelsEnglish": [
+   "Moles of A atoms",
+   "Divide by molar mass",
+   "Mass of A atoms",
+   "Moles of X atoms",
+   "Mass of X atoms",
+   "A to X mole ratio",
+   "Divide by lowest number of moles",
+   "Empirical formula",
+   "Convert ratio to lowest whole numbers"
+  ],
+  "english": "Divide by lowest number of moles",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Deila með lægsta mólfjölda"
+   },
+   {
+    "cid": "B",
+    "text": "Deilið með lægsta mólfjölda"
+   }
+  ]
+ },
+ {
+  "id": "i37",
+  "figure": "CNX_Chem_03_03_empform",
+  "figureLabelsEnglish": [
+   "Moles of A atoms",
+   "Divide by molar mass",
+   "Mass of A atoms",
+   "Moles of X atoms",
+   "Mass of X atoms",
+   "A to X mole ratio",
+   "Divide by lowest number of moles",
+   "Empirical formula",
+   "Convert ratio to lowest whole numbers"
+  ],
+  "english": "Empirical formula",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Reynsluformúla"
+   },
+   {
+    "cid": "B",
+    "text": "Empirísk formúla"
+   }
+  ]
+ },
+ {
+  "id": "i38",
+  "figure": "CNX_Chem_03_05_Example2_img",
+  "figureLabelsEnglish": [
+   "Mass of solution (g)",
+   "Multiply by mass percent as ratio (g HCl/g solution)",
+   "Mass of HCl (g)",
+   "Multiply by density (g/mL)",
+   "Volume of solution (mL)"
+  ],
+  "english": "Multiply by mass percent as ratio (g HCl/g solution)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Margfaldaðu með massaprósentu sem hlutfalli (g HCl/g lausn)"
+   },
+   {
+    "cid": "B",
+    "text": "Margfaldað með massaprósentu sem hlutfalli (g HCl/g lausnar)"
+   },
+   {
+    "cid": "C",
+    "text": "Margfaldað með massaprósentu sem hlutfalli (g HCl/g lausn)"
+   }
+  ]
+ },
+ {
+  "id": "i39",
+  "figure": "CNX_Chem_03_05_Example2_img",
+  "figureLabelsEnglish": [
+   "Mass of solution (g)",
+   "Multiply by mass percent as ratio (g HCl/g solution)",
+   "Mass of HCl (g)",
+   "Multiply by density (g/mL)",
+   "Volume of solution (mL)"
+  ],
+  "english": "Multiply by density (g/mL)",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Margfaldað með eðlismassa (g/ml)"
+   },
+   {
+    "cid": "B",
+    "text": "Margfalda með eðlismassa (g/ml)"
+   }
+  ]
+ },
+ {
+  "id": "i40",
+  "figure": "CNX_Chem_04_01_rxn2",
+  "figureLabelsEnglish": [
+   "Reactant",
+   "Reactant side",
+   "Product side",
+   "Coefficient",
+   "Product"
+  ],
+  "english": "Product side",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Myndefnamegin"
+   },
+   {
+    "cid": "B",
+    "text": "Vörumegin"
+   }
+  ]
+ },
+ {
+  "id": "i41",
+  "figure": "CNX_Chem_04_01_rxn2",
+  "figureLabelsEnglish": [
+   "Reactant",
+   "Reactant side",
+   "Product side",
+   "Coefficient",
+   "Product"
+  ],
+  "english": "Product",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Myndefni"
+   },
+   {
+    "cid": "B",
+    "text": "Vara"
+   }
+  ]
+ },
+ {
+  "id": "i42",
+  "figure": "CNX_Chem_04_01_rxn3",
+  "figureLabelsEnglish": [
+   "Mixture before reaction",
+   "Mixture after reaction"
+  ],
+  "english": "Mixture after reaction",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Blanda eftir efnahvarf"
+   },
+   {
+    "cid": "B",
+    "text": "Blanda eftir hvarf"
+   }
+  ]
+ },
+ {
+  "id": "i43",
+  "figure": "CNX_Chem_04_03_ethene_img",
+  "figureLabelsEnglish": [
+   "required to react with H2O to produce 9.55 g of",
+   "The number of moles and the mass of"
+  ],
+  "english": "required to react with H2O to produce 9.55 g of",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "þarf til að hvarfast við H2O til að mynda 9,55 g af"
+   },
+   {
+    "cid": "B",
+    "text": "sem þarf til að hvarfast við H2O til að mynda 9,55 g af"
+   }
+  ]
+ },
+ {
+  "id": "i44",
+  "figure": "CNX_Chem_04_03_flowchart",
+  "figureLabelsEnglish": [
+   "Density",
+   "Molar mass",
+   "Avogadro’s number",
+   "Stoichiometric factor",
+   "Volume of pure substance B",
+   "Mass of B",
+   "Mass of A",
+   "Volume of pure substance A",
+   "Number of particles of A",
+   "Number of particles of B",
+   "Molarity",
+   "Volume of  solution B",
+   "Moles of B",
+   "Moles of A",
+   "Volume of  solution A"
+  ],
+  "english": "Density",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Eðlismassi"
+   },
+   {
+    "cid": "B",
+    "text": "Þéttleiki"
+   }
+  ]
+ },
+ {
+  "id": "i45",
+  "figure": "CNX_Chem_04_03_flowchart",
+  "figureLabelsEnglish": [
+   "Density",
+   "Molar mass",
+   "Avogadro’s number",
+   "Stoichiometric factor",
+   "Volume of pure substance B",
+   "Mass of B",
+   "Mass of A",
+   "Volume of pure substance A",
+   "Number of particles of A",
+   "Number of particles of B",
+   "Molarity",
+   "Volume of  solution B",
+   "Moles of B",
+   "Moles of A",
+   "Volume of  solution A"
+  ],
+  "english": "Stoichiometric factor",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Stökiómetrískur þáttur"
+   },
+   {
+    "cid": "B",
+    "text": "Efnajöfnustuðull"
+   }
+  ]
+ },
+ {
+  "id": "i46",
+  "figure": "CNX_Chem_04_03_flowchart",
+  "figureLabelsEnglish": [
+   "Density",
+   "Molar mass",
+   "Avogadro’s number",
+   "Stoichiometric factor",
+   "Volume of pure substance B",
+   "Mass of B",
+   "Mass of A",
+   "Volume of pure substance A",
+   "Number of particles of A",
+   "Number of particles of B",
+   "Molarity",
+   "Volume of  solution B",
+   "Moles of B",
+   "Moles of A",
+   "Volume of  solution A"
+  ],
+  "english": "Number of particles of A",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Fjöldi agna af A"
+   },
+   {
+    "cid": "B",
+    "text": "Fjöldi einda A"
+   }
+  ]
+ },
+ {
+  "id": "i47",
+  "figure": "CNX_Chem_04_03_flowchart",
+  "figureLabelsEnglish": [
+   "Density",
+   "Molar mass",
+   "Avogadro’s number",
+   "Stoichiometric factor",
+   "Volume of pure substance B",
+   "Mass of B",
+   "Mass of A",
+   "Volume of pure substance A",
+   "Number of particles of A",
+   "Number of particles of B",
+   "Molarity",
+   "Volume of  solution B",
+   "Moles of B",
+   "Moles of A",
+   "Volume of  solution A"
+  ],
+  "english": "Number of particles of B",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Fjöldi agna af B"
+   },
+   {
+    "cid": "B",
+    "text": "Fjöldi einda B"
+   }
+  ]
+ },
+ {
+  "id": "i48",
+  "figure": "CNX_Chem_04_03_flowchart",
+  "figureLabelsEnglish": [
+   "Density",
+   "Molar mass",
+   "Avogadro’s number",
+   "Stoichiometric factor",
+   "Volume of pure substance B",
+   "Mass of B",
+   "Mass of A",
+   "Volume of pure substance A",
+   "Number of particles of A",
+   "Number of particles of B",
+   "Molarity",
+   "Volume of  solution B",
+   "Moles of B",
+   "Moles of A",
+   "Volume of  solution A"
+  ],
+  "english": "Moles of B",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól af B"
+   },
+   {
+    "cid": "B",
+    "text": "Mólfjöldi B"
+   }
+  ]
+ },
+ {
+  "id": "i49",
+  "figure": "CNX_Chem_04_03_flowchart",
+  "figureLabelsEnglish": [
+   "Density",
+   "Molar mass",
+   "Avogadro’s number",
+   "Stoichiometric factor",
+   "Volume of pure substance B",
+   "Mass of B",
+   "Mass of A",
+   "Volume of pure substance A",
+   "Number of particles of A",
+   "Number of particles of B",
+   "Molarity",
+   "Volume of  solution B",
+   "Moles of B",
+   "Moles of A",
+   "Volume of  solution A"
+  ],
+  "english": "Moles of A",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mólfjöldi A"
+   },
+   {
+    "cid": "B",
+    "text": "Mól af A"
+   }
+  ]
+ },
+ {
+  "id": "i50",
+  "figure": "CNX_Chem_04_03_map2_img",
+  "figureLabelsEnglish": [
+   "Mass of  Mg(OH)2",
+   "Moles of  Mg(OH)2",
+   "Moles of NaOH",
+   "Molar mass",
+   "Mass of NaOH",
+   "Stoichiometric factor"
+  ],
+  "english": "Moles of  Mg(OH)2",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól af Mg(OH)2"
+   },
+   {
+    "cid": "B",
+    "text": "Mól Mg(OH)2"
+   }
+  ]
+ },
+ {
+  "id": "i51",
+  "figure": "CNX_Chem_04_03_map2_img",
+  "figureLabelsEnglish": [
+   "Mass of  Mg(OH)2",
+   "Moles of  Mg(OH)2",
+   "Moles of NaOH",
+   "Molar mass",
+   "Mass of NaOH",
+   "Stoichiometric factor"
+  ],
+  "english": "Moles of NaOH",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól af NaOH"
+   },
+   {
+    "cid": "B",
+    "text": "Mól NaOH"
+   }
+  ]
+ },
+ {
+  "id": "i52",
+  "figure": "CNX_Chem_04_03_map2_img",
+  "figureLabelsEnglish": [
+   "Mass of  Mg(OH)2",
+   "Moles of  Mg(OH)2",
+   "Moles of NaOH",
+   "Molar mass",
+   "Mass of NaOH",
+   "Stoichiometric factor"
+  ],
+  "english": "Stoichiometric factor",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Stöðugleikastuðull"
+   },
+   {
+    "cid": "B",
+    "text": "Efnajöfnustuðull"
+   }
+  ]
+ },
+ {
+  "id": "i53",
+  "figure": "CNX_Chem_04_03_map3_img",
+  "figureLabelsEnglish": [
+   "Mass of  C8H18",
+   "Moles of  C8H18",
+   "Moles of O2",
+   "Molar mass",
+   "Mass of O2",
+   "Stoichiometric factor"
+  ],
+  "english": "Moles of  C8H18",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól af C8H18"
+   },
+   {
+    "cid": "B",
+    "text": "Mól C8H18"
+   }
+  ]
+ },
+ {
+  "id": "i54",
+  "figure": "CNX_Chem_04_03_map3_img",
+  "figureLabelsEnglish": [
+   "Mass of  C8H18",
+   "Moles of  C8H18",
+   "Moles of O2",
+   "Molar mass",
+   "Mass of O2",
+   "Stoichiometric factor"
+  ],
+  "english": "Moles of O2",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól af O2"
+   },
+   {
+    "cid": "B",
+    "text": "Mól O2"
+   }
+  ]
+ },
+ {
+  "id": "i55",
+  "figure": "CNX_Chem_04_03_map3_img",
+  "figureLabelsEnglish": [
+   "Mass of  C8H18",
+   "Moles of  C8H18",
+   "Moles of O2",
+   "Molar mass",
+   "Mass of O2",
+   "Stoichiometric factor"
+  ],
+  "english": "Stoichiometric factor",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Efnajöfnustuðull"
+   },
+   {
+    "cid": "B",
+    "text": "Stöðugleikastuðull"
+   }
+  ]
+ },
+ {
+  "id": "i56",
+  "figure": "CNX_Chem_04_03_moleratio1_img",
+  "figureLabelsEnglish": [
+   "Moles of Al",
+   "Moles of I2",
+   "Stoichiometric  factor"
+  ],
+  "english": "Stoichiometric  factor",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Stöðugleikastuðull"
+   },
+   {
+    "cid": "B",
+    "text": "Stökiómetrískur þáttur"
+   },
+   {
+    "cid": "C",
+    "text": "Efnajöfnustuðull"
+   }
+  ]
+ },
+ {
+  "id": "i57",
+  "figure": "CNX_Chem_04_03_moleratio2_img",
+  "figureLabelsEnglish": [
+   "Moles of C3H8",
+   "Moles of CO2",
+   "Molecules of  CO2",
+   "Stoichiometric  factor",
+   "Avogadro’s number"
+  ],
+  "english": "Molecules of  CO2",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Sameindir CO2"
+   },
+   {
+    "cid": "B",
+    "text": "Sameindir af CO2"
+   },
+   {
+    "cid": "C",
+    "text": "CO2-sameindir"
+   }
+  ]
+ },
+ {
+  "id": "i58",
+  "figure": "CNX_Chem_04_03_moleratio2_img",
+  "figureLabelsEnglish": [
+   "Moles of C3H8",
+   "Moles of CO2",
+   "Molecules of  CO2",
+   "Stoichiometric  factor",
+   "Avogadro’s number"
+  ],
+  "english": "Stoichiometric  factor",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Efnajöfnustuðull"
+   },
+   {
+    "cid": "B",
+    "text": "Stöðumælingarstuðull"
+   },
+   {
+    "cid": "C",
+    "text": "Stökiómetrískur þáttur"
+   }
+  ]
+ },
+ {
+  "id": "i59",
+  "figure": "CNX_Chem_04_04_limiting",
+  "figureLabelsEnglish": [
+   "Before reaction",
+   "After reaction",
+   "6 H2 and 4 Cl2",
+   "8 HCl and 2 H2"
+  ],
+  "english": "After reaction",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Eftir hvarf"
+   },
+   {
+    "cid": "B",
+    "text": "Eftir viðbrögð"
+   }
+  ]
+ },
+ {
+  "id": "i60",
+  "figure": "CNX_Chem_04_04_sandwich",
+  "figureLabelsEnglish": [
+   "Provided with:",
+   "+ 11 slices of cheese",
+   "We can make:",
+   "28 slices of bread",
+   "11 sandwiches",
+   "+ 6 slices bread left over",
+   "1 sandwich = 2 slices of bread + 1 slice of cheese"
+  ],
+  "english": "Provided with:",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Fylgir með:"
+   },
+   {
+    "cid": "B",
+    "text": "Fyrirliggjandi:"
+   }
+  ]
+ },
+ {
+  "id": "i61",
+  "figure": "CNX_Chem_04_05_combmap_img",
+  "figureLabelsEnglish": [
+   "Mass of CO2",
+   "Moles of CO2",
+   "Moles of C",
+   "Mass of C",
+   "Mass of H2O",
+   "Moles of H2O",
+   "Moles of H",
+   "Mass of H",
+   "Percent composition",
+   "C to H mole ratio",
+   "Empirical formula",
+   "Molar mass",
+   "Stoichiometric factor"
+  ],
+  "english": "Moles of CO2",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól af CO2"
+   },
+   {
+    "cid": "B",
+    "text": "Mól CO2"
+   }
+  ]
+ },
+ {
+  "id": "i62",
+  "figure": "CNX_Chem_04_05_combmap_img",
+  "figureLabelsEnglish": [
+   "Mass of CO2",
+   "Moles of CO2",
+   "Moles of C",
+   "Mass of C",
+   "Mass of H2O",
+   "Moles of H2O",
+   "Moles of H",
+   "Mass of H",
+   "Percent composition",
+   "C to H mole ratio",
+   "Empirical formula",
+   "Molar mass",
+   "Stoichiometric factor"
+  ],
+  "english": "Moles of C",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól C"
+   },
+   {
+    "cid": "B",
+    "text": "Mól af C"
+   }
+  ]
+ },
+ {
+  "id": "i63",
+  "figure": "CNX_Chem_04_05_combmap_img",
+  "figureLabelsEnglish": [
+   "Mass of CO2",
+   "Moles of CO2",
+   "Moles of C",
+   "Mass of C",
+   "Mass of H2O",
+   "Moles of H2O",
+   "Moles of H",
+   "Mass of H",
+   "Percent composition",
+   "C to H mole ratio",
+   "Empirical formula",
+   "Molar mass",
+   "Stoichiometric factor"
+  ],
+  "english": "Moles of H2O",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól H2O"
+   },
+   {
+    "cid": "B",
+    "text": "Mól af H2O"
+   }
+  ]
+ },
+ {
+  "id": "i64",
+  "figure": "CNX_Chem_04_05_combmap_img",
+  "figureLabelsEnglish": [
+   "Mass of CO2",
+   "Moles of CO2",
+   "Moles of C",
+   "Mass of C",
+   "Mass of H2O",
+   "Moles of H2O",
+   "Moles of H",
+   "Mass of H",
+   "Percent composition",
+   "C to H mole ratio",
+   "Empirical formula",
+   "Molar mass",
+   "Stoichiometric factor"
+  ],
+  "english": "Moles of H",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól H"
+   },
+   {
+    "cid": "B",
+    "text": "Mól af H"
+   }
+  ]
+ },
+ {
+  "id": "i65",
+  "figure": "CNX_Chem_04_05_combmap_img",
+  "figureLabelsEnglish": [
+   "Mass of CO2",
+   "Moles of CO2",
+   "Moles of C",
+   "Mass of C",
+   "Mass of H2O",
+   "Moles of H2O",
+   "Moles of H",
+   "Mass of H",
+   "Percent composition",
+   "C to H mole ratio",
+   "Empirical formula",
+   "Molar mass",
+   "Stoichiometric factor"
+  ],
+  "english": "Percent composition",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Efnasamsetning í prósentum"
+   },
+   {
+    "cid": "B",
+    "text": "Prósentusamsetning"
+   }
+  ]
+ },
+ {
+  "id": "i66",
+  "figure": "CNX_Chem_04_05_combmap_img",
+  "figureLabelsEnglish": [
+   "Mass of CO2",
+   "Moles of CO2",
+   "Moles of C",
+   "Mass of C",
+   "Mass of H2O",
+   "Moles of H2O",
+   "Moles of H",
+   "Mass of H",
+   "Percent composition",
+   "C to H mole ratio",
+   "Empirical formula",
+   "Molar mass",
+   "Stoichiometric factor"
+  ],
+  "english": "Empirical formula",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Reynsluformúla"
+   },
+   {
+    "cid": "B",
+    "text": "Empírísk formúla"
+   }
+  ]
+ },
+ {
+  "id": "i67",
+  "figure": "CNX_Chem_04_05_combmap_img",
+  "figureLabelsEnglish": [
+   "Mass of CO2",
+   "Moles of CO2",
+   "Moles of C",
+   "Mass of C",
+   "Mass of H2O",
+   "Moles of H2O",
+   "Moles of H",
+   "Mass of H",
+   "Percent composition",
+   "C to H mole ratio",
+   "Empirical formula",
+   "Molar mass",
+   "Stoichiometric factor"
+  ],
+  "english": "Stoichiometric factor",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Efnajöfnustuðull"
+   },
+   {
+    "cid": "B",
+    "text": "Magnhlutfallsstuðull"
+   }
+  ]
+ },
+ {
+  "id": "i68",
+  "figure": "CNX_Chem_04_05_combustion",
+  "figureLabelsEnglish": [
+   "Furnace",
+   "CO2, H2O, O2, and other gases",
+   "H2O absorber such as  Mg(ClO4)2",
+   "CO2 absorber such as NaOH",
+   "O2 and  other gases",
+   "Sample"
+  ],
+  "english": "Sample",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Sýni"
+   },
+   {
+    "cid": "B",
+    "text": "Sýnishorn"
+   }
+  ]
+ },
+ {
+  "id": "i69",
+  "figure": "CNX_Chem_04_05_map7_img",
+  "figureLabelsEnglish": [
+   "Volume of  NaOH",
+   "Moles of  NaOH",
+   "Moles of HCl",
+   "Molar concentration",
+   "Concentration  of HCl",
+   "Solution volume",
+   "Stoichiometric factor"
+  ],
+  "english": "Moles of  NaOH",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mólfjöldi NaOH"
+   },
+   {
+    "cid": "B",
+    "text": "Mól af NaOH"
+   }
+  ]
+ },
+ {
+  "id": "i70",
+  "figure": "CNX_Chem_04_05_map7_img",
+  "figureLabelsEnglish": [
+   "Volume of  NaOH",
+   "Moles of  NaOH",
+   "Moles of HCl",
+   "Molar concentration",
+   "Concentration  of HCl",
+   "Solution volume",
+   "Stoichiometric factor"
+  ],
+  "english": "Moles of HCl",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól af HCl"
+   },
+   {
+    "cid": "B",
+    "text": "Mólfjöldi HCl"
+   }
+  ]
+ },
+ {
+  "id": "i71",
+  "figure": "CNX_Chem_04_05_map8_img",
+  "figureLabelsEnglish": [
+   "Molar mass",
+   "Stoichiometric factor",
+   "Sample mass",
+   "Mass of  BaSO4",
+   "Moles of  BaSO4",
+   "Moles of  CaSO4",
+   "Mass of  CaSO4",
+   "Percent  CaSO4"
+  ],
+  "english": "Stoichiometric factor",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Stökiómetrískur stuðull"
+   },
+   {
+    "cid": "B",
+    "text": "Efnajöfnustuðull"
+   },
+   {
+    "cid": "C",
+    "text": "Efnamagnsstuðull"
+   }
+  ]
+ },
+ {
+  "id": "i72",
+  "figure": "CNX_Chem_04_05_map8_img",
+  "figureLabelsEnglish": [
+   "Molar mass",
+   "Stoichiometric factor",
+   "Sample mass",
+   "Mass of  BaSO4",
+   "Moles of  BaSO4",
+   "Moles of  CaSO4",
+   "Mass of  CaSO4",
+   "Percent  CaSO4"
+  ],
+  "english": "Sample mass",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Sýnismassi"
+   },
+   {
+    "cid": "B",
+    "text": "Massi sýnis"
+   }
+  ]
+ },
+ {
+  "id": "i73",
+  "figure": "CNX_Chem_04_05_map8_img",
+  "figureLabelsEnglish": [
+   "Molar mass",
+   "Stoichiometric factor",
+   "Sample mass",
+   "Mass of  BaSO4",
+   "Moles of  BaSO4",
+   "Moles of  CaSO4",
+   "Mass of  CaSO4",
+   "Percent  CaSO4"
+  ],
+  "english": "Moles of  BaSO4",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól BaSO4"
+   },
+   {
+    "cid": "B",
+    "text": "Mól af BaSO4"
+   }
+  ]
+ },
+ {
+  "id": "i74",
+  "figure": "CNX_Chem_04_05_map8_img",
+  "figureLabelsEnglish": [
+   "Molar mass",
+   "Stoichiometric factor",
+   "Sample mass",
+   "Mass of  BaSO4",
+   "Moles of  BaSO4",
+   "Moles of  CaSO4",
+   "Mass of  CaSO4",
+   "Percent  CaSO4"
+  ],
+  "english": "Moles of  CaSO4",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Mól af CaSO4"
+   },
+   {
+    "cid": "B",
+    "text": "Mól CaSO4"
+   }
+  ]
+ },
+ {
+  "id": "i75",
+  "figure": "CNX_Chem_04_05_map8_img",
+  "figureLabelsEnglish": [
+   "Molar mass",
+   "Stoichiometric factor",
+   "Sample mass",
+   "Mass of  BaSO4",
+   "Moles of  BaSO4",
+   "Moles of  CaSO4",
+   "Mass of  CaSO4",
+   "Percent  CaSO4"
+  ],
+  "english": "Percent  CaSO4",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Prósenta CaSO4"
+   },
+   {
+    "cid": "B",
+    "text": "Hlutfall CaSO4"
+   }
+  ]
+ },
+ {
+  "id": "i76",
+  "figure": "CNX_Chem_14_03_FishLemon",
+  "figureLabelsEnglish": [
+   "CH3COOH",
+   "CH3COO–",
+   "Acetic acid",
+   "Acetate ion",
+   "Putrescine",
+   "Putrescinium ion"
+  ],
+  "english": "Putrescinium ion",
+  "candidates": [
+   {
+    "cid": "A",
+    "text": "Pútreskínjón"
+   },
+   {
+    "cid": "B",
+    "text": "Pútresínjón"
+   }
+  ]
+ }
+]

@@ -1,0 +1,4246 @@
+{
+  "summary": "Blind three-lens judgement of 76 figure labels whose MT changed when labels were joined, plus an independent recount of the headline numbers",
+  "agentCount": 4,
+  "logs": [],
+  "result": {
+    "judged": [
+      {
+        "lens": "terminology",
+        "result": {
+          "method": "I judged all 76 items blind, working only from items.json. I used books/efnafraedi-2e/glossary/glossary-unified.json as the terminology reference, and ran grep -a counts over efnafraedi-2e/02-mt-output to see which forms the corpus actually uses. I did not open any key, results or figure-text files. Rules I applied the same way on every item: (1) 'Moles of X' as 'Mólfjöldi X' is correct, bare 'Mól X' is correct and matches 'Massi X', and 'Mól af X' is acceptable because a teacher would likely tidy the 'af'. (2) An arrow label as an infinitive (Deila/Margfalda) or participle (Deilt/Margfaldað) is correct; an imperative (Deilið/Margfaldaðu/Margfaldið) is acceptable. (3) A letter or symbol joined to a noun takes a hyphen, so 'K-atóma' is correct and 'K atóma' acceptable. (4) Wrong-sense words are wrong: Þáttur for element, Vara for product, viðbrögð for reaction, and Stöðugleikastuðull or Stöðumælingarstuðull for stoichiometric factor.",
+          "items": [
+            {
+              "id": "i01",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Frumefni is the established term for a chemical element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Þáttur means factor or component, not a chemical element."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: element -> frumefni"
+            },
+            {
+              "id": "i02",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Right term, but 'meðal' should be joined into one compound."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Understandable, but atómamassi is less established than atómmassi."
+                }
+              ],
+              "best": "tie",
+              "evidence": "glossary: atomic mass -> atómmassi; 02-mt-output: meðalatómmassi 6 / meðalatómmassa 13 vs Meðalatómamassi 3 / meðalatómamassa 4"
+            },
+            {
+              "id": "i03",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Sameindamassi is molecular mass, and the column is in amu."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Mólmassi is molar mass in g/mol, a different quantity."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: molecular weight -> sameindamassi; molar mass -> mólmassi"
+            },
+            {
+              "id": "i04",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established term for element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Wrong sense: factor or component."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: element -> frumefni"
+            },
+            {
+              "id": "i05",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Magn means amount; the column is a count of atoms."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Fjöldi (number of atoms) fits a count column."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: quantity -> stærð (physics domain, not a fit here)"
+            },
+            {
+              "id": "i06",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Right term, but written as two words."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Genitive-plural compound; less established than meðalatómmassi."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "wrong",
+                  "why": "Sætismassi (position mass) is not a chemistry term."
+                }
+              ],
+              "best": "tie",
+              "evidence": "glossary: atomic mass -> atómmassi; 02-mt-output counts favour meðalatómmassi"
+            },
+            {
+              "id": "i07",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Molecular mass in amu."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Molar mass is a different quantity."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: molecular weight -> sameindamassi"
+            },
+            {
+              "id": "i08",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Wrong sense."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: element -> frumefni"
+            },
+            {
+              "id": "i09",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Understandable; atómmassi is the established stem."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Sætismassi is not a chemistry term."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Right term, but 'meðal' should be joined."
+                }
+              ],
+              "best": "tie",
+              "evidence": "glossary: atomic mass -> atómmassi"
+            },
+            {
+              "id": "i10",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Molecular mass."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Molar mass is a different quantity."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: molecular weight -> sameindamassi"
+            },
+            {
+              "id": "i11",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Taugungur is the formal term (glossary head form)."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Taugafruma is the common school-level term and is listed as an alternative."
+                }
+              ],
+              "best": "tie",
+              "evidence": "glossary: neuron -> taugungur (alt taugafruma)"
+            },
+            {
+              "id": "i12",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Wrong sense."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: element -> frumefni"
+            },
+            {
+              "id": "i13",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Frumefni should be genitive after g/mól."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Right term with the correct genitive, frumefnis."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: molar mass -> mólmassi"
+            },
+            {
+              "id": "i14",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Samtals suggests a grand total rather than a subtotal."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Millitala conveys an intermediate figure but is a coinage; millisamtala is the usual word."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Same as A, and efnasamband should be genitive."
+                }
+              ],
+              "best": "B",
+              "evidence": "02-mt-output: Millitala 6"
+            },
+            {
+              "id": "i15",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Wrong sense."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: element -> frumefni"
+            },
+            {
+              "id": "i16",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Understandable, but the stem atóma- is less established."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Right term, but written as two words."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Meðalatómmassi is the established compound."
+                }
+              ],
+              "best": "C",
+              "evidence": "02-mt-output: meðalatómmassi/-a 19 vs meðalatómamassi/-a 7"
+            },
+            {
+              "id": "i17",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Correct genitive, but it needs the hyphen Ar-atóma."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Understandable 'af' construction, and it lacks the hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i18",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "An imperative is less usual on a flowchart arrow."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "The participle form is standard for a conversion arrow."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: molar mass -> mólmassi"
+            },
+            {
+              "id": "i19",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Correct genitive, but it needs the hyphen Cu-atóma."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Understandable 'af' construction, and it lacks the hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i20",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Plural imperative; understandable, but a participle or infinitive suits an arrow better."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Singular imperative; same register issue."
+                }
+              ],
+              "best": "tie",
+              "evidence": ""
+            },
+            {
+              "id": "i21",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Mólfjöldi is the established phrase for amount in moles."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Understandable but more colloquial."
+                }
+              ],
+              "best": "A",
+              "evidence": "02-mt-output: mólfjöldi/mólfjölda ~36"
+            },
+            {
+              "id": "i22",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Participle form suits an arrow label."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Plural imperative; register less suited to an arrow."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "The infinitive is also standard for an arrow."
+                }
+              ],
+              "best": "tie",
+              "evidence": "glossary: molar mass -> mólmassi"
+            },
+            {
+              "id": "i23",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Correctly hyphenated genitive."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen after K."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i24",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "The infinitive suits an arrow."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Imperative register."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "The participle suits an arrow."
+                }
+              ],
+              "best": "tie",
+              "evidence": "glossary: molar mass -> mólmassi"
+            },
+            {
+              "id": "i25",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Correctly hyphenated."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: mass -> massi"
+            },
+            {
+              "id": "i26",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established phrase."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": "02-mt-output: mólfjöldi usage"
+            },
+            {
+              "id": "i27",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Imperative register."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Infinitive arrow label."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Participle arrow label."
+                }
+              ],
+              "best": "tie",
+              "evidence": "glossary: molar mass -> mólmassi"
+            },
+            {
+              "id": "i28",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Infinitive arrow label."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Imperative register."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Participle arrow label."
+                }
+              ],
+              "best": "tie",
+              "evidence": ""
+            },
+            {
+              "id": "i29",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Participle arrow label."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Infinitive arrow label."
+                }
+              ],
+              "best": "tie",
+              "evidence": "glossary: molar mass -> mólmassi"
+            },
+            {
+              "id": "i30",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Understandable 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Established phrase with the correct genitive."
+                }
+              ],
+              "best": "B",
+              "evidence": "02-mt-output: mólfjöldi usage"
+            },
+            {
+              "id": "i31",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction, and it lacks the hyphen."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise, hyphenated genitive."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Best term, but it needs the hyphen A-atóma."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i32",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Imperative register."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Infinitive arrow label."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: molar mass -> mólmassi"
+            },
+            {
+              "id": "i33",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Correctly hyphenated."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: mass -> massi"
+            },
+            {
+              "id": "i34",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Hyphenated genitive."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Best term, but it lacks the hyphen."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction, and it lacks the hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i35",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Correctly hyphenated."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: mass -> massi"
+            },
+            {
+              "id": "i36",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Infinitive with the established term mólfjöldi."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Imperative register."
+                }
+              ],
+              "best": "A",
+              "evidence": "02-mt-output: mólfjölda usage"
+            },
+            {
+              "id": "i37",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Reynsluformúla is the established term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "A loanword where an Icelandic term is established."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: empirical formula -> reynsluformúla; 02-mt-output ~100 uses"
+            },
+            {
+              "id": "i38",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Imperative, and lausn should be genitive (lausnar)."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Participle with the correct genitive lausnar."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Lausn should be genitive."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: mass percentage -> massaprósenta"
+            },
+            {
+              "id": "i39",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Eðlismassi is the established term for density."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Same term, infinitive form."
+                }
+              ],
+              "best": "tie",
+              "evidence": "glossary: density -> eðlismassi"
+            },
+            {
+              "id": "i40",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Uses myndefni, the chemistry term for product."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Vara is a commercial product, the wrong sense."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: product -> myndefni"
+            },
+            {
+              "id": "i41",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Myndefni is a reaction product."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Vara means merchandise."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: product -> myndefni"
+            },
+            {
+              "id": "i42",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Efnahvarf is the full term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Hvarf is the standard short form in chemistry."
+                }
+              ],
+              "best": "tie",
+              "evidence": "glossary: chemical reaction -> efnahvarf"
+            },
+            {
+              "id": "i43",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "wrong",
+                  "why": "Without the relative 'sem' the clause does not attach to the heading noun."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "The relative clause with 'sem' is grammatical and chemically right."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i44",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Eðlismassi is the established chemistry term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Þéttleiki is a generic word, listed only as an alternative."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: density -> eðlismassi (alt þéttleiki)"
+            },
+            {
+              "id": "i45",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "A loanword calque; understandable but not established."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Efnajöfnustuðull expresses a factor taken from the equation coefficients."
+                }
+              ],
+              "best": "B",
+              "evidence": "02-mt-output: efnajöfnustuðl- 7 uses; glossary: coefficient -> stuðull"
+            },
+            {
+              "id": "i46",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Agnir is understandable, but the 'af' construction is clumsy."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Eind is the glossary term for particle, in the genitive."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: particle -> eind"
+            },
+            {
+              "id": "i47",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Clumsy 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Glossary term in the genitive."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: particle -> eind"
+            },
+            {
+              "id": "i48",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Mólfjöldi is the established phrase."
+                }
+              ],
+              "best": "B",
+              "evidence": "02-mt-output: mólfjöldi usage"
+            },
+            {
+              "id": "i49",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established phrase."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": "02-mt-output: mólfjöldi usage"
+            },
+            {
+              "id": "i50",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Understandable, but 'af' breaks the parallel with 'Massi X'."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise and parallel to 'Massi Mg(OH)2'."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i51",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise flowchart label."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i52",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "wrong",
+                  "why": "Stöðugleikastuðull means stability constant, the wrong concept."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "A factor from the equation coefficients."
+                }
+              ],
+              "best": "B",
+              "evidence": "02-mt-output: efnajöfnustuðl- uses"
+            },
+            {
+              "id": "i53",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise flowchart label."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i54",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise flowchart label."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i55",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "A factor from the equation coefficients."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Means stability constant."
+                }
+              ],
+              "best": "A",
+              "evidence": "02-mt-output: efnajöfnustuðl- uses"
+            },
+            {
+              "id": "i56",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "wrong",
+                  "why": "Stability constant, the wrong concept."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Understandable loanword calque."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Efnajöfnustuðull fits the concept."
+                }
+              ],
+              "best": "C",
+              "evidence": "02-mt-output: efnajöfnustuðl- uses"
+            },
+            {
+              "id": "i57",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Understandable, but a bare formula after the noun is awkward."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Clumsy 'af' construction."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "The hyphenated compound CO2-sameindir is standard."
+                }
+              ],
+              "best": "C",
+              "evidence": "glossary: molecule -> sameind"
+            },
+            {
+              "id": "i58",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Efnajöfnustuðull fits the concept."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Stöðumælingarstuðull (parking-meter factor) is nonsense."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Understandable loanword calque."
+                }
+              ],
+              "best": "A",
+              "evidence": "02-mt-output: efnajöfnustuðl- uses"
+            },
+            {
+              "id": "i59",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Hvarf is a chemical reaction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Viðbrögð means a response, the wrong sense."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: chemical reaction -> efnahvarf"
+            },
+            {
+              "id": "i60",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Fylgir með reads as 'included with a product', a slightly off sense."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Fyrirliggjandi (available, on hand) fits the ingredients list."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i61",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise and parallel to 'Massi CO2'."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i62",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Concise flowchart label."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i63",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Concise flowchart label."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i64",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Concise flowchart label."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i65",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "A wordy paraphrase of the established term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Prósentusamsetning is the established term."
+                }
+              ],
+              "best": "B",
+              "evidence": "02-mt-output: prósentusamsetning- ~30 uses; glossary: composition -> samsetning"
+            },
+            {
+              "id": "i66",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "A loanword where reynsluformúla is established."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: empirical formula -> reynsluformúla"
+            },
+            {
+              "id": "i67",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Efnajöfnustuðull fits the concept."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Understandable coinage, not established."
+                }
+              ],
+              "best": "A",
+              "evidence": "02-mt-output: efnajöfnustuðl- uses"
+            },
+            {
+              "id": "i68",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Sýni is the standard term for an analytical sample."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Sýnishorn leans toward a specimen or trade sample."
+                }
+              ],
+              "best": "A",
+              "evidence": "02-mt-output: sýnishorn only 2 uses"
+            },
+            {
+              "id": "i69",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established phrase."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": "02-mt-output: mólfjöldi usage"
+            },
+            {
+              "id": "i70",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Established phrase."
+                }
+              ],
+              "best": "B",
+              "evidence": "02-mt-output: mólfjöldi usage"
+            },
+            {
+              "id": "i71",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Loanword calque."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Efnajöfnustuðull fits the concept."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Understandable coinage, not established."
+                }
+              ],
+              "best": "B",
+              "evidence": "02-mt-output: efnajöfnustuðl- uses"
+            },
+            {
+              "id": "i72",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Understandable compound, less usual."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Natural, and parallel to 'Massi BaSO4'."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: mass -> massi"
+            },
+            {
+              "id": "i73",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Concise flowchart label."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i74",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Colloquial 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise flowchart label."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: mole -> mól"
+            },
+            {
+              "id": "i75",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Keeps the percent sense of the label."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Hlutfall (proportion) loses the explicit percent."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: mass percentage -> massaprósenta"
+            },
+            {
+              "id": "i76",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "wrong",
+                  "why": "'Pútreskín' is a non-standard spelling; the compound is pútresín."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Right stem, but the cation form would be pútresíníumjón."
+                }
+              ],
+              "best": "B",
+              "evidence": "books/ grep: Pútresín 3, Pútresíníumj 2, Pútreskínj 1"
+            }
+          ]
+        }
+      },
+      {
+        "lens": "book-consistency",
+        "result": {
+          "method": "Paired EN segments (02-for-mt) with IS segments (02-mt-output) by SEG marker for ch03, ch04 (plus whole-book counts, ch14 for the rare term), using Python regex with inflection-tolerant stems. The book's own Icelandic alt texts for these same figures quote the labels, so they served as direct evidence. Counts are ch03+ch04 unless marked 'book'. Where candidates differ only in verb mood (Deilt/Deila/Deilið, Margfaldað/Margfaldaðu), all forms are grammatical. In those cases best follows the figure's own alt text. Missing hyphen in 'X-atóm' is rated acceptable because the book hyphenates 215 times against 39 spaced.",
+          "items": [
+            {
+              "id": "i01",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Standard term for element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Þáttur means factor/component, not element."
+                }
+              ],
+              "best": "A",
+              "evidence": "frumefn* 114 in ch03+04; figure alt uses 'Frumefni'; þáttur never for element"
+            },
+            {
+              "id": "i02",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Written apart; a teacher would make it one compound word."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Compound matches this figure's own alt text."
+                }
+              ],
+              "best": "B",
+              "evidence": "meðalatómamass* 7, meðalatómmass* 5 in ch03+04 (book 7 vs 23); 'meðal atóm' 0; alsulfate alt 'Meðalatómamassi (a m u)'"
+            },
+            {
+              "id": "i03",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Molecular mass = sameindamassi, as in the text and alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Mólmassi is molar mass (g/mol), a different quantity from an amu table."
+                }
+              ],
+              "best": "A",
+              "evidence": "sameindamass* 22 in ch03+04, figure alt 'Sameindamassi'; mólmass* 74 used for molar mass"
+            },
+            {
+              "id": "i04",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Standard term for element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Þáttur means factor, not element."
+                }
+              ],
+              "best": "A",
+              "evidence": "frumefn* 114; aspirin alt 'Frumefni'"
+            },
+            {
+              "id": "i05",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches the book's alt text for these tables."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Number of atoms; semantically precise too."
+                }
+              ],
+              "best": "A",
+              "evidence": "All five mass-table alts in ch03 use 'Magn'; magn 80, fjöldi 35 in ch03+04"
+            },
+            {
+              "id": "i06",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Should be one compound word."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Grammatical compound used in the chapter."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "wrong",
+                  "why": "Sætismassi (seat/position mass) is not a chemistry term."
+                }
+              ],
+              "best": "B",
+              "evidence": "meðalatómamass* 7, meðalatómmass* 5, meðalsætis* 0 (book 0); aspirin alt 'Meðalatómmassi'"
+            },
+            {
+              "id": "i07",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Molecular mass."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Molar mass, a different quantity."
+                }
+              ],
+              "best": "A",
+              "evidence": "sameindamass* 22; aspirin alt 'Sameindamassi'"
+            },
+            {
+              "id": "i08",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Factor, not element."
+                }
+              ],
+              "best": "A",
+              "evidence": "frumefn* 114; chloroform alt 'Frumefni'"
+            },
+            {
+              "id": "i09",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Grammatical compound used in the chapter."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Sætismassi is not a term."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Written apart; needs compounding."
+                }
+              ],
+              "best": "A",
+              "evidence": "meðalatómamass* 7 / meðalatómmass* 5 in ch03+04; meðalsætis* 0; 'meðal atóm' 0"
+            },
+            {
+              "id": "i10",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Molecular mass."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Molar mass."
+                }
+              ],
+              "best": "A",
+              "evidence": "sameindamass* 22; chloroform alt 'Sameindamassi'"
+            },
+            {
+              "id": "i11",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Valid biology term, but the chapter uses taugafruma."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches the chapter text and figure alt."
+                }
+              ],
+              "best": "B",
+              "evidence": "taugafrum* 11 in ch03 (incl. alt 'taugafruma'), taugung* 0 in whole book"
+            },
+            {
+              "id": "i12",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Factor, not element."
+                }
+              ],
+              "best": "A",
+              "evidence": "frumefn* 114; glycine alt 'Frumefni'"
+            },
+            {
+              "id": "i13",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Uninflected 'frumefni'; genitive needed."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Genitive, matches the figure alt exactly."
+                }
+              ],
+              "best": "B",
+              "evidence": "glycine alt 'Mólmassi (g/mól frumefnis)'; '/mól frumefni' uninflected 0"
+            },
+            {
+              "id": "i14",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Samtals means total, imprecise for a per-element subtotal."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches the book's rendering of Subtotal and genitive unit."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Samtals imprecise and unit noun uninflected."
+                }
+              ],
+              "best": "B",
+              "evidence": "millitala 6 (all six mass-table alts), samtals 1 in ch03+04; alt 'g/mól efnasambands' genitive"
+            },
+            {
+              "id": "i15",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Factor, not element."
+                }
+              ],
+              "best": "A",
+              "evidence": "frumefn* 114; saltMass alt 'Frumefni'"
+            },
+            {
+              "id": "i16",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Grammatical compound used in chapter."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Written apart."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Book-wide dominant compound form."
+                }
+              ],
+              "best": "C",
+              "evidence": "meðalatómmass* book 23 vs meðalatómamass* 7 (ch03+04: 5 vs 7); atómmass* 13 vs atómamass* 7 in ch03+04"
+            },
+            {
+              "id": "i17",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Fine structure but missing hyphen (Ar-atóma)."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Matches alt's 'mól af' form but missing hyphen."
+                }
+              ],
+              "best": "B",
+              "evidence": "argon alt 'Mól af Ar-atómum (mól)'; 'mól af' 89; X-atóm hyphenated 215 vs spaced 39"
+            },
+            {
+              "id": "i18",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Imperative, matches this figure's alt text."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Participial label style, also used in book alts."
+                }
+              ],
+              "best": "A",
+              "evidence": "argon alt 'Margfaldaðu með mólmassa (g/mól)'; figure alts: Margfaldaðu 4, Margfaldað 3"
+            },
+            {
+              "id": "i19",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen (Cu-atóma)."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Matches alt form but missing hyphen."
+                }
+              ],
+              "best": "B",
+              "evidence": "copper alt 'Mól af Cu-atómum (mól)'; 'mól af' 89; X-atóm hyphen 215 vs 39"
+            },
+            {
+              "id": "i20",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Plural imperative, grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches this figure's alt text."
+                }
+              ],
+              "best": "B",
+              "evidence": "copper alt 'Margfaldaðu með tölu Avogadros'; margfaldaðu 5, margfaldið 2 in ch03+04; tölu Avogadros 8"
+            },
+            {
+              "id": "i21",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Number of moles, grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches the book's dominant 'mól af' phrasing."
+                }
+              ],
+              "best": "B",
+              "evidence": "'mól af'+formula 48, 'mólfjöldi'+formula 0 in ch03+04; glycine alt 'Mól C2H5O2N (mól)'"
+            },
+            {
+              "id": "i22",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches the figure's alt exactly."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Plural imperative, grammatical."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Infinitive instruction, grammatical."
+                }
+              ],
+              "best": "A",
+              "evidence": "glycine alt 'Deilt með mólmassa (g/mól)'; figure alts: Deilt 5, Deildu 1, Deilið 0, Deila 0"
+            },
+            {
+              "id": "i23",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches the figure's alt exactly."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": "potassium alt 'Mól K-atóma (mól)'; X-atóm hyphen 215 vs spaced 39"
+            },
+            {
+              "id": "i24",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Infinitive, grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Plural imperative, grammatical."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Matches the figure's alt exactly."
+                }
+              ],
+              "best": "C",
+              "evidence": "potassium alt 'Deilt með mólmassa (g/mól)'; Deilt 5 in figure alts"
+            },
+            {
+              "id": "i25",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches the figure's alt exactly."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": "potassium alt 'Massi K-atóma (g)'; hyphen 215 vs 39"
+            },
+            {
+              "id": "i26",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches alt and dominant phrasing."
+                }
+              ],
+              "best": "B",
+              "evidence": "sacch alt 'Mól af C7H5NO3S (mól)'; 'mól af'+formula 48 vs mólfjöldi+formula 0"
+            },
+            {
+              "id": "i27",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Plural imperative, grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Infinitive, grammatical."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Matches the figure's alt exactly."
+                }
+              ],
+              "best": "C",
+              "evidence": "sacch alt 'Deilt með mólmassa (g/mól)'"
+            },
+            {
+              "id": "i28",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Infinitive, grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Imperative, grammatical."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Matches the figure's alt exactly."
+                }
+              ],
+              "best": "C",
+              "evidence": "sacch alt 'Margfaldað með tölu Avogadros'"
+            },
+            {
+              "id": "i29",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches the figure's alt exactly."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Infinitive, grammatical."
+                }
+              ],
+              "best": "A",
+              "evidence": "vitC alt 'Margfaldað með mólmassa (g/mól)'"
+            },
+            {
+              "id": "i30",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Grammatical, dominant 'mól af' phrasing."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Grammatical number-of-moles phrasing."
+                }
+              ],
+              "best": "A",
+              "evidence": "'mól af' 89 vs mólfjöld* 16 in ch03+04; vitC alt 'Mól C-vítamíns (mól)'"
+            },
+            {
+              "id": "i31",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches alt wording, with book's hyphen norm."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen."
+                }
+              ],
+              "best": "B",
+              "evidence": "empform alt 'Mól A atóma'; X-atóm hyphen 215 vs spaced 39"
+            },
+            {
+              "id": "i32",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Plural imperative, grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Infinitive, grammatical."
+                }
+              ],
+              "best": "tie",
+              "evidence": "empform alt 'Deilt með mólmassa' (neither offered); deila með 1, deilið 1 in ch03+04"
+            },
+            {
+              "id": "i33",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Hyphenated as elsewhere in book."
+                }
+              ],
+              "best": "B",
+              "evidence": "empform alt 'Massi A atóma', other alts 'Massi K-atóma'/'Cu-atóma'; hyphen 215 vs 39"
+            },
+            {
+              "id": "i34",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches alt wording with hyphen."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": "empform alt 'Mól X atóma'; hyphen 215 vs 39"
+            },
+            {
+              "id": "i35",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Hyphenated, matches book norm."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Missing hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": "empform alt 'Massi X atóma'; hyphen 215 vs 39"
+            },
+            {
+              "id": "i36",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Infinitive, grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Plural imperative, grammatical."
+                }
+              ],
+              "best": "tie",
+              "evidence": "empform alt 'Deilt með lægsta mólfjölda' (neither offered); mólfjöld* 16"
+            },
+            {
+              "id": "i37",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established term used throughout."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Loanword where Icelandic term is established."
+                }
+              ],
+              "best": "A",
+              "evidence": "reynsluformúl* 65 in ch03+04 (book 118), empír* 0; alt 'Reynsluformúla'"
+            },
+            {
+              "id": "i38",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches book's verb and 'g HCl/g lausn' unit form."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Genitive unit is grammatical, though book writes lausn."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Grammatical, matches book unit form."
+                }
+              ],
+              "best": "A",
+              "evidence": "Example2 alt 'Margfaldaðu með massaprósentu sem hlutfall (g HCl/g lausn)'; prose '37,2 g HCl/g lausn'; 'g HCl/g lausnar' 0"
+            },
+            {
+              "id": "i39",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Participial label, grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Infinitive, grammatical."
+                }
+              ],
+              "best": "tie",
+              "evidence": "alt 'Margfaldaðu með eðlismassa (g/ml)' (neither offered); eðlismass* 23"
+            },
+            {
+              "id": "i40",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Uses the book's term for products."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Vara = commercial product, wrong sense."
+                }
+              ],
+              "best": "A",
+              "evidence": "myndefn* 75 in ch03+04 (book 354); vara/vörur for chemical product 0; vörumegin 0"
+            },
+            {
+              "id": "i41",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Key term for reaction product."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Commercial product sense."
+                }
+              ],
+              "best": "A",
+              "evidence": "myndefn* 75; key term 'products' → [[term:myndefni]] in ch04"
+            },
+            {
+              "id": "i42",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Correct, slightly longer form."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches figure alt exactly."
+                }
+              ],
+              "best": "B",
+              "evidence": "rxn3 alt 'Blanda eftir hvarf'; 'eftir hvarf' 2, 'eftir efnahvarf' 0 in ch03+04"
+            },
+            {
+              "id": "i43",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Missing relative 'sem' makes the fragment ungrammatical after the preceding line."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches book alt and prose phrasing."
+                }
+              ],
+              "best": "B",
+              "evidence": "ethene alt 'sem þarf til að hvarfast við H2O til að mynda 9,55 g af'; 'sem þarf til að hvarfast' 7 in ch03+04"
+            },
+            {
+              "id": "i44",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established term for mass density."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Generic density word; not the book's term for g/mL."
+                }
+              ],
+              "best": "A",
+              "evidence": "eðlismass* 23 in ch03+04 (book 259), þéttleik* 0 (book 3, non-mass senses); flowchart alt 'Eðlismassi'"
+            },
+            {
+              "id": "i45",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Loanword with þáttur; not the book's term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches running-text rendering."
+                }
+              ],
+              "best": "B",
+              "evidence": "efnajöfnustuð* 6 + efnajöfnuhlutfallstuð* 6 in ch04; stökí* 0; glossary term 'magnhlutfallsstuðull' 1"
+            },
+            {
+              "id": "i46",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Particles = agnir, grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches flowchart alt's 'einda'."
+                }
+              ],
+              "best": "B",
+              "evidence": "flowchart alt 'Fjöldi einda af A'; standalone eind* book 321, agn* book 35 (ch03+04 1)"
+            },
+            {
+              "id": "i47",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches flowchart alt's 'einda'."
+                }
+              ],
+              "best": "B",
+              "evidence": "flowchart alt 'Fjöldi einda af B'; eind* book 321 vs agn* 35"
+            },
+            {
+              "id": "i48",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches flowchart alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Grammatical alternative."
+                }
+              ],
+              "best": "A",
+              "evidence": "flowchart alt 'Mól af B' (x3); 'mól af' 89 vs mólfjöld* 16"
+            },
+            {
+              "id": "i49",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Grammatical alternative."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches flowchart alt."
+                }
+              ],
+              "best": "B",
+              "evidence": "flowchart alt 'Mól af A' (x3); 'mól af' 89 vs mólfjöld* 16"
+            },
+            {
+              "id": "i50",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches map2 alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Grammatical, less common."
+                }
+              ],
+              "best": "A",
+              "evidence": "map2 alt 'Mól af Mg(OH)2'; 'mól af'+formula 48 in ch03+04"
+            },
+            {
+              "id": "i51",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches map2 alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Grammatical."
+                }
+              ],
+              "best": "A",
+              "evidence": "map2 alt 'Mól af NaOH'"
+            },
+            {
+              "id": "i52",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "wrong",
+                  "why": "Stöðugleikastuðull = stability constant, wrong concept."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Book's running-text term."
+                }
+              ],
+              "best": "B",
+              "evidence": "efnajöfnu*stuð* 14 in ch03+04, stöðugleikastuð* 0 (book 0)"
+            },
+            {
+              "id": "i53",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches map3 alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Grammatical."
+                }
+              ],
+              "best": "A",
+              "evidence": "map3 alt 'Mól af C8H18'"
+            },
+            {
+              "id": "i54",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches map3 alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Grammatical."
+                }
+              ],
+              "best": "A",
+              "evidence": "map3 alt 'Mól af O2'"
+            },
+            {
+              "id": "i55",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Book's term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Stability constant, wrong concept."
+                }
+              ],
+              "best": "A",
+              "evidence": "efnajöfnu*stuð* 14, stöðugleikastuð* 0"
+            },
+            {
+              "id": "i56",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "wrong",
+                  "why": "Stability constant."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Loanword; book never uses it."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Book's term."
+                }
+              ],
+              "best": "C",
+              "evidence": "efnajöfnu*stuð* 14, stökí* 0, stöðugleikastuð* 0"
+            },
+            {
+              "id": "i57",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Bare apposition is awkward."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Grammatical, used in book prose."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Hyphen compound, book's usual pattern."
+                }
+              ],
+              "best": "C",
+              "evidence": "formula-sameind* compounds book 53; 'sameindir af' book 11 (ch03+04 3); 'sameindir'+formula 2"
+            },
+            {
+              "id": "i58",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Book's term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Stöðumælingarstuðull is a non-term (position measurement)."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Loanword with þáttur."
+                }
+              ],
+              "best": "A",
+              "evidence": "efnajöfnu*stuð* 14, stöðumæling* 0, stökí* 0"
+            },
+            {
+              "id": "i59",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches the figure alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Viðbrögð = responses, wrong sense."
+                }
+              ],
+              "best": "A",
+              "evidence": "limiting alt 'Eftir hvarf'; hvarf* 113 in ch03+04; viðbrögð 1 (neurological responses)"
+            },
+            {
+              "id": "i60",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "'Comes included' is an odd sense for available supplies."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "'Available', fits the sense."
+                }
+              ],
+              "best": "B",
+              "evidence": "sandwich alt 'Til staðar:'; fyrirliggjandi 0 and 'fylgir með' 0 in ch04 (book 2/1); judged on general correctness"
+            },
+            {
+              "id": "i61",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Book-dominant 'mól af' phrasing."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches this figure's alt."
+                }
+              ],
+              "best": "A",
+              "evidence": "'mól af'+formula 48 vs 'mól'+formula 37 in ch03+04; combmap alt 'Mól CO2' but other map alts 'Mól af'"
+            },
+            {
+              "id": "i62",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches this figure's alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Book-dominant phrasing."
+                }
+              ],
+              "best": "B",
+              "evidence": "'mól af' 89 in ch03+04; combmap alt 'Mól C'"
+            },
+            {
+              "id": "i63",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches this figure's alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Book-dominant phrasing."
+                }
+              ],
+              "best": "B",
+              "evidence": "'mól af'+formula 48 vs 37; combmap alt 'Mól H2O'"
+            },
+            {
+              "id": "i64",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches this figure's alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Book-dominant phrasing."
+                }
+              ],
+              "best": "B",
+              "evidence": "'mól af' 89; combmap alt 'Mól H'"
+            },
+            {
+              "id": "i65",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Understandable paraphrase, not the book's term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Book's section title and key term."
+                }
+              ],
+              "best": "B",
+              "evidence": "prósentusamsetn* 31 in ch03+04, 'samsetning í prósent*' 0; combmap alt 'Prósentusamsetning'"
+            },
+            {
+              "id": "i66",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Loanword."
+                }
+              ],
+              "best": "A",
+              "evidence": "reynsluformúl* 65, empír* 0; combmap alt 'Reynsluformúla'"
+            },
+            {
+              "id": "i67",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Book's dominant running-text term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "The ch04 glossary's term, but rare beside the text's rendering."
+                }
+              ],
+              "best": "A",
+              "evidence": "efnajöfnu*stuð* 14 vs magnhlutfallsstuð* 1 (glossary-term entry only); combmap alt 'Efnajöfnunarstuðull'"
+            },
+            {
+              "id": "i68",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Book's term, matches combustion alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Understandable but not the book's usage."
+                }
+              ],
+              "best": "A",
+              "evidence": "sýni* 69 in ch03+04, sýnishorn 1; combustion alt 'Sýni'"
+            },
+            {
+              "id": "i69",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches map7 alt."
+                }
+              ],
+              "best": "B",
+              "evidence": "map7 alt 'Mól af NaOH'; 'mól af' 89 vs mólfjöld* 16"
+            },
+            {
+              "id": "i70",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches map7 alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Grammatical."
+                }
+              ],
+              "best": "A",
+              "evidence": "map7 alt 'Mól af HCl'"
+            },
+            {
+              "id": "i71",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Loanword; book never uses it."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Book's running-text term."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Plausible (efnamagnshlutföll is used) but not the book's form."
+                }
+              ],
+              "best": "B",
+              "evidence": "efnajöfnu*stuð* 14; efnamagnsstuð* 0 (efnamagnshlutf* 10); stökí* 0; map8 alt 'Efnismagnsþáttur'"
+            },
+            {
+              "id": "i72",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Grammatical compound, used once in prose."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches map8 and combmap alts."
+                }
+              ],
+              "best": "B",
+              "evidence": "'massi sýnis' 2 (both map alts), sýnismassi 1 in ch03+04"
+            },
+            {
+              "id": "i73",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Matches map8 alt."
+                }
+              ],
+              "best": "B",
+              "evidence": "map8 alt 'Mól af BaSO4'; 'mól af'+formula 48"
+            },
+            {
+              "id": "i74",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Book-dominant phrasing."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Grammatical."
+                }
+              ],
+              "best": "A",
+              "evidence": "map8 alt 'Mól af MgSO4' pattern; 'mól af'+formula 48"
+            },
+            {
+              "id": "i75",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Matches map8 alt."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Ratio loses the percent meaning."
+                }
+              ],
+              "best": "A",
+              "evidence": "map8 alt 'Prósenta MgSO4'; prósenta/prósentu 15 in ch03+04"
+            },
+            {
+              "id": "i76",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Non-book stem 'pútreskín' and drops the -íum cation ending."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Book stem pútresín but drops the -íum cation ending."
+                }
+              ],
+              "best": "B",
+              "evidence": "ch04 alt 'Pútresín ... Pútresíníumjón' (book pútres* 2); pútreskín* 0"
+            }
+          ]
+        }
+      },
+      {
+        "lens": "label-fit",
+        "result": {
+          "method": "Read all 76 items grouped by figure, using each figure's other labels to see what the label is for. Judged each candidate as printed figure text: case and inflection (genitive after units and in 'Mól X-atóma'), hyphenation of symbol compounds, whether a compound is written as one word, how an arrow instruction is phrased, and whether a pupil could misread it. I kept the same rule on every flowchart arrow: the plural imperative (Deilið/Margfaldið) and the participle (Deilt/Margfaldað) count as correct; the infinitive (Deila/Margfalda) and the singular imperative (Margfaldaðu) count as acceptable. Terms were checked against books/efnafraedi-2e/glossary/glossary-unified.json and word counts from grep -a over the chemistry 02-mt-output and 03-faithful-translation folders. I did not open any key, results, figure-text or run files.",
+          "items": [
+            {
+              "id": "i01",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Frumefni is the standard term for element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Þáttur means factor/component, not a chemical element."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary-unified.json element sense; Frumefni used throughout chemistry MT"
+            },
+            {
+              "id": "i02",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Meaning is clear, but meðal should not be split from the compound."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Written as one compound, but the genitive-plural link atóma is less standard than meðalatómmassi."
+                }
+              ],
+              "best": "B",
+              "evidence": "02-mt-output ch02/ch03 use both Meðalatómmassi and Meðalatómamassi"
+            },
+            {
+              "id": "i03",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Sameindamassi is molecular mass, which fits a total given in amu."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Mólmassi is molar mass (g/mol), a different quantity from the amu total."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: molar mass → mólmassi"
+            },
+            {
+              "id": "i04",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Standard term for element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Þáttur means factor, not element."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i05",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Magn (amount) is understandable, but the column holds atom counts."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Fjöldi (number/count) fits a column of how many atoms are in the formula."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i06",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Clear, but meðal is wrongly split from the compound."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "One compound word, but the atóma- link is less standard than atóm-."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "wrong",
+                  "why": "Sætis- (seat/position) makes it 'average position mass', which is nonsense."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i07",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Molecular mass in amu is sameindamassi."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Molar mass is a different quantity."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i08",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Standard term for element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Þáttur means factor, not element."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i09",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "One compound word; the atóma- link is slightly non-standard."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Sætis- (seat/position) gives the wrong meaning."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Meaning is clear, but the compound is split."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i10",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Molecular mass in amu is sameindamassi."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Molar mass is a different quantity."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i11",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Taugungur is the established term (the glossary's choice)."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Taugafruma (nerve cell) is equally correct and clear to pupils."
+                }
+              ],
+              "best": "tie",
+              "evidence": "glossary: neuron → taugungur"
+            },
+            {
+              "id": "i12",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Standard term for element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Þáttur means factor, not element."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i13",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Nominative frumefni after g/mól is a case slip a teacher would fix."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Genitive frumefnis is grammatical: grams per mole of element."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: molar mass → mólmassi"
+            },
+            {
+              "id": "i14",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Samtals reads naturally as a row total, and efnasambands is correctly genitive."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Millitala is understandable but not the usual word (millisumma)."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Nominative efnasamband after g/mól is a case error."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i15",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Standard term for element."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Þáttur means factor, not element."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i16",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "One compound word with the less standard atóma- link."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "The compound is split."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Meðalatómmassi is the standard single compound."
+                }
+              ],
+              "best": "C",
+              "evidence": "02-mt-output ch02 m68692 uses Meðalatómmassi"
+            },
+            {
+              "id": "i17",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Concise genitive, but should be hyphenated as Ar-atóma."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Wordier 'af' construction, and Ar-atómum lacks its hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i18",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Singular imperative reads informal in a textbook figure."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "The participle describes the arrow's operation naturally."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i19",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Concise genitive, but Cu-atóma needs a hyphen."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Wordier 'af' construction with the hyphen missing."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i20",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "The plural imperative is the normal textbook instruction form."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Singular imperative is informal."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i21",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Mólfjöldi (amount in moles) with the unit mól reads cleanly."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "'Mól af … (mól)' repeats mól awkwardly."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i22",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "The participle reads well as an arrow label."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "The plural imperative matches the English instruction."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "The infinitive is understandable but flatter as an instruction."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i23",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Genitive with a hyphenated symbol compound, K-atóma."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Missing the hyphen in K-atóma."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i24",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Infinitive is a flatter instruction form."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Plural imperative instruction."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "The participle works on an arrow."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i25",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Properly hyphenated K-atóma in the genitive."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Missing the hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i26",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Mólfjöldi with the formula and unit is clean."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "'Mól af … (mól)' is redundant."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i27",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Plural imperative instruction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Infinitive is a flatter instruction."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "The participle works on an arrow."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i28",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Infinitive is a flatter instruction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Singular imperative is informal."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "The participle reads naturally on the arrow."
+                }
+              ],
+              "best": "C",
+              "evidence": ""
+            },
+            {
+              "id": "i29",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "The participle reads naturally on the arrow."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Infinitive is a flatter instruction."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i30",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "'Mól af … (mól)' is redundant, though grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Mólfjöldi C-vítamíns: correct genitive and hyphenation."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i31",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Wordy 'af' construction with no hyphen after A."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise genitive with the hyphenated A-atóma."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Good term, but A-atóma needs a hyphen."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i32",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Plural imperative instruction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Infinitive is a flatter instruction."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i33",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Missing the hyphen in A-atóma."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Hyphenated genitive compound."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i34",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Concise, hyphenated genitive."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Good term, but the hyphen is missing."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Wordy 'af' construction without the hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i35",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Hyphenated genitive compound."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Missing the hyphen."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i36",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Infinitive is a flatter instruction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Plural imperative with a correctly inflected mólfjölda."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i37",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Reynsluformúla is the established term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "An understandable loanword where an Icelandic term exists."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: empirical formula → reynsluformúla; 121 uses in chemistry MT/faithful"
+            },
+            {
+              "id": "i38",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Informal singular imperative, and nominative lausn after g/."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Participle plus the correct genitive lausnar."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Nominative lausn after g/ is a case slip."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i39",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "The participle works on the arrow, and eðlismassi is correct."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Infinitive is a flatter instruction."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: density → eðlismassi"
+            },
+            {
+              "id": "i40",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Built on myndefni, the chemistry term for product."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Vara means a commercial product, which would mislead pupils."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: product → myndefni"
+            },
+            {
+              "id": "i41",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Myndefni is the reaction product."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Vara means goods or merchandise."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: product → myndefni"
+            },
+            {
+              "id": "i42",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Efnahvarf is unambiguous."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Hvarf is fine in a reaction figure, if slightly less explicit."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i43",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "wrong",
+                  "why": "Without the relative sem, the continuation of 'mólfjöldi og massi X' is ungrammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "The relative clause 'sem þarf til að …' joins grammatically to the preceding label."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i44",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Eðlismassi is the chemistry term for density."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Þéttleiki is understandable but not the established chemistry term."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: density → eðlismassi"
+            },
+            {
+              "id": "i45",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "An awkward, oddly spelled loan adjective; understandable."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Efnajöfnustuðull (the factor from the balanced equation) is clear and Icelandic."
+                }
+              ],
+              "best": "B",
+              "evidence": "02-mt-output ch04 m68713 uses efnajöfnustuðul"
+            },
+            {
+              "id": "i46",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Fjöldi agna af A is understandable but wordy."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Eind is the glossary term, used in a concise genitive."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: particle → eind"
+            },
+            {
+              "id": "i47",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Wordy 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Glossary term in a concise genitive."
+                }
+              ],
+              "best": "B",
+              "evidence": "glossary: particle → eind"
+            },
+            {
+              "id": "i48",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "'Mól af B' is understandable but less exact for a quantity label."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Mólfjöldi B names the quantity precisely."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i49",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Mólfjöldi A names the quantity precisely."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Less exact 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i50",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "The 'af' construction breaks parallelism with 'Massi Mg(OH)2'."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise, and parallel to the mass label."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i51",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Wordier 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise and parallel to 'Massi NaOH'."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i52",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "wrong",
+                  "why": "Stöðugleikastuðull means stability constant."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "The factor taken from the balanced equation."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i53",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Wordier 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise and parallel to the mass label."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i54",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Wordier 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise and parallel to the mass label."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i55",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "The equation-derived factor, clearly named."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Stability constant is a different concept."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i56",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "wrong",
+                  "why": "Stability constant is the wrong concept."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Awkward, oddly spelled loan adjective."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "Clear Icelandic term for the equation-derived factor."
+                }
+              ],
+              "best": "C",
+              "evidence": ""
+            },
+            {
+              "id": "i57",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Understandable, but stiff with the formula as an unmarked genitive."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Wordy 'af' construction."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "correct",
+                  "why": "The hyphenated symbol compound CO2-sameindir is the natural form."
+                }
+              ],
+              "best": "C",
+              "evidence": ""
+            },
+            {
+              "id": "i58",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Clear Icelandic term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Stöðumælingar- (parking-meter/position measurement) is nonsense here."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Awkward loan adjective."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i59",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Hvarf reads as reaction next to 'Fyrir hvarf'."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "wrong",
+                  "why": "Viðbrögð means a response or reaction by a person, not a chemical reaction."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i60",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Fylgir með suggests 'comes included with', slightly off for the ingredients you have."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Fyrirliggjandi means available or on hand, which fits the analogy."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i61",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Wordier 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise and parallel to 'Massi CO2'."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i62",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Concise and parallel to 'Massi C'."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Wordier 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i63",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Concise and parallel."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Wordier 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i64",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Concise and parallel."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Wordier 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i65",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Correct in meaning, but too long for a figure box."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Prósentusamsetning is concise and is the form the book already uses."
+                }
+              ],
+              "best": "B",
+              "evidence": "prósentusamsetning: 36 uses in chemistry MT/faithful"
+            },
+            {
+              "id": "i66",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Established Icelandic term."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "A loanword where an Icelandic term is established."
+                }
+              ],
+              "best": "A",
+              "evidence": "glossary: empirical formula → reynsluformúla"
+            },
+            {
+              "id": "i67",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Clear term for the equation-derived factor."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Understandable coinage (ratio-of-amounts factor), but not the form used elsewhere."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i68",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Sýni is the lab term for an analytical sample."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Sýnishorn leans toward a specimen or trade sample."
+                }
+              ],
+              "best": "A",
+              "evidence": "sýni/sýnis/sýninu dominate the chemistry MT output"
+            },
+            {
+              "id": "i69",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Mólfjöldi NaOH names the quantity precisely."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Less exact 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i70",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Less exact 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Mólfjöldi HCl names the quantity precisely."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i71",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Awkward, oddly spelled loan adjective."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Clear Icelandic term."
+                },
+                {
+                  "cid": "C",
+                  "verdict": "acceptable",
+                  "why": "Understandable coinage (amount-of-substance factor), but not the form used elsewhere."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i72",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Sýnismassi is a well-formed compound."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Massi sýnis is grammatical and parallel to 'Massi BaSO4'."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i73",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Concise and parallel to 'Massi BaSO4'."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Wordier 'af' construction."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i74",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "Wordier 'af' construction."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "correct",
+                  "why": "Concise and parallel."
+                }
+              ],
+              "best": "B",
+              "evidence": ""
+            },
+            {
+              "id": "i75",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "correct",
+                  "why": "Prósenta CaSO4 keeps the percent meaning and is grammatical."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Hlutfall (ratio/proportion) loses the explicit percent."
+                }
+              ],
+              "best": "A",
+              "evidence": ""
+            },
+            {
+              "id": "i76",
+              "verdicts": [
+                {
+                  "cid": "A",
+                  "verdict": "acceptable",
+                  "why": "'Pútreskín' spells out the silent c, and the -íum of putrescinium is dropped."
+                },
+                {
+                  "cid": "B",
+                  "verdict": "acceptable",
+                  "why": "Pútresín matches the book's spelling, but the -íum ending is dropped."
+                }
+              ],
+              "best": "B",
+              "evidence": "02-mt-output ch04 m68710: Pútresín, Pútresíníumjón"
+            }
+          ]
+        }
+      }
+    ],
+    "recount": {
+      "splitSurvival": "62 of 62 joined answers (J1 31/31, J2 31/31) split on '\\n' into exactly the right number of non-empty lines. Scope: 31 figures with more than one label, 166 labels. The 3 single-label figures (brain-ec0b, basehyd_img, GreenChem) have no J requests and are left out. I checked that every J request's `keys` equals the P keys in idx order, and that its `en` equals the P `en` values joined with newlines.",
+      "perLabelVsCommittedDiffer": "13 of 166 labels differ between P and the committed blocks, whether compared exactly or with whitespace normalised. Every one is a wording or inflection choice. Examples: aspirin 'Quantity' is 'Magn' in P and 'Fjöldi' committed; exocytosis 'Neuron' is 'Taugafruma' in P and 'Taugungur' committed; 'Deilið' vs 'Deila' (x2); moleratio2 'Sameindir CO2' vs 'CO2-sameindir'. No committed value was missing and no key is repeated within a figure.",
+      "joinedRun1VsRun2Differ": "17 of 166 labels differ between J1 and J2 (the same count exactly or with whitespace normalised). 5 of the 17 are 'Stoichiometric factor', which came back in 5 different forms across the two runs: Stöðugleikastuðull, Stökiómetrískur þáttur, Stöðumælingarstuðull, Magnhlutfallsstuðull, Stökiómetrískur stuðull and Efnamagnsstuðull. P gave 'Efnajöfnustuðull' every time. The others are 'Mól af X' vs 'Mólfjöldi X', 'A-atóma' vs 'A atóma', imperative vs infinitive verb forms, 'Taugafruma' vs 'Taugungur', and 'sem þarf' vs 'þarf'.",
+      "joinedVsPerLabelDiffer": "J1 differs from P on 72 of 166 labels, and J2 differs from P on 72 of 166 (the same figures exactly or with whitespace normalised).",
+      "stableJoinedChange": "59 of 166 labels have J1 == J2 != P. The biggest groups: 'Element' is 'Frumefni' in J and 'Þáttur' in P (5 figures); 'Molecular mass' is 'Sameindamassi' in J and 'Mólmassi' in P (3); 'Average atomic mass' is 'Meðal atómmassi' in J (4); 'Mól af X' in P became 'Mól X' or 'Mólfjöldi X' in J (about 15); 'Product' is 'Myndefni' in J and 'Vara' in P; 'Density' is 'Eðlismassi' in J and 'Þéttleiki' in P; 'Empirical formula' is 'Empírísk formúla' in J and 'Reynsluformúla' in P. Two stable J changes look like regressions: map2 'Stoichiometric factor' became 'Stöðugleikastuðull' ('stability factor'), and 'Percent CaSO4' became 'Hlutfall CaSO4'. The full list is printed by the script.",
+      "formulaOrNumberDamage": "None in any arm (P, J1, J2) or in the committed values. Method: for each of the 166 English labels I pulled out chemical formula tokens (element runs with parentheses, (aq)/(s)/(l)/(g) states and +/– charges), numbers (decimal comma counted as equal to a decimal point) and the symbols + – = → % × /, and compared them as counts against each Icelandic answer. 95 of the 166 English labels contain at least one such token. As a check, a deliberately altered string (C8H18→C8H17, 9.55→9,56) was flagged, and 12,85 was accepted as 12.85. The only hit was 'We' in 'We can make:', which my pattern mistook for a formula; it is not damage. All formulas survived, including Mg(ClO4)2, C7H5NO3S, CH3COO–, H3O+(aq), mol–1→mól–1 and 12.85→12,85, and the 10-space gap in both HClsoln equations was kept. One thing outside the formula check: 'mL' became 'ml' in both Example2_img labels in every arm and in the committed values (a unit case change, not mol→mól).",
+      "billed": "90.88 in total from usage.cost across all 231 requests (the file does not name a currency). 9088 characters billed, at 0.01 per character. By arm: P 29.58 (2958 characters, 169 requests, including the 3 single-label figures), J1 30.65 (3065 characters, 31 requests), J2 30.65 (3065 characters, 31 requests). The billed character count is lower than len(en) on some requests (HClsoln, flowchart, map2), which looks like runs of spaces being collapsed before billing.",
+      "code": "/home/siggi/dev/scratch-c140/label-context-mt/recount/recount.py"
+    }
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Judge"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 2,
+      "title": "Recount"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "judge:terminology",
+      "phaseIndex": 1,
+      "phaseTitle": "Judge",
+      "agentId": "af0c44f494bf37b44",
+      "model": "claude-opus-5[1m]",
+      "state": "done",
+      "startedAt": 1789458781827,
+      "queuedAt": 1789458780530,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "I judged all 76 items blind, working only from items.json. …",
+      "promptPreview": "Context: Icelandic secondary-school chemistry textbook (OpenStax Chemistry 2e, translated to Icelandic by machine translation, edited by chemistry teachers). Figures carry short English labels (table headers, flowchart boxes, arrow labels) that were machine-translated. For each ITEM in /home/siggi/dev/scratch-c140/label-context-mt/judge/items.json you get: the figure name, ALL the English labels o…",
+      "promptFramed": false,
+      "lastProgressAt": 1789462106527,
+      "tokens": 111862,
+      "toolCalls": 8,
+      "durationMs": 3324698,
+      "resultPreview": "{\"method\":\"I judged all 76 items blind, working only from items.json. I used books/efnafraedi-2e/glossary/glossary-unified.json as the terminology reference, and ran grep -a counts over efnafraedi-2e/02-mt-output to see which forms the corpus actually uses. I did not open any key, results or figure-text files. Rules I applied the same way on every item: (1) 'Moles of X' as 'Mólfjöldi X' is correct…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "judge:book-consistency",
+      "phaseIndex": 1,
+      "phaseTitle": "Judge",
+      "agentId": "a6d1b8e4047420835",
+      "model": "claude-opus-5[1m]",
+      "state": "done",
+      "startedAt": 1789458781849,
+      "queuedAt": 1789458780531,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Paired EN segments (02-for-mt) with IS segments (02-mt-outp…",
+      "promptPreview": "Context: Icelandic secondary-school chemistry textbook (OpenStax Chemistry 2e, translated to Icelandic by machine translation, edited by chemistry teachers). Figures carry short English labels (table headers, flowchart boxes, arrow labels) that were machine-translated. For each ITEM in /home/siggi/dev/scratch-c140/label-context-mt/judge/items.json you get: the figure name, ALL the English labels o…",
+      "promptFramed": false,
+      "lastProgressAt": 1789462257201,
+      "tokens": 164783,
+      "toolCalls": 18,
+      "durationMs": 3473328,
+      "resultPreview": "{\"method\":\"Paired EN segments (02-for-mt) with IS segments (02-mt-output) by SEG marker for ch03, ch04 (plus whole-book counts, ch14 for the rare term), using Python regex with inflection-tolerant stems. The book's own Icelandic alt texts for these same figures quote the labels, so they served as direct evidence. Counts are ch03+ch04 unless marked 'book'. Where candidates differ only in verb mood …"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "judge:label-fit",
+      "phaseIndex": 1,
+      "phaseTitle": "Judge",
+      "agentId": "ac205d4a527f67d98",
+      "model": "claude-opus-5[1m]",
+      "state": "done",
+      "startedAt": 1789458781939,
+      "queuedAt": 1789458780531,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Read all 76 items grouped by figure, using each figure's ot…",
+      "promptPreview": "Context: Icelandic secondary-school chemistry textbook (OpenStax Chemistry 2e, translated to Icelandic by machine translation, edited by chemistry teachers). Figures carry short English labels (table headers, flowchart boxes, arrow labels) that were machine-translated. For each ITEM in /home/siggi/dev/scratch-c140/label-context-mt/judge/items.json you get: the figure name, ALL the English labels o…",
+      "promptFramed": false,
+      "lastProgressAt": 1789458971766,
+      "tokens": 104573,
+      "toolCalls": 7,
+      "durationMs": 187890,
+      "resultPreview": "{\"method\":\"Read all 76 items grouped by figure, using each figure's other labels to see what the label is for. Judged each candidate as printed figure text: case and inflection (genitive after units and in 'Mól X-atóma'), hyphenation of symbol compounds, whether a compound is written as one word, how an arrow instruction is phrased, and whether a pupil could misread it. I kept the same rule on eve…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "recount",
+      "phaseIndex": 2,
+      "phaseTitle": "Recount",
+      "agentId": "a6688fa0774193668",
+      "model": "claude-opus-5[1m]",
+      "state": "done",
+      "startedAt": 1789462260271,
+      "queuedAt": 1789462258813,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "62 of 62 joined answers (J1 31/31, J2 31/31) split on '\\n' …",
+      "promptPreview": "You are an independent recounter. Do NOT read /home/siggi/dev/scratch-c140/label-context-mt/analyse.py, /home/siggi/dev/scratch-c140/label-context-mt/summary.json or /home/siggi/dev/scratch-c140/label-context-mt/labels.json (another analyst's work you must not copy). Raw data: /home/siggi/dev/scratch-c140/label-context-mt/results.jsonl — one JSON record per Málstaður request: fig, arm ('P' = one r…",
+      "promptFramed": false,
+      "lastProgressAt": 1789462367939,
+      "tokens": 114327,
+      "toolCalls": 5,
+      "durationMs": 107667,
+      "resultPreview": "{\"splitSurvival\":\"62 of 62 joined answers (J1 31/31, J2 31/31) split on '\\\\n' into exactly the right number of non-empty lines. Scope: 31 figures with more than one label, 166 labels. The 3 single-label figures (brain-ec0b, basehyd_img, GreenChem) have no J requests and are left out. I checked that every J request's `keys` equals the P keys in idx order, and that its `en` equals the P `en` values …"
+    }
+  ],
+  "totalTokens": 495545,
+  "totalToolCalls": 38
+}

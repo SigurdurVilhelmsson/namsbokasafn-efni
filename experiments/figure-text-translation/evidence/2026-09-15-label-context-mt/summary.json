@@ -1,0 +1,50 @@
+{
+ "billed": {
+  "units": 9088,
+  "cost": 90.88,
+  "requests": 231
+ },
+ "population": {
+  "figures": 34,
+  "labels": 169,
+  "multi_label_labels": 166,
+  "multi_figs": 31
+ },
+ "split": {
+  "J1 ok": 31,
+  "J2 ok": 31
+ },
+ "split_broken": [],
+ "per_label_drift": {
+  "P_vs_C_differ_all": 13,
+  "P_vs_C_differ_multi": 13,
+  "of_all": 169,
+  "of_multi": 166
+ },
+ "joined": {
+  "labels_with_both_joined": 166,
+  "J1_vs_J2_differ": 17,
+  "J1_vs_P_differ": 72,
+  "J2_vs_P_differ": 72,
+  "stable_joined_change": 59,
+  "joined_equals_C_where_P_differs_from_C": 2
+ },
+ "integrity": {
+  "C": {
+   "labels_with_issue": 4,
+   "unicode": 0
+  },
+  "P": {
+   "labels_with_issue": 4,
+   "unicode": 0
+  },
+  "J1": {
+   "labels_with_issue": 4,
+   "unicode": 0
+  },
+  "J2": {
+   "labels_with_issue": 4,
+   "unicode": 0
+  }
+ }
+}
