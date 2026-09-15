@@ -544,5 +544,162 @@ with tempfile.TemporaryDirectory() as td:
           and report['addOps'] == 0 and report['useSitesRewritten'] == 0,
           f'exit {r.returncode}, {report!r}')
 
+# ── 7. THE ARTWORK SHARES THE TEXT'S COORDINATES — ruling (W), 2026-09-15 ──────────────────
+# `pdftocairo -svg` without `-noshrink -nocenter` fits the page onto a "paper" of the page size
+# rounded UP to whole points: on a page with a fractional dimension every artwork element is
+# scaled by min(w/ceil w, h/ceil h) and centred, while svgout.write_svg places the <text> at
+# the TRUE coordinates, (x, page_h - y). Measured on the 34 bought figures: 24 shifted, up to
+# 2.66 pt. Every PNG-based check is blind to it - `-png` does not shrink.
+#
+# 🔴 THERE IS NO PAGE-LEVEL ELEMENT TO READ. cairo bakes the page transform into EVERY element's
+# own `transform` (etheneBr: `matrix(0.992857, 0, 0, -0.992857, 196.13, 25.91)` on each path),
+# composed with the PDF's own `cm`s, so "the page transform" is only observable through a path
+# whose PDF coordinates are KNOWN. These cases plant one - three points spanning the page - and
+# map cairo's `d` through cairo's `transform` with this file's OWN parser, deliberately not the
+# guard's: a check that shares its instrument with the thing it checks cannot see its anchor.
+FRACTIONAL_PAGE = (468, 69.5)                   # CNX_Chem_04_03_etheneBr_img's page
+INTEGRAL_PAGE = (468, 70)
+TOL_PT = 0.01
+
+
+def synth_known_path(dst, size):
+    """A text-less page carrying ONE stroked path through three known points. -> (path, pts)"""
+    w, h = size
+    pts = [(0.1 * w, 0.2 * h), (0.9 * w, 0.2 * h), (0.1 * w, 0.8 * h)]
+    ops = '0 0 0 RG 1 w {:.4f} {:.4f} m {:.4f} {:.4f} l {:.4f} {:.4f} l S\n'.format(
+        *[v for p in pts for v in p])
+    pdf = pikepdf.new()
+    page = pdf.add_blank_page(page_size=size)
+    page.Contents = pdf.make_stream(ops.encode('ascii'))
+    pdf.save(str(dst), deterministic_id=True)
+    return Path(dst), pts
+
+
+def mapped_known_points(svg_path):
+    """-> the three planted points as the SVG draws them, or a string naming why not.
+
+    Only the shape cairo writes for ONE plain stroke is accepted: a single STROKED <path> whose
+    `d` is `M x y L x y L x y` and whose `transform` is absent or a `matrix(...)`, under no
+    transformed ancestor. Anything else is reported, never guessed at.
+    ⚠️ "a single <path>" is NOT "a single stroked <path>": measured, cairo wraps this very page in
+    a `<clipPath>` whose own <path> is the clip rectangle - on the unflagged call only for some
+    geometries - so counting every <path> reads "2, expected 1" and measures nothing."""
+    import re
+    import xml.etree.ElementTree as ET
+    root = ET.parse(str(svg_path)).getroot()
+    parent = {child: node for node in root.iter() for child in node}
+    paths = [e for e in root.iter()
+             if e.tag.endswith('}path') and e.get('stroke') not in (None, 'none')]
+    if len(paths) != 1:
+        return f'{len(paths)} stroked <path> elements, expected 1'
+    node = parent.get(paths[0])
+    while node is not None:
+        if node.get('transform'):
+            return 'a transformed ancestor'
+        node = parent.get(node)
+    nums = [float(v) for v in re.findall(r'[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?', paths[0].get('d', ''))]
+    if len(nums) != 6:
+        return f"d={paths[0].get('d')!r}"
+    t = paths[0].get('transform')
+    m = (1.0, 0.0, 0.0, 1.0, 0.0, 0.0)
+    if t:
+        mm = re.fullmatch(r'\s*matrix\(([^)]*)\)\s*', t)
+        if not mm:
+            return f'transform={t!r}'
+        m = tuple(float(v) for v in re.split(r'[\s,]+', mm.group(1).strip()))
+    a, b, c, d, e, f = m
+    return [(a * x + c * y + e, b * x + d * y + f) for x, y in zip(nums[0::2], nums[1::2])]
+
+
+def displacement(svg_path, pts, page_h):
+    """Largest distance, in pt, between where the SVG draws each planted point and where the
+    composer's <text> convention (x, page_h - y) puts it. None if the shape was not readable."""
+    import math
+    got = mapped_known_points(svg_path)
+    if isinstance(got, str):
+        return None
+    return max(math.hypot(gx - x, gy - (page_h - y)) for (gx, gy), (x, y) in zip(got, pts))
+
+
+with tempfile.TemporaryDirectory() as td:
+    frac, frac_pts = synth_known_path(Path(td) / 'CNX_Fake_Fractional.pdf', FRACTIONAL_PAGE)
+    whole, whole_pts = synth_known_path(Path(td) / 'CNX_Fake_Integral.pdf', INTEGRAL_PAGE)
+
+    # 7a/7b THE INSTRUMENT, BOTH WAYS. The defect must reproduce on THIS poppler through the
+    # bare call, or 7c could pass because poppler changed rather than because the call did; and
+    # the same bare call on an integral page must read clean, or the parser just always fires.
+    disp = {}
+    for tag, pdf, pts, h in (('frac', frac, frac_pts, FRACTIONAL_PAGE[1]),
+                             ('whole', whole, whole_pts, INTEGRAL_PAGE[1])):
+        svg = Path(td) / f'bare-{tag}.svg'
+        subprocess.run(['pdftocairo', '-svg', str(pdf), str(svg)], check=True, timeout=120)
+        disp[tag] = displacement(svg, pts, h)
+    check('7a CONTROL the UNFLAGGED `pdftocairo -svg` scales a 468 x 69.5 pt page '
+          '(the defect reproduces here)',
+          disp['frac'] is not None and disp['frac'] > 0.5, f"max displacement {disp['frac']!r} pt")
+    check('7b CONTROL ... and leaves a 468 x 70 pt page alone (the instrument discriminates)',
+          disp['whole'] is not None and disp['whole'] < TOL_PT,
+          f"max displacement {disp['whole']!r} pt")
+
+    # 7c END TO END: what prepare actually wrote. RED before the flags, GREEN after.
+    out = Path(td) / 'out-fractional'
+    r = run_prepare(frac, '--basename', 'CNX_Fake_Fractional', '--out', out)
+    got = displacement(out / 'artwork.svg', frac_pts, FRACTIONAL_PAGE[1]) \
+        if (out / 'artwork.svg').exists() else None
+    check('7c prepare\'s artwork.svg of a FRACTIONAL page draws every point exactly where the '
+          '<text> convention (x, page_h - y) puts it',
+          r.returncode == 0 and got is not None and got < TOL_PT,
+          f'exit {r.returncode}, max displacement {got!r} pt, '
+          f'mapped {mapped_known_points(out / "artwork.svg") if (out / "artwork.svg").exists() else None!r}: '
+          f'{r.stderr.strip()[-300:]}')
+
+    # 7d-7f THE GUARD, as a decision: it must FIRE on the unflagged argv for a fractional page,
+    # stay quiet on the same argv for an integral page (it keys on the transform, not on the
+    # argv's spelling), and stay quiet on the shipped argv.
+    guard = getattr(_mod, 'artwork_transform_refusal', None) if _mod is not None else None
+    check('7 PRECONDITION figure-prepare.py exposes artwork_transform_refusal', callable(guard))
+    if callable(guard):
+        def _call(pdf, **kw):
+            try:
+                return guard(pdf, **kw)
+            except Exception as exc:              # noqa: BLE001 - reported, not raised
+                return f'RAISED {type(exc).__name__}: {exc}'
+        fired = _call(frac, flags=())
+        check('7d the guard REFUSES the unflagged argv on a fractional page, naming the transform',
+              isinstance(fired, str) and 'transform' in fired and not fired.startswith('RAISED'),
+              f'{fired!r}')
+        quiet = _call(whole, flags=())
+        check('7e CONTROL ... and does NOT refuse the same argv on an integral page', quiet is None,
+              f'{quiet!r}')
+        shipped = _call(frac)
+        check('7f ... and does NOT refuse the shipped argv on the fractional page', shipped is None,
+              f'{shipped!r}')
+
+    # 7g WIRING: prepare() consults the guard and refuses. The guard reads svgfix's flags AT
+    # CALL TIME, so dropping them in THIS process makes the guard's probe scale while the
+    # strip-text.py child still writes a correct artwork.svg - the refusal can only come from
+    # the guard. Restored in `finally`, whatever happens.
+    sf = getattr(_mod, 'svgfix', None) if _mod is not None else None
+    if callable(guard) and sf is not None and hasattr(sf, 'PDFTOCAIRO_SVG_FLAGS'):
+        saved = sf.PDFTOCAIRO_SVG_FLAGS
+        wired_out = Path(td) / 'out-wired'
+        import contextlib
+        import io
+        try:
+            sf.PDFTOCAIRO_SVG_FLAGS = ()
+            # main() prints `FAILED <basename>: ...` to stderr; captured so this suite's own
+            # log carries no FAILED line for a refusal it EXPECTS.
+            with contextlib.redirect_stderr(io.StringIO()), contextlib.redirect_stdout(io.StringIO()):
+                rc = _mod.main([str(frac), '--basename', 'CNX_Fake_Wired', '--out', str(wired_out)])
+        except BaseException as exc:              # noqa: BLE001
+            rc = f'RAISED {type(exc).__name__}: {exc}'
+        finally:
+            sf.PDFTOCAIRO_SVG_FLAGS = saved
+        wd = load_prepare_json(wired_out) or {}
+        check('7g prepare EXITS 1 when the guard refuses, with the refusal in prepare.json',
+              rc == 1 and 'transform' in str(wd.get('error', '')), f'rc {rc!r}, {wd!r}')
+    else:
+        check('7g PRECONDITION svgfix exposes PDFTOCAIRO_SVG_FLAGS for the guard to read', False)
+
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)

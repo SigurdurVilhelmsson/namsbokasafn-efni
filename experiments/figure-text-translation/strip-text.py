@@ -304,8 +304,12 @@ def main(pdf_path, dpi=DEFAULT_DPI, svg=False):
         # ⚠️ `-svg` takes the OUTPUT FILE, extension included - unlike `-png -singlefile`
         # above, which takes a ROOT and appends `.png` itself.  Passing a root here
         # writes a file literally called `artwork`.
+        # 🔴 The argv comes from svgfix, never spelled here: it carries `-noshrink -nocenter`,
+        # without which a page with a fractional dimension is SCALED AND CENTRED under text
+        # placed at true coordinates (ruling (W); see svgfix.PDFTOCAIRO_SVG_FLAGS), and
+        # figure-prepare.py's guard probes exactly this argv.
         out_svg = OUT / 'artwork.svg'
-        subprocess.run(['pdftocairo', '-svg', str(out_pdf), str(out_svg)], check=True)
+        subprocess.run(svgfix.pdftocairo_svg_argv(out_pdf, out_svg), check=True)
         print(f"artwork.svg -> out/artwork.svg ({os.path.getsize(out_svg)} bytes)")
         collapse_svg(out_svg)
 
