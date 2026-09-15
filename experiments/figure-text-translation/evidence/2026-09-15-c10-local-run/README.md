@@ -85,10 +85,10 @@ masks refused — which is a second, independent reading of the gate, not a re-r
   stderr change, plus the previously unexercised gated-heal failure branch); `figure-run-paid`
   all pass; `figure-run-free`'s 9 failures are **the committed baseline, by name, both directions**,
   with a planted-name control (`reports/free-failing-by-name.txt`).
-- **Full root `npm test` on this tree: 36 failed in 13 files — the committed 36-name baseline,
-  identical by name in both directions**, planted-name control included; no timeouts
-  (`reports/full-suite-failing-by-name.txt`). This is the first full-suite run of the ⑩ code on a box
-  that has `server/node_modules`.
+- **Full root `npm test`, twice — at `e33f6895` and at the final code `8e42e91b`: 36 failed in 13
+  files both times, the committed 36-name baseline, identical by name in both directions**,
+  planted-name control included; no timeouts (`reports/full-suite-failing-by-name.txt`). The first
+  full-suite runs of the ⑩ code on a box that has `server/node_modules`.
 
 ## Limits
 
