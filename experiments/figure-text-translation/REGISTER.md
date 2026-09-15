@@ -8,7 +8,13 @@ things lives in [README.md](README.md).
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-15, after the merge (supersedes every block below)
+## ⏩ RESUME — state as of 2026-09-15, handoff to the local box (supersedes every block below)
+
+⑩ **The `CNX_Chem_03_01_brain` text-box outline is no longer "an uninvestigated artwork finding"** (the superseded block below still calls it that; that block is evidence, and this one wins). Its cause, its corpus-wide exposure and a **gate** for it are built and wired into `tools/figure-run.js` as a step between prepare and compose. The post-`pdftocairo` artwork pass is unchanged — the decision lives in the driver, not in `strip-text.py`/`svgfix.py`, so how artwork is produced did not move. ⚠️ **`render-check.mjs` is on the DRIVER path now** and no longer imports playwright by an absolute path. **The campaign register's §C140 ⑩ owns the state and the one command that remains**; the handoff for the box that can run it is [`docs/plans/2026-09-15-c140-c10-local-box-handoff.md`](../../docs/plans/2026-09-15-c140-c10-local-box-handoff.md).
+
+---
+
+## ⏩ RESUME — state as of 2026-09-15, after the merge (superseded by the block above)
 
 ✅ **The branch below is MERGED to `main`** — [PR #471](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/471), `8e697c6a`, 2026-09-15. The component table in the block below now describes `main`. **Not deployed yet** — the campaign register's ⏩ RESUME owns the next action (deploy, then **§C140 ⑩, the brain outline, before any publication decision** — [USER] 2026-09-15).
 

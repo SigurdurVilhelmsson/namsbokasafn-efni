@@ -2,7 +2,25 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-15 (LATE)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-15 (HANDOFF)** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **continue ON THE LOCAL BOX: `./scripts/deploy.sh` (a human, `sudo`), then `node tools/figure-run.js --book efnafraedi-2e --chapter 3 --figure CNX_Chem_03_01_brain-ec0b --force` (0 ISK), then the ch03/ch04 publication call.** Buying stays stopped.
+
+📦 **HANDOFF, READ FIRST: [`docs/plans/2026-09-15-c140-c10-local-box-handoff.md`](2026-09-15-c140-c10-local-box-handoff.md)** — what the remote container could not do and why, the exact commands, the refusal control to watch for, the regression that happened on the branch and what caused the miss, and the memory lines to apply on that box.
+
+✅ **§C140 ⑩ IS BUILT AND WIRED — [USER] ruled Q1–Q4 on 2026-09-15** (heal ships gated · as a `figure-run.js` step between prepare and compose · publish the healed brain · a refused candidate gets a named warning). §C140 ⑩ owns the measurements. **Nothing under `books/` has been touched**; ⑩ no longer blocks the publication decision — only the run does. PR [#472](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/472) is open and draft.
+
+⚠️ **THE REMAINING WORK IS LOCAL-BOX-ONLY, AND THAT WAS MEASURED RATHER THAN ASSUMED:** a remote container for this repo has **no poppler, no OpenStax source PDFs, no `server/node_modules`** (so the full `npm test` dies on `better-sqlite3`) **and no project memory**. Figure preparation and the whole test suite are local-box work.
+
+⚠️ **STILL OWED FROM PR #471: the deploy.** It is a SERVER change (`COMPOSER_VERSION` `'3'`, required by `figureReviewService.js`); prod is behind `main`, so the next content-backup tick is expected to fail until it runs (CLAUDE.md § Content delivery).
+
+⚖️ **[USER] RULED 2026-09-15 — figure-label MT sends each figure's labels both per label and joined, keeps the joined wording, flags every disagreement for an editor:** [`docs/decisions/2026-09-15-figure-label-mt-joined-and-per-label.md`](../decisions/2026-09-15-figure-label-mt-joined-and-per-label.md). **Not built** — §C140 ㉔, and it must land before the next paid figure purchase.
+
+🗓 **[USER] will run a batch of label corrections at a later date** (editorial, through figure review) — §C140 ㉕. ⏹ **⑭ (Firefox/WebKit never measured) is still open**, a publication pre-check.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-15 (LATE)** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — **on a box with poppler and the OpenStax source PDFs, run `node tools/figure-run.js --book efnafraedi-2e --chapter 3 --figure CNX_Chem_03_01_brain-ec0b --force` (0 ISK), look at the recomposed figure, then make the ch03/ch04 publication call.** The deploy below is still owed and is a human's (`sudo`). Buying stays stopped.
 
