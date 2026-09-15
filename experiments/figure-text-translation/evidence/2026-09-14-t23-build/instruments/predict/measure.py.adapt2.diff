@@ -1,0 +1,17 @@
+--- ../../pred/instruments/measure.py	2026-09-14 08:33:28.386724025 +0000
++++ measure.py	2026-09-14 12:06:46.827069411 +0000
+@@ -20,12 +20,12 @@
+                    all 367 blocks incl. kept run-exact), px. Source control: same on source run-exact items.
+ """
+ import json, math, sys, time
+-sys.path.insert(0, '/home/siggi/dev/scratch-c140/plan/pred/instruments')   # PRED ADAPTATION A1: import the adapted copies
++sys.path.insert(0, '/home/siggi/dev/scratch-c140/plan/pred2/instruments')   # PRED ADAPTATION A1: import the adapted copies
+ sys.dont_write_bytecode = True
+ from c3lib import *
+ R2 = Path('/home/siggi/dev/scratch-c140/r2')
+ import os   # PRED ADAPTATION A2: input work root and output dir
+-PRED = Path('/home/siggi/dev/scratch-c140/plan/pred')
++PRED = Path('/home/siggi/dev/scratch-c140/plan/pred2')
+ WORK_ROOT = Path(os.environ.get('PRED_WORK_ROOT', str(R2 / 'work')))
+ from baseline import glyphbox_mask, adv_box_overhang
+ from containers import seed_mask, TOL

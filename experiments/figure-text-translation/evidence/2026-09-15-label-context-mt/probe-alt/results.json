@@ -1,0 +1,52 @@
+{
+ "labels": [
+  "Before reaction",
+  "After reaction",
+  "6 H2 and 4 Cl2",
+  "8 HCl and 2 H2"
+ ],
+ "committed": {
+  "Before reaction": "Fyrir hvarf",
+  "After reaction": "Eftir viðbrögð",
+  "6 H2 and 4 Cl2": "6 H2 og 4 Cl2",
+  "8 HCl and 2 H2": "8 HCl og 2 H2"
+ },
+ "alt": "The figure shows a space-filling molecular models reacting. There is a reaction arrow pointing to the right in the middle. To the left of the reaction arrow there are three molecules each consisting of two green spheres bonded together. There are also five molecules each consisting of two smaller, white spheres bonded together. Above these molecules is the label, “Before reaction,” and below these molecules is the label, “6 H subscript 2 and 4 C l subscript 2.” To the right of the reaction arrow, there are eight molecules each consisting of one green sphere bonded to a smaller white sphere. There are also two molecules each consisting of two white spheres bonded together. Above these molecules is the label, “After reaction,” and below these molecules is the label, “8 H C l and 2 H subscript 2.”",
+ "results": [
+  {
+   "arm": "A-per-label (production shape)",
+   "text": "Before reaction",
+   "is": "Fyrir hvarf"
+  },
+  {
+   "arm": "A-per-label (production shape)",
+   "text": "After reaction",
+   "is": "Eftir viðbrögð"
+  },
+  {
+   "arm": "A-per-label (production shape)",
+   "text": "6 H2 and 4 Cl2",
+   "is": "6 H2 og 4 Cl2"
+  },
+  {
+   "arm": "A-per-label (production shape)",
+   "text": "8 HCl and 2 H2",
+   "is": "8 HCl og 2 H2"
+  },
+  {
+   "arm": "B-labels-joined (no alt)",
+   "text": "Before reaction\nAfter reaction\n6 H2 and 4 Cl2\n8 HCl and 2 H2",
+   "is": "Fyrir hvarf\nEftir hvarf\n6 H2 og 4 Cl2\n8 HCl og 2 H2"
+  },
+  {
+   "arm": "C-alt+labels run 1",
+   "text": "The figure shows a space-filling molecular models reacting. There is a reaction arrow pointing to the right in the middle. To the left of the reaction arrow there are three molecules each consisting of two green spheres bonded together. There are also five molecules each consisting of two smaller, white spheres bonded together. Above these molecules is the label, “Before reaction,” and below these molecules is the label, “6 H subscript 2 and 4 C l subscript 2.” To the right of the reaction arrow, there are eight molecules each consisting of one green sphere bonded to a smaller white sphere. There are also two molecules each consisting of two white spheres bonded together. Above these molecules is the label, “After reaction,” and below these molecules is the label, “8 H C l and 2 H subscript 2.”\n\nBefore reaction\nAfter reaction\n6 H2 and 4 Cl2\n8 HCl and 2 H2",
+   "is": "Myndin sýnir rúmfyllingarlíkön af sameindum sem hvarfast. Í miðjunni er hvarfefnaör sem bendir til hægri. Vinstra megin við hvarfefnaörina eru þrjár sameindir sem hver um sig samanstendur af tveimur grænum kúlum sem eru tengdar saman. Þar eru einnig fimm sameindir sem hver um sig samanstendur af tveimur minni, hvítum kúlum sem eru tengdar saman. Fyrir ofan þessar sameindir er merkingin „Fyrir hvarf“ og fyrir neðan þessar sameindir er merkingin „6 H með lágstaf 2 og 4 Cl með lágstaf 2“. Hægra megin við hvarfefnaörina eru átta sameindir sem hver um sig samanstendur af einni grænni kúlu sem er tengd við minni hvíta kúlu. Þar eru einnig tvær sameindir sem hvor um sig samanstendur af tveimur hvítum kúlum sem eru tengdar saman. Fyrir ofan þessar sameindir er merkingin „Eftir hvarf“ og fyrir neðan þessar sameindir er merkingin „8 HCl og 2 H með lágstaf 2“.\n\nFyrir hvarf\nEftir hvarf\n6 H2 og 4 Cl2\n8 HCl og 2 H2"
+  },
+  {
+   "arm": "C-alt+labels run 2",
+   "text": "The figure shows a space-filling molecular models reacting. There is a reaction arrow pointing to the right in the middle. To the left of the reaction arrow there are three molecules each consisting of two green spheres bonded together. There are also five molecules each consisting of two smaller, white spheres bonded together. Above these molecules is the label, “Before reaction,” and below these molecules is the label, “6 H subscript 2 and 4 C l subscript 2.” To the right of the reaction arrow, there are eight molecules each consisting of one green sphere bonded to a smaller white sphere. There are also two molecules each consisting of two white spheres bonded together. Above these molecules is the label, “After reaction,” and below these molecules is the label, “8 H C l and 2 H subscript 2.”\n\nBefore reaction\nAfter reaction\n6 H2 and 4 Cl2\n8 HCl and 2 H2",
+   "is": "Myndin sýnir rúmfyllingarlíkön af sameindum sem hvarfast. Í miðjunni er hvarfefnaör sem bendir til hægri. Vinstra megin við hvarfefnaörina eru þrjár sameindir sem hver um sig samanstendur af tveimur grænum kúlum sem eru tengdar saman. Þar eru einnig fimm sameindir sem hver um sig samanstendur af tveimur minni, hvítum kúlum sem eru tengdar saman. Fyrir ofan þessar sameindir er merkingin „Fyrir hvarf“ og fyrir neðan þessar sameindir er merkingin „6 H með lágstaf 2 og 4 Cl með lágstaf 2“. Hægra megin við hvarfefnaörina eru átta sameindir sem hver um sig samanstendur af einni grænni kúlu sem er tengd við minni hvíta kúlu. Þar eru einnig tvær sameindir sem hvor um sig samanstendur af tveimur hvítum kúlum sem eru tengdar saman. Fyrir ofan þessar sameindir er merkingin „Eftir hvarf“ og fyrir neðan þessar sameindir er merkingin „8 HCl og 2 H með lágstaf 2“.\n\nFyrir hvarf\nEftir hvarf\n6 H₂ og 4 Cl₂\n8 HCl og 2 H₂"
+  }
+ ]
+}

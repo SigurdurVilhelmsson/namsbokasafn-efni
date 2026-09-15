@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_04_04_GreenChem",
  "renderHash": "3bb49e02597036a4",
  "composedHash": "3bb49e02597036a4",
- "composedVersion": "2",
+ "composedVersion": "3",
  "composerVersion": "1",
  "blocks": {
   "H2, Raney Ni": "H2, Raney Ni"

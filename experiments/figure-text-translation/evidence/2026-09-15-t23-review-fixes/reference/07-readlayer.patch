@@ -1,0 +1,45 @@
+--- a/experiments/figure-text-translation/readlayer.py
++++ b/experiments/figure-text-translation/readlayer.py
+@@ -232,12 +232,20 @@
+ 
+ 
+ def _fill(char, unknown):
+-    """Normalise ANY colour space to ('cmyk', c, m, y, k).
++    """The glyph's fill TAGGED WITH ITS COLOUR SPACE: ('cmyk', c, m, y, k), ('rgb', r, g, b)
++    or ('gray', g), or None for a space refused below.
+ 
+-    `compose.cmyk` unpacks exactly five values — a 4-tuple and a 6-tuple both raise
+-    ValueError — and returns (0,0,0), i.e. black, for None. Measured over a 120-figure
+-    sample: DeviceCMYK 9,157 chars, DeviceRGB 37, DeviceGray 6, and no None. The
+-    conversions are exact round-trips through `compose.cmyk`.
++    `figcolour.fill_rgb` (what `compose.cmyk` draws with) dispatches on the tag, and
++    returns (0,0,0), i.e. black, for None. Measured over a 120-figure sample: DeviceCMYK
++    9,157 chars, DeviceRGB 37, DeviceGray 6, and no None.
++
++    🔴 THE SPACE IS CARRIED, NOT FOLDED ([USER] ruling (C), 2026-09-15). This used to fold
++    DeviceRGB and DeviceGray into ('cmyk', ...), an exact round trip only through the NAIVE
++    inverse (1-c)(1-k) that compose.cmyk then used. Text is now drawn as poppler draws it -
++    DeviceCMYK through its table (K=1 -> #231f20), RGB and Gray exact - so a folded
++    DeviceGray 0 would come out #231f20 instead of pure black. The tag is part of the run
++    equality `_continues` tests, as the colour was before: two glyphs in different spaces
++    are drawn in different colours unless poppler happens to agree, and a run has one pen.
+ 
+     pdfminer's ncolor can also be a PATTERN NAME (a str) or a (base_color, pattern_name)
+     tuple, neither of which is a colour. Those become None — black — rather than a
+@@ -272,14 +280,9 @@
+     if space == 'DeviceCMYK' and len(vals) == 4:
+         return ('cmyk',) + tuple(vals)
+     if space == 'DeviceRGB' and len(vals) == 3:
+-        r, g, b = vals
+-        k = 1.0 - max(r, g, b)
+-        if k >= 1.0:
+-            return ('cmyk', 0.0, 0.0, 0.0, 1.0)
+-        return ('cmyk', (1 - r - k) / (1 - k), (1 - g - k) / (1 - k),
+-                (1 - b - k) / (1 - k), k)
++        return ('rgb',) + tuple(vals)
+     if space == 'DeviceGray' and len(vals) == 1:
+-        return ('cmyk', 0.0, 0.0, 0.0, 1.0 - vals[0])
++        return ('gray', vals[0])
+     # Two distinguishable records, because they are different faults: a space we do not
+     # know (`Separation:1`), and a space we DO know arriving with the wrong number of
+     # components (`arity:DeviceRGB:4`). Both are refused; neither is guessed at.

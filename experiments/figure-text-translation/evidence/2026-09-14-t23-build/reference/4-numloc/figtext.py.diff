@@ -1,0 +1,43 @@
+--- a/experiments/figure-text-translation/figtext.py
++++ b/experiments/figure-text-translation/figtext.py
+@@ -3,6 +3,7 @@
+ no assumption that text is centred, and lines are split on the text NORMAL so
+ rotated blocks work the same as horizontal ones."""
+ import math, json, re
++import numloc   # stdlib-only sibling (§C140 ⑨); imports nothing from this experiment
+ 
+ def proj(r):
+     """distance along the text normal (which line of the block a run sits on)"""
+@@ -212,10 +213,31 @@
+ 
+     Callers decide identity only AFTER the empty/whitespace check: an empty value is
+     `missing`, never identity.
++
++    🔴 A TOKEN ALSO MATCHES ITS LOCALISED FORM (§C140 ⑨). Each whitespace token of the value
++    may equal the English token OR the same token of `numloc.localize(english)` - only the
++    ENGLISH side is localised, token by token, so a value mixing both forms is identity too.
++    WHY: every kept label is drawn with `numloc`'s separators, and the review panel offers
++    `Nota` on a numeric identity reply (`373.15 K` -> `373,15 K`). Without this, an editor
++    accepting that suggestion turns the block into a TRANSLATION, and the composer re-lays on
++    the layout path English it can draw run-exact - undoing E's fix for exactly that label, to
++    reach the text it would have drawn anyway. `localize` exchanges only `.` and `,`, so the
++    English and localised token lists always have the same length.
++    ⚠️ NEVER LOCALISE THE VALUE: `localize` is not idempotent (`1,008` -> `1.008`), and the
++    value may already be Icelandic.
++    ⚠️ `english` is localised as ONE string where the composer localises each drawn LINE, so
++    a coordinate-tuple or fragment guard can see a different span (a two-line `0.` / `x`
++    block converts its fragment when drawn and not here). Measured on the 14,962-block
++    chemistry census: 0 blocks whose token lists differ between the two.
+     """
+     shaped = normalise_block_value(value, arc)
+     text = shaped if arc else ' '.join(shaped)
+-    return text.split() == english.split()
++    got, sent = text.split(), english.split()
++    if got == sent:
++        return True
++    local = numloc.localize(english).split()
++    return (len(got) == len(sent) == len(local)
++            and all(g == s or g == l for g, s, l in zip(got, sent, local)))
+ 
+ 
+ def run_face(run, fonts):

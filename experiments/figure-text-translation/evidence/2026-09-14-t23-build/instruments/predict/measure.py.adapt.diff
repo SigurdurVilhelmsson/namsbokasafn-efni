@@ -1,0 +1,70 @@
+--- frozen/measure.py	2026-09-14 08:31:17.647072790 +0000
++++ measure.py	2026-09-14 08:33:28.386724025 +0000
+@@ -20,17 +20,20 @@
+                    all 367 blocks incl. kept run-exact), px. Source control: same on source run-exact items.
+ """
+ import json, math, sys, time
+-sys.path.insert(0, '/home/siggi/dev/scratch-c140/c3b/scripts')
++sys.path.insert(0, '/home/siggi/dev/scratch-c140/plan/pred/instruments')   # PRED ADAPTATION A1: import the adapted copies
+ sys.dont_write_bytecode = True
+ from c3lib import *
+ R2 = Path('/home/siggi/dev/scratch-c140/r2')
++import os   # PRED ADAPTATION A2: input work root and output dir
++PRED = Path('/home/siggi/dev/scratch-c140/plan/pred')
++WORK_ROOT = Path(os.environ.get('PRED_WORK_ROOT', str(R2 / 'work')))
+ from baseline import glyphbox_mask, adv_box_overhang
+ from containers import seed_mask, TOL
+ from scipy import ndimage as ndi
+ 
+ V = sys.argv[1]
+ PAD = 120
+-WORK = R2 / 'work' / V
++WORK = WORK_ROOT / V
+ BASE = {(r['basename'], r['block']): r for r in map(json.loads, open(C3 / 'baseline.jsonl'))}
+ ROWS = {(r['basename'], r['block']): r for r in map(json.loads, open(C3 / 'blocks.jsonl'))}
+ CONT = {(r['basename'], r['block']): r for r in map(json.loads, open(C3 / 'containers.jsonl'))}
+@@ -38,7 +41,7 @@
+ 
+ 
+ def main():
+-    out = open(R2 / f'measure-{V}.jsonl', 'w')
++    out = open(PRED / 'out' / f'measure-{V}.jsonl', 'w')
+     t0 = time.time()
+     msurf = cairo.ImageSurface(cairo.FORMAT_A8, 8, 8); mctx = cairo.Context(msurf)
+     for b in (sys.argv[2:] or names()):   # r2: optional figure filter (planted controls only)
+@@ -69,9 +72,10 @@
+             rec['gb_new_ink'] = int((gb_t & ~gb_s & darkP).sum())
+             sz0 = fig.blocks[bi][0]['size']
+             rec['sz0'] = sz0
+-            R2L = 'r2line' in its[0]
++            R2L = 'r2line' in its[0] or 'line' in its[0]   # PRED ADAPTATION A3: r2line <- line, r2seg <- seg
++            LN, SG = ('r2line', 'r2seg') if 'r2line' in its[0] else ('line', 'seg')
+             if R2L:
+-                assert all('r2line' in it for it in its)
++                assert all(LN in it for it in its)
+                 assert abs(d['sz'] - max(it['size'] for it in its)) < 1e-9, (b, bi)
+                 rec['size'] = d['sz']
+             else:
+@@ -79,10 +83,10 @@
+             rec['shrunk'] = bool(rec['size'] < sz0 - 1e-9)
+             rec['src_lines'] = len(FT.lines(fig.blocks[bi]))
+             if R2L:
+-                nl = max(it['r2line'] for it in its) + 1
+-                assert sorted({it['r2line'] for it in its}) == list(range(nl)) and nl == len(d['drawn_widths'])
++                nl = max(it[LN] for it in its) + 1
++                assert sorted({it[LN] for it in its}) == list(range(nl)) and nl == len(d['drawn_widths'])
+                 rec['lines'] = nl
+-                rec['text'] = [''.join(it['text'] for it in its if it['r2line'] == j) for j in range(nl)]
++                rec['text'] = [''.join(it['text'] for it in its if it[LN] == j) for j in range(nl)]
+             else:
+                 rec['lines'] = len(its)
+                 rec['text'] = [it['text'] for it in its]
+@@ -113,7 +117,7 @@
+             fr = row['src']['frame']; cc = CONT[(b, bi)]['clear_colour']; cdl = row['container']['clear_dark_or_labels']
+             t = math.radians(d['rot'])
+             if R2L:
+-                firsts = [next(it for it in its if it['r2line'] == j and it['r2seg'] == 0) for j in range(rec['lines'])]
++                firsts = [next(it for it in its if it[LN] == j and it[SG] == 0) for j in range(rec['lines'])]
+                 dA0 = min(it['x'] * math.cos(t) + it['y'] * math.sin(t) for it in its)
+                 dA1 = max(it['x'] * math.cos(t) + it['y'] * math.sin(t) + w for it, w in zip(firsts, d['drawn_widths']))
+                 dN1 = max(-it['x'] * math.sin(t) + it['y'] * math.cos(t) + ASC * it['size'] for it in its)

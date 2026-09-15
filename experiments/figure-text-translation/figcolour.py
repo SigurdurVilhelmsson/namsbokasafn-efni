@@ -1,0 +1,86 @@
+"""The ONE text-fill -> RGB conversion: a run's `fill` drawn the way poppler draws it.
+
+`readlayer._fill` carries each glyph's non-stroking colour TAGGED WITH ITS COLOUR SPACE:
+('cmyk', c, m, y, k) for DeviceCMYK, ('rgb', r, g, b) for DeviceRGB, ('gray', g) for
+DeviceGray, and None for anything it refuses (a /Separation, a pattern, a bad arity).
+runs.json round-trips the tuple as a JSON list; dispatch is on element 0, so both work.
+
+🔴 WHY POPPLER, AND NOT (1-c)(1-k): the artwork this text is drawn over is poppler's.
+`strip-text.py` makes artwork.svg and artwork.png with `pdftocairo`, which converts
+DeviceCMYK through `GfxDeviceCMYKColorSpace::getRGB` - an Adobe-like 16-corner table
+(`poppler/GfxState_helpers.h` `cmykToRGBMatrixMultiplication`, poppler 26.01.0), NOT the
+naive inverse. So K=1 is rgb(35,31,32) = #231f20 in every artwork stroke, and the naive
+map drew the labels in the same SVG as #000000: lines and letters disagreed on what black
+is, and the text read bolder than the source ([USER] ruling (C), 2026-09-15).
+
+🔴 AND WHY THE SPACE MUST BE CARRIED: poppler converts DeviceRGB and DeviceGray WITHOUT the
+table - a DeviceGray 0 is pure black (0,0,0), not #231f20. `_fill` used to fold RGB and Gray
+into ('cmyk', ...) because the naive inverse made that a lossless round trip; under the
+table it is not, so a folded black would draw #231f20. A runs.json written by that older
+`_fill` therefore carries no space for such text and needs RE-PREPARING, not re-composing.
+
+The fixed-point steps are poppler's own (`dblToCol` truncates to 1/65536 on the way in and
+out of the table). They move a value by < 1/65536, which is invisible at 8 bits except on a
+.5 boundary - and there they are what makes a label's `fill` round to exactly the byte
+pdftocairo -svg wrote for an artwork stroke of the same colour (measured: the rich black
+(0.697,0.676,0.639,0.740) is 28.494/28.513 of 255 in G/B, a boundary pair).
+"""
+
+_ONE = 0x10000   # poppler gfxColorComp1
+
+
+def _col(x):
+    """poppler dblToCol followed by colToDbl: (int)(x * 65536) / 65536."""
+    return int(x * _ONE) / _ONE
+
+
+def _clip01(x):
+    return 0.0 if x < 0.0 else 1.0 if x > 1.0 else x
+
+
+def poppler_cmyk_rgb(c, m, y, k):
+    """GfxDeviceCMYKColorSpace::getRGB, verbatim (poppler 26.01.0). -> (r, g, b) in 0..1."""
+    c, m, y, k = _col(c), _col(m), _col(y), _col(k)
+    c1, m1, y1, k1 = 1 - c, 1 - m, 1 - y, 1 - k
+    # cmykToRGBMatrixMultiplication, unrolled as poppler unrolls it.  C M Y K
+    x = c1 * m1 * y1 * k1; r = g = b = x                                  # 0 0 0 0
+    x = c1 * m1 * y1 * k;  r += 0.1373 * x; g += 0.1216 * x; b += 0.1255 * x   # 0 0 0 1
+    x = c1 * m1 * y * k1;  r += x;          g += 0.9490 * x                    # 0 0 1 0
+    x = c1 * m1 * y * k;   r += 0.1098 * x; g += 0.1020 * x                    # 0 0 1 1
+    x = c1 * m * y1 * k1;  r += 0.9255 * x; b += 0.5490 * x                    # 0 1 0 0
+    x = c1 * m * y1 * k;   r += 0.1412 * x                                     # 0 1 0 1
+    x = c1 * m * y * k1;   r += 0.9294 * x; g += 0.1098 * x; b += 0.1412 * x   # 0 1 1 0
+    x = c1 * m * y * k;    r += 0.1333 * x                                     # 0 1 1 1
+    x = c * m1 * y1 * k1;  g += 0.6784 * x; b += 0.9373 * x                    # 1 0 0 0
+    x = c * m1 * y1 * k;   g += 0.0588 * x; b += 0.1412 * x                    # 1 0 0 1
+    x = c * m1 * y * k1;   g += 0.6510 * x; b += 0.3137 * x                    # 1 0 1 0
+    x = c * m1 * y * k;    g += 0.0745 * x                                     # 1 0 1 1
+    x = c * m * y1 * k1;   r += 0.1804 * x; g += 0.1922 * x; b += 0.5725 * x   # 1 1 0 0
+    x = c * m * y1 * k;    b += 0.0078 * x                                     # 1 1 0 1
+    x = c * m * y * k1;    r += 0.2118 * x; g += 0.2119 * x; b += 0.2235 * x   # 1 1 1 0
+    return tuple(_clip01(_col(v)) for v in (r, g, b))
+
+
+def fill_rgb(f):
+    """A run's `fill` -> (r, g, b) in 0..1, as pdftocairo draws that colour.
+
+    None (a refused colour space) is BLACK - visible, never white; see readlayer._fill and
+    test_readlayer.py CASE 7c. DeviceRGB and DeviceGray keep their exact values, CLIPPED to
+    [0, 1] as poppler's GfxDeviceRGBColorSpace / GfxDeviceGrayColorSpace clip them (an
+    out-of-range operand otherwise reached svgout as an invalid `#132-1a80`; 0 corpus runs carry
+    one - test_figcolour.py 1e/1i).
+    """
+    if not f:
+        return (0, 0, 0)
+    space = f[0]
+    if space == 'cmyk':
+        _, c, m, y, k = f
+        return poppler_cmyk_rgb(c, m, y, k)
+    if space == 'rgb':
+        _, r, g, b = f
+        return (_clip01(r), _clip01(g), _clip01(b))
+    if space == 'gray':
+        _, v = f
+        v = _clip01(v)
+        return (v, v, v)
+    raise ValueError(f'unknown fill colour space {space!r} in {f!r}')

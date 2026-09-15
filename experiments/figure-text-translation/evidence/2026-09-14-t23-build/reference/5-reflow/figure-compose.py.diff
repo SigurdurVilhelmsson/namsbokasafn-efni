@@ -1,0 +1,28 @@
+--- a/experiments/figure-text-translation/figure-compose.py
++++ b/experiments/figure-text-translation/figure-compose.py
+@@ -4,7 +4,8 @@
+     python3 figure-compose.py --out <dir> --translations <path>
+ 
+ Reads the directory `figure-prepare.py` wrote (`runs.json`, `meta.json`, `blocks.json`,
+-`artwork.png`, `artwork.svg`) and writes `<dir>/translated.svg` plus `<dir>/compose.json`:
++`artwork.pdf`, `artwork.png`, `artwork.svg`) and writes `<dir>/translated.svg` plus
++`<dir>/compose.json`:
+ 
+     {"outputPath": "<dir>/translated.svg"}          exit 0
+     {"error": "...", "keys": ["<block key>", ...]}  exit 1
+@@ -88,7 +89,14 @@
+ # Validated HERE, because compose.py writes translated.png BEFORE it reads artwork.svg
+ # (compose.py:259 vs :263) - so a missing or truncated SVG otherwise crashes it after a
+ # partial write, leaving a PNG that describes a compose nothing verified.
+-REQUIRED_INPUTS = ('runs.json', 'meta.json', 'blocks.json', 'artwork.png', 'artwork.svg')
++# ⚠️ `artwork.pdf` is read for CONTAINER DETECTION (§C140 ③), lazily, on the first translated
++# label compose.py lays out - and that load is outside the detector's never-raises boundary. So a
++# missing one crashes the child with no compose-report.json, but ONLY on a figure that carries a
++# translation: a figure with none composes fine, which hides it until the figure that matters.
++# This catches a missing or empty file; a corrupt one still reaches the child, and is refused
++# below as "wrote no compose-report.json" rather than published.
++REQUIRED_INPUTS = ('runs.json', 'meta.json', 'blocks.json', 'artwork.pdf', 'artwork.png',
++                   'artwork.svg')
+ 
+ # Written by this run, and only by this run. Removed before the child starts so their
+ # presence afterwards MEANS "this run produced them" rather than "a file with this name is

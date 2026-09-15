@@ -1,0 +1,131 @@
+[
+ {
+  "key": "Decomposers|(aerobic and anaerobic|bacteria and fungi)",
+  "english": "Decomposers (aerobic and anaerobic bacteria and fungi)",
+  "lines": [
+   "Decomposers",
+   "(aerobic and anaerobic",
+   "bacteria and fungi)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Nitrogen-fixing|bacteria in|root nodules",
+  "english": "Nitrogen-fixing bacteria in root nodules",
+  "lines": [
+   "Nitrogen-fixing",
+   "bacteria in",
+   "root nodules"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Nitrogen-fixing|soil bacteria",
+  "english": "Nitrogen-fixing soil bacteria",
+  "lines": [
+   "Nitrogen-fixing",
+   "soil bacteria"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Nitrifying bacteria",
+  "english": "Nitrifying bacteria",
+  "lines": [
+   "Nitrifying bacteria"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Nitrifying|bacteria",
+  "english": "Nitrifying bacteria",
+  "lines": [
+   "Nitrifying",
+   "bacteria"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Denitrifying|bacteria",
+  "english": "Denitrifying bacteria",
+  "lines": [
+   "Denitrifying",
+   "bacteria"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Assimilation",
+  "english": "Assimilation",
+  "lines": [
+   "Assimilation"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Atmospheric|nitrogen (N2)",
+  "english": "Atmospheric nitrogen (N2)",
+  "lines": [
+   "Atmospheric",
+   "nitrogen (N2)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "ammonium (NH4|+|)",
+  "english": "ammonium (NH4 + )",
+  "lines": [
+   "ammonium (NH4",
+   "+",
+   ")"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "nitrites (NO2|–",
+  "english": "nitrites (NO2 –",
+  "lines": [
+   "nitrites (NO2",
+   "–"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": ")",
+  "english": ")",
+  "lines": [
+   ")"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "nitrates (NO3|–",
+  "english": "nitrates (NO3 –",
+  "lines": [
+   "nitrates (NO3",
+   "–"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": ")",
+  "english": ")",
+  "lines": [
+   ")"
+  ],
+  "arc": false,
+  "send": false
+ }
+]

@@ -12,9 +12,19 @@ text you cannot tell misplacement from "that is how it lays out".
 ⚠️ SINCE §C140 ① (E), --control DRAWS EVERY BLOCK RUN-EXACT - each run at its own origin,
 size, rotation, fill and face, as the source drew it. It is therefore a FAITHFUL REDRAW of
 the source: a disagreement with the raster now isolates artwork and rasteriser defects. It no
-longer exercises the wrap / anchor / shrink path at all - and neither can any translations
-file, because a reply token-equal to its English is IDENTITY and is drawn run-exact too.
-Work on that path (§C140 ③) needs its own switch.
+longer exercises the wrap / anchor / shrink path at all, and neither does a reply token-equal to
+its English: that is IDENTITY and is drawn run-exact too. The layout path is reached by any
+non-identity translation - see the §C140 ② ③ ⑨ paragraph below (test_compose_t23.py reaches it
+with an edited identity label; no switch is needed).
+
+§C140 ② ③ ⑨ (spec docs/superpowers/specs/2026-09-13-c140-t23-scripts-reflow-decimals-design.md):
+a TRANSLATED straight label is laid out by two pure helpers and drawn here - `figcontainers` says
+what it sits in (box / table cell / open with a free box), `figlayout.decide` chooses its lines,
+size (floor 7.5 pt), anchor and any named overhang, and `figscripts` carries the source's
+sub/superscripts and italics onto the value, one <text> per styled segment. Widths are LINEAR
+(hint metrics off). A KEPT label is drawn run-exact with Icelandic number separators (`numloc`),
+except under --control. The report gains `unformatted`, `overflow`, `localized` and
+`containerErrors`.
 
 Translations are read from translations.json, keyed by the block's English text
 with '|' between lines.  Blocks are keyed by CONTENT, not position, so the file
@@ -26,7 +36,13 @@ from _deps import HERE, OUT
 from pathlib import Path
 import cairo
 import figtext as FT
+import figscripts as FS
+import figcontainers as FC
+import figlayout as FL
+import numloc
+from PIL import Image
 from blockkey import block_key, block_english
+from figcolour import fill_rgb
 
 DPI = 200.0
 S = DPI / 72.0
@@ -85,7 +101,7 @@ def draw_run_exact(block):
         bold, italic = FT.run_face(r, meta['fonts'])
         px, py = dev(r['x'], r['y'])
         col = cmyk(r['fill'])
-        ITEMS.append(dict(text=text, x=px / S, y=H_PT - py / S, rot=r['rot'],
+        ITEMS.append(dict(path='run-exact', text=text, x=px / S, y=H_PT - py / S, rot=r['rot'],
                           size=r['size'], bold=bold, italic=italic, rgb=col, dx=0.0))
         ctx.select_font_face(FAMILY,
                              cairo.FONT_SLANT_ITALIC if italic else cairo.FONT_SLANT_NORMAL,
@@ -95,6 +111,28 @@ def draw_run_exact(block):
         ctx.set_source_rgb(*col); ctx.move_to(0, 0); ctx.show_text(text)
         ctx.restore()
     return removed
+
+
+def localise_block(block):
+    """§C140 ⑨: the block's runs with Icelandic number separators in their TEXT - `26.98` ->
+    `26,98`, `1,000` -> `1.000` - and every other field untouched. -> a list aligned 1:1 with
+    `block` (an unchanged run is the same dict).
+
+    The unit is the `FT.lines` LINE, not the run: a PDF may set a number one glyph per run
+    (`CNX_Chem_03_02_moles-6296`), and no single run then holds a digit-flanked point. `numloc`
+    exchanges `.` and `,` one for one, so each run keeps its length and its origin - and both
+    characters advance 569/2048 em in every Liberation Sans face, so nothing moves.
+
+    🔴 SOURCE TEXT ONLY, ONCE. `numloc.localize` is not idempotent (`1.008 -> 1,008 -> 1.008`), so it
+    runs here on `runs.json` text and nowhere else. NOT inside `figtext.run_draw_text`: its second
+    return value means "a (cid:N) token was removed" and would name every converted label
+    `undecodable`. Never on `--control`, which stays a faithful redraw of the source."""
+    out = []
+    for line in FT.lines(block):
+        for r, t in zip(line, numloc.localize_runs([r['text'] for r in line])):
+            out.append(r if t == r['text'] else dict(r, text=t))
+    assert len(out) == len(block), (len(out), len(block))
+    return out
 
 
 def setfont(run, size):
@@ -109,11 +147,76 @@ def measure(text, run, size=None):
     return ctx.text_extents(text).x_advance / S
 
 
+def setfont_st(run, size, st):
+    """`setfont` for one SEGMENT of a translated line: weight from the LINE's run (bold is per
+    line - 8 corpus blocks change weight within a line, none bought), slant and size from the
+    segment's SourceStyle (§C140 ②). A plain segment is exactly `setfont`, so a label with
+    nothing to style measures and draws as it did before ②."""
+    if st is None:
+        return setfont(run, size)
+    ctx.select_font_face(FAMILY,
+                         cairo.FONT_SLANT_ITALIC if st.italic else cairo.FONT_SLANT_NORMAL,
+                         cairo.FONT_WEIGHT_BOLD if run['font'] in BOLD
+                         else cairo.FONT_WEIGHT_NORMAL)
+    ctx.set_font_size(size * st.ratio * S)
+
+
+# §C140 ③: ONE width function, in LINEAR metrics. A separate measuring context whose font options
+# switch hint metrics OFF: its advances equal the PDF's own (148.52 vs 148.53 measured), where the
+# drawing context's 200-dpi hinted advances flipped two fit decisions and left a right-flush
+# `Mólmassi` 0.93 pt short of its edge. They equal a BROWSER's only because svgout.write_svg sets
+# text-rendering="geometricPrecision" on the text group (without it Chromium's default render was
+# up to 8.97 pt off on the 34) - and even then Chromium applies the font's kern table, which cairo
+# does not: 28 of 647 segments on the 34 draw up to 0.99 pt short, which can only widen a gap.
+# The DRAWING context is untouched, so kept blocks' raster does not change.
+_msurf = cairo.ImageSurface(cairo.FORMAT_A8, 8, 8)
+mctx = cairo.Context(_msurf)
+_mfo = cairo.FontOptions()
+_mfo.set_hint_metrics(cairo.HINT_METRICS_OFF)
+mctx.set_font_options(_mfo)
+_ADV = {}
+
+
+def lin_advance(text, run, size, st):
+    """The LINEAR advance of ONE drawn segment at its own size and slant (weight from the line's
+    run), memoised: the layout decision asks for the same pieces at many sizes."""
+    bold = run['font'] in BOLD
+    italic = st is not None and st.italic
+    px = size * S if st is None else size * st.ratio * S
+    k = (text, bold, italic, px)
+    if k not in _ADV:
+        mctx.select_font_face(FAMILY, cairo.FONT_SLANT_ITALIC if italic else cairo.FONT_SLANT_NORMAL,
+                              cairo.FONT_WEIGHT_BOLD if bold else cairo.FONT_WEIGHT_NORMAL)
+        mctx.set_font_size(px)
+        _ADV[k] = mctx.text_extents(text).x_advance / S
+    return _ADV[k]
+
+
+def line_segments(chars):
+    """[(char, style)] of one drawn line -> the (text, style) segments it is drawn as: maximal
+    equal-style runs, and - only when a style is present - plain text cut at the space next to a
+    styled segment (figscripts.split_at_word_edges). An empty line is one empty segment, as the
+    pre-② composer drew one empty string."""
+    segs = FS.segments(chars) or [('', None)]
+    if any(st is not None for _, st in segs):
+        segs = FS.split_at_word_edges(segs)
+    return segs
+
+
+def seg_width(chars, run, size):
+    """THE width of one drawn line: the sum of its segments' linear advances at their own sizes and
+    slant (spec §1 / §4 'one width function'). It feeds the partition, the shrink, the anchor, the
+    displacement and the overflow check through figlayout.decide, and the pen advance when drawing."""
+    return sum(lin_advance(t, run, size, st) for t, st in line_segments(chars))
+
+
 def cmyk(f):
-    if not f:
-        return (0, 0, 0)
-    _, c, m, y, k = f
-    return ((1 - c) * (1 - k), (1 - m) * (1 - k), (1 - y) * (1 - k))
+    """A run's `fill` -> (r, g, b), as pdftocairo draws that colour under the artwork.
+
+    The ONE conversion is `figcolour.fill_rgb` ([USER] ruling (C)): DeviceCMYK through poppler's
+    table (K=1 is #231f20, like the artwork's strokes), DeviceRGB and DeviceGray exact (clipped to [0, 1]). The name
+    is kept from the naive (1-c)(1-k) map it replaced, so the call sites did not move."""
+    return fill_rgb(f)
 
 
 def dev(x, y):
@@ -181,7 +284,6 @@ def fit_circle(pts):
     return cx, cy, R
 
 
-BOXW = 63.0     # rounded rect is 67.3pt wide; 2pt padding each side
 report, missing, degenerate, undecodable = [], [], [], []
 # The MACHINE-READABLE half of the report printed at the bottom of this file. `report`
 # holds formatted DISPLAY STRINGS ("  center 12.0->12.00pt  'Boiling|point'"), so it
@@ -195,8 +297,28 @@ keys, translated = [], []
 # `runExact` is every kept block, identity included. `degenerate_kept` only splits the
 # stdout warning - `degenerate` itself keeps its meaning.
 identity, run_exact, degenerate_kept = [], [], []
+# §C140 ②, additive and in draw order WITH multiplicity: every formula stretch a translated label
+# could NOT carry over - `{key, token, stretch, reason, candidates}`, reason in absent / ambiguous /
+# no-base / partial (transfer) and stacked / inverted-base / arc (the source side). A named miss is
+# drawn as flat text, never refused and never blanked.
+unformatted = []
+# §C140 ⑨, additive, draw order WITH multiplicity: the kept blocks whose DRAWN text changed under
+# `localise_block`. Empty on --control.
+localized = []
+# §C140 ③, additive, draw order: every translated label drawn overhanging, NAMED (R5) -
+# `{key, block, word, needPt, budgetPt, sizePt, axis}` plus `linePt` on the width axis. axis 'width':
+# `word` does not fit at the floor (needPt its width; word None for a line-count overhang, needPt the
+# widest drawn line), linePt the widest DRAWN line; a box/cell width entry whose glyph box also misses
+# height adds heightNeedPt / heightBudgetPt. axis 'height': a box/cell label whose glyph box (needPt)
+# meets its height budget at no size (word None).
+overflow = []
+# §C140 ③, additive, draw order WITH multiplicity: `{key, block, why}` for every translated label
+# whose container detection RAISED (see the comment at the append).
+container_errors = []
+# The stripped artwork's vector objects and its raster, read lazily by the first laid-out label.
+PAGE = DARK = None
 
-for b in blocks:
+for BI, b in enumerate(blocks):
     ls = FT.lines(b)
     # The arc decision must be made BEFORE `new` is built: `new` is a STRING for an arc
     # and a LIST OF LINES otherwise, so deciding afterwards would hand the straight path
@@ -222,12 +344,13 @@ for b in blocks:
     else:
         value = FT.normalise_block_value(TR[key], arc) if key in TR else None
         # ⚠️ AN EMPTY OR WHITESPACE-ONLY VALUE IS *MISSING*, NOT A TRANSLATION. It reaches
-        # this line looking like a hit - `key in TR` is True - and would DELETE the label:
-        # `wrap()` turns a whitespace-only paragraph into '' and cairo draws nothing, and the
+        # this line looking like a hit - `key in TR` is True - and would DELETE the label: a
+        # whitespace-only value has no words to lay out (before §C140 ③, `wrap()` turned it into
+        # '' and cairo drew nothing; `figlayout.decide` now refuses zero words outright), and the
         # arc path draws nothing for the same reason. Before this branch existed the erasure
         # was recorded nowhere, so the block vanished while `missing` stayed empty.
-        # The predicate is `.strip()` because that is exactly what `wrap()` does with
-        # `para.split()`; it errs toward KEEPING English, the safe direction.
+        # The predicate is `.strip()` because a value with any non-space character has at least one
+        # `\S+` word (`figscripts.words`); it errs toward KEEPING English, the safe direction.
         # (`.strip()` is right here: this judges an MT/editor-authored VALUE. The no-`.strip()`
         # rule in `run_draw_text` and blockkey.py is about SOURCE runs read from a PDF, whose
         # edge spaces are glyph positions.)
@@ -249,11 +372,22 @@ for b in blocks:
     if kept:
         if FT.is_arc(b) and circle is None:
             degenerate_kept.append(key)
-        if draw_run_exact(b):
+        # ⑨ AFTER the key and the identity decision, on the drawn text only.
+        drawn = b if CONTROL else localise_block(b)
+        if draw_run_exact(drawn):
             undecodable.append(key)
+        if any(FT.run_draw_text(d)[0] != FT.run_draw_text(r)[0] for d, r in zip(drawn, b)):
+            localized.append(key)
         run_exact.append(key)
         report.append(f"  RUNEXACT {len(b)} run(s)  {key!r}")
         continue
+
+    # §C140 ②: which source runs are sub/superscripts or italic, as TOKENS built from runs.json
+    # only - never from the value. Asked for every translated block BEFORE the arc decision, so an
+    # arc block's `arc` miss (sized or italic glyphs it will not style) is named too; an arc is
+    # never styled.
+    tokens, src_misses = FS.source_tokens(b, meta['fonts'])
+    unformatted.extend(dict(key=key, **m) for m in src_misses)
 
     if arc:
         cx, cy, R = circle
@@ -273,7 +407,7 @@ for b in blocks:
             th = a + side * (w / R) / 2
             px, py = dev(cx + R * math.cos(th), cy + R * math.sin(th))
             rot_deg = math.degrees(th + side * math.pi / 2)
-            ITEMS.append(dict(text=ch, x=px / S, y=H_PT - py / S, rot=rot_deg,
+            ITEMS.append(dict(path='arc', text=ch, x=px / S, y=H_PT - py / S, rot=rot_deg,
                               size=sz, bold=b[0]['font'] in BOLD, italic=False, rgb=col, dx=-w / 2))
             ctx.save(); ctx.translate(px, py); ctx.rotate(-(th + side * math.pi / 2))
             ctx.set_source_rgb(*col); ctx.move_to(-w * S / 2, 0); ctx.show_text(ch)
@@ -282,69 +416,97 @@ for b in blocks:
         report.append(f"  ARC    R={R:5.1f}pt  {key!r}")
         continue
 
-    align = FT.alignment(b, lambda t, r: measure(t, r))
     rot = b[0]['rot']; rad = math.radians(rot)
-    sz0 = b[0]['size']
-    starts = [FT.along(l[0]) for l in ls]
-    widths = [sum(measure(r['text'], r) for r in l) for l in ls]
-    anchor = {'left':   min(starts),
-              'right':  max(s + w for s, w in zip(starts, widths)),
-              'center': sum(s + w / 2 for s, w in zip(starts, widths)) / len(ls)}[align]
-    # budget: a boxed label stays inside its box; any label may keep at least the
-    # width its English original already occupied.
-    maxw = max(BOXW if abs(rot) < 0.5 else 999, max(widths) + 1.0)
-    ref = ls[0][0]
+    # §C140 ②: the label's BODY size - the size carrying the most letters among non-symbol runs -
+    # not its first run's. A formula's scripts are drawn at size * ratio, so a block opening on an
+    # 11 pt STIX symbol over a 9 pt body (47 corpus send:true blocks; 0 of 176 in the 34) would
+    # otherwise draw the whole label, scripts included, from the symbol's size.
+    sz0 = FS.body_size(b, meta['fonts'])
 
-    # WRAP before shrinking. The MT returns ONE string per block; without this a
-    # 3-line English label comes back as one long line and the only lever left is
-    # font size — TempScales' "180 gradur a Fahrenheit" fell to 5.75pt beside 9pt
-    # neighbours. Shrinking is the fallback for a single unbreakable word, not the
-    # primary response to a longer translation.
-    def wrap(lines_in, size):
-        out = []
-        for para in lines_in:
-            words = para.split()
-            if not words:
-                out.append(''); continue
-            cur = words[0]
-            for w_ in words[1:]:
-                if measure(cur + ' ' + w_, ref, size) <= maxw:
-                    cur += ' ' + w_
-                else:
-                    out.append(cur); cur = w_
-            out.append(cur)
-        return out
+    # §C140 ②: carry the source's sub/superscripts and italics onto the value. `transfer` reads
+    # the RAW value (possibly editor-edited) and never alters it; `words` keys every style by its
+    # offset in that raw string (`re.finditer(r'\S+')` == `str.split()` on every codepoint), so
+    # no whitespace collapse can misalign a style. A word is (text, [SourceStyle|None per char]).
+    # ⚠️ ONE transfer per VALUE, never one per paragraph. A legacy LIST value (normalise_block_value
+    # still accepts pre-split lines) is joined with ' ' first - a formula token holds no space, so
+    # the join cannot create or break an occurrence. Per-paragraph transfer searched every token in
+    # every paragraph and named a false `absent` in each paragraph that lacked it. A str value is
+    # one paragraph, so for it the join is the value itself.
+    # §C140 ③: the layout no longer honours a legacy list's paragraph breaks - figlayout chooses
+    # the line count from the SOURCE (n_src). Exposure 0: every committed sidecar value is a str.
+    raw = ' '.join(new)
+    if tokens:
+        fmt, misses = FS.transfer(tokens, raw)
+        unformatted.extend(dict(key=key, **m) for m in misses)
+    else:
+        fmt = [None] * len(raw)
+    words = FS.words(raw, fmt)
 
-    sz = sz0
-    wrapped = wrap(new, sz)
-    while sz > 5 and max((measure(t, ref, sz) for t in wrapped), default=0) > maxw:
-        sz -= 0.25
-        wrapped = wrap(new, sz)
-    new = wrapped
+    # §C140 ③: WHAT the label is drawn inside - box / table cell / open with a free box - decided
+    # per block, now, from the stripped artwork (figcontainers.container_for never raises), and HOW
+    # it is laid out in it - lines, size, anchor, displacement, a named overhang - decided by the
+    # pure figlayout.decide. This file only measures and draws. The page and its raster are read
+    # ONCE per figure, and only when a label is actually laid out.
+    if PAGE is None:
+        PAGE = FC.load_page(OUT / 'artwork.pdf')
+        with Image.open(OUT / 'artwork.png') as _im:
+            DARK = _im.convert('L')
+    container = FC.container_for(BI, blocks, PAGE, DARK, H_PT)
+    # 🔴 A DETECTION ERROR IS NAMED HERE OR NOWHERE. container_for turns ANY exception into an
+    # 'open' container whose `why` is 'error: <Type>', with the source width and no vertical room -
+    # and a label that still fits that is laid out with no other trace, even when its block really
+    # sat in a box or a table cell. So a figcontainers regression could turn every box and cell
+    # into open, silently. Draw order, with multiplicity. (load_page above is deliberately NOT
+    # guarded: a missing or corrupt artwork.pdf fails the whole compose loudly - exit 1, no report -
+    # rather than laying every label of the figure out against containers nobody measured.)
+    if container['why'].startswith('error:'):
+        container_errors.append(dict(key=key, block=BI, why=container['why']))
+    # Source cues from the PDF's OWN advances, never from a cairo measure.
+    cues = dict(n_src=len(ls), sz0=sz0,
+                starts=[min(FT.along(r) for r in l) for l in ls],
+                ends=[max(FT.along(r) + r['adv'] for r in l) for l in ls],
+                projs=[FT.proj(l[0]) for l in ls])
 
-    # Anchor on the block's vertical CENTRE, not its first baseline. The line count
-    # changes with the language, and top-anchoring a 3-line block replaced by 1 line
-    # leaves the label floating above the thing it labels.
-    lead = sz0 * 1.222
-    projs = [FT.proj(l[0]) for l in ls]
-    centre = (max(projs) + min(projs)) / 2
-    top = centre + (len(new) - 1) / 2.0 * lead
-    for j, t in enumerate(new):
-        fr = ls[min(j, len(ls) - 1)][0]     # font AND colour are per LINE
-        w = measure(t, fr, sz)
-        a_ = {'left': anchor, 'right': anchor - w, 'center': anchor - w / 2}[align]
+    def width(chars, size, j):
+        """figlayout's ONE width function: output line j is drawn in the font and colour of
+        source line min(j, last) - font AND colour are per LINE."""
+        return seg_width(chars, ls[min(j, len(ls) - 1)][0], size)
+
+    layout = FL.decide(words, width, container, cues)
+    align, size, lead, top = layout['align'], layout['size'], layout['lead'], layout['top']
+    for j, lc in enumerate(layout['lines']):
+        fr = ls[min(j, len(ls) - 1)][0]
         p_ = top - j * lead
-        x = a_ * math.cos(rad) - p_ * math.sin(rad)
-        y = a_ * math.sin(rad) + p_ * math.cos(rad)
-        px, py = dev(x, y)
-        setfont(fr, sz)
-        ITEMS.append(dict(text=t, x=px / S, y=H_PT - py / S, rot=rot,
-                          size=sz, bold=fr['font'] in BOLD, italic=False, rgb=cmyk(fr['fill']),
-                          dx=0.0))
-        ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
-        ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
-        ctx.restore()
-    report.append(f"  {align:6} {sz0}->{sz:.2f}pt  {key!r}")
+        # One ITEMS entry - one <text> - per SEGMENT: a script at size * ratio, its baseline
+        # shifted size * frac along the text normal, the pen advancing by each segment's LINEAR
+        # advance - the same advances the layout decision was made with.
+        off = 0.0
+        for k, (t, st) in enumerate(line_segments(lc)):
+            aa = layout['x0'][j] + off
+            pp = p_ if st is None else p_ + size * st.frac
+            x = aa * math.cos(rad) - pp * math.sin(rad)
+            y = aa * math.sin(rad) + pp * math.cos(rad)
+            px, py = dev(x, y)
+            setfont_st(fr, size, st)
+            ITEMS.append(dict(path='layout', line=j, seg=k, text=t, x=px / S, y=H_PT - py / S,
+                              rot=rot, size=size if st is None else size * st.ratio,
+                              bold=fr['font'] in BOLD, italic=st is not None and st.italic,
+                              rgb=cmyk(fr['fill']), dx=0.0))
+            ctx.save(); ctx.translate(px, py); ctx.rotate(-rad)
+            ctx.set_source_rgb(*cmyk(fr['fill'])); ctx.move_to(0, 0); ctx.show_text(t)
+            ctx.restore()
+            off += lin_advance(t, fr, size, st)
+    ov = layout['overflow']
+    if ov is not None:
+        # The report CONTRACT, copied field by field (figure-compose.py passes it verbatim into
+        # compose.json): `axis` always; `linePt` / `heightNeedPt` / `heightBudgetPt` only where figlayout set them.
+        entry = dict(key=key, block=BI, word=ov['word'], needPt=ov['needPt'],
+                     budgetPt=ov['budgetPt'], sizePt=ov['sizePt'], axis=ov['axis'])
+        for extra in ('linePt', 'heightNeedPt', 'heightBudgetPt'):
+            if extra in ov:
+                entry[extra] = ov[extra]
+        overflow.append(entry)
+    report.append(f"  {align:6} {sz0}->{size:.2f}pt  {key!r}  [{container['cls']} {layout['step']}]")
 
 name = 'control.png' if CONTROL else 'translated.png'
 out.write_to_png(str(OUT / name))
@@ -390,6 +552,14 @@ if SVG:
     # E (§C140 ①). Additive: figure-compose.py reads only blocks/missing/translated.
     'identity': identity,
     'runExact': run_exact,
+    # §C140 ②. Additive: named formula stretches drawn as flat text (see `unformatted` above).
+    'unformatted': unformatted,
+    # §C140 ⑨. Additive: kept blocks drawn with Icelandic number separators.
+    'localized': localized,
+    # §C140 ③. Additive: translated labels drawn overhanging, named (width or height axis).
+    'overflow': overflow,
+    # §C140 ③. Additive: translated labels laid out with no container detection (it raised).
+    'containerErrors': container_errors,
 }, indent=1, ensure_ascii=False))
 
 print(f"{len(blocks)} blocks")
@@ -418,6 +588,34 @@ if undecodable:
     print(f"\n!! {len(undecodable)} block(s) carried a pdfminer (cid:N) placeholder, "
           f"REMOVED before drawing:")
     for k in undecodable:
+        print(f"     {k!r}")
+# Leading '\n' is load-bearing - see the note above the compose-report.json write.
+if unformatted:
+    print(f"\nNOTE (not a failure): {len(unformatted)} formula stretch(es) drawn UNFORMATTED:")
+    for u in unformatted:
+        print(f"     {u['key']!r}: {u['stretch']!r} of {u['token']!r} - {u['reason']}")
+if overflow:
+    print(f"\nNOTE (not a failure): {len(overflow)} translated label(s) drawn OVERHANGING:")
+    for o in overflow:
+        if o['axis'] == 'height':
+            what = f"glyph box {o['needPt']:.2f} pt of {o['budgetPt']:.2f} pt height"
+        else:
+            what = (f"{'a line' if o['word'] is None else repr(o['word'])} needs {o['needPt']:.2f} pt "
+                    f"of {o['budgetPt']:.2f} pt width"
+                    + (f", widest line {o['linePt']:.2f} pt" if 'linePt' in o else '')
+                    + (f"; glyph box {o['heightNeedPt']:.2f} pt of {o['heightBudgetPt']:.2f} pt height"
+                       if 'heightNeedPt' in o else ''))
+        print(f"     {o['key']!r} block {o['block']}: {what} at {o['sizePt']} pt")
+# Leading '\n' is load-bearing - see the note above the compose-report.json write.
+if container_errors:
+    print(f"\nNOTE (not a failure): {len(container_errors)} translated label(s) laid out WITHOUT "
+          f"container detection - it raised, and each was drawn as open:")
+    for c in container_errors:
+        print(f"     {c['key']!r} block {c['block']}: {c['why']}")
+if localized:
+    print(f"\nNOTE (not a failure): {len(localized)} kept block(s) drawn with Icelandic number "
+          f"separators:")
+    for k in localized:
         print(f"     {k!r}")
 print(f"\nwrote out/{name}")
 # Leading '\n' is load-bearing - see the note above the compose-report.json write.

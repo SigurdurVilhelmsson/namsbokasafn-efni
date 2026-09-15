@@ -1,0 +1,3525 @@
+{
+ "summary": {
+  "J1 vs P": {
+   "better": 44,
+   "same": 21,
+   "worse": 11
+  },
+  "J2 vs P": {
+   "better": 41,
+   "same": 25,
+   "worse": 10
+  },
+  "J1 vs P, stable (J1==J2)": {
+   "better": 38,
+   "same": 15,
+   "worse": 6
+  },
+  "J1 vs P, unstable": {
+   "same": 6,
+   "better": 6,
+   "worse": 5
+  },
+  "P consensus": {
+   "wrong": 12,
+   "acceptable": 42,
+   "correct": 22
+  },
+  "J1 consensus": {
+   "correct": 54,
+   "acceptable": 20,
+   "wrong": 2
+  },
+  "J2 consensus": {
+   "correct": 52,
+   "acceptable": 20,
+   "wrong": 4
+  },
+  "P wrong, J1 not wrong": 12,
+  "J1 wrong, P not wrong": 2,
+  "J2 wrong, P not wrong": 4,
+  "lens agreement over candidates": {
+   "unanimous": 117,
+   "split": 50
+  }
+ },
+ "rows": [
+  {
+   "id": "i01",
+   "fig": "CNX_Chem_03_01_alsulfatemass_img",
+   "en": "Element",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Frumefni",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Þáttur",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 0,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i02",
+   "fig": "CNX_Chem_03_01_alsulfatemass_img",
+   "en": "Average atomic mass (amu)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Meðal atómmassi (amu)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Meðalatómamassi (amu)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "tie": 1,
+    "B": 2
+   }
+  },
+  {
+   "id": "i03",
+   "fig": "CNX_Chem_03_01_alsulfatemass_img",
+   "en": "Molecular mass",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Sameindamassi",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mólmassi",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 0,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i04",
+   "fig": "CNX_Chem_03_01_aspirin",
+   "en": "Element",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Frumefni",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Þáttur",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 0,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i05",
+   "fig": "CNX_Chem_03_01_aspirin",
+   "en": "Quantity",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Magn",
+     "arms": [
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Fjöldi",
+     "arms": [
+      "C",
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i06",
+   "fig": "CNX_Chem_03_01_aspirin",
+   "en": "Average atomic mass (amu)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Meðal atómmassi (amu)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Meðalatómamassi (amu)",
+     "arms": [
+      "C"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "C": {
+     "text": "Meðalsætismassi (amu)",
+     "arms": [
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 0,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "tie": 1,
+    "B": 2
+   }
+  },
+  {
+   "id": "i07",
+   "fig": "CNX_Chem_03_01_aspirin",
+   "en": "Molecular mass",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Sameindamassi",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mólmassi",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 0,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i08",
+   "fig": "CNX_Chem_03_01_chloroform",
+   "en": "Element",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Frumefni",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Þáttur",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 0,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i09",
+   "fig": "CNX_Chem_03_01_chloroform",
+   "en": "Average atomic mass (amu)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Meðalatómamassi (amu)",
+     "arms": [
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Meðalsætismassi (amu)",
+     "arms": [
+      "C"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    },
+    "C": {
+     "text": "Meðal atómmassi (amu)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 1,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "tie": 1,
+    "A": 2
+   }
+  },
+  {
+   "id": "i10",
+   "fig": "CNX_Chem_03_01_chloroform",
+   "en": "Molecular mass",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Sameindamassi",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mólmassi",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 0,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i11",
+   "fig": "CNX_Chem_03_01_exocytosis-88f6",
+   "en": "Neuron",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Taugungur",
+     "arms": [
+      "C",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 1,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Taugafruma",
+     "arms": [
+      "P",
+      "J1"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "tie": 2,
+    "B": 1
+   }
+  },
+  {
+   "id": "i12",
+   "fig": "CNX_Chem_03_01_glycinemass_img",
+   "en": "Element",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Frumefni",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Þáttur",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 0,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i13",
+   "fig": "CNX_Chem_03_01_glycinemass_img",
+   "en": "Molar mass (g/mol element)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mólmassi (g/mól frumefni)",
+     "arms": [
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mólmassi (g/mól frumefnis)",
+     "arms": [
+      "C",
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i14",
+   "fig": "CNX_Chem_03_01_glycinemass_img",
+   "en": "Subtotal (g/mol compound)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Samtals (g/mól efnasambands)",
+     "arms": [
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 2
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Millitala (g/mól efnasambands)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "C": {
+     "text": "Samtals (g/mól efnasamband)",
+     "arms": [
+      "C"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i15",
+   "fig": "CNX_Chem_03_01_saltMass",
+   "en": "Element",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Frumefni",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Þáttur",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 0,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i16",
+   "fig": "CNX_Chem_03_01_saltMass",
+   "en": "Average atomic mass (amu)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Meðalatómamassi (amu)",
+     "arms": [
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Meðal atómmassi (amu)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "C": {
+     "text": "Meðalatómmassi (amu)",
+     "arms": [
+      "C"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 1,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "C": 3
+   }
+  },
+  {
+   "id": "i17",
+   "fig": "CNX_Chem_03_02_argon_img-9025",
+   "en": "Moles of Ar atoms (mol)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól Ar atóma (mól)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mól af Ar atómum (mól)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "A": 2,
+    "B": 1
+   }
+  },
+  {
+   "id": "i18",
+   "fig": "CNX_Chem_03_02_argon_img-9025",
+   "en": "Multiply by molar mass (g/mol)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Margfaldaðu með mólmassa (g/mól)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Margfaldað með mólmassa (g/mól)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i19",
+   "fig": "CNX_Chem_03_02_copperMoles_img-a962",
+   "en": "Moles of Cu atoms (mol)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól Cu atóma (mól)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mól af Cu atómum (mól)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "A": 2,
+    "B": 1
+   }
+  },
+  {
+   "id": "i20",
+   "fig": "CNX_Chem_03_02_copperMoles_img-a962",
+   "en": "Multiply by Avogadro’s number (mol–1)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Margfaldið með tölu Avogadros (mól–1)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Margfaldaðu með tölu Avogadros (mól–1)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "tie": 1,
+    "B": 1,
+    "A": 1
+   }
+  },
+  {
+   "id": "i21",
+   "fig": "CNX_Chem_03_02_glycine_img-7c96",
+   "en": "Moles of C2H5O2N (mol)",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Mólfjöldi C2H5O2N (mól)",
+     "arms": [
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mól af C2H5O2N (mól)",
+     "arms": [
+      "C",
+      "P",
+      "J1"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 1,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 2,
+    "B": 1
+   }
+  },
+  {
+   "id": "i22",
+   "fig": "CNX_Chem_03_02_glycine_img-7c96",
+   "en": "Divide by molar mass (g/mol)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Deilt með mólmassa (g/mól)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Deilið með mólmassa (g/mól)",
+     "arms": [
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "C": {
+     "text": "Deila með mólmassa (g/mól)",
+     "arms": [
+      "C"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "tie": 1,
+    "A": 1,
+    "B": 1
+   }
+  },
+  {
+   "id": "i23",
+   "fig": "CNX_Chem_03_02_potassium_img-f1d1",
+   "en": "Moles of K atoms (mol)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól K-atóma (mól)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mól K atóma (mól)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i24",
+   "fig": "CNX_Chem_03_02_potassium_img-f1d1",
+   "en": "Divide by molar mass (g/mol)",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Deila með mólmassa (g/mól)",
+     "arms": [
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Deilið með mólmassa (g/mól)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "C": {
+     "text": "Deilt með mólmassa (g/mól)",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "tie": 1,
+    "C": 1,
+    "B": 1
+   }
+  },
+  {
+   "id": "i25",
+   "fig": "CNX_Chem_03_02_potassium_img-f1d1",
+   "en": "Mass of K atoms (g)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Massi K-atóma (g)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Massi K atóma (g)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i26",
+   "fig": "CNX_Chem_03_02_sacch_img-3278",
+   "en": "Moles of C7H5NO3S (mol)",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Mólfjöldi C7H5NO3S (mól)",
+     "arms": [
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mól af C7H5NO3S (mól)",
+     "arms": [
+      "C",
+      "P",
+      "J1"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 1,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 2,
+    "B": 1
+   }
+  },
+  {
+   "id": "i27",
+   "fig": "CNX_Chem_03_02_sacch_img-3278",
+   "en": "Divide by molar mass (g/mol)",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Deilið með mólmassa (g/mól)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Deila með mólmassa (g/mól)",
+     "arms": [
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 2
+    },
+    "C": {
+     "text": "Deilt með mólmassa (g/mól)",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "tie": 1,
+    "C": 1,
+    "A": 1
+   }
+  },
+  {
+   "id": "i28",
+   "fig": "CNX_Chem_03_02_sacch_img-3278",
+   "en": "Multiply by Avogadro’s number (mol–1)",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Margfalda með tölu Avogadros (mól–1)",
+     "arms": [
+      "C",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Margfaldaðu með tölu Avogadros (mól–1)",
+     "arms": [
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "C": {
+     "text": "Margfaldað með tölu Avogadros (mól–1)",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "tie": 1,
+    "C": 2
+   }
+  },
+  {
+   "id": "i29",
+   "fig": "CNX_Chem_03_02_vitC_img-e537",
+   "en": "Multiply by molar mass (g/mol)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Margfaldað með mólmassa (g/mól)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Margfalda með mólmassa (g/mól)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "tie": 1,
+    "A": 2
+   }
+  },
+  {
+   "id": "i30",
+   "fig": "CNX_Chem_03_02_vitC_img-e537",
+   "en": "Moles of vitamin C (mol)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól af C-vítamíni (mól)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mólfjöldi C-vítamíns (mól)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i31",
+   "fig": "CNX_Chem_03_03_empform",
+   "en": "Moles of A atoms",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Mól af A atómum",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mól A-atóma",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "C": {
+     "text": "Mólfjöldi A atóma",
+     "arms": [
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 1
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i32",
+   "fig": "CNX_Chem_03_03_empform",
+   "en": "Divide by molar mass",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Deilið með mólmassa",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Deila með mólmassa",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 1,
+    "tie": 1,
+    "A": 1
+   }
+  },
+  {
+   "id": "i33",
+   "fig": "CNX_Chem_03_03_empform",
+   "en": "Mass of A atoms",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Massi A atóma",
+     "arms": [
+      "C",
+      "P",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Massi A-atóma",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 1
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i34",
+   "fig": "CNX_Chem_03_03_empform",
+   "en": "Moles of X atoms",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Mól X-atóma",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mólfjöldi X atóma",
+     "arms": [
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "C": {
+     "text": "Mól af X atómum",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 1
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i35",
+   "fig": "CNX_Chem_03_03_empform",
+   "en": "Mass of X atoms",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Massi X-atóma",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Massi X atóma",
+     "arms": [
+      "C",
+      "P",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 1
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i36",
+   "fig": "CNX_Chem_03_03_empform",
+   "en": "Divide by lowest number of moles",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Deila með lægsta mólfjölda",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Deilið með lægsta mólfjölda",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 1,
+    "tie": 1,
+    "B": 1
+   }
+  },
+  {
+   "id": "i37",
+   "fig": "CNX_Chem_03_03_empform",
+   "en": "Empirical formula",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Reynsluformúla",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Empirísk formúla",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i38",
+   "fig": "CNX_Chem_03_05_Example2_img",
+   "en": "Multiply by mass percent as ratio (g HCl/g solution)",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Margfaldaðu með massaprósentu sem hlutfalli (g HCl/g lausn)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Margfaldað með massaprósentu sem hlutfalli (g HCl/g lausnar)",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "C": {
+     "text": "Margfaldað með massaprósentu sem hlutfalli (g HCl/g lausn)",
+     "arms": [
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 1
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i39",
+   "fig": "CNX_Chem_03_05_Example2_img",
+   "en": "Multiply by density (g/mL)",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Margfaldað með eðlismassa (g/ml)",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Margfalda með eðlismassa (g/ml)",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "tie": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i40",
+   "fig": "CNX_Chem_04_01_rxn2",
+   "en": "Product side",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Myndefnamegin",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Vörumegin",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 0,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i41",
+   "fig": "CNX_Chem_04_01_rxn2",
+   "en": "Product",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Myndefni",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Vara",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 0,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i42",
+   "fig": "CNX_Chem_04_01_rxn3",
+   "en": "Mixture after reaction",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Blanda eftir efnahvarf",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Blanda eftir hvarf",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "tie": 1,
+    "B": 1,
+    "A": 1
+   }
+  },
+  {
+   "id": "i43",
+   "fig": "CNX_Chem_04_03_ethene_img",
+   "en": "required to react with H2O to produce 9.55 g of",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "þarf til að hvarfast við H2O til að mynda 9,55 g af",
+     "arms": [
+      "J2"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 1,
+      "label-fit": 0
+     },
+     "consensus": 0
+    },
+    "B": {
+     "text": "sem þarf til að hvarfast við H2O til að mynda 9,55 g af",
+     "arms": [
+      "C",
+      "P",
+      "J1"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 2,
+    "J2": 0
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i44",
+   "fig": "CNX_Chem_04_03_flowchart",
+   "en": "Density",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Eðlismassi",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Þéttleiki",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i45",
+   "fig": "CNX_Chem_04_03_flowchart",
+   "en": "Stoichiometric factor",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Stökiómetrískur þáttur",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Efnajöfnustuðull",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i46",
+   "fig": "CNX_Chem_04_03_flowchart",
+   "en": "Number of particles of A",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Fjöldi agna af A",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Fjöldi einda A",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i47",
+   "fig": "CNX_Chem_04_03_flowchart",
+   "en": "Number of particles of B",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Fjöldi agna af B",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Fjöldi einda B",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i48",
+   "fig": "CNX_Chem_04_03_flowchart",
+   "en": "Moles of B",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól af B",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mólfjöldi B",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i49",
+   "fig": "CNX_Chem_04_03_flowchart",
+   "en": "Moles of A",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mólfjöldi A",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mól af A",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 2,
+    "B": 1
+   }
+  },
+  {
+   "id": "i50",
+   "fig": "CNX_Chem_04_03_map2_img",
+   "en": "Moles of  Mg(OH)2",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól af Mg(OH)2",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mól Mg(OH)2",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i51",
+   "fig": "CNX_Chem_04_03_map2_img",
+   "en": "Moles of NaOH",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól af NaOH",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mól NaOH",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i52",
+   "fig": "CNX_Chem_04_03_map2_img",
+   "en": "Stoichiometric factor",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Stöðugleikastuðull",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    },
+    "B": {
+     "text": "Efnajöfnustuðull",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 0,
+    "J2": 0
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i53",
+   "fig": "CNX_Chem_04_03_map3_img",
+   "en": "Moles of  C8H18",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól af C8H18",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mól C8H18",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i54",
+   "fig": "CNX_Chem_04_03_map3_img",
+   "en": "Moles of O2",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól af O2",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mól O2",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i55",
+   "fig": "CNX_Chem_04_03_map3_img",
+   "en": "Stoichiometric factor",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Efnajöfnustuðull",
+     "arms": [
+      "C",
+      "P",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Stöðugleikastuðull",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 0,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i56",
+   "fig": "CNX_Chem_04_03_moleratio1_img",
+   "en": "Stoichiometric  factor",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Stöðugleikastuðull",
+     "arms": [
+      "J2"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    },
+    "B": {
+     "text": "Stökiómetrískur þáttur",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "C": {
+     "text": "Efnajöfnustuðull",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 1,
+    "J2": 0
+   },
+   "best_votes": {
+    "C": 3
+   }
+  },
+  {
+   "id": "i57",
+   "fig": "CNX_Chem_04_03_moleratio2_img",
+   "en": "Molecules of  CO2",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Sameindir CO2",
+     "arms": [
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Sameindir af CO2",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "C": {
+     "text": "CO2-sameindir",
+     "arms": [
+      "C"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 1,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "C": 3
+   }
+  },
+  {
+   "id": "i58",
+   "fig": "CNX_Chem_04_03_moleratio2_img",
+   "en": "Stoichiometric  factor",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Efnajöfnustuðull",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Stöðumælingarstuðull",
+     "arms": [
+      "J2"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    },
+    "C": {
+     "text": "Stökiómetrískur þáttur",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 1,
+    "J2": 0
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i59",
+   "fig": "CNX_Chem_04_04_limiting",
+   "en": "After reaction",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Eftir hvarf",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Eftir viðbrögð",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 0,
+      "label-fit": 0
+     },
+     "consensus": 0
+    }
+   },
+   "arm": {
+    "C": 0,
+    "P": 0,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i60",
+   "fig": "CNX_Chem_04_04_sandwich",
+   "en": "Provided with:",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Fylgir með:",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Fyrirliggjandi:",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i61",
+   "fig": "CNX_Chem_04_05_combmap_img",
+   "en": "Moles of CO2",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól af CO2",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mól CO2",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i62",
+   "fig": "CNX_Chem_04_05_combmap_img",
+   "en": "Moles of C",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól C",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mól af C",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 2,
+    "B": 1
+   }
+  },
+  {
+   "id": "i63",
+   "fig": "CNX_Chem_04_05_combmap_img",
+   "en": "Moles of H2O",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól H2O",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mól af H2O",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 2,
+    "B": 1
+   }
+  },
+  {
+   "id": "i64",
+   "fig": "CNX_Chem_04_05_combmap_img",
+   "en": "Moles of H",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól H",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mól af H",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 2,
+    "B": 1
+   }
+  },
+  {
+   "id": "i65",
+   "fig": "CNX_Chem_04_05_combmap_img",
+   "en": "Percent composition",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Efnasamsetning í prósentum",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Prósentusamsetning",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i66",
+   "fig": "CNX_Chem_04_05_combmap_img",
+   "en": "Empirical formula",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Reynsluformúla",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Empírísk formúla",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i67",
+   "fig": "CNX_Chem_04_05_combmap_img",
+   "en": "Stoichiometric factor",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Efnajöfnustuðull",
+     "arms": [
+      "C",
+      "P",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Magnhlutfallsstuðull",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 1,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i68",
+   "fig": "CNX_Chem_04_05_combustion",
+   "en": "Sample",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Sýni",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Sýnishorn",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i69",
+   "fig": "CNX_Chem_04_05_map7_img",
+   "en": "Moles of  NaOH",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mólfjöldi NaOH",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mól af NaOH",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 2,
+    "B": 1
+   }
+  },
+  {
+   "id": "i70",
+   "fig": "CNX_Chem_04_05_map7_img",
+   "en": "Moles of HCl",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól af HCl",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mólfjöldi HCl",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i71",
+   "fig": "CNX_Chem_04_05_map8_img",
+   "en": "Stoichiometric factor",
+   "stable": false,
+   "cands": {
+    "A": {
+     "text": "Stökiómetrískur stuðull",
+     "arms": [
+      "J1"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Efnajöfnustuðull",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "C": {
+     "text": "Efnamagnsstuðull",
+     "arms": [
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i72",
+   "fig": "CNX_Chem_04_05_map8_img",
+   "en": "Sample mass",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Sýnismassi",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Massi sýnis",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 3
+   }
+  },
+  {
+   "id": "i73",
+   "fig": "CNX_Chem_04_05_map8_img",
+   "en": "Moles of  BaSO4",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól BaSO4",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Mól af BaSO4",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "A": 2,
+    "B": 1
+   }
+  },
+  {
+   "id": "i74",
+   "fig": "CNX_Chem_04_05_map8_img",
+   "en": "Moles of  CaSO4",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Mól af CaSO4",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 2,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Mól CaSO4",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 2,
+    "J2": 2
+   },
+   "best_votes": {
+    "B": 2,
+    "A": 1
+   }
+  },
+  {
+   "id": "i75",
+   "fig": "CNX_Chem_04_05_map8_img",
+   "en": "Percent  CaSO4",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Prósenta CaSO4",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 2,
+      "book-consistency": 2,
+      "label-fit": 2
+     },
+     "consensus": 2
+    },
+    "B": {
+     "text": "Hlutfall CaSO4",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 2,
+    "P": 2,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "A": 3
+   }
+  },
+  {
+   "id": "i76",
+   "fig": "CNX_Chem_14_03_FishLemon",
+   "en": "Putrescinium ion",
+   "stable": true,
+   "cands": {
+    "A": {
+     "text": "Pútreskínjón",
+     "arms": [
+      "C",
+      "P"
+     ],
+     "scores": {
+      "terminology": 0,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    },
+    "B": {
+     "text": "Pútresínjón",
+     "arms": [
+      "J1",
+      "J2"
+     ],
+     "scores": {
+      "terminology": 1,
+      "book-consistency": 1,
+      "label-fit": 1
+     },
+     "consensus": 1
+    }
+   },
+   "arm": {
+    "C": 1,
+    "P": 1,
+    "J1": 1,
+    "J2": 1
+   },
+   "best_votes": {
+    "B": 3
+   }
+  }
+ ]
+}

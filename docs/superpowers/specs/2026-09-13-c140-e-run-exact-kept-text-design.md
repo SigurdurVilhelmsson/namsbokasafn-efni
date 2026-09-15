@@ -33,7 +33,7 @@ and its `evidence/2026-09-13-compose-fidelity/` — in particular the prototype 
 | # | ruling | by |
 |---|---|---|
 | R1 | **Build E** (draw English-kept blocks run-exact), not E′ (selective strip), B′ (stamp at mint) or D (distinct disposition) | [USER] 2026-09-13 |
-| R2 | **E only.** `geometricPrecision`, per-run `font-kerning`, STIX re-embedding (⑥), the strip-text colour fix (④) and page-box padding (⑤) are **out** | [USER] 2026-09-13 |
+| R2 | **E only.** `geometricPrecision`, per-run `font-kerning`, STIX re-embedding (⑥), the strip-text colour fix (④) and page-box padding (⑤) are **out**. *(2026-09-15: `geometricPrecision` alone was brought in by [USER] — t23 spec R12; the rest of this row stands.)* | [USER] 2026-09-13 |
 | R3 | The pure decisions live as **helpers beside the rules they belong to**, unit-tested alone; `compose.py` keeps only the cairo calls | [USER] 2026-09-13 |
 | R4 | The PR is not merged until [USER] has **looked at the recomposed figures** | [USER] 2026-09-13 |
 | R5 | Buying figures stays stopped; which of ②–⑦ must land before it resumes is **not ruled** | [USER] 2026-09-13 |

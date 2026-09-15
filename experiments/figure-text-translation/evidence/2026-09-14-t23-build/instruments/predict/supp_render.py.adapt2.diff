@@ -1,0 +1,11 @@
+--- ../../pred/instruments/supp_render.py	2026-09-14 08:43:15.502666334 +0000
++++ supp_render.py	2026-09-14 12:06:46.840305121 +0000
+@@ -13,7 +13,7 @@
+ import sys, os
+ from pathlib import Path
+ sys.dont_write_bytecode = True
+-PRED = Path('/home/siggi/dev/scratch-c140/plan/pred')
++PRED = Path('/home/siggi/dev/scratch-c140/plan/pred2')
+ sys.path.insert(0, str(PRED / 'instruments'))
+ TAG, MODE = sys.argv[1], sys.argv[2]
+ assert MODE in ('hinted', 'linear')

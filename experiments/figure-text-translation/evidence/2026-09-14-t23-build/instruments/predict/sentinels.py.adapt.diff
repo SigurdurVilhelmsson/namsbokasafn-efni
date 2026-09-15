@@ -1,0 +1,51 @@
+--- frozen/sentinels.py	2026-09-14 08:31:17.647121456 +0000
++++ sentinels.py	2026-09-14 08:33:28.386861087 +0000
+@@ -14,12 +14,15 @@
+ """
+ import json, math, sys, collections, re, copy
+ sys.dont_write_bytecode = True
+-sys.path.insert(0, '/home/siggi/dev/scratch-c140/c3b/scripts')
++sys.path.insert(0, '/home/siggi/dev/scratch-c140/plan/pred/instruments')   # PRED ADAPTATION A1: import the adapted copies
+ from c3lib import *
+ sys.path.insert(0, '/home/siggi/dev/scratch-c140/r2/tree')
+ import c2_scripts as TS
+ 
+ R2 = Path('/home/siggi/dev/scratch-c140/r2')
++import os   # PRED ADAPTATION A2: input work root and output dir
++PRED = Path('/home/siggi/dev/scratch-c140/plan/pred')
++WORK_ROOT = Path(os.environ.get('PRED_WORK_ROOT', str(R2 / 'work')))
+ CEN = json.loads((R2 / 'census.json').read_text())
+ msurf = cairo.ImageSurface(cairo.FORMAT_A8, 8, 8); mctx = cairo.Context(msurf)
+ 
+@@ -106,11 +109,11 @@
+                stretches_placed=0, unformatted=[], box=dict(n=0, fail=[]), cell=dict(n=0, fail=[], displaced=[]),
+                open_steps=collections.Counter(), open_steps_named=collections.defaultdict(list))
+     for b in names():
+-        work = R2 / 'work' / tag / b
++        work = WORK_ROOT / tag / b
+         items = json.loads((work / 'items.json').read_text())
+         rep = json.loads((work / 'compose-report.json').read_text())
+         diag = {d['block']: d for d in json.loads((work / 'diag.json').read_text())}
+-        fig = Fig(b, items_dir=R2 / 'work' / tag, diag_dir=R2 / 'work' / tag)
++        fig = Fig(b, items_dir=WORK_ROOT / tag, diag_dir=WORK_ROOT / tag)
+         tr = json.loads((SIDE_DIR / f'{b}.is.json').read_text())['blocks']
+         res['unformatted'] += [dict(basename=b, **u) for u in rep.get('unformatted', [])]
+         for bi in fig.layout_blocks():
+@@ -178,7 +181,7 @@
+     tag = sys.argv[1]
+     if '--control' in sys.argv:
+         b = 'CNX_Chem_04_03_ethene_img'
+-        fig = Fig(b, items_dir=R2 / 'work' / tag, diag_dir=R2 / 'work' / tag)
++        fig = Fig(b, items_dir=WORK_ROOT / tag, diag_dir=WORK_ROOT / tag)
+         tr = json.loads((SIDE_DIR / f'{b}.is.json').read_text())['blocks']
+         bi = 0; its = fig.block_items(bi); value = tr[fig.keys[bi]]; sz0 = fig.blocks[bi][0]['size']
+         out = {'clean': text_check(its, value, sz0)[:2]}
+@@ -194,7 +197,7 @@
+                               results={k: dict(fires=bool(v[0]), fails=v[0], adjacency=v[1]) for k, v in out.items()}), ensure_ascii=False, indent=1))
+         sys.exit(0)
+     res = main(tag)
+-    (R2 / f'sentinels-{tag}.json').write_text(json.dumps(res, ensure_ascii=False, indent=1))
++    (PRED / 'out' / f'sentinels-{tag}.json').write_text(json.dumps(res, ensure_ascii=False, indent=1))
+     print(tag, 'blocks', res['blocks'], 'TEXT fail', len(res['text_fail']), 'adjacency', len(res['adjacency']),
+           '| styled blocks', res['styled_blocks'], 'stretches placed', res['stretches_placed'], '/', res['stretches'],
+           'drawn-styled mismatch', len(res['styled_mismatch']), 'unformatted', len(res['unformatted']),

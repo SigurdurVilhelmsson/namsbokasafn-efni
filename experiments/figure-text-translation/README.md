@@ -142,6 +142,12 @@ published.jpg ──check.py─────────────────�
 | `strip-text.py` | stage 2 — remove `BT..ET`, drop Illustrator private data, render artwork |
 | `compose.py` | stage 3 — lay text back. A block kept in English (never sent, no translation, or a reply identical to what was sent) is drawn **run-exact** — every run at its source origin, size, rotation, fill and face; only a genuine translation is laid out. `--control` keeps every block, so it is a faithful redraw of the source (§C140 ①) |
 | `check.py` | stage 4 — diff against the published raster, write an overlay |
+| `figscripts.py` | the source of a translated label's formula formatting — which runs are sub/superscripts or italic, and where that formatting lands in the translated (possibly editor-edited) value. Pure; `compose.py` draws the result (§C140 ②) |
+| `figcontainers.py` | what a translated label sits in — `box`, `cell` or `open` with its free space — detected per block at compose time from the text-stripped artwork. Never raises; a failure is an `open` container whose `why` names it (§C140 ③) |
+| `figlayout.py` | the layout decision for a translated label — line partition, size, anchor, displacement and the named overflow — from a caller-supplied width function. Pure (§C140 ③, R9, R13) |
+| `numloc.py` | Icelandic number separators for labels drawn in English (`26.98` → `26,98`). Runs only on source run text, never on a value that may already be localised — it is not idempotent (§C140 ⑨) |
+| `figcolour.py` | the ONE text-fill → RGB conversion, the way poppler draws DeviceCMYK, DeviceRGB and DeviceGray, so a label's black matches the artwork's (R14) |
+| `svgfix.py` | the post-`pdftocairo -svg` artwork pass — owns that call's argv (`-noshrink -nocenter`, R15), collapses cairo's blend-mode lerp so a browser can load the artwork, and measures the reference cost `figure-prepare.py` warns on (§C140 ⑫) |
 | `census.py` | survey a directory of figure PDFs: live text? substitutable font? prose vs verbatim? |
 | `svgout.py` | emit SVG: vector artwork + real `<text>` + a woff2 **subset** of the figure's own font |
 | `render-check.mjs` | rasterise a figure in Chromium **inside `<img>`** — the only rendering a reader ever sees |

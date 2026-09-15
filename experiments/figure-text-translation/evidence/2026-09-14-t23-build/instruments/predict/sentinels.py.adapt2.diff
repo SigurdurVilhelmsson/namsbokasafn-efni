@@ -1,0 +1,19 @@
+--- ../../pred/instruments/sentinels.py	2026-09-14 08:33:28.386861087 +0000
++++ sentinels.py	2026-09-14 12:06:46.836838852 +0000
+@@ -14,14 +14,14 @@
+ """
+ import json, math, sys, collections, re, copy
+ sys.dont_write_bytecode = True
+-sys.path.insert(0, '/home/siggi/dev/scratch-c140/plan/pred/instruments')   # PRED ADAPTATION A1: import the adapted copies
++sys.path.insert(0, '/home/siggi/dev/scratch-c140/plan/pred2/instruments')   # PRED ADAPTATION A1: import the adapted copies
+ from c3lib import *
+ sys.path.insert(0, '/home/siggi/dev/scratch-c140/r2/tree')
+ import c2_scripts as TS
+ 
+ R2 = Path('/home/siggi/dev/scratch-c140/r2')
+ import os   # PRED ADAPTATION A2: input work root and output dir
+-PRED = Path('/home/siggi/dev/scratch-c140/plan/pred')
++PRED = Path('/home/siggi/dev/scratch-c140/plan/pred2')
+ WORK_ROOT = Path(os.environ.get('PRED_WORK_ROOT', str(R2 / 'work')))
+ CEN = json.loads((R2 / 'census.json').read_text())
+ msurf = cairo.ImageSurface(cairo.FORMAT_A8, 8, 8); mctx = cairo.Context(msurf)

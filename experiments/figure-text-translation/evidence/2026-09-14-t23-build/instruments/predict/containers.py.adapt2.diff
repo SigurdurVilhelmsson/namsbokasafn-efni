@@ -1,0 +1,11 @@
+--- ../../pred/instruments/containers.py	2026-09-14 08:33:28.386531012 +0000
++++ containers.py	2026-09-14 12:06:46.818971781 +0000
+@@ -18,7 +18,7 @@
+   block bbox (+0.5 pt); else a LINE-CELL from the nearest rule segments on all four sides.
+ """
+ import json, math, sys, time
+-sys.path.insert(0, '/home/siggi/dev/scratch-c140/plan/pred/instruments')   # PRED ADAPTATION A1: import the adapted copies
++sys.path.insert(0, '/home/siggi/dev/scratch-c140/plan/pred2/instruments')   # PRED ADAPTATION A1: import the adapted copies
+ from c3lib import *
+ from scipy import ndimage as ndi
+ import pdfplumber

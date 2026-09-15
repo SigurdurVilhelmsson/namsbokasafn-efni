@@ -262,3 +262,67 @@ describe('verdict NOTEs the labels a TRANSLATED figure could not decode', () => 
     expect(v.reasons[0]).toMatch(/carry text we cannot read/);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// 🔴 §C140 ② ③ ⑨ — WHAT THE COMPOSER REPORTED ABOUT THE FIGURES IT DREW. `figure-compose.py`
+// copies four lists out of compose-report.json into compose.json; the driver counts the
+// `translated` figures carrying each and hands the counts to `verdict` through `extra`, the same
+// channel as the undecoded NOTE, because each is a property of a figure INSIDE a bucket.
+// ⚠️ NONE IS FATAL, AND THAT IS PINNED TOGETHER WITH THE MESSAGE. The figure is drawn and every
+// label is in it: a named formula miss draws plain text, an overhang draws at the floor, a
+// localised number is the house style, a failed detection lays a label out as open. Failing on
+// any of them would be the always-red exit code R9 rejects — so each test below asserts the NOTE
+// AND `ok` in one run, and a NOTE that lost its prefix fails here rather than failing chapters.
+describe('verdict NOTEs what the composer reported about the figures it drew', () => {
+  const tally = () => ({ ...emptyTally(), translated: 3 });
+  const NOTES = [
+    [
+      'unformattedFigures',
+      'NOTE (not a failure): 2 translated figure(s) carry formula formatting the composer could not place — the report names each',
+    ],
+    [
+      'overflowFigures',
+      'NOTE (not a failure): 2 figure(s) carry label(s) drawn at the floor that overhang their space — the report names each',
+    ],
+    [
+      'localizedFigures',
+      'NOTE (not a failure): 2 figure(s) had English-kept numbers drawn with a decimal comma',
+    ],
+    [
+      'containerErrorFigures',
+      'NOTE (not a failure): 2 figure(s) had container detection fail — those labels were laid out as open',
+    ],
+  ];
+
+  for (const [field, message] of NOTES) {
+    it(`names ${field} in exactly one NOTE, and the run stays ok`, () => {
+      const v = verdict(tally(), 3, { [field]: 2 });
+      expect(v.reasons).toEqual([message]);
+      expect(v.ok).toBe(true);
+    });
+  }
+
+  // The control for all four: a zero is silence. Without it the tests above pass against a
+  // verdict that prints these lines on every run.
+  it('says nothing when every count is zero', () => {
+    const extra = Object.fromEntries(NOTES.map(([field]) => [field, 0]));
+    expect(verdict(tally(), 3, extra)).toEqual({ ok: true, reasons: [] });
+  });
+
+  it('all four at once are four NOTEs in list order, and the run is still ok', () => {
+    const extra = Object.fromEntries(NOTES.map(([field]) => [field, 2]));
+    const v = verdict(tally(), 3, extra);
+    expect(v.reasons).toEqual(NOTES.map(([, message]) => message));
+    expect(v.ok).toBe(true);
+  });
+
+  // 🔴 A NOTE MUST NOT MASK A FAILURE. Beside a real `failed-compose` the run is still not ok —
+  // so the NOTEs are additive, never a substitute reason.
+  it('does not turn a failing run ok', () => {
+    const t = { ...emptyTally(), translated: 2, 'failed-compose': 1 };
+    const extra = Object.fromEntries(NOTES.map(([field]) => [field, 1]));
+    const v = verdict(t, 3, extra);
+    expect(v.ok).toBe(false);
+    expect(v.reasons.filter((r) => r.startsWith('NOTE'))).toHaveLength(4);
+  });
+});

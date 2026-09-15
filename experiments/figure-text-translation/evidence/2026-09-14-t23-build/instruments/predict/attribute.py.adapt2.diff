@@ -1,0 +1,20 @@
+--- ../../pred/instruments/attribute.py	2026-09-14 08:39:35.934718863 +0000
++++ attribute.py	2026-09-14 12:06:46.807178218 +0000
+@@ -3,7 +3,7 @@
+ 
+     PYTHONDONTWRITEBYTECODE=1 python3 -u attribute.py      -> ../out/attribution.json (+ stdout)
+ 
+-0 ISK. figlayout.decide (the FINAL module, from plan/pred/inst-C) is pure, so it is driven here with each of its
++0 ISK. figlayout.decide (the FINAL module, from plan/pred2/inst-C) is pure, so it is driven here with each of its
+ inputs switched between the PROTOTYPE's value and the FINAL build's value, one factor at a time:
+ 
+   r9      R9 short-token binding            proto: off (_r9=False)                 final: on
+@@ -26,7 +26,7 @@
+ from pathlib import Path
+ 
+ sys.dont_write_bytecode = True
+-PRED = Path('/home/siggi/dev/scratch-c140/plan/pred')
++PRED = Path('/home/siggi/dev/scratch-c140/plan/pred2')
+ INST = PRED / 'inst-C'
+ sys.path.insert(0, str(INST / 'pylibs'))
+ sys.path.insert(0, str(INST))

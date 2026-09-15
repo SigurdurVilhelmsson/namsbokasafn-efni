@@ -1,0 +1,1749 @@
+{
+ "i01": {
+  "fig": "CNX_Chem_03_01_alsulfatemass_img",
+  "key": "Element",
+  "en": "Element",
+  "cands": {
+   "A": {
+    "text": "Frumefni",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Þáttur",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i02": {
+  "fig": "CNX_Chem_03_01_alsulfatemass_img",
+  "key": "Average atomic|mass (amu)",
+  "en": "Average atomic mass (amu)",
+  "cands": {
+   "A": {
+    "text": "Meðal atómmassi (amu)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Meðalatómamassi (amu)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i03": {
+  "fig": "CNX_Chem_03_01_alsulfatemass_img",
+  "key": "Molecular mass",
+  "en": "Molecular mass",
+  "cands": {
+   "A": {
+    "text": "Sameindamassi",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mólmassi",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i04": {
+  "fig": "CNX_Chem_03_01_aspirin",
+  "key": "Element",
+  "en": "Element",
+  "cands": {
+   "A": {
+    "text": "Frumefni",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Þáttur",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i05": {
+  "fig": "CNX_Chem_03_01_aspirin",
+  "key": "Quantity",
+  "en": "Quantity",
+  "cands": {
+   "A": {
+    "text": "Magn",
+    "arms": [
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Fjöldi",
+    "arms": [
+     "C",
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i06": {
+  "fig": "CNX_Chem_03_01_aspirin",
+  "key": "Average atomic|mass (amu)",
+  "en": "Average atomic mass (amu)",
+  "cands": {
+   "A": {
+    "text": "Meðal atómmassi (amu)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Meðalatómamassi (amu)",
+    "arms": [
+     "C"
+    ]
+   },
+   "C": {
+    "text": "Meðalsætismassi (amu)",
+    "arms": [
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i07": {
+  "fig": "CNX_Chem_03_01_aspirin",
+  "key": "Molecular mass",
+  "en": "Molecular mass",
+  "cands": {
+   "A": {
+    "text": "Sameindamassi",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mólmassi",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i08": {
+  "fig": "CNX_Chem_03_01_chloroform",
+  "key": "Element",
+  "en": "Element",
+  "cands": {
+   "A": {
+    "text": "Frumefni",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Þáttur",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i09": {
+  "fig": "CNX_Chem_03_01_chloroform",
+  "key": "Average atomic|mass (amu)",
+  "en": "Average atomic mass (amu)",
+  "cands": {
+   "A": {
+    "text": "Meðalatómamassi (amu)",
+    "arms": [
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Meðalsætismassi (amu)",
+    "arms": [
+     "C"
+    ]
+   },
+   "C": {
+    "text": "Meðal atómmassi (amu)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i10": {
+  "fig": "CNX_Chem_03_01_chloroform",
+  "key": "Molecular mass",
+  "en": "Molecular mass",
+  "cands": {
+   "A": {
+    "text": "Sameindamassi",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mólmassi",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i11": {
+  "fig": "CNX_Chem_03_01_exocytosis-88f6",
+  "key": "Neuron",
+  "en": "Neuron",
+  "cands": {
+   "A": {
+    "text": "Taugungur",
+    "arms": [
+     "C",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Taugafruma",
+    "arms": [
+     "P",
+     "J1"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i12": {
+  "fig": "CNX_Chem_03_01_glycinemass_img",
+  "key": "Element",
+  "en": "Element",
+  "cands": {
+   "A": {
+    "text": "Frumefni",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Þáttur",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i13": {
+  "fig": "CNX_Chem_03_01_glycinemass_img",
+  "key": "Molar mass|(g/mol element)",
+  "en": "Molar mass (g/mol element)",
+  "cands": {
+   "A": {
+    "text": "Mólmassi (g/mól frumefni)",
+    "arms": [
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Mólmassi (g/mól frumefnis)",
+    "arms": [
+     "C",
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i14": {
+  "fig": "CNX_Chem_03_01_glycinemass_img",
+  "key": "Subtotal|(g/mol compound)",
+  "en": "Subtotal (g/mol compound)",
+  "cands": {
+   "A": {
+    "text": "Samtals (g/mól efnasambands)",
+    "arms": [
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Millitala (g/mól efnasambands)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "C": {
+    "text": "Samtals (g/mól efnasamband)",
+    "arms": [
+     "C"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i15": {
+  "fig": "CNX_Chem_03_01_saltMass",
+  "key": "Element",
+  "en": "Element",
+  "cands": {
+   "A": {
+    "text": "Frumefni",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Þáttur",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i16": {
+  "fig": "CNX_Chem_03_01_saltMass",
+  "key": "Average atomic|mass (amu)",
+  "en": "Average atomic mass (amu)",
+  "cands": {
+   "A": {
+    "text": "Meðalatómamassi (amu)",
+    "arms": [
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Meðal atómmassi (amu)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "C": {
+    "text": "Meðalatómmassi (amu)",
+    "arms": [
+     "C"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i17": {
+  "fig": "CNX_Chem_03_02_argon_img-9025",
+  "key": "Moles of|Ar atoms (mol)",
+  "en": "Moles of Ar atoms (mol)",
+  "cands": {
+   "A": {
+    "text": "Mól Ar atóma (mól)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mól af Ar atómum (mól)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i18": {
+  "fig": "CNX_Chem_03_02_argon_img-9025",
+  "key": "Multiply by molar|mass (g/mol)",
+  "en": "Multiply by molar mass (g/mol)",
+  "cands": {
+   "A": {
+    "text": "Margfaldaðu með mólmassa (g/mól)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Margfaldað með mólmassa (g/mól)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i19": {
+  "fig": "CNX_Chem_03_02_copperMoles_img-a962",
+  "key": "Moles of|Cu atoms (mol)",
+  "en": "Moles of Cu atoms (mol)",
+  "cands": {
+   "A": {
+    "text": "Mól Cu atóma (mól)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mól af Cu atómum (mól)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i20": {
+  "fig": "CNX_Chem_03_02_copperMoles_img-a962",
+  "key": "Multiply by|Avogadro’s|number (mol–1)",
+  "en": "Multiply by Avogadro’s number (mol–1)",
+  "cands": {
+   "A": {
+    "text": "Margfaldið með tölu Avogadros (mól–1)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Margfaldaðu með tölu Avogadros (mól–1)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i21": {
+  "fig": "CNX_Chem_03_02_glycine_img-7c96",
+  "key": "Moles of|C2H5O2N (mol)",
+  "en": "Moles of C2H5O2N (mol)",
+  "cands": {
+   "A": {
+    "text": "Mólfjöldi C2H5O2N (mól)",
+    "arms": [
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mól af C2H5O2N (mól)",
+    "arms": [
+     "C",
+     "P",
+     "J1"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i22": {
+  "fig": "CNX_Chem_03_02_glycine_img-7c96",
+  "key": "Divide by molar|mass (g/mol)",
+  "en": "Divide by molar mass (g/mol)",
+  "cands": {
+   "A": {
+    "text": "Deilt með mólmassa (g/mól)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Deilið með mólmassa (g/mól)",
+    "arms": [
+     "P"
+    ]
+   },
+   "C": {
+    "text": "Deila með mólmassa (g/mól)",
+    "arms": [
+     "C"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i23": {
+  "fig": "CNX_Chem_03_02_potassium_img-f1d1",
+  "key": "Moles of|K atoms (mol)",
+  "en": "Moles of K atoms (mol)",
+  "cands": {
+   "A": {
+    "text": "Mól K-atóma (mól)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mól K atóma (mól)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i24": {
+  "fig": "CNX_Chem_03_02_potassium_img-f1d1",
+  "key": "Divide by molar|mass (g/mol)",
+  "en": "Divide by molar mass (g/mol)",
+  "cands": {
+   "A": {
+    "text": "Deila með mólmassa (g/mól)",
+    "arms": [
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Deilið með mólmassa (g/mól)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "C": {
+    "text": "Deilt með mólmassa (g/mól)",
+    "arms": [
+     "J1"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i25": {
+  "fig": "CNX_Chem_03_02_potassium_img-f1d1",
+  "key": "Mass of|K atoms (g)",
+  "en": "Mass of K atoms (g)",
+  "cands": {
+   "A": {
+    "text": "Massi K-atóma (g)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Massi K atóma (g)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i26": {
+  "fig": "CNX_Chem_03_02_sacch_img-3278",
+  "key": "Moles of|C7H5NO3S|(mol)",
+  "en": "Moles of C7H5NO3S (mol)",
+  "cands": {
+   "A": {
+    "text": "Mólfjöldi C7H5NO3S (mól)",
+    "arms": [
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mól af C7H5NO3S (mól)",
+    "arms": [
+     "C",
+     "P",
+     "J1"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i27": {
+  "fig": "CNX_Chem_03_02_sacch_img-3278",
+  "key": "Divide by molar|mass (g/mol)",
+  "en": "Divide by molar mass (g/mol)",
+  "cands": {
+   "A": {
+    "text": "Deilið með mólmassa (g/mól)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Deila með mólmassa (g/mól)",
+    "arms": [
+     "J2"
+    ]
+   },
+   "C": {
+    "text": "Deilt með mólmassa (g/mól)",
+    "arms": [
+     "J1"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i28": {
+  "fig": "CNX_Chem_03_02_sacch_img-3278",
+  "key": "Multiply by|Avogadro’s|number (mol–1)",
+  "en": "Multiply by Avogadro’s number (mol–1)",
+  "cands": {
+   "A": {
+    "text": "Margfalda með tölu Avogadros (mól–1)",
+    "arms": [
+     "C",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Margfaldaðu með tölu Avogadros (mól–1)",
+    "arms": [
+     "P"
+    ]
+   },
+   "C": {
+    "text": "Margfaldað með tölu Avogadros (mól–1)",
+    "arms": [
+     "J1"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i29": {
+  "fig": "CNX_Chem_03_02_vitC_img-e537",
+  "key": "Multiply by molar|mass (g/mol)",
+  "en": "Multiply by molar mass (g/mol)",
+  "cands": {
+   "A": {
+    "text": "Margfaldað með mólmassa (g/mól)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Margfalda með mólmassa (g/mól)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i30": {
+  "fig": "CNX_Chem_03_02_vitC_img-e537",
+  "key": "Moles of|vitamin C (mol)",
+  "en": "Moles of vitamin C (mol)",
+  "cands": {
+   "A": {
+    "text": "Mól af C-vítamíni (mól)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Mólfjöldi C-vítamíns (mól)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i31": {
+  "fig": "CNX_Chem_03_03_empform",
+  "key": "Moles of|A atoms",
+  "en": "Moles of A atoms",
+  "cands": {
+   "A": {
+    "text": "Mól af A atómum",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Mól A-atóma",
+    "arms": [
+     "J1"
+    ]
+   },
+   "C": {
+    "text": "Mólfjöldi A atóma",
+    "arms": [
+     "J2"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i32": {
+  "fig": "CNX_Chem_03_03_empform",
+  "key": "Divide by|molar mass",
+  "en": "Divide by molar mass",
+  "cands": {
+   "A": {
+    "text": "Deilið með mólmassa",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Deila með mólmassa",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i33": {
+  "fig": "CNX_Chem_03_03_empform",
+  "key": "Mass of|A atoms",
+  "en": "Mass of A atoms",
+  "cands": {
+   "A": {
+    "text": "Massi A atóma",
+    "arms": [
+     "C",
+     "P",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Massi A-atóma",
+    "arms": [
+     "J1"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i34": {
+  "fig": "CNX_Chem_03_03_empform",
+  "key": "Moles of|X atoms",
+  "en": "Moles of X atoms",
+  "cands": {
+   "A": {
+    "text": "Mól X-atóma",
+    "arms": [
+     "J1"
+    ]
+   },
+   "B": {
+    "text": "Mólfjöldi X atóma",
+    "arms": [
+     "J2"
+    ]
+   },
+   "C": {
+    "text": "Mól af X atómum",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i35": {
+  "fig": "CNX_Chem_03_03_empform",
+  "key": "Mass of|X atoms",
+  "en": "Mass of X atoms",
+  "cands": {
+   "A": {
+    "text": "Massi X-atóma",
+    "arms": [
+     "J1"
+    ]
+   },
+   "B": {
+    "text": "Massi X atóma",
+    "arms": [
+     "C",
+     "P",
+     "J2"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i36": {
+  "fig": "CNX_Chem_03_03_empform",
+  "key": "Divide by|lowest number|of moles",
+  "en": "Divide by lowest number of moles",
+  "cands": {
+   "A": {
+    "text": "Deila með lægsta mólfjölda",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Deilið með lægsta mólfjölda",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i37": {
+  "fig": "CNX_Chem_03_03_empform",
+  "key": "Empirical|formula",
+  "en": "Empirical formula",
+  "cands": {
+   "A": {
+    "text": "Reynsluformúla",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Empirísk formúla",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i38": {
+  "fig": "CNX_Chem_03_05_Example2_img",
+  "key": "Multiply by|mass percent as ratio|(g HCl/g solution)",
+  "en": "Multiply by mass percent as ratio (g HCl/g solution)",
+  "cands": {
+   "A": {
+    "text": "Margfaldaðu með massaprósentu sem hlutfalli (g HCl/g lausn)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Margfaldað með massaprósentu sem hlutfalli (g HCl/g lausnar)",
+    "arms": [
+     "J1"
+    ]
+   },
+   "C": {
+    "text": "Margfaldað með massaprósentu sem hlutfalli (g HCl/g lausn)",
+    "arms": [
+     "J2"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i39": {
+  "fig": "CNX_Chem_03_05_Example2_img",
+  "key": "Multiply by|density (g/mL)",
+  "en": "Multiply by density (g/mL)",
+  "cands": {
+   "A": {
+    "text": "Margfaldað með eðlismassa (g/ml)",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Margfalda með eðlismassa (g/ml)",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i40": {
+  "fig": "CNX_Chem_04_01_rxn2",
+  "key": "Product side",
+  "en": "Product side",
+  "cands": {
+   "A": {
+    "text": "Myndefnamegin",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Vörumegin",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i41": {
+  "fig": "CNX_Chem_04_01_rxn2",
+  "key": "Product",
+  "en": "Product",
+  "cands": {
+   "A": {
+    "text": "Myndefni",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Vara",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i42": {
+  "fig": "CNX_Chem_04_01_rxn3",
+  "key": "Mixture after reaction",
+  "en": "Mixture after reaction",
+  "cands": {
+   "A": {
+    "text": "Blanda eftir efnahvarf",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Blanda eftir hvarf",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i43": {
+  "fig": "CNX_Chem_04_03_ethene_img",
+  "key": "required to react with H2O to produce 9.55 g of",
+  "en": "required to react with H2O to produce 9.55 g of",
+  "cands": {
+   "A": {
+    "text": "þarf til að hvarfast við H2O til að mynda 9,55 g af",
+    "arms": [
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "sem þarf til að hvarfast við H2O til að mynda 9,55 g af",
+    "arms": [
+     "C",
+     "P",
+     "J1"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i44": {
+  "fig": "CNX_Chem_04_03_flowchart",
+  "key": "Density",
+  "en": "Density",
+  "cands": {
+   "A": {
+    "text": "Eðlismassi",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Þéttleiki",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i45": {
+  "fig": "CNX_Chem_04_03_flowchart",
+  "key": "Stoichiometric|factor",
+  "en": "Stoichiometric factor",
+  "cands": {
+   "A": {
+    "text": "Stökiómetrískur þáttur",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Efnajöfnustuðull",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i46": {
+  "fig": "CNX_Chem_04_03_flowchart",
+  "key": "Number|of|particles|of A",
+  "en": "Number of particles of A",
+  "cands": {
+   "A": {
+    "text": "Fjöldi agna af A",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Fjöldi einda A",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i47": {
+  "fig": "CNX_Chem_04_03_flowchart",
+  "key": "Number|of|particles|of B",
+  "en": "Number of particles of B",
+  "cands": {
+   "A": {
+    "text": "Fjöldi agna af B",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Fjöldi einda B",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i48": {
+  "fig": "CNX_Chem_04_03_flowchart",
+  "key": "Moles|of B",
+  "en": "Moles of B",
+  "cands": {
+   "A": {
+    "text": "Mól af B",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Mólfjöldi B",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i49": {
+  "fig": "CNX_Chem_04_03_flowchart",
+  "key": "Moles|of A",
+  "en": "Moles of A",
+  "cands": {
+   "A": {
+    "text": "Mólfjöldi A",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mól af A",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i50": {
+  "fig": "CNX_Chem_04_03_map2_img",
+  "key": "Moles of |Mg(OH)2",
+  "en": "Moles of  Mg(OH)2",
+  "cands": {
+   "A": {
+    "text": "Mól af Mg(OH)2",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Mól Mg(OH)2",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i51": {
+  "fig": "CNX_Chem_04_03_map2_img",
+  "key": "Moles of NaOH",
+  "en": "Moles of NaOH",
+  "cands": {
+   "A": {
+    "text": "Mól af NaOH",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Mól NaOH",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i52": {
+  "fig": "CNX_Chem_04_03_map2_img",
+  "key": "Stoichiometric|factor",
+  "en": "Stoichiometric factor",
+  "cands": {
+   "A": {
+    "text": "Stöðugleikastuðull",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Efnajöfnustuðull",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i53": {
+  "fig": "CNX_Chem_04_03_map3_img",
+  "key": "Moles of |C8H18",
+  "en": "Moles of  C8H18",
+  "cands": {
+   "A": {
+    "text": "Mól af C8H18",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Mól C8H18",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i54": {
+  "fig": "CNX_Chem_04_03_map3_img",
+  "key": "Moles of O2",
+  "en": "Moles of O2",
+  "cands": {
+   "A": {
+    "text": "Mól af O2",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Mól O2",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i55": {
+  "fig": "CNX_Chem_04_03_map3_img",
+  "key": "Stoichiometric|factor",
+  "en": "Stoichiometric factor",
+  "cands": {
+   "A": {
+    "text": "Efnajöfnustuðull",
+    "arms": [
+     "C",
+     "P",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Stöðugleikastuðull",
+    "arms": [
+     "J1"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i56": {
+  "fig": "CNX_Chem_04_03_moleratio1_img",
+  "key": "Stoichiometric |factor",
+  "en": "Stoichiometric  factor",
+  "cands": {
+   "A": {
+    "text": "Stöðugleikastuðull",
+    "arms": [
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Stökiómetrískur þáttur",
+    "arms": [
+     "J1"
+    ]
+   },
+   "C": {
+    "text": "Efnajöfnustuðull",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i57": {
+  "fig": "CNX_Chem_04_03_moleratio2_img",
+  "key": "Molecules of |CO2",
+  "en": "Molecules of  CO2",
+  "cands": {
+   "A": {
+    "text": "Sameindir CO2",
+    "arms": [
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Sameindir af CO2",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "C": {
+    "text": "CO2-sameindir",
+    "arms": [
+     "C"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i58": {
+  "fig": "CNX_Chem_04_03_moleratio2_img",
+  "key": "Stoichiometric |factor",
+  "en": "Stoichiometric  factor",
+  "cands": {
+   "A": {
+    "text": "Efnajöfnustuðull",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Stöðumælingarstuðull",
+    "arms": [
+     "J2"
+    ]
+   },
+   "C": {
+    "text": "Stökiómetrískur þáttur",
+    "arms": [
+     "J1"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i59": {
+  "fig": "CNX_Chem_04_04_limiting",
+  "key": "After reaction",
+  "en": "After reaction",
+  "cands": {
+   "A": {
+    "text": "Eftir hvarf",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Eftir viðbrögð",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i60": {
+  "fig": "CNX_Chem_04_04_sandwich",
+  "key": "Provided with:",
+  "en": "Provided with:",
+  "cands": {
+   "A": {
+    "text": "Fylgir með:",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Fyrirliggjandi:",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i61": {
+  "fig": "CNX_Chem_04_05_combmap_img",
+  "key": "Moles of|CO2",
+  "en": "Moles of CO2",
+  "cands": {
+   "A": {
+    "text": "Mól af CO2",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Mól CO2",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i62": {
+  "fig": "CNX_Chem_04_05_combmap_img",
+  "key": "Moles of C",
+  "en": "Moles of C",
+  "cands": {
+   "A": {
+    "text": "Mól C",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mól af C",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i63": {
+  "fig": "CNX_Chem_04_05_combmap_img",
+  "key": "Moles of|H2O",
+  "en": "Moles of H2O",
+  "cands": {
+   "A": {
+    "text": "Mól H2O",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mól af H2O",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i64": {
+  "fig": "CNX_Chem_04_05_combmap_img",
+  "key": "Moles of H",
+  "en": "Moles of H",
+  "cands": {
+   "A": {
+    "text": "Mól H",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mól af H",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i65": {
+  "fig": "CNX_Chem_04_05_combmap_img",
+  "key": "Percent|composition",
+  "en": "Percent composition",
+  "cands": {
+   "A": {
+    "text": "Efnasamsetning í prósentum",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Prósentusamsetning",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i66": {
+  "fig": "CNX_Chem_04_05_combmap_img",
+  "key": "Empirical|formula",
+  "en": "Empirical formula",
+  "cands": {
+   "A": {
+    "text": "Reynsluformúla",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Empírísk formúla",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i67": {
+  "fig": "CNX_Chem_04_05_combmap_img",
+  "key": "Stoichiometric|factor",
+  "en": "Stoichiometric factor",
+  "cands": {
+   "A": {
+    "text": "Efnajöfnustuðull",
+    "arms": [
+     "C",
+     "P",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Magnhlutfallsstuðull",
+    "arms": [
+     "J1"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i68": {
+  "fig": "CNX_Chem_04_05_combustion",
+  "key": "Sample",
+  "en": "Sample",
+  "cands": {
+   "A": {
+    "text": "Sýni",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Sýnishorn",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i69": {
+  "fig": "CNX_Chem_04_05_map7_img",
+  "key": "Moles of |NaOH",
+  "en": "Moles of  NaOH",
+  "cands": {
+   "A": {
+    "text": "Mólfjöldi NaOH",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mól af NaOH",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i70": {
+  "fig": "CNX_Chem_04_05_map7_img",
+  "key": "Moles of HCl",
+  "en": "Moles of HCl",
+  "cands": {
+   "A": {
+    "text": "Mól af HCl",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Mólfjöldi HCl",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i71": {
+  "fig": "CNX_Chem_04_05_map8_img",
+  "key": "Stoichiometric|factor",
+  "en": "Stoichiometric factor",
+  "cands": {
+   "A": {
+    "text": "Stökiómetrískur stuðull",
+    "arms": [
+     "J1"
+    ]
+   },
+   "B": {
+    "text": "Efnajöfnustuðull",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "C": {
+    "text": "Efnamagnsstuðull",
+    "arms": [
+     "J2"
+    ]
+   }
+  },
+  "stable": false
+ },
+ "i72": {
+  "fig": "CNX_Chem_04_05_map8_img",
+  "key": "Sample mass",
+  "en": "Sample mass",
+  "cands": {
+   "A": {
+    "text": "Sýnismassi",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Massi sýnis",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i73": {
+  "fig": "CNX_Chem_04_05_map8_img",
+  "key": "Moles of |BaSO4",
+  "en": "Moles of  BaSO4",
+  "cands": {
+   "A": {
+    "text": "Mól BaSO4",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   },
+   "B": {
+    "text": "Mól af BaSO4",
+    "arms": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i74": {
+  "fig": "CNX_Chem_04_05_map8_img",
+  "key": "Moles of |CaSO4",
+  "en": "Moles of  CaSO4",
+  "cands": {
+   "A": {
+    "text": "Mól af CaSO4",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Mól CaSO4",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i75": {
+  "fig": "CNX_Chem_04_05_map8_img",
+  "key": "Percent |CaSO4",
+  "en": "Percent  CaSO4",
+  "cands": {
+   "A": {
+    "text": "Prósenta CaSO4",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Hlutfall CaSO4",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ },
+ "i76": {
+  "fig": "CNX_Chem_14_03_FishLemon",
+  "key": "Putrescinium ion",
+  "en": "Putrescinium ion",
+  "cands": {
+   "A": {
+    "text": "Pútreskínjón",
+    "arms": [
+     "C",
+     "P"
+    ]
+   },
+   "B": {
+    "text": "Pútresínjón",
+    "arms": [
+     "J1",
+     "J2"
+    ]
+   }
+  },
+  "stable": true
+ }
+}

@@ -1,0 +1,98 @@
+--- a/experiments/figure-text-translation/test_figlayout.py
++++ b/experiments/figure-text-translation/test_figlayout.py
+@@ -380,6 +380,95 @@
+ _l = decide('af Mólmassi', box(0, 100, 0, 40), cues(n_src=1))
+ check('R9 never changes the line count', texts(_l) == ['af Mólmassi'], str(texts(_l)))
+ 
++print('line count: E (no line that does not shorten the longest) and A (no lone symbol last) - [USER] 2026-09-15')
++# The flowchart's green/blue boxes: width budget 51.84, height budget 58.51 (CNX_Chem_04_03_flowchart b6-b18, pred2
++# diag.json). Fake widths at 9: 'Fjöldi' 'Rúmmál' 'hreins' 27, 'lausnar' 31.5, 'Massi' 22.5, 'agna' 18, 'efnis' 22.5,
++# 'af' 9, 'A' 4.5; 4 lines are 3 * 10.998 + 8.46 = 41.454 tall, so every count up to 4 meets the height budget.
++_fb = box(0, 55.84, 0, 62.51)
++# b10 'Number|of|particles|of A' (4 source lines, 4 words). 4 lines: longest 'Fjöldi' 27. 3 lines: 'Fjöldi / agna /
++# af A' - longest still 27 (af A = 18) - so the 4th line shortens nothing (E), and it strands the symbol A (A).
++_l = decide('Fjöldi agna af A', _fb, cues(n_src=4))
++check("[L] flowchart b10: 'Fjöldi agna af A' -> Fjöldi / agna / af A at 9.0, fit, no overflow",
++      texts(_l) == ['Fjöldi', 'agna', 'af A'] and _l['size'] == 9.0 and _l['step'] == 'fit' and _l['overflow'] is None,
++      f"{texts(_l)} {_l['size']} {_l['step']}")
++# b7 'Mass|of B' (2 source lines, 2 words). 2 lines 'Massi / A' are 22.5 wide and 1 line 'Massi A' 31.5 - the 2nd line
++# DOES shorten the longest line, so E alone keeps it; only A (a lone symbol may not end the label) makes it 1 line.
++_l = decide('Massi A', _fb, cues(n_src=2))
++check("[L] flowchart b7: 'Massi A' -> one line at 9.0", texts(_l) == ['Massi A'] and _l['size'] == 9.0, f"{texts(_l)} {_l['size']}")
++# b15 'Volume|of |solution|B' (4 source lines, 3 words). 3 lines: longest 'lausnar' 31.5; 2 lines 'Rúmmál / lausnar A'
++# 40.5 <= 51.84 - longer, so again A, not E, removes the lone A.
++_l = decide('Rúmmál lausnar A', _fb, cues(n_src=4))
++check("[L] flowchart b15: 'Rúmmál lausnar A' -> Rúmmál / lausnar A at 9.0",
++      texts(_l) == ['Rúmmál', 'lausnar A'] and _l['size'] == 9.0, f"{texts(_l)} {_l['size']}")
++# b9 'Volume|of pure|substance|A' (4 source lines, 4 words): 'efnis A' 31.5 fits, the symbol joins its word.
++_l = decide('Rúmmál hreins efnis A', _fb, cues(n_src=4))
++check("[L] flowchart b9: 'Rúmmál hreins efnis A' -> Rúmmál / hreins / efnis A at 9.0",
++      texts(_l) == ['Rúmmál', 'hreins', 'efnis A'] and _l['size'] == 9.0, f"{texts(_l)} {_l['size']}")
++# E WITHOUT A: no symbol anywhere ('xy' is lowercase alphabetic). 4 lines longest 27; 3 lines 'Fjöldi / agna / af xy'
++# longest 27 (af xy = 22.5) -> 3; 2 lines 'Fjöldi / agna af xy' 45 > 27 -> stays 3.
++_l = decide('Fjöldi agna af xy', _fb, cues(n_src=4))
++check("[L] E alone (no symbol): 'Fjöldi agna af xy' -> Fjöldi / agna / af xy",
++      texts(_l) == ['Fjöldi', 'agna', 'af xy'] and _l['size'] == 9.0, f"{texts(_l)} {_l['size']}")
++# CONTROL for E: the extra line DOES shorten the longest line, so it is kept. 3 lines 'Rúmmál / lausnar / xy' longest
++# 31.5; 2 lines 'Rúmmál / lausnar xy' 45 - it FITS the budget, so a rule that stepped down "while it still fits" would
++# take it. E steps down only while the longest line does not grow.
++_l = decide('Rúmmál lausnar xy', _fb, cues(n_src=3))
++check('[L] CONTROL E keeps a line that shortens the longest line: Rúmmál / lausnar / xy (2 lines would fit, 45 > 31.5)',
++      texts(_l) == ['Rúmmál', 'lausnar', 'xy'] and _l['size'] == 9.0, f"{texts(_l)} {_l['size']}")
++# CONTROL for A: binding the symbol cannot fit, so today's partition is kept. Box R 28 -> width budget 24. 'Massi A'
++# is 31.5 at 9 and 26.25 at the 7.5 floor - never <= 24 - while 'Massi' 22.5 fits at 9: the lone A stays.
++_l = decide('Massi A', box(0, 28, 0, 62.51), cues(n_src=2))
++check('[L] CONTROL A falls back when no binding partition fits: Massi / A at 9.0, fit, no overflow',
++      texts(_l) == ['Massi', 'A'] and _l['size'] == 9.0 and _l['step'] == 'fit' and _l['overflow'] is None,
++      f"{texts(_l)} {_l['size']} {_l['step']} {_l['overflow']}")
++# A keeps LINE COUNT BEFORE SIZE: a lone-symbol count is not admissible while a binding count fits at ANY size down to
++# the floor. Box R 32 -> budget 28: 'Massi A' is 28.875 at 8.25 and 28.0 at 8.0, so it is drawn as ONE line at 8.0,
++# not 'Massi / A' at 9.0 (which today's rule draws: 2 is the source count and 22.5 fits).
++_l = decide('Massi A', box(0, 32, 0, 62.51), cues(n_src=2))
++check('[L] A: a binding count that fits only when shrunk (1 line at 8.0) beats a lone symbol at full size',
++      texts(_l) == ['Massi A'] and _l['size'] == 8.0 and _l['step'] == 'fit', f"{texts(_l)} {_l['size']} {_l['step']}")
++# E in the WIDTH floor-overflow path. Box R 40 -> budget 36; 'aaaaaaaaaaaaaaa' (15) is 56.25 at 7.5 - the named word
++# and the partition budget. 3 source lines draw 'aaaaaaaaaaaaaaa / bb / cc' (longest 56.25); 2 lines '... / bb cc'
++# have the same longest line -> 2; 1 line is 78.75 -> stays 2. The named word is unchanged.
++_l = decide('aaaaaaaaaaaaaaa bb cc', box(0, 40, 0, 100), cues(n_src=3))
++check('[L] E in the width floor-overflow path: aaaaaaaaaaaaaaa / bb cc, the long word still named',
++      texts(_l) == ['aaaaaaaaaaaaaaa', 'bb cc'] and _l['step'] == 'floor-overflow'
++      and (_l['overflow'] or {}).get('word') == 'aaaaaaaaaaaaaaa', f"{texts(_l)} {_l['step']} {_l['overflow']}")
++# E in the HEIGHT floor-overflow path. Box 0-50 x 0-10: budgets 46 / 6 - one line at the floor is 7.05 tall, so no
++# count meets height. Width alone picks the 3 source lines 'aaaaaaaa / b / c' (36 at 9), shrunk to 7.5 (longest 30);
++# 'aaaaaaaa / b c' has the same longest line -> 2 lines, and the NAMED overhang is the glyph box actually drawn:
++# 10.998 + 7.05 = 18.048 (not 3 lines' 29.046).
++_l = decide('aaaaaaaa b c', box(0, 50, 0, 10), cues(n_src=3))
++_o = _l['overflow'] or {}
++check('[L] E in the height floor-overflow path: aaaaaaaa / b c at 7.5, height overhang named 18.048 > 6',
++      texts(_l) == ['aaaaaaaa', 'b c'] and _l['size'] == 7.5 and _o.get('axis') == 'height'
++      and near(_o.get('needPt', 0), 18.048) and near(_o.get('budgetPt', 0), 6.0), f"{texts(_l)} {_l['size']} {_o}")
++# The open path is NOT touched by the ruling (box/cell only): an open label of 2 source lines keeps 'Massi / A'.
++_l = decide('Massi A', open_(0, 100, 'center'), cues(n_src=2, starts=[40.0, 45.0], ends=[60.0, 55.0]))
++check('[L] open path unchanged: Massi / A keeps the source line count (step i)',
++      texts(_l) == ['Massi', 'A'] and _l['step'] == 'i', f"{texts(_l)} {_l['step']}")
++# (E) IS AN ADMISSIBILITY TEST ON A COUNT, NOT A POST-PASS: a count E rejects must not decide the size. Box 58.3 x
++# 33.1 -> budgets 54.3 / 29.1, 4 source lines, 3 words. 3 lines 'Massi / af / cu' (longest 22.5) are 21.996 + 0.94 s
++# tall, so they meet height only at 7.5 (29.046); 2 lines 'Massi / af cu' have the SAME longest line (22.5), so E
++# rejects 3. Stepping down while keeping 7.5 drew 'Massi / af cu' at 7.5 - but 2 lines meet both budgets at 9.0
++# (22.5 <= 54.3, 10.998 + 8.46 = 19.458 <= 29.1), and that is what the selection order picks for 2.
++_esz = box(0, 58.3, 0, 33.1)
++_l = decide('Massi af cu', _esz, cues(n_src=4))
++check("[L] E does not keep the size of the count it rejects: 'Massi af cu' -> Massi / af cu at 9.0, fit",
++      texts(_l) == ['Massi', 'af cu'] and _l['size'] == 9.0 and _l['step'] == 'fit', f"{texts(_l)} {_l['size']} {_l['step']}")
++# The case pair: 'Cu' is a symbol, so (A) forbids 'Massi / af / Cu' and the same 2 lines come out of A's selection at
++# 9.0. Two labels that differ only in the case of their last word must not be drawn at different sizes.
++_lc = decide('Massi af Cu', _esz, cues(n_src=4))
++check("[L] case pair: 'Massi af cu' and 'Massi af Cu' get the same size, line count and step",
++      _l['size'] == _lc['size'] and len(_l['lines']) == len(_lc['lines']) and _l['step'] == _lc['step'],
++      f"cu {texts(_l)} {_l['size']} / Cu {texts(_lc)} {_lc['size']}")
++# CONTROL: the surviving count is re-tried from sz0 DOWN, so it lands at the largest size where IT fits - not at sz0.
++# Box R 24 -> budget 20: 'Massi' is 20.625 at 8.25 and 20.0 at 8.0, so both 3 and 2 lines meet width only at <= 8.0;
++# 3 lines meet height only at 7.5 (as above) and are rejected by E; 2 lines are drawn at 8.0.
++_l = decide('Massi af cu', box(0, 24, 0, 33.1), cues(n_src=4))
++check("[L] CONTROL E's surviving count takes the largest size where it fits: Massi / af cu at 8.0",
++      texts(_l) == ['Massi', 'af cu'] and _l['size'] == 8.0 and _l['step'] == 'fit', f"{texts(_l)} {_l['size']} {_l['step']}")
++
+ print('styles and alignment through width()')
+ _st = (0.78, -0.2, False)
+ _co2 = [('CO2', [None, None, _st])]

@@ -1,0 +1,51 @@
+--- a/experiments/figure-text-translation/test_figure_prepare.py
++++ b/experiments/figure-text-translation/test_figure_prepare.py
+@@ -501,5 +501,48 @@
+           snapshot(Path(td) / 'never-created') is None and empty == {},
+           f'{snapshot(Path(td) / "never-created")!r} vs {empty!r}')
+ 
++# ── 6. THE BLEND-CHAIN SENTINEL — a warning that no bought figure trips once collapsed ─────
++# 3e asserts warnings == [] on the fixture, which is also what a sentinel that never fires
++# reports. So the helper is driven directly with a doubling reference chain of exactly 2^k
++# paint invocations: k = 24 must warn with the exact string, k = 10 must not. The chain is
++# deliberately NOT cairo's shape - the sentinel's whole job is to fire when the collapse in
++# strip-text.py no longer recognises what cairo writes.
++def _doubling_chain(k):
++    groups = [b'<g id="g0"><rect width="1" height="1"/></g>'] + [
++        b'<g id="g%d"><use xlink:href="#g%d"/><use xlink:href="#g%d"/></g>' % (i, i - 1, i - 1)
++        for i in range(1, k + 1)]
++    return (b'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'
++            b'<defs>' + b''.join(groups) + b'</defs><use xlink:href="#g%d"/></svg>' % k)
++
++
++_sentinel = getattr(_mod, 'reference_cost_warnings', None) if _mod is not None else None
++check('6 PRECONDITION figure-prepare.py exposes reference_cost_warnings', callable(_sentinel))
++with tempfile.TemporaryDirectory() as td:
++    got = {}
++    for k in (24, 10):
++        path = Path(td) / f'chain{k}.svg'
++        path.write_bytes(_doubling_chain(k))
++        try:
++            got[k] = _sentinel(path) if callable(_sentinel) else None
++        except Exception as exc:                  # noqa: BLE001
++            got[k] = f'{type(exc).__name__}: {exc}'
++    check('6a a 2^24 reference chain is WARNED, with the exact string',
++          got[24] == ['artwork.svg reference cost 2^24.0 exceeds 2^20 — a browser may never '
++                      'finish loading it (see svgfix.py)'], f'{got[24]!r}')
++    check('6b CONTROL a 2^10 chain is not', got[10] == [], f'{got[10]!r}')
++
++    # End to end: strip-text.py reports the pass on EVERY --svg run, so "ran, nothing to
++    # collapse" (the fixture has no blend paint) is distinguishable from "did not run".
++    out = Path(td) / 'svgfix'
++    r = run_prepare(FIXTURE, '--basename', 'CNX_Svgfix_Probe', '--out', out)
++    report = json.loads((out / 'svgfix.json').read_text()) \
++        if (out / 'svgfix.json').exists() else None
++    check('6c the fixture run writes svgfix.json: six keys, addOps 0, nothing rewritten',
++          r.returncode == 0 and isinstance(report, dict)
++          and set(report) == {'addOps', 'collapsed', 'useSitesRewritten', 'clipped',
++                              'unmatched', 'modes'}
++          and report['addOps'] == 0 and report['useSitesRewritten'] == 0,
++          f'exit {r.returncode}, {report!r}')
++
+ print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
+ sys.exit(1 if fails else 0)

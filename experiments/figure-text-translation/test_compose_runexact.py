@@ -49,6 +49,7 @@ os.environ.setdefault('FIGTEXT_PYLIBS', str(HERE / 'pylibs'))
 os.environ['SOURCE_DATE_EPOCH'] = '1700000000'  # BEFORE any child is spawned - see docstring
 
 import figtext as FT                                          # noqa: E402
+import figcolour                                              # noqa: E402
 from blockkey import block_key, block_lines, block_english    # noqa: E402
 from fontTools.ttLib import TTFont                            # noqa: E402
 
@@ -303,10 +304,34 @@ if CAPTURE:
     finish()
 
 golden = json.loads(GOLDEN.read_text()) if GOLDEN.exists() else None
-check('C1 CONTROL the translated population - plain labels AND the translated arc - is '
-      'byte-identical to the unchanged composer',
-      golden is not None and current['population'] == golden['population'],
-      f"now {current['population']!r}")
+# §C140 ③ re-lays every translated STRAIGHT label (figcontainers + figlayout, linear metrics), so the
+# plain labels' geometry is no longer E's to pin - test_compose_t23.py owns it. The ARC path is not
+# touched by ③ and stays byte-identical; the plain labels must still draw exactly their words.
+ARC_GLYPHS = ('B', 'O', 'G', 'I', 'X')
+arc_now = [raw for text, _, raw in els if text in ARC_GLYPHS]
+arc_gold = [raw for raw in (golden or {}).get('population', [])
+            if re.search(r'>(?:B|O|G|I|X)</text>$', raw)]
+# [USER] ruling (C) 2026-09-15 moves ONE attribute of these elements, and it must move EXACTLY there: the
+# golden was captured under the naive (1-c)(1-k) text colour, which drew the planted FILL (0.75,0.5,0,0.2)
+# #3366cc; poppler, and so the artwork under it, draws it #415e9f (test_figcolour.py 1e 'CMYK blue'
+# measures that on pdftocairo). The expected attribute is derived from figcolour.fill_rgb(FILL) with
+# svgout.write_svg's own rounding, and it must DIFFER from the golden's naive one - so a composer, or a
+# figcolour, that went back to the naive map fails here instead of passing either way.
+ARC_FILL_NOW = 'fill="#%02x%02x%02x"' % tuple(round(v * 255) for v in figcolour.fill_rgb(FILL))
+ARC_FILL_GOLD = sorted({f for raw in arc_gold for f in re.findall(r'fill="#[0-9a-f]{6}"', raw)})
+check('C1 CONTROL the translated ARC is byte-identical to the unchanged composer but for ruling (C)\'s '
+      'fill, which is exactly figcolour.fill_rgb of the planted fill',
+      golden is not None and len(arc_gold) == 5 and len(arc_now) == 5 and len(ARC_FILL_GOLD) == 1
+      and ARC_FILL_NOW != ARC_FILL_GOLD[0]
+      and all(old.count(ARC_FILL_GOLD[0]) == 1 and now == old.replace(ARC_FILL_GOLD[0], ARC_FILL_NOW)
+              for now, old in zip(arc_now, arc_gold)),
+      f"expected {ARC_FILL_NOW} (golden {ARC_FILL_GOLD}), now {arc_now!r}")
+plain_now = [text for text, _, _ in els if text in ('Athugun og forvitni', 'Profa tilgatuna')]
+plain_gold = [re.sub(r'<[^>]+>', '', raw) for raw in (golden or {}).get('population', [])
+              if not re.search(r'>(?:B|O|G|I|X)</text>$', raw)]
+check('C1b CONTROL the two plain translated labels still draw exactly their words (geometry: '
+      'test_compose_t23.py)', golden is not None and plain_now == plain_gold,
+      f"now {plain_now!r} golden {plain_gold!r}")
 check('C2 CONTROL a figure with no italic run has the unchanged composer\'s faces (plain)',
       golden is not None and current['faces_plain'] == golden['faces_plain'],
       repr(current['faces_plain']))

@@ -8,7 +8,45 @@ things lives in [README.md](README.md).
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-13 (EVENING) (supersedes every block below)
+## ⏩ RESUME — state as of 2026-09-15 (supersedes every block below)
+
+✅ **§C140 ② ③ ⑨ ⑫ and [USER]'s review fixes R12–R15 are BUILT on branch `feat/c140-t23-scripts-reflow-decimals`; [USER] accepted the
+recomposed 34 on 2026-09-15. The merge is [USER]'s.** Design and rulings:
+[`docs/superpowers/specs/2026-09-13-c140-t23-scripts-reflow-decimals-design.md`](../../docs/superpowers/specs/2026-09-13-c140-t23-scripts-reflow-decimals-design.md)
+(read both Amendments sections) · plan:
+[`docs/superpowers/plans/2026-09-14-c140-t23-scripts-reflow-decimals.md`](../../docs/superpowers/plans/2026-09-14-c140-t23-scripts-reflow-decimals.md) ·
+measurements (frozen): [`evidence/2026-09-14-t23-build/`](evidence/2026-09-14-t23-build/README.md)
+([`PREDICTIONS.md`](evidence/2026-09-14-t23-build/PREDICTIONS.md), [`VERIFICATION.md`](evidence/2026-09-14-t23-build/VERIFICATION.md)) and
+[`evidence/2026-09-15-t23-review-fixes/`](evidence/2026-09-15-t23-review-fixes/README.md)
+([`PREDICTIONS.md`](evidence/2026-09-15-t23-review-fixes/PREDICTIONS.md), [`VERIFICATION.md`](evidence/2026-09-15-t23-review-fixes/VERIFICATION.md)) ·
+a [USER]-paid side experiment on figure-label MT context: [`evidence/2026-09-15-label-context-mt/`](evidence/2026-09-15-label-context-mt/README.md).
+
+**The status, per component, on the branch — replaces the table in the block below** (no numbers here; they live in the evidence):
+
+| component | state on `feat/c140-t23-scripts-reflow-decimals` | measured |
+|---|---|---|
+| `readlayer.py` | ✅ keeps size, baseline, italic font, typed spaces — and now each text fill's colour-space tag (CMYK, RGB, Gray) instead of folding RGB and Gray into CMYK (R14) | `evidence/2026-09-15-t23-review-fixes/VERIFICATION.md` |
+| `figtext.lines()` | ❌ splits a kerned-back stacked script (`NH₃⁺`) | unchanged by this branch. ⚠️ fixing it moves bought keys |
+| `compose.py` — kept blocks | ✅ run-exact (E), and English-kept numbers drawn with Icelandic separators through `numloc.py` (⑨) | `evidence/2026-09-14-t23-build/VERIFICATION.md` |
+| `compose.py` — translated blocks | ✅ formula formatting carried through `figscripts.py` (②); laid out against the label's own box, cell or open space through `figcontainers.py` + `figlayout.py` (③); text fill through `figcolour.py` (R14); names what it could not format or fit, and a failed container detection, in `compose-report.json` | both `VERIFICATION.md` files |
+| `svgout.py` | ✅ Regular/Bold/Italic/BoldItalic faces; every drawn `<text>` sits in one `<g text-rendering="geometricPrecision">` (R12) | `evidence/2026-09-15-t23-review-fixes/VERIFICATION.md` |
+| `strip-text.py` | ❌ drops colour/graphics-state ops inside BT..ET (campaign §C140 ④) | unchanged by this branch |
+| `strip-text.py --svg` (`pdftocairo -svg`) | ✅ runs `pdftocairo -svg` with the argv `svgfix.py` owns (`-noshrink -nocenter`, R15) and collapses cairo's blend-chain lerp straight after (⑫) | both `VERIFICATION.md` files |
+| `figure-prepare.py` | ✅ refuses a page whose artwork would not sit under the text (the R15 probe guard) and warns when `artwork.svg`'s reference cost could stop a browser loading it (⑫ sentinel) | both `VERIFICATION.md` files |
+| `svgfix.py` | ✅ owns the post-`pdftocairo` artwork pass: the `pdftocairo -svg` argv, the blend-lerp collapse, and the no-sharing reference-cost measure | both `VERIFICATION.md` files |
+| `figscripts.py` | ✅ owns which source runs are sub/superscripts or italic, and where that formatting lands in a translated value (②) | `evidence/2026-09-14-t23-build/VERIFICATION.md` |
+| `numloc.py` | ✅ owns Icelandic number separators for labels drawn in English (⑨) — source run text only, never an already-localised value | `evidence/2026-09-14-t23-build/VERIFICATION.md` |
+| `figcontainers.py` | ✅ owns per-block container detection for translated labels — box, cell or open, with the open label's free space; never raises | `evidence/2026-09-14-t23-build/VERIFICATION.md` |
+| `figlayout.py` | ✅ owns the layout decision for a translated label — line partition, size, anchor, displacement, overflow — including R9 binding and R13's rules A and E | both `VERIFICATION.md` files |
+| `figcolour.py` | ✅ owns the one text-fill → RGB conversion, the way poppler draws each colour space (R14) | `evidence/2026-09-15-t23-review-fixes/VERIFICATION.md` |
+| driver spend gate | ❌ blind to MathematicalPi `°`→`8` and to production pages resolved as figures | unchanged by this branch |
+
+⚠️ **Campaign status — merge, deploy, the publication call and every open or logged item — is the campaign register's
+(§C140), not this file's.**
+
+---
+
+## ⏩ RESUME — state as of 2026-09-13 (EVENING) (superseded by the block above)
 
 ✅ **E IS BUILT, VERIFIED, ACCEPTED ON ITS OWN SCOPE AND MERGED — PR #464, merge commit `bd69d0d6`.** A block `compose.py` keeps in English is now drawn run-exact. Design:
 [`docs/superpowers/specs/2026-09-13-c140-e-run-exact-kept-text-design.md`](../../docs/superpowers/specs/2026-09-13-c140-e-run-exact-kept-text-design.md) ·
@@ -751,6 +789,13 @@ open:**
   a number in a chemistry textbook, which this project calls the worst available failure, and
   CLAUDE.md's own clean-break rule says that when an editor can do it in the UX you do not build
   black magic. The sidecar therefore keeps recording exactly what a human approved.
+  ⚠️ **AMENDED 2026-09-13 ([USER], ruling R6 of
+  `docs/superpowers/specs/2026-09-13-c140-t23-scripts-reflow-decimals-design.md`): for labels DRAWN IN
+  ENGLISH the conversion is automatic, at compose time, on the drawn text only.** Most such labels are
+  `send:false` and have no card, so "offered" never reached them. Sidecars, keys and `blocks.json` still
+  carry the source text unchanged. Translated labels are untouched by the amendment, and `Nota` stays for
+  identity replies. The rule and its hazards (not idempotent; tuples and a leading point left alone) are the
+  spec's §2.
   🔴 **THE RULE HAS ONE OWNER — `tools/lib/figure-consistency.cjs`.** The browser posts the
   server's `suggested` string verbatim and computes nothing; a pin asserts the client contains no
   digit character class at all, because a second implementation would drift silently and the

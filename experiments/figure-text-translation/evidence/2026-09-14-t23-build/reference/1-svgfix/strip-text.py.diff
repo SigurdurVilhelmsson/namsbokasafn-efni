@@ -1,0 +1,61 @@
+--- a/experiments/figure-text-translation/strip-text.py
++++ b/experiments/figure-text-translation/strip-text.py
+@@ -24,6 +24,7 @@
+ from _deps import read_content
+ from _deps import OUT
+ import pikepdf
++import svgfix
+ 
+ DEFAULT_DPI = 200   # the DPI at which OpenStax rendered the published jpg
+ 
+@@ -240,6 +241,42 @@
+     return stats
+ 
+ 
++def collapse_svg(out_svg):
++    """The post-conversion pass: `svgfix.collapse_blend_lerp` over cairo's artwork.svg, in place.
++
++    cairo writes every blend-mode paint as a lerp that references everything painted so far
++    TWICE, so a figure with many of them is an exponential reference tree and a browser may
++    never finish loading it (exocytosis: 158 paints, never loads). See svgfix.py.
++
++    OUT/'svgfix.json' is written on EVERY --svg run, so "ran, nothing to collapse" can never
++    read like "did not run". artwork.svg is rewritten only when a byte changed.
++
++    ⚠️ A pass that CANNOT run - malformed XML, or a use-site byte count that disagrees with the
++    parse - is recorded in svgfix.json and printed, and artwork.svg is left exactly as cairo
++    wrote it. The collapse is an optimisation and must not turn a figure prepare accepted
++    before into a failure; it is not silent either, because figure-prepare.py's reference-cost
++    sentinel fires on an uncollapsed chain whatever happened here. Any OTHER exception is a
++    bug in svgfix.py and still fails this run.
++    """
++    import json, os
++    data = out_svg.read_bytes()
++    try:
++        fixed, report = svgfix.collapse_blend_lerp(data)
++    except (ValueError, SyntaxError) as exc:      # ElementTree.ParseError is a SyntaxError
++        fixed, report = data, {'error': f'{type(exc).__name__}: {exc}'}
++    if fixed is not data and fixed != data:
++        tmp = out_svg.with_name(out_svg.name + '.tmp')
++        tmp.write_bytes(fixed)
++        os.replace(tmp, out_svg)
++    (OUT / 'svgfix.json').write_text(json.dumps(report, indent=1))
++    if 'error' in report:
++        print(f"svgfix: NOT APPLIED, artwork.svg left as cairo wrote it - {report['error']}")
++    else:
++        print(f"svgfix: collapsed {report['collapsed']} of {report['addOps']} blend lerp(s), "
++              f"{report['useSitesRewritten']} use site(s) rewritten, {report['clipped']} clipped, "
++              f"{report['unmatched']} unmatched -> out/svgfix.json")
++
++
+ def main(pdf_path, dpi=DEFAULT_DPI, svg=False):
+     OUT.mkdir(exist_ok=True)
+     pdf = pikepdf.open(pdf_path)
+@@ -270,6 +307,7 @@
+         out_svg = OUT / 'artwork.svg'
+         subprocess.run(['pdftocairo', '-svg', str(out_pdf), str(out_svg)], check=True)
+         print(f"artwork.svg -> out/artwork.svg ({os.path.getsize(out_svg)} bytes)")
++        collapse_svg(out_svg)
+ 
+ 
+ if __name__ == '__main__':

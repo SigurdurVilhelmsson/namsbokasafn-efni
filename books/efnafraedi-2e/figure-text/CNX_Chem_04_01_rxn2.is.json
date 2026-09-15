@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_04_01_rxn2",
  "renderHash": "fdbc9b7a327e1342",
  "composedHash": "fdbc9b7a327e1342",
- "composedVersion": "2",
+ "composedVersion": "3",
  "composerVersion": "1",
  "blocks": {
   "Reactant": "Hvarfefni",

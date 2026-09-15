@@ -501,5 +501,289 @@ with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as forei
           snapshot(Path(td) / 'never-created') is None and empty == {},
           f'{snapshot(Path(td) / "never-created")!r} vs {empty!r}')
 
+# ── 6. THE BLEND-CHAIN SENTINEL — a warning that no bought figure trips once collapsed ─────
+# 3e asserts warnings == [] on the fixture, which is also what a sentinel that never fires
+# reports. So the helper is driven directly with a doubling reference chain of exactly 2^k
+# paint invocations: k = 24 must warn with the exact string, k = 10 must not. The chain is
+# deliberately NOT cairo's shape - the sentinel's whole job is to fire when the collapse in
+# strip-text.py no longer recognises what cairo writes.
+def _doubling_chain(k):
+    groups = [b'<g id="g0"><rect width="1" height="1"/></g>'] + [
+        b'<g id="g%d"><use xlink:href="#g%d"/><use xlink:href="#g%d"/></g>' % (i, i - 1, i - 1)
+        for i in range(1, k + 1)]
+    return (b'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'
+            b'<defs>' + b''.join(groups) + b'</defs><use xlink:href="#g%d"/></svg>' % k)
+
+
+_sentinel = getattr(_mod, 'reference_cost_warnings', None) if _mod is not None else None
+check('6 PRECONDITION figure-prepare.py exposes reference_cost_warnings', callable(_sentinel))
+with tempfile.TemporaryDirectory() as td:
+    got = {}
+    for k in (24, 10):
+        path = Path(td) / f'chain{k}.svg'
+        path.write_bytes(_doubling_chain(k))
+        try:
+            got[k] = _sentinel(path) if callable(_sentinel) else None
+        except Exception as exc:                  # noqa: BLE001
+            got[k] = f'{type(exc).__name__}: {exc}'
+    check('6a a 2^24 reference chain is WARNED, with the exact string',
+          got[24] == ['artwork.svg reference cost 2^24.0 exceeds 2^20 — a browser may never '
+                      'finish loading it (see svgfix.py)'], f'{got[24]!r}')
+    check('6b CONTROL a 2^10 chain is not', got[10] == [], f'{got[10]!r}')
+
+    # End to end: strip-text.py reports the pass on EVERY --svg run, so "ran, nothing to
+    # collapse" (the fixture has no blend paint) is distinguishable from "did not run".
+    out = Path(td) / 'svgfix'
+    r = run_prepare(FIXTURE, '--basename', 'CNX_Svgfix_Probe', '--out', out)
+    report = json.loads((out / 'svgfix.json').read_text()) \
+        if (out / 'svgfix.json').exists() else None
+    check('6c the fixture run writes svgfix.json: six keys, addOps 0, nothing rewritten',
+          r.returncode == 0 and isinstance(report, dict)
+          and set(report) == {'addOps', 'collapsed', 'useSitesRewritten', 'clipped',
+                              'unmatched', 'modes'}
+          and report['addOps'] == 0 and report['useSitesRewritten'] == 0,
+          f'exit {r.returncode}, {report!r}')
+
+# ── 6d. THE COLLAPSE IS WRITTEN — end to end, on a page that HAS a blend paint (final review) ─
+# 6c's fixture has no blend paint and test_svgfix.py drives collapse_blend_lerp on bytes in
+# memory, so a strip-text.py that COMPUTED the collapse and never saved it (measured: its
+# `if fixed is not data and fixed != data:` turned into `if False:`) passed every test while a
+# recompose would put exocytosis's uncollapsed 2^116 chain back. So: one text-less page with ONE
+# `/BM /Multiply` fill over another fill - cairo writes that as the add/blend lerp - through
+# prepare, and artwork.svg must be exactly the collapse of a bare `pdftocairo -svg` of the
+# artwork.pdf prepare wrote (same argv, `svgfix.pdftocairo_svg_argv`), and must differ from it.
+# CONTROL: the same page with `/BM /Normal` has nothing to collapse, and artwork.svg must equal
+# the bare conversion byte for byte - otherwise "differs" could come from anything else in the
+# chain.
+def synth_blend(dst, blend):
+    """A text-less 100 x 100 pt page: an opaque fill, then a second fill under an ExtGState whose
+    /BM is /Multiply (blend) or /Normal (control)."""
+    pdf = pikepdf.new()
+    page = pdf.add_blank_page(page_size=(100, 100))
+    state = pikepdf.Dictionary(Type=N('/ExtGState'), BM=N('/Multiply') if blend else N('/Normal'))
+    page.Resources = pikepdf.Dictionary(ExtGState=pikepdf.Dictionary(GS0=state))
+    page.Contents = pdf.make_stream(b'0.2 0.4 0.8 rg 0 0 60 60 re f\n'
+                                    b'q /GS0 gs 0.9 0.5 0.1 rg 30 30 60 60 re f Q\n')
+    pdf.save(str(dst), deterministic_id=True)
+    return Path(dst)
+
+
+import svgfix as _svgfix                        # noqa: E402 - the argv owner, stdlib only (HERE is on sys.path)
+with tempfile.TemporaryDirectory() as td:
+    seen = {}
+    for tag, blend in (('blend', True), ('normal', False)):
+        art = synth_blend(Path(td) / f'CNX_Fake_Blend_{tag}.pdf', blend)
+        out = Path(td) / f'out-{tag}'
+        r = run_prepare(art, '--basename', f'CNX_Fake_Blend_{tag}', '--out', out)
+        report = json.loads((out / 'svgfix.json').read_text()) \
+            if (out / 'svgfix.json').exists() else None
+        bare = Path(td) / f'bare-{tag}.svg'
+        if (out / 'artwork.pdf').exists():
+            subprocess.run(_svgfix.pdftocairo_svg_argv(out / 'artwork.pdf', bare), check=True,
+                           timeout=120)
+        written = (out / 'artwork.svg').read_bytes() if (out / 'artwork.svg').exists() else None
+        bare_bytes = bare.read_bytes() if bare.exists() else None
+        seen[tag] = (r, report, written, bare_bytes)
+    r, report, written, bare_bytes = seen['blend']
+    expected = _svgfix.collapse_blend_lerp(bare_bytes)[0] if bare_bytes is not None else None
+    check('6d a /BM /Multiply page: prepare exits 0 and svgfix.json reports collapsed >= 1',
+          r.returncode == 0 and isinstance(report, dict) and report.get('collapsed', 0) >= 1,
+          f'exit {r.returncode}, {report!r}: {r.stderr.strip()[-300:]}')
+    check('6e ... and artwork.svg IS the collapse: it differs from a bare `pdftocairo -svg` of '
+          'artwork.pdf and equals collapse_blend_lerp of those bytes',
+          written is not None and bare_bytes is not None and written != bare_bytes
+          and written == expected,
+          f'written {None if written is None else len(written)} bytes, bare '
+          f'{None if bare_bytes is None else len(bare_bytes)}, '
+          f'equal-to-bare {written == bare_bytes}, equal-to-collapse {written == expected}')
+    r, report, written, bare_bytes = seen['normal']
+    check('6f CONTROL the same page with /BM /Normal: addOps 0, and artwork.svg equals the bare '
+          'conversion byte for byte',
+          r.returncode == 0 and isinstance(report, dict) and report.get('addOps') == 0
+          and written is not None and written == bare_bytes,
+          f'exit {r.returncode}, {report!r}, equal-to-bare {written == bare_bytes}')
+
+# ── 7. THE ARTWORK SHARES THE TEXT'S COORDINATES — ruling (W), 2026-09-15 ──────────────────
+# `pdftocairo -svg` without `-noshrink -nocenter` fits the page onto a "paper" of the page size
+# rounded UP to whole points: on a page with a fractional dimension every artwork element is
+# scaled by min(w/ceil w, h/ceil h) and centred, while svgout.write_svg places the <text> at
+# the TRUE coordinates, (x, page_h - y). Measured on the 34 bought figures: 24 shifted, up to
+# 2.66 pt. Every PNG-based check is blind to it - `-png` does not shrink.
+#
+# 🔴 THERE IS NO PAGE-LEVEL ELEMENT TO READ. cairo bakes the page transform into EVERY element's
+# own `transform` (etheneBr: `matrix(0.992857, 0, 0, -0.992857, 196.13, 25.91)` on each path),
+# composed with the PDF's own `cm`s, so "the page transform" is only observable through a path
+# whose PDF coordinates are KNOWN. These cases plant one - three points spanning the page - and
+# map cairo's `d` through cairo's `transform` with this file's OWN parser, deliberately not the
+# guard's: a check that shares its instrument with the thing it checks cannot see its anchor.
+FRACTIONAL_PAGE = (468, 69.5)                   # CNX_Chem_04_03_etheneBr_img's page
+INTEGRAL_PAGE = (468, 70)
+TOL_PT = 0.01
+
+
+def synth_known_path(dst, size):
+    """A text-less page carrying ONE stroked path through three known points. -> (path, pts)"""
+    w, h = size
+    pts = [(0.1 * w, 0.2 * h), (0.9 * w, 0.2 * h), (0.1 * w, 0.8 * h)]
+    ops = '0 0 0 RG 1 w {:.4f} {:.4f} m {:.4f} {:.4f} l {:.4f} {:.4f} l S\n'.format(
+        *[v for p in pts for v in p])
+    pdf = pikepdf.new()
+    page = pdf.add_blank_page(page_size=size)
+    page.Contents = pdf.make_stream(ops.encode('ascii'))
+    pdf.save(str(dst), deterministic_id=True)
+    return Path(dst), pts
+
+
+def mapped_known_points(svg_path):
+    """-> the three planted points as the SVG draws them, or a string naming why not.
+
+    Only the shape cairo writes for ONE plain stroke is accepted: a single STROKED <path> whose
+    `d` is `M x y L x y L x y` and whose `transform` is absent or a `matrix(...)`, under no
+    transformed ancestor. Anything else is reported, never guessed at.
+    ⚠️ "a single <path>" is NOT "a single stroked <path>": measured, cairo wraps this very page in
+    a `<clipPath>` whose own <path> is the clip rectangle - on the unflagged call only for some
+    geometries - so counting every <path> reads "2, expected 1" and measures nothing."""
+    import re
+    import xml.etree.ElementTree as ET
+    root = ET.parse(str(svg_path)).getroot()
+    parent = {child: node for node in root.iter() for child in node}
+    paths = [e for e in root.iter()
+             if e.tag.endswith('}path') and e.get('stroke') not in (None, 'none')]
+    if len(paths) != 1:
+        return f'{len(paths)} stroked <path> elements, expected 1'
+    node = parent.get(paths[0])
+    while node is not None:
+        if node.get('transform'):
+            return 'a transformed ancestor'
+        node = parent.get(node)
+    nums = [float(v) for v in re.findall(r'[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?', paths[0].get('d', ''))]
+    if len(nums) != 6:
+        return f"d={paths[0].get('d')!r}"
+    t = paths[0].get('transform')
+    m = (1.0, 0.0, 0.0, 1.0, 0.0, 0.0)
+    if t:
+        mm = re.fullmatch(r'\s*matrix\(([^)]*)\)\s*', t)
+        if not mm:
+            return f'transform={t!r}'
+        m = tuple(float(v) for v in re.split(r'[\s,]+', mm.group(1).strip()))
+    a, b, c, d, e, f = m
+    return [(a * x + c * y + e, b * x + d * y + f) for x, y in zip(nums[0::2], nums[1::2])]
+
+
+def displacement(svg_path, pts, page_h):
+    """Largest distance, in pt, between where the SVG draws each planted point and where the
+    composer's <text> convention (x, page_h - y) puts it. None if the shape was not readable."""
+    import math
+    got = mapped_known_points(svg_path)
+    if isinstance(got, str):
+        return None
+    return max(math.hypot(gx - x, gy - (page_h - y)) for (gx, gy), (x, y) in zip(got, pts))
+
+
+with tempfile.TemporaryDirectory() as td:
+    frac, frac_pts = synth_known_path(Path(td) / 'CNX_Fake_Fractional.pdf', FRACTIONAL_PAGE)
+    whole, whole_pts = synth_known_path(Path(td) / 'CNX_Fake_Integral.pdf', INTEGRAL_PAGE)
+
+    # 7a/7b THE INSTRUMENT, BOTH WAYS. The defect must reproduce on THIS poppler through the
+    # bare call, or 7c could pass because poppler changed rather than because the call did; and
+    # the same bare call on an integral page must read clean, or the parser just always fires.
+    disp = {}
+    for tag, pdf, pts, h in (('frac', frac, frac_pts, FRACTIONAL_PAGE[1]),
+                             ('whole', whole, whole_pts, INTEGRAL_PAGE[1])):
+        svg = Path(td) / f'bare-{tag}.svg'
+        subprocess.run(['pdftocairo', '-svg', str(pdf), str(svg)], check=True, timeout=120)
+        disp[tag] = displacement(svg, pts, h)
+    check('7a CONTROL the UNFLAGGED `pdftocairo -svg` scales a 468 x 69.5 pt page '
+          '(the defect reproduces here)',
+          disp['frac'] is not None and disp['frac'] > 0.5, f"max displacement {disp['frac']!r} pt")
+    check('7b CONTROL ... and leaves a 468 x 70 pt page alone (the instrument discriminates)',
+          disp['whole'] is not None and disp['whole'] < TOL_PT,
+          f"max displacement {disp['whole']!r} pt")
+
+    # 7c END TO END: what prepare actually wrote. RED before the flags, GREEN after.
+    out = Path(td) / 'out-fractional'
+    r = run_prepare(frac, '--basename', 'CNX_Fake_Fractional', '--out', out)
+    got = displacement(out / 'artwork.svg', frac_pts, FRACTIONAL_PAGE[1]) \
+        if (out / 'artwork.svg').exists() else None
+    check('7c prepare\'s artwork.svg of a FRACTIONAL page draws every point exactly where the '
+          '<text> convention (x, page_h - y) puts it',
+          r.returncode == 0 and got is not None and got < TOL_PT,
+          f'exit {r.returncode}, max displacement {got!r} pt, '
+          f'mapped {mapped_known_points(out / "artwork.svg") if (out / "artwork.svg").exists() else None!r}: '
+          f'{r.stderr.strip()[-300:]}')
+
+    # 7d-7f THE GUARD, as a decision: it must FIRE on the unflagged argv for a fractional page,
+    # stay quiet on the same argv for an integral page (it keys on the transform, not on the
+    # argv's spelling), and stay quiet on the shipped argv.
+    guard = getattr(_mod, 'artwork_transform_refusal', None) if _mod is not None else None
+    check('7 PRECONDITION figure-prepare.py exposes artwork_transform_refusal', callable(guard))
+    if callable(guard):
+        def _call(pdf, **kw):
+            try:
+                return guard(pdf, **kw)
+            except Exception as exc:              # noqa: BLE001 - reported, not raised
+                return f'RAISED {type(exc).__name__}: {exc}'
+        fired = _call(frac, flags=())
+        check('7d the guard REFUSES the unflagged argv on a fractional page, naming the transform',
+              isinstance(fired, str) and 'transform' in fired and not fired.startswith('RAISED'),
+              f'{fired!r}')
+        quiet = _call(whole, flags=())
+        check('7e CONTROL ... and does NOT refuse the same argv on an integral page', quiet is None,
+              f'{quiet!r}')
+        shipped = _call(frac)
+        check('7f ... and does NOT refuse the shipped argv on the fractional page', shipped is None,
+              f'{shipped!r}')
+
+        # 7h/7i FAIL CLOSED (final review). The block comment above the guard promises that a probe
+        # which cannot be READ refuses too, because nothing else can see an artwork displacement -
+        # and 7d-7f only ever feed probes that parse, while 7d's `'transform' in fired` is also
+        # satisfied by the could-not-verify text. Measured: turning either branch into a pass left
+        # this file ALL PASS. 7f above is the control: the shipped argv on a readable probe is None.
+        # 7h: an argv pdftocairo rejects (it exits 99 on an unknown flag and writes no probe.svg).
+        broken = _call(frac, flags=('-bogus-flag',))
+        check('7h the guard REFUSES when the probe conversion exits non-zero, saying the transform '
+              'could not be verified', isinstance(broken, str) and not broken.startswith('RAISED')
+              and 'could not be verified' in broken, f'{broken!r}')
+        # 7i: a probe SVG the reader cannot interpret - `_probe_points` raising ValueError, which is
+        # what it does on any shape it does not recognise. Restored in `finally`.
+        saved_probe = getattr(_mod, '_probe_points', None)
+
+        def _unreadable(_svg_bytes):
+            raise ValueError('planted: probe shape not recognised')
+        try:
+            _mod._probe_points = _unreadable
+            unread = _call(frac)
+        finally:
+            _mod._probe_points = saved_probe
+        check('7i the guard REFUSES when the probe cannot be read, saying the transform could not be '
+              'verified', isinstance(unread, str) and not unread.startswith('RAISED')
+              and 'could not be verified' in unread, f'{unread!r}')
+
+    # 7g WIRING: prepare() consults the guard and refuses. The guard reads svgfix's flags AT
+    # CALL TIME, so dropping them in THIS process makes the guard's probe scale while the
+    # strip-text.py child still writes a correct artwork.svg - the refusal can only come from
+    # the guard. Restored in `finally`, whatever happens.
+    sf = getattr(_mod, 'svgfix', None) if _mod is not None else None
+    if callable(guard) and sf is not None and hasattr(sf, 'PDFTOCAIRO_SVG_FLAGS'):
+        saved = sf.PDFTOCAIRO_SVG_FLAGS
+        wired_out = Path(td) / 'out-wired'
+        import contextlib
+        import io
+        try:
+            sf.PDFTOCAIRO_SVG_FLAGS = ()
+            # main() prints `FAILED <basename>: ...` to stderr; captured so this suite's own
+            # log carries no FAILED line for a refusal it EXPECTS.
+            with contextlib.redirect_stderr(io.StringIO()), contextlib.redirect_stdout(io.StringIO()):
+                rc = _mod.main([str(frac), '--basename', 'CNX_Fake_Wired', '--out', str(wired_out)])
+        except BaseException as exc:              # noqa: BLE001
+            rc = f'RAISED {type(exc).__name__}: {exc}'
+        finally:
+            sf.PDFTOCAIRO_SVG_FLAGS = saved
+        wd = load_prepare_json(wired_out) or {}
+        check('7g prepare EXITS 1 when the guard refuses, with the refusal in prepare.json',
+              rc == 1 and 'transform' in str(wd.get('error', '')), f'rc {rc!r}, {wd!r}')
+    else:
+        check('7g PRECONDITION svgfix exposes PDFTOCAIRO_SVG_FLAGS for the guard to read', False)
+
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)

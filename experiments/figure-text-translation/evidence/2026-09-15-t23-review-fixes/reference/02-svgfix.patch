@@ -1,0 +1,45 @@
+--- a/experiments/figure-text-translation/svgfix.py
++++ b/experiments/figure-text-translation/svgfix.py
+@@ -6,7 +6,8 @@
+     log2_cost, depth = svgfix.reference_cost(svg_bytes)
+ 
+ Stdlib only (re, math, xml.etree.ElementTree). Called by `strip-text.py` straight after its
+-`pdftocairo -svg` call, and by `figure-prepare.py` for the sentinel.
++`pdftocairo -svg` call, and by `figure-prepare.py` for the sentinel. It also OWNS that call's
++argv (`pdftocairo_svg_argv`, `PDFTOCAIRO_SVG_FLAGS`), which both of those tools read.
+ 
+ WHAT CAIRO WRITES, AND WHY IT HANGS A BROWSER
+ ---------------------------------------------
+@@ -58,6 +59,32 @@
+ import re
+ import xml.etree.ElementTree as ET
+ 
++# 🔴 THE `pdftocairo -svg` FLAGS HAVE ONE OWNER, AND IT IS HERE BECAUSE BOTH OF ITS READERS ALREADY
++# IMPORT THIS MODULE: `strip-text.py` writes artwork.svg with them, and `figure-prepare.py`'s
++# `artwork_transform_refusal` probes the SAME argv against the same page geometry. Two copies of
++# this tuple would let the guard pass on flags the producer no longer uses.
++#
++# WHY THEY EXIST (ruling (W), 2026-09-15). Without them pdftocairo fits a vector page onto "paper"
++# the size of the page ROUNDED UP to whole points: it scales by min(w/ceil w, h/ceil h) and centres.
++# The <svg> root still says the true size, so nothing looks wrong - but every artwork element is
++# scaled and shifted under <text> that svgout.write_svg places at the TRUE (x, page_h - y).
++# Measured on the 34 bought figures: 24 affected (exactly the ones with a fractional page
++# dimension), up to 2.66 pt (vitC). `-png` does not shrink, so every PNG-based check is blind to it.
++#   -noshrink alone still centres vertically (etheneBr y off by 0.25 pt);
++#   -nocenter alone keeps the scale; -origpagesizes and -expand change nothing.
++# Only the pair gives matrix(1, 0, 0, -1, x, y) - the PDF's own coordinates.
++PDFTOCAIRO_SVG_FLAGS = ('-noshrink', '-nocenter')
++
++
++def pdftocairo_svg_argv(pdf, svg, flags=None):
++    """-> the argv that turns `pdf` into `svg`. `flags` None means PDFTOCAIRO_SVG_FLAGS, read at
++    CALL time (so a test that drops them reaches every caller that passes None).
++
++    ⚠️ `-svg` takes the OUTPUT FILE, extension included - unlike `-png -singlefile`, which takes
++    a ROOT and appends `.png` itself. Passing a root here writes a file literally called that."""
++    chosen = PDFTOCAIRO_SVG_FLAGS if flags is None else tuple(flags)
++    return ['pdftocairo', '-svg', *chosen, str(pdf), str(svg)]
++
+ REFCOST_WARN_LOG2 = 20
+ 
+ _SVG = '{http://www.w3.org/2000/svg}'

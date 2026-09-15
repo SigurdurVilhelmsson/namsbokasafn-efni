@@ -1,0 +1,19 @@
+--- a/experiments/figure-text-translation/svgout.py
++++ b/experiments/figure-text-translation/svgout.py
+@@ -67,7 +67,15 @@
+             f"src:url(data:font/woff2;base64,{b64}) format('woff2');}}"
+         )
+ 
+-    parts = [f"<style>{''.join(faces)}</style>", '<g>']
++    # text-rendering="geometricPrecision" on the group every <text> sits in (ruling (S), [USER]
++    # 2026-09-15; reverses E spec R2). compose.py places each segment of a split line at an absolute
++    # x from cairo LINEAR advances; Chromium's default rounds glyph advances to device pixels, so a
++    # long prefix drawn as its own <text> covers the word space before the next segment ("afBr2" at
++    # 150 dpi) or pushes a base glyph into its subscript. geometricPrecision draws linear advances at
++    # every scale, in an <img> too. It is an INHERITED presentation attribute, so one on the <g>
++    # reaches every <text> below it and leaves each <text> element byte-identical; the artwork
++    # above the group keeps the renderer's defaults. Pinned by test_svgout.py.
++    parts = [f"<style>{''.join(faces)}</style>", '<g text-rendering="geometricPrecision">']
+     for it in items:
+         # PDF y-up -> SVG y-down. Rotation flips sign with the axis.
+         x, y = it['x'] + 0.0, page_h - it['y']

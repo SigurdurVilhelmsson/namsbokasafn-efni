@@ -1,0 +1,37 @@
+{
+ "source": "/home/siggi/dev/scratch-c140/final-review/verify-code/n/N/N.pdf",
+ "fonts": {
+  "PAGE/R1165": {
+   "base": "/ELSFKH+LiberationSans",
+   "first": 32,
+   "last": 121,
+   "subtype": "/Type1",
+   "encoding": "/WinAnsiEncoding",
+   "decodable": true
+  },
+  "PAGE/R1170": {
+   "base": "/WWPTPQ+STIXGeneral-Italic",
+   "first": 43,
+   "last": 177,
+   "subtype": "/Type1",
+   "encoding": "pikepdf.Dictionary(Type=\"/Encoding\")({\n  \"/BaseEncoding\": \"/WinAnsiEncoding\",\n  \"/Differences\": [ 177, \"/endash\" ],\n  \"/Type\": \"/Encoding\"\n})",
+   "decodable": true
+  }
+ },
+ "page": [
+  431.69,
+  405.73
+ ],
+ "runs": 30,
+ "reader": "pdfplumber",
+ "chars": 256,
+ "staged": false,
+ "color_warnings": 0,
+ "color_warning_note": "pdfminer leaves the previous colour in place when it cannot parse a colour operand, so fills on a figure with a non-zero count here are unreliable; there is no per-char signal.",
+ "fonts_unexercised": 0,
+ "unscoped_fonts": {},
+ "unknown_colorspaces": {
+  "Separation:1": 45
+ },
+ "adv_repaired": {}
+}
