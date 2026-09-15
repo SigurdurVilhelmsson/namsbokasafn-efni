@@ -8,7 +8,13 @@ things lives in [README.md](README.md).
 
 ---
 
-## ⏩ RESUME — state as of 2026-09-15, handoff to the local box (supersedes every block below)
+## ⏩ RESUME — state as of 2026-09-15, the local-box run (supersedes every block below)
+
+⑩ **The brain outline is healed in the tree, on branch `feat/c140-c10-brain-heal-run` (not merged).** The driver healed `mask-2` and refused all 8 exocytosis candidates by name; frozen measurements in [`evidence/2026-09-15-c10-local-run/`](evidence/2026-09-15-c10-local-run/README.md). 🔴 **A box's `pylibs/` must carry numpy** or the gate fails closed with `VERDICT ok` — [README § Running it](README.md#running-it) now says so, and ring-gate warnings now carry the failing child's stderr. **The campaign register's §C140 ⑩ owns what is next.**
+
+---
+
+## ⏩ RESUME — state as of 2026-09-15, handoff to the local box (superseded by the block above)
 
 ⑩ **The `CNX_Chem_03_01_brain` text-box outline is no longer "an uninvestigated artwork finding"** (the superseded block below still calls it that; that block is evidence, and this one wins). Its cause, its corpus-wide exposure and a **gate** for it are built and wired into `tools/figure-run.js` as a step between prepare and compose. The post-`pdftocairo` artwork pass is unchanged — the decision lives in the driver, not in `strip-text.py`/`svgfix.py`, so how artwork is produced did not move. ⚠️ **`render-check.mjs` is on the DRIVER path now** and no longer imports playwright by an absolute path. **The campaign register's §C140 ⑩ owns the state and the one command that remains**; the handoff for the box that can run it is [`docs/plans/2026-09-15-c140-c10-local-box-handoff.md`](../../docs/plans/2026-09-15-c140-c10-local-box-handoff.md).
 

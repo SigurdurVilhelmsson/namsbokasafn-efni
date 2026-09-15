@@ -5,6 +5,18 @@ Status lives in the campaign register's ⏩ RESUME and §C140 — this document 
 because the remaining work needs **things the remote container does not have**, and says exactly what
 those are so the next session does not rediscover it.
 
+> **AMENDED 2026-09-15, by the local-box session that ran it.** Executed; the result is the
+> register's, the measurements are [`evidence/2026-09-15-c10-local-run/`](../../experiments/figure-text-translation/evidence/2026-09-15-c10-local-run/README.md).
+> Two corrections to what follows, both measured:
+> - 🔴 **A whole-chapter control must carry `--stale`.** `--force` suppresses only the
+>   skipped-current skip and **does not narrow the selection**, so `--chapter N --force` sends every
+>   text figure in the chapter WITHOUT a sidecar to the paid MT. ch03 happened to have 0 such figures
+>   (a plain `--dry-run` showed it), so §2's instruction was harmless there and is not safe as a
+>   pattern. The run used `--figure brain` and `--figure exocytosis` instead, each diffed by value.
+> - ⚠️ **The table below omits numpy.** This box had poppler, the PDFs and `server/node_modules`, and
+>   the first live attempt still healed nothing: `pylibs/` is gitignored and lacked numpy, so the
+>   gate failed closed and printed `VERDICT ok`.
+
 ---
 
 ## Why this handoff exists at all
