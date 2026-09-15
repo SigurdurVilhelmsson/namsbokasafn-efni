@@ -283,4 +283,4 @@ Character-level diffs between MT output and editor's changes, highlighting exact
 - [Editor Rebuild Plan](editor-improvements-jan2026.md) — Phase 8 plan (completed)
 - [Simplified Workflow](simplified-workflow.md) — 5-step pipeline reference
 - [HTML Pipeline Issues](../pipeline/html-pipeline-issues.md) — cnxml-render bug tracking
-- [Master Pipeline](master-pipeline.md) — Complete pipeline reference
+- [Simplified Workflow](simplified-workflow.md) — Complete pipeline reference

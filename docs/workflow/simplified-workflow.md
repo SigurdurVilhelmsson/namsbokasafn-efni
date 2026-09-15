@@ -29,7 +29,7 @@ matecat.com.
 │  Step 2: Machine Translation                                │
 │  Tool: api-translate.js (automated via Málstaður API)       │
 │  Sends whole files directly — all markers preserved intact  │
-│  Includes 617 approved glossary terms per request           │
+│  Sends approved glossary terms, filtered per chunk          │
 │  Output: m68724-segments.is.md in 02-mt-output/             │
 └─────────────────────────────────────────────────────────────┘
                               ↓
@@ -94,10 +94,10 @@ matecat.com.
 **Process:**
 ```bash
 # Extract all modules in a chapter
-node tools/cnxml-extract.js --chapter 5
+node tools/cnxml-extract.js --book efnafraedi-2e --chapter 5
 
 # Or a single module
-node tools/cnxml-extract.js --input books/efnafraedi-2e/01-source/ch05/m68724.cnxml
+node tools/cnxml-extract.js --book efnafraedi-2e --input books/efnafraedi-2e/01-source/ch05/m68724.cnxml
 ```
 
 **Output:**
@@ -136,9 +136,14 @@ node tools/api-translate.js --book efnafraedi-2e
 
 **Output:** `02-mt-output/ch05/m68724-segments.is.md` — ready for injection directly.
 
-#### Method B: Manual via malstadur.is Web UI (Legacy)
+#### Method B: Manual via malstadur.is Web UI (RETIRED)
 
-For situations where the API is unavailable, the web UI method still works but requires additional protect/unprotect steps. See the [Legacy MT Workflow](#legacy-mt-workflow-web-ui) section at the end of this document.
+⚠️ **This route no longer works.** Both tools it depended on
+(`protect-segments-for-mt.js`, `unprotect-segments.js`) are in `tools/archived/`, and the
+server buttons that drove them have been removed. The
+[Legacy MT Workflow](#legacy-mt-workflow-web-ui) section at the end of this document is kept
+as a record of how it worked, **not** as a fallback. The API method above is the only live
+route.
 
 ---
 
@@ -150,7 +155,8 @@ There are two paths for linguistic review:
 
 #### Option A: Web-based Segment Editor (Recommended)
 
-Use the segment editor at `/segment-editor` for module-by-module review:
+Use the segment editor at `/editor` for module-by-module review
+(`/segment-editor` still works, as a 301 redirect):
 
 1. Open the segment editor, select book/chapter/module
 2. The editor loads segments from `03-faithful-translation/` if available, falling back to `02-mt-output/`
@@ -179,11 +185,10 @@ Edit the segment files directly:
 2. Review and edit for grammar, spelling, natural Icelandic phrasing, terminology
 3. Run inject + render when ready:
    ```bash
-   node tools/cnxml-inject.js --chapter 5
-   node tools/cnxml-render.js --chapter 5 --track faithful
+   node tools/cnxml-inject.js --book efnafraedi-2e --chapter 5 --source-dir 03-faithful-translation
+   node tools/cnxml-render.js --book efnafraedi-2e --chapter 5 --track faithful
    ```
 
-**Note:** `init-faithful-review.js` copies complete MT output so there are no missing segments during injection.
 
 #### Review Guidelines (Both Options)
 
@@ -243,11 +248,17 @@ After linguistic review, inject the reviewed segments back into the CNXML struct
 
 ```bash
 # Inject all modules in a chapter
-node tools/cnxml-inject.js --chapter 1
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1 --source-dir 03-faithful-translation
 
 # Or a single module
-node tools/cnxml-inject.js --chapter 1 --module m68663
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1 --module m68663 --source-dir 03-faithful-translation
 ```
+
+> ⚠️ **`--source-dir` chooses the segments; `--track` only names the output directory.**
+> Inject defaults to `--source-dir 02-mt-output`, so a bare `cnxml-inject` produces the
+> **mt-preview** track regardless of what you pass to `--track`. Pass
+> `--source-dir 03-faithful-translation` to inject reviewed segments (the track is then
+> auto-detected as `faithful`).
 
 **Input:**
 - Reviewed segments from `03-faithful-translation/ch01/` (or `02-mt-output/` for mt-preview)
@@ -263,17 +274,17 @@ Render the translated CNXML to semantic HTML for web publication:
 
 ```bash
 # Render all modules in a chapter
-node tools/cnxml-render.js --chapter 1 --track faithful
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 1 --track faithful
 
 # Or a single module
-node tools/cnxml-render.js --chapter 1 --module m68663 --track faithful
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 1 --module m68663 --track faithful
 ```
 
 **Input:** Translated CNXML from `03-translated/ch01/`
 
 **Output:** Semantic HTML files in `05-publication/faithful/chapters/01/`:
 - One HTML file per module with all IDs preserved
-- Pre-rendered KaTeX equations (display and inline)
+- Pre-rendered MathJax SVG equations (display and inline)
 - Embedded page data JSON
 - Absolute image paths for web serving
 
@@ -291,10 +302,15 @@ The publication system has **three tracks** that replace each other as the trans
 
 #### Option A: Via Web UI (Recommended)
 
-1. Go to the workflow UI at `http://localhost:3000/workflow`
+1. Go to the book catalog at `http://localhost:3000/library`
 2. Select the book and chapter
 3. Review publication readiness
 4. Click "Publish MT Preview" / "Publish Faithful" / "Publish Localized"
+
+> The publish controls live on `/library` (`server/views/books.html`). `/workflow` is an
+> old path that now 301-redirects to `/`, and the pipeline-orchestration buttons that used
+> to sit beside these (extract, protect, "↓ Sækja EN", "↑ Hlaða upp IS") were removed when
+> those steps moved to the CLI tools.
 
 #### Option B: Via API
 
@@ -319,12 +335,12 @@ curl -X POST http://localhost:3000/api/publication/efnafraedi-2e/5/localized
 
 ```bash
 # Inject + render for faithful track
-node tools/cnxml-inject.js --chapter 5
-node tools/cnxml-render.js --chapter 5 --track faithful
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 5 --source-dir 03-faithful-translation
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 5 --track faithful
 
 # Inject + render for MT preview track (uses MT output segments)
-node tools/cnxml-inject.js --chapter 5 --lang is
-node tools/cnxml-render.js --chapter 5 --track mt-preview
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 5
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 5 --track mt-preview
 ```
 
 #### MT Preview Warning Banner
@@ -395,11 +411,13 @@ books/efnafraedi-2e/
 | `cnxml-inject.js` | Inject translations back into CNXML structure | 5a |
 | `cnxml-render.js` | Render translated CNXML to semantic HTML | 5b |
 
-### Legacy (Web UI only)
-| Tool | Purpose | When needed |
-|------|---------|-------------|
-| `protect-segments-for-mt.js` | Protect tags & links, split for web UI upload | Only when using malstadur.is web UI |
-| `unprotect-segments.js` | Restore tags & links in web UI MT output | Only when using malstadur.is web UI |
+### Archived (retired — no longer runnable from `tools/`)
+| Tool | Purpose | Status |
+|------|---------|--------|
+| `protect-segments-for-mt.js` | Protected tags & links, split for web UI upload | In `tools/archived/` — the bracket markers made it unnecessary |
+| `unprotect-segments.js` | Restored tags & links in web UI MT output | In `tools/archived/` |
+| `prepare-for-align.js` | Produced clean EN/IS pairs for Matecat Align | In `tools/archived/` — TM is generated in-house |
+| `init-faithful-review.js` | Pre-seeded `03-faithful-translation/` from MT output | In `tools/archived/` — the editor falls back to `02-mt-output/` |
 
 ### External Services
 | Service | Purpose | Step |
@@ -472,7 +490,7 @@ This is documented separately in [pass2-localization.md](../editorial/pass2-loca
 
 ```bash
 # Step 1: Extract EN segments from CNXML
-node tools/cnxml-extract.js --chapter 5
+node tools/cnxml-extract.js --book efnafraedi-2e --chapter 5
 
 # Step 2: Machine translate via API (automated)
 node tools/api-translate.js --book efnafraedi-2e --chapter 5
@@ -480,23 +498,25 @@ node tools/api-translate.js --book efnafraedi-2e --chapter 5
 node tools/api-translate.js --book efnafraedi-2e --chapter 5 --dry-run
 
 # Step 3 Option A: Review via segment editor at /segment-editor (recommended)
-# Step 3 Option B: Manual editing — first initialize, then edit files
-# node tools/init-faithful-review.js --chapter 5 --verbose
+# Step 3 Option B: Manual editing — edit 03-faithful-translation/ directly
+#   (no initialization step; inject falls back to 02-mt-output/)
 
 # Step 4: TM creation (in-house; TMX default, no upload)
 node tools/generate-tm.js --book efnafraedi-2e --chapter 5
 
 # Step 5a: Inject translations into CNXML
-node tools/cnxml-inject.js --chapter 5
+#   --source-dir picks the SEGMENTS; --track (on render) picks the OUTPUT track.
+#   Without --source-dir, inject reads 02-mt-output/ — i.e. the mt-preview source.
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 5 --source-dir 03-faithful-translation
 
 # Step 5b: Render to HTML and publish
-node tools/cnxml-render.js --chapter 5 --track faithful
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 5 --track faithful
 # or via API:
 curl -X POST http://localhost:3000/api/publication/efnafraedi-2e/5/faithful
 
 # MT preview (uses MT output directly, before review):
-node tools/cnxml-inject.js --chapter 5
-node tools/cnxml-render.js --chapter 5 --track mt-preview
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 5
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 5 --track mt-preview
 # or via API:
 curl -X POST http://localhost:3000/api/publication/efnafraedi-2e/5/mt-preview
 ```

@@ -6,7 +6,6 @@ This directory contains all documentation for the Namsbokasafn translation proje
 
 | Document | Description |
 |----------|-------------|
-| [Master Pipeline](workflow/master-pipeline.md) | Complete CNXML-to-HTML pipeline reference |
 | [Simplified Workflow](workflow/simplified-workflow.md) | 5-step Extract-Inject-Render pipeline |
 | [Pass 1: Linguistic Review](editorial/pass1-linguistic.md) | First editorial pass instructions |
 | [Pass 2: Localization](editorial/pass2-localization.md) | Second editorial pass instructions |

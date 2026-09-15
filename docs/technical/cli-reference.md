@@ -2,7 +2,7 @@
 
 Command-line tools for the Extract-Inject-Render translation pipeline.
 
-> See [master-pipeline.md](../workflow/master-pipeline.md) for the full workflow context.
+> See [simplified-workflow.md](../workflow/simplified-workflow.md) for the full workflow context.
 > See [simplified-workflow.md](../workflow/simplified-workflow.md) for the 5-step overview.
 
 ---
@@ -283,7 +283,7 @@ npm run validate
 
 ## See Also
 
-- [Master Pipeline](../workflow/master-pipeline.md) - Complete workflow reference
+- [Simplified Workflow](../workflow/simplified-workflow.md) - Complete workflow reference
 - [Simplified Workflow](../workflow/simplified-workflow.md) - 5-step pipeline overview
 - [Schema Reference](schemas.md) - JSON Schema field definitions
 - [Architecture](architecture.md) - System architecture
