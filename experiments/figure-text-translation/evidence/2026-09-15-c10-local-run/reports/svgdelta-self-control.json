@@ -1,0 +1,23 @@
+{
+ "a": "brain.golden.svg",
+ "b": "brain.golden.svg",
+ "byteIdentical": true,
+ "fonts": [
+  {
+   "face": "FigIS/400/normal",
+   "verdict": "identical"
+  },
+  {
+   "face": "FigIS/700/normal",
+   "verdict": "identical"
+  }
+ ],
+ "images": {
+  "differ": [],
+  "onlyA": [],
+  "onlyB": [],
+  "countA": 4,
+  "countB": 4
+ },
+ "remainderIdentical": true
+}

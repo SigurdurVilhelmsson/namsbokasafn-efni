@@ -1,0 +1,59 @@
+DRY RUN — nothing bought, nothing written under books/
+efnafraedi-2e ch03: 41 figure(s) across 5 module(s)
+
+    12  copied-photo
+    14  copied-textless
+    15  skipped-current
+    41  = enumerated
+
+  de-hashed to stripped-name artwork, LOOKUP ONLY (1):
+    CNX_Chem_03_02_moles-6296  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_03/Source_File/CNX_Chem_03_02_moles.pdf
+  copied figures, with the counts the read layer produced (26):
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_03_00_Pool
+    copied-textless  chars=0 formText=0 images=3 paint=1 held=0v/0u/0f  CNX_Chem_03_01_ibuprofenmass_img
+    copied-photo     chars=83 formText=0 images=2 paint=0 held=9v/0u/0f  CNX_Chem_03_02_moles-6296
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_03_02_compound
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_03_02_water
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_03_02_copper
+    copied-textless  chars=17 formText=17 images=0 paint=25 held=17v/0u/0f  CNX_Chem_03_02_saccharin_img
+    copied-textless  chars=6 formText=4 images=0 paint=4 held=4v/0u/0f  CNX_Chem_03_01_Ex01_05a_img
+    copied-textless  chars=4 formText=4 images=0 paint=5 held=4v/0u/0f  CNX_Chem_03_01_Ex01_05b_img
+    copied-textless  chars=8 formText=6 images=0 paint=6 held=6v/0u/0f  CNX_Chem_03_01_Ex01_05c_img
+    copied-textless  chars=7 formText=7 images=0 paint=8 held=7v/0u/0f  CNX_Chem_03_01_Ex01_05d_img
+    copied-textless  chars=11 formText=11 images=0 paint=6 held=6v/0u/0f  CNX_Chem_03_01_Ex01_06a_img
+    copied-textless  chars=10 formText=10 images=0 paint=11 held=10v/0u/0f  CNX_Chem_03_01_Ex01_06b_img
+    copied-textless  chars=14 formText=8 images=0 paint=7 held=8v/0u/0f  CNX_Chem_03_01_Ex01_06c_img
+    copied-textless  chars=8 formText=8 images=0 paint=8 held=8v/0u/0f  CNX_Chem_03_01_Ex01_06d_img
+    copied-textless  chars=4 formText=4 images=0 paint=5 held=4v/0u/0f  CNX_Chem_03_01_Ex01_07a_img
+    copied-textless  chars=6 formText=6 images=0 paint=6 held=6v/0u/0f  CNX_Chem_03_01_Ex01_07b_img
+    copied-textless  chars=8 formText=8 images=0 paint=7 held=8v/0u/0f  CNX_Chem_03_01_Ex01_07c_img
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_03_03_hematite
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_03_03_BrewTank
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_03_03_espresso
+    copied-textless  chars=0 formText=0 images=1 paint=4 held=0v/0u/0f  CNX_Chem_03_04_vinegar
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_03_04_dilution
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_03_05_bleach
+    copied-photo     chars=6 formText=0 images=2 paint=0 held=2v/0u/0f  CNX_Chem_03_05_saline
+    copied-photo     chars=6 formText=0 images=2 paint=0 held=2v/0u/0f  CNX_Chem_03_05_faucet
+  figure-prepare.py warnings — 96 across 15 figure(s), its own !! lines:
+    CNX_Chem_03_02_moles-6296: subset font PAGE/F1
+    CNX_Chem_03_02_saccharin_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm14/TT0; subset font PAGE/Fm15/TT0; subset font PAGE/Fm16/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_03_01_Ex01_05a_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0
+    CNX_Chem_03_01_Ex01_05b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0
+    CNX_Chem_03_01_Ex01_05c_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0
+    CNX_Chem_03_01_Ex01_05d_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0
+    CNX_Chem_03_01_Ex01_06a_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_03_01_Ex01_06b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_03_01_Ex01_06c_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0
+    CNX_Chem_03_01_Ex01_06d_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0
+    CNX_Chem_03_01_Ex01_07a_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0
+    CNX_Chem_03_01_Ex01_07b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0
+    CNX_Chem_03_01_Ex01_07c_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0
+    CNX_Chem_03_05_saline: subset font PAGE/TT0
+    CNX_Chem_03_05_faucet: subset font PAGE/TT0
+
+VERDICT ok
+
+real	0m49.286s
+user	0m44.074s
+sys	0m4.756s

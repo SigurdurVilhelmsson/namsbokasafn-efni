@@ -5,6 +5,22 @@ Status lives in the campaign register's ⏩ RESUME and §C140 — this document 
 because the remaining work needs **things the remote container does not have**, and says exactly what
 those are so the next session does not rediscover it.
 
+> **AMENDED 2026-09-15, by the local-box session that ran it.** Executed; the result is the
+> register's, the measurements are [`evidence/2026-09-15-c10-local-run/`](../../experiments/figure-text-translation/evidence/2026-09-15-c10-local-run/README.md).
+> Two corrections to what follows, both measured:
+> - 🔴 **Do not run §2's whole-chapter control as `--chapter N --force`.** `--force` suppresses only
+>   the skipped-current skip and **does not narrow the selection**, so it sends every text figure in
+>   the chapter WITHOUT a sidecar to the paid MT. ch03 happened to have 0 such figures (a plain
+>   `--dry-run` showed it), so the instruction was harmless there and is not safe as a pattern.
+>   ⚠️ **Adding `--stale` stops the spend but is still not a clean control:** run live it recomposes
+>   and rewrites EVERY sidecar figure's SVG (15 in ch03), each with compose-time font stamps; and run
+>   with `--dry-run` it reports candidates only (`not gated in a dry run`), so it cannot show a
+>   refusal. What worked: `--chapter N --stale --force --dry-run` to see the census, then a LIVE run
+>   per `--figure` (brain, exocytosis), each diffed by value and the timestamp-only one restored.
+> - ⚠️ **The table below omits numpy.** This box had poppler, the PDFs and `server/node_modules`, and
+>   the first live attempt still healed nothing: `pylibs/` is gitignored and lacked numpy, so the
+>   gate failed closed and printed `VERDICT ok`.
+
 ---
 
 ## Why this handoff exists at all

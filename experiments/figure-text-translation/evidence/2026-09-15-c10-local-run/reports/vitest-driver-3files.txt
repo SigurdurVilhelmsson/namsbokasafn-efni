@@ -1,0 +1,210 @@
+
+ RUN  v4.1.10 /home/siggi/dev/repos/namsbokasafn-efni
+
+stdout | tools/__tests__/figure-run-free.test.js > the pre-flight refusals that a dry run exists to surface > runs the figure --figure DOES match (the control for the test above)
+DRY RUN — nothing bought, nothing written under books/
+efnafraedi-2e ch04: 1 figure(s) across 6 module(s)
+
+     1  skipped-current
+     1  = enumerated
+
+
+VERDICT ok
+
+ ❯ tools/__tests__/figure-run-free.test.js (86 tests | 9 failed) 852ms
+     × resolves a hashed figure through its stripped name, in a SECOND resolver pass 39ms
+     × prepares every figure under its own unstripped basename, in its own directory 11ms
+     × still reports a hashed figure unresolved when neither name has artwork 9ms
+     × files a prepare that exited non-zero as failed-prepare, not as text-less 9ms
+     × REFUSES a figure whose meta.json names a different figure 11ms
+     × accepts a figure whose meta.json names it, and classifies it 10ms
+     × runs the figure --figure DOES match (the control for the test above) 7ms
+     × de-hashes ch03 exactly as before — the guard refuses the contest, not the fallback 9ms
+     × prints a warning verbatim, naming the figure that produced it 19ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tools/__tests__/figure-run-free.test.js > the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figure > resolves a hashed figure through its stripped name, in a SECOND resolver pass
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tools/__tests__/figure-run-free.test.js:430:64
+    428|     const hashed = result.figures.filter((f) => isHashed(f.basename));
+    429|     expect(hashed.length).toBeGreaterThan(0); // non-vacuity: ch03 rea…
+    430|     expect(hashed.every((f) => f.resolvedVia === 'de-hashed')).toBe(tr…
+       |                                                                ^
+    431|     expect(result.tally.unresolved).toBe(0);
+    432|     // The fallback fired: one batch for everything, a second for the …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  tools/__tests__/figure-run-free.test.js > the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figure > prepares every figure under its own unstripped basename, in its own directory
+AssertionError: expected 26 to be 41 // Object.is equality
+
+- Expected
++ Received
+
+- 41
++ 26
+
+ ❯ tools/__tests__/figure-run-free.test.js:453:29
+    451|     const result = await runFigures(CH03, { spawn });
+    452|     const prepares = spawn.calls.filter((c) => c.stage === 'prepare');
+    453|     expect(prepares.length).toBe(result.figures.length);
+       |                             ^
+    454|     const enumerated = new Set(result.figures.map((f) => f.basename));
+    455|     for (const call of prepares) {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  tools/__tests__/figure-run-free.test.js > the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figure > still reports a hashed figure unresolved when neither name has artwork
+AssertionError: expected 26 to be 41 // Object.is equality
+
+- Expected
++ Received
+
+- 41
++ 26
+
+ ❯ tools/__tests__/figure-run-free.test.js:470:37
+    468|     const spawn = fakeSpawn({ resolve: () => null });
+    469|     const result = await runFigures(CH03, { spawn });
+    470|     expect(result.tally.unresolved).toBe(result.figures.length);
+       |                                     ^
+    471|     expect(result.verdict.ok).toBe(true); // R9: named, never fatal
+    472|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  tools/__tests__/figure-run-free.test.js > the pre-flight refusals that a dry run exists to surface > files a prepare that exited non-zero as failed-prepare, not as text-less
+AssertionError: expected 0 to be greater than 0
+ ❯ tools/__tests__/figure-run-free.test.js:637:44
+    635|     });
+    636|     const result = await runFigures(CH04, { spawn });
+    637|     expect(result.tally['failed-prepare']).toBeGreaterThan(0);
+       |                                            ^
+    638|     expect(result.verdict.ok).toBe(false);
+    639|     const bad = result.figures.find((f) => f.outcome === 'failed-prepa…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  tools/__tests__/figure-run-free.test.js > the pre-flight refusals that a dry run exists to surface > REFUSES a figure whose meta.json names a different figure
+AssertionError: expected 'skipped-current' to be 'failed-prepare' // Object.is equality
+
+Expected: "failed-prepare"
+Received: "skipped-current"
+
+ ❯ tools/__tests__/figure-run-free.test.js:652:25
+    650|     const result = await runFigures(CH04, { spawn });
+    651|     const rec = result.figures.find((f) => f.basename === 'CNX_Chem_04…
+    652|     expect(rec.outcome).toBe('failed-prepare');
+       |                         ^
+    653|     expect(rec.reason).toMatch(/basename-mismatch/);
+    654|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  tools/__tests__/figure-run-free.test.js > the pre-flight refusals that a dry run exists to surface > accepts a figure whose meta.json names it, and classifies it
+AssertionError: expected 'skipped-current' to be 'translated' // Object.is equality
+
+Expected: "translated"
+Received: "skipped-current"
+
+ ❯ tools/__tests__/figure-run-free.test.js:665:25
+    663|     const result = await runFigures(CH04, { spawn });
+    664|     const rec = result.figures.find((f) => f.basename === 'CNX_Chem_04…
+    665|     expect(rec.outcome).toBe('translated');
+       |                         ^
+    666|     expect(result.tally['failed-prepare']).toBe(0);
+    667|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  tools/__tests__/figure-run-free.test.js > the pre-flight refusals that a dry run exists to surface > runs the figure --figure DOES match (the control for the test above)
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tools/__tests__/figure-run-free.test.js:724:38
+    722|     );
+    723|     expect(code).toBe(0);
+    724|     expect(spawn.countOf('prepare')).toBe(1);
+       |                                      ^
+    725|   });
+    726|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+ FAIL  tools/__tests__/figure-run-free.test.js > the de-hash refuses a CONTESTED stem rather than guessing which figure owns it > de-hashes ch03 exactly as before — the guard refuses the contest, not the fallback
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tools/__tests__/figure-run-free.test.js:986:64
+    984|     const hashed = result.figures.filter((f) => isHashed(f.basename));
+    985|     expect(hashed).toHaveLength(9);
+    986|     expect(hashed.every((f) => f.resolvedVia === 'de-hashed')).toBe(tr…
+       |                                                                ^
+    987|     expect(result.tally.unresolved).toBe(0);
+    988|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+
+ FAIL  tools/__tests__/figure-run-free.test.js > prepare warnings reach the operator > prints a warning verbatim, naming the figure that produced it
+AssertionError: expected 'DRY RUN — nothing bought, nothing wri…' to contain 'unparsable content stream 12 0: opera…'
+
+- Expected
++ Received
+
+- unparsable content stream 12 0: operand stack underflow
++ DRY RUN — nothing bought, nothing written under books/
++ efnafraedi-2e ch04: 30 figure(s) across 6 module(s)
++
++     11  copied-photo
++     19  skipped-current
++     30  = enumerated
++
++   copied figures, with the counts the read layer produced (11):
++     copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_04_02_LeadIodide
++     copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_04_02_Citrus
++     copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_04_02_ammonia
++     copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_04_04_CuAgNO3
++     copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_04_03_iodine
++     copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_04_03_airbag
++     copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_04_04_saccharin_img
++     copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_04_05_titration
++     copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_04_05_filter
++     copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_04_05_propionate_img
++     copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_04_00_Rocket
++
++ VERDICT ok
+
+ ❯ tools/__tests__/figure-run-free.test.js:1148:18
+    1146|     });
+    1147|     const text = summarise(await runFigures(CH04, { spawn }));
+    1148|     expect(text).toContain(STREAM);
+       |                  ^
+    1149|     expect(text).toContain('CNX_Chem_04_04_limiting');
+    1150|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/9]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  9 failed | 177 passed (186)
+   Start at  17:03:55
+   Duration  2.58s (transform 587ms, setup 0ms, import 847ms, tests 1.12s, environment 0ms)
+

@@ -16,7 +16,8 @@ brighter than its inner neighbour — is NOT sufficient.  Measured on `CNX_Chem_
 (`evidence/2026-09-13-t23/reports/exo-spike.md` §7): `mask-491` carries the signature on three
 sides, nothing is visible on screen, and overwriting the ring DESTROYS the axon's real edge
 shading.  A heal driven by the byte signature alone is a content-destroying false positive on
-8 of the 9 candidate masks that exist in this corpus.  So the decision is made on a RENDER, by
+8 of the 9 candidate masks in the artwork `pdftocairo` derives from this corpus's source PDFs
+(measured 2026-09-15; the committed brain SVG has carried the heal since).  So the decision is made on a RENDER, by
 intervention: heal a side only if healing it demonstrably removes a light line.
 
 Public API (all pure; nothing here writes a file):

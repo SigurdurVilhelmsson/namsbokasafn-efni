@@ -1,7 +1,7 @@
 # Decision: a chapter that is already validated publishes at its readiness, not at its place in the release queue — so ch03 goes ahead of ch15
 
 - **Date:** 2026-09-02
-- **Status:** Accepted
+- **Status:** Superseded in part by `docs/decisions/2026-09-16-chapters-prepared-sync-timed-by-classroom-use.md` (its commitment to publish a validated chapter once its blockers clear)
 - **Context owners:** lead (project owner); measurement by the pipeline session
 - **Supersedes:** none — it **amends the ordering stated by §C82 action ⑤** in the active register, which is a register item rather than a decision record. `2026-08-30-c82-clean-break-refocus.md` cites "the lead's own release order" without setting it, and is not reversed here.
 - **Related:**

@@ -1,0 +1,50 @@
+1. detector — planted positive and its control
+  ok   planted ring is found
+  ok   ring excess is large on every side
+  ok   geometry lands on the clip rect in root user units
+  ok   all four sides are cut by the clip
+  ok   nothing is refused
+  ok   CONTROL: no ring -> no candidate
+2. reachability — a masked group reachable ONLY through <filter><feImage>
+  ok   premise: nothing outside defs references the masked group
+  ok   candidate is still found
+  ok   and with the same geometry as the direct placement
+3. refusals — untested branches fail closed
+  ok   an image referenced more than once is REFUSED
+  ok   a clip that cuts no side is REFUSED
+  ok   heal refuses an approved-but-shared image
+  ok   heal with an empty approval set is a byte-identical no-op
+4. heal — only the approved mask's payload moves
+  ok   it healed one mask on four sides
+  ok   the document changed
+  ok   every byte outside the base64 payloads is identical
+  ok   the ring row is replaced by its inner neighbour
+  ok   a corner takes its DIAGONAL inner neighbour
+  ok   and the interior is untouched
+  ok   CONTROL: the ring differed from its neighbour before the heal
+5. edgeline — a light line scores, a dark boundary does not
+  ok   a light line scores high
+  ok   a dark line does NOT score high
+  ok   off the end of the profile returns None
+6. gate — the same `before` decides differently on what the heal does
+  ok   healing removes the line -> APPROVED
+  ok   identical `before`, healing changes nothing -> refused
+  ok   and the refusal names the rule it failed
+  ok   a refused candidate is never approved, on the very picture that would approve it
+7. corpus anchors — the real bytes, not a fixture
+  ok   brain carries no candidate — its ring was healed
+  ok   WITNESS: the walker still reaches brain mask-2 (source-29, 90x24, nothing refused)
+  ok   and every side of mask-2 is now below the byte threshold
+  ok   exocytosis carries eight candidates — reachable only through feImage
+  ok   and mask-491 is among them (the measured false positive)
+  ok   CONTROL: the sweep covered a non-trivial population
+  ok   no third carrier exists in this corpus today
+8. the separation the gate rests on is recorded where a reader will find it
+  ok   the module names the false-positive carrier
+  ok   RING_BYTES is justified in the lines above it
+  ok   SIDE_FLOOR is justified in the lines above it
+  ok   SIDE_DROP is justified in the lines above it
+  ok   MASK_MIN_SIDES is justified in the lines above it
+  ok   MASK_MIN_DELTA is justified in the lines above it
+
+ALL PASS

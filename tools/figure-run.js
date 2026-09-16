@@ -445,10 +445,18 @@ function defaultSpawn({ stage, command, argv, cwd, env, timeout }) {
     timeout,
     maxBuffer: 64 * 1024 * 1024,
   });
+  // `signal` rides along so a caller can name a kill (an OOM SIGKILL leaves status null and stderr
+  // empty — without it the only trace is "exit null").
+  const signal = result.signal || null;
   if (result.error) {
-    return { status: null, stdout: '', stderr: `${stage}: ${result.error.message}` };
+    return { status: null, signal, stdout: '', stderr: `${stage}: ${result.error.message}` };
   }
-  return { status: result.status, stdout: result.stdout || '', stderr: result.stderr || '' };
+  return {
+    status: result.status,
+    signal,
+    stdout: result.stdout || '',
+    stderr: result.stderr || '',
+  };
 }
 
 /** Read a JSON file, or null. Used where absence is a fact the caller must handle, not a crash. */
@@ -818,8 +826,9 @@ const DRIFTABLE = new Set(['copied-photo', 'copied-textless', 'unreadable-text']
  * `pdftocairo -png`. Full account: `experiments/figure-text-translation/figrings.py`.
  *
  * 🔴 THE BYTE SIGNATURE IS NOT THE DEFECT, WHICH IS THE ONLY REASON THIS IS A STEP AND NOT A
- * ONE-LINE PASS INSIDE PREPARE. Measured over all 691 composed SVGs: 9 masks carry the signature,
- * in 2 figures, and exactly ONE ring is visible. Healing the other 8 destroys real picture content
+ * ONE-LINE PASS INSIDE PREPARE. Measured over all 691 composed SVGs on 2026-09-15, before brain's heal
+ * was committed: 9 masks carry the signature, in 2 figures, and exactly ONE ring is visible. The
+ * driver still sees all 9, because it gates the artwork prepare re-derives from the source PDF. Healing the other 8 destroys real picture content
  * (`evidence/2026-09-13-t23/reports/exo-spike.md` §7). So the decision is interventional and is
  * made on a RENDER: heal a side only when healing it demonstrably removes a light line.
  *
@@ -847,6 +856,48 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
     rec.ringWarnings = rec.ringWarnings || [];
     rec.ringWarnings.push(msg);
   };
+  // 🔴 EVERY FAILURE BELOW CARRIES THE CHILD'S OWN CAUSE. Fail-closed means the run goes on and
+  // exits 0, so this warning is the only place the cause can surface: on 2026-09-15 a `pylibs/`
+  // without numpy printed "could not build the counterfactual heal (exit 1)" and shipped the ring
+  // unhealed, with the ModuleNotFoundError discarded.
+  // ⚠️ HEAD AND TAIL, NOT A TAIL. Python prints its exception LAST; Node prints an uncaught error's
+  // message FIRST and then a stack and a `Node.js vNN` footer — a bare tail keeps one and loses
+  // the other. Stack frames, the footer, the run_main preamble, carets and box drawing are dropped
+  // first, and the rest is folded onto ONE line, because `summarise` prints one line per warning.
+  const oneLine = (text) => {
+    const kept = text
+      .split(/\r?\n/)
+      .map((l) =>
+        l
+          .replace(/[╔╗╚╝║═]+/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      )
+      .filter(
+        (l) =>
+          l &&
+          !/^at\s/.test(l) &&
+          !/^Node\.js v\d/.test(l) &&
+          !/^node:internal\//.test(l) &&
+          !/^triggerUncaughtException\($/.test(l) &&
+          !/^[~^]+$/.test(l) &&
+          !/^[{}]$/.test(l)
+      )
+      .join(' ⏎ ');
+    return kept.length <= 400 ? kept : `${kept.slice(0, 200)} … ${kept.slice(-190)}`;
+  };
+  const cause = (...results) => {
+    const parts = [];
+    for (const r of results) {
+      if (!r || r.status === 0) continue;
+      const bits = [];
+      if (r.signal) bits.push(`killed by ${r.signal}`);
+      if (r.stderr && r.stderr.trim()) bits.push(oneLine(r.stderr));
+      const said = bits.join(': ');
+      if (said && !parts.includes(said)) parts.push(said);
+    }
+    return parts.length ? ` — ${parts.join(' | ')}` : '';
+  };
   const runPy = (argv) =>
     spawn({
       stage: 'ring-gate',
@@ -862,7 +913,9 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   try {
     census = JSON.parse(censused.stdout)[0];
   } catch {
-    warn(`census did not return JSON (exit ${censused.status}); artwork left untouched`);
+    warn(
+      `census did not return JSON (exit ${censused.status}); artwork left untouched${cause(censused)}`
+    );
     return rec;
   }
   const candidates = (census && census.candidates) || [];
@@ -891,7 +944,9 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   const counterfactual = path.join(outDir, 'artwork.ring-all.svg');
   const healedAll = runPy(['heal', artwork, '--out', counterfactual, '--approve-all']);
   if (healedAll.status !== 0 || !existsSync(counterfactual)) {
-    warn(`could not build the counterfactual heal (exit ${healedAll.status}); left untouched`);
+    warn(
+      `could not build the counterfactual heal (exit ${healedAll.status}); left untouched${cause(healedAll)}`
+    );
     return rec;
   }
 
@@ -911,7 +966,7 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   if (rb.status !== 0 || ra.status !== 0 || !existsSync(before) || !existsSync(after)) {
     warn(
       `could not render the artwork (before ${rb.status}, after ${ra.status}), so ` +
-        `${candidates.length} ring candidate(s) were NOT judged; artwork left untouched`
+        `${candidates.length} ring candidate(s) were NOT judged; artwork left untouched${cause(rb, ra)}`
     );
     return rec;
   }
@@ -929,7 +984,9 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   ]);
   const report = readJson(reportPath);
   if (gated.status !== 0 || !report) {
-    warn(`the gate produced no verdict (exit ${gated.status}); artwork left untouched`);
+    warn(
+      `the gate produced no verdict (exit ${gated.status}); artwork left untouched${cause(gated)}`
+    );
     return rec;
   }
   const approved = report.approved || [];
@@ -950,7 +1007,7 @@ export function applyRingGate(rec, outDir, { spawn, dryRun = false, existsSync =
   const healedPath = path.join(outDir, 'artwork.ring-healed.svg');
   const healed = runPy(['heal', artwork, '--out', healedPath, '--gate-report', reportPath]);
   if (healed.status !== 0 || !existsSync(healedPath)) {
-    warn(`the gated heal failed (exit ${healed.status}); artwork left untouched`);
+    warn(`the gated heal failed (exit ${healed.status}); artwork left untouched${cause(healed)}`);
     rec.rings.approved = [];
     return rec;
   }

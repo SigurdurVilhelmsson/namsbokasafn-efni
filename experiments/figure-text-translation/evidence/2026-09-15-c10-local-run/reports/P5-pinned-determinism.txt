@@ -1,0 +1,10 @@
+# P5′ — two brain runs with the clock pinned: SOURCE_DATE_EPOCH=1700000000 node tools/figure-run.js --book efnafraedi-2e --chapter 3 --figure CNX_Chem_03_01_brain-ec0b --force
+# each output was copied from books/efnafraedi-2e/media/ immediately after its run (driver logs: P5-a.txt, P5-b.txt)
+5eefcc671caa2d8bc750afdc80b8c05e4536c1c55afbbeae032cd2ff679e2c19  brain.P5a.svg
+5eefcc671caa2d8bc750afdc80b8c05e4536c1c55afbbeae032cd2ff679e2c19  brain.P5b.svg
+cmp: brain.P5a.svg brain.P5b.svg IDENTICAL (exit 0)
+# for contrast, the unpinned commit candidate (P2′) and the golden:
+d689600fa810a74e28ff4dcf3b5a2c74f9d74f89d01a5459bf0df3949bd8cfc4  brain.P2prime.svg
+e667c68b5a01642a9f4dfceca07d2a0a39e8ccfead7b9710cfea6c927d6b5640  brain.golden.svg
+# committed brain SVG at this branch's HEAD:
+d689600fa810a74e28ff4dcf3b5a2c74f9d74f89d01a5459bf0df3949bd8cfc4  CNX_Chem_03_01_brain-ec0b_IS.svg

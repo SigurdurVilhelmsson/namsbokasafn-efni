@@ -1,0 +1,8 @@
+1. source-29 raster (24, 90, 4)
+   interior px 1936 changed 0
+   edge px 224 changed 224
+   healed raster == heal(golden): True
+   mean alpha on edges top/bottom/left/right  golden [130.9, 251.1, 243.7, 237.1]  healed [66.3, 45.4, 41.2, 43.5]
+2. Chromium renders (484, 975)
+   changed px 1320 bbox (632, 259, 878, 322)
+   changed px outside the +-4 px band around mask-2: 0

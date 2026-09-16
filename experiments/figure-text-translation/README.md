@@ -148,7 +148,7 @@ published.jpg ──check.py─────────────────�
 | `numloc.py` | Icelandic number separators for labels drawn in English (`26.98` → `26,98`). Runs only on source run text, never on a value that may already be localised — it is not idempotent (§C140 ⑨) |
 | `figcolour.py` | the ONE text-fill → RGB conversion, the way poppler draws DeviceCMYK, DeviceRGB and DeviceGray, so a label's black matches the artwork's (R14) |
 | `svgfix.py` | the post-`pdftocairo -svg` artwork pass — owns that call's argv (`-noshrink -nocenter`, R15), collapses cairo's blend-mode lerp so a browser can load the artwork, and measures the reference cost `figure-prepare.py` warns on (§C140 ⑫) |
-| `figrings.py` | the §C140 ⑩ soft-mask ring: locate every image-backed mask (following cairo's `feImage` blend chains, without which a blend-carrying figure reports 0 masks), the frozen `edgeline` statistic, the **interventional** gate, and the heal that gate authorises. The byte signature alone is NOT the decision — it false-positives on 8 of the 9 candidates in this corpus |
+| `figrings.py` | the §C140 ⑩ soft-mask ring: locate every image-backed mask (following cairo's `feImage` blend chains, without which a blend-carrying figure reports 0 masks), the frozen `edgeline` statistic, the **interventional** gate, and the heal that gate authorises. The byte signature alone is NOT the decision — it false-positives on 8 of the 9 candidates in the artwork `pdftocairo` derives from this corpus's source PDFs (measured 2026-09-15; the committed brain SVG has carried the heal since) |
 | `figure-rings.py` | CLI over `figrings.py` — `census` (no browser), `gate` (needs a before/after render pair), `heal` (heals nothing without a gate report, and refuses to write inside `books/`) |
 | `test_figrings.py` | tests both, every planted negative paired with a positive through the same path, plus corpus anchors with a non-vacuity control |
 | `census.py` | survey a directory of figure PDFs: live text? substitutable font? prose vs verbatim? |
@@ -167,12 +167,12 @@ published.jpg ──check.py─────────────────�
 
 ## Running it
 
-`pdfplumber`, `pikepdf`, `pycairo` and `Pillow` are **not** repo dependencies — this is an
+`pdfplumber`, `pikepdf`, `pycairo`, `Pillow` and `numpy` are **not** repo dependencies — this is an
 experiment. Install them wherever you like and point `FIGTEXT_PYLIBS` at it:
 
 ```bash
 cd experiments/figure-text-translation
-python3 -m pip install --target=./pylibs pdfplumber pikepdf pycairo pillow fonttools brotli
+python3 -m pip install --target=./pylibs pdfplumber pikepdf pycairo pillow fonttools brotli numpy
 export FIGTEXT_PYLIBS=./pylibs
 PDF=~/dev/repos/CNX_Chem_01_01_SciMethod.pdf
 
@@ -190,6 +190,16 @@ so everything works here without it ever being declared, and on a clean box `ext
 `readlayer.py`'s `import pdfplumber` on the *first* command above. It brings `pdfminer.six`,
 `pypdfium2` and the crypto stack with it. ⚠️ **No CI workflow runs any of this Python**, so a
 broken install line goes red on a human's machine and nowhere else.
+
+🔴 **`numpy` is the other one, and its failure is QUIETER: the driver does not go red at all.**
+`figure-run.js`'s ring gate (§C140 ⑩) spawns `figure-rings.py`, whose `census` needs no numpy
+but whose `heal` and `gate` import it lazily — so on a `pylibs/` without it the census finds the
+candidate, the heal dies on `ModuleNotFoundError`, the step **fails closed**, and the run prints
+`VERDICT ok` with the ring left in the published figure and one warning line. Measured
+2026-09-15 on the first local-box run (`evidence/2026-09-15-c10-local-run/`); the `pylibs/` that
+built the gate had numpy and did not travel, because `pylibs/` is gitignored. **Before any
+`figure-run.js` run, `FIGTEXT_PYLIBS=./pylibs python3 test_figrings.py` must print `ALL PASS`** —
+its heal tests are the cheapest detector for this.
 
 `pdftocairo` (poppler-utils) must be on `PATH`.
 

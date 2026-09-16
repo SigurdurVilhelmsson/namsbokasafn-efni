@@ -1,0 +1,27 @@
+1. detector — planted positive and its control
+  ok   planted ring is found
+  ok   ring excess is large on every side
+  ok   geometry lands on the clip rect in root user units
+  ok   all four sides are cut by the clip
+  ok   nothing is refused
+  ok   CONTROL: no ring -> no candidate
+2. reachability — a masked group reachable ONLY through <filter><feImage>
+  ok   premise: nothing outside defs references the masked group
+  ok   candidate is still found
+  ok   and with the same geometry as the direct placement
+3. refusals — untested branches fail closed
+  ok   an image referenced more than once is REFUSED
+  ok   a clip that cuts no side is REFUSED
+Traceback (most recent call last):
+  File "/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/test_figrings.py", line 415, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/test_figrings.py", line 401, in main
+    fn()
+    ~~^^
+  File "/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/test_figrings.py", line 207, in test_refusals
+    healed, rep = figrings.heal(text, {'mask-2'})
+                  ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/figrings.py", line 433, in heal
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'

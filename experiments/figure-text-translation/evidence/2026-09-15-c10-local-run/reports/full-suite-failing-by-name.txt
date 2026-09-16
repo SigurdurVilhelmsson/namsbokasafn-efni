@@ -1,0 +1,18 @@
+# Full root `npm test` failing set vs the committed baseline, BY NAME — two runs on this branch
+# baseline: evidence/2026-09-14-t23-build/reports/js-baseline-failing-by-name.txt (36 names, 13 files)
+# both sides normalised to 'file :: describe test'; a planted name is the control that the diff can report a difference
+
+## run 1 — tree of e33f6895 (first stderr change + healed brain), before the review wave
+# vitest: Test Files  13 failed | 394 passed (407) · Tests  36 failed | 6478 passed | 1 skipped (6515) · exit 1
+baseline 36  now 36  only-now 0  only-baseline 0
+
+## run 2 — 8e42e91b, the final code (cause rework + defaultSpawn signal), run in the foreground
+# (a background attempt at 8e42e91b was killed at startup by the low-memory guard and produced no result)
+# vitest: Test Files  13 failed | 394 passed (407) · Tests  36 failed | 6488 passed | 1 skipped (6525) · exit 1 · timed-out tests 0
+# passed +10 vs run 1 = the ring-gate file's 17 → 27 tests
+baseline 36  now 36  files 13
+only-now:
+only-baseline:
+(end)
+CONTROL planted name appears as only-now:
+tools/__tests__/zz.test.js :: planted

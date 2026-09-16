@@ -1,0 +1,9 @@
+# figure-run-free.test.js failing names: NOW (this branch) vs committed baseline
+# baseline: evidence/2026-09-14-t23-build/reports/js-baseline-failing-by-name.txt (format 'file :: describe test')
+# now: vitest 'file > describe > test', normalised to 'describe test'
+baseline 9  now 9
+only-now:
+only-baseline:
+(end)
+CONTROL planted name appears as only-now:
+zzz planted fake failure
