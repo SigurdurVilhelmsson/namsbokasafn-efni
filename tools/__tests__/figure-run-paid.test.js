@@ -2212,9 +2212,13 @@ describe('§C140 ⑦ — what a live run would buy', () => {
       'buyable this run 1 figure(s): 18 billable characters, est 0.18 ISK at list rate ' +
         '(+1 figure(s) whose billable size is UNKNOWN)'
     );
+    // The spend line's N is EVERY spawned figure — two were bought, so it must never read "1"; only
+    // its characters are limited to the figures whose size is known, and it says how many those are.
     expect(text).toContain(
-      'MT spawned for 1 figure(s), 18 billable characters (+1 figure(s) whose billable size is UNKNOWN)'
+      'MT spawned for 2 figure(s), 18 billable characters ' +
+        '(1 counted; 1 figure(s) whose billable size is UNKNOWN)'
     );
+    expect(text).not.toMatch(/MT spawned for 1 figure\(s\)/);
     expect(text).toMatch(/FIG_ODD\s+billable count UNKNOWN/);
   });
 });

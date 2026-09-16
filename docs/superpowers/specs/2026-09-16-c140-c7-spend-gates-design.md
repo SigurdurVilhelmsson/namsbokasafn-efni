@@ -282,6 +282,11 @@ Three refinements the build (Tasks 1–8) made to this design; none change its r
   (corrected in the fix wave: this item gave a failed purchase as the reason). **Fix wave:** both headlines and
   the live `MT spawned …` characters count and add only figures whose billable size is known, and append
   `(+K figure(s) whose billable size is UNKNOWN)` when K > 0 — an unknown size is never summed as zero.
+  **Corrected after the fix wave's re-review ([USER] asked for it before merge):** the live
+  `MT spawned for N figure(s)` line had also narrowed its **N** to known-size figures, so two purchases read
+  "1 figure(s)". Its N is now every spent figure; only its characters are limited to known sizes, and when
+  K > 0 it says so as `(M counted; K figure(s) whose billable size is UNKNOWN)` — its own wording, because the
+  headlines' `+K` means figures *in addition to* their N, while here K is already inside N.
 
 Added in the fix wave after the final whole-branch review; like (a)–(c), they change no ruling.
 

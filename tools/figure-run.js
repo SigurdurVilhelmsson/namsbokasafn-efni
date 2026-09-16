@@ -2492,15 +2492,23 @@ export function summarise(result) {
   // 🔴 THE SPEND, AS A COUNT OVER THE RECORDS. `spent` is set at the paid spawn and nowhere
   // else, so this line cannot report a purchase that did not happen or hide one that did. It is
   // printed on a LIVE run only; a dry run's equivalent is the would-buy list above.
+  // ⚠️ Its N is EVERY spent figure — never only the ones whose size is known, which would print
+  // "1 figure(s)" for two purchases. Only the characters are limited to known sizes, so the line
+  // says how many figures they cover. (The would-buy line's "+K" means figures IN ADDITION to its
+  // N; this line's K is already inside N, hence its own wording.)
   if (result.mode === 'live') {
     const spent = result.figures.filter((f) => f.spent);
     const published = result.figures.filter((f) => f.published);
     lines.push('');
     const spentKnown = spent.filter(known);
     const spentChars = spentKnown.reduce((n, f) => n + f.billable.chars, 0);
+    const spentUnknown = spent.length - spentKnown.length;
     lines.push(
-      `  MT spawned for ${spentKnown.length} figure(s), ${spentChars} billable characters` +
-        `${unknownNote(spent.length - spentKnown.length)} — only a figure with NO sidecar is spendable`
+      `  MT spawned for ${spent.length} figure(s), ${spentChars} billable characters` +
+        (spentUnknown > 0
+          ? ` (${spentKnown.length} counted; ${spentUnknown} figure(s) whose billable size is UNKNOWN)`
+          : '') +
+        ' — only a figure with NO sidecar is spendable'
     );
     lines.push(`  published ${published.length} figure(s) into ${result.bookDir}/media/`);
     lines.push(
