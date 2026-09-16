@@ -76,6 +76,10 @@ import _deps  # noqa: F401  — puts this directory and FIGTEXT_PYLIBS on sys.pa
 
 import pdfplumber  # noqa: E402
 import pikepdf  # noqa: E402
+from pdfminer.encodingdb import EncodingDB, name2unicode  # noqa: E402
+from pdfminer.psparser import LIT  # noqa: E402
+
+import figglyphs  # noqa: E402
 
 # Run-splitting tolerances. Size and rotation MIRROR `figtext.group`'s own `same`
 # predicate — a reader that splits where figtext would not merge moves block boundaries.
@@ -170,6 +174,78 @@ def _join_names(fobj):
     return names
 
 
+def _differences(fobj):
+    """The font's /Differences as pdfminer builds them — `int` codes and `LIT` glyph names — or
+    None. 🔴 `LIT`, never a plain string: `EncodingDB.get_encoding` silently IGNORES a str entry
+    (measured: `'degree'` came back as `'8'`, `LIT('degree')` as `'°'`)."""
+    enc = fobj.get('/Encoding')
+    if not isinstance(enc, pikepdf.Dictionary):
+        return None
+    diffs = enc.get('/Differences')
+    if diffs is None:
+        return None
+    return [LIT(str(x)[1:]) if isinstance(x, pikepdf.Name) else int(x) for x in diffs]
+
+
+def _unmapped_glyphs(fobj):
+    """-> [[code, glyph name], ...] for every /Differences name pdfminer cannot map, in a font
+    with NO /ToUnicode. [] otherwise: pdfminer consults a ToUnicode map before the encoding, so
+    such a font decodes whatever its glyph names are (§C140 ⑦; Carbon's MathematicalPi space is
+    the corpus control)."""
+    if '/ToUnicode' in fobj:
+        return []
+    diffs = _differences(fobj)
+    if not diffs:
+        return []
+    out, code = [], 0
+    for x in diffs:
+        if isinstance(x, int):
+            code = x
+            continue
+        try:
+            name2unicode(x.name)
+        except (KeyError, ValueError):
+            out.append([code, x.name])
+        code += 1
+    return out
+
+
+def _base_encoding(fobj):
+    """The base encoding pdfminer's PDFSimpleFont selects (pdfminer/pdffont.py): the /Encoding
+    dictionary's /BaseEncoding, else WinAnsiEncoding for /TrueType and StandardEncoding for every
+    other simple font."""
+    default = ('WinAnsiEncoding' if str(fobj.get('/Subtype', '')) == '/TrueType'
+               else 'StandardEncoding')
+    enc = fobj.get('/Encoding')
+    if isinstance(enc, pikepdf.Dictionary) and enc.get('/BaseEncoding') is not None:
+        return str(enc.get('/BaseEncoding'))[1:]
+    return default
+
+
+def _repair_plan(fobj, unmapped):
+    """-> {text pdfminer emits: (kind, glyph name, replacement)} for ONE font.
+
+    kind 'repaired'   the name is in figglyphs.GLYPH_REPAIRS;
+         'unrepaired' it is not — the character becomes pdfminer's own (cid:N), which the
+                      undecoded path already holds back, reports and never draws;
+         'ambiguous'  another code of this font also decodes to the same text, so a character
+                      cannot be attributed — fail CLOSED exactly like 'unrepaired'.
+    """
+    cid2u = EncodingDB.get_encoding(_base_encoding(fobj), _differences(fobj))
+    plan = {}
+    for code, name in unmapped:
+        emitted = cid2u.get(code)
+        if not emitted:
+            continue            # pdfminer already emits (cid:N) for a code with no character
+        if any(c != code and u == emitted for c, u in cid2u.items()):
+            plan[emitted] = ('ambiguous', name, f'(cid:{code})')
+        elif name in figglyphs.GLYPH_REPAIRS:
+            plan[emitted] = ('repaired', name, figglyphs.GLYPH_REPAIRS[name])
+        else:
+            plan[emitted] = ('unrepaired', name, f'(cid:{code})')
+    return plan
+
+
 def _font_entry(fobj):
     """One `meta['fonts']` value.
 
@@ -187,10 +263,12 @@ def _font_entry(fobj):
                 last=num('/LastChar'),
                 subtype=str(fobj.get('/Subtype', '')),
                 encoding=str(fobj.get('/Encoding', '')),
-                decodable=True)
+                decodable=True,
+                tounicode='/ToUnicode' in fobj,
+                unmapped_glyphs=_unmapped_glyphs(fobj))
 
 
-def _font_table(page):
+def _font_table(page, plans=None):
     """-> ({scope_key: entry}, {pdfminer_fontname: [scope_key, ...]})
 
     Walks the page's own /Resources/Font and then, recursively, every /Form XObject's own
@@ -209,6 +287,8 @@ def _font_table(page):
                 if key in entries:
                     continue
                 entries[key] = _font_entry(fobj)
+                if plans is not None and entries[key]['unmapped_glyphs']:
+                    plans[key] = _repair_plan(fobj, entries[key]['unmapped_glyphs'])
                 for n in _join_names(fobj):
                     by_name[n].append(key)
         xobjects = res.get('/XObject')
@@ -351,7 +431,7 @@ def _proj(x, y, rot):
     return -x * math.sin(a) + y * math.cos(a)
 
 
-def _prepare(chars, resolve_font, unknown, adv_repairs=None):
+def _prepare(chars, resolve_font, unknown, adv_repairs=None, plans=None, glyph_counts=None):
     """pdfplumber chars -> the per-char facts the run splitter needs.
 
     ⚠️ `char['adv']` IS NOT ALWAYS A HORIZONTAL GLYPH WIDTH, and this model assumes it is.
@@ -394,14 +474,23 @@ def _prepare(chars, resolve_font, unknown, adv_repairs=None):
         # matrix's source space, so the matrix scale is what carries it into user
         # space — and that is true for BOTH producer idioms (see the header).
         adv = float(char['adv']) * math.hypot(matrix[0], matrix[1])
+        font = resolve_font(char.get('fontname'))
         text = char.get('text') or ''
+        # §C140 ⑦. A run never mixes fonts (`_continues` splits on a font change), so keying the
+        # repair on THIS char's own font cannot touch another font's text.
+        plan = plans.get(font) if plans else None
+        if plan and text in plan:
+            kind, name, replacement = plan[text]
+            text = replacement
+            if glyph_counts is not None:
+                glyph_counts[kind][font][name] += 1
         if adv <= 0.0 and text.strip():
             adv = abs(float(char['x1']) - float(char['x0']))
             if adv_repairs is not None:
                 adv_repairs['nonpositive-adv'] += 1
         out.append(dict(
             text=text,
-            font=resolve_font(char.get('fontname')),
+            font=font,
             size=_visual_size(char, matrix),
             rot=math.degrees(math.atan2(matrix[1], matrix[0])),
             x=matrix[4], y=matrix[5],
@@ -543,13 +632,16 @@ def read(pdf_path):
     target, temp = _stage(source)
     unknown = collections.Counter()
     adv_repairs = collections.Counter()
+    glyph_counts = {kind: collections.defaultdict(collections.Counter)
+                    for kind in ('repaired', 'unrepaired', 'ambiguous')}
+    plans = {}
     handler = _WarningCounter()
     logger = logging.getLogger('pdfminer')
     logger.addHandler(handler)
     try:
         with pikepdf.open(str(target)) as pdf:
             page = pdf.pages[0]
-            fonts, by_name = _font_table(page)
+            fonts, by_name = _font_table(page, plans)
             box = pikepdf.Page(page).mediabox
             # [box[2], box[3]] and not width/height: `compose.dev()` was calibrated
             # against exactly these two numbers from the reader being replaced.
@@ -577,7 +669,8 @@ def read(pdf_path):
             key = f'UNSCOPED/{name}'
             if key not in fonts:
                 fonts[key] = dict(base=name, first=None, last=None, subtype='',
-                                  encoding='', decodable=True)
+                                  encoding='', decodable=True,
+                                  tounicode=False, unmapped_glyphs=[])
             unscoped[key] += 1
             return key
 
@@ -585,7 +678,8 @@ def read(pdf_path):
             # laparams stays at its default None. Any LAParams reorders chars into
             # textboxes and destroys content-stream order, which figtext.group depends on.
             chars = doc.pages[0].chars
-        runs = _to_runs(_prepare(chars, resolve_font, unknown, adv_repairs))
+        runs = _to_runs(_prepare(chars, resolve_font, unknown, adv_repairs,
+                                 plans, glyph_counts))
     finally:
         logger.removeHandler(handler)
         if temp:
@@ -602,7 +696,10 @@ def read(pdf_path):
                 fonts_unexercised=unexercised,
                 unscoped_fonts=dict(unscoped),
                 unknown_colorspaces=dict(unknown),
-                adv_repaired=dict(adv_repairs))
+                adv_repaired=dict(adv_repairs),
+                glyph_repairs={f: dict(c) for f, c in glyph_counts['repaired'].items()},
+                glyph_unrepaired={f: dict(c) for f, c in glyph_counts['unrepaired'].items()},
+                glyph_ambiguous={f: dict(c) for f, c in glyph_counts['ambiguous'].items()})
     return runs, meta, 'reads' if any(r['text'] for r in runs) else 'empty'
 
 

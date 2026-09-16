@@ -896,5 +896,147 @@ with H.staged(_ip) as (_isrc, _ierr):
 
 shutil.rmtree(S14, ignore_errors=True)
 
+# ── 15. §C140 ⑦ — A GLYPH EVERY READER MISREADS IS REPAIRED, AND ONLY THAT GLYPH ────────
+# CNX_Chem_10_01_PentIso's MathematicalPi-One names its degree sign `H11034` in /Differences
+# and has no /ToUnicode, so pdfminer (and poppler, and PDFium) read `36 °C` as `36 8C` — and
+# the block is send:true. 15a PLANTS the evidence that the defect is real on this box; the
+# rest assert the repair and its four controls, each on a planted variant of the same font.
+print('\n[15] a misread symbol glyph is repaired through figglyphs, and nothing else moves')
+import figtext as FT  # noqa: E402
+from blockkey import block_english  # noqa: E402
+
+TOUNICODE_DEGREE = (b'/CIDInit /ProcSet findresource begin\n12 dict begin\nbegincmap\n'
+                    b'/CMapName /Adobe-Identity-UCS def\n/CMapType 2 def\n'
+                    b'1 begincodespacerange\n<00> <FF>\nendcodespacerange\n'
+                    b'1 beginbfchar\n<38> <00B0>\nendbfchar\n'
+                    b'endcmap\nCMapName currentdict /CMap defineresource pop\nend\nend\n')
+
+
+def mpi_variant(src, dst, mutate):
+    """Save `src` to `dst` with `mutate(pdf, fobj)` applied to every MathematicalPi font."""
+    hits = 0
+    with pikepdf.open(str(src)) as pdf:
+        def walk(res, seen):
+            nonlocal hits
+            fonts = res.get('/Font')
+            if fonts is not None:
+                for _n, fobj in fonts.items():
+                    if 'MathematicalPi' in str(fobj.get('/BaseFont', '')):
+                        mutate(pdf, fobj)
+                        hits += 1
+            xobjects = res.get('/XObject')
+            if xobjects is None:
+                return
+            for _n, xobj in xobjects.items():
+                if str(xobj.get('/Subtype', '')) != '/Form' or xobj.objgen in seen:
+                    continue
+                seen.add(xobj.objgen)
+                sub = xobj.get('/Resources')
+                if sub is not None:
+                    walk(sub, seen)
+        for page in pdf.pages:
+            res = pikepdf.Page(page).obj.get('/Resources')
+            if res is not None:
+                walk(res, set())
+        pdf.save(str(dst))
+    return hits
+
+
+def rename_glyph(to):
+    def mutate(pdf, fobj):
+        enc = fobj['/Encoding']
+        enc['/Differences'] = pikepdf.Array(
+            [pikepdf.Name('/' + to) if isinstance(x, pikepdf.Name) else x
+             for x in enc['/Differences']])
+    return mutate
+
+
+def add_tounicode(pdf, fobj):
+    fobj['/ToUnicode'] = pdf.make_stream(TOUNICODE_DEGREE)
+
+
+def add_eight_at_57(pdf, fobj):
+    enc = fobj['/Encoding']
+    enc['/Differences'] = pikepdf.Array(list(enc['/Differences']) + [57, pikepdf.Name('/eight')])
+
+
+def mpi_key(meta):
+    keys = [k for k, v in meta['fonts'].items() if 'MathematicalPi' in v['base']]
+    return keys[0] if len(keys) == 1 else None
+
+
+path15, _ = resolve('CNX_Chem_10_01_PentIso')
+S15 = Path(tempfile.mkdtemp(prefix='rl15-'))
+try:
+    with H.staged(path15) as (src15, _e):
+        with pdfplumber.open(str(src15)) as doc:
+            raw_chars = doc.pages[0].chars
+        variants = {}
+        for tag, mutate in [('identity', lambda pdf, f: None), ('tounicode', add_tounicode),
+                            ('degree', rename_glyph('degree')), ('unknown', rename_glyph('H99999')),
+                            ('ambiguous', add_eight_at_57)]:
+            dst = S15 / f'{tag}.pdf'
+            variants[tag] = (mpi_variant(src15, dst, mutate), dst)
+    mpi_raw = [c['text'] for c in raw_chars if 'MathematicalPi' in c['fontname']]
+    check('15a PLANT — pdfplumber reads the MathematicalPi glyph as "8", three times',
+          mpi_raw == ['8', '8', '8'], f'{mpi_raw!r}')
+
+    runs, meta, _ = RL.read(str(variants['identity'][1]))
+    key = mpi_key(meta)
+    text = ''.join(r['text'] for r in runs)
+    check('15b the font entry records no ToUnicode and the unmapped glyph',
+          key is not None and meta['fonts'][key]['tounicode'] is False
+          and meta['fonts'][key]['unmapped_glyphs'] == [[56, 'H11034']],
+          f"{key}: {meta['fonts'].get(key)}")
+    check('15c the three labels read °C, and no "8C" is left',
+          text.count(' °C') == 3 and '8C' not in text, text[-120:])
+    check('15d the repair is counted, per font and glyph',
+          meta['glyph_repairs'] == {key: {'H11034': 3}}
+          and meta['glyph_unrepaired'] == {} and meta['glyph_ambiguous'] == {},
+          f"{meta['glyph_repairs']} {meta['glyph_unrepaired']} {meta['glyph_ambiguous']}")
+    other_run_chars = sum(len(r['text']) for r in runs if r['font'] != key)
+    other_raw_chars = sum(len(c['text']) for c in raw_chars if 'MathematicalPi' not in c['fontname'])
+    check('15e CONTROL — every other font\'s text is untouched (same character count)',
+          other_run_chars == other_raw_chars, f'{other_run_chars} vs {other_raw_chars}')
+
+    runs_t, meta_t, _ = RL.read(str(variants['tounicode'][1]))
+    kt = mpi_key(meta_t)
+    check('15f CONTROL — with a ToUnicode map pdfminer decodes ° itself and nothing is repaired',
+          variants['tounicode'][0] == 1 and meta_t['glyph_repairs'] == {}
+          and meta_t['fonts'][kt]['tounicode'] is True and meta_t['fonts'][kt]['unmapped_glyphs'] == []
+          and ''.join(r['text'] for r in runs_t).count(' °C') == 3,
+          f"repairs={meta_t['glyph_repairs']} entry={meta_t['fonts'].get(kt)}")
+
+    runs_d, meta_d, _ = RL.read(str(variants['degree'][1]))
+    kd = mpi_key(meta_d)
+    check('15g CONTROL — a standard glyph name (degree) maps by itself and nothing is repaired',
+          meta_d['glyph_repairs'] == {} and meta_d['fonts'][kd]['unmapped_glyphs'] == []
+          and ''.join(r['text'] for r in runs_d).count(' °C') == 3,
+          f"repairs={meta_d['glyph_repairs']} entry={meta_d['fonts'].get(kd)}")
+
+    runs_u, meta_u, _ = RL.read(str(variants['unknown'][1]))
+    ku = mpi_key(meta_u)
+    blocks_u = FT.merge_blocks(FT.group(runs_u))
+    boiling = [b for b in blocks_u if 'boiling point' in block_english(b)]
+    check('15h an unknown glyph name becomes (cid:56), is counted, and marks the font undecodable',
+          ''.join(r['text'] for r in runs_u).count('(cid:56)') == 3
+          and meta_u['glyph_unrepaired'] == {ku: {'H99999': 3}}
+          and meta_u['fonts'][ku]['decodable'] is False,
+          f"unrepaired={meta_u['glyph_unrepaired']} decodable={meta_u['fonts'].get(ku, {}).get('decodable')}")
+    check('15i ... so its blocks are held back from the MT, and the placeholder is never drawn',
+          len(boiling) == 3
+          and not any(FT.sendable(b, block_english(b), meta_u['fonts']) for b in boiling)
+          and all('(cid:' not in FT.run_draw_text(r)[0] for b in boiling for r in b),
+          f'{len(boiling)} blocks')
+
+    runs_a, meta_a, _ = RL.read(str(variants['ambiguous'][1]))
+    ka = mpi_key(meta_a)
+    check('15j a code whose misread character another code also produces fails CLOSED',
+          meta_a['glyph_repairs'] == {} and meta_a['glyph_ambiguous'] == {ka: {'H11034': 3}}
+          and ''.join(r['text'] for r in runs_a).count('(cid:56)') == 3,
+          f"repairs={meta_a['glyph_repairs']} ambiguous={meta_a['glyph_ambiguous']}")
+finally:
+    shutil.rmtree(S15, ignore_errors=True)
+
 print(f"\n  {'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(0 if not fails else 1)
