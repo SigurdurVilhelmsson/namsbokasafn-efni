@@ -1,0 +1,30 @@
+[
+ {
+  "key": "Moles of Al",
+  "english": "Moles of Al",
+  "lines": [
+   "Moles of Al"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of I2",
+  "english": "Moles of I2",
+  "lines": [
+   "Moles of I2"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Stoichiometric |factor",
+  "english": "Stoichiometric  factor",
+  "lines": [
+   "Stoichiometric ",
+   "factor"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

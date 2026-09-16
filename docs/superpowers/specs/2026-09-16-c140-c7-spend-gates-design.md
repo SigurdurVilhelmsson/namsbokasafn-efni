@@ -258,20 +258,53 @@ Three refinements the build (Tasks 1–8) made to this design; none change its r
   `H11034 → °` without a second copy of `GLYPH_REPAIRS`); `glyphUnrepaired` and `glyphAmbiguous` are each
   `[{glyph, count}]`. Chosen because a list is stable to iterate and print in the driver without an object-key
   sort, and because `glyphRepairs` needs a third field (`to`) that a bare count map has nowhere to put.
-- **(b) Unrepaired and ambiguous glyphs get their own named summary section, and still appear on the existing
-  "could not read" line.** § 2.4 says the summary prints repairs; it does not say what happens to case (b)/(c)
+- **(b) Unrepaired and ambiguous glyphs get their own named summary section; the FIGURE still appears on the
+  existing "could not read" line.** § 2.4 says the summary prints repairs; it does not say what happens to case (b)/(c)
   glyphs. Task 6 (`tools/figure-run.js`) adds `glyphs NOT repaired — held back and not drawn; add a figglyphs
   entry only with a raster (N):`, listing each figure's unrepaired and ambiguous glyphs by name — separately from,
   not instead of, the pre-existing `blocks the read layer could not read (N) — never bought, so these labels
   ship in English:` line, which an unrepaired glyph still triggers (§ 2.3(b)'s "reuses the existing undecoded path
-  unchanged" already implied this; the build makes it visible under its own heading too, so a repair-table gap is
-  legible without cross-referencing the undecoded-holds section).
+  unchanged" already implied this). ⚠️ **Only the figure is named on that "could not read" line** — its outcome,
+  undecodable and missing-font block counts, and basename — **not the glyph names**, which appear only in the new
+  section; so § 2.4's "added by name to the existing 'could not read' line" is met by the new section, not by
+  that line (corrected in the fix wave: this item said the glyphs themselves still appear there).
 - **(c) The would-buy and live-spend lines are separate from the "bought this run" list, not additions to it.**
   § 4 says the dry-run and live numbers are both printed, the live one "added to the existing 'MT spawned' line
   and 'bought this run' list." Task 7 instead prints `would buy N figure(s): C billable characters, est X ISK at
   list rate` on a dry run and `buyable this run N figure(s): …` on a live run (both from the same `buyable`
   computation, `tools/figure-run.js`), and on a live run separately extends the `MT spawned for N figure(s), C
   billable characters` line with the billable-character count — **without** touching the `bought this run` name
-  list. Reason: `spent`/`bought this run` counts only figures a purchase actually reached (set at the paid spawn);
-  a figure can be billable without being bought if the purchase for it fails, so folding the two counts into one
-  list would misreport a failed purchase as a completed one.
+  list. Reason: `spent`/`bought this run` counts only figures the paid stage was started for, and a figure can be
+  billable without being spent. ⚠️ **Not because a purchase failed:** `rec.spent` is set *before* the spawn, so a
+  figure whose purchase fails is still counted spent. Billable-but-not-spent on a live run means a **pre-spawn
+  refusal** in `processFigureLive` — no mapping pre-flight (`failed-publish`), or an unreadable `blocks.json`
+  (`failed-mt`) — so folding the two lists together would report a figure nothing was sent for as bought
+  (corrected in the fix wave: this item gave a failed purchase as the reason). **Fix wave:** both headlines and
+  the live `MT spawned …` characters count and add only figures whose billable size is known, and append
+  `(+K figure(s) whose billable size is UNKNOWN)` when K > 0 — an unknown size is never summed as zero.
+
+Added in the fix wave after the final whole-branch review; like (a)–(c), they change no ruling.
+
+- **(d) Every live translated copy that is a whole paper-size sheet is named, whatever the figure's outcome.**
+  § 3.5's still-mapped line is keyed on a *refusal*, and § 6.3 expected it for N2O5 too — but N2O5 is no
+  longer refused (§ 3.3 resolves it to its EPS), so § 6.3 and ruling S1 ("the two live June sheets are
+  **named** in the run report") could not both be met on N2O5; the Task 8 run named rvosmosis's copy and not
+  N2O5's. The build therefore reads, for **every** figure record (translated, copied, refused, a hole,
+  skipped-current), its live translated copy — the image-mapping row's `outputName`, else
+  `media/<basename>_IS.svg`, the lookup § 3.5 already used — takes the root `<svg>` viewBox (quote-aware), and
+  names each copy whose width × height is a paper size, in a summary section of its own worded for a figure
+  that was not refused: `live translated copies that are a whole paper-size sheet, not a figure (N) — this run
+  does not retire them; a publication step does:`. A copy whose viewBox cannot be read gets its own line. The
+  § 3.5 still-mapped line is unchanged. The paper-size table (§ 3.2) moved out of `sources.py` into
+  `experiments/figure-text-translation/figure-text.config.json` (`paperSizes`, `paperTolerancePt`) as its
+  single owner; `sources.py` and `tools/figure-run.js` both read it. Measured over every `*_IS.svg` under
+  `books/*/media/`: **2 of 692** are paper-size sheets — rvosmosis and N2O5, both Letter — and 0 have an
+  unreadable viewBox
+  ([`sheet-census.txt`](../../../experiments/figure-text-translation/evidence/2026-09-16-c7-build/reports/after-fix/sheet-census.txt)).
+- **(e) § 5's live-mode refusal test was built as a dry-run test.** § 5 asks for a refused figure with
+  `countOf('translate') === 0`, paired with a control figure bought in the same run. The shipped test
+  (`tools/__tests__/figure-run-free.test.js`, "files a production page unresolved, names it apart from holes,
+  and buys nothing") runs `--dry-run` and asserts the **prepare** count instead (every figure but the refused
+  one is prepared). That covers the same path: in `runFigures` a record with no artwork — a refusal among
+  them — `continue`s before prepare, and so before `processFigureLive`, the only place the paid spawn happens;
+  it can never reach it. No live-mode refusal test exists.

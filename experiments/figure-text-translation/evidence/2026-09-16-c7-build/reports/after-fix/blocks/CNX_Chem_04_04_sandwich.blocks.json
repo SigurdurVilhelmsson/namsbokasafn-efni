@@ -1,0 +1,65 @@
+[
+ {
+  "key": "Provided with:",
+  "english": "Provided with:",
+  "lines": [
+   "Provided with:"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "+ 11 slices of cheese",
+  "english": "+ 11 slices of cheese",
+  "lines": [
+   "+ 11 slices of cheese"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "We can make:",
+  "english": "We can make:",
+  "lines": [
+   "We can make:"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "28 slices of bread",
+  "english": "28 slices of bread",
+  "lines": [
+   "28 slices of bread"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "11 sandwiches",
+  "english": "11 sandwiches",
+  "lines": [
+   "11 sandwiches"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "+ 6 slices bread left over",
+  "english": "+ 6 slices bread left over",
+  "lines": [
+   "+ 6 slices bread left over"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "1 sandwich = 2 slices of bread + 1 slice of cheese",
+  "english": "1 sandwich = 2 slices of bread + 1 slice of cheese",
+  "lines": [
+   "1 sandwich = 2 slices of bread + 1 slice of cheese"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

@@ -1,0 +1,89 @@
+[
+ {
+  "key": "Molar mass",
+  "english": "Molar mass",
+  "lines": [
+   "Molar mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Stoichiometric|factor",
+  "english": "Stoichiometric factor",
+  "lines": [
+   "Stoichiometric",
+   "factor"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Sample mass",
+  "english": "Sample mass",
+  "lines": [
+   "Sample mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of |BaSO4",
+  "english": "Mass of  BaSO4",
+  "lines": [
+   "Mass of ",
+   "BaSO4"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of |BaSO4",
+  "english": "Moles of  BaSO4",
+  "lines": [
+   "Moles of ",
+   "BaSO4"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of |CaSO4",
+  "english": "Moles of  CaSO4",
+  "lines": [
+   "Moles of ",
+   "CaSO4"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of |CaSO4",
+  "english": "Mass of  CaSO4",
+  "lines": [
+   "Mass of ",
+   "CaSO4"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Percent |CaSO4",
+  "english": "Percent  CaSO4",
+  "lines": [
+   "Percent ",
+   "CaSO4"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molar mass",
+  "english": "Molar mass",
+  "lines": [
+   "Molar mass"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

@@ -1,0 +1,32 @@
+[
+ {
+  "key": "Moles of|C2H5O2N (mol)",
+  "english": "Moles of C2H5O2N (mol)",
+  "lines": [
+   "Moles of",
+   "C2H5O2N (mol)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Divide by molar|mass (g/mol)",
+  "english": "Divide by molar mass (g/mol)",
+  "lines": [
+   "Divide by molar",
+   "mass (g/mol)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of|C2H5O2N (g)",
+  "english": "Mass of C2H5O2N (g)",
+  "lines": [
+   "Mass of",
+   "C2H5O2N (g)"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

@@ -1,0 +1,8 @@
+# cwd: experiments/figure-text-translation/evidence/2026-09-16-c7-build
+$ cmp reports/after/summary.tsv reports/after-fix/summary.tsv; echo "exit=$?"
+exit=0
+
+$ n=0; bad=0; for f in reports/after/blocks/*.json; do n=$((n+1)); cmp "$f" "reports/after-fix/blocks/$(basename "$f")" || bad=$((bad+1)); done; echo "compared=$n differing=$bad"
+compared=37 differing=0
+$ diff <(ls reports/after/blocks) <(ls reports/after-fix/blocks) && echo "same name set: $(ls reports/after-fix/blocks | wc -l) files"
+same name set: 37 files

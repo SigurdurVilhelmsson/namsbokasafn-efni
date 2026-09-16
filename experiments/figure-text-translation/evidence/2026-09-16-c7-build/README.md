@@ -3,11 +3,11 @@
 > 🧊 **FROZEN, 2026-09-16.** Cited, never synced. Open work and status live in the campaign register
 > (`docs/plans/2026-07-21-post-item17-followup-campaign.md`, §C140 ⑦ and its ⏩ RESUME) and in
 > `../../REGISTER.md` (the "driver spend gate" component row). **This folder carries no status verbs.**
-> **0 ISK** — `test_figrings.py` printed `ALL PASS` before the one `figure-run.js` invocation batch,
-> every `figure-run.js` call ran `--dry-run`, and `git status --porcelain -- books/` was empty both
-> before Task 1's baseline and after this run.
+> **0 ISK** — `test_figrings.py` printed `ALL PASS` before each `figure-run.js` invocation batch (Task 8's
+> and the fix wave's), every `figure-run.js` call ran `--dry-run`, and `git status --porcelain -- books/`
+> was empty both before Task 1's baseline and after each run.
 
-Built on `feat/c140-c7-spend-gates`, Tasks 1–8. Design:
+Built on `feat/c140-c7-spend-gates`, Tasks 1–8, then a fix wave after the final whole-branch review. Design:
 [`docs/superpowers/specs/2026-09-16-c140-c7-spend-gates-design.md`](../../../../docs/superpowers/specs/2026-09-16-c140-c7-spend-gates-design.md)
 (this folder is its § 6) · plan: [`docs/superpowers/plans/2026-09-16-c140-c7-spend-gates.md`](../../../../docs/superpowers/plans/2026-09-16-c140-c7-spend-gates.md) ·
 evidence this design rests on (a separate, earlier frozen folder — measurements only, no code):
@@ -19,10 +19,10 @@ status.
 
 ## What the folder holds
 
-- [`PREDICTIONS.md`](PREDICTIONS.md) — written before any Task-8 measurement, amended (never overwritten)
-  if a run disagreed with a prediction. It did not need to be.
-- [`VERIFICATION.md`](VERIFICATION.md) — the P1–P10 table: predicted, measured, and the exact file the
-  number came from.
+- [`PREDICTIONS.md`](PREDICTIONS.md) — P1–P10 written before any Task-8 measurement; amended (never
+  overwritten) once, with P11–P15, before any fix-wave code or run.
+- [`VERIFICATION.md`](VERIFICATION.md) — the P1–P10 table and the fix wave's P11–P15 table: predicted,
+  measured, and the exact file the number came from.
 - [`reports/task-8-brief.md`](reports/task-8-brief.md) — this task's brief, copied byte-exact because
   `.superpowers/` (where it was authored) is gitignored and would not travel to a clone. Holds the
   exact Step-1 through Step-3 commands, including the P1–P9 check script and the P10 by-name diff
@@ -34,12 +34,22 @@ status.
   falls back to `resolve`), because the same instrument runs on both sides of the diff.
 - `reports/before/` — the baseline, taken on `main` before any ⑦ code existed: `summary.tsv`,
   `blocks/*.blocks.json`, five dry-run chapter transcripts (ch05, ch09, ch10, ch11, ch18),
-  `python-tests.txt` (5 suites, `test_make_fixture.py` did not exist yet), `npm-failing-by-name.txt` (36
-  names) and `run.log`.
+  `python-tests.txt` (5 suites — Task 1 did not run `test_make_fixture.py`, which was added in `d372419a`
+  (M5 Task 2a), exists at the branch start `ceadeca6` and is untouched on this branch; corrected in the fix
+  wave), `npm-failing-by-name.txt` (36 names) and `run.log`.
 - `reports/after/` — the same instrument and the same five chapters, run on `feat/c140-c7-spend-gates`
   after Tasks 2–7 landed: `summary.tsv`, `blocks/*.blocks.json`, `dry-ch{5,9,10,11,18}.txt`, `dry-exit.txt`,
-  `python-tests.txt` (6 suites — `test_make_fixture.py` is new on this branch), `npm-failing-by-name.txt`
-  and `run.log`.
+  `python-tests.txt` (6 suites — the 6th, `test_make_fixture.py`, is not new on this branch; see above;
+  corrected in the fix wave), `npm-failing-by-name.txt` and `run.log`.
+- `reports/after-fix/` — the fix wave: the same instrument (`--label after-fix`) and the same five chapters
+  after the final-review fixes: `summary.tsv`, `blocks/*.blocks.json`, `summary-identity.txt` (the
+  byte-identity check against `reports/after/`), `dry-ch{5,9,10,11,18}.txt`, `dry-exit.txt`,
+  `dry-diff-vs-after.txt`, `python-tests.txt`, `npm-failing-by-name.txt`, `npm-compare.txt` (the by-name
+  comparison with the died-files and planted-control results written down), `sidecars.txt`,
+  `sheet-census.txt`, `books-status.txt` and `run.log`.
+- `instruments/npm_compare.cjs` — the Task 8 by-name comparison, writing every result to
+  `npm-compare.txt`; `instruments/sheet_census.mjs` — every `*_IS.svg` under `books/*/media/` through the
+  shipped paper-size classifier in `tools/figure-run.js`.
 
 ## Commands — Task 1 (baseline) and Task 8 (this run)
 
@@ -68,13 +78,10 @@ here because `.superpowers/` is gitignored and would not travel to a clone:
 [`reports/task-8-brief.md`](reports/task-8-brief.md) — and in `VERIFICATION.md`'s "Reproducing"
 section; not duplicated a third time here.
 
+The fix wave's commands (`--label after-fix`, the written by-name comparison, the sheet census and the
+sidecar listing) are in `VERIFICATION.md` § Fix wave.
+
 ## Limits
 
-Copied from the design's § 8 — its owner; not restated elsewhere in this repo:
-
-- The page signal sees only standard paper sizes; a production page saved at a non-standard size is
-  invisible to it. Measured instances: 0.
-- The repair table knows 3 glyph names; any other fails closed and ships that glyph unbought and undrawn.
-- Native TrueType fonts cannot be checked by glyph name (1,088 of 1,092 use `post` format 3); their safety
-  rests on the `(3,1)` cmap argument in the evidence, not a per-glyph measurement.
-- Python tests are not in CI.
+One Limits block for this folder: [`VERIFICATION.md` § Limits](VERIFICATION.md#limits) (moved there in the
+fix wave; it was restated here, with each copy saying it appeared nowhere else).

@@ -1,0 +1,6 @@
+test_readlayer.py:   ALL PASS
+test_figure_prepare.py: ALL PASS
+test_sources.py: ALL PASS
+test_sendable.py: ALL PASS
+test_figure_compose.py: ALL PASS
+test_make_fixture.py: ALL PASS
