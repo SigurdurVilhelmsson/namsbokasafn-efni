@@ -22,7 +22,7 @@ predictions, written before this task's code existed: [`PREDICTIONS.md`](PREDICT
 | P4 | rvosmosis after: refused `production-page` (Letter 612×792); not prepared | ✅ after-row `status=refused:production-page`, no artwork/blocks recorded; dry ch11 prints `⚠️ REFUSED — production page: CNX_Chem_11_04_rvosmosis  …/CNX_Chem_11_04_rvosmosis.pdf  612×792 pt (Letter)` | `reports/after/summary.tsv`, `reports/after/dry-ch11.txt` |
 | P5 | N2O5 after: resolves to `CNX_Chem_18_07_N2O5.eps`; prepares to 7 verbatim blocks, 0 sendable | ✅ after-row `artwork=…/CNX_Chem_18_07_N2O5.eps`, `status=ok`, `blocks=7`, `sendable=0` | `reports/after/summary.tsv` |
 | P6 | dry ch11 after: rvosmosis under `REFUSED — production page` and a still-mapped line naming `CNX_Chem_11_04_rvosmosis_IS.svg`; not in the "hole" list | ✅ both lines present (`⚠️ readers still see an earlier translated copy of CNX_Chem_11_04_rvosmosis: media/CNX_Chem_11_04_rvosmosis_IS.svg (mapping row present) — refusing does not retire it`); the "hole" list names 5 figures (`HeArsol`, `electrolyt`, `bromine`, `deice`, `Cottrellp`) and rvosmosis is **not** among them — `6 unresolved` = 5 holes + 1 refusal | `reports/after/dry-ch11.txt` |
-| P7 | dry ch18 after: N2O5 `copied-photo`; no refusal | ✅ `copied-photo chars=7 formText=0 images=2 paint=0 held=7v/0u/0f  CNX_Chem_18_07_N2O5`; no `REFUSED` line anywhere in the file | `reports/after/dry-ch18.txt` |
+| P7 | dry ch18 after: N2O5 `copied-photo`; no refusal | ✅ `copied-photo chars=7 formText=0 images=2 paint=0 held=7v/0u/0f  CNX_Chem_18_07_N2O5`; no `REFUSED` line anywhere in the file. ⚠️ **Design-scope note, not a P7 failure:** the design's own § 6.3 additionally expected a "still-mapped line" here. § 3.5 gates that line on a figure being *refused*, and N2O5 is not — it resolves cleanly to its EPS — so no still-mapped line fires for it, by the design's own rule, not by a bug. `CNX_Chem_18_07_N2O5_IS.svg` (the live June sheet) is therefore **not** named anywhere in this run's output, unlike rvosmosis's | `reports/after/dry-ch18.txt` |
 | P8 | dry ch10 after: `glyphs repaired by the read layer` names PentIso 3× H11034 → °; the would-buy list includes PentIso | ✅ `glyphs repaired by the read layer — misread without a ToUnicode map (1): CNX_Chem_10_01_PentIso  3× H11034 → °`; would-buy list carries `CNX_Chem_10_01_PentIso  6 block(s), 202 chars` | `reports/after/dry-ch10.txt` |
 | P9 | dry ch05 (control) after: no refusal, no glyph section; would-buy figures = its `translated` figures with no sidecar | ✅ no `REFUSED`, `glyphs repaired` or `glyphs NOT repaired` line anywhere in the file; summary reports `16 translated`, the would-buy list names exactly 16 figures, and none of the 16 (nor any other ch05 figure) has a `.is.json` sidecar under `books/efnafraedi-2e/figure-text/` (only ch03/ch04/ch14 figures do) | `reports/after/dry-ch5.txt` |
 | P10 | Full `npm test`: the failing names equal the 36 before-names, both directions | ✅ `now 36 before 36`; `only-now []`, `only-before []`; `files that died without a failing test: []`; planted control `tools/__tests__/zz.test.js :: planted` correctly surfaces as only-now, proving the diff itself is not vacuous. Python: `test_readlayer.py`, `test_figure_prepare.py`, `test_sources.py`, `test_sendable.py`, `test_figure_compose.py`, `test_make_fixture.py` all `ALL PASS` | `reports/after/npm-failing-by-name.txt`, `reports/before/npm-failing-by-name.txt`, `reports/after/python-tests.txt` |
@@ -54,8 +54,9 @@ for ch in 5 9 10 11 18; do node tools/figure-run.js --book efnafraedi-2e --chapt
 git status --porcelain -- books/                                   # expect: empty
 ```
 
-The Step-3 test-suite commands and the P1–P9 check script are in the task brief
-(`.superpowers/sdd/2026-09-16-c140-c7-spend-gates/task-8-brief.md`) and are not restated here.
+The Step-3 test-suite commands and the P1–P9 check script are in the task brief, committed
+byte-exact here because `.superpowers/` is gitignored and would not travel to a clone:
+[`reports/task-8-brief.md`](reports/task-8-brief.md). Not restated a second time in this file.
 
 ## Limits
 

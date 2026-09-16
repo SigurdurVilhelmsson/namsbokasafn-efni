@@ -23,6 +23,10 @@ status.
   if a run disagreed with a prediction. It did not need to be.
 - [`VERIFICATION.md`](VERIFICATION.md) — the P1–P10 table: predicted, measured, and the exact file the
   number came from.
+- [`reports/task-8-brief.md`](reports/task-8-brief.md) — this task's brief, copied byte-exact because
+  `.superpowers/` (where it was authored) is gitignored and would not travel to a clone. Holds the
+  exact Step-1 through Step-3 commands, including the P1–P9 check script and the P10 by-name diff
+  script with its planted-name control, cited from `VERIFICATION.md` rather than duplicated.
 - `instruments/prepare_corpus.py` — the one script both the before- and after-runs share: it re-prepares
   the 34 bought figures plus the 4 hazard figures (PentIso, Amontons2, rvosmosis, N2O5) through
   `figure-prepare.py`, hashing each `blocks.json` and copying it into `reports/<label>/blocks/`. It works
@@ -59,9 +63,10 @@ npx vitest run --reporter=json --outputFile=/tmp/vitest.json
 ```
 
 The full P1–P9 check script (parses `summary.tsv`, greps the dry-run transcripts) and the P10 by-name
-diff script (with its planted-name positive control) are in the task brief
-(`.superpowers/sdd/2026-09-16-c140-c7-spend-gates/task-8-brief.md`) and in `VERIFICATION.md`'s
-"Reproducing" section; not duplicated a third time here.
+diff script (with its planted-name positive control) are in the task brief — committed byte-exact
+here because `.superpowers/` is gitignored and would not travel to a clone:
+[`reports/task-8-brief.md`](reports/task-8-brief.md) — and in `VERIFICATION.md`'s "Reproducing"
+section; not duplicated a third time here.
 
 ## Limits
 

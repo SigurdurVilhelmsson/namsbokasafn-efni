@@ -20,10 +20,13 @@ and an ISK estimate. Design:
 — predictions P1–P10 all met.
 
 ⚠️ **Buying stays stopped.** The two live June whole-sheet SVGs readers already see
-(`CNX_Chem_11_04_rvosmosis_IS.svg`, `CNX_Chem_18_07_N2O5_IS.svg`) are **named by the run report — neither is
-retired.** rvosmosis is refused as a production page and its still-mapped June copy is called out explicitly;
-N2O5 now resolves past the InDesign placement page to its real EPS. Retiring either June sheet is a
-publication step [USER] times (S1/S2), not built here.
+(`CNX_Chem_11_04_rvosmosis_IS.svg`, `CNX_Chem_18_07_N2O5_IS.svg`) stay live — **neither is retired by
+this work.** rvosmosis is refused as a production page and its still-mapped June copy is called out
+by name in the run report (§3.5's rule fires only for a refusal); N2O5 now resolves past the InDesign
+placement page to its real EPS and is no longer refused, so the run report names the figure but does
+**not** call out its still-live June SVG the same way — that asymmetry is design, not a gap (§6.3 vs
+§3.5, `evidence/2026-09-16-c7-build/VERIFICATION.md` P7). Retiring either June sheet is a publication
+step [USER] times (S1/S2), not built here.
 
 ---
 
