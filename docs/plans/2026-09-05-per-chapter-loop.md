@@ -68,6 +68,8 @@ to production during this campaign; the MT-preview in use in schools is a pre-ca
 **So M2's deliverable is the COMPARISON, not the sync** — corruption count at 0 with a live control,
 terminology consistency measured against the prior version, mechanics unregressed, and a sampled
 read by [USER] of the segments that moved most.
+▶ **Since 2026-09-16 the sync itself is [USER]'s call on prod, timed with the books' users** (Step 5);
+this improvement condition is unchanged by that — it is still a condition on publishing a chapter.
 
 ⚠️ **M1 AND M3 ARE THE REAL WORK; M2 AND M4 ARE THEIR PROOF.** Do not treat M2 as "publish chemistry" —
 it is "demonstrate the glossary fix reached readers". A milestone whose gate cannot fail is not a gate.
@@ -93,7 +95,7 @@ For one chapter, in this order. **The chapter is not finished until step 5.**
 | 2 | **Re-MT** the chapter's text | paid |
 | 3 | **MT that chapter's figures** — the vector ones only | paid, small |
 | 4 | **Inject → render**, and run the free source-anchored checks | 0 ISK |
-| 5 | **Publish** — sync, redirects, deploy | 0 ISK |
+| 5 | **Prepare for publication** — `generate-index`, redirect rows to vefur. **The sync is [USER]'s, not the loop's** (amended 2026-09-16, see Step 5) | 0 ISK |
 | 6 | **Fix what the chapter surfaced — or LOG it**, then go to the next chapter | — |
 
 ⚠️ **Step 6 is not optional and it is why the loop is a loop.** Every chapter bought so far has
@@ -390,10 +392,19 @@ change"*, never *"is this right"*.
 
 ---
 
-## Step 5 — publish
+## Step 5 — prepare for publication (the sync is [USER]'s)
 
-Order: render → `generate-index` → **hand the redirect rows to vefur** → **named-book** sync →
-build → deploy.
+> **AMENDED 2026-09-16 — [USER] ruling:** the loop ends when the chapter is **prepared**. Whether and when
+> it reaches readers is [USER]'s manual sync on prod, timed with the books' users — one chapter, a batch,
+> or a selection that holds back chapters in use this semester. **No session runs the sync.**
+> Record: [`docs/decisions/2026-09-16-chapters-prepared-sync-timed-by-classroom-use.md`](../decisions/2026-09-16-chapters-prepared-sync-timed-by-classroom-use.md).
+> 🔴 **The sync selects BOOKS, never chapters** — every chapter in a book's `05-publication/` ships on the
+> next sync of that book, so holding one chapter back while releasing another is not yet possible →
+> campaign register §C142.
+
+The loop's part: render → `generate-index` → **hand the redirect rows to vefur**. Then stop.
+[USER]'s part, when they choose to publish: **named-book** sync → build → deploy. The cautions below are
+for that act.
 
 🔴 **NAME THE BOOK.** A bare `sync-content.js` publishes EVERY book, including the ones held back.
 🔴 **Hand vefur the `from`/`to`/`moduleId` rows BEFORE the sync**, not after — its redirect entries
