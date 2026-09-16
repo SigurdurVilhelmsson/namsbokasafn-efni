@@ -1,0 +1,38 @@
+[
+ {
+  "key": "Before reaction",
+  "english": "Before reaction",
+  "lines": [
+   "Before reaction"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "After reaction",
+  "english": "After reaction",
+  "lines": [
+   "After reaction"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "6 H2 and 4 Cl2",
+  "english": "6 H2 and 4 Cl2",
+  "lines": [
+   "6 H2 and 4 Cl2"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "8 HCl and 2 H2",
+  "english": "8 HCl and 2 H2",
+  "lines": [
+   "8 HCl and 2 H2"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

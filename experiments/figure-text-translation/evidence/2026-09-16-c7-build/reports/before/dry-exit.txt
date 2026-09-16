@@ -1,0 +1,5 @@
+ch5 exit=0
+ch9 exit=0
+ch10 exit=0
+ch11 exit=0
+ch18 exit=0

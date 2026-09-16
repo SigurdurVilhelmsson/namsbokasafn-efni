@@ -1,0 +1,198 @@
+[
+ {
+  "key": "Density",
+  "english": "Density",
+  "lines": [
+   "Density"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molar mass",
+  "english": "Molar mass",
+  "lines": [
+   "Molar mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molar mass",
+  "english": "Molar mass",
+  "lines": [
+   "Molar mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Avogadro’s|number",
+  "english": "Avogadro’s number",
+  "lines": [
+   "Avogadro’s",
+   "number"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Avogadro’s|number",
+  "english": "Avogadro’s number",
+  "lines": [
+   "Avogadro’s",
+   "number"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Stoichiometric|factor",
+  "english": "Stoichiometric factor",
+  "lines": [
+   "Stoichiometric",
+   "factor"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Volume|of pure|substance|B",
+  "english": "Volume of pure substance B",
+  "lines": [
+   "Volume",
+   "of pure",
+   "substance",
+   "B"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass|of B",
+  "english": "Mass of B",
+  "lines": [
+   "Mass",
+   "of B"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass|of A",
+  "english": "Mass of A",
+  "lines": [
+   "Mass",
+   "of A"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Volume|of pure|substance|A",
+  "english": "Volume of pure substance A",
+  "lines": [
+   "Volume",
+   "of pure",
+   "substance",
+   "A"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Number|of|particles|of A",
+  "english": "Number of particles of A",
+  "lines": [
+   "Number",
+   "of",
+   "particles",
+   "of A"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Number|of|particles|of B",
+  "english": "Number of particles of B",
+  "lines": [
+   "Number",
+   "of",
+   "particles",
+   "of B"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Density",
+  "english": "Density",
+  "lines": [
+   "Density"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molarity",
+  "english": "Molarity",
+  "lines": [
+   "Molarity"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molarity",
+  "english": "Molarity",
+  "lines": [
+   "Molarity"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Volume|of |solution|B",
+  "english": "Volume of  solution B",
+  "lines": [
+   "Volume",
+   "of ",
+   "solution",
+   "B"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles|of B",
+  "english": "Moles of B",
+  "lines": [
+   "Moles",
+   "of B"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles|of A",
+  "english": "Moles of A",
+  "lines": [
+   "Moles",
+   "of A"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Volume|of |solution|A",
+  "english": "Volume of  solution A",
+  "lines": [
+   "Volume",
+   "of ",
+   "solution",
+   "A"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

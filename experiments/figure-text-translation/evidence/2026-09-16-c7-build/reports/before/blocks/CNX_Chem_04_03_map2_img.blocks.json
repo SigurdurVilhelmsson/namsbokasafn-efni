@@ -1,0 +1,68 @@
+[
+ {
+  "key": "Mass of |Mg(OH)2",
+  "english": "Mass of  Mg(OH)2",
+  "lines": [
+   "Mass of ",
+   "Mg(OH)2"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of |Mg(OH)2",
+  "english": "Moles of  Mg(OH)2",
+  "lines": [
+   "Moles of ",
+   "Mg(OH)2"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of NaOH",
+  "english": "Moles of NaOH",
+  "lines": [
+   "Moles of NaOH"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molar mass",
+  "english": "Molar mass",
+  "lines": [
+   "Molar mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of NaOH",
+  "english": "Mass of NaOH",
+  "lines": [
+   "Mass of NaOH"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molar mass",
+  "english": "Molar mass",
+  "lines": [
+   "Molar mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Stoichiometric|factor",
+  "english": "Stoichiometric factor",
+  "lines": [
+   "Stoichiometric",
+   "factor"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

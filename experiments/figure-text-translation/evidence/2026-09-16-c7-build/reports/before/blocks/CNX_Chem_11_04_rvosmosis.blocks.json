@@ -1,0 +1,136 @@
+[
+ {
+  "key": "CNX Chemistry Art Dialogue Sheet",
+  "english": "CNX Chemistry Art Dialogue Sheet",
+  "lines": [
+   "CNX Chemistry Art Dialogue Sheet"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "ID #",
+  "english": "ID #",
+  "lines": [
+   "ID #"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "Page 1 of 1",
+  "english": "Page 1 of 1",
+  "lines": [
+   "Page 1 of 1"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "This file can be|opened and edited|in Adobe Illustrator,|pick up all labels|from this file",
+  "english": "This file can be opened and edited in Adobe Illustrator, pick up all labels from this file",
+  "lines": [
+   "This file can be",
+   "opened and edited",
+   "in Adobe Illustrator,",
+   "pick up all labels",
+   "from this file"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Words & Numbers",
+  "english": "Words & Numbers",
+  "lines": [
+   "Words & Numbers"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Art Pass B|Revision 1",
+  "english": "Art Pass B Revision 1",
+  "lines": [
+   "Art Pass B",
+   "Revision 1"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Pick up from this file",
+  "english": "Pick up from this file",
+  "lines": [
+   "Pick up from this file"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "CNX_Chem_11_04_rvosmosis",
+  "english": "CNX_Chem_11_04_rvosmosis",
+  "lines": [
+   "CNX_Chem_11_04_rvosmosis"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "- Changes have been made here, pick up from this file",
+  "english": "- Changes have been made here, pick up from this file",
+  "lines": [
+   "- Changes have been made here, pick up from this file"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Pressure|greater|than",
+  "english": "Pressure greater than",
+  "lines": [
+   "Pressure",
+   "greater",
+   "than"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Π solution",
+  "english": "Π solution",
+  "lines": [
+   "Π solution"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Pure solvent",
+  "english": "Pure solvent",
+  "lines": [
+   "Pure solvent"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Semipermeable|membrane",
+  "english": "Semipermeable membrane",
+  "lines": [
+   "Semipermeable",
+   "membrane"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Solution",
+  "english": "Solution",
+  "lines": [
+   "Solution"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

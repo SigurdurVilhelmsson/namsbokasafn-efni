@@ -1,0 +1,72 @@
+DRY RUN — nothing bought, nothing written under books/
+efnafraedi-2e ch11: 46 figure(s) across 6 module(s)
+
+    21  translated
+    11  copied-photo
+     9  copied-textless
+     5  unresolved
+    46  = enumerated
+
+  unresolved — the artwork delivery has a hole here (5):
+    CNX_Chem_11_01_HeArsol
+    CNX_Chem_11_02_electrolyt
+    CNX_Chem_11_03_bromine
+    CNX_Chem_11_04_deice
+    CNX_Chem_11_05_Cottrellp
+  copied figures, with the counts the read layer produced (20):
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_11_00_coralreef
+    copied-textless  chars=0 formText=0 images=1 paint=4 held=0v/0u/0f  CNX_Chem_11_01_K2Cr2O7_1
+    copied-textless  chars=52 formText=0 images=7 paint=2 held=31v/0u/0f  CNX_Chem_11_02_waterions
+    copied-textless  chars=16 formText=14 images=0 paint=30 held=14v/0u/0f  CNX_Chem_11_02_H3O_CL_img
+    copied-textless  chars=9 formText=0 images=11 paint=27 held=3v/0u/0f  CNX_Chem_11_02_Fe(NO3)3_img
+    copied-photo     chars=6 formText=0 images=2 paint=0 held=2v/0u/0f  CNX_Chem_11_03_O2dissolv
+    copied-textless  chars=0 formText=0 images=4 paint=14 held=0v/0u/0f  CNX_Chem_11_03_beverage
+    copied-photo     chars=6 formText=0 images=3 paint=0 held=2v/0u/0f  CNX_Chem_11_03_recompress
+    copied-textless  chars=18 formText=18 images=0 paint=26 held=17v/0u/0f  CNX_Chem_11_02_ammonia1_img
+    copied-photo     chars=6 formText=0 images=2 paint=0 held=2v/0u/0f  CNX_Chem_11_03_LakeNyos
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_11_03_antifreeze
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_11_03_oilwater2
+    copied-textless  chars=0 formText=0 images=3 paint=4 held=0v/0u/0f  CNX_Chem_11_03_handwarmer
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_11_04_rocksalt
+    copied-photo     chars=6 formText=0 images=2 paint=0 held=2v/0u/0f  CNX_Chem_11_04_waterpur
+    copied-textless  chars=18 formText=0 images=124 paint=93 held=6v/0u/0f  CNX_Chem_11_04_bloodcell
+    copied-textless  chars=9 formText=0 images=3 paint=3176 held=3v/0u/0f  CNX_Chem_11_05_Colloid
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_11_05_srchlight
+    copied-photo     chars=6 formText=0 images=2 paint=0 held=2v/0u/0f  CNX_Chem_11_05_FredCottre
+    copied-photo     chars=0 formText=0 images=2 paint=0 held=0v/0u/0f  CNX_Chem_11_05_Gel
+  figure-prepare.py warnings — 168 across 32 figure(s), its own !! lines:
+    CNX_Chem_11_01_solusolv: subset font PAGE/TT0
+    CNX_Chem_11_01_Icepack: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_11_02_waterions: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_11_02_H3O_CL_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/T1_0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/T1_0; subset font PAGE/Fm9/TT0
+    CNX_Chem_11_02_Fe(NO3)3_img: subset font PAGE/TT0
+    CNX_Chem_11_03_gasdissolv: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_11_03_O2dissolv: subset font PAGE/TT0
+    CNX_Chem_11_03_recompress: subset font PAGE/F1
+    CNX_Chem_11_02_ammonia1_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm14/TT0; subset font PAGE/Fm15/TT0; subset font PAGE/Fm16/TT0; subset font PAGE/Fm17/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/T1_0; subset font PAGE/Fm4/T1_0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_11_03_LakeNyos: subset font PAGE/TT0
+    CNX_Chem_11_03_solubility: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_11_04_RaoultLaw: subset font PAGE/TT0
+    CNX_Chem_11_04_LabDistill: subset font PAGE/TT0
+    CNX_Chem_11_04_refinery: subset font PAGE/TT0
+    CNX_Chem_11_04_Ex02Steps_img: subset font PAGE/TT0
+    CNX_Chem_11_04_EX03Steps_img: subset font PAGE/R9
+    CNX_Chem_11_04_Ex04Steps_img: subset font PAGE/R9
+    CNX_Chem_11_04_phasediag: subset font PAGE/T1_0; subset font PAGE/TT0; subset font PAGE/TT1; subset font PAGE/TT2
+    CNX_Chem_11_04_osmosis: subset font PAGE/R613
+    CNX_Chem_11_04_rvosmosis: subset font PAGE/T1_0; subset font PAGE/T1_1; subset font PAGE/TT0; subset font PAGE/TT1; subset font PAGE/TT2; subset font PAGE/TT3
+    CNX_Chem_11_04_waterpur: subset font PAGE/TT0
+    CNX_Chem_11_04_bloodcell: subset font PAGE/TT0
+    CNX_Chem_11_04_Ex07Steps_img: subset font PAGE/R11; subset font PAGE/R13; subset font PAGE/R9
+    CNX_Chem_11_04_Ex08Steps_img: subset font PAGE/R9
+    CNX_Chem_11_04_ionpair: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_11_04_Ex09Steps_img: subset font PAGE/R9
+    CNX_Chem_11_05_Colloid: subset font PAGE/TT0
+    CNX_Chem_11_05_soap: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm14/TT0; subset font PAGE/Fm15/TT0; subset font PAGE/Fm16/TT0; subset font PAGE/Fm17/TT0; subset font PAGE/Fm18/TT0; subset font PAGE/Fm19/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm20/TT0; subset font PAGE/Fm21/TT0; subset font PAGE/Fm22/TT0; subset font PAGE/Fm23/TT0; subset font PAGE/Fm24/TT0; subset font PAGE/Fm25/TT0; subset font PAGE/Fm26/TT0; subset font PAGE/Fm27/TT0; subset font PAGE/Fm28/TT0; subset font PAGE/Fm29/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm30/TT0; subset font PAGE/Fm31/TT0; subset font PAGE/Fm32/TT0; subset font PAGE/Fm33/TT0; subset font PAGE/Fm34/TT0; subset font PAGE/Fm35/TT0; subset font PAGE/Fm36/TT0; subset font PAGE/Fm37/TT0; subset font PAGE/Fm38/TT0; subset font PAGE/Fm39/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm40/TT0; subset font PAGE/Fm41/TT0; subset font PAGE/Fm42/TT0; subset font PAGE/Fm43/TT0; subset font PAGE/Fm44/TT0; subset font PAGE/Fm45/TT0; subset font PAGE/Fm46/TT0; subset font PAGE/Fm47/TT0; subset font PAGE/Fm48/TT0; subset font PAGE/Fm49/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm50/TT0; subset font PAGE/Fm51/TT0; subset font PAGE/Fm52/TT0; subset font PAGE/Fm53/TT0; subset font PAGE/Fm54/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_11_05_detrg: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm14/TT0; subset font PAGE/Fm15/TT0; subset font PAGE/Fm16/TT0; subset font PAGE/Fm17/TT0; subset font PAGE/Fm18/TT0; subset font PAGE/Fm19/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm20/TT0; subset font PAGE/Fm21/TT0; subset font PAGE/Fm22/TT0; subset font PAGE/Fm23/TT0; subset font PAGE/Fm24/TT0; subset font PAGE/Fm25/TT0; subset font PAGE/Fm26/TT0; subset font PAGE/Fm27/TT0; subset font PAGE/Fm28/TT0; subset font PAGE/Fm29/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm30/TT0; subset font PAGE/Fm31/TT0; subset font PAGE/Fm32/TT0; subset font PAGE/Fm33/TT0; subset font PAGE/Fm34/TT0; subset font PAGE/Fm35/TT0; subset font PAGE/Fm36/TT0; subset font PAGE/Fm37/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_11_05_emulsoil: subset font PAGE/TT0
+    CNX_Chem_11_05_oilspill: subset font PAGE/TT0
+    CNX_Chem_11_05_FredCottre: subset font PAGE/TT0
+
+VERDICT ok
+  NOTE (not a failure): 5 figure(s) unresolved — the artwork delivery has a hole here, or two figures would have shared one file and the run refused to guess (the report names which)

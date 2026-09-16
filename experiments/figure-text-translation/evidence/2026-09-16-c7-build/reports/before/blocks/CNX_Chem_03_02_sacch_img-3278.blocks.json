@@ -1,0 +1,56 @@
+[
+ {
+  "key": "Moles of|C7H5NO3S|(mol)",
+  "english": "Moles of C7H5NO3S (mol)",
+  "lines": [
+   "Moles of",
+   "C7H5NO3S",
+   "(mol)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Divide by molar|mass (g/mol)",
+  "english": "Divide by molar mass (g/mol)",
+  "lines": [
+   "Divide by molar",
+   "mass (g/mol)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of|C7H5NO3S|(g)",
+  "english": "Mass of C7H5NO3S (g)",
+  "lines": [
+   "Mass of",
+   "C7H5NO3S",
+   "(g)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Number of|C7H5NO3S|molecules",
+  "english": "Number of C7H5NO3S molecules",
+  "lines": [
+   "Number of",
+   "C7H5NO3S",
+   "molecules"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Multiply by|Avogadro’s|number (mol–1)",
+  "english": "Multiply by Avogadro’s number (mol–1)",
+  "lines": [
+   "Multiply by",
+   "Avogadro’s",
+   "number (mol–1)"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

@@ -1,0 +1,92 @@
+[
+ {
+  "key": "O",
+  "english": "O",
+  "lines": [
+   "O"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "OH",
+  "english": "OH",
+  "lines": [
+   "OH"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "OH",
+  "english": "OH",
+  "lines": [
+   "OH"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "O",
+  "english": "O",
+  "lines": [
+   "O"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "(CH3CO)2O",
+  "english": "(CH3CO)2O",
+  "lines": [
+   "(CH3CO)2O"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "HF",
+  "english": "HF",
+  "lines": [
+   "HF"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "CO, [Pd]",
+  "english": "CO, [Pd]",
+  "lines": [
+   "CO, [Pd]"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "H2, Raney Ni",
+  "english": "H2, Raney Ni",
+  "lines": [
+   "H2, Raney Ni"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "(b)",
+  "english": "(b)",
+  "lines": [
+   "(b)"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "(a)",
+  "english": "(a)",
+  "lines": [
+   "(a)"
+  ],
+  "arc": false,
+  "send": false
+ }
+]
