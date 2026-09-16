@@ -2,7 +2,17 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-16 ([USER] PUBLICATION RULING)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-16 (PR #473 MERGED)** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **`./scripts/deploy.sh` on prod ([USER], `sudo`) → then the next coding item, §C140 ⑦ (spend checks), which is recommended and NOT yet authorised.** Buying stays stopped.
+
+✅ **PR [#473](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/473) is MERGED** — [USER]'s instruction, 2026-09-16; a merge commit, so the SHAs the frozen evidence cites stay on `main`. This block was committed on the branch so that `main` lands already saying so. It carries §C140 ⑩'s healed brain figure (`books/`, so prod needs the pull) and [USER]'s publication ruling; no `server/` code. CI on the branch head was compared **by name** with `main`'s: the same 36 unit-test failures, nothing new.
+
+⏭ **The two items that must land before the next chapter is bought, both verified unbuilt in code on 2026-09-16:** **⑦** spend checks (misread MathematicalPi glyphs sent as translatable text; production pages resolved as figures) and **㉔** per-label + joined figure-label MT. **Recommended order: ⑦ first** — smaller, detection-only, and it protects every figure bought. ❓ **Not ruled:** whether **④** (strip-text drops non-text graphics state) and **⑥**'s remainder (STIX re-embedding — a [LEAD] provenance call — and per-run kerning) must also land before buying resumes. §C142 (the sync selects books, not chapters) is [USER]'s design choice and does not block buying.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-16 ([USER] PUBLICATION RULING)** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — **[USER]'s merge of PR [#473](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/473) (a merge commit, not a squash) → `./scripts/deploy.sh`.** There is no publication call left for a session to wait on. Buying stays stopped.
 
