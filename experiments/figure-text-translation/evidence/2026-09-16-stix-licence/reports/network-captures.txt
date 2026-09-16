@@ -1,0 +1,38 @@
+# Network captures for the §C140 ⑥ licence record — made 2026-09-16 on the local box, read-only.
+# Each block names the command that produced it. The instrument (local_fonts.py) makes no network calls.
+
+## A. Official files downloaded, and their hashes
+$ curl -fL <url> ; sha256sum ; wc -c
+https://raw.githubusercontent.com/stipub/stixfonts/master/archive/STIXv1.1.0/Fonts/STIX-General/STIXGeneral-Regular.otf
+  369156 bytes  sha256 5add3f3f2bd7fd897d2fa5ccbe468607c52111dc44cdfaaf2d851a574f5357a7
+https://raw.githubusercontent.com/stipub/stixfonts/master/archive/STIXv1.0.0/Fonts/STIXGeneral.otf
+  414322 bytes  sha256 4a9dd7487249ac6435796e21c7cf1f9c43c4971bd362077e76bcf85588c3fb9c
+https://releases.pagure.org/liberation-fonts/liberation-fonts-ttf-1.07.4.tar.gz
+  1333593 bytes  sha256 61a7e2b6742a43c73e8762cdfeaf6dfcf9abdd2cfa0b099a9854d69bc4cfee5c
+https://openfontlicense.org/documents/OFL-FAQ.txt
+  61623 bytes  sha256 371e6afac347da68c948edc3f544e16205b2642eea2643bdf541f64ad481c0be
+
+## B. The OFL-FAQ fetched above: header and entry 1.16 (not among the research's 50 claims)
+$ python3: print the first 2 lines, then the text from '1.16' to '1.17'
+OFL FAQ - Frequently Asked Questions about the SIL Open Font License (OFL)
+Version 1.1-update7 - November 2023
+1.16  What about ebooks shipping with open fonts?
+The requirements differ depending on whether the fonts are linked, embedded or distributed (bundled or aggregated). Some ebook formats use web technologies to do font linking via @font-face, others are designed for font embedding, some use fonts distributed with the document or reading software, and a few rely solely on the fonts already present on the target system. The license requirements depend on the type of inclusion as discussed in 1.15.
+
+## C. Where the licence URLs inside STIX 1.x's name records lead today
+$ curl -sIL 'http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL' | grep -iE '^(HTTP/|location:)'
+HTTP/1.1 301 Moved Permanently
+Location: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+HTTP/2 307 
+location: /cms/scripts/page.php?id=ofl&site_id=nrsi
+HTTP/2 307 
+location: https://openfontlicense.org/
+HTTP/2 200 
+$ curl -sIL 'http://www.stixfonts.org/user_license.html' | grep -iE '^(HTTP/|location:)'
+HTTP/1.1 307 Temporary Redirect
+Location: https://www.stixfonts.org/user_license.html
+HTTP/2 301 
+location: /home/#licensing
+HTTP/2 301 
+location: https://www.stixfonts.org/
+HTTP/2 200 
