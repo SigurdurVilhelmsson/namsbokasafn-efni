@@ -14,3 +14,16 @@
 | P8 | dry ch10 after: `glyphs repaired by the read layer` names PentIso 3× H11034 → °; the would-buy list includes PentIso |
 | P9 | dry ch05 (control) after: no refusal, no glyph section; would-buy figures = its `translated` figures with no sidecar |
 | P10 | Full `npm test`: the failing names equal the 36 before-names, both directions |
+
+## Amendment — fix wave, 2026-09-16 (written before the fix-wave code and runs)
+
+> Added after the final whole-branch review, before any fix-wave code or run. Nothing above this heading
+> is edited. Checked in `VERIFICATION.md` § Fix wave, against files in `reports/after-fix/`.
+
+| # | prediction |
+|---|---|
+| P11 | dry ch18: the run names `CNX_Chem_18_07_N2O5_IS.svg` as a live translated copy that is a whole Letter sheet (612×792) |
+| P12 | dry ch11: the run names `CNX_Chem_11_04_rvosmosis_IS.svg` the same way, and still prints its `REFUSED — production page` line and its still-mapped line |
+| P13 | dry ch05, ch09, ch10 (controls): no sheet line |
+| P14 | the resolver/prepare change moves nothing: `prepare_corpus.py --label after-fix` writes a `summary.tsv` byte-identical to `reports/after/summary.tsv` |
+| P15 | full `npm test`: failing names identical to `reports/before/npm-failing-by-name.txt`, both directions, with a planted control, and no file that died without a failing test |
