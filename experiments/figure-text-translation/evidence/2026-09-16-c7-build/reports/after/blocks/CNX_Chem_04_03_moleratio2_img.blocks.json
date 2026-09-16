@@ -1,0 +1,50 @@
+[
+ {
+  "key": "Moles of C3H8",
+  "english": "Moles of C3H8",
+  "lines": [
+   "Moles of C3H8"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of CO2",
+  "english": "Moles of CO2",
+  "lines": [
+   "Moles of CO2"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molecules of |CO2",
+  "english": "Molecules of  CO2",
+  "lines": [
+   "Molecules of ",
+   "CO2"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Stoichiometric |factor",
+  "english": "Stoichiometric  factor",
+  "lines": [
+   "Stoichiometric ",
+   "factor"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Avogadro’s|number",
+  "english": "Avogadro’s number",
+  "lines": [
+   "Avogadro’s",
+   "number"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

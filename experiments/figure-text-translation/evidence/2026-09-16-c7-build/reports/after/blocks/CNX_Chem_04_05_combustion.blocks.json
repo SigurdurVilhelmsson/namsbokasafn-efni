@@ -1,0 +1,70 @@
+[
+ {
+  "key": "Furnace",
+  "english": "Furnace",
+  "lines": [
+   "Furnace"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "CO2, H2O, O2,|and other gases",
+  "english": "CO2, H2O, O2, and other gases",
+  "lines": [
+   "CO2, H2O, O2,",
+   "and other gases"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "H2O absorber|such as |Mg(ClO4)2",
+  "english": "H2O absorber such as  Mg(ClO4)2",
+  "lines": [
+   "H2O absorber",
+   "such as ",
+   "Mg(ClO4)2"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "CO2 absorber|such as NaOH",
+  "english": "CO2 absorber such as NaOH",
+  "lines": [
+   "CO2 absorber",
+   "such as NaOH"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "O2 and |other gases",
+  "english": "O2 and  other gases",
+  "lines": [
+   "O2 and ",
+   "other gases"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Sample",
+  "english": "Sample",
+  "lines": [
+   "Sample"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "O2",
+  "english": "O2",
+  "lines": [
+   "O2"
+  ],
+  "arc": false,
+  "send": false
+ }
+]

@@ -1,0 +1,32 @@
+[
+ {
+  "key": "Moles of|Ar atoms (mol)",
+  "english": "Moles of Ar atoms (mol)",
+  "lines": [
+   "Moles of",
+   "Ar atoms (mol)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of|Ar atoms (g)",
+  "english": "Mass of Ar atoms (g)",
+  "lines": [
+   "Mass of",
+   "Ar atoms (g)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Multiply by molar|mass (g/mol)",
+  "english": "Multiply by molar mass (g/mol)",
+  "lines": [
+   "Multiply by molar",
+   "mass (g/mol)"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

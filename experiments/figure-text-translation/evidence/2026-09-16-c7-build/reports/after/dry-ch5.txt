@@ -1,0 +1,63 @@
+DRY RUN — nothing bought, nothing written under books/
+efnafraedi-2e ch05: 24 figure(s) across 4 module(s)
+
+    16  translated
+     3  copied-photo
+     5  copied-textless
+    24  = enumerated
+
+  copied figures, with the counts the read layer produced (8):
+    copied-textless  chars=0 formText=0 images=1 paint=1 held=0v/0u/0f  CNX_Chem_05_00_Match
+    copied-photo     chars=9 formText=0 images=3 paint=0 held=3v/0u/0f  CNX_Chem_05_01_Thermochem
+    copied-textless  chars=6 formText=0 images=2 paint=4 held=2v/0u/0f  CNX_Chem_05_01_Waterfall
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_05_01_HeatCapacity
+    copied-textless  chars=6 formText=0 images=2 paint=1 held=2v/0u/0f  CNX_Chem_05_01_SolTherm2
+    copied-textless  chars=0 formText=0 images=3 paint=4 held=0v/0u/0f  CNX_Chem_05_02_HandWarmer
+    copied-textless  chars=0 formText=0 images=1 paint=1 held=0v/0u/0f  CNX_Chem_05_03_GasBurning
+    copied-photo     chars=9 formText=0 images=3 paint=0 held=3v/0u/0f  CNX_Chem_05_03_AlgalFuel1
+  blocks the read layer could not read (1) — never bought, so these labels ship in English:
+    translated       2 undecodable, 0 missing-font of 47 block(s)  CNX_Chem_05_02_FoodLabel
+  figure-prepare.py warnings — 35 across 20 figure(s), its own !! lines:
+    CNX_Chem_05_01_Thermochem: subset font PAGE/TT0
+    CNX_Chem_05_01_Waterfall: subset font PAGE/TT0
+    CNX_Chem_05_01_HotCold: subset font PAGE/TT0
+    CNX_Chem_05_01_Thermom: subset font PAGE/TT0
+    CNX_Chem_05_01_HeatTrans1: subset font PAGE/TT0
+    CNX_Chem_05_01_OxyacTorch: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_05_01_SolTherm1: subset font PAGE/TT0
+    CNX_Chem_05_01_SolTherm2: subset font PAGE/TT0
+    CNX_Chem_05_02_HeatMeas: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_05_02_Calorim: subset font PAGE/TT0
+    CNX_Chem_05_02_Calorim2: subset font PAGE/TT0
+    CNX_Chem_05_02_HeatTrans2: subset font PAGE/TT0; subset font PAGE/TT1; subset font PAGE/TT2
+    CNX_Chem_05_02_IcePack: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_05_02_BombCalor: subset font PAGE/TT0
+    CNX_Chem_05_02_FoodLabel: subset font PAGE/TT0; subset font PAGE/TT1; subset font PAGE/TT2; undecodable font PAGE/TT1
+    CNX_Chem_05_03_Systemqw: subset font PAGE/T1_0; subset font PAGE/T1_1; subset font PAGE/T1_2; subset font PAGE/TT0
+    CNX_Chem_05_03_Summit: subset font PAGE/TT0
+    CNX_Chem_05_03_AlgalFuel1: subset font PAGE/TT0
+    CNX_Chem_05_03_AlgalFuel2: subset font PAGE/TT0
+    CNX_Chem_05_03_HessCO2: subset font PAGE/T1_0; subset font PAGE/TT0; subset font PAGE/TT1; subset font PAGE/TT2; subset font PAGE/TT3
+  soft-mask ring gate (§C140 ⑩) — 1 figure(s) carry a candidate; 0 healed, 0 refused:
+    CNX_Chem_05_02_HeatMeas: 2 soft-mask ring candidate(s) — mask-9, mask-11; not gated in a dry run
+
+  would buy 16 figure(s): 1587 billable characters, est 15.87 ISK at list rate
+    CNX_Chem_05_01_HotCold  2 block(s), 19 chars
+    CNX_Chem_05_01_Thermom  4 block(s), 22 chars
+    CNX_Chem_05_01_HeatTrans1  3 block(s), 48 chars
+    CNX_Chem_05_01_OxyacTorch  4 block(s), 56 chars
+    CNX_Chem_05_01_SolTherm1  7 block(s), 97 chars
+    CNX_Chem_05_02_HeatMeas  6 block(s), 108 chars
+    CNX_Chem_05_02_Calorim  5 block(s), 53 chars
+    CNX_Chem_05_02_Calorim2  8 block(s), 131 chars
+    CNX_Chem_05_02_HeatTrans2  2 block(s), 20 chars
+    CNX_Chem_05_02_IcePack  4 block(s), 56 chars
+    CNX_Chem_05_02_BombCalor  6 block(s), 58 chars
+    CNX_Chem_05_02_FoodLabel  28 block(s), 696 chars
+    CNX_Chem_05_03_Systemqw  6 block(s), 31 chars
+    CNX_Chem_05_03_Summit  3 block(s), 25 chars
+    CNX_Chem_05_03_AlgalFuel2  5 block(s), 60 chars
+    CNX_Chem_05_03_HessCO2  4 block(s), 107 chars
+
+VERDICT ok
+  NOTE (not a failure): 1 translated figure(s) carry 2 label(s) the read layer could not decode. They were never bought and ship in whatever English DID decode — compose strips the (cid:N) placeholder rather than drawing it. The report names them.

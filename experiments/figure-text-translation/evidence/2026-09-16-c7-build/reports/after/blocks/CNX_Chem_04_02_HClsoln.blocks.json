@@ -1,0 +1,83 @@
+[
+ {
+  "key": "(b)",
+  "english": "(b)",
+  "lines": [
+   "(b)"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "HCl(aq) + H2O(l)          H3O+(aq) + Cl–(aq)",
+  "english": "HCl(aq) + H2O(l)          H3O+(aq) + Cl–(aq)",
+  "lines": [
+   "HCl(aq) + H2O(l)          H3O+(aq) + Cl–(aq)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "(a)",
+  "english": "(a)",
+  "lines": [
+   "(a)"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "HCl(g)          HCl(aq)",
+  "english": "HCl(g)          HCl(aq)",
+  "lines": [
+   "HCl(g)          HCl(aq)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "HCl(g)",
+  "english": "HCl(g)",
+  "lines": [
+   "HCl(g)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "H3O+(aq)",
+  "english": "H3O+(aq)",
+  "lines": [
+   "H3O+(aq)"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "H2O(l)",
+  "english": "H2O(l)",
+  "lines": [
+   "H2O(l)"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "Cl–(aq)",
+  "english": "Cl–(aq)",
+  "lines": [
+   "Cl–(aq)"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "H2O(l)",
+  "english": "H2O(l)",
+  "lines": [
+   "H2O(l)"
+  ],
+  "arc": false,
+  "send": false
+ }
+]

@@ -1,0 +1,92 @@
+DRY RUN — nothing bought, nothing written under books/
+efnafraedi-2e ch09: 49 figure(s) across 7 module(s)
+
+    16  translated
+     3  copied-textless
+    30  unresolved
+    49  = enumerated
+
+  unresolved — the artwork delivery has a hole here (30):
+    CNX_Chem_09_00_HotAirBall
+    CNX_Chem_09_01_Pressure1
+    CNX_Chem_09_01_Pressure2
+    CNX_Chem_09_01_Manometer1_img
+    CNX_Chem_09_01_Manometer2_img
+    CNX_Chem_09_01_Manometer3_img
+    CNX_Chem_09_01_manometer4_img
+    CNX_Chem_09_01_Spygmo
+    CNX_Chem_09_01_WeatherMap
+    CNX_Chem_09_01_Manometer5_img
+    CNX_Chem_09_01_Manometer6_img
+    CNX_Chem_09_01_Manometer7_img
+    CNX_Chem_09_01_Manometer8_img
+    CNX_Chem_09_02_Ballooning
+    CNX_Chem_09_01_Amontons1
+    CNX_Chem_09_02_BoylesLaw4
+    CNX_Chem_09_02_Scuba
+    CNX_Chem_09_02_GreatBarri
+    CNX_Chem_09_02_WeatherBall_img
+    CNX_Chem_09_03_GlobalWarming2
+    CNX_Chem_09_03_SusanSolom
+    CNX_Chem_09_04_Diffusion
+    CNX_Chem_09_04_DiffEff
+    CNX_Chem_09_04_Effusion2
+    CNX_Chem_09_05_MolSpeed2
+    CNX_Chem_09_05_MolSpeed3
+    CNX_Chem_09_06_ZvsPgraph
+    CNX_Chem_09_06_vanderWaals_img
+    CNX_Chem_09_06_Exercise1_img
+    CNX_Chem_09_06_RealGases
+  de-hashed to stripped-name artwork, LOOKUP ONLY (2):
+    CNX_Chem_09_03_DaltonLaw1-f981  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_09/Source_File/CNX_Chem_09_03_DaltonLaw1.eps
+    CNX_Chem_09_03_GlobalWarming-b740  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_09/Source_File/CNX_Chem_09_03_GlobalWarming.eps
+  would need an image-mapping.json entry minted before publish (3):
+    CNX_Chem_09_02_Charles2
+    CNX_Chem_09_02_Exercise25_img
+    CNX_Chem_09_03_WaterVapor2
+  copied figures, with the counts the read layer produced (3):
+    copied-textless  chars=27 formText=0 images=10 paint=30 held=3v/0u/0f  CNX_Chem_09_02_HENH3O2
+    copied-textless  chars=0 formText=0 images=1 paint=6 held=0v/0u/0f  CNX_Chem_09_03_liquidgas
+    copied-textless  chars=11 formText=0 images=7 paint=64 held=5v/0u/0f  CNX_Chem_09_03_Ammonia
+  glyphs repaired by the read layer — misread without a ToUnicode map (1):
+    CNX_Chem_09_02_Amontons2  2× H11002 → −
+  figure-prepare.py warnings — 33 across 18 figure(s), its own !! lines:
+    CNX_Chem_09_01_Barometer: subset font PAGE/R45
+    CNX_Chem_09_01_Manometer: subset font PAGE/R124; subset font PAGE/R126; subset font PAGE/R130
+    CNX_Chem_09_01_Atmosphere: subset font PAGE/T1_0; subset font PAGE/TT0
+    CNX_Chem_09_02_Amontons2: subset font PAGE/R11; subset font PAGE/R13; subset font PAGE/R9
+    CNX_Chem_09_02_Charles2: subset font PAGE/R11; subset font PAGE/R13; subset font PAGE/R9
+    CNX_Chem_09_03_BoylesLaw1: subset font PAGE/R121
+    CNX_Chem_09_02_Boyleslaw2: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_09_02_HENH3O2: subset font PAGE/R46
+    CNX_Chem_09_02_Exercise25_img: subset font PAGE/R11; subset font PAGE/R13; subset font PAGE/R15; subset font PAGE/R9
+    CNX_Chem_09_03_DaltonLaw1-f981: subset font PAGE/R208
+    CNX_Chem_09_03_WaterVapor: subset font PAGE/R146
+    CNX_Chem_09_03_WaterVapor2: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_09_03_Ammonia: subset font PAGE/R54; subset font PAGE/R63
+    CNX_Chem_09_03_GlobalWarming-b740: subset font PAGE/R20
+    CNX_Chem_09_04_GasDiff: subset font PAGE/R88
+    CNX_Chem_09_04_KMT2: subset font PAGE/R164; 1 unparsable colour operand(s); fills on this figure are unreliable
+    CNX_Chem_09_05_MolSpeed1: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_09_06_RealGas2: subset font PAGE/R86
+
+  would buy 16 figure(s): 1152 billable characters, est 11.52 ISK at list rate
+    CNX_Chem_09_01_Barometer  4 block(s), 39 chars
+    CNX_Chem_09_01_Manometer  7 block(s), 76 chars
+    CNX_Chem_09_01_Atmosphere  5 block(s), 131 chars
+    CNX_Chem_09_02_Amontons2  5 block(s), 74 chars
+    CNX_Chem_09_02_Charles2  3 block(s), 41 chars
+    CNX_Chem_09_03_BoylesLaw1  2 block(s), 18 chars
+    CNX_Chem_09_02_Boyleslaw2  2 block(s), 14 chars
+    CNX_Chem_09_02_Exercise25_img  8 block(s), 92 chars
+    CNX_Chem_09_03_DaltonLaw1-f981  5 block(s), 52 chars
+    CNX_Chem_09_03_WaterVapor  4 block(s), 56 chars
+    CNX_Chem_09_03_WaterVapor2  3 block(s), 56 chars
+    CNX_Chem_09_03_GlobalWarming-b740  3 block(s), 31 chars
+    CNX_Chem_09_04_GasDiff  7 block(s), 159 chars
+    CNX_Chem_09_04_KMT2  10 block(s), 265 chars
+    CNX_Chem_09_05_MolSpeed1  3 block(s), 39 chars
+    CNX_Chem_09_06_RealGas2  2 block(s), 9 chars
+
+VERDICT ok
+  NOTE (not a failure): 30 figure(s) unresolved — the artwork delivery has a hole here, or the run refused the artwork it found (two figures sharing one file, a production page, or a known-superseded picture); the report names which

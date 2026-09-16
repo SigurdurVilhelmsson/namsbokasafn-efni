@@ -247,3 +247,31 @@ A `PREDICTIONS.md` is written before each run, and amended rather than overwritt
 Campaign register §C140 ⑦ and ⏩ RESUME · `experiments/figure-text-translation/REGISTER.md` (the "driver spend gate"
 row) · the experiment README (read-layer repair, resolver refusal) · `figure-text.config.json` `_supersededArtwork` ·
 a frozen evidence folder for the build, citing only files that are in it (§C140 ㉓).
+
+## Amendments — 2026-09-16 (build)
+
+Three refinements the build (Tasks 1–8) made to this design; none change its rulings or its verification plan.
+
+- **(a) `prepare.json`'s glyph fields are lists, not maps.** § 2.4 describes `glyphRepairs`, `glyphUnrepaired`,
+  `glyphAmbiguous` as `{name: count}`. The shipped shape (Task 3, `figure-prepare.py`'s `glyph_summary`) is a list
+  of objects instead: `glyphRepairs` is `[{glyph, to, count}]` (carrying the replacement so the driver can print
+  `H11034 → °` without a second copy of `GLYPH_REPAIRS`); `glyphUnrepaired` and `glyphAmbiguous` are each
+  `[{glyph, count}]`. Chosen because a list is stable to iterate and print in the driver without an object-key
+  sort, and because `glyphRepairs` needs a third field (`to`) that a bare count map has nowhere to put.
+- **(b) Unrepaired and ambiguous glyphs get their own named summary section, and still appear on the existing
+  "could not read" line.** § 2.4 says the summary prints repairs; it does not say what happens to case (b)/(c)
+  glyphs. Task 6 (`tools/figure-run.js`) adds `glyphs NOT repaired — held back and not drawn; add a figglyphs
+  entry only with a raster (N):`, listing each figure's unrepaired and ambiguous glyphs by name — separately from,
+  not instead of, the pre-existing `blocks the read layer could not read (N) — never bought, so these labels
+  ship in English:` line, which an unrepaired glyph still triggers (§ 2.3(b)'s "reuses the existing undecoded path
+  unchanged" already implied this; the build makes it visible under its own heading too, so a repair-table gap is
+  legible without cross-referencing the undecoded-holds section).
+- **(c) The would-buy and live-spend lines are separate from the "bought this run" list, not additions to it.**
+  § 4 says the dry-run and live numbers are both printed, the live one "added to the existing 'MT spawned' line
+  and 'bought this run' list." Task 7 instead prints `would buy N figure(s): C billable characters, est X ISK at
+  list rate` on a dry run and `buyable this run N figure(s): …` on a live run (both from the same `buyable`
+  computation, `tools/figure-run.js`), and on a live run separately extends the `MT spawned for N figure(s), C
+  billable characters` line with the billable-character count — **without** touching the `bought this run` name
+  list. Reason: `spent`/`bought this run` counts only figures a purchase actually reached (set at the paid spawn);
+  a figure can be billable without being bought if the purchase for it fails, so folding the two counts into one
+  list would misreport a failed purchase as a completed one.
