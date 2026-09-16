@@ -16,10 +16,11 @@
  * `books/efnafraedi-2e/01-source/ch04/*.cnxml` and its `02-structure/` — because enumeration is
  * exactly the part that must be measured against real CNXML rather than a fixture.
  */
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import { execFileSync } from 'child_process';
 import { createRequire } from 'module';
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -37,6 +38,7 @@ import {
   dehashStemClaims,
   refusalReason,
   stillMappedCopy,
+  billableFrom,
   main,
 } from '../figure-run.js';
 
@@ -1371,5 +1373,74 @@ describe('§C140 ⑦ — glyph repairs are named per figure', () => {
       unrepaired: [],
       ambiguous: [],
     });
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('§C140 ⑦ — the dry run says what a live run would buy', () => {
+  const blocksFor = (b) =>
+    b === 'CNX_Chem_04_01_rxn2'
+      ? [
+          { key: 'k1', english: 'Oxygen gas', lines: ['Oxygen gas'], arc: false, send: true },
+          { key: 'k1', english: 'Oxygen gas', lines: ['Oxygen gas'], arc: false, send: true },
+          { key: 'k2', english: 'H2O', lines: ['H2O'], arc: false, send: false },
+          { key: 'k3', english: 'Water', lines: ['Water'], arc: false, send: true },
+        ]
+      : null;
+
+  function spawnWithBlocks() {
+    return fakeSpawn({
+      resolve: (n) =>
+        n === 'CNX_Chem_04_01_rxn2' || n === 'CNX_Chem_04_01_rxn3'
+          ? { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' }
+          : null,
+      prepare: (b, outDir) => {
+        const blocks = blocksFor(b);
+        if (blocks) fs.writeFileSync(path.join(outDir, 'blocks.json'), JSON.stringify(blocks));
+        return { sendable: 2, blocks: 4 };
+      },
+    });
+  }
+
+  it('lists each would-buy figure with de-duplicated billable characters and an ISK total', async () => {
+    const result = await runFigures(CH04, { spawn: spawnWithBlocks(), ...PRISTINE });
+    const rxn2 = result.figures.find((f) => f.basename === 'CNX_Chem_04_01_rxn2');
+    expect(rxn2.billable).toEqual({ blocks: 2, chars: 'Oxygen gas'.length + 'Water'.length });
+    const text = summarise(result);
+    expect(text).toMatch(
+      /would buy 2 figure\(s\): 15 billable characters, est 0\.15 ISK at list rate/
+    );
+    expect(text).toMatch(/CNX_Chem_04_01_rxn2\s+2 block\(s\), 15 chars/);
+    // CONTROL: a figure whose prepare wrote no blocks.json is named as UNKNOWN, never counted as 0
+    expect(text).toMatch(/CNX_Chem_04_01_rxn3\s+billable count UNKNOWN/);
+  });
+
+  it("billableFrom equals the translate leg's own plan line for the same blocks.json", async () => {
+    const { main: translateMain } =
+      await import('../../experiments/figure-text-translation/translate-blocks.mjs');
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'c7-billable-'));
+    fs.writeFileSync(
+      path.join(dir, 'blocks.json'),
+      JSON.stringify(blocksFor('CNX_Chem_04_01_rxn2'))
+    );
+    const logs = [];
+    const spy = vi.spyOn(console, 'log').mockImplementation((m) => logs.push(String(m)));
+    try {
+      await translateMain(['--book', 'efnafraedi-2e', '--out', dir, '--dry-run'], {
+        createClient: () => {
+          throw new Error('no client under --dry-run');
+        },
+        estimateIsk: (c) => c / 100,
+        envPath: path.join(dir, 'absent.env'),
+      });
+    } finally {
+      spy.mockRestore();
+      process.exitCode = undefined;
+    }
+    const plan = logs.map((l) => l.match(/^\s+(\d+) blocks, (\d+) chars/)).find(Boolean);
+    expect(plan).toBeTruthy();
+    const mine = billableFrom(dir);
+    expect([mine.blocks, mine.chars]).toEqual([Number(plan[1]), Number(plan[2])]);
+    fs.rmSync(dir, { recursive: true, force: true });
   });
 });

@@ -2169,3 +2169,24 @@ describe('the sidecar directory is pre-flighted before any money moves', () => {
     }
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('§C140 ⑦ — what a live run would buy', () => {
+  it('counts billable characters only for a figure with no sidecar, and prints them', async () => {
+    const { booksRoot } = makeBook({
+      figures: ['FIG_NEW', 'FIG_OLD'],
+      sidecars: { FIG_OLD: currentSidecar('FIG_OLD', { k0: 'IS k0', k1: 'IS k1' }) },
+    });
+    // The fake prepare's default blocks are k0/k1 reading 'English 0'/'English 1' (9 chars each).
+    const spawn = fakeSpawn({ prepare: () => ({ sendable: 2 }) });
+    const result = await runFigures(live(booksRoot, { force: true }), { spawn, booksRoot });
+    expect(rec(result, 'FIG_NEW').billable).toEqual({ blocks: 2, chars: 18 });
+    // NON-VACUITY: --force took FIG_OLD through prepare to `translated`; it is still not buyable
+    expect(rec(result, 'FIG_OLD').outcome).toBe('translated');
+    expect(rec(result, 'FIG_OLD').billable).toBeNull();
+    expect(spawn.countOf('translate')).toBe(1); // only FIG_NEW was bought (R8)
+    const text = summarise(result);
+    expect(text).toContain('buyable this run 1 figure(s): 18 billable characters');
+    expect(text).toContain('MT spawned for 1 figure(s), 18 billable characters');
+  });
+});

@@ -79,6 +79,8 @@ import {
   buildMappingEntries,
   mergeMapping,
 } from './generate-image-mapping.js';
+import { dedupeSendBlocks } from '../experiments/figure-text-translation/translate-blocks.mjs';
+import { estimateIsk } from './lib/malstadur-api.js';
 
 const require = createRequire(import.meta.url);
 const { enumerateChapterImages } = require('./lib/figure-enumerate.cjs');
@@ -1504,6 +1506,21 @@ export function stillMappedCopy(basename, { mapped, bookDir, exists = fs.existsS
 }
 
 /**
+ * §C140 ⑦ — the characters a live run would BUY for one prepared figure, counted by the translate
+ * leg's own `dedupeSendBlocks`, so a change to what is sent (§C140 ㉔) changes this in one place.
+ * An unreadable blocks.json is UNKNOWN, never zero.
+ */
+export function billableFrom(outDir) {
+  try {
+    const blocks = JSON.parse(fs.readFileSync(path.join(outDir, 'blocks.json'), 'utf-8'));
+    const send = dedupeSendBlocks(blocks.filter((b) => b.send));
+    return { blocks: send.length, chars: send.reduce((n, b) => n + b.english.length, 0) };
+  } catch (err) {
+    return { blocks: null, chars: null, error: err.message };
+  }
+}
+
+/**
  * Walk one chapter's figures.
  *
  * ⚠️ `readSidecar`, `publish` and `booksRoot` are injectable for the same reason `spawn` is:
@@ -1607,6 +1624,8 @@ export async function runFigures(args, deps = {}) {
     // The paid half's own record. `spent` is TRUE only when the MT was actually spawned for
     // this figure, so a run's total spend is a count over the records rather than a claim.
     spent: false,
+    // §C140 ⑦ — what buying this figure would cost, set only when it is buyable.
+    billable: null,
     sidecarWritten: false,
     droppedKeys: [],
     published: null,
@@ -1823,6 +1842,7 @@ export async function runFigures(args, deps = {}) {
       applyDriftGuard(rec);
       applyPartialDriftGuard(rec, outDir);
       applyMappingPreflight(rec, { mapped, mintIndex, bookDir });
+      if (rec.outcome === 'translated' && !rec.sidecar) rec.billable = billableFrom(outDir);
       if (!args.dryRun)
         processFigureLive(rec, {
           spawn,
@@ -2261,16 +2281,37 @@ export function summarise(result) {
     lines.push(`  enumeration warning [${w.moduleId}] ${w.reason}: ${w.tag}`);
   }
 
+  // §C140 ⑦ — WHAT A LIVE RUN WOULD BUY, IN BOTH MODES. `billable` is set only for a `translated`
+  // figure with no sidecar (R8), counted by the translate leg's own de-duplication.
+  const buyable = result.figures.filter((f) => f.billable);
+  if (buyable.length) {
+    const counted = buyable.filter((f) => f.billable.chars !== null);
+    const total = counted.reduce((n, f) => n + f.billable.chars, 0);
+    lines.push('');
+    lines.push(
+      `  ${result.mode === 'dry-run' ? 'would buy' : 'buyable this run'} ${buyable.length} figure(s): ` +
+        `${total} billable characters, est ${estimateIsk(total).toFixed(2)} ISK at list rate`
+    );
+    for (const f of buyable) {
+      lines.push(
+        f.billable.chars === null
+          ? `    ${f.basename}  billable count UNKNOWN (${f.billable.error})`
+          : `    ${f.basename}  ${f.billable.blocks} block(s), ${f.billable.chars} chars`
+      );
+    }
+  }
+
   // 🔴 THE SPEND, AS A COUNT OVER THE RECORDS. `spent` is set at the paid spawn and nowhere
-  // else, so this line cannot report a purchase that did not happen or hide one that did.
-  // ⚠️ It is printed on a dry run too, where it is always zero — a line that appears only when
-  // it is non-zero is a line nobody learns to look for.
+  // else, so this line cannot report a purchase that did not happen or hide one that did. It is
+  // printed on a LIVE run only; a dry run's equivalent is the would-buy list above.
   if (result.mode === 'live') {
     const spent = result.figures.filter((f) => f.spent);
     const published = result.figures.filter((f) => f.published);
     lines.push('');
+    const spentChars = spent.reduce((n, f) => n + ((f.billable && f.billable.chars) || 0), 0);
     lines.push(
-      `  MT spawned for ${spent.length} figure(s) — only a figure with NO sidecar is spendable`
+      `  MT spawned for ${spent.length} figure(s), ${spentChars} billable characters — only a ` +
+        `figure with NO sidecar is spendable`
     );
     lines.push(`  published ${published.length} figure(s) into ${result.bookDir}/media/`);
     lines.push(
