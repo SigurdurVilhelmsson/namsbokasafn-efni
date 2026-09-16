@@ -20,6 +20,18 @@
   },
   "_supersededArtwork": "Basenames whose ONLY available vector is known to be superseded by the published figure. sources.py refuses these before any lookup, so they report `unresolved` and nothing is composed or published for them - deliberately, because an untranslated correct figure beats a translated wrong one, and unresolved stays counted and named. The value is the REASON and is required: an entry nobody can later evaluate is a permanent unexplained hole. Matched case-insensitively, like the lookup. ⚠️ This list is HAND-VERIFIED, not a detector output. An aspect-ratio scan flags 38 chemistry figures at >25% disagreement with the published raster, but its precision is UNKNOWN (a crop, a padded bounding box or a multi-panel composite all produce the same signal), so a figure belongs here only once a human has looked at both. ⚠️ A refusal does not retire an EARLIER translated copy: where a June `_IS.svg` and image-mapping row exist, readers keep seeing that copy, and the driver names it (§C140 ⑦).",
 
+  "paperSizes": {
+    "Letter": [612.0, 792.0],
+    "A4": [595.28, 841.89],
+    "Legal": [612.0, 1008.0],
+    "Tabloid": [792.0, 1224.0],
+    "A3": [841.89, 1190.55]
+  },
+  "_paperSizes": "Standard paper sizes in points, [width, height], matched in either orientation within paperTolerancePt. A resolved artwork whose page box is one of these is a production page - a placement or dialogue SHEET - not a figure, and sources.py refuses it; tools/figure-run.js reads the same table to name a live translated copy whose SVG viewBox is a whole sheet (§C140 ⑦). THIS FILE IS THE TABLE'S ONLY OWNER: neither sources.py nor figure-run.js restates a size. Measured 2026-09-16 (evidence/2026-09-16-c7-explore/): exactly 2 of 910 resolved artworks are paper-size, both Letter.",
+
+  "paperTolerancePt": 2,
+  "_paperTolerancePt": "How far, in points, a width or height may differ from a paperSizes entry and still match it. Measured 2026-09-16 (evidence/2026-09-16-c7-explore/): still exactly the same 2 at ±10 pt; the next largest artwork is 468x576 pt.",
+
   "sourceTreesFile": "sources.local.json",
   "_sourceTreesFile": "Local absolute paths live in a gitignored file because they are machine-specific. Copy sources.local.json.example and fill it in."
 }

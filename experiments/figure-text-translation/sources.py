@@ -20,19 +20,22 @@ from _deps import HERE
 # ghostscript before extraction (see README).
 SOURCE_EXTS = ('.pdf', '.eps', '.ai')
 
+
+def load_config():
+    return json.loads((HERE / 'figure-text.config.json').read_text())
+
+
 # §C140 ⑦. A resolved artwork whose page box is a standard paper size, in either orientation, is a
 # production page — a placement or dialogue SHEET — not a figure. Measured 2026-09-16 over 910
 # resolved artworks: exactly 2 (rvosmosis, N2O5; both Letter), still 2 at ±10 pt; the next
 # largest is 468×576 pt. Aspect ratio, creator and embedded-raster size were measured and rejected
 # (evidence/2026-09-16-c7-explore/README.md).
-PAPER_SIZES = {
-    'Letter': (612.0, 792.0),
-    'A4': (595.28, 841.89),
-    'Legal': (612.0, 1008.0),
-    'Tabloid': (792.0, 1224.0),
-    'A3': (841.89, 1190.55),
-}
-PAPER_TOL_PT = 2.0
+# 🔴 THE TABLE LIVES IN figure-text.config.json (`paperSizes`, `paperTolerancePt`) AND ONLY THERE:
+# tools/figure-run.js reads the same keys to name a live translated copy whose viewBox is a whole
+# sheet, so a size written here as a literal would be a second copy free to drift from the first.
+_CONFIG = load_config()
+PAPER_SIZES = {name: (float(w), float(h)) for name, (w, h) in _CONFIG['paperSizes'].items()}
+PAPER_TOL_PT = float(_CONFIG['paperTolerancePt'])
 _BBOX = rb'%%{}:\s*([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)'
 
 
@@ -66,9 +69,14 @@ def page_size(path):
         except Exception:                          # noqa: BLE001 — an unreadable size is None
             if path.suffix.lower() == '.pdf':
                 return None
+    # 🔴 UNREADABLE MEANS None, WHATEVER THE BYTES DO. A truncated DOS-EPS header makes
+    # `struct.unpack` raise `struct.error`, and a `%%BoundingBox` number `float()` rejects
+    # (`612.0.1`: `[-\d.]+` matches it) raises ValueError. Either escaping would abort
+    # `resolve_report` — and with it the driver's whole chapter — over one bad file, where the
+    # contract is that the figure resolves and is flagged `pageUnknown`.
     try:
         return _eps_size(path)
-    except OSError:
+    except (OSError, struct.error, ValueError):
         return None
 
 
@@ -82,10 +90,6 @@ def paper_size_name(size):
                 or (abs(w - ph) <= PAPER_TOL_PT and abs(h - pw) <= PAPER_TOL_PT)):
             return name
     return None
-
-
-def load_config():
-    return json.loads((HERE / 'figure-text.config.json').read_text())
 
 
 def load_trees(book, cfg=None):
@@ -274,22 +278,47 @@ def resolve_report(names, trees, precedence, exts=SOURCE_EXTS, superseded=None):
     return out
 
 
+def human_report(names, trees, precedence, superseded=None):
+    """-> (lines, missing, refused) — the operator-facing half of this tool's CLI.
+
+    🔴 A REFUSAL IS NOT "NOT FOUND" (§C140 ⑦). The file is in the delivery and was declined, and
+    the operator's next action differs: a hole is fixed in the artwork delivery, a refusal is
+    read and ruled on. Printing a refusal as NOT FOUND is the misreport §3.4 of the ⑦ design
+    corrects in the driver, so the two are printed and counted apart.
+    """
+    lines, missing, refused = [], 0, 0
+    report = resolve_report(names, trees, precedence, superseded=superseded)
+    for n in names:
+        d = report[n]
+        if d and d.get('path'):
+            lines.append(f"  {d['edition']:14} {n:36} {d['path']}")
+        elif d and d.get('refused'):
+            refused += 1
+            lines.append(f"  {'REFUSED':14} {n:36} REFUSED — {d['refused']}: {d['reason']}")
+            for c in d.get('candidates') or []:
+                lines.append(f"  {'':14} {'':36}   {c['path']}  "
+                             f"{c['page'][0]:g}×{c['page'][1]:g} pt ({c['paper']})")
+        else:
+            missing += 1
+            lines.append(f"  {'NOT FOUND':14} {n:36} -")
+    if missing or refused:
+        lines.append('')
+    if missing:
+        lines.append(f"  {missing} of {len(names)} not found in any configured tree")
+    if refused:
+        lines.append(f"  {refused} of {len(names)} REFUSED — found in a configured tree and "
+                     f"declined; see each reason above")
+    return lines, missing, refused
+
+
 def main(book, names):
     cfg = load_config()
     trees = load_trees(book, cfg)
-    prec = cfg['editionPrecedence']
-    sup = cfg.get('supersededArtwork')
-    missing = 0
-    for n in names:
-        p, key = resolve(n, trees, prec, superseded=sup)
-        if p:
-            print(f"  {key:14} {n:36} {p}")
-        else:
-            missing += 1
-            print(f"  {'NOT FOUND':14} {n:36} -")
-    if missing:
-        print(f"\n  {missing} of {len(names)} not found in any configured tree")
-    return 1 if missing else 0
+    lines, missing, refused = human_report(names, trees, cfg['editionPrecedence'],
+                                           superseded=cfg.get('supersededArtwork'))
+    print('\n'.join(lines))
+    # Non-zero whenever a name did not resolve, as before; the two count lines say which kind.
+    return 1 if (missing or refused) else 0
 
 
 if __name__ == '__main__':

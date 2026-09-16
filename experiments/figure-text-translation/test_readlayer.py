@@ -960,6 +960,20 @@ def add_eight_at_57(pdf, fobj):
     enc['/Differences'] = pikepdf.Array(list(enc['/Differences']) + [57, pikepdf.Name('/eight')])
 
 
+def plant_eight_in_second_font(src, dst):
+    """Save `src` to `dst` with `88` drawn at page scope in LiberationSans (`/R12`), whose WinAnsi
+    code 56 reads `8` — the very character MathematicalPi's repair rewrites. PentIso's other fonts
+    draw no `8` at all, so without this plant a repair leaking into every font would change
+    nothing that could be seen. -> the page-scope font resource names, for the non-vacuity check."""
+    with pikepdf.open(str(src)) as pdf:
+        page = pikepdf.Page(pdf.pages[0])
+        names = sorted(str(k) for k in page.obj['/Resources']['/Font'].keys())
+        page.contents_add(pdf.make_stream(b'BT /R12 10 Tf 1 0 0 1 12 12 Tm (88) Tj ET\n'),
+                          prepend=False)
+        pdf.save(str(dst))
+    return names
+
+
 def mpi_key(meta):
     keys = [k for k, v in meta['fonts'].items() if 'MathematicalPi' in v['base']]
     return keys[0] if len(keys) == 1 else None
@@ -977,6 +991,7 @@ try:
                             ('ambiguous', add_eight_at_57)]:
             dst = S15 / f'{tag}.pdf'
             variants[tag] = (mpi_variant(src15, dst, mutate), dst)
+        planted_fonts = plant_eight_in_second_font(src15, S15 / 'planted.pdf')
     mpi_raw = [c['text'] for c in raw_chars if 'MathematicalPi' in c['fontname']]
     check('15a PLANT — pdfplumber reads the MathematicalPi glyph as "8", three times',
           mpi_raw == ['8', '8', '8'], f'{mpi_raw!r}')
@@ -994,10 +1009,28 @@ try:
           meta['glyph_repairs'] == {key: {'H11034': 3}}
           and meta['glyph_unrepaired'] == {} and meta['glyph_ambiguous'] == {},
           f"{meta['glyph_repairs']} {meta['glyph_unrepaired']} {meta['glyph_ambiguous']}")
-    other_run_chars = sum(len(r['text']) for r in runs if r['font'] != key)
-    other_raw_chars = sum(len(c['text']) for c in raw_chars if 'MathematicalPi' not in c['fontname'])
-    check('15e CONTROL — every other font\'s text is untouched (same character count)',
-          other_run_chars == other_raw_chars, f'{other_run_chars} vs {other_raw_chars}')
+    # 15e compares BY VALUE, on a planted `8` in a second font. It used to compare a character
+    # COUNT, and PentIso's other fonts draw no `8`, so a repair leaking into every font left both
+    # the count and the text unchanged — an instrument that could not fail. "Without the repair
+    # plan in force" is the same read with `_repair_plan` stubbed to plan nothing.
+    def text_of(runs_, meta_, base):
+        return ''.join(r['text'] for r in runs_ if base in meta_['fonts'][r['font']]['base'])
+
+    runs_p, meta_p, _ = RL.read(str(S15 / 'planted.pdf'))
+    real_plan = RL._repair_plan
+    RL._repair_plan = lambda fobj, unmapped: {}
+    try:
+        runs_n, meta_n, _ = RL.read(str(S15 / 'planted.pdf'))
+    finally:
+        RL._repair_plan = real_plan
+    lib_with, lib_without = text_of(runs_p, meta_p, 'LiberationSans'), text_of(runs_n, meta_n, 'LiberationSans')
+    mpi_with, mpi_without = text_of(runs_p, meta_p, 'MathematicalPi'), text_of(runs_n, meta_n, 'MathematicalPi')
+    check('15e PLANT — the second font (LiberationSans, /R12) really draws "8" in the planted figure',
+          '/R12' in planted_fonts and lib_without.count('8') == 2, f'{planted_fonts} {lib_without.count("8")}× "8"')
+    check('15e CONTROL — the second font\'s text is byte-identical with and without the repair plan',
+          lib_with == lib_without, f'{lib_with[-40:]!r} vs {lib_without[-40:]!r}')
+    check('15e ... while in the SAME read MathematicalPi\'s "8" became "°" (and stays "8" with no plan)',
+          mpi_with == '°°°' and mpi_without == '888', f'{mpi_with!r} / {mpi_without!r}')
 
     runs_t, meta_t, _ = RL.read(str(variants['tounicode'][1]))
     kt = mpi_key(meta_t)

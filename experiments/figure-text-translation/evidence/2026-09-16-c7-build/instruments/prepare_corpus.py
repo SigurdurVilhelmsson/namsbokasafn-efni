@@ -47,7 +47,8 @@ def lookup(name, trees, cfg):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--label', required=True, choices=['before', 'after'])
+    # 'after-fix': the fix wave after the final review (P14) — same instrument, a third label.
+    ap.add_argument('--label', required=True, choices=['before', 'after', 'after-fix'])
     args = ap.parse_args()
     out = HERE.parents[1] / 'reports' / args.label
     (out / 'blocks').mkdir(parents=True, exist_ok=True)
