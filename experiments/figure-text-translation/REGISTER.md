@@ -59,7 +59,7 @@ a [USER]-paid side experiment on figure-label MT context: [`evidence/2026-09-15-
 | `figcontainers.py` | ✅ owns per-block container detection for translated labels — box, cell or open, with the open label's free space; never raises | `evidence/2026-09-14-t23-build/VERIFICATION.md` |
 | `figlayout.py` | ✅ owns the layout decision for a translated label — line partition, size, anchor, displacement, overflow — including R9 binding and R13's rules A and E | both `VERIFICATION.md` files |
 | `figcolour.py` | ✅ owns the one text-fill → RGB conversion, the way poppler draws each colour space (R14) | `evidence/2026-09-15-t23-review-fixes/VERIFICATION.md` |
-| driver spend gate | ❌ blind to MathematicalPi `°`→`8` and to production pages resolved as figures | unchanged by this branch |
+| driver spend gate | ✅ repairs misread symbol glyphs (`figglyphs.py`), refuses production pages at resolution, lists would-buy figures with billable characters — built + verified on `feat/c140-c7-spend-gates` (§C140 ⑦, not yet merged) | `evidence/2026-09-16-c7-build/VERIFICATION.md` |
 
 ⚠️ **Campaign status — merge, deploy, the publication call and every open or logged item — is the campaign register's
 (§C140), not this file's.**

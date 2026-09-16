@@ -61,6 +61,18 @@ python3 sources.py efnafraedi-2e CNX_Chem_01_01_SciMethod
 `figure-text.config.json` holds `editionPrecedence`. It does **not** hold the filename
 suffix — that is owned by `tools/generate-image-mapping.js` (`DEFAULT_SUFFIX`).
 
+**§C140 ⑦ — a resolved candidate can still be the wrong kind of file: a production page, not a
+figure.** The resolver takes the first candidate an edition offers in format order, and that can be a
+Letter-size Art Dialogue Sheet or InDesign placement page rather than the real vector artwork — both
+classify `translated`, so a paid run would buy sheet chrome and a filename. `sources.py`'s
+`resolve_detail()` checks each candidate's page size against known standard paper sizes and skips a
+page-sized candidate for the next one in format order; if every candidate the edition offers is a page,
+the figure is **refused** with reason `production-page` rather than resolved. It does **not** fall
+through to a lower-precedence edition — the edition still decides *which picture*. `resolve()` keeps its
+old `(path, edition)` signature for existing callers; `resolve_detail()` is the new entry point that also
+reports a refusal, so a caller can tell "no artwork anywhere" apart from "the only artwork here is a
+production page". Measured, frozen: [`evidence/2026-09-16-c7-build/`](evidence/2026-09-16-c7-build/README.md).
+
 ## Where the translated file goes
 
 Nowhere in this directory. The repo already has the mechanism, and it predates this
@@ -164,6 +176,17 @@ published.jpg ──check.py─────────────────�
 | `make_fixture.py` | regenerates `fixtures/fixture_figure.pdf`, the read-layer positive control. Imports nothing from this tree on purpose, so the fixture cannot drift with the code it tests |
 | `read_layer_accept.py` | the acceptance harness that **judges** a read layer (baseline vs candidate, three-valued outcome) and owns the read-layer interface contract. It ships no reader |
 | `text-coverage-census.py` | five-way census over one stated population — every `<image src>` basename a book's CNXML references, resolved through `sources.py`. `extract.py`'s view vs poppler's; a disagreement is the finding |
+
+**§C140 ⑦ — glyphs the read layer repairs.** A few MathematicalPi fonts in the corpus carry a
+`/Differences` encoding using Mathematical Pi's own glyph names (`H11034`, `H11002`, `H9261`) with no
+`/ToUnicode` map; pdfminer cannot map those names and silently keeps the base WinAnsi character for the
+code, so `readlayer.py` reads `°` as `8` and `−` as `2`. `figglyphs.py` owns the one repair table
+(`GLYPH_REPAIRS`), consulted inside `readlayer._prepare` for a character whose font entry carries
+unmapped glyphs. **An entry is added only with a raster confirming what the glyph actually is** — what
+other Mathematical Pi H-numbers mean is not known, and a name absent from the table, or one that is
+ambiguous within its font, is left as pdfminer's own `(cid:c)` placeholder and fails closed through the
+existing undecoded-hold path — held, never drawn, never bought — rather than shipping the wrong
+character. Measured, frozen: [`evidence/2026-09-16-c7-build/`](evidence/2026-09-16-c7-build/README.md).
 
 ## Running it
 

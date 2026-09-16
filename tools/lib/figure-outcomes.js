@@ -138,8 +138,8 @@ export function verdict(tally, enumeratedCount, extra = {}) {
   if (tally.unresolved > 0) {
     reasons.push(
       `NOTE (not a failure): ${tally.unresolved} figure(s) unresolved — the artwork delivery has ` +
-        `a hole here, or two figures would have shared one file and the run refused to guess ` +
-        `(the report names which)`
+        `a hole here, or the run refused the artwork it found (two figures sharing one file, a ` +
+        `production page, or a known-superseded picture); the report names which`
     );
   }
   // 🔴 Same shape, different cause: the artwork is present and carries text we could not decode.

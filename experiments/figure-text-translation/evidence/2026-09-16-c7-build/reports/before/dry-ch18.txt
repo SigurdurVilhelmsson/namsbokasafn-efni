@@ -1,0 +1,150 @@
+DRY RUN — nothing bought, nothing written under books/
+efnafraedi-2e ch18: 92 figure(s) across 13 module(s)
+
+    21  translated
+    18  copied-photo
+    33  copied-textless
+    20  unresolved
+    92  = enumerated
+
+  unresolved — the artwork delivery has a hole here (20):
+    CNX_Chem_18_00_SilWafer
+    CNX_Chem_18_01_LithiumRx
+    CNX_Chem_18_01_AlkMetStor
+    CNX_Chem_18_01_NaFlame
+    CNX_Chem_18_01_ZincHCl
+    CNX_Chem_18_01_MercuryRx
+    CNX_Chem_18_01_TinChlorid
+    CNX_Chem_18_03_BLewisAcid_img
+    CNX_Chem_18_02_Glass
+    CNX_Chem_18_03_Exercise2a_img
+    CNX_Chem_18_03_Exercise2c_img
+    CNX_Chem_18_03_Exercise2d_img
+    CNX_Chem_18_03_Exercise2e_img
+    CNX_Chem_18_05_IronHCl
+    CNX_Chem_18_05_LiqHliqO
+    CNX_Chem_18_06_CarbonCO2
+    CNX_Chem_18_07_N2O2
+    CNX_Chem_18_09_ZnHydroxid
+    CNX_Chem_18_11_Gases
+    CNX_Chem_18_11_PercipHgI2
+  copied figures, with the counts the read layer produced (51):
+    copied-textless  chars=1 formText=0 images=1 paint=2 held=1v/0u/0f  CNX_Chem_18_01_CalciWater
+    copied-photo     chars=12 formText=0 images=4 paint=0 held=4v/0u/0f  CNX_Chem_18_03_Structures
+    copied-textless  chars=12 formText=0 images=2 paint=33 held=12v/0u/0f  CNX_Chem_18_03_BIcosahed
+    copied-textless  chars=18 formText=6 images=0 paint=15 held=9v/0u/0f  CNX_Chem_18_02_Boricacid_img
+    copied-textless  chars=6 formText=0 images=0 paint=30 held=6v/0u/0f  CNX_Chem_18_03_Exercise2b_img
+    copied-textless  chars=78 formText=0 images=0 paint=69 held=18v/0u/0f  CNX_Chem_18_04_OxStNonmts
+    copied-photo     chars=12 formText=0 images=4 paint=0 held=4v/0u/0f  CNX_Chem_18_04_Carbonform
+    copied-textless  chars=6 formText=0 images=2 paint=6885 held=2v/0u/0f  CNX_Chem_18_04_unhyporbC
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_18_04_Buckyball
+    copied-photo     chars=6 formText=0 images=3 paint=0 held=2v/0u/0f  CNX_Chem_18_04_Nanotube
+    copied-photo     chars=12 formText=0 images=4 paint=0 held=4v/0u/0f  CNX_Chem_18_04_Phosphorus
+    copied-photo     chars=12 formText=0 images=12 paint=0 held=4v/0u/0f  CNX_Chem_18_04_Sulfrchain
+    copied-textless  chars=0 formText=0 images=1 paint=2 held=0v/0u/0f  CNX_Chem_18_05_Ammonia
+    copied-photo     chars=6 formText=0 images=2 paint=0 held=2v/0u/0f  CNX_Chem_18_06_Cave
+    copied-textless  chars=3 formText=0 images=3 paint=3 held=3v/0u/0f  CNX_Chem_18_07_molecreso
+    copied-textless  chars=5 formText=0 images=3 paint=3 held=5v/0u/0f  CNX_Chem_18_07_molecreso2
+    copied-textless  chars=0 formText=0 images=1 paint=4 held=0v/0u/0f  CNX_Chem_18_07_CuHNO32NO2
+    copied-textless  chars=9 formText=0 images=4 paint=3 held=9v/0u/0f  CNX_Chem_18_07_N2O4
+    copied-textless  chars=4 formText=3 images=0 paint=9 held=3v/0u/0f  CNX_Chem_18_07_Exercise1a_img
+    copied-textless  chars=6 formText=6 images=0 paint=33 held=6v/0u/0f  CNX_Chem_18_07_Exercise1b_img
+    copied-textless  chars=4 formText=4 images=0 paint=8 held=4v/0u/0f  CNX_Chem_18_07_Exercise1c_img
+    copied-textless  chars=4 formText=4 images=0 paint=23 held=4v/0u/0f  CNX_Chem_18_07_Exercise1d_img
+    copied-textless  chars=12 formText=12 images=0 paint=46 held=12v/0u/0f  CNX_Chem_18_07_Exercise1e_img
+    copied-textless  chars=6 formText=6 images=0 paint=30 held=6v/0u/0f  CNX_Chem_18_07_Exercise5a_img
+    copied-textless  chars=8 formText=8 images=0 paint=36 held=8v/0u/0f  CNX_Chem_18_07_Exercise5b_img
+    copied-textless  chars=4 formText=4 images=0 paint=14 held=4v/0u/0f  CNX_Chem_18_07_Exercise5c_img
+    copied-photo     chars=7 formText=0 images=1 paint=0 held=7v/0u/0f  CNX_Chem_18_08_P4S3
+    copied-photo     chars=24 formText=0 images=2 paint=0 held=24v/0u/0f  CNX_Chem_18_08_P4O6P4O10
+    copied-photo     chars=18 formText=0 images=2 paint=0 held=10v/0u/0f  CNX_Chem_18_08_PCl3PCl5
+    copied-textless  chars=4 formText=4 images=0 paint=5 held=4v/0u/0f  CNX_Chem_18_08_Exercise1a_img
+    copied-textless  chars=6 formText=6 images=0 paint=6 held=6v/0u/0f  CNX_Chem_18_08_Exercise1b_img
+    copied-textless  chars=6 formText=6 images=0 paint=9 held=6v/0u/0f  CNX_Chem_18_08_Exercise1c_img
+    copied-textless  chars=7 formText=6 images=0 paint=30 held=5v/0u/0f  CNX_Chem_18_08_Exercise1d_img
+    copied-textless  chars=6 formText=6 images=0 paint=35 held=6v/0u/0f  CNX_Chem_18_08_Exercise1e_img
+    copied-textless  chars=3 formText=0 images=3 paint=3 held=3v/0u/0f  CNX_Chem_18_09_Ozone
+    copied-textless  chars=0 formText=0 images=1 paint=4 held=0v/0u/0f  CNX_Chem_18_09_Sunblock
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_18_09_CaOH2
+    copied-textless  chars=3 formText=0 images=3 paint=3 held=3v/0u/0f  CNX_Chem_18_09_Sulfrdiox
+    copied-textless  chars=4 formText=0 images=4 paint=6 held=4v/0u/0f  CNX_Chem_18_09_Sulfrtriox
+    copied-photo     chars=15 formText=0 images=2 paint=0 held=8v/0u/0f  CNX_Chem_18_09_Cl2OClO2
+    copied-textless  chars=5 formText=0 images=4 paint=3 held=5v/0u/0f  CNX_Chem_18_09_HNO3
+    copied-photo     chars=5 formText=0 images=1 paint=0 held=5v/0u/0f  CNX_Chem_18_09_NitrosAcid
+    copied-photo     chars=8 formText=0 images=2 paint=0 held=7v/0u/0f  CNX_Chem_18_09_Phosphate
+    copied-photo     chars=7 formText=0 images=2 paint=0 held=7v/0u/0f  CNX_Chem_18_09_PhosphAcid
+    copied-photo     chars=7 formText=0 images=1 paint=0 held=7v/0u/0f  CNX_Chem_18_09_SulfrAcid
+    copied-textless  chars=11 formText=6 images=1 paint=712 held=9v/0u/0f  CNX_Chem_18_09_ChloritIon
+    copied-textless  chars=13 formText=7 images=1 paint=219 held=11v/0u/0f  CNX_Chem_18_09_ClO3Ion
+    copied-textless  chars=14 formText=0 images=1 paint=34 held=12v/0u/0f  CNX_Chem_18_09_PerchloIon
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_18_10_Volcano
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_18_11_SaltMine
+    copied-textless  chars=27 formText=0 images=3 paint=1037 held=21v/0u/0f  CNX_Chem_18_11_IF3IF5IF7
+  figure-prepare.py warnings — 263 across 64 figure(s), its own !! lines:
+    CNX_Chem_18_01_PeriodicPU3: subset font PAGE/R9
+    CNX_Chem_18_01_CalciWater: subset font PAGE/R10
+    CNX_Chem_18_02_HallHerCell: subset font PAGE/T1_0; subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_18_03_Structures: subset font PAGE/TT0
+    CNX_Chem_18_03_BIcosahed: subset font PAGE/R16
+    CNX_Chem_18_03_SiPurif: subset font PAGE/R45
+    CNX_Chem_18_02_Boricacid_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/TT0
+    CNX_Chem_18_03_BorateAnio: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm14/TT0; subset font PAGE/Fm15/TT0; subset font PAGE/Fm16/TT0; subset font PAGE/Fm17/TT0; subset font PAGE/Fm18/TT0; subset font PAGE/Fm19/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm20/TT0; subset font PAGE/Fm21/TT0; subset font PAGE/Fm22/TT0; subset font PAGE/Fm23/TT0; subset font PAGE/Fm24/TT0; subset font PAGE/Fm25/TT0; subset font PAGE/Fm26/TT0; subset font PAGE/Fm27/TT0; subset font PAGE/Fm28/TT0; subset font PAGE/Fm29/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm30/TT0; subset font PAGE/Fm31/TT0; subset font PAGE/Fm32/TT0; subset font PAGE/Fm33/TT0; subset font PAGE/Fm34/TT0; subset font PAGE/Fm35/TT0; subset font PAGE/Fm36/TT0; subset font PAGE/Fm37/TT0; subset font PAGE/Fm38/TT0; subset font PAGE/Fm39/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm40/TT0; subset font PAGE/Fm41/TT0; subset font PAGE/Fm42/TT0; subset font PAGE/Fm43/TT0; subset font PAGE/Fm44/TT0; subset font PAGE/Fm45/TT0; subset font PAGE/Fm46/TT0; subset font PAGE/Fm47/TT0; subset font PAGE/Fm48/TT0; subset font PAGE/Fm49/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm50/TT0; subset font PAGE/Fm51/TT0; subset font PAGE/Fm52/TT0; subset font PAGE/Fm53/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_18_03_CO2vsSiO2: subset font PAGE/R13; subset font PAGE/R15
+    CNX_Chem_18_03_Exercise2b_img: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_18_04_OxStNonmts: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_18_04_Carbonform: subset font PAGE/TT0
+    CNX_Chem_18_04_unhyporbC: subset font PAGE/TT0
+    CNX_Chem_18_04_Nanotube: subset font PAGE/F1
+    CNX_Chem_18_04_Phosphorus: subset font PAGE/TT0
+    CNX_Chem_18_04_Sulfrchain: subset font PAGE/TT0
+    CNX_Chem_18_05_Electrolys: subset font PAGE/TT0; subset font PAGE/TT1; subset font PAGE/TT2
+    CNX_Chem_18_05_AmmonDeriv_img: subset font PAGE/R9
+    CNX_Chem_18_06_Cave: subset font PAGE/TT0
+    CNX_Chem_18_07_Nitrogen: subset font PAGE/R1165; subset font PAGE/R1170; unrecognised colour space Separation:1 (45)
+    CNX_Chem_18_07_molecreso: subset font PAGE/R12
+    CNX_Chem_18_07_molecreso2: subset font PAGE/R12
+    CNX_Chem_18_07_N2O4: subset font PAGE/R13
+    CNX_Chem_18_07_N2O5: subset font PAGE/TT0
+    CNX_Chem_18_07_Exercise1a_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0
+    CNX_Chem_18_07_Exercise1b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0
+    CNX_Chem_18_07_Exercise1c_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0
+    CNX_Chem_18_07_Exercise1d_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0
+    CNX_Chem_18_07_Exercise1e_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_18_07_Exercise5a_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0
+    CNX_Chem_18_07_Exercise5b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0
+    CNX_Chem_18_07_Exercise5c_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0
+    CNX_Chem_18_08_P4S3: subset font PAGE/R10
+    CNX_Chem_18_08_P4O6P4O10: subset font PAGE/R11
+    CNX_Chem_18_08_PCl3PCl5: subset font PAGE/R11
+    CNX_Chem_18_08_Exercise1a_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0
+    CNX_Chem_18_08_Exercise1b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0
+    CNX_Chem_18_08_Exercise1c_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0
+    CNX_Chem_18_08_Exercise1d_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0
+    CNX_Chem_18_08_Exercise1e_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0
+    CNX_Chem_18_08_Exercise8a_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0
+    CNX_Chem_18_08_Exercise8b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0
+    CNX_Chem_18_08_Exercise8c_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0
+    CNX_Chem_18_08_Exercise8d_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0
+    CNX_Chem_18_09_Ozone: subset font PAGE/R10
+    CNX_Chem_18_09_Limelight: subset font PAGE/R30
+    CNX_Chem_18_09_Sulfrdiox: subset font PAGE/R12
+    CNX_Chem_18_09_Sulfrtriox: subset font PAGE/R13
+    CNX_Chem_18_09_Cl2OClO2: subset font PAGE/R11; subset font PAGE/R13
+    CNX_Chem_18_09_HNO3: subset font PAGE/R13
+    CNX_Chem_18_09_NitrosAcid: subset font PAGE/R10
+    CNX_Chem_18_09_Phosphate: subset font PAGE/R11
+    CNX_Chem_18_09_PhosphAcid: subset font PAGE/R11
+    CNX_Chem_18_09_SulfrAcid: subset font PAGE/R10
+    CNX_Chem_18_09_ChloritIon: subset font PAGE/Fm10/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0; subset font PAGE/TT0
+    CNX_Chem_18_09_ClO3Ion: subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0; subset font PAGE/TT0
+    CNX_Chem_18_09_PerchloIon: subset font PAGE/R10; subset font PAGE/R12; subset font PAGE/R14
+    CNX_Chem_18_10_FrachMine: subset font PAGE/R27
+    CNX_Chem_18_11_IF3IF5IF7: subset font PAGE/R12; subset font PAGE/R14
+    CNX_Chem_18_11_Exercise4a_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0
+    CNX_Chem_18_11_Exercise4b_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0
+    CNX_Chem_18_11_Exercise4c_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0
+    CNX_Chem_18_11_Exercise4d_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0
+    CNX_Chem_18_11_Exercise4e_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0
+
+VERDICT ok
+  NOTE (not a failure): 20 figure(s) unresolved — the artwork delivery has a hole here, or two figures would have shared one file and the run refused to guess (the report names which)

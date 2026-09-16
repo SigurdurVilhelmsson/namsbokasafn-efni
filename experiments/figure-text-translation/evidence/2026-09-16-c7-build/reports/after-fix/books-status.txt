@@ -1,0 +1,3 @@
+# cwd: repo root, after the fix-wave prepare, dry runs and vitest run
+$ git status --porcelain -- books/; echo "exit=$? lines=$(git status --porcelain -- books/ | wc -l)"
+exit=0 lines=0

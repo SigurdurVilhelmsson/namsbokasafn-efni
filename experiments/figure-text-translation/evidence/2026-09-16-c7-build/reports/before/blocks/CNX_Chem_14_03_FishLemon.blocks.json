@@ -1,0 +1,111 @@
+[
+ {
+  "key": "CH3COOH",
+  "english": "CH3COOH",
+  "lines": [
+   "CH3COOH"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "CH3COO–",
+  "english": "CH3COO–",
+  "lines": [
+   "CH3COO–"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "NH2CH2CH2CH2CH2NH2",
+  "english": "NH2CH2CH2CH2CH2NH2",
+  "lines": [
+   "NH2CH2CH2CH2CH2NH2"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "NH3|+CH2CH2CH2CH2NH2",
+  "english": "NH3 +CH2CH2CH2CH2NH2",
+  "lines": [
+   "NH3",
+   "+CH2CH2CH2CH2NH2"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "+",
+  "english": "+",
+  "lines": [
+   "+"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "+",
+  "english": "+",
+  "lines": [
+   "+"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "Acetic acid",
+  "english": "Acetic acid",
+  "lines": [
+   "Acetic acid"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Acetate ion",
+  "english": "Acetate ion",
+  "lines": [
+   "Acetate ion"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Putrescine",
+  "english": "Putrescine",
+  "lines": [
+   "Putrescine"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Putrescinium ion",
+  "english": "Putrescinium ion",
+  "lines": [
+   "Putrescinium ion"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "+",
+  "english": "+",
+  "lines": [
+   "+"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "+",
+  "english": "+",
+  "lines": [
+   "+"
+  ],
+  "arc": false,
+  "send": false
+ }
+]

@@ -1,0 +1,113 @@
+DRY RUN — nothing bought, nothing written under books/
+efnafraedi-2e ch10: 82 figure(s) across 7 module(s)
+
+    40  translated
+     3  copied-photo
+    10  copied-textless
+    29  unresolved
+    82  = enumerated
+
+  unresolved — the artwork delivery has a hole here (29):
+    CNX_Chem_10_00_Punch
+    CNX_Chem_10_01_WaterPhase
+    CNX_Chem_10_01_ButanePhase
+    CNX_Chem_10_01_BoilPoints_img
+    CNX_Chem_10_01_HydrideBP1
+    CNX_Chem_10_01_HydrideBP2
+    CNX_Chem_10_01_DNA
+    CNX_Chem_10_01_DNA2
+    CNX_Chem_10_01_AceticAcid_img
+    CNX_Chem_10_02_Viscosity
+    CNX_Chem_10_02_Droplet
+    CNX_Chem_10_02_Strider
+    CNX_Chem_10_02_Meniscus
+    CNX_Chem_10_02_BloodDraw
+    CNX_Chem_10_02_Needlefloa_img
+    CNX_Chem_10_03_Ethanol_img
+    CNX_Chem_10_03_VapPress2
+    CNX_Chem_10_03_Evap
+    CNX_Chem_10_03_MeltingIce
+    CNX_Chem_10_03_Sublimtn
+    CNX_Chem_10_03_PhaseChng
+    CNX_Chem_10_04_PhaseDi
+    CNX_Chem_10_04_H2OPhasDi2
+    CNX_Chem_10_04_FreezeDry
+    CNX_Chem_10_04_IceMelt
+    CNX_Chem_10_04_CritFluid
+    CNX_Chem_10_04_CPhaseDi_img
+    CNX_Chem_10_06_FcCntrdCbc
+    CNX_Chem_10_06_RFranklin
+  would need an image-mapping.json entry minted before publish (7):
+    CNX_Chem_10_03_VapPress3
+    CNX_Chem_10_03_HeatCurve
+    CNX_Chem_10_04_Ex06answer_img
+    CNX_Chem_10_04_Exercise10b_img
+    CNX_Chem_10_04_Exercise10c_img
+    CNX_Chem_10_05_TypesSol
+    CNX_Chem_10_06_ConDec
+  copied figures, with the counts the read layer produced (13):
+    copied-textless  chars=16 formText=0 images=0 paint=15 held=8v/0u/0f  CNX_Chem_10_01_DipDip
+    copied-textless  chars=15 formText=0 images=5 paint=13 held=14v/0u/0f  CNX_Chem_10_01_HBonding
+    copied-textless  chars=9 formText=0 images=0 paint=22 held=8v/0u/0f  CNX_Chem_10_01_Aminacidch_img
+    copied-textless  chars=19 formText=0 images=15 paint=27 held=19v/0u/0f  CNX_Chem_10_02_Wicking
+    copied-photo     chars=6 formText=0 images=3 paint=0 held=2v/0u/0f  CNX_Chem_10_05_BoronOxide
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_10_05_IonicSolid
+    copied-photo     chars=0 formText=0 images=1 paint=0 held=0v/0u/0f  CNX_Chem_10_05_Metallic
+    copied-textless  chars=0 formText=0 images=0 paint=2011 held=0v/0u/0f  CNX_Chem_10_06_SimpleCub1
+    copied-textless  chars=6 formText=0 images=0 paint=746 held=4v/0u/0f  CNX_Chem_10_06_SimpleCub2
+    copied-textless  chars=2 formText=0 images=0 paint=30 held=2v/0u/0f  CNX_Chem_10_06_SimpCube_img
+    copied-textless  chars=4 formText=0 images=0 paint=207 held=3v/0u/0f  CNX_Chem_10_06_Ex100602_img
+    copied-textless  chars=6 formText=0 images=0 paint=30 held=6v/0u/0f  CNX_Chem_10_06_GenUnitCll
+    copied-textless  chars=6 formText=0 images=0 paint=31076 held=5v/0u/0f  CNX_Chem_10_06_LiClstrctr
+  figure-prepare.py warnings — 77 across 48 figure(s), its own !! lines:
+    CNX_Chem_10_01_KMTPhases1: subset font PAGE/R9
+    CNX_Chem_10_01_IntravInter: subset font PAGE/R10; subset font PAGE/R12
+    CNX_Chem_10_01_DispForces: subset font PAGE/R24; subset font PAGE/R26; subset font PAGE/R28; subset font PAGE/R30
+    CNX_Chem_10_01_PentIso: subset font PAGE/R12; subset font PAGE/R14; subset font PAGE/R16
+    CNX_Chem_10_01_Geckos: subset font PAGE/R292
+    CNX_Chem_10_01_DipDip: subset font PAGE/R28; subset font PAGE/R30
+    CNX_Chem_10_01_HBonding: subset font PAGE/R14
+    CNX_Chem_10_01_Aminacidch_img: subset font PAGE/R9
+    CNX_Chem_10_02_CapRise: subset font PAGE/R104
+    CNX_Chem_10_02_Testtubeoi_img: subset font PAGE/R175
+    CNX_Chem_10_02_Question4_img: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_10_03_VapPress3: subset font PAGE/R11; subset font PAGE/R13; subset font PAGE/R9
+    CNX_Chem_10_03_HeatCurve: subset font PAGE/R11; subset font PAGE/R13
+    CNX_Chem_10_04_CO2PhasDi: subset font PAGE/R18
+    CNX_Chem_10_04_SupCritCof: subset font PAGE/R23; subset font PAGE/R25
+    CNX_Chem_10_04_Ex06answer_img: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_10_04_Exercise10a_img: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_10_04_Exercise10b_img: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_10_04_Exercise10c_img: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_10_04_Exercise10d_img: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_10_05_TypesSol: subset font PAGE/R9
+    CNX_Chem_10_05_BoronOxide: subset font PAGE/R12
+    CNX_Chem_10_05_NtwrkSolid: subset font PAGE/R17
+    CNX_Chem_10_05_MolSolids: subset font PAGE/R9
+    CNX_Chem_10_05_Carbon: subset font PAGE/R25; subset font PAGE/R31; subset font PAGE/R33; subset font PAGE/R35
+    CNX_Chem_10_05_Graphene: subset font PAGE/R12
+    CNX_Chem_10_05_CrystDfcts: subset font PAGE/R9
+    CNX_Chem_10_06_UnitCell1: subset font PAGE/R9
+    CNX_Chem_10_06_SimpleCub2: subset font PAGE/R9
+    CNX_Chem_10_06_SimpleCub3: subset font PAGE/R74
+    CNX_Chem_10_06_SimpCube_img: subset font PAGE/R24
+    CNX_Chem_10_06_CubUntCll: subset font PAGE/R9
+    CNX_Chem_10_06_BdyCntrdCb: subset font PAGE/R97
+    CNX_Chem_10_06_CbcCltPckd: subset font PAGE/R10
+    CNX_Chem_10_06_ClstPckng2: subset font PAGE/R9
+    CNX_Chem_10_06_Ex100602_img: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_10_06_GenUnitCll: subset font PAGE/R9
+    CNX_Chem_10_06_CrystalSys: subset font PAGE/R11; subset font PAGE/R13; subset font PAGE/R15; subset font PAGE/R17; subset font PAGE/R9
+    CNX_Chem_10_06_TetOctHole: subset font PAGE/R9
+    CNX_Chem_10_06_IntIonst: subset font PAGE/R9
+    CNX_Chem_10_07_CsClStrctr: subset font PAGE/R9
+    CNX_Chem_10_07_NaClStrctr: subset font PAGE/R9
+    CNX_Chem_10_06_ZnSStrctr: subset font PAGE/R9
+    CNX_Chem_10_07_CaF2Strctr: subset font PAGE/R9
+    CNX_Chem_10_06_LiClstrctr: subset font PAGE/R37; subset font PAGE/R39
+    CNX_Chem_10_06_ConDec: subset font PAGE/R11; subset font PAGE/R9
+    CNX_Chem_10_06_XRyDiff1: subset font PAGE/R24; subset font PAGE/R26; subset font PAGE/R28
+    CNX_Chem_10_07_XRyDiff2: subset font PAGE/R92
+
+VERDICT ok
+  NOTE (not a failure): 29 figure(s) unresolved — the artwork delivery has a hole here, or two figures would have shared one file and the run refused to guess (the report names which)

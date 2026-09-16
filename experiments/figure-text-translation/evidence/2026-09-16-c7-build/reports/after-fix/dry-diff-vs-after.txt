@@ -1,0 +1,14 @@
+# cwd: experiments/figure-text-translation/evidence/2026-09-16-c7-build
+$ for ch in 5 9 10 11 18; do echo "== ch$ch"; diff reports/after/dry-ch$ch.txt reports/after-fix/dry-ch$ch.txt; done; diff reports/after/dry-exit.txt reports/after-fix/dry-exit.txt && echo "dry-exit.txt identical"
+== ch5
+== ch9
+== ch10
+== ch11
+17a18,19
+>   ⚠️ live translated copies that are a whole paper-size sheet, not a figure (1) — this run does not retire them; a publication step does:
+>     media/CNX_Chem_11_04_rvosmosis_IS.svg  612×792 pt (Letter)  mapping row present  CNX_Chem_11_04_rvosmosis
+== ch18
+30a31,32
+>   ⚠️ live translated copies that are a whole paper-size sheet, not a figure (1) — this run does not retire them; a publication step does:
+>     media/CNX_Chem_18_07_N2O5_IS.svg  612×792 pt (Letter)  mapping row present  CNX_Chem_18_07_N2O5
+dry-exit.txt identical

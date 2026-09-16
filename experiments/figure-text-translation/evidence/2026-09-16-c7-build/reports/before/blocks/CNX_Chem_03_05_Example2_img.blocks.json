@@ -1,0 +1,53 @@
+[
+ {
+  "key": "Mass of|solution (g)",
+  "english": "Mass of solution (g)",
+  "lines": [
+   "Mass of",
+   "solution (g)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Multiply by|mass percent as ratio|(g HCl/g solution)",
+  "english": "Multiply by mass percent as ratio (g HCl/g solution)",
+  "lines": [
+   "Multiply by",
+   "mass percent as ratio",
+   "(g HCl/g solution)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of|HCl (g)",
+  "english": "Mass of HCl (g)",
+  "lines": [
+   "Mass of",
+   "HCl (g)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Multiply by|density (g/mL)",
+  "english": "Multiply by density (g/mL)",
+  "lines": [
+   "Multiply by",
+   "density (g/mL)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Volume of|solution (mL)",
+  "english": "Volume of solution (mL)",
+  "lines": [
+   "Volume of",
+   "solution (mL)"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

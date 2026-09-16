@@ -79,6 +79,9 @@ import {
   buildMappingEntries,
   mergeMapping,
 } from './generate-image-mapping.js';
+import { dedupeSendBlocks } from '../experiments/figure-text-translation/translate-blocks.mjs';
+import { estimateIsk } from './lib/malstadur-api.js';
+import { openTagPattern } from './lib/cnxml-parser.js';
 
 const require = createRequire(import.meta.url);
 const { enumerateChapterImages } = require('./lib/figure-enumerate.cjs');
@@ -99,6 +102,8 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(HERE, '..');
 const EXPERIMENT_DIR = path.join(REPO_ROOT, 'experiments', 'figure-text-translation');
 const PYTHON = process.env.FIGTEXT_PYTHON || 'python3';
+/** The figure pipeline's config — the single owner of the paper-size table (§C140 ⑦). */
+const FIGURE_TEXT_CONFIG = path.join(EXPERIMENT_DIR, 'figure-text.config.json');
 
 /**
  * Render DPI for §C140 ⑩'s ring gate. 200 dpi is what every measurement behind that gate's
@@ -354,7 +359,8 @@ export function mappingPreflight(basename, { mapped, mintIndex }) {
  * The outcomes whose `image-mapping.json` row is INSPECTED. Not "the outcomes that end as a
  * file in `books/<slug>/media/`", which is what this comment used to say and is false:
  * `processFigureLive` returns at `rec.outcome !== 'translated'`, so THIS DRIVER PUBLISHES
- * NOTHING FOR A COPY — the reader keeps OpenStax's own artwork out of the media tree, and
+ * NOTHING FOR A COPY. ⚠️ That does not mean the reader gets OpenStax's artwork: an EARLIER run's
+ * `_IS.*` file and mapping row, where they exist, keep serving (§C140 ⑦). And
  * `ls books/efnafraedi-2e/media/` is all `*_IS.*` bar its housekeeping files.
  *
  * A copy is still inspected, and that is deliberate: a row whose `outputName` escapes
@@ -1248,8 +1254,12 @@ function processFigureLive(
   rec,
   { spawn, publish, readSidecar: readSidecarFor, args, bookDir, outDir }
 ) {
-  // Copies, failures and unresolved figures end at classification: there is no text to compose
-  // and nothing to publish that a reader is not already getting from the OpenStax media tree.
+  // Copies, failures and unresolved figures end at classification: this run composes and
+  // publishes nothing for them. ⚠️ That does NOT mean a reader gets OpenStax's own artwork: where
+  // an earlier run left a June `_IS.svg` and an image-mapping row, that copy stays live and keeps
+  // serving readers (rvosmosis, N2O5, BlastFurn are measured instances) — this run does not
+  // retire it, and `summarise` names it (§C140 ⑦). Only where no such copy exists is the
+  // reader's picture the OpenStax media file.
   if (rec.outcome !== 'translated') return;
   if (!rec.mapping) {
     rec.outcome = 'failed-publish';
@@ -1470,6 +1480,188 @@ function processFigureLive(
 }
 
 /**
+ * §C140 ⑦ — the operator-facing reason for artwork `sources.py` REFUSED. A refusal is not a hole:
+ * the delivery has a file, and the run declined it.
+ * @param {{refused: string, reason?: string, edition?: string, candidates?: Array<{path:string,page:number[],paper:string}>}} refusal
+ */
+export function refusalReason(refusal) {
+  if (refusal.refused === 'production-page') {
+    const found = (refusal.candidates || [])
+      .map((c) => `${c.path} (${c.page[0]}×${c.page[1]} pt, ${c.paper})`)
+      .join('; ');
+    return (
+      `REFUSED, not missing: the only artwork in ${refusal.edition} is a production page, not a ` +
+      `figure — ${found}. Nothing is bought or composed.`
+    );
+  }
+  if (refusal.refused === 'superseded') {
+    return `REFUSED, not missing: known-superseded artwork — ${refusal.reason}`;
+  }
+  return `REFUSED, not missing: ${refusal.refused}`;
+}
+
+/**
+ * §C140 ⑦ — WHERE a figure's live translated copy is: its image-mapping row's `outputName`, else
+ * `media/<basename>_IS.svg`. The ONE lookup behind both `stillMappedCopy` and `paperSheetCopy`,
+ * so the two cannot come to disagree about which file a reader is served.
+ * @returns {{rel: string, file: string, mappingRow: boolean}}
+ */
+export function liveCopyOf(basename, { mapped, bookDir }) {
+  const row = mapped.get(basename);
+  const name = row ? row.outputName : `${basename}${DEFAULT_SUFFIX}.svg`;
+  return {
+    rel: `media/${name}`,
+    file: path.join(bookDir, 'media', name),
+    mappingRow: Boolean(row),
+  };
+}
+
+/**
+ * §C140 ⑦ — an EARLIER translated copy a refusal leaves live. Nothing is composed or published for
+ * a refused figure, so a June `_IS.svg` and its mapping row keep serving readers.
+ * @returns {string|null}
+ */
+export function stillMappedCopy(basename, { mapped, bookDir, exists = fs.existsSync }) {
+  const copy = liveCopyOf(basename, { mapped, bookDir });
+  if (copy.mappingRow) return `${copy.rel} (mapping row present)`;
+  return exists(copy.file) ? `${copy.rel} (no mapping row)` : null;
+}
+
+/**
+ * §C140 ⑦ — the paper-size table, read from its single owner, `figure-text.config.json`
+ * (`paperSizes`: name -> [w, h] in pt; `paperTolerancePt`). `sources.py` reads the same keys.
+ * 🔴 NO SIZE IS RESTATED IN THIS FILE: a second copy of the table would be free to drift from the
+ * one the resolver refuses by. A config without a usable table THROWS — silently naming no sheet
+ * is exactly the absence this check exists to replace.
+ * @returns {{sizes: Object<string, number[]>, tolerancePt: number}}
+ */
+export function loadPaperSizes(readFile = fs.readFileSync) {
+  const cfg = JSON.parse(readFile(FIGURE_TEXT_CONFIG, 'utf-8'));
+  const sizes = cfg.paperSizes;
+  const ok =
+    sizes &&
+    typeof sizes === 'object' &&
+    Object.keys(sizes).length > 0 &&
+    Object.values(sizes).every(
+      (v) => Array.isArray(v) && v.length === 2 && v.every((n) => Number.isFinite(n) && n > 0)
+    ) &&
+    Number.isFinite(cfg.paperTolerancePt) &&
+    cfg.paperTolerancePt >= 0;
+  if (!ok) {
+    throw new Error(
+      `${FIGURE_TEXT_CONFIG} has no usable paperSizes / paperTolerancePt — refusing to run a ` +
+        `report that could not name a paper-size sheet`
+    );
+  }
+  return { sizes, tolerancePt: cfg.paperTolerancePt };
+}
+
+/**
+ * §C140 ⑦ — the paper-size name `[w, h]` matches in either orientation within the tolerance, or
+ * null. The same rule as `sources.paper_size_name`, over the same table.
+ */
+export function paperSizeName([w, h], { sizes, tolerancePt }) {
+  for (const [name, [pw, ph]] of Object.entries(sizes)) {
+    const upright = Math.abs(w - pw) <= tolerancePt && Math.abs(h - ph) <= tolerancePt;
+    const turned = Math.abs(w - ph) <= tolerancePt && Math.abs(h - pw) <= tolerancePt;
+    if (upright || turned) return name;
+  }
+  return null;
+}
+
+/** How much of a copy is read to find its root `<svg>` tag: it opens the file, and a composed SVG
+ *  runs to megabytes of embedded data after it. */
+const SVG_HEAD_BYTES = 64 * 1024;
+
+function readFileHead(file) {
+  const fd = fs.openSync(file, 'r');
+  try {
+    const buf = Buffer.alloc(SVG_HEAD_BYTES);
+    const n = fs.readSync(fd, buf, 0, SVG_HEAD_BYTES, 0);
+    return buf.subarray(0, n).toString('utf-8');
+  } finally {
+    fs.closeSync(fd);
+  }
+}
+
+/**
+ * The root `<svg>`'s viewBox width and height, from the head of an SVG file.
+ *
+ * 🔴 QUOTE-AWARE, NEVER `<svg[^>]*>` OR `indexOf('>')`: a bare `>` is legal inside an attribute
+ * value, and a span that stops there truncates the tag and reads an EMPTY viewBox — which would
+ * look like "no sheet" rather than "could not read" (CLAUDE.md, §C115). `openTagPattern` owns the
+ * quote-aware span; attribute values are read in either quote style.
+ * @returns {{w: number, h: number}|{error: string}}
+ */
+export function rootViewBox(head) {
+  const tag = openTagPattern('svg', { capture: true, selfClosing: true }).exec(head);
+  if (!tag) return { error: `no root <svg> open tag in the first ${SVG_HEAD_BYTES} bytes` };
+  let viewBox = null;
+  const attr = /([^\s=]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/g;
+  let m;
+  while ((m = attr.exec(tag[1])) !== null) {
+    if (m[1] === 'viewBox') viewBox = m[2] !== undefined ? m[2] : m[3];
+  }
+  if (viewBox === null) return { error: 'the root <svg> has no viewBox' };
+  const parts = viewBox
+    .trim()
+    .split(/[\s,]+/)
+    .map(Number);
+  if (parts.length !== 4 || !parts.every(Number.isFinite) || parts[2] <= 0 || parts[3] <= 0) {
+    return {
+      error: `the root <svg> viewBox is not four numbers with a positive size: ${JSON.stringify(viewBox)}`,
+    };
+  }
+  return { w: parts[2], h: parts[3] };
+}
+
+/**
+ * §C140 ⑦ — is this figure's LIVE translated copy a whole paper-size sheet?
+ *
+ * 🔴 KEYED ON THE COPY, NOT ON THIS RUN'S OUTCOME. The reader hazard is "the file readers are served
+ * is a Letter page", and on N2O5 that came apart from "this run refused the figure": its resolver
+ * now finds the real EPS, so no refusal fires, while its June `_IS.svg` is still a whole sheet.
+ * Measuring the copy itself also covers a sheet whose source page has since left the tree.
+ *
+ * @returns {null|{rel:string, mappingRow:boolean, w:number, h:number, paper:string}|
+ *           {rel:string, mappingRow:boolean, unreadable:string}}
+ *   null when there is no SVG copy, or it is not a paper size
+ */
+export function paperSheetCopy(
+  basename,
+  { mapped, bookDir, paper, existsSync = fs.existsSync, readHead = readFileHead }
+) {
+  const copy = liveCopyOf(basename, { mapped, bookDir });
+  if (!copy.rel.toLowerCase().endsWith('.svg') || !existsSync(copy.file)) return null;
+  const found = { rel: copy.rel, mappingRow: copy.mappingRow };
+  let head;
+  try {
+    head = readHead(copy.file);
+  } catch (err) {
+    return { ...found, unreadable: `the file could not be read: ${err.message}` };
+  }
+  const box = rootViewBox(head);
+  if (box.error) return { ...found, unreadable: box.error };
+  const name = paperSizeName([box.w, box.h], paper);
+  return name ? { ...found, w: box.w, h: box.h, paper: name } : null;
+}
+
+/**
+ * §C140 ⑦ — the characters a live run would BUY for one prepared figure, counted by the translate
+ * leg's own `dedupeSendBlocks`, so a change to what is sent (§C140 ㉔) changes this in one place.
+ * An unreadable blocks.json is UNKNOWN, never zero.
+ */
+export function billableFrom(outDir) {
+  try {
+    const blocks = JSON.parse(fs.readFileSync(path.join(outDir, 'blocks.json'), 'utf-8'));
+    const send = dedupeSendBlocks(blocks.filter((b) => b.send));
+    return { blocks: send.length, chars: send.reduce((n, b) => n + b.english.length, 0) };
+  } catch (err) {
+    return { blocks: null, chars: null, error: err.message };
+  }
+}
+
+/**
  * Walk one chapter's figures.
  *
  * ⚠️ `readSidecar`, `publish` and `booksRoot` are injectable for the same reason `spawn` is:
@@ -1523,6 +1715,9 @@ export async function runFigures(args, deps = {}) {
   // 🔴 AND SO IS THIS ONE: the sidecar write is what RECORDS a purchase, and its commonest
   // failures are properties of the book's directory rather than of any figure.
   assertSidecarDirWritable(bookDir, args.dryRun);
+  // §C140 ⑦ — read before the loop, so a broken table refuses the run before anything is bought.
+  const paper = deps.paperSizes || loadPaperSizes();
+  const mediaFs = deps.mediaFs || {};
   const mapped = new Map(loadImageBasenameMap(bookDir).map((e) => [e.originalImage, e]));
   const mintIndex = new Set();
   for (const id of enumeration.moduleIds) {
@@ -1553,6 +1748,14 @@ export async function runFigures(args, deps = {}) {
     // or by the resolver itself. It turns `unresolved` from "the delivery has a hole" into
     // "we refused to guess", which is a different fact and gets its own report line.
     artworkContest: null,
+    // §C140 ⑦ — artwork `sources.py` found and REFUSED (a production page, or known-superseded),
+    // with its reason. Like a contest it is `unresolved` but is not a hole.
+    artworkRefusal: null,
+    pageUnknown: false,
+    stillMapped: null,
+    // §C140 ⑦ — set when this figure's live translated copy is a whole paper-size sheet, or when
+    // a copy exists whose viewBox could not be read. Checked for EVERY record, whatever its outcome.
+    sheetCopy: null,
     outcome: null,
     reason: null,
     sendable: 0,
@@ -1562,11 +1765,14 @@ export async function runFigures(args, deps = {}) {
     imageXObjects: null,
     paintOps: null,
     holds: null,
+    glyphs: null,
     mapping: null,
     outDir: null,
     // The paid half's own record. `spent` is TRUE only when the MT was actually spawned for
     // this figure, so a run's total spend is a count over the records rather than a claim.
     spent: false,
+    // §C140 ⑦ — what buying this figure would cost, set only when it is buyable.
+    billable: null,
     sidecarWritten: false,
     droppedKeys: [],
     published: null,
@@ -1611,10 +1817,13 @@ export async function runFigures(args, deps = {}) {
   );
   for (const rec of pending) {
     const hit = resolved.get(rec.basename);
-    if (hit) {
+    if (hit && hit.path) {
       rec.artwork = hit.path;
       rec.edition = hit.edition;
       rec.resolvedVia = 'basename';
+      rec.pageUnknown = Boolean(hit.pageUnknown);
+    } else if (hit && hit.refused) {
+      rec.artworkRefusal = hit;
     }
   }
 
@@ -1622,7 +1831,9 @@ export async function runFigures(args, deps = {}) {
   // `CNX_Chem_03_02_moles`, and reporting the gap as a hole in the artwork delivery would be
   // wrong. The figure keeps its UNSTRIPPED name everywhere downstream — sidecar key, --out
   // directory, image-mapping entry — because that is what publish cross-checks against.
-  const hashed = pending.filter((r) => !r.artwork && HASH_SUFFIX.test(r.basename));
+  const hashed = pending.filter(
+    (r) => !r.artwork && !r.artworkRefusal && HASH_SUFFIX.test(r.basename)
+  );
   if (hashed.length) {
     // 🔴 THE CONTEST IS A PROPERTY OF THE CHAPTER, NOT OF THIS RUN'S SELECTION — so when
     // `--module` narrowed the enumeration, ask the chapter again. It is pure file reading, no
@@ -1645,10 +1856,13 @@ export async function runFigures(args, deps = {}) {
       const second = resolveArtwork(spawn, args.book, [...new Set(stripped)]);
       dehashable.forEach((rec, i) => {
         const hit = second.get(stripped[i]);
-        if (hit) {
+        if (hit && hit.path) {
           rec.artwork = hit.path;
           rec.edition = hit.edition;
           rec.resolvedVia = 'de-hashed';
+          rec.pageUnknown = Boolean(hit.pageUnknown);
+        } else if (hit && hit.refused) {
+          rec.artworkRefusal = hit;
         }
       });
     }
@@ -1690,7 +1904,12 @@ export async function runFigures(args, deps = {}) {
             `on a guess publishes one figure's artwork under another's caption and alt text, ` +
             `and no downstream check can see it. Deliver the artwork under each figure's own ` +
             `basename, or narrow the run to the one that owns it once that is known.`
-          : 'no artwork in any configured source tree';
+          : rec.artworkRefusal
+            ? refusalReason(rec.artworkRefusal)
+            : 'no artwork in any configured source tree';
+        if (rec.artworkContest || rec.artworkRefusal) {
+          rec.stillMapped = stillMappedCopy(rec.basename, { mapped, bookDir });
+        }
         continue;
       }
       const outDir = path.join(tmpRoot, rec.basename);
@@ -1734,6 +1953,12 @@ export async function runFigures(args, deps = {}) {
           missingFont: payload.missingFontBlocks,
         };
         rec.warnings = payload.warnings || [];
+        // §C140 ⑦ — what the read layer repaired, or could not, by glyph name.
+        rec.glyphs = {
+          repaired: payload.glyphRepairs || [],
+          unrepaired: payload.glyphUnrepaired || [],
+          ambiguous: payload.glyphAmbiguous || [],
+        };
         // THE IDENTITY SEAM — see the module header. Free here, unrecoverable after payment.
         const composed = basenameFromMeta(path.join(outDir, 'meta.json'));
         if (composed !== rec.basename) {
@@ -1764,6 +1989,7 @@ export async function runFigures(args, deps = {}) {
       applyDriftGuard(rec);
       applyPartialDriftGuard(rec, outDir);
       applyMappingPreflight(rec, { mapped, mintIndex, bookDir });
+      if (rec.outcome === 'translated' && !rec.sidecar) rec.billable = billableFrom(outDir);
       if (!args.dryRun)
         processFigureLive(rec, {
           spawn,
@@ -1781,6 +2007,19 @@ export async function runFigures(args, deps = {}) {
       // translations-api.json into it) and not one figure longer.
       fs.rmSync(outDir, { recursive: true, force: true });
       rec.outDir = null;
+    }
+
+    // §C140 ⑦ — EVERY record, whatever its outcome (translated, copied, refused, a hole,
+    // skipped-current): the question is about the file readers are served, not about this run.
+    // After the loop, so on a live run it reads the copy as the run leaves it. Read-only.
+    for (const rec of selected) {
+      rec.sheetCopy = paperSheetCopy(rec.basename, {
+        mapped,
+        bookDir,
+        paper,
+        existsSync: mediaFs.existsSync,
+        readHead: mediaFs.readHead,
+      });
     }
 
     const tally = emptyTally();
@@ -1917,7 +2156,7 @@ export function summarise(result) {
   lines.push(
     ...nameList(
       'unresolved — the artwork delivery has a hole here',
-      by((f) => f.outcome === 'unresolved' && !f.artworkContest)
+      by((f) => f.outcome === 'unresolved' && !f.artworkContest && !f.artworkRefusal)
     )
   );
   // 🔴 A REFUSAL IS NOT A HOLE, AND THE OPERATOR'S NEXT ACTION IS DIFFERENT. A hole is fixed in
@@ -1934,6 +2173,55 @@ export function summarise(result) {
         `${JSON.stringify(source)} — ${claimants.join(', ')}`
     );
   }
+  // §C140 ⑦ — refusals, named with the file and why. Kept out of the hole list for the same reason
+  // contests are: the operator's next action is different.
+  for (const f of result.figures.filter((x) => x.artworkRefusal)) {
+    const r = f.artworkRefusal;
+    if (r.refused === 'production-page') {
+      for (const c of r.candidates) {
+        lines.push(
+          `  ⚠️ REFUSED — production page: ${f.basename}  ${c.path}  ${c.page[0]}×${c.page[1]} pt (${c.paper})`
+        );
+      }
+    } else {
+      lines.push(`  ⚠️ REFUSED — ${r.refused}: ${f.basename}: ${r.reason}`);
+    }
+  }
+  for (const f of result.figures.filter((x) => x.stillMapped)) {
+    lines.push(
+      `  ⚠️ readers still see an earlier translated copy of ${f.basename}: ${f.stillMapped} — ` +
+        `refusing does not retire it`
+    );
+  }
+  // §C140 ⑦ — a live translated copy that is a whole paper-size SHEET, named whatever this run
+  // decided about the figure. ⚠️ The wording must be true for a figure that was NOT refused (N2O5
+  // resolves cleanly): nothing here says "refusing".
+  const sheets = result.figures.filter((f) => f.sheetCopy && f.sheetCopy.paper);
+  if (sheets.length) {
+    lines.push(
+      `  ⚠️ live translated copies that are a whole paper-size sheet, not a figure ` +
+        `(${sheets.length}) — this run does not retire them; a publication step does:`
+    );
+    for (const f of sheets) {
+      const c = f.sheetCopy;
+      lines.push(
+        `    ${c.rel}  ${c.w}×${c.h} pt (${c.paper})  ` +
+          `${c.mappingRow ? 'mapping row present' : 'no mapping row'}  ${f.basename}`
+      );
+    }
+  }
+  for (const f of result.figures.filter((x) => x.sheetCopy && x.sheetCopy.unreadable)) {
+    lines.push(
+      `  ⚠️ a translated copy of ${f.basename} exists but its viewBox could not be read — not ` +
+        `checked for a paper-size sheet: ${f.sheetCopy.rel} (${f.sheetCopy.unreadable})`
+    );
+  }
+  lines.push(
+    ...nameList(
+      'resolved, but the artwork page size could not be read — not checked for a production page',
+      by((f) => f.pageUnknown)
+    )
+  );
   // 🔴 WHICH FIGURE GOT WHICH FILE. `summarise` printed neither `artwork` nor `resolvedVia`, so
   // a --dry-run — the one report an operator reads BEFORE spending — was silent about two
   // figures sharing a source. The de-hashed ones are where a lookup-only fallback can put the
@@ -2023,6 +2311,32 @@ export function summarise(result) {
       lines.push(
         `    ${f.outcome.padEnd(16)} ${f.holds.undecoded} undecodable, ` +
           `${f.holds.missingFont} missing-font of ${f.blocks} block(s)  ${f.basename}`
+      );
+    }
+  }
+
+  // §C140 ⑦ — glyphs the read layer repaired (figglyphs.GLYPH_REPAIRS), and those it held back.
+  const fmt = (list, withTo) =>
+    list.map((g) => `${g.count}× ${g.glyph}${withTo ? ` → ${g.to}` : ''}`).join(', ');
+  const repairedGlyphs = result.figures.filter((f) => f.glyphs && f.glyphs.repaired.length);
+  if (repairedGlyphs.length) {
+    lines.push(
+      `  glyphs repaired by the read layer — misread without a ToUnicode map (${repairedGlyphs.length}):`
+    );
+    for (const f of repairedGlyphs)
+      lines.push(`    ${f.basename}  ${fmt(f.glyphs.repaired, true)}`);
+  }
+  const heldGlyphs = result.figures.filter(
+    (f) => f.glyphs && (f.glyphs.unrepaired.length || f.glyphs.ambiguous.length)
+  );
+  if (heldGlyphs.length) {
+    lines.push(
+      `  glyphs NOT repaired — held back and not drawn; add a figglyphs entry only with a raster (${heldGlyphs.length}):`
+    );
+    for (const f of heldGlyphs) {
+      lines.push(
+        `    ${f.basename}  unrepaired ${fmt(f.glyphs.unrepaired, false) || '-'}  ` +
+          `ambiguous ${fmt(f.glyphs.ambiguous, false) || '-'}`
       );
     }
   }
@@ -2150,16 +2464,51 @@ export function summarise(result) {
     lines.push(`  enumeration warning [${w.moduleId}] ${w.reason}: ${w.tag}`);
   }
 
+  // §C140 ⑦ — WHAT A LIVE RUN WOULD BUY, IN BOTH MODES. `billable` is set only for a `translated`
+  // figure with no sidecar (R8), counted by the translate leg's own de-duplication.
+  // ⚠️ AN UNKNOWN BILLABLE SIZE IS NEVER SUMMED AS ZERO (`billableFrom`: "UNKNOWN, never zero").
+  // The headline counts and adds only figures whose size is known, and says how many it could not.
+  const unknownNote = (k) => (k > 0 ? ` (+${k} figure(s) whose billable size is UNKNOWN)` : '');
+  const known = (f) => f.billable && f.billable.chars !== null;
+  const buyable = result.figures.filter((f) => f.billable);
+  if (buyable.length) {
+    const counted = buyable.filter(known);
+    const total = counted.reduce((n, f) => n + f.billable.chars, 0);
+    lines.push('');
+    lines.push(
+      `  ${result.mode === 'dry-run' ? 'would buy' : 'buyable this run'} ${counted.length} figure(s): ` +
+        `${total} billable characters, est ${estimateIsk(total).toFixed(2)} ISK at list rate` +
+        unknownNote(buyable.length - counted.length)
+    );
+    for (const f of buyable) {
+      lines.push(
+        f.billable.chars === null
+          ? `    ${f.basename}  billable count UNKNOWN (${f.billable.error})`
+          : `    ${f.basename}  ${f.billable.blocks} block(s), ${f.billable.chars} chars`
+      );
+    }
+  }
+
   // 🔴 THE SPEND, AS A COUNT OVER THE RECORDS. `spent` is set at the paid spawn and nowhere
-  // else, so this line cannot report a purchase that did not happen or hide one that did.
-  // ⚠️ It is printed on a dry run too, where it is always zero — a line that appears only when
-  // it is non-zero is a line nobody learns to look for.
+  // else, so this line cannot report a purchase that did not happen or hide one that did. It is
+  // printed on a LIVE run only; a dry run's equivalent is the would-buy list above.
+  // ⚠️ Its N is EVERY spent figure — never only the ones whose size is known, which would print
+  // "1 figure(s)" for two purchases. Only the characters are limited to known sizes, so the line
+  // says how many figures they cover. (The would-buy line's "+K" means figures IN ADDITION to its
+  // N; this line's K is already inside N, hence its own wording.)
   if (result.mode === 'live') {
     const spent = result.figures.filter((f) => f.spent);
     const published = result.figures.filter((f) => f.published);
     lines.push('');
+    const spentKnown = spent.filter(known);
+    const spentChars = spentKnown.reduce((n, f) => n + f.billable.chars, 0);
+    const spentUnknown = spent.length - spentKnown.length;
     lines.push(
-      `  MT spawned for ${spent.length} figure(s) — only a figure with NO sidecar is spendable`
+      `  MT spawned for ${spent.length} figure(s), ${spentChars} billable characters` +
+        (spentUnknown > 0
+          ? ` (${spentKnown.length} counted; ${spentUnknown} figure(s) whose billable size is UNKNOWN)`
+          : '') +
+        ' — only a figure with NO sidecar is spendable'
     );
     lines.push(`  published ${published.length} figure(s) into ${result.bookDir}/media/`);
     lines.push(

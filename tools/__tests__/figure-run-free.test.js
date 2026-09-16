@@ -16,10 +16,11 @@
  * `books/efnafraedi-2e/01-source/ch04/*.cnxml` and its `02-structure/` — because enumeration is
  * exactly the part that must be measured against real CNXML rather than a fixture.
  */
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import { execFileSync } from 'child_process';
 import { createRequire } from 'module';
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -35,6 +36,10 @@ import {
   summarise,
   runFigures,
   dehashStemClaims,
+  refusalReason,
+  stillMappedCopy,
+  billableFrom,
+  rootViewBox,
   main,
 } from '../figure-run.js';
 
@@ -469,6 +474,242 @@ describe('the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figur
     const result = await runFigures(CH03, { spawn });
     expect(result.tally.unresolved).toBe(result.figures.length);
     expect(result.verdict.ok).toBe(true); // R9: named, never fatal
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('§C140 ⑦ — refused artwork is named, never filed as a hole', () => {
+  const PAGE = {
+    path: null,
+    refused: 'production-page',
+    edition: 'first-edition',
+    candidates: [{ path: '/fake/artwork/sheet.pdf', page: [612, 792], paper: 'Letter' }],
+    reason:
+      "every candidate in 'first-edition' is a Letter-size page — a production sheet, not a figure",
+  };
+  const refuse = (target) => ({
+    resolve: (n) =>
+      n === target ? PAGE : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' },
+  });
+
+  it('files a production page unresolved, names it apart from holes, and buys nothing', async () => {
+    const spawn = fakeSpawn({
+      ...refuse('CNX_Chem_04_01_rxn2'),
+      prepare: () => ({ sendable: 2, blocks: 2 }),
+    });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
+    const rec = result.figures.find((f) => f.basename === 'CNX_Chem_04_01_rxn2');
+    expect(rec.outcome).toBe('unresolved');
+    expect(rec.artworkRefusal.refused).toBe('production-page');
+    expect(rec.reason).toMatch(/production page/);
+    expect(result.verdict.ok).toBe(true); // R9
+    const text = summarise(result);
+    expect(text).toContain('REFUSED — production page: CNX_Chem_04_01_rxn2');
+    expect(text).toContain('612×792 pt (Letter)');
+    // No hole LIST: the only unresolved figure was refused. Anchored on the list's own header
+    // (`nameList` prints `<label> (<n>):`) — the verdict NOTE also says "a hole here".
+    expect(text).not.toMatch(/unresolved — the artwork delivery has a hole here \(\d+\):/);
+    expect(spawn.countOf('prepare')).toBe(result.figures.length - 1); // CONTROL: the others ran
+  });
+
+  it('does not retry a refused hashed name through the de-hash', async () => {
+    const hashed = 'CNX_Chem_03_02_moles-6296';
+    const spawn = fakeSpawn(refuse(hashed));
+    const result = await runFigures(
+      { book: 'efnafraedi-2e', chapter: '3', modules: null, figures: [hashed], dryRun: true },
+      { spawn, ...PRISTINE }
+    );
+    const rec = result.figures.find((f) => f.basename === hashed);
+    expect(rec.artworkRefusal).not.toBeNull();
+    expect(spawn.countOf('resolve')).toBe(1); // no second, de-hash pass
+  });
+
+  // THE CONTROLS FOR THE TEST ABOVE. "1 resolve spawn" means nothing unless the same selection
+  // takes a SECOND pass when the hashed name is a hole — the sibling test that proves this for the
+  // whole chapter omits PRISTINE and has been red since the first real sidecars landed.
+  it('CONTROL — a HOLE on the same hashed name does take the de-hash second pass', async () => {
+    const hashed = 'CNX_Chem_03_02_moles-6296';
+    const spawn = fakeSpawn({
+      resolve: (n) =>
+        n === hashed ? null : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' },
+    });
+    const result = await runFigures(
+      { book: 'efnafraedi-2e', chapter: '3', modules: null, figures: [hashed], dryRun: true },
+      { spawn, ...PRISTINE }
+    );
+    const rec = result.figures.find((f) => f.basename === hashed);
+    expect(spawn.countOf('resolve')).toBe(2);
+    expect(rec.resolvedVia).toBe('de-hashed');
+    expect(rec.artworkRefusal).toBeNull();
+  });
+
+  it('carries a refusal of the STRIPPED name, met on the second pass, and names it', async () => {
+    const hashed = 'CNX_Chem_03_02_moles-6296';
+    const stripped = 'CNX_Chem_03_02_moles';
+    const spawn = fakeSpawn({
+      resolve: (n) =>
+        n === hashed
+          ? null
+          : n === stripped
+            ? PAGE
+            : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' },
+    });
+    const result = await runFigures(
+      { book: 'efnafraedi-2e', chapter: '3', modules: null, figures: [hashed], dryRun: true },
+      { spawn, ...PRISTINE }
+    );
+    const rec = result.figures.find((f) => f.basename === hashed);
+    expect(spawn.countOf('resolve')).toBe(2); // the refusal really came from the second pass
+    expect(rec.artworkRefusal.refused).toBe('production-page');
+    expect(rec.outcome).toBe('unresolved');
+    expect(summarise(result)).toContain(`REFUSED — production page: ${hashed}`);
+  });
+
+  it('names an earlier translated copy that a refusal leaves live — and not when there is none', async () => {
+    const spawn = fakeSpawn({
+      resolve: (n) =>
+        n === 'CNX_Chem_04_01_rxn2' || n === 'CNX_Chem_04_02_LeadIodide'
+          ? PAGE
+          : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' },
+    });
+    const text = summarise(await runFigures(CH04, { spawn, ...PRISTINE }));
+    expect(text).toContain('readers still see an earlier translated copy of CNX_Chem_04_01_rxn2');
+    expect(text).toContain('CNX_Chem_04_01_rxn2_IS.svg');
+    // CONTROL: LeadIodide has no mapping row and no _IS file, so no line names it
+    expect(text).not.toMatch(/earlier translated copy of CNX_Chem_04_02_LeadIodide/);
+  });
+
+  it('names a resolved artwork whose page size could not be read', async () => {
+    const spawn = fakeSpawn({
+      resolve: (n) => ({
+        path: `/fake/artwork/${n}.pdf`,
+        edition: 'first-edition',
+        ...(n === 'CNX_Chem_04_03_airbag' ? { pageUnknown: true } : {}),
+      }),
+    });
+    const text = summarise(await runFigures(CH04, { spawn, ...PRISTINE }));
+    expect(text).toMatch(/page size could not be read[^\n]*\n\s+CNX_Chem_04_03_airbag/);
+  });
+
+  it('describes a superseded refusal by its reason', () => {
+    expect(refusalReason({ refused: 'superseded', reason: 'the box holds the old strip' })).toMatch(
+      /superseded.*the box holds the old strip/
+    );
+  });
+
+  // ── A live translated copy that is a whole paper-size SHEET is named whatever the outcome ──
+  // rxn2 has a real image-mapping row; LeadIodide has neither a row nor an `_IS.svg`. The media
+  // tree is injected, so no real copy is read in these tests.
+  const RXN2_COPY = 'CNX_Chem_04_01_rxn2_IS.svg';
+  const mediaWith = (headFor) => ({
+    existsSync: (file) => headFor(path.basename(file)) !== undefined,
+    readHead: (file) => headFor(path.basename(file)),
+  });
+  // A bare `>` inside an earlier attribute value: legal XML, and a `<svg[^>]*>` span would stop
+  // there and never reach the viewBox.
+  const LETTER_HEAD =
+    '<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" ' +
+    'data-note="a > b" width="1300" height="1682.35" viewBox="0 0 612.00 792.00"><style>';
+  const SHEET_LINE = `media/${RXN2_COPY}  612×792 pt (Letter)  mapping row present  CNX_Chem_04_01_rxn2`;
+  /** The sheet section: its header line plus the 4-space-indented lines under it. */
+  const sheetSection = (text) => {
+    const m = text.match(
+      /[^\n]*live translated copies that are a whole paper-size sheet[^\n]*(?:\n {4}[^\n]*)*/
+    );
+    return m ? m[0] : '';
+  };
+
+  it('names a live translated copy that is a paper-size sheet on a RESOLVED figure', async () => {
+    const result = await runFigures(CH04, {
+      spawn: fakeSpawn(),
+      ...PRISTINE,
+      mediaFs: mediaWith((name) => (name === RXN2_COPY ? LETTER_HEAD : undefined)),
+    });
+    const rec = result.figures.find((f) => f.basename === 'CNX_Chem_04_01_rxn2');
+    expect(rec.artwork).not.toBeNull(); // resolved — no refusal is involved
+    expect(rec.artworkRefusal).toBeNull();
+    const text = summarise(result);
+    expect(text).toContain(
+      'live translated copies that are a whole paper-size sheet, not a figure (1)'
+    );
+    expect(text).toContain(SHEET_LINE);
+    // The wording must be true for a figure that was NOT refused.
+    expect(sheetSection(text)).toContain(SHEET_LINE); // non-vacuity: the section was found whole
+    expect(sheetSection(text)).not.toMatch(/refus/i);
+    expect(sheetSection(text)).toContain('this run does not retire them; a publication step does');
+  });
+
+  it('names the same sheet on a REFUSED figure, beside its still-mapped line', async () => {
+    const result = await runFigures(CH04, {
+      spawn: fakeSpawn(refuse('CNX_Chem_04_01_rxn2')),
+      ...PRISTINE,
+      mediaFs: mediaWith((name) => (name === RXN2_COPY ? LETTER_HEAD : undefined)),
+    });
+    const text = summarise(result);
+    expect(text).toContain('REFUSED — production page: CNX_Chem_04_01_rxn2');
+    expect(text).toContain('readers still see an earlier translated copy of CNX_Chem_04_01_rxn2');
+    expect(text).toContain(SHEET_LINE);
+  });
+
+  it('CONTROL — a 468×576 pt copy is not a sheet, and is not named', async () => {
+    const result = await runFigures(CH04, {
+      spawn: fakeSpawn(),
+      ...PRISTINE,
+      mediaFs: mediaWith((name) =>
+        name === RXN2_COPY
+          ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 468 576">'
+          : undefined
+      ),
+    });
+    const text = summarise(result);
+    expect(text).not.toMatch(/paper-size sheet/);
+    expect(text).not.toMatch(/viewBox could not be read/);
+    // Non-vacuity: the copy WAS found and read — it measured as a figure, not as "no copy".
+    expect(rootViewBox('<svg viewBox="0 0 468 576">')).toEqual({ w: 468, h: 576 });
+  });
+
+  it('CONTROL — a figure with no copy is not named, even where every copy that exists is a sheet', async () => {
+    const result = await runFigures(CH04, {
+      spawn: fakeSpawn(),
+      ...PRISTINE,
+      mediaFs: {
+        existsSync: (file) => path.basename(file) === RXN2_COPY,
+        readHead: () => LETTER_HEAD, // would name ANY file it were asked about
+      },
+    });
+    const text = summarise(result);
+    expect(text).not.toMatch(/CNX_Chem_04_02_LeadIodide_IS\.svg/);
+    expect(sheetSection(text)).not.toContain('CNX_Chem_04_02_LeadIodide');
+    // CONTROL in the same run: the one copy that exists is named, and it is the only one.
+    expect(sheetSection(text)).toContain(SHEET_LINE);
+    expect(sheetSection(text)).toContain('paper-size sheet, not a figure (1)');
+  });
+
+  it('names a copy whose viewBox cannot be read on its own line, never as "no sheet"', async () => {
+    const result = await runFigures(CH04, {
+      spawn: fakeSpawn(),
+      ...PRISTINE,
+      mediaFs: mediaWith((name) =>
+        name === RXN2_COPY ? '<svg xmlns="http://www.w3.org/2000/svg" width="1300">' : undefined
+      ),
+    });
+    const text = summarise(result);
+    expect(text).toContain(
+      `a translated copy of CNX_Chem_04_01_rxn2 exists but its viewBox could not be read — not ` +
+        `checked for a paper-size sheet: media/${RXN2_COPY} (the root <svg> has no viewBox)`
+    );
+    expect(text).not.toMatch(/live translated copies that are a whole paper-size sheet/);
+  });
+
+  it('stillMappedCopy reads the mapping row first, then the media file', () => {
+    const mapped = new Map([['A', { outputName: 'A_IS.svg' }]]);
+    expect(stillMappedCopy('A', { mapped, bookDir: '/b', exists: () => false })).toMatch(
+      /A_IS\.svg \(mapping row present\)/
+    );
+    expect(stillMappedCopy('B', { mapped, bookDir: '/b', exists: () => true })).toMatch(
+      /B_IS\.svg \(no mapping row\)/
+    );
+    expect(stillMappedCopy('C', { mapped, bookDir: '/b', exists: () => false })).toBeNull();
   });
 });
 
@@ -1244,5 +1485,111 @@ describe('a copy is not failed over a publish that never happens', () => {
     const mintable = translated.figures.filter((f) => f.mapping.status === 'mintable');
     expect(mintable.length).toBeGreaterThan(0);
     expect(summarise(translated)).toMatch(/minted before publish/);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('§C140 ⑦ — glyph repairs are named per figure', () => {
+  it('names repaired glyphs with their replacement, and unrepaired ones as held', async () => {
+    const spawn = fakeSpawn({
+      prepare: (b) =>
+        b === 'CNX_Chem_04_01_rxn2'
+          ? { sendable: 3, blocks: 3, glyphRepairs: [{ glyph: 'H11034', to: '°', count: 3 }] }
+          : b === 'CNX_Chem_04_01_rxn3'
+            ? {
+                sendable: 1,
+                blocks: 2,
+                undecodedBlocks: 1,
+                glyphUnrepaired: [{ glyph: 'H99999', count: 1 }],
+              }
+            : { sendable: 1, blocks: 1 },
+    });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
+    const text = summarise(result);
+    expect(text).toMatch(
+      /glyphs repaired by the read layer[^\n]*\n\s+CNX_Chem_04_01_rxn2\s+3× H11034 → °/
+    );
+    expect(text).toMatch(
+      /glyphs NOT repaired[^\n]*\n\s+CNX_Chem_04_01_rxn3\s+unrepaired 1× H99999/
+    );
+    // CONTROL: a figure with no glyph fields is in neither section
+    expect(text).not.toMatch(/CNX_Chem_04_03_airbag\s+\d+× H/);
+    expect(result.figures.find((f) => f.basename === 'CNX_Chem_04_03_airbag').glyphs).toEqual({
+      repaired: [],
+      unrepaired: [],
+      ambiguous: [],
+    });
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('§C140 ⑦ — the dry run says what a live run would buy', () => {
+  const blocksFor = (b) =>
+    b === 'CNX_Chem_04_01_rxn2'
+      ? [
+          { key: 'k1', english: 'Oxygen gas', lines: ['Oxygen gas'], arc: false, send: true },
+          { key: 'k1', english: 'Oxygen gas', lines: ['Oxygen gas'], arc: false, send: true },
+          { key: 'k2', english: 'H2O', lines: ['H2O'], arc: false, send: false },
+          { key: 'k3', english: 'Water', lines: ['Water'], arc: false, send: true },
+        ]
+      : null;
+
+  function spawnWithBlocks() {
+    return fakeSpawn({
+      resolve: (n) =>
+        n === 'CNX_Chem_04_01_rxn2' || n === 'CNX_Chem_04_01_rxn3'
+          ? { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' }
+          : null,
+      prepare: (b, outDir) => {
+        const blocks = blocksFor(b);
+        if (blocks) fs.writeFileSync(path.join(outDir, 'blocks.json'), JSON.stringify(blocks));
+        return { sendable: 2, blocks: 4 };
+      },
+    });
+  }
+
+  it('lists each would-buy figure with de-duplicated billable characters and an ISK total', async () => {
+    const result = await runFigures(CH04, { spawn: spawnWithBlocks(), ...PRISTINE });
+    const rxn2 = result.figures.find((f) => f.basename === 'CNX_Chem_04_01_rxn2');
+    expect(rxn2.billable).toEqual({ blocks: 2, chars: 'Oxygen gas'.length + 'Water'.length });
+    const text = summarise(result);
+    // ⚠️ rxn3's size is UNKNOWN, so it is neither counted in the 1 nor added to the 15 as zero —
+    // it is named in the headline instead.
+    expect(text).toContain(
+      'would buy 1 figure(s): 15 billable characters, est 0.15 ISK at list rate ' +
+        '(+1 figure(s) whose billable size is UNKNOWN)'
+    );
+    expect(text).toMatch(/CNX_Chem_04_01_rxn2\s+2 block\(s\), 15 chars/);
+    // CONTROL: a figure whose prepare wrote no blocks.json is named as UNKNOWN, never counted as 0
+    expect(text).toMatch(/CNX_Chem_04_01_rxn3\s+billable count UNKNOWN/);
+  });
+
+  it("billableFrom equals the translate leg's own plan line for the same blocks.json", async () => {
+    const { main: translateMain } =
+      await import('../../experiments/figure-text-translation/translate-blocks.mjs');
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'c7-billable-'));
+    fs.writeFileSync(
+      path.join(dir, 'blocks.json'),
+      JSON.stringify(blocksFor('CNX_Chem_04_01_rxn2'))
+    );
+    const logs = [];
+    const spy = vi.spyOn(console, 'log').mockImplementation((m) => logs.push(String(m)));
+    try {
+      await translateMain(['--book', 'efnafraedi-2e', '--out', dir, '--dry-run'], {
+        createClient: () => {
+          throw new Error('no client under --dry-run');
+        },
+        estimateIsk: (c) => c / 100,
+        envPath: path.join(dir, 'absent.env'),
+      });
+    } finally {
+      spy.mockRestore();
+      process.exitCode = undefined;
+    }
+    const plan = logs.map((l) => l.match(/^\s+(\d+) blocks, (\d+) chars/)).find(Boolean);
+    expect(plan).toBeTruthy();
+    const mine = billableFrom(dir);
+    expect([mine.blocks, mine.chars]).toEqual([Number(plan[1]), Number(plan[2])]);
+    fs.rmSync(dir, { recursive: true, force: true });
   });
 });

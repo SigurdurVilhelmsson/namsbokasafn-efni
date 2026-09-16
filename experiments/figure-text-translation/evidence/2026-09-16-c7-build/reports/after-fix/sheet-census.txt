@@ -1,0 +1,8 @@
+population: 692 *_IS.svg under books/*/media/
+  __e2e-fixture__: 1
+  efnafraedi-2e: 691
+paper-size sheets: 2
+  books/efnafraedi-2e/media/CNX_Chem_11_04_rvosmosis_IS.svg  612×792 pt (Letter)
+  books/efnafraedi-2e/media/CNX_Chem_18_07_N2O5_IS.svg  612×792 pt (Letter)
+viewBox could not be read: 0
+DONE

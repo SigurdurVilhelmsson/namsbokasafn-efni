@@ -1,0 +1,20 @@
+[
+ {
+  "key": "Mixture before reaction",
+  "english": "Mixture before reaction",
+  "lines": [
+   "Mixture before reaction"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mixture after reaction",
+  "english": "Mixture after reaction",
+  "lines": [
+   "Mixture after reaction"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

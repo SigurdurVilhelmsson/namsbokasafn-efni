@@ -1,0 +1,65 @@
+[
+ {
+  "key": "Synapse",
+  "english": "Synapse",
+  "lines": [
+   "Synapse"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Vesicles",
+  "english": "Vesicles",
+  "lines": [
+   "Vesicles"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Neuron",
+  "english": "Neuron",
+  "lines": [
+   "Neuron"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Neurotransmitters",
+  "english": "Neurotransmitters",
+  "lines": [
+   "Neurotransmitters"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Neuron",
+  "english": "Neuron",
+  "lines": [
+   "Neuron"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "(a)",
+  "english": "(a)",
+  "lines": [
+   "(a)"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "(b)",
+  "english": "(b)",
+  "lines": [
+   "(b)"
+  ],
+  "arc": false,
+  "send": false
+ }
+]

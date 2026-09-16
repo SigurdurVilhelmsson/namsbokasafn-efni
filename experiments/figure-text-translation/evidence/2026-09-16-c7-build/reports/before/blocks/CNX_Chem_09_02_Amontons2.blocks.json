@@ -1,0 +1,285 @@
+[
+ {
+  "key": "100|90|80|70|60|50|40|30|20|10|0",
+  "english": "100 90 80 70 60 50 40 30 20 10 0",
+  "lines": [
+   "100",
+   "90",
+   "80",
+   "70",
+   "60",
+   "50",
+   "40",
+   "30",
+   "20",
+   "10",
+   "0"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "0",
+  "english": "0",
+  "lines": [
+   "0"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "100",
+  "english": "100",
+  "lines": [
+   "100"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "200",
+  "english": "200",
+  "lines": [
+   "200"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "300",
+  "english": "300",
+  "lines": [
+   "300"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "400",
+  "english": "400",
+  "lines": [
+   "400"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "500",
+  "english": "500",
+  "lines": [
+   "500"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "Temperature (K)",
+  "english": "Temperature (K)",
+  "lines": [
+   "Temperature (K)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Pressure (kPa)",
+  "english": "Pressure (kPa)",
+  "lines": [
+   "Pressure (kPa)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "2100",
+  "english": "2100",
+  "lines": [
+   "2100"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "250",
+  "english": "250",
+  "lines": [
+   "250"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "0",
+  "english": "0",
+  "lines": [
+   "0"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "50",
+  "english": "50",
+  "lines": [
+   "50"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "100",
+  "english": "100",
+  "lines": [
+   "100"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "150",
+  "english": "150",
+  "lines": [
+   "150"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "Temperature|(oC)",
+  "english": "Temperature (oC)",
+  "lines": [
+   "Temperature",
+   "(oC)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Temperature|(K)",
+  "english": "Temperature (K)",
+  "lines": [
+   "Temperature",
+   "(K)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Pressure|(kPa)",
+  "english": "Pressure (kPa)",
+  "lines": [
+   "Pressure",
+   "(kPa)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "173",
+  "english": "173",
+  "lines": [
+   "173"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "223",
+  "english": "223",
+  "lines": [
+   "223"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "273",
+  "english": "273",
+  "lines": [
+   "273"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "323",
+  "english": "323",
+  "lines": [
+   "323"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "373",
+  "english": "373",
+  "lines": [
+   "373"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "423",
+  "english": "423",
+  "lines": [
+   "423"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "36.0",
+  "english": "36.0",
+  "lines": [
+   "36.0"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "46.4",
+  "english": "46.4",
+  "lines": [
+   "46.4"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "56.7",
+  "english": "56.7",
+  "lines": [
+   "56.7"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "67.1",
+  "english": "67.1",
+  "lines": [
+   "67.1"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "77.5",
+  "english": "77.5",
+  "lines": [
+   "77.5"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "88.0",
+  "english": "88.0",
+  "lines": [
+   "88.0"
+  ],
+  "arc": false,
+  "send": false
+ }
+]
