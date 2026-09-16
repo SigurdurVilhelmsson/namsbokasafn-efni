@@ -354,7 +354,8 @@ export function mappingPreflight(basename, { mapped, mintIndex }) {
  * The outcomes whose `image-mapping.json` row is INSPECTED. Not "the outcomes that end as a
  * file in `books/<slug>/media/`", which is what this comment used to say and is false:
  * `processFigureLive` returns at `rec.outcome !== 'translated'`, so THIS DRIVER PUBLISHES
- * NOTHING FOR A COPY — the reader keeps OpenStax's own artwork out of the media tree, and
+ * NOTHING FOR A COPY. ⚠️ That does not mean the reader gets OpenStax's artwork: an EARLIER run's
+ * `_IS.*` file and mapping row, where they exist, keep serving (§C140 ⑦). And
  * `ls books/efnafraedi-2e/media/` is all `*_IS.*` bar its housekeeping files.
  *
  * A copy is still inspected, and that is deliberate: a row whose `outputName` escapes
@@ -1470,6 +1471,39 @@ function processFigureLive(
 }
 
 /**
+ * §C140 ⑦ — the operator-facing reason for artwork `sources.py` REFUSED. A refusal is not a hole:
+ * the delivery has a file, and the run declined it.
+ * @param {{refused: string, reason?: string, edition?: string, candidates?: Array<{path:string,page:number[],paper:string}>}} refusal
+ */
+export function refusalReason(refusal) {
+  if (refusal.refused === 'production-page') {
+    const found = (refusal.candidates || [])
+      .map((c) => `${c.path} (${c.page[0]}×${c.page[1]} pt, ${c.paper})`)
+      .join('; ');
+    return (
+      `REFUSED, not missing: the only artwork in ${refusal.edition} is a production page, not a ` +
+      `figure — ${found}. Nothing is bought or composed.`
+    );
+  }
+  if (refusal.refused === 'superseded') {
+    return `REFUSED, not missing: known-superseded artwork — ${refusal.reason}`;
+  }
+  return `REFUSED, not missing: ${refusal.refused}`;
+}
+
+/**
+ * §C140 ⑦ — an EARLIER translated copy a refusal leaves live. Nothing is composed or published for
+ * a refused figure, so a June `_IS.svg` and its mapping row keep serving readers.
+ * @returns {string|null}
+ */
+export function stillMappedCopy(basename, { mapped, bookDir, exists = fs.existsSync }) {
+  const row = mapped.get(basename);
+  if (row) return `media/${row.outputName} (mapping row present)`;
+  const file = path.join(bookDir, 'media', `${basename}${DEFAULT_SUFFIX}.svg`);
+  return exists(file) ? `media/${path.basename(file)} (no mapping row)` : null;
+}
+
+/**
  * Walk one chapter's figures.
  *
  * ⚠️ `readSidecar`, `publish` and `booksRoot` are injectable for the same reason `spawn` is:
@@ -1553,6 +1587,11 @@ export async function runFigures(args, deps = {}) {
     // or by the resolver itself. It turns `unresolved` from "the delivery has a hole" into
     // "we refused to guess", which is a different fact and gets its own report line.
     artworkContest: null,
+    // §C140 ⑦ — artwork `sources.py` found and REFUSED (a production page, or known-superseded),
+    // with its reason. Like a contest it is `unresolved` but is not a hole.
+    artworkRefusal: null,
+    pageUnknown: false,
+    stillMapped: null,
     outcome: null,
     reason: null,
     sendable: 0,
@@ -1611,10 +1650,13 @@ export async function runFigures(args, deps = {}) {
   );
   for (const rec of pending) {
     const hit = resolved.get(rec.basename);
-    if (hit) {
+    if (hit && hit.path) {
       rec.artwork = hit.path;
       rec.edition = hit.edition;
       rec.resolvedVia = 'basename';
+      rec.pageUnknown = Boolean(hit.pageUnknown);
+    } else if (hit && hit.refused) {
+      rec.artworkRefusal = hit;
     }
   }
 
@@ -1622,7 +1664,9 @@ export async function runFigures(args, deps = {}) {
   // `CNX_Chem_03_02_moles`, and reporting the gap as a hole in the artwork delivery would be
   // wrong. The figure keeps its UNSTRIPPED name everywhere downstream — sidecar key, --out
   // directory, image-mapping entry — because that is what publish cross-checks against.
-  const hashed = pending.filter((r) => !r.artwork && HASH_SUFFIX.test(r.basename));
+  const hashed = pending.filter(
+    (r) => !r.artwork && !r.artworkRefusal && HASH_SUFFIX.test(r.basename)
+  );
   if (hashed.length) {
     // 🔴 THE CONTEST IS A PROPERTY OF THE CHAPTER, NOT OF THIS RUN'S SELECTION — so when
     // `--module` narrowed the enumeration, ask the chapter again. It is pure file reading, no
@@ -1645,10 +1689,13 @@ export async function runFigures(args, deps = {}) {
       const second = resolveArtwork(spawn, args.book, [...new Set(stripped)]);
       dehashable.forEach((rec, i) => {
         const hit = second.get(stripped[i]);
-        if (hit) {
+        if (hit && hit.path) {
           rec.artwork = hit.path;
           rec.edition = hit.edition;
           rec.resolvedVia = 'de-hashed';
+          rec.pageUnknown = Boolean(hit.pageUnknown);
+        } else if (hit && hit.refused) {
+          rec.artworkRefusal = hit;
         }
       });
     }
@@ -1690,7 +1737,12 @@ export async function runFigures(args, deps = {}) {
             `on a guess publishes one figure's artwork under another's caption and alt text, ` +
             `and no downstream check can see it. Deliver the artwork under each figure's own ` +
             `basename, or narrow the run to the one that owns it once that is known.`
-          : 'no artwork in any configured source tree';
+          : rec.artworkRefusal
+            ? refusalReason(rec.artworkRefusal)
+            : 'no artwork in any configured source tree';
+        if (rec.artworkContest || rec.artworkRefusal) {
+          rec.stillMapped = stillMappedCopy(rec.basename, { mapped, bookDir });
+        }
         continue;
       }
       const outDir = path.join(tmpRoot, rec.basename);
@@ -1917,7 +1969,7 @@ export function summarise(result) {
   lines.push(
     ...nameList(
       'unresolved — the artwork delivery has a hole here',
-      by((f) => f.outcome === 'unresolved' && !f.artworkContest)
+      by((f) => f.outcome === 'unresolved' && !f.artworkContest && !f.artworkRefusal)
     )
   );
   // 🔴 A REFUSAL IS NOT A HOLE, AND THE OPERATOR'S NEXT ACTION IS DIFFERENT. A hole is fixed in
@@ -1934,6 +1986,32 @@ export function summarise(result) {
         `${JSON.stringify(source)} — ${claimants.join(', ')}`
     );
   }
+  // §C140 ⑦ — refusals, named with the file and why. Kept out of the hole list for the same reason
+  // contests are: the operator's next action is different.
+  for (const f of result.figures.filter((x) => x.artworkRefusal)) {
+    const r = f.artworkRefusal;
+    if (r.refused === 'production-page') {
+      for (const c of r.candidates) {
+        lines.push(
+          `  ⚠️ REFUSED — production page: ${f.basename}  ${c.path}  ${c.page[0]}×${c.page[1]} pt (${c.paper})`
+        );
+      }
+    } else {
+      lines.push(`  ⚠️ REFUSED — ${r.refused}: ${f.basename}: ${r.reason}`);
+    }
+  }
+  for (const f of result.figures.filter((x) => x.stillMapped)) {
+    lines.push(
+      `  ⚠️ readers still see an earlier translated copy of ${f.basename}: ${f.stillMapped} — ` +
+        `refusing does not retire it`
+    );
+  }
+  lines.push(
+    ...nameList(
+      'resolved, but the artwork page size could not be read — not checked for a production page',
+      by((f) => f.pageUnknown)
+    )
+  );
   // 🔴 WHICH FIGURE GOT WHICH FILE. `summarise` printed neither `artwork` nor `resolvedVia`, so
   // a --dry-run — the one report an operator reads BEFORE spending — was silent about two
   // figures sharing a source. The de-hashed ones are where a lookup-only fallback can put the

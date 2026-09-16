@@ -35,6 +35,8 @@ import {
   summarise,
   runFigures,
   dehashStemClaims,
+  refusalReason,
+  stillMappedCopy,
   main,
 } from '../figure-run.js';
 
@@ -469,6 +471,97 @@ describe('the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figur
     const result = await runFigures(CH03, { spawn });
     expect(result.tally.unresolved).toBe(result.figures.length);
     expect(result.verdict.ok).toBe(true); // R9: named, never fatal
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('§C140 ⑦ — refused artwork is named, never filed as a hole', () => {
+  const PAGE = {
+    path: null,
+    refused: 'production-page',
+    edition: 'first-edition',
+    candidates: [{ path: '/fake/artwork/sheet.pdf', page: [612, 792], paper: 'Letter' }],
+    reason:
+      "every candidate in 'first-edition' is a Letter-size page — a production sheet, not a figure",
+  };
+  const refuse = (target) => ({
+    resolve: (n) =>
+      n === target ? PAGE : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' },
+  });
+
+  it('files a production page unresolved, names it apart from holes, and buys nothing', async () => {
+    const spawn = fakeSpawn({
+      ...refuse('CNX_Chem_04_01_rxn2'),
+      prepare: () => ({ sendable: 2, blocks: 2 }),
+    });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
+    const rec = result.figures.find((f) => f.basename === 'CNX_Chem_04_01_rxn2');
+    expect(rec.outcome).toBe('unresolved');
+    expect(rec.artworkRefusal.refused).toBe('production-page');
+    expect(rec.reason).toMatch(/production page/);
+    expect(result.verdict.ok).toBe(true); // R9
+    const text = summarise(result);
+    expect(text).toContain('REFUSED — production page: CNX_Chem_04_01_rxn2');
+    expect(text).toContain('612×792 pt (Letter)');
+    // No hole LIST: the only unresolved figure was refused. Anchored on the list's own header
+    // (`nameList` prints `<label> (<n>):`) — the verdict NOTE also says "a hole here".
+    expect(text).not.toMatch(/unresolved — the artwork delivery has a hole here \(\d+\):/);
+    expect(spawn.countOf('prepare')).toBe(result.figures.length - 1); // CONTROL: the others ran
+  });
+
+  it('does not retry a refused hashed name through the de-hash', async () => {
+    const hashed = 'CNX_Chem_03_02_moles-6296';
+    const spawn = fakeSpawn(refuse(hashed));
+    const result = await runFigures(
+      { book: 'efnafraedi-2e', chapter: '3', modules: null, figures: [hashed], dryRun: true },
+      { spawn, ...PRISTINE }
+    );
+    const rec = result.figures.find((f) => f.basename === hashed);
+    expect(rec.artworkRefusal).not.toBeNull();
+    expect(spawn.countOf('resolve')).toBe(1); // no second, de-hash pass
+  });
+
+  it('names an earlier translated copy that a refusal leaves live — and not when there is none', async () => {
+    const spawn = fakeSpawn({
+      resolve: (n) =>
+        n === 'CNX_Chem_04_01_rxn2' || n === 'CNX_Chem_04_02_LeadIodide'
+          ? PAGE
+          : { path: `/fake/artwork/${n}.pdf`, edition: 'first-edition' },
+    });
+    const text = summarise(await runFigures(CH04, { spawn, ...PRISTINE }));
+    expect(text).toContain('readers still see an earlier translated copy of CNX_Chem_04_01_rxn2');
+    expect(text).toContain('CNX_Chem_04_01_rxn2_IS.svg');
+    // CONTROL: LeadIodide has no mapping row and no _IS file, so no line names it
+    expect(text).not.toMatch(/earlier translated copy of CNX_Chem_04_02_LeadIodide/);
+  });
+
+  it('names a resolved artwork whose page size could not be read', async () => {
+    const spawn = fakeSpawn({
+      resolve: (n) => ({
+        path: `/fake/artwork/${n}.pdf`,
+        edition: 'first-edition',
+        ...(n === 'CNX_Chem_04_03_airbag' ? { pageUnknown: true } : {}),
+      }),
+    });
+    const text = summarise(await runFigures(CH04, { spawn, ...PRISTINE }));
+    expect(text).toMatch(/page size could not be read[^\n]*\n\s+CNX_Chem_04_03_airbag/);
+  });
+
+  it('describes a superseded refusal by its reason', () => {
+    expect(refusalReason({ refused: 'superseded', reason: 'the box holds the old strip' })).toMatch(
+      /superseded.*the box holds the old strip/
+    );
+  });
+
+  it('stillMappedCopy reads the mapping row first, then the media file', () => {
+    const mapped = new Map([['A', { outputName: 'A_IS.svg' }]]);
+    expect(stillMappedCopy('A', { mapped, bookDir: '/b', exists: () => false })).toMatch(
+      /A_IS\.svg \(mapping row present\)/
+    );
+    expect(stillMappedCopy('B', { mapped, bookDir: '/b', exists: () => true })).toMatch(
+      /B_IS\.svg \(no mapping row\)/
+    );
+    expect(stillMappedCopy('C', { mapped, bookDir: '/b', exists: () => false })).toBeNull();
   });
 });
 
