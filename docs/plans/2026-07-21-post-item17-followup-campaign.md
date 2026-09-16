@@ -2,9 +2,17 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-16 (DEPLOYED; ⑥ LICENCE MEASURED)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-16 ([USER] ORDERS ⑦, THEN ④ AND ⑥)** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — **[USER] authorises the next coding item — §C140 ⑦ (spend checks) is recommended — and rules whether ④ and ⑥'s remainder must also land before buying resumes.** Buying stays stopped.
+### ⏭ SINGLE NEXT ACTION — **§C140 ⑦ (spend checks) on a new branch: brainstorm → spec → plan → build.** Buying stays stopped.
+
+⚖️ **[USER], 2026-09-16, verbatim: *"Merge 474 and start ⑦. Then do 4 and the rest of 6."*** So the order is ⑦, then ④, then ⑥'s remainder (STIX re-embedding, per-run kerning). ⚠️ **⑥'s re-scoped [LEAD] call — whether to accept subsetting STIX's archived font into our SVGs under the licence grey area — is NOT read as settled by that sentence; it is put to [USER] explicitly when ⑥ starts.** PR #474 (this block's branch) is merged on the same instruction; CI on its head matched `main`'s 36 failing tests by name, plus a one-off 10 s `beforeAll` timeout in `server/__tests__/findTermsGolden.test.js` that `main`'s own run of `6d8ead0c` did not show.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-16 (DEPLOYED; ⑥ LICENCE MEASURED)** (superseded by the block above)
+
+### ⏭ SINGLE NEXT ACTION — ~~**[USER] authorises the next coding item — §C140 ⑦ (spend checks) is recommended — and rules whether ④ and ⑥'s remainder must also land before buying resumes.**~~ **Ordered by [USER] — see the block above.** Buying stays stopped.
 
 ✅ **PR #473 IS DEPLOYED — measured on prod, not inferred.** Prod's reflog: `pull --rebase origin main: Fast-forward` to `6d8ead0c` at **2026-09-16 11:33:02Z**; `ritstjorn` started 11:33:08Z. Tree clean, 0/0 with `origin/main`; `/api/health` `ok` on all seven checks. **The healed brain figure on prod's disk is byte-identical to `main`'s** (git blob `25fd65c7…`), so a *Vista + Birta* on ch03 now copies the healed one.
 
