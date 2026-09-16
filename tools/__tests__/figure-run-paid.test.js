@@ -2188,5 +2188,33 @@ describe('§C140 ⑦ — what a live run would buy', () => {
     const text = summarise(result);
     expect(text).toContain('buyable this run 1 figure(s): 18 billable characters');
     expect(text).toContain('MT spawned for 1 figure(s), 18 billable characters');
+    // K = 0: nothing is flagged UNKNOWN when every size is known (the control for the case below).
+    expect(text).not.toMatch(/billable size is UNKNOWN/);
+  });
+
+  // ⚠️ AN UNKNOWN BILLABLE SIZE IS NEVER SUMMED AS ZERO. FIG_ODD's send block carries no `english`,
+  // so its key set can be bought while `billableFrom` cannot count it — both headlines must say so
+  // rather than fold it into the known figure's numbers.
+  it('names a figure whose billable size is UNKNOWN instead of counting it as zero', async () => {
+    const { booksRoot } = makeBook({ figures: ['FIG_NEW', 'FIG_ODD'] });
+    const spawn = fakeSpawn({
+      prepare: (b) =>
+        b === 'FIG_ODD'
+          ? { sendable: 1, __blocks: [{ key: 'k0', lines: ['?'], arc: false, send: true }] }
+          : { sendable: 2 },
+    });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(rec(result, 'FIG_ODD').billable.chars).toBeNull();
+    expect(rec(result, 'FIG_ODD').spent).toBe(true); // it WAS bought — the size is what is unknown
+    expect(spawn.countOf('translate')).toBe(2);
+    const text = summarise(result);
+    expect(text).toContain(
+      'buyable this run 1 figure(s): 18 billable characters, est 0.18 ISK at list rate ' +
+        '(+1 figure(s) whose billable size is UNKNOWN)'
+    );
+    expect(text).toContain(
+      'MT spawned for 1 figure(s), 18 billable characters (+1 figure(s) whose billable size is UNKNOWN)'
+    );
+    expect(text).toMatch(/FIG_ODD\s+billable count UNKNOWN/);
   });
 });
