@@ -187,6 +187,87 @@ with tempfile.TemporaryDirectory() as td:
     check('never resolves into Translated_IS', got, None)
 
 # ---------------------------------------------------------------------------
+# §C140 ⑦ — PRODUCTION PAGES ARE REFUSED, INSIDE AN EDITION, WITH A REASON
+# Measured 2026-09-16: exactly 2 of 910 resolved artworks sit at a standard paper size
+# (rvosmosis, N2O5 — both Letter), 0 others even at ±10 pt; the next largest is 468×576 pt.
+# ---------------------------------------------------------------------------
+import pikepdf, struct
+from sources import resolve_detail, page_size, paper_size_name
+
+
+def make_pdf(path, w, h):
+    pdf = pikepdf.new()
+    pdf.add_blank_page(page_size=(w, h))
+    pdf.save(str(path))
+
+
+def make_eps(path, w, h, dos=False):
+    ps = (f'%!PS-Adobe-3.0 EPSF-3.0\n%%BoundingBox: 0 0 {int(w)} {int(h)}\n'
+          f'%%HiResBoundingBox: 0 0 {w} {h}\n%%EndComments\nshowpage\n').encode()
+    if dos:
+        header = b'\xc5\xd0\xd3\xc6' + struct.pack('<IIIIII', 30, len(ps), 0, 0, 0, 0) + b'\xff\xff'
+        path.write_bytes(header + ps)
+    else:
+        path.write_bytes(ps)
+
+
+with tempfile.TemporaryDirectory() as td:
+    td = Path(td)
+    old, new = td / 'first-edition', td / 'updates-2e'
+    old.mkdir(); new.mkdir()
+    trees = {'first-edition': str(old), 'updates-2e': str(new)}
+    prec = ['updates-2e', 'first-edition']
+
+    make_pdf(old / 'CNX_Page.pdf', 612, 792)
+    make_eps(old / 'CNX_Page.eps', 287.99, 90.62)
+    make_pdf(old / 'CNX_Sheet.pdf', 612, 792)
+    make_pdf(old / 'CNX_A4.pdf', 841.89, 595.28)
+    make_pdf(old / 'CNX_Big.pdf', 468, 576)
+    make_eps(old / 'CNX_Dos.eps', 612, 792, dos=True)
+    make_pdf(new / 'CNX_Split.pdf', 612, 792)
+    make_pdf(old / 'CNX_Split.pdf', 300, 200)
+    (old / 'CNX_Junk.pdf').write_bytes(b'not a pdf')
+
+    check('page_size reads a PDF page box', page_size(old / 'CNX_Big.pdf'), (468.0, 576.0))
+    check('page_size reads an EPS HiResBoundingBox', page_size(old / 'CNX_Page.eps'), (287.99, 90.62))
+    check('page_size follows a DOS EPS binary header', page_size(old / 'CNX_Dos.eps'), (612.0, 792.0))
+    check('page_size is None for an unreadable file', page_size(old / 'CNX_Junk.pdf'), None)
+    check('paper_size_name knows Letter', paper_size_name((612.4, 791.0)), 'Letter')
+    check('paper_size_name knows A4 landscape', paper_size_name((841.89, 595.28)), 'A4')
+    check('CONTROL paper_size_name ignores a large real figure', paper_size_name((468, 576)), None)
+
+    d = resolve_detail('CNX_Page', trees, prec)
+    check('a Letter PDF falls through to the same-stem EPS in its edition',
+          (Path(d['path']).name, d['edition']), ('CNX_Page.eps', 'first-edition'))
+    d = resolve_detail('CNX_Sheet', trees, prec)
+    check('a Letter PDF with nothing else is REFUSED as a production page',
+          (d['path'], d['refused'], d['edition'], [c['paper'] for c in d['candidates']]),
+          (None, 'production-page', 'first-edition', ['Letter']))
+    check('the refusal names its candidate and size',
+          (Path(d['candidates'][0]['path']).name, d['candidates'][0]['page']),
+          ('CNX_Sheet.pdf', [612.0, 792.0]))
+    check('an A4 landscape page is refused too', resolve_detail('CNX_A4', trees, prec)['refused'],
+          'production-page')
+    check('CONTROL a 468x576 figure resolves', Path(resolve_detail('CNX_Big', trees, prec)['path']).name,
+          'CNX_Big.pdf')
+    d = resolve_detail('CNX_Split', trees, prec)
+    check('a page in updates-2e is REFUSED, never replaced by the 1st-edition figure',
+          (d['refused'], d['edition']), ('production-page', 'updates-2e'))
+    d = resolve_detail('CNX_Junk', trees, prec)
+    check('an unreadable page size resolves and is FLAGGED, not refused',
+          (Path(d['path']).name, d.get('pageUnknown')), ('CNX_Junk.pdf', True))
+    d = resolve_detail('CNX_X', trees, prec, superseded={'CNX_X': 'a reason that is long enough to count'})
+    check('a superseded figure is refused on the same channel, with its reason',
+          (d['path'], d['refused'], d['reason']), (None, 'superseded', 'a reason that is long enough to count'))
+    check('resolve() still returns (None, None) for a refusal', resolve('CNX_Sheet', trees, prec), (None, None))
+    check('resolve() still returns the fall-through path', resolve('CNX_Page', trees, prec)[0].name, 'CNX_Page.eps')
+    rep = resolve_report(['CNX_Sheet', 'CNX_Big', 'CNX_Nowhere'], trees, prec)
+    check('resolve_report carries the refusal, the hit and the hole',
+          (rep['CNX_Sheet']['refused'], Path(rep['CNX_Big']['path']).name, rep['CNX_Nowhere']),
+          ('production-page', 'CNX_Big.pdf', None))
+
+
+# ---------------------------------------------------------------------------
 # The shipped list is DATA, and its integrity is checkable without a machine's
 # artwork trees: an entry whose value is empty is a permanent hole nobody can
 # later evaluate, which is the whole reason the value is the reason.
