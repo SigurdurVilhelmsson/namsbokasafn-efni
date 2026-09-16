@@ -1601,6 +1601,7 @@ export async function runFigures(args, deps = {}) {
     imageXObjects: null,
     paintOps: null,
     holds: null,
+    glyphs: null,
     mapping: null,
     outDir: null,
     // The paid half's own record. `spent` is TRUE only when the MT was actually spawned for
@@ -1786,6 +1787,12 @@ export async function runFigures(args, deps = {}) {
           missingFont: payload.missingFontBlocks,
         };
         rec.warnings = payload.warnings || [];
+        // §C140 ⑦ — what the read layer repaired, or could not, by glyph name.
+        rec.glyphs = {
+          repaired: payload.glyphRepairs || [],
+          unrepaired: payload.glyphUnrepaired || [],
+          ambiguous: payload.glyphAmbiguous || [],
+        };
         // THE IDENTITY SEAM — see the module header. Free here, unrecoverable after payment.
         const composed = basenameFromMeta(path.join(outDir, 'meta.json'));
         if (composed !== rec.basename) {
@@ -2101,6 +2108,32 @@ export function summarise(result) {
       lines.push(
         `    ${f.outcome.padEnd(16)} ${f.holds.undecoded} undecodable, ` +
           `${f.holds.missingFont} missing-font of ${f.blocks} block(s)  ${f.basename}`
+      );
+    }
+  }
+
+  // §C140 ⑦ — glyphs the read layer repaired (figglyphs.GLYPH_REPAIRS), and those it held back.
+  const fmt = (list, withTo) =>
+    list.map((g) => `${g.count}× ${g.glyph}${withTo ? ` → ${g.to}` : ''}`).join(', ');
+  const repairedGlyphs = result.figures.filter((f) => f.glyphs && f.glyphs.repaired.length);
+  if (repairedGlyphs.length) {
+    lines.push(
+      `  glyphs repaired by the read layer — misread without a ToUnicode map (${repairedGlyphs.length}):`
+    );
+    for (const f of repairedGlyphs)
+      lines.push(`    ${f.basename}  ${fmt(f.glyphs.repaired, true)}`);
+  }
+  const heldGlyphs = result.figures.filter(
+    (f) => f.glyphs && (f.glyphs.unrepaired.length || f.glyphs.ambiguous.length)
+  );
+  if (heldGlyphs.length) {
+    lines.push(
+      `  glyphs NOT repaired — held back and not drawn; add a figglyphs entry only with a raster (${heldGlyphs.length}):`
+    );
+    for (const f of heldGlyphs) {
+      lines.push(
+        `    ${f.basename}  unrepaired ${fmt(f.glyphs.unrepaired, false) || '-'}  ` +
+          `ambiguous ${fmt(f.glyphs.ambiguous, false) || '-'}`
       );
     }
   }

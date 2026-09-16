@@ -1339,3 +1339,37 @@ describe('a copy is not failed over a publish that never happens', () => {
     expect(summarise(translated)).toMatch(/minted before publish/);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────────────────
+describe('§C140 ⑦ — glyph repairs are named per figure', () => {
+  it('names repaired glyphs with their replacement, and unrepaired ones as held', async () => {
+    const spawn = fakeSpawn({
+      prepare: (b) =>
+        b === 'CNX_Chem_04_01_rxn2'
+          ? { sendable: 3, blocks: 3, glyphRepairs: [{ glyph: 'H11034', to: '°', count: 3 }] }
+          : b === 'CNX_Chem_04_01_rxn3'
+            ? {
+                sendable: 1,
+                blocks: 2,
+                undecodedBlocks: 1,
+                glyphUnrepaired: [{ glyph: 'H99999', count: 1 }],
+              }
+            : { sendable: 1, blocks: 1 },
+    });
+    const result = await runFigures(CH04, { spawn, ...PRISTINE });
+    const text = summarise(result);
+    expect(text).toMatch(
+      /glyphs repaired by the read layer[^\n]*\n\s+CNX_Chem_04_01_rxn2\s+3× H11034 → °/
+    );
+    expect(text).toMatch(
+      /glyphs NOT repaired[^\n]*\n\s+CNX_Chem_04_01_rxn3\s+unrepaired 1× H99999/
+    );
+    // CONTROL: a figure with no glyph fields is in neither section
+    expect(text).not.toMatch(/CNX_Chem_04_03_airbag\s+\d+× H/);
+    expect(result.figures.find((f) => f.basename === 'CNX_Chem_04_03_airbag').glyphs).toEqual({
+      repaired: [],
+      unrepaired: [],
+      ambiguous: [],
+    });
+  });
+});
