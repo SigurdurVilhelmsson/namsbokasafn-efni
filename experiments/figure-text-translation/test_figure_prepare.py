@@ -785,5 +785,50 @@ with tempfile.TemporaryDirectory() as td:
     else:
         check('7g PRECONDITION svgfix exposes PDFTOCAIRO_SVG_FLAGS for the guard to read', False)
 
+# ── 12. §C140 ⑦ — glyph repairs reach prepare.json, summed over fonts ─────────────────
+print('\n[12] glyph repairs are reported in prepare.json')
+if _mod is not None:
+    summary = _mod.glyph_summary({
+        'glyph_repairs': {'PAGE/R16': {'H11034': 2}, 'PAGE/F1/R2': {'H11034': 1, 'H9261': 4}},
+        'glyph_unrepaired': {'PAGE/R9': {'H99999': 3}},
+        'glyph_ambiguous': {},
+    })
+    check('12a repairs are summed over fonts and carry the replacement',
+          summary[0] == [{'glyph': 'H11034', 'to': '°', 'count': 3},
+                         {'glyph': 'H9261', 'to': 'λ', 'count': 4}], f'{summary[0]!r}')
+    check('12b unrepaired and ambiguous are reported by name',
+          summary[1] == [{'glyph': 'H99999', 'count': 3}] and summary[2] == [], f'{summary[1:]!r}')
+    check('12c CONTROL — a meta with no glyph fields reports three empty lists',
+          _mod.glyph_summary({}) == ([], [], []), f'{_mod.glyph_summary({})!r}')
+
+with tempfile.TemporaryDirectory() as td:
+    out = Path(td) / 'fixture-out'
+    r = run_prepare(FIXTURE, '--basename', 'CNX_Fixture_Glyphs', '--out', out)
+    d = load_prepare_json(out) or {}
+    check('12d CONTROL — the committed fixture prepares with empty glyph lists',
+          r.returncode == 0 and d.get('glyphRepairs') == [] and d.get('glyphUnrepaired') == []
+          and d.get('glyphAmbiguous') == [], f"{d.get('glyphRepairs')!r}")
+
+try:
+    import sources as _S
+    _cfg = _S.load_config()
+    _pent, _k = _S.resolve('CNX_Chem_10_01_PentIso', _S.load_trees('efnafraedi-2e', _cfg),
+                           _cfg['editionPrecedence'], superseded=_cfg.get('supersededArtwork'))
+except SystemExit as exc:
+    _pent = None
+    check('12e PRECONDITION the PentIso artwork resolves on this box', False, str(exc))
+if _pent:
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / 'pent-out'
+        r = run_prepare(_pent, '--basename', 'CNX_Chem_10_01_PentIso', '--out', out)
+        d = load_prepare_json(out) or {}
+        keys = [b['key'] for b in json.loads((out / 'blocks.json').read_text())] \
+            if (out / 'blocks.json').exists() else []
+        check('12e PentIso end to end: 3 repairs reported and the keys read °C',
+              r.returncode == 0
+              and d.get('glyphRepairs') == [{'glyph': 'H11034', 'to': '°', 'count': 3}]
+              and sum(' °C' in k for k in keys) == 3 and not any('8C' in k for k in keys),
+              f"exit {r.returncode}; {d.get('glyphRepairs')!r}; keys {keys[:4]!r}")
+
 print(f"\n{'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
 sys.exit(1 if fails else 0)

@@ -537,6 +537,28 @@ def artwork_transform_refusal(artwork_pdf, flags=None):
             f'correctly placed labels (see svgfix.PDFTOCAIRO_SVG_FLAGS).')
 
 
+def glyph_summary(meta):
+    """-> (repairs, unrepaired, ambiguous) for prepare.json, summed over every font (§C140 ⑦).
+
+    `repairs` carries the replacement from figglyphs so the driver can print `H11034 → °`
+    without a second copy of the table.
+    """
+    import collections
+    from figglyphs import GLYPH_REPAIRS
+
+    def total(field):
+        counts = collections.Counter()
+        for per_font in (meta.get(field) or {}).values():
+            counts.update(per_font)
+        return sorted(counts.items())
+
+    repairs = [{'glyph': n, 'to': GLYPH_REPAIRS[n], 'count': c}
+               for n, c in total('glyph_repairs')]
+    unrepaired = [{'glyph': n, 'count': c} for n, c in total('glyph_unrepaired')]
+    ambiguous = [{'glyph': n, 'count': c} for n, c in total('glyph_ambiguous')]
+    return repairs, unrepaired, ambiguous
+
+
 def prepare(artwork, out_dir, basename):
     """-> the prepare.json payload. Raises PrepareError on a per-figure failure."""
     # 🔴 A STALE artwork.svg MUST NOT BE ABLE TO SATISFY THE CHECK AT THE END OF THIS
@@ -578,6 +600,8 @@ def prepare(artwork, out_dir, basename):
     if refusal:
         raise PrepareError(refusal)
 
+    glyph_repairs, glyph_unrepaired, glyph_ambiguous = glyph_summary(meta)
+
     return {
         'basename': basename,
         # The ORIGINAL artwork, absolute. meta.json's `source` is the staged PDF.
@@ -587,6 +611,9 @@ def prepare(artwork, out_dir, basename):
         'undecodedBlocks': undecoded,
         'verbatimBlocks': verbatim,
         'missingFontBlocks': missing_font,
+        'glyphRepairs': glyph_repairs,
+        'glyphUnrepaired': glyph_unrepaired,
+        'glyphAmbiguous': glyph_ambiguous,
         # 0 means the reader saw NO text at all, which is a different fact from
         # "0 blocks survived grouping".
         'chars': meta.get('chars', 0),
