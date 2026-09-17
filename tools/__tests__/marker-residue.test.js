@@ -18,10 +18,12 @@ import {
  * would pass against the OLD code too if the fixture happened to be intact —
  * `oldGateFinds` below is what proves the fixture is the blind shape.
  *
- * `TRUNCATED_REAL` is a verbatim excerpt of that committed module
- * (`66612e43d:books/efnafraedi-2e/03-translated/mt-preview/ch03/m68700.cnxml`),
- * inlined rather than read from git: CI clones at depth 1, so a test that
- * reached into history would be vacuous there.
+ * `TRUNCATED_REAL` is an excerpt of that committed module
+ * (`66612e43d:books/efnafraedi-2e/03-translated/mt-preview/ch03/m68700.cnxml`) —
+ * verbatim from `Þessi` through `</emphasis> eða`, then cut short at a sentence
+ * end, since the fixture needs the damaged marker and not the rest of the
+ * paragraph. It is inlined rather than read from git because CI clones at depth
+ * 1, so a test that reached into history would be vacuous there.
  */
 
 /** The pattern this item supersedes — whole-token, requires a closing `]]`. */
@@ -80,6 +82,37 @@ describe('§C145 ① — intact residue is still caught, and reported in full', 
 
   it('does not label an intact marker as truncated', () => {
     expect(describeMarkerResidue(findMarkerResidue(CLOSED_REAL))).not.toContain('TRUNCATED');
+  });
+});
+
+describe('§C145 ① — the end-scan is depth-aware, because `[^\\]]*\\]\\]` is the bug', () => {
+  // An adversarial review (2026-09-17) measured both of these against the first
+  // implementation, which used `[^\]]*\]\]` anchored at the opener — i.e. the
+  // very idiom §C115 and this item exist to correct.
+  it('does not borrow a LATER marker’s close to call a truncated marker intact', () => {
+    // `[[term:broken` never closes; the `]]` belongs to the [[b:ok]] after it.
+    const [hit] = findMarkerResidue('x [[term:broken and then [[b:ok]] more');
+    expect(hit.token).toBeNull();
+  });
+
+  it('reports a NESTED marker’s whole token, not the prefix up to the inner close', () => {
+    expect(findMarkerResidue('[[term:a [[i:b]] c|id-1]]')[0].token).toBe(
+      '[[term:a [[i:b]] c|id-1]]'
+    );
+  });
+
+  it('treats a literal ] in the payload as payload, not as the end', () => {
+    // organic m00061's shape after inner-marker resolution: an INTACT but
+    // unresolved docref whose body carries a literal bracket.
+    const t =
+      '<item>[[docref:specific rotation, [<em>α</em>]<sub>D</sub>|m00052#term-00004]]</item>';
+    expect(findMarkerResidue(t)[0].token).toBe(
+      '[[docref:specific rotation, [<em>α</em>]<sub>D</sub>|m00052#term-00004]]'
+    );
+  });
+
+  it('gives up rather than scanning the whole document for a close', () => {
+    expect(findMarkerResidue(`[[term:${'x'.repeat(4000)}]]`)[0].token).toBeNull();
   });
 });
 

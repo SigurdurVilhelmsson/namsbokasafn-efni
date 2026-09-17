@@ -23,14 +23,27 @@ function sourceModules(book) {
 function sweep(book) {
   const loss = [];
   const gain = [];
+  const refused = []; // §C145: modules the injector refuses — no round-trip verdict
   const files = sourceModules(book);
   for (const f of files) {
-    const r = roundTripAltCount(fs.readFileSync(f, 'utf8'));
     const module = path.basename(f, '.cnxml');
+    let r;
+    try {
+      r = roundTripAltCount(fs.readFileSync(f, 'utf8'));
+    } catch (err) {
+      // §C145 ①: the injector REFUSES a module whose output carries a surviving
+      // bracket marker, so it round-trips to no verdict at all — neither loss
+      // nor gain. Recorded BY NAME and asserted, so the population this sweep
+      // actually covers cannot shrink without saying so. Narrow on purpose: any
+      // other failure is a real crash and must still surface.
+      if (!/Marker residue/.test(err.message)) throw err;
+      refused.push(module);
+      continue;
+    }
     if (r.outAlt < r.rawAlt) loss.push({ module, ...r });
     else if (r.outAlt > r.rawAlt) gain.push({ module, ...r });
   }
-  return { files: files.length, loss, gain };
+  return { files: files.length, loss, gain, refused: refused.sort() };
 }
 
 describe('alt survives the round trip', () => {
@@ -43,6 +56,8 @@ describe('alt survives the round trip', () => {
     // organic's findings mean something.
     const r = sweep('efnafraedi-2e');
     expect(r.files).toBe(149);
+    // §C145: chemistry refuses no module — the control for organic's one.
+    expect(r.refused).toEqual([]);
     expect(r.loss).toEqual([]);
     expect(r.gain).toEqual([]);
   }, 300_000);
@@ -146,8 +161,21 @@ describe('alt survives the round trip', () => {
     // Each direction was read BEFORE the pin was updated, never after: loss went
     // ['m00032'] -> [] and gain went ['m00023','m00046'] -> [], i.e. toward the
     // source in both cases.
+    // 🔴 §C145 (2026-09-17) — ONE MODULE NOW ROUND-TRIPS TO NO VERDICT AT ALL.
+    // `files` stays 342 — the population this sweep WALKS is unchanged — while
+    // m00061 is recorded as REFUSED rather than counted as clean. It carries
+    // `[[docref:specific rotation, [[[i:α]]][[sub:D]]|…]]`; the inner `[[i:α]]`
+    // resolves to `<emphasis>α</emphasis>`, leaving a LITERAL `]` in the docref
+    // payload, so the docref is never converted and reaches the output as
+    // residue. §C115's class — the superseded whole-token gate could not see it.
+    // ⚠️ LATENT: m00061 has no Icelandic translation, so a real inject refuses it
+    // earlier; only an English round-trip like this one reaches it.
+    // ▶ Pinned BY NAME on purpose: an empty `loss`/`gain` pair means much less if
+    // modules can quietly drop out of the comparison, so the sweep must say which
+    // ones did.
     const r = sweep('lifraen-efnafraedi');
     expect(r.files).toBe(342);
+    expect(r.refused).toEqual(['m00061']);
     expect(r.loss).toEqual([]);
     expect(r.gain).toEqual([]);
 

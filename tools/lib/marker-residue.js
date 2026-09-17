@@ -38,10 +38,44 @@
  * two consumers would silently interleave. */
 export const MARKER_RESIDUE_OPENER_SOURCE = '\\[\\[(?!MATH:|MEDIA:)[A-Za-z]\\w*:';
 
-/** The whole-token form, retained ONLY to enrich a report: when a hit's marker
- * is intact we show the full token, which is more actionable than `[[term:`.
- * It is never the predicate — see the header. */
-const CLOSED_AT_START = /^\[\[(?!MATH:|MEDIA:)[A-Za-z]\w*:[^\]]*\]\]/;
+/**
+ * How far the end-scan will look for a marker's close before calling it
+ * truncated. Real marker bodies are short — the longest in the corpus is a
+ * 485-character figure alt — so a `]]` further away than this belongs to
+ * something else, and claiming it would invent a token that is not there.
+ */
+const MAX_MARKER_SPAN = 2000;
+
+/**
+ * Find the end of the marker that starts at `start`, DEPTH-AWARE.
+ *
+ * ⚠️ This deliberately does NOT use `[^\]]*\]\]`. That is the very idiom this
+ * whole item exists to correct (CLAUDE.md § a bare `>` … / §C115: a character
+ * class used to find the end of a structured token), and it fails here in two
+ * measured ways: it stops at the first `]` of a NESTED marker's close, and on a
+ * genuinely truncated marker it runs on and matches a `]]` belonging to some
+ * later marker — reporting a token that does not exist in the file.
+ *
+ * @returns {number|null} index just past the closing `]]`, or null if the marker
+ *   never closes within `MAX_MARKER_SPAN` — i.e. its end was destroyed.
+ */
+function markerEnd(text, start) {
+  const limit = Math.min(text.length, start + MAX_MARKER_SPAN);
+  let depth = 1;
+  let i = start + 2;
+  while (i < limit && depth > 0) {
+    if (text.startsWith('[[', i)) {
+      depth++;
+      i += 2;
+    } else if (text.startsWith(']]', i)) {
+      depth--;
+      i += 2;
+    } else {
+      i++;
+    }
+  }
+  return depth === 0 ? i : null;
+}
 
 const PLACEHOLDER_RE = /\[\[(MATH|MEDIA):\d+\]\]/g;
 
@@ -69,10 +103,10 @@ export function findMarkerResidue(text, opts = {}) {
   const hits = [];
   let m;
   while ((m = re.exec(src)) !== null) {
-    const closed = CLOSED_AT_START.exec(src.slice(m.index));
+    const end = markerEnd(src, m.index);
     hits.push({
       opener: m[0],
-      token: closed ? closed[0] : null,
+      token: end === null ? null : src.slice(m.index, end),
       index: m.index,
       context: src
         .slice(Math.max(0, m.index - contextChars), m.index + contextChars)
@@ -121,9 +155,13 @@ export function describeMarkerResidue(hits, opts = {}) {
     if (seen.has(key)) continue;
     seen.add(key);
     if (lines.length >= max) continue;
+    // A token may legitimately be long (a figure alt runs to hundreds of
+    // characters); the context window carries the position, so the token is
+    // shown only far enough to identify it.
+    const token = h.token && h.token.length > 120 ? `${h.token.slice(0, 117)}...` : h.token;
     lines.push(
-      h.token
-        ? `  ${h.token} @${h.index} — …${h.context}…`
+      token
+        ? `  ${token} @${h.index} — …${h.context}…`
         : `  ${h.opener} @${h.index} TRUNCATED (no closing ]]) — …${h.context}…`
     );
   }

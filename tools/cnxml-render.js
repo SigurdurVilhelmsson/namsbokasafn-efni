@@ -71,7 +71,11 @@ import { buildModuleSections } from './lib/module-sections.js';
 import { loadChapterTermEnglish } from './lib/term-english-map.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 // §C145 ② — shared with cnxml-inject.js's gate, so the two cannot drift.
-import { findMarkerResidue, describeMarkerResidue } from './lib/marker-residue.js';
+import {
+  findMarkerResidue,
+  describeMarkerResidue,
+  countPlaceholderMarkers,
+} from './lib/marker-residue.js';
 import {
   getBookRenderConfig,
   generateFallbackLabel,
@@ -596,18 +600,74 @@ function assertNoMarkerResidueHtml(html, outputPath) {
 }
 
 /**
+ * 🔴 §C145 ② PRE-FLIGHT — REFUSE BEFORE THE SWEEP, NOT AFTER. ORDERING IS THE
+ * WHOLE POINT, AND GETTING IT WRONG COSTS READER PAGES.
+ *
+ * A full-chapter render `unlinkSync`s EVERY `.html` in the chapter directory —
+ * and every `.backup.*` with it — before it renders anything. So at write time
+ * there is no "previously published page" for a refused module to fall back to,
+ * and `rollbackWrittenFiles` has no backup left to restore: it DELETES. A gate
+ * that fired only at write time would therefore destroy a whole chapter's pages
+ * to stop one bad module, and a refused ROLLUP would leave the directory empty.
+ * ▶ **The repair must not cost more than the defect.** Reading the inputs first
+ * costs nothing and refuses while the published tree is still intact.
+ *
+ * ⚠️ A `--module` run does NOT sweep (`if (!args.module)` guards it), so its
+ * write-time refusal was always harmless — the previous page really does stay.
+ * This protects the full-chapter path: the per-chapter loop's Step 4 and every
+ * chapter-level publish route.
+ *
+ * ⚠️ One bad module refuses the WHOLE chapter render. That is deliberate and it
+ * matches the inject gate, which aborts its whole `--chapter` batch: the
+ * alternative is excluding the module from a sweep that deletes by directory
+ * listing rather than by module id, which cannot be done safely.
+ *
+ * Measured 2026-09-17: 161 committed modules across both kept books, 0 refusals.
+ *
+ * @param {string[]} modules - module ids this render would publish
+ * @param {string} track
+ * @param {string} chapterDir
+ */
+function assertNoMarkerResidueInInputs(modules, track, chapterDir) {
+  const offenders = [];
+  for (const moduleId of modules) {
+    let cnxml;
+    try {
+      cnxml = fs.readFileSync(translatedCnxmlPath(track, chapterDir, moduleId), 'utf-8');
+    } catch {
+      continue; // a missing input is the render loop's own error to report, not this gate's
+    }
+    const hits = findMarkerResidue(cnxml);
+    if (hits.length) offenders.push({ moduleId, hits });
+  }
+  if (offenders.length === 0) return;
+  const detail = offenders
+    .map((o) => `  ${o.moduleId}:\n${describeMarkerResidue(o.hits, { max: 3 })}`)
+    .join('\n');
+  throw new Error(
+    `Marker residue in the CNXML this render would publish — ${offenders.length} module(s). ` +
+      `NOTHING was deleted or written. Re-inject the module(s) before rendering; if the inject ` +
+      `refuses them too, that refusal is this same defect at its source.\n${detail}`
+  );
+}
+
+/**
  * The ONE place this tool writes an HTML page. Every `write*` function funnels
  * here so a gate cannot be forgotten by an eighth writer; that property is
- * pinned by `tools/__tests__/marker-residue-render-gate.test.js`, which asserts
- * this file holds exactly one `safeWrite(` call outside its comments.
+ * pinned by `tools/__tests__/marker-residue-render-gate.test.js`.
  *
- * Fail-closed on purpose, and the two failure shapes are both deliberate:
+ * This is the LAST line, not the first — `assertNoMarkerResidueInInputs` above
+ * refuses before anything is deleted. This one catches residue the renderer
+ * itself could introduce, and residue in a rollup assembled from several
+ * modules. Its failure shapes:
  *  - a MODULE page throws into `main()`'s per-module `catch (moduleErr)`, which
- *    skips that module, leaves its previously published page in place, names it
- *    and sets `process.exitCode = 1` — nothing corrupt is written, and the rest
- *    of the chapter still renders;
- *  - a ROLLUP page throws into the chapter-wide catch, which calls
- *    `rollbackWrittenFiles` and restores every page written this pass.
+ *    skips that module, names it and sets `process.exitCode = 1`. On a
+ *    `--module` run its previously published page stays; on a full-chapter run
+ *    the sweep has already removed it, which is exactly what the pre-flight
+ *    exists to prevent reaching;
+ *  - a ROLLUP page throws into the chapter-wide catch → `rollbackWrittenFiles`,
+ *    which restores from this pass's backups where they exist and otherwise
+ *    deletes.
  *
  * @param {string} outputPath
  * @param {string} html
@@ -616,6 +676,16 @@ function assertNoMarkerResidueHtml(html, outputPath) {
  */
 function writeHtmlPage(outputPath, html, chapter) {
   assertNoMarkerResidueHtml(html, outputPath);
+  const placeholders = countPlaceholderMarkers(html);
+  if (placeholders.math || placeholders.media) {
+    // Non-gating by design — the carve-out is shared with the inject gate — but
+    // NOT silent: an unresolved positional placeholder on a published page is a
+    // defect the gates deliberately do not refuse, so it must at least be said.
+    console.error(
+      `  ⚠️  ${path.basename(outputPath)}: ${placeholders.math} [[MATH:n]] and ` +
+        `${placeholders.media} [[MEDIA:n]] placeholder(s) reached the page (not gated — see §C145)`
+    );
+  }
   const backup = safeWrite(outputPath, html);
   if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
   return outputPath;
@@ -3548,6 +3618,11 @@ async function main() {
     const chapterDir = formatChapterDir(args.chapter);
     const chapterStr = formatChapterOutput(args.chapter);
 
+    // §C145 ② PRE-FLIGHT — before the sweep below deletes every .html and every
+    // .backup.* in the chapter directory. A refusal here costs nothing; the same
+    // refusal after the sweep costs the chapter its published pages.
+    assertNoMarkerResidueInInputs(modules, args.track, chapterDir);
+
     // §C9 — snapshot filename → module id BEFORE anything is deleted or written. This is
     // the only moment both the old and the new file sets are knowable, and for a full-chapter
     // render it MUST precede the sweep below, which unlinks every .html and would otherwise
@@ -4500,6 +4575,8 @@ export {
   buildKeyTermsItems,
   rollbackWrittenFiles,
   assertNoMarkerResidueHtml, // §C145 ②
+  assertNoMarkerResidueInInputs, // §C145 ② pre-flight
+  writeHtmlPage, // §C145 ② — exported so the gate's CALL SITE can be pinned, not just the gate
   escapeJsonForScript,
   filterOutlineEntries,
   renderList,

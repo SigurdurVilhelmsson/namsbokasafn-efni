@@ -1,7 +1,14 @@
-import { describe, it, expect } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { readFileSync, existsSync, mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { renderCnxmlToHtml, assertNoMarkerResidueHtml } from '../cnxml-render.js';
+import { tmpdir } from 'node:os';
+import {
+  renderCnxmlToHtml,
+  assertNoMarkerResidueHtml,
+  assertNoMarkerResidueInInputs,
+  writeHtmlPage,
+  _setBooksDirForTest,
+} from '../cnxml-render.js';
 
 /**
  * §C145 ② — the render-side gate on emitted HTML.
@@ -94,39 +101,152 @@ describe('§C145 ② — a closed marker is caught too (the microbiology legacy 
   });
 });
 
+describe('§C145 ② — the gate is actually CALLED, not merely present', () => {
+  /**
+   * 🔴 THE FIRST VERSION OF THIS FILE PINNED THE GATE FUNCTION AND NOT ITS CALL
+   * SITE, AND AN ADVERSARIAL REVIEW MEASURED THE COST: four separate mutations
+   * that make the gate do nothing — deleting the call from `writeHtmlPage`
+   * among them — left all 38 tests green. A gate nobody calls is a gate that
+   * does nothing, and testing the function alone cannot see that.
+   *
+   * So this drives the real `writeHtmlPage` against a real temp directory and
+   * asserts BOTH halves: it refuses, AND no bytes land. The negative control
+   * (clean HTML really does get written) is what stops a wholesale breakage
+   * from reading as a pass.
+   */
+  const tmp = mkdtempSync(join(tmpdir(), 'c145-'));
+
+  it('refuses residue-bearing HTML at the write choke point', () => {
+    const p = join(tmp, 'refused.html');
+    expect(() => writeHtmlPage(p, render(CORRUPT_PARA), 3)).toThrow(/Marker residue/);
+  });
+
+  it('and writes NOTHING when it refuses', () => {
+    const p = join(tmp, 'refused2.html');
+    try {
+      writeHtmlPage(p, render(CORRUPT_PARA), 3);
+    } catch {
+      /* expected */
+    }
+    expect(existsSync(p)).toBe(false);
+  });
+
+  it('CONTROL: a clean page IS written through the same path', () => {
+    const p = join(tmp, 'written.html');
+    writeHtmlPage(p, render(CLEAN_PARA), 3);
+    expect(existsSync(p)).toBe(true);
+  });
+
+  it('CONTROL: and what it wrote is the page, not an empty file', () => {
+    const p = join(tmp, 'written2.html');
+    writeHtmlPage(p, render(CLEAN_PARA), 3);
+    expect(readFileSync(p, 'utf8')).toContain('Avogadros');
+  });
+});
+
+describe('§C145 ② — the pre-flight, which is what makes the gate affordable', () => {
+  /**
+   * 🔴 ORDERING, NOT STRENGTH. A full-chapter render unlinks every `.html` AND
+   * every `.backup.*` in the chapter directory before rendering. So a gate that
+   * fired only at write time would delete a chapter's pages in order to refuse
+   * one module. MEASURED, counterfactually, on microbiology ch05 (which carries
+   * a real committed `[[b:]]`): with the pre-flight call removed, the render
+   * swept all 12 pages, refused m58805 at write time, and left 11 — the
+   * published `5-4-thorungar.html` was GONE. With the pre-flight, exit 1, 12
+   * pages intact, 0 changes in the tree.
+   */
+  const books = mkdtempSync(join(tmpdir(), 'c145-books-'));
+  const chDir = join(books, '03-translated', 'mt-preview', 'ch01');
+  mkdirSync(chDir, { recursive: true });
+  writeFileSync(join(chDir, 'mGOOD.cnxml'), '<document><content>hreint</content></document>');
+  writeFileSync(
+    join(chDir, 'mBAD.cnxml'),
+    '<document><content>brotið [[term:eyðilagt</content></document>'
+  );
+
+  beforeEach(() => _setBooksDirForTest(books));
+  afterEach(() => _setBooksDirForTest(null));
+
+  it('refuses before anything is swept when an input carries residue', () => {
+    expect(() => assertNoMarkerResidueInInputs(['mGOOD', 'mBAD'], 'mt-preview', 'ch01')).toThrow(
+      /Marker residue in the CNXML this render would publish/
+    );
+  });
+
+  it('names the offending module', () => {
+    expect(() => assertNoMarkerResidueInInputs(['mBAD'], 'mt-preview', 'ch01')).toThrow(/mBAD/);
+  });
+
+  it('says plainly that nothing was destroyed', () => {
+    expect(() => assertNoMarkerResidueInInputs(['mBAD'], 'mt-preview', 'ch01')).toThrow(
+      /NOTHING was deleted or written/
+    );
+  });
+
+  it('CONTROL: a clean chapter passes', () => {
+    expect(() => assertNoMarkerResidueInInputs(['mGOOD'], 'mt-preview', 'ch01')).not.toThrow();
+  });
+
+  it('CONTROL: a missing input is not this gate’s error to raise', () => {
+    expect(() => assertNoMarkerResidueInInputs(['mABSENT'], 'mt-preview', 'ch01')).not.toThrow();
+  });
+});
+
 describe('§C145 ② — the choke point, pinned structurally', () => {
   /**
-   * An enumeration ("all seven writers call the gate") is exactly the thing this
-   * repo has watched go stale twice. So the property is checked instead: this
-   * file may contain only ONE `safeWrite(` call, the one inside `writeHtmlPage`.
-   * An eighth page writer therefore cannot skip the gate without turning this
-   * test red.
+   * An enumeration ("all seven writers call the gate") is the thing this repo
+   * has watched go stale twice, so the property is checked instead: exactly ONE
+   * executable `safeWrite(` call in the file, and exactly one raw
+   * `fs.writeFileSync(`. A new page writer that bypasses `writeHtmlPage` must
+   * use one of those two, so it cannot land silently.
    *
-   * ⚠️ Comments are stripped first, on purpose: the file documents `safeWrite()`
-   * in prose in several places, and a naive count trips on the comment that
-   * documents the very thing it pins.
+   * ⚠️ The pin is on `= safeWrite(`, the ASSIGNMENT form. An earlier version
+   * stripped comments with a regex first and a review measured it damaging
+   * executable code; the assignment form needs no stripping, because the file's
+   * prose mentions are written `safeWrite()` with no `=`. Measured: `safeWrite(`
+   * 3 occurrences, `= safeWrite(` exactly 1.
    */
-  const SRC = readFileSync(join(process.cwd(), 'tools', 'cnxml-render.js'), 'utf8');
-  const CODE = SRC.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/.*$/gm, '$1');
+  const SRC = readFileSync(join(import.meta.dirname, '..', 'cnxml-render.js'), 'utf8');
 
-  it('has exactly one safeWrite( call in executable code', () => {
-    expect((CODE.match(/safeWrite\(/g) || []).length).toBe(1);
+  it('has exactly one executable safeWrite call', () => {
+    expect((SRC.match(/= safeWrite\(/g) || []).length).toBe(1);
   });
 
-  it('and that call is inside writeHtmlPage', () => {
-    const body = CODE.slice(CODE.indexOf('function writeHtmlPage'));
-    expect(body.slice(0, body.indexOf('\n}')).includes('safeWrite(')).toBe(true);
+  it('and it is inside writeHtmlPage', () => {
+    const body = SRC.slice(SRC.indexOf('function writeHtmlPage'));
+    expect(body.slice(0, body.indexOf('\n}')).includes('= safeWrite(')).toBe(true);
   });
 
-  it('CONTROL: comment-stripping did not empty the file', () => {
-    expect(CODE.length).toBeGreaterThan(SRC.length / 2);
-  });
-
-  it('CONTROL: the prose mentions of safeWrite that the strip removes really exist', () => {
+  it('CONTROL: the prose mentions the assignment form deliberately excludes exist', () => {
     expect((SRC.match(/safeWrite\(/g) || []).length).toBeGreaterThan(1);
   });
 
+  it('has exactly one raw fs.writeFileSync — the plain-text rollups-complete marker', () => {
+    // Not an HTML page. If this count moves, a new writer appeared and someone
+    // must decide whether it emits a page and therefore needs the gate.
+    expect((SRC.match(/fs\.writeFileSync\(/g) || []).length).toBe(1);
+  });
+
+  it('the pre-flight is CALLED, and called BEFORE the sweep that deletes pages', () => {
+    // The ordering IS the fix (see the counterfactual above), and a unit test on
+    // the function cannot see the call site. Both halves are asserted: the call
+    // exists in main(), and it precedes the unlink loop that empties the
+    // chapter directory.
+    // ⚠️ Anchored on `args.track`, which only the CALL passes — the declaration
+    // reads `(modules, track, chapterDir)`. A first version of this assertion
+    // searched for `assertNoMarkerResidueInInputs(modules`, which matches the
+    // DECLARATION too, so it passed with the call deleted. Mutation-tested.
+    const call = SRC.indexOf('assertNoMarkerResidueInInputs(modules, args.track');
+    const sweep = SRC.indexOf('Clean stale HTML files before rendering');
+    expect(call).toBeGreaterThan(-1);
+    expect(sweep).toBeGreaterThan(-1);
+    expect(call).toBeLessThan(sweep);
+  });
+
   it('every page writer funnels through the choke point', () => {
-    expect((CODE.match(/writeHtmlPage\(/g) || []).length).toBe(8); // 7 writers + the definition
+    // A FLOOR, not an enumeration: a legitimate eighth writer raises it and
+    // stays green, while a writer that bypasses the choke point trips the two
+    // pins above.
+    expect((SRC.match(/writeHtmlPage\(/g) || []).length).toBeGreaterThanOrEqual(8);
   });
 });
