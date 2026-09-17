@@ -1,0 +1,17 @@
+LIVE RUN
+efnafraedi-2e ch03: 1 figure(s) across 5 module(s)
+
+     1  translated
+     1  = enumerated
+
+  de-hashed to stripped-name artwork, LOOKUP ONLY (1):
+    CNX_Chem_03_01_exocytosis-88f6  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_03/Source_File/CNX_Chem_03_01_exocytosis.pdf
+  figure-prepare.py warnings — 1 across 1 figure(s), its own !! lines:
+    CNX_Chem_03_01_exocytosis-88f6: subset font PAGE/TT0
+  soft-mask ring gate (§C140 ⑩) — 1 figure(s) carry a candidate; 0 healed, 8 refused:
+    CNX_Chem_03_01_exocytosis-88f6: 8 soft-mask ring candidate(s) carry the byte signature but no visible ring, so they were NOT healed: mask-8, mask-12, mask-39, mask-43, mask-189, mask-271, mask-409, mask-491
+
+  MT spawned for 0 figure(s), 0 billable characters — only a figure with NO sidecar is spendable
+  published 1 figure(s) into /home/siggi/dev/repos/namsbokasafn-efni/books/efnafraedi-2e/media/
+
+VERDICT ok

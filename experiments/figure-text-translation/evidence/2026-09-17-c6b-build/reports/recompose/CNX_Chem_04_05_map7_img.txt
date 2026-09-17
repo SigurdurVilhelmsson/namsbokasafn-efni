@@ -1,0 +1,13 @@
+LIVE RUN
+efnafraedi-2e ch04: 1 figure(s) across 6 module(s)
+
+     1  translated
+     1  = enumerated
+
+  figure-prepare.py warnings — 1 across 1 figure(s), its own !! lines:
+    CNX_Chem_04_05_map7_img: subset font PAGE/R9
+
+  MT spawned for 0 figure(s), 0 billable characters — only a figure with NO sidecar is spendable
+  published 1 figure(s) into /home/siggi/dev/repos/namsbokasafn-efni/books/efnafraedi-2e/media/
+
+VERDICT ok

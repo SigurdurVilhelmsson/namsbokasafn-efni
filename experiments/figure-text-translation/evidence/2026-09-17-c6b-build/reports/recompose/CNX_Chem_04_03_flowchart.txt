@@ -1,0 +1,17 @@
+LIVE RUN
+efnafraedi-2e ch04: 1 figure(s) across 6 module(s)
+
+     1  translated
+     1  = enumerated
+
+  figure-prepare.py warnings — 1 across 1 figure(s), its own !! lines:
+    CNX_Chem_04_03_flowchart: subset font PAGE/TT0
+  labels drawn at the floor that overhang their space — an editor can shorten or re-break them (2):
+    CNX_Chem_04_03_flowchart: "Molarity" block 13 "Mólstyrkur" needs 34.58 pt, budget 34.00 pt (width)
+    CNX_Chem_04_03_flowchart: "Molarity" block 14 "Mólstyrkur" needs 34.58 pt, budget 34.00 pt (width)
+
+  MT spawned for 0 figure(s), 0 billable characters — only a figure with NO sidecar is spendable
+  published 1 figure(s) into /home/siggi/dev/repos/namsbokasafn-efni/books/efnafraedi-2e/media/
+
+VERDICT ok
+  NOTE (not a failure): 1 figure(s) carry label(s) drawn at the floor that overhang their space — the report names each
