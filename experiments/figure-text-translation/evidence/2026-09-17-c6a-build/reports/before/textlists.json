@@ -1,0 +1,6983 @@
+{
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_01_alsulfatemass_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Þáttur",
+    "x": "10.160",
+    "y": "18.382",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Fjöldi",
+    "x": "56.083",
+    "y": "18.382",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Meðalatómamassi",
+    "x": "111.602",
+    "y": "12.883",
+    "size": "8.500",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(amu)",
+    "x": "136.645",
+    "y": "23.881",
+    "size": "8.500",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Samtals",
+    "x": "209.877",
+    "y": "12.883",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(amu)",
+    "x": "214.887",
+    "y": "23.881",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Al",
+    "x": "19.111",
+    "y": "43.789",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "S",
+    "x": "20.110",
+    "y": "64.786",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "19.615",
+    "y": "85.783",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "65.614",
+    "y": "43.780",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "65.614",
+    "y": "64.777",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "12",
+    "x": "63.112",
+    "y": "85.774",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "26,98",
+    "x": "133.843",
+    "y": "43.771",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "32,06",
+    "x": "133.843",
+    "y": "64.768",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "16,00",
+    "x": "133.843",
+    "y": "85.765",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "159.375",
+    "y": "106.762",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "53,96",
+    "x": "219.460",
+    "y": "43.762",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "96,18",
+    "x": "219.505",
+    "y": "64.759",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "192,00",
+    "x": "214.564",
+    "y": "85.756",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "342,14",
+    "x": "214.546",
+    "y": "106.753",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "97.195",
+    "y": "43.541",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "191.421",
+    "y": "43.541",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "97.195",
+    "y": "64.540",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "191.421",
+    "y": "64.540",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "97.195",
+    "y": "85.539",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "191.421",
+    "y": "85.539",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   },
+   {
+    "family": "FigIS",
+    "weight": "700",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_01_aspirin/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Þáttur",
+    "x": "9.739",
+    "y": "17.840",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Fjöldi",
+    "x": "55.660",
+    "y": "17.840",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Meðalatómamassi",
+    "x": "111.182",
+    "y": "12.341",
+    "size": "8.500",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(amu)",
+    "x": "136.225",
+    "y": "23.339",
+    "size": "8.500",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Samtals",
+    "x": "209.460",
+    "y": "12.341",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(amu)",
+    "x": "214.469",
+    "y": "23.339",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "19.446",
+    "y": "43.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "19.446",
+    "y": "64.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "19.196",
+    "y": "85.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "9",
+    "x": "65.193",
+    "y": "43.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "8",
+    "x": "65.193",
+    "y": "64.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "4",
+    "x": "65.193",
+    "y": "85.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "12,01",
+    "x": "133.424",
+    "y": "43.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "1,008",
+    "x": "133.424",
+    "y": "64.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "16,00",
+    "x": "133.424",
+    "y": "85.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "158.961",
+    "y": "106.250",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "108,09",
+    "x": "213.459",
+    "y": "43.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "8,064",
+    "x": "223.424",
+    "y": "64.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "64,00",
+    "x": "218.486",
+    "y": "85.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "180,15",
+    "x": "213.459",
+    "y": "106.250",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "96.775",
+    "y": "42.999",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "191.002",
+    "y": "42.999",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "96.775",
+    "y": "63.999",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "191.002",
+    "y": "63.999",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "96.775",
+    "y": "84.999",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "191.002",
+    "y": "84.999",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   },
+   {
+    "family": "FigIS",
+    "weight": "700",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_01_brain-ec0b/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Taugafrumur",
+    "x": "233.963",
+    "y": "106.790",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(b)",
+    "x": "255.685",
+    "y": "168.656",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(a)",
+    "x": "62.590",
+    "y": "168.656",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   },
+   {
+    "family": "FigIS",
+    "weight": "700",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_01_chloroform/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Þáttur",
+    "x": "29.263",
+    "y": "18.382",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Fjöldi",
+    "x": "75.186",
+    "y": "18.382",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Meðalsætismassi",
+    "x": "131.465",
+    "y": "12.883",
+    "size": "8.750",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(amu)",
+    "x": "155.789",
+    "y": "23.881",
+    "size": "8.750",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Samtals",
+    "x": "229.116",
+    "y": "12.883",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(amu)",
+    "x": "234.126",
+    "y": "23.881",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "38.970",
+    "y": "43.789",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "38.970",
+    "y": "64.786",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Cl",
+    "x": "37.971",
+    "y": "85.783",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "1",
+    "x": "84.717",
+    "y": "43.780",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "1",
+    "x": "84.717",
+    "y": "64.777",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "84.717",
+    "y": "85.774",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "12,01",
+    "x": "152.946",
+    "y": "43.771",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "1,008",
+    "x": "152.946",
+    "y": "64.768",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "35,45",
+    "x": "152.946",
+    "y": "85.765",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "178.478",
+    "y": "106.762",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "12,01",
+    "x": "237.195",
+    "y": "43.762",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "1,008",
+    "x": "242.199",
+    "y": "64.759",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "106,35",
+    "x": "232.191",
+    "y": "85.756",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "119,37",
+    "x": "232.857",
+    "y": "106.753",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "116.299",
+    "y": "43.541",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "210.525",
+    "y": "43.541",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "116.299",
+    "y": "64.540",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "210.525",
+    "y": "64.540",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "116.299",
+    "y": "85.539",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "210.525",
+    "y": "85.539",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   },
+   {
+    "family": "FigIS",
+    "weight": "700",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_01_exocytosis-88f6/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Taugamót",
+    "x": "218.562",
+    "y": "153.387",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Bólur",
+    "x": "212.055",
+    "y": "104.949",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Taugungur",
+    "x": "89.539",
+    "y": "28.305",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Taugaboðefni",
+    "x": "18.294",
+    "y": "113.535",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Taugungur",
+    "x": "131.218",
+    "y": "194.850",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(a)",
+    "x": "154.060",
+    "y": "235.683",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(b)",
+    "x": "347.731",
+    "y": "235.683",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_01_glycinemass_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Þáttur",
+    "x": "11.907",
+    "y": "23.882",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Magn (mól",
+    "x": "61.324",
+    "y": "12.884",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "frumefnis/mól",
+    "x": "54.069",
+    "y": "23.882",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "efnasambands)",
+    "x": "50.813",
+    "y": "34.880",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi (g/mól",
+    "x": "142.437",
+    "y": "18.383",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "frumefnis)",
+    "x": "155.691",
+    "y": "29.381",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Samtals (g/mól",
+    "x": "243.533",
+    "y": "18.383",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "efnasamband)",
+    "x": "245.033",
+    "y": "29.381",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "21.596",
+    "y": "54.788",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "21.596",
+    "y": "75.785",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "N",
+    "x": "21.596",
+    "y": "117.788",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "81.347",
+    "y": "54.788",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "5",
+    "x": "81.347",
+    "y": "75.785",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "1",
+    "x": "81.347",
+    "y": "117.788",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "12,01",
+    "x": "163.535",
+    "y": "54.788",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "1,008",
+    "x": "168.539",
+    "y": "75.785",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "14,007",
+    "x": "163.409",
+    "y": "117.788",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi (g/mól efnasambands)",
+    "x": "91.250",
+    "y": "138.785",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "24,02",
+    "x": "262.994",
+    "y": "54.788",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "5,040",
+    "x": "267.908",
+    "y": "75.785",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "14,007",
+    "x": "262.967",
+    "y": "117.788",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "75,07",
+    "x": "262.949",
+    "y": "138.785",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "126.943",
+    "y": "54.541",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "221.169",
+    "y": "54.541",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "126.943",
+    "y": "75.540",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "221.169",
+    "y": "75.540",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "21.364",
+    "y": "96.791",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "81.358",
+    "y": "96.791",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "16,00",
+    "x": "163.546",
+    "y": "96.791",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "32,00",
+    "x": "263.050",
+    "y": "96.791",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "126.943",
+    "y": "96.541",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "221.169",
+    "y": "96.541",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "126.943",
+    "y": "117.540",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "221.169",
+    "y": "117.540",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   },
+   {
+    "family": "FigIS",
+    "weight": "700",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_01_saltMass/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Þáttur",
+    "x": "29.263",
+    "y": "18.382",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Fjöldi",
+    "x": "75.186",
+    "y": "18.382",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Meðalatómmassi",
+    "x": "131.403",
+    "y": "12.883",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(amu)",
+    "x": "155.417",
+    "y": "23.881",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Samtals",
+    "x": "230.817",
+    "y": "18.382",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Na",
+    "x": "36.468",
+    "y": "43.789",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Cl",
+    "x": "37.971",
+    "y": "64.786",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "1",
+    "x": "84.717",
+    "y": "43.789",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "1",
+    "x": "84.717",
+    "y": "64.786",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "22,99",
+    "x": "152.946",
+    "y": "43.789",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "35,45",
+    "x": "152.946",
+    "y": "64.786",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Formúlumassi",
+    "x": "155.449",
+    "y": "85.783",
+    "size": "9.000",
+    "weight": "700",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "22,99",
+    "x": "237.195",
+    "y": "43.780",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "35,45",
+    "x": "237.195",
+    "y": "64.777",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "58,44",
+    "x": "237.195",
+    "y": "85.774",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "116.299",
+    "y": "43.541",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "210.525",
+    "y": "43.541",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "×",
+    "x": "116.299",
+    "y": "64.540",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "=",
+    "x": "210.525",
+    "y": "64.540",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   },
+   {
+    "family": "FigIS",
+    "weight": "700",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_02_argon_img-9025/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Mól af",
+    "x": "121.505",
+    "y": "25.301",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Ar atómum (mól)",
+    "x": "100.255",
+    "y": "36.299",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi",
+    "x": "277.590",
+    "y": "25.301",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Ar atóma (g)",
+    "x": "264.334",
+    "y": "36.299",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Margfaldaðu með",
+    "x": "175.789",
+    "y": "36.500",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "mólmassa (g/mól)",
+    "x": "175.053",
+    "y": "47.498",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_02_copperMoles_img-a962/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Mól af",
+    "x": "199.984",
+    "y": "25.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Cu atómum (mól)",
+    "x": "177.482",
+    "y": "36.949",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Deila með",
+    "x": "110.535",
+    "y": "37.150",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "mólmassa (g/mól)",
+    "x": "95.037",
+    "y": "48.148",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi",
+    "x": "45.230",
+    "y": "25.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Cu atóma (g)",
+    "x": "30.722",
+    "y": "36.949",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Fjöldi",
+    "x": "356.743",
+    "y": "25.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Cu atóma",
+    "x": "347.986",
+    "y": "36.949",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Margfaldaðu með",
+    "x": "254.976",
+    "y": "37.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "tölu Avogadros",
+    "x": "259.977",
+    "y": "48.149",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(mól",
+    "x": "275.855",
+    "y": "59.147",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "–1",
+    "x": "293.354",
+    "y": "56.147",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": ")",
+    "x": "301.140",
+    "y": "59.147",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_02_glycine_img-7c96/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Mól af",
+    "x": "288.235",
+    "y": "26.341",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "269.901",
+    "y": "37.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "276.401",
+    "y": "40.339",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "280.294",
+    "y": "37.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "5",
+    "x": "286.794",
+    "y": "40.339",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "290.687",
+    "y": "37.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "297.687",
+    "y": "40.339",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "N",
+    "x": "301.580",
+    "y": "37.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": " (mól)",
+    "x": "308.080",
+    "y": "37.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Deila með",
+    "x": "202.285",
+    "y": "37.540",
+    "size": "8.750",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "mólmassa (g/mól)",
+    "x": "187.218",
+    "y": "48.538",
+    "size": "8.750",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi",
+    "x": "137.425",
+    "y": "26.341",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "123.337",
+    "y": "37.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "129.836",
+    "y": "40.339",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "133.729",
+    "y": "37.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "5",
+    "x": "140.229",
+    "y": "40.339",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "144.122",
+    "y": "37.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "151.123",
+    "y": "40.339",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "N",
+    "x": "155.016",
+    "y": "37.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": " (g)",
+    "x": "161.515",
+    "y": "37.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_02_potassium_img-f1d1/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Mól K atóma",
+    "x": "275.229",
+    "y": "23.341",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(mól)",
+    "x": "290.241",
+    "y": "34.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Deilið með",
+    "x": "203.063",
+    "y": "34.540",
+    "size": "8.750",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "mólmassa (g/mól)",
+    "x": "188.968",
+    "y": "45.538",
+    "size": "8.750",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi",
+    "x": "139.424",
+    "y": "23.341",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "K atóma (g)",
+    "x": "127.666",
+    "y": "34.339",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_02_sacch_img-3278/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Mól af",
+    "x": "206.210",
+    "y": "29.345",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "196.374",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "7",
+    "x": "202.873",
+    "y": "43.342",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "206.766",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "5",
+    "x": "213.266",
+    "y": "43.342",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "NO",
+    "x": "217.159",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "230.659",
+    "y": "43.342",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "S",
+    "x": "234.552",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(mól)",
+    "x": "208.216",
+    "y": "51.341",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Deilið með",
+    "x": "126.421",
+    "y": "40.543",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "mólmassa (g/mól)",
+    "x": "111.924",
+    "y": "51.541",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi",
+    "x": "65.553",
+    "y": "29.345",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "55.214",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "7",
+    "x": "61.713",
+    "y": "43.342",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "65.606",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "5",
+    "x": "72.106",
+    "y": "43.342",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "NO",
+    "x": "75.999",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "89.499",
+    "y": "43.342",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "S",
+    "x": "93.392",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(g)",
+    "x": "71.805",
+    "y": "51.341",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Fjöldi",
+    "x": "346.150",
+    "y": "29.345",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "334.812",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "7",
+    "x": "341.312",
+    "y": "43.342",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "345.205",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "5",
+    "x": "351.704",
+    "y": "43.342",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "NO",
+    "x": "355.598",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "369.098",
+    "y": "43.342",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "S",
+    "x": "372.991",
+    "y": "40.343",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "sameinda",
+    "x": "337.391",
+    "y": "51.341",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Margfalda með",
+    "x": "255.337",
+    "y": "40.544",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "tölu Avogadros",
+    "x": "255.333",
+    "y": "51.542",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(mól",
+    "x": "271.211",
+    "y": "62.540",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "–1",
+    "x": "288.710",
+    "y": "59.541",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": ")",
+    "x": "296.496",
+    "y": "62.540",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_02_vitC_img-e537/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Massi",
+    "x": "290.874",
+    "y": "28.096",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C-vítamíns (g)",
+    "x": "274.122",
+    "y": "39.094",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Margfalda með",
+    "x": "193.345",
+    "y": "39.295",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "mólmassa (g/mól)",
+    "x": "187.604",
+    "y": "50.293",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af",
+    "x": "132.807",
+    "y": "28.096",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C-vítamíni (mól)",
+    "x": "113.061",
+    "y": "39.094",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_03_empform/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Mól af",
+    "x": "137.390",
+    "y": "21.377",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "A atómum",
+    "x": "129.137",
+    "y": "32.375",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Deilið með",
+    "x": "67.012",
+    "y": "32.577",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "mólmassa",
+    "x": "67.766",
+    "y": "43.575",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi",
+    "x": "18.607",
+    "y": "21.377",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "A atóma",
+    "x": "13.599",
+    "y": "32.375",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af",
+    "x": "137.390",
+    "y": "80.210",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "X atómum",
+    "x": "129.137",
+    "y": "91.208",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Deilið með",
+    "x": "67.012",
+    "y": "91.410",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "mólmassa",
+    "x": "67.766",
+    "y": "102.408",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi",
+    "x": "18.607",
+    "y": "80.210",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "X atóma",
+    "x": "13.599",
+    "y": "91.208",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólhlutfall",
+    "x": "278.385",
+    "y": "50.793",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "A á móti X",
+    "x": "277.886",
+    "y": "61.791",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Deilið með",
+    "x": "208.307",
+    "y": "62.074",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "lægsta",
+    "x": "216.059",
+    "y": "73.072",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "mólfjölda",
+    "x": "211.557",
+    "y": "84.070",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Reynsluformúla",
+    "x": "411.927",
+    "y": "55.902",
+    "size": "7.500",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Breyta hlutfalli",
+    "x": "338.506",
+    "y": "61.993",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "í lægstu",
+    "x": "350.763",
+    "y": "72.991",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "heilu tölur",
+    "x": "347.258",
+    "y": "83.989",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_03_05_Example2_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Massi",
+    "x": "199.982",
+    "y": "26.841",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "lausnar (g)",
+    "x": "190.223",
+    "y": "37.839",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Margfaldaðu með",
+    "x": "257.324",
+    "y": "38.041",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "massaprósentu sem",
+    "x": "251.827",
+    "y": "49.039",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "hlutfalli (g HCl/g lausn)",
+    "x": "247.076",
+    "y": "60.037",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi",
+    "x": "362.663",
+    "y": "26.841",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "HCl (g)",
+    "x": "360.165",
+    "y": "37.839",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Margfalda með",
+    "x": "117.364",
+    "y": "38.040",
+    "size": "8.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "eðlismassa (g/ml)",
+    "x": "112.704",
+    "y": "49.038",
+    "size": "8.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Rúmmál",
+    "x": "57.401",
+    "y": "26.841",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "lausnar (ml)",
+    "x": "50.398",
+    "y": "37.839",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_01_basehyd_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "+",
+    "x": "132.910",
+    "y": "29.125",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "NaOH",
+    "x": "155.058",
+    "y": "29.118",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "29.436",
+    "y": "29.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "49.435",
+    "y": "29.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "69.436",
+    "y": "29.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "89.245",
+    "y": "29.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "69.245",
+    "y": "9.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "109.491",
+    "y": "29.105",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "370.910",
+    "y": "29.125",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "419.910",
+    "y": "29.125",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Na",
+    "x": "393.058",
+    "y": "29.118",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "404.562",
+    "y": "25.118",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "9.491",
+    "y": "29.105",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "29.491",
+    "y": "9.105",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "29.491",
+    "y": "49.104",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "49.491",
+    "y": "9.105",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "49.491",
+    "y": "49.104",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "284.102",
+    "y": "29.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "304.102",
+    "y": "29.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "324.102",
+    "y": "29.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "343.911",
+    "y": "29.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "–",
+    "x": "350.912",
+    "y": "25.151",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "323.911",
+    "y": "9.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "264.157",
+    "y": "29.105",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "284.157",
+    "y": "9.105",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "284.157",
+    "y": "49.104",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "304.157",
+    "y": "9.105",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "304.157",
+    "y": "49.104",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_01_rxn2/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "+",
+    "x": "68.425",
+    "y": "107.722",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "280.425",
+    "y": "107.722",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "68.425",
+    "y": "43.986",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "280.425",
+    "y": "43.986",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CH",
+    "x": "28.887",
+    "y": "44.388",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "4",
+    "x": "41.886",
+    "y": "47.388",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2O",
+    "x": "104.050",
+    "y": "44.388",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "116.056",
+    "y": "47.388",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CO",
+    "x": "232.637",
+    "y": "44.388",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "246.137",
+    "y": "47.388",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2H",
+    "x": "310.801",
+    "y": "44.388",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "322.306",
+    "y": "47.388",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "326.199",
+    "y": "44.388",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Hvarfefni",
+    "x": "19.225",
+    "y": "11.341",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Hvarfefnamegin",
+    "x": "41.880",
+    "y": "155.593",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Vörumegin",
+    "x": "257.300",
+    "y": "155.593",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Hvarfefni",
+    "x": "92.224",
+    "y": "11.341",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Stuðull",
+    "x": "92.721",
+    "y": "28.342",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Vara",
+    "x": "231.720",
+    "y": "11.341",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Vara",
+    "x": "307.554",
+    "y": "11.341",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Stuðull",
+    "x": "299.550",
+    "y": "28.342",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_01_rxn3/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Blanda fyrir hvarf",
+    "x": "50.982",
+    "y": "9.888",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Blanda eftir hvarf",
+    "x": "345.646",
+    "y": "9.888",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_02_HClsoln/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "(b)",
+    "x": "240.250",
+    "y": "195.548",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "HCl(",
+    "x": "161.365",
+    "y": "178.106",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "aq",
+    "x": "179.357",
+    "y": "178.106",
+    "size": "9.000",
+    "weight": "400",
+    "style": "italic",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ") ",
+    "x": "189.364",
+    "y": "178.106",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "+ ",
+    "x": "194.863",
+    "y": "178.106",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "203.279",
+    "y": "178.106",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "209.783",
+    "y": "181.102",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O(",
+    "x": "213.676",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "l",
+    "x": "223.675",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "italic",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ")          H",
+    "x": "225.673",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "260.174",
+    "y": "181.102",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "264.067",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "271.068",
+    "y": "174.102",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "(",
+    "x": "275.156",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "aq",
+    "x": "278.153",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "italic",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ") ",
+    "x": "288.161",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "293.660",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": " Cl",
+    "x": "299.825",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "–",
+    "x": "310.825",
+    "y": "174.102",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "(",
+    "x": "314.719",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "aq",
+    "x": "317.716",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "italic",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ")",
+    "x": "327.724",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "(a)",
+    "x": "76.210",
+    "y": "195.544",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "HCl(",
+    "x": "41.002",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "g",
+    "x": "58.993",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "italic",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ")          HCl(",
+    "x": "63.997",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "aq",
+    "x": "109.996",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "italic",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ")",
+    "x": "120.004",
+    "y": "178.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "HCl(",
+    "x": "0.000",
+    "y": "68.602",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "g",
+    "x": "17.996",
+    "y": "68.602",
+    "size": "9.000",
+    "weight": "400",
+    "style": "italic",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ")",
+    "x": "23.000",
+    "y": "68.602",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "313.790",
+    "y": "150.106",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "320.293",
+    "y": "153.102",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "324.187",
+    "y": "150.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "331.187",
+    "y": "146.102",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "(",
+    "x": "335.275",
+    "y": "150.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "aq",
+    "x": "338.272",
+    "y": "150.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "italic",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ")",
+    "x": "348.283",
+    "y": "150.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "313.794",
+    "y": "132.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "320.293",
+    "y": "135.102",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O(",
+    "x": "324.187",
+    "y": "132.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "l",
+    "x": "334.185",
+    "y": "132.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "italic",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ")",
+    "x": "336.183",
+    "y": "132.102",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Cl",
+    "x": "313.791",
+    "y": "113.598",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "–",
+    "x": "322.293",
+    "y": "109.602",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "(",
+    "x": "326.186",
+    "y": "113.602",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "aq",
+    "x": "329.183",
+    "y": "113.602",
+    "size": "9.000",
+    "weight": "400",
+    "style": "italic",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ")",
+    "x": "339.191",
+    "y": "113.602",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "0.000",
+    "y": "118.602",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "6.500",
+    "y": "121.602",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O(",
+    "x": "10.393",
+    "y": "118.602",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "l",
+    "x": "20.392",
+    "y": "118.602",
+    "size": "9.000",
+    "weight": "400",
+    "style": "italic",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ")",
+    "x": "22.390",
+    "y": "118.602",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   },
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "italic"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_03_etheneBr_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "myndað við hvarf 12,85 g af",
+    "x": "264.594",
+    "y": "29.118",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Fjöldi móla og massi",
+    "x": "0.000",
+    "y": "29.118",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "með umframmagni af ",
+    "x": "0.000",
+    "y": "64.618",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Br",
+    "x": "87.530",
+    "y": "64.618",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "96.530",
+    "y": "67.618",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": ".",
+    "x": "100.423",
+    "y": "64.618",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "187.838",
+    "y": "29.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "207.838",
+    "y": "29.151",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Br",
+    "x": "166.352",
+    "y": "29.105",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Br",
+    "x": "226.352",
+    "y": "29.105",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "187.893",
+    "y": "9.105",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "207.893",
+    "y": "9.105",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "207.893",
+    "y": "49.104",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "187.893",
+    "y": "49.104",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "406.466",
+    "y": "29.255",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "426.466",
+    "y": "29.255",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "436.522",
+    "y": "11.888",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "436.522",
+    "y": "46.528",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "396.522",
+    "y": "11.888",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "396.522",
+    "y": "46.528",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_03_ethene_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "sem þarf til að hvarfast við ",
+    "x": "18.280",
+    "y": "70.618",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "125.823",
+    "y": "70.618",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "132.322",
+    "y": "73.618",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "136.215",
+    "y": "70.618",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": " til að mynda 9,55 g af",
+    "x": "143.216",
+    "y": "70.618",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": ".",
+    "x": "120.778",
+    "y": "103.618",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "43.877",
+    "y": "40.255",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "63.877",
+    "y": "40.255",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "73.933",
+    "y": "22.888",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "73.933",
+    "y": "57.528",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "33.933",
+    "y": "22.888",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "33.933",
+    "y": "57.528",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "53.741",
+    "y": "103.651",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "73.741",
+    "y": "103.651",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "93.551",
+    "y": "103.651",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "113.797",
+    "y": "103.605",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "33.796",
+    "y": "103.605",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "53.796",
+    "y": "83.605",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "53.796",
+    "y": "123.604",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "73.796",
+    "y": "83.605",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "73.796",
+    "y": "123.604",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Fjöldi móla og massi",
+    "x": "22.500",
+    "y": "10.118",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_03_flowchart/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Þéttleiki",
+    "x": "62.947",
+    "y": "26.783",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "164.871",
+    "y": "68.086",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "282.220",
+    "y": "100.396",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Tala",
+    "x": "175.351",
+    "y": "213.000",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Avogadros",
+    "x": "177.781",
+    "y": "229.669",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Tala",
+    "x": "283.137",
+    "y": "198.937",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Avogadros",
+    "x": "266.858",
+    "y": "194.607",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Efnajöfnustuðull",
+    "x": "202.863",
+    "y": "163.271",
+    "size": "8.750",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Rúmmál",
+    "x": "421.008",
+    "y": "26.005",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "hreins",
+    "x": "425.503",
+    "y": "37.003",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "efnis B",
+    "x": "424.003",
+    "y": "48.001",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi B",
+    "x": "325.685",
+    "y": "37.003",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi A",
+    "x": "110.736",
+    "y": "37.003",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Rúmmál",
+    "x": "13.920",
+    "y": "26.005",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "hreins",
+    "x": "18.416",
+    "y": "37.003",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "efnis A",
+    "x": "16.915",
+    "y": "48.001",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Fjöldi",
+    "x": "116.241",
+    "y": "243.337",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "agna",
+    "x": "116.983",
+    "y": "254.335",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "af A",
+    "x": "118.990",
+    "y": "265.333",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Fjöldi",
+    "x": "331.184",
+    "y": "243.337",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "agna",
+    "x": "331.927",
+    "y": "254.335",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "af B",
+    "x": "333.933",
+    "y": "265.333",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Þéttleiki",
+    "x": "373.968",
+    "y": "26.781",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólstyrkur",
+    "x": "105.262",
+    "y": "135.871",
+    "size": "7.500",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólstyrkur",
+    "x": "327.962",
+    "y": "135.871",
+    "size": "7.500",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Rúmmál",
+    "x": "376.801",
+    "y": "140.504",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "lausnar B",
+    "x": "374.542",
+    "y": "151.502",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól",
+    "x": "289.935",
+    "y": "140.706",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "af B",
+    "x": "289.181",
+    "y": "151.704",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól",
+    "x": "163.518",
+    "y": "140.504",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "af A",
+    "x": "162.764",
+    "y": "151.502",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Rúmmál",
+    "x": "57.695",
+    "y": "140.504",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "lausnar A",
+    "x": "55.436",
+    "y": "151.502",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_03_map2_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Massi",
+    "x": "88.088",
+    "y": "32.700",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mg(OH)",
+    "x": "81.894",
+    "y": "43.697",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "113.891",
+    "y": "45.697",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af",
+    "x": "236.232",
+    "y": "32.700",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mg(OH)",
+    "x": "230.541",
+    "y": "43.697",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "262.538",
+    "y": "45.697",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af NaOH",
+    "x": "222.479",
+    "y": "150.517",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#100f0d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "155.159",
+    "y": "50.133",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi NaOH",
+    "x": "74.335",
+    "y": "150.517",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "155.158",
+    "y": "162.451",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Efnajöfnustuðull",
+    "x": "252.469",
+    "y": "94.689",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_03_map3_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Massi",
+    "x": "88.088",
+    "y": "32.700",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "87.500",
+    "y": "43.697",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "8",
+    "x": "93.999",
+    "y": "45.697",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "97.892",
+    "y": "43.697",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "18",
+    "x": "104.392",
+    "y": "45.697",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af",
+    "x": "236.232",
+    "y": "32.700",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "236.147",
+    "y": "43.697",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "8",
+    "x": "242.646",
+    "y": "45.697",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "246.539",
+    "y": "43.697",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "18",
+    "x": "253.039",
+    "y": "45.697",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af ",
+    "x": "229.535",
+    "y": "150.517",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "256.544",
+    "y": "150.517",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "263.544",
+    "y": "152.517",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "155.159",
+    "y": "50.133",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi ",
+    "x": "81.391",
+    "y": "150.517",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "107.393",
+    "y": "150.517",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "114.394",
+    "y": "152.517",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "155.159",
+    "y": "162.451",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Efnajöfnustuðull",
+    "x": "252.469",
+    "y": "94.689",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_03_moleratio1_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Mól af Al",
+    "x": "21.406",
+    "y": "39.673",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af ",
+    "x": "178.306",
+    "y": "39.783",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "I",
+    "x": "205.315",
+    "y": "39.783",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "207.815",
+    "y": "41.783",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "Efnajöfnustuðull",
+    "x": "84.976",
+    "y": "56.155",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_03_moleratio2_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Mól af ",
+    "x": "20.447",
+    "y": "43.588",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "C",
+    "x": "47.455",
+    "y": "43.588",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "53.955",
+    "y": "45.588",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "57.848",
+    "y": "43.588",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "8",
+    "x": "64.348",
+    "y": "45.588",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af ",
+    "x": "160.790",
+    "y": "43.588",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "CO",
+    "x": "187.798",
+    "y": "43.588",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "201.298",
+    "y": "45.588",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "CO",
+    "x": "291.954",
+    "y": "43.588",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "305.454",
+    "y": "45.588",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "-sameindir",
+    "x": "309.347",
+    "y": "43.588",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Efnajöfnustuðull",
+    "x": "87.019",
+    "y": "60.882",
+    "size": "7.750",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Tala",
+    "x": "243.576",
+    "y": "55.383",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Avogadros",
+    "x": "230.816",
+    "y": "66.381",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_04_GreenChem/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "O",
+    "x": "382.030",
+    "y": "135.804",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "OH",
+    "x": "382.031",
+    "y": "235.138",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "OH",
+    "x": "399.352",
+    "y": "344.472",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "382.031",
+    "y": "314.472",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(CH",
+    "x": "314.250",
+    "y": "70.810",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "330.246",
+    "y": "73.810",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CO)",
+    "x": "334.139",
+    "y": "70.810",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "350.636",
+    "y": "73.810",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "354.529",
+    "y": "70.810",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "HF",
+    "x": "292.915",
+    "y": "70.810",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CO, [Pd]",
+    "x": "314.245",
+    "y": "275.722",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "314.245",
+    "y": "179.719",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "320.749",
+    "y": "182.726",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": ", Raney Ni",
+    "x": "324.642",
+    "y": "179.726",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(b)",
+    "x": "329.998",
+    "y": "377.470",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "(a)",
+    "x": "113.498",
+    "y": "377.470",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_04_limiting/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Fyrir hvarf",
+    "x": "56.080",
+    "y": "9.388",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Eftir viðbrögð",
+    "x": "323.820",
+    "y": "9.388",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "6 ",
+    "x": "49.928",
+    "y": "190.055",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "57.434",
+    "y": "190.055",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "63.934",
+    "y": "193.054",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": " og 4 ",
+    "x": "67.827",
+    "y": "190.055",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Cl",
+    "x": "90.344",
+    "y": "190.055",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "98.843",
+    "y": "193.054",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "8 HCl og 2 ",
+    "x": "322.626",
+    "y": "190.055",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "367.648",
+    "y": "190.055",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "374.147",
+    "y": "193.054",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_04_sandwich/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Fylgir með:",
+    "x": "2.884",
+    "y": "71.620",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+ 11 ostsneiðar",
+    "x": "354.754",
+    "y": "71.620",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Við getum búið til:",
+    "x": "2.884",
+    "y": "188.953",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "28 brauðsneiðar",
+    "x": "116.887",
+    "y": "71.620",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "11 samlokur",
+    "x": "116.887",
+    "y": "188.953",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+ 6 brauðsneiðar afgangs",
+    "x": "360.710",
+    "y": "188.953",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "1 samloka = 2 brauðsneiðar + 1 ostsneið",
+    "x": "2.884",
+    "y": "10.285",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_05_combmap_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Massi",
+    "x": "31.000",
+    "y": "29.068",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CO",
+    "x": "34.055",
+    "y": "40.066",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "47.555",
+    "y": "42.066",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af",
+    "x": "122.631",
+    "y": "29.068",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CO",
+    "x": "126.188",
+    "y": "40.066",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "139.688",
+    "y": "42.066",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af C",
+    "x": "228.663",
+    "y": "34.567",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi C",
+    "x": "321.300",
+    "y": "34.567",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi",
+    "x": "31.000",
+    "y": "84.513",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "34.055",
+    "y": "95.511",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "40.554",
+    "y": "97.511",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "44.447",
+    "y": "95.511",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af",
+    "x": "122.631",
+    "y": "84.513",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "126.188",
+    "y": "95.511",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "132.688",
+    "y": "97.511",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "136.581",
+    "y": "95.511",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af H",
+    "x": "228.663",
+    "y": "90.012",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi H",
+    "x": "321.300",
+    "y": "90.012",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Prósentusamsetning",
+    "x": "303.365",
+    "y": "172.483",
+    "size": "7.500",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólhlutfall",
+    "x": "225.158",
+    "y": "167.374",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "C á móti H",
+    "x": "224.163",
+    "y": "178.372",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Reynsluformúla",
+    "x": "218.496",
+    "y": "255.585",
+    "size": "7.750",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "73.970",
+    "y": "50.248",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Efnajöfnustuðull",
+    "x": "165.243",
+    "y": "50.248",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "73.971",
+    "y": "106.248",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Efnajöfnustuðull",
+    "x": "165.243",
+    "y": "106.248",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_05_combustion/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Ofn",
+    "x": "120.507",
+    "y": "7.800",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "CO",
+    "x": "203.002",
+    "y": "13.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "216.502",
+    "y": "15.951",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ",",
+    "x": "220.396",
+    "y": "13.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": " ",
+    "x": "222.896",
+    "y": "13.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "225.397",
+    "y": "13.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "231.896",
+    "y": "15.951",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O,",
+    "x": "235.789",
+    "y": "13.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": " ",
+    "x": "245.290",
+    "y": "13.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "247.791",
+    "y": "13.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "254.791",
+    "y": "15.951",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": " og",
+    "x": "258.684",
+    "y": "13.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "aðrar lofttegundir",
+    "x": "203.002",
+    "y": "24.949",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "H",
+    "x": "204.497",
+    "y": "88.850",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "210.996",
+    "y": "90.852",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O-gleypir",
+    "x": "214.889",
+    "y": "88.850",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "eins og",
+    "x": "204.497",
+    "y": "99.848",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mg(ClO",
+    "x": "204.497",
+    "y": "110.846",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "4",
+    "x": "235.496",
+    "y": "112.846",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": ")",
+    "x": "239.389",
+    "y": "110.846",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "242.386",
+    "y": "112.846",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "CO",
+    "x": "308.746",
+    "y": "88.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "322.246",
+    "y": "90.951",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "-gleypir",
+    "x": "326.139",
+    "y": "88.951",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "eins og NaOH",
+    "x": "308.746",
+    "y": "99.949",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "417.997",
+    "y": "55.446",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "424.997",
+    "y": "57.448",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": " og aðrar",
+    "x": "428.890",
+    "y": "55.446",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "lofttegundir",
+    "x": "417.997",
+    "y": "66.444",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Sýnishorn",
+    "x": "90.499",
+    "y": "112.299",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "O",
+    "x": "4.253",
+    "y": "60.047",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "11.253",
+    "y": "62.047",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211d1d",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_05_map7_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Rúmmál",
+    "x": "83.087",
+    "y": "29.700",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "NaOH",
+    "x": "87.336",
+    "y": "40.697",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af",
+    "x": "236.232",
+    "y": "29.700",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "NaOH",
+    "x": "235.984",
+    "y": "40.697",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af HCl",
+    "x": "227.482",
+    "y": "147.517",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólstyrkur",
+    "x": "153.409",
+    "y": "52.533",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Styrkur",
+    "x": "85.587",
+    "y": "142.018",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "HCl",
+    "x": "92.340",
+    "y": "153.016",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Rúmmál lausnar",
+    "x": "142.307",
+    "y": "159.451",
+    "size": "8.750",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Efnajöfnustuðull",
+    "x": "252.469",
+    "y": "91.689",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#211c1d",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_04_05_map8_img/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "Mólmassi",
+    "x": "88.531",
+    "y": "53.758",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#100f0d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Efnajöfnustuðull",
+    "x": "208.510",
+    "y": "59.158",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#100f0d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi sýnis",
+    "x": "217.279",
+    "y": "173.758",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#100f0d",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi",
+    "x": "29.156",
+    "y": "35.573",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "BaSO",
+    "x": "26.955",
+    "y": "46.571",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "4",
+    "x": "50.967",
+    "y": "48.571",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af",
+    "x": "161.909",
+    "y": "35.573",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "BaSO",
+    "x": "160.211",
+    "y": "46.571",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "4",
+    "x": "184.223",
+    "y": "48.571",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mól af",
+    "x": "295.166",
+    "y": "35.573",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "CaSO",
+    "x": "293.219",
+    "y": "46.571",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "4",
+    "x": "317.728",
+    "y": "48.571",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "Massi",
+    "x": "295.669",
+    "y": "155.834",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "CaSO",
+    "x": "293.219",
+    "y": "166.832",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "4",
+    "x": "317.727",
+    "y": "168.832",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "Prósenta",
+    "x": "156.153",
+    "y": "155.834",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "CaSO",
+    "x": "159.963",
+    "y": "166.832",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "4",
+    "x": "184.471",
+    "y": "168.832",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#201d1c",
+    "family": "FigIS"
+   },
+   {
+    "text": "Mólmassi",
+    "x": "319.199",
+    "y": "101.203",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#100f0d",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ },
+ "/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/225e3674-11df-4e10-af8c-00cd5cb3d62c/scratchpad/c6a-build/before/work/CNX_Chem_14_03_FishLemon/translated.svg": {
+  "xml_ok": true,
+  "texts": [
+   {
+    "text": "CH",
+    "x": "29.209",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "42.209",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "COOH",
+    "x": "46.102",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CH",
+    "x": "236.209",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "249.208",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "COO",
+    "x": "253.102",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "–",
+    "x": "273.602",
+    "y": "256.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "NH",
+    "x": "91.210",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "104.209",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CH",
+    "x": "108.102",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "121.101",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CH",
+    "x": "124.994",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "137.993",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CH",
+    "x": "141.886",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "154.885",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CH",
+    "x": "158.778",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "171.777",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "NH",
+    "x": "175.670",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "188.669",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "NH",
+    "x": "299.709",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "3",
+    "x": "312.709",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "315.200",
+    "y": "257.673",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CH",
+    "x": "319.290",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "332.289",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CH",
+    "x": "336.182",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "349.181",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CH",
+    "x": "353.074",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "366.073",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "CH",
+    "x": "369.966",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "382.965",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "NH",
+    "x": "386.858",
+    "y": "260.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "2",
+    "x": "399.857",
+    "y": "263.672",
+    "size": "7.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "78.061",
+    "y": "260.680",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "285.562",
+    "y": "260.680",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Ediksýra",
+    "x": "33.452",
+    "y": "276.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Asetatjón",
+    "x": "238.945",
+    "y": "276.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Pútresín",
+    "x": "124.448",
+    "y": "276.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "Pútreskínjón",
+    "x": "325.691",
+    "y": "276.672",
+    "size": "9.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "78.061",
+    "y": "276.680",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   },
+   {
+    "text": "+",
+    "x": "285.562",
+    "y": "276.680",
+    "size": "11.000",
+    "weight": "400",
+    "style": "normal",
+    "fill": "#231f20",
+    "family": "FigIS"
+   }
+  ],
+  "faces": [
+   {
+    "family": "FigIS",
+    "weight": "400",
+    "style": "normal"
+   }
+  ],
+  "metadata": false,
+  "metadata_text": null
+ }
+}
