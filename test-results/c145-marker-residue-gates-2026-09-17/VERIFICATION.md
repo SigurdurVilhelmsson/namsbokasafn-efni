@@ -357,7 +357,15 @@ change removes no detector) and is logged, not silently widened here.
 
 ---
 
-## 7. 🆕 Found BY the gate: a latent organic defect, §C115's class
+## 7. Organic m00061 — a KNOWN §C115 instance the gate can now SEE
+
+⚠️ **NOT a new finding, and an earlier draft of this section wrongly claimed it
+was.** The register already records it, in §C118's three-pre-existing-§C115-instances
+bullet: *"`[[docref:specific rotation, [[[i:α]]][[sub:D]]|…]]` on organic ch05
+m00061 is unconvertible **and the residue gate shares the idiom, so it is
+silent** (0 exposure until ch05 is bought)"*. ▶ **That prediction is what this
+work discharges: the gate is no longer silent on it.** What is genuinely new is
+the detection, and the measured consequence for three corpus sweeps.
 
 Organic **m00061** (ch05) carries
 `[[docref:specific rotation, [[[i:α]]][[sub:D]]|m00052#term-00004]]`. The inner
