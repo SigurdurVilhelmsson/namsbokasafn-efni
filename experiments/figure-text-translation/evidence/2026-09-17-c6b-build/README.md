@@ -42,7 +42,7 @@ wins** (CLAUDE.md § One source of truth).
 - `reports/after/` — the AFTER compose log (force-added: `*.log` is gitignored), P3 comparison, the AFTER census and its comparison with BEFORE, P6 pixels,
   the per-chapter recompose dry-runs, the Python suite results (`python-tests.txt` at `01b9e04c`'s tree,
   `python-tests-final.txt` naming its commit), vitest by name (`npm-compare.txt` at `vitest-head.txt`'s commit;
-  `npm-compare-final.txt` after the final-review fixes, added when that run finished), the writer mutants (`mutants.txt`), `head.txt`.
+  `npm-compare-final.txt` at `vitest-final-head.txt`'s commit, after the final-review fixes), the writer mutants (`mutants.txt`), `head.txt`.
 - `reports/control/` — P5: the stripped census and its comparison, the byte identity of the stripped SVGs, and the
   presentation-attribute control (census with `attr_none`, `census-attrform.json`, `lengths-attrform.json`, comparison).
 - `reports/recompose/` — the recompose set, 31 run transcripts, `git status -- books/`, `parts-compare.json` (from
@@ -110,4 +110,5 @@ FIGTEXT_PYLIBS=./pylibs python3 -u $E/instruments/mutate_writer.py <scratch>/mut
 # P8 (the baseline: the same vitest run before any code change, its failing names into reports/before/)
 npx vitest run --reporter=json --outputFile=<scratch>/vitest-after.json
 node experiments/figure-text-translation/evidence/2026-09-17-c6b-build/instruments/npm_compare.cjs <scratch>/vitest-after.json
+#   the re-run after the final-review fixes: the same, with a second argument -final
 ```

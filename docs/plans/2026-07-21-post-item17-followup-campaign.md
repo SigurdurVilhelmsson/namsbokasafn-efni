@@ -2,9 +2,9 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-17 (§C140 ⑥b BUILT + VERIFIED + RECOMPOSED — PR OPENS AFTER ITS FINAL REVIEW)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-17 (§C140 ⑥b BUILT + VERIFIED + RECOMPOSED — PR #478 OPEN)** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — **[USER]'s review of ⑥b's PR (`feat/c140-c6b-unkerned-labels`, which also carries this docs branch's commits) — merge, then deploy, and at that deploy confirm prod still holds no figure approval.** Buying stays stopped; no merge without [USER].
+### ⏭ SINGLE NEXT ACTION — **[USER]'s review of ⑥b's PR #478 (`feat/c140-c6b-unkerned-labels`, which also carries the held docs branch's commits) — merge, then deploy, and at that deploy confirm prod still holds no figure approval.** Buying stays stopped; no merge without [USER].
 
 ✅ **§C140 ⑥b is BUILT, VERIFIED and RECOMPOSED on `feat/c140-c6b-unkerned-labels`** (register ㉝) — every translated straight label (`path == 'layout'`) is drawn with an inline `style="font-kerning:none"`, so the browser draws the width `lin_advance` planned; kept and arc text are unchanged byte for byte. Design: [`docs/superpowers/specs/2026-09-17-c140-c6b-translated-labels-unkerned-design.md`](../superpowers/specs/2026-09-17-c140-c6b-translated-labels-unkerned-design.md) · measured, frozen: [`evidence/2026-09-17-c6b-build/VERIFICATION.md`](../../experiments/figure-text-translation/evidence/2026-09-17-c6b-build/VERIFICATION.md) — read it for every number; this block carries none beyond that pointer.
 

@@ -2,11 +2,13 @@
 // evidence/2026-09-17-c6a-build/instruments/npm_compare.cjs with the paths repointed at THIS build's folder:
 // the baseline is reports/before/npm-failing-by-name.txt (this branch, before any code change), the output
 // reports/after/npm-failing-by-name.txt and reports/after/npm-compare.txt.
-//   node experiments/figure-text-translation/evidence/2026-09-17-c6b-build/instruments/npm_compare.cjs <vitest.json>
+//   node experiments/figure-text-translation/evidence/2026-09-17-c6b-build/instruments/npm_compare.cjs <vitest.json> [suffix]
+// [suffix] (e.g. -final) is appended to both output names, so a later run never overwrites an earlier report.
 // (run from the repo root; the JSON from `npx vitest run --reporter=json --outputFile=<scratch>/vitest-after.json`)
 const fs = require('fs');
 const path = require('path');
 const JSON_FILE = process.argv[2];
+const SUFFIX = process.argv[3] || '';
 const r = require(path.resolve(JSON_FILE));
 const E = 'experiments/figure-text-translation/evidence/2026-09-17-c6b-build/reports';
 const now = [];
@@ -15,7 +17,7 @@ for (const f of r.testResults)
     if (a.status === 'failed')
       now.push(path.relative(process.cwd(), f.name) + ' :: ' + a.ancestorTitles.concat(a.title).join(' '));
 now.sort();
-fs.writeFileSync(E + '/after/npm-failing-by-name.txt', now.join('\n') + '\n');
+fs.writeFileSync(E + `/after/npm-failing-by-name${SUFFIX}.txt`, now.join('\n') + '\n');
 const before = fs.readFileSync(E + '/before/npm-failing-by-name.txt', 'utf8').trim().split('\n');
 const died = r.testResults
   .filter((f) => f.status === 'failed' && !f.assertionResults.some((a) => a.status === 'failed'))
@@ -37,5 +39,5 @@ out.push(...now);
 out.push('');
 out.push('## before (reports/before/npm-failing-by-name.txt)');
 out.push(...before);
-fs.writeFileSync(E + '/after/npm-compare.txt', out.join('\n') + '\n');
+fs.writeFileSync(E + `/after/npm-compare${SUFFIX}.txt`, out.join('\n') + '\n');
 console.log(out.slice(0, 9).join('\n'));
