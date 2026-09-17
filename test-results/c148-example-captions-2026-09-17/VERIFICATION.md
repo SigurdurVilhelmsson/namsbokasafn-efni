@@ -129,7 +129,10 @@ Full root `npx vitest run --reporter=json` at `5addad3d7` (the test hardening la
 green and against three mutants, §6). Compared with `experiments/figure-text-translation/evidence/2026-09-17-c35-rerender/instruments/npm_compare.cjs`
 against the ㊱ after-list (36 names, `main`'s code): **now 36 · before 36 · only-now `[]` · only-before `[]` · files that
 died without a failing test `[]`**; control: a planted name shows as only-now. 6,547 tests (㉟'s 6,545 + this branch's
-2), 6,510 passed. `reports/npm-compare.txt`. Not run locally: Playwright E2E (CI's separate job); this branch touches no
+2), 6,510 passed. `reports/npm-compare.txt`. The only change to `tools/cnxml-inject.js` after that run (`0e17f9f12`) is comment-only: a filter for
++/− lines that are not `//`, `*` or `/*` prints nothing for `5addad3d7..HEAD`, and 34 code lines for the fix commit
+`ba03baaf9..47bda0f6a` (control). The server runs this tool as a child process (`server/services/pipelineService.js`),
+so a deploy also puts the fix on prod's own publish path. Not run locally: Playwright E2E (CI's separate job); this branch touches no
 server code.
 
 ## 8. What is still English, and why
