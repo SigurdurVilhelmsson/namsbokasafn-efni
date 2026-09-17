@@ -1,0 +1,16 @@
+test_figsym.py:   ALL PASS
+test_svgout.py: ALL PASS
+test_compose_runexact.py: ALL PASS
+test_compose_t23.py: ALL PASS
+test_figure_compose.py: ALL PASS
+test_blockkey_consumers.py: ALL PASS
+test_figtext_out.py: ALL PASS
+test_figcolour.py: ALL PASS
+test_readlayer.py:   ALL PASS
+test_figure_prepare.py: ALL PASS
+test_sendable.py: ALL PASS
+test_sources.py: ALL PASS
+test_make_fixture.py: ALL PASS
+test_figrings.py: ALL PASS
+test_svgfix.py: ALL PASS
+test_strip_text.py:   ALL PASS

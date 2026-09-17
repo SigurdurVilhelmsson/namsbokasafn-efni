@@ -1,0 +1,9 @@
+CNX_Chem_03_01_alsulfatemass_img
+CNX_Chem_03_01_aspirin
+CNX_Chem_03_01_chloroform
+CNX_Chem_03_01_glycinemass_img
+CNX_Chem_03_01_saltMass
+CNX_Chem_04_01_basehyd_img
+CNX_Chem_04_01_rxn2
+CNX_Chem_04_02_HClsoln
+CNX_Chem_14_03_FishLemon
