@@ -41,6 +41,8 @@ function sweep(book) {
   let emitted = 0;
   let reached = 0;
   const dropped = [];
+  const refused = []; // §C145: modules the injector refuses — no reach verdict
+  let refusedSegments = 0;
   for (const f of sourceModules(book)) {
     const src = fs.readFileSync(f, 'utf8');
     const { segments, structure, equations, inlineAttrs } = extractSegments(src);
@@ -56,13 +58,27 @@ function sweep(book) {
     }
     if (!n) continue;
     emitted += n;
-    const out = buildCnxml(structure, parsed, equations, src, {}, inlineAttrs).cnxml;
+    let out;
+    try {
+      out = buildCnxml(structure, parsed, equations, src, {}, inlineAttrs).cnxml;
+    } catch (err) {
+      // §C145 ①: the injector now REFUSES a module whose output carries a
+      // surviving bracket marker. Such a module has no reach verdict at all —
+      // its alts are neither delivered nor dropped — so it is excluded by NAME
+      // and its segments SUBTRACTED in the assertion, never silently skipped.
+      // ⚠️ The catch is narrow on purpose: any other buildCnxml failure is a
+      // real crash and must not be laundered into `refused`.
+      if (!/Marker residue/.test(err.message)) throw err;
+      refused.push(path.basename(f, '.cnxml'));
+      refusedSegments += n;
+      continue;
+    }
     let hit = 0;
     for (const token of sent.values()) if (out.includes(token)) hit++;
     reached += hit;
     if (hit < n) dropped.push(path.basename(f, '.cnxml'));
   }
-  return { emitted, reached, dropped };
+  return { emitted, reached, dropped, refused: refused.sort(), refusedSegments };
 }
 
 describe('§C89 — translated alt reaches the injected output', () => {
@@ -92,6 +108,8 @@ describe('§C89 — translated alt reaches the injected output', () => {
 
     expect(r.emitted).toBe(1149);
     expect(r.reached).toBe(1149);
+    // §C145: chemistry has no refused module — the control for organic's one.
+    expect(r.refused).toEqual([]);
 
     // ⚠️ m68801 WAS a KNOWN, LOGGED RESIDUAL (kept here as the record of why it
     // existed — do not delete on resolution). Its holdout was a BARE <media> (no
@@ -149,10 +167,27 @@ describe('§C89 — translated alt reaches the injected output', () => {
     // module in seconds; the book total alone would have looked close enough to
     // wave through. ▶ The population is 245 by direct-parent and 246 by any-depth,
     // and this test sits on the difference.
+    // 🔴 §C145 (2026-09-17) — ONE MODULE IS NOW REFUSED BY THE INJECTOR, AND THE
+    // EXCLUSION IS WRITTEN AS A SUBTRACTION SO THE DENOMINATOR CANNOT SHRINK
+    // SILENTLY. m00061 carries `[[docref:specific rotation, [[[i:α]]][[sub:D]]|…]]`;
+    // the inner `[[i:α]]` resolves to `<emphasis>α</emphasis>`, leaving a LITERAL
+    // `]` in the docref payload, so the docref itself is never converted and
+    // reaches the output as residue. The superseded whole-token gate could not
+    // see it (`[^\]]*\]\]` breaks on that literal `]`) — §C115's class, and
+    // exactly what the opener-only predicate exists to catch.
+    // ⚠️ It is LATENT, not live: m00061 has no Icelandic translation at all, so a
+    // real inject refuses it earlier ("Translation not found"). This sweep reaches
+    // it only because it injects every source module's own English.
+    // ▶ `emitted` deliberately keeps its historical 2,163 and the refused module's
+    // 6 segments are subtracted by name — a second refusing module goes red and
+    // says which, which is what "a coverage denominator must not shrink with the
+    // loss" requires.
     const r = sweep('lifraen-efnafraedi');
 
     expect(r.emitted).toBe(2163);
-    expect(r.reached).toBe(2163);
+    expect(r.refused).toEqual(['m00061']);
+    expect(r.refusedSegments).toBe(6);
+    expect(r.reached).toBe(r.emitted - r.refusedSegments);
     expect(r.dropped).toEqual([]);
   }, 600_000);
 });

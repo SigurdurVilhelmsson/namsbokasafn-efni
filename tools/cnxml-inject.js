@@ -55,6 +55,10 @@ import {
 import { resolveRestorePolicy } from './lib/provenance.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
 import { detectResidue, upsertResidueModule } from './lib/residue-check.js';
+// ⚠️ Different "residue": residue-check.js finds UNTRANSLATED ENGLISH (A2);
+// marker-residue.js finds a surviving [[type:…]] MARKER (§C145). One name, two
+// unrelated predicates — do not merge them.
+import { findMarkerResidue, describeMarkerResidue } from './lib/marker-residue.js';
 import { loadResidueAllowlist, classifyResidue } from './lib/residue-allowlist.js';
 import { SEG_MARKER, parseSegmentsMap } from './lib/seg-markers.cjs';
 import { loadImageBasenameMap } from './lib/image-basename-map.cjs';
@@ -1981,16 +1985,25 @@ function collectBlockMediaIds(elements, idSet) {
  * marker. TABLE expansion is handled upstream by buildExerciseDom/buildExampleDom/
  * buildNoteDom, so a surviving [[TABLE:…]] here means a real inject-path miss.
  *
+ * 🔴 §C145 ① — THE PREDICATE IS THE MARKER'S OPENER, NOT THE WHOLE TOKEN. This
+ * gate used to require a closing `]]`, and ⑰'s `annotateInlineTerms` corruption
+ * CONSUMES it: on the committed corrupt chemistry m68700 (`66612e43d`) the old
+ * pattern scored 0 while `[[term:tala Avogadros …` sat in the file, was
+ * committed past a `green: false` fidelity manifest, and reached a prepared
+ * reader page where it went unnoticed for eleven days. The owner of the
+ * predicate is now `tools/lib/marker-residue.js`, shared with the render-side
+ * gate (§C145 ②) so the two cannot drift.
+ *
  * @param {string} cnxml - assembled module output
  * @param {string} moduleId
  */
 function assertNoMarkerResidue(cnxml, moduleId) {
-  const residue = cnxml.match(/\[\[(?!MATH:|MEDIA:)[A-Za-z][\w]*:[^\]]*\]\]/g);
-  if (residue) {
-    const shown = [...new Set(residue)].slice(0, 10).join(', ');
+  const residue = findMarkerResidue(cnxml);
+  if (residue.length) {
     throw new Error(
-      `Marker residue in injected output for ${moduleId}: ${shown} — a [[TYPE:…]] placeholder ` +
-        `was not converted. Fix the inject path before publishing.`
+      `Marker residue in injected output for ${moduleId}: ` +
+        `${residue.length} marker(s) survived — a [[TYPE:…]] placeholder was not converted. ` +
+        `Fix the inject path before publishing.\n${describeMarkerResidue(residue)}`
     );
   }
 }

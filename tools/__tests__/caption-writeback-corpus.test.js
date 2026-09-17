@@ -98,6 +98,7 @@ function sweep(book) {
   const byContext = {};
   const dropped = [];
   let notFigure = 0;
+  const refused = []; // §C145: modules the injector refuses — no reach verdict
   for (const f of walk(join(BOOKS, book, '01-source'))) {
     const src = readFileSync(f, 'utf8');
     const { segments, structure, equations, inlineAttrs } = extractSegments(src);
@@ -127,7 +128,17 @@ function sweep(book) {
       probes.push({ figId, token, context: figureContext(srcFig) });
     });
 
-    const cnxml = buildCnxml(structure, map, equations, src, {}, inlineAttrs).cnxml;
+    let cnxml;
+    try {
+      cnxml = buildCnxml(structure, map, equations, src, {}, inlineAttrs).cnxml;
+    } catch (err) {
+      // §C145 ①: a module whose injected output carries a surviving bracket
+      // marker is REFUSED, so it has no reach verdict — excluded by NAME, never
+      // silently skipped. Narrow on purpose: any other failure is a real crash.
+      if (!/Marker residue/.test(err.message)) throw err;
+      refused.push(basename(f, '.cnxml'));
+      continue;
+    }
     const outFigures = Array.from(
       parser().parseFromString(cnxml, 'text/xml').getElementsByTagName('figure')
     );
@@ -152,7 +163,7 @@ function sweep(book) {
       }
     }
   }
-  return { byContext, dropped: dropped.sort(), notFigure };
+  return { byContext, dropped: dropped.sort(), notFigure, refused: refused.sort() };
 }
 
 describe('§C148 — a translated figure caption reaches the injected CNXML AND the rendered page', () => {
@@ -183,6 +194,8 @@ describe('§C148 — a translated figure caption reaches the injected CNXML AND 
     // are render/extract-side and logged as §C149; neither is the inject defect
     // this test pins.
     expect(r.dropped).toEqual(['m68764 CNX_Chem_10_02_Needlefloa exercise/para (render)']);
+    // §C145: chemistry refuses no module — the control for organic's one.
+    expect(r.refused).toEqual([]);
     expect(r.notFigure).toBe(0);
   }, 600_000);
 
@@ -203,9 +216,22 @@ describe('§C148 — a translated figure caption reaches the injected CNXML AND 
     // regex misses, the note goes through buildGenericElement, the figure is
     // emitted after `</note>`, and buildFigure writes its caption. Chemistry's 83
     // are the only real control on the note path (logged: §C151).
+    // 🔴 §C145 (2026-09-17) — `top` READ 457 UNTIL THE INJECTOR LEARNED TO REFUSE
+    // A SURVIVING MARKER. 457 − m00061's 3 = 454. The module is REFUSED, not
+    // dropped: it carries `[[docref:specific rotation, [[[i:α]]][[sub:D]]|…]]`,
+    // whose inner `[[i:α]]` resolves to `<emphasis>α</emphasis>` and leaves a
+    // LITERAL `]` in the docref payload, so the docref is never converted and
+    // reaches the output as residue (§C115's class; the superseded whole-token
+    // gate could not see it). It is LATENT — m00061 has no Icelandic translation,
+    // so a real inject refuses it earlier; only this sweep, which injects every
+    // module's own English, reaches it.
+    // ▶ The subtraction is written out and `refused` is pinned BY NAME, so a
+    // second refusing module goes red and says which, instead of quietly
+    // shrinking the denominator.
     const r = sweep('lifraen-efnafraedi');
+    expect(r.refused).toEqual(['m00061']);
     expect(r.byContext).toEqual({
-      top: { emitted: 457, injected: 457, rendered: 457 },
+      top: { emitted: 454, injected: 454, rendered: 454 },
       'note/direct': { emitted: 1, injected: 1, rendered: 1 },
       'example/direct': { emitted: 3, injected: 3, rendered: 3 },
     });
