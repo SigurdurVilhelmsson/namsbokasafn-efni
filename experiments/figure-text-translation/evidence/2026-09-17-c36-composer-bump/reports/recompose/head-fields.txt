@@ -1,0 +1,5 @@
+# head_fields.py <scratch compose of the 34 with the unchanged composer (evidence/2026-09-17-c6b-build/instruments/compose34.py, SOURCE_DATE_EPOCH pinned)> HEAD
+# the live recompose's own files were restored before this was measured, so a scratch compose reproduces the same case: same composer, a different font timestamp
+blob pairs: 50
+head fields that differ (count of pairs): {'checkSumAdjustment': 50, 'modified': 50}
+HEAD-FIELDS-DONE
