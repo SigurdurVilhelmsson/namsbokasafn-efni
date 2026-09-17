@@ -1,0 +1,1 @@
+books/efnafraedi-2e/media/CNX_Chem_04_05_combustion_IS.svg: textgroup_same=True artwork_changed=True text_count 32->32
