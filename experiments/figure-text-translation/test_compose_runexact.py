@@ -349,6 +349,23 @@ check('C3 CONTROL ... and with a whole bold run (face order is visible here)',
       golden is not None and current['faces_bold'] == golden['faces_bold'],
       repr(current['faces_bold']))
 
+# ── ⑥b ──────────────────────────────────────────────────────────────────────────────
+# [USER] ruling (a) 2026-09-17: only a LAYOUT-path element (a translated straight label) is drawn with
+# font-kerning:none. A run-exact element - kept, identity - keeps the default, and so does an arc glyph (one
+# character per <text>: nothing to kern; C1 pins its bytes).
+PLAIN_LABELS = ('Athugun og forvitni', 'Profa tilgatuna')
+lay_els = [(t, a, raw) for t, a, raw in els if t in PLAIN_LABELS]
+arc_els = [(t, a, raw) for t, a, raw in els if t in ARC_GLYPHS]
+rest_els = [x for x in els if x not in lay_els and x not in arc_els]
+check('K0 NON-VACUITY the planted figure draws the 2 plain translated labels, the 5 arc glyphs and '
+      'run-exact elements besides', len(lay_els) == 2 and len(arc_els) == 5 and len(rest_els) >= 1,
+      f'layout={len(lay_els)} arc={len(arc_els)} rest={len(rest_els)}')
+check('K1 ⑥b the two translated labels carry style="font-kerning:none"',
+      all(a.get('style') == 'font-kerning:none' for _, a, _ in lay_els), repr([raw for *_, raw in lay_els]))
+check('K2 ⑥b no arc glyph and no run-exact element (kept, identity) mentions font-kerning',
+      not any('font-kerning' in raw for *_, raw in arc_els + rest_els),
+      repr([raw for *_, raw in arc_els + rest_els if 'font-kerning' in raw]))
+
 # ── E's assertions are appended below this line by Tasks 4 and 5 ────────────────────
 
 A1 = adv('Form a ', 12)

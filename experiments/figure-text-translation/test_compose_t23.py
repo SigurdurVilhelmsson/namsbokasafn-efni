@@ -437,6 +437,23 @@ else:
 check('G3 CONTROL the unplanted fixture\'s faces are the unchanged composer\'s (structure)',
       current['faces_plain'] == golden['faces_plain'], repr(current['faces_plain']))
 
+# ── ⑥b ──────────────────────────────────────────────────────────────────────────────────────
+# [USER] ruling (a) 2026-09-17: a TRANSLATED straight label - laid out by ③ from lin_advance - is drawn with
+# font-kerning:none, so the browser draws the width the layout was decided with; a KEPT element is untouched
+# (G1 pins its bytes). Checked on the elements the composer really wrote for figure 1, with the partition as
+# the control: every element is either one of the three labels' or a kept one, so neither check is vacuous.
+lab_els = [el for k in (K_NA, K_NAMISS, K_PLAIN) for el in lab1[k]]
+kept_els = [el for el in els1 if is_kept_element(el, FIG1_KEPT)]
+precondition('K0 CONTROL figure 1\'s elements partition into the three translated labels and the kept ones',
+             len(lab_els) >= 3 and len(kept_els) == 2 and len(lab_els) + len(kept_els) == len(els1),
+             f'labels={len(lab_els)} kept={len(kept_els)} all={len(els1)}')
+check('K1 ⑥b every element of the translated labels (formula segments and scripts included) ends in '
+      'style="font-kerning:none", and says it once',
+      all(el['raw'].count('font-kerning') == 1 and el['raw'].split('>', 1)[0].endswith(' style="font-kerning:none"')
+          for el in lab_els), repr([el['raw'] for el in lab_els]))
+check('K2 ⑥b no kept element mentions font-kerning',
+      not any('font-kerning' in el['raw'] for el in kept_els), repr([el['raw'] for el in kept_els]))
+
 # ── ② ───────────────────────────────────────────────────────────────────────────────────────
 na = lab1[K_NA]
 base_el = [el for el in na if el['size'] == 12.0 and el['text'].endswith('Na')]

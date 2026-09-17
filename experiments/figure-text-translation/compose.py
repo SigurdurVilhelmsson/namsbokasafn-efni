@@ -185,9 +185,14 @@ def setfont_st(run, size, st):
 # drawing context's 200-dpi hinted advances flipped two fit decisions and left a right-flush
 # `Mólmassi` 0.93 pt short of its edge. They equal a BROWSER's only because svgout.write_svg sets
 # text-rendering="geometricPrecision" on the text group (without it Chromium's default render was
-# up to 8.97 pt off on the 34) - and even then Chromium applies the font's kern table, which cairo
-# does not: 28 of 647 segments on the 34 draw up to 0.99 pt short, which can only widen a gap.
-# The DRAWING context is untouched, so kept blocks' raster does not change.
+# up to 8.97 pt off on the 34) AND - since §C140 ⑥b - because svgout.write_svg draws every LAYOUT item with
+# font-kerning:none. This context applies no kerning; Chromium applies the embedded subset's GPOS kern
+# pairs by default, which drew 27 of the 370 layout segments on the 34 up to 0.99 pt short. That gap does
+# NOT only widen: Liberation's r'/f' pairs are positive and would draw a segment LONGER than measured, into
+# its neighbour. [USER] ruling (a), docs/decisions/2026-09-17-translated-figure-labels-drawn-unkerned.md:
+# the drawing is made to match this measure, never the reverse - so a new width model (a face, a style
+# bit) must stay unkerned here AND there. The DRAWING context is untouched, so kept blocks' raster does
+# not change.
 _msurf = cairo.ImageSurface(cairo.FORMAT_A8, 8, 8)
 mctx = cairo.Context(_msurf)
 _mfo = cairo.FontOptions()

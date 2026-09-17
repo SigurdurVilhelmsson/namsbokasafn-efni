@@ -19,7 +19,10 @@ resolver that answered "geometricPrecision" for everything - or for nothing - st
 
 WHERE svgout PUTS IT is deliberately NOT pinned here: one attribute on the wrapping <g> leaves
 every <text> element byte-identical, which is what keeps the raw-<text> goldens of
-test_compose_runexact.py and test_compose_t23.py valid.
+test_compose_runexact.py and test_compose_t23.py valid. ⚠️ Since §C140 ⑥b that is true of the KEPT and
+ARC elements those goldens compare byte for byte, and NOT of a translated straight label: section K below
+pins a style="font-kerning:none" on every layout <text> ([USER] ruling (a), 2026-09-17), and the goldens'
+layout-path checks compare text, not bytes.
 """
 import base64
 import importlib.util
@@ -289,6 +292,99 @@ except Exception as e:                          # noqa: BLE001 - the check is "d
     split_err = repr(e)
 check('T4 figparts.split() still accepts the composed SVG with a FigSym face + <metadata>',
       split_err is None, split_err or '')
+
+# --- §C140 ⑥b: translated (layout-path) labels are drawn with kerning OFF ----------------------------
+# [USER] ruling (a), docs/decisions/2026-09-17-translated-figure-labels-drawn-unkerned.md: every
+# path='layout' <text> is drawn with font-kerning:none, so the browser draws the LINEAR width
+# compose.lin_advance planned; run-exact and arc items keep the default. Asserted on the RESOLVED value,
+# like S1 - and the resolver models what R-d MEASURED (evidence/2026-09-17-c6b-build/reports/rd/): an
+# inline `style` and a <style> rule are honoured, a presentation attribute font-kerning="none" is
+# silently IGNORED by Chromium. A writer that emitted the attribute form would draw today's figure; K1
+# fails it.
+
+
+def kerning_rules(svg_text):
+    """[(selector, value)] of every <style> rule that sets font-kerning, in document order."""
+    out = []
+    for block in re.findall(r'<style[^>]*>(.*?)</style>', svg_text, re.S):
+        block = re.sub(r'@font-face\{[^}]*\}', '', block)
+        for sel, body in re.findall(r'([^{}]+)\{([^}]*)\}', block):
+            v = style_prop(body, 'font-kerning')
+            if v is not None:
+                out += [(s.strip(), v) for s in sel.split(',')]
+    return out
+
+
+def rule_matches(sel, el):
+    classes = (el.get('class') or '').split()
+    tag, _, cls = sel.partition('.')
+    return tag in ('', 'text', '*') and (not cls or cls in classes) and (tag or cls)
+
+
+def resolved_font_kerning(svg_text):
+    """[(text content, resolved font-kerning or 'auto')] for every <text>, in document order. font-kerning is
+    INHERITED: the element's own inline style wins; else a matching <style> rule; else the nearest ancestor's
+    inline style. A presentation ATTRIBUTE is ignored anywhere (measured, R-d)."""
+    root_ = ET.fromstring(svg_text.encode('utf-8'))
+    parent_ = {c: p for p in root_.iter() for c in p}
+    rules = kerning_rules(svg_text)
+    out = []
+    for el in root_.iter():
+        if local(el.tag) != 'text':
+            continue
+        val = style_prop(el.get('style'), 'font-kerning')
+        if val is None:
+            hits = [v for s, v in rules if rule_matches(s, el)]
+            val = hits[-1] if hits else None
+        node = parent_.get(el)
+        while val is None and node is not None:
+            val = style_prop(node.get('style'), 'font-kerning')
+            node = parent_.get(node)
+        out.append((''.join(el.itertext()), val or 'auto'))
+    return out
+
+
+precondition('kerning resolver NEGATIVE control: a bare <text> resolves to auto',
+             resolved_font_kerning(W.format('<g><text>a</text></g>')) == [('a', 'auto')])
+precondition('kerning resolver POSITIVE control: an inline style on the <text>',
+             resolved_font_kerning(W.format('<g><text style="font-kerning:none">a</text></g>')) == [('a', 'none')])
+precondition('kerning resolver POSITIVE control: an inline style on an ancestor <g> is inherited',
+             resolved_font_kerning(W.format('<g style="font-kerning:none"><text>a</text></g>')) == [('a', 'none')])
+precondition('kerning resolver POSITIVE control: a <style> class rule',
+             resolved_font_kerning(W.format('<style>.nk{font-kerning:none}</style><g><text class="nk">a</text>'
+                                            '<text>b</text></g>')) == [('a', 'none'), ('b', 'auto')])
+precondition('kerning resolver MEASURED control (R-d): a presentation attribute is ignored',
+             resolved_font_kerning(W.format('<g><text font-kerning="none">a</text></g>')) == [('a', 'auto')])
+precondition('kerning resolver: the element\'s own inline style wins over an inheriting ancestor',
+             resolved_font_kerning(W.format('<g style="font-kerning:none"><text style="font-kerning:normal">a'
+                                            '</text></g>')) == [('a', 'normal')])
+
+ITEMS_K = ITEMS + [
+    item('Taugafrumur', 30.0, 60.0, rot=12.5, block=9, line=0, seg=0),   # a rotated layout label (transform)
+    item('O', 150.0, 40.0, rot=-30.0, path='arc', block=10),             # an arc glyph
+    item('AV', 150.0, 70.0, path=None),                                  # an item with no path at all
+]
+svg_k = compose_svg(ITEMS_K)
+parses(svg_k, 'K the ⑥b SVG parses as XML')
+res_k = resolved_font_kerning(svg_k)
+precondition('CONTROL every ⑥b item became exactly one <text>, in order',
+             [t for t, _ in res_k] == [it['text'] for it in ITEMS_K], repr([t for t, _ in res_k]))
+want_k = [(it['text'], 'none' if it['path'] == 'layout' else 'auto') for it in ITEMS_K]
+check('K1 every layout <text> resolves to font-kerning:none and every run-exact, arc and path-less one to auto',
+      res_k == want_k, f'got {res_k!r}')
+raw_k = re.findall(r'<text ([^>]*)>', svg_k)
+lay = [a for a, it in zip(raw_k, ITEMS_K) if it['path'] == 'layout']
+other = [a for a, it in zip(raw_k, ITEMS_K) if it['path'] != 'layout']
+check('K2 each layout <text> carries style="font-kerning:none" exactly once, as its LAST attribute '
+      '(after transform on the rotated one)',
+      len(lay) == 6 and all(a.count('font-kerning') == 1 and a.endswith(' style="font-kerning:none"') for a in lay)
+      and any('transform=' in a for a in lay), repr(lay))
+check('K3 no run-exact, arc or path-less <text> mentions font-kerning at all (they stay byte-identical)',
+      len(other) == 5 and not any('font-kerning' in a for a in other), repr(other))
+check('K4 the stylesheet carries no font-kerning rule (the property is on the element, not in <style>)',
+      kerning_rules(svg_k) == [], repr(kerning_rules(svg_k)))
+check('K5 no element anywhere carries the IGNORED presentation-attribute form font-kerning="…"',
+      'font-kerning="' not in svg_k)
 
 print('ALL PASS' if not FAILED else f'{len(FAILED)} FAILED: ' + ', '.join(FAILED))
 sys.exit(1 if FAILED else 0)

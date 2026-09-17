@@ -109,6 +109,15 @@ def write_svg(artwork_svg, out_path, items, page_h):
                  'xml:space="preserve"']
         if abs(it['rot']) > 1e-6:
             attrs.append(f'transform="rotate({-it["rot"]:.4f} {x:.3f} {y:.3f})"')
+        # §C140 ⑥b ([USER] ruling (a), docs/decisions/2026-09-17-translated-figure-labels-drawn-unkerned.md):
+        # a LAYOUT item was placed from compose.lin_advance, which applies no kerning, so it is drawn with
+        # kerning off - otherwise the browser applies the subset's GPOS kern pairs and draws a width the layout
+        # was not decided with (up to 0.99 pt short on the 34; Liberation's r'/f' pairs would draw it LONGER).
+        # Run-exact and arc items keep the default. An INLINE style, never the presentation attribute
+        # font-kerning="none", which Chromium silently ignores (measured, evidence/2026-09-17-c6b-build/
+        # reports/rd/). Appended LAST, so every other attribute keeps its position. Pinned by test_svgout.py K.
+        if it.get('path') == 'layout':
+            attrs.append('style="font-kerning:none"')
         parts.append(f"<text {' '.join(attrs)}>{esc(it['text'])}</text>")
     parts.append('</g>')
 

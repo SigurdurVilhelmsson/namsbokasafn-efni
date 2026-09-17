@@ -442,9 +442,11 @@ def split_at_word_edges(segs):
     drawn from its own first letter and anything a browser lays out differently in a long plain
     prefix lands in a word space. The bound this was sized on (in-formula error <= 0.57 pt instead
     of up to 1.56 pt, c2 Q3) was browser advance ROUNDING, measured before svgout set
-    text-rendering="geometricPrecision"; under it Chromium's advances equal compose's linear ones,
-    and what remains is its kern table (cairo applies none) - up to 0.99 pt short per segment on
-    the 34, which the cut keeps out of the formula word."""
+    text-rendering="geometricPrecision"; under it Chromium's advances equal compose's linear ones.
+    The kern pairs Chromium applied on top (cairo applies none) are removed since §C140 ⑥b, which draws
+    every layout segment with font-kerning:none ([USER] ruling (a), 2026-09-17) - they were up to 0.99 pt
+    per segment on the 34, and not only short: Liberation's r'/f' pairs draw longer. The cut is kept
+    as it was; removing it would re-segment every translated label."""
     out = []
     n = len(segs)
     for i, (t, st) in enumerate(segs):
