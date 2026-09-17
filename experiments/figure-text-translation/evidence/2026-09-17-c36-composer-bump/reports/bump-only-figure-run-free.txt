@@ -1,0 +1,20 @@
+# bump-only (be19b3a5): tools/__tests__/figure-run-free.test.js alone, failing names vs the baseline names for that file
+tests 102 passed 98 failed 4
+now 4 baseline(file) 9
+only-now (newly red) [
+ "tools/__tests__/figure-run-free.test.js :: a figure whose sidecar is current is skipped before anything is spent skips exactly the figures that really do have a current sidecar — no more, no fewer",
+ "tools/__tests__/figure-run-free.test.js :: the pre-flight refusals that a dry run exists to surface names an unresolved figure instead of failing the run over it (R9)"
+]
+only-baseline (newly green) [
+ "tools/__tests__/figure-run-free.test.js :: prepare warnings reach the operator prints a warning verbatim, naming the figure that produced it",
+ "tools/__tests__/figure-run-free.test.js :: the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figure prepares every figure under its own unstripped basename, in its own directory",
+ "tools/__tests__/figure-run-free.test.js :: the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figure resolves a hashed figure through its stripped name, in a SECOND resolver pass",
+ "tools/__tests__/figure-run-free.test.js :: the de-hash is LOOKUP-ONLY: it finds artwork, it never renames a figure still reports a hashed figure unresolved when neither name has artwork",
+ "tools/__tests__/figure-run-free.test.js :: the de-hash refuses a CONTESTED stem rather than guessing which figure owns it de-hashes ch03 exactly as before — the guard refuses the contest, not the fallback",
+ "tools/__tests__/figure-run-free.test.js :: the pre-flight refusals that a dry run exists to surface REFUSES a figure whose meta.json names a different figure",
+ "tools/__tests__/figure-run-free.test.js :: the pre-flight refusals that a dry run exists to surface files a prepare that exited non-zero as failed-prepare, not as text-less"
+]
+still red [
+ "tools/__tests__/figure-run-free.test.js :: the pre-flight refusals that a dry run exists to surface accepts a figure whose meta.json names it, and classifies it",
+ "tools/__tests__/figure-run-free.test.js :: the pre-flight refusals that a dry run exists to surface runs the figure --figure DOES match (the control for the test above)"
+]

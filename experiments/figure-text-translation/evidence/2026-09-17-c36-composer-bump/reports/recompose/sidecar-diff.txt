@@ -1,0 +1,6 @@
+# git diff --numstat books/efnafraedi-2e/figure-text: 34 files
+files not exactly +1/-1: []
+distinct removed lines: ['- "composedVersion": "3",']
+distinct added lines: ['+ "composedVersion": "4",']
+e2e fixture diff lines: 0
+other books/ paths changed: []

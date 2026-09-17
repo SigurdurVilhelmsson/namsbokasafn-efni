@@ -1,0 +1,45 @@
+LIVE RUN
+efnafraedi-2e ch03: 15 figure(s) across 5 module(s)
+  --stale: 26 figure(s) in this chapter have no sidecar and were not selected. They are the ones a run WITHOUT --stale would buy.
+
+    15  translated
+    15  = enumerated
+
+  de-hashed to stripped-name artwork, LOOKUP ONLY (8):
+    CNX_Chem_03_02_potassium_img-f1d1  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_potassium_img.eps
+    CNX_Chem_03_02_argon_img-9025  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_argon_img.eps
+    CNX_Chem_03_02_copperMoles_img-a962  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_copperMoles_img.eps
+    CNX_Chem_03_02_glycine_img-7c96  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_glycine_img.eps
+    CNX_Chem_03_02_vitC_img-e537  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_vitC_img.eps
+    CNX_Chem_03_02_sacch_img-3278  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_sacch_img.eps
+    CNX_Chem_03_01_brain-ec0b  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_03/Source_File/CNX_Chem_03_01_brain.pdf
+    CNX_Chem_03_01_exocytosis-88f6  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_03/Source_File/CNX_Chem_03_01_exocytosis.pdf
+  figure-prepare.py warnings — 20 across 13 figure(s), its own !! lines:
+    CNX_Chem_03_01_chloroform: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_03_01_aspirin: subset font PAGE/R10; subset font PAGE/R12; subset font PAGE/R14
+    CNX_Chem_03_01_saltMass: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_03_01_alsulfatemass_img: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_03_02_potassium_img-f1d1: subset font PAGE/R9
+    CNX_Chem_03_02_argon_img-9025: subset font PAGE/R9
+    CNX_Chem_03_02_glycine_img-7c96: subset font PAGE/R9
+    CNX_Chem_03_01_glycinemass_img: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_03_02_vitC_img-e537: subset font PAGE/R9
+    CNX_Chem_03_01_brain-ec0b: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_03_01_exocytosis-88f6: subset font PAGE/TT0
+    CNX_Chem_03_03_empform: subset font PAGE/TT0
+    CNX_Chem_03_05_Example2_img: subset font PAGE/R9
+  soft-mask ring gate (§C140 ⑩) — 2 figure(s) carry a candidate; 1 healed, 8 refused:
+    CNX_Chem_03_01_brain-ec0b: healed mask-2
+    CNX_Chem_03_01_exocytosis-88f6: 8 soft-mask ring candidate(s) carry the byte signature but no visible ring, so they were NOT healed: mask-8, mask-12, mask-39, mask-43, mask-189, mask-271, mask-409, mask-491
+  English-kept numbers drawn with a decimal comma, by figure (5):
+    CNX_Chem_03_01_chloroform: "12.01", "1.008", "35.45", "12.01", "1.008", "106.35", "119.37"
+    CNX_Chem_03_01_aspirin: "12.01", "1.008", "16.00", "108.09", "8.064", "64.00", "180.15"
+    CNX_Chem_03_01_saltMass: "22.99", "35.45", "22.99", "35.45", "58.44"
+    CNX_Chem_03_01_alsulfatemass_img: "26.98", "32.06", "16.00", "53.96", "96.18", "192.00", "342.14"
+    CNX_Chem_03_01_glycinemass_img: "12.01", "1.008", "14.007", "24.02", "5.040", "14.007", "75.07", "16.00", "32.00"
+
+  MT spawned for 0 figure(s), 0 billable characters — only a figure with NO sidecar is spendable
+  published 15 figure(s) into /home/siggi/dev/repos/namsbokasafn-efni/books/efnafraedi-2e/media/
+
+VERDICT ok
+  NOTE (not a failure): 5 figure(s) had English-kept numbers drawn with a decimal comma

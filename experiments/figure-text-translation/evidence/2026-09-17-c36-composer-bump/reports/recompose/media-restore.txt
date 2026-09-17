@@ -1,0 +1,5 @@
+# V4: the 34 recomposed _IS.svg found timestamp-only by media-value-check.json were restored from HEAD (be19b3a52fc9e11cd426fbf4b5d0daef67ccb0a0)
+restored 34 files
+git status -- books/ after restore:
+     34 M
+0

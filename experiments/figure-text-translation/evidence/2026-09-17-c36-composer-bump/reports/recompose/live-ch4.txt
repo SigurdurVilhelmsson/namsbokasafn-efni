@@ -1,0 +1,40 @@
+LIVE RUN
+efnafraedi-2e ch04: 19 figure(s) across 6 module(s)
+  --stale: 11 figure(s) in this chapter have no sidecar and were not selected. They are the ones a run WITHOUT --stale would buy.
+
+    19  translated
+    19  = enumerated
+
+  figure-prepare.py warnings — 110 across 18 figure(s), its own !! lines:
+    CNX_Chem_04_01_rxn2: subset font PAGE/Fm0/T1_0; subset font PAGE/Fm1/T1_0; subset font PAGE/Fm2/T1_0; subset font PAGE/Fm3/T1_0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/TT0
+    CNX_Chem_04_01_rxn3: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0
+    CNX_Chem_04_01_basehyd_img: subset font PAGE/Fm0/T1_0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm14/TT0; subset font PAGE/Fm15/TT0; subset font PAGE/Fm16/TT0; subset font PAGE/Fm17/TT0; subset font PAGE/Fm18/TT0; subset font PAGE/Fm19/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm20/TT0; subset font PAGE/Fm21/TT0; subset font PAGE/Fm22/TT0; subset font PAGE/Fm23/TT0; subset font PAGE/Fm24/TT0; subset font PAGE/Fm25/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/T1_0; subset font PAGE/Fm9/T1_0
+    CNX_Chem_04_02_HClsoln: subset font PAGE/T1_0; subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_14_03_FishLemon: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/T1_0; subset font PAGE/Fm11/T1_0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/T1_0; subset font PAGE/Fm5/T1_0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_04_03_moleratio1_img: subset font PAGE/R9
+    CNX_Chem_04_03_map2_img: subset font PAGE/R9
+    CNX_Chem_04_03_map3_img: subset font PAGE/R9
+    CNX_Chem_04_03_flowchart: subset font PAGE/TT0
+    CNX_Chem_04_03_etheneBr_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm14/TT0; subset font PAGE/Fm15/TT0; subset font PAGE/Fm16/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_04_03_ethene_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm14/TT0; subset font PAGE/Fm15/TT0; subset font PAGE/Fm16/TT0; subset font PAGE/Fm17/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_04_04_sandwich: subset font PAGE/T1_0; subset font PAGE/TT0
+    CNX_Chem_04_04_limiting: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0
+    CNX_Chem_04_04_GreenChem: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/TT0
+    CNX_Chem_04_05_map7_img: subset font PAGE/R9
+    CNX_Chem_04_05_map8_img: subset font PAGE/R9
+    CNX_Chem_04_05_combustion: subset font PAGE/TT0
+    CNX_Chem_04_05_combmap_img: subset font PAGE/R9
+  labels drawn at the floor that overhang their space — an editor can shorten or re-break them (7):
+    CNX_Chem_04_03_flowchart: "Molarity" block 13 "Mólstyrkur" needs 34.58 pt, budget 34.00 pt (width)
+    CNX_Chem_04_03_flowchart: "Molarity" block 14 "Mólstyrkur" needs 34.58 pt, budget 34.00 pt (width)
+    CNX_Chem_04_05_combmap_img: "Percent|composition" block 8 "Prósentusamsetning" needs 68.37 pt, budget 54.50 pt (width)
+    CNX_Chem_04_05_combmap_img: "Molar|mass" block 11 "Mólmassi" needs 29.56 pt, budget 27.00 pt (width)
+    CNX_Chem_04_05_combmap_img: "Stoichiometric|factor" block 12 "Efnajöfnustuðull" needs 49.81 pt, budget 45.20 pt (width)
+    CNX_Chem_04_05_combmap_img: "Molar|mass" block 13 "Mólmassi" needs 29.56 pt, budget 27.00 pt (width)
+    CNX_Chem_04_05_combmap_img: "Stoichiometric|factor" block 14 "Efnajöfnustuðull" needs 49.81 pt, budget 45.20 pt (width)
+
+  MT spawned for 0 figure(s), 0 billable characters — only a figure with NO sidecar is spendable
+  published 19 figure(s) into /home/siggi/dev/repos/namsbokasafn-efni/books/efnafraedi-2e/media/
+
+VERDICT ok
+  NOTE (not a failure): 2 figure(s) carry label(s) drawn at the floor that overhang their space — the report names each
