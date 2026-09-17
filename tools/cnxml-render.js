@@ -2004,6 +2004,36 @@ function renderTable(table, context) {
       }
       lines.push('  </tbody>');
     }
+
+    // Footer. 🔴 §C154 — THIS BRANCH DID NOT EXIST, SO EVERY <tfoot> ROW WAS DROPPED
+    // SILENTLY. Measured 2026-09-17 over `01-source` for both kept books: exactly one
+    // <tfoot> corpus-wide (organic appendices m00016, 1 row, 1 entry) — and what it
+    // holds is a FOOTNOTE, "ᵃPrincipal groups are listed in order of decreasing
+    // priority…", while the table's own title carries `[[xref:[[sup:a]]|para-00014]]`
+    // pointing at it. Dropping the footer therefore left a dangling superscript
+    // reference with nothing to refer to.
+    //
+    // ⚠️ IT WAS EXTRACTED AND TRANSLATED FIRST (`SEG:m00016:entry:para-00014`), so the
+    // MT was bought for text no reader could ever see — the translate-then-discard
+    // shape of §C89 and §C148, in a third place.
+    //
+    // ⚠️ NO COUNT COULD SEE IT: a dropped row is not present to be counted, and an
+    // id-matched oracle reports a missing id as an ANCHOR gap, not a content loss. It
+    // surfaced only because a PREDICTED para census (50) disagreed with the measured
+    // render (49) by one, and the one was this module.
+    //
+    // <tfoot> is emitted AFTER <tbody>: HTML5 permits it only as the table's last
+    // child (HTML4's before-tbody order is obsolete), and browsers render it at the
+    // bottom either way. Its entries are data cells, not headers.
+    const tfootMatch = tgroupContent.match(/<tfoot[^>]*>([\s\S]*?)<\/tfoot>/);
+    if (tfootMatch) {
+      lines.push('  <tfoot>');
+      const rows = extractElements(tfootMatch[1], 'row');
+      for (const row of rows) {
+        lines.push(`    <tr>${renderTableCells(row.content, context, false)}</tr>`);
+      }
+      lines.push('  </tfoot>');
+    }
   }
 
   lines.push('</table>');
@@ -2034,11 +2064,84 @@ function renderTableCells(rowContent, context, isHeader) {
       attrStr += ` style="text-align: ${escapeAttr(attrs.align)}"`;
     }
 
-    const content = processInlineContent(entry.content, context);
+    const content = renderEntryBody(entry.content, context);
     cells.push(`<${tag}${attrStr}>${content}</${tag}>`);
   }
 
   return cells.join('');
+}
+
+// Tags allowed to remain inline inside an <entry> body after renderEntryBody has
+// dispatched its block children. Same question ITEM_INLINE_OK answers for list
+// items, asked of a table cell, so it is derived from it rather than re-listed —
+// minus 'para', which renderEntryBody now dispatches and which must therefore be
+// LOUD if one ever survives the dispatch. 'image' and 'iframe' stay inline
+// because processInlineContent's <media> handlers consume them in place.
+const ENTRY_INLINE_OK = new Set([...ITEM_INLINE_OK, 'iframe'].filter((t) => t !== 'para'));
+
+/**
+ * Render a table cell's mixed content: inline text interleaved with direct-child
+ * <para> blocks.
+ *
+ * 🔴 §C146 — A <para> CHILD OF AN <entry> USED TO REACH PUBLISHED HTML VERBATIM.
+ * `renderTableCells` called processInlineContent directly, and that function has no
+ * <para> case, so the tag leaked while its INNER content rendered correctly — the
+ * shape that makes it read as a styling bug rather than a renderer gap. Measured
+ * 2026-09-17 over `01-source` for both kept books: 50 such paras in 5 modules, of
+ * which 25 were live on published pages (chemistry ch04 m68710 ×18, ch17 m68824 ×6,
+ * organic ch03 m00032 ×1) and 25 latent (organic ch26 m00327 ×24, appendices m00016
+ * ×1). `<para>` is not HTML and vefur's content.css has no rule for it, so the ion
+ * lists in chemistry's solubility table ran together instead of stacking.
+ *
+ * ⚠️ NO LOUD SEAM COULD HAVE SEEN THIS. The renderer's loud-seam guard fires inside
+ * renderBlockChildrenInOrder; a table cell never reached that walk at all, so there
+ * was no dispatcher to be missing from. The seam record below closes that — it is
+ * DIAGNOSTIC ONLY (context.undispatchedBlocks is returned by renderCnxmlToHtml and
+ * read by render-oracle-check and tests; nothing fails a render on it), so a future
+ * block type in a cell becomes visible without becoming a refusal.
+ *
+ * ⚠️ AND AN ID-MATCHED ORACLE READ IT AS A PASS. The leaked `<para id="nh4">` still
+ * carries its id, so render-oracle-check found the id present in our HTML and
+ * reported no gap. Never cite a clean oracle run as evidence against this class.
+ *
+ * Deliberately NOT the <br>-between-adjacent-paras idiom renderItemBody uses: that
+ * is byte-parity with a former list-item join. A cell has no prior behaviour to
+ * preserve, and `article.cnx-module p { margin: 10px 0 }` with `vertical-align: top`
+ * on the cell already stacks <p> correctly — no vefur change is needed.
+ *
+ * An entry with no direct-child <para> must render BYTE-IDENTICALLY to before; that
+ * is what the corpus diff in test-results/ checks.
+ */
+function renderEntryBody(content, context) {
+  const paras = extractElements(content, 'para');
+  if (paras.length === 0) return processInlineContent(content, context);
+
+  // Render each para at its position; inline runs between and around them keep
+  // their place in the flow (the mechanism renderItemBody proved).
+  const parts = [];
+  let rest = content;
+  for (const p of paras) {
+    const idx = rest.indexOf(p.fullMatch);
+    if (idx === -1) continue;
+    const before = rest.slice(0, idx);
+    if (before.trim()) parts.push(processInlineContent(before, context));
+    parts.push(renderPara(p, context));
+    rest = rest.slice(idx + p.fullMatch.length);
+  }
+  if (rest.trim()) parts.push(processInlineContent(rest, context));
+
+  // Loud seam: record any block-shaped element left inline in a cell.
+  if (context.undispatchedBlocks) {
+    const leftoverTag = /<([a-z][\w-]*)[\s/>]/g;
+    let m;
+    while ((m = leftoverTag.exec(rest)) !== null) {
+      if (!ENTRY_INLINE_OK.has(m[1])) {
+        context.undispatchedBlocks.push({ tag: m[1], id: null, location: 'renderTableCells' });
+      }
+    }
+  }
+
+  return parts.join('');
 }
 
 /**
