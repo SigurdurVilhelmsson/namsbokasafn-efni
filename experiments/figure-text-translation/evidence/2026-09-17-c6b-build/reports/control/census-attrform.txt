@@ -7,6 +7,7 @@ bad fonts (status != loaded): 0
   kern_items       27
   kern_explains    370
   style_none       0
+  attr_none        370
   computed_none    0
   max_abs_resid_k  0.0151
   max_abs_resid_0  0.9924
@@ -21,6 +22,7 @@ bad fonts (status != loaded): 0
   kern_items       1
   kern_explains    234
   style_none       0
+  attr_none        0
   computed_none    0
   max_abs_resid_k  0.0151
   max_abs_resid_0  0.668

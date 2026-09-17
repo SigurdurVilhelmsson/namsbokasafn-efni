@@ -20,6 +20,7 @@
    "max_abs_resid_0": 0.9923820312499991,
    "kern_explains": 370,
    "style_none": 0,
+   "attr_none": 0,
    "computed_none": 0,
    "figs_with_kern": [
     "CNX_Chem_03_01_brain-ec0b",
@@ -53,6 +54,7 @@
    "max_abs_resid_0": 0.66796875,
    "kern_explains": 234,
    "style_none": 0,
+   "attr_none": 0,
    "computed_none": 0,
    "figs_with_kern": [
     "CNX_Chem_03_01_chloroform"
@@ -92,6 +94,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 26.015625,
@@ -127,6 +130,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24,
@@ -162,6 +166,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 73.234375,
@@ -197,6 +202,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.140625,
@@ -232,6 +238,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 34.53125,
@@ -267,6 +274,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.5,
@@ -302,6 +310,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 8.015625,
@@ -337,6 +346,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.015625,
@@ -372,6 +382,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -407,6 +418,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -442,6 +454,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -477,6 +490,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 10.015625,
@@ -512,6 +526,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -547,6 +562,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -582,6 +598,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -617,6 +634,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 41.015625,
@@ -652,6 +670,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -687,6 +706,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -722,6 +742,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.53125,
@@ -757,6 +778,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.53125,
@@ -792,6 +814,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -808,6 +831,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -824,6 +848,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -840,6 +865,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -856,6 +882,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -872,6 +899,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -913,6 +941,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 26.015625,
@@ -948,6 +977,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24,
@@ -983,6 +1013,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 73.234375,
@@ -1018,6 +1049,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.140625,
@@ -1053,6 +1085,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 34.53125,
@@ -1088,6 +1121,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.5,
@@ -1123,6 +1157,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -1158,6 +1193,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -1193,6 +1229,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -1228,6 +1265,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -1263,6 +1301,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -1298,6 +1337,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -1333,6 +1373,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -1368,6 +1409,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -1403,6 +1445,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -1438,6 +1481,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 41.015625,
@@ -1473,6 +1517,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.53125,
@@ -1508,6 +1553,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -1543,6 +1589,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -1578,6 +1625,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.53125,
@@ -1613,6 +1661,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -1629,6 +1678,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -1645,6 +1695,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -1661,6 +1712,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -1677,6 +1729,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -1693,6 +1746,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -1728,6 +1782,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 54.84375,
@@ -1769,6 +1824,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11,
@@ -1804,6 +1860,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11,
@@ -1864,6 +1921,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 26.015625,
@@ -1899,6 +1957,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24,
@@ -1934,6 +1993,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 72.46875,
@@ -1969,6 +2029,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.828125,
@@ -2004,6 +2065,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 34.53125,
@@ -2039,6 +2101,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.5,
@@ -2074,6 +2137,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -2109,6 +2173,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -2144,6 +2209,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 8.5,
@@ -2179,6 +2245,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -2214,6 +2281,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -2249,6 +2317,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -2284,6 +2353,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -2319,6 +2389,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -2354,6 +2425,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -2389,6 +2461,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 41.015625,
@@ -2424,6 +2497,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -2459,6 +2533,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -2494,6 +2569,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.53125,
@@ -2529,6 +2605,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 26.859375,
@@ -2570,6 +2647,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -2586,6 +2664,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -2602,6 +2681,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -2618,6 +2698,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -2634,6 +2715,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -2650,6 +2732,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -2679,6 +2762,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 39.53125,
@@ -2720,6 +2804,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 21.015625,
@@ -2755,6 +2840,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.546875,
@@ -2796,6 +2882,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 54.0625,
@@ -2837,6 +2924,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.546875,
@@ -2878,6 +2966,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11,
@@ -2913,6 +3002,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11,
@@ -2973,6 +3063,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 26.015625,
@@ -3008,6 +3099,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 45,
@@ -3043,6 +3135,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 59.515625,
@@ -3078,6 +3171,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 66.03125,
@@ -3113,6 +3207,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 70.515625,
@@ -3148,6 +3243,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 44.015625,
@@ -3183,6 +3279,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 64.015625,
@@ -3218,6 +3315,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 61.015625,
@@ -3253,6 +3351,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -3288,6 +3387,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -3323,6 +3423,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -3358,6 +3459,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -3393,6 +3495,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -3428,6 +3531,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -3463,6 +3567,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -3498,6 +3603,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -3533,6 +3639,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.53125,
@@ -3568,6 +3675,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 139.03125,
@@ -3603,6 +3711,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -3638,6 +3747,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -3673,6 +3783,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.53125,
@@ -3708,6 +3819,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -3743,6 +3855,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -3759,6 +3872,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -3775,6 +3889,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -3791,6 +3906,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -3807,6 +3923,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -3842,6 +3959,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -3877,6 +3995,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -3912,6 +4031,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -3947,6 +4067,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -3963,6 +4084,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -3979,6 +4101,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -3995,6 +4118,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -4036,6 +4160,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 26.015625,
@@ -4071,6 +4196,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24,
@@ -4106,6 +4232,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 72.53125,
@@ -4141,6 +4268,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.5,
@@ -4176,6 +4304,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 34.53125,
@@ -4211,6 +4340,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11.515625,
@@ -4246,6 +4376,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 8.5,
@@ -4281,6 +4412,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -4316,6 +4448,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -4351,6 +4484,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -4386,6 +4520,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -4421,6 +4556,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 61.515625,
@@ -4456,6 +4592,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -4491,6 +4628,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -4526,6 +4664,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -4561,6 +4700,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -4577,6 +4717,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -4593,6 +4734,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.046875,
@@ -4609,6 +4751,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -4638,6 +4781,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -4673,6 +4817,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 67.015625,
@@ -4708,6 +4853,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -4743,6 +4889,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 50.015625,
@@ -4778,6 +4925,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 70.046875,
@@ -4813,6 +4961,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 71.515625,
@@ -4861,6 +5010,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -4896,6 +5046,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 69.515625,
@@ -4931,6 +5082,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 40.53125,
@@ -4966,6 +5118,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 71.515625,
@@ -5001,6 +5154,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -5036,6 +5190,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 52.53125,
@@ -5071,6 +5226,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 21.515625,
@@ -5106,6 +5262,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 39.03125,
@@ -5141,6 +5298,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 70.046875,
@@ -5176,6 +5334,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 59.390625,
@@ -5222,6 +5381,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 17.5,
@@ -5257,6 +5417,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.796875,
@@ -5292,6 +5453,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -5340,6 +5502,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -5375,6 +5538,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -5410,6 +5574,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -5445,6 +5610,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -5480,6 +5646,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -5515,6 +5682,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -5550,6 +5718,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -5585,6 +5754,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -5620,6 +5790,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23,
@@ -5655,6 +5826,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 39.40625,
@@ -5690,6 +5862,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 69.53125,
@@ -5725,6 +5898,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -5760,6 +5934,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -5795,6 +5970,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -5830,6 +6006,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -5865,6 +6042,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -5900,6 +6078,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -5935,6 +6114,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -5970,6 +6150,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -6005,6 +6186,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -6053,6 +6235,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 50.53125,
@@ -6088,6 +6271,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 20.5,
@@ -6123,6 +6307,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 41.34375,
@@ -6158,6 +6343,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 69.53125,
@@ -6193,6 +6379,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -6228,6 +6415,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 47.03125,
@@ -6276,6 +6464,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -6311,6 +6500,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -6346,6 +6536,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -6381,6 +6572,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -6416,6 +6608,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -6451,6 +6644,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -6486,6 +6680,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -6521,6 +6716,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.015625,
@@ -6556,6 +6752,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 20.5,
@@ -6591,6 +6788,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.53125,
@@ -6626,6 +6824,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 71.515625,
@@ -6661,6 +6860,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -6696,6 +6896,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -6731,6 +6932,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -6766,6 +6968,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -6801,6 +7004,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -6836,6 +7040,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -6871,6 +7076,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -6906,6 +7112,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.015625,
@@ -6941,6 +7148,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11,
@@ -6976,6 +7184,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 21.515625,
@@ -7011,6 +7220,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -7046,6 +7256,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -7081,6 +7292,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -7116,6 +7328,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -7151,6 +7364,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -7186,6 +7400,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -7221,6 +7436,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.015625,
@@ -7256,6 +7472,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 39.03125,
@@ -7291,6 +7508,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 60.03125,
@@ -7326,6 +7544,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 59.390625,
@@ -7372,6 +7591,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 17.5,
@@ -7407,6 +7627,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.796875,
@@ -7442,6 +7663,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -7490,6 +7712,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -7525,6 +7748,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 57.015625,
@@ -7560,6 +7784,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 60.03125,
@@ -7595,6 +7820,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 71.515625,
@@ -7630,6 +7856,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -7665,6 +7892,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 64.015625,
@@ -7713,6 +7941,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -7748,6 +7977,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 40.53125,
@@ -7789,6 +8019,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.53125,
@@ -7824,6 +8055,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 41.015625,
@@ -7859,6 +8091,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -7894,6 +8127,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 33.03125,
@@ -7935,6 +8169,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -7970,6 +8205,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 41.015625,
@@ -8005,6 +8241,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.53125,
@@ -8040,6 +8277,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 41.015625,
@@ -8075,6 +8313,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -8110,6 +8349,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 33.53125,
@@ -8145,6 +8385,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 40.53125,
@@ -8180,6 +8421,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 41.03125,
@@ -8221,6 +8463,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.53125,
@@ -8256,6 +8499,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.015625,
@@ -8291,6 +8535,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 36.03125,
@@ -8326,6 +8571,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 52.109375,
@@ -8361,6 +8607,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 56.53125,
@@ -8396,6 +8643,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 32.015625,
@@ -8431,6 +8679,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 39.03125,
@@ -8479,6 +8728,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -8514,6 +8764,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 43.03125,
@@ -8549,6 +8800,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 70.046875,
@@ -8584,6 +8836,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 81.046875,
@@ -8619,6 +8872,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 90.546875,
@@ -8654,6 +8908,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -8689,6 +8944,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 28.5,
@@ -8724,6 +8980,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 53.359375,
@@ -8759,6 +9016,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 62.6875,
@@ -8794,6 +9052,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 33.515625,
@@ -8829,6 +9088,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 47.515625,
@@ -8883,6 +9143,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -8899,6 +9160,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 25.015625,
@@ -8934,6 +9196,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -8969,6 +9232,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9004,6 +9268,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9039,6 +9304,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -9074,6 +9340,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -9109,6 +9376,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9144,6 +9412,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -9160,6 +9429,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -9176,6 +9446,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11.515625,
@@ -9211,6 +9482,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 4.09375,
@@ -9246,6 +9518,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9281,6 +9554,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9316,6 +9590,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9351,6 +9626,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9386,6 +9662,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9421,6 +9698,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9456,6 +9734,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9491,6 +9770,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9526,6 +9806,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -9561,6 +9842,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -9596,6 +9878,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -9631,6 +9914,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9666,6 +9950,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9701,6 +9986,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9736,6 +10022,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9771,6 +10058,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -9825,6 +10113,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -9841,6 +10130,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -9857,6 +10147,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -9873,6 +10164,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -9889,6 +10181,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -9924,6 +10217,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -9959,6 +10253,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 12.015625,
@@ -9994,6 +10289,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -10029,6 +10325,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -10064,6 +10361,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -10099,6 +10397,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11.515625,
@@ -10134,6 +10433,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -10169,6 +10469,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -10204,6 +10505,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 36.015625,
@@ -10239,6 +10541,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 63.546875,
@@ -10274,6 +10577,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 43.53125,
@@ -10309,6 +10613,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 36.015625,
@@ -10344,6 +10649,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.53125,
@@ -10379,6 +10685,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 18.34375,
@@ -10420,6 +10727,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 18.34375,
@@ -10461,6 +10769,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.53125,
@@ -10509,6 +10818,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 68.03125,
@@ -10544,6 +10854,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 68.046875,
@@ -10604,6 +10915,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11,
@@ -10639,6 +10951,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 18,
@@ -10674,6 +10987,7 @@
      "italic": true,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 10.015625,
@@ -10709,6 +11023,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.5,
@@ -10744,6 +11059,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 8.421875,
@@ -10760,6 +11076,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -10795,6 +11112,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -10830,6 +11148,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 10,
@@ -10865,6 +11184,7 @@
      "italic": true,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 2,
@@ -10900,6 +11220,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 34.515625,
@@ -10935,6 +11256,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -10970,6 +11292,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -11005,6 +11328,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 4.09375,
@@ -11040,6 +11364,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -11075,6 +11400,7 @@
      "italic": true,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 10.015625,
@@ -11110,6 +11436,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.5,
@@ -11145,6 +11472,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.171875,
@@ -11161,6 +11489,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11,
@@ -11196,6 +11525,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -11231,6 +11561,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -11266,6 +11597,7 @@
      "italic": true,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 10.015625,
@@ -11301,6 +11633,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -11336,6 +11669,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11,
@@ -11371,6 +11705,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 18,
@@ -11406,6 +11741,7 @@
      "italic": true,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -11441,6 +11777,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 46,
@@ -11476,6 +11813,7 @@
      "italic": true,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 10.015625,
@@ -11511,6 +11849,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -11546,6 +11885,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 18,
@@ -11581,6 +11921,7 @@
      "italic": true,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 5.015625,
@@ -11616,6 +11957,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -11651,6 +11993,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -11686,6 +12029,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -11721,6 +12065,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -11756,6 +12101,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 4.09375,
@@ -11791,6 +12137,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -11826,6 +12173,7 @@
      "italic": true,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 10.015625,
@@ -11861,6 +12209,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -11896,6 +12245,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -11931,6 +12281,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -11966,6 +12317,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 10,
@@ -12001,6 +12353,7 @@
      "italic": true,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 2,
@@ -12036,6 +12389,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -12071,6 +12425,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 8.5,
@@ -12106,6 +12461,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -12141,6 +12497,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -12176,6 +12533,7 @@
      "italic": true,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 10.015625,
@@ -12211,6 +12569,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -12246,6 +12605,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -12281,6 +12641,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -12316,6 +12677,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 10,
@@ -12351,6 +12713,7 @@
      "italic": true,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 2,
@@ -12386,6 +12749,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -12434,6 +12798,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 111.078125,
@@ -12469,6 +12834,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 82.03125,
@@ -12504,6 +12870,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 87.53125,
@@ -12539,6 +12906,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 9,
@@ -12574,6 +12942,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -12609,6 +12978,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 2.515625,
@@ -12644,6 +13014,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -12679,6 +13050,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -12714,6 +13086,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 9,
@@ -12749,6 +13122,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 9,
@@ -12784,6 +13158,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -12819,6 +13194,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -12854,6 +13230,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -12889,6 +13266,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -12924,6 +13302,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -12959,6 +13338,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -12994,6 +13374,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13029,6 +13410,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13064,6 +13446,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13099,6 +13482,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13147,6 +13531,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 107.546875,
@@ -13182,6 +13567,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13217,6 +13603,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -13252,6 +13639,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -13287,6 +13675,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 88.5625,
@@ -13322,6 +13711,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 2.515625,
@@ -13357,6 +13747,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13392,6 +13783,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13427,6 +13819,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13462,6 +13855,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13497,6 +13891,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13532,6 +13927,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13567,6 +13963,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13602,6 +13999,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13637,6 +14035,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -13672,6 +14071,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13707,6 +14107,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13742,6 +14143,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13777,6 +14179,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13812,6 +14215,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13847,6 +14251,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -13882,6 +14287,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 82.03125,
@@ -13930,6 +14336,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 31.515625,
@@ -13965,6 +14372,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 38.015625,
@@ -14000,6 +14408,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 38.015625,
@@ -14035,6 +14444,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 16.515625,
@@ -14076,6 +14486,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.875,
@@ -14117,6 +14528,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 16.515625,
@@ -14158,6 +14570,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.875,
@@ -14199,6 +14612,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 62.28125,
@@ -14234,6 +14648,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 33.515625,
@@ -14269,6 +14684,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -14304,6 +14720,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.515625,
@@ -14339,6 +14756,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 32.015625,
@@ -14374,6 +14792,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 31.515625,
@@ -14415,6 +14834,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 33.515625,
@@ -14450,6 +14870,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -14485,6 +14906,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.03125,
@@ -14526,6 +14948,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 21.515625,
@@ -14561,6 +14984,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 20.03125,
@@ -14596,6 +15020,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 15.515625,
@@ -14637,6 +15062,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 21.515625,
@@ -14672,6 +15098,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 20.03125,
@@ -14707,6 +15134,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 16.015625,
@@ -14742,6 +15170,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 31.515625,
@@ -14777,6 +15206,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 34.59375,
@@ -14812,6 +15242,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 34.59375,
@@ -14847,6 +15278,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 33.515625,
@@ -14882,6 +15314,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 38.03125,
@@ -14917,6 +15350,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 14.515625,
@@ -14952,6 +15386,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 16.015625,
@@ -14987,6 +15422,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 14.515625,
@@ -15022,6 +15458,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 15.515625,
@@ -15063,6 +15500,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 33.515625,
@@ -15098,6 +15536,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 37.53125,
@@ -15152,6 +15591,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -15187,6 +15627,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 32,
@@ -15222,6 +15663,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -15257,6 +15699,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -15292,6 +15735,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 32,
@@ -15327,6 +15771,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -15362,6 +15807,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 52.015625,
@@ -15397,6 +15843,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 38.015625,
@@ -15432,6 +15879,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 51.015625,
@@ -15467,6 +15915,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 38.015625,
@@ -15502,6 +15951,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 64.046875,
@@ -15550,6 +16000,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -15585,6 +16036,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -15620,6 +16072,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -15655,6 +16108,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -15690,6 +16144,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.796875,
@@ -15725,6 +16180,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -15760,6 +16216,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -15795,6 +16252,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -15830,6 +16288,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -15865,6 +16324,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.796875,
@@ -15900,6 +16360,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.015625,
@@ -15935,6 +16396,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -15970,6 +16432,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -16005,6 +16468,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 38.015625,
@@ -16040,6 +16504,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 26.015625,
@@ -16075,6 +16540,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -16110,6 +16576,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -16145,6 +16612,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 38.015625,
@@ -16180,6 +16648,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 64.046875,
@@ -16228,6 +16697,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 34.515625,
@@ -16269,6 +16739,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.015625,
@@ -16304,6 +16775,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 2.515625,
@@ -16339,6 +16811,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -16374,6 +16847,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 64.046875,
@@ -16422,6 +16896,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.015625,
@@ -16457,6 +16932,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -16492,6 +16968,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -16527,6 +17004,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -16562,6 +17040,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -16597,6 +17076,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27.015625,
@@ -16632,6 +17112,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -16667,6 +17148,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -16702,6 +17184,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -16737,6 +17220,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -16772,6 +17256,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.015625,
@@ -16807,6 +17292,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 55.15625,
@@ -16842,6 +17328,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 16.515625,
@@ -16883,6 +17370,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.875,
@@ -16937,6 +17425,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -16972,6 +17461,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -17007,6 +17497,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -17042,6 +17533,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -17077,6 +17569,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 16,
@@ -17112,6 +17605,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -17147,6 +17641,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 16.5,
@@ -17182,6 +17677,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -17217,6 +17713,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -17252,6 +17749,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 12,
@@ -17287,6 +17785,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 34.515625,
@@ -17322,6 +17821,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -17357,6 +17857,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -17392,6 +17893,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.03125,
@@ -17427,6 +17929,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11,
@@ -17462,6 +17965,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 11,
@@ -17510,6 +18014,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 40.5,
@@ -17545,6 +18050,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 53.03125,
@@ -17580,6 +18086,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.515625,
@@ -17615,6 +18122,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -17650,6 +18158,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -17685,6 +18194,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 22.53125,
@@ -17720,6 +18230,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 8.5,
@@ -17755,6 +18266,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -17790,6 +18302,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 45.03125,
@@ -17825,6 +18338,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -17860,6 +18374,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -17908,6 +18423,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 44.515625,
@@ -17943,6 +18459,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 61.125,
@@ -17984,6 +18501,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 71.390625,
@@ -18025,6 +18543,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 65.0625,
@@ -18060,6 +18579,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 48.359375,
@@ -18101,6 +18621,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 102.328125,
@@ -18136,6 +18657,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 162.609375,
@@ -18184,6 +18706,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -18219,6 +18742,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -18254,6 +18778,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -18289,6 +18814,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -18324,6 +18850,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -18359,6 +18886,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -18394,6 +18922,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 33.515625,
@@ -18429,6 +18958,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 32.515625,
@@ -18464,6 +18994,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -18499,6 +19030,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -18534,6 +19066,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -18569,6 +19102,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -18604,6 +19138,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -18639,6 +19174,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -18674,6 +19210,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -18709,6 +19246,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -18744,6 +19282,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 33.515625,
@@ -18779,6 +19318,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 32.515625,
@@ -18814,6 +19354,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 68.375,
@@ -18849,6 +19390,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 40.53125,
@@ -18884,6 +19426,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.515625,
@@ -18919,6 +19462,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 53.84375,
@@ -18954,6 +19498,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 29.5625,
@@ -18989,6 +19534,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 49.828125,
@@ -19024,6 +19570,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 29.5625,
@@ -19059,6 +19606,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 49.828125,
@@ -19107,6 +19655,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 14.515625,
@@ -19142,6 +19691,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -19177,6 +19727,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -19212,6 +19763,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 2.515625,
@@ -19247,6 +19799,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 2.515625,
@@ -19282,6 +19835,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -19317,6 +19871,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -19352,6 +19907,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 9.515625,
@@ -19387,6 +19943,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 2.515625,
@@ -19422,6 +19979,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -19457,6 +20015,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -19492,6 +20051,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 12.515625,
@@ -19527,6 +20087,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 68.046875,
@@ -19562,6 +20123,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 6.5,
@@ -19597,6 +20159,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -19632,6 +20195,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 36.515625,
@@ -19667,6 +20231,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 29.03125,
@@ -19702,6 +20267,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 31,
@@ -19737,6 +20303,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -19772,6 +20339,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3,
@@ -19807,6 +20375,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -19842,6 +20411,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13.5,
@@ -19877,6 +20447,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -19912,6 +20483,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 29.515625,
@@ -19947,6 +20519,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 56.53125,
@@ -19982,6 +20555,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -20017,6 +20591,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -20052,6 +20627,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 36.03125,
@@ -20087,6 +20663,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 44.53125,
@@ -20122,6 +20699,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 40.03125,
@@ -20157,6 +20735,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.015625,
@@ -20192,6 +20771,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -20240,6 +20820,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 33.515625,
@@ -20275,6 +20856,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 25.015625,
@@ -20310,6 +20892,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -20345,6 +20928,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 25.015625,
@@ -20380,6 +20964,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 42.015625,
@@ -20415,6 +21000,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 41.515625,
@@ -20450,6 +21036,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 28.515625,
@@ -20485,6 +21072,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 15,
@@ -20520,6 +21108,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 63.703125,
@@ -20555,6 +21144,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 64.046875,
@@ -20603,6 +21193,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 38.015625,
@@ -20638,6 +21229,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 64.046875,
@@ -20673,6 +21265,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 46.515625,
@@ -20708,6 +21301,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -20743,6 +21337,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.015625,
@@ -20778,6 +21373,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -20813,6 +21409,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -20848,6 +21445,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.015625,
@@ -20883,6 +21481,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -20918,6 +21517,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -20953,6 +21553,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -20988,6 +21589,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21023,6 +21625,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 23.515625,
@@ -21058,6 +21661,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -21093,6 +21697,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21128,6 +21733,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 36.03125,
@@ -21163,6 +21769,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 24.515625,
@@ -21198,6 +21805,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21233,6 +21841,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 38.015625,
@@ -21287,6 +21896,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -21322,6 +21932,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21357,6 +21968,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 27,
@@ -21392,6 +22004,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -21427,6 +22040,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21462,6 +22076,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 20.515625,
@@ -21497,6 +22112,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21532,6 +22148,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -21567,6 +22184,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21602,6 +22220,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -21637,6 +22256,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21672,6 +22292,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -21707,6 +22328,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21742,6 +22364,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -21777,6 +22400,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21812,6 +22436,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -21847,6 +22472,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21882,6 +22508,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -21917,6 +22544,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -21952,6 +22580,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -21987,6 +22616,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -22022,6 +22652,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 4.09375,
@@ -22057,6 +22688,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -22092,6 +22724,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -22127,6 +22760,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -22162,6 +22796,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -22197,6 +22832,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -22232,6 +22868,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -22267,6 +22904,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -22302,6 +22940,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -22337,6 +22976,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 13,
@@ -22372,6 +23012,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 3.90625,
@@ -22407,6 +23048,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -22423,6 +23065,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -22439,6 +23082,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 34.515625,
@@ -22474,6 +23118,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 37.53125,
@@ -22509,6 +23154,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 33.53125,
@@ -22544,6 +23190,7 @@
      "italic": false,
      "family": "FigIS",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 50.03125,
@@ -22579,6 +23226,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,
@@ -22595,6 +23243,7 @@
      "italic": false,
      "family": "FigSym",
      "style_attr": null,
+     "attr_kerning": null,
      "computed_kerning": "auto",
      "rendered": {
       "1": 7.546875,

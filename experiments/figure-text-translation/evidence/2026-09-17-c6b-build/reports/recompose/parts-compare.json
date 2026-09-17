@@ -1,253 +1,379 @@
 {
+ "before_rev": "a62d51ab",
+ "after_rev": "9d8f2942",
  "all_ok": true,
  "rows": [
   {
    "figure": "CNX_Chem_03_01_alsulfatemass_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 7,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 3,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_01_aspirin",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 7,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 3,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_01_brain-ec0b",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 1,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 2,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_01_chloroform",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 7,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 3,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_01_exocytosis-88f6",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 5,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_01_glycinemass_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 9,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 3,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_01_saltMass",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 6,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 3,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_02_argon_img-9025",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 6,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_02_copperMoles_img-a962",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 13,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_02_glycine_img-7c96",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 20,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_02_potassium_img-f1d1",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 6,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_02_sacch_img-3278",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 34,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_02_vitC_img-e537",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 6,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_03_empform",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 21,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_03_05_Example2_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 11,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_01_rxn2",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 8,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 2,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_01_rxn3",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 2,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_03_etheneBr_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 6,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_03_ethene_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 6,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_03_flowchart",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 33,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_03_map2_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 11,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_03_map3_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 19,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_03_moleratio1_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 5,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_03_moleratio2_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 14,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_04_limiting",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 11,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_04_sandwich",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 7,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_05_combmap_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 26,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_05_combustion",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 30,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_05_map7_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 10,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_04_05_map8_img",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 19,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 1,
+   "woff2_only_head": true
   },
   {
    "figure": "CNX_Chem_14_03_FishLemon",
    "artwork_same": true,
    "textgroup_changed": true,
+   "textgroup_minus_property_same": true,
+   "properties": 4,
    "text_count_same": true,
    "faces_same": true,
-   "g_opener_same": true
+   "g_opener_same": true,
+   "woff2_blobs": 2,
+   "woff2_only_head": true
   }
  ]
 }

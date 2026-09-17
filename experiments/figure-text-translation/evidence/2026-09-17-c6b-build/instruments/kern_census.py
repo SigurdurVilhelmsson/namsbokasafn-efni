@@ -9,6 +9,7 @@ explained item by item by the font's own kern pairs. 0 ISK, no MT, read-only on 
     FIGTEXT_PYLIBS=./pylibs python3 -u $P/kern_census.py join    <root> <out-dir>        # census.json + census.txt
     FIGTEXT_PYLIBS=./pylibs python3 -u $P/kern_census.py compare <before-out> <after-out> <report.txt>
     FIGTEXT_PYLIBS=./pylibs python3 -u $P/kern_census.py strip   <after-root> <stripped-root>
+    FIGTEXT_PYLIBS=./pylibs python3 -u $P/kern_census.py attrform <after-root> <attr-root>
     FIGTEXT_PYLIBS=./pylibs python3 -u $P/kern_census.py labels  <report.txt>           # the decision's label unit
 
 <root>: a compose34.py output root; <root>/work/<fig>/{translated.svg, items.json} per figure (items.json from
@@ -129,7 +130,8 @@ def join(root, out):
             path = it['path']
             fam = it.get('family', svgout.FAMILY)
             row = dict(i=i, path=path, text=t, size=it['size'], bold=bool(it['bold']), italic=bool(it.get('italic')),
-                       family=fam, style_attr=attrs.get('style'), computed_kerning=rec['kerning'][i],
+                       family=fam, style_attr=attrs.get('style'), attr_kerning=attrs.get('font-kerning'),
+                       computed_kerning=rec['kerning'][i],
                        rendered={s: v[i] for s, v in rec['len'].items()})   # EVERY item, FigSym too (compare)
             if fam == svgout.FAMILY:
                 k, pairs, unmapped = kern_pairs(t, it['bold'], it.get('italic'), it['size'])
@@ -144,9 +146,10 @@ def join(root, out):
         for r in rows:
             t_ = tot.setdefault(r['path'], dict(items=0, figsym=0, kern_items=0, short={}, long={}, equal={},
                                                 max_abs_resid_k=0.0, max_abs_resid_0=0.0, kern_explains=0,
-                                                style_none=0, computed_none=0, figs_with_kern=set()))
+                                                style_none=0, attr_none=0, computed_none=0, figs_with_kern=set()))
             t_['items'] += 1
             t_['style_none'] += r['style_attr'] == 'font-kerning:none'
+            t_['attr_none'] += r.get('attr_kerning') == 'none'
             t_['computed_none'] += r['computed_kerning'] == 'none'
             if 'planned' not in r:
                 t_['figsym'] += 1
@@ -168,7 +171,7 @@ def join(root, out):
     lines.append(f'bad fonts (status != loaded): {sum(len(c["bad_fonts"]) for c in census.values())}')
     for p_, t_ in sorted(tot.items()):
         lines.append(f'\n## path={p_}')
-        for k in ('items', 'figsym', 'kern_items', 'kern_explains', 'style_none', 'computed_none',
+        for k in ('items', 'figsym', 'kern_items', 'kern_explains', 'style_none', 'attr_none', 'computed_none',
                   'max_abs_resid_k', 'max_abs_resid_0'):
             v = t_[k]
             lines.append(f'  {k:16} {round(v, 4) if isinstance(v, float) else v}')
@@ -248,6 +251,30 @@ def strip(after_root, stripped_root):
         n_total += n
     print(f'stripped {n_total} properties')
     print('KERN-STRIP-DONE')
+
+
+def attrform(after_root, attr_root):
+    """Added after the final review (2026-09-17): P5's control that CAN fail. Copy each after-SVG with every inline
+    ` style="font-kerning:none"` rewritten as the presentation attribute ` font-kerning="none"` (asserted: exactly one
+    per layout item), with its items.json. `join` then counts `attr_none` per path, so the census itself shows the
+    rewrite happened; R-d measured Chromium ignoring that form, so the prediction is the BEFORE lengths."""
+    A, T = Path(after_root), Path(attr_root)
+    n_total = 0
+    for fig in figures(A):
+        wd, items, texts = paired(A, fig)
+        svg = (wd / 'translated.svg').read_text(encoding='utf-8')
+        n_layout = sum(1 for it in items if it['path'] == 'layout')
+        n = svg.count(' style="font-kerning:none"')
+        assert n == n_layout, f'{fig}: {n} properties vs {n_layout} layout items'
+        td = T / 'work' / fig
+        td.mkdir(parents=True, exist_ok=True)
+        out = svg.replace(' style="font-kerning:none"', ' font-kerning="none"')
+        assert out.count(' font-kerning="none"') == n_layout and 'font-kerning:none' not in out
+        (td / 'translated.svg').write_text(out, encoding='utf-8')
+        (td / 'items.json').write_text((wd / 'items.json').read_text())
+        n_total += n
+    print(f'rewrote {n_total} properties as the presentation attribute')
+    print('KERN-ATTRFORM-DONE')
 
 
 def labels(report):
@@ -330,4 +357,4 @@ def blocks(census_dir, labels_report, report):
 
 if __name__ == '__main__':
     mode, *rest = sys.argv[1:]
-    dict(jobs=jobs, join=join, compare=compare, strip=strip, labels=labels, blocks=blocks)[mode](*rest)
+    dict(jobs=jobs, join=join, compare=compare, strip=strip, attrform=attrform, labels=labels, blocks=blocks)[mode](*rest)

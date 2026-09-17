@@ -1,0 +1,28 @@
+# mutants of svgout.write_svg vs test_svgout.py; golden copy /tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/a901acde-477b-4e70-a45e-0244553d346e/scratchpad/c6b/mutants/svgout.golden.py
+
+## control (no mutation)
+  exit=0 last='ALL PASS' restored_byte_identical=True round_ok=True
+
+## attribute form: font-kerning="none" instead of an inline style
+  exit=1 last='3 FAILED: K1 every layout <text> resolves to font-kerning:none and every run-exact, arc and path-less one to auto, K2 each layout <text> carries style="font-kerning:none" exactly once, as its LAST attribute (after transform on the rotated one), K5 no element anywhere carries the IGNORED presentation-attribute form font-kerning="…"' restored_byte_identical=True round_ok=True
+  FAIL  K1 every layout <text> resolves to font-kerning:none and every run-exact, arc and path-less one to auto  -- got [('með umframmagni af ', 'auto'), ('Br', '
+  FAIL  K2 each layout <text> carries style="font-kerning:none" exactly once, as its LAST attribute (after transform on the rotated one)  -- ['x="0.000" y="50.000
+  FAIL  K5 no element anywhere carries the IGNORED presentation-attribute form font-kerning="…"  --
+
+## every path: the property on run-exact, arc and path-less items too
+  exit=1 last='2 FAILED: K1 every layout <text> resolves to font-kerning:none and every run-exact, arc and path-less one to auto, K3 no run-exact, arc or path-less <text> mentions font-kerning at all (they stay byte-identical)' restored_byte_identical=True round_ok=True
+  FAIL  K1 every layout <text> resolves to font-kerning:none and every run-exact, arc and path-less one to auto  -- got [('með umframmagni af ', 'none'), ('Br', '
+  FAIL  K3 no run-exact, arc or path-less <text> mentions font-kerning at all (they stay byte-identical)  -- ['x="20.000" y="20.000" font-family="FigIS" font-weig
+
+## no property at all (the pre-⑥b writer)
+  exit=1 last='2 FAILED: K1 every layout <text> resolves to font-kerning:none and every run-exact, arc and path-less one to auto, K2 each layout <text> carries style="font-kerning:none" exactly once, as its LAST attribute (after transform on the rotated one)' restored_byte_identical=True round_ok=True
+  FAIL  K1 every layout <text> resolves to font-kerning:none and every run-exact, arc and path-less one to auto  -- got [('með umframmagni af ', 'auto'), ('Br', '
+  FAIL  K2 each layout <text> carries style="font-kerning:none" exactly once, as its LAST attribute (after transform on the rotated one)  -- ['x="0.000" y="50.000
+
+## arc items too
+  exit=1 last='2 FAILED: K1 every layout <text> resolves to font-kerning:none and every run-exact, arc and path-less one to auto, K3 no run-exact, arc or path-less <text> mentions font-kerning at all (they stay byte-identical)' restored_byte_identical=True round_ok=True
+  FAIL  K1 every layout <text> resolves to font-kerning:none and every run-exact, arc and path-less one to auto  -- got [('með umframmagni af ', 'none'), ('Br', '
+  FAIL  K3 no run-exact, arc or path-less <text> mentions font-kerning at all (they stay byte-identical)  -- ['x="20.000" y="20.000" font-family="FigIS" font-weig
+
+final cmp against golden: True; git diff --quiet svgout.py: True
+MUTANTS-DONE ok=True

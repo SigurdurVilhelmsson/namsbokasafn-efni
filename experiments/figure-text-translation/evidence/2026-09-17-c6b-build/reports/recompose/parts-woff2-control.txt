@@ -1,0 +1,4 @@
+# control for recompose_parts.woff2_only_head, over the scratch copies it compared
+POSITIVE: blob pairs whose head table DIFFERS: 44 of 44 (the timestamp the check exempts is really there)
+NEGATIVE: aspirin vs flowchart first blob - non-head tables that differ: ['GDEF', 'GPOS', 'GSUB', 'OS/2', 'cmap', 'glyf', 'hhea', 'hmtx', 'loca', 'maxp'] (must be non-empty)
+tables read per blob (aspirin): ['GDEF', 'GPOS', 'GSUB', 'OS/2', 'cmap', 'cvt ', 'fpgm', 'gasp', 'glyf', 'head', 'hhea', 'hmtx', 'loca', 'maxp', 'name', 'post', 'prep']; every table non-empty: True
