@@ -51,6 +51,25 @@ sublicensed by it. *(Re-derive the count rather than trusting this one — it is
 `git ls-files -z '*.svg' | xargs -0 grep -la '@font-face' | wc -l`, and it moves
 whenever a figure is published.)*
 
+**Some of those files carry a second third-party face, from STIX Fonts.** Some
+composed `_IS.svg` files under `books/` embed, beside their Liberation Sans
+subsets, a base64 **woff2 subset of STIXGeneral-Regular from STIX Fonts 1.1.0**,
+used to draw symbols the source figure drew in that face. The subset is renamed
+`FigSym`, because the STIX Fonts 1.1.0 licence reserves the font names "STIX
+Fonts" and "TM Math". STIX Fonts 1.1.0 is licensed under the **SIL Open Font
+License 1.1**. Each such SVG carries the font's copyright and trademark notices
+and the licence text in a `<metadata>` element. The font file the subsets are cut
+from is **not** in this repository; `experiments/figure-text-translation/figsym.py`
+records where it comes from and the sha256 it must match.
+`experiments/figure-text-translation/fonts/STIX-1.1.0-LICENSE.txt` is that
+licence document as text — a third-party licence, committed so that each SVG can
+carry it, and **not** covered by the MIT grant above. Like the Liberation Sans
+subsets, the STIX subsets are font data, not code; they are not covered by the
+MIT grant above and are not sublicensed by it. *(No count is given here: derive
+it with `git ls-files -z '*.svg' | xargs -0 grep -la "font-family:'FigSym'" | wc -l`
+— drop the `wc -l` to list the files — and it moves whenever such a figure is
+published.)*
+
 **It does not cover `server/`** (which is AGPL-3.0 — see `server/LICENSE`) **or
 `books/`** (which is content under per-book Creative Commons terms — see below).
 

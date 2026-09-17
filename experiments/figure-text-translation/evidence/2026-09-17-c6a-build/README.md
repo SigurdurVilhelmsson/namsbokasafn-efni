@@ -73,6 +73,10 @@ status.
     `*-after-pin-fix.txt` output paths, so re-running it after the R7 pin fix (and after Task 5's
     recompose) never overwrites Task 4's own `npm-failing-by-name.txt`/`npm-compare.txt` (the
     pre-fix 37 is kept, on purpose, as the record of what the collision looked like before the fix).
+  - `npm_compare_fix_wave.cjs` — **the final-review fix wave** (added 2026-09-17, final review). The
+    same comparison again, repointed to `*-fix-wave.txt` output paths, run after the fix wave's code
+    and test changes (which touch `tools/__tests__/figure-text-sidecar.test.js`) so no earlier run's
+    files are overwritten.
 - `reports/before/` — Task 1's baseline, taken against a worktree at ④'s head (`ff00d5fb`), before
   any of this build's code existed: `compose34.log`, `stix-recount.json`, `keys-vs-c4.txt`,
   `textlists.json`, `npm-failing-by-name.txt` (a byte copy of ④'s own after-run baseline — see
@@ -83,7 +87,11 @@ status.
   `npm-failing-by-name.txt` (Task 4's pre-pin-fix run, showing the 37-name collision — kept as-is),
   and **Task 6's own post-pin-fix, post-recompose re-run**: `npm-compare-after-pin-fix.txt` +
   `npm-failing-by-name-after-pin-fix.txt` (36 names, byte-identical to `reports/before/
-  npm-failing-by-name.txt`).
+  npm-failing-by-name.txt`). And the final-review fix wave's own records (added 2026-09-17, final
+  review): `fix-wave-checks.txt` (the six Python suites after the fix wave — `test_figsym.py` now has
+  checks 1c2, 1d2 and 5a–5c beside the 31 that `VERIFICATION.md` counts; a scratch recompose of `HClsoln` compared
+  field by field with the committed media; the shipped subsets' `OS/2.achVendID` and name IDs 13/14),
+  and `npm-compare-fix-wave.txt` + `npm-failing-by-name-fix-wave.txt` (root vitest by name).
 - `reports/recompose/` — Task 5's recompose of the 9-figure set: nine per-figure run transcripts
   (`CNX_Chem_*.txt`), `git-status-books.txt`, `figparts.py`'s before/after JSON and comparison
   (`parts-before.json`, `parts-after.json`, `parts-compare.json`), the recomposed textlists
@@ -96,12 +104,13 @@ status.
 `reports/before/npm-failing-by-name.txt` in this folder is byte-identical (`cmp`, confirmed in
 Task 4) to `../2026-09-17-c4-build/reports/after/npm-failing-by-name.txt` (④'s own after-run). This
 is valid as this build's "before" baseline because Tasks 2–3 change only
-`experiments/figure-text-translation/*.py` and `*_test.py` files, none of which vitest runs.
+`experiments/figure-text-translation/*.py` files, its `test_*.py` suites included — none of which
+vitest runs (corrected 2026-09-17, final review: this named the suites `*_test.py`).
 Task 6's own fresh re-run (`reports/after/npm-failing-by-name-after-pin-fix.txt`, taken after the
 R7 pin fix and after Task 5's recompose) is byte-identical to this same baseline — confirmed by
 `diff`, not merely by count.
 
-## The STIX font and licence text are never committed as one file
+## The STIX font is never committed; its licence text is (corrected 2026-09-17, final review)
 
 Per the design's T3/T5 and the global constraints: the official `STIXGeneral-Regular.otf` 1.1.0 is
 read from `$FIGTEXT_STIX_FONT` if set, else
@@ -135,7 +144,7 @@ python3 evidence/2026-09-17-c6a-build/instruments/stix_recount.py \
   --report-dir evidence/2026-09-17-c6a-build/reports/before \
   --c4-blocks evidence/2026-09-17-c4-build/reports/after/blocks
 
-# Task 3 (TDD; see VERIFICATION.md's 16-suite loop for the full list)
+# Task 3 (TDD; the 16 suites are listed in reports/after/python-tests.txt) (corrected 2026-09-17, final review)
 FIGTEXT_PYLIBS=./pylibs python3 test_figsym.py | tail -1
 FIGTEXT_PYLIBS=./pylibs python3 test_svgout.py | tail -1
 FIGTEXT_PYLIBS=./pylibs python3 test_compose_runexact.py | tail -1
@@ -163,19 +172,39 @@ node experiments/figure-text-translation/evidence/2026-09-17-c6a-build/instrumen
 # Task 5 (recompose, foreground, one figure at a time)
 cd experiments/figure-text-translation && FIGTEXT_PYLIBS=./pylibs python3 test_figrings.py | tail -1   # ALL PASS first
 cd ../..
+# One invocation per figure in reports/after/recompose-set.txt, each with the chapter it ran as
+# (reports/recompose/CNX_Chem_*.txt name it) (corrected 2026-09-17, final review):
+node tools/figure-run.js --book efnafraedi-2e --chapter 3 --figure CNX_Chem_03_01_alsulfatemass_img --stale --force
 node tools/figure-run.js --book efnafraedi-2e --chapter 3 --figure CNX_Chem_03_01_aspirin --stale --force
-# … one invocation per figure in reports/after/recompose-set.txt (9 total; FishLemon uses --chapter 4)
+node tools/figure-run.js --book efnafraedi-2e --chapter 3 --figure CNX_Chem_03_01_chloroform --stale --force
+node tools/figure-run.js --book efnafraedi-2e --chapter 3 --figure CNX_Chem_03_01_glycinemass_img --stale --force
+node tools/figure-run.js --book efnafraedi-2e --chapter 3 --figure CNX_Chem_03_01_saltMass --stale --force
+node tools/figure-run.js --book efnafraedi-2e --chapter 4 --figure CNX_Chem_04_01_basehyd_img --stale --force
+node tools/figure-run.js --book efnafraedi-2e --chapter 4 --figure CNX_Chem_04_01_rxn2 --stale --force
+node tools/figure-run.js --book efnafraedi-2e --chapter 4 --figure CNX_Chem_04_02_HClsoln --stale --force
+node tools/figure-run.js --book efnafraedi-2e --chapter 4 --figure CNX_Chem_14_03_FishLemon --stale --force
 
 # Task 6 (this task — vitest re-run AFTER the R7 pin fix, on top of Task 5's recompose)
 npx vitest run --reporter=json --outputFile=<scratch>/vitest-after-pin.json
 node experiments/figure-text-translation/evidence/2026-09-17-c6a-build/instruments/npm_compare_after_pin_fix.cjs \
   <scratch>/vitest-after-pin.json
+
+# Final-review fix wave (added 2026-09-17, final review)
+cd experiments/figure-text-translation
+for t in test_figsym.py test_svgout.py test_compose_runexact.py test_compose_t23.py test_figure_compose.py \
+         test_blockkey_consumers.py; do FIGTEXT_PYLIBS=./pylibs python3 -u $t | tail -1; done
+python3 -u evidence/2026-09-17-c6a-build/instruments/compose34.py --only CNX_Chem_04_02_HClsoln --out <scratch>/hcl
+python3 evidence/2026-09-17-c6a-build/instruments/textlist.py <scratch>/hcl/work/CNX_Chem_04_02_HClsoln/translated.svg \
+  ../../books/efnafraedi-2e/media/CNX_Chem_04_02_HClsoln_IS.svg   # compared field by field: fix-wave-checks.txt § 2
+cd ../..
+npx vitest run --reporter=json --outputFile=<scratch>/vitest-fix-wave.json
+node experiments/figure-text-translation/evidence/2026-09-17-c6a-build/instruments/npm_compare_fix_wave.cjs \
+  <scratch>/vitest-fix-wave.json
 ```
 
-Full per-task command sequences (with exact scratch paths) are in the task briefs under
-`.superpowers/sdd/2026-09-17-c140-c6a-stix-regular/` — gitignored, not committed, and not re-typed a
-second time here; the instrument scripts that implement them are what is committed, in
-`instruments/`.
+The instrument scripts that implement these commands are committed, in `instruments/`
+(corrected 2026-09-17, final review — a citation of gitignored task briefs, which no reader of this
+folder can open, was removed).
 
 ## Limits
 

@@ -33,7 +33,7 @@ Task 1 (baseline recount + predictions, `0e830726`), Task 2 (`figsym.py` + its l
 | P2 | For every figure: the same number of `<text>` elements with the same text, x, y, size, weight, style and fill; `font-family` changes from `FigIS` to `FigSym` exactly on the run-exact items drawn from an eligible run, nowhere else; figures with no eligible run: identical text lists, no FigSym face, no metadata | ✅ before/after `texts total: 647` (both counts identical); `other_field_diffs=0` on all 34 rows of `textlist-compare.txt`; the 9 figures with a kept STIX block show `changed_family_count` 6,6,6,8,4,3,4,2,4 (sum **43** changed `<text>` items — see the counting-units note below); the other 25 figures show `changed_family_count=0`, identical faces, no metadata | `reports/after/textlists.json` (647=647), `reports/after/textlist-compare.txt` |
 | P3 | A figure with an eligible run gains exactly one `@font-face` for FigSym (400/normal) after its FigIS rules; FigIS rules keep their order; a FigIS face whose only characters moved to FigSym disappears | ✅ two clauses; **third clause not exercised**. Every one of the 9 recompose figures' `faces_after` is its unchanged `faces_before` list with exactly one `{family: FigSym, weight: 400, style: normal}` appended after the existing FigIS rule(s), in the same order (e.g. HClsoln: `FigIS/400/normal, FigIS/400/italic` → `+ FigSym/400/normal`). **"A FigIS face whose only characters moved to FigSym disappears" has 0 instances on this corpus** — every one of the 9 keeps every FigIS face it had; covered on a synthetic fixture instead (`test_svgout.py` case T3, all characters moved to FigSym → face list is exactly `['FigSym']`) | `reports/after/textlist-compare.txt` (`faces_before`/`faces_after` columns) |
 | P4 | All 34 after-SVGs parse as XML; every figure with an eligible run carries one `<metadata>` holding the copyright notice, the trademark notice and the pinned licence text; no other figure carries one | ✅ `xml_ok_after=True` on all 34; `metadata_before=False` on all 34; `metadata_after=True` on exactly the 9 recompose figures, `False` on the other 25; `compare_textlists.py` additionally parses a freshly computed `figsym.metadata_element()` with the same `ElementTree` reader `textlist.py` uses and asserts every present `metadata_text` is **byte-equal** to it (stronger than "contains the words") — 0 concerns reported | `reports/after/textlist-compare.txt` |
-| P5 | The FigSym subset embedded in every such figure has no forbidden word in name IDs 1–6/16/17/21/22 or the CFF names, and keeps name IDs 0 and 7 and the CFF Notice verbatim | ✅ `reports/after/names.txt` — the embedded FigSym woff2 was extracted by regex from the actual `@font-face` rule in each of the 9 after-SVGs (not re-derived from `figsym.subset_woff2` in isolation, so it checks what actually shipped): all 9 report `violations=[]`, `ids_0_7_notice_match_official=True` — copyright, trademark and CFF Notice are byte-identical to the official STIX 1.1.0 file's | `reports/after/names.txt` |
+| P5 | The FigSym subset embedded in every such figure has no forbidden word in name IDs 1–6/16/17/21/22 or the CFF names, and keeps name IDs 0 and 7 and the CFF Notice verbatim | ✅ `reports/after/names.txt` — the embedded FigSym woff2 was extracted by regex from the actual `@font-face` rule in each of the 9 after-SVGs (not re-derived from `figsym.subset_woff2` in isolation, so it checks what actually shipped): all 9 report `violations=[]`, `ids_0_7_notice_match_official=True` — copyright, trademark and CFF Notice are byte-identical to the official STIX 1.1.0 file's. **Also recorded (added 2026-09-17, final review), so a strict-reading audit need not rediscover it:** on all 9 shipped subsets `OS/2.achVendID` is `'STIX'`, name ID 13 contains "STIX Fonts" and name ID 14 is `http://www.stixfonts.org/user_license.html` — kept by design ruling T4 as licence and vendor records, not records a font is named by. And two deviations from spec § 2 are deliberate: the pins live in `figsym.py`, not `figure-text.config.json` (one owner), and "font unavailable" is a refusal (ruling T3), not a report reason | `reports/after/names.txt`; `reports/after/fix-wave-checks.txt` § 3 |
 | P6 | On the figures with an eligible run, the kept STIX glyphs render closer to the source raster after than before; removing the FigSym `@font-face` rule changes the after render | ✅ not marginally — **43 of 43** individual FigSym `<text>` items improved (`raw_improved=N/N` and `glyph_only_improved=N/N` on every one of the 9 figures); **9 of 9** figures show `majority_raw=True`/`majority_glyph=True`; **9 of 9** show `any_norule_differs=True` (the no-rule control: stripping the `@font-face` rule changes the render — a mis-named family does not fall back silently) | `reports/after/chromium-stix.txt`, `reports/after/chromium-look.md` |
 | P7 | Only the figures P2 names change under `books/`; for each, the artwork part is byte-identical and the text group differs; `MT spawned for 0 figure(s)`; no sidecar or mapping change | ✅ `git status --porcelain -- books/` lists exactly the 9 recompose-set `_IS.svg` files, all `M`, nothing else; all 9 runs printed `MT spawned for 0 figure(s), 0 billable characters` and `VERDICT ok`; `parts-compare.json`: `all_ok: true`, every row `artwork_same=true textgroup_changed=true` with an unchanged `text_count`; no `figure-text/*.is.json` sidecar or `image-mapping.json` touched | `reports/recompose/git-status-books.txt`, `reports/recompose/CNX_Chem_*.txt` (9 run transcripts), `reports/recompose/parts-compare.json` |
 | P8 | Every Python suite prints `ALL PASS`; root vitest failing names equal the baseline by name | ⚠️ **Python: met. Vitest: NOT met on Task 4's own run, but a controller-ruled pin fix (R7) restores it — re-verified fresh in this task (36=36 by name).** See "The vitest collision and its fix" below | `reports/after/python-tests.txt` (16/16 `ALL PASS`); `reports/after/npm-compare.txt` (Task 4's pre-fix 37, unmodified); `reports/after/npm-compare-after-pin-fix.txt` + `reports/after/npm-failing-by-name-after-pin-fix.txt` (this task's post-fix, post-recompose re-run) |
@@ -62,10 +62,8 @@ reaches for a hashing library at all. The controller ruled this **a pin collisio
 (R7) and dispatched a fix, amending the pin to allow exactly `figsym.py` and `test_figsym.py` by
 name while still asserting those two files contain none of `renderHash`/`composedHash`/
 `computeRenderHash` — ⑰'s real invariant (no *sidecar-hash* implementation in Python) stays intact
-for them specifically. Commit `e554f69c`; full account in
-`.superpowers/sdd/2026-09-17-c140-c6a-stix-regular/pin-fix-report.md` (gitignored, not committed —
-cited here for provenance only, per this folder's own rule against citing files that never reach
-git; the fix itself is the committed diff to `tools/__tests__/figure-text-sidecar.test.js`).
+for them specifically. Commit `e554f69c`; the fix is the committed diff to `tools/__tests__/figure-text-sidecar.test.js`
+(corrected 2026-09-17, final review) — a citation of a gitignored report that no reader of this folder can open was removed.
 
 **This task re-ran the full root vitest fresh, on top of Task 5's recompose (`c091dd4e`), to verify
 the fix on the actual final tree** — the pin fix's own commit only re-ran the one affected test
@@ -126,12 +124,14 @@ hash, even though they hash" — which passes.)
 - **Only the STIX Regular face was ever compared against the official 1.1.0 file** (ruling T2/T3).
   Italic, Bold and BoldItalic STIX runs are unchanged (drawn in Liberation, as before) and are
   **counted, not converted** — `stix-recount.json`'s `other_face_blocks=0` on all 34, because the
-  34 bought figures happen to use no non-Regular STIX face; the corpus at large does (338 Italic,
-  58 Bold, 48 BoldItalic blocks) → campaign register §C140 ㉞.
+  34 bought figures happen to use no non-Regular STIX face; the corpus at large does, and its counts
+  are in campaign register §C140 ㉞ (corrected 2026-09-17, final review) — they were restated here from the exploration, not
+  measured by this build.
 - **The 3 translated STIX blocks (all in `CNX_Chem_04_04_sandwich`) stay in Liberation/FigIS.** Per
   ruling T2, only kept run-exact runs are eligible; `sandwich`'s row in `textlist-compare.txt` shows
   `changed_family_count=0` — a visible inconsistency inside that one figure (its `+`/`=` are
-  drawn in STIX-shaped Liberation glyphs, not the real STIX 1.1.0), logged, not fixed here.
+  drawn in plain Liberation Sans glyphs, the FigIS face, not in STIX 1.1.0) (corrected 2026-09-17, final review), logged, not fixed
+  here.
 - **Firefox and WebKit are not measured.** Only Chromium (Playwright, `<img>`-sandboxed via
   `render-check.mjs`, the same route `cnxml-render.js` publishes through) was on this box.
 - **`translated.png` (the cairo raster path) stays Liberation Sans.** `compose.py`'s
@@ -167,35 +167,8 @@ comparison, the recomposed textlists (with the licence `<metadata>` confirmed pr
 
 ## Reproducing
 
-```bash
-cd experiments/figure-text-translation
-
-# Task 1 — baseline recount (worktree at ④'s head ff00d5fb)
-python3 -u evidence/2026-09-17-c6a-build/instruments/compose34.py --out <scratch>/before
-python3 evidence/2026-09-17-c6a-build/instruments/textlist.py <scratch>/before/work/*/translated.svg \
-  > evidence/2026-09-17-c6a-build/reports/before/textlists.json
-python3 evidence/2026-09-17-c6a-build/instruments/stix_recount.py   # writes stix-recount.json, keys-vs-c4.txt
-
-# Task 4 — after measurements (current tree)
-python3 -u evidence/2026-09-17-c6a-build/instruments/compose34.py --out <scratch>/after
-python3 evidence/2026-09-17-c6a-build/instruments/textlist.py <scratch>/after/work/*/translated.svg \
-  > evidence/2026-09-17-c6a-build/reports/after/textlists.json
-python3 evidence/2026-09-17-c6a-build/instruments/compare_textlists.py   # P2/P3/P4/P5
-python3 evidence/2026-09-17-c6a-build/instruments/chromium_stix.py       # P6
-
-FIGTEXT_PYLIBS=./pylibs python3 test_figrings.py | tail -1   # ALL PASS before any figure-run
-# ... (16-suite loop, see README.md)
-
-# Task 5 — recompose (foreground, one figure at a time)
-cd ../..
-node tools/figure-run.js --book efnafraedi-2e --chapter 3 --figure <basename> --stale --force
-
-# Task 6 — vitest re-run after the R7 pin fix (this task)
-npx vitest run --reporter=json --outputFile=<scratch>/vitest-after-pin.json
-node evidence/2026-09-17-c6a-build/instruments/npm_compare_after_pin_fix.cjs <scratch>/vitest-after-pin.json
-```
-
-Full per-task command sequences (with exact scratch paths) are in the task briefs under
-`.superpowers/sdd/2026-09-17-c140-c6a-stix-regular/` — gitignored, not committed, and not re-typed a
-second time here; the instrument scripts that implement them are what is committed, in
-`instruments/`.
+The commands are in [`README.md` § Commands](README.md#commands) — one copy, not two (corrected
+2026-09-17, final review). This section used to restate them, and wrongly — Task 1's `compose34.py` line had no `--tree` (it would
+reproduce AFTER, not BEFORE), `stix_recount.py` was given without its required arguments, and every
+recompose line said `--chapter 3` although four of the nine figures ran as chapter 4. It also cited
+gitignored task briefs, which no reader of this folder can open.

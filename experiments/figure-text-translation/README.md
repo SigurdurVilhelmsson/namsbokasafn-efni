@@ -221,10 +221,21 @@ candidate, the heal dies on `ModuleNotFoundError`, the step **fails closed**, an
 `VERDICT ok` with the ring left in the published figure and one warning line. Measured
 2026-09-15 on the first local-box run (`evidence/2026-09-15-c10-local-run/`); the `pylibs/` that
 built the gate had numpy and did not travel, because `pylibs/` is gitignored. **Before any
-`figure-run.js` run, `FIGTEXT_PYLIBS=./pylibs python3 test_figrings.py` must print `ALL PASS`** —
-its heal tests are the cheapest detector for this.
+`figure-run.js` run, `FIGTEXT_PYLIBS=./pylibs python3 test_figrings.py` and
+`FIGTEXT_PYLIBS=./pylibs python3 test_figsym.py` must each print `ALL PASS`** — `test_figrings.py`'s
+heal tests are the cheapest detector for this, and `test_figsym.py` is the one for the STIX font below.
 
 `pdftocairo` (poppler-utils) must be on `PATH`.
+
+🔴 **The STIX font (§C140 ⑥a) is a local prerequisite too, and it is never committed.** A kept run
+the source drew in `STIXGeneral-Regular` is composed in a renamed subset of the official STIX 1.1.0
+`STIXGeneral-Regular.otf`, read from `$FIGTEXT_STIX_FONT` if it is set, else from
+`~/.cache/namsbokasafn-figtext/stix-1.1.0/STIXGeneral-Regular.otf`. Where to download it and the
+sha256 it must match are in `figsym.py` (`FONT_SOURCE_URL`, `FONT_SHA256`), not restated here.
+Without that exact file, compose **refuses** every figure that has such a run
+(`figsym.FontUnavailable`, which `figure-run.js` reports as `failed-compose`) and composes every
+other figure as before — and `--dry-run` cannot warn you, because it composes nothing.
+`test_figsym.py`'s check 1a fails on a box without the file.
 
 ### The MT stage — it costs money, and `--book` is not optional
 
