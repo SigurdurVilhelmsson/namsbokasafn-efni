@@ -1,0 +1,5 @@
+ChnReact1 3140 5 {'k': 1}
+eps with bt>0 285 of 299
+combustion events [('k', ['0.698', '0.675', '0.639', '0.74'], 29)]
+live distinct figures 909 with nontext 516
+DONE

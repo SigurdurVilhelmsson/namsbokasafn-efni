@@ -1,0 +1,31 @@
+CENSUS rows 911 distinct basenames 910
+status {'ok': 910, 'resolver-refused': 1}
+ok distinct basenames 909
+op occ {'k': 6100, 'gs': 5849, 'rg': 148}
+op figs {'k': 503, 'gs': 415, 'rg': 12}
+bought list size 34
+bought scanned rows 34 bought flag True rows 34
+bought with nontext 18
+bought op occ {'k': 110, 'gs': 97} figs {'k': 18, 'gs': 10}
+rows with nontext 517 distinct 517 keys with N2O5 ['CNX_Chem_18_07_N2O5|pdf']
+later-paint rows 108 bought ['CNX_Chem_03_01_exocytosis-88f6', 'CNX_Chem_03_03_empform', 'CNX_Chem_04_02_HClsoln', 'CNX_Chem_04_03_flowchart', 'CNX_Chem_04_04_sandwich', 'CNX_Chem_04_05_combustion']
+by kind [scanned, nontext] {'eps': [299, 0], 'pdf': [611, 517]}
+Tr7 9 ['CNX_Chem_01_02_decomp', 'CNX_Chem_02_04_Benzene', 'CNX_Chem_03_02_moles-6296', 'CNX_Chem_04_02_Citrus', 'CNX_Chem_04_02_ammonia', 'CNX_Chem_04_04_CuAgNO3', 'CNX_Chem_04_05_titration', 'CNX_Chem_11_03_recompress', 'CNX_Chem_18_04_Nanotube']
+Tr modes all {7: 9, 0: 330}
+bt_net_q nonzero figs 0 malformed 0
+unparsable forms figs 0
+RENDER rows 1633 variants {'ORIG': 533, 'PERSIST': 533, 'NONTEXT': 533, 'SERIALISER': 34}
+render status by variant {('ORIG', 'ok'): 533, ('PERSIST', 'ok'): 533, ('NONTEXT', 'ok'): 533, ('SERIALISER', 'ok'): 34}
+distinct basenames main 533
+PERSIST rows w/ diff 533 distinct 533 gt40 15 gt0 34
+PERSIST bought gt0 ['CNX_Chem_04_05_combustion']
+PERSIST changed figs lacking dist==0.0 toward source 0 []
+NONTEXT rows w/ diff 533 distinct 533 gt40 15 gt0 34
+NONTEXT bought gt0 ['CNX_Chem_04_05_combustion']
+NONTEXT changed figs lacking dist==0.0 toward source 0 []
+PERSIST vs NONTEXT differ 0
+combustion PERSIST diff {'size_match': True, 'shape': [321, 1300, 3], 'count_gt40': 2121, 'count_gt0': 2523, 'bbox_gt40': [151, 176, 78, 1160], 'bbox_gt0': [150, 177, 78, 1160]}
+changed subset of later-paint True changed outside []
+dup (basename,variant) rows 0
+other variant rows sample [('CNX_Chem_01_03_HazDiamond', 'SERIALISER', 'ok', None), ('CNX_Chem_01_03_PeriodicPU', 'SERIALISER', 'ok', None), ('CNX_Chem_01_05_SigDigits1_img', 'SERIALISER', 'ok', None)]
+DONE spotcheck

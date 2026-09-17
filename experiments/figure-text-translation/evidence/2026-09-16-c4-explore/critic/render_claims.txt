@@ -1,0 +1,5 @@
+changed figures by count_gt0 (top 6): [('CNX_Chem_05_02_IcePack', 14995, 13702, 176.8), ('CNX_Chem_11_01_Icepack', 14927, 13832, 181.2), ('CNX_Chem_21_04_CritMass', 10391, 0, 41.3), ('CNX_Chem_05_01_OxyacTorch', 6264, 5575, 167.7), ('CNX_Chem_21_04_ChnReact1', 3410, 2761, 201.4), ('CNX_Chem_04_05_combustion', 2523, 2121, 132.8)]
+changed figures by mean_dist_ORIG_to_SOURCE (top 6): [('CNX_Chem_07_06_Egeom', 1633, 1381, 258.7), ('CNX_Chem_01_03_PeriodicPU', 965, 839, 215.4), ('CNX_Chem_19_01_PeriodicEConfig', 965, 839, 215.4), ('CNX_Chem_05_02_HeatMeas', 662, 529, 213.5), ('CNX_Chem_01_05_SigDigits4_img', 560, 444, 209.9), ('CNX_Chem_21_04_ChnReact1', 3410, 2761, 201.4)]
+post_pass combustion n_components 7 largest {'size': 364, 'bbox': [150, 177, 267, 305]}
+smoke_combustion sample_pixel_mid_bbox {'rc': [163, 619], 'source': [32, 28, 28], 'ORIG': [32, 28, 28], 'PERSIST': [32, 28, 28]}
+DONE

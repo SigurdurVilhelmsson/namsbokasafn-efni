@@ -1,0 +1,32 @@
+A op_counts: {'rg': 1, 'w': 1, 'J': 1, 'j': 1, 'M': 1, 'd': 1, 'ri': 1, 'i': 1, 'q': 1, 'Q': 1, 'BX': 1, 'EX': 1, 'BMC': 1, 'EMC': 1, 're': 1, 'f': 1, 'd0': 1, 'BI': 1}
+A class_counts: {'persistent-gstate': 8, 'special-gstate': 2, 'compat': 2, 'marked-content': 2, 'path': 2, 'other': 1, 'xobject': 1}
+PASS  A: bt_et_count == 1  
+PASS  A: class persistent-gstate present with count > 0  got 8
+PASS  A: class special-gstate present with count > 0  got 2
+PASS  A: class marked-content present with count > 0  got 2
+PASS  A: class path present with count > 0  got 2
+PASS  A: class xobject present with count > 0  got 1
+PASS  A: class compat present with count > 0  got 2
+PASS  A: class other present with count > 0  got 1
+PASS  A: BI counted as xobject op  
+PASS  A: d0 counted as other  
+PASS  A: only the q/Q pair written INSIDE BT is tallied (depth-0 q/cm/Q are not counted)  q=1 Q=1 cm=None
+PASS  A: net q/Q inside the single BT is 0 (q Q balanced, plus BX/EX/BMC/EMC/re/f/d0/BI unaffected)  bt_net_q=[0]
+PASS  A: no malformed unclosed BT  
+PASS  A: 8 persistent-gstate-inside-BT events opened (rg w J j M d ri i)  count=8 ops=['rg', 'w', 'J', 'j', 'M', 'd', 'ri', 'i']
+PASS  B1: event armed  
+PASS  B1: event NOT closed (nothing reset it)  
+PASS  B1: paints_in_window >= 1  got 1
+PASS  B2: event closed by reset  closed=True by=reset
+PASS  B2: paints_in_window == 0 (paint came after the reset)  got 0
+PASS  B3: event closed by Q  closed=True by=Q
+PASS  B3: paints_in_window == 0 (paint came after the invalidating Q)  got 0
+PASS  B4: event armed (ET reached)  
+PASS  B4: event NOT closed  
+PASS  B4: paints_in_window == 0 (the paint was BEFORE arming)  got 0
+PASS  B5: not closed (net q/Q balanced, ends at gsdepth 0 == setDepth)  
+PASS  B5: both paints counted (2)  got 2
+PASS  C: bt_net_q == [1] (one q, no matching Q, inside the BT)  got [1]
+PASS  C: the k event still armed at ET despite the unbalanced q  
+
+DONE fails=0 ALL PASS

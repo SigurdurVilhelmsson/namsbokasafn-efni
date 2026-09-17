@@ -1,0 +1,51 @@
+... 25/415 0.6s
+... 50/415 0.7s
+... 75/415 0.9s
+... 100/415 2.4s
+... 125/415 2.5s
+... 150/415 2.9s
+... 175/415 4.6s
+... 200/415 6.0s
+... 225/415 7.0s
+... 250/415 8.5s
+... 275/415 8.7s
+... 300/415 8.9s
+... 325/415 9.1s
+... 350/415 9.5s
+... 375/415 9.7s
+... 400/415 9.8s
+population (census ok, kind pdf, gs in op_counts): 415 figures; bought among them: 10
+census gs-inside-BT occurrences over this population: 5849
+this instrument: resolved 5849, unresolved 0, per-figure count mismatches vs census: 0 []
+figures erroring: []
+--- key/value tallies over gs-inside-BT OCCURRENCES (value shown only for blend/mask/alpha/overprint keys) ---
+  /CA 1.0: 5849
+  /AIS False: 5849
+  /OPM 1: 5849
+  /SMask /None: 5849
+  /BM /Normal: 5849
+  /ca 1.0: 5849
+  /SA True: 5849
+  /op False: 5843
+  /OP False: 5843
+  /op True: 6
+  /OP True: 6
+--- figure flags ---
+  IN_BT_BM_nonNormal: 0 figures; bought 0 []; first: []
+  IN_BT_SMask_notNone: 0 figures; bought 0 []; first: []
+  IN_BT_alpha_lt1: 0 figures; bought 0 []; first: []
+  IN_BT_alpha_nonnum: 0 figures; bought 0 []; first: []
+  IN_BT_Font: 0 figures; bought 0 []; first: []
+  IN_BT_devicedep: 0 figures; bought 0 []; first: []
+  IN_BT_linestate: 0 figures; bought 0 []; first: []
+  ANY_EGS_BM_nonNormal: 41 figures; bought 3 ['CNX_Chem_04_01_rxn3', 'CNX_Chem_04_02_HClsoln', 'CNX_Chem_04_04_sandwich']; first: ['CNX_Chem_01_01_WaterDom', 'CNX_Chem_01_02_ConsMatter', 'CNX_Chem_01_02_StatesMatt', 'CNX_Chem_01_05_Archer2_img', 'CNX_Chem_01_05_Archery', 'CNX_Chem_02_02_CathodeRay', 'CNX_Chem_02_03_MassSpec', 'CNX_Chem_02_04_Hydrogen']
+  ANY_EGS_SMask_notNone: 24 figures; bought 1 ['CNX_Chem_04_02_HClsoln']; first: ['CNX_Chem_01_01_Electrolys', 'CNX_Chem_01_02_StatesMatt', 'CNX_Chem_02_00_Biomarkers', 'CNX_Chem_02_01_Dalton3', 'CNX_Chem_02_02_CathodeRay', 'CNX_Chem_02_02_Rutherford', 'CNX_Chem_02_03_AtomSize', 'CNX_Chem_04_02_HClsoln']
+--- POSITIVE CONTROL: non-Normal /BM or non-None /SMask values seen ANYWHERE in these figures' ExtGState resources (dict entries, not uses) ---
+  /SMask <dict>: 1929
+  /BM /Multiply: 51
+  /BM /Screen: 21
+  /BM /Lighten: 6
+  /BM /Luminosity: 1
+  /BM /ColorDodge: 1
+elapsed 10.6s
+DONE n=415

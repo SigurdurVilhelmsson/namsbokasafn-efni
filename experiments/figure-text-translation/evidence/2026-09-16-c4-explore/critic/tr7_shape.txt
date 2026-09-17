@@ -1,0 +1,11 @@
+shape of the 9 Tr-7 figures (8 docstring-listed + Nanotube): page fonts subtype / ToUnicode, image XObjects, forms, BT count
+CNX_Chem_01_02_decomp: fonts=[('/Type0', True)] images=4 forms=0 bt=3 tr=[7] creator='Adobe Photoshop CS6 (Windows)'
+CNX_Chem_02_04_Benzene: fonts=[('/Type0', True)] images=5 forms=0 bt=4 tr=[7] creator='Adobe Photoshop CS6 (Windows)'
+CNX_Chem_03_02_moles-6296: fonts=[('/Type0', True)] images=9 forms=0 bt=8 tr=[7] creator='Adobe Photoshop CS6 (Windows)'
+CNX_Chem_04_02_Citrus: fonts=[('/Type0', True)] images=3 forms=0 bt=2 tr=[7] creator='Adobe Photoshop CS6 (Windows)'
+CNX_Chem_04_02_ammonia: fonts=[('/Type0', True)] images=3 forms=0 bt=2 tr=[7] creator='Adobe Photoshop CS6 (Windows)'
+CNX_Chem_04_04_CuAgNO3: fonts=[('/Type0', True)] images=4 forms=0 bt=3 tr=[7] creator='Adobe Photoshop CS6 (Windows)'
+CNX_Chem_04_05_titration: fonts=[('/Type0', True)] images=3 forms=0 bt=2 tr=[7] creator='Adobe Photoshop CS6 (Windows)'
+CNX_Chem_11_03_recompress: fonts=[('/Type0', True)] images=3 forms=0 bt=2 tr=[7] creator='Adobe Photoshop CS6 (Windows)'
+CNX_Chem_18_04_Nanotube: fonts=[('/Type0', True)] images=3 forms=0 bt=2 tr=[7] creator='Adobe Photoshop CS6 (Windows)'
+DONE

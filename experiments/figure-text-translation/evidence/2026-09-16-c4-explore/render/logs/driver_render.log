@@ -1,0 +1,57 @@
+population total=533 (a)=34 (b)=499
+resuming: 0 figures already fully done
+... 10/533 processed this run (10 this run), 6.5s elapsed
+... 20/533 processed this run (20 this run), 12.4s elapsed
+... 30/533 processed this run (30 this run), 50.7s elapsed
+... 40/533 processed this run (40 this run), 60.5s elapsed
+... 50/533 processed this run (50 this run), 69.8s elapsed
+... 60/533 processed this run (60 this run), 75.0s elapsed
+... 70/533 processed this run (70 this run), 88.5s elapsed
+... 80/533 processed this run (80 this run), 93.7s elapsed
+... 90/533 processed this run (90 this run), 94.5s elapsed
+... 100/533 processed this run (100 this run), 99.9s elapsed
+... 110/533 processed this run (110 this run), 100.6s elapsed
+... 120/533 processed this run (120 this run), 122.9s elapsed
+... 130/533 processed this run (130 this run), 145.3s elapsed
+... 140/533 processed this run (140 this run), 151.6s elapsed
+... 150/533 processed this run (150 this run), 162.0s elapsed
+... 160/533 processed this run (160 this run), 163.5s elapsed
+... 170/533 processed this run (170 this run), 164.3s elapsed
+... 180/533 processed this run (180 this run), 165.2s elapsed
+... 190/533 processed this run (190 this run), 166.0s elapsed
+... 200/533 processed this run (200 this run), 167.1s elapsed
+... 210/533 processed this run (210 this run), 168.1s elapsed
+... 220/533 processed this run (220 this run), 169.7s elapsed
+... 230/533 processed this run (230 this run), 179.0s elapsed
+... 240/533 processed this run (240 this run), 190.3s elapsed
+... 250/533 processed this run (250 this run), 196.1s elapsed
+... 260/533 processed this run (260 this run), 204.4s elapsed
+... 270/533 processed this run (270 this run), 212.6s elapsed
+... 280/533 processed this run (280 this run), 230.0s elapsed
+... 290/533 processed this run (290 this run), 242.2s elapsed
+... 300/533 processed this run (300 this run), 261.0s elapsed
+... 310/533 processed this run (310 this run), 263.8s elapsed
+... 320/533 processed this run (320 this run), 265.3s elapsed
+... 330/533 processed this run (330 this run), 279.7s elapsed
+... 340/533 processed this run (340 this run), 288.5s elapsed
+... 350/533 processed this run (350 this run), 296.6s elapsed
+... 360/533 processed this run (360 this run), 298.4s elapsed
+... 370/533 processed this run (370 this run), 301.0s elapsed
+... 380/533 processed this run (380 this run), 302.7s elapsed
+... 390/533 processed this run (390 this run), 305.4s elapsed
+... 400/533 processed this run (400 this run), 308.5s elapsed
+... 410/533 processed this run (410 this run), 309.7s elapsed
+... 420/533 processed this run (420 this run), 313.2s elapsed
+... 430/533 processed this run (430 this run), 316.6s elapsed
+... 440/533 processed this run (440 this run), 317.6s elapsed
+... 450/533 processed this run (450 this run), 321.0s elapsed
+... 460/533 processed this run (460 this run), 327.0s elapsed
+... 470/533 processed this run (470 this run), 328.4s elapsed
+... 480/533 processed this run (480 this run), 330.4s elapsed
+... 490/533 processed this run (490 this run), 331.9s elapsed
+... 500/533 processed this run (500 this run), 333.6s elapsed
+... 510/533 processed this run (510 this run), 336.0s elapsed
+... 520/533 processed this run (520 this run), 341.8s elapsed
+... 530/533 processed this run (530 this run), 439.2s elapsed
+population=533 distinct_basenames_in_results=533 incomplete=0 missing=0
+DONE n=533 distinct=533 incomplete=0 missing=0
