@@ -17,12 +17,12 @@ The recompose set is exactly one figure, `CNX_Chem_04_05_combustion` (ch04) — 
 artwork the fix changes — recomposed **on this branch**, at 0 ISK (`figure-run.js --stale --force`,
 `MT spawned for 0 figure(s)`). **④'s PR opens once its final review lands; the merge and the deploy stay
 [USER]'s**, same as every other §C140 item so far — buying stays stopped either way. The recomposed figure
-reaches readers only through [USER]'s manual sync, timed with the books' classroom users, per the
-2026-09-16 chapters-prepared-sync ruling — no session runs a sync.
+reaches readers only after a **ch04 re-render** and [USER]'s manual sync, timed with the books' classroom
+users, per the 2026-09-16 chapters-prepared-sync ruling — no session runs a sync. (The sync copies
+`05-publication/`; the recompose wrote `books/efnafraedi-2e/media/`.)
 
 Four out-of-scope findings from ④'s build are logged, not built: the June-vintage `_IS.svg` population
-(re-counted 691 total, 657 not from this pipeline; 2 checked) and three findings new to this build — see
-§C140 ㉙–㉜.
+(see §C140 ㉙) and three findings new to this build — see §C140 ㉙–㉜.
 
 ---
 

@@ -272,8 +272,9 @@ def strip_text(pdf):
         walk(res)
     if stats['unparsable']:
         raise UnparsableStream(
-            f"{len(stats['unparsable'])} /Form stream(s) could not be tokenised, so their "
-            f"text was NOT removed: {stats['unparsable'][:3]}")
+            f"{len(stats['unparsable'])} /Form stream(s) could not be stripped (unparsable, "
+            f"or an operator inside a text object was refused), so their text was NOT removed: "
+            f"{stats['unparsable'][:3]}")
     return stats
 
 

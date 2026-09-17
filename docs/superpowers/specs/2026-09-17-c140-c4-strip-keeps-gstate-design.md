@@ -20,6 +20,16 @@ The controller made these under [USER]'s approval; each is what the evidence set
 | S5 | **Docs that stop being true are corrected in their owners**: `strip-text.py`'s docstrings (what it removes; the clipping-mode class is **9** figures of 909, CNX_Chem_18_04_Nanotube new with sendability unmeasured, so "live exposure 0" is no longer asserted for all nine), `experiments/figure-text-translation/REGISTER.md`'s strip-text rows, and the campaign register's ④ row. `COMPOSE-FIDELITY.md` is frozen evidence and is not edited; the register wins. | one source of truth | — |
 | S6 | **Out-of-scope findings are logged in the register, not built**, with one cheap read-only measurement first: whether the June-vintage `_IS.svg` copies (made by a different tool, PyMuPDF redaction) lost the same graphics state — Egeom's committed copy rendered in Chromium against the source at the wedge, with combustion's June copy as a second probe. Also logged: Nanotube's sendability; overprint set inside text objects on 6 figures (lost by every renderer); ghostscript staging not being a neutral rewrite. | the June copies are what readers get today | none — logging only |
 
+**Correction to S3 (2026-09-17, final review):** the premise "a bump sends all 34 approved figures back to
+review" is false in the committed tree — 0 of the 34 sidecars under `books/efnafraedi-2e/figure-text/`
+carry a non-null `state` key, so `editorialState` (`tools/lib/figure-text-sidecar.cjs`) already reports
+`mt-preview` for all 34 on every reader-facing surface. The real cost of a bump is a server deploy (the
+constant is required by server code — `server/services/figureReviewService.js` and its test import
+`COMPOSER_VERSION`) plus a 0-ISK recompose of 34 figures with woff2 byte churn on the ones whose pixels do
+not move. S3's ruling (no bump) stands on those grounds — the tree simply does not show the cost the
+original "why" named. Whether prod's database holds an `approved` row for combustion is not visible from
+the tree.
+
 ## 1. The defect, as measured
 
 `strip_text_ops` drops every instruction between BT and ET. PDF graphics state is not scoped by BT..ET, so a fill

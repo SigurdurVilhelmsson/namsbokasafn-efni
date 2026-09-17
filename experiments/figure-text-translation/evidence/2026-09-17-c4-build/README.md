@@ -111,7 +111,7 @@ node experiments/figure-text-translation/evidence/2026-09-17-c4-build/instrument
 
 # Task 4 (recompose, foreground, one figure at a time)
 cd experiments/figure-text-translation && FIGTEXT_PYLIBS=./pylibs python3 test_figrings.py | tail -1   # ALL PASS first
-cd ..
+cd ../..
 node tools/figure-run.js --book efnafraedi-2e --chapter 4 --figure CNX_Chem_04_05_combustion --stale --force
 
 # This task: fresh test_strip_text.py check count (ruling R5)
