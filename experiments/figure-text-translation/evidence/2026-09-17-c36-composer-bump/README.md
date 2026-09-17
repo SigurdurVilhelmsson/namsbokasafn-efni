@@ -3,7 +3,7 @@
 > 🧊 **FROZEN, 2026-09-17.** Cited, never synced. Open work and status live in the campaign register
 > (`docs/plans/2026-07-21-post-item17-followup-campaign.md`, §C140 ㊱ and its ⏩ RESUME). **This folder carries no status
 > verbs.** If it disagrees with the register, **the register wins** (CLAUDE.md § One source of truth).
-> **0 ISK** — the four live/dry `figure-run.js` invocations per chapter under `reports/recompose/` ran bare `--stale` on
+> **0 ISK** — the three `figure-run.js` invocations per chapter (dry, live, convergence; six in all) under `reports/recompose/` ran bare `--stale` on
 > figures that all carry a committed sidecar; each live run printed `MT spawned for 0 figure(s)`. Nothing called
 > `translate-blocks.mjs`.
 
@@ -14,6 +14,8 @@ Design: [`docs/superpowers/specs/2026-09-17-c140-c36-composer-version-bump-desig
 
 - `instruments/sidecar_probe.mjs` — every committed sidecar's stamps, `state` keys and `isStale` (the driver's own
   function) under the current constant.
+- `instruments/frf_compare.cjs` — B1's single-file by-name comparison. `instruments/npm_compare.cjs` — B7's full-run
+  comparison (a copy of ⑥b's, repointed). `instruments/head_fields.py` — which woff2 `head` fields differ.
 - `instruments/media_value_check.py` — each modified `_IS.svg` against `HEAD`: artwork part, text group, faces, and every
   embedded woff2 table except `head`; planted-text, swapped-blob and self controls first. Reuses ⑥b's `figparts.py`.
 - `reports/understand.json` — the four-lens read-only map written before the spec (server, driver/render, tests/fixtures,
@@ -36,6 +38,7 @@ git fetch origin; git grep -c '"state"' origin/main -- 'books/*/figure-text/*.js
 git grep -l '"composedVersion": "3"' origin/main -- 'books/*/figure-text/*.json' | wc -l    # 34
 # B1 (on the bump commit)
 npx vitest run tools/__tests__/figure-run-free.test.js --reporter=json --outputFile=<scratch>/frf.json
+node experiments/figure-text-translation/evidence/2026-09-17-c36-composer-bump/instruments/frf_compare.cjs <scratch>/frf.json <report>
 # B2 / B3 / B4 — bare --stale, never --force, foreground; FIGTEXT_PYLIBS=./pylibs python3 test_figrings.py ALL PASS first
 node tools/figure-run.js --book efnafraedi-2e --chapter 3 --stale --dry-run     # then --chapter 4
 node tools/figure-run.js --book efnafraedi-2e --chapter 3 --stale               # then --chapter 4
@@ -45,8 +48,13 @@ git diff --numstat -- books/efnafraedi-2e/figure-text
 # B6, then the restore of every timestamp-only figure
 python3 -u experiments/figure-text-translation/evidence/2026-09-17-c36-composer-bump/instruments/media_value_check.py <out.json>
 git restore --source=HEAD -- <each path in the json's timestamp_only list>
+# B6 addendum: which head fields — a stand-in compose (the live files were already restored)
+(cd experiments/figure-text-translation && python3 -u evidence/2026-09-17-c6b-build/instruments/compose34.py --out <scratch>/s34 --prep-root <prep> --skip-prep)
+mkdir <scratch>/m && for d in <scratch>/s34/work/*/; do cp $d/translated.svg <scratch>/m/$(basename $d)_IS.svg; done
+python3 -u experiments/figure-text-translation/evidence/2026-09-17-c36-composer-bump/instruments/head_fields.py <scratch>/m HEAD
 # B7
 (cd experiments/figure-text-translation && for t in $(ls test_*.py | sort); do
-   echo "$t: $(FIGTEXT_PYLIBS=./pylibs python3 -u $t 2>/dev/null | tail -1)"; done)
-npx vitest run --reporter=json --outputFile=<scratch>/vitest.json    # compare failing names with reports/before/
+   r=$(FIGTEXT_PYLIBS=./pylibs python3 -u $t 2>/dev/null); echo "$t: rc=$? $(printf '%s\n' "$r" | tail -1)"; done)
+npx vitest run --reporter=json --outputFile=<scratch>/vitest.json
+node experiments/figure-text-translation/evidence/2026-09-17-c36-composer-bump/instruments/npm_compare.cjs <scratch>/vitest.json
 ```

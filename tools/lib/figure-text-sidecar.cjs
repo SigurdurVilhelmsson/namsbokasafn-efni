@@ -30,9 +30,11 @@ const SIDECAR_VERSION = 1;
  * '4' (2026-09-17, §C140 ㊱): no composer change of its own. It covers three pixel-changing
  * composer changes merged without a bump: ④ (graphics-state operators kept inside text objects),
  * ⑥a (kept STIX symbols drawn in FigSym) and ⑥b (translated labels drawn with font-kerning:none).
- * Each had recomposed every figure it touched and skipped the bump because no sidecar carried a
- * review `state` and prod held no figure approval (④'s spec S3, ⑥a's T6, ⑥b's K4, under
- * docs/superpowers/specs/2026-09-17-c140-*). That exception is CLOSED by '4': `composedVersion`
+ * Each had recomposed every figure it touched instead. ④ and ⑥a skipped the bump because no
+ * committed sidecar carried a review `state` — prod's lack of figure approvals was not visible from
+ * the tree, and [USER] confirmed it only after their deploy; ⑥b skipped it on both grounds (④'s
+ * spec S3 and its correction, ⑥a's T6, ⑥b's K4, under docs/superpowers/specs/2026-09-17-c140-*).
+ * That exception is CLOSED by '4': `composedVersion`
  * again tells media drawn before them from media drawn after, so `figure-run.js`'s `isStale` names
  * a bought figure a recompose missed.
  *
