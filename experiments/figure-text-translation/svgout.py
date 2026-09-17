@@ -89,8 +89,9 @@ def write_svg(artwork_svg, out_path, items, page_h):
     # long prefix drawn as its own <text> covers the word space before the next segment ("afBr2" at
     # 150 dpi) or pushes a base glyph into its subscript. geometricPrecision draws linear advances at
     # every scale, in an <img> too. It is an INHERITED presentation attribute, so one on the <g>
-    # reaches every <text> below it and leaves each <text> element byte-identical; the artwork
-    # above the group keeps the renderer's defaults. Pinned by test_svgout.py.
+    # reaches every <text> below it without touching any <text> element (since §C140 ⑥b a LAYOUT
+    # <text> carries its own trailing style - see below - while run-exact and arc elements stay
+    # byte-identical); the artwork above the group keeps the renderer's defaults. Pinned by test_svgout.py.
     parts = [f"<style>{''.join(faces)}</style>", '<g text-rendering="geometricPrecision">']
     if stix_chars:
         # T5: the licensing information, as the group's FIRST child - never before <style> (it
@@ -109,6 +110,16 @@ def write_svg(artwork_svg, out_path, items, page_h):
                  'xml:space="preserve"']
         if abs(it['rot']) > 1e-6:
             attrs.append(f'transform="rotate({-it["rot"]:.4f} {x:.3f} {y:.3f})"')
+        # §C140 ⑥b ([USER] ruling (a), docs/decisions/2026-09-17-translated-figure-labels-drawn-unkerned.md):
+        # a LAYOUT item was placed from compose.lin_advance, which applies no kerning, so it is drawn with
+        # kerning off - otherwise the browser applies the subset's GPOS kern pairs and draws a width the layout
+        # was not decided with (up to 0.99 pt short on the 34; Liberation's r’/f’ pairs - U+2019, not an
+        # ASCII apostrophe - would draw it LONGER).
+        # Run-exact and arc items keep the default. An INLINE style, never the presentation attribute
+        # font-kerning="none", which Chromium silently ignores (measured, evidence/2026-09-17-c6b-build/
+        # reports/rd/). Appended LAST, so every other attribute keeps its position. Pinned by test_svgout.py K.
+        if it.get('path') == 'layout':
+            attrs.append('style="font-kerning:none"')
         parts.append(f"<text {' '.join(attrs)}>{esc(it['text'])}</text>")
     parts.append('</g>')
 

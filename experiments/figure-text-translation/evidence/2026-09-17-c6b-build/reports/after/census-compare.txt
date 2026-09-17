@@ -1,0 +1,35 @@
+# compare before=/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/a901acde-477b-4e70-a45e-0244553d346e/scratchpad/c6b/census-before after=/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/a901acde-477b-4e70-a45e-0244553d346e/scratchpad/c6b/census-after
+items whose rendered length changed, by path: {"layout": 27}
+non-layout items whose rendered length changed: 0
+layout items changed WITH a kern pair: 27; WITHOUT one: 0
+items compared: 647 (FigSym among them: 43) - every item, whatever its family
+figures with any changed length: 10 ['CNX_Chem_03_01_brain-ec0b', 'CNX_Chem_03_01_exocytosis-88f6', 'CNX_Chem_03_02_copperMoles_img-a962', 'CNX_Chem_03_02_sacch_img-3278', 'CNX_Chem_03_03_empform', 'CNX_Chem_04_01_rxn2', 'CNX_Chem_04_03_flowchart', 'CNX_Chem_04_03_moleratio1_img', 'CNX_Chem_04_03_moleratio2_img', 'CNX_Chem_04_04_sandwich']
+
+## layout
+  CNX_Chem_03_01_brain-ec0b #0 'Taugafrumur' kern=-0.668 Δlen={"1": 0.6719, "3": 0.6719, "2.0833333": 0.6719}
+  CNX_Chem_03_01_exocytosis-88f6 #0 'Taugamót' kern=-0.998 Δlen={"1": 1.0, "3": 1.0, "2.0833333": 1.0}
+  CNX_Chem_03_01_exocytosis-88f6 #2 'Taugungur' kern=-0.998 Δlen={"1": 1.0, "3": 1.0, "2.0833333": 1.0}
+  CNX_Chem_03_01_exocytosis-88f6 #3 'Taugaboðefni' kern=-0.998 Δlen={"1": 0.9844, "3": 0.9844, "2.0833333": 0.9844}
+  CNX_Chem_03_01_exocytosis-88f6 #4 'Taugungur' kern=-0.998 Δlen={"1": 1.0, "3": 1.0, "2.0833333": 1.0}
+  CNX_Chem_03_02_copperMoles_img-a962 #9 'tölu Avogadros' kern=-0.659 Δlen={"1": 0.6562, "3": 0.6562, "2.0833333": 0.6562}
+  CNX_Chem_03_02_sacch_img-3278 #30 'tölu Avogadros' kern=-0.659 Δlen={"1": 0.6562, "3": 0.6562, "2.0833333": 0.6562}
+  CNX_Chem_03_03_empform #1 'A atómum' kern=-0.497 Δlen={"1": 0.4844, "3": 0.4844, "2.0833333": 0.4844}
+  CNX_Chem_03_03_empform #5 'A atóma' kern=-0.497 Δlen={"1": 0.5, "3": 0.5, "2.0833333": 0.5}
+  CNX_Chem_03_03_empform #13 'A á móti X' kern=-0.497 Δlen={"1": 0.4844, "3": 0.4844, "2.0833333": 0.4844}
+  CNX_Chem_04_01_rxn2 #18 'Vara' kern=-0.668 Δlen={"1": 0.6719, "3": 0.6719, "2.0833333": 0.6719}
+  CNX_Chem_04_01_rxn2 #19 'Vara' kern=-0.668 Δlen={"1": 0.6719, "3": 0.6719, "2.0833333": 0.6719}
+  CNX_Chem_04_03_flowchart #3 'Tala' kern=-0.998 Δlen={"1": 1.0, "3": 1.0, "2.0833333": 1.0}
+  CNX_Chem_04_03_flowchart #4 'Avogadros' kern=-0.163 Δlen={"1": 0.1562, "3": 0.1562, "2.0833333": 0.1562}
+  CNX_Chem_04_03_flowchart #5 'Tala' kern=-0.998 Δlen={"1": 1.0, "3": 1.0, "2.0833333": 1.0}
+  CNX_Chem_04_03_flowchart #6 'Avogadros' kern=-0.163 Δlen={"1": 0.1562, "3": 0.1562, "2.0833333": 0.1562}
+  CNX_Chem_04_03_flowchart #12 'Massi A' kern=-0.497 Δlen={"1": 0.5, "3": 0.5, "2.0833333": 0.5}
+  CNX_Chem_04_03_flowchart #15 'efnis A' kern=-0.497 Δlen={"1": 0.4844, "3": 0.4844, "2.0833333": 0.4844}
+  CNX_Chem_04_03_flowchart #18 'af A' kern=-0.497 Δlen={"1": 0.5, "3": 0.5, "2.0833333": 0.5}
+  CNX_Chem_04_03_flowchart #30 'af A' kern=-0.497 Δlen={"1": 0.5, "3": 0.5, "2.0833333": 0.5}
+  CNX_Chem_04_03_flowchart #32 'lausnar A' kern=-0.497 Δlen={"1": 0.5, "3": 0.5, "2.0833333": 0.5}
+  CNX_Chem_04_03_moleratio1_img #0 'Mól af Al' kern=-0.497 Δlen={"1": 0.5, "3": 0.5, "2.0833333": 0.5}
+  CNX_Chem_04_03_moleratio2_img #12 'Tala' kern=-0.998 Δlen={"1": 1.0, "3": 1.0, "2.0833333": 1.0}
+  CNX_Chem_04_03_moleratio2_img #13 'Avogadros' kern=-0.163 Δlen={"1": 0.1562, "3": 0.1562, "2.0833333": 0.1562}
+  CNX_Chem_04_04_sandwich #1 '+ 11 ostsneiðar' kern=-0.668 Δlen={"1": 0.6719, "3": 0.6719, "2.0833333": 0.6719}
+  CNX_Chem_04_04_sandwich #2 'Við getum búið til:' kern=-0.163 Δlen={"1": 0.1562, "3": 0.1562, "2.0833333": 0.1562}
+  CNX_Chem_04_04_sandwich #4 '11 samlokur' kern=-0.668 Δlen={"1": 0.6719, "3": 0.6719, "2.0833333": 0.6719}

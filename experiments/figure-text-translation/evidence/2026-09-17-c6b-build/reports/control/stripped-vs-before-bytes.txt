@@ -1,0 +1,37 @@
+# after-SVGs with every style="font-kerning:none" removed (kern_census.py strip: one per layout item, asserted)
+# compared byte for byte with the BEFORE compose-only SVGs (SOURCE_DATE_EPOCH pinned in both runs)
+CNX_Chem_03_01_alsulfatemass_img         byte-identical=True
+CNX_Chem_03_01_aspirin                   byte-identical=True
+CNX_Chem_03_01_brain-ec0b                byte-identical=True
+CNX_Chem_03_01_chloroform                byte-identical=True
+CNX_Chem_03_01_exocytosis-88f6           byte-identical=True
+CNX_Chem_03_01_glycinemass_img           byte-identical=True
+CNX_Chem_03_01_saltMass                  byte-identical=True
+CNX_Chem_03_02_argon_img-9025            byte-identical=True
+CNX_Chem_03_02_copperMoles_img-a962      byte-identical=True
+CNX_Chem_03_02_glycine_img-7c96          byte-identical=True
+CNX_Chem_03_02_potassium_img-f1d1        byte-identical=True
+CNX_Chem_03_02_sacch_img-3278            byte-identical=True
+CNX_Chem_03_02_vitC_img-e537             byte-identical=True
+CNX_Chem_03_03_empform                   byte-identical=True
+CNX_Chem_03_05_Example2_img              byte-identical=True
+CNX_Chem_04_01_basehyd_img               byte-identical=True
+CNX_Chem_04_01_rxn2                      byte-identical=True
+CNX_Chem_04_01_rxn3                      byte-identical=True
+CNX_Chem_04_02_HClsoln                   byte-identical=True
+CNX_Chem_04_03_etheneBr_img              byte-identical=True
+CNX_Chem_04_03_ethene_img                byte-identical=True
+CNX_Chem_04_03_flowchart                 byte-identical=True
+CNX_Chem_04_03_map2_img                  byte-identical=True
+CNX_Chem_04_03_map3_img                  byte-identical=True
+CNX_Chem_04_03_moleratio1_img            byte-identical=True
+CNX_Chem_04_03_moleratio2_img            byte-identical=True
+CNX_Chem_04_04_GreenChem                 byte-identical=True
+CNX_Chem_04_04_limiting                  byte-identical=True
+CNX_Chem_04_04_sandwich                  byte-identical=True
+CNX_Chem_04_05_combmap_img               byte-identical=True
+CNX_Chem_04_05_combustion                byte-identical=True
+CNX_Chem_04_05_map7_img                  byte-identical=True
+CNX_Chem_04_05_map8_img                  byte-identical=True
+CNX_Chem_14_03_FishLemon                 byte-identical=True
+identical=34 differ=0

@@ -1,0 +1,24 @@
+DRY RUN — nothing bought, nothing written under books/
+efnafraedi-2e ch04: 16 figure(s) across 6 module(s)
+
+    16  translated
+    16  = enumerated
+
+  figure-prepare.py warnings — 72 across 15 figure(s), its own !! lines:
+    CNX_Chem_04_01_rxn2: subset font PAGE/Fm0/T1_0; subset font PAGE/Fm1/T1_0; subset font PAGE/Fm2/T1_0; subset font PAGE/Fm3/T1_0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/TT0
+    CNX_Chem_04_01_rxn3: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0
+    CNX_Chem_14_03_FishLemon: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/T1_0; subset font PAGE/Fm11/T1_0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/T1_0; subset font PAGE/Fm5/T1_0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_04_03_moleratio1_img: subset font PAGE/R9
+    CNX_Chem_04_03_map2_img: subset font PAGE/R9
+    CNX_Chem_04_03_map3_img: subset font PAGE/R9
+    CNX_Chem_04_03_flowchart: subset font PAGE/TT0
+    CNX_Chem_04_03_etheneBr_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm14/TT0; subset font PAGE/Fm15/TT0; subset font PAGE/Fm16/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_04_03_ethene_img: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm10/TT0; subset font PAGE/Fm11/TT0; subset font PAGE/Fm12/TT0; subset font PAGE/Fm13/TT0; subset font PAGE/Fm14/TT0; subset font PAGE/Fm15/TT0; subset font PAGE/Fm16/TT0; subset font PAGE/Fm17/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0; subset font PAGE/Fm4/TT0; subset font PAGE/Fm5/TT0; subset font PAGE/Fm6/TT0; subset font PAGE/Fm7/TT0; subset font PAGE/Fm8/TT0; subset font PAGE/Fm9/TT0
+    CNX_Chem_04_04_sandwich: subset font PAGE/T1_0; subset font PAGE/TT0
+    CNX_Chem_04_04_limiting: subset font PAGE/Fm0/TT0; subset font PAGE/Fm1/TT0; subset font PAGE/Fm2/TT0; subset font PAGE/Fm3/TT0
+    CNX_Chem_04_05_map7_img: subset font PAGE/R9
+    CNX_Chem_04_05_map8_img: subset font PAGE/R9
+    CNX_Chem_04_05_combustion: subset font PAGE/TT0
+    CNX_Chem_04_05_combmap_img: subset font PAGE/R9
+
+VERDICT ok

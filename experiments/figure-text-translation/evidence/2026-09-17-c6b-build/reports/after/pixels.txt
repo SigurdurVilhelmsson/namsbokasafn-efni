@@ -1,0 +1,36 @@
+CNX_Chem_03_01_alsulfatemass_img         kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_03_01_aspirin                   kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_03_01_brain-ec0b                kern_layout= 1 A=A2:True A=B:False diff_px=1098 bbox=(497, 209, 604, 227) predicted_differs=True match=True
+CNX_Chem_03_01_chloroform                kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_03_01_exocytosis-88f6           kern_layout= 4 A=A2:True A=B:False diff_px=3741 bbox=(47, 49, 541, 410) predicted_differs=True match=True
+CNX_Chem_03_01_glycinemass_img           kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_03_01_saltMass                  kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_03_02_argon_img-9025            kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_03_02_copperMoles_img-a962      kern_layout= 1 A=A2:True A=B:False diff_px=906 bbox=(575, 87, 667, 105) predicted_differs=True match=True
+CNX_Chem_03_02_glycine_img-7c96          kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_03_02_potassium_img-f1d1        kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_03_02_sacch_img-3278            kern_layout= 1 A=A2:True A=B:False diff_px=914 bbox=(565, 93, 657, 111) predicted_differs=True match=True
+CNX_Chem_03_02_vitC_img-e537             kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_03_03_empform                   kern_layout= 3 A=A2:True A=B:False diff_px=1802 bbox=(45, 53, 666, 130) predicted_differs=True match=True
+CNX_Chem_03_05_Example2_img              kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_01_basehyd_img               kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_01_rxn2                      kern_layout= 2 A=A2:True A=B:False diff_px=530 bbox=(493, 14, 681, 25) predicted_differs=True match=True
+CNX_Chem_04_01_rxn3                      kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_02_HClsoln                   kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_03_etheneBr_img              kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_03_ethene_img                kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_03_flowchart                 kern_layout= 9 A=A2:True A=B:False diff_px=2610 bbox=(78, 64, 618, 553) predicted_differs=True match=True
+CNX_Chem_04_03_map2_img                  kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_03_map3_img                  kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_03_moleratio1_img            kern_layout= 1 A=A2:True A=B:False diff_px=179 bbox=(99, 69, 118, 83) predicted_differs=True match=True
+CNX_Chem_04_03_moleratio2_img            kern_layout= 2 A=A2:True A=B:False diff_px=979 bbox=(492, 101, 571, 142) predicted_differs=True match=True
+CNX_Chem_04_04_GreenChem                 kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_04_limiting                  kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_04_sandwich                  kern_layout= 3 A=A2:True A=B:False diff_px=3028 bbox=(18, 135, 869, 398) predicted_differs=True match=True
+CNX_Chem_04_05_combmap_img               kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_05_combustion                kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_05_map7_img                  kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_04_05_map8_img                  kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+CNX_Chem_14_03_FishLemon                 kern_layout= 0 A=A2:True A=B:True diff_px=0 bbox=None predicted_differs=False match=True
+
+figures=34 A_vs_A2_identical=34 A_vs_B_differ=10 predicted_differ=10 ok=True

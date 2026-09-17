@@ -280,6 +280,8 @@ already be there when they do. A chapter whose text is bought and whose figures 
 ▶ **Text and figures are ONE unit of work per chapter. Do not batch the figures of several
 chapters "later"; that is the same reversal by another name.**
 
+🔧 **BEFORE ANY `figure-run.js` RUN, ON ANY BOX: CHECK ITS LOCAL PREREQUISITES.** They are not repo dependencies, and two of them fail quietly or per figure rather than up front: the Python libraries (numpy included), poppler's `pdftocairo`, and the official STIX 1.1.0 font file (§C140 ⑥a; never committed). **The list, the paths and the download source live in [`experiments/figure-text-translation/README.md`](../../experiments/figure-text-translation/README.md) § Running it — read them there.** Gate, run from `experiments/figure-text-translation/`: `FIGTEXT_PYLIBS=./pylibs python3 test_figrings.py` and `FIGTEXT_PYLIBS=./pylibs python3 test_figsym.py` each print `ALL PASS`. ⚠️ `--dry-run` cannot catch a missing font: it composes nothing.
+
 ✅ **THE PAID PATH IS PROVEN — first real run 2026-09-12, `CNX_Chem_04_03_flowchart`, ~1 ISK.**
 Sidecar minted, SVG composed and published, `image-mapping.json` already carrying the swap, and the
 identity seam held *through* payment. Translation quality with **no glossary on the wire**:

@@ -1,0 +1,63 @@
+# kern census  root=/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/a901acde-477b-4e70-a45e-0244553d346e/scratchpad/c6b/attrform  figures=34  tol=0.05 pt
+bad fonts (status != loaded): 0
+
+## path=layout
+  items            370
+  figsym           0
+  kern_items       27
+  kern_explains    370
+  style_none       0
+  attr_none        370
+  computed_none    0
+  max_abs_resid_k  0.0151
+  max_abs_resid_0  0.9924
+  short            {"1": 27, "2.0833333": 27, "3": 27}
+  long             {}
+  equal            {"1": 343, "2.0833333": 343, "3": 343}
+  figs_with_kern   10 ['CNX_Chem_03_01_brain-ec0b', 'CNX_Chem_03_01_exocytosis-88f6', 'CNX_Chem_03_02_copperMoles_img-a962', 'CNX_Chem_03_02_sacch_img-3278', 'CNX_Chem_03_03_empform', 'CNX_Chem_04_01_rxn2', 'CNX_Chem_04_03_flowchart', 'CNX_Chem_04_03_moleratio1_img', 'CNX_Chem_04_03_moleratio2_img', 'CNX_Chem_04_04_sandwich']
+
+## path=run-exact
+  items            277
+  figsym           43
+  kern_items       1
+  kern_explains    234
+  style_none       0
+  attr_none        0
+  computed_none    0
+  max_abs_resid_k  0.0151
+  max_abs_resid_0  0.668
+  short            {"1": 1, "2.0833333": 1, "3": 1}
+  long             {}
+  equal            {"1": 233, "2.0833333": 233, "3": 233}
+  figs_with_kern   1 ['CNX_Chem_03_01_chloroform']
+
+## items whose browser length is NOT explained by the kern table (|resid_k| > tol at any scale)
+
+## layout items with a kern pair (the population the ruling changes)
+  CNX_Chem_03_01_brain-ec0b #0 'Taugafrumur' size=9.00 bold=True italic=False kern=-0.668 pairs=[('T', 'a', -152)] resid_0={"1": -0.659, "3": -0.659, "2.0833333": -0.659}
+  CNX_Chem_03_01_exocytosis-88f6 #0 'Taugamót' size=9.00 bold=False italic=False kern=-0.998 pairs=[('T', 'a', -227)] resid_0={"1": -0.991, "3": -0.991, "2.0833333": -0.991}
+  CNX_Chem_03_01_exocytosis-88f6 #2 'Taugungur' size=9.00 bold=False italic=False kern=-0.998 pairs=[('T', 'a', -227)] resid_0={"1": -0.985, "3": -0.985, "2.0833333": -0.985}
+  CNX_Chem_03_01_exocytosis-88f6 #3 'Taugaboðefni' size=9.00 bold=False italic=False kern=-0.998 pairs=[('T', 'a', -227)] resid_0={"1": -0.983, "3": -0.983, "2.0833333": -0.983}
+  CNX_Chem_03_01_exocytosis-88f6 #4 'Taugungur' size=9.00 bold=False italic=False kern=-0.998 pairs=[('T', 'a', -227)] resid_0={"1": -0.985, "3": -0.985, "2.0833333": -0.985}
+  CNX_Chem_03_02_copperMoles_img-a962 #9 'tölu Avogadros' size=9.00 bold=False italic=False kern=-0.659 pairs=[('space', 'A', -113), ('A', 'v', -37)] resid_0={"1": -0.647, "3": -0.647, "2.0833333": -0.647}
+  CNX_Chem_03_02_sacch_img-3278 #30 'tölu Avogadros' size=9.00 bold=False italic=False kern=-0.659 pairs=[('space', 'A', -113), ('A', 'v', -37)] resid_0={"1": -0.647, "3": -0.647, "2.0833333": -0.647}
+  CNX_Chem_03_03_empform #1 'A atómum' size=9.00 bold=False italic=False kern=-0.497 pairs=[('A', 'space', -113)] resid_0={"1": -0.483, "3": -0.483, "2.0833333": -0.483}
+  CNX_Chem_03_03_empform #5 'A atóma' size=9.00 bold=False italic=False kern=-0.497 pairs=[('A', 'space', -113)] resid_0={"1": -0.486, "3": -0.486, "2.0833333": -0.486}
+  CNX_Chem_03_03_empform #13 'A á móti X' size=9.00 bold=False italic=False kern=-0.497 pairs=[('A', 'space', -113)] resid_0={"1": -0.484, "3": -0.484, "2.0833333": -0.484}
+  CNX_Chem_04_01_rxn2 #18 'Vara' size=9.00 bold=False italic=False kern=-0.668 pairs=[('V', 'a', -152)] resid_0={"1": -0.667, "3": -0.667, "2.0833333": -0.667}
+  CNX_Chem_04_01_rxn2 #19 'Vara' size=9.00 bold=False italic=False kern=-0.668 pairs=[('V', 'a', -152)] resid_0={"1": -0.667, "3": -0.667, "2.0833333": -0.667}
+  CNX_Chem_04_03_flowchart #3 'Tala' size=9.00 bold=False italic=False kern=-0.998 pairs=[('T', 'a', -227)] resid_0={"1": -0.992, "3": -0.992, "2.0833333": -0.992}
+  CNX_Chem_04_03_flowchart #4 'Avogadros' size=9.00 bold=False italic=False kern=-0.163 pairs=[('A', 'v', -37)] resid_0={"1": -0.152, "3": -0.152, "2.0833333": -0.152}
+  CNX_Chem_04_03_flowchart #5 'Tala' size=9.00 bold=False italic=False kern=-0.998 pairs=[('T', 'a', -227)] resid_0={"1": -0.992, "3": -0.992, "2.0833333": -0.992}
+  CNX_Chem_04_03_flowchart #6 'Avogadros' size=9.00 bold=False italic=False kern=-0.163 pairs=[('A', 'v', -37)] resid_0={"1": -0.152, "3": -0.152, "2.0833333": -0.152}
+  CNX_Chem_04_03_flowchart #12 'Massi A' size=9.00 bold=False italic=False kern=-0.497 pairs=[('space', 'A', -113)] resid_0={"1": -0.49, "3": -0.49, "2.0833333": -0.49}
+  CNX_Chem_04_03_flowchart #15 'efnis A' size=9.00 bold=False italic=False kern=-0.497 pairs=[('space', 'A', -113)] resid_0={"1": -0.483, "3": -0.483, "2.0833333": -0.483}
+  CNX_Chem_04_03_flowchart #18 'af A' size=9.00 bold=False italic=False kern=-0.497 pairs=[('space', 'A', -113)] resid_0={"1": -0.494, "3": -0.494, "2.0833333": -0.494}
+  CNX_Chem_04_03_flowchart #30 'af A' size=9.00 bold=False italic=False kern=-0.497 pairs=[('space', 'A', -113)] resid_0={"1": -0.494, "3": -0.494, "2.0833333": -0.494}
+  CNX_Chem_04_03_flowchart #32 'lausnar A' size=9.00 bold=False italic=False kern=-0.497 pairs=[('space', 'A', -113)] resid_0={"1": -0.49, "3": -0.49, "2.0833333": -0.49}
+  CNX_Chem_04_03_moleratio1_img #0 'Mól af Al' size=9.00 bold=False italic=False kern=-0.497 pairs=[('space', 'A', -113)] resid_0={"1": -0.496, "3": -0.496, "2.0833333": -0.496}
+  CNX_Chem_04_03_moleratio2_img #12 'Tala' size=9.00 bold=False italic=False kern=-0.998 pairs=[('T', 'a', -227)] resid_0={"1": -0.992, "3": -0.992, "2.0833333": -0.992}
+  CNX_Chem_04_03_moleratio2_img #13 'Avogadros' size=9.00 bold=False italic=False kern=-0.163 pairs=[('A', 'v', -37)] resid_0={"1": -0.152, "3": -0.152, "2.0833333": -0.152}
+  CNX_Chem_04_04_sandwich #1 '+ 11 ostsneiðar' size=9.00 bold=False italic=False kern=-0.668 pairs=[('one', 'one', -152)] resid_0={"1": -0.667, "3": -0.667, "2.0833333": -0.667}
+  CNX_Chem_04_04_sandwich #2 'Við getum búið til:' size=9.00 bold=False italic=False kern=-0.163 pairs=[('V', 'i', -37)] resid_0={"1": -0.148, "3": -0.148, "2.0833333": -0.148}
+  CNX_Chem_04_04_sandwich #4 '11 samlokur' size=9.00 bold=False italic=False kern=-0.668 pairs=[('one', 'one', -152)] resid_0={"1": -0.662, "3": -0.662, "2.0833333": -0.662}

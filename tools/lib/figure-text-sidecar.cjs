@@ -26,6 +26,19 @@ const SIDECAR_VERSION = 1;
  * '3' (2026-09-14, §C140 ② ③ ⑨): translated labels keep their formula formatting and are laid
  * out against their own container; English-kept numbers are drawn with a decimal comma; the
  * artwork's cairo blend chains are collapsed so a browser can load them.
+ *
+ * ⚠️ '3' ALSO COVERS THREE LATER PIXEL-CHANGING COMPOSER CHANGES THAT WERE NOT BUMPED (2026-09-17):
+ * §C140 ④ (graphics-state operators kept inside text objects), ⑥a (kept STIX symbols drawn in
+ * FigSym) and ⑥b (translated labels drawn with font-kerning:none). Each recomposed every figure
+ * its change touched instead. ④ and ⑥a skipped the bump because no committed sidecar carried a
+ * review `state`; [USER] confirmed only AFTER their deploy that prod held no figure approval. ⑥b
+ * skipped it on both grounds, with that confirmation still owed at the deploy carrying it. The
+ * arguments: ④'s spec S3 (and its correction), ⑥a's T6, ⑥b's K4, under
+ * docs/superpowers/specs/2026-09-17-c140-*. The cost: `composedVersion` cannot tell media drawn
+ * before these changes from media drawn after, so `figure-run.js`'s `isStale` would not name a
+ * bought figure a recompose missed. THE RULE FROM HERE: skip a bump only if no sidecar carries
+ * `state` AND prod holds no figure approval up to the deploy that carries the change (editors
+ * approve against prod's own checkout of the media); otherwise bump.
  */
 const COMPOSER_VERSION = '3';
 

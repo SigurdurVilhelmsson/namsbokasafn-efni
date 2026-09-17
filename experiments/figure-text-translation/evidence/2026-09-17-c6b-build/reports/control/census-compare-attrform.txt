@@ -1,0 +1,6 @@
+# compare before=/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/a901acde-477b-4e70-a45e-0244553d346e/scratchpad/c6b/census-before after=/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/a901acde-477b-4e70-a45e-0244553d346e/scratchpad/c6b/census-attrform
+items whose rendered length changed, by path: {}
+non-layout items whose rendered length changed: 0
+layout items changed WITH a kern pair: 0; WITHOUT one: 0
+items compared: 647 (FigSym among them: 43) - every item, whatever its family
+figures with any changed length: 0 []

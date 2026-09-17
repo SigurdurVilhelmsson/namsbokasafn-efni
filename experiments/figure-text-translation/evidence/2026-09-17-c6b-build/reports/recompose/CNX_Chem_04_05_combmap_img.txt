@@ -1,0 +1,20 @@
+LIVE RUN
+efnafraedi-2e ch04: 1 figure(s) across 6 module(s)
+
+     1  translated
+     1  = enumerated
+
+  figure-prepare.py warnings — 1 across 1 figure(s), its own !! lines:
+    CNX_Chem_04_05_combmap_img: subset font PAGE/R9
+  labels drawn at the floor that overhang their space — an editor can shorten or re-break them (5):
+    CNX_Chem_04_05_combmap_img: "Percent|composition" block 8 "Prósentusamsetning" needs 68.37 pt, budget 54.50 pt (width)
+    CNX_Chem_04_05_combmap_img: "Molar|mass" block 11 "Mólmassi" needs 29.56 pt, budget 27.00 pt (width)
+    CNX_Chem_04_05_combmap_img: "Stoichiometric|factor" block 12 "Efnajöfnustuðull" needs 49.81 pt, budget 45.20 pt (width)
+    CNX_Chem_04_05_combmap_img: "Molar|mass" block 13 "Mólmassi" needs 29.56 pt, budget 27.00 pt (width)
+    CNX_Chem_04_05_combmap_img: "Stoichiometric|factor" block 14 "Efnajöfnustuðull" needs 49.81 pt, budget 45.20 pt (width)
+
+  MT spawned for 0 figure(s), 0 billable characters — only a figure with NO sidecar is spendable
+  published 1 figure(s) into /home/siggi/dev/repos/namsbokasafn-efni/books/efnafraedi-2e/media/
+
+VERDICT ok
+  NOTE (not a failure): 1 figure(s) carry label(s) drawn at the floor that overhang their space — the report names each
