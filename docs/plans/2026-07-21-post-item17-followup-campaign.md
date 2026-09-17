@@ -2,7 +2,20 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-17 (§C145 ① + ② — PR #482 OPEN, CI COMPARED; MERGE + DEPLOY OWED)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-17 (§C145 ① + ② MERGED — PR #482 as `54d6efabf`; DEPLOY OWED)** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **DEPLOY.** `./scripts/deploy.sh` on prod (needs a human for `sudo`). **Why it matters even though this PR touches no `books/` content:** prod's *Vista + Birta* **spawns** `tools/cnxml-inject.js` and `tools/cnxml-render.js`, so until the deploy the editor's own publish path keeps the UNGATED pair — the very path §C145 exists to protect. ▶ **After the deploy, recommended: ㉔** (per-label + joined figure-label MT) **or §C146** (raw `<para>` in table cells, reader-visible). Buying stays stopped; **the sync stays [USER]'s.**
+
+✅ **MERGED 2026-09-17T23:04:46Z as `54d6efabf`** (a MERGE commit, not a squash — this register cites the branch's individual SHAs and a squash would break every one; the merge was SHA-pinned to `c3bfe707a` so nothing newer could slip in). Branch deleted; local `main` fast-forwarded and clean. The held docs branch `docs/c148-deployed-next` went in with it.
+- **CI on the merged head `c3bfe707a`, compared BY NAME against `main`'s own run** (`35253974066` on `d7f6af41f`), parser proven on `main`'s known floor of 36 first: `main` **36 failed / 6,493 passed / 18 skipped (6,547)** · PR **36 failed / 6,545 passed / 18 skipped (6,599)**. **0 only-PR, 0 only-main — IDENTICAL**; +52 tests all pass. `lint`, `check-docs`, `audit`, `Validate Status Files` and **`e2e`** all passed.
+- ⚠️ **Two log traps fired and both are SILENT:** `gh run view --log` returned **0 bytes** for `main`'s run while returning 2.1 MB for the PR's — a naive script would have read `main` as green and blamed the PR for all 36. The REST job-log fallback prefixes every line with an ISO timestamp and ANSI codes, which zeroes a naive `×`-matcher the same way. **Prove the parser on a number you already know before trusting either.**
+- ⚠️ **Prod is now behind `main`.** No `books/` content moved, so nothing conflicts — but per CLAUDE.md § Content delivery a dev push strands the content backup whenever the cron has unpushed content at that moment, so deploy rather than leaving it.
+
+📋 **Before chemistry's sync (unchanged):** vefur's 2 ch04 redirect rows → [`docs/handoffs/2026-09-17-vefur-chemistry-ch03-ch04-redirects.md`](../handoffs/2026-09-17-vefur-chemistry-ch03-ch04-redirects.md); the copper caption on faithful 3-1 stays English (§C148 reach caveat); ledger M5's two MT errors, if [USER] wants them fixed first.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-17 (§C145 ① + ② — PR #482 OPEN, CI COMPARED; MERGE + DEPLOY OWED)** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — **[USER]'s review and merge of [PR #482](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/482) (`fix/c145-marker-residue-gates`, head `71fadc7e6`, 7 commits — 2 code, 3 docs, plus the 2 it carries from the held `docs/c148-deployed-next`), then deploy.**
 
