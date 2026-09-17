@@ -70,6 +70,8 @@ import { decodeEntities } from './lib/math-label-inventory.js';
 import { buildModuleSections } from './lib/module-sections.js';
 import { loadChapterTermEnglish } from './lib/term-english-map.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
+// §C145 ② — shared with cnxml-inject.js's gate, so the two cannot drift.
+import { findMarkerResidue, describeMarkerResidue } from './lib/marker-residue.js';
 import {
   getBookRenderConfig,
   generateFallbackLabel,
@@ -551,6 +553,72 @@ function rollbackWrittenFiles(writtenFiles) {
     }
   }
   return { restored, deleted };
+}
+
+/**
+ * §C145 ② — no bracket marker may reach an emitted HTML page.
+ *
+ * 🔴 A LITERAL `[[type:…]]` IN PUBLISHED HTML IS ALWAYS A DEFECT, AND UNTIL NOW
+ * NOTHING ON THIS SIDE COULD SEE ONE. The inject-side gate is the first line;
+ * this is the second, and it is the one that matters when inject is bypassed,
+ * when a module's CNXML was committed past a red fidelity manifest, or when the
+ * corruption is of a shape inject's gate did not yet know. ⑰'s
+ * `[[term:tala Avogadros …` was committed on 2026-09-06 and rendered onto a
+ * prepared reader page; verification found it eleven days later, and the
+ * render's own `terms: 3/3 <dfn id> carry data-en` line reported success in the
+ * same run, because its denominator shrinks with the loss.
+ *
+ * The predicate is shared with the inject gate (`tools/lib/marker-residue.js`),
+ * opener-only, with the same case-sensitive `MATH:`/`MEDIA:` carve-out — so the
+ * two gates cannot drift, and this one cannot refuse a placeholder shape the
+ * pipeline maintains on purpose (`term-text.js` keeps `[[MATH:n]]` for
+ * `flattenMarkersToText` to resolve).
+ *
+ * ⚠️ Measured 2026-09-17 over every tracked page under `books/*<!---->/05-publication/`:
+ * ONE hit corpus-wide — `[[b:]]` on microbiology `5-4-thorungar.html`, a
+ * withheld book. So this refuses nothing that renders today in either kept
+ * book, and a microbiology ch05 re-render WILL refuse until that module is
+ * re-injected. That is the gate working, not a regression.
+ *
+ * @param {string} html - the page about to be written
+ * @param {string} outputPath - named in the error, so the refusal is actionable
+ */
+function assertNoMarkerResidueHtml(html, outputPath) {
+  const residue = findMarkerResidue(html);
+  if (residue.length) {
+    throw new Error(
+      `Marker residue in rendered HTML for ${path.basename(outputPath)}: ` +
+        `${residue.length} marker(s) reached the page — readers would see it. ` +
+        `Re-inject the module (and check its translation-errors.json entry) before publishing.` +
+        `\n${describeMarkerResidue(residue)}`
+    );
+  }
+}
+
+/**
+ * The ONE place this tool writes an HTML page. Every `write*` function funnels
+ * here so a gate cannot be forgotten by an eighth writer; that property is
+ * pinned by `tools/__tests__/marker-residue-render-gate.test.js`, which asserts
+ * this file holds exactly one `safeWrite(` call outside its comments.
+ *
+ * Fail-closed on purpose, and the two failure shapes are both deliberate:
+ *  - a MODULE page throws into `main()`'s per-module `catch (moduleErr)`, which
+ *    skips that module, leaves its previously published page in place, names it
+ *    and sets `process.exitCode = 1` — nothing corrupt is written, and the rest
+ *    of the chapter still renders;
+ *  - a ROLLUP page throws into the chapter-wide catch, which calls
+ *    `rollbackWrittenFiles` and restores every page written this pass.
+ *
+ * @param {string} outputPath
+ * @param {string} html
+ * @param {number|string} chapter - for the backup log line
+ * @returns {string} outputPath
+ */
+function writeHtmlPage(outputPath, html, chapter) {
+  assertNoMarkerResidueHtml(html, outputPath);
+  const backup = safeWrite(outputPath, html);
+  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
+  return outputPath;
 }
 
 // Module sections are built dynamically from structure + segment files
@@ -2218,8 +2286,7 @@ function writeOutput(chapter, moduleId, track, html, moduleSections) {
   const outputDir = ensureOutputDir(chapter, track);
   const filename = getOutputFilename(moduleId, chapter, moduleSections);
   const outputPath = path.join(outputDir, filename);
-  const backup = safeWrite(outputPath, html);
-  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
+  writeHtmlPage(outputPath, html, chapter);
   return outputPath;
 }
 
@@ -2430,8 +2497,7 @@ function writeEndOfChapterSection(chapter, section, track, html) {
   const filename = `${chapter}-${section.slug}.html`;
   const outputPath = path.join(outputDir, filename);
 
-  const backup = safeWrite(outputPath, html);
-  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
+  writeHtmlPage(outputPath, html, chapter);
 
   return outputPath;
 }
@@ -2575,8 +2641,7 @@ function writeKeyEquations(chapter, track, html) {
   const filename = `${chapter}-key-equations.html`;
   const outputPath = path.join(outputDir, filename);
 
-  const backup = safeWrite(outputPath, html);
-  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
+  writeHtmlPage(outputPath, html, chapter);
 
   return outputPath;
 }
@@ -2687,8 +2752,7 @@ function writeCompiledGlossary(chapter, track, html) {
   const filename = `${chapter}-key-terms.html`;
   const outputPath = path.join(outputDir, filename);
 
-  const backup = safeWrite(outputPath, html);
-  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
+  writeHtmlPage(outputPath, html, chapter);
 
   return outputPath;
 }
@@ -2830,8 +2894,7 @@ function writeCompiledSummary(chapter, track, html) {
   const filename = `${chapter}-summary.html`;
   const outputPath = path.join(outputDir, filename);
 
-  const backup = safeWrite(outputPath, html);
-  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
+  writeHtmlPage(outputPath, html, chapter);
 
   return outputPath;
 }
@@ -3249,8 +3312,7 @@ function writeCompiledExercises(chapter, track, html, slug = 'exercises') {
   const filename = `${chapter}-${slug}.html`;
   const outputPath = path.join(outputDir, filename);
 
-  const backup = safeWrite(outputPath, html);
-  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
+  writeHtmlPage(outputPath, html, chapter);
 
   return outputPath;
 }
@@ -3405,8 +3467,7 @@ function writeAnswerKey(chapter, track, html) {
   const filename = `${chapter}-answer-key.html`;
   const outputPath = path.join(outputDir, filename);
 
-  const backup = safeWrite(outputPath, html);
-  if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
+  writeHtmlPage(outputPath, html, chapter);
 
   return outputPath;
 }
@@ -4438,6 +4499,7 @@ export {
   buildAppendixIdMap,
   buildKeyTermsItems,
   rollbackWrittenFiles,
+  assertNoMarkerResidueHtml, // §C145 ②
   escapeJsonForScript,
   filterOutlineEntries,
   renderList,
