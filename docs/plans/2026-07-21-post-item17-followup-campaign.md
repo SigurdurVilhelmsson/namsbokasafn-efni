@@ -2,7 +2,30 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-17 (§C148 FIXED + ch03/ch04 CAPTIONS DELIVERED ON A LOCAL BRANCH · PUSH/PR/DEPLOY OWED)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-17 (§C148 MERGED + DEPLOYED — PR #481 as `d7f6af41f`, verified on prod)** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **Recommended: §C145 ① + ② — the opener-only residue gates at inject and render.** Cost 0 ISK. ① measured 0 corpus hits, so it cannot newly refuse today. These gates close the gap that let ⑰'s corruption reach a prepared page; today every chemistry ch03 inject still depends on remembering ⑰'s `--no-annotate-en`. ▶ **Alternative:** ㉔. Buying stays stopped; **the sync stays [USER]'s.**
+
+✅ **DEPLOYED ([USER], 2026-09-17), verified read-only on prod:**
+- reflog pull `d7f6af41` at 17:44:24Z (fast-forward); HEAD is that commit;
+- service restart at 17:44:31Z, boot unchanged, so new code is running;
+- tree: 0 changed, 0 unmerged; `/api/health` `ok` with every check true;
+- prod's `tools/cnxml-inject.js` carries `applyFigureCaptionDom`, so the server's own publish path has the fix;
+- prod's mt-preview pages carry the Icelandic hematite, brew-tank, vinegar, iodine and copper captions ×1 each, and English hematite ×0 (control: English copper ×1 on faithful 3-1, as expected); m68700 opener `[[` 0.
+
+📋 **Before chemistry's sync (unchanged):**
+- vefur's 2 ch04 redirect rows → [`docs/handoffs/2026-09-17-vefur-chemistry-ch03-ch04-redirects.md`](../handoffs/2026-09-17-vefur-chemistry-ch03-ch04-redirects.md);
+- the copper caption on faithful 3-1 stays English (§C148 reach caveat);
+- ledger M5's two MT errors, if [USER] wants them fixed first.
+
+✅ **PR #481 merged 2026-09-17T17:38:34Z as `d7f6af41f`** (merge commit; head `c7ff6ead0`, which includes the held docs branch's 2 commits).
+- **CI on the head:** Lint, Documentation Check, Security Audit, Validate and e2e all passed.
+- **CI `test` failed, on exactly `main`'s 36 names:** compared with `main`'s run on `ded4c3fb2` by name, with 0 only-PR, 0 only-main, and a planted control detected. The new `caption-writeback-corpus.test.js` passed in CI (2 tests, 6,547 total).
+- Everything else about §C148 is unchanged → the block below.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-17 (§C148 FIXED + ch03/ch04 CAPTIONS DELIVERED ON A LOCAL BRANCH — since MERGED as #481)** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — **[USER]'s review of `fix/c148-example-figure-captions` — local and UNPUSHED; it carries the held docs branch `docs/c140-c35-deployed-next` (2 commits). Push it and open a PR, merge, then deploy PROMPTLY:** it changes `books/`, so a push to `main` strands prod's content backup until the next deploy (CLAUDE.md § Content delivery), and the deploy also puts the fix on prod's own *Vista + Birta* inject path. **ON PROD, immediately before `./scripts/deploy.sh`:** `git status --porcelain -- books/efnafraedi-2e/05-publication/ books/efnafraedi-2e/03-translated/` and `git log --oneline origin/main..HEAD -- books/efnafraedi-2e/05-publication/ books/efnafraedi-2e/03-translated/` must both print nothing (the `ours` driver covers only `translation-errors.json`). ▶ **After that, recommended: §C145 ① + ② — the opener-only residue gates at inject and render (0 ISK; ① measured 0 corpus hits, so it cannot newly refuse today).** They close the gap that let ⑰'s corruption reach a prepared page, and today every chemistry ch03 inject still depends on remembering ⑰'s flag. Alternative: ㉔. Buying stays stopped; **the sync stays [USER]'s.**
 
