@@ -10,7 +10,8 @@
  * substitution chapter.
  *
  * THIS TEST EXISTS BECAUSE THE SAME TRIM HAS ALREADY BEEN REVERTED ONCE. Made
- * in SQL it lasted 102 seconds — migration 047 re-asserts this table from
+ * in SQL it lasted only until the next restart (two backups 102 seconds apart
+ * show it present, then gone) — migration 047 re-asserts this table from
  * domains.js on every boot. domains.js is the only place it survives, so the
  * ruling is pinned here rather than left as a value someone may "restore" for
  * symmetry with the other books.

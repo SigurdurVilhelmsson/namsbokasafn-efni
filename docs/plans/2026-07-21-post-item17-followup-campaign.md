@@ -17,7 +17,13 @@ The PR's pre-deploy check ran on prod first and printed nothing. CI `test` faile
 📋 **Still logged, not built:** ㉔ · ㊲ (sidecars written on prod never reach `main`; fix before the first figure-review transition on prod) · ㊳ · §C145 · §C146 · §C147.
 
 ⚠️ **This block sits on the UNPUSHED docs branch `docs/c140-c35-deployed-next`.** It rides the next code branch (memory `feedback-batch-docs-only-pushes`); do not push it alone.
-⚠️ **`git branch --no-merged main` also lists `docs/c119-closeout`: one commit from 2026-09-05, pushed, never merged. It is NOT a competing status owner** — its RESUME was superseded long ago. **But its 4 CLAUDE.md lines never reached `main`.** `main` already carries the core rule (the fix for an enforced value is `server/lib/domains.js`, never SQL). The lines unique to the branch are *"an alarm for the revert was built, reviewed and dropped — do not rebuild it inside a migration"*, and a note that the tests passed because they left out the mechanism they were meant to survive. Whether to fold those lines in or drop the branch is [USER]'s call.
+🗑️ **`docs/c119-closeout` (`888f9473f`, 2026-09-05) was DROPPED 2026-09-17, local and remote, by [USER]'s rule: fold it in if it agrees with the register, drop it if not.** A 12-agent check with 2 refuters per contradiction confirmed **4 contradictions, all false when written, not merely superseded**. Three were re-measured here as well:
+- "a SQL trim lasted 102 seconds": it held from 08-30 until a deploy restart; 102 s is the gap between the two backups either side of the revert.
+- "179 of 180 `ants` hits are on reactants/plants/constants/locants": other words carry a real share.
+- "`data-en` has 0 consumers in vefur `src/`": vefur `12d8389` (#224) had added three consumers 34 minutes before the branch commit.
+- "organic ch03's render predates §C119 and was verified clean" (confirmed by the refuters only).
+
+**Nothing true was lost:** its correct lessons (046 re-seeds before 047, so a revert alarm cannot live in a migration; the test that skipped 046) are already in `server/lib/domains.js` and this register. The first two errors had also reached `main` in the `domains.js` comment and `organicDomainScope.test.js`'s header; both comments are corrected on this branch. Evidence: workflow `wf_aafc2dfd-725`.
 
 ---
 
