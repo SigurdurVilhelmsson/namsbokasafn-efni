@@ -1,0 +1,64 @@
+/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/test_strip_text.py:136: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  return sum(1 for p in box.getdata() if sum(p) < 600)
+/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/test_strip_text.py:136: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  return sum(1 for p in box.getdata() if sum(p) < 600)
+/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/test_strip_text.py:136: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  return sum(1 for p in box.getdata() if sum(p) < 600)
+/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/test_strip_text.py:136: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  return sum(1 for p in box.getdata() if sum(p) < 600)
+/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/test_strip_text.py:215: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  list(render(src, 'nt-src').getdata()) == list(render(out, 'nt-out').getdata()) and st5['state_kept'] == 0,
+/home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/test_strip_text.py:215: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  list(render(src, 'nt-src').getdata()) == list(render(out, 'nt-out').getdata()) and st5['state_kept'] == 0,
+
+[1] fill colour set inside a text object survives the strip
+  PASS  1a-page CONTROL — the source paints the second square red: source pixel (255, 0, 0)
+  PASS  1b-page NEGATIVE ARM — the shipped rule paints it black: old-rule pixel (0, 0, 0) (if red, this fixture cannot show the defect)
+  PASS  1c-page the fixed strip paints it red, like the source: fixed (255, 0, 0) vs source (255, 0, 0)
+  PASS  1d-page and says it kept the state: state_kept=1
+  PASS  1e-page CONTROL — the source draws glyph ink in the glyph box: 267 dark px
+  PASS  1f-page the text is still removed: no glyph ink, no words: 0 dark px, words []
+  PASS  1a-form CONTROL — the source paints the second square red: source pixel (255, 0, 0)
+  PASS  1b-form NEGATIVE ARM — the shipped rule paints it black: old-rule pixel (0, 0, 0) (if red, this fixture cannot show the defect)
+  PASS  1c-form the fixed strip paints it red, like the source: fixed (255, 0, 0) vs source (255, 0, 0)
+  PASS  1d-form and says it kept the state: state_kept=1
+  PASS  1e-form CONTROL — the source draws glyph ink in the glyph box: 267 dark px
+  PASS  1f-form the text is still removed: no glyph ink, no words: 0 dark px, words []
+
+[2] an ExtGState set inside a text object survives the strip
+  PASS  2a CONTROL — the source line is thick: source pixel (0, 0, 0)
+  PASS  2b NEGATIVE ARM — the shipped rule draws it thin: old-rule pixel (255, 255, 255)
+  PASS  2c the fixed strip draws it thick, like the source: fixed (0, 0, 0) vs source (0, 0, 0)
+
+[3] any other operator inside a text object refuses the figure
+  PASS  3-q-page refused, naming the operator: UnparsableStream: page content stream: TextObjectOperatorRefused: operator 'q' inside a text object (BT..ET) is neither text nor persistent graphics state — refused, not guessed;
+  PASS  3-q-form refused, naming the operator: UnparsableStream: 1 /Form stream(s) could not be tokenised, so their text was NOT removed: ["(5, 0): TextObjectOperatorRefused: operator 'q' inside a text object (BT..ET) is neit
+  PASS  3-cm-page refused, naming the operator: UnparsableStream: page content stream: TextObjectOperatorRefused: operator 'cm' inside a text object (BT..ET) is neither text nor persistent graphics state — refused, not guessed
+  PASS  3-cm-form refused, naming the operator: UnparsableStream: 1 /Form stream(s) could not be tokenised, so their text was NOT removed: ["(5, 0): TextObjectOperatorRefused: operator 'cm' inside a text object (BT..ET) is nei
+  PASS  3-BDC-page refused, naming the operator: UnparsableStream: page content stream: TextObjectOperatorRefused: operator 'BDC' inside a text object (BT..ET) is neither text nor persistent graphics state — refused, not guesse
+  PASS  3-BDC-form refused, naming the operator: UnparsableStream: 1 /Form stream(s) could not be tokenised, so their text was NOT removed: ["(5, 0): TextObjectOperatorRefused: operator 'BDC' inside a text object (BT..ET) is ne
+  PASS  3-re-page refused, naming the operator: UnparsableStream: page content stream: TextObjectOperatorRefused: operator 're' inside a text object (BT..ET) is neither text nor persistent graphics state — refused, not guessed
+  PASS  3-re-form refused, naming the operator: UnparsableStream: 1 /Form stream(s) could not be tokenised, so their text was NOT removed: ["(5, 0): TextObjectOperatorRefused: operator 're' inside a text object (BT..ET) is nei
+  PASS  3-Do-page refused, naming the operator: UnparsableStream: page content stream: TextObjectOperatorRefused: operator 'Do' inside a text object (BT..ET) is neither text nor persistent graphics state — refused, not guessed
+  PASS  3-Do-form refused, naming the operator: UnparsableStream: 1 /Form stream(s) could not be tokenised, so their text was NOT removed: ["(5, 0): TextObjectOperatorRefused: operator 'Do' inside a text object (BT..ET) is nei
+  PASS  3-BX-page refused, naming the operator: UnparsableStream: page content stream: TextObjectOperatorRefused: operator 'BX' inside a text object (BT..ET) is neither text nor persistent graphics state — refused, not guessed
+  PASS  3-BX-form refused, naming the operator: UnparsableStream: 1 /Form stream(s) could not be tokenised, so their text was NOT removed: ["(5, 0): TextObjectOperatorRefused: operator 'BX' inside a text object (BT..ET) is nei
+  PASS  3-zz-page refused, naming the operator: UnparsableStream: page content stream: TextObjectOperatorRefused: operator 'zz' inside a text object (BT..ET) is neither text nor persistent graphics state — refused, not guessed
+  PASS  3-zz-form refused, naming the operator: UnparsableStream: 1 /Form stream(s) could not be tokenised, so their text was NOT removed: ["(5, 0): TextObjectOperatorRefused: operator 'zz' inside a text object (BT..ET) is nei
+  PASS  3-inline an inline image inside a text object is refused: an inline image inside a text object (BT..ET) — refused, not guessed; see TextObjectOperatorRefused
+
+[4] kept operators keep their place; the two operator sets are disjoint
+  PASS  4a order: the kept rg sits after the earlier rg and before the fill: operators ['rg', 'rg', 're', 'f'], removed=1, kept=1
+  PASS  4b constants are disjoint: frozenset()
+  PASS  4c the allowlist is exactly the approved set: ['CS', 'G', 'J', 'K', 'M', 'RG', 'SC', 'SCN', 'cs', 'd', 'g', 'gs', 'i', 'j', 'k', 'rg', 'ri', 'sc', 'scn', 'w']
+  PASS  4d the text operators are exactly the approved set: ['"', "'", 'T*', 'TD', 'TJ', 'TL', 'Tc', 'Td', 'Tf', 'Tj', 'Tm', 'Tr', 'Ts', 'Tw', 'Tz']
+
+[5] a stream without text round-trips pixel-identically
+  PASS  5 no text: same pixels, nothing kept or removed: state_kept=0
+
+[6] corpus anchor — combustion, inside an arrowhead component
+  PASS  6a CONTROL — a dark source pixel exists inside the arrowhead box: (301, 163)
+  PASS  6b NEGATIVE ARM — the shipped rule does not match the source there: old (74, 130, 162) vs source (32, 28, 28)
+  PASS  6c the fixed strip matches the source there: fixed (32, 28, 28) vs source (32, 28, 28)
+
+  ALL PASS

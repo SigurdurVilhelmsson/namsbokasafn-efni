@@ -1,0 +1,7 @@
+=== cmp summary.tsv ===
+SUMMARY-IDENTICAL
+=== blocks compare ===
+BLOCKS-CHECKED (diffs=0)
+=== counts ===
+37
+37

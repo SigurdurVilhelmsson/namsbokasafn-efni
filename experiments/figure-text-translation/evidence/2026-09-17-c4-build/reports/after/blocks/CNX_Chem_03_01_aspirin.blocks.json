@@ -1,0 +1,220 @@
+[
+ {
+  "key": "Element",
+  "english": "Element",
+  "lines": [
+   "Element"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Quantity",
+  "english": "Quantity",
+  "lines": [
+   "Quantity"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Average atomic|mass (amu)",
+  "english": "Average atomic mass (amu)",
+  "lines": [
+   "Average atomic",
+   "mass (amu)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Subtotal|(amu)",
+  "english": "Subtotal (amu)",
+  "lines": [
+   "Subtotal",
+   "(amu)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "C",
+  "english": "C",
+  "lines": [
+   "C"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "H",
+  "english": "H",
+  "lines": [
+   "H"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "O",
+  "english": "O",
+  "lines": [
+   "O"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "9",
+  "english": "9",
+  "lines": [
+   "9"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "8",
+  "english": "8",
+  "lines": [
+   "8"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "4",
+  "english": "4",
+  "lines": [
+   "4"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "12.01",
+  "english": "12.01",
+  "lines": [
+   "12.01"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "1.008",
+  "english": "1.008",
+  "lines": [
+   "1.008"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "16.00",
+  "english": "16.00",
+  "lines": [
+   "16.00"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "Molecular mass",
+  "english": "Molecular mass",
+  "lines": [
+   "Molecular mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "108.09",
+  "english": "108.09",
+  "lines": [
+   "108.09"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "8.064",
+  "english": "8.064",
+  "lines": [
+   "8.064"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "64.00",
+  "english": "64.00",
+  "lines": [
+   "64.00"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "180.15",
+  "english": "180.15",
+  "lines": [
+   "180.15"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "×",
+  "english": "×",
+  "lines": [
+   "×"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "=",
+  "english": "=",
+  "lines": [
+   "="
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "×",
+  "english": "×",
+  "lines": [
+   "×"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "=",
+  "english": "=",
+  "lines": [
+   "="
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "×",
+  "english": "×",
+  "lines": [
+   "×"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "=",
+  "english": "=",
+  "lines": [
+   "="
+  ],
+  "arc": false,
+  "send": false
+ }
+]

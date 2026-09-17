@@ -1,0 +1,167 @@
+{
+ "source_render": {
+  "ok": true,
+  "error": null
+ },
+ "strip_ORIG": {
+  "ok": true,
+  "error": null
+ },
+ "render_ORIG": {
+  "ok": true,
+  "error": null
+ },
+ "strip_PERSIST": {
+  "ok": true,
+  "error": null
+ },
+ "render_PERSIST": {
+  "ok": true,
+  "error": null
+ },
+ "strip_NONTEXT": {
+  "ok": true,
+  "error": null
+ },
+ "render_NONTEXT": {
+  "ok": true,
+  "error": null
+ },
+ "diff_PERSIST_vs_ORIG": {
+  "size_match": true,
+  "shape": [
+   321,
+   1300,
+   3
+  ],
+  "count_gt40": 2121,
+  "count_gt0": 2523,
+  "bbox_gt40": [
+   151,
+   176,
+   78,
+   1160
+  ],
+  "bbox_gt0": [
+   150,
+   177,
+   78,
+   1160
+  ]
+ },
+ "diff_NONTEXT_vs_ORIG": {
+  "size_match": true,
+  "shape": [
+   321,
+   1300,
+   3
+  ],
+  "count_gt40": 2121,
+  "count_gt0": 2523,
+  "bbox_gt40": [
+   151,
+   176,
+   78,
+   1160
+  ],
+  "bbox_gt0": [
+   150,
+   177,
+   78,
+   1160
+  ]
+ },
+ "diff_PERSIST_vs_NONTEXT": {
+  "size_match": true,
+  "shape": [
+   321,
+   1300,
+   3
+  ],
+  "count_gt40": 0,
+  "count_gt0": 0,
+  "bbox_gt40": null,
+  "bbox_gt0": null
+ },
+ "direction": {
+  "n_px_in_mask": 2523,
+  "mean_dist_ORIG_to_SOURCE": 132.77792432109365,
+  "mean_dist_PERSIST_to_SOURCE": 0.0,
+  "PERSIST_moves_toward_source": true
+ },
+ "sample_pixel_mid_bbox": {
+  "rc": [
+   163,
+   619
+  ],
+  "source": [
+   32,
+   28,
+   28
+  ],
+  "ORIG": [
+   32,
+   28,
+   28
+  ],
+  "PERSIST": [
+   32,
+   28,
+   28
+  ]
+ },
+ "serialiser_strip_again": {
+  "ok": true,
+  "error": null
+ },
+ "serialiser_control_diff": {
+  "size_match": true,
+  "shape": [
+   321,
+   1300,
+   3
+  ],
+  "count_gt40": 0,
+  "count_gt0": 0,
+  "bbox_gt40": null,
+  "bbox_gt0": null
+ },
+ "serialiser_identity_roundtrip": {
+  "ok": true,
+  "error": null
+ },
+ "serialiser_identity_diff_vs_source": {
+  "size_match": true,
+  "shape": [
+   321,
+   1300,
+   3
+  ],
+  "count_gt40": 0,
+  "count_gt0": 0,
+  "bbox_gt40": null,
+  "bbox_gt0": null
+ },
+ "planted_control_diff": {
+  "size_match": true,
+  "shape": [
+   321,
+   1300,
+   3
+  ],
+  "count_gt40": 441,
+  "count_gt0": 441,
+  "bbox_gt40": [
+   80,
+   100,
+   325,
+   345
+  ],
+  "bbox_gt0": [
+   80,
+   100,
+   325,
+   345
+  ]
+ }
+}

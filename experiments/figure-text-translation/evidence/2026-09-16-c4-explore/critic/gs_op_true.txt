@@ -1,0 +1,10 @@
+OP true: CNX_Chem_01_01_FuelCell  PAGE /GS1 n= 1 render PERSIST count_gt0= 0
+OP true: CNX_Chem_06_01_Ephoton  PAGE /GS1 n= 1 render PERSIST count_gt0= 0
+OP true: CNX_Chem_06_04_Econfig  PAGE /GS1 n= 1 render PERSIST count_gt0= 0
+OP true: CNX_Chem_18_07_N2O5  PAGE /GS1 n= 1 render PERSIST count_gt0= 0
+OP true: CNX_Chem_21_05_SmokeAlarm  PAGE /GS6 n= 1 render PERSIST count_gt0= 0
+OP true: CNX_Chem_21_06_Damage2  PAGE /GS3 n= 1 render PERSIST count_gt0= 359
+distinct ExtGState key-sets referenced from inside BT: 2
+  5843 {"/AIS": "False", "/BM": "/Normal", "/CA": "1.0", "/OP": "False", "/OPM": "1", "/SA": "True", "/SMask": "/None", "/ca": "1.0", "/op": "False"}
+  6 {"/AIS": "False", "/BM": "/Normal", "/CA": "1.0", "/OP": "True", "/OPM": "1", "/SA": "True", "/SMask": "/None", "/ca": "1.0", "/op": "True"}
+DONE

@@ -1,0 +1,276 @@
+[
+ {
+  "key": "Element",
+  "english": "Element",
+  "lines": [
+   "Element"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Quantity|(mol element/|mol compound)",
+  "english": "Quantity (mol element/ mol compound)",
+  "lines": [
+   "Quantity",
+   "(mol element/",
+   "mol compound)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molar mass|(g/mol element)",
+  "english": "Molar mass (g/mol element)",
+  "lines": [
+   "Molar mass",
+   "(g/mol element)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Subtotal|(g/mol compound)",
+  "english": "Subtotal (g/mol compound)",
+  "lines": [
+   "Subtotal",
+   "(g/mol compound)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "C",
+  "english": "C",
+  "lines": [
+   "C"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "H",
+  "english": "H",
+  "lines": [
+   "H"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "N",
+  "english": "N",
+  "lines": [
+   "N"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "2",
+  "english": "2",
+  "lines": [
+   "2"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "5",
+  "english": "5",
+  "lines": [
+   "5"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "1",
+  "english": "1",
+  "lines": [
+   "1"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "12.01",
+  "english": "12.01",
+  "lines": [
+   "12.01"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "1.008",
+  "english": "1.008",
+  "lines": [
+   "1.008"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "14.007",
+  "english": "14.007",
+  "lines": [
+   "14.007"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "Molecular mass (g/mol compound)",
+  "english": "Molecular mass (g/mol compound)",
+  "lines": [
+   "Molecular mass (g/mol compound)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "24.02",
+  "english": "24.02",
+  "lines": [
+   "24.02"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "5.040",
+  "english": "5.040",
+  "lines": [
+   "5.040"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "14.007",
+  "english": "14.007",
+  "lines": [
+   "14.007"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "75.07",
+  "english": "75.07",
+  "lines": [
+   "75.07"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "×",
+  "english": "×",
+  "lines": [
+   "×"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "=",
+  "english": "=",
+  "lines": [
+   "="
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "×",
+  "english": "×",
+  "lines": [
+   "×"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "=",
+  "english": "=",
+  "lines": [
+   "="
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "O",
+  "english": "O",
+  "lines": [
+   "O"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "2",
+  "english": "2",
+  "lines": [
+   "2"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "16.00",
+  "english": "16.00",
+  "lines": [
+   "16.00"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "32.00",
+  "english": "32.00",
+  "lines": [
+   "32.00"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "×",
+  "english": "×",
+  "lines": [
+   "×"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "=",
+  "english": "=",
+  "lines": [
+   "="
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "×",
+  "english": "×",
+  "lines": [
+   "×"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "=",
+  "english": "=",
+  "lines": [
+   "="
+  ],
+  "arc": false,
+  "send": false
+ }
+]

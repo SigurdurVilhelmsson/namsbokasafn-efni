@@ -1,0 +1,1409 @@
+# BT..ET non-text-operator census — chemistry figure corpus
+
+Read-only measurement. Source data: this driver run's own `census/results.jsonl` (one JSON line per figure); every number below is counted straight out of that file by this script (`aggregate.py`), nothing hand-tallied.
+
+## Population and denominators
+
+Total rows walked by the driver: **911** (910 rows from `pagecensus.jsonl.gz`, minus 0 dropped, plus 1 extra because `CNX_Chem_18_07_N2O5` is scanned twice — once as the resolved `.pdf`, once as the `.eps` the resolver now actually uses — so 910 + 1 = 911; `CNX_Chem_11_04_rvosmosis` is KEPT as one row labelled `resolver-refused`, not deleted, so nothing here is silently dropped).
+
+| status | rows |
+|---|---:|
+| `ok` | 910 |
+| `resolver-refused` | 1 |
+| **sum** | **911** |
+
+- Scanned successfully (`ok` + `partial`): **910**
+- Excluded from scanning, resolver refuses it: **1** (`CNX_Chem_11_04_rvosmosis`)
+- Staged/opened/parsed failures of any kind: **0**
+
+Bought figures (group=`bought` in `after/summary.tsv`, joined on `artwork` path): **34** rows matched, of which **34** scanned successfully.
+
+`malformed_unclosed_bt` (a BT with no matching ET before end of stream) summed over every scanned figure: **0**.
+
+Spot check, the largest input this run staged/opened (106 MB `.pdf`, the slowest figure in the run): `CNX_Chem_21_04_ChnReact1` — status `ok`, `forms_visited=3140`, `bt_et_count=5`, `op_counts={'k': 1}`. A sane row, not a silent truncation — the size came from a very large number of `/Form` XObjects (one per drawn element), not from a hang.
+
+## Totals per operator and per class — ALL scanned figures (n=910)
+
+Counting unit: **occurrences** = instruction count; **figures** = distinct figures (rows) in which the operator/class appears at least once.
+
+### By class
+
+| class | occurrences | figures |
+|---|---:|---:|
+| persistent graphics state (`persistent-gstate`) | 12097 | 517 |
+| special graphics state (`special-gstate`) | 0 | 0 |
+| marked content (`marked-content`) | 0 | 0 |
+| path construction/painting/clipping (`path`) | 0 | 0 |
+| XObject/shading/inline image (`xobject`) | 0 | 0 |
+| compatibility (`compat`) | 0 | 0 |
+| other (`other`) | 0 | 0 |
+
+### By operator
+
+| operator | occurrences | figures |
+|---|---:|---:|
+| `k` | 6100 | 503 |
+| `gs` | 5849 | 415 |
+| `rg` | 148 | 12 |
+
+## Same, restricted to the 34 BOUGHT figures (n=34 scanned of 34)
+
+### By class
+
+| class | occurrences | figures |
+|---|---:|---:|
+| persistent graphics state (`persistent-gstate`) | 207 | 18 |
+| special graphics state (`special-gstate`) | 0 | 0 |
+| marked content (`marked-content`) | 0 | 0 |
+| path construction/painting/clipping (`path`) | 0 | 0 |
+| XObject/shading/inline image (`xobject`) | 0 | 0 |
+| compatibility (`compat`) | 0 | 0 |
+| other (`other`) | 0 | 0 |
+
+### By operator
+
+| operator | occurrences | figures |
+|---|---:|---:|
+| `k` | 110 | 18 |
+| `gs` | 97 | 10 |
+
+## Figures with ANY non-text operator inside BT..ET: 517 of 910 scanned (56.8%)
+
+Full list (basename, artwork path, staging recipe, bought 0/1, classes present) written to `figures-with-nontext-in-bt.tsv`. Bought figures among them: 18 of 517.
+
+- `CNX_Chem_01_01_ChemWeb` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_01_01_Electrolys` — classes: persistent-gstate — ops: {'k': 3, 'gs': 1}
+- `CNX_Chem_01_01_FuelCell` — classes: persistent-gstate — ops: {'k': 1, 'gs': 2}
+- `CNX_Chem_01_01_SciMethod` — classes: persistent-gstate — ops: {'k': 7, 'gs': 1}
+- `CNX_Chem_01_01_WaterDom` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_01_02_CellPhone` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_01_02_Cellulose` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_01_02_ConsMatter` — classes: persistent-gstate — ops: {'k': 2, 'gs': 1}
+- `CNX_Chem_01_02_GoldAtoms` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_01_02_MattType` — classes: persistent-gstate — ops: {'k': 2, 'gs': 1}
+- `CNX_Chem_01_02_Mixtures` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_01_02_Molecules` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_01_02_StatesMatt` — classes: persistent-gstate — ops: {'k': 2, 'gs': 1}
+- `CNX_Chem_01_03_ChemChange` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_01_03_HazDiamond` — classes: persistent-gstate — ops: {'k': 5}
+- `CNX_Chem_01_03_PeriodicPU` — classes: persistent-gstate — ops: {'k': 37}
+- `CNX_Chem_01_03_PhysChange` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_01_03_Rust` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_01_04_Volume` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_01_05_Archer2_img` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_01_05_Archery` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_01_05_Measure` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_01_05_SigDigits1_img` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_01_05_SigDigits2_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_01_05_SigDigits3_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_01_05_SigDigits4_img` — classes: persistent-gstate — ops: {'rg': 1}
+- `CNX_Chem_01_05_SigDigits5_img` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_01_06_TempScales` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_02_00_Biomarkers` — classes: persistent-gstate — ops: {'k': 19, 'gs': 19}
+- `CNX_Chem_02_01_Dalton2` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_02_01_Dalton3` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_02_01_MultProp` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_02_02_AtomModels` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_02_02_CathodeRay` — classes: persistent-gstate — ops: {'k': 3, 'gs': 1}
+- `CNX_Chem_02_02_GoldFoil3` — classes: persistent-gstate — ops: {'k': 4}
+- `CNX_Chem_02_02_Millikan` — classes: persistent-gstate — ops: {'k': 3}
+- `CNX_Chem_02_02_Rutherford` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_02_03_AtomSize` — classes: persistent-gstate — ops: {'k': 3, 'gs': 2}
+- `CNX_Chem_02_03_AtomSym` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_02_03_Iodine` — classes: persistent-gstate — ops: {'rg': 1}
+- `CNX_Chem_02_03_MassSpec` — classes: persistent-gstate — ops: {'k': 2, 'gs': 1}
+- `CNX_Chem_02_04_AceticAcid` — classes: persistent-gstate — ops: {'k': 9, 'gs': 8}
+- `CNX_Chem_02_04_Hydrogen` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_02_04_Isomers` — classes: persistent-gstate — ops: {'k': 17, 'gs': 16}
+- `CNX_Chem_02_04_Isomers2` — classes: persistent-gstate — ops: {'k': 46, 'gs': 44}
+- `CNX_Chem_02_04_MethaneRep` — classes: persistent-gstate — ops: {'k': 6, 'gs': 5}
+- `CNX_Chem_02_04_Question3a_img` — classes: persistent-gstate — ops: {'k': 3, 'gs': 3}
+- `CNX_Chem_02_04_Question3b_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_02_04_Question3c_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_02_04_Question3d_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_02_04_Question4a_img` — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_02_04_Question4b_img` — classes: persistent-gstate — ops: {'k': 10, 'gs': 10}
+- `CNX_Chem_02_04_Question4c_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_02_04_Question4d_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_02_04_Question7a_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_02_04_Question7b_img` — classes: persistent-gstate — ops: {'k': 14, 'gs': 14}
+- `CNX_Chem_02_04_Question9a_img` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_02_04_Question9b_img` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_02_04_Sulfur` — classes: persistent-gstate — ops: {'k': 9, 'gs': 8}
+- `CNX_Chem_02_04_TiO2` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_02_05_Mendeleev` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_02_05_PerTable2` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_02_06_IonCharges` — classes: persistent-gstate — ops: {'k': 4}
+- `CNX_Chem_02_06_NaCation` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_02_07_ErinBrocko` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_03_01_Ex01_05a_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_03_01_Ex01_05b_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_03_01_Ex01_05c_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_03_01_Ex01_05d_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_03_01_Ex01_06a_img` — classes: persistent-gstate — ops: {'k': 11, 'gs': 11}
+- `CNX_Chem_03_01_Ex01_06b_img` — classes: persistent-gstate — ops: {'k': 10, 'gs': 10}
+- `CNX_Chem_03_01_Ex01_06c_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_03_01_Ex01_06d_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_03_01_Ex01_07a_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_03_01_Ex01_07b_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_03_01_Ex01_07c_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_03_01_alsulfatemass_img` **[bought]** — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_03_01_chloroform` **[bought]** — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_03_01_exocytosis-88f6` **[bought]** — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_03_01_glycinemass_img` **[bought]** — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_03_01_saltMass` **[bought]** — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_03_02_saccharin_img` — classes: persistent-gstate — ops: {'rg': 17, 'gs': 17}
+- `CNX_Chem_03_03_empform` **[bought]** — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_03_05_faucet` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_03_05_saline` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_04_01_basehyd_img` **[bought]** — classes: persistent-gstate — ops: {'k': 26, 'gs': 26}
+- `CNX_Chem_04_01_rxn2` **[bought]** — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_04_01_rxn3` **[bought]** — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_04_02_HClsoln` **[bought]** — classes: persistent-gstate — ops: {'k': 4, 'gs': 1}
+- `CNX_Chem_04_03_etheneBr_img` **[bought]** — classes: persistent-gstate — ops: {'k': 17, 'gs': 17}
+- `CNX_Chem_04_03_ethene_img` **[bought]** — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_04_03_flowchart` **[bought]** — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_04_04_GreenChem` **[bought]** — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_04_04_limiting` **[bought]** — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_04_04_saccharin_img` — classes: persistent-gstate — ops: {'k': 17, 'gs': 17}
+- `CNX_Chem_04_04_sandwich` **[bought]** — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_04_05_combustion` **[bought]** — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_04_05_propionate_img` — classes: persistent-gstate — ops: {'k': 33, 'gs': 33}
+- `CNX_Chem_05_01_HeatTrans1` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_05_01_HotCold` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_05_01_OxyacTorch` — classes: persistent-gstate — ops: {'k': 2, 'gs': 1}
+- `CNX_Chem_05_01_SolTherm1` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_05_01_SolTherm2` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_05_01_Thermochem` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_05_01_Thermom` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_05_01_Waterfall` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_05_02_BombCalor` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_05_02_Calorim` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_05_02_Calorim2` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_05_02_FoodLabel` — classes: persistent-gstate — ops: {'k': 7, 'gs': 1}
+- `CNX_Chem_05_02_HeatMeas` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_05_02_HeatTrans2` — classes: persistent-gstate — ops: {'k': 5}
+- `CNX_Chem_05_02_IcePack` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_05_03_AlgalFuel1` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_05_03_AlgalFuel2` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_05_03_HessCO2` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_05_03_Summit` — classes: persistent-gstate — ops: {'k': 5}
+- `CNX_Chem_05_03_Systemqw` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_01_2spectra` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_01_AMFM` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_06_01_Blackbody` — classes: persistent-gstate — ops: {'k': 6, 'gs': 1}
+- `CNX_Chem_06_01_Ephoton` — classes: persistent-gstate — ops: {'gs': 1}
+- `CNX_Chem_06_01_Solardist` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_06_01_emspectrum` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_03_OrbOutline_img` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_06_03_Oshapes` — classes: persistent-gstate — ops: {'k': 25}
+- `CNX_Chem_06_04_Beryll12_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_04_Boron122_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_04_Carbon122_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_04_Econfig` — classes: persistent-gstate — ops: {'gs': 2}
+- `CNX_Chem_06_04_Efillorder` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_06_04_Helium1_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_04_Hydrog1_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_04_Lithium12_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_04_NOFNe_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_04_OrbDiaSh2a_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_04_OrbDiaSh2b_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_04_OrbDiaSh2c_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_04_PhosphOrb_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_04_Valence` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_06_05_Elaffin` — classes: persistent-gstate — ops: {'k': 4}
+- `CNX_Chem_06_05_Firstionen` — classes: persistent-gstate — ops: {'k': 4}
+- `CNX_Chem_06_05_Ionradii` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_06_05_Oxygen122_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_07_03_COCO2_img` — classes: persistent-gstate — ops: {'rg': 5, 'gs': 5}
+- `CNX_Chem_07_03_ClS_img` — classes: persistent-gstate — ops: {'k': 14, 'gs': 14}
+- `CNX_Chem_07_03_Exercise25_img` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_07_03_Exercise3a_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_03_Exercise3b_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_03_Exercise3c_img` — classes: persistent-gstate — ops: {'k': 3, 'gs': 3}
+- `CNX_Chem_07_03_Exercise3d_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_03_Exercise3e_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_03_Exercise3f_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_03_IF5XeF4_img` — classes: persistent-gstate — ops: {'k': 13, 'gs': 13}
+- `CNX_Chem_07_03_Lewisstruct1_img` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_07_03_MXLewisa_img` — classes: persistent-gstate — ops: {'k': 3, 'gs': 3}
+- `CNX_Chem_07_03_MXLewisb_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_07_03_MXLewisc_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_07_03_MXLewisd_img` — classes: persistent-gstate — ops: {'k': 5, 'gs': 5}
+- `CNX_Chem_07_03_NaCa_img` — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_07_03_Question18_img` — classes: persistent-gstate — ops: {'k': 42, 'gs': 42}
+- `CNX_Chem_07_03_Question1a_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_03_Question1b_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_03_Question1d_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_03_Question1g_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_03_Question5_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_03_Question7d_img` — classes: persistent-gstate — ops: {'k': 3, 'gs': 3}
+- `CNX_Chem_07_03_Question7f_img` — classes: persistent-gstate — ops: {'k': 5, 'gs': 5}
+- `CNX_Chem_07_03_Question7g_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_07_03_Question7h_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_07_03_Question9a_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_07_03_Question9c_img` — classes: persistent-gstate — ops: {'k': 5, 'gs': 5}
+- `CNX_Chem_07_03_SiH4_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_07_03_Singlebond_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_07_03_Unprelec_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_07_03_XeF6_img` — classes: persistent-gstate — ops: {'rg': 7, 'gs': 7}
+- `CNX_Chem_07_03_dative_img` — classes: persistent-gstate — ops: {'k': 17, 'gs': 17}
+- `CNX_Chem_07_03_ex070301_1_img` — classes: persistent-gstate — ops: {'rg': 19, 'gs': 19}
+- `CNX_Chem_07_03_ex070301_2_img` — classes: persistent-gstate — ops: {'rg': 19, 'gs': 19}
+- `CNX_Chem_07_03_ex070301_3_img` — classes: persistent-gstate — ops: {'rg': 19, 'gs': 19}
+- `CNX_Chem_07_03_ex070301_4_img` — classes: persistent-gstate — ops: {'rg': 28, 'gs': 28}
+- `CNX_Chem_07_03_formate2_img` — classes: persistent-gstate — ops: {'k': 11, 'gs': 11}
+- `CNX_Chem_07_03_nitrosoni2_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_07_03_nitrosoni3_img` — classes: persistent-gstate — ops: {'k': 3, 'gs': 3}
+- `CNX_Chem_07_04_Ex070402_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_07_04_Exercis12a_img` — classes: persistent-gstate — ops: {'k': 13, 'gs': 13}
+- `CNX_Chem_07_04_Exercis12b_img` — classes: persistent-gstate — ops: {'k': 13, 'gs': 13}
+- `CNX_Chem_07_04_Exercis12c_img` — classes: persistent-gstate — ops: {'k': 15, 'gs': 15}
+- `CNX_Chem_07_04_Exercis12d_img` — classes: persistent-gstate — ops: {'k': 28, 'gs': 28}
+- `CNX_Chem_07_04_HNO2_img` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_07_04_Ques11ans_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_07_04_Ques13ansb_img` — classes: persistent-gstate — ops: {'k': 3, 'gs': 3}
+- `CNX_Chem_07_04_Ques13ansc_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_04_Ques2ansb_img` — classes: persistent-gstate — ops: {'k': 15, 'gs': 15}
+- `CNX_Chem_07_04_Ques2ansc_img` — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_07_04_Thiocyan_img` — classes: persistent-gstate — ops: {'k': 23, 'gs': 23}
+- `CNX_Chem_07_05_CH3OHLew_img` — classes: persistent-gstate — ops: {'rg': 12, 'gs': 12}
+- `CNX_Chem_07_05_CH4bond_img` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_07_05_Ethanol_img` — classes: persistent-gstate — ops: {'rg': 19, 'gs': 19}
+- `CNX_Chem_07_06_BeF2` — classes: persistent-gstate — ops: {'k': 4, 'gs': 3}
+- `CNX_Chem_07_06_CS3a_img` — classes: persistent-gstate — ops: {'k': 15, 'gs': 15}
+- `CNX_Chem_07_06_CS3b_img` — classes: persistent-gstate — ops: {'k': 3, 'gs': 3}
+- `CNX_Chem_07_06_CS3c_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_07_06_Egeom` — classes: persistent-gstate — ops: {'k': 5}
+- `CNX_Chem_07_06_NH3` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_07_06_OSC_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 3}
+- `CNX_Chem_07_06_Ques23ans_img` — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_07_06_SH2NH3_img` — classes: persistent-gstate — ops: {'k': 14, 'gs': 14}
+- `CNX_Chem_07_06_molgeom` — classes: persistent-gstate — ops: {'k': 80, 'gs': 80}
+- `CNX_Chem_08_00_N2O2Lewis_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_08_01_C4H6_img` — classes: persistent-gstate — ops: {'k': 10, 'gs': 10}
+- `CNX_Chem_08_01_Exover_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_08_01_N2LewStru_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_08_01_O2bonds_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 1}
+- `CNX_Chem_08_01_bondtype_img` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_08_01_overlap` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_08_01_sigma` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_08_02_BH3` — classes: persistent-gstate — ops: {'k': 5, 'gs': 5}
+- `CNX_Chem_08_02_CO2Diag` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_08_02_H2Otet` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_08_02_HybrdOrbit` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_08_02_SF4_img` — classes: persistent-gstate — ops: {'k': 5, 'gs': 5}
+- `CNX_Chem_08_02_SF6` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_08_02_SulfManuf1_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_08_02_SulfManuf2_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_08_02_SulfManuf3_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_08_02_SulfManuf4_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_08_02_acetic_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_08_02_enyne_img` — classes: persistent-gstate — ops: {'k': 14, 'gs': 14}
+- `CNX_Chem_08_02_ethane` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_08_02_hybrid_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_08_02_methionine_img` — classes: persistent-gstate — ops: {'k': 20, 'gs': 20}
+- `CNX_Chem_08_02_phosnitro_img` — classes: persistent-gstate — ops: {'k': 10, 'gs': 10}
+- `CNX_Chem_08_02_phsphorus1_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_08_02_phsphorus2_img` — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_08_02_sp2Conv` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_08_02_sp2Ex` — classes: persistent-gstate — ops: {'k': 13, 'gs': 13}
+- `CNX_Chem_08_02_sp3Geom` — classes: persistent-gstate — ops: {'k': 3}
+- `CNX_Chem_08_02_sp3d` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_08_02_sp3d_img` — classes: persistent-gstate — ops: {'k': 15, 'gs': 15}
+- `CNX_Chem_08_02_spGeom` — classes: persistent-gstate — ops: {'k': 3}
+- `CNX_Chem_08_02_sulfate_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_08_02_urea_img` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_08_02_xefluoride_img` — classes: persistent-gstate — ops: {'k': 3, 'gs': 3}
+- `CNX_Chem_08_03_Acetonitri_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_08_03_C2H2` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_08_03_C2H4orbit` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_08_03_C4H4Lewis_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_08_03_C6H6` — classes: persistent-gstate — ops: {'k': 24, 'gs': 24}
+- `CNX_Chem_08_03_HybridAll_img` — classes: persistent-gstate — ops: {'k': 11, 'gs': 11}
+- `CNX_Chem_08_03_HybridCarb_img` — classes: persistent-gstate — ops: {'k': 10, 'gs': 10}
+- `CNX_Chem_08_03_HybridSulf_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 3}
+- `CNX_Chem_08_03_SO2_img` — classes: persistent-gstate — ops: {'k': 10, 'gs': 10}
+- `CNX_Chem_08_03_sp3config` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_08_03_spC` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_08_04_AOtype_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_08_04_Gouy` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_08_04_O2_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_08_04_waveadd` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_09_01_Atmosphere` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_11_01_Icepack` — classes: persistent-gstate — ops: {'k': 2, 'gs': 1}
+- `CNX_Chem_11_01_solusolv` — classes: persistent-gstate — ops: {'k': 2, 'gs': 1}
+- `CNX_Chem_11_02_Fe(NO3)3_img` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_11_02_H3O_CL_img` — classes: persistent-gstate — ops: {'k': 14, 'gs': 14}
+- `CNX_Chem_11_02_ammonia1_img` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_11_02_waterions` — classes: persistent-gstate — ops: {'k': 7}
+- `CNX_Chem_11_03_LakeNyos` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_11_03_O2dissolv` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_11_03_gasdissolv` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_11_04_Ex02Steps_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_11_04_LabDistill` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_11_04_bloodcell` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_11_04_ionpair` — classes: persistent-gstate — ops: {'k': 6}
+- `CNX_Chem_11_04_phasediag` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_11_04_refinery` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_11_04_waterpur` — classes: persistent-gstate — ops: {'rg': 1, 'gs': 1}
+- `CNX_Chem_11_05_Colloid` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_11_05_FredCottre` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_11_05_detrg` — classes: persistent-gstate — ops: {'k': 38, 'gs': 38}
+- `CNX_Chem_11_05_emulsoil` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_11_05_oilspill` — classes: persistent-gstate — ops: {'k': 2, 'gs': 1}
+- `CNX_Chem_11_05_soap` — classes: persistent-gstate — ops: {'k': 55, 'gs': 55}
+- `CNX_Chem_13_00_Blood` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_13_05_Butane_img` — classes: persistent-gstate — ops: {'k': 24, 'gs': 23}
+- `CNX_Chem_14_01_Water_img` — classes: persistent-gstate — ops: {'k': 26, 'gs': 26}
+- `CNX_Chem_14_01_conjugate_img` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_14_02_phscale` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_14_03_AcidpH` — classes: persistent-gstate — ops: {'k': 5}
+- `CNX_Chem_14_03_FishLemon` **[bought]** — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_14_03_OHbonds_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 3}
+- `CNX_Chem_14_03_Oxyacid` — classes: persistent-gstate — ops: {'k': 28, 'gs': 27}
+- `CNX_Chem_14_03_corresp` — classes: persistent-gstate — ops: {'k': 11}
+- `CNX_Chem_14_03_strong` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_14_04_hydronium` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_14_05_acetic_img` — classes: persistent-gstate — ops: {'k': 26, 'gs': 26}
+- `CNX_Chem_15_02_AlOH4_img` — classes: persistent-gstate — ops: {'k': 10, 'gs': 10}
+- `CNX_Chem_15_02_Answer18a_img` — classes: persistent-gstate — ops: {'k': 14, 'gs': 14}
+- `CNX_Chem_15_02_Answer18b_img` — classes: persistent-gstate — ops: {'k': 23, 'gs': 23}
+- `CNX_Chem_15_02_Answer18c_img` — classes: persistent-gstate — ops: {'k': 11, 'gs': 11}
+- `CNX_Chem_15_02_Answer18d_img` — classes: persistent-gstate — ops: {'k': 15, 'gs': 15}
+- `CNX_Chem_15_02_Answer18e_img` — classes: persistent-gstate — ops: {'k': 15, 'gs': 15}
+- `CNX_Chem_15_02_Answer24a_img` — classes: persistent-gstate — ops: {'k': 25, 'gs': 25}
+- `CNX_Chem_15_02_Answer24b_img` — classes: persistent-gstate — ops: {'k': 20, 'gs': 20}
+- `CNX_Chem_15_02_Answer24c_img` — classes: persistent-gstate — ops: {'k': 15, 'gs': 15}
+- `CNX_Chem_15_02_Answer24d_img` — classes: persistent-gstate — ops: {'k': 30, 'gs': 30}
+- `CNX_Chem_15_02_BF3-LA_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 15}
+- `CNX_Chem_15_02_CuCN2-_img` — classes: persistent-gstate — ops: {'k': 5, 'gs': 5}
+- `CNX_Chem_15_02_NH3-LBase_img` — classes: persistent-gstate — ops: {'k': 20, 'gs': 20}
+- `CNX_Chem_15_02_NonmetalOx_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_15_03_AgBr_img` — classes: persistent-gstate — ops: {'k': 21, 'gs': 21}
+- `CNX_Chem_16_01_carbon` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_16_02_Gas` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_16_02_Microstates` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_16_03_Energy` — classes: persistent-gstate — ops: {'k': 42}
+- `CNX_Chem_16_03_Entropies` — classes: persistent-gstate — ops: {'k': 2, 'gs': 1}
+- `CNX_Chem_16_04_Scenarios` — classes: persistent-gstate — ops: {'k': 3}
+- `CNX_Chem_17_04_Relation` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_17_05_Lead` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_17_05_LiIon` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_18_02_Boricacid_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 6}
+- `CNX_Chem_18_02_HallHerCell` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_18_03_BorateAnio` — classes: persistent-gstate — ops: {'k': 54, 'gs': 54}
+- `CNX_Chem_18_03_Structures` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_18_04_Carbonform` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_18_04_Phosphorus` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_18_04_Sulfrchain` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_18_05_Electrolys` — classes: persistent-gstate — ops: {'k': 3, 'gs': 1}
+- `CNX_Chem_18_06_Cave` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_18_07_Exercise1a_img` — classes: persistent-gstate — ops: {'k': 3, 'gs': 3}
+- `CNX_Chem_18_07_Exercise1b_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_18_07_Exercise1c_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_18_07_Exercise1d_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_18_07_Exercise1e_img` — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_18_07_Exercise5a_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_18_07_Exercise5b_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_18_07_Exercise5c_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_18_07_N2O5` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_18_08_Exercise1a_img` — classes: persistent-gstate — ops: {'k': 4, 'gs': 4}
+- `CNX_Chem_18_08_Exercise1b_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_18_08_Exercise1c_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_18_08_Exercise1d_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_18_08_Exercise1e_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_18_08_Exercise8a_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_18_08_Exercise8b_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_18_08_Exercise8c_img` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_18_08_Exercise8d_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_18_09_ChloritIon` — classes: persistent-gstate — ops: {'k': 7, 'gs': 6}
+- `CNX_Chem_18_09_ClO3Ion` — classes: persistent-gstate — ops: {'k': 8, 'gs': 7}
+- `CNX_Chem_18_11_Exercise4a_img` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_18_11_Exercise4b_img` — classes: persistent-gstate — ops: {'k': 5, 'gs': 5}
+- `CNX_Chem_18_11_Exercise4c_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_18_11_Exercise4d_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_18_11_Exercise4e_img` — classes: persistent-gstate — ops: {'k': 5, 'gs': 5}
+- `CNX_Chem_19_01_PeriodicEConfig` — classes: persistent-gstate — ops: {'k': 37}
+- `CNX_Chem_19_02_4geom` — classes: persistent-gstate — ops: {'k': 17, 'gs': 17}
+- `CNX_Chem_19_02_Answer4a_img` — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_19_02_Answer4b_img` — classes: persistent-gstate — ops: {'k': 15, 'gs': 15}
+- `CNX_Chem_19_02_Answer4c_img` — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_19_02_Answer4d_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_19_02_Answer4e_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_19_02_Answer4f_img` — classes: persistent-gstate — ops: {'k': 48, 'gs': 48}
+- `CNX_Chem_19_02_BalEnt` — classes: persistent-gstate — ops: {'k': 32, 'gs': 32}
+- `CNX_Chem_19_02_BondType` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_19_02_CN` — classes: persistent-gstate — ops: {'k': 24, 'gs': 24}
+- `CNX_Chem_19_02_ChlorBlue` — classes: persistent-gstate — ops: {'k': 27, 'gs': 26}
+- `CNX_Chem_19_02_Coen2Cl2` — classes: persistent-gstate — ops: {'k': 50, 'gs': 50}
+- `CNX_Chem_19_02_DMSA` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_19_02_EDTA` — classes: persistent-gstate — ops: {'k': 21, 'gs': 21}
+- `CNX_Chem_19_02_Gly` — classes: persistent-gstate — ops: {'k': 13, 'gs': 11}
+- `CNX_Chem_19_02_H2O2Br2` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_19_02_cistrans` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_19_02_en` — classes: persistent-gstate — ops: {'k': 34, 'gs': 34}
+- `CNX_Chem_19_02_enant` — classes: persistent-gstate — ops: {'k': 38, 'gs': 38}
+- `CNX_Chem_19_02_ex10ans_img` — classes: persistent-gstate — ops: {'k': 64, 'gs': 64}
+- `CNX_Chem_19_02_heme` — classes: persistent-gstate — ops: {'k': 47, 'gs': 47}
+- `CNX_Chem_19_02_oct` — classes: persistent-gstate — ops: {'k': 45, 'gs': 45}
+- `CNX_Chem_19_02_structures` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_19_02_transplatin` — classes: persistent-gstate — ops: {'k': 5, 'gs': 5}
+- `CNX_Chem_19_03_CFSE` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_19_03_FECN6FEH2O_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_19_03_Lightper` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_19_03_Lowhigh` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_20_01_AromatIso1_img` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_20_01_AromatIso2_img` — classes: persistent-gstate — ops: {'k': 36, 'gs': 36}
+- `CNX_Chem_20_01_AromatIso3_img` — classes: persistent-gstate — ops: {'k': 42, 'gs': 42}
+- `CNX_Chem_20_01_GeomHybr1_img` — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_20_01_HalAlkane2_img` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_20_01_HalAlkane3_img` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_20_01_HalAlkane_img` — classes: persistent-gstate — ops: {'k': 13, 'gs': 13}
+- `CNX_Chem_20_01_HaloReact2_img` — classes: persistent-gstate — ops: {'k': 15, 'gs': 15}
+- `CNX_Chem_20_01_HaloReact_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_20_01_HybrBAngl_img` — classes: persistent-gstate — ops: {'k': 15, 'gs': 15}
+- `CNX_Chem_20_01_LineStruct1` — classes: persistent-gstate — ops: {'k': 57, 'gs': 57}
+- `CNX_Chem_20_01_LineStruct2_img` — classes: persistent-gstate — ops: {'k': 19, 'gs': 18}
+- `CNX_Chem_20_01_LineStruct3_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_20_01_LineStruct4_img` — classes: persistent-gstate — ops: {'k': 22, 'gs': 21}
+- `CNX_Chem_20_01_LineStruct5_img` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_20_01_LineStruct7_img` — classes: persistent-gstate — ops: {'k': 22, 'gs': 22}
+- `CNX_Chem_20_01_ReactProd1_img` — classes: persistent-gstate — ops: {'k': 21, 'gs': 21}
+- `CNX_Chem_20_01_acetylene_img` — classes: persistent-gstate — ops: {'k': 19, 'gs': 19}
+- `CNX_Chem_20_01_alkanes` — classes: persistent-gstate — ops: {'k': 33, 'gs': 33}
+- `CNX_Chem_20_01_alkenes_img` — classes: persistent-gstate — ops: {'k': 51, 'gs': 51}
+- `CNX_Chem_20_01_alklnm_img` — classes: persistent-gstate — ops: {'k': 88, 'gs': 87}
+- `CNX_Chem_20_01_alkyl_img` — classes: persistent-gstate — ops: {'k': 28, 'gs': 28}
+- `CNX_Chem_20_01_alkyls` — classes: persistent-gstate — ops: {'k': 71, 'gs': 70}
+- `CNX_Chem_20_01_alkyne_img` — classes: persistent-gstate — ops: {'k': 5, 'gs': 5}
+- `CNX_Chem_20_01_aromatic_img` — classes: persistent-gstate — ops: {'k': 24, 'gs': 24}
+- `CNX_Chem_20_01_benzene` — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_20_01_butaneIsom_img` — classes: persistent-gstate — ops: {'k': 29, 'gs': 28}
+- `CNX_Chem_20_01_butane_img` — classes: persistent-gstate — ops: {'k': 42, 'gs': 42}
+- `CNX_Chem_20_01_ethylChlor_img` — classes: persistent-gstate — ops: {'k': 25, 'gs': 24}
+- `CNX_Chem_20_01_ex1_11_c_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_20_01_ex1_11_e_img` — classes: persistent-gstate — ops: {'k': 3, 'gs': 3}
+- `CNX_Chem_20_01_ex1_11_f_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_20_01_ex1_12_c_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_20_01_ex1_12_e_img` — classes: persistent-gstate — ops: {'k': 3, 'gs': 3}
+- `CNX_Chem_20_01_ex1_14_img` — classes: persistent-gstate — ops: {'k': 29, 'gs': 28}
+- `CNX_Chem_20_01_ex1_16_img` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_20_01_ex1_18a_img` — classes: persistent-gstate — ops: {'k': 21, 'gs': 21}
+- `CNX_Chem_20_01_ex1_18b_img` — classes: persistent-gstate — ops: {'k': 63, 'gs': 63}
+- `CNX_Chem_20_01_ex1_1a_img` — classes: persistent-gstate — ops: {'k': 17, 'gs': 17}
+- `CNX_Chem_20_01_ex1_1b_img` — classes: persistent-gstate — ops: {'k': 15, 'gs': 15}
+- `CNX_Chem_20_01_ex1_1c_img` — classes: persistent-gstate — ops: {'k': 13, 'gs': 13}
+- `CNX_Chem_20_01_ex1_20_img` — classes: persistent-gstate — ops: {'k': 58, 'gs': 58}
+- `CNX_Chem_20_01_ex1_21_img` — classes: persistent-gstate — ops: {'k': 109, 'gs': 109}
+- `CNX_Chem_20_01_ex1_23_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_20_01_geoIsomers_img` — classes: persistent-gstate — ops: {'k': 35, 'gs': 35}
+- `CNX_Chem_20_01_halogen_img` — classes: persistent-gstate — ops: {'k': 19, 'gs': 19}
+- `CNX_Chem_20_01_hexane_a_img` — classes: persistent-gstate — ops: {'k': 20, 'gs': 20}
+- `CNX_Chem_20_01_hexane_b_img` — classes: persistent-gstate — ops: {'k': 20, 'gs': 20}
+- `CNX_Chem_20_01_hexane_c_img` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_20_01_hexane_d_img` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_20_01_hexane_e_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_20_01_hexane_f_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_20_01_monomer` — classes: persistent-gstate — ops: {'k': 50, 'gs': 50}
+- `CNX_Chem_20_01_notiso1_img` — classes: persistent-gstate — ops: {'k': 38, 'gs': 38}
+- `CNX_Chem_20_01_notiso2_img` — classes: persistent-gstate — ops: {'k': 40, 'gs': 40}
+- `CNX_Chem_20_01_octane1_img` — classes: persistent-gstate — ops: {'k': 34, 'gs': 34}
+- `CNX_Chem_20_01_octane2_img` — classes: persistent-gstate — ops: {'k': 35, 'gs': 35}
+- `CNX_Chem_20_01_propane_img` — classes: persistent-gstate — ops: {'k': 26, 'gs': 25}
+- `CNX_Chem_20_01_propene1` — classes: persistent-gstate — ops: {'k': 30, 'gs': 30}
+- `CNX_Chem_20_01_recycle` — classes: persistent-gstate — ops: {'k': 28, 'gs': 28}
+- `CNX_Chem_20_01_subbenzene_img` — classes: persistent-gstate — ops: {'k': 49, 'gs': 49}
+- `CNX_Chem_20_01_substitu_img` — classes: persistent-gstate — ops: {'k': 92, 'gs': 92}
+- `CNX_Chem_20_02_Exercise3a_img` — classes: persistent-gstate — ops: {'k': 13, 'gs': 13}
+- `CNX_Chem_20_02_Exercise3b_img` — classes: persistent-gstate — ops: {'k': 20, 'gs': 20}
+- `CNX_Chem_20_02_Exercise3c_img` — classes: persistent-gstate — ops: {'k': 24, 'gs': 24}
+- `CNX_Chem_20_02_Exercise4a_img` — classes: persistent-gstate — ops: {'k': 19, 'gs': 19}
+- `CNX_Chem_20_02_Exercise4b_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_20_02_Exercise4c_img` — classes: persistent-gstate — ops: {'k': 13, 'gs': 13}
+- `CNX_Chem_20_02_FunctGroup_img` — classes: persistent-gstate — ops: {'k': 47, 'gs': 46}
+- `CNX_Chem_20_02_MTBE_img` — classes: persistent-gstate — ops: {'k': 30, 'gs': 30}
+- `CNX_Chem_20_02_NameEthers_img` — classes: persistent-gstate — ops: {'k': 10, 'gs': 10}
+- `CNX_Chem_20_02_alcohol1_img` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_20_02_alcohol2_img` — classes: persistent-gstate — ops: {'k': 19, 'gs': 19}
+- `CNX_Chem_20_02_ethanol_img` — classes: persistent-gstate — ops: {'k': 17, 'gs': 17}
+- `CNX_Chem_20_02_ether_img` — classes: persistent-gstate — ops: {'k': 40, 'gs': 40}
+- `CNX_Chem_20_02_ethers1_img` — classes: persistent-gstate — ops: {'k': 13, 'gs': 13}
+- `CNX_Chem_20_02_ethers2_img` — classes: persistent-gstate — ops: {'k': 12, 'gs': 12}
+- `CNX_Chem_20_02_ferment_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 6}
+- `CNX_Chem_20_02_polyols_img` — classes: persistent-gstate — ops: {'k': 26, 'gs': 26}
+- `CNX_Chem_20_02_sugars` — classes: persistent-gstate — ops: {'k': 71, 'gs': 71}
+- `CNX_Chem_20_03_COgeom_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_20_03_CarboxEst1_img` — classes: persistent-gstate — ops: {'k': 37, 'gs': 37}
+- `CNX_Chem_20_03_CarboxEst2_img` — classes: persistent-gstate — ops: {'k': 23, 'gs': 23}
+- `CNX_Chem_20_03_OxiOrder_img` — classes: persistent-gstate — ops: {'k': 30, 'gs': 30}
+- `CNX_Chem_20_03_OxiProd1a_a_img` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_20_03_OxiProd1a_b_img` — classes: persistent-gstate — ops: {'k': 11, 'gs': 11}
+- `CNX_Chem_20_03_OxiProd1a_c_img` — classes: persistent-gstate — ops: {'k': 13, 'gs': 13}
+- `CNX_Chem_20_03_OxiProd1b_a_img` — classes: persistent-gstate — ops: {'k': 10, 'gs': 10}
+- `CNX_Chem_20_03_OxiProd1b_b_img` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_20_03_OxiProd1b_c_img` — classes: persistent-gstate — ops: {'k': 11, 'gs': 11}
+- `CNX_Chem_20_03_OxiRedu_img` — classes: persistent-gstate — ops: {'k': 23, 'gs': 23}
+- `CNX_Chem_20_03_ReduProd1a_a_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 6}
+- `CNX_Chem_20_03_ReduProd1a_b_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_20_03_ReduProd1a_c_img` — classes: persistent-gstate — ops: {'k': 7, 'gs': 7}
+- `CNX_Chem_20_03_acetate_img` — classes: persistent-gstate — ops: {'k': 16, 'gs': 16}
+- `CNX_Chem_20_03_alcoholABC_img` — classes: persistent-gstate — ops: {'k': 48, 'gs': 48}
+- `CNX_Chem_20_03_aldehyde_img` — classes: persistent-gstate — ops: {'k': 10, 'gs': 10}
+- `CNX_Chem_20_03_aldket_img` — classes: persistent-gstate — ops: {'k': 22, 'gs': 22}
+- `CNX_Chem_20_03_carbonyl_img` — classes: persistent-gstate — ops: {'k': 2, 'gs': 2}
+- `CNX_Chem_20_03_carboxylic_img` — classes: persistent-gstate — ops: {'k': 30, 'gs': 30}
+- `CNX_Chem_20_03_esterform_img` — classes: persistent-gstate — ops: {'k': 27, 'gs': 26}
+- `CNX_Chem_20_03_oxaldehyde_img` — classes: persistent-gstate — ops: {'k': 6, 'gs': 4}
+- `CNX_Chem_20_03_oxidation_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 8}
+- `CNX_Chem_20_03_oxketone_img` — classes: persistent-gstate — ops: {'k': 8, 'gs': 4}
+- `CNX_Chem_20_03_oxtoacid_img` — classes: persistent-gstate — ops: {'k': 18, 'gs': 18}
+- `CNX_Chem_20_04_DNA` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_20_04_alkaloids_img` — classes: persistent-gstate — ops: {'k': 49, 'gs': 49}
+- `CNX_Chem_20_04_amide1_img` — classes: persistent-gstate — ops: {'k': 36, 'gs': 36}
+- `CNX_Chem_20_04_amide2_img` — classes: persistent-gstate — ops: {'k': 38, 'gs': 38}
+- `CNX_Chem_20_04_amines_img` — classes: persistent-gstate — ops: {'k': 27, 'gs': 27}
+- `CNX_Chem_20_04_ammonia_img` — classes: persistent-gstate — ops: {'k': 28, 'gs': 28}
+- `CNX_Chem_20_04_kevlar1` — classes: persistent-gstate — ops: {'k': 9, 'gs': 9}
+- `CNX_Chem_20_04_kevlar2` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_20_04_kevpoly` — classes: persistent-gstate — ops: {'k': 65, 'gs': 65}
+- `CNX_Chem_20_04_peptide` — classes: persistent-gstate — ops: {'k': 46, 'gs': 46}
+- `CNX_Chem_20_04_pyridine_img` — classes: persistent-gstate — ops: {'k': 11, 'gs': 11}
+- `CNX_Chem_20_04_pyridinium_img` — classes: persistent-gstate — ops: {'k': 26, 'gs': 26}
+- `CNX_Chem_20_04_react2a_img` — classes: persistent-gstate — ops: {'k': 32, 'gs': 32}
+- `CNX_Chem_20_04_react2b_img` — classes: persistent-gstate — ops: {'k': 48, 'gs': 48}
+- `CNX_Chem_20_04_react2c_img` — classes: persistent-gstate — ops: {'k': 40, 'gs': 40}
+- `CNX_Chem_20_04_react2e_img` — classes: persistent-gstate — ops: {'k': 20, 'gs': 20}
+- `CNX_Chem_20_04_reaction1b_img` — classes: persistent-gstate — ops: {'k': 28, 'gs': 28}
+- `CNX_Chem_20_04_reaction1c_img` — classes: persistent-gstate — ops: {'k': 30, 'gs': 30}
+- `CNX_Chem_20_04_reaction1f_img` — classes: persistent-gstate — ops: {'k': 32, 'gs': 32}
+- `CNX_Chem_21_01_BandStable` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_21_01_BindEnergy` — classes: persistent-gstate — ops: {'k': 3}
+- `CNX_Chem_21_03_Radiation` — classes: persistent-gstate — ops: {'k': 6}
+- `CNX_Chem_21_04_ChnReact1` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_21_04_CritMass` — classes: persistent-gstate — ops: {'k': 1, 'gs': 1}
+- `CNX_Chem_21_05_Co60Decay` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_21_05_SmokeAlarm` — classes: persistent-gstate — ops: {'k': 6, 'gs': 2}
+- `CNX_Chem_21_06_Damage1` — classes: persistent-gstate — ops: {'k': 1}
+- `CNX_Chem_21_06_Damage2` — classes: persistent-gstate — ops: {'k': 1, 'gs': 2}
+- `CNX_Chem_21_06_Exposure2` — classes: persistent-gstate — ops: {'k': 2}
+- `CNX_Chem_21_06_IonRadSpec` — classes: persistent-gstate — ops: {'k': 4, 'gs': 1}
+
+## Figures with an operator in special-gstate, path, XObject/inline-image, or "other" — named individually
+
+### special graphics state (`special-gstate`) — 0 figure(s)
+
+_(none)_
+
+### path construction/painting/clipping (`path`) — 0 figure(s)
+
+_(none)_
+
+### XObject/shading/inline image (`xobject`) — 0 figure(s)
+
+_(none)_
+
+### other (`other`) — 0 figure(s)
+
+_(none)_
+
+## Text render modes (Tr) seen
+
+- mode `0`: 330 figure(s) — CNX_Chem_02_00_Biomarkers, CNX_Chem_02_04_AceticAcid, CNX_Chem_02_04_Isomers, CNX_Chem_02_04_Isomers2, CNX_Chem_02_04_MethaneRep, CNX_Chem_02_04_Question3a_img, CNX_Chem_02_04_Question3b_img, CNX_Chem_02_04_Question3c_img, CNX_Chem_02_04_Question3d_img, CNX_Chem_02_04_Question4a_img, CNX_Chem_02_04_Question4b_img, CNX_Chem_02_04_Question4c_img, CNX_Chem_02_04_Question4d_img, CNX_Chem_02_04_Question7a_img, CNX_Chem_02_04_Question7b_img, CNX_Chem_02_04_Question9a_img, CNX_Chem_02_04_Question9b_img, CNX_Chem_02_04_Sulfur, CNX_Chem_03_01_Ex01_05a_img, CNX_Chem_03_01_Ex01_05b_img ...
+- mode `7`: 9 figure(s) — CNX_Chem_01_02_decomp, CNX_Chem_02_04_Benzene, CNX_Chem_03_02_moles-6296, CNX_Chem_04_02_Citrus, CNX_Chem_04_02_ammonia, CNX_Chem_04_04_CuAgNO3, CNX_Chem_04_05_titration, CNX_Chem_11_03_recompress, CNX_Chem_18_04_Nanotube
+
+**Cross-check against strip-text.py's own docstring** (its named 8-figure "7 Tr" list, treated as a hypothesis, not fact):
+- In this run's mode-7 set but NOT in the docstring list: ['CNX_Chem_18_04_Nanotube']
+- In the docstring list but NOT found with mode 7 in this run: (none)
+- Agreement: ['CNX_Chem_01_02_decomp', 'CNX_Chem_02_04_Benzene', 'CNX_Chem_03_02_moles-6296', 'CNX_Chem_04_02_Citrus', 'CNX_Chem_04_02_ammonia', 'CNX_Chem_04_04_CuAgNO3', 'CNX_Chem_04_05_titration', 'CNX_Chem_11_03_recompress']
+
+**Mode 7 is a SEPARATE hazard from everything else in this census, and this instrument cannot see it.** `CNX_Chem_04_02_Citrus` has `Tr` mode 7 but classes_present = [] — ZERO non-text operators inside BT. That is expected, not a contradiction: mode 7 adds glyph outlines to the CLIPPING PATH, and the image that gets painted through that clip is drawn by a `Do` AFTER the `ET`, at text depth 0 — this census only tracks persistent GRAPHICS STATE (colour, line width, …) surviving past ET, and a clipping path is a different kind of persisted state, entirely orthogonal to the class list this task asked for. Treat the `Tr`-mode list above as its own axis, checked against `strip-text.py`'s docstring, never folded into the "non-text-in-BT" or "later paint" findings.
+
+## "Later paint depends on it" — persistent-gstate-inside-BT events with paints_in_window > 0: 108 figure(s)
+
+**Positive control, CHECKED (not just asserted in prose):** `CNX_Chem_04_05_combustion` carries a `k` event ['0.698', '0.675', '0.639', '0.74'] with `paints_in_window = 29` (>= 7, the arrowhead count the register measured as recoloured). `verify_positive_control()` in this script raises if this ever stops holding.
+
+**Of the 34 bought figures, 6 have at least one later-paint event** (i.e. would show SOME visible consequence from the current strip, by this census's over-approximate flag): CNX_Chem_03_01_exocytosis-88f6, CNX_Chem_03_03_empform, CNX_Chem_04_02_HClsoln, CNX_Chem_04_03_flowchart, CNX_Chem_04_04_sandwich, CNX_Chem_04_05_combustion.
+
+**Same-BT shadowing inflates the per-figure event COUNT (not the figure-level "has any" verdict) — read `n_later_paint_events` as an upper bound on how many DISTINCT persisted values matter, not as that number.** When two persistent-gstate ops of the SAME category and SAME scope occur inside the SAME BT..ET (e.g. a run of glyphs each preceded by its own `k`), only the LAST one before ET is the value actually left behind — the earlier ones were overwritten before ET and never persisted at all. This census arms an event only at ITS OWN ET and never retires an unarmed sibling against another unarmed sibling, so `CNX_Chem_21_05_SmokeAlarm` below reports 8 fill-colour/extgstate "events" from what is closer to ~3 actually-persisting values. This does NOT change any figure-level count in this report (bought-scanned, with_nontext, later_paint_figs all key on "any", not "how many") — it only means a per-figure event list should not be read as a tally of distinct colour changes.
+
+**Why 29, not 7 — read before treating the gap as a bug.** `paints_in_window` counts every instruction in the paint set `f F f* B B* b b* S s sh Do` (+ inline images) seen after the event with nothing invalidating it — the SAME union the task spec asks for. A `k`/`K` fill-colour event is closed only by another fill-colour set or a `Q` popping below its scope; a stroke-only `S` or an unrelated `Do` in between still counts, because this census cannot tell "uses THIS persisted value" from "happens while nothing has un-set it" without re-deriving full paint semantics (this is the documented over-approximation, see Scope note). So 29 is an upper bound containing the 7 real arrowhead fills, not a wrong count of them — the render step (draw with/without the BT..ET, diff pixels) is what tells 7 apart from the other 22.
+
+- `CNX_Chem_21_05_SmokeAlarm`: 8 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=16, closed_by=reset
+    - stream PAGE, `gs` ['/GS6'] (category extgstate, setDepth 0) -> paints_in_window=16, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '0.1'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=14, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '0'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '0.1'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=None
+- `CNX_Chem_05_02_FoodLabel`: 7 event(s)
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=34, closed_by=None
+    - stream PAGE, `k` ['0.5', '0.1', '1', '0.4'] (category fill-colour, setDepth 0) -> paints_in_window=6, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=6, closed_by=reset
+    - stream PAGE, `k` ['0.09', '0.81', '0.9', '0.18'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+    - stream PAGE, `k` ['0.75', '0.6', '0', '0.05'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+    - stream PAGE, `k` ['0.4', '0.8', '0.05', '0.1'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+- `CNX_Chem_06_01_Blackbody`: 7 event(s)
+    - stream PAGE, `k` ['0.699', '0.676', '0.639', '0.747'] (category fill-colour, setDepth 0) -> paints_in_window=52, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=52, closed_by=None
+    - stream PAGE, `k` ['0.75', '0.6', '0', '0.05'] (category fill-colour, setDepth 0) -> paints_in_window=52, closed_by=None
+    - stream PAGE, `k` ['0.5', '0.1', '1', '0.1'] (category fill-colour, setDepth 0) -> paints_in_window=52, closed_by=None
+    - stream PAGE, `k` ['0.15', '0.28', '1', '0.2'] (category fill-colour, setDepth 0) -> paints_in_window=52, closed_by=None
+    - stream PAGE, `k` ['0.09', '0.81', '0.9', '0.18'] (category fill-colour, setDepth 0) -> paints_in_window=52, closed_by=None
+    - stream PAGE, `k` ['0.699', '0.676', '0.639', '0.747'] (category fill-colour, setDepth 0) -> paints_in_window=52, closed_by=None
+- `CNX_Chem_21_03_Radiation`: 6 event(s)
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=10, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=10, closed_by=None
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=10, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=10, closed_by=None
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=10, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=10, closed_by=None
+- `CNX_Chem_04_02_HClsoln` **[bought]**: 5 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=16, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=16, closed_by=None
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=16, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=16, closed_by=None
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=16, closed_by=None
+- `CNX_Chem_07_06_Egeom`: 5 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=reset
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=reset
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=108, closed_by=None
+- `CNX_Chem_01_03_HazDiamond`: 4 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '0'] (category fill-colour, setDepth 0) -> paints_in_window=4, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=4, closed_by=reset
+- `CNX_Chem_01_03_PeriodicPU`: 4 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `k` ['1', '0.55', '0', '0.1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `k` ['0.3', '1', '1', '0.3'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=8, closed_by=reset
+- `CNX_Chem_19_01_PeriodicEConfig`: 4 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `k` ['1', '0.55', '0', '0.1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `k` ['0.3', '1', '1', '0.3'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=8, closed_by=reset
+- `CNX_Chem_01_02_ConsMatter`: 3 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=33, closed_by=reset
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=534, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=4, closed_by=None
+- `CNX_Chem_01_01_Electrolys`: 3 event(s)
+    - stream PAGE, `gs` ['/GS1'] (category extgstate, setDepth 0) -> paints_in_window=6, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '0.1'] (category fill-colour, setDepth 0) -> paints_in_window=6, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=6, closed_by=None
+- `CNX_Chem_02_02_GoldFoil3`: 3 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+- `CNX_Chem_02_03_AtomSize`: 3 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `gs` ['/GS1'] (category extgstate, setDepth 0) -> paints_in_window=11, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_02_03_MassSpec`: 3 event(s)
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=83, closed_by=reset
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=107, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=24, closed_by=None
+- `CNX_Chem_05_01_OxyacTorch`: 3 event(s)
+    - stream PAGE, `k` ['0.75', '0.6', '0', '0.05'] (category fill-colour, setDepth 0) -> paints_in_window=351, closed_by=reset
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=355, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=4, closed_by=None
+- `CNX_Chem_11_05_oilspill`: 3 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=3, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '0'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_18_05_Electrolys`: 3 event(s)
+    - stream PAGE, `gs` ['/GS1'] (category extgstate, setDepth 0) -> paints_in_window=6, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '0.1'] (category fill-colour, setDepth 0) -> paints_in_window=6, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=6, closed_by=None
+- `CNX_Chem_21_06_IonRadSpec`: 3 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream FORM/Fm4:(54, 0), `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=12, closed_by=None
+    - stream FORM/Fm4:(54, 0), `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=12, closed_by=None
+- `CNX_Chem_21_06_Damage2`: 3 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=49, closed_by=None
+    - stream PAGE, `gs` ['/GS3'] (category extgstate, setDepth 0) -> paints_in_window=10, closed_by=reset
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_01_01_WaterDom`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=40, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=40, closed_by=None
+- `CNX_Chem_01_02_GoldAtoms`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=1, closed_by=None
+- `CNX_Chem_01_03_ChemChange`: 2 event(s)
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=1, closed_by=None
+- `CNX_Chem_01_06_TempScales`: 2 event(s)
+    - stream PAGE, `k` ['0.75', '0.68', '0.67', '0.902'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=14, closed_by=None
+- `CNX_Chem_01_05_Measure`: 2 event(s)
+    - stream PAGE, `k` ['0.738', '0.639', '0.313', '0.115'] (category fill-colour, setDepth 0) -> paints_in_window=101, closed_by=reset
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+- `CNX_Chem_01_05_SigDigits5_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=14, closed_by=None
+- `CNX_Chem_01_01_FuelCell`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1440, closed_by=None
+    - stream PAGE, `gs` ['/GS1'] (category extgstate, setDepth 0) -> paints_in_window=1440, closed_by=reset
+- `CNX_Chem_01_05_SigDigits1_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=18, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=18, closed_by=None
+- `CNX_Chem_01_05_SigDigits2_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=26, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=26, closed_by=None
+- `CNX_Chem_01_05_SigDigits3_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=8, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=8, closed_by=None
+- `CNX_Chem_02_01_Dalton3`: 2 event(s)
+    - stream PAGE, `k` ['0.701', '0.669', '0.648', '0.744'] (category fill-colour, setDepth 0) -> paints_in_window=8, closed_by=None
+    - stream PAGE, `gs` ['/GS1'] (category extgstate, setDepth 0) -> paints_in_window=8, closed_by=None
+- `CNX_Chem_02_01_MultProp`: 2 event(s)
+    - stream PAGE, `k` ['0.75', '0.68', '0.67', '0.902'] (category fill-colour, setDepth 0) -> paints_in_window=8, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=8, closed_by=None
+- `CNX_Chem_02_02_CathodeRay`: 2 event(s)
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=80, closed_by=reset
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=80, closed_by=None
+- `CNX_Chem_02_02_Millikan`: 2 event(s)
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=158, closed_by=reset
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=reset
+- `CNX_Chem_02_02_Rutherford`: 2 event(s)
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=13, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=13, closed_by=None
+- `CNX_Chem_04_04_sandwich` **[bought]**: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_04_03_flowchart` **[bought]**: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=34, closed_by=None
+- `CNX_Chem_05_01_SolTherm1`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=5, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=5, closed_by=None
+- `CNX_Chem_05_01_HeatTrans1`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_06_01_Solardist`: 2 event(s)
+    - stream PAGE, `k` ['0.746', '0.676', '0.668', '0.898'] (category fill-colour, setDepth 0) -> paints_in_window=6, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=6, closed_by=None
+- `CNX_Chem_06_01_AMFM`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=3, closed_by=None
+- `CNX_Chem_07_03_Exercise3a_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=9, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=9, closed_by=None
+- `CNX_Chem_07_03_Exercise3b_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=9, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=9, closed_by=None
+- `CNX_Chem_07_03_Exercise3c_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=10, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=10, closed_by=None
+- `CNX_Chem_07_03_Exercise3d_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=9, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=9, closed_by=None
+- `CNX_Chem_07_03_Exercise3e_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=9, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=9, closed_by=None
+- `CNX_Chem_07_03_Exercise3f_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=9, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=9, closed_by=None
+- `CNX_Chem_06_05_Ionradii`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=4, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=4, closed_by=None
+- `CNX_Chem_07_06_NH3`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=49, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=49, closed_by=None
+- `CNX_Chem_08_01_N2LewStru_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=5, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=5, closed_by=None
+- `CNX_Chem_08_02_H2Otet`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=6, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=6, closed_by=None
+- `CNX_Chem_08_02_sp3Geom`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=4, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=76, closed_by=None
+- `CNX_Chem_08_02_sp3d`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_08_02_SF6`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=9, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=9, closed_by=None
+- `CNX_Chem_08_02_sp2Conv`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=3, closed_by=None
+- `CNX_Chem_08_03_spC`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=4, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=4, closed_by=None
+- `CNX_Chem_08_03_C2H2`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=7, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=7, closed_by=None
+- `CNX_Chem_09_01_Atmosphere`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=3, closed_by=None
+- `CNX_Chem_11_01_solusolv`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '0.8'] (category fill-colour, setDepth 0) -> paints_in_window=69, closed_by=reset
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=69, closed_by=None
+- `CNX_Chem_11_01_Icepack`: 2 event(s)
+    - stream PAGE, `k` ['0.75', '0.6', '0', '0.05'] (category fill-colour, setDepth 0) -> paints_in_window=355, closed_by=reset
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=355, closed_by=None
+- `CNX_Chem_11_04_refinery`: 2 event(s)
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=25, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=25, closed_by=None
+- `CNX_Chem_11_04_bloodcell`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=106, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=106, closed_by=None
+- `CNX_Chem_11_05_emulsoil`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=8, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=8, closed_by=None
+- `CNX_Chem_11_05_FredCottre`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_16_02_Gas`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=4, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=4, closed_by=None
+- `CNX_Chem_11_04_phasediag`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=17, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=17, closed_by=None
+- `CNX_Chem_17_04_Relation`: 2 event(s)
+    - stream PAGE, `k` ['0.265', '0.877', '1', '0.229'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=None
+- `CNX_Chem_18_02_HallHerCell`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=None
+    - stream PAGE, `k` ['0', '0', '0', '0'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=None
+- `CNX_Chem_18_06_Cave`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_20_01_substitu_img`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=97, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=97, closed_by=None
+- `CNX_Chem_20_04_kevlar2`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=3, closed_by=None
+- `CNX_Chem_21_01_BandStable`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=1, closed_by=reset
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=31, closed_by=None
+- `CNX_Chem_21_04_CritMass`: 2 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=98, closed_by=None
+    - stream PAGE, `gs` ['/GS0'] (category extgstate, setDepth 0) -> paints_in_window=98, closed_by=None
+- `CNX_Chem_01_02_CellPhone`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=3, closed_by=None
+- `CNX_Chem_01_04_Volume`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=4, closed_by=None
+- `CNX_Chem_01_02_Molecules`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_01_05_SigDigits4_img`: 1 event(s)
+    - stream PAGE, `rg` ['0.137', '0.122', '0.125'] (category fill-colour, setDepth 0) -> paints_in_window=18, closed_by=None
+- `CNX_Chem_02_01_Dalton2`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_02_04_Isomers2`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=6, closed_by=reset
+- `CNX_Chem_03_01_exocytosis-88f6` **[bought]**: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_03_03_empform` **[bought]**: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=17, closed_by=None
+- `CNX_Chem_04_05_combustion` **[bought]**: 1 event(s)
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=29, closed_by=None
+- `CNX_Chem_05_02_Calorim`: 1 event(s)
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=18, closed_by=None
+- `CNX_Chem_05_02_IcePack`: 1 event(s)
+    - stream PAGE, `k` ['0.773', '0.625', '0.039', '0'] (category fill-colour, setDepth 0) -> paints_in_window=355, closed_by=reset
+- `CNX_Chem_05_03_Systemqw`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=8, closed_by=None
+- `CNX_Chem_05_02_HeatMeas`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=None
+- `CNX_Chem_05_03_AlgalFuel2`: 1 event(s)
+    - stream PAGE, `k` ['0.695', '0.672', '0.637', '0.738'] (category fill-colour, setDepth 0) -> paints_in_window=194, closed_by=None
+- `CNX_Chem_06_01_Ephoton`: 1 event(s)
+    - stream PAGE, `gs` ['/GS1'] (category extgstate, setDepth 0) -> paints_in_window=1, closed_by=None
+- `CNX_Chem_05_03_HessCO2`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_08_02_spGeom`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=28, closed_by=None
+- `CNX_Chem_08_02_hybrid_img`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=9, closed_by=None
+- `CNX_Chem_08_02_HybrdOrbit`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=21, closed_by=None
+- `CNX_Chem_08_03_C2H4orbit`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=7, closed_by=None
+- `CNX_Chem_11_03_gasdissolv`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=13, closed_by=None
+- `CNX_Chem_11_04_Ex02Steps_img`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_13_00_Blood`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=5, closed_by=None
+- `CNX_Chem_15_02_BF3-LA_img`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=32, closed_by=None
+- `CNX_Chem_17_05_LiIon`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=22, closed_by=None
+- `CNX_Chem_17_05_Lead`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=14, closed_by=None
+- `CNX_Chem_19_03_Lightper`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=19, closed_by=None
+- `CNX_Chem_20_01_butaneIsom_img`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=4, closed_by=None
+- `CNX_Chem_20_01_alkyls`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=80, closed_by=None
+- `CNX_Chem_20_01_alklnm_img`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=81, closed_by=None
+- `CNX_Chem_20_04_DNA`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=2, closed_by=None
+- `CNX_Chem_20_02_FunctGroup_img`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=9, closed_by=None
+- `CNX_Chem_21_01_BindEnergy`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=26, closed_by=reset
+- `CNX_Chem_21_06_Damage1`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=12, closed_by=None
+- `CNX_Chem_21_06_Exposure2`: 1 event(s)
+    - stream PAGE, `k` ['0.698', '0.675', '0.639', '0.74'] (category fill-colour, setDepth 0) -> paints_in_window=15, closed_by=reset
+- `CNX_Chem_21_04_ChnReact1`: 1 event(s)
+    - stream PAGE, `k` ['0', '0', '0', '1'] (category fill-colour, setDepth 0) -> paints_in_window=38, closed_by=None
+
+## Net q − Q inside a single BT..ET object (nonzero = stack left unbalanced by that object)
+
+0 of 910 scanned figures have at least one BT..ET object whose q/Q count does not net to zero.
+
+
+## Finding: the hazard is (so far) CONFINED to native .pdf artwork — 0 of 299 ghostscript-staged .eps figures show ANY non-text operator inside BT
+
+| kind | scanned | with any non-text-in-BT | % |
+|---|---:|---:|---:|
+| `eps` | 299 | 0 | 0.0% |
+| `pdf` | 611 | 517 | 84.6% |
+
+Context for the eps `0.0%`: **285 of 299** staged `.eps` figures have `bt_et_count > 0` at all (i.e. contain text objects post-staging) — so the zero is not vacuous over an empty denominator; most staged figures DO have BT..ET blocks, they simply never carry a persistent-gstate op inside one.
+
+This generalises the N2O5 pdf-vs-eps disagreement below to the WHOLE corpus: every one of the 517 figures with a non-text operator inside BT is a native `.pdf`; every one of the 299 figures staged from `.eps` through ghostscript (`gs -dEPSCrop -sDEVICE=pdfwrite`, the same argv `figure-prepare.py` uses) comes back with ZERO. **Read this as a fact about what ghostscript emits, not as evidence that EPS source artwork never had the pattern** — the census can only see the content stream AFTER staging, and staging demonstrably rewrites it (see the N2O5 pdf-vs-eps pair below, the one figure in this corpus checked both ways). If the render step is scoped by this list, it will currently never touch a staged-EPS figure; that scoping should be revisited if a future ghostscript version, or a different `-dEPSCrop` output, ever preserves the in-BT gstate the way this run's single `.pdf`-vs-`.eps` control shows it can discard.
+
+## Finding: N2O5 .pdf and .eps DISAGREE — staging is not a neutral step
+
+- `.pdf` (native, opened directly): op_counts = {'k': 1, 'gs': 1}, classes = ['persistent-gstate']
+- `.eps` (staged through `gs`, the SAME argv `strip-text.py`'s own callers use — gs -q -dNOPAUSE -dBATCH -dSAFER -dEPSCrop -sDEVICE=pdfwrite -sOutputFile=<staged.pdf> <artwork.eps>): op_counts = {}, classes = []
+
+The native `.pdf` carries a `k` (fill-colour) AND a `gs` (ExtGState) operator inside BT..ET; the ghostscript-staged `.eps` shows NEITHER — zero non-text operators inside BT at all. **This means the `.eps` half of this census describes what `gs -dEPSCrop -sDEVICE=pdfwrite` RESTRUCTURED the content stream into (i.e. what `strip-text.py` actually sees for an EPS input), not the artwork's own original text-object shape** — ghostscript is free to re-emit an equivalent page in a different operator sequence, and evidently does here. Since the resolver now resolves N2O5 to the `.eps`, the FIGURE AS THE PIPELINE WILL ACTUALLY PROCESS IT currently carries none of this hazard — but that is a fact about ghostscript's specific rewrite of this ONE file, not a general reason to trust staged EPS content streams over their `.pdf` siblings; the 298 other staged `.eps` figures in this run were censused post-stage, exactly as the real pipeline sees them, for the same reason.
+
+## `gs` (ExtGState) is opaque to this census — note wherever it appears
+
+415 figure(s) set an ExtGState (`gs`) inside BT..ET. An ExtGState dictionary can bundle alpha, blend mode, line width, even a font — this census counts `gs` as ONE persistent-gstate operator occurrence and cannot say which parameter(s) inside the referenced dictionary persist past ET. A `gs`-driven regression (e.g. blend mode bleeding into later artwork) would be invisible to any check that only looks for colour operators. And unlike the other over-approximations documented in this report, this one runs the OTHER way: this census treats any later `gs` as fully closing an earlier one (same category, same scope), but two `gs` calls reference two ExtGState DICTIONARIES that need not overlap — if the first sets alpha and the second sets only blend mode, the alpha set by the first is still in effect after the second, and this census would wrongly report the first as closed.
+- `CNX_Chem_01_01_Electrolys`: gs x1
+- `CNX_Chem_01_01_FuelCell`: gs x2
+- `CNX_Chem_01_01_SciMethod`: gs x1
+- `CNX_Chem_01_01_WaterDom`: gs x1
+- `CNX_Chem_01_02_Cellulose`: gs x1
+- `CNX_Chem_01_02_ConsMatter`: gs x1
+- `CNX_Chem_01_02_GoldAtoms`: gs x1
+- `CNX_Chem_01_02_MattType`: gs x1
+- `CNX_Chem_01_02_StatesMatt`: gs x1
+- `CNX_Chem_01_03_ChemChange`: gs x1
+- `CNX_Chem_01_03_PhysChange`: gs x1
+- `CNX_Chem_01_03_Rust`: gs x1
+- `CNX_Chem_01_05_Archer2_img`: gs x1
+- `CNX_Chem_01_05_Archery`: gs x1
+- `CNX_Chem_01_05_SigDigits1_img`: gs x1
+- `CNX_Chem_01_05_SigDigits2_img`: gs x2
+- `CNX_Chem_01_05_SigDigits3_img`: gs x2
+- `CNX_Chem_01_05_SigDigits5_img`: gs x1
+- `CNX_Chem_01_06_TempScales`: gs x1
+- `CNX_Chem_02_00_Biomarkers`: gs x19
+- `CNX_Chem_02_01_Dalton3`: gs x1
+- `CNX_Chem_02_02_CathodeRay`: gs x1
+- `CNX_Chem_02_02_Rutherford`: gs x1
+- `CNX_Chem_02_03_AtomSize`: gs x2
+- `CNX_Chem_02_03_MassSpec`: gs x1
+- `CNX_Chem_02_04_AceticAcid`: gs x8
+- `CNX_Chem_02_04_Hydrogen`: gs x1
+- `CNX_Chem_02_04_Isomers`: gs x16
+- `CNX_Chem_02_04_Isomers2`: gs x44
+- `CNX_Chem_02_04_MethaneRep`: gs x5
+- `CNX_Chem_02_04_Question3a_img`: gs x3
+- `CNX_Chem_02_04_Question3b_img`: gs x4
+- `CNX_Chem_02_04_Question3c_img`: gs x6
+- `CNX_Chem_02_04_Question3d_img`: gs x7
+- `CNX_Chem_02_04_Question4a_img`: gs x12
+- `CNX_Chem_02_04_Question4b_img`: gs x10
+- `CNX_Chem_02_04_Question4c_img`: gs x8
+- `CNX_Chem_02_04_Question4d_img`: gs x8
+- `CNX_Chem_02_04_Question7a_img`: gs x8
+- `CNX_Chem_02_04_Question7b_img`: gs x14
+- `CNX_Chem_02_04_Question9a_img`: gs x9
+- `CNX_Chem_02_04_Question9b_img`: gs x9
+- `CNX_Chem_02_04_Sulfur`: gs x8
+- `CNX_Chem_02_04_TiO2`: gs x1
+- `CNX_Chem_02_05_Mendeleev`: gs x1
+- `CNX_Chem_02_07_ErinBrocko`: gs x1
+- `CNX_Chem_03_01_Ex01_05a_img`: gs x4
+- `CNX_Chem_03_01_Ex01_05b_img`: gs x4
+- `CNX_Chem_03_01_Ex01_05c_img`: gs x6
+- `CNX_Chem_03_01_Ex01_05d_img`: gs x7
+- `CNX_Chem_03_01_Ex01_06a_img`: gs x11
+- `CNX_Chem_03_01_Ex01_06b_img`: gs x10
+- `CNX_Chem_03_01_Ex01_06c_img`: gs x8
+- `CNX_Chem_03_01_Ex01_06d_img`: gs x8
+- `CNX_Chem_03_01_Ex01_07a_img`: gs x4
+- `CNX_Chem_03_01_Ex01_07b_img`: gs x6
+- `CNX_Chem_03_01_Ex01_07c_img`: gs x8
+- `CNX_Chem_03_02_saccharin_img`: gs x17
+- `CNX_Chem_03_05_faucet`: gs x1
+- `CNX_Chem_03_05_saline`: gs x1
+- `CNX_Chem_04_01_basehyd_img` **[bought]**: gs x26
+- `CNX_Chem_04_01_rxn2` **[bought]**: gs x8
+- `CNX_Chem_04_01_rxn3` **[bought]**: gs x2
+- `CNX_Chem_04_02_HClsoln` **[bought]**: gs x1
+- `CNX_Chem_04_03_etheneBr_img` **[bought]**: gs x17
+- `CNX_Chem_04_03_ethene_img` **[bought]**: gs x18
+- `CNX_Chem_04_04_GreenChem` **[bought]**: gs x8
+- `CNX_Chem_04_04_limiting` **[bought]**: gs x4
+- `CNX_Chem_04_04_saccharin_img`: gs x17
+- `CNX_Chem_04_04_sandwich` **[bought]**: gs x1
+- `CNX_Chem_04_05_propionate_img`: gs x33
+- `CNX_Chem_05_01_HeatTrans1`: gs x1
+- `CNX_Chem_05_01_HotCold`: gs x1
+- `CNX_Chem_05_01_OxyacTorch`: gs x1
+- `CNX_Chem_05_01_SolTherm1`: gs x1
+- `CNX_Chem_05_01_SolTherm2`: gs x1
+- `CNX_Chem_05_01_Thermochem`: gs x1
+- `CNX_Chem_05_01_Waterfall`: gs x1
+- `CNX_Chem_05_02_FoodLabel`: gs x1
+- `CNX_Chem_05_03_AlgalFuel1`: gs x1
+- `CNX_Chem_06_01_AMFM`: gs x1
+- `CNX_Chem_06_01_Blackbody`: gs x1
+- `CNX_Chem_06_01_Ephoton`: gs x1
+- `CNX_Chem_06_03_OrbOutline_img`: gs x1
+- `CNX_Chem_06_04_Econfig`: gs x2
+- `CNX_Chem_06_04_Efillorder`: gs x1
+- `CNX_Chem_06_05_Ionradii`: gs x1
+- `CNX_Chem_07_03_COCO2_img`: gs x5
+- `CNX_Chem_07_03_ClS_img`: gs x14
+- `CNX_Chem_07_03_Exercise25_img`: gs x9
+- `CNX_Chem_07_03_Exercise3a_img`: gs x2
+- `CNX_Chem_07_03_Exercise3b_img`: gs x2
+- `CNX_Chem_07_03_Exercise3c_img`: gs x3
+- `CNX_Chem_07_03_Exercise3d_img`: gs x2
+- `CNX_Chem_07_03_Exercise3e_img`: gs x2
+- `CNX_Chem_07_03_Exercise3f_img`: gs x2
+- `CNX_Chem_07_03_IF5XeF4_img`: gs x13
+- `CNX_Chem_07_03_Lewisstruct1_img`: gs x1
+- `CNX_Chem_07_03_MXLewisa_img`: gs x3
+- `CNX_Chem_07_03_MXLewisb_img`: gs x4
+- `CNX_Chem_07_03_MXLewisc_img`: gs x4
+- `CNX_Chem_07_03_MXLewisd_img`: gs x5
+- `CNX_Chem_07_03_NaCa_img`: gs x12
+- `CNX_Chem_07_03_Question18_img`: gs x42
+- `CNX_Chem_07_03_Question1a_img`: gs x2
+- `CNX_Chem_07_03_Question1b_img`: gs x2
+- `CNX_Chem_07_03_Question1d_img`: gs x2
+- `CNX_Chem_07_03_Question1g_img`: gs x2
+- `CNX_Chem_07_03_Question5_img`: gs x2
+- `CNX_Chem_07_03_Question7d_img`: gs x3
+- `CNX_Chem_07_03_Question7f_img`: gs x5
+- `CNX_Chem_07_03_Question7g_img`: gs x6
+- `CNX_Chem_07_03_Question7h_img`: gs x6
+- `CNX_Chem_07_03_Question9a_img`: gs x7
+- `CNX_Chem_07_03_Question9c_img`: gs x5
+- `CNX_Chem_07_03_SiH4_img`: gs x16
+- `CNX_Chem_07_03_Singlebond_img`: gs x16
+- `CNX_Chem_07_03_Unprelec_img`: gs x16
+- `CNX_Chem_07_03_XeF6_img`: gs x7
+- `CNX_Chem_07_03_dative_img`: gs x17
+- `CNX_Chem_07_03_ex070301_1_img`: gs x19
+- `CNX_Chem_07_03_ex070301_2_img`: gs x19
+- `CNX_Chem_07_03_ex070301_3_img`: gs x19
+- `CNX_Chem_07_03_ex070301_4_img`: gs x28
+- `CNX_Chem_07_03_formate2_img`: gs x11
+- `CNX_Chem_07_03_nitrosoni2_img`: gs x7
+- `CNX_Chem_07_03_nitrosoni3_img`: gs x3
+- `CNX_Chem_07_04_Ex070402_img`: gs x4
+- `CNX_Chem_07_04_Exercis12a_img`: gs x13
+- `CNX_Chem_07_04_Exercis12b_img`: gs x13
+- `CNX_Chem_07_04_Exercis12c_img`: gs x15
+- `CNX_Chem_07_04_Exercis12d_img`: gs x28
+- `CNX_Chem_07_04_HNO2_img`: gs x9
+- `CNX_Chem_07_04_Ques11ans_img`: gs x16
+- `CNX_Chem_07_04_Ques13ansb_img`: gs x3
+- `CNX_Chem_07_04_Ques13ansc_img`: gs x2
+- `CNX_Chem_07_04_Ques2ansb_img`: gs x15
+- `CNX_Chem_07_04_Ques2ansc_img`: gs x12
+- `CNX_Chem_07_04_Thiocyan_img`: gs x23
+- `CNX_Chem_07_05_CH3OHLew_img`: gs x12
+- `CNX_Chem_07_05_CH4bond_img`: gs x9
+- `CNX_Chem_07_05_Ethanol_img`: gs x19
+- `CNX_Chem_07_06_BeF2`: gs x3
+- `CNX_Chem_07_06_CS3a_img`: gs x15
+- `CNX_Chem_07_06_CS3b_img`: gs x3
+- `CNX_Chem_07_06_CS3c_img`: gs x2
+- `CNX_Chem_07_06_NH3`: gs x1
+- `CNX_Chem_07_06_OSC_img`: gs x3
+- `CNX_Chem_07_06_Ques23ans_img`: gs x12
+- `CNX_Chem_07_06_SH2NH3_img`: gs x14
+- `CNX_Chem_07_06_molgeom`: gs x80
+- `CNX_Chem_08_00_N2O2Lewis_img`: gs x4
+- `CNX_Chem_08_01_C4H6_img`: gs x10
+- `CNX_Chem_08_01_N2LewStru_img`: gs x4
+- `CNX_Chem_08_01_O2bonds_img`: gs x1
+- `CNX_Chem_08_01_bondtype_img`: gs x9
+- `CNX_Chem_08_01_overlap`: gs x1
+- `CNX_Chem_08_01_sigma`: gs x1
+- `CNX_Chem_08_02_BH3`: gs x5
+- `CNX_Chem_08_02_H2Otet`: gs x1
+- `CNX_Chem_08_02_SF4_img`: gs x5
+- `CNX_Chem_08_02_SF6`: gs x1
+- `CNX_Chem_08_02_SulfManuf1_img`: gs x8
+- `CNX_Chem_08_02_SulfManuf2_img`: gs x6
+- `CNX_Chem_08_02_SulfManuf3_img`: gs x4
+- `CNX_Chem_08_02_SulfManuf4_img`: gs x7
+- `CNX_Chem_08_02_acetic_img`: gs x8
+- `CNX_Chem_08_02_enyne_img`: gs x14
+- `CNX_Chem_08_02_methionine_img`: gs x20
+- `CNX_Chem_08_02_phosnitro_img`: gs x10
+- `CNX_Chem_08_02_phsphorus1_img`: gs x7
+- `CNX_Chem_08_02_phsphorus2_img`: gs x12
+- `CNX_Chem_08_02_sp2Conv`: gs x1
+- `CNX_Chem_08_02_sp2Ex`: gs x13
+- `CNX_Chem_08_02_sp3d`: gs x1
+- `CNX_Chem_08_02_sp3d_img`: gs x15
+- `CNX_Chem_08_02_sulfate_img`: gs x2
+- `CNX_Chem_08_02_urea_img`: gs x9
+- `CNX_Chem_08_02_xefluoride_img`: gs x3
+- `CNX_Chem_08_03_Acetonitri_img`: gs x7
+- `CNX_Chem_08_03_C2H2`: gs x1
+- `CNX_Chem_08_03_C4H4Lewis_img`: gs x6
+- `CNX_Chem_08_03_C6H6`: gs x24
+- `CNX_Chem_08_03_HybridAll_img`: gs x11
+- `CNX_Chem_08_03_HybridCarb_img`: gs x10
+- `CNX_Chem_08_03_HybridSulf_img`: gs x3
+- `CNX_Chem_08_03_SO2_img`: gs x10
+- `CNX_Chem_08_03_spC`: gs x1
+- `CNX_Chem_08_04_O2_img`: gs x2
+- `CNX_Chem_08_04_waveadd`: gs x6
+- `CNX_Chem_09_01_Atmosphere`: gs x1
+- `CNX_Chem_11_01_Icepack`: gs x1
+- `CNX_Chem_11_01_solusolv`: gs x1
+- `CNX_Chem_11_02_Fe(NO3)3_img`: gs x1
+- `CNX_Chem_11_02_H3O_CL_img`: gs x14
+- `CNX_Chem_11_02_ammonia1_img`: gs x18
+- `CNX_Chem_11_03_LakeNyos`: gs x1
+- `CNX_Chem_11_03_O2dissolv`: gs x1
+- `CNX_Chem_11_04_LabDistill`: gs x1
+- `CNX_Chem_11_04_bloodcell`: gs x1
+- `CNX_Chem_11_04_phasediag`: gs x1
+- `CNX_Chem_11_04_refinery`: gs x1
+- `CNX_Chem_11_04_waterpur`: gs x1
+- `CNX_Chem_11_05_Colloid`: gs x1
+- `CNX_Chem_11_05_FredCottre`: gs x1
+- `CNX_Chem_11_05_detrg`: gs x38
+- `CNX_Chem_11_05_emulsoil`: gs x1
+- `CNX_Chem_11_05_oilspill`: gs x1
+- `CNX_Chem_11_05_soap`: gs x55
+- `CNX_Chem_13_05_Butane_img`: gs x23
+- `CNX_Chem_14_01_Water_img`: gs x26
+- `CNX_Chem_14_01_conjugate_img`: gs x18
+- `CNX_Chem_14_03_FishLemon` **[bought]**: gs x12
+- `CNX_Chem_14_03_OHbonds_img`: gs x3
+- `CNX_Chem_14_03_Oxyacid`: gs x27
+- `CNX_Chem_14_04_hydronium`: gs x6
+- `CNX_Chem_14_05_acetic_img`: gs x26
+- `CNX_Chem_15_02_AlOH4_img`: gs x10
+- `CNX_Chem_15_02_Answer18a_img`: gs x14
+- `CNX_Chem_15_02_Answer18b_img`: gs x23
+- `CNX_Chem_15_02_Answer18c_img`: gs x11
+- `CNX_Chem_15_02_Answer18d_img`: gs x15
+- `CNX_Chem_15_02_Answer18e_img`: gs x15
+- `CNX_Chem_15_02_Answer24a_img`: gs x25
+- `CNX_Chem_15_02_Answer24b_img`: gs x20
+- `CNX_Chem_15_02_Answer24c_img`: gs x15
+- `CNX_Chem_15_02_Answer24d_img`: gs x30
+- `CNX_Chem_15_02_BF3-LA_img`: gs x15
+- `CNX_Chem_15_02_CuCN2-_img`: gs x5
+- `CNX_Chem_15_02_NH3-LBase_img`: gs x20
+- `CNX_Chem_15_02_NonmetalOx_img`: gs x16
+- `CNX_Chem_15_03_AgBr_img`: gs x21
+- `CNX_Chem_16_02_Gas`: gs x1
+- `CNX_Chem_16_03_Entropies`: gs x1
+- `CNX_Chem_18_02_Boricacid_img`: gs x6
+- `CNX_Chem_18_03_BorateAnio`: gs x54
+- `CNX_Chem_18_03_Structures`: gs x1
+- `CNX_Chem_18_04_Carbonform`: gs x1
+- `CNX_Chem_18_04_Phosphorus`: gs x1
+- `CNX_Chem_18_04_Sulfrchain`: gs x1
+- `CNX_Chem_18_05_Electrolys`: gs x1
+- `CNX_Chem_18_06_Cave`: gs x1
+- `CNX_Chem_18_07_Exercise1a_img`: gs x3
+- `CNX_Chem_18_07_Exercise1b_img`: gs x6
+- `CNX_Chem_18_07_Exercise1c_img`: gs x4
+- `CNX_Chem_18_07_Exercise1d_img`: gs x4
+- `CNX_Chem_18_07_Exercise1e_img`: gs x12
+- `CNX_Chem_18_07_Exercise5a_img`: gs x6
+- `CNX_Chem_18_07_Exercise5b_img`: gs x8
+- `CNX_Chem_18_07_Exercise5c_img`: gs x4
+- `CNX_Chem_18_07_N2O5`: gs x1
+- `CNX_Chem_18_08_Exercise1a_img`: gs x4
+- `CNX_Chem_18_08_Exercise1b_img`: gs x6
+- `CNX_Chem_18_08_Exercise1c_img`: gs x6
+- `CNX_Chem_18_08_Exercise1d_img`: gs x6
+- `CNX_Chem_18_08_Exercise1e_img`: gs x6
+- `CNX_Chem_18_08_Exercise8a_img`: gs x7
+- `CNX_Chem_18_08_Exercise8b_img`: gs x7
+- `CNX_Chem_18_08_Exercise8c_img`: gs x9
+- `CNX_Chem_18_08_Exercise8d_img`: gs x6
+- `CNX_Chem_18_09_ChloritIon`: gs x6
+- `CNX_Chem_18_09_ClO3Ion`: gs x7
+- `CNX_Chem_18_11_Exercise4a_img`: gs x9
+- `CNX_Chem_18_11_Exercise4b_img`: gs x5
+- `CNX_Chem_18_11_Exercise4c_img`: gs x7
+- `CNX_Chem_18_11_Exercise4d_img`: gs x6
+- `CNX_Chem_18_11_Exercise4e_img`: gs x5
+- `CNX_Chem_19_02_4geom`: gs x17
+- `CNX_Chem_19_02_Answer4a_img`: gs x12
+- `CNX_Chem_19_02_Answer4b_img`: gs x15
+- `CNX_Chem_19_02_Answer4c_img`: gs x12
+- `CNX_Chem_19_02_Answer4d_img`: gs x6
+- `CNX_Chem_19_02_Answer4e_img`: gs x16
+- `CNX_Chem_19_02_Answer4f_img`: gs x48
+- `CNX_Chem_19_02_BalEnt`: gs x32
+- `CNX_Chem_19_02_BondType`: gs x18
+- `CNX_Chem_19_02_CN`: gs x24
+- `CNX_Chem_19_02_ChlorBlue`: gs x26
+- `CNX_Chem_19_02_Coen2Cl2`: gs x50
+- `CNX_Chem_19_02_DMSA`: gs x16
+- `CNX_Chem_19_02_EDTA`: gs x21
+- `CNX_Chem_19_02_Gly`: gs x11
+- `CNX_Chem_19_02_H2O2Br2`: gs x8
+- `CNX_Chem_19_02_cistrans`: gs x18
+- `CNX_Chem_19_02_en`: gs x34
+- `CNX_Chem_19_02_enant`: gs x38
+- `CNX_Chem_19_02_ex10ans_img`: gs x64
+- `CNX_Chem_19_02_heme`: gs x47
+- `CNX_Chem_19_02_oct`: gs x45
+- `CNX_Chem_19_02_transplatin`: gs x5
+- `CNX_Chem_20_01_AromatIso1_img`: gs x18
+- `CNX_Chem_20_01_AromatIso2_img`: gs x36
+- `CNX_Chem_20_01_AromatIso3_img`: gs x42
+- `CNX_Chem_20_01_GeomHybr1_img`: gs x12
+- `CNX_Chem_20_01_HalAlkane2_img`: gs x18
+- `CNX_Chem_20_01_HalAlkane3_img`: gs x18
+- `CNX_Chem_20_01_HalAlkane_img`: gs x13
+- `CNX_Chem_20_01_HaloReact2_img`: gs x15
+- `CNX_Chem_20_01_HaloReact_img`: gs x16
+- `CNX_Chem_20_01_HybrBAngl_img`: gs x15
+- `CNX_Chem_20_01_LineStruct1`: gs x57
+- `CNX_Chem_20_01_LineStruct2_img`: gs x18
+- `CNX_Chem_20_01_LineStruct4_img`: gs x21
+- `CNX_Chem_20_01_LineStruct7_img`: gs x22
+- `CNX_Chem_20_01_ReactProd1_img`: gs x21
+- `CNX_Chem_20_01_acetylene_img`: gs x19
+- `CNX_Chem_20_01_alkanes`: gs x33
+- `CNX_Chem_20_01_alkenes_img`: gs x51
+- `CNX_Chem_20_01_alklnm_img`: gs x87
+- `CNX_Chem_20_01_alkyl_img`: gs x28
+- `CNX_Chem_20_01_alkyls`: gs x70
+- `CNX_Chem_20_01_alkyne_img`: gs x5
+- `CNX_Chem_20_01_aromatic_img`: gs x24
+- `CNX_Chem_20_01_benzene`: gs x12
+- `CNX_Chem_20_01_butaneIsom_img`: gs x28
+- `CNX_Chem_20_01_butane_img`: gs x42
+- `CNX_Chem_20_01_ethylChlor_img`: gs x24
+- `CNX_Chem_20_01_ex1_11_c_img`: gs x2
+- `CNX_Chem_20_01_ex1_11_e_img`: gs x3
+- `CNX_Chem_20_01_ex1_11_f_img`: gs x8
+- `CNX_Chem_20_01_ex1_12_c_img`: gs x2
+- `CNX_Chem_20_01_ex1_12_e_img`: gs x3
+- `CNX_Chem_20_01_ex1_14_img`: gs x28
+- `CNX_Chem_20_01_ex1_16_img`: gs x18
+- `CNX_Chem_20_01_ex1_18a_img`: gs x21
+- `CNX_Chem_20_01_ex1_18b_img`: gs x63
+- `CNX_Chem_20_01_ex1_1a_img`: gs x17
+- `CNX_Chem_20_01_ex1_1b_img`: gs x15
+- `CNX_Chem_20_01_ex1_1c_img`: gs x13
+- `CNX_Chem_20_01_ex1_20_img`: gs x58
+- `CNX_Chem_20_01_ex1_21_img`: gs x109
+- `CNX_Chem_20_01_ex1_23_img`: gs x16
+- `CNX_Chem_20_01_geoIsomers_img`: gs x35
+- `CNX_Chem_20_01_halogen_img`: gs x19
+- `CNX_Chem_20_01_hexane_a_img`: gs x20
+- `CNX_Chem_20_01_hexane_b_img`: gs x20
+- `CNX_Chem_20_01_hexane_c_img`: gs x18
+- `CNX_Chem_20_01_hexane_d_img`: gs x18
+- `CNX_Chem_20_01_hexane_e_img`: gs x16
+- `CNX_Chem_20_01_hexane_f_img`: gs x16
+- `CNX_Chem_20_01_monomer`: gs x50
+- `CNX_Chem_20_01_notiso1_img`: gs x38
+- `CNX_Chem_20_01_notiso2_img`: gs x40
+- `CNX_Chem_20_01_octane1_img`: gs x34
+- `CNX_Chem_20_01_octane2_img`: gs x35
+- `CNX_Chem_20_01_propane_img`: gs x25
+- `CNX_Chem_20_01_propene1`: gs x30
+- `CNX_Chem_20_01_recycle`: gs x28
+- `CNX_Chem_20_01_subbenzene_img`: gs x49
+- `CNX_Chem_20_01_substitu_img`: gs x92
+- `CNX_Chem_20_02_Exercise3a_img`: gs x13
+- `CNX_Chem_20_02_Exercise3b_img`: gs x20
+- `CNX_Chem_20_02_Exercise3c_img`: gs x24
+- `CNX_Chem_20_02_Exercise4a_img`: gs x19
+- `CNX_Chem_20_02_Exercise4b_img`: gs x16
+- `CNX_Chem_20_02_Exercise4c_img`: gs x13
+- `CNX_Chem_20_02_FunctGroup_img`: gs x46
+- `CNX_Chem_20_02_MTBE_img`: gs x30
+- `CNX_Chem_20_02_NameEthers_img`: gs x10
+- `CNX_Chem_20_02_alcohol1_img`: gs x18
+- `CNX_Chem_20_02_alcohol2_img`: gs x19
+- `CNX_Chem_20_02_ethanol_img`: gs x17
+- `CNX_Chem_20_02_ether_img`: gs x40
+- `CNX_Chem_20_02_ethers1_img`: gs x13
+- `CNX_Chem_20_02_ethers2_img`: gs x12
+- `CNX_Chem_20_02_ferment_img`: gs x6
+- `CNX_Chem_20_02_polyols_img`: gs x26
+- `CNX_Chem_20_02_sugars`: gs x71
+- `CNX_Chem_20_03_COgeom_img`: gs x7
+- `CNX_Chem_20_03_CarboxEst1_img`: gs x37
+- `CNX_Chem_20_03_CarboxEst2_img`: gs x23
+- `CNX_Chem_20_03_OxiOrder_img`: gs x30
+- `CNX_Chem_20_03_OxiProd1a_a_img`: gs x9
+- `CNX_Chem_20_03_OxiProd1a_b_img`: gs x11
+- `CNX_Chem_20_03_OxiProd1a_c_img`: gs x13
+- `CNX_Chem_20_03_OxiProd1b_a_img`: gs x10
+- `CNX_Chem_20_03_OxiProd1b_b_img`: gs x9
+- `CNX_Chem_20_03_OxiProd1b_c_img`: gs x11
+- `CNX_Chem_20_03_OxiRedu_img`: gs x23
+- `CNX_Chem_20_03_ReduProd1a_a_img`: gs x6
+- `CNX_Chem_20_03_ReduProd1a_b_img`: gs x8
+- `CNX_Chem_20_03_ReduProd1a_c_img`: gs x7
+- `CNX_Chem_20_03_acetate_img`: gs x16
+- `CNX_Chem_20_03_alcoholABC_img`: gs x48
+- `CNX_Chem_20_03_aldehyde_img`: gs x10
+- `CNX_Chem_20_03_aldket_img`: gs x22
+- `CNX_Chem_20_03_carbonyl_img`: gs x2
+- `CNX_Chem_20_03_carboxylic_img`: gs x30
+- `CNX_Chem_20_03_esterform_img`: gs x26
+- `CNX_Chem_20_03_oxaldehyde_img`: gs x4
+- `CNX_Chem_20_03_oxidation_img`: gs x8
+- `CNX_Chem_20_03_oxketone_img`: gs x4
+- `CNX_Chem_20_03_oxtoacid_img`: gs x18
+- `CNX_Chem_20_04_alkaloids_img`: gs x49
+- `CNX_Chem_20_04_amide1_img`: gs x36
+- `CNX_Chem_20_04_amide2_img`: gs x38
+- `CNX_Chem_20_04_amines_img`: gs x27
+- `CNX_Chem_20_04_ammonia_img`: gs x28
+- `CNX_Chem_20_04_kevlar1`: gs x9
+- `CNX_Chem_20_04_kevlar2`: gs x1
+- `CNX_Chem_20_04_kevpoly`: gs x65
+- `CNX_Chem_20_04_peptide`: gs x46
+- `CNX_Chem_20_04_pyridine_img`: gs x11
+- `CNX_Chem_20_04_pyridinium_img`: gs x26
+- `CNX_Chem_20_04_react2a_img`: gs x32
+- `CNX_Chem_20_04_react2b_img`: gs x48
+- `CNX_Chem_20_04_react2c_img`: gs x40
+- `CNX_Chem_20_04_react2e_img`: gs x20
+- `CNX_Chem_20_04_reaction1b_img`: gs x28
+- `CNX_Chem_20_04_reaction1c_img`: gs x30
+- `CNX_Chem_20_04_reaction1f_img`: gs x32
+- `CNX_Chem_21_04_CritMass`: gs x1
+- `CNX_Chem_21_05_SmokeAlarm`: gs x2
+- `CNX_Chem_21_06_Damage2`: gs x2
+- `CNX_Chem_21_06_IonRadSpec`: gs x1
+
+## Scope note
+
+This walks EXACTLY what `strip-text.py`'s `strip_text` walks: page 1's `/Contents` (array-aware, via `_deps.read_content`) plus every reachable `/Form` XObject, recursively, objgen-deduplicated, descending only into that form's own `/Resources`. It does **not** walk `/Pattern` resources, annotation appearance streams, or `/SMask` soft-mask group streams — those are unreachable from this walk exactly as they are unreachable from `strip_text`, so a non-text operator inside one of THOSE would not appear here and would also not be stripped by the tool this census exists to inform. The "later paint" flag is scored PER STREAM (page and each form independently), matching how `strip_text_ops` strips each stream in isolation, and matching `inbt_ops.py`'s own per-stream `scan()`.
+
+The flag is a documented OVER-APPROXIMATION (see `census_lib.py`'s module docstring): it can over-count paints that are actually inside a nested, differently-coloured `q...Q` scope, and it does not model `cs`/`CS` resetting a colour to a space default with no `g`/`rg`/`k` operator appearing. It is a WHERE-TO-LOOK instrument, not a substitute for rendering the artwork with and without BT..ET and diffing pixels.

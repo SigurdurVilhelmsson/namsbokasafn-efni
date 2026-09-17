@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stage 2 - remove every BT..ET text object (keeping the graphics state set inside it), drop the embedded Illustrator private data,
+"""Stage 2 - remove every BT..ET block, drop the embedded Illustrator private data,
 and render the artwork alone.  Produces out/artwork.pdf and out/artwork.png.
 
 Stripping text in the PDF is what makes this safe: the English is a separate object
@@ -37,32 +37,11 @@ class UnparsableStream(Exception):
     """
 
 
-# §C140 ④. Text operators are removed with the text object. Everything below is graphics state PDF does NOT
-# scope to BT..ET: a colour or ExtGState set inside a text object keeps applying to artwork drawn after ET, so
-# deleting it recolours that artwork (measured: combustion's 7 arrowheads blue-grey; Egeom's wedge bonds nearly
-# gone). Census 2026-09-16 over 909 figures: inside BT..ET only k, gs and rg occur besides text operators
-# (evidence/2026-09-16-c4-explore/). Anything else found there is REFUSED, not guessed — see TextObjectOperatorRefused.
-TEXT_OPERATORS = frozenset(['Tc', 'Tw', 'Tz', 'TL', 'Tf', 'Tr', 'Ts', 'Td', 'TD', 'Tm', 'T*', 'Tj', 'TJ', "'", '"'])
-PERSISTENT_STATE_OPERATORS = frozenset('g G rg RG k K cs CS sc SC scn SCN gs w J j M d ri i'.split())
-
-
-class TextObjectOperatorRefused(UnparsableStream):
-    """An operator inside BT..ET that is neither text nor persistent graphics state. RAISED, never guessed.
-
-    For these, keeping and dropping can BOTH silently damage artwork: an in-BT `q` whose `Q` sits outside;
-    half of a marked-content pair; English drawn as a path, an XObject or an inline image. None occurs in the
-    909-figure census, so a refusal costs nothing today and turns an unmeasured case — organic's artwork, a
-    ghostscript upgrade — into one loud failed prepare instead of a silently wrong picture. Extend
-    PERSISTENT_STATE_OPERATORS only with evidence.
-    """
-
-
 def strip_text_ops(source):
-    """Remove every BT..ET text object from one content stream, TOKEN-AWARE, keeping persistent graphics state.
+    """Remove every BT..ET text object from one content stream, TOKEN-AWARE.
 
     `source` is a `pikepdf.Stream` (a /Form XObject), a `pikepdf.Page`, or raw `bytes`.
-    -> (new_bytes, blocks_removed, state_kept). Raises TextObjectOperatorRefused for any other non-text operator
-    inside BT..ET (§C140 ④).
+    -> (new_bytes, blocks_removed)
 
     ⚠️ `pikepdf.parse_content_stream` DOES NOT ACCEPT BYTES — it raises
     `TypeError: stream must be a pikepdf.Object or pikepdf.Page`. Bytes are wrapped in a
@@ -111,16 +90,13 @@ def strip_text_ops(source):
         owner = pikepdf.new()
         source = owner.make_stream(bytes(source))
     ops = list(pikepdf.parse_content_stream(source))
-    out, depth, removed, kept = [], 0, 0, 0
+    out, depth, removed = [], 0, 0
     for instruction in ops:
         # An inline image is its own instruction, so its payload is never scanned for
         # operators at all — which is the whole point.
         if isinstance(instruction, pikepdf.ContentStreamInlineImage):
-            if depth:
-                raise TextObjectOperatorRefused(
-                    "an inline image inside a text object (BT..ET) — refused, not guessed; see "
-                    "TextObjectOperatorRefused")
-            out.append(instruction)
+            if depth == 0:
+                out.append(instruction)
             continue
         op = str(instruction.operator)
         if op == 'BT':
@@ -135,25 +111,17 @@ def strip_text_ops(source):
             continue
         if depth == 0:
             out.append(instruction)
-        elif op in PERSISTENT_STATE_OPERATORS:
-            out.append(instruction)          # graphics state outlives ET — keep it where it was
-            kept += 1
-        elif op not in TEXT_OPERATORS:
-            raise TextObjectOperatorRefused(
-                f"operator '{op}' inside a text object (BT..ET) is neither text nor persistent graphics "
-                f"state — refused, not guessed; see TextObjectOperatorRefused")
     result = pikepdf.unparse_content_stream(out)
     del owner            # explicit: nothing below may reference the throwaway Pdf
-    return result, removed, kept
+    return result, removed
 
 
 def strip_text(pdf):
-    """Remove every BT..ET text object (keeping persistent graphics state) from page 1's
-    content stream AND from every /Form XObject reachable from it.  Mutates `pdf` in
-    place; writes nothing to disk.
+    """Remove every BT..ET block from page 1's content stream AND from every /Form
+    XObject reachable from it.  Mutates `pdf` in place; writes nothing to disk.
 
     -> {'page_before': int, 'page_after': int,
-        'forms_visited': int, 'forms_rewritten': int, 'state_kept': int}
+        'forms_visited': int, 'forms_rewritten': int}
 
     🔴 A form's stream is rewritten with `Stream.write()`, which mutates the EXISTING
     object and keeps its dictionary.  NEVER `pdf.make_stream()`: that mints a stream
@@ -196,23 +164,20 @@ def strip_text(pdf):
     ⚠️ EVERY TEXT-BASED CHECK PASSES ON THIS WRECKAGE, exactly as with the byte-regex
     above: `pdftotext` returns 0 words and no BT survives, so a residue count reads
     clean.  Only a pixel comparison sees it.
-    ▶ SCOPE, so nobody re-derives it: `7 Tr` occurs on **9 of the 909 figures the
-    2026-09-16 census scanned** (the only non-zero mode besides 0), and they are exactly
-    the census's `type0-unreadable` bucket - CNX_Chem_01_02_decomp, _02_04_Benzene,
+    ▶ SCOPE, so nobody re-derives it: `7 Tr` occurs on **8 of the 895 resolved chemistry
+    figures** (the only non-zero mode besides 0), and they are exactly the census's
+    `type0-unreadable` bucket - CNX_Chem_01_02_decomp, _02_04_Benzene,
     _03_02_moles-6296, _04_02_Citrus, _04_02_ammonia, _04_04_CuAgNO3, _04_05_titration,
-    _11_03_recompress, and CNX_Chem_18_04_Nanotube (found 2026-09-16; its sendability is
-    unmeasured).  THE ORIGINAL EIGHT measure `sendable 0` with images and 0 paint ops, so
+    _11_03_recompress.  ALL EIGHT measure `sendable 0` with images and 0 paint ops, so
     the driver classifies them `copied-photo`, copies the original artwork and never
-    reads this tool's output for them.  **Live exposure is 0 for those eight; Nanotube is
-    unmeasured** - and nothing enforces that.  A re-extraction that made one of them
-    sendable would compose translations onto a blank canvas.
-    Keeping graphics state (§C140 ④) does not touch this: Tr is a text operator and the
-    clip is built from the removed glyphs.
+    reads this tool's output for them.  **Live exposure is therefore 0** - and nothing
+    enforces that.  A re-extraction that made one of them sendable would compose
+    translations onto a blank canvas.
     """
     page = pdf.pages[0]
     content = read_content(page).encode('latin-1')
     try:
-        stripped, _n, kept = strip_text_ops(content)
+        stripped, _n = strip_text_ops(content)
     except Exception as exc:
         raise UnparsableStream(
             f'page content stream: {type(exc).__name__}: {exc}') from exc
@@ -220,7 +185,7 @@ def strip_text(pdf):
 
     seen = set()
     stats = {'page_before': len(content), 'page_after': len(stripped),
-             'forms_visited': 0, 'forms_rewritten': 0, 'unparsable': [], 'state_kept': kept}
+             'forms_visited': 0, 'forms_rewritten': 0, 'unparsable': []}
 
     def walk(res):
         xobjects = res.get('/XObject')
@@ -245,7 +210,7 @@ def strip_text(pdf):
             stats['forms_visited'] += 1
             old = xobj.read_bytes()
             try:
-                new, _n, form_kept = strip_text_ops(old)
+                new, _n = strip_text_ops(old)
             except Exception as exc:
                 # NAMED and re-raised at the end, never skipped: a form we could not
                 # tokenise is a form whose English may still be drawn under the
@@ -254,7 +219,6 @@ def strip_text(pdf):
                 stats['unparsable'].append(f'{objgen}: {type(exc).__name__}: {exc}')
                 continue
             xobj.write(new)                      # IN PLACE - see R-9 above
-            stats['state_kept'] += form_kept
             # ⚠️ COUNT THE TEXT BLOCKS REMOVED, NOT `new != old`. `main()` prints this as
             # "N contained text", and since the scan became token-aware EVERY stream is
             # re-serialised, so `new != old` is now true of a form that contained no text
@@ -272,9 +236,8 @@ def strip_text(pdf):
         walk(res)
     if stats['unparsable']:
         raise UnparsableStream(
-            f"{len(stats['unparsable'])} /Form stream(s) could not be stripped (unparsable, "
-            f"or an operator inside a text object was refused), so their text was NOT removed: "
-            f"{stats['unparsable'][:3]}")
+            f"{len(stats['unparsable'])} /Form stream(s) could not be tokenised, so their "
+            f"text was NOT removed: {stats['unparsable'][:3]}")
     return stats
 
 
@@ -322,7 +285,6 @@ def main(pdf_path, dpi=DEFAULT_DPI, svg=False):
     print(f"content stream: {stats['page_before']} -> {stats['page_after']} bytes")
     print(f"form XObjects: {stats['forms_visited']} visited, "
           f"{stats['forms_rewritten']} contained text")
-    print(f"graphics state kept from text objects: {stats['state_kept']} operator(s)")
 
     for k in ('/PieceInfo', '/LastModified', '/Metadata', '/Thumb'):
         if k in page.obj:

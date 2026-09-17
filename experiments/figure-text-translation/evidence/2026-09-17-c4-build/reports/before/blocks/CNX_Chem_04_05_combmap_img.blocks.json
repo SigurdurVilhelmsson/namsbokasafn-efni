@@ -1,0 +1,148 @@
+[
+ {
+  "key": "Mass of|CO2",
+  "english": "Mass of CO2",
+  "lines": [
+   "Mass of",
+   "CO2"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of|CO2",
+  "english": "Moles of CO2",
+  "lines": [
+   "Moles of",
+   "CO2"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of C",
+  "english": "Moles of C",
+  "lines": [
+   "Moles of C"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of C",
+  "english": "Mass of C",
+  "lines": [
+   "Mass of C"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of|H2O",
+  "english": "Mass of H2O",
+  "lines": [
+   "Mass of",
+   "H2O"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of|H2O",
+  "english": "Moles of H2O",
+  "lines": [
+   "Moles of",
+   "H2O"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of H",
+  "english": "Moles of H",
+  "lines": [
+   "Moles of H"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of H",
+  "english": "Mass of H",
+  "lines": [
+   "Mass of H"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Percent|composition",
+  "english": "Percent composition",
+  "lines": [
+   "Percent",
+   "composition"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "C to H|mole ratio",
+  "english": "C to H mole ratio",
+  "lines": [
+   "C to H",
+   "mole ratio"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Empirical|formula",
+  "english": "Empirical formula",
+  "lines": [
+   "Empirical",
+   "formula"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molar|mass",
+  "english": "Molar mass",
+  "lines": [
+   "Molar",
+   "mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Stoichiometric|factor",
+  "english": "Stoichiometric factor",
+  "lines": [
+   "Stoichiometric",
+   "factor"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molar|mass",
+  "english": "Molar mass",
+  "lines": [
+   "Molar",
+   "mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Stoichiometric|factor",
+  "english": "Stoichiometric factor",
+  "lines": [
+   "Stoichiometric",
+   "factor"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

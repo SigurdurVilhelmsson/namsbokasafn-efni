@@ -1,0 +1,36 @@
+{
+ "serialiser": {
+  "size_match": true,
+  "shape": [
+   321,
+   1300,
+   3
+  ],
+  "count_gt40": 0,
+  "count_gt0": 0,
+  "bbox_gt40": null,
+  "bbox_gt0": null
+ },
+ "planted": {
+  "size_match": true,
+  "shape": [
+   321,
+   1300,
+   3
+  ],
+  "count_gt40": 441,
+  "count_gt0": 441,
+  "bbox_gt40": [
+   80,
+   100,
+   325,
+   345
+  ],
+  "bbox_gt0": [
+   80,
+   100,
+   325,
+   345
+  ]
+ }
+}

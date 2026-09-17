@@ -1,0 +1,11 @@
+{
+ "books/efnafraedi-2e/media/CNX_Chem_04_05_combustion_IS.svg": {
+  "artwork_sha256": "5c86fc080da872dbfddd148b3c81d080ec268a9e327c7f7b3014495881bdeda9",
+  "textgroup_sha256": "3b3642559b6c43c69ac22013a683c15a46bf90d65c9e0e34c93ecced1b07e187",
+  "style_font_faces": [
+   "FigIS/400/normal"
+  ],
+  "text_count": 32,
+  "g_opener": "<g text-rendering=\"geometricPrecision\">"
+ }
+}

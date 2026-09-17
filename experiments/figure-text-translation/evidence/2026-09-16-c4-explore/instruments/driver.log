@@ -1,0 +1,39 @@
+resuming: 0 already done of 911
+... 25/911 processed this run, 6.1s elapsed
+... 50/911 processed this run, 7.8s elapsed
+... 75/911 processed this run, 10.8s elapsed
+... 100/911 processed this run, 12.7s elapsed
+... 125/911 processed this run, 15.8s elapsed
+... 150/911 processed this run, 18.3s elapsed
+... 175/911 processed this run, 18.8s elapsed
+... 200/911 processed this run, 22.3s elapsed
+... 225/911 processed this run, 32.2s elapsed
+... 250/911 processed this run, 35.9s elapsed
+... 275/911 processed this run, 44.0s elapsed
+... 300/911 processed this run, 47.5s elapsed
+... 325/911 processed this run, 48.1s elapsed
+... 350/911 processed this run, 59.2s elapsed
+... 375/911 processed this run, 70.4s elapsed
+... 400/911 processed this run, 79.9s elapsed
+... 425/911 processed this run, 90.8s elapsed
+... 450/911 processed this run, 130.8s elapsed
+... 475/911 processed this run, 174.9s elapsed
+... 500/911 processed this run, 186.9s elapsed
+... 525/911 processed this run, 198.8s elapsed
+... 550/911 processed this run, 204.9s elapsed
+... 575/911 processed this run, 208.5s elapsed
+... 600/911 processed this run, 235.3s elapsed
+... 625/911 processed this run, 246.3s elapsed
+... 650/911 processed this run, 281.6s elapsed
+... 675/911 processed this run, 287.1s elapsed
+... 700/911 processed this run, 291.3s elapsed
+... 725/911 processed this run, 293.8s elapsed
+... 750/911 processed this run, 297.8s elapsed
+... 775/911 processed this run, 299.0s elapsed
+... 800/911 processed this run, 299.7s elapsed
+... 825/911 processed this run, 299.9s elapsed
+... 850/911 processed this run, 300.2s elapsed
+... 875/911 processed this run, 300.6s elapsed
+... 900/911 processed this run, 320.5s elapsed
+population=911 results_rows=911 distinct_keys=911 dup={} missing=[]
+DONE n=911 results=911 dup=0 missing=0

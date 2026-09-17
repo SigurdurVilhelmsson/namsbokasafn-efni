@@ -1,0 +1,17 @@
+FOUND PAGE {'op': 'k', 'operands': ['0.698', '0.675', '0.639', '0.74'], 'category': 'fill-colour', 'setDepth': 0, 'armed': True, 'closed': False, 'closed_by': None, 'paints_in_window': 29}
+forms_visited 13 unparsable []
+PAGE bt_et_count 8 class_counts {'persistent-gstate': 2}
+FORM/Fm0:(57, 0) bt_et_count 0 class_counts {}
+FORM/Fm1:(67, 0) bt_et_count 0 class_counts {}
+FORM/Fm10:(69, 0) bt_et_count 0 class_counts {}
+FORM/Fm11:(71, 0) bt_et_count 0 class_counts {}
+FORM/Fm12:(73, 0) bt_et_count 0 class_counts {}
+FORM/Fm2:(83, 0) bt_et_count 0 class_counts {}
+FORM/Fm3:(93, 0) bt_et_count 0 class_counts {}
+FORM/Fm4:(103, 0) bt_et_count 0 class_counts {}
+FORM/Fm5:(110, 0) bt_et_count 0 class_counts {}
+FORM/Fm6:(120, 0) bt_et_count 0 class_counts {}
+FORM/Fm7:(130, 0) bt_et_count 0 class_counts {}
+FORM/Fm8:(137, 0) bt_et_count 0 class_counts {}
+FORM/Fm9:(147, 0) bt_et_count 0 class_counts {}
+DONE any_k_flag_ge7= True

@@ -1,0 +1,146 @@
+[
+ {
+  "key": "+",
+  "english": "+",
+  "lines": [
+   "+"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "+",
+  "english": "+",
+  "lines": [
+   "+"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "+",
+  "english": "+",
+  "lines": [
+   "+"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "+",
+  "english": "+",
+  "lines": [
+   "+"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "CH4",
+  "english": "CH4",
+  "lines": [
+   "CH4"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "2O2",
+  "english": "2O2",
+  "lines": [
+   "2O2"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "CO2",
+  "english": "CO2",
+  "lines": [
+   "CO2"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "2H2O",
+  "english": "2H2O",
+  "lines": [
+   "2H2O"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "Reactant",
+  "english": "Reactant",
+  "lines": [
+   "Reactant"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Reactant side",
+  "english": "Reactant side",
+  "lines": [
+   "Reactant side"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Product side",
+  "english": "Product side",
+  "lines": [
+   "Product side"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Reactant",
+  "english": "Reactant",
+  "lines": [
+   "Reactant"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Coefficient",
+  "english": "Coefficient",
+  "lines": [
+   "Coefficient"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Product",
+  "english": "Product",
+  "lines": [
+   "Product"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Product",
+  "english": "Product",
+  "lines": [
+   "Product"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Coefficient",
+  "english": "Coefficient",
+  "lines": [
+   "Coefficient"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

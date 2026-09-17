@@ -1,0 +1,32 @@
+[
+ {
+  "key": "Mass of|vitamin C (g)",
+  "english": "Mass of vitamin C (g)",
+  "lines": [
+   "Mass of",
+   "vitamin C (g)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Multiply by molar|mass (g/mol)",
+  "english": "Multiply by molar mass (g/mol)",
+  "lines": [
+   "Multiply by molar",
+   "mass (g/mol)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of|vitamin C (mol)",
+  "english": "Moles of vitamin C (mol)",
+  "lines": [
+   "Moles of",
+   "vitamin C (mol)"
+  ],
+  "arc": false,
+  "send": true
+ }
+]
