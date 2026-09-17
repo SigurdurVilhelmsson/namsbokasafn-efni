@@ -1,0 +1,98 @@
+{
+ "books/efnafraedi-2e/media/CNX_Chem_03_01_alsulfatemass_img_IS.svg": {
+  "artwork_sha256": "cd5fd5980cfe200058bf3de87095758dd37635d20b7b45374c5827a43d3ecafd",
+  "textgroup_sha256": "83ee58fe4a7547e7c85deb501a62a17c8fee215dbd6f9c897042d3f0a88f491e",
+  "style_font_faces": [
+   "FigIS/400/normal",
+   "FigIS/700/normal",
+   "FigSym/400/normal"
+  ],
+  "text_count": 26,
+  "g_opener": "<g text-rendering=\"geometricPrecision\">"
+ },
+ "books/efnafraedi-2e/media/CNX_Chem_03_01_aspirin_IS.svg": {
+  "artwork_sha256": "012650545d872571b99437aa295a25ad4e4c424487e438a0ab7b69f090368db5",
+  "textgroup_sha256": "797867f04752979700a0b46cb092c7ecbbcec48d5885ec0c7e645a1346a34350",
+  "style_font_faces": [
+   "FigIS/400/normal",
+   "FigIS/700/normal",
+   "FigSym/400/normal"
+  ],
+  "text_count": 26,
+  "g_opener": "<g text-rendering=\"geometricPrecision\">"
+ },
+ "books/efnafraedi-2e/media/CNX_Chem_03_01_chloroform_IS.svg": {
+  "artwork_sha256": "28e265eb703e2cb9e5cdd060f4791c7e1f6a5f86524e6360796f58fba8fc16ce",
+  "textgroup_sha256": "88d69f5e5de86ab15b3112821db0d12a085b4c76c22985c2580ab88e73d752ae",
+  "style_font_faces": [
+   "FigIS/400/normal",
+   "FigIS/700/normal",
+   "FigSym/400/normal"
+  ],
+  "text_count": 26,
+  "g_opener": "<g text-rendering=\"geometricPrecision\">"
+ },
+ "books/efnafraedi-2e/media/CNX_Chem_03_01_glycinemass_img_IS.svg": {
+  "artwork_sha256": "7ec6aba034799d1f7b354a4aec8fdca59327f678a269654c18df5833974080a7",
+  "textgroup_sha256": "a9c03b27949787297ed3d5aaf1f131ba232f46142507e37dd4349988e9624641",
+  "style_font_faces": [
+   "FigIS/400/normal",
+   "FigIS/700/normal",
+   "FigSym/400/normal"
+  ],
+  "text_count": 34,
+  "g_opener": "<g text-rendering=\"geometricPrecision\">"
+ },
+ "books/efnafraedi-2e/media/CNX_Chem_03_01_saltMass_IS.svg": {
+  "artwork_sha256": "48bef782b13eee4f8f6581263102eb5f41ff7b1d4b7413b481ba9b1aebf27168",
+  "textgroup_sha256": "5e6e5c7881d68675e52015446e59d8d8f3b36d8b0b1af5bb94bea92a1f042286",
+  "style_font_faces": [
+   "FigIS/400/normal",
+   "FigIS/700/normal",
+   "FigSym/400/normal"
+  ],
+  "text_count": 19,
+  "g_opener": "<g text-rendering=\"geometricPrecision\">"
+ },
+ "books/efnafraedi-2e/media/CNX_Chem_04_01_basehyd_img_IS.svg": {
+  "artwork_sha256": "5bf7fc755151baec62b9b2b3616ed1c0fd6ad67f97089cf451cbbaf650d6621a",
+  "textgroup_sha256": "87df4bbaa9dd53c7eb542913d7221fe41ad660d83e9557126a6812cab7cd4939",
+  "style_font_faces": [
+   "FigIS/400/normal",
+   "FigSym/400/normal"
+  ],
+  "text_count": 28,
+  "g_opener": "<g text-rendering=\"geometricPrecision\">"
+ },
+ "books/efnafraedi-2e/media/CNX_Chem_04_01_rxn2_IS.svg": {
+  "artwork_sha256": "d34196520997da902faa7f8513a690c8ffe9be4538469985991e3e1469bbdd6d",
+  "textgroup_sha256": "99ffe9000d670fa3d3b17e10254926c2e46147d79d4e7f729c16b45a17921f56",
+  "style_font_faces": [
+   "FigIS/400/normal",
+   "FigSym/400/normal"
+  ],
+  "text_count": 21,
+  "g_opener": "<g text-rendering=\"geometricPrecision\">"
+ },
+ "books/efnafraedi-2e/media/CNX_Chem_04_02_HClsoln_IS.svg": {
+  "artwork_sha256": "6c86003c743a9b23bc169a6fe130d143e25356962799784f46a04a13d465ac24",
+  "textgroup_sha256": "5811dc3db839f474761e79b2aefb0d1c765ff9c92ad96c2dab9e21dbc60b36d5",
+  "style_font_faces": [
+   "FigIS/400/normal",
+   "FigIS/400/italic",
+   "FigSym/400/normal"
+  ],
+  "text_count": 53,
+  "g_opener": "<g text-rendering=\"geometricPrecision\">"
+ },
+ "books/efnafraedi-2e/media/CNX_Chem_14_03_FishLemon_IS.svg": {
+  "artwork_sha256": "b16f06eea029fe7f2863659c583615863280a0216cac1210d42d1eef080125dd",
+  "textgroup_sha256": "5ce2a4b5b9c90be86015d803a1b522caee4620ae2ecee8e4d32642d08dabaa99",
+  "style_font_faces": [
+   "FigIS/400/normal",
+   "FigSym/400/normal"
+  ],
+  "text_count": 40,
+  "g_opener": "<g text-rendering=\"geometricPrecision\">"
+ }
+}

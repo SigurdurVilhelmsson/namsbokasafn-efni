@@ -1,0 +1,35 @@
+# §C140 ⑥a — final-review fix wave checks, 2026-09-17, 0 ISK. Frozen with this folder; status lives in the register.
+# Code under test: commit 94fe8c41 (the fix wave's code + tests commit).
+
+## 1. Python suites (cwd experiments/figure-text-translation; PYTHONDONTWRITEBYTECODE=1 FIGTEXT_PYLIBS=./pylibs python3 -u <suite>)
+test_figsym.py: ALL PASS  (PASS lines: 36, FAIL lines: 0)
+test_svgout.py: ALL PASS  (PASS lines: 13, FAIL lines: 0)
+test_compose_runexact.py: ALL PASS  (PASS lines: 52, FAIL lines: 0)
+test_compose_t23.py: ALL PASS  (PASS lines: 71, FAIL lines: 0)
+test_figure_compose.py: ALL PASS  (PASS lines: 105, FAIL lines: 0)
+test_blockkey_consumers.py: ALL PASS  (PASS lines: 3, FAIL lines: 0)
+
+## 2. The committed media are unaffected: CNX_Chem_04_02_HClsoln composed in scratch with the fix-wave code
+# python3 -u evidence/2026-09-17-c6a-build/instruments/compose34.py --only CNX_Chem_04_02_HClsoln --out <scratch>
+DONE 1 figures prep_fail=0 compose_fail=0
+# textlist.py on <scratch>/work/CNX_Chem_04_02_HClsoln/translated.svg vs books/efnafraedi-2e/media/CNX_Chem_04_02_HClsoln_IS.svg, field by field:
+xml_ok: identical
+texts: identical
+faces: identical
+metadata: identical
+metadata_text: identical
+texts: 53 vs 53; FigSym texts ['+ ', '+']
+embedded face character sets: identical [('FigIS', ' ()+23CHOabl–'), ('FigIS', 'aglq'), ('FigSym', ' +')]
+whole-file bytes identical: False (489656 vs 489648 bytes; woff2 bytes are not expected to match)
+
+## 3. Font records of the shipped FigSym subsets (M7), decoded from each committed _IS.svg's @font-face
+# git ls-files -z '*.svg' | xargs -0 grep -la "font-family:'FigSym'" | wc -l  ->  9
+CNX_Chem_03_01_alsulfatemass_img_IS.svg: OS/2.achVendID='STIX'  name ID 13 contains 'STIX Fonts': True  name ID 14='http://www.stixfonts.org/user_license.html'
+CNX_Chem_03_01_aspirin_IS.svg: OS/2.achVendID='STIX'  name ID 13 contains 'STIX Fonts': True  name ID 14='http://www.stixfonts.org/user_license.html'
+CNX_Chem_03_01_chloroform_IS.svg: OS/2.achVendID='STIX'  name ID 13 contains 'STIX Fonts': True  name ID 14='http://www.stixfonts.org/user_license.html'
+CNX_Chem_03_01_glycinemass_img_IS.svg: OS/2.achVendID='STIX'  name ID 13 contains 'STIX Fonts': True  name ID 14='http://www.stixfonts.org/user_license.html'
+CNX_Chem_03_01_saltMass_IS.svg: OS/2.achVendID='STIX'  name ID 13 contains 'STIX Fonts': True  name ID 14='http://www.stixfonts.org/user_license.html'
+CNX_Chem_04_01_basehyd_img_IS.svg: OS/2.achVendID='STIX'  name ID 13 contains 'STIX Fonts': True  name ID 14='http://www.stixfonts.org/user_license.html'
+CNX_Chem_04_01_rxn2_IS.svg: OS/2.achVendID='STIX'  name ID 13 contains 'STIX Fonts': True  name ID 14='http://www.stixfonts.org/user_license.html'
+CNX_Chem_04_02_HClsoln_IS.svg: OS/2.achVendID='STIX'  name ID 13 contains 'STIX Fonts': True  name ID 14='http://www.stixfonts.org/user_license.html'
+CNX_Chem_14_03_FishLemon_IS.svg: OS/2.achVendID='STIX'  name ID 13 contains 'STIX Fonts': True  name ID 14='http://www.stixfonts.org/user_license.html'

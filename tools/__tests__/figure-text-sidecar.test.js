@@ -191,12 +191,58 @@ describe('the two layers really are different', () => {
 describe('the composer computes no hashes — there is no second implementation', () => {
   const composerDir = new URL('../../experiments/figure-text-translation/', import.meta.url);
 
-  it('no Python file in the figure-text tree reaches for a hashing library', () => {
+  // §C140 ⑥a: figsym.py fail-closed-verifies the local STIX font file and the
+  // committed licence text against pinned sha256 digests (spec
+  // docs/superpowers/specs/2026-09-17-c140-c6a-stix-regular-design.md T3/T5).
+  // That is font/licence integrity, not a sidecar hash — ⑰'s invariant is "no
+  // Python implementation of renderHash/composedHash", not "no hashing at all".
+  // Each allowlisted file is exempted from exactly what it needs and no more:
+  // - figsym.py may use hashlib, at EXACTLY `FIGSYM_SHA256_CALLS` call sites
+  //   (the font in load(), the licence text in metadata_element()), so a new
+  //   hashing site is a conscious change to this number, not a silent one;
+  // - test_figsym.py only NAMES 'sha256' in assertion strings — it may say the
+  //   word, and must still never import hashlib.
+  // Every other .py file still gets the full absence check, and both are
+  // checked below for the sidecar-hash symbols specifically.
+  const HASH_ALLOWLIST = ['figsym.py', 'test_figsym.py'];
+  const FIGSYM_SHA256_CALLS = 2;
+
+  it('no Python file in the figure-text tree reaches for a hashing library, except the allowlisted STIX/licence integrity checks', () => {
     const files = fs.readdirSync(composerDir).filter((f) => f.endsWith('.py'));
     expect(files.length).toBeGreaterThan(4); // control: the directory really was read
+    // control: a rename of an allowlisted file cannot silently no-op this pin
+    for (const name of HASH_ALLOWLIST) {
+      expect(files, `${name} must still exist for the allowlist to mean anything`).toContain(name);
+    }
     for (const f of files) {
+      if (HASH_ALLOWLIST.includes(f)) continue;
       const src = fs.readFileSync(new URL(f, composerDir), 'utf-8');
       expect(src, `${f} must not hash`).not.toMatch(/\bhashlib\b|\bsha256\b/);
+    }
+  });
+
+  it('figsym.py hashes at exactly its pinned call sites, and test_figsym.py never imports hashlib', () => {
+    const figsym = fs.readFileSync(new URL('figsym.py', composerDir), 'utf-8');
+    expect(
+      figsym.split('hashlib.sha256(').length - 1,
+      'a new hashlib.sha256( site in figsym.py must be a conscious change to FIGSYM_SHA256_CALLS'
+    ).toBe(FIGSYM_SHA256_CALLS);
+    // ... and every hashlib use in it IS one of those calls (no second algorithm beside them)
+    expect(figsym.split('hashlib.').length - 1).toBe(FIGSYM_SHA256_CALLS);
+    const testFigsym = fs.readFileSync(new URL('test_figsym.py', composerDir), 'utf-8');
+    expect(testFigsym, 'test_figsym.py may name sha256 but must not hash').not.toMatch(
+      /\bhashlib\b/
+    );
+    // control: the exemption is for a word the file really contains
+    expect(testFigsym).toMatch(/\bsha256\b/);
+  });
+
+  it('the allowlisted files still implement no sidecar hash, even though they hash', () => {
+    for (const f of HASH_ALLOWLIST) {
+      const src = fs.readFileSync(new URL(f, composerDir), 'utf-8');
+      expect(src, `${f} must not implement a sidecar hash`).not.toMatch(
+        /renderHash|composedHash|computeRenderHash|composed_hash|render_hash/
+      );
     }
   });
 

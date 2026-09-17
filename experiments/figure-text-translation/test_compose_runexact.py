@@ -40,6 +40,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent          # never process.cwd() - repo rule
@@ -119,9 +120,12 @@ def run_prepare(out_dir, basename):
                            '--out', str(out_dir)], capture_output=True, text=True, env=env)
 
 
-def run_compose(out_dir, tr_path):
+def run_compose(out_dir, tr_path, extra_env=None):
+    """`extra_env` goes into the CHILD's environment only - this process's os.environ is never touched."""
     env = dict(os.environ)
     env['FIGTEXT_OUT'] = str(out_dir)
+    if extra_env:
+        env.update(extra_env)
     return subprocess.run([sys.executable, str(COMPOSE), '--translations', str(tr_path), '--svg'],
                           capture_output=True, text=True, env=env, cwd=str(HERE))
 
@@ -201,8 +205,8 @@ def plant(out_dir):
     return planted
 
 
-def compose_fixture(tmp, name, mutate, translations):
-    """prepare -> mutate(out) -> derive blocks -> compose. -> (out, blocks, entries, report, svg)"""
+def prepare_fixture(tmp, name, mutate, translations):
+    """prepare -> mutate(out) -> derive blocks -> write the translations. -> (out, extra, blocks, entries, tr)"""
     out = Path(tmp) / name
     prep = run_prepare(out, 'CNX_Fixture_' + name)
     check(f'{name}: PRECONDITION prepare exits 0', prep.returncode == 0,
@@ -213,7 +217,13 @@ def compose_fixture(tmp, name, mutate, translations):
     blocks, entries = derive_blocks(out)
     tr = Path(tmp) / f'{name}-tr.json'
     tr.write_text(json.dumps({'blocks': translations}, ensure_ascii=False))
-    c = run_compose(out, tr)
+    return out, extra, blocks, entries, tr
+
+
+def compose_fixture(tmp, name, mutate, translations, extra_env=None):
+    """prepare -> mutate(out) -> derive blocks -> compose. -> (out, blocks, entries, report, svg)"""
+    out, extra, blocks, entries, tr = prepare_fixture(tmp, name, mutate, translations)
+    c = run_compose(out, tr, extra_env)
     check(f'{name}: PRECONDITION compose exits 0 and writes its report + SVG',
           c.returncode == 0 and (out / 'compose-report.json').exists()
           and (out / 'translated.svg').exists(),
@@ -392,5 +402,186 @@ check('E8 ITALIC: an italic @font-face exists and the italic run uses it',
       ['400', 'italic', '()g'] in faces(svg)
       and len(find(els, '(g)', font_style='italic')) == 1,
       f"faces={[f[:2] for f in faces(svg)]!r} (g)={find(els, '(g)')!r}")
+
+# ── §C140 ⑥a: a REAL bought figure — CNX_Chem_04_02_HClsoln has an identity KEPT STIX block ──
+# (evidence/2026-09-17-c6a-build/reports/before/stix-recount.json: kept_blocks=1, chars ' ', '+').
+# This is a compose-level end-to-end check, not a planted one: it resolves the figure's own
+# source PDF the way a real run does (sources.py, this box's sources.local.json).
+HCL_BASENAME = 'CNX_Chem_04_02_HClsoln'
+try:
+    import sources as SRC
+    _cfg = SRC.load_config()
+    _trees = SRC.load_trees('efnafraedi-2e', _cfg)
+    _hcl_src, _ = SRC.resolve(HCL_BASENAME, _trees, _cfg['editionPrecedence'],
+                              superseded=_cfg.get('supersededArtwork'))
+except SystemExit as exc:
+    _hcl_src = None
+    check('R0 PRECONDITION CNX_Chem_04_02_HClsoln resolves on this box', False, str(exc))
+else:
+    check('R0 PRECONDITION CNX_Chem_04_02_HClsoln resolves on this box', _hcl_src is not None,
+          str(_hcl_src) if _hcl_src is not None else 'unresolved (no source tree holds it)')
+
+
+def run_prepare_src(src, out_dir, basename):
+    env = dict(os.environ)
+    env.pop('FIGTEXT_OUT', None)
+    return subprocess.run([sys.executable, str(PREPARE), str(src), '--basename', basename,
+                           '--out', str(out_dir)], capture_output=True, text=True, env=env)
+
+
+def run_compose_real(out_dir, extra_env=None):
+    """--control --svg, no --translations: CONTROL never looks translations up."""
+    env = dict(os.environ)
+    env['FIGTEXT_OUT'] = str(out_dir)
+    if extra_env:
+        env.update(extra_env)
+    return subprocess.run([sys.executable, str(COMPOSE), '--control', '--svg'],
+                          capture_output=True, text=True, env=env, cwd=str(HERE))
+
+
+if _hcl_src is not None:
+    hcl_out = Path(TMP.name) / 'hclsoln'
+    prep_hcl = run_prepare_src(_hcl_src, hcl_out, HCL_BASENAME)
+    check('R1 PRECONDITION CNX_Chem_04_02_HClsoln prepares',
+          prep_hcl.returncode == 0, f'exit {prep_hcl.returncode}: {prep_hcl.stderr.strip()[-400:]}')
+
+    if prep_hcl.returncode == 0:
+        comp_hcl = run_compose_real(hcl_out)
+        hcl_report_path = hcl_out / 'compose-report.json'
+        hcl_svg_path = hcl_out / 'control.svg'
+        check('R2 PRECONDITION it composes (--control --svg) and writes a report and an SVG',
+              comp_hcl.returncode == 0 and hcl_report_path.exists() and hcl_svg_path.exists(),
+              f'exit {comp_hcl.returncode}: {comp_hcl.stderr.strip()[-600:]}')
+
+        if comp_hcl.returncode == 0 and hcl_report_path.exists() and hcl_svg_path.exists():
+            hcl_rep = json.loads(hcl_report_path.read_text())
+            hcl_svg = hcl_svg_path.read_text()
+            check("R3 compose-report.json's stix.drawn is non-empty",
+                  bool(hcl_rep.get('stix', {}).get('drawn')), repr(hcl_rep.get('stix')))
+            try:
+                hcl_root = ET.fromstring(hcl_svg.encode('utf-8'))
+                hcl_parse_err = None
+            except ET.ParseError as e:
+                hcl_root = None
+                hcl_parse_err = str(e)
+            check('R4 the SVG parses as XML', hcl_root is not None, hcl_parse_err or '')
+            hcl_figsym_texts = ([e for e in hcl_root.iter()
+                                 if e.tag.split('}', 1)[-1] == 'text'
+                                 and e.get('font-family') == 'FigSym']
+                                if hcl_root is not None else [])
+            check('R5 at least one <text font-family="FigSym"> exists',
+                  len(hcl_figsym_texts) > 0, repr(len(hcl_figsym_texts)))
+            hcl_metadata = ([e for e in hcl_root.iter() if e.tag.split('}', 1)[-1] == 'metadata']
+                            if hcl_root is not None else [])
+            check('R6 its <metadata> exists', len(hcl_metadata) == 1, repr(len(hcl_metadata)))
+
+    # Negative arm: FIGTEXT_STIX_FONT pointing at a missing file refuses this figure — exit
+    # non-zero, no compose-report.json (T3 of the design: a missing/wrong font fails loudly).
+    if prep_hcl.returncode == 0:
+        hcl_bad_out = Path(TMP.name) / 'hclsoln-badfont'
+        prep_hcl2 = run_prepare_src(_hcl_src, hcl_bad_out, HCL_BASENAME)
+        if prep_hcl2.returncode == 0:
+            missing_font = Path(TMP.name) / 'no-such-stix-font.otf'
+            comp_bad = run_compose_real(hcl_bad_out, extra_env={'FIGTEXT_STIX_FONT': str(missing_font)})
+            check('R7 NEGATIVE ARM: a missing FIGTEXT_STIX_FONT exits non-zero, writes no report, and the '
+                  'cause is figsym.FontUnavailable (not some other non-zero exit)',
+                  comp_bad.returncode != 0 and not (hcl_bad_out / 'compose-report.json').exists()
+                  and 'FontUnavailable' in comp_bad.stderr,
+                  f'exit {comp_bad.returncode}; stderr tail: {comp_bad.stderr.strip()[-300:]!r}')
+        else:
+            check('R7 NEGATIVE ARM: a missing FIGTEXT_STIX_FONT exits non-zero, writes no report, and the '
+                  'cause is figsym.FontUnavailable (not some other non-zero exit)',
+                  False, f'PRECONDITION prep failed: {prep_hcl2.stderr.strip()[-300:]}')
+
+# ── §C140 ⑥a: ELIGIBILITY, planted — every branch of the STIX decision, each by VALUE ────────
+# HClsoln above reaches only the covered path, and so does every one of the 34 bought figures: the
+# `cmap` fallback and the `other-face` / `translated` reasons have 0 corpus instances. So they are
+# planted, one single-run block each, at x=170 (clear of the fixture's labels, which end by x=146)
+# and 30 pt apart (well over the 1.222 x 12 pt leading `figtext.group` joins lines within). KEPT is
+# decided by the translations file alone (compose.py: no value -> kept), so only 'Total' is given one.
+K_S_DRAWN, K_S_CMAP, K_S_ITALIC, K_S_SIZEONE, K_S_MATHPI, K_S_TR = '+=', '+Ɓ', 'x', '[', '±', 'Total'
+# U+0181 'Ɓ' is in Liberation Sans and NOT in the official STIX 1.1.0 cmap (measured with fontTools), so the
+# FigIS fallback can really draw it; the '+' beside it is covered, so the run is refused on `all`, not `any`.
+STIX_TR = {K_S_TR: 'Samtals'}
+STIX_KEPT = (K_S_DRAWN, K_S_CMAP, K_S_ITALIC, K_S_SIZEONE, K_S_MATHPI)
+STIX_ENV_BEFORE = os.environ.get('FIGTEXT_STIX_FONT')
+
+
+def plant_stix(out_dir):
+    runs = json.loads((out_dir / 'runs.json').read_text())
+    meta = json.loads((out_dir / 'meta.json').read_text())
+    for fk, base in (('PAGE/F4', '/ABCDEF+STIXGeneral-Regular'), ('PAGE/F5', '/ABCDEF+STIXGeneral-Italic'),
+                     ('PAGE/F6', '/ABCDEF+STIXSizeOneSym-Regular'), ('PAGE/F7', '/XYZABC+MathematicalPi-One')):
+        meta['fonts'][fk] = dict(meta['fonts']['PAGE/F1'], base=base)
+    for text, y, fk in ((K_S_DRAWN, 200.0, 'PAGE/F4'), (K_S_CMAP, 170.0, 'PAGE/F4'), (K_S_ITALIC, 140.0, 'PAGE/F5'),
+                        (K_S_SIZEONE, 110.0, 'PAGE/F6'), (K_S_MATHPI, 80.0, 'PAGE/F7'), (K_S_TR, 50.0, 'PAGE/F4')):
+        runs.append(run(text, 170.0, y, font=fk, a=round(0.6 * 12.0 * len(text), 3)))
+    (out_dir / 'runs.json').write_text(json.dumps(runs, ensure_ascii=False))
+    (out_dir / 'meta.json').write_text(json.dumps(meta, ensure_ascii=False))
+
+
+def figsym_chars(svg_text):
+    """The decoded character set of every FigSym @font-face (a list of strings, one per rule)."""
+    return [''.join(sorted(chr(c) for c in TTFont(io.BytesIO(base64.b64decode(b64))).getBestCmap()))
+            for b64 in re.findall(r"@font-face\{font-family:'FigSym';font-weight:400;font-style:normal;"
+                                  r"src:url\(data:font/woff2;base64,([^)]+)\)", svg_text)]
+
+
+_, _, s_blocks, s_entries, s_rep, s_svg = compose_fixture(TMP.name, 'stix', plant_stix, STIX_TR)
+s_keys = collections.Counter(e['key'] for e in s_entries)
+s_by_key = {e['key']: b for b, e in zip(s_blocks, s_entries)}
+check('S0 PRECONDITION each STIX plant is its OWN one-run block, the five kept ones are kept (runExact) and '
+      '`Total` is translated, not identity',
+      all(s_keys[k] == 1 and len(s_by_key[k]) == 1 for k in STIX_KEPT + (K_S_TR,))
+      and collections.Counter(s_rep.get('runExact', [])) >= collections.Counter(STIX_KEPT)
+      and K_S_TR not in s_rep.get('runExact', []) and K_S_TR in s_rep['translated']
+      and K_S_TR not in s_rep.get('identity', []),
+      f"keys={sorted(s_keys)} runExact={s_rep.get('runExact')!r} translated={s_rep['translated']!r}")
+if fails:
+    finish()
+s_stix = s_rep.get('stix', {})
+s_els = elements(s_svg)
+check("S1 stix.drawn is EXACTLY the covered STIXGeneral-Regular kept run's key",
+      s_stix.get('drawn') == [K_S_DRAWN], repr(s_stix))
+check('S2 stix.skipped is EXACTLY: cmap (Regular, a character outside the cmap), other-face (STIXGeneral-Italic '
+      'AND STIXSizeOneSym-Regular), translated (a Regular run in a translated block) - and NOTHING for the '
+      'MathematicalPi run or the fixture\'s own Helvetica labels',
+      collections.Counter((s['key'], s['reason']) for s in s_stix.get('skipped', []))
+      == collections.Counter([(K_S_CMAP, 'cmap'), (K_S_ITALIC, 'other-face'), (K_S_SIZEONE, 'other-face'),
+                              (K_S_TR, 'translated')]), repr(s_stix.get('skipped')))
+check('S3 the ONLY <text> drawn in FigSym is the covered run',
+      [t for t, a, _ in s_els if a.get('font-family') == 'FigSym'] == [K_S_DRAWN],
+      repr([(t, a.get('font-family')) for t, a, _ in s_els]))
+check('S4 each other kept plant is ONE <text> drawn in FigIS (the italic one italic)',
+      all(len(find(s_els, k, font_family='FigIS')) == 1 for k in (K_S_CMAP, K_S_SIZEONE, K_S_MATHPI))
+      and len(find(s_els, K_S_ITALIC, font_family='FigIS', font_style='italic')) == 1,
+      repr([(t, a.get('font-family'), a.get('font-style')) for t, a, _ in s_els if t in STIX_KEPT]))
+s_tr_els = [(t, a) for t, a, _ in s_els if 'Samtals' in t]
+check('S5 the translated STIX block draws its VALUE in FigIS, and its English is gone',
+      len(s_tr_els) >= 1 and all(a.get('font-family') == 'FigIS' for _, a in s_tr_els)
+      and not any(K_S_TR in t for t, _, _ in s_els), repr(s_tr_els))
+s_sym = figsym_chars(s_svg)
+s_is_chars = ''.join(f[2] for f in faces(s_svg))
+check('S6 the SVG embeds ONE FigSym face holding the drawn run\'s characters and not the fallback\'s; the '
+      'FigIS faces hold the fallback character and not the FigSym-only one',
+      len(s_sym) == 1 and set(K_S_DRAWN) <= set(s_sym[0]) and 'Ɓ' not in s_sym[0]
+      and 'Ɓ' in s_is_chars and '=' not in s_is_chars, f'figsym={s_sym!r} figis={s_is_chars!r}')
+
+# REFUSAL, both sides, on planted inputs (spec § 3): the same missing font path refuses the STIX figure
+# and composes the no-STIX one. Each side is the other's control - a success on `plain` means nothing
+# unless the same variable, the same path, really does refuse a figure that needs the font.
+S_MISSING = {'FIGTEXT_STIX_FONT': str(Path(TMP.name) / 'no-such-stix-font.otf')}
+s_bad_out, _, _, _, s_bad_tr = prepare_fixture(TMP.name, 'stix-nofont', plant_stix, STIX_TR)
+s_bad = run_compose(s_bad_out, s_bad_tr, S_MISSING)
+check('S7 CONTROL the planted STIX figure with FIGTEXT_STIX_FONT missing REFUSES: exit non-zero, no report, '
+      'figsym.FontUnavailable',
+      s_bad.returncode != 0 and not (s_bad_out / 'compose-report.json').exists()
+      and 'FontUnavailable' in s_bad.stderr,
+      f'exit {s_bad.returncode}; stderr tail: {s_bad.stderr.strip()[-300:]!r}')
+_, _, _, _, n_rep, n_svg = compose_fixture(TMP.name, 'plain-nofont', None, PLAIN_TR, extra_env=S_MISSING)
+check('S8 a figure with NO STIX run composes with the same missing font: report written, stix empty, no FigSym',
+      n_rep.get('stix') == {'drawn': [], 'skipped': []} and 'FigSym' not in n_svg, repr(n_rep.get('stix')))
+check('S9 this process\'s own FIGTEXT_STIX_FONT is unchanged (the variable went to children only)',
+      os.environ.get('FIGTEXT_STIX_FONT') == STIX_ENV_BEFORE, repr(os.environ.get('FIGTEXT_STIX_FONT')))
 
 finish()

@@ -21,6 +21,9 @@ WHERE svgout PUTS IT is deliberately NOT pinned here: one attribute on the wrapp
 every <text> element byte-identical, which is what keeps the raw-<text> goldens of
 test_compose_runexact.py and test_compose_t23.py valid.
 """
+import base64
+import importlib.util
+import io
 import os
 import re
 import sys
@@ -34,6 +37,8 @@ sys.path.insert(0, str(HERE / 'pylibs'))
 os.environ.setdefault('FIGTEXT_PYLIBS', str(HERE / 'pylibs'))
 
 import svgout                                   # noqa: E402
+import figsym                                   # noqa: E402
+from fontTools.ttLib import TTFont              # noqa: E402
 
 SVG_NS = '{http://www.w3.org/2000/svg}'
 FAILED = []
@@ -179,6 +184,111 @@ while node is not None:
     chain.append(node.get('text-rendering'))
     node = parent.get(node)
 check('S3 the artwork <rect> has no text-rendering on itself or any ancestor', not any(chain), repr(chain))
+
+# --- §C140 ⑥a: eligible kept runs are drawn in FigSym -------------------------------------------
+# Cases, each asserting by PARSING the output (not by substring where a parse is possible), per
+# the design (T2/T3/T5) and the task-3 brief.
+
+
+def compose_svg(items):
+    """write_svg over a fresh copy of ART with `items` -> the SVG text."""
+    with tempfile.TemporaryDirectory() as td:
+        art = Path(td) / 'artwork.svg'
+        art.write_text(ART, encoding='utf-8')
+        out = Path(td) / 'translated.svg'
+        svgout.write_svg(art, out, items, PAGE_H)
+        return out.read_text(encoding='utf-8')
+
+
+def font_face_rules(svg_text):
+    """[(family, weight, style, b64)] of every @font-face rule, in document order."""
+    return re.findall(
+        r"@font-face\{font-family:'([^']*)';font-weight:(\d+);font-style:(\w+);"
+        r"src:url\(data:font/woff2;base64,([^)]+)\)", svg_text)
+
+
+def cmap_of(b64):
+    return TTFont(io.BytesIO(base64.b64decode(b64))).getBestCmap()
+
+
+def group_children(svg_text):
+    """The local tag names of the <g>'s direct children, in document order."""
+    root_ = ET.fromstring(svg_text.encode('utf-8'))
+    g = next(e for e in root_.iter() if local(e.tag) == 'g')
+    return [local(c.tag) for c in g]
+
+
+def parses(svg_text, label):
+    """True iff `svg_text` parses as XML; otherwise a precondition failure (exits)."""
+    try:
+        ET.fromstring(svg_text.encode('utf-8'))
+        return True
+    except ET.ParseError as e:
+        precondition(label, False, str(e))
+        return False
+
+
+# Case 1: no FigSym item -> the group is unchanged in shape and every rule/text stays FigIS.
+ITEMS_1 = [item('AB', 10.0, 10.0), item('CD', 20.0, 20.0, bold=True)]
+svg1 = compose_svg(ITEMS_1)
+parses(svg1, 'T1 the no-FigSym-item SVG parses as XML')
+faces1 = font_face_rules(svg1)
+check("T1a @font-face families are only FigIS, in today's (bold, italic) order",
+      [(f[0], f[1], f[2]) for f in faces1] == [('FigIS', '400', 'normal'), ('FigIS', '700', 'normal')],
+      repr([f[:3] for f in faces1]))
+root1 = ET.fromstring(svg1.encode('utf-8'))
+texts1 = [e for e in root1.iter() if local(e.tag) == 'text']
+check('T1b every <text> has font-family="FigIS"',
+      bool(texts1) and all(e.get('font-family') == 'FigIS' for e in texts1),
+      repr([e.get('font-family') for e in texts1]))
+check('T1c no <metadata> element in a figure with no eligible run',
+      not any(local(e.tag) == 'metadata' for e in root1.iter()))
+check("T1d the <g>'s first child is a <text> (the group is unchanged in shape)",
+      group_children(svg1)[:1] == ['text'], repr(group_children(svg1)))
+
+# Case 2: one FigSym item ('+') and one FigIS item ('X').
+ITEMS_2 = [item('X', 10.0, 10.0), item('+', 30.0, 10.0, family=figsym.FAMILY)]
+svg2 = compose_svg(ITEMS_2)
+parses(svg2, 'T2 the one-FigSym-item SVG parses as XML')
+faces2 = font_face_rules(svg2)
+check('T2a @font-face families in order FigIS…, then FigSym 400/normal',
+      [f[0] for f in faces2] == ['FigIS', 'FigSym'] and faces2[-1][1:3] == ('400', 'normal'),
+      repr([f[:3] for f in faces2]))
+root2 = ET.fromstring(svg2.encode('utf-8'))
+by_text2 = {''.join(e.itertext()): e.get('font-family')
+            for e in root2.iter() if local(e.tag) == 'text'}
+check("T2b the FigSym item's <text> is font-family=\"FigSym\", the other is \"FigIS\"",
+      by_text2.get('+') == 'FigSym' and by_text2.get('X') == 'FigIS', repr(by_text2))
+metas2 = [e for e in root2.iter() if local(e.tag) == 'metadata']
+check("T2c exactly one <metadata> and it is the first child of the <g>",
+      len(metas2) == 1 and group_children(svg2)[:1] == ['metadata'], repr(group_children(svg2)))
+figis_b64_2 = next((f[3] for f in faces2 if f[0] == 'FigIS'), None)
+check("T2d the FigIS face's characters do not include '+' (decoded from its own woff2)",
+      figis_b64_2 is not None and ord('+') not in cmap_of(figis_b64_2),
+      repr(sorted(cmap_of(figis_b64_2))[:10]) if figis_b64_2 else 'no FigIS face')
+
+# Case 3: every character moved to FigSym -> no FigIS face is emitted at all.
+ITEMS_3 = [item('+', 10.0, 10.0, family=figsym.FAMILY), item('=', 30.0, 10.0, family=figsym.FAMILY)]
+svg3 = compose_svg(ITEMS_3)
+parses(svg3, 'T3 the all-FigSym SVG parses as XML')
+faces3 = font_face_rules(svg3)
+check('T3 no FigIS face is emitted when no item uses it',
+      [f[0] for f in faces3] == ['FigSym'], repr([f[:3] for f in faces3]))
+
+# Case 4: the figparts.split() contract (last <style>; remainder \n<g …>…</g>\n</svg>\n) still
+# holds with a FigSym face and a <metadata> element present. Imported by path - it lives under
+# evidence/, not on this file's import path.
+FIGPARTS_PATH = HERE / 'evidence' / '2026-09-17-c4-build' / 'instruments' / 'figparts.py'
+_spec = importlib.util.spec_from_file_location('c6a_figparts', FIGPARTS_PATH)
+figparts = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(figparts)
+try:
+    figparts.split(svg2.encode('utf-8'))
+    split_err = None
+except Exception as e:                          # noqa: BLE001 - the check is "did it raise"
+    split_err = repr(e)
+check('T4 figparts.split() still accepts the composed SVG with a FigSym face + <metadata>',
+      split_err is None, split_err or '')
 
 print('ALL PASS' if not FAILED else f'{len(FAILED)} FAILED: ' + ', '.join(FAILED))
 sys.exit(1 if FAILED else 0)

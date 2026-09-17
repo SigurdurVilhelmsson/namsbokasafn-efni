@@ -1,0 +1,16 @@
+LIVE RUN
+efnafraedi-2e ch03: 1 figure(s) across 5 module(s)
+
+     1  translated
+     1  = enumerated
+
+  figure-prepare.py warnings — 2 across 1 figure(s), its own !! lines:
+    CNX_Chem_03_01_chloroform: subset font PAGE/TT0; subset font PAGE/TT1
+  English-kept numbers drawn with a decimal comma, by figure (1):
+    CNX_Chem_03_01_chloroform: "12.01", "1.008", "35.45", "12.01", "1.008", "106.35", "119.37"
+
+  MT spawned for 0 figure(s), 0 billable characters — only a figure with NO sidecar is spendable
+  published 1 figure(s) into /home/siggi/dev/repos/namsbokasafn-efni/books/efnafraedi-2e/media/
+
+VERDICT ok
+  NOTE (not a failure): 1 figure(s) had English-kept numbers drawn with a decimal comma

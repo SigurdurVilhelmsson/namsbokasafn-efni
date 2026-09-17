@@ -1,0 +1,52 @@
+CNX_Chem_03_01_alsulfatemass_img	text_idx=20	char='×'	box=(250, 74, 314, 139)	diff_before=6.856	diff_after=1.701	improved=True	blank=False	norule_vs_after_diff=5.152	norule_differs=True
+CNX_Chem_03_01_alsulfatemass_img	text_idx=21	char='='	box=(512, 74, 576, 139)	diff_before=7.283	diff_after=1.254	improved=True	blank=False	norule_vs_after_diff=6.357	norule_differs=True
+CNX_Chem_03_01_alsulfatemass_img	text_idx=22	char='×'	box=(250, 133, 314, 197)	diff_before=5.552	diff_after=3.116	improved=True	blank=False	norule_vs_after_diff=5.232	norule_differs=True
+CNX_Chem_03_01_alsulfatemass_img	text_idx=23	char='='	box=(512, 133, 576, 197)	diff_before=5.672	diff_after=3.631	improved=True	blank=False	norule_vs_after_diff=6.457	norule_differs=True
+CNX_Chem_03_01_alsulfatemass_img	text_idx=24	char='×'	box=(250, 191, 314, 256)	diff_before=5.685	diff_after=2.070	improved=True	blank=False	norule_vs_after_diff=5.152	norule_differs=True
+CNX_Chem_03_01_alsulfatemass_img	text_idx=25	char='='	box=(512, 191, 576, 256)	diff_before=5.760	diff_after=2.394	improved=True	blank=False	norule_vs_after_diff=6.357	norule_differs=True
+CNX_Chem_03_01_alsulfatemass_img	SUMMARY texts=6 raw_improved=6/6 glyph_only_improved=6/6 majority_raw=True majority_glyph=True any_norule_differs=True
+CNX_Chem_03_01_aspirin	text_idx=20	char='×'	box=(249, 73, 314, 137)	diff_before=7.440	diff_after=3.882	improved=True	blank=False	norule_vs_after_diff=5.248	norule_differs=True
+CNX_Chem_03_01_aspirin	text_idx=21	char='='	box=(511, 73, 576, 137)	diff_before=8.815	diff_after=5.409	improved=True	blank=False	norule_vs_after_diff=6.369	norule_differs=True
+CNX_Chem_03_01_aspirin	text_idx=22	char='×'	box=(249, 131, 314, 196)	diff_before=7.714	diff_after=3.289	improved=True	blank=False	norule_vs_after_diff=5.167	norule_differs=True
+CNX_Chem_03_01_aspirin	text_idx=23	char='='	box=(511, 131, 576, 196)	diff_before=9.313	diff_after=4.429	improved=True	blank=False	norule_vs_after_diff=6.271	norule_differs=True
+CNX_Chem_03_01_aspirin	text_idx=24	char='×'	box=(249, 190, 314, 254)	diff_before=6.993	diff_after=5.694	improved=True	blank=False	norule_vs_after_diff=5.248	norule_differs=True
+CNX_Chem_03_01_aspirin	text_idx=25	char='='	box=(511, 190, 576, 254)	diff_before=8.454	diff_after=7.738	improved=True	blank=False	norule_vs_after_diff=6.369	norule_differs=True
+CNX_Chem_03_01_aspirin	SUMMARY texts=6 raw_improved=6/6 glyph_only_improved=6/6 majority_raw=True majority_glyph=True any_norule_differs=True
+CNX_Chem_03_01_chloroform	text_idx=20	char='×'	box=(303, 74, 368, 139)	diff_before=6.760	diff_after=1.685	improved=True	blank=False	norule_vs_after_diff=5.072	norule_differs=True
+CNX_Chem_03_01_chloroform	text_idx=21	char='='	box=(565, 74, 629, 139)	diff_before=7.294	diff_after=1.264	improved=True	blank=False	norule_vs_after_diff=6.357	norule_differs=True
+CNX_Chem_03_01_chloroform	text_idx=22	char='×'	box=(303, 133, 368, 197)	diff_before=5.475	diff_after=3.077	improved=True	blank=False	norule_vs_after_diff=5.152	norule_differs=True
+CNX_Chem_03_01_chloroform	text_idx=23	char='='	box=(565, 133, 629, 197)	diff_before=5.687	diff_after=3.646	improved=True	blank=False	norule_vs_after_diff=6.457	norule_differs=True
+CNX_Chem_03_01_chloroform	text_idx=24	char='×'	box=(303, 191, 368, 256)	diff_before=5.602	diff_after=2.042	improved=True	blank=False	norule_vs_after_diff=5.072	norule_differs=True
+CNX_Chem_03_01_chloroform	text_idx=25	char='='	box=(565, 191, 629, 256)	diff_before=5.775	diff_after=2.408	improved=True	blank=False	norule_vs_after_diff=6.357	norule_differs=True
+CNX_Chem_03_01_chloroform	SUMMARY texts=6 raw_improved=6/6 glyph_only_improved=6/6 majority_raw=True majority_glyph=True any_norule_differs=True
+CNX_Chem_03_01_glycinemass_img	text_idx=22	char='×'	box=(333, 105, 397, 169)	diff_before=6.369	diff_after=2.676	improved=True	blank=False	norule_vs_after_diff=5.255	norule_differs=True
+CNX_Chem_03_01_glycinemass_img	text_idx=23	char='='	box=(595, 105, 659, 169)	diff_before=6.423	diff_after=2.998	improved=True	blank=False	norule_vs_after_diff=6.453	norule_differs=True
+CNX_Chem_03_01_glycinemass_img	text_idx=24	char='×'	box=(333, 163, 397, 228)	diff_before=6.781	diff_after=2.291	improved=True	blank=False	norule_vs_after_diff=5.174	norule_differs=True
+CNX_Chem_03_01_glycinemass_img	text_idx=25	char='='	box=(595, 163, 659, 228)	diff_before=7.257	diff_after=2.230	improved=True	blank=False	norule_vs_after_diff=6.353	norule_differs=True
+CNX_Chem_03_01_glycinemass_img	text_idx=30	char='×'	box=(333, 222, 397, 286)	diff_before=5.982	diff_after=3.450	improved=True	blank=False	norule_vs_after_diff=5.255	norule_differs=True
+CNX_Chem_03_01_glycinemass_img	text_idx=31	char='='	box=(595, 222, 659, 286)	diff_before=6.001	diff_after=3.954	improved=True	blank=False	norule_vs_after_diff=6.453	norule_differs=True
+CNX_Chem_03_01_glycinemass_img	text_idx=32	char='×'	box=(333, 280, 397, 345)	diff_before=6.372	diff_after=2.735	improved=True	blank=False	norule_vs_after_diff=5.174	norule_differs=True
+CNX_Chem_03_01_glycinemass_img	text_idx=33	char='='	box=(595, 280, 659, 345)	diff_before=6.427	diff_after=3.055	improved=True	blank=False	norule_vs_after_diff=6.353	norule_differs=True
+CNX_Chem_03_01_glycinemass_img	SUMMARY texts=8 raw_improved=8/8 glyph_only_improved=8/8 majority_raw=True majority_glyph=True any_norule_differs=True
+CNX_Chem_03_01_saltMass	text_idx=15	char='×'	box=(303, 75, 368, 139)	diff_before=7.232	diff_after=2.078	improved=True	blank=False	norule_vs_after_diff=5.152	norule_differs=True
+CNX_Chem_03_01_saltMass	text_idx=16	char='='	box=(565, 75, 629, 139)	diff_before=7.793	diff_after=1.669	improved=True	blank=False	norule_vs_after_diff=6.457	norule_differs=True
+CNX_Chem_03_01_saltMass	text_idx=17	char='×'	box=(303, 133, 368, 197)	diff_before=6.189	diff_after=3.791	improved=True	blank=False	norule_vs_after_diff=5.152	norule_differs=True
+CNX_Chem_03_01_saltMass	text_idx=18	char='='	box=(565, 133, 629, 197)	diff_before=6.419	diff_after=4.378	improved=True	blank=False	norule_vs_after_diff=6.457	norule_differs=True
+CNX_Chem_03_01_saltMass	SUMMARY texts=4 raw_improved=4/4 glyph_only_improved=4/4 majority_raw=True majority_glyph=True any_norule_differs=True
+CNX_Chem_04_01_basehyd_img	text_idx=0	char='+'	box=(349, 34, 414, 99)	diff_before=5.173	diff_after=0.520	improved=True	blank=False	norule_vs_after_diff=5.022	norule_differs=True
+CNX_Chem_04_01_basehyd_img	text_idx=8	char='+'	box=(1011, 34, 1075, 99)	diff_before=5.254	diff_after=0.528	improved=True	blank=False	norule_vs_after_diff=5.101	norule_differs=True
+CNX_Chem_04_01_basehyd_img	text_idx=9	char='+'	box=(1147, 34, 1211, 99)	diff_before=5.310	diff_after=0.567	improved=True	blank=False	norule_vs_after_diff=5.084	norule_differs=True
+CNX_Chem_04_01_basehyd_img	SUMMARY texts=3 raw_improved=3/3 glyph_only_improved=3/3 majority_raw=True majority_glyph=True any_norule_differs=True
+CNX_Chem_04_01_rxn2	text_idx=0	char='+'	box=(170, 253, 235, 317)	diff_before=5.194	diff_after=0.956	improved=True	blank=False	norule_vs_after_diff=5.099	norule_differs=True
+CNX_Chem_04_01_rxn2	text_idx=1	char='+'	box=(759, 253, 823, 317)	diff_before=5.275	diff_after=0.971	improved=True	blank=False	norule_vs_after_diff=5.179	norule_differs=True
+CNX_Chem_04_01_rxn2	text_idx=2	char='+'	box=(170, 76, 235, 140)	diff_before=5.194	diff_after=0.956	improved=True	blank=False	norule_vs_after_diff=5.099	norule_differs=True
+CNX_Chem_04_01_rxn2	text_idx=3	char='+'	box=(759, 76, 823, 140)	diff_before=6.131	diff_after=1.827	improved=True	blank=False	norule_vs_after_diff=5.179	norule_differs=True
+CNX_Chem_04_01_rxn2	SUMMARY texts=4 raw_improved=4/4 glyph_only_improved=4/4 majority_raw=True majority_glyph=True any_norule_differs=True
+CNX_Chem_04_02_HClsoln	text_idx=4	char='+ '	box=(518, 457, 593, 509)	diff_before=6.639	diff_after=3.993	improved=True	blank=False	norule_vs_after_diff=3.334	norule_differs=True
+CNX_Chem_04_02_HClsoln	text_idx=16	char='+'	box=(799, 457, 852, 509)	diff_before=6.996	diff_after=3.474	improved=True	blank=False	norule_vs_after_diff=4.691	norule_differs=True
+CNX_Chem_04_02_HClsoln	SUMMARY texts=2 raw_improved=2/2 glyph_only_improved=2/2 majority_raw=True majority_glyph=True any_norule_differs=True
+CNX_Chem_14_03_FishLemon	text_idx=32	char='+'	box=(197, 678, 261, 742)	diff_before=8.112	diff_after=3.390	improved=True	blank=False	norule_vs_after_diff=5.177	norule_differs=True
+CNX_Chem_14_03_FishLemon	text_idx=33	char='+'	box=(773, 678, 838, 742)	diff_before=7.467	diff_after=2.741	improved=True	blank=False	norule_vs_after_diff=5.101	norule_differs=True
+CNX_Chem_14_03_FishLemon	text_idx=38	char='+'	box=(197, 722, 261, 782)	diff_before=8.209	diff_after=3.989	improved=True	blank=False	norule_vs_after_diff=5.919	norule_differs=True
+CNX_Chem_14_03_FishLemon	text_idx=39	char='+'	box=(773, 722, 838, 782)	diff_before=7.450	diff_after=3.209	improved=True	blank=False	norule_vs_after_diff=5.829	norule_differs=True
+CNX_Chem_14_03_FishLemon	SUMMARY texts=4 raw_improved=4/4 glyph_only_improved=4/4 majority_raw=True majority_glyph=True any_norule_differs=True
