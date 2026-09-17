@@ -1,0 +1,175 @@
+import { describe, it, expect } from 'vitest';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { join, basename } from 'node:path';
+import { DOMParser } from '@xmldom/xmldom';
+import { extractSegments } from '../cnxml-extract.js';
+import { buildCnxml } from '../cnxml-inject.js';
+import { renderCnxmlToHtml } from '../cnxml-render.js';
+
+/**
+ * §C148 — does a translated figure CAPTION reach the injected CNXML and the
+ * rendered page, whatever container the figure sits in?
+ *
+ * 🔴 THIS IS §C89'S SHAPE, FOR CAPTIONS, AND NO COUNT CAN SEE IT. When a caption
+ * translation is dropped the ENGLISH caption is still present, so every tally of
+ * `<caption>`/`<figcaption>` reconciles. Measured 2026-09-17 on the committed
+ * chemistry `03-translated/mt-preview`: every captioned figure that is a direct
+ * child of an `<example>` shipped English (31 of 31), while top-level (510) and
+ * note-direct (83) captions were all translated. `buildExampleDom` and
+ * `buildExerciseDom` preserve their figures in place and mark them handled, so
+ * `buildFigure` skips them — and neither builder ever consumed
+ * `ctx.figureCaptions`, which only the note builders read.
+ *
+ * The method is a sentinel: every caption segment's text is replaced with a
+ * token that cannot have come from the source, and the token is then LOCATED —
+ * inside the `<caption>` of the figure with that id in the injected CNXML, and
+ * inside a `<figcaption>` in the rendered HTML. `out.includes(token)` alone would
+ * accept a token that landed anywhere else.
+ *
+ * Every caption is classified by its figure's SOURCE context (nearest
+ * note/example/exercise ancestor; `/direct` or `/para` by the figure's own
+ * parent), so the positions that already worked — `top` and `note/direct` —
+ * are the built-in positive control: a harness that broke everything equally
+ * cannot read as a pass.
+ */
+
+const BOOKS = join(process.cwd(), 'books');
+
+function walk(dir, out = []) {
+  for (const entry of readdirSync(dir)) {
+    const p = join(dir, entry);
+    if (statSync(p).isDirectory()) walk(p, out);
+    else if (entry.endsWith('.cnxml')) out.push(p);
+  }
+  return out;
+}
+
+const parser = () => new DOMParser({ onError: () => {} });
+
+/** Source context of a figure: `top`, or `<container>/<direct|para>`. */
+function figureContext(fig) {
+  for (let p = fig.parentNode; p; p = p.parentNode) {
+    if (['example', 'exercise', 'note'].includes(p.nodeName)) {
+      return `${p.nodeName}/${fig.parentNode.nodeName === 'para' ? 'para' : 'direct'}`;
+    }
+  }
+  return 'top';
+}
+
+function directCaption(fig) {
+  return Array.from(fig.childNodes).find((n) => n.nodeName === 'caption') || null;
+}
+
+/** Sentinel-sweep one book. Returns per-context {emitted, injected, rendered} and drops by name. */
+function sweep(book) {
+  const byContext = {};
+  const dropped = [];
+  let notFigure = 0;
+  for (const f of walk(join(BOOKS, book, '01-source'))) {
+    const src = readFileSync(f, 'utf8');
+    const { segments, structure, equations, inlineAttrs } = extractSegments(src);
+    const captions = segments.filter((s) => s.type === 'caption');
+    if (!captions.length) continue;
+
+    const srcFigures = new Map(
+      Array.from(parser().parseFromString(src, 'text/xml').getElementsByTagName('figure')).map(
+        (el) => [el.getAttribute('id'), el]
+      )
+    );
+    const map = new Map(segments.map((s) => [s.id, s.text]));
+    const probes = [];
+    captions.forEach((s, i) => {
+      const figId = s.id
+        .split(':')
+        .slice(2)
+        .join(':')
+        .replace(/-caption$/, '');
+      const srcFig = srcFigures.get(figId);
+      if (!srcFig) {
+        notFigure++;
+        return;
+      }
+      const token = `ZQXCAP${i}ZQX`;
+      map.set(s.id, token);
+      probes.push({ figId, token, context: figureContext(srcFig) });
+    });
+
+    const cnxml = buildCnxml(structure, map, equations, src, {}, inlineAttrs).cnxml;
+    const outFigures = Array.from(
+      parser().parseFromString(cnxml, 'text/xml').getElementsByTagName('figure')
+    );
+    const rendered = renderCnxmlToHtml(cnxml, { bookSlug: book });
+    const html = typeof rendered === 'string' ? rendered : rendered.html || '';
+    const figcaptions = html.match(/<figcaption\b[\s\S]*?<\/figcaption>/g) || [];
+
+    for (const p of probes) {
+      const t = (byContext[p.context] ||= { emitted: 0, injected: 0, rendered: 0 });
+      t.emitted++;
+      const copies = outFigures.filter((el) => el.getAttribute('id') === p.figId);
+      const inCaption =
+        copies.length > 0 &&
+        copies.every((el) => (directCaption(el)?.textContent || '').includes(p.token));
+      if (inCaption) t.injected++;
+      const inFigcaption = figcaptions.some((fc) => fc.includes(p.token));
+      if (inFigcaption) t.rendered++;
+      if (!inCaption || !inFigcaption) {
+        dropped.push(
+          `${basename(f, '.cnxml')} ${p.figId} ${p.context}${inCaption ? ' (render)' : ''}`
+        );
+      }
+    }
+  }
+  return { byContext, dropped: dropped.sort(), notFigure };
+}
+
+describe('§C148 — a translated figure caption reaches the injected CNXML AND the rendered page', () => {
+  it('chemistry: every caption reaches the CNXML; every module-page caption reaches the page', () => {
+    // 🔴 THE BEFORE/AFTER IS THE POINT (emitted / injected / rendered):
+    //                    before §C148          after §C148
+    //   top              510 / 510 / 510       510 / 510 / 510   ← control
+    //   note/direct       83 /  83 /  83        83 /  83 /  83   ← control
+    //   example/direct    31 /   0 /   0        31 /  31 /  31
+    //   exercise/para      1 /   0 /   0         1 /   1 /   0   ← see below
+    // A bare "reached > 0" passes on BOTH sides, which is how 31 English captions
+    // survived every gate. The totals are pinned so a change in either direction
+    // goes red and says which context moved.
+    const r = sweep('efnafraedi-2e');
+    expect(r.byContext).toEqual({
+      top: { emitted: 510, injected: 510, rendered: 510 },
+      'note/direct': { emitted: 83, injected: 83, rendered: 83 },
+      'example/direct': { emitted: 31, injected: 31, rendered: 31 },
+      'exercise/para': { emitted: 1, injected: 1, rendered: 0 },
+    });
+    // ⚠️ THE ONE "rendered 0" IS NOT THIS FIX'S LEG, AND IT IS PINNED BY NAME SO IT
+    // CANNOT HIDE A REAL DROP. m68764's figure is inside an END-OF-CHAPTER exercise,
+    // and eoc exercises are not on the module page at all — they render in the
+    // chapter rollup (`10-exercises.html`), which `renderCnxmlToHtml` never builds.
+    // There, `renderPara` emits the para-nested figure INLINE with its CNXML
+    // `<caption>` passed through raw (not a `<figcaption>`), and the caption prose
+    // has ALSO leaked into the paragraph text (register C13 residual #2a). Both
+    // are render/extract-side and logged as §C149; neither is the inject defect
+    // this test pins.
+    expect(r.dropped).toEqual(['m68764 CNX_Chem_10_02_Needlefloa exercise/para (render)']);
+    expect(r.notFigure).toBe(0);
+  }, 600_000);
+
+  it('organic: every caption reaches the CNXML and the page — 3 latent example captions included', () => {
+    // 🔴 THE SECOND BOOK FOUND WHAT THE COMMITTED-OUTPUT CENSUS COULD NOT.
+    //                    before §C148          after §C148
+    //   top              457 / 457 / 457       457 / 457 / 457   ← control
+    //   note/direct        1 /   1 /   1         1 /   1 /   1   ← control
+    //   example/direct     3 /   0 /   0         3 /   3 /   3
+    // The census over `03-translated/mt-preview` reported organic clean ("0 in
+    // examples") because only ch03 is injected there; m00136, m00137 and m00142
+    // sit in chapters that never were. Measuring from `01-source` is what makes a
+    // latent drop visible before it is paid for.
+    const r = sweep('lifraen-efnafraedi');
+    expect(r.byContext).toEqual({
+      top: { emitted: 457, injected: 457, rendered: 457 },
+      'note/direct': { emitted: 1, injected: 1, rendered: 1 },
+      'example/direct': { emitted: 3, injected: 3, rendered: 3 },
+    });
+    expect(r.dropped).toEqual([]);
+    expect(r.notFigure).toBe(0);
+  }, 600_000);
+});

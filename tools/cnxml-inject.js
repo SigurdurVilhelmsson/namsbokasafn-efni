@@ -2625,6 +2625,53 @@ function applyFigureAltDom(figEl, ctx) {
 }
 
 /**
+ * §C148 — write a kept figure's translated CAPTION into preserved container markup.
+ *
+ * The caption twin of `applyFigureAltDom`, and it exists for the same reason: the
+ * container builders (`buildNoteDom`, `buildExampleDom`, `buildExerciseDom`) keep
+ * their figures in place and mark them handled, so `buildFigure` — the only other
+ * caption writer — skips them. Until 2026-09-17 only the note builder did this, so
+ * every captioned figure inside an `<example>` or `<exercise>` shipped its ENGLISH
+ * caption: 32 in chemistry (31 example-direct + m68764), with the MT extracted,
+ * bought and discarded — §C89's shape, invisible to any count because the English
+ * caption is still present. Pinned by `tools/__tests__/caption-writeback-corpus.test.js`.
+ *
+ * Reads through `getSeg`, NOT `ctx.peekSeg` — deliberately unlike the alt helpers.
+ * Captions are not a new segment class with mixed-vintage MT behind them (§C81's
+ * alts were), and `buildFigure` and the note builder already record caption
+ * misses and residue through `getSeg`, so a container-kept caption is now held to
+ * the same gate as every other caption.
+ *
+ * ⚠️ `getElementsByTagName('caption')[0]` is depth-blind ON PURPOSE: it returns the
+ * first caption in document order, which is exactly the one `processFigure`
+ * (cnxml-extract.js) reads with its first-match regex. Writing to a direct-child
+ * caption instead would diverge from the extract side on a figure whose
+ * `<subfigure>` carries its own caption (0 such files in chemistry and organic).
+ *
+ * @param {Document} doc the parsed container fragment
+ * @param {Element} figEl a `<figure>` DOM element inside preserved container markup
+ * @param {object} ctx build context carrying `figureCaptions`
+ * @param {(segmentId: string) => string} getSeg recording segment lookup
+ * @returns {boolean} true when the figure HAS a caption segment (translated or not)
+ */
+function applyFigureCaptionDom(doc, figEl, ctx, getSeg) {
+  const figId = figEl.getAttribute && figEl.getAttribute('id');
+  if (!figId || !ctx || !ctx.figureCaptions) return false;
+  const captionSegId = ctx.figureCaptions[figId];
+  if (!captionSegId) return false;
+  const captionText = getSeg(captionSegId);
+  if (captionText) {
+    const captions = figEl.getElementsByTagName('caption');
+    if (captions.length > 0) {
+      const captionEl = captions[0];
+      while (captionEl.firstChild) captionEl.removeChild(captionEl.firstChild);
+      insertCnxmlBefore(doc, captionEl, captionText, null);
+    }
+  }
+  return true;
+}
+
+/**
  * §C88 — write translated alt onto every BARE `<media>` inside a
  * preserved-verbatim container, before it is serialized.
  *
@@ -3769,6 +3816,12 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       applyFigureAltDom(fig, ctx);
     }
   }
+  // 🔴 §C148 — and each kept figure's translated CAPTION. The §C89 comment above
+  // said captions were already keyed this way; that was true only in buildNoteDom,
+  // so every captioned figure directly inside an <example> shipped English.
+  for (const fig of Array.from(exampleEl.getElementsByTagName('figure'))) {
+    applyFigureCaptionDom(doc, fig, ctx, getSeg);
+  }
   // §C88 — bare <media> in this container have no <figure> to key on.
   applyMediaAltDom(exampleEl, ctx);
 
@@ -4104,6 +4157,10 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
     for (const fig of Array.from(exerciseEl.getElementsByTagName('figure'))) {
       applyFigureAltDom(fig, ctx);
     }
+  }
+  // 🔴 §C148 — same gap as buildExampleDom: kept figures' captions were never written.
+  for (const fig of Array.from(exerciseEl.getElementsByTagName('figure'))) {
+    applyFigureCaptionDom(doc, fig, ctx, getSeg);
   }
   // §C88 — bare <media> in this container have no <figure> to key on.
   applyMediaAltDom(exerciseEl, ctx);
@@ -4514,18 +4571,7 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
         ctx.figuresHandledInNotes.add(figId);
       }
 
-      const captionSegId = ctx.figureCaptions[figId];
-      if (captionSegId) {
-        const captionText = getSeg(captionSegId);
-        if (captionText) {
-          // Find and replace caption content
-          const captions = figEl.getElementsByTagName('caption');
-          if (captions.length > 0) {
-            const captionEl = captions[0];
-            while (captionEl.firstChild) captionEl.removeChild(captionEl.firstChild);
-            insertCnxmlBefore(doc, captionEl, captionText, null);
-          }
-        }
+      if (applyFigureCaptionDom(doc, figEl, ctx, getSeg)) {
         ctx.figuresHandledInNotes.add(figId);
       }
     }
