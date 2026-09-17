@@ -1,0 +1,68 @@
+[
+ {
+  "key": "Mass of |C8H18",
+  "english": "Mass of  C8H18",
+  "lines": [
+   "Mass of ",
+   "C8H18"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of |C8H18",
+  "english": "Moles of  C8H18",
+  "lines": [
+   "Moles of ",
+   "C8H18"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of O2",
+  "english": "Moles of O2",
+  "lines": [
+   "Moles of O2"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molar mass",
+  "english": "Molar mass",
+  "lines": [
+   "Molar mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of O2",
+  "english": "Mass of O2",
+  "lines": [
+   "Mass of O2"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Molar mass",
+  "english": "Molar mass",
+  "lines": [
+   "Molar mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Stoichiometric|factor",
+  "english": "Stoichiometric factor",
+  "lines": [
+   "Stoichiometric",
+   "factor"
+  ],
+  "arc": false,
+  "send": true
+ }
+]
