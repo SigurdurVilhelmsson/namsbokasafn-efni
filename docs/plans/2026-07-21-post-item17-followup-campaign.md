@@ -2,7 +2,19 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-17 (§C140 ⑥b BUILT + VERIFIED + RECOMPOSED — PR #478 OPEN)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-17 (§C140 ⑥b MERGED — PR #478 as `aac07682`; DEPLOY OWED)** (supersedes every block below)
+
+### ⏭ SINGLE NEXT ACTION — **[USER] runs `./scripts/deploy.sh` on prod, and at that deploy confirms prod holds no figure-review approval — if one exists, re-open it by hand.** The approval window for ⑥b's skipped `COMPOSER_VERSION` bump closes at this deploy, not at the merge (spec K4). ⑥b changes no server code, but the merge puts prod behind `main`, and prod's content backup stays stranded until the deploy (CLAUDE.md § Content delivery). Buying stays stopped.
+
+✅ **PR #478 (§C140 ⑥b) is MERGED** — [USER]'s instruction, 2026-09-17, as a merge commit so the SHAs the frozen evidence cites stay on `main`. It also carried the held docs branch `docs/c140-rerender-todo-kerning-font-prereq`. ⚠️ **CI's `test` job was red on the merged head, and identical by name to `main`'s own red before the merge** (the same 36 failing tests; e2e, lint, audit and docs green). That red predates ⑥b and is not addressed here.
+
+📋 **Still [USER]'s, unchanged:** the ch03/ch04 re-render before chemistry's next sync (§C140 ㉟, which now also covers ⑥b's recomposed figures) · the optional single `COMPOSER_VERSION` bump covering ④ + ⑥a + ⑥b, offered in the PR.
+
+⚠️ **This block sits on the UNPUSHED docs branch `docs/c140-c6b-merged-deploy-owed`** — it rides the next code branch (memory `feedback-batch-docs-only-pushes`); do not push it alone.
+
+---
+
+## ⏩ RESUME — state as of **2026-09-17 (§C140 ⑥b BUILT + VERIFIED + RECOMPOSED — PR #478 OPEN)** (superseded by the block above)
 
 ### ⏭ SINGLE NEXT ACTION — **[USER]'s review of ⑥b's PR #478 (`feat/c140-c6b-unkerned-labels`, which also carries the held docs branch's commits) — merge, then deploy, and at that deploy confirm prod still holds no figure approval.** Buying stays stopped; no merge without [USER].
 
