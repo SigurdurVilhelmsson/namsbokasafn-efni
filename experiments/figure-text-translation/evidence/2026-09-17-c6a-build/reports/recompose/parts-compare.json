@@ -1,0 +1,161 @@
+{
+ "all_ok": true,
+ "rows": [
+  {
+   "file": "books/efnafraedi-2e/media/CNX_Chem_03_01_alsulfatemass_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_changed": true,
+   "text_count_before": 26,
+   "text_count_after": 26,
+   "same_text_count": true,
+   "style_font_faces_before": [
+    "FigIS/400/normal",
+    "FigIS/700/normal"
+   ],
+   "style_font_faces_after": [
+    "FigIS/400/normal",
+    "FigIS/700/normal",
+    "FigSym/400/normal"
+   ],
+   "ok": true
+  },
+  {
+   "file": "books/efnafraedi-2e/media/CNX_Chem_03_01_aspirin_IS.svg",
+   "artwork_same": true,
+   "textgroup_changed": true,
+   "text_count_before": 26,
+   "text_count_after": 26,
+   "same_text_count": true,
+   "style_font_faces_before": [
+    "FigIS/400/normal",
+    "FigIS/700/normal"
+   ],
+   "style_font_faces_after": [
+    "FigIS/400/normal",
+    "FigIS/700/normal",
+    "FigSym/400/normal"
+   ],
+   "ok": true
+  },
+  {
+   "file": "books/efnafraedi-2e/media/CNX_Chem_03_01_chloroform_IS.svg",
+   "artwork_same": true,
+   "textgroup_changed": true,
+   "text_count_before": 26,
+   "text_count_after": 26,
+   "same_text_count": true,
+   "style_font_faces_before": [
+    "FigIS/400/normal",
+    "FigIS/700/normal"
+   ],
+   "style_font_faces_after": [
+    "FigIS/400/normal",
+    "FigIS/700/normal",
+    "FigSym/400/normal"
+   ],
+   "ok": true
+  },
+  {
+   "file": "books/efnafraedi-2e/media/CNX_Chem_03_01_glycinemass_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_changed": true,
+   "text_count_before": 34,
+   "text_count_after": 34,
+   "same_text_count": true,
+   "style_font_faces_before": [
+    "FigIS/400/normal",
+    "FigIS/700/normal"
+   ],
+   "style_font_faces_after": [
+    "FigIS/400/normal",
+    "FigIS/700/normal",
+    "FigSym/400/normal"
+   ],
+   "ok": true
+  },
+  {
+   "file": "books/efnafraedi-2e/media/CNX_Chem_03_01_saltMass_IS.svg",
+   "artwork_same": true,
+   "textgroup_changed": true,
+   "text_count_before": 19,
+   "text_count_after": 19,
+   "same_text_count": true,
+   "style_font_faces_before": [
+    "FigIS/400/normal",
+    "FigIS/700/normal"
+   ],
+   "style_font_faces_after": [
+    "FigIS/400/normal",
+    "FigIS/700/normal",
+    "FigSym/400/normal"
+   ],
+   "ok": true
+  },
+  {
+   "file": "books/efnafraedi-2e/media/CNX_Chem_04_01_basehyd_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_changed": true,
+   "text_count_before": 28,
+   "text_count_after": 28,
+   "same_text_count": true,
+   "style_font_faces_before": [
+    "FigIS/400/normal"
+   ],
+   "style_font_faces_after": [
+    "FigIS/400/normal",
+    "FigSym/400/normal"
+   ],
+   "ok": true
+  },
+  {
+   "file": "books/efnafraedi-2e/media/CNX_Chem_04_01_rxn2_IS.svg",
+   "artwork_same": true,
+   "textgroup_changed": true,
+   "text_count_before": 21,
+   "text_count_after": 21,
+   "same_text_count": true,
+   "style_font_faces_before": [
+    "FigIS/400/normal"
+   ],
+   "style_font_faces_after": [
+    "FigIS/400/normal",
+    "FigSym/400/normal"
+   ],
+   "ok": true
+  },
+  {
+   "file": "books/efnafraedi-2e/media/CNX_Chem_04_02_HClsoln_IS.svg",
+   "artwork_same": true,
+   "textgroup_changed": true,
+   "text_count_before": 53,
+   "text_count_after": 53,
+   "same_text_count": true,
+   "style_font_faces_before": [
+    "FigIS/400/normal",
+    "FigIS/400/italic"
+   ],
+   "style_font_faces_after": [
+    "FigIS/400/normal",
+    "FigIS/400/italic",
+    "FigSym/400/normal"
+   ],
+   "ok": true
+  },
+  {
+   "file": "books/efnafraedi-2e/media/CNX_Chem_14_03_FishLemon_IS.svg",
+   "artwork_same": true,
+   "textgroup_changed": true,
+   "text_count_before": 40,
+   "text_count_after": 40,
+   "same_text_count": true,
+   "style_font_faces_before": [
+    "FigIS/400/normal"
+   ],
+   "style_font_faces_after": [
+    "FigIS/400/normal",
+    "FigSym/400/normal"
+   ],
+   "ok": true
+  }
+ ]
+}

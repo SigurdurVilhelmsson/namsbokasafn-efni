@@ -1,0 +1,113 @@
+{
+ "all_match": true,
+ "rows": [
+  {
+   "base": "CNX_Chem_03_01_alsulfatemass_img",
+   "match": true,
+   "family_recomposed": [
+    "FigIS",
+    "FigSym"
+   ],
+   "family_after_compose": [
+    "FigIS",
+    "FigSym"
+   ]
+  },
+  {
+   "base": "CNX_Chem_03_01_aspirin",
+   "match": true,
+   "family_recomposed": [
+    "FigIS",
+    "FigSym"
+   ],
+   "family_after_compose": [
+    "FigIS",
+    "FigSym"
+   ]
+  },
+  {
+   "base": "CNX_Chem_03_01_chloroform",
+   "match": true,
+   "family_recomposed": [
+    "FigIS",
+    "FigSym"
+   ],
+   "family_after_compose": [
+    "FigIS",
+    "FigSym"
+   ]
+  },
+  {
+   "base": "CNX_Chem_03_01_glycinemass_img",
+   "match": true,
+   "family_recomposed": [
+    "FigIS",
+    "FigSym"
+   ],
+   "family_after_compose": [
+    "FigIS",
+    "FigSym"
+   ]
+  },
+  {
+   "base": "CNX_Chem_03_01_saltMass",
+   "match": true,
+   "family_recomposed": [
+    "FigIS",
+    "FigSym"
+   ],
+   "family_after_compose": [
+    "FigIS",
+    "FigSym"
+   ]
+  },
+  {
+   "base": "CNX_Chem_04_01_basehyd_img",
+   "match": true,
+   "family_recomposed": [
+    "FigIS",
+    "FigSym"
+   ],
+   "family_after_compose": [
+    "FigIS",
+    "FigSym"
+   ]
+  },
+  {
+   "base": "CNX_Chem_04_01_rxn2",
+   "match": true,
+   "family_recomposed": [
+    "FigIS",
+    "FigSym"
+   ],
+   "family_after_compose": [
+    "FigIS",
+    "FigSym"
+   ]
+  },
+  {
+   "base": "CNX_Chem_04_02_HClsoln",
+   "match": true,
+   "family_recomposed": [
+    "FigIS",
+    "FigSym"
+   ],
+   "family_after_compose": [
+    "FigIS",
+    "FigSym"
+   ]
+  },
+  {
+   "base": "CNX_Chem_14_03_FishLemon",
+   "match": true,
+   "family_recomposed": [
+    "FigIS",
+    "FigSym"
+   ],
+   "family_after_compose": [
+    "FigIS",
+    "FigSym"
+   ]
+  }
+ ]
+}

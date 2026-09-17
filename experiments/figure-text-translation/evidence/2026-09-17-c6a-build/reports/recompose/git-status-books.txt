@@ -1,0 +1,9 @@
+ M books/efnafraedi-2e/media/CNX_Chem_03_01_alsulfatemass_img_IS.svg
+ M books/efnafraedi-2e/media/CNX_Chem_03_01_aspirin_IS.svg
+ M books/efnafraedi-2e/media/CNX_Chem_03_01_chloroform_IS.svg
+ M books/efnafraedi-2e/media/CNX_Chem_03_01_glycinemass_img_IS.svg
+ M books/efnafraedi-2e/media/CNX_Chem_03_01_saltMass_IS.svg
+ M books/efnafraedi-2e/media/CNX_Chem_04_01_basehyd_img_IS.svg
+ M books/efnafraedi-2e/media/CNX_Chem_04_01_rxn2_IS.svg
+ M books/efnafraedi-2e/media/CNX_Chem_04_02_HClsoln_IS.svg
+ M books/efnafraedi-2e/media/CNX_Chem_14_03_FishLemon_IS.svg
