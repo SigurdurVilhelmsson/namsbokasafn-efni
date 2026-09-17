@@ -1,0 +1,62 @@
+[
+ {
+  "key": "Large contact area,|strong attraction",
+  "english": "Large contact area, strong attraction",
+  "lines": [
+   "Large contact area,",
+   "strong attraction"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "n-pentane|boiling point: 36 °C",
+  "english": "n-pentane boiling point: 36 °C",
+  "lines": [
+   "n-pentane",
+   "boiling point: 36 °C"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Less surface area,|less attraction",
+  "english": "Less surface area, less attraction",
+  "lines": [
+   "Less surface area,",
+   "less attraction"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "isopentane|boiling point: 27 °C",
+  "english": "isopentane boiling point: 27 °C",
+  "lines": [
+   "isopentane",
+   "boiling point: 27 °C"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Small contact area,|weakest attraction",
+  "english": "Small contact area, weakest attraction",
+  "lines": [
+   "Small contact area,",
+   "weakest attraction"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "neopentane|boiling point: 9.5 °C",
+  "english": "neopentane boiling point: 9.5 °C",
+  "lines": [
+   "neopentane",
+   "boiling point: 9.5 °C"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

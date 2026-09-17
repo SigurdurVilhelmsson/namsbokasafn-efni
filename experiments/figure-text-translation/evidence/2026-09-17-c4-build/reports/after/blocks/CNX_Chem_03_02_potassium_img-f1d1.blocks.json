@@ -1,0 +1,32 @@
+[
+ {
+  "key": "Moles of|K atoms (mol)",
+  "english": "Moles of K atoms (mol)",
+  "lines": [
+   "Moles of",
+   "K atoms (mol)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Divide by molar|mass (g/mol)",
+  "english": "Divide by molar mass (g/mol)",
+  "lines": [
+   "Divide by molar",
+   "mass (g/mol)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of|K atoms (g)",
+  "english": "Mass of K atoms (g)",
+  "lines": [
+   "Mass of",
+   "K atoms (g)"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

@@ -1,0 +1,104 @@
+[
+ {
+  "key": "Moles of|A atoms",
+  "english": "Moles of A atoms",
+  "lines": [
+   "Moles of",
+   "A atoms"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Divide by|molar mass",
+  "english": "Divide by molar mass",
+  "lines": [
+   "Divide by",
+   "molar mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of|A atoms",
+  "english": "Mass of A atoms",
+  "lines": [
+   "Mass of",
+   "A atoms"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Moles of|X atoms",
+  "english": "Moles of X atoms",
+  "lines": [
+   "Moles of",
+   "X atoms"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Divide by|molar mass",
+  "english": "Divide by molar mass",
+  "lines": [
+   "Divide by",
+   "molar mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of|X atoms",
+  "english": "Mass of X atoms",
+  "lines": [
+   "Mass of",
+   "X atoms"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "A to X|mole ratio",
+  "english": "A to X mole ratio",
+  "lines": [
+   "A to X",
+   "mole ratio"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Divide by|lowest number|of moles",
+  "english": "Divide by lowest number of moles",
+  "lines": [
+   "Divide by",
+   "lowest number",
+   "of moles"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Empirical|formula",
+  "english": "Empirical formula",
+  "lines": [
+   "Empirical",
+   "formula"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Convert ratio to|lowest whole|numbers",
+  "english": "Convert ratio to lowest whole numbers",
+  "lines": [
+   "Convert ratio to",
+   "lowest whole",
+   "numbers"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

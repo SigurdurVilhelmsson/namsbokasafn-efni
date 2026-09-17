@@ -1,0 +1,165 @@
+[
+ {
+  "key": "Element",
+  "english": "Element",
+  "lines": [
+   "Element"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Quantity",
+  "english": "Quantity",
+  "lines": [
+   "Quantity"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Average atomic|mass (amu)",
+  "english": "Average atomic mass (amu)",
+  "lines": [
+   "Average atomic",
+   "mass (amu)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Subtotal",
+  "english": "Subtotal",
+  "lines": [
+   "Subtotal"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Na",
+  "english": "Na",
+  "lines": [
+   "Na"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "Cl",
+  "english": "Cl",
+  "lines": [
+   "Cl"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "1",
+  "english": "1",
+  "lines": [
+   "1"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "1",
+  "english": "1",
+  "lines": [
+   "1"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "22.99",
+  "english": "22.99",
+  "lines": [
+   "22.99"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "35.45",
+  "english": "35.45",
+  "lines": [
+   "35.45"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "Formula mass",
+  "english": "Formula mass",
+  "lines": [
+   "Formula mass"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "22.99",
+  "english": "22.99",
+  "lines": [
+   "22.99"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "35.45",
+  "english": "35.45",
+  "lines": [
+   "35.45"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "58.44",
+  "english": "58.44",
+  "lines": [
+   "58.44"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "×",
+  "english": "×",
+  "lines": [
+   "×"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "=",
+  "english": "=",
+  "lines": [
+   "="
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "×",
+  "english": "×",
+  "lines": [
+   "×"
+  ],
+  "arc": false,
+  "send": false
+ },
+ {
+  "key": "=",
+  "english": "=",
+  "lines": [
+   "="
+  ],
+  "arc": false,
+  "send": false
+ }
+]

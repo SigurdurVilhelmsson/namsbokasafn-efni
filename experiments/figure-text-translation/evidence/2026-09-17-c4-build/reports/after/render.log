@@ -1,0 +1,28 @@
+population total=533 bought=34 nontext-not-bought=499
+resuming: 0 figures already fully done
+... 25/533 processed this run (25 this run), 9.6s elapsed
+... 50/533 processed this run (50 this run), 48.0s elapsed
+... 75/533 processed this run (75 this run), 63.6s elapsed
+... 100/533 processed this run (100 this run), 69.7s elapsed
+... 125/533 processed this run (125 this run), 91.6s elapsed
+... 150/533 processed this run (150 this run), 115.4s elapsed
+... 175/533 processed this run (175 this run), 118.2s elapsed
+... 200/533 processed this run (200 this run), 120.5s elapsed
+... 225/533 processed this run (225 this run), 128.1s elapsed
+... 250/533 processed this run (250 this run), 146.4s elapsed
+... 275/533 processed this run (275 this run), 162.7s elapsed
+... 300/533 processed this run (300 this run), 190.9s elapsed
+... 325/533 processed this run (325 this run), 194.8s elapsed
+... 350/533 processed this run (350 this run), 213.2s elapsed
+... 375/533 processed this run (375 this run), 216.5s elapsed
+... 400/533 processed this run (400 this run), 220.3s elapsed
+... 425/533 processed this run (425 this run), 223.9s elapsed
+... 450/533 processed this run (450 this run), 227.9s elapsed
+... 475/533 processed this run (475 this run), 234.6s elapsed
+... 500/533 processed this run (500 this run), 237.4s elapsed
+... 525/533 processed this run (525 this run), 242.5s elapsed
+population=533 distinct_basenames_in_results=533 incomplete=0 missing=0
+controls: serialiser={'size_match': True, 'shape': [321, 1300, 3], 'count_gt40': 0, 'count_gt0': 0, 'bbox_gt40': None, 'bbox_gt0': None} planted={'size_match': True, 'shape': [321, 1300, 3], 'count_gt40': 441, 'count_gt0': 441, 'bbox_gt40': [80, 100, 325, 345], 'bbox_gt0': [80, 100, 325, 345]}
+persisted crops: ['CNX_Chem_04_05_combustion', 'CNX_Chem_07_06_Egeom']
+wrote /home/siggi/dev/repos/namsbokasafn-efni/experiments/figure-text-translation/evidence/2026-09-17-c4-build/reports/after/render-summary.md
+DONE n=533 distinct=533 incomplete=0 missing=0

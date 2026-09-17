@@ -1,0 +1,53 @@
+[
+ {
+  "key": "Moles of|Cu atoms (mol)",
+  "english": "Moles of Cu atoms (mol)",
+  "lines": [
+   "Moles of",
+   "Cu atoms (mol)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Divide by molar|mass (g/mol)",
+  "english": "Divide by molar mass (g/mol)",
+  "lines": [
+   "Divide by molar",
+   "mass (g/mol)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Mass of|Cu atoms (g)",
+  "english": "Mass of Cu atoms (g)",
+  "lines": [
+   "Mass of",
+   "Cu atoms (g)"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Number of|Cu atoms",
+  "english": "Number of Cu atoms",
+  "lines": [
+   "Number of",
+   "Cu atoms"
+  ],
+  "arc": false,
+  "send": true
+ },
+ {
+  "key": "Multiply by|Avogadro’s|number (mol–1)",
+  "english": "Multiply by Avogadro’s number (mol–1)",
+  "lines": [
+   "Multiply by",
+   "Avogadro’s",
+   "number (mol–1)"
+  ],
+  "arc": false,
+  "send": true
+ }
+]

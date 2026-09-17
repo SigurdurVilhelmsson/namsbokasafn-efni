@@ -1,0 +1,117 @@
+{
+ "CNX_Chem_04_05_combustion": {
+  "artwork": "/home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_04/Source_File/CNX_Chem_04_05_combustion.pdf",
+  "rc": 0,
+  "sha256": "97395284291753908909587262a035cfbd68753aeb389e62f3b0fcf61b9c0f69",
+  "bytes": 163499,
+  "svgfix": {
+   "addOps": 0,
+   "collapsed": 0,
+   "useSitesRewritten": 0,
+   "clipped": 0,
+   "unmatched": 0,
+   "modes": {}
+  },
+  "mask": 23,
+  "image": 20,
+  "use": 33,
+  "path": 329
+ },
+ "CNX_Chem_03_01_exocytosis-88f6": {
+  "artwork": "/home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_03/Source_File/CNX_Chem_03_01_exocytosis.pdf",
+  "rc": 0,
+  "sha256": "a3cf4bb21000544460b96683a1fd758c9aebed140bb82ccb1fa721fcd956ffb0",
+  "bytes": 24913394,
+  "svgfix": {
+   "addOps": 158,
+   "collapsed": 155,
+   "useSitesRewritten": 155,
+   "clipped": 3,
+   "unmatched": 0,
+   "modes": {
+    "multiply": 110,
+    "screen": 45
+   }
+  },
+  "mask": 628,
+  "image": 37,
+  "use": 717,
+  "path": 3486
+ },
+ "CNX_Chem_03_03_empform": {
+  "artwork": "/home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_03/Source_File/CNX_Chem_03_03_empform.pdf",
+  "rc": 0,
+  "sha256": "2157c693a8037d0a46abad3e8a150a7e11bee56c2fce162bd89b3622eb8d029d",
+  "bytes": 7772,
+  "svgfix": {
+   "addOps": 0,
+   "collapsed": 0,
+   "useSitesRewritten": 0,
+   "clipped": 0,
+   "unmatched": 0,
+   "modes": {}
+  },
+  "mask": 0,
+  "image": 0,
+  "use": 0,
+  "path": 20
+ },
+ "CNX_Chem_04_02_HClsoln": {
+  "artwork": "/home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_04/Source_File/CNX_Chem_04_02_HClsoln.pdf",
+  "rc": 0,
+  "sha256": "fe81039d8ea82f3c5de27c7adb75617495ecc413bcac50c781f171ebc1a38c31",
+  "bytes": 462675,
+  "svgfix": {
+   "addOps": 2,
+   "collapsed": 2,
+   "useSitesRewritten": 2,
+   "clipped": 0,
+   "unmatched": 0,
+   "modes": {
+    "multiply": 2
+   }
+  },
+  "mask": 66,
+  "image": 62,
+  "use": 122,
+  "path": 162
+ },
+ "CNX_Chem_04_03_flowchart": {
+  "artwork": "/home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_04/Source_File/CNX_Chem_04_03_flowchart.pdf",
+  "rc": 0,
+  "sha256": "46c1244bb176c1391eacf6f6495ccc6fa7fd1b299a2508cd10d20bdeb24f8a3a",
+  "bytes": 15320,
+  "svgfix": {
+   "addOps": 0,
+   "collapsed": 0,
+   "useSitesRewritten": 0,
+   "clipped": 0,
+   "unmatched": 0,
+   "modes": {}
+  },
+  "mask": 0,
+  "image": 0,
+  "use": 0,
+  "path": 44
+ },
+ "CNX_Chem_04_04_sandwich": {
+  "artwork": "/home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_04/Source_File/CNX_Chem_04_04_sandwich.pdf",
+  "rc": 0,
+  "sha256": "3e536fa556c5e8c216eb962590049b645d052704823f88eec1395c01f2cd33b3",
+  "bytes": 19698880,
+  "svgfix": {
+   "addOps": 52,
+   "collapsed": 52,
+   "useSitesRewritten": 52,
+   "clipped": 0,
+   "unmatched": 0,
+   "modes": {
+    "screen": 52
+   }
+  },
+  "mask": 3166,
+  "image": 5800,
+  "use": 6182,
+  "path": 696
+ }
+}
