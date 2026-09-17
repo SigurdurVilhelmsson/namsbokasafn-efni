@@ -388,6 +388,12 @@ node tools/render-oracle-check.js  <slug> <N> --control
 per module, so a non-verbose read is a truncated view that looks complete.
 ⚠️ **Run `render-oracle-check` with `--control` before believing a clean result.**
 
+> **AMENDED 2026-09-17 (§C140 ㉟, register §C145): four checks Step 4 was missing, each learned from one incident.**
+> 1. **A red fidelity manifest is a stop.** If `books/<slug>/translation-errors.json` reads `green: false` after the inject, stop before committing. On 2026-09-06 it did, the commit went ahead, and a literal `[[term:` reached a prepared page 11 days later.
+> 2. **Chemistry ch03 only:** after ANY inject, re-apply ⑰'s holding state: `node tools/cnxml-inject.js --book efnafraedi-2e --chapter 3 --module m68700 --no-annotate-en`. This applies until ⑰ is fixed (register §C118 ledger).
+> 3. **The two free checks above cannot see the translated output.** They render `01-source` English in memory. Census the injected CNXML and the rendered pages yourself for unclosed markers, with an **opener-only** pattern such as `grep -rlaE '\[\[[A-Za-z][A-Za-z0-9_]*:'`. Pair it with a positive control; the inject gate needs a closed `]]` and misses a destroyed one.
+> 4. **A render is not "figures only" if `03-translated` moved.** Before rendering, compare `git log -1` on the chapter's `03-translated` directory with `git log -1` on its `05-publication` directory. If the injected CNXML is newer, the render also publishes a text change, so predict it.
+
 🔴 **`02-mt-output`, `03-translated` and `05-publication` ARE NOT CORRECTNESS REFERENCES.** The gold
 is `01-source` and OpenStax's published HTML. A diff against previous output answers *"did anything
 change"*, never *"is this right"*.

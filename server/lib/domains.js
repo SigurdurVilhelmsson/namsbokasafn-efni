@@ -64,14 +64,18 @@ const BOOK_DOMAIN_PRIORITY = Object.freeze({
   // physics fallback tiers put 872 biology and 475 physics headwords into an
   // organic chemistry textbook's glossary, of which a full-coverage
   // adversarial audit confirmed 119 harmful: `ants -> maurar` fires 180 times
-  // in the corpus and 179 of those are reactants/plants/constants/locants;
+  // in the corpus and 179 of those are false matches inside other words, most
+  // of them reactants/plants/constants/locants;
   // `activate -> örva` also matches deactivate, INVERTING the chemistry in the
   // one chapter organised around activating vs deactivating groups.
   //
   // ⚠️ THIS FILE IS THE ONLY PLACE THE CHANGE SURVIVES. book_domain_priority is
   // DELETEd and re-INSERTed from here by migration 047 on every boot, so the
-  // same trim made in SQL lasts until the next restart — measured 2026-08-31,
-  // it lasted 102 seconds, with no error, no log line and no gate.
+  // same trim made in SQL lasts only until the next restart. Measured
+  // 2026-08-31: a trim applied on 2026-08-30 held until a deploy restart, and
+  // two backups 102 seconds apart show it present and then gone, with no
+  // error, no log line and no gate. The 102 s is the gap between those
+  // backups, not how long the trim lived.
   //
   // ⚠️ AND NOTHING DETECTS THAT REVERT — an alarm was attempted and DROPPED as
   // unworkable. Migration 046 runs immediately before 047 and does INSERT OR
