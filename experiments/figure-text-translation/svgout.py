@@ -113,7 +113,8 @@ def write_svg(artwork_svg, out_path, items, page_h):
         # §C140 ⑥b ([USER] ruling (a), docs/decisions/2026-09-17-translated-figure-labels-drawn-unkerned.md):
         # a LAYOUT item was placed from compose.lin_advance, which applies no kerning, so it is drawn with
         # kerning off - otherwise the browser applies the subset's GPOS kern pairs and draws a width the layout
-        # was not decided with (up to 0.99 pt short on the 34; Liberation's r'/f' pairs would draw it LONGER).
+        # was not decided with (up to 0.99 pt short on the 34; Liberation's r’/f’ pairs - U+2019, not an
+        # ASCII apostrophe - would draw it LONGER).
         # Run-exact and arc items keep the default. An INLINE style, never the presentation attribute
         # font-kerning="none", which Chromium silently ignores (measured, evidence/2026-09-17-c6b-build/
         # reports/rd/). Appended LAST, so every other attribute keeps its position. Pinned by test_svgout.py K.

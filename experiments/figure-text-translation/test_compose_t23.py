@@ -440,13 +440,18 @@ check('G3 CONTROL the unplanted fixture\'s faces are the unchanged composer\'s (
 # ── ⑥b ──────────────────────────────────────────────────────────────────────────────────────
 # [USER] ruling (a) 2026-09-17: a TRANSLATED straight label - laid out by ③ from lin_advance - is drawn with
 # font-kerning:none, so the browser draws the width the layout was decided with; a KEPT element is untouched
-# (G1 pins its bytes). Checked on the elements the composer really wrote for figure 1, with the partition as
-# the control: every element is either one of the three labels' or a kept one, so neither check is vacuous.
+# (G1 pins its bytes). Checked on the elements the composer really wrote for figure 1. The control is that each
+# population is what it claims to be: every label's pieces reproduce that label's TRANSLATED value (sentinel), and
+# the kept elements draw exactly the kept English - so an element in the wrong population fails K0, and neither
+# K1 nor K2 can pass over an empty or mis-assigned list. (label_elements assigns every non-kept element to a label,
+# so a count identity between the two lists and els1 would hold by construction and is deliberately not the control.)
 lab_els = [el for k in (K_NA, K_NAMISS, K_PLAIN) for el in lab1[k]]
 kept_els = [el for el in els1 if is_kept_element(el, FIG1_KEPT)]
-precondition('K0 CONTROL figure 1\'s elements partition into the three translated labels and the kept ones',
-             len(lab_els) >= 3 and len(kept_els) == 2 and len(lab_els) + len(kept_els) == len(els1),
-             f'labels={len(lab_els)} kept={len(kept_els)} all={len(els1)}')
+precondition('K0 CONTROL each translated label\'s pieces reproduce its translated value, and the kept elements draw '
+             'exactly the kept English (26,98 after ⑨; H2O (g))',
+             all(sentinel(lab1[k], FIG1_TR[k])[0] for k in (K_NA, K_NAMISS, K_PLAIN)) and len(lab_els) >= 3
+             and sorted(el['text'] for el in kept_els) == sorted([K_DEC.replace('.', ','), K_H2O]),
+             f"{[sentinel(lab1[k], FIG1_TR[k])[1] for k in (K_NA, K_NAMISS, K_PLAIN)]} kept={[el['text'] for el in kept_els]}")
 check('K1 ⑥b every element of the translated labels (formula segments and scripts included) ends in '
       'style="font-kerning:none", and says it once',
       all(el['raw'].count('font-kerning') == 1 and el['raw'].split('>', 1)[0].endswith(' style="font-kerning:none"')

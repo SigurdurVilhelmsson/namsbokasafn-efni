@@ -188,7 +188,7 @@ def setfont_st(run, size, st):
 # up to 8.97 pt off on the 34) AND - since §C140 ⑥b - because svgout.write_svg draws every LAYOUT item with
 # font-kerning:none. This context applies no kerning; Chromium applies the embedded subset's GPOS kern
 # pairs by default, which drew 27 of the 370 layout segments on the 34 up to 0.99 pt short. That gap does
-# NOT only widen: Liberation's r'/f' pairs are positive and would draw a segment LONGER than measured, into
+# NOT only widen: Liberation's r’/f’ pairs (U+2019, not U+0027) are positive and would draw a segment LONGER than measured, into
 # its neighbour. [USER] ruling (a), docs/decisions/2026-09-17-translated-figure-labels-drawn-unkerned.md:
 # the drawing is made to match this measure, never the reverse - so a new width model (a face, a style
 # bit) must stay unkerned here AND there. The DRAWING context is untouched, so kept blocks' raster does

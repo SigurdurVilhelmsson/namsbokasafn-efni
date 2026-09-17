@@ -444,9 +444,10 @@ def split_at_word_edges(segs):
     of up to 1.56 pt, c2 Q3) was browser advance ROUNDING, measured before svgout set
     text-rendering="geometricPrecision"; under it Chromium's advances equal compose's linear ones.
     The kern pairs Chromium applied on top (cairo applies none) are removed since §C140 ⑥b, which draws
-    every layout segment with font-kerning:none ([USER] ruling (a), 2026-09-17) - they were up to 0.99 pt
-    per segment on the 34, and not only short: Liberation's r'/f' pairs draw longer. The cut is kept
-    as it was; removing it would re-segment every translated label."""
+    every layout segment with font-kerning:none ([USER] ruling (a), 2026-09-17) - on the 34 they drew
+    up to 0.99 pt short and never long, though the font's r’/f’ pairs (U+2019) would draw longer. The
+    cut is kept as it was; removing it would re-segment every translated LINE that holds a styled
+    segment next to a space (compose.line_segments calls this only when a style is present)."""
     out = []
     n = len(segs)
     for i, (t, st) in enumerate(segs):
