@@ -1,0 +1,486 @@
+m00017: FAILED — Translation not found for m00017 in 02-mt-output (books/lifr
+m00018: FAILED — Translation not found for m00018 in 02-mt-output (books/lifr
+m00019: FAILED — Translation not found for m00019 in 02-mt-output (books/lifr
+m00020: FAILED — Translation not found for m00020 in 02-mt-output (books/lifr
+m00021: FAILED — Translation not found for m00021 in 02-mt-output (books/lifr
+m00022: FAILED — Translation not found for m00022 in 02-mt-output (books/lifr
+m00023: FAILED — Translation not found for m00023 in 02-mt-output (books/lifr
+m00024: FAILED — Translation not found for m00024 in 02-mt-output (books/lifr
+m00025: FAILED — Translation not found for m00025 in 02-mt-output (books/lifr
+m00026: FAILED — Translation not found for m00026 in 02-mt-output (books/lifr
+m00027: FAILED — Translation not found for m00027 in 02-mt-output (books/lifr
+m00028: FAILED — Translation not found for m00028 in 02-mt-output (books/lifr
+m00029: FAILED — Translation not found for m00029 in 02-mt-output (books/lifr
+m00031: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m00032: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m00033: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m00034: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m00035: Translated CNXML written [COMPLETE]
+m00036: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m00037: SKIPPED — incomplete injection
+m00038: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m00039: FAILED — Translation not found for m00039 in 02-mt-output (books/lifr
+m00040: FAILED — Translation not found for m00040 in 02-mt-output (books/lifr
+m00041: FAILED — Translation not found for m00041 in 02-mt-output (books/lifr
+m00042: FAILED — Translation not found for m00042 in 02-mt-output (books/lifr
+m00043: FAILED — Translation not found for m00043 in 02-mt-output (books/lifr
+m00044: FAILED — Translation not found for m00044 in 02-mt-output (books/lifr
+m00045: FAILED — Translation not found for m00045 in 02-mt-output (books/lifr
+m00046: FAILED — Translation not found for m00046 in 02-mt-output (books/lifr
+m00047: FAILED — Translation not found for m00047 in 02-mt-output (books/lifr
+m00048: FAILED — Translation not found for m00048 in 02-mt-output (books/lifr
+m00049: FAILED — Translation not found for m00049 in 02-mt-output (books/lifr
+m00050: FAILED — Translation not found for m00050 in 02-mt-output (books/lifr
+m00051: FAILED — Translation not found for m00051 in 02-mt-output (books/lifr
+m00052: FAILED — Translation not found for m00052 in 02-mt-output (books/lifr
+m00053: FAILED — Translation not found for m00053 in 02-mt-output (books/lifr
+m00054: FAILED — Translation not found for m00054 in 02-mt-output (books/lifr
+m00055: FAILED — Translation not found for m00055 in 02-mt-output (books/lifr
+m00056: FAILED — Translation not found for m00056 in 02-mt-output (books/lifr
+m00057: FAILED — Translation not found for m00057 in 02-mt-output (books/lifr
+m00058: FAILED — Translation not found for m00058 in 02-mt-output (books/lifr
+m00059: FAILED — Translation not found for m00059 in 02-mt-output (books/lifr
+m00060: FAILED — Translation not found for m00060 in 02-mt-output (books/lifr
+m00061: FAILED — Translation not found for m00061 in 02-mt-output (books/lifr
+m00062: FAILED — Translation not found for m00062 in 02-mt-output (books/lifr
+m00063: FAILED — Translation not found for m00063 in 02-mt-output (books/lifr
+m00064: FAILED — Translation not found for m00064 in 02-mt-output (books/lifr
+m00065: FAILED — Translation not found for m00065 in 02-mt-output (books/lifr
+m00066: FAILED — Translation not found for m00066 in 02-mt-output (books/lifr
+m00067: FAILED — Translation not found for m00067 in 02-mt-output (books/lifr
+m00068: FAILED — Translation not found for m00068 in 02-mt-output (books/lifr
+m00069: FAILED — Translation not found for m00069 in 02-mt-output (books/lifr
+m00070: FAILED — Translation not found for m00070 in 02-mt-output (books/lifr
+m00071: FAILED — Translation not found for m00071 in 02-mt-output (books/lifr
+m00072: FAILED — Translation not found for m00072 in 02-mt-output (books/lifr
+m00073: FAILED — Translation not found for m00073 in 02-mt-output (books/lifr
+m00074: FAILED — Translation not found for m00074 in 02-mt-output (books/lifr
+m00075: FAILED — Translation not found for m00075 in 02-mt-output (books/lifr
+m00076: FAILED — Translation not found for m00076 in 02-mt-output (books/lifr
+m00077: FAILED — Translation not found for m00077 in 02-mt-output (books/lifr
+m00078: FAILED — Translation not found for m00078 in 02-mt-output (books/lifr
+m00079: FAILED — Translation not found for m00079 in 02-mt-output (books/lifr
+m00080: FAILED — Translation not found for m00080 in 02-mt-output (books/lifr
+m00081: FAILED — Translation not found for m00081 in 02-mt-output (books/lifr
+m00082: FAILED — Translation not found for m00082 in 02-mt-output (books/lifr
+m00083: FAILED — Translation not found for m00083 in 02-mt-output (books/lifr
+m00084: FAILED — Translation not found for m00084 in 02-mt-output (books/lifr
+m00085: FAILED — Translation not found for m00085 in 02-mt-output (books/lifr
+m00086: FAILED — Translation not found for m00086 in 02-mt-output (books/lifr
+m00087: FAILED — Translation not found for m00087 in 02-mt-output (books/lifr
+m00088: FAILED — Translation not found for m00088 in 02-mt-output (books/lifr
+m00089: FAILED — Translation not found for m00089 in 02-mt-output (books/lifr
+m00090: FAILED — Translation not found for m00090 in 02-mt-output (books/lifr
+m00091: FAILED — Translation not found for m00091 in 02-mt-output (books/lifr
+m00092: FAILED — Translation not found for m00092 in 02-mt-output (books/lifr
+m00093: FAILED — Translation not found for m00093 in 02-mt-output (books/lifr
+m00094: FAILED — Translation not found for m00094 in 02-mt-output (books/lifr
+m00095: FAILED — Translation not found for m00095 in 02-mt-output (books/lifr
+m00096: FAILED — Translation not found for m00096 in 02-mt-output (books/lifr
+m00097: FAILED — Translation not found for m00097 in 02-mt-output (books/lifr
+m00098: FAILED — Translation not found for m00098 in 02-mt-output (books/lifr
+m00099: FAILED — Translation not found for m00099 in 02-mt-output (books/lifr
+m00100: FAILED — Translation not found for m00100 in 02-mt-output (books/lifr
+m00101: FAILED — Translation not found for m00101 in 02-mt-output (books/lifr
+m00102: FAILED — Translation not found for m00102 in 02-mt-output (books/lifr
+m00103: FAILED — Translation not found for m00103 in 02-mt-output (books/lifr
+m00104: FAILED — Translation not found for m00104 in 02-mt-output (books/lifr
+m00105: FAILED — Translation not found for m00105 in 02-mt-output (books/lifr
+m00106: FAILED — Translation not found for m00106 in 02-mt-output (books/lifr
+m00107: FAILED — Translation not found for m00107 in 02-mt-output (books/lifr
+m00108: FAILED — Translation not found for m00108 in 02-mt-output (books/lifr
+m00109: FAILED — Translation not found for m00109 in 02-mt-output (books/lifr
+m00110: FAILED — Translation not found for m00110 in 02-mt-output (books/lifr
+m00111: FAILED — Translation not found for m00111 in 02-mt-output (books/lifr
+m00112: FAILED — Translation not found for m00112 in 02-mt-output (books/lifr
+m00113: FAILED — Translation not found for m00113 in 02-mt-output (books/lifr
+m00114: FAILED — Translation not found for m00114 in 02-mt-output (books/lifr
+m00115: FAILED — Translation not found for m00115 in 02-mt-output (books/lifr
+m00116: FAILED — Translation not found for m00116 in 02-mt-output (books/lifr
+m00117: FAILED — Translation not found for m00117 in 02-mt-output (books/lifr
+m00118: FAILED — Translation not found for m00118 in 02-mt-output (books/lifr
+m00119: FAILED — Translation not found for m00119 in 02-mt-output (books/lifr
+m00120: FAILED — Translation not found for m00120 in 02-mt-output (books/lifr
+m00121: FAILED — Translation not found for m00121 in 02-mt-output (books/lifr
+m00122: FAILED — Translation not found for m00122 in 02-mt-output (books/lifr
+m00123: FAILED — Translation not found for m00123 in 02-mt-output (books/lifr
+m00124: FAILED — Translation not found for m00124 in 02-mt-output (books/lifr
+m00125: FAILED — Translation not found for m00125 in 02-mt-output (books/lifr
+m00126: FAILED — Translation not found for m00126 in 02-mt-output (books/lifr
+m00127: FAILED — Translation not found for m00127 in 02-mt-output (books/lifr
+m00128: FAILED — Translation not found for m00128 in 02-mt-output (books/lifr
+m00129: FAILED — Translation not found for m00129 in 02-mt-output (books/lifr
+m00130: FAILED — Translation not found for m00130 in 02-mt-output (books/lifr
+m00131: FAILED — Translation not found for m00131 in 02-mt-output (books/lifr
+m00132: FAILED — Translation not found for m00132 in 02-mt-output (books/lifr
+m00133: FAILED — Translation not found for m00133 in 02-mt-output (books/lifr
+m00134: SKIPPED — incomplete injection
+m00135: SKIPPED — incomplete injection
+m00136: SKIPPED — incomplete injection
+m00137: SKIPPED — incomplete injection
+m00138: SKIPPED — incomplete injection
+m00139: SKIPPED — incomplete injection
+m00140: SKIPPED — incomplete injection
+m00141: SKIPPED — incomplete injection
+m00142: SKIPPED — incomplete injection
+m00143: FAILED — Translation not found for m00143 in 02-mt-output (books/lifr
+m00144: FAILED — Translation not found for m00144 in 02-mt-output (books/lifr
+m00145: FAILED — Translation not found for m00145 in 02-mt-output (books/lifr
+m00146: FAILED — Translation not found for m00146 in 02-mt-output (books/lifr
+m00147: FAILED — Translation not found for m00147 in 02-mt-output (books/lifr
+m00148: FAILED — Translation not found for m00148 in 02-mt-output (books/lifr
+m00149: FAILED — Translation not found for m00149 in 02-mt-output (books/lifr
+m00150: FAILED — Translation not found for m00150 in 02-mt-output (books/lifr
+m00151: FAILED — Translation not found for m00151 in 02-mt-output (books/lifr
+m00152: FAILED — Translation not found for m00152 in 02-mt-output (books/lifr
+m00153: FAILED — Translation not found for m00153 in 02-mt-output (books/lifr
+m00154: FAILED — Translation not found for m00154 in 02-mt-output (books/lifr
+m00155: FAILED — Translation not found for m00155 in 02-mt-output (books/lifr
+m00156: FAILED — Translation not found for m00156 in 02-mt-output (books/lifr
+m00157: FAILED — Translation not found for m00157 in 02-mt-output (books/lifr
+m00158: FAILED — Translation not found for m00158 in 02-mt-output (books/lifr
+m00159: FAILED — Translation not found for m00159 in 02-mt-output (books/lifr
+m00160: FAILED — Translation not found for m00160 in 02-mt-output (books/lifr
+m00161: FAILED — Translation not found for m00161 in 02-mt-output (books/lifr
+m00162: FAILED — Translation not found for m00162 in 02-mt-output (books/lifr
+m00163: FAILED — Translation not found for m00163 in 02-mt-output (books/lifr
+m00164: FAILED — Translation not found for m00164 in 02-mt-output (books/lifr
+m00165: FAILED — Translation not found for m00165 in 02-mt-output (books/lifr
+m00166: FAILED — Translation not found for m00166 in 02-mt-output (books/lifr
+m00167: FAILED — Translation not found for m00167 in 02-mt-output (books/lifr
+m00168: FAILED — Translation not found for m00168 in 02-mt-output (books/lifr
+m00169: FAILED — Translation not found for m00169 in 02-mt-output (books/lifr
+m00170: FAILED — Translation not found for m00170 in 02-mt-output (books/lifr
+m00171: FAILED — Translation not found for m00171 in 02-mt-output (books/lifr
+m00172: FAILED — Translation not found for m00172 in 02-mt-output (books/lifr
+m00173: FAILED — Translation not found for m00173 in 02-mt-output (books/lifr
+m00174: FAILED — Translation not found for m00174 in 02-mt-output (books/lifr
+m00175: FAILED — Translation not found for m00175 in 02-mt-output (books/lifr
+m00176: FAILED — Translation not found for m00176 in 02-mt-output (books/lifr
+m00177: FAILED — Translation not found for m00177 in 02-mt-output (books/lifr
+m00178: FAILED — Translation not found for m00178 in 02-mt-output (books/lifr
+m00179: FAILED — Translation not found for m00179 in 02-mt-output (books/lifr
+m00180: FAILED — Translation not found for m00180 in 02-mt-output (books/lifr
+m00181: FAILED — Translation not found for m00181 in 02-mt-output (books/lifr
+m00182: FAILED — Translation not found for m00182 in 02-mt-output (books/lifr
+m00183: FAILED — Translation not found for m00183 in 02-mt-output (books/lifr
+m00184: FAILED — Translation not found for m00184 in 02-mt-output (books/lifr
+m00185: FAILED — Translation not found for m00185 in 02-mt-output (books/lifr
+m00186: FAILED — Translation not found for m00186 in 02-mt-output (books/lifr
+m00187: FAILED — Translation not found for m00187 in 02-mt-output (books/lifr
+m00188: FAILED — Translation not found for m00188 in 02-mt-output (books/lifr
+m00189: FAILED — Translation not found for m00189 in 02-mt-output (books/lifr
+m00190: FAILED — Translation not found for m00190 in 02-mt-output (books/lifr
+m00191: FAILED — Translation not found for m00191 in 02-mt-output (books/lifr
+m00192: FAILED — Translation not found for m00192 in 02-mt-output (books/lifr
+m00193: FAILED — Translation not found for m00193 in 02-mt-output (books/lifr
+m00194: FAILED — Translation not found for m00194 in 02-mt-output (books/lifr
+m00195: FAILED — Translation not found for m00195 in 02-mt-output (books/lifr
+m00196: FAILED — Translation not found for m00196 in 02-mt-output (books/lifr
+m00197: FAILED — Translation not found for m00197 in 02-mt-output (books/lifr
+m00198: FAILED — Translation not found for m00198 in 02-mt-output (books/lifr
+m00199: FAILED — Translation not found for m00199 in 02-mt-output (books/lifr
+m00200: FAILED — Translation not found for m00200 in 02-mt-output (books/lifr
+m00201: FAILED — Translation not found for m00201 in 02-mt-output (books/lifr
+m00202: FAILED — Translation not found for m00202 in 02-mt-output (books/lifr
+m00203: FAILED — Translation not found for m00203 in 02-mt-output (books/lifr
+m00204: FAILED — Translation not found for m00204 in 02-mt-output (books/lifr
+m00205: FAILED — Translation not found for m00205 in 02-mt-output (books/lifr
+m00206: FAILED — Translation not found for m00206 in 02-mt-output (books/lifr
+m00207: FAILED — Translation not found for m00207 in 02-mt-output (books/lifr
+m00208: FAILED — Translation not found for m00208 in 02-mt-output (books/lifr
+m00209: FAILED — Translation not found for m00209 in 02-mt-output (books/lifr
+m00210: FAILED — Translation not found for m00210 in 02-mt-output (books/lifr
+m00211: FAILED — Translation not found for m00211 in 02-mt-output (books/lifr
+m00212: FAILED — Translation not found for m00212 in 02-mt-output (books/lifr
+m00213: FAILED — Translation not found for m00213 in 02-mt-output (books/lifr
+m00214: FAILED — Translation not found for m00214 in 02-mt-output (books/lifr
+m00215: FAILED — Translation not found for m00215 in 02-mt-output (books/lifr
+m00216: FAILED — Translation not found for m00216 in 02-mt-output (books/lifr
+m00217: FAILED — Translation not found for m00217 in 02-mt-output (books/lifr
+m00218: FAILED — Translation not found for m00218 in 02-mt-output (books/lifr
+m00219: FAILED — Translation not found for m00219 in 02-mt-output (books/lifr
+m00220: FAILED — Translation not found for m00220 in 02-mt-output (books/lifr
+m00221: FAILED — Translation not found for m00221 in 02-mt-output (books/lifr
+m00222: FAILED — Translation not found for m00222 in 02-mt-output (books/lifr
+m00223: FAILED — Translation not found for m00223 in 02-mt-output (books/lifr
+m00224: FAILED — Translation not found for m00224 in 02-mt-output (books/lifr
+m00225: FAILED — Translation not found for m00225 in 02-mt-output (books/lifr
+m00229: FAILED — Translation not found for m00229 in 02-mt-output (books/lifr
+m00230: FAILED — Translation not found for m00230 in 02-mt-output (books/lifr
+m00231: FAILED — Translation not found for m00231 in 02-mt-output (books/lifr
+m00232: FAILED — Translation not found for m00232 in 02-mt-output (books/lifr
+m00233: FAILED — Translation not found for m00233 in 02-mt-output (books/lifr
+m00234: FAILED — Translation not found for m00234 in 02-mt-output (books/lifr
+m00235: FAILED — Translation not found for m00235 in 02-mt-output (books/lifr
+m00236: FAILED — Translation not found for m00236 in 02-mt-output (books/lifr
+m00237: FAILED — Translation not found for m00237 in 02-mt-output (books/lifr
+m00238: FAILED — Translation not found for m00238 in 02-mt-output (books/lifr
+m00239: FAILED — Translation not found for m00239 in 02-mt-output (books/lifr
+m00240: FAILED — Translation not found for m00240 in 02-mt-output (books/lifr
+m00241: FAILED — Translation not found for m00241 in 02-mt-output (books/lifr
+m00242: FAILED — Translation not found for m00242 in 02-mt-output (books/lifr
+m00243: FAILED — Translation not found for m00243 in 02-mt-output (books/lifr
+m00244: FAILED — Translation not found for m00244 in 02-mt-output (books/lifr
+m00245: FAILED — Translation not found for m00245 in 02-mt-output (books/lifr
+m00246: FAILED — Translation not found for m00246 in 02-mt-output (books/lifr
+m00247: FAILED — Translation not found for m00247 in 02-mt-output (books/lifr
+m00248: FAILED — Translation not found for m00248 in 02-mt-output (books/lifr
+m00249: FAILED — Translation not found for m00249 in 02-mt-output (books/lifr
+m00250: FAILED — Translation not found for m00250 in 02-mt-output (books/lifr
+m00251: FAILED — Translation not found for m00251 in 02-mt-output (books/lifr
+m00252: FAILED — Translation not found for m00252 in 02-mt-output (books/lifr
+m00253: FAILED — Translation not found for m00253 in 02-mt-output (books/lifr
+m00254: FAILED — Translation not found for m00254 in 02-mt-output (books/lifr
+m00255: FAILED — Translation not found for m00255 in 02-mt-output (books/lifr
+m00256: FAILED — Translation not found for m00256 in 02-mt-output (books/lifr
+m00257: FAILED — Translation not found for m00257 in 02-mt-output (books/lifr
+m00258: FAILED — Translation not found for m00258 in 02-mt-output (books/lifr
+m00259: FAILED — Translation not found for m00259 in 02-mt-output (books/lifr
+m00260: FAILED — Translation not found for m00260 in 02-mt-output (books/lifr
+m00261: FAILED — Translation not found for m00261 in 02-mt-output (books/lifr
+m00262: FAILED — Translation not found for m00262 in 02-mt-output (books/lifr
+m00263: FAILED — Translation not found for m00263 in 02-mt-output (books/lifr
+m00264: FAILED — Translation not found for m00264 in 02-mt-output (books/lifr
+m00265: FAILED — Translation not found for m00265 in 02-mt-output (books/lifr
+m00266: FAILED — Translation not found for m00266 in 02-mt-output (books/lifr
+m00267: FAILED — Translation not found for m00267 in 02-mt-output (books/lifr
+m00268: FAILED — Translation not found for m00268 in 02-mt-output (books/lifr
+m00269: FAILED — Translation not found for m00269 in 02-mt-output (books/lifr
+m00270: FAILED — Translation not found for m00270 in 02-mt-output (books/lifr
+m00271: FAILED — Translation not found for m00271 in 02-mt-output (books/lifr
+m00272: FAILED — Translation not found for m00272 in 02-mt-output (books/lifr
+m00273: FAILED — Translation not found for m00273 in 02-mt-output (books/lifr
+m00274: FAILED — Translation not found for m00274 in 02-mt-output (books/lifr
+m00275: FAILED — Translation not found for m00275 in 02-mt-output (books/lifr
+m00276: FAILED — Translation not found for m00276 in 02-mt-output (books/lifr
+m00277: FAILED — Translation not found for m00277 in 02-mt-output (books/lifr
+m00278: FAILED — Translation not found for m00278 in 02-mt-output (books/lifr
+m00279: FAILED — Translation not found for m00279 in 02-mt-output (books/lifr
+m00280: FAILED — Translation not found for m00280 in 02-mt-output (books/lifr
+m00281: FAILED — Translation not found for m00281 in 02-mt-output (books/lifr
+m00282: FAILED — Translation not found for m00282 in 02-mt-output (books/lifr
+m00283: FAILED — Translation not found for m00283 in 02-mt-output (books/lifr
+m00284: FAILED — Translation not found for m00284 in 02-mt-output (books/lifr
+m00285: FAILED — Translation not found for m00285 in 02-mt-output (books/lifr
+m00286: FAILED — Translation not found for m00286 in 02-mt-output (books/lifr
+m00287: FAILED — Translation not found for m00287 in 02-mt-output (books/lifr
+m00288: FAILED — Translation not found for m00288 in 02-mt-output (books/lifr
+m00289: FAILED — Translation not found for m00289 in 02-mt-output (books/lifr
+m00290: FAILED — Translation not found for m00290 in 02-mt-output (books/lifr
+m00291: FAILED — Translation not found for m00291 in 02-mt-output (books/lifr
+m00292: FAILED — Translation not found for m00292 in 02-mt-output (books/lifr
+m00293: FAILED — Translation not found for m00293 in 02-mt-output (books/lifr
+m00294: FAILED — Translation not found for m00294 in 02-mt-output (books/lifr
+m00295: FAILED — Translation not found for m00295 in 02-mt-output (books/lifr
+m00296: FAILED — Translation not found for m00296 in 02-mt-output (books/lifr
+m00297: FAILED — Translation not found for m00297 in 02-mt-output (books/lifr
+m00298: FAILED — Translation not found for m00298 in 02-mt-output (books/lifr
+m00299: FAILED — Translation not found for m00299 in 02-mt-output (books/lifr
+m00300: FAILED — Translation not found for m00300 in 02-mt-output (books/lifr
+m00301: FAILED — Translation not found for m00301 in 02-mt-output (books/lifr
+m00302: FAILED — Translation not found for m00302 in 02-mt-output (books/lifr
+m00303: FAILED — Translation not found for m00303 in 02-mt-output (books/lifr
+m00304: FAILED — Translation not found for m00304 in 02-mt-output (books/lifr
+m00305: FAILED — Translation not found for m00305 in 02-mt-output (books/lifr
+m00306: FAILED — Translation not found for m00306 in 02-mt-output (books/lifr
+m00307: FAILED — Translation not found for m00307 in 02-mt-output (books/lifr
+m00308: FAILED — Translation not found for m00308 in 02-mt-output (books/lifr
+m00309: FAILED — Translation not found for m00309 in 02-mt-output (books/lifr
+m00310: FAILED — Translation not found for m00310 in 02-mt-output (books/lifr
+m00311: FAILED — Translation not found for m00311 in 02-mt-output (books/lifr
+m00312: FAILED — Translation not found for m00312 in 02-mt-output (books/lifr
+m00313: FAILED — Translation not found for m00313 in 02-mt-output (books/lifr
+m00314: FAILED — Translation not found for m00314 in 02-mt-output (books/lifr
+m00315: FAILED — Translation not found for m00315 in 02-mt-output (books/lifr
+m00316: FAILED — Translation not found for m00316 in 02-mt-output (books/lifr
+m00317: FAILED — Translation not found for m00317 in 02-mt-output (books/lifr
+m00318: FAILED — Translation not found for m00318 in 02-mt-output (books/lifr
+m00319: FAILED — Translation not found for m00319 in 02-mt-output (books/lifr
+m00320: FAILED — Translation not found for m00320 in 02-mt-output (books/lifr
+m00321: FAILED — Translation not found for m00321 in 02-mt-output (books/lifr
+m00322: FAILED — Translation not found for m00322 in 02-mt-output (books/lifr
+m00323: FAILED — Translation not found for m00323 in 02-mt-output (books/lifr
+m00324: FAILED — Translation not found for m00324 in 02-mt-output (books/lifr
+m00325: FAILED — Translation not found for m00325 in 02-mt-output (books/lifr
+m00326: FAILED — Translation not found for m00326 in 02-mt-output (books/lifr
+m00327: FAILED — Translation not found for m00327 in 02-mt-output (books/lifr
+m00328: FAILED — Translation not found for m00328 in 02-mt-output (books/lifr
+m00329: FAILED — Translation not found for m00329 in 02-mt-output (books/lifr
+m00330: FAILED — Translation not found for m00330 in 02-mt-output (books/lifr
+m00331: FAILED — Translation not found for m00331 in 02-mt-output (books/lifr
+m00332: FAILED — Translation not found for m00332 in 02-mt-output (books/lifr
+m00333: FAILED — Translation not found for m00333 in 02-mt-output (books/lifr
+m00334: FAILED — Translation not found for m00334 in 02-mt-output (books/lifr
+m00335: FAILED — Translation not found for m00335 in 02-mt-output (books/lifr
+m00336: FAILED — Translation not found for m00336 in 02-mt-output (books/lifr
+m00337: FAILED — Translation not found for m00337 in 02-mt-output (books/lifr
+m00338: FAILED — Translation not found for m00338 in 02-mt-output (books/lifr
+m00339: FAILED — Translation not found for m00339 in 02-mt-output (books/lifr
+m00340: FAILED — Translation not found for m00340 in 02-mt-output (books/lifr
+m00341: FAILED — Translation not found for m00341 in 02-mt-output (books/lifr
+m00342: FAILED — Translation not found for m00342 in 02-mt-output (books/lifr
+m00343: FAILED — Translation not found for m00343 in 02-mt-output (books/lifr
+m00344: FAILED — Translation not found for m00344 in 02-mt-output (books/lifr
+m00345: FAILED — Translation not found for m00345 in 02-mt-output (books/lifr
+m00346: FAILED — Translation not found for m00346 in 02-mt-output (books/lifr
+m00347: FAILED — Translation not found for m00347 in 02-mt-output (books/lifr
+m00348: FAILED — Translation not found for m00348 in 02-mt-output (books/lifr
+m00349: FAILED — Translation not found for m00349 in 02-mt-output (books/lifr
+m00350: FAILED — Translation not found for m00350 in 02-mt-output (books/lifr
+m00351: FAILED — Translation not found for m00351 in 02-mt-output (books/lifr
+m00352: FAILED — Translation not found for m00352 in 02-mt-output (books/lifr
+m00353: FAILED — Translation not found for m00353 in 02-mt-output (books/lifr
+m00354: FAILED — Translation not found for m00354 in 02-mt-output (books/lifr
+m00355: FAILED — Translation not found for m00355 in 02-mt-output (books/lifr
+m00356: FAILED — Translation not found for m00356 in 02-mt-output (books/lifr
+m00357: FAILED — Translation not found for m00357 in 02-mt-output (books/lifr
+m68662: SKIPPED — incomplete injection
+m68663: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68664: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68667: SKIPPED — incomplete injection
+m68670: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68674: SKIPPED — incomplete injection
+m68683: SKIPPED — incomplete injection
+m68684: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68685: SKIPPED — incomplete injection
+m68687: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68690: SKIPPED — incomplete injection
+m68692: SKIPPED — incomplete injection
+m68693: SKIPPED — incomplete injection
+m68695: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68696: SKIPPED — incomplete injection
+m68698: SKIPPED — incomplete injection
+m68699: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68700: Translated CNXML written [COMPLETE]
+m68702: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68703: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68704: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68709: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68710: Translated CNXML written [COMPLETE]
+m68713: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68714: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68716: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68723: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68724: SKIPPED — incomplete injection
+m68726: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68727: SKIPPED — incomplete injection
+m68728: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68729: SKIPPED — incomplete injection
+m68730: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68732: SKIPPED — incomplete injection
+m68733: SKIPPED — incomplete injection
+m68734: SKIPPED — incomplete injection
+m68735: SKIPPED — incomplete injection
+m68736: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68737: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68738: SKIPPED — incomplete injection
+m68739: SKIPPED — incomplete injection
+m68740: SKIPPED — incomplete injection
+m68741: SKIPPED — incomplete injection
+m68742: SKIPPED — incomplete injection
+m68743: SKIPPED — incomplete injection
+m68744: SKIPPED — incomplete injection
+m68745: SKIPPED — incomplete injection
+m68746: SKIPPED — incomplete injection
+m68747: SKIPPED — incomplete injection
+m68748: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68750: SKIPPED — incomplete injection
+m68751: SKIPPED — incomplete injection
+m68752: SKIPPED — incomplete injection
+m68754: SKIPPED — incomplete injection
+m68758: SKIPPED — incomplete injection
+m68759: SKIPPED — incomplete injection
+m68760: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68761: SKIPPED — incomplete injection
+m68764: SKIPPED — incomplete injection
+m68768: SKIPPED — incomplete injection
+m68769: SKIPPED — incomplete injection
+m68770: SKIPPED — incomplete injection
+m68773: SKIPPED — incomplete injection
+m68776: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68778: SKIPPED — incomplete injection
+m68781: SKIPPED — incomplete injection
+m68782: SKIPPED — incomplete injection
+m68783: SKIPPED — incomplete injection
+m68784: SKIPPED — incomplete injection
+m68785: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68786: SKIPPED — incomplete injection
+m68787: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68789: SKIPPED — incomplete injection
+m68791: SKIPPED — incomplete injection
+m68793: SKIPPED — incomplete injection
+m68794: SKIPPED — incomplete injection
+m68795: SKIPPED — incomplete injection
+m68796: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68797: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68798: SKIPPED — incomplete injection
+m68799: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68801: SKIPPED — incomplete injection
+m68802: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68803: SKIPPED — incomplete injection
+m68804: SKIPPED — incomplete injection
+m68805: SKIPPED — incomplete injection
+m68806: SKIPPED — incomplete injection
+m68807: SKIPPED — incomplete injection
+m68808: SKIPPED — incomplete injection
+m68809: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68810: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68811: SKIPPED — incomplete injection
+m68813: SKIPPED — incomplete injection
+m68814: SKIPPED — incomplete injection
+m68815: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68816: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68817: SKIPPED — incomplete injection
+m68818: Translated CNXML written [COMPLETE]
+m68819: SKIPPED — incomplete injection
+m68820: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68821: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68822: Translated CNXML written [COMPLETE]
+m68823: SKIPPED — incomplete injection
+m68824: SKIPPED — incomplete injection
+m68825: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68826: Translated CNXML written [COMPLETE]
+m68827: SKIPPED — incomplete injection
+m68828: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68829: SKIPPED — incomplete injection
+m68830: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68831: SKIPPED — incomplete injection
+m68832: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68833: SKIPPED — incomplete injection
+m68834: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68835: SKIPPED — incomplete injection
+m68836: SKIPPED — incomplete injection
+m68837: SKIPPED — incomplete injection
+m68838: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68839: SKIPPED — incomplete injection
+m68840: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68841: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68842: Translated CNXML written [COMPLETE]
+m68843: SKIPPED — incomplete injection
+m68844: SKIPPED — incomplete injection
+m68845: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68846: SKIPPED — incomplete injection
+m68847: SKIPPED — incomplete injection
+m68848: SKIPPED — incomplete injection
+m68849: SKIPPED — incomplete injection
+m68850: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68851: SKIPPED — incomplete injection
+m68852: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68854: SKIPPED — incomplete injection
+m68856: SKIPPED — incomplete injection
+m68857: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68858: SKIPPED — incomplete injection
+m68859: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68860: SKIPPED — incomplete injection
+m68861: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68862: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68863: SKIPPED — incomplete injection
+m68864: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68865: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68866: SKIPPED — incomplete injection
+m68867: SKIPPED — incomplete injection
+m68868: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68869: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68870: Translated CNXML written [COMPLETE] [PERFECT fidelity]
+m68871: Translated CNXML written [COMPLETE] [PERFECT fidelity]

@@ -1,0 +1,39 @@
+=== ch03/m68700
+164c164
+< <caption>Copper wire is composed of many, many atoms of Cu. (credit: Emilian Robert Vicol)</caption>
+---
+> <caption>Koparvír er samsettur úr mörgum, mörgum atómum af Cu. (heimild: Emilian Robert Vicol)</caption>
+=== ch03/m68702
+76c76
+< <caption>Hematite is an iron oxide that is used in jewelry. (credit: Mauro Cateb)</caption>
+---
+> <caption>Hematít er járnoxíð sem er notað í skartgripi. (heimild: Mauro Cateb)</caption>
+99c99
+< <caption>An oxide of carbon is removed from these fermentation tanks through the large copper pipes at the top. (credit: “Dual Freq”/Wikimedia Commons)</caption>
+---
+> <caption>Kolefnisoxíð er fjarlægt úr þessum gerjunartönkum í gegnum stóru koparrörin efst. (Heimild: „Dual Freq“/Wikimedia Commons)</caption>
+=== ch03/m68703
+42c42
+< <caption>Distilled white vinegar is a solution of acetic acid in water.</caption></figure><para id="fs-idm82387696"><title>Lausn</title>Eins og í fyrri dæmum er skilgreiningin á mólstyrk aðaljafnan sem notuð er til að reikna út stærðina sem leitað er að. Þar sem massi uppleysta efnisins er gefinn í stað mólmagns þess skal nota mólmassa uppleysta efnisins til að fá magn uppleysta efnisins í mólum:</para>
+---
+> <caption>Eimað borðedik er lausn af ediksýru í vatni.</caption></figure><para id="fs-idm82387696"><title>Lausn</title>Eins og í fyrri dæmum er skilgreiningin á mólstyrk aðaljafnan sem notuð er til að reikna út stærðina sem leitað er að. Þar sem massi uppleysta efnisins er gefinn í stað mólmagns þess skal nota mólmassa uppleysta efnisins til að fá magn uppleysta efnisins í mólum:</para>
+=== ch04/m68713
+28c28
+< <caption>Aluminum and iodine react to produce aluminum iodide. The heat of the reaction vaporizes some of the solid iodine as a purple vapor. (credit: modification of work by Mark Ott)</caption>
+---
+> <caption>Ál og joð hvarfast og mynda áljoðíð. Hiti hvarfsins gufar upp hluta af föstu joðinu sem fjólublá gufa. (heimild: breyting á verki eftir Mark Ott)</caption>
+=== ch05/m68726
+110c110
+< <caption>An instant cold pack consists of a bag containing solid ammonium nitrate and a second bag of water. When the bag of water is broken, the pack becomes cold because the dissolution of ammonium nitrate is an endothermic process that removes thermal energy from the water. The cold pack then removes thermal energy from your body.</caption>
+---
+> <caption>Skyndikælipoki samanstendur af poka sem inniheldur fast ammóníumnítrat og öðrum poka með vatni. Þegar vatnspokinn er rofinn verður pokinn kaldur vegna þess að upplausn ammóníumnítrats er innvermið ferli sem fjarlægir varmaorku úr vatninu. Kælipokinn fjarlægir síðan varmaorku úr líkama þínum.</caption>
+=== ch16/m68816
+57c57
+< <caption>(credit a: modification of work by Jenny Downing; credit b: modification of work by “Fuzzy Gerdes”/Flickr; credit c: modification of work by Paul A. Flowers)</caption>
+---
+> <caption>(heimild a: breyting á verki eftir Jenny Downing; heimild b: breyting á verki eftir „Fuzzy Gerdes“/Flickr; heimild c: breyting á verki eftir Paul A. Flowers)</caption>
+=== m68700 under --no-annotate-en (⑰ holding state)
+164c164
+< <caption>Copper wire is composed of many, many atoms of Cu. (credit: Emilian Robert Vicol)</caption>
+---
+> <caption>Koparvír er samsettur úr mörgum, mörgum atómum af Cu. (heimild: Emilian Robert Vicol)</caption>

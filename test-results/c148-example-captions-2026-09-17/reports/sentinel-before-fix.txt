@@ -1,0 +1,37 @@
+efnafraedi-2e {"top":{"emitted":510,"injected":510,"rendered":510},"note/direct":{"emitted":83,"injected":83,"rendered":83},"example/direct":{"emitted":31,"injected":0,"rendered":0},"exercise/para":{"emitted":1,"injected":0,"rendered":0}} notFigure 0
+m68692 CNX_Chem_02_03_Iodine example/direct
+m68696 CNX_Chem_02_06_Sapphire example/direct
+m68700 CNX_Chem_03_02_copper example/direct
+m68702 CNX_Chem_03_03_BrewTank example/direct
+m68702 CNX_Chem_03_03_hematite example/direct
+m68703 CNX_Chem_03_04_vinegar example/direct
+m68713 CNX_Chem_04_03_iodine example/direct
+m68726 CNX_Chem_05_02_IcePack example/direct
+m68727 CNX_Chem_05_03_GasBurning example/direct
+m68742 CNX_Chem_07_06_H2Omol example/direct
+m68742 CNX_Chem_07_06_NH4mol example/direct
+m68742 CNX_Chem_07_06_SF4mol example/direct
+m68742 CNX_Chem_07_06_XeF4mol example/direct
+m68747 CNX_Chem_08_04_O2MO example/direct
+m68751 CNX_Chem_09_02_Scuba example/direct
+m68752 CNX_Chem_09_03_liquidgas example/direct
+m68764 CNX_Chem_10_02_Needlefloa exercise/para
+m68768 CNX_Chem_10_03_Evap example/direct
+m68789 CNX_Chem_12_03_OzoneHole example/direct
+m68791 CNX_Chem_12_04_2OrdKin example/direct
+m68791 CNX_Chem_12_04_FrstOKin example/direct
+m68791 CNX_Chem_12_04_HPerDcmp example/direct
+m68793 CNX_Chem_12_05_ArrhPlot example/direct
+m68805 CNX_Chem_14_03_AntSting example/direct
+m68805 CNX_Chem_14_03_Vinegar example/direct
+m68811 CNX_Chem_15_01_Blood example/direct
+m68811 CNX_Chem_15_01_OilPaints example/direct
+m68816 CNX_Chem_16_02_Process example/direct
+m68843 CNX_Chem_19_02_DMSA example/direct
+m68843 CNX_Chem_19_02_transplatin example/direct
+m68844 CNX_Chem_19_03_TetCube example/direct
+m68854 CNX_Chem_21_03_DSScrolls example/direct
+lifraen-efnafraedi {"note/direct":{"emitted":1,"injected":1,"rendered":1},"top":{"emitted":457,"injected":457,"rendered":457},"example/direct":{"emitted":3,"injected":0,"rendered":0}} notFigure 0
+m00136 fig-00005 example/direct
+m00137 fig-00012 example/direct
+m00142 fig-00016 example/direct
