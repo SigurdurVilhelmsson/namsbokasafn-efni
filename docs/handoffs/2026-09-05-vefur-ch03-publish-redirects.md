@@ -3,6 +3,11 @@
 **From:** namsbokasafn-efni · **Date:** 2026-09-05 · **Status:** frozen record, not maintained.
 **For:** the vefur session doing the redirect edit, the named-book sync, the build and the deploy.
 
+> 🔴 **CHEMISTRY PARTS SUPERSEDED 2026-09-17** by
+> [`2026-09-17-vefur-chemistry-ch03-ch04-redirects.md`](2026-09-17-vefur-chemistry-ch03-ch04-redirects.md). §1 ①, and
+> the chemistry lines in §2's ordering and §3's probes, assume the 09-05 ch03 rename, which efni's re-render has since
+> reversed. Organic content in this file is unaffected by that banner.
+
 > Per § *One source of truth*, this file is **evidence, not status**. If it disagrees with efni's
 > active register (`docs/plans/2026-07-21-post-item17-followup-campaign.md`), the register wins.
 > Every row below was derived from **`books/*/05-publication/*/slug-map.*.json`**, never from
@@ -130,6 +135,12 @@ rows; two of them are stale relative to efni's tree today. Verified against
 tree by file existence.
 
 ### ① ADD — chemistry `m68702` (absent from vefur; control: `m68770` present)
+
+> 🔴 **SUPERSEDED 2026-09-17 — DO NOT LAND THIS ROW.** efni's §C140 ㉟ re-render renamed m68702's page **back** to
+> `3-2-akvordun-reynsluformula-og-sameindaformula`, which is the name the live site serves. This row would now point
+> from a live page to a name that no longer exists. Chemistry's current rows, **two ch04 ADDs and nothing for ch03**,
+> are in [`2026-09-17-vefur-chemistry-ch03-ch04-redirects.md`](2026-09-17-vefur-chemistry-ch03-ch04-redirects.md).
+> The row is kept below, unedited, as the record.
 
 ```ts
 {

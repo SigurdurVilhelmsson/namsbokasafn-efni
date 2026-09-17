@@ -1,0 +1,605 @@
+{
+  "label": "after-fix",
+  "dirs": {
+    "faithful/chapters/03": {
+      "pages": [
+        "3-0-introduction.html",
+        "3-1-formulumassi-og-molhugtakid.html",
+        "3-answer-key.html",
+        "3-exercises.html",
+        "3-key-equations.html",
+        "3-key-terms.html",
+        "3-summary.html"
+      ],
+      "gate": {
+        "total": 57,
+        "differ": 0,
+        "notInMedia": 31,
+        "notInMediaIdenticalToSource": 31,
+        "differList": []
+      },
+      "perPage": {
+        "3-0-introduction.html": {
+          "bytes": 2906,
+          "figures": 1,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 1
+          }
+        },
+        "3-1-formulumassi-og-molhugtakid.html": {
+          "bytes": 215137,
+          "figures": 9,
+          "sidecarFigures": 5,
+          "badgedMtPreview": 5,
+          "badgedAny": 5,
+          "imgIS": 15,
+          "dataEn": 4,
+          "eParen": 4,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 113
+          }
+        },
+        "3-answer-key.html": {
+          "bytes": 40690,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 35
+          }
+        },
+        "3-exercises.html": {
+          "bytes": 60231,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 11,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 82
+          }
+        },
+        "3-key-equations.html": {
+          "bytes": 82753,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 3
+          }
+        },
+        "3-key-terms.html": {
+          "bytes": 8157,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 20,
+          "eParen": 40,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 14
+          }
+        },
+        "3-summary.html": {
+          "bytes": 4710,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 15
+          }
+        }
+      }
+    },
+    "mt-preview/chapters/03": {
+      "pages": [
+        "3-0-introduction.html",
+        "3-1-formulumassi-og-molhugtakid.html",
+        "3-2-akvordun-reynsluformula-og-sameindaformula.html",
+        "3-3-molstyrkur.html",
+        "3-4-adrar-einingar-fyrir-styrk-lausna.html",
+        "3-answer-key.html",
+        "3-exercises.html",
+        "3-key-equations.html",
+        "3-key-terms.html",
+        "3-summary.html"
+      ],
+      "gate": {
+        "total": 81,
+        "differ": 0,
+        "notInMedia": 53,
+        "notInMediaIdenticalToSource": 53,
+        "differList": []
+      },
+      "perPage": {
+        "3-0-introduction.html": {
+          "bytes": 2893,
+          "figures": 1,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 1
+          }
+        },
+        "3-1-formulumassi-og-molhugtakid.html": {
+          "bytes": 214996,
+          "figures": 9,
+          "sidecarFigures": 5,
+          "badgedMtPreview": 5,
+          "badgedAny": 5,
+          "imgIS": 15,
+          "dataEn": 4,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 133
+          }
+        },
+        "3-2-akvordun-reynsluformula-og-sameindaformula.html": {
+          "bytes": 499821,
+          "figures": 3,
+          "sidecarFigures": 1,
+          "badgedMtPreview": 1,
+          "badgedAny": 1,
+          "imgIS": 1,
+          "dataEn": 2,
+          "eParen": 2,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 87
+          }
+        },
+        "3-3-molstyrkur.html": {
+          "bytes": 279889,
+          "figures": 3,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 9,
+          "eParen": 9,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 1,
+            "mól": 54
+          }
+        },
+        "3-4-adrar-einingar-fyrir-styrk-lausna.html": {
+          "bytes": 182168,
+          "figures": 3,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 1,
+          "dataEn": 5,
+          "eParen": 5,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 5
+          }
+        },
+        "3-answer-key.html": {
+          "bytes": 40683,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 35
+          }
+        },
+        "3-exercises.html": {
+          "bytes": 59926,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 11,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 84
+          }
+        },
+        "3-key-equations.html": {
+          "bytes": 82753,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 3
+          }
+        },
+        "3-key-terms.html": {
+          "bytes": 8067,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 20,
+          "eParen": 32,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 14
+          }
+        },
+        "3-summary.html": {
+          "bytes": 4685,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 14
+          }
+        }
+      }
+    },
+    "mt-preview/chapters/04": {
+      "pages": [
+        "4-0-introduction.html",
+        "4-1-ad-skrifa-og-stilla-efnajofnur.html",
+        "4-2-flokkun-efnahvarfa.html",
+        "4-3-efnajofnuhlutfall.html",
+        "4-4-heimtur-efnahvarfa.html",
+        "4-5-megindleg-efnagreining.html",
+        "4-answer-key.html",
+        "4-exercises.html",
+        "4-key-equations.html",
+        "4-key-terms.html",
+        "4-summary.html"
+      ],
+      "gate": {
+        "total": 56,
+        "differ": 0,
+        "notInMedia": 35,
+        "notInMediaIdenticalToSource": 35,
+        "differList": []
+      },
+      "perPage": {
+        "4-0-introduction.html": {
+          "bytes": 3833,
+          "figures": 1,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 0
+          }
+        },
+        "4-1-ad-skrifa-og-stilla-efnajofnur.html": {
+          "bytes": 417177,
+          "figures": 2,
+          "sidecarFigures": 2,
+          "badgedMtPreview": 2,
+          "badgedAny": 2,
+          "imgIS": 2,
+          "dataEn": 9,
+          "eParen": 12,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 4
+          }
+        },
+        "4-2-flokkun-efnahvarfa.html": {
+          "bytes": 658085,
+          "figures": 6,
+          "sidecarFigures": 2,
+          "badgedMtPreview": 2,
+          "badgedAny": 2,
+          "imgIS": 2,
+          "dataEn": 24,
+          "eParen": 23,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 0
+          }
+        },
+        "4-3-efnajofnuhlutfall.html": {
+          "bytes": 266776,
+          "figures": 3,
+          "sidecarFigures": 1,
+          "badgedMtPreview": 1,
+          "badgedAny": 1,
+          "imgIS": 5,
+          "dataEn": 2,
+          "eParen": 2,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 40
+          }
+        },
+        "4-4-heimtur-efnahvarfa.html": {
+          "bytes": 276547,
+          "figures": 3,
+          "sidecarFigures": 3,
+          "badgedMtPreview": 3,
+          "badgedAny": 3,
+          "imgIS": 3,
+          "dataEn": 5,
+          "eParen": 5,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 33
+          }
+        },
+        "4-5-megindleg-efnagreining.html": {
+          "bytes": 278651,
+          "figures": 3,
+          "sidecarFigures": 1,
+          "badgedMtPreview": 1,
+          "badgedAny": 1,
+          "imgIS": 4,
+          "dataEn": 10,
+          "eParen": 10,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 17
+          }
+        },
+        "4-answer-key.html": {
+          "bytes": 879808,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 25
+          }
+        },
+        "4-exercises.html": {
+          "bytes": 1374749,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 5,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 26
+          }
+        },
+        "4-key-equations.html": {
+          "bytes": 17335,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 0
+          }
+        },
+        "4-key-terms.html": {
+          "bytes": 17580,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 49,
+          "eParen": 96,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 0
+          }
+        },
+        "4-summary.html": {
+          "bytes": 3845,
+          "figures": 0,
+          "sidecarFigures": 0,
+          "badgedMtPreview": 0,
+          "badgedAny": 0,
+          "imgIS": 0,
+          "dataEn": 0,
+          "eParen": 0,
+          "tokens": {
+            "tilbrigði": 0,
+            "sjálfkvæm": 0,
+            "ílend": 0,
+            "álagn": 0,
+            "hreint efni": 0,
+            "mól": 1
+          }
+        }
+      }
+    }
+  },
+  "slugMap": {
+    "chapters/03/3-2-akvordun-reynslu-og-sameindaformula.html": {
+      "to": "chapters/03/3-2-akvordun-reynsluformula-og-sameindaformula.html",
+      "moduleId": "m68702",
+      "recordedAt": "2026-09-17"
+    },
+    "chapters/04/4-3-hlutfallaefnafraedi-efnahvarfa.html": {
+      "to": "chapters/04/4-3-efnajofnuhlutfall.html",
+      "moduleId": "m68713",
+      "recordedAt": "2026-09-06"
+    },
+    "chapters/04/4-5-magnbundin-efnagreining.html": {
+      "to": "chapters/04/4-5-megindleg-efnagreining.html",
+      "moduleId": "m68716",
+      "recordedAt": "2026-09-06"
+    },
+    "chapters/10/10-5-fast-astand-efnis.html": {
+      "to": "chapters/10/10-5-fastur-efnishamur.html",
+      "moduleId": "m68770",
+      "recordedAt": "2026-08-18"
+    },
+    "chapters/20/20-3-aldehyd-ketonar-karboxylsyrur-og-estrar.html": {
+      "to": "chapters/20/20-3-aldehyd-keton-karboxylsyrur-og-estrar.html",
+      "moduleId": "m68848",
+      "recordedAt": "2026-08-12"
+    }
+  },
+  "faithfulSlugMapExists": false,
+  "indexSha": "4c6af8d05b17537eda4df3dfe9646c1b7cc5d14c1499b7798593687c08f538f7"
+}
