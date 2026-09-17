@@ -115,7 +115,7 @@ def draw_run_exact(block, key):
                 STIX['drawn'].add(key)
             else:
                 STIX['skipped'].append(dict(key=key, reason='cmap'))
-        elif base.startswith('STIXGeneral'):
+        elif base.startswith('STIX'):
             STIX['skipped'].append(dict(key=key, reason='other-face'))
         px, py = dev(r['x'], r['y'])
         col = cmyk(r['fill'])
@@ -324,10 +324,19 @@ unformatted = []
 # §C140 ⑨, additive, draw order WITH multiplicity: the kept blocks whose DRAWN text changed under
 # `localise_block`. Empty on --control.
 localized = []
-# §C140 ⑥a, additive: kept STIX runs actually drawn in FigSym (block keys, deduped by `set`) and
-# every STIX run skipped instead, named with a reason (translated / other-face / cmap). `drawn`
-# is populated only inside `draw_run_exact` (kept blocks); the translated-path checks below add
-# `skipped` entries for a genuinely translated block that carries an eligible-looking STIX run.
+# §C140 ⑥a, additive: kept STIX runs actually drawn in FigSym (block keys) and every STIX run
+# skipped instead, named with a reason (translated / other-face / cmap). `drawn` is populated only
+# inside `draw_run_exact` (kept blocks); the translated-path checks below add `skipped` entries for
+# a genuinely translated block that carries an eligible-looking STIX run.
+# ⚠️ THE GRANULARITY IS PER RUN, NOT PER BLOCK: a kept block holding one covered and one uncovered
+# STIXGeneral-Regular run names the SAME key in `drawn` and in `skipped` (reason `cmap`), and a
+# block with several other-face runs names its key once per run.
+# ⚠️ `drawn` is a DEDUPED SET (written sorted), unlike every list above it, which keeps draw order
+# WITH multiplicity - so its length counts blocks with a FigSym run, not runs or <text> items.
+# ⚠️ `stix` is NOT one of figure-compose.py's COMPOSE_NOTES, so the driver's report never shows it;
+# read it from compose-report.json.
+# `other-face` is any BaseFont starting `STIX` that is not eligible (Italic, Bold, SizeOneSym,
+# NonUnicode, ...); the eligible test runs first, so the prefix decides nothing that is drawn.
 STIX = {'drawn': set(), 'skipped': []}
 # §C140 ③, additive, draw order: every translated label drawn overhanging, NAMED (R5) -
 # `{key, block, word, needPt, budgetPt, sizePt, axis}` plus `linePt` on the width axis. axis 'width':
@@ -421,7 +430,7 @@ for BI, b in enumerate(blocks):
         STIX['skipped'].append(dict(key=key, reason='translated'))
     for r in b:
         rbase = FS._base_name(r, meta['fonts'])
-        if rbase.startswith('STIXGeneral') and not figsym.eligible_base(rbase):
+        if rbase.startswith('STIX') and not figsym.eligible_base(rbase):
             STIX['skipped'].append(dict(key=key, reason='other-face'))
 
     if arc:

@@ -35,6 +35,7 @@ try:
 except FS.FontUnavailable as exc:
     raised = str(exc)
 check('1c a file with the wrong hash is REFUSED, naming the reason', 'sha256' in raised, raised[:160])
+check('1c2 ... and the refusal names where the official file comes from', FS.FONT_SOURCE_URL in raised, raised[-160:])
 os.environ['FIGTEXT_STIX_FONT'] = str(tmp / 'absent.otf')
 FS._reset()
 try:
@@ -43,6 +44,7 @@ try:
 except FS.FontUnavailable as exc:
     raised = str(exc)
 check('1d a missing file is REFUSED, naming the path', 'absent.otf' in raised, raised[:160])
+check('1d2 ... and the refusal names where the official file comes from', FS.FONT_SOURCE_URL in raised, raised[-160:])
 del os.environ['FIGTEXT_STIX_FONT']
 FS._reset()
 
@@ -91,6 +93,33 @@ check('4f it carries the licence text exactly', lic.replace('\f', '\n').strip() 
 check('4f2 the metadata text contains no U+000C', '\f' not in md)
 check('4g it names FigSym, STIX Fonts 1.1.0 and the OFL 1.1',
       all(s in text for s in ('FigSym', '1.1.0', 'SIL Open Font License, Version 1.1')))
+
+print('\n[5] the font in use is the one that was hashed, even when $FIGTEXT_STIX_FONT changes after load()')
+# Behavioural, not by construction: switch the variable to an unreadable, unhashed file WITHOUT _reset(). A
+# subset_woff2 that re-opened font_path() would raise (TTLibError on these bytes); one that parses the verified
+# bytes returns a clean subset. 5c is the control that the switch was real and that file would be refused.
+FS._reset()
+FS.load()
+junk = tmp / 'junk.otf'
+junk.write_bytes(b'not a font at all')
+os.environ['FIGTEXT_STIX_FONT'] = str(junk)
+try:
+    woff5, raised5 = FS.subset_woff2({'+'}), ''
+except Exception as exc:  # noqa: BLE001 - any exception here is the defect being tested for
+    woff5, raised5 = None, f'{type(exc).__name__}: {exc}'
+sub5 = TTFont(io.BytesIO(woff5)) if woff5 else None
+check('5a after a switch with no _reset(), subset_woff2 still subsets the VERIFIED font',
+      sub5 is not None and ord('+') in sub5.getBestCmap() and FS.name_violations(sub5) == [], raised5[:160])
+check('5b ... and it subset a fresh parse: covers() still sees a character outside that subset', FS.covers('×'))
+FS._reset()
+try:
+    FS.load()
+    raised5c = ''
+except FS.FontUnavailable as exc:
+    raised5c = str(exc)
+check('5c CONTROL — once the cache is reset, the switched-to file is REFUSED', 'sha256' in raised5c, raised5c[:160])
+del os.environ['FIGTEXT_STIX_FONT']
+FS._reset()
 
 shutil.rmtree(tmp, ignore_errors=True)
 print(f"\n  {'ALL PASS' if not fails else str(len(fails)) + ' FAILED: ' + ', '.join(fails)}")
