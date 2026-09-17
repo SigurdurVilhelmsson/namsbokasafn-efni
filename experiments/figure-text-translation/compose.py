@@ -40,6 +40,7 @@ import figscripts as FS
 import figcontainers as FC
 import figlayout as FL
 import numloc
+import figsym
 from PIL import Image
 from blockkey import block_key, block_english
 from figcolour import fill_rgb
@@ -74,11 +75,18 @@ FAMILY = "Liberation Sans"   # the figure's own font; OFL, full Icelandic covera
 BOLD = {k for k, v in meta['fonts'].items() if 'bold' in v['base'].lower()}
 
 
-def draw_run_exact(block):
+def draw_run_exact(block, key):
     """Draw every run of a KEPT block at its own origin, size, rotation, fill and face.
 
     -> True when a pdfminer `(cid:N)` placeholder was removed from any run (the caller names
     the block in `undecodable`).
+
+    §C140 ⑥a: a run whose BaseFont (subset prefix stripped) is exactly `STIXGeneral-Regular`
+    and whose drawn text is entirely in the official STIX 1.1.0 cmap is drawn in FigSym instead
+    of Liberation - `key` names it in STIX['drawn']. A run in that face but outside the cmap, or
+    a run in another STIX face, is named in STIX['skipped'] instead and stays FigIS. A missing
+    or wrong font file raises `figsym.FontUnavailable` out of `figsym.covers()` - uncaught: a
+    figure with an eligible run simply fails to compose rather than silently drawing Liberation.
 
     🔴 WHY: `runs.json` already carries what the source drew - a subscript's size and
     baseline, an italic BaseFont, the ten spaces a typist put in an arrow gap, a kerned-back
@@ -99,10 +107,21 @@ def draw_run_exact(block):
         if text == '':
             continue
         bold, italic = FT.run_face(r, meta['fonts'])
+        family = None
+        base = FS._base_name(r, meta['fonts'])
+        if figsym.eligible_base(base):
+            if figsym.covers(text):               # raises figsym.FontUnavailable when the font is missing/wrong
+                family = figsym.FAMILY
+                STIX['drawn'].add(key)
+            else:
+                STIX['skipped'].append(dict(key=key, reason='cmap'))
+        elif base.startswith('STIXGeneral'):
+            STIX['skipped'].append(dict(key=key, reason='other-face'))
         px, py = dev(r['x'], r['y'])
         col = cmyk(r['fill'])
         ITEMS.append(dict(path='run-exact', text=text, x=px / S, y=H_PT - py / S, rot=r['rot'],
-                          size=r['size'], bold=bold, italic=italic, rgb=col, dx=0.0))
+                          size=r['size'], bold=bold, italic=italic, rgb=col, dx=0.0,
+                          **(dict(family=family) if family else {})))
         ctx.select_font_face(FAMILY,
                              cairo.FONT_SLANT_ITALIC if italic else cairo.FONT_SLANT_NORMAL,
                              cairo.FONT_WEIGHT_BOLD if bold else cairo.FONT_WEIGHT_NORMAL)
@@ -305,6 +324,11 @@ unformatted = []
 # §C140 ⑨, additive, draw order WITH multiplicity: the kept blocks whose DRAWN text changed under
 # `localise_block`. Empty on --control.
 localized = []
+# §C140 ⑥a, additive: kept STIX runs actually drawn in FigSym (block keys, deduped by `set`) and
+# every STIX run skipped instead, named with a reason (translated / other-face / cmap). `drawn`
+# is populated only inside `draw_run_exact` (kept blocks); the translated-path checks below add
+# `skipped` entries for a genuinely translated block that carries an eligible-looking STIX run.
+STIX = {'drawn': set(), 'skipped': []}
 # §C140 ③, additive, draw order: every translated label drawn overhanging, NAMED (R5) -
 # `{key, block, word, needPt, budgetPt, sizePt, axis}` plus `linePt` on the width axis. axis 'width':
 # `word` does not fit at the floor (needPt its width; word None for a line-count overhang, needPt the
@@ -374,7 +398,7 @@ for BI, b in enumerate(blocks):
             degenerate_kept.append(key)
         # ⑨ AFTER the key and the identity decision, on the drawn text only.
         drawn = b if CONTROL else localise_block(b)
-        if draw_run_exact(drawn):
+        if draw_run_exact(drawn, key):
             undecodable.append(key)
         if any(FT.run_draw_text(d)[0] != FT.run_draw_text(r)[0] for d, r in zip(drawn, b)):
             localized.append(key)
@@ -388,6 +412,17 @@ for BI, b in enumerate(blocks):
     # never styled.
     tokens, src_misses = FS.source_tokens(b, meta['fonts'])
     unformatted.extend(dict(key=key, **m) for m in src_misses)
+
+    # §C140 ⑥a: a TRANSLATED block never draws in FigSym (only a kept run is drawn run-exact),
+    # so an eligible run inside it is named, never drawn. `translated` fires once per block that
+    # contains one; `other-face` names every run in another STIX face, wherever it is seen -
+    # the same predicate `draw_run_exact` applies per run to a kept block.
+    if any(figsym.eligible_base(FS._base_name(r, meta['fonts'])) for r in b):
+        STIX['skipped'].append(dict(key=key, reason='translated'))
+    for r in b:
+        rbase = FS._base_name(r, meta['fonts'])
+        if rbase.startswith('STIXGeneral') and not figsym.eligible_base(rbase):
+            STIX['skipped'].append(dict(key=key, reason='other-face'))
 
     if arc:
         cx, cy, R = circle
@@ -560,6 +595,8 @@ if SVG:
     'overflow': overflow,
     # §C140 ③. Additive: translated labels laid out with no container detection (it raised).
     'containerErrors': container_errors,
+    # §C140 ⑥a. Additive: kept STIX runs drawn in FigSym (block keys) / skipped, with a reason.
+    'stix': {'drawn': sorted(STIX['drawn']), 'skipped': STIX['skipped']},
 }, indent=1, ensure_ascii=False))
 
 print(f"{len(blocks)} blocks")

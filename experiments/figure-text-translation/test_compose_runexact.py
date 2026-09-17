@@ -40,6 +40,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent          # never process.cwd() - repo rule
@@ -392,5 +393,92 @@ check('E8 ITALIC: an italic @font-face exists and the italic run uses it',
       ['400', 'italic', '()g'] in faces(svg)
       and len(find(els, '(g)', font_style='italic')) == 1,
       f"faces={[f[:2] for f in faces(svg)]!r} (g)={find(els, '(g)')!r}")
+
+# ── §C140 ⑥a: a REAL bought figure — CNX_Chem_04_02_HClsoln has an identity KEPT STIX block ──
+# (evidence/2026-09-17-c6a-build/reports/before/stix-recount.json: kept_blocks=1, chars ' ', '+').
+# This is a compose-level end-to-end check, not a planted one: it resolves the figure's own
+# source PDF the way a real run does (sources.py, this box's sources.local.json).
+HCL_BASENAME = 'CNX_Chem_04_02_HClsoln'
+try:
+    import sources as SRC
+    _cfg = SRC.load_config()
+    _trees = SRC.load_trees('efnafraedi-2e', _cfg)
+    _hcl_src, _ = SRC.resolve(HCL_BASENAME, _trees, _cfg['editionPrecedence'],
+                              superseded=_cfg.get('supersededArtwork'))
+except SystemExit as exc:
+    _hcl_src = None
+    check('R0 PRECONDITION CNX_Chem_04_02_HClsoln resolves on this box', False, str(exc))
+else:
+    check('R0 PRECONDITION CNX_Chem_04_02_HClsoln resolves on this box', _hcl_src is not None,
+          str(_hcl_src) if _hcl_src is not None else 'unresolved (no source tree holds it)')
+
+
+def run_prepare_src(src, out_dir, basename):
+    env = dict(os.environ)
+    env.pop('FIGTEXT_OUT', None)
+    return subprocess.run([sys.executable, str(PREPARE), str(src), '--basename', basename,
+                           '--out', str(out_dir)], capture_output=True, text=True, env=env)
+
+
+def run_compose_real(out_dir, extra_env=None):
+    """--control --svg, no --translations: CONTROL never looks translations up."""
+    env = dict(os.environ)
+    env['FIGTEXT_OUT'] = str(out_dir)
+    if extra_env:
+        env.update(extra_env)
+    return subprocess.run([sys.executable, str(COMPOSE), '--control', '--svg'],
+                          capture_output=True, text=True, env=env, cwd=str(HERE))
+
+
+if _hcl_src is not None:
+    hcl_out = Path(TMP.name) / 'hclsoln'
+    prep_hcl = run_prepare_src(_hcl_src, hcl_out, HCL_BASENAME)
+    check('R1 PRECONDITION CNX_Chem_04_02_HClsoln prepares',
+          prep_hcl.returncode == 0, f'exit {prep_hcl.returncode}: {prep_hcl.stderr.strip()[-400:]}')
+
+    if prep_hcl.returncode == 0:
+        comp_hcl = run_compose_real(hcl_out)
+        hcl_report_path = hcl_out / 'compose-report.json'
+        hcl_svg_path = hcl_out / 'control.svg'
+        check('R2 PRECONDITION it composes (--control --svg) and writes a report and an SVG',
+              comp_hcl.returncode == 0 and hcl_report_path.exists() and hcl_svg_path.exists(),
+              f'exit {comp_hcl.returncode}: {comp_hcl.stderr.strip()[-600:]}')
+
+        if comp_hcl.returncode == 0 and hcl_report_path.exists() and hcl_svg_path.exists():
+            hcl_rep = json.loads(hcl_report_path.read_text())
+            hcl_svg = hcl_svg_path.read_text()
+            check("R3 compose-report.json's stix.drawn is non-empty",
+                  bool(hcl_rep.get('stix', {}).get('drawn')), repr(hcl_rep.get('stix')))
+            try:
+                hcl_root = ET.fromstring(hcl_svg.encode('utf-8'))
+                hcl_parse_err = None
+            except ET.ParseError as e:
+                hcl_root = None
+                hcl_parse_err = str(e)
+            check('R4 the SVG parses as XML', hcl_root is not None, hcl_parse_err or '')
+            hcl_figsym_texts = ([e for e in hcl_root.iter()
+                                 if e.tag.split('}', 1)[-1] == 'text'
+                                 and e.get('font-family') == 'FigSym']
+                                if hcl_root is not None else [])
+            check('R5 at least one <text font-family="FigSym"> exists',
+                  len(hcl_figsym_texts) > 0, repr(len(hcl_figsym_texts)))
+            hcl_metadata = ([e for e in hcl_root.iter() if e.tag.split('}', 1)[-1] == 'metadata']
+                            if hcl_root is not None else [])
+            check('R6 its <metadata> exists', len(hcl_metadata) == 1, repr(len(hcl_metadata)))
+
+    # Negative arm: FIGTEXT_STIX_FONT pointing at a missing file refuses this figure — exit
+    # non-zero, no compose-report.json (T3 of the design: a missing/wrong font fails loudly).
+    if prep_hcl.returncode == 0:
+        hcl_bad_out = Path(TMP.name) / 'hclsoln-badfont'
+        prep_hcl2 = run_prepare_src(_hcl_src, hcl_bad_out, HCL_BASENAME)
+        if prep_hcl2.returncode == 0:
+            missing_font = Path(TMP.name) / 'no-such-stix-font.otf'
+            comp_bad = run_compose_real(hcl_bad_out, extra_env={'FIGTEXT_STIX_FONT': str(missing_font)})
+            check('R7 NEGATIVE ARM: a missing FIGTEXT_STIX_FONT exits non-zero and writes no report',
+                  comp_bad.returncode != 0 and not (hcl_bad_out / 'compose-report.json').exists(),
+                  f'exit {comp_bad.returncode}; stderr tail: {comp_bad.stderr.strip()[-300:]!r}')
+        else:
+            check('R7 NEGATIVE ARM: a missing FIGTEXT_STIX_FONT exits non-zero and writes no report',
+                  False, f'PRECONDITION prep failed: {prep_hcl2.stderr.strip()[-300:]}')
 
 finish()

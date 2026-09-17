@@ -54,9 +54,12 @@ def write_svg(artwork_svg, out_path, items, page_h):
     # A face is embedded only when some item uses it, iterated (F,F),(T,F),(F,T),(T,T): a
     # figure with no italic item therefore emits today's rules in today's order. Italic
     # arrives with E (§C140 ①) - a kept run in an italic BaseFont is drawn italic.
+    # §C140 ⑥a: a FigSym item (it['family'] == 'FigSym') is drawn in the STIX subset, never
+    # here - so its characters are excluded from every FigIS character set below.
     for bold, italic in ((False, False), (True, False), (False, True), (True, True)):
         chars = {c for it in items
-                 if bool(it['bold']) is bold and bool(it.get('italic')) is italic
+                 if it.get('family') != 'FigSym' and bool(it['bold']) is bold
+                 and bool(it.get('italic')) is italic
                  for c in it['text']}
         if not chars:
             continue
@@ -64,6 +67,19 @@ def write_svg(artwork_svg, out_path, items, page_h):
         faces.append(
             f"@font-face{{font-family:'{FAMILY}';font-weight:{700 if bold else 400};"
             f"font-style:{'italic' if italic else 'normal'};"
+            f"src:url(data:font/woff2;base64,{b64}) format('woff2');}}"
+        )
+
+    # §C140 ⑥a: an eligible kept STIX run is drawn in FigSym instead of FigIS (T2). The face is
+    # appended AFTER every FigIS rule, and only when some item actually uses it - a figure with
+    # no eligible run therefore emits exactly today's rules in today's order (case T1). Imported
+    # lazily so a box without the STIX font can still compose figures without STIX (T3).
+    stix_chars = {c for it in items if it.get('family') == 'FigSym' for c in it['text']}
+    if stix_chars:
+        import figsym
+        b64 = base64.b64encode(figsym.subset_woff2(stix_chars)).decode('ascii')
+        faces.append(
+            f"@font-face{{font-family:'{figsym.FAMILY}';font-weight:400;font-style:normal;"
             f"src:url(data:font/woff2;base64,{b64}) format('woff2');}}"
         )
 
@@ -76,13 +92,17 @@ def write_svg(artwork_svg, out_path, items, page_h):
     # reaches every <text> below it and leaves each <text> element byte-identical; the artwork
     # above the group keeps the renderer's defaults. Pinned by test_svgout.py.
     parts = [f"<style>{''.join(faces)}</style>", '<g text-rendering="geometricPrecision">']
+    if stix_chars:
+        # T5: the licensing information, as the group's FIRST child - never before <style> (it
+        # is not artwork) and never after </g> (svgfix / figparts key off the group's framing).
+        parts.append(figsym.metadata_element())
     for it in items:
         # PDF y-up -> SVG y-down. Rotation flips sign with the axis.
         x, y = it['x'] + 0.0, page_h - it['y']
         r, g, b = it['rgb']
         fill = '#%02x%02x%02x' % (round(r * 255), round(g * 255), round(b * 255))
         attrs = [f'x="{x + it["dx"]:.3f}"', f'y="{y:.3f}"',
-                 f'font-family="{FAMILY}"',
+                 f'font-family="{it.get("family", FAMILY)}"',
                  f'font-weight="{700 if it["bold"] else 400}"',
                  *(['font-style="italic"'] if it.get('italic') else []),
                  f'font-size="{it["size"]:.3f}"', f'fill="{fill}"',
