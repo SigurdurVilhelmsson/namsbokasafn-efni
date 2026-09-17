@@ -1,0 +1,9 @@
+# §C140 ㉟ — full root vitest compared BY NAME with main's local floor (㊱ after-list)
+vitest JSON: numTotalTestSuites=1823 numTotalTests=6545 numPassedTests=6508 numFailedTests=36 numFailedTestSuites=37 success=false
+test files in JSON: 407
+now 36 before 36
+only-now []
+only-before []
+files that died without a failing test: []
+CONTROL planted shows as only-now: ["tools/__tests__/zz.test.js :: planted"]
+COMPARE-COMPLETE

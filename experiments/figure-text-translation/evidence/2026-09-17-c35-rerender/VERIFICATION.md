@@ -100,3 +100,12 @@ corrupting inject.
 4. **19 of 34 sidecar images are inline (not `<figure>`) and carry no badge** — already logged (the register's
    render-side-badge note); ㉟'s row phrase "every published sidecar figure" was too broad.
 5. **Scope critic:** 0 figure drift in all 25 efnafraedi-2e chapter dirs (2,290 images) and lifraen ch03 (89 images).
+
+## 6. Test suite — by name against `main`'s local floor
+
+Full root `npx vitest run --reporter=json` at `9ca20579` (branch head, working tree clean before and after), compared by
+`instruments/npm_compare.cjs` with the ㊱ after-list (`evidence/2026-09-17-c36-composer-bump/reports/after/npm-failing-by-name.txt`,
+36 names; ㊱'s code is `main`'s `38dec598`, and this branch changes only data and docs). **now 36 · before 36 · only-now `[]` ·
+only-before `[]` · files that died without a failing test `[]`**; control: a planted name shows as only-now. 6,545 tests,
+6,508 passed. `reports/npm-compare.txt`. Not run locally: Playwright E2E (CI's separate job) — this branch touches no
+server code.
