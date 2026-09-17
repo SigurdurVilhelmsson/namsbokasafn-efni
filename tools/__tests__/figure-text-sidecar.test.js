@@ -191,12 +191,37 @@ describe('the two layers really are different', () => {
 describe('the composer computes no hashes — there is no second implementation', () => {
   const composerDir = new URL('../../experiments/figure-text-translation/', import.meta.url);
 
-  it('no Python file in the figure-text tree reaches for a hashing library', () => {
+  // §C140 ⑥a: figsym.py fail-closed-verifies the local STIX font file and the
+  // committed licence text against pinned sha256 digests (spec
+  // docs/superpowers/specs/2026-09-17-c140-c6a-stix-regular-design.md T3/T5).
+  // That is font/licence integrity, not a sidecar hash — ⑰'s invariant is "no
+  // Python implementation of renderHash/composedHash", not "no hashing at all".
+  // test_figsym.py's own hardcoded expectation string names 'sha256' too.
+  // Allowlist exactly these two files by name; every other .py file still gets
+  // the absence check unchanged, and the allowlisted pair is instead checked
+  // below for the sidecar-hash symbols specifically.
+  const HASH_ALLOWLIST = ['figsym.py', 'test_figsym.py'];
+
+  it('no Python file in the figure-text tree reaches for a hashing library, except the allowlisted STIX/licence integrity checks', () => {
     const files = fs.readdirSync(composerDir).filter((f) => f.endsWith('.py'));
     expect(files.length).toBeGreaterThan(4); // control: the directory really was read
+    // control: a rename of an allowlisted file cannot silently no-op this pin
+    for (const name of HASH_ALLOWLIST) {
+      expect(files, `${name} must still exist for the allowlist to mean anything`).toContain(name);
+    }
     for (const f of files) {
+      if (HASH_ALLOWLIST.includes(f)) continue;
       const src = fs.readFileSync(new URL(f, composerDir), 'utf-8');
       expect(src, `${f} must not hash`).not.toMatch(/\bhashlib\b|\bsha256\b/);
+    }
+  });
+
+  it('the allowlisted files still implement no sidecar hash, even though they hash', () => {
+    for (const f of HASH_ALLOWLIST) {
+      const src = fs.readFileSync(new URL(f, composerDir), 'utf-8');
+      expect(src, `${f} must not implement a sidecar hash`).not.toMatch(
+        /renderHash|composedHash|computeRenderHash|composed_hash|render_hash/
+      );
     }
   });
 
