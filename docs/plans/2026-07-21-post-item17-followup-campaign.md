@@ -8,9 +8,9 @@
 
 ✅ **§C140 ⑥b is BUILT, VERIFIED and RECOMPOSED on `feat/c140-c6b-unkerned-labels`** (register ㉝) — every translated straight label (`path == 'layout'`) is drawn with an inline `style="font-kerning:none"`, so the browser draws the width `lin_advance` planned; kept and arc text are unchanged byte for byte. Design: [`docs/superpowers/specs/2026-09-17-c140-c6b-translated-labels-unkerned-design.md`](../superpowers/specs/2026-09-17-c140-c6b-translated-labels-unkerned-design.md) · measured, frozen: [`evidence/2026-09-17-c6b-build/VERIFICATION.md`](../../experiments/figure-text-translation/evidence/2026-09-17-c6b-build/VERIFICATION.md) — read it for every number; this block carries none beyond that pointer.
 
-⚠️ **No `COMPOSER_VERSION` bump — the third in a row (④, ⑥a, ⑥b).** The approval window closes at the prod **deploy** carrying the merge, not at the merge: editors approve against the prod checkout's own media. So [USER] confirms "no figure approval in prod" when running that deploy. The exception, and what it gives up (`isStale` cannot tell pre-⑥b media from post-⑥b media), is recorded beside the constant in `tools/lib/figure-text-sidecar.cjs`; the PR offers one bump covering all three if [USER] wants the contract honoured literally.
+⚠️ **No `COMPOSER_VERSION` bump — the third in a row (④, ⑥a, ⑥b).** The approval window closes at the prod **deploy** carrying the merge, not at the merge: editors approve against the prod checkout's own media. So [USER] confirms "no figure approval in prod" when running that deploy — and if one exists, re-opens it by hand. The exception, and what it gives up (`isStale` cannot tell pre-⑥b media from post-⑥b media), is recorded beside the constant in `tools/lib/figure-text-sidecar.cjs`; the PR offers one bump covering all three if [USER] wants the contract honoured literally.
 
-📋 **The ch03/ch04 re-render to-do (§C140 ㉟) now also covers ⑥b's 31 recomposed figures** once merged — same gate, same route; no session syncs.
+📋 **The ch03/ch04 re-render to-do (§C140 ㉟) now also covers ⑥b's recomposed figures** once merged — same gate, same route; no session syncs.
 
 ---
 

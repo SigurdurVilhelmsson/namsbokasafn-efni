@@ -28,19 +28,28 @@ wins** (CLAUDE.md § One source of truth).
   - `compare_lists.py` — P1/P3: `<text>` lists as data (every field, `style`, attribute ORDER), faces, metadata.
   - `kern_census.py` + `kern_census.mjs` — P0/P2/P4/P5: each `<text>`'s Chromium length at 3 scales against its planned
     LINEAR width, explained by the font's kern pairs; font-face status and computed `font-kerning` recorded;
-    `compare`, `strip`, `labels`, `blocks` modes.
+    `compare`, `strip`, `attrform`, `labels`, `blocks` modes.
   - `img_pixels.py` — P6: the reader route (`render-check.mjs`, `<img>`), each figure rendered twice before and once after.
   - `figparts.py` — byte copy of `../2026-09-17-c6a-build/instruments/figparts.py` (P7).
+  - `recompose_parts.py` — P7, added after the final review: each recomposed figure at two git revisions, part by part —
+    artwork, text group, the text group with the property removed, and every embedded woff2 table.
+  - `mutate_writer.py` — added after the final review: mutants of the writer against `test_svgout.py`, golden copy in a
+    scratch directory, `cmp` after every round and at the end; refuses a dirty `svgout.py`.
   - `npm_compare.cjs` — P8: root vitest failing names by name against `reports/before/`.
 - `reports/rd/` — R-d's predictions, inline lengths and analysis.
 - `reports/before/` — P0 labels, P1 media comparison, the BEFORE census (`census.txt/json`, `lengths.json`, `jobs.json`
   with scratch paths as run), the dumped `items/`, P2 blocks reconciliation, the vitest baseline, `head.txt`.
-- `reports/after/` — the AFTER compose log, P3 comparison, the AFTER census and its comparison with BEFORE, P6 pixels,
-  the per-chapter recompose dry-runs, the Python suite results, vitest by name, `head.txt`.
+- `reports/after/` — the AFTER compose log (force-added: `*.log` is gitignored), P3 comparison, the AFTER census and its comparison with BEFORE, P6 pixels,
+  the per-chapter recompose dry-runs, the Python suite results (`python-tests.txt` at `01b9e04c`'s tree,
+  `python-tests-final.txt` naming its commit), vitest by name (`npm-compare.txt` at `vitest-head.txt`'s commit;
+  `npm-compare-final.txt` after the final-review fixes, added when that run finished), the writer mutants (`mutants.txt`), `head.txt`.
 - `reports/control/` — P5: the stripped census and its comparison, the byte identity of the stripped SVGs, and the
-  presentation-attribute control (census + comparison).
-- `reports/recompose/` — the recompose set, 31 run transcripts, `git status -- books/`, `parts-compare.json`, and the
-  published-vs-compose-only list comparisons (31 and 34 figures).
+  presentation-attribute control (census with `attr_none`, `census-attrform.json`, `lengths-attrform.json`, comparison).
+- `reports/recompose/` — the recompose set, 31 run transcripts, `git status -- books/`, `parts-compare.json` (from
+  `recompose_parts.py`) with `parts-woff2-control.txt`, and the published-vs-compose-only list comparisons (31 and 34
+  figures).
+- `reports/final-review/review.json` — the final whole-branch review verbatim (three lenses; every finding with its
+  refuter's verdict), written by the controller from the workflow's result.
 - `reports/spec-review/review.json` — the adversarial spec review verbatim (three lenses; every finding with its refuter's
   verdict). Written by the controller from the workflow's returned result: workflow agents return text, not files.
 
@@ -76,18 +85,29 @@ python3 -u $P/kern_census.py compare $S/census-before $S/census-after $E/reports
 python3 -u $P/img_pixels.py $S/before $S/after $S/pixels $S/census-before/census.json
 
 # P5 controls
-python3 -u $P/kern_census.py strip $S/after $S/stripped      # then jobs/mjs/join on $S/stripped, compare with before
-#   byte identity: every $S/stripped/work/<f>/translated.svg == $S/before/work/<f>/translated.svg
-#   attribute form: replace ' style="font-kerning:none"' with ' font-kerning="none"' in each after SVG into $S/attrform,
-#   copy items.json, then jobs/mjs/join on $S/attrform and compare with before
+python3 -u $P/kern_census.py strip $S/after $S/stripped        # then jobs/mjs/join on $S/stripped, compare with before
+#   byte identity (reports/control/stripped-vs-before-bytes.txt): every $S/stripped/work/<f>/translated.svg is
+#   byte-equal to $S/before/work/<f>/translated.svg
+python3 -u $P/kern_census.py attrform $S/after $S/attrform       # then jobs/mjs/join on $S/attrform, compare with before
 
 # P7 recompose (repo root), each figure under the chapter whose CNXML references it (reports/recompose/recompose-set.txt)
 cd ../..
+(cd experiments/figure-text-translation && for t in $(ls test_*.py | sort); do
+   echo "$t: $(FIGTEXT_PYLIBS=./pylibs python3 -u $t 2>/dev/null | tail -1)"; done)   # the Python suites, last stdout line each
 FIGTEXT_PYLIBS=./pylibs python3 experiments/figure-text-translation/test_figrings.py | tail -1     # ALL PASS first
 node tools/figure-run.js --book efnafraedi-2e --chapter 3 --figure <b> ... --stale --force --dry-run   # and chapter 4
 node tools/figure-run.js --book efnafraedi-2e --chapter <N> --figure <b> --stale --force            # one per figure
+git status --porcelain -- books/ > experiments/figure-text-translation/evidence/2026-09-17-c6b-build/reports/recompose/git-status-books.txt
+FIGTEXT_PYLIBS=experiments/figure-text-translation/pylibs python3 -u $E_ABS/instruments/recompose_parts.py \
+  a62d51ab 9d8f2942 $E_ABS/reports/recompose/recompose-set.txt <scratch>/parts $E_ABS/reports/recompose/parts-compare.json
+#   published-vs-compose-only: copy the 31 recompose-set figures' after/work dirs into <scratch>/after31, then
+#   compare_lists.py p1 <scratch>/after31 books/efnafraedi-2e/media  (and p1 <scratch>/after books/... for all 34)
+#   E_ABS = experiments/figure-text-translation/evidence/2026-09-17-c6b-build
 
-# P8
+# the writer mutants (from experiments/figure-text-translation, on a committed svgout.py)
+FIGTEXT_PYLIBS=./pylibs python3 -u $E/instruments/mutate_writer.py <scratch>/mutants $E/reports/after/mutants.txt
+
+# P8 (the baseline: the same vitest run before any code change, its failing names into reports/before/)
 npx vitest run --reporter=json --outputFile=<scratch>/vitest-after.json
 node experiments/figure-text-translation/evidence/2026-09-17-c6b-build/instruments/npm_compare.cjs <scratch>/vitest-after.json
 ```
