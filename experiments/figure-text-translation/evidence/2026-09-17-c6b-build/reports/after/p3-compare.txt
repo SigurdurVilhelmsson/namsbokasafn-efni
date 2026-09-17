@@ -1,0 +1,41 @@
+# compare_lists p3  A=/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/a901acde-477b-4e70-a45e-0244553d346e/scratchpad/c6b/before  B=/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/a901acde-477b-4e70-a45e-0244553d346e/scratchpad/c6b/after
+CNX_Chem_03_01_alsulfatemass_img         texts=26/26 layout=7 diffs=0
+CNX_Chem_03_01_aspirin                   texts=26/26 layout=7 diffs=0
+CNX_Chem_03_01_brain-ec0b                texts=3/3 layout=1 diffs=0
+CNX_Chem_03_01_chloroform                texts=26/26 layout=7 diffs=0
+CNX_Chem_03_01_exocytosis-88f6           texts=7/7 layout=5 diffs=0
+CNX_Chem_03_01_glycinemass_img           texts=34/34 layout=9 diffs=0
+CNX_Chem_03_01_saltMass                  texts=19/19 layout=6 diffs=0
+CNX_Chem_03_02_argon_img-9025            texts=6/6 layout=6 diffs=0
+CNX_Chem_03_02_copperMoles_img-a962      texts=13/13 layout=13 diffs=0
+CNX_Chem_03_02_glycine_img-7c96          texts=20/20 layout=20 diffs=0
+CNX_Chem_03_02_potassium_img-f1d1        texts=6/6 layout=6 diffs=0
+CNX_Chem_03_02_sacch_img-3278            texts=34/34 layout=34 diffs=0
+CNX_Chem_03_02_vitC_img-e537             texts=6/6 layout=6 diffs=0
+CNX_Chem_03_03_empform                   texts=21/21 layout=21 diffs=0
+CNX_Chem_03_05_Example2_img              texts=11/11 layout=11 diffs=0
+CNX_Chem_04_01_basehyd_img               texts=28/28 layout=0 diffs=0
+CNX_Chem_04_01_rxn2                      texts=21/21 layout=8 diffs=0
+CNX_Chem_04_01_rxn3                      texts=2/2 layout=2 diffs=0
+CNX_Chem_04_02_HClsoln                   texts=53/53 layout=0 diffs=0
+CNX_Chem_04_03_etheneBr_img              texts=20/20 layout=6 diffs=0
+CNX_Chem_04_03_ethene_img                texts=22/22 layout=6 diffs=0
+CNX_Chem_04_03_flowchart                 texts=33/33 layout=33 diffs=0
+CNX_Chem_04_03_map2_img                  texts=11/11 layout=11 diffs=0
+CNX_Chem_04_03_map3_img                  texts=19/19 layout=19 diffs=0
+CNX_Chem_04_03_moleratio1_img            texts=5/5 layout=5 diffs=0
+CNX_Chem_04_03_moleratio2_img            texts=14/14 layout=14 diffs=0
+CNX_Chem_04_04_GreenChem                 texts=16/16 layout=0 diffs=0
+CNX_Chem_04_04_limiting                  texts=11/11 layout=11 diffs=0
+CNX_Chem_04_04_sandwich                  texts=7/7 layout=7 diffs=0
+CNX_Chem_04_05_combmap_img               texts=26/26 layout=26 diffs=0
+CNX_Chem_04_05_combustion                texts=32/32 layout=30 diffs=0
+CNX_Chem_04_05_map7_img                  texts=10/10 layout=10 diffs=0
+CNX_Chem_04_05_map8_img                  texts=19/19 layout=19 diffs=0
+CNX_Chem_14_03_FishLemon                 texts=40/40 layout=4 diffs=0
+
+recompose set (figures with >= 1 layout item): 31 ['CNX_Chem_03_01_alsulfatemass_img', 'CNX_Chem_03_01_aspirin', 'CNX_Chem_03_01_brain-ec0b', 'CNX_Chem_03_01_chloroform', 'CNX_Chem_03_01_exocytosis-88f6', 'CNX_Chem_03_01_glycinemass_img', 'CNX_Chem_03_01_saltMass', 'CNX_Chem_03_02_argon_img-9025', 'CNX_Chem_03_02_copperMoles_img-a962', 'CNX_Chem_03_02_glycine_img-7c96', 'CNX_Chem_03_02_potassium_img-f1d1', 'CNX_Chem_03_02_sacch_img-3278', 'CNX_Chem_03_02_vitC_img-e537', 'CNX_Chem_03_03_empform', 'CNX_Chem_03_05_Example2_img', 'CNX_Chem_04_01_rxn2', 'CNX_Chem_04_01_rxn3', 'CNX_Chem_04_03_etheneBr_img', 'CNX_Chem_04_03_ethene_img', 'CNX_Chem_04_03_flowchart', 'CNX_Chem_04_03_map2_img', 'CNX_Chem_04_03_map3_img', 'CNX_Chem_04_03_moleratio1_img', 'CNX_Chem_04_03_moleratio2_img', 'CNX_Chem_04_04_limiting', 'CNX_Chem_04_04_sandwich', 'CNX_Chem_04_05_combmap_img', 'CNX_Chem_04_05_combustion', 'CNX_Chem_04_05_map7_img', 'CNX_Chem_04_05_map8_img', 'CNX_Chem_14_03_FishLemon']
+figures whose <text> list changed: 31
+recompose set == changed set: True
+
+ok=True

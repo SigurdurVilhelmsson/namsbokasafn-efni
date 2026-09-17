@@ -27,7 +27,8 @@ Per item (one <text>):
   resid_k    rendered - planned - kern      (0 when the browser kerned exactly as the table says)
   resid_0    rendered - planned             (0 when the browser did not kern)
 Classification per item at each scale, tolerance TOL pt: `short` resid_0 < -TOL, `long` resid_0 > TOL, else `equal`.
-Items drawn in FigSym (the STIX subset) are counted but not classified: their planned width is not Liberation's.
+Items drawn in FigSym (the STIX subset) are counted but not classified: their planned width is not Liberation's. Their
+rendered length IS recorded, and `compare` compares every item's rendered length, FigSym included.
 
 Terminal marker: the last stdout line of every mode is `KERN-<MODE>-DONE`.
 """
@@ -128,12 +129,12 @@ def join(root, out):
             path = it['path']
             fam = it.get('family', svgout.FAMILY)
             row = dict(i=i, path=path, text=t, size=it['size'], bold=bool(it['bold']), italic=bool(it.get('italic')),
-                       family=fam, style_attr=attrs.get('style'), computed_kerning=rec['kerning'][i])
+                       family=fam, style_attr=attrs.get('style'), computed_kerning=rec['kerning'][i],
+                       rendered={s: v[i] for s, v in rec['len'].items()})   # EVERY item, FigSym too (compare)
             if fam == svgout.FAMILY:
                 k, pairs, unmapped = kern_pairs(t, it['bold'], it.get('italic'), it['size'])
                 p = planned(t, it['bold'], it.get('italic'), it['size'])
-                row.update(planned=p, kern=k, pairs=[[a, b, v] for a, b, v in pairs], unmapped=unmapped,
-                           rendered={s: v[i] for s, v in rec['len'].items()})
+                row.update(planned=p, kern=k, pairs=[[a, b, v] for a, b, v in pairs], unmapped=unmapped)
                 row['resid_0'] = {s: r - p for s, r in row['rendered'].items()}
                 row['resid_k'] = {s: r - p - k for s, r in row['rendered'].items()}
                 row['cls'] = {s: ('short' if d < -TOL else 'long' if d > TOL else 'equal')
@@ -204,10 +205,9 @@ def compare(before, after, report):
         for b, a in zip(bi, ai):
             for k in ('path', 'text', 'size', 'bold', 'italic', 'family'):
                 assert b[k] == a[k], f'{fig} #{b["i"]}: {k} {b[k]!r} vs {a[k]!r}'
-            if 'rendered' not in b:
-                continue
             if b['rendered'] != a['rendered']:
-                changed.setdefault(fig, []).append((b['i'], b['path'], b['text'], b['kern'],
+                changed.setdefault(fig, []).append((b['i'], b['path'] + ('/FigSym' if 'kern' not in b else ''),
+                                                    b['text'], b.get('kern', 0.0),
                                                     {s: round(a['rendered'][s] - b['rendered'][s], 4) for s in b['rendered']}))
     by_path = {}
     for fig, rows in changed.items():
@@ -219,6 +219,9 @@ def compare(before, after, report):
     kerned_changed = sum(1 for r in by_path.get('layout', []) if abs(r[3]) > 1e-9)
     unkerned_changed = sum(1 for r in by_path.get('layout', []) if abs(r[3]) <= 1e-9)
     lines.append(f'layout items changed WITH a kern pair: {kerned_changed}; WITHOUT one: {unkerned_changed}')
+    n_all = sum(len(B[f]['items']) for f in B)
+    n_figsym = sum(1 for f in B for r in B[f]['items'] if 'kern' not in r)
+    lines.append(f'items compared: {n_all} (FigSym among them: {n_figsym}) - every item, whatever its family')
     lines.append(f'figures with any changed length: {len(changed)} {sorted(changed)}')
     for p, v in sorted(by_path.items()):
         lines.append(f'\n## {p}')
@@ -273,6 +276,58 @@ def labels(report):
     print('KERN-LABELS-DONE')
 
 
+def blocks(census_dir, labels_report, report):
+    """Added after the spec review (2026-09-17): P2's "in blocks" and the reconciliation with P0's label unit.
+    A LAYOUT BLOCK is a maximal run of consecutive layout items that opens at line 0, seg 0 (compose.py emits
+    j=0, k=0 first for every laid-out block, and ITEMS carry no block field). Reports N kerned layout items, B blocks
+    holding one, and for every P0 label whether a drawn kerned item carries its pair (matched as: the item's text is a
+    substring of the label, in the same figure) - naming the labels whose only
+    pair does not survive into a drawn segment."""
+    C = json.loads((Path(census_dir) / 'census.json').read_text())['figures']
+    lines, n_items, n_blocks, n_layout_blocks = [], 0, 0, 0
+    kerned_texts = {}
+    for fig, c in sorted(C.items()):
+        # line/seg come from the items dump beside the census (reports/<run>/items/), which census rows do not keep
+        items = json.loads((Path(census_dir) / 'items' / f'{fig}.items.json').read_text())
+        assert len(items) == len(c['items']) and all(i['text'] == r['text'] for i, r in zip(items, c['items'])), \
+            f'{fig}: items dump misaligned with the census'
+        groups, g = [], None
+        for it, r in zip(items, c['items']):
+            if it['path'] != 'layout':
+                g = None
+                continue
+            if g is None or (it.get('line'), it.get('seg')) == (0, 0):
+                g = []
+                groups.append(g)
+            g.append(r)
+        n_layout_blocks += len(groups)
+        for grp in groups:
+            k = [r for r in grp if abs(r.get('kern', 0)) > 1e-9]
+            n_items += len(k)
+            n_blocks += bool(k)
+            if k:
+                lines.append(f'  {fig} block {"|".join(r["text"] for r in grp)!r}: kerned items {[r["text"] for r in k]}')
+                kerned_texts.setdefault(fig, []).extend(r['text'] for r in k)
+    head = [f'# layout blocks (runs opening at line 0, seg 0): {n_layout_blocks}; kerned layout items N={n_items}; '
+            f'layout blocks holding one B={n_blocks}']
+    lab_lines = Path(labels_report).read_text().splitlines()[1:]
+    reached, unreached = 0, []
+    for l in lab_lines:
+        m = re.match(r'\s+(\S+) (.*) tight=(.*) wide=', l)
+        fig, lab = m.group(1), eval(m.group(2))
+        drawn = [t for t in kerned_texts.get(fig, []) if t and t in lab]
+        if drawn:
+            reached += 1
+        else:
+            unreached.append((fig, lab, m.group(3)))
+    head.append(f'# P0 labels with a tightening pair: {len(lab_lines)}; a drawn kerned layout item carries it: {reached}; '
+                f'not drawn as a kerned item: {len(unreached)}')
+    head += [f'#   not drawn kerned: {f} {lab!r} pairs={pr}' for f, lab, pr in unreached]
+    Path(report).write_text('\n'.join(head + lines) + '\n')
+    print('\n'.join(head))
+    print('KERN-BLOCKS-DONE')
+
+
 if __name__ == '__main__':
     mode, *rest = sys.argv[1:]
-    dict(jobs=jobs, join=join, compare=compare, strip=strip, labels=labels)[mode](*rest)
+    dict(jobs=jobs, join=join, compare=compare, strip=strip, labels=labels, blocks=blocks)[mode](*rest)

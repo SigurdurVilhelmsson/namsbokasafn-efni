@@ -1,0 +1,34 @@
+DRY RUN — nothing bought, nothing written under books/
+efnafraedi-2e ch03: 15 figure(s) across 5 module(s)
+
+    15  translated
+    15  = enumerated
+
+  de-hashed to stripped-name artwork, LOOKUP ONLY (8):
+    CNX_Chem_03_02_potassium_img-f1d1  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_potassium_img.eps
+    CNX_Chem_03_02_argon_img-9025  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_argon_img.eps
+    CNX_Chem_03_02_copperMoles_img-a962  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_copperMoles_img.eps
+    CNX_Chem_03_02_glycine_img-7c96  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_glycine_img.eps
+    CNX_Chem_03_02_vitC_img-e537  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_vitC_img.eps
+    CNX_Chem_03_02_sacch_img-3278  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/selected-art/OSX_Chem2e_Color Contrast Modified/OSX_Chem_2e_Ch03_Color Contrast_Modified_SourceFiles/CNX_Chem_03_02_sacch_img.eps
+    CNX_Chem_03_01_brain-ec0b  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_03/Source_File/CNX_Chem_03_01_brain.pdf
+    CNX_Chem_03_01_exocytosis-88f6  <-  /home/siggi/dev/repos/Myndir/chemistry-2e/base/Ch_03/Source_File/CNX_Chem_03_01_exocytosis.pdf
+  figure-prepare.py warnings — 20 across 13 figure(s), its own !! lines:
+    CNX_Chem_03_01_chloroform: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_03_01_aspirin: subset font PAGE/R10; subset font PAGE/R12; subset font PAGE/R14
+    CNX_Chem_03_01_saltMass: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_03_01_alsulfatemass_img: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_03_02_potassium_img-f1d1: subset font PAGE/R9
+    CNX_Chem_03_02_argon_img-9025: subset font PAGE/R9
+    CNX_Chem_03_02_glycine_img-7c96: subset font PAGE/R9
+    CNX_Chem_03_01_glycinemass_img: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_03_02_vitC_img-e537: subset font PAGE/R9
+    CNX_Chem_03_01_brain-ec0b: subset font PAGE/TT0; subset font PAGE/TT1
+    CNX_Chem_03_01_exocytosis-88f6: subset font PAGE/TT0
+    CNX_Chem_03_03_empform: subset font PAGE/TT0
+    CNX_Chem_03_05_Example2_img: subset font PAGE/R9
+  soft-mask ring gate (§C140 ⑩) — 2 figure(s) carry a candidate; 0 healed, 0 refused:
+    CNX_Chem_03_01_brain-ec0b: 1 soft-mask ring candidate(s) — mask-2; not gated in a dry run
+    CNX_Chem_03_01_exocytosis-88f6: 8 soft-mask ring candidate(s) — mask-8, mask-12, mask-39, mask-43, mask-189, mask-271, mask-409, mask-491; not gated in a dry run
+
+VERDICT ok

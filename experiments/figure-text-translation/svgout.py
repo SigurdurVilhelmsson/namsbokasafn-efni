@@ -89,8 +89,9 @@ def write_svg(artwork_svg, out_path, items, page_h):
     # long prefix drawn as its own <text> covers the word space before the next segment ("afBr2" at
     # 150 dpi) or pushes a base glyph into its subscript. geometricPrecision draws linear advances at
     # every scale, in an <img> too. It is an INHERITED presentation attribute, so one on the <g>
-    # reaches every <text> below it and leaves each <text> element byte-identical; the artwork
-    # above the group keeps the renderer's defaults. Pinned by test_svgout.py.
+    # reaches every <text> below it without touching any <text> element (since §C140 ⑥b a LAYOUT
+    # <text> carries its own trailing style - see below - while run-exact and arc elements stay
+    # byte-identical); the artwork above the group keeps the renderer's defaults. Pinned by test_svgout.py.
     parts = [f"<style>{''.join(faces)}</style>", '<g text-rendering="geometricPrecision">']
     if stix_chars:
         # T5: the licensing information, as the group's FIRST child - never before <style> (it

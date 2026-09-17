@@ -5,22 +5,18 @@
    "items": 370,
    "figsym": 0,
    "kern_items": 27,
-   "short": {
-    "1": 27,
-    "3": 27,
-    "2.0833333": 27
-   },
+   "short": {},
    "long": {},
    "equal": {
-    "1": 343,
-    "3": 343,
-    "2.0833333": 343
+    "1": 370,
+    "3": 370,
+    "2.0833333": 370
    },
-   "max_abs_resid_k": 0.01513671875,
-   "max_abs_resid_0": 0.9923820312499991,
-   "kern_explains": 370,
-   "style_none": 0,
-   "computed_none": 0,
+   "max_abs_resid_k": 1.01220703125,
+   "max_abs_resid_0": 0.01513671875,
+   "kern_explains": 343,
+   "style_none": 370,
+   "computed_none": 370,
    "figs_with_kern": [
     "CNX_Chem_03_01_brain-ec0b",
     "CNX_Chem_03_01_exocytosis-88f6",
@@ -91,8 +87,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 26.015625,
       "3": 26.015625,
@@ -126,8 +122,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24,
       "3": 24,
@@ -161,8 +157,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 73.234375,
       "3": 73.234375,
@@ -196,8 +192,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.140625,
       "3": 23.140625,
@@ -231,8 +227,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 34.53125,
       "3": 34.53125,
@@ -266,8 +262,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.5,
       "3": 24.5,
@@ -616,8 +612,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 41.015625,
       "3": 41.015625,
@@ -912,8 +908,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 26.015625,
       "3": 26.015625,
@@ -947,8 +943,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24,
       "3": 24,
@@ -982,8 +978,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 73.234375,
       "3": 73.234375,
@@ -1017,8 +1013,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.140625,
       "3": 23.140625,
@@ -1052,8 +1048,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 34.53125,
       "3": 34.53125,
@@ -1087,8 +1083,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.5,
       "3": 24.5,
@@ -1437,8 +1433,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 41.015625,
       "3": 41.015625,
@@ -1727,12 +1723,12 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 54.84375,
-      "3": 54.84375,
-      "2.0833333": 54.84375
+      "1": 55.515625,
+      "3": 55.515625,
+      "2.0833333": 55.515625
      },
      "planned": 55.5029296875,
      "kern": -0.66796875,
@@ -1745,19 +1741,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.6591796875,
-      "3": -0.6591796875,
-      "2.0833333": -0.6591796875
+      "1": 0.0126953125,
+      "3": 0.0126953125,
+      "2.0833333": 0.0126953125
      },
      "resid_k": {
-      "1": 0.0087890625,
-      "3": 0.0087890625,
-      "2.0833333": 0.0087890625
+      "1": 0.6806640625,
+      "3": 0.6806640625,
+      "2.0833333": 0.6806640625
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -1863,8 +1859,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 26.015625,
       "3": 26.015625,
@@ -1898,8 +1894,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24,
       "3": 24,
@@ -1933,8 +1929,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 72.46875,
       "3": 72.46875,
@@ -1968,8 +1964,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.828125,
       "3": 23.828125,
@@ -2003,8 +1999,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 34.53125,
       "3": 34.53125,
@@ -2038,8 +2034,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.5,
       "3": 24.5,
@@ -2388,8 +2384,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 41.015625,
       "3": 41.015625,
@@ -2678,12 +2674,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 39.53125,
-      "3": 39.53125,
-      "2.0833333": 39.53125
+      "1": 40.53125,
+      "3": 40.53125,
+      "2.0833333": 40.53125
      },
      "planned": 40.52197265625,
      "kern": -0.99755859375,
@@ -2696,19 +2692,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.99072265625,
-      "3": -0.99072265625,
-      "2.0833333": -0.99072265625
+      "1": 0.00927734375,
+      "3": 0.00927734375,
+      "2.0833333": 0.00927734375
      },
      "resid_k": {
-      "1": 0.0068359375,
-      "3": 0.0068359375,
-      "2.0833333": 0.0068359375
+      "1": 1.0068359375,
+      "3": 1.0068359375,
+      "2.0833333": 1.0068359375
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -2719,8 +2715,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 21.015625,
       "3": 21.015625,
@@ -2754,12 +2750,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 42.546875,
-      "3": 42.546875,
-      "2.0833333": 42.546875
+      "1": 43.546875,
+      "3": 43.546875,
+      "2.0833333": 43.546875
      },
      "planned": 43.5322265625,
      "kern": -0.99755859375,
@@ -2772,19 +2768,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.9853515625,
-      "3": -0.9853515625,
-      "2.0833333": -0.9853515625
+      "1": 0.0146484375,
+      "3": 0.0146484375,
+      "2.0833333": 0.0146484375
      },
      "resid_k": {
-      "1": 0.01220703125,
-      "3": 0.01220703125,
-      "2.0833333": 0.01220703125
+      "1": 1.01220703125,
+      "3": 1.01220703125,
+      "2.0833333": 1.01220703125
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -2795,12 +2791,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 54.0625,
-      "3": 54.0625,
-      "2.0833333": 54.0625
+      "1": 55.046875,
+      "3": 55.046875,
+      "2.0833333": 55.046875
      },
      "planned": 55.0458984375,
      "kern": -0.99755859375,
@@ -2813,19 +2809,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.9833984375,
-      "3": -0.9833984375,
-      "2.0833333": -0.9833984375
+      "1": 0.0009765625,
+      "3": 0.0009765625,
+      "2.0833333": 0.0009765625
      },
      "resid_k": {
-      "1": 0.01416015625,
-      "3": 0.01416015625,
-      "2.0833333": 0.01416015625
+      "1": 0.99853515625,
+      "3": 0.99853515625,
+      "2.0833333": 0.99853515625
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -2836,12 +2832,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 42.546875,
-      "3": 42.546875,
-      "2.0833333": 42.546875
+      "1": 43.546875,
+      "3": 43.546875,
+      "2.0833333": 43.546875
      },
      "planned": 43.5322265625,
      "kern": -0.99755859375,
@@ -2854,19 +2850,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.9853515625,
-      "3": -0.9853515625,
-      "2.0833333": -0.9853515625
+      "1": 0.0146484375,
+      "3": 0.0146484375,
+      "2.0833333": 0.0146484375
      },
      "resid_k": {
-      "1": 0.01220703125,
-      "3": 0.01220703125,
-      "2.0833333": 0.01220703125
+      "1": 1.01220703125,
+      "3": 1.01220703125,
+      "2.0833333": 1.01220703125
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -2972,8 +2968,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 26.015625,
       "3": 26.015625,
@@ -3007,8 +3003,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 45,
       "3": 45,
@@ -3042,8 +3038,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 59.515625,
       "3": 59.515625,
@@ -3077,8 +3073,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 66.03125,
       "3": 66.03125,
@@ -3112,8 +3108,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 70.515625,
       "3": 70.515625,
@@ -3147,8 +3143,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 44.015625,
       "3": 44.015625,
@@ -3182,8 +3178,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 64.015625,
       "3": 64.015625,
@@ -3217,8 +3213,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 61.015625,
       "3": 61.015625,
@@ -3567,8 +3563,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 139.03125,
       "3": 139.03125,
@@ -4035,8 +4031,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 26.015625,
       "3": 26.015625,
@@ -4070,8 +4066,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24,
       "3": 24,
@@ -4105,8 +4101,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 72.53125,
       "3": 72.53125,
@@ -4140,8 +4136,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.5,
       "3": 24.5,
@@ -4175,8 +4171,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 34.53125,
       "3": 34.53125,
@@ -4420,8 +4416,8 @@
      "bold": true,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 61.515625,
       "3": 61.515625,
@@ -4637,8 +4633,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -4672,8 +4668,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 67.015625,
       "3": 67.015625,
@@ -4707,8 +4703,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -4742,8 +4738,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 50.015625,
       "3": 50.015625,
@@ -4777,8 +4773,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 70.046875,
       "3": 70.046875,
@@ -4812,8 +4808,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 71.515625,
       "3": 71.515625,
@@ -4860,8 +4856,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -4895,8 +4891,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 69.515625,
       "3": 69.515625,
@@ -4930,8 +4926,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 40.53125,
       "3": 40.53125,
@@ -4965,8 +4961,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 71.515625,
       "3": 71.515625,
@@ -5000,8 +4996,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -5035,8 +5031,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 52.53125,
       "3": 52.53125,
@@ -5070,8 +5066,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 21.515625,
       "3": 21.515625,
@@ -5105,8 +5101,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 39.03125,
       "3": 39.03125,
@@ -5140,8 +5136,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 70.046875,
       "3": 70.046875,
@@ -5175,12 +5171,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 59.390625,
-      "3": 59.390625,
-      "2.0833333": 59.390625
+      "1": 60.046875,
+      "3": 60.046875,
+      "2.0833333": 60.046875
      },
      "planned": 60.0380859375,
      "kern": -0.6591796875,
@@ -5198,19 +5194,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.6474609375,
-      "3": -0.6474609375,
-      "2.0833333": -0.6474609375
+      "1": 0.0087890625,
+      "3": 0.0087890625,
+      "2.0833333": 0.0087890625
      },
      "resid_k": {
-      "1": 0.01171875,
-      "3": 0.01171875,
-      "2.0833333": 0.01171875
+      "1": 0.66796875,
+      "3": 0.66796875,
+      "2.0833333": 0.66796875
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -5221,8 +5217,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 17.5,
       "3": 17.5,
@@ -5256,8 +5252,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.796875,
       "3": 7.796875,
@@ -5291,8 +5287,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3,
       "3": 3,
@@ -5339,8 +5335,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -5374,8 +5370,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -5409,8 +5405,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -5444,8 +5440,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -5479,8 +5475,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -5514,8 +5510,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.015625,
       "3": 7.015625,
@@ -5549,8 +5545,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -5584,8 +5580,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -5619,8 +5615,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23,
       "3": 23,
@@ -5654,8 +5650,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 39.40625,
       "3": 39.40625,
@@ -5689,8 +5685,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 69.53125,
       "3": 69.53125,
@@ -5724,8 +5720,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -5759,8 +5755,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -5794,8 +5790,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -5829,8 +5825,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -5864,8 +5860,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -5899,8 +5895,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.015625,
       "3": 7.015625,
@@ -5934,8 +5930,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -5969,8 +5965,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -6004,8 +6000,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 13.5,
       "3": 13.5,
@@ -6052,8 +6048,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 50.53125,
       "3": 50.53125,
@@ -6087,8 +6083,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 20.5,
       "3": 20.5,
@@ -6122,8 +6118,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 41.34375,
       "3": 41.34375,
@@ -6157,8 +6153,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 69.53125,
       "3": 69.53125,
@@ -6192,8 +6188,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -6227,8 +6223,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 47.03125,
       "3": 47.03125,
@@ -6275,8 +6271,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -6310,8 +6306,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -6345,8 +6341,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -6380,8 +6376,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -6415,8 +6411,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -6450,8 +6446,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 13.5,
       "3": 13.5,
@@ -6485,8 +6481,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -6520,8 +6516,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.015625,
       "3": 6.015625,
@@ -6555,8 +6551,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 20.5,
       "3": 20.5,
@@ -6590,8 +6586,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 42.53125,
       "3": 42.53125,
@@ -6625,8 +6621,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 71.515625,
       "3": 71.515625,
@@ -6660,8 +6656,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -6695,8 +6691,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -6730,8 +6726,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -6765,8 +6761,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -6800,8 +6796,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -6835,8 +6831,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 13.5,
       "3": 13.5,
@@ -6870,8 +6866,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -6905,8 +6901,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.015625,
       "3": 6.015625,
@@ -6940,8 +6936,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 11,
       "3": 11,
@@ -6975,8 +6971,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 21.515625,
       "3": 21.515625,
@@ -7010,8 +7006,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -7045,8 +7041,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -7080,8 +7076,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -7115,8 +7111,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -7150,8 +7146,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 13.5,
       "3": 13.5,
@@ -7185,8 +7181,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -7220,8 +7216,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.015625,
       "3": 6.015625,
@@ -7255,8 +7251,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 39.03125,
       "3": 39.03125,
@@ -7290,8 +7286,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 60.03125,
       "3": 60.03125,
@@ -7325,12 +7321,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 59.390625,
-      "3": 59.390625,
-      "2.0833333": 59.390625
+      "1": 60.046875,
+      "3": 60.046875,
+      "2.0833333": 60.046875
      },
      "planned": 60.0380859375,
      "kern": -0.6591796875,
@@ -7348,19 +7344,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.6474609375,
-      "3": -0.6474609375,
-      "2.0833333": -0.6474609375
+      "1": 0.0087890625,
+      "3": 0.0087890625,
+      "2.0833333": 0.0087890625
      },
      "resid_k": {
-      "1": 0.01171875,
-      "3": 0.01171875,
-      "2.0833333": 0.01171875
+      "1": 0.66796875,
+      "3": 0.66796875,
+      "2.0833333": 0.66796875
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -7371,8 +7367,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 17.5,
       "3": 17.5,
@@ -7406,8 +7402,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.796875,
       "3": 7.796875,
@@ -7441,8 +7437,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3,
       "3": 3,
@@ -7489,8 +7485,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -7524,8 +7520,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 57.015625,
       "3": 57.015625,
@@ -7559,8 +7555,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 60.03125,
       "3": 60.03125,
@@ -7594,8 +7590,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 71.515625,
       "3": 71.515625,
@@ -7629,8 +7625,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -7664,8 +7660,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 64.015625,
       "3": 64.015625,
@@ -7712,8 +7708,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -7747,12 +7743,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 40.53125,
-      "3": 40.53125,
-      "2.0833333": 40.53125
+      "1": 41.015625,
+      "3": 41.015625,
+      "2.0833333": 41.015625
      },
      "planned": 41.01416015625,
      "kern": -0.49658203125,
@@ -7765,19 +7761,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.48291015625,
-      "3": -0.48291015625,
-      "2.0833333": -0.48291015625
+      "1": 0.00146484375,
+      "3": 0.00146484375,
+      "2.0833333": 0.00146484375
      },
      "resid_k": {
-      "1": 0.013671875,
-      "3": 0.013671875,
-      "2.0833333": 0.013671875
+      "1": 0.498046875,
+      "3": 0.498046875,
+      "2.0833333": 0.498046875
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -7788,8 +7784,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 42.53125,
       "3": 42.53125,
@@ -7823,8 +7819,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 41.015625,
       "3": 41.015625,
@@ -7858,8 +7854,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -7893,12 +7889,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 33.03125,
-      "3": 33.03125,
-      "2.0833333": 33.03125
+      "1": 33.53125,
+      "3": 33.53125,
+      "2.0833333": 33.53125
      },
      "planned": 33.51708984375,
      "kern": -0.49658203125,
@@ -7911,19 +7907,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.48583984375,
-      "3": -0.48583984375,
-      "2.0833333": -0.48583984375
+      "1": 0.01416015625,
+      "3": 0.01416015625,
+      "2.0833333": 0.01416015625
      },
      "resid_k": {
-      "1": 0.0107421875,
-      "3": 0.0107421875,
-      "2.0833333": 0.0107421875
+      "1": 0.5107421875,
+      "3": 0.5107421875,
+      "2.0833333": 0.5107421875
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -7934,8 +7930,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -7969,8 +7965,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 41.015625,
       "3": 41.015625,
@@ -8004,8 +8000,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 42.53125,
       "3": 42.53125,
@@ -8039,8 +8035,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 41.015625,
       "3": 41.015625,
@@ -8074,8 +8070,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -8109,8 +8105,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 33.53125,
       "3": 33.53125,
@@ -8144,8 +8140,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 40.53125,
       "3": 40.53125,
@@ -8179,12 +8175,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 41.03125,
-      "3": 41.03125,
-      "2.0833333": 41.03125
+      "1": 41.515625,
+      "3": 41.515625,
+      "2.0833333": 41.515625
      },
      "planned": 41.51513671875,
      "kern": -0.49658203125,
@@ -8197,19 +8193,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.48388671875,
-      "3": -0.48388671875,
-      "2.0833333": -0.48388671875
+      "1": 0.00048828125,
+      "3": 0.00048828125,
+      "2.0833333": 0.00048828125
      },
      "resid_k": {
-      "1": 0.0126953125,
-      "3": 0.0126953125,
-      "2.0833333": 0.0126953125
+      "1": 0.4970703125,
+      "3": 0.4970703125,
+      "2.0833333": 0.4970703125
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -8220,8 +8216,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 42.53125,
       "3": 42.53125,
@@ -8255,8 +8251,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 27.015625,
       "3": 27.015625,
@@ -8290,8 +8286,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 36.03125,
       "3": 36.03125,
@@ -8325,8 +8321,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 52.109375,
       "3": 52.109375,
@@ -8360,8 +8356,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 56.53125,
       "3": 56.53125,
@@ -8395,8 +8391,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 32.015625,
       "3": 32.015625,
@@ -8430,8 +8426,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 39.03125,
       "3": 39.03125,
@@ -8478,8 +8474,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -8513,8 +8509,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 43.03125,
       "3": 43.03125,
@@ -8548,8 +8544,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 70.046875,
       "3": 70.046875,
@@ -8583,8 +8579,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 81.046875,
       "3": 81.046875,
@@ -8618,8 +8614,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 90.546875,
       "3": 90.546875,
@@ -8653,8 +8649,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -8688,8 +8684,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 28.5,
       "3": 28.5,
@@ -8723,8 +8719,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 53.359375,
       "3": 53.359375,
@@ -8758,8 +8754,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 62.6875,
       "3": 62.6875,
@@ -8793,8 +8789,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 33.515625,
       "3": 33.515625,
@@ -8828,8 +8824,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 47.515625,
       "3": 47.515625,
@@ -10203,8 +10199,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 36.015625,
       "3": 36.015625,
@@ -10238,8 +10234,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 63.546875,
       "3": 63.546875,
@@ -10273,8 +10269,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 43.53125,
       "3": 43.53125,
@@ -10308,8 +10304,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 36.015625,
       "3": 36.015625,
@@ -10343,8 +10339,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 27.53125,
       "3": 27.53125,
@@ -10378,12 +10374,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 18.34375,
-      "3": 18.34375,
-      "2.0833333": 18.34375
+      "1": 19.015625,
+      "3": 19.015625,
+      "2.0833333": 19.015625
      },
      "planned": 19.0107421875,
      "kern": -0.66796875,
@@ -10396,19 +10392,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.6669921875,
-      "3": -0.6669921875,
-      "2.0833333": -0.6669921875
+      "1": 0.0048828125,
+      "3": 0.0048828125,
+      "2.0833333": 0.0048828125
      },
      "resid_k": {
-      "1": 0.0009765625,
-      "3": 0.0009765625,
-      "2.0833333": 0.0009765625
+      "1": 0.6728515625,
+      "3": 0.6728515625,
+      "2.0833333": 0.6728515625
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -10419,12 +10415,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 18.34375,
-      "3": 18.34375,
-      "2.0833333": 18.34375
+      "1": 19.015625,
+      "3": 19.015625,
+      "2.0833333": 19.015625
      },
      "planned": 19.0107421875,
      "kern": -0.66796875,
@@ -10437,19 +10433,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.6669921875,
-      "3": -0.6669921875,
-      "2.0833333": -0.6669921875
+      "1": 0.0048828125,
+      "3": 0.0048828125,
+      "2.0833333": 0.0048828125
      },
      "resid_k": {
-      "1": 0.0009765625,
-      "3": 0.0009765625,
-      "2.0833333": 0.0009765625
+      "1": 0.6728515625,
+      "3": 0.6728515625,
+      "2.0833333": 0.6728515625
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -10460,8 +10456,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 27.53125,
       "3": 27.53125,
@@ -10508,8 +10504,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 68.03125,
       "3": 68.03125,
@@ -10543,8 +10539,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 68.046875,
       "3": 68.046875,
@@ -12433,8 +12429,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 111.078125,
       "3": 111.078125,
@@ -12468,8 +12464,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 82.03125,
       "3": 82.03125,
@@ -12503,8 +12499,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 87.53125,
       "3": 87.53125,
@@ -12538,8 +12534,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 9,
       "3": 9,
@@ -12573,8 +12569,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -12608,8 +12604,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 2.515625,
       "3": 2.515625,
@@ -13146,8 +13142,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 107.546875,
       "3": 107.546875,
@@ -13181,8 +13177,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -13216,8 +13212,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -13251,8 +13247,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.015625,
       "3": 7.015625,
@@ -13286,8 +13282,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 88.5625,
       "3": 88.5625,
@@ -13881,8 +13877,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 82.03125,
       "3": 82.03125,
@@ -13929,8 +13925,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 31.515625,
       "3": 31.515625,
@@ -13964,8 +13960,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 38.015625,
       "3": 38.015625,
@@ -13999,8 +13995,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 38.015625,
       "3": 38.015625,
@@ -14034,12 +14030,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 16.515625,
-      "3": 16.515625,
-      "2.0833333": 16.515625
+      "1": 17.515625,
+      "3": 17.515625,
+      "2.0833333": 17.515625
      },
      "planned": 17.5078125,
      "kern": -0.99755859375,
@@ -14052,19 +14048,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.9921875,
-      "3": -0.9921875,
-      "2.0833333": -0.9921875
+      "1": 0.0078125,
+      "3": 0.0078125,
+      "2.0833333": 0.0078125
      },
      "resid_k": {
-      "1": 0.00537109375,
-      "3": 0.00537109375,
-      "2.0833333": 0.00537109375
+      "1": 1.00537109375,
+      "3": 1.00537109375,
+      "2.0833333": 1.00537109375
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -14075,12 +14071,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 42.875,
-      "3": 42.875,
-      "2.0833333": 42.875
+      "1": 43.03125,
+      "3": 43.03125,
+      "2.0833333": 43.03125
      },
      "planned": 43.02685546875,
      "kern": -0.16259765625,
@@ -14093,19 +14089,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.15185546875,
-      "3": -0.15185546875,
-      "2.0833333": -0.15185546875
+      "1": 0.00439453125,
+      "3": 0.00439453125,
+      "2.0833333": 0.00439453125
      },
      "resid_k": {
-      "1": 0.0107421875,
-      "3": 0.0107421875,
-      "2.0833333": 0.0107421875
+      "1": 0.1669921875,
+      "3": 0.1669921875,
+      "2.0833333": 0.1669921875
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -14116,12 +14112,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 16.515625,
-      "3": 16.515625,
-      "2.0833333": 16.515625
+      "1": 17.515625,
+      "3": 17.515625,
+      "2.0833333": 17.515625
      },
      "planned": 17.50800703125,
      "kern": -0.997569677734375,
@@ -14134,19 +14130,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.9923820312499991,
-      "3": -0.9923820312499991,
-      "2.0833333": -0.9923820312499991
+      "1": 0.00761796875000087,
+      "3": 0.00761796875000087,
+      "2.0833333": 0.00761796875000087
      },
      "resid_k": {
-      "1": 0.005187646484375863,
-      "3": 0.005187646484375863,
-      "2.0833333": 0.005187646484375863
+      "1": 1.0051876464843759,
+      "3": 1.0051876464843759,
+      "2.0833333": 1.0051876464843759
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -14157,12 +14153,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 42.875,
-      "3": 42.875,
-      "2.0833333": 42.875
+      "1": 43.03125,
+      "3": 43.03125,
+      "2.0833333": 43.03125
      },
      "planned": 43.02733354492187,
      "kern": -0.162599462890625,
@@ -14175,19 +14171,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.15233354492187345,
-      "3": -0.15233354492187345,
-      "2.0833333": -0.15233354492187345
+      "1": 0.003916455078126546,
+      "3": 0.003916455078126546,
+      "2.0833333": 0.003916455078126546
      },
      "resid_k": {
-      "1": 0.010265917968751537,
-      "3": 0.010265917968751537,
-      "2.0833333": 0.010265917968751537
+      "1": 0.16651591796875154,
+      "3": 0.16651591796875154,
+      "2.0833333": 0.16651591796875154
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -14198,8 +14194,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 62.28125,
       "3": 62.28125,
@@ -14233,8 +14229,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 33.515625,
       "3": 33.515625,
@@ -14268,8 +14264,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -14303,8 +14299,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 27.515625,
       "3": 27.515625,
@@ -14338,8 +14334,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 32.015625,
       "3": 32.015625,
@@ -14373,12 +14369,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 31.515625,
-      "3": 31.515625,
-      "2.0833333": 31.515625
+      "1": 32.015625,
+      "3": 32.015625,
+      "2.0833333": 32.015625
      },
      "planned": 32.00537109375,
      "kern": -0.49658203125,
@@ -14391,19 +14387,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.48974609375,
-      "3": -0.48974609375,
-      "2.0833333": -0.48974609375
+      "1": 0.01025390625,
+      "3": 0.01025390625,
+      "2.0833333": 0.01025390625
      },
      "resid_k": {
-      "1": 0.0068359375,
-      "3": 0.0068359375,
-      "2.0833333": 0.0068359375
+      "1": 0.5068359375,
+      "3": 0.5068359375,
+      "2.0833333": 0.5068359375
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -14414,8 +14410,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 33.515625,
       "3": 33.515625,
@@ -14449,8 +14445,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -14484,12 +14480,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 27.03125,
-      "3": 27.03125,
-      "2.0833333": 27.03125
+      "1": 27.515625,
+      "3": 27.515625,
+      "2.0833333": 27.515625
      },
      "planned": 27.51416015625,
      "kern": -0.49658203125,
@@ -14502,19 +14498,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.48291015625,
-      "3": -0.48291015625,
-      "2.0833333": -0.48291015625
+      "1": 0.00146484375,
+      "3": 0.00146484375,
+      "2.0833333": 0.00146484375
      },
      "resid_k": {
-      "1": 0.013671875,
-      "3": 0.013671875,
-      "2.0833333": 0.013671875
+      "1": 0.498046875,
+      "3": 0.498046875,
+      "2.0833333": 0.498046875
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -14525,8 +14521,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 21.515625,
       "3": 21.515625,
@@ -14560,8 +14556,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 20.03125,
       "3": 20.03125,
@@ -14595,12 +14591,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 15.515625,
-      "3": 15.515625,
-      "2.0833333": 15.515625
+      "1": 16.015625,
+      "3": 16.015625,
+      "2.0833333": 16.015625
      },
      "planned": 16.00927734375,
      "kern": -0.49658203125,
@@ -14613,19 +14609,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.49365234375,
-      "3": -0.49365234375,
-      "2.0833333": -0.49365234375
+      "1": 0.00634765625,
+      "3": 0.00634765625,
+      "2.0833333": 0.00634765625
      },
      "resid_k": {
-      "1": 0.0029296875,
-      "3": 0.0029296875,
-      "2.0833333": 0.0029296875
+      "1": 0.5029296875,
+      "3": 0.5029296875,
+      "2.0833333": 0.5029296875
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -14636,8 +14632,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 21.515625,
       "3": 21.515625,
@@ -14671,8 +14667,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 20.03125,
       "3": 20.03125,
@@ -14706,8 +14702,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 16.015625,
       "3": 16.015625,
@@ -14741,8 +14737,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 31.515625,
       "3": 31.515625,
@@ -14776,8 +14772,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 34.59375,
       "3": 34.59375,
@@ -14811,8 +14807,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 34.59375,
       "3": 34.59375,
@@ -14846,8 +14842,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 33.515625,
       "3": 33.515625,
@@ -14881,8 +14877,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 38.03125,
       "3": 38.03125,
@@ -14916,8 +14912,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 14.515625,
       "3": 14.515625,
@@ -14951,8 +14947,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 16.015625,
       "3": 16.015625,
@@ -14986,8 +14982,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 14.515625,
       "3": 14.515625,
@@ -15021,12 +15017,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 15.515625,
-      "3": 15.515625,
-      "2.0833333": 15.515625
+      "1": 16.015625,
+      "3": 16.015625,
+      "2.0833333": 16.015625
      },
      "planned": 16.00927734375,
      "kern": -0.49658203125,
@@ -15039,19 +15035,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.49365234375,
-      "3": -0.49365234375,
-      "2.0833333": -0.49365234375
+      "1": 0.00634765625,
+      "3": 0.00634765625,
+      "2.0833333": 0.00634765625
      },
      "resid_k": {
-      "1": 0.0029296875,
-      "3": 0.0029296875,
-      "2.0833333": 0.0029296875
+      "1": 0.5029296875,
+      "3": 0.5029296875,
+      "2.0833333": 0.5029296875
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -15062,8 +15058,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 33.515625,
       "3": 33.515625,
@@ -15097,12 +15093,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 37.53125,
-      "3": 37.53125,
-      "2.0833333": 37.53125
+      "1": 38.03125,
+      "3": 38.03125,
+      "2.0833333": 38.03125
      },
      "planned": 38.021484375,
      "kern": -0.49658203125,
@@ -15115,19 +15111,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.490234375,
-      "3": -0.490234375,
-      "2.0833333": -0.490234375
+      "1": 0.009765625,
+      "3": 0.009765625,
+      "2.0833333": 0.009765625
      },
      "resid_k": {
-      "1": 0.00634765625,
-      "3": 0.00634765625,
-      "2.0833333": 0.00634765625
+      "1": 0.50634765625,
+      "3": 0.50634765625,
+      "2.0833333": 0.50634765625
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     }
    ]
@@ -15151,8 +15147,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -15186,8 +15182,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 32,
       "3": 32,
@@ -15221,8 +15217,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -15256,8 +15252,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -15291,8 +15287,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 32,
       "3": 32,
@@ -15326,8 +15322,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -15361,8 +15357,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 52.015625,
       "3": 52.015625,
@@ -15396,8 +15392,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 38.015625,
       "3": 38.015625,
@@ -15431,8 +15427,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 51.015625,
       "3": 51.015625,
@@ -15466,8 +15462,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 38.015625,
       "3": 38.015625,
@@ -15501,8 +15497,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 64.046875,
       "3": 64.046875,
@@ -15549,8 +15545,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -15584,8 +15580,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -15619,8 +15615,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -15654,8 +15650,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -15689,8 +15685,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.796875,
       "3": 7.796875,
@@ -15724,8 +15720,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -15759,8 +15755,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -15794,8 +15790,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -15829,8 +15825,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -15864,8 +15860,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.796875,
       "3": 7.796875,
@@ -15899,8 +15895,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 27.015625,
       "3": 27.015625,
@@ -15934,8 +15930,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.015625,
       "3": 7.015625,
@@ -15969,8 +15965,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -16004,8 +16000,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 38.015625,
       "3": 38.015625,
@@ -16039,8 +16035,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 26.015625,
       "3": 26.015625,
@@ -16074,8 +16070,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.015625,
       "3": 7.015625,
@@ -16109,8 +16105,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -16144,8 +16140,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 38.015625,
       "3": 38.015625,
@@ -16179,8 +16175,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 64.046875,
       "3": 64.046875,
@@ -16227,12 +16223,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 34.515625,
-      "3": 34.515625,
-      "2.0833333": 34.515625
+      "1": 35.015625,
+      "3": 35.015625,
+      "2.0833333": 35.015625
      },
      "planned": 35.01123046875,
      "kern": -0.49658203125,
@@ -16245,19 +16241,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.49560546875,
-      "3": -0.49560546875,
-      "2.0833333": -0.49560546875
+      "1": 0.00439453125,
+      "3": 0.00439453125,
+      "2.0833333": 0.00439453125
      },
      "resid_k": {
-      "1": 0.0009765625,
-      "3": 0.0009765625,
-      "2.0833333": 0.0009765625
+      "1": 0.5009765625,
+      "3": 0.5009765625,
+      "2.0833333": 0.5009765625
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -16268,8 +16264,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 27.015625,
       "3": 27.015625,
@@ -16303,8 +16299,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 2.515625,
       "3": 2.515625,
@@ -16338,8 +16334,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -16373,8 +16369,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 64.046875,
       "3": 64.046875,
@@ -16421,8 +16417,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 27.015625,
       "3": 27.015625,
@@ -16456,8 +16452,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -16491,8 +16487,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -16526,8 +16522,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -16561,8 +16557,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -16596,8 +16592,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 27.015625,
       "3": 27.015625,
@@ -16631,8 +16627,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 13.5,
       "3": 13.5,
@@ -16666,8 +16662,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -16701,8 +16697,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 13.5,
       "3": 13.5,
@@ -16736,8 +16732,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -16771,8 +16767,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 42.015625,
       "3": 42.015625,
@@ -16806,8 +16802,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 55.15625,
       "3": 55.15625,
@@ -16841,12 +16837,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 16.515625,
-      "3": 16.515625,
-      "2.0833333": 16.515625
+      "1": 17.515625,
+      "3": 17.515625,
+      "2.0833333": 17.515625
      },
      "planned": 17.5078125,
      "kern": -0.99755859375,
@@ -16859,19 +16855,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.9921875,
-      "3": -0.9921875,
-      "2.0833333": -0.9921875
+      "1": 0.0078125,
+      "3": 0.0078125,
+      "2.0833333": 0.0078125
      },
      "resid_k": {
-      "1": 0.00537109375,
-      "3": 0.00537109375,
-      "2.0833333": 0.00537109375
+      "1": 1.00537109375,
+      "3": 1.00537109375,
+      "2.0833333": 1.00537109375
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -16882,12 +16878,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 42.875,
-      "3": 42.875,
-      "2.0833333": 42.875
+      "1": 43.03125,
+      "3": 43.03125,
+      "2.0833333": 43.03125
      },
      "planned": 43.02685546875,
      "kern": -0.16259765625,
@@ -16900,19 +16896,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.15185546875,
-      "3": -0.15185546875,
-      "2.0833333": -0.15185546875
+      "1": 0.00439453125,
+      "3": 0.00439453125,
+      "2.0833333": 0.00439453125
      },
      "resid_k": {
-      "1": 0.0107421875,
-      "3": 0.0107421875,
-      "2.0833333": 0.0107421875
+      "1": 0.1669921875,
+      "3": 0.1669921875,
+      "2.0833333": 0.1669921875
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     }
    ]
@@ -17509,8 +17505,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 40.5,
       "3": 40.5,
@@ -17544,8 +17540,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 53.03125,
       "3": 53.03125,
@@ -17579,8 +17575,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.515625,
       "3": 7.515625,
@@ -17614,8 +17610,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -17649,8 +17645,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -17684,8 +17680,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 22.53125,
       "3": 22.53125,
@@ -17719,8 +17715,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 8.5,
       "3": 8.5,
@@ -17754,8 +17750,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -17789,8 +17785,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 45.03125,
       "3": 45.03125,
@@ -17824,8 +17820,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -17859,8 +17855,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -17907,8 +17903,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 44.515625,
       "3": 44.515625,
@@ -17942,12 +17938,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 61.125,
-      "3": 61.125,
-      "2.0833333": 61.125
+      "1": 61.796875,
+      "3": 61.796875,
+      "2.0833333": 61.796875
      },
      "planned": 61.79150390625,
      "kern": -0.66796875,
@@ -17960,19 +17956,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.66650390625,
-      "3": -0.66650390625,
-      "2.0833333": -0.66650390625
+      "1": 0.00537109375,
+      "3": 0.00537109375,
+      "2.0833333": 0.00537109375
      },
      "resid_k": {
-      "1": 0.00146484375,
-      "3": 0.00146484375,
-      "2.0833333": 0.00146484375
+      "1": 0.67333984375,
+      "3": 0.67333984375,
+      "2.0833333": 0.67333984375
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -17983,12 +17979,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 71.390625,
-      "3": 71.390625,
-      "2.0833333": 71.390625
+      "1": 71.546875,
+      "3": 71.546875,
+      "2.0833333": 71.546875
      },
      "planned": 71.53857421875,
      "kern": -0.16259765625,
@@ -18001,19 +17997,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.14794921875,
-      "3": -0.14794921875,
-      "2.0833333": -0.14794921875
+      "1": 0.00830078125,
+      "3": 0.00830078125,
+      "2.0833333": 0.00830078125
      },
      "resid_k": {
-      "1": 0.0146484375,
-      "3": 0.0146484375,
-      "2.0833333": 0.0146484375
+      "1": 0.1708984375,
+      "3": 0.1708984375,
+      "2.0833333": 0.1708984375
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -18024,8 +18020,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 65.0625,
       "3": 65.0625,
@@ -18059,12 +18055,12 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
-      "1": 48.359375,
-      "3": 48.359375,
-      "2.0833333": 48.359375
+      "1": 49.03125,
+      "3": 49.03125,
+      "2.0833333": 49.03125
      },
      "planned": 49.02099609375,
      "kern": -0.66796875,
@@ -18077,19 +18073,19 @@
      ],
      "unmapped": [],
      "resid_0": {
-      "1": -0.66162109375,
-      "3": -0.66162109375,
-      "2.0833333": -0.66162109375
+      "1": 0.01025390625,
+      "3": 0.01025390625,
+      "2.0833333": 0.01025390625
      },
      "resid_k": {
-      "1": 0.00634765625,
-      "3": 0.00634765625,
-      "2.0833333": 0.00634765625
+      "1": 0.67822265625,
+      "3": 0.67822265625,
+      "2.0833333": 0.67822265625
      },
      "cls": {
-      "1": "short",
-      "3": "short",
-      "2.0833333": "short"
+      "1": "equal",
+      "3": "equal",
+      "2.0833333": "equal"
      }
     },
     {
@@ -18100,8 +18096,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 102.328125,
       "3": 102.328125,
@@ -18135,8 +18131,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 162.609375,
       "3": 162.609375,
@@ -18183,8 +18179,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -18218,8 +18214,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 13.5,
       "3": 13.5,
@@ -18253,8 +18249,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -18288,8 +18284,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -18323,8 +18319,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 13.5,
       "3": 13.5,
@@ -18358,8 +18354,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -18393,8 +18389,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 33.515625,
       "3": 33.515625,
@@ -18428,8 +18424,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 32.515625,
       "3": 32.515625,
@@ -18463,8 +18459,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -18498,8 +18494,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -18533,8 +18529,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -18568,8 +18564,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.015625,
       "3": 7.015625,
@@ -18603,8 +18599,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -18638,8 +18634,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -18673,8 +18669,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -18708,8 +18704,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.015625,
       "3": 7.015625,
@@ -18743,8 +18739,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 33.515625,
       "3": 33.515625,
@@ -18778,8 +18774,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 32.515625,
       "3": 32.515625,
@@ -18813,8 +18809,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 68.375,
       "3": 68.375,
@@ -18848,8 +18844,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 40.53125,
       "3": 40.53125,
@@ -18883,8 +18879,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 42.515625,
       "3": 42.515625,
@@ -18918,8 +18914,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 53.84375,
       "3": 53.84375,
@@ -18953,8 +18949,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 29.5625,
       "3": 29.5625,
@@ -18988,8 +18984,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 49.828125,
       "3": 49.828125,
@@ -19023,8 +19019,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 29.5625,
       "3": 29.5625,
@@ -19058,8 +19054,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 49.828125,
       "3": 49.828125,
@@ -19106,8 +19102,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 14.515625,
       "3": 14.515625,
@@ -19141,8 +19137,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 13.5,
       "3": 13.5,
@@ -19176,8 +19172,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -19211,8 +19207,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 2.515625,
       "3": 2.515625,
@@ -19246,8 +19242,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 2.515625,
       "3": 2.515625,
@@ -19281,8 +19277,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -19316,8 +19312,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -19351,8 +19347,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 9.515625,
       "3": 9.515625,
@@ -19386,8 +19382,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 2.515625,
       "3": 2.515625,
@@ -19421,8 +19417,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.015625,
       "3": 7.015625,
@@ -19456,8 +19452,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -19491,8 +19487,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 12.515625,
       "3": 12.515625,
@@ -19526,8 +19522,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 68.046875,
       "3": 68.046875,
@@ -19561,8 +19557,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 6.5,
       "3": 6.5,
@@ -19596,8 +19592,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -19631,8 +19627,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 36.515625,
       "3": 36.515625,
@@ -19666,8 +19662,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 29.03125,
       "3": 29.03125,
@@ -19701,8 +19697,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 31,
       "3": 31,
@@ -19736,8 +19732,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -19771,8 +19767,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3,
       "3": 3,
@@ -19806,8 +19802,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -19841,8 +19837,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 13.5,
       "3": 13.5,
@@ -19876,8 +19872,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -19911,8 +19907,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 29.515625,
       "3": 29.515625,
@@ -19946,8 +19942,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 56.53125,
       "3": 56.53125,
@@ -19981,8 +19977,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 7.015625,
       "3": 7.015625,
@@ -20016,8 +20012,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -20051,8 +20047,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 36.03125,
       "3": 36.03125,
@@ -20086,8 +20082,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 44.53125,
       "3": 44.53125,
@@ -20121,8 +20117,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 40.03125,
       "3": 40.03125,
@@ -20239,8 +20235,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 33.515625,
       "3": 33.515625,
@@ -20274,8 +20270,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 25.015625,
       "3": 25.015625,
@@ -20309,8 +20305,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -20344,8 +20340,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 25.015625,
       "3": 25.015625,
@@ -20379,8 +20375,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 42.015625,
       "3": 42.015625,
@@ -20414,8 +20410,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 41.515625,
       "3": 41.515625,
@@ -20449,8 +20445,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 28.515625,
       "3": 28.515625,
@@ -20484,8 +20480,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 15,
       "3": 15,
@@ -20519,8 +20515,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 63.703125,
       "3": 63.703125,
@@ -20554,8 +20550,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 64.046875,
       "3": 64.046875,
@@ -20602,8 +20598,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 38.015625,
       "3": 38.015625,
@@ -20637,8 +20633,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 64.046875,
       "3": 64.046875,
@@ -20672,8 +20668,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 46.515625,
       "3": 46.515625,
@@ -20707,8 +20703,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -20742,8 +20738,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.015625,
       "3": 24.015625,
@@ -20777,8 +20773,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -20812,8 +20808,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -20847,8 +20843,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.015625,
       "3": 24.015625,
@@ -20882,8 +20878,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -20917,8 +20913,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -20952,8 +20948,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -20987,8 +20983,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -21022,8 +21018,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 23.515625,
       "3": 23.515625,
@@ -21057,8 +21053,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -21092,8 +21088,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -21127,8 +21123,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 36.03125,
       "3": 36.03125,
@@ -21162,8 +21158,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 24.515625,
       "3": 24.515625,
@@ -21197,8 +21193,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 3.90625,
       "3": 3.90625,
@@ -21232,8 +21228,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 38.015625,
       "3": 38.015625,
@@ -22438,8 +22434,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 34.515625,
       "3": 34.515625,
@@ -22473,8 +22469,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 37.53125,
       "3": 37.53125,
@@ -22508,8 +22504,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 33.53125,
       "3": 33.53125,
@@ -22543,8 +22539,8 @@
      "bold": false,
      "italic": false,
      "family": "FigIS",
-     "style_attr": null,
-     "computed_kerning": "auto",
+     "style_attr": "font-kerning:none",
+     "computed_kerning": "none",
      "rendered": {
       "1": 50.03125,
       "3": 50.03125,
