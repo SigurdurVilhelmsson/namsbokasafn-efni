@@ -1,0 +1,82 @@
+[
+ {
+  "line": "L0",
+  "text": "AVAVAVAV",
+  "bold": false,
+  "kern_pt": -4.6758,
+  "linear_pt": 48.0234,
+  "kerned_pt": 43.3477,
+  "V0_inline": 43.3594,
+  "V0_img_ink": 53.25,
+  "V1_inline": 48.0312,
+  "V1_img_ink": 58.0,
+  "V2_inline": 48.0312,
+  "V2_img_ink": 58.0,
+  "V3_inline": 43.3594,
+  "V3_img_ink": 53.25,
+  "V4_inline": 43.3594,
+  "V4_img_ink": 53.25
+ },
+ {
+  "line": "L1",
+  "text": "Taugafrumur",
+  "bold": false,
+  "kern_pt": -0.9976,
+  "linear_pt": 51.5215,
+  "kerned_pt": 50.5239,
+  "V0_inline": 50.5312,
+  "V0_img_ink": 60.375,
+  "V1_inline": 51.5312,
+  "V1_img_ink": 61.375,
+  "V2_inline": 51.5312,
+  "V2_img_ink": 61.375,
+  "V3_inline": 50.5312,
+  "V3_img_ink": 60.375,
+  "V4_inline": 50.5312,
+  "V4_img_ink": 60.375
+ },
+ {
+  "line": "L2",
+  "text": "Taugafrumur",
+  "bold": true,
+  "kern_pt": -0.668,
+  "linear_pt": 55.5029,
+  "kerned_pt": 54.835,
+  "V0_inline": 54.8438,
+  "V0_img_ink": 64.75,
+  "V1_inline": 55.5156,
+  "V1_img_ink": 65.375,
+  "V2_inline": 55.5156,
+  "V2_img_ink": 65.375,
+  "V3_inline": 54.8438,
+  "V3_img_ink": 64.75,
+  "V4_inline": 54.8438,
+  "V4_img_ink": 64.75
+ },
+ {
+  "line": "L3",
+  "text": "lllllll",
+  "bold": false,
+  "kern_pt": 0.0,
+  "linear_pt": 13.9966,
+  "kerned_pt": 13.9966,
+  "V0_inline": 14,
+  "V0_img_ink": 23.375,
+  "V1_inline": 14,
+  "V1_img_ink": 23.375,
+  "V2_inline": 14,
+  "V2_img_ink": 23.375,
+  "V3_inline": 14,
+  "V3_img_ink": 23.375,
+  "V4_inline": 14,
+  "V4_img_ink": 23.375
+ }
+]
+
+# verdicts (inline: |len - linear| <= 0.02 pt means unkerned; <img>: ink moved vs V0 by the predicted -kern)
+V0: inline unkerned=False inline kerned=True | img moved-as-unkerned=False img same-as-V0=True | img Δ vs V0 (line, measured, predicted-if-unkerned) [('L0', 0.0, 4.676), ('L1', 0.0, 0.998), ('L2', 0.0, 0.668), ('L3', 0.0, -0.0)]
+V1: inline unkerned=True inline kerned=False | img moved-as-unkerned=True img same-as-V0=False | img Δ vs V0 (line, measured, predicted-if-unkerned) [('L0', 4.75, 4.676), ('L1', 1.0, 0.998), ('L2', 0.625, 0.668), ('L3', 0.0, -0.0)]
+V2: inline unkerned=True inline kerned=False | img moved-as-unkerned=True img same-as-V0=False | img Δ vs V0 (line, measured, predicted-if-unkerned) [('L0', 4.75, 4.676), ('L1', 1.0, 0.998), ('L2', 0.625, 0.668), ('L3', 0.0, -0.0)]
+V3: inline unkerned=False inline kerned=True | img moved-as-unkerned=False img same-as-V0=True | img Δ vs V0 (line, measured, predicted-if-unkerned) [('L0', 0.0, 4.676), ('L1', 0.0, 0.998), ('L2', 0.0, 0.668), ('L3', 0.0, -0.0)]
+V4: inline unkerned=False inline kerned=True | img moved-as-unkerned=False img same-as-V0=True | img Δ vs V0 (line, measured, predicted-if-unkerned) [('L0', 0.0, 4.676), ('L1', 0.0, 0.998), ('L2', 0.0, 0.668), ('L3', 0.0, -0.0)]
+RD-DONE

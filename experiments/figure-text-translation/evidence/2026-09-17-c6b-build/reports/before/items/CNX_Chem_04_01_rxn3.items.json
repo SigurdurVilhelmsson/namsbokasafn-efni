@@ -1,0 +1,38 @@
+[
+ {
+  "path": "layout",
+  "line": 0,
+  "seg": 0,
+  "text": "Blanda fyrir hvarf",
+  "x": 50.981828125,
+  "y": 171.4453,
+  "rot": 0.0,
+  "size": 9.0,
+  "bold": false,
+  "italic": false,
+  "rgb": [
+   0.137298583984375,
+   0.1215972900390625,
+   0.12548828125
+  ],
+  "dx": 0.0
+ },
+ {
+  "path": "layout",
+  "line": 0,
+  "seg": 0,
+  "text": "Blanda eftir hvarf",
+  "x": 345.64583359375,
+  "y": 171.4453,
+  "rot": 0.0,
+  "size": 9.0,
+  "bold": false,
+  "italic": false,
+  "rgb": [
+   0.137298583984375,
+   0.1215972900390625,
+   0.12548828125
+  ],
+  "dx": 0.0
+ }
+]
