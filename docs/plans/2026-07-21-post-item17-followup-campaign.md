@@ -6,7 +6,7 @@
 
 ### ⏭ SINGLE NEXT ACTION — **Build §C140 ⑥b to [USER]'s ruling (a): translated figure labels drawn with `font-kerning: none`** — [`docs/decisions/2026-09-17-translated-figure-labels-drawn-unkerned.md`](../decisions/2026-09-17-translated-figure-labels-drawn-unkerned.md). Same shape as ④ and ⑥a: the exploration is done (`evidence/2026-09-17-c6-explore/kerning.md`, `critic.md`), so spec → plan → build → final review → PR, with a 0-ISK recompose of the affected bought figures and the `COMPOSER_VERSION` question argued in the spec. The decision's Consequences name what the build must measure first. Buying stays stopped; no merges without [USER].
 
-⚠️ **This block sits on the UNPUSHED docs branch `docs/c140-rerender-todo-kerning-font-prereq`** (docs-only changes ride the next code branch). **Start ⑥b's branch FROM it** so the docs land with ⑥b — or push it first if [USER] says so. ✅ The branch has no code changes.
+⚠️ **This block sits on the UNPUSHED docs branch `docs/c140-rerender-todo-kerning-font-prereq`** (docs-only changes ride the next code branch). **Start ⑥b's branch FROM it** so the docs land with ⑥b — [USER] 2026-09-17: *hold it for the ⑥b branch*; do not push it alone. ✅ The branch has no code changes.
 
 ✅ **PRs #476 and #477 are deployed** ([USER], 2026-09-17). ✅ **Prod's database holds no figure-review approval** ([USER], 2026-09-17), so neither PR's skipped `COMPOSER_VERSION` bump left an approval standing on a changed figure.
 
