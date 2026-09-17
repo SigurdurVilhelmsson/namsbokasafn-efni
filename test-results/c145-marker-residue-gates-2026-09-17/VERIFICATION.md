@@ -244,6 +244,12 @@ See §5 — measured against the pre-change floor, both directions by name.
 - **The preview route is unguarded by design** (§3.4).
 - **Nothing here re-renders or re-injects anything for delivery.** Both inject
   passes were restored; the tree is byte-clean.
+- **It does not fix `DEFAULT_BOOKS_DIR`'s cwd-relative resolution** in
+  `cnxml-render.js` (`'books/efnafraedi-2e'`), which CLAUDE.md's durable rule
+  would prohibit if it were new. It is pre-existing and untouched; the new
+  pre-flight test restores `BOOKS_DIR` to exactly that initial value, so it
+  leaks no state across cases. Noted because a reader of the new test's
+  `_setBooksDirForTest(null)` would reasonably ask.
 - **It says nothing about vefur**, which serves what was synced before any of this.
 
 ---
@@ -283,8 +289,15 @@ diverging before. Judge the branch on CI's own comparison against `main`.
 A 42-agent review (5 independent lenses, then one adversarial verifier per
 finding, each told to REFUTE and to default to "not real") ran against
 `ccfe794fe`. **12 of 37 findings were refuted on re-measurement**, which is the
-point of verifying rather than acting on a reviewer's confidence. The confirmed
-ones that changed the code:
+point of verifying rather than acting on a reviewer's confidence.
+
+📋 **Every finding and its verdict:
+[`review-findings.md`](review-findings.md)** — committed beside this file,
+because the raw per-agent transcripts are session-local and would otherwise be
+the only record. *(This project has been bitten by exactly that: an audit found a
+whole 53-golden classification living only in an uncited JSON.)*
+
+The confirmed ones that changed the code:
 
 ### 🔴 6.1 THE BLOCKER: the gate's ORDERING would have cost a chapter its pages
 
