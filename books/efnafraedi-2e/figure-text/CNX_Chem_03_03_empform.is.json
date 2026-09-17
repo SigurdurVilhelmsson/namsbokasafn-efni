@@ -3,7 +3,7 @@
  "basename": "CNX_Chem_03_03_empform",
  "renderHash": "935f2723ec8d5eae",
  "composedHash": "935f2723ec8d5eae",
- "composedVersion": "3",
+ "composedVersion": "4",
  "composerVersion": "1",
  "blocks": {
   "Moles of|A atoms": "Mól af A atómum",

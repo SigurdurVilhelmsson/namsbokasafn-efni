@@ -1,0 +1,9 @@
+DRY RUN — nothing bought, nothing written under books/
+efnafraedi-2e ch03: 15 figure(s) across 5 module(s)
+  --stale: 26 figure(s) in this chapter have no sidecar and were not selected. They are the ones a run WITHOUT --stale would buy.
+
+    15  skipped-current
+    15  = enumerated
+
+
+VERDICT ok

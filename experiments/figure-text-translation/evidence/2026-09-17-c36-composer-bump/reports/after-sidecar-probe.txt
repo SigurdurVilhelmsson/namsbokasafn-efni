@@ -1,0 +1,16 @@
+COMPOSER_VERSION="4"
+efnafraedi-2e: 34 sidecars
+  keys             {"version,basename,renderHash,composedHash,composedVersion,composerVersion,blocks":34}
+  composedVersion  {"4":34}
+  composerVersion  {"1":34}
+  composed==render {"true":34}
+  has state        {"false":34}
+  isStale          {"false":34}
+__e2e-fixture__: 3 sidecars
+  keys             {"version,basename,blocks":3}
+  composedVersion  {"undefined":3}
+  composerVersion  {"undefined":3}
+  composed==render {"false":3}
+  has state        {"false":3}
+  isStale          {"true":3}
+PROBE-DONE

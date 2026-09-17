@@ -1,0 +1,414 @@
+{
+ "controls": {
+  "C1_planted_text": {
+   "artwork_same": true,
+   "textgroup_same": false,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 3,
+   "head_differs": 3,
+   "timestamp_only": false
+  },
+  "C2_swapped_blob": {
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": false,
+   "woff2_blobs": 3,
+   "head_differs": 3,
+   "timestamp_only": false
+  },
+  "C3_self": {
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 3,
+   "head_differs": 0,
+   "timestamp_only": true
+  },
+  "figure": "books/efnafraedi-2e/media/CNX_Chem_03_01_alsulfatemass_img_IS.svg",
+  "blob_donor": "books/efnafraedi-2e/media/CNX_Chem_03_01_aspirin_IS.svg"
+ },
+ "controls_ok": true,
+ "n": 34,
+ "timestamp_only": [
+  "books/efnafraedi-2e/media/CNX_Chem_03_01_alsulfatemass_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_01_aspirin_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_01_brain-ec0b_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_01_chloroform_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_01_exocytosis-88f6_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_01_glycinemass_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_01_saltMass_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_02_argon_img-9025_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_02_copperMoles_img-a962_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_02_glycine_img-7c96_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_02_potassium_img-f1d1_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_02_sacch_img-3278_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_02_vitC_img-e537_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_03_empform_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_03_05_Example2_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_01_basehyd_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_01_rxn2_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_01_rxn3_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_02_HClsoln_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_03_etheneBr_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_03_ethene_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_03_flowchart_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_03_map2_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_03_map3_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_03_moleratio1_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_03_moleratio2_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_04_GreenChem_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_04_limiting_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_04_sandwich_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_05_combmap_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_05_combustion_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_05_map7_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_04_05_map8_img_IS.svg",
+  "books/efnafraedi-2e/media/CNX_Chem_14_03_FishLemon_IS.svg"
+ ],
+ "not_timestamp_only": [],
+ "rows": [
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_01_alsulfatemass_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 3,
+   "head_differs": 3,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_01_aspirin_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 3,
+   "head_differs": 3,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_01_brain-ec0b_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 2,
+   "head_differs": 2,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_01_chloroform_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 3,
+   "head_differs": 3,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_01_exocytosis-88f6_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_01_glycinemass_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 3,
+   "head_differs": 3,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_01_saltMass_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 3,
+   "head_differs": 3,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_02_argon_img-9025_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_02_copperMoles_img-a962_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_02_glycine_img-7c96_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_02_potassium_img-f1d1_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_02_sacch_img-3278_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_02_vitC_img-e537_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_03_empform_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_03_05_Example2_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_01_basehyd_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 2,
+   "head_differs": 2,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_01_rxn2_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 2,
+   "head_differs": 2,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_01_rxn3_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_02_HClsoln_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 3,
+   "head_differs": 3,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_03_etheneBr_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_03_ethene_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_03_flowchart_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_03_map2_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_03_map3_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_03_moleratio1_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_03_moleratio2_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_04_GreenChem_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_04_limiting_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_04_sandwich_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_05_combmap_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_05_combustion_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_05_map7_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_04_05_map8_img_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 1,
+   "head_differs": 1,
+   "timestamp_only": true
+  },
+  {
+   "path": "books/efnafraedi-2e/media/CNX_Chem_14_03_FishLemon_IS.svg",
+   "artwork_same": true,
+   "textgroup_same": true,
+   "style_faces_same": true,
+   "woff2_only_head": true,
+   "woff2_blobs": 2,
+   "head_differs": 2,
+   "timestamp_only": true
+  }
+ ]
+}
