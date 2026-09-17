@@ -21,10 +21,19 @@ import { renderCnxmlToHtml } from '../cnxml-render.js';
  * `ctx.figureCaptions`, which only the note builders read.
  *
  * The method is a sentinel: every caption segment's text is replaced with a
- * token that cannot have come from the source, and the token is then LOCATED —
- * inside the `<caption>` of the figure with that id in the injected CNXML, and
- * inside a `<figcaption>` in the rendered HTML. `out.includes(token)` alone would
- * accept a token that landed anywhere else.
+ * token that cannot have come from the source, and the token is then LOCATED,
+ * keyed on the figure's own id on both sides — the `<caption>` of every
+ * `<figure id>` copy in the injected CNXML, and the `<figcaption>` of every
+ * `<figure id>` block in the rendered HTML (label span removed).
+ *
+ * ⚠️ Both checks compare the caption's WHOLE text to the token, not `includes`.
+ * An adversarial review (2026-09-17) showed why: a mutant that APPENDS the
+ * translation instead of replacing the English (drop the clear-out loop in
+ * `applyFigureCaptionDom`) passed an `includes` check — readers would see both
+ * languages in one caption, which is the very defect no count can see. And a
+ * rendered check that searched ANY `<figcaption>` on the page could not see a
+ * caption landing on the wrong figure. Exact, id-keyed matching counts the same
+ * on the real corpus and goes red on both.
  *
  * Every caption is classified by its figure's SOURCE context (nearest
  * note/example/exercise ancestor; `/direct` or `/para` by the figure's own
@@ -58,6 +67,30 @@ function figureContext(fig) {
 
 function directCaption(fig) {
   return Array.from(fig.childNodes).find((n) => n.nodeName === 'caption') || null;
+}
+
+const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/**
+ * Visible caption text of every rendered `<figure id="figId">` block, with the
+ * `Mynd N` label span removed; `null` for a block with no `<figcaption>`.
+ * `\sid=` (not `\bid=`, which also matches `data-figure-id=`), and a quote-aware
+ * attribute span rather than `[^>]*` (CLAUDE.md § a bare `>` is legal inside an
+ * attribute value).
+ */
+function renderedCaptionTexts(html, figId) {
+  const block = new RegExp(
+    `<figure(?:[^>"]|"[^"]*")*\\sid="${escapeRegExp(figId)}"(?:[^>"]|"[^"]*")*>[\\s\\S]*?<\\/figure>`,
+    'g'
+  );
+  return (html.match(block) || []).map((b) => {
+    const m = b.match(/<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/);
+    if (!m) return null;
+    return m[1]
+      .replace(/<span class="figure-label">[\s\S]*?<\/span>/, '')
+      .replace(/<[^>]+>/g, '')
+      .trim();
+  });
 }
 
 /** Sentinel-sweep one book. Returns per-context {emitted, injected, rendered} and drops by name. */
@@ -100,7 +133,6 @@ function sweep(book) {
     );
     const rendered = renderCnxmlToHtml(cnxml, { bookSlug: book });
     const html = typeof rendered === 'string' ? rendered : rendered.html || '';
-    const figcaptions = html.match(/<figcaption\b[\s\S]*?<\/figcaption>/g) || [];
 
     for (const p of probes) {
       const t = (byContext[p.context] ||= { emitted: 0, injected: 0, rendered: 0 });
@@ -108,9 +140,10 @@ function sweep(book) {
       const copies = outFigures.filter((el) => el.getAttribute('id') === p.figId);
       const inCaption =
         copies.length > 0 &&
-        copies.every((el) => (directCaption(el)?.textContent || '').includes(p.token));
+        copies.every((el) => (directCaption(el)?.textContent || '').trim() === p.token);
       if (inCaption) t.injected++;
-      const inFigcaption = figcaptions.some((fc) => fc.includes(p.token));
+      const pageCaptions = renderedCaptionTexts(html, p.figId);
+      const inFigcaption = pageCaptions.length > 0 && pageCaptions.every((c) => c === p.token);
       if (inFigcaption) t.rendered++;
       if (!inCaption || !inFigcaption) {
         dropped.push(
@@ -146,7 +179,7 @@ describe('§C148 — a translated figure caption reaches the injected CNXML AND 
     // chapter rollup (`10-exercises.html`), which `renderCnxmlToHtml` never builds.
     // There, `renderPara` emits the para-nested figure INLINE with its CNXML
     // `<caption>` passed through raw (not a `<figcaption>`), and the caption prose
-    // has ALSO leaked into the paragraph text (register C13 residual #2a). Both
+    // has ALSO leaked into the paragraph text (register "C13 follow-up 2"). Both
     // are render/extract-side and logged as §C149; neither is the inject defect
     // this test pins.
     expect(r.dropped).toEqual(['m68764 CNX_Chem_10_02_Needlefloa exercise/para (render)']);
@@ -163,6 +196,13 @@ describe('§C148 — a translated figure caption reaches the injected CNXML AND 
     // examples") because only ch03 is injected there; m00136, m00137 and m00142
     // sit in chapters that never were. Measuring from `01-source` is what makes a
     // latent drop visible before it is paid for.
+    //
+    // ⚠️ ORGANIC'S note/direct "CONTROL" DOES NOT EXERCISE buildNoteDom. Its one
+    // instance, m00001 `fig-dedication`, sits in `<note class="dedication-page"
+    // id="note-00001">` — class BEFORE id — so buildNoteDom's id-first open-tag
+    // regex misses, the note goes through buildGenericElement, the figure is
+    // emitted after `</note>`, and buildFigure writes its caption. Chemistry's 83
+    // are the only real control on the note path (logged: §C151).
     const r = sweep('lifraen-efnafraedi');
     expect(r.byContext).toEqual({
       top: { emitted: 457, injected: 457, rendered: 457 },

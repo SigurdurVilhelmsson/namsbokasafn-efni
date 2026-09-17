@@ -2630,7 +2630,9 @@ function applyFigureAltDom(figEl, ctx) {
  * The caption twin of `applyFigureAltDom`, and it exists for the same reason: the
  * container builders (`buildNoteDom`, `buildExampleDom`, `buildExerciseDom`) keep
  * their figures in place and mark them handled, so `buildFigure` — the only other
- * caption writer — skips them. Until 2026-09-17 only the note builder did this, so
+ * caption writer `buildElement` dispatches (the legacy string `buildNote` also
+ * writes one, but nothing calls it outside a comparison test) — skips them.
+ * Until 2026-09-17 only the note builder did this, so
  * every captioned figure inside an `<example>` or `<exercise>` shipped its ENGLISH
  * caption: 32 in chemistry (31 example-direct + m68764), with the MT extracted,
  * bought and discarded — §C89's shape, invisible to any count because the English
@@ -4584,8 +4586,9 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
 
   // C13: a figure kept inside a note para is already in the output DOM, so the
   // hoisted standalone structure entry must not be emitted a second time. The
-  // caption loop above registers only CAPTIONED figures (its add() sits inside
-  // the captionSegId branch), which left an uncaptioned one duplicated.
+  // caption loop above registers only CAPTIONED figures (its add() fires only
+  // when applyFigureCaptionDom finds a caption segment), which left an
+  // uncaptioned one duplicated.
   if (ctx && ctx.figuresHandledInNotes) {
     for (const figId of keptFigureIds) ctx.figuresHandledInNotes.add(figId);
   }
