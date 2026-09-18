@@ -145,9 +145,16 @@ describe('the decimal suggestion can be applied in one click', () => {
     // A caption warning is a note about one word ("the module's caption uses
     // X"), not a replacement string. There is nothing to apply, and a control
     // that pasted the note into the block would corrupt it.
+    //
+    // §C140 ㉔'s MT-alternative loop follows the caption loop and DOES carry
+    // an apply control, so the slice stops there.
     const region = figureBlockSource();
-    const captionPart = region.slice(region.indexOf('warnings.caption'));
-    expect(captionPart.length).toBeGreaterThan(0); // control: the loop is there
+    const captionStart = region.indexOf('warnings.caption');
+    const mtStart = region.indexOf('warnings.mt', captionStart);
+    expect(captionStart).toBeGreaterThanOrEqual(0); // control: the caption loop is there
+    expect(mtStart).toBeGreaterThan(captionStart); // control: the mt loop bounds the slice
+    const captionPart = region.slice(captionStart, mtStart);
+    expect(captionPart.length).toBeGreaterThan(0); // control: the slice is non-empty
     expect(captionPart).not.toContain('data-block-apply');
   });
 });
