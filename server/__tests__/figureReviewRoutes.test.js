@@ -73,9 +73,15 @@ describe('buildFigurePayload', () => {
 
   it('carries the §C140 ㉔ MT warnings when given the sidecar MT info', () => {
     const f = { effectiveState: 'mt-preview', blocks: { Element: 'Frumefni' }, note: null };
+    // §C140 ㉔ final review (C1/R12): `mtAlternativeWarnings` compares against `alt.mt` (the
+    // wording actually kept, carried on the alternative itself), never against `mtBlocks` — see
+    // that function's docstring. `mtBlocks` is still accepted here to prove it is now IGNORED:
+    // it deliberately disagrees with `alt.mt` below, and the warning still fires.
     const p = buildFigurePayload('CNX_T', f, '', null, {
-      mtBlocks: { Element: 'Frumefni' },
-      mtAlternatives: { Element: { kept: 'joined', other: 'Þáttur', reason: 'disagree' } },
+      mtBlocks: { Element: 'something else entirely' },
+      mtAlternatives: {
+        Element: { kept: 'joined', other: 'Þáttur', reason: 'disagree', mt: 'Frumefni' },
+      },
       mtJoined: { status: 'split-failed', labels: 2, lines: 1 },
     });
     expect(p.warnings.mt).toEqual([

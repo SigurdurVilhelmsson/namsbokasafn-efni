@@ -6,6 +6,7 @@ import path from 'path';
 const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const svc = require('../services/figureReviewService');
+const segmentParser = require('../services/segmentParser');
 const {
   readSidecar,
   writeSidecar,
@@ -317,6 +318,88 @@ describe('applyApprovedFigureEdits', () => {
     const after = readSidecar(bookDir, 'CNX_T');
     expect('mtAlternatives' in after).toBe(false);
     expect('mtJoined' in after).toBe(false);
+  });
+
+  /**
+   * §C140 ㉔ FINAL REVIEW C1/R12 — replays the real sequence through the SERVICE (not the pure
+   * consistency functions alone): saveBlockEdit -> setState(approved) -> applyApprovedFigureEdits
+   * -> resolveFigure -> buildFigurePayload, exactly the shape the route builds. The bug this pins:
+   * `applyApprovedFigureEdits` writes `blocks: fig.blocks` (the editor's overlay) into the
+   * sidecar while carrying `mtAlternatives` forward unchanged, so a warning compared against
+   * `mtBlocks` (= the sidecar's `blocks`) held `current === mtBlocks[key]` PERMANENTLY after any
+   * approval — an enabled "Nota" offering to replace a reviewed correction with the machine's own
+   * rejected per-label wording, forever. RUN THIS AGAINST THE PRE-FIX `mtAlternativeWarnings`
+   * (comparing against `mtBlocks[key]`) AND CASES (1) AND (2) GO RED: the warning never leaves.
+   */
+  describe('resolveFigure -> buildFigurePayload after approval — the mtAlternativeWarnings regression (§C140 ㉔ C1/R12)', () => {
+    const ALT = {
+      Element: { kept: 'joined', other: 'Þáttur', reason: 'disagree', mt: 'Frumefni' },
+    };
+    const MT2 = { Element: 'Frumefni', Quantity: 'Fjöldi' };
+    let realBooksDir;
+
+    beforeEach(() => {
+      realBooksDir = segmentParser.BOOKS_DIR;
+      // resolveFigure() resolves bookDir from segmentParser.BOOKS_DIR (bookDirFor), not from the
+      // temp `bookDir` this file's outer beforeEach hands to applyApprovedFigureEdits directly —
+      // so both must point at the same place for a route-shaped call to see what we just wrote.
+      segmentParser._setTestBooksDir(path.dirname(bookDir));
+      writeSidecar(bookDir, 'CNX_T', {
+        version: 1,
+        basename: 'CNX_T',
+        blocks: MT2,
+        mtAlternatives: ALT,
+      });
+    });
+    afterEach(() => {
+      segmentParser._setTestBooksDir(realBooksDir);
+    });
+
+    function payloadFor(basename) {
+      const resolved = svc.resolveFigure(db, bookId, 'efnafraedi-2e', basename);
+      return svc.buildFigurePayload(basename, resolved.fig, '', null, {
+        mtBlocks: resolved.mtBlocks,
+        mtAlternatives: resolved.sidecar.mtAlternatives,
+        mtJoined: resolved.sidecar.mtJoined,
+      });
+    }
+
+    it('(3) CONTROL: before any edit or approval, the warning IS present', () => {
+      const payload = payloadFor('CNX_T');
+      expect(payload.warnings.mt.map((w) => w.blockKey)).toContain('Element');
+    });
+
+    it('(1) applying the suggested per-label wording, then approving, does not resurrect the warning', () => {
+      svc.saveBlockEdit(db, {
+        bookId,
+        basename: 'CNX_T',
+        blockKey: 'Element',
+        isText: 'Þáttur',
+        editedBy: 'ed',
+      });
+      const blocks = svc.getFigure(db, bookId, 'CNX_T', MT2).blocks;
+      svc.setState(db, { bookId, basename: 'CNX_T', state: 'approved', reviewedBy: 'ed', blocks });
+      svc.applyApprovedFigureEdits(db, { bookDir, bookId, basename: 'CNX_T', mtBlocks: MT2 });
+
+      const payload = payloadFor('CNX_T');
+      expect(payload.warnings.mt.map((w) => w.blockKey)).not.toContain('Element');
+    });
+
+    it('(2) an ordinary editor rewrite, then approving, does not resurrect the warning', () => {
+      svc.saveBlockEdit(db, {
+        bookId,
+        basename: 'CNX_T',
+        blockKey: 'Element',
+        isText: 'Frumefni (leiðrétt)',
+        editedBy: 'ed',
+      });
+      const blocks = svc.getFigure(db, bookId, 'CNX_T', MT2).blocks;
+      svc.setState(db, { bookId, basename: 'CNX_T', state: 'approved', reviewedBy: 'ed', blocks });
+      svc.applyApprovedFigureEdits(db, { bookDir, bookId, basename: 'CNX_T', mtBlocks: MT2 });
+
+      const payload = payloadFor('CNX_T');
+      expect(payload.warnings.mt.map((w) => w.blockKey)).not.toContain('Element');
+    });
   });
 
   it('SURVIVES A FLAG IN BETWEEN — flag, then re-approve, and the figure is still composed', () => {

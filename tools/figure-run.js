@@ -1348,8 +1348,13 @@ function processFigureLive(
       composerVersion: COMPOSER_VERSION,
       blocks,
       // §C140 ㉔ — OUTSIDE renderHash by construction (computeRenderHash reads `blocks` only), so
-      // no approval or staleness verdict moves. Omitted when there is nothing to say, so a
-      // sidecar from a single-label figure keeps today's exact shape.
+      // no approval or staleness verdict moves. `mtAlternatives` is omitted when there is nothing
+      // to say — a figure where every label agreed keeps today's exact shape.
+      // ⚠️ R15 (final review, 2026-09-18): `mtJoined` does NOT keep today's shape even for a
+      // single-label figure, and this comment used to claim it did. The MT leg always records
+      // an outcome for it (`{status:'single-label', labels:1}` here), so a single-label figure's
+      // sidecar always gains this key. That is fine — it rides outside renderHash and costs
+      // nothing that matters — but it is a change, not a no-op.
       ...(Object.keys(alternatives).length ? { mtAlternatives: alternatives } : {}),
       ...(mtJoined ? { mtJoined } : {}),
     };

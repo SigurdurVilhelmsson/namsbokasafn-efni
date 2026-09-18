@@ -14,6 +14,7 @@ import {
   formulaGuard,
   splitJoined,
   selectWording,
+  misalignedLines,
   joinable,
   wireChars,
   main,
@@ -87,20 +88,20 @@ describe('selectWording', () => {
   it('disagreement: keeps JOINED and offers per-label', () => {
     expect(selectWording('Element', 'Þáttur', 'Frumefni')).toEqual({
       text: 'Frumefni',
-      alt: { kept: 'joined', other: 'Þáttur', reason: 'disagree' },
+      alt: { kept: 'joined', other: 'Þáttur', reason: 'disagree', mt: 'Frumefni' },
     });
   });
   it('formula damage: keeps PER-LABEL, offers nothing, records the rejected text', () => {
     const r = selectWording('H2O', 'H2O', 'H₂O');
     expect(r.text).toBe('H2O');
-    expect(r.alt).toEqual({ kept: 'per-label', reason: 'formula' });
+    expect(r.alt).toEqual({ kept: 'per-label', reason: 'formula', mt: 'H2O' });
     expect(r.alt.other).toBeUndefined();
     expect(r.rejected.text).toBe('H₂O');
   });
   it('empty joined line: falls back to per-label with reason empty', () => {
     expect(selectWording('Element', 'Þáttur', '')).toEqual({
       text: 'Þáttur',
-      alt: { kept: 'per-label', reason: 'empty' },
+      alt: { kept: 'per-label', reason: 'empty', mt: 'Þáttur' },
     });
   });
   it('empty per-label: keeps joined and never offers an empty suggestion', () => {
@@ -108,6 +109,36 @@ describe('selectWording', () => {
   });
   it('both empty: empty text, no alternative (the dropped path handles it)', () => {
     expect(selectWording('Element', '', '')).toEqual({ text: '', alt: null });
+  });
+  it('§C140 ㉔ C1: alt.mt is always the KEPT text, not the rejected one', () => {
+    // disagree keeps joined -> mt is the joined text
+    expect(selectWording('Element', 'Þáttur', 'Frumefni').alt.mt).toBe('Frumefni');
+    // formula fallback keeps per-label -> mt is the per-label text, NOT the rejected joined line
+    expect(selectWording('H2O', 'H2O', 'H₂O').alt.mt).toBe('H2O');
+    // empty joined falls back to per-label -> mt is the per-label text
+    expect(selectWording('Element', 'Þáttur', '').alt.mt).toBe('Þáttur');
+  });
+});
+
+describe('misalignedLines — the exact-swap detector (§C140 ㉔ I2)', () => {
+  it('detects an exact swap between two labels', () => {
+    expect(misalignedLines(['b', 'a'], ['a', 'b'])).toBe(true);
+  });
+  it('is false when every line agrees with its own label', () => {
+    expect(misalignedLines(['a', 'b'], ['a', 'b'])).toBe(false);
+  });
+  it('is false for an ordinary disagreement that matches no sibling', () => {
+    expect(misalignedLines(['x', 'y'], ['a', 'b'])).toBe(false);
+  });
+  it('two labels sharing the SAME per-label answer do not trip it on their own', () => {
+    expect(misalignedLines(['a', 'a'], ['a', 'a'])).toBe(false);
+  });
+  it('ignores empty lines and empty per-label answers on both sides', () => {
+    expect(misalignedLines(['', 'b'], ['a', 'b'])).toBe(false);
+    expect(misalignedLines(['a', 'b'], ['', 'b'])).toBe(false);
+  });
+  it('detects a swap in a 3-label reply', () => {
+    expect(misalignedLines(['a', 'c', 'b'], ['a', 'b', 'c'])).toBe(true);
   });
 });
 
@@ -206,7 +237,7 @@ describe('main — the joined arm', () => {
     const t = readTrans(dir);
     expect(t.blocks).toEqual({ Element: ['Frumefni'], Quantity: ['Fjöldi'] });
     expect(t.alternatives).toEqual({
-      Element: { kept: 'joined', other: 'Þáttur', reason: 'disagree' },
+      Element: { kept: 'joined', other: 'Þáttur', reason: 'disagree', mt: 'Frumefni' },
     });
     expect(t.mtJoined).toEqual({ status: 'ok', labels: 2 });
   });
@@ -240,8 +271,61 @@ describe('main — the joined arm', () => {
     });
     const t = readTrans(dir);
     expect(t.blocks).toEqual({ H2O: ['H2O'], Element: ['Frumefni'] });
-    expect(t.alternatives.H2O).toEqual({ kept: 'per-label', reason: 'formula' });
-    expect(t.alternatives.Element).toEqual({ kept: 'joined', other: 'Þáttur', reason: 'disagree' });
+    expect(t.alternatives.H2O).toEqual({ kept: 'per-label', reason: 'formula', mt: 'H2O' });
+    expect(t.alternatives.Element).toEqual({
+      kept: 'joined',
+      other: 'Þáttur',
+      reason: 'disagree',
+      mt: 'Frumefni',
+    });
+  });
+
+  it('§C140 ㉔ I1: a joined request that THROWS keeps every per-label answer, spends nothing extra, and records request-failed', async () => {
+    const dir = fixtureOut([block('Element', 'Element'), block('Quantity', 'Quantity')]);
+    const seen = [];
+    const perLabelAnswers = { Element: 'Þáttur', Quantity: 'Fjöldi' };
+    await main(['--book', 'efnafraedi-2e', '--out', dir], {
+      createClient: () => ({
+        translate: async (text, opts) => {
+          seen.push({ text, opts });
+          if (text === 'Element\nQuantity') throw new Error('joined leg unavailable');
+          if (!(text in perLabelAnswers)) {
+            throw new Error(`unscripted request: ${JSON.stringify(text)}`);
+          }
+          return { text: perLabelAnswers[text] };
+        },
+        getUsage: () => ({ requests: seen.length }),
+      }),
+      estimateIsk: (c) => c / 100,
+      envPath: path.join(dir, 'absent.env'),
+    });
+    // The throw must not reject main and must not cost the per-label purchases already made.
+    expect(process.exitCode).toBeUndefined();
+    expect(seen.map((s) => s.text)).toEqual(['Element', 'Quantity', 'Element\nQuantity']);
+    const t = readTrans(dir);
+    expect(t.blocks).toEqual({ Element: ['Þáttur'], Quantity: ['Fjöldi'] });
+    expect(t.alternatives).toEqual({});
+    expect(t.mtJoined.status).toBe('request-failed');
+    expect(t.mtJoined.labels).toBe(2);
+    expect(typeof t.mtJoined.error).toBe('string');
+    expect(t.mtJoined.error).toContain('joined leg unavailable');
+    const run = JSON.parse(fs.readFileSync(path.join(dir, 'api-run.json'), 'utf-8'));
+    expect(run.joined).toMatchObject({ status: 'request-failed' });
+  });
+
+  it('§C140 ㉔ I2: an exact swap in the joined reply keeps every per-label answer and records misaligned', async () => {
+    const dir = fixtureOut([block('A', 'A'), block('B', 'B'), block('C', 'C')]);
+    const seen = [];
+    await runWith(dir, seen, {
+      A: 'a',
+      B: 'b',
+      C: 'c',
+      'A\nB\nC': 'a\nc\nb', // B and C swapped
+    });
+    const t = readTrans(dir);
+    expect(t.blocks).toEqual({ A: ['a'], B: ['b'], C: ['c'] });
+    expect(t.alternatives).toEqual({});
+    expect(t.mtJoined).toEqual({ status: 'misaligned', labels: 3 });
   });
 
   it('a single-label figure makes exactly ONE request', async () => {

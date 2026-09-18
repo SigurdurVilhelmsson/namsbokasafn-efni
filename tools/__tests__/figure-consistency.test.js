@@ -51,8 +51,8 @@ describe('captionDivergence', () => {
 describe('mtAlternativeWarnings (§C140 ㉔)', () => {
   const MT = { Element: 'Frumefni', H2O: 'H2O' };
   const ALT = {
-    Element: { kept: 'joined', other: 'Þáttur', reason: 'disagree' },
-    H2O: { kept: 'per-label', reason: 'formula' },
+    Element: { kept: 'joined', other: 'Þáttur', reason: 'disagree', mt: 'Frumefni' },
+    H2O: { kept: 'per-label', reason: 'formula', mt: 'H2O' },
   };
   it('offers the per-label wording on a disagreement', () => {
     expect(mtAlternativeWarnings(MT, MT, ALT)).toContainEqual({
@@ -79,10 +79,33 @@ describe('mtAlternativeWarnings (§C140 ㉔)', () => {
     expect(mtAlternativeWarnings(MT, MT, null)).toEqual([]);
   });
   it('never offers an empty suggestion', () => {
-    const alt = { Element: { kept: 'joined', other: '', reason: 'disagree' } };
+    const alt = { Element: { kept: 'joined', other: '', reason: 'disagree', mt: 'Frumefni' } };
     expect(mtAlternativeWarnings(MT, MT, alt)).toEqual([
       { blockKey: 'Element', current: 'Frumefni', reason: 'disagree' },
     ]);
+  });
+  // §C140 ㉔ final review (C1/R12): the fixed point this function compares against is `alt.mt`,
+  // never `mtBlocks` — because `mtBlocks` (= sidecar.blocks) is REWRITTEN by every approval, which
+  // is exactly what made the pre-fix warning return forever. These two are the regression pins.
+  it('emits NOTHING when the alternative carries no mt field — never falls back to mtBlocks', () => {
+    const alt = { Element: { kept: 'joined', other: 'Þáttur', reason: 'disagree' } };
+    expect(mtAlternativeWarnings(MT, MT, alt)).toEqual([]);
+  });
+  it('emits nothing when the suggested wording already equals the current text', () => {
+    const alt = {
+      Element: { kept: 'joined', other: 'Frumefni', reason: 'disagree', mt: 'Frumefni' },
+    };
+    expect(mtAlternativeWarnings(MT, MT, alt)).toEqual([]);
+  });
+  it('CONTROL — an approval that overwrites mtBlocks with the current text must NOT resurrect the warning', () => {
+    // This is exactly the C1/R12 scenario: after approval, mtBlocks (sidecar.blocks) is
+    // overwritten to equal the CURRENT (edited) text, yet the warning must still go silent
+    // because alt.mt (the ORIGINAL kept MT wording) no longer matches current.
+    const editedBlocks = { ...MT, Element: 'Frumefni (leiðrétt)' };
+    const mtBlocksAfterApproval = editedBlocks; // applyApprovedFigureEdits writes blocks: fig.blocks
+    expect(
+      mtAlternativeWarnings(editedBlocks, mtBlocksAfterApproval, ALT).map((w) => w.blockKey)
+    ).toEqual(['H2O']);
   });
 });
 
@@ -92,6 +115,12 @@ describe('mtFigureWarning (§C140 ㉔)', () => {
   });
   it('names a skipped joined request', () => {
     expect(mtFigureWarning({ status: 'skipped-newline', labels: 2 })).toBeTruthy();
+  });
+  it('names a failed joined request (§C140 ㉔ I1)', () => {
+    expect(mtFigureWarning({ status: 'request-failed', labels: 2, error: 'boom' })).toBeTruthy();
+  });
+  it('names a misaligned joined reply (§C140 ㉔ I2)', () => {
+    expect(mtFigureWarning({ status: 'misaligned', labels: 3 })).toBeTruthy();
   });
   it('is null when the joined arm worked, was not needed, or is unknown', () => {
     expect(mtFigureWarning({ status: 'ok', labels: 2 })).toBeNull();

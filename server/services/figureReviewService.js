@@ -388,6 +388,12 @@ function buildFigurePayload(basename, fig, referenceText, imageUrl = null, mt = 
       decimal: decimalSeparatorWarnings(fig.blocks),
       caption: captionDivergence(fig.blocks, referenceText || ''),
       // §C140 ㉔. `[]` / `null`, never absent, for the reason `imageUrl` states above.
+      // ⚠️ CORRECTED 2026-09-18 (final review C1): `mtAlternativeWarnings` no longer reads its
+      // `mtBlocks` argument (it compares against each alternative's own carried `alt.mt` instead —
+      // see that function's docstring for why `sidecar.blocks` was the wrong side). `info.mtBlocks`
+      // is passed on regardless: leaving this call site's shape unchanged, rather than plumbing the
+      // param out of `resolveFigure`/this function/the route too, is the one-finding-one-fix scope
+      // the review asked for.
       mt: mtAlternativeWarnings(fig.blocks, info.mtBlocks, info.mtAlternatives),
       mtFigure: mtFigureWarning(info.mtJoined),
     },

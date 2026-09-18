@@ -121,7 +121,8 @@ const PRISTINE = {
   "Element": {
    "kept": "joined",
    "other": "Þáttur",
-   "reason": "disagree"
+   "reason": "disagree",
+   "mt": "Frumefni"
   }
  }
 }

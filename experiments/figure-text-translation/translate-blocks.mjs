@@ -300,6 +300,13 @@ const FORMULA_TOKEN = /\b(?:[A-Z][a-z]?\d*){2,}\b|\b[A-Z][a-z]?\d+\b/g;
  * ⚠️ `\D` / `\d` are ASCII-only in JavaScript, with or without the `u` flag. That is REQUIRED
  * here: a subscript `₂` must not count as the digit `2`, or `H2O → H₂O` would pass leg 1.
  *
+ * ⚠️ R15 (final review, 2026-09-18): leg 3's `FORMULA_TOKEN` treats ANY run of ≥ 2 element-symbol
+ * capitals as formula-like, with no chemistry behind the match — `STP`, `UK` and any other plain
+ * acronym qualify just as `NaCl` does. A translated acronym (rare; acronyms are usually left
+ * untranslated) therefore fails leg 3 and falls back to per-label, safely — measured 0/501 on the
+ * real answers, because no acronym in that set was altered. The consequence worth knowing: the
+ * panel's "formula" note can fire on an acronym that was never a chemical formula at all.
+ *
  * @param {string} english
  * @param {string} icelandic
  * @returns {string[]}
@@ -333,8 +340,59 @@ export function splitJoined(reply, n) {
 }
 
 /**
+ * §C140 ㉔ FINAL REVIEW I2 — did the joined reply split back into the RIGHT COUNT but the WRONG
+ * ORDER? `splitJoined` only checks the count; a model that emits a correct set of lines but
+ * transposes two of them passes it cleanly and `selectWording` would then attribute label i's
+ * per-label answer a "disagreement" against label j's wording, and vice versa — flagging two
+ * false conflicts and, worse, silently PUBLISHING each label's SIBLING'S translation.
+ *
+ * Detects only an EXACT swap: line i does not match its own label's per-label answer, but does
+ * match some OTHER label's per-label answer. A line that disagrees with every per-label answer
+ * (an ordinary joined-vs-per-label disagreement) is not a swap and must not trip this — that is
+ * `selectWording`'s job, not this one's.
+ *
+ * ⚠️ Compares TRIMMED values and ignores empty strings on both sides: an empty per-label answer
+ * (already its own class, `reason: 'empty'`) or an empty joined line must never collide as a
+ * false "match" with some other empty label.
+ *
+ * ⚠️ Checking `lines[i]` against its OWN per-label answer FIRST is what keeps two labels that
+ * happen to share the SAME per-label wording from tripping this on their own: if both agree with
+ * their own position, neither line is compared to the other at all, and a real coincidence of
+ * identical wording is indistinguishable from a swap of identical wording — correctly not flagged
+ * either way.
+ *
+ * @param {string[]} lines  the split joined reply, one per label, in send order
+ * @param {string[]} perLabelInOrder  each label's OWN per-label answer, same order as `lines`
+ * @returns {boolean}
+ */
+export function misalignedLines(lines, perLabelInOrder) {
+  const trim = (s) => (s ?? '').trim();
+  for (let i = 0; i < lines.length; i++) {
+    const li = trim(lines[i]);
+    if (li === '') continue;
+    if (li === trim(perLabelInOrder[i])) continue; // agrees with its own label — not misaligned
+    for (let j = 0; j < perLabelInOrder.length; j++) {
+      if (j === i) continue;
+      const sib = trim(perLabelInOrder[j]);
+      if (sib !== '' && li === sib) return true;
+    }
+  }
+  return false;
+}
+
+/**
  * Choose one label's wording from its two answers ([USER] 2026-09-15: keep the joined wording,
  * flag every disagreement).
+ *
+ * 🔴 §C140 ㉔ FINAL REVIEW C1 (2026-09-18) — EVERY RETURNED `alt` NOW CARRIES `mt: <kept text>`,
+ * THE MACHINE'S OWN KEPT WORDING AT THE MOMENT OF THIS DECISION. This is NOT cosmetic: the
+ * review panel's `mtAlternativeWarnings` used to compare the current block against
+ * `sidecar.blocks` to decide whether an editor had already touched it — and `applyApprovedFigureEdits`
+ * OVERWRITES `sidecar.blocks` with the editor's (possibly corrected) text on every approval while
+ * carrying `mtAlternatives` forward unchanged. So after an approval `current === sidecar.blocks[key]`
+ * held BY CONSTRUCTION, whatever the editor had typed, and the warning — with its "replace with
+ * the MT's per-label wording" button — returned forever. `alt.mt` is written once, here, and never
+ * mutated by anything downstream, so it is the fixed point a later read can safely compare against.
  *
  * ⚠️ A REJECTED JOINED WORDING IS NEVER OFFERED AS AN ALTERNATIVE — offering it in the panel would
  * invite exactly the damage the guard exists to stop. It is returned as `rejected` for the run
@@ -344,7 +402,7 @@ export function splitJoined(reply, n) {
  * @param {string} english
  * @param {string} perLabel
  * @param {string} joinedLine
- * @returns {{text: string, alt: object|null, rejected?: {text: string, damage: string[]}}}
+ * @returns {{text: string, alt: (object & {mt: string})|null, rejected?: {text: string, damage: string[]}}}
  */
 export function selectWording(english, perLabel, joinedLine) {
   const p = (perLabel ?? '').trim();
@@ -352,18 +410,18 @@ export function selectWording(english, perLabel, joinedLine) {
   if (j === '') {
     return p === ''
       ? { text: '', alt: null }
-      : { text: p, alt: { kept: 'per-label', reason: 'empty' } };
+      : { text: p, alt: { kept: 'per-label', reason: 'empty', mt: p } };
   }
   const damage = formulaGuard(english, j);
   if (damage.length > 0) {
     return {
       text: p,
-      alt: { kept: 'per-label', reason: 'formula' },
+      alt: { kept: 'per-label', reason: 'formula', mt: p },
       rejected: { text: j, damage },
     };
   }
   if (p === '' || p === j) return { text: j, alt: null };
-  return { text: j, alt: { kept: 'joined', other: p, reason: 'disagree' } };
+  return { text: j, alt: { kept: 'joined', other: p, reason: 'disagree', mt: j } };
 }
 
 /**
@@ -591,14 +649,53 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
     mtJoined = { status: 'skipped-newline', labels: send.length };
   } else {
     const t0 = Date.now();
-    const r = await client.translate(joinedText, joinedOpts);
-    const reply = r.text || '';
-    const split = splitJoined(reply, send.length);
-    mtJoined = split.ok
-      ? { status: 'ok', labels: send.length }
-      : { status: 'split-failed', labels: send.length, lines: split.got };
-    if (split.ok) lines = split.lines;
-    joinedRecord = { text: joinedText, reply, status: mtJoined.status, ms: Date.now() - t0 };
+    // §C140 ㉔ FINAL REVIEW I1 — the joined request is wrapped ALONE. The per-label loop above has
+    // already been billed for; a throw here must not lose that money by rejecting `main` before
+    // its outputs are written (the figure would then be re-bought next run). Every label keeps its
+    // per-label wording, exactly as `split-failed` already does.
+    let reply = null;
+    let requestError = null;
+    try {
+      const r = await client.translate(joinedText, joinedOpts);
+      reply = r.text || '';
+    } catch (err) {
+      requestError = err;
+    }
+    if (requestError) {
+      mtJoined = {
+        status: 'request-failed',
+        labels: send.length,
+        error: String((requestError && requestError.message) || requestError),
+      };
+      joinedRecord = {
+        text: joinedText,
+        reply: null,
+        status: mtJoined.status,
+        error: mtJoined.error,
+        ms: Date.now() - t0,
+      };
+    } else {
+      const split = splitJoined(reply, send.length);
+      // §C140 ㉔ FINAL REVIEW I2 — a split that yields the right COUNT can still be in the wrong
+      // ORDER (an exact swap between two labels). Caught here, before `lines` is ever set, so a
+      // misaligned reply is treated exactly like a `split-failed` one: every label keeps its own
+      // per-label wording and no alternative is offered.
+      const swapped =
+        split.ok &&
+        misalignedLines(
+          split.lines,
+          send.map((b) => perLabel[b.key])
+        );
+      if (swapped) {
+        mtJoined = { status: 'misaligned', labels: send.length };
+      } else {
+        mtJoined = split.ok
+          ? { status: 'ok', labels: send.length }
+          : { status: 'split-failed', labels: send.length, lines: split.got };
+        if (split.ok) lines = split.lines;
+      }
+      joinedRecord = { text: joinedText, reply, status: mtJoined.status, ms: Date.now() - t0 };
+    }
     console.log(`    joined (${send.length} labels) -> ${mtJoined.status}`);
   }
 
