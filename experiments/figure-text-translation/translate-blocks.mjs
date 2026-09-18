@@ -273,6 +273,116 @@ export function dedupeSendBlocks(send) {
 }
 
 /**
+ * §C140 ㉔ — Unicode sub/superscript characters: U+2070–U+209F plus Latin-1 ¹ ² ³. The 2026-09-15
+ * alt-text probe saw the MT rewrite formula digits as these.
+ */
+const SUBSUP = /[⁰-₟²³¹]/g;
+
+/**
+ * A formula-like token: two or more element-symbol capitals (`NaCl`, `CO2`), or one symbol followed
+ * by digits (`H2`). An ordinary capitalised word (`Element`) matches neither alternative.
+ */
+const FORMULA_TOKEN = /\b(?:[A-Z][a-z]?\d*){2,}\b|\b[A-Z][a-z]?\d+\b/g;
+
+/**
+ * Does `icelandic` alter a formula, digit or symbol relative to `english`? Returns the reasons,
+ * `[]` meaning it passes.
+ *
+ * 🔴 MEASURED, NOT CHOSEN (spec §2). The experiment's own verbatim-token predicate fired on 4
+ * labels in EVERY arm — all correct Icelandic (`12.85 → 12,85`, `mol → mól`) — so it would have
+ * rejected correct joined answers and fallen back to a per-label answer with the same "defect".
+ * This one fires on 0 of 501 real answers (169 per-label, 166 + 166 joined) and on all three
+ * damage shapes in the controls.
+ *
+ * ⚠️ `\D` / `\d` are ASCII-only in JavaScript, with or without the `u` flag. That is REQUIRED
+ * here: a subscript `₂` must not count as the digit `2`, or `H2O → H₂O` would pass leg 1.
+ *
+ * @param {string} english
+ * @param {string} icelandic
+ * @returns {string[]}
+ */
+export function formulaGuard(english, icelandic) {
+  const why = [];
+  if (english.replace(/\D/g, '') !== icelandic.replace(/\D/g, '')) why.push('digits');
+  const subsup = (s) => (s.match(SUBSUP) || []).length;
+  if (subsup(icelandic) > subsup(english)) why.push('subsup');
+  for (const token of english.match(FORMULA_TOKEN) || []) {
+    if (!icelandic.includes(token)) why.push(`formula:${token}`);
+  }
+  return why;
+}
+
+/**
+ * Split a joined reply back into its labels. Anything but exactly `n` lines is a refusal: the
+ * model has merged, split or restructured the payload (§C118 measured it doing so), and there is
+ * then no sound way to say which line belongs to which label.
+ *
+ * @param {string} reply
+ * @param {number} n  the label count sent
+ * @returns {{ok: true, lines: string[]} | {ok: false, got: number}}
+ */
+export function splitJoined(reply, n) {
+  const lines = String(reply ?? '')
+    .trim()
+    .split('\n')
+    .map((l) => l.trim());
+  return lines.length === n ? { ok: true, lines } : { ok: false, got: lines.length };
+}
+
+/**
+ * Choose one label's wording from its two answers ([USER] 2026-09-15: keep the joined wording,
+ * flag every disagreement).
+ *
+ * ⚠️ A REJECTED JOINED WORDING IS NEVER OFFERED AS AN ALTERNATIVE — offering it in the panel would
+ * invite exactly the damage the guard exists to stop. It is returned as `rejected` for the run
+ * log only. And an EMPTY per-label answer is never offered either: a one-click "apply nothing"
+ * is not a suggestion.
+ *
+ * @param {string} english
+ * @param {string} perLabel
+ * @param {string} joinedLine
+ * @returns {{text: string, alt: object|null, rejected?: {text: string, damage: string[]}}}
+ */
+export function selectWording(english, perLabel, joinedLine) {
+  const p = (perLabel ?? '').trim();
+  const j = (joinedLine ?? '').trim();
+  if (j === '') {
+    return p === '' ? { text: '', alt: null } : { text: p, alt: { kept: 'per-label', reason: 'empty' } };
+  }
+  const damage = formulaGuard(english, j);
+  if (damage.length > 0) {
+    return { text: p, alt: { kept: 'per-label', reason: 'formula' }, rejected: { text: j, damage } };
+  }
+  if (p === '' || p === j) return { text: j, alt: null };
+  return { text: j, alt: { kept: 'joined', other: p, reason: 'disagree' } };
+}
+
+/**
+ * Is this figure sent joined at all? Needs ≥ 2 labels (one label joined is the per-label request
+ * again — pure waste) and no label containing a newline (it could not split back). Checked BEFORE
+ * the request, so no money is spent on a payload that cannot be used.
+ *
+ * @param {Array<{english: string}>} send  the deduped send blocks
+ */
+export function joinable(send) {
+  return send.length >= 2 && !send.some((b) => b.english.includes('\n'));
+}
+
+/**
+ * 🔴 THE ONE DEFINITION OF WHAT A FIGURE'S RUN IS BILLED FOR (spec §4.3). `main`'s plan line and
+ * `tools/figure-run.js`'s `billableFrom` both call this; a second sum anywhere is how ⑦'s dry-run
+ * would silently under-report a ㉔ run by about half.
+ *
+ * @param {Array<{english: string}>} send  the deduped send blocks
+ * @returns {{perLabel: number, joined: number, total: number}}
+ */
+export function wireChars(send) {
+  const perLabel = send.reduce((n, b) => n + b.english.length, 0);
+  const joined = joinable(send) ? perLabel + send.length - 1 : 0;
+  return { perLabel, joined, total: perLabel + joined };
+}
+
+/**
  * The figure this run is for, read from the `meta.json` the extractor left in
  * this run's output directory.
  *
