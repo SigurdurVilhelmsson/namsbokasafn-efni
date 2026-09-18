@@ -220,6 +220,51 @@ function extractInlineText(
   // §C81: placeholders THIS call adds to inlineMediaMap — see lastInlineMediaPlaceholders.
   const collectedMediaPlaceholders = [];
 
+  // §C149 ② — DROP A NESTED FIGURE'S CAPTION BEFORE ANYTHING ELSE READS IT.
+  //
+  // A <figure> nested inside this text is owned by processFigure, which emits its
+  // <caption> as the figure's OWN segment. Nothing here removed it, and stripTags()
+  // below deletes a tag while KEEPING its text — so the <figure> and <caption>
+  // wrappers vanished and the caption's WORDS stayed behind, flattened into this
+  // paragraph's segment:
+  //
+  //     Although steel is denser than water … possible.[[BR]] [[MEDIA:1]] (credit: Cory Zanker)
+  //
+  // Once translated, the same credit reached readers twice and IN TWO LANGUAGES
+  // (chemistry ch10 m68764, published 10-exercises.html). No tally could see it:
+  // both copies are legitimately present, so the caption count and the segment
+  // count are correct either way (§C89 — a count cannot see a duplication any more
+  // than it can see a substitution). The detector is a controlled pair on the
+  // rendered rollup: 01-source direct → 1 credit, extract→inject → 2.
+  //
+  // 🔴 REMOVE EXACTLY WHAT processFigure OWNS AND NOT ONE CHARACTER MORE — its
+  // FIRST <caption>, matched with processFigure's own pattern. A <title>, a second
+  // <caption> and every other child are deliberately left in place: processFigure
+  // extracts none of them, so dropping one would turn a DUPLICATE into a silent
+  // LOSS. That is not hypothetical — 75 figures corpus-wide carry a direct-child
+  // <title> that nothing extracts (logged as its own gap). A duplicate is
+  // recoverable from the other copy; a loss is not recoverable at all.
+  //
+  // The cut runs BEFORE the math/media passes on purpose. `counters` is ONE object
+  // shared with processFigure, so a caption holding <m:math> was consuming a
+  // [[MATH:N]] slot HERE and a second one in processFigure — a double count.
+  // Removing the caption first ends it. Measured: 25 such paras, all in withheld
+  // physics, 0 in either kept book, so no kept-book placeholder is renumbered.
+  //
+  // Inert on the top-level path by construction: processTopLevelContent strips
+  // every <figure> out of contentForSimpleElements before extracting a section
+  // <para>, so a section para never reaches here holding one. The leak fired only
+  // where no such strip runs — <exercise>, <note>, <example>.
+  //
+  // §C115 — quote-aware open tag, never `<figure[^>]*>`: a raw `>` is legal inside
+  // an attribute value and would truncate the span mid-attribute. The non-greedy
+  // `</figure>` terminator is safe because the corpus has 0 figures nested inside
+  // a figure; re-derive that before trusting it on a new book or a source refresh.
+  text = text.replace(
+    new RegExp(`(<figure(?:${TAG_ATTR_SPAN})>)([\\s\\S]*?)(<\\/figure>)`, 'g'),
+    (match, open, inner, close) => open + inner.replace(/<caption>[\s\S]*?<\/caption>/, '') + close
+  );
+
   // Replace MathML with placeholders
   // First handle <equation> wrappers around <m:math> — preserve wrapper metadata in mathMap
   text = text.replace(/<equation\s+([^>]*)>([\s\S]*?)<\/equation>/g, (match, attrs, inner) => {
