@@ -48,19 +48,25 @@ import { renderCompiledExercises, _loadBookConfigForTest } from '../cnxml-render
  *
  * 🔴 DROPPING TEXT IS CONTENT LOSS UNLESS SOMETHING ELSE OWNS IT — so the fix
  * removes EXACTLY what `processFigure` takes and not one character more: the
- * figure's FIRST `<caption>`, matched the way `processFigure` matches it. A
- * `<title>` is deliberately LEFT IN PLACE: **75 figures corpus-wide carry a
- * direct-child `<title>` and `processFigure` extracts none of them** (§C155), so
- * stripping titles would turn this duplicate into a silent loss. A duplicate is
- * recoverable; a loss is not. Both halves are asserted below.
+ * figure's FIRST `<caption>` and its DIRECT-CHILD `<title>`, each matched the way
+ * `processFigure` matches it.
  *
- * ⚠️ THAT GUARD IS DEFENSIVE, NOT CURRENTLY LOAD-BEARING. Measured: **none of the
- * 75 titled figures is inside a `<para>`**, so the cut cannot reach one today.
- * The fixture below is synthetic for exactly that reason. It is kept because the
- * exposure is set by the CORPUS, not by the code — a source refresh or a new book
- * can make it load-bearing overnight. Recorded rather than dressed up as a live
- * save: an earlier draft of this header claimed the title "survives because it
- * leaks", which was a plausible mechanism nobody had measured, and it was wrong.
+ * 🔴 THE `<title>` ARM WAS ADDED BY §C155 AND HAD TO ARRIVE IN THAT SAME CHANGE.
+ * When this file was first written NOTHING extracted a figure title (75 carry one),
+ * so removing it here would have turned a duplicate into a silent LOSS — and the
+ * test below asserted the title SURVIVED, predicting in writing that it would need
+ * deleting the day a title owner appeared. §C155 made `processFigure` emit
+ * `figure-title`; leaving the title in the paragraph would then have recreated this
+ * very defect for titles. ▶ **THE CUT AND THE OWNER MOVE TOGETHER, IN ONE COMMIT,
+ * IN BOTH DIRECTIONS** — widen the cut when the owner widens, narrow it when the
+ * owner narrows. Neither alone is safe.
+ *
+ * ⚠️ BOTH ARMS ARE DEFENSIVE RATHER THAN LOAD-BEARING TODAY. Measured: **none of
+ * the 75 titled figures is inside a `<para>`**, and only ONE captioned one is, so
+ * the fixtures below are synthetic for exactly that reason. They are kept because
+ * exposure is set by the CORPUS, not by the code. Recorded rather than dressed up
+ * as a live save: an earlier draft of this header claimed the title "survives
+ * because it leaks", a plausible mechanism nobody had measured, and it was wrong.
  *
  * ⚠️ EXPOSURE IS NOT THE LEAK COUNT. `cnxml-inject.js`'s C13 pre-scan
  * (`paraContainsOnlyFigures`) already injects nothing for a figure-ONLY para, so
@@ -177,14 +183,21 @@ describe('§C149 ② — a para-nested <figure> must not flatten its caption int
 });
 
 describe('§C149 ② — the cut removes EXACTLY what processFigure owns', () => {
-  it('leaves a figure <title> alone — 75 exist corpus-wide and NOTHING extracts them', () => {
-    // Over-reach guard. processFigure reads only <caption>, so removing a <title>
-    // here would delete the only copy of that text. Leaking it is the lesser
-    // failure and stays until a title owner exists. If this test ever goes red
-    // because titles ARE extracted now, delete the leak instead of this assertion.
-    const [problem] = byType(TITLED, 'problem');
-    expect(problem.text).toContain('A figure title nothing else extracts');
-    // …and the caption is still removed in the same para, so this is not the fix
+  it('removes a figure <title> too, now that processFigure owns it (§C155)', () => {
+    // 🔴 THIS ASSERTION IS THE INVERSE OF THE ONE IT REPLACES, AND THE OLD ONE
+    // PREDICTED ITS OWN DEATH IN WRITING: "if this test ever goes red because titles
+    // ARE extracted now, delete the leak instead of this assertion." §C155 made
+    // processFigure emit `figure-title`, so leaving the title in the paragraph would
+    // recreate §C149 ②'s duplicate for titles — the same prose in two segments.
+    // ▶ THE CUT AND THE OWNER MOVE TOGETHER, IN ONE COMMIT, IN BOTH DIRECTIONS.
+    const all = segs(TITLED);
+    const [problem] = all.filter((s) => s.type === 'problem');
+    expect(problem.text).not.toContain('A figure title nothing else extracts');
+    // Coverage control, paired: the title MOVED to its owner, it did not vanish.
+    const t = all.find((s) => s.type === 'figure-title');
+    expect(t, 'the figure must own the title instead').toBeTruthy();
+    expect(t.text).toBe('A figure title nothing else extracts');
+    // …and the caption is still removed in the same para, so this is not the cut
     // simply failing to fire.
     expect(problem.text).not.toContain('Fixture Photographer');
   });
