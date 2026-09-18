@@ -66,13 +66,43 @@ symmetry with `figure`.** Mutation M4 pins it.
 
 ## 3. Instruments — and why one was not enough
 
-### ⚠️ The per-module corpus render CANNOT see the chemistry case
+### ⚠️ The per-module corpus render cannot see the chemistry case — so the ROLLUP was rendered
 
 A `class="exercises"` section is excluded from its module page (`EXCLUDED_SECTION_CLASSES`)
 and reaches readers only through the **chapter rollup**, which `renderCnxmlToHtml` never
 builds. So the 491-module sweep reports **10** — all organic — and misses m68764 entirely.
-The chemistry leg therefore drives the exported `renderExercise` directly
-([`m68764-exercise-probe.mjs`](m68764-exercise-probe.mjs)).
+
+🔴 **THAT IS A REASON TO REACH THE ROLLUP, NOT A REASON TO STOP AT THE EXERCISE.**
+`renderCompiledExercises` **is exported**, so the third column of
+`emitted → injected → RENDERED` (§C82 L149) is reachable. Verifying only `renderExercise`'s
+fragment would pass on output **no reader is served** — precisely the failure §C82 L149
+records (organic example titles reached the injected CNXML 102/102 and the RENDERED page
+0/102). Both legs are measured:
+
+| leg | instrument | `<figure>` in a `<p>` | `<figcaption>` | raw `<caption>` |
+|---|---|---|---|---|
+| the exercise fragment | `renderExercise` | **false** | present | absent |
+| **the page readers get** | `renderCompiledExercises` | **false** | present | absent |
+
+Both carry a positive control — the question's prose (*"a steel needle or paper clip"*) is
+present in each, so a renderer that emitted nothing could not pass. Pinned by a test
+([`m68764-exercise-probe.mjs`](m68764-exercise-probe.mjs) and
+[`c149-rollup-probe.mjs`](c149-rollup-probe.mjs) are the frozen scratch instruments).
+
+### ✅ A controlled pair separates §C149 ① from ②, by measurement rather than inheritance
+
+The same rollup renderer, the same figure, the same page, differing only in how the CNXML
+reached it — counting occurrences of `Cory Zanker` on the rendered page:
+
+| arm | credit occurrences |
+|---|---|
+| `01-source` rendered directly | **1** |
+| extract → inject → rendered | **2** |
+
+▶ **The duplication is introduced at EXTRACT, and the renderer is innocent of it.** The
+register asserted this; the pair confirms it instead of carrying the claim forward. It also
+hands ② a ready-made detector: the fix should move that number **2 → 1** on the rendered
+page — the column readers actually receive.
 
 ### 🔴 The unit probe's first predicate was GREEDY and reported a false RED
 
@@ -136,7 +166,7 @@ blast radius than this fix warrants. Revisit if physics is ever un-withheld.
 
 ## 5. Tests
 
-`tools/__tests__/cnxml-render-para-nested-figure.test.js` — **16 tests, all passing.**
+`tools/__tests__/cnxml-render-para-nested-figure.test.js` — **17 tests, all passing.**
 
 Every null has a control: *"no figure inside a `<p>`"* is paired with **"the figure is
 rendered AFTER the `</p>`"**, because a renderer that **dropped** the figure entirely would
@@ -154,10 +184,11 @@ Golden copy taken before the first mutation; restored and `cmp`-verified after e
 
 | round | mutation | red | verdict |
 |---|---|---|---|
-| M1 | revert `figure` hoist at **both** sites | **13 of 16** | the whole fix |
+| M1 | revert `figure` hoist at **both** sites | **13 of 16** | the whole fix (before the rollup leg) |
 | M2 | revert the **example** site only | **9 of 16** | example + all 8 organic corpus legs |
 | M3 | revert the **exercise** site only | **4 of 16** | exercise legs + the m68764 corpus leg |
 | M4 | **also** hoist `media` (the over-reach) | **1 of 16** | exactly the media guard |
+| M5 | revert both sites, **with the rollup leg added** | **14 of 17** | the rollup leg is a real assertion, not vacuous |
 
 ▶ **M2 and M3 are the point:** each site is killed independently, so neither is a
 symmetry-only change, and M4 shows the deliberate non-change is pinned too.
@@ -193,3 +224,17 @@ reports zero failures.
 - **Nothing is re-rendered or published.** The 5 live pages keep the raw markup until the
   affected chapters are re-rendered — chemistry ch10 and organic ch03, in addition to the
   chemistry ch04/ch17 and organic ch03 that §C146 already owes.
+- ✅ **The faithful-overlay hazard was checked and does NOT apply.** A fix landing only in
+  `mt-preview` can miss the page readers actually get when a `faithful` overlay exists. Per
+  track: chemistry `mt-preview` 1 (ch10), organic `mt-preview` 4 (ch03), **both `faithful`
+  tracks 0** — and organic has **no `faithful` track at all** (only `mt-preview`), while
+  chemistry's covers ch01 and ch03, not ch10. **So the "5 live" count and the re-render list
+  stand.** Recorded because "it happens not to apply" is a different fact from "nobody
+  looked".
+- ✅ **The class is closed, and the pattern says why.** `renderBlockChildrenInOrder` has four
+  call sites. Two pass **no** `hoistTags` — `renderChildrenInDocumentOrder` and `renderNote`
+  — and therefore default to `Object.keys(dispatch)`, i.e. hoist-everything, which is correct
+  and self-maintaining (`renderNote`'s own comment documents relying on it). The **only two
+  that passed an explicit list** were `renderExample` and `renderExercise`, and **both** had
+  the omission. ▶ **An explicit allowlist that must track a dispatch map drifts from it; the
+  default cannot.** Prefer the default when adding a container.

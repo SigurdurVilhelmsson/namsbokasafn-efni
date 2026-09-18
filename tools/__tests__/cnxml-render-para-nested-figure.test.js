@@ -2,7 +2,12 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderCnxmlToHtml, renderExercise, _loadBookConfigForTest } from '../cnxml-render.js';
+import {
+  renderCnxmlToHtml,
+  renderExercise,
+  renderCompiledExercises,
+  _loadBookConfigForTest,
+} from '../cnxml-render.js';
 import { extractElements } from '../lib/cnxml-parser.js';
 import { extractSegments, formatSegmentsMarkdown } from '../cnxml-extract.js';
 import { buildCnxml, parseSegments } from '../cnxml-inject.js';
@@ -37,8 +42,16 @@ import { buildCnxml, parseSegments } from '../cnxml-inject.js';
  *
  * ⚠️ THE MODULE-PAGE RENDER CANNOT SEE THE CHEMISTRY CASE. A `class="exercises"`
  * section is excluded from its module page and appears only on the chapter rollup, so
- * a per-module corpus sweep reports 10 (all organic) and misses m68764 entirely. That
- * is why the exercise leg below drives `renderExercise` directly.
+ * a per-module corpus sweep reports 10 (all organic) and misses m68764 entirely.
+ *
+ * 🔴 THAT IS A REASON TO REACH THE ROLLUP, NOT A REASON TO STOP AT THE EXERCISE.
+ * `renderCompiledExercises` IS exported, so the third column of
+ * `emitted → injected → RENDERED` (§C82 L149) is reachable — and the page a reader
+ * actually receives is the rollup, never `renderExercise`'s fragment. Verifying only
+ * the fragment would pass on output nobody is served, which is precisely the failure
+ * §C82 L149 records (organic example titles: injected 102/102, RENDERED 0/102). Both
+ * legs are therefore below: `renderExercise` for the unit, `renderCompiledExercises`
+ * for the page.
  */
 
 _loadBookConfigForTest('efnafraedi-2e');
@@ -165,6 +178,43 @@ describe('§C149 — the real corpus', () => {
     expect(html).toContain('<figcaption>(credit: Cory Zanker)</figcaption>');
     expect(html).not.toContain('<caption>(credit: Cory Zanker)');
     // Positive control: the question's prose is still there.
+    expect(html).toContain('a steel needle or paper clip');
+  });
+
+  it('m68764 reaches the chapter EXERCISES ROLLUP clean (the third column, not the second)', () => {
+    // 🔴 `emitted → injected → RENDERED` (§C82 L149). renderExercise is column two;
+    // the page a reader actually receives is the chapter rollup, built by
+    // renderCompiledExercises — which renderCnxmlToHtml never calls. Stopping at
+    // renderExercise would verify a fix on output nobody is served, which is exactly
+    // the failure §C82 L149 records (organic example titles: injected 102/102,
+    // RENDERED 0/102). exercisesByType is built from 01-source in the shape
+    // extractSectionExercises produces.
+    const src = readFileSync(
+      join(REPO_ROOT, 'books/efnafraedi-2e/01-source/ch10/m68764.cnxml'),
+      'utf8'
+    );
+    const section = /<section\s+[^>]*class="exercises"[^>]*>[\s\S]*?<\/section>/.exec(src);
+    expect(section, 'm68764 must still carry an exercises section').toBeTruthy();
+    const html = renderCompiledExercises(
+      10,
+      {
+        exercises: [
+          {
+            moduleId: 'm68764',
+            sectionNumber: '10.2',
+            sectionTitle: 'Properties of Liquids',
+            exercisesContent: section[0],
+            exerciseClass: 'exercises',
+          },
+        ],
+      },
+      new Map([['m68764:fs-idm82765632', 23]]),
+      { lang: 'is', chapter: 10, moduleId: '10-exercises', moduleSections: {}, equations: {} }
+    );
+    expect(FIGURE_INSIDE_P.test(html)).toBe(false);
+    expect(html).toContain('<figcaption>');
+    expect(html).not.toContain('<caption>');
+    // Positive control: the rollup really did render this exercise's prose.
     expect(html).toContain('a steel needle or paper clip');
   });
 
