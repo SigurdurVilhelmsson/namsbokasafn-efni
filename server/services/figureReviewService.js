@@ -22,9 +22,12 @@ const {
 } = require(path.join(__dirname, '..', '..', 'tools', 'lib', 'figure-text-sidecar.cjs'));
 // server/ (AGPL) -> tools/lib (MIT) is the PERMITTED import direction; the
 // reverse would not be. Same edge the sidecar require above already crosses.
-const { decimalSeparatorWarnings, captionDivergence } = require(
-  path.join(__dirname, '..', '..', 'tools', 'lib', 'figure-consistency.cjs')
-);
+const {
+  decimalSeparatorWarnings,
+  captionDivergence,
+  mtAlternativeWarnings,
+  mtFigureWarning,
+} = require(path.join(__dirname, '..', '..', 'tools', 'lib', 'figure-consistency.cjs'));
 const { loadImageBasenameMap } = require(
   path.join(__dirname, '..', '..', 'tools', 'lib', 'image-basename-map.cjs')
 );
@@ -305,6 +308,12 @@ function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
   // which composer drew this" — one spurious recompose-and-republish per approval, silent, with
   // nothing failing. An approval does not change the published artwork, so neither stamp moves.
   const composedVersion = (existing && existing.composedVersion) || null;
+  // §C140 ㉔ — the MT's joined-vs-per-label verdicts, carried for the SAME reason as the two stamps
+  // above: this function rebuilds the whole sidecar from a field list, so a field without its own
+  // line here is silently erased by the first approval — and with it the editor's only sign that a
+  // label was contested. They describe the MACHINE's output, which an approval does not change.
+  const mtAlternatives = (existing && existing.mtAlternatives) || null;
+  const mtJoined = (existing && existing.mtJoined) || null;
 
   const fig = getFigure(db, bookId, basename, mtBlocks, composedHash);
   if (!fig) return { written: false, path: null, composedHash };
@@ -337,6 +346,8 @@ function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
     ...(composedVersion ? { composedVersion } : {}),
     composerVersion: COMPOSER_VERSION,
     blocks: fig.blocks,
+    ...(mtAlternatives ? { mtAlternatives } : {}),
+    ...(mtJoined ? { mtJoined } : {}),
   };
   writeSidecar(bookDir, basename, data);
   return { written: true, path: sidecarPath(bookDir, basename), composedHash };
@@ -354,8 +365,10 @@ function applyApprovedFigureEdits(db, { bookDir, bookId, basename, mtBlocks }) {
  *   captionDivergence compares figure labels against. '' means "no reference
  *   available", for which captionDivergence returns [] — designed silence, NOT
  *   a false all-clear.
+ * @param {{mtBlocks?: object, mtAlternatives?: object, mtJoined?: object}|null} [mt]
  */
-function buildFigurePayload(basename, fig, referenceText, imageUrl = null) {
+function buildFigurePayload(basename, fig, referenceText, imageUrl = null, mt = null) {
+  const info = mt || {};
   return {
     basename,
     effectiveState: fig.effectiveState,
@@ -374,6 +387,15 @@ function buildFigurePayload(basename, fig, referenceText, imageUrl = null) {
     warnings: {
       decimal: decimalSeparatorWarnings(fig.blocks),
       caption: captionDivergence(fig.blocks, referenceText || ''),
+      // §C140 ㉔. `[]` / `null`, never absent, for the reason `imageUrl` states above.
+      // ⚠️ CORRECTED 2026-09-18 (final review C1): `mtAlternativeWarnings` no longer reads its
+      // `mtBlocks` argument (it compares against each alternative's own carried `alt.mt` instead —
+      // see that function's docstring for why `sidecar.blocks` was the wrong side). `info.mtBlocks`
+      // is passed on regardless: leaving this call site's shape unchanged, rather than plumbing the
+      // param out of `resolveFigure`/this function/the route too, is the one-finding-one-fix scope
+      // the review asked for.
+      mt: mtAlternativeWarnings(fig.blocks, info.mtBlocks, info.mtAlternatives),
+      mtFigure: mtFigureWarning(info.mtJoined),
     },
   };
 }

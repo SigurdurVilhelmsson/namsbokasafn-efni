@@ -664,6 +664,37 @@
     for (const w of warnings.caption) {
       if (w.blockKey === key) li.appendChild(figureWarning(`⚠ ${w.figureText}: ${w.note}`));
     }
+    // §C140 ㉔ — the joined and per-label MT disagreed; the block holds the joined wording and the
+    // per-label one is offered in one click, never automatically ([USER] 2026-09-15). Same guard
+    // as the decimal suggestion: the offer was computed from the SAVED text, so typing disables it.
+    // A formula/empty fallback carries no `suggested` and renders as a note only.
+    for (const w of warnings.mt) {
+      if (w.blockKey !== key) continue;
+      if (!w.suggested) {
+        li.appendChild(
+          figureWarning(
+            w.reason === 'formula'
+              ? '⚠ Samhengisþýðing breytti tölu eða formúlu — stök vélþýðing notuð.'
+              : '⚠ Samhengisþýðing skilaði engu — stök vélþýðing notuð.'
+          )
+        );
+        continue;
+      }
+      li.appendChild(figureWarning(`⚠ Orðalag MT stakra merkinga: ${w.suggested}`));
+      const apply = document.createElement('button');
+      apply.type = 'button';
+      apply.className = 'btn btn-sm figure-block-apply';
+      apply.setAttribute('data-block-apply', '');
+      apply.textContent = 'Nota';
+      apply.setAttribute('aria-label', `Nota orðalag stakra merkinga fyrir ${key}`);
+      const syncApplyEnabled = () => {
+        apply.disabled = input.value !== w.current;
+      };
+      syncApplyEnabled();
+      input.addEventListener('input', syncApplyEnabled);
+      apply.addEventListener('click', () => saveFigureBlock(basename, key, w.suggested));
+      li.appendChild(apply);
+    }
     return li;
   }
 
@@ -711,7 +742,17 @@
     const warnings = {
       decimal: (fig.warnings && fig.warnings.decimal) || [],
       caption: (fig.warnings && fig.warnings.caption) || [],
+      mt: (fig.warnings && fig.warnings.mt) || [],
     };
+    // §C140 ㉔ — every label on this figure fell back to its per-label MT, i.e. without the
+    // sibling labels' context: the wrong-sense risk the joined arm exists to remove.
+    if (fig.warnings && fig.warnings.mtFigure) {
+      const figWarn = document.createElement('p');
+      figWarn.className = 'figure-warning';
+      figWarn.setAttribute('data-figure-mt-warning', '');
+      figWarn.textContent = `⚠ ${fig.warnings.mtFigure}`;
+      card.appendChild(figWarn);
+    }
     const list = document.createElement('ul');
     list.className = 'figure-blocks';
     list.setAttribute('data-figure-blocks', '');

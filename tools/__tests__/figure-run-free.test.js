@@ -273,8 +273,44 @@ describe('normaliseTranslations', () => {
   });
 
   it('survives a payload with no blocks at all', () => {
-    expect(normaliseTranslations(null)).toEqual({ blocks: {}, dropped: [] });
-    expect(normaliseTranslations({})).toEqual({ blocks: {}, dropped: [] });
+    expect(normaliseTranslations(null)).toEqual({
+      blocks: {},
+      dropped: [],
+      alternatives: {},
+      mtJoined: null,
+    });
+    expect(normaliseTranslations({})).toEqual({
+      blocks: {},
+      dropped: [],
+      alternatives: {},
+      mtJoined: null,
+    });
+  });
+
+  it('carries alternatives and mtJoined through (§C140 ㉔)', () => {
+    const r = normaliseTranslations({
+      blocks: { A: ['Frumefni'], B: ['Fjöldi'] },
+      alternatives: { A: { kept: 'joined', other: 'Þáttur', reason: 'disagree' } },
+      mtJoined: { status: 'ok', labels: 2 },
+    });
+    expect(r.alternatives).toEqual({ A: { kept: 'joined', other: 'Þáttur', reason: 'disagree' } });
+    expect(r.mtJoined).toEqual({ status: 'ok', labels: 2 });
+  });
+
+  it('discards an alternative whose block was dropped — no warning may point at nothing', () => {
+    const r = normaliseTranslations({
+      blocks: { A: [''], B: ['ok'] },
+      alternatives: { A: { kept: 'per-label', reason: 'empty' } },
+    });
+    expect(r.dropped).toEqual(['A']);
+    expect(r.alternatives).toEqual({});
+  });
+
+  it('ignores a malformed alternatives field rather than throwing', () => {
+    expect(
+      normaliseTranslations({ blocks: { A: ['x'] }, alternatives: ['nope'] }).alternatives
+    ).toEqual({});
+    expect(normaliseTranslations({ blocks: { A: ['x'] }, mtJoined: 'nope' }).mtJoined).toBeNull();
   });
 });
 
@@ -1551,15 +1587,17 @@ describe('§C140 ⑦ — the dry run says what a live run would buy', () => {
   it('lists each would-buy figure with de-duplicated billable characters and an ISK total', async () => {
     const result = await runFigures(CH04, { spawn: spawnWithBlocks(), ...PRISTINE });
     const rxn2 = result.figures.find((f) => f.basename === 'CNX_Chem_04_01_rxn2');
-    expect(rxn2.billable).toEqual({ blocks: 2, chars: 'Oxygen gas'.length + 'Water'.length });
+    // rxn2 has two labels, so it now also buys one joined request ('Oxygen gas\nWater' = 16
+    // chars): §C140 ㉔.
+    expect(rxn2.billable).toEqual({ blocks: 2, chars: 31 });
     const text = summarise(result);
-    // ⚠️ rxn3's size is UNKNOWN, so it is neither counted in the 1 nor added to the 15 as zero —
+    // ⚠️ rxn3's size is UNKNOWN, so it is neither counted in the 1 nor added to the 31 as zero —
     // it is named in the headline instead.
     expect(text).toContain(
-      'would buy 1 figure(s): 15 billable characters, est 0.15 ISK at list rate ' +
+      'would buy 1 figure(s): 31 billable characters, est 0.31 ISK at list rate ' +
         '(+1 figure(s) whose billable size is UNKNOWN)'
     );
-    expect(text).toMatch(/CNX_Chem_04_01_rxn2\s+2 block\(s\), 15 chars/);
+    expect(text).toMatch(/CNX_Chem_04_01_rxn2\s+2 block\(s\), 31 chars/);
     // CONTROL: a figure whose prepare wrote no blocks.json is named as UNKNOWN, never counted as 0
     expect(text).toMatch(/CNX_Chem_04_01_rxn3\s+billable count UNKNOWN/);
   });

@@ -82,7 +82,14 @@ function countingStub(seen) {
   return {
     translate: async (text, opts) => {
       seen.push({ text, opts });
-      return { text: `IS:${text}` };
+      // Line by line, so the §C140 ㉔ joined request AGREES with the per-label answers and
+      // the written blocks are unchanged — which is what these tests are about.
+      return {
+        text: text
+          .split('\n')
+          .map((l) => `IS:${l}`)
+          .join('\n'),
+      };
     },
     getUsage: () => ({
       requests: seen.length,
@@ -157,6 +164,7 @@ describe('main — a duplicated block key is bought ONCE', () => {
     // 🔴 RED ON HEAD: 3 requests, one per occurrence, the first 'Reactant' answer paid for
     // and overwritten. The translations assertion was GREEN on HEAD and stays green — that
     // pair IS the before/after proof that de-duplicating the REQUESTS changed no output.
+    // The joined request (§C140 ㉔) carries each distinct key ONCE — the dedupe governs it too.
     const dir = fixtureOut([
       block('Reactant', 'Reactant'),
       block('Product', 'Product'),
@@ -173,7 +181,7 @@ describe('main — a duplicated block key is bought ONCE', () => {
     expect(process.exitCode).toBeUndefined();
     // NON-VACUITY: a client that is never called would satisfy every count below.
     expect(seen.length).toBeGreaterThan(0);
-    expect(seen.map((s) => s.text)).toEqual(['Reactant', 'Product']);
+    expect(seen.map((s) => s.text)).toEqual(['Reactant', 'Product', 'Reactant\nProduct']);
 
     const trans = JSON.parse(fs.readFileSync(path.join(dir, 'translations-api.json'), 'utf-8'));
     expect(trans.blocks).toEqual({
@@ -185,7 +193,10 @@ describe('main — a duplicated block key is bought ONCE', () => {
     // is derived by the stub from the calls it received, so it is a second witness.
     const apiRun = JSON.parse(fs.readFileSync(path.join(dir, 'api-run.json'), 'utf-8'));
     expect(apiRun.blocks.map((b) => b.key)).toEqual(['Reactant', 'Product']);
-    expect(apiRun.usage).toEqual({ requests: 2, chars: 'ReactantProduct'.length });
+    expect(apiRun.usage).toEqual({
+      requests: 3,
+      chars: 'ReactantProduct'.length + 'Reactant\nProduct'.length,
+    });
   });
 
   it('buys every distinct key when there are no duplicates — nothing is collapsed', async () => {
@@ -202,7 +213,12 @@ describe('main — a duplicated block key is bought ONCE', () => {
     await runWith(dir, seen);
 
     expect(process.exitCode).toBeUndefined();
-    expect(seen.map((s) => s.text)).toEqual(['Reactant', 'Product', 'Catalyst']);
+    expect(seen.map((s) => s.text)).toEqual([
+      'Reactant',
+      'Product',
+      'Catalyst',
+      'Reactant\nProduct\nCatalyst',
+    ]);
     const trans = JSON.parse(fs.readFileSync(path.join(dir, 'translations-api.json'), 'utf-8'));
     expect(Object.keys(trans.blocks)).toEqual(['Reactant', 'Product', 'Catalyst']);
   });

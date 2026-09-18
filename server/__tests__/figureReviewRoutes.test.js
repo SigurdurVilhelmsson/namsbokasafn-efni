@@ -45,7 +45,7 @@ describe('buildFigurePayload', () => {
   });
   it('returns an empty warning set rather than omitting the key', () => {
     const p = buildFigurePayload('CNX_T', { ...fig, blocks: { k: 'Suðumark' } }, '');
-    expect(p.warnings).toEqual({ decimal: [], caption: [] });
+    expect(p.warnings).toEqual({ decimal: [], caption: [], mt: [], mtFigure: null });
   });
 
   // ⚠️ Bound to a VALUE, not merely asserted present. The whole-branch review
@@ -69,6 +69,30 @@ describe('buildFigurePayload', () => {
     const p = buildFigurePayload('CNX_T', fig, '');
     expect(p.imageUrl).toBeNull();
     expect(Object.prototype.hasOwnProperty.call(p, 'imageUrl')).toBe(true);
+  });
+
+  it('carries the §C140 ㉔ MT warnings when given the sidecar MT info', () => {
+    const f = { effectiveState: 'mt-preview', blocks: { Element: 'Frumefni' }, note: null };
+    // §C140 ㉔ final review (C1/R12): `mtAlternativeWarnings` compares against `alt.mt` (the
+    // wording actually kept, carried on the alternative itself), never against `mtBlocks` — see
+    // that function's docstring. `mtBlocks` is still accepted here to prove it is now IGNORED:
+    // it deliberately disagrees with `alt.mt` below, and the warning still fires.
+    const p = buildFigurePayload('CNX_T', f, '', null, {
+      mtBlocks: { Element: 'something else entirely' },
+      mtAlternatives: {
+        Element: { kept: 'joined', other: 'Þáttur', reason: 'disagree', mt: 'Frumefni' },
+      },
+      mtJoined: { status: 'split-failed', labels: 2, lines: 1 },
+    });
+    expect(p.warnings.mt).toEqual([
+      { blockKey: 'Element', current: 'Frumefni', suggested: 'Þáttur', reason: 'disagree' },
+    ]);
+    expect(p.warnings.mtFigure).toBeTruthy();
+  });
+  it('an explicit empty list and null without MT info — never a missing key', () => {
+    const p = buildFigurePayload('CNX_T', fig, '');
+    expect(p.warnings.mt).toEqual([]);
+    expect(p.warnings.mtFigure).toBeNull();
   });
 });
 

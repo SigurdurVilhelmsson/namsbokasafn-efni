@@ -79,7 +79,10 @@ import {
   buildMappingEntries,
   mergeMapping,
 } from './generate-image-mapping.js';
-import { dedupeSendBlocks } from '../experiments/figure-text-translation/translate-blocks.mjs';
+import {
+  dedupeSendBlocks,
+  wireChars,
+} from '../experiments/figure-text-translation/translate-blocks.mjs';
 import { estimateIsk } from './lib/malstadur-api.js';
 import { openTagPattern } from './lib/cnxml-parser.js';
 
@@ -303,13 +306,15 @@ export function isStale(sidecar) {
  * answer — the caller gets the casualties too.
  *
  * @param {object|null} apiJson
- * @returns {{blocks: Record<string,string>, dropped: string[]}}
+ * @returns {{blocks: Record<string,string>, dropped: string[], alternatives: object, mtJoined: object|null}}
  */
 export function normaliseTranslations(apiJson) {
   const blocks = {};
   const dropped = [];
   const source = apiJson && typeof apiJson === 'object' ? apiJson.blocks : null;
-  if (!source || typeof source !== 'object' || Array.isArray(source)) return { blocks, dropped };
+  if (!source || typeof source !== 'object' || Array.isArray(source)) {
+    return { blocks, dropped, alternatives: {}, mtJoined: null };
+  }
   for (const [key, raw] of Object.entries(source)) {
     const value = Array.isArray(raw) ? raw[0] : raw;
     if (typeof value !== 'string' || value.trim() === '') {
@@ -318,7 +323,23 @@ export function normaliseTranslations(apiJson) {
     }
     blocks[key] = value;
   }
-  return { blocks, dropped };
+
+  // §C140 ㉔ — the joined arm's per-key verdicts. An alternative for a key that did not survive
+  // is discarded with it: a warning must never point at a block that does not exist.
+  const alternatives = {};
+  const rawAlt = apiJson.alternatives;
+  if (rawAlt && typeof rawAlt === 'object' && !Array.isArray(rawAlt)) {
+    for (const [key, alt] of Object.entries(rawAlt)) {
+      if (key in blocks && alt && typeof alt === 'object' && !Array.isArray(alt)) {
+        alternatives[key] = alt;
+      }
+    }
+  }
+  const mtJoined =
+    apiJson.mtJoined && typeof apiJson.mtJoined === 'object' && !Array.isArray(apiJson.mtJoined)
+      ? apiJson.mtJoined
+      : null;
+  return { blocks, dropped, alternatives, mtJoined };
 }
 
 /**
@@ -1302,7 +1323,7 @@ function processFigureLive(
         `eligible and the next run re-buys it (~1 ISK). ${mt.stderr.trim().slice(-400)}`;
       return;
     }
-    const { blocks, dropped } = normaliseTranslations(
+    const { blocks, dropped, alternatives, mtJoined } = normaliseTranslations(
       readJson(path.join(outDir, 'translations-api.json'))
     );
     rec.droppedKeys = dropped;
@@ -1326,6 +1347,16 @@ function processFigureLive(
       renderHash: computeRenderHash(blocks, COMPOSER_VERSION),
       composerVersion: COMPOSER_VERSION,
       blocks,
+      // §C140 ㉔ — OUTSIDE renderHash by construction (computeRenderHash reads `blocks` only), so
+      // no approval or staleness verdict moves. `mtAlternatives` is omitted when there is nothing
+      // to say — a figure where every label agreed keeps today's exact shape.
+      // ⚠️ R15 (final review, 2026-09-18): `mtJoined` does NOT keep today's shape even for a
+      // single-label figure, and this comment used to claim it did. The MT leg always records
+      // an outcome for it (`{status:'single-label', labels:1}` here), so a single-label figure's
+      // sidecar always gains this key. That is fine — it rides outside renderHash and costs
+      // nothing that matters — but it is a change, not a no-op.
+      ...(Object.keys(alternatives).length ? { mtAlternatives: alternatives } : {}),
+      ...(mtJoined ? { mtJoined } : {}),
     };
     // 🔴 NO `state` KEY, AND THAT IS LOAD-BEARING. `editorialState` returns 'mt-preview' on
     // `!sidecar.state` before it looks at any hash, so an unreviewed machine translation reads
@@ -1647,15 +1678,19 @@ export function paperSheetCopy(
 }
 
 /**
- * §C140 ⑦ — the characters a live run would BUY for one prepared figure, counted by the translate
- * leg's own `dedupeSendBlocks`, so a change to what is sent (§C140 ㉔) changes this in one place.
+ * §C140 ⑦ — the characters a live run would BUY for one prepared figure.
+ *
+ * 🔴 CORRECTED 2026-09-18 (§C140 ㉔). This docstring used to say that a change to what is sent
+ * "changes this in one place" — while the body summed `english.length` ITSELF, so ㉔'s joined
+ * request would have been invisible here and the dry-run would have under-reported a live run by
+ * about half. It now asks the translate leg's `wireChars`, the one owner of the billed size.
  * An unreadable blocks.json is UNKNOWN, never zero.
  */
 export function billableFrom(outDir) {
   try {
     const blocks = JSON.parse(fs.readFileSync(path.join(outDir, 'blocks.json'), 'utf-8'));
     const send = dedupeSendBlocks(blocks.filter((b) => b.send));
-    return { blocks: send.length, chars: send.reduce((n, b) => n + b.english.length, 0) };
+    return { blocks: send.length, chars: wireChars(send).total };
   } catch (err) {
     return { blocks: null, chars: null, error: err.message };
   }

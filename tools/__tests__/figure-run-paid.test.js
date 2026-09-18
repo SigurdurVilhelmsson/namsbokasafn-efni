@@ -247,7 +247,7 @@ function fakeSpawn(plan = {}) {
         Object.fromEntries(blocks.filter((b) => b.send).map((b) => [b.key, [`IS ${b.key}`]]));
       fs.writeFileSync(
         path.join(outDir, 'translations-api.json'),
-        JSON.stringify({ _source: 'stub, no glossary', blocks: payload })
+        JSON.stringify({ _source: 'stub, no glossary', blocks: payload, ...(spec.__extra || {}) })
       );
       return { status: 0, stdout: '', stderr: '' };
     }
@@ -406,6 +406,37 @@ describe('the purchase is recorded before anything that can fail after it', () =
     // …and the purchase is still on disk, both values, because step 7 precedes step 8.
     expect(readSidecar(bookDir, 'FIG_A').blocks).toEqual({ k0: 'IS k0', GHOST: 'IS ghost' });
     expect(spawn.countOf('compose')).toBe(0);
+  });
+
+  it('the minted sidecar carries the joined-arm alternatives (§C140 ㉔)', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn({
+      prepare: () => ({ sendable: 8 }),
+      translate: () => ({
+        __extra: {
+          alternatives: { k0: { kept: 'joined', other: 'per-label k0', reason: 'disagree' } },
+          mtJoined: { status: 'ok', labels: 8 },
+        },
+      }),
+    });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+    expect(rec(result, 'FIG_A').outcome).toBe('translated');
+    const side = readSidecar(bookDir, 'FIG_A');
+    expect(side.mtAlternatives).toEqual({
+      k0: { kept: 'joined', other: 'per-label k0', reason: 'disagree' },
+    });
+    expect(side.mtJoined).toEqual({ status: 'ok', labels: 8 });
+    // renderHash is over blocks ONLY — the new fields must not move it.
+    expect(side.renderHash).toBe(computeRenderHash(side.blocks, COMPOSER_VERSION));
+  });
+
+  it('a payload with no alternatives mints a sidecar WITHOUT the fields (the control)', async () => {
+    const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });
+    const spawn = fakeSpawn({ prepare: () => ({ sendable: 8 }) });
+    await runFigures(live(booksRoot), { spawn, booksRoot });
+    const side = readSidecar(bookDir, 'FIG_A');
+    expect('mtAlternatives' in side).toBe(false);
+    expect('mtJoined' in side).toBe(false);
   });
 });
 
@@ -2178,16 +2209,18 @@ describe('§C140 ⑦ — what a live run would buy', () => {
       sidecars: { FIG_OLD: currentSidecar('FIG_OLD', { k0: 'IS k0', k1: 'IS k1' }) },
     });
     // The fake prepare's default blocks are k0/k1 reading 'English 0'/'English 1' (9 chars each).
+    // §C140 ㉔ — two labels also buy one joined request ('English 0\nEnglish 1' = 19 chars), so
+    // the wire total is 18 (per-label) + 19 (joined) = 37.
     const spawn = fakeSpawn({ prepare: () => ({ sendable: 2 }) });
     const result = await runFigures(live(booksRoot, { force: true }), { spawn, booksRoot });
-    expect(rec(result, 'FIG_NEW').billable).toEqual({ blocks: 2, chars: 18 });
+    expect(rec(result, 'FIG_NEW').billable).toEqual({ blocks: 2, chars: 37 });
     // NON-VACUITY: --force took FIG_OLD through prepare to `translated`; it is still not buyable
     expect(rec(result, 'FIG_OLD').outcome).toBe('translated');
     expect(rec(result, 'FIG_OLD').billable).toBeNull();
     expect(spawn.countOf('translate')).toBe(1); // only FIG_NEW was bought (R8)
     const text = summarise(result);
-    expect(text).toContain('buyable this run 1 figure(s): 18 billable characters');
-    expect(text).toContain('MT spawned for 1 figure(s), 18 billable characters');
+    expect(text).toContain('buyable this run 1 figure(s): 37 billable characters');
+    expect(text).toContain('MT spawned for 1 figure(s), 37 billable characters');
     // K = 0: nothing is flagged UNKNOWN when every size is known (the control for the case below).
     expect(text).not.toMatch(/billable size is UNKNOWN/);
   });
@@ -2209,13 +2242,13 @@ describe('§C140 ⑦ — what a live run would buy', () => {
     expect(spawn.countOf('translate')).toBe(2);
     const text = summarise(result);
     expect(text).toContain(
-      'buyable this run 1 figure(s): 18 billable characters, est 0.18 ISK at list rate ' +
+      'buyable this run 1 figure(s): 37 billable characters, est 0.37 ISK at list rate ' +
         '(+1 figure(s) whose billable size is UNKNOWN)'
     );
     // The spend line's N is EVERY spawned figure — two were bought, so it must never read "1"; only
     // its characters are limited to the figures whose size is known, and it says how many those are.
     expect(text).toContain(
-      'MT spawned for 2 figure(s), 18 billable characters ' +
+      'MT spawned for 2 figure(s), 37 billable characters ' +
         '(1 counted; 1 figure(s) whose billable size is UNKNOWN)'
     );
     expect(text).not.toMatch(/MT spawned for 1 figure\(s\)/);
