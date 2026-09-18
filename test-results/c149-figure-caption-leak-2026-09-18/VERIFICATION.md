@@ -54,9 +54,17 @@ Remove **exactly what `processFigure` owns and not one character more**: the fig
 in place.
 
 🔴 **A `<title>` is deliberately NOT removed. 75 figures corpus-wide carry a direct-child
-`<title>` and `processFigure` extracts none of them** — so stripping titles would convert this
-duplicate into a silent content loss. A duplicate is recoverable from the other copy; a loss is
-not recoverable at all. Guarded by a test (mutation M2 below).
+`<title>` and `processFigure` extracts none of them** (§C155) — so stripping titles would convert
+this duplicate into a silent content loss. A duplicate is recoverable from the other copy; a loss
+is not recoverable at all. Guarded by a test (mutation M2 below).
+
+⚠️ **THAT GUARD IS DEFENSIVE, NOT CURRENTLY LOAD-BEARING — measured after the fact, and the
+first draft of this document got it wrong.** It said the title "currently survives because it
+leaks". **`inPara` is 0 for all 75**: no titled figure is inside a `<para>` anywhere in the
+corpus, so the cut cannot reach one today and the leak never preserved anything. The guard is
+kept because exposure is set by the CORPUS, not the code. ▶ **A plausible mechanism written down
+without measuring it is the third unmeasured predicate in this one session** — see the two
+asymmetric-normaliser false positives above. Same failure, third form.
 
 **Ownership census, the precondition for dropping anything** — for every para-nested figure in
 all six books, is the text it leaks exactly the text `processFigure` takes?

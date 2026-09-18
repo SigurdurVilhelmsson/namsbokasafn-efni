@@ -241,9 +241,15 @@ function extractInlineText(
   // FIRST <caption>, matched with processFigure's own pattern. A <title>, a second
   // <caption> and every other child are deliberately left in place: processFigure
   // extracts none of them, so dropping one would turn a DUPLICATE into a silent
-  // LOSS. That is not hypothetical — 75 figures corpus-wide carry a direct-child
-  // <title> that nothing extracts (logged as its own gap). A duplicate is
-  // recoverable from the other copy; a loss is not recoverable at all.
+  // LOSS. 75 figures corpus-wide carry a direct-child <title> that nothing
+  // extracts (§C155). A duplicate is recoverable from the other copy; a loss is
+  // not recoverable at all.
+  //
+  // ⚠️ THIS GUARD IS DEFENSIVE, NOT CURRENTLY LOAD-BEARING, AND SAYING SO IS THE
+  // POINT: measured, NOT ONE of those 75 titled figures is inside a <para>, so
+  // this cut cannot reach one today. It is written to be correct wherever a
+  // titled figure MIGHT appear — the exposure is set by the corpus, not by the
+  // code, so a source refresh or a new book can make it load-bearing overnight.
   //
   // The BARE `<caption>` match is deliberate and must track processFigure's: an
   // attributed `<caption id="…">` matches NEITHER, so it is extracted by nobody

@@ -50,9 +50,17 @@ import { renderCompiledExercises, _loadBookConfigForTest } from '../cnxml-render
  * removes EXACTLY what `processFigure` takes and not one character more: the
  * figure's FIRST `<caption>`, matched the way `processFigure` matches it. A
  * `<title>` is deliberately LEFT IN PLACE: **75 figures corpus-wide carry a
- * direct-child `<title>` and `processFigure` extracts none of them**, so
+ * direct-child `<title>` and `processFigure` extracts none of them** (§C155), so
  * stripping titles would turn this duplicate into a silent loss. A duplicate is
  * recoverable; a loss is not. Both halves are asserted below.
+ *
+ * ⚠️ THAT GUARD IS DEFENSIVE, NOT CURRENTLY LOAD-BEARING. Measured: **none of the
+ * 75 titled figures is inside a `<para>`**, so the cut cannot reach one today.
+ * The fixture below is synthetic for exactly that reason. It is kept because the
+ * exposure is set by the CORPUS, not by the code — a source refresh or a new book
+ * can make it load-bearing overnight. Recorded rather than dressed up as a live
+ * save: an earlier draft of this header claimed the title "survives because it
+ * leaks", which was a plausible mechanism nobody had measured, and it was wrong.
  *
  * ⚠️ EXPOSURE IS NOT THE LEAK COUNT. `cnxml-inject.js`'s C13 pre-scan
  * (`paraContainsOnlyFigures`) already injects nothing for a figure-ONLY para, so
