@@ -99,3 +99,19 @@ only-floor files: []
 
 ▶ **Failing sets identical by name at test and file level; the branch adds 53 tests.** Floor = merge-base
 `f5dcfe9e5`, run in an on-disk worktree with both `node_modules` trees present.
+
+## Addendum 2 — after the final-review fix wave (`858043ec6`, `d88fa3860`; same day, appended)
+
+Final review found C1 (the MT-alternative warning returned after every approval — the spec's premise that
+`sidecar.blocks` stays machine output was false), I1 (a throwing joined request discarded paid per-label
+answers) and I2 (a correctly-counted but reordered joined reply was accepted). All three fixed; re-run at
+`d88fa3860` with the same comparator:
+
+```
+parser control: true true
+{ floorTotal: 6667, floorFailed: 36, branchTotal: 6737, branchFailed: 36 }
+only-branch tests: []   only-floor tests: []
+files floor/branch: 13 13   only-branch files: []   only-floor files: []
+```
+
+▶ **Still identical by name at test and file level; the branch now adds 70 tests.**
