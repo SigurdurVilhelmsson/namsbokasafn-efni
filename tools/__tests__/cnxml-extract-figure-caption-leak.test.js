@@ -33,10 +33,18 @@ import { renderCompiledExercises, _loadBookConfigForTest } from '../cnxml-render
  * `processTopLevelContent` strips every `<figure>` out of `contentForSimpleElements`
  * before extracting a top-level `<para>`, so a section para never saw the figure
  * at all. The leak fires only where NO such strip runs — `<exercise>`, `<note>`,
- * `<example>`. Measured by RUNNING the extractor over all six books (a DOM census
- * of "figure nested in para" over-counts by 2.5×, because it cannot see the strip):
- * chemistry **1**, physics (withheld) **23**, biology (withheld) **62**, organic
- * **0**, microbiology **0**, astronomy **0**.
+ * `<example>`. Measured by DIFFING every module's extraction before and after the
+ * fix — 1,192 modules, **74 changed, 105 para segments, 0 content loss**:
+ * chemistry **1 of 149** (m68764), physics (withheld) **17 of 283**, biology
+ * (withheld) **56 of 259**, organic **0 of 342**, microbiology **0 of 159**.
+ *
+ * ⚠️ THE BYTE DIFF IS THE AUTHORITY HERE, AND IT CAUGHT ITS OWN RIVAL UNDER-COUNTING.
+ * A probe that looks for the caption's DOM `textContent` inside a para segment
+ * reported **70** modules, missing 4 (biology m66484, m66504, m66514, m66577)
+ * whose captions carry inline markup — the segment holds `Regulation of the
+ * [[i:lac]] operon`, which no plain-text probe matches. The two instruments
+ * disagreeing is the only reason that was found. Do not re-derive this figure
+ * from a textContent search.
  *
  * 🔴 DROPPING TEXT IS CONTENT LOSS UNLESS SOMETHING ELSE OWNS IT — so the fix
  * removes EXACTLY what `processFigure` takes and not one character more: the
@@ -54,8 +62,11 @@ import { renderCompiledExercises, _loadBookConfigForTest } from '../cnxml-render
  * ⚠️ THE FIX ALSO ENDS A DOUBLE MATH COUNT, which is a numbering change, not a
  * cosmetic one. `counters` is ONE object shared by the para pass and
  * `processFigure`, so math inside a nested caption consumed two `[[MATH:N]]`
- * slots. Measured: **25 such paras, all in withheld physics, 0 in either kept
- * book** — so no kept-book placeholder moves. Asserted for m68764 below.
+ * slots. Measured by comparing each segment's placeholder list across the change:
+ * **2 modules renumber, both in withheld physics; 0 in chemistry, organic,
+ * biology or microbiology** — so no kept-book placeholder moves. Asserted for
+ * m68764 below. (A DOM count of "captions containing math" says 25 paras; that is
+ * an upper bound on the *opportunity*, not a count of what actually moved.)
  */
 
 _loadBookConfigForTest('efnafraedi-2e');

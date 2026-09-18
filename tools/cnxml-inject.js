@@ -3907,9 +3907,18 @@ function paraHasFlattenedList(child, paraEl, contentArray, paraText, doc) {
  * no prose, no other block children (whitespace and comments are ignored).
  *
  * Such a para's extracted segment is entirely figure-derived: the figure's
- * <media> became a [[MEDIA:N]] placeholder and, when the figure is captioned,
- * the caption prose was flattened in alongside it. Injecting any of it
- * duplicates what the DOM figure already carries. (C13)
+ * <media> became a [[MEDIA:N]] placeholder. Injecting it duplicates what the DOM
+ * figure already carries. (C13)
+ *
+ * ⚠️ AMENDED 2026-09-18 (§C149 ②) — THIS USED TO ADD "and, when the figure is
+ * captioned, the caption prose was flattened in alongside it". That is no longer
+ * true: extractInlineText now removes a nested figure's first <caption> before
+ * stripTags() can flatten its words into the paragraph, because processFigure
+ * already owns that text. THE GUARD BELOW IS UNCHANGED AND STILL NECESSARY — the
+ * [[MEDIA:N]] placeholder alone is enough to cause the failure this exists to
+ * stop (an orphan <media> ahead of the block-preserved figure, which
+ * deduplicateMedia then resolves by deleting the FIGURE's copy). Only the
+ * description of what the segment contains changed.
  *
  * @param {Element} paraElement - The <para> element from the original CNXML
  * @returns {boolean} true when the para contains only figures
@@ -4469,14 +4478,20 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
 
   // C13: detect paras that contain <figure> elements in the DOM. Extraction
   // hoists such a figure into a top-level structure entry AND flattens its
-  // <media> into the para's segment as [[MEDIA:N]] — plus, when the figure is
-  // captioned, the caption prose. Injecting that text verbatim puts an orphan
+  // <media> into the para's segment as [[MEDIA:N]]. Injecting that text verbatim
+  // puts an orphan
   // <media> ahead of the (block-preserved) figure, and buildCnxml's
   // document-level deduplicateMedia keeps the FIRST occurrence of a media id,
   // so it then deletes the figure's own copy — leaving <figure><caption/>, which
   // the OpenStax RelaxNG schema rejects and which renders as an unlabelled image
   // plus an image-less figure. Same pre-scan buildExampleDom/buildExerciseDom
   // already do for <example>/<exercise>; <note> was the uncovered sibling.
+  //
+  // ⚠️ AMENDED 2026-09-18 (§C149 ②) — this used to add "plus, when the figure is
+  // captioned, the caption prose", and that half is no longer true: extraction
+  // now drops a nested figure's first <caption> (processFigure owns it). The
+  // pre-scan is UNCHANGED and still required — the [[MEDIA:N]] placeholder alone
+  // triggers the deduplicateMedia failure described above.
   const keptFigureIds = new Set();
   const parasWithFigures = new Set();
   for (const child of element.content || []) {
