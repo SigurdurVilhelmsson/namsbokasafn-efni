@@ -213,23 +213,23 @@ describe('§C149 ② — the real corpus', () => {
     expect(caption.text).toContain('(credit: Cory Zanker)');
   });
 
-  it('chemistry m68764: [[MATH:N]] numbering stays gap-free', () => {
-    // `counters` is shared with processFigure, so removing the para's copy of a
-    // caption also removes a math slot when that caption holds math. Chemistry's
-    // one leaking caption holds none, so this module's numbering must not move —
-    // a renumber would show as a hole in the sequence.
+  it('chemistry m68764: the [[MATH:N]] count does not move', () => {
+    // `counters` is ONE object shared with processFigure, so a caption holding math
+    // was consuming two [[MATH:N]] slots and this fix ends that double count. Where
+    // it applies the module's math COUNT drops; chemistry's one leaking caption holds
+    // no math, so m68764's count must be unchanged.
+    //
+    // ⚠️ THE OBVIOUS VERSION OF THIS TEST IS VACUOUS — DO NOT REINSTATE IT. Asserting
+    // that the numbering is "gap-free from 1" CANNOT FAIL: `counters.math++` is
+    // monotonic, so extraction cannot emit a hole, and ending a double count renumbers
+    // {1..5} to {1..4} — still contiguous. Only a pinned COUNT can see the change, and
+    // it is stable because 01-source is READ-ONLY by project rule.
     const numbers = new Set(
       segs(readSource(M68764))
         .flatMap((s) => s.text.match(/\[\[MATH:\d+\]\]/g) || [])
         .map((m) => Number(m.match(/\d+/)[0]))
     );
-    expect(
-      numbers.size,
-      'the module must contain math at all, or this proves nothing'
-    ).toBeGreaterThan(0);
-    for (let n = 1; n <= numbers.size; n++) {
-      expect(numbers.has(n), `[[MATH:${n}]] must exist — numbering is gap-free`).toBe(true);
-    }
+    expect(numbers.size).toBe(3);
   });
 
   it.each([

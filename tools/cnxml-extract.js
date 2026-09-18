@@ -245,11 +245,22 @@ function extractInlineText(
   // <title> that nothing extracts (logged as its own gap). A duplicate is
   // recoverable from the other copy; a loss is not recoverable at all.
   //
+  // The BARE `<caption>` match is deliberate and must track processFigure's: an
+  // attributed `<caption id="…">` matches NEITHER, so it is extracted by nobody
+  // and stripped by nobody — wrong, but consistently wrong, which is the property
+  // that matters here. 2 exist corpus-wide, both in withheld physics and neither
+  // inside a para, so the ownership census behind this cut is unaffected. If
+  // processFigure is ever widened to attributed captions, WIDEN THIS IN THE SAME
+  // COMMIT or the leak returns for exactly those figures.
+  //
   // The cut runs BEFORE the math/media passes on purpose. `counters` is ONE object
   // shared with processFigure, so a caption holding <m:math> was consuming a
   // [[MATH:N]] slot HERE and a second one in processFigure — a double count.
-  // Removing the caption first ends it. Measured: 25 such paras, all in withheld
-  // physics, 0 in either kept book, so no kept-book placeholder is renumbered.
+  // Removing the caption first ends it. Measured by comparing each segment's
+  // placeholder list across the change: 2 modules renumber, BOTH in withheld
+  // physics, 0 in chemistry, organic, biology or microbiology — so no kept-book
+  // placeholder moves. (A DOM count of "captions containing math" says 25 paras;
+  // that is an upper bound on the OPPORTUNITY, not a count of what moved.)
   //
   // Inert on the top-level path by construction: processTopLevelContent strips
   // every <figure> out of contentForSimpleElements before extracting a section

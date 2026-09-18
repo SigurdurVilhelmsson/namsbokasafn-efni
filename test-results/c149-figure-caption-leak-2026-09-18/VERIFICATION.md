@@ -218,6 +218,20 @@ duplicate exactly, and exit 0.
   currently survives *because* it leaks, which is why this fix deliberately leaves it alone.
 - **M3's blind spot** above: 0 multi-caption figures exist, so the "first caption only" choice
   is untestable on this corpus.
+- ⚠️ **An attributed `<caption id="…">` is extracted by nobody AND stripped by nobody.**
+  `processFigure` matches a bare `/<caption>/`; the cut matches the same bare form deliberately.
+  **Wrong, but consistently wrong** — which is the property that matters, since the cut must
+  never remove more than the owner takes. **2 exist corpus-wide, both in withheld physics, and
+  neither is inside a `<para>`** — checked, so the 0-unowned census above is unaffected. The DOM
+  census would have called them "owned"; the greps are what closed the gap between its predicate
+  and `processFigure`'s. ▶ **If `processFigure` is ever widened to attributed captions, widen the
+  cut in the same commit.**
+- ⚠️ **The `[[MATH:N]]` test was rewritten before shipping because the obvious form is vacuous.**
+  Asserting "numbering is gap-free from 1" **cannot fail**: `counters.math++` is monotonic, so
+  extraction cannot emit a hole, and ending a double count renumbers `{1..5}` → `{1..4}`, still
+  contiguous. Nothing run here could have exposed that — m68764's caption holds no math, so
+  mutation M1 never touched it. It now pins the **count** (3), which is stable because
+  `01-source` is READ-ONLY by project rule.
 
 ---
 
