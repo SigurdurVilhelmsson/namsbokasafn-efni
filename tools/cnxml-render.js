@@ -1754,7 +1754,10 @@ function renderExample(example, context) {
     // render was a renderPara artifact that, combined with the old position-sort's
     // separate block, produced a visible duplicate (verified live on
     // namsbokasafn.is, ch14 Dæmi 14.4/14.5).
-    { hoistTags: ['list', 'equation', 'table'] }
+    //
+    // §C149 — 'figure' added 2026-09-18. See the note above renderExercise's
+    // identical list for the whole account; both sites had the same omission.
+    { hoistTags: ['list', 'equation', 'figure', 'table'] }
   );
   for (const block of blocks) {
     lines.push(`  ${block}`);
@@ -1837,7 +1840,30 @@ function renderExercise(exercise, context) {
       // <equation> of <problem>/<solution> also needs the dispatcher above —
       // without it the DOM seam skipped the node entirely and dropped the
       // equation (e.g. m68670's density formula d = m/V).
-      { hoistTags: ['list', 'equation', 'table'] }
+      //
+      // 🔴 §C149 — 'figure' ADDED 2026-09-18. `figure` was in the dispatch map above
+      // but NOT here, so a para-nested <figure> was never detached: renderPara emitted
+      // it INSIDE the <p>, raw, with its CNXML <caption> untransformed. `<figure>` is
+      // not permitted in a `<p>`, so a browser closes the paragraph early and treats
+      // the `</p>` as stray. Live on chemistry `10-exercises.html` exercise 23
+      // (m68764): readers saw `(heimild: Cory Zanker)` as body text AND
+      // `<caption>(credit: Cory Zanker)</caption>` — the same credit twice, in two
+      // languages, because an HTML parser drops a stray `<caption>` tag but keeps its
+      // text.
+      //
+      // ⚠️ BOTH CALL SITES HAD THE OMISSION, and the register only guessed the second
+      // might. renderExample's identical list is fixed in the same change: organic has
+      // 10 para-nested example figures (4 of them on the PUBLISHED ch03), chemistry 1
+      // exercise figure. The register recorded "chemistry 1, organic 0" — true of
+      // CAPTIONED figures only, and a BARE figure in a `<p>` is equally invalid markup.
+      //
+      // 🔴 'media' IS DELIBERATELY NOT HOISTED, AND THE CENSUS IS WHY. `<img>` IS
+      // permitted inside a `<p>`, so a para-nested <media> is not a defect — and
+      // chemistry alone has 204 of them in exercises plus 6 in examples. Hoisting
+      // media would move every one of those images out of its paragraph: a large,
+      // reader-visible layout change with no measured defect behind it. Decide this
+      // one from the corpus, not from symmetry with `figure`.
+      { hoistTags: ['list', 'equation', 'figure', 'table'] }
     );
     for (const block of blocks) {
       lines.push(`    ${block}`);
