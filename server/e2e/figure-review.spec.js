@@ -39,6 +39,11 @@ const FIXTURE_DIR = path.join(__dirname, '..', '..', 'books', '__e2e-fixture__',
 const ALCHEMIST = 'CNX_Chem_01_01_Alchemist';
 const CHEMWEB = 'CNX_Chem_01_01_ChemWeb';
 const SCIMETHOD = 'CNX_Chem_01_01_SciMethod';
+const WATERDOM = 'CNX_Chem_01_01_WaterDom';
+/** §C140 ㉔ — this figure's own block, touched by no other test. */
+const MT_ALT_KEY = 'Element';
+const MT_ALT_KEPT = 'Frumefni';
+const MT_ALT_PER_LABEL = 'Þáttur';
 
 /**
  * The decimal block is deliberate: '37.5' fires decimalSeparatorWarnings (Icelandic
@@ -102,6 +107,22 @@ const PRISTINE = {
  "blocks": {
   "Observation and curiosity": "Athugun og forvitni",
   "Form hypothesis": "Setja fram tilgátu"
+ }
+}
+`,
+  [WATERDOM]: `{
+ "version": 1,
+ "basename": "CNX_Chem_01_01_WaterDom",
+ "blocks": {
+  "Element": "Frumefni",
+  "Quantity": "Fjöldi"
+ },
+ "mtAlternatives": {
+  "Element": {
+   "kept": "joined",
+   "other": "Þáttur",
+   "reason": "disagree"
+  }
  }
 }
 `,
@@ -178,11 +199,16 @@ test.describe('Figure review card', () => {
     const res = await page.request.get('/api/segment-editor/__e2e-fixture__/1/m68664/figures');
     expect(res.ok()).toBe(true);
     const { figures } = await res.json();
-    expect(figures.map((f) => f.basename).sort()).toEqual([ALCHEMIST, CHEMWEB, SCIMETHOD]);
+    expect(figures.map((f) => f.basename).sort()).toEqual([
+      ALCHEMIST,
+      CHEMWEB,
+      SCIMETHOD,
+      WATERDOM,
+    ]);
 
-    // m68664 carries FOUR figures; only the three with a sidecar are reviewable.
-    // Asserting the count binds that skip — a card per figure would be wrong.
-    await expect(page.locator('[data-figure-card]')).toHaveCount(3);
+    // m68664 carries FOUR figures; all four now have a sidecar.
+    // the no-sidecar skip is still bound by the m68663 test below.
+    await expect(page.locator('[data-figure-card]')).toHaveCount(4);
     await expect(card(page, ALCHEMIST)).toBeVisible();
 
     // The block VALUE, not merely the presence of an input: the editor's
@@ -226,7 +252,7 @@ test.describe('Figure review card', () => {
     // The other half. These two have sidecars (their cards are here) but no
     // mapping entry, so they legitimately have no picture — and must render no
     // element rather than a broken one.
-    for (const basename of [CHEMWEB, SCIMETHOD]) {
+    for (const basename of [CHEMWEB, SCIMETHOD, WATERDOM]) {
       await expect(card(page, basename).locator('[data-figure-image]')).toHaveCount(0);
     }
   });
@@ -339,6 +365,42 @@ test.describe('Figure review card', () => {
   });
 
   /**
+   * §C140 ㉔ — a label where the joined and per-label MT disagreed shows the per-label wording as
+   * a one-click alternative. Mutating, so it owns WATERDOM alone.
+   */
+  test('an MT alternative is offered, guarded, applied in one click, and then gone', async ({
+    page,
+  }) => {
+    await openFixtureModule(page, 'm68664');
+    const row = blockRow(page, WATERDOM, MT_ALT_KEY);
+    const input = row.locator('[data-block-input]');
+    const apply = row.locator('[data-block-apply]');
+
+    await expect(input).toHaveValue(MT_ALT_KEPT); // precondition, stated
+    // Filtered BY TEXT: the caption-divergence check may legitimately add its own warning to this
+    // block from the module's caption, and that is not what this test is about.
+    const mtWarning = (r) => r.locator('[data-block-warning]', { hasText: 'stakra merkinga' });
+    await expect(mtWarning(row)).toHaveCount(1);
+    await expect(mtWarning(row)).toContainText(MT_ALT_PER_LABEL);
+
+    // The guard, both directions — enabled on pristine input is the control.
+    await expect(apply).toBeEnabled();
+    await input.fill('Frumefni — í vinnslu');
+    await expect(apply).toBeDisabled();
+    await input.fill(MT_ALT_KEPT);
+    await expect(apply).toBeEnabled();
+
+    await apply.click();
+    const after = blockRow(page, WATERDOM, MT_ALT_KEY);
+    await expect(after.locator('[data-block-input]')).toHaveValue(MT_ALT_PER_LABEL);
+    await expect(mtWarning(after)).toHaveCount(0);
+    await expect(after.locator('[data-block-apply]')).toHaveCount(0);
+
+    // CONTROL: the sibling block with no alternative never showed one.
+    await expect(mtWarning(blockRow(page, WATERDOM, 'Quantity'))).toHaveCount(0);
+  });
+
+  /**
    * Stand in for compose.py, which copies the sidecar's own renderHash into
    * composedHash after it writes the artwork ([USER] ruling C, 2026-09-04).
    *
@@ -446,7 +508,7 @@ test.describe('Figure review card', () => {
 
   test('a module whose figures have no sidecar shows no cards', async ({ page }) => {
     await openFixtureModule(page, 'm68664');
-    await expect(page.locator('[data-figure-card]')).toHaveCount(3);
+    await expect(page.locator('[data-figure-card]')).toHaveCount(4);
 
     // m68663's one figure has no sidecar, so it is not reviewable. This also
     // pins that the card container is CLEARED between modules — stale cards

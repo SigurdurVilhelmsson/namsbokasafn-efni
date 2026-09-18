@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_01_01_WaterDom",
+ "blocks": {
+  "Element": "Frumefni",
+  "Quantity": "Fjöldi"
+ },
+ "mtAlternatives": {
+  "Element": {
+   "kept": "joined",
+   "other": "Þáttur",
+   "reason": "disagree"
+  }
+ }
+}
