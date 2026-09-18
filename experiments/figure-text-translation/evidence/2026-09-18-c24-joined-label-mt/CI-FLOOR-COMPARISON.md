@@ -71,3 +71,31 @@ the diff:
 increase, 0 only-floor, lint, format, full E2E (see task report) — is clean. Report this to the reviewer before
 merge; the test needs updating in the same PR that merges ㉔ (or a fast-follow) to narrow its slice past the
 new `warnings.mt` apply-control loop.
+
+---
+
+## Addendum — after fix `b774fb653` (same day, appended; the record above is unchanged)
+
+The one only-branch failure above (`server/__tests__/figureCardClientPins.test.js` :: "offers NO apply
+control for a caption warning") was a source pin whose slice ran from the caption-warning loop to the
+end of `renderFigureBlock`, and so swallowed ㉔'s new MT-alternative loop. Fixed by bounding the slice
+to the caption loop (`b774fb653`), with order controls and a mutation proof (a `data-block-apply`
+placed inside the caption loop turns it RED).
+
+Re-run on the branch at `b774fb653`, compared by name with `compare-failing-by-name.cjs` (committed
+beside this file; its first line of output is a parser control — it must reproduce each report's own
+failure count):
+
+```
+node compare-failing-by-name.cjs <floor.json> <floorRoot> <branch.json> <branchRoot>
+parser control: true true
+{ floorTotal: 6667, floorFailed: 36, branchTotal: 6720, branchFailed: 36 }
+only-branch tests: []
+only-floor tests: []
+files floor/branch: 13 13
+only-branch files: []
+only-floor files: []
+```
+
+▶ **Failing sets identical by name at test and file level; the branch adds 53 tests.** Floor = merge-base
+`f5dcfe9e5`, run in an on-disk worktree with both `node_modules` trees present.
