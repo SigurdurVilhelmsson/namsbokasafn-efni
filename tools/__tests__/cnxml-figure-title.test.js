@@ -234,6 +234,34 @@ describe('§C155 — the real corpus, all three columns', () => {
     expect(html).toContain(titleText);
   });
 
+  it('ch29 m00333/m00335: the title RENDERS but is not yet translatable (§C156 gap)', () => {
+    // 🔴 A KNOWN, MEASURED GAP IN THIS FIX, RECORDED RATHER THAN ROUNDED OFF.
+    // 53 of organic's 55 titled-figure modules gain a `figure-title` segment. These
+    // two do not, and the cause is a DIFFERENT pre-existing defect: `processSection`
+    // matches its own title with a depth-BLIND /<title>([\s\S]*?)<\/title>/ and then
+    // STRIPS it, so in these two modules it takes the nested FIGURE's title — putting
+    // "MECHANISM" in the section's title segment and leaving the figure with none.
+    // Measured corpus-wide: exactly 2 such donations, both here. Logged as §C156;
+    // not fixed here because that regex governs all 6,294 section titles in the
+    // corpus and needs its own blast-radius measurement.
+    //
+    // What this asserts is the part that DID improve: renderFigure reads
+    // `figure.content` directly and is untouched by the extract-side strip, so the
+    // title now reaches the reader in ENGLISH where before it reached them in no
+    // language at all. ▶ Deliberately NOT pinned as "no figure-title segment exists"
+    // — a test that asserts a bug is present blocks the fix that removes it.
+    _loadBookConfigForTest('lifraen-efnafraedi');
+    for (const mod of ['m00333', 'm00335']) {
+      const src = readSource(`lifraen-efnafraedi/01-source/ch29/${mod}.cnxml`);
+      const { html } = renderCnxmlToHtml(src, {
+        bookSlug: 'lifraen-efnafraedi',
+        chapter: 29,
+        moduleId: mod,
+      });
+      expect(html, `${mod} must render its figure title`).toContain('MECHANISM');
+    }
+  });
+
   it('organic ch03 is unaffected — it carries none of the 69 (negative control)', () => {
     // ch03 is the only PUBLISHED organic chapter. If this change altered it, the
     // "0 reader exposure" claim behind building this now would be false.
