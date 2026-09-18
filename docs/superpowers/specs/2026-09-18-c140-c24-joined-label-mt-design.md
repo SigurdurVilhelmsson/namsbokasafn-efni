@@ -72,6 +72,12 @@ Three legs, any one failing rejects the joined answer **for that label**:
 needs (a subscript `₂` must NOT count as the digit `2`). The implementation states this and a test
 pins it.
 
+⚠️ **R15 (final review, 2026-09-18).** Leg 3's token match (`\b(?:[A-Z][a-z]?\d*){2,}\b`) has no
+chemistry in it: any run of ≥ 2 element-symbol-shaped capitals qualifies, including a plain
+acronym (`STP`, `UK`). A translated acronym therefore fails leg 3 and falls back to per-label —
+safe (measured 0/501 on the real answers; no acronym in that set was altered), but the panel's
+"formula" note can then fire on something that was never a chemical formula.
+
 ⚠️ **Only one sidecar writer rebuilds from a field list** — `applyApprovedFigureEdits`. The
 publisher's `withComposedStamp` (`tools/publish-figure-svg.js`) copies every key it is given, so
 the new fields survive a publish without change (checked 2026-09-18).
@@ -110,6 +116,20 @@ would have no effect on quality).
   - joined ≠ per-label (after trim) → keep **joined**, record `{kept: 'joined', other: <per-label>,
     reason: 'disagree'}`;
   - joined = per-label → keep it, record nothing.
+  - 🔴 **CORRECTED 2026-09-18 (final review, finding C1/R12).** Every returned `alt` object above
+    also carries `mt: <the kept text>` — the wording `selectWording` actually kept, at the moment
+    of this decision. §4.4's `mtAlternativeWarnings` was written to compare a block's current text
+    against `mtBlocks[key]` (the sidecar's `blocks`), and that field is REWRITTEN by every approval
+    (`applyApprovedFigureEdits` writes `blocks: fig.blocks`), so after any approval the comparison
+    held trivially and the warning never went silent. `alt.mt` is the fixed point that survives an
+    approval unchanged; §4.4 below is corrected to compare against it.
+- **A split reply can be the right COUNT and the wrong ORDER** (finding I2, final review). An exact
+  swap between two labels' lines — line *i* disagrees with its own label's per-label answer but
+  matches a DIFFERENT label's per-label answer — is caught by `misalignedLines` before `lines` is
+  ever set, and the whole figure is treated exactly like `split-failed`: every label keeps its own
+  per-label wording, no alternative is offered, and `mtJoined.status = 'misaligned'`. A *paraphrased*
+  swap — where the transposed line does not happen to equal the sibling's own per-label wording
+  verbatim — is not detectable this way and surfaces only as an ordinary per-label disagreement.
 - **Empty answers.** An empty joined line with a non-empty per-label answer falls back to
   per-label (reason `empty`). A non-empty joined line with an empty per-label answer keeps joined
   and records **no** alternative — an empty string is never offered as a suggestion. Both empty
@@ -118,8 +138,16 @@ would have no effect on quality).
   are not newly guarded — adding that is a separate change with its own base rate to measure.
 - **Outputs.** `translations-api.json` keeps `blocks` exactly as today (the kept wording, arc blocks
   as bare strings, others as one-element arrays) and gains `alternatives` (per key, §4.2 shape) and
-  `mtJoined` (figure-level status: `'ok' | 'single-label' | 'split-failed' | 'skipped-newline'`, plus
-  counts). `api-run.json` records both arms' raw answers and each label's selection.
+  `mtJoined` (figure-level status: `'ok' | 'single-label' | 'split-failed' | 'skipped-newline' |
+  'request-failed' | 'misaligned'`, plus counts). `api-run.json` records both arms' raw answers and
+  each label's selection.
+  - 🔴 **CORRECTED 2026-09-18 (final review, finding I1).** The joined request is now wrapped in
+    its OWN try/catch, separate from the per-label loop above it. Before this fix, a throw from
+    the joined call rejected `main` after the per-label purchases had already been billed, no
+    `translations-api.json` was written, and the whole figure was re-bought — money for the
+    per-label answers, spent twice — on the next run. A throw now records
+    `mtJoined = {status: 'request-failed', labels, error}`, every label keeps its per-label
+    wording, and the run's outputs are written exactly as they are for `split-failed`.
 - **Plan line and `--dry-run`** report both arms: per-label chars, joined chars, total, one estimate.
 - **Pre-flight invariant** covers the joined request's options too (it rides the wire, so it is
   asserted glossary-free like every per-label request).
@@ -127,12 +155,22 @@ would have no effect on quality).
 ### 4.2 Sidecar and driver
 
 - New optional sidecar fields, written by `figure-run.js` step 7 from `translations-api.json`:
-  - `mtAlternatives: { [key]: { kept: 'joined'|'per-label', other?: string, reason: 'disagree'|'formula'|'empty' } }`
-    — present only for keys with something to say;
-  - `mtJoined: { status, labels, lines? }` — the figure-level outcome.
+  - `mtAlternatives: { [key]: { kept: 'joined'|'per-label', other?: string, reason: 'disagree'|'formula'|'empty', mt: string } }`
+    — present only for keys with something to say. `mt` was added by finding C1/R12 (see §4.4):
+    it is the wording `selectWording` actually kept, and it is what the review panel's warning
+    compares against — never `mtBlocks`/`sidecar.blocks`, which an approval rewrites.
+  - `mtJoined: { status, labels, lines?, error? }` — the figure-level outcome. `status` gained
+    `'request-failed'` (finding I1: the joined request threw) and `'misaligned'` (finding I2: the
+    reply split into the right count but an exact swap between two labels was detected) in the
+    final review.
 - Both are **outside `renderHash`**. `SIDECAR_VERSION` stays 1: the fields are optional, readers
   ignore unknown keys (`readSidecar` checks only that the payload is an object), and existing
   sidecars — which have neither field — mean "no alternatives", which is true of them.
+  - 🔴 **CORRECTED 2026-09-18 (final review, finding R15).** `mtJoined` is written for EVERY figure
+    with a sidecar, including a single-label one (`{status: 'single-label', labels: 1}`) — it is
+    NOT true, as an earlier draft comment in `tools/figure-run.js` claimed, that a single-label
+    figure's sidecar "keeps today's exact shape". Writing it is fine (it is outside `renderHash`
+    and costs nothing that matters); the claim that nothing changed was simply wrong.
 - `normaliseTranslations` returns the alternatives alongside `blocks` and `dropped`; an alternative
   for a key that was dropped is discarded with it (no warning may point at a block that does not
   exist).
@@ -151,15 +189,26 @@ would have no effect on quality).
 - `applyApprovedFigureEdits` **carries `mtAlternatives` and `mtJoined` forward** from the existing
   sidecar, beside `composedHash`/`composedVersion`. A test approves a figure carrying both and
   asserts they survive.
-- `tools/lib/figure-consistency.cjs` gains **`mtAlternativeWarnings(blocks, mtAlternatives)`**,
+- `tools/lib/figure-consistency.cjs` gains **`mtAlternativeWarnings(blocks, mtBlocks, mtAlternatives)`**,
   emitting for each key whose **current block still equals the MT's kept wording** (once an editor
   has changed it, the warning has served its purpose and disappears):
   - `reason: 'disagree'` → `{ blockKey, current, suggested: other, reason }` — rendered
     *"Orðalag MT stakra merkinga: «…»"* with the existing **Nota** button;
   - `reason: 'formula' | 'empty'` → `{ blockKey, current, reason }` — a note only, no apply.
-  
-  The "kept wording" is the sidecar's MT `blocks` value — which `resolveFigure` already has as
-  `mtBlocks` — never the resolved block after edits.
+
+  🔴 **CORRECTED 2026-09-18 (final review, finding C1/R12) — THE PARAGRAPH BELOW THIS ONE WAS THE
+  BUG, NOT A DESIGN NOTE.** It used to say: *"The 'kept wording' is the sidecar's MT `blocks`
+  value — which `resolveFigure` already has as `mtBlocks` — never the resolved block after
+  edits."* That is the wrong side. `mtBlocks` is `sidecar.blocks`, and `applyApprovedFigureEdits`
+  **rewrites** `sidecar.blocks` with the editor's current (possibly corrected) text on every
+  approval, while carrying `mtAlternatives` forward unchanged. So after ANY approval,
+  `current === mtBlocks[key]` held by construction — both sides had just been set to the same
+  value — and the warning, with an enabled "replace with the rejected per-label wording" button,
+  never went silent. **The kept wording is instead carried on the alternative itself**, as
+  `alt.mt` (written once, in `selectWording`, and never mutated afterwards): the comparison is
+  `current === alt.mt`, not `current === mtBlocks[key]`. `mtBlocks` is still passed into the
+  function (dropping it from the call site bought nothing, per that site's own note) but is no
+  longer read.
 - A figure-level note when `mtJoined.status` is `'split-failed'` or `'skipped-newline'`: *every*
   label on it carries per-label wording, which is exactly the wrong-sense risk the ruling exists
   for, so the editor is told once, at the top of the figure.
