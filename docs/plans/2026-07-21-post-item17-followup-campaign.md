@@ -2,19 +2,40 @@
 
 **Created:** 2026-07-21 · **Baseline:** main `480fc651`, suite **3297 green** (231 files) · **Supersedes:** the pre-semester coding campaign (`docs/plans/2026-07-11-pre-semester-coding-campaign.md`), whose mandatory Phases 0–4 are **all complete** (items 1–21 merged). Only that campaign's Phase 5 (hygiene/opportunistic) remains — it is folded in here as P3.
 
-## ⏩ RESUME — state as of **2026-09-18 (§C149 ② FIXED ON A LOCAL BRANCH, 0 ISK · FOUR RENDER FIXES ON `main` · DEPLOY + ONE BATCHED RE-RENDER STILL OWED, BOTH [USER]'s)** (supersedes every block below)
+## ⏩ RESUME — state as of **2026-09-18 (§C149 ② MERGED as `65358be08` · DEPLOY RUN BY [USER] · §C155 in PR #486 · THE BATCHED RE-RENDER IS THE ONE THING OWED, AND IT NOW HAS A RUNBOOK)** (supersedes every block below)
 
-### ⏭ SINGLE NEXT ACTION — **DEPLOY. `./scripts/deploy.sh` on prod (needs `sudo`) — [USER]'s.** `main` is `7c22a4757`. Prod's *Vista + Birta* **spawns** `tools/cnxml-inject.js` and `tools/cnxml-render.js`, so until the deploy the editor's publish path keeps the unfixed tools — **four** merges behind (§C145, §C146, §C154, §C149 ①). ▶ **Then: ONE BATCHED RE-RENDER** (its own bullet below). Buying stays stopped; **the sync stays [USER]'s.**
+### ⏭ SINGLE NEXT ACTION — **THE ONE BATCHED RE-RENDER.** 📖 **Procedure, traps and verification: [`docs/handoffs/2026-09-18-batched-re-render-runbook.md`](../handoffs/2026-09-18-batched-re-render-runbook.md)** — that file owns the HOW; this block owns only the status. Four merged render-side fixes (**§C148, §C146, §C154, §C149 ①**) have reached **no reader**. Four commands, ONE push:
 
-✅ **§C149 ② IS FIXED, 0 ISK — [PR #485](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/485), branch `fix/c149b-figure-caption-leak`, head `a10ef95e0` (5 commits), pushed 2026-09-18. **NOT merged — compare CI by NAME against `main`'s POST-`43a0438c5` floor before merging, and merge as a MERGE COMMIT, not a squash (this register cites `75503f28d`/`74cc9f298`/`cafd4ed7c`).** Measured, frozen: [`test-results/c149-figure-caption-leak-2026-09-18/VERIFICATION.md`](../../test-results/c149-figure-caption-leak-2026-09-18/VERIFICATION.md). Full account → the §C149 entry in P2. Headline: `extractInlineText` no longer lets a nested figure's caption flatten into the paragraph's segment; rollup detector **2 → 1** against arm 1's unchanged **1**; corpus **1,192 modules / 74 changed / 0 content loss**, chemistry **1**, organic **0**; suite failing sets **identical by name to `main` both directions**, +19 passing; mutations M1 4-red, M2 1-red.
-- 🔴 **② IS CLOSED IN CODE, NOT FOR READERS — AND THAT NEEDS NO LEDGER ENTRY.** The fix changes the ENGLISH under a stable segment id, and the committed Icelandic still carries `(heimild: Cory Zanker)`. But m68764 is **already** un-injectable (138 emitted vs 127 committed, 25 missing — the pre-existing §C118 vintage gap, not this change), so **② clears for readers at chemistry ch10's re-MT, which was already required**. ⚠️ Re-extract before any paid ch10 run.
-- 🔴 **THE CUT IS SIZED TO ITS OWNER, WHICH IS WHY LOSS IS IMPOSSIBLE RATHER THAN UNLIKELY** — it removes exactly `processFigure`'s first `<caption>` and nothing else. **A figure `<title>` is deliberately left leaking: 75 exist corpus-wide and NOTHING extracts them**, so stripping titles would turn a recoverable duplicate into an unrecoverable loss. Logged as a new P3 gap, same shape as §C150.
-- ⚠️ **THE SAME MISTAKE MADE TWO FALSE FINDINGS IN ONE SESSION: an asymmetric normaliser.** 9 phantom "unowned residuals" (raw `A&amp;M` vs decoded `A&M`) and 8 phantom "content losses" (markers stripped from the probe, not from the text searched). Both → 0 once both sides were normalised. ▶ **Normalise BOTH sides, or a difference you manufactured reads exactly like a finding.**
-- ⚠️ **A `textContent` probe under-counted the blast radius by 4 modules** (captions carrying `[[i:…]]`); only the byte diff saw them. **Two instruments disagreeing is the whole detector here — it is now the third session running in which that is true.**
+```
+node tools/cnxml-render.js --book efnafraedi-2e      --chapter 4
+node tools/cnxml-render.js --book efnafraedi-2e      --chapter 10
+node tools/cnxml-render.js --book efnafraedi-2e      --chapter 17
+node tools/cnxml-render.js --book lifraen-efnafraedi --chapter 3
+```
 
-📋 **NEXT CODING WORK after the deploy: ㉔** (per-label + joined figure-label MT) **or §C150** (a `<table>` caption extracted nowhere) **or the new figure-`<title>` gap** — ㉔ remains blocked by the buying stop, so the two extraction gaps are the free ones.
+🔴 **THE DELTA IS PREDICTED AND CHECKABLE — REQUIRE IT, DO NOT HOPE FOR IT.** Measured 2026-09-18 by rendering each chapter's real `03-translated` input with `main` at `65358be08`; the census script is committed at `test-results/c-batched-re-render-2026-09-18/`.
 
----
+| | figInP | rawCapInFig | paraInCell | raw `[[` | html pages |
+|---|---|---|---|---|---|
+| **before (live today)** | **5** | **1** | **8** | 0 | 11/12/13/13 |
+| **after (required)** | **0** | **0** | **0** | 0 | **unchanged** |
+
+▶ **The page count is the POSITIVE CONTROL** — a defect count of zero over a directory whose pages were deleted reads as a perfect pass. ✅ The `figInP` 5 independently reproduces this register's *"5 live published pages, not 1"*: two instruments, same answer.
+
+🔴 **WHERE TO RUN IT IS A REAL CHOICE WITH OPPOSITE FAILURE MODES, AND `main` JUST MOVED.** Dev-side render → a `books/` push **strands prod's content backup** until the next deploy. Prod-side render → the cron **never fetches first**, so with `main` now at `65358be08` an unpulled prod push is **REJECTED** and the render sits uncommitted. ▶ **Cleanest given the deploy just ran: pull on prod → render on prod → `./scripts/deploy.sh`. That needs `sudo` and is [USER]'s box — ASK, do not decide.**
+
+⚠️ **§C149 ② IS NOT IN THIS BATCH.** It is extract-side; a re-render does not re-extract and m68764 is un-injectable pending ch10's re-MT. **Do not read a clean re-render as "the ch10 credit duplication is gone."**
+
+⏹ **The loop stops at PREPARED.** Only [USER] syncs, timed with classroom use, and a sync selects BOOKS not chapters → [`docs/decisions/2026-09-16-chapters-prepared-sync-timed-by-classroom-use.md`](../decisions/2026-09-16-chapters-prepared-sync-timed-by-classroom-use.md). Buying stays stopped.
+
+✅ **§C149 ② MERGED 2026-09-18T08:19:54Z as `65358be08`** (PR #485, SHA-pinned to `393c7c509`, **merge commit not squash**). **Verified AFTER the merge that all four register-cited SHAs — `75503f28d`, `74cc9f298`, `cafd4ed7c`, `393c7c509` — are reachable from `main`**, which is the entire reason for refusing a squash. CI compared **BY NAME** against `43a0438c5` with the parser proven on each run's own summary first, and `main` re-confirmed unmoved at merge time: **13 files / 36 tests both sides, 0 only-PR, 0 only-main**; totals 6,636 → 6,655. Branch deleted local and remote.
+
+✅ **DEPLOY RUN BY [USER], reported 2026-09-18 around the merge.** ⚠️ **Ordering unconfirmed; it decides ONE thing — whether prod's *Vista + Birta* path carries §C149 ②.** It does **not** gate the re-render. Settle it with `git log --oneline -1` on prod or the next deploy readout.
+
+📦 **§C155 → [PR #486](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/486), based on `main`, CI UNBLOCKED AND REAL** (`main` merged in, 0 conflicts). ▶ **Compare it BY NAME against `main`'s NEW head `65358be08`, never the pre-merge `43a0438c5` floor — that has 19 fewer tests**, and comparing across two denominators reads clean while hiding a real difference.
+- 🔴 **THE STACKED-PR CI GAP, MEASURED THEN CLEARED — keep all three steps.** Based on another branch it had **`check-docs` alone**, `total_count = 1`: **a green there is vacuous.** ⚠️ **Retargeting to `main` alone did NOT fix it** — re-measured, still 1, because retargeting emits no `synchronize` event. **Close + reopen took it to 6.** ▶ **Re-measure `total_count` after retargeting; never infer from the base having changed.**
+- ⚠️ **`gh pr edit 486 --base main` printed a GraphQL Projects-classic deprecation notice and SILENTLY DID NOT RETARGET.** `gh api -X PATCH repos/…/pulls/486 -f base=main` did. **Re-read the field after any `gh pr edit`** — it warns, exits 0, and changes nothing. → memory `github-pr-tooling-traps`.
+
 
 ## ⏩ RESUME — state as of **2026-09-18 (ALL FOUR RENDER FIXES ARE ON `main` — §C145, §C146, §C154, §C149 ① · DEPLOY + ONE BATCHED RE-RENDER OWED, BOTH [USER]'s)** (superseded by the block above)
 
