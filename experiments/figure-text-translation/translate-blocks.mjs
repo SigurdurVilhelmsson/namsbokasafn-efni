@@ -1,11 +1,14 @@
 /**
  * Send a figure's prose blocks to Málstaður and record the result.
  *
- * One request per DISTINCT BLOCK KEY, not one joined request: a block is the
- * semantic unit (a label, not a line), and a joined payload would have to be
- * split back out of the response — which §C118 measured the model restructuring.
- * Per-block costs the same in characters as a joined payload, since billing is by
- * character.
+ * 🔴 SUPERSEDED 2026-09-18 (§C140 ㉔, [USER] ruling 2026-09-15 —
+ * docs/decisions/2026-09-15-figure-label-mt-joined-and-per-label.md). This header used to argue
+ * for per-label requests ONLY. Every figure with ≥ 2 labels now also gets ONE joined request
+ * (labels newline-joined, dedupe order); the joined wording is kept unless `splitJoined` or
+ * `formulaGuard` rejects it, and every disagreement is recorded for the editor. Per-label alone
+ * reproduced wrong-sense labels every time (Element → Þáttur); joined alone destabilised
+ * established terms — neither dominates, so both are bought and a human judges the difference.
+ * The spend roughly doubles; `wireChars` is the one definition of it.
  *
  * 🔴 "DISTINCT" IS LOAD-BEARING AND WAS NOT ALWAYS TRUE. `blocks.json` carries the
  * same key more than once whenever a figure repeats a label — `compose.py` DRAWS
@@ -347,11 +350,17 @@ export function selectWording(english, perLabel, joinedLine) {
   const p = (perLabel ?? '').trim();
   const j = (joinedLine ?? '').trim();
   if (j === '') {
-    return p === '' ? { text: '', alt: null } : { text: p, alt: { kept: 'per-label', reason: 'empty' } };
+    return p === ''
+      ? { text: '', alt: null }
+      : { text: p, alt: { kept: 'per-label', reason: 'empty' } };
   }
   const damage = formulaGuard(english, j);
   if (damage.length > 0) {
-    return { text: p, alt: { kept: 'per-label', reason: 'formula' }, rejected: { text: j, damage } };
+    return {
+      text: p,
+      alt: { kept: 'per-label', reason: 'formula' },
+      rejected: { text: j, damage },
+    };
   }
   if (p === '' || p === j) return { text: j, alt: null };
   return { text: j, alt: { kept: 'joined', other: p, reason: 'disagree' } };
@@ -466,13 +475,17 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
   // all derived from one list; a plan that quotes a cost the run does not spend is the
   // provenance defect gate 1's inversion already had to fix once.
   //
-  // ⚠️ SO THIS `chars` READS LOWER THAN `prepare.json`'s ON A FIGURE THAT REPEATS A
+  // ⚠️ SO THIS `size.total` READS LOWER THAN `prepare.json`'s ON A FIGURE THAT REPEATS A
   // LABEL, and `tools/figure-run.js` records THAT one as `rec.chars`. The two are
   // different questions — the read layer counts the characters a figure DRAWS (R-13
   // multiplicity intact), this counts the characters it BUYS — so the difference is the
   // duplicate, not a discrepancy. Do not "reconcile" them by re-counting either side.
+  // It now also includes the joined request, which prepare.json never counts.
   const send = dedupeSendBlocks(blocks.filter((b) => b.send));
-  const chars = send.reduce((n, b) => n + b.english.length, 0);
+  // §C140 ㉔ — the ONE definition of the billed size (see `wireChars`); `billableFrom` in
+  // tools/figure-run.js calls the same function, so the plan and the driver cannot disagree.
+  const size = wireChars(send);
+  const joinedText = joinable(send) ? send.map((b) => b.english).join('\n') : null;
 
   // 🔴 GATE 1, INVERTED. `null` is not a placeholder for a glossary we failed to
   // load — it is the value `translateOptsFor` needs in order to OMIT the field.
@@ -485,7 +498,12 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
   // Building the opts once and reusing them below also means the thing asserted
   // on is the same object that rides the wire, not a second computation of it.
   const wire = send.map((b) => ({ block: b, opts: translateOptsFor(glossary, b.english) }));
-  const steered = glossarySteeredBlocks(wire);
+  // The joined request rides the wire too, so it is asserted here beside the per-label ones,
+  // under a key no block can have.
+  const joinedOpts = joinedText === null ? null : translateOptsFor(glossary, joinedText);
+  const steered = glossarySteeredBlocks(
+    joinedOpts ? [...wire, { block: { key: '(joined)' }, opts: joinedOpts }] : wire
+  );
   if (steered.length > 0) {
     console.error(
       `  ✗ REFUSED (glossary-on-the-figure-wire): ${steered.length} of ${wire.length} ` +
@@ -512,8 +530,14 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
 
   // The glossary line is part of the PLAN, so --dry-run shows it: the operator
   // decides whether to spend while looking at what would ride the wire.
+  // ⚠️ THE FIRST LINE'S SHAPE IS PARSED by figure-run-free.test.js (`N blocks, C chars`); `C` is
+  // the TOTAL across both arms, which is what the run is billed for.
   console.log(
-    `  ${send.length} blocks, ${chars} chars, est ${api.estimateIsk(chars).toFixed(2)} ISK`
+    `  ${send.length} blocks, ${size.total} chars, est ${api.estimateIsk(size.total).toFixed(2)} ISK`
+  );
+  console.log(
+    `  per-label ${size.perLabel} + joined ${size.joined} chars ` +
+      `(§C140 ㉔, [USER] 2026-09-15: ${joinedText === null ? 'no joined request' : 'labels sent both ways'})`
   );
   // Keyed on the PLAN, not on `args.noGlossary`: the count is derived from the
   // opts that will actually be sent, so this line stays true if a future
@@ -534,15 +558,14 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
   }
 
   const client = api.createClient();
-  const out = {};
+  const perLabel = {};
   const log = [];
   for (const { block: b, opts } of wire) {
     const t0 = Date.now();
     const r = await client.translate(b.english, opts);
     const got = (r.text || '').trim();
-    // `glossarySent` is an OUTCOME, not the caller's intent: it is false
-    // whenever no headword occurs in THIS block's text. Recording intent would
-    // make a run look glossary-steered when most of its blocks were not.
+    perLabel[b.key] = got;
+    // `glossarySent` is an OUTCOME, not the caller's intent (existing comment — keep it).
     log.push({
       key: b.key,
       en: b.english,
@@ -550,10 +573,47 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
       ms: Date.now() - t0,
       glossarySent: Boolean(opts.glossaries),
     });
-    out[b.key] = b.arc ? got : [got]; // composer wraps lines itself
     console.log(`    ${JSON.stringify(b.english).padEnd(28)} -> ${JSON.stringify(got)}`);
   }
+
+  // §C140 ㉔ — the joined arm. A refusal of the joined answer never costs a label its wording:
+  // it only decides WHICH wording is kept (spec §4.1).
+  let mtJoined;
+  let joinedRecord = null;
+  let lines = null;
+  if (send.length < 2) {
+    mtJoined = { status: 'single-label', labels: send.length };
+  } else if (joinedText === null) {
+    mtJoined = { status: 'skipped-newline', labels: send.length };
+  } else {
+    const t0 = Date.now();
+    const r = await client.translate(joinedText, joinedOpts);
+    const reply = r.text || '';
+    const split = splitJoined(reply, send.length);
+    mtJoined = split.ok
+      ? { status: 'ok', labels: send.length }
+      : { status: 'split-failed', labels: send.length, lines: split.got };
+    if (split.ok) lines = split.lines;
+    joinedRecord = { text: joinedText, reply, status: mtJoined.status, ms: Date.now() - t0 };
+    console.log(`    joined (${send.length} labels) -> ${mtJoined.status}`);
+  }
+
+  const out = {};
+  const alternatives = {};
+  send.forEach((b, i) => {
+    const sel = lines
+      ? selectWording(b.english, perLabel[b.key], lines[i])
+      : { text: perLabel[b.key], alt: null };
+    if (sel.alt) alternatives[b.key] = sel.alt;
+    const entry = log.find((l) => l.key === b.key);
+    entry.joined = lines ? lines[i] : null;
+    entry.kept = sel.text;
+    if (sel.rejected) entry.rejected = sel.rejected;
+    out[b.key] = b.arc ? sel.text : [sel.text]; // composer wraps lines itself
+  });
+
   const usage = client.getUsage ? client.getUsage() : client.usage;
+  // ▼ KEEP VERBATIM: the existing `blocksSteered` / `glossaryRecord` comment and two lines. ▼
   // OUTCOME, not intent — same convention as `glossarySent` above. At HEAD this
   // is always null, because `glossary` is always null; writing it as a
   // derivation rather than a literal is what keeps the record honest if that
@@ -571,6 +631,7 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
         when: new Date().toISOString(),
         glossary: glossaryRecord,
         blocks: log,
+        joined: joinedRecord,
         usage,
       },
       null,
@@ -585,6 +646,8 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
           ? `Málstaður /v1/translate, glossary ${args.book}`
           : 'Málstaður /v1/translate, no glossary',
         blocks: out,
+        alternatives,
+        mtJoined,
       },
       null,
       1

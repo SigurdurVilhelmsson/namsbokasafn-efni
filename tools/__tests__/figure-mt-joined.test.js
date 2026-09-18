@@ -6,13 +6,17 @@
  * ⚠️ Lives in `tools/__tests__/` though the module is in `experiments/`, for the reason
  * `figure-mt-glossary.test.js` states.
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
 import {
   formulaGuard,
   splitJoined,
   selectWording,
   joinable,
   wireChars,
+  main,
 } from '../../experiments/figure-text-translation/translate-blocks.mjs';
 
 describe('formulaGuard — measured 0/501 on the 2026-09-15 answers', () => {
@@ -128,5 +132,183 @@ describe('joinable and wireChars — the one owner of what a figure is billed fo
   });
   it('an empty plan is zero, without throwing', () => {
     expect(wireChars([])).toEqual({ perLabel: 0, joined: 0, total: 0 });
+  });
+});
+
+const block = (key, english, extra = {}) => ({
+  key,
+  english,
+  lines: english.split(' '),
+  arc: false,
+  send: true,
+  ...extra,
+});
+
+function fixtureOut(blocks) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'figjoin-'));
+  fs.writeFileSync(path.join(dir, 'blocks.json'), JSON.stringify(blocks));
+  fs.writeFileSync(
+    path.join(dir, 'meta.json'),
+    JSON.stringify({ source: '/nowhere/JOIN_FIG.pdf' })
+  );
+  return dir;
+}
+
+/**
+ * A stub whose per-label and joined answers are scripted separately, keyed on the EXACT text
+ * sent. An unscripted text throws: a test must never pass because the stub invented an answer.
+ */
+function scriptedStub(seen, answers) {
+  return {
+    translate: async (text, opts) => {
+      seen.push({ text, opts });
+      if (!(text in answers)) throw new Error(`unscripted request: ${JSON.stringify(text)}`);
+      return { text: answers[text] };
+    },
+    getUsage: () => ({ requests: seen.length }),
+  };
+}
+
+const runWith = (dir, seen, answers, extraArgs = []) =>
+  main(['--book', 'efnafraedi-2e', '--out', dir, ...extraArgs], {
+    createClient: () => scriptedStub(seen, answers),
+    estimateIsk: (c) => c / 100,
+    envPath: path.join(dir, 'absent.env'),
+  });
+
+const readTrans = (dir) =>
+  JSON.parse(fs.readFileSync(path.join(dir, 'translations-api.json'), 'utf-8'));
+
+describe('main — the joined arm', () => {
+  let realLog;
+  let savedExitCode;
+  beforeEach(() => {
+    realLog = console.log;
+    console.log = () => {};
+    savedExitCode = process.exitCode;
+    process.exitCode = undefined;
+  });
+  afterEach(() => {
+    console.log = realLog;
+    process.exitCode = savedExitCode;
+  });
+
+  it('keeps the joined wording and records the per-label one as the alternative', async () => {
+    const dir = fixtureOut([block('Element', 'Element'), block('Quantity', 'Quantity')]);
+    const seen = [];
+    await runWith(dir, seen, {
+      Element: 'Þáttur',
+      Quantity: 'Fjöldi',
+      'Element\nQuantity': 'Frumefni\nFjöldi',
+    });
+    expect(process.exitCode).toBeUndefined();
+    expect(seen.map((s) => s.text)).toEqual(['Element', 'Quantity', 'Element\nQuantity']);
+    const t = readTrans(dir);
+    expect(t.blocks).toEqual({ Element: ['Frumefni'], Quantity: ['Fjöldi'] });
+    expect(t.alternatives).toEqual({
+      Element: { kept: 'joined', other: 'Þáttur', reason: 'disagree' },
+    });
+    expect(t.mtJoined).toEqual({ status: 'ok', labels: 2 });
+  });
+
+  it('agreement on every label writes no alternatives (the control)', async () => {
+    const dir = fixtureOut([block('A', 'A'), block('B', 'B')]);
+    const seen = [];
+    await runWith(dir, seen, { A: 'a', B: 'b', 'A\nB': 'a\nb' });
+    const t = readTrans(dir);
+    expect(t.blocks).toEqual({ A: ['a'], B: ['b'] });
+    expect(t.alternatives).toEqual({});
+  });
+
+  it('a reply that does not split back keeps EVERY per-label answer and says why', async () => {
+    const dir = fixtureOut([block('A', 'A'), block('B', 'B')]);
+    const seen = [];
+    await runWith(dir, seen, { A: 'a', B: 'b', 'A\nB': 'a og b' });
+    const t = readTrans(dir);
+    expect(t.blocks).toEqual({ A: ['a'], B: ['b'] });
+    expect(t.alternatives).toEqual({});
+    expect(t.mtJoined).toEqual({ status: 'split-failed', labels: 2, lines: 1 });
+  });
+
+  it('a formula-damaged joined line keeps that label per-label, and only that label', async () => {
+    const dir = fixtureOut([block('H2O', 'H2O'), block('Element', 'Element')]);
+    const seen = [];
+    await runWith(dir, seen, {
+      H2O: 'H2O',
+      Element: 'Þáttur',
+      'H2O\nElement': 'H₂O\nFrumefni',
+    });
+    const t = readTrans(dir);
+    expect(t.blocks).toEqual({ H2O: ['H2O'], Element: ['Frumefni'] });
+    expect(t.alternatives.H2O).toEqual({ kept: 'per-label', reason: 'formula' });
+    expect(t.alternatives.Element).toEqual({ kept: 'joined', other: 'Þáttur', reason: 'disagree' });
+  });
+
+  it('a single-label figure makes exactly ONE request', async () => {
+    const dir = fixtureOut([block('Water', 'Water')]);
+    const seen = [];
+    await runWith(dir, seen, { Water: 'Vatn' });
+    expect(seen.map((s) => s.text)).toEqual(['Water']);
+    expect(readTrans(dir).mtJoined).toEqual({ status: 'single-label', labels: 1 });
+  });
+
+  it('a label containing a newline: the joined request is NEVER SENT', async () => {
+    const dir = fixtureOut([block('A', 'A\nB'), block('C', 'C')]);
+    const seen = [];
+    await runWith(dir, seen, { 'A\nB': 'a b', C: 'c' });
+    expect(seen.map((s) => s.text)).toEqual(['A\nB', 'C']); // no third, joined request
+    expect(readTrans(dir).mtJoined).toEqual({ status: 'skipped-newline', labels: 2 });
+  });
+
+  it('keeps the arc shape: an arc block is a bare string, as before', async () => {
+    const dir = fixtureOut([block('NaCl', 'NaCl', { arc: true }), block('Salt', 'Salt')]);
+    const seen = [];
+    await runWith(dir, seen, { NaCl: 'NaCl', Salt: 'Salt', 'NaCl\nSalt': 'NaCl\nSalt' });
+    expect(readTrans(dir).blocks).toEqual({ NaCl: 'NaCl', Salt: ['Salt'] });
+  });
+
+  it('sends no glossary on the joined request either', async () => {
+    const dir = fixtureOut([block('A', 'A'), block('B', 'B')]);
+    const seen = [];
+    await runWith(dir, seen, { A: 'a', B: 'b', 'A\nB': 'a\nb' });
+    expect(seen.filter((s) => 'glossaries' in s.opts)).toEqual([]);
+    expect(seen.every((s) => s.opts.targetLanguage === 'is')).toBe(true);
+  });
+
+  it('--dry-run prices both arms, first line parseable as before', async () => {
+    const dir = fixtureOut([block('Oxygen gas', 'Oxygen gas'), block('Water', 'Water')]);
+    const logs = [];
+    console.log = (m) => logs.push(String(m));
+    await main(['--book', 'efnafraedi-2e', '--out', dir, '--dry-run'], {
+      createClient: () => {
+        throw new Error('no client under --dry-run');
+      },
+      estimateIsk: (c) => c / 100,
+      envPath: path.join(dir, 'absent.env'),
+    });
+    expect(logs.some((l) => /^\s+2 blocks, 31 chars, est 0\.31 ISK/.test(l))).toBe(true);
+    expect(logs.some((l) => /per-label 15 \+ joined 16 chars/.test(l))).toBe(true);
+    expect(fs.existsSync(path.join(dir, 'translations-api.json'))).toBe(false);
+  });
+
+  it('records both arms in api-run.json', async () => {
+    const dir = fixtureOut([block('Element', 'Element'), block('Quantity', 'Quantity')]);
+    const seen = [];
+    await runWith(dir, seen, {
+      Element: 'Þáttur',
+      Quantity: 'Fjöldi',
+      'Element\nQuantity': 'Frumefni\nFjöldi',
+    });
+    const run = JSON.parse(fs.readFileSync(path.join(dir, 'api-run.json'), 'utf-8'));
+    expect(run.joined).toMatchObject({
+      text: 'Element\nQuantity',
+      reply: 'Frumefni\nFjöldi',
+      status: 'ok',
+    });
+    expect(run.blocks.find((b) => b.key === 'Element')).toMatchObject({
+      is: 'Þáttur',
+      joined: 'Frumefni',
+      kept: 'Frumefni',
+    });
   });
 });
