@@ -621,7 +621,11 @@ router.get(
           ? figureImageUrl(req, f.basename)
           : null;
         figures.push(
-          figureReview.buildFigurePayload(f.basename, resolved.fig, referenceText, imageUrl)
+          figureReview.buildFigurePayload(f.basename, resolved.fig, referenceText, imageUrl, {
+            mtBlocks: resolved.mtBlocks,
+            mtAlternatives: resolved.sidecar.mtAlternatives,
+            mtJoined: resolved.sidecar.mtJoined,
+          })
         );
       }
       res.json({ figures });

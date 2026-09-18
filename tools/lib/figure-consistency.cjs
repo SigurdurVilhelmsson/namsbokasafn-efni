@@ -51,4 +51,48 @@ function captionDivergence(blocks, referenceText) {
   return out;
 }
 
-module.exports = { decimalSeparatorWarnings, captionDivergence };
+/**
+ * §C140 ㉔ — the joined-vs-per-label verdicts, as review-panel warnings.
+ *
+ * Emitted only while the block still holds the MT's KEPT wording (`mtBlocks[key]`): once an editor
+ * has changed it — including by applying the suggestion — the warning has done its job. Compared
+ * against the sidecar's MT text, never another segment (CLAUDE.md: never decide by comparing two
+ * editable strings; the MT side here is the machine's own record, not an editable segment).
+ *
+ * ⚠️ `suggested` only for a disagreement with a NON-EMPTY per-label wording. A formula or empty
+ * fallback is a note: the joined wording was rejected, and offering it would invite the damage.
+ */
+function mtAlternativeWarnings(blocks, mtBlocks, mtAlternatives) {
+  const out = [];
+  if (!mtAlternatives || typeof mtAlternatives !== 'object') return out;
+  for (const [blockKey, alt] of Object.entries(mtAlternatives)) {
+    if (!alt || typeof alt !== 'object') continue;
+    const current = blocks[blockKey];
+    if (typeof current !== 'string' || current !== (mtBlocks || {})[blockKey]) continue;
+    const w = { blockKey, current, reason: alt.reason };
+    if (alt.reason === 'disagree' && typeof alt.other === 'string' && alt.other.trim() !== '') {
+      w.suggested = alt.other;
+    }
+    out.push(w);
+  }
+  return out;
+}
+
+/** A figure-level note when NO label on the figure had the joined arm's context. */
+function mtFigureWarning(mtJoined) {
+  if (!mtJoined || typeof mtJoined !== 'object') return null;
+  if (mtJoined.status === 'split-failed') {
+    return `Samhengisþýðing féll á skiptingu (${mtJoined.lines} línur fyrir ${mtJoined.labels} merkingar) — allar merkingar eru stakar vélþýðingar.`;
+  }
+  if (mtJoined.status === 'skipped-newline') {
+    return 'Samhengisþýðing var ekki send — allar merkingar eru stakar vélþýðingar.';
+  }
+  return null;
+}
+
+module.exports = {
+  decimalSeparatorWarnings,
+  captionDivergence,
+  mtAlternativeWarnings,
+  mtFigureWarning,
+};

@@ -280,6 +280,45 @@ describe('applyApprovedFigureEdits', () => {
     expect(side.composedVersion).toBeUndefined();
   });
 
+  it('CARRIES mtAlternatives and mtJoined FORWARD — an approval must not erase the MT verdicts (§C140 ㉔)', () => {
+    const ALT = { Celsius: { kept: 'joined', other: 'Celsíus', reason: 'disagree' } };
+    const JOINED = { status: 'ok', labels: 2 };
+    // The suite's beforeEach writes NO sidecar, so this test writes its own.
+    writeSidecar(bookDir, 'CNX_T', {
+      version: 1,
+      basename: 'CNX_T',
+      blocks: MT,
+      mtAlternatives: ALT,
+      mtJoined: JOINED,
+    });
+    svc.setState(db, {
+      bookId,
+      basename: 'CNX_T',
+      state: 'approved',
+      reviewedBy: 'ed',
+      blocks: MT,
+    });
+    svc.applyApprovedFigureEdits(db, { bookDir, bookId, basename: 'CNX_T', mtBlocks: MT });
+    const after = readSidecar(bookDir, 'CNX_T');
+    expect(after.mtAlternatives).toEqual(ALT);
+    expect(after.mtJoined).toEqual(JOINED);
+  });
+
+  it('does NOT invent mtAlternatives for a sidecar that never had them', () => {
+    writeSidecar(bookDir, 'CNX_T', { version: 1, basename: 'CNX_T', blocks: MT });
+    svc.setState(db, {
+      bookId,
+      basename: 'CNX_T',
+      state: 'approved',
+      reviewedBy: 'ed',
+      blocks: MT,
+    });
+    svc.applyApprovedFigureEdits(db, { bookDir, bookId, basename: 'CNX_T', mtBlocks: MT });
+    const after = readSidecar(bookDir, 'CNX_T');
+    expect('mtAlternatives' in after).toBe(false);
+    expect('mtJoined' in after).toBe(false);
+  });
+
   it('SURVIVES A FLAG IN BETWEEN — flag, then re-approve, and the figure is still composed', () => {
     // The realistic sequence, and the one the approve→approve test above cannot
     // see: an editor flags a figure, someone looks at it, the flag is lifted.

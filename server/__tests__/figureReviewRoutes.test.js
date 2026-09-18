@@ -45,7 +45,7 @@ describe('buildFigurePayload', () => {
   });
   it('returns an empty warning set rather than omitting the key', () => {
     const p = buildFigurePayload('CNX_T', { ...fig, blocks: { k: 'Suðumark' } }, '');
-    expect(p.warnings).toEqual({ decimal: [], caption: [] });
+    expect(p.warnings).toEqual({ decimal: [], caption: [], mt: [], mtFigure: null });
   });
 
   // ⚠️ Bound to a VALUE, not merely asserted present. The whole-branch review
@@ -69,6 +69,24 @@ describe('buildFigurePayload', () => {
     const p = buildFigurePayload('CNX_T', fig, '');
     expect(p.imageUrl).toBeNull();
     expect(Object.prototype.hasOwnProperty.call(p, 'imageUrl')).toBe(true);
+  });
+
+  it('carries the §C140 ㉔ MT warnings when given the sidecar MT info', () => {
+    const f = { effectiveState: 'mt-preview', blocks: { Element: 'Frumefni' }, note: null };
+    const p = buildFigurePayload('CNX_T', f, '', null, {
+      mtBlocks: { Element: 'Frumefni' },
+      mtAlternatives: { Element: { kept: 'joined', other: 'Þáttur', reason: 'disagree' } },
+      mtJoined: { status: 'split-failed', labels: 2, lines: 1 },
+    });
+    expect(p.warnings.mt).toEqual([
+      { blockKey: 'Element', current: 'Frumefni', suggested: 'Þáttur', reason: 'disagree' },
+    ]);
+    expect(p.warnings.mtFigure).toBeTruthy();
+  });
+  it('an explicit empty list and null without MT info — never a missing key', () => {
+    const p = buildFigurePayload('CNX_T', fig, '');
+    expect(p.warnings.mt).toEqual([]);
+    expect(p.warnings.mtFigure).toBeNull();
   });
 });
 
