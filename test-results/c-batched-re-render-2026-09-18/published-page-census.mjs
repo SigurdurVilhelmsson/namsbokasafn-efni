@@ -1,6 +1,10 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
-const REPO='/home/siggi/dev/repos/namsbokasafn-efni';
+import { fileURLToPath } from 'node:url';
+// Resolved against import.meta.url, never process.cwd() or a hardcoded path:
+// CLAUDE.md § durable — a books/-relative path resolved against cwd silently points at
+// the wrong tree, and this script must run from anywhere in a fresh clone.
+const REPO = path.resolve(fileURLToPath(new URL('.', import.meta.url)), '..', '..');
 const T=[['efnafraedi-2e','mt-preview','04'],['efnafraedi-2e','mt-preview','10'],
          ['efnafraedi-2e','mt-preview','17'],['lifraen-efnafraedi','mt-preview','03']];
 // NON-GREEDY: a greedy /<p[^>]*>[\s\S]*<figure/ matches a figure emitted AFTER </p>

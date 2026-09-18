@@ -1,7 +1,11 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
-import { renderCnxmlToHtml, _loadBookConfigForTest } from '/home/siggi/dev/repos/namsbokasafn-efni/tools/cnxml-render.js';
-const REPO='/home/siggi/dev/repos/namsbokasafn-efni';
+import { fileURLToPath } from 'node:url';
+import { renderCnxmlToHtml, _loadBookConfigForTest } from '../../tools/cnxml-render.js';
+// Resolved against import.meta.url, never process.cwd() or a hardcoded path:
+// CLAUDE.md § durable — a books/-relative path resolved against cwd silently points at
+// the wrong tree, and this script must run from anywhere in a fresh clone.
+const REPO = path.resolve(fileURLToPath(new URL('.', import.meta.url)), '..', '..');
 const T=[['efnafraedi-2e','04',4],['efnafraedi-2e','10',10],['efnafraedi-2e','17',17],['lifraen-efnafraedi','03',3]];
 const FIG_IN_P=/<p\b(?:(?!<\/p>)[\s\S])*?<figure/g;
 const RAW_CAP_IN_FIG=/<figure\b(?:(?!<\/figure>)[\s\S])*?<caption\b/g;
