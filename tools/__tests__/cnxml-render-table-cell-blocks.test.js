@@ -134,10 +134,45 @@ describe('§C146 — a <para> child of a table <entry> renders as a block', () =
     ).toBe(true);
   });
 
+  it('records an undispatched block that sits BEFORE the first para', () => {
+    // 🔴 THE FIRST DRAFT SCANNED ONLY THE TEXT AFTER THE LAST PARA, so a block
+    // before or between paras was invisible. The trailing case above passed
+    // throughout — which is how a seam can look tested and be half-blind.
+    const res = render(tableWithCell('<quote id="q">y</quote><para id="p">x</para>'));
+    expect(
+      res.undispatchedBlocks.some((b) => b.tag === 'quote' && b.location === 'renderTableCells')
+    ).toBe(true);
+  });
+
+  it('records an undispatched block in a cell with NO para at all', () => {
+    // 🔴 THE CASE THE DETECTOR EXISTS FOR, AND THE ONE THE FIRST DRAFT COULD NOT
+    // SEE: the scan sat inside a `paras.length > 0` branch, so a para-less cell
+    // returned early and was never examined. The only real candidate in the corpus
+    // — organic m00046's <figure> entry — has no para, so the seam reported a clean
+    // zero on the very shape it was written to catch.
+    const res = render(tableWithCell('<quote id="q">y</quote>'));
+    expect(
+      res.undispatchedBlocks.some((b) => b.tag === 'quote' && b.location === 'renderTableCells')
+    ).toBe(true);
+  });
+
   it('records nothing on the loud seam for an ordinary para-only cell', () => {
-    // The control for the assertion above: without it, a seam that fired on
-    // everything would satisfy the previous test too.
+    // The control for the assertions above: without it, a seam that fired on
+    // everything would satisfy all three.
     const res = render(tableWithCell('<para id="p">x</para>'));
+    expect(res.undispatchedBlocks.filter((b) => b.location === 'renderTableCells')).toEqual([]);
+  });
+
+  it('does not report a <media> in a cell as an undispatched block', () => {
+    // 274 entries corpus-wide carry a <media> and processInlineContent renders it
+    // IN PLACE (unlike renderItemBody, which swaps it out before its own seam). A
+    // set copied from ITEM_INLINE_OK without 'media' reports all 274 as undispatched
+    // — noise that would bury the one real hit.
+    const res = render(
+      tableWithCell(
+        '<para id="p">x</para><media alt="a"><image src="y.jpg" mime-type="image/jpeg"/></media>'
+      )
+    );
     expect(res.undispatchedBlocks.filter((b) => b.location === 'renderTableCells')).toEqual([]);
   });
 });

@@ -2075,9 +2075,18 @@ function renderTableCells(rowContent, context, isHeader) {
 // dispatched its block children. Same question ITEM_INLINE_OK answers for list
 // items, asked of a table cell, so it is derived from it rather than re-listed —
 // minus 'para', which renderEntryBody now dispatches and which must therefore be
-// LOUD if one ever survives the dispatch. 'image' and 'iframe' stay inline
-// because processInlineContent's <media> handlers consume them in place.
-const ENTRY_INLINE_OK = new Set([...ITEM_INLINE_OK, 'iframe'].filter((t) => t !== 'para'));
+// LOUD if one ever survives the dispatch.
+//
+// ⚠️ 'media'/'image'/'iframe' ARE INLINE HERE AND THAT IS A REAL DIFFERENCE FROM
+// ITEM_INLINE_OK, NOT AN OVERSIGHT. renderItemBody SWAPS <media> out to a
+// placeholder before its own seam scan, so the tag is gone by the time it looks;
+// a cell does not swap — processInlineContent's <media><image> and <media><iframe>
+// handlers consume them IN PLACE, and 274 entries corpus-wide depend on that. A
+// set copied from ITEM_INLINE_OK without 'media' therefore reports every one of
+// them as an undispatched block. ▶ A seam's ignore-set is only meaningful next to
+// the dispatch that precedes it; two seams with different dispatch need different
+// sets.
+const ENTRY_INLINE_OK = new Set([...ITEM_INLINE_OK, 'media', 'iframe'].filter((t) => t !== 'para'));
 
 /**
  * Render a table cell's mixed content: inline text interleaved with direct-child
@@ -2114,6 +2123,37 @@ const ENTRY_INLINE_OK = new Set([...ITEM_INLINE_OK, 'iframe'].filter((t) => t !=
  */
 function renderEntryBody(content, context) {
   const paras = extractElements(content, 'para');
+
+  // Loud seam FIRST, over the WHOLE cell minus the paras this function dispatches.
+  //
+  // 🔴 THREE THINGS HERE ARE DELIBERATE, AND THE FIRST DRAFT GOT ALL THREE WRONG —
+  // in a way that made the seam claim coverage it did not have, in three documents.
+  //   ① It runs UNCONDITIONALLY. The draft scanned inside a `paras.length > 0`
+  //      branch, so a cell with NO para was never examined — which is exactly the
+  //      shape of the one real candidate in the corpus (organic m00046's <figure>
+  //      entry, no para). The detector was blind to the only thing it was written
+  //      for, and a corpus run reported a clean zero.
+  //   ② It scans the whole cell, not the tail. The draft scanned `rest`, the text
+  //      AFTER the last para, so anything before or between paras was invisible.
+  //   ③ 'media' is in ENTRY_INLINE_OK. See the note on that set: a cell renders
+  //      <media> IN PLACE rather than swapping it out, so omitting it reports 274
+  //      legitimate entries as undispatched blocks.
+  // ▶ A NULL FROM A DETECTOR IS WORTH NOTHING UNTIL YOU HAVE SHOWN THE DETECTOR
+  // REACHES THE CASE. Measured after the fix: it fires on exactly 1 cell
+  // corpus-wide (m00046's figure), alongside renderList-item's known <quote> in
+  // m00155 — two live positive controls, where there had been one and a false zero.
+  if (context.undispatchedBlocks) {
+    let leftover = content;
+    for (const p of paras) leftover = leftover.replace(p.fullMatch, ' ');
+    const leftoverTag = /<([a-z][\w-]*)[\s/>]/g;
+    let m;
+    while ((m = leftoverTag.exec(leftover)) !== null) {
+      if (!ENTRY_INLINE_OK.has(m[1])) {
+        context.undispatchedBlocks.push({ tag: m[1], id: null, location: 'renderTableCells' });
+      }
+    }
+  }
+
   if (paras.length === 0) return processInlineContent(content, context);
 
   // Render each para at its position; inline runs between and around them keep
@@ -2129,17 +2169,6 @@ function renderEntryBody(content, context) {
     rest = rest.slice(idx + p.fullMatch.length);
   }
   if (rest.trim()) parts.push(processInlineContent(rest, context));
-
-  // Loud seam: record any block-shaped element left inline in a cell.
-  if (context.undispatchedBlocks) {
-    const leftoverTag = /<([a-z][\w-]*)[\s/>]/g;
-    let m;
-    while ((m = leftoverTag.exec(rest)) !== null) {
-      if (!ENTRY_INLINE_OK.has(m[1])) {
-        context.undispatchedBlocks.push({ tag: m[1], id: null, location: 'renderTableCells' });
-      }
-    }
-  }
 
   return parts.join('');
 }

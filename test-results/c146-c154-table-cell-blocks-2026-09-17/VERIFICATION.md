@@ -135,18 +135,56 @@ Marker residue in injected output for m00061: 1 marker(s) survived …
 That is the **§C145 gate merged earlier today doing its job** on a known §C115 instance.
 It is present identically in every arm, so it affects no comparison here.
 
-### The loud seam kept its positive control
+### 🔴 The loud seam's FIRST DRAFT WAS BLIND TO THE ONLY CASE IT EXISTED FOR — and had been written up as working
 
-Corpus-wide, `undispatchedBlocks` fires **exactly once** — the known undispatched
-`<quote>` in organic `m00155`. So the new `renderTableCells` seam record sits alongside a
-detector that is demonstrably alive, and a future zero from it is a result rather than a
-dead code path.
+The first version of `renderEntryBody` put the seam scan **inside** the
+`paras.length > 0` branch and scanned only `rest`, the text after the last para. Three
+consequences, all measured:
+
+1. **A cell with no `<para>` was never scanned.** Organic `m00046`'s `<figure>` entry has
+   no para, so the one real candidate in the whole corpus was invisible. The corpus run
+   reported `undispatched non-empty: 1` — the `renderList-item` `<quote>` in `m00155` —
+   and that clean-looking zero for table cells was **manufactured by the detector, not
+   observed in the corpus**.
+2. **Anything before or between paras was invisible.** The unit test passed only because
+   its `<quote>` was trailing; `<quote/><para/>` would not have been recorded.
+3. **`media` was missing from `ENTRY_INLINE_OK`.** A `<media>` *after* a para would have
+   false-positived — and 274 entries carry one. It stayed silent only because no corpus
+   cell has that order.
+
+▶ **This was written up as working in three places** — the code comment, §9 of this file,
+and the register's §C146 bullet — each asserting that `m00046` would be recorded if it ever
+reached a rendered page. It would not have been. **That is the stale-premise class
+CLAUDE.md is built around, committed by the same session that was documenting it.**
+▶ **A NULL FROM A DETECTOR IS WORTH NOTHING UNTIL YOU HAVE SHOWN THE DETECTOR REACHES THE
+CASE.** The seam's own ignore-set is part of that reach: `renderItemBody` **swaps `<media>`
+out to a placeholder** before its scan, so `ITEM_INLINE_OK` needs no `media` entry — a set
+copied from it without adjustment is wrong for a cell, which renders media **in place**.
+Two seams with different dispatch need different ignore-sets.
+
+### After the fix — a stated prediction, then the measurement
+
+The scan now runs **unconditionally**, over the whole cell with the dispatched paras
+removed. **Predicted before running: the seam fires on exactly 2 modules** — `m00046`
+(`figure`, `renderTableCells`) and `m00155` (`quote`, `renderList-item`).
+
+```
+PREDICTED 2 modules -> MEASURED 2
+    lifraen-efnafraedi__ch04_m00046.cnxml ['renderTableCells:figure']
+    lifraen-efnafraedi__ch13_m00155.cnxml ['?:quote']
+```
+
+**Two live positive controls where there had been one and a false zero.** More than 2 would
+have meant `ENTRY_INLINE_OK` was missing a tag; fewer, that the scan still did not reach.
+
+The seam change is **output-neutral**: a corpus render before and after it is
+**491 of 491 byte-identical**. It records; it does not alter a page.
 
 ---
 
 ## 5. Unit + corpus tests
 
-`tools/__tests__/cnxml-render-table-cell-blocks.test.js` — **17 tests, all passing.**
+`tools/__tests__/cnxml-render-table-cell-blocks.test.js` — **20 tests, all passing.**
 
 Each null carries a control:
 
@@ -154,7 +192,10 @@ Each null carries a control:
   "no raw `<para>`" is also what a renderer that **dropped** every para would print, and
   that failure is precisely §C154's. Requiring presence separates the two.
 - *"records an undispatched block on the loud seam"* is paired with **"records nothing for
-  an ordinary para-only cell"** — a seam that fired on everything would satisfy the first.
+  an ordinary para-only cell"** and with **"does not report a `<media>` as undispatched"** —
+  a seam that fired on everything would satisfy the first on its own. Two further legs pin
+  the reach the first draft lacked: a block **before** the first para, and a block in a cell
+  with **no para at all**.
 - *"renders `<tfoot>`"* is paired with **"emits no `<tfoot>` when the source has none"** —
   proving the assertion reads the source rather than an unconditional wrapper.
 - *"media still renders in the same cell"* guards the 274 entries that already worked
@@ -167,8 +208,10 @@ after **every** round, with `git status --porcelain` as a second instrument at t
 
 | round | mutation | red | verdict |
 |---|---|---|---|
-| M1 | revert §C146 (cell body back to `processInlineContent`) | **12 of 17** | kills every §C146 leg + the shared corpus legs |
-| M2 | delete the `<tfoot>` branch only | **3 of 17** | kills exactly the three §C154 legs, nothing else |
+| M1 | revert §C146 (cell body back to `processInlineContent`) | **12 of 17** (pre-seam-fix test set) | kills every §C146 leg + the shared corpus legs |
+| M2 | delete the `<tfoot>` branch only | **3 of 20** | kills exactly the three §C154 legs, nothing else |
+| M3 | restore the half-blind seam (tail-only, inside the para branch) | **2 of 20** | kills exactly the before-first-para and no-para legs |
+| M4 | drop `media` from `ENTRY_INLINE_OK` | **1 of 20** | kills exactly the media-not-undispatched leg |
 
 Both restores verified (`[restore OK]`, then a clean `git status`).
 
@@ -267,5 +310,7 @@ keeps §C146 a single-repo item.
   **extract-side** question about segmentation, and this fix is render-side. `m00032`'s
   published `<para>` leak is cleared by this change; its extract-side classification is not.
 - **It does not widen the render to dispatch `figure` inside a cell.** Organic `m00046`'s
-  single figure-in-entry is latent and unpublished; the seam now records it if it ever
-  reaches a rendered page, without turning it into a refusal.
+  single figure-in-entry is latent and unpublished. The seam records it **today, measured**
+  (`renderTableCells:figure`, §6 above) rather than "if it ever reaches a rendered page" —
+  and records it **diagnostically**, without turning it into a refusal, because
+  `undispatchedBlocks` is returned by `renderCnxmlToHtml` and nothing fails on it.
