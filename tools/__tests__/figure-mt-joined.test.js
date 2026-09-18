@@ -291,6 +291,22 @@ describe('main — the joined arm', () => {
     expect(fs.existsSync(path.join(dir, 'translations-api.json'))).toBe(false);
   });
 
+  it('the plan line counts REQUESTS, including the joined one, in its denominator', async () => {
+    // R5: `steered` can include the synthetic `(joined)` entry, so the denominator must be
+    // the number of PLANNED REQUESTS (2 per-label + 1 joined = 3), not `wire.length` (2).
+    const dir = fixtureOut([block('Oxygen gas', 'Oxygen gas'), block('Water', 'Water')]);
+    const logs = [];
+    console.log = (m) => logs.push(String(m));
+    await main(['--book', 'efnafraedi-2e', '--out', dir, '--dry-run'], {
+      createClient: () => {
+        throw new Error('no client under --dry-run');
+      },
+      estimateIsk: (c) => c / 100,
+      envPath: path.join(dir, 'absent.env'),
+    });
+    expect(logs.some((l) => /0 of 3 requests steered/.test(l))).toBe(true);
+  });
+
   it('records both arms in api-run.json', async () => {
     const dir = fixtureOut([block('Element', 'Element'), block('Quantity', 'Quantity')]);
     const seen = [];

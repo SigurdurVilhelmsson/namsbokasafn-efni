@@ -501,13 +501,17 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
   // The joined request rides the wire too, so it is asserted here beside the per-label ones,
   // under a key no block can have.
   const joinedOpts = joinedText === null ? null : translateOptsFor(glossary, joinedText);
+  // R5: the joined request is a REQUEST too, so it counts in the denominator both here and
+  // in the plan's glossary line below — `wire.length` alone undercounts by one whenever a
+  // joined request is planned.
+  const planned = wire.length + (joinedOpts ? 1 : 0);
   const steered = glossarySteeredBlocks(
     joinedOpts ? [...wire, { block: { key: '(joined)' }, opts: joinedOpts }] : wire
   );
   if (steered.length > 0) {
     console.error(
-      `  ✗ REFUSED (glossary-on-the-figure-wire): ${steered.length} of ${wire.length} ` +
-        `blocks would carry a glossary — ${steered.join(', ')}.\n` +
+      `  ✗ REFUSED (glossary-on-the-figure-wire): ${steered.length} of ${planned} ` +
+        `requests would carry a glossary — ${steered.join(', ')}.\n` +
         'The figure MT leg is bare by [USER] ruling 2026-09-06 (§C133). Nothing sent.'
     );
     process.exitCode = 2;
@@ -544,7 +548,7 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
   // `--with-glossary` ever reintroduces one.
   console.log(
     `  glossary: NONE — the figure leg is bare by default ` +
-      `([USER] 2026-09-06, §C133); ${steered.length} of ${wire.length} blocks steered`
+      `([USER] 2026-09-06, §C133); ${steered.length} of ${planned} requests steered`
   );
   if (args.noGlossary) {
     console.log(
@@ -613,7 +617,6 @@ export async function main(argv, { createClient, estimateIsk, envPath } = {}) {
   });
 
   const usage = client.getUsage ? client.getUsage() : client.usage;
-  // ▼ KEEP VERBATIM: the existing `blocksSteered` / `glossaryRecord` comment and two lines. ▼
   // OUTCOME, not intent — same convention as `glossarySent` above. At HEAD this
   // is always null, because `glossary` is always null; writing it as a
   // derivation rather than a literal is what keeps the record honest if that
