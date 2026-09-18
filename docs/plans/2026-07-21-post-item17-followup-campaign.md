@@ -13,7 +13,7 @@ node tools/cnxml-render.js --book efnafraedi-2e      --chapter 17
 node tools/cnxml-render.js --book lifraen-efnafraedi --chapter 3
 ```
 
-🔴 **THE DELTA IS PREDICTED AND CHECKABLE — REQUIRE IT, DO NOT HOPE FOR IT.** Measured 2026-09-18 by rendering each chapter's real `03-translated` input with `main` at `65358be08`; the census script is committed at `test-results/c-batched-re-render-2026-09-18/`.
+🔴 **THE DELTA IS PREDICTED AND CHECKABLE — REQUIRE IT, DO NOT HOPE FOR IT.** Measured 2026-09-18 by rendering each chapter's real `03-translated` input with current `main`, and **re-verified unchanged after §C155 merged**; the census script is committed at `test-results/c-batched-re-render-2026-09-18/`. **Re-run it before the render rather than trusting this table.**
 
 | | figInP | rawCapInFig | paraInCell | raw `[[` | html pages |
 |---|---|---|---|---|---|

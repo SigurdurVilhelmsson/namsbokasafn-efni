@@ -60,8 +60,10 @@ ls books/lifraen-efnafraedi/05-publication/*/chapters/ # mt-preview only
 
 ## The predicted delta — check it, do not trust it
 
-**Produced 2026-09-18 by rendering each chapter's actual `03-translated` input with `main` at
-`65358be08`.** Both scripts are committed beside this file so they survive the session:
+**Produced 2026-09-18 by rendering each chapter's actual `03-translated` input with current `main`.**
+✅ **Re-verified after §C155 merged (`8de1fbf37`) and unchanged** — re-run it yourself before the
+render rather than trusting this table, which is exactly what that re-verification was. Both
+scripts are committed beside this file so they survive the session:
 
 ```bash
 node test-results/c-batched-re-render-2026-09-18/published-page-census.mjs    # BEFORE and AFTER
