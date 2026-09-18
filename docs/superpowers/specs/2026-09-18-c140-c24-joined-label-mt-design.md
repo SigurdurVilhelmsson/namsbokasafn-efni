@@ -68,8 +68,13 @@ Three legs, any one failing rejects the joined answer **for that label**:
    followed by a digit, or two or more element-symbol capitals: `H2O`, `NaCl`, `CO2`) appears
    verbatim in the answer.
 
-⚠️ JavaScript `\d` is ASCII-only without the `u` flag — which is what leg 1 needs (a subscript `₂`
-must NOT count as the digit `2`). The implementation states this and a test pins it.
+⚠️ JavaScript `\d` is ASCII-only (`[0-9]`, with or without the `u` flag) — which is what leg 1
+needs (a subscript `₂` must NOT count as the digit `2`). The implementation states this and a test
+pins it.
+
+⚠️ **Only one sidecar writer rebuilds from a field list** — `applyApprovedFigureEdits`. The
+publisher's `withComposedStamp` (`tools/publish-figure-svg.js`) copies every key it is given, so
+the new fields survive a publish without change (checked 2026-09-18).
 
 ## 3. Approach
 
