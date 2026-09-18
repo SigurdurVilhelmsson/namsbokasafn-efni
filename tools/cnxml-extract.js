@@ -238,18 +238,23 @@ function extractInlineText(
   // rendered rollup: 01-source direct → 1 credit, extract→inject → 2.
   //
   // 🔴 REMOVE EXACTLY WHAT processFigure OWNS AND NOT ONE CHARACTER MORE — its
-  // FIRST <caption>, matched with processFigure's own pattern. A <title>, a second
-  // <caption> and every other child are deliberately left in place: processFigure
-  // extracts none of them, so dropping one would turn a DUPLICATE into a silent
-  // LOSS. 75 figures corpus-wide carry a direct-child <title> that nothing
-  // extracts (§C155). A duplicate is recoverable from the other copy; a loss is
-  // not recoverable at all.
+  // FIRST <caption> and its DIRECT-CHILD <title>, each matched with the pattern
+  // processFigure itself uses. A second <caption> and every other child are
+  // deliberately left in place: processFigure extracts none of them, so dropping
+  // one would turn a DUPLICATE into a silent LOSS. A duplicate is recoverable
+  // from the other copy; a loss is not recoverable at all.
   //
-  // ⚠️ THIS GUARD IS DEFENSIVE, NOT CURRENTLY LOAD-BEARING, AND SAYING SO IS THE
-  // POINT: measured, NOT ONE of those 75 titled figures is inside a <para>, so
-  // this cut cannot reach one today. It is written to be correct wherever a
-  // titled figure MIGHT appear — the exposure is set by the corpus, not by the
-  // code, so a source refresh or a new book can make it load-bearing overnight.
+  // ⚠️ THE <title> ARM ARRIVED WITH §C155 AND HAD TO ARRIVE IN THE SAME CHANGE.
+  // Until then nothing extracted a figure title, so removing it here would have
+  // LOST it; the moment processFigure began emitting `figure-title`, leaving it
+  // here would have recreated §C149 ②'s duplicate for titles instead. **The cut
+  // and the owner move together, in one commit, in both directions.**
+  //
+  // ⚠️ BOTH ARMS ARE DEFENSIVE RATHER THAN LOAD-BEARING TODAY, AND SAYING SO IS
+  // THE POINT: measured, NOT ONE of the 75 titled figures is inside a <para>, and
+  // only one captioned one is. They are written to be correct wherever such a
+  // figure MIGHT appear — exposure is set by the CORPUS, not by the code, so a
+  // source refresh or a new book can make either arm load-bearing overnight.
   //
   // The BARE `<caption>` match is deliberate and must track processFigure's: an
   // attributed `<caption id="…">` matches NEITHER, so it is extracted by nobody
@@ -279,7 +284,15 @@ function extractInlineText(
   // a figure; re-derive that before trusting it on a new book or a source refresh.
   text = text.replace(
     new RegExp(`(<figure(?:${TAG_ATTR_SPAN})>)([\\s\\S]*?)(<\\/figure>)`, 'g'),
-    (match, open, inner, close) => open + inner.replace(/<caption>[\s\S]*?<\/caption>/, '') + close
+    (match, open, inner, close) => {
+      let kept = inner.replace(/<caption>[\s\S]*?<\/caption>/, '');
+      // The title is removed by its EXACT span, located depth-aware, so a nested
+      // <subfigure>'s title is left alone — the same primitive processFigure uses
+      // to decide ownership, so the two can never disagree about which title this is.
+      const t = firstDirectChildTitle(kept);
+      if (t) kept = kept.replace(t.fullMatch, '');
+      return open + kept + close;
+    }
   );
 
   // Replace MathML with placeholders
@@ -1525,9 +1538,35 @@ function processFigure(figure, moduleId, addSegment, mathMap, counters) {
     type: 'figure',
     id: figure.id,
     class: figure.attributes.class,
+    title: null,
     caption: null,
     media: null,
   };
+
+  // §C155 — EXTRACT THE FIGURE'S OWN <title>. Nothing did, and renderFigure emitted
+  // none either, so the text reached readers IN NO LANGUAGE — a loss, not an English
+  // leak (verified on organic ch06/m00081: `MECHANISM` absent from the rendered HTML).
+  // Census: 75 figures carry one — organic 69 across 56 modules, biology 6, and none
+  // in chemistry, physics or microbiology. 61 of organic's are the single word
+  // `MECHANISM`, OpenStax's mechanism-box heading.
+  //
+  // 🔴 firstDirectChildTitle, NEVER a bare /<title>…<\/title>/ on figure.content: that
+  // is depth-BLIND and would claim a nested <subfigure>'s title as the figure's own.
+  // §C82 L144 is the precedent — `getElementsByTagName('title')[0]` donated a
+  // paragraph's sub-heading to 301 of 301 chemistry examples, and a populated slot
+  // holding the WRONG text is worse than an empty one because no coverage count can
+  // see it. It also handles a self-closing `<title/>` (organic carries 20), which is
+  // an empty direct-child title, not the absence of one — addSegment's own emptiness
+  // guard then correctly declines to emit a segment for it.
+  //
+  // Emitted BEFORE the caption so the segment order matches document order, which is
+  // the order an editor reads them in.
+  const figTitle = firstDirectChildTitle(figure.content);
+  if (figTitle) {
+    const titleText = extractInlineText(figTitle.inner, mathMap, counters);
+    const titleId = addSegment('figure-title', titleText, figure.id ? `${figure.id}-title` : null);
+    if (titleId) figStructure.title = { segmentId: titleId, text: titleText };
+  }
 
   // Extract caption
   const captionMatch = figure.content.match(/<caption>([\s\S]*?)<\/caption>/);

@@ -51,6 +51,7 @@ import {
   TAG_ATTR_SPAN,
   extractElements,
   firstDirectChildTitle,
+  openTagPattern,
 } from './lib/cnxml-parser.js';
 import { resolveRestorePolicy } from './lib/provenance.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
@@ -2875,6 +2876,36 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
         );
       }
 
+      // §C155 — replace the figure's own <title> with its translation.
+      //
+      // Same idiom as the caption directly below, and needed for the same reason:
+      // this branch returns originalCnxml's figure block VERBATIM, so without an
+      // explicit substitution the title stayed ENGLISH in the injected CNXML no
+      // matter what the editor did to the segment. That is §C89's shape exactly —
+      // the English text is still present, so no tag or attribute COUNT moves.
+      //
+      // 🔴 Located with firstDirectChildTitle, not a bare /<title>…<\/title>/ on the
+      // block: a <subfigure>'s title would otherwise be overwritten with the FIGURE's
+      // translation. The open tag is skipped first with openTagPattern so the scan
+      // starts at the figure's children — firstDirectChildTitle measures depth from
+      // the start of the string it is given, and `figureCnxml` begins with <figure>.
+      if (element.title && element.title.segmentId) {
+        const titleText = getSeg(element.title.segmentId);
+        if (titleText) {
+          const openMatch = figureCnxml.match(openTagPattern('figure'));
+          if (openMatch) {
+            const innerStart = openMatch.index + openMatch[0].length;
+            const inner = figureCnxml.slice(innerStart);
+            const t = firstDirectChildTitle(inner);
+            if (t) {
+              figureCnxml =
+                figureCnxml.slice(0, innerStart) +
+                inner.replace(t.fullMatch, `<title>${titleText}</title>`);
+            }
+          }
+        }
+      }
+
       // Replace caption if we have a translation
       if (element.caption && element.caption.segmentId) {
         const captionText = getSeg(element.caption.segmentId);
@@ -2927,6 +2958,17 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
   const classAttr = element.class ? ` class="${element.class}"` : '';
 
   lines.push(`<figure${idAttr}${classAttr}>`);
+
+  // §C155 — the figure's own <title>, first so the rebuilt block matches document
+  // order. This fallback fires only when a figure has no id or no source match, so
+  // it is rarely exercised; leaving the title out here would make the two branches
+  // disagree about what a figure contains, which is how one of them silently rots.
+  if (element.title && element.title.segmentId) {
+    const titleText = getSeg(element.title.segmentId);
+    if (titleText) {
+      lines.push(`<title>${titleText}</title>`);
+    }
+  }
 
   // Add media
   if (element.media) {

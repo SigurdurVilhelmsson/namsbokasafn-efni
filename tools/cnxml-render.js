@@ -1317,6 +1317,28 @@ function renderFigure(figure, context) {
 
   lines.push(`<figure ${attrs.join(' ')}>`);
 
+  // §C155 — the figure's own <title>, above the image.
+  //
+  // Nothing rendered this, so the text reached readers IN NO LANGUAGE — not an
+  // English leak, a loss (verified on organic ch06/m00081: `MECHANISM` absent from
+  // the rendered HTML). 75 figures carry one; 61 of organic's 69 are the single word
+  // `MECHANISM`, OpenStax's mechanism-box heading.
+  //
+  // ⚠️ A BARE <h4>, MATCHING renderNote's TITLE, BECAUSE CLASS NAMES ARE A CROSS-REPO
+  // CONTRACT. vefur's content.css styles `figcaption`, `.figure-label` and
+  // `.note-type` and has no `.figure-title`, so a new class here would render
+  // unstyled until a coordinated vefur change shipped (CLAUDE.md § Cross-repo CSS
+  // contract). An <h4> is styled by the existing heading rules on arrival.
+  //
+  // 🔴 firstDirectChildTitle, not a bare /<title>…<\/title>/: depth-blind matching
+  // would render a nested <subfigure>'s title as the figure's own. processInlineContent
+  // because a title may carry <emphasis>/<sub>/<sup> — the same treatment the caption
+  // below gets, and the reason renderNote stopped using `[^<]+` for its own title.
+  const figTitle = firstDirectChildTitle(figure.content);
+  if (figTitle && figTitle.inner.trim()) {
+    lines.push(`  <h4>${processInlineContent(figTitle.inner, context)}</h4>`);
+  }
+
   // Extract media/image
   // §C115 — quote-aware. THIS IS THE READER-VISIBLE ONE: `mediaAttrs.alt` below
   // becomes the published `<img alt>`, so a truncated open tag here publishes
