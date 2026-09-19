@@ -172,6 +172,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_05_CovalradiT",
+          "title": null,
           "caption": {
             "segmentId": "m68735:caption:CNX_Chem_06_05_CovalradiT-caption"
           },
@@ -188,6 +189,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_05_Radiigraph",
+          "title": null,
           "caption": {
             "segmentId": "m68735:caption:CNX_Chem_06_05_Radiigraph-caption"
           },
@@ -294,6 +296,7 @@
           "type": "figure",
           "id": "CNX_Chem_06_05_Ionradii",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68735:caption:CNX_Chem_06_05_Ionradii-caption"
           },
@@ -366,6 +369,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_05_Firstiongr",
+          "title": null,
           "caption": {
             "segmentId": "m68735:caption:CNX_Chem_06_05_Firstiongr-caption"
           },
@@ -382,6 +386,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_05_Firstionen",
+          "title": null,
           "caption": {
             "segmentId": "m68735:caption:CNX_Chem_06_05_Firstionen-caption"
           },
@@ -783,6 +788,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_05_Elaffin",
+          "title": null,
           "caption": {
             "segmentId": "m68735:caption:CNX_Chem_06_05_Elaffin-caption"
           },

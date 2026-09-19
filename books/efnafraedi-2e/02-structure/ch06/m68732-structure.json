@@ -110,6 +110,7 @@
       "type": "figure",
       "id": "CNX_Chem_06_02_Hlevels",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68732:caption:CNX_Chem_06_02_Hlevels-caption"
       },
@@ -193,6 +194,7 @@
       "type": "figure",
       "id": "CNX_Chem_06_02_BohrArrows",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68732:caption:CNX_Chem_06_02_BohrArrows-caption"
       },
