@@ -23,6 +23,7 @@ describe('01-source overwrite path removed (PROV-1)', () => {
     const ALLOW = new Set([
       'analyze-order-causes.js', // read-only: reads 01-source/<chNN> CNXML to analyze structural reorder causes
       'audit-render-output.js', // read-only: reads source CNXML + source media as an audit baseline vs rendered output
+      'chapter-term-check.js', // read-only: reads 01-source/<chNN> CNXML for math tokens (label check); VERIFIED its and tools/lib/chapter-term-check.js's only fs calls are existsSync/readdirSync/readFileSync, and it writes no file.
       'check-source-updates.js', // read-only: check/diff compare against upstream (update verb removed, PROV-1)
       'cnxml-extract.js', // read-only: reads source CNXML + collection-order.json; writes land in 02-for-mt/
       'cnxml-fidelity-check.js', // read-only: reads source CNXML to compare against 03-translated output
