@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * chapter-term-check.js — the per-chapter review [USER] ruled on 2026-09-19
- * (docs/decisions/2026-09-19-glossary-subset-standard-per-chapter.md). Free, read-only.
+ * chapter-term-check.js
+ * Per-chapter review of glossary-subset candidates and short math labels (free, read-only).
+ * The two checks [USER] ruled on 2026-09-19: docs/decisions/2026-09-19-glossary-subset-standard-per-chapter.md
  *
  * Run it AFTER a chapter's text is bought (loop Step 2), before inject. It prints:
  *   (a) glossary SUBSET CANDIDATES — approved terms the chapter's MT renders

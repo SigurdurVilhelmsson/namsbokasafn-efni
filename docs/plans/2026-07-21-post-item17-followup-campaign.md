@@ -6322,6 +6322,11 @@ The pre-semester campaign's **Phase 5** (fold-in) plus a long low-severity tail.
   - **The question for [USER]:** for a `copied-textless` figure, should readers get the source artwork (drop the mapping entry) or a pipeline recompose? Either is a code change to the driver's copied-* path, plus a census across bought chapters (ch03–ch06).
   - ⚖️ **[USER] RULED 2026-09-19: a FRESH COMPOSITION THROUGH THE PIPELINE.** So a `copied-textless` figure is recomposed from its source artwork like a translated one (its verbatim-kept labels drawn by the composer) and published over the Cowork `_IS.svg`, spending 0 ISK because it has nothing to buy. **Next: the driver change to the copied-textless path, then a census + recompose across ch03–ch06, checked by eye against the source as for Econfig.** The ruling is recorded here; the code is not written yet.
 
+- **§C160 · chemistry mt-preview ch04 FAILS K2: 6 math elements are in its injected CNXML and missing from its rendered pages (381 → 375)** — **[CODE]** — **P2** — _logged 2026-09-19, found while repairing K2's test fixture._
+  - **Pre-existing, not from today:** the batched re-render (`ad4375278`) left every ch04 page's rendered-math count unchanged, and ch04's `03-translated` did not move. It surfaced only because a scan of mt-preview ch1–ch14 was run to find a new K2 margin fixture; **no test runs K2 on ch04**, so CI could not see it.
+  - **The finding:** `{"type":"cross-stage-drop","unit":"math","cnxml":381,"html":375,"dropped":6}`. Every other scanned chapter PASSES.
+  - **Next:** find the 6 by id, injected CNXML vs rendered HTML, before chemistry's next sync. They are either real equations a reader does not get, or a counting-unit mismatch (K2 counts `<m:math>`; the pages hold `mathjax-*` spans). **Decide it by value, not by the tally.**
+
 ## ⚒️ Post-run manual-fix ledger — anomalies deliberately NOT wired into the re-MT
 
 **Established 2026-08-23 by [LEAD] ruling, alongside the §C88 Phase 1.2 decision.**
