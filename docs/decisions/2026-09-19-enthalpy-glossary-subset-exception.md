@@ -1,7 +1,7 @@
 # Decision: chemistry's text MT sends a two-term glossary subset (enthalpy, enthalpy change) instead of no glossary
 
 - **Date:** 2026-09-19
-- **Status:** Accepted
+- **Status:** Superseded by `docs/decisions/2026-09-19-glossary-subset-standard-per-chapter.md`
 - **Context owners:** [USER] (the choice) · pipeline (the probe and the `--glossary-only` flag)
 - **Supersedes:** none. It is a bounded exception to the 2026-09-06 glossary-off ruling, whose verbatim
   record is in the active register's **§C133**; that ruling is not withdrawn.

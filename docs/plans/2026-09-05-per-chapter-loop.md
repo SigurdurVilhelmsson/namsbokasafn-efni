@@ -219,8 +219,17 @@ grep -ah -o '"arm"[^,}]*' books/<slug>/02-mt-output/ch<NN>/*-provenance.json | s
 > [`docs/decisions/2026-09-19-enthalpy-glossary-subset-exception.md`](../decisions/2026-09-19-enthalpy-glossary-subset-exception.md).
 > On a chunk without either headword nothing is sent, so the wire is identical to `--no-glossary`. ▶ **The arm check
 > above therefore accepts `arm: "glossary-only"` as well as `"no-glossary"`.** A bare `"glossary"` is still wrong.
-> ⚠️ **Whether the subset is the standing arm for later chemistry chapters is [USER]'s call and the register's to
-> record.** ch07, ch10 and ch16 carry 37, 38 and 27 `enthalpy` occurrences, so ask before buying them.
+> ✅ **[USER] 2026-09-19: the subset is chemistry's STANDARD arm, and each chapter gets TWO checks of its own**
+> ([`docs/decisions/2026-09-19-glossary-subset-standard-per-chapter.md`](../decisions/2026-09-19-glossary-subset-standard-per-chapter.md)):
+> **(a) subset candidates.** Chapters are thematic, so look for this chapter's own mirror-case terms: approved
+> glossary headwords the chapter's MT renders inconsistently or collapses onto another term's Icelandic. A term
+> joins the chapter's `--glossary-only` list only on measured evidence, re-buying with `--module` only the
+> affected modules. **(b) short math labels.** Look for labels the book's `math-label-map.json` translates but the
+> short-label default renders in English. [USER] rules on each one, and the ruling goes into
+> `LOCALIZABLE_SHORT_LABELS` with its reason (`rxn → hvarf` was the first). Inject applies the substitution, so a
+> ruling needs a re-INJECT, not only a re-render.
+> ⚠️ **How to run (a) and (b) is not yet a tool.** Until one exists, (a) is `test-results/c-ch05-glossary-arm-probe-2026-09-19/enthalpy-probe.mjs`
+> adapted per term. Whether the tool is built is the register's to say.
 > ⚠️ **Never pass `--force` chapter-wide to redo one module** — use `--module` (below). ch05's probe module would
 > otherwise have been bought a third time.
 
