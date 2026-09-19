@@ -1,11 +1,11 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-19T19:26:41.127Z",
+  "generated": "2026-09-19T20:44:50.801Z",
   "book": "lifraen-efnafraedi",
   "stats": {
-    "total": 253,
-    "approved": 253,
-    "ties": 6,
+    "total": 254,
+    "approved": 254,
+    "ties": 5,
     "nominalTies": 0,
     "outOfScopeOnly": 2586,
     "censusStrings": 84089
@@ -2133,6 +2133,16 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 5153,
+      "alternatives": []
+    },
+    {
+      "english": "resonance",
+      "icelandic": "vok",
+      "status": "approved",
+      "reason": "house-style",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70192,
       "alternatives": []
     },
     {
