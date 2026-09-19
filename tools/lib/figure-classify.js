@@ -66,12 +66,12 @@
  * and never once selects an image-free vector. Every error is in one direction, and it costs
  * no MONEY: both branches are `copied-*`, neither spends. That stops being true the moment a
  * `copied-*` branch starts buying anything.
- * ⚠️ IT IS NO LONGER FREE OF CONSEQUENCE, THOUGH (§C159). A `copied-textless` figure with an
- * existing `.svg` mapping row is now RECOMPOSED by `figure-run.js`, so a photograph that falls
- * through to textless has its artwork run through the composer and published — the path a
- * translated figure with embedded images already takes, ring gate included. Measured on
- * chemistry ch03–ch06: 1 of the 32 recomposable figures carries images
- * (`CNX_Chem_03_01_ibuprofenmass_img`), and it was checked by eye.
+ * ⚠️ §C159 NOW RECOMPOSES `copied-textless` FIGURES, AND THIS SPLIT'S ERROR IS WHY IT RECOMPOSES
+ * ONLY PURE VECTORS. A photograph that falls through to textless may carry text inside its
+ * raster, which no count here can see; `figure-run.js`'s `isRecomposableTextless` therefore
+ * requires `imageXObjects === 0`. Measured on the first live run: `CNX_Chem_03_01_ibuprofenmass_img`
+ * (chars 0, images 3) held its whole table in a raster, and recomposing it published English over
+ * an Icelandic copy.
  */
 
 import { CLASSIFICATION_OUTCOMES } from './figure-outcomes.js';

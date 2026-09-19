@@ -1087,6 +1087,32 @@ describe('a textless figure is recomposed from its source artwork (§C159)', () 
     expect(result.verdict.ok).toBe(true);
   });
 
+  // The measured regression: ibuprofenmass (chars 0, images 3) carried its table in a raster,
+  // so the read layer saw no text and a recompose replaced an Icelandic copy with English.
+  it('never recomposes a textless figure that embeds a raster — its text may be inside it', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_RASTER', 'FIG_TEXTLESS'],
+      mapping: [
+        { originalImage: 'FIG_RASTER', outputName: 'FIG_RASTER_IS.svg', extension: '.svg' },
+        { originalImage: 'FIG_TEXTLESS', outputName: 'FIG_TEXTLESS_IS.svg', extension: '.svg' },
+      ],
+    });
+    const translatedCopy = path.join(bookDir, 'media', 'FIG_RASTER_IS.svg');
+    fs.writeFileSync(translatedCopy, '<svg id="icelandic-table"/>');
+    const spawn = fakeSpawn({
+      prepare: (b) =>
+        b === 'FIG_RASTER'
+          ? { sendable: 0, chars: 0, imageXObjects: 3, paintOps: 1, __blocks: [] }
+          : textlessPrepare(b),
+    });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_RASTER').outcome).toBe('copied-textless'); // the premise
+    expect(spawn.outDirsFor('compose')).toEqual(['FIG_TEXTLESS']); // the control recomposed
+    expect(fs.readFileSync(translatedCopy, 'utf-8')).toBe('<svg id="icelandic-table"/>');
+    expect(result.verdict.ok).toBe(true);
+  });
+
   it('a compose refusal fails the run and leaves the old copy serving', async () => {
     const { booksRoot, bookDir } = makeBook({
       figures: ['FIG_TEXTLESS'],

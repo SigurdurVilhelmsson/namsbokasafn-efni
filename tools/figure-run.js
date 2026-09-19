@@ -1327,12 +1327,22 @@ function composeFigure(rec, { spawn, outDir, translationsPath }) {
  * for. A row naming another format (`.png`) is a deliberate non-SVG publication, and the
  * composer writes only SVG.
  *
+ * 🔴 AND ONLY A PURE VECTOR — `imageXObjects === 0`. "The read layer found no sendable text" is
+ * NOT "the figure has no text" when the figure embeds a RASTER: text drawn inside a bitmap is
+ * invisible to it, the figure lands in `copied-textless`, and a recompose publishes that raster's
+ * ENGLISH over whatever translated copy readers had. Measured 2026-09-19 on the first live run:
+ * `CNX_Chem_03_01_ibuprofenmass_img` (chars 0, images 3) carried its whole table — "Element",
+ * "Average atomic mass (amu)", "Molecular mass" — in a raster, and replaced a Cowork copy whose
+ * table was in Icelandic with decimal commas. It was the only one of 32 with an image, and the
+ * only one that regressed; the 3-panel check caught it, no count could have.
+ *
  * @param {object} rec a classified per-figure record
  * @returns {boolean}
  */
 export function isRecomposableTextless(rec) {
   return (
     rec.outcome === 'copied-textless' &&
+    rec.imageXObjects === 0 &&
     Boolean(rec.mapping) &&
     rec.mapping.status === 'mapped' &&
     path.extname(rec.mapping.outputName || '') === '.svg'
