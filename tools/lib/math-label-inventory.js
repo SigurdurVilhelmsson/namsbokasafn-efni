@@ -72,9 +72,9 @@ export const SHORT_LABEL_MAX = 4;
  * Each entry is a word Icelandic actually writes in a formula slot — a unit
  * (`mol` → mól), a substance or object (`ice`, `iron`, `eggs`), or descriptive
  * prose (`avg`, `fast`, `then`). Everything a chemist reads as a *symbol*
- * subscript — `cell surr sys vap fus sub con dep eff ele frz tet rev` — is
- * absent on purpose and must stay absent. (`rxn` was in this list until [USER]
- * reversed it for that one label on 2026-09-19; see its entry below.)
+ * subscript is absent on purpose and must stay absent; the ruling's named set is
+ * `RULED_ENGLISH_SHORT_LABELS` below, its one enforceable copy. (`rxn` was named too
+ * until [USER] reversed it for that one label on 2026-09-19; see its entry below.)
  *
  * ⚠️ `red` is here for the COLOUR: its 13 corpus firings are all
  * `2HgO(s, rauður)`, red mercuric oxide. It is NOT the `E_red` reduction
@@ -126,7 +126,7 @@ export const LOCALIZABLE_SHORT_LABELS = new Set([
 
 /**
  * The short symbol subscripts the 2026-09-04 [USER] ruling NAMED as keeping their
- * English — the docstring list above `LOCALIZABLE_SHORT_LABELS`, as data.
+ * English (listed in its prose until 2026-09-19; this Set is now the only copy).
  *
  * Read by `tools/chapter-term-check.js`, which surfaces every short label a book's
  * map translates but the default keeps English: a label named here is reported as

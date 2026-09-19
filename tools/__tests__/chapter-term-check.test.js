@@ -143,6 +143,16 @@ describe('(a) glossaryCoverage — synthetic', () => {
     expect([row.covered, row.kept, row.candidate]).toEqual([0, 1, false]);
   });
 
+  it('counts an English WORD left in the Icelandic as a miss, not as kept', () => {
+    const [row] = glossaryCoverage({
+      en: new Map([['m:p:1', 'The equation.']]),
+      is: new Map([['m:p:1', 'The equation.']]),
+      terms: [{ sourceWord: 'equation', targetWord: 'jafna' }],
+      minSegments: 1,
+    });
+    expect([row.covered, row.kept, row.candidate]).toEqual([0, 0, true]);
+  });
+
   it('names the OTHER glossary term an uncovered segment used — the collapse', () => {
     const withHeat = [...terms, { sourceWord: 'heat', targetWord: 'varmi' }];
     const rows = glossaryCoverage({
@@ -233,6 +243,24 @@ describe('(b) findSuppressedShortLabels', () => {
   it('never flags an allow-listed label (mol)', () => {
     const rows = findSuppressedShortLabels(ch05, { overlay, glossaryMap });
     expect(rows.map((r) => r.label)).not.toContain('mol');
+  });
+
+  describe('the glossary tier — no chemistry chapter reaches it today, so it is tested here', () => {
+    const glossaryMap = new Map([
+      ['foo', 'bar'],
+      ['log', 'logri'],
+    ]);
+    const labels = (text, allowlist) =>
+      findSuppressedShortLabels([{ text, context: '' }], { glossaryMap, allowlist });
+    it('flags a short word the glossary would translate', () => {
+      expect(labels('foo')).toMatchObject([{ label: 'foo', via: 'glossary', value: 'bar' }]);
+    });
+    it('does not flag it once allow-listed', () => {
+      expect(labels('foo', new Set(['foo']))).toEqual([]);
+    });
+    it('does not flag a stoplisted symbol, which never reaches the glossary', () => {
+      expect(labels('log')).toEqual([]);
+    });
   });
 
   it('RULED_ENGLISH_SHORT_LABELS and the allowlist are disjoint', () => {

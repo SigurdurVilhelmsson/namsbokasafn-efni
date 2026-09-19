@@ -139,10 +139,13 @@ export function glossaryCoverage({ en, is, terms, minSegments = 5, threshold = 0
   for (const t of stems) {
     const hits = pairs.filter((p) => usesHeadword(t.sourceWord, p.text));
     if (hits.length === 0) continue;
-    // A headword the MT kept verbatim (a symbol or unit: kg, Cl, ppm) is not a miss.
-    const kept = hits.filter(
-      (p) => !containsStem(p.isFold, t.stem) && usesHeadword(t.sourceWord, p.is)
-    );
+    // A SYMBOL the MT kept verbatim (kg, Cl, ppm, pH) is not a miss. Only symbol-shaped
+    // headwords qualify: an English WORD left in the Icelandic is untranslated residue,
+    // exactly what this check must expose, so it falls through to `uncovered`.
+    const symbolLike = [...t.sourceWord].length <= 3 || /[A-Z0-9]/.test(t.sourceWord);
+    const kept = symbolLike
+      ? hits.filter((p) => !containsStem(p.isFold, t.stem) && usesHeadword(t.sourceWord, p.is))
+      : [];
     const uncovered = hits.filter((p) => !containsStem(p.isFold, t.stem) && !kept.includes(p));
     const collisions = [];
     if (uncovered.length > 0) {
