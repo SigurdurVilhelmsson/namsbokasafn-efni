@@ -19,6 +19,8 @@
  *   --force             Overwrite existing output files
  *   --dry-run, -n       Show what would be translated + cost estimate
  *   --no-glossary       Don't send glossary terms with requests
+ *   --glossary-only <a,b>  Send ONLY these approved headwords; refuses if any is
+ *                       missing. Not with --no-glossary.
  *   --rate-delay <ms>   Delay between API calls (default: 500)
  *   -v, --verbose       Detailed progress output
  *   -h, --help          Show this help
@@ -1166,6 +1168,39 @@ export function loadGlossary(glossaryDir, domain, { onSkipped, onOmitted } = {})
   return glossary;
 }
 
+/** `" enthalpy , enthalpy change,"` → `['enthalpy', 'enthalpy change']`. */
+export function parseHeadwordList(value) {
+  return String(value ?? '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+/**
+ * Narrow a loaded glossary to NAMED headwords (`--glossary-only`), matched
+ * case-insensitively on the English side.
+ *
+ * The glossary is off the MT wire by [USER] ruling (2026-09-06). This is the
+ * exception CLAUDE.md allows: a term that resolves an ambiguity the model cannot
+ * see. Measured on chemistry m68727 (2026-09-19): unprompted, `enthalpy` came
+ * back as `varmaorka` / `varmi` / `entalpía` — 40 of 86 segments `varm-` only.
+ *
+ * `missing` names every requested headword the glossary does not carry, so the
+ * caller can refuse BEFORE spending. A misspelt headword otherwise buys a
+ * glossary-off run while provenance claims a glossary arm.
+ *
+ * @param {{terms: Array<{sourceWord: string, targetWord: string}>}|null} glossary
+ * @param {string[]} headwords
+ * @returns {{glossary: object|null, missing: string[]}}
+ */
+export function restrictGlossary(glossary, headwords) {
+  const wanted = new Set(headwords.map((h) => h.toLowerCase()));
+  const terms = (glossary?.terms ?? []).filter((t) => wanted.has(t.sourceWord.toLowerCase()));
+  const found = new Set(terms.map((t) => t.sourceWord.toLowerCase()));
+  const missing = headwords.filter((h) => !found.has(h.toLowerCase()));
+  return { glossary: terms.length > 0 ? { ...glossary, terms } : null, missing };
+}
+
 /**
  * The operator-facing glossary line. Extracted from main() so the total-drop
  * case is testable: a glossary whose every approved term was malformed loads
@@ -1288,6 +1323,7 @@ function parseCliArgs(argv) {
     { name: 'force', flags: ['--force'], type: 'boolean', default: false },
     { name: 'dryRun', flags: ['--dry-run', '-n'], type: 'boolean', default: false },
     { name: 'noGlossary', flags: ['--no-glossary'], type: 'boolean', default: false },
+    { name: 'glossaryOnly', flags: ['--glossary-only'], type: 'string', default: null },
     { name: 'rateDelay', flags: ['--rate-delay'], type: 'number', default: 500 },
     { name: 'maxChunk', flags: ['--max-chunk'], type: 'number', default: DEFAULT_MAX_CHUNK_CHARS },
     { name: 'updateStatus', flags: ['--update-status'], type: 'boolean', default: false },
@@ -1317,6 +1353,8 @@ Options:
   --force             Overwrite existing output files
   --dry-run, -n       Show what would be translated + cost estimate
   --no-glossary       Don't send glossary terms with requests
+  --glossary-only <a,b>  Send ONLY these approved headwords (comma-separated);
+                      refuses if any is not in the glossary. Not with --no-glossary.
   --rate-delay <ms>   Delay between API calls (default: 500)
   --update-status     Mark mtOutput stage as complete in pipeline DB
   -v, --verbose       Detailed progress output
@@ -1590,7 +1628,8 @@ export async function translateModule(
   outputPath,
   glossary,
   verbose,
-  maxChunk = DEFAULT_MAX_CHUNK_CHARS
+  maxChunk = DEFAULT_MAX_CHUNK_CHARS,
+  { glossaryArm } = {}
 ) {
   const input = fs.readFileSync(inputPath, 'utf8');
   const moduleId = path.basename(inputPath, '-segments.en.md');
@@ -1706,7 +1745,7 @@ export async function translateModule(
       mismatches,
       bracketDelta,
       unwrapped,
-      glossaryArm: glossary ? 'glossary' : 'no-glossary',
+      glossaryArm: glossaryArm ?? (glossary ? 'glossary' : 'no-glossary'),
       glossaryHash: glossaryContentHash(glossary),
       glossaryTermCount: glossary?.terms?.length ?? null,
       chunksWithGlossary,
@@ -1823,6 +1862,15 @@ async function main() {
 
   // Load glossary
   let glossary = null;
+  const glossaryOnly = args.glossaryOnly != null ? parseHeadwordList(args.glossaryOnly) : null;
+  if (glossaryOnly && args.noGlossary) {
+    console.error('Error: --glossary-only and --no-glossary contradict each other; pick one.');
+    process.exit(1);
+  }
+  if (glossaryOnly && glossaryOnly.length === 0) {
+    console.error('Error: --glossary-only needs at least one headword.');
+    process.exit(1);
+  }
   if (!args.noGlossary) {
     const domain = bookToDomain(args.book);
     let skippedCount = 0;
@@ -1836,6 +1884,21 @@ async function main() {
       },
     });
     console.log(glossaryStatusLine(glossary, skippedCount, omittedCount));
+    if (glossaryOnly) {
+      const { glossary: narrowed, missing } = restrictGlossary(glossary, glossaryOnly);
+      if (missing.length > 0) {
+        console.error(
+          `Error: --glossary-only names headword(s) the approved glossary does not carry: ` +
+            `${missing.join(', ')}. Nothing was sent.`
+        );
+        process.exit(1);
+      }
+      glossary = narrowed;
+      console.log(
+        `Glossary restricted to ${glossary.terms.length} term(s): ` +
+          glossary.terms.map((t) => `${t.sourceWord} → ${t.targetWord}`).join(', ')
+      );
+    }
   }
 
   // Discover modules to translate
@@ -1996,7 +2059,8 @@ async function main() {
         mod.outputPath,
         glossary,
         args.verbose,
-        args.maxChunk
+        args.maxChunk,
+        { glossaryArm: glossaryOnly ? 'glossary-only' : undefined }
       );
       const fixedNote = markersNormalized > 0 ? `, ${markersNormalized} marker(s) un-glued` : '';
       console.log(`✅ (${chars.toLocaleString()} chars${fixedNote})`);

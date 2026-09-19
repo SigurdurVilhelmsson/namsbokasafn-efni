@@ -106,7 +106,8 @@ function tallyByType(items) {
  * @param {Array<object>} [p.mismatches] per-segment id-reattachment mismatches
  * @param {Record<string, number>} [p.bracketDelta] module-level bracket delta
  * @param {Array<{type: string}>} [p.unwrapped] invented glossary markers removed
- * @param {'glossary'|'no-glossary'} p.glossaryArm which arm the CALLER asked for —
+ * @param {'glossary'|'no-glossary'|'glossary-only'} p.glossaryArm which arm the CALLER asked for
+ *   (`glossary-only` = a named subset, `--glossary-only`) —
  *   intent, not outcome. A glossary can be asked for and never reach the wire:
  *   the per-chunk text filter drops it when none of its terms appear in that
  *   chunk, and the truncation retry always drops it. Read `chunksWithGlossary`/
