@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-05T06:00:04.815Z",
+  "generated": "2026-09-19T19:26:41.127Z",
   "book": "lifraen-efnafraedi",
   "stats": {
-    "total": 249,
-    "approved": 249,
+    "total": 253,
+    "approved": 253,
     "ties": 6,
     "nominalTies": 0,
-    "outOfScopeOnly": 2643,
+    "outOfScopeOnly": 2586,
     "censusStrings": 84089
   },
   "terms": [
@@ -19,6 +19,16 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 70190,
+      "alternatives": []
+    },
+    {
+      "english": "Lewis structure",
+      "icelandic": "Lewis-mynd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70195,
       "alternatives": []
     },
     {
@@ -2123,6 +2133,36 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 5153,
+      "alternatives": []
+    },
+    {
+      "english": "resonance form",
+      "icelandic": "vokmynd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70193,
+      "alternatives": []
+    },
+    {
+      "english": "resonance hybrid",
+      "icelandic": "vokblendingur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70194,
+      "alternatives": []
+    },
+    {
+      "english": "resonance structure",
+      "icelandic": "vokmynd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70193,
       "alternatives": []
     },
     {

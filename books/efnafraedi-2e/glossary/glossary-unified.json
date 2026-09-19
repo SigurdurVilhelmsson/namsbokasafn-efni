@@ -1,10 +1,10 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-09-06T10:07:19.654Z",
+  "generated": "2026-09-19T19:26:39.777Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 1705,
-    "approved": 1705,
+    "total": 1709,
+    "approved": 1709,
     "ties": 337,
     "nominalTies": 101,
     "outOfScopeOnly": 1512,
@@ -325,6 +325,16 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 1993,
+      "alternatives": []
+    },
+    {
+      "english": "Lewis structure",
+      "icelandic": "Lewis-mynd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70195,
       "alternatives": []
     },
     {
@@ -14409,6 +14419,36 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 5153,
+      "alternatives": []
+    },
+    {
+      "english": "resonance form",
+      "icelandic": "vokmynd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70193,
+      "alternatives": []
+    },
+    {
+      "english": "resonance hybrid",
+      "icelandic": "vokblendingur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70194,
+      "alternatives": []
+    },
+    {
+      "english": "resonance structure",
+      "icelandic": "vokmynd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 70193,
       "alternatives": []
     },
     {
