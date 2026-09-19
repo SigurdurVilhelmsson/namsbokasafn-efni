@@ -34,6 +34,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_07_01_NaClPhotos",
+      "title": null,
       "caption": {
         "segmentId": "m68737:caption:CNX_Chem_07_01_NaClPhotos-caption"
       },
@@ -75,6 +76,7 @@
           "type": "figure",
           "id": "CNX_Chem_07_01_NaClStruc",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68737:caption:CNX_Chem_07_01_NaClStruc-caption"
           },

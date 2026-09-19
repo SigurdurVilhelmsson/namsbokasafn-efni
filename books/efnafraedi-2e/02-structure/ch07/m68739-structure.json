@@ -56,6 +56,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_07_03_3rowLewis",
+          "title": null,
           "caption": {
             "segmentId": "m68739:caption:CNX_Chem_07_03_3rowLewis-caption"
           },
@@ -113,6 +114,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_07_03_IonLewis",
+          "title": null,
           "caption": {
             "segmentId": "m68739:caption:CNX_Chem_07_03_IonLewis-caption"
           },
@@ -578,6 +580,7 @@
           "type": "figure",
           "id": "CNX_Chem_07_03_Smalley",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68739:caption:CNX_Chem_07_03_Smalley-caption"
           },
@@ -743,6 +746,7 @@
               "type": "figure",
               "id": "CNX_Chem_07_03_PF5SF6_img",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68739:caption:CNX_Chem_07_03_PF5SF6_img-caption"
               },
