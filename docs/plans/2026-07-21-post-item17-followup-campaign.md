@@ -13,7 +13,8 @@
 - **Titles:** the re-MT retitled 4 sections. [USER] kept *Líkan Bohrs* and restored the March titles for the other 3 by a recorded HAND REPAIR in `02-mt-output`, so only 1 URL changes. Row: [`docs/handoffs/2026-09-19-vefur-chemistry-ch06-redirect.md`](../handoffs/2026-09-19-vefur-chemistry-ch06-redirect.md). ⚠️ A future `--force` of m68733/m68734/m68735 reverts the titles.
 - **Figures:** 51 = 23 translated + 4 photo + 24 textless; all 23 carry `mtJoined`. **Econfig's ring census timed out** (§C158). It was checked by eye instead: no ring, but a thin outline is lost. **17 textless figures still serve Cowork artwork** (§C159, needs [USER]).
 - Pins moved by the buys, bumped: `test_figrings.py`'s "no third carrier" (HeatMeas, from ch05). The step-4 checks ran by value on ch06: 0 raw `[[` in its html, 11 pages.
-▶ **NEXT: push/PR/merge this branch (the tool + ch06) → [USER] deploys. Then build §C159 (ruled: a fresh composition through the pipeline for textless figures), then the next chapter.**
+✅ **MERGED 2026-09-19: PR #489 (the tool + ch06) as `4235b3990`, PR #490 (§C160, the 6 restored ch04 equations) as `23bad90b8`**. Both are CI-identical to `main` by name (35 = 35), merge commits pinned to the tested SHA. **[USER] deploys next.** Readers get ch04, ch05 and ch06 at [USER]'s next chemistry sync.
+▶ **NEXT after the deploy: build §C159 (ruled: a fresh composition through the pipeline for textless figures), then the next chapter.**
 
 ### ⏭ SINGLE NEXT ACTION (as first written, now answered above) — **[USER]: push the branch (a PR, since it carries a `tools/` change), merge, then `./scripts/deploy.sh`.** The push strands prod's content backup until that deploy (CLAUDE.md § Content delivery), and [USER] accepted that by choosing the dev box. **Then the next chapter**, [USER]'s pick. If it is chemistry ch07/ch10/ch16, answer the enthalpy question below first.
 
