@@ -48,6 +48,35 @@ const RB = () =>
 const REAL_BASELINE_CH12 = () => RB()['12'];
 const REAL_BASELINE_APP = () => RB()['appendices'];
 
+/**
+ * §C160 — the REPLAYED ch4 drop. Chemistry ch4 was this file's one NATURAL must-trip for
+ * K2 and K4: 4 "Svar:" answer notes whose bare-math bodies the renderer dropped (6
+ * equations). That was a real reader-visible defect and it is now fixed, so the real ch4
+ * PASSES. The control is kept by replaying the defect IN MEMORY on today's real pages:
+ * strip the restored <p> lines from exactly those 4 <aside>s, which reproduces the
+ * pre-fix HTML. It asserts it removed exactly 6 equations, so a replay that silently
+ * matched nothing cannot pass for a control.
+ */
+const SVAR_NOTES = ['fs-idp114338576', 'fs-idp79691824', 'fs-idp218691008', 'fs-idm39281984'];
+const ch4WithSvarDropReplayed = () => {
+  const real = inputsFor(4);
+  let removed = 0;
+  const html = real.html.map((page) => {
+    let out = page;
+    for (const id of SVAR_NOTES) {
+      const start = out.indexOf(`<aside id="${id}"`);
+      if (start < 0) continue;
+      const end = out.indexOf('</aside>', start);
+      const block = out.slice(start, end);
+      removed += (block.match(/<mjx-container\b/g) || []).length;
+      out = out.slice(0, start) + block.replace(/\s*<p>[\s\S]*?<\/p>/g, '') + out.slice(end);
+    }
+    return out;
+  });
+  if (removed !== 6) throw new Error(`§C160 replay removed ${removed} equations, expected 6`);
+  return ctxFor(4, { chapterInputs: { ...real, html } });
+};
+
 const ctxFor = (chapter, extra = {}) => ({
   book: 'efnafraedi-2e',
   track: 'mt-preview',
@@ -109,10 +138,10 @@ describe('the corpus fixtures this file rests on are real', () => {
  * existence of drift between two artifacts that are not updated together.**
  */
 describe('K2 — the cross-stage drop invariant, and the option that decides its rate', () => {
-  it('finds the measured drop on chemistry ch4: 6 equations', async () => {
-    // The one natural must-trip in the two run-target books. §C82 L88's denominator:
-    // 1 of 26 evaluable cells.
-    const r = await runCheck(K2, ctxFor(4));
+  it('finds the measured drop on chemistry ch4: 6 equations (REPLAYED — fixed by §C160)', async () => {
+    // Was the one natural must-trip in the two run-target books (§C82 L88: 1 of 26 cells).
+    // It was a real defect and is fixed, so the drop is replayed on today's real pages.
+    const r = await runCheck(K2, ch4WithSvarDropReplayed());
     expect(r.verdict).toBe(VERDICT.FAIL);
     expect(r.findings).toHaveLength(1);
     expect(r.findings[0]).toMatchObject({ type: 'cross-stage-drop', unit: 'math', dropped: 6 });
@@ -262,7 +291,7 @@ describe('K4 — the detector that would have been orphaned', () => {
   it('finds chemistry ch4 by SKELETON, independently of K2 counting it', async () => {
     // Same cell, same magnitude, found two different ways — which is exactly why they are
     // two ids rather than two legs of one. §C82 L91.
-    const r = await runCheck(K4, ctxFor(4));
+    const r = await runCheck(K4, ch4WithSvarDropReplayed());
     expect(r.verdict).toBe(VERDICT.FAIL);
     expect(r.findings[0]).toMatchObject({ kind: 'genuine-math-drop', lostCount: 6 });
   });
@@ -964,7 +993,7 @@ describe('the fix round — every defect the blind review confirmed, pinned', ()
   });
 
   it('K4 carries the skeletons an operator needs, not just a count', async () => {
-    const r = await runCheck(K4, ctxFor(4));
+    const r = await runCheck(K4, ch4WithSvarDropReplayed());
     expect(r.findings[0].lostCount).toBe(6);
     expect(r.findings[0].lostSkeletons.length).toBeGreaterThan(0);
   });
