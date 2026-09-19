@@ -83,6 +83,44 @@ const HOUSE_STYLE_TERMS = Object.freeze([
       'label as a phrase ("stig á Celsíus" where the artwork wants "Celsíus"); giving ' +
       'the phrase the bare value would lose "stig á". Two concepts, deliberately.',
   }),
+  Object.freeze({
+    en: Object.freeze(['resonance']),
+    is: 'vok',
+    ruled: '2026-09-19 [USER]',
+    why:
+      'Chemistry ch07 had no glossary row for resonance, and the 2026-09-19 re-MT collapsed it ' +
+      'onto COVALENCE: 15 of 24 resonance segments came back samgild-, including the 7.4 ' +
+      'subsection title "Samgildni" and "samgildniblendingur" for resonance hybrid. The rest ' +
+      "split between ómun and samómun. A wrong-sense collapse onto another concept's word is " +
+      'the mirror case a glossary row exists for. The March MT used vokmynd- unprompted (30+ ' +
+      'tokens in 02-mt-output), so the vok- family is a form the model produces.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['resonance structure', 'resonance form']),
+    is: 'vokmynd',
+    ruled: '2026-09-19 [USER]',
+    why:
+      'See "resonance". OpenStax uses both "resonance forms" (20) and "resonance structures" ' +
+      '(7) in ch07 for one concept; both resolve to vokmynd.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['resonance hybrid']),
+    is: 'vokblendingur',
+    ruled: '2026-09-19 [USER]',
+    why:
+      'See "resonance". Its own concept so the bare "resonance → vok" row is not the only ' +
+      'anchor for the compound. The March MT wrote vokmyndablendingur; [USER] ruled the ' +
+      'shorter vokblendingur.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['Lewis structure']),
+    is: 'Lewis-mynd',
+    ruled: '2026-09-19 [USER]',
+    why:
+      'Chemistry ch07 renders Lewis structure four ways with no glossary row: Lewis-bygging 72, ' +
+      'Lewis-formúla 67, Lewis-mynd 42, Lewis-formgerð 14 (of 194 segments). Lewis-mynd is ' +
+      'house style and a form the model already produces.',
+  }),
 ]);
 
 /** The marker 051 uses to find and manage its own rows. Not an Íðorðabankinn source. */
