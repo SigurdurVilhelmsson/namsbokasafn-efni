@@ -28,6 +28,14 @@
  * ⚠️ Íðorðabankinn concepts are NOT edited or deleted by 051. A house-style
  * concept is a SEPARATE concept that outranks by domain priority — the
  * non-destructive route CLAUDE.md prescribes.
+ *
+ * 🔴 CORRECTED 2026-09-19 (§C164): domain priority alone was NOT enough. When
+ * Íðorðabankinn already holds competing concepts for the same English in the
+ * SAME domain, the house concept used to JOIN that tie instead of ending it, and
+ * the export dropped the headword with no error (`resonance → vok`, measured on
+ * prod). `conceptResolver.resolveCandidates` now lets the house-style concept
+ * win a real tie at its own position. It still does not jump to a better
+ * position, and a book/chapter preference still overrides it.
  */
 
 /**

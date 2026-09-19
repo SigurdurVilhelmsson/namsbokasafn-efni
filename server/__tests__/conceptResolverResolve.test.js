@@ -211,6 +211,48 @@ describe('resolveCandidates — D2, ties', () => {
     ]);
   });
 
+  // §C164 (2026-09-19). A house-style concept is a [USER] ruling minted to END
+  // a choice (server/lib/houseStyleTerms.js). When Íðorðabankinn already holds
+  // competing concepts in the SAME domain, the old rule — "ties at the best
+  // position have no winner" — silently swallowed the ruling: `resonance → vok`
+  // was seeded on prod and never exported.
+  it('a house-style concept WINS a real tie at its own position, and says so', () => {
+    const r = resolveCandidates(chemScope(), [
+      { ...cand(60, 'chemistry', [['samsvörun', 1, 600]]), collection: null },
+      { ...cand(61, 'chemistry', [['hermun', 1, 610]]), collection: null },
+      { ...cand(62, 'chemistry', [['vok', 1, 620]]), collection: 'house-style' },
+    ]);
+    expect(r.winner).toEqual({
+      conceptId: 62,
+      termId: 620,
+      text: 'vok',
+      domain: 'chemistry',
+      position: 1,
+    });
+    expect(r.reason).toBe('house-style');
+    expect(r.tied).toEqual([]);
+    // The losers are not lost — an editor can still see what was overruled.
+    expect(r.alsoInScope.map((c) => c.conceptId)).toEqual([60, 61]);
+  });
+
+  it('house-style does NOT jump domain priority — a better position still wins', () => {
+    const r = resolveCandidates(chemScope(), [
+      { ...cand(70, 'chemistry', [['efna', 1, 700]]), collection: null },
+      { ...cand(71, 'physics', [['eðlis', 1, 710]]), collection: 'house-style' },
+    ]);
+    expect(r.winner.conceptId).toBe(70);
+    expect(r.reason).toBe('head-form');
+  });
+
+  it('CONTROL: the same tie without a house-style candidate still has no winner', () => {
+    const r = resolveCandidates(chemScope(), [
+      { ...cand(60, 'chemistry', [['samsvörun', 1, 600]]), collection: null },
+      { ...cand(61, 'chemistry', [['hermun', 1, 610]]), collection: null },
+    ]);
+    expect(r.winner).toBeNull();
+    expect(r.tied.map((t) => t.conceptId)).toEqual([60, 61]);
+  });
+
   it('a NOMINAL tie resolves to the agreed form AND reports the tie', () => {
     const r = resolveCandidates(chemScope(), [
       cand(50, 'biology', [['frasog', 1, 500]]),
