@@ -3453,5 +3453,10 @@
     "originalImage": "CNX_Chem_03_01_ibuprofenmass_img",
     "outputName": "CNX_Chem_03_01_ibuprofenmass_img_IS.svg",
     "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_06_03_Oshapes",
+    "outputName": "CNX_Chem_06_03_Oshapes_IS.svg",
+    "extension": ".svg"
   }
 ]

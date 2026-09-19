@@ -1,0 +1,18 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_01_Ephoton",
+ "renderHash": "6ed9d8076a1bb410",
+ "composedHash": "6ed9d8076a1bb410",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "No electrons|ejected": "Engar rafeindir losna",
+  "Metal": "Málmur",
+  "vmax = 2.96 × 105 m/s": "vmax = 2,96 × 105 m/s",
+  "vmax = 6.22 × 105 m/s": "vmax = 6,22 × 105 m/s"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

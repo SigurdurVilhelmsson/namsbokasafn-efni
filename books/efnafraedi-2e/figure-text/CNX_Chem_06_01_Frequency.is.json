@@ -1,0 +1,40 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_01_Frequency",
+ "renderHash": "758020f79dd6890d",
+ "composedHash": "758020f79dd6890d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Distance traveled in 1 second": "Vegalengd farin á 1 sekúndu",
+  "ν1 = 3 cycles per second = 3 hertz": "ν1 = 3 sveiflur á sekúndu = 3 hertz",
+  "ν2 = 6 cycles per second = 6 hertz": "ν2 = 6 sveiflur á sekúndu = 6 hertz",
+  "ν3 = 12 cycles per second = 12 hertz": "ν3 = 12 sveiflur á sekúndu = 12 hertz",
+  "Higher amplitude": "Hærri sveifluvídd",
+  "Lower amplitude": "Lægri sveifluvídd"
+ },
+ "mtAlternatives": {
+  "Distance traveled in 1 second": {
+   "kept": "joined",
+   "other": "Vegalengd á 1 sekúndu",
+   "reason": "disagree",
+   "mt": "Vegalengd farin á 1 sekúndu"
+  },
+  "ν2 = 6 cycles per second = 6 hertz": {
+   "kept": "joined",
+   "other": "ν2 = 6 rið á sekúndu = 6 hertz",
+   "reason": "disagree",
+   "mt": "ν2 = 6 sveiflur á sekúndu = 6 hertz"
+  },
+  "Lower amplitude": {
+   "kept": "joined",
+   "other": "Minni sveifluvídd",
+   "reason": "disagree",
+   "mt": "Lægri sveifluvídd"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

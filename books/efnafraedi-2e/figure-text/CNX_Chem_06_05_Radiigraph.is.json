@@ -1,0 +1,39 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_05_Radiigraph",
+ "renderHash": "7c0a6ae2864f2757",
+ "composedHash": "7c0a6ae2864f2757",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Period 4|transition|elements": "Hliðarmálmar í 4. lotu",
+  "Period 5|transition|elements": "Hliðarmálmar í 5. lotu",
+  "Atomic number": "Sætistala",
+  "Atomic Radii": "Atómradíus",
+  "Radius (pm)": "Radíus (pm)"
+ },
+ "mtAlternatives": {
+  "Period 4|transition|elements": {
+   "kept": "joined",
+   "other": "Hliðarmálmar í lotu 4",
+   "reason": "disagree",
+   "mt": "Hliðarmálmar í 4. lotu"
+  },
+  "Period 5|transition|elements": {
+   "kept": "joined",
+   "other": "Hliðarmálmar í lotu 5",
+   "reason": "disagree",
+   "mt": "Hliðarmálmar í 5. lotu"
+  },
+  "Atomic Radii": {
+   "kept": "joined",
+   "other": "Atómradíusar",
+   "reason": "disagree",
+   "mt": "Atómradíus"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_02_BohrArrows",
+ "renderHash": "f069a6b21c246bb3",
+ "composedHash": "f069a6b21c246bb3",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Energy, n": "Orka, n",
+  "Electron moves to|higher energy as|light is absorbed": "Rafeind færist á hærra orkustig þegar ljós er gleypt",
+  "Electron moves to|lower energy as|light is emitted": "Rafeind færist á lægra orkustig þegar ljós er gefið frá sér"
+ },
+ "mtAlternatives": {
+  "Electron moves to|higher energy as|light is absorbed": {
+   "kept": "joined",
+   "other": "Rafeind færist á hærra orkustig þegar ljós er sogað í sig",
+   "reason": "disagree",
+   "mt": "Rafeind færist á hærra orkustig þegar ljós er gleypt"
+  },
+  "Electron moves to|lower energy as|light is emitted": {
+   "kept": "joined",
+   "other": "Rafeind færist á lægra orkustig um leið og ljós er gefið frá sér",
+   "reason": "disagree",
+   "mt": "Rafeind færist á lægra orkustig þegar ljós er gefið frá sér"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_01_emspectrum",
+ "renderHash": "fbf2507934da4542",
+ "composedHash": "fbf2507934da4542",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "AM radio": "AM-útvarp",
+  "Ultrasound": "Úthljóð",
+  "Cell phone": "Farsími",
+  "Remote": "Fjarstýring",
+  "Night vision": "Nætursjón",
+  "PET  scan": "PET-skanni",
+  "Dental|curing": "Herting fyllinga",
+  "Cosmic|ray": "Geimgeisli",
+  "X-ray": "Röntgengeisli",
+  "Visible light": "Sýnilegt ljós",
+  "Increasing frequency ν": "Vaxandi tíðni ν",
+  "Increasing energy E": "Vaxandi orka E",
+  "Increasing wavelength λ": "Vaxandi bylgjulengd λ",
+  "Microwave|oven": "Örbylgjuofn",
+  "Radar": "Ratsjá",
+  "Wireless|data": "Þráðlaus gögn",
+  "Broadcast and wireless radio": "Útvarpsútsendingar og þráðlaust útvarp",
+  "Ultraviolet": "Útfjólublátt",
+  "Gamma": "Gamma",
+  "Infrared": "Innrautt",
+  "Microwave": "Örbylgja",
+  "Terahertz": "Teraherts",
+  "Wavelength λ (m)": "Bylgjulengd λ (m)"
+ },
+ "mtAlternatives": {
+  "Ultrasound": {
+   "kept": "joined",
+   "other": "Ómskoðun",
+   "reason": "disagree",
+   "mt": "Úthljóð"
+  },
+  "Remote": {
+   "kept": "joined",
+   "other": "Fjar-",
+   "reason": "disagree",
+   "mt": "Fjarstýring"
+  },
+  "Dental|curing": {
+   "kept": "joined",
+   "other": "Tannlæknaherðing",
+   "reason": "disagree",
+   "mt": "Herting fyllinga"
+  },
+  "X-ray": {
+   "kept": "joined",
+   "other": "Röntgenmynd",
+   "reason": "disagree",
+   "mt": "Röntgengeisli"
+  },
+  "Broadcast and wireless radio": {
+   "kept": "joined",
+   "other": "Útvarp og þráðlaust útvarp",
+   "reason": "disagree",
+   "mt": "Útvarpsútsendingar og þráðlaust útvarp"
+  },
+  "Microwave": {
+   "kept": "joined",
+   "other": "Örbylgjuofn",
+   "reason": "disagree",
+   "mt": "Örbylgja"
+  },
+  "Terahertz": {
+   "kept": "joined",
+   "other": "Terahertz",
+   "reason": "disagree",
+   "mt": "Teraherts"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 23
+ }
+}

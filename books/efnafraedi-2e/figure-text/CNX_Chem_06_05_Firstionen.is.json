@@ -1,0 +1,37 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_05_Firstionen",
+ "renderHash": "0d1f4baaff8c413b",
+ "composedHash": "0d1f4baaff8c413b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Group": "Flokkur",
+  "Period": "Lota",
+  "First Ionization Energies of Some Elements (kJ/mol)": "Fyrstu jónunarorkur nokkurra frumefna (kJ/mól)"
+ },
+ "mtAlternatives": {
+  "Group": {
+   "kept": "joined",
+   "other": "Hópur",
+   "reason": "disagree",
+   "mt": "Flokkur"
+  },
+  "Period": {
+   "kept": "joined",
+   "other": "Tímabil",
+   "reason": "disagree",
+   "mt": "Lota"
+  },
+  "First Ionization Energies of Some Elements (kJ/mol)": {
+   "kept": "joined",
+   "other": "Fyrsta jónunarorka nokkurra frumefna (kJ/mól)",
+   "reason": "disagree",
+   "mt": "Fyrstu jónunarorkur nokkurra frumefna (kJ/mól)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

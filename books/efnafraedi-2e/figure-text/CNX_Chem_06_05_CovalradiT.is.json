@@ -1,0 +1,47 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_05_CovalradiT",
+ "renderHash": "282a38800799686a",
+ "composedHash": "282a38800799686a",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Group": "Flokkur",
+  "Period": "Lota",
+  "Periodic Table of the Elements": "Lotukerfi frumefnanna",
+  "I radius = 266 pm = 133 pm": "I radíus = 266 pm = 133 pm",
+  "Cl radius = 198 pm = 99 pm": "Cl radíus = 198 pm = 99 pm",
+  "F radius = 128 pm = 64 pm": "F radíus = 128 pm = 64 pm",
+  "Br radius = 228 pm = 114 pm": "Br radíus = 228 pm = 114 pm"
+ },
+ "mtAlternatives": {
+  "Group": {
+   "kept": "joined",
+   "other": "Hópur",
+   "reason": "disagree",
+   "mt": "Flokkur"
+  },
+  "Period": {
+   "kept": "joined",
+   "other": "Tímabil",
+   "reason": "disagree",
+   "mt": "Lota"
+  },
+  "I radius = 266 pm = 133 pm": {
+   "kept": "joined",
+   "other": "Radíus I = 266 pm = 133 pm",
+   "reason": "disagree",
+   "mt": "I radíus = 266 pm = 133 pm"
+  },
+  "Cl radius = 198 pm = 99 pm": {
+   "kept": "joined",
+   "other": "Radíus Cl = 198 pm = 99 pm",
+   "reason": "disagree",
+   "mt": "Cl radíus = 198 pm = 99 pm"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

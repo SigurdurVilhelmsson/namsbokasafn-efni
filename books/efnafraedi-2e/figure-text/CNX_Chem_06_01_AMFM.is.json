@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_01_AMFM",
+ "renderHash": "ec41901abc11b665",
+ "composedHash": "ec41901abc11b665",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Signal": "Merki"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

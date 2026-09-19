@@ -1,0 +1,40 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_04_Econtable",
+ "renderHash": "7a22d88697322e70",
+ "composedHash": "7a22d88697322e70",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Electron Configuration Table": "Tafla yfir rafeindaskipan",
+  "Group": "Flokkur",
+  "Period": "Lota",
+  "Electrons": "Rafeindir",
+  "Name": "Nafn",
+  "Subshell": "Undirsvið"
+ },
+ "mtAlternatives": {
+  "Group": {
+   "kept": "joined",
+   "other": "Hópur",
+   "reason": "disagree",
+   "mt": "Flokkur"
+  },
+  "Period": {
+   "kept": "joined",
+   "other": "Tímabil",
+   "reason": "disagree",
+   "mt": "Lota"
+  },
+  "Subshell": {
+   "kept": "joined",
+   "other": "Undirhvolf",
+   "reason": "disagree",
+   "mt": "Undirsvið"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

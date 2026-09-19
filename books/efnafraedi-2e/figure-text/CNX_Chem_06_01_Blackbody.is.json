@@ -1,0 +1,29 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_01_Blackbody",
+ "renderHash": "34bdfb0b4dedede1",
+ "composedHash": "34bdfb0b4dedede1",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Wavelength λ (µm)": "Bylgjulengd λ (µm)",
+  "Ultraviolet": "Útfjólublátt",
+  "Visible": "Sýnilegt",
+  "Infrared": "Innrautt",
+  "Temperature": "Hitastig",
+  "λ maximum": "λ hámark",
+  "Intensity I (arb. units)": "Styrkur I (hlutf. einingar)"
+ },
+ "mtAlternatives": {
+  "Temperature": {
+   "kept": "joined",
+   "other": "Hiti",
+   "reason": "disagree",
+   "mt": "Hitastig"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}
