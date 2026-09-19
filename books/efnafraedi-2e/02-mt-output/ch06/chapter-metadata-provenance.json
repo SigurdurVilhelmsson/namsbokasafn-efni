@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "tool": "api-translate",
-  "generatedAt": "2026-09-19T12:16:38.697Z",
+  "generatedAt": "2026-09-19T12:10:56.520Z",
   "run": {
     "runRecordVersion": 1,
-    "chars": 53951,
-    "usage": 45256,
-    "estimatedIsk": 539.51,
-    "markersNormalized": 2,
+    "chars": 89,
+    "usage": 56,
+    "estimatedIsk": 0.89,
+    "markersNormalized": 0,
     "mismatchCount": 0,
     "bracketDelta": {},
     "unwrappedCount": 0,
@@ -17,7 +17,7 @@
       "contentHash": "977f5e45272040fafca9baba01c9c30c246b38a49c20cc910bc8f4efc9f28e67",
       "termCount": 2,
       "chunksWithGlossary": 0,
-      "chunksTotal": 3
+      "chunksTotal": 1
     }
   }
 }
