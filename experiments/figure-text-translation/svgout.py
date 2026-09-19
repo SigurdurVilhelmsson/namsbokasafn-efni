@@ -26,7 +26,11 @@ def subset_face(path, chars):
     """Subset a TTF to `chars` and return woff2 bytes."""
     from fontTools import subset as fsubset
     from fontTools.ttLib import TTFont
-    font = TTFont(path)
+    # recalcTimestamp=False: fontTools otherwise stamps the SAVE time into head.modified, so two
+    # composes of one figure a second apart embed different woff2 bytes (measured 2026-09-19,
+    # §C159). A textless figure is recomposed on every run, and a byte that moves with the clock
+    # turns every run into a spurious media/ diff. The source font's own timestamp is kept.
+    font = TTFont(path, recalcTimestamp=False)
     opt = fsubset.Options()
     opt.layout_features = ['*']
     opt.desubroutinize = True

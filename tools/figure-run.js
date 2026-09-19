@@ -72,7 +72,12 @@ import { fileURLToPath } from 'url';
 import { normalizeChapter, chapterDir } from '../server/lib/chapterLabel.js';
 import { classifyFigure } from './lib/figure-classify.js';
 import { emptyTally, tallyOutcome, verdict, ALL_OUTCOMES } from './lib/figure-outcomes.js';
-import { basenameFromMeta, escapesMediaDir, publishFigureSvg } from './publish-figure-svg.js';
+import {
+  basenameFromMeta,
+  escapesMediaDir,
+  publishFigureSvg,
+  publishTextlessSvg,
+} from './publish-figure-svg.js';
 import {
   DEFAULT_SUFFIX,
   indexSourceImageBasenames,
@@ -379,10 +384,12 @@ export function mappingPreflight(basename, { mapped, mintIndex }) {
 /**
  * The outcomes whose `image-mapping.json` row is INSPECTED. Not "the outcomes that end as a
  * file in `books/<slug>/media/`", which is what this comment used to say and is false:
- * `processFigureLive` returns at `rec.outcome !== 'translated'`, so THIS DRIVER PUBLISHES
- * NOTHING FOR A COPY. ⚠️ That does not mean the reader gets OpenStax's artwork: an EARLIER run's
- * `_IS.*` file and mapping row, where they exist, keep serving (§C140 ⑦). And
- * `ls books/efnafraedi-2e/media/` is all `*_IS.*` bar its housekeeping files.
+ * THIS DRIVER PUBLISHES NOTHING FOR A COPY, WITH ONE EXCEPTION: a `copied-textless` figure that
+ * already has a mapping row naming an `.svg` is recomposed from source and published over it
+ * (§C159, `isRecomposableTextless`). ⚠️ For every other copy the reader does not necessarily get
+ * OpenStax's artwork: an EARLIER run's `_IS.*` file and mapping row, where they exist, keep
+ * serving (§C140 ⑦). And `ls books/efnafraedi-2e/media/` is all `*_IS.*` bar its housekeeping
+ * files.
  *
  * A copy is still inspected, and that is deliberate: a row whose `outputName` escapes
  * `media/` is a defect in a COMMITTED data file whatever the figure's bucket. What a copy is
@@ -423,9 +430,9 @@ export function applyMappingPreflight(rec, ctx) {
   if (!PUBLISH_BOUND.has(rec.outcome)) return rec;
   rec.mapping = mappingPreflight(rec.basename, ctx);
   if (rec.mapping.status === 'unmintable') {
-    // 🔴 A COPY IS NOT FAILED OVER A PUBLISH THAT NEVER HAPPENS. `processFigureLive` returns
-    // at `rec.outcome !== 'translated'`, so nothing is composed, minted or published for a
-    // `copied-*` — "no row, and the minter cannot make one" is the ORDINARY state of a figure
+    // 🔴 A COPY IS NOT FAILED OVER A PUBLISH THAT NEVER HAPPENS. Nothing is composed, minted or
+    // published for a `copied-*` without a row — §C159's textless recompose needs an EXISTING
+    // `mapped` row and never mints — so "no row, and the minter cannot make one" is the ORDINARY state of a figure
     // nobody publishes (organic has no mapping file at all and every one of its figures reads
     // `mintable`). Downgrading it made `verdict()` FATAL and the chapter exit 1, "needs a
     // human", over work that does not exist. The pre-flight's ANSWER is still recorded above,
@@ -1259,6 +1266,129 @@ function figuresWithComposeNote(figures, list) {
 }
 
 /**
+ * STEP 9 — spawn the composer and read its verdict. Returns the composed SVG's path, or null
+ * after bucketing the figure `failed-compose`. Records the composer's notes on success.
+ *
+ * ⚠️ THE VERDICT IS compose.json, NEVER THE EXIT CODE ALONE — `compose.py` keeps the English
+ * for any key it cannot match and exits 0. The wrapper REMOVES translated.svg on any refusal,
+ * so the file's presence means exit 0; reading the file is still what decides.
+ *
+ * @param {object} rec MUTATED
+ * @param {{spawn:Function, outDir:string, translationsPath:string}} ctx
+ * @returns {string|null}
+ */
+function composeFigure(rec, { spawn, outDir, translationsPath }) {
+  const composed = spawn({
+    stage: 'compose',
+    command: PYTHON,
+    argv: [
+      path.join(EXPERIMENT_DIR, 'figure-compose.py'),
+      '--out',
+      outDir,
+      '--translations',
+      translationsPath,
+    ],
+    cwd: EXPERIMENT_DIR,
+    env: { FIGTEXT_PYLIBS: path.join(EXPERIMENT_DIR, 'pylibs') },
+    timeout: 900_000,
+  });
+  const composeVerdict = readJson(path.join(outDir, 'compose.json'));
+  if (
+    composed.status !== 0 ||
+    !composeVerdict ||
+    composeVerdict.error ||
+    !composeVerdict.outputPath
+  ) {
+    rec.outcome = 'failed-compose';
+    rec.reason =
+      (composeVerdict && composeVerdict.error) ||
+      composed.stderr.trim().slice(-400) ||
+      `figure-compose.py exited ${composed.status} and wrote no verdict`;
+    return null;
+  }
+  rec.composeNotes = composeNotesFrom(composeVerdict);
+  return composeVerdict.outputPath;
+}
+
+/**
+ * §C159 — is this a textless figure the driver recomposes? ([USER] ruling 2026-09-19.)
+ *
+ * A `copied-textless` figure has no block worth buying: every label it has is kept verbatim
+ * (element symbols, numbers), or it has none. The ruling is that such a figure is composed from
+ * its SOURCE artwork like a translated one — its verbatim labels drawn by the composer — and
+ * published over whatever `_IS.svg` readers had, spending 0 ISK. The trigger was 32 figures in
+ * chemistry ch03–ch06 served Claude Cowork-era artwork no pipeline had produced, one of which
+ * (Econfig) carried a visible smudge.
+ *
+ * 🔴 ONLY A FIGURE THAT ALREADY HAS A MAPPING ROW NAMING AN `.svg`. That is the figure whose
+ * reader-facing picture is a composed copy today, which is what the ruling replaces. A textless
+ * figure with NO row serves the OpenStax artwork itself, and recomposing it would mint a row and
+ * change a reader's picture that nothing is wrong with — a wider change the ruling did not ask
+ * for. A row naming another format (`.png`) is a deliberate non-SVG publication, and the
+ * composer writes only SVG.
+ *
+ * @param {object} rec a classified per-figure record
+ * @returns {boolean}
+ */
+export function isRecomposableTextless(rec) {
+  return (
+    rec.outcome === 'copied-textless' &&
+    Boolean(rec.mapping) &&
+    rec.mapping.status === 'mapped' &&
+    path.extname(rec.mapping.outputName || '') === '.svg'
+  );
+}
+
+/**
+ * §C159 — compose a textless figure from an EMPTY translation set and publish it, live.
+ *
+ * `figure-compose.py` then keeps every block in its source text, and its own key-set check is
+ * exactly right for this figure: every block is `send:false`, so "kept verbatim" must equal
+ * "every block". A textless figure whose read layer finds a sendable block is `translated`, not
+ * this, so nothing here can ship English that should have been bought.
+ *
+ * 🔴 NO SIDECAR IS WRITTEN — see `publishTextlessSvg`, which refuses a figure that has one. A
+ * sidecar would badge the reader's figure "unreviewed" and queue it for editors with nothing to
+ * review. With no stamp, nothing marks the figure current, so it is recomposed on every run;
+ * that is cheap (it is prepared on every run anyway) and churn-free (the compose is
+ * byte-deterministic). A failure leaves the earlier copy serving and fails the run, because the
+ * reader then has artwork this ruling says to replace.
+ *
+ * @param {object} rec MUTATED — gains `published`, or becomes failed-compose / failed-publish
+ * @param {{spawn:Function, publishTextless:Function, bookDir:string, outDir:string}} ctx
+ */
+function recomposeTextless(rec, { spawn, publishTextless, bookDir, outDir }) {
+  const emptySet = path.join(outDir, 'textless-translations.json');
+  fs.writeFileSync(emptySet, `${JSON.stringify({ blocks: {} })}\n`);
+  const svgPath = composeFigure(rec, { spawn, outDir, translationsPath: emptySet });
+  if (!svgPath) return;
+  let result;
+  try {
+    result = publishTextless({
+      bookDir,
+      basename: rec.basename,
+      svgPath,
+      metaPath: path.join(outDir, 'meta.json'),
+    });
+  } catch (err) {
+    rec.outcome = 'failed-publish';
+    rec.reason = `publishTextlessSvg THREW: ${err && err.message}`;
+    return;
+  }
+  if (!result || !result.ok) {
+    rec.outcome = 'failed-publish';
+    rec.reason = `textless publish refused (${result ? result.reason : 'no result'}): ${result ? result.message : 'the publisher returned nothing'}`;
+    return;
+  }
+  rec.published = {
+    outputName: result.outputName,
+    path: result.path,
+    replaced: result.replaced,
+    composedHash: null,
+  };
+}
+
+/**
  * STEPS 6–10 for ONE figure, live. Mutates `rec`; returns nothing.
  *
  * 🔴 TWO PATHS, SELECTED BY WHETHER A SIDECAR EXISTS — NOT BY A FLAG.
@@ -1267,19 +1397,26 @@ function figuresWithComposeNote(figures, list) {
  *                 stamp. The blocks may be an editor's corrections; re-running the MT would
  *                 overwrite them and charge for it.
  *
+ * 🔴 AND A THIRD, FOR A TEXTLESS FIGURE THAT ALREADY SERVES A COMPOSED COPY (§C159) — see
+ * `recomposeTextless`. It spends nothing and writes no sidecar.
+ *
  * @param {object} rec MUTATED
- * @param {{spawn:Function, publish:Function, readSidecar:Function, args:object,
- *          bookDir:string, outDir:string}} ctx
+ * @param {{spawn:Function, publish:Function, publishTextless:Function, readSidecar:Function,
+ *          args:object, bookDir:string, outDir:string}} ctx
  */
 function processFigureLive(
   rec,
-  { spawn, publish, readSidecar: readSidecarFor, args, bookDir, outDir }
+  { spawn, publish, publishTextless, readSidecar: readSidecarFor, args, bookDir, outDir }
 ) {
-  // Copies, failures and unresolved figures end at classification: this run composes and
-  // publishes nothing for them. ⚠️ That does NOT mean a reader gets OpenStax's own artwork: where
-  // an earlier run left a June `_IS.svg` and an image-mapping row, that copy stays live and keeps
-  // serving readers (rvosmosis, N2O5, BlastFurn are measured instances) — this run does not
-  // retire it, and `summarise` names it (§C140 ⑦). Only where no such copy exists is the
+  if (isRecomposableTextless(rec)) {
+    recomposeTextless(rec, { spawn, publishTextless, bookDir, outDir });
+    return;
+  }
+  // Every other copy, failure and unresolved figure ends at classification: this run composes
+  // and publishes nothing for it. ⚠️ That does NOT mean a reader gets OpenStax's own artwork:
+  // where an earlier run left a June `_IS.svg` and an image-mapping row, that copy stays live and
+  // keeps serving readers (rvosmosis, N2O5, BlastFurn are measured instances) — this run does
+  // not retire it, and `summarise` names it (§C140 ⑦). Only where no such copy exists is the
   // reader's picture the OpenStax media file.
   if (rec.outcome !== 'translated') return;
   if (!rec.mapping) {
@@ -1413,39 +1550,8 @@ function processFigureLive(
   // `rec.sidecar` is deliberately NOT overwritten — the report must say what the driver minted
   // or found, not what someone else wrote underneath it.
   const composeFrom = readSidecarFor(bookDir, rec.basename) || rec.sidecar;
-  const composed = spawn({
-    stage: 'compose',
-    command: PYTHON,
-    argv: [
-      path.join(EXPERIMENT_DIR, 'figure-compose.py'),
-      '--out',
-      outDir,
-      '--translations',
-      sidecarFile,
-    ],
-    cwd: EXPERIMENT_DIR,
-    env: { FIGTEXT_PYLIBS: path.join(EXPERIMENT_DIR, 'pylibs') },
-    timeout: 900_000,
-  });
-  // ⚠️ THE VERDICT IS compose.json, NEVER THE EXIT CODE ALONE — `compose.py` keeps the English
-  // for any key it cannot match and exits 0. The wrapper REMOVES translated.svg on any refusal,
-  // so the file's presence means exit 0; reading the file is still what decides.
-  const composeVerdict = readJson(path.join(outDir, 'compose.json'));
-  if (
-    composed.status !== 0 ||
-    !composeVerdict ||
-    composeVerdict.error ||
-    !composeVerdict.outputPath
-  ) {
-    rec.outcome = 'failed-compose';
-    rec.reason =
-      (composeVerdict && composeVerdict.error) ||
-      composed.stderr.trim().slice(-400) ||
-      `figure-compose.py exited ${composed.status} and wrote no verdict`;
-    return;
-  }
-  const svgPath = composeVerdict.outputPath;
-  rec.composeNotes = composeNotesFrom(composeVerdict);
+  const svgPath = composeFigure(rec, { spawn, outDir, translationsPath: sidecarFile });
+  if (!svgPath) return;
 
   // ── STEP 10. MINT THE MAPPING ENTRY, THEN PUBLISH. ────────────────────────────────────
   const outputName = rec.mapping.outputName;
@@ -1722,6 +1828,7 @@ export async function runFigures(args, deps = {}) {
   // the other lets a test believe in a corpus that has bought nothing while the disk disagrees.
   const sidecarExists = deps.sidecarExists || fs.existsSync;
   const publish = deps.publish || publishFigureSvg;
+  const publishTextless = deps.publishTextless || publishTextlessSvg;
   const enumeration = enumerateChapterFigures(args.book, args.chapter, {
     modules: args.modules,
     booksRoot: deps.booksRoot,
@@ -2029,6 +2136,7 @@ export async function runFigures(args, deps = {}) {
         processFigureLive(rec, {
           spawn,
           publish,
+          publishTextless,
           readSidecar: readSidecarFor,
           args,
           bookDir,
@@ -2304,6 +2412,20 @@ export function summarise(result) {
       'would need an image-mapping.json entry minted before publish',
       by((f) => f.outcome === 'translated' && f.mapping && f.mapping.status === 'mintable')
     )
+  );
+  // §C159 — the textless figures whose reader-facing copy this run replaces (live) or would
+  // replace (dry). Named, because each is a reader-visible picture change that costs nothing
+  // and so appears in no spend line.
+  lines.push(
+    ...(result.mode === 'live'
+      ? nameList(
+          'textless, recomposed from source artwork and published over the old copy (0 ISK)',
+          by((f) => f.outcome === 'copied-textless' && f.published)
+        )
+      : nameList(
+          'textless, would be recomposed from source artwork over its existing copy (0 ISK)',
+          by(isRecomposableTextless)
+        ))
   );
   // 🔴 THE COPIED FIGURES' OWN NUMBERS, BECAUSE THE ACCEPTANCE CRITERION IS ABOUT THEM AND A
   // BUCKET NAME CANNOT CARRY IT: "no figure lands in copied-* while carrying
