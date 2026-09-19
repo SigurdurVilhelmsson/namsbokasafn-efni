@@ -125,6 +125,32 @@ export const LOCALIZABLE_SHORT_LABELS = new Set([
 ]);
 
 /**
+ * The short symbol subscripts the 2026-09-04 [USER] ruling NAMED as keeping their
+ * English — the docstring list above `LOCALIZABLE_SHORT_LABELS`, as data.
+ *
+ * Read by `tools/chapter-term-check.js`, which surfaces every short label a book's
+ * map translates but the default keeps English: a label named here is reported as
+ * already ruled, so each chapter's review asks only about labels nobody has ruled
+ * on. Removing a label from here re-opens the question; it does not localize it —
+ * only `LOCALIZABLE_SHORT_LABELS` does that.
+ */
+export const RULED_ENGLISH_SHORT_LABELS = new Set([
+  'cell',
+  'surr',
+  'sys',
+  'vap',
+  'fus',
+  'sub',
+  'con',
+  'dep',
+  'eff',
+  'ele',
+  'frz',
+  'tet',
+  'rev',
+]);
+
+/**
  * Bucket a single math text-node value.
  * Bucket 1 ('label') iff all-lowercase ASCII, length ≥ 3, and not stoplisted.
  * Everything else ('other') — formulae (uppercase element symbols), operators,

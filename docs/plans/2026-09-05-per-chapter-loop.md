@@ -228,8 +228,14 @@ grep -ah -o '"arm"[^,}]*' books/<slug>/02-mt-output/ch<NN>/*-provenance.json | s
 > short-label default renders in English. [USER] rules on each one, and the ruling goes into
 > `LOCALIZABLE_SHORT_LABELS` with its reason (`rxn → hvarf` was the first). Inject applies the substitution, so a
 > ruling needs a re-INJECT, not only a re-render.
-> ⚠️ **How to run (a) and (b) is not yet a tool.** Until one exists, (a) is `test-results/c-ch05-glossary-arm-probe-2026-09-19/enthalpy-probe.mjs`
-> adapted per term. Whether the tool is built is the register's to say.
+> ▶ **Run both checks with ONE free command, after the text buy and before inject:**
+> `node tools/chapter-term-check.js --book <slug> --chapter <N>` (`--top 0` lists every candidate, `--json` everything).
+> It prints the MT arm the chapter was bought under, then (a) terms whose approved Icelandic reaches under half their
+> segments, with other glossary targets over-represented there ("also present", a hint, not proof), and (b) short
+> labels, marking the 2026-09-04-ruled ones so only ❓ rows are questions. ⚠️ **Every (a) row is a question, not a
+> finding:** most are synonyms the MT rightly chose or wrong-sense homographs (`yield` the verb). A mirror case looks
+> like ch05's enthalpy: a high segment count, and another term's word in the uncovered segments. **Take the list to
+> [USER]; confirm a candidate with a paid per-module re-buy only after [USER] picks it.**
 > ⚠️ **Never pass `--force` chapter-wide to redo one module** — use `--module` (below). ch05's probe module would
 > otherwise have been bought a third time.
 
