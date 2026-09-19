@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_07_06_Dipolfield",
+ "renderHash": "e0ccb58e5d4a4909",
+ "composedHash": "e0ccb58e5d4a4909",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Electric field": "Rafsvið"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

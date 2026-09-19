@@ -1,0 +1,102 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_07_06_Egeom",
+ "renderHash": "77c867a679911a3d",
+ "composedHash": "77c867a679911a3d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Number of|regions": "Fjöldi svæða",
+  "Two regions of |high electron |density (bonds |and/or |unshared |pairs)": "Tvö svæði með háum rafeindaþéttleika (tengi og/eða ódeild pör)",
+  "Three regions |of high |electron |density (bonds |and/or |unshared |pairs)": "Þrjú svæði með háum rafeindaþéttleika (tengi og/eða ódeild pör)",
+  "Four regions |of high |electron |density (bonds |and/or |unshared |pairs)": "Fjögur svæði með háum rafeindaþéttleika (tengi og/eða ódeild pör)",
+  "Five regions of |high electron |density (bonds |and/or |unshared |pairs)": "Fimm svæði með háum rafeindaþéttleika (tengi og/eða ódeild pör)",
+  "Six regions of |high electron |density (bonds |and/or |unshared |pairs)": "Sex svæði með háum rafeindaþéttleika (tengi og/eða ódeild pör)",
+  "Spatial|arrangement": "Rúmskipan",
+  "Line-dash-wedge|notation": "Línu-brota-fleygritháttur",
+  "Electron pair|geometry": "Rafeindapara-rúmfræði",
+  "Linear;|180° angle": "Línuleg; 180° horn",
+  "Trigonal planar;|all angles 120°": "Þríhyrnd flatneskja; öll horn 120°",
+  "Tetrahedral;|all angles |109.5°": "Fjórflettingur; öll horn 109,5°",
+  "Trigonal |bipyramidal;|angles of 90°  |or 120°|An attached |atom may be |equatorial (in |the plane of |the triangle) or |axial (above or |below the |plane of the |triangle).": "Þríhyrndur tvípíramídi; horn 90° eða 120°. Tengt atóm getur verið miðbaugslægt (í plani þríhyrningsins) eða áslægt (fyrir ofan eða neðan plan þríhyrningsins).",
+  "Octahedral;|all angles 90° |or 180°": "Áttflettingur; öll horn 90° eða 180°"
+ },
+ "mtAlternatives": {
+  "Two regions of |high electron |density (bonds |and/or |unshared |pairs)": {
+   "kept": "joined",
+   "other": "Tvö svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)",
+   "reason": "disagree",
+   "mt": "Tvö svæði með háum rafeindaþéttleika (tengi og/eða ódeild pör)"
+  },
+  "Three regions |of high |electron |density (bonds |and/or |unshared |pairs)": {
+   "kept": "joined",
+   "other": "Þrjú svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)",
+   "reason": "disagree",
+   "mt": "Þrjú svæði með háum rafeindaþéttleika (tengi og/eða ódeild pör)"
+  },
+  "Four regions |of high |electron |density (bonds |and/or |unshared |pairs)": {
+   "kept": "joined",
+   "other": "Fjögur svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)",
+   "reason": "disagree",
+   "mt": "Fjögur svæði með háum rafeindaþéttleika (tengi og/eða ódeild pör)"
+  },
+  "Five regions of |high electron |density (bonds |and/or |unshared |pairs)": {
+   "kept": "joined",
+   "other": "Fimm svæði með háan rafeindaþéttleika (tengi og/eða ódeild rafeindapör)",
+   "reason": "disagree",
+   "mt": "Fimm svæði með háum rafeindaþéttleika (tengi og/eða ódeild pör)"
+  },
+  "Six regions of |high electron |density (bonds |and/or |unshared |pairs)": {
+   "kept": "joined",
+   "other": "Sex svæði með miklum rafeindaþéttleika (tengi og/eða ódeild pör)",
+   "reason": "disagree",
+   "mt": "Sex svæði með háum rafeindaþéttleika (tengi og/eða ódeild pör)"
+  },
+  "Spatial|arrangement": {
+   "kept": "joined",
+   "other": "Staðsetningarfyrirkomulag",
+   "reason": "disagree",
+   "mt": "Rúmskipan"
+  },
+  "Electron pair|geometry": {
+   "kept": "joined",
+   "other": "Rafeindapara rúmfræði",
+   "reason": "disagree",
+   "mt": "Rafeindapara-rúmfræði"
+  },
+  "Linear;|180° angle": {
+   "kept": "joined",
+   "other": "Línulegt; 180° horn",
+   "reason": "disagree",
+   "mt": "Línuleg; 180° horn"
+  },
+  "Trigonal planar;|all angles 120°": {
+   "kept": "joined",
+   "other": "Þríhyrningslaga á plani; öll horn 120°",
+   "reason": "disagree",
+   "mt": "Þríhyrnd flatneskja; öll horn 120°"
+  },
+  "Tetrahedral;|all angles |109.5°": {
+   "kept": "joined",
+   "other": "Fjórflettu-; öll horn 109,5°",
+   "reason": "disagree",
+   "mt": "Fjórflettingur; öll horn 109,5°"
+  },
+  "Trigonal |bipyramidal;|angles of 90°  |or 120°|An attached |atom may be |equatorial (in |the plane of |the triangle) or |axial (above or |below the |plane of the |triangle).": {
+   "kept": "joined",
+   "other": "Þríhyrnd tvípýramídalaga; horn 90° eða 120°. Tengt atóm getur verið miðbaugslægt (í plani þríhyrningsins) eða áslægt (fyrir ofan eða neðan plan þríhyrningsins).",
+   "reason": "disagree",
+   "mt": "Þríhyrndur tvípíramídi; horn 90° eða 120°. Tengt atóm getur verið miðbaugslægt (í plani þríhyrningsins) eða áslægt (fyrir ofan eða neðan plan þríhyrningsins)."
+  },
+  "Octahedral;|all angles 90° |or 180°": {
+   "kept": "joined",
+   "other": "Áttflötungs-; öll horn 90° eða 180°",
+   "reason": "disagree",
+   "mt": "Áttflettingur; öll horn 90° eða 180°"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 14
+ }
+}
