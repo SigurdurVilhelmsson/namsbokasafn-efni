@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_03_Summit",
+ "renderHash": "387e5bd826234ff0",
+ "composedHash": "387e5bd826234ff0",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Summit": "Tindur",
+  "Mt. Kilimanjaro": "Kilimanjaro-fjall",
+  "Base": "Grunnbúðir"
+ },
+ "mtAlternatives": {
+  "Base": {
+   "kept": "joined",
+   "other": "Grunnur",
+   "reason": "disagree",
+   "mt": "Grunnbúðir"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

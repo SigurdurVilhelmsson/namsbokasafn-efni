@@ -1,0 +1,139 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_02_FoodLabel",
+ "renderHash": "ef93fedc29b3dbf9",
+ "composedHash": "ef93fedc29b3dbf9",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Sample label for|macaroni & cheese": "Sýnishorn af innihaldslýsingu fyrir makkarónur og ost",
+  "Nutrition Facts": "Næringargildi",
+  "Serving Size 1 cup (228g)|Servings Per Container 2": "Skammtastærð 1 bolli (228 g) Skammtar í íláti 2",
+  "Amount Per Serving": "Magn í hverjum skammti",
+  "Calories 250": "Hitaeiningar 250",
+  "Total Fat 12g": "Heildarfita 12 g",
+  "Cholesterol 30mg|Sodium 470mg": "Kólesteról 30 mg Natríum 470 mg",
+  "Protein 5g": "Prótein 5 g",
+  "Total Carbohydrates 31g": "Heildarkolvetni 31 g",
+  "Saturated Fat 3g": "Mettuð fita 3 g",
+  "Dietary Fiber 0g|Sugars 5g": "Trefjar 0 g Sykur 5 g",
+  "Vitamin A|Vitamin C|Calcium|Iron": "A-vítamín C-vítamín Kalk Járn",
+  "Less than|Less than|Less than|Less than": "Minna en Minna en Minna en Minna en",
+  "*Percent Daily Values are based on a 2,000| calorie diet.| Your Daily Values may be higher or lower| depending on your calorie needs.": "*Hlutfall af ráðlögðum dagskammti er miðað við 2.000 hitaeininga mataræði. Ráðlagður dagskammtur getur verið hærri eða lægri eftir hitaeiningaþörf þinni.",
+  "Total Fat| Sat Fat|Cholesterol|Sodium|Total Carbohydrate| Dietary Fiber": "Heildarfita Met. fita Kólesteról Natríum Heildarkolvetni Trefjar",
+  "Trans Fat 3g": "Transfita 3 g",
+  "% Daily Value*": "% af RDS*",
+  "Calories from Fat 110": "Hitaeiningar úr fitu 110",
+  "Calories": "Hitaeiningar",
+  "Start|here": "Byrjaðu hér",
+  "Check|Calories": "Athugaðu hitaeiningar",
+  "Limit|these|nutrients": "Takmarkaðu þessi næringarefni",
+  "Get|enough|of these|nutrients": "Fáðu nóg af þessum næringarefnum",
+  "Footnote": "Neðanmálsgrein",
+  "Quick|guide to|% DV": "Stuttar leiðbeiningar um % af dagskammti",
+  "is low": "er lítið",
+  "more is| ": "meira er",
+  "high": "hátt"
+ },
+ "mtAlternatives": {
+  "Sample label for|macaroni & cheese": {
+   "kept": "joined",
+   "other": "Sýnishorn af merkimiða fyrir makkarónur og ost",
+   "reason": "disagree",
+   "mt": "Sýnishorn af innihaldslýsingu fyrir makkarónur og ost"
+  },
+  "Serving Size 1 cup (228g)|Servings Per Container 2": {
+   "kept": "joined",
+   "other": "Skammtastærð 1 bolli (228g) Skammtar í íláti 2",
+   "reason": "disagree",
+   "mt": "Skammtastærð 1 bolli (228 g) Skammtar í íláti 2"
+  },
+  "Total Fat 12g": {
+   "kept": "joined",
+   "other": "Heildarfita 12g",
+   "reason": "disagree",
+   "mt": "Heildarfita 12 g"
+  },
+  "Protein 5g": {
+   "kept": "joined",
+   "other": "Prótein 5g",
+   "reason": "disagree",
+   "mt": "Prótein 5 g"
+  },
+  "Total Carbohydrates 31g": {
+   "kept": "joined",
+   "other": "Heildarkolvetni 31g",
+   "reason": "disagree",
+   "mt": "Heildarkolvetni 31 g"
+  },
+  "Saturated Fat 3g": {
+   "kept": "joined",
+   "other": "Mettuð fita 3g",
+   "reason": "disagree",
+   "mt": "Mettuð fita 3 g"
+  },
+  "Dietary Fiber 0g|Sugars 5g": {
+   "kept": "joined",
+   "other": "Trefjar 0g Sykur 5g",
+   "reason": "disagree",
+   "mt": "Trefjar 0 g Sykur 5 g"
+  },
+  "Vitamin A|Vitamin C|Calcium|Iron": {
+   "kept": "joined",
+   "other": "A-vítamín C-vítamín Kalsíum Járn",
+   "reason": "disagree",
+   "mt": "A-vítamín C-vítamín Kalk Járn"
+  },
+  "*Percent Daily Values are based on a 2,000| calorie diet.| Your Daily Values may be higher or lower| depending on your calorie needs.": {
+   "kept": "joined",
+   "other": "*Hlutfall af daglegri næringarþörf er miðað við 2.000 hitaeininga mataræði. Dagleg næringarþörf þín gæti verið hærri eða lægri eftir því hver hitaeiningaþörf þín er.",
+   "reason": "disagree",
+   "mt": "*Hlutfall af ráðlögðum dagskammti er miðað við 2.000 hitaeininga mataræði. Ráðlagður dagskammtur getur verið hærri eða lægri eftir hitaeiningaþörf þinni."
+  },
+  "Total Fat| Sat Fat|Cholesterol|Sodium|Total Carbohydrate| Dietary Fiber": {
+   "kept": "joined",
+   "other": "Heildarfita  Mettaðar fitusýrur Kólesteról Natríum Heildarkolvetni  Trefjar",
+   "reason": "disagree",
+   "mt": "Heildarfita Met. fita Kólesteról Natríum Heildarkolvetni Trefjar"
+  },
+  "Trans Fat 3g": {
+   "kept": "joined",
+   "other": "Transfita 3g",
+   "reason": "disagree",
+   "mt": "Transfita 3 g"
+  },
+  "% Daily Value*": {
+   "kept": "joined",
+   "other": "% af ráðlögðum dagskammti*",
+   "reason": "disagree",
+   "mt": "% af RDS*"
+  },
+  "Check|Calories": {
+   "kept": "joined",
+   "other": "Skoða hitaeiningar",
+   "reason": "disagree",
+   "mt": "Athugaðu hitaeiningar"
+  },
+  "Quick|guide to|% DV": {
+   "kept": "per-label",
+   "reason": "formula",
+   "mt": "Stuttar leiðbeiningar um % af dagskammti"
+  },
+  "is low": {
+   "kept": "joined",
+   "other": "er lágur",
+   "reason": "disagree",
+   "mt": "er lítið"
+  },
+  "high": {
+   "kept": "joined",
+   "other": "hár",
+   "reason": "disagree",
+   "mt": "hátt"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 28
+ }
+}

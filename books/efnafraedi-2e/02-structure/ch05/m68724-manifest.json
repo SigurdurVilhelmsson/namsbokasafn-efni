@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68724",
-  "extractedAt": "2026-08-31T19:08:38.244Z",
+  "extractedAt": "2026-09-19T08:38:59.388Z",
   "sourceHash": "2b0ef256a1bffa70",
   "segmentCount": 202,
   "segmentIds": [
@@ -306,5 +306,35 @@
       "fs-idm20711744",
       "fs-idm41088208"
     ]
+  },
+  "termEnglish": {
+    "term-00001": "thermochemistry",
+    "term-00002": "Energy",
+    "term-00003": "work (w)",
+    "term-00004": "potential energy",
+    "term-00005": "kinetic energy",
+    "term-00006": "Thermal energy",
+    "term-00007": "Temperature",
+    "term-00008": "Heat (q)",
+    "term-00009": "exothermic process",
+    "term-00010": "endothermic process",
+    "term-00011": "calories (cal)",
+    "term-00012": "joule (J)",
+    "term-00013": "heat capacity (C)",
+    "term-00014": "specific heat capacity (c)",
+    "fs-idp25499888": "calorie (cal)",
+    "fs-idp25501040": "endothermic process",
+    "fs-idp25502192": "energy",
+    "fs-idp25503344": "exothermic process",
+    "fs-idp25504496": "heat (q)",
+    "fs-idp25506160": "heat capacity (C)",
+    "fs-idp25507984": "joule (J)",
+    "fs-idp25509680": "kinetic energy",
+    "fs-idp25515184": "potential energy",
+    "fs-idp31727024": "specific heat capacity (c)",
+    "fs-idp31728864": "temperature",
+    "fs-idp31730416": "thermal energy",
+    "fs-idp31731568": "thermochemistry",
+    "fs-idp31732848": "work (w)"
   }
 }

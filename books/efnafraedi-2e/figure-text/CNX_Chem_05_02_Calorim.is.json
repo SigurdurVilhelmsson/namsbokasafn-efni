@@ -1,0 +1,45 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_02_Calorim",
+ "renderHash": "0a354c64875300cd",
+ "composedHash": "0a354c64875300cd",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Thermometer": "Hitamælir",
+  "Stirrer": "Hrærari",
+  "Cover": "Lok",
+  "Reaction|mixture": "Efnahvarfsblanda",
+  "Styrofoam|cups": "Frauðplastsmál"
+ },
+ "mtAlternatives": {
+  "Stirrer": {
+   "kept": "joined",
+   "other": "Hræripinni",
+   "reason": "disagree",
+   "mt": "Hrærari"
+  },
+  "Cover": {
+   "kept": "joined",
+   "other": "Kápa",
+   "reason": "disagree",
+   "mt": "Lok"
+  },
+  "Reaction|mixture": {
+   "kept": "joined",
+   "other": "Hvarfblanda",
+   "reason": "disagree",
+   "mt": "Efnahvarfsblanda"
+  },
+  "Styrofoam|cups": {
+   "kept": "joined",
+   "other": "Frauðplastglös",
+   "reason": "disagree",
+   "mt": "Frauðplastsmál"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 5
+ }
+}

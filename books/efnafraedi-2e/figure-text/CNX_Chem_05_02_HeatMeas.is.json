@@ -1,0 +1,34 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_02_HeatMeas",
+ "renderHash": "f174bd28a0c9593e",
+ "composedHash": "f174bd28a0c9593e",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "System": "Kerfi",
+  "Exothermic|process": "Útvermið ferli",
+  "Solution|(surroundings)": "Lausn (umhverfi)",
+  "Endothermic|process": "Innvermið ferli",
+  "Temperature|increased": "Hiti jókst",
+  "Temperature|decreased": "Hiti minnkaði"
+ },
+ "mtAlternatives": {
+  "Temperature|increased": {
+   "kept": "joined",
+   "other": "Hitastig jókst",
+   "reason": "disagree",
+   "mt": "Hiti jókst"
+  },
+  "Temperature|decreased": {
+   "kept": "joined",
+   "other": "Hiti lækkaði",
+   "reason": "disagree",
+   "mt": "Hiti minnkaði"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

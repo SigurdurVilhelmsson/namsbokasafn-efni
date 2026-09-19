@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-17T12:21:00.688Z",
+  "generated": "2026-09-19T10:30:51.628Z",
   "termCount": 763,
   "entries": [
     {
@@ -534,7 +534,7 @@
       "termIs": "ástandsfall",
       "termEn": "state function",
       "termFull": "ástandsfall (e. state function)",
-      "definition": "eiginleiki sem fer eingöngu eftir ástandi kerfis en ekki leiðinni sem farin var til að ná því ástandi",
+      "definition": "eiginleiki sem fer aðeins eftir ástandi kerfis en ekki leiðinni sem farin var til að ná því ástandi",
       "chapter": 5,
       "section": "5.3",
       "sectionTitle": "Vermi",
@@ -1169,17 +1169,6 @@
       "termId": "fs-idm147403536"
     },
     {
-      "termIs": "eðlisvarmi (c)",
-      "termEn": "specific heat capacity (c)",
-      "termFull": "eðlisvarmi (c) (e. specific heat capacity (c))",
-      "definition": "eðliseiginleiki efnis sem táknar það varmamagn sem þarf til að hækka hitastig 1 gramms af efninu um 1 gráðu á Celsíus (eða 1 kelvín)",
-      "chapter": 5,
-      "section": "5.1",
-      "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
-      "termId": "fs-idp31727024"
-    },
-    {
       "termIs": "efnablanda",
       "termEn": "mixture",
       "termFull": "efnablanda (e. mixture)",
@@ -1246,15 +1235,15 @@
       "termId": "fs-idm355773584"
     },
     {
-      "termIs": "Efnahvarmafræði",
-      "termEn": "chemical thermodynamics",
-      "termFull": "Efnahvarmafræði (e. chemical thermodynamics)",
-      "definition": "svið vísinda sem fjallar um tengslin milli varma, vinnu og allra orkuforma sem tengjast efna- og eðlisfræðilegum ferlum",
+      "termIs": "efnahvörfunarvarmafræði",
+      "termEn": "thermochemistry",
+      "termFull": "efnahvörfunarvarmafræði (e. thermochemistry)",
+      "definition": "fræðigrein sem fæst við mælingar á því hversu mikill varmi losnar eða binst við efnahvarf eða efnisástandsbreytingu",
       "chapter": 5,
-      "section": "5.3",
-      "sectionTitle": "Vermi",
-      "sectionSlug": "5-3-vermi",
-      "termId": "fs-idp102379584"
+      "section": "5.1",
+      "sectionTitle": "Grundvallaratriði orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
+      "termId": "fs-idp31731568"
     },
     {
       "termIs": "efnajafna",
@@ -1301,6 +1290,17 @@
       "termId": "fs-idm109251440"
     },
     {
+      "termIs": "efnavarmafræði",
+      "termEn": "chemical thermodynamics",
+      "termFull": "efnavarmafræði (e. chemical thermodynamics)",
+      "definition": "svið vísinda sem fjallar um sambönd milli hita, vinnu og allra orkuforma sem tengjast efna- og eðlisfræðilegum ferlum",
+      "chapter": 5,
+      "section": "5.3",
+      "sectionTitle": "Vermi",
+      "sectionSlug": "5-3-vermi",
+      "termId": "fs-idp102379584"
+    },
+    {
       "termIs": "efni",
       "termEn": "matter",
       "termFull": "efni (e. matter)",
@@ -1321,6 +1321,17 @@
       "sectionTitle": "Litrófs- og segulfræðilegir eiginleikar hnitflóka",
       "sectionSlug": "19-3-litrofs-og-segulfraedilegir-eiginleikar-hnitfloka",
       "termId": "fs-idm148194896"
+    },
+    {
+      "termIs": "eiginvarmi (c)",
+      "termEn": "specific heat capacity (c)",
+      "termFull": "eiginvarmi (c) (e. specific heat capacity (c))",
+      "definition": "magnóháður eiginleiki efnis sem táknar það varmamagn sem þarf til að hækka hitastig 1 gramms af efninu um 1 gráðu á Celsíus (eða 1 kelvín)",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grundvallaratriði orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
+      "termId": "fs-idp31727024"
     },
     {
       "termIs": "einfrumeinda jón",
@@ -1887,7 +1898,7 @@
       "termIs": "fyrsta lögmál varmafræðinnar",
       "termEn": "first law of thermodynamics",
       "termFull": "fyrsta lögmál varmafræðinnar (e. first law of thermodynamics)",
-      "definition": "innri orka kerfis breytist vegna varmaflæðis inn í eða út úr kerfinu eða vinnu sem unnin er á eða af kerfinu",
+      "definition": "innri orka kerfis breytist vegna varmastreymis inn í eða út úr kerfinu eða vinnu sem unnin er á eða af kerfinu",
       "chapter": 5,
       "section": "5.3",
       "sectionTitle": "Vermi",
@@ -2445,15 +2456,37 @@
       "termId": "fs-idp28532752"
     },
     {
-      "termIs": "hitaeining í næringarfræði (hitaeining)",
-      "termEn": "nutritional calorie (calorie)",
-      "termFull": "hitaeining í næringarfræði (hitaeining) (e. nutritional calorie (calorie))",
-      "definition": "eining sem notuð er til að magngreina orku sem fæst við meltingu matvæla, skilgreind sem 1000 cal eða 1 kcal",
+      "termIs": "hitamæling",
+      "termEn": "calorimetry",
+      "termFull": "hitamæling (e. calorimetry)",
+      "definition": "ferli til að mæla varmamagn sem verður til við efna- eða eðlisfræðilegt ferli",
       "chapter": 5,
       "section": "5.2",
       "sectionTitle": "Varmamælingar",
       "sectionSlug": "5-2-varmamaelingar",
-      "termId": "fs-idm56357952"
+      "termId": "fs-idm56358720"
+    },
+    {
+      "termIs": "hitamælir",
+      "termEn": "calorimeter",
+      "termFull": "hitamælir (e. calorimeter)",
+      "definition": "tæki sem er notað til að mæla magn varma sem frásogast eða losnar í efnafræðilegu eða eðlisfræðilegu ferli",
+      "chapter": 5,
+      "section": "5.2",
+      "sectionTitle": "Varmamælingar",
+      "sectionSlug": "5-2-varmamaelingar",
+      "termId": "fs-idm56359488"
+    },
+    {
+      "termIs": "hitaorka",
+      "termEn": "thermal energy",
+      "termFull": "hitaorka (e. thermal energy)",
+      "definition": "hreyfiorka sem tengist tilviljunarkenndri hreyfingu atóma og sameinda",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grundvallaratriði orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
+      "termId": "fs-idp31730416"
     },
     {
       "termIs": "hitastig",
@@ -2467,14 +2500,14 @@
       "termId": "fs-idm327357936"
     },
     {
-      "termIs": "hitastig",
+      "termIs": "hiti",
       "termEn": "temperature",
-      "termFull": "hitastig (e. temperature)",
-      "definition": "eðliseiginleiki efnis sem er magnbundinn mælikvarði á „hita“ og „kulda“",
+      "termFull": "hiti (e. temperature)",
+      "definition": "aðfærslueiginleiki efnis sem er megindlegur mælikvarði á „hita“ og „kulda“",
       "chapter": 5,
       "section": "5.1",
       "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp31728864"
     },
     {
@@ -2679,11 +2712,11 @@
       "termIs": "hreyfiorka",
       "termEn": "kinetic energy",
       "termFull": "hreyfiorka (e. kinetic energy)",
-      "definition": "orka sem tengist hreyfingu hlutar, jöfn helmingi margfeldis massa hlutarins og hraða hans í öðru veldi, 12mv2 (þar sem m = massi og v = hraði)",
+      "definition": "orka sem tengist hreyfingu hlutar, jöfn helmingi margfeldis massa hlutarins og fernings hraða hans, 12mv2 (þar sem m = massi og v = hraði)",
       "chapter": 5,
       "section": "5.1",
       "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp25509680"
     },
     {
@@ -2932,7 +2965,7 @@
       "termIs": "innri orka (U)",
       "termEn": "internal energy (u)",
       "termFull": "innri orka (U) (e. internal energy (u))",
-      "definition": "heildarsumma allra mögulegra tegunda orku sem er til staðar í efni eða efnum",
+      "definition": "heildarsumma allra mögulegra orkutegunda sem eru til staðar í efni eða efnum",
       "chapter": 5,
       "section": "5.3",
       "sectionTitle": "Vermi",
@@ -2954,11 +2987,11 @@
       "termIs": "innvermið ferli",
       "termEn": "endothermic process",
       "termFull": "innvermið ferli (e. endothermic process)",
-      "definition": "efnahvarf eða eðlisbreyting sem gleypir varma",
+      "definition": "efnahvarf eða eðlisfræðileg breyting sem gleypir varma",
       "chapter": 5,
       "section": "5.1",
       "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp25501040"
     },
     {
@@ -3081,17 +3114,6 @@
       "sectionTitle": "Geislavirk hrörnun",
       "sectionSlug": "21-3-geislavirk-hrornun",
       "termId": "fs-idm24356480"
-    },
-    {
-      "termIs": "joul (J)",
-      "termEn": "joule (j)",
-      "termFull": "joul (J) (e. joule (j))",
-      "definition": "SI-eining orku; orkumagn sem notað er þegar kraftur upp á 1 njúton færir hlut um 1 metra, 1 J = 1 kg m2/s2 og 4,184 J = 1 cal",
-      "chapter": 5,
-      "section": "5.1",
-      "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
-      "termId": "fs-idp25507984"
     },
     {
       "termIs": "jón",
@@ -3226,6 +3248,17 @@
       "termId": "fs-idm94073376"
     },
     {
+      "termIs": "júl (J)",
+      "termEn": "joule (j)",
+      "termFull": "júl (J) (e. joule (j))",
+      "definition": "SI-eining orku; orkumagn sem notað er þegar kraftur upp á 1 njúton færir hlut um 1 metra, 1 J = 1 kg m2/s2 og 4,184 J = 1 cal",
+      "chapter": 5,
+      "section": "5.1",
+      "sectionTitle": "Grundvallaratriði orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
+      "termId": "fs-idp25507984"
+    },
+    {
       "termIs": "jöfnunaráhrif",
       "termEn": "leveling effect",
       "termFull": "jöfnunaráhrif (e. leveling effect)",
@@ -3251,11 +3284,11 @@
       "termIs": "kaloría (cal)",
       "termEn": "calorie (cal)",
       "termFull": "kaloría (cal) (e. calorie (cal))",
-      "definition": "eining fyrir varma eða aðra orku; orkumagnið sem þarf til að hækka hitastig 1 gramms af vatni um 1 gráðu á Celsíus; 1 cal er skilgreind sem 4,184 J",
+      "definition": "eining varma eða annarrar orku; orkumagnið sem þarf til að hækka hitastig 1 gramms af vatni um 1 gráðu á Celsíus; 1 cal er skilgreind sem 4,184 J",
       "chapter": 5,
       "section": "5.1",
       "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp25499888"
     },
     {
@@ -3372,7 +3405,7 @@
       "termIs": "kerfi",
       "termEn": "system",
       "termFull": "kerfi (e. system)",
-      "definition": "hluti efnis sem er til rannsóknar og verður fyrir efna- eða eðlisbreytingu",
+      "definition": "hluti efnis sem er rannsakað og verður fyrir efna- eða eðlisfræðilegri breytingu",
       "chapter": 5,
       "section": "5.2",
       "sectionTitle": "Varmamælingar",
@@ -5030,6 +5063,17 @@
       "termId": "fs-idp123920528"
     },
     {
+      "termIs": "næringarkaloría (kaloría)",
+      "termEn": "nutritional calorie (calorie)",
+      "termFull": "næringarkaloría (kaloría) (e. nutritional calorie (calorie))",
+      "definition": "eining sem notuð er til að magngreina orku sem fæst við meltingu matvæla, skilgreind sem 1000 cal eða 1 kcal",
+      "chapter": 5,
+      "section": "5.2",
+      "sectionTitle": "Varmamælingar",
+      "sectionSlug": "5-2-varmamaelingar",
+      "termId": "fs-idm56357952"
+    },
+    {
       "termIs": "ofurgild sameind",
       "termEn": "hypervalent molecule",
       "termFull": "ofurgild sameind (e. hypervalent molecule)",
@@ -5066,11 +5110,11 @@
       "termIs": "orka",
       "termEn": "energy",
       "termFull": "orka (e. energy)",
-      "definition": "geta til að veita varma eða vinna vinnu",
+      "definition": "geta til að veita varma eða vinna verk",
       "chapter": 5,
       "section": "5.1",
       "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp25502192"
     },
     {
@@ -6460,10 +6504,10 @@
       "termId": "fs-idm47317072"
     },
     {
-      "termIs": "sprengjuvarmaorkumælir",
+      "termIs": "sprengihitamælir",
       "termEn": "bomb calorimeter",
-      "termFull": "sprengjuvarmaorkumælir (e. bomb calorimeter)",
-      "definition": "tæki sem er hannað til að mæla orkubreytingu fyrir ferli sem eiga sér stað við aðstæður með föstu rúmmáli; almennt notað fyrir efnahvörf sem fela í sér hvarfefni eða myndefni á föstu formi og í gasfasa",
+      "termFull": "sprengihitamælir (e. bomb calorimeter)",
+      "definition": "tæki sem er hannað til að mæla orkubreytingu fyrir ferli sem eiga sér stað við fast rúmmál; algengt fyrir efnahvörf sem fela í sér föst og loftkennd hvarfefni eða myndefni",
       "chapter": 5,
       "section": "5.2",
       "sectionTitle": "Varmamælingar",
@@ -6496,7 +6540,7 @@
       "termIs": "staðalástand",
       "termEn": "standard state",
       "termFull": "staðalástand (e. standard state)",
-      "definition": "sett af eðlisfræðilegum aðstæðum sem eru viðurkenndar sem almennar viðmiðunaraðstæður til að gefa upp varmafræðilega eiginleika; 1 bar þrýstingur og lausnir með 1 mólar styrk, venjulega við 298,15 K hitastig",
+      "definition": "sett af eðlisfræðilegum skilyrðum sem eru viðurkennd sem algeng viðmiðunarskilyrði til að gefa upp varmafræðilega eiginleika; 1 bar þrýstingur og lausnir með 1 mólar styrk, venjulega við 298,15 K hitastig",
       "chapter": 5,
       "section": "5.3",
       "sectionTitle": "Vermi",
@@ -6507,7 +6551,7 @@
       "termIs": "staðalbrunavermi",
       "termEn": "standard enthalpy of combustion (ΔHc°)",
       "termFull": "staðalbrunavermi (e. standard enthalpy of combustion (ΔHc°))",
-      "definition": "varmi sem losnar þegar eitt mól af efnasambandi gengst undir fullkominn bruna við staðalaðstæður",
+      "definition": "hiti sem losnar þegar eitt mól af efnasambandi gengst undir fullkominn bruna við staðalaðstæður",
       "chapter": 5,
       "section": "5.3",
       "sectionTitle": "Vermi",
@@ -6848,11 +6892,11 @@
       "termIs": "stöðuorka",
       "termEn": "potential energy",
       "termFull": "stöðuorka (e. potential energy)",
-      "definition": "orka ögnar eða kerfis agna sem er fengin úr hlutfallslegri stöðu, samsetningu eða ástandi",
+      "definition": "orka eindar eða kerfis einda sem stafar af afstæðri stöðu, samsetningu eða ástandi",
       "chapter": 5,
       "section": "5.1",
       "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp25515184"
     },
     {
@@ -7453,7 +7497,7 @@
       "termIs": "umhverfi",
       "termEn": "surroundings",
       "termFull": "umhverfi (e. surroundings)",
-      "definition": "allt efni annað en kerfið sem er til rannsóknar",
+      "definition": "allt efni annað en kerfið sem verið er að rannsaka",
       "chapter": 5,
       "section": "5.2",
       "sectionTitle": "Varmamælingar",
@@ -7607,11 +7651,11 @@
       "termIs": "útvermið ferli",
       "termEn": "exothermic process",
       "termFull": "útvermið ferli (e. exothermic process)",
-      "definition": "efnahvarf eða eðlisbreyting sem losar varma",
+      "definition": "efnahvarf eða eðlisfræðileg breyting sem losar varma",
       "chapter": 5,
       "section": "5.1",
       "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp25503344"
     },
     {
@@ -7659,58 +7703,14 @@
       "termId": "fs-idp11034384"
     },
     {
-      "termIs": "varmaefnafræði",
-      "termEn": "thermochemistry",
-      "termFull": "varmaefnafræði (e. thermochemistry)",
-      "definition": "fræðigrein sem fæst við mælingar á því hversu mikill varmi losnar eða binst við efnahvarf eða eðlisbreytingu",
-      "chapter": 5,
-      "section": "5.1",
-      "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
-      "termId": "fs-idp31731568"
-    },
-    {
-      "termIs": "varmamæling",
-      "termEn": "calorimetry",
-      "termFull": "varmamæling (e. calorimetry)",
-      "definition": "ferlið að mæla magn varma sem tekur þátt í efna- eða eðlisfræðilegu ferli",
-      "chapter": 5,
-      "section": "5.2",
-      "sectionTitle": "Varmamælingar",
-      "sectionSlug": "5-2-varmamaelingar",
-      "termId": "fs-idm56358720"
-    },
-    {
-      "termIs": "varmamælir",
-      "termEn": "calorimeter",
-      "termFull": "varmamælir (e. calorimeter)",
-      "definition": "tæki sem notað er til að mæla magn varma sem frásogast eða losnar í efna- eða eðlisfræðilegu ferli",
-      "chapter": 5,
-      "section": "5.2",
-      "sectionTitle": "Varmamælingar",
-      "sectionSlug": "5-2-varmamaelingar",
-      "termId": "fs-idm56359488"
-    },
-    {
-      "termIs": "varmaorka",
-      "termEn": "thermal energy",
-      "termFull": "varmaorka (e. thermal energy)",
-      "definition": "hreyfiorka sem tengist tilviljanakenndri hreyfingu frumeinda og sameinda",
-      "chapter": 5,
-      "section": "5.1",
-      "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
-      "termId": "fs-idp31730416"
-    },
-    {
       "termIs": "varmarýmd (C)",
       "termEn": "heat capacity (c)",
       "termFull": "varmarýmd (C) (e. heat capacity (c))",
-      "definition": "útþaninn eiginleiki efnis sem táknar magn varma sem þarf til að hækka hitastig þess um 1 gráðu á Celsíus (eða 1 kelvin)",
+      "definition": "magnháður eiginleiki efnis sem táknar það varmamagn sem þarf til að hækka hitastig þess um 1 gráðu á Celsíus (eða 1 kelvín)",
       "chapter": 5,
       "section": "5.1",
       "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp25506160"
     },
     {
@@ -7721,7 +7721,7 @@
       "chapter": 5,
       "section": "5.1",
       "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp25504496"
     },
     {
@@ -7794,7 +7794,7 @@
       "termIs": "vermibreyting (ΔH)",
       "termEn": "enthalpy change (δh)",
       "termFull": "vermibreyting (ΔH) (e. enthalpy change (δh))",
-      "definition": "varmi sem losnar eða frásogast af kerfi við stöðugan þrýsting í efna- eða eðlisfræðilegu ferli",
+      "definition": "hiti sem losnar eða frásogast af kerfi við stöðugan þrýsting í efna- eða eðlisfræðilegu ferli",
       "chapter": 5,
       "section": "5.3",
       "sectionTitle": "Vermi",
@@ -7893,11 +7893,11 @@
       "termIs": "vinna (w)",
       "termEn": "work (w)",
       "termFull": "vinna (w) (e. work (w))",
-      "definition": "orkuflutningur vegna breytinga á ytri, stórsæjum breytum eins og þrýstingi og rúmmáli; eða það að fá efni til að hreyfast gegn andstæðum krafti",
+      "definition": "orkuflutningur vegna breytinga á ytri, heildrænum breytum eins og þrýstingi og rúmmáli; eða það að fá efni til að hreyfast gegn andstæðum krafti",
       "chapter": 5,
       "section": "5.1",
       "sectionTitle": "Grundvallaratriði orku",
-      "sectionSlug": "5-1-grunnatridi-orku",
+      "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp31732848"
     },
     {

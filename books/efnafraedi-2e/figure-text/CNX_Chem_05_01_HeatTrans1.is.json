@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_01_HeatTrans1",
+ "renderHash": "ebd4f3c5b42dda70",
+ "composedHash": "ebd4f3c5b42dda70",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Different temperatures": "Mismunandi hitastig",
+  "Thermal equilibrium": "Varmajafnvægi",
+  "Contact": "Snerting"
+ },
+ "mtAlternatives": {
+  "Contact": {
+   "kept": "joined",
+   "other": "Hafðu samband",
+   "reason": "disagree",
+   "mt": "Snerting"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

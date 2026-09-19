@@ -212,6 +212,27 @@ grep -ah -o '"arm"[^,}]*' books/<slug>/02-mt-output/ch<NN>/*-provenance.json | s
 # every module must read arm: "no-glossary"
 ```
 
+> **AMENDED 2026-09-19 (chemistry ch05) — ONE BOUNDED EXCEPTION: `--glossary-only "enthalpy,enthalpy change"`.**
+> A paid probe of `m68727` with `--no-glossary` rendered *enthalpy* as `varmaorka` / `varmi` / `entalpía`: 40 of 86
+> enthalpy segments were `varm-` only. With the two-term subset, 86 of 86 were `vermi`. [USER] chose the subset for ch05.
+> Record, and why only a measured mirror case qualifies:
+> [`docs/decisions/2026-09-19-enthalpy-glossary-subset-exception.md`](../decisions/2026-09-19-enthalpy-glossary-subset-exception.md).
+> On a chunk without either headword nothing is sent, so the wire is identical to `--no-glossary`. ▶ **The arm check
+> above therefore accepts `arm: "glossary-only"` as well as `"no-glossary"`.** A bare `"glossary"` is still wrong.
+> ✅ **[USER] 2026-09-19: the subset is chemistry's STANDARD arm, and each chapter gets TWO checks of its own**
+> ([`docs/decisions/2026-09-19-glossary-subset-standard-per-chapter.md`](../decisions/2026-09-19-glossary-subset-standard-per-chapter.md)):
+> **(a) subset candidates.** Chapters are thematic, so look for this chapter's own mirror-case terms: approved
+> glossary headwords the chapter's MT renders inconsistently or collapses onto another term's Icelandic. A term
+> joins the chapter's `--glossary-only` list only on measured evidence, re-buying with `--module` only the
+> affected modules. **(b) short math labels.** Look for labels the book's `math-label-map.json` translates but the
+> short-label default renders in English. [USER] rules on each one, and the ruling goes into
+> `LOCALIZABLE_SHORT_LABELS` with its reason (`rxn → hvarf` was the first). Inject applies the substitution, so a
+> ruling needs a re-INJECT, not only a re-render.
+> ⚠️ **How to run (a) and (b) is not yet a tool.** Until one exists, (a) is `test-results/c-ch05-glossary-arm-probe-2026-09-19/enthalpy-probe.mjs`
+> adapted per term. Whether the tool is built is the register's to say.
+> ⚠️ **Never pass `--force` chapter-wide to redo one module** — use `--module` (below). ch05's probe module would
+> otherwise have been bought a third time.
+
 ⚠️ **AND `--dry-run` WITHOUT `--force` IS USELESS — it reports `To translate: 0` and prices
 nothing**, because `mtRunDecision` skips on file existence. The pre-flight is the `--dry-run --force`
 form above; it costs **0 ISK**, exiting before `createClient()` is ever constructed.

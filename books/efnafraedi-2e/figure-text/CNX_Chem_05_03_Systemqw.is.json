@@ -1,0 +1,46 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_03_Systemqw",
+ "renderHash": "61bb0008592ede42",
+ "composedHash": "61bb0008592ede42",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "System": "Kerfi",
+  "Surroundings": "Umhverfi",
+  "qout": "qút",
+  "wby": "waf",
+  "qin": "qinn",
+  "won": "wá"
+ },
+ "mtAlternatives": {
+  "qout": {
+   "kept": "joined",
+   "other": "tilvitnun",
+   "reason": "disagree",
+   "mt": "qút"
+  },
+  "wby": {
+   "kept": "joined",
+   "other": "en þú",
+   "reason": "disagree",
+   "mt": "waf"
+  },
+  "qin": {
+   "kept": "joined",
+   "other": "Qin",
+   "reason": "disagree",
+   "mt": "qinn"
+  },
+  "won": {
+   "kept": "joined",
+   "other": "vann",
+   "reason": "disagree",
+   "mt": "wá"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

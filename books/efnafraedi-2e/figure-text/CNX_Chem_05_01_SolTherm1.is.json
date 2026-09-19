@@ -1,0 +1,21 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_01_SolTherm1",
+ "renderHash": "70e3bbdfd1447149",
+ "composedHash": "70e3bbdfd1447149",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Heat|exchange": "Varmaskipti",
+  "Heat|transfer|fluid": "Varmaflutningsvökvi",
+  "Cooling tower": "Kæliturn",
+  "Exhaust steam": "Útblástursgufa",
+  "Superheated|steam": "Yfirhituð gufa",
+  "Steam turbine": "Gufuhverfill",
+  "Generator": "Rafall"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

@@ -26,6 +26,7 @@
     {
       "type": "figure",
       "id": "CNX_Chem_05_01_Thermochem",
+      "title": null,
       "caption": {
         "segmentId": "m68724:caption:CNX_Chem_05_01_Thermochem-caption"
       },
@@ -72,6 +73,7 @@
           "type": "figure",
           "id": "CNX_Chem_05_01_Waterfall",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68724:caption:CNX_Chem_05_01_Waterfall-caption"
           },
@@ -120,6 +122,7 @@
           "type": "figure",
           "id": "CNX_Chem_05_01_HotCold",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68724:caption:CNX_Chem_05_01_HotCold-caption"
           },
@@ -154,6 +157,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_05_01_Thermom",
+          "title": null,
           "caption": {
             "segmentId": "m68724:caption:CNX_Chem_05_01_Thermom-caption"
           },
@@ -188,6 +192,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_05_01_HeatTrans1",
+          "title": null,
           "caption": {
             "segmentId": "m68724:caption:CNX_Chem_05_01_HeatTrans1-caption"
           },
@@ -222,6 +227,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_05_01_OxyacTorch",
+          "title": null,
           "caption": {
             "segmentId": "m68724:caption:CNX_Chem_05_01_OxyacTorch-caption"
           },
@@ -314,6 +320,7 @@
           "type": "figure",
           "id": "CNX_Chem_05_01_HeatCapacity",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68724:caption:CNX_Chem_05_01_HeatCapacity-caption"
           },
@@ -953,6 +960,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_05_01_SolTherm1",
+          "title": null,
           "caption": {
             "segmentId": "m68724:caption:CNX_Chem_05_01_SolTherm1-caption"
           },
@@ -969,6 +977,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_05_01_SolTherm2",
+          "title": null,
           "caption": {
             "segmentId": "m68724:caption:CNX_Chem_05_01_SolTherm2-caption"
           },

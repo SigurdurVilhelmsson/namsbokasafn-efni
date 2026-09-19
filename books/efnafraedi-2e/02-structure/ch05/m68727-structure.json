@@ -53,6 +53,7 @@
       "type": "figure",
       "id": "CNX_Chem_05_03_Systemqw",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68727:caption:CNX_Chem_05_03_Systemqw-caption"
       },
@@ -93,6 +94,7 @@
       "type": "figure",
       "id": "CNX_Chem_05_03_Summit",
       "class": "scaled-down",
+      "title": null,
       "caption": {
         "segmentId": "m68727:caption:CNX_Chem_05_03_Summit-caption"
       },
@@ -759,6 +761,7 @@
           "type": "figure",
           "id": "CNX_Chem_05_03_GasBurning",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68727:caption:CNX_Chem_05_03_GasBurning-caption"
           },
@@ -797,6 +800,7 @@
           "type": "figure",
           "id": "CNX_Chem_05_03_AlgalFuel1",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68727:caption:CNX_Chem_05_03_AlgalFuel1-caption"
           },
@@ -813,6 +817,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_05_03_AlgalFuel2",
+          "title": null,
           "caption": {
             "segmentId": "m68727:caption:CNX_Chem_05_03_AlgalFuel2-caption"
           },
@@ -1132,6 +1137,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_05_03_HessCO2",
+          "title": null,
           "caption": {
             "segmentId": "m68727:caption:CNX_Chem_05_03_HessCO2-caption"
           },

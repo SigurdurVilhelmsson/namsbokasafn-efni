@@ -1,0 +1,18 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_05_01_Thermom",
+ "renderHash": "ddda3921272eda1f",
+ "composedHash": "ddda3921272eda1f",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Brass": "Messing",
+  "Warmer": "Hlýrra",
+  "Colder": "Kaldara",
+  "Steel": "Stál"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}
