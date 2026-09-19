@@ -64,8 +64,14 @@
  * image-bearing and image-free figures. What does hold, over the 79 chemistry figures where
  * poppler finds no words: `imageXObjects > 0 && paintOps === 0` selects 49 of the 71 photographs
  * and never once selects an image-free vector. Every error is in one direction, and it costs
- * nothing: both branches are `copied-*`, neither spends. That stops being true the moment a
+ * no MONEY: both branches are `copied-*`, neither spends. That stops being true the moment a
  * `copied-*` branch starts buying anything.
+ * ⚠️ §C159 NOW RECOMPOSES `copied-textless` FIGURES, AND THIS SPLIT'S ERROR IS WHY IT RECOMPOSES
+ * ONLY PURE VECTORS. A photograph that falls through to textless may carry text inside its
+ * raster, which no count here can see; `figure-run.js`'s `isRecomposableTextless` therefore
+ * requires `imageXObjects === 0`. Measured on the first live run: `CNX_Chem_03_01_ibuprofenmass_img`
+ * (chars 0, images 3) held its whole table in a raster, and recomposing it published English over
+ * an Icelandic copy.
  */
 
 import { CLASSIFICATION_OUTCOMES } from './figure-outcomes.js';

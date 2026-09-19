@@ -114,7 +114,9 @@ def subset_woff2(chars):
     # A FRESH parse of the verified bytes on every call: `sub.subset(font)` mutates the font in place, so subsetting
     # the cached `_font` would corrupt `covers()` for the rest of the process - and re-opening `font_path()` here
     # would read a file that was never hashed if $FIGTEXT_STIX_FONT changed after load().
-    font = TTFont(io.BytesIO(_font_bytes))
+    # recalcTimestamp=False for the same reason as `svgout.subset_face`: the save time must not
+    # reach the output bytes (§C159).
+    font = TTFont(io.BytesIO(_font_bytes), recalcTimestamp=False)
     opt = fsubset.Options()
     opt.layout_features = ['*']
     opt.desubroutinize = True

@@ -254,6 +254,10 @@ function fakeSpawn(plan = {}) {
 
     if (stage === 'compose') {
       const basename = path.basename(outDir);
+      // What the composer was told to draw, read while the file still exists — the driver
+      // deletes each figure's directory as soon as it is done with it.
+      const trPath = argv[argv.indexOf('--translations') + 1];
+      fn.translationsSeen[basename] = JSON.parse(fs.readFileSync(trPath, 'utf-8'));
       const spec = plan.compose ? plan.compose(basename) : {};
       if (spec.__error) {
         fs.rmSync(path.join(outDir, 'translated.svg'), { force: true });
@@ -289,6 +293,7 @@ function fakeSpawn(plan = {}) {
   };
   fn.calls = calls;
   fn.liveDirs = [];
+  fn.translationsSeen = {};
   fn.countOf = (stage) => calls.filter((c) => c.stage === stage).length;
   fn.outDirsFor = (stage) =>
     calls
@@ -1022,6 +1027,137 @@ describe('--stale and --force spend NOTHING', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────────────────
+// §C159 — A TEXTLESS FIGURE THAT SERVES A COMPOSED COPY IS RECOMPOSED FROM SOURCE, 0 ISK.
+// [USER] ruling 2026-09-19. The figure has nothing to buy, so the composer draws its verbatim
+// labels from an EMPTY translation set, and the result is published over the old `_IS.svg`
+// with NO sidecar — a sidecar would badge the reader's figure "unreviewed".
+describe('a textless figure is recomposed from its source artwork (§C159)', () => {
+  const textlessPrepare = (b) =>
+    b.startsWith('FIG_TEXTLESS')
+      ? {
+          sendable: 0,
+          imageXObjects: 0,
+          paintOps: 9,
+          __blocks: [{ key: 'kC', english: 'C', lines: ['C'], arc: false, send: false }],
+        }
+      : { sendable: 2 };
+
+  it('composes it from an empty set, publishes it over the old copy, and buys nothing', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_TEXTLESS', 'FIG_TEXT'],
+      mapping: [
+        { originalImage: 'FIG_TEXTLESS', outputName: 'FIG_TEXTLESS_IS.svg', extension: '.svg' },
+        { originalImage: 'FIG_TEXT', outputName: 'FIG_TEXT_IS.svg', extension: '.svg' },
+      ],
+    });
+    const old = path.join(bookDir, 'media', 'FIG_TEXTLESS_IS.svg');
+    fs.writeFileSync(old, '<svg id="cowork-era"/>');
+    const spawn = fakeSpawn({ prepare: textlessPrepare });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    const r = rec(result, 'FIG_TEXTLESS');
+    expect(r.outcome).toBe('copied-textless'); // the bucket is unchanged: it is still a copy
+    expect(spawn.outDirsFor('translate')).toEqual(['FIG_TEXT']); // never bought…
+    expect(r.spent).toBe(false);
+    expect(spawn.outDirsFor('compose').sort()).toEqual(['FIG_TEXT', 'FIG_TEXTLESS']); // …composed
+    expect(spawn.translationsSeen.FIG_TEXTLESS).toEqual({ blocks: {} });
+    expect(fs.readFileSync(old, 'utf-8')).toBe('<svg id="FIG_TEXTLESS"/>'); // the old copy is gone
+    expect(r.published).toMatchObject({ outputName: 'FIG_TEXTLESS_IS.svg', replaced: true });
+    expect(fs.existsSync(sidecarPath(bookDir, 'FIG_TEXTLESS'))).toBe(false); // no badge, no queue
+    expect(result.verdict.ok).toBe(true);
+    // …and the report names it, because a 0-ISK picture change appears in no spend line.
+    expect(summarise(result)).toMatch(
+      /textless, recomposed from source artwork[^\n]*\(1\):\n\s+FIG_TEXTLESS\n/
+    );
+  });
+
+  it('leaves a textless figure with NO mapping row alone: readers already get the source', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_TEXTLESS', 'FIG_TEXT'],
+      mapping: [{ originalImage: 'FIG_TEXT', outputName: 'FIG_TEXT_IS.svg', extension: '.svg' }],
+    });
+    const spawn = fakeSpawn({ prepare: textlessPrepare });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_TEXTLESS').outcome).toBe('copied-textless');
+    expect(spawn.outDirsFor('compose')).toEqual(['FIG_TEXT']); // the control composed
+    expect(rec(result, 'FIG_TEXTLESS').published).toBeFalsy();
+    expect(mapEntries(bookDir).map((e) => e.originalImage)).toEqual(['FIG_TEXT']); // nothing minted
+    expect(result.verdict.ok).toBe(true);
+  });
+
+  // The measured regression: ibuprofenmass (chars 0, images 3) carried its table in a raster,
+  // so the read layer saw no text and a recompose replaced an Icelandic copy with English.
+  it('never recomposes a textless figure that embeds a raster — its text may be inside it', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_RASTER', 'FIG_TEXTLESS'],
+      mapping: [
+        { originalImage: 'FIG_RASTER', outputName: 'FIG_RASTER_IS.svg', extension: '.svg' },
+        { originalImage: 'FIG_TEXTLESS', outputName: 'FIG_TEXTLESS_IS.svg', extension: '.svg' },
+      ],
+    });
+    const translatedCopy = path.join(bookDir, 'media', 'FIG_RASTER_IS.svg');
+    fs.writeFileSync(translatedCopy, '<svg id="icelandic-table"/>');
+    const spawn = fakeSpawn({
+      prepare: (b) =>
+        b === 'FIG_RASTER'
+          ? { sendable: 0, chars: 0, imageXObjects: 3, paintOps: 1, __blocks: [] }
+          : textlessPrepare(b),
+    });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_RASTER').outcome).toBe('copied-textless'); // the premise
+    expect(spawn.outDirsFor('compose')).toEqual(['FIG_TEXTLESS']); // the control recomposed
+    expect(fs.readFileSync(translatedCopy, 'utf-8')).toBe('<svg id="icelandic-table"/>');
+    expect(result.verdict.ok).toBe(true);
+    // …and the refusal is NAMED, or the declined figure is invisible in the report.
+    expect(summarise(result)).toMatch(
+      /embedded raster, NOT recomposed[^\n]*\(1\):\n\s+FIG_RASTER\n/
+    );
+  });
+
+  it('a compose refusal fails the run and leaves the old copy serving', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_TEXTLESS'],
+      mapping: [
+        { originalImage: 'FIG_TEXTLESS', outputName: 'FIG_TEXTLESS_IS.svg', extension: '.svg' },
+      ],
+    });
+    const old = path.join(bookDir, 'media', 'FIG_TEXTLESS_IS.svg');
+    fs.writeFileSync(old, '<svg id="cowork-era"/>');
+    const spawn = fakeSpawn({
+      prepare: textlessPrepare,
+      compose: () => ({ __error: 'drew a different set of blocks' }),
+    });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_TEXTLESS').outcome).toBe('failed-compose');
+    expect(fs.readFileSync(old, 'utf-8')).toBe('<svg id="cowork-era"/>');
+    expect(result.verdict.ok).toBe(false);
+  });
+
+  it('a textless figure that somehow has a sidecar is refused, not stamped', async () => {
+    const { booksRoot, bookDir } = makeBook({
+      figures: ['FIG_TEXTLESS'],
+      mapping: [
+        { originalImage: 'FIG_TEXTLESS', outputName: 'FIG_TEXTLESS_IS.svg', extension: '.svg' },
+      ],
+      // Empty blocks, so the drift guard (which fires on a sidecar WITH blocks) stands aside and
+      // the publisher's own refusal is what is under test.
+      rawSidecars: {
+        FIG_TEXTLESS: JSON.stringify({ version: 1, basename: 'FIG_TEXTLESS', blocks: {} }),
+      },
+    });
+    const spawn = fakeSpawn({ prepare: textlessPrepare });
+    const result = await runFigures(live(booksRoot), { spawn, booksRoot });
+
+    expect(rec(result, 'FIG_TEXTLESS').outcome).toBe('failed-publish');
+    expect(rec(result, 'FIG_TEXTLESS').reason).toMatch(/has-sidecar/);
+    expect(fs.existsSync(path.join(bookDir, 'media', 'FIG_TEXTLESS_IS.svg'))).toBe(false);
+  });
+});
+
 describe('the MT failure modes each leave the figure eligible', () => {
   it('a non-zero exit from the MT buckets failed-mt, writes NO sidecar, and stays eligible', async () => {
     const { booksRoot, bookDir } = makeBook({ figures: ['FIG_A'] });

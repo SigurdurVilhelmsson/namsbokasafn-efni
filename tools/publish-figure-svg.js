@@ -32,7 +32,12 @@ import { createRequire } from 'module';
 import { loadImageBasenameMap } from './lib/image-basename-map.cjs';
 
 const require = createRequire(import.meta.url);
-const { readSidecar, writeSidecar, COMPOSER_VERSION } = require('./lib/figure-text-sidecar.cjs');
+const {
+  readSidecar,
+  writeSidecar,
+  sidecarPath: sidecarPathFor,
+  COMPOSER_VERSION,
+} = require('./lib/figure-text-sidecar.cjs');
 
 /**
  * `<anything>/books/<slug>/figure-text/<basename>.is.json` → its parts.
@@ -204,54 +209,18 @@ export function publishFigureSvg(options = {}) {
     };
   }
 
-  // 🔴 THE CROSS-CHECK. `out/` holds whatever figure was extracted LAST, and the
-  // sidecar says which figure the TEXT is for. Publishing without comparing them
-  // puts figure A's artwork on the page under figure B's translations — a
-  // correct-looking translation of the wrong picture, which is the same class of
-  // silent error sources.py's edition precedence exists to prevent one stage
-  // earlier. Neither side can catch it alone.
-  const composed = basenameFromMeta(metaPath);
-  if (composed !== basename) {
-    return {
-      ok: false,
-      reason: 'basename-mismatch',
-      message:
-        `out/ holds ${composed || '(unreadable meta.json)'} but the sidecar is for ${basename}. ` +
-        `Re-run extract.py + compose.py for ${basename}, or point --sidecar at the right figure.`,
-    };
-  }
-
-  // The mapped name is the ONLY source of the published filename. Building one
-  // from a suffix here would restate DEFAULT_SUFFIX, whose owner is
-  // tools/generate-image-mapping.js and whose test pins it against the corpus.
-  const entry = loadImageBasenameMap(bookDir).find((e) => e.originalImage === basename);
-  if (!entry) {
-    return {
-      ok: false,
-      reason: 'unmapped',
-      message: `No image-mapping.json entry for ${basename} in ${book}; run generate-image-mapping.js first.`,
-    };
-  }
-
-  if (!fs.existsSync(svgPath)) {
-    return { ok: false, reason: 'no-svg', message: `Composed SVG not found: ${svgPath}` };
-  }
-
-  // CONTAINMENT, BEFORE THE WRITE — see `escapesMediaDir` above, which owns the rule and which
-  // figure-run.js's pre-flight asks the same question of before any money is spent.
-  const target = path.resolve(bookDir, 'media', entry.outputName);
-  if (escapesMediaDir(bookDir, entry.outputName)) {
-    return {
-      ok: false,
-      reason: 'unsafe-output-name',
-      message:
-        `image-mapping.json entry for ${basename} names an outputName that escapes ` +
-        `media/: ${JSON.stringify(entry.outputName)}. A published figure is a flat file ` +
-        `in the book's media/ directory; nothing may be written outside it.`,
-    };
-  }
-  const replaced = fs.existsSync(target);
-  fs.copyFileSync(svgPath, target);
+  const placed = placeInMedia({
+    bookDir,
+    book,
+    basename,
+    svgPath,
+    metaPath,
+    mismatch: (composed) =>
+      `out/ holds ${composed || '(unreadable meta.json)'} but the sidecar is for ${basename}. ` +
+      `Re-run extract.py + compose.py for ${basename}, or point --sidecar at the right figure.`,
+  });
+  if (!placed.ok) return placed;
+  const { entry, target, replaced } = placed;
 
   // Copied, never computed — see the header.
   //
@@ -287,6 +256,122 @@ export function publishFigureSvg(options = {}) {
     // Reported for the same reason `composedHash` is: the run record says what was stamped.
     // ⚠️ Null when there was no renderHash to stamp, so the two travel together.
     composedVersion: composedHash ? COMPOSER_VERSION : null,
+  };
+}
+
+/**
+ * The checks every publish makes, whatever carries its text, then the write. Shared by
+ * `publishFigureSvg` and `publishTextlessSvg` so the two cannot come to disagree about what is
+ * safe to put in front of a reader. Nothing is written unless every check passes.
+ *
+ * @param {{bookDir:string, book:string, basename:string, svgPath:string, metaPath:string,
+ *          mismatch:(composed:string|null)=>string}} options `mismatch` words the
+ *   basename-mismatch refusal for the caller, because what the figure is being checked AGAINST
+ *   differs (a sidecar, or the textless figure the driver named)
+ * @returns {{ok:true, entry:object, target:string, replaced:boolean}
+ *          |{ok:false, reason:string, message:string}}
+ */
+function placeInMedia({ bookDir, book, basename, svgPath, metaPath, mismatch }) {
+  // 🔴 THE CROSS-CHECK. `out/` holds whatever figure was extracted LAST, and the
+  // caller says which figure this publish is for. Publishing without comparing them
+  // puts figure A's artwork on the page under figure B's translations — a
+  // correct-looking translation of the wrong picture, which is the same class of
+  // silent error sources.py's edition precedence exists to prevent one stage
+  // earlier. Neither side can catch it alone.
+  const composed = basenameFromMeta(metaPath);
+  if (composed !== basename) {
+    return { ok: false, reason: 'basename-mismatch', message: mismatch(composed) };
+  }
+
+  // The mapped name is the ONLY source of the published filename. Building one
+  // from a suffix here would restate DEFAULT_SUFFIX, whose owner is
+  // tools/generate-image-mapping.js and whose test pins it against the corpus.
+  const entry = loadImageBasenameMap(bookDir).find((e) => e.originalImage === basename);
+  if (!entry) {
+    return {
+      ok: false,
+      reason: 'unmapped',
+      message: `No image-mapping.json entry for ${basename} in ${book}; run generate-image-mapping.js first.`,
+    };
+  }
+
+  if (!fs.existsSync(svgPath)) {
+    return { ok: false, reason: 'no-svg', message: `Composed SVG not found: ${svgPath}` };
+  }
+
+  // CONTAINMENT, BEFORE THE WRITE — see `escapesMediaDir` above, which owns the rule and which
+  // figure-run.js's pre-flight asks the same question of before any money is spent.
+  const target = path.resolve(bookDir, 'media', entry.outputName);
+  if (escapesMediaDir(bookDir, entry.outputName)) {
+    return {
+      ok: false,
+      reason: 'unsafe-output-name',
+      message:
+        `image-mapping.json entry for ${basename} names an outputName that escapes ` +
+        `media/: ${JSON.stringify(entry.outputName)}. A published figure is a flat file ` +
+        `in the book's media/ directory; nothing may be written outside it.`,
+    };
+  }
+  const replaced = fs.existsSync(target);
+  fs.copyFileSync(svgPath, target);
+  return { ok: true, entry, target, replaced };
+}
+
+/**
+ * Publish a recomposed TEXTLESS figure — one whose every label is kept verbatim, so nothing was
+ * bought and there is no sidecar (§C159, [USER] ruling 2026-09-19).
+ *
+ * 🔴 IT REFUSES A FIGURE THAT HAS A SIDECAR, AND THAT IS THE POINT OF A SECOND ENTRY POINT. A
+ * sidecar means three things at once in this repo: the figure was BOUGHT (the driver never
+ * spends on it again), it NEEDS REVIEW (`cnxml-render.js` badges it and the review queue lists
+ * it), and it is CURRENT once stamped. A textless figure is none of those, so it must never gain
+ * one: an empty `blocks: {}` sidecar would badge a reader-facing figure "unreviewed" and put it
+ * in front of editors with nothing to review. And a figure that DOES carry a sidecar is a
+ * translated one, whose publish must stamp it — so it goes through `publishFigureSvg`, never
+ * here.
+ *
+ * ⚠️ NO STAMP IS WRITTEN, SO NOTHING MARKS THIS FIGURE CURRENT. The driver recomposes it on every
+ * run. That is affordable because it is prepared on every run anyway, and it is harmless only
+ * because the composer's output is byte-deterministic (the font subset's timestamp is pinned;
+ * see `svgout.subset_face`) — a nondeterministic compose would make every run a media/ diff.
+ *
+ * @param {{bookDir:string, basename:string, svgPath:string, metaPath:string}} options
+ * @returns {{ok:true, book, basename, outputName, path, replaced, composedHash:null,
+ *            composedVersion:null}
+ *          |{ok:false, reason:string, message:string}}
+ */
+export function publishTextlessSvg({ bookDir, basename, svgPath, metaPath }) {
+  const book = path.basename(bookDir);
+  if (fs.existsSync(sidecarPathFor(bookDir, basename))) {
+    return {
+      ok: false,
+      reason: 'has-sidecar',
+      message:
+        `${basename} has a figure-text sidecar, so it is a translated figure: publish it through ` +
+        `publishFigureSvg, which stamps the sidecar. A textless publish writes no stamp and ` +
+        `would leave the sidecar describing artwork it was not composed from.`,
+    };
+  }
+  const placed = placeInMedia({
+    bookDir,
+    book,
+    basename,
+    svgPath,
+    metaPath,
+    mismatch: (composed) =>
+      `out/ holds ${composed || '(unreadable meta.json)'} but the textless figure being ` +
+      `published is ${basename}. Re-run figure-prepare.py + figure-compose.py for ${basename}.`,
+  });
+  if (!placed.ok) return placed;
+  return {
+    ok: true,
+    book,
+    basename,
+    outputName: placed.entry.outputName,
+    path: placed.target,
+    replaced: placed.replaced,
+    composedHash: null,
+    composedVersion: null,
   };
 }
 
