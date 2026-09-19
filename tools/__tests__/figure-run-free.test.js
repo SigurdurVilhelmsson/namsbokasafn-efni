@@ -1350,20 +1350,29 @@ describe('labels the read layer could not decode are reported for EVERY outcome'
   });
 
   it('still classifies it translated — the ordering is right and must not move', async () => {
-    const result = await runFigures(CH05(), { spawn: fakeSpawn({ prepare: () => foodLabel }) });
+    const result = await runFigures(CH05(), {
+      ...PRISTINE,
+      spawn: fakeSpawn({ prepare: () => foodLabel }),
+    });
     expect(result.figures[0].outcome).toBe('translated');
     expect(result.figures[0].holds).toEqual({ verbatim: 17, undecoded: 2, missingFont: 0 });
   });
 
   it('NAMES the figure and its undecodable label count in the report', async () => {
-    const result = await runFigures(CH05(), { spawn: fakeSpawn({ prepare: () => foodLabel }) });
+    const result = await runFigures(CH05(), {
+      ...PRISTINE,
+      spawn: fakeSpawn({ prepare: () => foodLabel }),
+    });
     const text = summarise(result);
     expect(text).toMatch(/undecodable/i);
     expect(text).toContain(FOODLABEL);
   });
 
   it('adds a non-fatal NOTE so a chapter walk cannot end green in silence', async () => {
-    const result = await runFigures(CH05(), { spawn: fakeSpawn({ prepare: () => foodLabel }) });
+    const result = await runFigures(CH05(), {
+      ...PRISTINE,
+      spawn: fakeSpawn({ prepare: () => foodLabel }),
+    });
     expect(result.verdict.ok).toBe(true);
     expect(result.verdict.reasons.join(' ')).toMatch(/could not decode/i);
     expect(summarise(result)).toMatch(/could not decode/i);
@@ -1373,7 +1382,10 @@ describe('labels the read layer could not decode are reported for EVERY outcome'
   // line for every figure in every chapter.
   it('says none of it for the same figure with no undecodable holds', async () => {
     const clean = { ...foodLabel, undecodedBlocks: 0, verbatimBlocks: 19, warnings: [] };
-    const result = await runFigures(CH05(), { spawn: fakeSpawn({ prepare: () => clean }) });
+    const result = await runFigures(CH05(), {
+      ...PRISTINE,
+      spawn: fakeSpawn({ prepare: () => clean }),
+    });
     const text = summarise(result);
     expect(result.figures[0].outcome).toBe('translated');
     expect(text).not.toMatch(/undecodable/i);
@@ -1397,7 +1409,10 @@ describe('labels the read layer could not decode are reported for EVERY outcome'
       formTextXObjects: 0,
       warnings: [],
     };
-    const result = await runFigures(CH05(), { spawn: fakeSpawn({ prepare: () => plumbing }) });
+    const result = await runFigures(CH05(), {
+      ...PRISTINE,
+      spawn: fakeSpawn({ prepare: () => plumbing }),
+    });
     expect(result.figures[0].outcome).toBe('copied-textless');
     expect(summarise(result)).toMatch(/missing-font/i);
   });
