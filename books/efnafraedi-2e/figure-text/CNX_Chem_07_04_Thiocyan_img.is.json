@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_07_04_Thiocyan_img",
+ "renderHash": "d2e5b1a12855fbf8",
+ "composedHash": "d2e5b1a12855fbf8",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Structure": "Bygging",
+  "Formal charge": "Formleg hleðsla"
+ },
+ "mtAlternatives": {
+  "Structure": {
+   "kept": "joined",
+   "other": "Uppbygging",
+   "reason": "disagree",
+   "mt": "Bygging"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

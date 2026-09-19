@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_07_04_Exercis12d_img",
+ "renderHash": "ee3c0f20bb3ca657",
+ "composedHash": "ee3c0f20bb3ca657",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Formal charge:": "Formleg hleðsla:"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

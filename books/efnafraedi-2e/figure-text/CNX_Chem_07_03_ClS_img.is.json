@@ -1,0 +1,44 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_07_03_ClS_img",
+ "renderHash": "7bdd88f1e2656507",
+ "composedHash": "7bdd88f1e2656507",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "chlorine|anion": "Klóríðjón",
+  "chlorine|atom": "Klóratóm",
+  "sulfide|anion": "Súlfíðjón",
+  "sulfur|atom": "Brennisteinsatóm"
+ },
+ "mtAlternatives": {
+  "chlorine|anion": {
+   "kept": "joined",
+   "other": "klóríðanjón",
+   "reason": "disagree",
+   "mt": "Klóríðjón"
+  },
+  "chlorine|atom": {
+   "kept": "joined",
+   "other": "klóratóm",
+   "reason": "disagree",
+   "mt": "Klóratóm"
+  },
+  "sulfide|anion": {
+   "kept": "joined",
+   "other": "súlfíðanjón",
+   "reason": "disagree",
+   "mt": "Súlfíðjón"
+  },
+  "sulfur|atom": {
+   "kept": "joined",
+   "other": "brennisteinsatóm",
+   "reason": "disagree",
+   "mt": "Brennisteinsatóm"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

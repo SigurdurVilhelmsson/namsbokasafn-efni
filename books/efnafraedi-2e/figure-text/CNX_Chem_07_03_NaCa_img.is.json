@@ -1,0 +1,44 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_07_03_NaCa_img",
+ "renderHash": "aedfe93b0436a7ea",
+ "composedHash": "aedfe93b0436a7ea",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "sodium|atom": "natríumatóm",
+  "sodium|cation": "natríumkatjón",
+  "calcium|atom": "kalsíumatóm",
+  "calcium|cation": "kalsíumkatjón"
+ },
+ "mtAlternatives": {
+  "sodium|atom": {
+   "kept": "joined",
+   "other": "Natríumatóm",
+   "reason": "disagree",
+   "mt": "natríumatóm"
+  },
+  "sodium|cation": {
+   "kept": "joined",
+   "other": "Natríumkatjón",
+   "reason": "disagree",
+   "mt": "natríumkatjón"
+  },
+  "calcium|atom": {
+   "kept": "joined",
+   "other": "Kalsíumatóm",
+   "reason": "disagree",
+   "mt": "kalsíumatóm"
+  },
+  "calcium|cation": {
+   "kept": "joined",
+   "other": "Kalsíumkatjón",
+   "reason": "disagree",
+   "mt": "kalsíumkatjón"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

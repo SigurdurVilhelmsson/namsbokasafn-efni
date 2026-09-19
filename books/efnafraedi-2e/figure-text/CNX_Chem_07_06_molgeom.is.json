@@ -1,0 +1,117 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_07_06_molgeom",
+ "renderHash": "533b47f2fe6d617b",
+ "composedHash": "533b47f2fe6d617b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Electron pair|geometries:|0 lone pair": "Rúmfræði rafeindapara: 0 stök pör",
+  "1 lone pair": "1 stakt par",
+  "2 lone pairs": "2 stök pör",
+  "3 lone pairs": "3 stök pör",
+  "4 lone pairs": "4 stök pör",
+  "Number of|electron|pairs": "Fjöldi rafeindapara",
+  "Linear": "Línuleg",
+  "Trigonal planar": "Þríhyrnd flatarmynd",
+  "Bent or angular": "Beygð eða hornrétt",
+  "Tetrahedral": "Fjórflettingur",
+  "Trigonal pyramid": "Píramídi með þríhyrndan grunn",
+  "Trigonal bipyramid": "Þríhyrnd tvípíramída",
+  "Sawhorse or seesaw": "Vippa eða jafnvægisslá",
+  "T-shape": "T-laga",
+  "Octahedral": "Áttflettingur",
+  "Square pyramid": "Píramídi með ferhyrndan grunn",
+  "Square planar": "Ferhyrnd flatarmynd"
+ },
+ "mtAlternatives": {
+  "Electron pair|geometries:|0 lone pair": {
+   "kept": "joined",
+   "other": "Rúmfræði rafeindapara: 0 stök rafeindapör",
+   "reason": "disagree",
+   "mt": "Rúmfræði rafeindapara: 0 stök pör"
+  },
+  "1 lone pair": {
+   "kept": "joined",
+   "other": "1 stakt rafeindapar",
+   "reason": "disagree",
+   "mt": "1 stakt par"
+  },
+  "2 lone pairs": {
+   "kept": "joined",
+   "other": "2 stök rafeindapör",
+   "reason": "disagree",
+   "mt": "2 stök pör"
+  },
+  "3 lone pairs": {
+   "kept": "joined",
+   "other": "3 stök rafeindapör",
+   "reason": "disagree",
+   "mt": "3 stök pör"
+  },
+  "4 lone pairs": {
+   "kept": "joined",
+   "other": "4 stök rafeindapör",
+   "reason": "disagree",
+   "mt": "4 stök pör"
+  },
+  "Trigonal planar": {
+   "kept": "joined",
+   "other": "Þríhyrningsflatningur",
+   "reason": "disagree",
+   "mt": "Þríhyrnd flatarmynd"
+  },
+  "Bent or angular": {
+   "kept": "joined",
+   "other": "Beygður eða hyrndur",
+   "reason": "disagree",
+   "mt": "Beygð eða hornrétt"
+  },
+  "Tetrahedral": {
+   "kept": "joined",
+   "other": "Fjórflettu-",
+   "reason": "disagree",
+   "mt": "Fjórflettingur"
+  },
+  "Trigonal pyramid": {
+   "kept": "joined",
+   "other": "Þríhyrndur pýramídi",
+   "reason": "disagree",
+   "mt": "Píramídi með þríhyrndan grunn"
+  },
+  "Trigonal bipyramid": {
+   "kept": "joined",
+   "other": "Þríhyrndur tvípíramídi",
+   "reason": "disagree",
+   "mt": "Þríhyrnd tvípíramída"
+  },
+  "Sawhorse or seesaw": {
+   "kept": "joined",
+   "other": "Saghestur eða róla",
+   "reason": "disagree",
+   "mt": "Vippa eða jafnvægisslá"
+  },
+  "Octahedral": {
+   "kept": "joined",
+   "other": "Áttflötungs-",
+   "reason": "disagree",
+   "mt": "Áttflettingur"
+  },
+  "Square pyramid": {
+   "kept": "joined",
+   "other": "Ferkantaður pýramídi",
+   "reason": "disagree",
+   "mt": "Píramídi með ferhyrndan grunn"
+  },
+  "Square planar": {
+   "kept": "joined",
+   "other": "Ferflötur",
+   "reason": "disagree",
+   "mt": "Ferhyrnd flatarmynd"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 17
+ }
+}

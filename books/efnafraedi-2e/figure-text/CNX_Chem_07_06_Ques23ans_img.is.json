@@ -1,0 +1,37 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_07_06_Ques23ans_img",
+ "renderHash": "3aacea2f0f5b2964",
+ "composedHash": "3aacea2f0f5b2964",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "CO2, linear": "CO2, línuleg",
+  "H2O, bent with an approximately 109° angle": "H2O, bogin með u.þ.b. 109° horni",
+  "SO2, bent with an approximately 120° angle": "SO2, bogin með u.þ.b. 120° horni"
+ },
+ "mtAlternatives": {
+  "CO2, linear": {
+   "kept": "joined",
+   "other": "CO2, línulegt",
+   "reason": "disagree",
+   "mt": "CO2, línuleg"
+  },
+  "H2O, bent with an approximately 109° angle": {
+   "kept": "joined",
+   "other": "H2O, bogið með um það bil 109° horni",
+   "reason": "disagree",
+   "mt": "H2O, bogin með u.þ.b. 109° horni"
+  },
+  "SO2, bent with an approximately 120° angle": {
+   "kept": "joined",
+   "other": "SO2, beygð með u.þ.b. 120° horni",
+   "reason": "disagree",
+   "mt": "SO2, bogin með u.þ.b. 120° horni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

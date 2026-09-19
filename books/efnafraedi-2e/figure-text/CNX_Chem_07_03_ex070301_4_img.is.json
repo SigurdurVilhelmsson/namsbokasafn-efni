@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_07_03_ex070301_4_img",
+ "renderHash": "693829579b6ae939",
+ "composedHash": "693829579b6ae939",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "gives": "gefur"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

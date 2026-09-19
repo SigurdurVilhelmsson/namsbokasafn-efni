@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_07_06_NH3",
+ "renderHash": "3a89eaf0a251f3d3",
+ "composedHash": "3a89eaf0a251f3d3",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Lone pair": "Eindapar"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_07_06_OSC_img",
+ "renderHash": "ccc0f6d7c5412634",
+ "composedHash": "ccc0f6d7c5412634",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Bond moments": "Tengiskautun",
+  "Overall dipole moment": "Heildarskautun"
+ },
+ "mtAlternatives": {
+  "Bond moments": {
+   "kept": "joined",
+   "other": "Bond-augnablik",
+   "reason": "disagree",
+   "mt": "Tengiskautun"
+  },
+  "Overall dipole moment": {
+   "kept": "joined",
+   "other": "Heildartvískautsvægi",
+   "reason": "disagree",
+   "mt": "Heildarskautun"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

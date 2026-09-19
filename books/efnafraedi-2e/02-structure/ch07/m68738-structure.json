@@ -44,6 +44,7 @@
           "type": "figure",
           "id": "CNX_Chem_07_02_Morse",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68738:caption:CNX_Chem_07_02_Morse-caption"
           },
@@ -122,6 +123,7 @@
           "type": "figure",
           "id": "CNX_Chem_07_02_HClBond",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68738:caption:CNX_Chem_07_02_HClBond-caption"
           },
@@ -159,6 +161,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_07_02_ENTable",
+          "title": null,
           "caption": {
             "segmentId": "m68738:caption:CNX_Chem_07_02_ENTable-caption"
           },
@@ -211,6 +214,7 @@
               "type": "figure",
               "id": "CNX_Chem_07_02_Pauling",
               "class": "scaled-down",
+              "title": null,
               "caption": {
                 "segmentId": "m68738:caption:CNX_Chem_07_02_Pauling-caption"
               },
@@ -243,6 +247,7 @@
             {
               "type": "figure",
               "id": "CNX_Chem_07_02_DeltaEN",
+              "title": null,
               "caption": {
                 "segmentId": "m68738:caption:CNX_Chem_07_02_DeltaEN-caption"
               },
