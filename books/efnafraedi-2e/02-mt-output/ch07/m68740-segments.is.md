@@ -1,5 +1,5 @@
 <!-- SEG:m68740:title:auto-1 -->
-Formlegar hleðslur og vok
+Formlegar hleðslur og vokmyndir
 
 <!-- SEG:m68740:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla geturðu:
