@@ -1,0 +1,41 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_01_Solardist",
+ "renderHash": "49c381659d341d2d",
+ "composedHash": "49c381659d341d2d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Spectral irradiance (W/m2/nm)": "Litrófsgeislunarþéttleiki (W/m2/nm)",
+  "Wavelength (nm) ": "Bylgjulengd (nm)",
+  "Solar Radiation Spectrum": "Litróf sólargeislunar",
+  "Sunlight at top of the atmosphere": "Sólarljós efst í lofthjúpnum",
+  "5250 °C Blackbody spectrum": "5250 °C litróf svarthlutar",
+  "Visible": "Sýnilegt",
+  "Infrared": "Innrautt"
+ },
+ "mtAlternatives": {
+  "Spectral irradiance (W/m2/nm)": {
+   "kept": "joined",
+   "other": "Litrófsgeislunarstyrkur (W/m2/nm)",
+   "reason": "disagree",
+   "mt": "Litrófsgeislunarþéttleiki (W/m2/nm)"
+  },
+  "Solar Radiation Spectrum": {
+   "kept": "joined",
+   "other": "Geislunarrof sólar",
+   "reason": "disagree",
+   "mt": "Litróf sólargeislunar"
+  },
+  "Sunlight at top of the atmosphere": {
+   "kept": "joined",
+   "other": "Sólarljós við efri mörk lofthjúpsins",
+   "reason": "disagree",
+   "mt": "Sólarljós efst í lofthjúpnum"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

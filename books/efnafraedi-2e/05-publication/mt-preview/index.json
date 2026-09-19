@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-19T10:30:51.628Z",
+  "generated": "2026-09-19T13:36:04.418Z",
   "termCount": 763,
   "entries": [
     {
@@ -34,6 +34,17 @@
       "sectionTitle": "Lotubundnir eiginleikar",
       "sectionSlug": "18-1-lotubundnir-eiginleikar",
       "termId": "fs-idm2235360"
+    },
+    {
+      "termIs": "aðalskammtatala (n)",
+      "termEn": null,
+      "termFull": "aðalskammtatala (n)",
+      "definition": "skammtatala sem tilgreinir hvolfið sem rafeind er í í atómi",
+      "chapter": 6,
+      "section": "6.3",
+      "sectionTitle": "Þróun skammtakenningarinnar",
+      "sectionSlug": "6-3-throun-skammtakenningarinnar",
+      "termId": "fs-idm140352128"
     },
     {
       "termIs": "aðdráttarkraftur milli tvískauta",
@@ -421,10 +432,21 @@
       "termId": "fs-idp230158528"
     },
     {
+      "termIs": "atómsvigrúm",
+      "termEn": null,
+      "termFull": "atómsvigrúm",
+      "definition": "stærðfræðilegt fall sem lýsir hegðun rafeindar í atómi (einnig kallað bylgjufall)",
+      "chapter": 6,
+      "section": "6.3",
+      "sectionTitle": "Þróun skammtakenningarinnar",
+      "sectionSlug": "6-3-throun-skammtakenningarinnar",
+      "termId": "fs-idm147438368"
+    },
+    {
       "termIs": "Aufbau-lögmálið",
       "termEn": "aufbau principle",
       "termFull": "Aufbau-lögmálið (e. aufbau principle)",
-      "definition": "aðferð þar sem rafeindaskipan frumefna er ákvörðuð með því að „byggja“ þau upp í röð eftir sætistölu, þar sem einni róteind er bætt við kjarnann og einni rafeind á rétt undirhvolf í einu",
+      "definition": "aðferð þar sem rafeindaskipan frumefna er ákvörðuð með því að „byggja“ þau upp í röð eftir sætistölum, þar sem einni róteind er bætt við kjarnann og einni rafeind við rétt undirhvolf í einu",
       "chapter": 6,
       "section": "6.4",
       "sectionTitle": "Rafeindabygging atóma (rafeindaskipan)",
@@ -452,6 +474,17 @@
       "sectionTitle": "Aðdráttarkraftar milli sameinda",
       "sectionSlug": "10-1-addrattarkraftar-milli-sameinda",
       "termId": "fs-idp127211536"
+    },
+    {
+      "termIs": "aukaskammtatala (hverfiþungi) (l)",
+      "termEn": null,
+      "termFull": "aukaskammtatala (hverfiþungi) (l)",
+      "definition": "skammtatala sem greinir á milli mismunandi lögunar svigrúma; hún er einnig mælikvarði á hverfiþunga svigrúms",
+      "chapter": 6,
+      "section": "6.3",
+      "sectionTitle": "Þróun skammtakenningarinnar",
+      "sectionSlug": "6-3-throun-skammtakenningarinnar",
+      "termId": "fs-idm176142304"
     },
     {
       "termIs": "autt rými",
@@ -850,6 +883,17 @@
       "termId": "fs-idp168577936"
     },
     {
+      "termIs": "brautarmynd",
+      "termEn": "orbital diagram",
+      "termFull": "brautarmynd (e. orbital diagram)",
+      "definition": "myndræn framsetning á rafeindaskipan sem sýnir hvert svigrúm sem kassa og hverja rafeind sem ör",
+      "chapter": 6,
+      "section": "6.4",
+      "sectionTitle": "Rafeindabygging atóma (rafeindaskipan)",
+      "sectionSlug": "6-4-rafeindabygging-atoma-rafeindaskipan",
+      "termId": "fs-idp15489472"
+    },
+    {
       "termIs": "bráðnun",
       "termEn": "melting",
       "termFull": "bráðnun (e. melting)",
@@ -994,9 +1038,9 @@
     },
     {
       "termIs": "bylgjufall (ψ)",
-      "termEn": "wavefunction (ψ)",
-      "termFull": "bylgjufall (ψ) (e. wavefunction (ψ))",
-      "definition": "stærðfræðileg lýsing á frumeindasvigrúmi sem lýsir lögun svigrúmsins; það er hægt að nota til að reikna út líkurnar á að finna rafeindina á tilteknum stað í svigrúminu, auk aflfræðilegra breyta eins og orku og hverfiþunga",
+      "termEn": null,
+      "termFull": "bylgjufall (ψ)",
+      "definition": "stærðfræðileg lýsing á atómsvigrúmi sem lýsir lögun svigrúmsins; það er hægt að nota til að reikna út líkurnar á að finna rafeindina á tilteknum stað í svigrúminu, auk hreyfifræðilegra breyta eins og orku og hverfiþunga",
       "chapter": 6,
       "section": "6.3",
       "sectionTitle": "Þróun skammtakenningarinnar",
@@ -1007,7 +1051,7 @@
       "termIs": "bylgjulengd (λ)",
       "termEn": "wavelength (λ)",
       "termFull": "bylgjulengd (λ) (e. wavelength (λ))",
-      "definition": "fjarlægð milli tveggja samliggjandi bylgjutoppa eða bylgjudala í bylgju",
+      "definition": "fjarlægð milli tveggja samliggjandi toppa eða dala í bylgju",
       "chapter": 6,
       "section": "6.1",
       "sectionTitle": "Rafsegulorka",
@@ -1049,9 +1093,9 @@
     },
     {
       "termIs": "d-svigrúm",
-      "termEn": "d orbital",
-      "termFull": "d-svigrúm (e. d orbital)",
-      "definition": "rúmsvæði með háum rafeindaþéttleika sem er annaðhvort fjórblaða eða inniheldur handlóðs- og kleinuhringslögun; lýsir svigrúmum með l = 2.",
+      "termEn": null,
+      "termFull": "d-svigrúm",
+      "definition": "rúmsvæði með háum rafeindaþéttleika sem er annaðhvort fjórblaða eða inniheldur handlóð og kleinuhring; lýsir svigrúmum með l = 2.",
       "chapter": 6,
       "section": "6.3",
       "sectionTitle": "Þróun skammtakenningarinnar",
@@ -1422,10 +1466,10 @@
       "termId": "fs-idm2926992"
     },
     {
-      "termIs": "einsetulögmál Pauli",
-      "termEn": "pauli exclusion principle",
-      "termFull": "einsetulögmál Pauli (e. pauli exclusion principle)",
-      "definition": "kveður á um að engar tvær rafeindir í frumeind geti haft sama gildi fyrir allar fjórar skammtatölurnar",
+      "termIs": "einsetulögmál Paulis",
+      "termEn": null,
+      "termFull": "einsetulögmál Paulis",
+      "definition": "segir að engar tvær rafeindir í atómi geti haft sama gildi fyrir allar fjórar skammtatölurnar",
       "chapter": 6,
       "section": "6.3",
       "sectionTitle": "Þróun skammtakenningarinnar",
@@ -1555,9 +1599,9 @@
     },
     {
       "termIs": "f-svigrúm",
-      "termEn": "f orbital",
-      "termFull": "f-svigrúm (e. f orbital)",
-      "definition": "margblaða rúmsvæði með háum rafeindaþéttleika, lýsir svigrúmum með l = 3",
+      "termEn": null,
+      "termFull": "f-svigrúm",
+      "definition": "svæði í rúmi með marga blaðka og háan rafeindaþéttleika, lýsir svigrúmum með l = 3",
       "chapter": 6,
       "section": "6.3",
       "sectionTitle": "Þróun skammtakenningarinnar",
@@ -1851,17 +1895,6 @@
       "termId": "fs-idp110829184"
     },
     {
-      "termIs": "frumeindasvigrúm",
-      "termEn": "atomic orbital",
-      "termFull": "frumeindasvigrúm (e. atomic orbital)",
-      "definition": "stærðfræðilegt fall sem lýsir hegðun rafeindar í frumeind (einnig kallað bylgjufall)",
-      "chapter": 6,
-      "section": "6.3",
-      "sectionTitle": "Þróun skammtakenningarinnar",
-      "sectionSlug": "6-3-throun-skammtakenningarinnar",
-      "termId": "fs-idm147438368"
-    },
-    {
       "termIs": "frumhvarf",
       "termEn": "elementary reaction",
       "termFull": "frumhvarf (e. elementary reaction)",
@@ -2085,7 +2118,7 @@
       "termIs": "gildishvolf",
       "termEn": "valence shell",
       "termFull": "gildishvolf (e. valence shell)",
-      "definition": "ytra orkuháa hvolf/hvolf frumeindar",
+      "definition": "ysta orkuháa hvolf (eða hvolf) atóms",
       "chapter": 6,
       "section": "6.4",
       "sectionTitle": "Rafeindabygging atóma (rafeindaskipan)",
@@ -2096,7 +2129,7 @@
       "termIs": "gildisrafeindir",
       "termEn": "valence electrons",
       "termFull": "gildisrafeindir (e. valence electrons)",
-      "definition": "rafeindir í ytra orkuháa hvolfi/hvolfum frumeindar",
+      "definition": "rafeindir í ysta orkuháa hvolfi (eða hvolfum) atóms",
       "chapter": 6,
       "section": "6.4",
       "sectionTitle": "Rafeindabygging atóma (rafeindaskipan)",
@@ -2195,11 +2228,11 @@
       "termIs": "grunnástand",
       "termEn": "ground state",
       "termFull": "grunnástand (e. ground state)",
-      "definition": "ástand þar sem rafeindir í frumeind, jón eða sameind hafa lægstu mögulegu orku",
+      "definition": "ástand þar sem rafeindir í atómi, jón eða sameind hafa lægstu mögulegu orku",
       "chapter": 6,
       "section": "6.2",
-      "sectionTitle": "Líkan Bórs",
-      "sectionSlug": "6-2-likan-bors",
+      "sectionTitle": "Líkan Bohrs",
+      "sectionSlug": "6-2-likan-bohrs",
       "termId": "fs-idp97866656"
     },
     {
@@ -2555,17 +2588,6 @@
       "termId": "fs-idm100788960"
     },
     {
-      "termIs": "hliðarskammtatala (l)",
-      "termEn": "secondary (angular momentum) quantum number (l)",
-      "termFull": "hliðarskammtatala (l) (e. secondary (angular momentum) quantum number (l))",
-      "definition": "skammtatala sem greinir á milli mismunandi lögunar svigrúma; hún er einnig mælikvarði á hverfiþunga svigrúmsins",
-      "chapter": 6,
-      "section": "6.3",
-      "sectionTitle": "Þróun skammtakenningarinnar",
-      "sectionSlug": "6-3-throun-skammtakenningarinnar",
-      "termId": "fs-idm176142304"
-    },
-    {
       "termIs": "hliðlæg teningslaga grindareining",
       "termEn": "face-centered cubic unit cell",
       "termFull": "hliðlæg teningslaga grindareining (e. face-centered cubic unit cell)",
@@ -2630,6 +2652,17 @@
       "sectionTitle": "Hlutfallaefnafræði loftkenndra efna, blanda og efnahvarfa",
       "sectionSlug": "9-3-hlutfallaefnafraedi-loftkenndra-efna-blanda-og",
       "termId": "fs-idp104769888"
+    },
+    {
+      "termIs": "hnútur",
+      "termEn": "node",
+      "termFull": "hnútur (e. node)",
+      "definition": "hvaða punktur sem er á kyrrstæðri bylgju með núll sveifluvídd",
+      "chapter": 6,
+      "section": "6.1",
+      "sectionTitle": "Rafsegulorka",
+      "sectionSlug": "6-1-rafsegulorka",
+      "termId": "fs-idm36067216"
     },
     {
       "termIs": "hraðafasti (k)",
@@ -2820,9 +2853,9 @@
     },
     {
       "termIs": "hvolf",
-      "termEn": "shell",
-      "termFull": "hvolf (e. shell)",
-      "definition": "frumeindasvigrúm með sömu höfuðskammtatölu, n",
+      "termEn": null,
+      "termFull": "hvolf",
+      "definition": "atómsvigrúm með sömu aðalskammtatölu, n",
       "chapter": 6,
       "section": "6.3",
       "sectionTitle": "Þróun skammtakenningarinnar",
@@ -2918,17 +2951,6 @@
       "termId": "fs-idm334010160"
     },
     {
-      "termIs": "höfuðskammtatala (n)",
-      "termEn": "principal quantum number (n)",
-      "termFull": "höfuðskammtatala (n) (e. principal quantum number (n))",
-      "definition": "skammtatala sem tilgreinir hvolfið sem rafeind skipar í frumeind",
-      "chapter": 6,
-      "section": "6.3",
-      "sectionTitle": "Þróun skammtakenningarinnar",
-      "sectionSlug": "6-3-throun-skammtakenningarinnar",
-      "termId": "fs-idm140352128"
-    },
-    {
       "termIs": "innilokunarkerfi",
       "termEn": "containment system",
       "termFull": "innilokunarkerfi (e. containment system)",
@@ -2976,7 +2998,7 @@
       "termIs": "innri rafeind",
       "termEn": "core electron",
       "termFull": "innri rafeind (e. core electron)",
-      "definition": "rafeind í frumeind sem skipar svigrúm innri hvolfanna",
+      "definition": "rafeind í atómi sem er á brautum innri hvolfanna",
       "chapter": 6,
       "section": "6.4",
       "sectionTitle": "Rafeindabygging atóma (rafeindaskipan)",
@@ -2995,10 +3017,10 @@
       "termId": "fs-idp25501040"
     },
     {
-      "termIs": "ísórafeinda",
-      "termEn": "isoelectronic",
-      "termFull": "ísórafeinda (e. isoelectronic)",
-      "definition": "hópur jóna eða frumeinda sem hafa eins rafeindaskipan",
+      "termIs": "isoelectronic",
+      "termEn": null,
+      "termFull": "isoelectronic",
+      "definition": "hópur jóna eða atóma sem hafa eins rafeindaskipan",
       "chapter": 6,
       "section": "6.5",
       "sectionTitle": "Lotubundnar breytingar á eiginleikum frumefna",
@@ -3229,7 +3251,7 @@
       "termIs": "jónunarorka",
       "termEn": "ionization energy",
       "termFull": "jónunarorka (e. ionization energy)",
-      "definition": "orka sem þarf til að fjarlægja rafeind úr frumeind eða jón á gasformi",
+      "definition": "orka sem þarf til að fjarlægja rafeind úr atómi eða jón í gasfasa",
       "chapter": 6,
       "section": "6.5",
       "sectionTitle": "Lotubundnar breytingar á eiginleikum frumefna",
@@ -3787,6 +3809,17 @@
       "termId": "fs-idm101715056"
     },
     {
+      "termIs": "kyrrstæð bylgja",
+      "termEn": "standing wave",
+      "termFull": "kyrrstæð bylgja (e. standing wave)",
+      "definition": "(einnig, stöðubylgja) staðbundið bylgjufyrirbæri sem einkennist af stökum bylgjulengdum sem ákvarðast af jaðarskilyrðum sem notuð eru til að mynda bylgjurnar; kyrrstæðar bylgjur eru í eðli sínu skammtaðar",
+      "chapter": 6,
+      "section": "6.1",
+      "sectionTitle": "Rafsegulorka",
+      "sectionSlug": "6-1-rafsegulorka",
+      "termId": "fs-idm64841104"
+    },
+    {
       "termIs": "kælivökvi ofns",
       "termEn": "reactor coolant",
       "termFull": "kælivökvi ofns (e. reactor coolant)",
@@ -4040,14 +4073,14 @@
       "termId": "fs-idp68355136"
     },
     {
-      "termIs": "Líkan Bohrs af vetnisfrumeindinni",
+      "termIs": "Líkan Bohrs af vetnisatróminu",
       "termEn": "bohr’s model of the hydrogen atom",
-      "termFull": "Líkan Bohrs af vetnisfrumeindinni (e. bohr’s model of the hydrogen atom)",
-      "definition": "byggingarlíkan þar sem rafeind hreyfist um kjarnann aðeins á hringlaga brautum, hver með sinn sérstaka leyfilega radíus",
+      "termFull": "Líkan Bohrs af vetnisatróminu (e. bohr’s model of the hydrogen atom)",
+      "definition": "byggingarlíkan þar sem rafeind hreyfist umhverfis kjarnann aðeins á hringlaga brautum, hver með sinn sérstaka leyfilega radíus",
       "chapter": 6,
       "section": "6.2",
-      "sectionTitle": "Líkan Bórs",
-      "sectionSlug": "6-2-likan-bors",
+      "sectionTitle": "Líkan Bohrs",
+      "sectionSlug": "6-2-likan-bohrs",
       "termId": "fs-idm13416416"
     },
     {
@@ -4076,7 +4109,7 @@
       "termIs": "línuróf",
       "termEn": "line spectrum",
       "termFull": "línuróf (e. line spectrum)",
-      "definition": "rafsegulgeislun sem gefin er frá sér á stökum bylgjulengdum af tiltekinni frumeind (eða frumeindum) í örvuðu ástandi",
+      "definition": "rafsegulgeislun sem gefin er frá sér á stökum bylgjulengdum af tilteknu atómi (eða atómum) í örvuðu ástandi",
       "chapter": 6,
       "section": "6.1",
       "sectionTitle": "Rafsegulorka",
@@ -4109,7 +4142,7 @@
       "termIs": "ljóseind",
       "termEn": "photon",
       "termFull": "ljóseind (e. photon)",
-      "definition": "minnsti mögulegi skammtur rafsegulgeislunar, eind ljóss",
+      "definition": "minnsti mögulegi pakki rafsegulgeislunar, ljóseind",
       "chapter": 6,
       "section": "6.1",
       "sectionTitle": "Rafsegulorka",
@@ -5044,17 +5077,6 @@
       "termIs": "nóða",
       "termEn": "node",
       "termFull": "nóða (e. node)",
-      "definition": "sérhver punktur á staðbylgju með núll útslag",
-      "chapter": 6,
-      "section": "6.1",
-      "sectionTitle": "Rafsegulorka",
-      "sectionSlug": "6-1-rafsegulorka",
-      "termId": "fs-idm36067216"
-    },
-    {
-      "termIs": "nóða",
-      "termEn": "node",
-      "termFull": "nóða (e. node)",
       "definition": "plan sem aðskilur mismunandi bleðla svigrúma, þar sem líkurnar á að finna rafeind eru núll",
       "chapter": 8,
       "section": "8.1",
@@ -5116,17 +5138,6 @@
       "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grundvallaratridi-orku",
       "termId": "fs-idp25502192"
-    },
-    {
-      "termIs": "Orkujöfn svigrúm",
-      "termEn": "degenerate orbitals",
-      "termFull": "Orkujöfn svigrúm (e. degenerate orbitals)",
-      "definition": "svigrúm sem hafa sömu orku",
-      "chapter": 6,
-      "section": "6.3",
-      "sectionTitle": "Þróun skammtakenningarinnar",
-      "sectionSlug": "6-3-throun-skammtakenningarinnar",
-      "termId": "fs-idm442273488"
     },
     {
       "termIs": "osmósa",
@@ -5383,9 +5394,9 @@
     },
     {
       "termIs": "óvissulögmál Heisenbergs",
-      "termEn": "heisenberg uncertainty principle",
-      "termFull": "óvissulögmál Heisenbergs (e. heisenberg uncertainty principle)",
-      "definition": "regla sem segir að ómögulegt sé að ákvarða nákvæmlega samtímis báða tiltekna samtengda hreyfifræðilega eiginleika eins og skriðþunga og staðsetningu eindar. Óvissulögmálið er afleiðing þess að skammtaeindir sýna tvíeðli bylgju og eindar",
+      "termEn": null,
+      "termFull": "óvissulögmál Heisenbergs",
+      "definition": "lögmál sem segir að ómögulegt sé að ákvarða nákvæmlega á sama tíma ákveðna samtengda hreyfifræðilega eiginleika eins og skriðþunga og staðsetningu öreindar. Óvissulögmálið er afleiðing þess að skammtaagnir sýna tvíeðli bylgju og agnar",
       "chapter": 6,
       "section": "6.3",
       "sectionTitle": "Þróun skammtakenningarinnar",
@@ -5394,9 +5405,9 @@
     },
     {
       "termIs": "p-svigrúm",
-      "termEn": "p orbital",
-      "termFull": "p-svigrúm (e. p orbital)",
-      "definition": "handlóðslaga rúmsvæði með háum rafeindaþéttleika, lýsir svigrúmum með l = 1",
+      "termEn": null,
+      "termFull": "p-svigrúm",
+      "definition": "handlóðalaga svæði í rúmi með háan rafeindaþéttleika, lýsir svigrúmum með l = 1",
       "chapter": 6,
       "section": "6.3",
       "sectionTitle": "Þróun skammtakenningarinnar",
@@ -5572,12 +5583,23 @@
       "termIs": "rafeindaskipan",
       "termEn": "electron configuration",
       "termFull": "rafeindaskipan (e. electron configuration)",
-      "definition": "upptalning sem sýnir rafeindafjölda í hvolfum og undirhvolfum frumeindar",
+      "definition": "listi sem sýnir rafeindaskipan hvolfa og undirhvolfa atóms",
       "chapter": 6,
       "section": "6.4",
       "sectionTitle": "Rafeindabygging atóma (rafeindaskipan)",
       "sectionSlug": "6-4-rafeindabygging-atoma-rafeindaskipan",
       "termId": "fs-idp161527712"
+    },
+    {
+      "termIs": "rafeindasækni",
+      "termEn": "electron affinity",
+      "termFull": "rafeindasækni (e. electron affinity)",
+      "definition": "orkubreyting sem fylgir viðbót rafeindar við atóm eða jón í gasfasa",
+      "chapter": 6,
+      "section": "6.5",
+      "sectionTitle": "Lotubundnar breytingar á eiginleikum frumefna",
+      "sectionSlug": "6-5-lotubundnar-breytingar-a-eiginleikum-frumefna",
+      "termId": "fs-idm161962320"
     },
     {
       "termIs": "rafeindavolt (eV)",
@@ -5592,9 +5614,9 @@
     },
     {
       "termIs": "rafeindaþéttleiki",
-      "termEn": "electron density",
-      "termFull": "rafeindaþéttleiki (e. electron density)",
-      "definition": "mælikvarði á líkurnar á að finna rafeind á tilteknu svæði í rúmi, hann er jafn kvaðratinu af tölugildi bylgjufallsins ψ",
+      "termEn": null,
+      "termFull": "rafeindaþéttleiki",
+      "definition": "mælikvarði á líkurnar á að finna rafeind á tilteknu rúmsvæði, hann er jafn kvaðratinu af tölugildi bylgjufallsins ψ",
       "chapter": 6,
       "section": "6.3",
       "sectionTitle": "Þróun skammtakenningarinnar",
@@ -5660,7 +5682,7 @@
       "termIs": "rafsegulgeislun",
       "termEn": "electromagnetic radiation",
       "termFull": "rafsegulgeislun (e. electromagnetic radiation)",
-      "definition": "orka sem berst með bylgjum sem hafa bæði rafsviðs- og segulsviðsþátt",
+      "definition": "orka sem berst með bylgjum sem hafa rafsviðsþátt og segulsviðsþátt",
       "chapter": 6,
       "section": "6.1",
       "sectionTitle": "Rafsegulorka",
@@ -5671,7 +5693,7 @@
       "termIs": "rafsegulróf",
       "termEn": "electromagnetic spectrum",
       "termFull": "rafsegulróf (e. electromagnetic spectrum)",
-      "definition": "orkusvið sem rafsegulgeislun getur spannað, þar á meðal útvarpsbylgjur, örbylgjur, innrautt ljós, sýnilegt ljós, útfjólublátt ljós, röntgengeislar og gammageislar",
+      "definition": "svið orku sem rafsegulgeislun getur spannað, þar á meðal útvarpsbylgjur, örbylgjur, innrautt ljós, sýnilegt ljós, útfjólublátt ljós, röntgengeislar og gammageislar",
       "chapter": 6,
       "section": "6.1",
       "sectionTitle": "Rafsegulorka",
@@ -5690,17 +5712,6 @@
       "termId": "fs-idp85536816"
     },
     {
-      "termIs": "rafsækni",
-      "termEn": "electron affinity",
-      "termFull": "rafsækni (e. electron affinity)",
-      "definition": "orkubreyting sem fylgir álagningu rafeindar á frumeind eða jón í gasfasa",
-      "chapter": 6,
-      "section": "6.5",
-      "sectionTitle": "Lotubundnar breytingar á eiginleikum frumefna",
-      "sectionSlug": "6-5-lotubundnar-breytingar-a-eiginleikum-frumefna",
-      "termId": "fs-idm161962320"
-    },
-    {
       "termIs": "raunheimtur",
       "termEn": "actual yield",
       "termFull": "raunheimtur (e. actual yield)",
@@ -5715,7 +5726,7 @@
       "termIs": "regla Hunds",
       "termEn": "hund’s rule",
       "termFull": "regla Hunds (e. hund’s rule)",
-      "definition": "hvert svigrúm í undirhvolfi er einfaldlega mannað með einni rafeind áður en nokkurt svigrúm er tvískipað og allar rafeindir í einfaldlega mönnuðum svigrúmum hafa sama spuna",
+      "definition": "hver braut í undirhvolfi er fyllt með einni rafeind áður en nokkur braut er fyllt með tveimur, og allar rafeindir á stökum brautum hafa sama spuna",
       "chapter": 6,
       "section": "6.4",
       "sectionTitle": "Rafeindabygging atóma (rafeindaskipan)",
@@ -5867,8 +5878,8 @@
     },
     {
       "termIs": "s-svigrúm",
-      "termEn": "s orbital",
-      "termFull": "s-svigrúm (e. s orbital)",
+      "termEn": null,
+      "termFull": "s-svigrúm",
       "definition": "kúlulaga svæði í rúmi með háan rafeindaþéttleika, lýsir svigrúmum með l = 0",
       "chapter": 6,
       "section": "6.3",
@@ -6056,7 +6067,7 @@
       "termIs": "samgildur radíus",
       "termEn": "covalent radius",
       "termFull": "samgildur radíus (e. covalent radius)",
-      "definition": "helmingurinn af fjarlægðinni milli kjarna tveggja eins frumeinda þegar þær eru tengdar með samgildu tengi",
+      "definition": "helmingurinn af fjarlægðinni milli kjarna tveggja eins atóma þegar þau eru tengd með samgildu tengi",
       "chapter": 6,
       "section": "6.5",
       "sectionTitle": "Lotubundnar breytingar á eiginleikum frumefna",
@@ -6175,9 +6186,9 @@
     },
     {
       "termIs": "segulskammtatala (ml)",
-      "termEn": "magnetic quantum number (ml)",
-      "termFull": "segulskammtatala (ml) (e. magnetic quantum number (ml))",
-      "definition": "skammtatala sem táknar stefnu frumeindasvigrúms í kringum kjarnann",
+      "termEn": null,
+      "termFull": "segulskammtatala (ml)",
+      "definition": "skammtatala sem táknar stefnu atómsvigrúms í kringum kjarnann",
       "chapter": 6,
       "section": "6.3",
       "sectionTitle": "Þróun skammtakenningarinnar",
@@ -6318,9 +6329,9 @@
     },
     {
       "termIs": "skammtafræði",
-      "termEn": "quantum mechanics",
-      "termFull": "skammtafræði (e. quantum mechanics)",
-      "definition": "fræðasvið sem felur í sér skömmtun orku, tvíeðli bylgju og eindar og óvissulögmál Heisenbergs til að lýsa efni",
+      "termEn": null,
+      "termFull": "skammtafræði",
+      "definition": "fræðasvið sem felur í sér skömmtun orku, tvíeðli bylgju og agnar og óvissulögmál Heisenbergs til að lýsa efni",
       "chapter": 6,
       "section": "6.3",
       "sectionTitle": "Þróun skammtakenningarinnar",
@@ -6331,11 +6342,11 @@
       "termIs": "skammtatala",
       "termEn": "quantum number",
       "termFull": "skammtatala (e. quantum number)",
-      "definition": "tala sem hefur aðeins ákveðin leyfileg gildi og er notuð til að lýsa skipan rafeinda í frumeind",
+      "definition": "tala sem hefur aðeins ákveðin leyfileg gildi og er notuð til að lýsa fyrirkomulagi rafeinda í atómi",
       "chapter": 6,
       "section": "6.2",
-      "sectionTitle": "Líkan Bórs",
-      "sectionSlug": "6-2-likan-bors",
+      "sectionTitle": "Líkan Bohrs",
+      "sectionSlug": "6-2-likan-bohrs",
       "termId": "fs-idp170832400"
     },
     {
@@ -6397,7 +6408,7 @@
       "termIs": "skömmtun",
       "termEn": "quantization",
       "termFull": "skömmtun (e. quantization)",
-      "definition": "takmörkun einhvers eiginleika við ákveðin, stök gildi, ekki samfelld",
+      "definition": "takmörkun einhvers eiginleika við ákveðin stök gildi, ekki samfelld",
       "chapter": 6,
       "section": "6.1",
       "sectionTitle": "Rafsegulorka",
@@ -6516,8 +6527,8 @@
     },
     {
       "termIs": "spunaskammtatala (ms)",
-      "termEn": "spin quantum number (ms)",
-      "termFull": "spunaskammtatala (ms) (e. spin quantum number (ms))",
+      "termEn": null,
+      "termFull": "spunaskammtatala (ms)",
       "definition": "tala sem tilgreinir stefnu rafeindaspuna, annaðhvort +12 eða −12",
       "chapter": 6,
       "section": "6.3",
@@ -6645,17 +6656,6 @@
       "sectionTitle": "Raftroðs- og kerspenna",
       "sectionSlug": "17-3-raftrods-og-kerspenna",
       "termId": "fs-idp198657264"
-    },
-    {
-      "termIs": "staðbylgja",
-      "termEn": "standing wave",
-      "termFull": "staðbylgja (e. standing wave)",
-      "definition": "(einnig, kyrrstæð bylgja) staðbundið bylgjufyrirbæri sem einkennist af aðskildum bylgjulengdum sem ákvarðast af jaðarskilyrðunum sem notuð eru til að mynda bylgjurnar; standandi bylgjur eru í eðli sínu skammtaðar",
-      "chapter": 6,
-      "section": "6.1",
-      "sectionTitle": "Rafsegulorka",
-      "sectionSlug": "6-1-rafsegulorka",
-      "termId": "fs-idm64841104"
     },
     {
       "termIs": "stakeind",
@@ -6848,7 +6848,7 @@
       "termIs": "styrkur",
       "termEn": "intensity",
       "termFull": "styrkur (e. intensity)",
-      "definition": "eiginleiki orku sem berst með bylgjum og tengist útslagi bylgjunnar, svo sem ljósstyrkur ljóss eða hljóðstyrkur hljóðs",
+      "definition": "eiginleiki orku sem berst með bylgjum og tengist sveifluvídd bylgjunnar, svo sem birta ljóss eða hljóðstyrkur",
       "chapter": 6,
       "section": "6.1",
       "sectionTitle": "Rafsegulorka",
@@ -6980,12 +6980,23 @@
       "termIs": "svarthlutur",
       "termEn": "blackbody",
       "termFull": "svarthlutur (e. blackbody)",
-      "definition": "fræðilegur fullkominn gleypari allrar rafsegulgeislunar sem á hann fellur; slíkir hlutir gefa frá sér rafsegulgeislun í einkennandi samfelldum rófum sem kallast svarthlutaróf",
+      "definition": "hugsjónaður fullkominn gleypir allrar rafsegulgeislunar sem á hann fellur; slíkir hlutir gefa frá sér rafsegulgeislun í einkennandi samfelldum rófum sem kallast svarthlutaróf",
       "chapter": 6,
       "section": "6.1",
       "sectionTitle": "Rafsegulorka",
       "sectionSlug": "6-1-rafsegulorka",
       "termId": "fs-idp82961328"
+    },
+    {
+      "termIs": "sveifluvídd",
+      "termEn": "amplitude",
+      "termFull": "sveifluvídd (e. amplitude)",
+      "definition": "útvíkkun tilfærslu sem bylgja veldur",
+      "chapter": 6,
+      "section": "6.1",
+      "sectionTitle": "Rafsegulorka",
+      "sectionSlug": "6-1-rafsegulorka",
+      "termId": "fs-idp173255696"
     },
     {
       "termIs": "sveim",
@@ -7019,17 +7030,6 @@
       "sectionTitle": "Svif",
       "sectionSlug": "11-5-svif",
       "termId": "fs-idm164804608"
-    },
-    {
-      "termIs": "svigrúmsmynd",
-      "termEn": "orbital diagram",
-      "termFull": "svigrúmsmynd (e. orbital diagram)",
-      "definition": "myndræn framsetning á rafeindaskipan sem sýnir hvert svigrúm sem kassa og hverja rafeind sem ör",
-      "chapter": 6,
-      "section": "6.4",
-      "sectionTitle": "Rafeindabygging atóma (rafeindaskipan)",
-      "sectionSlug": "6-4-rafeindabygging-atoma-rafeindaskipan",
-      "termId": "fs-idp15489472"
     },
     {
       "termIs": "sýra",
@@ -7340,10 +7340,10 @@
       "termId": "fs-idm165896720"
     },
     {
-      "termIs": "tvíeðli bylgju og eindar",
+      "termIs": "tvíeðli bylgju og agnar",
       "termEn": "wave-particle duality",
-      "termFull": "tvíeðli bylgju og eindar (e. wave-particle duality)",
-      "definition": "sú athugun að frumeindir geta sýnt bæði bylgju- og eindareiginleika",
+      "termFull": "tvíeðli bylgju og agnar (e. wave-particle duality)",
+      "definition": "sú athugun að skammtaagnir geta sýnt bæði eiginleika bylgju og agnar",
       "chapter": 6,
       "section": "6.1",
       "sectionTitle": "Rafsegulorka",
@@ -7517,9 +7517,9 @@
     },
     {
       "termIs": "undirhvolf",
-      "termEn": "subshell",
-      "termFull": "undirhvolf (e. subshell)",
-      "definition": "frumeindasvigrúm með sömu gildi fyrir n og l",
+      "termEn": null,
+      "termFull": "undirhvolf",
+      "definition": "atómsvigrúm með sömu gildum n og l",
       "chapter": 6,
       "section": "6.3",
       "sectionTitle": "Þróun skammtakenningarinnar",
@@ -7594,6 +7594,17 @@
     },
     {
       "termIs": "úrkynjuð svigrúm",
+      "termEn": null,
+      "termFull": "úrkynjuð svigrúm",
+      "definition": "svigrúm sem hafa sömu orku",
+      "chapter": 6,
+      "section": "6.3",
+      "sectionTitle": "Þróun skammtakenningarinnar",
+      "sectionSlug": "6-3-throun-skammtakenningarinnar",
+      "termId": "fs-idm442273488"
+    },
+    {
+      "termIs": "úrkynjuð svigrúm",
       "termEn": "degenerate orbitals",
       "termFull": "úrkynjuð svigrúm (e. degenerate orbitals)",
       "definition": "svigrúm sem hafa sömu orku",
@@ -7624,17 +7635,6 @@
       "sectionTitle": "Fasabreytingar",
       "sectionSlug": "10-3-fasabreytingar",
       "termId": "fs-idm7778192"
-    },
-    {
-      "termIs": "útslag",
-      "termEn": "amplitude",
-      "termFull": "útslag (e. amplitude)",
-      "definition": "mesta færsla sem bylgja veldur",
-      "chapter": 6,
-      "section": "6.1",
-      "sectionTitle": "Rafsegulorka",
-      "sectionSlug": "6-1-rafsegulorka",
-      "termId": "fs-idp173255696"
     },
     {
       "termIs": "útstreymi",
@@ -7901,10 +7901,10 @@
       "termId": "fs-idp31732848"
     },
     {
-      "termIs": "virk kjarnhleðsla",
+      "termIs": "virk kjarnahleðsla",
       "termEn": "effective nuclear charge",
-      "termFull": "virk kjarnhleðsla (e. effective nuclear charge)",
-      "definition": "hleðsla sem leiðir til Coulomb-krafts sem kjarninn beitir á rafeind, reiknuð sem kjarnhleðsla að frádreginni hlífun",
+      "termFull": "virk kjarnahleðsla (e. effective nuclear charge)",
+      "definition": "hleðsla sem leiðir til Coulomb-krafts sem kjarninn beitir á rafeind, reiknuð sem kjarnahleðsla að frádreginni hlífun",
       "chapter": 6,
       "section": "6.5",
       "sectionTitle": "Lotubundnar breytingar á eiginleikum frumefna",
@@ -7978,10 +7978,10 @@
       "termId": "fs-idp83289888"
     },
     {
-      "termIs": "víxlverkunarmynstur",
+      "termIs": "víxlunarmynstur",
       "termEn": "interference pattern",
-      "termFull": "víxlverkunarmynstur (e. interference pattern)",
-      "definition": "mynstur sem venjulega samanstendur af ljósum og dökkum röndum á víxl; það stafar af uppbyggjandi og eyðandi víxlverkun bylgna",
+      "termFull": "víxlunarmynstur (e. interference pattern)",
+      "definition": "mynstur sem venjulega samanstendur af víxlverkun bjartra og dökkra randa; það stafar af uppbyggjandi og eyðandi víxlun bylgna",
       "chapter": 6,
       "section": "6.1",
       "sectionTitle": "Rafsegulorka",
@@ -8347,8 +8347,8 @@
       "definition": "ástand sem hefur meiri orku en grunnástandsorkan",
       "chapter": 6,
       "section": "6.2",
-      "sectionTitle": "Líkan Bórs",
-      "sectionSlug": "6-2-likan-bors",
+      "sectionTitle": "Líkan Bohrs",
+      "sectionSlug": "6-2-likan-bohrs",
       "termId": "fs-idp157417744"
     },
     {

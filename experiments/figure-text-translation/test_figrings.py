@@ -391,7 +391,13 @@ def test_corpus_anchors():
         cs, _ = figrings.find_candidates(p.read_text(encoding='utf-8'))
         if cs:
             hits.append((p.name, len(cs)))
-    check('no third carrier exists in this corpus today', hits == [], str(hits[:5]))
+    # A CORPUS PIN, moved 2026-09-19 by chemistry ch05's figure buy: HeatMeas carries
+    # the byte signature on 2 masks, and the counterfactual gate REFUSED both (no
+    # visible ring), so the published SVG keeps them unhealed on purpose. An exact
+    # list still trips on any NEW carrier, which is what this check exists for.
+    known = [('CNX_Chem_05_02_HeatMeas_IS.svg', 2)]
+    check('no carrier beyond the known, gate-refused ones exists in this corpus today',
+          hits == known, str(hits[:5]))
 
 
 # ---------------------------------------------------------------------------

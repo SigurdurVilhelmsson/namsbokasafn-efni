@@ -1,20 +1,20 @@
 {
-  "generated": "2026-09-19T10:30:48.790Z",
+  "generated": "2026-09-19T13:37:03.810Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-09-19T10:30:48.790Z",
+      "generated": "2026-09-19T13:37:03.810Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
         "totalChecked": 149,
         "skippedUntranslated": 0,
-        "perfect": 128,
-        "withDiscrepancies": 21,
-        "totalDiscrepancies": 35,
+        "perfect": 129,
+        "withDiscrepancies": 20,
+        "totalDiscrepancies": 33,
         "unexplainedDiscrepancies": 0,
-        "deferredLosses": 19,
-        "benignArtifacts": 16,
+        "deferredLosses": 16,
+        "benignArtifacts": 17,
         "green": true
       },
       "modules": [
@@ -49,10 +49,10 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -3,
-              "status": "known-loss-deferred",
-              "reason": "WS5 fresh re-inject: RC1 recovered 1 of 2 mis-anchors → now -3 = 1 inline <term> notation flatten (m_l/m_s quantum numbers) + 2 empty-source-tag artifacts. RC1 fixed the citable headword, inline term notation stays plain (Track B4 re-MT)",
-              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
+              "diff": -2,
+              "status": "benign",
+              "reason": "2 empty self-closing <emphasis effect=\"italics\"/> in source (zero content). The former third loss, the inline <term> m_l/m_s notation flatten, is gone since the 2026-09-19 ch06 re-MT injected with --no-annotate-en (⑰ holding state): both terms keep their italics.",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md); verified 2026-09-19 by count (328 src / 326 out) and by value"
             }
           ]
         },
@@ -65,18 +65,6 @@
               "diff": -1,
               "status": "benign",
               "reason": "empty self-closing <emphasis/> in source (zero content)"
-            }
-          ]
-        },
-        {
-          "moduleId": "m68735",
-          "chapter": "ch06",
-          "discrepancies": [
-            {
-              "tag": "term",
-              "diff": 1,
-              "status": "benign",
-              "reason": "benign tag-count (over-annotation from term-split); RC2 wrong-gloss defect tracked separately"
             }
           ]
         },

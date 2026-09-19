@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_03_Qnumbers",
+ "renderHash": "a8874dcee26a7f6d",
+ "composedHash": "a8874dcee26a7f6d",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Nucleus": "Kjarni",
+  "Increasing|energy": "Aukin orka"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

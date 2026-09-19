@@ -1,0 +1,53 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_05_Firstiongr",
+ "renderHash": "6be5038bb0760fb0",
+ "composedHash": "6be5038bb0760fb0",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Period|2": "Lota 2",
+  "Period|3": "Lota 3",
+  "Period|4": "Lota 4",
+  "Atomic number": "Sætistala",
+  "Period|5": "Lota 5",
+  "Period|6": "Lota 6",
+  "Ionization energy (kJ/mol)": "Jónunarorka (kJ/mól)"
+ },
+ "mtAlternatives": {
+  "Period|2": {
+   "kept": "joined",
+   "other": "Tímabil 2",
+   "reason": "disagree",
+   "mt": "Lota 2"
+  },
+  "Period|3": {
+   "kept": "joined",
+   "other": "Tímabil 3",
+   "reason": "disagree",
+   "mt": "Lota 3"
+  },
+  "Period|4": {
+   "kept": "joined",
+   "other": "Tímabil 4",
+   "reason": "disagree",
+   "mt": "Lota 4"
+  },
+  "Period|5": {
+   "kept": "joined",
+   "other": "Tímabil 5",
+   "reason": "disagree",
+   "mt": "Lota 5"
+  },
+  "Period|6": {
+   "kept": "joined",
+   "other": "Tímabil 6",
+   "reason": "disagree",
+   "mt": "Lota 6"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 7
+ }
+}

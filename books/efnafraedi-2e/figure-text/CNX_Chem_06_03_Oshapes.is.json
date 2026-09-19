@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_03_Oshapes",
+ "renderHash": "abe670ac193e4725",
+ "composedHash": "abe670ac193e4725",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "d–2   dxy": "d–2   dxy",
+  "d–1   dxz": "d–1   dxz",
+  "d1   dyz": "d1   dyz"
+ },
+ "mtAlternatives": {
+  "d–2   dxy": {
+   "kept": "joined",
+   "other": "d–2 dxy",
+   "reason": "disagree",
+   "mt": "d–2   dxy"
+  },
+  "d1   dyz": {
+   "kept": "joined",
+   "other": "d1 dyz",
+   "reason": "disagree",
+   "mt": "d1   dyz"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

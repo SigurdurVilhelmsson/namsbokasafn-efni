@@ -22,6 +22,7 @@
 | `audit-render-output` | Post-render audit: compares source CNXML against rendered HTML output |
 | `auto-insert-placeholders` | Automatically insert [[MEDIA:n]] and [[TABLE:id]] placeholders into Icelandic se |
 | `backfill-provenance` | Stamp producer provenance onto pre-existing 02-mt-output content. |
+| `chapter-term-check` | Per-chapter review of glossary-subset candidates and short math labels (free, re |
 | `check-openstax-errata` | Track and manage OpenStax errata for Chemistry 2e. |
 | `check-source-updates` | Compare local 01-source/ CNXML files against upstream OpenStax GitHub |
 | `cnxml-fidelity-check` | Counts opening tags by element name in both source and translated CNXML |
@@ -73,6 +74,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*52 tools total (52 active, 0 deprecated)*
+*53 tools total (53 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.

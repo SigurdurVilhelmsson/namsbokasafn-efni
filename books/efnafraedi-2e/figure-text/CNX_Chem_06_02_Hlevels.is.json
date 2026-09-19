@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_02_Hlevels",
+ "renderHash": "f394089d14a18976",
+ "composedHash": "f394089d14a18976",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Energy, n": "Orka, n"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

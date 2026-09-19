@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_04_Econfig",
+ "renderHash": "e19acd5e8e88aeb5",
+ "composedHash": "e19acd5e8e88aeb5",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Number of electrons in subshell": "Fjöldi rafeinda í undirhvolfi",
+  "Subshell": "Undirhvolf"
+ },
+ "mtAlternatives": {
+  "Number of electrons in subshell": {
+   "kept": "joined",
+   "other": "Fjöldi rafeinda á undirsviði",
+   "reason": "disagree",
+   "mt": "Fjöldi rafeinda í undirhvolfi"
+  },
+  "Subshell": {
+   "kept": "joined",
+   "other": "Undirskel",
+   "reason": "disagree",
+   "mt": "Undirhvolf"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

@@ -45,6 +45,7 @@
           "type": "figure",
           "id": "CNX_Chem_06_03_waterw",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68733:caption:CNX_Chem_06_03_waterw-caption"
           },
@@ -82,6 +83,7 @@
           "type": "figure",
           "id": "CNX_Chem_06_03_elecw",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68733:caption:CNX_Chem_06_03_elecw-caption"
           },
@@ -113,6 +115,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_03_Electrnin",
+          "title": null,
           "caption": {
             "segmentId": "m68733:caption:CNX_Chem_06_03_Electrnin-caption"
           },
@@ -337,6 +340,7 @@
           "type": "figure",
           "id": "CNX_Chem_06_03_Qnumbers",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68733:caption:CNX_Chem_06_03_Qnumbers-caption"
           },
@@ -388,6 +392,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_03_sOrbit",
+          "title": null,
           "caption": {
             "segmentId": "m68733:caption:CNX_Chem_06_03_sOrbit-caption"
           },
@@ -414,6 +419,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_03_Oshapes",
+          "title": null,
           "caption": {
             "segmentId": "m68733:caption:CNX_Chem_06_03_Oshapes-caption"
           },
@@ -435,6 +441,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_03_subshells",
+          "title": null,
           "caption": {
             "segmentId": "m68733:caption:CNX_Chem_06_03_subshells-caption"
           },
@@ -472,6 +479,7 @@
           "type": "figure",
           "id": "CNX_Chem_06_03_spin",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68733:caption:CNX_Chem_06_03_spin-caption"
           },

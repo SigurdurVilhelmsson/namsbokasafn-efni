@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_03_spin",
+ "renderHash": "abe46dcfba20be6f",
+ "composedHash": "abe46dcfba20be6f",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Spin +   ,|spin-up": "Snúður + , snúður upp",
+  "Spin –   ,|spin-down": "Snúður – , snúður niður"
+ },
+ "mtAlternatives": {
+  "Spin +   ,|spin-up": {
+   "kept": "joined",
+   "other": "Snúður + , upp-snúður",
+   "reason": "disagree",
+   "mt": "Snúður + , snúður upp"
+  },
+  "Spin –   ,|spin-down": {
+   "kept": "joined",
+   "other": "Spuni – , niðurspuni",
+   "reason": "disagree",
+   "mt": "Snúður – , snúður niður"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

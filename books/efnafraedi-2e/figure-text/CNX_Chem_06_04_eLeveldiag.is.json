@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_04_eLeveldiag",
+ "renderHash": "bab89d0901ca5fbc",
+ "composedHash": "bab89d0901ca5fbc",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Subshell electron capacity": "Rafeindafjöldi undirhvolfs"
+ },
+ "mtJoined": {
+  "status": "single-label",
+  "labels": 1
+ }
+}

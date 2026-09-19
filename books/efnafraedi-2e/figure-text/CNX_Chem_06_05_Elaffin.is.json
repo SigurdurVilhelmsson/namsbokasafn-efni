@@ -1,0 +1,38 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_05_Elaffin",
+ "renderHash": "90f7439ba7b41583",
+ "composedHash": "90f7439ba7b41583",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "* Calculated value": "* Reiknað gildi",
+  "Group": "Flokkur",
+  "Period": "Lota",
+  "Electron Affinity Values for Selected Elements (kJ/mol)": "Rafeindasækni valinna frumefna (kJ/mól)"
+ },
+ "mtAlternatives": {
+  "Group": {
+   "kept": "joined",
+   "other": "Hópur",
+   "reason": "disagree",
+   "mt": "Flokkur"
+  },
+  "Period": {
+   "kept": "joined",
+   "other": "Tímabil",
+   "reason": "disagree",
+   "mt": "Lota"
+  },
+  "Electron Affinity Values for Selected Elements (kJ/mol)": {
+   "kept": "joined",
+   "other": "Rafeindasæknigildi fyrir valin frumefni (kJ/mól)",
+   "reason": "disagree",
+   "mt": "Rafeindasækni valinna frumefna (kJ/mól)"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 4
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_03_Electrnin",
+ "renderHash": "8052b0b99b3d4068",
+ "composedHash": "8052b0b99b3d4068",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Electron": "Rafeind",
+  "source": "uppruni",
+  "Time": "Tími"
+ },
+ "mtAlternatives": {
+  "source": {
+   "kept": "joined",
+   "other": "heimild",
+   "reason": "disagree",
+   "mt": "uppruni"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

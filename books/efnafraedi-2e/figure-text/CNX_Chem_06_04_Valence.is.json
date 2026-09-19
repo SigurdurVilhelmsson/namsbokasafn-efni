@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_04_Valence",
+ "renderHash": "193a2602d8d8fd4b",
+ "composedHash": "193a2602d8d8fd4b",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Abbreviation [Ne]3s1": "Skammstöfun [Ne]3s1",
+  "Core electrons": "Kjarnarafeindir",
+  "Valence electron": "Gildisrafeind"
+ },
+ "mtAlternatives": {
+  "Core electrons": {
+   "kept": "joined",
+   "other": "Innri rafeindir",
+   "reason": "disagree",
+   "mt": "Kjarnarafeindir"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 3
+ }
+}

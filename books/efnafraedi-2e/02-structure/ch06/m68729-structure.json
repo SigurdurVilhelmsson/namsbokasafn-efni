@@ -57,6 +57,7 @@
           "type": "figure",
           "id": "CNX_Chem_06_01_Frequency",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_Frequency-caption"
           },
@@ -88,6 +89,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_01_emspectrum",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_emspectrum-caption"
           },
@@ -191,6 +193,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_01_RadioCell",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_RadioCell-caption"
           },
@@ -207,6 +210,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_01_AMFM",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_AMFM-caption"
           },
@@ -229,6 +233,7 @@
           "type": "figure",
           "id": "CNX_Chem_06_01_LiteInterf",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_LiteInterf-caption"
           },
@@ -271,6 +276,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_01_Vibrstring",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_Vibrstring-caption"
           },
@@ -292,6 +298,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_01_Vibratdrum",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_Vibratdrum-caption"
           },
@@ -337,6 +344,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_01_Solardist",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_Solardist-caption"
           },
@@ -373,6 +381,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_01_Blackbody",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_Blackbody-caption"
           },
@@ -415,6 +424,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_01_Ephoton",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_Ephoton-caption"
           },
@@ -615,6 +625,7 @@
           "type": "figure",
           "id": "CNX_Chem_06_01_neon",
           "class": "scaled-down",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_neon-caption"
           },
@@ -636,6 +647,7 @@
         {
           "type": "figure",
           "id": "CNX_Chem_06_01_2spectra",
+          "title": null,
           "caption": {
             "segmentId": "m68729:caption:CNX_Chem_06_01_2spectra-caption"
           },

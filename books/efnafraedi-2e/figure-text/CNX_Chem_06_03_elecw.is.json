@@ -1,0 +1,16 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_03_elecw",
+ "renderHash": "3db2431a8ed44086",
+ "composedHash": "3db2431a8ed44086",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Radius r": "Radíus r",
+  "Wavelength λ": "Bylgjulengd λ"
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 2
+ }
+}

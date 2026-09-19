@@ -1,0 +1,40 @@
+{
+ "version": 1,
+ "basename": "CNX_Chem_06_04_Ptableconf",
+ "renderHash": "346bfa91293e8e5c",
+ "composedHash": "346bfa91293e8e5c",
+ "composedVersion": "4",
+ "composerVersion": "4",
+ "blocks": {
+  "Group": "Flokkur",
+  "Period": "Lota",
+  "Name": "Nafn",
+  "Atomic|number": "Sætistala",
+  "Outer electron|configuration": "Rafeindaskipan ysta hvolfs",
+  "Electron Configuration Table": "Tafla yfir rafeindaskipan"
+ },
+ "mtAlternatives": {
+  "Group": {
+   "kept": "joined",
+   "other": "Hópur",
+   "reason": "disagree",
+   "mt": "Flokkur"
+  },
+  "Period": {
+   "kept": "joined",
+   "other": "Tímabil",
+   "reason": "disagree",
+   "mt": "Lota"
+  },
+  "Outer electron|configuration": {
+   "kept": "joined",
+   "other": "Ytri rafeindaskipan",
+   "reason": "disagree",
+   "mt": "Rafeindaskipan ysta hvolfs"
+  }
+ },
+ "mtJoined": {
+  "status": "ok",
+  "labels": 6
+ }
+}

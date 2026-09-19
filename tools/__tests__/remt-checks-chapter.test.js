@@ -812,9 +812,16 @@ describe('the fix round — every defect the blind review confirmed, pinned', ()
     // things; the denominator is what separates them. **Chemistry appendices, the obvious
     // fixture, has NO positive margin at all** (math 504→504, image 36→35), which is why
     // the first draft of this test failed.
-    const withMargin = await runCheck(K2, ctxFor(6));
+    // ⚠️ MOVED 2026-09-19: chemistry mt-preview ch6 lost its +6 when ch06 was re-MT'd and
+    // re-rendered (a scan of mt-preview ch1–ch14 found NO chapter with a positive margin left).
+    // faithful ch3 carries +23 and is regenerated only by hand, so it moves less often. A
+    // premise pin on the corpus: when it goes red, re-scan for a margin cell, do not delete.
+    const withMargin = await runCheck(
+      K2,
+      ctxFor(3, { track: 'faithful', chapterInputs: inputsFor(3, 'faithful') })
+    );
     expect(withMargin.verdict).toBe(VERDICT.PASS);
-    expect(withMargin.message).toContain('PASS margin math +6');
+    expect(withMargin.message).toContain('PASS margin math +23');
 
     // The negative half: a clean cell with no surplus must not print a margin note at all,
     // or the disclosure becomes noise an operator learns to skip.
